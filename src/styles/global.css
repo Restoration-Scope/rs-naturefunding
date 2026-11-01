@@ -282,38 +282,25 @@ p {
   text-wrap: pretty;
 }
 
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+/* Components set display: grid or flex; the hidden attribute must still win. */
+[hidden] {
+  display: none !important;
+}
+
+}
+
+/* Classes markup shares, and that src/lib/finder.ts also writes at runtime (tape) or updates (tag). */
+@layer components {
 .wrap {
   max-width: var(--page);
   margin-inline: auto;
   padding-inline: var(--gutter);
-}
-
-.mono {
-  font-family: var(--mono);
-  font-variant-numeric: tabular-nums;
-}
-
-.visually-hidden {
-  position: absolute !important;
-  width: 1px;
-  height: 1px;
-  overflow: hidden;
-  clip: rect(0 0 0 0);
-  white-space: nowrap;
-}
-
-.skip {
-  position: absolute;
-  left: 1rem;
-  top: -4rem;
-  z-index: 10;
-  padding: 0.5rem 0.875rem;
-  background: var(--surface);
-  color: var(--ink);
-  border-radius: var(--radius);
-}
-.skip:focus {
-  top: 0.75rem;
 }
 
 /* Flagging tape: the status word on a strip of tape with a notched tail. */
@@ -383,58 +370,6 @@ p {
   color: var(--aging-ink);
 }
 
-.button {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.5rem;
-  min-height: 2.75rem;
-  padding: 0.55rem 1.1rem;
-  border-radius: var(--radius);
-  background: var(--shell);
-  color: var(--shell-ink);
-  font: inherit;
-  font-weight: 700;
-  text-decoration: none;
-  border: 0;
-  cursor: pointer;
-}
-.button:hover {
-  background: var(--action-hover);
-}
-@media (prefers-color-scheme: dark) {
-  .button {
-    background: var(--tape-open);
-    color: var(--tape-ink);
-  }
-  .button:hover {
-    background: var(--action-hover);
-  }
-}
-.button--quiet {
-  background: transparent;
-  color: var(--ink);
-  box-shadow: inset 0 0 0 1.5px var(--rule-strong);
-}
-.button--quiet:hover {
-  background: var(--sunk);
-}
-@media (prefers-color-scheme: dark) {
-  .button--quiet {
-    background: transparent;
-    color: var(--ink);
-  }
-  .button--quiet:hover {
-    background: var(--sunk);
-  }
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  html {
-    scroll-behavior: smooth;
-  }
-}
-
 /* One stamp everywhere: a quiet line while the check is fresh; the amber tag, hole and all, once it ages. */
 .tag:not([data-aging]) {
   padding: 0;
@@ -446,10 +381,4 @@ p {
 .tag:not([data-aging])::before {
   display: none;
 }
-
-/* Components set display: grid or flex; the hidden attribute must still win. */
-[hidden] {
-  display: none !important;
-}
-
 }

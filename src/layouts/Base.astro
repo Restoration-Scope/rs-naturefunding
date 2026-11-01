@@ -47,7 +47,7 @@ const ld = jsonLd ? (Array.isArray(jsonLd) ? jsonLd : [jsonLd]) : []
     {ld.map((o) => <script type="application/ld+json" set:html={JSON.stringify(o)} />)}
   </head>
   <body>
-    <a class="skip" href="#main">Skip to content</a>
+    <a class="absolute -top-16 left-4 z-10 rounded-md bg-surface px-3.5 py-2 text-ink focus:top-3" href="#main">Skip to content</a>
     <header class="bg-shell text-shell-ink [&_:focus-visible]:outline-tape-open [&_a]:text-inherit">
       <div class="wrap flex flex-wrap items-center justify-between gap-x-6 gap-y-2 py-3.5">
         <a class="inline-flex items-center gap-[0.45rem] text-xl font-extrabold tracking-[-0.01em] no-underline" href="/" aria-label="naturefunding.org, home">

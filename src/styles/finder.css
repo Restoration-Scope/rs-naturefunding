@@ -1,0 +1,483 @@
+/* The finder's table on /: its rows, their reflow at mid and phone widths, and the pieces src/lib/finder.ts
+   draws at runtime (chips, dividers, links in messages). Component classes rather than utilities: 93 rows
+   repeat them, and the rules switch together at each container width. Only / loads this file. */
+@layer theme, base, components, utilities;
+
+@layer components {
+  .linkish {
+    padding: 0;
+    border: 0;
+    background: none;
+    color: var(--link);
+    font: inherit;
+    text-decoration: underline;
+    text-underline-offset: 0.18em;
+    cursor: pointer;
+  }
+  .chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    min-height: 1.85rem;
+    padding: 0.1rem 0.35rem 0.1rem 0.6rem;
+    border: 1.5px solid var(--control-edge);
+    border-radius: 2px;
+    background: var(--surface);
+    color: var(--ink);
+    font: inherit;
+    font-size: 0.875rem;
+    cursor: pointer;
+  }
+  .chip:hover {
+    border-color: var(--ink);
+  }
+  .chip__x {
+    display: inline-grid;
+    place-items: center;
+    width: 1.1rem;
+    height: 1.1rem;
+    color: var(--ink-2);
+  }
+  .chip--clear {
+    border-color: transparent;
+    background: none;
+    color: var(--link);
+    text-decoration: underline;
+  }
+
+  /* ---------- The table (wide: four columns) ---------- */
+  .tbl {
+    width: 100%;
+    table-layout: fixed;
+    border-collapse: separate;
+    border-spacing: 0;
+    font-variant-numeric: tabular-nums;
+    font-size: 0.9375rem;
+    line-height: 1.35;
+  }
+  .tbl thead th {
+    position: sticky;
+    top: 0;
+    z-index: 3;
+    padding: 0.5rem;
+    background: var(--ground);
+    border-bottom: 2px solid var(--ink);
+    font-size: 0.8125rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--ink-2);
+    text-align: left;
+    white-space: nowrap;
+  }
+  .tbl thead .h-sub {
+    font-weight: 400;
+  }
+  .tbl thead button {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    margin: -0.3rem -0.35rem;
+    padding: 0.3rem 0.35rem;
+    border: 0;
+    border-radius: 2px;
+    background: none;
+    color: inherit;
+    font: inherit;
+    letter-spacing: inherit;
+    text-transform: inherit;
+    cursor: pointer;
+  }
+  .tbl thead button:hover {
+    color: var(--ink);
+    background: var(--sunk);
+  }
+  .tbl thead .arrow {
+    width: 0.6rem;
+    height: 0.6rem;
+    background: currentColor;
+    opacity: 0.35;
+    clip-path: polygon(50% 0, 100% 40%, 0 40%, 0 60%, 100% 60%, 50% 100%);
+  }
+  .tbl thead th[aria-sort] > button:not(.h-alt),
+  .tbl thead button[data-active] {
+    color: var(--ink);
+  }
+  .tbl thead th[aria-sort='ascending'] > button:not(.h-alt) .arrow,
+  .tbl thead button[data-active='ascending'] .arrow {
+    opacity: 1;
+    clip-path: polygon(50% 15%, 100% 75%, 0 75%);
+  }
+  .tbl thead th[aria-sort='descending'] > button:not(.h-alt) .arrow,
+  .tbl thead button[data-active='descending'] .arrow {
+    opacity: 1;
+    clip-path: polygon(0 25%, 100% 25%, 50% 85%);
+  }
+  .h-route {
+    margin-right: 0.45rem;
+  }
+  .h-alt {
+    display: none !important;
+  }
+  .h-dl {
+    width: 15.5rem;
+  }
+  .h-amount {
+    width: 9.5rem;
+  }
+  .h-rc {
+    width: 10.75rem;
+  }
+
+  .row {
+    position: relative;
+  }
+  .row > td {
+    padding: 0.55rem 0.5rem;
+    vertical-align: top;
+    border-bottom: 1px solid color-mix(in oklch, var(--rule) 60%, transparent);
+  }
+  /* Quiet zebra over the rows that are showing. */
+  tbody > .row:nth-child(even of .row:not([hidden])) > td {
+    background: color-mix(in oklch, var(--sunk) 55%, transparent);
+  }
+  .row:hover > td,
+  .row:has(.name:focus-visible) > td {
+    background: var(--surface) !important;
+  }
+  .name {
+    display: block;
+    font-weight: 700;
+    color: var(--link);
+    text-decoration: none;
+    text-wrap: pretty;
+  }
+  /* The whole row opens the programme. */
+  .name::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+  }
+  .row:hover .name,
+  .name:focus-visible {
+    text-decoration: underline;
+    text-decoration-thickness: 2px;
+    text-underline-offset: 0.18em;
+  }
+  .name:focus-visible {
+    outline-offset: 1px;
+  }
+  .sub {
+    display: block;
+    min-width: 0;
+    margin-top: 0.1rem;
+    font-size: 0.9375rem;
+    line-height: 1.4;
+    color: var(--ink-2);
+  }
+  .sub__route {
+    display: none;
+    flex: none;
+    padding-left: 0.2rem;
+  }
+  .sub__route[data-route='intermediary'],
+  .sub__route[data-route='invitation_only'],
+  .route[data-route='intermediary'],
+  .route[data-route='invitation_only'] {
+    font-weight: 700;
+    color: var(--ink);
+  }
+  .kind {
+    display: block;
+    margin-top: 0.1rem;
+    font-size: 0.875rem;
+    font-weight: 700;
+    color: var(--aging-text);
+  }
+
+  .dl {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.2rem 0.5rem;
+  }
+  .dl .tape {
+    min-height: 1.35rem;
+    padding-block: 0;
+    font-size: 0.8125rem;
+  }
+  .dl__date {
+    font-weight: 600;
+    white-space: nowrap;
+  }
+  .dl__muted {
+    color: var(--ink-2);
+  }
+  .dl__left {
+    font-size: 0.875rem;
+    font-weight: 700;
+    white-space: nowrap;
+  }
+  .dl__left[data-soon] {
+    padding: 0 0.3rem;
+    border-radius: 2px;
+    background: var(--aging);
+    color: var(--aging-ink);
+  }
+  .dl__words {
+    display: block;
+    margin-top: 0.2rem;
+    font-size: 0.9375rem;
+    line-height: 1.35;
+    color: var(--ink-2);
+    overflow-wrap: anywhere;
+  }
+  .amt {
+    display: block;
+    font-size: 0.875rem;
+    font-weight: 600;
+  }
+  .amt--none {
+    font-weight: 400;
+    color: var(--ink-2);
+  }
+  .amt__note {
+    display: block;
+    margin-top: 0.1rem;
+    font-size: 0.8125rem;
+    line-height: 1.3;
+    color: var(--ink-2);
+  }
+  .route {
+    display: block;
+    font-size: 0.875rem;
+    color: var(--ink-2);
+  }
+  .c-rc,
+  .c-amount {
+    position: relative;
+    z-index: 2;
+  }
+  .stamp--main {
+    margin-top: 0.25rem;
+  }
+  .stamp--mid {
+    display: none;
+  }
+
+  /* The next seven days and after, while the table is sorted by deadline. */
+  .divider td {
+    padding: 0.3rem 0.5rem;
+    border-bottom: 1px dashed var(--rule-strong);
+    font-size: 0.8125rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--ink-2);
+  }
+  .divider--soon td {
+    color: var(--aging-text);
+  }
+  .divider--later td {
+    border-top: 1.5px dashed var(--rule-strong);
+    border-bottom: 0;
+  }
+
+  /* Not open now: secondary rows under their own header. */
+  .later-head th {
+    padding: 1.5rem 0.5rem 0.5rem;
+    border-bottom: 2px solid var(--rule-strong);
+    text-align: left;
+    font-weight: 400;
+  }
+  .later-head__title {
+    font-weight: 800;
+    font-size: 1rem;
+  }
+  .later-head__hint {
+    margin-inline: 0.5rem 0.75rem;
+    font-size: 0.875rem;
+    color: var(--ink-2);
+  }
+  .later-head .linkish {
+    font-size: 0.875rem;
+  }
+  .later-rows .name {
+    font-weight: 600;
+    color: color-mix(in oklch, var(--link) 75%, var(--ink-2));
+  }
+  .later-rows .amt {
+    font-weight: 400;
+    color: var(--ink-2);
+  }
+  .later-rows .row > td {
+    background: none !important;
+  }
+
+  /* ---------- Mid width (about 640 to 830px of table): three columns ---------- */
+  @container tbl (max-width: 51.99rem) {
+    /* Keep the fourth column at zero width: the colspan rows still count it. */
+    .h-rc,
+    .c-rc {
+      width: 0;
+      padding: 0 !important;
+      border: 0;
+      overflow: hidden;
+      visibility: hidden;
+    }
+    .h-alt {
+      display: inline-flex !important;
+      margin-left: 0.6rem !important;
+    }
+    .h-dl {
+      width: 13rem;
+    }
+    .h-amount {
+      width: 10.75rem;
+    }
+    .sub__route {
+      display: block;
+      padding-left: 0;
+      font-size: 0.875rem;
+    }
+    .sub__route > [aria-hidden] {
+      display: none;
+    }
+    .stamp--mid {
+      display: inline-flex;
+      margin-top: 0.3rem;
+    }
+  }
+
+  /* ---------- Phone: dense rows, in reading order ---------- */
+  @container tbl (max-width: 39.99rem) {
+    .tbl,
+    .tbl tbody {
+      display: block;
+    }
+    /* Sorting lives in the filter sheet on phones, so the header leaves the tab order too. */
+    .tbl thead {
+      display: none;
+    }
+    .tbl {
+      border-top: 2px solid var(--ink);
+    }
+    .row {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      grid-template-areas:
+        'name name'
+        'sub sub'
+        'kind kind'
+        'dl dl'
+        'words words'
+        'quote quote'
+        'amount stamp';
+      align-items: center;
+      column-gap: 0.75rem;
+      padding: 0.65rem 0.5rem 0.7rem;
+      border-bottom: 1px solid var(--rule);
+    }
+    .row > td {
+      padding: 0;
+      border: 0;
+      background: none !important;
+    }
+    tbody > .row:nth-child(even of .row:not([hidden])) {
+      background: color-mix(in oklch, var(--sunk) 55%, transparent);
+    }
+    .row:hover {
+      background: var(--surface);
+    }
+    .c-prog,
+    .c-dl,
+    .c-rc {
+      display: contents;
+    }
+    .c-rc {
+      visibility: visible;
+    }
+    .name {
+      grid-area: name;
+      font-size: 1.0625rem;
+      line-height: 1.3;
+    }
+    .sub {
+      grid-area: sub;
+      margin-top: 0.15rem;
+    }
+    .sub__route {
+      display: block;
+      padding-left: 0;
+      font-size: 0.875rem;
+    }
+    .sub__route > [aria-hidden] {
+      display: none;
+    }
+    .kind {
+      grid-area: kind;
+    }
+    .dl {
+      grid-area: dl;
+      margin-top: 0.4rem;
+      font-size: 0.9375rem;
+    }
+    .dl .tape {
+      min-height: 1.25rem;
+      padding: 0 0.75rem 0 0.4rem;
+      font-size: 0.8125rem;
+    }
+    .dl .tape[data-state='none'] {
+      padding-right: 0.4rem;
+    }
+    /* Our summary of a window and the funder's quote can both show: each gets its own row. */
+    .dl__words.dl__words--quote {
+      grid-area: quote;
+    }
+    .dl__words {
+      grid-area: words;
+      margin-top: 0.2rem;
+      white-space: normal;
+      line-height: 1.35;
+    }
+    .c-amount {
+      grid-area: amount;
+      margin-top: 0.35rem;
+    }
+    .amt {
+      font-size: 0.9375rem;
+    }
+    .stamp--mid,
+    .route {
+      display: none;
+    }
+    .stamp--main {
+      grid-area: stamp;
+      align-self: start;
+      margin-top: 0.45rem;
+    }
+    .divider {
+      display: block;
+    }
+    .divider td {
+      display: block;
+      padding-inline: 0.5rem;
+    }
+    .later-head,
+    .later-head tr,
+    .later-head th {
+      display: block;
+    }
+    .later-head th {
+      padding-inline: 0;
+    }
+    .later-head__hint {
+      display: block;
+      margin: 0.1rem 0 0;
+    }
+    .later-rows .row {
+      background: none !important;
+    }
+  }
+}

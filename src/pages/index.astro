@@ -1,6 +1,13 @@
 ---
 import Base from '../layouts/Base.astro'
 import Row from '../components/FinderRow.astro'
+import { Badge } from '@/components/ui/badge'
+import { Button } from '@/components/ui/button'
+import { Input } from '@/components/ui/input'
+import { Label } from '@/components/ui/label'
+import { NativeSelect } from '@/components/ui/native-select'
+import { Table, TableBody, TableCaption, TableHead, TableHeader, TableRow } from '@/components/ui/table'
+import '../styles/finder.css'
 import { listings, sortListings, stats } from '../lib/data'
 import { countriesByRegion } from '../lib/geo'
 import { longDate } from '../lib/format'
@@ -17,6 +24,24 @@ const usedApproaches = Object.entries(approachLabels).filter(([k]) => listings.s
 const usedApplicants = Object.entries(applicantLabels).filter(([k]) => listings.some((l) => l.p.applicant_types?.includes(k as never)))
 const states: State[] = ['open', 'rolling', 'upcoming', 'none', 'closed']
 const routes = (['direct', 'intermediary', 'invitation_only'] as const).map((k) => [k, accessLabels[k]])
+const num = 'font-mono tabular-nums'
+const skipLink = 'absolute -top-16 left-4 z-10 rounded-md bg-surface px-3.5 py-2 text-ink focus:top-3'
+// A filter group folds; its count shows how many of its filters are on.
+const group = 'group/grp border-b border-rule'
+const groupTitle =
+  "flex min-h-10 cursor-pointer list-none items-center gap-2 py-1 text-xs font-bold tracking-[0.04em] text-ink-2 uppercase hover:text-ink after:ml-auto after:size-[0.4rem] after:border-r-[1.75px] after:border-b-[1.75px] after:border-current after:content-[''] after:[transform:translateY(-20%)_rotate(45deg)] group-open/grp:after:[transform:translateY(20%)_rotate(-135deg)] [&::-webkit-details-marker]:hidden"
+const groupCount = 'px-[0.35rem] tracking-normal'
+const groupHint = 'mt-[0.3rem] text-xs leading-[1.4] text-ink-2'
+const opt =
+  'group/opt flex min-h-[1.9rem] cursor-pointer items-center gap-2 text-sm leading-[1.3] has-disabled:cursor-default has-disabled:text-ink-2 max-xl:min-h-10 max-xl:text-md'
+const optInput = 'm-0 size-4 flex-none accent-shell dark:accent-tape-open'
+// .opt__text is what src/lib/finder.ts reads; the class carries no style.
+const optText = 'opt__text flex-1 underline-offset-[0.18em] group-[:hover:not(:has(input:disabled))]/opt:underline'
+const optN = 'font-mono text-xs text-ink-2 tabular-nums'
+// The quick filters in the results summary: underlined counts that switch a filter on.
+const quick =
+  'inline-block min-h-7 cursor-pointer rounded-sm px-[0.35rem] py-[0.2rem] leading-[1.35rem] whitespace-nowrap underline decoration-rule-strong decoration-1 underline-offset-[0.25em] hover:decoration-current disabled:cursor-default disabled:text-ink-2 disabled:no-underline aria-pressed:no-underline @max-[40rem]/tbl:px-[0.3rem]'
+const quickOn = 'text-ink aria-pressed:bg-tape-open aria-pressed:text-tape-ink'
 const description =
   'A free directory of funding for nature restoration and conservation. Every deadline, amount and eligibility rule links to the funder’s own page, with the words it rests on and the date we read it.'
 
@@ -56,79 +81,97 @@ const jsonLd = [
   nav="finder"
   jsonLd={jsonLd}
 >
-  <div slot="band" class="wrap band">
-    <h1 class="band__title">Funding for nature restoration and conservation, checked against each funder’s own page.</h1>
-    <p class="band__lede">
-      <span class="band__more">Every deadline, amount and eligibility rule links to the funder’s own page, with the words it rests on and the date we read it.</span>{' '}
+  <div slot="band" class="wrap pt-2 pb-[1.1rem] max-md:pt-0 max-md:pb-3">
+    <h1 class="max-w-[40ch] text-[clamp(1.1875rem,0.95rem+1vw,1.75rem)] leading-[1.15] font-extrabold tracking-[-0.015em]">Funding for nature restoration and conservation, checked against each funder’s own page.</h1>
+    <p class="mt-[0.4rem] max-w-[75ch] text-md text-shell-ink-2 max-md:text-sm max-md:leading-[1.4]">
+      <span class="max-md:hidden">Every deadline, amount and eligibility rule links to the funder’s own page, with the words it rests on and the date we read it.</span>{' '}
       Free, with no paid listings or paid ranking. Built openly by Restoration Scope.
     </p>
-    <p class="band__stats">
-      <span><strong class="mono">{stats.open}</strong> open now, <strong class="mono">{stats.rolling}</strong> open any time</span>
-      <span><strong class="mono">{stats.programmes}</strong> programmes listed</span>
+    <p class="mt-[0.6rem] flex flex-wrap gap-x-6 gap-y-1 text-sm text-shell-ink-2 max-md:hidden [&_strong]:text-shell-ink">
+      <span><strong class={num}>{stats.open}</strong> open now, <strong class={num}>{stats.rolling}</strong> open any time</span>
+      <span><strong class={num}>{stats.programmes}</strong> programmes listed</span>
       {stats.lastChecked && <span>Last checked {longDate(stats.lastChecked)}</span>}
     </p>
   </div>
 
-  <div class="wrap finder">
-    <a class="skip" href="#results">Skip to results</a>
-    <form class="side" role="search" aria-label="Search and filter funding" data-form>
-      <div class="side__search">
-        <label class="side__label" for="q">Search</label>
-        <input id="q" name="q" type="search" placeholder="Search funder or place" autocomplete="off" />
-        <button type="button" class="sheet-open" data-sheet-open aria-controls="filters" aria-expanded="false">
+  <div class="wrap mt-3 grid grid-cols-[minmax(0,1fr)] gap-3 xl:mt-5 xl:grid-cols-[14rem_minmax(0,1fr)] xl:gap-7">
+    <a class={skipLink} href="#results">Skip to results</a>
+    {/* Wide screens: the filters ride in a sticky column. Phones and tablets: they open in a sheet. */}
+    <form
+      class="xl:sticky xl:top-0 xl:max-h-dvh xl:self-start xl:overflow-y-auto xl:pt-1 xl:pr-1 xl:pb-6 xl:[scrollbar-width:thin]"
+      role="search"
+      aria-label="Search and filter funding"
+      data-form
+    >
+      <div class="grid grid-cols-[minmax(0,1fr)_auto] gap-2 xl:grid-cols-[minmax(0,1fr)] xl:pt-2">
+        <Label htmlFor="q" className="col-span-full mb-[0.3rem] max-xl:sr-only">Search</Label>
+        <Input id="q" name="q" type="search" placeholder="Search funder or place" autoComplete="off" />
+        <button
+          type="button"
+          class="inline-flex min-h-10 cursor-pointer items-center gap-[0.4rem] rounded-md border-[1.5px] border-input bg-surface px-[0.8rem] text-md font-bold text-ink xl:hidden!"
+          data-sheet-open
+          aria-controls="filters"
+          aria-expanded="false"
+        >
           <svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M2 4h12M4.5 8h7M7 12h2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" /></svg>
-          Filters <span class="badge mono" data-filter-count hidden></span>
+          Filters <Badge variant="count" data-filter-count="" hidden />
         </button>
       </div>
 
-      <div class="backdrop" data-backdrop hidden></div>
-      <div class="sheet" id="filters" data-sheet aria-label="Filters">
-        <div class="sheet__head">
-          <h2 class="sheet__title">Filters</h2>
-          <button type="button" class="sheet__close" data-sheet-close aria-label="Close filters">
+      <div class="fixed inset-0 z-29 bg-backdrop xl:hidden!" data-backdrop hidden></div>
+      <div
+        class="max-xl:fixed max-xl:inset-x-0 max-xl:bottom-0 max-xl:z-30 max-xl:flex max-xl:max-h-[min(88dvh,44rem)] max-xl:flex-col max-xl:rounded-t-xl max-xl:bg-ground max-xl:shadow-[0_-8px_32px_rgb(0_0_0/0.3)] max-xl:not-data-open:hidden xl:mt-3"
+        id="filters"
+        data-sheet
+        aria-label="Filters"
+      >
+        <div class="flex items-center justify-between border-b border-rule pt-[0.6rem] pr-2 pb-[0.4rem] pl-4 xl:hidden!">
+          <h2 class="text-lg font-bold">Filters</h2>
+          <button type="button" class="grid size-11 cursor-pointer place-items-center text-ink" data-sheet-close aria-label="Close filters">
             <svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><path d="M2 2l10 10M12 2L2 12" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" /></svg>
           </button>
         </div>
 
-        <div class="sheet__body">
-          <div class="grp grp--sort">
-            <label class="grp__label" for="sort">Sort by</label>
-            <select id="sort" data-sort-select>
+        <div class="max-xl:flex-1 max-xl:overflow-y-auto max-xl:overscroll-contain max-xl:px-4">
+          {/* Sorting sits in the sheet on phones and tablets; wide screens sort from the table header. */}
+          <div class="border-b border-rule py-3 xl:hidden">
+            <Label htmlFor="sort" className="mb-[0.3rem]">Sort by</Label>
+            <NativeSelect id="sort" data-sort-select="">
               <option value="deadline">Soonest deadline</option>
               <option value="amount">Largest amount</option>
               <option value="checked">Recently checked</option>
-            </select>
+            </NativeSelect>
           </div>
-          <details class="grp" open data-group="status">
-            <summary><span>Status</span><span class="grp__n mono" data-gcount="status" hidden></span></summary>
-            <div class="grp__body">
+          <details class={group} open data-group="status">
+            <summary class={groupTitle}><span>Status</span><Badge variant="count" className={groupCount} data-gcount="status" hidden /></summary>
+            <div class="pb-[0.6rem]">
               {
                 states.map((s) => (
-                  <label class="opt">
-                    <input type="checkbox" name="status" value={s} />
-                    <span class="opt__text">{stateFilterLabels[s]}</span>
-                    <span class="opt__n mono" data-n={`status:${s}`}>{count(s)}</span>
+                  <label class={opt}>
+                    <input class={optInput} type="checkbox" name="status" value={s} />
+                    <span class={optText}>{stateFilterLabels[s]}</span>
+                    <span class={optN} data-n={`status:${s}`}>{count(s)}</span>
                   </label>
                 ))
               }
             </div>
           </details>
 
-          <details class="grp" open data-group="within">
-            <summary><span>Deadline</span><span class="grp__n mono" data-gcount="within" hidden></span></summary>
-            <div class="grp__body">
-              <label class="opt"><input type="radio" name="within" value="" checked /><span class="opt__text">Any time</span></label>
-              <label class="opt"><input type="radio" name="within" value="7" /><span class="opt__text">Closes within 7 days</span></label>
-              <label class="opt"><input type="radio" name="within" value="30" /><span class="opt__text">Within 30 days</span></label>
-              <label class="opt"><input type="radio" name="within" value="90" /><span class="opt__text">Within 90 days</span></label>
+          <details class={group} open data-group="within">
+            <summary class={groupTitle}><span>Deadline</span><Badge variant="count" className={groupCount} data-gcount="within" hidden /></summary>
+            <div class="pb-[0.6rem]">
+              <label class={opt}><input class={optInput} type="radio" name="within" value="" checked /><span class={optText}>Any time</span></label>
+              <label class={opt}><input class={optInput} type="radio" name="within" value="7" /><span class={optText}>Closes within 7 days</span></label>
+              <label class={opt}><input class={optInput} type="radio" name="within" value="30" /><span class={optText}>Within 30 days</span></label>
+              <label class={opt}><input class={optInput} type="radio" name="within" value="90" /><span class={optText}>Within 90 days</span></label>
             </div>
           </details>
 
-          <details class="grp" open data-group="where">
-            <summary><span>Where the project is</span><span class="grp__n mono" data-gcount="where" hidden></span></summary>
-            <div class="grp__body">
-              <label class="visually-hidden" for="where">Where the project is</label>
-              <select id="where" name="where">
+          <details class={group} open data-group="where">
+            <summary class={groupTitle}><span>Where the project is</span><Badge variant="count" className={groupCount} data-gcount="where" hidden /></summary>
+            <div class="pb-[0.6rem]">
+              <label class="sr-only" for="where">Where the project is</label>
+              <NativeSelect id="where" name="where">
                 <option value="">Anywhere</option>
                 <optgroup label="Regions">
                   {countriesByRegion.map((r) => <option value={`r:${r.region}`}>{r.label}</option>)}
@@ -142,66 +185,66 @@ const jsonLd = [
                     </optgroup>
                   ))
                 }
-              </select>
-              <p class="grp__hint">Programmes that may fund there, worldwide ones included. Each call sets its own countries.</p>
+              </NativeSelect>
+              <p class={groupHint}>Programmes that may fund there, worldwide ones included. Each call sets its own countries.</p>
             </div>
           </details>
 
-          <details class="grp" open data-group="access">
-            <summary><span>How to apply</span><span class="grp__n mono" data-gcount="access" hidden></span></summary>
-            <div class="grp__body">
+          <details class={group} open data-group="access">
+            <summary class={groupTitle}><span>How to apply</span><Badge variant="count" className={groupCount} data-gcount="access" hidden /></summary>
+            <div class="pb-[0.6rem]">
               {
                 routes.map(([k, label]) => (
-                  <label class="opt">
-                    <input type="checkbox" name="access" value={k} />
-                    <span class="opt__text">{label}</span>
-                    <span class="opt__n mono" data-n={`access:${k}`} />
+                  <label class={opt}>
+                    <input class={optInput} type="checkbox" name="access" value={k} />
+                    <span class={optText}>{label}</span>
+                    <span class={optN} data-n={`access:${k}`} />
                   </label>
                 ))
               }
             </div>
           </details>
 
-          <details class="grp" data-group="size">
-            <summary><span>Grant size</span><span class="grp__n mono" data-gcount="size" hidden></span></summary>
-            <div class="grp__body">
+          <details class={group} data-group="size">
+            <summary class={groupTitle}><span>Grant size</span><Badge variant="count" className={groupCount} data-gcount="size" hidden /></summary>
+            <div class="pb-[0.6rem]">
               {
                 Object.entries(sizeBuckets).map(([k, b]) => (
-                  <label class="opt">
-                    <input type="checkbox" name="size" value={k} />
-                    <span class="opt__text">{b.label}</span>
-                    <span class="opt__n mono" data-n={`size:${k}`} />
+                  <label class={opt}>
+                    <input class={optInput} type="checkbox" name="size" value={k} />
+                    <span class={optText}>{b.label}</span>
+                    <span class={optN} data-n={`size:${k}`} />
                   </label>
                 ))
               }
-              <p class="grp__hint">Converted roughly to US dollars, only for this filter.</p>
+              <p class={groupHint}>Converted roughly to US dollars, only for this filter.</p>
             </div>
           </details>
 
-          <details class="grp" data-group="applicant">
-            <summary><span>Who can apply</span><span class="grp__n mono" data-gcount="applicant" hidden></span></summary>
-            <div class="grp__body">
+          <details class={group} data-group="applicant">
+            <summary class={groupTitle}><span>Who can apply</span><Badge variant="count" className={groupCount} data-gcount="applicant" hidden /></summary>
+            <div class="pb-[0.6rem]">
               {
                 usedApplicants.map(([k, label]) => (
-                  <label class="opt">
-                    <input type="checkbox" name="applicant" value={k} />
-                    <span class="opt__text">{label}</span>
-                    <span class="opt__n mono" data-n={`applicant:${k}`} />
+                  <label class={opt}>
+                    <input class={optInput} type="checkbox" name="applicant" value={k} />
+                    <span class={optText}>{label}</span>
+                    <span class={optN} data-n={`applicant:${k}`} />
                   </label>
                 ))
               }
             </div>
           </details>
 
-          <details class="grp" data-group="approach">
-            <summary><span>Approach</span><span class="grp__n mono" data-gcount="approach" hidden></span></summary>
-            <div class="grp__body">
+          <details class={group} data-group="approach">
+            <summary class={groupTitle}><span>Approach</span><Badge variant="count" className={groupCount} data-gcount="approach" hidden /></summary>
+            <div class="pb-[0.6rem]">
               {
                 usedApproaches.map(([k, label]) => (
-                  <label class="opt">
-                    <input type="checkbox" name="approach" value={k} />
-                    <span class="opt__text">{label}</span>
-                    <span class="opt__n mono" data-n={`approach:${k}`} />
+                  <label class={opt}>
+                    <input class={optInput} type="checkbox" name="approach" value={k} />
+                    <span class={optText}>{label}</span>
+                    <span class={optN} data-n={`approach:${k}`} />
                   </label>
                 ))
               }
@@ -209,78 +252,100 @@ const jsonLd = [
           </details>
         </div>
 
-        <div class="sheet__foot">
-          <button type="button" class="sheet__clear" data-reset>Clear all</button>
-          <button type="button" class="button sheet__done" data-sheet-done>Show {sorted.length} results</button>
+        <div class="flex items-center gap-3 border-t border-rule bg-surface px-4 pt-[0.65rem] pb-[calc(0.65rem+env(safe-area-inset-bottom))] xl:hidden!">
+          <button type="button" class="min-h-11 cursor-pointer px-2 text-link underline underline-offset-[0.18em]" data-reset>Clear all</button>
+          <Button className="flex-1" data-sheet-done="">Show {sorted.length} results</Button>
         </div>
       </div>
     </form>
 
-    <section class="results" id="results" tabindex="-1" aria-labelledby="summary">
-      <div class="bar">
-        <h2 id="summary" class="summary" data-summary>
-          <button type="button" class="q" data-quick="status:open" aria-pressed="false"><b class="mono" data-qn="open">{count('open')}</b> <span data-ql="open">open now</span></button>
-          <button type="button" class="q q--soon" data-quick="within:7" aria-pressed="false"><b class="mono" data-qn="soon">0</b> closing within 7 days</button>
-          <button type="button" class="q" data-quick="status:rolling" aria-pressed="false"><b class="mono" data-qn="rolling">{count('rolling')}</b> rolling</button>
-          <button type="button" class="q" data-quick="status:upcoming" aria-pressed="false"><b class="mono" data-qn="upcoming">{count('upcoming')}</b> upcoming</button>
-          <button type="button" class="q q--later" data-later-toggle aria-pressed="false" aria-controls="later-head later-rows">
-            <span class="q--later__icon" aria-hidden="true"></span><span data-later-verb>Show</span> <b class="mono" data-qn="later">{later.length}</b> not open now
+    {/* The results are a container: the summary, the bar and the table reflow by their own width. */}
+    <section class="results @container/tbl min-w-0" id="results" tabindex="-1" aria-labelledby="summary">
+      <div class="flex flex-wrap items-center justify-between gap-x-4 gap-y-[0.35rem] pb-[0.6rem] @max-[40rem]/tbl:gap-y-[0.15rem] @max-[40rem]/tbl:pb-[0.4rem]">
+        {/* The summary is the quick filter. */}
+        <h2
+          id="summary"
+          class="-ml-[0.35rem] flex flex-wrap items-center gap-x-[0.4rem] gap-y-[0.3rem] text-base leading-[1.3] font-normal [text-wrap:initial] @max-[40rem]/tbl:gap-x-[0.1rem] @max-[40rem]/tbl:gap-y-0 @max-[40rem]/tbl:text-md"
+          data-summary
+        >
+          <button type="button" class:list={[quick, quickOn]} data-quick="status:open" aria-pressed="false"><b class={num} data-qn="open">{count('open')}</b> <span data-ql="open">open now</span></button>
+          <button type="button" class:list={[quick, 'text-ink aria-pressed:bg-aging aria-pressed:text-tape-ink [&_b]:text-aging-text aria-pressed:[&_b]:text-inherit']} data-quick="within:7" aria-pressed="false"><b class={num} data-qn="soon">0</b> closing within 7 days</button>
+          <button type="button" class:list={[quick, quickOn]} data-quick="status:rolling" aria-pressed="false"><b class={num} data-qn="rolling">{count('rolling')}</b> rolling</button>
+          <button type="button" class:list={[quick, quickOn]} data-quick="status:upcoming" aria-pressed="false"><b class={num} data-qn="upcoming">{count('upcoming')}</b> upcoming</button>
+          <button
+            type="button"
+            class:list={[quick, 'group/later text-ink-2 aria-pressed:bg-sunk aria-pressed:text-ink aria-pressed:shadow-[inset_0_0_0_1px_var(--rule-strong)]']}
+            data-later-toggle
+            aria-pressed="false"
+            aria-controls="later-head later-rows"
+          >
+            <span
+              class="mr-[0.4rem] ml-[0.1rem] inline-block size-[0.4rem] border-r-[1.75px] border-b-[1.75px] border-current [transform:translateY(-0.12em)_rotate(45deg)] group-aria-pressed/later:[transform:translateY(0.12em)_rotate(-135deg)]"
+              aria-hidden="true"
+            ></span><span data-later-verb>Show</span> <b class={num} data-qn="later">{later.length}</b> not open now
           </button>
         </h2>
-        <p class="bar__side">
-          <span class="bar__shown" data-shown>{now.length} of {sorted.length} shown</span>
-          <span class="bar__sort" data-sort-line>Open calls first, soonest deadline first</span>
+        <p class="ml-auto flex flex-wrap items-baseline gap-x-3 text-sm text-ink-2 @max-[40rem]/tbl:ml-0">
+          <span class="whitespace-nowrap text-ink" data-shown>{now.length} of {sorted.length} shown</span>
+          <span data-sort-line>Open calls first, soonest deadline first</span>
         </p>
       </div>
-      <p class="visually-hidden" aria-live="polite" data-live></p>
-      <div class="chips" data-chips hidden></div>
+      <p class="sr-only" aria-live="polite" data-live></p>
+      <div class="flex flex-wrap gap-[0.35rem] pb-[0.6rem]" data-chips hidden></div>
 
-      <table class="tbl">
-        <caption class="visually-hidden">Funding programmes. Sortable by deadline, amount and date checked.</caption>
-        <thead>
-          <tr>
-            <th scope="col" class="h-prog">Programme <span class="h-sub">and funder</span></th>
-            <th scope="col" class="h-dl" aria-sort="ascending" data-col="deadline">
+      <Table className="tbl">
+        <TableCaption className="sr-only">Funding programmes. Sortable by deadline, amount and date checked.</TableCaption>
+        <TableHeader>
+          <TableRow>
+            <TableHead scope="col" className="h-prog">Programme <span class="h-sub">and funder</span></TableHead>
+            <TableHead scope="col" className="h-dl" aria-sort="ascending" data-col="deadline">
               <button type="button" data-sort="deadline">Status and deadline <span class="arrow" aria-hidden="true"></span></button>
-            </th>
-            <th scope="col" class="h-amount" data-col="amount">
+            </TableHead>
+            <TableHead scope="col" className="h-amount" data-col="amount">
               <button type="button" data-sort="amount">Amount <span class="arrow" aria-hidden="true"></span></button>
               <button type="button" class="h-alt" data-sort="checked" data-alt-for="checked">Checked <span class="arrow" aria-hidden="true"></span></button>
-            </th>
-            <th scope="col" class="h-rc" data-col="checked">
+            </TableHead>
+            <TableHead scope="col" className="h-rc" data-col="checked">
               <span class="h-route">Route ·</span>
               <button type="button" data-sort="checked">Checked <span class="arrow" aria-hidden="true"></span></button>
-            </th>
-          </tr>
-        </thead>
-        <tbody data-list>
+            </TableHead>
+          </TableRow>
+        </TableHeader>
+        <TableBody data-list="">
           {now.map((l) => <Row listing={l} />)}
-        </tbody>
-        <tbody class="later-head" id="later-head" data-later-head hidden>
-          <tr>
-            <th colspan="4" scope="colgroup">
+        </TableBody>
+        <TableBody className="later-head" id="later-head" data-later-head="" hidden>
+          <TableRow>
+            <TableHead colSpan={4} scope="colgroup">
               <span class="later-head__title">Not open now</span>
               <span class="later-head__hint">No call found, or closed. Listed so you can plan ahead.</span>
               <button type="button" class="linkish" data-later-hide>Hide</button>
-            </th>
-          </tr>
-        </tbody>
-        <tbody class="later-rows" id="later-rows" data-list-later hidden>
+            </TableHead>
+          </TableRow>
+        </TableBody>
+        <TableBody className="later-rows" id="later-rows" data-list-later="" hidden>
           {later.map((l) => <Row listing={l} />)}
-        </tbody>
-      </table>
+        </TableBody>
+      </Table>
 
-      <button type="button" class="endfold" data-later-toggle data-endfold aria-controls="later-head later-rows" aria-pressed="false">
-        <span class="endfold__title">Not open now</span>
-        <span class="endfold__action">Show all <b class="mono" data-qn-end>{later.length}</b></span>
+      <button
+        type="button"
+        class="mt-5 flex min-h-12 w-full cursor-pointer flex-wrap items-center justify-between gap-x-4 gap-y-1 rounded-md border-[1.5px] border-input bg-surface px-[0.9rem] py-[0.6rem] text-left text-ink hover:border-ink"
+        data-later-toggle
+        data-endfold
+        aria-controls="later-head later-rows"
+        aria-pressed="false"
+      >
+        <span class="font-extrabold">Not open now</span>
+        <span class="font-bold text-link underline underline-offset-[0.18em]">Show all <b class={num} data-qn-end>{later.length}</b></span>
       </button>
 
-      <div class="empty" data-empty hidden>
-        <h3 data-empty-head>Nothing matches.</h3>
-        <p data-empty-text>Try another search, remove a filter, or <button type="button" class="linkish" data-reset>clear all</button>.</p>
+      <div class="px-2 py-8" data-empty hidden>
+        <h3 class="text-xl font-bold" data-empty-head>Nothing matches.</h3>
+        <p class="mt-[0.4rem] text-ink-2" data-empty-text>Try another search, remove a filter, or <button type="button" class="linkish" data-reset>clear all</button>.</p>
       </div>
       <noscript>
-        <p class="noscript">Filters and sorting need JavaScript. Calls open now are listed above, soonest deadline first.</p>
+        <p class="pt-4 text-ink-2">Filters and sorting need JavaScript. Calls open now are listed above, soonest deadline first.</p>
       </noscript>
     </section>
   </div>
@@ -290,987 +355,3 @@ const jsonLd = [
   import { initTableFinder } from '../lib/finder'
   initTableFinder()
 </script>
-
-
-<style>
-  .band {
-    padding-block: 0.5rem 1.1rem;
-  }
-  .band__title {
-    max-width: 40ch;
-    font-size: clamp(1.1875rem, 0.95rem + 1vw, 1.75rem);
-    font-weight: 800;
-    letter-spacing: -0.015em;
-    line-height: 1.15;
-  }
-  .band__lede {
-    max-width: 75ch;
-    margin-top: 0.4rem;
-    color: var(--shell-ink-2);
-    font-size: 0.9375rem;
-  }
-  .band__stats {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.25rem 1.5rem;
-    margin-top: 0.6rem;
-    font-size: 0.875rem;
-    color: var(--shell-ink-2);
-  }
-  .band__stats strong {
-    color: var(--shell-ink);
-  }
-  @media (max-width: 47.99rem) {
-    .band {
-      padding-block: 0 0.75rem;
-    }
-    .band__more,
-    .band__stats {
-      display: none;
-    }
-    .band__lede {
-      font-size: 0.875rem;
-      line-height: 1.4;
-    }
-  }
-
-  .finder {
-    display: grid;
-    grid-template-columns: minmax(0, 1fr);
-    gap: 0.75rem;
-    margin-top: 0.75rem;
-  }
-  @media (min-width: 68rem) {
-    .finder {
-      grid-template-columns: 14rem minmax(0, 1fr);
-      gap: 1.75rem;
-      margin-top: 1.25rem;
-    }
-  }
-
-  /* ---------- Side: search and filters ---------- */
-  .side__label {
-    display: block;
-    margin-bottom: 0.3rem;
-    font-size: 0.8125rem;
-    font-weight: 700;
-    letter-spacing: 0.04em;
-    text-transform: uppercase;
-    color: var(--ink-2);
-  }
-  .side__search {
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) auto;
-    gap: 0.5rem;
-  }
-  .side__search .side__label {
-    grid-column: 1 / -1;
-  }
-  input[type='search'],
-  select {
-    width: 100%;
-    min-height: 2.5rem;
-    padding: 0.4rem 0.65rem;
-    border: 1.5px solid var(--control-edge);
-    border-radius: var(--radius);
-    background: var(--surface);
-    color: var(--ink);
-    font: inherit;
-    font-size: 1rem;
-  }
-  input[type='search']::placeholder {
-    color: var(--ink-2);
-    opacity: 1;
-  }
-  input[type='search']:focus-visible,
-  select:focus-visible {
-    border-color: var(--focus);
-    outline-offset: 0;
-  }
-  .sheet-open {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.4rem;
-    min-height: 2.5rem;
-    padding: 0 0.8rem;
-    border: 1.5px solid var(--control-edge);
-    border-radius: var(--radius);
-    background: var(--surface);
-    color: var(--ink);
-    font: inherit;
-    font-weight: 700;
-    font-size: 0.9375rem;
-    cursor: pointer;
-  }
-  .badge {
-    padding: 0 0.4rem;
-    border-radius: 2px;
-    background: var(--tape-open);
-    color: var(--tape-ink);
-    font-size: 0.8125rem;
-  }
-
-  @media (max-width: 67.99rem) {
-    .side__label {
-      position: absolute;
-      width: 1px;
-      height: 1px;
-      overflow: hidden;
-      clip: rect(0 0 0 0);
-    }
-    /* Phones and tablets: filters open in a sheet from the bottom, over the results. */
-    .sheet {
-      position: fixed;
-      inset: auto 0 0 0;
-      z-index: 30;
-      display: none;
-      flex-direction: column;
-      max-height: min(88dvh, 44rem);
-      background: var(--ground);
-      border-radius: 10px 10px 0 0;
-      box-shadow: 0 -8px 32px oklch(0 0 0 / 0.3);
-    }
-    .sheet[data-open] {
-      display: flex;
-    }
-    .backdrop {
-      position: fixed;
-      inset: 0;
-      z-index: 29;
-      background: oklch(0.15 0.02 190 / 0.55);
-    }
-    .sheet__head {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 0.6rem 0.5rem 0.4rem 1rem;
-      border-bottom: 1px solid var(--rule);
-    }
-    .sheet__title {
-      font-size: 1.0625rem;
-    }
-    .sheet__close {
-      display: grid;
-      place-items: center;
-      width: 2.75rem;
-      height: 2.75rem;
-      border: 0;
-      background: none;
-      color: var(--ink);
-      cursor: pointer;
-    }
-    .sheet__body {
-      flex: 1;
-      overflow-y: auto;
-      overscroll-behavior: contain;
-      padding: 0 1rem;
-    }
-    .sheet__foot {
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
-      padding: 0.65rem 1rem calc(0.65rem + env(safe-area-inset-bottom));
-      border-top: 1px solid var(--rule);
-      background: var(--surface);
-    }
-    .sheet__done {
-      flex: 1;
-    }
-    .sheet__clear {
-      min-height: 2.75rem;
-      padding: 0 0.5rem;
-      border: 0;
-      background: none;
-      color: var(--link);
-      font: inherit;
-      text-decoration: underline;
-      text-underline-offset: 0.18em;
-      cursor: pointer;
-    }
-  }
-  @media (min-width: 68rem) {
-    .side {
-      position: sticky;
-      top: 0;
-      align-self: start;
-      max-height: 100dvh;
-      overflow-y: auto;
-      padding: 0.25rem 0.25rem 1.5rem 0;
-      scrollbar-width: thin;
-    }
-    .side__search {
-      grid-template-columns: minmax(0, 1fr);
-      padding-top: 0.5rem;
-    }
-    .sheet-open,
-    .sheet__head,
-    .sheet__foot,
-    .backdrop {
-      display: none !important;
-    }
-    .sheet {
-      margin-top: 0.75rem;
-    }
-  }
-
-  .grp {
-    border-bottom: 1px solid var(--rule);
-  }
-  .grp summary {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    min-height: 2.5rem;
-    padding: 0.25rem 0;
-    font-size: 0.8125rem;
-    font-weight: 700;
-    letter-spacing: 0.04em;
-    text-transform: uppercase;
-    color: var(--ink-2);
-    cursor: pointer;
-    list-style: none;
-  }
-  .grp summary::-webkit-details-marker {
-    display: none;
-  }
-  .grp summary::after {
-    content: '';
-    margin-left: auto;
-    width: 0.4rem;
-    height: 0.4rem;
-    border-right: 1.75px solid currentColor;
-    border-bottom: 1.75px solid currentColor;
-    transform: translateY(-20%) rotate(45deg);
-  }
-  .grp[open] summary::after {
-    transform: translateY(20%) rotate(-135deg);
-  }
-  .grp summary:hover {
-    color: var(--ink);
-  }
-  .grp__n {
-    padding: 0 0.35rem;
-    border-radius: 2px;
-    background: var(--tape-open);
-    color: var(--tape-ink);
-    letter-spacing: 0;
-  }
-  .grp__body {
-    padding-bottom: 0.6rem;
-  }
-  .grp__hint {
-    margin-top: 0.3rem;
-    font-size: 0.8125rem;
-    line-height: 1.4;
-    color: var(--ink-2);
-  }
-  .opt {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    min-height: 1.9rem;
-    font-size: 0.875rem;
-    line-height: 1.3;
-    cursor: pointer;
-  }
-  @media (max-width: 67.99rem) {
-    .opt {
-      min-height: 2.5rem;
-      font-size: 0.9375rem;
-    }
-  }
-  .opt input {
-    flex: none;
-    width: 1rem;
-    height: 1rem;
-    margin: 0;
-    accent-color: var(--shell);
-  }
-  @media (prefers-color-scheme: dark) {
-    .opt input {
-      accent-color: var(--tape-open);
-    }
-  }
-  .opt__text {
-    flex: 1;
-  }
-  .opt__n {
-    font-size: 0.8125rem;
-    color: var(--ink-2);
-  }
-  .opt:has(input:disabled) {
-    color: var(--ink-2);
-    cursor: default;
-  }
-  .opt:hover:not(:has(input:disabled)) .opt__text {
-    text-decoration: underline;
-    text-underline-offset: 0.18em;
-  }
-
-  /* ---------- Results bar: the summary is the quick filter ---------- */
-  .results {
-    container: tbl / inline-size;
-    min-width: 0;
-  }
-  .bar {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: space-between;
-    gap: 0.35rem 1rem;
-    padding-bottom: 0.6rem;
-  }
-  .summary {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    gap: 0.3rem 0.4rem;
-    margin-left: -0.35rem;
-    font-size: 1rem;
-    font-weight: 400;
-    line-height: 1.3;
-    text-wrap: initial;
-  }
-  .q {
-    display: inline-block;
-    min-height: 1.75rem;
-    padding: 0.2rem 0.35rem;
-    border: 0;
-    border-radius: 3px;
-    background: none;
-    color: var(--ink);
-    font: inherit;
-    line-height: 1.35rem;
-    white-space: nowrap;
-    cursor: pointer;
-    text-decoration: underline;
-    text-decoration-color: var(--rule-strong);
-    text-decoration-thickness: 1px;
-    text-underline-offset: 0.25em;
-  }
-  .q b {
-    font-weight: 700;
-  }
-  .q:hover {
-    text-decoration-color: currentColor;
-  }
-  .q[aria-pressed='true'] {
-    background: var(--tape-open);
-    color: var(--tape-ink);
-    text-decoration: none;
-  }
-  .q--soon b {
-    color: var(--aging-text);
-  }
-  .q--soon[aria-pressed='true'] {
-    background: var(--aging);
-  }
-  .q--soon[aria-pressed='true'] b {
-    color: inherit;
-  }
-  .q:disabled {
-    color: var(--ink-2);
-    text-decoration: none;
-    cursor: default;
-  }
-  .q--later {
-    color: var(--ink-2);
-  }
-  .q--later[aria-pressed='true'] {
-    background: var(--sunk);
-    color: var(--ink);
-    box-shadow: inset 0 0 0 1px var(--rule-strong);
-  }
-  .q--later__icon {
-    display: inline-block;
-    width: 0.4rem;
-    height: 0.4rem;
-    margin-inline: 0.1rem 0.4rem;
-    border-right: 1.75px solid currentColor;
-    border-bottom: 1.75px solid currentColor;
-    transform: translateY(-0.12em) rotate(45deg);
-  }
-  .q--later[aria-pressed='true'] .q--later__icon {
-    transform: translateY(0.12em) rotate(-135deg);
-  }
-  .bar__side {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: baseline;
-    gap: 0 0.75rem;
-    margin-left: auto;
-    font-size: 0.875rem;
-    color: var(--ink-2);
-  }
-  .bar__shown {
-    color: var(--ink);
-    white-space: nowrap;
-  }
-  @container tbl (max-width: 39.99rem) {
-    .bar {
-      gap: 0.15rem 1rem;
-      padding-bottom: 0.4rem;
-    }
-    .summary {
-      gap: 0 0.1rem;
-      font-size: 0.9375rem;
-    }
-    .q {
-      padding-inline: 0.3rem;
-    }
-    .bar__side {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0 0.75rem;
-      margin-left: 0;
-    }
-  }
-  .grp--sort {
-    padding: 0.75rem 0;
-  }
-  .grp__label {
-    display: block;
-    margin-bottom: 0.3rem;
-    font-size: 0.8125rem;
-    font-weight: 700;
-    letter-spacing: 0.04em;
-    text-transform: uppercase;
-    color: var(--ink-2);
-  }
-  @media (min-width: 68rem) {
-    .grp--sort {
-      display: none;
-    }
-  }
-  .chips {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.35rem;
-    padding-bottom: 0.6rem;
-  }
-
-  .endfold {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: space-between;
-    gap: 0.25rem 1rem;
-    width: 100%;
-    min-height: 3rem;
-    margin-top: 1.25rem;
-    padding: 0.6rem 0.9rem;
-    border: 1.5px solid var(--control-edge);
-    border-radius: var(--radius);
-    background: var(--surface);
-    color: var(--ink);
-    font: inherit;
-    text-align: left;
-    cursor: pointer;
-  }
-  .endfold:hover {
-    border-color: var(--ink);
-  }
-  .endfold__title {
-    font-weight: 800;
-  }
-  .endfold__action {
-    color: var(--link);
-    font-weight: 700;
-    text-decoration: underline;
-    text-underline-offset: 0.18em;
-  }
-
-  .empty {
-    padding: 2rem 0.5rem;
-  }
-  .empty h3 {
-    font-size: 1.125rem;
-  }
-  .empty p {
-    margin-top: 0.4rem;
-    color: var(--ink-2);
-  }
-  .noscript {
-    padding-top: 1rem;
-    color: var(--ink-2);
-  }
-</style>
-
-<style is:global>
-  .finder .linkish {
-    padding: 0;
-    border: 0;
-    background: none;
-    color: var(--link);
-    font: inherit;
-    text-decoration: underline;
-    text-underline-offset: 0.18em;
-    cursor: pointer;
-  }
-  .finder .chip {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.35rem;
-    min-height: 1.85rem;
-    padding: 0.1rem 0.35rem 0.1rem 0.6rem;
-    border: 1.5px solid var(--control-edge);
-    border-radius: 2px;
-    background: var(--surface);
-    color: var(--ink);
-    font: inherit;
-    font-size: 0.875rem;
-    cursor: pointer;
-  }
-  .finder .chip:hover {
-    border-color: var(--ink);
-  }
-  .finder .chip__x {
-    display: inline-grid;
-    place-items: center;
-    width: 1.1rem;
-    height: 1.1rem;
-    color: var(--ink-2);
-  }
-  .finder .chip--clear {
-    border-color: transparent;
-    background: none;
-    color: var(--link);
-    text-decoration: underline;
-  }
-
-  /* ---------- The table (wide: four columns) ---------- */
-  .finder .tbl {
-    width: 100%;
-    table-layout: fixed;
-    border-collapse: separate;
-    border-spacing: 0;
-    font-variant-numeric: tabular-nums;
-    font-size: 0.9375rem;
-    line-height: 1.35;
-  }
-  .finder .tbl thead th {
-    position: sticky;
-    top: 0;
-    z-index: 3;
-    padding: 0.5rem;
-    background: var(--ground);
-    border-bottom: 2px solid var(--ink);
-    font-size: 0.8125rem;
-    font-weight: 700;
-    letter-spacing: 0.05em;
-    text-transform: uppercase;
-    color: var(--ink-2);
-    text-align: left;
-    white-space: nowrap;
-  }
-  .finder .tbl thead .h-sub {
-    font-weight: 400;
-  }
-  .finder .tbl thead button {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.3rem;
-    margin: -0.3rem -0.35rem;
-    padding: 0.3rem 0.35rem;
-    border: 0;
-    border-radius: 2px;
-    background: none;
-    color: inherit;
-    font: inherit;
-    letter-spacing: inherit;
-    text-transform: inherit;
-    cursor: pointer;
-  }
-  .finder .tbl thead button:hover {
-    color: var(--ink);
-    background: var(--sunk);
-  }
-  .finder .tbl thead .arrow {
-    width: 0.6rem;
-    height: 0.6rem;
-    background: currentColor;
-    opacity: 0.35;
-    clip-path: polygon(50% 0, 100% 40%, 0 40%, 0 60%, 100% 60%, 50% 100%);
-  }
-  .finder .tbl thead th[aria-sort] > button:not(.h-alt),
-  .finder .tbl thead button[data-active] {
-    color: var(--ink);
-  }
-  .finder .tbl thead th[aria-sort='ascending'] > button:not(.h-alt) .arrow,
-  .finder .tbl thead button[data-active='ascending'] .arrow {
-    opacity: 1;
-    clip-path: polygon(50% 15%, 100% 75%, 0 75%);
-  }
-  .finder .tbl thead th[aria-sort='descending'] > button:not(.h-alt) .arrow,
-  .finder .tbl thead button[data-active='descending'] .arrow {
-    opacity: 1;
-    clip-path: polygon(0 25%, 100% 25%, 50% 85%);
-  }
-  .finder .h-route {
-    margin-right: 0.45rem;
-  }
-  .finder .h-alt {
-    display: none !important;
-  }
-  .finder .h-dl {
-    width: 15.5rem;
-  }
-  .finder .h-amount {
-    width: 9.5rem;
-  }
-  .finder .h-rc {
-    width: 10.75rem;
-  }
-
-  .finder .row {
-    position: relative;
-  }
-  .finder .row > td {
-    padding: 0.55rem 0.5rem;
-    vertical-align: top;
-    border-bottom: 1px solid color-mix(in oklch, var(--rule) 60%, transparent);
-  }
-  /* Quiet zebra over the rows that are showing. */
-  .finder tbody > .row:nth-child(even of .row:not([hidden])) > td {
-    background: color-mix(in oklch, var(--sunk) 55%, transparent);
-  }
-  .finder .row:hover > td,
-  .finder .row:has(.name:focus-visible) > td {
-    background: var(--surface) !important;
-  }
-  .finder .name {
-    display: block;
-    font-weight: 700;
-    color: var(--link);
-    text-decoration: none;
-    text-wrap: pretty;
-  }
-  /* The whole row opens the programme. */
-  .finder .name::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    z-index: 1;
-  }
-  .finder .row:hover .name,
-  .finder .name:focus-visible {
-    text-decoration: underline;
-    text-decoration-thickness: 2px;
-    text-underline-offset: 0.18em;
-  }
-  .finder .name:focus-visible {
-    outline-offset: 1px;
-  }
-  .finder .sub {
-    display: block;
-    min-width: 0;
-    margin-top: 0.1rem;
-    font-size: 0.9375rem;
-    line-height: 1.4;
-    color: var(--ink-2);
-  }
-  .finder .sub__route {
-    display: none;
-    flex: none;
-    padding-left: 0.2rem;
-  }
-  .finder .sub__route[data-route='intermediary'],
-  .finder .sub__route[data-route='invitation_only'],
-  .finder .route[data-route='intermediary'],
-  .finder .route[data-route='invitation_only'] {
-    font-weight: 700;
-    color: var(--ink);
-  }
-  .finder .kind {
-    display: block;
-    margin-top: 0.1rem;
-    font-size: 0.875rem;
-    font-weight: 700;
-    color: var(--aging-text);
-  }
-
-  .finder .dl {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    gap: 0.2rem 0.5rem;
-  }
-  .finder .dl .tape {
-    min-height: 1.35rem;
-    padding-block: 0;
-    font-size: 0.8125rem;
-  }
-  .finder .dl__date {
-    font-weight: 600;
-    white-space: nowrap;
-  }
-  .finder .dl__muted {
-    color: var(--ink-2);
-  }
-  .finder .dl__left {
-    font-size: 0.875rem;
-    font-weight: 700;
-    white-space: nowrap;
-  }
-  .finder .dl__left[data-soon] {
-    padding: 0 0.3rem;
-    border-radius: 2px;
-    background: var(--aging);
-    color: var(--aging-ink);
-  }
-  .finder .dl__words {
-    display: block;
-    margin-top: 0.2rem;
-    font-size: 0.9375rem;
-    line-height: 1.35;
-    color: var(--ink-2);
-    overflow-wrap: anywhere;
-  }
-  .finder .amt {
-    display: block;
-    font-size: 0.875rem;
-    font-weight: 600;
-  }
-  .finder .amt--none {
-    font-weight: 400;
-    color: var(--ink-2);
-  }
-  .finder .amt__note {
-    display: block;
-    margin-top: 0.1rem;
-    font-size: 0.8125rem;
-    line-height: 1.3;
-    color: var(--ink-2);
-  }
-  .finder .route {
-    display: block;
-    font-size: 0.875rem;
-    color: var(--ink-2);
-  }
-  .finder .c-rc,
-  .finder .c-amount {
-    position: relative;
-    z-index: 2;
-  }
-  .finder .stamp--main {
-    margin-top: 0.25rem;
-  }
-  .finder .stamp--mid {
-    display: none;
-  }
-
-  /* The next seven days and after, while the table is sorted by deadline. */
-  .finder .divider td {
-    padding: 0.3rem 0.5rem;
-    border-bottom: 1px dashed var(--rule-strong);
-    font-size: 0.8125rem;
-    font-weight: 700;
-    letter-spacing: 0.04em;
-    text-transform: uppercase;
-    color: var(--ink-2);
-  }
-  .finder .divider--soon td {
-    color: var(--aging-text);
-  }
-  .finder .divider--later td {
-    border-top: 1.5px dashed var(--rule-strong);
-    border-bottom: 0;
-  }
-
-  /* Not open now: secondary rows under their own header. */
-  .finder .later-head th {
-    padding: 1.5rem 0.5rem 0.5rem;
-    border-bottom: 2px solid var(--rule-strong);
-    text-align: left;
-    font-weight: 400;
-  }
-  .finder .later-head__title {
-    font-weight: 800;
-    font-size: 1rem;
-  }
-  .finder .later-head__hint {
-    margin-inline: 0.5rem 0.75rem;
-    font-size: 0.875rem;
-    color: var(--ink-2);
-  }
-  .finder .later-head .linkish {
-    font-size: 0.875rem;
-  }
-  .finder .later-rows .name {
-    font-weight: 600;
-    color: color-mix(in oklch, var(--link) 75%, var(--ink-2));
-  }
-  .finder .later-rows .amt {
-    font-weight: 400;
-    color: var(--ink-2);
-  }
-  .finder .later-rows .row > td {
-    background: none !important;
-  }
-
-  /* ---------- Mid width (about 640 to 830px of table): three columns ---------- */
-  @container tbl (max-width: 51.99rem) {
-    /* Keep the fourth column at zero width: the colspan rows still count it. */
-    .finder .h-rc,
-    .finder .c-rc {
-      width: 0;
-      padding: 0 !important;
-      border: 0;
-      overflow: hidden;
-      visibility: hidden;
-    }
-    .finder .h-alt {
-      display: inline-flex !important;
-      margin-left: 0.6rem !important;
-    }
-    .finder .h-dl {
-      width: 13rem;
-    }
-    .finder .h-amount {
-      width: 10.75rem;
-    }
-    .finder .sub__route {
-      display: block;
-      padding-left: 0;
-      font-size: 0.875rem;
-    }
-    .finder .sub__route > [aria-hidden] {
-      display: none;
-    }
-    .finder .stamp--mid {
-      display: inline-flex;
-      margin-top: 0.3rem;
-    }
-  }
-
-  /* ---------- Phone: dense rows, in reading order ---------- */
-  @container tbl (max-width: 39.99rem) {
-    .finder .tbl,
-    .finder .tbl tbody {
-      display: block;
-    }
-    /* Sorting lives in the filter sheet on phones, so the header leaves the tab order too. */
-    .finder .tbl thead {
-      display: none;
-    }
-    .finder .tbl {
-      border-top: 2px solid var(--ink);
-    }
-    .finder .row {
-      display: grid;
-      grid-template-columns: minmax(0, 1fr) auto;
-      grid-template-areas:
-        'name name'
-        'sub sub'
-        'kind kind'
-        'dl dl'
-        'words words'
-        'quote quote'
-        'amount stamp';
-      align-items: center;
-      column-gap: 0.75rem;
-      padding: 0.65rem 0.5rem 0.7rem;
-      border-bottom: 1px solid var(--rule);
-    }
-    .finder .row > td {
-      padding: 0;
-      border: 0;
-      background: none !important;
-    }
-    .finder tbody > .row:nth-child(even of .row:not([hidden])) {
-      background: color-mix(in oklch, var(--sunk) 55%, transparent);
-    }
-    .finder .row:hover {
-      background: var(--surface);
-    }
-    .finder .c-prog,
-    .finder .c-dl,
-    .finder .c-rc {
-      display: contents;
-    }
-    .finder .c-rc {
-      visibility: visible;
-    }
-    .finder .name {
-      grid-area: name;
-      font-size: 1.0625rem;
-      line-height: 1.3;
-    }
-    .finder .sub {
-      grid-area: sub;
-      margin-top: 0.15rem;
-    }
-    .finder .sub__route {
-      display: block;
-      padding-left: 0;
-      font-size: 0.875rem;
-    }
-    .finder .sub__route > [aria-hidden] {
-      display: none;
-    }
-    .finder .kind {
-      grid-area: kind;
-    }
-    .finder .dl {
-      grid-area: dl;
-      margin-top: 0.4rem;
-      font-size: 0.9375rem;
-    }
-    .finder .dl .tape {
-      min-height: 1.25rem;
-      padding: 0 0.75rem 0 0.4rem;
-      font-size: 0.8125rem;
-    }
-    .finder .dl .tape[data-state='none'] {
-      padding-right: 0.4rem;
-    }
-    /* Our summary of a window and the funder's quote can both show: each gets its own row. */
-    .finder .dl__words.dl__words--quote {
-      grid-area: quote;
-    }
-    .finder .dl__words {
-      grid-area: words;
-      margin-top: 0.2rem;
-      white-space: normal;
-      line-height: 1.35;
-    }
-    .finder .c-amount {
-      grid-area: amount;
-      margin-top: 0.35rem;
-    }
-    .finder .amt {
-      font-size: 0.9375rem;
-    }
-    .finder .stamp--mid,
-    .finder .route {
-      display: none;
-    }
-    .finder .stamp--main {
-      grid-area: stamp;
-      align-self: start;
-      margin-top: 0.45rem;
-    }
-    .finder .divider {
-      display: block;
-    }
-    .finder .divider td {
-      display: block;
-      padding-inline: 0.5rem;
-    }
-    .finder .later-head,
-    .finder .later-head tr,
-    .finder .later-head th {
-      display: block;
-    }
-    .finder .later-head th {
-      padding-inline: 0;
-    }
-    .finder .later-head__hint {
-      display: block;
-      margin: 0.1rem 0 0;
-    }
-    .finder .later-rows .row {
-      background: none !important;
-    }
-  }
-</style>
