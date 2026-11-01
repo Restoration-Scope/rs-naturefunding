@@ -15,7 +15,8 @@
     "astro": "astro",
     "validate": "bun scripts/data/validate.ts",
     "verify-quotes": "bun scripts/data/verify-quotes.ts",
-    "sync-sources": "bun scripts/data/sync-sources.ts"
+    "sync-sources": "bun scripts/data/sync-sources.ts",
+    "sync-favicons": "bun scripts/data/sync-favicons.ts"
   },
   "dependencies": {
     "@astrojs/react": "7.1.0",
@@ -36,6 +37,7 @@
     "@types/react": "19.3.0",
     "@types/react-dom": "19.3.0",
     "linkedom": "0.18.14",
+    "sharp": "0.34.5",
     "typescript": "^6",
     "wrangler": "^4.156.0"
   }
