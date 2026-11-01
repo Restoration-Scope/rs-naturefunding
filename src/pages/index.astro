@@ -36,7 +36,8 @@ const opt =
   'group/opt flex min-h-[1.9rem] cursor-pointer items-center gap-2 text-sm leading-[1.3] has-disabled:cursor-default has-disabled:text-ink-2 max-xl:min-h-10 max-xl:text-md'
 const optInput = 'm-0 size-4 flex-none accent-primary'
 // .opt__text is what src/lib/finder.ts reads; the class carries no style.
-const optText = 'opt__text flex-1 underline-offset-[0.18em] group-[:hover:not(:has(input:disabled))]/opt:underline'
+// group-hover only applies where the device can hover, so a tap leaves no underline behind.
+const optText = 'opt__text flex-1 underline-offset-[0.18em] group-hover/opt:underline group-has-disabled/opt:no-underline'
 const optN = 'text-xs text-muted-foreground tabular-nums'
 // The quick filters in the results summary: a row of shadcn toggles (outline Button, rounded-full), each
 // with its count in a Badge. Pressed, they take the primary fill.
@@ -130,7 +131,7 @@ const jsonLd = [
 
       <div class="fixed inset-0 z-29 bg-backdrop xl:hidden!" data-backdrop hidden></div>
       <div
-        class="max-xl:fixed max-xl:inset-x-0 max-xl:bottom-0 max-xl:z-30 max-xl:flex max-xl:max-h-[min(88dvh,44rem)] max-xl:flex-col max-xl:rounded-t-xl max-xl:bg-ground max-xl:shadow-[0_-8px_32px_rgb(0_0_0/0.3)] max-xl:not-data-open:hidden xl:mt-3"
+        class="max-xl:fixed max-xl:inset-x-0 max-xl:bottom-0 max-xl:z-30 max-xl:flex max-xl:max-h-[min(88dvh,44rem)] max-xl:flex-col max-xl:rounded-t-xl max-xl:bg-ground max-xl:shadow-[0_-8px_32px_rgb(0_0_0/0.3)] max-xl:not-data-open:hidden md:max-xl:inset-y-0 md:max-xl:left-auto md:max-xl:max-h-none md:max-xl:w-[26rem] md:max-xl:rounded-none md:max-xl:rounded-l-xl xl:mt-3"
         id="filters"
         data-sheet
         aria-label="Filters"
@@ -296,7 +297,8 @@ const jsonLd = [
             <ChevronDown className="size-4 transition-transform group-aria-pressed/later:rotate-180" aria-hidden="true" /><span data-later-verb>Show</span> <b class:list={[num, 'font-semibold']} data-qn="later">{later.length}</b> not open now
           </button>
         </h2>
-        <p class="ml-auto flex flex-wrap items-baseline gap-x-3 text-sm text-muted-foreground @max-[40rem]/tbl:ml-0">
+        {/* Its own line, left, right above the table it describes. */}
+        <p class="flex basis-full flex-wrap items-baseline gap-x-3 text-sm text-muted-foreground">
           <span class="whitespace-nowrap text-foreground tabular-nums" data-shown>{now.length} of {sorted.length} shown</span>
           <span data-sort-line>Open calls first, soonest deadline first</span>
         </p>

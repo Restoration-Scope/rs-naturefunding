@@ -364,6 +364,10 @@
       display: block;
       margin-top: 0.375rem;
     }
+    /* Most programmes take direct applications: only the exceptions get a line. */
+    .sub__route:has([data-route='direct']) {
+      display: none;
+    }
     .stamp--mid {
       display: inline-flex;
       margin-top: 0.375rem;
@@ -444,9 +448,16 @@
     .kind {
       grid-area: kind;
     }
+    /* Days left joins the status line: "Open  9 Nov 2026 · 8 days left". */
     .dl {
       grid-area: dl;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
       margin-top: 0.75rem;
+    }
+    .dl__left:not([data-soon])::before {
+      content: '· ';
     }
     /* Our summary of a window and the funder's quote can both show: each gets its own row. */
     .dl__words.dl__words--quote {

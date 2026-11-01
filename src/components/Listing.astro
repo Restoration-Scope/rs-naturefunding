@@ -31,6 +31,8 @@ const undatedWindow =
 const recurringQuote = call?.recurring ? (call.evidence.recurring?.quote ?? null) : null
 const route = p.access === 'direct' ? null : accessLabels[p.access]
 const closed = state === 'closed'
+// The badge already says "No call found"; a deadline cell repeating it would be noise.
+const noDeadlineCell = state === 'none' && !noCallRoute && !call?.recurring
 // Wide containers (52rem and up): one row per programme, in columns; the labels hide, except an
 // upcoming row's, which says its date is the opening.
 const label = (upcoming: boolean) =>
@@ -84,7 +86,8 @@ const searchText = [
 
   {/* Narrow containers: the name, deadline and amount come first; the rest of this cell follows. */}
   <div class="contents">
-    <h3 class="mt-1 text-[1.3125rem] text-pretty [grid-area:name] @min-[52rem]/listings:mt-[0.3rem] @min-[52rem]/listings:text-3xl">
+    {/* Set like the finder's rows: a bold sans name, not a serif heading. */}
+    <h3 class="mt-1 font-sans text-lg leading-[1.35] font-bold text-pretty [grid-area:name] @min-[52rem]/listings:mt-[0.3rem]">
       {/* The whole row opens the programme. */}
       <a
         class="text-link no-underline decoration-2 underline-offset-[0.18em] group-hover/listing:underline after:absolute after:inset-0 after:content-[''] focus-visible:underline"
@@ -113,7 +116,7 @@ const searchText = [
     </p>
   </div>
 
-  <div class:list={[cell, '[grid-area:deadline]', state === 'upcoming' ? '@min-[52rem]/listings:pt-[0.65rem]' : '@min-[52rem]/listings:pt-[1.85rem]']}>
+  {!noDeadlineCell && <div class:list={[cell, '[grid-area:deadline]', state === 'upcoming' ? '@min-[52rem]/listings:pt-[0.65rem]' : '@min-[52rem]/listings:pt-[1.85rem]']}>
     <span class={label(state === 'upcoming')}>{state === 'upcoming' ? 'Opens' : 'Deadline'}</span>
     {
       state === 'open' && !deadline && (
@@ -177,7 +180,7 @@ const searchText = [
         </span>
       )
     }
-  </div>
+  </div>}
 
   <div class:list={[cell, '[grid-area:amount] @min-[52rem]/listings:pt-[1.85rem]']}>
     <span class={label(false)}>Amount</span>
