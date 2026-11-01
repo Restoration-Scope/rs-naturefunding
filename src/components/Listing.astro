@@ -72,6 +72,7 @@ const searchText = [
       }
     </p>
     <p class="listing__meta">
+      {p.kind === 'partnership' && <span>Paid partnership, not a grant</span>}
       {route && !noCallRoute && <span>{route}</span>}
       {where && <span><span class="listing__key">Where:</span> {where}</span>}
       {who && <span><span class="listing__key">Who:</span> {who}</span>}
