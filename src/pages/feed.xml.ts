@@ -42,8 +42,8 @@ export const GET: APIRoute = () => {
 
   const xml = `<?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-  <title>naturefunding.org: new and changed calls</title>
-  <subtitle>Grants for nature restoration and conservation, checked against each funder’s own page.</subtitle>
+  <title>naturefunding.org: calls and their status</title>
+  <subtitle>Every call with its current status. A call that opens, closes or moves its deadline appears as a new entry.</subtitle>
   <id>${absolute('/')}</id>
   <link rel="self" href="${absolute('/feed.xml')}"/>
   <link href="${absolute('/')}"/>

@@ -54,6 +54,21 @@ export const listings: Listing[] = programmes
   .map((p) => listingFor(p))
   .filter((l) => l.ageDays <= HIDDEN_DAYS)
 
+const monthNames = ['jan', 'feb', 'mar', 'apr', 'may', 'jun', 'jul', 'aug', 'sep', 'oct', 'nov', 'dec']
+
+/** "mid-March 2027" → 2027-03-15, only to sort; the funder's wording is what we show. A bare year sorts at its end. */
+export function expectedSortDate(text: string | undefined): string | undefined {
+  const year = text?.match(/\b(20\d\d)\b/)?.[1]
+  if (!text || !year) return undefined
+  const m = monthNames.findIndex((n) => new RegExp(`\\b${n}`, 'i').test(text))
+  if (m < 0) return `${year}-12-31`
+  const day = text.match(/\b(\d{1,2})\b/)?.[1] ?? (/early/i.test(text) ? '5' : /mid/i.test(text) ? '15' : /late|end/i.test(text) ? '25' : '1')
+  return `${year}-${String(m + 1).padStart(2, '0')}-${day.padStart(2, '0')}`
+}
+
+/** When an upcoming call opens, for sorting: its date, else the funder's expected month or year. */
+export const opensSortDate = (c: Call | null) => c?.opens ?? expectedSortDate(c?.expected)
+
 const stateOrder: Record<State, number> = { open: 0, rolling: 1, upcoming: 2, none: 3, closed: 4 }
 
 /** Soonest deadline first; rolling, upcoming (by opening date), no-call and closed after. */
@@ -61,7 +76,7 @@ export function sortListings(a: Listing, b: Listing) {
   const s = stateOrder[a.state] - stateOrder[b.state]
   if (s) return s
   const key = (l: Listing) =>
-    l.state === 'upcoming' ? (l.call?.opens ?? l.call?.deadline?.date ?? '9999') : (l.call?.deadline?.date ?? '9999')
+    l.state === 'upcoming' ? (opensSortDate(l.call) ?? l.call?.deadline?.date ?? '9999') : (l.call?.deadline?.date ?? '9999')
   // Closed calls: most recently closed first.
   const k = key(a).localeCompare(key(b)) * (a.state === 'closed' ? -1 : 1)
   return k || a.p.name.localeCompare(b.p.name)
@@ -98,6 +113,8 @@ export function whereCodes(p: Programme): string {
 export const stats = {
   programmes: listings.length,
   openCalls: listings.filter((l) => l.state === 'open' || l.state === 'rolling').length,
+  open: listings.filter((l) => l.state === 'open').length,
+  rolling: listings.filter((l) => l.state === 'rolling').length,
   lastChecked: listings.map((l) => l.p.checked_at).sort().at(-1) ?? null,
 }
 

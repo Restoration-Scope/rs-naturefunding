@@ -28,7 +28,7 @@ const jsonLd = {
     <h1 class="band__title">How we check</h1>
     <p class="band__lede">
       A grant you can’t trust is worse than no grant: it costs a week of writing for a deadline that has passed. So
-      every fact here is read from the funder’s own page, quoted word for word and dated.
+      every fact here is read from the funder’s own page and shown with the funder’s words and the date we read them.
     </p>
   </div>
 
@@ -38,7 +38,8 @@ const jsonLd = {
       <nav aria-label="On this page">
       <ol>
         <li><a href="#who">Who builds this</a></li>
-        <li><a href="#sources">Where every fact comes from</a></li>
+        <li><a href="#what">What we list</a></li>
+        <li><a href="#sources">Where the facts come from</a></li>
         <li><a href="#never-guess">What we never guess</a></li>
         <li><a href="#labels">What the labels mean</a></li>
         <li><a href="#how-often">How often we check</a></li>
@@ -63,10 +64,29 @@ const jsonLd = {
       <li><strong>No account, no email wall.</strong> Search and filters run in your browser.</li>
     </ul>
 
-    <h2 id="sources">Where every fact comes from</h2>
+    <h2 id="what">What we list</h2>
     <p>
-      Each deadline, amount, eligibility rule and region is read from the funder’s own website: the call page, the
-      guidelines or the programme page. Next to each fact we show:
+      Funding for nature restoration and conservation projects: forests and land, rivers and wetlands, coasts and the
+      sea, and the species that live there. We list a programme when its own website says who can apply, where and
+      how. A few listings, such as paid tree-planting partnerships, are not grants; their summaries say so.
+    </p>
+    <p>We leave out, for now:</p>
+    <ul>
+      <li>funders whose website blocks automated reading, because we could not re-check their facts every day;</li>
+      <li>prizes for past work, and programmes whose page only describes an old or suspended round;</li>
+      <li>second rounds that are by invitation only, since the first round is where you apply;</li>
+      <li>anything we only found in another directory and could not confirm on the funder’s own page.</li>
+    </ul>
+    <p>
+      So a missing funder may simply not be checked yet. <a href={generalIssueUrl}>Tell us about it</a> and we will
+      look.
+    </p>
+
+    <h2 id="sources">Where the facts come from</h2>
+    <p>
+      Each deadline, amount, eligibility rule and region is read from the funder’s own website, or the website of the
+      organisation that runs the programme for it: the call page, the guidelines or the programme page. Next to each
+      fact we show:
     </p>
     <ul>
       <li>the page it came from, linked;</li>
@@ -107,8 +127,8 @@ const jsonLd = {
       <div><dt><span class="tape" data-state="open">Open</span></dt><dd>Taking applications now, until the deadline shown.</dd></div>
       <div><dt><span class="tape" data-state="rolling">Rolling</span></dt><dd>Taking applications any time, with no deadline.</dd></div>
       <div><dt><span class="tape" data-state="upcoming">Upcoming</span></dt><dd>Announced, but not open yet.</dd></div>
-      <div><dt><span class="tape" data-state="closed">Closed</span></dt><dd>A call ran and its deadline has passed. The next date is not announced yet.</dd></div>
-      <div><dt><span class="tape" data-state="none">No open call</span></dt><dd>The funder has no call on its page right now. Check its page again later.</dd></div>
+      <div><dt><span class="tape" data-state="closed">Closed</span></dt><dd>The last call we found has passed its deadline. Check the funder’s page for the next round.</dd></div>
+      <div><dt><span class="tape" data-state="none">No call found</span></dt><dd>We found no open or announced call on the funder’s page when we last read it.</dd></div>
     </dl>
     <p class="key__note">
       The finder lists open, rolling and upcoming calls first. Closed and no-call listings sit in a folded list under
@@ -116,49 +136,64 @@ const jsonLd = {
     </p>
     <h3 class="key__title">Funders you don’t apply to directly</h3>
     <dl class="key">
-      <div><dt><span class="tape" data-state="none">Through a partner</span></dt><dd>You apply to a partner, such as a country programme, not to the funder.</dd></div>
-      <div><dt><span class="tape" data-state="none">Invitation only</span></dt><dd>The funder picks its grantees. Don’t send a proposal.</dd></div>
+      <div><dt><span class="route-label">Through a partner</span></dt><dd>You apply to a partner, such as a country programme, not to the funder.</dd></div>
+      <div><dt><span class="route-label">Invitation only</span></dt><dd>The funder picks its grantees. Don’t send a proposal.</dd></div>
+    </dl>
+    <h3 class="key__title">The checked tag</h3>
+    <dl class="key">
+      <div><dt><span class="tag">Checked 1 Nov 2026</span></dt><dd>The last day we read the funder’s page and found the words we quote.</dd></div>
+      <div><dt><span class="tag" data-aging>Checked 20 Sep 2026</span></dt><dd>Over {AGING_DAYS} days since that check. Confirm on the funder’s page before you rely on it.</dd></div>
     </dl>
 
     <h2 id="how-often">How often we check</h2>
     <ol class="steps">
-      <li>Every day, a job reads each funder’s page again.</li>
-      <li>If nothing changed, the listing gets a new checked date.</li>
+      <li>Every day, a job reads the funder pages that are due: most every day, the rest every week or month.</li>
+      <li>If a page still shows the words we quoted, those facts get a new checked date.</li>
       <li>
-        If something changed, a person compares it with the saved page before it goes live. The date can stay older
-        for a few days while that happens.
+        If a page changed or can’t be read, the date stays where it was. A change becomes a proposed edit, and it
+        goes live only after a person approves it.
       </li>
-      <li>When a deadline passes, the call shows as closed.</li>
+      <li>
+        When a deadline date passes, the finder shows the call as closed. It doesn’t compare times of day, so on the
+        last day check the funder’s cutoff time.
+      </li>
       <li>
         After {AGING_DAYS} days without a check, the tag turns amber:{' '}
         <span class="tag" data-aging>Checked 20 Sep 2026</span>
       </li>
-      <li>After {HIDDEN_DAYS} days without a check, the listing is hidden until we can confirm it again.</li>
+      <li>
+        After {HIDDEN_DAYS} days without a check, the listing leaves the finder until we can confirm it again. Its page
+        stays up, marked out of date.
+      </li>
     </ol>
     {stats.lastChecked && <p class="small">Most recent check: {longDate(stats.lastChecked)}.</p>}
 
     <h2 id="corrections">Corrections</h2>
     <p>
       Every programme page has a <strong>Report a problem</strong> link and, for funders, a{' '}
-      <strong>Correct this listing</strong> link. Both open a pre-filled issue on GitHub, which needs a free account. We check every correction
-      against the funder’s own page before changing anything.
+      <strong>Correct this listing</strong> link. Both open a pre-filled issue on GitHub, which needs a free account. We change a listing only after checking the correction
+      against the funder’s own page.
     </p>
     <p>For anything else on the site, such as a missing funder or a broken page:</p>
     <p class="actions"><a class="button button--quiet" href={generalIssueUrl}>Report a problem</a></p>
 
     <h2 id="open-data">Open data</h2>
-    <p>Use the data for anything, including commercial work, as long as you credit naturefunding.org.</p>
+    <p>
+      Our data is licensed <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>: you can reuse it,
+      including commercially, if you credit naturefunding.org.
+    </p>
     <ul>
       <li><a href="/data.json">data.json</a>: every programme, call and fact with its source, quote and checked date.</li>
-      <li><a href="/data.csv">data.csv</a>: one row per call, for spreadsheets.</li>
-      <li><a href="/feed.xml">Atom feed</a>: new and changed calls, for a feed reader.</li>
-      <li><a href="/health.json">health.json</a>: when the listings were last refreshed.</li>
+      <li><a href="/data.csv">data.csv</a>: one row per call, plus one row for each programme with no call, for spreadsheets.</li>
+      <li><a href="/feed.xml">Atom feed</a>: every call with its status; a call that opens, closes or moves its deadline shows up as a new entry.</li>
+      <li><a href="/health.json">health.json</a>: the latest run of the checking job: when it ran, and how many pages it read, found changed or could not read.</li>
     </ul>
     <p>
-      The data is licensed <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>. Quotes from funder
-      pages remain their authors’; we keep them short and always link the source. The code is MIT-licensed and{' '}
+      Quotes from funder pages are their authors’ words and are not covered by our licence; we keep them short and
+      always link the source. The code is MIT-licensed and{' '}
       <a href={REPO_URL}>public on GitHub</a>.
     </p>
+    <p class="back"><a class="button" href="/">Find funding</a></p>
   </article>
 </Base>
 
@@ -197,7 +232,7 @@ const jsonLd = {
     .prose {
       display: grid;
       grid-template-columns: minmax(0, 44rem) 16rem;
-      justify-content: space-between;
+      justify-content: start;
       column-gap: 4rem;
       max-width: var(--page);
       margin-inline: auto;
@@ -213,6 +248,9 @@ const jsonLd = {
       align-self: start;
     }
   }
+  .back {
+    margin-top: 2.5rem;
+  }
   .key {
     display: grid;
     gap: 0.6rem;
@@ -225,7 +263,7 @@ const jsonLd = {
   }
   @media (min-width: 40rem) {
     .key div {
-      grid-template-columns: 9.5rem minmax(0, 1fr);
+      grid-template-columns: 11rem minmax(0, 1fr);
       gap: 1rem;
       align-items: baseline;
     }
@@ -239,12 +277,12 @@ const jsonLd = {
     max-width: 66ch;
     margin: 1.25rem 0 0;
     padding: 0.25rem 1rem 0;
-    border: 1px dashed var(--rule-strong);
+    border: 1px solid var(--rule-strong);
     border-radius: var(--radius);
   }
   .example__caption {
     padding-top: 0.75rem;
-    font-size: 0.875rem;
+    font-size: 0.9375rem;
     color: var(--ink-2);
   }
   .example__facts {
@@ -252,6 +290,15 @@ const jsonLd = {
   }
   .prose .example + p {
     margin-top: 1.25rem;
+  }
+  /* A route, not a status: an outlined label, unlike the status tape. */
+  .route-label {
+    display: inline-block;
+    padding: 0 0.4rem;
+    border: 1px solid var(--rule-strong);
+    border-radius: 2px;
+    font-size: 0.875rem;
+    font-weight: 600;
   }
   .key__note {
     margin-top: 1rem;

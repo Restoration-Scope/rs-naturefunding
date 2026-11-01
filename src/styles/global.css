@@ -38,6 +38,8 @@
   --ink-2: oklch(0.43 0.025 195);
   --rule: oklch(0.86 0.012 210);
   --rule-strong: oklch(0.74 0.015 210);
+  /* Form control edges: at least 3:1 against the page (WCAG 1.4.11). */
+  --control-edge: oklch(0.56 0.015 210);
   --link: oklch(0.42 0.1 170);
   --focus: oklch(0.55 0.2 145);
 
@@ -50,7 +52,7 @@
   --tape-open: oklch(0.86 0.2 138);
   --tape-rolling: oklch(0.82 0.11 230);
   --tape-upcoming: oklch(0.82 0.15 62);
-  --tape-closed: oklch(0.87 0.006 215);
+  --tape-closed: oklch(0.8 0.008 215);
   --tape-ink: oklch(0.22 0.03 180);
 
   /* Stamped aluminium tag. */
@@ -78,6 +80,7 @@
     --ink-2: oklch(0.77 0.018 190);
     --rule: oklch(0.33 0.016 200);
     --rule-strong: oklch(0.45 0.02 200);
+    --control-edge: oklch(0.6 0.02 200);
     --link: oklch(0.82 0.13 150);
     --focus: oklch(0.8 0.2 140);
 
@@ -229,11 +232,9 @@ p {
   border: 1px solid var(--tag-edge);
   border-radius: 3px;
   color: var(--tag-ink);
-  font-family: var(--mono);
-  font-size: 0.75rem;
+  font-size: 0.8125rem;
   font-weight: 600;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
+  line-height: 1.35;
   white-space: nowrap;
   font-variant-numeric: tabular-nums;
 }
@@ -307,12 +308,16 @@ p {
   }
 }
 
-.tag--compact:not([data-aging]) {
+/* One stamp everywhere: a quiet line while the check is fresh; the amber tag, hole and all, once it ages. */
+.tag:not([data-aging]) {
   padding: 0;
   background: none;
   border-color: transparent;
   color: var(--ink-2);
-  font-size: 0.6875rem;
+  font-weight: 400;
+}
+.tag:not([data-aging])::before {
+  display: none;
 }
 
 /* Components set display: grid or flex; the hidden attribute must still win. */

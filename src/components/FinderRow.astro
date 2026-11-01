@@ -1,0 +1,162 @@
+---
+import type { Listing } from '../lib/data'
+import { AGING_DAYS, buildDate, daysBetween, listingFor, opensSortDate, programmes, sizeBucketsFor, whereCodes } from '../lib/data'
+import { amountText, geographyText, longDate, shortDate } from '../lib/format'
+import { accessHelp, accessLabels, approachLabels, stateLabels } from '../lib/labels'
+import { compactAmount, usdValue } from '../lib/table'
+
+interface Props {
+  listing: Listing
+}
+
+const { listing } = Astro.props
+const { p, state, call, aging } = listing
+const deadline = call?.deadline ?? null
+const amountFull = amountText(p.amount)
+const amount = compactAmount(p.amount)
+const usd = usdValue(p.amount)
+const where = geographyText(p.geography)
+const noCallRoute = p.access === 'intermediary' || p.access === 'invitation_only'
+const tapeText = noCallRoute ? accessLabels[p.access] : stateLabels[state]
+const daysLeft = state === 'open' && deadline ? daysBetween(buildDate, deadline.date) : null
+// An open call without a date: the funder's yearly dates, or the label when it describes the window itself.
+const undatedWindow =
+  call?.recurring ?? (call?.label && /window|deadline|each year|until/i.test(call.label) ? call.label : null)
+// Rows without a date still show the funder's own words on when to apply.
+const statusWords = !call || deadline
+  ? null
+  : call.recurring && (state === 'open' || state === 'none')
+    ? (call.evidence.recurring?.quote ?? null)
+    : state === 'rolling' || state === 'upcoming' || (state === 'open' && !undatedWindow)
+      ? (call.evidence.opens?.quote ?? call.evidence.status.quote)
+      : null
+// An umbrella that funds through partners: how many of its partner programmes are open now.
+const openPartners =
+  p.access === 'intermediary'
+    ? programmes.filter((c) => c.parent === p.id).filter((c) => ['open', 'rolling'].includes(listingFor(c).state)).length
+    : 0
+const funder = p.administered_by ? `${p.funder.name}, run by ${p.administered_by.name}` : p.funder.name
+const route = accessLabels[p.access]
+const left = (n: number) => (n === 0 ? 'Closes today' : n === 1 ? '1 day left' : `${n} days left`)
+const stampTitle = `Checked against the funder’s page on ${longDate(p.checked_at)}${aging ? `. Over ${AGING_DAYS} days ago, due a recheck.` : ''}`
+const searchText = [p.name, p.funder.name, p.administered_by?.name, p.summary, where, p.approaches.map((a) => approachLabels[a]).join(' ')]
+  .filter(Boolean)
+  .join(' ')
+  .toLowerCase()
+---
+
+<tr
+  class="row"
+  data-state={state}
+  data-deadline={deadline?.date}
+  data-opens={opensSortDate(call)}
+  data-checked={p.checked_at}
+  data-usd={usd ?? undefined}
+  data-name={p.name.toLowerCase()}
+  data-approach={p.approaches.join(' ')}
+  data-applicant={p.applicant_types?.join(' ') ?? ''}
+  data-access={p.access}
+  data-where={whereCodes(p)}
+  data-size={sizeBucketsFor(p).join(' ')}
+  data-text={searchText}
+>
+  <td class="c-prog">
+    <a class="name" href={`/p/${p.id}/`}>{p.name}</a>
+    <span class="sub">
+      <span class="funder" title={funder}>{funder}</span>
+      {!noCallRoute && <span class="sub__route" data-route={p.access} title={accessHelp[p.access]}><span aria-hidden="true"> · </span>{route}</span>}
+    </span>
+    {p.kind === 'partnership' && <span class="kind">Paid partnership, not a grant</span>}
+  </td>
+
+  <td class="c-dl">
+    <span class="dl">
+      <span class="tape" data-state={state}>{tapeText}</span>
+      {
+        state === 'open' && deadline && (
+          <>
+            <span class="dl__date">{shortDate(deadline.date)}</span>
+            {daysLeft !== null && (
+              <span class="dl__left" data-left data-soon={daysLeft < 7 ? '' : undefined}>
+                {left(daysLeft)}
+              </span>
+            )}
+          </>
+        )
+      }
+      {state === 'open' && !deadline && !undatedWindow && <span class="dl__muted">Date not stated</span>}
+      {state === 'rolling' && <span class="dl__date">Any time</span>}
+      {
+        state === 'upcoming' &&
+          (call?.opens ? (
+            <span class="dl__date">Opens {shortDate(call.opens)}</span>
+          ) : call?.expected ? (
+            <span class="dl__date">Expected {call.expected}</span>
+          ) : (
+            <span class="dl__muted">Not dated yet</span>
+          ))
+      }
+      {state === 'closed' && deadline && <span class="dl__muted">Closed {shortDate(deadline.date)}</span>}
+      {/* The tape already says "No call found" unless it names the route instead. */}
+      {
+        state === 'none' && (p.access === 'intermediary' || call?.recurring || noCallRoute) && (
+          <span class="dl__muted">
+            {p.access === 'intermediary'
+              ? openPartners > 0
+                ? `${openPartners} partner programme${openPartners === 1 ? '' : 's'} open now`
+                : 'Varies by partner'
+              : call?.recurring
+                ? 'Page doesn’t say if open now'
+                : 'No call found'}
+          </span>
+        )
+      }
+    </span>
+    {
+      state === 'open' && deadline && (
+        <span class="dl__words" data-words title={`The deadline as the funder wrote it: “${deadline.text}”`}>
+          <span class="visually-hidden">The funder wrote: </span>“{deadline.text}”
+        </span>
+      )
+    }
+    {state === 'open' && !deadline && undatedWindow && <span class="dl__words">{undatedWindow}</span>}
+    {
+      statusWords && (
+        <span class="dl__words dl__words--quote" title={`As the funder wrote it: “${statusWords}”`}>
+          <span class="visually-hidden">The funder wrote: </span>“{statusWords}”
+        </span>
+      )
+    }
+    {
+      state === 'upcoming' && deadline && (
+        <span class="dl__words" title={`The deadline as the funder wrote it: “${deadline.text}”`}>
+          Closes {shortDate(deadline.date)}: “{deadline.text}”
+        </span>
+      )
+    }
+    {state === 'none' && call?.recurring && <span class="dl__words">Each year: {call.recurring}</span>}
+    {
+      state === 'closed' && deadline && (
+        <span class="dl__words dl__words--quote" title={`The deadline as the funder wrote it: “${deadline.text}”`}>
+          <span class="visually-hidden">The funder wrote: </span>“{deadline.text}”
+        </span>
+      )
+    }
+  </td>
+
+  <td class="c-amount" title={amountFull ?? 'The funder’s page does not state an amount'}>
+    {amount ? <span class="amt">{amount}</span> : <span class="amt amt--none">Amount not stated</span>}
+    {amount && p.amount?.note && <span class="amt__note">{p.amount.note}</span>}
+    <span class="tag tag--compact stamp stamp--mid" data-aging={aging ? '' : undefined} title={stampTitle}>
+      Checked {shortDate(p.checked_at)}
+    </span>
+  </td>
+
+  <td class="c-rc">
+    {/* Partner and invitation rows already name the route on their status tape. */}
+    {!noCallRoute && <span class="route" data-route={p.access} title={accessHelp[p.access]}>{route}</span>}
+    <span class="tag tag--compact stamp stamp--main" data-aging={aging ? '' : undefined} title={stampTitle}>
+      Checked {shortDate(p.checked_at)}
+    </span>
+  </td>
+</tr>
