@@ -1,6 +1,6 @@
 ---
 title: Usual grant ranges are flagged as typical, not limits
-status: open
+status: approved
 kind: long-term
 filed: 2026-11-01
 by: naturefunding data thread
