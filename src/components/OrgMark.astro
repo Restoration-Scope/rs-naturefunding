@@ -1,0 +1,58 @@
+---
+/**
+ * An organisation's small mark: its self-hosted favicon (public/marks/, from `bun run sync-favicons`),
+ * or a one- or two-letter monogram in a muted rounded square when there is no usable icon.
+ * Decorative by default, for when the name is printed beside it; pass `standalone` when it isn't.
+ */
+import { cn } from '../lib/utils'
+import { markFor, type Org } from '../lib/marks'
+
+interface Props {
+  org: Org
+  /** Pixels: 16 in dense text, 20 in table rows, 24 in a page header. */
+  size?: 16 | 20 | 24
+  /** No name printed beside the mark: it then carries the name itself (alt text, label and tooltip). */
+  standalone?: boolean
+  class?: string
+}
+
+const { org, size = 20, standalone = false, class: className } = Astro.props
+const mark = markFor(org)
+
+const box = { 16: 'size-4', 20: 'size-5', 24: 'size-6' }[size]
+const letterSize = { 16: 'text-[7.5px]', 20: 'text-[9px]', 24: 'text-[10.5px]' }[size]
+const base = 'inline-block shrink-0 rounded-sm align-middle'
+---
+
+{
+  mark.kind === 'icon' ? (
+    <img
+      src={mark.src}
+      width={size}
+      height={size}
+      alt={standalone ? org.name : ''}
+      title={standalone ? org.name : undefined}
+      loading="lazy"
+      decoding="async"
+      class={cn(base, box, 'object-contain', className)}
+      data-mark="icon"
+    />
+  ) : (
+    <span
+      role={standalone ? 'img' : undefined}
+      aria-label={standalone ? org.name : undefined}
+      aria-hidden={standalone ? undefined : 'true'}
+      title={standalone ? org.name : undefined}
+      class={cn(
+        base,
+        box,
+        letterSize,
+        'inline-flex items-center justify-center bg-muted font-semibold leading-none tracking-tight text-muted-foreground select-none',
+        className,
+      )}
+      data-mark="monogram"
+    >
+      {mark.letters}
+    </span>
+  )
+}
