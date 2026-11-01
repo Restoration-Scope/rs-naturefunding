@@ -182,7 +182,8 @@ const searchText = [
     }
   </div>}
 
-  <div class:list={[cell, '[grid-area:amount] @min-[52rem]/listings:pt-[1.85rem]']}>
+  {/* With no deadline cell, the amount moves left under the name instead of floating in the second column. */}
+  <div class:list={[cell, noDeadlineCell ? '[grid-area:deadline] @min-[52rem]/listings:[grid-area:amount]' : '[grid-area:amount]', '@min-[52rem]/listings:pt-[1.85rem]']}>
     <span class={label(false)}>Amount</span>
     <span class:list={[amount && !closed ? 'font-semibold' : muted]}>
       {amount ?? 'Not stated'}

@@ -392,7 +392,7 @@ export function initTableFinder() {
     if (shown === 0) {
       emptyText.innerHTML =
         laterN > 0
-          ? `${laterN} not open now ${plural(laterN, 'matches', 'match')}. <button type="button" class="linkish" data-later-show>Show ${plural(laterN, 'it', 'them')}</button>, or <button type="button" class="linkish" data-reset>clear all filters</button>.`
+          ? `${laterN} not open now ${plural(laterN, 'matches', 'match')}${f.status.length ? ' your other filters' : ''}. <button type="button" class="linkish" data-later-show>Show ${plural(laterN, 'it', 'them')}</button>, or <button type="button" class="linkish" data-reset>clear all filters</button>.`
           : `Try another search, remove a filter, or <button type="button" class="linkish" data-reset>clear all</button>.`
     }
     done.textContent = `Show ${shown} ${plural(shown, 'result', 'results')}`
