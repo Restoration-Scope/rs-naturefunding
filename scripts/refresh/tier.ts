@@ -54,35 +54,33 @@ const isLive = (c: Call) => c.status === 'open' || c.status === 'upcoming'
 export type TierAResult = { programme: Programme; changed: boolean; closed: string[]; opened: string[] }
 
 /**
- * Dates the facts read today on unchanged pages (`okUrls`) and, on those pages only, closes
- * calls past their stated deadline and opens upcoming calls whose stated opening date has
- * come. The programme's own `checked_at` follows its oldest fact, so it only moves when
- * every fact was read again.
+ * Dates the facts read today on unchanged pages (`okUrls`), closes every call past its stated
+ * deadline and opens upcoming calls whose stated opening date has come. The programme's own
+ * `checked_at` follows its oldest fact, so it only moves when every fact was read again.
  */
 export function applyTierA(original: Programme, okUrls: Set<string>, now: Date): TierAResult {
   const p: Programme = structuredClone(original)
   const today = dateOf(now)
   const closed: string[] = []
   const opened: string[] = []
+  const readToday = (...es: (Evidence | undefined)[]) => es.every((e) => e && okUrls.has(e.source_url))
 
-  // A status that is due to move but can't (see below) keeps its old date: dating it today
-  // would claim it was still true today, which the schema's deadline check rejects.
-  const startOfToday = new Date(`${today}T00:00:00Z`)
-  const due = (c: Call) =>
-    (isLive(c) && !!c.deadline && deadlinePassed(c.deadline, startOfToday)) || (c.status === 'upcoming' && !!c.opens && c.opens <= today)
-  const held = new Set(p.calls.filter(due).map((c) => c.evidence.status))
+  // An upcoming call that is due to open but can't (its pages weren't read OK today) keeps its
+  // old status date: dating it today would claim it was still upcoming today.
+  const held = new Set(p.calls.filter((c) => c.status === 'upcoming' && c.opens && c.opens <= today).map((c) => c.evidence.status))
   for (const { evidence } of evidenceRefs(p)) {
     if (okUrls.has(evidence.source_url) && evidence.checked_at < today && !held.has(evidence)) evidence.checked_at = today
   }
 
-  // A status moves only when the pages stating it were read unchanged today; a changed page goes to review instead.
-  const readToday = (...es: (Evidence | undefined)[]) => es.every((e) => e && okUrls.has(e.source_url))
   for (const c of p.calls) {
-    if (isLive(c) && c.deadline && readToday(c.evidence.status, c.evidence.deadline) && deadlinePassed(c.deadline, now)) {
+    // The stated deadline is the funder's own fact, so a call past it closes whether its page
+    // read OK, failed or changed. A changed page's PR reopens it if the deadline moved.
+    if (isLive(c) && c.deadline && deadlinePassed(c.deadline, now)) {
       c.status = 'closed'
       c.evidence.status = { ...c.evidence.deadline! }
       closed.push(c.id)
-    } else if (c.status === 'upcoming' && c.opens && readToday(c.evidence.status, c.evidence.opens) && c.opens <= today) {
+    } else if (c.status === 'upcoming' && c.opens && c.opens <= today && readToday(c.evidence.status, c.evidence.opens)) {
+      // Opening is new information, so it needs the pages read unchanged today.
       c.status = 'open'
       c.evidence.status = { ...c.evidence.opens! }
       opened.push(c.id)

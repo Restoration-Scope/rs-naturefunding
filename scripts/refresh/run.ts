@@ -179,7 +179,7 @@ async function draftFor(s: Source, p: Programme, read: Extract<Fetched, { ok: tr
     ].join('\n')
     // Only the schema's parsed value is ever written; a draft that fails the schema becomes an issue.
     if (!r.programme) return { ...base, files: {}, title, body, datesOnly: false, review: r.review, error: 'the draft does not fit the schema' }
-    const key = proposalKey(s.id, read.hash, r.programme)
+    const key = proposalKey(s, read.hash, r.programme)
     return {
       ...base,
       key,

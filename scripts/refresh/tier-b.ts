@@ -22,8 +22,10 @@ export type Change = { path: string; kind: 'changed' | 'added' | 'requoted' | 'r
 
 export type Review = { overall: 'approve' | 'reject' | 'unclear'; verdicts: { path: string; verdict: string; reason: string }[]; missed: string }
 
-export const MAX_QUOTE = 300
-const MAX_LABEL = 200
+/** Caps on what the model returns, on top of the schema: a new quote, any other text, any list, the calls. */
+export const LIMITS = { quote: 400, text: 600, list: 60, calls: 20 }
+const CALL_KEYS = new Set(['id', 'label', 'url', 'status', 'opens', 'deadline', 'quotes'])
+const QUOTE_KEYS = new Set(['status', 'opens', 'deadline'])
 
 /** JSON with sorted keys, so key order never counts as a difference. */
 function canon(v: unknown): string {
@@ -36,6 +38,14 @@ function canon(v: unknown): string {
 const same = (a: unknown, b: unknown) => canon(a) === canon(b)
 const isRecord = (v: unknown): v is Record<string, unknown> => !!v && typeof v === 'object' && !Array.isArray(v)
 
+/** The first string or list in a model value past LIMITS, as a reason; null when within. */
+function oversize(v: unknown, at: string): string | null {
+  if (typeof v === 'string') return v.length > LIMITS.text ? `${at} longer than ${LIMITS.text} characters` : null
+  if (Array.isArray(v)) return v.length > LIMITS.list ? `${at} has more than ${LIMITS.list} items` : v.reduce<string | null>((r, x, i) => r ?? oversize(x, `${at}[${i}]`), null)
+  if (isRecord(v)) return Object.entries(v).reduce<string | null>((r, [k, x]) => r ?? oversize(x, `${at}.${k.slice(0, 40)}`), null)
+  return null
+}
+
 /** The value as the schema reads it. Unknown keys are refused, not silently dropped. */
 function fit<T>(schema: z.ZodType<T>, value: unknown): { ok: true; value: T } | { ok: false; why: string } {
   const r = schema.safeParse(value)
@@ -46,7 +56,8 @@ function fit<T>(schema: z.ZodType<T>, value: unknown): { ok: true; value: T } | 
 
 /**
  * Applies an extraction to a programme, for facts this page states. Pure. A fact moves only
- * when its value fits the schema and its quote (at most MAX_QUOTE characters) is on the page;
+ * when its value fits the schema and LIMITS, and its quote (at most LIMITS.quote characters)
+ * is on the page; unknown keys, at any level, are refused, never dropped;
  * a fact still quoted on the page is dated today; a fact whose quote is gone and that the
  * extractor did not confirm stays as it was and is listed. `programme` is the schema's parsed
  * value, or null when the draft fails the schema.
@@ -55,9 +66,11 @@ export function applyExtraction(original: Programme, source: Source, x: Extracti
   const p: Programme = structuredClone(original)
   const today = dateOf(now)
   const page = comparable(pageText)
-  const onPage = (q: unknown): q is string => typeof q === 'string' && q.length <= MAX_QUOTE && quoteOnPage(page, q)
-  const quoteWhy = (q: unknown) => (typeof q === 'string' && q.length > MAX_QUOTE ? `quote longer than ${MAX_QUOTE} characters` : 'quote not on the page')
-  const short = (q: unknown) => (typeof q === 'string' ? q.slice(0, MAX_QUOTE) : '')
+  // A quote we already hold is checked as it is; a new one from the model is capped first.
+  const stillOnPage = (q: string) => quoteOnPage(page, q)
+  const onPage = (q: unknown): q is string => typeof q === 'string' && q.length <= LIMITS.quote && quoteOnPage(page, q)
+  const quoteWhy = (q: unknown) => (typeof q === 'string' && q.length > LIMITS.quote ? `quote longer than ${LIMITS.quote} characters` : 'quote not on the page')
+  const short = (q: unknown) => (typeof q === 'string' ? q.slice(0, LIMITS.quote) : '')
   const evidence = (quote: string): Evidence => ({ source_url: source.url, quote, checked_at: today, method: 'page' })
   const changes: Change[] = []
   const fields = isRecord(x.fields) ? x.fields : {}
@@ -68,9 +81,10 @@ export function applyExtraction(original: Programme, source: Source, x: Extracti
     if (!isRecord(got) || got.value === null || got.value === undefined) continue
     if (old && old.source_url !== source.url) continue
     const path = field
-    const value = fit(programmeSchema.shape[field] as z.ZodType<unknown>, got.value)
+    const tooBig = oversize(got.value, 'value')
+    const value = tooBig ? { ok: false as const, why: tooBig } : fit(programmeSchema.shape[field] as z.ZodType<unknown>, got.value)
     if (!value.ok) {
-      changes.push({ path, kind: 'rejected', old: p[field], new: '(not shown)', quote: short(got.quote), why: `value ${value.why}` })
+      changes.push({ path, kind: 'rejected', old: p[field], new: '(not shown)', quote: short(got.quote), why: tooBig ?? `value ${value.why}` })
       continue
     }
     if (!onPage(got.quote)) {
@@ -78,7 +92,7 @@ export function applyExtraction(original: Programme, source: Source, x: Extracti
       continue
     }
     if (same(p[field], value.value)) {
-      if (old && onPage(old.quote)) old.checked_at = today
+      if (old && stillOnPage(old.quote)) old.checked_at = today
       else {
         p.evidence[field] = evidence(got.quote)
         changes.push({ path, kind: 'requoted', old: old?.quote ?? null, new: got.quote, quote: got.quote })
@@ -90,13 +104,24 @@ export function applyExtraction(original: Programme, source: Source, x: Extracti
     p.evidence[field] = evidence(got.quote)
   }
 
-  for (const raw of Array.isArray(x.calls) ? x.calls : []) {
+  const calls = Array.isArray(x.calls) ? x.calls : []
+  if (calls.length > LIMITS.calls) {
+    changes.push({ path: 'calls', kind: 'rejected', old: null, new: '(not shown)', quote: '', why: `${calls.length} calls; only the first ${LIMITS.calls} were read` })
+  }
+  for (const raw of calls.slice(0, LIMITS.calls)) {
     if (!isRecord(raw)) continue
     const c = raw
     const quotes = isRecord(c.quotes) ? c.quotes : {}
     const path = `calls[${short(c.id).slice(0, 80)}]`
     const existing = p.calls.find((k) => k.id === c.id)
     if (existing && existing.evidence.status.source_url !== source.url) continue
+    const unknown = [...Object.keys(c).filter((k) => !CALL_KEYS.has(k)), ...Object.keys(quotes).filter((k) => !QUOTE_KEYS.has(k)).map((k) => `quotes.${k}`)]
+    const tooBig = oversize({ ...c, quotes: undefined }, 'call')
+    if (unknown.length || tooBig) {
+      const why = unknown.length ? `call has keys the schema does not know (${unknown.slice(0, 5).map((k) => k.slice(0, 40)).join(', ')})` : tooBig!
+      changes.push({ path, kind: 'rejected', old: existing ?? null, new: '(not shown)', quote: '', why })
+      continue
+    }
     const needed = [quotes.status, c.deadline ? quotes.deadline : null, c.opens ? quotes.opens : null].filter((q) => q !== null)
     const missing = needed.filter((q) => !onPage(q))
     const candidate = {
@@ -108,10 +133,7 @@ export function applyExtraction(original: Programme, source: Source, x: Extracti
       },
     }
     const parsed = fit(callSchema, candidate)
-    const why = !parsed.ok
-      ? `call ${parsed.why}`
-      : typeof c.label === 'string' && c.label.length > MAX_LABEL ? `label longer than ${MAX_LABEL} characters`
-      : missing.length ? quoteWhy(missing[0]) : null
+    const why = !parsed.ok ? `call ${parsed.why}` : missing.length ? quoteWhy(missing[0]) : null
     if (!parsed.ok || why) {
       changes.push({ path, kind: 'rejected', old: existing ?? null, new: '(not shown)', quote: missing.map(short).join(' | '), why: why! })
       continue
@@ -128,7 +150,7 @@ export function applyExtraction(original: Programme, source: Source, x: Extracti
     } else {
       for (const [k, e] of Object.entries(existing.evidence) as [keyof Call['evidence'], Evidence | undefined][]) {
         if (!e) continue
-        if (onPage(e.quote)) e.checked_at = today
+        if (stillOnPage(e.quote)) e.checked_at = today
         else if (next.evidence[k]) existing.evidence[k] = next.evidence[k]
       }
     }
@@ -137,7 +159,7 @@ export function applyExtraction(original: Programme, source: Source, x: Extracti
   const unconfirmed: string[] = []
   for (const { path, evidence: e } of evidenceRefs(p)) {
     if (e.source_url !== source.url || e.checked_at === today) continue
-    if (onPage(e.quote)) e.checked_at = today
+    if (stillOnPage(e.quote)) e.checked_at = today
     else unconfirmed.push(`${path}: "${e.quote}"`)
   }
 
@@ -194,11 +216,14 @@ const withoutDates = (v: unknown): unknown =>
   : v
 
 /**
- * What a proposal says, as one hash: the page, the page version and the facts it proposes,
- * leaving out check dates, which move every day without changing the proposal.
+ * What a proposal says about this page, as one hash: the page version and the facts and calls
+ * that cite this page, leaving out check dates, which move every day without changing the
+ * proposal, and facts from other pages, which other runs refresh.
  */
-export function proposalKey(sourceId: string, pageHash: string, p: Programme): string {
-  return new Bun.CryptoHasher('sha256').update(canon({ source: sourceId, page: pageHash, programme: withoutDates(p) })).digest('hex')
+export function proposalKey(source: Source, pageHash: string, p: Programme): string {
+  const facts = FIELDS.filter((f) => p.evidence[f]?.source_url === source.url).map((f) => [f, p[f], p.evidence[f]!.quote])
+  const calls = p.calls.filter((c) => Object.values(c.evidence).some((e) => e?.source_url === source.url)).map(withoutDates)
+  return new Bun.CryptoHasher('sha256').update(canon({ source: source.id, page: pageHash, facts, calls })).digest('hex')
 }
 
 export type Draft = {
