@@ -1,6 +1,7 @@
 import { z } from 'zod'
 
 export const isoDate = z.string().regex(/^\d{4}-\d{2}-\d{2}$/, 'YYYY-MM-DD')
+export const slug = z.string().regex(/^[a-z0-9]+(-[a-z0-9]+)*$/, 'lowercase-kebab-case')
 
 /** Where a fact was read: the funder's own page, the exact words, and when. */
 export const evidence = z.object({
@@ -40,15 +41,31 @@ export const applicantType = z.enum([
   'company',
 ])
 
-/** How an applicant reaches the money. */
+/**
+ * How an applicant reaches the money.
+ * - direct: eligible applicants apply to an open call, run by the funder or its administrator.
+ * - intermediary: no applications here; the money flows through partners (country programmes,
+ *   accredited entities). Child programmes (`parent`) are the channels when we list them.
+ * - invitation_only: the funder picks grantees and takes no unsolicited proposals.
+ */
 export const access = z.enum(['direct', 'intermediary', 'invitation_only', 'unspecified'])
 
-/** How calls recur. */
+/** How calls recur: fixed rounds with deadlines, or rolling (apply any time, no deadline). */
 export const window = z.enum(['fixed', 'rolling', 'unspecified'])
 
 export const callStatus = z.enum(['upcoming', 'open', 'closed', 'suspended', 'unknown'])
 
 const iso2 = z.string().regex(/^[A-Z]{2}$/)
+
+export const region = z.enum([
+  'africa',
+  'asia',
+  'europe',
+  'latin_america_caribbean',
+  'middle_east',
+  'north_america',
+  'oceania',
+])
 
 export const deadline = z.object({
   date: isoDate,
@@ -58,8 +75,12 @@ export const deadline = z.object({
   text: z.string().min(3),
 })
 
+/**
+ * One round of applications. A rolling programme has one standing call with no deadline.
+ * `status` is as of `evidence.status.checked_at`.
+ */
 export const call = z.object({
-  id: z.string().regex(/^[a-z0-9-]+$/),
+  id: slug,
   label: z.string(),
   url: z.url(),
   status: callStatus,
@@ -73,11 +94,16 @@ export const call = z.object({
 })
 export type Call = z.infer<typeof call>
 
-export const amount = z.object({
-  currency: z.string().regex(/^[A-Z]{3}$/),
-  min: z.number().positive().optional(),
-  max: z.number().positive().optional(),
-})
+export const amount = z
+  .object({
+    currency: z.string().regex(/^[A-Z]{3}$/),
+    min: z.number().positive().optional(),
+    max: z.number().positive().optional(),
+    /** The funder gives a usual range ("typically", "generally"), not hard limits. */
+    typical: z.literal(true).optional(),
+  })
+  .refine((a) => a.min !== undefined || a.max !== undefined, 'amount needs min or max')
+  .refine((a) => a.min === undefined || a.max === undefined || a.min <= a.max, 'min is above max')
 
 export const geography = z.discriminatedUnion('scope', [
   z.object({ scope: z.literal('global') }),
@@ -87,7 +113,19 @@ export const geography = z.discriminatedUnion('scope', [
     /** Plain-language name of a region or hotspot the funder uses, e.g. "Tropical Andes". */
     label: z.string().optional(),
   }),
+  /** Eligibility the funder states as a group, e.g. "ODA-eligible countries", with no country list. */
+  z.object({
+    scope: z.literal('regions'),
+    regions: z.array(region).min(1),
+    label: z.string().min(3),
+  }),
 ])
+
+const organisation = z.object({ name: z.string(), url: z.url() })
+
+/** Whether a quote names the year of a date, as "2026" or "'26"-style two digits. */
+const statesYear = (quote: string, date: string) =>
+  quote.includes(date.slice(0, 4)) || new RegExp(`(^|\\D)${date.slice(2, 4)}(\\D|$)`).test(quote)
 
 /**
  * One funding programme. Each fact is stated on the funder's page (with its evidence)
@@ -95,23 +133,28 @@ export const geography = z.discriminatedUnion('scope', [
  */
 export const programme = z
   .object({
-    id: z.string().regex(/^[a-z0-9-]+$/),
+    id: slug,
     name: z.string(),
-    funder: z.object({ name: z.string(), url: z.url() }),
+    funder: organisation,
+    /** Who runs the call for the funder, e.g. a UNDP country office for a GEF SGP country programme. */
+    administered_by: organisation.nullable(),
+    /** The umbrella programme this one belongs to, e.g. `gef-sgp` for a country programme. */
+    parent: slug.nullable(),
     url: z.url(),
     /** Our own words, one or two sentences. Not copied from the funder. */
     summary: z.string().min(20).max(400),
     approaches: z.array(approach).min(1),
-    applicant_types: z.array(applicantType).nullable(),
+    applicant_types: z.array(applicantType).min(1).nullable(),
     geography: geography.nullable(),
     access,
     window,
     amount: amount.nullable(),
     co_finance_required: z.boolean().nullable(),
     /** What the funder asks grantees to report, in our words. */
-    reporting: z.string().nullable(),
+    reporting: z.string().min(10).nullable(),
     calls: z.array(call),
     evidence: z.object({
+      administered_by: evidence.optional(),
       applicant_types: evidence.optional(),
       geography: evidence.optional(),
       access: evidence.optional(),
@@ -120,11 +163,14 @@ export const programme = z
       co_finance_required: evidence.optional(),
       reporting: evidence.optional(),
     }),
-    /** Last time every fact above was read against the funder's pages. */
+    /** The oldest evidence date: every fact above was read on or after this day. */
     checked_at: isoDate,
   })
   .superRefine((p, ctx) => {
+    const issue = (path: (string | number)[], message: string) => ctx.addIssue({ code: 'custom', path, message })
+
     const stated: Record<keyof typeof p.evidence, boolean> = {
+      administered_by: p.administered_by !== null,
       applicant_types: p.applicant_types !== null,
       geography: p.geography !== null,
       access: p.access !== 'unspecified',
@@ -134,17 +180,63 @@ export const programme = z
       reporting: p.reporting !== null,
     }
     for (const [field, isStated] of Object.entries(stated)) {
-      if (isStated && !p.evidence[field as keyof typeof p.evidence]) {
-        ctx.addIssue({ code: 'custom', path: ['evidence', field], message: `${field} is stated but has no evidence` })
+      const e = p.evidence[field as keyof typeof p.evidence]
+      if (isStated && !e) issue(['evidence', field], `${field} is stated but has no evidence`)
+      if (!isStated && e) issue(['evidence', field], `${field} has evidence but is not stated`)
+    }
+
+    if (p.parent === p.id) issue(['parent'], 'a programme cannot be its own parent')
+    if ((p.access === 'intermediary' || p.access === 'invitation_only') && p.calls.length > 0) {
+      issue(['calls'], `${p.access} programmes take no applications, so they list no calls`)
+    }
+
+    const ids = new Set<string>()
+    for (const [i, c] of p.calls.entries()) {
+      const at = (...rest: (string | number)[]) => ['calls', i, ...rest]
+      if (ids.has(c.id)) issue(at('id'), `duplicate call id ${c.id}`)
+      ids.add(c.id)
+      if (c.deadline && !c.evidence.deadline) issue(at('evidence', 'deadline'), 'deadline needs evidence')
+      if (!c.deadline && c.evidence.deadline) issue(at('deadline'), 'deadline evidence without a deadline')
+      if (c.opens && !c.evidence.opens) issue(at('evidence', 'opens'), 'opens needs evidence')
+      if (!c.opens && c.evidence.opens) issue(at('opens'), 'opens evidence without an opens date')
+      for (const [field, date] of [['opens', c.opens], ['deadline', c.deadline?.date]] as const) {
+        const quote = c.evidence[field]?.quote
+        if (date && quote && !statesYear(quote, date)) {
+          issue(at(field), `the quote for ${date} does not state the year; a yearless date stays null`)
+        }
+      }
+      if (p.window === 'rolling' && c.deadline) issue(at('deadline'), 'a rolling programme has no deadlines')
+      if (c.opens && c.deadline && c.opens > c.deadline.date) issue(at('opens'), 'opens after the deadline')
+      const seen = c.evidence.status.checked_at
+      if (c.status === 'open' && c.deadline && c.deadline.date < seen) {
+        issue(at('status'), `open, but the deadline ${c.deadline.date} passed before it was checked on ${seen}`)
+      }
+      if (c.status === 'upcoming' && c.opens && c.opens <= seen) {
+        issue(at('status'), `upcoming, but it opened on ${c.opens}, before it was checked on ${seen}`)
       }
     }
-    for (const [i, c] of p.calls.entries()) {
-      if (c.deadline && !c.evidence.deadline) {
-        ctx.addIssue({ code: 'custom', path: ['calls', i, 'evidence', 'deadline'], message: 'deadline needs evidence' })
-      }
-      if (c.opens && !c.evidence.opens) {
-        ctx.addIssue({ code: 'custom', path: ['calls', i, 'evidence', 'opens'], message: 'opens needs evidence' })
-      }
+
+    const allEvidence = [
+      ...Object.values(p.evidence),
+      ...p.calls.flatMap((c) => [c.evidence.status, c.evidence.opens, c.evidence.deadline]),
+    ].filter((e): e is Evidence => e !== undefined)
+    for (const e of allEvidence) {
+      if (e.checked_at < p.checked_at) issue(['checked_at'], `programme claims a check on ${p.checked_at}, but a fact was last read on ${e.checked_at}`)
     }
   })
 export type Programme = z.infer<typeof programme>
+
+/** A page the refresh job re-reads. Every evidence URL of a programme has a source. */
+export const source = z.object({
+  id: slug,
+  programme_id: slug,
+  url: z.url(),
+  /** CSS selector for the main text; null reads the whole body. */
+  selector: z.string().min(1).nullable(),
+  /** Where on the page the facts sit, for the extractor. */
+  hint: z.string().nullable(),
+  /** How often to re-read it. */
+  cycle: z.enum(['daily', 'weekly', 'monthly']),
+})
+export type Source = z.infer<typeof source>
+export const sources = z.array(source)
