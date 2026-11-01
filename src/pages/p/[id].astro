@@ -94,7 +94,8 @@ const description = `${p.name} from ${p.funder.name}: ${
         : `${stateLabels[state].toLowerCase()}.`
 } ${amount ? `${amount}. ` : ''}Each fact links to the funder’s own page.`
 
-const jsonLd = [
+// A paid partnership is a contract for work, not a grant, so it gets no MonetaryGrant markup.
+const grantLd = p.kind === 'partnership' ? [] : [
   {
     '@context': 'https://schema.org',
     '@type': 'MonetaryGrant',
@@ -114,6 +115,9 @@ const jsonLd = [
       : {}),
     subjectOf: { '@type': 'WebPage', url: absolute(`/p/${p.id}/`), dateModified: p.checked_at },
   },
+]
+const jsonLd = [
+  ...grantLd,
   {
     '@context': 'https://schema.org',
     '@type': 'BreadcrumbList',
@@ -139,6 +143,7 @@ const jsonLd = [
       From <a href={p.funder.url}>{p.funder.name}</a>
       {p.administered_by && <span>, run by <a href={p.administered_by.url}>{p.administered_by.name}</a></span>}
     </p>
+    {p.kind === 'partnership' && <p class="band__kind">Paid partnership, not a grant: the funder pays for work under a contract.</p>}
     <p class="band__summary">{p.summary}</p>
     <p class="band__note">Summary in our words. Each fact below shows the funder’s own words and links to its page.</p>
   </div>
@@ -423,6 +428,13 @@ const jsonLd = [
     max-width: 62ch;
     margin-top: 1rem;
     font-size: 1.0625rem;
+  }
+  .band__kind {
+    margin-top: 1rem;
+    font-weight: 700;
+  }
+  .band__kind + .band__summary {
+    margin-top: 0.35rem;
   }
   .band__note {
     margin-top: 0.5rem;
