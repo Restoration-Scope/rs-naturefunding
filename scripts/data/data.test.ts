@@ -110,6 +110,9 @@ describe('free text is capped', () => {
     ['evidence.amount.quote', (p: Programme) => { p.evidence.amount = ev('Grants of up to $50,000. '.repeat(20)) }],
     ['calls.0.label', (p: Programme) => { p.calls[0].label = 'x'.repeat(201) }],
     ['calls', (p: Programme) => { p.calls = Array.from({ length: 21 }, (_, i) => ({ ...p.calls[0], id: `round-${i}` })) }],
+    ['url', (p: Programme) => { p.url = `https://funder.example/${'x'.repeat(500)}` }],
+    ['id', (p: Programme) => { p.id = 'x'.repeat(81) }],
+    ['calls.0.deadline.timezone', (p: Programme) => { p.calls[0].deadline!.timezone = 'x'.repeat(65) }],
     ['geography.countries', (p: Programme) => { p.geography = { scope: 'countries', countries: Array(251).fill('KE') }; p.evidence.geography = ev('Projects in Kenya only.') }],
   ] as const)('%s', (path, change) => {
     const p = fixture()

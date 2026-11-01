@@ -5,12 +5,13 @@ import { meaningfulQuote, MIN_QUOTE_CHARS } from './text'
 export const isoDate = z.string().regex(/^\d{4}-\d{2}-\d{2}$/, 'YYYY-MM-DD')
 /** Caps on free text, so a model's output can't carry a page-sized string into a listing. */
 const name = z.string().min(1).max(200)
+const url = z.url().max(500)
 
-export const slug = z.string().regex(/^[a-z0-9]+(-[a-z0-9]+)*$/, 'lowercase-kebab-case')
+export const slug = z.string().max(80).regex(/^[a-z0-9]+(-[a-z0-9]+)*$/, 'lowercase-kebab-case')
 
 /** Where a fact was read: the funder's own page, the exact words, and when. */
 export const evidence = z.object({
-  source_url: z.url(),
+  source_url: url,
   quote: z.string().max(400).refine(meaningfulQuote, `a quote needs at least ${MIN_QUOTE_CHARS} characters besides spaces`),
   checked_at: isoDate,
   method: z.enum(['page', 'api', 'human']),
@@ -75,7 +76,7 @@ export const region = z.enum([
 export const deadline = z.object({
   date: isoDate,
   time: z.string().regex(/^\d{2}:\d{2}$/).optional(),
-  timezone: z.string().optional(),
+  timezone: z.string().max(64).optional(),
   /** The deadline as the funder wrote it. */
   text: z.string().min(3).max(200),
 })
@@ -87,7 +88,7 @@ export const deadline = z.object({
 export const call = z.object({
   id: slug,
   label: name,
-  url: z.url(),
+  url,
   status: callStatus,
   opens: isoDate.nullable(),
   deadline: deadline.nullable(),
@@ -126,7 +127,7 @@ export const geography = z.discriminatedUnion('scope', [
   }),
 ])
 
-const organisation = z.object({ name, url: z.url() })
+const organisation = z.object({ name, url })
 
 const MONTH = String.raw`(?:jan(?:uary)?|feb(?:ruary)?|mar(?:ch)?|apr(?:il)?|may|june?|july?|aug(?:ust)?|sep(?:t(?:ember)?)?|oct(?:ober)?|nov(?:ember)?|dec(?:ember)?)\.?`
 
@@ -157,7 +158,7 @@ export const programme = z
     administered_by: organisation.nullable(),
     /** The umbrella programme this one belongs to, e.g. `gef-sgp` for a country programme. */
     parent: slug.nullable(),
-    url: z.url(),
+    url,
     /** Our own words, one or two sentences. Not copied from the funder. */
     summary: z.string().min(20).max(400),
     approaches: z.array(approach).min(1),
@@ -249,7 +250,7 @@ export type Programme = z.infer<typeof programme>
 export const source = z.object({
   id: slug,
   programme_id: slug,
-  url: z.url(),
+  url,
   /** CSS selector for the main text; null reads the whole body. */
   selector: z.string().min(1).nullable(),
   /** Where on the page the facts sit, for the extractor. */

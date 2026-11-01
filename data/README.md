@@ -31,7 +31,7 @@ Every listing on naturefunding.org is a JSON file in this folder. The contract i
 
 **`null` means the funder's pages don't say**, never "no restriction". A missing amount is unknown, not unlimited.
 
-Text is capped so no field can carry a whole page: names, labels and deadline text 200 characters, `summary` 400, `reporting` 600, quotes 400; at most 250 countries and 20 calls.
+Text is capped so no field can carry a whole page: names, labels and deadline text 200 characters, `summary` 400, `reporting` 600, quotes 400; ids 80, URLs 500, time zones 64; at most 250 countries and 20 calls.
 
 ## A call
 
