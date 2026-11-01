@@ -1,16 +1,622 @@
 ---
+import Base from '../layouts/Base.astro'
+import Listing from '../components/Listing.astro'
+import { listings, sortListings, stats } from '../lib/data'
+import { countriesByRegion } from '../lib/geo'
+import { longDate } from '../lib/format'
+import {
+  accessLabels,
+  applicantLabels,
+  approachLabels,
+  sizeBuckets,
+  stateFilterLabels,
+  type State,
+} from '../lib/labels'
+import { SITE_NAME, absolute } from '../lib/site'
+
+const sorted = [...listings].sort(sortListings)
+const now = sorted.filter((l) => l.state !== 'none' && l.state !== 'closed')
+const later = sorted.filter((l) => l.state === 'none' || l.state === 'closed')
+const description =
+  'A free directory of grants for nature restoration and conservation. Every deadline, amount and eligibility rule is read from the funder’s own page, with the date we checked it.'
+
+const usedApproaches = Object.entries(approachLabels).filter(([k]) =>
+  listings.some((l) => l.p.approaches.includes(k as never)),
+)
+const usedApplicants = Object.entries(applicantLabels).filter(([k]) =>
+  listings.some((l) => l.p.applicant_types?.includes(k as never)),
+)
+const states: State[] = ['open', 'rolling', 'upcoming', 'none', 'closed']
+const routes = (['direct', 'intermediary', 'invitation_only'] as const).map((k) => [k, accessLabels[k]])
+
+const jsonLd = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'WebSite',
+    name: SITE_NAME,
+    url: absolute('/'),
+    description,
+    publisher: { '@type': 'Organization', name: 'Restoration Scope', url: 'https://restorationscope.com' },
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'Dataset',
+    name: 'Grants and funding for nature restoration and conservation',
+    description:
+      'Funding programmes and calls for nature restoration and conservation. Each fact carries the funder page it was read from, a verbatim quote and the date it was checked.',
+    url: absolute('/'),
+    license: 'https://creativecommons.org/licenses/by/4.0/',
+    isAccessibleForFree: true,
+    creator: { '@type': 'Organization', name: 'Restoration Scope', url: 'https://restorationscope.com' },
+    dateModified: stats.lastChecked ?? undefined,
+    keywords: ['restoration grants', 'conservation funding', 'reforestation grants', 'mangrove funding'],
+    distribution: [
+      { '@type': 'DataDownload', encodingFormat: 'application/json', contentUrl: absolute('/data.json') },
+      { '@type': 'DataDownload', encodingFormat: 'text/csv', contentUrl: absolute('/data.csv') },
+    ],
+  },
+]
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<Base
+  title="naturefunding.org: grants for nature restoration, checked against each funder’s page"
+  description={description}
+  path="/"
+  nav="finder"
+  jsonLd={jsonLd}
+>
+  <div slot="band" class="wrap band">
+    <h1 class="band__title">Grants for nature restoration and conservation, checked against each funder’s own page.</h1>
+    <p class="band__lede">
+      <span class="band__more">Every deadline, amount and eligibility rule comes from the funder’s own website, quoted and dated.</span>{' '}
+      Free and neutral, with no paid listings. Built openly by Restoration Scope.
+    </p>
+    <p class="band__stats">
+      <span><strong class="mono">{stats.openCalls}</strong> open now or rolling</span>
+      <span><strong class="mono">{stats.programmes}</strong> programmes listed</span>
+      {stats.lastChecked && <span class="band__more">Last checked {longDate(stats.lastChecked)}</span>}
+    </p>
+  </div>
+
+  <div class="wrap finder">
+    <form class="filters" role="search" aria-label="Search and filter funding" data-form>
+      <div class="field">
+        <label class="field__label field__label--search" for="q">Search</label>
+        <input id="q" name="q" type="search" placeholder="Funder, programme or place" autocomplete="off" />
+      </div>
+
+      <details class="filters__panel" id="filters" data-filters>
+        <summary class="filters__toggle">
+          <span>Filters</span>
+          <span class="filters__count mono" data-filter-count hidden></span>
+        </summary>
+
+        <div class="filters__form">
+
+        <fieldset class="field">
+          <legend class="field__label">Status</legend>
+          {
+            states.map((s) => (
+              <label class="check">
+                <input type="checkbox" name="status" value={s} />
+                <span class="check__text">{stateFilterLabels[s]}</span>
+                <span class="check__n mono" data-n={`status:${s}`} />
+              </label>
+            ))
+          }
+        </fieldset>
+
+        <fieldset class="field">
+          <legend class="field__label">Deadline</legend>
+          <label class="check"><input type="radio" name="within" value="" checked /> <span class="check__text">Any time</span></label>
+          <label class="check"><input type="radio" name="within" value="30" /> <span class="check__text">Closes within 30 days</span></label>
+          <label class="check"><input type="radio" name="within" value="90" /> <span class="check__text">Closes within 90 days</span></label>
+        </fieldset>
+
+        <div class="field">
+          <label class="field__label" for="where">Where the project is</label>
+          <select id="where" name="where">
+            <option value="">Anywhere</option>
+            <optgroup label="Regions">
+              {countriesByRegion.map((r) => <option value={`r:${r.region}`}>{r.label}</option>)}
+            </optgroup>
+            {
+              countriesByRegion.map((r) => (
+                <optgroup label={r.label}>
+                  {r.countries.map((c) => (
+                    <option value={c.code} data-region={r.region}>{c.name}</option>
+                  ))}
+                </optgroup>
+              ))
+            }
+          </select>
+          <p class="field__hint">Includes worldwide programmes.</p>
+        </div>
+
+        <fieldset class="field">
+          <legend class="field__label">How to apply</legend>
+          {
+            routes.map(([k, label]) => (
+              <label class="check">
+                <input type="checkbox" name="access" value={k} />
+                <span class="check__text">{label}</span>
+                <span class="check__n mono" data-n={`access:${k}`} />
+              </label>
+            ))
+          }
+        </fieldset>
+
+        <fieldset class="field">
+          <legend class="field__label">Who can apply</legend>
+          {
+            usedApplicants.map(([k, label]) => (
+              <label class="check">
+                <input type="checkbox" name="applicant" value={k} />
+                <span class="check__text">{label}</span>
+                <span class="check__n mono" data-n={`applicant:${k}`} />
+              </label>
+            ))
+          }
+        </fieldset>
+
+        <fieldset class="field" data-more>
+          <legend class="field__label">Restoration approach</legend>
+          {
+            usedApproaches.map(([k, label]) => (
+              <label class="check">
+                <input type="checkbox" name="approach" value={k} />
+                <span class="check__text">{label}</span>
+                <span class="check__n mono" data-n={`approach:${k}`} />
+              </label>
+            ))
+          }
+          <button type="button" class="linkish more" data-more-toggle data-label={`Show all ${usedApproaches.length}`} aria-expanded="false" hidden>
+            Show all {usedApproaches.length}
+          </button>
+        </fieldset>
+
+        <fieldset class="field">
+          <legend class="field__label">Grant size</legend>
+          {
+            Object.entries(sizeBuckets).map(([k, b]) => (
+              <label class="check">
+                <input type="checkbox" name="size" value={k} />
+                <span class="check__text">{b.label}</span>
+                <span class="check__n mono" data-n={`size:${k}`} />
+              </label>
+            ))
+          }
+          <p class="field__hint">Converted roughly to US dollars, only for this filter.</p>
+        </fieldset>
+        <button type="button" class="button filters__done" data-filters-done>Show results</button>
+        </div>
+      </details>
+    </form>
+
+    <section class="results" aria-labelledby="results-title">
+      <div class="results__head">
+        <h2 id="results-title" class="results__count" aria-live="polite" data-result-count>
+          {sorted.length} programmes
+        </h2>
+        <p class="results__sort">Soonest deadline first</p>
+      </div>
+      <div class="chips" data-chips hidden></div>
+
+      <div class="columns" aria-hidden="true">
+        <span>Programme and funder</span><span>Deadline</span><span>Amount</span>
+      </div>
+      <ol class="list" data-list>
+        {now.map((l) => <Listing listing={l} />)}
+      </ol>
+
+      <details class="later" data-later>
+        <summary class="later__toggle">
+          <span>Not open now <span class="later__hint">No open call, or closed</span></span>
+          <span class="later__n mono" data-later-count>{later.length}</span>
+        </summary>
+        <ol class="list" data-list-later>
+          {later.map((l) => <Listing listing={l} />)}
+        </ol>
+      </details>
+
+      <div class="empty" data-empty hidden>
+        <h3>Nothing matches.</h3>
+        <p>Try another search, remove a filter, or <button type="button" class="linkish" data-reset>clear all</button>.</p>
+      </div>
+      <noscript>
+        <p class="noscript">Filters need JavaScript. Every programme is listed above, soonest deadline first.</p>
+      </noscript>
+    </section>
+  </div>
+</Base>
+
+<script>
+  import { initFinder } from '../lib/finder'
+  initFinder()
+</script>
+
+<style>
+  .band {
+    padding-block: 1.25rem 1.5rem;
+  }
+  @media (min-width: 48rem) {
+    .band {
+      padding-block: 1.75rem 2.25rem;
+    }
+  }
+  .band__title {
+    max-width: 22ch;
+    font-size: clamp(1.375rem, 0.95rem + 2.2vw, 2.75rem);
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+  }
+  .band__lede {
+    max-width: 62ch;
+    margin-top: 0.9rem;
+    color: var(--shell-ink-2);
+    font-size: 1.0625rem;
+  }
+  @media (max-width: 47.99rem) {
+    .band__more {
+      display: none;
+    }
+    .band__lede {
+      font-size: 0.9375rem;
+      margin-top: 0.5rem;
+    }
+  }
+  .band__stats {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem 1.5rem;
+    margin-top: 1.25rem;
+    font-size: 0.9375rem;
+    color: var(--shell-ink-2);
+  }
+  .band__stats strong {
+    color: var(--shell-ink);
+    font-size: 1.125rem;
+  }
+  /* Phones: the results count says the same, and the first grant moves up a screen. */
+  @media (max-width: 47.99rem) {
+    .band__stats {
+      display: none;
+    }
+  }
+
+  .finder {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 1.25rem;
+    margin-top: 1.5rem;
+  }
+  @media (min-width: 60rem) {
+    .finder {
+      grid-template-columns: 16.5rem minmax(0, 1fr);
+      gap: 2.5rem;
+      margin-top: 2rem;
+    }
+    .filters {
+      align-self: start;
+    }
+  }
+
+  .filters__toggle {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    min-height: 2.75rem;
+    padding: 0.5rem 1rem;
+    border-radius: var(--radius);
+    background: var(--surface);
+    box-shadow: inset 0 0 0 1.5px var(--rule-strong);
+    font-weight: 700;
+    cursor: pointer;
+    list-style: none;
+  }
+  .filters__toggle::-webkit-details-marker {
+    display: none;
+  }
+  @media (min-width: 60rem) {
+    .filters__toggle {
+      display: none;
+    }
+  }
+  .filters__toggle::after {
+    content: '';
+    width: 0.55rem;
+    height: 0.55rem;
+    border-right: 2px solid currentColor;
+    border-bottom: 2px solid currentColor;
+    transform: translateY(-25%) rotate(45deg);
+  }
+  .filters__panel[open] .filters__toggle::after {
+    transform: translateY(25%) rotate(-135deg);
+  }
+  .filters__done {
+    justify-content: center;
+  }
+  @media (min-width: 60rem) {
+    .filters__done {
+      display: none;
+    }
+  }
+  .filters__count {
+    margin-left: auto;
+    margin-right: 0.75rem;
+    padding: 0 0.45rem;
+    border-radius: 2px;
+    background: var(--tape-open);
+    color: var(--tape-ink);
+    font-size: 0.8125rem;
+  }
+  .filters {
+    display: grid;
+    gap: 0.75rem;
+  }
+  .filters__form {
+    display: grid;
+    gap: 1.4rem;
+    padding: 1.25rem 0 0.5rem;
+  }
+  @media (min-width: 60rem) {
+    .filters {
+      gap: 1.4rem;
+    }
+    .filters__form {
+      padding: 0 0 1rem;
+    }
+  }
+
+  .field {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    min-width: 0;
+  }
+  .field__label {
+    display: block;
+    margin-bottom: 0.45rem;
+    padding: 0;
+    font-size: 0.8125rem;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    color: var(--ink-2);
+  }
+  .field__hint {
+    margin-top: 0.4rem;
+    font-size: 0.8125rem;
+    color: var(--ink-2);
+  }
+  input[type='search'],
+  select {
+    width: 100%;
+    min-height: 2.75rem;
+    padding: 0.5rem 0.75rem;
+    border: 1.5px solid var(--rule-strong);
+    border-radius: var(--radius);
+    background: var(--surface);
+    color: var(--ink);
+    font: inherit;
+    font-size: 1rem;
+  }
+  input[type='search']::placeholder {
+    color: var(--ink-2);
+    opacity: 1;
+  }
+  input[type='search']:focus-visible,
+  select:focus-visible {
+    border-color: var(--focus);
+    outline-offset: 0;
+  }
+  .check {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    min-height: 2.25rem;
+    font-size: 0.9875rem;
+    cursor: pointer;
+  }
+  .check input {
+    flex: none;
+    width: 1.15rem;
+    height: 1.15rem;
+    margin: 0;
+    accent-color: var(--shell);
+  }
+  @media (prefers-color-scheme: dark) {
+    .check input {
+      accent-color: var(--tape-open);
+    }
+  }
+  .check__text {
+    flex: 1;
+  }
+  .check__n {
+    font-size: 0.8125rem;
+    color: var(--ink-2);
+  }
+  /* Long option lists show their first six until asked; a ticked option always shows. */
+  [data-more][data-collapsed] .check:nth-of-type(n + 7):not(:has(input:checked)) {
+    display: none;
+  }
+  .more {
+    margin-top: 0.35rem;
+    font-size: 0.9375rem;
+  }
+  @media (max-width: 59.99rem) {
+    .field__label--search {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      overflow: hidden;
+      clip: rect(0 0 0 0);
+      white-space: nowrap;
+    }
+  }
+  .check:has(input:disabled) {
+    color: var(--ink-2);
+    cursor: default;
+  }
+
+  .results__head {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 0.25rem 1rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 2px solid var(--ink);
+  }
+  .results__count {
+    font-size: 1.25rem;
+    font-weight: 800;
+  }
+  .results__sort {
+    font-size: 0.875rem;
+    color: var(--ink-2);
+  }
+  .chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    padding-top: 0.75rem;
+  }
+  .chips[hidden] {
+    display: none;
+  }
+  .results {
+    container: listings / inline-size;
+  }
+  .columns {
+    display: none;
+  }
+  @container listings (min-width: 52rem) {
+    .columns {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 11rem 9rem;
+      column-gap: 2rem;
+      padding: 0.6rem 0.75rem 0.5rem;
+      border-bottom: 1px solid var(--rule);
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      text-transform: uppercase;
+      color: var(--ink-2);
+    }
+  }
+  .list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  .later {
+    margin-top: 2rem;
+  }
+  .later__toggle {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    min-height: 2.75rem;
+    padding: 0.5rem 0;
+    border-bottom: 2px solid var(--ink);
+    font-size: 1.0625rem;
+    font-weight: 700;
+    cursor: pointer;
+    list-style: none;
+  }
+  .later__toggle::-webkit-details-marker {
+    display: none;
+  }
+  .later__toggle::before {
+    content: '';
+    flex: none;
+    width: 0.5rem;
+    height: 0.5rem;
+    border-right: 2px solid currentColor;
+    border-bottom: 2px solid currentColor;
+    transform: rotate(-45deg);
+  }
+  .later__hint {
+    margin-left: 0.4rem;
+    font-size: 0.875rem;
+    font-weight: 400;
+    color: var(--ink-2);
+  }
+  @media (max-width: 47.99rem) {
+    .later__hint {
+      display: block;
+      margin-left: 0;
+    }
+  }
+  .later__n {
+    margin-left: auto;
+    padding: 0 0.45rem;
+    border-radius: 2px;
+    background: var(--sunk);
+    box-shadow: inset 0 0 0 1px var(--rule);
+    font-size: 0.875rem;
+  }
+  .later[open] .later__toggle::before {
+    transform: translateY(-20%) rotate(45deg);
+  }
+  .empty {
+    padding: 2.5rem 0;
+  }
+  .empty h3 {
+    font-size: 1.25rem;
+  }
+  .empty p {
+    margin-top: 0.5rem;
+    color: var(--ink-2);
+  }
+  .linkish {
+    padding: 0;
+    border: 0;
+    background: none;
+    color: var(--link);
+    font: inherit;
+    text-decoration: underline;
+    text-underline-offset: 0.18em;
+    cursor: pointer;
+  }
+  .noscript {
+    padding-top: 1rem;
+    color: var(--ink-2);
+  }
+</style>
+
+<style is:global>
+  .chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    min-height: 2rem;
+    padding: 0.2rem 0.4rem 0.2rem 0.65rem;
+    border: 1.5px solid var(--rule-strong);
+    border-radius: 2px;
+    background: var(--surface);
+    color: var(--ink);
+    font: inherit;
+    font-size: 0.875rem;
+    cursor: pointer;
+  }
+  .chip:hover {
+    border-color: var(--ink);
+  }
+  .chip__x {
+    display: inline-grid;
+    place-items: center;
+    width: 1.25rem;
+    height: 1.25rem;
+    color: var(--ink-2);
+  }
+  .chip--clear {
+    border-color: transparent;
+    background: none;
+    color: var(--link);
+    text-decoration: underline;
+  }
+</style>

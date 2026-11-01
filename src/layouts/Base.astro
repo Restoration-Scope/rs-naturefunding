@@ -1,0 +1,186 @@
+---
+import '../styles/global.css'
+import { RS_URL, REPO_URL, SITE_NAME, absolute, generalIssueUrl } from '../lib/site'
+
+interface Props {
+  title: string
+  description: string
+  path: string
+  jsonLd?: object | object[]
+  /** The finder itself; its link in the nav is marked current. */
+  nav?: 'finder' | 'about' | 'data' | null
+  noindex?: boolean
+}
+
+const { title, description, path, jsonLd, nav = null, noindex = false } = Astro.props
+const canonical = absolute(path)
+const fullTitle = path === '/' ? title : `${title} · ${SITE_NAME}`
+const ld = jsonLd ? (Array.isArray(jsonLd) ? jsonLd : [jsonLd]) : []
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{fullTitle}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    {noindex && <meta name="robots" content="noindex" />}
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" href="/favicon.ico" sizes="32x32" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="preload" href="/fonts/ahn-latin.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="alternate" type="application/atom+xml" title="New and changed calls" href="/feed.xml" />
+    <link rel="alternate" type="application/json" title="All listings (JSON)" href="/data.json" />
+    <meta name="theme-color" content="#1f4237" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content={SITE_NAME} />
+    <meta property="og:title" content={fullTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={absolute('/og.png')} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="naturefunding.org: grants for nature restoration, checked against each funder's own page" />
+    <meta name="twitter:card" content="summary_large_image" />
+    {ld.map((o) => <script type="application/ld+json" set:html={JSON.stringify(o)} />)}
+  </head>
+  <body>
+    <a class="skip" href="#main">Skip to content</a>
+    <header class="shell">
+      <div class="wrap shell__bar">
+        <a class="wordmark" href="/" aria-label="naturefunding.org, home">
+          <svg class="wordmark__mark" viewBox="0 0 24 24" aria-hidden="true" width="22" height="22">
+            <path d="M12 2.5c-4.6 3.4-7 7-7 10.6a7 7 0 0 0 14 0c0-3.6-2.4-7.2-7-10.6Z" fill="currentColor" opacity=".38" />
+            <path d="M12 21.5V9.5m0 4.5 3.2-2.6M12 17l-3.4-2.8" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" />
+          </svg>
+          <span>naturefunding<span class="wordmark__tld">.org</span></span>
+        </a>
+        <nav aria-label="Main">
+          <ul class="nav">
+            <li><a href="/" aria-current={nav === 'finder' ? 'page' : undefined}>Find funding</a></li>
+            <li><a href="/about/" aria-current={nav === 'about' ? 'page' : undefined}>How we check</a></li>
+            <li><a href="/about/#open-data" aria-current={nav === 'data' ? 'page' : undefined}>Open data</a></li>
+          </ul>
+        </nav>
+      </div>
+      <slot name="band" />
+    </header>
+
+    <main id="main">
+      <slot />
+    </main>
+
+    <footer class="footer">
+      <div class="wrap footer__grid">
+        <p class="footer__built">
+          Built and maintained by <a href={RS_URL}>Restoration Scope</a>, which makes monitoring software for
+          restoration projects. Listings are free and never paid for.
+        </p>
+        <ul class="footer__links">
+          <li><a href="/about/">How we check</a></li>
+          <li><a href="/data.json">data.json</a></li>
+          <li><a href="/data.csv">data.csv</a></li>
+          <li><a href="/feed.xml">Atom feed</a></li>
+          <li><a href={REPO_URL}>Source on GitHub</a></li>
+          <li><a href={generalIssueUrl}>Report a problem</a></li>
+        </ul>
+        <p class="footer__licence">Data <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>. Code MIT.</p>
+      </div>
+    </footer>
+  </body>
+</html>
+
+<style>
+  .shell {
+    background: var(--shell);
+    color: var(--shell-ink);
+  }
+  .shell a {
+    color: inherit;
+  }
+  .shell :focus-visible {
+    outline-color: var(--tape-open);
+  }
+  .shell__bar {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.5rem 1.5rem;
+    padding-block: 0.875rem;
+  }
+  .wordmark {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    font-weight: 800;
+    font-size: 1.125rem;
+    letter-spacing: -0.01em;
+    text-decoration: none;
+  }
+  .wordmark__mark {
+    color: var(--tape-open);
+  }
+  .wordmark__tld {
+    font-weight: 500;
+    color: var(--shell-ink-2);
+  }
+  .nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.25rem 1.25rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    font-size: 0.9375rem;
+  }
+  .nav a {
+    display: inline-block;
+    padding-block: 0.35rem;
+    text-decoration: none;
+    color: var(--shell-ink-2);
+  }
+  .nav a:hover,
+  .nav a[aria-current='page'] {
+    color: var(--shell-ink);
+    text-decoration: underline;
+    text-decoration-color: var(--tape-open);
+    text-decoration-thickness: 2px;
+    text-underline-offset: 0.35em;
+  }
+
+  .footer {
+    margin-top: 5rem;
+    border-top: 1px solid var(--rule);
+    background: var(--sunk);
+    font-size: 0.9375rem;
+    color: var(--ink-2);
+  }
+  .footer__grid {
+    display: grid;
+    gap: 1rem 3rem;
+    padding-block: 2rem 2.5rem;
+    grid-template-columns: minmax(0, 1fr);
+  }
+  @media (min-width: 52rem) {
+    .footer__grid {
+      grid-template-columns: minmax(0, 28rem) minmax(0, 1fr);
+    }
+    .footer__licence {
+      grid-column: 1 / -1;
+    }
+  }
+  .footer__links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem 1.25rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  .footer a {
+    color: var(--ink);
+  }
+</style>
