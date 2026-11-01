@@ -147,6 +147,48 @@ describe('quote matching', () => {
   })
 })
 
+describe('qualifiers', () => {
+  const upcoming = (quote: string) => {
+    const p = fixture()
+    p.calls[0] = { ...p.calls[0], status: 'upcoming', deadline: null, expected: 'June 2027', evidence: { status: ev(quote) } }
+    return p
+  }
+
+  test('an expected opening names a year its status quote states', () => {
+    expect(problems(upcoming('The next round is due to open in June 2027.'))).toEqual([])
+    expect(problems(upcoming('The next round opens in June.'))).toEqual([expect.stringContaining('names a year')])
+    expect(problems(upcoming("The next round opens in June '27."))).toEqual([])
+  })
+
+  test('every year an expected opening names must be in the quote', () => {
+    const p = upcoming('The next round opens in December 2026.')
+    p.calls[0].expected = 'December 2026 to January 2027'
+    expect(problems(p)).toEqual([expect.stringContaining('names a year')])
+  })
+
+  test('an expected opening is only for an upcoming call with no firm date', () => {
+    const p = upcoming('The next round is due to open in June 2027.')
+    p.calls[0].status = 'open'
+    expect(problems(p)).toEqual([expect.stringContaining('upcoming call')])
+  })
+
+  test('recurring dates and their evidence come together', () => {
+    const p = fixture()
+    p.calls[0].recurring = '1 March and 1 October'
+    expect(problems(p)).toEqual([expect.stringContaining('recurring dates need evidence')])
+    p.calls[0].evidence.recurring = ev('Deadlines are March 1 and October 1 each year.')
+    expect(problems(p)).toEqual([])
+  })
+
+  test('"less than" needs a max', () => {
+    const p = fixture()
+    p.amount = { currency: 'USD', min: 1000, max_exclusive: true }
+    expect(problems(p)).toEqual([expect.stringContaining('max_exclusive needs a max')])
+    p.amount = { currency: 'USD', min: 1500, max: 1500, max_exclusive: true }
+    expect(problems(p)).toEqual([expect.stringContaining('no room above min')])
+  })
+})
+
 describe('an open call cannot be past its deadline', () => {
   const withDeadline = (date: string, time?: string, timezone?: string) => {
     const p = fixture()

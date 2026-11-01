@@ -96,7 +96,14 @@ export const call = z.object({
     status: evidence,
     opens: evidence.optional(),
     deadline: evidence.optional(),
+    recurring: evidence.optional(),
   }),
+  /** When the funder expects an upcoming call to open, as it says it ("June 2027", "mid-March 2027"). Firm dates go in `opens`. */
+  expected: z.string().min(4).max(60).optional(),
+  /** Dates the funder gives without a year, repeating each year, in our words. */
+  recurring: z.string().min(5).max(200).optional(),
+  /** A condition the funder puts on the call, in our words, from one of its quotes ("Subject to funding approval"). */
+  note: z.string().min(3).max(200).optional(),
 })
 export type Call = z.infer<typeof call>
 
@@ -107,8 +114,16 @@ export const amount = z
     max: z.number().positive().optional(),
     /** The funder gives a usual range ("typically", "generally"), not hard limits. */
     typical: z.literal(true).optional(),
+    /** The funder says "less than" the max, not "up to". */
+    max_exclusive: z.literal(true).optional(),
+    /** The amount is per year, not per grant. */
+    per: z.enum(['year']).optional(),
+    /** A qualifier from the same quote, in our words ("Up to £20,000 in total"). */
+    note: z.string().min(3).max(200).optional(),
   })
   .refine((a) => a.min !== undefined || a.max !== undefined, 'amount needs min or max')
+  .refine((a) => !a.max_exclusive || a.max !== undefined, 'max_exclusive needs a max')
+  .refine((a) => !a.max_exclusive || a.min === undefined || a.max === undefined || a.min < a.max, 'less than max leaves no room above min')
   .refine((a) => a.min === undefined || a.max === undefined || a.min <= a.max, 'min is above max')
 
 export const geography = z.discriminatedUnion('scope', [
@@ -161,6 +176,8 @@ export const programme = z
     url,
     /** Our own words, one or two sentences. Not copied from the funder. */
     summary: z.string().min(20).max(400),
+    /** Our classification. A partnership pays for work under contract (planting partners), not a grant. Missing means grant. */
+    kind: z.enum(['grant', 'partnership']).optional(),
     approaches: z.array(approach).min(1),
     applicant_types: z.array(applicantType).min(1).nullable(),
     geography: geography.nullable(),
@@ -217,6 +234,15 @@ export const programme = z
       if (!c.deadline && c.evidence.deadline) issue(at('deadline'), 'deadline evidence without a deadline')
       if (c.opens && !c.evidence.opens) issue(at('evidence', 'opens'), 'opens needs evidence')
       if (!c.opens && c.evidence.opens) issue(at('opens'), 'opens evidence without an opens date')
+      if (c.recurring && !c.evidence.recurring) issue(at('evidence', 'recurring'), 'recurring dates need evidence')
+      if (!c.recurring && c.evidence.recurring) issue(at('recurring'), 'recurring evidence without recurring dates')
+      if (c.expected) {
+        const years = c.expected.match(/\b20\d\d\b/g) ?? []
+        if (c.status !== 'upcoming' || c.opens) issue(at('expected'), 'an expected opening is for an upcoming call with no firm opens date')
+        if (years.length === 0 || !years.every((y) => statesYear(c.evidence.status.quote, `${y}-01-01`))) {
+          issue(at('expected'), 'an expected opening names a year that its status quote states')
+        }
+      }
       for (const [field, date] of [['opens', c.opens], ['deadline', c.deadline?.date]] as const) {
         const quote = c.evidence[field]?.quote
         if (date && quote && !statesYear(quote, date)) {
@@ -238,7 +264,7 @@ export const programme = z
 
     const allEvidence = [
       ...Object.values(p.evidence),
-      ...p.calls.flatMap((c) => [c.evidence.status, c.evidence.opens, c.evidence.deadline]),
+      ...p.calls.flatMap((c) => [c.evidence.status, c.evidence.opens, c.evidence.deadline, c.evidence.recurring]),
     ].filter((e): e is Evidence => e !== undefined)
     for (const e of allEvidence) {
       if (e.checked_at < p.checked_at) issue(['checked_at'], `programme claims a check on ${p.checked_at}, but a fact was last read on ${e.checked_at}`)

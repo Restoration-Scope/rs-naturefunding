@@ -17,12 +17,13 @@ Every listing on naturefunding.org is a JSON file in this folder. The contract i
 | `parent` | The umbrella programme, e.g. `gef-sgp` for `gef-sgp-india`. One level only. |
 | `url` | The funder's main page for the programme. |
 | `summary` | One or two sentences in our own words. Never copied. |
+| `kind` | `partnership` when the funder pays for work under contract (e.g. planting partners) rather than giving grants. Missing means a grant. Our classification. |
 | `approaches` | What kind of nature work it funds (reforestation, mangroves, species conservation…). Our classification. |
 | `applicant_types` | Who may apply (NGO, community group, Indigenous organisation, individual…). |
 | `geography` | `global`; `countries` with ISO 3166-1 codes; or `regions` when the funder names a group ("ODA-eligible countries") without listing countries. In `regions`, `label` is the funder's wording and `regions` is our mapping for filters. |
 | `access` | How an applicant reaches the money: `direct` (apply to an open call), `intermediary` (through a country programme, accredited entity or partner), `invitation_only` (the funder picks), or `unspecified`. |
 | `window` | `fixed` (rounds with deadlines), `rolling` (apply any time), or `unspecified`. |
-| `amount` | Grant size in the funder's currency, `min` and/or `max` as stated. `typical: true` when the funder gives a usual range ("typically", "generally") rather than limits. |
+| `amount` | Grant size in the funder's currency, `min` and/or `max` as stated. `typical: true` when the funder gives a usual range ("typically", "generally") rather than limits; `max_exclusive: true` when it says "less than"; `per: "year"` for an annual amount; `note` for any other qualifier in the same quote, in our words ("Up to £20,000 in total"). |
 | `co_finance_required` | Whether matching funds are required. |
 | `reporting` | What grantees must report, in our words. Filled only where the funder states it. |
 | `calls` | Rounds of applications (below). |
@@ -35,7 +36,11 @@ Text is capped so no field can carry a whole page: names, labels and deadline te
 
 ## A call
 
-A call is one round of applications: `id` (unique within the programme), `label`, `url`, `status`, `opens`, `deadline` (date, optional time and time zone, and the deadline as the funder wrote it), and evidence for status, opens and deadline.
+A call is one round of applications: `id` (unique within the programme), `label`, `url`, `status`, `opens`, `deadline` (date, optional time and time zone, and the deadline as the funder wrote it), and evidence for status, opens and deadline. Optional:
+
+- `expected`: when the funder expects an upcoming call to open, as it says it ("June 2027", "mid-March 2027"), or a date it doesn't confirm. It must name a year its status quote states. Firm dates go in `opens`.
+- `recurring`: dates the funder gives without a year, repeating each year, in our words, with `evidence.recurring`.
+- `note`: a condition on the call from one of its quotes, in our words ("Subject to funding approval").
 
 | Status | Meaning |
 |---|---|
@@ -45,7 +50,7 @@ A call is one round of applications: `id` (unique within the programme), `label`
 | `suspended` | The funder paused it. |
 | `unknown` | The page exists but its state can't be read. |
 
-Each status is as of the day in its evidence (the UTC day it was read). A call is never `open` once its deadline had passed as that day began, in the funder's time zone when it states one: a round whose stated deadline has passed is `closed`, even if the page still says open. A date's quote must contain its year, as four digits or a form that can only be a year ("Nov '26", "04/01/27"), never a bare "26" or a quoted "'26 November'"; a window the funder states without a year ("October 15 to December 22") keeps `opens` and `deadline` null and goes in the label.
+Each status is as of the day in its evidence (the UTC day it was read). A call is never `open` once its deadline had passed as that day began, in the funder's time zone when it states one: a round whose stated deadline has passed is `closed`, even if the page still says open. A date's quote must contain its year, as four digits or a form that can only be a year ("Nov '26", "04/01/27"), never a bare "26" or a quoted "'26 November'"; a window the funder states without a year ("October 15 to December 22") keeps `opens` and `deadline` null and goes in `recurring`. Such a call is `open` only if the page says applications are being accepted now; otherwise its status is `unknown`, since a yearless window never expires.
 
 ### The four shapes
 

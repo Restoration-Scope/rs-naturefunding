@@ -21,8 +21,9 @@ const who = p.applicant_types?.map((a) => applicantLabels[a]).join(', ') ?? null
 
 const noCallRoute = p.access === 'intermediary' || p.access === 'invitation_only'
 const daysLeft = state === 'open' && deadline ? daysBetween(buildDate, deadline.date) : null
-// An open call without a date: show its label only when the label describes the window itself.
-const undatedWindow = call?.label && /window|deadline|each year|until/i.test(call.label) ? call.label : null
+// An open call without a date: show the funder's yearly dates, or the label when it describes the window itself.
+const undatedWindow =
+  call?.recurring ?? (call?.label && /window|deadline|each year|until/i.test(call.label) ? call.label : null)
 const route = p.access === 'direct' ? null : accessLabels[p.access]
 const searchText = [
   p.name,
@@ -101,7 +102,13 @@ const searchText = [
     {
       state === 'upcoming' && (
         <span class="listing__value">
-          {call?.opens ? shortDate(call.opens) : <span class="listing__value--muted">Date not stated</span>}
+          {call?.opens ? (
+            shortDate(call.opens)
+          ) : call?.expected ? (
+            <>Expected {call.expected}</>
+          ) : (
+            <span class="listing__value--muted">Not dated yet</span>
+          )}
           {deadline && <span class="listing__sub">Closes {shortDate(deadline.date)}</span>}
         </span>
       )
@@ -116,7 +123,8 @@ const searchText = [
     {
       state === 'none' && (
         <span class="listing__value listing__value--muted">
-          {p.access === 'intermediary' ? 'Varies by partner' : 'No open call'}
+          {p.access === 'intermediary' ? 'Varies by partner' : call?.recurring ? 'No window open now' : 'No call found'}
+          {call?.recurring && <span class="listing__sub">Each year: {call.recurring}</span>}
         </span>
       )
     }
@@ -124,7 +132,10 @@ const searchText = [
 
   <div class="listing__amount">
     <span class="listing__label">Amount</span>
-    <span class={amount ? 'listing__value' : 'listing__value listing__value--muted'}>{amount ?? 'Not stated'}</span>
+    <span class={amount ? 'listing__value' : 'listing__value listing__value--muted'}>
+      {amount ?? 'Not stated'}
+      {amount && p.amount?.note && <span class="listing__sub">{p.amount.note}</span>}
+    </span>
   </div>
 
   <div class="listing__check">
