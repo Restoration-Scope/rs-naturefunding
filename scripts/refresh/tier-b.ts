@@ -7,7 +7,7 @@
 import type { z } from 'zod'
 import type { Call, Evidence, Programme, Source } from '../../src/data/schema'
 import {
-  access, applicantType, approach, call as callSchema, callStatus, programme as programmeSchema, region, statesYear, window as windowSchema,
+  access, applicantType, approach, call as callSchema, callStatus, expectedProblem, programme as programmeSchema, region, window as windowSchema,
 } from '../../src/data/schema'
 import { comparable, quoteOnPage } from '../../src/data/text'
 import type { Llm } from './llm'
@@ -57,14 +57,6 @@ function withKept(got: Record<string, unknown>, old: object | null | undefined, 
     if (v[k] === null) delete v[k]
   }
   return v
-}
-
-/** Why an expected opening can't stand, as the schema rules it; null when it can or there is none. */
-function expectedWhy(c: Record<string, unknown>, statusQuote: string): string | null {
-  if (c.expected === undefined) return null
-  if (c.status !== 'upcoming' || c.opens) return 'an expected opening is for an upcoming call with no firm opens date'
-  const years = typeof c.expected === 'string' ? (c.expected.match(/\b20\d\d\b/g) ?? []) : []
-  return years.length && years.every((y) => statesYear(statusQuote, `${y}-01-01`)) ? null : 'an expected opening names a year that its status quote states'
 }
 
 /** The value as the schema reads it. Unknown keys are refused, not silently dropped. */
@@ -148,9 +140,8 @@ export function applyExtraction(original: Programme, source: Source, x: Extracti
     }
     const needed = [quotes.status, c.deadline ? quotes.deadline : null, c.opens ? quotes.opens : null, c.recurring ? quotes.recurring : null].filter((q) => q !== null)
     const missing = needed.filter((q) => !onPage(q))
-    // Qualifiers the draft leaves out stay; a kept expected opening goes once the call has a firm date or another status.
+    // Qualifiers the draft leaves out stay.
     const q = withKept(c, existing, CALL_QUALIFIERS)
-    if (!('expected' in c) && expectedWhy(q, short(quotes.status))) delete q.expected
     const candidate = {
       id: c.id, label: c.label, url: c.url, status: c.status, opens: c.opens ?? null, deadline: c.deadline ?? null,
       ...Object.fromEntries(CALL_QUALIFIERS.filter((k) => q[k] !== undefined).map((k) => [k, q[k]])),
@@ -162,7 +153,9 @@ export function applyExtraction(original: Programme, source: Source, x: Extracti
       },
     }
     const parsed = fit(callSchema, candidate)
-    const why = !parsed.ok ? `call ${parsed.why}` : (expectedWhy(q, short(quotes.status)) ?? (missing.length ? quoteWhy(missing[0]) : null))
+    // A kept expected opening goes once the call has a firm date, another status or no quote for its year.
+    if (parsed.ok && !('expected' in c) && expectedProblem(parsed.value)) delete parsed.value.expected
+    const why = !parsed.ok ? `call ${parsed.why}` : (expectedProblem(parsed.value) ?? (missing.length ? quoteWhy(missing[0]) : null))
     if (!parsed.ok || why) {
       changes.push({ path, kind: 'rejected', old: existing ?? null, new: '(not shown)', quote: missing.map(short).join(' | '), why: why! })
       continue
