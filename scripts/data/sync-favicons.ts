@@ -15,7 +15,7 @@
  */
 import { existsSync, mkdirSync, readFileSync, readdirSync, rmSync, statSync, writeFileSync } from 'node:fs'
 import { join } from 'node:path'
-import sharp from 'sharp'
+import sharp, { type Sharp } from 'sharp'
 import { loadProgrammes } from '../../src/data/load'
 import { domainOf, type MarkEntry } from '../../src/lib/marks'
 import { decodeEntities } from './page-text'
@@ -207,7 +207,7 @@ function hintRank(c: Candidate): number {
 
 // ---------- decoding ----------
 
-type Decoded = { input: sharp.Sharp; px: number | null; aspect: number; format: string }
+type Decoded = { input: Sharp; px: number | null; aspect: number; format: string }
 
 const isPng = (b: Uint8Array) => b[0] === 0x89 && b[1] === 0x50 && b[2] === 0x4e && b[3] === 0x47
 
