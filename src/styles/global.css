@@ -1,3 +1,8 @@
+@import 'tailwindcss';
+
+/* Dark mode follows the visitor's system setting, as before. */
+@custom-variant dark (@media (prefers-color-scheme: dark));
+
 @font-face {
   font-family: 'Atkinson Hyperlegible Next';
   src: url('/fonts/ahn-latin.woff2') format('woff2');
@@ -30,38 +35,44 @@
 :root {
   color-scheme: light dark;
 
-  /* Aluminium ground, spruce ink. */
-  --ground: oklch(0.962 0.006 215);
-  --surface: oklch(0.992 0.003 215);
-  --sunk: oklch(0.935 0.008 215);
-  --ink: oklch(0.25 0.03 180);
-  --ink-2: oklch(0.43 0.025 195);
-  --rule: oklch(0.86 0.012 210);
-  --rule-strong: oklch(0.74 0.015 210);
+  /* Aluminium ground, spruce ink. Hex, so engines without oklch still get the palette. */
+  --ground: #eef3f5;
+  --surface: #fafdfe;
+  --sunk: #e4ebed;
+  --ink: #102622;
+  --ink-2: #405454;
+  --rule: #c9d3d5;
+  --rule-strong: #a1aeb0;
   /* Form control edges: at least 3:1 against the page (WCAG 1.4.11). */
-  --control-edge: oklch(0.56 0.015 210);
-  --link: oklch(0.42 0.1 170);
-  --focus: oklch(0.55 0.2 145);
+  --control-edge: #6b7779;
+  --link: #005b46;
+  --focus: #008a23;
 
   /* Shell band: deep spruce. */
-  --shell: oklch(0.31 0.055 172);
-  --shell-ink: oklch(0.97 0.012 165);
-  --shell-ink-2: oklch(0.84 0.03 165);
+  --shell: #08392d;
+  --shell-ink: #eef8f3;
+  --shell-ink-2: #b9d1c6;
 
   /* Flagging tape. Fills carry dark ink text. */
-  --tape-open: oklch(0.86 0.2 138);
-  --tape-rolling: oklch(0.82 0.11 230);
-  --tape-upcoming: oklch(0.82 0.15 62);
-  --tape-closed: oklch(0.8 0.008 215);
-  --tape-ink: oklch(0.22 0.03 180);
+  --tape-open: #8aef63;
+  --tape-rolling: #72d1fe;
+  --tape-upcoming: #ffb169;
+  --tape-closed: #b8bfc1;
+  --tape-ink: #081f1b;
 
   /* Stamped aluminium tag. */
-  --tag: oklch(0.905 0.008 220);
-  --tag-edge: oklch(0.78 0.012 220);
-  --tag-ink: oklch(0.32 0.02 220);
-  --aging: oklch(0.86 0.14 85);
-  --aging-ink: oklch(0.3 0.06 70);
-  --aging-text: oklch(0.47 0.11 70);
+  --tag: #dae1e3;
+  --tag-edge: #afb9bd;
+  --tag-ink: #28353a;
+  --aging: #fbc959;
+  --aging-ink: #412805;
+  --aging-text: #7e4f00;
+
+  /* The primary action: spruce on light, flagging-tape lime on dark. */
+  --action: var(--shell);
+  --action-ink: var(--shell-ink);
+  --action-hover: #073026;
+  --backdrop: rgb(10 22 22 / 0.55);
 
   --font: 'Atkinson Hyperlegible Next', ui-sans-serif, system-ui, sans-serif;
   --mono: 'Atkinson Hyperlegible Mono', ui-monospace, 'SFMono-Regular', Menlo, monospace;
@@ -69,38 +80,145 @@
   --radius: 4px;
   --page: 76rem;
   --gutter: clamp(1rem, 3vw, 2rem);
+
+  /* shadcn/ui's variables, mapped onto the palette above (not shadcn's default palette). */
+  --background: var(--ground);
+  --foreground: var(--ink);
+  --card: var(--surface);
+  --card-foreground: var(--ink);
+  --popover: var(--surface);
+  --popover-foreground: var(--ink);
+  --primary: var(--action);
+  --primary-foreground: var(--action-ink);
+  --secondary: var(--sunk);
+  --secondary-foreground: var(--ink);
+  --muted: var(--sunk);
+  --muted-foreground: var(--ink-2);
+  --accent: var(--sunk);
+  --accent-foreground: var(--ink);
+  --destructive: var(--aging-text);
+  --border: var(--rule);
+  --input: var(--control-edge);
+  --ring: var(--focus);
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --ground: oklch(0.2 0.014 200);
-    --surface: oklch(0.235 0.016 200);
-    --sunk: oklch(0.175 0.012 200);
-    --ink: oklch(0.94 0.01 180);
-    --ink-2: oklch(0.77 0.018 190);
-    --rule: oklch(0.33 0.016 200);
-    --rule-strong: oklch(0.45 0.02 200);
-    --control-edge: oklch(0.6 0.02 200);
-    --link: oklch(0.82 0.13 150);
-    --focus: oklch(0.8 0.2 140);
+    --ground: #0e1818;
+    --surface: #152021;
+    --sunk: #0a1213;
+    --ink: #e4edeb;
+    --ink-2: #a8b8b7;
+    --rule: #2c3839;
+    --rule-strong: #49595a;
+    --control-edge: #738485;
+    --link: #83dc97;
+    --focus: #6fdb55;
 
-    --shell: oklch(0.265 0.045 172);
-    --shell-ink: oklch(0.96 0.012 165);
-    --shell-ink-2: oklch(0.82 0.03 165);
+    --shell: #072c23;
+    --shell-ink: #ebf4f0;
+    --shell-ink-2: #b3cbbf;
 
-    --tape-open: oklch(0.82 0.19 138);
-    --tape-rolling: oklch(0.78 0.1 230);
-    --tape-upcoming: oklch(0.79 0.14 62);
-    --tape-closed: oklch(0.72 0.008 215);
+    --tape-open: #81e05d;
+    --tape-rolling: #6ec3eb;
+    --tape-upcoming: #faa453;
+    --tape-closed: #9fa6a8;
 
-    --tag: oklch(0.32 0.01 220);
-    --tag-edge: oklch(0.42 0.012 220);
-    --tag-ink: oklch(0.88 0.008 220);
-    --aging: oklch(0.78 0.14 85);
-    --aging-text: oklch(0.84 0.13 85);
+    --tag: #2d3436;
+    --tag-edge: #464f52;
+    --tag-ink: #d2d9db;
+    --aging: #e0af3b;
+    --aging-text: #f1c45e;
+
+    --action: var(--tape-open);
+    --action-ink: var(--tape-ink);
+    --action-hover: #90e470;
   }
 }
 
+/* Tailwind's theme holds only this palette: no default colours to drift into. */
+@theme inline {
+  --color-*: initial;
+  --color-transparent: transparent;
+  --color-current: currentColor;
+  --color-black: #000;
+  --color-white: #fff;
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  --color-ground: var(--ground);
+  --color-surface: var(--surface);
+  --color-sunk: var(--sunk);
+  --color-ink: var(--ink);
+  --color-ink-2: var(--ink-2);
+  --color-rule: var(--rule);
+  --color-rule-strong: var(--rule-strong);
+  --color-control-edge: var(--control-edge);
+  --color-link: var(--link);
+  --color-focus: var(--focus);
+  --color-shell: var(--shell);
+  --color-shell-ink: var(--shell-ink);
+  --color-shell-ink-2: var(--shell-ink-2);
+  --color-tape-open: var(--tape-open);
+  --color-tape-rolling: var(--tape-rolling);
+  --color-tape-upcoming: var(--tape-upcoming);
+  --color-tape-closed: var(--tape-closed);
+  --color-tape-ink: var(--tape-ink);
+  --color-tag: var(--tag);
+  --color-tag-edge: var(--tag-edge);
+  --color-tag-ink: var(--tag-ink);
+  --color-aging: var(--aging);
+  --color-aging-ink: var(--aging-ink);
+  --color-aging-text: var(--aging-text);
+  --color-action-hover: var(--action-hover);
+  --color-backdrop: var(--backdrop);
+
+  --font-sans: var(--font);
+  --font-mono: var(--mono);
+
+  /* The site's type steps. No line heights: text keeps the line height around it. */
+  --text-*: initial;
+  --text-xs: 0.8125rem;
+  --text-sm: 0.875rem;
+  --text-md: 0.9375rem;
+  --text-base: 1rem;
+  --text-lg: 1.0625rem;
+  --text-xl: 1.125rem;
+  --text-2xl: 1.25rem;
+  --text-3xl: 1.375rem;
+
+  --radius-xs: 2px;
+  --radius-sm: 3px;
+  --radius-md: var(--radius);
+  --radius-lg: var(--radius);
+  --radius-xl: 10px;
+
+  --breakpoint-*: initial;
+  --breakpoint-sm: 40rem;
+  --breakpoint-md: 48rem;
+  --breakpoint-lg: 52rem;
+  --breakpoint-xl: 68rem;
+  --breakpoint-2xl: 72rem;
+}
+
+@layer base {
 *,
 *::before,
 *::after {
@@ -135,6 +253,7 @@ body {
 
 a {
   color: var(--link);
+  text-decoration-line: underline;
   text-decoration-thickness: 1px;
   text-underline-offset: 0.18em;
 }
@@ -148,6 +267,14 @@ h3 {
   line-height: 1.2;
   text-wrap: balance;
   margin: 0;
+}
+
+/* Tailwind's preflight drops list markers; text lists keep them unless a class says otherwise. */
+ul {
+  list-style: disc;
+}
+ol {
+  list-style: decimal;
 }
 
 p {
@@ -247,12 +374,12 @@ p {
   background: var(--ground);
   /* A punched hole: the page shows through, ringed by the tag's own ink. */
   box-shadow:
-    0 0 0 1.5px color-mix(in oklch, currentColor 55%, transparent),
-    inset 0 1px 1.5px oklch(0 0 0 / 0.35);
+    0 0 0 1.5px color-mix(in srgb, currentColor 55%, transparent),
+    inset 0 1px 1.5px rgb(0 0 0 / 0.35);
 }
 .tag[data-aging] {
   background: var(--aging);
-  border-color: color-mix(in oklch, var(--aging) 70%, black);
+  border-color: color-mix(in srgb, var(--aging) 70%, black);
   color: var(--aging-ink);
 }
 
@@ -273,7 +400,7 @@ p {
   cursor: pointer;
 }
 .button:hover {
-  background: color-mix(in oklch, var(--shell) 85%, black);
+  background: var(--action-hover);
 }
 @media (prefers-color-scheme: dark) {
   .button {
@@ -281,7 +408,7 @@ p {
     color: var(--tape-ink);
   }
   .button:hover {
-    background: color-mix(in oklch, var(--tape-open) 88%, white);
+    background: var(--action-hover);
   }
 }
 .button--quiet {
@@ -323,4 +450,6 @@ p {
 /* Components set display: grid or flex; the hidden attribute must still win. */
 [hidden] {
   display: none !important;
+}
+
 }
