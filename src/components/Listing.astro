@@ -24,6 +24,8 @@ const daysLeft = state === 'open' && deadline ? daysBetween(buildDate, deadline.
 // An open call without a date: show the funder's yearly dates, or the label when it describes the window itself.
 const undatedWindow =
   call?.recurring ?? (call?.label && /window|deadline|each year|until/i.test(call.label) ? call.label : null)
+// The funder's own words for yearly dates, shown under our summary of them.
+const recurringQuote = call?.recurring ? (call.evidence.recurring?.quote ?? null) : null
 const route = p.access === 'direct' ? null : accessLabels[p.access]
 const searchText = [
   p.name,
@@ -83,7 +85,10 @@ const searchText = [
     <span class="listing__label">{state === 'upcoming' ? 'Opens' : 'Deadline'}</span>
     {
       state === 'open' && !deadline && (
-        <span class="listing__value listing__value--muted listing__value--prose">{undatedWindow ?? 'Date not stated'}</span>
+        <span class="listing__value listing__value--muted listing__value--prose">
+          {undatedWindow ?? 'Date not stated'}
+          {recurringQuote && <span class="listing__quote">“{recurringQuote}”</span>}
+        </span>
       )
     }
     {
@@ -91,7 +96,7 @@ const searchText = [
         <span class="listing__value">
           {shortDate(deadline.date)}
           {daysLeft !== null && (
-            <span class="listing__left mono" data-left data-soon={daysLeft < 7 ? '' : undefined}>
+            <span class="listing__left" data-left data-soon={daysLeft < 7 ? '' : undefined}>
               {daysLeft === 0 ? 'Closes today' : daysLeft === 1 ? '1 day left' : `${daysLeft} days left`}
             </span>
           )}
@@ -118,14 +123,16 @@ const searchText = [
       state === 'closed' && (
         <span class="listing__value listing__value--muted">
           {deadline ? `Closed ${shortDate(deadline.date)}` : 'Closed'}
+          {deadline && <span class="listing__quote">“{deadline.text}”</span>}
         </span>
       )
     }
     {
       state === 'none' && (
         <span class="listing__value listing__value--muted">
-          {p.access === 'intermediary' ? 'Varies by partner' : call?.recurring ? 'No window open now' : 'No call found'}
+          {p.access === 'intermediary' ? 'Varies by partner' : call?.recurring ? 'Page doesn’t say if open now' : 'No call found'}
           {call?.recurring && <span class="listing__sub">Each year: {call.recurring}</span>}
+          {recurringQuote && <span class="listing__quote">“{recurringQuote}”</span>}
         </span>
       )
     }
@@ -293,16 +300,23 @@ const searchText = [
     font-size: 0.875rem;
     line-height: 1.4;
   }
-  .listing__quote {
-    display: -webkit-box;
-    -webkit-box-orient: vertical;
-    -webkit-line-clamp: 2;
-    line-clamp: 2;
-    overflow: hidden;
-  }
 
   /* Wide containers: one row per programme, in columns under the finder's header.
      The tape and the stamp share the first line of the programme column. */
+  /* Narrow phones: deadline and amount stack, so a long quote keeps the full width. */
+  @container listings (max-width: 29.99rem) {
+    .listing {
+      grid-template-columns: minmax(0, 1fr);
+      grid-template-areas:
+        'status'
+        'name'
+        'funder'
+        'deadline'
+        'amount'
+        'meta'
+        'check';
+    }
+  }
   @container listings (min-width: 52rem) {
     .listing {
       grid-template-columns: minmax(0, 1fr) 11rem 9rem;

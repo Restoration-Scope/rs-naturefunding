@@ -12,7 +12,7 @@ export const GET: APIRoute = () =>
         attribution: 'naturefunding.org, built by Restoration Scope',
         source: REPO_URL,
         generated_on: buildDate,
-        note: 'Every fact carries evidence: the funder page it was read from, a verbatim quote and the date it was checked. null means the funder’s page does not say.',
+        note: 'Each stated fact carries evidence: the page it was read from (the funder’s, or the organisation running the programme), a verbatim quote and the date it was read. null means we did not find it on the pages we read. summary and approaches are our own wording and classification. Quotes are the funders’ words and are not covered by the CC BY licence.',
         programmes,
       },
       null,

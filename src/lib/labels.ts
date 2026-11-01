@@ -34,7 +34,7 @@ export const applicantLabels: Record<Applicant, string> = {
 }
 
 export const accessLabels: Record<Access, string> = {
-  direct: 'Apply to the funder',
+  direct: 'Apply directly',
   intermediary: 'Through a partner',
   invitation_only: 'Invitation only',
   unspecified: 'Route not stated',
@@ -54,7 +54,7 @@ export const stateLabels: Record<State, string> = {
   rolling: 'Rolling',
   upcoming: 'Upcoming',
   closed: 'Closed',
-  none: 'No open call',
+  none: 'No call found',
 }
 
 export const stateFilterLabels: Record<State, string> = {
@@ -62,7 +62,7 @@ export const stateFilterLabels: Record<State, string> = {
   rolling: 'Rolling, apply any time',
   upcoming: 'Upcoming',
   closed: 'Closed',
-  none: 'No open call',
+  none: 'No call found',
 }
 
 export type SizeBucket = 'small' | 'medium' | 'large'

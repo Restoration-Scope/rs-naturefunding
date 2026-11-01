@@ -76,7 +76,7 @@ const ld = jsonLd ? (Array.isArray(jsonLd) ? jsonLd : [jsonLd]) : []
       <div class="wrap footer__grid">
         <p class="footer__built">
           Built and maintained by <a href={RS_URL}>Restoration Scope</a>, which makes monitoring software for
-          restoration projects. Listings are free and never paid for.
+          restoration projects. Listings are free, and funders can’t pay to be listed or ranked.
         </p>
         <ul class="footer__links">
           <li><a href="/about/">How we check</a></li>
@@ -100,7 +100,8 @@ const ld = jsonLd ? (Array.isArray(jsonLd) ? jsonLd : [jsonLd]) : []
   .shell a {
     color: inherit;
   }
-  .shell :focus-visible {
+  /* Global, so slotted hero links on the dark shell get the lime ring too. */
+  .shell :global(:focus-visible) {
     outline-color: var(--tape-open);
   }
   .shell__bar {

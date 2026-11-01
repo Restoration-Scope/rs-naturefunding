@@ -40,7 +40,7 @@ export const funderCorrectionUrl = (name: string, id: string) =>
       '',
       'What should change, and the page on your website that says so:',
       '',
-      'We check every change against your own website before it goes live. We never charge for a listing.',
+      'We change a listing only after confirming it on your own website. Listings can’t be bought.',
       '',
     ].join('\n'),
     'funder-correction',

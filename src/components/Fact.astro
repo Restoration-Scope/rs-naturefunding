@@ -9,13 +9,13 @@ interface Props {
   /** What we show. Null means the funder's page does not say. */
   value: string | null
   evidence?: Evidence
-  /** Shown instead of "Not stated on the funder's pages" when the value is null. */
+  /** Shown instead of "Not found on the pages we read" when the value is null. */
   missing?: string
   /** The section already names this page and date, so the quote skips its own tag. */
   shared?: SharedSource | null
 }
 
-const { label, value, evidence, missing = 'Not stated on the funder’s pages', shared } = Astro.props
+const { label, value, evidence, missing = 'Not found on the pages we read', shared } = Astro.props
 const shown = value && label === 'Amount' ? keepAmountTogether(value) : value
 const ownTag = evidence && !(shared && evidence.source_url === shared.url && evidence.checked_at === shared.checked)
 ---
@@ -57,7 +57,7 @@ const ownTag = evidence && !(shared && evidence.source_url === shared.url && evi
     }
   }
   .fact__label {
-    font-size: 0.875rem;
+    font-size: 0.9375rem;
     font-weight: 700;
     color: var(--ink-2);
     padding-top: 0.15rem;

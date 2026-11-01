@@ -25,6 +25,12 @@ const { state, call } = listing
 const parent = p.parent ? programmeById.get(p.parent) : undefined
 const children = programmes.filter((c) => c.parent === p.id)
 const childListings = children.map((c) => listingFor(c)).sort(sortListings)
+// "Forest Action Facility" from "Forest Action Facility (established by IUCN and KfW)": show only what the name doesn't say.
+const funderQualifier = p.funder.name.startsWith(p.name)
+  ? p.funder.name.slice(p.name.length).trim().replace(/^\((.*)\)$/, '$1').replace(/^./, (ch) => ch.toUpperCase())
+  : null
+// An umbrella's own page often leaves these to its partner programmes.
+const byPartner = childListings.length > 0 ? 'Set by each partner programme' : undefined
 const openChildren = childListings.filter((l) => l.state === 'open' || l.state === 'rolling')
 // Partners with no call open now fold away below the live ones, as on the finder.
 const partnersNow = childListings.filter((l) => l.state !== 'none' && l.state !== 'closed')
@@ -62,18 +68,31 @@ const deadlineText = (d: NonNullable<Programme['calls'][number]['deadline']>) =>
   `${longDate(d.date)}${d.time ? `, ${d.time}${d.timezone ? ` ${zoneName(d.timezone, d.date)}` : ''}` : ''}`
 const primary: { href: string; text: string; quiet?: boolean } =
   call && (state === 'open' || state === 'rolling' || state === 'upcoming')
-    ? { href: call.url, text: 'Go to the call' }
+    ? { href: call.url, text: 'Go to the funder’s call page' }
     : call?.recurring && state === 'none'
       ? { href: call.url, text: 'Check the call page' }
       : openChildren.length === 1
-      ? { href: `/p/${openChildren[0]!.p.id}/`, text: 'See the open call' }
+      ? { href: `/p/${openChildren[0]!.p.id}/`, text: 'See the open partner programme' }
       : openChildren.length > 1
-        ? { href: '#partners-title', text: `See the ${openChildren.length} open calls` }
+        ? { href: '#partners-title', text: `See the ${openChildren.length} open partner programmes` }
         : p.access === 'intermediary' && children.length > 0
           ? { href: '#partners-title', text: `See the ${children.length} partner programmes` }
           : p.access === 'intermediary'
             ? { href: p.evidence.access?.source_url ?? p.url, text: 'Find a partner on the funder’s site' }
             : { href: p.url, text: 'Read the funder’s page', quiet: true }
+/** The one date a folded call shows next to its name. */
+const callWhen = (c: Programme['calls'][number]) =>
+  c.status === 'upcoming'
+    ? c.opens
+      ? `Opens ${longDate(c.opens)}`
+      : c.expected
+        ? `Expected ${c.expected}`
+        : 'Opening date not announced yet'
+    : c.deadline
+      ? `${c.status === 'closed' || c.deadline.date < buildDate ? 'Closed' : 'Closes'} ${longDate(c.deadline.date)}`
+      : c.status === 'open'
+        ? 'No deadline stated'
+        : null
 const callStatusLabel: Record<string, string> = {
   open: 'Open',
   upcoming: 'Upcoming',
@@ -81,6 +100,8 @@ const callStatusLabel: Record<string, string> = {
   suspended: 'Suspended',
   unknown: 'Not clear from the page',
 }
+// The call that sets the page's status comes first and open; the others fold.
+const callsOrdered = call ? [call, ...p.calls.filter((c) => c !== call)] : p.calls
 const callStatusText = (c: Programme['calls'][number]) =>
   c.status === 'unknown' && c.recurring ? 'Windows each year; the page doesn’t say if one is open now' : callStatusLabel[c.status]
 
@@ -140,7 +161,13 @@ const jsonLd = [
     <a class="band__back" href="/">← All funding</a>
     <h1 class="band__title">{p.name}</h1>
     <p class="band__funder">
-      From <a href={p.funder.url}>{p.funder.name}</a>
+      {
+        funderQualifier !== null ? (
+          <a href={p.funder.url}>{funderQualifier || 'The funder’s website'}</a>
+        ) : (
+          <>From <a href={p.funder.url}>{p.funder.name}</a></>
+        )
+      }
       {p.administered_by && <span>, run by <a href={p.administered_by.url}>{p.administered_by.name}</a></span>}
     </p>
     {p.kind === 'partnership' && <p class="band__kind">Paid partnership, not a grant: the funder pays for work under a contract.</p>}
@@ -174,7 +201,10 @@ const jsonLd = [
             ))}
           {state === 'closed' && <>No call open right now</>}
           {state === 'none' && p.access === 'invitation_only' && <>This funder does not take applications</>}
-          {state === 'none' && p.access === 'intermediary' && <>Apply through a partner, not the funder</>}
+          {state === 'none' && p.access === 'intermediary' && openChildren.length === 0 && <>Apply through a partner, not the funder</>}
+          {state === 'none' && p.access === 'intermediary' && openChildren.length > 0 && (
+            <>{openChildren.length === 1 ? 'One partner programme is open now' : `${openChildren.length} partner programmes are open now`}</>
+          )}
           {state === 'none' && !noCallRoute && (call?.recurring ? <>Windows each year</> : <>No call listed</>)}
         </h2>
       </div>
@@ -183,7 +213,6 @@ const jsonLd = [
           <dl class="apply__lines">
             <div><dt>Days left</dt><dd class="mono apply__left">{daysBetween(buildDate, call.deadline.date)}</dd></div>
             <div><dt>Call</dt><dd>{call.label}</dd></div>
-            <div><dt>Funder’s wording</dt><dd>“{call.deadline.text}”</dd></div>
           </dl>
         )
       }
@@ -199,19 +228,22 @@ const jsonLd = [
         {call?.note && (state === 'open' || state === 'upcoming') && <> {call.note}.</>}
         {state === 'closed' && call?.deadline && <>The last call we saw closed on {longDate(call.deadline.date)}.</>}
         {noCallRoute && accessHelp[p.access]}
+        {/* The list beside this card has the open call's date; here, just where to look. */}
         {
           openChildren.length === 1 && (
             <>
-              {' '}Open now: <strong>{openChildren[0]!.p.name}</strong>.
+              {' '}The open one is <strong>{openChildren[0]!.p.name}</strong>
+              {openChildren[0]!.call?.deadline ? <>, apply by <span class="nowrap">{longDate(openChildren[0]!.call.deadline.date)}</span>.</> : <>.</>}
             </>
           )
         }
+        {openChildren.length > 1 && <> {openChildren.length} partner programmes are open now. They come first in the list below.</>}
       </p>
       <div class="apply__actions">
         <a class:list={['button', { 'button--quiet': primary.quiet }]} href={primary.href}>{primary.text}</a>
         {
           applyEvidence ? (
-            <CheckedTag checked={applyEvidence.checked_at} />
+            <CheckedTag checked={applyEvidence.checked_at} source={{ url: applyEvidence.source_url, label: pageLabel(applyEvidence.source_url) }} />
           ) : (
             <CheckedTag checked={p.checked_at} />
           )
@@ -244,6 +276,7 @@ const jsonLd = [
 
     <section aria-labelledby="facts-title">
       <h2 id="facts-title" class="section-title">The facts, in the funder’s words</h2>
+      {children.length > 0 && <p class="section-check">These cover {p.name} as a whole. Each partner programme above sets its own amounts and deadlines.</p>}
       {
         factsShared && (
           <p class="section-check">
@@ -256,7 +289,7 @@ const jsonLd = [
         <Fact label="How to apply" value={accessLabels[p.access]} evidence={p.evidence.access} missing="Not stated" shared={factsShared}>
           {p.access === 'direct' && <p class="fact__help">{accessHelp[p.access]}</p>}
         </Fact>
-        <Fact label="Amount" value={amount} evidence={p.evidence.amount} shared={factsShared}>
+        <Fact label="Amount" value={amount} evidence={p.evidence.amount} shared={factsShared} missing={byPartner}>
           {p.amount?.note && <p class="fact__help">{p.amount.note}.</p>}
         </Fact>
         <Fact label="Where" value={geographyFull(p.geography)} evidence={p.evidence.geography} shared={factsShared} />
@@ -265,14 +298,16 @@ const jsonLd = [
           value={p.applicant_types ? joinAnd(p.applicant_types.map((a) => applicantLabels[a])) : null}
           evidence={p.evidence.applicant_types}
           shared={factsShared}
+          missing={byPartner}
         />
         <Fact
           label="Rounds"
           value={p.window === 'rolling' ? 'Rolling: apply any time' : p.window === 'fixed' ? 'Fixed rounds with deadlines' : null}
           evidence={p.evidence.window}
           shared={factsShared}
+          missing={byPartner}
         />
-        <Fact label="Co-funding required" value={yesNo(p.co_finance_required)} evidence={p.evidence.co_finance_required} shared={factsShared} />
+        <Fact label="Co-funding required" value={yesNo(p.co_finance_required)} evidence={p.evidence.co_finance_required} shared={factsShared} missing={byPartner} />
         {
           p.administered_by && (
             <Fact label="Run by" value={p.administered_by.name} evidence={p.evidence.administered_by} shared={factsShared} />
@@ -290,15 +325,16 @@ const jsonLd = [
           <h2 id="calls-title" class="section-title">
             {p.calls.length === 1 ? 'The call' : `Calls (${p.calls.length})`}
           </h2>
-          {p.calls.map((c) => (
-            <article class="call">
-              <div class="call__head">
+          {callsOrdered.map((c) => (
+            <details class="call" open={c === call || p.calls.length === 1}>
+              <summary class="call__head">
                 <span class="tape" data-state={c.status === 'open' ? 'open' : c.status === 'upcoming' ? 'upcoming' : c.status === 'closed' ? 'closed' : 'none'}>
                   {callStatusLabel[c.status]}
                 </span>
                 <h3 class="call__title">{c.label}</h3>
-                <a class="call__link" href={c.url}>Call page</a>
-              </div>
+                {callWhen(c) && <span class="call__when">{callWhen(c)}</span>}
+              </summary>
+              {callShared(c)?.url !== c.url && <a class="call__link" href={c.url}>Call page</a>}
               {callShared(c) && (
                 <p class="section-check">
                   Quotes from <a href={callShared(c)!.url}>{pageLabel(callShared(c)!.url)}</a>.{' '}
@@ -337,7 +373,7 @@ const jsonLd = [
                 )}
               </dl>
               {c.note && <p class="call__note">{c.note}.</p>}
-            </article>
+            </details>
           ))}
         </section>
       )
@@ -346,6 +382,7 @@ const jsonLd = [
     {
       !primary.quiet && (
         <p class="again">
+          <span class="again__lead">{call && primary.href === call.url ? `Ready to apply to ${call.label}?` : 'Ready to apply?'}</span>
           <a class="button" href={primary.href}>{primary.text}</a>
         </p>
       )
@@ -428,6 +465,12 @@ const jsonLd = [
     max-width: 62ch;
     margin-top: 1rem;
     font-size: 1.0625rem;
+  }
+  @media (max-width: 47.99rem) {
+    .band__summary {
+      font-size: 1rem;
+      line-height: 1.45;
+    }
   }
   .band__kind {
     margin-top: 1rem;
@@ -513,7 +556,16 @@ const jsonLd = [
     font-size: 0.875rem;
   }
   .again {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.6rem 1rem;
     margin-top: 2rem;
+    padding-top: 1.25rem;
+    border-top: 1px solid var(--rule);
+  }
+  .again__lead {
+    font-weight: 700;
   }
   @media (max-width: 47.99rem) {
     .again .button {
@@ -604,7 +656,7 @@ const jsonLd = [
   .fact__help {
     margin-top: 0.25rem;
     font-size: 0.9375rem;
-    color: var(--ink-2);
+    color: var(--ink);
   }
   .call + .call {
     margin-top: 2rem;
@@ -618,34 +670,67 @@ const jsonLd = [
   .call .facts {
     border-bottom: 0;
   }
+  /* Phones: calls are rules, not boxes, so the facts get the full width. */
+  @media (max-width: 47.99rem) {
+    .call {
+      padding: 1rem 0 0;
+      border: 0;
+      border-top: 2px solid var(--rule-strong);
+      border-radius: 0;
+      background: none;
+    }
+  }
   /* A condition on the call, in our words. */
   .call__note {
     margin: 0 0 0.85rem;
     font-size: 0.9375rem;
     color: var(--ink-2);
   }
+  /* Each call folds; the one that sets the page's status starts open. */
   .call__head {
     display: grid;
-    grid-template-columns: auto minmax(0, 1fr);
+    grid-template-columns: auto minmax(0, 1fr) auto;
     align-items: center;
     gap: 0.4rem 0.75rem;
-    margin-bottom: 0.5rem;
+    padding-bottom: 0.75rem;
+    cursor: pointer;
+    list-style: none;
+  }
+  .call__head::-webkit-details-marker {
+    display: none;
+  }
+  .call__head::after {
+    content: '';
+    width: 0.55rem;
+    height: 0.55rem;
+    margin-right: 0.2rem;
+    border-right: 2px solid var(--ink-2);
+    border-bottom: 2px solid var(--ink-2);
+    transform: rotate(45deg) translateY(-0.15rem);
+  }
+  .call[open] > .call__head::after {
+    transform: rotate(-135deg) translateY(-0.1rem);
+  }
+  .call:not([open]) {
+    padding-bottom: 0.25rem;
   }
   .call__title {
     font-size: 1.0625rem;
     font-weight: 800;
   }
-  .call__link {
-    grid-column: 1 / -1;
-    font-size: 0.9375rem;
+  /* Only while folded: an open call shows its dates in full below. */
+  .call[open] .call__when {
+    display: none;
   }
-  @media (min-width: 48rem) {
-    .call__head {
-      grid-template-columns: auto minmax(0, 1fr) auto;
-    }
-    .call__link {
-      grid-column: auto;
-    }
+  .call__when {
+    grid-column: 2;
+    font-size: 0.9375rem;
+    color: var(--ink-2);
+  }
+  .call__link {
+    display: inline-block;
+    margin-bottom: 0.25rem;
+    font-size: 0.9375rem;
   }
   .apply__lines {
     display: grid;
@@ -655,7 +740,7 @@ const jsonLd = [
   }
   .apply__lines div {
     display: grid;
-    grid-template-columns: 7.5rem minmax(0, 1fr);
+    grid-template-columns: max-content minmax(0, 1fr);
     gap: 0.75rem;
   }
   .apply__lines dt {
