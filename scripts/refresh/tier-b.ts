@@ -23,7 +23,7 @@ export type Change = { path: string; kind: 'changed' | 'added' | 'requoted' | 'r
 export type Review = { overall: 'approve' | 'reject' | 'unclear'; verdicts: { path: string; verdict: string; reason: string }[]; missed: string }
 
 /** Caps on what the model returns, on top of the schema: a new quote, any other text, any list, the calls. */
-export const LIMITS = { quote: 400, text: 600, list: 60, calls: 20 }
+export const LIMITS = { quote: 400, text: 600, list: 250, calls: 20 }
 const CALL_KEYS = new Set(['id', 'label', 'url', 'status', 'opens', 'deadline', 'quotes'])
 const QUOTE_KEYS = new Set(['status', 'opens', 'deadline'])
 
