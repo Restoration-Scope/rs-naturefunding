@@ -1,8 +1,5 @@
 @import 'tailwindcss';
 
-/* Dark mode follows the visitor's system setting, as before. */
-@custom-variant dark (@media (prefers-color-scheme: dark));
-
 @font-face {
   font-family: 'Atkinson Hyperlegible Next';
   src: url('/fonts/ahn-latin.woff2') format('woff2');
@@ -19,7 +16,8 @@
 }
 
 :root {
-  color-scheme: light dark;
+  /* Light only. */
+  color-scheme: light;
 
   /* Aluminium ground, spruce ink. Hex, so engines without oklch still get the palette. */
   --ground: #eef3f5;
@@ -39,7 +37,7 @@
   --shell-ink: #eef8f3;
   --shell-ink-2: #b9d1c6;
 
-  /* The brand lime (logo, nav underline, selection; the primary action on dark) and the ink it carries. */
+  /* The brand lime (logo, nav underline, selection) and the ink it carries. */
   --tape-open: #8aef63;
   --tape-ink: #081f1b;
 
@@ -57,7 +55,7 @@
   /* Amber text on the page: "Paid partnership, not a grant", the next-seven-days divider. */
   --aging-text: #7e4f00;
 
-  /* The primary action: spruce on light, flagging-tape lime on dark. */
+  /* The primary action: spruce. */
   --action: var(--shell);
   --action-ink: var(--shell-ink);
   --action-hover: #073026;
@@ -78,7 +76,7 @@
   --popover-foreground: var(--ink);
   --primary: var(--action);
   --primary-foreground: var(--action-ink);
-  --secondary: #e4ebed;
+  --secondary: var(--sunk);
   --secondary-foreground: var(--ink);
   --muted: var(--sunk);
   --muted-foreground: var(--ink-2);
@@ -88,45 +86,6 @@
   --border: var(--rule);
   --input: var(--control-edge);
   --ring: var(--focus);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --ground: #0e1818;
-    --surface: #152021;
-    --sunk: #0a1213;
-    --ink: #e4edeb;
-    --ink-2: #a8b8b7;
-    --rule: #2c3839;
-    --rule-strong: #49595a;
-    --control-edge: #738485;
-    --link: #83dc97;
-    --focus: #6fdb55;
-
-    --shell: #072c23;
-    --shell-ink: #ebf4f0;
-    --shell-ink-2: #b3cbbf;
-
-    --tape-open: #81e05d;
-
-    --ok: #12382a;
-    --ok-ink: #a9ecc6;
-    --ok-dot: #3ccf86;
-    --info: #0f3247;
-    --info-ink: #b5e2fa;
-    --info-dot: #40b6ef;
-    --warn: #3d2c0c;
-    --warn-ink: #f8d995;
-    --warn-dot: #f0a92e;
-    --aging-text: #f1c45e;
-
-    /* Raised over the card, unlike --sunk: badges and quiet fills. */
-    --secondary: #243133;
-
-    --action: var(--tape-open);
-    --action-ink: var(--tape-ink);
-    --action-hover: #90e470;
-  }
 }
 
 /* Tailwind's theme holds only this palette: no default colours to drift into. */

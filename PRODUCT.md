@@ -54,4 +54,4 @@ Every fact carries its source page, a verbatim quote and a checked date; nothing
 
 ## Accessibility & Inclusion
 
-WCAG AA. Works at phone width, in light and dark. Plain language for readers working in a second language.
+WCAG AA. Works at phone width. Light theme only (owner decision, Nov 2026). Plain language for readers working in a second language.
