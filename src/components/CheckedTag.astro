@@ -19,7 +19,8 @@ const aging = age > AGING_DAYS
   <span class:list={['tag', { 'tag--compact': compact }]} data-aging={aging ? '' : undefined} title={`Checked against the funder's page on ${longDate(checked)}`}>
     Checked {shortDate(checked)}
   </span>
-  <span class="checked__aging" hidden={!aging}>Over {AGING_DAYS} days ago, due a recheck</span>
+  {/* Rendered only when true: hidden text still reaches agents that read the page as text. */}
+  {aging && <span class="checked__aging">Over {AGING_DAYS} days ago, due a recheck</span>}
   {
     source && (
       <span class="checked__source">
@@ -41,9 +42,6 @@ const aging = age > AGING_DAYS
   .checked__aging {
     color: var(--aging-text);
     font-weight: 700;
-  }
-  .checked__aging[hidden] {
-    display: none;
   }
   .checked__source a {
     overflow-wrap: anywhere;

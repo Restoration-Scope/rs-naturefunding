@@ -1,11 +1,13 @@
 import type { APIRoute } from 'astro'
 import { buildDate, programmes } from '../lib/data'
+import { SCHEMA_URL } from '../lib/data-docs'
 import { REPO_URL, SITE_URL } from '../lib/site'
 
 export const GET: APIRoute = () =>
   new Response(
     JSON.stringify(
       {
+        $schema: SCHEMA_URL,
         name: 'naturefunding.org: grants and funding for nature restoration and conservation',
         url: SITE_URL,
         license: 'CC-BY-4.0',

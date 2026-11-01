@@ -1,6 +1,7 @@
 ---
 import '../styles/global.css'
 import { RS_URL, REPO_URL, SITE_NAME, absolute, generalIssueUrl } from '../lib/site'
+import { twinPath } from '../lib/twins'
 
 interface Props {
   title: string
@@ -15,6 +16,8 @@ interface Props {
 const { title, description, path, jsonLd, nav = null, noindex = false } = Astro.props
 const canonical = absolute(path)
 const fullTitle = path === '/' ? title : `${title} · ${SITE_NAME}`
+// Every page but the 404 has a Markdown twin for agents (src/lib/agent.ts, src/integrations/prose-twins.ts).
+const markdown = path === '/404/' ? null : absolute(twinPath(path))
 const ld = jsonLd ? (Array.isArray(jsonLd) ? jsonLd : [jsonLd]) : []
 ---
 
@@ -33,6 +36,7 @@ const ld = jsonLd ? (Array.isArray(jsonLd) ? jsonLd : [jsonLd]) : []
     <link rel="preload" href="/fonts/ahn-latin.woff2" as="font" type="font/woff2" crossorigin />
     <link rel="alternate" type="application/atom+xml" title="New and changed calls" href="/feed.xml" />
     <link rel="alternate" type="application/json" title="All listings (JSON)" href="/data.json" />
+    {markdown && <link rel="alternate" type="text/markdown" title="This page as Markdown" href={markdown} />}
     <meta name="theme-color" content="#1f4237" />
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content={SITE_NAME} />
