@@ -54,6 +54,14 @@ describe('a date quote must state its year', () => {
     ['Applications close 26 November 2026.', true],
     ["Closes 26 Nov '26", true],
     ['Closes 26 Nov ’26', true],
+    ["Closes Nov '26", true],
+    ["Opens 26 Nov. '26", true],
+    ["Closes 26 November '26.", true],
+    ["Closes '26 November'", false],
+    ["Closes ‘26 November’", false],
+    ["The '26 round closes 26 November", false],
+    ["Closes Nov '26 November'", false],
+    ["Closes Omar '26", false],
     ['Deadline: 26/11/26', true],
     ['Applications close 26 November', false],
     ['Closes on the 26th', false],
@@ -91,6 +99,28 @@ describe('a quote must say something', () => {
 
   test.each(['', '   ', '​'])('%j is never on a page', (quote) => {
     expect(quoteOnPage(comparable('Any page text at all.'), quote)).toBe(false)
+  })
+})
+
+describe('free text is capped', () => {
+  test.each([
+    ['name', (p: Programme) => { p.name = 'x'.repeat(201) }],
+    ['funder.name', (p: Programme) => { p.funder.name = 'x'.repeat(201) }],
+    ['reporting', (p: Programme) => { p.reporting = 'x'.repeat(601); p.evidence.reporting = ev('Grantees submit a final report.') }],
+    ['evidence.amount.quote', (p: Programme) => { p.evidence.amount = ev('Grants of up to $50,000. '.repeat(20)) }],
+    ['calls.0.label', (p: Programme) => { p.calls[0].label = 'x'.repeat(201) }],
+    ['calls', (p: Programme) => { p.calls = Array.from({ length: 21 }, (_, i) => ({ ...p.calls[0], id: `round-${i}` })) }],
+    ['geography.countries', (p: Programme) => { p.geography = { scope: 'countries', countries: Array(251).fill('KE') }; p.evidence.geography = ev('Projects in Kenya only.') }],
+  ] as const)('%s', (path, change) => {
+    const p = fixture()
+    change(p)
+    expect(problems(p)).toEqual([expect.stringMatching(new RegExp(`^${path.replace('.', '\\.')}: Too (big|long)`))])
+  })
+
+  test('a long eligibility list still fits', () => {
+    const p = fixture()
+    p.evidence.amount = ev('Grants of up to $50,000. '.repeat(15))
+    expect(problems(p)).toEqual([])
   })
 })
 

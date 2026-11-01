@@ -3,12 +3,15 @@ import { deadlinePassed } from '../../scripts/refresh/deadline'
 import { meaningfulQuote, MIN_QUOTE_CHARS } from './text'
 
 export const isoDate = z.string().regex(/^\d{4}-\d{2}-\d{2}$/, 'YYYY-MM-DD')
+/** Caps on free text, so a model's output can't carry a page-sized string into a listing. */
+const name = z.string().min(1).max(200)
+
 export const slug = z.string().regex(/^[a-z0-9]+(-[a-z0-9]+)*$/, 'lowercase-kebab-case')
 
 /** Where a fact was read: the funder's own page, the exact words, and when. */
 export const evidence = z.object({
   source_url: z.url(),
-  quote: z.string().refine(meaningfulQuote, `a quote needs at least ${MIN_QUOTE_CHARS} characters besides spaces`),
+  quote: z.string().max(400).refine(meaningfulQuote, `a quote needs at least ${MIN_QUOTE_CHARS} characters besides spaces`),
   checked_at: isoDate,
   method: z.enum(['page', 'api', 'human']),
 })
@@ -74,7 +77,7 @@ export const deadline = z.object({
   time: z.string().regex(/^\d{2}:\d{2}$/).optional(),
   timezone: z.string().optional(),
   /** The deadline as the funder wrote it. */
-  text: z.string().min(3),
+  text: z.string().min(3).max(200),
 })
 
 /**
@@ -83,7 +86,7 @@ export const deadline = z.object({
  */
 export const call = z.object({
   id: slug,
-  label: z.string(),
+  label: name,
   url: z.url(),
   status: callStatus,
   opens: isoDate.nullable(),
@@ -111,26 +114,35 @@ export const geography = z.discriminatedUnion('scope', [
   z.object({ scope: z.literal('global') }),
   z.object({
     scope: z.literal('countries'),
-    countries: z.array(iso2).min(1),
+    countries: z.array(iso2).min(1).max(250),
     /** Plain-language name of a region or hotspot the funder uses, e.g. "Tropical Andes". */
-    label: z.string().optional(),
+    label: name.optional(),
   }),
   /** Eligibility the funder states as a group, e.g. "ODA-eligible countries", with no country list. */
   z.object({
     scope: z.literal('regions'),
     regions: z.array(region).min(1),
-    label: z.string().min(3),
+    label: name.min(3),
   }),
 ])
 
-const organisation = z.object({ name: z.string(), url: z.url() })
+const organisation = z.object({ name, url: z.url() })
+
+const MONTH = String.raw`(?:jan(?:uary)?|feb(?:ruary)?|mar(?:ch)?|apr(?:il)?|may|june?|july?|aug(?:ust)?|sep(?:t(?:ember)?)?|oct(?:ober)?|nov(?:ember)?|dec(?:ember)?)\.?`
 
 /**
- * Whether a quote names the year of a date: "2026", or a short form that can only be a year,
- * "'26" or "15/11/26". A bare "26" may be the day ("closes 26 November"), so it doesn't count.
+ * Whether a quote names the year of a date: "2026", or a short form that can only be a year:
+ * "Nov '26" or "26 Nov '26" (the apostrophe right after a month), or "15/11/26". A bare "26" may
+ * be the day ("closes 26 November"), and "'26 November'" is a quoted phrase, so neither counts.
  */
-export const statesYear = (quote: string, date: string) =>
-  quote.includes(date.slice(0, 4)) || new RegExp(`(['‘’]|\\d{1,2}/\\d{1,2}/)${date.slice(2, 4)}(?![\\d/])`).test(quote)
+export const statesYear = (quote: string, date: string) => {
+  const yy = date.slice(2, 4)
+  return (
+    quote.includes(date.slice(0, 4)) ||
+    new RegExp(String.raw`\b${MONTH}\s*['‘’]${yy}(?![\d/'’]|\s*${MONTH}\b)`, 'i').test(quote) ||
+    new RegExp(String.raw`\d{1,2}/\d{1,2}/${yy}(?![\d/])`).test(quote)
+  )
+}
 
 /**
  * One funding programme. Each fact is stated on the funder's page (with its evidence)
@@ -139,7 +151,7 @@ export const statesYear = (quote: string, date: string) =>
 export const programme = z
   .object({
     id: slug,
-    name: z.string(),
+    name,
     funder: organisation,
     /** Who runs the call for the funder, e.g. a UNDP country office for a GEF SGP country programme. */
     administered_by: organisation.nullable(),
@@ -156,8 +168,8 @@ export const programme = z
     amount: amount.nullable(),
     co_finance_required: z.boolean().nullable(),
     /** What the funder asks grantees to report, in our words. */
-    reporting: z.string().min(10).nullable(),
-    calls: z.array(call),
+    reporting: z.string().min(10).max(600).nullable(),
+    calls: z.array(call).max(20),
     evidence: z.object({
       administered_by: evidence.optional(),
       applicant_types: evidence.optional(),

@@ -31,6 +31,8 @@ Every listing on naturefunding.org is a JSON file in this folder. The contract i
 
 **`null` means the funder's pages don't say**, never "no restriction". A missing amount is unknown, not unlimited.
 
+Text is capped so no field can carry a whole page: names, labels and deadline text 200 characters, `summary` 400, `reporting` 600, quotes 400; at most 250 countries and 20 calls.
+
 ## A call
 
 A call is one round of applications: `id` (unique within the programme), `label`, `url`, `status`, `opens`, `deadline` (date, optional time and time zone, and the deadline as the funder wrote it), and evidence for status, opens and deadline.
@@ -43,7 +45,7 @@ A call is one round of applications: `id` (unique within the programme), `label`
 | `suspended` | The funder paused it. |
 | `unknown` | The page exists but its state can't be read. |
 
-Each status is as of the day in its evidence (the UTC day it was read). A call is never `open` once its deadline had passed as that day began, in the funder's time zone when it states one: a round whose stated deadline has passed is `closed`, even if the page still says open. A date's quote must contain its year, as four digits or a form that can only be a year ("'26", "04/01/27"), never a bare "26"; a window the funder states without a year ("October 15 to December 22") keeps `opens` and `deadline` null and goes in the label.
+Each status is as of the day in its evidence (the UTC day it was read). A call is never `open` once its deadline had passed as that day began, in the funder's time zone when it states one: a round whose stated deadline has passed is `closed`, even if the page still says open. A date's quote must contain its year, as four digits or a form that can only be a year ("Nov '26", "04/01/27"), never a bare "26" or a quoted "'26 November'"; a window the funder states without a year ("October 15 to December 22") keeps `opens` and `deadline` null and goes in the label.
 
 ### The four shapes
 

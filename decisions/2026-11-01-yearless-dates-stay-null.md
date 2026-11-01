@@ -9,7 +9,7 @@ undo: Delete the statesYear check in src/data/schema.ts.
 
 ## Decision
 
-When a funder states a recurring window without a year ("October 15 to December 22", "March 1, July 1, October 1 each year"), the call keeps `deadline` and `opens` null and shows the window in its label. The schema now rejects any date whose quote doesn't contain its year: the four digits, or a short form that can only be a year ("'26", "04/01/27"). A bare "26" doesn't count, since it may be the day ("closes 26 November"); the first version of the check let that through, and the PR #1 review caught it.
+When a funder states a recurring window without a year ("October 15 to December 22", "March 1, July 1, October 1 each year"), the call keeps `deadline` and `opens` null and shows the window in its label. The schema now rejects any date whose quote doesn't contain its year: the four digits, or a short form that can only be a year ("Nov '26" with the apostrophe right after a month, or "04/01/27"). A bare "26" doesn't count, since it may be the day ("closes 26 November"); the first version of the check let that through, and the PR #1 review caught it.
 
 ## Why
 
