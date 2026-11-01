@@ -1,0 +1,51 @@
+---
+import { AGING_DAYS, buildDate, daysBetween } from '../lib/data'
+import { longDate, shortDate } from '../lib/format'
+
+interface Props {
+  checked: string
+  /** Print the page it was checked against after the tag. */
+  source?: { url: string; label: string }
+  /** A lighter stamp for long lists, where the boxed tag would repeat on every row. */
+  compact?: boolean
+}
+
+const { checked, source, compact = false } = Astro.props
+const age = daysBetween(checked, buildDate)
+const aging = age > AGING_DAYS
+---
+
+<span class="checked" data-checked={checked}>
+  <span class:list={['tag', { 'tag--compact': compact }]} data-aging={aging ? '' : undefined} title={`Checked against the funder's page on ${longDate(checked)}`}>
+    Checked {shortDate(checked)}
+  </span>
+  <span class="checked__aging" hidden={!aging}>Over {AGING_DAYS} days ago, due a recheck</span>
+  {
+    source && (
+      <span class="checked__source">
+        Source: <a href={source.url}>{source.label}</a>
+      </span>
+    )
+  }
+</span>
+
+<style>
+  .checked {
+    display: inline-flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.3rem 0.5rem;
+    font-size: 0.875rem;
+    color: var(--ink-2);
+  }
+  .checked__aging {
+    color: var(--aging-text);
+    font-weight: 700;
+  }
+  .checked__aging[hidden] {
+    display: none;
+  }
+  .checked__source a {
+    overflow-wrap: anywhere;
+  }
+</style>

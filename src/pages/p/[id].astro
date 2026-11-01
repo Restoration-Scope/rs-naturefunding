@@ -1,0 +1,649 @@
+---
+import type { GetStaticPaths } from 'astro'
+import Base from '../../layouts/Base.astro'
+import CheckedTag from '../../components/CheckedTag.astro'
+import Fact from '../../components/Fact.astro'
+import Listing from '../../components/Listing.astro'
+import { HIDDEN_DAYS, buildDate, daysBetween, listingFor, programmeById, programmes, sharedSource, sortListings } from '../../lib/data'
+import type { Programme } from '../../data/schema'
+import { amountText, geographyFull, joinAnd, longDate, pageLabel } from '../../lib/format'
+import {
+  accessHelp,
+  accessLabels,
+  applicantLabels,
+  approachLabels,
+  stateLabels,
+} from '../../lib/labels'
+import { RS_REPORTING_URL, absolute, funderCorrectionUrl, reportProblemUrl } from '../../lib/site'
+
+export const getStaticPaths = (() => programmes.map((p) => ({ params: { id: p.id }, props: { p } }))) satisfies GetStaticPaths
+
+const { p } = Astro.props as { p: Programme }
+const listing = listingFor(p)
+const hidden = listing.ageDays > HIDDEN_DAYS
+const { state, call } = listing
+const parent = p.parent ? programmeById.get(p.parent) : undefined
+const children = programmes.filter((c) => c.parent === p.id)
+const childListings = children.map((c) => listingFor(c)).sort(sortListings)
+const openChildren = childListings.filter((l) => l.state === 'open' || l.state === 'rolling')
+// Partners with no call open now fold away below the live ones, as on the finder.
+const partnersNow = childListings.filter((l) => l.state !== 'none' && l.state !== 'closed')
+const partnersLater = partnersNow.length > 0 ? childListings.filter((l) => !partnersNow.includes(l)) : []
+const partnersShown = partnersNow.length > 0 ? partnersNow : childListings
+const noCallRoute = p.access === 'intermediary' || p.access === 'invitation_only'
+const amount = amountText(p.amount)
+const yesNo = (b: boolean | null) => (b === null ? null : b ? 'Yes' : 'No')
+const factsShared = sharedSource([
+  p.evidence.access,
+  p.evidence.amount,
+  p.evidence.geography,
+  p.evidence.applicant_types,
+  p.evidence.window,
+  p.evidence.co_finance_required,
+  p.evidence.administered_by,
+])
+const callShared = (c: Programme['calls'][number]) =>
+  sharedSource([c.evidence.status, c.evidence.opens, c.evidence.deadline])
+// The tag in the apply box dates the fact the box states: the call, or how to apply.
+const applyEvidence =
+  (call && (call.evidence.deadline ?? call.evidence.status)) ?? p.evidence.access ?? null
+/** "America/Guayaquil" → "Ecuador Time", as the browser names it; the raw zone when it has no name. */
+const zoneName = (tz: string, date: string) => {
+  try {
+    const name = new Intl.DateTimeFormat('en-GB', { timeZone: tz, timeZoneName: 'long' })
+      .formatToParts(new Date(`${date}T12:00:00Z`))
+      .find((x) => x.type === 'timeZoneName')?.value
+    return name ?? tz
+  } catch {
+    return tz
+  }
+}
+const deadlineText = (d: NonNullable<Programme['calls'][number]['deadline']>) =>
+  `${longDate(d.date)}${d.time ? `, ${d.time}${d.timezone ? ` ${zoneName(d.timezone, d.date)}` : ''}` : ''}`
+const primary: { href: string; text: string; quiet?: boolean } =
+  call && (state === 'open' || state === 'rolling' || state === 'upcoming')
+    ? { href: call.url, text: 'Go to the call' }
+    : openChildren.length === 1
+      ? { href: `/p/${openChildren[0]!.p.id}/`, text: 'See the open call' }
+      : openChildren.length > 1
+        ? { href: '#partners-title', text: `See the ${openChildren.length} open calls` }
+        : p.access === 'intermediary' && children.length > 0
+          ? { href: '#partners-title', text: `See the ${children.length} partner programmes` }
+          : p.access === 'intermediary'
+            ? { href: p.evidence.access?.source_url ?? p.url, text: 'Find a partner on the funder’s site' }
+            : { href: p.url, text: 'Read the funder’s page', quiet: true }
+const callStatusLabel: Record<string, string> = {
+  open: 'Open',
+  upcoming: 'Upcoming',
+  closed: 'Closed',
+  suspended: 'Suspended',
+  unknown: 'Not clear from the page',
+}
+
+const description = `${p.name} from ${p.funder.name}: ${
+  state === 'open' && call?.deadline
+    ? `open, deadline ${call.deadline.text}.`
+    : state === 'rolling'
+      ? 'open, apply any time.'
+      : noCallRoute
+        ? `${accessLabels[p.access].toLowerCase()}.`
+        : `${stateLabels[state].toLowerCase()}.`
+} ${amount ? `${amount}. ` : ''}Every fact checked against the funder’s own page.`
+
+const jsonLd = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'MonetaryGrant',
+    name: p.name,
+    description: p.summary,
+    url: p.url,
+    funder: { '@type': 'Organization', name: p.funder.name, url: p.funder.url },
+    ...(p.amount
+      ? {
+          amount: {
+            '@type': 'MonetaryAmount',
+            currency: p.amount.currency,
+            ...(p.amount.min !== undefined && { minValue: p.amount.min }),
+            ...(p.amount.max !== undefined && { maxValue: p.amount.max }),
+          },
+        }
+      : {}),
+    subjectOf: { '@type': 'WebPage', url: absolute(`/p/${p.id}/`), dateModified: p.checked_at },
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Find funding', item: absolute('/') },
+      { '@type': 'ListItem', position: 2, name: p.name, item: absolute(`/p/${p.id}/`) },
+    ],
+  },
+]
+---
+
+<Base
+  title={`${p.name}, ${p.funder.name}`}
+  description={description}
+  path={`/p/${p.id}/`}
+  jsonLd={jsonLd}
+  noindex={hidden}
+>
+  <div slot="band" class="wrap band">
+    <a class="band__back" href="/">← All funding</a>
+    <h1 class="band__title">{p.name}</h1>
+    <p class="band__funder">
+      From <a href={p.funder.url}>{p.funder.name}</a>
+      {p.administered_by && <span>, run by <a href={p.administered_by.url}>{p.administered_by.name}</a></span>}
+    </p>
+    <p class="band__summary">{p.summary}</p>
+    <p class="band__note">Summary in our words. Everything below is quoted from the funder.</p>
+  </div>
+
+  <div class="wrap page">
+    {
+      hidden && (
+        <p class="stale" role="note">
+          We have not been able to check this listing for over {HIDDEN_DAYS} days, so it is hidden from the finder.
+          Treat every fact below as out of date until the funder’s page confirms it.
+        </p>
+      )
+    }
+    <section class="apply" aria-labelledby="apply-title">
+      <div class="apply__head">
+        <span class="tape" data-state={state}>{noCallRoute ? accessLabels[p.access] : stateLabels[state]}</span>
+        <h2 id="apply-title" class="apply__title">
+          {state === 'open' && call?.deadline && <>Apply by <span class="nowrap">{longDate(call.deadline.date)}</span></>}
+          {state === 'open' && call && !call.deadline && <>Open now</>}
+          {state === 'rolling' && <>Open. Apply any time</>}
+          {state === 'upcoming' && (call?.opens ? <>Opens <span class="nowrap">{longDate(call.opens)}</span></> : <>Opening soon</>)}
+          {state === 'closed' && <>No call open right now</>}
+          {state === 'none' && p.access === 'invitation_only' && <>This funder does not take applications</>}
+          {state === 'none' && p.access === 'intermediary' && <>Apply through a partner, not the funder</>}
+          {state === 'none' && !noCallRoute && <>No call listed</>}
+        </h2>
+      </div>
+      {
+        state === 'open' && call?.deadline && (
+          <dl class="apply__lines">
+            <div><dt>Days left</dt><dd class="mono apply__left">{daysBetween(buildDate, call.deadline.date)}</dd></div>
+            <div><dt>Call</dt><dd>{call.label}</dd></div>
+            <div><dt>Funder’s wording</dt><dd>“{call.deadline.text}”</dd></div>
+          </dl>
+        )
+      }
+      <p class="apply__text">
+        {state === 'open' && call && !call.deadline && <>{call.label}. The funder’s page gives no dated deadline.</>}
+        {state === 'rolling' && call && <>{call.label}</>}
+        {state === 'upcoming' && call?.deadline && <>Closes {longDate(call.deadline.date)}.</>}
+        {state === 'closed' && call?.deadline && <>The last call we saw closed on {longDate(call.deadline.date)}.</>}
+        {noCallRoute && accessHelp[p.access]}
+        {
+          openChildren.length === 1 && (
+            <>
+              {' '}Open now: <strong>{openChildren[0]!.p.name}</strong>.
+            </>
+          )
+        }
+      </p>
+      <div class="apply__actions">
+        <a class:list={['button', { 'button--quiet': primary.quiet }]} href={primary.href}>{primary.text}</a>
+        {
+          applyEvidence ? (
+            <CheckedTag checked={applyEvidence.checked_at} />
+          ) : (
+            <CheckedTag checked={p.checked_at} />
+          )
+        }
+      </div>
+    </section>
+
+    {
+      childListings.length > 0 && (
+        <section class="partners" aria-labelledby="partners-title">
+          <h2 id="partners-title" class="section-title">Partner programmes</h2>
+          <p class="section-check">You apply to one of these, each with its own calls and deadlines.</p>
+          <ol class="partners__list">
+            {partnersShown.map((l) => <Listing listing={l} underParent />)}
+          </ol>
+          {partnersLater.length > 0 && (
+            <details class="partners__later">
+              <summary class="partners__toggle">
+                <span>Not open now</span>
+                <span class="partners__n mono">{partnersLater.length}</span>
+              </summary>
+              <ol class="partners__list">
+                {partnersLater.map((l) => <Listing listing={l} underParent />)}
+              </ol>
+            </details>
+          )}
+        </section>
+      )
+    }
+
+    <section aria-labelledby="facts-title">
+      <h2 id="facts-title" class="section-title">The facts, in the funder’s words</h2>
+      {
+        factsShared && (
+          <p class="section-check">
+            All quotes are from <a href={factsShared.url}>{pageLabel(factsShared.url)}</a> unless marked.{' '}
+            <CheckedTag checked={factsShared.checked} />
+          </p>
+        )
+      }
+      <dl class="facts">
+        <Fact label="How to apply" value={accessLabels[p.access]} evidence={p.evidence.access} missing="Not stated" shared={factsShared}>
+          {p.access === 'direct' && <p class="fact__help">{accessHelp[p.access]}</p>}
+        </Fact>
+        <Fact label="Amount" value={amount} evidence={p.evidence.amount} shared={factsShared} />
+        <Fact label="Where" value={geographyFull(p.geography)} evidence={p.evidence.geography} shared={factsShared} />
+        <Fact
+          label="Who can apply"
+          value={p.applicant_types ? joinAnd(p.applicant_types.map((a) => applicantLabels[a])) : null}
+          evidence={p.evidence.applicant_types}
+          shared={factsShared}
+        />
+        <Fact
+          label="Rounds"
+          value={p.window === 'rolling' ? 'Rolling: apply any time' : p.window === 'fixed' ? 'Fixed rounds with deadlines' : null}
+          evidence={p.evidence.window}
+          shared={factsShared}
+        />
+        <Fact label="Co-funding required" value={yesNo(p.co_finance_required)} evidence={p.evidence.co_finance_required} shared={factsShared} />
+        {
+          p.administered_by && (
+            <Fact label="Run by" value={p.administered_by.name} evidence={p.evidence.administered_by} shared={factsShared} />
+          )
+        }
+        <Fact label="Restoration approach" value={joinAnd(p.approaches.map((a) => approachLabels[a]))} missing="">
+          <p class="fact__help">Our classification, from the funder’s description of what it supports.</p>
+        </Fact>
+      </dl>
+    </section>
+
+    {
+      p.calls.length > 0 && (
+        <section aria-labelledby="calls-title">
+          <h2 id="calls-title" class="section-title">
+            {p.calls.length === 1 ? 'The call' : `Calls (${p.calls.length})`}
+          </h2>
+          {p.calls.map((c) => (
+            <article class="call">
+              <div class="call__head">
+                <span class="tape" data-state={c.status === 'open' ? 'open' : c.status === 'upcoming' ? 'upcoming' : c.status === 'closed' ? 'closed' : 'none'}>
+                  {callStatusLabel[c.status]}
+                </span>
+                <h3 class="call__title">{c.label}</h3>
+                <a class="call__link" href={c.url}>Call page</a>
+              </div>
+              {callShared(c) && (
+                <p class="section-check">
+                  Quotes from <a href={callShared(c)!.url}>{pageLabel(callShared(c)!.url)}</a>.{' '}
+                  <CheckedTag checked={callShared(c)!.checked} />
+                </p>
+              )}
+              <dl class="facts">
+                <Fact label="Status" value={callStatusLabel[c.status]} evidence={c.evidence.status} shared={callShared(c)} />
+                {(c.opens || c.evidence.opens) && (
+                  <Fact label="Opens" value={c.opens ? longDate(c.opens) : null} evidence={c.evidence.opens} shared={callShared(c)} />
+                )}
+                <Fact
+                  label="Deadline"
+                  value={c.deadline ? deadlineText(c.deadline) : null}
+                  evidence={c.evidence.deadline}
+                  shared={callShared(c)}
+                  missing={p.window === 'rolling' ? 'None: apply any time' : 'Not stated on the funder’s page'}
+                />
+              </dl>
+            </article>
+          ))}
+        </section>
+      )
+    }
+
+    {
+      !primary.quiet && (
+        <p class="again">
+          <a class="button" href={primary.href}>{primary.text}</a>
+        </p>
+      )
+    }
+
+    <section aria-labelledby="reporting-title">
+      <h2 id="reporting-title" class="section-title">What the funder asks grantees to report</h2>
+      <dl class="facts">
+        <Fact label="Reporting" value={p.reporting} evidence={p.evidence.reporting} />
+      </dl>
+      {
+        p.reporting && (
+          <p class="aside">
+            From the builders of this site: <a href={RS_REPORTING_URL}>Restoration Scope</a> makes software for
+            reporting to funders like this one.
+          </p>
+        )
+      }
+    </section>
+
+    {
+      parent && (
+        <section aria-labelledby="related-title">
+          <h2 id="related-title" class="section-title">
+            Part of a larger programme
+          </h2>
+          <p>
+            <a href={`/p/${parent.id}/`}>{parent.name}</a>, from {parent.funder.name}
+          </p>
+        </section>
+      )
+    }
+
+    <section class="fix" aria-labelledby="fix-title">
+      <h2 id="fix-title" class="section-title">Something wrong?</h2>
+      <p>
+        We read every fact from the funder’s own pages, linked above. If a deadline, amount or rule has
+        changed, tell us and we will check it against the funder’s page.
+      </p>
+      <div class="fix__actions">
+        <a class="button button--quiet" href={reportProblemUrl(p.name, p.id)}>Report a problem</a>
+        <a class="button button--quiet" href={funderCorrectionUrl(p.name, p.id)}>Are you this funder? Correct this listing</a>
+      </div>
+      <p class="fix__note">Both open a pre-filled issue on GitHub (a free account is needed). Listings are never paid for.</p>
+    </section>
+  </div>
+</Base>
+
+<style>
+  .band {
+    padding-block: 1rem 1.5rem;
+  }
+  @media (min-width: 48rem) {
+    .band {
+      padding-block: 1.25rem 2rem;
+    }
+  }
+  .band a {
+    color: var(--shell-ink);
+  }
+  .band__back {
+    display: inline-block;
+    margin-bottom: 1rem;
+    font-size: 0.9375rem;
+    color: var(--shell-ink-2) !important;
+  }
+  .band__title {
+    max-width: 30ch;
+    font-size: clamp(1.5rem, 1.1rem + 1.8vw, 2.5rem);
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    line-height: 1.12;
+  }
+  .band__funder {
+    margin-top: 0.6rem;
+    font-size: 1.0625rem;
+    color: var(--shell-ink-2);
+  }
+  .band__summary {
+    max-width: 62ch;
+    margin-top: 1rem;
+    font-size: 1.0625rem;
+  }
+  .band__note {
+    margin-top: 0.5rem;
+    font-size: 0.875rem;
+    color: var(--shell-ink-2);
+  }
+
+  .page {
+    max-width: calc(52rem + 2 * var(--gutter));
+    margin-inline: 0 auto;
+  }
+  /* Wide screens: the apply box rides along in a right rail while the facts scroll. */
+  @media (min-width: 72rem) {
+    .page {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 20rem;
+      column-gap: 3rem;
+      max-width: var(--page);
+    }
+    .page > * {
+      grid-column: 1;
+    }
+    .page > .apply {
+      grid-column: 2;
+      grid-row: 1 / span 12;
+      position: sticky;
+      top: 1.5rem;
+      align-self: start;
+    }
+    .page {
+      margin-inline: auto;
+    }
+    .page > .apply {
+      margin-top: 3rem;
+    }
+  }
+  .partners {
+    container: listings / inline-size;
+  }
+  .partners__later {
+    margin-top: 0.75rem;
+  }
+  .partners__toggle {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    min-height: 2.75rem;
+    padding: 0.5rem 0;
+    border-bottom: 2px solid var(--ink);
+    font-size: 1.0625rem;
+    font-weight: 700;
+    cursor: pointer;
+    list-style: none;
+  }
+  .partners__toggle::-webkit-details-marker {
+    display: none;
+  }
+  .partners__toggle::before {
+    content: '';
+    flex: none;
+    width: 0.5rem;
+    height: 0.5rem;
+    border-right: 2px solid currentColor;
+    border-bottom: 2px solid currentColor;
+    transform: rotate(-45deg);
+  }
+  .partners__later[open] .partners__toggle::before {
+    transform: translateY(-20%) rotate(45deg);
+  }
+  .partners__n {
+    margin-left: auto;
+    padding: 0 0.45rem;
+    border-radius: 2px;
+    background: var(--sunk);
+    box-shadow: inset 0 0 0 1px var(--rule);
+    font-size: 0.875rem;
+  }
+  .again {
+    margin-top: 2rem;
+  }
+  @media (max-width: 47.99rem) {
+    .again .button {
+      width: 100%;
+      justify-content: center;
+    }
+  }
+  @media (min-width: 72rem) {
+    .again {
+      display: none;
+    }
+  }
+  .nowrap {
+    white-space: nowrap;
+  }
+  .partners__list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    border-top: 1px solid var(--rule);
+  }
+
+  .stale {
+    margin-top: 2rem;
+    padding: 0.75rem 1rem;
+    border-radius: var(--radius);
+    background: var(--aging);
+    color: var(--aging-ink);
+    font-weight: 600;
+  }
+  .apply {
+    margin-top: 1.5rem;
+    padding: 1.25rem 1.25rem 1.1rem;
+    background: var(--surface);
+    border: 1px solid var(--rule);
+    border-radius: var(--radius);
+  }
+  .apply__head {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.5rem 0.85rem;
+  }
+  .apply__title {
+    font-size: 1.375rem;
+    font-weight: 800;
+    letter-spacing: -0.01em;
+  }
+  .apply__text {
+    margin-top: 0.5rem;
+    color: var(--ink-2);
+  }
+  .apply__text:empty {
+    display: none;
+  }
+  .apply__actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.75rem 1.25rem;
+    margin-top: 1rem;
+  }
+  @media (max-width: 47.99rem) {
+    .apply__actions .button {
+      width: 100%;
+      justify-content: center;
+    }
+  }
+  .section-check {
+    margin-bottom: 0.75rem;
+    font-size: 0.875rem;
+    color: var(--ink-2);
+  }
+  .section-check :global(.checked) {
+    vertical-align: middle;
+  }
+
+  .section-title {
+    margin-top: 3rem;
+    margin-bottom: 0.75rem;
+    font-size: 1.25rem;
+    font-weight: 800;
+  }
+  .facts {
+    margin: 0;
+    border-bottom: 1px solid var(--rule);
+  }
+  .fact__help {
+    margin-top: 0.25rem;
+    font-size: 0.9375rem;
+    color: var(--ink-2);
+  }
+  .call + .call {
+    margin-top: 2rem;
+  }
+  .call {
+    padding: 1rem 1.1rem 0.25rem;
+    border: 1px solid var(--rule);
+    border-radius: var(--radius);
+    background: var(--surface);
+  }
+  .call .facts {
+    border-bottom: 0;
+  }
+  .call__head {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr);
+    align-items: center;
+    gap: 0.4rem 0.75rem;
+    margin-bottom: 0.5rem;
+  }
+  .call__title {
+    font-size: 1.0625rem;
+    font-weight: 800;
+  }
+  .call__link {
+    grid-column: 1 / -1;
+    font-size: 0.9375rem;
+  }
+  @media (min-width: 48rem) {
+    .call__head {
+      grid-template-columns: auto minmax(0, 1fr) auto;
+    }
+    .call__link {
+      grid-column: auto;
+    }
+  }
+  .apply__lines {
+    display: grid;
+    gap: 0.35rem;
+    margin: 0.75rem 0 0;
+    font-size: 0.9375rem;
+  }
+  .apply__lines div {
+    display: grid;
+    grid-template-columns: 7.5rem minmax(0, 1fr);
+    gap: 0.75rem;
+  }
+  .apply__lines dt {
+    color: var(--ink-2);
+  }
+  .apply__lines dd {
+    margin: 0;
+  }
+  .apply__left {
+    font-weight: 700;
+  }
+  .aside {
+    margin-top: 1rem;
+    font-size: 0.875rem;
+    color: var(--ink-2);
+  }
+  .related {
+    margin: 0;
+    padding-left: 1.1rem;
+  }
+  .related li + li {
+    margin-top: 0.35rem;
+  }
+  .fix p {
+    max-width: 62ch;
+  }
+  .fix__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-top: 1rem;
+  }
+  @media (max-width: 47.99rem) {
+    .fix__actions {
+      flex-direction: column;
+    }
+    .fix__actions .button {
+      justify-content: center;
+      text-align: center;
+    }
+  }
+  .fix__note {
+    margin-top: 0.6rem;
+    font-size: 0.875rem;
+    color: var(--ink-2);
+  }
+</style>

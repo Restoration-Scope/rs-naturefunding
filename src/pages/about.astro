@@ -1,0 +1,375 @@
+---
+import Base from '../layouts/Base.astro'
+import Fact from '../components/Fact.astro'
+import { AGING_DAYS, HIDDEN_DAYS, programmes, stats } from '../lib/data'
+import { amountText, longDate } from '../lib/format'
+import { REPO_URL, RS_URL, absolute, generalIssueUrl } from '../lib/site'
+
+const description =
+  'Who builds naturefunding.org, how every listing is checked against the funder’s own page, and how to use and correct the open data.'
+
+// A real fact to show what each listing carries.
+const example =
+  programmes.find((p) => p.id === 'rufford-small-grants' && p.evidence.amount) ??
+  programmes.find((p) => p.amount && p.evidence.amount)
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'AboutPage',
+  name: 'How naturefunding.org checks its listings',
+  url: absolute('/about/'),
+  description,
+  publisher: { '@type': 'Organization', name: 'Restoration Scope', url: 'https://restorationscope.com' },
+}
+---
+
+<Base title="How we check" description={description} path="/about/" nav="about" jsonLd={jsonLd}>
+  <div slot="band" class="wrap band">
+    <h1 class="band__title">How we check</h1>
+    <p class="band__lede">
+      A grant you can’t trust is worse than no grant: it costs a week of writing for a deadline that has passed. So
+      every fact here is read from the funder’s own page, quoted word for word and dated.
+    </p>
+  </div>
+
+  <article class="wrap prose">
+    <details class="toc" data-toc>
+      <summary class="toc__title">On this page</summary>
+      <nav aria-label="On this page">
+      <ol>
+        <li><a href="#who">Who builds this</a></li>
+        <li><a href="#sources">Where every fact comes from</a></li>
+        <li><a href="#never-guess">What we never guess</a></li>
+        <li><a href="#labels">What the labels mean</a></li>
+        <li><a href="#how-often">How often we check</a></li>
+        <li><a href="#corrections">Corrections</a></li>
+        <li><a href="#open-data">Open data</a></li>
+      </ol>
+      </nav>
+    </details>
+
+    <h2 id="who">Who builds this</h2>
+    <p>
+      naturefunding.org is built and paid for by <a href={RS_URL}>Restoration Scope</a>, a company that makes
+      monitoring and reporting software for restoration projects. We say so openly because a directory that hides
+      who runs it is hard to trust.
+    </p>
+    <ul>
+      <li><strong>No paid listings.</strong> Funders cannot pay to be listed, ranked or highlighted.</li>
+      <li>
+        <strong>No ranking by who pays.</strong> Results are sorted by deadline, soonest first. Whether a funder uses
+        Restoration Scope has no effect on its listing.
+      </li>
+      <li><strong>No account, no email wall.</strong> Search and filters run in your browser.</li>
+    </ul>
+
+    <h2 id="sources">Where every fact comes from</h2>
+    <p>
+      Each deadline, amount, eligibility rule and region is read from the funder’s own website: the call page, the
+      guidelines or the programme page. Next to each fact we show:
+    </p>
+    <ul>
+      <li>the page it came from, linked;</li>
+      <li>the exact words on that page;</li>
+      <li>the date we last checked it, on a tag like <span class="nowrap"><span class="tag">Checked 1 Nov 2026</span>.</span></li>
+    </ul>
+    {
+      example && (
+        <figure class="example">
+          <figcaption class="example__caption">A real fact, as it appears on the {example.name} page:</figcaption>
+          <dl class="example__facts">
+            <Fact label="Amount" value={amountText(example.amount)} evidence={example.evidence.amount} />
+          </dl>
+        </figure>
+      )
+    }
+    <p>
+      Other directories and funding guides are useful for finding funders we have missed. We never copy a listing,
+      a date or an amount from them.
+    </p>
+
+    <h2 id="never-guess">What we never guess</h2>
+    <ul>
+      <li>
+        <strong>Deadlines.</strong> If the funder’s page doesn’t give a date, we don’t either. “Not stated” means the
+        page doesn’t say, not that there is no limit.
+      </li>
+      <li>
+        <strong>How to apply.</strong> Some funders take open applications, some only fund through partners such as
+        country programmes, and some pick their own grantees. We label each one plainly, so you don’t write a proposal
+        to a funder that will never read it.
+      </li>
+    </ul>
+
+    <h2 id="labels">What the labels mean</h2>
+    <h3 class="key__title">Is a call open?</h3>
+    <dl class="key">
+      <div><dt><span class="tape" data-state="open">Open</span></dt><dd>Taking applications now, until the deadline shown.</dd></div>
+      <div><dt><span class="tape" data-state="rolling">Rolling</span></dt><dd>Taking applications any time, with no deadline.</dd></div>
+      <div><dt><span class="tape" data-state="upcoming">Upcoming</span></dt><dd>Announced, but not open yet.</dd></div>
+      <div><dt><span class="tape" data-state="closed">Closed</span></dt><dd>A call ran and its deadline has passed. The next date is not announced yet.</dd></div>
+      <div><dt><span class="tape" data-state="none">No open call</span></dt><dd>The funder has no call on its page right now. Check its page again later.</dd></div>
+    </dl>
+    <p class="key__note">
+      The finder lists open, rolling and upcoming calls first. Closed and no-call listings sit in a folded list under
+      them, headed “Not open now”.
+    </p>
+    <h3 class="key__title">Funders you don’t apply to directly</h3>
+    <dl class="key">
+      <div><dt><span class="tape" data-state="none">Through a partner</span></dt><dd>You apply to a partner, such as a country programme, not to the funder.</dd></div>
+      <div><dt><span class="tape" data-state="none">Invitation only</span></dt><dd>The funder picks its grantees. Don’t send a proposal.</dd></div>
+    </dl>
+
+    <h2 id="how-often">How often we check</h2>
+    <ol class="steps">
+      <li>Every day, a job reads each funder’s page again.</li>
+      <li>If nothing changed, the listing gets a new checked date.</li>
+      <li>
+        If something changed, a person compares it with the saved page before it goes live. The date can stay older
+        for a few days while that happens.
+      </li>
+      <li>When a deadline passes, the call shows as closed.</li>
+      <li>
+        After {AGING_DAYS} days without a check, the tag turns amber:{' '}
+        <span class="tag" data-aging>Checked 20 Sep 2026</span>
+      </li>
+      <li>After {HIDDEN_DAYS} days without a check, the listing is hidden until we can confirm it again.</li>
+    </ol>
+    {stats.lastChecked && <p class="small">Most recent check: {longDate(stats.lastChecked)}.</p>}
+
+    <h2 id="corrections">Corrections</h2>
+    <p>
+      Every programme page has a <strong>Report a problem</strong> link and, for funders, a{' '}
+      <strong>Correct this listing</strong> link. Both open a pre-filled issue on GitHub, which needs a free account. We check every correction
+      against the funder’s own page before changing anything.
+    </p>
+    <p>For anything else on the site, such as a missing funder or a broken page:</p>
+    <p class="actions"><a class="button button--quiet" href={generalIssueUrl}>Report a problem</a></p>
+
+    <h2 id="open-data">Open data</h2>
+    <p>Use the data for anything, including commercial work, as long as you credit naturefunding.org.</p>
+    <ul>
+      <li><a href="/data.json">data.json</a>: every programme, call and fact with its source, quote and checked date.</li>
+      <li><a href="/data.csv">data.csv</a>: one row per call, for spreadsheets.</li>
+      <li><a href="/feed.xml">Atom feed</a>: new and changed calls, for a feed reader.</li>
+      <li><a href="/health.json">health.json</a>: when the listings were last refreshed.</li>
+    </ul>
+    <p>
+      The data is licensed <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>. Quotes from funder
+      pages remain their authors’; we keep them short and always link the source. The code is MIT-licensed and{' '}
+      <a href={REPO_URL}>public on GitHub</a>.
+    </p>
+  </article>
+</Base>
+
+<script>
+  // The contents list starts folded on phones and open beside the text on wide screens.
+  const toc = document.querySelector<HTMLDetailsElement>('[data-toc]')
+  const wide = matchMedia('(min-width: 72rem)')
+  const sync = () => {
+    if (toc && wide.matches) toc.open = true
+  }
+  sync()
+  wide.addEventListener('change', sync)
+</script>
+
+<style>
+  .band {
+    padding-block: 1.75rem 2.25rem;
+  }
+  .band__title {
+    font-size: clamp(1.75rem, 1.2rem + 2.2vw, 2.75rem);
+    font-weight: 800;
+    letter-spacing: -0.02em;
+  }
+  .band__lede {
+    max-width: 60ch;
+    margin-top: 0.9rem;
+    font-size: 1.125rem;
+    color: var(--shell-ink-2);
+  }
+  .prose {
+    max-width: calc(44rem + 2 * var(--gutter));
+    margin-inline: 0 auto;
+  }
+  /* Wide screens: the contents list sits in a sticky rail beside the text. */
+  @media (min-width: 72rem) {
+    .prose {
+      display: grid;
+      grid-template-columns: minmax(0, 44rem) 16rem;
+      justify-content: space-between;
+      column-gap: 4rem;
+      max-width: var(--page);
+      margin-inline: auto;
+    }
+    .prose > * {
+      grid-column: 1;
+    }
+    .prose > .toc {
+      grid-column: 2;
+      grid-row: 1 / span 40;
+      position: sticky;
+      top: 1.5rem;
+      align-self: start;
+    }
+  }
+  .key {
+    display: grid;
+    gap: 0.6rem;
+    margin: 0.75rem 0 0;
+    max-width: 66ch;
+  }
+  .key div {
+    display: grid;
+    gap: 0.3rem;
+  }
+  @media (min-width: 40rem) {
+    .key div {
+      grid-template-columns: 9.5rem minmax(0, 1fr);
+      gap: 1rem;
+      align-items: baseline;
+    }
+  }
+  .key__title {
+    margin-top: 1.25rem;
+    font-size: 1rem;
+    font-weight: 700;
+  }
+  .example {
+    max-width: 66ch;
+    margin: 1.25rem 0 0;
+    padding: 0.25rem 1rem 0;
+    border: 1px dashed var(--rule-strong);
+    border-radius: var(--radius);
+  }
+  .example__caption {
+    padding-top: 0.75rem;
+    font-size: 0.875rem;
+    color: var(--ink-2);
+  }
+  .example__facts {
+    margin: 0;
+  }
+  .prose .example + p {
+    margin-top: 1.25rem;
+  }
+  .key__note {
+    margin-top: 1rem;
+  }
+  .nowrap {
+    white-space: nowrap;
+  }
+  .prose p,
+  .prose li,
+  .prose dd {
+    text-wrap: pretty;
+  }
+  .key dd {
+    margin: 0;
+  }
+  .prose .steps {
+    max-width: 66ch;
+    margin: 0.6rem 0 0;
+    padding-left: 1.4rem;
+  }
+  .prose .steps li {
+    padding-left: 0.25rem;
+  }
+  .prose .steps li::marker {
+    font-weight: 700;
+    color: var(--ink-2);
+  }
+  .prose h2 {
+    margin-top: 2.75rem;
+    margin-bottom: 0.6rem;
+    font-size: 1.375rem;
+    font-weight: 800;
+    scroll-margin-top: 1rem;
+  }
+  .prose p,
+  .prose ul {
+    max-width: 66ch;
+  }
+  .prose p + p,
+  .prose p + ul,
+  .prose ul + p {
+    margin-top: 0.85rem;
+  }
+  .prose ul {
+    margin-block: 0.6rem 0;
+    padding-left: 1.2rem;
+  }
+  .prose li + li {
+    margin-top: 0.4rem;
+  }
+  .prose li::marker {
+    color: var(--ink-2);
+  }
+  .toc {
+    margin-top: 2rem;
+    padding: 0.6rem 1.25rem;
+    border: 1px solid var(--rule);
+    border-radius: var(--radius);
+    background: var(--surface);
+    max-width: 66ch;
+  }
+  .toc__title {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    min-height: 1.75rem;
+    cursor: pointer;
+    list-style: none;
+    font-size: 0.8125rem;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    color: var(--ink-2);
+  }
+  .toc__title::-webkit-details-marker {
+    display: none;
+  }
+  .toc__title::after {
+    content: '';
+    width: 0.5rem;
+    height: 0.5rem;
+    border-right: 2px solid currentColor;
+    border-bottom: 2px solid currentColor;
+    transform: translateY(-25%) rotate(45deg);
+  }
+  .toc[open] .toc__title::after {
+    transform: translateY(25%) rotate(-135deg);
+  }
+  @media (min-width: 72rem) {
+    .toc__title {
+      cursor: default;
+      pointer-events: none;
+    }
+    .toc__title::after {
+      display: none;
+    }
+  }
+  .prose .toc ol {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(14rem, 1fr));
+    gap: 0.3rem 1.5rem;
+    margin: 0.5rem 0 0;
+    padding-left: 1.2rem;
+  }
+  .prose .toc li + li {
+    margin-top: 0;
+  }
+  @media (min-width: 72rem) {
+    .prose .toc ol {
+      grid-template-columns: minmax(0, 1fr);
+    }
+  }
+  .actions {
+    margin-top: 1rem;
+  }
+  .small {
+    margin-top: 1rem;
+    font-size: 0.9375rem;
+    color: var(--ink-2);
+  }
+</style>
