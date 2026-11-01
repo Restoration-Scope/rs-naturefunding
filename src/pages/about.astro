@@ -1,6 +1,9 @@
 ---
 import Base from '../layouts/Base.astro'
 import Fact from '../components/Fact.astro'
+import { Badge } from '@/components/ui/badge'
+import { Button } from '@/components/ui/button'
+import { cardClasses } from '@/components/ui/card'
 import { AGING_DAYS, HIDDEN_DAYS, programmes, stats } from '../lib/data'
 import { amountText, longDate } from '../lib/format'
 import { REPO_URL, RS_URL, absolute, generalIssueUrl } from '../lib/site'
@@ -21,22 +24,41 @@ const jsonLd = {
   description,
   publisher: { '@type': 'Organization', name: 'Restoration Scope', url: 'https://restorationscope.com' },
 }
+
+// The article's own text: paragraphs, lists and headings that are its direct children.
+const prose = [
+  '[&>p]:max-w-[66ch] [&>p+p]:mt-[0.85rem] [&>p+ul]:mt-[0.85rem] [&>ul+p]:mt-[0.85rem]',
+  '[&>ul]:mt-[0.6rem] [&>ul]:mb-0 [&>ul]:max-w-[66ch] [&>ul]:pl-[1.2rem] [&>ul>li+li]:mt-[0.4rem] [&_li]:marker:text-ink-2',
+  '[&>h2]:mt-11 [&>h2]:mb-[0.6rem] [&>h2]:scroll-mt-4 [&>h2]:text-3xl [&>h2]:font-extrabold [&_dd]:text-pretty [&_li]:text-pretty',
+]
+const keyTitle = 'mt-5 text-base font-bold'
+const key =
+  'mt-3 mb-0 grid max-w-[66ch] gap-[0.6rem] *:grid *:gap-[0.3rem] sm:*:grid-cols-[11rem_minmax(0,1fr)] sm:*:items-baseline sm:*:gap-4 [&_dd]:m-0'
 ---
 
 <Base title="How we check" description={description} path="/about/" nav="about" jsonLd={jsonLd}>
-  <div slot="band" class="wrap band">
-    <h1 class="band__title">How we check</h1>
-    <p class="band__lede">
+  <div slot="band" class="wrap pt-7 pb-9">
+    <h1 class="text-[clamp(1.75rem,1.2rem+2.2vw,2.75rem)] font-extrabold tracking-[-0.02em]">How we check</h1>
+    <p class="mt-[0.9rem] max-w-[60ch] text-xl text-shell-ink-2">
       A grant you can’t trust is worse than no grant: it costs a week of writing for a deadline that has passed. So
       every fact here is read from the funder’s own page and shown with the funder’s words and the date we read them.
     </p>
   </div>
 
-  <article class="wrap prose">
-    <details class="toc" data-toc>
-      <summary class="toc__title">On this page</summary>
+  {/* Wide screens: the contents list sits in a sticky rail beside the text. */}
+  <article
+    class:list={[
+      'wrap mr-auto ml-0 max-w-[calc(44rem+2*var(--gutter))] 2xl:mx-auto 2xl:grid 2xl:max-w-(--page) 2xl:grid-cols-[minmax(0,44rem)_16rem] 2xl:justify-start 2xl:gap-x-16 2xl:*:col-start-1',
+      prose,
+    ]}
+  >
+    <details
+      class:list={[cardClasses, 'group/toc mt-8 max-w-[66ch] px-5 py-[0.6rem] 2xl:sticky 2xl:top-6 2xl:col-start-2! 2xl:row-[1/span_40] 2xl:self-start']}
+      data-toc
+    >
+      <summary class="flex min-h-7 cursor-pointer list-none items-center justify-between text-xs font-bold tracking-[0.02em] text-ink-2 uppercase after:size-2 after:border-r-2 after:border-b-2 after:border-current after:content-[''] after:[transform:translateY(-25%)_rotate(45deg)] group-open/toc:after:[transform:translateY(25%)_rotate(-135deg)] 2xl:pointer-events-none 2xl:cursor-default 2xl:after:hidden [&::-webkit-details-marker]:hidden">On this page</summary>
       <nav aria-label="On this page">
-      <ol>
+      <ol class="mt-2 mb-0 grid grid-cols-[repeat(auto-fill,minmax(14rem,1fr))] gap-x-6 gap-y-[0.3rem] pl-[1.2rem] 2xl:grid-cols-[minmax(0,1fr)]">
         <li><a href="#who">Who builds this</a></li>
         <li><a href="#what">What we list</a></li>
         <li><a href="#sources">Where the facts come from</a></li>
@@ -91,19 +113,19 @@ const jsonLd = {
     <ul>
       <li>the page it came from, linked;</li>
       <li>the exact words on that page;</li>
-      <li>the date we last checked it, on a tag like <span class="nowrap"><span class="tag">Checked 1 Nov 2026</span>.</span></li>
+      <li>the date we last checked it, on a tag like <span class="whitespace-nowrap"><Badge variant="tag">Checked 1 Nov 2026</Badge>.</span></li>
     </ul>
     {
       example && (
-        <figure class="example">
-          <figcaption class="example__caption">A real fact, as it appears on the {example.name} page:</figcaption>
-          <dl class="example__facts">
+        <figure class:list={[cardClasses, 'mx-0 mt-5 mb-0 max-w-[66ch] border-rule-strong bg-transparent px-4 pt-1']}>
+          <figcaption class="pt-3 text-md text-ink-2">A real fact, as it appears on the {example.name} page:</figcaption>
+          <dl class="m-0">
             <Fact label="Amount" value={amountText(example.amount)} evidence={example.evidence.amount} />
           </dl>
         </figure>
       )
     }
-    <p>
+    <p class:list={[example && 'mt-5']}>
       Other directories and funding guides are useful for finding funders we have missed. We never copy a listing,
       a date or an amount from them.
     </p>
@@ -122,31 +144,31 @@ const jsonLd = {
     </ul>
 
     <h2 id="labels">What the labels mean</h2>
-    <h3 class="key__title">Is a call open?</h3>
-    <dl class="key">
-      <div><dt><span class="tape" data-state="open">Open</span></dt><dd>Taking applications now, until the deadline shown.</dd></div>
-      <div><dt><span class="tape" data-state="rolling">Rolling</span></dt><dd>Taking applications any time, with no deadline.</dd></div>
-      <div><dt><span class="tape" data-state="upcoming">Upcoming</span></dt><dd>Announced, but not open yet.</dd></div>
-      <div><dt><span class="tape" data-state="closed">Closed</span></dt><dd>The last call we found has passed its deadline. Check the funder’s page for the next round.</dd></div>
-      <div><dt><span class="tape" data-state="none">No call found</span></dt><dd>We found no open or announced call on the funder’s page when we last read it.</dd></div>
+    <h3 class={keyTitle}>Is a call open?</h3>
+    <dl class={key}>
+      <div><dt><Badge variant="tape" state="open">Open</Badge></dt><dd>Taking applications now, until the deadline shown.</dd></div>
+      <div><dt><Badge variant="tape" state="rolling">Rolling</Badge></dt><dd>Taking applications any time, with no deadline.</dd></div>
+      <div><dt><Badge variant="tape" state="upcoming">Upcoming</Badge></dt><dd>Announced, but not open yet.</dd></div>
+      <div><dt><Badge variant="tape" state="closed">Closed</Badge></dt><dd>The last call we found has passed its deadline. Check the funder’s page for the next round.</dd></div>
+      <div><dt><Badge variant="tape" state="none">No call found</Badge></dt><dd>We found no open or announced call on the funder’s page when we last read it.</dd></div>
     </dl>
-    <p class="key__note">
+    <p class="mt-4">
       The finder lists open, rolling and upcoming calls first. Closed and no-call listings sit in a folded list under
       them, headed “Not open now”.
     </p>
-    <h3 class="key__title">Funders you don’t apply to directly</h3>
-    <dl class="key">
-      <div><dt><span class="route-label">Through a partner</span></dt><dd>You apply to a partner, such as a country programme, not to the funder.</dd></div>
-      <div><dt><span class="route-label">Invitation only</span></dt><dd>The funder picks its grantees. Don’t send a proposal.</dd></div>
+    <h3 class={keyTitle}>Funders you don’t apply to directly</h3>
+    <dl class={key}>
+      <div><dt><Badge variant="outline">Through a partner</Badge></dt><dd>You apply to a partner, such as a country programme, not to the funder.</dd></div>
+      <div><dt><Badge variant="outline">Invitation only</Badge></dt><dd>The funder picks its grantees. Don’t send a proposal.</dd></div>
     </dl>
-    <h3 class="key__title">The checked tag</h3>
-    <dl class="key">
-      <div><dt><span class="tag">Checked 1 Nov 2026</span></dt><dd>The last day we read the funder’s page and found the words we quote.</dd></div>
-      <div><dt><span class="tag" data-aging>Checked 20 Sep 2026</span></dt><dd>Over {AGING_DAYS} days since that check. Confirm on the funder’s page before you rely on it.</dd></div>
+    <h3 class={keyTitle}>The checked tag</h3>
+    <dl class={key}>
+      <div><dt><Badge variant="tag">Checked 1 Nov 2026</Badge></dt><dd>The last day we read the funder’s page and found the words we quote.</dd></div>
+      <div><dt><Badge variant="tag" data-aging>Checked 20 Sep 2026</Badge></dt><dd>Over {AGING_DAYS} days since that check. Confirm on the funder’s page before you rely on it.</dd></div>
     </dl>
 
     <h2 id="how-often">How often we check</h2>
-    <ol class="steps">
+    <ol class="mt-[0.6rem] mb-0 max-w-[66ch] pl-[1.4rem] *:pl-1 *:marker:font-bold *:marker:text-ink-2 [&>li+li]:mt-[0.4rem]">
       <li>Every day, a job reads the funder pages that are due: most every day, the rest every week or month.</li>
       <li>If a page still shows the words we quoted, those facts get a new checked date.</li>
       <li>
@@ -159,14 +181,14 @@ const jsonLd = {
       </li>
       <li>
         After {AGING_DAYS} days without a check, the tag turns amber:{' '}
-        <span class="tag" data-aging>Checked 20 Sep 2026</span>
+        <Badge variant="tag" data-aging>Checked 20 Sep 2026</Badge>
       </li>
       <li>
         After {HIDDEN_DAYS} days without a check, the listing leaves the finder until we can confirm it again. Its page
         stays up, marked out of date.
       </li>
     </ol>
-    {stats.lastChecked && <p class="small">Most recent check: {longDate(stats.lastChecked)}.</p>}
+    {stats.lastChecked && <p class="mt-4 text-md text-ink-2">Most recent check: {longDate(stats.lastChecked)}.</p>}
 
     <h2 id="corrections">Corrections</h2>
     <p>
@@ -175,7 +197,7 @@ const jsonLd = {
       against the funder’s own page.
     </p>
     <p>For anything else on the site, such as a missing funder or a broken page:</p>
-    <p class="actions"><a class="button button--quiet" href={generalIssueUrl}>Report a problem</a></p>
+    <p><Button href={generalIssueUrl} variant="outline">Report a problem</Button></p>
 
     <h2 id="open-data">Open data</h2>
     <p>
@@ -193,7 +215,7 @@ const jsonLd = {
       always link the source. The code is MIT-licensed and{' '}
       <a href={REPO_URL}>public on GitHub</a>.
     </p>
-    <p class="back"><a class="button" href="/">Find funding</a></p>
+    <p><Button href="/">Find funding</Button></p>
   </article>
 </Base>
 
@@ -208,215 +230,3 @@ const jsonLd = {
   wide.addEventListener('change', sync)
 </script>
 
-<style>
-  .band {
-    padding-block: 1.75rem 2.25rem;
-  }
-  .band__title {
-    font-size: clamp(1.75rem, 1.2rem + 2.2vw, 2.75rem);
-    font-weight: 800;
-    letter-spacing: -0.02em;
-  }
-  .band__lede {
-    max-width: 60ch;
-    margin-top: 0.9rem;
-    font-size: 1.125rem;
-    color: var(--shell-ink-2);
-  }
-  .prose {
-    max-width: calc(44rem + 2 * var(--gutter));
-    margin-inline: 0 auto;
-  }
-  /* Wide screens: the contents list sits in a sticky rail beside the text. */
-  @media (min-width: 72rem) {
-    .prose {
-      display: grid;
-      grid-template-columns: minmax(0, 44rem) 16rem;
-      justify-content: start;
-      column-gap: 4rem;
-      max-width: var(--page);
-      margin-inline: auto;
-    }
-    .prose > * {
-      grid-column: 1;
-    }
-    .prose > .toc {
-      grid-column: 2;
-      grid-row: 1 / span 40;
-      position: sticky;
-      top: 1.5rem;
-      align-self: start;
-    }
-  }
-  .back {
-    margin-top: 2.5rem;
-  }
-  .key {
-    display: grid;
-    gap: 0.6rem;
-    margin: 0.75rem 0 0;
-    max-width: 66ch;
-  }
-  .key div {
-    display: grid;
-    gap: 0.3rem;
-  }
-  @media (min-width: 40rem) {
-    .key div {
-      grid-template-columns: 11rem minmax(0, 1fr);
-      gap: 1rem;
-      align-items: baseline;
-    }
-  }
-  .key__title {
-    margin-top: 1.25rem;
-    font-size: 1rem;
-    font-weight: 700;
-  }
-  .example {
-    max-width: 66ch;
-    margin: 1.25rem 0 0;
-    padding: 0.25rem 1rem 0;
-    border: 1px solid var(--rule-strong);
-    border-radius: var(--radius);
-  }
-  .example__caption {
-    padding-top: 0.75rem;
-    font-size: 0.9375rem;
-    color: var(--ink-2);
-  }
-  .example__facts {
-    margin: 0;
-  }
-  .prose .example + p {
-    margin-top: 1.25rem;
-  }
-  /* A route, not a status: an outlined label, unlike the status tape. */
-  .route-label {
-    display: inline-block;
-    padding: 0 0.4rem;
-    border: 1px solid var(--rule-strong);
-    border-radius: 2px;
-    font-size: 0.875rem;
-    font-weight: 600;
-  }
-  .key__note {
-    margin-top: 1rem;
-  }
-  .nowrap {
-    white-space: nowrap;
-  }
-  .prose p,
-  .prose li,
-  .prose dd {
-    text-wrap: pretty;
-  }
-  .key dd {
-    margin: 0;
-  }
-  .prose .steps {
-    max-width: 66ch;
-    margin: 0.6rem 0 0;
-    padding-left: 1.4rem;
-  }
-  .prose .steps li {
-    padding-left: 0.25rem;
-  }
-  .prose .steps li::marker {
-    font-weight: 700;
-    color: var(--ink-2);
-  }
-  .prose h2 {
-    margin-top: 2.75rem;
-    margin-bottom: 0.6rem;
-    font-size: 1.375rem;
-    font-weight: 800;
-    scroll-margin-top: 1rem;
-  }
-  .prose p,
-  .prose ul {
-    max-width: 66ch;
-  }
-  .prose p + p,
-  .prose p + ul,
-  .prose ul + p {
-    margin-top: 0.85rem;
-  }
-  .prose ul {
-    margin-block: 0.6rem 0;
-    padding-left: 1.2rem;
-  }
-  .prose li + li {
-    margin-top: 0.4rem;
-  }
-  .prose li::marker {
-    color: var(--ink-2);
-  }
-  .toc {
-    margin-top: 2rem;
-    padding: 0.6rem 1.25rem;
-    border: 1px solid var(--rule);
-    border-radius: var(--radius);
-    background: var(--surface);
-    max-width: 66ch;
-  }
-  .toc__title {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    min-height: 1.75rem;
-    cursor: pointer;
-    list-style: none;
-    font-size: 0.8125rem;
-    font-weight: 700;
-    letter-spacing: 0.02em;
-    text-transform: uppercase;
-    color: var(--ink-2);
-  }
-  .toc__title::-webkit-details-marker {
-    display: none;
-  }
-  .toc__title::after {
-    content: '';
-    width: 0.5rem;
-    height: 0.5rem;
-    border-right: 2px solid currentColor;
-    border-bottom: 2px solid currentColor;
-    transform: translateY(-25%) rotate(45deg);
-  }
-  .toc[open] .toc__title::after {
-    transform: translateY(25%) rotate(-135deg);
-  }
-  @media (min-width: 72rem) {
-    .toc__title {
-      cursor: default;
-      pointer-events: none;
-    }
-    .toc__title::after {
-      display: none;
-    }
-  }
-  .prose .toc ol {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(14rem, 1fr));
-    gap: 0.3rem 1.5rem;
-    margin: 0.5rem 0 0;
-    padding-left: 1.2rem;
-  }
-  .prose .toc li + li {
-    margin-top: 0;
-  }
-  @media (min-width: 72rem) {
-    .prose .toc ol {
-      grid-template-columns: minmax(0, 1fr);
-    }
-  }
-  .actions {
-    margin-top: 1rem;
-  }
-  .small {
-    margin-top: 1rem;
-    font-size: 0.9375rem;
-    color: var(--ink-2);
-  }
-</style>

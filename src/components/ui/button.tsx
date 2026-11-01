@@ -4,7 +4,7 @@ import { cn } from '@/lib/utils'
 
 // shadcn/ui Button, as a plain <button> or <a> (no Radix or Base UI): it renders at build time and ships no JS.
 const buttonVariants = cva(
-  'inline-flex shrink-0 cursor-pointer items-center justify-center gap-2 rounded-md font-bold no-underline',
+  'inline-flex cursor-pointer items-center justify-center gap-2 rounded-md font-bold no-underline',
   {
     variants: {
       variant: {

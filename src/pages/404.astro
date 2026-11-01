@@ -3,24 +3,9 @@ import Base from '../layouts/Base.astro'
 ---
 
 <Base title="Page not found" description="This page does not exist on naturefunding.org." path="/404/">
-  <div slot="band" class="wrap band">
-    <h1>Page not found</h1>
-    <p>The programme may have been renamed or removed. <a href="/">Find funding</a> instead.</p>
+  <div slot="band" class="wrap pt-8 pb-10">
+    <h1 class="text-[2rem] font-extrabold">Page not found</h1>
+    <p class="mt-3">The programme may have been renamed or removed. <a href="/">Find funding</a> instead.</p>
   </div>
 </Base>
 
-<style>
-  .band {
-    padding-block: 2rem 2.5rem;
-  }
-  h1 {
-    font-size: 2rem;
-    font-weight: 800;
-  }
-  p {
-    margin-top: 0.75rem;
-  }
-  a {
-    color: var(--shell-ink);
-  }
-</style>

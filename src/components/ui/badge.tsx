@@ -2,12 +2,13 @@ import { cva, type VariantProps } from 'class-variance-authority'
 import type * as React from 'react'
 import { cn } from '@/lib/utils'
 
-// shadcn/ui Badge on the site's palette. `tape` is the flagging-tape status; its look lives in
-// global.css because src/lib/finder.ts also writes tapes at runtime.
+// shadcn/ui Badge on the site's palette. `tape` (the status on flagging tape) and `tag` (the checked
+// stamp) keep their look in global.css, because src/lib/finder.ts writes tapes and ages stamps at runtime.
 const badgeVariants = cva('inline-flex w-fit shrink-0 items-center whitespace-nowrap', {
   variants: {
     variant: {
       tape: 'tape',
+      tag: 'tag',
       /** A count on the flagging-tape lime: how many filters are on. */
       count: 'rounded-xs bg-tape-open px-[0.4rem] font-mono text-xs text-tape-ink tabular-nums',
       /** A count on a quiet chip. */
