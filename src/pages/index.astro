@@ -83,8 +83,11 @@ const jsonLd = [
   path="/"
   nav="finder"
   jsonLd={jsonLd}
+  headerImage
 >
   <div slot="band" class="wrap pt-2 pb-[1.1rem] max-md:pt-0 max-md:pb-3">
+    {/* The text keeps to a measure (--hero-measure in global.css) so the header image has room beside it. */}
+    <div class="max-w-(--hero-measure)">
     <h1 class="max-w-[40ch] text-[clamp(1.1875rem,0.95rem+1vw,1.75rem)] leading-[1.15] tracking-[-0.01em]">Funding for nature restoration and conservation, checked against each funder’s own page.</h1>
     <p class="mt-[0.4rem] max-w-[75ch] text-md text-shell-ink-2 max-md:text-sm max-md:leading-[1.4]">
       <span class="max-md:hidden">Every deadline, amount and eligibility rule links to the funder’s own page, with the words it rests on and the date we read it.</span>{' '}
@@ -95,6 +98,7 @@ const jsonLd = [
       <span><strong class={num}>{stats.programmes}</strong> programmes listed</span>
       {stats.lastChecked && <span>Last checked {longDate(stats.lastChecked)}</span>}
     </p>
+    </div>
   </div>
 
   <div class="wrap mt-3 grid grid-cols-[minmax(0,1fr)] gap-3 xl:mt-5 xl:grid-cols-[15.375rem_minmax(0,1fr)] xl:gap-3">

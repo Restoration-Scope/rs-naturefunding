@@ -302,6 +302,61 @@ p {
   padding-inline: var(--gutter);
 }
 
+/* The home header's image (scripts/images/header-image.ts). Tablets and wider: a window right of the text,
+   its left and top edges fading into the band. Phones: a strip under the text. Brand-dark scrims keep the
+   band green and the text on solid green; the text never sits on the picture itself. */
+:root {
+  --hero-measure: 40rem;
+}
+@media (max-width: 55.99rem) {
+  :root {
+    --hero-measure: 32rem;
+  }
+}
+.hdr--art {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+}
+.hdr-art {
+  position: absolute;
+  z-index: -1;
+  inset-block: 0;
+  right: 0;
+  left: calc(max(var(--gutter), (100% - var(--page)) / 2 + var(--gutter)) + var(--hero-measure) + 2rem);
+  pointer-events: none;
+}
+.hdr-art img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 0% 100%;
+}
+.hdr-art::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(90deg, var(--shell), rgb(37 75 54 / 0.5) 3rem, rgb(37 75 54 / 0) 7rem),
+    linear-gradient(180deg, rgb(37 75 54 / 0.9) 3.75rem, rgb(37 75 54 / 0) 7.5rem);
+}
+@media (max-width: 47.99rem) {
+  .hdr--art {
+    padding-bottom: 18vw;
+  }
+  .hdr-art {
+    inset: auto 0 0;
+    aspect-ratio: 1096 / 248;
+  }
+  .hdr-art img {
+    object-position: 50% 100%;
+  }
+  .hdr-art::after {
+    background: linear-gradient(180deg, var(--shell), rgb(37 75 54 / 0.4) 35%, rgb(37 75 54 / 0) 65%);
+  }
+}
+
 /* shadcn/ui Badge for a status: a soft tint with a leading dot. */
 .status {
   --dot: var(--muted-foreground);

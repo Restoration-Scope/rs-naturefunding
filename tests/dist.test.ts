@@ -203,6 +203,29 @@ describe('self-hosted fonts', () => {
   })
 })
 
+describe('header image', () => {
+  test('only / has it: decorative, sized, high priority, and every file it lists is in dist', () => {
+    for (const f of htmlFiles) {
+      const pictures = doc(f).querySelectorAll('header picture')
+      if (f !== 'index.html') {
+        expect(pictures.length, f).toBe(0)
+        continue
+      }
+      expect(pictures.length).toBe(1)
+      const img = pictures[0].querySelector('img')!
+      expect(img.getAttribute('alt')).toBe('')
+      expect(Number(img.getAttribute('width'))).toBeGreaterThan(0)
+      expect(Number(img.getAttribute('height'))).toBeGreaterThan(0)
+      expect(img.getAttribute('fetchpriority')).toBe('high')
+      const urls = [img.getAttribute('src')!, ...[...pictures[0].querySelectorAll('source, img')].flatMap((s) => (s.getAttribute('srcset') ?? '').split(',').map((c) => c.trim().split(/\s+/)[0]).filter(Boolean))]
+      const types = [...pictures[0].querySelectorAll('source')].map((s) => s.getAttribute('type'))
+      expect(types).toContain('image/avif')
+      expect(types).toContain('image/webp')
+      for (const u of urls) expect(files, u).toContain(u.replace(/^\//, ''))
+    }
+  })
+})
+
 describe('programme pages keep the evidence', () => {
   test('each page shows every quote from its data file, with its checked date', () => {
     for (const p of programmes) {

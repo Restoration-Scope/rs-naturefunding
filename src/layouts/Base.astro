@@ -10,9 +10,14 @@ interface Props {
   /** The finder itself; its link in the nav is marked current. */
   nav?: 'finder' | 'about' | 'data' | null
   noindex?: boolean
+  /** The forest image behind the header (home only). */
+  headerImage?: boolean
 }
 
-const { title, description, path, jsonLd, nav = null, noindex = false } = Astro.props
+const { title, description, path, jsonLd, nav = null, noindex = false, headerImage = false } = Astro.props
+const img = (crop: string, widths: number[], ext: string) => widths.map((w) => `/img/header/${crop}-${w}.${ext} ${w}w`).join(', ')
+const phone = '(max-width: 47.99rem)'
+const wideSizes = '(min-width: 120rem) 56rem, 46vw'
 const canonical = absolute(path)
 const fullTitle = path === '/' ? title : `${title} · ${SITE_NAME}`
 const ld = jsonLd ? (Array.isArray(jsonLd) ? jsonLd : [jsonLd]) : []
@@ -49,7 +54,19 @@ const ld = jsonLd ? (Array.isArray(jsonLd) ? jsonLd : [jsonLd]) : []
   </head>
   <body>
     <a class="absolute -top-16 left-4 z-10 rounded-md bg-surface px-3.5 py-2 text-ink focus:top-3" href="#main">Skip to content</a>
-    <header class="bg-shell text-shell-ink [&_:focus-visible]:outline-brand-light [&_a]:text-inherit">
+    <header class:list={['bg-shell text-shell-ink [&_:focus-visible]:outline-brand-light [&_a]:text-inherit', headerImage && 'hdr--art']}>
+      {
+        headerImage && (
+          <picture class="hdr-art">
+            <source media={phone} type="image/avif" srcset={img('strip', [480, 768], 'avif')} sizes="100vw" />
+            <source media={phone} type="image/webp" srcset={img('strip', [480, 768], 'webp')} sizes="100vw" />
+            <source media={phone} srcset={img('strip', [480, 768], 'jpg')} sizes="100vw" />
+            <source type="image/avif" srcset={img('wide', [640, 1096], 'avif')} sizes={wideSizes} />
+            <source type="image/webp" srcset={img('wide', [640, 1096], 'webp')} sizes={wideSizes} />
+            <img src="/img/header/wide-1096.jpg" srcset={img('wide', [640, 1096], 'jpg')} sizes={wideSizes} width="1096" height="468" alt="" fetchpriority="high" />
+          </picture>
+        )
+      }
       <div class="wrap flex flex-wrap items-center justify-between gap-x-6 gap-y-2 py-3.5">
         <a class="inline-flex items-center gap-[0.45rem] font-serif text-2xl font-normal [font-synthesis-weight:none] no-underline" href="/" aria-label="naturefunding.org, home">
           <svg class="text-brand-light" viewBox="0 0 24 24" aria-hidden="true" width="22" height="22">
