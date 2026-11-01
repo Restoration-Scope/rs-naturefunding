@@ -52,7 +52,10 @@ export function geographyText(g: Programme['geography']): string | null {
 export function geographyFull(g: Programme['geography']): string | null {
   if (!g) return null
   if (g.scope === 'global') return 'Worldwide'
-  if (g.scope === 'regions') return `${g.label} (${joinAnd(g.regions.map((r) => regionLabels[r]))})`
+  if (g.scope === 'regions') {
+    const regions = joinAnd(g.regions.map((r) => regionLabels[r]))
+    return regions === g.label ? regions : `${g.label} (${regions})`
+  }
   const list = joinAnd(g.countries.map(countryName))
   return g.label ? `${g.label}: ${list}` : list
 }
