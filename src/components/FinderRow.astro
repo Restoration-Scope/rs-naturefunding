@@ -6,6 +6,7 @@ import { approachLabels, stateLabels } from '../lib/labels'
 import { compactAmount, usdValue } from '../lib/table'
 import { Badge } from '@/components/ui/badge'
 import { TableCell, TableRow } from '@/components/ui/table'
+import OrgMark from './OrgMark.astro'
 import Route from './Route.astro'
 
 interface Props {
@@ -64,7 +65,7 @@ const searchText = [p.name, p.funder.name, p.administered_by?.name, p.summary, w
 >
   <TableCell className="c-prog">
     <a class="name" href={`/p/${p.id}/`}>{p.name}</a>
-    <span class="sub" title={funder}>{funder}</span>
+    <span class="sub" title={funder}><OrgMark org={p.funder} size={16} class="sub__mark" />{funder}</span>
     {/* Mid and phone widths: the Route column folds away, so the route shows here. */}
     <span class="sub__route"><Route access={p.access} /></span>
     {p.kind === 'partnership' && <span class="kind">Paid partnership, not a grant</span>}

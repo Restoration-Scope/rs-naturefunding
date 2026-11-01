@@ -204,6 +204,10 @@
     line-height: 1.4;
     color: var(--muted-foreground);
   }
+  /* The funder's mark hangs in the line's first em, beside the name it stands for. */
+  .sub__mark {
+    margin: -0.125rem 0.375rem 0 0;
+  }
   .sub__route {
     display: none;
   }

@@ -5,6 +5,7 @@ import { amountText, geographyText, keepAmountTogether, shortDate } from '../lib
 import { accessLabels, applicantLabels, approachLabels, stateLabels } from '../lib/labels'
 import { Badge } from '@/components/ui/badge'
 import CheckedTag from './CheckedTag.astro'
+import OrgMark from './OrgMark.astro'
 import Route from './Route.astro'
 
 interface Props {
@@ -93,9 +94,10 @@ const searchText = [
     <p class="leading-[1.45] text-ink-2 [grid-area:funder]">
       {
         underParent && p.administered_by ? (
-          <>Run by {p.administered_by.name}</>
+          <><OrgMark org={p.administered_by} class="mr-2 -mt-0.5" />Run by {p.administered_by.name}</>
         ) : (
           <>
+            <OrgMark org={p.funder} class="mr-2 -mt-0.5" />
             {p.funder.name}
             {p.administered_by && <span>, run by {p.administered_by.name}</span>}
           </>

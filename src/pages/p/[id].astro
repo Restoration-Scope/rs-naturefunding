@@ -4,6 +4,7 @@ import Base from '../../layouts/Base.astro'
 import CheckedTag from '../../components/CheckedTag.astro'
 import Fact from '../../components/Fact.astro'
 import Listing from '../../components/Listing.astro'
+import OrgMark from '../../components/OrgMark.astro'
 import Route from '../../components/Route.astro'
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
@@ -86,6 +87,7 @@ const callWhen = (c: Programme['calls'][number]) =>
       : c.status === 'open'
         ? 'No deadline stated'
         : null
+const bandMark = 'mr-1.5 -mt-0.5 box-content rounded-[5px] bg-white p-0.5'
 const callStatusLabel: Record<string, string> = {
   open: 'Open',
   upcoming: 'Upcoming',
@@ -167,14 +169,15 @@ const jsonLd = [
     <h1 class="max-w-[30ch] text-[clamp(1.5rem,1.1rem+1.8vw,2.5rem)] leading-[1.12] tracking-[-0.01em]">{p.name}</h1>
     {/* Phones: two lines at most, so the apply box starts higher; every name stays in the Run by fact. */}
     <p class="mt-[0.6rem] text-lg text-shell-ink-2 max-md:line-clamp-2" title={p.administered_by ? `${p.funder.name}, run by ${p.administered_by.name}` : undefined}>
+      {/* Marks sit on a white tile: most favicons are drawn for a light page, not the green band. */}
       {
         funderQualifier !== null ? (
-          <a href={p.funder.url}>{funderQualifier || 'The funder’s website'}</a>
+          <><OrgMark org={p.funder} size={24} class={bandMark} /><a href={p.funder.url}>{funderQualifier || 'The funder’s website'}</a></>
         ) : (
-          <>From <a href={p.funder.url}>{p.funder.name}</a></>
+          <>From <OrgMark org={p.funder} size={24} class={bandMark} /><a href={p.funder.url}>{p.funder.name}</a></>
         )
       }
-      {p.administered_by && <span>, run by <a href={p.administered_by.url}>{p.administered_by.name}</a></span>}
+      {p.administered_by && <span>, run by <OrgMark org={p.administered_by} size={20} class={bandMark} /><a href={p.administered_by.url}>{p.administered_by.name}</a></span>}
     </p>
     {p.kind === 'partnership' && <p class="mt-4 font-bold">Paid partnership, not a grant: the funder pays for work under a contract.</p>}
     <p class:list={['max-w-[62ch] text-lg max-md:text-base max-md:leading-[1.45]', p.kind === 'partnership' ? 'mt-[0.35rem]' : 'mt-4']}>{p.summary}</p>
