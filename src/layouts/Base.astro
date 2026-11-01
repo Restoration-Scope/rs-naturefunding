@@ -34,7 +34,7 @@ const ld = jsonLd ? (Array.isArray(jsonLd) ? jsonLd : [jsonLd]) : []
     <link rel="preload" href="/fonts/geist-serif-regular.woff2" as="font" type="font/woff2" crossorigin />
     <link rel="alternate" type="application/atom+xml" title="New and changed calls" href="/feed.xml" />
     <link rel="alternate" type="application/json" title="All listings (JSON)" href="/data.json" />
-    <meta name="theme-color" content="#1f4237" />
+    <meta name="theme-color" content="#254b36" />
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content={SITE_NAME} />
     <meta property="og:title" content={fullTitle} />
@@ -49,10 +49,10 @@ const ld = jsonLd ? (Array.isArray(jsonLd) ? jsonLd : [jsonLd]) : []
   </head>
   <body>
     <a class="absolute -top-16 left-4 z-10 rounded-md bg-surface px-3.5 py-2 text-ink focus:top-3" href="#main">Skip to content</a>
-    <header class="bg-shell text-shell-ink [&_:focus-visible]:outline-tape-open [&_a]:text-inherit">
+    <header class="bg-shell text-shell-ink [&_:focus-visible]:outline-brand-light [&_a]:text-inherit">
       <div class="wrap flex flex-wrap items-center justify-between gap-x-6 gap-y-2 py-3.5">
         <a class="inline-flex items-center gap-[0.45rem] font-serif text-2xl font-normal [font-synthesis-weight:none] no-underline" href="/" aria-label="naturefunding.org, home">
-          <svg class="text-tape-open" viewBox="0 0 24 24" aria-hidden="true" width="22" height="22">
+          <svg class="text-brand-light" viewBox="0 0 24 24" aria-hidden="true" width="22" height="22">
             <path d="M12 2.5c-4.6 3.4-7 7-7 10.6a7 7 0 0 0 14 0c0-3.6-2.4-7.2-7-10.6Z" fill="currentColor" opacity=".38" />
             <path d="M12 21.5V9.5m0 4.5 3.2-2.6M12 17l-3.4-2.8" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" />
           </svg>
@@ -68,7 +68,7 @@ const ld = jsonLd ? (Array.isArray(jsonLd) ? jsonLd : [jsonLd]) : []
               ].map(([href, text, key]) => (
                 <li>
                   <a
-                    class="inline-block py-[0.35rem] text-shell-ink-2! no-underline decoration-tape-open decoration-2 underline-offset-[0.35em] hover:text-shell-ink! hover:underline aria-[current=page]:text-shell-ink! aria-[current=page]:underline"
+                    class="inline-block py-[0.35rem] text-shell-ink-2! no-underline decoration-brand-light decoration-2 underline-offset-[0.35em] hover:text-shell-ink! hover:underline aria-[current=page]:text-shell-ink! aria-[current=page]:underline"
                     href={href}
                     aria-current={nav === key ? 'page' : undefined}
                   >
@@ -87,7 +87,7 @@ const ld = jsonLd ? (Array.isArray(jsonLd) ? jsonLd : [jsonLd]) : []
       <slot />
     </main>
 
-    <footer class="mt-20 border-t border-rule bg-sunk text-md text-ink-2 [&_a]:text-ink">
+    <footer class="mt-20 border-t border-rule bg-sunk text-md text-ink-2-on-linen [&_a]:text-ink">
       <div class="wrap grid grid-cols-[minmax(0,1fr)] gap-x-12 gap-y-4 pt-8 pb-10 lg:grid-cols-[minmax(0,28rem)_minmax(0,1fr)]">
         <p>
           Built and maintained by <a href={RS_URL}>Restoration Scope</a>, which makes monitoring software for

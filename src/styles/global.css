@@ -46,47 +46,58 @@
   /* Light only. */
   color-scheme: light;
 
-  /* Aluminium ground, spruce ink. Hex, so engines without oklch still get the palette. */
-  --ground: #eef3f5;
-  --surface: #fafdfe;
-  --sunk: #e4ebed;
-  --ink: #102622;
-  --ink-2: #405454;
-  --rule: #c9d3d5;
-  --rule-strong: #a1aeb0;
-  /* Form control edges: at least 3:1 against the page (WCAG 1.4.11). */
-  --control-edge: #6b7779;
-  --link: #005b46;
-  --focus: #008a23;
+  /* Restoration Scope's palette, as its landing page uses it (restoration-scope
+     src/styles/colors/palette.json): beige paper, ink text, brand green. */
+  --paper: #f7f4ef;
+  --linen: #edeae7;
+  --chip: #eef4e6;
+  --white: #fff;
+  --ink: #1b2722;
+  --ink-2: #6a716e;
+  /* ink-2 is 4.17:1 on linen; secondary text on linen takes this deeper step (5.6:1). */
+  --ink-2-on-linen: #565e5b;
+  --brand: #3a7e49;
+  --brand-dark: #254b36;
+  --brand-light: #beccc2;
+  --brand-blue: #3e58eb;
+  --clay: #a45435;
 
-  /* Shell band: deep spruce. */
-  --shell: #08392d;
-  --shell-ink: #eef8f3;
-  --shell-ink-2: #b9d1c6;
+  /* Roles. The page is paper, cards and the table are white, quiet surfaces are linen. */
+  --ground: var(--paper);
+  --surface: var(--white);
+  --sunk: var(--linen);
+  --rule: #d8d7d2;
+  --rule-strong: #b5b6b1;
+  /* Form control edges: at least 3:1 against paper, white and linen (WCAG 1.4.11). */
+  --control-edge: var(--ink-2);
+  /* Brand green on paper is 4.49:1, a hair under AA for text; links take it 30% toward brand-dark (5.5:1). */
+  --link: #346f43;
+  --focus: var(--brand);
 
-  /* The brand lime (logo, nav underline, selection) and the ink it carries. */
-  --tape-open: #8aef63;
-  --tape-ink: #081f1b;
+  /* The header band: brand-dark, with paper text and brand-light for secondary text and accents. */
+  --shell: var(--brand-dark);
+  --shell-ink: var(--paper);
+  --shell-ink-2: var(--brand-light);
 
-  /* Soft status tints: a fill, its text (each pair at least 8:1) and a dot. ok = open, info = rolling,
-     warn = upcoming, closing soon and an ageing check. */
-  --ok: #d7f5e3;
-  --ok-ink: #0b4a30;
-  --ok-dot: #16a35f;
-  --info: #dcf0fb;
-  --info-ink: #0b4566;
-  --info-dot: #0b8fd0;
-  --warn: #fdf0cf;
-  --warn-ink: #6b3d06;
-  --warn-dot: #d98a0b;
-  /* Amber text on the page: "Paid partnership, not a grant", the next-seven-days divider. */
-  --aging-text: #7e4f00;
+  /* Status tints: a fill, its text (each pair at least 7:1, on paper and white alike) and a dot.
+     ok = open (brand), info = rolling (brand-blue), warn = upcoming, closing soon and an ageing check (clay). */
+  --ok: #e3ede6;
+  --ok-ink: var(--brand-dark);
+  --ok-dot: var(--brand);
+  --info: #e8ebfd;
+  --info-ink: #2b3d7c;
+  --info-dot: var(--brand-blue);
+  --warn: #f2e7e3;
+  --warn-ink: #66402c;
+  --warn-dot: var(--clay);
+  /* Clay text on the page: "Paid partnership, not a grant", the next-seven-days divider. */
+  --aging-text: #894b31;
 
-  /* The primary action: spruce. */
-  --action: var(--shell);
-  --action-ink: var(--shell-ink);
-  --action-hover: #073026;
-  --backdrop: rgb(10 22 22 / 0.55);
+  /* The primary action: brand green, brand-dark on hover. */
+  --action: var(--brand);
+  --action-ink: var(--white);
+  --action-hover: var(--brand-dark);
+  --backdrop: rgb(27 39 34 / 0.55);
 
   --font: 'Inter', 'Inter Fallback', ui-sans-serif, system-ui, sans-serif;
   --font-heading: 'Geist Serif', 'Geist Serif Fallback', Georgia, ui-serif, serif;
@@ -148,6 +159,7 @@
   --color-sunk: var(--sunk);
   --color-ink: var(--ink);
   --color-ink-2: var(--ink-2);
+  --color-ink-2-on-linen: var(--ink-2-on-linen);
   --color-rule: var(--rule);
   --color-rule-strong: var(--rule-strong);
   --color-control-edge: var(--control-edge);
@@ -156,8 +168,10 @@
   --color-shell: var(--shell);
   --color-shell-ink: var(--shell-ink);
   --color-shell-ink-2: var(--shell-ink-2);
-  --color-tape-open: var(--tape-open);
-  --color-tape-ink: var(--tape-ink);
+  --color-brand: var(--brand);
+  --color-brand-dark: var(--brand-dark);
+  --color-brand-light: var(--brand-light);
+  --color-chip: var(--chip);
   --color-ok: var(--ok);
   --color-ok-ink: var(--ok-ink);
   --color-info: var(--info);
@@ -222,8 +236,8 @@ body {
 }
 
 ::selection {
-  background: var(--tape-open);
-  color: var(--tape-ink);
+  background: var(--brand-light);
+  color: var(--ink);
 }
 
 :focus-visible {
@@ -300,7 +314,7 @@ p {
   border: 1px solid transparent;
   border-radius: var(--radius-md);
   background: var(--secondary);
-  color: var(--muted-foreground);
+  color: var(--ink-2-on-linen);
   font-size: var(--text-xs);
   font-weight: 500;
   line-height: 1.35;
