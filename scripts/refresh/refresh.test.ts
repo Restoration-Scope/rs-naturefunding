@@ -95,6 +95,10 @@ describe('Tier A/B classification', () => {
     expect(result.tier).toBe('B')
     if (result.tier === 'B') expect(result.reasons).toEqual(['quote gone (example-fund evidence.amount): "Up to USD 50,000"'])
   })
+  test('a blank or too-short quote never counts as present', () => {
+    const blank = [{ programme_id: 'example-fund', path: 'evidence.amount', quote: '   ' }, { programme_id: 'example-fund', path: 'evidence.window', quote: 'Apply' }]
+    expect(classify({ hash, text }, hash, blank).tier).toBe('B')
+  })
   test('a redirect to another site → B even with the page unchanged; same site with or without www stays A', () => {
     const page = { hash, text, url: URL_A }
     expect(classify({ ...page, finalUrl: 'https://parked-domains.example/landing' }, hash, quotes))

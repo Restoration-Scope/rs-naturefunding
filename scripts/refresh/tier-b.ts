@@ -9,7 +9,7 @@ import type { Call, Evidence, Programme, Source } from '../../src/data/schema'
 import {
   access, applicantType, approach, call as callSchema, callStatus, programme as programmeSchema, region, window as windowSchema,
 } from '../../src/data/schema'
-import { comparable } from '../data/page-text'
+import { comparable, quoteOnPage } from '../../src/data/text'
 import type { Llm } from './llm'
 import { dateOf, evidenceRefs } from './tier'
 
@@ -55,7 +55,7 @@ export function applyExtraction(original: Programme, source: Source, x: Extracti
   const p: Programme = structuredClone(original)
   const today = dateOf(now)
   const page = comparable(pageText)
-  const onPage = (q: unknown): q is string => typeof q === 'string' && q.trim().length >= 3 && q.length <= MAX_QUOTE && page.includes(comparable(q))
+  const onPage = (q: unknown): q is string => typeof q === 'string' && q.length <= MAX_QUOTE && quoteOnPage(page, q)
   const quoteWhy = (q: unknown) => (typeof q === 'string' && q.length > MAX_QUOTE ? `quote longer than ${MAX_QUOTE} characters` : 'quote not on the page')
   const short = (q: unknown) => (typeof q === 'string' ? q.slice(0, MAX_QUOTE) : '')
   const evidence = (quote: string): Evidence => ({ source_url: source.url, quote, checked_at: today, method: 'page' })

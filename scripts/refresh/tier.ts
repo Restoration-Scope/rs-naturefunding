@@ -6,7 +6,7 @@
  * - Tier B (pull request): the page changed or a quote is gone; facts are re-read.
  */
 import type { Call, Evidence, Programme } from '../../src/data/schema'
-import { comparable } from '../data/page-text'
+import { comparable, quoteOnPage } from '../../src/data/text'
 import { deadlinePassed } from './deadline'
 
 export type QuoteRef = { programme_id: string; path: string; quote: string }
@@ -44,7 +44,7 @@ export function classify(page: { hash: string; text: string; url?: string; final
   if (page.url && page.finalUrl && site(page.finalUrl) !== site(page.url)) reasons.push(`redirected to another site: ${page.finalUrl}`)
   if (accepted !== null && accepted !== page.hash) reasons.push('page text changed since the last accepted read')
   for (const q of quotes) {
-    if (!text.includes(comparable(q.quote))) reasons.push(`quote gone (${q.programme_id} ${q.path}): "${q.quote}"`)
+    if (!quoteOnPage(text, q.quote)) reasons.push(`quote gone (${q.programme_id} ${q.path}): "${q.quote}"`)
   }
   return reasons.length ? { tier: 'B', reasons } : { tier: 'A', baseline: accepted === null }
 }
