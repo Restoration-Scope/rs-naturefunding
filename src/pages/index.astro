@@ -41,7 +41,7 @@ const optN = 'text-xs text-muted-foreground tabular-nums'
 // The quick filters in the results summary: a row of shadcn toggles (outline Button, rounded-full), each
 // with its count in a Badge. Pressed, they take the primary fill.
 const quick =
-  'group/q inline-flex h-8 shrink-0 cursor-pointer snap-start items-center gap-1.5 rounded-full border border-border bg-card pr-1.5 pl-3 text-sm font-medium whitespace-nowrap text-foreground shadow-xs hover:bg-muted disabled:cursor-default disabled:opacity-50 aria-pressed:border-primary aria-pressed:bg-primary aria-pressed:text-primary-foreground'
+  'group/q inline-flex h-8 shrink-0 pointer-coarse:h-10 cursor-pointer snap-start items-center gap-1.5 rounded-full border border-border bg-card pr-1.5 pl-3 text-sm font-medium whitespace-nowrap text-foreground shadow-xs hover:bg-muted disabled:cursor-default disabled:opacity-50 aria-pressed:border-primary aria-pressed:bg-primary aria-pressed:text-primary-foreground'
 const quickNBase =
   'inline-flex min-w-5 justify-center rounded-full px-1.5 text-xs leading-[1.35] font-medium tabular-nums group-aria-pressed/q:bg-brand-dark group-aria-pressed/q:text-primary-foreground'
 const quickN = `${quickNBase} bg-secondary text-secondary-foreground`
@@ -288,7 +288,7 @@ const jsonLd = [
           <span class="mx-1 h-5 w-px shrink-0 bg-border" aria-hidden="true" data-later-sep></span>
           <button
             type="button"
-            class="group/later inline-flex h-8 shrink-0 cursor-pointer snap-start items-center gap-1.5 rounded-md px-2.5 text-sm font-medium whitespace-nowrap text-muted-foreground hover:bg-muted hover:text-foreground disabled:cursor-default disabled:opacity-50 aria-pressed:text-foreground"
+            class="group/later inline-flex h-8 shrink-0 pointer-coarse:h-10 cursor-pointer snap-start items-center gap-1.5 rounded-md px-2.5 text-sm font-medium whitespace-nowrap text-muted-foreground hover:bg-muted hover:text-foreground disabled:cursor-default disabled:opacity-50 aria-pressed:text-foreground"
             data-later-toggle
             aria-pressed="false"
             aria-controls="later-head later-rows"

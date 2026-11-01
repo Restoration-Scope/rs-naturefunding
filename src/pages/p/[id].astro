@@ -165,7 +165,7 @@ const jsonLd = [
   noindex={hidden}
 >
   <div slot="band" class="wrap pt-4 pb-6 md:pt-5 md:pb-8 [&_a]:text-shell-ink">
-    <a class="mb-4 inline-block text-md text-shell-ink-2!" href="/">← All funding</a>
+    <a class="mb-4 inline-block text-md text-shell-ink-2! pointer-coarse:-my-2.5 pointer-coarse:mb-1.5 pointer-coarse:py-2.5" href="/">← All funding</a>
     <h1 class="max-w-[30ch] text-[clamp(1.5rem,1.1rem+1.8vw,2.5rem)] leading-[1.12] tracking-[-0.01em]">{p.name}</h1>
     {/* Phones: two lines at most, so the apply box starts higher; every name stays in the Run by fact. */}
     <p class="mt-[0.6rem] text-lg text-shell-ink-2 max-md:line-clamp-2" title={p.administered_by ? `${p.funder.name}, run by ${p.administered_by.name}` : undefined}>
@@ -353,7 +353,7 @@ const jsonLd = [
                 {/* Only while folded: an open call shows its dates in full below. */}
                 {callWhen(c) && <span class="col-start-2 text-md text-ink-2 group-open/call:hidden">{callWhen(c)}</span>}
               </summary>
-              <a class="mb-1 inline-block text-md" href={c.url}>Call page</a>
+              <a class="mb-1 inline-block text-md pointer-coarse:-mt-2.5 pointer-coarse:py-2.5" href={c.url}>Call page</a>
               <dl class="m-0">
                 <Fact label="Status" value={callStatusText(c)} evidence={c.evidence.status} />
                 {(c.opens || c.expected || c.evidence.opens) && (

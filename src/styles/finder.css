@@ -226,8 +226,8 @@
     align-items: center;
     gap: 0.25rem 0.5rem;
   }
-  /* Figures only: Inter's tabular forms also widen the hyphen, so names and quotes keep the default. */
-  .dl__date,
+  /* Figures only: Inter's tabular forms also widen the hyphen, so text that can hold one ("Expected
+     mid-March", names, quotes) keeps the default. */
   .dl__left,
   .amt {
     font-variant-numeric: tabular-nums;
@@ -483,11 +483,16 @@
       display: block;
     }
     .later-head th {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: baseline;
+      column-gap: 0.75rem;
       padding: 1rem 0.25rem 0;
       border: 0;
     }
     .later-head__hint {
-      display: block;
+      order: 1;
+      flex-basis: 100%;
       margin: 0.125rem 0 0;
     }
   }
