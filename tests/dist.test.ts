@@ -115,7 +115,9 @@ describe('finder DOM contract (src/lib/finder.ts)', () => {
     for (const input of form.querySelectorAll('input[type="checkbox"], input[name="within"]')) {
       expect(input.closest('label')?.querySelector('.opt__text'), `${input.getAttribute('name')}=${input.getAttribute('value')}`).not.toBeNull()
     }
-    const groups = [...form.querySelectorAll('details[data-group]')].map((g) => g.getAttribute('data-group'))
+    // Every group is always open: no folding toggles.
+    expect(form.querySelectorAll('details, summary').length).toBe(0)
+    const groups = [...form.querySelectorAll('[data-group]')].map((g) => g.getAttribute('data-group'))
     expect(groups.sort()).toEqual(['access', 'applicant', 'approach', 'size', 'status', 'where', 'within'])
     for (const g of form.querySelectorAll('[data-gcount]')) expect(groups).toContain(g.getAttribute('data-gcount'))
   })

@@ -402,7 +402,7 @@ export function initTableFinder() {
   // ---------- Filter sheet (phones and tablets) ----------
   const narrow = matchMedia('(max-width: 67.99rem)')
   const focusables = () =>
-    [...sheet.querySelectorAll<HTMLElement>('button, input, select, summary, [tabindex]')].filter(
+    [...sheet.querySelectorAll<HTMLElement>('button, input, select, [tabindex]')].filter(
       (e) => !(e as HTMLInputElement).disabled && e.offsetParent !== null,
     )
   function openSheet() {
@@ -453,12 +453,6 @@ export function initTableFinder() {
   // ---------- Wiring ----------
   const f0 = fromUrl()
   write(f0)
-  // A group with a filter set starts open.
-  for (const g of form.querySelectorAll<HTMLDetailsElement>('details[data-group]')) {
-    const k = g.dataset.group!
-    const on = k === 'within' || k === 'where' ? !!f0[k] : f0[k as Multi].length > 0
-    if (on) g.open = true
-  }
   applySort()
   apply()
 

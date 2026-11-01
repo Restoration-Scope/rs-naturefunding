@@ -27,11 +27,10 @@ const states: State[] = ['open', 'rolling', 'upcoming', 'none', 'closed']
 const routes = (['direct', 'intermediary', 'invitation_only'] as const).map((k) => [k, accessLabels[k]])
 const num = 'tabular-nums'
 const skipLink = 'absolute -top-16 left-4 z-10 rounded-md bg-surface px-3.5 py-2 text-ink focus:top-3'
-// A filter group folds; its count shows how many of its filters are on.
-const group = 'group/grp border-b border-rule'
-const groupTitle =
-  "flex min-h-10 cursor-pointer list-none items-center gap-2 py-1 text-sm font-semibold text-foreground after:ml-auto after:text-muted-foreground after:size-[0.4rem] after:border-r-[1.75px] after:border-b-[1.75px] after:border-current after:content-[''] after:[transform:translateY(-20%)_rotate(45deg)] group-open/grp:after:[transform:translateY(20%)_rotate(-135deg)] [&::-webkit-details-marker]:hidden"
-const groupCount = ''
+// Every filter group stays open: a heading, then all its options. The badge counts its filters that are on.
+// A legend sits on its fieldset's top edge, so the heading carries the group's top space.
+const group = 'border-b border-rule pb-3.5 last:border-b-0'
+const groupTitle = 'mb-2 flex items-center gap-2 px-0 pt-3.5 pb-0 text-sm font-semibold text-foreground'
 const groupHint = 'mt-[0.3rem] text-xs leading-[1.4] text-ink-2'
 const opt =
   'group/opt flex min-h-[1.9rem] cursor-pointer items-center gap-2 text-sm leading-[1.3] has-disabled:cursor-default has-disabled:text-ink-2 max-xl:min-h-10 max-xl:text-md'
@@ -149,9 +148,9 @@ const jsonLd = [
               <option value="checked">Recently checked</option>
             </NativeSelect>
           </div>
-          <details class={group} open data-group="status">
-            <summary class={groupTitle}><span>Status</span><Badge variant="count" className={groupCount} data-gcount="status" hidden /></summary>
-            <div class="pb-[0.6rem]">
+          <fieldset class={group} data-group="status">
+            <legend class={groupTitle}>Status<Badge variant="count" data-gcount="status" hidden /></legend>
+            <div>
               {
                 states.map((s) => (
                   <>
@@ -166,22 +165,21 @@ const jsonLd = [
                 ))
               }
             </div>
-          </details>
+          </fieldset>
 
-          <details class={group} open data-group="within">
-            <summary class={groupTitle}><span>Deadline</span><Badge variant="count" className={groupCount} data-gcount="within" hidden /></summary>
-            <div class="pb-[0.6rem]">
+          <fieldset class={group} data-group="within">
+            <legend class={groupTitle}>Deadline<Badge variant="count" data-gcount="within" hidden /></legend>
+            <div>
               <label class={opt}><input class={optInput} type="radio" name="within" value="" checked /><span class={optText}>Any time</span></label>
               <label class={opt}><input class={optInput} type="radio" name="within" value="7" /><span class={optText}>Closes within 7 days</span></label>
               <label class={opt}><input class={optInput} type="radio" name="within" value="30" /><span class={optText}>Within 30 days</span></label>
               <label class={opt}><input class={optInput} type="radio" name="within" value="90" /><span class={optText}>Within 90 days</span></label>
             </div>
-          </details>
+          </fieldset>
 
-          <details class={group} open data-group="where">
-            <summary class={groupTitle}><span>Where the project is</span><Badge variant="count" className={groupCount} data-gcount="where" hidden /></summary>
-            <div class="pb-[0.6rem]">
-              <label class="sr-only" for="where">Where the project is</label>
+          <div class={group} data-group="where">
+            <label class={groupTitle} for="where">Where the project is<Badge variant="count" data-gcount="where" hidden /></label>
+            <div>
               <NativeSelect id="where" name="where">
                 <option value="">Anywhere</option>
                 <optgroup label="Regions">
@@ -199,11 +197,11 @@ const jsonLd = [
               </NativeSelect>
               <p class={groupHint}>Programmes that may fund there, worldwide ones included. Each call sets its own countries.</p>
             </div>
-          </details>
+          </div>
 
-          <details class={group} open data-group="access">
-            <summary class={groupTitle}><span>How to apply</span><Badge variant="count" className={groupCount} data-gcount="access" hidden /></summary>
-            <div class="pb-[0.6rem]">
+          <fieldset class={group} data-group="access">
+            <legend class={groupTitle}>How to apply<Badge variant="count" data-gcount="access" hidden /></legend>
+            <div>
               {
                 routes.map(([k, label]) => (
                   <label class={opt}>
@@ -214,11 +212,11 @@ const jsonLd = [
                 ))
               }
             </div>
-          </details>
+          </fieldset>
 
-          <details class={group} data-group="size">
-            <summary class={groupTitle}><span>Grant size</span><Badge variant="count" className={groupCount} data-gcount="size" hidden /></summary>
-            <div class="pb-[0.6rem]">
+          <fieldset class={group} data-group="size">
+            <legend class={groupTitle}>Grant size<Badge variant="count" data-gcount="size" hidden /></legend>
+            <div>
               {
                 Object.entries(sizeBuckets).map(([k, b]) => (
                   <label class={opt}>
@@ -230,11 +228,11 @@ const jsonLd = [
               }
               <p class={groupHint}>Converted roughly to US dollars, only for this filter.</p>
             </div>
-          </details>
+          </fieldset>
 
-          <details class={group} data-group="applicant">
-            <summary class={groupTitle}><span>Who can apply</span><Badge variant="count" className={groupCount} data-gcount="applicant" hidden /></summary>
-            <div class="pb-[0.6rem]">
+          <fieldset class={group} data-group="applicant">
+            <legend class={groupTitle}>Who can apply<Badge variant="count" data-gcount="applicant" hidden /></legend>
+            <div>
               {
                 usedApplicants.map(([k, label]) => (
                   <label class={opt}>
@@ -245,11 +243,11 @@ const jsonLd = [
                 ))
               }
             </div>
-          </details>
+          </fieldset>
 
-          <details class={group} data-group="approach">
-            <summary class={groupTitle}><span>Approach</span><Badge variant="count" className={groupCount} data-gcount="approach" hidden /></summary>
-            <div class="pb-[0.6rem]">
+          <fieldset class={group} data-group="approach">
+            <legend class={groupTitle}>Approach<Badge variant="count" data-gcount="approach" hidden /></legend>
+            <div>
               {
                 usedApproaches.map(([k, label]) => (
                   <label class={opt}>
@@ -260,7 +258,7 @@ const jsonLd = [
                 ))
               }
             </div>
-          </details>
+          </fieldset>
         </div>
 
         <div class="flex items-center gap-3 border-t border-rule bg-surface px-4 pt-[0.65rem] pb-[calc(0.65rem+env(safe-area-inset-bottom))] xl:hidden!">
