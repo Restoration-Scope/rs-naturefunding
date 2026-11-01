@@ -1,6 +1,6 @@
 ---
 title: Site look is a field kit, with stamped "Checked" tags and flagging-tape status labels
-status: open
+status: reverted
 kind: long-term
 filed: 2026-11-01
 by: naturefunding site thread
@@ -24,3 +24,7 @@ The product's promise is "checked against the funder's page", so the checked dat
 
 - src/styles/global.css
 - .impeccable/surfaces/src-pages-index-astro.md
+
+## Feedback
+
+- 2026-11-01: Replaced by Bernat's choices (Restoration Scope palette, Geist Serif and Inter, shadcn, light only). The current look is in 2026-11-01-site-look-rs-palette.md.
