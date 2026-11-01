@@ -1,0 +1,11 @@
+{
+  // Static assets only: no Worker script runs for visitors (no server work to abuse).
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "naturefunding",
+  "account_id": "c72792497a89bc5db0c41066540d52ea",
+  "compatibility_date": "2026-11-01",
+  "assets": {
+    "directory": "./dist",
+    "not_found_handling": "404-page"
+  }
+}
