@@ -30,15 +30,22 @@
   "calls": [
     {
       "id": "yearly-window",
-      "label": "Yearly window: 9 October to 12 November (year not stated)",
+      "label": "Four windows a year",
       "url": "https://ekct.org.uk/apply/",
-      "status": "open",
+      "status": "unknown",
       "opens": null,
       "deadline": null,
+      "recurring": "4 January to 4 February, 18 April to 12 May, 10 July to 13 August, and 9 October to 12 November",
       "evidence": {
         "status": {
           "source_url": "https://ekct.org.uk/apply/",
-          "quote": "Applications accepted online four times a year during the following date ranges:",
+          "quote": "Medium and large grant applications are only open within specific date ranges during the year as outlined below.",
+          "checked_at": "2026-11-01",
+          "method": "page"
+        },
+        "recurring": {
+          "source_url": "https://ekct.org.uk/apply/",
+          "quote": "Applications accepted online four times a year during the following date ranges: 4th January - 4th February 18th April - 12th May 10th July - 13th August 9th October - 12th November",
           "checked_at": "2026-11-01",
           "method": "page"
         }

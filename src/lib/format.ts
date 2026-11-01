@@ -25,13 +25,18 @@ export function amountText(a: Programme['amount']): string | null {
   const code = a.currency
   // A typical range is what the funder usually gives, not a limit.
   const usually = a.typical ? 'Usually ' : ''
+  const per = a.per === 'year' ? ' a year' : ''
   if (a.min !== undefined && a.max !== undefined) {
-    return a.min === a.max
-      ? `${usually}${money(code, a.max)} ${code}`
-      : `${usually}${money(code, a.min)} to ${money(code, a.max)} ${code}`
+    if (a.min === a.max) return `${usually}${money(code, a.max)} ${code}${per}`
+    // "Less than" leaves the max out, so the range reads "… to less than …".
+    const top = a.max_exclusive ? `less than ${money(code, a.max)}` : money(code, a.max)
+    return `${usually}${money(code, a.min)} to ${top} ${code}${per}`
   }
-  if (a.max !== undefined) return a.typical ? `Usually up to ${money(code, a.max)} ${code}` : `Up to ${money(code, a.max)} ${code}`
-  return a.typical ? `Usually from ${money(code, a.min!)} ${code}` : `From ${money(code, a.min!)} ${code}`
+  if (a.max !== undefined) {
+    const lead = a.max_exclusive ? 'less than' : 'up to'
+    return `${a.typical ? `Usually ${lead}` : lead[0]!.toUpperCase() + lead.slice(1)} ${money(code, a.max)} ${code}${per}`
+  }
+  return `${a.typical ? 'Usually from' : 'From'} ${money(code, a.min!)} ${code}${per}`
 }
 
 export function geographyText(g: Programme['geography']): string | null {

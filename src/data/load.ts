@@ -12,7 +12,7 @@ const formatIssues = (where: string, error: z.ZodError) =>
 export function evidenceOf(p: Programme): Evidence[] {
   return [
     ...Object.values(p.evidence),
-    ...p.calls.flatMap((c) => [c.evidence.status, c.evidence.opens, c.evidence.deadline]),
+    ...p.calls.flatMap((c) => [c.evidence.status, c.evidence.opens, c.evidence.deadline, c.evidence.recurring]),
   ].filter((e): e is Evidence => e !== undefined)
 }
 
