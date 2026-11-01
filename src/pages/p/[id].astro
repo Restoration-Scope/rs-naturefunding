@@ -95,8 +95,14 @@ const callStatusLabel: Record<string, string> = {
 }
 // The call that sets the page's status comes first and open; the others fold.
 const callsOrdered = call ? [call, ...p.calls.filter((c) => c !== call)] : p.calls
+// A rolling programme's open call reads as the finder says it: Rolling.
+const rollingCall = (c: Programme['calls'][number]) => p.window === 'rolling' && c.status === 'open'
 const callStatusText = (c: Programme['calls'][number]) =>
-  c.status === 'unknown' && c.recurring ? 'Windows each year; the page doesn’t say if one is open now' : callStatusLabel[c.status]
+  rollingCall(c)
+    ? 'Rolling: apply any time'
+    : c.status === 'unknown' && c.recurring
+      ? 'Windows each year; the page doesn’t say if one is open now'
+      : callStatusLabel[c.status]
 
 const description = `${p.name} from ${p.funder.name}: ${
   state === 'open' && call?.deadline
@@ -190,14 +196,15 @@ const jsonLd = [
       aria-labelledby="apply-title"
     >
       <div class="flex flex-wrap items-center gap-x-[0.85rem] gap-y-2">
+        {/* Invitation-only funders and umbrellas never have a call of their own: the route is their status. */}
         <span class="flex flex-wrap items-center gap-2">
-          <Badge variant="status" state={state}>{stateLabels[state]}</Badge>
+          {!(state === 'none' && noCallRoute) && <Badge variant="status" state={state}>{stateLabels[state]}</Badge>}
           {noCallRoute && <Route access={p.access} />}
         </span>
-        <h2 id="apply-title" class="text-4xl">
+        <h2 id="apply-title" class="text-3xl [text-wrap:pretty] 2xl:text-2xl">
           {state === 'open' && call?.deadline && <>Apply by <span class="whitespace-nowrap">{longDate(call.deadline.date)}</span></>}
           {state === 'open' && call && !call.deadline && (call.recurring ? <>Open, with deadlines each year</> : <>Open, no dated deadline</>)}
-          {state === 'rolling' && <>Open. Apply any time</>}
+          {state === 'rolling' && <>Apply any time</>}
           {state === 'upcoming' &&
             (call?.opens ? (
               <>Opens <span class="whitespace-nowrap">{longDate(call.opens)}</span></>
@@ -226,7 +233,7 @@ const jsonLd = [
       <p class="mt-2 text-ink-2 empty:hidden">
         {state === 'open' && call && !call.deadline && !call.recurring && <>{call.label}. The funder’s page gives no dated deadline, so check that the window is still open before you apply.</>}
         {state === 'open' && call?.recurring && !call.deadline && <>{call.recurring}, each year. The page gives no year, so check which date comes next before you apply.</>}
-        {state === 'rolling' && call && <>{call.label}</>}
+        {state === 'rolling' && call && !/rolling/i.test(call.label) && <>{call.label}</>}
         {state === 'upcoming' && (call?.evidence.opens ?? (call?.expected && call.evidence.status)) && (
           <>The funder says: “{(call.evidence.opens ?? call.evidence.status)!.quote}”{' '}</>
         )}
@@ -247,7 +254,7 @@ const jsonLd = [
         {openChildren.length > 1 && <> {openChildren.length} partner programmes are open now. They come first in the list below.</>}
       </p>
       <div class="mt-4 flex flex-wrap items-center gap-x-5 gap-y-3">
-        <Button href={primary.href} variant={primary.quiet ? 'outline' : 'default'} width="phone">{primary.text}</Button>
+        <Button href={primary.href} variant={primary.quiet ? 'outline' : 'default'} width="phone" className="whitespace-normal text-center 2xl:w-full">{primary.text}</Button>
         {
           applyEvidence ? (
             <CheckedTag checked={applyEvidence.checked_at} source={{ url: applyEvidence.source_url, label: pageLabel(applyEvidence.source_url) }} />
@@ -336,8 +343,8 @@ const jsonLd = [
               open={c === call || p.calls.length === 1}
             >
               <summary class="grid cursor-pointer list-none grid-cols-[auto_minmax(0,1fr)_auto] items-center gap-x-3 gap-y-[0.4rem] pb-3 after:mr-[0.2rem] after:size-[0.55rem] after:border-r-2 after:border-b-2 after:border-ink-2 after:content-[''] after:[transform:rotate(45deg)_translateY(-0.15rem)] group-open/call:after:[transform:rotate(-135deg)_translateY(-0.1rem)] [&::-webkit-details-marker]:hidden">
-                <Badge variant="status" state={c.status === 'open' ? 'open' : c.status === 'upcoming' ? 'upcoming' : c.status === 'closed' ? 'closed' : 'none'}>
-                  {callStatusLabel[c.status]}
+                <Badge variant="status" state={rollingCall(c) ? 'rolling' : c.status === 'open' ? 'open' : c.status === 'upcoming' ? 'upcoming' : c.status === 'closed' ? 'closed' : 'none'}>
+                  {rollingCall(c) ? 'Rolling' : callStatusLabel[c.status]}
                 </Badge>
                 <h3 class="text-2xl">{c.label}</h3>
                 {/* Only while folded: an open call shows its dates in full below. */}
@@ -364,7 +371,7 @@ const jsonLd = [
                    
                     missing={
                       p.window === 'rolling'
-                        ? 'None: apply any time'
+                        ? 'No deadline: apply any time'
                         : /window|deadline|each year|until/i.test(c.label)
                           ? 'No dated deadline: the dates in the call name repeat each year'
                           : 'Not found on the call page'

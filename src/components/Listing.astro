@@ -76,7 +76,7 @@ const searchText = [
 >
   <div class="[grid-area:status]">
     <span class="flex flex-wrap items-center gap-2">
-      <Badge variant="status" state={state}>{stateLabels[state]}</Badge>
+      {!(state === 'none' && noCallRoute) && <Badge variant="status" state={state}>{stateLabels[state]}</Badge>}
       {noCallRoute && <Route access={p.access} />}
     </span>
   </div>

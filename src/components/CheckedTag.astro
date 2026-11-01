@@ -15,15 +15,25 @@ const age = daysBetween(checked, buildDate)
 const aging = age > AGING_DAYS
 ---
 
-<span class:list={['inline-flex flex-wrap items-center gap-x-1.5 gap-y-1 text-xs text-muted-foreground', className]} data-checked={checked}>
-  {
-    source && (
-      <>
-        <span>Source: <a class="wrap-anywhere" href={source.url}>{source.label}</a></span>
-        <span aria-hidden="true">·</span>
-      </>
-    )
-  }
-  <Badge variant="tag" data-aging={aging ? '' : undefined} title={`Checked against the funder's page on ${longDate(checked)}`}>Checked {shortDate(checked)}</Badge>
-  <span class="font-semibold text-aging-text" hidden={!aging}>Over {AGING_DAYS} days ago, due a recheck</span>
+{/* With a source, a dot separates it from the date. The dot sits in the date's left padding, and the
+    wrapper's left edge is clipped, so when the date wraps to its own line the dot is cut off instead of
+    leading the line. The source's padding keeps its focus ring clear of the clip. */}
+<span
+  class:list={[
+    'inline-flex flex-wrap items-center gap-y-1 text-xs text-muted-foreground',
+    source ? '-ml-[1.125rem] [clip-path:inset(-6px_-6px_-6px_0.75rem)]' : 'gap-x-1.5',
+    className,
+  ]}
+  data-checked={checked}
+>
+  {source && <span class="pl-[1.125rem]">Source: <a class="wrap-anywhere" href={source.url}>{source.label}</a></span>}
+  <span
+    class:list={[
+      'inline-flex items-center whitespace-nowrap',
+      source && "relative pl-[1.125rem] before:absolute before:left-1 before:w-2 before:text-center before:content-['·']",
+    ]}
+  >
+    <Badge variant="tag" data-aging={aging ? '' : undefined} title={`Checked against the funder's page on ${longDate(checked)}`}>Checked {shortDate(checked)}</Badge>
+  </span>
+  <span class:list={['font-semibold text-aging-text', source && 'ml-1.5']} hidden={!aging}>Over {AGING_DAYS} days ago, due a recheck</span>
 </span>

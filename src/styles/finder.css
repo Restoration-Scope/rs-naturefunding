@@ -69,7 +69,6 @@
     table-layout: fixed;
     border-collapse: separate;
     border-spacing: 0;
-    font-variant-numeric: tabular-nums;
     font-size: 0.9375rem;
     line-height: 1.35;
   }
@@ -137,17 +136,20 @@
   .tbl thead button[data-active='descending'] .i-desc {
     display: block;
   }
-  .h-route {
-    margin-right: 0.75rem;
+  /* Route is a label, Checked sorts: a dot keeps them two headers in one cell. */
+  .h-route::after {
+    content: '·';
+    margin-inline: 0.5rem 0.625rem;
+    color: var(--rule-strong);
   }
   .h-alt {
     display: none !important;
   }
   .h-dl {
-    width: 15.5rem;
+    width: 15rem;
   }
   .h-amount {
-    width: 9.5rem;
+    width: 10.25rem;
   }
   .h-rc {
     width: 11.5rem;
@@ -219,6 +221,12 @@
     grid-template-columns: auto minmax(0, 1fr);
     align-items: center;
     gap: 0.25rem 0.5rem;
+  }
+  /* Figures only: Inter's tabular forms also widen the hyphen, so names and quotes keep the default. */
+  .dl__date,
+  .dl__left,
+  .amt {
+    font-variant-numeric: tabular-nums;
   }
   .dl__date {
     font-weight: 600;

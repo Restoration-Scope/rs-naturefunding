@@ -16,7 +16,8 @@ const { listing } = Astro.props
 const { p, state, call, aging } = listing
 const deadline = call?.deadline ?? null
 const amountFull = amountText(p.amount)
-const amount = compactAmount(p.amount)
+// A range never breaks at its dash; the line may break before the currency code instead.
+const amount = compactAmount(p.amount)?.replace(/–/g, '–\u2060').replace(/\u00a0([A-Z]{3})/, ' $1') ?? null
 const usd = usdValue(p.amount)
 const where = geographyText(p.geography)
 const daysLeft = state === 'open' && deadline ? daysBetween(buildDate, deadline.date) : null

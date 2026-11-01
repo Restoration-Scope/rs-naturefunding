@@ -285,7 +285,7 @@ const jsonLd = [
           <button type="button" class={quick} data-quick="within:7" aria-pressed="false">Closing within 7 days <b class={`${quickNBase} bg-warn text-warn-ink`} data-qn="soon">0</b></button>
           <button type="button" class={quick} data-quick="status:rolling" aria-pressed="false">Rolling <b class={quickN} data-qn="rolling">{count('rolling')}</b></button>
           <button type="button" class={quick} data-quick="status:upcoming" aria-pressed="false">Upcoming <b class={quickN} data-qn="upcoming">{count('upcoming')}</b></button>
-          <span class="mx-1 h-5 w-px shrink-0 bg-border" aria-hidden="true"></span>
+          <span class="mx-1 h-5 w-px shrink-0 bg-border" aria-hidden="true" data-later-sep></span>
           <button
             type="button"
             class="group/later inline-flex h-8 shrink-0 cursor-pointer snap-start items-center gap-1.5 rounded-md px-2.5 text-sm font-medium whitespace-nowrap text-muted-foreground hover:bg-muted hover:text-foreground disabled:cursor-default disabled:opacity-50 aria-pressed:text-foreground"
@@ -305,7 +305,7 @@ const jsonLd = [
       <div class="flex flex-wrap gap-1.5 pb-3" data-chips hidden></div>
 
       {/* shadcn/ui Table in a Card; on phones each row becomes its own card (src/styles/finder.css). */}
-      <div class="tbl-wrap">
+      <div class="tbl-wrap" data-table>
       <Table className="tbl">
         <TableCaption className="sr-only">Funding programmes. Sortable by deadline, amount and date checked.</TableCaption>
         <TableHeader>
@@ -355,7 +355,7 @@ const jsonLd = [
       </button>
 
       <div class="px-2 py-8" data-empty hidden>
-        <h3 class="text-3xl" data-empty-head>Nothing matches.</h3>
+        <h3 class="text-2xl" data-empty-head>Nothing matches.</h3>
         <p class="mt-[0.4rem] text-ink-2" data-empty-text>Try another search, remove a filter, or <button type="button" class="linkish" data-reset>clear all</button>.</p>
       </div>
       <noscript>

@@ -48,6 +48,8 @@ export function initTableFinder() {
   const laterHead = $<HTMLTableSectionElement>('[data-later-head]')
   const laterToggle = $<HTMLButtonElement>('[data-later-toggle]')
   const laterVerb = $<HTMLElement>('[data-later-verb]')
+  const laterSep = $<HTMLElement>('[data-later-sep]')
+  const tableWrap = $<HTMLElement>('[data-table]')
   const endfold = $<HTMLButtonElement>('[data-endfold]')
   const endN = $<HTMLElement>('[data-qn-end]')
   const sortLine = $<HTMLElement>('[data-sort-line]')
@@ -292,9 +294,6 @@ export function initTableFinder() {
     if (b) b.textContent = String(n)
     const l = document.querySelector<HTMLElement>(`[data-ql="${key}"]`)
     if (l) l.textContent = plural(n, one, many)
-    // A count of 0 is noise, unless that filter is the one switched on.
-    const q = b?.closest<HTMLElement>('[data-quick]')
-    if (q) q.hidden = n === 0 && q.getAttribute('aria-pressed') !== 'true'
   }
 
   // The next seven days and after, drawn between rows while the table is sorted by soonest deadline.
@@ -333,8 +332,10 @@ export function initTableFinder() {
     const f = read()
     let shownNow = 0
     let shownLater = 0
+    // Asked-for not-open rows ignore a status filter that names only open states ("Open now" plus "Show not open").
+    const laterSkip = showLater && !f.status.some(isLater) ? 'status' : undefined
     for (const i of items) {
-      const ok = matches(i, f)
+      const ok = isLater(i.state) ? matches(i, f, laterSkip) : matches(i, f)
       i.el.hidden = !ok
       if (!ok) continue
       if (isLater(i.state)) shownLater++
@@ -369,6 +370,7 @@ export function initTableFinder() {
     laterToggle.setAttribute('aria-pressed', String(laterOn))
     laterToggle.disabled = forced || laterN === 0
     laterToggle.hidden = laterN === 0
+    laterSep.hidden = laterN === 0
     laterVerb.textContent = laterOn ? 'Hide' : 'Show'
 
     for (const n of form.querySelectorAll<HTMLElement>('[data-n]')) {
@@ -381,12 +383,16 @@ export function initTableFinder() {
 
     shownEl.textContent = `${shown} of ${items.length} shown`
     live.textContent = `${shown} ${plural(shown, 'programme', 'programmes')} shown`
+    // Nothing to show: no header, no end card, just the message where the rows would be.
     emptyEl.hidden = shown > 0
-    emptyHead.textContent = shownNow + shownLater === 0 ? 'Nothing matches.' : 'Nothing open matches.'
+    tableWrap.hidden = shown === 0
+    if (shown === 0) endfold.hidden = true
+    // laterN counts not-open rows the other filters match, which the status filter may be hiding.
+    emptyHead.textContent = laterN === 0 ? 'Nothing matches.' : 'Nothing open matches.'
     if (shown === 0) {
       emptyText.innerHTML =
-        !laterOn && shownLater > 0
-          ? `${shownLater} not open now ${plural(shownLater, 'matches', 'match')}. <button type="button" class="linkish" data-later-show>Show ${plural(shownLater, 'it', 'them')}</button>, or <button type="button" class="linkish" data-reset>clear all filters</button>.`
+        laterN > 0
+          ? `${laterN} not open now ${plural(laterN, 'matches', 'match')}. <button type="button" class="linkish" data-later-show>Show ${plural(laterN, 'it', 'them')}</button>, or <button type="button" class="linkish" data-reset>clear all filters</button>.`
           : `Try another search, remove a filter, or <button type="button" class="linkish" data-reset>clear all</button>.`
     }
     done.textContent = `Show ${shown} ${plural(shown, 'result', 'results')}`
