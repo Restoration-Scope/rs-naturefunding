@@ -172,6 +172,35 @@ describe('no hydration, small JavaScript', () => {
   })
 })
 
+describe('self-hosted fonts', () => {
+  const css = files.filter((f) => f.endsWith('.css')).map(read).join('\n')
+  const fontFiles = files.filter((f) => f.endsWith('.woff2')).sort()
+  const thirdPartyFonts = /fonts\.(googleapis|gstatic)\.com|fontshare\.com|use\.typekit\.net/
+
+  test('every @font-face url is a woff2 in /fonts/ that dist holds, shown with font-display: swap', () => {
+    const faces = (css.match(/@font-face\s*{[^}]*}/g) ?? []).filter((f) => f.includes('url('))
+    const urls = faces.flatMap((f) => [...f.matchAll(/url\(\s*['"]?([^'")]+)/g)].map((m) => m[1]))
+    expect(urls.length).toBeGreaterThan(0)
+    for (const u of urls) {
+      expect(u).toMatch(/^\/fonts\/[^/]+\.woff2$/)
+      expect(fontFiles).toContain(u.slice(1))
+    }
+    for (const f of faces) expect(f).toMatch(/font-display:\s*swap/)
+    // No font file ships unused.
+    expect([...new Set(urls.map((u) => u.slice(1)))].sort()).toEqual(fontFiles)
+  })
+
+  test('pages preload at most two fonts, each one a face uses; no third-party font host', () => {
+    for (const f of htmlFiles) {
+      const preloads = [...doc(f).querySelectorAll('link[rel="preload"][as="font"]')].map((l) => l.getAttribute('href')!)
+      expect(preloads.length, f).toBeLessThanOrEqual(2)
+      for (const href of preloads) expect(fontFiles, f).toContain(href.replace(/^\//, ''))
+      expect(thirdPartyFonts.test(read(f)), f).toBe(false)
+    }
+    expect(thirdPartyFonts.test(css)).toBe(false)
+  })
+})
+
 describe('programme pages keep the evidence', () => {
   test('each page shows every quote from its data file, with its checked date', () => {
     for (const p of programmes) {
