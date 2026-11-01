@@ -7,6 +7,7 @@
 import { createHash } from 'node:crypto'
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs'
 import { join } from 'node:path'
+import { normalise } from '../../src/data/text'
 
 const CACHE_DIR = join(process.cwd(), '.cache', 'pages')
 const USER_AGENT =
@@ -36,19 +37,7 @@ export function decodeEntities(s: string): string {
   })
 }
 
-/** Folds typography so a quote matches whatever quote marks, dashes and spaces the page used. */
-export function normalise(s: string): string {
-  return s
-    .normalize('NFKC')
-    .replace(/[­​-‍⁠﻿]/g, '')
-    .replace(/[‘’‚‛′`´]/g, "'")
-    .replace(/[“”„‟″]/g, '"')
-    .replace(/[‐-―−﹘﹣－]/g, '-')
-    .replace(/\s+/g, ' ')
-    .trim()
-}
-
-export const comparable = (s: string) => normalise(s).toLowerCase()
+export { comparable, normalise, quoteOnPage } from '../../src/data/text'
 
 export async function htmlToText(html: string, selector: string | null = null): Promise<string> {
   const cleaned = await new HTMLRewriter()

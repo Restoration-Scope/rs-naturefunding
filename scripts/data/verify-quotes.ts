@@ -6,7 +6,8 @@
 import { mkdirSync, writeFileSync } from 'node:fs'
 import { join, resolve } from 'node:path'
 import { checkData, evidenceOf } from '../../src/data/load'
-import { comparable, fetchPage } from './page-text'
+import { comparable, quoteOnPage } from '../../src/data/text'
+import { fetchPage } from './page-text'
 
 const args = process.argv.slice(2)
 const dirAt = args.indexOf('--dir')
@@ -41,7 +42,7 @@ await Promise.all(
 const failures = checks.flatMap((c) => {
   const page = pages.get(c.url)!
   if (page instanceof Error) return [{ ...c, reason: `fetch failed: ${page.message}` }]
-  return page.includes(comparable(c.quote)) ? [] : [{ ...c, reason: 'quote not on page' }]
+  return quoteOnPage(page, c.quote) ? [] : [{ ...c, reason: 'quote not on page' }]
 })
 
 for (const f of failures) console.error(`FAIL ${f.programme} ${f.url}\n  ${f.reason}: "${f.quote}"`)

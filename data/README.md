@@ -43,7 +43,7 @@ A call is one round of applications: `id` (unique within the programme), `label`
 | `suspended` | The funder paused it. |
 | `unknown` | The page exists but its state can't be read. |
 
-Each status is as of the day in its evidence. A call is never `open` with a deadline before that day: a round whose stated deadline has passed is `closed`, even if the page still says open. A date's quote must contain its year; a window the funder states without a year ("October 15 to December 22") keeps `opens` and `deadline` null and goes in the label.
+Each status is as of the day in its evidence (the UTC day it was read). A call is never `open` once its deadline had passed as that day began, in the funder's time zone when it states one: a round whose stated deadline has passed is `closed`, even if the page still says open. A date's quote must contain its year, as four digits or a form that can only be a year ("'26", "04/01/27"), never a bare "26"; a window the funder states without a year ("October 15 to December 22") keeps `opens` and `deadline` null and goes in the label.
 
 ### The four shapes
 
@@ -61,7 +61,7 @@ Each stated fact carries an evidence record:
 ```
 
 1. **First-party only.** `source_url` is the funder's own page, or the official implementer's (a UNDP country office, a CEPF Regional Implementation Team). Directories and guides only tell us where to look; no value is taken from them.
-2. **Verbatim quote.** `quote` is copied from the page. `bun run verify-quotes` fetches every cited page, turns it into plain text, folds case, quote marks, dashes and spaces, and checks every quote appears on it. Any miss fails the run.
+2. **Verbatim quote.** `quote` is copied from the page, with at least 8 characters besides spaces. `bun run verify-quotes` fetches every cited page, turns it into plain text, folds case, quote marks, dashes and spaces, and checks every quote appears on it. Any miss fails the run.
 3. **Never inferred.** A deadline or opening date the page doesn't state stays `null`.
 4. **Re-read daily.** The refresh job re-reads every page in `sources.json`. An unchanged page moves `checked_at` forward; a changed fact opens a pull request for review.
 
@@ -74,6 +74,7 @@ We keep only quotes, links and dates. Funder pages themselves are not committed.
 | `bun run validate` | Schema, file name = id, unique ids, parents exist, every cited page is on the watch list. |
 | `bun run verify-quotes` | Fetches every cited page (cached for the day in `.cache/`) and checks every quote. `--fresh` refetches; pass ids to check only some programmes. |
 | `bun run sync-sources` | Adds a watch-list entry for every newly cited page and picks a main-text selector; keeps hand-written selectors and hints. |
+| `bun test` | Unit tests for the schema rules and quote matching, plus a check of the seeded data. |
 | `bun scripts/data/page-text.ts <url> [--grep word]` | Prints a page exactly as the quote checker sees it. Copy quotes from here. |
 
 ## Adding a programme

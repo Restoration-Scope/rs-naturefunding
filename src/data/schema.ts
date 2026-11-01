@@ -1,4 +1,6 @@
 import { z } from 'zod'
+import { deadlinePassed } from '../../scripts/refresh/deadline'
+import { meaningfulQuote, MIN_QUOTE_CHARS } from './text'
 
 export const isoDate = z.string().regex(/^\d{4}-\d{2}-\d{2}$/, 'YYYY-MM-DD')
 export const slug = z.string().regex(/^[a-z0-9]+(-[a-z0-9]+)*$/, 'lowercase-kebab-case')
@@ -6,7 +8,7 @@ export const slug = z.string().regex(/^[a-z0-9]+(-[a-z0-9]+)*$/, 'lowercase-keba
 /** Where a fact was read: the funder's own page, the exact words, and when. */
 export const evidence = z.object({
   source_url: z.url(),
-  quote: z.string().min(3),
+  quote: z.string().refine(meaningfulQuote, `a quote needs at least ${MIN_QUOTE_CHARS} characters besides spaces`),
   checked_at: isoDate,
   method: z.enum(['page', 'api', 'human']),
 })
@@ -123,9 +125,12 @@ export const geography = z.discriminatedUnion('scope', [
 
 const organisation = z.object({ name: z.string(), url: z.url() })
 
-/** Whether a quote names the year of a date, as "2026" or "'26"-style two digits. */
-const statesYear = (quote: string, date: string) =>
-  quote.includes(date.slice(0, 4)) || new RegExp(`(^|\\D)${date.slice(2, 4)}(\\D|$)`).test(quote)
+/**
+ * Whether a quote names the year of a date: "2026", or a short form that can only be a year,
+ * "'26" or "15/11/26". A bare "26" may be the day ("closes 26 November"), so it doesn't count.
+ */
+export const statesYear = (quote: string, date: string) =>
+  quote.includes(date.slice(0, 4)) || new RegExp(`(['‘’]|\\d{1,2}/\\d{1,2}/)${date.slice(2, 4)}(?![\\d/])`).test(quote)
 
 /**
  * One funding programme. Each fact is stated on the funder's page (with its evidence)
@@ -208,7 +213,9 @@ export const programme = z
       if (p.window === 'rolling' && c.deadline) issue(at('deadline'), 'a rolling programme has no deadlines')
       if (c.opens && c.deadline && c.opens > c.deadline.date) issue(at('opens'), 'opens after the deadline')
       const seen = c.evidence.status.checked_at
-      if (c.status === 'open' && c.deadline && c.deadline.date < seen) {
+      // Refresh stamps checked_at with the UTC day it read the page and closes a call once
+      // deadlinePassed; so an open call is wrong only if its deadline had passed as that day began.
+      if (c.status === 'open' && c.deadline && deadlinePassed(c.deadline, new Date(`${seen}T00:00:00Z`))) {
         issue(at('status'), `open, but the deadline ${c.deadline.date} passed before it was checked on ${seen}`)
       }
       if (c.status === 'upcoming' && c.opens && c.opens <= seen) {
