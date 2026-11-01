@@ -17,8 +17,8 @@ export const fieldDocs = {
     summary: 'One or two sentences in naturefunding.org’s own words. Not a quote.',
     kind: '“partnership” for paid work under contract (planting partners), which is not a grant. Missing means grant.',
     approaches: 'naturefunding.org’s classification of the work it supports, from the funder’s description.',
-    applicant_types: 'Who can apply, as the funder states it, or null when the pages we read don’t say.',
-    geography: 'Where projects can be, as the funder states it, or null when not stated.',
+    applicant_types: 'Who can apply, in our categories from the funder’s words (the quote is in evidence), or null when the pages we read don’t say.',
+    geography: 'Where projects can be, in our categories from the funder’s words (the quote is in evidence), or null when the pages we read don’t say.',
     access: 'How an applicant reaches the money: direct (apply to an open call), intermediary (apply to a partner, not the funder), invitation_only (no unsolicited proposals), unspecified.',
     window: 'fixed (rounds with deadlines), rolling (apply any time) or unspecified.',
     amount: 'Grant size in the funder’s currency, or null when not stated.',
@@ -36,7 +36,7 @@ export const fieldDocs = {
     id: 'Identifier of the call, unique within its programme.',
     label: 'The call’s name, as the funder writes it.',
     url: 'The funder’s page for this call.',
-    status: 'upcoming, open, closed, suspended or unknown, as of evidence.status.checked_at.',
+    status: 'upcoming, open, closed, suspended or unknown, as of evidence.status.checked_at. A call closed because its stated deadline passed carries its deadline evidence there instead.',
     opens: 'The date the call opens (YYYY-MM-DD), only when the funder states a firm date with its year; else null.',
     deadline: 'The deadline, only when the funder states it with its year; else null. Never inferred.',
     evidence: 'Where status, opens, deadline and recurring were read.',
@@ -47,7 +47,7 @@ export const fieldDocs = {
   deadline: {
     date: 'The deadline day (YYYY-MM-DD).',
     time: 'The cutoff time (HH:MM), when the funder states one.',
-    timezone: 'The IANA time zone of the cutoff time, when the funder states one.',
+    timezone: 'The time zone of the cutoff time, when the funder states one: an IANA name where we could map it, otherwise the funder’s abbreviation or offset (“CEST”, “EDT (UTC-4)”).',
     text: 'The deadline as the funder wrote it.',
   },
   amount: {

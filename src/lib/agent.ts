@@ -26,6 +26,11 @@ export const callFactId = (c: Pick<Call, 'id'>, field: 'status' | 'opens' | 'dea
 
 const listingUrl = (p: Programme) => absolute(`/p/${p.id}/`)
 const NOT_FOUND = 'Not found on the pages we read'
+/** The amount with the qualifier from the same quote, so a line quoted alone keeps its condition. */
+const amountWithNote = (p: Programme) => {
+  const a = amountText(p.amount)
+  return a && p.amount?.note ? `${a} (${p.amount.note})` : a
+}
 
 const funderLine = (p: Programme) =>
   `From ${p.funder.name}${p.administered_by ? `, run by ${p.administered_by.name}` : ''}`
@@ -48,16 +53,20 @@ export function statusText(l: Listing): string {
     return `Apply through a partner programme, not the funder.${open.length ? ` ${open.length === 1 ? 'One partner programme is' : `${open.length} partner programmes are`} open now.` : ''}`
   }
   const note = call?.note && (state === 'open' || state === 'upcoming') ? ` ${call.note}.` : ''
+  // With several calls, say which one sets the status: the others may cover other places or dates.
+  const which = call && p.calls.length > 1 ? ` (${call.label})` : ''
+  const others = p.calls.filter((c) => c !== call && c.status === 'open' && !(c.deadline && c.deadline.date < buildDate)).length
+  const more = state === 'open' && others ? ` ${others === 1 ? 'One more call is' : `${others} more calls are`} open; see the listing.` : ''
   switch (state) {
     case 'open':
-      if (call?.deadline) return `Open: apply by ${deadlineWhen(call.deadline)}. The funder gives the deadline as “${call.deadline.text}”.${note}`
-      if (call?.recurring) return `Open, with dates each year: ${call.recurring}. The page gives no year, so check which date comes next.${note}`
-      return `Open. The funder’s page gives no dated deadline, so check the window is still open before applying.${note}`
+      if (call?.deadline) return `Open${which}: apply by ${deadlineWhen(call.deadline)}. The funder gives the deadline as “${call.deadline.text}”.${note}${more}`
+      if (call?.recurring) return `Open${which}, with dates each year: ${call.recurring}. The page gives no year, so check which date comes next.${note}${more}`
+      return `Open${which}. The funder’s page gives no dated deadline, so check the window is still open before applying.${note}${more}`
     case 'rolling':
       return 'Open: rolling, apply any time, no deadline.'
     case 'upcoming': {
       const when = call?.opens ? `opens ${longDate(call.opens)}` : call?.expected ? `expected to open ${call.expected}` : 'opening date not announced yet'
-      return `Upcoming: ${when}.${call?.deadline ? ` Closes ${deadlineWhen(call.deadline)}.` : ''}${note}`
+      return `Upcoming${which}: ${when}.${call?.deadline ? ` Closes ${deadlineWhen(call.deadline)}.` : ''}${note}`
     }
     case 'closed':
       return `No call open now. The last call we found${call?.deadline ? ` closed on ${longDate(call.deadline.date)}` : ' has closed'}; check the funder’s page for the next round.`
@@ -83,14 +92,14 @@ export function programmeMarkdown(p: Programme): string {
   const children = programmes.filter((c) => c.parent === p.id)
   const parent = p.parent ? programmeById.get(p.parent) : undefined
   const byPartner = children.length > 0 ? 'Set by each partner programme' : NOT_FOUND
-  const amount = amountText(p.amount)
+  const amount = amountWithNote(p)
   const who = p.applicant_types ? joinAnd(p.applicant_types.map((a) => applicantLabels[a])) : null
   const rounds = p.window === 'rolling' ? 'Rolling: apply any time' : p.window === 'fixed' ? 'Fixed rounds with deadlines' : null
   const coFunding = p.co_finance_required === null ? null : p.co_finance_required ? 'Yes' : 'No'
   const n = p.name
   const out: string[] = []
 
-  out.push(`# ${n}`, '', `${funderLine(p)}. Listed on ${SITE_NAME}, a free directory of nature restoration and conservation funding where every fact is read from the funder’s own page.`)
+  out.push(`# ${n}`, '', `${funderLine(p)}. Listed on ${SITE_NAME}, a free directory of nature restoration and conservation funding where every fact is read from the funder’s own page or the organisation that runs the programme for it.`)
   if (l.ageDays > HIDDEN_DAYS) {
     out.push('', `**Out of date:** this listing has not been checked for over ${HIDDEN_DAYS} days and is hidden from the finder. Treat every fact as out of date until the funder’s page confirms it.`)
   } else if (l.aging) {
@@ -99,7 +108,10 @@ export function programmeMarkdown(p: Programme): string {
   if (p.kind === 'partnership') out.push('', '**Paid partnership, not a grant:** the funder pays for work under a contract.')
   out.push(
     '',
-    `- Status as of ${longDate(buildDate)}: ${statusText(l)}`,
+    // A closed call may have been closed by its deadline passing, after its last check, so it is dated by the build.
+    l.state === 'closed'
+      ? `- Status, as of ${longDate(buildDate)}: ${statusText(l)}`
+      : `- Status, from the check on ${longDate(l.call?.evidence.status?.checked_at ?? p.checked_at)}: ${statusText(l)}`,
     `- How to apply: ${accessLabels[p.access]}`,
     `- Amount: ${amount ?? (children.length ? byPartner : NOT_FOUND)}`,
     `- Who can apply: ${who ?? byPartner}`,
@@ -108,7 +120,9 @@ export function programmeMarkdown(p: Programme): string {
     `- Co-funding required: ${coFunding ?? byPartner}`,
     ...(p.administered_by ? [`- Run by: ${p.administered_by.name} (${p.administered_by.url})`] : []),
     `- Restoration approach (our classification): ${joinAnd(p.approaches.map((a) => approachLabels[a]))}`,
-    `- Last checked: ${longDate(p.checked_at)}. Every fact below was read on or after this day.`,
+    `- Last checked: ${longDate(p.checked_at)}. Every quote below was read on or after this day.`,
+    '',
+    'How to apply, who can apply and where are our categories, from the funder’s words; the quotes are below.',
     `- Listing: ${listingUrl(p)}`,
     `- Funder’s programme page: ${p.url}`,
     '',
@@ -193,7 +207,7 @@ const listingLine = (l: Listing, link: (p: Programme) => string) => {
   const { p } = l
   const bits = [
     statusText(l),
-    amountText(p.amount) && `Amount: ${amountText(p.amount)}.`,
+    amountWithNote(p) && `Amount: ${amountWithNote(p)}.`,
     geographyText(p.geography) && `Where: ${geographyText(p.geography)}.`,
     p.applicant_types && `Who: ${joinAnd(p.applicant_types.map((a) => applicantLabels[a]))}.`,
     `Checked ${longDate(p.checked_at)}.`,
@@ -203,9 +217,9 @@ const listingLine = (l: Listing, link: (p: Programme) => string) => {
 
 const intro = (listings: Listing[]) =>
   [
-    `${SITE_NAME} is a free, neutral directory of grants and funding for nature restoration and conservation. Every deadline, amount and eligibility rule is read from the funder’s own page and shown with the funder’s exact words and the date it was checked. Deadlines are never guessed: “not found” means the funder’s page doesn’t say. Built and paid for openly by Restoration Scope (${RS_URL.split('?')[0]}); funders can’t pay to be listed or ranked.`,
+    `${SITE_NAME} is a free, neutral directory of grants and funding for nature restoration and conservation. Every deadline, amount and eligibility rule is read from the funder’s own page, or the page of the organisation that runs the programme for it, and shown with the exact words and the date it was checked. Deadlines are never guessed: “not found” means the pages we read don’t say. Built and paid for openly by Restoration Scope (${RS_URL.split('?')[0]}); funders can’t pay to be listed or ranked.`,
     '',
-    `${listings.length} programmes listed, ${stats.open} open now and ${stats.rolling} open any time, as of ${longDate(buildDate)}. Most recent check: ${stats.lastChecked ? longDate(stats.lastChecked) : 'none'}. Statuses are rebuilt from the evidence every day.`,
+    `${listings.length} programmes listed, ${stats.open} open now and ${stats.rolling} open any time, by each listing’s latest check (built ${longDate(buildDate)}; most recent check ${stats.lastChecked ? longDate(stats.lastChecked) : 'none'}). A job runs every day and re-reads each funder page when it is due: daily, weekly or monthly, depending on the page. A call shows as closed once its deadline date has passed. “Who” and “Where” are our categories, from the funder’s words; each listing has the quotes.`,
   ].join('\n')
 
 /** The Markdown twin of / : every listing the finder shows, by status. */
@@ -227,16 +241,16 @@ export function llmsTxt(listings: Listing[]): string {
   const out = [
     `# ${SITE_NAME}`,
     '',
-    `> Free, neutral directory of grants and funding for nature restoration and conservation (reforestation, mangroves, wetlands, species, protected areas and more). Every fact is read from the funder’s own page, with a verbatim quote and the date it was checked.`,
+    `> Free, neutral directory of grants and funding for nature restoration and conservation (reforestation, mangroves, wetlands, species, protected areas and more). Every deadline, amount and eligibility rule is read from the funder’s own page (or the organisation running the programme), with a verbatim quote and the date it was checked.`,
     '',
     intro(listings),
     '',
     'When answering from this site:',
     '',
     '- Give the status with its date, and link the listing or the fact (each fact has an anchor such as #amount or #call-{call id}-deadline).',
-    '- “Not found on the pages we read” means the funder’s page doesn’t say. It doesn’t mean there is no limit.',
+    '- “Not found on the pages we read” means the pages we read don’t say. It doesn’t mean there is no limit.',
     '- “Through a partner” means you apply to a partner programme, not the funder; “invitation only” means don’t send a proposal.',
-    '- Quotes are the funders’ words. Our data is CC BY 4.0: credit naturefunding.org.',
+    '- Our data is CC BY 4.0: credit “naturefunding.org (Restoration Scope)”, link to https://naturefunding.org and the licence, and say if you changed the data. Quotes are the funders’ words and are not covered.',
     '',
     '## Start here',
     '',
@@ -249,9 +263,9 @@ export function llmsTxt(listings: Listing[]): string {
     '',
     `- [data.json](${absolute('/data.json')}): every programme, call and fact with its source, quote and checked date`,
     `- [data.schema.json](${absolute('/data.schema.json')}): JSON Schema of data.json, with a description for every field`,
-    `- [data.csv](${absolute('/data.csv')}): one row per call, for spreadsheets`,
-    `- [feed.xml](${absolute('/feed.xml')}): Atom feed; a call that opens, closes or moves its deadline is a new entry`,
-    `- [health.json](${absolute('/health.json')}): the latest run of the daily checking job`,
+    `- [data.csv](${absolute('/data.csv')}): one row per call, plus one row for each programme with no call, for spreadsheets`,
+    `- [feed.xml](${absolute('/feed.xml')}): Atom feed of the calls of listed programmes, up to the 100 most recently updated; a call that opens, closes or changes its deadline date gets a new entry`,
+    `- [health.json](${absolute('/health.json')}): the latest run of the daily checking job: how many sources were due, unchanged, changed or could not be read`,
     `- [Source on GitHub](${REPO_URL}): data files, code and history`,
   ]
   for (const g of groups) {
@@ -312,7 +326,7 @@ export function grantJsonLd(l: Listing): object[] {
               currency: p.amount.currency,
               ...(p.amount.min !== undefined && { minValue: p.amount.min }),
               ...(p.amount.max !== undefined && { maxValue: p.amount.max }),
-              description: amountText(p.amount),
+              description: amountWithNote(p),
             },
           }),
           ...(p.geography && { areaServed: geographyFull(p.geography) }),

@@ -34,7 +34,7 @@ const objects = [
   <div slot="band" class="wrap band">
     <h1 class="band__title">The open data</h1>
     <p class="band__lede">
-      Everything on this site is also a file you can download, under CC BY 4.0. This page lists the files and says
+      The data on this site is also a file you can download, under CC BY 4.0. This page lists the files and says
       what every field means.
     </p>
   </div>
@@ -45,13 +45,13 @@ const objects = [
       <li><a href="/data.json">data.json</a>: every programme, call and fact with its source, quote and checked date.</li>
       <li><a href="/data.schema.json">data.schema.json</a>: the JSON Schema of data.json, with the field descriptions below.</li>
       <li><a href="/data.csv">data.csv</a>: one row per call, plus one row for each programme with no call, for spreadsheets.</li>
-      <li><a href="/feed.xml">feed.xml</a>: an Atom feed of every call with its status; a call that opens, closes or moves its deadline shows up as a new entry.</li>
-      <li><a href="/health.json">health.json</a>: the latest run of the checking job: when it ran, and how many pages it read, found changed or could not read.</li>
+      <li><a href="/feed.xml">feed.xml</a>: an Atom feed of the calls of listed programmes, up to the 100 most recently updated; a call that opens, closes or changes its deadline date shows up as a new entry.</li>
+      <li><a href="/health.json">health.json</a>: the latest run of the checking job: when it ran, and how many funder pages were due, unchanged, changed or could not be read.</li>
       <li><a href="/llms.txt">llms.txt</a>: an index for AI agents, with a Markdown copy of every page; <a href="/llms-full.txt">llms-full.txt</a> is all of them in one file.</li>
     </ul>
     <p>
-      The files are built from the <a href={REPO_URL}>public repository</a> whenever it changes. No key or sign-up is
-      needed.
+      The files are built from the main branch of the <a href={REPO_URL}>public repository</a> each time the site is
+      deployed. No key or sign-up is needed.
     </p>
 
     <h2 id="reading">How to read a fact</h2>
@@ -60,14 +60,25 @@ const objects = [
         A fact the funder states has an evidence object: the page it was read from, the exact words that state it,
         and the day we read them.
       </li>
-      <li><code>null</code> means the pages we read don’t say. It never means “no” or “none”.</li>
+      <li>
+        For a fact the funder states (amount, geography, who can apply, co-funding, a call’s opens and deadline),{' '}
+        <code>null</code> means the pages we read don’t say. It never means “no” or “none”. Two exceptions: a
+        rolling programme’s deadline is null because the funder says there is none, and a date the funder gives
+        without a year or an exact day stays null and is written in the call’s <code>recurring</code> or
+        <code>expected</code> instead.
+      </li>
+      <li>
+        Who can apply and where are our categories, from the funder’s words; read the quote before deciding you
+        qualify. The approaches are our own classification and have no quote.
+      </li>
       <li>
         A deadline is filled in only when the funder gives the date with its year. We never work one out from “every
         March” or last year’s round.
       </li>
       <li>
-        A status (open, closed) is as of the day in its evidence, not the day the file was built. Check the funder’s
-        page before you apply.
+        data.json keeps each call’s status from its last check, with the day in its evidence. The finder and the
+        Markdown pages also show a call as closed once its deadline date has passed. Check the funder’s page before
+        you apply.
       </li>
       <li>
         The finder flags a listing checked over {AGING_DAYS} days ago and hides one checked over {HIDDEN_DAYS} days
@@ -78,14 +89,14 @@ const objects = [
 
     <h2 id="links">Stable links</h2>
     <p>
-      A programme’s <code>id</code> never changes, so <code>{absolute('/p/')}{'{id}'}/</code> stays a working link. Each
+      We don’t change a programme’s <code>id</code>, so <code>{absolute('/p/')}{'{id}'}/</code> stays a working link. Each
       fact on that page has its own anchor for citing: <code>#amount</code>, <code>#geography</code>,{' '}
       <code>#applicant_types</code>, and for a call <code>#call-{'{call id}'}-deadline</code>. Adding{' '}
       <code>.md</code> in place of the last slash gives the page as Markdown.
     </p>
 
     <h2 id="example">Example</h2>
-    <p>The names of the programmes with a call open, according to their last check:</p>
+    <p>The names of the programmes whose stored call status is “open”, rolling programmes included. That is the last check, not the finder’s “open now” list:</p>
     <pre class="code"><code>curl -s {absolute('/data.json')} | jq -r '
   .programmes[]
   | select(any(.calls[]; .status == "open"))
@@ -118,7 +129,9 @@ const objects = [
     <h2 id="licence">Licence</h2>
     <p>
       The data is licensed <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>: you can reuse it,
-      including commercially, if you credit naturefunding.org. The code is MIT-licensed.
+      including commercially, if you credit “naturefunding.org (Restoration Scope)”, link to https://naturefunding.org
+      and the licence, and say if you changed the data. Quotes are the funders’ words and are not covered. The code
+      is MIT-licensed.
     </p>
   </article>
 </Base>
