@@ -3,7 +3,7 @@ import { programmes } from '../lib/data'
 import { absolute } from '../lib/site'
 
 const columns = [
-  'programme_id', 'programme', 'funder', 'administered_by', 'access', 'window', 'call_id', 'call', 'call_status',
+  'programme_id', 'programme', 'kind', 'funder', 'administered_by', 'access', 'window', 'call_id', 'call', 'call_status',
   'opens', 'opens_expected', 'deadline_date', 'deadline_text', 'dates_each_year', 'call_note', 'amount_currency', 'amount_min',
   'amount_max', 'amount_max_exclusive', 'amount_typical', 'amount_per', 'amount_note', 'geography', 'approaches',
   'applicant_types', 'co_finance_required', 'call_url', 'programme_url', 'checked_at', 'listing_url',
@@ -24,7 +24,7 @@ export const GET: APIRoute = () => {
           ? p.geography.regions.join(' ')
           : p.geography.countries.join(' ')
     const base = {
-      programme_id: p.id, programme: p.name, funder: p.funder.name, administered_by: p.administered_by?.name,
+      programme_id: p.id, programme: p.name, kind: p.kind ?? 'grant', funder: p.funder.name, administered_by: p.administered_by?.name,
       access: p.access, window: p.window, amount_currency: p.amount?.currency, amount_min: p.amount?.min,
       amount_max: p.amount?.max, amount_max_exclusive: p.amount?.max_exclusive ? 'yes' : '',
       amount_typical: p.amount?.typical ? 'yes' : '', amount_per: p.amount?.per, amount_note: p.amount?.note,

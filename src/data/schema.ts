@@ -160,6 +160,17 @@ export const statesYear = (quote: string, date: string) => {
   )
 }
 
+/** Why a call's expected opening is wrong, or null: it is for an upcoming call with no firm date, and names only years its status quote states. */
+export function expectedProblem(c: Pick<Call, 'expected' | 'status' | 'opens' | 'evidence'>): string | null {
+  if (!c.expected) return null
+  if (c.status !== 'upcoming' || c.opens) return 'an expected opening is for an upcoming call with no firm opens date'
+  const years = c.expected.match(/\b20\d\d\b/g) ?? []
+  if (years.length === 0 || !years.every((y) => statesYear(c.evidence.status.quote, `${y}-01-01`))) {
+    return 'an expected opening names a year that its status quote states'
+  }
+  return null
+}
+
 /**
  * One funding programme. Each fact is stated on the funder's page (with its evidence)
  * or left null; null means "not stated", never "no restriction".
@@ -236,13 +247,8 @@ export const programme = z
       if (!c.opens && c.evidence.opens) issue(at('opens'), 'opens evidence without an opens date')
       if (c.recurring && !c.evidence.recurring) issue(at('evidence', 'recurring'), 'recurring dates need evidence')
       if (!c.recurring && c.evidence.recurring) issue(at('recurring'), 'recurring evidence without recurring dates')
-      if (c.expected) {
-        const years = c.expected.match(/\b20\d\d\b/g) ?? []
-        if (c.status !== 'upcoming' || c.opens) issue(at('expected'), 'an expected opening is for an upcoming call with no firm opens date')
-        if (years.length === 0 || !years.every((y) => statesYear(c.evidence.status.quote, `${y}-01-01`))) {
-          issue(at('expected'), 'an expected opening names a year that its status quote states')
-        }
-      }
+      const expected = expectedProblem(c)
+      if (expected) issue(at('expected'), expected)
       for (const [field, date] of [['opens', c.opens], ['deadline', c.deadline?.date]] as const) {
         const quote = c.evidence[field]?.quote
         if (date && quote && !statesYear(quote, date)) {
