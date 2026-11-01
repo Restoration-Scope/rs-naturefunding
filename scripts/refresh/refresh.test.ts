@@ -367,6 +367,53 @@ describe('Tier B apply', () => {
     expect(readReview({ overall: 'yes', verdicts: [{ path: 'amount', verdict: 'supported', reason: 'r'.repeat(500), x: 1 }, 'junk'], missed: 5 }))
       .toEqual({ overall: 'unclear', verdicts: [{ path: 'amount', verdict: 'supported', reason: 'r'.repeat(300) }], missed: '' })
   })
+  test('amount qualifiers the draft leaves out are kept; null removes one; "less than" goes with the max', () => {
+    const base = fixture()
+    base.amount = { currency: 'USD', max: 50000, max_exclusive: true, per: 'year', note: 'Up to USD 150,000 in total' }
+    const run = (value: object) => applyExtraction(base, source, { fields: { amount: { value, quote: 'Up to USD 75,000 per project' } } }, page, now)
+    expect(run({ currency: 'USD', max: 75000 }).programme!.amount).toEqual({ currency: 'USD', max: 75000, max_exclusive: true, per: 'year', note: 'Up to USD 150,000 in total' })
+    expect(run({ currency: 'USD', max: 75000, per: null, note: null }).programme!.amount).toEqual({ currency: 'USD', max: 75000, max_exclusive: true })
+    expect(run({ currency: 'USD', min: 5000 }).programme!.amount).toEqual({ currency: 'USD', min: 5000, per: 'year', note: 'Up to USD 150,000 in total' })
+  })
+  describe('call qualifiers', () => {
+    const quiet = 'The next round is expected in June 2027, subject to funding approval. Deadlines are 1 March each year. Opens 1 June 2027.'
+    const upcoming = () => {
+      const p = fixture()
+      p.calls[0] = {
+        id: 'round-2027', label: '2027 round', url: URL_A, status: 'upcoming', opens: null, deadline: null,
+        expected: 'June 2027', recurring: '1 March each year', note: 'Subject to funding approval',
+        evidence: { status: ev(URL_A, 'The next round is expected in June 2027'), recurring: ev(URL_A, 'Deadlines are 1 March each year') },
+      }
+      return p
+    }
+    const draft = (extra: object = {}, quotes: object = {}) => ({
+      calls: [{ id: 'round-2027', label: '2027 round', url: URL_A, status: 'upcoming', ...extra, quotes: { status: 'The next round is expected in June 2027', ...quotes } }],
+    })
+
+    test('a draft that leaves them out keeps them, with their evidence, and changes nothing', () => {
+      const { programme, changes, schemaErrors } = applyExtraction(upcoming(), source, draft(), quiet, now)
+      const c = programme!.calls[0]
+      expect(schemaErrors).toEqual([])
+      expect(changes).toEqual([])
+      expect([c.expected, c.recurring, c.note]).toEqual(['June 2027', '1 March each year', 'Subject to funding approval'])
+      expect(c.evidence.recurring).toEqual(ev(URL_A, 'Deadlines are 1 March each year', '2026-11-02'))
+    })
+    test('a firm opening date drops the kept expected one; null removes a qualifier', () => {
+      const { programme, changes } = applyExtraction(upcoming(), source, draft({ opens: '2027-06-01', note: null }, { opens: 'Opens 1 June 2027' }), quiet, now)
+      const c = programme!.calls[0]
+      expect(changes[0]).toMatchObject({ path: 'calls[round-2027]', kind: 'changed' })
+      expect([c.opens, c.expected, c.note, c.recurring]).toEqual(['2027-06-01', undefined, undefined, '1 March each year'])
+    })
+    test('a new expected opening needs its year in the status quote; new recurring dates need their quote on the page', () => {
+      const p = fixture()
+      const add = (extra: object, quotes: object = {}) => applyExtraction(p, source, {
+        calls: [{ id: 'next', label: 'Next round', url: URL_A, status: 'upcoming', ...extra, quotes: { status: 'subject to funding approval', ...quotes } }],
+      }, quiet, now).changes[0]
+      expect(add({ expected: 'June 2027' })).toMatchObject({ kind: 'rejected', why: 'an expected opening names a year that its status quote states' })
+      expect(add({ recurring: '1 March each year' }, { recurring: 'Deadlines are 1 April' })).toMatchObject({ kind: 'rejected', why: 'quote not on the page' })
+      expect(add({ recurring: '1 March each year', note: 'Subject to funding approval' }, { recurring: 'Deadlines are 1 March each year' })).toMatchObject({ kind: 'added' })
+    })
+  })
 })
 
 describe('Tier B proposal key', () => {
