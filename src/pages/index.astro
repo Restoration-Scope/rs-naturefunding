@@ -98,18 +98,19 @@ const jsonLd = [
     </p>
   </div>
 
-  <div class="wrap mt-3 grid grid-cols-[minmax(0,1fr)] gap-3 xl:mt-5 xl:grid-cols-[14rem_minmax(0,1fr)] xl:gap-7">
+  <div class="wrap mt-3 grid grid-cols-[minmax(0,1fr)] gap-3 xl:mt-5 xl:grid-cols-[15.375rem_minmax(0,1fr)] xl:gap-3">
     <a class={skipLink} href="#results">Skip to results</a>
     {/* Wide screens: the filters ride in a sticky column. Phones and tablets: they open in a sheet.
-        The scroller reaches into the column gap and keeps a 1rem lane on its right, with the gutter reserved,
-        so an overlay scrollbar (macOS) or a classic one (Windows) never covers the counts or chevrons. */}
+        The scroller's own padding keeps every focus ring inside it (the ring reaches 5px out), and its 1rem
+        right lane, with the gutter reserved, keeps an overlay scrollbar (macOS) or a classic one (Windows)
+        off the counts and chevrons. The column is 14rem of filters plus that padding. */}
     <form
-      class="xl:sticky xl:top-0 xl:-mr-4 xl:max-h-dvh xl:self-start xl:overflow-y-auto xl:pt-1 xl:pr-4 xl:pb-6 xl:[scrollbar-gutter:stable] xl:[scrollbar-width:thin]"
+      class="xl:sticky xl:top-0 xl:max-h-dvh xl:self-start xl:overflow-y-auto xl:pt-2 xl:pr-4 xl:pb-6 xl:pl-1.5 xl:[scrollbar-gutter:stable] xl:[scrollbar-width:thin]"
       role="search"
       aria-label="Search and filter funding"
       data-form
     >
-      <div class="grid grid-cols-[minmax(0,1fr)_auto] gap-2 xl:grid-cols-[minmax(0,1fr)] xl:pt-2">
+      <div class="grid grid-cols-[minmax(0,1fr)_auto] gap-2 xl:grid-cols-[minmax(0,1fr)] xl:pt-1">
         <Label htmlFor="q" className="col-span-full mb-[0.3rem] max-xl:sr-only">Search</Label>
         <Input id="q" name="q" type="search" placeholder="Search funder or place" autoComplete="off" />
         <button
