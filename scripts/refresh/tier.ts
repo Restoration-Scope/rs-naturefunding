@@ -32,10 +32,16 @@ export function quotesAt(programmes: Programme[], url: string): QuoteRef[] {
 
 export type Tier = { tier: 'A'; baseline: boolean } | { tier: 'B'; reasons: string[] }
 
-/** `accepted` is the hash of the page text whose facts are on main; null before the first read. */
-export function classify(page: { hash: string; text: string }, accepted: string | null, quotes: QuoteRef[]): Tier {
+const site = (url: string) => new URL(url).hostname.replace(/^www\./, '')
+
+/**
+ * `accepted` is the hash of the page text whose facts are on main; null before the first read.
+ * A page that redirected to another site goes to review, even with its quotes present.
+ */
+export function classify(page: { hash: string; text: string; url?: string; finalUrl?: string }, accepted: string | null, quotes: QuoteRef[]): Tier {
   const text = comparable(page.text)
   const reasons: string[] = []
+  if (page.url && page.finalUrl && site(page.finalUrl) !== site(page.url)) reasons.push(`redirected to another site: ${page.finalUrl}`)
   if (accepted !== null && accepted !== page.hash) reasons.push('page text changed since the last accepted read')
   for (const q of quotes) {
     if (!text.includes(comparable(q.quote))) reasons.push(`quote gone (${q.programme_id} ${q.path}): "${q.quote}"`)
@@ -48,9 +54,10 @@ const isLive = (c: Call) => c.status === 'open' || c.status === 'upcoming'
 export type TierAResult = { programme: Programme; changed: boolean; closed: string[]; opened: string[] }
 
 /**
- * Dates the facts read today on unchanged pages (`okUrls`), closes calls past their stated
- * deadline and opens upcoming calls whose stated opening date has come. The programme's own
- * `checked_at` follows its oldest fact, so it only moves when every fact was read again.
+ * Dates the facts read today on unchanged pages (`okUrls`) and, on those pages only, closes
+ * calls past their stated deadline and opens upcoming calls whose stated opening date has
+ * come. The programme's own `checked_at` follows its oldest fact, so it only moves when
+ * every fact was read again.
  */
 export function applyTierA(original: Programme, okUrls: Set<string>, now: Date): TierAResult {
   const p: Programme = structuredClone(original)
@@ -58,18 +65,26 @@ export function applyTierA(original: Programme, okUrls: Set<string>, now: Date):
   const closed: string[] = []
   const opened: string[] = []
 
+  // A status that is due to move but can't (see below) keeps its old date: dating it today
+  // would claim it was still true today, which the schema's deadline check rejects.
+  const startOfToday = new Date(`${today}T00:00:00Z`)
+  const due = (c: Call) =>
+    (isLive(c) && !!c.deadline && deadlinePassed(c.deadline, startOfToday)) || (c.status === 'upcoming' && !!c.opens && c.opens <= today)
+  const held = new Set(p.calls.filter(due).map((c) => c.evidence.status))
   for (const { evidence } of evidenceRefs(p)) {
-    if (okUrls.has(evidence.source_url) && evidence.checked_at < today) evidence.checked_at = today
+    if (okUrls.has(evidence.source_url) && evidence.checked_at < today && !held.has(evidence)) evidence.checked_at = today
   }
 
+  // A status moves only when the pages stating it were read unchanged today; a changed page goes to review instead.
+  const readToday = (...es: (Evidence | undefined)[]) => es.every((e) => e && okUrls.has(e.source_url))
   for (const c of p.calls) {
-    if (isLive(c) && c.deadline && c.evidence.deadline && deadlinePassed(c.deadline, now)) {
+    if (isLive(c) && c.deadline && readToday(c.evidence.status, c.evidence.deadline) && deadlinePassed(c.deadline, now)) {
       c.status = 'closed'
-      c.evidence.status = { ...c.evidence.deadline }
+      c.evidence.status = { ...c.evidence.deadline! }
       closed.push(c.id)
-    } else if (c.status === 'upcoming' && c.opens && c.evidence.opens && c.opens <= today) {
+    } else if (c.status === 'upcoming' && c.opens && readToday(c.evidence.status, c.evidence.opens) && c.opens <= today) {
       c.status = 'open'
-      c.evidence.status = { ...c.evidence.opens }
+      c.evidence.status = { ...c.evidence.opens! }
       opened.push(c.id)
     }
   }

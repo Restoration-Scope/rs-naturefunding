@@ -1,7 +1,8 @@
 /**
  * Opens one pull request per Tier B draft, on a new branch from the refreshed branch (main), and starts CI on it
- * (a PR opened with the workflow token does not trigger workflows by itself). An open PR for
- * the same page with the same content is kept; a different one is closed as superseded.
+ * (a PR opened with the workflow token does not trigger workflows by itself). An open PR with
+ * the same proposal (same page version and facts, check dates aside; see proposalKey) is kept;
+ * a different one for the same page is closed as superseded.
  * A draft with nothing to change becomes an issue instead. Runs in Actions after the
  * Tier A commit is pushed.
  *   bun scripts/refresh/open-prs.ts [--drafts dir]
@@ -30,8 +31,8 @@ for (const [name, color] of Object.entries(LABELS)) run(['gh', 'label', 'create'
 const drafts: Draft[] = existsSync(draftsDir)
   ? readdirSync(draftsDir).filter((f) => f.endsWith('.json')).map((f) => JSON.parse(readFileSync(join(draftsDir, f), 'utf8')))
   : []
-const openPrs = json<{ number: number; url: string; headRefName: string }[]>(
-  ['gh', 'pr', 'list', '--label', 'refresh', '--state', 'open', '--json', 'number,url,headRefName', '--limit', '200'],
+const openPrs = json<{ number: number; url: string; headRefName: string; body: string }[]>(
+  ['gh', 'pr', 'list', '--label', 'refresh', '--state', 'open', '--json', 'number,url,headRefName,body', '--limit', '200'],
 )
 const log: string[] = []
 
@@ -48,6 +49,13 @@ for (const d of drafts) {
 
   const prefix = `refresh/${d.source.id}-`
   const branch = `${prefix}${runId}`
+  const previous = openPrs.filter((p) => p.headRefName.startsWith(prefix))
+  const same = d.key && previous.find((p) => p.body.includes(`<!-- refresh-key: ${d.key} -->`))
+  if (same) {
+    log.push(`unchanged ${same.url}`)
+    continue
+  }
+
   run(['git', 'fetch', 'origin', base])
   run(['git', 'switch', '--create', branch, `origin/${base}`])
   for (const [path, content] of Object.entries(d.files)) {
@@ -56,18 +64,7 @@ for (const d of drafts) {
   }
   run(['git', 'add', '--', ...Object.keys(d.files)])
   run(['git', 'commit', '--allow-empty', '-m', `${d.title}\n\n${d.reasons.join('\n')}`])
-  const tree = run(['git', 'rev-parse', 'HEAD^{tree}'])
-
-  const previous = openPrs.filter((p) => p.headRefName.startsWith(prefix))
-  const same = previous.find((p) => {
-    run(['git', 'fetch', 'origin', p.headRefName], { allowFail: true })
-    return run(['git', 'rev-parse', `origin/${p.headRefName}^{tree}`], { allowFail: true }) === tree
-  })
   run(['git', 'switch', '--detach', `origin/${base}`])
-  if (same) {
-    log.push(`unchanged ${same.url}`)
-    continue
-  }
 
   run(['git', 'push', 'origin', `${branch}:refs/heads/${branch}`])
   const url = run(['gh', 'pr', 'create', '--base', base, '--head', branch, '--title', d.title, '--body-file', bodyFile, '--label', 'refresh', '--label', `reviewer:${d.review?.overall ?? 'unclear'}`])

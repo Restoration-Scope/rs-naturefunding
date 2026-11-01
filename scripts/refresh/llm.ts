@@ -18,7 +18,8 @@ export type Llm = {
 type Provider = { baseUrl: string; key: string; extractor: string; reviewer: string; maxChars: number; catalog: string }
 
 function provider(env: NodeJS.ProcessEnv): [string, Provider] | null {
-  const name = env.LLM_PROVIDER ?? (env.CLOUDFLARE_AI_TOKEN ? 'cloudflare' : env.GITHUB_TOKEN ? 'github' : '')
+  // The workflow passes unset repo variables as "", so empty means "pick by which token exists".
+  const name = env.LLM_PROVIDER?.trim() || (env.CLOUDFLARE_AI_TOKEN ? 'cloudflare' : env.GITHUB_TOKEN ? 'github' : '')
   if (name === 'cloudflare' && env.CLOUDFLARE_AI_TOKEN && env.CLOUDFLARE_ACCOUNT_ID) {
     const base = `https://api.cloudflare.com/client/v4/accounts/${env.CLOUDFLARE_ACCOUNT_ID}/ai`
     return [name, {
@@ -64,8 +65,8 @@ export function llmFromEnv(env = process.env): Llm | null {
 
   return {
     provider: name,
-    extractor: env.LLM_EXTRACTOR || p.extractor,
-    reviewer: env.LLM_REVIEWER || p.reviewer,
+    extractor: env.LLM_EXTRACTOR?.trim() || p.extractor,
+    reviewer: env.LLM_REVIEWER?.trim() || p.reviewer,
     maxChars: p.maxChars,
     async chat(model, system, user) {
       const messages = [{ role: 'system', content: system }, { role: 'user', content: user }]

@@ -4,51 +4,80 @@
  * a reviewer from another model family judges the draft against the page. The result is a
  * pull request draft (files, title, body) for a person to review.
  */
+import type { z } from 'zod'
 import type { Call, Evidence, Programme, Source } from '../../src/data/schema'
-import { access, applicantType, approach, callStatus, programme as programmeSchema, region, window as windowSchema } from '../../src/data/schema'
+import {
+  access, applicantType, approach, call as callSchema, callStatus, programme as programmeSchema, region, window as windowSchema,
+} from '../../src/data/schema'
 import { comparable } from '../data/page-text'
 import type { Llm } from './llm'
 import { dateOf, evidenceRefs } from './tier'
 
 const FIELDS = ['administered_by', 'applicant_types', 'geography', 'access', 'window', 'amount', 'co_finance_required', 'reporting'] as const
-type Field = (typeof FIELDS)[number]
 
-export type Extraction = {
-  fields?: Partial<Record<Field, { value: unknown; quote: string }>>
-  calls?: { id: string; label: string; url: string; status: Call['status']; opens: string | null; deadline: Call['deadline']; quotes: { status: string; opens?: string | null; deadline?: string | null } }[]
-  notes?: string
-}
+/** The model's answer, untrusted: every piece is parsed against the schema before use. */
+export type Extraction = { fields?: unknown; calls?: unknown; notes?: unknown }
 
 export type Change = { path: string; kind: 'changed' | 'added' | 'requoted' | 'rejected'; old: unknown; new: unknown; quote: string; why?: string }
 
 export type Review = { overall: 'approve' | 'reject' | 'unclear'; verdicts: { path: string; verdict: string; reason: string }[]; missed: string }
 
-const same = (a: unknown, b: unknown) => JSON.stringify(a ?? null) === JSON.stringify(b ?? null)
+export const MAX_QUOTE = 300
+const MAX_LABEL = 200
+
+/** JSON with sorted keys, so key order never counts as a difference. */
+function canon(v: unknown): string {
+  if (Array.isArray(v)) return `[${v.map(canon).join(',')}]`
+  if (v && typeof v === 'object') {
+    return `{${Object.keys(v).filter((k) => (v as Record<string, unknown>)[k] !== undefined).sort().map((k) => `${JSON.stringify(k)}:${canon((v as Record<string, unknown>)[k])}`).join(',')}}`
+  }
+  return JSON.stringify(v ?? null)
+}
+const same = (a: unknown, b: unknown) => canon(a) === canon(b)
+const isRecord = (v: unknown): v is Record<string, unknown> => !!v && typeof v === 'object' && !Array.isArray(v)
+
+/** The value as the schema reads it. Unknown keys are refused, not silently dropped. */
+function fit<T>(schema: z.ZodType<T>, value: unknown): { ok: true; value: T } | { ok: false; why: string } {
+  const r = schema.safeParse(value)
+  if (!r.success) return { ok: false, why: `does not fit the schema (${r.error.issues[0]?.path.join('.') || 'value'}: ${r.error.issues[0]?.message})` }
+  if (!same(r.data, value)) return { ok: false, why: 'has keys the schema does not know' }
+  return { ok: true, value: r.data }
+}
 
 /**
  * Applies an extraction to a programme, for facts this page states. Pure. A fact moves only
- * when its quote is on the page; a fact still quoted on the page is dated today; a fact whose
- * quote is gone and that the extractor did not confirm stays as it was and is listed.
+ * when its value fits the schema and its quote (at most MAX_QUOTE characters) is on the page;
+ * a fact still quoted on the page is dated today; a fact whose quote is gone and that the
+ * extractor did not confirm stays as it was and is listed. `programme` is the schema's parsed
+ * value, or null when the draft fails the schema.
  */
 export function applyExtraction(original: Programme, source: Source, x: Extraction, pageText: string, now: Date) {
   const p: Programme = structuredClone(original)
   const today = dateOf(now)
   const page = comparable(pageText)
-  const onPage = (q: string | null | undefined) => !!q && q.trim().length >= 3 && page.includes(comparable(q))
+  const onPage = (q: unknown): q is string => typeof q === 'string' && q.trim().length >= 3 && q.length <= MAX_QUOTE && page.includes(comparable(q))
+  const quoteWhy = (q: unknown) => (typeof q === 'string' && q.length > MAX_QUOTE ? `quote longer than ${MAX_QUOTE} characters` : 'quote not on the page')
+  const short = (q: unknown) => (typeof q === 'string' ? q.slice(0, MAX_QUOTE) : '')
   const evidence = (quote: string): Evidence => ({ source_url: source.url, quote, checked_at: today, method: 'page' })
   const changes: Change[] = []
+  const fields = isRecord(x.fields) ? x.fields : {}
 
   for (const field of FIELDS) {
-    const got = x.fields?.[field]
+    const got = fields[field]
     const old = p.evidence[field]
-    if (!got || got.value === null || got.value === undefined) continue
+    if (!isRecord(got) || got.value === null || got.value === undefined) continue
     if (old && old.source_url !== source.url) continue
     const path = field
-    if (!onPage(got.quote)) {
-      changes.push({ path, kind: 'rejected', old: p[field], new: got.value, quote: got.quote, why: 'quote not on the page' })
+    const value = fit(programmeSchema.shape[field] as z.ZodType<unknown>, got.value)
+    if (!value.ok) {
+      changes.push({ path, kind: 'rejected', old: p[field], new: '(not shown)', quote: short(got.quote), why: `value ${value.why}` })
       continue
     }
-    if (same(p[field], got.value)) {
+    if (!onPage(got.quote)) {
+      changes.push({ path, kind: 'rejected', old: p[field], new: value.value, quote: short(got.quote), why: quoteWhy(got.quote) })
+      continue
+    }
+    if (same(p[field], value.value)) {
       if (old && onPage(old.quote)) old.checked_at = today
       else {
         p.evidence[field] = evidence(got.quote)
@@ -56,35 +85,45 @@ export function applyExtraction(original: Programme, source: Source, x: Extracti
       }
       continue
     }
-    changes.push({ path, kind: old ? 'changed' : 'added', old: p[field], new: got.value, quote: got.quote })
-    ;(p as Record<string, unknown>)[field] = got.value
+    changes.push({ path, kind: old ? 'changed' : 'added', old: p[field], new: value.value, quote: got.quote })
+    ;(p as Record<string, unknown>)[field] = value.value
     p.evidence[field] = evidence(got.quote)
   }
 
-  for (const c of x.calls ?? []) {
-    const path = `calls[${c.id}]`
-    const quotes = [c.quotes?.status, c.deadline ? c.quotes?.deadline : 'none', c.opens ? c.quotes?.opens : 'none']
-    const missing = quotes.filter((q) => q !== 'none' && !onPage(q))
+  for (const raw of Array.isArray(x.calls) ? x.calls : []) {
+    if (!isRecord(raw)) continue
+    const c = raw
+    const quotes = isRecord(c.quotes) ? c.quotes : {}
+    const path = `calls[${short(c.id).slice(0, 80)}]`
     const existing = p.calls.find((k) => k.id === c.id)
     if (existing && existing.evidence.status.source_url !== source.url) continue
-    if (missing.length) {
-      changes.push({ path, kind: 'rejected', old: existing ?? null, new: c, quote: missing.join(' | '), why: 'quote not on the page' })
-      continue
-    }
-    const next: Call = {
+    const needed = [quotes.status, c.deadline ? quotes.deadline : null, c.opens ? quotes.opens : null].filter((q) => q !== null)
+    const missing = needed.filter((q) => !onPage(q))
+    const candidate = {
       id: c.id, label: c.label, url: c.url, status: c.status, opens: c.opens ?? null, deadline: c.deadline ?? null,
       evidence: {
-        status: evidence(c.quotes.status),
-        ...(c.opens && c.quotes.opens ? { opens: evidence(c.quotes.opens) } : {}),
-        ...(c.deadline && c.quotes.deadline ? { deadline: evidence(c.quotes.deadline) } : {}),
+        status: evidence(short(quotes.status)),
+        ...(c.opens ? { opens: evidence(short(quotes.opens)) } : {}),
+        ...(c.deadline ? { deadline: evidence(short(quotes.deadline)) } : {}),
       },
     }
+    const parsed = fit(callSchema, candidate)
+    const why = !parsed.ok
+      ? `call ${parsed.why}`
+      : typeof c.label === 'string' && c.label.length > MAX_LABEL ? `label longer than ${MAX_LABEL} characters`
+      : missing.length ? quoteWhy(missing[0]) : null
+    if (!parsed.ok || why) {
+      changes.push({ path, kind: 'rejected', old: existing ?? null, new: '(not shown)', quote: missing.map(short).join(' | '), why: why! })
+      continue
+    }
+    const next = parsed.value
     const facts = (k: Call) => ({ status: k.status, opens: k.opens, deadline: k.deadline, label: k.label, url: k.url })
+    const quoteText = [next.evidence.status, next.evidence.deadline, next.evidence.opens].flatMap((e) => (e ? [e.quote] : [])).join(' | ')
     if (!existing) {
       p.calls.push(next)
-      changes.push({ path, kind: 'added', old: null, new: facts(next), quote: c.quotes.status })
+      changes.push({ path, kind: 'added', old: null, new: facts(next), quote: quoteText })
     } else if (!same(facts(existing), facts(next))) {
-      changes.push({ path, kind: 'changed', old: facts(existing), new: facts(next), quote: [c.quotes.status, c.quotes.deadline, c.quotes.opens].filter(Boolean).join(' | ') })
+      changes.push({ path, kind: 'changed', old: facts(existing), new: facts(next), quote: quoteText })
       p.calls[p.calls.indexOf(existing)] = next
     } else {
       for (const [k, e] of Object.entries(existing.evidence) as [keyof Call['evidence'], Evidence | undefined][]) {
@@ -108,7 +147,8 @@ export function applyExtraction(original: Programme, source: Source, x: Extracti
 
   const parsed = programmeSchema.safeParse(p)
   const schemaErrors = parsed.success ? [] : parsed.error.issues.map((i) => `${i.path.join('.')}: ${i.message}`)
-  return { programme: p, changes, unconfirmed, schemaErrors }
+  const notes = typeof x.notes === 'string' ? x.notes.slice(0, 1000) : ''
+  return { programme: parsed.success ? parsed.data : null, changes, unconfirmed, schemaErrors, notes }
 }
 
 const EXTRACT_SYSTEM = `You read a grant funder's web page and report the facts it states about one funding programme, as JSON.
@@ -116,7 +156,7 @@ Rules:
 - Only facts the page states. If the page does not state a fact, leave it out. Never guess, never infer a deadline, never invent a next round.
 - Every fact carries "quote": words copied exactly from the page text, 5 to 40 words, that state the fact. No paraphrase, no ellipsis.
 - Reuse the ids of the current calls when the page describes the same round. A new round gets a new lowercase-kebab-case id.
-- Dates are YYYY-MM-DD. A deadline is {"date","time"?: "HH:MM","timezone"?: as written or IANA,"text": the deadline as the funder wrote it}.
+- Dates are YYYY-MM-DD. The quote for an opening date or deadline must contain its year as the page writes it; if the page gives no year, leave the date out. A deadline is {"date","time"?: "HH:MM","timezone"?: as written or IANA,"text": the deadline as the funder wrote it}.
 Answer with one JSON object:
 {"fields": {"<field>": {"value": <value in the schema below>, "quote": "..."}},
  "calls": [{"id","label","url","status","opens","deadline","quotes": {"status": "...","opens": "...","deadline": "..."}}],
@@ -148,10 +188,25 @@ function current(p: Programme, source: Source) {
   }
 }
 
+const withoutDates = (v: unknown): unknown =>
+  Array.isArray(v) ? v.map(withoutDates)
+  : isRecord(v) ? Object.fromEntries(Object.entries(v).filter(([k]) => k !== 'checked_at').map(([k, x]) => [k, withoutDates(x)]))
+  : v
+
+/**
+ * What a proposal says, as one hash: the page, the page version and the facts it proposes,
+ * leaving out check dates, which move every day without changing the proposal.
+ */
+export function proposalKey(sourceId: string, pageHash: string, p: Programme): string {
+  return new Bun.CryptoHasher('sha256').update(canon({ source: sourceId, page: pageHash, programme: withoutDates(p) })).digest('hex')
+}
+
 export type Draft = {
   source: Source
   programme_id: string
   hash: string
+  /** proposalKey of the draft; null when it opens an issue instead of a PR. */
+  key: string | null
   reasons: string[]
   files: Record<string, string>
   title: string
@@ -160,6 +215,17 @@ export type Draft = {
   datesOnly: boolean
   review: Review | null
   error: string | null
+}
+
+const clip = (v: unknown, max: number) => (typeof v === 'string' ? v.slice(0, max) : '')
+
+/** The reviewer's answer, kept to the shape and lengths the PR body shows. */
+export function readReview(answer: unknown): Review {
+  const a = isRecord(answer) ? answer : {}
+  const overall = a.overall === 'approve' || a.overall === 'reject' ? a.overall : 'unclear'
+  const verdicts = (Array.isArray(a.verdicts) ? a.verdicts : []).filter(isRecord).slice(0, 50)
+    .map((v) => ({ path: clip(v.path, 120), verdict: clip(v.verdict, 20), reason: clip(v.reason, 300) }))
+  return { overall, verdicts, missed: clip(a.missed, 1000) }
 }
 
 export async function extractAndReview(llm: Llm, p: Programme, source: Source, pageText: string, now: Date) {
@@ -175,10 +241,10 @@ export async function extractAndReview(llm: Llm, p: Programme, source: Source, p
   const items = applied.changes.length
     ? applied.changes.map((c) => ({ path: c.path, old: c.old, new: c.new, quote: c.quote }))
     : [{ path: '(no fact changed)', old: current(p, source), new: 'unchanged', quote: '' }]
-  const review = (await llm.chat(
+  const answer = await llm.chat(
     llm.reviewer,
     REVIEW_SYSTEM,
     `Draft items:\n${JSON.stringify(items, null, 1)}\n\nPage ${source.url}, text${truncated ? ' (cut)' : ''}:\n"""\n${text}\n"""`,
-  )) as Review
-  return { ...applied, extraction, review, truncated }
+  )
+  return { ...applied, review: readReview(answer), truncated }
 }

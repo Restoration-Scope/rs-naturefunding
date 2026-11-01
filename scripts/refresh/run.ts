@@ -17,7 +17,7 @@ import {
   acceptedPath, isDue, nextState, readJson, RUN_PATH, SOURCES_PATH, writeJson,
   type Accepted, type RunReport, type SourceStates,
 } from './state'
-import { extractAndReview, type Change, type Draft } from './tier-b'
+import { extractAndReview, proposalKey, type Change, type Draft } from './tier-b'
 import { applyTierA, classify, dateOf, quotesAt, type Tier } from './tier'
 
 const args = process.argv.slice(2)
@@ -143,7 +143,7 @@ if (process.env.GITHUB_STEP_SUMMARY) appendFileSync(process.env.GITHUB_STEP_SUMM
 if (invalid.length) process.exit(1)
 
 async function draftFor(s: Source, p: Programme, read: Extract<Fetched, { ok: true }>, reasons: string[]): Promise<Draft> {
-  const base = { source: s, programme_id: p.id, hash: read.hash, reasons }
+  const base = { source: s, programme_id: p.id, hash: read.hash, key: null, reasons }
   const title = `Refresh: ${p.name} — ${new URL(s.url).host}${new URL(s.url).pathname.replace(/\/$/, '')}`
   const head = [
     `The daily refresh found a change on ${s.url} for **${p.name}** (\`data/programmes/${p.id}.json\`).`,
@@ -168,7 +168,7 @@ async function draftFor(s: Source, p: Programme, read: Extract<Fetched, { ok: tr
       '',
       `### Reviewer (${llm.reviewer}): **${r.review?.overall ?? 'no answer'}**`,
       ...(r.review?.missed ? [`Missed: ${r.review.missed}`] : []),
-      ...(r.extraction.notes ? ['', `Extractor (${llm.extractor}) notes: ${r.extraction.notes}`] : []),
+      ...(r.notes ? ['', `Extractor (${llm.extractor}) notes: ${r.notes}`] : []),
       ...(r.truncated ? ['', `The page text was cut to ${llm.maxChars} characters for the models.`] : []),
       '',
       `### Schema: ${r.schemaErrors.length ? `**${r.schemaErrors.length} error(s)**` : 'valid'}`,
@@ -177,14 +177,18 @@ async function draftFor(s: Source, p: Programme, read: Extract<Fetched, { ok: tr
       '---',
       `Auto-merge is off (decisions/2026-11-01-refresh-auto-merge-off.md): check each quote on the page before merging. Merging also accepts this version of the page, so the next run compares against it.${runUrl ? ` Run: ${runUrl}` : ''}`,
     ].join('\n')
+    // Only the schema's parsed value is ever written; a draft that fails the schema becomes an issue.
+    if (!r.programme) return { ...base, files: {}, title, body, datesOnly: false, review: r.review, error: 'the draft does not fit the schema' }
+    const key = proposalKey(s.id, read.hash, r.programme)
     return {
       ...base,
+      key,
       files: {
         [`data/programmes/${p.id}.json`]: formatJson(r.programme),
         [`data/checks/accepted/${s.id}.json`]: formatJson({ hash: read.hash, accepted_at: today } satisfies Accepted),
       },
       title: applied.length ? title : `${title} (dates only)`,
-      body,
+      body: `${body}\n\n<!-- refresh-key: ${key} -->`,
       datesOnly: applied.length === 0,
       review: r.review,
       error: null,

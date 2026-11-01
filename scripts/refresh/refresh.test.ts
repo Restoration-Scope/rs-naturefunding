@@ -7,7 +7,7 @@ import { classifyResponse, hashText, readPages, robotsAllows, type Fetched } fro
 import { formatJson } from './json'
 import { isDue, nextState, type SourceState } from './state'
 import { applyTierA, classify, quotesAt } from './tier'
-import { applyExtraction } from './tier-b'
+import { applyExtraction, MAX_QUOTE, proposalKey, readReview } from './tier-b'
 
 const URL_A = 'https://funder.example/call'
 const URL_B = 'https://funder.example/eligibility'
@@ -95,6 +95,15 @@ describe('Tier A/B classification', () => {
     expect(result.tier).toBe('B')
     if (result.tier === 'B') expect(result.reasons).toEqual(['quote gone (example-fund evidence.amount): "Up to USD 50,000"'])
   })
+  test('a redirect to another site → B even with the page unchanged; same site with or without www stays A', () => {
+    const page = { hash, text, url: URL_A }
+    expect(classify({ ...page, finalUrl: 'https://parked-domains.example/landing' }, hash, quotes))
+      .toEqual({ tier: 'B', reasons: ['redirected to another site: https://parked-domains.example/landing'] })
+    const sameSite = new URL(URL_A)
+    sameSite.hostname = `www.${sameSite.hostname}`
+    sameSite.pathname += '/'
+    expect(classify({ ...page, finalUrl: sameSite.href }, hash, quotes).tier).toBe('A')
+  })
 })
 
 describe('deadline boundary', () => {
@@ -143,8 +152,8 @@ describe('Tier A apply', () => {
     expect(p.checked_at).toBe('2027-03-15')
   })
   test('closes one minute after 17:00 Madrid, not before', () => {
-    expect(applyTierA(fixture(), new Set(), new Date('2027-03-15T16:00:00.000Z')).closed).toEqual([])
-    const { programme: p, closed } = applyTierA(fixture(), new Set(), new Date('2027-03-15T16:01:00Z'))
+    expect(applyTierA(fixture(), new Set([URL_A]), new Date('2027-03-15T16:00:00.000Z')).closed).toEqual([])
+    const { programme: p, closed } = applyTierA(fixture(), new Set([URL_A]), new Date('2027-03-15T16:01:00Z'))
     expect(closed).toEqual(['round-2027'])
     expect(p.calls[0].status).toBe('closed')
     expect(p.calls[0].evidence.status.quote).toBe('Deadline: 15 March 2027, 17:00 CET')
@@ -157,12 +166,38 @@ describe('Tier A apply', () => {
   test('upcoming call opens on its stated opening date', () => {
     const f = fixture()
     f.calls[0] = { ...f.calls[0], status: 'upcoming', opens: '2027-03-01', evidence: { ...f.calls[0].evidence, opens: ev(URL_A, 'Opens 1 March 2027') } }
-    const { programme: p, opened } = applyTierA(f, new Set(), new Date('2027-03-01T08:00:00Z'))
+    const { programme: p, opened } = applyTierA(f, new Set([URL_A]), new Date('2027-03-01T08:00:00Z'))
     expect(opened).toEqual(['round-2027'])
     expect(p.calls[0].status).toBe('open')
+    expect(applyTierA(f, new Set(), new Date('2027-03-01T08:00:00Z')).opened).toEqual([])
+  })
+  test('a page that changed or failed today closes nothing: the PR or a later read decides', () => {
+    const after = new Date('2027-03-16T00:00:00Z')
+    const { programme: p, closed } = applyTierA(fixture(), new Set([URL_B]), after)
+    expect(closed).toEqual([])
+    expect(p.calls[0].status).toBe('open')
+    expect(p.calls[0].evidence.status.checked_at).toBe('2026-10-01')
   })
   test('the result still passes the schema', () => {
     const { programme: p } = applyTierA(fixture(), new Set([URL_A, URL_B]), new Date('2028-01-01T00:00:00Z'))
+    expect(programmeSchema.safeParse(p).success).toBe(true)
+  })
+  test('refresh and schema share one cutoff: open on the deadline day before the hour passes the schema, closed after it too', () => {
+    const before = applyTierA(fixture(), new Set([URL_A, URL_B]), new Date('2027-03-15T15:59:00Z')).programme
+    expect(before.calls[0]).toMatchObject({ status: 'open', evidence: { status: { checked_at: '2027-03-15' } } })
+    expect(programmeSchema.safeParse(before).success).toBe(true)
+    const after = applyTierA(fixture(), new Set([URL_A, URL_B]), new Date('2027-03-15T16:01:00Z')).programme
+    expect(after.calls[0].status).toBe('closed')
+    expect(programmeSchema.safeParse(after).success).toBe(true)
+  })
+  test('a call due to close whose deadline page failed keeps its old status date, so the schema still passes', () => {
+    const f = fixture()
+    f.calls[0].evidence.deadline = { ...f.calls[0].evidence.deadline!, source_url: URL_B }
+    const { programme: p, closed } = applyTierA(f, new Set([URL_A]), new Date('2027-03-16T06:00:00Z'))
+    expect(closed).toEqual([])
+    expect(p.calls[0].status).toBe('open')
+    expect(p.calls[0].evidence.status.checked_at).toBe('2026-10-01')
+    expect(p.evidence.amount?.checked_at).toBe('2027-03-16')
     expect(programmeSchema.safeParse(p).success).toBe(true)
   })
   test('nothing read and nothing due → unchanged', () => {
@@ -192,7 +227,7 @@ describe('blocked fetch', () => {
     expect(p.calls[0].evidence.status.checked_at).toBe('2026-10-01')
   })
   test('a good read resets the count and dates the change', () => {
-    const s = nextState({ ...prev, failures_in_row: 3 }, source, { ok: true, url: URL_A, status: 200, pdf: false, text: 'x', hash: 'sha256:bb' }, now)
+    const s = nextState({ ...prev, failures_in_row: 3 }, source, { ok: true, url: URL_A, finalUrl: URL_A, status: 200, pdf: false, text: 'x', hash: 'sha256:bb' }, now)
     expect(s).toMatchObject({ failures_in_row: 0, last_error: null, last_hash: 'sha256:bb', last_change: '2026-11-01', last_ok: now.toISOString() })
   })
   test('403, 429 and challenge pages are blocked; 404 is an HTTP error; a normal page passes', () => {
@@ -200,6 +235,7 @@ describe('blocked fetch', () => {
     expect(classifyResponse(429, '')?.kind).toBe('blocked')
     expect(classifyResponse(200, '<html><title>Just a moment...</title></html>')?.kind).toBe('blocked')
     expect(classifyResponse(404, '')?.kind).toBe('http')
+    expect(classifyResponse(200, '<html><body>Request unsuccessful. Incapsula incident ID: 123</body></html>')?.kind).toBe('blocked')
     expect(classifyResponse(200, '<form>protected by reCAPTCHA</form>')).toBeNull()
   })
   test('weekly sources wait a week after a good read, but a failed one retries', () => {
@@ -246,9 +282,10 @@ describe('Tier B apply', () => {
   const page = 'Apply online. Applications are open. Up to USD 75,000 per project. Deadline: 15 March 2027, 17:00 CET.'
 
   test('a changed fact with its quote on the page moves, dated today', () => {
-    const { programme: p, changes, unconfirmed, schemaErrors } = applyExtraction(fixture(), source, {
+    const { programme, changes, unconfirmed, schemaErrors } = applyExtraction(fixture(), source, {
       fields: { amount: { value: { currency: 'USD', max: 75000 }, quote: 'Up to USD 75,000 per project' } },
     }, page, now)
+    const p = programme!
     expect(changes).toEqual([{ path: 'amount', kind: 'changed', old: { currency: 'USD', max: 50000 }, new: { currency: 'USD', max: 75000 }, quote: 'Up to USD 75,000 per project' }])
     expect(p.amount).toEqual({ currency: 'USD', max: 75000 })
     expect(p.evidence.amount).toEqual(ev(URL_A, 'Up to USD 75,000 per project', '2026-11-02'))
@@ -257,19 +294,67 @@ describe('Tier B apply', () => {
     expect(schemaErrors).toEqual([])
   })
   test('a fact whose quote is not on the page is rejected and the old one is listed as unconfirmed', () => {
-    const { programme: p, changes, unconfirmed } = applyExtraction(fixture(), source, {
+    const { programme, changes, unconfirmed } = applyExtraction(fixture(), source, {
       fields: { amount: { value: { currency: 'USD', max: 90000 }, quote: 'Up to USD 90,000' } },
     }, page, now)
+    const p = programme!
     expect(changes[0]).toMatchObject({ path: 'amount', kind: 'rejected', why: 'quote not on the page' })
     expect(p.amount).toEqual({ currency: 'USD', max: 50000 })
     expect(p.evidence.amount?.checked_at).toBe('2026-10-01')
     expect(unconfirmed).toEqual(['evidence.amount: "Up to USD 50,000"'])
   })
   test('facts from another page are left alone', () => {
-    const { programme: p } = applyExtraction(fixture(), source, {
+    const { programme } = applyExtraction(fixture(), source, {
       fields: { geography: { value: { scope: 'regions', regions: ['africa'], label: 'Africa only' }, quote: 'Apply online' } },
     }, page, now)
+    const p = programme!
     expect(p.geography).toEqual({ scope: 'global' })
     expect(p.evidence.geography?.checked_at).toBe('2026-10-01')
+  })
+  test('a value with keys the schema does not know is refused, not stripped and written', () => {
+    const { programme, changes } = applyExtraction(fixture(), source, {
+      fields: { amount: { value: { currency: 'USD', max: 75000, injected: '<script>' }, quote: 'Up to USD 75,000 per project' } },
+    }, page, now)
+    expect(changes[0]).toMatchObject({ path: 'amount', kind: 'rejected', new: '(not shown)', why: 'value has keys the schema does not know' })
+    expect(programme!.amount).toEqual({ currency: 'USD', max: 50000 })
+    expect(JSON.stringify(programme)).not.toContain('injected')
+  })
+  test('a value of the wrong shape, an over-long quote and junk in place of calls are refused', () => {
+    const long = `${page} ${'x'.repeat(400)}`
+    const { programme, changes } = applyExtraction(fixture(), source, {
+      fields: { co_finance_required: { value: 'maybe', quote: 'Apply online' }, amount: { value: { currency: 'USD', max: 75000 }, quote: long } },
+      calls: 'not a list',
+    }, long, now)
+    expect(changes.map((c) => [c.path, c.kind, c.why?.split(' (')[0]])).toEqual([
+      ['amount', 'rejected', `quote longer than ${MAX_QUOTE} characters`],
+      ['co_finance_required', 'rejected', 'value does not fit the schema'],
+    ])
+    expect(changes.every((c) => c.quote.length <= MAX_QUOTE)).toBe(true)
+    expect(programme!.amount).toEqual({ currency: 'USD', max: 50000 })
+  })
+  test('a call with an extra key is refused; the reviewer answer is cut to shape', () => {
+    const { programme, changes } = applyExtraction(fixture(), source, {
+      calls: [{ id: 'round-2', label: 'Round 2', url: URL_A, status: 'open', deadline: { date: '2027-03-15', text: '15 March 2027', extra: 1 }, quotes: { status: 'Applications are open', deadline: 'Deadline: 15 March 2027' } }],
+    }, page, now)
+    expect(changes[0]).toMatchObject({ path: 'calls[round-2]', kind: 'rejected' })
+    expect(programme!.calls.map((c) => c.id)).not.toContain('round-2')
+    expect(readReview({ overall: 'yes', verdicts: [{ path: 'amount', verdict: 'supported', reason: 'r'.repeat(500), x: 1 }, 'junk'], missed: 5 }))
+      .toEqual({ overall: 'unclear', verdicts: [{ path: 'amount', verdict: 'supported', reason: 'r'.repeat(300) }], missed: '' })
+  })
+})
+
+describe('Tier B proposal key', () => {
+  test('check dates alone do not make a new proposal; a changed fact or page version does', () => {
+    const a = fixture()
+    const later = structuredClone(a)
+    later.checked_at = '2026-11-09'
+    later.evidence.amount!.checked_at = '2026-11-09'
+    later.calls[0].evidence.status.checked_at = '2026-11-09'
+    expect(proposalKey('s', 'sha256:1', later)).toBe(proposalKey('s', 'sha256:1', a))
+    const changed = structuredClone(a)
+    changed.amount = { currency: 'USD', max: 60000 }
+    expect(proposalKey('s', 'sha256:1', changed)).not.toBe(proposalKey('s', 'sha256:1', a))
+    expect(proposalKey('s', 'sha256:2', a)).not.toBe(proposalKey('s', 'sha256:1', a))
+    expect(proposalKey('t', 'sha256:1', a)).not.toBe(proposalKey('s', 'sha256:1', a))
   })
 })

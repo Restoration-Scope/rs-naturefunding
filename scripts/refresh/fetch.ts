@@ -18,12 +18,13 @@ const PARALLEL_HOSTS = 4
 export type FailureKind = 'blocked' | 'robots' | 'http' | 'timeout' | 'network' | 'selector' | 'unreadable'
 
 export type Fetched =
-  | { ok: true; url: string; status: number; pdf: boolean; text: string; hash: string }
+  /** `finalUrl` is where redirects ended. */
+  | { ok: true; url: string; finalUrl: string; status: number; pdf: boolean; text: string; hash: string }
   | { ok: false; url: string; kind: FailureKind; message: string }
 
 export const hashText = (text: string) => `sha256:${createHash('sha256').update(normalise(text)).digest('hex')}`
 
-const CHALLENGE = /<title>\s*(just a moment\.\.\.|attention required! \| cloudflare|access denied|are you a robot)|enable javascript and cookies to continue|cf-chl-/i
+const CHALLENGE = /<title>\s*(just a moment\.\.\.|attention required! \| cloudflare|access denied|are you a robot)|enable javascript and cookies to continue|cf-chl-|incapsula incident id|_incapsula_resource|request unsuccessful\. incapsula/i
 
 /** A failed response or a bot-challenge page, or null when the page can be read. */
 export function classifyResponse(status: number, body: string): { kind: FailureKind; message: string } | null {
@@ -121,7 +122,7 @@ export async function readPage(url: string, selector: string | null): Promise<Fe
   try {
     const text = pdf ? pdfToText(bytes) : await htmlToText(body, selector)
     if (text.length < 40) return { ok: false, url, kind: 'unreadable', message: `only ${text.length} characters of text` }
-    return { ok: true, url, status: res.status, pdf, text, hash: hashText(text) }
+    return { ok: true, url, finalUrl: res.url || url, status: res.status, pdf, text, hash: hashText(text) }
   } catch (e) {
     const message = (e as Error).message
     return { ok: false, url, kind: message.includes('selector') ? 'selector' : 'unreadable', message }

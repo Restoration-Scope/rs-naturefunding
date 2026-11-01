@@ -29,7 +29,7 @@ async function checkLink(url: string): Promise<Fetched> {
     const res = await fetch(url, { redirect: 'follow', headers: { 'user-agent': USER_AGENT }, signal: AbortSignal.timeout(30_000) })
     const body = (res.headers.get('content-type') ?? '').includes('html') ? await res.text() : ''
     const failure = classifyResponse(res.status, body)
-    return failure ? { ok: false, url, ...failure } : { ok: true, url, status: res.status, pdf: false, text: '', hash: '' }
+    return failure ? { ok: false, url, ...failure } : { ok: true, url, finalUrl: res.url || url, status: res.status, pdf: false, text: '', hash: '' }
   } catch (e) {
     return { ok: false, url, kind: 'network', message: (e as Error).message }
   }
@@ -56,6 +56,8 @@ const weekAgo = daysAgo(7).toISOString()
 const checked = states.filter(({ st }) => st?.last_ok && st.last_ok >= weekAgo)
 const changed = states.filter(({ st }) => st?.last_change && st.last_change >= dateOf(daysAgo(7)))
 const failing = states.filter(({ st }) => (st?.failures_in_row ?? 0) >= 3)
+const blockedNow = states.filter(({ st }) => st?.last_error && ['blocked', 'robots'].includes(st.last_error.kind))
+const blockRate = sources.length ? Math.round((blockedNow.length / sources.length) * 100) : 0
 const stale = programmes.filter((p) => p.checked_at < dateOf(daysAgo(30)))
 const broken = Object.entries(links).filter(([, l]) => !l.ok)
 const prs = Bun.spawnSync(['gh', 'pr', 'list', '--label', 'refresh', '--state', 'open', '--json', 'url,title']).stdout.toString()
@@ -63,6 +65,7 @@ const openPrs: { url: string; title: string }[] = prs ? JSON.parse(prs) : []
 
 const body = [
   `Week to ${today}: ${checked.length} of ${sources.length} watched pages read, ${changed.length} changed, ${failing.length} failing 3+ times in a row, ${stale.length} programmes not fully re-read in 30 days, ${broken.length} broken links, ${openPrs.length} refresh PRs waiting.`,
+  `Blocked on the last read (bot blocks and robots.txt, from GitHub's runners): ${blockedNow.length} of ${sources.length} (${blockRate}%).`,
   '',
   '### Failing 3+ times in a row',
   ...(failing.length ? failing.map(({ s, st }) => `- \`${s.id}\` ${s.url}: ${st!.failures_in_row}× ${st!.last_error?.kind}, ${st!.last_error?.message} (last good read ${st!.last_ok?.slice(0, 10) ?? 'never'})`) : ['None.']),
