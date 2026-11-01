@@ -183,7 +183,7 @@ const jsonLd = [
       {p.administered_by && <span>, run by <OrgMark org={p.administered_by} size={20} class={bandMark} /><a href={p.administered_by.url}>{p.administered_by.name}</a></span>}
     </p>
     {p.kind === 'partnership' && <p class="mt-4 font-bold">Paid partnership, not a grant: the funder pays for work under a contract.</p>}
-    <p class:list={['max-w-[62ch] text-lg max-md:text-base max-md:leading-[1.45]', p.kind === 'partnership' ? 'mt-[0.35rem]' : 'mt-4']}>{p.summary}</p>
+    <p class:list={['max-w-[62ch] text-lg max-md:text-base max-md:leading-[1.45]', p.kind === 'partnership' ? 'mt-[0.35rem]' : 'mt-4 max-md:mt-3']}>{p.summary}</p>
     <p class="mt-2 text-sm text-shell-ink-2">Summary in our words. Each fact below shows the funder’s own words and links to its page.</p>
   </div>
 
