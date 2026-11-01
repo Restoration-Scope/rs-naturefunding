@@ -5,6 +5,7 @@ import { programme as programmeSchema } from '../../src/data/schema'
 import { deadlineInstant, deadlinePassed, parseZone } from './deadline'
 import { classifyResponse, hashText, readPages, robotsAllows, type Fetched } from './fetch'
 import { formatJson } from './json'
+import { llmFromEnv, provider } from './llm'
 import { isDue, nextState, type SourceState } from './state'
 import { applyTierA, classify, quotesAt } from './tier'
 import { applyExtraction, LIMITS, proposalKey, readReview } from './tier-b'
@@ -386,5 +387,22 @@ describe('Tier B proposal key', () => {
     changed.amount = { currency: 'USD', max: 60000 }
     expect(proposalKey(source, 'sha256:1', changed)).not.toBe(key)
     expect(proposalKey(source, 'sha256:2', a)).not.toBe(key)
+  })
+})
+
+describe('LLM provider from the environment', () => {
+  const account = { CLOUDFLARE_ACCOUNT_ID: 'acct' }
+  test('blank repo variables fall back to defaults instead of disabling the models', () => {
+    const llm = llmFromEnv({ ...account, CLOUDFLARE_API_TOKEN: 't', LLM_PROVIDER: '', LLM_EXTRACTOR: ' ', LLM_REVIEWER: '' })
+    expect(llm).toMatchObject({ provider: 'cloudflare', extractor: '@cf/openai/gpt-oss-120b', reviewer: '@cf/meta/llama-4-scout-17b-16e-instruct' })
+  })
+  test('a dedicated AI token wins over the deploy token; overrides are used when set', () => {
+    expect(provider({ ...account, CLOUDFLARE_AI_TOKEN: 'ai', CLOUDFLARE_API_TOKEN: 'deploy' })?.[1].key).toBe('ai')
+    expect(llmFromEnv({ ...account, CLOUDFLARE_API_TOKEN: 't', LLM_REVIEWER: '@cf/other/model' })?.reviewer).toBe('@cf/other/model')
+  })
+  test('no token, a blank token or an unknown provider → no models, so changed pages become issues', () => {
+    expect(llmFromEnv({ ...account })).toBeNull()
+    expect(llmFromEnv({ ...account, CLOUDFLARE_API_TOKEN: '' })).toBeNull()
+    expect(llmFromEnv({ ...account, CLOUDFLARE_API_TOKEN: 't', LLM_PROVIDER: 'github' })).toBeNull()
   })
 })

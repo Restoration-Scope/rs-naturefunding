@@ -1,9 +1,9 @@
 /**
  * One OpenAI-compatible chat client for the two models that re-read changed pages:
- * an extractor and a reviewer from a different model family.
- * - github (default in Actions): GitHub Models with the workflow's own GITHUB_TOKEN; no secret, free tier.
- * - cloudflare: Workers AI on the account in wrangler.jsonc, with CLOUDFLARE_AI_TOKEN.
- * Models can be overridden with LLM_EXTRACTOR and LLM_REVIEWER.
+ * an extractor and a reviewer from a different model family, on Workers AI in the account
+ * in wrangler.jsonc. The token is CLOUDFLARE_AI_TOKEN, else the deploy token
+ * CLOUDFLARE_API_TOKEN when it also holds Workers AI Read. (GitHub Models, the first choice,
+ * was retired on 2026-07-30.) Models can be overridden with LLM_EXTRACTOR and LLM_REVIEWER.
  *   bun scripts/refresh/llm.ts --models   lists the models the provider offers
  */
 export type Llm = {
@@ -17,20 +17,15 @@ export type Llm = {
 
 type Provider = { baseUrl: string; key: string; extractor: string; reviewer: string; maxChars: number; catalog: string }
 
-function provider(env: NodeJS.ProcessEnv): [string, Provider] | null {
-  // The workflow passes unset repo variables as "", so empty means "pick by which token exists".
-  const name = env.LLM_PROVIDER?.trim() || (env.CLOUDFLARE_AI_TOKEN ? 'cloudflare' : env.GITHUB_TOKEN ? 'github' : '')
-  if (name === 'cloudflare' && env.CLOUDFLARE_AI_TOKEN && env.CLOUDFLARE_ACCOUNT_ID) {
+/** The provider the environment configures, or null. Unset repo variables arrive as "", so blank means unset. */
+export function provider(env: NodeJS.ProcessEnv): [string, Provider] | null {
+  const key = env.CLOUDFLARE_AI_TOKEN?.trim() || env.CLOUDFLARE_API_TOKEN?.trim()
+  const name = env.LLM_PROVIDER?.trim() || 'cloudflare'
+  if (name === 'cloudflare' && key && env.CLOUDFLARE_ACCOUNT_ID) {
     const base = `https://api.cloudflare.com/client/v4/accounts/${env.CLOUDFLARE_ACCOUNT_ID}/ai`
     return [name, {
-      baseUrl: `${base}/v1`, key: env.CLOUDFLARE_AI_TOKEN, catalog: `${base}/models/search?task=Text%20Generation&per_page=100`,
+      baseUrl: `${base}/v1`, key, catalog: `${base}/models/search?task=Text%20Generation&per_page=100`,
       extractor: '@cf/openai/gpt-oss-120b', reviewer: '@cf/meta/llama-4-scout-17b-16e-instruct', maxChars: 60_000,
-    }]
-  }
-  if (name === 'github' && env.GITHUB_TOKEN) {
-    return [name, {
-      baseUrl: 'https://models.github.ai/inference', key: env.GITHUB_TOKEN, catalog: 'https://models.github.ai/catalog/models',
-      extractor: 'openai/gpt-4.1', reviewer: 'meta/llama-4-maverick-17b-128e-instruct-fp8', maxChars: 16_000,
     }]
   }
   return null
