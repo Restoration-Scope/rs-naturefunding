@@ -1,6 +1,8 @@
 ---
 import Base from '../layouts/Base.astro'
 import Fact from '../components/Fact.astro'
+import Route from '../components/Route.astro'
+import { ArrowUp } from 'lucide-react'
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
 import { cardClasses } from '@/components/ui/card'
@@ -29,7 +31,9 @@ const jsonLd = {
 const prose = [
   '[&>p]:max-w-[66ch] [&>p+p]:mt-[0.85rem] [&>p+ul]:mt-[0.85rem] [&>ul+p]:mt-[0.85rem]',
   '[&>ul]:mt-[0.6rem] [&>ul]:mb-0 [&>ul]:max-w-[66ch] [&>ul]:pl-[1.2rem] [&>ul>li+li]:mt-[0.4rem] [&_li]:marker:text-ink-2',
-  '[&>h2]:mt-11 [&>h2]:mb-[0.6rem] [&>h2]:scroll-mt-4 [&>h2]:text-3xl [&>h2]:font-extrabold [&_dd]:text-pretty [&_li]:text-pretty',
+  // Each h2 has an eyebrow above it ("3 of 8"), matching the numbered contents, so a phone reader knows
+  // where they are; a jump to a section keeps the eyebrow in view.
+  '[&>.eyebrow]:mt-11 [&>.eyebrow]:mb-1 [&>h2]:mb-[0.6rem] [&>h2]:scroll-mt-10 [&>h2]:text-3xl [&>h2]:font-extrabold [&_dd]:text-pretty [&_li]:text-pretty',
 ]
 const keyTitle = 'mt-5 text-base font-bold'
 const key =
@@ -54,9 +58,10 @@ const key =
   >
     <details
       class:list={[cardClasses, 'group/toc mt-8 max-w-[66ch] px-5 py-[0.6rem] 2xl:sticky 2xl:top-6 2xl:col-start-2! 2xl:row-[1/span_40] 2xl:self-start']}
+      id="contents"
       data-toc
     >
-      <summary class="flex min-h-7 cursor-pointer list-none items-center justify-between text-xs font-bold tracking-[0.02em] text-ink-2 uppercase after:size-2 after:border-r-2 after:border-b-2 after:border-current after:content-[''] after:[transform:translateY(-25%)_rotate(45deg)] group-open/toc:after:[transform:translateY(25%)_rotate(-135deg)] 2xl:pointer-events-none 2xl:cursor-default 2xl:after:hidden [&::-webkit-details-marker]:hidden">On this page</summary>
+      <summary class="flex min-h-7 cursor-pointer list-none items-center justify-between text-sm font-semibold text-foreground after:size-2 after:border-r-2 after:border-b-2 after:border-current after:content-[''] after:[transform:translateY(-25%)_rotate(45deg)] group-open/toc:after:[transform:translateY(25%)_rotate(-135deg)] 2xl:pointer-events-none 2xl:cursor-default 2xl:after:hidden [&::-webkit-details-marker]:hidden">On this page</summary>
       <nav aria-label="On this page">
       <ol class="mt-2 mb-0 grid grid-cols-[repeat(auto-fill,minmax(14rem,1fr))] gap-x-6 gap-y-[0.3rem] pl-[1.2rem] 2xl:grid-cols-[minmax(0,1fr)]">
         <li><a href="#who">Who builds this</a></li>
@@ -71,6 +76,7 @@ const key =
       </nav>
     </details>
 
+    <p class="eyebrow text-xs font-medium text-muted-foreground tabular-nums" aria-hidden="true">1 of 8</p>
     <h2 id="who">Who builds this</h2>
     <p>
       naturefunding.org is built and paid for by <a href={RS_URL}>Restoration Scope</a>, a company that makes
@@ -86,6 +92,7 @@ const key =
       <li><strong>No account, no email wall.</strong> Search and filters run in your browser.</li>
     </ul>
 
+    <p class="eyebrow text-xs font-medium text-muted-foreground tabular-nums" aria-hidden="true">2 of 8</p>
     <h2 id="what">What we list</h2>
     <p>
       Funding for nature restoration and conservation projects: forests and land, rivers and wetlands, coasts and the
@@ -104,6 +111,7 @@ const key =
       look.
     </p>
 
+    <p class="eyebrow text-xs font-medium text-muted-foreground tabular-nums" aria-hidden="true">3 of 8</p>
     <h2 id="sources">Where the facts come from</h2>
     <p>
       Each deadline, amount, eligibility rule and region is read from the funder’s own website, or the website of the
@@ -130,6 +138,7 @@ const key =
       a date or an amount from them.
     </p>
 
+    <p class="eyebrow text-xs font-medium text-muted-foreground tabular-nums" aria-hidden="true">4 of 8</p>
     <h2 id="never-guess">What we never guess</h2>
     <ul>
       <li>
@@ -143,14 +152,15 @@ const key =
       </li>
     </ul>
 
+    <p class="eyebrow text-xs font-medium text-muted-foreground tabular-nums" aria-hidden="true">5 of 8</p>
     <h2 id="labels">What the labels mean</h2>
     <h3 class={keyTitle}>Is a call open?</h3>
     <dl class={key}>
-      <div><dt><Badge variant="tape" state="open">Open</Badge></dt><dd>Taking applications now, until the deadline shown.</dd></div>
-      <div><dt><Badge variant="tape" state="rolling">Rolling</Badge></dt><dd>Taking applications any time, with no deadline.</dd></div>
-      <div><dt><Badge variant="tape" state="upcoming">Upcoming</Badge></dt><dd>Announced, but not open yet.</dd></div>
-      <div><dt><Badge variant="tape" state="closed">Closed</Badge></dt><dd>The last call we found has passed its deadline. Check the funder’s page for the next round.</dd></div>
-      <div><dt><Badge variant="tape" state="none">No call found</Badge></dt><dd>We found no open or announced call on the funder’s page when we last read it.</dd></div>
+      <div><dt><Badge variant="status" state="open">Open</Badge></dt><dd>Taking applications now, until the deadline shown.</dd></div>
+      <div><dt><Badge variant="status" state="rolling">Rolling</Badge></dt><dd>Taking applications any time, with no deadline.</dd></div>
+      <div><dt><Badge variant="status" state="upcoming">Upcoming</Badge></dt><dd>Announced, but not open yet.</dd></div>
+      <div><dt><Badge variant="status" state="closed">Closed</Badge></dt><dd>The last call we found has passed its deadline. Check the funder’s page for the next round.</dd></div>
+      <div><dt><Badge variant="status" state="none">No call found</Badge></dt><dd>We found no open or announced call on the funder’s page when we last read it.</dd></div>
     </dl>
     <p class="mt-4">
       The finder lists open, rolling and upcoming calls first. Closed and no-call listings sit in a folded list under
@@ -158,8 +168,8 @@ const key =
     </p>
     <h3 class={keyTitle}>Funders you don’t apply to directly</h3>
     <dl class={key}>
-      <div><dt><Badge variant="outline">Through a partner</Badge></dt><dd>You apply to a partner, such as a country programme, not to the funder.</dd></div>
-      <div><dt><Badge variant="outline">Invitation only</Badge></dt><dd>The funder picks its grantees. Don’t send a proposal.</dd></div>
+      <div><dt><Route access="intermediary" /></dt><dd>You apply to a partner, such as a country programme, not to the funder.</dd></div>
+      <div><dt><Route access="invitation_only" /></dt><dd>The funder picks its grantees. Don’t send a proposal.</dd></div>
     </dl>
     <h3 class={keyTitle}>The checked tag</h3>
     <dl class={key}>
@@ -167,6 +177,7 @@ const key =
       <div><dt><Badge variant="tag" data-aging>Checked 20 Sep 2026</Badge></dt><dd>Over {AGING_DAYS} days since that check. Confirm on the funder’s page before you rely on it.</dd></div>
     </dl>
 
+    <p class="eyebrow text-xs font-medium text-muted-foreground tabular-nums" aria-hidden="true">6 of 8</p>
     <h2 id="how-often">How often we check</h2>
     <ol class="mt-[0.6rem] mb-0 max-w-[66ch] pl-[1.4rem] *:pl-1 *:marker:font-bold *:marker:text-ink-2 [&>li+li]:mt-[0.4rem]">
       <li>Every day, a job reads the funder pages that are due: most every day, the rest every week or month.</li>
@@ -190,6 +201,7 @@ const key =
     </ol>
     {stats.lastChecked && <p class="mt-4 text-md text-ink-2">Most recent check: {longDate(stats.lastChecked)}.</p>}
 
+    <p class="eyebrow text-xs font-medium text-muted-foreground tabular-nums" aria-hidden="true">7 of 8</p>
     <h2 id="corrections">Corrections</h2>
     <p>
       Every programme page has a <strong>Report a problem</strong> link and, for funders, a{' '}
@@ -199,6 +211,7 @@ const key =
     <p>For anything else on the site, such as a missing funder or a broken page:</p>
     <p><Button href={generalIssueUrl} variant="outline">Report a problem</Button></p>
 
+    <p class="eyebrow text-xs font-medium text-muted-foreground tabular-nums" aria-hidden="true">8 of 8</p>
     <h2 id="open-data">Open data</h2>
     <p>
       Our data is licensed <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>: you can reuse it,
@@ -216,6 +229,11 @@ const key =
       <a href={REPO_URL}>public on GitHub</a>.
     </p>
     <p><Button href="/">Find funding</Button></p>
+
+    {/* Below the wide layout the contents scroll away; this brings them back. No script. */}
+    <Button href="#contents" variant="secondary" size="icon" className="to-top fixed right-4 bottom-[calc(1rem+env(safe-area-inset-bottom))] z-20 rounded-full shadow-md 2xl:hidden" aria-label="Back to contents" title="Back to contents">
+      <ArrowUp aria-hidden="true" />
+    </Button>
   </article>
 </Base>
 

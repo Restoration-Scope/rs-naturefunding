@@ -5,6 +5,7 @@ import { amountText, geographyText, keepAmountTogether, shortDate } from '../lib
 import { accessLabels, applicantLabels, approachLabels, stateLabels } from '../lib/labels'
 import { Badge } from '@/components/ui/badge'
 import CheckedTag from './CheckedTag.astro'
+import Route from './Route.astro'
 
 interface Props {
   listing: Listing
@@ -54,11 +55,11 @@ const searchText = [
 
 <li
   class:list={[
-    'group/listing relative grid grid-cols-[minmax(0,1fr)_minmax(0,1fr)] gap-x-4 gap-y-[0.3rem] border-b border-rule pt-[0.9rem] pb-4 hover:bg-surface',
+    'group/listing relative grid grid-cols-[minmax(0,1fr)_minmax(0,1fr)] gap-x-4 gap-y-[0.3rem] border-b border-rule pt-[0.9rem] pb-4 hover:bg-muted/50',
     "[grid-template-areas:'status_status'_'name_name'_'funder_funder'_'deadline_amount'_'meta_meta'_'check_check']",
     // Narrow phones: deadline and amount stack, so a long quote keeps the full width.
     "@max-[29.99rem]/listings:grid-cols-[minmax(0,1fr)] @max-[29.99rem]/listings:[grid-template-areas:'status'_'name'_'funder'_'deadline'_'amount'_'meta'_'check']",
-    // Wide: the tape and the stamp share the first line of the programme column.
+    // Wide: the status and the checked date share the first line of the programme column.
     "@min-[52rem]/listings:grid-cols-[minmax(0,1fr)_11rem_9rem] @min-[52rem]/listings:grid-rows-[auto_auto_auto_1fr] @min-[52rem]/listings:gap-x-8 @min-[52rem]/listings:gap-y-[0.15rem] @min-[52rem]/listings:px-3",
     "@min-[52rem]/listings:[grid-template-areas:'status_deadline_amount'_'name_deadline_amount'_'funder_deadline_amount'_'meta_deadline_amount']",
   ]}
@@ -74,7 +75,10 @@ const searchText = [
   data-text={searchText}
 >
   <div class="[grid-area:status]">
-    <Badge variant="tape" state={state}>{noCallRoute ? accessLabels[p.access] : stateLabels[state]}</Badge>
+    <span class="flex flex-wrap items-center gap-2">
+      <Badge variant="status" state={state}>{stateLabels[state]}</Badge>
+      {noCallRoute && <Route access={p.access} />}
+    </span>
   </div>
 
   {/* Narrow containers: the name, deadline and amount come first; the rest of this cell follows. */}
@@ -125,12 +129,12 @@ const searchText = [
           {daysLeft !== null && (
             <span
               class:list={[
-                'block text-xs font-bold',
-                // Under a week left: the amber of an ageing stamp, so it reads as "act soon".
-                daysLeft < 7 ? 'mt-[0.15rem] w-fit rounded-xs bg-aging px-[0.35rem] text-aging-ink' : 'text-ink',
+                'block',
+                // A week or less left: an amber badge, so it reads as "act soon".
+                daysLeft <= 7 ? 'mt-1 w-fit rounded-md bg-warn px-2 py-0.5 text-xs font-medium text-warn-ink' : 'text-sm font-normal text-muted-foreground',
               ]}
               data-left
-              data-soon={daysLeft < 7 ? '' : undefined}
+              data-soon={daysLeft <= 7 ? '' : undefined}
             >
               {daysLeft === 0 ? 'Closes today' : daysLeft === 1 ? '1 day left' : `${daysLeft} days left`}
             </span>

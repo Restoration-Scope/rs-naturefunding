@@ -1,6 +1,5 @@
 ---
 import type { Evidence } from '../data/schema'
-import type { SharedSource } from '../lib/data'
 import { keepAmountTogether, pageLabel } from '../lib/format'
 import CheckedTag from './CheckedTag.astro'
 
@@ -11,13 +10,10 @@ interface Props {
   evidence?: Evidence
   /** Shown instead of "Not found on the pages we read" when the value is null. */
   missing?: string
-  /** The section already names this page and date, so the quote skips its own tag. */
-  shared?: SharedSource | null
 }
 
-const { label, value, evidence, missing = 'Not found on the pages we read', shared } = Astro.props
+const { label, value, evidence, missing = 'Not found on the pages we read' } = Astro.props
 const shown = value && label === 'Amount' ? keepAmountTogether(value) : value
-const ownTag = evidence && !(shared && evidence.source_url === shared.url && evidence.checked_at === shared.checked)
 ---
 
 <div class="grid grid-cols-[minmax(0,1fr)] gap-[0.35rem] border-t border-rule py-[1.1rem] md:grid-cols-[11rem_minmax(0,1fr)] md:gap-6">
@@ -39,11 +35,10 @@ const ownTag = evidence && !(shared && evidence.source_url === shared.url && evi
           <blockquote class="max-w-[65ch] border-l-3 border-rule-strong py-[0.1rem] pl-[0.85rem] text-[0.9875rem] text-ink" cite={evidence.source_url}>
             <p class="before:content-['“'] after:content-['”']">{evidence.quote}</p>
           </blockquote>
-          {ownTag && (
-            <figcaption class="mt-[0.45rem]">
-              <CheckedTag checked={evidence.checked_at} source={{ url: evidence.source_url, label: pageLabel(evidence.source_url) }} />
-            </figcaption>
-          )}
+          {/* Every fact names its page and date, the same line each time. */}
+          <figcaption class="mt-[0.45rem]">
+            <CheckedTag checked={evidence.checked_at} source={{ url: evidence.source_url, label: pageLabel(evidence.source_url) }} />
+          </figcaption>
         </figure>
       )
     }

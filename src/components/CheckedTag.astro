@@ -5,7 +5,7 @@ import { longDate, shortDate } from '../lib/format'
 
 interface Props {
   checked: string
-  /** Print the page it was checked against after the tag. */
+  /** Name the page it was checked against first: "Source: afr100.org · Checked 1 Nov 2026". */
   source?: { url: string; label: string }
   class?: string
 }
@@ -15,14 +15,15 @@ const age = daysBetween(checked, buildDate)
 const aging = age > AGING_DAYS
 ---
 
-<span class:list={['inline-flex flex-wrap items-center gap-x-2 gap-y-[0.3rem] text-sm text-ink-2', className]} data-checked={checked}>
-  <Badge variant="tag" data-aging={aging ? '' : undefined} title={`Checked against the funder's page on ${longDate(checked)}`}>Checked {shortDate(checked)}</Badge>
-  <span class="font-bold text-aging-text" hidden={!aging}>Over {AGING_DAYS} days ago, due a recheck</span>
+<span class:list={['inline-flex flex-wrap items-center gap-x-1.5 gap-y-1 text-xs text-muted-foreground', className]} data-checked={checked}>
   {
     source && (
-      <span>
-        Source: <a class="wrap-anywhere" href={source.url}>{source.label}</a>
-      </span>
+      <>
+        <span>Source: <a class="wrap-anywhere" href={source.url}>{source.label}</a></span>
+        <span aria-hidden="true">·</span>
+      </>
     )
   }
+  <Badge variant="tag" data-aging={aging ? '' : undefined} title={`Checked against the funder's page on ${longDate(checked)}`}>Checked {shortDate(checked)}</Badge>
+  <span class="font-semibold text-aging-text" hidden={!aging}>Over {AGING_DAYS} days ago, due a recheck</span>
 </span>

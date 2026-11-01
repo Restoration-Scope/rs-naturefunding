@@ -4,10 +4,11 @@ import Base from '../../layouts/Base.astro'
 import CheckedTag from '../../components/CheckedTag.astro'
 import Fact from '../../components/Fact.astro'
 import Listing from '../../components/Listing.astro'
+import Route from '../../components/Route.astro'
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
 import { cardClasses } from '@/components/ui/card'
-import { HIDDEN_DAYS, buildDate, daysBetween, listingFor, programmeById, programmes, sharedSource, sortListings } from '../../lib/data'
+import { HIDDEN_DAYS, buildDate, daysBetween, listingFor, programmeById, programmes, sortListings } from '../../lib/data'
 import type { Programme } from '../../data/schema'
 import { amountText, geographyFull, joinAnd, longDate, pageLabel } from '../../lib/format'
 import {
@@ -42,17 +43,6 @@ const partnersShown = partnersNow.length > 0 ? partnersNow : childListings
 const noCallRoute = p.access === 'intermediary' || p.access === 'invitation_only'
 const amount = amountText(p.amount)
 const yesNo = (b: boolean | null) => (b === null ? null : b ? 'Yes' : 'No')
-const factsShared = sharedSource([
-  p.evidence.access,
-  p.evidence.amount,
-  p.evidence.geography,
-  p.evidence.applicant_types,
-  p.evidence.window,
-  p.evidence.co_finance_required,
-  p.evidence.administered_by,
-])
-const callShared = (c: Programme['calls'][number]) =>
-  sharedSource([c.evidence.status, c.evidence.opens, c.evidence.deadline, c.evidence.recurring])
 // The tag in the apply box dates the fact the box states: the call, or how to apply.
 const applyEvidence =
   (call && (call.evidence.deadline ?? call.evidence.recurring ?? call.evidence.status)) ?? p.evidence.access ?? null
@@ -169,7 +159,8 @@ const jsonLd = [
   <div slot="band" class="wrap pt-4 pb-6 md:pt-5 md:pb-8 [&_a]:text-shell-ink">
     <a class="mb-4 inline-block text-md text-shell-ink-2!" href="/">← All funding</a>
     <h1 class="max-w-[30ch] text-[clamp(1.5rem,1.1rem+1.8vw,2.5rem)] leading-[1.12] font-extrabold tracking-[-0.02em]">{p.name}</h1>
-    <p class="mt-[0.6rem] text-lg text-shell-ink-2">
+    {/* Phones: two lines at most, so the apply box starts higher; every name stays in the Run by fact. */}
+    <p class="mt-[0.6rem] text-lg text-shell-ink-2 max-md:line-clamp-2" title={p.administered_by ? `${p.funder.name}, run by ${p.administered_by.name}` : undefined}>
       {
         funderQualifier !== null ? (
           <a href={p.funder.url}>{funderQualifier || 'The funder’s website'}</a>
@@ -188,7 +179,7 @@ const jsonLd = [
   <div class="wrap mr-auto ml-0 max-w-[calc(52rem+2*var(--gutter))] 2xl:mx-auto 2xl:grid 2xl:max-w-(--page) 2xl:grid-cols-[minmax(0,1fr)_20rem] 2xl:gap-x-12 2xl:*:col-start-1">
     {
       hidden && (
-        <p class="mt-8 rounded-md bg-aging px-4 py-3 font-semibold text-aging-ink" role="note">
+        <p class="mt-8 rounded-lg bg-warn px-4 py-3 font-semibold text-warn-ink" role="note">
           We have not been able to check this listing for over {HIDDEN_DAYS} days, so it is hidden from the finder.
           Treat every fact below as out of date until the funder’s page confirms it.
         </p>
@@ -199,7 +190,10 @@ const jsonLd = [
       aria-labelledby="apply-title"
     >
       <div class="flex flex-wrap items-center gap-x-[0.85rem] gap-y-2">
-        <Badge variant="tape" state={state}>{noCallRoute ? accessLabels[p.access] : stateLabels[state]}</Badge>
+        <span class="flex flex-wrap items-center gap-2">
+          <Badge variant="status" state={state}>{stateLabels[state]}</Badge>
+          {noCallRoute && <Route access={p.access} />}
+        </span>
         <h2 id="apply-title" class="text-3xl font-extrabold tracking-[-0.01em]">
           {state === 'open' && call?.deadline && <>Apply by <span class="whitespace-nowrap">{longDate(call.deadline.date)}</span></>}
           {state === 'open' && call && !call.deadline && (call.recurring ? <>Open, with deadlines each year</> : <>Open, no dated deadline</>)}
@@ -224,7 +218,7 @@ const jsonLd = [
       {
         state === 'open' && call?.deadline && (
           <dl class="mt-3 mb-0 grid gap-[0.35rem] text-md *:grid *:grid-cols-[max-content_minmax(0,1fr)] *:gap-3 [&_dd]:m-0 [&_dt]:text-ink-2">
-            <div><dt>Days left</dt><dd class="font-mono font-bold tabular-nums">{daysBetween(buildDate, call.deadline.date)}</dd></div>
+            <div><dt>Days left</dt><dd class="font-bold tabular-nums">{daysBetween(buildDate, call.deadline.date)}</dd></div>
             <div><dt>Call</dt><dd>{call.label}</dd></div>
           </dl>
         )
@@ -276,7 +270,7 @@ const jsonLd = [
             <details class="group/later mt-3">
               <summary class="flex min-h-11 cursor-pointer list-none items-center gap-[0.6rem] border-b-2 border-ink py-2 text-lg font-bold before:size-2 before:flex-none before:border-r-2 before:border-b-2 before:border-current before:content-[''] before:[transform:rotate(-45deg)] group-open/later:before:[transform:translateY(-20%)_rotate(45deg)] [&::-webkit-details-marker]:hidden">
                 <span>Not open now</span>
-                <Badge variant="muted" className="ml-auto">{partnersLater.length}</Badge>
+                <Badge className="ml-auto">{partnersLater.length}</Badge>
               </summary>
               <ol class={listingsList}>
                 {partnersLater.map((l) => <Listing listing={l} underParent />)}
@@ -290,40 +284,32 @@ const jsonLd = [
     <section aria-labelledby="facts-title">
       <h2 id="facts-title" class={sectionTitle}>The facts, in the funder’s words</h2>
       {children.length > 0 && <p class={sectionCheck}>These cover {p.name} as a whole. Each partner programme above sets its own amounts and deadlines.</p>}
-      {
-        factsShared && (
-          <p class={sectionCheck}>
-            All quotes are from <a href={factsShared.url}>{pageLabel(factsShared.url)}</a> unless marked.{' '}
-            <CheckedTag checked={factsShared.checked} class="align-middle" />
-          </p>
-        )
-      }
       <dl class="m-0 border-b border-rule">
-        <Fact label="How to apply" value={accessLabels[p.access]} evidence={p.evidence.access} missing="Not stated" shared={factsShared}>
+        <Fact label="How to apply" value={accessLabels[p.access]} evidence={p.evidence.access} missing="Not stated">
           {p.access === 'direct' && <p class={factHelp}>{accessHelp[p.access]}</p>}
         </Fact>
-        <Fact label="Amount" value={amount} evidence={p.evidence.amount} shared={factsShared} missing={byPartner}>
+        <Fact label="Amount" value={amount} evidence={p.evidence.amount} missing={byPartner}>
           {p.amount?.note && <p class={factHelp}>{p.amount.note}.</p>}
         </Fact>
-        <Fact label="Where" value={geographyFull(p.geography)} evidence={p.evidence.geography} shared={factsShared} />
+        <Fact label="Where" value={geographyFull(p.geography)} evidence={p.evidence.geography} />
         <Fact
           label="Who can apply"
           value={p.applicant_types ? joinAnd(p.applicant_types.map((a) => applicantLabels[a])) : null}
           evidence={p.evidence.applicant_types}
-          shared={factsShared}
+         
           missing={byPartner}
         />
         <Fact
           label="Rounds"
           value={p.window === 'rolling' ? 'Rolling: apply any time' : p.window === 'fixed' ? 'Fixed rounds with deadlines' : null}
           evidence={p.evidence.window}
-          shared={factsShared}
+         
           missing={byPartner}
         />
-        <Fact label="Co-funding required" value={yesNo(p.co_finance_required)} evidence={p.evidence.co_finance_required} shared={factsShared} missing={byPartner} />
+        <Fact label="Co-funding required" value={yesNo(p.co_finance_required)} evidence={p.evidence.co_finance_required} missing={byPartner} />
         {
           p.administered_by && (
-            <Fact label="Run by" value={p.administered_by.name} evidence={p.evidence.administered_by} shared={factsShared} />
+            <Fact label="Run by" value={p.administered_by.name} evidence={p.evidence.administered_by} />
           )
         }
         <Fact label="Restoration approach" value={joinAnd(p.approaches.map((a) => approachLabels[a]))} missing="">
@@ -350,38 +336,32 @@ const jsonLd = [
               open={c === call || p.calls.length === 1}
             >
               <summary class="grid cursor-pointer list-none grid-cols-[auto_minmax(0,1fr)_auto] items-center gap-x-3 gap-y-[0.4rem] pb-3 after:mr-[0.2rem] after:size-[0.55rem] after:border-r-2 after:border-b-2 after:border-ink-2 after:content-[''] after:[transform:rotate(45deg)_translateY(-0.15rem)] group-open/call:after:[transform:rotate(-135deg)_translateY(-0.1rem)] [&::-webkit-details-marker]:hidden">
-                <Badge variant="tape" state={c.status === 'open' ? 'open' : c.status === 'upcoming' ? 'upcoming' : c.status === 'closed' ? 'closed' : 'none'}>
+                <Badge variant="status" state={c.status === 'open' ? 'open' : c.status === 'upcoming' ? 'upcoming' : c.status === 'closed' ? 'closed' : 'none'}>
                   {callStatusLabel[c.status]}
                 </Badge>
                 <h3 class="text-lg font-extrabold">{c.label}</h3>
                 {/* Only while folded: an open call shows its dates in full below. */}
                 {callWhen(c) && <span class="col-start-2 text-md text-ink-2 group-open/call:hidden">{callWhen(c)}</span>}
               </summary>
-              {callShared(c)?.url !== c.url && <a class="mb-1 inline-block text-md" href={c.url}>Call page</a>}
-              {callShared(c) && (
-                <p class={sectionCheck}>
-                  Quotes from <a href={callShared(c)!.url}>{pageLabel(callShared(c)!.url)}</a>.{' '}
-                  <CheckedTag checked={callShared(c)!.checked} class="align-middle" />
-                </p>
-              )}
+              <a class="mb-1 inline-block text-md" href={c.url}>Call page</a>
               <dl class="m-0">
-                <Fact label="Status" value={callStatusText(c)} evidence={c.evidence.status} shared={callShared(c)} />
+                <Fact label="Status" value={callStatusText(c)} evidence={c.evidence.status} />
                 {(c.opens || c.expected || c.evidence.opens) && (
                   <Fact
                     label="Opens"
                     value={c.opens ? longDate(c.opens) : c.expected ? `Expected ${c.expected}` : null}
                     evidence={c.evidence.opens ?? (c.expected ? c.evidence.status : undefined)}
-                    shared={callShared(c)}
+                   
                   />
                 )}
                 {c.recurring && !c.deadline ? (
-                  <Fact label="Dates each year" value={c.recurring} evidence={c.evidence.recurring} shared={callShared(c)} />
+                  <Fact label="Dates each year" value={c.recurring} evidence={c.evidence.recurring} />
                 ) : (
                   <Fact
                     label="Deadline"
                     value={c.deadline ? deadlineText(c.deadline) : null}
                     evidence={c.evidence.deadline}
-                    shared={callShared(c)}
+                   
                     missing={
                       p.window === 'rolling'
                         ? 'None: apply any time'
@@ -392,7 +372,7 @@ const jsonLd = [
                   />
                 )}
                 {c.recurring && c.deadline && (
-                  <Fact label="Dates each year" value={c.recurring} evidence={c.evidence.recurring} shared={callShared(c)} />
+                  <Fact label="Dates each year" value={c.recurring} evidence={c.evidence.recurring} />
                 )}
               </dl>
               {/* A condition on the call, in our words. */}

@@ -1,6 +1,7 @@
-/* The finder's table on /: its rows, their reflow at mid and phone widths, and the pieces src/lib/finder.ts
-   draws at runtime (chips, dividers, links in messages). Component classes rather than utilities: 93 rows
-   repeat them, and the rules switch together at each container width. Only / loads this file. */
+/* The finder's table on /: shadcn/ui Table in a Card, its reflow to one card per row on phones, and the
+   pieces src/lib/finder.ts draws at runtime (chips, dividers, links in messages). Component classes rather
+   than utilities: 93 rows repeat them, and the rules switch together at each container width. Only /
+   loads this file. Hover styles sit behind (hover: hover), so a tap on a phone leaves nothing behind. */
 @layer theme, base, components, utilities;
 
 @layer components {
@@ -14,40 +15,57 @@
     text-underline-offset: 0.18em;
     cursor: pointer;
   }
+
+  /* An active filter: an outline badge that removes itself. */
   .chip {
     display: inline-flex;
     align-items: center;
-    gap: 0.35rem;
-    min-height: 1.85rem;
-    padding: 0.1rem 0.35rem 0.1rem 0.6rem;
-    border: 1.5px solid var(--control-edge);
-    border-radius: 2px;
-    background: var(--surface);
-    color: var(--ink);
+    gap: 0.25rem;
+    min-height: 1.75rem;
+    padding: 0.125rem 0.375rem 0.125rem 0.75rem;
+    border: 1px solid var(--border);
+    border-radius: 9999px;
+    background: var(--card);
+    color: var(--foreground);
     font: inherit;
-    font-size: 0.875rem;
+    font-size: var(--text-sm);
+    font-weight: 500;
+    line-height: 1.3;
     cursor: pointer;
-  }
-  .chip:hover {
-    border-color: var(--ink);
   }
   .chip__x {
     display: inline-grid;
     place-items: center;
     width: 1.1rem;
     height: 1.1rem;
-    color: var(--ink-2);
+    color: var(--muted-foreground);
   }
   .chip--clear {
     border-color: transparent;
     background: none;
     color: var(--link);
     text-decoration: underline;
+    text-underline-offset: 0.18em;
+  }
+  @media (hover: hover) {
+    .chip:not(.chip--clear):hover {
+      background: var(--muted);
+    }
   }
 
   /* ---------- The table (wide: four columns) ---------- */
+  /* The Card. overflow: clip (not hidden) rounds the corners without making a scroll box, so the header
+     still sticks to the page. */
+  .tbl-wrap {
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    background: var(--card);
+    overflow: clip;
+  }
   .tbl {
     width: 100%;
+    /* The last row's rule tucks under the card's own edge. */
+    margin-bottom: -1px;
     table-layout: fixed;
     border-collapse: separate;
     border-spacing: 0;
@@ -59,62 +77,68 @@
     position: sticky;
     top: 0;
     z-index: 3;
-    padding: 0.5rem;
-    background: var(--ground);
-    border-bottom: 2px solid var(--ink);
-    font-size: 0.8125rem;
-    font-weight: 700;
-    letter-spacing: 0.05em;
-    text-transform: uppercase;
-    color: var(--ink-2);
+    height: 2.5rem;
+    padding: 0 0.75rem;
+    background: var(--card);
+    border-bottom: 1px solid var(--border);
+    font-size: var(--text-sm);
+    font-weight: 500;
+    color: var(--muted-foreground);
     text-align: left;
+    vertical-align: middle;
     white-space: nowrap;
-  }
-  .tbl thead .h-sub {
-    font-weight: 400;
   }
   .tbl thead button {
     display: inline-flex;
     align-items: center;
-    gap: 0.3rem;
-    margin: -0.3rem -0.35rem;
-    padding: 0.3rem 0.35rem;
+    gap: 0.375rem;
+    height: 2rem;
+    margin-inline: -0.5rem;
+    padding: 0 0.5rem;
     border: 0;
-    border-radius: 2px;
+    border-radius: var(--radius-md);
     background: none;
     color: inherit;
     font: inherit;
-    letter-spacing: inherit;
-    text-transform: inherit;
     cursor: pointer;
   }
-  .tbl thead button:hover {
-    color: var(--ink);
-    background: var(--sunk);
+  @media (hover: hover) {
+    .tbl thead button:hover {
+      color: var(--foreground);
+      background: var(--muted);
+    }
   }
   .tbl thead .arrow {
-    width: 0.6rem;
-    height: 0.6rem;
-    background: currentColor;
-    opacity: 0.35;
-    clip-path: polygon(50% 0, 100% 40%, 0 40%, 0 60%, 100% 60%, 50% 100%);
+    display: inline-grid;
+  }
+  .tbl thead .arrow > svg {
+    grid-area: 1 / 1;
+    width: 0.875rem;
+    height: 0.875rem;
+  }
+  .tbl thead .i-none {
+    opacity: 0.6;
+  }
+  .tbl thead .i-asc,
+  .tbl thead .i-desc {
+    display: none;
   }
   .tbl thead th[aria-sort] > button:not(.h-alt),
   .tbl thead button[data-active] {
-    color: var(--ink);
+    color: var(--foreground);
   }
-  .tbl thead th[aria-sort='ascending'] > button:not(.h-alt) .arrow,
-  .tbl thead button[data-active='ascending'] .arrow {
-    opacity: 1;
-    clip-path: polygon(50% 15%, 100% 75%, 0 75%);
+  .tbl thead th[aria-sort] > button:not(.h-alt) .i-none,
+  .tbl thead button[data-active] .i-none {
+    display: none;
   }
-  .tbl thead th[aria-sort='descending'] > button:not(.h-alt) .arrow,
-  .tbl thead button[data-active='descending'] .arrow {
-    opacity: 1;
-    clip-path: polygon(0 25%, 100% 25%, 50% 85%);
+  .tbl thead th[aria-sort='ascending'] > button:not(.h-alt) .i-asc,
+  .tbl thead button[data-active='ascending'] .i-asc,
+  .tbl thead th[aria-sort='descending'] > button:not(.h-alt) .i-desc,
+  .tbl thead button[data-active='descending'] .i-desc {
+    display: block;
   }
   .h-route {
-    margin-right: 0.45rem;
+    margin-right: 0.75rem;
   }
   .h-alt {
     display: none !important;
@@ -126,24 +150,19 @@
     width: 9.5rem;
   }
   .h-rc {
-    width: 10.75rem;
+    width: 11.5rem;
   }
 
   .row {
     position: relative;
   }
   .row > td {
-    padding: 0.55rem 0.5rem;
+    padding: 0.875rem 0.75rem;
     vertical-align: top;
-    border-bottom: 1px solid color-mix(in oklch, var(--rule) 60%, transparent);
+    border-bottom: 1px solid var(--border);
   }
-  /* Quiet zebra over the rows that are showing. */
-  tbody > .row:nth-child(even of .row:not([hidden])) > td {
-    background: color-mix(in oklch, var(--sunk) 55%, transparent);
-  }
-  .row:hover > td,
-  .row:has(.name:focus-visible) > td {
-    background: var(--surface) !important;
+  .row:has(.name:focus-visible) {
+    background: color-mix(in oklch, var(--muted) 50%, transparent);
   }
   .name {
     display: block;
@@ -159,108 +178,106 @@
     inset: 0;
     z-index: 1;
   }
-  .row:hover .name,
   .name:focus-visible {
+    outline-offset: 1px;
     text-decoration: underline;
     text-decoration-thickness: 2px;
     text-underline-offset: 0.18em;
   }
-  .name:focus-visible {
-    outline-offset: 1px;
+  @media (hover: hover) {
+    .row:hover {
+      background: color-mix(in oklch, var(--muted) 50%, transparent);
+    }
+    .row:hover .name {
+      text-decoration: underline;
+      text-decoration-thickness: 2px;
+      text-underline-offset: 0.18em;
+    }
   }
   .sub {
     display: block;
     min-width: 0;
-    margin-top: 0.1rem;
-    font-size: 0.9375rem;
+    margin-top: 0.125rem;
+    font-size: var(--text-sm);
     line-height: 1.4;
-    color: var(--ink-2);
+    color: var(--muted-foreground);
   }
   .sub__route {
     display: none;
-    flex: none;
-    padding-left: 0.2rem;
-  }
-  .sub__route[data-route='intermediary'],
-  .sub__route[data-route='invitation_only'],
-  .route[data-route='intermediary'],
-  .route[data-route='invitation_only'] {
-    font-weight: 700;
-    color: var(--ink);
   }
   .kind {
     display: block;
-    margin-top: 0.1rem;
-    font-size: 0.875rem;
-    font-weight: 700;
+    margin-top: 0.25rem;
+    font-size: var(--text-sm);
+    font-weight: 600;
     color: var(--aging-text);
   }
 
+  /* Line 1: the status and its date. Line 2: days left, amber within a week. Then the funder's words. */
   .dl {
-    display: flex;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr);
     align-items: center;
-    gap: 0.2rem 0.5rem;
-  }
-  .dl .tape {
-    min-height: 1.35rem;
-    padding-block: 0;
-    font-size: 0.8125rem;
+    gap: 0.25rem 0.5rem;
   }
   .dl__date {
     font-weight: 600;
-    white-space: nowrap;
   }
   .dl__muted {
-    color: var(--ink-2);
+    color: var(--muted-foreground);
   }
   .dl__left {
-    font-size: 0.875rem;
-    font-weight: 700;
-    white-space: nowrap;
+    grid-column: 1 / -1;
+    justify-self: start;
+    font-size: var(--text-sm);
+    color: var(--muted-foreground);
   }
   .dl__left[data-soon] {
-    padding: 0 0.3rem;
-    border-radius: 2px;
-    background: var(--aging);
-    color: var(--aging-ink);
+    padding: 0.125rem 0.5rem;
+    border-radius: var(--radius-md);
+    background: var(--warn);
+    color: var(--warn-ink);
+    font-size: var(--text-xs);
+    font-weight: 500;
+    line-height: 1.35;
   }
   .dl__words {
     display: block;
-    margin-top: 0.2rem;
-    font-size: 0.9375rem;
-    line-height: 1.35;
-    color: var(--ink-2);
+    margin-top: 0.375rem;
+    font-size: var(--text-sm);
+    line-height: 1.4;
+    color: var(--muted-foreground);
     overflow-wrap: anywhere;
   }
   .amt {
     display: block;
-    font-size: 0.875rem;
     font-weight: 600;
   }
   .amt--none {
     font-weight: 400;
-    color: var(--ink-2);
+    color: var(--muted-foreground);
   }
   .amt__note {
     display: block;
-    margin-top: 0.1rem;
-    font-size: 0.8125rem;
-    line-height: 1.3;
-    color: var(--ink-2);
+    margin-top: 0.125rem;
+    font-size: var(--text-xs);
+    line-height: 1.35;
+    color: var(--muted-foreground);
   }
   .route {
     display: block;
-    font-size: 0.875rem;
-    color: var(--ink-2);
   }
   .c-rc,
   .c-amount {
     position: relative;
     z-index: 2;
   }
+  .stamp {
+    font-size: var(--text-xs);
+    color: var(--muted-foreground);
+  }
   .stamp--main {
-    margin-top: 0.25rem;
+    margin-top: 0.5rem;
   }
   .stamp--mid {
     display: none;
@@ -268,51 +285,46 @@
 
   /* The next seven days and after, while the table is sorted by deadline. */
   .divider td {
-    padding: 0.3rem 0.5rem;
-    border-bottom: 1px dashed var(--rule-strong);
-    font-size: 0.8125rem;
-    font-weight: 700;
-    letter-spacing: 0.04em;
-    text-transform: uppercase;
-    color: var(--ink-2);
+    padding: 0.4rem 0.75rem;
+    border-bottom: 1px solid var(--border);
+    background: color-mix(in oklch, var(--muted) 60%, transparent);
+    font-size: var(--text-xs);
+    font-weight: 600;
+    color: var(--muted-foreground);
   }
   .divider--soon td {
     color: var(--aging-text);
   }
   .divider--later td {
-    border-top: 1.5px dashed var(--rule-strong);
-    border-bottom: 0;
+    color: var(--muted-foreground);
   }
 
   /* Not open now: secondary rows under their own header. */
   .later-head th {
-    padding: 1.5rem 0.5rem 0.5rem;
-    border-bottom: 2px solid var(--rule-strong);
+    padding: 1.5rem 0.75rem 0.75rem;
+    border-bottom: 1px solid var(--border);
     text-align: left;
     font-weight: 400;
   }
   .later-head__title {
-    font-weight: 800;
+    font-weight: 700;
     font-size: 1rem;
   }
   .later-head__hint {
     margin-inline: 0.5rem 0.75rem;
-    font-size: 0.875rem;
-    color: var(--ink-2);
+    font-size: var(--text-sm);
+    color: var(--muted-foreground);
   }
   .later-head .linkish {
-    font-size: 0.875rem;
+    font-size: var(--text-sm);
   }
   .later-rows .name {
     font-weight: 600;
-    color: color-mix(in oklch, var(--link) 75%, var(--ink-2));
+    color: color-mix(in oklch, var(--link) 75%, var(--muted-foreground));
   }
   .later-rows .amt {
     font-weight: 400;
-    color: var(--ink-2);
-  }
-  .later-rows .row > td {
-    background: none !important;
+    color: var(--muted-foreground);
   }
 
   /* ---------- Mid width (about 640 to 830px of table): three columns ---------- */
@@ -328,40 +340,49 @@
     }
     .h-alt {
       display: inline-flex !important;
-      margin-left: 0.6rem !important;
+      margin-left: 0.75rem !important;
     }
     .h-dl {
       width: 13rem;
     }
     .h-amount {
-      width: 10.75rem;
+      width: 11rem;
     }
     .sub__route {
       display: block;
-      padding-left: 0;
-      font-size: 0.875rem;
-    }
-    .sub__route > [aria-hidden] {
-      display: none;
+      margin-top: 0.375rem;
     }
     .stamp--mid {
       display: inline-flex;
-      margin-top: 0.3rem;
+      margin-top: 0.375rem;
     }
   }
 
-  /* ---------- Phone: dense rows, in reading order ---------- */
+  /* ---------- Phone: one card per row, in reading order ---------- */
   @container tbl (max-width: 39.99rem) {
+    .tbl-wrap {
+      border: 0;
+      border-radius: 0;
+      background: none;
+      overflow: visible;
+    }
     .tbl,
     .tbl tbody {
       display: block;
     }
+    .tbl {
+      margin-bottom: 0;
+    }
+    .tbl tbody {
+      display: grid;
+      gap: 0.75rem;
+    }
+    .tbl tbody + tbody {
+      margin-top: 0.75rem;
+    }
     /* Sorting lives in the filter sheet on phones, so the header leaves the tab order too. */
     .tbl thead {
       display: none;
-    }
-    .tbl {
-      border-top: 2px solid var(--ink);
     }
     .row {
       display: grid;
@@ -369,6 +390,7 @@
       grid-template-areas:
         'name name'
         'sub sub'
+        'route route'
         'kind kind'
         'dl dl'
         'words words'
@@ -376,19 +398,14 @@
         'amount stamp';
       align-items: center;
       column-gap: 0.75rem;
-      padding: 0.65rem 0.5rem 0.7rem;
-      border-bottom: 1px solid var(--rule);
+      padding: 1rem;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      background: var(--card);
     }
     .row > td {
       padding: 0;
       border: 0;
-      background: none !important;
-    }
-    tbody > .row:nth-child(even of .row:not([hidden])) {
-      background: color-mix(in oklch, var(--sunk) 55%, transparent);
-    }
-    .row:hover {
-      background: var(--surface);
     }
     .c-prog,
     .c-dl,
@@ -405,31 +422,19 @@
     }
     .sub {
       grid-area: sub;
-      margin-top: 0.15rem;
+      margin-top: 0.25rem;
     }
     .sub__route {
+      grid-area: route;
       display: block;
-      padding-left: 0;
-      font-size: 0.875rem;
-    }
-    .sub__route > [aria-hidden] {
-      display: none;
+      margin-top: 0.375rem;
     }
     .kind {
       grid-area: kind;
     }
     .dl {
       grid-area: dl;
-      margin-top: 0.4rem;
-      font-size: 0.9375rem;
-    }
-    .dl .tape {
-      min-height: 1.25rem;
-      padding: 0 0.75rem 0 0.4rem;
-      font-size: 0.8125rem;
-    }
-    .dl .tape[data-state='none'] {
-      padding-right: 0.4rem;
+      margin-top: 0.75rem;
     }
     /* Our summary of a window and the funder's quote can both show: each gets its own row. */
     .dl__words.dl__words--quote {
@@ -437,16 +442,10 @@
     }
     .dl__words {
       grid-area: words;
-      margin-top: 0.2rem;
-      white-space: normal;
-      line-height: 1.35;
     }
     .c-amount {
       grid-area: amount;
-      margin-top: 0.35rem;
-    }
-    .amt {
-      font-size: 0.9375rem;
+      margin-top: 0.75rem;
     }
     .stamp--mid,
     .route {
@@ -455,14 +454,16 @@
     .stamp--main {
       grid-area: stamp;
       align-self: start;
-      margin-top: 0.45rem;
+      margin-top: 0.875rem;
     }
-    .divider {
+    .divider,
+    .divider td {
       display: block;
     }
     .divider td {
-      display: block;
-      padding-inline: 0.5rem;
+      padding: 0.25rem 0.25rem 0;
+      border: 0;
+      background: none;
     }
     .later-head,
     .later-head tr,
@@ -470,14 +471,12 @@
       display: block;
     }
     .later-head th {
-      padding-inline: 0;
+      padding: 1rem 0.25rem 0;
+      border: 0;
     }
     .later-head__hint {
       display: block;
-      margin: 0.1rem 0 0;
-    }
-    .later-rows .row {
-      background: none !important;
+      margin: 0.125rem 0 0;
     }
   }
 }

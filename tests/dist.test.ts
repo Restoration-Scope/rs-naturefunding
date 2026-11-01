@@ -61,6 +61,19 @@ describe('finder DOM contract (src/lib/finder.ts)', () => {
     }
   })
 
+  test('one status vocabulary in the status column; the route always in the Route column', () => {
+    const states: Record<string, string> = { open: 'Open', rolling: 'Rolling', upcoming: 'Upcoming', closed: 'Closed', none: 'No call found' }
+    for (const r of rows) {
+      const status = r.querySelector('.dl > .status')
+      expect(status?.getAttribute('data-state'), r.dataset.name).toBe(r.dataset.state!)
+      expect(norm(status?.textContent ?? ''), r.dataset.name).toBe(states[r.dataset.state!]!)
+      for (const cell of ['.route', '.sub__route']) {
+        expect(r.querySelector(`${cell} [data-route]`)?.getAttribute('data-route'), `${r.dataset.name} ${cell}`).toBe(r.dataset.access!)
+      }
+    }
+    for (const q of d.querySelectorAll('[data-quick], [data-later-toggle]')) expect(q.getAttribute('aria-pressed'), q.textContent!).toBe('false')
+  })
+
   test('every literal selector finder.ts queries is in the page', () => {
     // Literal selectors passed to $(), querySelector(All)() and closest(); templated ones are checked below.
     const literal = [...finderSource.matchAll(/(?:\$<[^>]+>|querySelector(?:All)?(?:<[^>]+>)?|closest(?:<[^>]+>)?)\(\s*'([^']+)'/g)].map((m) => m[1]!)
@@ -109,7 +122,7 @@ describe('finder DOM contract (src/lib/finder.ts)', () => {
 
   test('the classes finder.ts creates are styled', () => {
     const css = files.filter((f) => f.endsWith('.css')).map(read).join('\n') + read('index.html')
-    for (const c of ['chip', 'chip__x', 'chip--clear', 'divider', 'divider--soon', 'divider--later', 'tape', 'dl__muted', 'linkish']) {
+    for (const c of ['chip', 'chip__x', 'chip--clear', 'divider', 'divider--soon', 'divider--later', 'status', 'dl__muted', 'linkish']) {
       expect(css.includes(`.${c}`), `.${c} has no CSS`).toBe(true)
     }
   })

@@ -2,25 +2,26 @@ import { cva, type VariantProps } from 'class-variance-authority'
 import type * as React from 'react'
 import { cn } from '@/lib/utils'
 
-// shadcn/ui Badge on the site's palette. `tape` (the status on flagging tape) and `tag` (the checked
-// stamp) keep their look in global.css, because src/lib/finder.ts writes tapes and ages stamps at runtime.
-// Their CSS sets their own display, so the shared layout classes go only on the other variants: as
-// utilities they would beat the finder's rules that hide a stamp at some widths.
-const pill = 'inline-flex w-fit shrink-0 items-center whitespace-nowrap'
+// shadcn/ui Badge on the site's palette. `status` (open, rolling…) and `tag` (the checked date) take their
+// look from classes in global.css, because src/lib/finder.ts writes a status and ages tags at runtime. Their
+// CSS sets their own display, so the shared layout classes go only on the other variants: as utilities they
+// would beat the finder's rules that hide a tag at some widths.
+const badge =
+  'inline-flex w-fit shrink-0 items-center gap-1.5 rounded-md px-2 py-0.5 text-xs leading-[1.35] font-medium whitespace-nowrap tabular-nums [&>svg]:size-3.5 [&>svg]:shrink-0'
 const badgeVariants = cva('', {
   variants: {
     variant: {
-      tape: 'tape',
+      status: 'status',
       tag: 'tag',
-      /** A count on the flagging-tape lime: how many filters are on. */
-      count: `${pill} rounded-xs bg-tape-open px-[0.4rem] font-mono text-xs text-tape-ink tabular-nums`,
-      /** A count on a quiet chip. */
-      muted: `${pill} rounded-xs bg-sunk px-[0.45rem] font-mono text-sm tabular-nums shadow-[inset_0_0_0_1px_var(--rule)]`,
-      /** A route, not a status: outlined, unlike the tape. */
-      outline: `${pill} rounded-xs border border-rule-strong px-[0.4rem] text-sm font-semibold`,
+      /** How many filters are on. */
+      count: `${badge} min-w-5 justify-center rounded-full bg-primary px-1.5 font-semibold text-primary-foreground`,
+      /** A quiet fill: routes that aren't "apply directly", counts. */
+      secondary: `${badge} bg-secondary text-secondary-foreground`,
+      /** Amber: a deadline within a week. */
+      warn: `${badge} bg-warn text-warn-ink`,
     },
   },
-  defaultVariants: { variant: 'count' },
+  defaultVariants: { variant: 'secondary' },
 })
 
 type Props = React.ComponentProps<'span'> & VariantProps<typeof badgeVariants> & { state?: string }

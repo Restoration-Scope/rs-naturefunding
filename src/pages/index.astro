@@ -1,6 +1,7 @@
 ---
 import Base from '../layouts/Base.astro'
 import Row from '../components/FinderRow.astro'
+import { ArrowDown, ArrowUp, ChevronDown, ChevronsUpDown, SlidersHorizontal, X } from 'lucide-react'
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
@@ -24,24 +25,27 @@ const usedApproaches = Object.entries(approachLabels).filter(([k]) => listings.s
 const usedApplicants = Object.entries(applicantLabels).filter(([k]) => listings.some((l) => l.p.applicant_types?.includes(k as never)))
 const states: State[] = ['open', 'rolling', 'upcoming', 'none', 'closed']
 const routes = (['direct', 'intermediary', 'invitation_only'] as const).map((k) => [k, accessLabels[k]])
-const num = 'font-mono tabular-nums'
+const num = 'tabular-nums'
 const skipLink = 'absolute -top-16 left-4 z-10 rounded-md bg-surface px-3.5 py-2 text-ink focus:top-3'
 // A filter group folds; its count shows how many of its filters are on.
 const group = 'group/grp border-b border-rule'
 const groupTitle =
-  "flex min-h-10 cursor-pointer list-none items-center gap-2 py-1 text-xs font-bold tracking-[0.04em] text-ink-2 uppercase hover:text-ink after:ml-auto after:size-[0.4rem] after:border-r-[1.75px] after:border-b-[1.75px] after:border-current after:content-[''] after:[transform:translateY(-20%)_rotate(45deg)] group-open/grp:after:[transform:translateY(20%)_rotate(-135deg)] [&::-webkit-details-marker]:hidden"
-const groupCount = 'px-[0.35rem] tracking-normal'
+  "flex min-h-10 cursor-pointer list-none items-center gap-2 py-1 text-sm font-semibold text-foreground after:ml-auto after:text-muted-foreground after:size-[0.4rem] after:border-r-[1.75px] after:border-b-[1.75px] after:border-current after:content-[''] after:[transform:translateY(-20%)_rotate(45deg)] group-open/grp:after:[transform:translateY(20%)_rotate(-135deg)] [&::-webkit-details-marker]:hidden"
+const groupCount = ''
 const groupHint = 'mt-[0.3rem] text-xs leading-[1.4] text-ink-2'
 const opt =
   'group/opt flex min-h-[1.9rem] cursor-pointer items-center gap-2 text-sm leading-[1.3] has-disabled:cursor-default has-disabled:text-ink-2 max-xl:min-h-10 max-xl:text-md'
 const optInput = 'm-0 size-4 flex-none accent-shell dark:accent-tape-open'
 // .opt__text is what src/lib/finder.ts reads; the class carries no style.
 const optText = 'opt__text flex-1 underline-offset-[0.18em] group-[:hover:not(:has(input:disabled))]/opt:underline'
-const optN = 'font-mono text-xs text-ink-2 tabular-nums'
-// The quick filters in the results summary: underlined counts that switch a filter on.
+const optN = 'text-xs text-muted-foreground tabular-nums'
+// The quick filters in the results summary: a row of shadcn toggles (outline Button, rounded-full), each
+// with its count in a Badge. Pressed, they take the primary fill.
 const quick =
-  'inline-block min-h-7 cursor-pointer rounded-sm px-[0.35rem] py-[0.2rem] leading-[1.35rem] whitespace-nowrap underline decoration-rule-strong decoration-1 underline-offset-[0.25em] hover:decoration-current disabled:cursor-default disabled:text-ink-2 disabled:no-underline aria-pressed:no-underline @max-[40rem]/tbl:px-[0.3rem]'
-const quickOn = 'text-ink aria-pressed:bg-tape-open aria-pressed:text-tape-ink'
+  'group/q inline-flex h-8 shrink-0 cursor-pointer snap-start items-center gap-1.5 rounded-full border border-border bg-card pr-1.5 pl-3 text-sm font-medium whitespace-nowrap text-foreground shadow-xs hover:bg-muted disabled:cursor-default disabled:opacity-50 aria-pressed:border-primary aria-pressed:bg-primary aria-pressed:text-primary-foreground'
+const quickNBase =
+  'inline-flex min-w-5 justify-center rounded-full px-1.5 text-xs leading-[1.35] font-medium tabular-nums group-aria-pressed/q:bg-primary-foreground/15 group-aria-pressed/q:text-primary-foreground'
+const quickN = `${quickNBase} bg-secondary text-secondary-foreground`
 const description =
   'A free directory of funding for nature restoration and conservation. Every deadline, amount and eligibility rule links to the funder’s own page, with the words it rests on and the date we read it.'
 
@@ -108,12 +112,12 @@ const jsonLd = [
         <Input id="q" name="q" type="search" placeholder="Search funder or place" autoComplete="off" />
         <button
           type="button"
-          class="inline-flex min-h-10 cursor-pointer items-center gap-[0.4rem] rounded-md border-[1.5px] border-input bg-surface px-[0.8rem] text-md font-bold text-ink xl:hidden!"
+          class="inline-flex min-h-10 cursor-pointer items-center gap-2 rounded-md border border-input bg-card px-3 text-md font-semibold text-foreground shadow-xs hover:bg-muted xl:hidden!"
           data-sheet-open
           aria-controls="filters"
           aria-expanded="false"
         >
-          <svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M2 4h12M4.5 8h7M7 12h2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" /></svg>
+          <SlidersHorizontal className="size-4" aria-hidden="true" />
           Filters <Badge variant="count" data-filter-count="" hidden />
         </button>
       </div>
@@ -127,8 +131,8 @@ const jsonLd = [
       >
         <div class="flex items-center justify-between border-b border-rule pt-[0.6rem] pr-2 pb-[0.4rem] pl-4 xl:hidden!">
           <h2 class="text-lg font-bold">Filters</h2>
-          <button type="button" class="grid size-11 cursor-pointer place-items-center text-ink" data-sheet-close aria-label="Close filters">
-            <svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><path d="M2 2l10 10M12 2L2 12" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" /></svg>
+          <button type="button" class="grid size-11 cursor-pointer place-items-center rounded-md text-foreground hover:bg-muted" data-sheet-close aria-label="Close filters">
+            <X className="size-5" aria-hidden="true" />
           </button>
         </div>
 
@@ -147,11 +151,15 @@ const jsonLd = [
             <div class="pb-[0.6rem]">
               {
                 states.map((s) => (
-                  <label class={opt}>
-                    <input class={optInput} type="checkbox" name="status" value={s} />
-                    <span class={optText}>{stateFilterLabels[s]}</span>
-                    <span class={optN} data-n={`status:${s}`}>{count(s)}</span>
-                  </label>
+                  <>
+                    {/* The counts are honest totals; these two sit folded on the page until asked for. */}
+                    {s === 'none' && <p class="mt-2 mb-1 border-t border-border pt-2 text-xs text-muted-foreground">Folded under “Not open now”</p>}
+                    <label class={opt}>
+                      <input class={optInput} type="checkbox" name="status" value={s} />
+                      <span class={optText}>{stateFilterLabels[s]}</span>
+                      <span class={optN} data-n={`status:${s}`}>{count(s)}</span>
+                    </label>
+                  </>
                 ))
               }
             </div>
@@ -261,53 +269,53 @@ const jsonLd = [
 
     {/* The results are a container: the summary, the bar and the table reflow by their own width. */}
     <section class="results @container/tbl min-w-0" id="results" tabindex="-1" aria-labelledby="summary">
-      <div class="flex flex-wrap items-center justify-between gap-x-4 gap-y-[0.35rem] pb-[0.6rem] @max-[40rem]/tbl:gap-y-[0.15rem] @max-[40rem]/tbl:pb-[0.4rem]">
+      <div class="flex flex-wrap items-center justify-between gap-x-4 gap-y-2 pb-3 @max-[40rem]/tbl:gap-y-1.5 @max-[40rem]/tbl:pb-2">
         {/* The summary is the quick filter. */}
         <h2
           id="summary"
-          class="-ml-[0.35rem] flex flex-wrap items-center gap-x-[0.4rem] gap-y-[0.3rem] text-base leading-[1.3] font-normal [text-wrap:initial] @max-[40rem]/tbl:gap-x-[0.1rem] @max-[40rem]/tbl:gap-y-0 @max-[40rem]/tbl:text-md"
+          class="flex flex-wrap items-center gap-2 text-base leading-[1.3] font-normal [text-wrap:initial] @max-[40rem]/tbl:mx-[calc(var(--gutter)*-1)] @max-[40rem]/tbl:snap-x @max-[40rem]/tbl:scroll-px-(--gutter) @max-[40rem]/tbl:flex-nowrap @max-[40rem]/tbl:overflow-x-auto @max-[40rem]/tbl:px-(--gutter) @max-[40rem]/tbl:py-1 @max-[40rem]/tbl:[scrollbar-width:none]"
           data-summary
         >
-          <button type="button" class:list={[quick, quickOn]} data-quick="status:open" aria-pressed="false"><b class={num} data-qn="open">{count('open')}</b> <span data-ql="open">open now</span></button>
-          <button type="button" class:list={[quick, 'text-ink aria-pressed:bg-aging aria-pressed:text-tape-ink [&_b]:text-aging-text aria-pressed:[&_b]:text-inherit']} data-quick="within:7" aria-pressed="false"><b class={num} data-qn="soon">0</b> closing within 7 days</button>
-          <button type="button" class:list={[quick, quickOn]} data-quick="status:rolling" aria-pressed="false"><b class={num} data-qn="rolling">{count('rolling')}</b> rolling</button>
-          <button type="button" class:list={[quick, quickOn]} data-quick="status:upcoming" aria-pressed="false"><b class={num} data-qn="upcoming">{count('upcoming')}</b> upcoming</button>
+          <button type="button" class={quick} data-quick="status:open" aria-pressed="false"><span data-ql="open">Open now</span> <b class={quickN} data-qn="open">{count('open')}</b></button>
+          <button type="button" class={quick} data-quick="within:7" aria-pressed="false">Closing within 7 days <b class={`${quickNBase} bg-warn text-warn-ink`} data-qn="soon">0</b></button>
+          <button type="button" class={quick} data-quick="status:rolling" aria-pressed="false">Rolling <b class={quickN} data-qn="rolling">{count('rolling')}</b></button>
+          <button type="button" class={quick} data-quick="status:upcoming" aria-pressed="false">Upcoming <b class={quickN} data-qn="upcoming">{count('upcoming')}</b></button>
+          <span class="mx-1 h-5 w-px shrink-0 bg-border" aria-hidden="true"></span>
           <button
             type="button"
-            class:list={[quick, 'group/later text-ink-2 aria-pressed:bg-sunk aria-pressed:text-ink aria-pressed:shadow-[inset_0_0_0_1px_var(--rule-strong)]']}
+            class="group/later inline-flex h-8 shrink-0 cursor-pointer snap-start items-center gap-1.5 rounded-md px-2.5 text-sm font-medium whitespace-nowrap text-muted-foreground hover:bg-muted hover:text-foreground disabled:cursor-default disabled:opacity-50 aria-pressed:text-foreground"
             data-later-toggle
             aria-pressed="false"
             aria-controls="later-head later-rows"
           >
-            <span
-              class="mr-[0.4rem] ml-[0.1rem] inline-block size-[0.4rem] border-r-[1.75px] border-b-[1.75px] border-current [transform:translateY(-0.12em)_rotate(45deg)] group-aria-pressed/later:[transform:translateY(0.12em)_rotate(-135deg)]"
-              aria-hidden="true"
-            ></span><span data-later-verb>Show</span> <b class={num} data-qn="later">{later.length}</b> not open now
+            <ChevronDown className="size-4 transition-transform group-aria-pressed/later:rotate-180" aria-hidden="true" /><span data-later-verb>Show</span> <b class:list={[num, 'font-semibold']} data-qn="later">{later.length}</b> not open now
           </button>
         </h2>
-        <p class="ml-auto flex flex-wrap items-baseline gap-x-3 text-sm text-ink-2 @max-[40rem]/tbl:ml-0">
-          <span class="whitespace-nowrap text-ink" data-shown>{now.length} of {sorted.length} shown</span>
+        <p class="ml-auto flex flex-wrap items-baseline gap-x-3 text-sm text-muted-foreground @max-[40rem]/tbl:ml-0">
+          <span class="whitespace-nowrap text-foreground tabular-nums" data-shown>{now.length} of {sorted.length} shown</span>
           <span data-sort-line>Open calls first, soonest deadline first</span>
         </p>
       </div>
       <p class="sr-only" aria-live="polite" data-live></p>
-      <div class="flex flex-wrap gap-[0.35rem] pb-[0.6rem]" data-chips hidden></div>
+      <div class="flex flex-wrap gap-1.5 pb-3" data-chips hidden></div>
 
+      {/* shadcn/ui Table in a Card; on phones each row becomes its own card (src/styles/finder.css). */}
+      <div class="tbl-wrap">
       <Table className="tbl">
         <TableCaption className="sr-only">Funding programmes. Sortable by deadline, amount and date checked.</TableCaption>
         <TableHeader>
           <TableRow>
-            <TableHead scope="col" className="h-prog">Programme <span class="h-sub">and funder</span></TableHead>
+            <TableHead scope="col" className="h-prog">Programme and funder</TableHead>
             <TableHead scope="col" className="h-dl" aria-sort="ascending" data-col="deadline">
-              <button type="button" data-sort="deadline">Status and deadline <span class="arrow" aria-hidden="true"></span></button>
+              <button type="button" data-sort="deadline">Status and deadline <span class="arrow" aria-hidden="true"><ChevronsUpDown className="i-none" /><ArrowUp className="i-asc" /><ArrowDown className="i-desc" /></span></button>
             </TableHead>
             <TableHead scope="col" className="h-amount" data-col="amount">
-              <button type="button" data-sort="amount">Amount <span class="arrow" aria-hidden="true"></span></button>
-              <button type="button" class="h-alt" data-sort="checked" data-alt-for="checked">Checked <span class="arrow" aria-hidden="true"></span></button>
+              <button type="button" data-sort="amount">Amount <span class="arrow" aria-hidden="true"><ChevronsUpDown className="i-none" /><ArrowUp className="i-asc" /><ArrowDown className="i-desc" /></span></button>
+              <button type="button" class="h-alt" data-sort="checked" data-alt-for="checked">Checked <span class="arrow" aria-hidden="true"><ChevronsUpDown className="i-none" /><ArrowUp className="i-asc" /><ArrowDown className="i-desc" /></span></button>
             </TableHead>
             <TableHead scope="col" className="h-rc" data-col="checked">
-              <span class="h-route">Route ·</span>
-              <button type="button" data-sort="checked">Checked <span class="arrow" aria-hidden="true"></span></button>
+              <span class="h-route">Route</span>
+              <button type="button" data-sort="checked">Checked <span class="arrow" aria-hidden="true"><ChevronsUpDown className="i-none" /><ArrowUp className="i-asc" /><ArrowDown className="i-desc" /></span></button>
             </TableHead>
           </TableRow>
         </TableHeader>
@@ -327,17 +335,18 @@ const jsonLd = [
           {later.map((l) => <Row listing={l} />)}
         </TableBody>
       </Table>
+      </div>
 
       <button
         type="button"
-        class="mt-5 flex min-h-12 w-full cursor-pointer flex-wrap items-center justify-between gap-x-4 gap-y-1 rounded-md border-[1.5px] border-input bg-surface px-[0.9rem] py-[0.6rem] text-left text-ink hover:border-ink"
+        class="mt-4 flex min-h-12 w-full cursor-pointer flex-wrap items-center justify-between gap-x-4 gap-y-1 rounded-lg border border-border bg-card px-4 py-[0.6rem] text-left text-foreground shadow-xs hover:bg-muted"
         data-later-toggle
         data-endfold
         aria-controls="later-head later-rows"
         aria-pressed="false"
       >
-        <span class="font-extrabold">Not open now</span>
-        <span class="font-bold text-link underline underline-offset-[0.18em]">Show all <b class={num} data-qn-end>{later.length}</b></span>
+        <span class="font-bold">Not open now</span>
+        <span class="font-semibold text-link underline underline-offset-[0.18em]">Show all <b class={num} data-qn-end>{later.length}</b></span>
       </button>
 
       <div class="px-2 py-8" data-empty hidden>

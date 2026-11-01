@@ -89,11 +89,11 @@ export function initTableFinder() {
         state = 'closed'
         el.dataset.state = state
         const dl = el.querySelector<HTMLElement>('.dl')
-        if (dl) dl.innerHTML = `<span class="tape" data-state="closed">Closed</span><span class="dl__muted">Closed ${shortDate(deadline)}</span>`
+        if (dl) dl.innerHTML = `<span class="status" data-state="closed">Closed</span><span class="dl__muted">${shortDate(deadline)}</span>`
         el.querySelector('[data-words]')?.remove()
       } else if (leftEl) {
         leftEl.textContent = left === 0 ? 'Closes today' : left === 1 ? '1 day left' : `${left} days left`
-        leftEl.toggleAttribute('data-soon', left < 7)
+        leftEl.toggleAttribute('data-soon', left <= 7)
       }
     }
     const split = (s?: string) => (s ? s.split(' ') : [])
@@ -353,7 +353,7 @@ export function initTableFinder() {
     const byState = (s: string) => base.filter((i) => i.state === s).length
     const soon = items.filter((i) => matches(i, { ...f, within: '7' }, 'status') && i.state === 'open').length
     const laterN = items.filter((i) => isLater(i.state) && matches(i, f, 'status')).length
-    setQuick('open', byState('open'), 'open now', 'open now')
+    setQuick('open', byState('open'), 'Open now', 'Open now')
     setQuick('soon', soon, 'closing within 7 days', 'closing within 7 days')
     setQuick('rolling', byState('rolling'), '', '')
     setQuick('upcoming', byState('upcoming'), '', '')
