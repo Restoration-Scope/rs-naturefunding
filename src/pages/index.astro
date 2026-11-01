@@ -100,9 +100,11 @@ const jsonLd = [
 
   <div class="wrap mt-3 grid grid-cols-[minmax(0,1fr)] gap-3 xl:mt-5 xl:grid-cols-[14rem_minmax(0,1fr)] xl:gap-7">
     <a class={skipLink} href="#results">Skip to results</a>
-    {/* Wide screens: the filters ride in a sticky column. Phones and tablets: they open in a sheet. */}
+    {/* Wide screens: the filters ride in a sticky column. Phones and tablets: they open in a sheet.
+        The scroller reaches into the column gap and keeps a 1rem lane on its right, with the gutter reserved,
+        so an overlay scrollbar (macOS) or a classic one (Windows) never covers the counts or chevrons. */}
     <form
-      class="xl:sticky xl:top-0 xl:max-h-dvh xl:self-start xl:overflow-y-auto xl:pt-1 xl:pr-1 xl:pb-6 xl:[scrollbar-width:thin]"
+      class="xl:sticky xl:top-0 xl:-mr-4 xl:max-h-dvh xl:self-start xl:overflow-y-auto xl:pt-1 xl:pr-4 xl:pb-6 xl:[scrollbar-gutter:stable] xl:[scrollbar-width:thin]"
       role="search"
       aria-label="Search and filter funding"
       data-form
