@@ -29,6 +29,8 @@ export type Candidate = {
   status: string
   /** Verbatim text from the API, which is the text the call page shows. */
   quote: string
+  /** Who can apply as the lead, in a few words. */
+  lead: string
   note: string | null
 }
 
@@ -55,6 +57,26 @@ const NOT_NBS = /\b(internships?|tourism|recreation|desalination|reuse|compensat
 /** The title decides: synopses of broad announcements (BAAs, education, gear research) mention habitats in passing. */
 export function isNbsUsOpportunity(title: string): boolean {
   return !NOT_NBS.test(title) && NBS_TERMS.test(title)
+}
+
+/** grants.gov applicant type codes for governments (state, county, city, special district, school district, tribal, housing). */
+const GOVERNMENT = new Set(['00', '01', '02', '04', '05', '07', '08'])
+const INDIVIDUALS = '21'
+const LEAD_LABELS: Record<string, string> = {
+  '99': 'anyone', '12': 'nonprofits', '13': 'nonprofits', '11': 'tribal organisations', '20': 'universities', '06': 'universities',
+  '22': 'businesses', '23': 'businesses', '25': 'see the call text',
+}
+
+/**
+ * The audience rule: a programme is listed only if an organisation can apply as the project lead,
+ * so calls open only to governments or to individuals (farmers, landowners, students) are dropped.
+ * Returns who can lead, or null when no organisation can.
+ */
+export function organisationLead(applicantTypes: string[]): string | null {
+  const orgs = applicantTypes.filter((t) => !GOVERNMENT.has(t) && t !== INDIVIDUALS)
+  if (!orgs.length) return null
+  if (orgs.includes('99')) return 'anyone'
+  return [...new Set(orgs.map((t) => LEAD_LABELS[t] ?? 'other organisations'))].join(', ')
 }
 
 const ENTITIES: Record<string, string> = { amp: '&', lt: '<', gt: '>', quot: '"', apos: "'", nbsp: ' ', ndash: '–', mdash: '—', rsquo: '’', lsquo: '‘', rdquo: '”', ldquo: '“' }
@@ -119,7 +141,8 @@ async function euCandidates(key: string, today: string): Promise<Candidate[]> {
         key: `eu:${id}`, source: 'eu', id, title: plainText(m.title?.[0] ?? id), funder: `European Commission (${m.callIdentifier?.[0] ?? id.replace(/-\d+$/, '')})`,
         url: m.url?.[0] ?? `${EU_TOPIC_PAGE}${id}`, deadline, status: m.status?.[0] === '31094501' ? 'forecast' : 'open',
         quote: quoteFrom(text.replace(/^Expected Outcome:\s*/i, '')),
-        note: id.startsWith('HORIZON-') ? 'Horizon Europe: applicants need an EU-led consortium (access: consortium).' : null,
+        lead: id.startsWith('HORIZON-') ? 'EU-led consortium' : 'see the call text',
+        note: id.startsWith('HORIZON-') ? 'Horizon Europe: the applicant must be a consortium led from the EU (a `consortium_required` flag in the schema when the first one is added; access stays `direct`).' : null,
       })
     }
     if (json.results.length < 100) break
@@ -145,11 +168,14 @@ async function usCandidates(today: string): Promise<Candidate[]> {
       if (deadline && deadline < today) continue
       const title = plainText(h.title)
       if (!isNbsUsOpportunity(title)) continue
-      const { synopsis } = await post<{ synopsis?: { synopsisDesc?: string } }>('fetchOpportunity', { opportunityId: Number(h.id) })
+      const { synopsis } = await post<{ synopsis?: { synopsisDesc?: string; applicantTypes?: { id: string }[] } }>('fetchOpportunity', { opportunityId: Number(h.id) })
+      const lead = organisationLead((synopsis?.applicantTypes ?? []).map((t) => t.id))
+      if (!lead) continue
       const text = plainText(synopsis?.synopsisDesc ?? '')
       out.push({
         key: `us:${h.number}`, source: 'us', id: h.number, title, funder: plainText(h.agency), url: `${US_PAGE}${h.id}`,
-        deadline, status: h.oppStatus, quote: quoteFrom(text || title), note: 'United States: needs a "United States" geography on the site.',
+        deadline, status: h.oppStatus, quote: quoteFrom(text || title), lead,
+        note: 'United States: geography `{ "scope": "countries", "countries": ["US"] }`. Calls open only to governments or individuals are left out.',
       })
     }
   }
@@ -158,7 +184,7 @@ async function usCandidates(today: string): Promise<Candidate[]> {
 
 function row(c: Candidate): string {
   const cell = (s: string) => s.replace(/\|/g, '\\|')
-  return `| [${cell(c.id)}](${c.url}) | ${cell(c.title)} | ${cell(c.funder)} | ${c.deadline ?? '—'} (${c.status}) | “${cell(c.quote)}” |`
+  return `| [${cell(c.id)}](${c.url}) | ${cell(c.title)} | ${cell(c.funder)} | ${c.deadline ?? '—'} (${c.status}) | ${cell(c.lead)} | “${cell(c.quote)}” |`
 }
 
 if (import.meta.main) {
@@ -179,12 +205,12 @@ if (import.meta.main) {
   const body = [
     `Discovery ${today}: ${found.length} NbS calls open or forecast in the two APIs, ${fresh.length} new (not listed and not raised before).`,
     '',
-    'Each row is a lead, not a listing: add it as a programme or call only after reading the call page and quoting it, like every other row. Quotes are the API text the call page shows.',
+    'Each row is a lead, not a listing: add it as a programme or call only after reading the call page and quoting it, like every other row, and only if an organisation can apply as the project lead (no farmer or landowner payments, student grants or public-agency-only grants). Quotes are the API text the call page shows.',
     ...(['eu', 'us'] as const).flatMap((src) => {
       const rows = fresh.filter((c) => c.source === src)
       if (!rows.length) return []
       const notes = [...new Set(rows.map((c) => c.note).filter(Boolean))]
-      return ['', src === 'eu' ? '### EU Funding & Tenders' : '### grants.gov (United States)', ...notes.map((n) => `_${n}_`), '', '| Call | Title | Funder | Deadline | Quote |', '| --- | --- | --- | --- | --- |', ...rows.map(row)]
+      return ['', src === 'eu' ? '### EU Funding & Tenders' : '### grants.gov (United States)', ...notes.map((n) => `_${n}_`), '', '| Call | Title | Funder | Deadline | Who can lead | Quote |', '| --- | --- | --- | --- | --- | --- |', ...rows.map(row)]
     }),
     ...(errors.length ? ['', '### Not searched', ...errors.map((e) => `- ${e}`)] : []),
   ].join('\n')
