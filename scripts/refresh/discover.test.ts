@@ -1,5 +1,5 @@
 import { describe, expect, test } from 'bun:test'
-import { isNbsEuTopic, isNbsUsOpportunity, newCandidates, plainText, quoteFrom, usDate, type Candidate } from './discover'
+import { isNbsEuTopic, isNbsUsOpportunity, newCandidates, organisationLead, plainText, quoteFrom, usDate, type Candidate } from './discover'
 
 describe('EU topics are chosen by code', () => {
   test('nature and biodiversity codes pass whatever the text', () => {
@@ -36,6 +36,21 @@ describe('US opportunities are chosen by title', () => {
   })
 })
 
+describe('audience rule: an organisation must be able to lead', () => {
+  test('government-only and individual-only calls are dropped', () => {
+    expect(organisationLead(['00'])).toBeNull()
+    expect(organisationLead(['00', '01', '02', '07'])).toBeNull()
+    expect(organisationLead(['21'])).toBeNull()
+    expect(organisationLead([])).toBeNull()
+  })
+  test('nonprofits, tribal organisations, unrestricted and see-text calls pass', () => {
+    expect(organisationLead(['07', '12', '13'])).toBe('nonprofits')
+    expect(organisationLead(['11', '07'])).toBe('tribal organisations')
+    expect(organisationLead(['25', '99'])).toBe('anyone')
+    expect(organisationLead(['25'])).toBe('see the call text')
+  })
+})
+
 describe('text helpers', () => {
   test('plainText strips tags and decodes entities', () => {
     expect(plainText('<p>Wolf&nbsp;Livestock &ndash; <b>Loss</b> &amp; Prevention&#39;s</p>')).toBe("Wolf Livestock – Loss & Prevention's")
@@ -54,7 +69,7 @@ describe('text helpers', () => {
 
 describe('newCandidates', () => {
   const c = (id: string, source: 'eu' | 'us' = 'eu'): Candidate => ({
-    key: `${source}:${id}`, source, id, title: id, funder: 'x', url: `https://example.org/${id}`, deadline: '2027-01-14', status: 'open', quote: 'q', note: null,
+    key: `${source}:${id}`, source, id, title: id, funder: 'x', url: `https://example.org/${id}`, deadline: '2027-01-14', status: 'open', quote: 'q', lead: 'anyone', note: null,
   })
   test('drops calls already raised, already in data/, or found twice', () => {
     const known = { 'eu:HORIZON-NATURE-2027-01-01': { title: '', url: '', deadline: null, first_seen: '2026-11-02', issue: null } }
