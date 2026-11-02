@@ -14,6 +14,7 @@ import { listings, sortListings, stats } from '../lib/data'
 import { countriesByRegion } from '../lib/geo'
 import { longDate } from '../lib/format'
 import { SITE_NAME, absolute } from '../lib/site'
+import { homeItemListLd } from '../lib/agent'
 import { accessLabels, applicantLabels, approachLabels, projectTypes, sizeBuckets, stateFilterLabels, type State } from '../lib/labels'
 
 const sorted = [...listings].sort(sortListings)
@@ -95,6 +96,7 @@ const jsonLd = [
       { '@type': 'DataDownload', encodingFormat: 'text/csv', contentUrl: absolute('/data.csv') },
     ],
   },
+  homeItemListLd(sorted),
 ]
 ---
 

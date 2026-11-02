@@ -2,6 +2,7 @@
 import { defineConfig } from 'astro/config'
 import react from '@astrojs/react'
 import tailwindcss from '@tailwindcss/vite'
+import { proseTwins } from './src/integrations/prose-twins.ts'
 
 /**
  * React renders the shadcn/ui components at build time only. The renderer gets no client
@@ -24,6 +25,6 @@ function reactAtBuildTime() {
 
 // https://astro.build/config
 export default defineConfig({
-  integrations: [reactAtBuildTime()],
+  integrations: [reactAtBuildTime(), proseTwins()],
   vite: { plugins: [tailwindcss()] },
 })

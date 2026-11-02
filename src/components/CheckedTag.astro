@@ -41,5 +41,6 @@ const title = reason
   >
     <Badge variant="tag" data-aging={aging || reason ? '' : undefined} title={title}>{`${reason ? 'Not checked again since' : 'Checked'} ${shortDate(checked)}`}</Badge>
   </span>
-  <span class:list={['font-semibold text-aging-text', source && 'ml-1.5']} hidden={!aging || !!reason}>Over {AGING_DAYS} days ago, due a recheck</span>
+  {/* Rendered only when true: hidden text still reaches agents that read the page as text. */}
+  {aging && !reason && <span class:list={['font-semibold text-aging-text', source && 'ml-1.5']}>Over {AGING_DAYS} days ago, due a recheck</span>}
 </span>

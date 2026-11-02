@@ -11,13 +11,15 @@ interface Props {
   evidence?: Evidence
   /** Shown instead of "Not found on the pages we read" when the value is null. */
   missing?: string
+  /** Anchor for this fact, so a citation can link it (src/lib/agent.ts factIds). */
+  id?: string
 }
 
-const { label, value, evidence, missing = 'Not found on the pages we read' } = Astro.props
+const { label, value, evidence, missing = 'Not found on the pages we read', id } = Astro.props
 const shown = value && label === 'Amount' ? keepAmountTogether(value) : value
 ---
 
-<div class="grid grid-cols-[minmax(0,1fr)] gap-[0.35rem] border-t border-rule py-[1.1rem] md:grid-cols-[11rem_minmax(0,1fr)] md:gap-6">
+<div id={id} class="grid grid-cols-[minmax(0,1fr)] gap-[0.35rem] border-t border-rule py-[1.1rem] md:grid-cols-[11rem_minmax(0,1fr)] md:gap-6">
   <dt class="pt-[0.15rem] text-md font-bold text-ink-2">{label}</dt>
   <dd class="m-0 min-w-0">
     {
