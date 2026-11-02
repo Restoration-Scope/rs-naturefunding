@@ -61,10 +61,21 @@ describe('finder DOM contract (src/lib/finder.ts)', () => {
     }
   })
 
+  test('a stated deadline keeps the funder’s words in the date’s tooltip, in every state', () => {
+    const byName = new Map(listings.map((l) => [l.p.name.toLowerCase(), l]))
+    for (const r of rows) {
+      const deadline = byName.get(r.dataset.name!)!.call?.deadline
+      if (!deadline) continue
+      const when = r.querySelector('.dl__when')
+      expect(when?.getAttribute('title') ?? '', r.dataset.name).toContain(deadline.text)
+      expect(norm(when?.textContent ?? ''), r.dataset.name).not.toBe('Not dated yet')
+    }
+  })
+
   test('one status vocabulary in the status column; the route always under the funder', () => {
     const states: Record<string, string> = { open: 'Open', rolling: 'Rolling', upcoming: 'Upcoming', closed: 'Closed', none: 'No call found' }
     for (const r of rows) {
-      const status = r.querySelector('.dl > .status')
+      const status = r.querySelector('.dl__meta > .status')
       expect(status?.getAttribute('data-state'), r.dataset.name).toBe(r.dataset.state!)
       expect(norm(status?.textContent ?? ''), r.dataset.name).toBe(states[r.dataset.state!]!)
       expect(r.querySelector('.sub__route [data-route]')?.getAttribute('data-route'), r.dataset.name).toBe(r.dataset.access!)
@@ -76,11 +87,11 @@ describe('finder DOM contract (src/lib/finder.ts)', () => {
     // Literal selectors passed to $(), querySelector(All)() and closest(); templated ones are checked below.
     const literal = [...finderSource.matchAll(/(?:\$<[^>]+>|querySelector(?:All)?(?:<[^>]+>)?|closest(?:<[^>]+>)?)\(\s*'([^']+)'/g)].map((m) => m[1]!)
     // Made by finder.ts itself at runtime, so not in the built HTML.
-    const runtime = new Set(['.divider', '[data-later-show]', 'b'])
+    const runtime = new Set(['[data-later-show]', 'b'])
     const selectors = [...new Set(literal)].filter((s) => !runtime.has(s))
     expect(selectors.length).toBeGreaterThan(30)
     for (const s of selectors) {
-      for (const part of s.split(',').map((x) => x.trim()).filter((x) => !['.chip', '[tabindex]'].includes(x))) {
+      for (const part of s.split(',').map((x) => x.trim()).filter((x) => x !== '[tabindex]')) {
         expect(d.querySelector(part), `missing ${part}`).not.toBeNull()
       }
     }
@@ -89,14 +100,13 @@ describe('finder DOM contract (src/lib/finder.ts)', () => {
   test('the structure finder.ts relies on', () => {
     const form = d.querySelector('[data-form]')!
     const sheet = d.querySelector('[data-sheet]')!
-    expect(form.querySelector('select[name="where"]')).not.toBeNull()
     expect(form.querySelector('[name="q"]')).not.toBeNull()
     expect(form.contains(sheet)).toBe(true)
     expect(sheet.querySelector('[data-sheet-close]')).not.toBeNull()
     expect(sheet.querySelector('[data-sheet-done]')).not.toBeNull()
     expect([...d.querySelectorAll('th[data-col]')].map((th) => th.getAttribute('data-col'))).toEqual(['deadline', 'amount'])
     expect(d.querySelectorAll('[data-sort]').length).toBe(3)
-    for (const k of ['open', 'soon', 'rolling', 'upcoming', 'later']) {
+    for (const k of ['open', 'rolling', 'upcoming', 'later']) {
       const qn = d.querySelector(`[data-qn="${k}"]`)
       expect(qn, `data-qn=${k}`).not.toBeNull()
       if (k !== 'later') expect(qn!.closest('[data-quick]'), `data-qn=${k} in a quick filter`).not.toBeNull()
@@ -110,19 +120,20 @@ describe('finder DOM contract (src/lib/finder.ts)', () => {
       expect(label!.querySelector('input')).not.toBeNull()
       expect(label!.querySelector('.opt__text')).not.toBeNull()
     }
-    for (const input of form.querySelectorAll('input[type="checkbox"], input[name="within"]')) {
+    for (const input of form.querySelectorAll('input[type="checkbox"]')) {
       expect(input.closest('label')?.querySelector('.opt__text'), `${input.getAttribute('name')}=${input.getAttribute('value')}`).not.toBeNull()
     }
     // Every group is always open: no folding toggles.
     expect(form.querySelectorAll('details, summary').length).toBe(0)
     const groups = [...form.querySelectorAll('[data-group]')].map((g) => g.getAttribute('data-group'))
-    expect(groups.sort()).toEqual(['access', 'applicant', 'approach', 'size', 'status', 'where', 'within'])
+    // The sidebar holds only what the header card doesn't.
+    expect(groups.sort()).toEqual(['access', 'size', 'status'])
     for (const g of form.querySelectorAll('[data-gcount]')) expect(groups).toContain(g.getAttribute('data-gcount'))
   })
 
   test('the classes finder.ts creates are styled', () => {
     const css = files.filter((f) => f.endsWith('.css')).map(read).join('\n') + read('index.html')
-    for (const c of ['chip', 'chip__x', 'chip--clear', 'divider', 'divider--soon', 'divider--later', 'status', 'dl__muted', 'linkish']) {
+    for (const c of ['status', 'dl__when', 'dl__when--muted', 'dl__meta', 'linkish']) {
       expect(css.includes(`.${c}`), `.${c} has no CSS`).toBe(true)
     }
   })
@@ -202,19 +213,22 @@ describe('self-hosted fonts', () => {
 })
 
 describe('home header', () => {
-  // The header's types and search bar only set the finder's own filters, so each value must exist there.
-  test('every project type and search option is a value the finder form has', () => {
+  // The header card is the only control for where, when, who and the project type.
+  test('each filter has one control', () => {
     const d = doc('index.html')
-    const form = d.querySelector('[data-form]')!
-    const values = (name: string) => new Set([...form.querySelectorAll(`[name="${name}"], [name="${name}"] option`)].map((e) => e.getAttribute('value') ?? ''))
-    for (const a of d.querySelectorAll('[data-cat]')) {
-      for (const v of (a.getAttribute('data-cat') ?? '').split(' ').filter(Boolean)) expect(values('approach').has(v), v).toBe(true)
-    }
     const selects = [...d.querySelectorAll('[data-ask] select')]
     expect(selects.map((s) => s.getAttribute('name'))).toEqual(['where', 'within', 'applicant'])
-    for (const s of selects) {
-      const have = values(s.getAttribute('name')!)
-      for (const o of s.querySelectorAll('option:not([data-ask-multi]):not([value=""])')) expect(have.has(o.getAttribute('value') ?? ''), o.getAttribute('value')!).toBe(true)
+    for (const name of ['where', 'within', 'applicant', 'approach']) {
+      expect(d.querySelectorAll(`[data-form] [name="${name}"]`).length, name).toBe(0)
+    }
+    // Every country in Where knows its region, so a region-wide programme matches it.
+    for (const o of d.querySelectorAll('[data-ask] select[name="where"] option')) {
+      const v = o.getAttribute('value') ?? ''
+      if (v && !v.startsWith('r:')) expect(o.getAttribute('data-region'), v).toBeTruthy()
+    }
+    const used = new Set([...d.querySelectorAll('tr[data-approach]')].flatMap((r) => r.getAttribute('data-approach')!.split(' ')))
+    for (const a of d.querySelectorAll('[data-cat]')) {
+      for (const v of (a.getAttribute('data-cat') ?? '').split(' ').filter(Boolean)) expect(used.has(v), v).toBe(true)
     }
   })
 

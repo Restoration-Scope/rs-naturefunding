@@ -14,7 +14,7 @@ const badgeVariants = cva('', {
       status: 'status',
       tag: 'tag',
       /** How many filters are on. */
-      count: `${badge} min-w-5 justify-center rounded-full bg-primary px-1.5 font-semibold text-primary-foreground`,
+      count: `${badge} min-w-5 justify-center rounded-full bg-primary px-1.5 font-medium text-primary-foreground`,
       /** A quiet fill: routes that aren't "apply directly", counts. */
       secondary: `${badge} bg-secondary text-secondary-foreground`,
       /** Amber: a deadline within a week. */

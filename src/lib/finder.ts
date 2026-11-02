@@ -51,23 +51,30 @@ export function initTableFinder() {
   const endfold = $<HTMLButtonElement>('[data-endfold]')
   const sortLine = $<HTMLElement>('[data-sort-line]')
   const live = $<HTMLElement>('[data-live]')
-  const shownEl = $<HTMLElement>('[data-shown]')
+  // How many show and Clear all sit in the sidebar on wide screens and above the table on narrower ones.
+  const shownEls = [...document.querySelectorAll<HTMLElement>('[data-shown]')]
   const emptyEl = $<HTMLElement>('[data-empty]')
   const emptyText = $<HTMLElement>('[data-empty-text]')
   const emptyHead = $<HTMLElement>('[data-empty-head]')
-  const chipsEl = $<HTMLElement>('[data-chips]')
+  const clearEls = [...document.querySelectorAll<HTMLElement>('[data-clear]')]
   const badge = $<HTMLElement>('[data-filter-count]')
-  const whereSelect = form.querySelector<HTMLSelectElement>('select[name="where"]')!
   const sortSelect = $<HTMLSelectElement>('[data-sort-select]')
   const sheet = $<HTMLElement>('[data-sheet]')
   const backdrop = $<HTMLElement>('[data-backdrop]')
   const opener = $<HTMLButtonElement>('[data-sheet-open]')
   const done = $<HTMLButtonElement>('[data-sheet-done]')
-  // The header: project types set the Approach filter; where, when and who set Where, Deadline and Who can apply.
-  const ask = document.querySelector<HTMLFormElement>('[data-ask]')
-  const askSelects = ask ? [...ask.querySelectorAll('select')] : []
+  // The header card owns where, when and who (its selects) and the approach (its project types); the sidebar
+  // owns status, how to apply and size. Each filter has that one control.
+  const ask = $<HTMLFormElement>('[data-ask]')
+  const askSelects = [...ask.querySelectorAll('select')]
   for (const s of askSelects) picker(s, s.name === 'where')
+  // The weekly email form's Where gets the same flags; its own pages under /digest/ load no script.
+  for (const s of document.querySelectorAll<HTMLSelectElement>('select[data-flags]'))
+    picker(s, true, 'top-1/2 left-[0.65rem] -translate-y-1/2', 'pl-[2.4rem]!')
+  const askSelect = (name: string) => ask.querySelector<HTMLSelectElement>(`select[name="${name}"]`)!
+  const whereSelect = askSelect('where')
   const cats = [...document.querySelectorAll<HTMLElement>('[data-cat]')]
+  let approach: string[] = []
 
   let showLater = false
   let sort: SortKey = 'deadline'
@@ -93,8 +100,8 @@ export function initTableFinder() {
         state = 'closed'
         el.dataset.state = state
         const dl = el.querySelector<HTMLElement>('.dl')
-        if (dl) dl.innerHTML = `<span class="status" data-state="closed">Closed</span><span class="dl__muted">${shortDate(deadline)}</span>`
-        el.querySelector('[data-words]')?.remove()
+        if (dl)
+          dl.innerHTML = `<span class="dl__when dl__when--muted">${shortDate(deadline)}</span><span class="dl__meta"><span class="status" data-state="closed">Closed</span></span>`
       } else if (leftEl) {
         leftEl.textContent = left === 0 ? 'Closes today' : left === 1 ? '1 day left' : `${left} days left`
         leftEl.toggleAttribute('data-soon', left <= 7)
@@ -173,32 +180,43 @@ export function initTableFinder() {
   // ---------- Filters ----------
   function read(): Filters {
     const fd = new FormData(form)
-    const f = {
+    const applicant = askSelect('applicant').value
+    return {
       q: String(fd.get('q') ?? '').trim(),
-      within: String(fd.get('within') ?? ''),
-      where: String(fd.get('where') ?? ''),
-    } as Filters
-    for (const m of MULTI) f[m] = fd.getAll(m).map(String)
-    return f
+      within: askSelect('within').value,
+      where: whereSelect.value,
+      approach: [...approach],
+      applicant: applicant ? [applicant] : [],
+      status: fd.getAll('status').map(String),
+      access: fd.getAll('access').map(String),
+      size: fd.getAll('size').map(String),
+    }
   }
 
   function write(f: Filters) {
     form.querySelector<HTMLInputElement>('[name="q"]')!.value = f.q
     whereSelect.value = f.where
+    askSelect('within').value = f.within
+    askSelect('applicant').value = f.applicant[0] ?? ''
+    approach = f.approach
     for (const input of form.querySelectorAll<HTMLInputElement>('input[type="checkbox"]')) {
       input.checked = (f[input.name as Multi] ?? []).includes(input.value)
     }
-    for (const input of form.querySelectorAll<HTMLInputElement>('input[name="within"]')) {
-      input.checked = input.value === f.within
-    }
+    for (const s of askSelects) s.dispatchEvent(new Event('sync'))
   }
 
   function fromUrl(): Filters {
     const sp = new URLSearchParams(location.search)
     const f = { q: sp.get('q') ?? '', within: sp.get('within') ?? '', where: sp.get('where') ?? '' } as Filters
     for (const m of MULTI) f[m] = (sp.get(m) ?? '').split(',').filter(Boolean)
+    // Who can apply is one select, so an address can pick one.
+    f.applicant = f.applicant.filter((a) => [...askSelect('applicant').options].some((o) => o.value === a)).slice(0, 1)
     if (f.where && ![...whereSelect.options].some((o) => o.value === f.where)) f.where = ''
     if (!['', '7', '30', '90'].includes(f.within)) f.within = ''
+    // Approach comes only from the type tabs, so an older address naming other approaches (one, or a mix)
+    // widens to the tab that holds them all, or drops them when no tab does.
+    const tab = cats.find((c) => c.dataset.cat && f.approach.every((a) => c.dataset.cat!.split(' ').includes(a)))
+    f.approach = f.approach.length && tab ? tab.dataset.cat!.split(' ') : []
     const s = (sp.get('sort') ?? '').replace(/^-/, '')
     if (s === 'amount' || s === 'checked' || s === 'deadline') {
       sort = s
@@ -245,50 +263,15 @@ export function initTableFinder() {
     return whereMatches(i, f.where)
   }
 
-  function labelFor(name: string, value: string) {
-    if (name === 'where') return whereSelect.selectedOptions[0]?.textContent ?? value
-    if (name === 'q') return `“${value}”`
-    const input = form.querySelector<HTMLInputElement>(`input[name="${name}"][value="${CSS.escape(value)}"]`)
-    return input?.closest('label')?.querySelector('.opt__text')?.textContent?.trim() ?? value
-  }
-
-  function chips(f: Filters) {
-    const active: [string, string][] = []
-    if (f.q) active.push(['q', f.q])
-    for (const m of MULTI) for (const v of f[m]) active.push([m, v])
-    if (f.within) active.push(['within', f.within])
-    if (f.where) active.push(['where', f.where])
-    // A filter a quick toggle sets shows as that toggle pressed, so it gets no chip.
-    const quickOn = new Set([...document.querySelectorAll<HTMLElement>('[data-quick]')].map((q) => q.dataset.quick!))
-    const chipped = active.filter(([name, value]) => !quickOn.has(`${name}:${value}`))
-    chipsEl.replaceChildren(
-      ...chipped.map(([name, value]) => {
-        const b = document.createElement('button')
-        b.type = 'button'
-        b.className = 'chip'
-        b.dataset.name = name
-        b.dataset.value = value
-        b.setAttribute('aria-label', `Remove filter: ${labelFor(name, value)}`)
-        b.innerHTML = `<span></span><span class="chip__x" aria-hidden="true"><svg width="10" height="10" viewBox="0 0 10 10"><path d="M1 1l8 8M9 1L1 9" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></span>`
-        b.firstElementChild!.textContent = labelFor(name, value)
-        return b
-      }),
-    )
-    if (active.length > 1) {
-      const clear = document.createElement('button')
-      clear.type = 'button'
-      clear.className = 'chip chip--clear'
-      clear.dataset.reset = ''
-      clear.textContent = 'Clear all'
-      chipsEl.append(clear)
-    }
-    chipsEl.hidden = chipped.length === 0
-    const filters = active.filter(([name]) => name !== 'q').length
-    badge.hidden = filters === 0
-    badge.textContent = String(filters)
+  // The Filters button counts the sidebar's filters; "Clear all filters" shows once any filter is on.
+  function counts(f: Filters) {
+    const sideN = f.status.length + f.access.length + f.size.length
+    badge.hidden = sideN === 0
+    badge.textContent = String(sideN)
+    const any = !!(f.q || f.within || f.where || MULTI.some((m) => f[m].length))
+    for (const c of clearEls) c.hidden = !any
     for (const g of form.querySelectorAll<HTMLElement>('[data-gcount]')) {
-      const key = g.dataset.gcount!
-      const n = key === 'within' || key === 'where' ? (f[key] ? 1 : 0) : f[key as Multi].length
+      const n = f[g.dataset.gcount as Multi].length
       g.hidden = n === 0
       g.textContent = String(n)
     }
@@ -299,38 +282,6 @@ export function initTableFinder() {
     if (b) b.textContent = String(n)
     const l = document.querySelector<HTMLElement>(`[data-ql="${key}"]`)
     if (l) l.textContent = plural(n, one, many)
-  }
-
-  // The next seven days and after, drawn between rows while the table is sorted by soonest deadline.
-  const weekOut = new Date(Date.parse(today) + 7 * 86_400_000).toISOString().slice(0, 10)
-  function dividerRow(kind: 'soon' | 'later', text: string) {
-    const tr = document.createElement('tr')
-    tr.className = `divider divider--${kind}`
-    tr.setAttribute('aria-hidden', 'true')
-    const td = document.createElement('td')
-    td.colSpan = 3
-    td.textContent = text
-    tr.append(td)
-    return tr
-  }
-  function dividers() {
-    for (const d of list.querySelectorAll('.divider')) d.remove()
-    if (sort !== 'deadline' || reversed) return
-    const byEl = new Map(items.map((i) => [i.el as Element, i]))
-    const visible = [...list.rows].flatMap((r) => {
-      const i = byEl.get(r)
-      return i && !r.hidden ? [i] : []
-    })
-    const firstOpen = visible.find((i) => i.state === 'open' && i.deadline)
-    if (!firstOpen) return
-    const after = visible.find((i) => i.state === 'open' && i.deadline && i.deadline > weekOut)
-    const inside = visible.some((i) => i.state === 'open' && i.deadline && i.deadline <= weekOut)
-    list.insertBefore(
-      inside ? dividerRow('soon', `Closing in the next 7 days, by ${shortDate(weekOut)}`) : dividerRow('later', `Closing after ${shortDate(weekOut)}`),
-      firstOpen.el,
-    )
-    // Only when some open calls close inside the week and some after it.
-    if (after && inside) list.insertBefore(dividerRow('later', `Closing after ${shortDate(weekOut)}`), after.el)
   }
 
   function apply() {
@@ -352,22 +303,18 @@ export function initTableFinder() {
     laterHead.hidden = !laterOn || shownLater === 0
     laterList.hidden = !laterOn
     const shown = shownNow + (laterOn ? shownLater : 0)
-    dividers()
 
     // The summary sentence counts what the other filters leave, so each part says what a click gives.
     const base = items.filter((i) => matches(i, f, 'status'))
     const byState = (s: string) => base.filter((i) => i.state === s).length
-    const soon = items.filter((i) => matches(i, { ...f, within: '7' }, 'status') && i.state === 'open').length
     const laterN = items.filter((i) => isLater(i.state) && matches(i, f, 'status')).length
     setQuick('open', byState('open'), 'Open now', 'Open now')
-    setQuick('soon', soon, 'closing within 7 days', 'closing within 7 days')
     setQuick('rolling', byState('rolling'), '', '')
     setQuick('upcoming', byState('upcoming'), '', '')
     setQuick('later', laterN, '', '')
     endfold.hidden = laterOn || laterN === 0
     for (const q of document.querySelectorAll<HTMLButtonElement>('[data-quick]')) {
-      const [name, value] = q.dataset.quick!.split(':') as [string, string]
-      const on = name === 'within' ? f.within === value : f[name as Multi].includes(value)
+      const on = f.status.includes(q.dataset.quick!.split(':')[1]!)
       q.setAttribute('aria-pressed', String(on))
       q.disabled = !on && q.querySelector('b')?.textContent === '0'
     }
@@ -379,19 +326,10 @@ export function initTableFinder() {
       const input = n.closest('label')?.querySelector('input')
       if (input) input.disabled = count === 0 && !input.checked
     }
-    for (const s of askSelects) {
-      if (s.name === 'where' || s.name === 'within') s.value = f[s.name]
-      else {
-        const v = f[s.name as Multi]
-        s.querySelector('[data-ask-multi]')!.textContent = `${v.length} picked`
-        s.value = v.length === 0 ? '' : v.length === 1 ? v[0]! : 'multi'
-      }
-      s.dispatchEvent(new Event('sync'))
-    }
     const appr = [...f.approach].sort().join(' ')
     for (const c of cats) c.setAttribute('aria-current', String(c.dataset.cat === appr))
 
-    shownEl.textContent = `${shown} of ${items.length} shown`
+    for (const s of shownEls) s.textContent = `${shown} of ${items.length} shown`
     live.textContent = `${shown} ${plural(shown, 'programme', 'programmes')} shown`
     // Nothing to show: no header, no end card, just the message where the rows would be.
     emptyEl.hidden = shown > 0
@@ -406,12 +344,12 @@ export function initTableFinder() {
           : `Try another search, remove a filter, or <button type="button" class="linkish" data-reset>clear all</button>.`
     }
     done.textContent = `Show ${shown} ${plural(shown, 'result', 'results')}`
-    chips(f)
+    counts(f)
     toUrl(f)
   }
 
   function reset() {
-    form.reset()
+    write({ q: '', within: '', where: '', status: [], approach: [], applicant: [], access: [], size: [] })
     apply()
   }
 
@@ -474,15 +412,8 @@ export function initTableFinder() {
 
   form.addEventListener('input', apply)
   form.addEventListener('submit', (e) => e.preventDefault())
-  ask?.addEventListener('change', (e) => {
-    const s = e.target as HTMLSelectElement
-    const f = read()
-    if (s.name === 'where' || s.name === 'within') f[s.name] = s.value
-    else f[s.name as Multi] = s.value ? [s.value] : []
-    write(f)
-    apply()
-  })
-  ask?.addEventListener('submit', (e) => {
+  ask.addEventListener('change', apply)
+  ask.addEventListener('submit', (e) => {
     e.preventDefault()
     document.querySelector('.results')?.scrollIntoView({ block: 'start', behavior: 'smooth' })
   })
@@ -511,21 +442,15 @@ export function initTableFinder() {
     const cat = t.closest<HTMLElement>('[data-cat]')
     if (cat && !((e as MouseEvent).metaKey || (e as MouseEvent).ctrlKey || (e as MouseEvent).shiftKey)) {
       e.preventDefault()
-      const f = read()
-      f.approach = cat.dataset.cat ? cat.dataset.cat.split(' ') : []
-      write(f)
+      approach = cat.dataset.cat ? cat.dataset.cat.split(' ') : []
       apply()
       return
     }
     const quick = t.closest<HTMLButtonElement>('[data-quick]')
     if (quick) {
-      const [name, value] = quick.dataset.quick!.split(':') as [string, string]
+      const value = quick.dataset.quick!.split(':')[1]!
       const f = read()
-      if (name === 'within') f.within = f.within === value ? '' : value
-      else {
-        const m = name as Multi
-        f[m] = f[m].includes(value) ? f[m].filter((v) => v !== value) : [...f[m], value]
-      }
+      f.status = f.status.includes(value) ? f.status.filter((v) => v !== value) : [...f.status, value]
       write(f)
       apply()
       return
@@ -547,14 +472,6 @@ export function initTableFinder() {
       apply()
       return
     }
-    const c = t.closest<HTMLElement>('[data-reset], .chip')
-    if (!c) return
-    if ('reset' in c.dataset) return reset()
-    const { name, value } = c.dataset
-    const f = read()
-    if (name === 'q' || name === 'within' || name === 'where') f[name] = ''
-    else if (name) f[name as Multi] = f[name as Multi].filter((v) => v !== value)
-    write(f)
-    apply()
+    if (t.closest('[data-reset]')) reset()
   })
 }

@@ -14,7 +14,14 @@ const fold = (s: string) => s.normalize('NFD').replace(/\p{M}/gu, '').toLowerCas
 
 let n = 0
 
-export function picker(sel: HTMLSelectElement, search = false) {
+// `flagAt` places the chosen country's flag in the field and `flagPad` makes room for it; the defaults suit the
+// header's fields, whose text sits 7px under the field's middle (pt-6 against pb-2.5).
+export function picker(
+  sel: HTMLSelectElement,
+  search = false,
+  flagAt = 'top-[calc(50%+0.5px)] left-4',
+  flagPad = 'pl-[2.75rem]!',
+) {
   const seg = sel.parentElement!
   const id = sel.id
   sel.id = `${id}-native`
@@ -37,8 +44,7 @@ export function picker(sel: HTMLSelectElement, search = false) {
     trigger.setAttribute('aria-haspopup', 'listbox')
   }
   const flagBox = document.createElement('span')
-  // Centred on the field's text, which sits 7px under the field's middle (pt-6 against pb-2.5).
-  flagBox.className = 'pointer-events-none absolute top-[calc(50%+0.5px)] left-4 flex'
+  flagBox.className = `pointer-events-none absolute flex ${flagAt}`
 
   const list = document.createElement('div')
   list.id = listId
@@ -114,7 +120,7 @@ export function picker(sel: HTMLSelectElement, search = false) {
       trigger.toggleAttribute('data-empty', !sel.value)
     }
     flagBox.innerHTML = flag(sel.value)
-    trigger.classList.toggle('pl-[2.75rem]!', !!flagBox.innerHTML)
+    trigger.classList.toggle(flagPad, !!flagBox.innerHTML)
     for (const x of opts) x.setAttribute('aria-selected', String(x.dataset.value === sel.value))
   }
 
