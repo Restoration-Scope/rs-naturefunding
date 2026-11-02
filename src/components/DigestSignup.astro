@@ -1,7 +1,8 @@
 ---
-// The weekly email sign-up: a plain form, no JS. It posts to the digest Worker (digest/, email.naturefunding.org),
-// which answers with a redirect to /digest/check-your-inbox/. The choices use the finder's `where` and `approach`
-// values, so the email matches what the finder shows for the same choice.
+// The weekly email sign-up: a plain form with no JS of its own (on /, src/lib/finder.ts gives Where the header's
+// flag picker). It posts to the digest Worker (digest/, email.naturefunding.org), which answers with a redirect to
+// /digest/check-your-inbox/. The choices use the finder's `where` and `approach` values, so the email matches what
+// the finder shows for the same choice.
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { NativeSelect } from '@/components/ui/native-select'
@@ -60,7 +61,7 @@ const show = DIGEST_LIVE || import.meta.env.DEV
   <div class="mt-2 grid gap-3 sm:grid-cols-2">
     <div>
       <label class={label} for={`${id}-where`}>Where the project is <span class="font-normal text-ink-2">(optional)</span></label>
-      <NativeSelect id={`${id}-where`} name="where" className="min-h-11">
+      <NativeSelect id={`${id}-where`} name="where" className="min-h-11" data-flags>
         <option value="">Anywhere</option>
         <optgroup label="Regions">
           {countriesByRegion.map((r) => <option value={`r:${r.region}`} selected={where === `r:${r.region}`}>{r.label}</option>)}

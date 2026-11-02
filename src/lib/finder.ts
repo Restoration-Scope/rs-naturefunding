@@ -68,6 +68,9 @@ export function initTableFinder() {
   const ask = $<HTMLFormElement>('[data-ask]')
   const askSelects = [...ask.querySelectorAll('select')]
   for (const s of askSelects) picker(s, s.name === 'where')
+  // The weekly email form's Where gets the same flags; its own pages under /digest/ load no script.
+  for (const s of document.querySelectorAll<HTMLSelectElement>('select[data-flags]'))
+    picker(s, true, 'top-1/2 left-[0.65rem] -translate-y-1/2', 'pl-[2.4rem]!')
   const askSelect = (name: string) => ask.querySelector<HTMLSelectElement>(`select[name="${name}"]`)!
   const whereSelect = askSelect('where')
   const cats = [...document.querySelectorAll<HTMLElement>('[data-cat]')]
