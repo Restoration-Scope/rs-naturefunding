@@ -304,6 +304,11 @@ const jsonLd = [
         />
         <Fact id={factIds.co_finance_required} label="Co-funding required" value={yesNo(p.co_finance_required)} evidence={p.evidence.co_finance_required} missing={byPartner} />
         {
+          p.consortium_required !== undefined && (
+            <Fact id={factIds.consortium_required} label="Consortium required" value={yesNo(p.consortium_required)} evidence={p.evidence.consortium_required} />
+          )
+        }
+        {
           p.administered_by && (
             <Fact id={factIds.administered_by} label="Run by" value={p.administered_by.name} evidence={p.evidence.administered_by} />
           )

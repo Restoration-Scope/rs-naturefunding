@@ -47,12 +47,8 @@ export function initTableFinder() {
   if (!form || !list) return
   const laterList = $<HTMLTableSectionElement>('[data-list-later]')
   const laterHead = $<HTMLTableSectionElement>('[data-later-head]')
-  const laterToggle = $<HTMLButtonElement>('[data-later-toggle]')
-  const laterVerb = $<HTMLElement>('[data-later-verb]')
-  const laterSep = $<HTMLElement>('[data-later-sep]')
   const tableWrap = $<HTMLElement>('[data-table]')
   const endfold = $<HTMLButtonElement>('[data-endfold]')
-  const endN = $<HTMLElement>('[data-qn-end]')
   const sortLine = $<HTMLElement>('[data-sort-line]')
   const live = $<HTMLElement>('[data-live]')
   const shownEl = $<HTMLElement>('[data-shown]')
@@ -159,7 +155,7 @@ export function initTableFinder() {
       const nat = naturalDir[sort]
       th.setAttribute('aria-sort', reversed ? (nat === 'ascending' ? 'descending' : 'ascending') : nat)
     }
-    // The mid-width table folds Checked into the Amount header; its button shows the same state.
+    // Checked sorts from a second button in the Amount header, whose column has no aria-sort for it.
     for (const b of document.querySelectorAll<HTMLElement>('[data-alt-for]')) {
       const nat = naturalDir.checked
       if (sort === 'checked') b.dataset.active = reversed ? (nat === 'ascending' ? 'descending' : 'ascending') : nat
@@ -262,8 +258,11 @@ export function initTableFinder() {
     for (const m of MULTI) for (const v of f[m]) active.push([m, v])
     if (f.within) active.push(['within', f.within])
     if (f.where) active.push(['where', f.where])
+    // A filter a quick toggle sets shows as that toggle pressed, so it gets no chip.
+    const quickOn = new Set([...document.querySelectorAll<HTMLElement>('[data-quick]')].map((q) => q.dataset.quick!))
+    const chipped = active.filter(([name, value]) => !quickOn.has(`${name}:${value}`))
     chipsEl.replaceChildren(
-      ...active.map(([name, value]) => {
+      ...chipped.map(([name, value]) => {
         const b = document.createElement('button')
         b.type = 'button'
         b.className = 'chip'
@@ -283,7 +282,7 @@ export function initTableFinder() {
       clear.textContent = 'Clear all'
       chipsEl.append(clear)
     }
-    chipsEl.hidden = active.length === 0
+    chipsEl.hidden = chipped.length === 0
     const filters = active.filter(([name]) => name !== 'q').length
     badge.hidden = filters === 0
     badge.textContent = String(filters)
@@ -309,7 +308,7 @@ export function initTableFinder() {
     tr.className = `divider divider--${kind}`
     tr.setAttribute('aria-hidden', 'true')
     const td = document.createElement('td')
-    td.colSpan = 4
+    td.colSpan = 3
     td.textContent = text
     tr.append(td)
     return tr
@@ -365,7 +364,6 @@ export function initTableFinder() {
     setQuick('rolling', byState('rolling'), '', '')
     setQuick('upcoming', byState('upcoming'), '', '')
     setQuick('later', laterN, '', '')
-    endN.textContent = String(laterN)
     endfold.hidden = laterOn || laterN === 0
     for (const q of document.querySelectorAll<HTMLButtonElement>('[data-quick]')) {
       const [name, value] = q.dataset.quick!.split(':') as [string, string]
@@ -373,11 +371,6 @@ export function initTableFinder() {
       q.setAttribute('aria-pressed', String(on))
       q.disabled = !on && q.querySelector('b')?.textContent === '0'
     }
-    laterToggle.setAttribute('aria-pressed', String(laterOn))
-    laterToggle.disabled = forced || laterN === 0
-    laterToggle.hidden = laterN === 0
-    laterSep.hidden = laterN === 0
-    laterVerb.textContent = laterOn ? 'Hide' : 'Show'
 
     for (const n of form.querySelectorAll<HTMLElement>('[data-n]')) {
       const [group, value] = n.dataset.n!.split(':') as [Multi, string]
@@ -546,7 +539,7 @@ export function initTableFinder() {
     if (t.closest('[data-later-hide]')) {
       showLater = false
       apply()
-      laterToggle.focus()
+      endfold.focus()
       return
     }
     if (t.closest('[data-later-show]')) {

@@ -70,7 +70,7 @@ const searchText = [p.name, p.funder.name, p.administered_by?.name, p.summary, w
   <TableCell className="c-prog">
     <a class="name" href={`/p/${p.id}/`}>{p.name}</a>
     <span class="sub" title={funder}><OrgMark org={p.funder} size={16} class="sub__mark" />{funder}</span>
-    {/* Mid and phone widths: the Route column folds away, so the route shows here. */}
+    {/* Most programmes take direct applications, so only the other routes get a line (src/styles/finder.css). */}
     <span class="sub__route"><Route access={p.access} /></span>
     {p.kind === 'partnership' && <span class="kind">Paid partnership, not a grant</span>}
   </TableCell>
@@ -138,7 +138,8 @@ const searchText = [p.name, p.funder.name, p.administered_by?.name, p.summary, w
         </span>
       )
     }
-    {state === 'none' && call?.recurring && <span class="dl__words">Each year: {call.recurring}</span>}
+    {/* Our summary of the yearly window, only when the funder's own words aren't shown above. */}
+    {state === 'none' && call?.recurring && !statusWords && <span class="dl__words">Each year: {call.recurring}</span>}
     {
       state === 'closed' && deadline && (
         <span class="dl__words dl__words--quote" title={`The deadline as the funder wrote it: “${deadline.text}”`}>
@@ -151,14 +152,7 @@ const searchText = [p.name, p.funder.name, p.administered_by?.name, p.summary, w
   <TableCell className="c-amount" title={amountFull ?? 'The funder’s page does not state an amount'}>
     {amount ? <span class="amt">{amount}</span> : <span class="amt amt--none">Amount not stated</span>}
     {amount && p.amount?.note && <span class="amt__note">{p.amount.note}</span>}
-    <Badge variant="tag" className="stamp stamp--mid" data-aging={aging || reason ? '' : undefined} title={stampTitle}>
-      {stampText}
-    </Badge>
-  </TableCell>
-
-  <TableCell className="c-rc">
-    <span class="route"><Route access={p.access} /></span>
-    <Badge variant="tag" className="stamp stamp--main" data-aging={aging || reason ? '' : undefined} title={stampTitle}>
+    <Badge variant="tag" className="stamp" data-aging={aging || reason ? '' : undefined} title={stampTitle}>
       {stampText}
     </Badge>
   </TableCell>

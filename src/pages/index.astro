@@ -2,7 +2,7 @@
 import Base from '../layouts/Base.astro'
 import Row from '../components/FinderRow.astro'
 import DigestSignup from '../components/DigestSignup.astro'
-import { ArrowDown, ArrowUp, Bird, Building2, ChevronDown, ChevronsUpDown, Droplets, LayoutGrid, Microscope, Search, SlidersHorizontal, Trees, Users, Waves, Wheat, X } from 'lucide-react'
+import { ArrowDown, ArrowUp, Bird, Building2, ChevronsUpDown, Droplets, LayoutGrid, Microscope, Search, SlidersHorizontal, Trees, Users, Waves, Wheat, X } from 'lucide-react'
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
@@ -42,12 +42,10 @@ const optInput = 'm-0 size-4 flex-none accent-primary'
 const optText = 'opt__text flex-1 underline-offset-[0.18em] group-hover/opt:underline group-has-disabled/opt:no-underline'
 const optN = 'text-xs text-muted-foreground tabular-nums'
 // The quick filters in the results summary: a row of shadcn toggles (outline Button, rounded-full), each
-// with its count in a Badge. Pressed, they take the primary fill.
+// with its count as quiet figures. Pressed, they take the primary fill.
 const quick =
-  'group/q inline-flex h-8 shrink-0 pointer-coarse:h-10 cursor-pointer snap-start items-center gap-1.5 rounded-full border border-border bg-card pr-1.5 pl-3 text-sm font-medium whitespace-nowrap text-foreground shadow-xs hover:bg-muted disabled:cursor-default disabled:opacity-50 aria-pressed:border-primary aria-pressed:bg-primary aria-pressed:text-primary-foreground'
-const quickNBase =
-  'inline-flex min-w-5 justify-center rounded-full px-1.5 text-xs leading-[1.35] font-medium tabular-nums group-aria-pressed/q:bg-brand-dark group-aria-pressed/q:text-primary-foreground'
-const quickN = `${quickNBase} bg-secondary text-secondary-foreground`
+  'group/q inline-flex h-8 shrink-0 pointer-coarse:h-10 cursor-pointer snap-start items-center gap-1.5 rounded-full border border-border bg-card px-3 text-sm font-medium whitespace-nowrap text-foreground shadow-xs hover:bg-muted disabled:cursor-default disabled:opacity-50 aria-pressed:border-primary aria-pressed:bg-primary aria-pressed:text-primary-foreground'
+const quickN = 'text-sm font-normal text-muted-foreground tabular-nums group-aria-pressed/q:text-primary-foreground/80'
 // The header's project types, each a link that sets the Approach filter (data-cat: its approaches, sorted).
 const typeIcons = { forests: Trees, coasts: Waves, wetlands: Droplets, grasslands: Wheat, wildlife: Bird, communities: Users, cities: Building2, research: Microscope }
 const types = [
@@ -362,28 +360,19 @@ const jsonLd = [
           data-summary
         >
           <button type="button" class={quick} data-quick="status:open" aria-pressed="false"><span data-ql="open">Open now</span> <b class={quickN} data-qn="open">{count('open')}</b></button>
-          <button type="button" class={quick} data-quick="within:7" aria-pressed="false">Closing within 7 days <b class={`${quickNBase} bg-warn text-warn-ink`} data-qn="soon">0</b></button>
+          <button type="button" class={quick} data-quick="within:7" aria-pressed="false">Closing within 7 days <b class={quickN} data-qn="soon">0</b></button>
           <button type="button" class={quick} data-quick="status:rolling" aria-pressed="false">Rolling <b class={quickN} data-qn="rolling">{count('rolling')}</b></button>
           <button type="button" class={quick} data-quick="status:upcoming" aria-pressed="false">Upcoming <b class={quickN} data-qn="upcoming">{count('upcoming')}</b></button>
-          <span class="mx-1 h-5 w-px shrink-0 bg-border" aria-hidden="true" data-later-sep></span>
-          <button
-            type="button"
-            class="group/later inline-flex h-8 shrink-0 pointer-coarse:h-10 cursor-pointer snap-start items-center gap-1.5 rounded-md px-2.5 text-sm font-medium whitespace-nowrap text-muted-foreground hover:bg-muted hover:text-foreground disabled:cursor-default disabled:opacity-50 aria-pressed:text-foreground"
-            data-later-toggle
-            aria-pressed="false"
-            aria-controls="later-head later-rows"
-          >
-            <ChevronDown className="size-4 transition-transform group-aria-pressed/later:rotate-180" aria-hidden="true" /><span data-later-verb>Show</span> <b class:list={[num, 'font-semibold']} data-qn="later">{later.length}</b> not open now
-          </button>
         </h2>
-        {/* Its own line, left, right above the table it describes. */}
-        <p class="flex basis-full flex-wrap items-baseline gap-x-3 text-sm text-muted-foreground">
-          <span class="whitespace-nowrap text-foreground tabular-nums" data-shown>{now.length} of {sorted.length} shown</span>
-          <span data-sort-line>Open calls first, soonest deadline first</span>
-        </p>
+        {/* One line above the table: how many show, then the filters that aren't a quick toggle, each removable.
+            The sort sentence only on phones, where the table has no header to show it. */}
+        <div class="flex basis-full flex-wrap items-center gap-x-2 gap-y-1.5 text-sm text-muted-foreground">
+          <span class="mr-1 whitespace-nowrap tabular-nums" data-shown>{now.length} of {sorted.length} shown</span>
+          <span class="mr-1 @min-[40rem]/tbl:hidden" data-sort-line>Open calls first, soonest deadline first</span>
+          <div class="contents" data-chips hidden></div>
+        </div>
       </div>
       <p class="sr-only" aria-live="polite" data-live></p>
-      <div class="flex flex-wrap gap-1.5 pb-3" data-chips hidden></div>
 
       {/* shadcn/ui Table in a Card; on phones each row becomes its own card (src/styles/finder.css). */}
       <div class="tbl-wrap" data-table>
@@ -397,11 +386,7 @@ const jsonLd = [
             </TableHead>
             <TableHead scope="col" className="h-amount" data-col="amount">
               <button type="button" data-sort="amount">Amount <span class="arrow" aria-hidden="true"><ChevronsUpDown className="i-none" /><ArrowUp className="i-asc" /><ArrowDown className="i-desc" /></span></button>
-              <button type="button" class="h-alt" data-sort="checked" data-alt-for="checked">Checked <span class="arrow" aria-hidden="true"><ChevronsUpDown className="i-none" /><ArrowUp className="i-asc" /><ArrowDown className="i-desc" /></span></button>
-            </TableHead>
-            <TableHead scope="col" className="h-rc" data-col="checked">
-              <span class="h-route">Route</span>
-              <button type="button" data-sort="checked">Checked <span class="arrow" aria-hidden="true"><ChevronsUpDown className="i-none" /><ArrowUp className="i-asc" /><ArrowDown className="i-desc" /></span></button>
+              <button type="button" class="h-checked" data-sort="checked" data-alt-for="checked">Checked <span class="arrow" aria-hidden="true"><ChevronsUpDown className="i-none" /><ArrowUp className="i-asc" /><ArrowDown className="i-desc" /></span></button>
             </TableHead>
           </TableRow>
         </TableHeader>
@@ -410,7 +395,7 @@ const jsonLd = [
         </TableBody>
         <TableBody className="later-head" id="later-head" data-later-head="" hidden>
           <TableRow>
-            <TableHead colSpan={4} scope="colgroup">
+            <TableHead colSpan={3} scope="colgroup">
               <span class="later-head__title">Not open now</span>
               <span class="later-head__hint">No call found, or closed. Listed so you can plan ahead.</span>
               <button type="button" class="linkish" data-later-hide>Hide</button>
@@ -432,7 +417,7 @@ const jsonLd = [
         aria-pressed="false"
       >
         <span class="font-bold">Not open now</span>
-        <span class="font-semibold text-link underline underline-offset-[0.18em]">Show all <b class={num} data-qn-end>{later.length}</b></span>
+        <span class="font-semibold text-link underline underline-offset-[0.18em]">Show all <b class={num} data-qn="later">{later.length}</b></span>
       </button>
 
       <DigestSignup compact />

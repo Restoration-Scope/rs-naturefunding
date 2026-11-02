@@ -61,15 +61,13 @@ describe('finder DOM contract (src/lib/finder.ts)', () => {
     }
   })
 
-  test('one status vocabulary in the status column; the route always in the Route column', () => {
+  test('one status vocabulary in the status column; the route always under the funder', () => {
     const states: Record<string, string> = { open: 'Open', rolling: 'Rolling', upcoming: 'Upcoming', closed: 'Closed', none: 'No call found' }
     for (const r of rows) {
       const status = r.querySelector('.dl > .status')
       expect(status?.getAttribute('data-state'), r.dataset.name).toBe(r.dataset.state!)
       expect(norm(status?.textContent ?? ''), r.dataset.name).toBe(states[r.dataset.state!]!)
-      for (const cell of ['.route', '.sub__route']) {
-        expect(r.querySelector(`${cell} [data-route]`)?.getAttribute('data-route'), `${r.dataset.name} ${cell}`).toBe(r.dataset.access!)
-      }
+      expect(r.querySelector('.sub__route [data-route]')?.getAttribute('data-route'), r.dataset.name).toBe(r.dataset.access!)
     }
     for (const q of d.querySelectorAll('[data-quick], [data-later-toggle]')) expect(q.getAttribute('aria-pressed'), q.textContent!).toBe('false')
   })
@@ -96,8 +94,8 @@ describe('finder DOM contract (src/lib/finder.ts)', () => {
     expect(form.contains(sheet)).toBe(true)
     expect(sheet.querySelector('[data-sheet-close]')).not.toBeNull()
     expect(sheet.querySelector('[data-sheet-done]')).not.toBeNull()
-    expect([...d.querySelectorAll('th[data-col]')].map((th) => th.getAttribute('data-col'))).toEqual(['deadline', 'amount', 'checked'])
-    expect(d.querySelectorAll('[data-sort]').length).toBe(4)
+    expect([...d.querySelectorAll('th[data-col]')].map((th) => th.getAttribute('data-col'))).toEqual(['deadline', 'amount'])
+    expect(d.querySelectorAll('[data-sort]').length).toBe(3)
     for (const k of ['open', 'soon', 'rolling', 'upcoming', 'later']) {
       const qn = d.querySelector(`[data-qn="${k}"]`)
       expect(qn, `data-qn=${k}`).not.toBeNull()
