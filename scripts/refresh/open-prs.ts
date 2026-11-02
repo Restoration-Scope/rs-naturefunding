@@ -1,6 +1,5 @@
 /**
- * Opens one pull request per Tier B draft, on a new branch from the refreshed branch (main), and starts CI on it
- * (a PR opened with the workflow token does not trigger workflows by itself). An open PR with
+ * Opens one pull request per Tier B draft, on a new branch from the refreshed branch (main). An open PR with
  * the same proposal (same page version and facts, check dates aside; see proposalKey) is kept;
  * a different one for the same page is closed as superseded.
  * A draft with nothing to change becomes an issue instead. Runs in Actions after the
@@ -85,7 +84,6 @@ for (const d of drafts) {
     run(['gh', 'pr', 'close', String(p.number), '--comment', `Superseded by ${url}.`, '--delete-branch'], { allowFail: true })
     log.push(`closed ${p.url} (superseded)`)
   }
-  run(['gh', 'workflow', 'run', 'ci.yml', '--ref', branch], { allowFail: true })
 }
 
 console.log(log.length ? log.join('\n') : 'no Tier B drafts')
