@@ -23,7 +23,7 @@ interface Props {
 const { compact = false, where = '', approach = '', id = 'digest' } = Astro.props
 const action = import.meta.env.DEV ? 'http://localhost:8790/subscribe' : 'https://email.naturefunding.org/subscribe'
 const approaches = Object.entries(approachLabels).sort((a, b) => a[1].localeCompare(b[1]))
-const label = 'mb-1.5 block text-sm font-semibold'
+const label = 'mb-1.5 block text-sm font-medium'
 // In the compact form the two choices fold away under a summary line.
 const Choices = compact ? 'details' : 'div'
 const show = DIGEST_LIVE || import.meta.env.DEV
@@ -35,7 +35,7 @@ const show = DIGEST_LIVE || import.meta.env.DEV
   {
     compact && (
       <div class="mb-3">
-        <p class="text-lg font-bold">New funding calls by email</p>
+        <p class="text-lg font-medium">New funding calls by email</p>
         <p class="text-ink-2">At most once a week, only when a call opens or a programme is added.</p>
       </div>
     )

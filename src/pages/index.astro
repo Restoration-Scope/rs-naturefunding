@@ -29,10 +29,11 @@ const states: State[] = ['open', 'rolling', 'upcoming', 'none', 'closed']
 const routes = (['direct', 'intermediary', 'invitation_only'] as const).map((k) => [k, accessLabels[k]])
 const num = 'tabular-nums'
 const skipLink = 'absolute -top-16 left-4 z-10 rounded-md bg-surface px-3.5 py-2 text-ink focus:top-3'
-// Every filter group stays open: a heading, then all its options. The badge counts its filters that are on.
+// The sidebar holds the filters the header card doesn't: status, how to apply and size. Every group stays open:
+// a heading, then all its options. The badge counts its filters that are on.
 // A legend sits on its fieldset's top edge, so the heading carries the group's top space.
 const group = 'border-b border-rule pb-3.5 last:border-b-0'
-const groupTitle = 'mb-2 flex items-center gap-2 px-0 pt-3.5 pb-0 text-sm font-semibold text-foreground'
+const groupTitle = 'mb-2 flex items-center gap-2 px-0 pt-3.5 pb-0 text-sm font-medium text-foreground'
 const groupHint = 'mt-[0.3rem] text-xs leading-[1.4] text-ink-2'
 const opt =
   'group/opt flex min-h-[1.9rem] cursor-pointer items-center gap-2 text-sm leading-[1.3] has-disabled:cursor-default has-disabled:text-ink-2 max-xl:min-h-10 max-xl:text-md'
@@ -50,7 +51,7 @@ const quickN = 'text-sm font-normal text-muted-foreground tabular-nums group-ari
 const typeIcons = { forests: Trees, coasts: Waves, wetlands: Droplets, grasslands: Wheat, wildlife: Bird, communities: Users, cities: Building2, research: Microscope }
 const types = [
   { key: 'all', label: 'All', Icon: LayoutGrid, approaches: [] as string[] },
-  // Only approaches some listing has, as those are the finder's checkboxes; a type with none is left out.
+  // Only approaches some listing has; a type with none is left out.
   ...projectTypes
     .map((t) => ({ ...t, approaches: t.approaches.filter((a) => usedApproaches.some(([k]) => k === a)), Icon: typeIcons[t.key as keyof typeof typeIcons] }))
     .filter((t) => t.approaches.length),
@@ -59,7 +60,7 @@ const types = [
 // the whole box opens it; a value still at its default reads muted. With JavaScript, src/lib/picker.ts turns
 // Where into a combobox with flags and When and Who into Base UI–style selects, with these same classes.
 const seg = 'relative min-w-0 rounded-xl border border-border'
-const segLabel = 'pointer-events-none absolute top-2.5 left-4 text-xs font-semibold text-foreground'
+const segLabel = 'pointer-events-none absolute top-2.5 left-4 text-xs font-medium text-foreground'
 const segSelect =
   'block h-full min-h-15 w-full cursor-pointer appearance-none truncate rounded-[inherit] bg-transparent pt-6 pr-6 pb-2.5 pl-4 text-md text-foreground hover:bg-muted focus-visible:outline-offset-[-2px] max-md:min-h-14 placeholder:text-muted-foreground data-empty:text-muted-foreground [&:has(option[value=""]:checked)]:text-muted-foreground'
 const description = `${stats.programmes} restoration and conservation grants, ${stats.open} open now. Every deadline and rule links to the funder’s own page. Free, with no paid listings.`
@@ -124,7 +125,7 @@ const jsonLd = [
         {
           types.map(({ label, Icon, cat, href }) => (
             <a
-              class="flex shrink-0 items-center gap-2 border-b-2 border-transparent px-3.5 pt-4 pb-3.5 text-[0.9375rem] font-medium text-muted-foreground! no-underline hover:border-border hover:text-foreground! aria-[current=true]:border-shell aria-[current=true]:font-semibold aria-[current=true]:text-foreground! max-md:px-2.5 max-md:pt-3 max-md:pb-2.5 max-md:text-sm"
+              class="flex shrink-0 items-center gap-2 border-b-2 border-transparent px-3.5 pt-4 pb-3.5 text-[0.9375rem] font-medium text-muted-foreground! no-underline hover:border-border hover:text-foreground! aria-[current=true]:border-shell aria-[current=true]:text-foreground! max-md:px-2.5 max-md:pt-3 max-md:pb-2.5 max-md:text-sm"
               href={href}
               data-cat={cat}
               aria-current={cat === '' ? 'true' : undefined}
@@ -135,8 +136,8 @@ const jsonLd = [
           ))
         }
       </nav>
-      {/* Where, when and who: each sets a filter below (src/lib/finder.ts). Without JavaScript the form sends
-          them in the address, and the full list stays below. */}
+      {/* Where, when and who: the only controls for these filters, read by src/lib/finder.ts. Without JavaScript
+          the form sends them in the address, and the full list stays below. */}
       <form class="flex items-stretch gap-3 p-4 max-md:grid max-md:grid-cols-2 max-md:gap-2 max-md:p-3" action="/#results" method="get" aria-label="Search funding" data-ask>
         <div class:list={[seg, 'flex-[1.4] max-md:col-span-2']}>
           <label class={segLabel} for="ask-where">Where</label>
@@ -148,7 +149,7 @@ const jsonLd = [
             {
               countriesByRegion.map((r) => (
                 <optgroup label={r.label}>
-                  {r.countries.map((c) => <option value={c.code}>{c.name}</option>)}
+                  {r.countries.map((c) => <option value={c.code} data-region={r.region}>{c.name}</option>)}
                 </optgroup>
               ))
             }
@@ -168,8 +169,6 @@ const jsonLd = [
           <select id="ask-applicant" name="applicant" class={segSelect}>
             <option value="">Anyone</option>
             {usedApplicants.map(([k, label]) => <option value={k}>{label}</option>)}
-            {/* Shown when the filters below pick more than one. */}
-            <option value="multi" hidden data-ask-multi></option>
           </select>
         </div>
         <Button type="submit" className="h-auto shrink-0 rounded-xl px-7 max-md:col-span-2 max-md:h-11">
@@ -192,11 +191,17 @@ const jsonLd = [
       data-form
     >
       <div class="grid grid-cols-[minmax(0,1fr)_auto] gap-2 xl:grid-cols-[minmax(0,1fr)] xl:pt-1">
+        {/* Wide screens: how many show heads the filters, on the table header's baseline (-3px). Narrower, it
+            sits above the table. */}
+        <p class="col-span-full -mt-0.75 mb-2 hidden items-baseline justify-between gap-3 text-sm text-muted-foreground xl:flex">
+          <span class="tabular-nums" data-shown>{now.length} of {sorted.length} shown</span>
+          <button type="button" class="linkish" data-reset data-clear hidden>Clear all</button>
+        </p>
         <Label htmlFor="q" className="col-span-full mb-[0.3rem] max-xl:sr-only">Search</Label>
         <Input id="q" name="q" type="search" placeholder="Search funder or place" autoComplete="off" />
         <button
           type="button"
-          class="inline-flex min-h-10 cursor-pointer items-center gap-2 rounded-md border border-input bg-card px-3 text-md font-semibold text-foreground shadow-xs hover:bg-muted xl:hidden!"
+          class="inline-flex min-h-10 cursor-pointer items-center gap-2 rounded-md border border-input bg-card px-3 text-md font-medium text-foreground shadow-xs hover:bg-muted xl:hidden!"
           data-sheet-open
           aria-controls="filters"
           aria-expanded="false"
@@ -249,38 +254,6 @@ const jsonLd = [
             </div>
           </fieldset>
 
-          <fieldset class={group} data-group="within">
-            <legend class={groupTitle}>Deadline<Badge variant="count" data-gcount="within" hidden /></legend>
-            <div>
-              <label class={opt}><input class={optInput} type="radio" name="within" value="" checked /><span class={optText}>Any time</span></label>
-              <label class={opt}><input class={optInput} type="radio" name="within" value="7" /><span class={optText}>Closes within 7 days</span></label>
-              <label class={opt}><input class={optInput} type="radio" name="within" value="30" /><span class={optText}>Within 30 days</span></label>
-              <label class={opt}><input class={optInput} type="radio" name="within" value="90" /><span class={optText}>Within 90 days</span></label>
-            </div>
-          </fieldset>
-
-          <div class={group} data-group="where">
-            <label class={groupTitle} for="where">Where the project is<Badge variant="count" data-gcount="where" hidden /></label>
-            <div>
-              <NativeSelect id="where" name="where">
-                <option value="">Anywhere</option>
-                <optgroup label="Regions">
-                  {countriesByRegion.map((r) => <option value={`r:${r.region}`}>{r.label}</option>)}
-                </optgroup>
-                {
-                  countriesByRegion.map((r) => (
-                    <optgroup label={r.label}>
-                      {r.countries.map((c) => (
-                        <option value={c.code} data-region={r.region}>{c.name}</option>
-                      ))}
-                    </optgroup>
-                  ))
-                }
-              </NativeSelect>
-              <p class={groupHint}>Programmes that may fund there, worldwide ones included. Each call sets its own countries.</p>
-            </div>
-          </div>
-
           <fieldset class={group} data-group="access">
             <legend class={groupTitle}>How to apply<Badge variant="count" data-gcount="access" hidden /></legend>
             <div>
@@ -312,35 +285,6 @@ const jsonLd = [
             </div>
           </fieldset>
 
-          <fieldset class={group} data-group="applicant">
-            <legend class={groupTitle}>Who can apply<Badge variant="count" data-gcount="applicant" hidden /></legend>
-            <div>
-              {
-                usedApplicants.map(([k, label]) => (
-                  <label class={opt}>
-                    <input class={optInput} type="checkbox" name="applicant" value={k} />
-                    <span class={optText}>{label}</span>
-                    <span class={optN} data-n={`applicant:${k}`} />
-                  </label>
-                ))
-              }
-            </div>
-          </fieldset>
-
-          <fieldset class={group} data-group="approach">
-            <legend class={groupTitle}>Approach<Badge variant="count" data-gcount="approach" hidden /></legend>
-            <div>
-              {
-                usedApproaches.map(([k, label]) => (
-                  <label class={opt}>
-                    <input class={optInput} type="checkbox" name="approach" value={k} />
-                    <span class={optText}>{label}</span>
-                    <span class={optN} data-n={`approach:${k}`} />
-                  </label>
-                ))
-              }
-            </div>
-          </fieldset>
         </div>
 
         <div class="flex items-center gap-3 border-t border-rule bg-surface px-4 pt-[0.65rem] pb-[calc(0.65rem+env(safe-area-inset-bottom))] xl:hidden!">
@@ -351,25 +295,25 @@ const jsonLd = [
     </form>
 
     {/* The results are a container: the summary, the bar and the table reflow by their own width. */}
-    <section class="results @container/tbl min-w-0" id="results" tabindex="-1" aria-labelledby="summary">
-      <div class="flex flex-wrap items-center justify-between gap-x-4 gap-y-2 pb-3 @max-[40rem]/tbl:gap-y-1.5 @max-[40rem]/tbl:pb-2">
-        {/* The summary is the quick filter. */}
+    <section class="results @container/tbl min-w-0" id="results" tabindex="-1" aria-label="Funding programmes">
+      {/* Where the sidebar is a sheet: the status as quick toggles, then how many show. Wide screens have both in
+          the sidebar. */}
+      <div class="flex flex-wrap items-center justify-between gap-x-4 gap-y-2 pb-3 xl:hidden @max-[40rem]/tbl:gap-y-1.5 @max-[40rem]/tbl:pb-2">
         <h2
           id="summary"
           class="flex flex-wrap items-center gap-2 font-sans text-base leading-[1.3] font-normal [text-wrap:initial] @max-[40rem]/tbl:mx-[calc(var(--gutter)*-1)] @max-[40rem]/tbl:snap-x @max-[40rem]/tbl:scroll-px-(--gutter) @max-[40rem]/tbl:flex-nowrap @max-[40rem]/tbl:overflow-x-auto @max-[40rem]/tbl:px-(--gutter) @max-[40rem]/tbl:py-1 @max-[40rem]/tbl:[scrollbar-width:none]"
           data-summary
         >
           <button type="button" class={quick} data-quick="status:open" aria-pressed="false"><span data-ql="open">Open now</span> <b class={quickN} data-qn="open">{count('open')}</b></button>
-          <button type="button" class={quick} data-quick="within:7" aria-pressed="false">Closing within 7 days <b class={quickN} data-qn="soon">0</b></button>
           <button type="button" class={quick} data-quick="status:rolling" aria-pressed="false">Rolling <b class={quickN} data-qn="rolling">{count('rolling')}</b></button>
           <button type="button" class={quick} data-quick="status:upcoming" aria-pressed="false">Upcoming <b class={quickN} data-qn="upcoming">{count('upcoming')}</b></button>
         </h2>
-        {/* One line above the table: how many show, then the filters that aren't a quick toggle, each removable.
-            The sort sentence only on phones, where the table has no header to show it. */}
-        <div class="flex basis-full flex-wrap items-center gap-x-2 gap-y-1.5 text-sm text-muted-foreground">
-          <span class="mr-1 whitespace-nowrap tabular-nums" data-shown>{now.length} of {sorted.length} shown</span>
-          <span class="mr-1 @min-[40rem]/tbl:hidden" data-sort-line>Open calls first, soonest deadline first</span>
-          <div class="contents" data-chips hidden></div>
+        {/* One way back to everything; each filter shows in its own control, so no chips. The sort sentence only
+            on phones, where the table has no header to show it. */}
+        <div class="flex basis-full flex-wrap items-center gap-x-3 gap-y-1 text-sm text-muted-foreground">
+          <span class="whitespace-nowrap tabular-nums" data-shown>{now.length} of {sorted.length} shown</span>
+          <span class="@min-[40rem]/tbl:hidden" data-sort-line>Open calls first, soonest deadline first</span>
+          <button type="button" class="linkish" data-reset data-clear hidden>Clear all filters</button>
         </div>
       </div>
       <p class="sr-only" aria-live="polite" data-live></p>
@@ -382,7 +326,7 @@ const jsonLd = [
           <TableRow>
             <TableHead scope="col" className="h-prog">Programme and funder</TableHead>
             <TableHead scope="col" className="h-dl" aria-sort="ascending" data-col="deadline">
-              <button type="button" data-sort="deadline">Status and deadline <span class="arrow" aria-hidden="true"><ChevronsUpDown className="i-none" /><ArrowUp className="i-asc" /><ArrowDown className="i-desc" /></span></button>
+              <button type="button" data-sort="deadline">Deadline <span class="arrow" aria-hidden="true"><ChevronsUpDown className="i-none" /><ArrowUp className="i-asc" /><ArrowDown className="i-desc" /></span></button>
             </TableHead>
             <TableHead scope="col" className="h-amount" data-col="amount">
               <button type="button" data-sort="amount">Amount <span class="arrow" aria-hidden="true"><ChevronsUpDown className="i-none" /><ArrowUp className="i-asc" /><ArrowDown className="i-desc" /></span></button>
@@ -416,8 +360,8 @@ const jsonLd = [
         aria-controls="later-head later-rows"
         aria-pressed="false"
       >
-        <span class="font-bold">Not open now</span>
-        <span class="font-semibold text-link underline underline-offset-[0.18em]">Show all <b class={num} data-qn="later">{later.length}</b></span>
+        <span class="font-medium">Not open now</span>
+        <span class="text-link underline underline-offset-[0.18em]">Show all <b class={num} data-qn="later">{later.length}</b></span>
       </button>
 
       <DigestSignup compact />

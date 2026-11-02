@@ -22,17 +22,6 @@ const amount = compactAmount(p.amount)?.replace(/–/g, '–\u2060').replace(/\u
 const usd = usdValue(p.amount)
 const where = geographyText(p.geography)
 const daysLeft = state === 'open' && deadline ? daysBetween(buildDate, deadline.date) : null
-// An open call without a date: the funder's yearly dates, or the label when it describes the window itself.
-const undatedWindow =
-  call?.recurring ?? (call?.label && /window|deadline|each year|until/i.test(call.label) ? call.label : null)
-// Rows without a date still show the funder's own words on when to apply.
-const statusWords = !call || deadline
-  ? null
-  : call.recurring && (state === 'open' || state === 'none')
-    ? (call.evidence.recurring?.quote ?? null)
-    : state === 'rolling' || state === 'upcoming' || (state === 'open' && !undatedWindow)
-      ? (call.evidence.opens?.quote ?? call.evidence.status.quote)
-      : null
 // An umbrella that funds through partners: how many of its partner programmes are open now.
 const openPartners =
   p.access === 'intermediary'
@@ -40,6 +29,33 @@ const openPartners =
     : 0
 const funder = p.administered_by ? `${p.funder.name}, run by ${p.administered_by.name}` : p.funder.name
 const left = (n: number) => (n === 0 ? 'Closes today' : n === 1 ? '1 day left' : `${n} days left`)
+// The deadline cell, read at a glance: one line on when to apply, then the status and days left. The funder's
+// own words wait on the programme page (and the date's tooltip).
+const yearly = call?.recurring ?? null
+const when: { text: string; muted?: boolean; title?: string } =
+  state === 'open'
+    ? deadline
+      ? { text: shortDate(deadline.date), title: `As the funder wrote it: “${deadline.text}”` }
+      : yearly
+        ? { text: 'Yearly call', title: yearly }
+        : { text: 'Date not stated', muted: true }
+    : state === 'rolling'
+      ? { text: 'Any time' }
+      : state === 'upcoming'
+        ? call?.opens
+          ? { text: `Opens ${shortDate(call.opens)}` }
+          : call?.expected
+            ? { text: `Expected ${call.expected}` }
+            : { text: 'Not dated yet', muted: true }
+        : state === 'closed'
+          ? { text: deadline ? shortDate(deadline.date) : 'Date not stated', muted: true }
+          : p.access === 'intermediary'
+            ? openPartners > 0
+              ? { text: `${openPartners} partner programme${openPartners === 1 ? '' : 's'} open` }
+              : { text: 'Varies by partner', muted: true }
+            : yearly
+              ? { text: 'Yearly call', muted: true, title: yearly }
+              : { text: 'No date', muted: true }
 const reason = notRechecked(p.id)
 const stampTitle = reason
   ? `Last read on the funder’s page on ${longDate(p.checked_at)}. Our daily check can’t read it now: ${recheckReasons[reason]}.`
@@ -76,77 +92,19 @@ const searchText = [p.name, p.funder.name, p.administered_by?.name, p.summary, w
   </TableCell>
 
   <TableCell className="c-dl">
-    {/* Line 1: the status and its date. Line 2: days left. Then the funder's words. */}
     <span class="dl">
-      <Badge variant="status" state={state}>{stateLabels[state]}</Badge>
-      {
-        state === 'open' && deadline && (
-          <>
-            <span class="dl__date">{shortDate(deadline.date)}</span>
-            {daysLeft !== null && (
-              <span class="dl__left" data-left data-soon={daysLeft <= 7 ? '' : undefined}>
-                {left(daysLeft)}
-              </span>
-            )}
-          </>
-        )
-      }
-      {state === 'open' && !deadline && !undatedWindow && <span class="dl__muted">Date not stated</span>}
-      {state === 'rolling' && <span class="dl__date">Any time</span>}
-      {
-        state === 'upcoming' &&
-          (call?.opens ? (
-            <span class="dl__date">Opens {shortDate(call.opens)}</span>
-          ) : call?.expected ? (
-            <span class="dl__date">Expected {call.expected}</span>
-          ) : (
-            <span class="dl__muted">Not dated yet</span>
-          ))
-      }
-      {state === 'closed' && deadline && <span class="dl__muted">{shortDate(deadline.date)}</span>}
-      {
-        state === 'none' && (p.access === 'intermediary' || call?.recurring) && (
-          <span class="dl__muted">
-            {p.access === 'intermediary'
-              ? openPartners > 0
-                ? `${openPartners} partner programme${openPartners === 1 ? '' : 's'} open now`
-                : 'Varies by partner'
-              : 'Page doesn’t say if open now'}
-          </span>
-        )
-      }
+      <span class:list={['dl__when', when.muted && 'dl__when--muted']} title={when.title}>{when.text}</span>
+      <span class="dl__meta">
+        <Badge variant="status" state={state}>{stateLabels[state]}</Badge>
+        {
+          daysLeft !== null && (
+            <span class="dl__left" data-left data-soon={daysLeft <= 7 ? '' : undefined}>
+              {left(daysLeft)}
+            </span>
+          )
+        }
+      </span>
     </span>
-    {
-      state === 'open' && deadline && (
-        <span class="dl__words" data-words title={`The deadline as the funder wrote it: “${deadline.text}”`}>
-          <span class="sr-only">The funder wrote: </span>“{deadline.text}”
-        </span>
-      )
-    }
-    {state === 'open' && !deadline && undatedWindow && <span class="dl__words">{undatedWindow}</span>}
-    {
-      statusWords && (
-        <span class="dl__words dl__words--quote" title={`As the funder wrote it: “${statusWords}”`}>
-          <span class="sr-only">The funder wrote: </span>“{statusWords}”
-        </span>
-      )
-    }
-    {
-      state === 'upcoming' && deadline && (
-        <span class="dl__words" title={`The deadline as the funder wrote it: “${deadline.text}”`}>
-          Closes {shortDate(deadline.date)}: “{deadline.text}”
-        </span>
-      )
-    }
-    {/* Our summary of the yearly window, only when the funder's own words aren't shown above. */}
-    {state === 'none' && call?.recurring && !statusWords && <span class="dl__words">Each year: {call.recurring}</span>}
-    {
-      state === 'closed' && deadline && (
-        <span class="dl__words dl__words--quote" title={`The deadline as the funder wrote it: “${deadline.text}”`}>
-          <span class="sr-only">The funder wrote: </span>“{deadline.text}”
-        </span>
-      )
-    }
   </TableCell>
 
   <TableCell className="c-amount" title={amountFull ?? 'The funder’s page does not state an amount'}>
