@@ -15,8 +15,7 @@
   // Daily; each subscriber still gets at most one email per 7 days.
   "triggers": { "crons": ["0 8 * * *"] },
   "d1_databases": [
-    // database_id is filled in when the database is created (README: Deploy). Local runs don't need it.
-    { "binding": "DB", "database_name": "naturefunding-digest", "database_id": "00000000-0000-0000-0000-000000000000" }
+    { "binding": "DB", "database_name": "naturefunding-digest", "database_id": "055ab0b7-efe7-40da-8a1c-6cfc78bafee5" }
   ],
   // Sign-up posts per IP: 5 a minute.
   "ratelimits": [{ "name": "SIGNUP_LIMIT", "namespace_id": "4801", "simple": { "limit": 5, "period": 60 } }],
