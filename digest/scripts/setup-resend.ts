@@ -1,4 +1,4 @@
-// Connects the digest to naturefunding.org's own Resend account, once: asks for a Full access API key with typing
+// Connects the digest to naturefunding.org's own Resend team, once: asks for a Full access API key with typing
 // hidden (or reuses the one in Keychain), keeps it in Keychain (service "naturefunding RESEND_API_KEY"), and adds
 // naturefunding.org as a sending domain. It prints names and statuses only, never the key, and changes no DNS: the
 // records it lists go into Cloudflare at deploy (README: Deploy). Run from the repo root in a terminal:
@@ -52,7 +52,7 @@ if (key && !(await fullAccess(key))) {
   key = ''
 }
 if (!key) {
-  console.log('In naturefunding.org’s Resend account: API Keys → Create API key → Permission "Full access" → copy it.')
+  console.log('In Resend, signed in as bernat@restorationscope.com, switch to the naturefunding team: API Keys → Create API key → Permission "Full access" → copy it.')
   spawnSync('open', ['https://resend.com/api-keys'])
   const value = await askHidden('Paste the Resend API key (typing stays hidden): ')
   if (!/^re_[A-Za-z0-9_]{20,}$/.test(value)) throw new Error('That doesn’t look like a Resend key (re_…). Nothing was stored; rerun and paste again.')
