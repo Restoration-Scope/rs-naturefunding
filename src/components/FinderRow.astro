@@ -30,25 +30,33 @@ const openPartners =
 const funder = p.administered_by ? `${p.funder.name}, run by ${p.administered_by.name}` : p.funder.name
 const left = (n: number) => (n === 0 ? 'Closes today' : n === 1 ? '1 day left' : `${n} days left`)
 // The deadline cell, read at a glance: one line on when to apply, then the status and days left. The funder's
-// own words wait on the programme page (and the date's tooltip).
+// own words wait on the programme page and the date's tooltip, in every state that has them.
 const yearly = call?.recurring ?? null
+const quoted = (s?: string | null) => (s ? `As the funder wrote it: “${s}”` : undefined)
+// Without a deadline, what the funder's page says about opening or the call's status.
+const statusQuote = call ? (call.evidence.opens?.quote ?? call.evidence.status.quote) : null
 const when: { text: string; muted?: boolean; title?: string } =
   state === 'open'
     ? deadline
-      ? { text: shortDate(deadline.date), title: `As the funder wrote it: “${deadline.text}”` }
+      ? { text: shortDate(deadline.date), title: quoted(deadline.text) }
       : yearly
         ? { text: 'Yearly call', title: yearly }
-        : { text: 'Date not stated', muted: true }
+        : { text: 'Date not stated', muted: true, title: quoted(statusQuote) }
     : state === 'rolling'
-      ? { text: 'Any time' }
+      ? { text: 'Any time', title: quoted(statusQuote) }
       : state === 'upcoming'
-        ? call?.opens
-          ? { text: `Opens ${shortDate(call.opens)}` }
-          : call?.expected
-            ? { text: `Expected ${call.expected}` }
-            : { text: 'Not dated yet', muted: true }
+        ? {
+            ...(call?.opens
+              ? { text: `Opens ${shortDate(call.opens)}` }
+              : call?.expected
+                ? { text: `Expected ${call.expected}` }
+                : deadline
+                  ? { text: `Closes ${shortDate(deadline.date)}` }
+                  : { text: 'Not dated yet', muted: true }),
+            title: deadline ? `Closes ${longDate(deadline.date)}. ${quoted(deadline.text)}` : quoted(statusQuote),
+          }
         : state === 'closed'
-          ? { text: deadline ? shortDate(deadline.date) : 'Date not stated', muted: true }
+          ? { text: deadline ? shortDate(deadline.date) : 'Date not stated', muted: true, title: quoted(deadline?.text) }
           : p.access === 'intermediary'
             ? openPartners > 0
               ? { text: `${openPartners} partner programme${openPartners === 1 ? '' : 's'} open` }

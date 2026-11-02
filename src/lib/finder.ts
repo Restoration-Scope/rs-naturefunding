@@ -213,6 +213,10 @@ export function initTableFinder() {
     f.applicant = f.applicant.filter((a) => [...askSelect('applicant').options].some((o) => o.value === a)).slice(0, 1)
     if (f.where && ![...whereSelect.options].some((o) => o.value === f.where)) f.where = ''
     if (!['', '7', '30', '90'].includes(f.within)) f.within = ''
+    // Approach comes only from the type tabs, so an older address naming other approaches (one, or a mix)
+    // widens to the tab that holds them all, or drops them when no tab does.
+    const tab = cats.find((c) => c.dataset.cat && f.approach.every((a) => c.dataset.cat!.split(' ').includes(a)))
+    f.approach = f.approach.length && tab ? tab.dataset.cat!.split(' ') : []
     const s = (sp.get('sort') ?? '').replace(/^-/, '')
     if (s === 'amount' || s === 'checked' || s === 'deadline') {
       sort = s

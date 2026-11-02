@@ -61,6 +61,17 @@ describe('finder DOM contract (src/lib/finder.ts)', () => {
     }
   })
 
+  test('a stated deadline keeps the funder’s words in the date’s tooltip, in every state', () => {
+    const byName = new Map(listings.map((l) => [l.p.name.toLowerCase(), l]))
+    for (const r of rows) {
+      const deadline = byName.get(r.dataset.name!)!.call?.deadline
+      if (!deadline) continue
+      const when = r.querySelector('.dl__when')
+      expect(when?.getAttribute('title') ?? '', r.dataset.name).toContain(deadline.text)
+      expect(norm(when?.textContent ?? ''), r.dataset.name).not.toBe('Not dated yet')
+    }
+  })
+
   test('one status vocabulary in the status column; the route always under the funder', () => {
     const states: Record<string, string> = { open: 'Open', rolling: 'Rolling', upcoming: 'Upcoming', closed: 'Closed', none: 'No call found' }
     for (const r of rows) {
