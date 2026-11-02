@@ -1,8 +1,8 @@
-// Connects the digest to naturefunding.org's own Resend team, once: asks for a Full access API key with typing
-// hidden (or reuses the one in Keychain), keeps it in Keychain (service "naturefunding RESEND_API_KEY"), and adds
+// Connects the digest to naturefunding.org's own free Resend account, once: asks for a Full access API key with
+// typing hidden, or takes it from the clipboard with --from-clipboard (or reuses the one in Keychain), keeps it in Keychain (service "naturefunding RESEND_API_KEY"), and adds
 // naturefunding.org as a sending domain. It prints names and statuses only, never the key, and changes no DNS: the
 // records it lists go into Cloudflare at deploy (README: Deploy). Run from the repo root in a terminal:
-//   bun digest/scripts/setup-resend.ts
+//   bun digest/scripts/setup-resend.ts [--from-clipboard]
 import { spawnSync } from 'node:child_process'
 import { createInterface } from 'node:readline'
 
@@ -44,19 +44,29 @@ async function resend<T>(key: string, path: string, init?: RequestInit): Promise
 }
 
 // Listing domains needs a Full access key, so it checks the key and its rights in one call.
-const fullAccess = async (key: string) => (await resend<unknown>(key, '/domains')).status === 200
+async function keyProblem(key: string) {
+  const { status, body } = await resend<{ name?: string; message?: string }>(key, '/domains')
+  if (status === 200) return ''
+  return status === 401 && body.name === 'restricted_api_key' ? 'it is a Sending access key, not Full access' : `Resend answered ${status}: ${body.message ?? body.name ?? 'no reason given'}`
+}
 
 let key = keychainRead()
-if (key && !(await fullAccess(key))) {
+if (key && (await keyProblem(key))) {
   console.log(`The key in Keychain (${SERVICE}) isn't a working Full access key; asking for a new one.`)
   key = ''
 }
 if (!key) {
-  console.log('In Resend, signed in as bernat@restorationscope.com, switch to the naturefunding team: API Keys → Create API key → Permission "Full access" → copy it.')
-  spawnSync('open', ['https://resend.com/api-keys'])
-  const value = await askHidden('Paste the Resend API key (typing stays hidden): ')
-  if (!/^re_[A-Za-z0-9_]{20,}$/.test(value)) throw new Error('That doesn’t look like a Resend key (re_…). Nothing was stored; rerun and paste again.')
-  if (!(await fullAccess(value))) throw new Error('Resend refused that key, or it isn’t Full access. Nothing was stored; rerun with a Full access key.')
+  let value: string
+  if (process.argv.includes('--from-clipboard')) {
+    value = spawnSync('pbpaste', { encoding: 'utf8' }).stdout.trim()
+  } else {
+    console.log('In naturefunding.org’s free Resend account: API Keys → Create API key → Permission "Full access" → copy it.')
+    spawnSync('open', ['https://resend.com/api-keys'])
+    value = await askHidden('Paste the Resend API key (typing stays hidden): ')
+  }
+  if (!/^re_[A-Za-z0-9_]{20,}$/.test(value)) throw new Error('That doesn’t look like a Resend key (re_…). Nothing was stored.')
+  const problem = await keyProblem(value)
+  if (problem) throw new Error(`Resend refused that key: ${problem}. Nothing was stored.`)
   keychainWrite(value)
   key = value
   console.log(`Stored in Keychain: ${SERVICE}`)
