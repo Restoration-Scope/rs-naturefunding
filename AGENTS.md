@@ -9,6 +9,6 @@ A static Astro site (Bun, TypeScript) on Cloudflare static assets. Data lives as
 - **Never infer a deadline.** If the page doesn't state it, the field stays empty.
 - **Static site.** Pages are static: no SSR adapter, and search and filters run in the browser on the built data. Separate small Workers (the MCP server, the email signup) may sit beside the site, but they never render its pages.
 - **Neutral.** No paid listings, no ranking by who pays, and the fit of a listing never depends on Restoration Scope. Restoration Scope is named openly as the builder.
-- Run `bun run check` and `bun run build` before committing.
+- Run `bun run check`, `bun run validate`, `bun test` and `bun run build` before committing; there is no CI on PRs.
 
 Astro docs: https://docs.astro.build
