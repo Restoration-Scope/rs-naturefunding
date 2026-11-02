@@ -1,6 +1,7 @@
 ---
 import Base from '../layouts/Base.astro'
 import Row from '../components/FinderRow.astro'
+import DigestSignup from '../components/DigestSignup.astro'
 import { ArrowDown, ArrowUp, Bird, Building2, ChevronDown, ChevronsUpDown, Droplets, LayoutGrid, Microscope, Search, SlidersHorizontal, Trees, Users, Waves, Wheat, X } from 'lucide-react'
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
@@ -437,7 +438,7 @@ const jsonLd = [
         <span class="font-semibold text-link underline underline-offset-[0.18em]">Show all <b class={num} data-qn-end>{later.length}</b></span>
       </button>
 
-      {/* A line for the weekly email signup can go here, under the list (a separate piece of work). */}
+      <DigestSignup compact />
 
       <div class="px-2 py-8" data-empty hidden>
         <h3 class="text-2xl" data-empty-head>Nothing matches.</h3>

@@ -1,0 +1,32 @@
+---
+import Base from '../../layouts/Base.astro'
+import DigestSignup from '../../components/DigestSignup.astro'
+
+const description =
+  'New nature restoration funding calls by email: at most one email a week, only when something is new, for the country and type of project you choose.'
+const item = 'pl-1'
+---
+
+<Base title="Weekly email" description={description} path="/digest/">
+  <div slot="band" class="wrap pt-8 pb-10">
+    <h1 class="text-[clamp(1.75rem,1.2rem+2.2vw,2.75rem)] font-extrabold tracking-[-0.02em]">New funding calls, once a week</h1>
+    <p class="mt-3 max-w-[60ch] text-xl text-shell-ink-2">
+      At most one email a week, and only when something is new. Pick a country and a type of project, or get everything.
+    </p>
+  </div>
+  <div class="wrap mt-10 grid gap-x-16 gap-y-10 lg:grid-cols-[minmax(0,36rem)_minmax(0,1fr)]">
+    <DigestSignup />
+    <div class="max-w-[60ch]">
+      <h2 class="text-2xl font-extrabold">What you get</h2>
+      <ul class="mt-3 list-disc space-y-1.5 pl-5 marker:text-ink-2">
+        <li class={item}>Calls that opened since your last email, with the deadline as the funder wrote it.</li>
+        <li class={item}>Calls the funder has announced but not opened yet.</li>
+        <li class={item}>Programmes new to naturefunding.org.</li>
+      </ul>
+      <p class="mt-4">
+        Each one links to the funder’s own page and to our listing with the evidence. To change your choices, sign up
+        again with the new ones. Every email has a one-click unsubscribe link.
+      </p>
+    </div>
+  </div>
+</Base>

@@ -1,0 +1,34 @@
+{
+  // The weekly email only, on its own hostname: the site (../wrangler.jsonc) stays static assets with no Worker script.
+  // Deploys the bundle scripts/build.ts makes (programmes and git-history events inlined), so what runs is what was tested.
+  "$schema": "../node_modules/wrangler/config-schema.json",
+  "name": "naturefunding-digest",
+  "account_id": "c72792497a89bc5db0c41066540d52ea",
+  "compatibility_date": "2026-10-30",
+  "main": "dist/worker.js",
+  "no_bundle": true,
+  "workers_dev": false,
+  "preview_urls": false,
+  // No request logs: they would hold addresses. The daily run logs counts only.
+  "observability": { "enabled": false },
+  "routes": [{ "pattern": "email.naturefunding.org", "custom_domain": true }],
+  // Daily; each subscriber still gets at most one email per 7 days.
+  "triggers": { "crons": ["0 8 * * *"] },
+  "d1_databases": [
+    // database_id is filled in when the database is created (README: Deploy). Local runs don't need it.
+    { "binding": "DB", "database_name": "naturefunding-digest", "database_id": "00000000-0000-0000-0000-000000000000" }
+  ],
+  // Sign-up posts per IP: 5 a minute.
+  "ratelimits": [{ "name": "SIGNUP_LIMIT", "namespace_id": "4801", "simple": { "limit": 5, "period": 60 } }],
+  "vars": {
+    "SITE_URL": "https://naturefunding.org",
+    "SELF_URL": "https://email.naturefunding.org",
+    "EMAIL_FROM": "naturefunding.org <updates@naturefunding.org>",
+    // 'live' sends digests. Until Bernat approves the first send, the daily run only counts who would get one.
+    "DIGEST_SENDING": "off",
+    // Resend's free plan allows 100 emails a day: digests and confirmations stay under it.
+    "DAILY_DIGEST_LIMIT": "75",
+    "DAILY_CONFIRM_LIMIT": "20"
+  }
+  // Secrets (wrangler secret put): LIST_SECRET, RESEND_API_KEY.
+}

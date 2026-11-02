@@ -1,0 +1,9 @@
+# Local runs only (bun run dev). `bun digest/scripts/setup-local.ts` writes .dev.vars from Keychain; never commit it.
+LIST_SECRET=
+RESEND_API_KEY=
+SITE_URL=http://localhost:4332
+SELF_URL=http://localhost:8790
+# Resend's own test sender and recipient: real API calls, nobody gets mail.
+EMAIL_FROM=naturefunding.org <onboarding@resend.dev>
+TEST_RECIPIENT=delivered@resend.dev
+DIGEST_SENDING=live
