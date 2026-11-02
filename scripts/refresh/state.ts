@@ -5,19 +5,22 @@
  *   request changes it, so merging the PR is what accepts a changed page.
  * - run.json: counts from the last run; the site publishes it as /health.json.
  * - links.json: the weekly link-rot pass.
+ * - programmes.json: per programme, whether every page it cites came back on the latest read,
+ *   so the site can say "not re-checked since <date>" instead of passing an old date off as current.
  */
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs'
 import { dirname, join } from 'node:path'
-import type { Source } from '../../src/data/schema'
+import type { Programme, Source } from '../../src/data/schema'
 import type { FailureKind, Fetched } from './fetch'
 import { formatJson } from './json'
-import { dateOf } from './tier'
+import { dateOf, evidenceRefs } from './tier'
 
 export const CHECKS_DIR = join(process.cwd(), 'data', 'checks')
 export const SOURCES_PATH = join(CHECKS_DIR, 'sources.json')
 export const acceptedPath = (id: string) => join(CHECKS_DIR, 'accepted', `${id}.json`)
 export const RUN_PATH = join(CHECKS_DIR, 'run.json')
 export const LINKS_PATH = join(CHECKS_DIR, 'links.json')
+export const PROGRAMMES_PATH = join(CHECKS_DIR, 'programmes.json')
 
 export type SourceState = {
   source_id: string
@@ -41,7 +44,40 @@ export type RunReport = {
   run_url: string | null
   sources: { total: number; checked: number; unchanged: number; changed: number; failed: number; failing_3_plus: number }
   calls_closed: number
-  programmes: { total: number; stale_over_30_days: number }
+  programmes: { total: number; not_rechecked: number; stale_over_30_days: number }
+}
+
+export type ProgrammeCheck = {
+  /** The programme's checked_at: the last date every page it cites was read successfully. */
+  last_read: string
+  /** False when any page it cites failed its latest read, so last_read is not being renewed. */
+  rechecked: boolean
+  /** The failure behind it (robots before blocked before the rest), or null when rechecked. */
+  reason: FailureKind | null
+  failing_sources: string[]
+}
+
+export type ProgrammeChecks = Record<string, ProgrammeCheck>
+
+const REASON_ORDER: FailureKind[] = ['robots', 'blocked', 'http', 'network', 'timeout', 'selector', 'unreadable']
+
+/** Per programme: is every source that watches it (by programme_id or by a cited URL) reading OK on its latest attempt? */
+export function programmeChecks(programmes: Programme[], sources: Source[], states: SourceStates): ProgrammeChecks {
+  const out: ProgrammeChecks = {}
+  for (const p of [...programmes].sort((a, b) => a.id.localeCompare(b.id))) {
+    const cited = new Set(evidenceRefs(p).map((r) => r.evidence.source_url))
+    const failing = sources
+      .filter((s) => s.programme_id === p.id || cited.has(s.url))
+      .filter((s) => states[s.id]?.url === s.url && states[s.id]?.last_error)
+    const kinds = new Set(failing.map((s) => states[s.id]!.last_error!.kind))
+    out[p.id] = {
+      last_read: p.checked_at,
+      rechecked: failing.length === 0,
+      reason: REASON_ORDER.find((k) => kinds.has(k)) ?? null,
+      failing_sources: failing.map((s) => s.id).sort(),
+    }
+  }
+  return out
 }
 
 export type LinkState = Record<string, { ok: boolean; status: string; checked_at: string; failures_in_row: number }>

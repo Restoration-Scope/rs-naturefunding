@@ -14,7 +14,7 @@ import { readPages, type Fetched } from './fetch'
 import { formatJson } from './json'
 import { llmFromEnv } from './llm'
 import {
-  acceptedPath, isDue, nextState, readJson, RUN_PATH, SOURCES_PATH, writeJson,
+  acceptedPath, isDue, nextState, programmeChecks, PROGRAMMES_PATH, readJson, RUN_PATH, SOURCES_PATH, writeJson,
   type Accepted, type RunReport, type SourceStates,
 } from './state'
 import { extractAndReview, proposalKey, type Change, type Draft } from './tier-b'
@@ -111,6 +111,9 @@ for (const [s, t] of tiers) {
 // Keep only watched sources, sorted, so a removed source leaves no state behind.
 const kept = sources.map((s) => s.id).filter((id) => states[id]).sort()
 writeJson(SOURCES_PATH, Object.fromEntries(kept.map((id) => [id, states[id]])))
+const checks = programmeChecks([...programmes.values()], sources, states)
+writeJson(PROGRAMMES_PATH, checks)
+const notRechecked = Object.values(checks).filter((c) => !c.rechecked).length
 const staleBefore = dateOf(new Date(now.getTime() - 30 * 86_400_000))
 const report: RunReport = {
   run_at: new Date().toISOString(),
@@ -124,14 +127,14 @@ const report: RunReport = {
     failing_3_plus: sources.filter((s) => (states[s.id]?.failures_in_row ?? 0) >= 3).length,
   },
   calls_closed: callsClosed,
-  programmes: { total: programmes.size, stale_over_30_days: [...programmes.values()].filter((p) => p.checked_at < staleBefore).length },
+  programmes: { total: programmes.size, not_rechecked: notRechecked, stale_over_30_days: [...programmes.values()].filter((p) => p.checked_at < staleBefore).length },
 }
 writeJson(RUN_PATH, report)
 
 const summary = [
   `### Refresh ${today}`,
   `Sources: ${report.sources.checked} checked, ${report.sources.unchanged} unchanged (Tier A), ${report.sources.changed} changed (Tier B), ${report.sources.failed} failed.`,
-  `Calls closed: ${callsClosed}. Programmes stale over 30 days: ${report.programmes.stale_over_30_days}.`,
+  `Calls closed: ${callsClosed}. Programmes not re-checked (a page they cite failed): ${notRechecked}. Stale over 30 days: ${report.programmes.stale_over_30_days}.`,
   ...due.filter((s) => !reads.get(s)!.ok).map((s) => {
     const r = reads.get(s) as Extract<Fetched, { ok: false }>
     return `- ✗ \`${s.id}\` ${r.kind}: ${r.message}`
