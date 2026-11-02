@@ -59,6 +59,9 @@ const types = [
 // whole segment opens it; a value still at its default reads muted. With JavaScript, src/lib/picker.ts turns
 // Where into a combobox with flags and When and Who into Base UI–style selects, with these same classes.
 const seg = 'relative min-w-0'
+// A divider between two segments fades while the segment on either side is hovered or focused.
+const divider =
+  'h-8 w-px shrink-0 bg-border transition-opacity max-md:hidden [:hover+&]:opacity-0 [:focus-within+&]:opacity-0 [&:has(+:hover)]:opacity-0 [&:has(+:focus-within)]:opacity-0'
 const segLabel = 'pointer-events-none absolute top-2.5 left-6 text-xs font-semibold text-foreground max-md:left-4'
 const segSelect =
   'block h-full min-h-15 w-full cursor-pointer appearance-none truncate rounded-full bg-transparent pt-6 pr-6 pb-2.5 pl-6 text-md text-foreground hover:bg-muted focus-visible:outline-offset-[-2px] max-md:min-h-14 max-md:rounded-xl max-md:pl-4 placeholder:text-muted-foreground data-empty:text-muted-foreground [&:has(option[value=""]:checked)]:text-muted-foreground'
@@ -144,7 +147,7 @@ const jsonLd = [
             }
           </select>
         </div>
-        <span class="h-8 w-px shrink-0 bg-border max-md:hidden" aria-hidden="true"></span>
+        <span class={divider} aria-hidden="true"></span>
         <div class:list={[seg, 'flex-1']}>
           <label class={segLabel} for="ask-within">When</label>
           <select id="ask-within" name="within" class={segSelect}>
@@ -154,7 +157,7 @@ const jsonLd = [
             <option value="90">Within 90 days</option>
           </select>
         </div>
-        <span class="h-8 w-px shrink-0 bg-border max-md:hidden" aria-hidden="true"></span>
+        <span class={divider} aria-hidden="true"></span>
         <div class:list={[seg, 'flex-1 max-md:border-l max-md:border-border']}>
           <label class={segLabel} for="ask-applicant">Who</label>
           <select id="ask-applicant" name="applicant" class={segSelect}>
@@ -164,7 +167,7 @@ const jsonLd = [
             <option value="multi" hidden data-ask-multi></option>
           </select>
         </div>
-        <Button type="submit" className="ml-1.5 h-12 shrink-0 rounded-full px-5 max-md:col-span-2 max-md:m-1 max-md:mt-1.5 max-md:h-11 max-md:rounded-xl">
+        <Button type="submit" className="mr-1.5 ml-1.5 h-12 shrink-0 rounded-full px-5 max-md:col-span-2 max-md:m-1 max-md:mt-1.5 max-md:h-11 max-md:rounded-xl">
           <Search className="size-5!" aria-hidden="true" /><span>Search</span>
         </Button>
       </form>

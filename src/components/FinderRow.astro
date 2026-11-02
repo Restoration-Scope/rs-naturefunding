@@ -1,8 +1,8 @@
 ---
 import type { Listing } from '../lib/data'
-import { AGING_DAYS, buildDate, daysBetween, listingFor, opensSortDate, programmes, sizeBucketsFor, whereCodes } from '../lib/data'
+import { AGING_DAYS, buildDate, daysBetween, listingFor, notRechecked, opensSortDate, programmes, sizeBucketsFor, whereCodes } from '../lib/data'
 import { amountText, geographyText, longDate, shortDate } from '../lib/format'
-import { approachLabels, stateLabels } from '../lib/labels'
+import { approachLabels, recheckReasons, stateLabels } from '../lib/labels'
 import { compactAmount, usdValue } from '../lib/table'
 import { Badge } from '@/components/ui/badge'
 import { TableCell, TableRow } from '@/components/ui/table'
@@ -40,7 +40,11 @@ const openPartners =
     : 0
 const funder = p.administered_by ? `${p.funder.name}, run by ${p.administered_by.name}` : p.funder.name
 const left = (n: number) => (n === 0 ? 'Closes today' : n === 1 ? '1 day left' : `${n} days left`)
-const stampTitle = `Checked against the funder’s page on ${longDate(p.checked_at)}${aging ? `. Over ${AGING_DAYS} days ago, due a recheck.` : ''}`
+const reason = notRechecked(p.id)
+const stampTitle = reason
+  ? `Last read on the funder’s page on ${longDate(p.checked_at)}. Our daily check can’t read it now: ${recheckReasons[reason]}.`
+  : `Checked against the funder’s page on ${longDate(p.checked_at)}${aging ? `. Over ${AGING_DAYS} days ago, due a recheck.` : ''}`
+const stampText = `${reason ? 'Not checked again since' : 'Checked'} ${shortDate(p.checked_at)}`
 const searchText = [p.name, p.funder.name, p.administered_by?.name, p.summary, where, p.approaches.map((a) => approachLabels[a]).join(' ')]
   .filter(Boolean)
   .join(' ')
@@ -147,15 +151,15 @@ const searchText = [p.name, p.funder.name, p.administered_by?.name, p.summary, w
   <TableCell className="c-amount" title={amountFull ?? 'The funder’s page does not state an amount'}>
     {amount ? <span class="amt">{amount}</span> : <span class="amt amt--none">Amount not stated</span>}
     {amount && p.amount?.note && <span class="amt__note">{p.amount.note}</span>}
-    <Badge variant="tag" className="stamp stamp--mid" data-aging={aging ? '' : undefined} title={stampTitle}>
-      Checked {shortDate(p.checked_at)}
+    <Badge variant="tag" className="stamp stamp--mid" data-aging={aging || reason ? '' : undefined} title={stampTitle}>
+      {stampText}
     </Badge>
   </TableCell>
 
   <TableCell className="c-rc">
     <span class="route"><Route access={p.access} /></span>
-    <Badge variant="tag" className="stamp stamp--main" data-aging={aging ? '' : undefined} title={stampTitle}>
-      Checked {shortDate(p.checked_at)}
+    <Badge variant="tag" className="stamp stamp--main" data-aging={aging || reason ? '' : undefined} title={stampTitle}>
+      {stampText}
     </Badge>
   </TableCell>
 </TableRow>

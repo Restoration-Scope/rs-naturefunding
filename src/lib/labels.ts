@@ -1,4 +1,5 @@
 import type { Programme } from '../data/schema'
+import type { RecheckFailure } from './data'
 
 type Approach = Programme['approaches'][number]
 type Applicant = NonNullable<Programme['applicant_types']>[number]
@@ -86,3 +87,13 @@ export const projectTypes: { key: string; label: string; approaches: Approach[] 
   { key: 'cities', label: 'Cities', approaches: ['urban_nature'] },
   { key: 'research', label: 'Research', approaches: ['research'] },
 ]
+
+/** Why the daily check could not re-read a page, finishing "Our daily check can't read it now: …". */
+export const recheckReasons: Record<RecheckFailure, string> = {
+  robots: 'the site asks checkers like ours not to read it',
+  blocked: 'the site turns our check away',
+  network: 'the site does not answer',
+  timeout: 'the site takes too long to answer',
+  http: 'the page shows an error',
+  not_found: 'the page is gone',
+}

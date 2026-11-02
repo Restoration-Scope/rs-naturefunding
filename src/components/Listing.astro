@@ -1,6 +1,6 @@
 ---
 import type { Listing } from '../lib/data'
-import { buildDate, daysBetween, sizeBucketsFor, whereCodes } from '../lib/data'
+import { buildDate, daysBetween, notRechecked, sizeBucketsFor, whereCodes } from '../lib/data'
 import { amountText, geographyText, keepAmountTogether, shortDate } from '../lib/format'
 import { accessLabels, applicantLabels, approachLabels, stateLabels } from '../lib/labels'
 import { Badge } from '@/components/ui/badge'
@@ -192,6 +192,6 @@ const searchText = [
   </div>
 
   <div class="relative z-1 [grid-area:check] @min-[52rem]/listings:self-center @min-[52rem]/listings:justify-self-end @min-[52rem]/listings:[grid-area:status]">
-    <CheckedTag checked={p.checked_at} />
+    <CheckedTag checked={p.checked_at} reason={notRechecked(p.id)} />
   </div>
 </li>

@@ -1,18 +1,24 @@
 ---
 import { Badge } from '@/components/ui/badge'
-import { AGING_DAYS, buildDate, daysBetween } from '../lib/data'
+import { AGING_DAYS, buildDate, daysBetween, type RecheckFailure } from '../lib/data'
+import { recheckReasons } from '../lib/labels'
 import { longDate, shortDate } from '../lib/format'
 
 interface Props {
   checked: string
   /** Name the page it was checked against first: "Source: afr100.org · Checked 1 Nov 2026". */
   source?: { url: string; label: string }
+  /** The daily check could not re-read the programme since `checked`. */
+  reason?: RecheckFailure | null
   class?: string
 }
 
-const { checked, source, class: className } = Astro.props
+const { checked, source, reason, class: className } = Astro.props
 const age = daysBetween(checked, buildDate)
 const aging = age > AGING_DAYS
+const title = reason
+  ? `Last read on the funder's page on ${longDate(checked)}. Our daily check can't read it now: ${recheckReasons[reason]}.`
+  : `Checked against the funder's page on ${longDate(checked)}`
 ---
 
 {/* With a source, a dot separates it from the date. The dot sits in the date's left padding, and the
@@ -33,7 +39,7 @@ const aging = age > AGING_DAYS
       source && "relative pl-[1.125rem] before:absolute before:left-1 before:w-2 before:text-center before:content-['·']",
     ]}
   >
-    <Badge variant="tag" data-aging={aging ? '' : undefined} title={`Checked against the funder's page on ${longDate(checked)}`}>Checked {shortDate(checked)}</Badge>
+    <Badge variant="tag" data-aging={aging || reason ? '' : undefined} title={title}>{`${reason ? 'Not checked again since' : 'Checked'} ${shortDate(checked)}`}</Badge>
   </span>
-  <span class:list={['font-semibold text-aging-text', source && 'ml-1.5']} hidden={!aging}>Over {AGING_DAYS} days ago, due a recheck</span>
+  <span class:list={['font-semibold text-aging-text', source && 'ml-1.5']} hidden={!aging || !!reason}>Over {AGING_DAYS} days ago, due a recheck</span>
 </span>

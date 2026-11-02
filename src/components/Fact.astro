@@ -1,6 +1,7 @@
 ---
 import type { Evidence } from '../data/schema'
 import { keepAmountTogether, pageLabel } from '../lib/format'
+import { notRecheckedPage } from '../lib/data'
 import CheckedTag from './CheckedTag.astro'
 
 interface Props {
@@ -37,7 +38,7 @@ const shown = value && label === 'Amount' ? keepAmountTogether(value) : value
           </blockquote>
           {/* Every fact names its page and date, the same line each time. */}
           <figcaption class="mt-[0.45rem]">
-            <CheckedTag checked={evidence.checked_at} source={{ url: evidence.source_url, label: pageLabel(evidence.source_url) }} />
+            <CheckedTag checked={evidence.checked_at} source={{ url: evidence.source_url, label: pageLabel(evidence.source_url) }} reason={notRecheckedPage(evidence.source_url)} />
           </figcaption>
         </figure>
       )

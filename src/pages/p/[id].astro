@@ -9,7 +9,7 @@ import Route from '../../components/Route.astro'
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
 import { cardClasses } from '@/components/ui/card'
-import { HIDDEN_DAYS, buildDate, daysBetween, listingFor, programmeById, programmes, sortListings } from '../../lib/data'
+import { HIDDEN_DAYS, buildDate, daysBetween, listingFor, notRechecked, notRecheckedPage, programmeById, programmes, sortListings } from '../../lib/data'
 import type { Programme } from '../../data/schema'
 import { amountText, geographyFull, joinAnd, longDate, pageLabel } from '../../lib/format'
 import {
@@ -263,9 +263,9 @@ const jsonLd = [
         <Button href={primary.href} variant={primary.quiet ? 'outline' : 'default'} width="phone" className="whitespace-normal text-center 2xl:w-full">{primary.text}</Button>
         {
           applyEvidence ? (
-            <CheckedTag checked={applyEvidence.checked_at} source={{ url: applyEvidence.source_url, label: pageLabel(applyEvidence.source_url) }} />
+            <CheckedTag checked={applyEvidence.checked_at} source={{ url: applyEvidence.source_url, label: pageLabel(applyEvidence.source_url) }} reason={notRecheckedPage(applyEvidence.source_url)} />
           ) : (
-            <CheckedTag checked={p.checked_at} />
+            <CheckedTag checked={p.checked_at} reason={notRechecked(p.id)} />
           )
         }
       </div>
