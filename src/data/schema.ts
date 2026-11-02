@@ -196,6 +196,11 @@ export const programme = z
     window,
     amount: amount.nullable(),
     co_finance_required: z.boolean().nullable(),
+    /** The funder requires applicants to apply as a consortium of several organisations. Missing means not stated. */
+    consortium_required: z
+      .boolean()
+      .optional()
+      .describe('true when the funder requires applicants to apply as a consortium of several organisations; missing when the pages we read don’t say.'),
     /** What the funder asks grantees to report, in our words. */
     reporting: z.string().min(10).max(600).nullable(),
     calls: z.array(call).max(20),
@@ -207,6 +212,7 @@ export const programme = z
       window: evidence.optional(),
       amount: evidence.optional(),
       co_finance_required: evidence.optional(),
+      consortium_required: evidence.optional(),
       reporting: evidence.optional(),
     }),
     /** The oldest evidence date: every fact above was read on or after this day. */
@@ -223,6 +229,7 @@ export const programme = z
       window: p.window !== 'unspecified',
       amount: p.amount !== null,
       co_finance_required: p.co_finance_required !== null,
+      consortium_required: p.consortium_required !== undefined,
       reporting: p.reporting !== null,
     }
     for (const [field, isStated] of Object.entries(stated)) {
