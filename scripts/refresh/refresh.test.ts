@@ -254,10 +254,10 @@ describe('blocked fetch', () => {
     const robots = { ...nextState(null, other, { ok: false, url: URL_B, kind: 'robots', message: 'disallowed' }, now) }
     const p = fixture()
     expect(programmeChecks([p], [source, other], { [source.id]: failed, [other.id]: robots })[p.id]).toEqual({
-      last_read: p.checked_at, rechecked: false, reason: 'robots', failing_sources: ['example-call', 'example-eligibility'],
+      reason: 'robots', failing_sources: ['example-call', 'example-eligibility'],
     })
     const ok = nextState(failed, source, { ok: true, url: URL_A, finalUrl: URL_A, status: 200, pdf: false, text: 'x', hash: 'sha256:aa' }, now)
-    expect(programmeChecks([p], [source], { [source.id]: ok })[p.id]).toEqual({ last_read: p.checked_at, rechecked: true, reason: null, failing_sources: [] })
+    expect(programmeChecks([p], [source], { [source.id]: ok })[p.id]).toEqual({ reason: null, failing_sources: [] })
   })
   test('weekly sources wait a week after a good read, but a failed one retries', () => {
     const weekly = { ...source, cycle: 'weekly' as const }
