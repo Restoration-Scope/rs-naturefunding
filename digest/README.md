@@ -17,6 +17,7 @@ It runs as its own Cloudflare Worker on its own hostname, so the site stays stat
 ## Run locally
 
 ```bash
+bun digest/scripts/setup-resend.ts     # once: the Resend key into Keychain (hidden prompt)
 bun digest/scripts/setup-local.ts      # writes digest/.dev.vars (names only printed)
 cd digest && bun run db:local          # creates the local D1 tables
 bun run dev                            # http://localhost:8790, with the site's dev server on :4332
@@ -37,7 +38,7 @@ Writes `digest/preview/*.html` and `.txt`. To send the launch-week digest throug
 
 ## Deploy (not done; needs Bernat)
 
-1. Resend: verify `naturefunding.org` as a sending domain (DNS records in Cloudflare), keep open and click tracking off, and create a sending-only key for that domain.
+1. Resend: naturefunding.org has its own free Resend account, apart from Restoration Scope's, so the digest never uses up Restoration Scope's daily and monthly allowance. `bun digest/scripts/setup-resend.ts` stores its Full access key in Keychain, adds the domain with tracking off, and lists the DNS records; add them in Cloudflare, then create a sending-only key for the domain as the Worker's `RESEND_API_KEY`.
 2. `bunx wrangler d1 create naturefunding-digest`, put its id in `wrangler.jsonc`, then apply `schema.sql` with `--remote`.
 3. `wrangler secret put LIST_SECRET` (32 random bytes) and `RESEND_API_KEY`, through `/env-management`.
 4. Deploy: the deploy workflow checks out with `fetch-depth: 0` (the events need history), runs `bun digest/scripts/build.ts`, then `bunx wrangler deploy --config digest/wrangler.jsonc`. The token needs D1 edit and Workers Routes edit on the zone.
