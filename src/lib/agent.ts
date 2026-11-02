@@ -5,7 +5,7 @@ import type { Call, Evidence, Programme } from '../data/schema'
 import { AGING_DAYS, HIDDEN_DAYS, buildDate, listingFor, programmeById, programmes, sortListings, stats, type Listing } from './data'
 import { amountText, geographyFull, geographyText, joinAnd, longDate } from './format'
 import { accessHelp, accessLabels, applicantLabels, approachLabels } from './labels'
-import { REPO_URL, RS_URL, SITE_NAME, absolute, funderCorrectionUrl, reportProblemUrl } from './site'
+import { RS_URL, SITE_NAME, absolute, funderCorrectionUrl, reportProblemUrl } from './site'
 import { LLMS_FULL_PAGES, twinPath } from './twins'
 import { evidenceOf } from '../data/load'
 
@@ -266,7 +266,6 @@ export function llmsTxt(listings: Listing[]): string {
     `- [data.csv](${absolute('/data.csv')}): one row per call, plus one row for each programme with no call, for spreadsheets`,
     `- [feed.xml](${absolute('/feed.xml')}): Atom feed of the calls of listed programmes, up to the 100 most recently updated; a call that opens, closes or changes its deadline date gets a new entry`,
     `- [health.json](${absolute('/health.json')}): the latest run of the daily checking job: how many sources were due, unchanged, changed or could not be read`,
-    `- [Source on GitHub](${REPO_URL}): data files, code and history`,
   ]
   for (const g of groups) {
     const ls = sorted(listings.filter(g.test))

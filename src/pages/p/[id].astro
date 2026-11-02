@@ -20,7 +20,8 @@ import {
   approachLabels,
   stateLabels,
 } from '../../lib/labels'
-import { RS_REPORTING_URL, absolute, funderCorrectionUrl, reportProblemUrl } from '../../lib/site'
+import { ArrowLeft } from 'lucide-react'
+import { CONTACT_EMAIL, RS_REPORTING_URL, absolute, funderCorrectionUrl, reportProblemUrl } from '../../lib/site'
 
 export const getStaticPaths = (() => programmes.map((p) => ({ params: { id: p.id }, props: { p } }))) satisfies GetStaticPaths
 
@@ -148,7 +149,7 @@ const jsonLd = [
   noindex={hidden}
 >
   <div slot="band" class="wrap pt-4 pb-6 md:pt-5 md:pb-8 [&_a]:text-shell-ink">
-    <a class="mb-4 inline-block text-md text-shell-ink-2! pointer-coarse:-my-2.5 pointer-coarse:mb-1.5 pointer-coarse:py-2.5" href="/">← All funding</a>
+    <a class="group/back mb-4 inline-flex items-center gap-1.5 text-md text-shell-ink-2! pointer-coarse:-my-2.5 pointer-coarse:mb-1.5 pointer-coarse:py-2.5" href="/"><ArrowLeft className="size-4 shrink-0 transition-transform group-hover/back:-translate-x-0.5" aria-hidden="true" />All funding</a>
     <h1 class="max-w-[30ch] text-[clamp(1.5rem,1.1rem+1.8vw,2.5rem)] leading-[1.12] tracking-[-0.01em]">{p.name}</h1>
     {/* Phones: two lines at most, so the apply box starts higher; every name stays in the Run by fact. */}
     <p class="mt-[0.6rem] text-lg text-shell-ink-2 max-md:line-clamp-2" title={p.administered_by ? `${p.funder.name}, run by ${p.administered_by.name}` : undefined}>
@@ -424,7 +425,7 @@ const jsonLd = [
         <Button href={reportProblemUrl(p.name, p.id)} variant="outline" width="phone">Report a problem</Button>
         <Button href={funderCorrectionUrl(p.name, p.id)} variant="outline" width="phone">Are you this funder? Correct this listing</Button>
       </div>
-      <p class="mt-[0.6rem] text-sm text-ink-2">Both open a pre-filled issue on GitHub (a free account is needed). Listings can’t be bought.</p>
+      <p class="mt-[0.6rem] text-sm text-ink-2">Both open an email to {CONTACT_EMAIL} with this listing filled in. Listings can’t be bought.</p>
     </section>
   </div>
 </Base>

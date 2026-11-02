@@ -1,6 +1,6 @@
 ---
 import '../styles/global.css'
-import { RS_URL, REPO_URL, SITE_NAME, absolute, generalIssueUrl } from '../lib/site'
+import { RS_URL, SITE_NAME, absolute, generalReportUrl } from '../lib/site'
 import { twinPath } from '../lib/twins'
 
 interface Props {
@@ -102,10 +102,9 @@ const ld = jsonLd ? (Array.isArray(jsonLd) ? jsonLd : [jsonLd]) : []
           <li><a href="/data.json">data.json</a></li>
           <li><a href="/data.csv">data.csv</a></li>
           <li><a href="/feed.xml">Atom feed</a></li>
-          <li><a href={REPO_URL}>Source on GitHub</a></li>
-          <li><a href={generalIssueUrl}>Report a problem</a></li>
+          <li><a href={generalReportUrl}>Report a problem</a></li>
         </ul>
-        <p class="lg:col-span-full">Data <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>. Code MIT.</p>
+        <p class="lg:col-span-full">Data <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>.</p>
       </div>
     </footer>
   </body>

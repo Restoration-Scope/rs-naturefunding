@@ -44,7 +44,7 @@ const reason = notRechecked(p.id)
 const stampTitle = reason
   ? `Last read on the funder’s page on ${longDate(p.checked_at)}. Our daily check can’t read it now: ${recheckReasons[reason]}.`
   : `Checked against the funder’s page on ${longDate(p.checked_at)}${aging ? `. Over ${AGING_DAYS} days ago, due a recheck.` : ''}`
-const stampText = `${reason ? 'Not checked again since' : 'Checked'} ${shortDate(p.checked_at)}`
+const stampText = `${reason ? 'Last confirmed' : 'Checked'} ${shortDate(p.checked_at)}`
 const searchText = [p.name, p.funder.name, p.administered_by?.name, p.summary, where, p.approaches.map((a) => approachLabels[a]).join(' ')]
   .filter(Boolean)
   .join(' ')

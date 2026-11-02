@@ -8,7 +8,7 @@ import { Button } from '@/components/ui/button'
 import { cardClasses } from '@/components/ui/card'
 import { AGING_DAYS, HIDDEN_DAYS, programmes, stats } from '../lib/data'
 import { amountText, longDate } from '../lib/format'
-import { REPO_URL, RS_URL, absolute, generalIssueUrl } from '../lib/site'
+import { CONTACT_EMAIL, RS_URL, absolute, generalReportUrl } from '../lib/site'
 
 const description =
   'Who builds naturefunding.org, how every listing is checked against the funder’s own page, and how to use and correct the open data.'
@@ -92,18 +92,30 @@ const key =
     <h2 id="what">What we list</h2>
     <p>
       Funding for nature restoration and conservation projects: forests and land, rivers and wetlands, coasts and the
-      sea, and the species that live there. We list a programme when its own website says who can apply, where and
-      how. A few listings, such as paid tree-planting partnerships, are not grants; their summaries say so.
+      sea, and the species that live there.
     </p>
-    <p>We leave out, for now:</p>
+    <p>
+      The list is for project operators: organisations, and people leading field projects, who do restoration or
+      conservation work on the ground. We list a programme when such an operator can apply as the project lead, whether
+      a government or a foundation pays, and when its own website says who can apply, where and how. Grants for
+      equipment a field project uses count. A few listings, such as paid tree-planting partnerships, are not grants;
+      their summaries say so.
+    </p>
+    <p>So we leave out:</p>
     <ul>
-      <li>funders whose website blocks automated reading, because we could not re-check their facts every day;</li>
+      <li>payments to farmers and landowners for how they manage their own land;</li>
+      <li>grants only for students or for academic research;</li>
+      <li>grants that only public agencies can apply for.</li>
+    </ul>
+    <p>And we leave out, for now:</p>
+    <ul>
+      <li>funders whose website we can’t check again every day, so their facts would go out of date;</li>
       <li>prizes for past work, and programmes whose page only describes an old or suspended round;</li>
       <li>second rounds that are by invitation only, since the first round is where you apply;</li>
       <li>anything we only found in another directory and could not confirm on the funder’s own page.</li>
     </ul>
     <p>
-      So a missing funder may simply not be checked yet. <a href={generalIssueUrl}>Tell us about it</a> and we will
+      So a missing funder may simply not be checked yet. <a href={generalReportUrl}>Tell us about it</a> and we will
       look.
     </p>
 
@@ -196,11 +208,12 @@ const key =
     <h2 id="corrections">Corrections</h2>
     <p>
       Every programme page has a <strong>Report a problem</strong> link and, for funders, a{' '}
-      <strong>Correct this listing</strong> link. Both open a pre-filled issue on GitHub, which needs a free account. We change a listing only after checking the correction
-      against the funder’s own page.
+      <strong>Correct this listing</strong> link. Both open an email to{' '}
+      <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a> with the listing filled in. We change a listing only
+      after checking the correction against the funder’s own page.
     </p>
     <p>For anything else on the site, such as a missing funder or a broken page:</p>
-    <p><Button href={generalIssueUrl} variant="outline">Report a problem</Button></p>
+    <p><Button href={generalReportUrl} variant="outline">Report a problem</Button></p>
 
     <h2 id="open-data">Open data</h2>
     <p>
@@ -216,8 +229,7 @@ const key =
     </ul>
     <p>
       Quotes from funder pages are their authors’ words and are not covered by our licence; we keep them short and
-      always link the source. The code is MIT-licensed and{' '}
-      <a href={REPO_URL}>public on GitHub</a>.
+      always link the source.
     </p>
     <p><Button href="/">Find funding</Button></p>
 

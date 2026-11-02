@@ -57,18 +57,14 @@ const types = [
     .map((t) => ({ ...t, approaches: t.approaches.filter((a) => usedApproaches.some(([k]) => k === a)), Icon: typeIcons[t.key as keyof typeof typeIcons] }))
     .filter((t) => t.approaches.length),
 ].map((t) => ({ ...t, cat: [...t.approaches].sort().join(' '), href: t.approaches.length ? `/?approach=${t.approaches.join(',')}` : '/' }))
-// The search bar's segments: a bold label over a borderless select. The select fills the segment, so the
-// whole segment opens it; a value still at its default reads muted. With JavaScript, src/lib/picker.ts turns
+// The search fields: a bold label over a borderless select, in a bordered box. The select fills the box, so
+// the whole box opens it; a value still at its default reads muted. With JavaScript, src/lib/picker.ts turns
 // Where into a combobox with flags and When and Who into Base UI–style selects, with these same classes.
-const seg = 'relative min-w-0'
-// A divider between two segments fades while the segment on either side is hovered or focused.
-const divider =
-  'h-8 w-px shrink-0 bg-border transition-opacity max-md:hidden [:hover+&]:opacity-0 [:focus-within+&]:opacity-0 [&:has(+:hover)]:opacity-0 [&:has(+:focus-within)]:opacity-0'
-const segLabel = 'pointer-events-none absolute top-2.5 left-6 text-xs font-semibold text-foreground max-md:left-4'
+const seg = 'relative min-w-0 rounded-xl border border-border'
+const segLabel = 'pointer-events-none absolute top-2.5 left-4 text-xs font-semibold text-foreground'
 const segSelect =
-  'block h-full min-h-15 w-full cursor-pointer appearance-none truncate rounded-full bg-transparent pt-6 pr-6 pb-2.5 pl-6 text-md text-foreground hover:bg-muted focus-visible:outline-offset-[-2px] max-md:min-h-14 max-md:rounded-xl max-md:pl-4 placeholder:text-muted-foreground data-empty:text-muted-foreground [&:has(option[value=""]:checked)]:text-muted-foreground'
-const description =
-  'A free directory of funding for nature restoration and conservation. Every deadline, amount and eligibility rule links to the funder’s own page, with the words it rests on and the date we read it.'
+  'block h-full min-h-15 w-full cursor-pointer appearance-none truncate rounded-[inherit] bg-transparent pt-6 pr-6 pb-2.5 pl-4 text-md text-foreground hover:bg-muted focus-visible:outline-offset-[-2px] max-md:min-h-14 placeholder:text-muted-foreground data-empty:text-muted-foreground [&:has(option[value=""]:checked)]:text-muted-foreground'
+const description = `${stats.programmes} restoration and conservation grants, ${stats.open} open now. Every deadline and rule links to the funder’s own page. Free, with no paid listings.`
 
 const jsonLd = [
   {
@@ -101,49 +97,50 @@ const jsonLd = [
 ---
 
 <Base
-  title="naturefunding.org: funding for nature restoration, checked against each funder’s page"
+  title="Grants for nature restoration and conservation | naturefunding.org"
   description={description}
   path="/"
   nav="finder"
   jsonLd={jsonLd}
 >
-  <div slot="band" class="pb-6 max-md:pb-4">
-    {/* What the site is, on the green, over the questions that narrow it down. */}
-    <div class="wrap pt-2 pb-5 text-center max-md:pt-1 max-md:pb-4 max-md:text-left">
-      <h1 class="mx-auto max-w-[38ch] text-balance text-[clamp(1.375rem,1rem+1.1vw,2rem)] leading-[1.15] tracking-[-0.01em] text-shell-ink">Funding for nature restoration and conservation, checked against each funder’s own page.</h1>
-      <p class="mx-auto mt-2 max-w-[78ch] text-sm text-balance text-shell-ink-2">
-        <span class="max-md:hidden">Every deadline, amount and eligibility rule links to the funder’s own page, with the words it rests on and the date we read it.</span>{' '}
-        Free, with no paid listings or paid ranking. Built openly by Restoration Scope.
-        {stats.lastChecked && <span class="max-md:hidden"> Last checked {longDate(stats.lastChecked)}.</span>}
+  <div slot="band" class="pb-[6.5rem] max-md:pb-16">
+    {/* What the site is, on the green: the title on the left, the words beside it. */}
+    <div class="wrap grid items-end gap-x-14 gap-y-3 pt-3 lg:grid-cols-[5fr_7fr] max-md:pt-1">
+      <h1 class="text-balance text-[clamp(1.875rem,1.2rem+1.4vw,2.5rem)] leading-[1.08] tracking-[-0.01em] text-shell-ink">Grants for nature restoration and conservation</h1>
+      <p class="text-[0.9375rem] leading-[1.55] text-shell-ink-2">
+        {/* Answers "what is this" on its own, for search snippets and AI answers; phones keep the first two sentences. */}
+        <span class="text-shell-ink">{`${stats.programmes} grants and funding programmes for nature restoration and conservation: forests and tree planting, coasts, wetlands, wildlife and more. ${stats.open} ${stats.open === 1 ? 'is' : 'are'} open now.`}</span>{' '}
+        <span class="max-md:hidden">
+          For nonprofits and community groups leading projects on the ground. Every deadline, amount and eligibility rule links to the funder’s own page, with its exact words and the date we checked it. Free: funders can’t pay to be listed.
+          {stats.lastChecked && ` Last checked ${longDate(stats.lastChecked)}.`}
+        </span>
       </p>
     </div>
-    {/* Project types, like the category row of a booking site. Links, so they work without JavaScript too. */}
-    <nav class="wrap flex justify-center gap-x-7 overflow-x-auto [scrollbar-width:none] max-lg:justify-start max-md:gap-x-5" aria-label="Project types">
-      {
-        types.map(({ label, Icon, cat, href }) => (
-          <a
-            class="flex shrink-0 flex-col items-center gap-1 border-b-2 border-transparent pt-1 pb-2 text-sm font-medium text-shell-ink-2! no-underline hover:border-shell-ink-2/50 hover:text-shell-ink! aria-[current=true]:border-shell-ink aria-[current=true]:text-shell-ink!"
-            href={href}
-            data-cat={cat}
-            aria-current={cat === '' ? 'true' : undefined}
-          >
-            <Icon className="size-6" strokeWidth={1.5} aria-hidden="true" />
-            {label}
-          </a>
-        ))
-      }
-    </nav>
-    {/* Where, when and who: each sets a filter below (src/lib/finder.ts). Without JavaScript the form sends
-        them in the address, and the full list stays below. */}
-    <div class="wrap mt-4">
-      <form
-        class="mx-auto flex max-w-[54rem] items-center rounded-full bg-card p-1.5 text-foreground shadow-[0_8px_28px_rgb(0_0_0/0.25)] max-md:grid max-md:grid-cols-2 max-md:rounded-2xl max-md:p-1"
-        action="/#results"
-        method="get"
-        aria-label="Search funding"
-        data-ask
-      >
-        <div class:list={[seg, 'flex-[1.4] max-md:col-span-2 max-md:border-b max-md:border-border']}>
+  </div>
+
+  {/* One card over the band's edge: project types as tabs, then where, when and who. */}
+  <div class="wrap relative -mt-[4.5rem] max-md:-mt-12">
+    <div class="rounded-2xl bg-card text-foreground shadow-[0_12px_32px_rgb(27_39_34/0.18)]">
+      {/* Project types, like the category row of a booking site. Links, so they work without JavaScript too. */}
+      <nav class="flex gap-1 overflow-x-auto px-4 shadow-[inset_0_-1px_var(--color-border)] [scrollbar-width:none] max-md:px-2" aria-label="Project types">
+        {
+          types.map(({ label, Icon, cat, href }) => (
+            <a
+              class="flex shrink-0 items-center gap-2 border-b-2 border-transparent px-3.5 pt-4 pb-3.5 text-[0.9375rem] font-medium text-muted-foreground! no-underline hover:border-border hover:text-foreground! aria-[current=true]:border-shell aria-[current=true]:font-semibold aria-[current=true]:text-foreground! max-md:px-2.5 max-md:pt-3 max-md:pb-2.5 max-md:text-sm"
+              href={href}
+              data-cat={cat}
+              aria-current={cat === '' ? 'true' : undefined}
+            >
+              <Icon className="size-5 max-md:size-4.5" strokeWidth={1.75} aria-hidden="true" />
+              {label}
+            </a>
+          ))
+        }
+      </nav>
+      {/* Where, when and who: each sets a filter below (src/lib/finder.ts). Without JavaScript the form sends
+          them in the address, and the full list stays below. */}
+      <form class="flex items-stretch gap-3 p-4 max-md:grid max-md:grid-cols-2 max-md:gap-2 max-md:p-3" action="/#results" method="get" aria-label="Search funding" data-ask>
+        <div class:list={[seg, 'flex-[1.4] max-md:col-span-2']}>
           <label class={segLabel} for="ask-where">Where</label>
           <select id="ask-where" name="where" class={segSelect}>
             <option value="">Anywhere</option>
@@ -159,7 +156,6 @@ const jsonLd = [
             }
           </select>
         </div>
-        <span class={divider} aria-hidden="true"></span>
         <div class:list={[seg, 'flex-1']}>
           <label class={segLabel} for="ask-within">When</label>
           <select id="ask-within" name="within" class={segSelect}>
@@ -169,8 +165,7 @@ const jsonLd = [
             <option value="90">Within 90 days</option>
           </select>
         </div>
-        <span class={divider} aria-hidden="true"></span>
-        <div class:list={[seg, 'flex-1 max-md:border-l max-md:border-border']}>
+        <div class:list={[seg, 'flex-1']}>
           <label class={segLabel} for="ask-applicant">Who</label>
           <select id="ask-applicant" name="applicant" class={segSelect}>
             <option value="">Anyone</option>
@@ -179,14 +174,14 @@ const jsonLd = [
             <option value="multi" hidden data-ask-multi></option>
           </select>
         </div>
-        <Button type="submit" className="mr-1.5 ml-1.5 h-12 shrink-0 rounded-full px-5 max-md:col-span-2 max-md:m-1 max-md:mt-1.5 max-md:h-11 max-md:rounded-xl">
+        <Button type="submit" className="h-auto shrink-0 rounded-xl px-7 max-md:col-span-2 max-md:h-11">
           <Search className="size-5!" aria-hidden="true" /><span>Search</span>
         </Button>
       </form>
     </div>
   </div>
 
-  <div class="wrap mt-5 grid grid-cols-[minmax(0,1fr)] gap-3 xl:mt-6 xl:grid-cols-[15.375rem_minmax(0,1fr)] xl:gap-3">
+  <div class="wrap mt-6 grid grid-cols-[minmax(0,1fr)] gap-3 xl:mt-8 xl:grid-cols-[15.375rem_minmax(0,1fr)] xl:gap-3">
     <a class={skipLink} href="#results">Skip to results</a>
     {/* Wide screens: the filters ride in a sticky column. Phones and tablets: they open in a sheet.
         The scroller's own padding keeps every focus ring inside it (the ring reaches 5px out), and its 1rem

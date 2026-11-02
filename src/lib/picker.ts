@@ -38,7 +38,7 @@ export function picker(sel: HTMLSelectElement, search = false) {
   }
   const flagBox = document.createElement('span')
   // Centred on the field's text, which sits 7px under the field's middle (pt-6 against pb-2.5).
-  flagBox.className = 'pointer-events-none absolute top-[calc(50%+0.5px)] left-6 flex max-md:left-4'
+  flagBox.className = 'pointer-events-none absolute top-[calc(50%+0.5px)] left-4 flex'
 
   const list = document.createElement('div')
   list.id = listId
@@ -114,8 +114,7 @@ export function picker(sel: HTMLSelectElement, search = false) {
       trigger.toggleAttribute('data-empty', !sel.value)
     }
     flagBox.innerHTML = flag(sel.value)
-    trigger.classList.toggle('pl-[3.25rem]!', !!flagBox.innerHTML)
-    trigger.classList.toggle('max-md:pl-[2.75rem]!', !!flagBox.innerHTML)
+    trigger.classList.toggle('pl-[2.75rem]!', !!flagBox.innerHTML)
     for (const x of opts) x.setAttribute('aria-selected', String(x.dataset.value === sel.value))
   }
 

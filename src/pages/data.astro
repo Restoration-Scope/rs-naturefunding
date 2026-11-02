@@ -2,7 +2,7 @@
 import Base from '../layouts/Base.astro'
 import { AGING_DAYS, HIDDEN_DAYS } from '../lib/data'
 import { fieldDocs, fileDocs } from '../lib/data-docs'
-import { REPO_URL, absolute } from '../lib/site'
+import { absolute } from '../lib/site'
 
 const description =
   'The naturefunding.org open data: every file, every field of data.json, and how to read a fact, its quote and the date it was checked.'
@@ -59,8 +59,7 @@ const key =
       <li><a href="/llms.txt">llms.txt</a>: an index for AI agents, with a Markdown copy of every page; <a href="/llms-full.txt">llms-full.txt</a> is all of them in one file.</li>
     </ul>
     <p>
-      The files are built from the main branch of the <a href={REPO_URL}>public repository</a> each time the site is
-      deployed. No key or sign-up is needed.
+      The files are rebuilt each time the site is deployed. No key or sign-up is needed.
     </p>
 
     <h2 id="reading">How to read a fact</h2>
@@ -139,8 +138,7 @@ const key =
     <p>
       The data is licensed <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>: you can reuse it,
       including commercially, if you credit “naturefunding.org (Restoration Scope)”, link to https://naturefunding.org
-      and the licence, and say if you changed the data. Quotes are the funders’ words and are not covered. The code
-      is MIT-licensed.
+      and the licence, and say if you changed the data. Quotes are the funders’ words and are not covered.
     </p>
   </article>
 </Base>
