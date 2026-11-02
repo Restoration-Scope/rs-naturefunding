@@ -48,3 +48,6 @@ export const generalReportUrl = mailUrl(
   'naturefunding.org: a problem or a missing funder',
   ['What is wrong, or which funder is missing? A link to the funder’s own page helps most.', '', ''].join('\n'),
 )
+
+/** The weekly email Worker (digest/) isn't deployed yet; until it is, built pages show no sign-up form. */
+export const DIGEST_LIVE = false

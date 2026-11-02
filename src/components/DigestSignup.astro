@@ -8,6 +8,7 @@ import { NativeSelect } from '@/components/ui/native-select'
 import { CONSENT, CURRENT_CONSENT } from '../../digest/src/consent'
 import { countriesByRegion } from '../lib/geo'
 import { approachLabels } from '../lib/labels'
+import { DIGEST_LIVE } from '../lib/site'
 
 interface Props {
   /** Email and button on one line; the country and project type sit behind a disclosure. */
@@ -25,7 +26,10 @@ const approaches = Object.entries(approachLabels).sort((a, b) => a[1].localeComp
 const label = 'mb-1.5 block text-sm font-semibold'
 // In the compact form the two choices fold away under a summary line.
 const Choices = compact ? 'details' : 'div'
+const show = DIGEST_LIVE || import.meta.env.DEV
 ---
+
+{show && (
 
 <form class:list={['max-w-xl', compact && 'mt-10']} action={action} method="post" aria-label="Weekly email">
   {
@@ -87,3 +91,4 @@ const Choices = compact ? 'details' : 'div'
     {CONSENT[CURRENT_CONSENT]} We keep only your address and these choices. <a href="/privacy/#weekly-email">Privacy</a>
   </p>
 </form>
+)}
