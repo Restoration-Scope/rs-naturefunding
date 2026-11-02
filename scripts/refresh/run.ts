@@ -113,7 +113,7 @@ const kept = sources.map((s) => s.id).filter((id) => states[id]).sort()
 writeJson(SOURCES_PATH, Object.fromEntries(kept.map((id) => [id, states[id]])))
 const checks = programmeChecks([...programmes.values()], sources, states)
 writeJson(PROGRAMMES_PATH, checks)
-const notRechecked = Object.values(checks).filter((c) => !c.rechecked).length
+const notRechecked = Object.values(checks).filter((c) => c.reason !== null).length
 const staleBefore = dateOf(new Date(now.getTime() - 30 * 86_400_000))
 const report: RunReport = {
   run_at: new Date().toISOString(),

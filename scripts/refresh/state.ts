@@ -47,12 +47,9 @@ export type RunReport = {
   programmes: { total: number; not_rechecked: number; stale_over_30_days: number }
 }
 
+/** The date stays the programme's checked_at, which only moves when every page it cites reads. */
 export type ProgrammeCheck = {
-  /** The programme's checked_at: the last date every page it cites was read successfully. */
-  last_read: string
-  /** False when any page it cites failed its latest read, so last_read is not being renewed. */
-  rechecked: boolean
-  /** The failure behind it (robots before blocked before the rest), or null when rechecked. */
+  /** Why a page it cites failed its latest read (robots before blocked before the rest), or null when all read. */
   reason: FailureKind | null
   failing_sources: string[]
 }
@@ -71,8 +68,6 @@ export function programmeChecks(programmes: Programme[], sources: Source[], stat
       .filter((s) => states[s.id]?.url === s.url && states[s.id]?.last_error)
     const kinds = new Set(failing.map((s) => states[s.id]!.last_error!.kind))
     out[p.id] = {
-      last_read: p.checked_at,
-      rechecked: failing.length === 0,
       reason: REASON_ORDER.find((k) => kinds.has(k)) ?? null,
       failing_sources: failing.map((s) => s.id).sort(),
     }
