@@ -2,7 +2,7 @@
 
 At most one email a week to each subscriber, listing calls that opened, calls announced and programmes new to the site since their last email, filtered by the country and type of project they chose. Nothing new, no email.
 
-It runs as its own Cloudflare Worker on its own hostname, so the site stays static assets with no Worker script. The sign-up form (`src/components/DigestSignup.astro`) is a plain form post with no JS; the Worker answers with redirects to the static pages under `src/pages/digest/`. Not deployed yet.
+It runs as its own Cloudflare Worker on its own hostname, so the site stays static assets with no Worker script. The sign-up form (`src/components/DigestSignup.astro`) is a plain form post with no JS; the Worker answers with redirects to the static pages under `src/pages/digest/`. Deployed 2026-11-02; sending is off.
 
 ## How it works
 
@@ -22,7 +22,7 @@ bun digest/scripts/setup-local.ts      # writes digest/.dev.vars (names only pri
 cd digest && bun run db:local          # creates the local D1 tables
 bun run dev                            # http://localhost:8790, with the site's dev server on :4332
 curl "http://localhost:8790/cdn-cgi/handler/scheduled?cron=0+8+*+*+*"   # one daily run
-bun test src
+cd .. && bun test digest/src           # from the repo root, where data/ is
 ```
 
 Locally every email goes to Resend's test inbox (`TEST_RECIPIENT=delivered@resend.dev`, sender `onboarding@resend.dev`): real API calls, nobody gets mail. In dev, the site's form posts to `http://localhost:8790/subscribe`.
@@ -36,13 +36,17 @@ bun digest/scripts/preview.ts --launch KE reforestation    # launch week: the se
 
 Writes `digest/preview/*.html` and `.txt`. To send the launch-week digest through the local Worker and Resend, build with `DIGEST_BASELINE=1 bun digest/scripts/build.ts` and set a test subscriber's `confirmed_at` before the seed.
 
-## Deploy (not done; needs Bernat)
+## Deploy
 
-1. Resend: naturefunding.org has its own free Resend team (`naturefunding`, under the bernat@restorationscope.com login), apart from Restoration Scope's team, so the digest never uses up Restoration Scope's daily and monthly allowance. `bun digest/scripts/setup-resend.ts` stores its Full access key in Keychain, adds the domain with tracking off, and lists the DNS records; add them in Cloudflare, then create a sending-only key for the domain as the Worker's `RESEND_API_KEY`.
-2. `bunx wrangler d1 create naturefunding-digest`, put its id in `wrangler.jsonc`, then apply `schema.sql` with `--remote`.
-3. `wrangler secret put LIST_SECRET` (32 random bytes) and `RESEND_API_KEY`, through `/env-management`.
-4. Deploy: the deploy workflow checks out with `fetch-depth: 0` (the events need history), runs `bun digest/scripts/build.ts`, then `bunx wrangler deploy --config digest/wrangler.jsonc`. The token needs D1 edit and Workers Routes edit on the zone.
-5. After Bernat's OK for the first send: `DIGEST_SENDING` to `"live"`.
+Done 2026-11-02 from Bernat's Mac (wrangler signed in as bernatfortet@gmail.com):
+
+1. Resend: naturefunding.org has its own free Resend account, apart from Restoration Scope's, so the digest never uses up Restoration Scope's daily and monthly allowance. `bun digest/scripts/setup-resend.ts` keeps its Full access key in Keychain, adds the domain with tracking off, and lists the DNS records, which are in Cloudflare.
+2. D1 `naturefunding-digest` (id in `wrangler.jsonc`), with `schema.sql` applied `--remote`.
+3. `bun digest/scripts/build.ts && bunx wrangler deploy --config digest/wrangler.jsonc`.
+4. `bun digest/scripts/setup-secrets.ts`: `RESEND_API_KEY` (a Sending access key for naturefunding.org only) and `LIST_SECRET`, both kept in Keychain and set through stdin.
+5. `DIGEST_LIVE` in `src/lib/site.ts` shows the form on built pages.
+
+Before the first real send (Bernat's OK): a postal address in the email footer; deploy the Worker from the deploy workflow on every data change (checkout with `fetch-depth: 0`, `bun digest/scripts/build.ts`, `bunx wrangler deploy --config digest/wrangler.jsonc`; the CI token needs D1 edit and Workers Routes edit on the zone), so digests carry new calls; then `DIGEST_SENDING` to `"live"`.
 
 ## Files
 
