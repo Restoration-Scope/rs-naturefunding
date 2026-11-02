@@ -1,34 +1,16 @@
 {
   "id": "nb-environmental-trust-fund",
   "name": "Environmental Trust Fund (New Brunswick)",
-  "funder": {
-    "name": "Government of New Brunswick",
-    "url": "https://www.gnb.ca/"
-  },
-  "administered_by": null,
+  "funder": { "name": "Government of New Brunswick", "url": "https://www.gnb.ca/" },
+  "administered_by": { "name": "Government of New Brunswick", "url": "https://www.gnb.ca" },
   "parent": null,
   "url": "https://www.gnb.ca/en/topic/environment-resources/air-quality-environmental-programs/environmental-trust-fund.html",
   "summary": "New Brunswick funding for action-based projects that protect and enhance the natural environment, including water, coastline and wetland conservation and nature-based climate solutions, led by non-profits, First Nations and local governments. Intake is currently closed.",
-  "approaches": [
-    "wetlands",
-    "coastal_marine",
-    "freshwater",
-    "community_conservation"
-  ],
-  "applicant_types": [
-    "indigenous_organization",
-    "government",
-    "ngo"
-  ],
-  "geography": {
-    "scope": "countries",
-    "countries": [
-      "CA"
-    ],
-    "label": "New Brunswick"
-  },
+  "approaches": ["wetlands", "coastal_marine", "freshwater", "community_conservation"],
+  "applicant_types": ["indigenous_organization", "government", "ngo"],
+  "geography": { "scope": "countries", "countries": ["CA"], "label": "New Brunswick" },
   "access": "direct",
-  "window": "unspecified",
+  "window": "fixed",
   "amount": null,
   "co_finance_required": null,
   "reporting": null,
@@ -48,9 +30,41 @@
           "method": "page"
         }
       }
+    },
+    {
+      "id": "2027-2028-intake",
+      "label": "2027-2028 intake",
+      "url": "https://www.gnb.ca/en/topic/environment-resources/air-quality-environmental-programs/environmental-trust-fund.html",
+      "status": "open",
+      "opens": null,
+      "deadline": {
+        "date": "2027-11-30",
+        "text": "The intake period for 2027-2028 applications is now open until November 30th."
+      },
+      "evidence": {
+        "status": {
+          "source_url": "https://www.gnb.ca/en/topic/environment-resources/air-quality-environmental-programs/environmental-trust-fund.html",
+          "quote": "The intake period for 2027-2028 applications is now open until November 30th.",
+          "checked_at": "2026-11-02",
+          "method": "page"
+        },
+        "deadline": {
+          "source_url": "https://www.gnb.ca/en/topic/environment-resources/air-quality-environmental-programs/environmental-trust-fund.html",
+          "quote": "The intake period for 2027-2028 applications is now open until November 30th.",
+          "checked_at": "2026-11-02",
+          "method": "page"
+        }
+      },
+      "note": "Funding is for expenses within the fiscal year (April 1 to March 31) in the year they are announced."
     }
   ],
   "evidence": {
+    "administered_by": {
+      "source_url": "https://www.gnb.ca/en/topic/environment-resources/air-quality-environmental-programs/environmental-trust-fund.html",
+      "quote": "GNB.ca Environment and natural resources Air quality and environmental programs Environmental Trust Fund",
+      "checked_at": "2026-11-02",
+      "method": "page"
+    },
     "applicant_types": {
       "source_url": "https://www.gnb.ca/en/topic/environment-resources/air-quality-environmental-programs/environmental-trust-fund.html",
       "quote": "First Nations institutions furthering sustainable development local governments non-profit organizations",
@@ -66,6 +80,12 @@
     "access": {
       "source_url": "https://www.gnb.ca/en/topic/environment-resources/air-quality-environmental-programs/environmental-trust-fund.html",
       "quote": "an application can be saved and resumed later by using the \"Save and Exit\" button",
+      "checked_at": "2026-11-02",
+      "method": "page"
+    },
+    "window": {
+      "source_url": "https://www.gnb.ca/en/topic/environment-resources/air-quality-environmental-programs/environmental-trust-fund.html",
+      "quote": "The intake period for 2027-2028 applications is now open until November 30th.",
       "checked_at": "2026-11-02",
       "method": "page"
     }
