@@ -66,10 +66,10 @@ export function initTableFinder() {
   const backdrop = $<HTMLElement>('[data-backdrop]')
   const opener = $<HTMLButtonElement>('[data-sheet-open]')
   const done = $<HTMLButtonElement>('[data-sheet-done]')
-  // The header's two questions: shortcuts to the Where and Approach filters.
+  // The header: project types set the Approach filter; where, when and who set Where, Deadline and Who can apply.
   const ask = document.querySelector<HTMLFormElement>('[data-ask]')
-  const askWhere = ask?.querySelector<HTMLSelectElement>('[data-ask-where]')
-  const askApproach = ask?.querySelector<HTMLSelectElement>('[data-ask-approach]')
+  const askSelects = ask ? [...ask.querySelectorAll('select')] : []
+  const cats = [...document.querySelectorAll<HTMLElement>('[data-cat]')]
 
   let showLater = false
   let sort: SortKey = 'deadline'
@@ -383,16 +383,18 @@ export function initTableFinder() {
       n.textContent = String(count)
       const input = n.closest('label')?.querySelector('input')
       if (input) input.disabled = count === 0 && !input.checked
-      const o = group === 'approach' ? askApproach?.querySelector<HTMLOptionElement>(`option[value="${value}"]`) : null
-      if (o) o.textContent = `${o.dataset.label} (${count})`
     }
-    if (askWhere && askApproach) {
-      askWhere.value = f.where
-      const n = f.approach.length
-      askApproach.querySelector('[data-ask-multi]')!.textContent = `${n} kinds`
-      askApproach.value = n === 0 ? '' : n === 1 ? f.approach[0]! : 'multi'
-      ask!.querySelector('[data-ask-label]')!.textContent = `Show ${shown} ${plural(shown, 'programme', 'programmes')}`
+    for (const s of askSelects) {
+      if (s.name === 'where' || s.name === 'within') {
+        s.value = f[s.name]
+        continue
+      }
+      const v = f[s.name as Multi]
+      s.querySelector('[data-ask-multi]')!.textContent = `${v.length} picked`
+      s.value = v.length === 0 ? '' : v.length === 1 ? v[0]! : 'multi'
     }
+    const appr = [...f.approach].sort().join(' ')
+    for (const c of cats) c.setAttribute('aria-current', String(c.dataset.cat === appr))
 
     shownEl.textContent = `${shown} of ${items.length} shown`
     live.textContent = `${shown} ${plural(shown, 'programme', 'programmes')} shown`
@@ -478,9 +480,10 @@ export function initTableFinder() {
   form.addEventListener('input', apply)
   form.addEventListener('submit', (e) => e.preventDefault())
   ask?.addEventListener('change', (e) => {
+    const s = e.target as HTMLSelectElement
     const f = read()
-    if (e.target === askWhere) f.where = askWhere!.value
-    else f.approach = askApproach!.value ? [askApproach!.value] : []
+    if (s.name === 'where' || s.name === 'within') f[s.name] = s.value
+    else f[s.name as Multi] = s.value ? [s.value] : []
     write(f)
     apply()
   })
@@ -510,6 +513,15 @@ export function initTableFinder() {
 
   document.addEventListener('click', (e) => {
     const t = e.target as HTMLElement
+    const cat = t.closest<HTMLElement>('[data-cat]')
+    if (cat && !((e as MouseEvent).metaKey || (e as MouseEvent).ctrlKey || (e as MouseEvent).shiftKey)) {
+      e.preventDefault()
+      const f = read()
+      f.approach = cat.dataset.cat ? cat.dataset.cat.split(' ') : []
+      write(f)
+      apply()
+      return
+    }
     const quick = t.closest<HTMLButtonElement>('[data-quick]')
     if (quick) {
       const [name, value] = quick.dataset.quick!.split(':') as [string, string]

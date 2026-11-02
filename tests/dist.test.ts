@@ -203,26 +203,25 @@ describe('self-hosted fonts', () => {
   })
 })
 
-describe('header image', () => {
-  test('only / has it: decorative, sized, high priority, and every file it lists is in dist', () => {
-    for (const f of htmlFiles) {
-      const pictures = doc(f).querySelectorAll('header picture')
-      if (f !== 'index.html') {
-        expect(pictures.length, f).toBe(0)
-        continue
-      }
-      expect(pictures.length).toBe(1)
-      const img = pictures[0].querySelector('img')!
-      expect(img.getAttribute('alt')).toBe('')
-      expect(Number(img.getAttribute('width'))).toBeGreaterThan(0)
-      expect(Number(img.getAttribute('height'))).toBeGreaterThan(0)
-      expect(img.getAttribute('fetchpriority')).toBe('high')
-      const urls = [img.getAttribute('src')!, ...[...pictures[0].querySelectorAll('source, img')].flatMap((s) => (s.getAttribute('srcset') ?? '').split(',').map((c) => c.trim().split(/\s+/)[0]).filter(Boolean))]
-      const types = [...pictures[0].querySelectorAll('source')].map((s) => s.getAttribute('type'))
-      expect(types).toContain('image/avif')
-      expect(types).toContain('image/webp')
-      for (const u of urls) expect(files, u).toContain(u.replace(/^\//, ''))
+describe('home header', () => {
+  // The header's types and search bar only set the finder's own filters, so each value must exist there.
+  test('every project type and search option is a value the finder form has', () => {
+    const d = doc('index.html')
+    const form = d.querySelector('[data-form]')!
+    const values = (name: string) => new Set([...form.querySelectorAll(`[name="${name}"], [name="${name}"] option`)].map((e) => e.getAttribute('value') ?? ''))
+    for (const a of d.querySelectorAll('[data-cat]')) {
+      for (const v of (a.getAttribute('data-cat') ?? '').split(' ').filter(Boolean)) expect(values('approach').has(v), v).toBe(true)
     }
+    const selects = [...d.querySelectorAll('[data-ask] select')]
+    expect(selects.map((s) => s.getAttribute('name'))).toEqual(['where', 'within', 'applicant'])
+    for (const s of selects) {
+      const have = values(s.getAttribute('name')!)
+      for (const o of s.querySelectorAll('option:not([data-ask-multi]):not([value=""])')) expect(have.has(o.getAttribute('value') ?? ''), o.getAttribute('value')!).toBe(true)
+    }
+  })
+
+  test('no page has a header image', () => {
+    for (const f of htmlFiles) expect(doc(f).querySelectorAll('header picture').length, f).toBe(0)
   })
 })
 

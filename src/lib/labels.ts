@@ -73,3 +73,16 @@ export const sizeBuckets: Record<SizeBucket, { label: string; min: number; max: 
   medium: { label: '$25,000 to $250,000', min: 25000, max: 250000 },
   large: { label: 'Over $250,000', min: 250000, max: Infinity },
 }
+
+// The home header's project types: each groups approaches, and picking one sets the Approach filter to them.
+// Every approach belongs to exactly one type (src/lib/labels.test.ts).
+export const projectTypes: { key: string; label: string; approaches: Approach[] }[] = [
+  { key: 'forests', label: 'Forests', approaches: ['reforestation', 'agroforestry', 'natural_regeneration'] },
+  { key: 'coasts', label: 'Coasts', approaches: ['mangroves', 'coastal_marine'] },
+  { key: 'wetlands', label: 'Wetlands', approaches: ['wetlands', 'peatlands', 'freshwater'] },
+  { key: 'grasslands', label: 'Grasslands', approaches: ['grasslands'] },
+  { key: 'wildlife', label: 'Wildlife', approaches: ['species_conservation', 'protected_areas'] },
+  { key: 'communities', label: 'Communities', approaches: ['community_conservation', 'sustainable_land_use'] },
+  { key: 'cities', label: 'Cities', approaches: ['urban_nature'] },
+  { key: 'research', label: 'Research', approaches: ['research'] },
+]
