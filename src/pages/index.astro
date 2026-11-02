@@ -105,6 +105,15 @@ const jsonLd = [
   jsonLd={jsonLd}
 >
   <div slot="band" class="pb-6 max-md:pb-4">
+    {/* What the site is, on the green, over the questions that narrow it down. */}
+    <div class="wrap pt-2 pb-5 text-center max-md:pt-1 max-md:pb-4 max-md:text-left">
+      <h1 class="mx-auto max-w-[38ch] text-balance text-[clamp(1.375rem,1rem+1.1vw,2rem)] leading-[1.15] tracking-[-0.01em] text-shell-ink">Funding for nature restoration and conservation, checked against each funder’s own page.</h1>
+      <p class="mx-auto mt-2 max-w-[78ch] text-sm text-balance text-shell-ink-2">
+        <span class="max-md:hidden">Every deadline, amount and eligibility rule links to the funder’s own page, with the words it rests on and the date we read it.</span>{' '}
+        Free, with no paid listings or paid ranking. Built openly by Restoration Scope.
+        {stats.lastChecked && <span class="max-md:hidden"> Last checked {longDate(stats.lastChecked)}.</span>}
+      </p>
+    </div>
     {/* Project types, like the category row of a booking site. Links, so they work without JavaScript too. */}
     <nav class="wrap flex justify-center gap-x-7 overflow-x-auto [scrollbar-width:none] max-lg:justify-start max-md:gap-x-5" aria-label="Project types">
       {
@@ -174,16 +183,7 @@ const jsonLd = [
     </div>
   </div>
 
-  <div class="wrap mt-6 max-md:mt-4">
-    <h1 class="text-[clamp(1.25rem,1rem+0.8vw,1.625rem)] leading-[1.2] tracking-[-0.01em]">Funding for nature restoration and conservation, checked against each funder’s own page.</h1>
-    <p class="mt-1.5 max-w-[110ch] text-sm text-muted-foreground">
-      <span class="max-md:hidden">Every deadline, amount and eligibility rule links to the funder’s own page, with the words it rests on and the date we read it.</span>{' '}
-      Free, with no paid listings or paid ranking. Built openly by Restoration Scope.
-      {stats.lastChecked && <span class="max-md:hidden"> Last checked {longDate(stats.lastChecked)}.</span>}
-    </p>
-  </div>
-
-  <div class="wrap mt-3 grid grid-cols-[minmax(0,1fr)] gap-3 xl:mt-5 xl:grid-cols-[15.375rem_minmax(0,1fr)] xl:gap-3">
+  <div class="wrap mt-5 grid grid-cols-[minmax(0,1fr)] gap-3 xl:mt-6 xl:grid-cols-[15.375rem_minmax(0,1fr)] xl:gap-3">
     <a class={skipLink} href="#results">Skip to results</a>
     {/* Wide screens: the filters ride in a sticky column. Phones and tablets: they open in a sheet.
         The scroller's own padding keeps every focus ring inside it (the ring reaches 5px out), and its 1rem
