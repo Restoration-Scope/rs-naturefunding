@@ -33,11 +33,10 @@
   "window": "fixed",
   "amount": {
     "currency": "BZD",
-    "min": 50000,
     "max": 500000,
-    "note": "Medium and large grants; community grants go up to BZ$100,000"
+    "note": "Community grants up to BZ$100,000; medium BZ$50,000-150,000; large BZ$150,000-500,000"
   },
-  "co_finance_required": null,
+  "co_finance_required": true,
   "reporting": null,
   "calls": [
     {
@@ -99,7 +98,13 @@
     },
     "amount": {
       "source_url": "https://belizefund.bz/5th-call-for-proposals/",
-      "quote": "Medium Grant Awards between BZ$50,000 and $150,000 Not exceeding 2 year (10% co-financing required) Large Grant Awards between BZ$150,000 and $500,000",
+      "quote": "Medium Grant Awards between BZ$50,000 and $150,000 Not exceeding 2 year (10% co-financing required) Large Grant Awards between BZ$150,000 and $500,000 Not exceeding 2 -3 year (25% co-financing required) Community Grant Awards up to BZ$100,000 Not exceeding 1-2 years (10% co-financing required above BZ$50,000)",
+      "checked_at": "2026-11-02",
+      "method": "page"
+    },
+    "co_finance_required": {
+      "source_url": "https://belizefund.bz/5th-call-for-proposals/",
+      "quote": "Medium Grant Awards between BZ$50,000 and $150,000 Not exceeding 2 year (10% co-financing required) Large Grant Awards between BZ$150,000 and $500,000 Not exceeding 2 -3 year (25% co-financing required) Community Grant Awards up to BZ$100,000 Not exceeding 1-2 years (10% co-financing required above BZ$50,000)",
       "checked_at": "2026-11-02",
       "method": "page"
     }

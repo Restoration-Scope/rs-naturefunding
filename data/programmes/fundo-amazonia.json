@@ -15,7 +15,13 @@
     "reforestation"
   ],
   "applicant_types": null,
-  "geography": null,
+  "geography": {
+    "scope": "countries",
+    "countries": [
+      "BR"
+    ],
+    "label": "Legal Amazon, other Brazilian biomes and other tropical countries"
+  },
   "access": "direct",
   "window": "rolling",
   "amount": null,
@@ -49,6 +55,12 @@
     "window": {
       "source_url": "https://www.fundoamazonia.gov.br/pt/como-apresentar-projetos/",
       "quote": "Os projetos que buscam apoio do Fundo Amazônia podem ser apresentados a qualquer momento",
+      "checked_at": "2026-11-02",
+      "method": "page"
+    },
+    "geography": {
+      "source_url": "https://www.fundoamazonia.gov.br/pt/como-apresentar-projetos/",
+      "quote": "na Amazônia Legal e em outros biomas brasileiros e em outros países tropicais",
       "checked_at": "2026-11-02",
       "method": "page"
     }
