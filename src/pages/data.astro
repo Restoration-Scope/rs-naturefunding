@@ -1,0 +1,232 @@
+---
+import Base from '../layouts/Base.astro'
+import { AGING_DAYS, HIDDEN_DAYS } from '../lib/data'
+import { fieldDocs, fileDocs } from '../lib/data-docs'
+import { REPO_URL, absolute } from '../lib/site'
+
+const description =
+  'The naturefunding.org open data: every file, every field of data.json, and how to read a fact, its quote and the date it was checked.'
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'TechArticle',
+  name: 'The open data: files and fields',
+  url: absolute('/data/'),
+  description,
+  publisher: { '@type': 'Organization', name: 'Restoration Scope', url: 'https://restorationscope.com' },
+}
+
+// Each object of data.json, in the order a reader meets them, with what its fields mean (src/lib/data-docs.ts).
+const objects = [
+  { id: 'file', title: 'The file', where: 'the top level of data.json', docs: fileDocs },
+  { id: 'programme', title: 'Programme', where: 'each item of programmes', docs: fieldDocs.programme },
+  { id: 'call', title: 'Call', where: 'each item of a programme’s calls', docs: fieldDocs.call },
+  { id: 'evidence', title: 'Evidence', where: 'each value of an evidence object', docs: fieldDocs.evidence },
+  { id: 'amount', title: 'Amount', where: 'a programme’s amount', docs: fieldDocs.amount },
+  { id: 'geography', title: 'Geography', where: 'a programme’s geography', docs: fieldDocs.geography },
+  { id: 'deadline', title: 'Deadline', where: 'a call’s deadline', docs: fieldDocs.deadline },
+  { id: 'organisation', title: 'Organisation', where: 'funder and administered_by', docs: fieldDocs.organisation },
+]
+
+---
+
+<Base title="The open data" description={description} path="/data/" nav="about" jsonLd={jsonLd}>
+  <div slot="band" class="wrap band">
+    <h1 class="band__title">The open data</h1>
+    <p class="band__lede">
+      The data on this site is also a file you can download, under CC BY 4.0. This page lists the files and says
+      what every field means.
+    </p>
+  </div>
+
+  <article class="wrap prose">
+    <h2 id="files">Files</h2>
+    <ul>
+      <li><a href="/data.json">data.json</a>: every programme, call and fact with its source, quote and checked date.</li>
+      <li><a href="/data.schema.json">data.schema.json</a>: the JSON Schema of data.json, with the field descriptions below.</li>
+      <li><a href="/data.csv">data.csv</a>: one row per call, plus one row for each programme with no call, for spreadsheets.</li>
+      <li><a href="/feed.xml">feed.xml</a>: an Atom feed of the calls of listed programmes, up to the 100 most recently updated; a call that opens, closes or changes its deadline date shows up as a new entry.</li>
+      <li><a href="/health.json">health.json</a>: the latest run of the checking job: when it ran, and how many funder pages were due, unchanged, changed or could not be read.</li>
+      <li><a href="/llms.txt">llms.txt</a>: an index for AI agents, with a Markdown copy of every page; <a href="/llms-full.txt">llms-full.txt</a> is all of them in one file.</li>
+    </ul>
+    <p>
+      The files are built from the main branch of the <a href={REPO_URL}>public repository</a> each time the site is
+      deployed. No key or sign-up is needed.
+    </p>
+
+    <h2 id="reading">How to read a fact</h2>
+    <ul>
+      <li>
+        A fact the funder states has an evidence object: the page it was read from, the exact words that state it,
+        and the day we read them.
+      </li>
+      <li>
+        For a fact the funder states (amount, geography, who can apply, co-funding, a call’s opens and deadline),{' '}
+        <code>null</code> means the pages we read don’t say. It never means “no” or “none”. Two exceptions: a
+        rolling programme’s deadline is null because the funder says there is none, and a date the funder gives
+        without a year or an exact day stays null and is written in the call’s <code>recurring</code> or
+        <code>expected</code> instead.
+      </li>
+      <li>
+        Who can apply and where are our categories, from the funder’s words; read the quote before deciding you
+        qualify. The approaches are our own classification and have no quote.
+      </li>
+      <li>
+        A deadline is filled in only when the funder gives the date with its year. We never work one out from “every
+        March” or last year’s round.
+      </li>
+      <li>
+        data.json keeps each call’s status from its last check, with the day in its evidence. The finder and the
+        Markdown pages also show a call as closed once its deadline date has passed. Check the funder’s page before
+        you apply.
+      </li>
+      <li>
+        The finder flags a listing checked over {AGING_DAYS} days ago and hides one checked over {HIDDEN_DAYS} days
+        ago; data.json still includes it, with its date.
+      </li>
+      <li>Quotes are the funders’ words and are not covered by our licence. Keep them short and link the source.</li>
+    </ul>
+
+    <h2 id="links">Stable links</h2>
+    <p>
+      We don’t change a programme’s <code>id</code>, so <code>{absolute('/p/')}{'{id}'}/</code> stays a working link. Each
+      fact on that page has its own anchor for citing: <code>#amount</code>, <code>#geography</code>,{' '}
+      <code>#applicant_types</code>, and for a call <code>#call-{'{call id}'}-deadline</code>. Adding{' '}
+      <code>.md</code> in place of the last slash gives the page as Markdown.
+    </p>
+
+    <h2 id="example">Example</h2>
+    <p>The names of the programmes whose stored call status is “open”, rolling programmes included. That is the last check, not the finder’s “open now” list:</p>
+    <pre class="code"><code>curl -s {absolute('/data.json')} | jq -r '
+  .programmes[]
+  | select(any(.calls[]; .status == "open"))
+  | .name'</code></pre>
+
+    <h2 id="fields">Fields</h2>
+    <p>
+      The <a href="/data.schema.json">JSON Schema</a> has the types; the schema in the repository’s{' '}
+      <code>src/data/schema.ts</code> is the full contract, with the rules that tie fields together.
+    </p>
+    {
+      objects.map((o) => (
+        <>
+          <h3 id={`fields-${o.id}`}>{o.title}</h3>
+          <p class="key__intro">In {o.where}.</p>
+          <dl class="key">
+            {Object.entries(o.docs).map(([name, text]) => (
+              <div id={`${o.id}.${name}`}>
+                <dt>
+                  <code>{name}</code>
+                </dt>
+                <dd>{text}</dd>
+              </div>
+            ))}
+          </dl>
+        </>
+      ))
+    }
+
+    <h2 id="licence">Licence</h2>
+    <p>
+      The data is licensed <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>: you can reuse it,
+      including commercially, if you credit “naturefunding.org (Restoration Scope)”, link to https://naturefunding.org
+      and the licence, and say if you changed the data. Quotes are the funders’ words and are not covered. The code
+      is MIT-licensed.
+    </p>
+  </article>
+</Base>
+
+<style>
+  /* The About page's band, prose and key, with a wider name column for field names. */
+  .band {
+    padding-block: 1.75rem 2.25rem;
+  }
+  .band__title {
+    font-size: clamp(1.75rem, 1.2rem + 2.2vw, 2.75rem);
+    font-weight: 800;
+    letter-spacing: -0.02em;
+  }
+  .band__lede {
+    max-width: 60ch;
+    margin-top: 0.9rem;
+    font-size: 1.125rem;
+    color: var(--shell-ink-2);
+  }
+  .prose {
+    max-width: calc(44rem + 2 * var(--gutter));
+    margin-inline: 0 auto;
+    padding-bottom: 1rem;
+  }
+  .prose h2 {
+    margin-top: 2.75rem;
+    margin-bottom: 0.6rem;
+    font-size: 1.375rem;
+    font-weight: 800;
+    scroll-margin-top: 1rem;
+  }
+  .prose h3 {
+    margin-top: 2rem;
+    font-size: 1.125rem;
+    font-weight: 700;
+    scroll-margin-top: 1rem;
+  }
+  .prose p,
+  .prose ul,
+  .prose pre {
+    max-width: 66ch;
+  }
+  .prose p,
+  .prose li,
+  .prose dd {
+    text-wrap: pretty;
+  }
+  .prose p + p,
+  .prose p + ul,
+  .prose ul + p,
+  .prose p + pre,
+  .prose pre + p {
+    margin-top: 0.85rem;
+  }
+  .prose ul {
+    margin-block: 0.6rem 0;
+    padding-left: 1.2rem;
+  }
+  .prose li + li {
+    margin-top: 0.4rem;
+  }
+  .prose li::marker {
+    color: var(--ink-2);
+  }
+  .code {
+    overflow-x: auto;
+    padding: 1rem;
+    border-radius: var(--radius);
+    background: var(--surface);
+    font-size: 0.875rem;
+  }
+  .key__intro {
+    margin-top: 0.25rem;
+    font-size: 0.875rem;
+    color: var(--ink-2);
+  }
+  .key {
+    display: grid;
+    gap: 0.6rem;
+    margin: 0.75rem 0 0;
+    max-width: 66ch;
+  }
+  .key div {
+    display: grid;
+    gap: 0.3rem;
+  }
+  .key dd {
+    margin: 0;
+  }
+  @media (min-width: 40rem) {
+    .key div {
+      grid-template-columns: 13rem minmax(0, 1fr);
+      gap: 1rem;
+      align-items: baseline;
+    }
+  }
+</style>

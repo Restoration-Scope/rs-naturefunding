@@ -6,6 +6,7 @@ export const GET: APIRoute = () => {
   const urls = [
     { loc: absolute('/'), lastmod: stats.lastChecked },
     { loc: absolute('/about/'), lastmod: null },
+    { loc: absolute('/data/'), lastmod: null },
     ...listings.map(({ p }) => ({ loc: absolute(`/p/${p.id}/`), lastmod: p.checked_at })),
   ]
   const xml = `<?xml version="1.0" encoding="UTF-8"?>
