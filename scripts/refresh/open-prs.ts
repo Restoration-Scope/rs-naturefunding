@@ -36,14 +36,19 @@ const openPrs = json<{ number: number; url: string; headRefName: string; body: s
 )
 const log: string[] = []
 
+/** Opens or updates the open refresh issue with this title, using the body in bodyFile. */
+function issue(title: string): void {
+  const existing = json<{ number: number; title: string }[]>(['gh', 'issue', 'list', '--state', 'open', '--label', 'refresh', '--json', 'number,title', '--limit', '100'])
+    .find((i) => i.title === title)
+  if (existing) run(['gh', 'issue', 'edit', String(existing.number), '--body-file', bodyFile])
+  log.push(existing ? `updated issue #${existing.number}` : `opened issue ${run(['gh', 'issue', 'create', '--title', title, '--body-file', bodyFile, '--label', 'refresh'])}`)
+}
+
 for (const d of drafts) {
   writeFileSync(bodyFile, d.body)
 
   if (Object.keys(d.files).length === 0) {
-    const existing = json<{ number: number; title: string }[]>(['gh', 'issue', 'list', '--state', 'open', '--label', 'refresh', '--json', 'number,title', '--limit', '100'])
-      .find((i) => i.title === d.title)
-    if (existing) run(['gh', 'issue', 'edit', String(existing.number), '--body-file', bodyFile])
-    log.push(existing ? `updated issue #${existing.number}` : `opened issue ${run(['gh', 'issue', 'create', '--title', d.title, '--body-file', bodyFile, '--label', 'refresh'])}`)
+    issue(d.title)
     continue
   }
 
@@ -67,7 +72,14 @@ for (const d of drafts) {
   run(['git', 'switch', '--detach', `origin/${base}`])
 
   run(['git', 'push', 'origin', `${branch}:refs/heads/${branch}`])
-  const url = run(['gh', 'pr', 'create', '--base', base, '--head', branch, '--title', d.title, '--body-file', bodyFile, '--label', 'refresh', '--label', `reviewer:${d.review?.overall ?? 'unclear'}`])
+  const url = run(['gh', 'pr', 'create', '--base', base, '--head', branch, '--title', d.title, '--body-file', bodyFile, '--label', 'refresh', '--label', `reviewer:${d.review?.overall ?? 'unclear'}`], { allowFail: true })
+  if (!url) {
+    // The repo setting "Allow GitHub Actions to create and approve pull requests" is off: keep the branch and say so in an issue.
+    const compare = `${process.env.GITHUB_SERVER_URL ?? 'https://github.com'}/${process.env.GITHUB_REPOSITORY}/compare/${base}...${branch}?expand=1`
+    writeFileSync(bodyFile, `${d.body}\n\n---\nActions may not open pull requests in this repo, so the proposed change is on branch \`${branch}\`. Open it as a PR: ${compare}\n`)
+    issue(d.title)
+    continue
+  }
   log.push(`opened ${url}`)
   for (const p of previous) {
     run(['gh', 'pr', 'close', String(p.number), '--comment', `Superseded by ${url}.`, '--delete-branch'], { allowFail: true })
