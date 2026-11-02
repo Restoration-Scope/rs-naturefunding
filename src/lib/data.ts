@@ -16,7 +16,7 @@ export const AGING_DAYS = 30
 export const HIDDEN_DAYS = 90
 
 /** Why the daily check could not re-read a programme's pages, as the refresh job records it. */
-export type RecheckFailure = 'robots' | 'blocked' | 'network' | 'http' | 'not_found' | 'timeout'
+export type RecheckFailure = 'robots' | 'blocked' | 'network' | 'http' | 'timeout' | 'selector' | 'unreadable'
 // data/checks/programmes.json, written by each daily run. No file, or no entry, means no news.
 const checksFile = join(process.cwd(), 'data', 'checks', 'programmes.json')
 const checks: Record<string, { reason: RecheckFailure | null; failing_sources: string[] }> = existsSync(checksFile)

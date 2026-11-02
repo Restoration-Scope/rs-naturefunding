@@ -92,8 +92,9 @@ export const projectTypes: { key: string; label: string; approaches: Approach[] 
 export const recheckReasons: Record<RecheckFailure, string> = {
   robots: 'the site asks checkers like ours not to read it',
   blocked: 'the site turns our check away',
-  network: 'the site does not answer',
+  network: 'the site drops our connection',
   timeout: 'the site takes too long to answer',
   http: 'the page shows an error',
-  not_found: 'the page is gone',
+  selector: 'the page has changed, and the part we read is gone',
+  unreadable: 'the page has changed, and we can no longer read it',
 }

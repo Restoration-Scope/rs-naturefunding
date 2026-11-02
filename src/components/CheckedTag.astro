@@ -17,7 +17,7 @@ const { checked, source, reason, class: className } = Astro.props
 const age = daysBetween(checked, buildDate)
 const aging = age > AGING_DAYS
 const title = reason
-  ? `Last read on the funder's page on ${longDate(checked)}. Our daily check can't read it now: ${recheckReasons[reason]}.`
+  ? `Last read on the funder’s page on ${longDate(checked)}. Our daily check can’t read it now: ${recheckReasons[reason]}.`
   : `Checked against the funder's page on ${longDate(checked)}`
 ---
 
