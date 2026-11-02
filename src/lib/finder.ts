@@ -1,5 +1,6 @@
 // The table finder. Filters, sorts and quick filters run over the server-rendered rows,
 // and every setting lives in the URL.
+import { picker } from './picker'
 
 const AGING_DAYS = 30
 const HIDDEN_DAYS = 90
@@ -69,6 +70,7 @@ export function initTableFinder() {
   // The header: project types set the Approach filter; where, when and who set Where, Deadline and Who can apply.
   const ask = document.querySelector<HTMLFormElement>('[data-ask]')
   const askSelects = ask ? [...ask.querySelectorAll('select')] : []
+  for (const s of askSelects) picker(s, s.name === 'where')
   const cats = [...document.querySelectorAll<HTMLElement>('[data-cat]')]
 
   let showLater = false
@@ -385,13 +387,13 @@ export function initTableFinder() {
       if (input) input.disabled = count === 0 && !input.checked
     }
     for (const s of askSelects) {
-      if (s.name === 'where' || s.name === 'within') {
-        s.value = f[s.name]
-        continue
+      if (s.name === 'where' || s.name === 'within') s.value = f[s.name]
+      else {
+        const v = f[s.name as Multi]
+        s.querySelector('[data-ask-multi]')!.textContent = `${v.length} picked`
+        s.value = v.length === 0 ? '' : v.length === 1 ? v[0]! : 'multi'
       }
-      const v = f[s.name as Multi]
-      s.querySelector('[data-ask-multi]')!.textContent = `${v.length} picked`
-      s.value = v.length === 0 ? '' : v.length === 1 ? v[0]! : 'multi'
+      s.dispatchEvent(new Event('sync'))
     }
     const appr = [...f.approach].sort().join(' ')
     for (const c of cats) c.setAttribute('aria-current', String(c.dataset.cat === appr))

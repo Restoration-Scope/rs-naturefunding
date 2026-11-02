@@ -56,11 +56,12 @@ const types = [
     .filter((t) => t.approaches.length),
 ].map((t) => ({ ...t, cat: [...t.approaches].sort().join(' '), href: t.approaches.length ? `/?approach=${t.approaches.join(',')}` : '/' }))
 // The search bar's segments: a bold label over a borderless select. The select fills the segment, so the
-// whole segment opens it; a value still at its default reads muted.
+// whole segment opens it; a value still at its default reads muted. With JavaScript, src/lib/picker.ts turns
+// Where into a combobox with flags and When and Who into Base UI–style selects, with these same classes.
 const seg = 'relative min-w-0'
 const segLabel = 'pointer-events-none absolute top-2.5 left-6 text-xs font-semibold text-foreground max-md:left-4'
 const segSelect =
-  'block h-full min-h-15 w-full cursor-pointer appearance-none truncate rounded-full bg-transparent pt-6 pr-6 pb-2.5 pl-6 text-md text-foreground hover:bg-muted focus-visible:outline-offset-[-2px] max-md:min-h-14 max-md:rounded-xl max-md:pl-4 [&:has(option[value=""]:checked)]:text-muted-foreground'
+  'block h-full min-h-15 w-full cursor-pointer appearance-none truncate rounded-full bg-transparent pt-6 pr-6 pb-2.5 pl-6 text-md text-foreground hover:bg-muted focus-visible:outline-offset-[-2px] max-md:min-h-14 max-md:rounded-xl max-md:pl-4 placeholder:text-muted-foreground data-empty:text-muted-foreground [&:has(option[value=""]:checked)]:text-muted-foreground'
 const description =
   'A free directory of funding for nature restoration and conservation. Every deadline, amount and eligibility rule links to the funder’s own page, with the words it rests on and the date we read it.'
 
