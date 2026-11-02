@@ -1,4 +1,5 @@
 import type { Programme } from '../data/schema'
+import type { RecheckFailure } from './data'
 
 type Approach = Programme['approaches'][number]
 type Applicant = NonNullable<Programme['applicant_types']>[number]
@@ -72,4 +73,28 @@ export const sizeBuckets: Record<SizeBucket, { label: string; min: number; max: 
   small: { label: 'Under $25,000', min: 0, max: 25000 },
   medium: { label: '$25,000 to $250,000', min: 25000, max: 250000 },
   large: { label: 'Over $250,000', min: 250000, max: Infinity },
+}
+
+// The home header's project types: each groups approaches, and picking one sets the Approach filter to them.
+// Every approach belongs to exactly one type (src/lib/labels.test.ts).
+export const projectTypes: { key: string; label: string; approaches: Approach[] }[] = [
+  { key: 'forests', label: 'Forests', approaches: ['reforestation', 'agroforestry', 'natural_regeneration'] },
+  { key: 'coasts', label: 'Coasts', approaches: ['mangroves', 'coastal_marine'] },
+  { key: 'wetlands', label: 'Wetlands', approaches: ['wetlands', 'peatlands', 'freshwater'] },
+  { key: 'grasslands', label: 'Grasslands', approaches: ['grasslands'] },
+  { key: 'wildlife', label: 'Wildlife', approaches: ['species_conservation', 'protected_areas'] },
+  { key: 'communities', label: 'Communities', approaches: ['community_conservation', 'sustainable_land_use'] },
+  { key: 'cities', label: 'Cities', approaches: ['urban_nature'] },
+  { key: 'research', label: 'Research', approaches: ['research'] },
+]
+
+/** Why the daily check could not re-read a page, finishing "Our daily check can't read it now: …". */
+export const recheckReasons: Record<RecheckFailure, string> = {
+  robots: 'the site asks checkers like ours not to read it',
+  blocked: 'the site turns our check away',
+  network: 'the site drops our connection',
+  timeout: 'the site takes too long to answer',
+  http: 'the page shows an error',
+  selector: 'the page has changed, and the part we read is gone',
+  unreadable: 'the page has changed, and we can no longer read it',
 }

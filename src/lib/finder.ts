@@ -1,5 +1,6 @@
 // The table finder. Filters, sorts and quick filters run over the server-rendered rows,
 // and every setting lives in the URL.
+import { picker } from './picker'
 
 const AGING_DAYS = 30
 const HIDDEN_DAYS = 90
@@ -46,10 +47,8 @@ export function initTableFinder() {
   if (!form || !list) return
   const laterList = $<HTMLTableSectionElement>('[data-list-later]')
   const laterHead = $<HTMLTableSectionElement>('[data-later-head]')
-  const laterToggle = $<HTMLButtonElement>('[data-later-toggle]')
-  const laterVerb = $<HTMLElement>('[data-later-verb]')
+  const tableWrap = $<HTMLElement>('[data-table]')
   const endfold = $<HTMLButtonElement>('[data-endfold]')
-  const endN = $<HTMLElement>('[data-qn-end]')
   const sortLine = $<HTMLElement>('[data-sort-line]')
   const live = $<HTMLElement>('[data-live]')
   const shownEl = $<HTMLElement>('[data-shown]')
@@ -64,6 +63,11 @@ export function initTableFinder() {
   const backdrop = $<HTMLElement>('[data-backdrop]')
   const opener = $<HTMLButtonElement>('[data-sheet-open]')
   const done = $<HTMLButtonElement>('[data-sheet-done]')
+  // The header: project types set the Approach filter; where, when and who set Where, Deadline and Who can apply.
+  const ask = document.querySelector<HTMLFormElement>('[data-ask]')
+  const askSelects = ask ? [...ask.querySelectorAll('select')] : []
+  for (const s of askSelects) picker(s, s.name === 'where')
+  const cats = [...document.querySelectorAll<HTMLElement>('[data-cat]')]
 
   let showLater = false
   let sort: SortKey = 'deadline'
@@ -89,11 +93,11 @@ export function initTableFinder() {
         state = 'closed'
         el.dataset.state = state
         const dl = el.querySelector<HTMLElement>('.dl')
-        if (dl) dl.innerHTML = `<span class="tape" data-state="closed">Closed</span><span class="dl__muted">Closed ${shortDate(deadline)}</span>`
+        if (dl) dl.innerHTML = `<span class="status" data-state="closed">Closed</span><span class="dl__muted">${shortDate(deadline)}</span>`
         el.querySelector('[data-words]')?.remove()
       } else if (leftEl) {
         leftEl.textContent = left === 0 ? 'Closes today' : left === 1 ? '1 day left' : `${left} days left`
-        leftEl.toggleAttribute('data-soon', left < 7)
+        leftEl.toggleAttribute('data-soon', left <= 7)
       }
     }
     const split = (s?: string) => (s ? s.split(' ') : [])
@@ -151,7 +155,7 @@ export function initTableFinder() {
       const nat = naturalDir[sort]
       th.setAttribute('aria-sort', reversed ? (nat === 'ascending' ? 'descending' : 'ascending') : nat)
     }
-    // The mid-width table folds Checked into the Amount header; its button shows the same state.
+    // Checked sorts from a second button in the Amount header, whose column has no aria-sort for it.
     for (const b of document.querySelectorAll<HTMLElement>('[data-alt-for]')) {
       const nat = naturalDir.checked
       if (sort === 'checked') b.dataset.active = reversed ? (nat === 'ascending' ? 'descending' : 'ascending') : nat
@@ -254,8 +258,11 @@ export function initTableFinder() {
     for (const m of MULTI) for (const v of f[m]) active.push([m, v])
     if (f.within) active.push(['within', f.within])
     if (f.where) active.push(['where', f.where])
+    // A filter a quick toggle sets shows as that toggle pressed, so it gets no chip.
+    const quickOn = new Set([...document.querySelectorAll<HTMLElement>('[data-quick]')].map((q) => q.dataset.quick!))
+    const chipped = active.filter(([name, value]) => !quickOn.has(`${name}:${value}`))
     chipsEl.replaceChildren(
-      ...active.map(([name, value]) => {
+      ...chipped.map(([name, value]) => {
         const b = document.createElement('button')
         b.type = 'button'
         b.className = 'chip'
@@ -275,7 +282,7 @@ export function initTableFinder() {
       clear.textContent = 'Clear all'
       chipsEl.append(clear)
     }
-    chipsEl.hidden = active.length === 0
+    chipsEl.hidden = chipped.length === 0
     const filters = active.filter(([name]) => name !== 'q').length
     badge.hidden = filters === 0
     badge.textContent = String(filters)
@@ -292,9 +299,6 @@ export function initTableFinder() {
     if (b) b.textContent = String(n)
     const l = document.querySelector<HTMLElement>(`[data-ql="${key}"]`)
     if (l) l.textContent = plural(n, one, many)
-    // A count of 0 is noise, unless that filter is the one switched on.
-    const q = b?.closest<HTMLElement>('[data-quick]')
-    if (q) q.hidden = n === 0 && q.getAttribute('aria-pressed') !== 'true'
   }
 
   // The next seven days and after, drawn between rows while the table is sorted by soonest deadline.
@@ -304,7 +308,7 @@ export function initTableFinder() {
     tr.className = `divider divider--${kind}`
     tr.setAttribute('aria-hidden', 'true')
     const td = document.createElement('td')
-    td.colSpan = 4
+    td.colSpan = 3
     td.textContent = text
     tr.append(td)
     return tr
@@ -333,8 +337,10 @@ export function initTableFinder() {
     const f = read()
     let shownNow = 0
     let shownLater = 0
+    // Asked-for not-open rows ignore a status filter that names only open states ("Open now" plus "Show not open").
+    const laterSkip = showLater && !f.status.some(isLater) ? 'status' : undefined
     for (const i of items) {
-      const ok = matches(i, f)
+      const ok = isLater(i.state) ? matches(i, f, laterSkip) : matches(i, f)
       i.el.hidden = !ok
       if (!ok) continue
       if (isLater(i.state)) shownLater++
@@ -353,12 +359,11 @@ export function initTableFinder() {
     const byState = (s: string) => base.filter((i) => i.state === s).length
     const soon = items.filter((i) => matches(i, { ...f, within: '7' }, 'status') && i.state === 'open').length
     const laterN = items.filter((i) => isLater(i.state) && matches(i, f, 'status')).length
-    setQuick('open', byState('open'), 'open now', 'open now')
+    setQuick('open', byState('open'), 'Open now', 'Open now')
     setQuick('soon', soon, 'closing within 7 days', 'closing within 7 days')
     setQuick('rolling', byState('rolling'), '', '')
     setQuick('upcoming', byState('upcoming'), '', '')
     setQuick('later', laterN, '', '')
-    endN.textContent = String(laterN)
     endfold.hidden = laterOn || laterN === 0
     for (const q of document.querySelectorAll<HTMLButtonElement>('[data-quick]')) {
       const [name, value] = q.dataset.quick!.split(':') as [string, string]
@@ -366,10 +371,6 @@ export function initTableFinder() {
       q.setAttribute('aria-pressed', String(on))
       q.disabled = !on && q.querySelector('b')?.textContent === '0'
     }
-    laterToggle.setAttribute('aria-pressed', String(laterOn))
-    laterToggle.disabled = forced || laterN === 0
-    laterToggle.hidden = laterN === 0
-    laterVerb.textContent = laterOn ? 'Hide' : 'Show'
 
     for (const n of form.querySelectorAll<HTMLElement>('[data-n]')) {
       const [group, value] = n.dataset.n!.split(':') as [Multi, string]
@@ -378,15 +379,30 @@ export function initTableFinder() {
       const input = n.closest('label')?.querySelector('input')
       if (input) input.disabled = count === 0 && !input.checked
     }
+    for (const s of askSelects) {
+      if (s.name === 'where' || s.name === 'within') s.value = f[s.name]
+      else {
+        const v = f[s.name as Multi]
+        s.querySelector('[data-ask-multi]')!.textContent = `${v.length} picked`
+        s.value = v.length === 0 ? '' : v.length === 1 ? v[0]! : 'multi'
+      }
+      s.dispatchEvent(new Event('sync'))
+    }
+    const appr = [...f.approach].sort().join(' ')
+    for (const c of cats) c.setAttribute('aria-current', String(c.dataset.cat === appr))
 
     shownEl.textContent = `${shown} of ${items.length} shown`
     live.textContent = `${shown} ${plural(shown, 'programme', 'programmes')} shown`
+    // Nothing to show: no header, no end card, just the message where the rows would be.
     emptyEl.hidden = shown > 0
-    emptyHead.textContent = shownNow + shownLater === 0 ? 'Nothing matches.' : 'Nothing open matches.'
+    tableWrap.hidden = shown === 0
+    if (shown === 0) endfold.hidden = true
+    // laterN counts not-open rows the other filters match, which the status filter may be hiding.
+    emptyHead.textContent = laterN === 0 ? 'Nothing matches.' : 'Nothing open matches.'
     if (shown === 0) {
       emptyText.innerHTML =
-        !laterOn && shownLater > 0
-          ? `${shownLater} not open now ${plural(shownLater, 'matches', 'match')}. <button type="button" class="linkish" data-later-show>Show ${plural(shownLater, 'it', 'them')}</button>, or <button type="button" class="linkish" data-reset>clear all filters</button>.`
+        laterN > 0
+          ? `${laterN} not open now ${plural(laterN, 'matches', 'match')}${f.status.length ? ' your other filters' : ''}. <button type="button" class="linkish" data-later-show>Show ${plural(laterN, 'it', 'them')}</button>, or <button type="button" class="linkish" data-reset>clear all filters</button>.`
           : `Try another search, remove a filter, or <button type="button" class="linkish" data-reset>clear all</button>.`
     }
     done.textContent = `Show ${shown} ${plural(shown, 'result', 'results')}`
@@ -402,7 +418,7 @@ export function initTableFinder() {
   // ---------- Filter sheet (phones and tablets) ----------
   const narrow = matchMedia('(max-width: 67.99rem)')
   const focusables = () =>
-    [...sheet.querySelectorAll<HTMLElement>('button, input, select, summary, [tabindex]')].filter(
+    [...sheet.querySelectorAll<HTMLElement>('button, input, select, [tabindex]')].filter(
       (e) => !(e as HTMLInputElement).disabled && e.offsetParent !== null,
     )
   function openSheet() {
@@ -453,17 +469,23 @@ export function initTableFinder() {
   // ---------- Wiring ----------
   const f0 = fromUrl()
   write(f0)
-  // A group with a filter set starts open.
-  for (const g of form.querySelectorAll<HTMLDetailsElement>('details[data-group]')) {
-    const k = g.dataset.group!
-    const on = k === 'within' || k === 'where' ? !!f0[k] : f0[k as Multi].length > 0
-    if (on) g.open = true
-  }
   applySort()
   apply()
 
   form.addEventListener('input', apply)
   form.addEventListener('submit', (e) => e.preventDefault())
+  ask?.addEventListener('change', (e) => {
+    const s = e.target as HTMLSelectElement
+    const f = read()
+    if (s.name === 'where' || s.name === 'within') f[s.name] = s.value
+    else f[s.name as Multi] = s.value ? [s.value] : []
+    write(f)
+    apply()
+  })
+  ask?.addEventListener('submit', (e) => {
+    e.preventDefault()
+    document.querySelector('.results')?.scrollIntoView({ block: 'start', behavior: 'smooth' })
+  })
 
   for (const b of document.querySelectorAll<HTMLButtonElement>('[data-sort]')) {
     b.addEventListener('click', () => {
@@ -486,6 +508,15 @@ export function initTableFinder() {
 
   document.addEventListener('click', (e) => {
     const t = e.target as HTMLElement
+    const cat = t.closest<HTMLElement>('[data-cat]')
+    if (cat && !((e as MouseEvent).metaKey || (e as MouseEvent).ctrlKey || (e as MouseEvent).shiftKey)) {
+      e.preventDefault()
+      const f = read()
+      f.approach = cat.dataset.cat ? cat.dataset.cat.split(' ') : []
+      write(f)
+      apply()
+      return
+    }
     const quick = t.closest<HTMLButtonElement>('[data-quick]')
     if (quick) {
       const [name, value] = quick.dataset.quick!.split(':') as [string, string]
@@ -508,7 +539,7 @@ export function initTableFinder() {
     if (t.closest('[data-later-hide]')) {
       showLater = false
       apply()
-      laterToggle.focus()
+      endfold.focus()
       return
     }
     if (t.closest('[data-later-show]')) {

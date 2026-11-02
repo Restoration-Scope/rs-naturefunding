@@ -2,7 +2,7 @@
 import Base from '../layouts/Base.astro'
 import { AGING_DAYS, HIDDEN_DAYS } from '../lib/data'
 import { fieldDocs, fileDocs } from '../lib/data-docs'
-import { REPO_URL, absolute } from '../lib/site'
+import { absolute } from '../lib/site'
 
 const description =
   'The naturefunding.org open data: every file, every field of data.json, and how to read a fact, its quote and the date it was checked.'
@@ -28,18 +28,27 @@ const objects = [
   { id: 'organisation', title: 'Organisation', where: 'funder and administered_by', docs: fieldDocs.organisation },
 ]
 
+// The About page's prose and key (src/pages/about.astro), with a wider name column for field names.
+const prose = [
+  '[&>p]:max-w-[66ch] [&>p+p]:mt-[0.85rem] [&>p+ul]:mt-[0.85rem] [&>ul+p]:mt-[0.85rem] [&>p+pre]:mt-[0.85rem] [&>pre+p]:mt-[0.85rem]',
+  '[&>ul]:mt-[0.6rem] [&>ul]:mb-0 [&>ul]:max-w-[66ch] [&>ul]:pl-[1.2rem] [&>ul>li+li]:mt-[0.4rem] [&_li]:marker:text-ink-2',
+  '[&>h2]:mt-11 [&>h2]:mb-[0.6rem] [&>h2]:scroll-mt-10 [&>h2]:text-4xl [&>h3]:scroll-mt-10 [&_dd]:text-pretty [&_li]:text-pretty',
+]
+const keyTitle = 'mt-8 text-2xl'
+const key =
+  'mt-3 mb-0 grid max-w-[66ch] gap-[0.6rem] *:grid *:gap-[0.3rem] sm:*:grid-cols-[13rem_minmax(0,1fr)] sm:*:items-baseline sm:*:gap-4 [&_dd]:m-0'
 ---
 
 <Base title="The open data" description={description} path="/data/" nav="about" jsonLd={jsonLd}>
-  <div slot="band" class="wrap band">
-    <h1 class="band__title">The open data</h1>
-    <p class="band__lede">
+  <div slot="band" class="wrap pt-7 pb-9">
+    <h1 class="text-[clamp(1.75rem,1.2rem+2.2vw,2.75rem)] tracking-[-0.01em]">The open data</h1>
+    <p class="mt-[0.9rem] max-w-[60ch] text-xl text-shell-ink-2">
       The data on this site is also a file you can download, under CC BY 4.0. This page lists the files and says
       what every field means.
     </p>
   </div>
 
-  <article class="wrap prose">
+  <article class:list={['wrap mr-auto ml-0 max-w-[calc(44rem+2*var(--gutter))] pb-4', prose]}>
     <h2 id="files">Files</h2>
     <ul>
       <li><a href="/data.json">data.json</a>: every programme, call and fact with its source, quote and checked date.</li>
@@ -50,8 +59,7 @@ const objects = [
       <li><a href="/llms.txt">llms.txt</a>: an index for AI agents, with a Markdown copy of every page; <a href="/llms-full.txt">llms-full.txt</a> is all of them in one file.</li>
     </ul>
     <p>
-      The files are built from the main branch of the <a href={REPO_URL}>public repository</a> each time the site is
-      deployed. No key or sign-up is needed.
+      The files are rebuilt each time the site is deployed. No key or sign-up is needed.
     </p>
 
     <h2 id="reading">How to read a fact</h2>
@@ -97,7 +105,7 @@ const objects = [
 
     <h2 id="example">Example</h2>
     <p>The names of the programmes whose stored call status is “open”, rolling programmes included. That is the last check, not the finder’s “open now” list:</p>
-    <pre class="code"><code>curl -s {absolute('/data.json')} | jq -r '
+    <pre class="max-w-[66ch] overflow-x-auto rounded-lg bg-muted p-4 text-sm"><code>curl -s {absolute('/data.json')} | jq -r '
   .programmes[]
   | select(any(.calls[]; .status == "open"))
   | .name'</code></pre>
@@ -110,9 +118,9 @@ const objects = [
     {
       objects.map((o) => (
         <>
-          <h3 id={`fields-${o.id}`}>{o.title}</h3>
-          <p class="key__intro">In {o.where}.</p>
-          <dl class="key">
+          <h3 id={`fields-${o.id}`} class={keyTitle}>{o.title}</h3>
+          <p class="mt-1 text-sm text-ink-2">In {o.where}.</p>
+          <dl class={key}>
             {Object.entries(o.docs).map(([name, text]) => (
               <div id={`${o.id}.${name}`}>
                 <dt>
@@ -130,103 +138,8 @@ const objects = [
     <p>
       The data is licensed <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>: you can reuse it,
       including commercially, if you credit “naturefunding.org (Restoration Scope)”, link to https://naturefunding.org
-      and the licence, and say if you changed the data. Quotes are the funders’ words and are not covered. The code
-      is MIT-licensed.
+      and the licence, and say if you changed the data. Quotes are the funders’ words and are not covered.
     </p>
   </article>
 </Base>
 
-<style>
-  /* The About page's band, prose and key, with a wider name column for field names. */
-  .band {
-    padding-block: 1.75rem 2.25rem;
-  }
-  .band__title {
-    font-size: clamp(1.75rem, 1.2rem + 2.2vw, 2.75rem);
-    font-weight: 800;
-    letter-spacing: -0.02em;
-  }
-  .band__lede {
-    max-width: 60ch;
-    margin-top: 0.9rem;
-    font-size: 1.125rem;
-    color: var(--shell-ink-2);
-  }
-  .prose {
-    max-width: calc(44rem + 2 * var(--gutter));
-    margin-inline: 0 auto;
-    padding-bottom: 1rem;
-  }
-  .prose h2 {
-    margin-top: 2.75rem;
-    margin-bottom: 0.6rem;
-    font-size: 1.375rem;
-    font-weight: 800;
-    scroll-margin-top: 1rem;
-  }
-  .prose h3 {
-    margin-top: 2rem;
-    font-size: 1.125rem;
-    font-weight: 700;
-    scroll-margin-top: 1rem;
-  }
-  .prose p,
-  .prose ul,
-  .prose pre {
-    max-width: 66ch;
-  }
-  .prose p,
-  .prose li,
-  .prose dd {
-    text-wrap: pretty;
-  }
-  .prose p + p,
-  .prose p + ul,
-  .prose ul + p,
-  .prose p + pre,
-  .prose pre + p {
-    margin-top: 0.85rem;
-  }
-  .prose ul {
-    margin-block: 0.6rem 0;
-    padding-left: 1.2rem;
-  }
-  .prose li + li {
-    margin-top: 0.4rem;
-  }
-  .prose li::marker {
-    color: var(--ink-2);
-  }
-  .code {
-    overflow-x: auto;
-    padding: 1rem;
-    border-radius: var(--radius);
-    background: var(--surface);
-    font-size: 0.875rem;
-  }
-  .key__intro {
-    margin-top: 0.25rem;
-    font-size: 0.875rem;
-    color: var(--ink-2);
-  }
-  .key {
-    display: grid;
-    gap: 0.6rem;
-    margin: 0.75rem 0 0;
-    max-width: 66ch;
-  }
-  .key div {
-    display: grid;
-    gap: 0.3rem;
-  }
-  .key dd {
-    margin: 0;
-  }
-  @media (min-width: 40rem) {
-    .key div {
-      grid-template-columns: 13rem minmax(0, 1fr);
-      gap: 1rem;
-      align-items: baseline;
-    }
-  }
-</style>

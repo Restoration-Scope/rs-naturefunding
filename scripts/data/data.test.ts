@@ -49,6 +49,24 @@ describe('fixture', () => {
   test('is valid', () => expect(problems(fixture())).toEqual([]))
 })
 
+describe('consortium_required', () => {
+  test('is optional: a programme without it is valid', () => expect(problems(fixture())).toEqual([]))
+
+  test('needs evidence when stated', () => {
+    const p = fixture()
+    p.consortium_required = true
+    expect(problems(p)).toEqual(['evidence.consortium_required: consortium_required is stated but has no evidence'])
+    p.evidence.consortium_required = ev('Applicants must form a consortium of three organisations.')
+    expect(problems(p)).toEqual([])
+  })
+
+  test('evidence without the field is refused', () => {
+    const p = fixture()
+    p.evidence.consortium_required = ev('Applicants must form a consortium of three organisations.')
+    expect(problems(p)).toEqual(['evidence.consortium_required: consortium_required has evidence but is not stated'])
+  })
+})
+
 describe('a date quote must state its year', () => {
   test.each([
     ['Applications close 26 November 2026.', true],

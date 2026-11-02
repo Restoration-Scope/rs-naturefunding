@@ -1,0 +1,478 @@
+/* The finder's table on /: shadcn/ui Table in a Card, its reflow to one card per row on phones, and the
+   pieces src/lib/finder.ts draws at runtime (chips, dividers, links in messages). Component classes rather
+   than utilities: 93 rows repeat them, and the rules switch together at each container width. Only /
+   loads this file. Hover styles sit behind (hover: hover), so a tap on a phone leaves nothing behind. */
+@layer theme, base, components, utilities;
+
+@layer components {
+  .linkish {
+    padding: 0;
+    border: 0;
+    background: none;
+    color: var(--link);
+    font: inherit;
+    text-decoration: underline;
+    text-underline-offset: 0.18em;
+    cursor: pointer;
+  }
+
+  /* An active filter: an outline badge that removes itself. */
+  .chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+    min-height: 1.75rem;
+    padding: 0.125rem 0.375rem 0.125rem 0.75rem;
+    border: 1px solid var(--border);
+    border-radius: 9999px;
+    background: var(--card);
+    color: var(--foreground);
+    font: inherit;
+    font-size: var(--text-sm);
+    font-weight: 500;
+    line-height: 1.3;
+    cursor: pointer;
+  }
+  .chip__x {
+    display: inline-grid;
+    place-items: center;
+    width: 1.1rem;
+    height: 1.1rem;
+    color: var(--muted-foreground);
+  }
+  .chip--clear {
+    border-color: transparent;
+    background: none;
+    color: var(--link);
+    text-decoration: underline;
+    text-underline-offset: 0.18em;
+  }
+  @media (hover: hover) {
+    .chip:not(.chip--clear):hover {
+      background: var(--muted);
+    }
+  }
+
+  /* ---------- The table (wide: three columns) ---------- */
+  /* The Card. overflow: clip (not hidden) rounds the corners without making a scroll box, so the header
+     still sticks to the page. */
+  .tbl-wrap {
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    background: var(--card);
+    overflow: clip;
+  }
+  .tbl {
+    width: 100%;
+    /* The last row's rule tucks under the card's own edge. */
+    margin-bottom: -1px;
+    table-layout: fixed;
+    border-collapse: separate;
+    border-spacing: 0;
+    font-size: 0.9375rem;
+    line-height: 1.35;
+  }
+  .tbl thead th {
+    position: sticky;
+    top: 0;
+    z-index: 3;
+    height: 2.5rem;
+    padding: 0 0.75rem;
+    background: var(--card);
+    border-bottom: 1px solid var(--border);
+    font-size: var(--text-sm);
+    font-weight: 500;
+    color: var(--muted-foreground);
+    text-align: left;
+    vertical-align: middle;
+    white-space: nowrap;
+  }
+  .tbl thead button {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.375rem;
+    height: 2rem;
+    margin-inline: -0.5rem;
+    padding: 0 0.5rem;
+    border: 0;
+    border-radius: var(--radius-md);
+    background: none;
+    color: inherit;
+    font: inherit;
+    cursor: pointer;
+  }
+  @media (hover: hover) {
+    .tbl thead button:hover {
+      color: var(--foreground);
+      background: var(--muted);
+    }
+  }
+  .tbl thead .arrow {
+    display: inline-grid;
+  }
+  .tbl thead .arrow > svg {
+    grid-area: 1 / 1;
+    width: 0.875rem;
+    height: 0.875rem;
+  }
+  .tbl thead .i-none {
+    opacity: 0.6;
+  }
+  .tbl thead .i-asc,
+  .tbl thead .i-desc {
+    display: none;
+  }
+  .tbl thead th[aria-sort] > button:not(.h-checked),
+  .tbl thead button[data-active] {
+    color: var(--foreground);
+  }
+  .tbl thead th[aria-sort] > button:not(.h-checked) .i-none,
+  .tbl thead button[data-active] .i-none {
+    display: none;
+  }
+  .tbl thead th[aria-sort='ascending'] > button:not(.h-checked) .i-asc,
+  .tbl thead button[data-active='ascending'] .i-asc,
+  .tbl thead th[aria-sort='descending'] > button:not(.h-checked) .i-desc,
+  .tbl thead button[data-active='descending'] .i-desc {
+    display: block;
+  }
+  /* The checked date sits under the amount, so its sort shares the Amount header. */
+  .h-checked {
+    margin-left: 0.75rem !important;
+  }
+  .h-dl {
+    width: 15rem;
+  }
+  .h-amount {
+    width: 13rem;
+  }
+
+  .row {
+    position: relative;
+  }
+  .row > td {
+    padding: 0.875rem 0.75rem;
+    vertical-align: top;
+    border-bottom: 1px solid var(--border);
+  }
+  .row:has(.name:focus-visible) {
+    background: var(--chip);
+  }
+  .name {
+    display: block;
+    font-weight: 700;
+    color: var(--link);
+    text-decoration: none;
+    text-wrap: pretty;
+  }
+  /* The whole row opens the programme. */
+  .name::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+  }
+  .name:focus-visible {
+    outline-offset: 1px;
+    text-decoration: underline;
+    text-decoration-thickness: 2px;
+    text-underline-offset: 0.18em;
+  }
+  @media (hover: hover) {
+    .row:hover {
+      background: var(--chip);
+    }
+    .row:hover .name {
+      text-decoration: underline;
+      text-decoration-thickness: 2px;
+      text-underline-offset: 0.18em;
+    }
+  }
+  /* One line; the full funder is in its title. */
+  .sub {
+    display: block;
+    min-width: 0;
+    margin-top: 0.125rem;
+    overflow: hidden;
+    font-size: var(--text-sm);
+    line-height: 1.4;
+    color: var(--muted-foreground);
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  /* The funder's mark hangs in the line's first em, beside the name it stands for. */
+  .sub__mark {
+    margin: -0.125rem 0.375rem 0 0;
+  }
+  .sub__route {
+    display: block;
+    margin-top: 0.375rem;
+  }
+  /* Most programmes take direct applications: only the exceptions get a line. */
+  .sub__route:has([data-route='direct']) {
+    display: none;
+  }
+  .kind {
+    display: block;
+    margin-top: 0.25rem;
+    font-size: var(--text-sm);
+    font-weight: 600;
+    color: var(--aging-text);
+  }
+
+  /* Line 1: the status and its date. Line 2: days left, amber within a week. Then the funder's words. */
+  /* In the table a status is a coloured dot and word; the tinted pill stays for single programme pages. */
+  .tbl .status {
+    padding: 0;
+    border: 0;
+    background: none;
+    font-size: var(--text-sm);
+  }
+  /* A note too long for the status line ("Page doesn't say if open now") wraps whole to its own line. */
+  .dl {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.25rem 0.5rem;
+  }
+  /* Figures only: Inter's tabular forms also widen the hyphen, so text that can hold one ("Expected
+     mid-March", names, quotes) keeps the default. */
+  .dl__left,
+  .amt {
+    font-variant-numeric: tabular-nums;
+  }
+  .dl__date {
+    font-weight: 600;
+  }
+  .dl__muted {
+    color: var(--muted-foreground);
+  }
+  .dl__left {
+    flex-basis: 100%;
+    font-size: var(--text-sm);
+    color: var(--muted-foreground);
+  }
+  .dl__left[data-soon] {
+    font-weight: 600;
+    color: var(--aging-text);
+  }
+  .dl__words {
+    display: block;
+    margin-top: 0.375rem;
+    font-size: var(--text-sm);
+    line-height: 1.4;
+    color: var(--muted-foreground);
+    overflow-wrap: anywhere;
+  }
+  .amt {
+    display: block;
+    font-weight: 600;
+  }
+  .amt--none {
+    font-weight: 400;
+    color: var(--muted-foreground);
+  }
+  .amt__note {
+    display: block;
+    margin-top: 0.125rem;
+    font-size: var(--text-xs);
+    line-height: 1.35;
+    color: var(--muted-foreground);
+  }
+  .c-amount {
+    position: relative;
+    z-index: 2;
+  }
+  /* "Last confirmed 1 Nov 2026" in its amber badge is wider than the column: it wraps rather than clips. */
+  .stamp {
+    max-width: 100%;
+    margin-top: 0.375rem;
+    font-size: var(--text-xs);
+    color: var(--muted-foreground);
+    white-space: normal;
+  }
+
+  /* The next seven days and after, while the table is sorted by deadline. */
+  .divider td {
+    padding: 0.75rem 0.75rem 0.25rem;
+    border-bottom: 1px solid var(--border);
+    font-size: var(--text-xs);
+    font-weight: 600;
+    color: var(--muted-foreground);
+  }
+  .divider--soon td {
+    color: var(--aging-text);
+  }
+  .divider--later td {
+    color: var(--muted-foreground);
+  }
+
+  /* Not open now: secondary rows under their own header. */
+  .later-head th {
+    padding: 1.5rem 0.75rem 0.75rem;
+    border-bottom: 1px solid var(--border);
+    text-align: left;
+    font-weight: 400;
+  }
+  .later-head__title {
+    font-weight: 700;
+    font-size: 1rem;
+  }
+  .later-head__hint {
+    margin-inline: 0.5rem 0.75rem;
+    font-size: var(--text-sm);
+    color: var(--muted-foreground);
+  }
+  .later-head .linkish {
+    font-size: var(--text-sm);
+  }
+  .later-rows .name {
+    font-weight: 600;
+    color: color-mix(in oklch, var(--link) 75%, var(--muted-foreground));
+  }
+  .later-rows .amt {
+    font-weight: 400;
+    color: var(--muted-foreground);
+  }
+
+  /* ---------- Mid width (about 640 to 830px of table): narrower side columns ---------- */
+  @container tbl (max-width: 51.99rem) {
+    .h-dl {
+      width: 13rem;
+    }
+    .h-amount {
+      width: 12.25rem;
+    }
+  }
+
+  /* ---------- Phone: one card per row, in reading order ---------- */
+  @container tbl (max-width: 39.99rem) {
+    .tbl-wrap {
+      border: 0;
+      border-radius: 0;
+      background: none;
+      overflow: visible;
+    }
+    .tbl,
+    .tbl tbody {
+      display: block;
+    }
+    .tbl {
+      margin-bottom: 0;
+    }
+    .tbl tbody {
+      display: grid;
+      gap: 0.75rem;
+    }
+    .tbl tbody + tbody {
+      margin-top: 0.75rem;
+    }
+    /* Sorting lives in the filter sheet on phones, so the header leaves the tab order too. */
+    .tbl thead {
+      display: none;
+    }
+    .row {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      grid-template-areas:
+        'name name'
+        'sub sub'
+        'route route'
+        'kind kind'
+        'dl dl'
+        'words words'
+        'quote quote'
+        'amount amount';
+      align-items: center;
+      column-gap: 0.75rem;
+      padding: 1rem;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      background: var(--card);
+    }
+    .row > td {
+      padding: 0;
+      border: 0;
+    }
+    .c-prog,
+    .c-dl {
+      display: contents;
+    }
+    .name {
+      grid-area: name;
+      font-size: 1.0625rem;
+      line-height: 1.3;
+    }
+    .sub {
+      grid-area: sub;
+      margin-top: 0.25rem;
+    }
+    .sub__route {
+      grid-area: route;
+    }
+    .kind {
+      grid-area: kind;
+    }
+    /* Days left joins the status line: "Open  9 Nov 2026 · 8 days left". */
+    .dl {
+      grid-area: dl;
+      margin-top: 0.75rem;
+    }
+    .dl__left {
+      flex-basis: auto;
+    }
+    .dl__left::before {
+      content: '· ';
+    }
+    /* Our summary of a window and the funder's quote can both show: each gets its own row. */
+    .dl__words.dl__words--quote {
+      grid-area: quote;
+    }
+    .dl__words {
+      grid-area: words;
+    }
+    /* The amount and its note on the left, the checked date on the right. */
+    .c-amount {
+      grid-area: amount;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      align-items: start;
+      column-gap: 0.75rem;
+      margin-top: 0.75rem;
+    }
+    .amt__note {
+      grid-column: 1 / -1;
+    }
+    .stamp {
+      grid-area: 1 / 2;
+      margin-top: 0.125rem;
+    }
+    .divider,
+    .divider td {
+      display: block;
+    }
+    .divider td {
+      padding: 0.25rem 0.25rem 0;
+      border: 0;
+      background: none;
+    }
+    .later-head,
+    .later-head tr,
+    .later-head th {
+      display: block;
+    }
+    .later-head th {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: baseline;
+      column-gap: 0.75rem;
+      padding: 1rem 0.25rem 0;
+      border: 0;
+    }
+    .later-head__hint {
+      order: 1;
+      flex-basis: 100%;
+      margin: 0.125rem 0 0;
+    }
+  }
+}

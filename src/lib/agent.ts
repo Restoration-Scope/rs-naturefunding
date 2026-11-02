@@ -5,7 +5,7 @@ import type { Call, Evidence, Programme } from '../data/schema'
 import { AGING_DAYS, HIDDEN_DAYS, buildDate, listingFor, programmeById, programmes, sortListings, stats, type Listing } from './data'
 import { amountText, geographyFull, geographyText, joinAnd, longDate } from './format'
 import { accessHelp, accessLabels, applicantLabels, approachLabels } from './labels'
-import { REPO_URL, RS_URL, SITE_NAME, absolute, funderCorrectionUrl, reportProblemUrl } from './site'
+import { RS_URL, SITE_NAME, absolute, funderCorrectionUrl, reportProblemUrl } from './site'
 import { LLMS_FULL_PAGES, twinPath } from './twins'
 import { evidenceOf } from '../data/load'
 
@@ -17,6 +17,7 @@ export const factIds = {
   applicant_types: 'applicant_types',
   window: 'window',
   co_finance_required: 'co_finance_required',
+  consortium_required: 'consortium_required',
   administered_by: 'administered_by',
   approaches: 'approaches',
   reporting: 'reporting',
@@ -96,6 +97,7 @@ export function programmeMarkdown(p: Programme): string {
   const who = p.applicant_types ? joinAnd(p.applicant_types.map((a) => applicantLabels[a])) : null
   const rounds = p.window === 'rolling' ? 'Rolling: apply any time' : p.window === 'fixed' ? 'Fixed rounds with deadlines' : null
   const coFunding = p.co_finance_required === null ? null : p.co_finance_required ? 'Yes' : 'No'
+  const consortium = p.consortium_required === undefined ? null : p.consortium_required ? 'Yes' : 'No'
   const n = p.name
   const out: string[] = []
 
@@ -118,6 +120,7 @@ export function programmeMarkdown(p: Programme): string {
     `- Where: ${geographyFull(p.geography) ?? NOT_FOUND}`,
     `- Rounds: ${rounds ?? byPartner}`,
     `- Co-funding required: ${coFunding ?? byPartner}`,
+    ...(consortium ? [`- Consortium required: ${consortium}`] : []),
     ...(p.administered_by ? [`- Run by: ${p.administered_by.name} (${p.administered_by.url})`] : []),
     `- Restoration approach (our classification): ${joinAnd(p.approaches.map((a) => approachLabels[a]))}`,
     `- Last checked: ${longDate(p.checked_at)}. Every quote below was read on or after this day.`,
@@ -146,6 +149,7 @@ export function programmeMarkdown(p: Programme): string {
     quoteLines(`${n}, who can apply`, who ?? byPartner, p.evidence.applicant_types, factIds.applicant_types, p),
     quoteLines(`${n}, rounds`, rounds ?? byPartner, p.evidence.window, factIds.window, p),
     quoteLines(`${n}, co-funding required`, coFunding ?? byPartner, p.evidence.co_finance_required, factIds.co_finance_required, p),
+    ...(consortium ? [quoteLines(`${n}, consortium required`, consortium, p.evidence.consortium_required, factIds.consortium_required, p)] : []),
     ...(p.administered_by ? [quoteLines(`${n}, run by`, p.administered_by.name, p.evidence.administered_by, factIds.administered_by, p)] : []),
   ]
   out.push(facts.join('\n\n'))
@@ -266,7 +270,6 @@ export function llmsTxt(listings: Listing[]): string {
     `- [data.csv](${absolute('/data.csv')}): one row per call, plus one row for each programme with no call, for spreadsheets`,
     `- [feed.xml](${absolute('/feed.xml')}): Atom feed of the calls of listed programmes, up to the 100 most recently updated; a call that opens, closes or changes its deadline date gets a new entry`,
     `- [health.json](${absolute('/health.json')}): the latest run of the daily checking job: how many sources were due, unchanged, changed or could not be read`,
-    `- [Source on GitHub](${REPO_URL}): data files, code and history`,
   ]
   for (const g of groups) {
     const ls = sorted(listings.filter(g.test))

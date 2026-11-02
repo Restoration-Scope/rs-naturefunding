@@ -1,0 +1,94 @@
+---
+// The weekly email sign-up: a plain form, no JS. It posts to the digest Worker (digest/, email.naturefunding.org),
+// which answers with a redirect to /digest/check-your-inbox/. The choices use the finder's `where` and `approach`
+// values, so the email matches what the finder shows for the same choice.
+import { Button } from '@/components/ui/button'
+import { Input } from '@/components/ui/input'
+import { NativeSelect } from '@/components/ui/native-select'
+import { CONSENT, CURRENT_CONSENT } from '../../digest/src/consent'
+import { countriesByRegion } from '../lib/geo'
+import { approachLabels } from '../lib/labels'
+import { DIGEST_LIVE } from '../lib/site'
+
+interface Props {
+  /** Email and button on one line; the country and project type sit behind a disclosure. */
+  compact?: boolean
+  /** Prefills, in the finder's values ("KE", "r:africa"; "mangroves"). */
+  where?: string
+  approach?: string
+  /** Distinguishes ids when a page has two forms. */
+  id?: string
+}
+
+const { compact = false, where = '', approach = '', id = 'digest' } = Astro.props
+const action = import.meta.env.DEV ? 'http://localhost:8790/subscribe' : 'https://email.naturefunding.org/subscribe'
+const approaches = Object.entries(approachLabels).sort((a, b) => a[1].localeCompare(b[1]))
+const label = 'mb-1.5 block text-sm font-semibold'
+// In the compact form the two choices fold away under a summary line.
+const Choices = compact ? 'details' : 'div'
+const show = DIGEST_LIVE || import.meta.env.DEV
+---
+
+{show && (
+
+<form class:list={['max-w-xl', compact && 'mt-10']} action={action} method="post" aria-label="Weekly email">
+  {
+    compact && (
+      <div class="mb-3">
+        <p class="text-lg font-bold">New funding calls by email</p>
+        <p class="text-ink-2">At most once a week, only when a call opens or a programme is added.</p>
+      </div>
+    )
+  }
+  <input type="hidden" name="consent" value={CURRENT_CONSENT} />
+  {/* Left empty by people; bots fill it. */}
+  <div class="absolute -left-[9999px]" aria-hidden="true">
+    <label for={`${id}-nf-hp`}>Leave this empty</label>
+    <input id={`${id}-nf-hp`} name="nf_hp" type="text" tabindex="-1" autocomplete="off" />
+  </div>
+
+  <div class="flex flex-wrap items-end gap-3">
+    <div class="min-w-0 flex-1 basis-64">
+      <label class={label} for={`${id}-email`}>Email</label>
+      <Input id={`${id}-email`} name="email" type="email" required autoComplete="email" maxLength={254} placeholder="you@example.org" className="min-h-11" />
+    </div>
+    {compact && <Button type="submit" className="min-h-11">Get the weekly email</Button>}
+  </div>
+
+  <Choices class="mt-3">
+  {compact && <summary class="cursor-pointer py-1 text-sm text-ink-2">Only for a country or type of project</summary>}
+  <div class="mt-2 grid gap-3 sm:grid-cols-2">
+    <div>
+      <label class={label} for={`${id}-where`}>Where the project is <span class="font-normal text-ink-2">(optional)</span></label>
+      <NativeSelect id={`${id}-where`} name="where" className="min-h-11">
+        <option value="">Anywhere</option>
+        <optgroup label="Regions">
+          {countriesByRegion.map((r) => <option value={`r:${r.region}`} selected={where === `r:${r.region}`}>{r.label}</option>)}
+        </optgroup>
+        {
+          countriesByRegion.map((r) => (
+            <optgroup label={r.label}>
+              {r.countries.map((c) => (
+                <option value={c.code} selected={where === c.code}>{c.name}</option>
+              ))}
+            </optgroup>
+          ))
+        }
+      </NativeSelect>
+    </div>
+    <div>
+      <label class={label} for={`${id}-approach`}>Type of project <span class="font-normal text-ink-2">(optional)</span></label>
+      <NativeSelect id={`${id}-approach`} name="approach" className="min-h-11">
+        <option value="">Any type</option>
+        {approaches.map(([k, v]) => <option value={k} selected={approach === k}>{v}</option>)}
+      </NativeSelect>
+    </div>
+  </div>
+  </Choices>
+
+  {!compact && <Button type="submit" className="mt-5 min-h-11">Get the weekly email</Button>}
+  <p class="mt-3 text-sm text-ink-2">
+    {CONSENT[CURRENT_CONSENT]} We keep only your address and these choices. <a href="/privacy/#weekly-email">Privacy</a>
+  </p>
+</form>
+)}

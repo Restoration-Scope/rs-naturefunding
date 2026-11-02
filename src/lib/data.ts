@@ -1,16 +1,35 @@
-import { loadProgrammes } from '../data/load'
-import type { Call, Evidence, Programme } from '../data/schema'
+import { existsSync, readFileSync } from 'node:fs'
+import { join } from 'node:path'
+import { loadData } from '../data/load'
+import type { Call, Programme } from '../data/schema'
 import { countryRegion } from './geo'
 import type { SizeBucket, State } from './labels'
 import { sizeBuckets } from './labels'
 
-export const programmes: Programme[] = loadProgrammes()
+const data = loadData()
+export const programmes: Programme[] = data.programmes
 
 /** The day this build ran, in UTC. Statuses and freshness are judged against it, and again in the browser. */
 export const buildDate = new Date().toISOString().slice(0, 10)
 
 export const AGING_DAYS = 30
 export const HIDDEN_DAYS = 90
+
+/** Why the daily check could not re-read a programme's pages, as the refresh job records it. */
+export type RecheckFailure = 'robots' | 'blocked' | 'network' | 'http' | 'timeout' | 'selector' | 'unreadable'
+// data/checks/programmes.json, written by each daily run. No file, or no entry, means no news.
+const checksFile = join(process.cwd(), 'data', 'checks', 'programmes.json')
+const checks: Record<string, { reason: RecheckFailure | null; failing_sources: string[] }> = existsSync(checksFile)
+  ? JSON.parse(readFileSync(checksFile, 'utf8'))
+  : {}
+/** Set when the daily check could not re-read the programme's pages since `checked_at`. */
+export const notRechecked = (id: string): RecheckFailure | null => checks[id]?.reason ?? null
+const sourceUrl = new Map(data.sources.map((s) => [s.id, s.url]))
+const failingPages = new Map(
+  Object.values(checks).flatMap((c) => (c.reason ? c.failing_sources.map((id) => [sourceUrl.get(id), c.reason] as const) : [])),
+)
+/** Set when the daily check could not re-read this page, for the tags under each fact. */
+export const notRecheckedPage = (url: string): RecheckFailure | null => failingPages.get(url) ?? null
 
 export const daysBetween = (from: string, to: string) =>
   Math.round((Date.parse(to) - Date.parse(from)) / 86_400_000)
@@ -118,14 +137,3 @@ export const stats = {
   lastChecked: listings.map((l) => l.p.checked_at).sort().at(-1) ?? null,
 }
 
-export type SharedSource = { url: string; checked: string }
-
-/** The page and date most of these facts were checked against, when at least two share them. */
-export function sharedSource(evidence: (Evidence | undefined)[]): SharedSource | null {
-  const counts = new Map<string, number>()
-  for (const e of evidence) if (e) counts.set(`${e.checked_at} ${e.source_url}`, (counts.get(`${e.checked_at} ${e.source_url}`) ?? 0) + 1)
-  const [top] = [...counts].sort((a, b) => b[1] - a[1])
-  if (!top || top[1] < 2) return null
-  const [checked, url] = top[0].split(' ')
-  return { url: url!, checked: checked! }
-}

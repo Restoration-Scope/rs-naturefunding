@@ -1,106 +1,219 @@
+@import 'tailwindcss';
+
+/* Inter for text and UI, Geist Serif for headings. Both are self-hosted; see public/fonts/LICENSE.txt.
+   The fallback faces stretch Arial and Georgia to the web fonts' metrics, so the swap barely moves text. */
 @font-face {
-  font-family: 'Atkinson Hyperlegible Next';
-  src: url('/fonts/ahn-latin.woff2') format('woff2');
-  font-weight: 200 800;
+  font-family: 'Inter';
+  src: url('/fonts/inter-latin-variable.woff2') format('woff2');
+  font-weight: 100 900;
+  font-style: normal;
   font-display: swap;
   unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 }
 @font-face {
-  font-family: 'Atkinson Hyperlegible Next';
-  src: url('/fonts/ahn-latin-ext.woff2') format('woff2');
-  font-weight: 200 800;
+  font-family: 'Inter';
+  src: url('/fonts/inter-latin-ext-variable.woff2') format('woff2');
+  font-weight: 100 900;
+  font-style: normal;
   font-display: swap;
-  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
 }
 @font-face {
-  font-family: 'Atkinson Hyperlegible Mono';
-  src: url('/fonts/ahm-latin.woff2') format('woff2');
-  font-weight: 200 800;
+  font-family: 'Geist Serif';
+  src: url('/fonts/geist-serif-regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
   font-display: swap;
-  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 }
 @font-face {
-  font-family: 'Atkinson Hyperlegible Mono';
-  src: url('/fonts/ahm-latin-ext.woff2') format('woff2');
-  font-weight: 200 800;
-  font-display: swap;
-  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
+  font-family: 'Inter Fallback';
+  src: local('Arial'), local('ArialMT'), local('Helvetica');
+  size-adjust: 106.7%;
+  ascent-override: 90.8%;
+  descent-override: 22.6%;
+  line-gap-override: 0%;
+}
+@font-face {
+  font-family: 'Geist Serif Fallback';
+  src: local('Georgia');
+  size-adjust: 105.5%;
+  ascent-override: 95.3%;
+  descent-override: 28%;
+  line-gap-override: 0%;
 }
 
 :root {
-  color-scheme: light dark;
+  /* Light only. */
+  color-scheme: light;
 
-  /* Aluminium ground, spruce ink. */
-  --ground: oklch(0.962 0.006 215);
-  --surface: oklch(0.992 0.003 215);
-  --sunk: oklch(0.935 0.008 215);
-  --ink: oklch(0.25 0.03 180);
-  --ink-2: oklch(0.43 0.025 195);
-  --rule: oklch(0.86 0.012 210);
-  --rule-strong: oklch(0.74 0.015 210);
-  /* Form control edges: at least 3:1 against the page (WCAG 1.4.11). */
-  --control-edge: oklch(0.56 0.015 210);
-  --link: oklch(0.42 0.1 170);
-  --focus: oklch(0.55 0.2 145);
+  /* Restoration Scope's palette, as its landing page uses it (restoration-scope
+     src/styles/colors/palette.json): beige paper, ink text, brand green. */
+  --paper: #f7f4ef;
+  --linen: #edeae7;
+  --chip: #eef4e6;
+  --white: #fff;
+  --ink: #1b2722;
+  --ink-2: #6a716e;
+  /* ink-2 is 4.17:1 on linen; secondary text on linen takes this deeper step (5.6:1). */
+  --ink-2-on-linen: #565e5b;
+  --brand: #3a7e49;
+  --brand-dark: #254b36;
+  --brand-light: #beccc2;
+  --brand-blue: #3e58eb;
+  --clay: #a45435;
 
-  /* Shell band: deep spruce. */
-  --shell: oklch(0.31 0.055 172);
-  --shell-ink: oklch(0.97 0.012 165);
-  --shell-ink-2: oklch(0.84 0.03 165);
+  /* Roles. The page is paper, cards and the table are white, quiet surfaces are linen. */
+  --ground: var(--paper);
+  --surface: var(--white);
+  --sunk: var(--linen);
+  --rule: #d8d7d2;
+  --rule-strong: #b5b6b1;
+  /* Form control edges: at least 3:1 against paper, white and linen (WCAG 1.4.11). */
+  --control-edge: var(--ink-2);
+  /* Brand green on paper is 4.49:1, a hair under AA for text; links take it 30% toward brand-dark (5.5:1). */
+  --link: #346f43;
+  --focus: var(--brand);
 
-  /* Flagging tape. Fills carry dark ink text. */
-  --tape-open: oklch(0.86 0.2 138);
-  --tape-rolling: oklch(0.82 0.11 230);
-  --tape-upcoming: oklch(0.82 0.15 62);
-  --tape-closed: oklch(0.8 0.008 215);
-  --tape-ink: oklch(0.22 0.03 180);
+  /* The header band: brand-dark, with paper text and brand-light for secondary text and accents. */
+  --shell: var(--brand-dark);
+  --shell-ink: var(--paper);
+  --shell-ink-2: var(--brand-light);
 
-  /* Stamped aluminium tag. */
-  --tag: oklch(0.905 0.008 220);
-  --tag-edge: oklch(0.78 0.012 220);
-  --tag-ink: oklch(0.32 0.02 220);
-  --aging: oklch(0.86 0.14 85);
-  --aging-ink: oklch(0.3 0.06 70);
-  --aging-text: oklch(0.47 0.11 70);
+  /* Status tints: a fill, its text (each pair at least 7:1, on paper and white alike) and a dot.
+     ok = open (brand), info = rolling (brand-blue), warn = upcoming, closing soon and an ageing check (clay). */
+  --ok: #e3ede6;
+  --ok-ink: var(--brand-dark);
+  --ok-dot: var(--brand);
+  --info: #e8ebfd;
+  --info-ink: #2b3d7c;
+  --info-dot: var(--brand-blue);
+  --warn: #f2e7e3;
+  --warn-ink: #66402c;
+  --warn-dot: var(--clay);
+  /* Clay text on the page: "Paid partnership, not a grant", the next-seven-days divider. */
+  --aging-text: #894b31;
 
-  --font: 'Atkinson Hyperlegible Next', ui-sans-serif, system-ui, sans-serif;
-  --mono: 'Atkinson Hyperlegible Mono', ui-monospace, 'SFMono-Regular', Menlo, monospace;
+  /* The primary action: brand green, brand-dark on hover. */
+  --action: var(--brand);
+  --action-ink: var(--white);
+  --action-hover: var(--brand-dark);
+  --backdrop: rgb(27 39 34 / 0.55);
 
-  --radius: 4px;
+  --font: 'Inter', 'Inter Fallback', ui-sans-serif, system-ui, sans-serif;
+  --font-heading: 'Geist Serif', 'Geist Serif Fallback', Georgia, ui-serif, serif;
+
+  --radius: 0.5rem;
   --page: 76rem;
   --gutter: clamp(1rem, 3vw, 2rem);
+
+  /* shadcn/ui's variables, mapped onto the palette above (not shadcn's default palette). */
+  --background: var(--ground);
+  --foreground: var(--ink);
+  --card: var(--surface);
+  --card-foreground: var(--ink);
+  --popover: var(--surface);
+  --popover-foreground: var(--ink);
+  --primary: var(--action);
+  --primary-foreground: var(--action-ink);
+  --secondary: var(--sunk);
+  --secondary-foreground: var(--ink);
+  --muted: var(--sunk);
+  --muted-foreground: var(--ink-2);
+  --accent: var(--sunk);
+  --accent-foreground: var(--ink);
+  --destructive: var(--aging-text);
+  --border: var(--rule);
+  --input: var(--control-edge);
+  --ring: var(--focus);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --ground: oklch(0.2 0.014 200);
-    --surface: oklch(0.235 0.016 200);
-    --sunk: oklch(0.175 0.012 200);
-    --ink: oklch(0.94 0.01 180);
-    --ink-2: oklch(0.77 0.018 190);
-    --rule: oklch(0.33 0.016 200);
-    --rule-strong: oklch(0.45 0.02 200);
-    --control-edge: oklch(0.6 0.02 200);
-    --link: oklch(0.82 0.13 150);
-    --focus: oklch(0.8 0.2 140);
+/* Tailwind's theme holds only this palette: no default colours to drift into. */
+@theme inline {
+  --color-*: initial;
+  --color-transparent: transparent;
+  --color-current: currentColor;
+  --color-black: #000;
+  --color-white: #fff;
 
-    --shell: oklch(0.265 0.045 172);
-    --shell-ink: oklch(0.96 0.012 165);
-    --shell-ink-2: oklch(0.82 0.03 165);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
 
-    --tape-open: oklch(0.82 0.19 138);
-    --tape-rolling: oklch(0.78 0.1 230);
-    --tape-upcoming: oklch(0.79 0.14 62);
-    --tape-closed: oklch(0.72 0.008 215);
+  --color-ground: var(--ground);
+  --color-surface: var(--surface);
+  --color-sunk: var(--sunk);
+  --color-ink: var(--ink);
+  --color-ink-2: var(--ink-2);
+  --color-ink-2-on-linen: var(--ink-2-on-linen);
+  --color-rule: var(--rule);
+  --color-rule-strong: var(--rule-strong);
+  --color-control-edge: var(--control-edge);
+  --color-link: var(--link);
+  --color-focus: var(--focus);
+  --color-shell: var(--shell);
+  --color-shell-ink: var(--shell-ink);
+  --color-shell-ink-2: var(--shell-ink-2);
+  --color-brand: var(--brand);
+  --color-brand-dark: var(--brand-dark);
+  --color-brand-light: var(--brand-light);
+  --color-chip: var(--chip);
+  --color-ok: var(--ok);
+  --color-ok-ink: var(--ok-ink);
+  --color-info: var(--info);
+  --color-info-ink: var(--info-ink);
+  --color-warn: var(--warn);
+  --color-warn-ink: var(--warn-ink);
+  --color-warn-dot: var(--warn-dot);
+  --color-aging-text: var(--aging-text);
+  --color-action-hover: var(--action-hover);
+  --color-backdrop: var(--backdrop);
 
-    --tag: oklch(0.32 0.01 220);
-    --tag-edge: oklch(0.42 0.012 220);
-    --tag-ink: oklch(0.88 0.008 220);
-    --aging: oklch(0.78 0.14 85);
-    --aging-text: oklch(0.84 0.13 85);
-  }
+  --font-sans: var(--font);
+  --font-serif: var(--font-heading);
+
+  /* The site's type steps. No line heights: text keeps the line height around it. */
+  --text-*: initial;
+  --text-xs: 0.8125rem;
+  --text-sm: 0.875rem;
+  --text-md: 0.9375rem;
+  --text-base: 1rem;
+  --text-lg: 1.0625rem;
+  --text-xl: 1.125rem;
+  --text-2xl: 1.25rem;
+  --text-3xl: 1.375rem;
+  --text-4xl: 1.75rem;
+
+  /* shadcn/ui's radius scale. */
+  --radius-xs: 2px;
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+
+  --breakpoint-*: initial;
+  --breakpoint-sm: 40rem;
+  --breakpoint-md: 48rem;
+  --breakpoint-lg: 52rem;
+  --breakpoint-xl: 68rem;
+  --breakpoint-2xl: 72rem;
 }
 
+@layer base {
 *,
 *::before,
 *::after {
@@ -123,8 +236,8 @@ body {
 }
 
 ::selection {
-  background: var(--tape-open);
-  color: var(--tape-ink);
+  background: var(--brand-light);
+  color: var(--ink);
 }
 
 :focus-visible {
@@ -135,6 +248,7 @@ body {
 
 a {
   color: var(--link);
+  text-decoration-line: underline;
   text-decoration-thickness: 1px;
   text-underline-offset: 0.18em;
 }
@@ -142,164 +256,29 @@ a:hover {
   text-decoration-thickness: 2px;
 }
 
+/* Geist Serif ships one weight; never let the browser fake a bold. */
 h1,
 h2,
 h3 {
+  font-family: var(--font-heading);
+  font-weight: 400;
+  font-synthesis-weight: none;
   line-height: 1.2;
   text-wrap: balance;
   margin: 0;
 }
 
+/* Tailwind's preflight drops list markers; text lists keep them unless a class says otherwise. */
+ul {
+  list-style: disc;
+}
+ol {
+  list-style: decimal;
+}
+
 p {
   margin: 0;
   text-wrap: pretty;
-}
-
-.wrap {
-  max-width: var(--page);
-  margin-inline: auto;
-  padding-inline: var(--gutter);
-}
-
-.mono {
-  font-family: var(--mono);
-  font-variant-numeric: tabular-nums;
-}
-
-.visually-hidden {
-  position: absolute !important;
-  width: 1px;
-  height: 1px;
-  overflow: hidden;
-  clip: rect(0 0 0 0);
-  white-space: nowrap;
-}
-
-.skip {
-  position: absolute;
-  left: 1rem;
-  top: -4rem;
-  z-index: 10;
-  padding: 0.5rem 0.875rem;
-  background: var(--surface);
-  color: var(--ink);
-  border-radius: var(--radius);
-}
-.skip:focus {
-  top: 0.75rem;
-}
-
-/* Flagging tape: the status word on a strip of tape with a notched tail. */
-.tape {
-  --fill: var(--tape-closed);
-  display: inline-flex;
-  align-items: center;
-  min-height: 1.6rem;
-  padding: 0.1rem 0.95rem 0.1rem 0.55rem;
-  background: var(--fill);
-  color: var(--tape-ink);
-  font-size: 0.8125rem;
-  font-weight: 700;
-  letter-spacing: 0.01em;
-  white-space: nowrap;
-  clip-path: polygon(0 0, 100% 0, calc(100% - 0.45rem) 50%, 100% 100%, 0 100%);
-}
-.tape[data-state='open'] {
-  --fill: var(--tape-open);
-}
-.tape[data-state='rolling'] {
-  --fill: var(--tape-rolling);
-}
-.tape[data-state='upcoming'] {
-  --fill: var(--tape-upcoming);
-}
-.tape[data-state='none'] {
-  --fill: transparent;
-  color: var(--ink-2);
-  box-shadow: inset 0 0 0 1.5px var(--rule-strong);
-  clip-path: none;
-  padding-right: 0.55rem;
-  border-radius: 2px;
-}
-
-/* Stamped aluminium tag with a punched hole: when and against what a fact was checked. */
-.tag {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.45rem;
-  padding: 0.2rem 0.55rem 0.2rem 0.4rem;
-  background: var(--tag);
-  border: 1px solid var(--tag-edge);
-  border-radius: 3px;
-  color: var(--tag-ink);
-  font-size: 0.8125rem;
-  font-weight: 600;
-  line-height: 1.35;
-  white-space: nowrap;
-  font-variant-numeric: tabular-nums;
-}
-.tag::before {
-  content: '';
-  flex: none;
-  width: 0.5rem;
-  height: 0.5rem;
-  border-radius: 50%;
-  background: var(--ground);
-  /* A punched hole: the page shows through, ringed by the tag's own ink. */
-  box-shadow:
-    0 0 0 1.5px color-mix(in oklch, currentColor 55%, transparent),
-    inset 0 1px 1.5px oklch(0 0 0 / 0.35);
-}
-.tag[data-aging] {
-  background: var(--aging);
-  border-color: color-mix(in oklch, var(--aging) 70%, black);
-  color: var(--aging-ink);
-}
-
-.button {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.5rem;
-  min-height: 2.75rem;
-  padding: 0.55rem 1.1rem;
-  border-radius: var(--radius);
-  background: var(--shell);
-  color: var(--shell-ink);
-  font: inherit;
-  font-weight: 700;
-  text-decoration: none;
-  border: 0;
-  cursor: pointer;
-}
-.button:hover {
-  background: color-mix(in oklch, var(--shell) 85%, black);
-}
-@media (prefers-color-scheme: dark) {
-  .button {
-    background: var(--tape-open);
-    color: var(--tape-ink);
-  }
-  .button:hover {
-    background: color-mix(in oklch, var(--tape-open) 88%, white);
-  }
-}
-.button--quiet {
-  background: transparent;
-  color: var(--ink);
-  box-shadow: inset 0 0 0 1.5px var(--rule-strong);
-}
-.button--quiet:hover {
-  background: var(--sunk);
-}
-@media (prefers-color-scheme: dark) {
-  .button--quiet {
-    background: transparent;
-    color: var(--ink);
-  }
-  .button--quiet:hover {
-    background: var(--sunk);
-  }
 }
 
 @media (prefers-reduced-motion: no-preference) {
@@ -308,19 +287,116 @@ p {
   }
 }
 
-/* One stamp everywhere: a quiet line while the check is fresh; the amber tag, hole and all, once it ages. */
-.tag:not([data-aging]) {
-  padding: 0;
-  background: none;
-  border-color: transparent;
-  color: var(--ink-2);
-  font-weight: 400;
-}
-.tag:not([data-aging])::before {
-  display: none;
-}
-
 /* Components set display: grid or flex; the hidden attribute must still win. */
 [hidden] {
   display: none !important;
+}
+
+}
+
+/* Classes markup shares, and that src/lib/finder.ts also writes at runtime (status) or updates (tag). */
+@layer components {
+.wrap {
+  max-width: var(--page);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+
+/* shadcn/ui Badge for a status: a soft tint with a leading dot. */
+.status {
+  --dot: var(--muted-foreground);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  width: fit-content;
+  flex: none;
+  padding: 0.125rem 0.5rem;
+  border: 1px solid transparent;
+  border-radius: var(--radius-md);
+  background: var(--secondary);
+  color: var(--ink-2-on-linen);
+  font-size: var(--text-xs);
+  font-weight: 500;
+  line-height: 1.35;
+  white-space: nowrap;
+}
+.status::before {
+  content: '';
+  flex: none;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--dot);
+}
+.status[data-state='open'] {
+  --dot: var(--ok-dot);
+  background: var(--ok);
+  color: var(--ok-ink);
+}
+.status[data-state='rolling'] {
+  --dot: var(--info-dot);
+  background: var(--info);
+  color: var(--info-ink);
+}
+.status[data-state='upcoming'] {
+  --dot: var(--warn-dot);
+  background: var(--warn);
+  color: var(--warn-ink);
+}
+/* No call found: the same grey, dashed, with a hollow dot. */
+.status[data-state='none'] {
+  border-style: dashed;
+  border-color: var(--rule-strong);
+}
+.status[data-state='none']::before {
+  background: none;
+  box-shadow: inset 0 0 0 1.5px var(--dot);
+}
+
+/* When a fact was checked: quiet text while fresh, an amber badge once it ages. */
+.tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  width: fit-content;
+  white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+}
+.tag[data-aging] {
+  padding: 0.125rem 0.5rem;
+  border-radius: var(--radius-md);
+  background: var(--warn);
+  color: var(--warn-ink);
+  font-size: var(--text-xs);
+  font-weight: 500;
+  line-height: 1.35;
+}
+.tag[data-aging]::before {
+  content: '';
+  flex: none;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--warn-dot);
+}
+
+/* About's back-to-contents button: where the browser can tie it to scrolling, it fades in after the first screen. */
+@supports (animation-timeline: scroll()) {
+  .to-top {
+    animation: to-top-in linear both;
+    animation-timeline: scroll(root);
+    animation-range: 0 400px;
+  }
+}
+}
+
+@keyframes to-top-in {
+  from {
+    opacity: 0;
+    visibility: hidden;
+  }
+  to {
+    opacity: 1;
+    visibility: visible;
+  }
 }

@@ -1,0 +1,15 @@
+---
+import Base from '../../layouts/Base.astro'
+
+---
+
+<Base title="You’re unsubscribed" description="You no longer get the weekly naturefunding.org email." path="/digest/unsubscribed/" noindex>
+  <div slot="band" class="wrap pt-8 pb-10">
+    <h1 class="text-[clamp(1.75rem,1.2rem+2.2vw,2.75rem)] font-extrabold tracking-[-0.02em]">You’re unsubscribed</h1>
+    <p class="mt-3 max-w-[60ch] text-xl text-shell-ink-2">We deleted your address. You won’t get another email from us.</p>
+  </div>
+  <div class="wrap mt-10">
+    <p class="max-w-[60ch]">Changed your mind? <a href="/digest/">Sign up again</a>.</p>
+    <p class="mt-6"><a href="/">Back to all funding</a></p>
+  </div>
+</Base>
