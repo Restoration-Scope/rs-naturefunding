@@ -36,7 +36,7 @@ async function askHidden(prompt: string) {
   }
 }
 
-type Domain = { id: string; name: string; status: string; records?: { record: string; type: string; name: string; status: string }[] }
+type Domain = { id: string; name: string; status: string; records?: { record: string; type: string; name: string; value: string; priority?: number; status: string }[] }
 
 async function resend<T>(key: string, path: string, init?: RequestInit): Promise<{ status: number; body: T }> {
   const res = await fetch(`${API}${path}`, { ...init, headers: { Authorization: `Bearer ${key}`, 'Content-Type': 'application/json' } })
@@ -86,5 +86,5 @@ if (!domain) {
 await resend(key, `/domains/${domain.id}`, { method: 'PATCH', body: JSON.stringify({ open_tracking: false, click_tracking: false }) })
 const full = (await resend<Domain>(key, `/domains/${domain.id}`)).body
 console.log(`${DOMAIN}: ${full.status}; tracking off`)
-for (const r of full.records ?? []) console.log(`  ${r.type.padEnd(5)} ${r.name.padEnd(28)} ${r.record} (${r.status})`)
+for (const r of full.records ?? []) console.log(`  ${r.record} ${r.status}: ${r.type} ${r.name} ${r.priority === undefined ? '' : `${r.priority} `}${r.value}`)
 if (full.status !== 'verified') console.log('These DNS records go into Cloudflare at deploy; nothing in DNS was changed.')
