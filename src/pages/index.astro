@@ -1,7 +1,7 @@
 ---
 import Base from '../layouts/Base.astro'
 import Row from '../components/FinderRow.astro'
-import { ArrowDown, ArrowUp, ChevronDown, ChevronsUpDown, SlidersHorizontal, X } from 'lucide-react'
+import { ArrowDown, ArrowUp, ArrowRight, ChevronDown, ChevronsUpDown, SlidersHorizontal, X } from 'lucide-react'
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
@@ -46,6 +46,9 @@ const quick =
 const quickNBase =
   'inline-flex min-w-5 justify-center rounded-full px-1.5 text-xs leading-[1.35] font-medium tabular-nums group-aria-pressed/q:bg-brand-dark group-aria-pressed/q:text-primary-foreground'
 const quickN = `${quickNBase} bg-secondary text-secondary-foreground`
+// The header image (scripts/images/header-image.ts), whole beside the questions on wide screens, a low band on phones.
+const heroSet = (ext: string) => [480, 800, 1236].map((w) => `/img/header/hero-${w}.${ext} ${w}w`).join(', ')
+const heroSizes = '(min-width: 76rem) 40rem, (min-width: 64rem) 52vw, 100vw'
 const description =
   'A free directory of funding for nature restoration and conservation. Every deadline, amount and eligibility rule links to the funder’s own page, with the words it rests on and the date we read it.'
 
@@ -84,21 +87,59 @@ const jsonLd = [
   path="/"
   nav="finder"
   jsonLd={jsonLd}
-  headerImage
 >
-  <div slot="band" class="wrap pt-2 pb-[1.1rem] max-md:pt-0 max-md:pb-3">
-    {/* The text keeps to a measure (--hero-measure in global.css) so the header image has room beside it. */}
-    <div class="max-w-(--hero-measure)">
-    <h1 class="max-w-[40ch] text-[clamp(1.1875rem,0.95rem+1vw,1.75rem)] leading-[1.15] tracking-[-0.01em]">Funding for nature restoration and conservation, checked against each funder’s own page.</h1>
-    <p class="mt-[0.4rem] max-w-[75ch] text-md text-shell-ink-2 max-md:text-sm max-md:leading-[1.4]">
-      <span class="max-md:hidden">Every deadline, amount and eligibility rule links to the funder’s own page, with the words it rests on and the date we read it.</span>{' '}
-      Free, with no paid listings or paid ranking. Built openly by Restoration Scope.
-    </p>
-    <p class="mt-[0.6rem] flex flex-wrap gap-x-6 gap-y-1 text-sm text-shell-ink-2 max-md:hidden [&_strong]:text-shell-ink">
-      <span><strong class={num}>{stats.open}</strong> open now, <strong class={num}>{stats.rolling}</strong> open any time</span>
-      <span><strong class={num}>{stats.programmes}</strong> programmes listed</span>
-      {stats.lastChecked && <span>Last checked {longDate(stats.lastChecked)}</span>}
-    </p>
+  <div slot="band" class="wrap grid grid-cols-[minmax(0,1fr)] gap-x-10 gap-y-4 pt-2 pb-8 max-md:pt-0 max-md:pb-5 lg:grid-cols-[minmax(0,34rem)_minmax(0,1fr)]">
+    {/* Wide screens: the picture fills the column beside the text. Phones and tablets: a low band above it. */}
+    <picture class="block overflow-hidden rounded-xl bg-black/15 max-lg:aspect-[5/2] max-md:aspect-[3/1] lg:col-start-2 lg:row-start-1">
+      <source type="image/avif" srcset={heroSet('avif')} sizes={heroSizes} />
+      <source type="image/webp" srcset={heroSet('webp')} sizes={heroSizes} />
+      <img class="size-full object-cover object-[25%_100%]" src="/img/header/hero-800.jpg" srcset={heroSet('jpg')} sizes={heroSizes} width="1236" height="768" alt="" fetchpriority="high" />
+    </picture>
+    <div class="lg:col-start-1 lg:row-start-1 lg:py-4">
+      <h1 class="text-[clamp(1.625rem,1.1rem+1.6vw,2.625rem)] leading-[1.1] tracking-[-0.015em]">Funding for nature restoration and conservation, checked against each funder’s own page.</h1>
+      <p class="mt-3 max-w-[60ch] text-md text-shell-ink-2 max-md:mt-2 max-md:text-sm max-md:leading-[1.4]">
+        <span class="max-md:hidden">Every deadline, amount and eligibility rule links to the funder’s own page, with the words it rests on and the date we read it.</span>{' '}
+        Free, with no paid listings or paid ranking. Built openly by Restoration Scope.
+      </p>
+      {/* The two questions set the Where and Approach filters below (src/lib/finder.ts). Without JavaScript the
+          form sends them in the address, and the full list stays below. */}
+      <form class="mt-5 grid gap-3 rounded-xl bg-card p-4 text-foreground shadow-[0_8px_28px_rgb(0_0_0/0.22)] max-md:mt-4 max-md:p-3.5" action="/#results" method="get" aria-label="Start your search" data-ask>
+        <div class="grid grid-cols-[minmax(0,1fr)] gap-3 sm:grid-cols-2">
+          <div>
+            <Label htmlFor="ask-where" className="mb-1.5">Where is your project?</Label>
+            <NativeSelect id="ask-where" name="where" className="min-h-11" data-ask-where="">
+              <option value="">Anywhere</option>
+              <optgroup label="Regions">
+                {countriesByRegion.map((r) => <option value={`r:${r.region}`}>{r.label}</option>)}
+              </optgroup>
+              {
+                countriesByRegion.map((r) => (
+                  <optgroup label={r.label}>
+                    {r.countries.map((c) => <option value={c.code}>{c.name}</option>)}
+                  </optgroup>
+                ))
+              }
+            </NativeSelect>
+          </div>
+          <div>
+            <Label htmlFor="ask-approach" className="mb-1.5">What kind of project?</Label>
+            <NativeSelect id="ask-approach" name="approach" className="min-h-11" data-ask-approach="">
+              <option value="">Any kind</option>
+              {usedApproaches.map(([k, label]) => <option value={k} data-label={label}>{label}</option>)}
+              {/* Shown when the filters below pick more than one kind. */}
+              <option value="multi" hidden data-ask-multi></option>
+            </NativeSelect>
+          </div>
+        </div>
+        <Button type="submit" className="w-full" data-ask-go="">
+          <span data-ask-label>Show funding</span><ArrowRight aria-hidden="true" />
+        </Button>
+      </form>
+      <p class="mt-4 flex flex-wrap gap-x-6 gap-y-1 text-sm text-shell-ink-2 max-md:hidden [&_strong]:text-shell-ink">
+        <span><strong class={num}>{stats.open}</strong> open now, <strong class={num}>{stats.rolling}</strong> open any time</span>
+        <span><strong class={num}>{stats.programmes}</strong> programmes listed</span>
+        {stats.lastChecked && <span>Last checked {longDate(stats.lastChecked)}</span>}
+      </p>
     </div>
   </div>
 
@@ -355,6 +396,8 @@ const jsonLd = [
         <span class="font-bold">Not open now</span>
         <span class="font-semibold text-link underline underline-offset-[0.18em]">Show all <b class={num} data-qn-end>{later.length}</b></span>
       </button>
+
+      {/* A line for the weekly email signup can go here, under the list (a separate piece of work). */}
 
       <div class="px-2 py-8" data-empty hidden>
         <h3 class="text-2xl" data-empty-head>Nothing matches.</h3>

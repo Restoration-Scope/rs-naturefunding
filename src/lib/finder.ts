@@ -66,6 +66,10 @@ export function initTableFinder() {
   const backdrop = $<HTMLElement>('[data-backdrop]')
   const opener = $<HTMLButtonElement>('[data-sheet-open]')
   const done = $<HTMLButtonElement>('[data-sheet-done]')
+  // The header's two questions: shortcuts to the Where and Approach filters.
+  const ask = document.querySelector<HTMLFormElement>('[data-ask]')
+  const askWhere = ask?.querySelector<HTMLSelectElement>('[data-ask-where]')
+  const askApproach = ask?.querySelector<HTMLSelectElement>('[data-ask-approach]')
 
   let showLater = false
   let sort: SortKey = 'deadline'
@@ -379,6 +383,15 @@ export function initTableFinder() {
       n.textContent = String(count)
       const input = n.closest('label')?.querySelector('input')
       if (input) input.disabled = count === 0 && !input.checked
+      const o = group === 'approach' ? askApproach?.querySelector<HTMLOptionElement>(`option[value="${value}"]`) : null
+      if (o) o.textContent = `${o.dataset.label} (${count})`
+    }
+    if (askWhere && askApproach) {
+      askWhere.value = f.where
+      const n = f.approach.length
+      askApproach.querySelector('[data-ask-multi]')!.textContent = `${n} kinds`
+      askApproach.value = n === 0 ? '' : n === 1 ? f.approach[0]! : 'multi'
+      ask!.querySelector('[data-ask-label]')!.textContent = `Show ${shown} ${plural(shown, 'programme', 'programmes')}`
     }
 
     shownEl.textContent = `${shown} of ${items.length} shown`
@@ -464,6 +477,17 @@ export function initTableFinder() {
 
   form.addEventListener('input', apply)
   form.addEventListener('submit', (e) => e.preventDefault())
+  ask?.addEventListener('change', (e) => {
+    const f = read()
+    if (e.target === askWhere) f.where = askWhere!.value
+    else f.approach = askApproach!.value ? [askApproach!.value] : []
+    write(f)
+    apply()
+  })
+  ask?.addEventListener('submit', (e) => {
+    e.preventDefault()
+    document.querySelector('.results')?.scrollIntoView({ block: 'start', behavior: 'smooth' })
+  })
 
   for (const b of document.querySelectorAll<HTMLButtonElement>('[data-sort]')) {
     b.addEventListener('click', () => {

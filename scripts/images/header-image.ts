@@ -1,8 +1,8 @@
 // Makes the home header's image files from the 1536×768 source: bun scripts/images/header-image.ts <source.jpeg>
-// Two crops, each as AVIF, WebP and JPEG at two widths, into public/img/header/.
-// - wide: the clearing right of the dark trees (figures near its left edge), for the window beside the text
-//   on tablets and wider. 1096 px is the source's full width for this crop, so nothing is upscaled.
-// - strip: a low band around the two planters and the seedling row, under the text on phones.
+// One crop, as AVIF, WebP and JPEG at three widths, into public/img/header/.
+// - hero: the clearing from the edge of the dark trees on the left, full height, with the two planters about a
+//   fifth in from the left. 1236 px is the source's full width for this crop, so nothing is upscaled. The page
+//   shows it whole beside the questions on wide screens and as a low band, cropped from the bottom, on phones.
 import { mkdirSync } from 'node:fs'
 import { join } from 'node:path'
 import sharp from 'sharp'
@@ -13,8 +13,7 @@ const out = join(import.meta.dir, '../../public/img/header')
 mkdirSync(out, { recursive: true })
 
 const crops = {
-  wide: { region: { left: 440, top: 300, width: 1096, height: 468 }, widths: [640, 1096] },
-  strip: { region: { left: 440, top: 520, width: 1096, height: 248 }, widths: [480, 768] },
+  hero: { region: { left: 300, top: 0, width: 1236, height: 768 }, widths: [480, 800, 1236] },
 }
 
 for (const [name, { region, widths }] of Object.entries(crops)) {
