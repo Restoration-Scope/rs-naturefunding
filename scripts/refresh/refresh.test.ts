@@ -5,8 +5,8 @@ import { programme as programmeSchema } from '../../src/data/schema'
 import { deadlineInstant, deadlinePassed, parseZone } from './deadline'
 import { classifyResponse, hashText, readPages, robotsAllows, type Fetched } from './fetch'
 import { formatJson } from './json'
-import { llmFromEnv, provider } from './llm'
-import { isDue, nextState, type SourceState } from './state'
+import { answerText, llmFromEnv, provider } from './llm'
+import { isDue, nextState, programmeChecks, type SourceState } from './state'
 import { applyTierA, classify, quotesAt } from './tier'
 import { applyExtraction, LIMITS, proposalKey, readReview } from './tier-b'
 
@@ -248,6 +248,17 @@ describe('blocked fetch', () => {
     expect(classifyResponse(200, '<html><body>Request unsuccessful. Incapsula incident ID: 123</body></html>')?.kind).toBe('blocked')
     expect(classifyResponse(200, '<form>protected by reCAPTCHA</form>')).toBeNull()
   })
+  test('a programme whose page failed its latest read is marked not re-checked, with the worst reason', () => {
+    const other: Source = { ...source, id: 'example-eligibility', url: URL_B }
+    const failed = nextState(prev, source, blocked, now)
+    const robots = { ...nextState(null, other, { ok: false, url: URL_B, kind: 'robots', message: 'disallowed' }, now) }
+    const p = fixture()
+    expect(programmeChecks([p], [source, other], { [source.id]: failed, [other.id]: robots })[p.id]).toEqual({
+      last_read: p.checked_at, rechecked: false, reason: 'robots', failing_sources: ['example-call', 'example-eligibility'],
+    })
+    const ok = nextState(failed, source, { ok: true, url: URL_A, finalUrl: URL_A, status: 200, pdf: false, text: 'x', hash: 'sha256:aa' }, now)
+    expect(programmeChecks([p], [source], { [source.id]: ok })[p.id]).toEqual({ last_read: p.checked_at, rechecked: true, reason: null, failing_sources: [] })
+  })
   test('weekly sources wait a week after a good read, but a failed one retries', () => {
     const weekly = { ...source, cycle: 'weekly' as const }
     expect(isDue(weekly, prev, now)).toBe(false)
@@ -451,5 +462,10 @@ describe('LLM provider from the environment', () => {
     expect(llmFromEnv({ ...account })).toBeNull()
     expect(llmFromEnv({ ...account, CLOUDFLARE_API_TOKEN: '' })).toBeNull()
     expect(llmFromEnv({ ...account, CLOUDFLARE_API_TOKEN: 't', LLM_PROVIDER: 'github' })).toBeNull()
+  })
+  test('an answer a reasoning model left empty says why instead of passing', () => {
+    expect(answerText({ choices: [{ message: { content: '{"a":1}' } }] })).toBe('{"a":1}')
+    expect(answerText({ result: { response: '{}' } })).toBe('{}')
+    expect(() => answerText({ choices: [{ message: { content: null, reasoning_content: '…' }, finish_reason: 'length' }] })).toThrow('finish_reason length')
   })
 })
