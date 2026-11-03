@@ -1,19 +1,22 @@
 ---
 import type { GetStaticPaths } from 'astro'
 import Base from '../../layouts/Base.astro'
-import CheckedTag from '../../components/CheckedTag.astro'
+import ApplyPart from '../../components/ApplyPart.astro'
+import Countries from '../../components/Countries.astro'
 import Fact from '../../components/Fact.astro'
+import Flag from '../../components/Flag.astro'
 import Listing from '../../components/Listing.astro'
 import OrgMark from '../../components/OrgMark.astro'
-import Route from '../../components/Route.astro'
 import { callFactId, callId, factIds, grantJsonLd } from '../../lib/agent'
+import { primaryAction } from '../../lib/apply'
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
 import { cardClasses } from '@/components/ui/card'
-import { HIDDEN_DAYS, buildDate, daysBetween, listingFor, notRechecked, notRecheckedPage, programmeById, programmes, sortListings } from '../../lib/data'
+import { HIDDEN_DAYS, buildDate, callGroups, whereReach, listingFor, programmeById, programmes, sortListings } from '../../lib/data'
 import type { Programme } from '../../data/schema'
 import { pagesFor } from '../../lib/finder-pages'
 import { amountText, geographyFull, joinAnd, longDate, pageLabel } from '../../lib/format'
+import { countryName, regionLabels } from '../../lib/geo'
 import {
   accessHelp,
   accessLabels,
@@ -49,9 +52,6 @@ const amount = amountText(p.amount)
 // The place and type pages this programme shows on, linked under Where and the approach.
 const more = pagesFor(p)
 const yesNo = (b: boolean | null) => (b === null ? null : b ? 'Yes' : 'No')
-// The tag in the apply box dates the fact the box states: the call, or how to apply.
-const applyEvidence =
-  (call && (call.evidence.deadline ?? call.evidence.recurring ?? call.evidence.status)) ?? p.evidence.access ?? null
 /** "America/Guayaquil" → "Ecuador Time", as the browser names it; the raw zone when it has no name. */
 const zoneName = (tz: string, date: string) => {
   try {
@@ -65,20 +65,15 @@ const zoneName = (tz: string, date: string) => {
 }
 const deadlineText = (d: NonNullable<Programme['calls'][number]['deadline']>) =>
   `${longDate(d.date)}${d.time ? `, ${d.time}${d.timezone ? ` ${zoneName(d.timezone, d.date)}` : ''}` : ''}`
-const primary: { href: string; text: string; quiet?: boolean } =
-  call && (state === 'open' || state === 'rolling' || state === 'upcoming')
-    ? { href: call.url, text: 'Go to the funder’s call page' }
-    : call?.recurring && state === 'none'
-      ? { href: call.url, text: 'Check the call page' }
-      : openChildren.length === 1
-      ? { href: `/p/${openChildren[0]!.p.id}/`, text: 'See the open partner programme' }
-      : openChildren.length > 1
-        ? { href: '#partners-title', text: `See the ${openChildren.length} open partner programmes` }
-        : p.access === 'intermediary' && children.length > 0
-          ? { href: '#partners-title', text: `See the ${children.length} partner programmes` }
-          : p.access === 'intermediary'
-            ? { href: p.evidence.access?.source_url ?? p.url, text: 'Find a partner on the funder’s site' }
-            : { href: p.url, text: 'Read the funder’s page', quiet: true }
+const primary = primaryAction(listing, openChildren, children.length)
+// Calls that name their countries split the apply box into one part per group. The page reads the finder's
+// Where (?where=CR) and narrows the box and the calls to that place; a select changes it (src/lib/where-view.ts).
+const groups = callGroups(p)
+const groupLabel = (codes: string[] | null) =>
+  codes ? joinAnd(codes.map(countryName)) : p.geography?.scope === 'countries' ? 'Other countries' : 'Everywhere else'
+const switchCountries = [...new Set(p.geography?.scope === 'countries' ? p.geography.countries : groups.flatMap((g) => g.codes ?? []))]
+  .map((code) => ({ code, name: countryName(code) }))
+  .sort((a, b) => a.name.localeCompare(b.name))
 /** The one date a folded call shows next to its name. */
 const callWhen = (c: Programme['calls'][number]) =>
   c.status === 'upcoming'
@@ -152,7 +147,7 @@ const jsonLd = [
   noindex={hidden}
 >
   <div slot="band" class="wrap pt-4 pb-6 md:pt-5 md:pb-8 [&_a]:text-shell-ink">
-    <a class="group/back mb-4 inline-flex items-center gap-1.5 text-md text-shell-ink-2! pointer-coarse:-my-2.5 pointer-coarse:mb-1.5 pointer-coarse:py-2.5" href="/"><ArrowLeft className="size-4 shrink-0 transition-transform group-hover/back:-translate-x-0.5" aria-hidden="true" />All funding</a>
+    <a class="group/back mb-4 inline-flex items-center gap-1.5 text-md text-shell-ink-2! pointer-coarse:-my-2.5 pointer-coarse:mb-1.5 pointer-coarse:py-2.5" href="/" data-back><ArrowLeft className="size-4 shrink-0 transition-transform group-hover/back:-translate-x-0.5" aria-hidden="true" /><span data-back-text>All funding</span></a>
     <h1 class="max-w-[30ch] text-[clamp(1.5rem,1.1rem+1.8vw,2.5rem)] leading-[1.12] tracking-[-0.01em]">{p.name}</h1>
     {/* Phones: two lines at most, so the apply box starts higher; every name stays in the Run by fact. */}
     <p class="mt-[0.6rem] text-lg text-shell-ink-2 max-md:line-clamp-2" title={p.administered_by ? `${p.funder.name}, run by ${p.administered_by.name}` : undefined}>
@@ -169,10 +164,19 @@ const jsonLd = [
     {p.kind === 'partnership' && <p class="mt-4 font-bold">Paid partnership, not a grant: the funder pays for work under a contract.</p>}
     <p class:list={['max-w-[62ch] text-lg max-md:text-base max-md:leading-[1.45]', p.kind === 'partnership' ? 'mt-[0.35rem]' : 'mt-4 max-md:mt-3']}>{p.summary}</p>
     <p class="mt-2 text-sm text-shell-ink-2">Summary in our words. Each fact below shows the funder’s own words and links to its page.</p>
+    {/* The flag the page puts before a country's name (src/lib/where-view.ts sets its picture). */}
+    <template data-where-tpl="flag"><Flag code="ZZ" class="mr-[0.3em]" /></template>
+    {/* With a Where, the page says whose view it is and how to leave it. */}
+    <template data-where-tpl="chip">
+      <p class="mt-4 inline-flex flex-wrap items-center gap-x-3 gap-y-1 rounded-lg bg-shell-ink/12 px-3 py-1.5 text-md">
+        <span>Showing what applies to projects in <strong data-where-name></strong></span>
+        <a href="?" class="underline" data-where-clear>See every country</a>
+      </p>
+    </template>
   </div>
 
   {/* Wide screens: the apply box rides along in a right rail while the facts scroll. */}
-  <div class="wrap mr-auto ml-0 max-w-[calc(60rem+2*var(--gutter))] 2xl:mx-auto 2xl:grid 2xl:max-w-(--page) 2xl:grid-cols-[minmax(0,1fr)_20rem] 2xl:gap-x-12 2xl:*:col-start-1">
+  <div data-where-codes={whereReach(p)} data-region-names={JSON.stringify(regionLabels)} class="wrap mr-auto ml-0 max-w-[calc(60rem+2*var(--gutter))] 2xl:mx-auto 2xl:grid 2xl:max-w-(--page) 2xl:grid-cols-[minmax(0,1fr)_20rem] 2xl:gap-x-12 2xl:*:col-start-1">
     {
       hidden && (
         <p class="mt-8 rounded-lg bg-warn px-4 py-3 font-semibold text-warn-ink" role="note">
@@ -182,77 +186,46 @@ const jsonLd = [
       )
     }
     <section
-      class:list={[cardClasses, 'mt-6 px-5 pt-5 pb-[1.1rem] 2xl:sticky 2xl:top-6 2xl:col-start-2! 2xl:row-[1/span_12] 2xl:mt-12 2xl:self-start']}
-      aria-labelledby="apply-title"
+      class:list={[
+        cardClasses,
+        'group/apply mt-6 px-5 pt-5 pb-[1.1rem] 2xl:top-6 2xl:col-start-2! 2xl:row-[1/span_12] 2xl:mt-12 2xl:self-start',
+        // Every group's part together is too tall to ride along; one part is not.
+        groups.length ? '2xl:data-narrowed:sticky' : '2xl:sticky',
+      ]}
+      aria-labelledby={groups.length ? undefined : 'apply-title'}
+      aria-label={groups.length ? 'How to apply' : undefined}
+      data-apply
     >
-      <div class="flex flex-wrap items-center gap-x-[0.85rem] gap-y-2">
-        {/* Invitation-only funders and umbrellas never have a call of their own: the route is their status. */}
-        <span class="flex flex-wrap items-center gap-2">
-          {!(state === 'none' && noCallRoute) && <Badge variant="status" state={state}>{stateLabels[state]}</Badge>}
-          {noCallRoute && <Route access={p.access} />}
-        </span>
-        <h2 id="apply-title" class="text-3xl [text-wrap:pretty] 2xl:text-2xl">
-          {state === 'open' && call?.deadline && <>Apply by <span class="whitespace-nowrap">{longDate(call.deadline.date)}</span></>}
-          {state === 'open' && call && !call.deadline && (call.recurring ? <>Open, with deadlines each year</> : <>Open, no dated deadline</>)}
-          {state === 'rolling' && <>Apply any time</>}
-          {state === 'upcoming' &&
-            (call?.opens ? (
-              <>Opens <span class="whitespace-nowrap">{longDate(call.opens)}</span></>
-            ) : call?.expected ? (
-              <>Expected to open <span class="whitespace-nowrap">{call.expected}</span></>
-            ) : (
-              <>Not open yet</>
-            ))}
-          {state === 'closed' && <>No call open right now</>}
-          {state === 'none' && p.access === 'invitation_only' && <>This funder does not take applications</>}
-          {state === 'none' && p.access === 'intermediary' && openChildren.length === 0 && <>Apply through a partner, not the funder</>}
-          {state === 'none' && p.access === 'intermediary' && openChildren.length > 0 && (
-            <>{openChildren.length === 1 ? 'One partner programme is open now' : `${openChildren.length} partner programmes are open now`}</>
-          )}
-          {state === 'none' && !noCallRoute && (call?.recurring ? <>Windows each year</> : <>No call listed</>)}
-        </h2>
-      </div>
       {
-        state === 'open' && call?.deadline && (
-          <dl class="mt-3 mb-0 grid gap-[0.35rem] text-md *:grid *:grid-cols-[max-content_minmax(0,1fr)] *:gap-3 [&_dd]:m-0 [&_dt]:text-ink-2">
-            <div><dt>Days left</dt><dd class="font-bold tabular-nums">{daysBetween(buildDate, call.deadline.date)}</dd></div>
-            <div><dt>Call</dt><dd>{call.label}</dd></div>
-          </dl>
+        groups.length > 0 && (
+          <label class="-mt-1 mb-4 flex flex-wrap items-center gap-x-3 gap-y-1 border-b border-rule pb-3 text-md">
+            <span class="text-ink-2">Your project is in</span>
+            <span class="-mr-1.5 flex text-lg empty:hidden" data-where-flag></span>
+            <select class="min-h-9 rounded-md border border-control-edge bg-surface px-2 font-semibold" data-where-select>
+              <option value="">Any country</option>
+              {switchCountries.map((c) => <option value={c.code}>{c.name}</option>)}
+            </select>
+          </label>
         )
       }
-      <p class="mt-2 text-ink-2 empty:hidden">
-        {state === 'open' && call && !call.deadline && !call.recurring && <>{call.label}. The funder’s page gives no dated deadline, so check that the window is still open before you apply.</>}
-        {state === 'open' && call?.recurring && !call.deadline && <>{call.recurring}, each year. The page gives no year, so check which date comes next before you apply.</>}
-        {state === 'rolling' && call && !/rolling/i.test(call.label) && <>{call.label}</>}
-        {state === 'upcoming' && (call?.evidence.opens ?? (call?.expected && call.evidence.status)) && (
-          <>The funder says: “{(call.evidence.opens ?? call.evidence.status)!.quote}”{' '}</>
-        )}
-        {state === 'none' && call?.recurring && <>{call.recurring}. The funder’s page doesn’t say whether one is open now.</>}
-        {state === 'upcoming' && call?.deadline && <>Closes {longDate(call.deadline.date)}.</>}
-        {call?.note && (state === 'open' || state === 'upcoming') && <> {call.note}.</>}
-        {state === 'closed' && call?.deadline && <>The last call we saw closed on {longDate(call.deadline.date)}.</>}
-        {noCallRoute && accessHelp[p.access]}
-        {/* The list beside this card has the open call's date; here, just where to look. */}
-        {
-          openChildren.length === 1 && (
-            <>
-              {' '}The open one is <strong>{openChildren[0]!.p.name}</strong>
-              {openChildren[0]!.call?.deadline ? <>, apply by <span class="whitespace-nowrap">{longDate(openChildren[0]!.call.deadline.date)}</span>.</> : <>.</>}
-            </>
-          )
-        }
-        {openChildren.length > 1 && <> {openChildren.length} partner programmes are open now. They come first in the list below.</>}
-      </p>
-      <div class="mt-4 flex flex-wrap items-center gap-x-5 gap-y-3">
-        <Button href={primary.href} variant={primary.quiet ? 'outline' : 'default'} width="phone" className="whitespace-normal text-center 2xl:w-full">{primary.text}</Button>
-        {
-          applyEvidence ? (
-            <CheckedTag checked={applyEvidence.checked_at} source={{ url: applyEvidence.source_url, label: pageLabel(applyEvidence.source_url) }} reason={notRecheckedPage(applyEvidence.source_url)} />
-          ) : (
-            <CheckedTag checked={p.checked_at} reason={notRechecked(p.id)} />
-          )
-        }
-      </div>
+      {
+        groups.length > 0 ? (
+          groups.map((g, i) => (
+            <ApplyPart listing={g.listing} openChildren={openChildren} childCount={children.length} titleId={`apply-title-${i}`} group={{ codes: g.codes?.join(' ') ?? '*', label: groupLabel(g.codes) }} />
+          ))
+        ) : (
+          <ApplyPart listing={listing} openChildren={openChildren} childCount={children.length} />
+        )
+      }
+      {/* A place the programme doesn't take: no call it can't apply to, just where to go instead. */}
+      <template data-where-tpl="none">
+        <div>
+          <Badge variant="status" state="closed">Not in your area</Badge>
+          <h2 class="mt-2 text-3xl [text-wrap:pretty] 2xl:text-2xl">Not open to projects in <span data-where-name></span></h2>
+          <p class="mt-2 text-ink-2">It takes projects in {geographyFull(p.geography)}.</p>
+          <div class="mt-4"><Button href="/" variant="outline" width="phone" className="2xl:w-full" data-back><span>Back to funding in <span data-where-name></span></span></Button></div>
+        </div>
+      </template>
     </section>
 
     {
@@ -289,6 +262,9 @@ const jsonLd = [
           {p.amount?.note && <p class={factHelp}>{p.amount.note}.</p>}
         </Fact>
         <Fact id={factIds.geography} label="Where" value={geographyFull(p.geography)} evidence={p.evidence.geography}>
+          {p.geography?.scope === 'countries' && <span slot="value">{p.geography.label && `${p.geography.label}: `}<Countries codes={p.geography.countries} /></span>}
+          <template data-where-tpl="covered"><p class="mt-1 text-md font-semibold text-ok-ink">✓ Includes <span data-where-name></span><span data-where-via></span></p></template>
+          <template data-where-tpl="uncovered"><p class="mt-1 text-md font-semibold text-warn-ink">✕ Doesn’t include <span data-where-name></span></p></template>
           {more.places.length > 0 && (
             <p class={factHelp}>
               More grants in{' '}
@@ -344,20 +320,25 @@ const jsonLd = [
     {
       p.calls.length > 0 && (
         <section aria-labelledby="calls-title">
-          <h2 id="calls-title" class={sectionTitle}>
+          <h2 id="calls-title" class={sectionTitle} data-calls-title>
             {p.calls.length === 1 ? 'The call' : `Calls (${p.calls.length})`}
           </h2>
           {callsOrdered.map((c) => (
             // Each call folds in the same card; the one that sets the page's status starts open.
             <details id={callId(c)} class:list={[cardClasses, 'group/call px-4 pt-3.5 pb-1 md:px-[1.1rem] [&+&]:mt-3']}
               open={c === call || p.calls.length === 1}
+              data-call-countries={c.countries?.join(' ') ?? ''} data-call-label={c.label}
             >
               <summary class="grid cursor-pointer list-none grid-cols-[minmax(0,1fr)_auto] items-start gap-x-3 gap-y-1 pb-3 after:col-start-2 after:row-start-1 after:mt-2 after:mr-[0.2rem] after:size-[0.55rem] after:border-r-2 after:border-b-2 after:border-ink-2 after:content-[''] after:[transform:rotate(45deg)_translateY(-0.15rem)] group-open/call:after:[transform:rotate(-135deg)_translateY(-0.1rem)] [&::-webkit-details-marker]:hidden">
                 {/* The call names are the funder's own long titles: body type, not headings. */}
                 <span class="flex flex-col items-start gap-1.5">
-                  <Badge variant="status" state={rollingCall(c) ? 'rolling' : c.status === 'open' ? 'open' : c.status === 'upcoming' ? 'upcoming' : c.status === 'closed' ? 'closed' : 'none'}>
-                    {rollingCall(c) ? 'Rolling' : callStatusLabel[c.status]}
-                  </Badge>
+                  <span class="flex flex-wrap items-center gap-x-2.5 gap-y-1">
+                    <Badge variant="status" state={rollingCall(c) ? 'rolling' : c.status === 'open' ? 'open' : c.status === 'upcoming' ? 'upcoming' : c.status === 'closed' ? 'closed' : 'none'}>
+                      {rollingCall(c) ? 'Rolling' : callStatusLabel[c.status]}
+                    </Badge>
+                    {/* Whose call it is, at a glance; the names are under Where. */}
+                    {c.countries && <span class="flex gap-1 text-lg">{c.countries.map((code) => <Flag code={code} />)}</span>}
+                  </span>
                   <h3 class="font-sans text-lg leading-[1.35] font-semibold">{c.label}</h3>
                 </span>
                 {/* Only while folded: an open call shows its dates in full below. */}
@@ -366,6 +347,11 @@ const jsonLd = [
               <a class="mb-1 inline-block text-md pointer-coarse:-mt-2.5 pointer-coarse:py-2.5" href={c.url}>Call page</a>
               <dl class="m-0">
                 <Fact id={callFactId(c, 'status')} label="Status" value={callStatusText(c)} evidence={c.evidence.status} />
+                {c.countries && (
+                  <Fact id={callFactId(c, 'countries')} label="Where" value={joinAnd(c.countries.map(countryName))} evidence={c.evidence.countries}>
+                    <Countries slot="value" codes={c.countries} />
+                  </Fact>
+                )}
                 {(c.opens || c.expected || c.evidence.opens) && (
                   <Fact
                     id={callFactId(c, 'opens')}
@@ -401,15 +387,25 @@ const jsonLd = [
               {c.note && <p class="mt-0 mb-[0.85rem] text-md text-ink-2">{c.note}.</p>}
             </details>
           ))}
+          {/* Narrowed to a place, the calls for other countries fold away below its own. */}
+          <template data-where-tpl="other-calls">
+            <details class="group/other mt-3">
+              <summary class="flex min-h-11 cursor-pointer list-none items-center gap-[0.6rem] border-b-2 border-ink py-2 text-lg font-bold before:size-2 before:flex-none before:border-r-2 before:border-b-2 before:border-current before:content-[''] before:[transform:rotate(-45deg)] group-open/other:before:[transform:translateY(-20%)_rotate(45deg)] [&::-webkit-details-marker]:hidden">
+                <span>Calls for other countries</span>
+                <Badge className="ml-auto" data-calls-other-count />
+              </summary>
+              <div class="mt-3" data-calls-other-list></div>
+            </details>
+          </template>
         </section>
       )
     }
 
     {
       !primary.quiet && (
-        <p class="mt-8 flex flex-wrap items-center gap-x-4 gap-y-[0.6rem] border-t border-rule pt-5 2xl:hidden">
-          <span class="font-bold">{call && primary.href === call.url ? `Ready to apply to ${call.label}?` : 'Ready to apply?'}</span>
-          <Button href={primary.href} width="phone">{primary.text}</Button>
+        <p class="mt-8 flex flex-wrap items-center gap-x-4 gap-y-[0.6rem] border-t border-rule pt-5 2xl:hidden" data-cta>
+          <span class="font-bold" data-cta-label>{call && primary.href === call.url ? `Ready to apply to ${call.label}?` : 'Ready to apply?'}</span>
+          <Button href={primary.href} width="phone" data-cta-button>{primary.text}</Button>
         </p>
       )
     }
@@ -456,3 +452,8 @@ const jsonLd = [
     </section>
   </div>
 </Base>
+
+<script>
+  import { initWhereView } from '../../lib/where-view'
+  initWhereView()
+</script>

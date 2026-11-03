@@ -39,10 +39,11 @@ export const fieldDocs = {
     status: 'upcoming, open, closed, suspended or unknown, as of evidence.status.checked_at. A call closed because its stated deadline passed carries its deadline evidence there instead.',
     opens: 'The date the call opens (YYYY-MM-DD), only when the funder states a firm date with its year; else null.',
     deadline: 'The deadline, only when the funder states it with its year; else null. Never inferred.',
-    evidence: 'Where status, opens, deadline and recurring were read.',
+    evidence: 'Where status, opens, deadline, recurring and countries were read.',
     expected: 'When the funder expects an upcoming call to open, in its own words (“June 2027”). Firm dates go in opens.',
     recurring: 'Dates the funder gives without a year, repeating each year, in our words.',
     note: 'A condition the funder puts on the call, in our words (“Subject to funding approval”).',
+    countries: 'The countries (ISO 3166-1 alpha-2) this call takes projects from, when narrower than the programme’s; missing means all of them.',
   },
   deadline: {
     date: 'The deadline day (YYYY-MM-DD).',

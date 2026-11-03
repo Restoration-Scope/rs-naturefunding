@@ -1,0 +1,111 @@
+---
+import CheckedTag from './CheckedTag.astro'
+import Countries from './Countries.astro'
+import Route from './Route.astro'
+import { Badge } from '@/components/ui/badge'
+import { Button } from '@/components/ui/button'
+import { applyEvidenceFor, primaryAction } from '../lib/apply'
+import type { Listing } from '../lib/data'
+import { buildDate, daysBetween, notRechecked, notRecheckedPage } from '../lib/data'
+import { longDate, pageLabel } from '../lib/format'
+import { accessHelp, stateLabels } from '../lib/labels'
+
+interface Props {
+  listing: Listing
+  /** Partner programmes open now, for an umbrella's box. */
+  openChildren: Listing[]
+  childCount: number
+  /** The countries this part is for, when the programme's calls differ by country (one part per group); `*` for the rest. */
+  group?: { codes: string; label: string }
+  /** Several parts can sit in the apply box: each names its own title. */
+  titleId?: string
+}
+
+const { listing, openChildren, childCount, group, titleId = 'apply-title' } = Astro.props
+const { p, state, call } = listing
+const noCallRoute = p.access === 'intermediary' || p.access === 'invitation_only'
+const primary = primaryAction(listing, openChildren, childCount)
+const applyEvidence = applyEvidenceFor(listing)
+const narrowedPrimary =
+  'group-data-narrowed/apply:border-transparent group-data-narrowed/apply:bg-primary group-data-narrowed/apply:text-primary-foreground group-data-narrowed/apply:shadow-none group-data-narrowed/apply:hover:bg-action-hover'
+---
+
+{/* One part of the apply box: what to do, for every country or for one call group. */}
+<div class:list={[group && '[&+&]:mt-5 [&+&]:border-t [&+&]:border-rule [&+&]:pt-4 group-data-narrowed/apply:mt-0! group-data-narrowed/apply:border-0! group-data-narrowed/apply:pt-0!']} data-group={group?.codes ?? '*'} data-call-label={call?.label}>
+  {group && <p class="mb-2 text-sm font-bold text-ink-2">{group.codes === '*' ? group.label : <Countries codes={group.codes.split(' ')} />}</p>}
+  <div class="flex flex-wrap items-center gap-x-[0.85rem] gap-y-2">
+    {/* Invitation-only funders and umbrellas never have a call of their own: the route is their status. */}
+    <span class="flex flex-wrap items-center gap-2">
+      {!(state === 'none' && noCallRoute) && <Badge variant="status" state={state}>{stateLabels[state]}</Badge>}
+      {noCallRoute && <Route access={p.access} />}
+    </span>
+    <h2 id={titleId} class:list={['[text-wrap:pretty]', group ? 'text-2xl' : 'text-3xl 2xl:text-2xl']}>
+      {state === 'open' && call?.deadline && <>Apply by <span class="whitespace-nowrap">{longDate(call.deadline.date)}</span></>}
+      {state === 'open' && call && !call.deadline && (call.recurring ? <>Open, with deadlines each year</> : <>Open, no dated deadline</>)}
+      {state === 'rolling' && <>Apply any time</>}
+      {state === 'upcoming' &&
+        (call?.opens ? (
+          <>Opens <span class="whitespace-nowrap">{longDate(call.opens)}</span></>
+        ) : call?.expected ? (
+          <>Expected to open <span class="whitespace-nowrap">{call.expected}</span></>
+        ) : (
+          <>Not open yet</>
+        ))}
+      {state === 'closed' && <>No call open right now</>}
+      {state === 'none' && p.access === 'invitation_only' && <>This funder does not take applications</>}
+      {state === 'none' && p.access === 'intermediary' && openChildren.length === 0 && <>Apply through a partner, not the funder</>}
+      {state === 'none' && p.access === 'intermediary' && openChildren.length > 0 && (
+        <>{openChildren.length === 1 ? 'One partner programme is open now' : `${openChildren.length} partner programmes are open now`}</>
+      )}
+      {state === 'none' && !noCallRoute && (call?.recurring ? <>Windows each year</> : <>No call listed</>)}
+    </h2>
+  </div>
+  {
+    state === 'open' && call?.deadline && (
+      <dl class="mt-3 mb-0 grid gap-[0.35rem] text-md *:grid *:grid-cols-[max-content_minmax(0,1fr)] *:gap-3 [&_dd]:m-0 [&_dt]:text-ink-2">
+        <div><dt>Days left</dt><dd class="font-bold tabular-nums">{daysBetween(buildDate, call.deadline.date)}</dd></div>
+        <div><dt>Call</dt><dd>{call.label}</dd></div>
+      </dl>
+    )
+  }
+  <p class="mt-2 text-ink-2 empty:hidden">
+    {state === 'open' && call && !call.deadline && !call.recurring && <>{call.label}. The funder’s page gives no dated deadline, so check that the window is still open before you apply.</>}
+    {state === 'open' && call?.recurring && !call.deadline && <>{call.recurring}, each year. The page gives no year, so check which date comes next before you apply.</>}
+    {state === 'rolling' && call && !/rolling/i.test(call.label) && <>{call.label}</>}
+    {state === 'upcoming' && (call?.evidence.opens ?? (call?.expected && call.evidence.status)) && (
+      <>The funder says: “{(call.evidence.opens ?? call.evidence.status)!.quote}”{' '}</>
+    )}
+    {state === 'none' && call?.recurring && <>{call.recurring}. The funder’s page doesn’t say whether one is open now.</>}
+    {state === 'upcoming' && call?.deadline && <>Closes {longDate(call.deadline.date)}.</>}
+    {call?.note && (state === 'open' || state === 'upcoming') && <> {call.note}.</>}
+    {state === 'closed' && call?.deadline && <>The last call we saw closed on {longDate(call.deadline.date)}.</>}
+    {noCallRoute && accessHelp[p.access]}
+    {/* The list beside this card has the open call's date; here, just where to look. */}
+    {
+      openChildren.length === 1 && (
+        <>
+          {' '}The open one is <strong>{openChildren[0]!.p.name}</strong>
+          {openChildren[0]!.call?.deadline ? <>, apply by <span class="whitespace-nowrap">{longDate(openChildren[0]!.call.deadline.date)}</span>.</> : <>.</>}
+        </>
+      )
+    }
+    {openChildren.length > 1 && <> {openChildren.length} partner programmes are open now. They come first in the list below.</>}
+  </p>
+  <div class="mt-4 flex flex-wrap items-center gap-x-5 gap-y-3">
+    {/* Side by side, each group's button is quiet; it turns primary once the box narrows to that group. */}
+    <Button
+      href={primary.href}
+      variant={primary.quiet || group ? 'outline' : 'default'}
+      width="phone"
+      className={`whitespace-normal text-center 2xl:w-full ${group && !primary.quiet ? narrowedPrimary : ''}`}
+      data-primary={primary.quiet ? undefined : ''}
+    >{primary.text}</Button>
+    {
+      applyEvidence ? (
+        <CheckedTag checked={applyEvidence.checked_at} source={{ url: applyEvidence.source_url, label: pageLabel(applyEvidence.source_url) }} reason={notRecheckedPage(applyEvidence.source_url)} />
+      ) : (
+        <CheckedTag checked={p.checked_at} reason={notRechecked(p.id)} />
+      )
+    }
+  </div>
+</div>

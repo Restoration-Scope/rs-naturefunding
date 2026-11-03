@@ -2,7 +2,7 @@ import { existsSync, readFileSync } from 'node:fs'
 import { join } from 'node:path'
 import { loadData } from '../data/load'
 import type { Call, Programme } from '../data/schema'
-import { countryRegion } from './geo'
+import { countriesByRegion, countryRegion } from './geo'
 import type { SizeBucket, State } from './labels'
 import { sizeBuckets } from './labels'
 
@@ -45,25 +45,52 @@ export type Listing = {
 
 const byDeadline = (a: Call, b: Call) => (a.deadline?.date ?? '9999').localeCompare(b.deadline?.date ?? '9999')
 
-export function listingFor(p: Programme, today = buildDate): Listing {
+/** Whether a call takes projects from this country. A call with no countries takes them from all the programme's. */
+export const callTakes = (c: Call, country: string) => !c.countries || c.countries.includes(country)
+
+/**
+ * The programme split by the call each country gets, when some call names its countries: countries whose calls
+ * give the same state and call share a group. A programme open to whole regions adds the rest (`codes: null`),
+ * which gets only the calls that name no country. Empty when every country would get the same.
+ */
+export function callGroups(p: Programme): { codes: string[] | null; listing: Listing }[] {
+  if (!p.calls.some((c) => c.countries)) return []
+  const g = p.geography
+  const countries = [...new Set([...(g?.scope === 'countries' ? g.countries : []), ...p.calls.flatMap((c) => c.countries ?? [])])]
+  const groups = new Map<string, { codes: string[]; listing: Listing }>()
+  for (const k of countries) {
+    const listing = listingFor(p, buildDate, k)
+    const key = `${listing.state} ${listing.call?.id ?? ''}`
+    const group = groups.get(key)
+    if (group) group.codes.push(k)
+    else groups.set(key, { codes: [k], listing })
+  }
+  const out: { codes: string[] | null; listing: Listing }[] = [...groups.values()].sort((a, b) => sortListings(a.listing, b.listing))
+  if (g?.scope !== 'countries') out.push({ codes: null, listing: listingFor(p, buildDate, 'ZZ') }) // ZZ: a code no country has
+  return out.length > 1 ? out : []
+}
+
+/** `country`: only the calls that take projects from it set the state. */
+export function listingFor(p: Programme, today = buildDate, country?: string): Listing {
   const ageDays = daysBetween(p.checked_at, today)
   const base = { p, ageDays, aging: ageDays > AGING_DAYS }
   if (p.access === 'intermediary' || p.access === 'invitation_only') return { ...base, state: 'none', call: null }
+  const calls = country ? p.calls.filter((c) => callTakes(c, country)) : p.calls
 
-  const open = p.calls.filter((c) => c.status === 'open' && !(c.deadline && c.deadline.date < today)).sort(byDeadline)
+  const open = calls.filter((c) => c.status === 'open' && !(c.deadline && c.deadline.date < today)).sort(byDeadline)
   // An open call with no deadline is rolling only when the funder says so; otherwise it is open with an undated window.
   if (open[0]) return { ...base, state: p.window === 'rolling' ? 'rolling' : 'open', call: open[0] }
 
-  const upcoming = p.calls
+  const upcoming = calls
     .filter((c) => c.status === 'upcoming')
     .sort((a, b) => (a.opens ?? '9999').localeCompare(b.opens ?? '9999'))
   if (upcoming[0]) return { ...base, state: 'upcoming', call: upcoming[0] }
 
   // Yearly windows where the page doesn't say whether one is open now: no open call, but the dates are worth showing.
-  const recurring = p.calls.find((c) => c.status === 'unknown' && c.recurring)
+  const recurring = calls.find((c) => c.status === 'unknown' && c.recurring)
   if (recurring) return { ...base, state: 'none', call: recurring }
 
-  const past = [...p.calls].sort(byDeadline).reverse()
+  const past = [...calls].sort(byDeadline).reverse()
   if (past[0]) return { ...base, state: 'closed', call: past[0] }
   return { ...base, state: 'none', call: null }
 }
@@ -127,6 +154,14 @@ export function whereCodes(p: Programme): string {
   if (g.scope === 'regions') return g.regions.map((r) => `R:${r}`).join(' ')
   const regions = new Set(g.countries.map((c) => countryRegion[c]).filter(Boolean))
   return [...g.countries, ...[...regions].map((r) => `r:${r}`)].join(' ')
+}
+
+/** whereCodes with each region spelled out as its countries, so a page can tell whether it takes one country. */
+export function whereReach(p: Programme): string {
+  const g = p.geography
+  if (g?.scope !== 'regions') return whereCodes(p)
+  const countries = countriesByRegion.filter((r) => g.regions.includes(r.region)).flatMap((r) => r.countries.map((c) => c.code))
+  return [whereCodes(p), ...countries].join(' ')
 }
 
 export const stats = {

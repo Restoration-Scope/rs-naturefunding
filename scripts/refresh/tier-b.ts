@@ -145,11 +145,14 @@ export function applyExtraction(original: Programme, source: Source, x: Extracti
     const candidate = {
       id: c.id, label: c.label, url: c.url, status: c.status, opens: c.opens ?? null, deadline: c.deadline ?? null,
       ...Object.fromEntries(CALL_QUALIFIERS.filter((k) => q[k] !== undefined).map((k) => [k, q[k]])),
+      // The draft never sets which countries a call takes: a call we tagged keeps them, with their quote.
+      ...(existing?.countries ? { countries: existing.countries } : {}),
       evidence: {
         status: evidence(short(quotes.status)),
         ...(c.opens ? { opens: evidence(short(quotes.opens)) } : {}),
         ...(c.deadline ? { deadline: evidence(short(quotes.deadline)) } : {}),
         ...(c.recurring ? { recurring: evidence(short(quotes.recurring)) } : q.recurring ? { recurring: existing?.evidence.recurring } : {}),
+        ...(existing?.evidence.countries ? { countries: existing.evidence.countries } : {}),
       },
     }
     const parsed = fit(callSchema, candidate)

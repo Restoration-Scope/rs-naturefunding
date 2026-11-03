@@ -1,0 +1,11 @@
+---
+// A country's flag sized to the text around it (country-flag-icons 3×2, copied by scripts/images/flags.ts; the
+// finder's pickers draw the same one in src/lib/picker.ts). It sits beside the country's name, so it says nothing.
+interface Props {
+  code: string
+  class?: string
+}
+const { code, class: cls } = Astro.props
+---
+
+<span class:list={['relative inline-block shrink-0 rounded-[2px] align-[-0.08em] after:absolute after:inset-0 after:rounded-[2px] after:ring-1 after:ring-black/10 after:ring-inset', cls]}><img class="block h-[0.8em] w-[1.2em] rounded-[2px]" src={`/flags/${code}.svg`} alt="" width="20" height="13" loading="lazy" /></span>

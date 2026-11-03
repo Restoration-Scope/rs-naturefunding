@@ -6,6 +6,7 @@ import { AGING_DAYS, HIDDEN_DAYS, buildDate, listingFor, programmeById, programm
 import { amountText, geographyFull, geographyText, joinAnd, longDate } from './format'
 import { accessHelp, accessLabels, applicantLabels, approachLabels } from './labels'
 import { RS_URL, SITE_NAME, absolute, funderCorrectionUrl, reportProblemUrl } from './site'
+import { countryName } from './geo'
 import { LLMS_FULL_PAGES, twinPath } from './twins'
 import { evidenceOf } from '../data/load'
 import type { FinderPage } from './finder-pages'
@@ -24,7 +25,7 @@ export const factIds = {
   reporting: 'reporting',
 } as const
 export const callId = (c: Pick<Call, 'id'>) => `call-${c.id}`
-export const callFactId = (c: Pick<Call, 'id'>, field: 'status' | 'opens' | 'deadline' | 'recurring') => `call-${c.id}-${field}`
+export const callFactId = (c: Pick<Call, 'id'>, field: 'status' | 'opens' | 'deadline' | 'recurring' | 'countries') => `call-${c.id}-${field}`
 
 const listingUrl = (p: Programme) => absolute(`/p/${p.id}/`)
 const NOT_FOUND = 'Not found on the pages we read'
@@ -166,6 +167,7 @@ export function programmeMarkdown(p: Programme): string {
       }
       const parts = [
         quoteLines(`${s}, status`, statusWords[c.status], c.evidence.status, callFactId(c, 'status'), p),
+        ...(c.countries ? [quoteLines(`${s}, where`, joinAnd(c.countries.map(countryName)), c.evidence.countries, callFactId(c, 'countries'), p)] : []),
         ...(c.opens || c.expected || c.evidence.opens
           ? [quoteLines(`${s}, opens`, c.opens ? longDate(c.opens) : c.expected ? `Expected ${c.expected}` : NOT_FOUND, c.evidence.opens ?? (c.expected ? c.evidence.status : undefined), callFactId(c, 'opens'), p)]
           : []),

@@ -1,0 +1,13 @@
+---
+import Flag from './Flag.astro'
+import { countryName } from '../lib/geo'
+
+// Countries by name, each after its flag, so a list of them scans by eye: "Belize, Costa Rica and Panama".
+interface Props {
+  codes: string[]
+}
+const { codes } = Astro.props
+const sep = (i: number) => (i === 0 ? '' : i === codes.length - 1 ? ' and ' : ', ')
+---
+
+{codes.map((code, i) => <>{sep(i)}<span class="whitespace-nowrap"><Flag code={code} class="mr-[0.3em]" />{countryName(code)}</span></>)}
