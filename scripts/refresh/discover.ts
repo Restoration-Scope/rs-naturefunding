@@ -103,11 +103,26 @@ export function usDate(mdy: string | undefined): string | null {
   return m ? `${m[3]}-${m[1]}-${m[2]}` : null
 }
 
-/** Calls not yet raised and not already in data/ (matched by topic code or opportunity number). */
+const TRACKING = /^(utm_\w+|fbclid|gclid|mc_[ce]id|_ga|ref)$/i
+
+/**
+ * A URL without scheme, `www.`, tracking parameters, hash or trailing slash, so the same page
+ * matches however it was linked. Other parameters stay, sorted and in their own case: on UNDP and
+ * SGP pages `?notice_id=` or `?country=` is the page.
+ */
+export function bareUrl(url: string): string {
+  const u = new URL(url)
+  const params = [...u.searchParams].filter(([key]) => !TRACKING.test(key)).sort(([a], [b]) => a.localeCompare(b))
+  const query = params.length ? `?${new URLSearchParams(params)}` : ''
+  return `${u.host.replace(/^www\./, '')}${u.pathname.replace(/\/$/, '')}`.toLowerCase() + query
+}
+
+/** Calls not yet raised (by key, or by URL from the weekly web search) and not already in data/ (matched by topic code or opportunity number). */
 export function newCandidates(found: Candidate[], known: Discovered, dataText: string): Candidate[] {
   const seen = new Set<string>()
+  const raisedUrls = new Set(Object.values(known).map((k) => k.url).filter((u) => URL.canParse(u)).map(bareUrl))
   return found.filter((c) => {
-    if (seen.has(c.key) || known[c.key] || dataText.includes(c.id)) return false
+    if (seen.has(c.key) || known[c.key] || raisedUrls.has(bareUrl(c.url)) || dataText.includes(c.id)) return false
     seen.add(c.key)
     return true
   })
@@ -217,20 +232,27 @@ if (import.meta.main) {
   console.log(body)
   if (process.env.GITHUB_STEP_SUMMARY) appendFileSync(process.env.GITHUB_STEP_SUMMARY, `${body}\n`)
 
-  let issue: string | null = null
-  if (fresh.length && !process.argv.includes('--no-issue')) {
-    mkdirSync('.cache', { recursive: true })
-    const file = join('.cache', 'discovery-body.md')
-    writeFileSync(file, body)
-    Bun.spawnSync(['gh', 'label', 'create', 'discovery', '--color', '5319e7', '--force'])
-    const made = Bun.spawnSync(['gh', 'issue', 'create', '--title', `Discovery ${today}: ${fresh.length} new NbS calls to review`, '--label', 'discovery', '--body-file', file])
-    if (made.exitCode !== 0) throw new Error(`gh issue create failed: ${made.stderr.toString()}`)
-    issue = made.stdout.toString().trim()
-    console.log(issue)
-  }
   if (!process.argv.includes('--no-issue')) {
+    const issue = fresh.length ? fileDiscoveryIssue(`Discovery ${today}: ${fresh.length} new NbS calls to review`, body) : null
     for (const c of fresh) known[c.key] = { title: c.title, url: c.url, deadline: c.deadline, first_seen: today, issue }
-    writeJson(DISCOVERED_PATH, Object.fromEntries(Object.entries(known).sort(([a], [b]) => a.localeCompare(b))))
+    writeDiscovered(known)
   }
   if (errors.length && !found.length) process.exit(1)
+}
+
+/** Opens one review issue under the discovery label and returns its URL. */
+export function fileDiscoveryIssue(title: string, body: string): string {
+  mkdirSync('.cache', { recursive: true })
+  const file = join('.cache', 'discovery-body.md')
+  writeFileSync(file, body)
+  Bun.spawnSync(['gh', 'label', 'create', 'discovery', '--color', '5319e7', '--force'])
+  const made = Bun.spawnSync(['gh', 'issue', 'create', '--title', title, '--label', 'discovery', '--body-file', file])
+  if (made.exitCode !== 0) throw new Error(`gh issue create failed: ${made.stderr.toString()}`)
+  const issue = made.stdout.toString().trim()
+  console.log(issue)
+  return issue
+}
+
+export function writeDiscovered(known: Discovered) {
+  writeJson(DISCOVERED_PATH, Object.fromEntries(Object.entries(known).sort(([a], [b]) => a.localeCompare(b))))
 }
