@@ -1,0 +1,68 @@
+---
+// Every place and project-type page in one list, so readers and crawlers reach each of them.
+import Base from '../../layouts/Base.astro'
+import { finderPages, type FinderPage } from '../../lib/finder-pages'
+import { countryRegion, regionLabels } from '../../lib/geo'
+import { absolute } from '../../lib/site'
+
+const { countries, regions, types } = finderPages
+const description = `Grants for nature restoration and conservation by place and by project type: ${regions.length} regions, ${countries.length} countries and ${types.length} project types, each with its open calls first.`
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'CollectionPage',
+  name: 'Grants by place and project type',
+  url: absolute('/countries/'),
+  description,
+  publisher: { '@type': 'Organization', name: 'Restoration Scope', url: 'https://restorationscope.com' },
+}
+const byRegion = regions.map((r) => ({
+  region: r,
+  countries: countries.filter((c) => `r:${countryRegion[c.iso2!]}` === r.where),
+}))
+const list = 'm-0 grid list-none grid-cols-[repeat(auto-fill,minmax(14rem,1fr))] gap-x-6 gap-y-1 p-0'
+const h2 = 'mt-11 mb-3 text-3xl font-extrabold'
+const h3 = 'mt-7 mb-2 text-xl font-bold'
+---
+
+<Base title="Grants by place and project type" description={description} path="/countries/" nav="finder" jsonLd={jsonLd} allGrants>
+  <div slot="band" class="wrap pt-7 pb-9">
+    <h1 class="text-[clamp(1.75rem,1.2rem+2.2vw,2.75rem)] font-extrabold tracking-[-0.02em]">Grants by place and project type</h1>
+    <p class="mt-[0.9rem] max-w-[60ch] text-xl text-shell-ink-2">
+      Each page lists the grants that take projects there, or in that kind of work, with open calls first and every filter of the full finder.
+    </p>
+  </div>
+
+  <div class="wrap">
+    {
+      [
+        { title: 'Project types', pages: types },
+        { title: 'Regions', pages: regions },
+      ].map((s) => (
+        <section>
+          <h2 class={h2}>{s.title}</h2>
+          <ul class={list}>
+            {s.pages.map((pg: FinderPage) => (
+              <li class="py-1"><a href={pg.path}>{pg.name}</a> <span class="text-sm text-muted-foreground tabular-nums">{pg.listings.length}</span></li>
+            ))}
+          </ul>
+        </section>
+      ))
+    }
+    <section>
+      <h2 class={h2}>Countries</h2>
+      <p class="max-w-[66ch] text-ink-2">Countries that at least five programmes name. For any other country, pick it under Where in the <a href="/">finder</a>.</p>
+      {
+        byRegion.filter((g) => g.countries.length).map((g) => (
+          <>
+            <h3 class={h3}>{regionLabels[g.region.where.slice(2) as keyof typeof regionLabels]}</h3>
+            <ul class={list}>
+              {g.countries.map((pg) => (
+                <li class="py-1"><a href={pg.path}>{pg.name}</a> <span class="text-sm text-muted-foreground tabular-nums">{pg.listings.length}</span></li>
+              ))}
+            </ul>
+          </>
+        ))
+      }
+    </section>
+  </div>
+</Base>

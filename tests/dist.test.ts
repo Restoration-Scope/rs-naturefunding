@@ -7,6 +7,7 @@ import { join, relative } from 'node:path'
 import { gzipSync } from 'node:zlib'
 import { parseHTML } from 'linkedom'
 import { evidenceOf } from '../src/data/load'
+import { finderPages } from '../src/lib/finder-pages'
 import { listings, programmes } from '../src/lib/data'
 
 const root = join(import.meta.dir, '..')
@@ -27,10 +28,18 @@ const norm = (s: string) => s.replace(/\s+/g, ' ').trim()
 
 /** Pages that are not programme pages, as built before the shadcn port. */
 const staticPages: string[] = JSON.parse(readFileSync(join(import.meta.dir, 'static-pages.json'), 'utf8'))
+/** The finder preset to a place or project type (src/lib/finder-pages.ts): the same script as /. */
+const finderPagesHtml = Object.values(finderPages)
+  .flat()
+  .map((p) => `${p.path.slice(1)}index.html`)
 
 describe('pages', () => {
-  test('the same static pages, plus one page per programme', () => {
-    const expected = [...staticPages, ...programmes.map((p) => `p/${p.id}/index.html`)].sort()
+  test('the same static pages, plus one page per programme and per finder preset', () => {
+    const expected = [
+      ...staticPages,
+      ...programmes.map((p) => `p/${p.id}/index.html`),
+      ...finderPagesHtml,
+    ].sort()
     expect(htmlFiles).toEqual(expected)
   })
 })
@@ -166,8 +175,12 @@ describe('no hydration, small JavaScript', () => {
     expect(gz).toBeLessThanOrEqual(12 * 1024)
   })
 
+  test('finder pages load the same script as /', () => {
+    for (const f of finderPagesHtml) expect(scriptsOf(f).external, f).toEqual(scriptsOf('index.html').external)
+  })
+
   test('no other page loads a script file; only /about/ has its small inline contents toggle', () => {
-    for (const f of htmlFiles.filter((x) => x !== 'index.html')) {
+    for (const f of htmlFiles.filter((x) => x !== 'index.html' && !finderPagesHtml.includes(x))) {
       const { external, inline } = scriptsOf(f)
       expect(external, f).toEqual([])
       if (f === 'about/index.html') {
