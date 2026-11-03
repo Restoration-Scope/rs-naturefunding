@@ -32,7 +32,9 @@ export const countryRegion: Record<string, Region> = Object.fromEntries(
 )
 
 const names = new Intl.DisplayNames(['en'], { type: 'region' })
-export const countryName = (iso2: string) => names.of(iso2) ?? iso2
+/** Names that differ between ICU builds (Bun says "China mainland", Node "China"); pinned so tests and build agree. */
+const pinned: Record<string, string> = { CN: 'China' }
+export const countryName = (iso2: string) => pinned[iso2] ?? names.of(iso2) ?? iso2
 
 /** Countries grouped by region, sorted by name, for the "Where" select. */
 export const countriesByRegion = (Object.keys(members) as Region[]).map((r) => ({
