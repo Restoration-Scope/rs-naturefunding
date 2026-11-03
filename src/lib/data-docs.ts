@@ -43,6 +43,7 @@ export const fieldDocs = {
     expected: 'When the funder expects an upcoming call to open, in its own words (“June 2027”). Firm dates go in opens.',
     recurring: 'Dates the funder gives without a year, repeating each year, in our words.',
     note: 'A condition the funder puts on the call, in our words (“Subject to funding approval”).',
+    countries: 'The countries (ISO 3166-1 alpha-2) this call takes projects from, when narrower than the programme’s; missing means all of them.',
   },
   deadline: {
     date: 'The deadline day (YYYY-MM-DD).',

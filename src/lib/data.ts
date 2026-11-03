@@ -45,25 +45,40 @@ export type Listing = {
 
 const byDeadline = (a: Call, b: Call) => (a.deadline?.date ?? '9999').localeCompare(b.deadline?.date ?? '9999')
 
-export function listingFor(p: Programme, today = buildDate): Listing {
+/** Whether a call takes projects from this country. A call with no countries takes them from all the programme's. */
+export const callTakes = (c: Call, country: string) => !c.countries || c.countries.includes(country)
+
+/**
+ * The call groups a "Where" can narrow a programme to: one per distinct set of call countries, as the
+ * country codes a visitor's Where matches. Empty when every call is open to all the programme's countries.
+ */
+export function callGroups(p: Programme): { codes: string[]; listing: Listing }[] {
+  const sets = new Map<string, string[]>()
+  for (const c of p.calls) if (c.countries) sets.set(c.countries.join(' '), c.countries)
+  return [...sets.values()].map((codes) => ({ codes, listing: listingFor(p, buildDate, codes[0]) }))
+}
+
+/** `country`: only the calls that take projects from it set the state. */
+export function listingFor(p: Programme, today = buildDate, country?: string): Listing {
   const ageDays = daysBetween(p.checked_at, today)
   const base = { p, ageDays, aging: ageDays > AGING_DAYS }
   if (p.access === 'intermediary' || p.access === 'invitation_only') return { ...base, state: 'none', call: null }
+  const calls = country ? p.calls.filter((c) => callTakes(c, country)) : p.calls
 
-  const open = p.calls.filter((c) => c.status === 'open' && !(c.deadline && c.deadline.date < today)).sort(byDeadline)
+  const open = calls.filter((c) => c.status === 'open' && !(c.deadline && c.deadline.date < today)).sort(byDeadline)
   // An open call with no deadline is rolling only when the funder says so; otherwise it is open with an undated window.
   if (open[0]) return { ...base, state: p.window === 'rolling' ? 'rolling' : 'open', call: open[0] }
 
-  const upcoming = p.calls
+  const upcoming = calls
     .filter((c) => c.status === 'upcoming')
     .sort((a, b) => (a.opens ?? '9999').localeCompare(b.opens ?? '9999'))
   if (upcoming[0]) return { ...base, state: 'upcoming', call: upcoming[0] }
 
   // Yearly windows where the page doesn't say whether one is open now: no open call, but the dates are worth showing.
-  const recurring = p.calls.find((c) => c.status === 'unknown' && c.recurring)
+  const recurring = calls.find((c) => c.status === 'unknown' && c.recurring)
   if (recurring) return { ...base, state: 'none', call: recurring }
 
-  const past = [...p.calls].sort(byDeadline).reverse()
+  const past = [...calls].sort(byDeadline).reverse()
   if (past[0]) return { ...base, state: 'closed', call: past[0] }
   return { ...base, state: 'none', call: null }
 }

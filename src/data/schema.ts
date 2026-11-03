@@ -104,6 +104,8 @@ export const call = z.object({
   recurring: z.string().min(5).max(200).optional(),
   /** A condition the funder puts on the call, in our words, from one of its quotes ("Subject to funding approval"). */
   note: z.string().min(3).max(200).optional(),
+  /** The countries this call takes projects from, when narrower than the programme's ("Ecuador: first call"). Missing means all of them. */
+  countries: z.array(iso2).min(1).optional(),
 })
 export type Call = z.infer<typeof call>
 
@@ -256,6 +258,11 @@ export const programme = z
       if (!c.recurring && c.evidence.recurring) issue(at('recurring'), 'recurring evidence without recurring dates')
       const expected = expectedProblem(c)
       if (expected) issue(at('expected'), expected)
+      const g = p.geography
+      if (c.countries && g?.scope === 'countries') {
+        const outside = c.countries.filter((k) => !g.countries.includes(k))
+        if (outside.length) issue(at('countries'), `a call's countries sit inside the programme's; ${outside.join(', ')} is not`)
+      }
       for (const [field, date] of [['opens', c.opens], ['deadline', c.deadline?.date]] as const) {
         const quote = c.evidence[field]?.quote
         if (date && quote && !statesYear(quote, date)) {

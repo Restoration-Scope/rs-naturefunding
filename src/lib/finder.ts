@@ -286,6 +286,11 @@ export function initTableFinder() {
 
   function apply() {
     const f = read()
+    // The programme page reads the Where, so the place carries through.
+    for (const i of items) {
+      const a = i.el.querySelector<HTMLAnchorElement>('a.name')
+      if (a) a.search = f.where ? `?where=${encodeURIComponent(f.where)}` : ''
+    }
     let shownNow = 0
     let shownLater = 0
     // Asked-for not-open rows ignore a status filter that names only open states ("Open now" plus "Show not open").
