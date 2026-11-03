@@ -52,6 +52,10 @@ const jsonLd = [
           <span aria-hidden="true"> / </span>
           <span>{c.name}</span>
         </nav>
+        {/* The flag as the finder's Where picker draws it (src/lib/picker.ts), at the heading's size. */}
+        <span class="relative mb-3 inline-block rounded-[3px] after:absolute after:inset-0 after:rounded-[3px] after:ring-1 after:ring-black/10 after:ring-inset">
+          <img class="block h-8 w-12 rounded-[3px] max-md:h-6 max-md:w-9" src={`/flags/${iso2}.svg`} alt="" width="48" height="32" />
+        </span>
         <h1 class="text-balance text-[clamp(1.875rem,1.2rem+1.4vw,2.5rem)] leading-[1.08] tracking-[-0.01em] text-shell-ink">{title}</h1>
       </div>
       <p class="text-[0.9375rem] leading-[1.55] text-shell-ink-2">
