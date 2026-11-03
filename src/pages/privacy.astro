@@ -3,7 +3,7 @@ import Base from '../layouts/Base.astro'
 import { CONTACT_EMAIL, RS_URL, absolute } from '../lib/site'
 
 const description =
-  'What naturefunding.org and its weekly email receive, and what they keep: no accounts, cookies, analytics or stored searches; for the email, only the address and the choices you make.'
+  'What naturefunding.org and its weekly email receive, and what they keep: no accounts, cookies or stored searches, visits counted without cookies; for the email, only the address and the choices you make.'
 
 const jsonLd = {
   '@context': 'https://schema.org',
@@ -25,15 +25,21 @@ const prose = [
   <div slot="band" class="wrap pt-7 pb-9">
     <h1 class="text-[clamp(1.75rem,1.2rem+2.2vw,2.75rem)] font-extrabold tracking-[-0.02em]">Privacy</h1>
     <p class="mt-[0.9rem] max-w-[60ch] text-xl text-shell-ink-2">
-      naturefunding.org asks who you are only if you sign up for the weekly email. There are no accounts, cookies, ads
-      or analytics, and we don’t keep what you search for.
+      naturefunding.org asks who you are only if you sign up for the weekly email. There are no accounts, cookies or
+      ads, visits are counted without cookies, and we don’t keep what you search for.
     </p>
   </div>
 
   <article class:list={['wrap mr-auto ml-0 max-w-[calc(44rem+2*var(--gutter))]', prose]}>
     <h2 id="website">The website</h2>
     <ul>
-      <li>The site sets no cookies and runs no tracking or analytics scripts.</li>
+      <li>The site sets no cookies and stores nothing on your device.</li>
+      <li>
+        To count visits and see which pages help, the site tells PostHog, in the US, which pages you open and what you
+        click there, with your browser and screen size. PostHog doesn’t keep your IP address and records no sessions.
+        It tells visitors apart only by a hash that changes every day, under{' '}
+        <a href="https://posthog.com/privacy">PostHog’s privacy policy</a>.
+      </li>
       <li>
         Cloudflare hosts the site. To deliver pages and block abuse it handles each request, including your IP address
         and browser, under <a href="https://www.cloudflare.com/privacypolicy/">Cloudflare’s privacy policy</a>.

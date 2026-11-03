@@ -13,14 +13,15 @@ Every page loads PostHog (project "Nature Funding.org", 706226) in cookieless mo
 
 ## Why
 
-The original brief allowed PostHog only cookieless, and a neutral site shouldn't ask visitors to accept tracking. The key lives in a GitHub Actions variable, so local and CI builds ship no script and send nothing. Passed on: a reverse proxy to dodge ad blockers (needs a Worker, which the site rules out).
+The original brief allowed PostHog only cookieless, and a neutral site shouldn't ask visitors to accept tracking. The key lives in a GitHub Actions variable, so local builds ship no script and send nothing. Passed on: a reverse proxy to dodge ad blockers (needs a Worker, which the site rules out).
 
 ## Context
 
-The site doesn't mention analytics anywhere yet. A line on the About page ("We count visits with PostHog, without cookies") would match how open the rest of the site is; that's copy, so left for you.
+The privacy page promised "no tracking or analytics scripts". The PR rewrites it to disclose PostHog (US, pages and clicks, no IP kept, no recordings, daily hash) and holds the merge until that copy is approved.
 
 ## Where
 
 - src/layouts/Base.astro
 - .github/workflows/deploy.yml
+- src/pages/privacy.astro
 - PostHog project settings: https://us.posthog.com/project/706226/settings/project
