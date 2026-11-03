@@ -12,6 +12,7 @@ import { Button } from '@/components/ui/button'
 import { cardClasses } from '@/components/ui/card'
 import { HIDDEN_DAYS, buildDate, daysBetween, listingFor, notRechecked, notRecheckedPage, programmeById, programmes, sortListings } from '../../lib/data'
 import type { Programme } from '../../data/schema'
+import { pagesFor } from '../../lib/finder-pages'
 import { amountText, geographyFull, joinAnd, longDate, pageLabel } from '../../lib/format'
 import {
   accessHelp,
@@ -45,6 +46,8 @@ const partnersLater = partnersNow.length > 0 ? childListings.filter((l) => !part
 const partnersShown = partnersNow.length > 0 ? partnersNow : childListings
 const noCallRoute = p.access === 'intermediary' || p.access === 'invitation_only'
 const amount = amountText(p.amount)
+// The place and type pages this programme shows on, linked under Where and the approach.
+const more = pagesFor(p)
 const yesNo = (b: boolean | null) => (b === null ? null : b ? 'Yes' : 'No')
 // The tag in the apply box dates the fact the box states: the call, or how to apply.
 const applyEvidence =
@@ -285,7 +288,17 @@ const jsonLd = [
         <Fact id={factIds.amount} label="Amount" value={amount} evidence={p.evidence.amount} missing={byPartner}>
           {p.amount?.note && <p class={factHelp}>{p.amount.note}.</p>}
         </Fact>
-        <Fact id={factIds.geography} label="Where" value={geographyFull(p.geography)} evidence={p.evidence.geography} />
+        <Fact id={factIds.geography} label="Where" value={geographyFull(p.geography)} evidence={p.evidence.geography}>
+          {more.places.length > 0 && (
+            <p class={factHelp}>
+              More grants in{' '}
+              {more.places.map((pg, i) => (
+                <>{i > 0 && (i === more.places.length - 1 ? ' and ' : ', ')}<a href={pg.path}>{pg.name}</a></>
+              ))}
+              .
+            </p>
+          )}
+        </Fact>
         <Fact
           id={factIds.applicant_types}
           label="Who can apply"
@@ -315,6 +328,15 @@ const jsonLd = [
         }
         <Fact id={factIds.approaches} label="Restoration approach" value={joinAnd(p.approaches.map((a) => approachLabels[a]))} missing="">
           <p class={factHelp}>Our classification, from the funder’s description of what it supports.</p>
+          {more.types.length > 0 && (
+            <p class={factHelp}>
+              More grants for{' '}
+              {more.types.map((pg, i) => (
+                <>{i > 0 && (i === more.types.length - 1 ? ' and ' : ', ')}<a href={pg.path}>{pg.name.toLowerCase()}</a></>
+              ))}
+              .
+            </p>
+          )}
         </Fact>
       </dl>
     </section>

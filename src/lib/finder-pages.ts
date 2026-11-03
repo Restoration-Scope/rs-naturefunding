@@ -60,7 +60,8 @@ export type FinderPage = {
 
 const plural = (k: number, one: string, many: string) => `${k} ${k === 1 ? one : many}`
 const openNow = (ls: Listing[]) => {
-  const n = ls.filter((l) => l.state === 'open' || l.state === 'rolling').length
+  // Open with a deadline or an undated window, as the home page and the Open now toggle count it; rolling apart.
+  const n = ls.filter((l) => l.state === 'open').length
   return `${n} ${n === 1 ? 'is' : 'are'} open now.`
 }
 const programmes = (n: number) => plural(n, 'grant or funding programme takes', 'grants and funding programmes take')
@@ -119,3 +120,16 @@ export const pagePaths: PagePaths = Object.fromEntries([
   [pageKey('', ''), '/'],
   ...[...countryPages, ...regionPages, ...typePages].map((p) => [pageKey(p.where, p.cat), p.path]),
 ])
+
+/** The place pages a programme shows on, its countries' first and then their regions, and its type pages. */
+export function pagesFor(p: Listing['p']): { places: FinderPage[]; types: FinderPage[] } {
+  const g = p.geography
+  const countries = g?.scope === 'countries' ? g.countries : []
+  // A long country list reads better as its regions.
+  const own = countries.length <= 6 ? countryPages.filter((pg) => countries.includes(pg.iso2!)) : []
+  const regions = new Set(g?.scope === 'regions' ? g.regions.map((r) => `r:${r}`) : countries.map((c) => `r:${countryRegion[c]}`))
+  return {
+    places: [...own, ...regionPages.filter((pg) => regions.has(pg.where))],
+    types: typePages.filter((pg) => p.approaches.some((a) => pg.cat.split(' ').includes(a))),
+  }
+}
