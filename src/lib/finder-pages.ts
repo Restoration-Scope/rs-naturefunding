@@ -50,7 +50,6 @@ export type FinderPage = {
   path: string
   where: string
   cat: string
-  /** The country's ISO code, for its flag. */
   iso2?: string
   name: string
   h1: string
