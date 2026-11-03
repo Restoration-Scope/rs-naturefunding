@@ -360,6 +360,8 @@ export function initTableFinder() {
     done.textContent = `Show ${shown} ${plural(shown, 'result', 'results')}`
     counts(f)
     toUrl(f)
+    // Each tab's link carries the current place and filters, so a new-tab open keeps them as a click does.
+    for (const c of cats) if (c instanceof HTMLAnchorElement) c.href = pageHref(pages, f.where, c.dataset.cat ?? '', new URLSearchParams(location.search))
   }
 
   function reset() {
@@ -434,6 +436,13 @@ export function initTableFinder() {
   applySort()
   apply()
 
+  // Back from another page can restore this one from the cache with the controls as they were left: read the address again.
+  window.addEventListener('pageshow', (e) => {
+    if (!e.persisted) return
+    write(fromUrl())
+    applySort()
+    apply()
+  })
   form.addEventListener('input', apply)
   form.addEventListener('submit', (e) => e.preventDefault())
   ask.addEventListener('change', () => navigate() || apply())

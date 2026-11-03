@@ -14,7 +14,7 @@ import { NativeSelect } from '@/components/ui/native-select'
 import { Table, TableBody, TableCaption, TableHead, TableHeader, TableRow } from '@/components/ui/table'
 import '../styles/finder.css'
 import type { Listing } from '../lib/data'
-import { sortListings } from '../lib/data'
+import { listings as allListings, sortListings } from '../lib/data'
 import { countriesByRegion } from '../lib/geo'
 import { pagePaths, types as pageTypes } from '../lib/finder-pages'
 import { pageHref } from '../lib/page-paths'
@@ -35,7 +35,8 @@ const now = sorted.filter((l) => !isLater(l.state))
 const later = sorted.filter((l) => isLater(l.state))
 const count = (s: State) => listings.filter((l) => l.state === s).length
 
-const usedApplicants = Object.entries(applicantLabels).filter(([k]) => listings.some((l) => l.p.applicant_types?.includes(k as never)))
+// Who takes every applicant type any listing names, so an address naming one keeps it on a page with none of them.
+const usedApplicants = Object.entries(applicantLabels).filter(([k]) => allListings.some((l) => l.p.applicant_types?.includes(k as never)))
 const states: State[] = ['open', 'rolling', 'upcoming', 'none', 'closed']
 const routes = (['direct', 'intermediary', 'invitation_only'] as const).map((k) => [k, accessLabels[k]])
 const num = 'tabular-nums'
@@ -93,8 +94,9 @@ const segSelect =
         }
       </nav>
       {/* Where, when and who: the only controls for these filters, read by src/lib/finder.ts. Without JavaScript
-          the form sends them in the address, and the full list stays below. */}
-      <form class="flex items-stretch gap-3 p-4 max-md:grid max-md:grid-cols-2 max-md:gap-2 max-md:p-3" action="#results" method="get" aria-label="Search funding" data-ask data-preset-where={where} data-preset-cat={cat} data-pages={JSON.stringify(pagePaths)}>
+          the form sends them in the address, and the full list stays below. autocomplete="off" on both forms
+          stops the browser refilling them on Back after the script has set them from the address. */}
+      <form class="flex items-stretch gap-3 p-4 max-md:grid max-md:grid-cols-2 max-md:gap-2 max-md:p-3" action="#results" method="get" autocomplete="off" aria-label="Search funding" data-ask data-preset-where={where} data-preset-cat={cat} data-pages={JSON.stringify(pagePaths)}>
         <div class:list={[seg, 'flex-[1.4] max-md:col-span-2']}>
           <label class={segLabel} for="ask-where">Where</label>
           <select id="ask-where" name="where" class={segSelect}>
@@ -144,6 +146,7 @@ const segSelect =
       class="xl:sticky xl:top-0 xl:max-h-dvh xl:self-start xl:overflow-y-auto xl:pt-2 xl:pr-4 xl:pb-6 xl:pl-1.5 xl:[scrollbar-gutter:stable] xl:[scrollbar-width:thin]"
       role="search"
       aria-label="Search and filter funding"
+      autocomplete="off"
       data-form
     >
       <div class="grid grid-cols-[minmax(0,1fr)_auto] gap-2 xl:grid-cols-[minmax(0,1fr)] xl:pt-1">
