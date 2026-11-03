@@ -47,6 +47,13 @@ export function initWhereView() {
   function render() {
     const where = new URLSearchParams(location.search).get('where') ?? ''
     const name = where ? nameOf(where) : ''
+    // A country's name comes after its flag, so the page scans by eye; a region has none.
+    const flag = () => {
+      const el = /^[A-Z]{2}$/.test(where) ? (tpl('flag')?.content.firstElementChild?.cloneNode(true) as HTMLElement | undefined) : undefined
+      el?.querySelector('img')?.setAttribute('src', `/flags/${where}.svg`)
+      return el ? [el] : []
+    }
+    const named = () => [...flag(), name]
     const covered = !where || covers(where)
     const country = where && !where.startsWith('r:') ? where : ''
 
@@ -87,7 +94,8 @@ export function initWhereView() {
     }
     if (callsTitle) {
       const mine = calls.length - others.length
-      callsTitle.textContent = others.length ? `${mine === 0 ? 'No call' : mine === 1 ? 'The call' : `Calls (${mine})`} for ${name}` : builtCallsTitle
+      if (others.length) callsTitle.replaceChildren(`${mine === 0 ? 'No call' : mine === 1 ? 'The call' : `Calls (${mine})`} for `, ...named())
+      else callsTitle.textContent = builtCallsTitle
     }
 
     // The button at the foot follows the apply box.
@@ -99,14 +107,15 @@ export function initWhereView() {
       ctaButton.textContent = primary?.textContent ?? builtCta.text
     }
 
-    for (const el of all('[data-where-name]')) el.textContent = name
+    for (const el of all('[data-where-name]')) el.replaceChildren(...named())
+    for (const el of all('[data-where-flag]')) el.replaceChildren(...flag())
     for (const a of all<HTMLAnchorElement>('[data-where-clear]')) a.href = location.pathname
     const back = finder ? new URL(finder) : new URL('/', location.origin)
     if (where) back.searchParams.set('where', where)
     else back.searchParams.delete('where')
     if (!finder && where) back.hash = 'results'
     for (const a of all<HTMLAnchorElement>('[data-back]')) a.href = back.href
-    if (backText) backText.textContent = where ? `Funding in ${name}` : 'All funding'
+    if (backText) backText.replaceChildren(...(where ? ['Funding in ', ...named()] : ['All funding']))
   }
 
   function go(where: string) {

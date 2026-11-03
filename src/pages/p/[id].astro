@@ -2,7 +2,9 @@
 import type { GetStaticPaths } from 'astro'
 import Base from '../../layouts/Base.astro'
 import ApplyPart from '../../components/ApplyPart.astro'
+import Countries from '../../components/Countries.astro'
 import Fact from '../../components/Fact.astro'
+import Flag from '../../components/Flag.astro'
 import Listing from '../../components/Listing.astro'
 import OrgMark from '../../components/OrgMark.astro'
 import { callFactId, callId, factIds, grantJsonLd } from '../../lib/agent'
@@ -159,6 +161,8 @@ const jsonLd = [
     {p.kind === 'partnership' && <p class="mt-4 font-bold">Paid partnership, not a grant: the funder pays for work under a contract.</p>}
     <p class:list={['max-w-[62ch] text-lg max-md:text-base max-md:leading-[1.45]', p.kind === 'partnership' ? 'mt-[0.35rem]' : 'mt-4 max-md:mt-3']}>{p.summary}</p>
     <p class="mt-2 text-sm text-shell-ink-2">Summary in our words. Each fact below shows the funder’s own words and links to its page.</p>
+    {/* The flag the page puts before a country's name (src/lib/where-view.ts sets its picture). */}
+    <template data-where-tpl="flag"><Flag code="ZZ" class="mr-[0.3em]" /></template>
     {/* With a Where, the page says whose view it is and how to leave it. */}
     <template data-where-tpl="chip">
       <p class="mt-4 inline-flex flex-wrap items-center gap-x-3 gap-y-1 rounded-lg bg-shell-ink/12 px-3 py-1.5 text-md">
@@ -193,6 +197,7 @@ const jsonLd = [
         groups.length > 0 && (
           <label class="-mt-1 mb-4 flex flex-wrap items-center gap-x-3 gap-y-1 border-b border-rule pb-3 text-md">
             <span class="text-ink-2">Your project is in</span>
+            <span class="-mr-1.5 flex text-lg empty:hidden" data-where-flag></span>
             <select class="min-h-9 rounded-md border border-control-edge bg-surface px-2 font-semibold" data-where-select>
               <option value="">Any country</option>
               {switchCountries.map((c) => <option value={c.code}>{c.name}</option>)}
@@ -254,6 +259,7 @@ const jsonLd = [
           {p.amount?.note && <p class={factHelp}>{p.amount.note}.</p>}
         </Fact>
         <Fact id={factIds.geography} label="Where" value={geographyFull(p.geography)} evidence={p.evidence.geography}>
+          {p.geography?.scope === 'countries' && <span slot="value">{p.geography.label && `${p.geography.label}: `}<Countries codes={p.geography.countries} /></span>}
           <template data-where-tpl="covered"><p class="mt-1 text-md font-semibold text-ok-ink">✓ Includes <span data-where-name></span><span data-where-via></span></p></template>
           <template data-where-tpl="uncovered"><p class="mt-1 text-md font-semibold text-warn-ink">✕ Doesn’t include <span data-where-name></span></p></template>
         </Fact>
@@ -305,9 +311,13 @@ const jsonLd = [
               <summary class="grid cursor-pointer list-none grid-cols-[minmax(0,1fr)_auto] items-start gap-x-3 gap-y-1 pb-3 after:col-start-2 after:row-start-1 after:mt-2 after:mr-[0.2rem] after:size-[0.55rem] after:border-r-2 after:border-b-2 after:border-ink-2 after:content-[''] after:[transform:rotate(45deg)_translateY(-0.15rem)] group-open/call:after:[transform:rotate(-135deg)_translateY(-0.1rem)] [&::-webkit-details-marker]:hidden">
                 {/* The call names are the funder's own long titles: body type, not headings. */}
                 <span class="flex flex-col items-start gap-1.5">
-                  <Badge variant="status" state={rollingCall(c) ? 'rolling' : c.status === 'open' ? 'open' : c.status === 'upcoming' ? 'upcoming' : c.status === 'closed' ? 'closed' : 'none'}>
-                    {rollingCall(c) ? 'Rolling' : callStatusLabel[c.status]}
-                  </Badge>
+                  <span class="flex flex-wrap items-center gap-x-2.5 gap-y-1">
+                    <Badge variant="status" state={rollingCall(c) ? 'rolling' : c.status === 'open' ? 'open' : c.status === 'upcoming' ? 'upcoming' : c.status === 'closed' ? 'closed' : 'none'}>
+                      {rollingCall(c) ? 'Rolling' : callStatusLabel[c.status]}
+                    </Badge>
+                    {/* Whose call it is, at a glance; the names are under Where. */}
+                    {c.countries && <span class="flex gap-1 text-lg">{c.countries.map((code) => <Flag code={code} />)}</span>}
+                  </span>
                   <h3 class="font-sans text-lg leading-[1.35] font-semibold">{c.label}</h3>
                 </span>
                 {/* Only while folded: an open call shows its dates in full below. */}
@@ -316,7 +326,11 @@ const jsonLd = [
               <a class="mb-1 inline-block text-md pointer-coarse:-mt-2.5 pointer-coarse:py-2.5" href={c.url}>Call page</a>
               <dl class="m-0">
                 <Fact id={callFactId(c, 'status')} label="Status" value={callStatusText(c)} evidence={c.evidence.status} />
-                {c.countries && <Fact id={callFactId(c, 'countries')} label="Where" value={joinAnd(c.countries.map(countryName))} evidence={c.evidence.countries} />}
+                {c.countries && (
+                  <Fact id={callFactId(c, 'countries')} label="Where" value={joinAnd(c.countries.map(countryName))} evidence={c.evidence.countries}>
+                    <Countries slot="value" codes={c.countries} />
+                  </Fact>
+                )}
                 {(c.opens || c.expected || c.evidence.opens) && (
                   <Fact
                     id={callFactId(c, 'opens')}

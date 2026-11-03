@@ -1,5 +1,6 @@
 ---
 import CheckedTag from './CheckedTag.astro'
+import Countries from './Countries.astro'
 import Route from './Route.astro'
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
@@ -31,7 +32,7 @@ const narrowedPrimary =
 
 {/* One part of the apply box: what to do, for every country or for one call group. */}
 <div class:list={[group && '[&+&]:mt-5 [&+&]:border-t [&+&]:border-rule [&+&]:pt-4 group-data-narrowed/apply:mt-0! group-data-narrowed/apply:border-0! group-data-narrowed/apply:pt-0!']} data-group={group?.codes ?? '*'} data-call-label={call?.label}>
-  {group && <p class="mb-2 text-sm font-bold text-ink-2">{group.label}</p>}
+  {group && <p class="mb-2 text-sm font-bold text-ink-2">{group.codes === '*' ? group.label : <Countries codes={group.codes.split(' ')} />}</p>}
   <div class="flex flex-wrap items-center gap-x-[0.85rem] gap-y-2">
     {/* Invitation-only funders and umbrellas never have a call of their own: the route is their status. */}
     <span class="flex flex-wrap items-center gap-2">

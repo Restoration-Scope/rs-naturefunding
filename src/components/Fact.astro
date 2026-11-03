@@ -6,7 +6,7 @@ import CheckedTag from './CheckedTag.astro'
 
 interface Props {
   label: string
-  /** What we show. Null means the funder's page does not say. */
+  /** What we show. Null means the funder's page does not say. A `value` slot draws it instead (countries with their flags). */
   value: string | null
   evidence?: Evidence
   /** Shown instead of "Not found on the pages we read" when the value is null. */
@@ -23,7 +23,9 @@ const shown = value && label === 'Amount' ? keepAmountTogether(value) : value
   <dt class="pt-[0.15rem] text-md font-bold text-ink-2">{label}</dt>
   <dd class="m-0 min-w-0">
     {
-      shown ? (
+      Astro.slots.has('value') ? (
+        <p class="text-lg font-semibold"><slot name="value" /></p>
+      ) : shown ? (
         // A long summary in our words reads as text, so it doesn't outweigh the quote under it.
         <p class:list={[shown.length > 70 ? 'text-base' : 'text-lg font-semibold']}>{shown}</p>
       ) : (
