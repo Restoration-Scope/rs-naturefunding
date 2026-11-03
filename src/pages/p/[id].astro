@@ -444,17 +444,15 @@ const jsonLd = [
       )
     }
 
-    <section class="[&>p]:max-w-[62ch]" aria-labelledby="fix-title">
-      <h2 id="fix-title" class={sectionTitle}>Something wrong?</h2>
-      <p>
-        Every fact above links to the page we read it from. If a deadline, amount or rule has
-        changed, tell us and we will check it against the funder’s page.
+    {/* A footnote, not a section: it matters to the few who spot a mistake. */}
+    <section class="mt-16 max-w-[62ch] border-t border-rule pt-5 text-md text-ink-2" aria-labelledby="fix-title">
+      <h2 id="fix-title" class="text-md font-bold text-ink">Something wrong?</h2>
+      <p class="mt-1">
+        Every fact above links to the page we read it from. If a deadline, amount or rule has changed, <a href={reportProblemUrl(p.name, p.id)}>report a problem</a>{' '}
+        and we will check it against the funder’s page.
+        Are you this funder? <a href={funderCorrectionUrl(p.name, p.id)}>Correct this listing</a>.
       </p>
-      <div class="mt-4 flex flex-wrap gap-3 max-md:flex-col">
-        <Button href={reportProblemUrl(p.name, p.id)} variant="outline" width="phone">Report a problem</Button>
-        <Button href={funderCorrectionUrl(p.name, p.id)} variant="outline" width="phone">Are you this funder? Correct this listing</Button>
-      </div>
-      <p class="mt-[0.6rem] text-sm text-ink-2">Both open an email to {CONTACT_EMAIL} with this listing filled in. Listings can’t be bought.</p>
+      <p class="mt-2 text-sm">Both open an email to {CONTACT_EMAIL} with this listing filled in. Listings can’t be bought.</p>
     </section>
   </div>
 </Base>
