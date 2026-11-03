@@ -217,20 +217,27 @@ if (import.meta.main) {
   console.log(body)
   if (process.env.GITHUB_STEP_SUMMARY) appendFileSync(process.env.GITHUB_STEP_SUMMARY, `${body}\n`)
 
-  let issue: string | null = null
-  if (fresh.length && !process.argv.includes('--no-issue')) {
-    mkdirSync('.cache', { recursive: true })
-    const file = join('.cache', 'discovery-body.md')
-    writeFileSync(file, body)
-    Bun.spawnSync(['gh', 'label', 'create', 'discovery', '--color', '5319e7', '--force'])
-    const made = Bun.spawnSync(['gh', 'issue', 'create', '--title', `Discovery ${today}: ${fresh.length} new NbS calls to review`, '--label', 'discovery', '--body-file', file])
-    if (made.exitCode !== 0) throw new Error(`gh issue create failed: ${made.stderr.toString()}`)
-    issue = made.stdout.toString().trim()
-    console.log(issue)
-  }
   if (!process.argv.includes('--no-issue')) {
+    const issue = fresh.length ? fileDiscoveryIssue(`Discovery ${today}: ${fresh.length} new NbS calls to review`, body) : null
     for (const c of fresh) known[c.key] = { title: c.title, url: c.url, deadline: c.deadline, first_seen: today, issue }
-    writeJson(DISCOVERED_PATH, Object.fromEntries(Object.entries(known).sort(([a], [b]) => a.localeCompare(b))))
+    writeDiscovered(known)
   }
   if (errors.length && !found.length) process.exit(1)
+}
+
+/** Opens one review issue under the discovery label and returns its URL. */
+export function fileDiscoveryIssue(title: string, body: string): string {
+  mkdirSync('.cache', { recursive: true })
+  const file = join('.cache', 'discovery-body.md')
+  writeFileSync(file, body)
+  Bun.spawnSync(['gh', 'label', 'create', 'discovery', '--color', '5319e7', '--force'])
+  const made = Bun.spawnSync(['gh', 'issue', 'create', '--title', title, '--label', 'discovery', '--body-file', file])
+  if (made.exitCode !== 0) throw new Error(`gh issue create failed: ${made.stderr.toString()}`)
+  const issue = made.stdout.toString().trim()
+  console.log(issue)
+  return issue
+}
+
+export function writeDiscovered(known: Discovered) {
+  writeJson(DISCOVERED_PATH, Object.fromEntries(Object.entries(known).sort(([a], [b]) => a.localeCompare(b))))
 }
