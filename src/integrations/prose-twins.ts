@@ -6,7 +6,7 @@ import { absolute } from '../lib/site'
 import { LLMS_FULL_PAGES } from '../lib/twins'
 
 /** Hand-written prose pages. Their Markdown twins are converted from the built HTML; data pages build theirs from the data. */
-export const PROSE_PAGES = ['/about/', '/data/']
+export const PROSE_PAGES = ['/about/', '/data/', '/countries/']
 
 /** After the build: writes /about.md and /data.md from their pages, and adds them to llms-full.txt. */
 export function proseTwins(): AstroIntegration {

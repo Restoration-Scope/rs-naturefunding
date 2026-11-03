@@ -2,7 +2,7 @@
 import type { Evidence } from '../data/schema'
 import { keepAmountTogether, pageLabel } from '../lib/format'
 import { notRecheckedPage } from '../lib/data'
-import CheckedTag from './CheckedTag.astro'
+import SourceLink from './SourceLink.astro'
 
 interface Props {
   label: string
@@ -36,14 +36,18 @@ const shown = value && label === 'Amount' ? keepAmountTogether(value) : value
     {
       evidence && (
         <figure class="mt-[0.4rem]">
-          {/* The funder's words hang off a rule, so the facts read as one list rather than a stack of boxes. */}
+          {/* The funder's words hang off a rule, so the facts read as one list rather than a stack of boxes. The
+              source icon ends the quote, held to its last word; its tooltip names the page and date. */}
           <blockquote class="max-w-[65ch] border-l-3 border-rule-strong py-[0.1rem] pl-[0.85rem] text-[0.9875rem] text-ink" cite={evidence.source_url}>
-            <p class="before:content-['“'] after:content-['”']">{evidence.quote}</p>
+            <p>
+              <span class="before:content-['“'] after:content-['”']">{evidence.quote}</span>{'\u00a0'}<SourceLink
+                url={evidence.source_url}
+                label={pageLabel(evidence.source_url)}
+                checked={evidence.checked_at}
+                reason={notRecheckedPage(evidence.source_url)}
+              />
+            </p>
           </blockquote>
-          {/* Every fact names its page and date, the same line each time. */}
-          <figcaption class="mt-[0.45rem]">
-            <CheckedTag checked={evidence.checked_at} source={{ url: evidence.source_url, label: pageLabel(evidence.source_url) }} reason={notRecheckedPage(evidence.source_url)} />
-          </figcaption>
         </figure>
       )
     }

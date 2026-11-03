@@ -14,7 +14,8 @@ import { Button } from '@/components/ui/button'
 import { cardClasses } from '@/components/ui/card'
 import { HIDDEN_DAYS, buildDate, callGroups, whereReach, listingFor, programmeById, programmes, sortListings } from '../../lib/data'
 import type { Programme } from '../../data/schema'
-import { amountText, geographyFull, joinAnd, longDate } from '../../lib/format'
+import { pagesFor } from '../../lib/finder-pages'
+import { amountText, geographyFull, joinAnd, longDate, pageLabel } from '../../lib/format'
 import { countryName, regionLabels } from '../../lib/geo'
 import {
   accessHelp,
@@ -48,6 +49,8 @@ const partnersLater = partnersNow.length > 0 ? childListings.filter((l) => !part
 const partnersShown = partnersNow.length > 0 ? partnersNow : childListings
 const noCallRoute = p.access === 'intermediary' || p.access === 'invitation_only'
 const amount = amountText(p.amount)
+// The place and type pages this programme shows on, linked under Where and the approach.
+const more = pagesFor(p)
 const yesNo = (b: boolean | null) => (b === null ? null : b ? 'Yes' : 'No')
 /** "America/Guayaquil" → "Ecuador Time", as the browser names it; the raw zone when it has no name. */
 const zoneName = (tz: string, date: string) => {
@@ -262,6 +265,15 @@ const jsonLd = [
           {p.geography?.scope === 'countries' && <span slot="value">{p.geography.label && `${p.geography.label}: `}<Countries codes={p.geography.countries} /></span>}
           <template data-where-tpl="covered"><p class="mt-1 text-md font-semibold text-ok-ink">✓ Includes <span data-where-name></span><span data-where-via></span></p></template>
           <template data-where-tpl="uncovered"><p class="mt-1 text-md font-semibold text-warn-ink">✕ Doesn’t include <span data-where-name></span></p></template>
+          {more.places.length > 0 && (
+            <p class={factHelp}>
+              More grants in{' '}
+              {more.places.map((pg, i) => (
+                <>{i > 0 && (i === more.places.length - 1 ? ' and ' : ', ')}<a href={pg.path}>{pg.name}</a></>
+              ))}
+              .
+            </p>
+          )}
         </Fact>
         <Fact
           id={factIds.applicant_types}
@@ -292,6 +304,15 @@ const jsonLd = [
         }
         <Fact id={factIds.approaches} label="Restoration approach" value={joinAnd(p.approaches.map((a) => approachLabels[a]))} missing="">
           <p class={factHelp}>Our classification, from the funder’s description of what it supports.</p>
+          {more.types.length > 0 && (
+            <p class={factHelp}>
+              More grants for{' '}
+              {more.types.map((pg, i) => (
+                <>{i > 0 && (i === more.types.length - 1 ? ' and ' : ', ')}<a href={pg.path}>{pg.name.toLowerCase()}</a></>
+              ))}
+              .
+            </p>
+          )}
         </Fact>
       </dl>
     </section>

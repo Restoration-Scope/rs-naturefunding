@@ -1,0 +1,13 @@
+{
+  // PostHog relay only, on its own hostname: the site (../wrangler.jsonc) stays static assets with no Worker script.
+  "$schema": "../node_modules/wrangler/config-schema.json",
+  "name": "naturefunding-relay",
+  "account_id": "c72792497a89bc5db0c41066540d52ea",
+  "compatibility_date": "2026-11-01",
+  "main": "src/worker.ts",
+  "workers_dev": false,
+  "preview_urls": false,
+  // No request logs: they would hold visitors' IPs.
+  "observability": { "enabled": false },
+  "routes": [{ "pattern": "relay.naturefunding.org", "custom_domain": true }]
+}

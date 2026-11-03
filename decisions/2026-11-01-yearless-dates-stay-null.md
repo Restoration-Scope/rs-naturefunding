@@ -1,6 +1,6 @@
 ---
 title: A deadline whose page gives no year stays empty, enforced by the schema
-status: open
+status: changes
 kind: long-term
 filed: 2026-11-01
 by: naturefunding data thread
@@ -19,3 +19,7 @@ Bernat's rule: never infer a deadline. Picking the year is inference, even when 
 
 - src/data/schema.ts (`statesYear`)
 - data/programmes/cfhf-grants.json, ekct-medium-grants.json, rainforest-trust-area-creation-awards-large.json
+
+## Feedback
+
+- 2026-11-01 Bernat · changes: get the agent to show me the exact examples so i aven check

@@ -9,6 +9,7 @@ import { RS_URL, SITE_NAME, absolute, funderCorrectionUrl, reportProblemUrl } fr
 import { countryName } from './geo'
 import { LLMS_FULL_PAGES, twinPath } from './twins'
 import { evidenceOf } from '../data/load'
+import type { FinderPage } from './finder-pages'
 
 /** Element ids on a programme page, one per fact, so an answer can link the fact it cites. They match data.json field names. */
 export const factIds = {
@@ -228,21 +229,27 @@ const intro = (listings: Listing[]) =>
     `${listings.length} programmes listed, ${stats.open} open now and ${stats.rolling} open any time, by each listing’s latest check (built ${longDate(buildDate)}; most recent check ${stats.lastChecked ? longDate(stats.lastChecked) : 'none'}). A job runs every day and re-reads each funder page when it is due: daily, weekly or monthly, depending on the page. A call shows as closed once its deadline date has passed. “Who” and “Where” are our categories, from the funder’s words; each listing has the quotes.`,
   ].join('\n')
 
+/** Every listing by status, one line each, under a heading per status. */
+const byStatus = (listings: Listing[]) =>
+  groups.flatMap((g) => {
+    const ls = sorted(listings.filter(g.test))
+    return ls.length ? ['', `## ${g.title} (${ls.length})`, '', ...ls.map((l) => listingLine(l, listingUrl))] : []
+  })
+
+const howToRead = `Each programme links to its page, where every fact carries its source and quote. All data: ${absolute('/data.json')} (field guide: ${absolute('/data/')}).`
+
 /** The Markdown twin of / : every listing the finder shows, by status. */
 export function homeMarkdown(listings: Listing[]): string {
-  const out = [`# ${SITE_NAME}: funding for nature restoration and conservation`, '', intro(listings), '']
-  out.push(`Each programme links to its page, where every fact carries its source and quote. All data: ${absolute('/data.json')} (field guide: ${absolute('/data/')}).`)
-  for (const g of groups) {
-    const ls = sorted(listings.filter(g.test))
-    if (!ls.length) continue
-    out.push('', `## ${g.title} (${ls.length})`, '', ...ls.map((l) => listingLine(l, listingUrl)))
-  }
-  out.push('')
-  return out.join('\n')
+  return [`# ${SITE_NAME}: funding for nature restoration and conservation`, '', intro(listings), '', howToRead, ...byStatus(listings), ''].join('\n')
+}
+
+/** The Markdown twin of a country, region or project-type page: its listings, by status. */
+export function finderPageMarkdown(page: FinderPage): string {
+  return [`# ${page.h1}`, '', page.lead, '', `${howToRead} Every programme on ${SITE_NAME}: ${absolute('/index.md')}.`, ...byStatus(page.listings), ''].join('\n')
 }
 
 /** /llms.txt: what the site is, how to read it, and every listing's Markdown twin. */
-export function llmsTxt(listings: Listing[]): string {
+export function llmsTxt(listings: Listing[], pages: FinderPage[] = []): string {
   const md = (p: Programme) => absolute(twinPath(`/p/${p.id}/`))
   const out = [
     `# ${SITE_NAME}`,
@@ -263,6 +270,7 @@ export function llmsTxt(listings: Listing[]): string {
     `- [All programmes by status](${absolute('/index.md')}): every listing with its status, amount, area and checked date`,
     `- [How we check](${absolute('/about.md')}): where facts come from, what we never guess, what the labels mean`,
     `- [Open data and schema](${absolute('/data.md')}): files, fields, how to query and cite`,
+    `- [Grants by place and project type](${absolute('/countries.md')}): a page per region, country and project type`,
     `- [Everything in one file](${absolute('/llms-full.txt')}): every programme’s full facts and quotes, plus how we check`,
     '',
     '## Data',
@@ -273,6 +281,10 @@ export function llmsTxt(listings: Listing[]): string {
     `- [feed.xml](${absolute('/feed.xml')}): Atom feed of the calls of listed programmes, up to the 100 most recently updated; a call that opens, closes or changes its deadline date gets a new entry`,
     `- [health.json](${absolute('/health.json')}): the latest run of the daily checking job: how many sources were due, unchanged, changed or could not be read`,
   ]
+  if (pages.length) {
+    out.push('', '## By place and project type', '')
+    for (const pg of pages) out.push(`- [${pg.h1}](${absolute(twinPath(pg.path))}): ${pg.listings.length} programmes`)
+  }
   for (const g of groups) {
     const ls = sorted(listings.filter(g.test))
     if (!ls.length) continue
@@ -357,11 +369,11 @@ export function grantJsonLd(l: Listing): object[] {
 }
 
 /** schema.org ItemList of the programmes the finder shows, in its order: URLs only, to keep the home page light. */
-export function homeItemListLd(listings: Listing[]): object {
+export function homeItemListLd(listings: Listing[], name = 'Funding for nature restoration and conservation'): object {
   return {
     '@context': 'https://schema.org',
     '@type': 'ItemList',
-    name: 'Funding for nature restoration and conservation',
+    name,
     numberOfItems: listings.length,
     itemListElement: listings.map((l, i) => ({ '@type': 'ListItem', position: i + 1, url: listingUrl(l.p) })),
   }

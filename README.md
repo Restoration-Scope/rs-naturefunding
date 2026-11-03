@@ -24,3 +24,5 @@ bun run dev
 ```
 
 `bun run deploy` builds the static site and uploads it to Cloudflare (static assets, no Worker script).
+
+Analytics: PostHog in cookieless mode (no cookies or storage), loaded only when `PUBLIC_POSTHOG_KEY` is set at build time, sending through the relay Worker in `relay/`. The deploy workflow takes it from the repo's Actions variable of the same name; local builds leave it unset and ship no script.
