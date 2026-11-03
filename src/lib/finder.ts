@@ -1,16 +1,21 @@
-// Browser-side finder: filters the server-rendered listings and keeps the filters in the URL.
+// The table finder. Filters, sorts and quick filters run over the server-rendered rows,
+// and every setting lives in the URL.
+import { picker } from './picker'
 
 const AGING_DAYS = 30
 const HIDDEN_DAYS = 90
 const MULTI = ['status', 'access', 'applicant', 'approach', 'size'] as const
 type Multi = (typeof MULTI)[number]
+type SortKey = 'deadline' | 'amount' | 'checked'
 
 type Item = {
-  el: HTMLLIElement
+  el: HTMLTableRowElement
   state: string
   deadline: string
   opens: string
   checked: string
+  usd: number | null
+  name: string
   sets: Record<Multi, string[]>
   where: string[]
   text: string
@@ -20,52 +25,63 @@ type Filters = { q: string; within: string; where: string } & Record<Multi, stri
 
 const today = new Date().toISOString().slice(0, 10)
 const days = (from: string, to: string) => Math.round((Date.parse(to) - Date.parse(from)) / 86_400_000)
+const isLater = (state: string) => state === 'none' || state === 'closed'
+const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+const shortDate = (iso: string) => {
+  const [y, m, d] = iso.split('-').map(Number)
+  return `${d} ${months[m! - 1]} ${y}`
+}
+const plural = (n: number, one: string, many: string) => (n === 1 ? one : many)
 
-export function initFinder() {
-  const form = document.querySelector<HTMLFormElement>('[data-form]')
-  const list = document.querySelector<HTMLOListElement>('[data-list]')
+// Each sort's natural direction: soonest deadline, largest amount, most recently checked.
+const naturalDir: Record<SortKey, 'ascending' | 'descending'> = {
+  deadline: 'ascending',
+  amount: 'descending',
+  checked: 'descending',
+}
+
+export function initTableFinder() {
+  const $ = <T extends Element>(s: string) => document.querySelector<T>(s)!
+  const form = $<HTMLFormElement>('[data-form]')
+  const list = $<HTMLTableSectionElement>('[data-list]')
   if (!form || !list) return
-  const laterList = document.querySelector<HTMLOListElement>('[data-list-later]')!
-  const later = document.querySelector<HTMLDetailsElement>('[data-later]')!
-  const laterCount = document.querySelector<HTMLElement>('[data-later-count]')!
-  // Rows with no call open now (no open call, or closed) wait in a folded list below the rest.
-  const isLater = (state: string) => state === 'none' || state === 'closed'
+  const laterList = $<HTMLTableSectionElement>('[data-list-later]')
+  const laterHead = $<HTMLTableSectionElement>('[data-later-head]')
+  const tableWrap = $<HTMLElement>('[data-table]')
+  const endfold = $<HTMLButtonElement>('[data-endfold]')
+  const sortLine = $<HTMLElement>('[data-sort-line]')
+  const live = $<HTMLElement>('[data-live]')
+  // How many show and Clear all sit in the sidebar on wide screens and above the table on narrower ones.
+  const shownEls = [...document.querySelectorAll<HTMLElement>('[data-shown]')]
+  const emptyEl = $<HTMLElement>('[data-empty]')
+  const emptyText = $<HTMLElement>('[data-empty-text]')
+  const emptyHead = $<HTMLElement>('[data-empty-head]')
+  const clearEls = [...document.querySelectorAll<HTMLElement>('[data-clear]')]
+  const badge = $<HTMLElement>('[data-filter-count]')
+  const sortSelect = $<HTMLSelectElement>('[data-sort-select]')
+  const sheet = $<HTMLElement>('[data-sheet]')
+  const backdrop = $<HTMLElement>('[data-backdrop]')
+  const opener = $<HTMLButtonElement>('[data-sheet-open]')
+  const done = $<HTMLButtonElement>('[data-sheet-done]')
+  // The header card owns where, when and who (its selects) and the approach (its project types); the sidebar
+  // owns status, how to apply and size. Each filter has that one control.
+  const ask = $<HTMLFormElement>('[data-ask]')
+  const askSelects = [...ask.querySelectorAll('select')]
+  for (const s of askSelects) picker(s, s.name === 'where')
+  // The weekly email form's Where gets the same flags; its own pages under /digest/ load no script.
+  for (const s of document.querySelectorAll<HTMLSelectElement>('select[data-flags]'))
+    picker(s, true, 'top-1/2 left-[0.65rem] -translate-y-1/2', 'pl-[2.4rem]!')
+  const askSelect = (name: string) => ask.querySelector<HTMLSelectElement>(`select[name="${name}"]`)!
+  const whereSelect = askSelect('where')
+  const cats = [...document.querySelectorAll<HTMLElement>('[data-cat]')]
+  let approach: string[] = []
 
-  const details = document.querySelector<HTMLDetailsElement>('[data-filters]')!
-  const countEl = document.querySelector<HTMLElement>('[data-result-count]')!
-  const emptyEl = document.querySelector<HTMLElement>('[data-empty]')!
-  const chipsEl = document.querySelector<HTMLElement>('[data-chips]')!
-  const badge = document.querySelector<HTMLElement>('[data-filter-count]')!
-  const whereSelect = form.querySelector<HTMLSelectElement>('select[name="where"]')!
+  let showLater = false
+  let sort: SortKey = 'deadline'
+  let reversed = false
 
-  const wide = matchMedia('(min-width: 60rem)')
-  const syncOpen = () => {
-    if (wide.matches) details.open = true
-  }
-  syncOpen()
-  wide.addEventListener('change', syncOpen)
-
-  // Phones: the open filters panel closes onto the results.
-  const done = form.querySelector<HTMLButtonElement>('[data-filters-done]')!
-  done.addEventListener('click', () => {
-    details.open = false
-    document.querySelector('.results')?.scrollIntoView({ block: 'start' })
-  })
-
-  for (const set of form.querySelectorAll<HTMLElement>('[data-more]')) {
-    const toggle = set.querySelector<HTMLButtonElement>('[data-more-toggle]')!
-    set.dataset.collapsed = ''
-    toggle.hidden = false
-    toggle.addEventListener('click', () => {
-      const expand = 'collapsed' in set.dataset
-      if (expand) delete set.dataset.collapsed
-      else set.dataset.collapsed = ''
-      toggle.textContent = expand ? 'Show fewer' : (toggle.dataset.label ?? '')
-      toggle.setAttribute('aria-expanded', String(expand))
-    })
-  }
-
-  const rows = [...list.querySelectorAll<HTMLLIElement>(':scope > li'), ...laterList.querySelectorAll<HTMLLIElement>(':scope > li')]
+  // ---------- Rows: freshness, days left, and calls that closed since the build ----------
+  const rows = [...list.rows, ...laterList.rows] as HTMLTableRowElement[]
   const items = rows.flatMap((el): Item[] => {
     const d = el.dataset
     const checked = d.checked ?? ''
@@ -74,10 +90,7 @@ export function initFinder() {
       el.remove()
       return []
     }
-    if (age > AGING_DAYS) {
-      el.querySelector('.tag')?.setAttribute('data-aging', '')
-      el.querySelector<HTMLElement>('.checked__aging')?.removeAttribute('hidden')
-    }
+    if (age > AGING_DAYS) for (const st of el.querySelectorAll('.stamp')) st.setAttribute('data-aging', '')
     let state = d.state ?? ''
     const deadline = d.deadline ?? ''
     if (state === 'open' && deadline) {
@@ -86,15 +99,12 @@ export function initFinder() {
       if (left < 0) {
         state = 'closed'
         el.dataset.state = state
-        const tape = el.querySelector<HTMLElement>('.tape')
-        if (tape) {
-          tape.dataset.state = state
-          tape.textContent = 'Closed'
-        }
-        leftEl?.remove()
+        const dl = el.querySelector<HTMLElement>('.dl')
+        if (dl)
+          dl.innerHTML = `<span class="dl__when dl__when--muted">${shortDate(deadline)}</span><span class="dl__meta"><span class="status" data-state="closed">Closed</span></span>`
       } else if (leftEl) {
         leftEl.textContent = left === 0 ? 'Closes today' : left === 1 ? '1 day left' : `${left} days left`
-        leftEl.toggleAttribute('data-soon', left < 7)
+        leftEl.toggleAttribute('data-soon', left <= 7)
       }
     }
     const split = (s?: string) => (s ? s.split(' ') : [])
@@ -105,6 +115,8 @@ export function initFinder() {
         deadline,
         opens: d.opens ?? '',
         checked,
+        usd: d.usd ? Number(d.usd) : null,
+        name: d.name ?? '',
         sets: {
           status: [state],
           access: [d.access ?? ''],
@@ -118,43 +130,99 @@ export function initFinder() {
     ]
   })
 
+  // ---------- Sorting ----------
   const order: Record<string, number> = { open: 0, rolling: 1, upcoming: 2, none: 3, closed: 4 }
-  const key = (i: Item) => (i.state === 'upcoming' ? i.opens || i.deadline || '9999' : i.deadline || '9999')
-  items.sort((a, b) => {
-    const s = order[a.state] - order[b.state]
+  const dkey = (i: Item) => (i.state === 'upcoming' ? i.opens || i.deadline || '9999' : i.deadline || '9999')
+  const byDeadline = (a: Item, b: Item) => {
+    const s = order[a.state]! - order[b.state]!
     if (s) return s
-    return key(a).localeCompare(key(b)) * (a.state === 'closed' ? -1 : 1)
-  })
-  list.append(...items.filter((i) => !isLater(i.state)).map((i) => i.el))
-  laterList.append(...items.filter((i) => isLater(i.state)).map((i) => i.el))
+    return dkey(a).localeCompare(dkey(b)) * (a.state === 'closed' ? -1 : 1) || a.name.localeCompare(b.name)
+  }
+  const compare: Record<SortKey, (a: Item, b: Item) => number> = {
+    deadline: byDeadline,
+    amount: (a, b) => (b.usd ?? -1) - (a.usd ?? -1),
+    checked: (a, b) => b.checked.localeCompare(a.checked),
+  }
 
+  function applySort() {
+    const sign = reversed ? -1 : 1
+    const cmp = (a: Item, b: Item) => {
+      // Rows without an amount stay at the bottom either way.
+      if (sort === 'amount' && (a.usd === null) !== (b.usd === null)) return a.usd === null ? 1 : -1
+      return compare[sort](a, b) * sign || byDeadline(a, b)
+    }
+    const s = [...items].sort(cmp)
+    list.append(...s.filter((i) => !isLater(i.state)).map((i) => i.el))
+    laterList.append(...s.filter((i) => isLater(i.state)).map((i) => i.el))
+    for (const th of document.querySelectorAll<HTMLElement>('th[data-col]')) {
+      if (th.dataset.col !== sort) {
+        th.removeAttribute('aria-sort')
+        continue
+      }
+      const nat = naturalDir[sort]
+      th.setAttribute('aria-sort', reversed ? (nat === 'ascending' ? 'descending' : 'ascending') : nat)
+    }
+    // Checked sorts from a second button in the Amount header, whose column has no aria-sort for it.
+    for (const b of document.querySelectorAll<HTMLElement>('[data-alt-for]')) {
+      const nat = naturalDir.checked
+      if (sort === 'checked') b.dataset.active = reversed ? (nat === 'ascending' ? 'descending' : 'ascending') : nat
+      else delete b.dataset.active
+    }
+    const lines: Record<SortKey, [string, string]> = {
+      deadline: ['Open calls first, soonest deadline first', 'Open calls first, latest deadline first'],
+      amount: ['Largest amount first', 'Smallest amount first'],
+      checked: ['Most recently checked first', 'Least recently checked first'],
+    }
+    sortLine.textContent = lines[sort][reversed ? 1 : 0]
+    sortSelect.value = sort
+  }
+
+  // ---------- Filters ----------
   function read(): Filters {
-    const fd = new FormData(form!)
-    const f = {
+    const fd = new FormData(form)
+    const applicant = askSelect('applicant').value
+    return {
       q: String(fd.get('q') ?? '').trim(),
-      within: String(fd.get('within') ?? ''),
-      where: String(fd.get('where') ?? ''),
-    } as Filters
-    for (const m of MULTI) f[m] = fd.getAll(m).map(String)
-    return f
+      within: askSelect('within').value,
+      where: whereSelect.value,
+      approach: [...approach],
+      applicant: applicant ? [applicant] : [],
+      status: fd.getAll('status').map(String),
+      access: fd.getAll('access').map(String),
+      size: fd.getAll('size').map(String),
+    }
   }
 
   function write(f: Filters) {
-    form!.querySelector<HTMLInputElement>('[name="q"]')!.value = f.q
+    form.querySelector<HTMLInputElement>('[name="q"]')!.value = f.q
     whereSelect.value = f.where
-    for (const input of form!.querySelectorAll<HTMLInputElement>('input[type="checkbox"]')) {
+    askSelect('within').value = f.within
+    askSelect('applicant').value = f.applicant[0] ?? ''
+    approach = f.approach
+    for (const input of form.querySelectorAll<HTMLInputElement>('input[type="checkbox"]')) {
       input.checked = (f[input.name as Multi] ?? []).includes(input.value)
     }
-    for (const input of form!.querySelectorAll<HTMLInputElement>('input[name="within"]')) {
-      input.checked = input.value === f.within
-    }
+    for (const s of askSelects) s.dispatchEvent(new Event('sync'))
   }
 
   function fromUrl(): Filters {
     const sp = new URLSearchParams(location.search)
     const f = { q: sp.get('q') ?? '', within: sp.get('within') ?? '', where: sp.get('where') ?? '' } as Filters
     for (const m of MULTI) f[m] = (sp.get(m) ?? '').split(',').filter(Boolean)
+    // Who can apply is one select, so an address can pick one.
+    f.applicant = f.applicant.filter((a) => [...askSelect('applicant').options].some((o) => o.value === a)).slice(0, 1)
     if (f.where && ![...whereSelect.options].some((o) => o.value === f.where)) f.where = ''
+    if (!['', '7', '30', '90'].includes(f.within)) f.within = ''
+    // Approach comes only from the type tabs, so an older address naming other approaches (one, or a mix)
+    // widens to the tab that holds them all, or drops them when no tab does.
+    const tab = cats.find((c) => c.dataset.cat && f.approach.every((a) => c.dataset.cat!.split(' ').includes(a)))
+    f.approach = f.approach.length && tab ? tab.dataset.cat!.split(' ') : []
+    const s = (sp.get('sort') ?? '').replace(/^-/, '')
+    if (s === 'amount' || s === 'checked' || s === 'deadline') {
+      sort = s
+      reversed = (sp.get('sort') ?? '').startsWith('-')
+    }
+    showLater = sp.get('later') === '1'
     return f
   }
 
@@ -164,6 +232,8 @@ export function initFinder() {
     for (const m of MULTI) if (f[m].length) sp.set(m, f[m].join(','))
     if (f.within) sp.set('within', f.within)
     if (f.where) sp.set('where', f.where)
+    if (sort !== 'deadline' || reversed) sp.set('sort', `${reversed ? '-' : ''}${sort}`)
+    if (showLater) sp.set('later', '1')
     const qs = sp.toString().replaceAll('%2C', ',')
     history.replaceState(null, '', qs ? `?${qs}` : location.pathname)
   }
@@ -179,13 +249,13 @@ export function initFinder() {
     return i.where.includes(where) || (!!region && i.where.includes(`R:${region}`))
   }
 
-  function matches(i: Item, f: Filters, skip?: Multi) {
+  function matches(i: Item, f: Filters, skip?: Multi | 'within') {
     if (f.q && !f.q.toLowerCase().split(/\s+/).every((w) => i.text.includes(w))) return false
     for (const m of MULTI) {
       if (m === skip || !f[m].length) continue
       if (!f[m].some((v) => i.sets[m].includes(v))) return false
     }
-    if (f.within) {
+    if (f.within && skip !== 'within') {
       if (!i.deadline || !(i.state === 'open' || i.state === 'upcoming')) return false
       const left = days(today, i.deadline)
       if (left < 0 || left > Number(f.within)) return false
@@ -193,95 +263,215 @@ export function initFinder() {
     return whereMatches(i, f.where)
   }
 
-  function labelFor(name: string, value: string) {
-    if (name === 'where') return whereSelect.selectedOptions[0]?.textContent ?? value
-    if (name === 'q') return `“${value}”`
-    const input = form!.querySelector<HTMLInputElement>(`input[name="${name}"][value="${CSS.escape(value)}"]`)
-    return input?.closest('label')?.querySelector('.check__text')?.textContent?.trim() ?? value
+  // The Filters button counts the sidebar's filters; "Clear all filters" shows once any filter is on.
+  function counts(f: Filters) {
+    const sideN = f.status.length + f.access.length + f.size.length
+    badge.hidden = sideN === 0
+    badge.textContent = String(sideN)
+    const any = !!(f.q || f.within || f.where || MULTI.some((m) => f[m].length))
+    for (const c of clearEls) c.hidden = !any
+    for (const g of form.querySelectorAll<HTMLElement>('[data-gcount]')) {
+      const n = f[g.dataset.gcount as Multi].length
+      g.hidden = n === 0
+      g.textContent = String(n)
+    }
   }
 
-  function chips(f: Filters) {
-    const active: [string, string][] = []
-    if (f.q) active.push(['q', f.q])
-    for (const m of MULTI) for (const v of f[m]) active.push([m, v])
-    if (f.within) active.push(['within', f.within])
-    if (f.where) active.push(['where', f.where])
-    chipsEl.replaceChildren(
-      ...active.map(([name, value]) => {
-        const b = document.createElement('button')
-        b.type = 'button'
-        b.className = 'chip'
-        b.dataset.name = name
-        b.dataset.value = value
-        b.setAttribute('aria-label', `Remove filter: ${labelFor(name, value)}`)
-        b.innerHTML = `<span></span><span class="chip__x" aria-hidden="true"><svg width="10" height="10" viewBox="0 0 10 10"><path d="M1 1l8 8M9 1L1 9" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></span>`
-        b.firstElementChild!.textContent = labelFor(name, value)
-        return b
-      }),
-    )
-    if (active.length > 1) {
-      const clear = document.createElement('button')
-      clear.type = 'button'
-      clear.className = 'chip chip--clear'
-      clear.dataset.reset = ''
-      clear.textContent = 'Clear all'
-      chipsEl.append(clear)
-    }
-    chipsEl.hidden = active.length === 0
-    // The badge sits on Filters, so it leaves out the search box above it.
-    const filters = active.filter(([name]) => name !== 'q').length
-    badge.hidden = filters === 0
-    badge.textContent = String(filters)
+  function setQuick(key: string, n: number, one: string, many: string) {
+    const b = document.querySelector<HTMLElement>(`[data-qn="${key}"]`)
+    if (b) b.textContent = String(n)
+    const l = document.querySelector<HTMLElement>(`[data-ql="${key}"]`)
+    if (l) l.textContent = plural(n, one, many)
   }
 
   function apply() {
     const f = read()
-    let shown = 0
+    let shownNow = 0
     let shownLater = 0
+    // Asked-for not-open rows ignore a status filter that names only open states ("Open now" plus "Show not open").
+    const laterSkip = showLater && !f.status.some(isLater) ? 'status' : undefined
     for (const i of items) {
-      const ok = matches(i, f)
+      const ok = isLater(i.state) ? matches(i, f, laterSkip) : matches(i, f)
       i.el.hidden = !ok
-      if (ok) shown++
-      if (ok && isLater(i.state)) shownLater++
+      if (!ok) continue
+      if (isLater(i.state)) shownLater++
+      else shownNow++
     }
-    laterCount.textContent = String(shownLater)
-    later.hidden = shownLater === 0
-    if (shownLater > 0 && (shown === shownLater || f.status.some(isLater))) later.open = true
-    for (const n of form!.querySelectorAll<HTMLElement>('[data-n]')) {
+    // Not-open rows show when asked for, when the status filter names them, or when they are all that matches.
+    const forced = f.status.some(isLater) || (shownNow === 0 && shownLater > 0)
+    const laterOn = showLater || forced
+    laterHead.hidden = !laterOn || shownLater === 0
+    laterList.hidden = !laterOn
+    const shown = shownNow + (laterOn ? shownLater : 0)
+
+    // The summary sentence counts what the other filters leave, so each part says what a click gives.
+    const base = items.filter((i) => matches(i, f, 'status'))
+    const byState = (s: string) => base.filter((i) => i.state === s).length
+    const laterN = items.filter((i) => isLater(i.state) && matches(i, f, 'status')).length
+    setQuick('open', byState('open'), 'Open now', 'Open now')
+    setQuick('rolling', byState('rolling'), '', '')
+    setQuick('upcoming', byState('upcoming'), '', '')
+    setQuick('later', laterN, '', '')
+    endfold.hidden = laterOn || laterN === 0
+    for (const q of document.querySelectorAll<HTMLButtonElement>('[data-quick]')) {
+      const on = f.status.includes(q.dataset.quick!.split(':')[1]!)
+      q.setAttribute('aria-pressed', String(on))
+      q.disabled = !on && q.querySelector('b')?.textContent === '0'
+    }
+
+    for (const n of form.querySelectorAll<HTMLElement>('[data-n]')) {
       const [group, value] = n.dataset.n!.split(':') as [Multi, string]
       const count = items.filter((i) => i.sets[group].includes(value) && matches(i, f, group)).length
       n.textContent = String(count)
       const input = n.closest('label')?.querySelector('input')
       if (input) input.disabled = count === 0 && !input.checked
     }
-    countEl.textContent =
-      shown === items.length
-        ? `${items.length} programmes`
-        : `${shown} of ${items.length} programme${items.length === 1 ? '' : 's'}`
+    const appr = [...f.approach].sort().join(' ')
+    for (const c of cats) c.setAttribute('aria-current', String(c.dataset.cat === appr))
+
+    for (const s of shownEls) s.textContent = `${shown} of ${items.length} shown`
+    live.textContent = `${shown} ${plural(shown, 'programme', 'programmes')} shown`
+    // Nothing to show: no header, no end card, just the message where the rows would be.
     emptyEl.hidden = shown > 0
-    done.textContent = shown === 1 ? 'Show 1 result' : `Show ${shown} results`
-    chips(f)
+    tableWrap.hidden = shown === 0
+    if (shown === 0) endfold.hidden = true
+    // laterN counts not-open rows the other filters match, which the status filter may be hiding.
+    emptyHead.textContent = laterN === 0 ? 'Nothing matches.' : 'Nothing open matches.'
+    if (shown === 0) {
+      emptyText.innerHTML =
+        laterN > 0
+          ? `${laterN} not open now ${plural(laterN, 'matches', 'match')}${f.status.length ? ' your other filters' : ''}. <button type="button" class="linkish" data-later-show>Show ${plural(laterN, 'it', 'them')}</button>, or <button type="button" class="linkish" data-reset>clear all filters</button>.`
+          : `Try another search, remove a filter, or <button type="button" class="linkish" data-reset>clear all</button>.`
+    }
+    done.textContent = `Show ${shown} ${plural(shown, 'result', 'results')}`
+    counts(f)
     toUrl(f)
   }
 
   function reset() {
-    form!.reset()
+    write({ q: '', within: '', where: '', status: [], approach: [], applicant: [], access: [], size: [] })
     apply()
   }
 
-  write(fromUrl())
+  // ---------- Filter sheet (phones and tablets) ----------
+  const narrow = matchMedia('(max-width: 67.99rem)')
+  const focusables = () =>
+    [...sheet.querySelectorAll<HTMLElement>('button, input, select, [tabindex]')].filter(
+      (e) => !(e as HTMLInputElement).disabled && e.offsetParent !== null,
+    )
+  function openSheet() {
+    sheet.dataset.open = ''
+    sheet.setAttribute('role', 'dialog')
+    sheet.setAttribute('aria-modal', 'true')
+    backdrop.hidden = false
+    opener.setAttribute('aria-expanded', 'true')
+    document.documentElement.style.overflow = 'hidden'
+    sheet.querySelector<HTMLElement>('[data-sheet-close]')?.focus()
+  }
+  function closeSheet(scroll = false) {
+    if (!('open' in sheet.dataset)) return
+    delete sheet.dataset.open
+    sheet.removeAttribute('role')
+    sheet.removeAttribute('aria-modal')
+    backdrop.hidden = true
+    opener.setAttribute('aria-expanded', 'false')
+    document.documentElement.style.overflow = ''
+    if (scroll) document.querySelector('.results')?.scrollIntoView({ block: 'start' })
+    opener.focus({ preventScroll: scroll })
+  }
+  opener.addEventListener('click', openSheet)
+  backdrop.addEventListener('click', () => closeSheet())
+  sheet.querySelector('[data-sheet-close]')!.addEventListener('click', () => closeSheet())
+  done.addEventListener('click', () => closeSheet(true))
+  narrow.addEventListener('change', () => closeSheet())
+  sheet.addEventListener('keydown', (e) => {
+    if (!('open' in sheet.dataset)) return
+    if (e.key === 'Escape') {
+      e.preventDefault()
+      closeSheet()
+    }
+    if (e.key === 'Tab') {
+      const f = focusables()
+      const first = f[0]
+      const last = f.at(-1)
+      if (e.shiftKey && document.activeElement === first) {
+        e.preventDefault()
+        last?.focus()
+      } else if (!e.shiftKey && document.activeElement === last) {
+        e.preventDefault()
+        first?.focus()
+      }
+    }
+  })
+
+  // ---------- Wiring ----------
+  const f0 = fromUrl()
+  write(f0)
+  applySort()
   apply()
+
   form.addEventListener('input', apply)
   form.addEventListener('submit', (e) => e.preventDefault())
-  document.addEventListener('click', (e) => {
-    const t = (e.target as HTMLElement).closest<HTMLElement>('[data-reset], .chip')
-    if (!t) return
-    if ('reset' in t.dataset) return reset()
-    const { name, value } = t.dataset
-    const f = read()
-    if (name === 'q' || name === 'within' || name === 'where') f[name] = ''
-    else if (name) f[name as Multi] = f[name as Multi].filter((v) => v !== value)
-    write(f)
+  ask.addEventListener('change', apply)
+  ask.addEventListener('submit', (e) => {
+    e.preventDefault()
+    document.querySelector('.results')?.scrollIntoView({ block: 'start', behavior: 'smooth' })
+  })
+
+  for (const b of document.querySelectorAll<HTMLButtonElement>('[data-sort]')) {
+    b.addEventListener('click', () => {
+      const k = b.dataset.sort as SortKey
+      if (k === sort) reversed = !reversed
+      else {
+        sort = k
+        reversed = false
+      }
+      applySort()
+      apply()
+    })
+  }
+  sortSelect.addEventListener('change', () => {
+    sort = sortSelect.value as SortKey
+    reversed = false
+    applySort()
     apply()
+  })
+
+  document.addEventListener('click', (e) => {
+    const t = e.target as HTMLElement
+    const cat = t.closest<HTMLElement>('[data-cat]')
+    if (cat && !((e as MouseEvent).metaKey || (e as MouseEvent).ctrlKey || (e as MouseEvent).shiftKey)) {
+      e.preventDefault()
+      approach = cat.dataset.cat ? cat.dataset.cat.split(' ') : []
+      apply()
+      return
+    }
+    const quick = t.closest<HTMLButtonElement>('[data-quick]')
+    if (quick) {
+      const value = quick.dataset.quick!.split(':')[1]!
+      const f = read()
+      f.status = f.status.includes(value) ? f.status.filter((v) => v !== value) : [...f.status, value]
+      write(f)
+      apply()
+      return
+    }
+    if (t.closest('[data-later-toggle]')) {
+      showLater = !showLater
+      apply()
+      if (showLater) laterHead.scrollIntoView({ block: 'start', behavior: 'smooth' })
+      return
+    }
+    if (t.closest('[data-later-hide]')) {
+      showLater = false
+      apply()
+      endfold.focus()
+      return
+    }
+    if (t.closest('[data-later-show]')) {
+      showLater = true
+      apply()
+      return
+    }
+    if (t.closest('[data-reset]')) reset()
   })
 }

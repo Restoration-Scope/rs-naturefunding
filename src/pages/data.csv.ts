@@ -3,9 +3,10 @@ import { programmes } from '../lib/data'
 import { absolute } from '../lib/site'
 
 const columns = [
-  'programme_id', 'programme', 'funder', 'administered_by', 'access', 'window', 'call_id', 'call', 'call_status',
-  'opens', 'deadline_date', 'deadline_text', 'amount_currency', 'amount_min', 'amount_max', 'amount_typical', 'geography',
-  'approaches', 'applicant_types', 'co_finance_required', 'call_url', 'programme_url', 'checked_at', 'listing_url',
+  'programme_id', 'programme', 'kind', 'funder', 'administered_by', 'access', 'window', 'call_id', 'call', 'call_status',
+  'opens', 'opens_expected', 'deadline_date', 'deadline_text', 'dates_each_year', 'call_note', 'amount_currency', 'amount_min',
+  'amount_max', 'amount_max_exclusive', 'amount_typical', 'amount_per', 'amount_note', 'geography', 'approaches',
+  'applicant_types', 'co_finance_required', 'call_url', 'programme_url', 'checked_at', 'listing_url',
 ] as const
 
 const cell = (v: unknown) => {
@@ -23,16 +24,19 @@ export const GET: APIRoute = () => {
           ? p.geography.regions.join(' ')
           : p.geography.countries.join(' ')
     const base = {
-      programme_id: p.id, programme: p.name, funder: p.funder.name, administered_by: p.administered_by?.name,
+      programme_id: p.id, programme: p.name, kind: p.kind ?? 'grant', funder: p.funder.name, administered_by: p.administered_by?.name,
       access: p.access, window: p.window, amount_currency: p.amount?.currency, amount_min: p.amount?.min,
-      amount_max: p.amount?.max, amount_typical: p.amount?.typical ? 'yes' : '', geography: geo, approaches: p.approaches.join(' '),
+      amount_max: p.amount?.max, amount_max_exclusive: p.amount?.max_exclusive ? 'yes' : '',
+      amount_typical: p.amount?.typical ? 'yes' : '', amount_per: p.amount?.per, amount_note: p.amount?.note,
+      geography: geo, approaches: p.approaches.join(' '),
       applicant_types: p.applicant_types?.join(' '), co_finance_required: p.co_finance_required,
       programme_url: p.url, checked_at: p.checked_at, listing_url: absolute(`/p/${p.id}/`),
     }
     if (!p.calls.length) return [base]
     return p.calls.map((c) => ({
-      ...base, call_id: c.id, call: c.label, call_status: c.status, opens: c.opens,
-      deadline_date: c.deadline?.date, deadline_text: c.deadline?.text, call_url: c.url,
+      ...base, call_id: c.id, call: c.label, call_status: c.status, opens: c.opens, opens_expected: c.expected,
+      deadline_date: c.deadline?.date, deadline_text: c.deadline?.text, dates_each_year: c.recurring, call_note: c.note,
+      call_url: c.url,
     }))
   })
   const body = [columns.join(','), ...rows.map((r) => columns.map((c) => cell((r as Record<string, unknown>)[c])).join(','))]

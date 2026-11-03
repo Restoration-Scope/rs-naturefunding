@@ -1,0 +1,125 @@
+---
+import type { Listing } from '../lib/data'
+import { AGING_DAYS, buildDate, daysBetween, listingFor, notRechecked, opensSortDate, programmes, sizeBucketsFor, whereCodes } from '../lib/data'
+import { amountText, geographyText, longDate, shortDate } from '../lib/format'
+import { approachLabels, recheckReasons, stateLabels } from '../lib/labels'
+import { compactAmount, usdValue } from '../lib/table'
+import { Badge } from '@/components/ui/badge'
+import { TableCell, TableRow } from '@/components/ui/table'
+import OrgMark from './OrgMark.astro'
+import Route from './Route.astro'
+
+interface Props {
+  listing: Listing
+}
+
+const { listing } = Astro.props
+const { p, state, call, aging } = listing
+const deadline = call?.deadline ?? null
+const amountFull = amountText(p.amount)
+// A range never breaks at its dash; the line may break before the currency code instead.
+const amount = compactAmount(p.amount)?.replace(/–/g, '–\u2060').replace(/\u00a0([A-Z]{3})/, ' $1') ?? null
+const usd = usdValue(p.amount)
+const where = geographyText(p.geography)
+const daysLeft = state === 'open' && deadline ? daysBetween(buildDate, deadline.date) : null
+// An umbrella that funds through partners: how many of its partner programmes are open now.
+const openPartners =
+  p.access === 'intermediary'
+    ? programmes.filter((c) => c.parent === p.id).filter((c) => ['open', 'rolling'].includes(listingFor(c).state)).length
+    : 0
+const funder = p.administered_by ? `${p.funder.name}, run by ${p.administered_by.name}` : p.funder.name
+const left = (n: number) => (n === 0 ? 'Closes today' : n === 1 ? '1 day left' : `${n} days left`)
+// The deadline cell, read at a glance: one line on when to apply, then the status and days left. The funder's
+// own words wait on the programme page and the date's tooltip, in every state that has them.
+const yearly = call?.recurring ?? null
+const quoted = (s?: string | null) => (s ? `As the funder wrote it: “${s}”` : undefined)
+// Without a deadline, what the funder's page says about opening or the call's status.
+const statusQuote = call ? (call.evidence.opens?.quote ?? call.evidence.status.quote) : null
+const when: { text: string; muted?: boolean; title?: string } =
+  state === 'open'
+    ? deadline
+      ? { text: shortDate(deadline.date), title: quoted(deadline.text) }
+      : yearly
+        ? { text: 'Yearly call', title: yearly }
+        : { text: 'Date not stated', muted: true, title: quoted(statusQuote) }
+    : state === 'rolling'
+      ? { text: 'Any time', title: quoted(statusQuote) }
+      : state === 'upcoming'
+        ? {
+            ...(call?.opens
+              ? { text: `Opens ${shortDate(call.opens)}` }
+              : call?.expected
+                ? { text: `Expected ${call.expected}` }
+                : deadline
+                  ? { text: `Closes ${shortDate(deadline.date)}` }
+                  : { text: 'Not dated yet', muted: true }),
+            title: deadline ? `Closes ${longDate(deadline.date)}. ${quoted(deadline.text)}` : quoted(statusQuote),
+          }
+        : state === 'closed'
+          ? { text: deadline ? shortDate(deadline.date) : 'Date not stated', muted: true, title: quoted(deadline?.text) }
+          : p.access === 'intermediary'
+            ? openPartners > 0
+              ? { text: `${openPartners} partner programme${openPartners === 1 ? '' : 's'} open` }
+              : { text: 'Varies by partner', muted: true }
+            : yearly
+              ? { text: 'Yearly call', muted: true, title: yearly }
+              : { text: 'No date', muted: true }
+const reason = notRechecked(p.id)
+const stampTitle = reason
+  ? `Last read on the funder’s page on ${longDate(p.checked_at)}. Our daily check can’t read it now: ${recheckReasons[reason]}.`
+  : `Checked against the funder’s page on ${longDate(p.checked_at)}${aging ? `. Over ${AGING_DAYS} days ago, due a recheck.` : ''}`
+const stampText = `${reason ? 'Last confirmed' : 'Checked'} ${shortDate(p.checked_at)}`
+const searchText = [p.name, p.funder.name, p.administered_by?.name, p.summary, where, p.approaches.map((a) => approachLabels[a]).join(' ')]
+  .filter(Boolean)
+  .join(' ')
+  .toLowerCase()
+---
+
+{/* Row internals are styled by class in src/styles/finder.css, which also reflows them at narrow widths. */}
+<TableRow
+  className="row"
+  data-state={state}
+  data-deadline={deadline?.date}
+  data-opens={opensSortDate(call)}
+  data-checked={p.checked_at}
+  data-usd={usd ?? undefined}
+  data-name={p.name.toLowerCase()}
+  data-approach={p.approaches.join(' ')}
+  data-applicant={p.applicant_types?.join(' ') ?? ''}
+  data-access={p.access}
+  data-where={whereCodes(p)}
+  data-size={sizeBucketsFor(p).join(' ')}
+  data-text={searchText}
+>
+  <TableCell className="c-prog">
+    <a class="name" href={`/p/${p.id}/`}>{p.name}</a>
+    <span class="sub" title={funder}><OrgMark org={p.funder} size={16} class="sub__mark" />{funder}</span>
+    {/* Most programmes take direct applications, so only the other routes get a line (src/styles/finder.css). */}
+    <span class="sub__route"><Route access={p.access} /></span>
+    {p.kind === 'partnership' && <span class="kind">Paid partnership, not a grant</span>}
+  </TableCell>
+
+  <TableCell className="c-dl">
+    <span class="dl">
+      <span class:list={['dl__when', when.muted && 'dl__when--muted']} title={when.title}>{when.text}</span>
+      <span class="dl__meta">
+        <Badge variant="status" state={state}>{stateLabels[state]}</Badge>
+        {
+          daysLeft !== null && (
+            <span class="dl__left" data-left data-soon={daysLeft <= 7 ? '' : undefined}>
+              {left(daysLeft)}
+            </span>
+          )
+        }
+      </span>
+    </span>
+  </TableCell>
+
+  <TableCell className="c-amount" title={amountFull ?? 'The funder’s page does not state an amount'}>
+    {amount ? <span class="amt">{amount}</span> : <span class="amt amt--none">Amount not stated</span>}
+    {amount && p.amount?.note && <span class="amt__note">{p.amount.note}</span>}
+    <Badge variant="tag" className="stamp" data-aging={aging || reason ? '' : undefined} title={stampTitle}>
+      {stampText}
+    </Badge>
+  </TableCell>
+</TableRow>

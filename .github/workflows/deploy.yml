@@ -1,6 +1,8 @@
 name: Deploy
 
 # Builds the static site and uploads it as Cloudflare static assets (no Worker script).
+# The project's only CI: agents run the checks before they commit (AGENTS.md); this guards
+# the data (refresh commits land on main unreviewed) and the build, then publishes.
 # Needs CLOUDFLARE_API_TOKEN: Workers Scripts edit on the account in wrangler.jsonc.
 on:
   push:

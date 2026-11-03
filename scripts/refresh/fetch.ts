@@ -9,7 +9,7 @@ import { tmpdir } from 'node:os'
 import { join } from 'node:path'
 import { htmlToText, normalise } from '../data/page-text'
 
-export const USER_AGENT = 'Mozilla/5.0 (compatible; naturefunding-refresh/1.0; +https://github.com/Restoration-Scope/rs-naturefunding)'
+export const USER_AGENT = 'Mozilla/5.0 (compatible; naturefunding-refresh/1.0; +https://naturefunding.org/about/)'
 const ROBOTS_TOKEN = 'naturefunding-refresh'
 const TIMEOUT_MS = 30_000
 export const HOST_GAP_MS = 4_000

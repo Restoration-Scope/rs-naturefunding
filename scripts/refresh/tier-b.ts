@@ -7,7 +7,7 @@
 import type { z } from 'zod'
 import type { Call, Evidence, Programme, Source } from '../../src/data/schema'
 import {
-  access, applicantType, approach, call as callSchema, callStatus, programme as programmeSchema, region, window as windowSchema,
+  access, applicantType, approach, call as callSchema, callStatus, expectedProblem, programme as programmeSchema, region, window as windowSchema,
 } from '../../src/data/schema'
 import { comparable, quoteOnPage } from '../../src/data/text'
 import type { Llm } from './llm'
@@ -24,8 +24,11 @@ export type Review = { overall: 'approve' | 'reject' | 'unclear'; verdicts: { pa
 
 /** Caps on what the model returns, on top of the schema: a new quote, any other text, any list, the calls. */
 export const LIMITS = { quote: 400, text: 600, list: 250, calls: 20 }
-const CALL_KEYS = new Set(['id', 'label', 'url', 'status', 'opens', 'deadline', 'quotes'])
-const QUOTE_KEYS = new Set(['status', 'opens', 'deadline'])
+const CALL_KEYS = new Set(['id', 'label', 'url', 'status', 'opens', 'deadline', 'expected', 'recurring', 'note', 'quotes'])
+const QUOTE_KEYS = new Set(['status', 'opens', 'deadline', 'recurring'])
+/** Qualifiers a draft keeps from the current value when it leaves them out; null removes one. */
+const AMOUNT_QUALIFIERS = ['typical', 'max_exclusive', 'per', 'note']
+const CALL_QUALIFIERS = ['expected', 'recurring', 'note']
 
 /** JSON with sorted keys, so key order never counts as a difference. */
 function canon(v: unknown): string {
@@ -44,6 +47,16 @@ function oversize(v: unknown, at: string): string | null {
   if (Array.isArray(v)) return v.length > LIMITS.list ? `${at} has more than ${LIMITS.list} items` : v.reduce<string | null>((r, x, i) => r ?? oversize(x, `${at}[${i}]`), null)
   if (isRecord(v)) return Object.entries(v).reduce<string | null>((r, [k, x]) => r ?? oversize(x, `${at}.${k.slice(0, 40)}`), null)
   return null
+}
+
+/** The model's value with the qualifiers it left out taken from ours; a qualifier set to null is dropped. */
+function withKept(got: Record<string, unknown>, old: object | null | undefined, keys: string[]): Record<string, unknown> {
+  const v = { ...got }
+  for (const k of keys) {
+    if (!(k in got) && old && (old as Record<string, unknown>)[k] !== undefined) v[k] = (old as Record<string, unknown>)[k]
+    if (v[k] === null) delete v[k]
+  }
+  return v
 }
 
 /** The value as the schema reads it. Unknown keys are refused, not silently dropped. */
@@ -82,7 +95,10 @@ export function applyExtraction(original: Programme, source: Source, x: Extracti
     if (old && old.source_url !== source.url) continue
     const path = field
     const tooBig = oversize(got.value, 'value')
-    const value = tooBig ? { ok: false as const, why: tooBig } : fit(programmeSchema.shape[field] as z.ZodType<unknown>, got.value)
+    const raw = field === 'amount' && isRecord(got.value) ? withKept(got.value, p.amount, AMOUNT_QUALIFIERS) : got.value
+    // A kept "less than" means nothing once the draft gives no max.
+    if (isRecord(raw) && field === 'amount' && raw.max === undefined) delete raw.max_exclusive
+    const value = tooBig ? { ok: false as const, why: tooBig } : fit(programmeSchema.shape[field] as z.ZodType<unknown>, raw)
     if (!value.ok) {
       changes.push({ path, kind: 'rejected', old: p[field], new: '(not shown)', quote: short(got.quote), why: tooBig ?? `value ${value.why}` })
       continue
@@ -122,25 +138,31 @@ export function applyExtraction(original: Programme, source: Source, x: Extracti
       changes.push({ path, kind: 'rejected', old: existing ?? null, new: '(not shown)', quote: '', why })
       continue
     }
-    const needed = [quotes.status, c.deadline ? quotes.deadline : null, c.opens ? quotes.opens : null].filter((q) => q !== null)
+    const needed = [quotes.status, c.deadline ? quotes.deadline : null, c.opens ? quotes.opens : null, c.recurring ? quotes.recurring : null].filter((q) => q !== null)
     const missing = needed.filter((q) => !onPage(q))
+    // Qualifiers the draft leaves out stay.
+    const q = withKept(c, existing, CALL_QUALIFIERS)
     const candidate = {
       id: c.id, label: c.label, url: c.url, status: c.status, opens: c.opens ?? null, deadline: c.deadline ?? null,
+      ...Object.fromEntries(CALL_QUALIFIERS.filter((k) => q[k] !== undefined).map((k) => [k, q[k]])),
       evidence: {
         status: evidence(short(quotes.status)),
         ...(c.opens ? { opens: evidence(short(quotes.opens)) } : {}),
         ...(c.deadline ? { deadline: evidence(short(quotes.deadline)) } : {}),
+        ...(c.recurring ? { recurring: evidence(short(quotes.recurring)) } : q.recurring ? { recurring: existing?.evidence.recurring } : {}),
       },
     }
     const parsed = fit(callSchema, candidate)
-    const why = !parsed.ok ? `call ${parsed.why}` : missing.length ? quoteWhy(missing[0]) : null
+    // A kept expected opening goes once the call has a firm date, another status or no quote for its year.
+    if (parsed.ok && !('expected' in c) && expectedProblem(parsed.value)) delete parsed.value.expected
+    const why = !parsed.ok ? `call ${parsed.why}` : (expectedProblem(parsed.value) ?? (missing.length ? quoteWhy(missing[0]) : null))
     if (!parsed.ok || why) {
       changes.push({ path, kind: 'rejected', old: existing ?? null, new: '(not shown)', quote: missing.map(short).join(' | '), why: why! })
       continue
     }
     const next = parsed.value
-    const facts = (k: Call) => ({ status: k.status, opens: k.opens, deadline: k.deadline, label: k.label, url: k.url })
-    const quoteText = [next.evidence.status, next.evidence.deadline, next.evidence.opens].flatMap((e) => (e ? [e.quote] : [])).join(' | ')
+    const facts = (k: Call) => ({ status: k.status, opens: k.opens, deadline: k.deadline, expected: k.expected, recurring: k.recurring, note: k.note, label: k.label, url: k.url })
+    const quoteText = [next.evidence.status, next.evidence.deadline, next.evidence.opens, next.evidence.recurring].flatMap((e) => (e ? [e.quote] : [])).join(' | ')
     if (!existing) {
       p.calls.push(next)
       changes.push({ path, kind: 'added', old: null, new: facts(next), quote: quoteText })
@@ -181,7 +203,7 @@ Rules:
 - Dates are YYYY-MM-DD. The quote for an opening date or deadline must contain its year as the page writes it; if the page gives no year, leave the date out. A deadline is {"date","time"?: "HH:MM","timezone"?: as written or IANA,"text": the deadline as the funder wrote it}.
 Answer with one JSON object:
 {"fields": {"<field>": {"value": <value in the schema below>, "quote": "..."}},
- "calls": [{"id","label","url","status","opens","deadline","quotes": {"status": "...","opens": "...","deadline": "..."}}],
+ "calls": [{"id","label","url","status","opens","deadline","expected"?,"recurring"?,"note"?,"quotes": {"status": "...","opens": "...","deadline": "...","recurring"?: "..."}}],
  "notes": "anything a reviewer should know, e.g. facts the page now contradicts"}
 Fields and values:
 - administered_by: {"name","url"} of who runs the call for the funder
@@ -189,10 +211,14 @@ Fields and values:
 - geography: {"scope":"global"} | {"scope":"countries","countries":[ISO-2 codes],"label"?} | {"scope":"regions","regions":[${region.options.join(', ')}],"label"}
 - access: ${access.options.filter((o) => o !== 'unspecified').join(', ')}
 - window: ${windowSchema.options.filter((o) => o !== 'unspecified').join(', ')}
-- amount: {"currency": ISO 4217,"min"?: number,"max"?: number} per grant
+- amount: {"currency": ISO 4217,"min"?: number,"max"?: number,"typical"?: true when the page gives a usual range,"max_exclusive"?: true when it says "less than" the max,"per"?: "year" when the amount is per year,"note"?: a qualifier from the same quote, in our words} per grant
 - co_finance_required: true | false
 - reporting: what grantees must report, in plain words
 - call status: ${callStatus.options.join(', ')}
+- call expected: when an upcoming call with no firm opening date is expected to open, as the page says it ("June 2027", "mid-March 2027"); its status quote must state that year
+- call recurring: dates the page gives without a year that repeat each year, in our words, with quotes.recurring
+- call note: a condition the page puts on the call, in our words ("Subject to funding approval")
+Qualifiers (amount typical, max_exclusive, per, note; call expected, recurring, note): leave one out to keep the current value, set it to null to remove it.
 (Approaches, for context only: ${approach.options.join(', ')}.)`
 
 const REVIEW_SYSTEM = `You check a draft of facts about a grant programme against the funder's page text. Another model wrote the draft; be strict.
@@ -206,7 +232,9 @@ function current(p: Programme, source: Source) {
     facts_citing_this_page: Object.fromEntries(
       FIELDS.filter((f) => p.evidence[f]?.source_url === source.url).map((f) => [f, { value: p[f], quote: p.evidence[f]!.quote }]),
     ),
-    calls: p.calls.map((c) => ({ id: c.id, label: c.label, url: c.url, status: c.status, opens: c.opens, deadline: c.deadline })),
+    calls: p.calls.map((c) => ({
+      id: c.id, label: c.label, url: c.url, status: c.status, opens: c.opens, deadline: c.deadline, expected: c.expected, recurring: c.recurring, note: c.note,
+    })),
   }
 }
 

@@ -1,0 +1,66 @@
+---
+import Base from '../layouts/Base.astro'
+import { CONTACT_EMAIL, RS_URL, absolute } from '../lib/site'
+
+const description =
+  'What naturefunding.org and its weekly email receive, and what they keep: no accounts, cookies, analytics or stored searches; for the email, only the address and the choices you make.'
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'WebPage',
+  name: 'Privacy',
+  url: absolute('/privacy/'),
+  description,
+  publisher: { '@type': 'Organization', name: 'Restoration Scope', url: 'https://restorationscope.com' },
+}
+
+const prose = [
+  '[&>p]:max-w-[66ch] [&>p+p]:mt-[0.85rem] [&>p+ul]:mt-[0.85rem] [&>ul+p]:mt-[0.85rem]',
+  '[&>ul]:mt-[0.6rem] [&>ul]:mb-0 [&>ul]:max-w-[66ch] [&>ul]:pl-[1.2rem] [&>ul>li+li]:mt-[0.4rem] [&_li]:marker:text-ink-2',
+  '[&>h2]:mt-11 [&>h2]:mb-[0.6rem] [&>h2]:scroll-mt-4 [&>h2]:text-3xl [&>h2]:font-extrabold [&_li]:text-pretty',
+]
+---
+
+<Base title="Privacy" description={description} path="/privacy/" jsonLd={jsonLd}>
+  <div slot="band" class="wrap pt-7 pb-9">
+    <h1 class="text-[clamp(1.75rem,1.2rem+2.2vw,2.75rem)] font-extrabold tracking-[-0.02em]">Privacy</h1>
+    <p class="mt-[0.9rem] max-w-[60ch] text-xl text-shell-ink-2">
+      naturefunding.org asks who you are only if you sign up for the weekly email. There are no accounts, cookies, ads
+      or analytics, and we don’t keep what you search for.
+    </p>
+  </div>
+
+  <article class:list={['wrap mr-auto ml-0 max-w-[calc(44rem+2*var(--gutter))]', prose]}>
+    <h2 id="website">The website</h2>
+    <ul>
+      <li>The site sets no cookies and runs no tracking or analytics scripts.</li>
+      <li>
+        Cloudflare hosts the site. To deliver pages and block abuse it handles each request, including your IP address
+        and browser, under <a href="https://www.cloudflare.com/privacypolicy/">Cloudflare’s privacy policy</a>.
+      </li>
+      <li>The <strong>Report a problem</strong> and <strong>Correct this listing</strong> links open an email to us.</li>
+    </ul>
+
+    <h2 id="weekly-email">The weekly email</h2>
+    <ul>
+      <li>
+        Nothing about you is stored until you press <strong>Confirm</strong> on the page the confirmation email links
+        to. After that we keep your email address, the country and type of project you chose, when you confirmed, and
+        when we last sent you an email.
+      </li>
+      <li>We use them only for this email. We don’t share them, and the emails have no open or click tracking.</li>
+      <li>Resend sends the emails and Cloudflare stores the list, both on our behalf.</li>
+      <li>Every email has an unsubscribe link, and one-click unsubscribe works in mail apps. Unsubscribing deletes your row.</li>
+      <li>
+        To limit sign-ups, a keyed hash of each address that signs up is kept for 2 days. It can’t be turned back into
+        the address.
+      </li>
+    </ul>
+
+    <h2 id="contact">Who to contact</h2>
+    <p>
+      naturefunding.org is run by <a href={RS_URL}>Restoration Scope</a>. For a privacy question, email{' '}
+      <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>.
+    </p>
+  </article>
+</Base>

@@ -4,7 +4,13 @@ import Base from '../../layouts/Base.astro'
 import CheckedTag from '../../components/CheckedTag.astro'
 import Fact from '../../components/Fact.astro'
 import Listing from '../../components/Listing.astro'
-import { HIDDEN_DAYS, buildDate, daysBetween, listingFor, programmeById, programmes, sharedSource, sortListings } from '../../lib/data'
+import OrgMark from '../../components/OrgMark.astro'
+import Route from '../../components/Route.astro'
+import { callFactId, callId, factIds, grantJsonLd } from '../../lib/agent'
+import { Badge } from '@/components/ui/badge'
+import { Button } from '@/components/ui/button'
+import { cardClasses } from '@/components/ui/card'
+import { HIDDEN_DAYS, buildDate, daysBetween, listingFor, notRechecked, notRecheckedPage, programmeById, programmes, sortListings } from '../../lib/data'
 import type { Programme } from '../../data/schema'
 import { amountText, geographyFull, joinAnd, longDate, pageLabel } from '../../lib/format'
 import {
@@ -14,7 +20,8 @@ import {
   approachLabels,
   stateLabels,
 } from '../../lib/labels'
-import { RS_REPORTING_URL, absolute, funderCorrectionUrl, reportProblemUrl } from '../../lib/site'
+import { ArrowLeft } from 'lucide-react'
+import { CONTACT_EMAIL, RS_REPORTING_URL, absolute, funderCorrectionUrl, reportProblemUrl } from '../../lib/site'
 
 export const getStaticPaths = (() => programmes.map((p) => ({ params: { id: p.id }, props: { p } }))) satisfies GetStaticPaths
 
@@ -25,6 +32,12 @@ const { state, call } = listing
 const parent = p.parent ? programmeById.get(p.parent) : undefined
 const children = programmes.filter((c) => c.parent === p.id)
 const childListings = children.map((c) => listingFor(c)).sort(sortListings)
+// "Forest Action Facility" from "Forest Action Facility (established by IUCN and KfW)": show only what the name doesn't say.
+const funderQualifier = p.funder.name.startsWith(p.name)
+  ? p.funder.name.slice(p.name.length).trim().replace(/^\((.*)\)$/, '$1').replace(/^./, (ch) => ch.toUpperCase())
+  : null
+// An umbrella's own page often leaves these to its partner programmes.
+const byPartner = childListings.length > 0 ? 'Set by each partner programme' : undefined
 const openChildren = childListings.filter((l) => l.state === 'open' || l.state === 'rolling')
 // Partners with no call open now fold away below the live ones, as on the finder.
 const partnersNow = childListings.filter((l) => l.state !== 'none' && l.state !== 'closed')
@@ -33,20 +46,9 @@ const partnersShown = partnersNow.length > 0 ? partnersNow : childListings
 const noCallRoute = p.access === 'intermediary' || p.access === 'invitation_only'
 const amount = amountText(p.amount)
 const yesNo = (b: boolean | null) => (b === null ? null : b ? 'Yes' : 'No')
-const factsShared = sharedSource([
-  p.evidence.access,
-  p.evidence.amount,
-  p.evidence.geography,
-  p.evidence.applicant_types,
-  p.evidence.window,
-  p.evidence.co_finance_required,
-  p.evidence.administered_by,
-])
-const callShared = (c: Programme['calls'][number]) =>
-  sharedSource([c.evidence.status, c.evidence.opens, c.evidence.deadline])
 // The tag in the apply box dates the fact the box states: the call, or how to apply.
 const applyEvidence =
-  (call && (call.evidence.deadline ?? call.evidence.status)) ?? p.evidence.access ?? null
+  (call && (call.evidence.deadline ?? call.evidence.recurring ?? call.evidence.status)) ?? p.evidence.access ?? null
 /** "America/Guayaquil" → "Ecuador Time", as the browser names it; the raw zone when it has no name. */
 const zoneName = (tz: string, date: string) => {
   try {
@@ -62,16 +64,32 @@ const deadlineText = (d: NonNullable<Programme['calls'][number]['deadline']>) =>
   `${longDate(d.date)}${d.time ? `, ${d.time}${d.timezone ? ` ${zoneName(d.timezone, d.date)}` : ''}` : ''}`
 const primary: { href: string; text: string; quiet?: boolean } =
   call && (state === 'open' || state === 'rolling' || state === 'upcoming')
-    ? { href: call.url, text: 'Go to the call' }
-    : openChildren.length === 1
-      ? { href: `/p/${openChildren[0]!.p.id}/`, text: 'See the open call' }
+    ? { href: call.url, text: 'Go to the funder’s call page' }
+    : call?.recurring && state === 'none'
+      ? { href: call.url, text: 'Check the call page' }
+      : openChildren.length === 1
+      ? { href: `/p/${openChildren[0]!.p.id}/`, text: 'See the open partner programme' }
       : openChildren.length > 1
-        ? { href: '#partners-title', text: `See the ${openChildren.length} open calls` }
+        ? { href: '#partners-title', text: `See the ${openChildren.length} open partner programmes` }
         : p.access === 'intermediary' && children.length > 0
           ? { href: '#partners-title', text: `See the ${children.length} partner programmes` }
           : p.access === 'intermediary'
             ? { href: p.evidence.access?.source_url ?? p.url, text: 'Find a partner on the funder’s site' }
             : { href: p.url, text: 'Read the funder’s page', quiet: true }
+/** The one date a folded call shows next to its name. */
+const callWhen = (c: Programme['calls'][number]) =>
+  c.status === 'upcoming'
+    ? c.opens
+      ? `Opens ${longDate(c.opens)}`
+      : c.expected
+        ? `Expected ${c.expected}`
+        : 'Opening date not announced yet'
+    : c.deadline
+      ? `${c.status === 'closed' || c.deadline.date < buildDate ? 'Closed' : 'Closes'} ${longDate(c.deadline.date)}`
+      : c.status === 'open'
+        ? 'No deadline stated'
+        : null
+const bandMark = 'mr-1.5 -mt-0.5 box-content rounded-[5px] bg-white p-0.5'
 const callStatusLabel: Record<string, string> = {
   open: 'Open',
   upcoming: 'Upcoming',
@@ -79,6 +97,19 @@ const callStatusLabel: Record<string, string> = {
   suspended: 'Suspended',
   unknown: 'Not clear from the page',
 }
+// The call that sets the page's status comes first and open; the others fold.
+// The rest follow by deadline, soonest first; undated calls last.
+const byCallDeadline = (a: Programme['calls'][number], b: Programme['calls'][number]) =>
+  (a.deadline?.date ?? '9999').localeCompare(b.deadline?.date ?? '9999')
+const callsOrdered = call ? [call, ...p.calls.filter((c) => c !== call).sort(byCallDeadline)] : [...p.calls].sort(byCallDeadline)
+// A rolling programme's open call reads as the finder says it: Rolling.
+const rollingCall = (c: Programme['calls'][number]) => p.window === 'rolling' && c.status === 'open'
+const callStatusText = (c: Programme['calls'][number]) =>
+  rollingCall(c)
+    ? 'Rolling: apply any time'
+    : c.status === 'unknown' && c.recurring
+      ? 'Windows each year; the page doesn’t say if one is open now'
+      : callStatusLabel[c.status]
 
 const description = `${p.name} from ${p.funder.name}: ${
   state === 'open' && call?.deadline
@@ -88,28 +119,17 @@ const description = `${p.name} from ${p.funder.name}: ${
       : noCallRoute
         ? `${accessLabels[p.access].toLowerCase()}.`
         : `${stateLabels[state].toLowerCase()}.`
-} ${amount ? `${amount}. ` : ''}Every fact checked against the funder’s own page.`
+} ${amount ? `${amount}. ` : ''}Each fact links to the funder’s own page.`
+
+const grantLd = grantJsonLd(listing)
+const sectionTitle = 'mt-12 mb-3 text-4xl'
+/** A line under a section title: where its quotes come from, or what it covers. */
+const sectionCheck = 'mb-3 text-sm text-ink-2'
+const factHelp = 'mt-1 text-md text-ink'
+const listingsList = 'm-0 list-none border-t border-rule p-0'
 
 const jsonLd = [
-  {
-    '@context': 'https://schema.org',
-    '@type': 'MonetaryGrant',
-    name: p.name,
-    description: p.summary,
-    url: p.url,
-    funder: { '@type': 'Organization', name: p.funder.name, url: p.funder.url },
-    ...(p.amount
-      ? {
-          amount: {
-            '@type': 'MonetaryAmount',
-            currency: p.amount.currency,
-            ...(p.amount.min !== undefined && { minValue: p.amount.min }),
-            ...(p.amount.max !== undefined && { maxValue: p.amount.max }),
-          },
-        }
-      : {}),
-    subjectOf: { '@type': 'WebPage', url: absolute(`/p/${p.id}/`), dateModified: p.checked_at },
-  },
+  ...grantLd,
   {
     '@context': 'https://schema.org',
     '@type': 'BreadcrumbList',
@@ -128,70 +148,105 @@ const jsonLd = [
   jsonLd={jsonLd}
   noindex={hidden}
 >
-  <div slot="band" class="wrap band">
-    <a class="band__back" href="/">← All funding</a>
-    <h1 class="band__title">{p.name}</h1>
-    <p class="band__funder">
-      From <a href={p.funder.url}>{p.funder.name}</a>
-      {p.administered_by && <span>, run by <a href={p.administered_by.url}>{p.administered_by.name}</a></span>}
+  <div slot="band" class="wrap pt-4 pb-6 md:pt-5 md:pb-8 [&_a]:text-shell-ink">
+    <a class="group/back mb-4 inline-flex items-center gap-1.5 text-md text-shell-ink-2! pointer-coarse:-my-2.5 pointer-coarse:mb-1.5 pointer-coarse:py-2.5" href="/"><ArrowLeft className="size-4 shrink-0 transition-transform group-hover/back:-translate-x-0.5" aria-hidden="true" />All funding</a>
+    <h1 class="max-w-[30ch] text-[clamp(1.5rem,1.1rem+1.8vw,2.5rem)] leading-[1.12] tracking-[-0.01em]">{p.name}</h1>
+    {/* Phones: two lines at most, so the apply box starts higher; every name stays in the Run by fact. */}
+    <p class="mt-[0.6rem] text-lg text-shell-ink-2 max-md:line-clamp-2" title={p.administered_by ? `${p.funder.name}, run by ${p.administered_by.name}` : undefined}>
+      {/* Marks sit on a white tile: most favicons are drawn for a light page, not the green band. */}
+      {
+        funderQualifier !== null ? (
+          <><OrgMark org={p.funder} size={24} class={bandMark} /><a href={p.funder.url}>{funderQualifier || 'The funder’s website'}</a></>
+        ) : (
+          <>From <OrgMark org={p.funder} size={24} class={bandMark} /><a href={p.funder.url}>{p.funder.name}</a></>
+        )
+      }
+      {p.administered_by && <span>, run by <OrgMark org={p.administered_by} size={20} class={bandMark} /><a href={p.administered_by.url}>{p.administered_by.name}</a></span>}
     </p>
-    <p class="band__summary">{p.summary}</p>
-    <p class="band__note">Summary in our words. Everything below is quoted from the funder.</p>
+    {p.kind === 'partnership' && <p class="mt-4 font-bold">Paid partnership, not a grant: the funder pays for work under a contract.</p>}
+    <p class:list={['max-w-[62ch] text-lg max-md:text-base max-md:leading-[1.45]', p.kind === 'partnership' ? 'mt-[0.35rem]' : 'mt-4 max-md:mt-3']}>{p.summary}</p>
+    <p class="mt-2 text-sm text-shell-ink-2">Summary in our words. Each fact below shows the funder’s own words and links to its page.</p>
   </div>
 
-  <div class="wrap page">
+  {/* Wide screens: the apply box rides along in a right rail while the facts scroll. */}
+  <div class="wrap mr-auto ml-0 max-w-[calc(60rem+2*var(--gutter))] 2xl:mx-auto 2xl:grid 2xl:max-w-(--page) 2xl:grid-cols-[minmax(0,1fr)_20rem] 2xl:gap-x-12 2xl:*:col-start-1">
     {
       hidden && (
-        <p class="stale" role="note">
+        <p class="mt-8 rounded-lg bg-warn px-4 py-3 font-semibold text-warn-ink" role="note">
           We have not been able to check this listing for over {HIDDEN_DAYS} days, so it is hidden from the finder.
           Treat every fact below as out of date until the funder’s page confirms it.
         </p>
       )
     }
-    <section class="apply" aria-labelledby="apply-title">
-      <div class="apply__head">
-        <span class="tape" data-state={state}>{noCallRoute ? accessLabels[p.access] : stateLabels[state]}</span>
-        <h2 id="apply-title" class="apply__title">
-          {state === 'open' && call?.deadline && <>Apply by <span class="nowrap">{longDate(call.deadline.date)}</span></>}
-          {state === 'open' && call && !call.deadline && <>Open now</>}
-          {state === 'rolling' && <>Open. Apply any time</>}
-          {state === 'upcoming' && (call?.opens ? <>Opens <span class="nowrap">{longDate(call.opens)}</span></> : <>Opening soon</>)}
+    <section
+      class:list={[cardClasses, 'mt-6 px-5 pt-5 pb-[1.1rem] 2xl:sticky 2xl:top-6 2xl:col-start-2! 2xl:row-[1/span_12] 2xl:mt-12 2xl:self-start']}
+      aria-labelledby="apply-title"
+    >
+      <div class="flex flex-wrap items-center gap-x-[0.85rem] gap-y-2">
+        {/* Invitation-only funders and umbrellas never have a call of their own: the route is their status. */}
+        <span class="flex flex-wrap items-center gap-2">
+          {!(state === 'none' && noCallRoute) && <Badge variant="status" state={state}>{stateLabels[state]}</Badge>}
+          {noCallRoute && <Route access={p.access} />}
+        </span>
+        <h2 id="apply-title" class="text-3xl [text-wrap:pretty] 2xl:text-2xl">
+          {state === 'open' && call?.deadline && <>Apply by <span class="whitespace-nowrap">{longDate(call.deadline.date)}</span></>}
+          {state === 'open' && call && !call.deadline && (call.recurring ? <>Open, with deadlines each year</> : <>Open, no dated deadline</>)}
+          {state === 'rolling' && <>Apply any time</>}
+          {state === 'upcoming' &&
+            (call?.opens ? (
+              <>Opens <span class="whitespace-nowrap">{longDate(call.opens)}</span></>
+            ) : call?.expected ? (
+              <>Expected to open <span class="whitespace-nowrap">{call.expected}</span></>
+            ) : (
+              <>Not open yet</>
+            ))}
           {state === 'closed' && <>No call open right now</>}
           {state === 'none' && p.access === 'invitation_only' && <>This funder does not take applications</>}
-          {state === 'none' && p.access === 'intermediary' && <>Apply through a partner, not the funder</>}
-          {state === 'none' && !noCallRoute && <>No call listed</>}
+          {state === 'none' && p.access === 'intermediary' && openChildren.length === 0 && <>Apply through a partner, not the funder</>}
+          {state === 'none' && p.access === 'intermediary' && openChildren.length > 0 && (
+            <>{openChildren.length === 1 ? 'One partner programme is open now' : `${openChildren.length} partner programmes are open now`}</>
+          )}
+          {state === 'none' && !noCallRoute && (call?.recurring ? <>Windows each year</> : <>No call listed</>)}
         </h2>
       </div>
       {
         state === 'open' && call?.deadline && (
-          <dl class="apply__lines">
-            <div><dt>Days left</dt><dd class="mono apply__left">{daysBetween(buildDate, call.deadline.date)}</dd></div>
+          <dl class="mt-3 mb-0 grid gap-[0.35rem] text-md *:grid *:grid-cols-[max-content_minmax(0,1fr)] *:gap-3 [&_dd]:m-0 [&_dt]:text-ink-2">
+            <div><dt>Days left</dt><dd class="font-bold tabular-nums">{daysBetween(buildDate, call.deadline.date)}</dd></div>
             <div><dt>Call</dt><dd>{call.label}</dd></div>
-            <div><dt>Funder’s wording</dt><dd>“{call.deadline.text}”</dd></div>
           </dl>
         )
       }
-      <p class="apply__text">
-        {state === 'open' && call && !call.deadline && <>{call.label}. The funder’s page gives no dated deadline.</>}
-        {state === 'rolling' && call && <>{call.label}</>}
+      <p class="mt-2 text-ink-2 empty:hidden">
+        {state === 'open' && call && !call.deadline && !call.recurring && <>{call.label}. The funder’s page gives no dated deadline, so check that the window is still open before you apply.</>}
+        {state === 'open' && call?.recurring && !call.deadline && <>{call.recurring}, each year. The page gives no year, so check which date comes next before you apply.</>}
+        {state === 'rolling' && call && !/rolling/i.test(call.label) && <>{call.label}</>}
+        {state === 'upcoming' && (call?.evidence.opens ?? (call?.expected && call.evidence.status)) && (
+          <>The funder says: “{(call.evidence.opens ?? call.evidence.status)!.quote}”{' '}</>
+        )}
+        {state === 'none' && call?.recurring && <>{call.recurring}. The funder’s page doesn’t say whether one is open now.</>}
         {state === 'upcoming' && call?.deadline && <>Closes {longDate(call.deadline.date)}.</>}
+        {call?.note && (state === 'open' || state === 'upcoming') && <> {call.note}.</>}
         {state === 'closed' && call?.deadline && <>The last call we saw closed on {longDate(call.deadline.date)}.</>}
         {noCallRoute && accessHelp[p.access]}
+        {/* The list beside this card has the open call's date; here, just where to look. */}
         {
           openChildren.length === 1 && (
             <>
-              {' '}Open now: <strong>{openChildren[0]!.p.name}</strong>.
+              {' '}The open one is <strong>{openChildren[0]!.p.name}</strong>
+              {openChildren[0]!.call?.deadline ? <>, apply by <span class="whitespace-nowrap">{longDate(openChildren[0]!.call.deadline.date)}</span>.</> : <>.</>}
             </>
           )
         }
+        {openChildren.length > 1 && <> {openChildren.length} partner programmes are open now. They come first in the list below.</>}
       </p>
-      <div class="apply__actions">
-        <a class:list={['button', { 'button--quiet': primary.quiet }]} href={primary.href}>{primary.text}</a>
+      <div class="mt-4 flex flex-wrap items-center gap-x-5 gap-y-3">
+        <Button href={primary.href} variant={primary.quiet ? 'outline' : 'default'} width="phone" className="whitespace-normal text-center 2xl:w-full">{primary.text}</Button>
         {
           applyEvidence ? (
-            <CheckedTag checked={applyEvidence.checked_at} />
+            <CheckedTag checked={applyEvidence.checked_at} source={{ url: applyEvidence.source_url, label: pageLabel(applyEvidence.source_url) }} reason={notRecheckedPage(applyEvidence.source_url)} />
           ) : (
-            <CheckedTag checked={p.checked_at} />
+            <CheckedTag checked={p.checked_at} reason={notRechecked(p.id)} />
           )
         }
       </div>
@@ -199,19 +254,19 @@ const jsonLd = [
 
     {
       childListings.length > 0 && (
-        <section class="partners" aria-labelledby="partners-title">
-          <h2 id="partners-title" class="section-title">Partner programmes</h2>
-          <p class="section-check">You apply to one of these, each with its own calls and deadlines.</p>
-          <ol class="partners__list">
+        <section class="@container/listings" aria-labelledby="partners-title">
+          <h2 id="partners-title" class={sectionTitle}>Partner programmes</h2>
+          <p class={sectionCheck}>You apply to one of these, each with its own calls and deadlines.</p>
+          <ol class={listingsList}>
             {partnersShown.map((l) => <Listing listing={l} underParent />)}
           </ol>
           {partnersLater.length > 0 && (
-            <details class="partners__later">
-              <summary class="partners__toggle">
+            <details class="group/later mt-3">
+              <summary class="flex min-h-11 cursor-pointer list-none items-center gap-[0.6rem] border-b-2 border-ink py-2 text-lg font-bold before:size-2 before:flex-none before:border-r-2 before:border-b-2 before:border-current before:content-[''] before:[transform:rotate(-45deg)] group-open/later:before:[transform:translateY(-20%)_rotate(45deg)] [&::-webkit-details-marker]:hidden">
                 <span>Not open now</span>
-                <span class="partners__n mono">{partnersLater.length}</span>
+                <Badge className="ml-auto">{partnersLater.length}</Badge>
               </summary>
-              <ol class="partners__list">
+              <ol class={listingsList}>
                 {partnersLater.map((l) => <Listing listing={l} underParent />)}
               </ol>
             </details>
@@ -221,41 +276,45 @@ const jsonLd = [
     }
 
     <section aria-labelledby="facts-title">
-      <h2 id="facts-title" class="section-title">The facts, in the funder’s words</h2>
-      {
-        factsShared && (
-          <p class="section-check">
-            All quotes are from <a href={factsShared.url}>{pageLabel(factsShared.url)}</a> unless marked.{' '}
-            <CheckedTag checked={factsShared.checked} />
-          </p>
-        )
-      }
-      <dl class="facts">
-        <Fact label="How to apply" value={accessLabels[p.access]} evidence={p.evidence.access} missing="Not stated" shared={factsShared}>
-          {p.access === 'direct' && <p class="fact__help">{accessHelp[p.access]}</p>}
+      <h2 id="facts-title" class={sectionTitle}>The facts, in the funder’s words</h2>
+      {children.length > 0 && <p class={sectionCheck}>These cover {p.name} as a whole. Each partner programme above sets its own amounts and deadlines.</p>}
+      <dl class="m-0 border-b border-rule">
+        <Fact id={factIds.access} label="How to apply" value={accessLabels[p.access]} evidence={p.evidence.access} missing="Not stated">
+          {p.access === 'direct' && <p class={factHelp}>{accessHelp[p.access]}</p>}
         </Fact>
-        <Fact label="Amount" value={amount} evidence={p.evidence.amount} shared={factsShared} />
-        <Fact label="Where" value={geographyFull(p.geography)} evidence={p.evidence.geography} shared={factsShared} />
+        <Fact id={factIds.amount} label="Amount" value={amount} evidence={p.evidence.amount} missing={byPartner}>
+          {p.amount?.note && <p class={factHelp}>{p.amount.note}.</p>}
+        </Fact>
+        <Fact id={factIds.geography} label="Where" value={geographyFull(p.geography)} evidence={p.evidence.geography} />
         <Fact
+          id={factIds.applicant_types}
           label="Who can apply"
           value={p.applicant_types ? joinAnd(p.applicant_types.map((a) => applicantLabels[a])) : null}
           evidence={p.evidence.applicant_types}
-          shared={factsShared}
+         
+          missing={byPartner}
         />
         <Fact
+          id={factIds.window}
           label="Rounds"
           value={p.window === 'rolling' ? 'Rolling: apply any time' : p.window === 'fixed' ? 'Fixed rounds with deadlines' : null}
           evidence={p.evidence.window}
-          shared={factsShared}
+         
+          missing={byPartner}
         />
-        <Fact label="Co-funding required" value={yesNo(p.co_finance_required)} evidence={p.evidence.co_finance_required} shared={factsShared} />
+        <Fact id={factIds.co_finance_required} label="Co-funding required" value={yesNo(p.co_finance_required)} evidence={p.evidence.co_finance_required} missing={byPartner} />
         {
-          p.administered_by && (
-            <Fact label="Run by" value={p.administered_by.name} evidence={p.evidence.administered_by} shared={factsShared} />
+          p.consortium_required !== undefined && (
+            <Fact id={factIds.consortium_required} label="Consortium required" value={yesNo(p.consortium_required)} evidence={p.evidence.consortium_required} />
           )
         }
-        <Fact label="Restoration approach" value={joinAnd(p.approaches.map((a) => approachLabels[a]))} missing="">
-          <p class="fact__help">Our classification, from the funder’s description of what it supports.</p>
+        {
+          p.administered_by && (
+            <Fact id={factIds.administered_by} label="Run by" value={p.administered_by.name} evidence={p.evidence.administered_by} />
+          )
+        }
+        <Fact id={factIds.approaches} label="Restoration approach" value={joinAnd(p.approaches.map((a) => approachLabels[a]))} missing="">
+          <p class={factHelp}>Our classification, from the funder’s description of what it supports.</p>
         </Fact>
       </dl>
     </section>
@@ -263,38 +322,62 @@ const jsonLd = [
     {
       p.calls.length > 0 && (
         <section aria-labelledby="calls-title">
-          <h2 id="calls-title" class="section-title">
+          <h2 id="calls-title" class={sectionTitle}>
             {p.calls.length === 1 ? 'The call' : `Calls (${p.calls.length})`}
           </h2>
-          {p.calls.map((c) => (
-            <article class="call">
-              <div class="call__head">
-                <span class="tape" data-state={c.status === 'open' ? 'open' : c.status === 'upcoming' ? 'upcoming' : c.status === 'closed' ? 'closed' : 'none'}>
-                  {callStatusLabel[c.status]}
+          {callsOrdered.map((c) => (
+            // Each call folds in the same card; the one that sets the page's status starts open.
+            <details id={callId(c)} class:list={[cardClasses, 'group/call px-4 pt-3.5 pb-1 md:px-[1.1rem] [&+&]:mt-3']}
+              open={c === call || p.calls.length === 1}
+            >
+              <summary class="grid cursor-pointer list-none grid-cols-[minmax(0,1fr)_auto] items-start gap-x-3 gap-y-1 pb-3 after:col-start-2 after:row-start-1 after:mt-2 after:mr-[0.2rem] after:size-[0.55rem] after:border-r-2 after:border-b-2 after:border-ink-2 after:content-[''] after:[transform:rotate(45deg)_translateY(-0.15rem)] group-open/call:after:[transform:rotate(-135deg)_translateY(-0.1rem)] [&::-webkit-details-marker]:hidden">
+                {/* The call names are the funder's own long titles: body type, not headings. */}
+                <span class="flex flex-col items-start gap-1.5">
+                  <Badge variant="status" state={rollingCall(c) ? 'rolling' : c.status === 'open' ? 'open' : c.status === 'upcoming' ? 'upcoming' : c.status === 'closed' ? 'closed' : 'none'}>
+                    {rollingCall(c) ? 'Rolling' : callStatusLabel[c.status]}
+                  </Badge>
+                  <h3 class="font-sans text-lg leading-[1.35] font-semibold">{c.label}</h3>
                 </span>
-                <h3 class="call__title">{c.label}</h3>
-                <a class="call__link" href={c.url}>Call page</a>
-              </div>
-              {callShared(c) && (
-                <p class="section-check">
-                  Quotes from <a href={callShared(c)!.url}>{pageLabel(callShared(c)!.url)}</a>.{' '}
-                  <CheckedTag checked={callShared(c)!.checked} />
-                </p>
-              )}
-              <dl class="facts">
-                <Fact label="Status" value={callStatusLabel[c.status]} evidence={c.evidence.status} shared={callShared(c)} />
-                {(c.opens || c.evidence.opens) && (
-                  <Fact label="Opens" value={c.opens ? longDate(c.opens) : null} evidence={c.evidence.opens} shared={callShared(c)} />
+                {/* Only while folded: an open call shows its dates in full below. */}
+                {callWhen(c) && <span class="col-start-1 text-md text-ink-2 group-open/call:hidden">{callWhen(c)}</span>}
+              </summary>
+              <a class="mb-1 inline-block text-md pointer-coarse:-mt-2.5 pointer-coarse:py-2.5" href={c.url}>Call page</a>
+              <dl class="m-0">
+                <Fact id={callFactId(c, 'status')} label="Status" value={callStatusText(c)} evidence={c.evidence.status} />
+                {(c.opens || c.expected || c.evidence.opens) && (
+                  <Fact
+                    id={callFactId(c, 'opens')}
+                    label="Opens"
+                    value={c.opens ? longDate(c.opens) : c.expected ? `Expected ${c.expected}` : null}
+                    evidence={c.evidence.opens ?? (c.expected ? c.evidence.status : undefined)}
+                   
+                  />
                 )}
-                <Fact
-                  label="Deadline"
-                  value={c.deadline ? deadlineText(c.deadline) : null}
-                  evidence={c.evidence.deadline}
-                  shared={callShared(c)}
-                  missing={p.window === 'rolling' ? 'None: apply any time' : 'Not stated on the funder’s page'}
-                />
+                {c.recurring && !c.deadline ? (
+                  <Fact id={callFactId(c, 'recurring')} label="Dates each year" value={c.recurring} evidence={c.evidence.recurring} />
+                ) : (
+                  <Fact
+                    id={callFactId(c, 'deadline')}
+                    label="Deadline"
+                    value={c.deadline ? deadlineText(c.deadline) : null}
+                    evidence={c.evidence.deadline}
+                   
+                    missing={
+                      p.window === 'rolling'
+                        ? 'No deadline: apply any time'
+                        : /window|deadline|each year|until/i.test(c.label)
+                          ? 'No dated deadline: the dates in the call name repeat each year'
+                          : 'Not found on the call page'
+                    }
+                  />
+                )}
+                {c.recurring && c.deadline && (
+                  <Fact id={callFactId(c, 'recurring')} label="Dates each year" value={c.recurring} evidence={c.evidence.recurring} />
+                )}
               </dl>
-            </article>
+              {/* A condition on the call, in our words. */}
+              {c.note && <p class="mt-0 mb-[0.85rem] text-md text-ink-2">{c.note}.</p>}
+            </details>
           ))}
         </section>
       )
@@ -302,20 +385,21 @@ const jsonLd = [
 
     {
       !primary.quiet && (
-        <p class="again">
-          <a class="button" href={primary.href}>{primary.text}</a>
+        <p class="mt-8 flex flex-wrap items-center gap-x-4 gap-y-[0.6rem] border-t border-rule pt-5 2xl:hidden">
+          <span class="font-bold">{call && primary.href === call.url ? `Ready to apply to ${call.label}?` : 'Ready to apply?'}</span>
+          <Button href={primary.href} width="phone">{primary.text}</Button>
         </p>
       )
     }
 
     <section aria-labelledby="reporting-title">
-      <h2 id="reporting-title" class="section-title">What the funder asks grantees to report</h2>
-      <dl class="facts">
-        <Fact label="Reporting" value={p.reporting} evidence={p.evidence.reporting} />
+      <h2 id="reporting-title" class={sectionTitle}>What the funder asks grantees to report</h2>
+      <dl class="m-0 border-b border-rule">
+        <Fact id={factIds.reporting} label="Reporting" value={p.reporting} evidence={p.evidence.reporting} />
       </dl>
       {
         p.reporting && (
-          <p class="aside">
+          <p class="mt-4 text-sm text-ink-2">
             From the builders of this site: <a href={RS_REPORTING_URL}>Restoration Scope</a> makes software for
             reporting to funders like this one.
           </p>
@@ -326,7 +410,7 @@ const jsonLd = [
     {
       parent && (
         <section aria-labelledby="related-title">
-          <h2 id="related-title" class="section-title">
+          <h2 id="related-title" class={sectionTitle}>
             Part of a larger programme
           </h2>
           <p>
@@ -336,314 +420,17 @@ const jsonLd = [
       )
     }
 
-    <section class="fix" aria-labelledby="fix-title">
-      <h2 id="fix-title" class="section-title">Something wrong?</h2>
+    <section class="[&>p]:max-w-[62ch]" aria-labelledby="fix-title">
+      <h2 id="fix-title" class={sectionTitle}>Something wrong?</h2>
       <p>
-        We read every fact from the funder’s own pages, linked above. If a deadline, amount or rule has
+        Every fact above links to the page we read it from. If a deadline, amount or rule has
         changed, tell us and we will check it against the funder’s page.
       </p>
-      <div class="fix__actions">
-        <a class="button button--quiet" href={reportProblemUrl(p.name, p.id)}>Report a problem</a>
-        <a class="button button--quiet" href={funderCorrectionUrl(p.name, p.id)}>Are you this funder? Correct this listing</a>
+      <div class="mt-4 flex flex-wrap gap-3 max-md:flex-col">
+        <Button href={reportProblemUrl(p.name, p.id)} variant="outline" width="phone">Report a problem</Button>
+        <Button href={funderCorrectionUrl(p.name, p.id)} variant="outline" width="phone">Are you this funder? Correct this listing</Button>
       </div>
-      <p class="fix__note">Both open a pre-filled issue on GitHub (a free account is needed). Listings are never paid for.</p>
+      <p class="mt-[0.6rem] text-sm text-ink-2">Both open an email to {CONTACT_EMAIL} with this listing filled in. Listings can’t be bought.</p>
     </section>
   </div>
 </Base>
-
-<style>
-  .band {
-    padding-block: 1rem 1.5rem;
-  }
-  @media (min-width: 48rem) {
-    .band {
-      padding-block: 1.25rem 2rem;
-    }
-  }
-  .band a {
-    color: var(--shell-ink);
-  }
-  .band__back {
-    display: inline-block;
-    margin-bottom: 1rem;
-    font-size: 0.9375rem;
-    color: var(--shell-ink-2) !important;
-  }
-  .band__title {
-    max-width: 30ch;
-    font-size: clamp(1.5rem, 1.1rem + 1.8vw, 2.5rem);
-    font-weight: 800;
-    letter-spacing: -0.02em;
-    line-height: 1.12;
-  }
-  .band__funder {
-    margin-top: 0.6rem;
-    font-size: 1.0625rem;
-    color: var(--shell-ink-2);
-  }
-  .band__summary {
-    max-width: 62ch;
-    margin-top: 1rem;
-    font-size: 1.0625rem;
-  }
-  .band__note {
-    margin-top: 0.5rem;
-    font-size: 0.875rem;
-    color: var(--shell-ink-2);
-  }
-
-  .page {
-    max-width: calc(52rem + 2 * var(--gutter));
-    margin-inline: 0 auto;
-  }
-  /* Wide screens: the apply box rides along in a right rail while the facts scroll. */
-  @media (min-width: 72rem) {
-    .page {
-      display: grid;
-      grid-template-columns: minmax(0, 1fr) 20rem;
-      column-gap: 3rem;
-      max-width: var(--page);
-    }
-    .page > * {
-      grid-column: 1;
-    }
-    .page > .apply {
-      grid-column: 2;
-      grid-row: 1 / span 12;
-      position: sticky;
-      top: 1.5rem;
-      align-self: start;
-    }
-    .page {
-      margin-inline: auto;
-    }
-    .page > .apply {
-      margin-top: 3rem;
-    }
-  }
-  .partners {
-    container: listings / inline-size;
-  }
-  .partners__later {
-    margin-top: 0.75rem;
-  }
-  .partners__toggle {
-    display: flex;
-    align-items: center;
-    gap: 0.6rem;
-    min-height: 2.75rem;
-    padding: 0.5rem 0;
-    border-bottom: 2px solid var(--ink);
-    font-size: 1.0625rem;
-    font-weight: 700;
-    cursor: pointer;
-    list-style: none;
-  }
-  .partners__toggle::-webkit-details-marker {
-    display: none;
-  }
-  .partners__toggle::before {
-    content: '';
-    flex: none;
-    width: 0.5rem;
-    height: 0.5rem;
-    border-right: 2px solid currentColor;
-    border-bottom: 2px solid currentColor;
-    transform: rotate(-45deg);
-  }
-  .partners__later[open] .partners__toggle::before {
-    transform: translateY(-20%) rotate(45deg);
-  }
-  .partners__n {
-    margin-left: auto;
-    padding: 0 0.45rem;
-    border-radius: 2px;
-    background: var(--sunk);
-    box-shadow: inset 0 0 0 1px var(--rule);
-    font-size: 0.875rem;
-  }
-  .again {
-    margin-top: 2rem;
-  }
-  @media (max-width: 47.99rem) {
-    .again .button {
-      width: 100%;
-      justify-content: center;
-    }
-  }
-  @media (min-width: 72rem) {
-    .again {
-      display: none;
-    }
-  }
-  .nowrap {
-    white-space: nowrap;
-  }
-  .partners__list {
-    margin: 0;
-    padding: 0;
-    list-style: none;
-    border-top: 1px solid var(--rule);
-  }
-
-  .stale {
-    margin-top: 2rem;
-    padding: 0.75rem 1rem;
-    border-radius: var(--radius);
-    background: var(--aging);
-    color: var(--aging-ink);
-    font-weight: 600;
-  }
-  .apply {
-    margin-top: 1.5rem;
-    padding: 1.25rem 1.25rem 1.1rem;
-    background: var(--surface);
-    border: 1px solid var(--rule);
-    border-radius: var(--radius);
-  }
-  .apply__head {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    gap: 0.5rem 0.85rem;
-  }
-  .apply__title {
-    font-size: 1.375rem;
-    font-weight: 800;
-    letter-spacing: -0.01em;
-  }
-  .apply__text {
-    margin-top: 0.5rem;
-    color: var(--ink-2);
-  }
-  .apply__text:empty {
-    display: none;
-  }
-  .apply__actions {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    gap: 0.75rem 1.25rem;
-    margin-top: 1rem;
-  }
-  @media (max-width: 47.99rem) {
-    .apply__actions .button {
-      width: 100%;
-      justify-content: center;
-    }
-  }
-  .section-check {
-    margin-bottom: 0.75rem;
-    font-size: 0.875rem;
-    color: var(--ink-2);
-  }
-  .section-check :global(.checked) {
-    vertical-align: middle;
-  }
-
-  .section-title {
-    margin-top: 3rem;
-    margin-bottom: 0.75rem;
-    font-size: 1.25rem;
-    font-weight: 800;
-  }
-  .facts {
-    margin: 0;
-    border-bottom: 1px solid var(--rule);
-  }
-  .fact__help {
-    margin-top: 0.25rem;
-    font-size: 0.9375rem;
-    color: var(--ink-2);
-  }
-  .call + .call {
-    margin-top: 2rem;
-  }
-  .call {
-    padding: 1rem 1.1rem 0.25rem;
-    border: 1px solid var(--rule);
-    border-radius: var(--radius);
-    background: var(--surface);
-  }
-  .call .facts {
-    border-bottom: 0;
-  }
-  .call__head {
-    display: grid;
-    grid-template-columns: auto minmax(0, 1fr);
-    align-items: center;
-    gap: 0.4rem 0.75rem;
-    margin-bottom: 0.5rem;
-  }
-  .call__title {
-    font-size: 1.0625rem;
-    font-weight: 800;
-  }
-  .call__link {
-    grid-column: 1 / -1;
-    font-size: 0.9375rem;
-  }
-  @media (min-width: 48rem) {
-    .call__head {
-      grid-template-columns: auto minmax(0, 1fr) auto;
-    }
-    .call__link {
-      grid-column: auto;
-    }
-  }
-  .apply__lines {
-    display: grid;
-    gap: 0.35rem;
-    margin: 0.75rem 0 0;
-    font-size: 0.9375rem;
-  }
-  .apply__lines div {
-    display: grid;
-    grid-template-columns: 7.5rem minmax(0, 1fr);
-    gap: 0.75rem;
-  }
-  .apply__lines dt {
-    color: var(--ink-2);
-  }
-  .apply__lines dd {
-    margin: 0;
-  }
-  .apply__left {
-    font-weight: 700;
-  }
-  .aside {
-    margin-top: 1rem;
-    font-size: 0.875rem;
-    color: var(--ink-2);
-  }
-  .related {
-    margin: 0;
-    padding-left: 1.1rem;
-  }
-  .related li + li {
-    margin-top: 0.35rem;
-  }
-  .fix p {
-    max-width: 62ch;
-  }
-  .fix__actions {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.75rem;
-    margin-top: 1rem;
-  }
-  @media (max-width: 47.99rem) {
-    .fix__actions {
-      flex-direction: column;
-    }
-    .fix__actions .button {
-      justify-content: center;
-      text-align: center;
-    }
-  }
-  .fix__note {
-    margin-top: 0.6rem;
-    font-size: 0.875rem;
-    color: var(--ink-2);
-  }
-</style>

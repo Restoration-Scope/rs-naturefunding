@@ -1,0 +1,29 @@
+---
+import { Lock, Users } from 'lucide-react'
+import { Badge } from '@/components/ui/badge'
+import type { Programme } from '../data/schema'
+import { accessHelp, accessLabels } from '../lib/labels'
+
+interface Props {
+  access: Programme['access']
+  class?: string
+}
+
+// How to apply. The two routes that aren't an open application are badges with an icon, so they stand
+// out; "Apply directly" (and "Route not stated") stay plain text.
+const { access, class: className } = Astro.props
+const Icon = access === 'intermediary' ? Users : access === 'invitation_only' ? Lock : null
+---
+
+{
+  Icon ? (
+    <Badge variant="secondary" className={className} data-route={access} title={accessHelp[access]}>
+      <Icon aria-hidden="true" />
+      {accessLabels[access]}
+    </Badge>
+  ) : (
+    <span class:list={['text-sm text-muted-foreground', className]} data-route={access} title={accessHelp[access]}>
+      {accessLabels[access]}
+    </span>
+  )
+}

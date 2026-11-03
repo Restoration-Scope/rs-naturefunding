@@ -49,6 +49,24 @@ describe('fixture', () => {
   test('is valid', () => expect(problems(fixture())).toEqual([]))
 })
 
+describe('consortium_required', () => {
+  test('is optional: a programme without it is valid', () => expect(problems(fixture())).toEqual([]))
+
+  test('needs evidence when stated', () => {
+    const p = fixture()
+    p.consortium_required = true
+    expect(problems(p)).toEqual(['evidence.consortium_required: consortium_required is stated but has no evidence'])
+    p.evidence.consortium_required = ev('Applicants must form a consortium of three organisations.')
+    expect(problems(p)).toEqual([])
+  })
+
+  test('evidence without the field is refused', () => {
+    const p = fixture()
+    p.evidence.consortium_required = ev('Applicants must form a consortium of three organisations.')
+    expect(problems(p)).toEqual(['evidence.consortium_required: consortium_required has evidence but is not stated'])
+  })
+})
+
 describe('a date quote must state its year', () => {
   test.each([
     ['Applications close 26 November 2026.', true],
@@ -144,6 +162,48 @@ describe('quote matching', () => {
     const text = comparable(await htmlToText('<html><head><title>x</title></head><body><script>var a = "Grants"</script><p>Grants of up&nbsp;to <b>$50,000</b></p></body></html>'))
     expect(quoteOnPage(text, 'Grants of up to $50,000')).toBe(true)
     expect(quoteOnPage(text, 'var a')).toBe(false)
+  })
+})
+
+describe('qualifiers', () => {
+  const upcoming = (quote: string) => {
+    const p = fixture()
+    p.calls[0] = { ...p.calls[0], status: 'upcoming', deadline: null, expected: 'June 2027', evidence: { status: ev(quote) } }
+    return p
+  }
+
+  test('an expected opening names a year its status quote states', () => {
+    expect(problems(upcoming('The next round is due to open in June 2027.'))).toEqual([])
+    expect(problems(upcoming('The next round opens in June.'))).toEqual([expect.stringContaining('names a year')])
+    expect(problems(upcoming("The next round opens in June '27."))).toEqual([])
+  })
+
+  test('every year an expected opening names must be in the quote', () => {
+    const p = upcoming('The next round opens in December 2026.')
+    p.calls[0].expected = 'December 2026 to January 2027'
+    expect(problems(p)).toEqual([expect.stringContaining('names a year')])
+  })
+
+  test('an expected opening is only for an upcoming call with no firm date', () => {
+    const p = upcoming('The next round is due to open in June 2027.')
+    p.calls[0].status = 'open'
+    expect(problems(p)).toEqual([expect.stringContaining('upcoming call')])
+  })
+
+  test('recurring dates and their evidence come together', () => {
+    const p = fixture()
+    p.calls[0].recurring = '1 March and 1 October'
+    expect(problems(p)).toEqual([expect.stringContaining('recurring dates need evidence')])
+    p.calls[0].evidence.recurring = ev('Deadlines are March 1 and October 1 each year.')
+    expect(problems(p)).toEqual([])
+  })
+
+  test('"less than" needs a max', () => {
+    const p = fixture()
+    p.amount = { currency: 'USD', min: 1000, max_exclusive: true }
+    expect(problems(p)).toEqual([expect.stringContaining('max_exclusive needs a max')])
+    p.amount = { currency: 'USD', min: 1500, max: 1500, max_exclusive: true }
+    expect(problems(p)).toEqual([expect.stringContaining('no room above min')])
   })
 })
 

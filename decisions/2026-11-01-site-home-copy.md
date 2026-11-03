@@ -9,7 +9,9 @@ undo: Edit the h1 and .band__lede in src/pages/index.astro, and the matching og.
 
 ## Decision
 
-Headline: "Grants for nature restoration and conservation, checked against each funder’s own page." Lede: "Every deadline, amount and eligibility rule comes from the funder’s own website, quoted and dated. Free and neutral, with no paid listings. Built openly by Restoration Scope." Phones drop the first sentence of the lede (the headline already says it) and the stats line, so the first grant shows sooner. The stats line reads "25 open now or rolling", matching the finder's filters, which count Open now and Rolling separately. The OG image repeats the headline.
+Headline: "Funding for nature restoration and conservation, checked against each funder’s own page." Lede: "Every deadline, amount and eligibility rule links to the funder’s own page, with the words it rests on and the date we read it. Free, with no paid listings or paid ranking. Built openly by Restoration Scope." Phones drop the first sentence of the lede (the headline already says it) and the stats line, so the first grant shows sooner. The stats line counts "programmes taking applications" (open or rolling), not calls. The OG image repeats the headline.
+
+"Funding", not "Grants": a few listings (Ecosia, Arbor Day) are paid planting partnerships, not grants. "Links to … with the words it rests on" replaces "quoted": summaries and classifications are ours, so not every word on a page is the funder's.
 
 ![Home band](media/site-home-copy-1.png)
 

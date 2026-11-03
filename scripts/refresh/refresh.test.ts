@@ -5,8 +5,8 @@ import { programme as programmeSchema } from '../../src/data/schema'
 import { deadlineInstant, deadlinePassed, parseZone } from './deadline'
 import { classifyResponse, hashText, readPages, robotsAllows, type Fetched } from './fetch'
 import { formatJson } from './json'
-import { llmFromEnv, provider } from './llm'
-import { isDue, nextState, type SourceState } from './state'
+import { answerText, llmFromEnv, provider } from './llm'
+import { isDue, nextState, programmeChecks, type SourceState } from './state'
 import { applyTierA, classify, quotesAt } from './tier'
 import { applyExtraction, LIMITS, proposalKey, readReview } from './tier-b'
 
@@ -248,6 +248,17 @@ describe('blocked fetch', () => {
     expect(classifyResponse(200, '<html><body>Request unsuccessful. Incapsula incident ID: 123</body></html>')?.kind).toBe('blocked')
     expect(classifyResponse(200, '<form>protected by reCAPTCHA</form>')).toBeNull()
   })
+  test('a programme whose page failed its latest read is marked not re-checked, with the worst reason', () => {
+    const other: Source = { ...source, id: 'example-eligibility', url: URL_B }
+    const failed = nextState(prev, source, blocked, now)
+    const robots = { ...nextState(null, other, { ok: false, url: URL_B, kind: 'robots', message: 'disallowed' }, now) }
+    const p = fixture()
+    expect(programmeChecks([p], [source, other], { [source.id]: failed, [other.id]: robots })[p.id]).toEqual({
+      reason: 'robots', failing_sources: ['example-call', 'example-eligibility'],
+    })
+    const ok = nextState(failed, source, { ok: true, url: URL_A, finalUrl: URL_A, status: 200, pdf: false, text: 'x', hash: 'sha256:aa' }, now)
+    expect(programmeChecks([p], [source], { [source.id]: ok })[p.id]).toEqual({ reason: null, failing_sources: [] })
+  })
   test('weekly sources wait a week after a good read, but a failed one retries', () => {
     const weekly = { ...source, cycle: 'weekly' as const }
     expect(isDue(weekly, prev, now)).toBe(false)
@@ -367,6 +378,53 @@ describe('Tier B apply', () => {
     expect(readReview({ overall: 'yes', verdicts: [{ path: 'amount', verdict: 'supported', reason: 'r'.repeat(500), x: 1 }, 'junk'], missed: 5 }))
       .toEqual({ overall: 'unclear', verdicts: [{ path: 'amount', verdict: 'supported', reason: 'r'.repeat(300) }], missed: '' })
   })
+  test('amount qualifiers the draft leaves out are kept; null removes one; "less than" goes with the max', () => {
+    const base = fixture()
+    base.amount = { currency: 'USD', max: 50000, max_exclusive: true, per: 'year', note: 'Up to USD 150,000 in total' }
+    const run = (value: object) => applyExtraction(base, source, { fields: { amount: { value, quote: 'Up to USD 75,000 per project' } } }, page, now)
+    expect(run({ currency: 'USD', max: 75000 }).programme!.amount).toEqual({ currency: 'USD', max: 75000, max_exclusive: true, per: 'year', note: 'Up to USD 150,000 in total' })
+    expect(run({ currency: 'USD', max: 75000, per: null, note: null }).programme!.amount).toEqual({ currency: 'USD', max: 75000, max_exclusive: true })
+    expect(run({ currency: 'USD', min: 5000 }).programme!.amount).toEqual({ currency: 'USD', min: 5000, per: 'year', note: 'Up to USD 150,000 in total' })
+  })
+  describe('call qualifiers', () => {
+    const quiet = 'The next round is expected in June 2027, subject to funding approval. Deadlines are 1 March each year. Opens 1 June 2027.'
+    const upcoming = () => {
+      const p = fixture()
+      p.calls[0] = {
+        id: 'round-2027', label: '2027 round', url: URL_A, status: 'upcoming', opens: null, deadline: null,
+        expected: 'June 2027', recurring: '1 March each year', note: 'Subject to funding approval',
+        evidence: { status: ev(URL_A, 'The next round is expected in June 2027'), recurring: ev(URL_A, 'Deadlines are 1 March each year') },
+      }
+      return p
+    }
+    const draft = (extra: object = {}, quotes: object = {}) => ({
+      calls: [{ id: 'round-2027', label: '2027 round', url: URL_A, status: 'upcoming', ...extra, quotes: { status: 'The next round is expected in June 2027', ...quotes } }],
+    })
+
+    test('a draft that leaves them out keeps them, with their evidence, and changes nothing', () => {
+      const { programme, changes, schemaErrors } = applyExtraction(upcoming(), source, draft(), quiet, now)
+      const c = programme!.calls[0]
+      expect(schemaErrors).toEqual([])
+      expect(changes).toEqual([])
+      expect([c.expected, c.recurring, c.note]).toEqual(['June 2027', '1 March each year', 'Subject to funding approval'])
+      expect(c.evidence.recurring).toEqual(ev(URL_A, 'Deadlines are 1 March each year', '2026-11-02'))
+    })
+    test('a firm opening date drops the kept expected one; null removes a qualifier', () => {
+      const { programme, changes } = applyExtraction(upcoming(), source, draft({ opens: '2027-06-01', note: null }, { opens: 'Opens 1 June 2027' }), quiet, now)
+      const c = programme!.calls[0]
+      expect(changes[0]).toMatchObject({ path: 'calls[round-2027]', kind: 'changed' })
+      expect([c.opens, c.expected, c.note, c.recurring]).toEqual(['2027-06-01', undefined, undefined, '1 March each year'])
+    })
+    test('a new expected opening needs its year in the status quote; new recurring dates need their quote on the page', () => {
+      const p = fixture()
+      const add = (extra: object, quotes: object = {}) => applyExtraction(p, source, {
+        calls: [{ id: 'next', label: 'Next round', url: URL_A, status: 'upcoming', ...extra, quotes: { status: 'subject to funding approval', ...quotes } }],
+      }, quiet, now).changes[0]
+      expect(add({ expected: 'June 2027' })).toMatchObject({ kind: 'rejected', why: 'an expected opening names a year that its status quote states' })
+      expect(add({ recurring: '1 March each year' }, { recurring: 'Deadlines are 1 April' })).toMatchObject({ kind: 'rejected', why: 'quote not on the page' })
+      expect(add({ recurring: '1 March each year', note: 'Subject to funding approval' }, { recurring: 'Deadlines are 1 March each year' })).toMatchObject({ kind: 'added' })
+    })
+  })
 })
 
 describe('Tier B proposal key', () => {
@@ -404,5 +462,10 @@ describe('LLM provider from the environment', () => {
     expect(llmFromEnv({ ...account })).toBeNull()
     expect(llmFromEnv({ ...account, CLOUDFLARE_API_TOKEN: '' })).toBeNull()
     expect(llmFromEnv({ ...account, CLOUDFLARE_API_TOKEN: 't', LLM_PROVIDER: 'github' })).toBeNull()
+  })
+  test('an answer a reasoning model left empty says why instead of passing', () => {
+    expect(answerText({ choices: [{ message: { content: '{"a":1}' } }] })).toBe('{"a":1}')
+    expect(answerText({ result: { response: '{}' } })).toBe('{}')
+    expect(() => answerText({ choices: [{ message: { content: null, reasoning_content: '…' }, finish_reason: 'length' }] })).toThrow('finish_reason length')
   })
 })

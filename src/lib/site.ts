@@ -1,6 +1,5 @@
 export const SITE_URL = 'https://naturefunding.org'
 export const SITE_NAME = 'naturefunding.org'
-export const REPO_URL = 'https://github.com/Restoration-Scope/rs-naturefunding'
 
 const utm = (campaign: string) => `utm_source=naturefunding&utm_medium=referral&utm_campaign=${campaign}`
 
@@ -10,13 +9,14 @@ export const RS_REPORTING_URL = `https://restorationscope.com/solutions/funders?
 
 export const absolute = (path: string) => new URL(path, SITE_URL).toString()
 
-function issueUrl(title: string, body: string, labels: string) {
-  const q = new URLSearchParams({ title, body, labels })
-  return `${REPO_URL}/issues/new?${q}`
-}
+export const CONTACT_EMAIL = 'contact@naturefunding.org'
+
+// A pre-filled email. Spaces stay %20 (URLSearchParams would write +, which mail apps show as is).
+const mailUrl = (subject: string, body: string) =>
+  `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`
 
 export const reportProblemUrl = (name: string, id: string) =>
-  issueUrl(
+  mailUrl(
     `Problem with ${name}`,
     [
       `Listing: ${absolute(`/p/${id}/`)}`,
@@ -27,11 +27,10 @@ export const reportProblemUrl = (name: string, id: string) =>
       'Where did you see the correct information? A link to the funder’s own page helps most.',
       '',
     ].join('\n'),
-    'listing-problem',
   )
 
 export const funderCorrectionUrl = (name: string, id: string) =>
-  issueUrl(
+  mailUrl(
     `Funder correction: ${name}`,
     [
       `Listing: ${absolute(`/p/${id}/`)}`,
@@ -40,10 +39,15 @@ export const funderCorrectionUrl = (name: string, id: string) =>
       '',
       'What should change, and the page on your website that says so:',
       '',
-      'We check every change against your own website before it goes live. We never charge for a listing.',
+      'We change a listing only after confirming it on your own website. Listings can’t be bought.',
       '',
     ].join('\n'),
-    'funder-correction',
   )
 
-export const generalIssueUrl = `${REPO_URL}/issues/new`
+export const generalReportUrl = mailUrl(
+  'naturefunding.org: a problem or a missing funder',
+  ['What is wrong, or which funder is missing? A link to the funder’s own page helps most.', '', ''].join('\n'),
+)
+
+/** The weekly email Worker (digest/) is deployed, so built pages show the sign-up form. */
+export const DIGEST_LIVE = true

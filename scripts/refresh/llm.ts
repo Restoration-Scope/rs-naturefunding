@@ -39,6 +39,15 @@ export function parseJsonAnswer(content: string): unknown {
   return JSON.parse(content.slice(start, end + 1))
 }
 
+/** The text of a chat answer. A reasoning model that spends its whole budget thinking leaves it empty. */
+export function answerText(json: any): string {
+  const choice = json.choices?.[0]
+  const content = choice?.message?.content ?? json.result?.response
+  if (typeof content === 'string' && content.trim()) return content
+  const why = choice?.finish_reason ? `finish_reason ${choice.finish_reason}` : JSON.stringify(json).slice(0, 200)
+  throw new Error(`no message in the answer (${why})`)
+}
+
 export function llmFromEnv(env = process.env): Llm | null {
   const found = provider(env)
   if (!found) return null
@@ -65,14 +74,17 @@ export function llmFromEnv(env = process.env): Llm | null {
     maxChars: p.maxChars,
     async chat(model, system, user) {
       const messages = [{ role: 'system', content: system }, { role: 'user', content: user }]
-      let res = await post({ model, messages, temperature: 0, response_format: { type: 'json_object' } })
-      if (res.status === 400 || res.status === 422) res = await post({ model, messages, temperature: 0 })
+      // Workers AI caps answers at a few hundred tokens by default, which a reasoning model uses up before it answers.
+      const base = { model, messages, temperature: 0, max_tokens: 8192 }
+      let res = await post({ ...base, response_format: { type: 'json_object' } })
+      if (res.status === 400 || res.status === 422) res = await post(base)
       const text = await res.text()
       if (!res.ok) throw new Error(`${name} ${model}: HTTP ${res.status} ${text.slice(0, 300)}`)
-      const json = JSON.parse(text)
-      const content = json.choices?.[0]?.message?.content ?? json.result?.response
-      if (typeof content !== 'string') throw new Error(`${name} ${model}: no message in the answer`)
-      return parseJsonAnswer(content)
+      try {
+        return parseJsonAnswer(answerText(JSON.parse(text)))
+      } catch (e) {
+        throw new Error(`${name} ${model}: ${(e as Error).message}`)
+      }
     },
   }
 }

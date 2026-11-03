@@ -1,0 +1,9 @@
+# Cloudflare static-asset headers (https://developers.cloudflare.com/workers/static-assets/headers/).
+# Markdown twins are for agents: llms.txt lists them, and search engines index the HTML page instead.
+/*.md
+  Content-Type: text/markdown; charset=utf-8
+  X-Robots-Tag: noindex
+/llms.txt
+  Content-Type: text/plain; charset=utf-8
+/llms-full.txt
+  Content-Type: text/plain; charset=utf-8

@@ -1,0 +1,15 @@
+---
+import Base from '../../layouts/Base.astro'
+import DigestSignup from '../../components/DigestSignup.astro'
+---
+
+<Base title="Something went wrong" description="The weekly email sign-up could not finish." path="/digest/error/" noindex>
+  <div slot="band" class="wrap pt-8 pb-10">
+    <h1 class="text-[clamp(1.75rem,1.2rem+2.2vw,2.75rem)] font-extrabold tracking-[-0.02em]">Something went wrong</h1>
+    <p class="mt-3 max-w-[60ch] text-xl text-shell-ink-2">We couldn’t finish that. Please try again in a minute.</p>
+  </div>
+  <div class="wrap mt-10">
+    <DigestSignup />
+    <p class="mt-6 max-w-[60ch] text-ink-2">Still not working? Email <a href="mailto:contact@naturefunding.org">contact@naturefunding.org</a>.</p>
+  </div>
+</Base>

@@ -1,9 +1,12 @@
 ---
 import type { Listing } from '../lib/data'
-import { buildDate, daysBetween, sizeBucketsFor, whereCodes } from '../lib/data'
+import { buildDate, daysBetween, notRechecked, sizeBucketsFor, whereCodes } from '../lib/data'
 import { amountText, geographyText, keepAmountTogether, shortDate } from '../lib/format'
 import { accessLabels, applicantLabels, approachLabels, stateLabels } from '../lib/labels'
+import { Badge } from '@/components/ui/badge'
 import CheckedTag from './CheckedTag.astro'
+import OrgMark from './OrgMark.astro'
+import Route from './Route.astro'
 
 interface Props {
   listing: Listing
@@ -21,9 +24,25 @@ const who = p.applicant_types?.map((a) => applicantLabels[a]).join(', ') ?? null
 
 const noCallRoute = p.access === 'intermediary' || p.access === 'invitation_only'
 const daysLeft = state === 'open' && deadline ? daysBetween(buildDate, deadline.date) : null
-// An open call without a date: show its label only when the label describes the window itself.
-const undatedWindow = call?.label && /window|deadline|each year|until/i.test(call.label) ? call.label : null
+// An open call without a date: show the funder's yearly dates, or the label when it describes the window itself.
+const undatedWindow =
+  call?.recurring ?? (call?.label && /window|deadline|each year|until/i.test(call.label) ? call.label : null)
+// The funder's own words for yearly dates, shown under our summary of them.
+const recurringQuote = call?.recurring ? (call.evidence.recurring?.quote ?? null) : null
 const route = p.access === 'direct' ? null : accessLabels[p.access]
+const closed = state === 'closed'
+// The badge already says "No call found"; a deadline cell repeating it would be noise.
+const noDeadlineCell = state === 'none' && !noCallRoute && !call?.recurring
+// Wide containers (52rem and up): one row per programme, in columns; the labels hide, except an
+// upcoming row's, which says its date is the opening.
+const label = (upcoming: boolean) =>
+  upcoming
+    ? 'text-xs text-ink-2 @min-[52rem]/listings:font-bold'
+    : 'text-xs text-ink-2 @min-[52rem]/listings:sr-only'
+const cell = 'mt-[0.35rem] mb-[0.15rem] flex flex-col gap-[0.1rem] @min-[52rem]/listings:m-0'
+const value = closed ? 'font-semibold text-ink-2' : 'font-semibold'
+const muted = 'font-normal text-ink-2'
+const sub = 'mt-[0.15rem] block text-sm leading-[1.4] font-normal text-ink-2'
 const searchText = [
   p.name,
   p.funder.name,
@@ -38,7 +57,15 @@ const searchText = [
 ---
 
 <li
-  class="listing"
+  class:list={[
+    'group/listing relative grid grid-cols-[minmax(0,1fr)_minmax(0,1fr)] gap-x-4 gap-y-[0.3rem] border-b border-rule pt-[0.9rem] pb-4 hover:bg-muted/50',
+    "[grid-template-areas:'status_status'_'name_name'_'funder_funder'_'deadline_amount'_'meta_meta'_'check_check']",
+    // Narrow phones: deadline and amount stack, so a long quote keeps the full width.
+    "@max-[29.99rem]/listings:grid-cols-[minmax(0,1fr)] @max-[29.99rem]/listings:[grid-template-areas:'status'_'name'_'funder'_'deadline'_'amount'_'meta'_'check']",
+    // Wide: the status and the checked date share the first line of the programme column.
+    "@min-[52rem]/listings:grid-cols-[minmax(0,1fr)_11rem_9rem] @min-[52rem]/listings:grid-rows-[auto_auto_auto_1fr] @min-[52rem]/listings:gap-x-8 @min-[52rem]/listings:gap-y-[0.15rem] @min-[52rem]/listings:px-3",
+    "@min-[52rem]/listings:[grid-template-areas:'status_deadline_amount'_'name_deadline_amount'_'funder_deadline_amount'_'meta_deadline_amount']",
+  ]}
   data-state={state}
   data-deadline={deadline?.date}
   data-opens={call?.opens ?? undefined}
@@ -50,293 +77,121 @@ const searchText = [
   data-size={sizeBucketsFor(p).join(' ')}
   data-text={searchText}
 >
-  <div class="listing__status">
-    <span class="tape" data-state={state}>
-      {noCallRoute ? accessLabels[p.access] : stateLabels[state]}
+  <div class="[grid-area:status]">
+    <span class="flex flex-wrap items-center gap-2">
+      {!(state === 'none' && noCallRoute) && <Badge variant="status" state={state}>{stateLabels[state]}</Badge>}
+      {noCallRoute && <Route access={p.access} />}
     </span>
   </div>
 
-  <div class="listing__main">
-    <h3 class="listing__name"><a href={`/p/${p.id}/`}>{p.name}</a></h3>
-    <p class="listing__funder">
+  {/* Narrow containers: the name, deadline and amount come first; the rest of this cell follows. */}
+  <div class="contents">
+    {/* Set like the finder's rows: a bold sans name, not a serif heading. */}
+    <h3 class="mt-1 font-sans text-lg leading-[1.35] font-bold text-pretty [grid-area:name] @min-[52rem]/listings:mt-[0.3rem]">
+      {/* The whole row opens the programme. */}
+      <a
+        class="text-link no-underline decoration-2 underline-offset-[0.18em] group-hover/listing:underline after:absolute after:inset-0 after:content-[''] focus-visible:underline"
+        href={`/p/${p.id}/`}>{p.name}</a
+      >
+    </h3>
+    <p class="leading-[1.45] text-ink-2 [grid-area:funder]">
       {
         underParent && p.administered_by ? (
-          <>Run by {p.administered_by.name}</>
+          <><OrgMark org={p.administered_by} class="mr-2 -mt-0.5" />Run by {p.administered_by.name}</>
         ) : (
           <>
+            <OrgMark org={p.funder} class="mr-2 -mt-0.5" />
             {p.funder.name}
             {p.administered_by && <span>, run by {p.administered_by.name}</span>}
           </>
         )
       }
     </p>
-    <p class="listing__meta">
+    {/* Separators sit before each item; the ones that wrap to a line start are clipped away. */}
+    <p class="-ml-5 flex flex-wrap text-md leading-[1.45] text-ink-2 [clip-path:inset(0_0_0_1.25rem)] [grid-area:meta] *:relative *:pl-5 *:before:absolute *:before:left-0 *:before:w-5 *:before:text-center *:before:content-['·']">
+      {p.kind === 'partnership' && <span>Paid partnership, not a grant</span>}
       {route && !noCallRoute && <span>{route}</span>}
-      {where && <span><span class="listing__key">Where:</span> {where}</span>}
-      {who && <span><span class="listing__key">Who:</span> {who}</span>}
+      {where && <span><span class="font-bold">Where:</span> {where}</span>}
+      {who && <span><span class="font-bold">Who:</span> {who}</span>}
     </p>
   </div>
 
-  <div class="listing__deadline">
-    <span class="listing__label">{state === 'upcoming' ? 'Opens' : 'Deadline'}</span>
+  {!noDeadlineCell && <div class:list={[cell, '[grid-area:deadline]', state === 'upcoming' ? '@min-[52rem]/listings:pt-[0.65rem]' : '@min-[52rem]/listings:pt-[1.85rem]']}>
+    <span class={label(state === 'upcoming')}>{state === 'upcoming' ? 'Opens' : 'Deadline'}</span>
     {
       state === 'open' && !deadline && (
-        <span class="listing__value listing__value--muted listing__value--prose">{undatedWindow ?? 'Date not stated'}</span>
+        // An undated window in the funder's words: the row's only deadline, so smaller but never clipped.
+        <span class:list={[muted, 'text-md leading-[1.4]']}>
+          {undatedWindow ?? 'Date not stated'}
+          {recurringQuote && <span class={sub}>“{recurringQuote}”</span>}
+        </span>
       )
     }
     {
       state === 'open' && deadline && (
-        <span class="listing__value">
+        <span class={value}>
           {shortDate(deadline.date)}
           {daysLeft !== null && (
-            <span class="listing__left mono" data-left data-soon={daysLeft < 7 ? '' : undefined}>
+            <span
+              class:list={[
+                'block',
+                // A week or less left: an amber badge, so it reads as "act soon".
+                daysLeft <= 7 ? 'mt-1 w-fit rounded-md bg-warn px-2 py-0.5 text-xs font-medium text-warn-ink' : 'text-sm font-normal text-muted-foreground',
+              ]}
+              data-left
+              data-soon={daysLeft <= 7 ? '' : undefined}
+            >
               {daysLeft === 0 ? 'Closes today' : daysLeft === 1 ? '1 day left' : `${daysLeft} days left`}
             </span>
           )}
-          <span class="listing__quote" title={`The deadline as the funder wrote it: “${deadline.text}”`}>“{deadline.text}”</span>
+          <span class={sub} title={`The deadline as the funder wrote it: “${deadline.text}”`}>“{deadline.text}”</span>
         </span>
       )
     }
-    {state === 'rolling' && <span class="listing__value">Any time</span>}
+    {state === 'rolling' && <span class={value}>Any time</span>}
     {
       state === 'upcoming' && (
-        <span class="listing__value">
-          {call?.opens ? shortDate(call.opens) : <span class="listing__value--muted">Date not stated</span>}
-          {deadline && <span class="listing__sub">Closes {shortDate(deadline.date)}</span>}
+        <span class={value}>
+          {call?.opens ? (
+            shortDate(call.opens)
+          ) : call?.expected ? (
+            <>Expected {call.expected}</>
+          ) : (
+            <span class={muted}>Not dated yet</span>
+          )}
+          {deadline && <span class={sub}>Closes {shortDate(deadline.date)}</span>}
         </span>
       )
     }
     {
       state === 'closed' && (
-        <span class="listing__value listing__value--muted">
+        <span class={muted}>
           {deadline ? `Closed ${shortDate(deadline.date)}` : 'Closed'}
+          {deadline && <span class={sub}>“{deadline.text}”</span>}
         </span>
       )
     }
     {
       state === 'none' && (
-        <span class="listing__value listing__value--muted">
-          {p.access === 'intermediary' ? 'Varies by partner' : 'No open call'}
+        <span class={muted}>
+          {p.access === 'intermediary' ? 'Varies by partner' : call?.recurring ? 'Page doesn’t say if open now' : 'No call found'}
+          {call?.recurring && <span class={sub}>Each year: {call.recurring}</span>}
+          {recurringQuote && <span class={sub}>“{recurringQuote}”</span>}
         </span>
       )
     }
+  </div>}
+
+  {/* With no deadline cell, the amount moves left under the name instead of floating in the second column. */}
+  <div class:list={[cell, noDeadlineCell ? '[grid-area:deadline] @min-[52rem]/listings:[grid-area:amount]' : '[grid-area:amount]', '@min-[52rem]/listings:pt-[1.85rem]']}>
+    <span class={label(false)}>Amount</span>
+    <span class:list={[amount && !closed ? 'font-semibold' : muted]}>
+      {amount ?? 'Not stated'}
+      {amount && p.amount?.note && <span class={sub}>{p.amount.note}</span>}
+    </span>
   </div>
 
-  <div class="listing__amount">
-    <span class="listing__label">Amount</span>
-    <span class={amount ? 'listing__value' : 'listing__value listing__value--muted'}>{amount ?? 'Not stated'}</span>
-  </div>
-
-  <div class="listing__check">
-    <CheckedTag checked={p.checked_at} compact />
+  <div class="relative z-1 [grid-area:check] @min-[52rem]/listings:self-center @min-[52rem]/listings:justify-self-end @min-[52rem]/listings:[grid-area:status]">
+    <CheckedTag checked={p.checked_at} reason={notRechecked(p.id)} />
   </div>
 </li>
-
-<style>
-  .listing {
-    position: relative;
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-    grid-template-areas:
-      'status status'
-      'name name'
-      'funder funder'
-      'deadline amount'
-      'meta meta'
-      'check check';
-    gap: 0.3rem 1rem;
-    padding: 0.9rem 0 1rem;
-    border-bottom: 1px solid var(--rule);
-  }
-  .listing__status {
-    grid-area: status;
-  }
-  /* Narrow containers: the name, deadline and amount come first; the rest of the main cell follows. */
-  .listing__main {
-    display: contents;
-  }
-  .listing__name {
-    grid-area: name;
-    text-wrap: pretty;
-    margin-top: 0.25rem;
-    font-size: 1.1875rem;
-    font-weight: 700;
-    letter-spacing: -0.005em;
-  }
-  .listing__funder {
-    grid-area: funder;
-    color: var(--ink-2);
-    line-height: 1.45;
-  }
-  .listing__meta {
-    grid-area: meta;
-  }
-  .listing__deadline {
-    grid-area: deadline;
-  }
-  .listing__amount {
-    grid-area: amount;
-  }
-  .listing__check {
-    grid-area: check;
-    position: relative;
-    z-index: 1;
-  }
-  .listing__name a {
-    color: var(--link);
-    text-decoration: none;
-  }
-  /* The whole row opens the programme. */
-  .listing__name a::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-  }
-  .listing:hover .listing__name a,
-  .listing__name a:focus-visible {
-    text-decoration: underline;
-    text-decoration-thickness: 2px;
-    text-underline-offset: 0.18em;
-  }
-  .listing:hover {
-    background: var(--surface);
-  }
-  .listing[data-state='closed'] .listing__value {
-    color: var(--ink-2);
-  }
-  .listing[data-state='closed'] .listing__amount .listing__value {
-    font-weight: 400;
-  }
-  /* Separators sit before each item; the ones that wrap to a line start are clipped away. */
-  .listing__meta {
-    display: flex;
-    flex-wrap: wrap;
-    margin-left: -1.25rem;
-    clip-path: inset(0 0 0 1.25rem);
-    font-size: 0.9375rem;
-    line-height: 1.45;
-    color: var(--ink-2);
-  }
-  .listing__meta > span {
-    position: relative;
-    padding-left: 1.25rem;
-  }
-  .listing__meta > span::before {
-    content: '·';
-    position: absolute;
-    left: 0;
-    width: 1.25rem;
-    text-align: center;
-  }
-  .listing__key {
-    font-weight: 700;
-  }
-  .listing__deadline,
-  .listing__amount {
-    display: flex;
-    flex-direction: column;
-    gap: 0.1rem;
-    margin-block: 0.35rem 0.15rem;
-  }
-  .listing__label {
-    font-size: 0.8125rem;
-    color: var(--ink-2);
-  }
-  .listing__value {
-    font-weight: 600;
-  }
-  .listing__value--muted {
-    font-weight: 400;
-  }
-  /* An undated window in the funder's words: the row's only deadline, so smaller but never clipped. */
-  .listing__value--prose {
-    font-size: 0.9375rem;
-    line-height: 1.4;
-  }
-  .listing__value--muted {
-    color: var(--ink-2);
-  }
-  .listing__left {
-    display: block;
-    font-size: 0.8125rem;
-    font-weight: 700;
-    color: var(--ink);
-  }
-  /* Under a week left: the amber of an ageing stamp, so it reads as "act soon". */
-  .listing__left[data-soon] {
-    justify-self: start;
-    width: fit-content;
-    margin-top: 0.15rem;
-    padding: 0 0.35rem;
-    border-radius: 2px;
-    background: var(--aging);
-    color: var(--aging-ink);
-  }
-  .listing__quote,
-  .listing__sub {
-    display: block;
-    margin-top: 0.15rem;
-    font-weight: 400;
-    color: var(--ink-2);
-    font-size: 0.875rem;
-    line-height: 1.4;
-  }
-  .listing__quote {
-    display: -webkit-box;
-    -webkit-box-orient: vertical;
-    -webkit-line-clamp: 2;
-    line-clamp: 2;
-    overflow: hidden;
-  }
-
-  /* Wide containers: one row per programme, in columns under the finder's header.
-     The tape and the stamp share the first line of the programme column. */
-  @container listings (min-width: 52rem) {
-    .listing {
-      grid-template-columns: minmax(0, 1fr) 11rem 9rem;
-      grid-template-areas:
-        'status deadline amount'
-        'name deadline amount'
-        'funder deadline amount'
-        'meta deadline amount';
-      grid-template-rows: auto auto auto 1fr;
-      column-gap: 2rem;
-      row-gap: 0.15rem;
-      padding: 0.9rem 0.75rem 1rem;
-    }
-    .listing__check {
-      grid-area: status;
-      justify-self: end;
-      align-self: center;
-    }
-    .listing__name {
-      margin-top: 0.3rem;
-      font-size: 1.125rem;
-    }
-    .listing__deadline,
-    .listing__amount {
-      margin: 0;
-      padding-top: 1.85rem;
-    }
-    .listing__label {
-      position: absolute;
-      width: 1px;
-      height: 1px;
-      overflow: hidden;
-      clip: rect(0 0 0 0);
-      white-space: nowrap;
-    }
-    /* The column is headed Deadline; an upcoming row says its date is the opening. */
-    .listing[data-state='upcoming'] .listing__deadline .listing__label {
-      position: static;
-      width: auto;
-      height: auto;
-      overflow: visible;
-      clip: auto;
-      font-weight: 700;
-    }
-    .listing[data-state='upcoming'] .listing__deadline {
-      padding-top: 0.65rem;
-    }
-  }
-</style>

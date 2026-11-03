@@ -1,33 +1,69 @@
 ---
 import Base from '../layouts/Base.astro'
-import Listing from '../components/Listing.astro'
+import Row from '../components/FinderRow.astro'
+import DigestSignup from '../components/DigestSignup.astro'
+import { ArrowDown, ArrowUp, Bird, Building2, ChevronsUpDown, Droplets, LayoutGrid, Microscope, Search, SlidersHorizontal, Trees, Users, Waves, Wheat, X } from 'lucide-react'
+import { Badge } from '@/components/ui/badge'
+import { Button } from '@/components/ui/button'
+import { Input } from '@/components/ui/input'
+import { Label } from '@/components/ui/label'
+import { NativeSelect } from '@/components/ui/native-select'
+import { Table, TableBody, TableCaption, TableHead, TableHeader, TableRow } from '@/components/ui/table'
+import '../styles/finder.css'
 import { listings, sortListings, stats } from '../lib/data'
 import { countriesByRegion } from '../lib/geo'
 import { longDate } from '../lib/format'
-import {
-  accessLabels,
-  applicantLabels,
-  approachLabels,
-  sizeBuckets,
-  stateFilterLabels,
-  type State,
-} from '../lib/labels'
 import { SITE_NAME, absolute } from '../lib/site'
+import { homeItemListLd } from '../lib/agent'
+import { accessLabels, applicantLabels, approachLabels, projectTypes, sizeBuckets, stateFilterLabels, type State } from '../lib/labels'
 
 const sorted = [...listings].sort(sortListings)
-const now = sorted.filter((l) => l.state !== 'none' && l.state !== 'closed')
-const later = sorted.filter((l) => l.state === 'none' || l.state === 'closed')
-const description =
-  'A free directory of grants for nature restoration and conservation. Every deadline, amount and eligibility rule is read from the funder’s own page, with the date we checked it.'
+const isLater = (s: State) => s === 'none' || s === 'closed'
+const now = sorted.filter((l) => !isLater(l.state))
+const later = sorted.filter((l) => isLater(l.state))
+const count = (s: State) => listings.filter((l) => l.state === s).length
 
-const usedApproaches = Object.entries(approachLabels).filter(([k]) =>
-  listings.some((l) => l.p.approaches.includes(k as never)),
-)
-const usedApplicants = Object.entries(applicantLabels).filter(([k]) =>
-  listings.some((l) => l.p.applicant_types?.includes(k as never)),
-)
+const usedApproaches = Object.entries(approachLabels).filter(([k]) => listings.some((l) => l.p.approaches.includes(k as never)))
+const usedApplicants = Object.entries(applicantLabels).filter(([k]) => listings.some((l) => l.p.applicant_types?.includes(k as never)))
 const states: State[] = ['open', 'rolling', 'upcoming', 'none', 'closed']
 const routes = (['direct', 'intermediary', 'invitation_only'] as const).map((k) => [k, accessLabels[k]])
+const num = 'tabular-nums'
+const skipLink = 'absolute -top-16 left-4 z-10 rounded-md bg-surface px-3.5 py-2 text-ink focus:top-3'
+// The sidebar holds the filters the header card doesn't: status, how to apply and size. Every group stays open:
+// a heading, then all its options. The badge counts its filters that are on.
+// A legend sits on its fieldset's top edge, so the heading carries the group's top space.
+const group = 'border-b border-rule pb-3.5 last:border-b-0'
+const groupTitle = 'mb-2 flex items-center gap-2 px-0 pt-3.5 pb-0 text-sm font-medium text-foreground'
+const groupHint = 'mt-[0.3rem] text-xs leading-[1.4] text-ink-2'
+const opt =
+  'group/opt flex min-h-[1.9rem] cursor-pointer items-center gap-2 text-sm leading-[1.3] has-disabled:cursor-default has-disabled:text-ink-2 max-xl:min-h-10 max-xl:text-md'
+const optInput = 'm-0 size-4 flex-none accent-primary'
+// .opt__text is what src/lib/finder.ts reads; the class carries no style.
+// group-hover only applies where the device can hover, so a tap leaves no underline behind.
+const optText = 'opt__text flex-1 underline-offset-[0.18em] group-hover/opt:underline group-has-disabled/opt:no-underline'
+const optN = 'text-xs text-muted-foreground tabular-nums'
+// The quick filters in the results summary: a row of shadcn toggles (outline Button, rounded-full), each
+// with its count as quiet figures. Pressed, they take the primary fill.
+const quick =
+  'group/q inline-flex h-8 shrink-0 pointer-coarse:h-10 cursor-pointer snap-start items-center gap-1.5 rounded-full border border-border bg-card px-3 text-sm font-medium whitespace-nowrap text-foreground shadow-xs hover:bg-muted disabled:cursor-default disabled:opacity-50 aria-pressed:border-primary aria-pressed:bg-primary aria-pressed:text-primary-foreground'
+const quickN = 'text-sm font-normal text-muted-foreground tabular-nums group-aria-pressed/q:text-primary-foreground/80'
+// The header's project types, each a link that sets the Approach filter (data-cat: its approaches, sorted).
+const typeIcons = { forests: Trees, coasts: Waves, wetlands: Droplets, grasslands: Wheat, wildlife: Bird, communities: Users, cities: Building2, research: Microscope }
+const types = [
+  { key: 'all', label: 'All', Icon: LayoutGrid, approaches: [] as string[] },
+  // Only approaches some listing has; a type with none is left out.
+  ...projectTypes
+    .map((t) => ({ ...t, approaches: t.approaches.filter((a) => usedApproaches.some(([k]) => k === a)), Icon: typeIcons[t.key as keyof typeof typeIcons] }))
+    .filter((t) => t.approaches.length),
+].map((t) => ({ ...t, cat: [...t.approaches].sort().join(' '), href: t.approaches.length ? `/?approach=${t.approaches.join(',')}` : '/' }))
+// The search fields: a bold label over a borderless select, in a bordered box. The select fills the box, so
+// the whole box opens it; a value still at its default reads muted. With JavaScript, src/lib/picker.ts turns
+// Where into a combobox with flags and When and Who into Base UI–style selects, with these same classes.
+const seg = 'relative min-w-0 rounded-xl border border-border'
+const segLabel = 'pointer-events-none absolute top-2.5 left-4 text-xs font-medium text-foreground'
+const segSelect =
+  'block h-full min-h-15 w-full cursor-pointer appearance-none truncate rounded-[inherit] bg-transparent pt-6 pr-6 pb-2.5 pl-4 text-md text-foreground hover:bg-muted focus-visible:outline-offset-[-2px] max-md:min-h-14 placeholder:text-muted-foreground data-empty:text-muted-foreground [&:has(option[value=""]:checked)]:text-muted-foreground'
+const description = `${stats.programmes} restoration and conservation grants, ${stats.open} open now. Every deadline and rule links to the funder’s own page. Free, with no paid listings.`
 
 const jsonLd = [
   {
@@ -55,67 +91,57 @@ const jsonLd = [
       { '@type': 'DataDownload', encodingFormat: 'text/csv', contentUrl: absolute('/data.csv') },
     ],
   },
+  homeItemListLd(sorted),
 ]
 ---
 
 <Base
-  title="naturefunding.org: grants for nature restoration, checked against each funder’s page"
+  title="Grants for nature restoration and conservation | naturefunding.org"
   description={description}
   path="/"
   nav="finder"
   jsonLd={jsonLd}
 >
-  <div slot="band" class="wrap band">
-    <h1 class="band__title">Grants for nature restoration and conservation, checked against each funder’s own page.</h1>
-    <p class="band__lede">
-      <span class="band__more">Every deadline, amount and eligibility rule comes from the funder’s own website, quoted and dated.</span>{' '}
-      Free and neutral, with no paid listings. Built openly by Restoration Scope.
-    </p>
-    <p class="band__stats">
-      <span><strong class="mono">{stats.openCalls}</strong> open now or rolling</span>
-      <span><strong class="mono">{stats.programmes}</strong> programmes listed</span>
-      {stats.lastChecked && <span class="band__more">Last checked {longDate(stats.lastChecked)}</span>}
-    </p>
+  <div slot="band" class="pb-[6.5rem] max-md:pb-16">
+    {/* What the site is, on the green: the title on the left, the words beside it. */}
+    <div class="wrap grid items-end gap-x-14 gap-y-3 pt-3 lg:grid-cols-[5fr_7fr] max-md:pt-1">
+      <h1 class="text-balance text-[clamp(1.875rem,1.2rem+1.4vw,2.5rem)] leading-[1.08] tracking-[-0.01em] text-shell-ink">Grants for nature restoration and conservation</h1>
+      <p class="text-[0.9375rem] leading-[1.55] text-shell-ink-2">
+        {/* Answers "what is this" on its own, for search snippets and AI answers; phones keep the first two sentences. */}
+        <span class="text-shell-ink">{`${stats.programmes} grants and funding programmes for nature restoration and conservation: forests and tree planting, coasts, wetlands, wildlife and more. ${stats.open} ${stats.open === 1 ? 'is' : 'are'} open now.`}</span>{' '}
+        <span class="max-md:hidden">
+          For nonprofits and community groups leading projects on the ground. Every deadline, amount and eligibility rule links to the funder’s own page, with its exact words and the date we checked it. Free: funders can’t pay to be listed.
+          {stats.lastChecked && ` Last checked ${longDate(stats.lastChecked)}.`}
+        </span>
+      </p>
+    </div>
   </div>
 
-  <div class="wrap finder">
-    <form class="filters" role="search" aria-label="Search and filter funding" data-form>
-      <div class="field">
-        <label class="field__label field__label--search" for="q">Search</label>
-        <input id="q" name="q" type="search" placeholder="Funder, programme or place" autocomplete="off" />
-      </div>
-
-      <details class="filters__panel" id="filters" data-filters>
-        <summary class="filters__toggle">
-          <span>Filters</span>
-          <span class="filters__count mono" data-filter-count hidden></span>
-        </summary>
-
-        <div class="filters__form">
-
-        <fieldset class="field">
-          <legend class="field__label">Status</legend>
-          {
-            states.map((s) => (
-              <label class="check">
-                <input type="checkbox" name="status" value={s} />
-                <span class="check__text">{stateFilterLabels[s]}</span>
-                <span class="check__n mono" data-n={`status:${s}`} />
-              </label>
-            ))
-          }
-        </fieldset>
-
-        <fieldset class="field">
-          <legend class="field__label">Deadline</legend>
-          <label class="check"><input type="radio" name="within" value="" checked /> <span class="check__text">Any time</span></label>
-          <label class="check"><input type="radio" name="within" value="30" /> <span class="check__text">Closes within 30 days</span></label>
-          <label class="check"><input type="radio" name="within" value="90" /> <span class="check__text">Closes within 90 days</span></label>
-        </fieldset>
-
-        <div class="field">
-          <label class="field__label" for="where">Where the project is</label>
-          <select id="where" name="where">
+  {/* One card over the band's edge: project types as tabs, then where, when and who. */}
+  <div class="wrap relative -mt-[4.5rem] max-md:-mt-12">
+    <div class="rounded-2xl bg-card text-foreground shadow-[0_12px_32px_rgb(27_39_34/0.18)]">
+      {/* Project types, like the category row of a booking site. Links, so they work without JavaScript too. */}
+      <nav class="flex gap-1 overflow-x-auto px-4 shadow-[inset_0_-1px_var(--color-border)] [scrollbar-width:none] max-md:px-2" aria-label="Project types">
+        {
+          types.map(({ label, Icon, cat, href }) => (
+            <a
+              class="flex shrink-0 items-center gap-2 border-b-2 border-transparent px-3.5 pt-4 pb-3.5 text-[0.9375rem] font-medium text-muted-foreground! no-underline hover:border-border hover:text-foreground! aria-[current=true]:border-shell aria-[current=true]:text-foreground! max-md:px-2.5 max-md:pt-3 max-md:pb-2.5 max-md:text-sm"
+              href={href}
+              data-cat={cat}
+              aria-current={cat === '' ? 'true' : undefined}
+            >
+              <Icon className="size-5 max-md:size-4.5" strokeWidth={1.75} aria-hidden="true" />
+              {label}
+            </a>
+          ))
+        }
+      </nav>
+      {/* Where, when and who: the only controls for these filters, read by src/lib/finder.ts. Without JavaScript
+          the form sends them in the address, and the full list stays below. */}
+      <form class="flex items-stretch gap-3 p-4 max-md:grid max-md:grid-cols-2 max-md:gap-2 max-md:p-3" action="/#results" method="get" aria-label="Search funding" data-ask>
+        <div class:list={[seg, 'flex-[1.4] max-md:col-span-2']}>
+          <label class={segLabel} for="ask-where">Where</label>
+          <select id="ask-where" name="where" class={segSelect}>
             <option value="">Anywhere</option>
             <optgroup label="Regions">
               {countriesByRegion.map((r) => <option value={`r:${r.region}`}>{r.label}</option>)}
@@ -123,500 +149,235 @@ const jsonLd = [
             {
               countriesByRegion.map((r) => (
                 <optgroup label={r.label}>
-                  {r.countries.map((c) => (
-                    <option value={c.code} data-region={r.region}>{c.name}</option>
-                  ))}
+                  {r.countries.map((c) => <option value={c.code} data-region={r.region}>{c.name}</option>)}
                 </optgroup>
               ))
             }
           </select>
-          <p class="field__hint">Includes worldwide programmes.</p>
         </div>
+        <div class:list={[seg, 'flex-1']}>
+          <label class={segLabel} for="ask-within">When</label>
+          <select id="ask-within" name="within" class={segSelect}>
+            <option value="">Any deadline</option>
+            <option value="7">Closes within 7 days</option>
+            <option value="30">Within 30 days</option>
+            <option value="90">Within 90 days</option>
+          </select>
+        </div>
+        <div class:list={[seg, 'flex-1']}>
+          <label class={segLabel} for="ask-applicant">Who</label>
+          <select id="ask-applicant" name="applicant" class={segSelect}>
+            <option value="">Anyone</option>
+            {usedApplicants.map(([k, label]) => <option value={k}>{label}</option>)}
+          </select>
+        </div>
+        <Button type="submit" className="h-auto shrink-0 rounded-xl px-7 max-md:col-span-2 max-md:h-11">
+          <Search className="size-5!" aria-hidden="true" /><span>Search</span>
+        </Button>
+      </form>
+    </div>
+  </div>
 
-        <fieldset class="field">
-          <legend class="field__label">How to apply</legend>
-          {
-            routes.map(([k, label]) => (
-              <label class="check">
-                <input type="checkbox" name="access" value={k} />
-                <span class="check__text">{label}</span>
-                <span class="check__n mono" data-n={`access:${k}`} />
-              </label>
-            ))
-          }
-        </fieldset>
+  <div class="wrap mt-6 grid grid-cols-[minmax(0,1fr)] gap-3 xl:mt-8 xl:grid-cols-[15.375rem_minmax(0,1fr)] xl:gap-3">
+    <a class={skipLink} href="#results">Skip to results</a>
+    {/* Wide screens: the filters ride in a sticky column. Phones and tablets: they open in a sheet.
+        The scroller's own padding keeps every focus ring inside it (the ring reaches 5px out), and its 1rem
+        right lane, with the gutter reserved, keeps an overlay scrollbar (macOS) or a classic one (Windows)
+        off the counts and chevrons. The column is 14rem of filters plus that padding. */}
+    <form
+      class="xl:sticky xl:top-0 xl:max-h-dvh xl:self-start xl:overflow-y-auto xl:pt-2 xl:pr-4 xl:pb-6 xl:pl-1.5 xl:[scrollbar-gutter:stable] xl:[scrollbar-width:thin]"
+      role="search"
+      aria-label="Search and filter funding"
+      data-form
+    >
+      <div class="grid grid-cols-[minmax(0,1fr)_auto] gap-2 xl:grid-cols-[minmax(0,1fr)] xl:pt-1">
+        {/* Wide screens: how many show heads the filters, on the table header's baseline (-3px). Narrower, it
+            sits above the table. */}
+        <p class="col-span-full -mt-0.75 mb-2 hidden items-baseline justify-between gap-3 text-sm text-muted-foreground xl:flex">
+          <span class="tabular-nums" data-shown>{now.length} of {sorted.length} shown</span>
+          <button type="button" class="linkish" data-reset data-clear hidden>Clear all</button>
+        </p>
+        <Label htmlFor="q" className="col-span-full mb-[0.3rem] max-xl:sr-only">Search</Label>
+        <Input id="q" name="q" type="search" placeholder="Search funder or place" autoComplete="off" />
+        <button
+          type="button"
+          class="inline-flex min-h-10 cursor-pointer items-center gap-2 rounded-md border border-input bg-card px-3 text-md font-medium text-foreground shadow-xs hover:bg-muted xl:hidden!"
+          data-sheet-open
+          aria-controls="filters"
+          aria-expanded="false"
+        >
+          <SlidersHorizontal className="size-4" aria-hidden="true" />
+          Filters <Badge variant="count" data-filter-count="" hidden />
+        </button>
+      </div>
 
-        <fieldset class="field">
-          <legend class="field__label">Who can apply</legend>
-          {
-            usedApplicants.map(([k, label]) => (
-              <label class="check">
-                <input type="checkbox" name="applicant" value={k} />
-                <span class="check__text">{label}</span>
-                <span class="check__n mono" data-n={`applicant:${k}`} />
-              </label>
-            ))
-          }
-        </fieldset>
-
-        <fieldset class="field" data-more>
-          <legend class="field__label">Restoration approach</legend>
-          {
-            usedApproaches.map(([k, label]) => (
-              <label class="check">
-                <input type="checkbox" name="approach" value={k} />
-                <span class="check__text">{label}</span>
-                <span class="check__n mono" data-n={`approach:${k}`} />
-              </label>
-            ))
-          }
-          <button type="button" class="linkish more" data-more-toggle data-label={`Show all ${usedApproaches.length}`} aria-expanded="false" hidden>
-            Show all {usedApproaches.length}
+      <div class="fixed inset-0 z-29 bg-backdrop xl:hidden!" data-backdrop hidden></div>
+      <div
+        class="max-xl:fixed max-xl:inset-x-0 max-xl:bottom-0 max-xl:z-30 max-xl:flex max-xl:max-h-[calc(100dvh-1.5rem)] max-xl:flex-col max-xl:rounded-t-xl max-xl:bg-ground max-xl:shadow-[0_-8px_32px_rgb(0_0_0/0.3)] max-xl:not-data-open:hidden md:max-xl:inset-y-0 md:max-xl:left-auto md:max-xl:max-h-none md:max-xl:w-[26rem] md:max-xl:rounded-none md:max-xl:rounded-l-xl xl:mt-3"
+        id="filters"
+        data-sheet
+        aria-label="Filters"
+      >
+        <div class="flex items-center justify-between border-b border-rule pt-[0.6rem] pr-2 pb-[0.4rem] pl-4 xl:hidden!">
+          <h2 class="text-2xl">Filters</h2>
+          <button type="button" class="grid size-11 cursor-pointer place-items-center rounded-md text-foreground hover:bg-muted" data-sheet-close aria-label="Close filters">
+            <X className="size-5" aria-hidden="true" />
           </button>
-        </fieldset>
-
-        <fieldset class="field">
-          <legend class="field__label">Grant size</legend>
-          {
-            Object.entries(sizeBuckets).map(([k, b]) => (
-              <label class="check">
-                <input type="checkbox" name="size" value={k} />
-                <span class="check__text">{b.label}</span>
-                <span class="check__n mono" data-n={`size:${k}`} />
-              </label>
-            ))
-          }
-          <p class="field__hint">Converted roughly to US dollars, only for this filter.</p>
-        </fieldset>
-        <button type="button" class="button filters__done" data-filters-done>Show results</button>
         </div>
-      </details>
+
+        <div class="max-xl:flex-1 max-xl:overflow-y-auto max-xl:overscroll-contain max-xl:px-4">
+          {/* Sorting sits in the sheet on phones and tablets; wide screens sort from the table header. */}
+          <div class="border-b border-rule py-3 xl:hidden">
+            <Label htmlFor="sort" className="mb-[0.3rem]">Sort by</Label>
+            <NativeSelect id="sort" data-sort-select="">
+              <option value="deadline">Soonest deadline</option>
+              <option value="amount">Largest amount</option>
+              <option value="checked">Recently checked</option>
+            </NativeSelect>
+          </div>
+          <fieldset class={group} data-group="status">
+            <legend class={groupTitle}>Status<Badge variant="count" data-gcount="status" hidden /></legend>
+            <div>
+              {
+                states.map((s) => (
+                  <>
+                    {/* The counts are honest totals; these two sit folded on the page until asked for. */}
+                    {s === 'none' && <p class="mt-2 mb-1 border-t border-border pt-2 text-xs text-muted-foreground">Folded under “Not open now”</p>}
+                    <label class={opt}>
+                      <input class={optInput} type="checkbox" name="status" value={s} />
+                      <span class={optText}>{stateFilterLabels[s]}</span>
+                      <span class={optN} data-n={`status:${s}`}>{count(s)}</span>
+                    </label>
+                  </>
+                ))
+              }
+            </div>
+          </fieldset>
+
+          <fieldset class={group} data-group="access">
+            <legend class={groupTitle}>How to apply<Badge variant="count" data-gcount="access" hidden /></legend>
+            <div>
+              {
+                routes.map(([k, label]) => (
+                  <label class={opt}>
+                    <input class={optInput} type="checkbox" name="access" value={k} />
+                    <span class={optText}>{label}</span>
+                    <span class={optN} data-n={`access:${k}`} />
+                  </label>
+                ))
+              }
+            </div>
+          </fieldset>
+
+          <fieldset class={group} data-group="size">
+            <legend class={groupTitle}>Grant size<Badge variant="count" data-gcount="size" hidden /></legend>
+            <div>
+              {
+                Object.entries(sizeBuckets).map(([k, b]) => (
+                  <label class={opt}>
+                    <input class={optInput} type="checkbox" name="size" value={k} />
+                    <span class={optText}>{b.label}</span>
+                    <span class={optN} data-n={`size:${k}`} />
+                  </label>
+                ))
+              }
+              <p class={groupHint}>Converted roughly to US dollars, only for this filter.</p>
+            </div>
+          </fieldset>
+
+        </div>
+
+        <div class="flex items-center gap-3 border-t border-rule bg-surface px-4 pt-[0.65rem] pb-[calc(0.65rem+env(safe-area-inset-bottom))] xl:hidden!">
+          <button type="button" class="min-h-11 cursor-pointer px-2 text-link underline underline-offset-[0.18em]" data-reset>Clear all</button>
+          <Button className="flex-1" data-sheet-done="">Show {sorted.length} results</Button>
+        </div>
+      </div>
     </form>
 
-    <section class="results" aria-labelledby="results-title">
-      <div class="results__head">
-        <h2 id="results-title" class="results__count" aria-live="polite" data-result-count>
-          {sorted.length} programmes
+    {/* The results are a container: the summary, the bar and the table reflow by their own width. */}
+    <section class="results @container/tbl min-w-0" id="results" tabindex="-1" aria-label="Funding programmes">
+      {/* Where the sidebar is a sheet: the status as quick toggles, then how many show. Wide screens have both in
+          the sidebar. */}
+      <div class="flex flex-wrap items-center justify-between gap-x-4 gap-y-2 pb-3 xl:hidden @max-[40rem]/tbl:gap-y-1.5 @max-[40rem]/tbl:pb-2">
+        <h2
+          id="summary"
+          class="flex flex-wrap items-center gap-2 font-sans text-base leading-[1.3] font-normal [text-wrap:initial] @max-[40rem]/tbl:mx-[calc(var(--gutter)*-1)] @max-[40rem]/tbl:snap-x @max-[40rem]/tbl:scroll-px-(--gutter) @max-[40rem]/tbl:flex-nowrap @max-[40rem]/tbl:overflow-x-auto @max-[40rem]/tbl:px-(--gutter) @max-[40rem]/tbl:py-1 @max-[40rem]/tbl:[scrollbar-width:none]"
+          data-summary
+        >
+          <button type="button" class={quick} data-quick="status:open" aria-pressed="false"><span data-ql="open">Open now</span> <b class={quickN} data-qn="open">{count('open')}</b></button>
+          <button type="button" class={quick} data-quick="status:rolling" aria-pressed="false">Rolling <b class={quickN} data-qn="rolling">{count('rolling')}</b></button>
+          <button type="button" class={quick} data-quick="status:upcoming" aria-pressed="false">Upcoming <b class={quickN} data-qn="upcoming">{count('upcoming')}</b></button>
         </h2>
-        <p class="results__sort">Soonest deadline first</p>
+        {/* One way back to everything; each filter shows in its own control, so no chips. The sort sentence only
+            on phones, where the table has no header to show it. */}
+        <div class="flex basis-full flex-wrap items-center gap-x-3 gap-y-1 text-sm text-muted-foreground">
+          <span class="whitespace-nowrap tabular-nums" data-shown>{now.length} of {sorted.length} shown</span>
+          <span class="@min-[40rem]/tbl:hidden" data-sort-line>Open calls first, soonest deadline first</span>
+          <button type="button" class="linkish" data-reset data-clear hidden>Clear all filters</button>
+        </div>
       </div>
-      <div class="chips" data-chips hidden></div>
+      <p class="sr-only" aria-live="polite" data-live></p>
 
-      <div class="columns" aria-hidden="true">
-        <span>Programme and funder</span><span>Deadline</span><span>Amount</span>
+      {/* shadcn/ui Table in a Card; on phones each row becomes its own card (src/styles/finder.css). */}
+      <div class="tbl-wrap" data-table>
+      <Table className="tbl">
+        <TableCaption className="sr-only">Funding programmes. Sortable by deadline, amount and date checked.</TableCaption>
+        <TableHeader>
+          <TableRow>
+            <TableHead scope="col" className="h-prog">Programme and funder</TableHead>
+            <TableHead scope="col" className="h-dl" aria-sort="ascending" data-col="deadline">
+              <button type="button" data-sort="deadline">Deadline <span class="arrow" aria-hidden="true"><ChevronsUpDown className="i-none" /><ArrowUp className="i-asc" /><ArrowDown className="i-desc" /></span></button>
+            </TableHead>
+            <TableHead scope="col" className="h-amount" data-col="amount">
+              <button type="button" data-sort="amount">Amount <span class="arrow" aria-hidden="true"><ChevronsUpDown className="i-none" /><ArrowUp className="i-asc" /><ArrowDown className="i-desc" /></span></button>
+              <button type="button" class="h-checked" data-sort="checked" data-alt-for="checked">Checked <span class="arrow" aria-hidden="true"><ChevronsUpDown className="i-none" /><ArrowUp className="i-asc" /><ArrowDown className="i-desc" /></span></button>
+            </TableHead>
+          </TableRow>
+        </TableHeader>
+        <TableBody data-list="">
+          {now.map((l) => <Row listing={l} />)}
+        </TableBody>
+        <TableBody className="later-head" id="later-head" data-later-head="" hidden>
+          <TableRow>
+            <TableHead colSpan={3} scope="colgroup">
+              <span class="later-head__title">Not open now</span>
+              <span class="later-head__hint">No call found, or closed. Listed so you can plan ahead.</span>
+              <button type="button" class="linkish" data-later-hide>Hide</button>
+            </TableHead>
+          </TableRow>
+        </TableBody>
+        <TableBody className="later-rows" id="later-rows" data-list-later="" hidden>
+          {later.map((l) => <Row listing={l} />)}
+        </TableBody>
+      </Table>
       </div>
-      <ol class="list" data-list>
-        {now.map((l) => <Listing listing={l} />)}
-      </ol>
 
-      <details class="later" data-later>
-        <summary class="later__toggle">
-          <span>Not open now <span class="later__hint">No open call, or closed</span></span>
-          <span class="later__n mono" data-later-count>{later.length}</span>
-        </summary>
-        <ol class="list" data-list-later>
-          {later.map((l) => <Listing listing={l} />)}
-        </ol>
-      </details>
+      <button
+        type="button"
+        class="mt-4 flex min-h-12 w-full cursor-pointer flex-wrap items-center justify-between gap-x-4 gap-y-1 rounded-lg border border-border bg-card px-4 py-[0.6rem] text-left text-foreground shadow-xs hover:bg-muted"
+        data-later-toggle
+        data-endfold
+        aria-controls="later-head later-rows"
+        aria-pressed="false"
+      >
+        <span class="font-medium">Not open now</span>
+        <span class="text-link underline underline-offset-[0.18em]">Show all <b class={num} data-qn="later">{later.length}</b></span>
+      </button>
 
-      <div class="empty" data-empty hidden>
-        <h3>Nothing matches.</h3>
-        <p>Try another search, remove a filter, or <button type="button" class="linkish" data-reset>clear all</button>.</p>
+      <DigestSignup compact />
+
+      <div class="px-2 py-8" data-empty hidden>
+        <h3 class="text-2xl" data-empty-head>Nothing matches.</h3>
+        <p class="mt-[0.4rem] text-ink-2" data-empty-text>Try another search, remove a filter, or <button type="button" class="linkish" data-reset>clear all</button>.</p>
       </div>
       <noscript>
-        <p class="noscript">Filters need JavaScript. Every programme is listed above, soonest deadline first.</p>
+        <p class="pt-4 text-ink-2">Filters and sorting need JavaScript. Calls open now are listed above, soonest deadline first.</p>
       </noscript>
     </section>
   </div>
 </Base>
 
 <script>
-  import { initFinder } from '../lib/finder'
-  initFinder()
+  import { initTableFinder } from '../lib/finder'
+  initTableFinder()
 </script>
-
-<style>
-  .band {
-    padding-block: 1.25rem 1.5rem;
-  }
-  @media (min-width: 48rem) {
-    .band {
-      padding-block: 1.75rem 2.25rem;
-    }
-  }
-  .band__title {
-    max-width: 22ch;
-    font-size: clamp(1.375rem, 0.95rem + 2.2vw, 2.75rem);
-    font-weight: 800;
-    letter-spacing: -0.02em;
-    line-height: 1.1;
-  }
-  .band__lede {
-    max-width: 62ch;
-    margin-top: 0.9rem;
-    color: var(--shell-ink-2);
-    font-size: 1.0625rem;
-  }
-  @media (max-width: 47.99rem) {
-    .band__more {
-      display: none;
-    }
-    .band__lede {
-      font-size: 0.9375rem;
-      margin-top: 0.5rem;
-    }
-  }
-  .band__stats {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.35rem 1.5rem;
-    margin-top: 1.25rem;
-    font-size: 0.9375rem;
-    color: var(--shell-ink-2);
-  }
-  .band__stats strong {
-    color: var(--shell-ink);
-    font-size: 1.125rem;
-  }
-  /* Phones: the results count says the same, and the first grant moves up a screen. */
-  @media (max-width: 47.99rem) {
-    .band__stats {
-      display: none;
-    }
-  }
-
-  .finder {
-    display: grid;
-    grid-template-columns: minmax(0, 1fr);
-    gap: 1.25rem;
-    margin-top: 1.5rem;
-  }
-  @media (min-width: 60rem) {
-    .finder {
-      grid-template-columns: 16.5rem minmax(0, 1fr);
-      gap: 2.5rem;
-      margin-top: 2rem;
-    }
-    .filters {
-      align-self: start;
-    }
-  }
-
-  .filters__toggle {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    min-height: 2.75rem;
-    padding: 0.5rem 1rem;
-    border-radius: var(--radius);
-    background: var(--surface);
-    box-shadow: inset 0 0 0 1.5px var(--rule-strong);
-    font-weight: 700;
-    cursor: pointer;
-    list-style: none;
-  }
-  .filters__toggle::-webkit-details-marker {
-    display: none;
-  }
-  @media (min-width: 60rem) {
-    .filters__toggle {
-      display: none;
-    }
-  }
-  .filters__toggle::after {
-    content: '';
-    width: 0.55rem;
-    height: 0.55rem;
-    border-right: 2px solid currentColor;
-    border-bottom: 2px solid currentColor;
-    transform: translateY(-25%) rotate(45deg);
-  }
-  .filters__panel[open] .filters__toggle::after {
-    transform: translateY(25%) rotate(-135deg);
-  }
-  .filters__done {
-    justify-content: center;
-  }
-  @media (min-width: 60rem) {
-    .filters__done {
-      display: none;
-    }
-  }
-  .filters__count {
-    margin-left: auto;
-    margin-right: 0.75rem;
-    padding: 0 0.45rem;
-    border-radius: 2px;
-    background: var(--tape-open);
-    color: var(--tape-ink);
-    font-size: 0.8125rem;
-  }
-  .filters {
-    display: grid;
-    gap: 0.75rem;
-  }
-  .filters__form {
-    display: grid;
-    gap: 1.4rem;
-    padding: 1.25rem 0 0.5rem;
-  }
-  @media (min-width: 60rem) {
-    .filters {
-      gap: 1.4rem;
-    }
-    .filters__form {
-      padding: 0 0 1rem;
-    }
-  }
-
-  .field {
-    margin: 0;
-    padding: 0;
-    border: 0;
-    min-width: 0;
-  }
-  .field__label {
-    display: block;
-    margin-bottom: 0.45rem;
-    padding: 0;
-    font-size: 0.8125rem;
-    font-weight: 700;
-    letter-spacing: 0.02em;
-    text-transform: uppercase;
-    color: var(--ink-2);
-  }
-  .field__hint {
-    margin-top: 0.4rem;
-    font-size: 0.8125rem;
-    color: var(--ink-2);
-  }
-  input[type='search'],
-  select {
-    width: 100%;
-    min-height: 2.75rem;
-    padding: 0.5rem 0.75rem;
-    border: 1.5px solid var(--rule-strong);
-    border-radius: var(--radius);
-    background: var(--surface);
-    color: var(--ink);
-    font: inherit;
-    font-size: 1rem;
-  }
-  input[type='search']::placeholder {
-    color: var(--ink-2);
-    opacity: 1;
-  }
-  input[type='search']:focus-visible,
-  select:focus-visible {
-    border-color: var(--focus);
-    outline-offset: 0;
-  }
-  .check {
-    display: flex;
-    align-items: center;
-    gap: 0.6rem;
-    min-height: 2.25rem;
-    font-size: 0.9875rem;
-    cursor: pointer;
-  }
-  .check input {
-    flex: none;
-    width: 1.15rem;
-    height: 1.15rem;
-    margin: 0;
-    accent-color: var(--shell);
-  }
-  @media (prefers-color-scheme: dark) {
-    .check input {
-      accent-color: var(--tape-open);
-    }
-  }
-  .check__text {
-    flex: 1;
-  }
-  .check__n {
-    font-size: 0.8125rem;
-    color: var(--ink-2);
-  }
-  /* Long option lists show their first six until asked; a ticked option always shows. */
-  [data-more][data-collapsed] .check:nth-of-type(n + 7):not(:has(input:checked)) {
-    display: none;
-  }
-  .more {
-    margin-top: 0.35rem;
-    font-size: 0.9375rem;
-  }
-  @media (max-width: 59.99rem) {
-    .field__label--search {
-      position: absolute;
-      width: 1px;
-      height: 1px;
-      overflow: hidden;
-      clip: rect(0 0 0 0);
-      white-space: nowrap;
-    }
-  }
-  .check:has(input:disabled) {
-    color: var(--ink-2);
-    cursor: default;
-  }
-
-  .results__head {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: baseline;
-    justify-content: space-between;
-    gap: 0.25rem 1rem;
-    padding-bottom: 0.75rem;
-    border-bottom: 2px solid var(--ink);
-  }
-  .results__count {
-    font-size: 1.25rem;
-    font-weight: 800;
-  }
-  .results__sort {
-    font-size: 0.875rem;
-    color: var(--ink-2);
-  }
-  .chips {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.4rem;
-    padding-top: 0.75rem;
-  }
-  .chips[hidden] {
-    display: none;
-  }
-  .results {
-    container: listings / inline-size;
-  }
-  .columns {
-    display: none;
-  }
-  @container listings (min-width: 52rem) {
-    .columns {
-      display: grid;
-      grid-template-columns: minmax(0, 1fr) 11rem 9rem;
-      column-gap: 2rem;
-      padding: 0.6rem 0.75rem 0.5rem;
-      border-bottom: 1px solid var(--rule);
-      font-size: 0.75rem;
-      font-weight: 700;
-      letter-spacing: 0.02em;
-      text-transform: uppercase;
-      color: var(--ink-2);
-    }
-  }
-  .list {
-    margin: 0;
-    padding: 0;
-    list-style: none;
-  }
-  .later {
-    margin-top: 2rem;
-  }
-  .later__toggle {
-    display: flex;
-    align-items: center;
-    gap: 0.6rem;
-    min-height: 2.75rem;
-    padding: 0.5rem 0;
-    border-bottom: 2px solid var(--ink);
-    font-size: 1.0625rem;
-    font-weight: 700;
-    cursor: pointer;
-    list-style: none;
-  }
-  .later__toggle::-webkit-details-marker {
-    display: none;
-  }
-  .later__toggle::before {
-    content: '';
-    flex: none;
-    width: 0.5rem;
-    height: 0.5rem;
-    border-right: 2px solid currentColor;
-    border-bottom: 2px solid currentColor;
-    transform: rotate(-45deg);
-  }
-  .later__hint {
-    margin-left: 0.4rem;
-    font-size: 0.875rem;
-    font-weight: 400;
-    color: var(--ink-2);
-  }
-  @media (max-width: 47.99rem) {
-    .later__hint {
-      display: block;
-      margin-left: 0;
-    }
-  }
-  .later__n {
-    margin-left: auto;
-    padding: 0 0.45rem;
-    border-radius: 2px;
-    background: var(--sunk);
-    box-shadow: inset 0 0 0 1px var(--rule);
-    font-size: 0.875rem;
-  }
-  .later[open] .later__toggle::before {
-    transform: translateY(-20%) rotate(45deg);
-  }
-  .empty {
-    padding: 2.5rem 0;
-  }
-  .empty h3 {
-    font-size: 1.25rem;
-  }
-  .empty p {
-    margin-top: 0.5rem;
-    color: var(--ink-2);
-  }
-  .linkish {
-    padding: 0;
-    border: 0;
-    background: none;
-    color: var(--link);
-    font: inherit;
-    text-decoration: underline;
-    text-underline-offset: 0.18em;
-    cursor: pointer;
-  }
-  .noscript {
-    padding-top: 1rem;
-    color: var(--ink-2);
-  }
-</style>
-
-<style is:global>
-  .chip {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.4rem;
-    min-height: 2rem;
-    padding: 0.2rem 0.4rem 0.2rem 0.65rem;
-    border: 1.5px solid var(--rule-strong);
-    border-radius: 2px;
-    background: var(--surface);
-    color: var(--ink);
-    font: inherit;
-    font-size: 0.875rem;
-    cursor: pointer;
-  }
-  .chip:hover {
-    border-color: var(--ink);
-  }
-  .chip__x {
-    display: inline-grid;
-    place-items: center;
-    width: 1.25rem;
-    height: 1.25rem;
-    color: var(--ink-2);
-  }
-  .chip--clear {
-    border-color: transparent;
-    background: none;
-    color: var(--link);
-    text-decoration: underline;
-  }
-</style>
