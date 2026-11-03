@@ -26,13 +26,14 @@ const { p, state, call } = listing
 const noCallRoute = p.access === 'intermediary' || p.access === 'invitation_only'
 const primary = primaryAction(listing, openChildren, childCount)
 const applyEvidence = applyEvidenceFor(listing)
+/** The funder's words behind an upcoming date: proof, so it sits with the source under the button. */
+const upcomingQuote = state === 'upcoming' ? (call?.evidence.opens ?? (call?.expected ? call.evidence.status : undefined))?.quote : undefined
 const narrowedPrimary =
   'group-data-narrowed/apply:border-transparent group-data-narrowed/apply:bg-primary group-data-narrowed/apply:text-primary-foreground group-data-narrowed/apply:shadow-none group-data-narrowed/apply:hover:bg-action-hover'
 ---
 
 {/* One part of the apply box: what to do, for every country or for one call group. */}
 <div class:list={[group && '[&+&]:mt-5 [&+&]:border-t [&+&]:border-rule [&+&]:pt-4 group-data-narrowed/apply:mt-0! group-data-narrowed/apply:border-0! group-data-narrowed/apply:pt-0!']} data-group={group?.codes ?? '*'} data-call-label={call?.label}>
-  {group && <p class="mb-2 text-sm font-bold text-ink-2">{group.codes === '*' ? group.label : <Countries codes={group.codes.split(' ')} />}</p>}
   <div class="flex flex-wrap items-center gap-x-[0.85rem] gap-y-2">
     {/* Invitation-only funders and umbrellas never have a call of their own: the route is their status. */}
     <span class="flex flex-wrap items-center gap-2">
@@ -60,6 +61,8 @@ const narrowedPrimary =
       {state === 'none' && !noCallRoute && (call?.recurring ? <>Windows each year</> : <>No call listed</>)}
     </h2>
   </div>
+  {/* Which countries this call is for: it confirms the headline, so it comes right under it. */}
+  {group && <p class="mt-1 text-sm text-ink-2">{group.codes === '*' ? group.label : <Countries codes={group.codes.split(' ')} />}</p>}
   {
     state === 'open' && call?.deadline && (
       <dl class="mt-3 mb-0 grid gap-[0.35rem] text-md *:grid *:grid-cols-[max-content_minmax(0,1fr)] *:gap-3 [&_dd]:m-0 [&_dt]:text-ink-2">
@@ -72,9 +75,6 @@ const narrowedPrimary =
     {state === 'open' && call && !call.deadline && !call.recurring && <>{call.label}. The funder’s page gives no dated deadline, so check that the window is still open before you apply.</>}
     {state === 'open' && call?.recurring && !call.deadline && <>{call.recurring}, each year. The page gives no year, so check which date comes next before you apply.</>}
     {state === 'rolling' && call && !/rolling/i.test(call.label) && <>{call.label}</>}
-    {state === 'upcoming' && (call?.evidence.opens ?? (call?.expected && call.evidence.status)) && (
-      <>The funder says: “{(call.evidence.opens ?? call.evidence.status)!.quote}”{' '}</>
-    )}
     {state === 'none' && call?.recurring && <>{call.recurring}. The funder’s page doesn’t say whether one is open now.</>}
     {state === 'upcoming' && call?.deadline && <>Closes {longDate(call.deadline.date)}.</>}
     {call?.note && (state === 'open' || state === 'upcoming') && <> {call.note}.</>}
@@ -91,7 +91,7 @@ const narrowedPrimary =
     }
     {openChildren.length > 1 && <> {openChildren.length} partner programmes are open now. They come first in the list below.</>}
   </p>
-  <div class="mt-4 flex flex-wrap items-center gap-x-5 gap-y-3">
+  <div class="mt-4">
     {/* Side by side, each group's button is quiet; it turns primary once the box narrows to that group. */}
     <Button
       href={primary.href}
@@ -100,6 +100,10 @@ const narrowedPrimary =
       className={`whitespace-normal text-center 2xl:w-full ${group && !primary.quiet ? narrowedPrimary : ''}`}
       data-primary={primary.quiet ? undefined : ''}
     >{primary.text}</Button>
+  </div>
+  {/* The proof: the funder's own words, then its page and when we last read it. */}
+  <div class="mt-3">
+    {upcomingQuote && <p class="mb-2 text-md text-ink-2">The funder says: “{upcomingQuote}”</p>}
     {
       applyEvidence ? (
         <CheckedTag checked={applyEvidence.checked_at} source={{ url: applyEvidence.source_url, label: pageLabel(applyEvidence.source_url) }} reason={notRecheckedPage(applyEvidence.source_url)} />

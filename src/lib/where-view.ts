@@ -75,7 +75,8 @@ export function initWhereView() {
     }
 
     if (where) {
-      place('chip')
+      // The apply box's country picker already says the place and leads out of it.
+      if (!select) place('chip')
       if (covered) {
         const via = place('covered')?.querySelector<HTMLElement>('[data-where-via]')
         if (via && part?.dataset.callLabel && part.dataset.group !== '*') via.textContent = `, in the call “${part.dataset.callLabel}”`
