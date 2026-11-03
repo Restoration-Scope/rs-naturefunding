@@ -19,7 +19,13 @@ type Item = {
   sets: Record<Multi, string[]>
   where: string[]
   text: string
+  /** The deadline cell for each call group, when the programme's calls differ by country; the first is the built one. */
+  cells: Cell[]
+  cell: Cell | null
 }
+
+/** One version of a row's deadline cell: `codes` are the countries it is for, `*` the rest, empty the built cell. */
+type Cell = { codes: string[]; state: string; deadline: string; opens: string; html: string }
 
 type Filters = { q: string; within: string; where: string } & Record<Multi, string[]>
 
@@ -91,23 +97,17 @@ export function initTableFinder() {
       return []
     }
     if (age > AGING_DAYS) for (const st of el.querySelectorAll('.stamp')) st.setAttribute('data-aging', '')
-    let state = d.state ?? ''
     const deadline = d.deadline ?? ''
-    if (state === 'open' && deadline) {
-      const left = days(today, deadline)
-      const leftEl = el.querySelector<HTMLElement>('[data-left]')
-      if (left < 0) {
-        state = 'closed'
-        el.dataset.state = state
-        const dl = el.querySelector<HTMLElement>('.dl')
-        if (dl)
-          dl.innerHTML = `<span class="dl__when dl__when--muted">${shortDate(deadline)}</span><span class="dl__meta"><span class="status" data-state="closed">Closed</span></span>`
-      } else if (leftEl) {
-        leftEl.textContent = left === 0 ? 'Closes today' : left === 1 ? '1 day left' : `${left} days left`
-        leftEl.toggleAttribute('data-soon', left <= 7)
-      }
-    }
     const split = (s?: string) => (s ? s.split(' ') : [])
+    const alts = [...el.querySelectorAll<HTMLTemplateElement>('template[data-where-dl]')].map((t) => ({
+      codes: split(t.dataset.whereDl),
+      state: t.dataset.state ?? '',
+      deadline: t.dataset.deadline ?? '',
+      opens: t.dataset.opens ?? '',
+      html: t.innerHTML,
+    }))
+    const built = { codes: [], state: d.state ?? '', deadline, opens: d.opens ?? '', html: el.querySelector('.dl')?.innerHTML ?? '' }
+    const state = freshen(el, built.state, deadline)
     return [
       {
         el,
@@ -126,9 +126,52 @@ export function initTableFinder() {
         },
         where: split(d.where),
         text: d.text ?? '',
+        cells: alts.length ? [built, ...alts] : [],
+        cell: alts.length ? built : null,
       },
     ]
   })
+
+  /** Days left on an open call, or Closed once its deadline has passed since the build. Returns the state it shows. */
+  function freshen(el: HTMLElement, state: string, deadline: string) {
+    if (state !== 'open' || !deadline) return state
+    const left = days(today, deadline)
+    const leftEl = el.querySelector<HTMLElement>('[data-left]')
+    if (left < 0) {
+      el.dataset.state = 'closed'
+      const dl = el.querySelector<HTMLElement>('.dl')
+      if (dl)
+        dl.innerHTML = `<span class="dl__when dl__when--muted">${shortDate(deadline)}</span><span class="dl__meta"><span class="status" data-state="closed">Closed</span></span>`
+      return 'closed'
+    }
+    if (leftEl) {
+      leftEl.textContent = left === 0 ? 'Closes today' : left === 1 ? '1 day left' : `${left} days left`
+      leftEl.toggleAttribute('data-soon', left <= 7)
+    }
+    return state
+  }
+
+  /** Rows whose calls differ by country show the call for the Where's country. True when any row changed. */
+  function localize(where: string) {
+    const country = where && !where.startsWith('r:') ? where : ''
+    let changed = false
+    for (const i of items) {
+      if (!i.cell) continue
+      const alts = i.cells.slice(1)
+      const cell = (country && (alts.find((c) => c.codes.includes(country)) ?? alts.find((c) => c.codes[0] === '*'))) || i.cells[0]!
+      if (cell === i.cell) continue
+      i.cell = cell
+      const dl = i.el.querySelector<HTMLElement>('.dl')
+      if (dl) dl.innerHTML = cell.html
+      i.el.dataset.state = cell.state
+      i.state = freshen(i.el, cell.state, cell.deadline)
+      i.deadline = cell.deadline
+      i.opens = cell.opens
+      i.sets.status = [i.state]
+      changed = true
+    }
+    return changed
+  }
 
   // ---------- Sorting ----------
   const order: Record<string, number> = { open: 0, rolling: 1, upcoming: 2, none: 3, closed: 4 }
@@ -286,6 +329,7 @@ export function initTableFinder() {
 
   function apply() {
     const f = read()
+    if (localize(f.where)) applySort()
     // The programme page reads the Where, so the place carries through.
     for (const i of items) {
       const a = i.el.querySelector<HTMLAnchorElement>('a.name')

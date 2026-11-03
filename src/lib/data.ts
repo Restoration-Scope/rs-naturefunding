@@ -2,7 +2,7 @@ import { existsSync, readFileSync } from 'node:fs'
 import { join } from 'node:path'
 import { loadData } from '../data/load'
 import type { Call, Programme } from '../data/schema'
-import { countryRegion } from './geo'
+import { countriesByRegion, countryRegion } from './geo'
 import type { SizeBucket, State } from './labels'
 import { sizeBuckets } from './labels'
 
@@ -49,13 +49,19 @@ const byDeadline = (a: Call, b: Call) => (a.deadline?.date ?? '9999').localeComp
 export const callTakes = (c: Call, country: string) => !c.countries || c.countries.includes(country)
 
 /**
- * The call groups a "Where" can narrow a programme to: one per distinct set of call countries, as the
- * country codes a visitor's Where matches. Empty when every call is open to all the programme's countries.
+ * The programme split by the calls each place can apply to: one group per distinct set of call countries,
+ * then the rest (`codes: null`) when some place falls outside every group. Empty when no call names countries.
  */
-export function callGroups(p: Programme): { codes: string[]; listing: Listing }[] {
+export function callGroups(p: Programme): { codes: string[] | null; listing: Listing }[] {
   const sets = new Map<string, string[]>()
   for (const c of p.calls) if (c.countries) sets.set(c.countries.join(' '), c.countries)
-  return [...sets.values()].map((codes) => ({ codes, listing: listingFor(p, buildDate, codes[0]) }))
+  if (sets.size === 0) return []
+  const groups: { codes: string[] | null; listing: Listing }[] = [...sets.values()].map((codes) => ({ codes, listing: listingFor(p, buildDate, codes[0]) }))
+  const inGroup = new Set([...sets.values()].flat())
+  const g = p.geography
+  const outside = g?.scope === 'countries' ? g.countries.find((k) => !inGroup.has(k)) : 'ZZ' // ZZ: a code no country has
+  if (outside || p.calls.some((c) => !c.countries)) groups.push({ codes: null, listing: listingFor(p, buildDate, outside ?? 'ZZ') })
+  return groups
 }
 
 /** `country`: only the calls that take projects from it set the state. */
@@ -142,6 +148,14 @@ export function whereCodes(p: Programme): string {
   if (g.scope === 'regions') return g.regions.map((r) => `R:${r}`).join(' ')
   const regions = new Set(g.countries.map((c) => countryRegion[c]).filter(Boolean))
   return [...g.countries, ...[...regions].map((r) => `r:${r}`)].join(' ')
+}
+
+/** whereCodes with each region spelled out as its countries, so a page can tell whether it takes one country. */
+export function whereReach(p: Programme): string {
+  const g = p.geography
+  if (g?.scope !== 'regions') return whereCodes(p)
+  const countries = countriesByRegion.filter((r) => g.regions.includes(r.region)).flatMap((r) => r.countries.map((c) => c.code))
+  return [whereCodes(p), ...countries].join(' ')
 }
 
 export const stats = {

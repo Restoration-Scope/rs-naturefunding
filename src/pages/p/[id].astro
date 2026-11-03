@@ -1,7 +1,7 @@
 ---
 import type { GetStaticPaths } from 'astro'
 import Base from '../../layouts/Base.astro'
-import ApplyBox from '../../components/ApplyBox.astro'
+import ApplyPart from '../../components/ApplyPart.astro'
 import Fact from '../../components/Fact.astro'
 import Listing from '../../components/Listing.astro'
 import OrgMark from '../../components/OrgMark.astro'
@@ -10,10 +10,10 @@ import { primaryAction } from '../../lib/apply'
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
 import { cardClasses } from '@/components/ui/card'
-import { HIDDEN_DAYS, buildDate, callGroups, whereCodes, listingFor, programmeById, programmes, sortListings } from '../../lib/data'
+import { HIDDEN_DAYS, buildDate, callGroups, whereReach, listingFor, programmeById, programmes, sortListings } from '../../lib/data'
 import type { Programme } from '../../data/schema'
-import { amountText, geographyFull, geographyText, joinAnd, longDate } from '../../lib/format'
-import { countryName } from '../../lib/geo'
+import { amountText, geographyFull, joinAnd, longDate } from '../../lib/format'
+import { countryName, regionLabels } from '../../lib/geo'
 import {
   accessHelp,
   accessLabels,
@@ -61,22 +61,14 @@ const zoneName = (tz: string, date: string) => {
 const deadlineText = (d: NonNullable<Programme['calls'][number]['deadline']>) =>
   `${longDate(d.date)}${d.time ? `, ${d.time}${d.timezone ? ` ${zoneName(d.timezone, d.date)}` : ''}` : ''}`
 const primary = primaryAction(listing, openChildren, children.length)
-// Calls narrower than the programme (one per country window): the page reads the finder's Where and shows
-// the box, the calls and the coverage for that place. Static: every group renders, the script picks one.
+// Calls that name their countries split the apply box into one part per group. The page reads the finder's
+// Where (?where=CR) and narrows the box and the calls to that place; a select changes it (src/lib/where-view.ts).
 const groups = callGroups(p)
-const groupWhen = (l: ReturnType<typeof listingFor>) =>
-  l.state === 'open' && l.call?.deadline
-    ? `open now, apply by ${longDate(l.call.deadline.date)}`
-    : l.state === 'upcoming'
-      ? l.call?.opens
-        ? `opens ${longDate(l.call.opens)}`
-        : l.call?.expected
-          ? `expected to open ${l.call.expected}`
-          : 'not open yet'
-      : l.state === 'closed'
-        ? 'closed'
-        : stateLabels[l.state].toLowerCase()
-const programmeCountries = p.geography?.scope === 'countries' ? p.geography.countries : []
+const groupLabel = (codes: string[] | null) =>
+  codes ? joinAnd(codes.map(countryName)) : p.geography?.scope === 'countries' ? 'Other countries' : 'Everywhere else'
+const switchCountries = [...new Set(p.geography?.scope === 'countries' ? p.geography.countries : groups.flatMap((g) => g.codes ?? []))]
+  .map((code) => ({ code, name: countryName(code) }))
+  .sort((a, b) => a.name.localeCompare(b.name))
 /** The one date a folded call shows next to its name. */
 const callWhen = (c: Programme['calls'][number]) =>
   c.status === 'upcoming'
@@ -167,16 +159,18 @@ const jsonLd = [
     {p.kind === 'partnership' && <p class="mt-4 font-bold">Paid partnership, not a grant: the funder pays for work under a contract.</p>}
     <p class:list={['max-w-[62ch] text-lg max-md:text-base max-md:leading-[1.45]', p.kind === 'partnership' ? 'mt-[0.35rem]' : 'mt-4 max-md:mt-3']}>{p.summary}</p>
     <p class="mt-2 text-sm text-shell-ink-2">Summary in our words. Each fact below shows the funder’s own words and links to its page.</p>
-    {/* A and C: the page says whose view it is, and how to leave it. */}
-    <p class="mt-4 inline-flex flex-wrap items-center gap-x-2 gap-y-1 rounded-full bg-shell-ink/12 px-3 py-1 text-md" data-where-chip hidden>
-      <span>Showing what applies to projects in <strong data-where-name></strong></span>
-      <span aria-hidden="true">·</span>
-      <a href="?" class="underline" data-where-clear>See every country</a>
-    </p>
+    {/* With a Where, the page says whose view it is and how to leave it. */}
+    <template data-where-tpl="chip">
+      <p class="mt-4 inline-flex flex-wrap items-center gap-x-2 gap-y-1 rounded-full bg-shell-ink/12 px-3 py-1 text-md">
+        <span>Showing what applies to projects in <strong data-where-name></strong></span>
+        <span aria-hidden="true">·</span>
+        <a href="?" class="underline" data-where-clear>See every country</a>
+      </p>
+    </template>
   </div>
 
   {/* Wide screens: the apply box rides along in a right rail while the facts scroll. */}
-  <div data-where-codes={whereCodes(p)} class="wrap mr-auto ml-0 max-w-[calc(60rem+2*var(--gutter))] 2xl:mx-auto 2xl:grid 2xl:max-w-(--page) 2xl:grid-cols-[minmax(0,1fr)_20rem] 2xl:gap-x-12 2xl:*:col-start-1">
+  <div data-where-codes={whereReach(p)} data-region-names={JSON.stringify(regionLabels)} class="wrap mr-auto ml-0 max-w-[calc(60rem+2*var(--gutter))] 2xl:mx-auto 2xl:grid 2xl:max-w-(--page) 2xl:grid-cols-[minmax(0,1fr)_20rem] 2xl:gap-x-12 2xl:*:col-start-1">
     {
       hidden && (
         <p class="mt-8 rounded-lg bg-warn px-4 py-3 font-semibold text-warn-ink" role="note">
@@ -185,52 +179,46 @@ const jsonLd = [
         </p>
       )
     }
-    <ApplyBox listing={listing} openChildren={openChildren} childCount={children.length} data-apply-for="">
-      <label class="-mt-1 mb-4 flex flex-wrap items-center gap-x-3 gap-y-1 border-b border-rule pb-3 text-md" data-where-switch hidden>
-        <span class="text-ink-2">Your project is in</span>
-        <select class="min-h-9 rounded-md border border-control-edge bg-surface px-2 font-semibold" data-where-select>
-          <option value="">Any country</option>
-          {programmeCountries.map((k) => <option value={k}>{countryName(k)}</option>)}
-        </select>
-      </label>
-      {/* B: the general box stays and a note says what changes for the visitor's place. */}
-      <div class="-mt-1 mb-4 rounded-md bg-info px-3 py-2 text-md text-info-ink" data-where-note hidden>
-        <p class="font-bold">For projects in <span data-where-name></span></p>
-        {groups.map((g) => (
-          <p data-note-for={g.codes.join(' ')} hidden>
-            {g.listing.call === call
-              ? <>This call takes projects in <span data-where-name></span>.</>
-              : <>The call below doesn’t take projects in <span data-where-name></span>. Yours is <strong>{g.listing.call?.label}</strong>, {groupWhen(g.listing)}.</>}
-          </p>
-        ))}
-        <p data-note-for="covered" hidden><span data-where-name></span> is in this programme’s area.</p>
-        <p data-note-for="none" hidden>Not open to projects in <span data-where-name></span>. It takes projects in {geographyText(p.geography)}.</p>
-      </div>
-    </ApplyBox>
-    {groups.map((g, i) => (
-      <ApplyBox listing={g.listing} openChildren={openChildren} childCount={children.length} titleId={`apply-title-${i}`} data-apply-for={g.codes.join(' ')} hidden>
-      <label class="-mt-1 mb-4 flex flex-wrap items-center gap-x-3 gap-y-1 border-b border-rule pb-3 text-md" data-where-switch hidden>
-        <span class="text-ink-2">Your project is in</span>
-        <select class="min-h-9 rounded-md border border-control-edge bg-surface px-2 font-semibold" data-where-select>
-          <option value="">Any country</option>
-          {programmeCountries.map((k) => <option value={k}>{countryName(k)}</option>)}
-        </select>
-      </label>
-      </ApplyBox>
-    ))}
-    {/* A and C: a place the programme doesn't cover gets its own box, not a call it can't apply to. */}
-    <section class:list={[cardClasses, 'mt-6 px-5 pt-5 pb-[1.1rem] 2xl:sticky 2xl:top-6 2xl:col-start-2! 2xl:row-[1/span_12] 2xl:mt-12 2xl:self-start']} aria-labelledby="apply-title-none" data-apply-for="none" hidden>
-      <label class="-mt-1 mb-4 flex flex-wrap items-center gap-x-3 gap-y-1 border-b border-rule pb-3 text-md" data-where-switch hidden>
-        <span class="text-ink-2">Your project is in</span>
-        <select class="min-h-9 rounded-md border border-control-edge bg-surface px-2 font-semibold" data-where-select>
-          <option value="">Any country</option>
-          {programmeCountries.map((k) => <option value={k}>{countryName(k)}</option>)}
-        </select>
-      </label>
-      <Badge variant="status" state="closed">Not in your area</Badge>
-      <h2 id="apply-title-none" class="mt-2 text-3xl [text-wrap:pretty] 2xl:text-2xl">Not open to projects in <span data-where-name></span></h2>
-      <p class="mt-2 text-ink-2">It takes projects in {geographyFull(p.geography)}.</p>
-      <div class="mt-4"><Button href="/" variant="outline" width="phone" className="2xl:w-full" data-back><span>Back to funding in <span data-where-name></span></span></Button></div>
+    <section
+      class:list={[
+        cardClasses,
+        'group/apply mt-6 px-5 pt-5 pb-[1.1rem] 2xl:top-6 2xl:col-start-2! 2xl:row-[1/span_12] 2xl:mt-12 2xl:self-start',
+        // Every group's part together is too tall to ride along; one part is not.
+        groups.length ? '2xl:data-narrowed:sticky' : '2xl:sticky',
+      ]}
+      aria-labelledby={groups.length ? undefined : 'apply-title'}
+      aria-label={groups.length ? 'How to apply' : undefined}
+      data-apply
+    >
+      {
+        groups.length > 0 && (
+          <label class="-mt-1 mb-4 flex flex-wrap items-center gap-x-3 gap-y-1 border-b border-rule pb-3 text-md">
+            <span class="text-ink-2">Your project is in</span>
+            <select class="min-h-9 rounded-md border border-control-edge bg-surface px-2 font-semibold" data-where-select>
+              <option value="">Any country</option>
+              {switchCountries.map((c) => <option value={c.code}>{c.name}</option>)}
+            </select>
+          </label>
+        )
+      }
+      {
+        groups.length > 0 ? (
+          groups.map((g, i) => (
+            <ApplyPart listing={g.listing} openChildren={openChildren} childCount={children.length} titleId={`apply-title-${i}`} group={{ codes: g.codes?.join(' ') ?? '*', label: groupLabel(g.codes) }} />
+          ))
+        ) : (
+          <ApplyPart listing={listing} openChildren={openChildren} childCount={children.length} />
+        )
+      }
+      {/* A place the programme doesn't take: no call it can't apply to, just where to go instead. */}
+      <template data-where-tpl="none">
+        <div>
+          <Badge variant="status" state="closed">Not in your area</Badge>
+          <h2 class="mt-2 text-3xl [text-wrap:pretty] 2xl:text-2xl">Not open to projects in <span data-where-name></span></h2>
+          <p class="mt-2 text-ink-2">It takes projects in {geographyFull(p.geography)}.</p>
+          <div class="mt-4"><Button href="/" variant="outline" width="phone" className="2xl:w-full" data-back><span>Back to funding in <span data-where-name></span></span></Button></div>
+        </div>
+      </template>
     </section>
 
     {
@@ -267,8 +255,8 @@ const jsonLd = [
           {p.amount?.note && <p class={factHelp}>{p.amount.note}.</p>}
         </Fact>
         <Fact id={factIds.geography} label="Where" value={geographyFull(p.geography)} evidence={p.evidence.geography}>
-          <p class="mt-1 text-md font-semibold text-ok-ink" data-where-covered hidden>✓ Includes <span data-where-name></span><span data-where-via></span></p>
-          <p class="mt-1 text-md font-semibold text-warn-ink" data-where-uncovered hidden>✕ Doesn’t include <span data-where-name></span></p>
+          <template data-where-tpl="covered"><p class="mt-1 text-md font-semibold text-ok-ink">✓ Includes <span data-where-name></span><span data-where-via></span></p></template>
+          <template data-where-tpl="uncovered"><p class="mt-1 text-md font-semibold text-warn-ink">✕ Doesn’t include <span data-where-name></span></p></template>
         </Fact>
         <Fact
           id={factIds.applicant_types}
@@ -322,8 +310,6 @@ const jsonLd = [
                     {rollingCall(c) ? 'Rolling' : callStatusLabel[c.status]}
                   </Badge>
                   <h3 class="font-sans text-lg leading-[1.35] font-semibold">{c.label}</h3>
-                  {/* B: each call says whether it takes the visitor's place. */}
-                  <span class="text-md font-semibold" data-call-fit hidden></span>
                 </span>
                 {/* Only while folded: an open call shows its dates in full below. */}
                 {callWhen(c) && <span class="col-start-1 text-md text-ink-2 group-open/call:hidden">{callWhen(c)}</span>}
@@ -331,6 +317,7 @@ const jsonLd = [
               <a class="mb-1 inline-block text-md pointer-coarse:-mt-2.5 pointer-coarse:py-2.5" href={c.url}>Call page</a>
               <dl class="m-0">
                 <Fact id={callFactId(c, 'status')} label="Status" value={callStatusText(c)} evidence={c.evidence.status} />
+                {c.countries && <Fact id={callFactId(c, 'countries')} label="Where" value={joinAnd(c.countries.map(countryName))} evidence={c.evidence.countries} />}
                 {(c.opens || c.expected || c.evidence.opens) && (
                   <Fact
                     id={callFactId(c, 'opens')}
@@ -366,23 +353,25 @@ const jsonLd = [
               {c.note && <p class="mt-0 mb-[0.85rem] text-md text-ink-2">{c.note}.</p>}
             </details>
           ))}
-          {/* A and C: calls for other countries fold away below the visitor's. */}
-          <details class="group/other mt-3" data-calls-other hidden>
-            <summary class="flex min-h-11 cursor-pointer list-none items-center gap-[0.6rem] border-b-2 border-ink py-2 text-lg font-bold before:size-2 before:flex-none before:border-r-2 before:border-b-2 before:border-current before:content-[''] before:[transform:rotate(-45deg)] group-open/other:before:[transform:translateY(-20%)_rotate(45deg)] [&::-webkit-details-marker]:hidden">
-              <span>Calls for other countries</span>
-              <Badge className="ml-auto" data-calls-other-count />
-            </summary>
-            <div class="mt-3" data-calls-other-list></div>
-          </details>
+          {/* Narrowed to a place, the calls for other countries fold away below its own. */}
+          <template data-where-tpl="other-calls">
+            <details class="group/other mt-3">
+              <summary class="flex min-h-11 cursor-pointer list-none items-center gap-[0.6rem] border-b-2 border-ink py-2 text-lg font-bold before:size-2 before:flex-none before:border-r-2 before:border-b-2 before:border-current before:content-[''] before:[transform:rotate(-45deg)] group-open/other:before:[transform:translateY(-20%)_rotate(45deg)] [&::-webkit-details-marker]:hidden">
+                <span>Calls for other countries</span>
+                <Badge className="ml-auto" data-calls-other-count />
+              </summary>
+              <div class="mt-3" data-calls-other-list></div>
+            </details>
+          </template>
         </section>
       )
     }
 
     {
       !primary.quiet && (
-        <p class="mt-8 flex flex-wrap items-center gap-x-4 gap-y-[0.6rem] border-t border-rule pt-5 2xl:hidden">
-          <span class="font-bold">{call && primary.href === call.url ? `Ready to apply to ${call.label}?` : 'Ready to apply?'}</span>
-          <Button href={primary.href} width="phone">{primary.text}</Button>
+        <p class="mt-8 flex flex-wrap items-center gap-x-4 gap-y-[0.6rem] border-t border-rule pt-5 2xl:hidden" data-cta>
+          <span class="font-bold" data-cta-label>{call && primary.href === call.url ? `Ready to apply to ${call.label}?` : 'Ready to apply?'}</span>
+          <Button href={primary.href} width="phone" data-cta-button>{primary.text}</Button>
         </p>
       )
     }
@@ -428,16 +417,6 @@ const jsonLd = [
       <p class="mt-[0.6rem] text-sm text-ink-2">Both open an email to {CONTACT_EMAIL} with this listing filled in. Listings can’t be bought.</p>
     </section>
   </div>
-  <nav class="fixed bottom-3 left-3 z-50 flex flex-wrap items-center gap-x-3 gap-y-1 rounded-lg bg-ink px-3 py-2 text-sm text-surface shadow-lg [&_a]:text-surface [&_a[aria-current]]:font-bold [&_a[aria-current]]:underline" aria-label="Exploration" data-explore>
-    <span class="opacity-70">Exploration</span>
-    <span class="flex gap-2" data-explore-v>
-      <a href="#" data-v="a">A Tailored</a><a href="#" data-v="b">B Flag</a><a href="#" data-v="c">C Switcher</a>
-    </span>
-    <span class="opacity-40">|</span>
-    <span class="flex gap-2" data-explore-where>
-      <a href="#" data-w="">Any</a><a href="#" data-w="CR">CR</a><a href="#" data-w="EC">EC</a><a href="#" data-w="PE">PE</a><a href="#" data-w="KE">KE</a><a href="#" data-w="r:latin_america_caribbean">LatAm</a>
-    </span>
-  </nav>
 </Base>
 
 <script>

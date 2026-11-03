@@ -4,7 +4,7 @@ import { absolute } from '../lib/site'
 
 const columns = [
   'programme_id', 'programme', 'kind', 'funder', 'administered_by', 'access', 'window', 'call_id', 'call', 'call_status',
-  'opens', 'opens_expected', 'deadline_date', 'deadline_text', 'dates_each_year', 'call_note', 'amount_currency', 'amount_min',
+  'opens', 'opens_expected', 'deadline_date', 'deadline_text', 'dates_each_year', 'call_note', 'call_countries', 'amount_currency', 'amount_min',
   'amount_max', 'amount_max_exclusive', 'amount_typical', 'amount_per', 'amount_note', 'geography', 'approaches',
   'applicant_types', 'co_finance_required', 'call_url', 'programme_url', 'checked_at', 'listing_url',
 ] as const
@@ -36,6 +36,7 @@ export const GET: APIRoute = () => {
     return p.calls.map((c) => ({
       ...base, call_id: c.id, call: c.label, call_status: c.status, opens: c.opens, opens_expected: c.expected,
       deadline_date: c.deadline?.date, deadline_text: c.deadline?.text, dates_each_year: c.recurring, call_note: c.note,
+      call_countries: c.countries?.join(' '),
       call_url: c.url,
     }))
   })

@@ -3,7 +3,6 @@ import CheckedTag from './CheckedTag.astro'
 import Route from './Route.astro'
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
-import { cardClasses } from '@/components/ui/card'
 import { applyEvidenceFor, primaryAction } from '../lib/apply'
 import type { Listing } from '../lib/data'
 import { buildDate, daysBetween, notRechecked, notRecheckedPage } from '../lib/data'
@@ -15,31 +14,31 @@ interface Props {
   /** Partner programmes open now, for an umbrella's box. */
   openChildren: Listing[]
   childCount: number
-  /** Several boxes can sit on one page, one per call group: each names its own title. */
+  /** The countries this part is for, when the programme's calls differ by country (one part per group); `*` for the rest. */
+  group?: { codes: string; label: string }
+  /** Several parts can sit in the apply box: each names its own title. */
   titleId?: string
-  [attr: string]: unknown
 }
 
-const { listing, openChildren, childCount, titleId = 'apply-title', ...rest } = Astro.props
+const { listing, openChildren, childCount, group, titleId = 'apply-title' } = Astro.props
 const { p, state, call } = listing
 const noCallRoute = p.access === 'intermediary' || p.access === 'invitation_only'
 const primary = primaryAction(listing, openChildren, childCount)
 const applyEvidence = applyEvidenceFor(listing)
+const narrowedPrimary =
+  'group-data-narrowed/apply:border-transparent group-data-narrowed/apply:bg-primary group-data-narrowed/apply:text-primary-foreground group-data-narrowed/apply:shadow-none group-data-narrowed/apply:hover:bg-action-hover'
 ---
 
-<section
-  class:list={[cardClasses, 'mt-6 px-5 pt-5 pb-[1.1rem] 2xl:sticky 2xl:top-6 2xl:col-start-2! 2xl:row-[1/span_12] 2xl:mt-12 2xl:self-start']}
-  aria-labelledby={titleId}
-  {...rest}
->
-  <slot />
+{/* One part of the apply box: what to do, for every country or for one call group. */}
+<div class:list={[group && '[&+&]:mt-5 [&+&]:border-t [&+&]:border-rule [&+&]:pt-4']} data-group={group?.codes ?? '*'} data-call-label={call?.label}>
+  {group && <p class="mb-2 text-sm font-bold text-ink-2">{group.label}</p>}
   <div class="flex flex-wrap items-center gap-x-[0.85rem] gap-y-2">
     {/* Invitation-only funders and umbrellas never have a call of their own: the route is their status. */}
     <span class="flex flex-wrap items-center gap-2">
       {!(state === 'none' && noCallRoute) && <Badge variant="status" state={state}>{stateLabels[state]}</Badge>}
       {noCallRoute && <Route access={p.access} />}
     </span>
-    <h2 id={titleId} class="text-3xl [text-wrap:pretty] 2xl:text-2xl">
+    <h2 id={titleId} class:list={['[text-wrap:pretty]', group ? 'text-2xl' : 'text-3xl 2xl:text-2xl']}>
       {state === 'open' && call?.deadline && <>Apply by <span class="whitespace-nowrap">{longDate(call.deadline.date)}</span></>}
       {state === 'open' && call && !call.deadline && (call.recurring ? <>Open, with deadlines each year</> : <>Open, no dated deadline</>)}
       {state === 'rolling' && <>Apply any time</>}
@@ -92,7 +91,14 @@ const applyEvidence = applyEvidenceFor(listing)
     {openChildren.length > 1 && <> {openChildren.length} partner programmes are open now. They come first in the list below.</>}
   </p>
   <div class="mt-4 flex flex-wrap items-center gap-x-5 gap-y-3">
-    <Button href={primary.href} variant={primary.quiet ? 'outline' : 'default'} width="phone" className="whitespace-normal text-center 2xl:w-full">{primary.text}</Button>
+    {/* Side by side, each group's button is quiet; it turns primary once the box narrows to that group. */}
+    <Button
+      href={primary.href}
+      variant={primary.quiet || group ? 'outline' : 'default'}
+      width="phone"
+      className={`whitespace-normal text-center 2xl:w-full ${group && !primary.quiet ? narrowedPrimary : ''}`}
+      data-primary={primary.quiet ? undefined : ''}
+    >{primary.text}</Button>
     {
       applyEvidence ? (
         <CheckedTag checked={applyEvidence.checked_at} source={{ url: applyEvidence.source_url, label: pageLabel(applyEvidence.source_url) }} reason={notRecheckedPage(applyEvidence.source_url)} />
@@ -101,4 +107,4 @@ const applyEvidence = applyEvidenceFor(listing)
       )
     }
   </div>
-</section>
+</div>

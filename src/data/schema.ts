@@ -97,6 +97,7 @@ export const call = z.object({
     opens: evidence.optional(),
     deadline: evidence.optional(),
     recurring: evidence.optional(),
+    countries: evidence.optional(),
   }),
   /** When the funder expects an upcoming call to open, as it says it ("June 2027", "mid-March 2027"). Firm dates go in `opens`. */
   expected: z.string().min(4).max(60).optional(),
@@ -258,6 +259,8 @@ export const programme = z
       if (!c.recurring && c.evidence.recurring) issue(at('recurring'), 'recurring evidence without recurring dates')
       const expected = expectedProblem(c)
       if (expected) issue(at('expected'), expected)
+      if (c.countries && !c.evidence.countries) issue(at('evidence', 'countries'), 'call countries need evidence')
+      if (!c.countries && c.evidence.countries) issue(at('countries'), 'countries evidence without call countries')
       const g = p.geography
       if (c.countries && g?.scope === 'countries') {
         const outside = c.countries.filter((k) => !g.countries.includes(k))
@@ -284,7 +287,7 @@ export const programme = z
 
     const allEvidence = [
       ...Object.values(p.evidence),
-      ...p.calls.flatMap((c) => [c.evidence.status, c.evidence.opens, c.evidence.deadline, c.evidence.recurring]),
+      ...p.calls.flatMap((c) => [c.evidence.status, c.evidence.opens, c.evidence.deadline, c.evidence.recurring, c.evidence.countries]),
     ].filter((e): e is Evidence => e !== undefined)
     for (const e of allEvidence) {
       if (e.checked_at < p.checked_at) issue(['checked_at'], `programme claims a check on ${p.checked_at}, but a fact was last read on ${e.checked_at}`)

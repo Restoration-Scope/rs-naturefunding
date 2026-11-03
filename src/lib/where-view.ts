@@ -1,146 +1,123 @@
-// The programme page, read for the finder's Where (?where=CR or ?where=r:africa). Every version of the apply
-// box renders at build time; this picks one, says whether the place is covered and folds calls for elsewhere.
-// Exploration: ?v=a tailors the page, ?v=b keeps it general and flags what differs, ?v=c tailors it and lets
-// the visitor change the place on the page.
-import { countryName, countryRegion, regionLabels, type Region } from './geo'
-
-type Variant = 'a' | 'b' | 'c'
+// The programme page, read for the finder's Where (?where=CR or ?where=r:africa). The built page shows every
+// country's calls; this only narrows it: the apply box to the part for that place, the calls for elsewhere
+// folded, and a line on whether the place is covered. What it adds comes from the page's <template>s, so a
+// text reader of the built page never meets text a visitor can't see.
 
 const all = <T extends Element>(s: string, root: ParentNode = document) => [...root.querySelectorAll<T>(s)]
-
-/** The finder's own rule (src/lib/finder.ts whereMatches): does a programme's codes take this place? */
-function covers(codes: string[], where: string) {
-  if (codes.includes('*')) return true
-  if (where.startsWith('r:')) return codes.includes(where) || codes.includes(`R:${where.slice(2)}`)
-  const region = countryRegion[where]
-  return codes.includes(where) || (!!region && codes.includes(`R:${region}`))
-}
-
-const placeName = (where: string) => (where.startsWith('r:') ? (regionLabels[where.slice(2) as Region] ?? where) : countryName(where))
 
 export function initWhereView() {
   const root = document.querySelector<HTMLElement>('[data-where-codes]')
   if (!root) return
-  const codes = (root.dataset.whereCodes ?? '').split(' ').filter(Boolean)
+  // Each region the programme takes is spelled out as its countries (src/lib/data.ts whereReach).
+  const reach = new Set((root.dataset.whereCodes ?? '').split(' '))
+  const regionNames: Record<string, string> = JSON.parse(root.dataset.regionNames ?? '{}')
+  const countryNames = new Intl.DisplayNames(['en'], { type: 'region' })
+  const nameOf = (w: string) => (w.startsWith('r:') ? (regionNames[w.slice(2)] ?? w) : (countryNames.of(w) ?? w))
+  const covers = (w: string) => reach.has('*') || reach.has(w) || (w.startsWith('r:') && reach.has(`R:${w.slice(2)}`))
+
+  const box = document.querySelector<HTMLElement>('[data-apply]')
+  const parts = all<HTMLElement>('[data-group]', box ?? document)
+  const select = document.querySelector<HTMLSelectElement>('[data-where-select]')
   const calls = all<HTMLDetailsElement>('[data-call-countries]')
   const callsHome = calls[0]?.parentElement ?? null
-  const callsAnchor = document.querySelector<HTMLElement>('[data-calls-other]')
+  const builtOpen = new Map(calls.map((c) => [c, c.open]))
   const callsTitle = document.querySelector<HTMLElement>('[data-calls-title]')
-  const callsTitleText = callsTitle?.textContent?.trim() ?? ''
-  const openAtBuild = new Map(calls.map((c) => [c, c.open]))
-  const back = all<HTMLAnchorElement>('[data-back]')
+  const builtCallsTitle = callsTitle?.textContent?.trim() ?? ''
   const backText = document.querySelector<HTMLElement>('[data-back-text]')
+  const cta = document.querySelector<HTMLElement>('[data-cta]')
+  const ctaLabel = cta?.querySelector<HTMLElement>('[data-cta-label]')
+  const ctaButton = cta?.querySelector<HTMLAnchorElement>('[data-cta-button]')
+  const builtCta = { label: ctaLabel?.textContent ?? '', href: ctaButton?.getAttribute('href') ?? '', text: ctaButton?.textContent ?? '' }
+  const tpl = (name: string) => document.querySelector<HTMLTemplateElement>(`[data-where-tpl="${name}"]`)
 
   // Back goes to the finder the visitor came from, with every filter it had.
   const ref = document.referrer ? new URL(document.referrer) : null
-  const fromFinder = ref && ref.origin === location.origin && ref.pathname === '/' ? ref.href : null
+  const finder = ref && ref.origin === location.origin && ref.pathname === '/' ? ref : null
+
+  /** Puts a template's content right after it, marked so the next render can take it away. */
+  function place(name: string): HTMLElement | null {
+    const t = tpl(name)
+    const el = t?.content.firstElementChild?.cloneNode(true) as HTMLElement | undefined
+    if (!t || !el) return null
+    el.dataset.whereMade = ''
+    t.after(el)
+    return el
+  }
 
   function render() {
-    const sp = new URLSearchParams(location.search)
-    const where = sp.get('where') ?? ''
-    const v = (['a', 'b', 'c'].includes(sp.get('v') ?? '') ? sp.get('v') : 'a') as Variant
-    const tailor = v !== 'b'
-    const name = where ? placeName(where) : ''
-    const covered = where ? covers(codes, where) : true
-    // A country inside one call group's countries; a region never narrows the calls.
+    const where = new URLSearchParams(location.search).get('where') ?? ''
+    const name = where ? nameOf(where) : ''
+    const covered = !where || covers(where)
     const country = where && !where.startsWith('r:') ? where : ''
 
-    for (const el of all('[data-where-name]')) el.textContent = name
-    show('[data-where-chip]', !!where && tailor)
-    for (const a of all<HTMLAnchorElement>('[data-where-clear]')) a.href = withParams({ where: null })
+    // Start from the built page: calls home in their order, nothing added.
+    if (callsHome) for (const c of calls) callsHome.insertBefore(c, tpl('other-calls'))
+    for (const el of all('[data-where-made]')) el.remove()
 
-    // The apply box: the group whose calls take this country, the uncovered box, else the general one.
-    const boxes = all<HTMLElement>('[data-apply-for]')
-    const group = country ? boxes.find((b) => b.dataset.applyFor!.split(' ').includes(country)) : undefined
-    const pick = !tailor || !where ? '' : !covered ? 'none' : (group?.dataset.applyFor ?? '')
-    for (const b of boxes) b.hidden = b.dataset.applyFor !== pick
-
-    // B: a note in the general box.
-    show('[data-where-note]', !!where && !tailor)
-    const noteKey = !covered ? 'none' : (group?.dataset.applyFor ?? 'covered')
-    for (const p of all<HTMLElement>('[data-note-for]')) p.hidden = p.dataset.noteFor !== noteKey
-
-    // C: the place can change here.
-    for (const l of all<HTMLElement>('[data-where-switch]')) l.hidden = v !== 'c'
-    for (const s of all<HTMLSelectElement>('[data-where-select]')) {
-      if (where && ![...s.options].some((o) => o.value === where)) s.add(new Option(`${name} (not covered)`, where))
-      s.value = where
+    // The apply box: the part whose calls take this country, else the part for the rest; all of them without one.
+    const part =
+      covered && country && parts.length > 1
+        ? (parts.find((p) => p.dataset.group!.split(' ').includes(country)) ?? parts.find((p) => p.dataset.group === '*'))
+        : undefined
+    for (const p of parts) p.hidden = !covered || (!!part && p !== part)
+    box?.toggleAttribute('data-narrowed', !!part)
+    if (!covered) place('none')
+    if (select) {
+      if (where && ![...select.options].some((o) => o.value === where)) select.add(new Option(`${name} (not covered)`, where))
+      select.value = where
     }
 
-    // The Where fact: covered or not, and through which call.
-    show('[data-where-covered]', !!where && covered)
-    show('[data-where-uncovered]', !!where && !covered)
-    const via = document.querySelector<HTMLElement>('[data-where-via]')
-    const groupCall = group && calls.find((c) => c.dataset.callCountries === group.dataset.applyFor)
-    if (via) via.textContent = groupCall ? `, in the call “${groupCall.dataset.callLabel}”` : ''
-
-    // Calls: whether each takes the place (B), or the place's first and the rest folded (A, C).
-    const takes = (c: HTMLElement) => !country || !c.dataset.callCountries || c.dataset.callCountries.split(' ').includes(country)
-    for (const c of calls) {
-      const fit = c.querySelector<HTMLElement>('[data-call-fit]')
-      if (fit) {
-        fit.hidden = !where || tailor || !covered
-        fit.textContent = takes(c) ? `✓ Takes projects in ${name}` : `✕ Not for ${name}`
-        fit.className = `text-md font-semibold ${takes(c) ? 'text-ok-ink' : 'text-warn-ink'}`
-      }
+    if (where) {
+      place('chip')
+      if (covered) {
+        const via = place('covered')?.querySelector<HTMLElement>('[data-where-via]')
+        if (via && part?.dataset.callLabel && part.dataset.group !== '*') via.textContent = `, in the call “${part.dataset.callLabel}”`
+      } else place('uncovered')
     }
-    const folded = tailor && country && covered ? calls.filter((c) => !takes(c)) : []
-    const list = document.querySelector<HTMLElement>('[data-calls-other-list]')
-    if (callsHome && callsAnchor && list) {
-      for (const c of calls) {
-        if (folded.includes(c)) list.append(c)
-        else callsHome.insertBefore(c, callsAnchor)
-        c.open = folded.length && !folded.includes(c) ? true : openAtBuild.get(c)!
-      }
-      callsAnchor.hidden = folded.length === 0
-      const n = callsAnchor.querySelector('[data-calls-other-count]')
-      if (n) n.textContent = String(folded.length)
+
+    // Calls: the place's own first and open; the others fold below.
+    const takes = (c: HTMLElement) => !c.dataset.callCountries || c.dataset.callCountries.split(' ').includes(country)
+    const others = part ? calls.filter((c) => !takes(c)) : []
+    for (const c of calls) c.open = part && takes(c) ? true : builtOpen.get(c)!
+    if (others.length) {
+      const fold = place('other-calls')
+      fold?.querySelector('[data-calls-other-list]')?.append(...others)
+      const n = fold?.querySelector('[data-calls-other-count]')
+      if (n) n.textContent = String(others.length)
     }
     if (callsTitle) {
-      const mine = calls.length - folded.length
-      callsTitle.textContent = folded.length ? `${mine === 1 ? 'The call' : `Calls (${mine})`} for ${name}` : callsTitleText
+      const mine = calls.length - others.length
+      callsTitle.textContent = others.length ? `${mine === 1 ? 'The call' : `Calls (${mine})`} for ${name}` : builtCallsTitle
     }
 
-    // Back to the finder, filtered for this place when we don't know the visitor's full filters.
-    const backHref = fromFinder ?? (where ? `/?where=${encodeURIComponent(where)}#results` : '/')
-    for (const a of back) a.href = backHref
+    // The button at the foot follows the apply box.
+    const primary = part?.querySelector<HTMLAnchorElement>('[data-primary]')
+    if (cta && ctaLabel && ctaButton) {
+      cta.hidden = !covered || (!!part && !primary)
+      ctaLabel.textContent = primary ? `Ready to apply to ${part!.dataset.callLabel}?` : builtCta.label
+      ctaButton.href = primary?.getAttribute('href') ?? builtCta.href
+      ctaButton.textContent = primary?.textContent ?? builtCta.text
+    }
+
+    for (const el of all('[data-where-name]')) el.textContent = name
+    for (const a of all<HTMLAnchorElement>('[data-where-clear]')) a.href = location.pathname
+    const back = finder ? new URL(finder) : new URL('/', location.origin)
+    if (where) back.searchParams.set('where', where)
+    else back.searchParams.delete('where')
+    if (!finder && where) back.hash = 'results'
+    for (const a of all<HTMLAnchorElement>('[data-back]')) a.href = back.href
     if (backText) backText.textContent = where ? `Funding in ${name}` : 'All funding'
-
-    // The exploration bar marks what's on.
-    for (const a of all<HTMLAnchorElement>('[data-v]')) {
-      a.href = withParams({ v: a.dataset.v! })
-      a.toggleAttribute('aria-current', a.dataset.v === v)
-    }
-    for (const a of all<HTMLAnchorElement>('[data-w]')) {
-      a.href = withParams({ where: a.dataset.w || null })
-      a.toggleAttribute('aria-current', a.dataset.w === where)
-    }
   }
 
-  function show(sel: string, on: boolean) {
-    for (const el of all<HTMLElement>(sel)) el.hidden = !on
-  }
-
-  function withParams(set: Record<string, string | null>) {
-    const sp = new URLSearchParams(location.search)
-    for (const [k, val] of Object.entries(set)) val ? sp.set(k, val) : sp.delete(k)
-    const q = sp.toString()
-    return `${location.pathname}${q ? `?${q}` : ''}`
-  }
-
-  for (const s of all<HTMLSelectElement>('[data-where-select]')) {
-    s.addEventListener('change', () => {
-      history.replaceState(null, '', withParams({ where: s.value || null }))
-      render()
-    })
-  }
-  // The exploration bar and "See every country" swap the view in place.
-  document.addEventListener('click', (e) => {
-    const a = (e.target as Element).closest<HTMLAnchorElement>('[data-v], [data-w], [data-where-clear]')
-    if (!a) return
-    e.preventDefault()
-    history.replaceState(null, '', a.href)
+  function go(where: string) {
+    history.replaceState(null, '', where ? `?where=${encodeURIComponent(where)}` : location.pathname)
     render()
+  }
+  select?.addEventListener('change', () => go(select.value))
+  document.addEventListener('click', (e) => {
+    if (!(e.target as Element).closest('[data-where-clear]')) return
+    e.preventDefault()
+    go('')
   })
   render()
 }
