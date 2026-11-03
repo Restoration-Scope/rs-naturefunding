@@ -11,7 +11,8 @@ interface Props {
   /** The finder itself; its link in the nav is marked current. */
   nav?: 'finder' | 'about' | 'data' | null
   noindex?: boolean
-  /** A link back to every grant beside the logo, for pages showing only some (src/components/FinderLanding.astro). */
+  /** A link back to every grant beside the logo, for pages showing only some (src/components/FinderLanding.astro).
+   * A page's own link goes in the `beside-logo` slot instead. */
   allGrants?: boolean
 }
 
@@ -66,13 +67,11 @@ const ld = jsonLd ? (Array.isArray(jsonLd) ? jsonLd : [jsonLd]) : []
           <span>naturefunding<span class="text-shell-ink-2">.org</span></span>
         </a>
         {
-          allGrants && (
-            <a
-              class="border-l border-shell-ink-2/40 py-[0.35rem] pl-4 text-md text-shell-ink-2! pointer-coarse:py-2.5 no-underline decoration-brand-light decoration-2 underline-offset-[0.35em] hover:text-shell-ink! hover:underline"
-              href="/"
-            >
-              See all grants
-            </a>
+          // Beside the logo, a way back: to every grant, or the page's own (a programme page's back to the finder).
+          (allGrants || Astro.slots.has('beside-logo')) && (
+            <div class="flex border-l border-shell-ink-2/40 pl-4 text-md max-sm:border-0 max-sm:pl-0 [&>a]:py-[0.35rem] [&>a]:text-shell-ink-2! [&>a]:no-underline [&>a]:decoration-brand-light [&>a]:decoration-2 [&>a]:underline-offset-[0.35em] [&>a:hover]:text-shell-ink! [&>a:hover]:underline pointer-coarse:[&>a]:py-2.5">
+              {allGrants ? <a href="/">See all grants</a> : <slot name="beside-logo" />}
+            </div>
           )
         }
         </div>
