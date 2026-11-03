@@ -33,6 +33,8 @@ describe('shared sites and directories', () => {
   })
   test('bareUrl keeps parameters that pick the page', () => {
     expect(bareUrl('https://procurement-notices.undp.org/view_notice.cfm?notice_id=98948')).not.toBe(bareUrl('https://procurement-notices.undp.org/view_notice.cfm?notice_id=99999'))
+    expect(bareUrl('https://x.org/n.cfm?notice_id=1&country=KE')).toBe(bareUrl('https://x.org/n.cfm?country=KE&notice_id=1'))
+    expect(bareUrl('https://drive.google.com/open?id=AbC')).not.toBe(bareUrl('https://drive.google.com/open?id=aBc'))
   })
   test('US state agencies on .gov and .us are separate funders', () => {
     expect(isShared('wcb.ca.gov')).toBe(true)

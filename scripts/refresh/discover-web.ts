@@ -10,7 +10,7 @@
  */
 import { appendFileSync, readdirSync, readFileSync } from 'node:fs'
 import { join } from 'node:path'
-import { DISCOVERED_PATH, fileDiscoveryIssue, writeDiscovered, type Discovered } from './discover'
+import { bareUrl, DISCOVERED_PATH, fileDiscoveryIssue, writeDiscovered, type Discovered } from './discover'
 import { readJson } from './state'
 import { dateOf } from './tier'
 
@@ -82,17 +82,7 @@ const under = (host: string, sites: string[]) => sites.some((s) => host === s ||
 export const isShared = (host: string) => under(host.toLowerCase().replace(/^www\./, ''), SHARED_SITES)
 export const isNotFunder = (host: string) => under(host.toLowerCase().replace(/^www\./, ''), NOT_FUNDERS)
 
-const TRACKING = /^(utm_\w+|fbclid|gclid|mc_[ce]id|_ga|ref)$/i
-
-/**
- * A URL without scheme, `www.`, tracking parameters, hash or trailing slash, for matching against
- * the data. Other parameters stay: on UNDP and SGP pages `?notice_id=` or `?country=` is the page.
- */
-export const bareUrl = (url: string) => {
-  const u = new URL(url)
-  for (const key of [...u.searchParams.keys()]) if (TRACKING.test(key)) u.searchParams.delete(key)
-  return `${u.host.replace(/^www\./, '')}${u.pathname.replace(/\/$/, '')}${u.search}`.toLowerCase()
-}
+export { bareUrl }
 
 export type Hit = { title: string; url: string; publishedDate?: string | null }
 

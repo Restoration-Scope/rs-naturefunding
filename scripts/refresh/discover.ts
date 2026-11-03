@@ -103,12 +103,26 @@ export function usDate(mdy: string | undefined): string | null {
   return m ? `${m[3]}-${m[1]}-${m[2]}` : null
 }
 
+const TRACKING = /^(utm_\w+|fbclid|gclid|mc_[ce]id|_ga|ref)$/i
+
+/**
+ * A URL without scheme, `www.`, tracking parameters, hash or trailing slash, so the same page
+ * matches however it was linked. Other parameters stay, sorted and in their own case: on UNDP and
+ * SGP pages `?notice_id=` or `?country=` is the page.
+ */
+export function bareUrl(url: string): string {
+  const u = new URL(url)
+  const params = [...u.searchParams].filter(([key]) => !TRACKING.test(key)).sort(([a], [b]) => a.localeCompare(b))
+  const query = params.length ? `?${new URLSearchParams(params)}` : ''
+  return `${u.host.replace(/^www\./, '')}${u.pathname.replace(/\/$/, '')}`.toLowerCase() + query
+}
+
 /** Calls not yet raised (by key, or by URL from the weekly web search) and not already in data/ (matched by topic code or opportunity number). */
 export function newCandidates(found: Candidate[], known: Discovered, dataText: string): Candidate[] {
   const seen = new Set<string>()
-  const raisedUrls = new Set(Object.values(known).map((k) => k.url))
+  const raisedUrls = new Set(Object.values(known).map((k) => k.url).filter((u) => URL.canParse(u)).map(bareUrl))
   return found.filter((c) => {
-    if (seen.has(c.key) || known[c.key] || raisedUrls.has(c.url) || dataText.includes(c.id)) return false
+    if (seen.has(c.key) || known[c.key] || raisedUrls.has(bareUrl(c.url)) || dataText.includes(c.id)) return false
     seen.add(c.key)
     return true
   })
