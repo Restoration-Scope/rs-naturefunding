@@ -204,12 +204,12 @@ const jsonLd = [
     >
       {
         groups.length > 0 && (
-          <label class="-mt-1 mb-4 flex flex-wrap items-center gap-x-3 gap-y-1 border-b border-rule pb-3 text-md">
-            <span class="text-ink-2">Your project is in</span>
-            <span class="-mr-1.5 flex text-lg empty:hidden" data-where-flag></span>
-            {/* The chevron is drawn here, not by the browser, so it sits as far from the edge as the text does. */}
-            <span class="relative flex">
-              <select class="min-h-9 cursor-pointer appearance-none rounded-md border border-control-edge bg-surface pr-9 pl-3 font-semibold" data-where-select>
+          <label class="-mt-1 mb-4 flex items-center gap-x-3 border-b border-rule pb-3 text-md">
+            <span class="flex-none text-ink-2">Where</span>
+            {/* The flag and chevron sit inside the box, drawn here, each as far from its edge as the text. */}
+            <span class="relative flex min-w-0">
+              <span class="peer pointer-events-none absolute top-1/2 left-3 flex -translate-y-1/2 text-lg empty:hidden [&>span]:mr-0" data-where-flag></span>
+              <select class="min-h-9 min-w-0 cursor-pointer appearance-none truncate rounded-md border border-control-edge bg-surface pr-9 pl-10 font-semibold peer-empty:pl-3" data-where-select>
                 <option value="">Any country</option>
                 {switchCountries.map((c) => <option value={c.code}>{c.name}</option>)}
               </select>
