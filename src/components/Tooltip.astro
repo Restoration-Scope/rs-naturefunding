@@ -2,10 +2,13 @@
 // shadcn/ui's tooltip look without its React runtime: pages ship no islands, so it opens on CSS hover and
 // keyboard focus. The trigger (default slot) names the tip with aria-describedby={id}; touch has no hover,
 // so put only what the page also says elsewhere, or can do without, here.
-// The tip is fixed and anchored to the trigger (CSS anchor positioning): it opens up from the trigger's left
-// edge and flips to end at its right edge when it would run off the screen, and being fixed it never widens
-// the page. Its gap above the trigger is padding, not margin, so the pointer can move onto the tip and keep
-// it. The arrow is anchored on its own so it stays over the trigger whichever way the tip opens.
+// Where the browser has CSS anchor positioning, the tip is fixed and anchored to the trigger: it opens up from
+// the trigger's left edge, flips to end at its right edge when it would run off the screen, and being fixed
+// never widens the page. Its gap above the trigger is padding, not margin, so the pointer can move onto the
+// tip and keep it. It sits 4px above the trigger's box because an inline ghost icon button overhangs its line
+// by that much and fills the gap. The arrow is anchored on its own so it stays over the trigger whichever way
+// the tip opens. Touch screens never show the tip (a tap follows the link), so it isn't rendered there;
+// screen readers still read it through aria-describedby.
 interface Props {
   id: string
   class?: string
@@ -14,14 +17,18 @@ interface Props {
 const { id, class: className } = Astro.props
 const shown =
   'invisible opacity-0 transition-[opacity,visibility] duration-150 group-hover/tip:visible group-hover/tip:opacity-100 group-has-focus-visible/tip:visible group-has-focus-visible/tip:opacity-100'
+// Without anchor positioning a fixed tip would sit on top of its trigger, so those browsers get one placed
+// absolutely above the trigger's left edge instead: it can't flip, but it never covers what it describes.
+const anchored =
+  'supports-[anchor-name:--a]:fixed supports-[anchor-name:--a]:bottom-auto supports-[anchor-name:--a]:left-auto supports-[anchor-name:--a]:-ml-2 supports-[anchor-name:--a]:mb-1 [position-area:top_span-right] [position-try-fallbacks:flip-inline]'
 ---
 
-<span class:list={['group/tip inline-flex', className]} style={`anchor-name: --${id}`}>
+<span class:list={['group/tip relative inline-flex', className]} style={`anchor-name: --${id}`}>
   <slot />
   <span
     id={id}
     role="tooltip"
-    class:list={['fixed z-50 -ml-2 w-max max-w-[min(18rem,calc(100vw-1rem))] pb-2 [position-area:top_span-right] [position-try-fallbacks:flip-inline]', shown]}
+    class:list={['absolute bottom-[calc(100%+0.25rem)] -left-2 z-50 w-max max-w-[min(18rem,calc(100vw-1rem))] pb-2 pointer-coarse:hidden', anchored, shown]}
     style={`position-anchor: --${id}`}
   >
     <span class="block rounded-md bg-foreground px-3 py-1.5 text-xs text-balance text-background">
@@ -29,7 +36,7 @@ const shown =
     </span>
   </span>
   <span
-    class:list={['fixed z-50 mb-1 hidden size-2.5 rotate-45 rounded-[2px] bg-foreground [position-area:top] supports-[anchor-name:--a]:block', shown]}
+    class:list={['fixed z-50 mb-2 hidden size-2.5 rotate-45 rounded-[2px] bg-foreground [position-area:top] pointer-fine:supports-[anchor-name:--a]:block', shown]}
     style={`position-anchor: --${id}`}
     aria-hidden="true"
   ></span>
