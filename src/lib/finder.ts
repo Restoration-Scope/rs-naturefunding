@@ -34,11 +34,9 @@ type Filters = { q: string; within: string; where: string } & Record<Multi, stri
 const today = new Date().toISOString().slice(0, 10)
 const days = (from: string, to: string) => Math.round((Date.parse(to) - Date.parse(from)) / 86_400_000)
 const isLater = (state: string) => state === 'none' || state === 'closed'
-const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
-const shortDate = (iso: string) => {
-  const [y, m, d] = iso.split('-').map(Number)
-  return `${d} ${months[m! - 1]} ${y}`
-}
+// Same as src/lib/format.ts shortDate: Nov 1, 2026.
+const shortFmt = new Intl.DateTimeFormat('en-US', { month: 'short', day: 'numeric', year: 'numeric', timeZone: 'UTC' })
+const shortDate = (iso: string) => shortFmt.format(new Date(`${iso}T00:00:00Z`))
 const plural = (n: number, one: string, many: string) => (n === 1 ? one : many)
 
 // Each sort's natural direction: soonest deadline, largest amount, most recently checked.

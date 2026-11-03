@@ -1,20 +1,15 @@
 import type { Programme } from '../data/schema'
 import { countryName, regionLabels } from './geo'
 
-const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
-const longMonths = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
-const parts = (iso: string) => iso.split('-').map(Number) as [number, number, number]
+// Dates are calendar days: read them in UTC so no time zone moves them a day.
+const fmt = (month: 'short' | 'long') => new Intl.DateTimeFormat('en-US', { month, day: 'numeric', year: 'numeric', timeZone: 'UTC' })
+const short = fmt('short')
+const long = fmt('long')
 
-/** 1 Nov 2026. Spelled out by hand: en-GB's "Sept" reads oddly next to every other month. */
-export const shortDate = (iso: string) => {
-  const [y, m, d] = parts(iso)
-  return `${d} ${months[m - 1]} ${y}`
-}
-/** 1 November 2026 */
-export const longDate = (iso: string) => {
-  const [y, m, d] = parts(iso)
-  return `${d} ${longMonths[m - 1]} ${y}`
-}
+/** Nov 1, 2026 */
+export const shortDate = (iso: string) => short.format(new Date(`${iso}T00:00:00Z`))
+/** November 1, 2026 */
+export const longDate = (iso: string) => long.format(new Date(`${iso}T00:00:00Z`))
 
 const money = (currency: string, n: number) =>
   new Intl.NumberFormat('en-GB', { style: 'currency', currency, maximumFractionDigits: 0, currencyDisplay: 'narrowSymbol' })
