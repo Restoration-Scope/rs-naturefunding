@@ -1,5 +1,6 @@
 ---
 import { ExternalLink } from 'lucide-react'
+import { Button } from '@/components/ui/button'
 import { uid } from '@/lib/utils'
 import { AGING_DAYS, buildDate, daysBetween, type RecheckFailure } from '../lib/data'
 import { recheckReasons } from '../lib/labels'
@@ -28,9 +29,12 @@ const when = checked
 ---
 
 {/* The funder's page as an icon: name and date wait in its tooltip, so a list of facts doesn't repeat them. */}
-<Tooltip id={id} class="align-[-0.2em]">
-  <a
-    class="inline-flex size-4 items-center justify-center rounded-sm text-muted-foreground! hover:text-ink!"
+{/* A ghost icon button; its negative margins keep it from opening up the line it ends. */}
+<Tooltip id={id} class="align-middle">
+  <Button
+    variant="ghost"
+    size="icon-xs"
+    className="-my-1 text-muted-foreground! hover:text-foreground!"
     href={url}
     target="_blank"
     rel="noopener"
@@ -38,8 +42,8 @@ const when = checked
     aria-describedby={id}
     data-checked={checked}
   >
-    <ExternalLink className="size-3.5" aria-hidden="true" />
-  </a>
+    <ExternalLink aria-hidden="true" />
+  </Button>
   <Fragment slot="content">
     <span class="block font-medium">Source: {label}</span>
     {when && <span class="block opacity-80">{when}</span>}
