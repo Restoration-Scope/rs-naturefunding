@@ -24,7 +24,7 @@ import {
   approachLabels,
   stateLabels,
 } from '../../lib/labels'
-import { ArrowLeft } from 'lucide-react'
+import { ArrowLeft, ChevronDown } from 'lucide-react'
 import { CONTACT_EMAIL, RS_REPORTING_URL, absolute, funderCorrectionUrl, reportProblemUrl } from '../../lib/site'
 
 export const getStaticPaths = (() => programmes.map((p) => ({ params: { id: p.id }, props: { p } }))) satisfies GetStaticPaths
@@ -207,10 +207,14 @@ const jsonLd = [
           <label class="-mt-1 mb-4 flex flex-wrap items-center gap-x-3 gap-y-1 border-b border-rule pb-3 text-md">
             <span class="text-ink-2">Your project is in</span>
             <span class="-mr-1.5 flex text-lg empty:hidden" data-where-flag></span>
-            <select class="min-h-9 rounded-md border border-control-edge bg-surface px-2 font-semibold" data-where-select>
-              <option value="">Any country</option>
-              {switchCountries.map((c) => <option value={c.code}>{c.name}</option>)}
-            </select>
+            {/* The chevron is drawn here, not by the browser, so it sits as far from the edge as the text does. */}
+            <span class="relative flex">
+              <select class="min-h-9 cursor-pointer appearance-none rounded-md border border-control-edge bg-surface pr-9 pl-3 font-semibold" data-where-select>
+                <option value="">Any country</option>
+                {switchCountries.map((c) => <option value={c.code}>{c.name}</option>)}
+              </select>
+              <ChevronDown className="pointer-events-none absolute top-1/2 right-3 size-4 -translate-y-1/2 text-ink-2" aria-hidden="true" />
+            </span>
           </label>
         )
       }
