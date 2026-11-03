@@ -3,7 +3,8 @@ name: Refresh
 # Daily: re-read every due funder page. Tier A (unchanged, quotes present, deadlines passed)
 # commits to main; Tier B (changed page or gone quote) opens a PR for review. New NbS calls from
 # the EU and grants.gov APIs go into one review issue (scripts/refresh/discover.ts).
-# Weekly: link-rot pass and a summary issue.
+# Weekly: link-rot pass, a summary issue, and funders found by web search (Exa) not yet listed,
+# raised as one review issue (scripts/refresh/discover-web.ts).
 on:
   schedule:
     - cron: '17 5 * * *'
@@ -80,6 +81,14 @@ jobs:
       - name: Link rot and weekly summary
         if: env.MODE == 'weekly'
         run: bun scripts/refresh/weekly.ts
+
+      # Funders found by web search (Exa, about $0.50 a run) that we don't list, raised as one review issue.
+      - name: Discover funders on the web
+        if: env.MODE == 'weekly'
+        continue-on-error: true
+        env:
+          EXA_API_KEY: ${{ secrets.EXA_API_KEY }}
+        run: bun scripts/refresh/discover-web.ts
 
       - name: Commit Tier A to the branch (main on schedule)
         id: commit

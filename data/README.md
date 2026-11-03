@@ -74,6 +74,15 @@ Each stated fact carries an evidence record:
 
 We keep only quotes, links and dates. Funder pages themselves are not committed.
 
+## Finding new funders
+
+Discovery only raises leads; a person (or an agent following this file) adds a programme from the funder's own page. Each lead goes into one GitHub issue labelled `discovery`, and `data/checks/discovered.json` remembers what was raised so it comes up once.
+
+- **Daily, two APIs** (`scripts/refresh/discover.ts`): open or forecast nature calls in EU Funding & Tenders (`EU_SEARCH_API_KEY`) and grants.gov.
+- **Weekly, web search** (`scripts/refresh/discover-web.ts`): 22 Exa searches by region, theme and language (`EXA_API_KEY`, about $0.50 a run). One row per funder site not yet cited in `data/`; directories and news sites are dropped, and on government or platform sites (gov.uk, canada.ca, Submittable…) each page counts on its own.
+
+`--no-issue` on either prints the leads without filing an issue or recording them.
+
 ## Scripts
 
 | Command | What it does |
