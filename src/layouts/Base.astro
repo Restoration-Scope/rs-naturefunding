@@ -111,11 +111,12 @@ const ld = jsonLd ? (Array.isArray(jsonLd) ? jsonLd : [jsonLd]) : []
     <script>
       // Visit counts in PostHog, cookieless: no cookies or storage, visitors are a daily hash on PostHog's side.
       // The key is set only in the deploy build (Actions variable), so local builds send nothing.
+      // Requests go through our relay Worker (relay/), which ad blockers don't drop like PostHog's own hosts.
       const key = import.meta.env.PUBLIC_POSTHOG_KEY
       if (key) {
         import('posthog-js').then(({ default: posthog }) =>
           posthog.init(key, {
-            api_host: 'https://us.i.posthog.com',
+            api_host: 'https://relay.naturefunding.org',
             ui_host: 'https://us.posthog.com',
             defaults: '2026-08-30',
             cookieless_mode: 'always',
