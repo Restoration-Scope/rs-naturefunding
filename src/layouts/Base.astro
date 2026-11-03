@@ -9,7 +9,7 @@ interface Props {
   path: string
   jsonLd?: object | object[]
   /** The finder itself; its link in the nav is marked current. */
-  nav?: 'finder' | 'about' | 'data' | null
+  nav?: 'finder' | 'about' | 'data' | 'digest' | null
   noindex?: boolean
   /** A link back to every grant beside the logo, for pages showing only some (src/components/FinderLanding.astro). */
   allGrants?: boolean
@@ -83,12 +83,14 @@ const ld = jsonLd ? (Array.isArray(jsonLd) ? jsonLd : [jsonLd]) : []
                 ['/', 'Find funding', 'finder'],
                 ['/about/', 'How we check', 'about'],
                 ['/about/#open-data', 'Open data', 'data'],
+                ['/digest/', 'Weekly email', 'digest'],
+                [generalReportUrl, 'Report a problem', null],
               ].map(([href, text, key]) => (
                 <li>
                   <a
                     class="inline-block py-[0.35rem] text-shell-ink-2! pointer-coarse:py-2.5 no-underline decoration-brand-light decoration-2 underline-offset-[0.35em] hover:text-shell-ink! hover:underline aria-[current=page]:text-shell-ink! aria-[current=page]:underline"
                     href={href}
-                    aria-current={nav === key ? 'page' : undefined}
+                    aria-current={key && nav === key ? 'page' : undefined}
                   >
                     {text}
                   </a>
