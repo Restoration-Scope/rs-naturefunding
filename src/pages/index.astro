@@ -5,6 +5,7 @@ import DigestSignup from '../components/DigestSignup.astro'
 import { ArrowDown, ArrowUp, Bird, Building2, ChevronsUpDown, Droplets, LayoutGrid, Microscope, Search, SlidersHorizontal, Trees, Users, Waves, Wheat, X } from 'lucide-react'
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
+import { Checkbox } from '@/components/ui/checkbox'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 import { NativeSelect } from '@/components/ui/native-select'
@@ -37,7 +38,6 @@ const groupTitle = 'mb-2 flex items-center gap-2 px-0 pt-3.5 pb-0 text-sm font-m
 const groupHint = 'mt-[0.3rem] text-xs leading-[1.4] text-ink-2'
 const opt =
   'group/opt flex min-h-[1.9rem] cursor-pointer items-center gap-2 text-sm leading-[1.3] has-disabled:cursor-default has-disabled:text-ink-2 max-xl:min-h-10 max-xl:text-md'
-const optInput = 'm-0 size-4 flex-none accent-primary'
 // .opt__text is what src/lib/finder.ts reads; the class carries no style.
 // group-hover only applies where the device can hover, so a tap leaves no underline behind.
 const optText = 'opt__text flex-1 underline-offset-[0.18em] group-hover/opt:underline group-has-disabled/opt:no-underline'
@@ -244,7 +244,7 @@ const jsonLd = [
                     {/* The counts are honest totals; these two sit folded on the page until asked for. */}
                     {s === 'none' && <p class="mt-2 mb-1 border-t border-border pt-2 text-xs text-muted-foreground">Folded under “Not open now”</p>}
                     <label class={opt}>
-                      <input class={optInput} type="checkbox" name="status" value={s} />
+                      <Checkbox name="status" value={s} />
                       <span class={optText}>{stateFilterLabels[s]}</span>
                       <span class={optN} data-n={`status:${s}`}>{count(s)}</span>
                     </label>
@@ -260,7 +260,7 @@ const jsonLd = [
               {
                 routes.map(([k, label]) => (
                   <label class={opt}>
-                    <input class={optInput} type="checkbox" name="access" value={k} />
+                    <Checkbox name="access" value={k} />
                     <span class={optText}>{label}</span>
                     <span class={optN} data-n={`access:${k}`} />
                   </label>
@@ -275,7 +275,7 @@ const jsonLd = [
               {
                 Object.entries(sizeBuckets).map(([k, b]) => (
                   <label class={opt}>
-                    <input class={optInput} type="checkbox" name="size" value={k} />
+                    <Checkbox name="size" value={k} />
                     <span class={optText}>{b.label}</span>
                     <span class={optN} data-n={`size:${k}`} />
                   </label>
