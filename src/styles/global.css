@@ -68,8 +68,9 @@
   --sunk: var(--linen);
   --rule: #d8d7d2;
   --rule-strong: #b5b6b1;
-  /* Form control edges: at least 3:1 against paper, white and linen (WCAG 1.4.11). */
-  --control-edge: var(--ink-2);
+  /* Form control edges: the same light rule as other borders, as shadcn/ui's defaults have it. A checked box,
+     the focus ring and the white fill on paper still mark the control. */
+  --control-edge: var(--rule);
   /* Brand green on paper is 4.49:1, a hair under AA for text; links take it 30% toward brand-dark (5.5:1). */
   --link: #346f43;
   --focus: var(--brand);
