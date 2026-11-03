@@ -63,7 +63,7 @@ export function initWhereView() {
     box?.toggleAttribute('data-narrowed', !!part)
     if (!covered) place('none')
     if (select) {
-      if (where && ![...select.options].some((o) => o.value === where)) select.add(new Option(`${name} (not covered)`, where))
+      if (where && ![...select.options].some((o) => o.value === where)) select.add(new Option(covered ? name : `${name} (not covered)`, where))
       select.value = where
     }
 
@@ -87,7 +87,7 @@ export function initWhereView() {
     }
     if (callsTitle) {
       const mine = calls.length - others.length
-      callsTitle.textContent = others.length ? `${mine === 1 ? 'The call' : `Calls (${mine})`} for ${name}` : builtCallsTitle
+      callsTitle.textContent = others.length ? `${mine === 0 ? 'No call' : mine === 1 ? 'The call' : `Calls (${mine})`} for ${name}` : builtCallsTitle
     }
 
     // The button at the foot follows the apply box.

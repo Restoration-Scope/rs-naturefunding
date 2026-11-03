@@ -49,19 +49,25 @@ const byDeadline = (a: Call, b: Call) => (a.deadline?.date ?? '9999').localeComp
 export const callTakes = (c: Call, country: string) => !c.countries || c.countries.includes(country)
 
 /**
- * The programme split by the calls each place can apply to: one group per distinct set of call countries,
- * then the rest (`codes: null`) when some place falls outside every group. Empty when no call names countries.
+ * The programme split by the call each country gets, when some call names its countries: countries whose calls
+ * give the same state and call share a group. A programme open to whole regions adds the rest (`codes: null`),
+ * which gets only the calls that name no country. Empty when every country would get the same.
  */
 export function callGroups(p: Programme): { codes: string[] | null; listing: Listing }[] {
-  const sets = new Map<string, string[]>()
-  for (const c of p.calls) if (c.countries) sets.set(c.countries.join(' '), c.countries)
-  if (sets.size === 0) return []
-  const groups: { codes: string[] | null; listing: Listing }[] = [...sets.values()].map((codes) => ({ codes, listing: listingFor(p, buildDate, codes[0]) }))
-  const inGroup = new Set([...sets.values()].flat())
+  if (!p.calls.some((c) => c.countries)) return []
   const g = p.geography
-  const outside = g?.scope === 'countries' ? g.countries.find((k) => !inGroup.has(k)) : 'ZZ' // ZZ: a code no country has
-  if (outside || p.calls.some((c) => !c.countries)) groups.push({ codes: null, listing: listingFor(p, buildDate, outside ?? 'ZZ') })
-  return groups
+  const countries = [...new Set([...(g?.scope === 'countries' ? g.countries : []), ...p.calls.flatMap((c) => c.countries ?? [])])]
+  const groups = new Map<string, { codes: string[]; listing: Listing }>()
+  for (const k of countries) {
+    const listing = listingFor(p, buildDate, k)
+    const key = `${listing.state} ${listing.call?.id ?? ''}`
+    const group = groups.get(key)
+    if (group) group.codes.push(k)
+    else groups.set(key, { codes: [k], listing })
+  }
+  const out: { codes: string[] | null; listing: Listing }[] = [...groups.values()].sort((a, b) => sortListings(a.listing, b.listing))
+  if (g?.scope !== 'countries') out.push({ codes: null, listing: listingFor(p, buildDate, 'ZZ') }) // ZZ: a code no country has
+  return out.length > 1 ? out : []
 }
 
 /** `country`: only the calls that take projects from it set the state. */

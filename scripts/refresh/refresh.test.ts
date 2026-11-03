@@ -409,6 +409,16 @@ describe('Tier B apply', () => {
       expect([c.expected, c.recurring, c.note]).toEqual(['June 2027', '1 March each year', 'Subject to funding approval'])
       expect(c.evidence.recurring).toEqual(ev(URL_A, 'Deadlines are 1 March each year', '2026-11-02'))
     })
+    test('a call we tagged with countries keeps them, and their quote, when the draft renames it', () => {
+      const p = upcoming()
+      p.calls[0] = { ...p.calls[0]!, countries: ['KE'], evidence: { ...p.calls[0]!.evidence, countries: ev(URL_A, 'Deadlines are 1 March each year') } }
+      const { programme, changes, schemaErrors } = applyExtraction(p, source, draft({ label: '2027 round for Kenya' }), quiet, now)
+      const c = programme!.calls[0]!
+      expect(schemaErrors).toEqual([])
+      expect(changes[0]).toMatchObject({ path: 'calls[round-2027]', kind: 'changed' })
+      expect([c.label, c.countries]).toEqual(['2027 round for Kenya', ['KE']])
+      expect(c.evidence.countries?.quote).toBe('Deadlines are 1 March each year')
+    })
     test('a firm opening date drops the kept expected one; null removes a qualifier', () => {
       const { programme, changes } = applyExtraction(upcoming(), source, draft({ opens: '2027-06-01', note: null }, { opens: 'Opens 1 June 2027' }), quiet, now)
       const c = programme!.calls[0]
