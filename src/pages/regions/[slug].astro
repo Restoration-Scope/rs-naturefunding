@@ -1,0 +1,12 @@
+---
+import type { GetStaticPaths } from 'astro'
+import FinderLanding from '../../components/FinderLanding.astro'
+import { finderPages, type FinderPage } from '../../lib/finder-pages'
+
+export const getStaticPaths = (() =>
+  finderPages.regions.map((page) => ({ params: { slug: page.path.split('/').at(-2)! }, props: { page } }))) satisfies GetStaticPaths
+
+const { page } = Astro.props as { page: FinderPage }
+---
+
+<FinderLanding page={page} />

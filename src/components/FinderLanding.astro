@@ -1,0 +1,60 @@
+---
+// A place or project-type page: the home page's band with its own heading, then the finder preset to it.
+import Base from '../layouts/Base.astro'
+import Finder from './Finder.astro'
+import type { FinderPage } from '../lib/finder-pages'
+import { homeItemListLd } from '../lib/agent'
+import { longDate } from '../lib/format'
+import { absolute } from '../lib/site'
+import { stats } from '../lib/data'
+
+interface Props {
+  page: FinderPage
+}
+
+const { page } = Astro.props
+const description = `${page.lead} Every deadline links to the funder’s own page. Free, with no paid listings.`
+const jsonLd = [
+  homeItemListLd(page.listings, page.h1),
+  {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'naturefunding.org', item: absolute('/') },
+      { '@type': 'ListItem', position: 2, name: page.name, item: absolute(page.path) },
+    ],
+  },
+]
+---
+
+<Base title={page.title} description={description} path={page.path} nav="finder" jsonLd={jsonLd}>
+  <div slot="band" class="pb-[6.5rem] max-md:pb-16">
+    <div class="wrap grid items-end gap-x-14 gap-y-3 pt-3 lg:grid-cols-[5fr_7fr] max-md:pt-1">
+      <div>
+        <nav aria-label="Breadcrumb" class="mb-3 text-sm text-shell-ink-2">
+          <a class="text-shell-ink-2! underline-offset-[0.18em]" href="/">All grants</a>
+          <span aria-hidden="true"> / </span>
+          <span>{page.name}</span>
+        </nav>
+        {
+          page.iso2 && (
+            // The flag as the finder's Where picker draws it (src/lib/picker.ts), at the heading's size.
+            <span class="relative mb-3 inline-block rounded-[3px] after:absolute after:inset-0 after:rounded-[3px] after:ring-1 after:ring-black/10 after:ring-inset">
+              <img class="block h-8 w-12 rounded-[3px] max-md:h-6 max-md:w-9" src={`/flags/${page.iso2}.svg`} alt="" width="48" height="32" />
+            </span>
+          )
+        }
+        <h1 class="text-balance text-[clamp(1.875rem,1.2rem+1.4vw,2.5rem)] leading-[1.08] tracking-[-0.01em] text-shell-ink">{page.h1}</h1>
+      </div>
+      <p class="text-[0.9375rem] leading-[1.55] text-shell-ink-2">
+        <span class="text-shell-ink">{page.lead}</span>{' '}
+        <span class="max-md:hidden">
+          For nonprofits and community groups leading projects on the ground. Every deadline, amount and eligibility rule links to the funder’s own page, with its exact words and the date we checked it.
+          {stats.lastChecked && ` Last checked ${longDate(stats.lastChecked)}.`}
+        </span>
+      </p>
+    </div>
+  </div>
+
+  <Finder listings={page.listings} where={page.where} cat={page.cat} />
+</Base>

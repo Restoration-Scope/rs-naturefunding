@@ -1,5 +1,7 @@
 // The table finder. Filters, sorts and quick filters run over the server-rendered rows,
-// and every setting lives in the URL.
+// and every setting lives in the URL: Where and the project type in the path when a page holds that pair
+// (src/lib/finder-pages.ts), the rest in the address.
+import { pageHref, type PagePaths } from './page-paths'
 import { picker } from './picker'
 
 const AGING_DAYS = 30
@@ -74,6 +76,11 @@ export function initTableFinder() {
   const askSelect = (name: string) => ask.querySelector<HTMLSelectElement>(`select[name="${name}"]`)!
   const whereSelect = askSelect('where')
   const cats = [...document.querySelectorAll<HTMLElement>('[data-cat]')]
+  // The page's own Where and project type, and the page for every other pair.
+  const presetWhere = ask.dataset.presetWhere ?? ''
+  const presetCat = ask.dataset.presetCat ?? ''
+  const pages: PagePaths = JSON.parse(ask.dataset.pages ?? '{}')
+  const catOf = (a: string[]) => [...a].sort().join(' ')
   let approach: string[] = []
 
   let showLater = false
@@ -207,8 +214,9 @@ export function initTableFinder() {
 
   function fromUrl(): Filters {
     const sp = new URLSearchParams(location.search)
-    const f = { q: sp.get('q') ?? '', within: sp.get('within') ?? '', where: sp.get('where') ?? '' } as Filters
+    const f = { q: sp.get('q') ?? '', within: sp.get('within') ?? '', where: sp.get('where') ?? presetWhere } as Filters
     for (const m of MULTI) f[m] = (sp.get(m) ?? '').split(',').filter(Boolean)
+    if (!sp.has('approach') && presetCat) f.approach = presetCat.split(' ')
     // Who can apply is one select, so an address can pick one.
     f.applicant = f.applicant.filter((a) => [...askSelect('applicant').options].some((o) => o.value === a)).slice(0, 1)
     if (f.where && ![...whereSelect.options].some((o) => o.value === f.where)) f.where = ''
@@ -229,9 +237,9 @@ export function initTableFinder() {
   function toUrl(f: Filters) {
     const sp = new URLSearchParams()
     if (f.q) sp.set('q', f.q)
-    for (const m of MULTI) if (f[m].length) sp.set(m, f[m].join(','))
+    for (const m of MULTI) if (f[m].length && !(m === 'approach' && catOf(f.approach) === presetCat)) sp.set(m, f[m].join(','))
     if (f.within) sp.set('within', f.within)
-    if (f.where) sp.set('where', f.where)
+    if (f.where && f.where !== presetWhere) sp.set('where', f.where)
     if (sort !== 'deadline' || reversed) sp.set('sort', `${reversed ? '-' : ''}${sort}`)
     if (showLater) sp.set('later', '1')
     const qs = sp.toString().replaceAll('%2C', ',')
@@ -268,7 +276,13 @@ export function initTableFinder() {
     const sideN = f.status.length + f.access.length + f.size.length
     badge.hidden = sideN === 0
     badge.textContent = String(sideN)
-    const any = !!(f.q || f.within || f.where || MULTI.some((m) => f[m].length))
+    const any = !!(
+      f.q ||
+      f.within ||
+      f.where !== presetWhere ||
+      catOf(f.approach) !== presetCat ||
+      MULTI.some((m) => m !== 'approach' && f[m].length)
+    )
     for (const c of clearEls) c.hidden = !any
     for (const g of form.querySelectorAll<HTMLElement>('[data-gcount]')) {
       const n = f[g.dataset.gcount as Multi].length
@@ -349,8 +363,16 @@ export function initTableFinder() {
   }
 
   function reset() {
-    write({ q: '', within: '', where: '', status: [], approach: [], applicant: [], access: [], size: [] })
+    write({ q: '', within: '', where: presetWhere, status: [], approach: presetCat ? presetCat.split(' ') : [], applicant: [], access: [], size: [] })
     apply()
+  }
+
+  /** Goes to the page for the chosen Where and project type when it isn't this one; true when it left. */
+  function navigate() {
+    const href = pageHref(pages, whereSelect.value, catOf(approach), new URLSearchParams(location.search))
+    if (new URL(href, location.href).pathname === location.pathname) return false
+    location.assign(href)
+    return true
   }
 
   // ---------- Filter sheet (phones and tablets) ----------
@@ -407,12 +429,14 @@ export function initTableFinder() {
   // ---------- Wiring ----------
   const f0 = fromUrl()
   write(f0)
+  // An address naming another page's place or type, e.g. /?where=KE from before the place pages.
+  if (navigate()) return
   applySort()
   apply()
 
   form.addEventListener('input', apply)
   form.addEventListener('submit', (e) => e.preventDefault())
-  ask.addEventListener('change', apply)
+  ask.addEventListener('change', () => navigate() || apply())
   ask.addEventListener('submit', (e) => {
     e.preventDefault()
     document.querySelector('.results')?.scrollIntoView({ block: 'start', behavior: 'smooth' })
@@ -443,7 +467,7 @@ export function initTableFinder() {
     if (cat && !((e as MouseEvent).metaKey || (e as MouseEvent).ctrlKey || (e as MouseEvent).shiftKey)) {
       e.preventDefault()
       approach = cat.dataset.cat ? cat.dataset.cat.split(' ') : []
-      apply()
+      if (!navigate()) apply()
       return
     }
     const quick = t.closest<HTMLButtonElement>('[data-quick]')
