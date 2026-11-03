@@ -17,6 +17,8 @@ const buttonVariants = cva(
         default: 'min-h-11 px-[1.1rem] py-[0.55rem] [&_svg]:size-4',
         sm: 'h-8 gap-1.5 px-3 text-sm [&_svg]:size-4',
         icon: 'size-11 [&_svg]:size-5',
+        /** An icon inside a line of text; touch screens get a 40px target around it. */
+        'icon-xs': 'relative size-6 pointer-coarse:after:absolute pointer-coarse:after:-inset-2 [&_svg]:size-3.5',
       },
       width: {
         auto: '',

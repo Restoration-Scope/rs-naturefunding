@@ -21,3 +21,9 @@ const twMerge = extendTailwindMerge({
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs))
 }
+
+let lastId = 0
+/** A page-unique id for wiring aria attributes in static markup, e.g. a tooltip to its trigger. */
+export function uid(prefix: string) {
+  return `${prefix}-${++lastId}`
+}
