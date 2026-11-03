@@ -103,11 +103,12 @@ export function usDate(mdy: string | undefined): string | null {
   return m ? `${m[3]}-${m[1]}-${m[2]}` : null
 }
 
-/** Calls not yet raised and not already in data/ (matched by topic code or opportunity number). */
+/** Calls not yet raised (by key, or by URL from the weekly web search) and not already in data/ (matched by topic code or opportunity number). */
 export function newCandidates(found: Candidate[], known: Discovered, dataText: string): Candidate[] {
   const seen = new Set<string>()
+  const raisedUrls = new Set(Object.values(known).map((k) => k.url))
   return found.filter((c) => {
-    if (seen.has(c.key) || known[c.key] || dataText.includes(c.id)) return false
+    if (seen.has(c.key) || known[c.key] || raisedUrls.has(c.url) || dataText.includes(c.id)) return false
     seen.add(c.key)
     return true
   })

@@ -68,7 +68,7 @@ const MAX_BODY = 60_000
  */
 export const SHARED_SITES = [
   'gov.uk', 'canada.ca', 'gc.ca', 'gov.br', 'gov.au', 'govt.nz', 'europa.eu', 'undp.org', 'gouv.fr', 'gov.pl', 'gov.co',
-  'gob.mx', 'go.jp', 'submittable.com', 'smapply.io', 'google.com',
+  'gob.mx', 'go.jp', 'gov', 'us', 'submittable.com', 'smapply.io', 'google.com',
 ]
 
 /** The registrable part of a host: `fr.cepf.net` → `cepf.net`, `www.aucklandcouncil.govt.nz` → `aucklandcouncil.govt.nz`. */
@@ -82,10 +82,16 @@ const under = (host: string, sites: string[]) => sites.some((s) => host === s ||
 export const isShared = (host: string) => under(host.toLowerCase().replace(/^www\./, ''), SHARED_SITES)
 export const isNotFunder = (host: string) => under(host.toLowerCase().replace(/^www\./, ''), NOT_FUNDERS)
 
-/** A URL without scheme, `www.`, query, hash or trailing slash, for matching against the data. */
+const TRACKING = /^(utm_\w+|fbclid|gclid|mc_[ce]id|_ga|ref)$/i
+
+/**
+ * A URL without scheme, `www.`, tracking parameters, hash or trailing slash, for matching against
+ * the data. Other parameters stay: on UNDP and SGP pages `?notice_id=` or `?country=` is the page.
+ */
 export const bareUrl = (url: string) => {
   const u = new URL(url)
-  return `${u.host.replace(/^www\./, '')}${u.pathname.replace(/\/$/, '')}`.toLowerCase()
+  for (const key of [...u.searchParams.keys()]) if (TRACKING.test(key)) u.searchParams.delete(key)
+  return `${u.host.replace(/^www\./, '')}${u.pathname.replace(/\/$/, '')}${u.search}`.toLowerCase()
 }
 
 export type Hit = { title: string; url: string; publishedDate?: string | null }
@@ -99,7 +105,8 @@ export type Lead = { key: string; site: string; title: string; url: string; sear
  */
 export function newLeads(hits: { hit: Hit; search: number }[], known: Discovered, dataUrls: string[]): Lead[] {
   const listedSites = new Set(dataUrls.map((u) => new URL(u).host).filter((h) => !isShared(h)).map(siteOf))
-  const listedPages = new Set(dataUrls.map(bareUrl))
+  // Pages raised under any key, so a call the daily APIs raised is not raised again from the web.
+  const listedPages = new Set([...dataUrls, ...Object.values(known).map((k) => k.url)].filter((u) => URL.canParse(u)).map(bareUrl))
   const leads = new Map<string, Lead & { by: Set<number> }>()
   for (const { hit, search } of hits) {
     let url: URL
@@ -112,7 +119,7 @@ export function newLeads(hits: { hit: Hit; search: number }[], known: Discovered
     const shared = isShared(url.host)
     const site = shared ? url.host.replace(/^www\./, '') : siteOf(url.host)
     const key = `web:${shared ? bareUrl(hit.url) : site}`
-    if (known[key] || (shared ? listedPages.has(bareUrl(hit.url)) : listedSites.has(site))) continue
+    if (known[key] || listedPages.has(bareUrl(hit.url)) || (!shared && listedSites.has(site))) continue
     const lead = leads.get(key) ?? { key, site, title: hit.title.replace(/\s+/g, ' ').trim() || site, url: hit.url, searches: 0, published: hit.publishedDate?.slice(0, 10) ?? null, by: new Set() }
     lead.by.add(search)
     lead.searches = lead.by.size
