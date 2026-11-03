@@ -146,8 +146,8 @@ const jsonLd = [
   jsonLd={jsonLd}
   noindex={hidden}
 >
+  <a slot="beside-logo" class="group/back inline-flex items-center gap-1.5" href="/" data-back><ArrowLeft className="size-4 shrink-0 transition-transform group-hover/back:-translate-x-0.5" aria-hidden="true" /><span data-back-text>All funding</span></a>
   <div slot="band" class="wrap pt-4 pb-6 md:pt-5 md:pb-8 [&_a]:text-shell-ink">
-    <a class="group/back mb-4 inline-flex items-center gap-1.5 text-md text-shell-ink-2! pointer-coarse:-my-2.5 pointer-coarse:mb-1.5 pointer-coarse:py-2.5" href="/" data-back><ArrowLeft className="size-4 shrink-0 transition-transform group-hover/back:-translate-x-0.5" aria-hidden="true" /><span data-back-text>All funding</span></a>
     <h1 class="max-w-[30ch] text-[clamp(1.5rem,1.1rem+1.8vw,2.5rem)] leading-[1.12] tracking-[-0.01em]">{p.name}</h1>
     {/* Phones: two lines at most, so the apply box starts higher; every name stays in the Run by fact. */}
     <p class="mt-[0.6rem] text-lg text-shell-ink-2 max-md:line-clamp-2" title={p.administered_by ? `${p.funder.name}, run by ${p.administered_by.name}` : undefined}>
