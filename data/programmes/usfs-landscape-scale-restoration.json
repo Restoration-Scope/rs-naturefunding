@@ -2,7 +2,7 @@
   "id": "usfs-landscape-scale-restoration",
   "name": "Landscape Scale Restoration Grant Program for Non-Federal Lands",
   "funder": { "name": "USDA Forest Service", "url": "https://www.fs.usda.gov/" },
-  "administered_by": null,
+  "administered_by": { "name": "USDA Forest Service", "url": "https://www.fs.usda.gov" },
   "parent": null,
   "url": "https://www.grants.gov/search-results-detail/364144",
   "summary": "US federal matching grants for collaborative forest restoration on rural private, state and local government land that reduces wildfire risk, improves fish and wildlife habitat or water, or tackles invasive plants, pests and disease. Applicants other than tribes need their State Forester's sponsorship.",
@@ -11,7 +11,12 @@
   "geography": null,
   "access": "direct",
   "window": "fixed",
-  "amount": { "currency": "USD", "max": 600000, "note": "Up to $300,000 for a single-state project; $600,000 for a multistate one" },
+  "amount": {
+    "currency": "USD",
+    "min": 100000,
+    "max": 600000,
+    "note": "Up to $300,000 for a single-state project; $600,000 for a multistate one"
+  },
   "co_finance_required": true,
   "reporting": "Recipients file financial and performance reports at least once a year, and report accomplishments, with maps of where the work happened, in the LaSR database by 28 October each year.",
   "calls": [
@@ -21,18 +26,23 @@
       "url": "https://www.grants.gov/search-results-detail/364144",
       "status": "open",
       "opens": null,
-      "deadline": { "date": "2027-01-26", "time": "23:59", "timezone": "America/New_York", "text": "Submit applications in Grants.gov by 11:59 p.m. Eastern, Tuesday, January 26, 2027." },
+      "deadline": {
+        "date": "2027-01-26",
+        "time": "23:59",
+        "timezone": "America/New_York",
+        "text": "Submit applications in Grants.gov by 11:59 p.m. Eastern, Tuesday, January 26, 2027."
+      },
       "evidence": {
         "status": {
           "source_url": "https://www.grants.gov/grantsws/rest/opportunity/att/download/355360",
           "quote": "In Fiscal Year (FY) 2026 the Forest Service is offering this one LSR non-Federal lands Notice of Funding Opportunity (NOFO) which replaces the three regional (Southern/IITF, Western, and Northeast-Midwestern) NOFOs.",
-          "checked_at": "2026-11-02",
+          "checked_at": "2026-11-03",
           "method": "page"
         },
         "deadline": {
           "source_url": "https://www.grants.gov/grantsws/rest/opportunity/att/download/355360",
           "quote": "Application Due Date: Submit applications in Grants.gov by 11:59 p.m. Eastern, Tuesday, January 26, 2027.",
-          "checked_at": "2026-11-02",
+          "checked_at": "2026-11-03",
           "method": "page"
         }
       },
@@ -40,42 +50,48 @@
     }
   ],
   "evidence": {
+    "administered_by": {
+      "source_url": "https://www.grants.gov/grantsws/rest/opportunity/att/download/355360",
+      "quote": "The Forest Service is a Federal agency under the U.S. Department of Agriculture (USDA) that manages 193 million acres of National Forest System land.",
+      "checked_at": "2026-11-03",
+      "method": "page"
+    },
     "applicant_types": {
       "source_url": "https://www.grants.gov/grantsws/rest/opportunity/att/download/355360",
       "quote": "Eligible Applicants: o State forestry agency or appropriate/equivalent State agency o Unit of local government o Indian Tribe* o Alaska Native Corporation o Native Hawaiian Organization o Non-profit organization o Institution of higher learning",
-      "checked_at": "2026-11-02",
+      "checked_at": "2026-11-03",
       "method": "page"
     },
     "access": {
       "source_url": "https://www.grants.gov/grantsws/rest/opportunity/att/download/355360",
       "quote": "All applications except those submitted by federally recognized Tribes require the relevant State Forester(s) to sponsor the project.",
-      "checked_at": "2026-11-02",
+      "checked_at": "2026-11-03",
       "method": "page"
     },
     "window": {
       "source_url": "https://www.grants.gov/grantsws/rest/opportunity/att/download/355360",
       "quote": "Announcement Type: Annual Grant Announcement",
-      "checked_at": "2026-11-02",
+      "checked_at": "2026-11-03",
       "method": "page"
     },
     "amount": {
       "source_url": "https://www.grants.gov/grantsws/rest/opportunity/att/download/355360",
       "quote": "Maximum: $300,000 for single-State projects; $600,000 for multistate projects.",
-      "checked_at": "2026-11-02",
+      "checked_at": "2026-11-03",
       "method": "page"
     },
     "co_finance_required": {
       "source_url": "https://www.grants.gov/grantsws/rest/opportunity/att/download/355360",
       "quote": "Grant recipients must match (cost share) the Federal grant funds 1:1 with non-Federal sources.",
-      "checked_at": "2026-11-02",
+      "checked_at": "2026-11-03",
       "method": "page"
     },
     "reporting": {
       "source_url": "https://www.grants.gov/grantsws/rest/opportunity/att/download/355360",
       "quote": "Accomplishment reporting in the Landscape Scale Restoration database (LaSR) is due no later than October 28 each year. This includes spatial data outlining discrete area(s) where on-the-ground implementation activities are planned/occurred.",
-      "checked_at": "2026-11-02",
+      "checked_at": "2026-11-03",
       "method": "page"
     }
   },
-  "checked_at": "2026-11-02"
+  "checked_at": "2026-11-03"
 }
