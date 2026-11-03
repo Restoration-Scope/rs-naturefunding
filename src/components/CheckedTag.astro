@@ -1,9 +1,9 @@
 ---
-import { ExternalLink } from 'lucide-react'
 import { Badge } from '@/components/ui/badge'
 import { AGING_DAYS, buildDate, daysBetween, type RecheckFailure } from '../lib/data'
 import { recheckReasons } from '../lib/labels'
 import { longDate, shortDate } from '../lib/format'
+import SourceLink from './SourceLink.astro'
 
 interface Props {
   checked: string
@@ -23,20 +23,7 @@ const title = reason
 ---
 
 <span class:list={['inline-flex flex-wrap items-center gap-x-1.5 gap-y-1 text-xs text-muted-foreground', className]} data-checked={checked}>
-  {
-    source && (
-      <a
-        class="inline-flex size-4 items-center justify-center rounded-sm text-muted-foreground hover:text-ink"
-        href={source.url}
-        target="_blank"
-        rel="noopener"
-        title={`Source: ${source.label}`}
-        aria-label={`Source: ${source.label} (opens in a new tab)`}
-      >
-        <ExternalLink className="size-3.5" aria-hidden="true" />
-      </a>
-    )
-  }
+  {source && <SourceLink url={source.url} label={source.label} />}
   <span class="inline-flex items-center whitespace-nowrap">
     <Badge variant="tag" data-aging={aging || reason ? '' : undefined} title={title}>{`${reason ? 'Last confirmed' : 'Checked'} ${shortDate(checked)}`}</Badge>
   </span>

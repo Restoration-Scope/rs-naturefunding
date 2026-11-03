@@ -1,0 +1,24 @@
+---
+// shadcn/ui's tooltip look without its React runtime: pages ship no islands, so it opens on CSS hover and
+// keyboard focus. The trigger (default slot) names the tip with aria-describedby={id}; touch has no hover,
+// so nothing that matters may live only here. It opens up and starts at the trigger's left edge, since
+// triggers sit at the start of a line and a centred tip would run off a phone's edge.
+interface Props {
+  id: string
+  class?: string
+}
+
+const { id, class: className } = Astro.props
+---
+
+<span class:list={['group/tip relative inline-flex', className]}>
+  <slot />
+  <span
+    id={id}
+    role="tooltip"
+    class="pointer-events-none invisible absolute bottom-full -left-2 z-50 mb-2 w-max max-w-72 rounded-md bg-foreground px-3 py-1.5 text-xs text-balance text-background opacity-0 transition-[opacity,visibility] duration-150 group-hover/tip:visible group-hover/tip:opacity-100 group-has-focus-visible/tip:visible group-has-focus-visible/tip:opacity-100"
+  >
+    <slot name="content" />
+    <span class="absolute -bottom-1 left-3 size-2.5 rotate-45 rounded-[2px] bg-foreground" aria-hidden="true"></span>
+  </span>
+</span>

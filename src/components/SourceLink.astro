@@ -1,0 +1,47 @@
+---
+import { ExternalLink } from 'lucide-react'
+import { uid } from '@/lib/utils'
+import { AGING_DAYS, buildDate, daysBetween, type RecheckFailure } from '../lib/data'
+import { recheckReasons } from '../lib/labels'
+import Tooltip from './Tooltip.astro'
+import { longDate } from '../lib/format'
+
+interface Props {
+  url: string
+  /** The page's name, e.g. "afr100.org · funding": the tooltip's first line. */
+  label: string
+  /** Date the page was read. Given when no date badge sits beside the icon, so the tooltip carries it. */
+  checked?: string
+  /** The daily check could not re-read the page since `checked`. */
+  reason?: RecheckFailure | null
+}
+
+const { url, label, checked, reason } = Astro.props
+const id = uid('source')
+const when = checked
+  ? reason
+    ? `Last confirmed ${longDate(checked)}. Our daily check can’t read it now: ${recheckReasons[reason]}.`
+    : daysBetween(checked, buildDate) > AGING_DAYS
+      ? `Checked ${longDate(checked)}, over ${AGING_DAYS} days ago, due a recheck.`
+      : `Checked ${longDate(checked)}.`
+  : null
+---
+
+{/* The funder's page as an icon: name and date wait in its tooltip, so a list of facts doesn't repeat them. */}
+<Tooltip id={id}>
+  <a
+    class="inline-flex size-4 items-center justify-center rounded-sm text-muted-foreground! hover:text-ink!"
+    href={url}
+    target="_blank"
+    rel="noopener"
+    aria-label={`Source: ${label} (opens in a new tab)`}
+    aria-describedby={id}
+    data-checked={checked}
+  >
+    <ExternalLink className="size-3.5" aria-hidden="true" />
+  </a>
+  <Fragment slot="content">
+    <span class="block font-medium">Source: {label}</span>
+    {when && <span class="block opacity-80">{when}</span>}
+  </Fragment>
+</Tooltip>
