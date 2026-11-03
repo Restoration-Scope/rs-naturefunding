@@ -355,11 +355,11 @@ export function grantJsonLd(l: Listing): object[] {
 }
 
 /** schema.org ItemList of the programmes the finder shows, in its order: URLs only, to keep the home page light. */
-export function homeItemListLd(listings: Listing[]): object {
+export function homeItemListLd(listings: Listing[], name = 'Funding for nature restoration and conservation'): object {
   return {
     '@context': 'https://schema.org',
     '@type': 'ItemList',
-    name: 'Funding for nature restoration and conservation',
+    name,
     numberOfItems: listings.length,
     itemListElement: listings.map((l, i) => ({ '@type': 'ListItem', position: i + 1, url: listingUrl(l.p) })),
   }

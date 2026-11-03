@@ -7,6 +7,7 @@ import { join, relative } from 'node:path'
 import { gzipSync } from 'node:zlib'
 import { parseHTML } from 'linkedom'
 import { evidenceOf } from '../src/data/load'
+import { COUNTRY_PAGES, countrySlug } from '../src/lib/countries'
 import { listings, programmes } from '../src/lib/data'
 
 const root = join(import.meta.dir, '..')
@@ -29,8 +30,12 @@ const norm = (s: string) => s.replace(/\s+/g, ' ').trim()
 const staticPages: string[] = JSON.parse(readFileSync(join(import.meta.dir, 'static-pages.json'), 'utf8'))
 
 describe('pages', () => {
-  test('the same static pages, plus one page per programme', () => {
-    const expected = [...staticPages, ...programmes.map((p) => `p/${p.id}/index.html`)].sort()
+  test('the same static pages, plus one page per programme and per country', () => {
+    const expected = [
+      ...staticPages,
+      ...programmes.map((p) => `p/${p.id}/index.html`),
+      ...COUNTRY_PAGES.map((c) => `countries/${countrySlug(c)}/index.html`),
+    ].sort()
     expect(htmlFiles).toEqual(expected)
   })
 })
