@@ -2,13 +2,17 @@
   "id": "fws-tribal-wildlife-grants",
   "name": "Tribal Wildlife Grants",
   "funder": { "name": "U.S. Fish and Wildlife Service", "url": "https://www.fws.gov/" },
-  "administered_by": null,
+  "administered_by": { "name": "U.S. Fish and Wildlife Service", "url": "https://www.fws.gov" },
   "parent": null,
   "url": "https://www.fws.gov/service/tribal-wildlife-grants",
   "summary": "Yearly US federal grants for federally recognised tribal governments to run fish and wildlife conservation on lands of interest to the tribe, often for species of cultural or traditional importance, including habitat work.",
   "approaches": ["species_conservation", "community_conservation"],
   "applicant_types": ["indigenous_organization"],
-  "geography": { "scope": "countries", "countries": ["US"], "label": "United States (federally recognised tribes)" },
+  "geography": {
+    "scope": "countries",
+    "countries": ["US"],
+    "label": "United States (federally recognised tribes)"
+  },
   "access": "direct",
   "window": "fixed",
   "amount": { "currency": "USD", "min": 25000, "max": 200000 },
@@ -21,66 +25,77 @@
       "url": "https://www.grants.gov/search-results-detail/362774",
       "status": "closed",
       "opens": null,
-      "deadline": { "date": "2026-08-14", "time": "23:59", "timezone": "America/New_York", "text": "Closing Date for Applications: 08/14/2026, by 11:59 PM, ET" },
+      "deadline": {
+        "date": "2026-08-14",
+        "time": "23:59",
+        "timezone": "America/New_York",
+        "text": "Closing Date for Applications: 08/14/2026, by 11:59 PM, ET"
+      },
       "evidence": {
         "status": {
           "source_url": "https://www.grants.gov/grantsws/rest/opportunity/att/download/352983",
           "quote": "Closing Date for Applications: 08/14/2026",
-          "checked_at": "2026-11-02",
+          "checked_at": "2026-11-03",
           "method": "page"
         },
         "deadline": {
           "source_url": "https://www.grants.gov/grantsws/rest/opportunity/att/download/352983",
           "quote": "Closing Date for Applications: 08/14/2026 Closing Date Explanation Electronically submitted applications must be submitted no later than 11:59 PM, ET, on the listed application due date.",
-          "checked_at": "2026-11-02",
+          "checked_at": "2026-11-03",
           "method": "page"
         }
       }
     }
   ],
   "evidence": {
+    "administered_by": {
+      "source_url": "https://www.grants.gov/grantsws/rest/opportunity/att/download/352983",
+      "quote": "U.S. Fish and Wildlife Service Wildlife and Sport Fish Restoration Program",
+      "checked_at": "2026-11-03",
+      "method": "page"
+    },
     "applicant_types": {
       "source_url": "https://www.grants.gov/grantsws/rest/opportunity/att/download/352983",
       "quote": "Participation is limited to federally recognized Tribal governments listed in the current Federal Register Notice of Indian Entities Recognized and Eligible to Receive Services from the United States Bureau of Indian Affairs (Notice).",
-      "checked_at": "2026-11-02",
+      "checked_at": "2026-11-03",
       "method": "page"
     },
     "geography": {
       "source_url": "https://www.grants.gov/grantsws/rest/opportunity/att/download/352983",
       "quote": "This is the official listing of all federally recognized Tribes in the United States",
-      "checked_at": "2026-11-02",
+      "checked_at": "2026-11-03",
       "method": "page"
     },
     "access": {
       "source_url": "https://www.grants.gov/grantsws/rest/opportunity/att/download/352983",
       "quote": "There is no limit to the number of applications a Tribe may submit within a single fiscal year.",
-      "checked_at": "2026-11-02",
+      "checked_at": "2026-11-03",
       "method": "page"
     },
     "window": {
       "source_url": "https://www.grants.gov/grantsws/rest/opportunity/att/download/352983",
       "quote": "Tribes that have not brought past due reports up to date in this 30-day period will be found ineligible and excluded from further consideration in the FY 2026 TWG Program cycle.",
-      "checked_at": "2026-11-02",
+      "checked_at": "2026-11-03",
       "method": "page"
     },
     "amount": {
       "source_url": "https://www.grants.gov/grantsws/rest/opportunity/att/download/352983",
       "quote": "Award Ceiling: $200,000 Award Floor: $25,000",
-      "checked_at": "2026-11-02",
+      "checked_at": "2026-11-03",
       "method": "page"
     },
     "co_finance_required": {
       "source_url": "https://www.grants.gov/grantsws/rest/opportunity/att/download/352983",
       "quote": "Cost Sharing Requirement Cost Sharing Required? No",
-      "checked_at": "2026-11-02",
+      "checked_at": "2026-11-03",
       "method": "page"
     },
     "reporting": {
       "source_url": "https://www.grants.gov/grantsws/rest/opportunity/att/download/352983",
       "quote": "Submit Federal Financial reports and Program Performance reports.",
-      "checked_at": "2026-11-02",
+      "checked_at": "2026-11-03",
       "method": "page"
     }
   },
-  "checked_at": "2026-11-02"
+  "checked_at": "2026-11-03"
 }
