@@ -35,6 +35,9 @@ jobs:
       - run: bun install --frozen-lockfile
       - run: bun run validate
       - run: bun run build
+        env:
+          # PostHog project key (public, shipped in the page); unset means no analytics script runs.
+          PUBLIC_POSTHOG_KEY: ${{ vars.PUBLIC_POSTHOG_KEY }}
       - name: No token yet
         if: env.CLOUDFLARE_API_TOKEN == ''
         run: echo "::warning::CLOUDFLARE_API_TOKEN is not set; built but not deployed."

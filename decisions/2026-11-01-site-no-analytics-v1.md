@@ -1,6 +1,6 @@
 ---
 title: No analytics in V1
-status: open
+status: reverted
 kind: temporary
 filed: 2026-11-01
 by: naturefunding site thread
@@ -19,3 +19,7 @@ The brief allowed PostHog only if it runs cookieless. That's possible (persisten
 ## Where
 
 - src/layouts/Base.astro
+
+## Feedback
+
+- 2026-11-02 agent · reverted: Bernat asked for PostHog (project 706226). Added cookieless, per the original brief; see 2026-11-02-posthog-cookieless.md.
