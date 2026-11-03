@@ -1,27 +1,36 @@
 ---
 // shadcn/ui's tooltip look without its React runtime: pages ship no islands, so it opens on CSS hover and
 // keyboard focus. The trigger (default slot) names the tip with aria-describedby={id}; touch has no hover,
-// so put only what the page also says elsewhere, or can do without, here. It opens up and starts at the
-// trigger's left edge, since triggers sit at the start of a line and a centred tip would run off a phone's
-// edge. Its gap above the trigger is padding, not margin, so the pointer can move onto the tip and keep it.
+// so put only what the page also says elsewhere, or can do without, here.
+// The tip is fixed and anchored to the trigger (CSS anchor positioning): it opens up from the trigger's left
+// edge and flips to end at its right edge when it would run off the screen, and being fixed it never widens
+// the page. Its gap above the trigger is padding, not margin, so the pointer can move onto the tip and keep
+// it. The arrow is anchored on its own so it stays over the trigger whichever way the tip opens.
 interface Props {
   id: string
   class?: string
 }
 
 const { id, class: className } = Astro.props
+const shown =
+  'invisible opacity-0 transition-[opacity,visibility] duration-150 group-hover/tip:visible group-hover/tip:opacity-100 group-has-focus-visible/tip:visible group-has-focus-visible/tip:opacity-100'
 ---
 
-<span class:list={['group/tip relative inline-flex', className]}>
+<span class:list={['group/tip inline-flex', className]} style={`anchor-name: --${id}`}>
   <slot />
   <span
     id={id}
     role="tooltip"
-    class="invisible absolute bottom-full -left-2 z-50 w-max max-w-72 pb-2 opacity-0 transition-[opacity,visibility] duration-150 group-hover/tip:visible group-hover/tip:opacity-100 group-has-focus-visible/tip:visible group-has-focus-visible/tip:opacity-100"
+    class:list={['fixed z-50 -ml-2 w-max max-w-[min(18rem,calc(100vw-1rem))] pb-2 [position-area:top_span-right] [position-try-fallbacks:flip-inline]', shown]}
+    style={`position-anchor: --${id}`}
   >
-    <span class="relative block rounded-md bg-foreground px-3 py-1.5 text-xs text-balance text-background">
+    <span class="block rounded-md bg-foreground px-3 py-1.5 text-xs text-balance text-background">
       <slot name="content" />
-      <span class="absolute -bottom-1 left-3 size-2.5 rotate-45 rounded-[2px] bg-foreground" aria-hidden="true"></span>
     </span>
   </span>
+  <span
+    class:list={['fixed z-50 mb-1 hidden size-2.5 rotate-45 rounded-[2px] bg-foreground [position-area:top] supports-[anchor-name:--a]:block', shown]}
+    style={`position-anchor: --${id}`}
+    aria-hidden="true"
+  ></span>
 </span>
