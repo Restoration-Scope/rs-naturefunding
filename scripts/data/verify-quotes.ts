@@ -19,9 +19,11 @@ const { programmes, issues } = checkData(dir, null)
 for (const issue of issues) console.error(`skipped, invalid: ${issue}`)
 
 type Check = { programme: string; url: string; quote: string }
-const checks: Check[] = programmes
+const allChecks: (Check & { method: string })[] = programmes
   .filter((p) => only.size === 0 || only.has(p.id))
-  .flatMap((p) => evidenceOf(p).map((e) => ({ programme: p.id, url: e.source_url, quote: e.quote })))
+  .flatMap((p) => evidenceOf(p).map((e) => ({ programme: p.id, url: e.source_url, quote: e.quote, method: e.method })))
+const manual = allChecks.filter((c) => c.method === 'human')
+const checks: Check[] = allChecks.filter((c) => c.method !== 'human')
 
 const urls = [...new Set(checks.map((c) => c.url))]
 const pages = new Map<string, string | Error>()
@@ -47,11 +49,12 @@ const failures = checks.flatMap((c) => {
 
 for (const f of failures) console.error(`FAIL ${f.programme} ${f.url}\n  ${f.reason}: "${f.quote}"`)
 const passed = checks.length - failures.length
-console.log(`${passed}/${checks.length} quotes verified across ${urls.length} pages and ${new Set(checks.map((c) => c.programme)).size} programmes`)
+const skipped = manual.length ? `; ${manual.length} human-read quote${manual.length === 1 ? '' : 's'} skipped` : ''
+console.log(`${passed}/${checks.length} quotes verified across ${urls.length} pages and ${new Set(checks.map((c) => c.programme)).size} programmes${skipped}`)
 
 mkdirSync(join(process.cwd(), '.cache'), { recursive: true })
 writeFileSync(
   join(process.cwd(), '.cache', 'verify-report.json'),
-  JSON.stringify({ ran_at: new Date().toISOString(), checks: checks.length, passed, failures }, null, 2),
+  JSON.stringify({ ran_at: new Date().toISOString(), checks: checks.length, passed, skipped_human: manual.length, failures }, null, 2),
 )
 process.exit(failures.length === 0 && issues.length === 0 ? 0 : 1)
