@@ -18,34 +18,12 @@ interface Props {
   odds?: number | null
   /** Read amount, currency, steps and odds from the URL too (the /worth-applying/ page). */
   fromQuery?: boolean
-  /** How the verdict is coloured: a tinted result band, a tinted pill, or coloured text. Green pays, yellow doesn't. */
-  look?: 'band' | 'pill' | 'text'
   class?: string
 }
 
-const { amount, currency = 'USD', steps, odds, fromQuery = false, look = 'band', class: className } = Astro.props
-// The script sets data-verdict="good|bad" on the form. Class names stay whole so Tailwind finds them.
-const looks = {
-  band: {
-    output:
-      'mt-1 rounded-md bg-sunk px-3 py-2.5 group-data-[verdict=good]/worth:bg-ok group-data-[verdict=bad]/worth:bg-caution',
-    verdict: 'group-data-[verdict=good]/worth:text-ok-ink group-data-[verdict=bad]/worth:text-caution-ink',
-    icon: '',
-  },
-  pill: {
-    output: 'border-t border-rule pt-3',
-    verdict:
-      'rounded-full px-2.5 py-0.5 group-data-[verdict=good]/worth:bg-ok group-data-[verdict=good]/worth:text-ok-ink group-data-[verdict=bad]/worth:bg-caution group-data-[verdict=bad]/worth:text-caution-ink',
-    icon: '',
-  },
-  // Text alone: the icon carries the colour, at the dot's stronger shade.
-  text: {
-    output: 'border-t border-rule pt-3',
-    verdict: 'group-data-[verdict=good]/worth:text-ok-ink group-data-[verdict=bad]/worth:text-caution-ink',
-    icon: 'group-data-[verdict=good]/worth:text-ok-dot group-data-[verdict=bad]/worth:text-caution-dot',
-  },
-}
-const icon = `size-4 flex-none self-center ${looks[look].icon}`
+const { amount, currency = 'USD', steps, odds, fromQuery = false, class: className } = Astro.props
+// The script sets data-verdict="good|bad" on the form: a green band when it pays your rate, yellow when it doesn't.
+const icon = 'size-4 flex-none self-center'
 // A rough start: about a day's work per step. The reader corrects it.
 const HOURS_PER_STEP = 8
 const field = 'grid content-end gap-1'
@@ -114,10 +92,13 @@ const regions =
     <span data-w="hours-help">{steps ? `Hours start at a day per step (${steps} on the funder’s page): change them to yours.` : 'Count every stage, and reports if you win.'}</span>{' '}
     <span>Rates of {longDate(rates.date)} from <a class="underline underline-offset-2" href={rates.source_url}>{rates.source}</a>.</span>
   </p>
-  <output class:list={['col-span-2 grid gap-1 sm:col-span-5', looks[look].output]} aria-live="polite">
+  <output
+    class="col-span-2 mt-1 grid gap-1 rounded-md bg-sunk px-3 py-2.5 group-data-[verdict=bad]/worth:bg-caution group-data-[verdict=good]/worth:bg-ok sm:col-span-5"
+    aria-live="polite"
+  >
     <p class="flex flex-wrap items-baseline gap-x-3 gap-y-1">
       <span><span data-w="per-hour" class="text-2xl font-bold">–</span> <span class="text-md text-ink-2">per hour of work</span></span>
-      <span class:list={['inline-flex items-baseline gap-1.5 text-md font-semibold', looks[look].verdict]}>
+      <span class="inline-flex items-baseline gap-1.5 text-md font-semibold group-data-[verdict=bad]/worth:text-caution-ink group-data-[verdict=good]/worth:text-ok-ink">
         <CircleCheck className={`${icon} hidden group-data-[verdict=good]/worth:block`} aria-hidden="true" />
         <TriangleAlert className={`${icon} hidden group-data-[verdict=bad]/worth:block`} aria-hidden="true" />
         <span data-w="verdict"></span>
