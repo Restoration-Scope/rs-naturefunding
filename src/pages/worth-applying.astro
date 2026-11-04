@@ -1,14 +1,11 @@
 ---
 import Base from '../layouts/Base.astro'
 import { cardClasses } from '@/components/ui/card'
-import { Input } from '@/components/ui/input'
+import WorthCheck from '../components/WorthCheck.astro'
 
 const description =
   'A quick check before you write: weigh the money a grant may bring against the hours its application and reporting take.'
 
-const field = 'grid content-end gap-1'
-const fieldLabel = 'text-sm font-bold text-ink-2'
-const fieldHelp = 'text-xs text-ink-2'
 const prose = [
   '[&>p]:max-w-[66ch] [&>p+p]:mt-[0.85rem] [&>p+ul]:mt-[0.85rem] [&>ul+p]:mt-[0.85rem]',
   '[&>ul]:mt-[0.6rem] [&>ul]:mb-0 [&>ul]:max-w-[66ch] [&>ul]:pl-[1.2rem] [&>ul>li+li]:mt-[0.4rem] [&_li]:marker:text-ink-2',
@@ -26,40 +23,7 @@ const prose = [
   </div>
 
   <article class:list={['wrap mr-auto ml-0 max-w-[calc(44rem+2*var(--gutter))]', prose]}>
-    <form id="worth" class:list={[cardClasses, 'mt-6 grid max-w-[66ch] grid-cols-2 gap-3 p-4 sm:grid-cols-5']} onsubmit="return false">
-      <div class={field}>
-        <label class={fieldLabel} for="w-amount">Amount, <span id="w-currency">USD</span></label>
-        <Input id="w-amount" type="number" min="0" step="any" inputMode="decimal" value="5000" />
-      </div>
-      <div class={field}>
-        <label class={fieldLabel} for="w-odds">Chance, %</label>
-        <Input id="w-odds" type="number" min="1" max="100" step="1" inputMode="numeric" value="20" />
-      </div>
-      <div class={field}>
-        <label class={fieldLabel} for="w-hours">Hours to apply</label>
-        <Input id="w-hours" type="number" min="0" step="1" inputMode="numeric" value="16" />
-      </div>
-      <div class={field}>
-        <label class={fieldLabel} for="w-report">Hours to report</label>
-        <Input id="w-report" type="number" min="0" step="1" inputMode="numeric" value="8" />
-      </div>
-      <div class={field}>
-        <label class={fieldLabel} for="w-rate">Hourly rate</label>
-        <Input id="w-rate" type="number" min="0" step="any" inputMode="decimal" value="30" />
-      </div>
-      <p class:list={[fieldHelp, 'col-span-2 sm:col-span-5']}>
-        <span id="w-odds-help">Few funders publish their odds: ask, or guess low.</span>{' '}
-        <span id="w-hours-help">Count every stage, and reports if you win.</span>
-      </p>
-
-      <output id="w-result" for="w-amount w-odds w-hours w-report w-rate" class="col-span-2 grid gap-1 border-t border-rule pt-3 sm:col-span-5" aria-live="polite">
-        <p class="flex flex-wrap items-baseline gap-x-3">
-          <span><span id="w-per-hour" class="text-2xl font-bold">–</span> <span class="text-md text-ink-2">per hour of work</span></span>
-          <span id="w-verdict" class="text-md font-semibold"></span>
-        </p>
-        <p id="w-sum" class="text-sm text-ink-2"></p>
-      </output>
-    </form>
+    <WorthCheck fromQuery class:list={[cardClasses, 'mt-6 max-w-[66ch] p-4']} />
 
     <h2>How to read it</h2>
     <ul>
@@ -89,53 +53,3 @@ const prose = [
     </p>
   </article>
 </Base>
-
-<script>
-  const $ = (id: string) => document.getElementById(id) as HTMLInputElement
-  const q = new URLSearchParams(location.search)
-  const currency = q.get('currency') ?? 'USD'
-  $('w-currency').textContent = currency
-  if (q.get('amount')) $('w-amount').value = q.get('amount')!
-  if (q.get('odds')) {
-    $('w-odds').value = q.get('odds')!
-    $('w-odds-help').textContent = 'Chance from the funder’s published figures.'
-  }
-  const steps = Number(q.get('steps'))
-  if (steps > 0) {
-    // A rough start: about a day's work per step. The reader corrects it.
-    $('w-hours').value = String(steps * 8)
-    $('w-hours-help').textContent = `Hours start at a day per step (${steps} on the funder’s page): change them to yours.`
-  }
-  const from = q.get('from')
-  if (from && /^[a-z0-9-]+$/.test(from)) {
-    const back = document.getElementById('worth-back') as HTMLAnchorElement
-    back.href = `/p/${from}/`
-    back.classList.remove('hidden')
-    back.classList.add('inline-block')
-  }
-
-  const money = (n: number) =>
-    new Intl.NumberFormat('en', { style: 'currency', currency, maximumFractionDigits: n < 100 ? 0 : 0 }).format(Math.round(n))
-
-  function update() {
-    const amount = Number($('w-amount').value) || 0
-    const odds = Math.min(100, Math.max(0, Number($('w-odds').value) || 0)) / 100
-    const apply = Number($('w-hours').value) || 0
-    const report = Number($('w-report').value) || 0
-    const rate = Number($('w-rate').value) || 0
-    // Reporting only happens when you win, so it counts at your chance.
-    const hours = apply + report * odds
-    const expected = amount * odds
-    const perHour = hours > 0 ? expected / hours : 0
-    $('w-per-hour').textContent = money(perHour)
-    const verdict = document.getElementById('w-verdict')!
-    if (!hours || !amount) verdict.textContent = ''
-    else if (perHour >= rate * 2) verdict.textContent = 'Well worth it.'
-    else if (perHour >= rate) verdict.textContent = 'Worth it, just.'
-    else verdict.textContent = `Not worth it: ${money(rate - perHour)} an hour below your time.`
-    document.getElementById('w-sum')!.textContent =
-      `${money(amount)} × ${Math.round(odds * 100)}% = ${money(expected)} on average, for ${Math.round(hours)} hours.`
-  }
-  document.getElementById('worth')!.addEventListener('input', update)
-  update()
-</script>

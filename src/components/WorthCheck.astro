@@ -1,0 +1,108 @@
+---
+/**
+ * Is a grant worth the work? Amount × chance against the hours to apply and report, per hour.
+ * Starts from the programme's own figures when it has them; the reader changes any number.
+ * Behaviour: src/lib/worth.ts.
+ */
+import { Input } from '@/components/ui/input'
+
+interface Props {
+  amount?: number | null
+  currency?: string
+  /** Steps to apply on the funder's page, counting "further steps" as one. */
+  steps?: number | null
+  /** Published chance of funding, in percent. */
+  odds?: number | null
+  /** Read amount, currency, steps and odds from the URL too (the /worth-applying/ page). */
+  fromQuery?: boolean
+  class?: string
+}
+
+const { amount, currency = 'USD', steps, odds, fromQuery = false, class: className } = Astro.props
+// A rough start: about a day's work per step. The reader corrects it.
+const HOURS_PER_STEP = 8
+const field = 'grid content-end gap-1'
+const fieldLabel = 'text-sm font-bold text-ink-2'
+---
+
+<form
+  class:list={['grid grid-cols-2 gap-3 sm:grid-cols-5', className]}
+  data-worth
+  data-currency={currency}
+  data-per-step={HOURS_PER_STEP}
+  data-query={fromQuery ? '' : undefined}
+  onsubmit="return false"
+>
+  <div class={field}>
+    <label class={fieldLabel}>Amount, <span data-w="currency">{currency}</span><Input data-w="amount" type="number" min="0" step="any" inputMode="decimal" value={String(amount ?? 5000)} className="mt-1" /></label>
+  </div>
+  <div class={field}>
+    <label class={fieldLabel}>Chance, %<Input data-w="odds" type="number" min="1" max="100" step="1" inputMode="numeric" value={String(odds ?? 20)} className="mt-1" /></label>
+  </div>
+  <div class={field}>
+    <label class={fieldLabel}>Hours to apply<Input data-w="hours" type="number" min="0" step="1" inputMode="numeric" value={String(steps ? steps * HOURS_PER_STEP : 16)} className="mt-1" /></label>
+  </div>
+  <div class={field}>
+    <label class={fieldLabel}>Hours to report<Input data-w="report" type="number" min="0" step="1" inputMode="numeric" value="8" className="mt-1" /></label>
+  </div>
+  <div class={field}>
+    <label class={fieldLabel}>Hourly rate<Input data-w="rate" type="number" min="0" step="any" inputMode="decimal" value="30" className="mt-1" /></label>
+  </div>
+  <p class="col-span-2 text-xs text-ink-2 sm:col-span-5">
+    <span data-w="odds-help">{odds ? 'Chance from the funder’s published figures.' : 'Few funders publish their odds: ask, or guess low.'}</span>{' '}
+    <span data-w="hours-help">{steps ? `Hours start at a day per step (${steps} on the funder’s page): change them to yours.` : 'Count every stage, and reports if you win.'}</span>
+  </p>
+  <output class="col-span-2 grid gap-1 border-t border-rule pt-3 sm:col-span-5" aria-live="polite">
+    <p class="flex flex-wrap items-baseline gap-x-3">
+      <span><span data-w="per-hour" class="text-2xl font-bold">–</span> <span class="text-md text-ink-2">per hour of work</span></span>
+      <span data-w="verdict" class="text-md font-semibold"></span>
+    </p>
+    <p data-w="sum" class="text-sm text-ink-2"></p>
+  </output>
+</form>
+
+{/* Inline and plain, so the two pages that use it don't share a script file. */}
+<script is:inline>
+  for (const f of document.querySelectorAll('[data-worth]')) {
+    const el = (k) => f.querySelector(`[data-w="${k}"]`)
+    const n = (k) => Number(el(k).value) || 0
+    let cur = f.dataset.currency || 'USD'
+    if (f.hasAttribute('data-query')) {
+      const q = new URLSearchParams(location.search)
+      if (/^[A-Z]{3}$/.test(q.get('currency') || '')) cur = q.get('currency')
+      if (q.get('amount')) el('amount').value = q.get('amount')
+      if (q.get('odds')) {
+        el('odds').value = q.get('odds')
+        el('odds-help').textContent = 'Chance from the funder’s published figures.'
+      }
+      const s = Number(q.get('steps'))
+      if (s > 0) {
+        el('hours').value = String(s * Number(f.dataset.perStep || 8))
+        el('hours-help').textContent = `Hours start at a day per step (${s} on the funder’s page): change them to yours.`
+      }
+      const from = q.get('from'), back = document.getElementById('worth-back')
+      if (back && from && /^[a-z0-9-]+$/.test(from)) {
+        back.href = `/p/${from}/`
+        back.classList.replace('hidden', 'inline-block')
+      }
+    }
+    el('currency').textContent = cur
+    const money = (x) => {
+      try {
+        return new Intl.NumberFormat('en', { style: 'currency', currency: cur, maximumFractionDigits: 0 }).format(Math.round(x))
+      } catch {
+        return `${Math.round(x)} ${cur}`
+      }
+    }
+    const update = () => {
+      const amount = n('amount'), odds = Math.min(100, Math.max(0, n('odds'))) / 100, rate = n('rate')
+      // Reporting only happens when you win, so it counts at your chance.
+      const hours = n('hours') + n('report') * odds, expected = amount * odds, per = hours > 0 ? expected / hours : 0
+      el('per-hour').textContent = money(per)
+      el('verdict').textContent = !hours || !amount ? '' : per >= rate * 2 ? 'Well worth it.' : per >= rate ? 'Worth it, just.' : `Not worth it: ${money(rate - per)} an hour below your time.`
+      el('sum').textContent = `${money(amount)} × ${Math.round(odds * 100)}% = ${money(expected)} on average, for ${Math.round(hours)} hours.`
+    }
+    f.addEventListener('input', update)
+    update()
+  }
+</script>

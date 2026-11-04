@@ -3,6 +3,42 @@ import type { Evidence } from '../data/schema'
 import { keepAmountTogether, pageLabel } from '../lib/format'
 import { notRecheckedPage } from '../lib/data'
 import SourceLink from './SourceLink.astro'
+import {
+  Banknote,
+  Building2,
+  CalendarClock,
+  CalendarPlus,
+  CalendarRange,
+  CircleDot,
+  ClipboardList,
+  DoorOpen,
+  FileText,
+  HandCoins,
+  MapPin,
+  Network,
+  Repeat,
+  Sprout,
+  Users,
+} from 'lucide-react'
+
+/** One icon per fact, so the list can be scanned by eye. Labels without one show none. */
+const icons: Record<string, typeof Banknote> = {
+  'How to apply': DoorOpen,
+  Amount: Banknote,
+  'Work to apply': ClipboardList,
+  Where: MapPin,
+  'Who can apply': Users,
+  Rounds: CalendarRange,
+  'Co-funding required': HandCoins,
+  'Consortium required': Network,
+  'Run by': Building2,
+  'Restoration approach': Sprout,
+  Reporting: FileText,
+  Status: CircleDot,
+  Opens: CalendarPlus,
+  Deadline: CalendarClock,
+  'Dates each year': Repeat,
+}
 
 interface Props {
   label: string
@@ -18,11 +54,15 @@ interface Props {
 
 const { label, value, evidence, missing = 'Not found on the pages we read', id } = Astro.props
 const shown = value && label === 'Amount' ? keepAmountTogether(value) : value
+const Icon = icons[label]
 const quotes = evidence ? (Array.isArray(evidence) ? evidence : [evidence]) : []
 ---
 
 <div id={id} class="grid grid-cols-[minmax(0,1fr)] gap-[0.35rem] border-t border-rule py-[1.1rem] md:grid-cols-[11rem_minmax(0,1fr)] md:gap-6">
-  <dt class="pt-[0.15rem] text-md font-bold text-ink-2">{label}</dt>
+  <dt class="flex items-start gap-2 pt-[0.15rem] text-md font-bold text-ink-2">
+    {Icon && <Icon className="mt-[0.2rem] size-4 flex-none" aria-hidden="true" />}
+    <span>{label}</span>
+  </dt>
   <dd class="m-0 min-w-0">
     {
       Astro.slots.has('value') ? (
