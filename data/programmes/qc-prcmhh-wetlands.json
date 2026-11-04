@@ -5,36 +5,25 @@
     "name": "Gouvernement du Québec, Ministère de l'Environnement",
     "url": "https://www.environnement.gouv.qc.ca/"
   },
-  "administered_by": null,
+  "administered_by": {
+    "name": "Ministère de l'Environnement, de la Lutte contre les changements climatiques, de la Protection de la biodiversité, de la Faune et des Parcs",
+    "url": "https://www.environnement.gouv.qc.ca/programmes/prcmhh/index.htm"
+  },
   "parent": null,
   "url": "https://www.environnement.gouv.qc.ca/programmes/prcmhh/index.htm",
   "summary": "Quebec funds up to 100% of eligible costs for studies and for restoration or creation of wetlands and watercourses, with up to C$3 million per restoration project. Municipalities, Indigenous communities, long-established conservation non-profits and landowners can apply, with funds allocated by regional county.",
-  "approaches": [
-    "wetlands",
-    "freshwater"
-  ],
-  "applicant_types": [
-    "government",
-    "indigenous_organization",
-    "ngo",
-    "company"
-  ],
-  "geography": {
-    "scope": "countries",
-    "countries": [
-      "CA"
-    ],
-    "label": "Québec"
-  },
+  "approaches": ["wetlands", "freshwater"],
+  "applicant_types": ["government", "indigenous_organization", "ngo", "company"],
+  "geography": { "scope": "countries", "countries": ["CA"], "label": "Québec" },
   "access": "direct",
   "window": "rolling",
   "amount": {
     "currency": "CAD",
     "max": 3000000,
-    "note": "Stream 2 restoration or creation projects, covering 100% of eligible costs"
+    "note": "Volet 2 – up to 3 million dollars per project, covering 100 % of eligible costs"
   },
   "co_finance_required": null,
-  "reporting": "A final report after the works, plus a financial and activity statement at project end (and a beneficiary follow-up report for volet 2).",
+  "reporting": "Final report after works, plus a financial and activity statement at project end (and a beneficiary follow‑up report for volet 2).",
   "calls": [
     {
       "id": "standing",
@@ -43,54 +32,60 @@
       "status": "open",
       "opens": null,
       "deadline": null,
-      "note": "Framework in force until 31 March 2027",
       "evidence": {
         "status": {
           "source_url": "https://www.environnement.gouv.qc.ca/programmes/prcmhh/index.htm",
           "quote": "Le cadre normatif actuellement en vigueur a été prolongé jusqu'au 31 mars 2027. Le dépôt des projets peut se faire en continu.",
-          "checked_at": "2026-11-02",
+          "checked_at": "2026-11-04",
           "method": "page"
         }
-      }
+      },
+      "note": "Framework in force until 31 March 2027"
     }
   ],
   "evidence": {
+    "administered_by": {
+      "source_url": "https://www.environnement.gouv.qc.ca/programmes/prcmhh/index.htm",
+      "quote": "Ministère de l'Environnement, de la Lutte contre les changements climatiques, de la Protection de la biodiversité, de la Faune et des Parcs",
+      "checked_at": "2026-11-04",
+      "method": "page"
+    },
     "applicant_types": {
       "source_url": "https://www.environnement.gouv.qc.ca/programmes/prcmhh/index.htm",
       "quote": "Les MRC, les municipalités locales et les communautés autochtones; Les organismes à but non lucratif dont la mission principale vise la conservation des milieux naturels et qui sont en activité depuis cinq ans ou plus, y compris les organismes de bassin versant; Les entreprises privées et les organismes à but non lucratif propriétaires des terrains visés par les projets soumis",
-      "checked_at": "2026-11-02",
+      "checked_at": "2026-11-04",
       "method": "page"
     },
     "geography": {
       "source_url": "https://www.environnement.gouv.qc.ca/programmes/prcmhh/index.htm",
       "quote": "Le demandeur doit, s'il s'agit d'une personne morale, avoir au moins un établissement situé au Québec.",
-      "checked_at": "2026-11-02",
+      "checked_at": "2026-11-04",
       "method": "page"
     },
     "access": {
       "source_url": "https://www.environnement.gouv.qc.ca/programmes/prcmhh/index.htm",
       "quote": "Un organisme admissible peut soumettre une demande d'aide financière en transmettant les documents listés à la fin du formulaire de dépôt.",
-      "checked_at": "2026-11-02",
+      "checked_at": "2026-11-04",
       "method": "page"
     },
     "window": {
       "source_url": "https://www.environnement.gouv.qc.ca/programmes/prcmhh/index.htm",
       "quote": "Le dépôt des projets peut se faire en continu.",
-      "checked_at": "2026-11-02",
+      "checked_at": "2026-11-04",
       "method": "page"
     },
     "amount": {
       "source_url": "https://www.environnement.gouv.qc.ca/programmes/prcmhh/index.htm",
-      "quote": "Volet 2 - Soutien à la réalisation de projets de restauration ou de création de milieux humides et hydriques : L'aide financière accordée pour les projets sélectionnés permet de couvrir 100 % des dépenses admissibles jusqu'à concurrence de 3 millions de dollars par projet",
-      "checked_at": "2026-11-02",
+      "quote": "Volet 2 - Soutien à la réalisation de projets de restauration ou de création de milieux humides et hydriques : L'aide financière accordée pour les projets sélectionnés permet de couvrir 100 % des dépenses admissibles jusqu'à concurrence de 3 millions de dollars par projet, en fonction des fonds disponibles dans les MRC où ont eu lieu les pertes de milieux humides et hydriques.",
+      "checked_at": "2026-11-04",
       "method": "page"
     },
     "reporting": {
       "source_url": "https://www.environnement.gouv.qc.ca/programmes/prcmhh/index.htm",
       "quote": "Le gabarit du rapport final à soumettre après la réalisation des travaux",
-      "checked_at": "2026-11-02",
+      "checked_at": "2026-11-04",
       "method": "page"
     }
   },
-  "checked_at": "2026-11-02"
+  "checked_at": "2026-11-04"
 }
