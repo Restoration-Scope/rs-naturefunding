@@ -68,11 +68,11 @@ const regions =
     </select>
   </label>
   <div class={field}>
-    <label class={fieldLabel}>Amount, <span data-w="currency">{currency}</span><Input data-w="amount" type="number" min="0" step="any" inputMode="decimal" value={String(amount ?? 5000)} className="mt-1" /></label>
-    <span data-w="converted" class="text-xs text-ink-2">&nbsp;</span>
+    <label class={fieldLabel}>Amount, <span data-w="currency">{currency}</span><Input data-w="amount" type="number" min="0" step="any" inputMode="decimal" value={amount != null ? String(amount) : fromQuery ? '5000' : ''} className="mt-1" /></label>
+    <span data-w="converted" class="truncate text-xs text-ink-2">&nbsp;</span>
   </div>
   <div class={field}>
-    <label class={fieldLabel}>Chance, %<Input data-w="odds" type="number" min="1" max="100" step="1" inputMode="numeric" value={String(odds ?? 20)} className="mt-1" /></label>
+    <label class={fieldLabel}>Chance, %<Input data-w="odds" type="number" min="0" max="100" step="any" inputMode="numeric" value={String(odds ?? 20)} className="mt-1" /></label>
     <span class="text-xs">&nbsp;</span>
   </div>
   <div class={field}>
@@ -88,7 +88,7 @@ const regions =
     <span class="text-xs">&nbsp;</span>
   </div>
   <p class="col-span-2 text-xs text-ink-2 sm:col-span-5">
-    <span data-w="odds-help">{odds ? 'Chance from the funder’s published figures.' : 'Few funders publish their odds: ask, or guess low.'}</span>{' '}
+    <span data-w="odds-help">{odds != null ? 'Chance from the funder’s published figures.' : 'Few funders publish their odds: ask, or guess low.'}</span>{' '}
     <span data-w="hours-help">{steps ? `Hours start at a day per step (${steps} on the funder’s page): change them to yours.` : 'Count every stage, and reports if you win.'}</span>{' '}
     <span>Rates of {longDate(rates.date)} from <a class="underline underline-offset-2" href={rates.source_url}>{rates.source}</a>.</span>
   </p>
@@ -112,16 +112,26 @@ const regions =
     last pick, else their browser's country, else the grant's. Converted rates round to two significant digits
     (30 USD reads as 97,000 COP). Reporting counts at the chance of winning: it only happens if you win. A rate
     the reader types is kept in dollars, so a currency change carries it over, and in localStorage, so the next
-    grant starts from it. */}
+    grant starts from it. Only finite, non-negative numbers count; with no hours, no amount or no rate there is
+    no verdict. The rate compares at full precision, and the verdict judges the rounded figures the reader sees,
+    so "$30 an hour" never reads as below a $30 rate. No rate for the grant's currency: no check at all. */}
 <script is:inline>
   for (const f of document.querySelectorAll('[data-worth]')) {
     const el = (k) => f.querySelector(`[data-w="${k}"]`)
-    const n = (k) => Number(el(k).value) || 0
+    const num = (k) => {
+      const v = el(k).value.trim() === '' ? NaN : Number(el(k).value)
+      return Number.isFinite(v) && v >= 0 ? v : null
+    }
+    const n = (k) => num(k) ?? 0
     const R = JSON.parse(f.dataset.rates)
     let cur = f.dataset.currency || 'USD'
+    if (!(R[cur] > 0)) {
+      f.hidden = true
+      continue
+    }
     if (f.hasAttribute('data-query')) {
       const q = new URLSearchParams(location.search)
-      if (R[q.get('currency')]) cur = q.get('currency')
+      if (R[q.get('currency')] > 0) cur = q.get('currency')
       if (q.get('amount')) el('amount').value = q.get('amount')
       if (q.get('odds')) {
         el('odds').value = q.get('odds')
@@ -146,7 +156,8 @@ const regions =
       if (R[m]) mine = m
       const kept = localStorage.getItem('nf-currency')
       if (R[kept]) mine = kept
-      if (+localStorage.getItem('nf-rate-usd') > 0) el('rate').dataset.usd = localStorage.getItem('nf-rate-usd')
+      const usd = Number(localStorage.getItem('nf-rate-usd'))
+      if (Number.isFinite(usd) && usd > 0) el('rate').dataset.usd = localStorage.getItem('nf-rate-usd')
     } catch {}
     const sel = el('mine')
     sel.value = mine
@@ -164,14 +175,18 @@ const regions =
     }
     const update = () => {
       const m = sel.value, fx = R[m] / R[cur]
-      const amount = n('amount') * fx, odds = Math.min(100, Math.max(0, n('odds'))) / 100, rate = n('rate')
-      const hours = n('hours') + n('report') * odds, expected = amount * odds, per = hours > 0 ? expected / hours : 0
-      el('converted').textContent = m === cur ? '\u00a0' : `≈ ${money(amount, m)}`
-      el('per-hour').textContent = money(per, m)
-      const v = !hours || !amount ? '' : per >= rate ? 'good' : 'bad'
+      const amount = n('amount') * fx, odds = Math.min(100, n('odds')) / 100
+      const rate = num('rate') === null ? null : Number(el('rate').dataset.usd) * R[m]
+      const hours = n('hours') + n('report') * odds, expected = amount * odds, per = expected / hours
+      const ok = ['amount', 'odds', 'hours', 'report'].every((k) => num(k) !== null) && hours > 0 && amount > 0 && Number.isFinite(expected) && Number.isFinite(per)
+      el('converted').textContent = m === cur || !Number.isFinite(amount) ? '\u00a0' : `≈ ${money(amount, m)}`
+      el('per-hour').textContent = ok ? money(per, m) : '–'
+      const shown = ok ? Math.round(per) : 0, mineR = rate === null ? null : Math.round(rate)
+      const v = !ok || mineR === null ? '' : shown >= mineR ? 'good' : 'bad'
       f.dataset.verdict = v
-      el('verdict').textContent = !v ? '' : per >= rate * 2 ? 'Well worth it.' : v == 'good' ? 'Worth it, just.' : `Not worth it: ${money(rate - per, m)} an hour below your time.`
-      el('sum').textContent = `${money(amount, m)} × ${Math.round(odds * 100)}% = ${money(expected, m)} on average, for ${Math.round(hours)} hours.`
+      el('verdict').textContent = !v ? '' : shown >= mineR * 2 ? 'Well worth it.' : v == 'good' ? 'Worth it, just.' : `Not worth it: ${money(mineR - shown, m)} an hour below your time.`
+      const h = hours < 10 ? Math.round(hours * 10) / 10 : Math.round(hours)
+      el('sum').textContent = ok ? `${money(amount, m)} × ${Math.round(odds * 1000) / 10}% = ${money(expected, m)} on average, for ${h} hour${h === 1 ? '' : 's'}.` : ''
     }
     sel.addEventListener('change', () => {
       try {
@@ -181,7 +196,8 @@ const regions =
       update()
     })
     el('rate').addEventListener('input', () => {
-      el('rate').dataset.usd = String(n('rate') / R[sel.value])
+      if (num('rate') === null) return
+      el('rate').dataset.usd = String(num('rate') / R[sel.value])
       try {
         localStorage.setItem('nf-rate-usd', el('rate').dataset.usd)
       } catch {}

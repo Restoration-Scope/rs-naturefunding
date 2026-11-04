@@ -133,7 +133,7 @@ const worth = {
   amount: p.amount ? (p.amount.max ?? p.amount.min ?? null) : null,
   currency: p.amount?.currency ?? 'USD',
   steps: p.effort ? p.effort.steps.length + (p.effort.more_after ? 1 : 0) : null,
-  odds: p.odds ? Math.round((p.odds.funded / p.odds.applied) * 100) : null,
+  odds: p.odds ? Math.round((p.odds.funded / p.odds.applied) * 1000) / 10 : null,
 }
 const listingsList = 'm-0 list-none border-t border-rule p-0'
 

@@ -3,7 +3,7 @@
  * with no request from the reader's browser. Run it with the daily refresh.
  * Source: ExchangeRate-API's free open feed (attribution required: shown on the calculator).
  */
-import { writeFileSync } from 'fs'
+import { readdirSync, readFileSync, writeFileSync } from 'fs'
 import { join } from 'path'
 
 const SOURCE = 'https://open.er-api.com/v6/latest/USD'
@@ -18,6 +18,15 @@ const per_usd = Object.fromEntries(
     .sort(([a], [b]) => a.localeCompare(b))
     .map(([code, r]) => [code, Number(r.toPrecision(6))]),
 )
+// Every currency a listing uses must have a rate, or the calculator can't convert it: keep yesterday's file.
+const dir = join(import.meta.dir, '../../data/programmes')
+const needed = new Set(['USD'])
+for (const f of readdirSync(dir).filter((f) => f.endsWith('.json'))) {
+  const c = JSON.parse(readFileSync(join(dir, f), 'utf8')).amount?.currency
+  if (c) needed.add(c)
+}
+const missing = [...needed].filter((c) => !(Number.isFinite(per_usd[c]) && per_usd[c] > 0))
+if (missing.length) throw new Error(`rates: no rate for ${missing.join(', ')}; keeping the previous file`)
 const out = {
   source: 'ExchangeRate-API',
   source_url: 'https://www.exchangerate-api.com',
