@@ -7,6 +7,7 @@
 import { Input } from '@/components/ui/input'
 import rates from '../../data/rates.json'
 import { longDate } from '../lib/format'
+import { CircleCheck, TriangleAlert } from 'lucide-react'
 
 interface Props {
   amount?: number | null
@@ -17,10 +18,34 @@ interface Props {
   odds?: number | null
   /** Read amount, currency, steps and odds from the URL too (the /worth-applying/ page). */
   fromQuery?: boolean
+  /** How the verdict is coloured: a tinted result band, a tinted pill, or coloured text. Green pays, yellow doesn't. */
+  look?: 'band' | 'pill' | 'text'
   class?: string
 }
 
-const { amount, currency = 'USD', steps, odds, fromQuery = false, class: className } = Astro.props
+const { amount, currency = 'USD', steps, odds, fromQuery = false, look = 'band', class: className } = Astro.props
+// The script sets data-verdict="good|bad" on the form. Class names stay whole so Tailwind finds them.
+const looks = {
+  band: {
+    output:
+      'mt-1 rounded-md bg-sunk px-3 py-2.5 group-data-[verdict=good]/worth:bg-ok group-data-[verdict=bad]/worth:bg-caution',
+    verdict: 'group-data-[verdict=good]/worth:text-ok-ink group-data-[verdict=bad]/worth:text-caution-ink',
+    icon: '',
+  },
+  pill: {
+    output: 'border-t border-rule pt-3',
+    verdict:
+      'rounded-full px-2.5 py-0.5 group-data-[verdict=good]/worth:bg-ok group-data-[verdict=good]/worth:text-ok-ink group-data-[verdict=bad]/worth:bg-caution group-data-[verdict=bad]/worth:text-caution-ink',
+    icon: '',
+  },
+  // Text alone: the icon carries the colour, at the dot's stronger shade.
+  text: {
+    output: 'border-t border-rule pt-3',
+    verdict: 'group-data-[verdict=good]/worth:text-ok-ink group-data-[verdict=bad]/worth:text-caution-ink',
+    icon: 'group-data-[verdict=good]/worth:text-ok-dot group-data-[verdict=bad]/worth:text-caution-dot',
+  },
+}
+const icon = `size-4 flex-none self-center ${looks[look].icon}`
 // A rough start: about a day's work per step. The reader corrects it.
 const HOURS_PER_STEP = 8
 const field = 'grid content-end gap-1'
@@ -49,7 +74,7 @@ const regions =
 ---
 
 <form
-  class:list={['grid grid-cols-2 gap-3 sm:grid-cols-5', className]}
+  class:list={['group/worth grid grid-cols-2 gap-3 sm:grid-cols-5', className]}
   data-worth
   data-currency={currency}
   data-per-step={HOURS_PER_STEP}
@@ -89,10 +114,14 @@ const regions =
     <span data-w="hours-help">{steps ? `Hours start at a day per step (${steps} on the funder’s page): change them to yours.` : 'Count every stage, and reports if you win.'}</span>{' '}
     <span>Rates of {longDate(rates.date)} from <a class="underline underline-offset-2" href={rates.source_url}>{rates.source}</a>.</span>
   </p>
-  <output class="col-span-2 grid gap-1 border-t border-rule pt-3 sm:col-span-5" aria-live="polite">
-    <p class="flex flex-wrap items-baseline gap-x-3">
+  <output class:list={['col-span-2 grid gap-1 sm:col-span-5', looks[look].output]} aria-live="polite">
+    <p class="flex flex-wrap items-baseline gap-x-3 gap-y-1">
       <span><span data-w="per-hour" class="text-2xl font-bold">–</span> <span class="text-md text-ink-2">per hour of work</span></span>
-      <span data-w="verdict" class="text-md font-semibold"></span>
+      <span class:list={['inline-flex items-baseline gap-1.5 text-md font-semibold', looks[look].verdict]}>
+        <CircleCheck className={`${icon} hidden group-data-[verdict=good]/worth:block`} aria-hidden="true" />
+        <TriangleAlert className={`${icon} hidden group-data-[verdict=bad]/worth:block`} aria-hidden="true" />
+        <span data-w="verdict"></span>
+      </span>
     </p>
     <p data-w="sum" class="text-sm text-ink-2"></p>
   </output>
@@ -101,7 +130,8 @@ const regions =
 {/* Inline and plain, so the two pages that use it don't share a script file. The currency is the reader's
     last pick, else their browser's country, else the grant's. Converted rates round to two significant digits
     (30 USD reads as 97,000 COP). Reporting counts at the chance of winning: it only happens if you win. A rate
-    the reader types is kept in dollars, so a currency change carries it over. */}
+    the reader types is kept in dollars, so a currency change carries it over, and in localStorage, so the next
+    grant starts from it. */}
 <script is:inline>
   for (const f of document.querySelectorAll('[data-worth]')) {
     const el = (k) => f.querySelector(`[data-w="${k}"]`)
@@ -135,6 +165,7 @@ const regions =
       if (R[m]) mine = m
       const kept = localStorage.getItem('nf-currency')
       if (R[kept]) mine = kept
+      if (+localStorage.getItem('nf-rate-usd') > 0) el('rate').dataset.usd = localStorage.getItem('nf-rate-usd')
     } catch {}
     const sel = el('mine')
     sel.value = mine
@@ -156,7 +187,9 @@ const regions =
       const hours = n('hours') + n('report') * odds, expected = amount * odds, per = hours > 0 ? expected / hours : 0
       el('converted').textContent = m === cur ? '' : `≈ ${money(amount, m)}`
       el('per-hour').textContent = money(per, m)
-      el('verdict').textContent = !hours || !amount ? '' : per >= rate * 2 ? 'Well worth it.' : per >= rate ? 'Worth it, just.' : `Not worth it: ${money(rate - per, m)} an hour below your time.`
+      const v = !hours || !amount ? '' : per >= rate ? 'good' : 'bad'
+      f.dataset.verdict = v
+      el('verdict').textContent = !v ? '' : per >= rate * 2 ? 'Well worth it.' : v == 'good' ? 'Worth it, just.' : `Not worth it: ${money(rate - per, m)} an hour below your time.`
       el('sum').textContent = `${money(amount, m)} × ${Math.round(odds * 100)}% = ${money(expected, m)} on average, for ${Math.round(hours)} hours.`
     }
     sel.addEventListener('change', () => {
@@ -166,7 +199,12 @@ const regions =
       setRate()
       update()
     })
-    el('rate').addEventListener('input', () => (el('rate').dataset.usd = String(n('rate') / R[sel.value])))
+    el('rate').addEventListener('input', () => {
+      el('rate').dataset.usd = String(n('rate') / R[sel.value])
+      try {
+        localStorage.setItem('nf-rate-usd', el('rate').dataset.usd)
+      } catch {}
+    })
     f.addEventListener('input', update)
     setRate()
     update()
