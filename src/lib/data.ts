@@ -5,6 +5,7 @@ import type { Call, Programme } from '../data/schema'
 import { countriesByRegion, countryRegion } from './geo'
 import type { SizeBucket, State } from './labels'
 import { sizeBuckets } from './labels'
+import { usdPerUnit } from './rates'
 
 const data = loadData()
 export const programmes: Programme[] = data.programmes
@@ -129,12 +130,6 @@ export function sortListings(a: Listing, b: Listing) {
 }
 
 export const programmeById = new Map(programmes.map((p) => [p.id, p]))
-
-/** Rough US dollars per unit, only to sort amounts into size buckets. Amounts are always shown as the funder wrote them. */
-const usdPerUnit: Record<string, number> = {
-  USD: 1, EUR: 1.08, GBP: 1.27, CHF: 1.13, CAD: 0.73, AUD: 0.66, NZD: 0.6, JPY: 0.0067, NOK: 0.093, SEK: 0.095,
-  DKK: 0.145, BRL: 0.18, MXN: 0.055, INR: 0.012, ZAR: 0.055, KES: 0.0078, CNY: 0.14, SGD: 0.75, HKD: 0.13,
-}
 
 export function sizeBucketsFor(p: Programme): SizeBucket[] {
   const rate = p.amount && usdPerUnit[p.amount.currency]

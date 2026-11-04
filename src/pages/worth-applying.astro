@@ -1,0 +1,55 @@
+---
+import Base from '../layouts/Base.astro'
+import { cardClasses } from '@/components/ui/card'
+import WorthCheck from '../components/WorthCheck.astro'
+
+const description =
+  'A quick check before you write: weigh the money a grant may bring against the hours its application and reporting take.'
+
+const prose = [
+  '[&>p]:max-w-[66ch] [&>p+p]:mt-[0.85rem] [&>p+ul]:mt-[0.85rem] [&>ul+p]:mt-[0.85rem]',
+  '[&>ul]:mt-[0.6rem] [&>ul]:mb-0 [&>ul]:max-w-[66ch] [&>ul]:pl-[1.2rem] [&>ul>li+li]:mt-[0.4rem] [&_li]:marker:text-ink-2',
+  '[&>h2]:mt-8 [&>h2]:mb-[0.5rem] [&>h2]:text-2xl [&_li]:text-pretty',
+]
+---
+
+<Base title="Is it worth applying?" description={description} path="/worth-applying/" noindex>
+  <div slot="band" class="wrap pt-6 pb-6">
+    <a id="worth-back" class="mb-2 hidden text-sm text-shell-ink-2 underline underline-offset-2" href="/">Back to the listing</a>
+    <h1 class="text-[clamp(1.5rem,1.1rem+1.6vw,2.25rem)] tracking-[-0.01em]">Is this grant worth applying for?</h1>
+    <p class="mt-2 max-w-[60ch] text-lg text-shell-ink-2">
+      A small grant can take as long to win as a big one. Weigh what it may bring against the hours it takes.
+    </p>
+  </div>
+
+  <article class:list={['wrap mr-auto ml-0 max-w-[calc(44rem+2*var(--gutter))]', prose]}>
+    <WorthCheck fromQuery class:list={[cardClasses, 'mt-6 max-w-[66ch] p-4']} />
+
+    <h2>How to read it</h2>
+    <ul>
+      <li>
+        <strong>Per hour of work</strong> is the amount times your chance, divided by all the hours: applying, plus reporting
+        if you win. It is an average over many applications, not a promise for this one.
+      </li>
+      <li>
+        <strong>Below what your hour is worth?</strong> The grant may still be right for you: a first grant from a funder
+        that comes back every year, or one that brings partners. But know the trade before you start.
+      </li>
+      <li>
+        <strong>A short first step is a cheap test.</strong> An expression of interest or a letter of inquiry costs a few
+        hours. Only the funder’s shortlist writes the full proposal.
+      </li>
+      <li>
+        <strong>When small grants don’t pay</strong>, the same hours may raise more from individual donors, members,
+        a local business or a crowdfunding campaign.
+      </li>
+    </ul>
+
+    <h2>Where the numbers come from</h2>
+    <p>
+      The amount and the steps on each listing come from the funder’s own page. Your chance and your hours are your own
+      estimate: we never guess them for you. When a funder publishes how many applications it funded, the listing shows
+      it with the funder’s words.
+    </p>
+  </article>
+</Base>

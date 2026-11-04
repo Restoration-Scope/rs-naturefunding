@@ -3,12 +3,49 @@ import type { Evidence } from '../data/schema'
 import { keepAmountTogether, pageLabel } from '../lib/format'
 import { notRecheckedPage } from '../lib/data'
 import SourceLink from './SourceLink.astro'
+import {
+  Banknote,
+  Building2,
+  CalendarClock,
+  CalendarPlus,
+  CalendarRange,
+  CircleDot,
+  ClipboardList,
+  DoorOpen,
+  FileText,
+  HandCoins,
+  MapPin,
+  Network,
+  Repeat,
+  Sprout,
+  Users,
+} from 'lucide-react'
+
+/** One icon per fact, so the list can be scanned by eye. Labels without one show none. */
+const icons: Record<string, typeof Banknote> = {
+  'How to apply': DoorOpen,
+  Amount: Banknote,
+  'Work to apply': ClipboardList,
+  Where: MapPin,
+  'Who can apply': Users,
+  Rounds: CalendarRange,
+  'Co-funding required': HandCoins,
+  'Consortium required': Network,
+  'Run by': Building2,
+  'Restoration approach': Sprout,
+  Reporting: FileText,
+  Status: CircleDot,
+  Opens: CalendarPlus,
+  Deadline: CalendarClock,
+  'Dates each year': Repeat,
+}
 
 interface Props {
   label: string
   /** What we show. Null means the funder's page does not say. A `value` slot draws it instead (countries with their flags). */
   value: string | null
-  evidence?: Evidence
+  /** One quote, or several when the page states the fact in more than one place. */
+  evidence?: Evidence | Evidence[]
   /** Shown instead of "Not found on the pages we read" when the value is null. */
   missing?: string
   /** Anchor for this fact, so a citation can link it (src/lib/agent.ts factIds). */
@@ -17,10 +54,15 @@ interface Props {
 
 const { label, value, evidence, missing = 'Not found on the pages we read', id } = Astro.props
 const shown = value && label === 'Amount' ? keepAmountTogether(value) : value
+const Icon = icons[label]
+const quotes = evidence ? (Array.isArray(evidence) ? evidence : [evidence]) : []
 ---
 
 <div id={id} class="grid grid-cols-[minmax(0,1fr)] gap-[0.35rem] border-t border-rule py-[1.1rem] md:grid-cols-[11rem_minmax(0,1fr)] md:gap-6">
-  <dt class="pt-[0.15rem] text-md font-bold text-ink-2">{label}</dt>
+  <dt class="flex items-start gap-2 pt-[0.15rem] text-md font-bold text-ink-2">
+    {Icon && <Icon className="mt-[0.2rem] size-4 flex-none" aria-hidden="true" />}
+    <span>{label}</span>
+  </dt>
   <dd class="m-0 min-w-0">
     {
       Astro.slots.has('value') ? (
@@ -34,22 +76,22 @@ const shown = value && label === 'Amount' ? keepAmountTogether(value) : value
     }
     <slot />
     {
-      evidence && (
+      quotes.map((e) => (
         <figure class="mt-[0.4rem]">
           {/* The funder's words hang off a rule, so the facts read as one list rather than a stack of boxes. The
               source icon ends the quote, held to its last word; its tooltip names the page and date. */}
-          <blockquote class="max-w-[65ch] border-l-3 border-rule-strong py-[0.1rem] pl-[0.85rem] text-[0.9875rem] text-ink" cite={evidence.source_url}>
+          <blockquote class="max-w-[65ch] border-l-3 border-rule-strong py-[0.1rem] pl-[0.85rem] text-[0.9875rem] text-ink" cite={e.source_url}>
             <p>
-              <span class="before:content-['“'] after:content-['”']">{evidence.quote}</span>{'\u00a0'}<SourceLink
-                url={evidence.source_url}
-                label={pageLabel(evidence.source_url)}
-                checked={evidence.checked_at}
-                reason={notRecheckedPage(evidence.source_url)}
+              <span class="before:content-['“'] after:content-['”']">{e.quote}</span>{'\u00a0'}<SourceLink
+                url={e.source_url}
+                label={pageLabel(e.source_url)}
+                checked={e.checked_at}
+                reason={notRecheckedPage(e.source_url)}
               />
             </p>
           </blockquote>
         </figure>
-      )
+      ))
     }
   </dd>
 </div>

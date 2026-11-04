@@ -15,7 +15,10 @@ export const dateOf = (now: Date) => now.toISOString().slice(0, 10)
 
 /** Every evidence of a programme with a readable path, e.g. `evidence.amount` or `calls[rolling].evidence.status`. */
 export function evidenceRefs(p: Programme): { path: string; evidence: Evidence }[] {
-  const refs = Object.entries(p.evidence).flatMap(([field, e]) => (e ? [{ path: `evidence.${field}`, evidence: e }] : []))
+  // Effort can cite several quotes: each gets its own indexed path, e.g. `evidence.effort[1]`.
+  const refs = Object.entries(p.evidence).flatMap(([field, e]) =>
+    !e ? [] : Array.isArray(e) ? e.map((x, i) => ({ path: `evidence.${field}[${i}]`, evidence: x })) : [{ path: `evidence.${field}`, evidence: e }],
+  )
   for (const c of p.calls) {
     for (const [field, e] of Object.entries(c.evidence)) if (e) refs.push({ path: `calls[${c.id}].evidence.${field}`, evidence: e })
   }

@@ -15,7 +15,7 @@ import { cardClasses } from '@/components/ui/card'
 import { HIDDEN_DAYS, buildDate, callGroups, whereReach, listingFor, programmeById, programmes, sortListings } from '../../lib/data'
 import type { Programme } from '../../data/schema'
 import { pagesFor } from '../../lib/finder-pages'
-import { amountText, geographyFull, joinAnd, longDate, pageLabel } from '../../lib/format'
+import { amountText, effortText, geographyFull, joinAnd, longDate, pageLabel } from '../../lib/format'
 import { countryName, regionLabels } from '../../lib/geo'
 import {
   accessHelp,
@@ -24,7 +24,8 @@ import {
   approachLabels,
   stateLabels,
 } from '../../lib/labels'
-import { ArrowLeft, ChevronDown } from 'lucide-react'
+import { ArrowLeft, Calculator, ChevronDown } from 'lucide-react'
+import WorthCheck from '../../components/WorthCheck.astro'
 import { CONTACT_EMAIL, RS_REPORTING_URL, absolute, funderCorrectionUrl, reportProblemUrl } from '../../lib/site'
 
 export const getStaticPaths = (() => programmes.map((p) => ({ params: { id: p.id }, props: { p } }))) satisfies GetStaticPaths
@@ -124,6 +125,16 @@ const sectionTitle = 'mt-12 mb-3 text-4xl'
 /** A line under a section title: where its quotes come from, or what it covers. */
 const sectionCheck = 'mb-3 text-sm text-ink-2'
 const factHelp = 'mt-1 text-md text-ink'
+const oddsText = p.odds
+  ? `about 1 in ${Math.round(p.odds.applied / p.odds.funded)} (${p.odds.funded.toLocaleString('en')} of ${p.odds.applied.toLocaleString('en')}, ${p.odds.period})`
+  : null
+// The worth-it check opens with this programme's figures filled in.
+const worth = {
+  amount: p.amount ? (p.amount.max ?? p.amount.min ?? null) : null,
+  currency: p.amount?.currency ?? 'USD',
+  steps: p.effort ? p.effort.steps.length + (p.effort.more_after ? 1 : 0) : null,
+  odds: p.odds ? Math.round((p.odds.funded / p.odds.applied) * 1000) / 10 : null,
+}
 const listingsList = 'm-0 list-none border-t border-rule p-0'
 
 const jsonLd = [
@@ -271,6 +282,22 @@ const jsonLd = [
         <Fact id={factIds.amount} label="Amount" value={amount} evidence={p.evidence.amount} missing={byPartner}>
           {p.amount?.note && <p class={factHelp}>{p.amount.note}.</p>}
         </Fact>
+        {
+          p.access === 'direct' && (
+            <Fact
+              id="effort"
+              label="Work to apply"
+              value={effortText(p.effort)}
+              evidence={[...(p.evidence.effort ?? []), ...(p.evidence.odds ? [p.evidence.odds] : [])]}
+              missing="Steps not stated"
+            >
+              <p class="mt-1 text-sm text-ink-2">
+                Chance of funding: {oddsText ?? 'not published'} ·{' '}
+                <a class="font-semibold text-ink underline underline-offset-2" href="#worth">Is it worth your time?</a>
+              </p>
+            </Fact>
+          )
+        }
         <Fact id={factIds.geography} label="Where" value={geographyFull(p.geography)} evidence={p.evidence.geography}>
           {p.geography?.scope === 'countries' && <span slot="value">{p.geography.label && `${p.geography.label}: `}<Countries codes={p.geography.countries} /></span>}
           <template data-where-tpl="covered"><p class="mt-1 text-md font-semibold text-ok-ink">✓ Includes <span data-where-name></span><span data-where-via></span></p></template>
@@ -326,6 +353,21 @@ const jsonLd = [
         </Fact>
       </dl>
     </section>
+
+    {
+      p.access === 'direct' && (
+        <section id="worth" class:list={[cardClasses, 'mt-8 px-5 pt-4 pb-5']} aria-labelledby="worth-title">
+          <div class="mb-3 flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
+            <h2 id="worth-title" class="flex items-center gap-2 text-2xl">
+              <Calculator className="size-5 flex-none text-ink-2" aria-hidden="true" />
+              Is it worth your time?
+            </h2>
+            <a class="text-sm text-ink-2 underline underline-offset-2" href="/worth-applying/">How to read it</a>
+          </div>
+          <WorthCheck amount={worth.amount} currency={worth.currency} steps={worth.steps} odds={worth.odds} />
+        </section>
+      )
+    }
 
     {
       p.calls.length > 0 && (
