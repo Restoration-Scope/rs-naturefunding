@@ -181,10 +181,11 @@ const regions =
       const ok = ['amount', 'odds', 'hours', 'report'].every((k) => num(k) !== null) && hours > 0 && Number.isFinite(hours) && amount > 0 && Number.isFinite(expected) && Number.isFinite(per)
       el('converted').textContent = m === cur || !Number.isFinite(amount) ? '\u00a0' : `≈ ${money(amount, m)}`
       el('per-hour').textContent = ok ? money(per, m) : '–'
-      const v = !ok || rate === null ? '' : per / R[m] >= Number(el('rate').dataset.usd) ? 'good' : 'bad'
+      const usd = (n('amount') / R[cur]) * odds / hours, mineUsd = Number(el('rate').dataset.usd)
+      const v = !ok || rate === null ? '' : usd >= mineUsd ? 'good' : 'bad'
       f.dataset.verdict = v
       const gap = rate - per
-      el('verdict').textContent = !v ? '' : per >= rate * 2 ? 'Well worth it.' : v == 'good' ? 'Worth it, just.' : `Not worth it: ${Math.round(gap) >= 1 ? money(gap, m) : `under ${money(1, m)}`} an hour below your time.`
+      el('verdict').textContent = !v ? '' : usd >= mineUsd * 2 ? 'Well worth it.' : v == 'good' ? 'Worth it, just.' : `Not worth it: ${gap >= 1 ? money(gap, m) : `under ${money(1, m)}`} an hour below your time.`
       const h = hours < 10 ? Math.round(hours * 10) / 10 : Math.round(hours)
       el('sum').textContent = ok ? `${money(amount, m)} × ${Math.round(odds * 1000) / 10}% = ${money(expected, m)} on average, for ${h} hour${h === 1 ? '' : 's'}.` : ''
     }
