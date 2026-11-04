@@ -69,7 +69,7 @@ const regions =
   </label>
   <div class={field}>
     <label class={fieldLabel}>Amount, <span data-w="currency">{currency}</span><Input data-w="amount" type="number" min="0" step="any" inputMode="decimal" value={String(amount ?? 5000)} className="mt-1" /></label>
-    <span data-w="converted" class="text-xs text-ink-2"></span>
+    <span data-w="converted" class="min-h-4 text-xs text-ink-2"></span>
   </div>
   <div class={field}>
     <label class={fieldLabel}>Chance, %<Input data-w="odds" type="number" min="1" max="100" step="1" inputMode="numeric" value={String(odds ?? 20)} className="mt-1" /></label>
