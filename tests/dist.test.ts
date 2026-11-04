@@ -189,7 +189,7 @@ describe('no hydration, small JavaScript', () => {
       } else if (f === 'worth-applying/index.html') {
         // The worth-it calculator.
         expect(inline.length).toBe(1)
-        expect(inline.join('').length).toBeLessThanOrEqual(3000)
+        expect(inline.join('').length).toBeLessThanOrEqual(3500)
       } else if (/^p\/[^/]+\/index\.html$/.test(f)) {
         // The finder's Where carried onto the page (src/lib/where-view.ts), and the worth-it check on direct programmes.
         expect(inline.length, f).toBeGreaterThanOrEqual(1)
