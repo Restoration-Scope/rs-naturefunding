@@ -125,7 +125,7 @@ const sectionTitle = 'mt-12 mb-3 text-4xl'
 const sectionCheck = 'mb-3 text-sm text-ink-2'
 const factHelp = 'mt-1 text-md text-ink'
 const oddsText = p.odds
-  ? `${p.odds.funded.toLocaleString('en')} of ${p.odds.applied.toLocaleString('en')} applications funded (${p.odds.period}), about 1 in ${Math.round(p.odds.applied / p.odds.funded)}`
+  ? `about 1 in ${Math.round(p.odds.applied / p.odds.funded)} (${p.odds.funded.toLocaleString('en')} of ${p.odds.applied.toLocaleString('en')}, ${p.odds.period})`
   : null
 // The worth-it check opens with this programme's figures filled in.
 const worthUrl = `/worth-applying/?${new URLSearchParams({
@@ -283,14 +283,18 @@ const jsonLd = [
         </Fact>
         {
           p.access === 'direct' && (
-            <>
-              <Fact id="effort" label="Work to apply" value={effortText(p.effort)} evidence={p.evidence.effort} />
-              <Fact id="odds" label="Chance of funding" value={oddsText} evidence={p.evidence.odds} missing="Not published by the funder">
-                <p class={factHelp}>
-                  <a class="font-semibold underline underline-offset-2" href={worthUrl}>Is it worth your time? Weigh the work against the money</a>
-                </p>
-              </Fact>
-            </>
+            <Fact
+              id="effort"
+              label="Work to apply"
+              value={effortText(p.effort)}
+              evidence={[...(p.evidence.effort ?? []), ...(p.evidence.odds ? [p.evidence.odds] : [])]}
+              missing="Steps not stated"
+            >
+              <p class="mt-1 text-sm text-ink-2">
+                Chance of funding: {oddsText ?? 'not published'} ·{' '}
+                <a class="font-semibold text-ink underline underline-offset-2" href={worthUrl}>Is it worth your time?</a>
+              </p>
+            </Fact>
           )
         }
         <Fact id={factIds.geography} label="Where" value={geographyFull(p.geography)} evidence={p.evidence.geography}>

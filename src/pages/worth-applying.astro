@@ -6,61 +6,57 @@ import { Input } from '@/components/ui/input'
 const description =
   'A quick check before you write: weigh the money a grant may bring against the hours its application and reporting take.'
 
-const field = 'grid gap-1'
-const fieldLabel = 'text-md font-bold text-ink-2'
-const fieldHelp = 'text-sm text-ink-2'
+const field = 'grid content-end gap-1'
+const fieldLabel = 'text-sm font-bold text-ink-2'
+const fieldHelp = 'text-xs text-ink-2'
 const prose = [
   '[&>p]:max-w-[66ch] [&>p+p]:mt-[0.85rem] [&>p+ul]:mt-[0.85rem] [&>ul+p]:mt-[0.85rem]',
   '[&>ul]:mt-[0.6rem] [&>ul]:mb-0 [&>ul]:max-w-[66ch] [&>ul]:pl-[1.2rem] [&>ul>li+li]:mt-[0.4rem] [&_li]:marker:text-ink-2',
-  '[&>h2]:mt-11 [&>h2]:mb-[0.6rem] [&>h2]:text-4xl [&_li]:text-pretty',
+  '[&>h2]:mt-8 [&>h2]:mb-[0.5rem] [&>h2]:text-2xl [&_li]:text-pretty',
 ]
 ---
 
 <Base title="Is it worth applying?" description={description} path="/worth-applying/" noindex>
-  <div slot="band" class="wrap pt-7 pb-9">
-    <a id="worth-back" class="mb-3 hidden text-sm text-shell-ink-2 underline underline-offset-2" href="/">Back to the listing</a>
-    <h1 class="text-[clamp(1.75rem,1.2rem+2.2vw,2.75rem)] tracking-[-0.01em]">Is this grant worth applying for?</h1>
-    <p class="mt-[0.9rem] max-w-[60ch] text-xl text-shell-ink-2">
-      A small grant can take as long to win as a big one. Before you write, weigh what it may bring against the hours it
-      will take. If the numbers don’t work, your time may raise more another way.
+  <div slot="band" class="wrap pt-6 pb-6">
+    <a id="worth-back" class="mb-2 hidden text-sm text-shell-ink-2 underline underline-offset-2" href="/">Back to the listing</a>
+    <h1 class="text-[clamp(1.5rem,1.1rem+1.6vw,2.25rem)] tracking-[-0.01em]">Is this grant worth applying for?</h1>
+    <p class="mt-2 max-w-[60ch] text-lg text-shell-ink-2">
+      A small grant can take as long to win as a big one. Weigh what it may bring against the hours it takes.
     </p>
   </div>
 
   <article class:list={['wrap mr-auto ml-0 max-w-[calc(44rem+2*var(--gutter))]', prose]}>
-    <form id="worth" class:list={[cardClasses, 'mt-8 grid max-w-[66ch] gap-5 p-5 sm:grid-cols-2']} onsubmit="return false">
+    <form id="worth" class:list={[cardClasses, 'mt-6 grid max-w-[66ch] grid-cols-2 gap-3 p-4 sm:grid-cols-5']} onsubmit="return false">
       <div class={field}>
-        <label class={fieldLabel} for="w-amount">Grant amount</label>
-        <div class="flex items-center gap-2">
-          <Input id="w-amount" type="number" min="0" step="any" inputMode="decimal" value="5000" />
-          <span id="w-currency" class="text-md font-semibold text-ink-2">USD</span>
-        </div>
-        <span class={fieldHelp}>What you would ask for.</span>
+        <label class={fieldLabel} for="w-amount">Amount, <span id="w-currency">USD</span></label>
+        <Input id="w-amount" type="number" min="0" step="any" inputMode="decimal" value="5000" />
       </div>
       <div class={field}>
-        <label class={fieldLabel} for="w-odds">Your chance of winning, %</label>
+        <label class={fieldLabel} for="w-odds">Chance, %</label>
         <Input id="w-odds" type="number" min="1" max="100" step="1" inputMode="numeric" value="20" />
-        <span id="w-odds-help" class={fieldHelp}>Few funders publish this. Ask them, or guess low.</span>
       </div>
       <div class={field}>
         <label class={fieldLabel} for="w-hours">Hours to apply</label>
         <Input id="w-hours" type="number" min="0" step="1" inputMode="numeric" value="16" />
-        <span id="w-hours-help" class={fieldHelp}>Writing, budget, letters, every stage.</span>
       </div>
       <div class={field}>
-        <label class={fieldLabel} for="w-report">Hours to report, if you win</label>
+        <label class={fieldLabel} for="w-report">Hours to report</label>
         <Input id="w-report" type="number" min="0" step="1" inputMode="numeric" value="8" />
-        <span class={fieldHelp}>Reports, photos, accounts.</span>
       </div>
-      <div class:list={[field, 'sm:col-span-2']}>
-        <label class={fieldLabel} for="w-rate">What an hour of your time is worth</label>
-        <Input id="w-rate" type="number" min="0" step="any" inputMode="decimal" value="30" className="sm:max-w-[12rem]" />
-        <span class={fieldHelp}>Staff cost, or what that hour could raise elsewhere.</span>
+      <div class={field}>
+        <label class={fieldLabel} for="w-rate">Hourly rate</label>
+        <Input id="w-rate" type="number" min="0" step="any" inputMode="decimal" value="30" />
       </div>
+      <p class:list={[fieldHelp, 'col-span-2 sm:col-span-5']}>
+        <span id="w-odds-help">Few funders publish their odds: ask, or guess low.</span>{' '}
+        <span id="w-hours-help">Count every stage, and reports if you win.</span>
+      </p>
 
-      <output id="w-result" for="w-amount w-odds w-hours w-report w-rate" class="grid gap-2 border-t border-rule pt-4 sm:col-span-2" aria-live="polite">
-        <p class="text-md text-ink-2">On average, each application brings in</p>
-        <p class="text-[clamp(1.5rem,1.2rem+1vw,2rem)] font-bold"><span id="w-per-hour">–</span> <span class="text-lg font-semibold text-ink-2">per hour of work</span></p>
-        <p id="w-verdict" class="text-lg font-semibold"></p>
+      <output id="w-result" for="w-amount w-odds w-hours w-report w-rate" class="col-span-2 grid gap-1 border-t border-rule pt-3 sm:col-span-5" aria-live="polite">
+        <p class="flex flex-wrap items-baseline gap-x-3">
+          <span><span id="w-per-hour" class="text-2xl font-bold">–</span> <span class="text-md text-ink-2">per hour of work</span></span>
+          <span id="w-verdict" class="text-md font-semibold"></span>
+        </p>
         <p id="w-sum" class="text-sm text-ink-2"></p>
       </output>
     </form>
@@ -102,13 +98,13 @@ const prose = [
   if (q.get('amount')) $('w-amount').value = q.get('amount')!
   if (q.get('odds')) {
     $('w-odds').value = q.get('odds')!
-    $('w-odds-help').textContent = 'From the funder’s published figures.'
+    $('w-odds-help').textContent = 'Chance from the funder’s published figures.'
   }
   const steps = Number(q.get('steps'))
   if (steps > 0) {
     // A rough start: about a day's work per step. The reader corrects it.
     $('w-hours').value = String(steps * 8)
-    $('w-hours-help').textContent = `${steps} step${steps === 1 ? '' : 's'} on the funder’s page, about a day each. Change it to yours.`
+    $('w-hours-help').textContent = `Hours start at a day per step (${steps} on the funder’s page): change them to yours.`
   }
   const from = q.get('from')
   if (from && /^[a-z0-9-]+$/.test(from)) {
@@ -134,11 +130,11 @@ const prose = [
     $('w-per-hour').textContent = money(perHour)
     const verdict = document.getElementById('w-verdict')!
     if (!hours || !amount) verdict.textContent = ''
-    else if (perHour >= rate * 2) verdict.textContent = 'Well worth it on these numbers.'
-    else if (perHour >= rate) verdict.textContent = 'Worth it, just: it pays a little more than your hour is worth.'
-    else verdict.textContent = `Not worth it on these numbers: about ${money(rate - perHour)} an hour less than your time is worth.`
+    else if (perHour >= rate * 2) verdict.textContent = 'Well worth it.'
+    else if (perHour >= rate) verdict.textContent = 'Worth it, just.'
+    else verdict.textContent = `Not worth it: ${money(rate - perHour)} an hour below your time.`
     document.getElementById('w-sum')!.textContent =
-      `${money(amount)} × ${Math.round(odds * 100)}% chance = ${money(expected)} on average, for ${Math.round(hours)} hours of work.`
+      `${money(amount)} × ${Math.round(odds * 100)}% = ${money(expected)} on average, for ${Math.round(hours)} hours.`
   }
   document.getElementById('worth')!.addEventListener('input', update)
   update()
