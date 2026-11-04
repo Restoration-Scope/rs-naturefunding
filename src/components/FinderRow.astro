@@ -1,7 +1,7 @@
 ---
 import type { Listing } from '../lib/data'
 import { AGING_DAYS, callGroups, listingFor, notRechecked, opensSortDate, programmes, sizeBucketsFor, whereCodes } from '../lib/data'
-import { amountText, geographyText, longDate, shortDate } from '../lib/format'
+import { amountText, effortShort, geographyText, longDate, shortDate } from '../lib/format'
 import { approachLabels, recheckReasons } from '../lib/labels'
 import { compactAmount, usdValue } from '../lib/table'
 import { Badge } from '@/components/ui/badge'
@@ -78,6 +78,7 @@ const searchText = [p.name, p.funder.name, p.administered_by?.name, p.summary, w
   <TableCell className="c-amount" title={amountFull ?? 'The funder’s page does not state an amount'}>
     {amount ? <span class="amt">{amount}</span> : <span class="amt amt--none">Amount not stated</span>}
     {amount && p.amount?.note && <span class="amt__note">{p.amount.note}</span>}
+    {p.effort && <span class="amt__effort" title={p.effort.steps.join(' → ')}>{effortShort(p.effort)}</span>}
     <Badge variant="tag" className="stamp" data-aging={aging || reason ? '' : undefined} title={stampTitle}>
       {stampText}
     </Badge>

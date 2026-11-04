@@ -15,7 +15,7 @@ import { cardClasses } from '@/components/ui/card'
 import { HIDDEN_DAYS, buildDate, callGroups, whereReach, listingFor, programmeById, programmes, sortListings } from '../../lib/data'
 import type { Programme } from '../../data/schema'
 import { pagesFor } from '../../lib/finder-pages'
-import { amountText, geographyFull, joinAnd, longDate, pageLabel } from '../../lib/format'
+import { amountText, effortText, geographyFull, joinAnd, longDate, pageLabel } from '../../lib/format'
 import { countryName, regionLabels } from '../../lib/geo'
 import {
   accessHelp,
@@ -124,6 +124,16 @@ const sectionTitle = 'mt-12 mb-3 text-4xl'
 /** A line under a section title: where its quotes come from, or what it covers. */
 const sectionCheck = 'mb-3 text-sm text-ink-2'
 const factHelp = 'mt-1 text-md text-ink'
+const oddsText = p.odds
+  ? `${p.odds.funded.toLocaleString('en')} of ${p.odds.applied.toLocaleString('en')} applications funded (${p.odds.period}), about 1 in ${Math.round(p.odds.applied / p.odds.funded)}`
+  : null
+// The worth-it check opens with this programme's figures filled in.
+const worthUrl = `/worth-applying/?${new URLSearchParams({
+  from: p.id,
+  ...(p.amount ? { amount: String(p.amount.max ?? p.amount.min ?? ''), currency: p.amount.currency } : {}),
+  ...(p.effort ? { steps: String(p.effort.steps.length + (p.effort.more_after ? 1 : 0)) } : {}),
+  ...(p.odds ? { odds: String(Math.round((p.odds.funded / p.odds.applied) * 100)) } : {}),
+})}`
 const listingsList = 'm-0 list-none border-t border-rule p-0'
 
 const jsonLd = [
@@ -271,6 +281,18 @@ const jsonLd = [
         <Fact id={factIds.amount} label="Amount" value={amount} evidence={p.evidence.amount} missing={byPartner}>
           {p.amount?.note && <p class={factHelp}>{p.amount.note}.</p>}
         </Fact>
+        {
+          p.access === 'direct' && (
+            <>
+              <Fact id="effort" label="Work to apply" value={effortText(p.effort)} evidence={p.evidence.effort} />
+              <Fact id="odds" label="Chance of funding" value={oddsText} evidence={p.evidence.odds} missing="Not published by the funder">
+                <p class={factHelp}>
+                  <a class="font-semibold underline underline-offset-2" href={worthUrl}>Is it worth your time? Weigh the work against the money</a>
+                </p>
+              </Fact>
+            </>
+          )
+        }
         <Fact id={factIds.geography} label="Where" value={geographyFull(p.geography)} evidence={p.evidence.geography}>
           {p.geography?.scope === 'countries' && <span slot="value">{p.geography.label && `${p.geography.label}: `}<Countries codes={p.geography.countries} /></span>}
           <template data-where-tpl="covered"><p class="mt-1 text-md font-semibold text-ok-ink">✓ Includes <span data-where-name></span><span data-where-via></span></p></template>

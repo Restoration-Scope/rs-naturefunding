@@ -179,13 +179,17 @@ describe('no hydration, small JavaScript', () => {
     for (const f of finderPagesHtml) expect(scriptsOf(f).external, f).toEqual(scriptsOf('index.html').external)
   })
 
-  test('no other page loads a script file; only /about/ and programme pages have one small inline script', () => {
+  test('no other page loads a script file; only /about/, /worth-applying/ and programme pages have one small inline script', () => {
     for (const f of htmlFiles.filter((x) => x !== 'index.html' && !finderPagesHtml.includes(x))) {
       const { external, inline } = scriptsOf(f)
       expect(external, f).toEqual([])
       if (f === 'about/index.html') {
         expect(inline.length).toBeLessThanOrEqual(1)
         expect(inline.join('').length).toBeLessThanOrEqual(400)
+      } else if (f === 'worth-applying/index.html') {
+        // The worth-it calculator.
+        expect(inline.length).toBe(1)
+        expect(inline.join('').length).toBeLessThanOrEqual(3000)
       } else if (/^p\/[^/]+\/index\.html$/.test(f)) {
         // The finder's Where carried onto the page (src/lib/where-view.ts).
         expect(inline.length, f).toBe(1)
