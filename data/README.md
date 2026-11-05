@@ -68,7 +68,7 @@ Each stated fact carries an evidence record:
 ```
 
 1. **First-party only.** `source_url` is the funder's own page, or the official implementer's (a UNDP country office, a CEPF Regional Implementation Team). Directories and guides only tell us where to look; no value is taken from them.
-2. **Verbatim quote.** `quote` is copied from the page, with at least 8 characters besides spaces. `bun run verify-quotes` fetches every cited page, turns it into plain text, folds case, quote marks, dashes and spaces, and checks every quote appears on it. Any miss fails the run.
+2. **Verbatim quote.** `quote` is copied from the page, with at least 8 characters besides spaces. `bun run verify-quotes` fetches every cited page for `method: "page"` and `method: "api"` evidence, turns it into plain text, folds case, quote marks, dashes and spaces, and checks every quote appears on it. Any miss fails the run. When a funder blocks the checker but a person reads the page in a browser, use `method: "human"` with the live page as `source_url`; the verifier reports and skips those quotes.
 3. **Never inferred.** A deadline or opening date the page doesn't state stays `null`.
 4. **Re-read daily.** The refresh job re-reads every page in `sources.json`. An unchanged page moves `checked_at` forward; a changed fact opens a pull request for review.
 
