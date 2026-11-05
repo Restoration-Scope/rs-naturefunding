@@ -7,7 +7,7 @@ import { Button } from '@/components/ui/button'
 import { applyEvidenceFor, primaryAction } from '../lib/apply'
 import type { Listing } from '../lib/data'
 import { buildDate, daysBetween, notRechecked, notRecheckedPage } from '../lib/data'
-import { longDate, pageLabel } from '../lib/format'
+import { longDate, pageLabel, sentence } from '../lib/format'
 import { accessHelp, stateLabels } from '../lib/labels'
 
 interface Props {
@@ -77,7 +77,7 @@ const narrowedPrimary =
     {state === 'rolling' && call && !/rolling/i.test(call.label) && <>{call.label}</>}
     {state === 'none' && call?.recurring && <>{call.recurring}. The funder’s page doesn’t say whether one is open now.</>}
     {state === 'upcoming' && call?.deadline && <>Closes {longDate(call.deadline.date)}.</>}
-    {call?.note && (state === 'open' || state === 'upcoming') && <> {call.note}.</>}
+    {call?.note && (state === 'open' || state === 'upcoming') && <> {sentence(call.note)}</>}
     {state === 'closed' && call?.deadline && <>The last call we saw closed on {longDate(call.deadline.date)}.</>}
     {noCallRoute && accessHelp[p.access]}
     {/* The list beside this card has the open call's date; here, just where to look. */}

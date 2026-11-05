@@ -58,6 +58,9 @@ export function geographyFull(g: Programme['geography']): string | null {
 export const joinAnd = (xs: string[]) =>
   xs.length <= 1 ? (xs[0] ?? '') : `${xs.slice(0, -1).join(', ')} and ${xs.at(-1)}`
 
+/** A note shown as a sentence: adds the full stop unless it already ends in one. */
+export const sentence = (text: string) => (/[.!?…]["”’)]?$/.test(text.trim()) ? text.trim() : `${text.trim()}.`)
+
 /** example.org/coastal-trust/grants, for "Checked against …" lines. */
 /** For display: an amount never breaks between a figure and its currency code. */
 export function keepAmountTogether(text: string): string {
