@@ -15,7 +15,7 @@ import { cardClasses } from '@/components/ui/card'
 import { HIDDEN_DAYS, buildDate, callGroups, whereReach, listingFor, programmeById, programmes, sortListings } from '../../lib/data'
 import type { Programme } from '../../data/schema'
 import { pagesFor } from '../../lib/finder-pages'
-import { amountText, effortText, geographyFull, joinAnd, longDate, pageLabel } from '../../lib/format'
+import { amountText, effortText, geographyFull, joinAnd, longDate, pageLabel, sentence } from '../../lib/format'
 import { countryName, regionLabels } from '../../lib/geo'
 import {
   accessHelp,
@@ -280,7 +280,7 @@ const jsonLd = [
           {p.access === 'direct' && <p class={factHelp}>{accessHelp[p.access]}</p>}
         </Fact>
         <Fact id={factIds.amount} label="Amount" value={amount} evidence={p.evidence.amount} missing={byPartner}>
-          {p.amount?.note && <p class={factHelp}>{p.amount.note}.</p>}
+          {p.amount?.note && <p class={factHelp}>{sentence(p.amount.note)}</p>}
         </Fact>
         {
           p.access === 'direct' && (
@@ -436,7 +436,7 @@ const jsonLd = [
                 )}
               </dl>
               {/* A condition on the call, in our words. */}
-              {c.note && <p class="mt-0 mb-[0.85rem] text-md text-ink-2">{c.note}.</p>}
+              {c.note && <p class="mt-0 mb-[0.85rem] text-md text-ink-2">{sentence(c.note)}</p>}
             </details>
           ))}
           {/* Narrowed to a place, the calls for other countries fold away below its own. */}
