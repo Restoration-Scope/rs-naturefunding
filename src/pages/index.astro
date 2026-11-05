@@ -3,7 +3,7 @@ import Base from '../layouts/Base.astro'
 import Finder from '../components/Finder.astro'
 import { listings, sortListings, stats } from '../lib/data'
 import { longDate } from '../lib/format'
-import { SITE_NAME, absolute } from '../lib/site'
+import { SITE_NAME, absolute, RS_ORG } from '../lib/site'
 import { homeItemListLd } from '../lib/agent'
 
 const sorted = [...listings].sort(sortListings)
@@ -16,7 +16,7 @@ const jsonLd = [
     name: SITE_NAME,
     url: absolute('/'),
     description,
-    publisher: { '@type': 'Organization', name: 'Restoration Scope', url: 'https://restorationscope.com' },
+    publisher: RS_ORG,
   },
   {
     '@context': 'https://schema.org',
@@ -27,7 +27,7 @@ const jsonLd = [
     url: absolute('/'),
     license: 'https://creativecommons.org/licenses/by/4.0/',
     isAccessibleForFree: true,
-    creator: { '@type': 'Organization', name: 'Restoration Scope', url: 'https://restorationscope.com' },
+    creator: RS_ORG,
     dateModified: stats.lastChecked ?? undefined,
     keywords: ['restoration grants', 'conservation funding', 'reforestation grants', 'mangrove funding'],
     distribution: [
