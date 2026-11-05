@@ -8,7 +8,7 @@ import { Button } from '@/components/ui/button'
 import { cardClasses } from '@/components/ui/card'
 import { AGING_DAYS, HIDDEN_DAYS, programmes, stats } from '../lib/data'
 import { amountText, longDate } from '../lib/format'
-import { CONTACT_EMAIL, RS_URL, absolute, generalReportUrl } from '../lib/site'
+import { CONTACT_EMAIL, RS_DESCRIPTOR, RS_URL, absolute, generalReportUrl, RS_ORG } from '../lib/site'
 
 const description =
   'Who builds naturefunding.org, how every listing is checked against the funder’s own page, and how to use and correct the open data.'
@@ -24,7 +24,7 @@ const jsonLd = {
   name: 'How naturefunding.org checks its listings',
   url: absolute('/about/'),
   description,
-  publisher: { '@type': 'Organization', name: 'Restoration Scope', url: 'https://restorationscope.com' },
+  publisher: RS_ORG,
 }
 
 // The article's own text: paragraphs, lists and headings that are its direct children.
@@ -76,8 +76,7 @@ const key =
 
     <h2 id="who">Who builds this</h2>
     <p>
-      naturefunding.org is built and paid for by <a href={RS_URL}>Restoration Scope</a>, a company that makes
-      monitoring and reporting software for restoration projects. We say so openly because a directory that hides
+      naturefunding.org is built and paid for by <a href={RS_URL}>Restoration Scope</a>, which {RS_DESCRIPTOR}. We say so openly because a directory that hides
       who runs it is hard to trust.
     </p>
     <ul>

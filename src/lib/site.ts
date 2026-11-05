@@ -7,6 +7,18 @@ export const RS_URL = `https://restorationscope.com/?${utm('footer')}`
 /** Restoration Scope has no funder-reporting guides yet; this is its donor-reporting page. */
 export const RS_REPORTING_URL = `https://restorationscope.com/solutions/funders?${utm('programme-reporting')}`
 
+/** How every page names its builder: one line, the same words as the footer (rs-chief-of-staff surfaces ledger). */
+export const RS_DESCRIPTOR = 'builds digital infrastructure for nature projects: field data, maps and reporting for project teams'
+
+/** schema.org publisher/creator for every page. */
+export const RS_ORG = {
+  '@type': 'Organization',
+  name: 'Restoration Scope',
+  url: 'https://restorationscope.com',
+  description: `Restoration Scope ${RS_DESCRIPTOR}.`,
+  sameAs: ['https://www.linkedin.com/company/restoration-scope'],
+}
+
 export const absolute = (path: string) => new URL(path, SITE_URL).toString()
 
 export const CONTACT_EMAIL = 'contact@naturefunding.org'

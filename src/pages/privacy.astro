@@ -1,6 +1,6 @@
 ---
 import Base from '../layouts/Base.astro'
-import { CONTACT_EMAIL, RS_URL, absolute } from '../lib/site'
+import { CONTACT_EMAIL, RS_URL, absolute, RS_ORG } from '../lib/site'
 
 const description =
   'What naturefunding.org and its weekly email receive, and what they keep: no accounts, cookies or stored searches, visits counted without cookies; for the email, only the address and the choices you make.'
@@ -11,7 +11,7 @@ const jsonLd = {
   name: 'Privacy',
   url: absolute('/privacy/'),
   description,
-  publisher: { '@type': 'Organization', name: 'Restoration Scope', url: 'https://restorationscope.com' },
+  publisher: RS_ORG,
 }
 
 const prose = [
