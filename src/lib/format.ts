@@ -81,3 +81,16 @@ export function pageLabel(url: string): string {
   if (page.length > 48) page = `${page.slice(0, 46).trimEnd()}…`
   return page ? `${host} · ${page}` : host
 }
+
+/** "2 steps to apply" for a finder row; "2+" when the page says more follow. Null when not stated. */
+export function effortShort(e: Programme['effort']): string | null {
+  if (!e) return null
+  const n = e.steps.length + (e.more_after ? 1 : 0)
+  return `${n}${e.more_after ? '+' : ''} step${n === 1 ? '' : 's'} to apply`
+}
+
+/** The steps in order, as the listing page shows them. */
+export function effortText(e: Programme['effort']): string | null {
+  if (!e) return null
+  return [...e.steps, ...(e.more_after ? ['further steps'] : [])].join(' → ')
+}

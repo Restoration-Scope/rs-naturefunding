@@ -24,6 +24,8 @@ export const fieldDocs = {
     amount: 'Grant size in the funder’s currency, or null when not stated.',
     co_finance_required: 'true or false when the funder says whether co-funding is required; null when it doesn’t.',
     reporting: 'What the funder asks grantees to report, in our words, or null.',
+    effort: 'What applying takes, in our words from the funder’s page: the steps in order. Missing when the pages we read don’t say.',
+    odds: 'How many applications the funder says it funded, out of how many, and for which round. Missing when the funder doesn’t publish it.',
     calls: 'The rounds of applications we found. Intermediary and invitation-only programmes list none.',
     evidence: 'For each stated programme-level fact, where it was read: the field name maps to an evidence object.',
     checked_at: 'The oldest evidence date: every fact in this programme was read on or after this day (YYYY-MM-DD).',

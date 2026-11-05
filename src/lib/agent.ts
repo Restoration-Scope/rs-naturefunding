@@ -3,7 +3,7 @@
 // checked date, so a line still holds up when an answer quotes it alone.
 import type { Call, Evidence, Programme } from '../data/schema'
 import { AGING_DAYS, HIDDEN_DAYS, buildDate, listingFor, programmeById, programmes, sortListings, stats, type Listing } from './data'
-import { amountText, geographyFull, geographyText, joinAnd, longDate } from './format'
+import { amountText, effortText, geographyFull, geographyText, joinAnd, longDate } from './format'
 import { accessHelp, accessLabels, applicantLabels, approachLabels } from './labels'
 import { RS_URL, SITE_NAME, absolute, funderCorrectionUrl, reportProblemUrl } from './site'
 import { countryName } from './geo'
@@ -23,6 +23,7 @@ export const factIds = {
   administered_by: 'administered_by',
   approaches: 'approaches',
   reporting: 'reporting',
+  effort: 'effort',
 } as const
 export const callId = (c: Pick<Call, 'id'>) => `call-${c.id}`
 export const callFactId = (c: Pick<Call, 'id'>, field: 'status' | 'opens' | 'deadline' | 'recurring' | 'countries') => `call-${c.id}-${field}`
@@ -80,10 +81,10 @@ export function statusText(l: Listing): string {
   }
 }
 
-const quoteLines = (subject: string, value: string, e: Evidence | undefined, anchor: string, p: Programme) => {
+const quoteLines = (subject: string, value: string, e: Evidence | Evidence[] | undefined, anchor: string, p: Programme) => {
   const lines = [`**${subject}:** ${value}`]
-  if (e) {
-    lines.push('', `> “${e.quote}”`, '', `Source: ${e.source_url}, checked ${longDate(e.checked_at)}.`)
+  for (const q of [e ?? []].flat()) {
+    lines.push('', `> “${q.quote}”`, '', `Source: ${q.source_url}, checked ${longDate(q.checked_at)}.`)
   }
   lines.push(`Cite this fact: ${listingUrl(p)}#${anchor}`)
   return lines.join('\n')
@@ -153,6 +154,7 @@ export function programmeMarkdown(p: Programme): string {
     quoteLines(`${n}, co-funding required`, coFunding ?? byPartner, p.evidence.co_finance_required, factIds.co_finance_required, p),
     ...(consortium ? [quoteLines(`${n}, consortium required`, consortium, p.evidence.consortium_required, factIds.consortium_required, p)] : []),
     ...(p.administered_by ? [quoteLines(`${n}, run by`, p.administered_by.name, p.evidence.administered_by, factIds.administered_by, p)] : []),
+    ...(p.access === 'direct' && p.effort ? [quoteLines(`${n}, steps to apply`, effortText(p.effort)!, p.evidence.effort, factIds.effort, p)] : []),
   ]
   out.push(facts.join('\n\n'))
 

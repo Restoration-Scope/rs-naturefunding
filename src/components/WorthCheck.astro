@@ -1,0 +1,210 @@
+---
+/**
+ * Is a grant worth the work? Amount × chance against the hours to apply and report, per hour.
+ * Starts from the programme's own figures when it has them; the reader changes any number.
+ * Money shows in the reader's currency, at the rates in data/rates.json (scripts/data/sync-rates.ts).
+ */
+import { Input } from '@/components/ui/input'
+import rates from '../../data/rates.json'
+import { longDate } from '../lib/format'
+import { CircleCheck, TriangleAlert } from 'lucide-react'
+
+interface Props {
+  amount?: number | null
+  currency?: string
+  /** Steps to apply on the funder's page, counting "further steps" as one. */
+  steps?: number | null
+  /** Published chance of funding, in percent. */
+  odds?: number | null
+  /** Read amount, currency, steps and odds from the URL too (the /worth-applying/ page). */
+  fromQuery?: boolean
+  class?: string
+}
+
+const { amount, currency = 'USD', steps, odds, fromQuery = false, class: className } = Astro.props
+// The script sets data-verdict="good|bad" on the form: a green band when it pays your rate, yellow when it doesn't.
+const icon = 'size-4 flex-none self-center'
+// A rough start: about a day's work per step. The reader corrects it.
+const HOURS_PER_STEP = 8
+const field = 'grid content-end gap-1'
+const fieldLabel = 'text-sm font-bold text-ink-2'
+
+const perUsd: Record<string, number> = rates.per_usd
+const names = new Intl.DisplayNames(['en'], { type: 'currency' })
+const options = Object.keys(perUsd)
+  .map((code) => {
+    let name = code
+    try {
+      name = names.of(code) ?? code
+    } catch {}
+    return { code, name }
+  })
+  .sort((a, b) => a.name.localeCompare(b.name))
+// The reader's country, from their browser language, picks their currency. Eurozone and the
+// countries our listings cover most; others start in the grant's own currency.
+const regions =
+  'US:USD GB:GBP CA:CAD AU:AUD NZ:NZD IE:EUR FR:EUR DE:EUR ES:EUR PT:EUR IT:EUR NL:EUR BE:EUR AT:EUR FI:EUR GR:EUR ' +
+  'SK:EUR SI:EUR EE:EUR LV:EUR LT:EUR LU:EUR MT:EUR CY:EUR HR:EUR CH:CHF NO:NOK SE:SEK DK:DKK PL:PLN CZ:CZK HU:HUF ' +
+  'RO:RON BG:BGN TR:TRY MX:MXN GT:GTQ BZ:BZD HN:HNL NI:NIO CR:CRC PA:PAB CO:COP EC:USD PE:PEN BO:BOB BR:BRL CL:CLP ' +
+  'AR:ARS PY:PYG UY:UYU KE:KES TZ:TZS UG:UGX RW:RWF ET:ETB NG:NGN GH:GHS ZA:ZAR NA:NAD BW:BWP ZM:ZMW MW:MWK MZ:MZN ' +
+  'MG:MGA CM:XAF SN:XOF CI:XOF BJ:XOF BF:XOF IN:INR NP:NPR BT:BTN BD:BDT LK:LKR PK:PKR ID:IDR MY:MYR PH:PHP TH:THB ' +
+  'VN:VND KH:KHR SG:SGD HK:HKD TW:TWD JP:JPY CN:CNY KR:KRW PG:PGK FJ:FJD SC:SCR MU:MUR'
+---
+
+<form
+  class:list={['group/worth grid grid-cols-2 gap-3 sm:grid-cols-5', className]}
+  data-worth
+  data-currency={currency}
+  data-per-step={HOURS_PER_STEP}
+  data-rates={JSON.stringify(perUsd)}
+  data-regions={regions}
+  data-query={fromQuery ? '' : undefined}
+  onsubmit="return false"
+>
+  <label class="col-span-2 flex flex-wrap items-center gap-2 text-sm font-bold text-ink-2 sm:col-span-5">
+    Your currency
+    <select data-w="mine" class="min-h-8 max-w-full rounded-md border border-control-edge bg-surface px-2 font-semibold text-ink">
+      {options.map((o) => <option value={o.code} selected={o.code === currency}>{o.code} · {o.name}</option>)}
+    </select>
+  </label>
+  <div class={field}>
+    <label class={fieldLabel}>Amount, <span data-w="currency">{currency}</span><Input data-w="amount" type="number" min="0" step="any" inputMode="decimal" value={amount != null ? String(amount) : fromQuery ? '5000' : ''} className="mt-1" /></label>
+    <span data-w="converted" class="truncate text-xs text-ink-2">&nbsp;</span>
+  </div>
+  <div class={field}>
+    <label class={fieldLabel}>Chance, %<Input data-w="odds" type="number" min="0" max="100" step="any" inputMode="numeric" value={String(odds ?? 20)} className="mt-1" /></label>
+    <span class="text-xs">&nbsp;</span>
+  </div>
+  <div class={field}>
+    <label class={fieldLabel}>Hours to apply<Input data-w="hours" type="number" min="0" step="1" inputMode="numeric" value={String(steps ? steps * HOURS_PER_STEP : 16)} className="mt-1" /></label>
+    <span class="text-xs">&nbsp;</span>
+  </div>
+  <div class={field}>
+    <label class={fieldLabel}>Hours to report<Input data-w="report" type="number" min="0" step="1" inputMode="numeric" value="8" className="mt-1" /></label>
+    <span class="text-xs">&nbsp;</span>
+  </div>
+  <div class={field}>
+    <label class={fieldLabel}>Hourly rate, <span data-w="mine-code">{currency}</span><Input data-w="rate" type="number" min="0" step="any" inputMode="decimal" value="30" data-usd="30" className="mt-1" /></label>
+    <span class="text-xs">&nbsp;</span>
+  </div>
+  <p class="col-span-2 text-xs text-ink-2 sm:col-span-5">
+    <span data-w="odds-help">{odds != null ? 'Chance from the funder’s published figures.' : 'Few funders publish their odds: ask, or guess low.'}</span>{' '}
+    <span data-w="hours-help">{steps ? `Hours start at a day per step (${steps} on the funder’s page): change them to yours.` : 'Count every stage, and reports if you win.'}</span>{' '}
+    <span>Rates of {longDate(rates.date)} from <a class="underline underline-offset-2" href={rates.source_url}>{rates.source}</a>.</span>
+  </p>
+  <output
+    class="col-span-2 mt-1 grid gap-1 rounded-md bg-sunk px-3 py-2.5 group-data-[verdict=bad]/worth:bg-caution group-data-[verdict=good]/worth:bg-ok sm:col-span-5"
+    aria-live="polite"
+  >
+    <p class="flex flex-wrap items-baseline gap-x-3 gap-y-1">
+      <span><span data-w="per-hour" class="text-2xl font-bold">–</span> <span class="text-md text-ink-2">per hour of work</span></span>
+      <span class="inline-flex items-baseline gap-1.5 text-md font-semibold group-data-[verdict=bad]/worth:text-caution-ink group-data-[verdict=good]/worth:text-ok-ink">
+        <CircleCheck className={`${icon} hidden group-data-[verdict=good]/worth:block`} aria-hidden="true" />
+        <TriangleAlert className={`${icon} hidden group-data-[verdict=bad]/worth:block`} aria-hidden="true" />
+        <span data-w="verdict"></span>
+      </span>
+    </p>
+    <p data-w="sum" class="text-sm text-ink-2"></p>
+  </output>
+</form>
+
+{/* Inline and plain, so the two pages that use it don't share a script file. The currency is the reader's
+    last pick, else their browser's country, else the grant's. Converted rates round to the cent
+    (or the unit from 1,000 up). Reporting counts at the chance of winning: it only happens if you win. A rate
+    the reader types is kept in dollars, so a currency change carries it over, and in localStorage, so the next
+    grant starts from it. Only finite, non-negative numbers count; with no hours, no amount or no rate there is
+    no verdict. The verdict compares in dollars at full precision,
+    so a currency change never flips it; a gap under one unit reads as "under $1". No rate for the grant's currency: no check at all. */}
+<script is:inline>
+  for (const f of document.querySelectorAll('[data-worth]')) {
+    const el = (k) => f.querySelector(`[data-w="${k}"]`)
+    const num = (k) => {
+      const v = el(k).value.trim() === '' ? NaN : Number(el(k).value)
+      return Number.isFinite(v) && v >= 0 ? v : null
+    }
+    const n = (k) => num(k) ?? 0
+    const R = JSON.parse(f.dataset.rates)
+    let cur = f.dataset.currency || 'USD'
+    if (!(R[cur] > 0)) {
+      f.hidden = true
+      continue
+    }
+    if (f.hasAttribute('data-query')) {
+      const q = new URLSearchParams(location.search)
+      if (R[q.get('currency')] > 0) cur = q.get('currency')
+      if (q.get('amount')) el('amount').value = q.get('amount')
+      if (q.get('odds')) {
+        el('odds').value = q.get('odds')
+        el('odds-help').textContent = 'Chance from the funder’s published figures.'
+      }
+      const s = Number(q.get('steps'))
+      if (s > 0) {
+        el('hours').value = String(s * Number(f.dataset.perStep || 8))
+        el('hours-help').textContent = `Hours start at a day per step (${s} on the funder’s page): change them to yours.`
+      }
+      const from = q.get('from'), back = document.getElementById('worth-back')
+      if (back && from && /^[a-z0-9-]+$/.test(from)) {
+        back.href = `/p/${from}/`
+        back.classList.replace('hidden', 'inline-block')
+      }
+    }
+    el('currency').textContent = cur
+    let mine = cur
+    try {
+      const region = new Intl.Locale(navigator.language).maximize().region
+      const m = (f.dataset.regions.match(new RegExp(`\\b${region}:([A-Z]{3})`)) || [])[1]
+      if (R[m]) mine = m
+      const kept = localStorage.getItem('nf-currency')
+      if (R[kept]) mine = kept
+      const usd = Number(localStorage.getItem('nf-rate-usd'))
+      if (Number.isFinite(usd) && usd > 0) el('rate').dataset.usd = localStorage.getItem('nf-rate-usd')
+    } catch {}
+    const sel = el('mine')
+    sel.value = mine
+    const nice = (x) => (x >= 1000 ? Math.round(x) : Math.round(x * 100) / 100)
+    const setRate = () => {
+      el('rate').value = String(nice(Number(el('rate').dataset.usd) * R[sel.value]))
+      el('mine-code').textContent = sel.value
+    }
+    const money = (x, c) => {
+      try {
+        return new Intl.NumberFormat('en', { style: 'currency', currency: c, maximumFractionDigits: 0 }).format(Math.round(x))
+      } catch {
+        return `${Math.round(x).toLocaleString('en')} ${c}`
+      }
+    }
+    const update = () => {
+      const m = sel.value, fx = R[m] / R[cur]
+      const amount = n('amount') * fx, odds = Math.min(100, n('odds')) / 100
+      const rate = num('rate') === null ? null : Number(el('rate').dataset.usd) * R[m]
+      const hours = n('hours') + n('report') * odds, expected = amount * odds, per = expected / hours
+      const ok = ['amount', 'odds', 'hours', 'report'].every((k) => num(k) !== null) && hours > 0 && Number.isFinite(hours) && amount > 0 && Number.isFinite(expected) && Number.isFinite(per)
+      el('converted').textContent = m === cur || !Number.isFinite(amount) ? '\u00a0' : `≈ ${money(amount, m)}`
+      el('per-hour').textContent = ok ? money(per, m) : '–'
+      const usd = (n('amount') / R[cur]) * odds / hours, mineUsd = Number(el('rate').dataset.usd)
+      const v = !ok || rate === null ? '' : usd >= mineUsd ? 'good' : 'bad'
+      f.dataset.verdict = v
+      const gap = rate - per
+      el('verdict').textContent = !v ? '' : usd >= mineUsd * 2 ? 'Well worth it.' : v == 'good' ? 'Worth it, just.' : `Not worth it: ${gap >= 1 ? money(gap, m) : `under ${money(1, m)}`} an hour below your time.`
+      const h = hours < 10 ? Math.round(hours * 10) / 10 : Math.round(hours)
+      el('sum').textContent = ok ? `${money(amount, m)} × ${Math.round(odds * 1000) / 10}% = ${money(expected, m)} on average, for ${h} hour${h === 1 ? '' : 's'}.` : ''
+    }
+    sel.addEventListener('change', () => {
+      try {
+        localStorage.setItem('nf-currency', sel.value)
+      } catch {}
+      setRate()
+      update()
+    })
+    el('rate').addEventListener('input', () => {
+      if (num('rate') === null) return
+      el('rate').dataset.usd = String(num('rate') / R[sel.value])
+      try {
+        localStorage.setItem('nf-rate-usd', el('rate').dataset.usd)
+      } catch {}
+    })
+    f.addEventListener('input', update)
+    setRate()
+    update()
+  }
+</script>

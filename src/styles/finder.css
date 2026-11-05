@@ -242,6 +242,13 @@
     line-height: 1.35;
     color: var(--muted-foreground);
   }
+  /* The work to apply sits under the money, so the two read together. */
+  .amt__effort {
+    display: block;
+    margin-top: 0.125rem;
+    font-size: var(--text-sm);
+    color: var(--foreground);
+  }
   .c-amount {
     position: relative;
     z-index: 2;

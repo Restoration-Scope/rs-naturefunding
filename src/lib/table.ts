@@ -1,10 +1,5 @@
 import type { Programme } from '../data/schema'
-
-/** Rough US dollars per unit, only to sort the Amount column. Amounts always show in the funder's currency. */
-const usdPerUnit: Record<string, number> = {
-  USD: 1, EUR: 1.08, GBP: 1.27, CHF: 1.13, CAD: 0.73, AUD: 0.66, NZD: 0.6, JPY: 0.0067, NOK: 0.093, SEK: 0.095,
-  DKK: 0.145, BRL: 0.18, MXN: 0.055, INR: 0.012, ZAR: 0.055, KES: 0.0078, CNY: 0.14, SGD: 0.75, HKD: 0.13,
-}
+import { usdPerUnit } from './rates'
 
 /** The largest stated figure in rough US dollars, for sorting. Null when there is no amount or no rate. */
 export function usdValue(a: Programme['amount']): number | null {

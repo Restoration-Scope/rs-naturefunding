@@ -206,6 +206,24 @@ export const programme = z
       .describe('true when the funder requires applicants to apply as a consortium of several organisations; missing when the pages we read don’t say.'),
     /** What the funder asks grantees to report, in our words. */
     reporting: z.string().min(10).max(600).nullable(),
+    /** What applying takes, in our words, from the funder's page. Missing means not stated. */
+    effort: z
+      .object({
+        /** The steps in order, in our words ("Short expression of interest", "Full proposal"). */
+        steps: z.array(z.string().min(3).max(80)).min(1).max(5).describe("The steps in order, in our words."),
+        /** The page says more steps follow the ones listed, without naming them all. */
+        more_after: z.boolean().optional().describe("true when the page says more steps follow the ones listed."),
+      })
+      .optional(),
+    /** How many applications the funder says it funded, out of how many, and when. Missing means not published. */
+    odds: z
+      .object({
+        funded: z.number().int().positive().describe("Applications funded."),
+        applied: z.number().int().positive().describe("Applications received."),
+        /** The round or year the figures are for, as the funder gives it ("2025 round"). */
+        period: z.string().min(3).max(60).describe("The round or year the figures are for."),
+      })
+      .optional(),
     calls: z.array(call).max(20),
     evidence: z.object({
       administered_by: evidence.optional(),
@@ -217,6 +235,9 @@ export const programme = z
       co_finance_required: evidence.optional(),
       consortium_required: evidence.optional(),
       reporting: evidence.optional(),
+      /** One quote per step at most: a page often names the stages in different places. */
+      effort: z.array(evidence).min(1).max(3).optional(),
+      odds: evidence.optional(),
     }),
     /** The oldest evidence date: every fact above was read on or after this day. */
     checked_at: isoDate,
@@ -234,6 +255,8 @@ export const programme = z
       co_finance_required: p.co_finance_required !== null,
       consortium_required: p.consortium_required !== undefined,
       reporting: p.reporting !== null,
+      effort: p.effort !== undefined,
+      odds: p.odds !== undefined,
     }
     for (const [field, isStated] of Object.entries(stated)) {
       const e = p.evidence[field as keyof typeof p.evidence]
@@ -286,7 +309,7 @@ export const programme = z
     }
 
     const allEvidence = [
-      ...Object.values(p.evidence),
+      ...Object.values(p.evidence).flat(),
       ...p.calls.flatMap((c) => [c.evidence.status, c.evidence.opens, c.evidence.deadline, c.evidence.recurring, c.evidence.countries]),
     ].filter((e): e is Evidence => e !== undefined)
     for (const e of allEvidence) {
