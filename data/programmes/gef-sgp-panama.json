@@ -14,13 +14,13 @@
   "geography": { "scope": "countries", "countries": ["PA"] },
   "access": "direct",
   "window": "fixed",
-  "amount": null,
+  "amount": { "currency": "USD", "max": 100000, "note": "indicative" },
   "co_finance_required": true,
   "reporting": "Grantees file a technical and financial report after each disbursement and a final report.",
   "calls": [
     {
       "id": "mariato-recovery-2026",
-      "label": "Mariato livelihoods recovery and socio-environmental resilience call",
+      "label": "Llamada de propuestas para el proyecto de recuperación temprana de medios de vida y resiliencia socioambiental en Mariato",
       "url": "https://www.ppdpanama.org/convocatorias",
       "status": "open",
       "opens": null,
@@ -28,14 +28,36 @@
       "evidence": {
         "status": {
           "source_url": "https://www.ppdpanama.org/convocatorias",
-          "quote": "Fecha límite de presentación 15 de noviembre de 2026.",
-          "checked_at": "2026-11-05",
+          "quote": "anuncia una convocatoria de propuestas orientada a apoyar la recuperación temprana de los medios de vida",
+          "checked_at": "2026-11-06",
           "method": "page"
         },
         "deadline": {
           "source_url": "https://www.ppdpanama.org/convocatorias",
           "quote": "Fecha límite de presentación 15 de noviembre de 2026.",
-          "checked_at": "2026-11-05",
+          "checked_at": "2026-11-06",
+          "method": "page"
+        }
+      }
+    },
+    {
+      "id": "ppd-20years-2026",
+      "label": "20 años del Programa de Pequeñas Donaciones (PPD) en Panamá: memoria, legado y futuro de la conservación comunitaria",
+      "url": "https://www.ppdpanama.org/convocatorias",
+      "status": "open",
+      "opens": null,
+      "deadline": { "date": "2026-11-15", "text": "15 de noviembre de 2026" },
+      "evidence": {
+        "status": {
+          "source_url": "https://www.ppdpanama.org/convocatorias",
+          "quote": "invita a presentar propuestas para el desarrollo del proyecto conmemorativo de sus 20 años de trayectoria en Panamá",
+          "checked_at": "2026-11-06",
+          "method": "page"
+        },
+        "deadline": {
+          "source_url": "https://www.ppdpanama.org/convocatorias",
+          "quote": "Fecha límite de presentación 15 de noviembre de 2026.",
+          "checked_at": "2026-11-06",
           "method": "page"
         }
       }
@@ -45,7 +67,7 @@
     "administered_by": {
       "source_url": "https://www.ppdpanama.org/convocatorias",
       "quote": "implementado por el Programa de las Naciones Unidas para el Desarrollo (PNUD), en coordinación con el Ministerio de Ambiente",
-      "checked_at": "2026-11-05",
+      "checked_at": "2026-11-06",
       "method": "page"
     },
     "applicant_types": {
@@ -63,13 +85,19 @@
     "access": {
       "source_url": "https://www.ppdpanama.org/convocatorias",
       "quote": "anuncia una convocatoria de propuestas orientada a apoyar la recuperación temprana de los medios de vida",
-      "checked_at": "2026-11-05",
+      "checked_at": "2026-11-06",
       "method": "page"
     },
     "window": {
       "source_url": "https://www.ppdpanama.org/convocatorias",
       "quote": "Fecha límite de presentación 15 de noviembre de 2026.",
-      "checked_at": "2026-11-05",
+      "checked_at": "2026-11-06",
+      "method": "page"
+    },
+    "amount": {
+      "source_url": "https://www.ppdpanama.org/convocatorias",
+      "quote": "Presupuesto indicativo: USD 100,000, sujeto a disponibilidad y aprobación.",
+      "checked_at": "2026-11-06",
       "method": "page"
     },
     "co_finance_required": {
@@ -85,5 +113,5 @@
       "method": "page"
     }
   },
-  "checked_at": "2026-11-05"
+  "checked_at": "2026-11-06"
 }
