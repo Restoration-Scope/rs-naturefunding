@@ -4,6 +4,7 @@ import type { Call } from '../../src/data/schema'
 import { amountText, geographyText, longDate } from '../../src/lib/format'
 import { countryName, regionLabels, type Region } from '../../src/lib/geo'
 import { approachLabels, projectTypes } from '../../src/lib/labels'
+import { markFor } from '../../src/lib/marks'
 import type { Digest, DigestItem, Section } from './digest'
 import { prefsText, type Prefs } from './match'
 
@@ -43,6 +44,13 @@ function prefsHtml(site: string, prefs: Prefs): string {
     ? prefs.approaches.map((a) => withIcon(icon(`${site}/icons/types/${typeOf[a]}.png`, 16, 16), approachLabels[a])).join(' or ')
     : null
   return [where, what].filter(Boolean).join(' · ')
+}
+
+/** The funder's favicon (public/icons/marks/, a PNG copy of public/marks/), or its monogram in a muted square. */
+function funderMark(site: string, org: { name: string; url: string }) {
+  const m = markFor(org)
+  if (m.kind === 'icon') return icon(`${site}/icons/marks/${m.domain}.png`, 16, 16, 3)
+  return `<span style="display:inline-block;width:16px;height:16px;line-height:16px;margin-right:4px;vertical-align:-2px;border-radius:3px;background:${C.linen};color:${C.ink2};font-size:8px;font-weight:600;text-align:center;">${esc(m.letters)}</span>`
 }
 
 /** The finder with the subscriber's choices set, so "see them all" lands on the same list (src/lib/finder.ts fromUrl). */
@@ -110,6 +118,7 @@ function itemParts(i: DigestItem, site: string) {
   return {
     name: p.name,
     funder: p.funder.name,
+    mark: funderMark(site, p.funder),
     status: callLine(i.call, i.section),
     live: i.call?.status === 'open' || i.call?.status === 'upcoming',
     callLabel: i.call?.label ?? null,
@@ -139,7 +148,7 @@ export function digestEmail(o: { site: string; digest: Digest; prefs: Prefs; sin
           const x = itemParts(i, o.site)
           return `<tr><td style="padding:14px 0;border-top:1px solid ${C.rule};">
 <a href="${esc(x.page)}" style="font-size:17px;font-weight:600;color:${C.ink};text-decoration:underline;text-decoration-color:${C.rule};">${esc(x.name)}</a>
-<div style="font-size:14px;color:${C.ink2};margin-top:2px;">${esc(x.funder)}</div>
+<div style="font-size:14px;color:${C.ink2};margin-top:2px;">${withIcon(x.mark, x.funder)}</div>
 <div style="font-size:15px;margin-top:8px;">${x.live ? `<strong style="color:${C.brand};font-weight:600;">${esc(x.status)}</strong>` : `<span style="color:${C.ink2};">${esc(x.status)}</span>`}${x.callLabel ? ` <span style="color:${C.ink2};">· ${esc(x.callLabel)}</span>` : ''}</div>
 ${x.facts.length ? `<div style="font-size:14px;color:${C.ink2};margin-top:4px;">${esc(x.facts.join(' · '))}</div>` : ''}
 <div style="font-size:14px;margin-top:8px;"><a href="${esc(x.callUrl)}" style="color:${C.brand};">Funder’s page</a> <span style="color:${C.rule};">|</span> <a href="${esc(x.page)}" style="color:${C.brand};">Details and evidence</a></div>
