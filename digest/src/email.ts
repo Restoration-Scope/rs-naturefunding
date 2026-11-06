@@ -14,7 +14,17 @@ export type Email = { subject: string; html: string; text: string }
 const esc = (s: string) => s.replaceAll('&', '&amp;').replaceAll('<', '&lt;').replaceAll('>', '&gt;').replaceAll('"', '&quot;')
 const plural = (n: number, one: string, many: string) => `${n} ${n === 1 ? one : many}`
 
-function frame(site: string, preheader: string, body: string, footer: string) {
+const RS_URL = 'https://restorationscope.com/?utm_source=naturefunding&utm_medium=email&utm_campaign=digest'
+const TAGLINE = 'naturefunding.org is free and neutral: funders can’t pay to be listed. Built with 💚 by Restoration Scope.'
+const taglineHtml = esc(TAGLINE).replace('Restoration Scope', `<a href="${RS_URL}" style="color:${C.ink2};">Restoration Scope</a>`)
+
+/** The country's flag before its name, when the person chose a country (PNG: Gmail and Outlook don't show SVG). */
+const flag = (site: string, prefs: Prefs) =>
+  prefs.where && !prefs.where.startsWith('r:')
+    ? `<img src="${esc(site)}/flags/${esc(prefs.where)}.png" width="21" height="14" alt="" style="display:inline-block;vertical-align:-2px;margin-right:5px;border:0;border-radius:2px;">`
+    : ''
+
+function frame(site: string, preheader: string, body: string, footer?: string) {
   return `<!doctype html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="color-scheme" content="light"><title>naturefunding.org</title></head>
 <body style="margin:0;padding:0;background:${C.linen};">
@@ -25,8 +35,10 @@ function frame(site: string, preheader: string, body: string, footer: string) {
 <a href="${esc(site)}/" style="font-family:${SERIF};font-size:22px;color:${C.paper};text-decoration:none;">naturefunding<span style="color:${C.shellInk2};">.org</span></a>
 </td></tr>
 <tr><td style="padding:28px 28px 8px;font-family:${SANS};font-size:16px;line-height:1.5;color:${C.ink};">${body}</td></tr>
-<tr><td style="padding:20px 28px 28px;font-family:${SANS};font-size:13px;line-height:1.5;color:${C.ink2};border-top:1px solid ${C.rule};">${footer}</td></tr>
-</table></td></tr></table>
+${footer ? `<tr><td style="padding:20px 28px 28px;font-family:${SANS};font-size:13px;line-height:1.5;color:${C.ink2};border-top:1px solid ${C.rule};">${footer}</td></tr>` : ''}
+</table>
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="max-width:600px;"><tr><td align="center" style="padding:14px 28px 0;font-family:${SANS};font-size:12px;line-height:1.5;color:${C.ink2};">${taglineHtml}</td></tr></table>
+</td></tr></table>
 </body></html>`
 }
 
@@ -36,16 +48,16 @@ const button = (href: string, label: string) =>
 export function confirmationEmail(o: { site: string; confirmUrl: string; prefs: Prefs }): Email {
   const what = prefsText(o.prefs)
   const lead = `Press the button to start getting new nature funding calls by email${what ? ` for ${what}` : ''}: at most one email a week, and only when there is something new.`
+  const leadHtml = what ? esc(lead).replace(` for ${esc(what)}`, ` for ${flag(o.site, o.prefs)}${esc(what)}`) : esc(lead)
   const html = frame(
     o.site,
     'One click to start your weekly naturefunding.org email.',
     `<h1 style="margin:0 0 12px;font-family:${SERIF};font-size:26px;font-weight:400;">Confirm your email</h1>
-<p style="margin:0;">${esc(lead)}</p>
+<p style="margin:0;">${leadHtml}</p>
 ${button(o.confirmUrl, 'Confirm my email')}
 <p style="margin:0 0 16px;color:${C.ink2};font-size:14px;">The link works for 3 days. If you didn’t ask for this, ignore this email and we won’t write again.</p>`,
-    `naturefunding.org is a free, neutral directory of nature restoration funding, built by Restoration Scope.`,
   )
-  const text = `Confirm your email\n\n${lead}\n\nConfirm: ${o.confirmUrl}\n\nThe link works for 3 days. If you didn't ask for this, ignore this email and we won't write again.\n\nnaturefunding.org is a free, neutral directory of nature restoration funding, built by Restoration Scope.\n`
+  const text = `Confirm your email\n\n${lead}\n\nConfirm: ${o.confirmUrl}\n\nThe link works for 3 days. If you didn't ask for this, ignore this email and we won't write again.\n\n--\n${TAGLINE}\n`
   return { subject: 'Confirm your weekly naturefunding.org email', html, text }
 }
 
@@ -89,6 +101,7 @@ export function digestEmail(o: { site: string; digest: Digest; prefs: Prefs; sin
   )
   const subject = `${subjectBits.join(', ')}${what ? ` · ${what}` : ''}`
   const intro = `New since ${longDate(o.since.slice(0, 10))}${what ? `, for ${what}` : ''}.`
+  const introHtml = what ? esc(intro).replace(`, for ${esc(what)}`, `, for ${flag(o.site, o.prefs)}${esc(what)}`) : esc(intro)
 
   const sections = counts
     .filter(([, n]) => n > 0)
@@ -112,11 +125,10 @@ ${x.facts.length ? `<div style="font-size:14px;color:${C.ink2};margin-top:4px;">
     .join('')
 
   const more = total > items.length ? `<p style="margin:20px 0 0;">And ${total - items.length} more. <a href="${esc(o.site)}/" style="color:${C.brand};">See them all on naturefunding.org</a>.</p>` : ''
-  const body = `<p style="margin:0;color:${C.ink2};font-size:15px;">${esc(intro)}</p>${sections}${more}
+  const body = `<p style="margin:0;color:${C.ink2};font-size:15px;">${introHtml}</p>${sections}${more}
 <p style="margin:24px 0 16px;font-size:14px;color:${C.ink2};">Each listing is checked against the funder’s own page. Dates and amounts are as the funder states them; check the funder’s page before you apply.</p>`
   const footer = `You get this because you signed up at naturefunding.org${what ? ` for ${esc(what)}` : ''}. At most one email a week, only when something is new.<br>
-<a href="${esc(o.manageUrl)}" style="color:${C.ink2};">Change what you get</a> · <a href="${esc(o.unsubscribeUrl)}" style="color:${C.ink2};">Unsubscribe</a><br><br>
-naturefunding.org is free and neutral: funders can’t pay to be listed. Built by Restoration Scope.`
+<a href="${esc(o.manageUrl)}" style="color:${C.ink2};">Change what you get</a> · <a href="${esc(o.unsubscribeUrl)}" style="color:${C.ink2};">Unsubscribe</a>`
 
   const textItems = counts
     .filter(([, n]) => n > 0)
@@ -132,6 +144,6 @@ naturefunding.org is free and neutral: funders can’t pay to be listed. Built b
       ].join('\n\n'),
     )
     .join('\n\n')
-  const text = `${intro}\n\n${textItems}\n${total > items.length ? `\nAnd ${total - items.length} more: ${o.site}/\n` : ''}\nDates and amounts are as the funder states them; check the funder's page before you apply.\n\n--\nAt most one email a week, only when something is new.\nChange what you get: ${o.manageUrl}\nUnsubscribe: ${o.unsubscribeUrl}\n`
+  const text = `${intro}\n\n${textItems}\n${total > items.length ? `\nAnd ${total - items.length} more: ${o.site}/\n` : ''}\nDates and amounts are as the funder states them; check the funder's page before you apply.\n\n--\nAt most one email a week, only when something is new.\nChange what you get: ${o.manageUrl}\nUnsubscribe: ${o.unsubscribeUrl}\n\n${TAGLINE}\n`
   return { subject, html: frame(o.site, intro, body, footer), text }
 }
