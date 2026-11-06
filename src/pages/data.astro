@@ -2,7 +2,7 @@
 import Base from '../layouts/Base.astro'
 import { AGING_DAYS, HIDDEN_DAYS } from '../lib/data'
 import { fieldDocs, fileDocs } from '../lib/data-docs'
-import { absolute } from '../lib/site'
+import { absolute, RS_ORG } from '../lib/site'
 
 const description =
   'The naturefunding.org open data: every file, every field of data.json, and how to read a fact, its quote and the date it was checked.'
@@ -13,7 +13,7 @@ const jsonLd = {
   name: 'The open data: files and fields',
   url: absolute('/data/'),
   description,
-  publisher: { '@type': 'Organization', name: 'Restoration Scope', url: 'https://restorationscope.com' },
+  publisher: RS_ORG,
 }
 
 // Each object of data.json, in the order a reader meets them, with what its fields mean (src/lib/data-docs.ts).

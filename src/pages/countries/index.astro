@@ -3,7 +3,7 @@
 import Base from '../../layouts/Base.astro'
 import { finderPages, type FinderPage } from '../../lib/finder-pages'
 import { countryRegion, regionLabels } from '../../lib/geo'
-import { absolute } from '../../lib/site'
+import { absolute, RS_ORG } from '../../lib/site'
 
 const { countries, regions, types } = finderPages
 const description = `Grants for nature restoration and conservation by place and by project type: ${regions.length} regions, ${countries.length} countries and ${types.length} project types, each with its open calls first.`
@@ -13,7 +13,7 @@ const jsonLd = {
   name: 'Grants by place and project type',
   url: absolute('/countries/'),
   description,
-  publisher: { '@type': 'Organization', name: 'Restoration Scope', url: 'https://restorationscope.com' },
+  publisher: RS_ORG,
 }
 const byRegion = regions.map((r) => ({
   region: r,

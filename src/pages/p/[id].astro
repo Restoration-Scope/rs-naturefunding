@@ -15,7 +15,7 @@ import { cardClasses } from '@/components/ui/card'
 import { HIDDEN_DAYS, buildDate, callGroups, whereReach, listingFor, programmeById, programmes, sortListings } from '../../lib/data'
 import type { Programme } from '../../data/schema'
 import { pagesFor } from '../../lib/finder-pages'
-import { amountText, effortText, geographyFull, joinAnd, longDate, pageLabel, sentence } from '../../lib/format'
+import { amountText, effortText, poolText, geographyFull, joinAnd, longDate, pageLabel, sentence, keepAmountTogether } from '../../lib/format'
 import { countryName, regionLabels } from '../../lib/geo'
 import {
   accessHelp,
@@ -50,6 +50,8 @@ const partnersLater = partnersNow.length > 0 ? childListings.filter((l) => !part
 const partnersShown = partnersNow.length > 0 ? partnersNow : childListings
 const noCallRoute = p.access === 'intermediary' || p.access === 'invitation_only'
 const amount = amountText(p.amount)
+const pool = poolText(p.pool)
+const amountValue = amount ?? (pool ? `Budget shared by all grants: ${pool}${p.pool?.note ? `. ${sentence(p.pool.note)}` : ''}` : null)
 // The place and type pages this programme shows on, linked under Where and the approach.
 const more = pagesFor(p)
 const yesNo = (b: boolean | null) => (b === null ? null : b ? 'Yes' : 'No')
@@ -279,8 +281,20 @@ const jsonLd = [
         <Fact id={factIds.access} label="How to apply" value={accessLabels[p.access]} evidence={p.evidence.access} missing="Not stated">
           {p.access === 'direct' && <p class={factHelp}>{accessHelp[p.access]}</p>}
         </Fact>
-        <Fact id={factIds.amount} label="Amount" value={amount} evidence={p.evidence.amount} missing={byPartner}>
+        <Fact
+          id={factIds.amount}
+          label="Amount"
+          value={amountValue}
+          evidence={[...(p.evidence.amount ? [p.evidence.amount] : []), ...(p.evidence.pool ? [p.evidence.pool] : [])]}
+          missing={byPartner}
+        >
+          {!amount && pool && <span id={factIds.pool}></span>}
           {p.amount?.note && <p class={factHelp}>{sentence(p.amount.note)}</p>}
+          {amount && pool && p.pool && (
+            <p id={factIds.pool} class="mt-1 text-sm text-ink-2">
+              Budget shared by all grants: {keepAmountTogether(pool)}.{p.pool.note && ` ${sentence(p.pool.note)}`}
+            </p>
+          )}
         </Fact>
         {
           p.access === 'direct' && (

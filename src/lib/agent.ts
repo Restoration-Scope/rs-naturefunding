@@ -3,9 +3,9 @@
 // checked date, so a line still holds up when an answer quotes it alone.
 import type { Call, Evidence, Programme } from '../data/schema'
 import { AGING_DAYS, HIDDEN_DAYS, buildDate, listingFor, programmeById, programmes, sortListings, stats, type Listing } from './data'
-import { amountText, effortText, geographyFull, geographyText, joinAnd, longDate } from './format'
+import { amountText, effortText, poolText, geographyFull, geographyText, joinAnd, longDate } from './format'
 import { accessHelp, accessLabels, applicantLabels, approachLabels } from './labels'
-import { RS_URL, SITE_NAME, absolute, funderCorrectionUrl, reportProblemUrl } from './site'
+import { RS_DESCRIPTOR, RS_URL, SITE_NAME, absolute, funderCorrectionUrl, reportProblemUrl } from './site'
 import { countryName } from './geo'
 import { LLMS_FULL_PAGES, twinPath } from './twins'
 import { evidenceOf } from '../data/load'
@@ -15,6 +15,7 @@ import type { FinderPage } from './finder-pages'
 export const factIds = {
   access: 'access',
   amount: 'amount',
+  pool: 'pool',
   geography: 'geography',
   applicant_types: 'applicant_types',
   window: 'window',
@@ -119,6 +120,7 @@ export function programmeMarkdown(p: Programme): string {
       : `- Status, from the check on ${longDate(l.call?.evidence.status?.checked_at ?? p.checked_at)}: ${statusText(l)}`,
     `- How to apply: ${accessLabels[p.access]}`,
     `- Amount: ${amount ?? (children.length ? byPartner : NOT_FOUND)}`,
+    ...(p.pool ? [`- Budget shared by all grants: ${poolText(p.pool)}${p.pool.note ? ` (${p.pool.note})` : ''}`] : []),
     `- Who can apply: ${who ?? byPartner}`,
     `- Where: ${geographyFull(p.geography) ?? NOT_FOUND}`,
     `- Rounds: ${rounds ?? byPartner}`,
@@ -148,6 +150,7 @@ export function programmeMarkdown(p: Programme): string {
   const facts = [
     quoteLines(`${n}, how to apply`, `${accessLabels[p.access]}. ${accessHelp[p.access]}`, p.evidence.access, factIds.access, p),
     quoteLines(`${n}, amount`, amount ? `${amount}${p.amount?.note ? `. ${p.amount.note}.` : ''}` : byPartner, p.evidence.amount, factIds.amount, p),
+    ...(p.pool ? [quoteLines(`${n}, budget shared by all grants`, `${poolText(p.pool)}${p.pool.note ? `. ${p.pool.note}.` : ''}`, p.evidence.pool, factIds.pool, p)] : []),
     quoteLines(`${n}, where`, geographyFull(p.geography) ?? NOT_FOUND, p.evidence.geography, factIds.geography, p),
     quoteLines(`${n}, who can apply`, who ?? byPartner, p.evidence.applicant_types, factIds.applicant_types, p),
     quoteLines(`${n}, rounds`, rounds ?? byPartner, p.evidence.window, factIds.window, p),
@@ -226,7 +229,7 @@ const listingLine = (l: Listing, link: (p: Programme) => string) => {
 
 const intro = (listings: Listing[]) =>
   [
-    `${SITE_NAME} is a free, neutral directory of grants and funding for nature restoration and conservation. Every deadline, amount and eligibility rule is read from the funder’s own page, or the page of the organisation that runs the programme for it, and shown with the exact words and the date it was checked. Deadlines are never guessed: “not found” means the pages we read don’t say. Built and paid for openly by Restoration Scope (${RS_URL.split('?')[0]}); funders can’t pay to be listed or ranked.`,
+    `${SITE_NAME} is a free, neutral directory of grants and funding for nature restoration and conservation. Every deadline, amount and eligibility rule is read from the funder’s own page, or the page of the organisation that runs the programme for it, and shown with the exact words and the date it was checked. Deadlines are never guessed: “not found” means the pages we read don’t say. Built and paid for openly by Restoration Scope (${RS_URL.split('?')[0]}), which ${RS_DESCRIPTOR}; funders can’t pay to be listed or ranked.`,
     '',
     `${listings.length} programmes listed, ${stats.open} open now and ${stats.rolling} open any time, by each listing’s latest check (built ${longDate(buildDate)}; most recent check ${stats.lastChecked ? longDate(stats.lastChecked) : 'none'}). A job runs every day and re-reads each funder page when it is due: daily, weekly or monthly, depending on the page. A call shows as closed once its deadline date has passed. “Who” and “Where” are our categories, from the funder’s words; each listing has the quotes.`,
   ].join('\n')
