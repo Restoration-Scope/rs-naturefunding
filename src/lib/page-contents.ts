@@ -40,7 +40,10 @@ export function initPageContents() {
     const to = t ? Math.max(0, from + t.getBoundingClientRect().top - (parseFloat(getComputedStyle(t).scrollMarginTop) || 0)) : 0
     history.pushState(null, '', a.hash || location.pathname + location.search)
     cancelAnimationFrame(glide)
-    if (still.matches) return scrollTo({ top: to, behavior: 'instant' })
+    if (still.matches) {
+      scrollTo({ top: to, behavior: 'instant' })
+      return schedule()
+    }
     const ms = Math.min(300, Math.max(100, Math.abs(to - from) * 0.15))
     let start: number | undefined
     const step = (now: number) => {
