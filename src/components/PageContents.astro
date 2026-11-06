@@ -1,0 +1,39 @@
+---
+import { sections, type SectionKind } from '../lib/sections'
+
+/** The programme page's sections, listed on the left of the widest screens and kept in view while the page
+    scrolls, each with its section's icon. The section in view is marked (src/lib/page-contents.ts); without
+    script the list still links. */
+export interface ContentsItem {
+  href: string
+  label: string
+  kind: SectionKind
+}
+
+interface Props {
+  items: ContentsItem[]
+}
+
+const { items } = Astro.props
+---
+
+<nav aria-label="On this page" class="hidden w-(--contents-w) flex-none min-[90rem]:block" data-contents>
+  <ol class="sticky top-6 m-0 mt-12 max-h-[calc(100dvh-3rem)] list-none overflow-y-auto p-0 text-base">
+    {
+      items.map((item) => {
+        const { icon: Icon, tone } = sections[item.kind]
+        return (
+          <li class={tone}>
+            <a
+              class="flex items-center gap-2.5 rounded-md px-2 py-1.5 text-ink-2 no-underline hover:bg-sunk hover:text-ink data-active:font-semibold data-active:text-ink"
+              href={item.href}
+            >
+              <Icon className="size-4 flex-none text-(--tone)" aria-hidden="true" />
+              {item.label}
+            </a>
+          </li>
+        )
+      })
+    }
+  </ol>
+</nav>

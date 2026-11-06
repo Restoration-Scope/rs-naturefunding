@@ -1,0 +1,8 @@
+---
+import { boldFigures } from '../lib/format'
+
+/** Text with its figures in bold (the money facts). */
+const { text } = Astro.props as { text: string }
+---
+
+<Fragment set:html={boldFigures(text)} />

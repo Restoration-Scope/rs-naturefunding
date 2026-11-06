@@ -1,6 +1,6 @@
 ---
 import type { Evidence } from '../data/schema'
-import { keepAmountTogether, pageLabel } from '../lib/format'
+import { boldFigures, keepAmountTogether, pageLabel } from '../lib/format'
 import { notRecheckedPage } from '../lib/data'
 import SourceLink from './SourceLink.astro'
 import {
@@ -14,6 +14,7 @@ import {
   DoorOpen,
   FileText,
   HandCoins,
+  Landmark,
   MapPin,
   Network,
   Repeat,
@@ -25,6 +26,9 @@ import {
 const icons: Record<string, typeof Banknote> = {
   'How to apply': DoorOpen,
   Amount: Banknote,
+  'Per project': Banknote,
+  'Total budget': Landmark,
+  Organisations: Users,
   'Work to apply': ClipboardList,
   Where: MapPin,
   'Who can apply': Users,
@@ -50,23 +54,27 @@ interface Props {
   missing?: string
   /** Anchor for this fact, so a citation can link it (src/lib/agent.ts factIds). */
   id?: string
+  /** The money facts: every figure in the quotes reads bold. */
+  figures?: boolean
 }
 
-const { label, value, evidence, missing = 'Not found on the pages we read', id } = Astro.props
-const shown = value && label === 'Amount' ? keepAmountTogether(value) : value
+const { label, value, evidence, missing = 'Not found on the pages we read', id, figures = false } = Astro.props
+const shown = value && (label === 'Amount' || label === 'Per project' || label === 'Total budget') ? keepAmountTogether(value) : value
 const Icon = icons[label]
+// A conditional value slot that renders nothing still counts as filled, so check what it draws.
+const slotValue = Astro.slots.has('value') ? (await Astro.slots.render('value')).trim() : ''
 const quotes = evidence ? (Array.isArray(evidence) ? evidence : [evidence]) : []
 ---
 
 <div id={id} class="grid grid-cols-[minmax(0,1fr)] gap-[0.35rem] border-t border-rule py-[1.1rem] md:grid-cols-[11rem_minmax(0,1fr)] md:gap-6">
   <dt class="flex items-start gap-2 pt-[0.15rem] text-md font-bold text-ink-2">
-    {Icon && <Icon className="mt-[0.2rem] size-4 flex-none" aria-hidden="true" />}
+    {Icon && <Icon className="mt-[0.2rem] size-4 flex-none text-(--tone,currentColor)" aria-hidden="true" />}
     <span>{label}</span>
   </dt>
   <dd class="m-0 min-w-0">
     {
-      Astro.slots.has('value') ? (
-        <p class="text-lg font-semibold"><slot name="value" /></p>
+      slotValue ? (
+        <p class="text-lg font-semibold" set:html={slotValue} />
       ) : shown ? (
         // A long summary in our words reads as text, so it doesn't outweigh the quote under it.
         <p class:list={[shown.length > 70 ? 'text-base' : 'text-lg font-semibold']}>{shown}</p>
@@ -82,7 +90,7 @@ const quotes = evidence ? (Array.isArray(evidence) ? evidence : [evidence]) : []
               source icon ends the quote, held to its last word; its tooltip names the page and date. */}
           <blockquote class="max-w-[65ch] border-l-3 border-rule-strong py-[0.1rem] pl-[0.85rem] text-[0.9875rem] text-ink" cite={e.source_url}>
             <p>
-              <span class="before:content-['“'] after:content-['”']">{e.quote}</span>{'\u00a0'}<SourceLink
+              {figures ? <span class="before:content-['“'] after:content-['”']" set:html={boldFigures(e.quote)} /> : <span class="before:content-['“'] after:content-['”']">{e.quote}</span>}{'\u00a0'}<SourceLink
                 url={e.source_url}
                 label={pageLabel(e.source_url)}
                 checked={e.checked_at}
