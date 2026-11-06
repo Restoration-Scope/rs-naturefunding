@@ -2,6 +2,8 @@
 // clients render), plus a text version. Colours are the site's tokens (src/styles/global.css).
 import type { Call } from '../../src/data/schema'
 import { amountText, geographyText, longDate } from '../../src/lib/format'
+import { countryName, regionLabels, type Region } from '../../src/lib/geo'
+import { approachLabels, projectTypes } from '../../src/lib/labels'
 import type { Digest, DigestItem, Section } from './digest'
 import { prefsText, type Prefs } from './match'
 
@@ -18,11 +20,36 @@ const RS_URL = 'https://restorationscope.com/?utm_source=naturefunding&utm_mediu
 const TAGLINE = 'naturefunding.org is free and neutral: funders can’t pay to be listed. Built with 💚 by Restoration Scope.'
 const taglineHtml = esc(TAGLINE).replace('Restoration Scope', `<a href="${RS_URL}" style="color:${C.ink2};">Restoration Scope</a>`)
 
-/** The country's flag before its name, when the person chose a country (PNG: Gmail and Outlook don't show SVG). */
-const flag = (site: string, prefs: Prefs) =>
-  prefs.where && !prefs.where.startsWith('r:')
-    ? `<img src="${esc(site)}/flags/${esc(prefs.where)}.png" width="21" height="14" alt="" style="display:inline-block;vertical-align:-2px;margin-right:5px;border:0;border-radius:2px;">`
-    : ''
+// Icons in the "for …" line, served from the site as PNG (Gmail and Outlook don't show SVG): the country's flag
+// (public/flags/), the region's land or the project type's finder icon (public/icons/, scripts/images/email-icons.ts).
+const typeOf = Object.fromEntries(projectTypes.flatMap((t) => t.approaches.map((a) => [a, t.key])))
+const icon = (src: string, w: number, h: number, radius = 0) =>
+  `<img src="${esc(src)}" width="${w}" height="${h}" alt="" style="display:inline-block;vertical-align:-2px;margin-right:4px;border:0;${radius ? `border-radius:${radius}px;` : ''}">`
+
+/** The icon stays on the same line as the label's first word; the rest of a long label can still wrap. */
+const withIcon = (img: string, label: string) => {
+  const [first, ...rest] = esc(label).split(' ')
+  return `<span style="white-space:nowrap;">${img}${first}</span>${rest.length ? ` ${rest.join(' ')}` : ''}`
+}
+
+/** prefsText with an icon before each part: "[flag] Kenya · [waves] Mangroves or [drops] Wetlands". */
+function prefsHtml(site: string, prefs: Prefs): string {
+  const where = !prefs.where
+    ? null
+    : prefs.where.startsWith('r:')
+      ? withIcon(icon(`${site}/icons/regions/${prefs.where.slice(2)}.png`, 16, 16), regionLabels[prefs.where.slice(2) as Region])
+      : withIcon(icon(`${site}/flags/${prefs.where}.png`, 21, 14, 2), countryName(prefs.where))
+  const what = prefs.approaches.length
+    ? prefs.approaches.map((a) => withIcon(icon(`${site}/icons/types/${typeOf[a]}.png`, 16, 16), approachLabels[a])).join(' or ')
+    : null
+  return [where, what].filter(Boolean).join(' · ')
+}
+
+/** The finder with the subscriber's choices set, so "see them all" lands on the same list (src/lib/finder.ts fromUrl). */
+export function finderUrl(site: string, prefs: Prefs) {
+  const qs = [prefs.where && `where=${encodeURIComponent(prefs.where).replace('%3A', ':')}`, prefs.approaches.length && `approach=${prefs.approaches.join(',')}`].filter(Boolean).join('&')
+  return `${site}/${qs ? `?${qs}` : ''}`
+}
 
 function frame(site: string, preheader: string, body: string, footer?: string) {
   return `<!doctype html>
@@ -48,7 +75,7 @@ const button = (href: string, label: string) =>
 export function confirmationEmail(o: { site: string; confirmUrl: string; prefs: Prefs }): Email {
   const what = prefsText(o.prefs)
   const lead = `Press the button to start getting new nature funding calls by email${what ? ` for ${what}` : ''}: at most one email a week, and only when there is something new.`
-  const leadHtml = what ? esc(lead).replace(` for ${esc(what)}`, ` for ${flag(o.site, o.prefs)}${esc(what)}`) : esc(lead)
+  const leadHtml = what ? esc(lead).replace(` for ${esc(what)}`, ` for ${prefsHtml(o.site, o.prefs)}`) : esc(lead)
   const html = frame(
     o.site,
     'One click to start your weekly naturefunding.org email.',
@@ -101,7 +128,7 @@ export function digestEmail(o: { site: string; digest: Digest; prefs: Prefs; sin
   )
   const subject = `${subjectBits.join(', ')}${what ? ` · ${what}` : ''}`
   const intro = `New since ${longDate(o.since.slice(0, 10))}${what ? `, for ${what}` : ''}.`
-  const introHtml = what ? esc(intro).replace(`, for ${esc(what)}`, `, for ${flag(o.site, o.prefs)}${esc(what)}`) : esc(intro)
+  const introHtml = what ? esc(intro).replace(`, for ${esc(what)}`, `, for ${prefsHtml(o.site, o.prefs)}`) : esc(intro)
 
   const sections = counts
     .filter(([, n]) => n > 0)
@@ -124,7 +151,7 @@ ${x.facts.length ? `<div style="font-size:14px;color:${C.ink2};margin-top:4px;">
     })
     .join('')
 
-  const more = total > items.length ? `<p style="margin:20px 0 0;">And ${total - items.length} more. <a href="${esc(o.site)}/" style="color:${C.brand};">See them all on naturefunding.org</a>.</p>` : ''
+  const more = total > items.length ? `<p style="margin:20px 0 0;">And ${total - items.length} more. <a href="${esc(finderUrl(o.site, o.prefs))}" style="color:${C.brand};">See them all on naturefunding.org</a>.</p>` : ''
   const body = `<p style="margin:0;color:${C.ink2};font-size:15px;">${introHtml}</p>${sections}${more}
 <p style="margin:24px 0 16px;font-size:14px;color:${C.ink2};">Each listing is checked against the funder’s own page. Dates and amounts are as the funder states them; check the funder’s page before you apply.</p>`
   const footer = `You get this because you signed up at naturefunding.org${what ? ` for ${esc(what)}` : ''}. At most one email a week, only when something is new.<br>
@@ -144,6 +171,6 @@ ${x.facts.length ? `<div style="font-size:14px;color:${C.ink2};margin-top:4px;">
       ].join('\n\n'),
     )
     .join('\n\n')
-  const text = `${intro}\n\n${textItems}\n${total > items.length ? `\nAnd ${total - items.length} more: ${o.site}/\n` : ''}\nDates and amounts are as the funder states them; check the funder's page before you apply.\n\n--\nAt most one email a week, only when something is new.\nChange what you get: ${o.manageUrl}\nUnsubscribe: ${o.unsubscribeUrl}\n\n${TAGLINE}\n`
+  const text = `${intro}\n\n${textItems}\n${total > items.length ? `\nAnd ${total - items.length} more: ${finderUrl(o.site, o.prefs)}\n` : ''}\nDates and amounts are as the funder states them; check the funder's page before you apply.\n\n--\nAt most one email a week, only when something is new.\nChange what you get: ${o.manageUrl}\nUnsubscribe: ${o.unsubscribeUrl}\n\n${TAGLINE}\n`
   return { subject, html: frame(o.site, intro, body, footer), text }
 }
