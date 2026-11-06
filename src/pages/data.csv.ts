@@ -5,7 +5,7 @@ import { absolute } from '../lib/site'
 const columns = [
   'programme_id', 'programme', 'kind', 'funder', 'administered_by', 'access', 'window', 'call_id', 'call', 'call_status',
   'opens', 'opens_expected', 'deadline_date', 'deadline_text', 'dates_each_year', 'call_note', 'call_countries', 'amount_currency', 'amount_min',
-  'amount_max', 'amount_max_exclusive', 'amount_typical', 'amount_per', 'amount_note', 'pool_currency', 'pool_value',
+  'amount_max', 'amount_max_exclusive', 'amount_typical', 'amount_per', 'amount_unit', 'amount_note', 'pool_currency', 'pool_value',
   'pool_period', 'pool_qualifier', 'pool_label', 'pool_note', 'geography', 'approaches',
   'applicant_types', 'co_finance_required', 'call_url', 'programme_url', 'checked_at', 'listing_url',
 ] as const
