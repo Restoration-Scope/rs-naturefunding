@@ -112,9 +112,14 @@ function callLine(call: Call | null, section: Section): string {
   return section === 'new' ? 'No open call right now' : ''
 }
 
-function itemParts(i: DigestItem, site: string) {
+/** The subscriber's country when they chose one (the listing is open to it), else where the listing is open. */
+function placeOf(i: DigestItem, prefs: Prefs) {
+  const country = prefs.where && !prefs.where.startsWith('r:') ? prefs.where : null
+  return country ? { text: countryName(country), flag: country } : { text: geographyText(i.programme.geography), flag: null }
+}
+
+function itemParts(i: DigestItem, site: string, prefs: Prefs) {
   const p = i.programme
-  const facts = [amountText(p.amount), geographyText(p.geography)].filter(Boolean) as string[]
   return {
     name: p.name,
     funder: p.funder.name,
@@ -122,7 +127,8 @@ function itemParts(i: DigestItem, site: string) {
     status: callLine(i.call, i.section),
     live: i.call?.status === 'open' || i.call?.status === 'upcoming',
     callLabel: i.call?.label ?? null,
-    facts,
+    amount: amountText(p.amount),
+    place: placeOf(i, prefs),
     page: `${site}/p/${p.id}/`,
     callUrl: i.call?.url ?? p.url,
   }
@@ -145,12 +151,13 @@ export function digestEmail(o: { site: string; digest: Digest; prefs: Prefs; sin
       const rows = items
         .filter((i) => i.section === s)
         .map((i) => {
-          const x = itemParts(i, o.site)
+          const x = itemParts(i, o.site, o.prefs)
+          const place = x.place.text ? (x.place.flag ? withIcon(icon(`${o.site}/flags/${x.place.flag}.png`, 21, 14, 2), x.place.text) : esc(x.place.text)) : ''
           return `<tr><td style="padding:14px 0;border-top:1px solid ${C.rule};">
-<a href="${esc(x.page)}" style="font-size:17px;font-weight:600;color:${C.ink};text-decoration:underline;text-decoration-color:${C.rule};">${esc(x.name)}</a>
-<div style="font-size:14px;color:${C.ink2};margin-top:2px;">${withIcon(x.mark, x.funder)}</div>
+<div style="font-size:18px;line-height:1.35;">${x.amount ? `<strong style="font-weight:600;color:${C.ink};">${esc(x.amount)}</strong>` : `<span style="color:${C.ink2};">Amount not stated</span>`}${place ? `<span style="font-size:15px;color:${C.ink2};"> · ${place}</span>` : ''}</div>
+<div style="font-size:15px;margin-top:6px;"><a href="${esc(x.page)}" style="color:${C.ink};text-decoration:underline;text-decoration-color:${C.rule};">${esc(x.name)}</a></div>
+<div style="font-size:15px;color:${C.ink};margin-top:2px;">${withIcon(x.mark, x.funder)}</div>
 <div style="font-size:15px;margin-top:8px;">${x.live ? `<strong style="color:${C.brand};font-weight:600;">${esc(x.status)}</strong>` : `<span style="color:${C.ink2};">${esc(x.status)}</span>`}${x.callLabel ? ` <span style="color:${C.ink2};">· ${esc(x.callLabel)}</span>` : ''}</div>
-${x.facts.length ? `<div style="font-size:14px;color:${C.ink2};margin-top:4px;">${esc(x.facts.join(' · '))}</div>` : ''}
 <div style="font-size:14px;margin-top:8px;"><a href="${esc(x.callUrl)}" style="color:${C.brand};">Funder’s page</a> <span style="color:${C.rule};">|</span> <a href="${esc(x.page)}" style="color:${C.brand};">Details and evidence</a></div>
 </td></tr>`
         })
@@ -174,8 +181,9 @@ ${x.facts.length ? `<div style="font-size:14px;color:${C.ink2};margin-top:4px;">
         ...items
           .filter((i) => i.section === s)
           .map((i) => {
-            const x = itemParts(i, o.site)
-            return [`- ${x.name} (${x.funder})`, `  ${x.status}${x.callLabel ? ` · ${x.callLabel}` : ''}`, ...(x.facts.length ? [`  ${x.facts.join(' · ')}`] : []), `  ${x.page}`].join('\n')
+            const x = itemParts(i, o.site, o.prefs)
+            const head = [x.amount ?? 'Amount not stated', x.place.text].filter(Boolean).join(' · ')
+            return [`- ${head}`, `  ${x.name}`, `  ${x.funder}`, `  ${x.status}${x.callLabel ? ` · ${x.callLabel}` : ''}`, `  ${x.page}`].join('\n')
           }),
       ].join('\n\n'),
     )
