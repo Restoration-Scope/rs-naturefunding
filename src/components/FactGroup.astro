@@ -1,0 +1,22 @@
+---
+import SectionHeading from './SectionHeading.astro'
+import { sections } from '../lib/sections'
+
+/** One group of facts on a programme page, in its own hue (global.css .tone-*), so the three read apart at a glance. */
+interface Props {
+  kind: 'money' | 'who' | 'apply'
+  title: string
+  /** Anchor for the page's contents list. */
+  id?: string
+}
+
+const { kind, title, id } = Astro.props
+---
+
+<div class={sections[kind].tone}>
+  <SectionHeading kind={kind} id={id}>{title}</SectionHeading>
+  {/* The group's hue rules its top edge; the first fact drops its own hairline so the two don't stack. */}
+  <dl class="m-0 border-t-2 border-b border-t-(--tone) border-b-rule [&>div:first-child]:border-t-0">
+    <slot />
+  </dl>
+</div>

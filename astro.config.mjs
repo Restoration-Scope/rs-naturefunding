@@ -26,5 +26,7 @@ function reactAtBuildTime() {
 // https://astro.build/config
 export default defineConfig({
   integrations: [reactAtBuildTime(), proseTwins()],
-  vite: { plugins: [tailwindcss()] },
+  // Programme pages keep their one script inline (tests/dist.test.ts sets their budget); Vite's 4 KB default
+  // would split it into a file once the page's contents list joined the Where view.
+  vite: { plugins: [tailwindcss()], build: { assetsInlineLimit: 7000 } },
 })

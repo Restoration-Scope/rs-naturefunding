@@ -4,6 +4,11 @@ import Base from '../../layouts/Base.astro'
 import ApplyPart from '../../components/ApplyPart.astro'
 import Countries from '../../components/Countries.astro'
 import Fact from '../../components/Fact.astro'
+import Figures from '../../components/Figures.astro'
+import FactGroup from '../../components/FactGroup.astro'
+import KeyFacts from '../../components/KeyFacts.astro'
+import SectionHeading from '../../components/SectionHeading.astro'
+import PageContents, { type ContentsItem } from '../../components/PageContents.astro'
 import Flag from '../../components/Flag.astro'
 import Listing from '../../components/Listing.astro'
 import OrgMark from '../../components/OrgMark.astro'
@@ -51,7 +56,8 @@ const partnersShown = partnersNow.length > 0 ? partnersNow : childListings
 const noCallRoute = p.access === 'intermediary' || p.access === 'invitation_only'
 const amount = amountText(p.amount)
 const pool = poolText(p.pool)
-const amountValue = amount ?? (pool ? `Budget shared by all grants: ${pool}${p.pool?.note ? `. ${sentence(p.pool.note)}` : ''}` : null)
+// The pot reads as its own fact, so it is never taken for one grant's size.
+const poolValue = pool ? pool[0]!.toUpperCase() + pool.slice(1) : null
 // The place and type pages this programme shows on, linked under Where and the approach.
 const more = pagesFor(p)
 const yesNo = (b: boolean | null) => (b === null ? null : b ? 'Yes' : 'No')
@@ -123,7 +129,6 @@ const description = `${p.name} from ${p.funder.name}: ${
 } ${amount ? `${amount}. ` : ''}Each fact links to the funder’s own page.`
 
 const grantLd = grantJsonLd(listing)
-const sectionTitle = 'mt-12 mb-3 text-4xl'
 /** A line under a section title: where its quotes come from, or what it covers. */
 const sectionCheck = 'mb-3 text-sm text-ink-2'
 const factHelp = 'mt-1 text-md text-ink'
@@ -138,6 +143,20 @@ const worth = {
   odds: p.odds ? Math.round((p.odds.funded / p.odds.applied) * 1000) / 10 : null,
 }
 const listingsList = 'm-0 list-none border-t border-rule p-0'
+
+// The left-hand contents on the widest screens: every section this page shows, in order.
+const contents: ContentsItem[] = [
+  // The top of the page: the summary, key facts and the apply box (which rides along in the rail anyway).
+  { href: '#', label: 'Overview', kind: 'overview' },
+  ...(childListings.length ? [{ href: '#partners-title', label: 'Partner programmes', kind: 'partners' } as const] : []),
+  { href: '#facts-money', label: 'The money', kind: 'money' },
+  { href: '#facts-who', label: 'Who can apply', kind: 'who' },
+  { href: '#facts-apply', label: 'Applying', kind: 'apply' },
+  ...(p.access === 'direct' ? [{ href: '#worth', label: 'Is it worth your time?', kind: 'worth' } as const] : []),
+  ...(p.calls.length ? [{ href: '#calls-title', label: p.calls.length === 1 ? 'The call' : `Calls (${p.calls.length})`, kind: 'calls' } as const] : []),
+  { href: '#reporting-title', label: 'Reporting', kind: 'reporting' },
+  ...(parent ? [{ href: '#related-title', label: 'Larger programme', kind: 'related' } as const] : []),
+]
 
 const jsonLd = [
   ...grantLd,
@@ -194,8 +213,11 @@ const jsonLd = [
     </template>
   </div>
 
+  {/* Widest screens: the page's contents on the left. */}
+  <div class="min-[90rem]:mx-auto min-[90rem]:flex min-[90rem]:max-w-[calc(var(--page)+var(--contents-w)+var(--contents-gap))] min-[90rem]:px-(--gutter) min-[90rem]:gap-x-(--contents-gap)">
+  <PageContents items={contents} />
   {/* Wide screens: the apply box rides along in a right rail while the facts scroll. */}
-  <div data-where-codes={whereReach(p)} data-region-names={JSON.stringify(regionLabels)} class="wrap mr-auto ml-0 max-w-[calc(60rem+2*var(--gutter))] 2xl:mx-auto 2xl:grid 2xl:max-w-(--page) 2xl:grid-cols-[minmax(0,1fr)_20rem] 2xl:gap-x-12 2xl:*:col-start-1">
+  <div data-where-codes={whereReach(p)} data-region-names={JSON.stringify(regionLabels)} class="wrap mr-auto ml-0 max-w-[calc(60rem+2*var(--gutter))] 2xl:mx-auto 2xl:grid 2xl:max-w-(--page) 2xl:grid-cols-[minmax(0,1fr)_20rem] 2xl:gap-x-12 2xl:*:col-start-1 min-[90rem]:mx-0 min-[90rem]:max-w-none min-[90rem]:min-w-0 min-[90rem]:flex-1 min-[90rem]:px-0">
     {
       hidden && (
         <p class="mt-8 rounded-lg bg-warn px-4 py-3 font-semibold text-warn-ink" role="note">
@@ -204,6 +226,7 @@ const jsonLd = [
         </p>
       )
     }
+    <KeyFacts p={p} byPartner={byPartner} />
     <section
       class:list={[
         cardClasses,
@@ -254,7 +277,7 @@ const jsonLd = [
     {
       childListings.length > 0 && (
         <section class="@container/listings" aria-labelledby="partners-title">
-          <h2 id="partners-title" class={sectionTitle}>Partner programmes</h2>
+          <SectionHeading kind="partners" id="partners-title">Partner programmes</SectionHeading>
           <p class={sectionCheck}>You apply to one of these, each with its own calls and deadlines.</p>
           <ol class={listingsList}>
             {partnersShown.map((l) => <Listing listing={l} underParent />)}
@@ -274,27 +297,67 @@ const jsonLd = [
       )
     }
 
-    <section aria-labelledby="facts-title">
-      <h2 id="facts-title" class={sectionTitle}>The facts, in the funder’s words</h2>
+    <section aria-label="The facts, in the funder’s words">
       {children.length > 0 && <p class={sectionCheck}>These cover {p.name} as a whole. Each partner programme above sets its own amounts and deadlines.</p>}
-      <dl class="m-0 border-b border-rule">
-        <Fact id={factIds.access} label="How to apply" value={accessLabels[p.access]} evidence={p.evidence.access} missing="Not stated">
-          {p.access === 'direct' && <p class={factHelp}>{accessHelp[p.access]}</p>}
+      {/* Grouped by what a reader is deciding: is the money worth it, can we apply, and what applying takes. */}
+      <FactGroup id="facts-money" kind="money" title="The money">
+        <Fact id={factIds.amount} label="Per project" value={amount} evidence={p.evidence.amount} missing={byPartner} figures>
+          {p.amount?.note && <p class={factHelp}><Figures text={sentence(p.amount.note)} /></p>}
         </Fact>
-        <Fact
-          id={factIds.amount}
-          label="Amount"
-          value={amountValue}
-          evidence={[...(p.evidence.amount ? [p.evidence.amount] : []), ...(p.evidence.pool ? [p.evidence.pool] : [])]}
-          missing={byPartner}
-        >
-          {!amount && pool && <span id={factIds.pool}></span>}
-          {p.amount?.note && <p class={factHelp}>{sentence(p.amount.note)}</p>}
-          {amount && pool && p.pool && (
-            <p id={factIds.pool} class="mt-1 text-sm text-ink-2">
-              Budget shared by all grants: {keepAmountTogether(pool)}.{p.pool.note && ` ${sentence(p.pool.note)}`}
+        {
+          p.pool && (
+            <Fact id={factIds.pool} label="Total budget" value={poolValue} evidence={p.evidence.pool} figures>
+              <p class={factHelp}><Figures text={`Shared by all the grants${p.pool.note ? `. ${sentence(p.pool.note)}` : ', not one project’s share.'}`} /></p>
+            </Fact>
+          )
+        }
+        <Fact id={factIds.co_finance_required} label="Co-funding required" value={yesNo(p.co_finance_required)} evidence={p.evidence.co_finance_required} missing={byPartner} figures />
+      </FactGroup>
+
+      <FactGroup id="facts-who" kind="who" title="Who can apply">
+        <Fact id={factIds.geography} label="Where" value={geographyFull(p.geography)} evidence={p.evidence.geography}>
+          {p.geography?.scope === 'countries' && <span slot="value">{p.geography.label && `${p.geography.label}: `}<Countries codes={p.geography.countries} /></span>}
+          <template data-where-tpl="covered"><p class="mt-1 text-md font-semibold text-ok-ink">✓ Includes <span data-where-name></span><span data-where-via></span></p></template>
+          <template data-where-tpl="uncovered"><p class="mt-1 text-md font-semibold text-warn-ink">✕ Doesn’t include <span data-where-name></span></p></template>
+          {more.places.length > 0 && (
+            <p class={factHelp}>
+              More grants in{' '}
+              {more.places.map((pg, i) => (
+                <>{i > 0 && (i === more.places.length - 1 ? ' and ' : ', ')}<a href={pg.path}>{pg.name}</a></>
+              ))}
+              .
             </p>
           )}
+        </Fact>
+        <Fact
+          id={factIds.applicant_types}
+          label="Organisations"
+          value={p.applicant_types ? joinAnd(p.applicant_types.map((a) => applicantLabels[a])) : null}
+          evidence={p.evidence.applicant_types}
+          missing={byPartner}
+        />
+        {
+          p.consortium_required !== undefined && (
+            <Fact id={factIds.consortium_required} label="Consortium required" value={yesNo(p.consortium_required)} evidence={p.evidence.consortium_required} />
+          )
+        }
+        <Fact id={factIds.approaches} label="Restoration approach" value={joinAnd(p.approaches.map((a) => approachLabels[a]))} missing="">
+          <p class={factHelp}>Our classification, from the funder’s description of what it supports.</p>
+          {more.types.length > 0 && (
+            <p class={factHelp}>
+              More grants for{' '}
+              {more.types.map((pg, i) => (
+                <>{i > 0 && (i === more.types.length - 1 ? ' and ' : ', ')}<a href={pg.path}>{pg.name.toLowerCase()}</a></>
+              ))}
+              .
+            </p>
+          )}
+        </Fact>
+      </FactGroup>
+
+      <FactGroup id="facts-apply" kind="apply" title="Applying">
+        <Fact id={factIds.access} label="How to apply" value={accessLabels[p.access]} evidence={p.evidence.access} missing="Not stated">
+          {p.access === 'direct' && <p class={factHelp}>{accessHelp[p.access]}</p>}
         </Fact>
         {
           p.access === 'direct' && (
@@ -312,60 +375,19 @@ const jsonLd = [
             </Fact>
           )
         }
-        <Fact id={factIds.geography} label="Where" value={geographyFull(p.geography)} evidence={p.evidence.geography}>
-          {p.geography?.scope === 'countries' && <span slot="value">{p.geography.label && `${p.geography.label}: `}<Countries codes={p.geography.countries} /></span>}
-          <template data-where-tpl="covered"><p class="mt-1 text-md font-semibold text-ok-ink">✓ Includes <span data-where-name></span><span data-where-via></span></p></template>
-          <template data-where-tpl="uncovered"><p class="mt-1 text-md font-semibold text-warn-ink">✕ Doesn’t include <span data-where-name></span></p></template>
-          {more.places.length > 0 && (
-            <p class={factHelp}>
-              More grants in{' '}
-              {more.places.map((pg, i) => (
-                <>{i > 0 && (i === more.places.length - 1 ? ' and ' : ', ')}<a href={pg.path}>{pg.name}</a></>
-              ))}
-              .
-            </p>
-          )}
-        </Fact>
-        <Fact
-          id={factIds.applicant_types}
-          label="Who can apply"
-          value={p.applicant_types ? joinAnd(p.applicant_types.map((a) => applicantLabels[a])) : null}
-          evidence={p.evidence.applicant_types}
-         
-          missing={byPartner}
-        />
         <Fact
           id={factIds.window}
           label="Rounds"
           value={p.window === 'rolling' ? 'Rolling: apply any time' : p.window === 'fixed' ? 'Fixed rounds with deadlines' : null}
           evidence={p.evidence.window}
-         
           missing={byPartner}
         />
-        <Fact id={factIds.co_finance_required} label="Co-funding required" value={yesNo(p.co_finance_required)} evidence={p.evidence.co_finance_required} missing={byPartner} />
-        {
-          p.consortium_required !== undefined && (
-            <Fact id={factIds.consortium_required} label="Consortium required" value={yesNo(p.consortium_required)} evidence={p.evidence.consortium_required} />
-          )
-        }
         {
           p.administered_by && (
             <Fact id={factIds.administered_by} label="Run by" value={p.administered_by.name} evidence={p.evidence.administered_by} />
           )
         }
-        <Fact id={factIds.approaches} label="Restoration approach" value={joinAnd(p.approaches.map((a) => approachLabels[a]))} missing="">
-          <p class={factHelp}>Our classification, from the funder’s description of what it supports.</p>
-          {more.types.length > 0 && (
-            <p class={factHelp}>
-              More grants for{' '}
-              {more.types.map((pg, i) => (
-                <>{i > 0 && (i === more.types.length - 1 ? ' and ' : ', ')}<a href={pg.path}>{pg.name.toLowerCase()}</a></>
-              ))}
-              .
-            </p>
-          )}
-        </Fact>
-      </dl>
+      </FactGroup>
     </section>
 
     {
@@ -386,9 +408,10 @@ const jsonLd = [
     {
       p.calls.length > 0 && (
         <section aria-labelledby="calls-title">
-          <h2 id="calls-title" class={sectionTitle} data-calls-title>
-            {p.calls.length === 1 ? 'The call' : `Calls (${p.calls.length})`}
-          </h2>
+          <SectionHeading kind="calls" id="calls-title">
+            {/* The where-view script rewrites only this span. */}
+            <span data-calls-title>{p.calls.length === 1 ? 'The call' : `Calls (${p.calls.length})`}</span>
+          </SectionHeading>
           {callsOrdered.map((c) => (
             // Each call folds in the same card; the one that sets the page's status starts open.
             <details id={callId(c)} class:list={[cardClasses, 'group/call px-4 pt-3.5 pb-1 md:px-[1.1rem] [&+&]:mt-3']}
@@ -477,7 +500,7 @@ const jsonLd = [
     }
 
     <section aria-labelledby="reporting-title">
-      <h2 id="reporting-title" class={sectionTitle}>What the funder asks grantees to report</h2>
+      <SectionHeading kind="reporting" id="reporting-title">What the funder asks grantees to report</SectionHeading>
       <dl class="m-0 border-b border-rule">
         <Fact id={factIds.reporting} label="Reporting" value={p.reporting} evidence={p.evidence.reporting} />
       </dl>
@@ -494,9 +517,7 @@ const jsonLd = [
     {
       parent && (
         <section aria-labelledby="related-title">
-          <h2 id="related-title" class={sectionTitle}>
-            Part of a larger programme
-          </h2>
+          <SectionHeading kind="related" id="related-title">Part of a larger programme</SectionHeading>
           <p>
             <a href={`/p/${parent.id}/`}>{parent.name}</a>, from {parent.funder.name}
           </p>
@@ -515,9 +536,12 @@ const jsonLd = [
       <p class="mt-2 text-sm">Both open an email to {CONTACT_EMAIL} with this listing filled in. Listings can’t be bought.</p>
     </section>
   </div>
+  </div>
 </Base>
 
 <script>
   import { initWhereView } from '../../lib/where-view'
+  import { initPageContents } from '../../lib/page-contents'
   initWhereView()
+  initPageContents()
 </script>

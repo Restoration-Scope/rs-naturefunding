@@ -19,20 +19,22 @@ const money = (currency: string, n: number) =>
 export function amountText(a: Programme['amount']): string | null {
   if (!a) return null
   const code = a.currency
+  // Where the symbol is the code itself (BTN 1,000,000), the code isn't added again.
+  const c = money(code, 1).includes(code) ? '' : ` ${code}`
   // A typical range is what the funder usually gives, not a limit.
   const usually = a.typical ? 'Usually ' : ''
   const per = `${a.unit ? ` per ${a.unit}` : ''}${a.per === 'year' ? ' a year' : ''}`
   if (a.min !== undefined && a.max !== undefined) {
-    if (a.min === a.max) return `${usually}${money(code, a.max)} ${code}${per}`
+    if (a.min === a.max) return `${usually}${money(code, a.max)}${c}${per}`
     // "Less than" leaves the max out, so the range reads "… to less than …".
     const top = a.max_exclusive ? `less than ${money(code, a.max)}` : money(code, a.max)
-    return `${usually}${money(code, a.min)} to ${top} ${code}${per}`
+    return `${usually}${money(code, a.min)} to ${top}${c}${per}`
   }
   if (a.max !== undefined) {
     const lead = a.max_exclusive ? 'less than' : 'up to'
-    return `${a.typical ? `Usually ${lead}` : lead[0]!.toUpperCase() + lead.slice(1)} ${money(code, a.max)} ${code}${per}`
+    return `${a.typical ? `Usually ${lead}` : lead[0]!.toUpperCase() + lead.slice(1)} ${money(code, a.max)}${c}${per}`
   }
-  return `${a.typical ? 'Usually from' : 'From'} ${money(code, a.min!)} ${code}${per}`
+  return `${a.typical ? 'Usually from' : 'From'} ${money(code, a.min!)}${c}${per}`
 }
 
 /** A figure with its currency code, once: "€17,000,000 EUR", but "BTN 6,000,000" where the symbol is the code. */
@@ -146,4 +148,13 @@ export function effortShort(e: Programme['effort']): string | null {
 export function effortText(e: Programme['effort']): string | null {
   if (!e) return null
   return [...e.steps, ...(e.more_after ? ['further steps'] : [])].join(' → ')
+}
+
+const escapeHtml = (s: string) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;')
+/** A sum of money or a share in text: "€5,000,000", "EUR 2 - 4 million", "Nu. 6.0 million", "25%", "17,000,000 EUR". */
+const figure =
+  /(?:\b[A-Z]{3}\s?|Nu\.\s?|[€$£¥₹])?\d[\d,.]*(?:\s?[-–]\s?\d[\d,.]*)?(?:\s?(?:million|billion|bn|m|k)\b)?%?(?:\s[A-Z]{3}\b)?/g
+/** Text as HTML with each figure in bold, so the numbers stand out in the money facts. A bare year stays plain. */
+export function boldFigures(text: string): string {
+  return escapeHtml(text).replace(figure, (m) => (/^(19|20)\d\d$/.test(m) ? m : `<strong class="font-bold text-ink">${m}</strong>`))
 }
