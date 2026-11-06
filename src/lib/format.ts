@@ -34,6 +34,22 @@ export function amountText(a: Programme['amount']): string | null {
   return `${a.typical ? 'Usually from' : 'From'} ${money(code, a.min!)} ${code}${per}`
 }
 
+/** A figure with its currency code, once: "€17,000,000 EUR", but "BTN 6,000,000" where the symbol is the code. */
+const moneyWithCode = (currency: string, n: number) => {
+  const m = money(currency, n)
+  return m.includes(currency) ? m : `${m} ${currency}`
+}
+
+/** "up to €17,000,000 EUR for the 2026 Blue Carbon call": what all grants share, never one grant. */
+export function poolText(p: Programme['pool']): string | null {
+  if (!p) return null
+  const lead = p.qualifier === 'up_to' ? 'up to ' : p.qualifier === 'about' ? 'about ' : ''
+  const when = p.label
+    ? `for ${p.label}`
+    : p.period === 'year' ? 'a year' : p.period === 'biennium' ? 'per biennium' : p.period === 'programme' ? 'over the programme' : 'for the round'
+  return `${lead}${moneyWithCode(p.currency, p.value)} ${when}${p.qualifier === 'planned' ? ' (planned, not final)' : ''}`
+}
+
 export function geographyText(g: Programme['geography']): string | null {
   if (!g) return null
   if (g.scope === 'global') return 'Worldwide'

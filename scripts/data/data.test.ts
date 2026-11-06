@@ -207,6 +207,45 @@ describe('qualifiers', () => {
   })
 })
 
+describe('pool', () => {
+  test('is optional and needs evidence when stated', () => {
+    const p = fixture()
+    p.pool = { currency: 'USD', value: 500000, period: 'round', label: '2026 round' }
+    expect(problems(p)).toEqual(['evidence.pool: pool is stated but has no evidence'])
+    p.evidence.pool = ev('A total of $500,000 is available in this round.')
+    expect(problems(p)).toEqual([])
+  })
+
+  test('evidence without a pool is refused', () => {
+    const p = fixture()
+    p.evidence.pool = ev('A total of $500,000 is available in this round.')
+    expect(problems(p)).toEqual(['evidence.pool: pool has evidence but is not stated'])
+  })
+
+  test('cannot be smaller than one grant in the same currency', () => {
+    const p = fixture()
+    p.pool = { currency: 'USD', value: 20000, period: 'round' }
+    p.evidence.pool = ev('A total of $20,000 is available in this round.')
+    expect(problems(p)).toEqual([expect.stringContaining('smaller than one grant')])
+    p.pool.currency = 'EUR'
+    expect(problems(p)).toEqual([])
+  })
+
+  test('a year or programme pot may be smaller than one multi-year grant', () => {
+    const p = fixture()
+    p.pool = { currency: 'USD', value: 20000, period: 'year', qualifier: 'planned' }
+    p.evidence.pool = ev('About $20,000 is expected to be available each year.')
+    expect(problems(p)).toEqual([])
+  })
+
+  test('period is round, year or programme', () => {
+    const p = fixture()
+    p.pool = { currency: 'USD', value: 500000, period: 'decade' as 'round' }
+    p.evidence.pool = ev('A total of $500,000 is available in this round.')
+    expect(problems(p)).toEqual([expect.stringContaining('pool.period')])
+  })
+})
+
 describe('an open call cannot be past its deadline', () => {
   const withDeadline = (date: string, time?: string, timezone?: string) => {
     const p = fixture()
@@ -247,5 +286,14 @@ describe('the seeded data', () => {
     const { programmes, issues } = checkData()
     expect(issues).toEqual([])
     expect(programmes.length).toBeGreaterThanOrEqual(40)
+  })
+})
+
+describe('poolText', () => {
+  test('names the period once and keeps a symbol-less currency single', async () => {
+    const { poolText } = await import('../../src/lib/format')
+    expect(poolText({ currency: 'EUR', value: 17000000, period: 'round', qualifier: 'up_to', label: 'the 2026 call' })).toBe('up to €17,000,000 EUR for the 2026 call')
+    expect(poolText({ currency: 'BTN', value: 6000000, period: 'year' })?.replace(/\u00a0/g, ' ')).toBe('BTN 6,000,000 a year')
+    expect(poolText({ currency: 'EUR', value: 60000000, period: 'round', qualifier: 'planned' })).toBe('€60,000,000 EUR for the round (planned, not final)')
   })
 })
