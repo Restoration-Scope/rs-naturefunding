@@ -26,6 +26,7 @@ describe('amountShort', () => {
     expect(amountShort({ currency: 'GBP', max: 3000 })?.text).toBe('Up to £3K per project')
     expect(amountShort({ currency: 'JPY', max: 1e6, per: 'year' })?.text).toBe('Up to ¥1M per project a year')
     expect(amountShort({ currency: 'CZK', min: 50000, max: 200000 })?.text).toBe('CZK 50K–200K per project')
+    expect(amountShort({ currency: 'EUR', max: 45, unit: 'tree' })?.text).toBe('Up to €45 per tree')
   })
   test('converted to the reader’s currency, with the funder’s own figure kept', () => {
     const a = amountShort({ currency: 'EUR', min: 5e6, max: 2e7 }, 'USD')!

@@ -152,8 +152,8 @@ export function digestEmail(o: { site: string; digest: Digest; prefs: Prefs; cur
   const introHtml = what ? esc(intro).replace(`, for ${esc(what)}`, `, for ${prefsHtml(o.site, o.prefs)}`) : esc(intro)
 
   const fineprint = o.currency
-    ? `Amounts are per project, converted to ${currencyName(o.currency)} at the rates of ${longDate(ratesDate)}, with the funder’s own figure in brackets. Check the funder’s page before you apply.`
-    : 'Amounts are per project, as the funder states them. Check the funder’s page before you apply.'
+    ? `Amounts are converted to ${currencyName(o.currency)} at the rates of ${longDate(ratesDate)}, with the funder’s own figure in brackets. Check the funder’s page before you apply.`
+    : 'Amounts are as the funder states them. Check the funder’s page before you apply.'
   const sections = counts
     .filter(([, n]) => n > 0)
     .map(([s]) => {

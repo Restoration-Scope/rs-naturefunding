@@ -21,7 +21,7 @@ export function amountText(a: Programme['amount']): string | null {
   const code = a.currency
   // A typical range is what the funder usually gives, not a limit.
   const usually = a.typical ? 'Usually ' : ''
-  const per = a.per === 'year' ? ' a year' : ''
+  const per = `${a.unit ? ` per ${a.unit}` : ''}${a.per === 'year' ? ' a year' : ''}`
   if (a.min !== undefined && a.max !== undefined) {
     if (a.min === a.max) return `${usually}${money(code, a.max)} ${code}${per}`
     // "Less than" leaves the max out, so the range reads "… to less than …".
@@ -99,7 +99,7 @@ function shortRange(a: NonNullable<Programme['amount']>, currency: string, facto
 const capital = (s: string) => s[0]!.toUpperCase() + s.slice(1)
 
 /**
- * An amount for a quick read, per project: "Usually $5K–$15K per project". With `currency` set to another
+ * An amount for a quick read, per project (or per tree or hectare when the funder pays by the unit): "Usually $5K–$15K per project". With `currency` set to another
  * currency than the funder's, the figures are converted at data/rates.json ("About $5.6M–$22M per project") and
  * `original` keeps the funder's own ("€5M–€20M"), for showing muted beside it.
  */
@@ -107,7 +107,7 @@ export function amountShort(a: Programme['amount'], currency?: string): { text: 
   if (!a) return null
   const to = currency && currency !== a.currency && usdPerUnit[currency] && usdPerUnit[a.currency] ? currency : null
   const figures = to ? shortRange(a, to, usdPerUnit[a.currency]! / usdPerUnit[to]!, 2, true) : shortRange(a, a.currency, 1, 3)
-  const text = `${a.typical ? `Usually ${figures}` : capital(figures)} per project${a.per === 'year' ? ' a year' : ''}`
+  const text = `${a.typical ? `Usually ${figures}` : capital(figures)} per ${a.unit ?? 'project'}${a.per === 'year' ? ' a year' : ''}`
   return { text, original: to ? capital(shortRange(a, a.currency, 1, 3)) : null }
 }
 

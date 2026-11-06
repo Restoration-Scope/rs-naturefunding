@@ -27,7 +27,7 @@ export const LIMITS = { quote: 400, text: 600, list: 250, calls: 20 }
 const CALL_KEYS = new Set(['id', 'label', 'url', 'status', 'opens', 'deadline', 'expected', 'recurring', 'note', 'quotes'])
 const QUOTE_KEYS = new Set(['status', 'opens', 'deadline', 'recurring'])
 /** Qualifiers a draft keeps from the current value when it leaves them out; null removes one. */
-const AMOUNT_QUALIFIERS = ['typical', 'max_exclusive', 'per', 'note']
+const AMOUNT_QUALIFIERS = ['typical', 'max_exclusive', 'per', 'unit', 'note']
 const CALL_QUALIFIERS = ['expected', 'recurring', 'note']
 
 /** JSON with sorted keys, so key order never counts as a difference. */
@@ -214,14 +214,14 @@ Fields and values:
 - geography: {"scope":"global"} | {"scope":"countries","countries":[ISO-2 codes],"label"?} | {"scope":"regions","regions":[${region.options.join(', ')}],"label"}
 - access: ${access.options.filter((o) => o !== 'unspecified').join(', ')}
 - window: ${windowSchema.options.filter((o) => o !== 'unspecified').join(', ')}
-- amount: {"currency": ISO 4217,"min"?: number,"max"?: number,"typical"?: true when the page gives a usual range,"max_exclusive"?: true when it says "less than" the max,"per"?: "year" when the amount is per year,"note"?: a qualifier from the same quote, in our words} per grant
+- amount: {"currency": ISO 4217,"min"?: number,"max"?: number,"typical"?: true when the page gives a usual range,"max_exclusive"?: true when it says "less than" the max,"per"?: "year" when the amount is per year,"unit"?: "tree" or "hectare" when it is paid per tree planted or hectare restored,"note"?: a qualifier from the same quote, in our words} per grant
 - co_finance_required: true | false
 - reporting: what grantees must report, in plain words
 - call status: ${callStatus.options.join(', ')}
 - call expected: when an upcoming call with no firm opening date is expected to open, as the page says it ("June 2027", "mid-March 2027"); its status quote must state that year
 - call recurring: dates the page gives without a year that repeat each year, in our words, with quotes.recurring
 - call note: a condition the page puts on the call, in our words ("Subject to funding approval")
-Qualifiers (amount typical, max_exclusive, per, note; call expected, recurring, note): leave one out to keep the current value, set it to null to remove it.
+Qualifiers (amount typical, max_exclusive, per, unit, note; call expected, recurring, note): leave one out to keep the current value, set it to null to remove it.
 (Approaches, for context only: ${approach.options.join(', ')}.)`
 
 const REVIEW_SYSTEM = `You check a draft of facts about a grant programme against the funder's page text. Another model wrote the draft; be strict.

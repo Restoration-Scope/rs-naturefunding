@@ -28,7 +28,7 @@ export const GET: APIRoute = () => {
       programme_id: p.id, programme: p.name, kind: p.kind ?? 'grant', funder: p.funder.name, administered_by: p.administered_by?.name,
       access: p.access, window: p.window, amount_currency: p.amount?.currency, amount_min: p.amount?.min,
       amount_max: p.amount?.max, amount_max_exclusive: p.amount?.max_exclusive ? 'yes' : '',
-      amount_typical: p.amount?.typical ? 'yes' : '', amount_per: p.amount?.per, amount_note: p.amount?.note,
+      amount_typical: p.amount?.typical ? 'yes' : '', amount_per: p.amount?.per, amount_unit: p.amount?.unit, amount_note: p.amount?.note,
       pool_currency: p.pool?.currency, pool_value: p.pool?.value, pool_period: p.pool?.period, pool_qualifier: p.pool?.qualifier, pool_label: p.pool?.label, pool_note: p.pool?.note,
       geography: geo, approaches: p.approaches.join(' '),
       applicant_types: p.applicant_types?.join(' '), co_finance_required: p.co_finance_required,
