@@ -15,7 +15,7 @@ import { cardClasses } from '@/components/ui/card'
 import { HIDDEN_DAYS, buildDate, callGroups, whereReach, listingFor, programmeById, programmes, sortListings } from '../../lib/data'
 import type { Programme } from '../../data/schema'
 import { pagesFor } from '../../lib/finder-pages'
-import { amountText, effortText, geographyFull, joinAnd, longDate, pageLabel, sentence } from '../../lib/format'
+import { amountText, effortText, poolText, geographyFull, joinAnd, longDate, pageLabel, sentence, keepAmountTogether } from '../../lib/format'
 import { countryName, regionLabels } from '../../lib/geo'
 import {
   accessHelp,
@@ -279,8 +279,19 @@ const jsonLd = [
         <Fact id={factIds.access} label="How to apply" value={accessLabels[p.access]} evidence={p.evidence.access} missing="Not stated">
           {p.access === 'direct' && <p class={factHelp}>{accessHelp[p.access]}</p>}
         </Fact>
-        <Fact id={factIds.amount} label="Amount" value={amount} evidence={p.evidence.amount} missing={byPartner}>
+        <Fact
+          id={factIds.amount}
+          label="Amount"
+          value={amount}
+          evidence={[...(p.evidence.amount ? [p.evidence.amount] : []), ...(p.evidence.pool ? [p.evidence.pool] : [])]}
+          missing={byPartner}
+        >
           {p.amount?.note && <p class={factHelp}>{sentence(p.amount.note)}</p>}
+          {p.pool && (
+            <p id={factIds.pool} class="mt-1 text-sm text-ink-2">
+              All grants together: {keepAmountTogether(poolText(p.pool)!)}.{p.pool.note && ` ${sentence(p.pool.note)}`}
+            </p>
+          )}
         </Fact>
         {
           p.access === 'direct' && (

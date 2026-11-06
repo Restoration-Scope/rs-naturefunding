@@ -34,6 +34,15 @@ export function amountText(a: Programme['amount']): string | null {
   return `${a.typical ? 'Usually from' : 'From'} ${money(code, a.min!)} ${code}${per}`
 }
 
+/** "up to €17,000,000 EUR for the round (2026 call)": what all grants share, never one grant. */
+export function poolText(p: Programme['pool']): string | null {
+  if (!p) return null
+  const lead = p.qualifier === 'up_to' ? 'up to ' : p.qualifier === 'about' ? 'about ' : ''
+  const total = `${lead}${money(p.currency, p.value)} ${p.currency}`
+  const what = p.period === 'year' ? 'a year' : p.period === 'programme' ? 'over the programme' : 'for the round'
+  return `${total} ${what}${p.label ? ` (${p.label})` : ''}`
+}
+
 export function geographyText(g: Programme['geography']): string | null {
   if (!g) return null
   if (g.scope === 'global') return 'Worldwide'

@@ -12,6 +12,7 @@
   "access": "direct",
   "window": "fixed",
   "amount": { "currency": "USD", "min": 2500000, "max": 100000000 },
+  "pool": {"currency": "USD", "value": 100000000, "period": "round", "qualifier": "up_to"},
   "co_finance_required": false,
   "reporting": "Recipients send financial and performance reports twice a year, on 30 October and 30 April, and a final report covering the whole award within 120 days of its end.",
   "calls": [
@@ -39,6 +40,7 @@
     }
   ],
   "evidence": {
+    "pool": {"source_url": "https://www.grants.gov/grantsws/rest/opportunity/att/download/354907", "quote": "Total anticipated funding for initial cooperative agreements under this competition is up to $100 million.", "checked_at": "2026-11-06", "method": "page"},
     "applicant_types": {
       "source_url": "https://www.grants.gov/grantsws/rest/opportunity/att/download/354907",
       "quote": "Eligible applicants are institutions of higher education, non-profits, and commercial (for-profit) organizations. Applications from federal, state, or tribal governments will not be considered, due to their potential role as trustee council members.",

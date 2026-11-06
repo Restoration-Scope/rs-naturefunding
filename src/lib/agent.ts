@@ -3,7 +3,7 @@
 // checked date, so a line still holds up when an answer quotes it alone.
 import type { Call, Evidence, Programme } from '../data/schema'
 import { AGING_DAYS, HIDDEN_DAYS, buildDate, listingFor, programmeById, programmes, sortListings, stats, type Listing } from './data'
-import { amountText, effortText, geographyFull, geographyText, joinAnd, longDate } from './format'
+import { amountText, effortText, poolText, geographyFull, geographyText, joinAnd, longDate } from './format'
 import { accessHelp, accessLabels, applicantLabels, approachLabels } from './labels'
 import { RS_DESCRIPTOR, RS_URL, SITE_NAME, absolute, funderCorrectionUrl, reportProblemUrl } from './site'
 import { countryName } from './geo'
@@ -15,6 +15,7 @@ import type { FinderPage } from './finder-pages'
 export const factIds = {
   access: 'access',
   amount: 'amount',
+  pool: 'pool',
   geography: 'geography',
   applicant_types: 'applicant_types',
   window: 'window',
@@ -119,6 +120,7 @@ export function programmeMarkdown(p: Programme): string {
       : `- Status, from the check on ${longDate(l.call?.evidence.status?.checked_at ?? p.checked_at)}: ${statusText(l)}`,
     `- How to apply: ${accessLabels[p.access]}`,
     `- Amount: ${amount ?? (children.length ? byPartner : NOT_FOUND)}`,
+    ...(p.pool ? [`- Total funding: ${poolText(p.pool)}${p.pool.note ? ` (${p.pool.note})` : ''}`] : []),
     `- Who can apply: ${who ?? byPartner}`,
     `- Where: ${geographyFull(p.geography) ?? NOT_FOUND}`,
     `- Rounds: ${rounds ?? byPartner}`,
@@ -148,6 +150,7 @@ export function programmeMarkdown(p: Programme): string {
   const facts = [
     quoteLines(`${n}, how to apply`, `${accessLabels[p.access]}. ${accessHelp[p.access]}`, p.evidence.access, factIds.access, p),
     quoteLines(`${n}, amount`, amount ? `${amount}${p.amount?.note ? `. ${p.amount.note}.` : ''}` : byPartner, p.evidence.amount, factIds.amount, p),
+    ...(p.pool ? [quoteLines(`${n}, total funding`, `${poolText(p.pool)}${p.pool.note ? `. ${p.pool.note}.` : ''}`, p.evidence.pool, factIds.pool, p)] : []),
     quoteLines(`${n}, where`, geographyFull(p.geography) ?? NOT_FOUND, p.evidence.geography, factIds.geography, p),
     quoteLines(`${n}, who can apply`, who ?? byPartner, p.evidence.applicant_types, factIds.applicant_types, p),
     quoteLines(`${n}, rounds`, rounds ?? byPartner, p.evidence.window, factIds.window, p),

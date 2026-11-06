@@ -129,6 +129,24 @@ export const amount = z
   .refine((a) => !a.max_exclusive || a.min === undefined || a.max === undefined || a.min < a.max, 'less than max leaves no room above min')
   .refine((a) => a.min === undefined || a.max === undefined || a.min <= a.max, 'min is above max')
 
+/**
+ * The total the funder puts behind a round, a year or the whole programme: all grants together,
+ * not one grant. Only when the funder states it; missing means not stated.
+ */
+export const pool = z.object({
+  currency: z.string().regex(/^[A-Z]{3}$/),
+  value: z.number().positive(),
+  /** What the total covers: one round of applications, one year, or the programme over its life. */
+  period: z.enum(['round', 'year', 'programme']),
+  /** The funder says "up to" the total, or gives it as an estimate ("approximately", "around"). */
+  qualifier: z.enum(['up_to', 'about']).optional(),
+  /** The round or years, as the funder gives it ("2026 call", "2021-2027"). */
+  label: z.string().min(3).max(60).optional(),
+  /** A qualifier from the same quote, in our words ("Shared with the forestry window"). */
+  note: z.string().min(3).max(200).optional(),
+})
+export type Pool = z.infer<typeof pool>
+
 export const geography = z.discriminatedUnion('scope', [
   z.object({ scope: z.literal('global') }),
   z.object({
@@ -198,6 +216,8 @@ export const programme = z
     access,
     window,
     amount: amount.nullable(),
+    /** The total funding behind the grants, when the funder states it. Missing means not stated. */
+    pool: pool.optional(),
     co_finance_required: z.boolean().nullable(),
     /** The funder requires applicants to apply as a consortium of several organisations. Missing means not stated. */
     consortium_required: z
@@ -232,6 +252,7 @@ export const programme = z
       access: evidence.optional(),
       window: evidence.optional(),
       amount: evidence.optional(),
+      pool: evidence.optional(),
       co_finance_required: evidence.optional(),
       consortium_required: evidence.optional(),
       reporting: evidence.optional(),
@@ -252,6 +273,7 @@ export const programme = z
       access: p.access !== 'unspecified',
       window: p.window !== 'unspecified',
       amount: p.amount !== null,
+      pool: p.pool !== undefined,
       co_finance_required: p.co_finance_required !== null,
       consortium_required: p.consortium_required !== undefined,
       reporting: p.reporting !== null,
@@ -262,6 +284,12 @@ export const programme = z
       const e = p.evidence[field as keyof typeof p.evidence]
       if (isStated && !e) issue(['evidence', field], `${field} is stated but has no evidence`)
       if (!isStated && e) issue(['evidence', field], `${field} has evidence but is not stated`)
+    }
+
+    // A pot smaller than one grant is a misread: the figure is a grant, or a different currency.
+    const top = p.amount?.max ?? p.amount?.min
+    if (p.pool && top !== undefined && p.amount?.currency === p.pool.currency && p.amount.per !== 'year' && p.pool.value < top) {
+      issue(['pool', 'value'], `the pool (${p.pool.value}) is smaller than one grant (${top})`)
     }
 
     if (p.parent === p.id) issue(['parent'], 'a programme cannot be its own parent')

@@ -28,9 +28,9 @@
   "window": "rolling",
   "amount": {
     "currency": "CAD",
-    "min": 25000,
-    "note": "Total budget of CAD 300,000 per fiscal year for all projects"
+    "min": 25000
   },
+  "pool": {"currency": "CAD", "value": 300000, "period": "year"},
   "co_finance_required": null,
   "reporting": "A single project update report form at the end of the project period.",
   "calls": [
@@ -59,6 +59,7 @@
     }
   ],
   "evidence": {
+    "pool": {"source_url": "https://isfund.ca/climate-emergency-grant-program", "quote": "A total budget of CAD $300,000 is available each fiscal year to support all approved projects.", "checked_at": "2026-11-02", "method": "page"},
     "applicant_types": {
       "source_url": "https://isfund.ca/climate-emergency-grant-program",
       "quote": "First Nations in B.C. First Nation-led organizations in B.C., including but not limited to: Tribal councils First Nation alliances First Nation-mandated societies",

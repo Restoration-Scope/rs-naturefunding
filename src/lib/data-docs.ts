@@ -22,6 +22,7 @@ export const fieldDocs = {
     access: 'How an applicant reaches the money: direct (apply to an open call), intermediary (apply to a partner, not the funder), invitation_only (no unsolicited proposals), unspecified.',
     window: 'fixed (rounds with deadlines), rolling (apply any time) or unspecified.',
     amount: 'Grant size in the funder’s currency, or null when not stated.',
+    pool: 'The total funding behind all the grants (one round, one year or the whole programme), when the funder states it. Missing means not stated.',
     co_finance_required: 'true or false when the funder says whether co-funding is required; null when it doesn’t.',
     reporting: 'What the funder asks grantees to report, in our words, or null.',
     effort: 'What applying takes, in our words from the funder’s page: the steps in order. Missing when the pages we read don’t say.',
@@ -62,6 +63,14 @@ export const fieldDocs = {
     per: '“year” when the amount is per year, not per grant.',
     note: 'A qualifier from the same quote, in our words.',
   },
+  pool: {
+    currency: 'ISO 4217 currency code.',
+    value: 'The total, all grants together.',
+    qualifier: '“up_to” when the funder says up to the total, “about” when it gives an estimate (“approximately”).',
+    period: 'round (one round of applications), year (one year) or programme (the programme over its life).',
+    label: 'The round or years the total covers, as the funder gives it (“2026 call”, “2021-2027”).',
+    note: 'A qualifier from the same quote, in our words.',
+  },
   geography: {
     scope: 'global (anywhere), countries (a list) or regions (a group the funder names, such as “ODA-eligible countries”).',
     countries: 'ISO 3166-1 alpha-2 country codes.',
@@ -95,6 +104,7 @@ const docsFor = (props: string[]): Record<string, string> | null => {
   if (has('summary', 'calls', 'evidence')) return fieldDocs.programme
   if (has('label', 'status', 'deadline')) return fieldDocs.call
   if (has('date', 'text')) return fieldDocs.deadline
+  if (has('currency', 'value', 'period')) return fieldDocs.pool
   if (has('currency')) return fieldDocs.amount
   if (has('scope')) return fieldDocs.geography
   if (has('source_url', 'quote', 'checked_at')) return fieldDocs.evidence

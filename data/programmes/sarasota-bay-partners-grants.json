@@ -32,8 +32,9 @@
   "amount": {
     "currency": "USD",
     "max": 10000,
-    "note": "Maximum award to one organization; $80,000 total pool for the 2026 cycle"
+    "note": "Maximum award to one organization"
   },
+  "pool": {"currency": "USD", "value": 80000, "period": "round", "label": "2026 grant cycle"},
   "co_finance_required": false,
   "reporting": "Recipients submit a final report and final invoice by the deadline set for the cycle.",
   "calls": [
@@ -70,6 +71,7 @@
     }
   ],
   "evidence": {
+    "pool": {"source_url": "https://sarasotabay.org/get-involved/apply-for-a-grant/", "quote": "A total of $80,000 is available for the 2026 grant cycle.", "checked_at": "2026-11-03", "method": "page"},
     "applicant_types": {
       "source_url": "https://sarasotabay.org/get-involved/apply-for-a-grant/",
       "quote": "Non-profit organizations, schools, civic associations, religious organizations, neighborhood and homeowners' associations, businesses, colleges and universities, and local governments located in the Sarasota Bay watershed are eligible",

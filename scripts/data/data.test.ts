@@ -207,6 +207,38 @@ describe('qualifiers', () => {
   })
 })
 
+describe('pool', () => {
+  test('is optional and needs evidence when stated', () => {
+    const p = fixture()
+    p.pool = { currency: 'USD', value: 500000, period: 'round', label: '2026 round' }
+    expect(problems(p)).toEqual(['evidence.pool: pool is stated but has no evidence'])
+    p.evidence.pool = ev('A total of $500,000 is available in this round.')
+    expect(problems(p)).toEqual([])
+  })
+
+  test('evidence without a pool is refused', () => {
+    const p = fixture()
+    p.evidence.pool = ev('A total of $500,000 is available in this round.')
+    expect(problems(p)).toEqual(['evidence.pool: pool has evidence but is not stated'])
+  })
+
+  test('cannot be smaller than one grant in the same currency', () => {
+    const p = fixture()
+    p.pool = { currency: 'USD', value: 20000, period: 'round' }
+    p.evidence.pool = ev('A total of $20,000 is available in this round.')
+    expect(problems(p)).toEqual([expect.stringContaining('smaller than one grant')])
+    p.pool.currency = 'EUR'
+    expect(problems(p)).toEqual([])
+  })
+
+  test('period is round, year or programme', () => {
+    const p = fixture()
+    p.pool = { currency: 'USD', value: 500000, period: 'decade' as 'round' }
+    p.evidence.pool = ev('A total of $500,000 is available in this round.')
+    expect(problems(p)).toEqual([expect.stringContaining('pool.period')])
+  })
+})
+
 describe('an open call cannot be past its deadline', () => {
   const withDeadline = (date: string, time?: string, timezone?: string) => {
     const p = fixture()
