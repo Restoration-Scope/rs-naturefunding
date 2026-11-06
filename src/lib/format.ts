@@ -39,7 +39,7 @@ export function poolText(p: Programme['pool']): string | null {
   if (!p) return null
   const lead = p.qualifier === 'up_to' ? 'up to ' : p.qualifier === 'about' ? 'about ' : ''
   const total = `${lead}${money(p.currency, p.value)} ${p.currency}`
-  const what = p.period === 'year' ? 'a year' : p.period === 'programme' ? 'over the programme' : 'for the round'
+  const what = p.period === 'year' ? 'a year' : p.period === 'biennium' ? 'per biennium' : p.period === 'programme' ? 'over the programme' : 'for the round'
   return `${total} ${what}${p.label ? ` (${p.label})` : ''}`
 }
 

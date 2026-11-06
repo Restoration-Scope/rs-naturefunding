@@ -136,8 +136,8 @@ export const amount = z
 export const pool = z.object({
   currency: z.string().regex(/^[A-Z]{3}$/),
   value: z.number().positive(),
-  /** What the total covers: one round of applications, one year, or the programme over its life. */
-  period: z.enum(['round', 'year', 'programme']),
+  /** What the total covers: one round of applications, one year, a two-year budget, or the programme over its life. */
+  period: z.enum(['round', 'year', 'biennium', 'programme']),
   /** The funder says "up to" the total, or gives it as an estimate ("approximately", "around"). */
   qualifier: z.enum(['up_to', 'about']).optional(),
   /** The round or years, as the funder gives it ("2026 call", "2021-2027"). */
