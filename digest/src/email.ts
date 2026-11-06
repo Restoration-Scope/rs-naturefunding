@@ -1,7 +1,11 @@
 // The two emails: the confirmation and the weekly digest. Plain table HTML with inline styles (what mail
 // clients render), plus a text version. Colours are the site's tokens (src/styles/global.css).
 import type { Call } from '../../src/data/schema'
-import { amountText, geographyText, longDate } from '../../src/lib/format'
+import { amountShort, geographyText, longDate } from '../../src/lib/format'
+import { ratesDate } from '../../src/lib/rates'
+import { countryName, regionLabels, type Region } from '../../src/lib/geo'
+import { approachLabels, projectTypes } from '../../src/lib/labels'
+import { markFor } from '../../src/lib/marks'
 import type { Digest, DigestItem, Section } from './digest'
 import { prefsText, type Prefs } from './match'
 
@@ -14,7 +18,53 @@ export type Email = { subject: string; html: string; text: string }
 const esc = (s: string) => s.replaceAll('&', '&amp;').replaceAll('<', '&lt;').replaceAll('>', '&gt;').replaceAll('"', '&quot;')
 const plural = (n: number, one: string, many: string) => `${n} ${n === 1 ? one : many}`
 
-function frame(site: string, preheader: string, body: string, footer: string) {
+const RS_URL = 'https://restorationscope.com/?utm_source=naturefunding&utm_medium=email&utm_campaign=digest'
+const TAGLINE = 'naturefunding.org is free and neutral: funders can’t pay to be listed. Built with 💚 by Restoration Scope.'
+const taglineHtml = esc(TAGLINE).replace('Restoration Scope', `<a href="${RS_URL}" style="color:${C.ink2};">Restoration Scope</a>`)
+
+// Icons in the "for …" line, served from the site as PNG (Gmail and Outlook don't show SVG): the country's flag
+// (public/flags/), the region's land or the project type's finder icon (public/icons/, scripts/images/email-icons.ts).
+const typeOf = Object.fromEntries(projectTypes.flatMap((t) => t.approaches.map((a) => [a, t.key])))
+const icon = (src: string, w: number, h: number, radius = 0) =>
+  `<img src="${esc(src)}" width="${w}" height="${h}" alt="" style="display:inline-block;vertical-align:-2px;margin-right:4px;border:0;${radius ? `border-radius:${radius}px;` : ''}">`
+
+/** The icon stays on the same line as the label's first word; the rest of a long label can still wrap. */
+const withIcon = (img: string, label: string) => {
+  const [first, ...rest] = esc(label).split(' ')
+  return `<span style="white-space:nowrap;">${img}${first}</span>${rest.length ? ` ${rest.join(' ')}` : ''}`
+}
+
+/** prefsText with an icon before each part: "[flag] Kenya · [waves] Mangroves or [drops] Wetlands". */
+function prefsHtml(site: string, prefs: Prefs): string {
+  const where = !prefs.where
+    ? null
+    : prefs.where.startsWith('r:')
+      ? withIcon(icon(`${site}/icons/regions/${prefs.where.slice(2)}.png`, 16, 16), regionLabels[prefs.where.slice(2) as Region])
+      : withIcon(icon(`${site}/flags/${prefs.where}.png`, 21, 14, 2), countryName(prefs.where))
+  const what = prefs.approaches.length
+    ? prefs.approaches.map((a) => withIcon(icon(`${site}/icons/types/${typeOf[a]}.png`, 16, 16), approachLabels[a])).join(' or ')
+    : null
+  return [where, what].filter(Boolean).join(' · ')
+}
+
+/** The funder's favicon (public/icons/marks/, a PNG copy of public/marks/), or its monogram in a muted square. */
+function funderMark(site: string, org: { name: string; url: string }) {
+  const m = markFor(org)
+  if (m.kind === 'icon') return icon(`${site}/icons/marks/${m.domain}.png`, 16, 16, 3)
+  return `<span style="display:inline-block;width:16px;height:16px;line-height:16px;margin-right:4px;vertical-align:-2px;border-radius:3px;background:${C.linen};color:${C.ink2};font-size:8px;font-weight:600;text-align:center;">${esc(m.letters)}</span>`
+}
+
+/** "US dollars", for "amounts in US dollars". */
+export const currencyName = (code: string) =>
+  new Intl.NumberFormat('en', { style: 'currency', currency: code, currencyDisplay: 'name' }).formatToParts(2).find((p) => p.type === 'currency')?.value ?? code
+
+/** The finder with the subscriber's choices set, so "see them all" lands on the same list (src/lib/finder.ts fromUrl). */
+export function finderUrl(site: string, prefs: Prefs) {
+  const qs = [prefs.where && `where=${encodeURIComponent(prefs.where).replace('%3A', ':')}`, prefs.approaches.length && `approach=${prefs.approaches.join(',')}`].filter(Boolean).join('&')
+  return `${site}/${qs ? `?${qs}` : ''}`
+}
+
+function frame(site: string, preheader: string, body: string, footer?: string) {
   return `<!doctype html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="color-scheme" content="light"><title>naturefunding.org</title></head>
 <body style="margin:0;padding:0;background:${C.linen};">
@@ -25,27 +75,30 @@ function frame(site: string, preheader: string, body: string, footer: string) {
 <a href="${esc(site)}/" style="font-family:${SERIF};font-size:22px;color:${C.paper};text-decoration:none;">naturefunding<span style="color:${C.shellInk2};">.org</span></a>
 </td></tr>
 <tr><td style="padding:28px 28px 8px;font-family:${SANS};font-size:16px;line-height:1.5;color:${C.ink};">${body}</td></tr>
-<tr><td style="padding:20px 28px 28px;font-family:${SANS};font-size:13px;line-height:1.5;color:${C.ink2};border-top:1px solid ${C.rule};">${footer}</td></tr>
-</table></td></tr></table>
+${footer ? `<tr><td style="padding:20px 28px 28px;font-family:${SANS};font-size:13px;line-height:1.5;color:${C.ink2};border-top:1px solid ${C.rule};">${footer}</td></tr>` : ''}
+</table>
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="max-width:600px;"><tr><td align="center" style="padding:14px 28px 0;font-family:${SANS};font-size:12px;line-height:1.5;color:${C.ink2};">${taglineHtml}</td></tr></table>
+</td></tr></table>
 </body></html>`
 }
 
 const button = (href: string, label: string) =>
   `<table role="presentation" cellpadding="0" cellspacing="0" style="margin:24px 0;"><tr><td style="background:${C.brand};border-radius:6px;"><a href="${esc(href)}" style="display:inline-block;padding:12px 22px;font-family:${SANS};font-size:16px;font-weight:600;color:#ffffff;text-decoration:none;">${esc(label)}</a></td></tr></table>`
 
-export function confirmationEmail(o: { site: string; confirmUrl: string; prefs: Prefs }): Email {
+export function confirmationEmail(o: { site: string; confirmUrl: string; prefs: Prefs; currency?: string }): Email {
   const what = prefsText(o.prefs)
-  const lead = `Press the button to start getting new nature funding calls by email${what ? ` for ${what}` : ''}: at most one email a week, and only when there is something new.`
+  const inCurrency = o.currency ? `, with amounts in ${currencyName(o.currency)}` : ''
+  const lead = `Press the button to start getting new nature funding calls by email${what ? ` for ${what}` : ''}${inCurrency}: at most one email a week, and only when there is something new.`
+  const leadHtml = what ? esc(lead).replace(` for ${esc(what)}`, ` for ${prefsHtml(o.site, o.prefs)}`) : esc(lead)
   const html = frame(
     o.site,
     'One click to start your weekly naturefunding.org email.',
     `<h1 style="margin:0 0 12px;font-family:${SERIF};font-size:26px;font-weight:400;">Confirm your email</h1>
-<p style="margin:0;">${esc(lead)}</p>
+<p style="margin:0;">${leadHtml}</p>
 ${button(o.confirmUrl, 'Confirm my email')}
 <p style="margin:0 0 16px;color:${C.ink2};font-size:14px;">The link works for 3 days. If you didn’t ask for this, ignore this email and we won’t write again.</p>`,
-    `naturefunding.org is a free, neutral directory of nature restoration funding, built by Restoration Scope.`,
   )
-  const text = `Confirm your email\n\n${lead}\n\nConfirm: ${o.confirmUrl}\n\nThe link works for 3 days. If you didn't ask for this, ignore this email and we won't write again.\n\nnaturefunding.org is a free, neutral directory of nature restoration funding, built by Restoration Scope.\n`
+  const text = `Confirm your email\n\n${lead}\n\nConfirm: ${o.confirmUrl}\n\nThe link works for 3 days. If you didn't ask for this, ignore this email and we won't write again.\n\n--\n${TAGLINE}\n`
   return { subject: 'Confirm your weekly naturefunding.org email', html, text }
 }
 
@@ -65,22 +118,29 @@ function callLine(call: Call | null, section: Section): string {
   return section === 'new' ? 'No open call right now' : ''
 }
 
-function itemParts(i: DigestItem, site: string) {
+/** The subscriber's country when they chose one (the listing is open to it), else where the listing is open. */
+function placeOf(i: DigestItem, prefs: Prefs) {
+  const country = prefs.where && !prefs.where.startsWith('r:') ? prefs.where : null
+  return country ? { text: countryName(country), flag: country } : { text: geographyText(i.programme.geography), flag: null }
+}
+
+function itemParts(i: DigestItem, site: string, prefs: Prefs, currency?: string) {
   const p = i.programme
-  const facts = [amountText(p.amount), geographyText(p.geography)].filter(Boolean) as string[]
   return {
     name: p.name,
     funder: p.funder.name,
+    mark: funderMark(site, p.funder),
     status: callLine(i.call, i.section),
     live: i.call?.status === 'open' || i.call?.status === 'upcoming',
     callLabel: i.call?.label ?? null,
-    facts,
+    amount: amountShort(p.amount, currency),
+    place: placeOf(i, prefs),
     page: `${site}/p/${p.id}/`,
     callUrl: i.call?.url ?? p.url,
   }
 }
 
-export function digestEmail(o: { site: string; digest: Digest; prefs: Prefs; since: string; unsubscribeUrl: string; manageUrl: string }): Email {
+export function digestEmail(o: { site: string; digest: Digest; prefs: Prefs; currency?: string; since: string; unsubscribeUrl: string; manageUrl: string }): Email {
   const { items, total } = o.digest
   const what = prefsText(o.prefs)
   const counts = (['open', 'upcoming', 'new'] as Section[]).map((s) => [s, items.filter((i) => i.section === s).length] as const)
@@ -89,19 +149,24 @@ export function digestEmail(o: { site: string; digest: Digest; prefs: Prefs; sin
   )
   const subject = `${subjectBits.join(', ')}${what ? ` · ${what}` : ''}`
   const intro = `New since ${longDate(o.since.slice(0, 10))}${what ? `, for ${what}` : ''}.`
+  const introHtml = what ? esc(intro).replace(`, for ${esc(what)}`, `, for ${prefsHtml(o.site, o.prefs)}`) : esc(intro)
 
+  const fineprint = o.currency
+    ? `Amounts are converted to ${currencyName(o.currency)} at the rates of ${longDate(ratesDate)}, with the funder’s own figure in brackets. Check the funder’s page before you apply.`
+    : 'Amounts are as the funder states them. Check the funder’s page before you apply.'
   const sections = counts
     .filter(([, n]) => n > 0)
     .map(([s]) => {
       const rows = items
         .filter((i) => i.section === s)
         .map((i) => {
-          const x = itemParts(i, o.site)
+          const x = itemParts(i, o.site, o.prefs, o.currency)
+          const place = x.place.text ? (x.place.flag ? withIcon(icon(`${o.site}/flags/${x.place.flag}.png`, 21, 14, 2), x.place.text) : esc(x.place.text)) : ''
           return `<tr><td style="padding:14px 0;border-top:1px solid ${C.rule};">
-<a href="${esc(x.page)}" style="font-size:17px;font-weight:600;color:${C.ink};text-decoration:underline;text-decoration-color:${C.rule};">${esc(x.name)}</a>
-<div style="font-size:14px;color:${C.ink2};margin-top:2px;">${esc(x.funder)}</div>
+<div style="font-size:18px;line-height:1.35;">${x.amount ? `<strong style="font-weight:600;color:${C.ink};">${esc(x.amount.text)}</strong>${x.amount.original ? `<span style="font-size:15px;color:${C.ink2};"> (${esc(x.amount.original)})</span>` : ''}` : `<span style="color:${C.ink2};">Amount not stated</span>`}${place ? `<span style="font-size:15px;color:${C.ink2};"> · ${place}</span>` : ''}</div>
+<div style="font-size:15px;margin-top:6px;"><a href="${esc(x.page)}" style="color:${C.ink};text-decoration:underline;text-decoration-color:${C.rule};">${esc(x.name)}</a></div>
+<div style="font-size:15px;color:${C.ink};margin-top:2px;">${withIcon(x.mark, x.funder)}</div>
 <div style="font-size:15px;margin-top:8px;">${x.live ? `<strong style="color:${C.brand};font-weight:600;">${esc(x.status)}</strong>` : `<span style="color:${C.ink2};">${esc(x.status)}</span>`}${x.callLabel ? ` <span style="color:${C.ink2};">· ${esc(x.callLabel)}</span>` : ''}</div>
-${x.facts.length ? `<div style="font-size:14px;color:${C.ink2};margin-top:4px;">${esc(x.facts.join(' · '))}</div>` : ''}
 <div style="font-size:14px;margin-top:8px;"><a href="${esc(x.callUrl)}" style="color:${C.brand};">Funder’s page</a> <span style="color:${C.rule};">|</span> <a href="${esc(x.page)}" style="color:${C.brand};">Details and evidence</a></div>
 </td></tr>`
         })
@@ -111,12 +176,11 @@ ${x.facts.length ? `<div style="font-size:14px;color:${C.ink2};margin-top:4px;">
     })
     .join('')
 
-  const more = total > items.length ? `<p style="margin:20px 0 0;">And ${total - items.length} more. <a href="${esc(o.site)}/" style="color:${C.brand};">See them all on naturefunding.org</a>.</p>` : ''
-  const body = `<p style="margin:0;color:${C.ink2};font-size:15px;">${esc(intro)}</p>${sections}${more}
-<p style="margin:24px 0 16px;font-size:14px;color:${C.ink2};">Each listing is checked against the funder’s own page. Dates and amounts are as the funder states them; check the funder’s page before you apply.</p>`
+  const more = total > items.length ? `<p style="margin:20px 0 0;">And ${total - items.length} more. <a href="${esc(finderUrl(o.site, o.prefs))}" style="color:${C.brand};">See them all on naturefunding.org</a>.</p>` : ''
+  const body = `<p style="margin:0;color:${C.ink2};font-size:15px;">${introHtml}</p>${sections}${more}
+<p style="margin:24px 0 16px;font-size:14px;color:${C.ink2};">Each listing is checked against the funder’s own page. ${esc(fineprint)}</p>`
   const footer = `You get this because you signed up at naturefunding.org${what ? ` for ${esc(what)}` : ''}. At most one email a week, only when something is new.<br>
-<a href="${esc(o.manageUrl)}" style="color:${C.ink2};">Change what you get</a> · <a href="${esc(o.unsubscribeUrl)}" style="color:${C.ink2};">Unsubscribe</a><br><br>
-naturefunding.org is free and neutral: funders can’t pay to be listed. Built by Restoration Scope.`
+<a href="${esc(o.manageUrl)}" style="color:${C.ink2};">Change what you get</a> · <a href="${esc(o.unsubscribeUrl)}" style="color:${C.ink2};">Unsubscribe</a>`
 
   const textItems = counts
     .filter(([, n]) => n > 0)
@@ -126,12 +190,13 @@ naturefunding.org is free and neutral: funders can’t pay to be listed. Built b
         ...items
           .filter((i) => i.section === s)
           .map((i) => {
-            const x = itemParts(i, o.site)
-            return [`- ${x.name} (${x.funder})`, `  ${x.status}${x.callLabel ? ` · ${x.callLabel}` : ''}`, ...(x.facts.length ? [`  ${x.facts.join(' · ')}`] : []), `  ${x.page}`].join('\n')
+            const x = itemParts(i, o.site, o.prefs, o.currency)
+            const head = [x.amount ? `${x.amount.text}${x.amount.original ? ` (${x.amount.original})` : ''}` : 'Amount not stated', x.place.text].filter(Boolean).join(' · ')
+            return [`- ${head}`, `  ${x.name}`, `  ${x.funder}`, `  ${x.status}${x.callLabel ? ` · ${x.callLabel}` : ''}`, `  ${x.page}`].join('\n')
           }),
       ].join('\n\n'),
     )
     .join('\n\n')
-  const text = `${intro}\n\n${textItems}\n${total > items.length ? `\nAnd ${total - items.length} more: ${o.site}/\n` : ''}\nDates and amounts are as the funder states them; check the funder's page before you apply.\n\n--\nAt most one email a week, only when something is new.\nChange what you get: ${o.manageUrl}\nUnsubscribe: ${o.unsubscribeUrl}\n`
+  const text = `${intro}\n\n${textItems}\n${total > items.length ? `\nAnd ${total - items.length} more: ${finderUrl(o.site, o.prefs)}\n` : ''}\n${fineprint}\n\n--\nAt most one email a week, only when something is new.\nChange what you get: ${o.manageUrl}\nUnsubscribe: ${o.unsubscribeUrl}\n\n${TAGLINE}\n`
   return { subject, html: frame(o.site, intro, body, footer), text }
 }

@@ -405,7 +405,14 @@ async function syncDomain(domain: string, homepage: string, orgs: string[]): Pro
   }
   const file = `marks/${domain}.webp`
   writeFileSync(join(ROOT, 'public', file), best.webp!)
+  await writeMarkPng(best.webp!, domain)
   return entry({ source: best.c.url.startsWith('data:') ? `${best.c.url.slice(0, 40)}… (inline in ${homepage})` : best.c.url, source_px: best.px ?? null, file, bytes: best.webp!.length })
+}
+
+/** The PNG copy the weekly email shows (Outlook doesn't show WebP): public/icons/marks/<domain>.png, 32×32. */
+export async function writeMarkPng(webp: Buffer | string, domain: string) {
+  mkdirSync(join(ROOT, 'public/icons/marks'), { recursive: true })
+  await sharp(webp).resize(32, 32, { fit: 'contain', background: { r: 0, g: 0, b: 0, alpha: 0 } }).png({ compressionLevel: 9 }).toFile(join(ROOT, 'public/icons/marks', `${domain}.png`))
 }
 
 const shortUrl = (u: string) => (u.startsWith('data:') ? 'inline data URL' : u.replace(/^https?:\/\//, ''))

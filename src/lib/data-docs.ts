@@ -61,6 +61,7 @@ export const fieldDocs = {
     typical: 'true when the funder gives a usual range (“typically”), not hard limits.',
     max_exclusive: 'true when the funder says “less than” the max, not “up to”.',
     per: '“year” when the amount is per year, not per grant.',
+    unit: '“tree” or “hectare” when the funder pays per unit of work, not per grant.',
     note: 'A qualifier from the same quote, in our words.',
   },
   pool: {

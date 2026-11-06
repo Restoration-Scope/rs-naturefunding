@@ -6,7 +6,7 @@ import { isConsentVersion, type ConsentVersion } from './consent'
 import { buildDigest } from './digest'
 import { confirmationEmail, digestEmail } from './email'
 import type { DigestEvent } from './events'
-import { cleanPrefs, prefsText, type Approach, type Prefs } from './match'
+import { cleanCurrency, cleanPrefs, prefsText, type Approach, type Prefs } from './match'
 import { resendMailer, SendFailed, type Mailer, type Outgoing } from './resend'
 import { addressHash, CONFIRM_TTL_MS, open, seal } from './token'
 
@@ -94,14 +94,15 @@ async function subscribe(request: Request, env: Env, deps: Deps, ctx: Ctx, now: 
   // Bots fill the hidden field; they get the same answer as everyone else.
   if (form.getAll('nf_hp').some((v) => v !== '') || !isConsentVersion(consent)) return done
   const prefs = cleanPrefs(form.get('where'), form.getAll('approach'))
+  const currency = cleanCurrency(form.get('currency'))
   const ip = request.headers.get('CF-Connecting-IP') ?? 'unknown'
   // The answer never says whether this address asked before or hit a limit; the work runs after it.
-  ctx.waitUntil(admit(env, deps, email, prefs, consent, ip, now).catch((e) => console.error('admit failed', e instanceof Error ? e.message : e)))
+  ctx.waitUntil(admit(env, deps, email, prefs, currency, consent, ip, now).catch((e) => console.error('admit failed', e instanceof Error ? e.message : e)))
   return done
 }
 
 /** Sends a confirmation email unless a limit says no: per IP, per address (1 an hour, 3 a day), and per day overall. */
-async function admit(env: Env, deps: Deps, email: string, prefs: Prefs, consent: ConsentVersion, ip: string, now: Date) {
+async function admit(env: Env, deps: Deps, email: string, prefs: Prefs, currency: string, consent: ConsentVersion, ip: string, now: Date) {
   if (env.SIGNUP_LIMIT && !(await env.SIGNUP_LIMIT.limit({ key: ip })).success) return
   const hash = await addressHash(email, env.LIST_SECRET)
   // One statement checks every limit and records the attempt, so two requests at once can't both pass.
@@ -115,8 +116,8 @@ async function admit(env: Env, deps: Deps, email: string, prefs: Prefs, consent:
     .bind(hash, now.toISOString(), new Date(now.getTime() - 3_600_000).toISOString(), new Date(now.getTime() - DAY).toISOString(), Number(env.DAILY_CONFIRM_LIMIT ?? 20))
     .first()
   if (!admitted) return
-  const token = await seal({ k: 'confirm', email, where: prefs.where, approaches: prefs.approaches, consent, at: now.getTime() }, env.LIST_SECRET)
-  const msg = confirmationEmail({ site: env.SITE_URL, confirmUrl: `${env.SELF_URL}/confirm?t=${token}`, prefs })
+  const token = await seal({ k: 'confirm', email, where: prefs.where, approaches: prefs.approaches, currency, consent, at: now.getTime() }, env.LIST_SECRET)
+  const msg = confirmationEmail({ site: env.SITE_URL, confirmUrl: `${env.SELF_URL}/confirm?t=${token}`, prefs, currency })
   try {
     await mailerFor(env, deps).send({ to: email, ...msg })
   } catch (e) {
@@ -133,6 +134,7 @@ async function confirm(request: Request, url: URL, env: Env, now: Date) {
   const claim = await open(token, env.LIST_SECRET)
   if (!claim || claim.k !== 'confirm' || !isConsentVersion(claim.consent) || now.getTime() - claim.at > CONFIRM_TTL_MS) return page(env, '/digest/link-expired/')
   const prefs: Prefs = { where: claim.where, approaches: claim.approaches as Approach[] }
+  const currency = cleanCurrency(claim.currency)
   if (request.method !== 'POST') {
     const what = prefsText(prefs)
     return buttonPage({
@@ -145,12 +147,12 @@ async function confirm(request: Request, url: URL, env: Env, now: Date) {
     })
   }
   await env.DB.prepare(
-    `INSERT INTO subscribers (id, email, where_code, approaches, consent, chosen_at, confirmed_at) VALUES (?1, ?2, ?3, ?4, ?5, ?6, ?7)
-     ON CONFLICT (email) DO UPDATE SET where_code = excluded.where_code, approaches = excluded.approaches, consent = excluded.consent,
+    `INSERT INTO subscribers (id, email, where_code, approaches, currency, consent, chosen_at, confirmed_at) VALUES (?1, ?2, ?3, ?4, ?8, ?5, ?6, ?7)
+     ON CONFLICT (email) DO UPDATE SET where_code = excluded.where_code, approaches = excluded.approaches, currency = excluded.currency, consent = excluded.consent,
        chosen_at = excluded.chosen_at
      WHERE excluded.chosen_at > subscribers.chosen_at`,
   )
-    .bind(crypto.randomUUID(), claim.email, prefs.where, prefs.approaches.join(' '), claim.consent, new Date(claim.at).toISOString(), now.toISOString())
+    .bind(crypto.randomUUID(), claim.email, prefs.where, prefs.approaches.join(' '), claim.consent, new Date(claim.at).toISOString(), now.toISOString(), currency)
     .run()
   return page(env, '/digest/subscribed/')
 }
@@ -206,7 +208,7 @@ button:focus-visible{outline:3px solid var(--shell);outline-offset:2px}
 
 // ---------- The daily run: each subscriber gets at most one digest per 7 days ----------
 
-type Row = { id: string; email: string; where_code: string; approaches: string; confirmed_at: string; last_sent_at: string | null; sent_through: string | null }
+type Row = { id: string; email: string; where_code: string; approaches: string; currency: string; confirmed_at: string; last_sent_at: string | null; sent_through: string | null }
 
 export type RunReport = { due: number; withNews: number; sent: number; mode: 'live' | 'count-only' }
 
@@ -228,7 +230,7 @@ export async function runDigest(env: Env, deps: Deps): Promise<RunReport> {
   const weekAgo = new Date(now.getTime() - WEEK).toISOString()
   const due = (
     await env.DB.prepare(
-      `SELECT id, email, where_code, approaches, confirmed_at, last_sent_at, sent_through FROM subscribers
+      `SELECT id, email, where_code, approaches, currency, confirmed_at, last_sent_at, sent_through FROM subscribers
        WHERE last_sent_at IS NULL OR last_sent_at <= ?1 ORDER BY COALESCE(last_sent_at, confirmed_at)`,
     )
       .bind(weekAgo)
@@ -249,7 +251,7 @@ export async function runDigest(env: Env, deps: Deps): Promise<RunReport> {
     withNews++
     if (outgoing.length >= limit) continue
     const unsubscribeUrl = `${env.SELF_URL}/unsubscribe?t=${await seal({ k: 'unsubscribe', id: s.id }, env.LIST_SECRET)}`
-    const msg = digestEmail({ site: env.SITE_URL, digest, prefs, since, unsubscribeUrl, manageUrl: `${env.SITE_URL}/digest/` })
+    const msg = digestEmail({ site: env.SITE_URL, digest, prefs, currency: s.currency, since, unsubscribeUrl, manageUrl: `${env.SITE_URL}/digest/` })
     outgoing.push({
       row: s,
       email: {

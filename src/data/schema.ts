@@ -121,6 +121,8 @@ export const amount = z
     max_exclusive: z.literal(true).optional(),
     /** The amount is per year, not per grant. */
     per: z.enum(['year']).optional(),
+    /** The amount is per unit of work (a tree planted, a hectare restored), not per grant. */
+    unit: z.enum(['tree', 'hectare']).optional(),
     /** A qualifier from the same quote, in our words ("Up to £20,000 in total"). */
     note: z.string().min(3).max(200).optional(),
   })

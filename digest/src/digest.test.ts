@@ -1,9 +1,12 @@
 import { describe, expect, test } from 'bun:test'
+import { existsSync } from 'node:fs'
+import { join } from 'node:path'
 import { loadProgrammes } from '../../src/data/load'
 import type { Programme } from '../../src/data/schema'
 import { whereCodes as siteWhereCodes } from '../../src/lib/data'
+import { marks } from '../../src/lib/marks'
 import { buildDigest } from './digest'
-import { digestEmail } from './email'
+import { digestEmail, finderUrl } from './email'
 import { diffSnapshots, type Snapshot } from './events'
 import { cleanPrefs, matches, whereCodes } from './match'
 import { open, seal } from './token'
@@ -127,5 +130,20 @@ describe('link tokens', () => {
     expect(await open(t, 's2')).toBeNull()
     expect(await open(t.slice(0, -2) + (t.endsWith('AA') ? 'BB' : 'AA'), 's1')).toBeNull()
     expect(await open('nonsense', 's1')).toBeNull()
+  })
+})
+
+describe('finderUrl', () => {
+  test('opens the finder with the same choices', () => {
+    expect(finderUrl('https://x.org', { where: '', approaches: [] })).toBe('https://x.org/')
+    expect(finderUrl('https://x.org', { where: 'KE', approaches: [] })).toBe('https://x.org/?where=KE')
+    expect(finderUrl('https://x.org', { where: 'r:asia', approaches: ['species_conservation'] })).toBe('https://x.org/?where=r:asia&approach=species_conservation')
+  })
+})
+
+describe('funder marks', () => {
+  test('every stored mark has its email PNG (run bun scripts/images/email-icons.ts after sync-favicons)', () => {
+    const missing = Object.values(marks).filter((m) => m.file && !existsSync(join(import.meta.dir, '../../public/icons/marks', `${m.domain}.png`)))
+    expect(missing.map((m) => m.domain)).toEqual([])
   })
 })

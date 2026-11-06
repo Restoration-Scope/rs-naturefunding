@@ -42,6 +42,7 @@ Done 2026-11-02 from Bernat's Mac (wrangler signed in as bernatfortet@gmail.com)
 
 1. Resend: naturefunding.org has its own free Resend account, apart from Restoration Scope's, so the digest never uses up Restoration Scope's daily and monthly allowance. `bun digest/scripts/setup-resend.ts` keeps its Full access key in Keychain, adds the domain with tracking off, and lists the DNS records, which are in Cloudflare.
 2. D1 `naturefunding-digest` (id in `wrangler.jsonc`), with `schema.sql` applied `--remote`.
+   Columns added since: `currency` (2026-11-06), with `bunx wrangler d1 execute naturefunding-digest --config digest/wrangler.jsonc --remote --command "ALTER TABLE subscribers ADD COLUMN currency TEXT NOT NULL DEFAULT ''"`, run before deploying the Worker that reads it.
 3. `bun digest/scripts/build.ts && bunx wrangler deploy --config digest/wrangler.jsonc`.
 4. `bun digest/scripts/setup-secrets.ts`: `RESEND_API_KEY` (a Sending access key for naturefunding.org only) and `LIST_SECRET`, both kept in Keychain and set through stdin.
 5. `DIGEST_LIVE` in `src/lib/site.ts` shows the form on built pages.
