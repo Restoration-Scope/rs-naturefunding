@@ -18,20 +18,22 @@ const money = (currency: string, n: number) =>
 export function amountText(a: Programme['amount']): string | null {
   if (!a) return null
   const code = a.currency
+  // Where the symbol is the code itself (BTN 1,000,000), the code isn't added again.
+  const c = money(code, 1).includes(code) ? '' : ` ${code}`
   // A typical range is what the funder usually gives, not a limit.
   const usually = a.typical ? 'Usually ' : ''
   const per = a.per === 'year' ? ' a year' : ''
   if (a.min !== undefined && a.max !== undefined) {
-    if (a.min === a.max) return `${usually}${money(code, a.max)} ${code}${per}`
+    if (a.min === a.max) return `${usually}${money(code, a.max)}${c}${per}`
     // "Less than" leaves the max out, so the range reads "… to less than …".
     const top = a.max_exclusive ? `less than ${money(code, a.max)}` : money(code, a.max)
-    return `${usually}${money(code, a.min)} to ${top} ${code}${per}`
+    return `${usually}${money(code, a.min)} to ${top}${c}${per}`
   }
   if (a.max !== undefined) {
     const lead = a.max_exclusive ? 'less than' : 'up to'
-    return `${a.typical ? `Usually ${lead}` : lead[0]!.toUpperCase() + lead.slice(1)} ${money(code, a.max)} ${code}${per}`
+    return `${a.typical ? `Usually ${lead}` : lead[0]!.toUpperCase() + lead.slice(1)} ${money(code, a.max)}${c}${per}`
   }
-  return `${a.typical ? 'Usually from' : 'From'} ${money(code, a.min!)} ${code}${per}`
+  return `${a.typical ? 'Usually from' : 'From'} ${money(code, a.min!)}${c}${per}`
 }
 
 /** A figure with its currency code, once: "€17,000,000 EUR", but "BTN 6,000,000" where the symbol is the code. */

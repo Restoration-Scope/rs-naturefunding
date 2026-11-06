@@ -1,0 +1,69 @@
+---
+import type { Programme } from '../data/schema'
+import { factIds } from '../lib/agent'
+import { amountText, effortShort, geographyText, joinAnd, keepAmountTogether, poolText } from '../lib/format'
+import { accessLabels, applicantLabels } from '../lib/labels'
+import { Banknote, ClipboardCheck, UserCheck } from 'lucide-react'
+
+/** The three things a reader checks first, at the top of a programme page: how much, who can apply, what applying
+    takes. Each links down to its fact, where the funder's own words back it up. Hues match the fact groups. */
+interface Props {
+  p: Programme
+  /** What to say when partner programmes set the figure. */
+  byPartner?: string
+}
+
+const { p, byPartner } = Astro.props
+const notStated = byPartner ?? 'Not stated'
+const amount = amountText(p.amount)
+const pool = poolText(p.pool)
+const who = p.applicant_types ? joinAnd(p.applicant_types.map((a) => applicantLabels[a])) : null
+const odds = p.odds ? `About 1 in ${Math.round(p.odds.applied / p.odds.funded)} applications funded` : null
+const steps = p.access === 'direct' ? effortShort(p.effort) : null
+
+const items = [
+  {
+    tone: 'tone-money',
+    icon: Banknote,
+    label: 'Per project',
+    value: amount ? keepAmountTogether(amount) : notStated,
+    more: pool ? `Total budget ${keepAmountTogether(pool)}` : null,
+    href: `#${factIds.amount}`,
+  },
+  {
+    tone: 'tone-who',
+    icon: UserCheck,
+    label: 'Who can apply',
+    value: geographyText(p.geography) ?? notStated,
+    more: who,
+    href: `#${factIds.geography}`,
+  },
+  {
+    tone: 'tone-apply',
+    icon: ClipboardCheck,
+    label: 'To apply',
+    value: steps ?? accessLabels[p.access],
+    more: steps ? odds : p.access === 'direct' ? 'Steps not stated' : null,
+    href: steps ? '#effort' : `#${factIds.access}`,
+  },
+]
+---
+
+<dl class="mt-6 grid border-y border-rule md:grid-cols-3" aria-label="Key facts">
+  {
+    items.map(({ tone, icon: Icon, label, value, more, href }) => (
+      <div class:list={[tone, 'flex items-start gap-3 py-3 max-md:not-first:border-t max-md:not-first:border-rule md:px-4 md:first:pl-0 md:not-first:border-l md:not-first:border-rule']}>
+        <span class="mt-0.5 grid size-9 flex-none place-items-center rounded-md bg-(--tone-soft) text-(--tone)">
+          <Icon className="size-5" aria-hidden="true" />
+        </span>
+        <div class="min-w-0">
+          <dt class="text-sm font-bold text-ink-2">{label}</dt>
+          <dd class="m-0 text-lg leading-snug font-semibold">
+            <a class="text-ink no-underline decoration-(--tone) underline-offset-3 hover:underline" href={href}>{value}</a>
+          </dd>
+          {more && <dd class="m-0 mt-0.5 text-sm text-ink-2">{more}</dd>}
+        </div>
+      </div>
+    ))
+  }
+</dl>

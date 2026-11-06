@@ -59,18 +59,20 @@ interface Props {
 const { label, value, evidence, missing = 'Not found on the pages we read', id } = Astro.props
 const shown = value && (label === 'Amount' || label === 'Per project' || label === 'Total budget') ? keepAmountTogether(value) : value
 const Icon = icons[label]
+// A conditional value slot that renders nothing still counts as filled, so check what it draws.
+const slotValue = Astro.slots.has('value') ? (await Astro.slots.render('value')).trim() : ''
 const quotes = evidence ? (Array.isArray(evidence) ? evidence : [evidence]) : []
 ---
 
 <div id={id} class="grid grid-cols-[minmax(0,1fr)] gap-[0.35rem] border-t border-rule py-[1.1rem] md:grid-cols-[11rem_minmax(0,1fr)] md:gap-6">
   <dt class="flex items-start gap-2 pt-[0.15rem] text-md font-bold text-ink-2">
-    {Icon && <Icon className="mt-[0.2rem] size-4 flex-none" aria-hidden="true" />}
+    {Icon && <Icon className="mt-[0.2rem] size-4 flex-none text-(--tone,currentColor)" aria-hidden="true" />}
     <span>{label}</span>
   </dt>
   <dd class="m-0 min-w-0">
     {
-      Astro.slots.has('value') ? (
-        <p class="text-lg font-semibold"><slot name="value" /></p>
+      slotValue ? (
+        <p class="text-lg font-semibold" set:html={slotValue} />
       ) : shown ? (
         // A long summary in our words reads as text, so it doesn't outweigh the quote under it.
         <p class:list={[shown.length > 70 ? 'text-base' : 'text-lg font-semibold']}>{shown}</p>

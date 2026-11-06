@@ -1,0 +1,31 @@
+---
+import { Banknote, ClipboardCheck, UserCheck } from 'lucide-react'
+
+/** One group of facts on a programme page, in its own hue (global.css .tone-*), so the three read apart at a glance. */
+const groups = {
+  money: { icon: Banknote, tone: 'tone-money' },
+  who: { icon: UserCheck, tone: 'tone-who' },
+  apply: { icon: ClipboardCheck, tone: 'tone-apply' },
+} as const
+
+interface Props {
+  kind: keyof typeof groups
+  title: string
+}
+
+const { kind, title } = Astro.props
+const { icon: Icon, tone } = groups[kind]
+---
+
+<div class={tone}>
+  <h3 class="mt-10 mb-3 flex items-center gap-3 text-2xl">
+    <span class="grid size-9 flex-none place-items-center rounded-md bg-(--tone-soft) text-(--tone)">
+      <Icon className="size-5" aria-hidden="true" />
+    </span>
+    {title}
+  </h3>
+  {/* The group's hue rules its top edge; the first fact drops its own hairline so the two don't stack. */}
+  <dl class="m-0 border-t-2 border-b border-t-(--tone) border-b-rule [&>div:first-child]:border-t-0">
+    <slot />
+  </dl>
+</div>

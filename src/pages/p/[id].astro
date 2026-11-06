@@ -4,6 +4,8 @@ import Base from '../../layouts/Base.astro'
 import ApplyPart from '../../components/ApplyPart.astro'
 import Countries from '../../components/Countries.astro'
 import Fact from '../../components/Fact.astro'
+import FactGroup from '../../components/FactGroup.astro'
+import KeyFacts from '../../components/KeyFacts.astro'
 import Flag from '../../components/Flag.astro'
 import Listing from '../../components/Listing.astro'
 import OrgMark from '../../components/OrgMark.astro'
@@ -128,8 +130,6 @@ const sectionTitle = 'mt-12 mb-3 text-4xl'
 /** A line under a section title: where its quotes come from, or what it covers. */
 const sectionCheck = 'mb-3 text-sm text-ink-2'
 const factHelp = 'mt-1 text-md text-ink'
-/** A group of facts inside the facts section: the money, who can apply, applying. */
-const groupTitle = 'mt-8 mb-1 text-xl font-bold'
 const oddsText = p.odds
   ? `about 1 in ${Math.round(p.odds.applied / p.odds.funded)} (${p.odds.funded.toLocaleString('en')} of ${p.odds.applied.toLocaleString('en')}, ${p.odds.period})`
   : null
@@ -207,6 +207,7 @@ const jsonLd = [
         </p>
       )
     }
+    <KeyFacts p={p} byPartner={byPartner} />
     <section
       class:list={[
         cardClasses,
@@ -281,8 +282,7 @@ const jsonLd = [
       <h2 id="facts-title" class={sectionTitle}>The facts, in the funder’s words</h2>
       {children.length > 0 && <p class={sectionCheck}>These cover {p.name} as a whole. Each partner programme above sets its own amounts and deadlines.</p>}
       {/* Grouped by what a reader is deciding: is the money worth it, can we apply, and what applying takes. */}
-      <h3 class={groupTitle}>The money</h3>
-      <dl class="m-0 border-b border-rule">
+      <FactGroup kind="money" title="The money">
         <Fact id={factIds.amount} label="Per project" value={amount} evidence={p.evidence.amount} missing={byPartner}>
           {p.amount?.note && <p class={factHelp}>{sentence(p.amount.note)}</p>}
         </Fact>
@@ -294,10 +294,9 @@ const jsonLd = [
           )
         }
         <Fact id={factIds.co_finance_required} label="Co-funding required" value={yesNo(p.co_finance_required)} evidence={p.evidence.co_finance_required} missing={byPartner} />
-      </dl>
+      </FactGroup>
 
-      <h3 class={groupTitle}>Who can apply</h3>
-      <dl class="m-0 border-b border-rule">
+      <FactGroup kind="who" title="Who can apply">
         <Fact id={factIds.geography} label="Where" value={geographyFull(p.geography)} evidence={p.evidence.geography}>
           {p.geography?.scope === 'countries' && <span slot="value">{p.geography.label && `${p.geography.label}: `}<Countries codes={p.geography.countries} /></span>}
           <template data-where-tpl="covered"><p class="mt-1 text-md font-semibold text-ok-ink">✓ Includes <span data-where-name></span><span data-where-via></span></p></template>
@@ -336,10 +335,9 @@ const jsonLd = [
             </p>
           )}
         </Fact>
-      </dl>
+      </FactGroup>
 
-      <h3 class={groupTitle}>Applying</h3>
-      <dl class="m-0 border-b border-rule">
+      <FactGroup kind="apply" title="Applying">
         <Fact id={factIds.access} label="How to apply" value={accessLabels[p.access]} evidence={p.evidence.access} missing="Not stated">
           {p.access === 'direct' && <p class={factHelp}>{accessHelp[p.access]}</p>}
         </Fact>
@@ -371,7 +369,7 @@ const jsonLd = [
             <Fact id={factIds.administered_by} label="Run by" value={p.administered_by.name} evidence={p.evidence.administered_by} />
           )
         }
-      </dl>
+      </FactGroup>
     </section>
 
     {

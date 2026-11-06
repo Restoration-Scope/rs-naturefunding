@@ -305,6 +305,21 @@ p {
 
 /* Classes markup shares, and that src/lib/finder.ts also writes at runtime (status) or updates (tag). */
 @layer components {
+/* The programme page's three kinds of fact each carry one hue, on their group heading, their icons and the
+   key facts at the top: green for the money, blue for who can apply, clay for applying. Words always lead;
+   the hue only helps the eye find its group again. */
+.tone-money {
+  --tone: var(--brand);
+  --tone-soft: var(--ok);
+}
+.tone-who {
+  --tone: var(--brand-blue);
+  --tone-soft: var(--info);
+}
+.tone-apply {
+  --tone: var(--clay);
+  --tone-soft: var(--warn);
+}
 .wrap {
   max-width: var(--page);
   margin-inline: auto;
