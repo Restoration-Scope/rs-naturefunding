@@ -3,6 +3,7 @@
 import type { Programme } from '../../src/data/schema'
 import { countryRegion, regionLabels, countryName, type Region } from '../../src/lib/geo'
 import { approachLabels } from '../../src/lib/labels'
+import { usdPerUnit } from '../../src/lib/rates'
 
 export type Approach = Programme['approaches'][number]
 
@@ -39,6 +40,11 @@ export function matches(p: Programme, prefs: Prefs): boolean {
   if (where.startsWith('r:')) return codes.includes(where) || codes.includes(`R:${where.slice(2)}`)
   const region = countryRegion[where]
   return codes.includes(where) || (!!region && codes.includes(`R:${region}`))
+}
+
+/** The currency amounts are shown in: one data/rates.json knows, else '' (each funder's own). */
+export function cleanCurrency(c: unknown): string {
+  return typeof c === 'string' && /^[A-Z]{3}$/.test(c) && Object.hasOwn(usdPerUnit, c) ? c : ''
 }
 
 /** "Kenya · Mangroves or Wetlands", or null for no filters. */

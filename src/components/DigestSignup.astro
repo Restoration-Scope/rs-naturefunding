@@ -9,6 +9,7 @@ import { NativeSelect } from '@/components/ui/native-select'
 import { CONSENT, CURRENT_CONSENT } from '../../digest/src/consent'
 import { countriesByRegion } from '../lib/geo'
 import { approachLabels } from '../lib/labels'
+import { usdPerUnit } from '../lib/rates'
 import { DIGEST_LIVE } from '../lib/site'
 
 interface Props {
@@ -24,6 +25,14 @@ interface Props {
 const { compact = false, where = '', approach = '', id = 'digest' } = Astro.props
 const action = import.meta.env.DEV ? 'http://localhost:8790/subscribe' : 'https://email.naturefunding.org/subscribe'
 const approaches = Object.entries(approachLabels).sort((a, b) => a[1].localeCompare(b[1]))
+// Amounts convert to the reader's currency (the funder's own figure stays beside it); US dollars to start.
+const currencyNames = new Intl.DisplayNames(['en'], { type: 'currency' })
+const COMMON = ['USD', 'EUR', 'GBP']
+const currencies = Object.keys(usdPerUnit)
+  .filter((c) => !COMMON.includes(c))
+  .map((code) => ({ code, name: currencyNames.of(code) ?? code }))
+  .filter((c) => c.name !== c.code)
+  .sort((a, b) => a.name.localeCompare(b.name))
 const label = 'mb-1.5 block text-sm font-medium'
 // In the compact form the two choices fold away under a summary line.
 const Choices = compact ? 'details' : 'div'
@@ -57,7 +66,7 @@ const show = DIGEST_LIVE || import.meta.env.DEV
   </div>
 
   <Choices class="mt-3">
-  {compact && <summary class="cursor-pointer py-1 text-sm text-ink-2">Only for a country or type of project</summary>}
+  {compact && <summary class="cursor-pointer py-1 text-sm text-ink-2">Only for a country or type of project, or amounts in your currency</summary>}
   <div class="mt-2 grid gap-3 sm:grid-cols-2">
     <div>
       <label class={label} for={`${id}-where`}>Where the project is <span class="font-normal text-ink-2">(optional)</span></label>
@@ -82,6 +91,16 @@ const show = DIGEST_LIVE || import.meta.env.DEV
       <NativeSelect id={`${id}-approach`} name="approach" className="min-h-11">
         <option value="">Any type</option>
         {approaches.map(([k, v]) => <option value={k} selected={approach === k}>{v}</option>)}
+      </NativeSelect>
+    </div>
+    <div class="sm:col-span-2">
+      <label class={label} for={`${id}-currency`}>Show amounts in</label>
+      <NativeSelect id={`${id}-currency`} name="currency" className="min-h-11">
+        {COMMON.map((c) => <option value={c} selected={c === 'USD'}>{currencyNames.of(c)} ({c})</option>)}
+        <option value="">The funder’s own currency</option>
+        <optgroup label="All currencies">
+          {currencies.map((c) => <option value={c.code}>{c.name} ({c.code})</option>)}
+        </optgroup>
       </NativeSelect>
     </div>
   </div>

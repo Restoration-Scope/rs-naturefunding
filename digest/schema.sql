@@ -8,6 +8,9 @@ CREATE TABLE IF NOT EXISTS subscribers (
   where_code TEXT NOT NULL DEFAULT '',
   -- The finder's `approach` values, space-separated; '' for any.
   approaches TEXT NOT NULL DEFAULT '',
+  -- The currency amounts are shown in (an ISO code from data/rates.json), or '' for each funder's own.
+  -- Added after launch: ALTER TABLE subscribers ADD COLUMN currency TEXT NOT NULL DEFAULT '';
+  currency TEXT NOT NULL DEFAULT '',
   -- The consent wording version the person saw (src/consent.ts).
   consent TEXT NOT NULL,
   -- When the person chose these filters (the sign-up the confirm link came from); an older link can't replace them.

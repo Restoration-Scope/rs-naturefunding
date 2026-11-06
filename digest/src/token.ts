@@ -2,7 +2,7 @@
 // change what's inside, and nothing about a sign-up is stored until the address confirms. Rotating the secret
 // voids open confirmation and unsubscribe links.
 
-export type ConfirmClaim = { k: 'confirm'; email: string; where: string; approaches: string[]; consent: string; at: number }
+export type ConfirmClaim = { k: 'confirm'; email: string; where: string; approaches: string[]; currency?: string; consent: string; at: number }
 export type UnsubscribeClaim = { k: 'unsubscribe'; id: string }
 export type Claim = ConfirmClaim | UnsubscribeClaim
 

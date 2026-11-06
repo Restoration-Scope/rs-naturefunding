@@ -1,5 +1,6 @@
 import type { Programme } from '../data/schema'
 import { countryName, regionLabels } from './geo'
+import { usdPerUnit } from './rates'
 
 // Dates are calendar days: read them in UTC so no time zone moves them a day.
 const fmt = (month: 'short' | 'long') => new Intl.DateTimeFormat('en-US', { month, day: 'numeric', year: 'numeric', timeZone: 'UTC' })
@@ -57,6 +58,42 @@ export function geographyFull(g: Programme['geography']): string | null {
 
 export const joinAnd = (xs: string[]) =>
   xs.length <= 1 ? (xs[0] ?? '') : `${xs.slice(0, -1).join(', ')} and ${xs.at(-1)}`
+
+/** "$5K", "€20M", "CA$7.5K": the sign where the currency has one, else its code ("CZK 50K"). */
+const compact = (currency: string, n: number, digits: number) =>
+  new Intl.NumberFormat('en-US', { style: 'currency', currency, notation: 'compact', maximumSignificantDigits: digits }).format(n).replace(/\s/, ' ')
+const compactBare = (n: number, digits: number) => new Intl.NumberFormat('en-US', { notation: 'compact', maximumSignificantDigits: digits }).format(n)
+
+/** "$5K–$15K", "CZK 50K–200K", "Up to £3K", "From €50K": the figures alone, with no "per project". */
+function shortRange(a: NonNullable<Programme['amount']>, currency: string, factor: number, digits: number, about = false): string {
+  const f = (n: number) => compact(currency, n * factor, digits)
+  const ab = about ? 'about ' : ''
+  if (a.min !== undefined && a.max !== undefined) {
+    if (a.min === a.max) return `${ab}${f(a.max)}`
+    if (a.max_exclusive) return `${ab}${f(a.min)} to under ${f(a.max)}`
+    // A code (not a sign) is written once: "CZK 50K–200K".
+    const low = f(a.min)
+    const top = /^[A-Z]{3} /.test(low) ? compactBare(a.max * factor, digits) : f(a.max)
+    return `${ab}${low}–${top}`
+  }
+  if (a.max !== undefined) return `${a.max_exclusive ? 'under' : 'up to'} ${ab}${f(a.max)}`
+  return `from ${ab}${f(a.min!)}`
+}
+
+const capital = (s: string) => s[0]!.toUpperCase() + s.slice(1)
+
+/**
+ * An amount for a quick read, per project: "Usually $5K–$15K per project". With `currency` set to another
+ * currency than the funder's, the figures are converted at data/rates.json ("About $5.6M–$22M per project") and
+ * `original` keeps the funder's own ("€5M–€20M"), for showing muted beside it.
+ */
+export function amountShort(a: Programme['amount'], currency?: string): { text: string; original: string | null } | null {
+  if (!a) return null
+  const to = currency && currency !== a.currency && usdPerUnit[currency] && usdPerUnit[a.currency] ? currency : null
+  const figures = to ? shortRange(a, to, usdPerUnit[a.currency]! / usdPerUnit[to]!, 2, true) : shortRange(a, a.currency, 1, 3)
+  const text = `${a.typical ? `Usually ${figures}` : capital(figures)} per project${a.per === 'year' ? ' a year' : ''}`
+  return { text, original: to ? capital(shortRange(a, a.currency, 1, 3)) : null }
+}
 
 /** A note shown as a sentence: adds the full stop unless it already ends in one. */
 export const sentence = (text: string) => (/[.!?…]["”’)]?$/.test(text.trim()) ? text.trim() : `${text.trim()}.`)

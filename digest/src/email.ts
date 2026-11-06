@@ -1,7 +1,8 @@
 // The two emails: the confirmation and the weekly digest. Plain table HTML with inline styles (what mail
 // clients render), plus a text version. Colours are the site's tokens (src/styles/global.css).
 import type { Call } from '../../src/data/schema'
-import { amountText, geographyText, longDate } from '../../src/lib/format'
+import { amountShort, geographyText, longDate } from '../../src/lib/format'
+import { ratesDate } from '../../src/lib/rates'
 import { countryName, regionLabels, type Region } from '../../src/lib/geo'
 import { approachLabels, projectTypes } from '../../src/lib/labels'
 import { markFor } from '../../src/lib/marks'
@@ -53,6 +54,10 @@ function funderMark(site: string, org: { name: string; url: string }) {
   return `<span style="display:inline-block;width:16px;height:16px;line-height:16px;margin-right:4px;vertical-align:-2px;border-radius:3px;background:${C.linen};color:${C.ink2};font-size:8px;font-weight:600;text-align:center;">${esc(m.letters)}</span>`
 }
 
+/** "US dollars", for "amounts in US dollars". */
+export const currencyName = (code: string) =>
+  new Intl.NumberFormat('en', { style: 'currency', currency: code, currencyDisplay: 'name' }).formatToParts(2).find((p) => p.type === 'currency')?.value ?? code
+
 /** The finder with the subscriber's choices set, so "see them all" lands on the same list (src/lib/finder.ts fromUrl). */
 export function finderUrl(site: string, prefs: Prefs) {
   const qs = [prefs.where && `where=${encodeURIComponent(prefs.where).replace('%3A', ':')}`, prefs.approaches.length && `approach=${prefs.approaches.join(',')}`].filter(Boolean).join('&')
@@ -80,9 +85,10 @@ ${footer ? `<tr><td style="padding:20px 28px 28px;font-family:${SANS};font-size:
 const button = (href: string, label: string) =>
   `<table role="presentation" cellpadding="0" cellspacing="0" style="margin:24px 0;"><tr><td style="background:${C.brand};border-radius:6px;"><a href="${esc(href)}" style="display:inline-block;padding:12px 22px;font-family:${SANS};font-size:16px;font-weight:600;color:#ffffff;text-decoration:none;">${esc(label)}</a></td></tr></table>`
 
-export function confirmationEmail(o: { site: string; confirmUrl: string; prefs: Prefs }): Email {
+export function confirmationEmail(o: { site: string; confirmUrl: string; prefs: Prefs; currency?: string }): Email {
   const what = prefsText(o.prefs)
-  const lead = `Press the button to start getting new nature funding calls by email${what ? ` for ${what}` : ''}: at most one email a week, and only when there is something new.`
+  const inCurrency = o.currency ? `, with amounts in ${currencyName(o.currency)}` : ''
+  const lead = `Press the button to start getting new nature funding calls by email${what ? ` for ${what}` : ''}${inCurrency}: at most one email a week, and only when there is something new.`
   const leadHtml = what ? esc(lead).replace(` for ${esc(what)}`, ` for ${prefsHtml(o.site, o.prefs)}`) : esc(lead)
   const html = frame(
     o.site,
@@ -118,7 +124,7 @@ function placeOf(i: DigestItem, prefs: Prefs) {
   return country ? { text: countryName(country), flag: country } : { text: geographyText(i.programme.geography), flag: null }
 }
 
-function itemParts(i: DigestItem, site: string, prefs: Prefs) {
+function itemParts(i: DigestItem, site: string, prefs: Prefs, currency?: string) {
   const p = i.programme
   return {
     name: p.name,
@@ -127,14 +133,14 @@ function itemParts(i: DigestItem, site: string, prefs: Prefs) {
     status: callLine(i.call, i.section),
     live: i.call?.status === 'open' || i.call?.status === 'upcoming',
     callLabel: i.call?.label ?? null,
-    amount: amountText(p.amount),
+    amount: amountShort(p.amount, currency),
     place: placeOf(i, prefs),
     page: `${site}/p/${p.id}/`,
     callUrl: i.call?.url ?? p.url,
   }
 }
 
-export function digestEmail(o: { site: string; digest: Digest; prefs: Prefs; since: string; unsubscribeUrl: string; manageUrl: string }): Email {
+export function digestEmail(o: { site: string; digest: Digest; prefs: Prefs; currency?: string; since: string; unsubscribeUrl: string; manageUrl: string }): Email {
   const { items, total } = o.digest
   const what = prefsText(o.prefs)
   const counts = (['open', 'upcoming', 'new'] as Section[]).map((s) => [s, items.filter((i) => i.section === s).length] as const)
@@ -145,16 +151,19 @@ export function digestEmail(o: { site: string; digest: Digest; prefs: Prefs; sin
   const intro = `New since ${longDate(o.since.slice(0, 10))}${what ? `, for ${what}` : ''}.`
   const introHtml = what ? esc(intro).replace(`, for ${esc(what)}`, `, for ${prefsHtml(o.site, o.prefs)}`) : esc(intro)
 
+  const fineprint = o.currency
+    ? `Amounts are per project, converted to ${currencyName(o.currency)} at the rates of ${longDate(ratesDate)}, with the funder’s own figure in brackets. Check the funder’s page before you apply.`
+    : 'Amounts are per project, as the funder states them. Check the funder’s page before you apply.'
   const sections = counts
     .filter(([, n]) => n > 0)
     .map(([s]) => {
       const rows = items
         .filter((i) => i.section === s)
         .map((i) => {
-          const x = itemParts(i, o.site, o.prefs)
+          const x = itemParts(i, o.site, o.prefs, o.currency)
           const place = x.place.text ? (x.place.flag ? withIcon(icon(`${o.site}/flags/${x.place.flag}.png`, 21, 14, 2), x.place.text) : esc(x.place.text)) : ''
           return `<tr><td style="padding:14px 0;border-top:1px solid ${C.rule};">
-<div style="font-size:18px;line-height:1.35;">${x.amount ? `<strong style="font-weight:600;color:${C.ink};">${esc(x.amount)}</strong>` : `<span style="color:${C.ink2};">Amount not stated</span>`}${place ? `<span style="font-size:15px;color:${C.ink2};"> · ${place}</span>` : ''}</div>
+<div style="font-size:18px;line-height:1.35;">${x.amount ? `<strong style="font-weight:600;color:${C.ink};">${esc(x.amount.text)}</strong>${x.amount.original ? `<span style="font-size:15px;color:${C.ink2};"> (${esc(x.amount.original)})</span>` : ''}` : `<span style="color:${C.ink2};">Amount not stated</span>`}${place ? `<span style="font-size:15px;color:${C.ink2};"> · ${place}</span>` : ''}</div>
 <div style="font-size:15px;margin-top:6px;"><a href="${esc(x.page)}" style="color:${C.ink};text-decoration:underline;text-decoration-color:${C.rule};">${esc(x.name)}</a></div>
 <div style="font-size:15px;color:${C.ink};margin-top:2px;">${withIcon(x.mark, x.funder)}</div>
 <div style="font-size:15px;margin-top:8px;">${x.live ? `<strong style="color:${C.brand};font-weight:600;">${esc(x.status)}</strong>` : `<span style="color:${C.ink2};">${esc(x.status)}</span>`}${x.callLabel ? ` <span style="color:${C.ink2};">· ${esc(x.callLabel)}</span>` : ''}</div>
@@ -169,7 +178,7 @@ export function digestEmail(o: { site: string; digest: Digest; prefs: Prefs; sin
 
   const more = total > items.length ? `<p style="margin:20px 0 0;">And ${total - items.length} more. <a href="${esc(finderUrl(o.site, o.prefs))}" style="color:${C.brand};">See them all on naturefunding.org</a>.</p>` : ''
   const body = `<p style="margin:0;color:${C.ink2};font-size:15px;">${introHtml}</p>${sections}${more}
-<p style="margin:24px 0 16px;font-size:14px;color:${C.ink2};">Each listing is checked against the funder’s own page. Dates and amounts are as the funder states them; check the funder’s page before you apply.</p>`
+<p style="margin:24px 0 16px;font-size:14px;color:${C.ink2};">Each listing is checked against the funder’s own page. ${esc(fineprint)}</p>`
   const footer = `You get this because you signed up at naturefunding.org${what ? ` for ${esc(what)}` : ''}. At most one email a week, only when something is new.<br>
 <a href="${esc(o.manageUrl)}" style="color:${C.ink2};">Change what you get</a> · <a href="${esc(o.unsubscribeUrl)}" style="color:${C.ink2};">Unsubscribe</a>`
 
@@ -181,13 +190,13 @@ export function digestEmail(o: { site: string; digest: Digest; prefs: Prefs; sin
         ...items
           .filter((i) => i.section === s)
           .map((i) => {
-            const x = itemParts(i, o.site, o.prefs)
-            const head = [x.amount ?? 'Amount not stated', x.place.text].filter(Boolean).join(' · ')
+            const x = itemParts(i, o.site, o.prefs, o.currency)
+            const head = [x.amount ? `${x.amount.text}${x.amount.original ? ` (${x.amount.original})` : ''}` : 'Amount not stated', x.place.text].filter(Boolean).join(' · ')
             return [`- ${head}`, `  ${x.name}`, `  ${x.funder}`, `  ${x.status}${x.callLabel ? ` · ${x.callLabel}` : ''}`, `  ${x.page}`].join('\n')
           }),
       ].join('\n\n'),
     )
     .join('\n\n')
-  const text = `${intro}\n\n${textItems}\n${total > items.length ? `\nAnd ${total - items.length} more: ${finderUrl(o.site, o.prefs)}\n` : ''}\nDates and amounts are as the funder states them; check the funder's page before you apply.\n\n--\nAt most one email a week, only when something is new.\nChange what you get: ${o.manageUrl}\nUnsubscribe: ${o.unsubscribeUrl}\n\n${TAGLINE}\n`
+  const text = `${intro}\n\n${textItems}\n${total > items.length ? `\nAnd ${total - items.length} more: ${finderUrl(o.site, o.prefs)}\n` : ''}\n${fineprint}\n\n--\nAt most one email a week, only when something is new.\nChange what you get: ${o.manageUrl}\nUnsubscribe: ${o.unsubscribeUrl}\n\n${TAGLINE}\n`
   return { subject, html: frame(o.site, intro, body, footer), text }
 }

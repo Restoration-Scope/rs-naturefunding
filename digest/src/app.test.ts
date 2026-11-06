@@ -56,12 +56,12 @@ async function subscribeAndConfirm(email: string, extra: [string, string][] = []
 
 describe('sign-up with double opt-in', () => {
   test('the form answers at once, and only the confirm button stores the address', async () => {
-    const res = await signup('Ana@Example.org', [['where', 'KE'], ['approach', 'mangroves'], ['approach', 'nonsense']])
+    const res = await signup('Ana@Example.org', [['where', 'KE'], ['approach', 'mangroves'], ['approach', 'nonsense'], ['currency', 'KES']])
     expect(res.status).toBe(303)
     expect(res.headers.get('Location')).toBe('https://naturefunding.org/digest/check-your-inbox/')
     expect(mailer.sent).toHaveLength(1)
     expect(mailer.sent[0]!.to).toBe('ana@example.org')
-    expect(mailer.sent[0]!.text).toContain('for Kenya · Mangroves')
+    expect(mailer.sent[0]!.text).toContain('for Kenya · Mangroves, with amounts in Kenyan shillings')
     expect(subscribers()).toHaveLength(0)
 
     // Opening the link (or a mail scanner fetching it) shows a page and stores nothing.
@@ -73,7 +73,7 @@ describe('sign-up with double opt-in', () => {
 
     const done = await call(form('/confirm', [['t', new URL(link).searchParams.get('t')!]]))
     expect(done.headers.get('Location')).toBe('https://naturefunding.org/digest/subscribed/')
-    expect(subscribers()).toMatchObject([{ email: 'ana@example.org', where_code: 'KE', approaches: 'mangroves', consent: 'v1', last_sent_at: null }])
+    expect(subscribers()).toMatchObject([{ email: 'ana@example.org', where_code: 'KE', approaches: 'mangroves', currency: 'KES', consent: 'v1', last_sent_at: null }])
   })
 
   test('confirming again updates the saved filters instead of adding a row', async () => {
