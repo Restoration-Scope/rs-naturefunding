@@ -21,7 +21,12 @@
   },
   "access": "direct",
   "window": "fixed",
-  "amount": { "currency": "EUR", "min": 60000, "max": 200000 },
+  "amount": {
+    "currency": "EUR",
+    "min": 60000,
+    "max": 200000,
+    "note": "Requested funding volume must not exceed the average annual revenue of the implementing organisation over the past three years."
+  },
   "co_finance_required": null,
   "reporting": null,
   "calls": [
@@ -35,8 +40,6 @@
         "date": "2027-01-08",
         "text": "the application period will be closed on 8 January 2027"
       },
-      "expected": "15 November 2026",
-      "note": "Subject to funding approval",
       "evidence": {
         "status": {
           "source_url": "https://iki-small-grants.de/funding/",
@@ -50,7 +53,9 @@
           "checked_at": "2026-11-03",
           "method": "page"
         }
-      }
+      },
+      "expected": "15 November 2026",
+      "note": "Subject to funding approval"
     }
   ],
   "evidence": {
@@ -63,7 +68,7 @@
     "applicant_types": {
       "source_url": "https://iki-small-grants.de/funding/",
       "quote": "Applicants should be not-for-profit organisations and private companies if they pursue non-profit objectives as part of their proposed project.",
-      "checked_at": "2026-11-03",
+      "checked_at": "2026-11-06",
       "method": "page"
     },
     "geography": {
@@ -75,7 +80,7 @@
     "access": {
       "source_url": "https://iki-small-grants.de/funding/",
       "quote": "The international call for proposals addresses local organisations based in ODA-eligible countries with an average annual revenue of between EUR 60,000 and EUR 500,000.",
-      "checked_at": "2026-11-03",
+      "checked_at": "2026-11-06",
       "method": "page"
     },
     "window": {
@@ -87,7 +92,7 @@
     "amount": {
       "source_url": "https://iki-small-grants.de/funding/",
       "quote": "IKI Small Grants provides funding between EUR 60,000 and EUR 200,000.",
-      "checked_at": "2026-11-03",
+      "checked_at": "2026-11-06",
       "method": "page"
     }
   },
