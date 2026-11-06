@@ -191,10 +191,11 @@ describe('no hydration, small JavaScript', () => {
         expect(inline.length).toBe(1)
         expect(inline.join('').length).toBeLessThanOrEqual(4500)
       } else if (/^p\/[^/]+\/index\.html$/.test(f)) {
-        // The finder's Where carried onto the page (src/lib/where-view.ts), and the worth-it check on direct programmes.
+        // The finder's Where carried onto the page (src/lib/where-view.ts) with the contents list
+        // (src/lib/page-contents.ts), and the worth-it check on direct programmes.
         expect(inline.length, f).toBeGreaterThanOrEqual(1)
         expect(inline.length, f).toBeLessThanOrEqual(2)
-        expect(inline.join('').length, f).toBeLessThanOrEqual(8000)
+        expect(inline.join('').length, f).toBeLessThanOrEqual(10000)
       } else expect(inline, f).toEqual([])
     }
   })

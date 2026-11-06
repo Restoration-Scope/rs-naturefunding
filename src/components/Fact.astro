@@ -1,6 +1,6 @@
 ---
 import type { Evidence } from '../data/schema'
-import { keepAmountTogether, pageLabel } from '../lib/format'
+import { boldFigures, keepAmountTogether, pageLabel } from '../lib/format'
 import { notRecheckedPage } from '../lib/data'
 import SourceLink from './SourceLink.astro'
 import {
@@ -54,9 +54,11 @@ interface Props {
   missing?: string
   /** Anchor for this fact, so a citation can link it (src/lib/agent.ts factIds). */
   id?: string
+  /** The money facts: every figure in the quotes reads bold. */
+  figures?: boolean
 }
 
-const { label, value, evidence, missing = 'Not found on the pages we read', id } = Astro.props
+const { label, value, evidence, missing = 'Not found on the pages we read', id, figures = false } = Astro.props
 const shown = value && (label === 'Amount' || label === 'Per project' || label === 'Total budget') ? keepAmountTogether(value) : value
 const Icon = icons[label]
 // A conditional value slot that renders nothing still counts as filled, so check what it draws.
@@ -88,7 +90,7 @@ const quotes = evidence ? (Array.isArray(evidence) ? evidence : [evidence]) : []
               source icon ends the quote, held to its last word; its tooltip names the page and date. */}
           <blockquote class="max-w-[65ch] border-l-3 border-rule-strong py-[0.1rem] pl-[0.85rem] text-[0.9875rem] text-ink" cite={e.source_url}>
             <p>
-              <span class="before:content-['“'] after:content-['”']">{e.quote}</span>{'\u00a0'}<SourceLink
+              {figures ? <span class="before:content-['“'] after:content-['”']" set:html={boldFigures(e.quote)} /> : <span class="before:content-['“'] after:content-['”']">{e.quote}</span>}{'\u00a0'}<SourceLink
                 url={e.source_url}
                 label={pageLabel(e.source_url)}
                 checked={e.checked_at}

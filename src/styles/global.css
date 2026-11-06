@@ -109,6 +109,8 @@
 
   --radius: 0.5rem;
   --page: 76rem;
+  --contents-w: 13rem;
+  --contents-gap: 2.5rem;
   --gutter: clamp(1rem, 3vw, 2rem);
 
   /* shadcn/ui's variables, mapped onto the palette above (not shadcn's default palette). */
@@ -319,6 +321,15 @@ p {
 .tone-apply {
   --tone: var(--clay);
   --tone-soft: var(--warn);
+}
+/* The page's other sections: a quiet tile, no hue of their own. */
+.tone-plain {
+  --tone: var(--ink-2);
+  --tone-soft: var(--sunk);
+}
+/* A jump from the contents list leaves a little room above what it lands on. */
+main [id] {
+  scroll-margin-top: 1.5rem;
 }
 .wrap {
   max-width: var(--page);

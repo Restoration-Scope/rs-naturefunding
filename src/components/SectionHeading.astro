@@ -1,0 +1,19 @@
+---
+import { sections, type SectionKind } from '../lib/sections'
+
+/** A programme page section's heading: its icon on a tile in the section's hue, then the words. */
+interface Props {
+  kind: SectionKind
+  id?: string
+}
+
+const { kind, id } = Astro.props
+const { icon: Icon, tone } = sections[kind]
+---
+
+<h2 id={id} class:list={[tone, 'mt-12 mb-3 flex items-center gap-3 text-3xl']}>
+  <span class="grid size-10 flex-none place-items-center rounded-md bg-(--tone-soft) text-(--tone)">
+    <Icon className="size-5" aria-hidden="true" />
+  </span>
+  <span class="min-w-0"><slot /></span>
+</h2>

@@ -1,7 +1,7 @@
 ---
 import type { Programme } from '../data/schema'
 import { factIds } from '../lib/agent'
-import { amountText, effortShort, geographyText, joinAnd, keepAmountTogether, poolText } from '../lib/format'
+import { amountText, boldFigures, effortShort, geographyText, joinAnd, keepAmountTogether, poolText } from '../lib/format'
 import { accessLabels, applicantLabels } from '../lib/labels'
 import { Banknote, ClipboardCheck, UserCheck } from 'lucide-react'
 
@@ -49,19 +49,21 @@ const items = [
 ]
 ---
 
-<dl class="mt-6 grid border-y border-rule md:grid-cols-3" aria-label="Key facts">
+{/* Starts on the same line as the apply box and the contents list beside it. */}
+<dl class="mt-6 grid gap-x-8 gap-y-5 md:grid-cols-3 2xl:mt-12" aria-label="Key facts">
   {
     items.map(({ tone, icon: Icon, label, value, more, href }) => (
-      <div class:list={[tone, 'flex items-start gap-3 py-3 max-md:not-first:border-t max-md:not-first:border-rule md:px-4 md:first:pl-0 md:not-first:border-l md:not-first:border-rule']}>
-        <span class="mt-0.5 grid size-9 flex-none place-items-center rounded-md bg-(--tone-soft) text-(--tone)">
+      <div class:list={[tone, 'flex items-start gap-3']}>
+        <span class="grid size-10 flex-none place-items-center rounded-md bg-(--tone-soft) text-(--tone)">
           <Icon className="size-5" aria-hidden="true" />
         </span>
         <div class="min-w-0">
           <dt class="text-sm font-bold text-ink-2">{label}</dt>
           <dd class="m-0 text-lg leading-snug font-semibold">
-            <a class="text-ink no-underline decoration-(--tone) underline-offset-3 hover:underline" href={href}>{value}</a>
+            {/* A long place name gives three lines here; the fact below has it whole. */}
+            <a class="line-clamp-3 text-ink no-underline decoration-(--tone) underline-offset-3 hover:underline" href={href} title={value.length > 60 ? value : undefined}>{value}</a>
           </dd>
-          {more && <dd class="m-0 mt-0.5 text-sm text-ink-2">{more}</dd>}
+          {more && (tone === 'tone-money' ? <dd class="m-0 mt-0.5 text-sm text-ink-2" set:html={boldFigures(more)} /> : <dd class="m-0 mt-0.5 text-sm text-ink-2">{more}</dd>)}
         </div>
       </div>
     ))

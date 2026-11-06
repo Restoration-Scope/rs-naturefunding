@@ -112,3 +112,12 @@ export function effortText(e: Programme['effort']): string | null {
   if (!e) return null
   return [...e.steps, ...(e.more_after ? ['further steps'] : [])].join(' → ')
 }
+
+const escapeHtml = (s: string) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;')
+/** A sum of money or a share in text: "€5,000,000", "EUR 2 - 4 million", "Nu. 6.0 million", "25%", "17,000,000 EUR". */
+const figure =
+  /(?:\b[A-Z]{3}\s?|Nu\.\s?|[€$£¥₹])?\d[\d,.]*(?:\s?[-–]\s?\d[\d,.]*)?(?:\s?(?:million|billion|bn|m|k)\b)?%?(?:\s[A-Z]{3}\b)?/g
+/** Text as HTML with each figure in bold, so the numbers stand out in the money facts. A bare year stays plain. */
+export function boldFigures(text: string): string {
+  return escapeHtml(text).replace(figure, (m) => (/^(19|20)\d\d$/.test(m) ? m : `<strong class="font-bold text-ink">${m}</strong>`))
+}
