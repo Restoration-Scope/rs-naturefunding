@@ -51,7 +51,8 @@ const partnersShown = partnersNow.length > 0 ? partnersNow : childListings
 const noCallRoute = p.access === 'intermediary' || p.access === 'invitation_only'
 const amount = amountText(p.amount)
 const pool = poolText(p.pool)
-const amountValue = amount ?? (pool ? `Budget shared by all grants: ${pool}${p.pool?.note ? `. ${sentence(p.pool.note)}` : ''}` : null)
+// The pot reads as its own fact, so it is never taken for one grant's size.
+const poolValue = pool ? pool[0]!.toUpperCase() + pool.slice(1) : null
 // The place and type pages this programme shows on, linked under Where and the approach.
 const more = pagesFor(p)
 const yesNo = (b: boolean | null) => (b === null ? null : b ? 'Yes' : 'No')
@@ -127,6 +128,8 @@ const sectionTitle = 'mt-12 mb-3 text-4xl'
 /** A line under a section title: where its quotes come from, or what it covers. */
 const sectionCheck = 'mb-3 text-sm text-ink-2'
 const factHelp = 'mt-1 text-md text-ink'
+/** A group of facts inside the facts section: the money, who can apply, applying. */
+const groupTitle = 'mt-8 mb-1 text-xl font-bold'
 const oddsText = p.odds
   ? `about 1 in ${Math.round(p.odds.applied / p.odds.funded)} (${p.odds.funded.toLocaleString('en')} of ${p.odds.applied.toLocaleString('en')}, ${p.odds.period})`
   : null
@@ -277,24 +280,68 @@ const jsonLd = [
     <section aria-labelledby="facts-title">
       <h2 id="facts-title" class={sectionTitle}>The facts, in the funder’s words</h2>
       {children.length > 0 && <p class={sectionCheck}>These cover {p.name} as a whole. Each partner programme above sets its own amounts and deadlines.</p>}
+      {/* Grouped by what a reader is deciding: is the money worth it, can we apply, and what applying takes. */}
+      <h3 class={groupTitle}>The money</h3>
+      <dl class="m-0 border-b border-rule">
+        <Fact id={factIds.amount} label="Per project" value={amount} evidence={p.evidence.amount} missing={byPartner}>
+          {p.amount?.note && <p class={factHelp}>{sentence(p.amount.note)}</p>}
+        </Fact>
+        {
+          p.pool && (
+            <Fact id={factIds.pool} label="Total budget" value={poolValue} evidence={p.evidence.pool}>
+              <p class={factHelp}>Shared by all the grants{p.pool.note ? `. ${sentence(p.pool.note)}` : ', not one project’s share.'}</p>
+            </Fact>
+          )
+        }
+        <Fact id={factIds.co_finance_required} label="Co-funding required" value={yesNo(p.co_finance_required)} evidence={p.evidence.co_finance_required} missing={byPartner} />
+      </dl>
+
+      <h3 class={groupTitle}>Who can apply</h3>
+      <dl class="m-0 border-b border-rule">
+        <Fact id={factIds.geography} label="Where" value={geographyFull(p.geography)} evidence={p.evidence.geography}>
+          {p.geography?.scope === 'countries' && <span slot="value">{p.geography.label && `${p.geography.label}: `}<Countries codes={p.geography.countries} /></span>}
+          <template data-where-tpl="covered"><p class="mt-1 text-md font-semibold text-ok-ink">✓ Includes <span data-where-name></span><span data-where-via></span></p></template>
+          <template data-where-tpl="uncovered"><p class="mt-1 text-md font-semibold text-warn-ink">✕ Doesn’t include <span data-where-name></span></p></template>
+          {more.places.length > 0 && (
+            <p class={factHelp}>
+              More grants in{' '}
+              {more.places.map((pg, i) => (
+                <>{i > 0 && (i === more.places.length - 1 ? ' and ' : ', ')}<a href={pg.path}>{pg.name}</a></>
+              ))}
+              .
+            </p>
+          )}
+        </Fact>
+        <Fact
+          id={factIds.applicant_types}
+          label="Organisations"
+          value={p.applicant_types ? joinAnd(p.applicant_types.map((a) => applicantLabels[a])) : null}
+          evidence={p.evidence.applicant_types}
+          missing={byPartner}
+        />
+        {
+          p.consortium_required !== undefined && (
+            <Fact id={factIds.consortium_required} label="Consortium required" value={yesNo(p.consortium_required)} evidence={p.evidence.consortium_required} />
+          )
+        }
+        <Fact id={factIds.approaches} label="Restoration approach" value={joinAnd(p.approaches.map((a) => approachLabels[a]))} missing="">
+          <p class={factHelp}>Our classification, from the funder’s description of what it supports.</p>
+          {more.types.length > 0 && (
+            <p class={factHelp}>
+              More grants for{' '}
+              {more.types.map((pg, i) => (
+                <>{i > 0 && (i === more.types.length - 1 ? ' and ' : ', ')}<a href={pg.path}>{pg.name.toLowerCase()}</a></>
+              ))}
+              .
+            </p>
+          )}
+        </Fact>
+      </dl>
+
+      <h3 class={groupTitle}>Applying</h3>
       <dl class="m-0 border-b border-rule">
         <Fact id={factIds.access} label="How to apply" value={accessLabels[p.access]} evidence={p.evidence.access} missing="Not stated">
           {p.access === 'direct' && <p class={factHelp}>{accessHelp[p.access]}</p>}
-        </Fact>
-        <Fact
-          id={factIds.amount}
-          label="Amount"
-          value={amountValue}
-          evidence={[...(p.evidence.amount ? [p.evidence.amount] : []), ...(p.evidence.pool ? [p.evidence.pool] : [])]}
-          missing={byPartner}
-        >
-          {!amount && pool && <span id={factIds.pool}></span>}
-          {p.amount?.note && <p class={factHelp}>{sentence(p.amount.note)}</p>}
-          {amount && pool && p.pool && (
-            <p id={factIds.pool} class="mt-1 text-sm text-ink-2">
-              Budget shared by all grants: {keepAmountTogether(pool)}.{p.pool.note && ` ${sentence(p.pool.note)}`}
-            </p>
-          )}
         </Fact>
         {
           p.access === 'direct' && (
@@ -312,59 +359,18 @@ const jsonLd = [
             </Fact>
           )
         }
-        <Fact id={factIds.geography} label="Where" value={geographyFull(p.geography)} evidence={p.evidence.geography}>
-          {p.geography?.scope === 'countries' && <span slot="value">{p.geography.label && `${p.geography.label}: `}<Countries codes={p.geography.countries} /></span>}
-          <template data-where-tpl="covered"><p class="mt-1 text-md font-semibold text-ok-ink">✓ Includes <span data-where-name></span><span data-where-via></span></p></template>
-          <template data-where-tpl="uncovered"><p class="mt-1 text-md font-semibold text-warn-ink">✕ Doesn’t include <span data-where-name></span></p></template>
-          {more.places.length > 0 && (
-            <p class={factHelp}>
-              More grants in{' '}
-              {more.places.map((pg, i) => (
-                <>{i > 0 && (i === more.places.length - 1 ? ' and ' : ', ')}<a href={pg.path}>{pg.name}</a></>
-              ))}
-              .
-            </p>
-          )}
-        </Fact>
-        <Fact
-          id={factIds.applicant_types}
-          label="Who can apply"
-          value={p.applicant_types ? joinAnd(p.applicant_types.map((a) => applicantLabels[a])) : null}
-          evidence={p.evidence.applicant_types}
-         
-          missing={byPartner}
-        />
         <Fact
           id={factIds.window}
           label="Rounds"
           value={p.window === 'rolling' ? 'Rolling: apply any time' : p.window === 'fixed' ? 'Fixed rounds with deadlines' : null}
           evidence={p.evidence.window}
-         
           missing={byPartner}
         />
-        <Fact id={factIds.co_finance_required} label="Co-funding required" value={yesNo(p.co_finance_required)} evidence={p.evidence.co_finance_required} missing={byPartner} />
-        {
-          p.consortium_required !== undefined && (
-            <Fact id={factIds.consortium_required} label="Consortium required" value={yesNo(p.consortium_required)} evidence={p.evidence.consortium_required} />
-          )
-        }
         {
           p.administered_by && (
             <Fact id={factIds.administered_by} label="Run by" value={p.administered_by.name} evidence={p.evidence.administered_by} />
           )
         }
-        <Fact id={factIds.approaches} label="Restoration approach" value={joinAnd(p.approaches.map((a) => approachLabels[a]))} missing="">
-          <p class={factHelp}>Our classification, from the funder’s description of what it supports.</p>
-          {more.types.length > 0 && (
-            <p class={factHelp}>
-              More grants for{' '}
-              {more.types.map((pg, i) => (
-                <>{i > 0 && (i === more.types.length - 1 ? ' and ' : ', ')}<a href={pg.path}>{pg.name.toLowerCase()}</a></>
-              ))}
-              .
-            </p>
-          )}
-        </Fact>
       </dl>
     </section>
 

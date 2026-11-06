@@ -14,6 +14,7 @@ import {
   DoorOpen,
   FileText,
   HandCoins,
+  Landmark,
   MapPin,
   Network,
   Repeat,
@@ -25,6 +26,9 @@ import {
 const icons: Record<string, typeof Banknote> = {
   'How to apply': DoorOpen,
   Amount: Banknote,
+  'Per project': Banknote,
+  'Total budget': Landmark,
+  Organisations: Users,
   'Work to apply': ClipboardList,
   Where: MapPin,
   'Who can apply': Users,
@@ -53,7 +57,7 @@ interface Props {
 }
 
 const { label, value, evidence, missing = 'Not found on the pages we read', id } = Astro.props
-const shown = value && label === 'Amount' ? keepAmountTogether(value) : value
+const shown = value && (label === 'Amount' || label === 'Per project' || label === 'Total budget') ? keepAmountTogether(value) : value
 const Icon = icons[label]
 const quotes = evidence ? (Array.isArray(evidence) ? evidence : [evidence]) : []
 ---
