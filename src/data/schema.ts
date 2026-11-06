@@ -138,9 +138,12 @@ export const pool = z.object({
   value: z.number().positive(),
   /** What the total covers: one round of applications, one year, a two-year budget, or the programme over its life. */
   period: z.enum(['round', 'year', 'biennium', 'programme']),
-  /** The funder says "up to" the total, or gives it as an estimate ("approximately", "around"). */
-  qualifier: z.enum(['up_to', 'about']).optional(),
-  /** The round or years, as the funder gives it ("2026 call", "2021-2027"). */
+  /**
+   * up_to: the funder says "up to" the total. about: an approximation ("approximately", "around").
+   * planned: not final ("indicative", "projected", "expected", "estimated").
+   */
+  qualifier: z.enum(['up_to', 'about', 'planned']).optional(),
+  /** The round or years it is for, worded to follow "for" ("the 2026 round", "FY2027"). Missing reads as "a year", "per biennium", "for the round" or "over the programme". */
   label: z.string().min(3).max(60).optional(),
   /** A qualifier from the same quote, in our words ("Shared with the forestry window"). */
   note: z.string().min(3).max(200).optional(),
@@ -286,9 +289,10 @@ export const programme = z
       if (!isStated && e) issue(['evidence', field], `${field} has evidence but is not stated`)
     }
 
-    // A pot smaller than one grant is a misread: the figure is a grant, or a different currency.
+    // A round's pot smaller than one grant from that round is a misread. A year's or a programme's pot
+    // can be smaller than one multi-year grant, so only rounds are checked.
     const top = p.amount?.max ?? p.amount?.min
-    if (p.pool && top !== undefined && p.amount?.currency === p.pool.currency && p.amount.per !== 'year' && p.pool.value < top) {
+    if (p.pool?.period === 'round' && top !== undefined && p.amount?.currency === p.pool.currency && p.amount.per !== 'year' && p.pool.value < top) {
       issue(['pool', 'value'], `the pool (${p.pool.value}) is smaller than one grant (${top})`)
     }
 

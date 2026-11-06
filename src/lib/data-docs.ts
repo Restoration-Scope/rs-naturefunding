@@ -22,7 +22,7 @@ export const fieldDocs = {
     access: 'How an applicant reaches the money: direct (apply to an open call), intermediary (apply to a partner, not the funder), invitation_only (no unsolicited proposals), unspecified.',
     window: 'fixed (rounds with deadlines), rolling (apply any time) or unspecified.',
     amount: 'Grant size in the funder’s currency, or null when not stated.',
-    pool: 'The total funding behind all the grants (one round, one year or the whole programme), when the funder states it. Missing means not stated.',
+    pool: 'The total funding shared by all the grants (one round, one year or the whole programme), when the funder states it. Not one grant’s size, and not to be summed across rows: data.csv repeats it on each call of the programme. Missing means not stated.',
     co_finance_required: 'true or false when the funder says whether co-funding is required; null when it doesn’t.',
     reporting: 'What the funder asks grantees to report, in our words, or null.',
     effort: 'What applying takes, in our words from the funder’s page: the steps in order. Missing when the pages we read don’t say.',
@@ -66,9 +66,9 @@ export const fieldDocs = {
   pool: {
     currency: 'ISO 4217 currency code.',
     value: 'The total, all grants together.',
-    qualifier: '“up_to” when the funder says up to the total, “about” when it gives an estimate (“approximately”).',
-    period: 'round (one round of applications), year (one year) or programme (the programme over its life).',
-    label: 'The round or years the total covers, as the funder gives it (“2026 call”, “2021-2027”).',
+    qualifier: '“up_to” when the funder says up to the total, “about” for an approximation (“approximately”), “planned” when it is not final (“indicative”, “projected”, “expected”).',
+    period: 'round (one round of applications), year (one year), biennium (a two-year budget) or programme (the programme over its life).',
+    label: 'The round or years the total is for, worded to follow “for” (“the 2026 round”, “FY2027”).',
     note: 'A qualifier from the same quote, in our words.',
   },
   geography: {

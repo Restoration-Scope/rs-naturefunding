@@ -120,7 +120,7 @@ export function programmeMarkdown(p: Programme): string {
       : `- Status, from the check on ${longDate(l.call?.evidence.status?.checked_at ?? p.checked_at)}: ${statusText(l)}`,
     `- How to apply: ${accessLabels[p.access]}`,
     `- Amount: ${amount ?? (children.length ? byPartner : NOT_FOUND)}`,
-    ...(p.pool ? [`- Total funding: ${poolText(p.pool)}${p.pool.note ? ` (${p.pool.note})` : ''}`] : []),
+    ...(p.pool ? [`- Budget shared by all grants: ${poolText(p.pool)}${p.pool.note ? ` (${p.pool.note})` : ''}`] : []),
     `- Who can apply: ${who ?? byPartner}`,
     `- Where: ${geographyFull(p.geography) ?? NOT_FOUND}`,
     `- Rounds: ${rounds ?? byPartner}`,
@@ -150,7 +150,7 @@ export function programmeMarkdown(p: Programme): string {
   const facts = [
     quoteLines(`${n}, how to apply`, `${accessLabels[p.access]}. ${accessHelp[p.access]}`, p.evidence.access, factIds.access, p),
     quoteLines(`${n}, amount`, amount ? `${amount}${p.amount?.note ? `. ${p.amount.note}.` : ''}` : byPartner, p.evidence.amount, factIds.amount, p),
-    ...(p.pool ? [quoteLines(`${n}, total funding`, `${poolText(p.pool)}${p.pool.note ? `. ${p.pool.note}.` : ''}`, p.evidence.pool, factIds.pool, p)] : []),
+    ...(p.pool ? [quoteLines(`${n}, budget shared by all grants`, `${poolText(p.pool)}${p.pool.note ? `. ${p.pool.note}.` : ''}`, p.evidence.pool, factIds.pool, p)] : []),
     quoteLines(`${n}, where`, geographyFull(p.geography) ?? NOT_FOUND, p.evidence.geography, factIds.geography, p),
     quoteLines(`${n}, who can apply`, who ?? byPartner, p.evidence.applicant_types, factIds.applicant_types, p),
     quoteLines(`${n}, rounds`, rounds ?? byPartner, p.evidence.window, factIds.window, p),

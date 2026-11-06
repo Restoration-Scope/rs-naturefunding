@@ -51,7 +51,7 @@ const partnersShown = partnersNow.length > 0 ? partnersNow : childListings
 const noCallRoute = p.access === 'intermediary' || p.access === 'invitation_only'
 const amount = amountText(p.amount)
 const pool = poolText(p.pool)
-const amountValue = amount ?? (pool ? `All grants together: ${pool}${p.pool?.note ? `. ${sentence(p.pool.note)}` : ''}` : null)
+const amountValue = amount ?? (pool ? `Budget shared by all grants: ${pool}${p.pool?.note ? `. ${sentence(p.pool.note)}` : ''}` : null)
 // The place and type pages this programme shows on, linked under Where and the approach.
 const more = pagesFor(p)
 const yesNo = (b: boolean | null) => (b === null ? null : b ? 'Yes' : 'No')
@@ -292,7 +292,7 @@ const jsonLd = [
           {p.amount?.note && <p class={factHelp}>{sentence(p.amount.note)}</p>}
           {amount && pool && p.pool && (
             <p id={factIds.pool} class="mt-1 text-sm text-ink-2">
-              All grants together: {keepAmountTogether(pool)}.{p.pool.note && ` ${sentence(p.pool.note)}`}
+              Budget shared by all grants: {keepAmountTogether(pool)}.{p.pool.note && ` ${sentence(p.pool.note)}`}
             </p>
           )}
         </Fact>
