@@ -24,7 +24,7 @@ export function compactAmount(a: Programme['amount']): string | null {
   if (!a) return null
   const code = a.currency
   const nb = '\u00a0'
-  const per = a.per === 'year' ? ' a year' : ''
+  const per = `${a.unit ? ` per ${a.unit}` : ''}${a.per === 'year' ? ' a year' : ''}`
   if (a.min !== undefined && a.max !== undefined) {
     const u = a.typical ? 'Usually ' : ''
     if (a.min === a.max) return `${u}${short(code, a.max)}${nb}${code}${per}`
