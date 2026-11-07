@@ -342,7 +342,10 @@
   "fondation-franklinia": { "reason": null, "failing_sources": [] },
   "fondation-nature-et-decouvertes": { "reason": null, "failing_sources": [] },
   "fondation-patrimoine-naturel-biodiversite": { "reason": null, "failing_sources": [] },
-  "fondazione-pavia-bando-ambiente-territorio": { "reason": null, "failing_sources": [] },
+  "fondazione-pavia-bando-ambiente-territorio": {
+    "reason": "timeout",
+    "failing_sources": ["fondazione-pavia-bando-ambiente-territorio-1"]
+  },
   "fondo-marena-microfinanciamientos": { "reason": null, "failing_sources": [] },
   "fonds-landschaft-schweiz": { "reason": null, "failing_sources": [] },
   "fonds-nature-nouvelle-aquitaine": { "reason": null, "failing_sources": [] },
@@ -712,10 +715,7 @@
   "nsw-environmental-trust-restoration-rehabilitation": { "reason": null, "failing_sources": [] },
   "nsw-protecting-our-places": { "reason": null, "failing_sources": [] },
   "nue-stiftung-projektfoerderung": { "reason": null, "failing_sources": [] },
-  "nwt-species-conservation-recovery-fund": {
-    "reason": "http",
-    "failing_sources": ["nwt-species-conservation-recovery-fund-1"]
-  },
+  "nwt-species-conservation-recovery-fund": { "reason": null, "failing_sources": [] },
   "nz-landcare-fonterra-restoring-wetlands": {
     "reason": "network",
     "failing_sources": ["nz-landcare-fonterra-restoring-wetlands-1"]
@@ -730,8 +730,11 @@
   "oberoesterreich-fliessgewaesser-renaturierung": { "reason": null, "failing_sources": [] },
   "oberoesterreich-landschaftspflegeinitiativen": { "reason": null, "failing_sources": [] },
   "obwb-wcqi-grants": { "reason": null, "failing_sources": [] },
-  "odfw-ocrf": { "reason": null, "failing_sources": [] },
-  "odfw-restoration-enhancement": { "reason": null, "failing_sources": [] },
+  "odfw-ocrf": { "reason": "network", "failing_sources": ["odfw-ocrf-1"] },
+  "odfw-restoration-enhancement": {
+    "reason": "network",
+    "failing_sources": ["odfw-restoration-enhancement-1", "odfw-restoration-enhancement-2"]
+  },
   "ofb-mission-nature": { "reason": null, "failing_sources": [] },
   "ofb-temeum-micro-projects": { "reason": null, "failing_sources": [] },
   "ohio-lake-erie-community-grant": { "reason": null, "failing_sources": [] },
