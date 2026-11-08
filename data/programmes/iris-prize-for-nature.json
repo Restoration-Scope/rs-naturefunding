@@ -2,7 +2,7 @@
   "id": "iris-prize-for-nature",
   "name": "Iris Prize for Nature (Iris, Stem and Seed Prizes)",
   "funder": { "name": "The Iris Project", "url": "https://theirisproject.org/" },
-  "administered_by": null,
+  "administered_by": { "name": "The Iris Project", "url": "https://theirisproject.org" },
   "parent": null,
   "url": "https://theirisproject.org/the-prize",
   "summary": "Annual prizes of $5,000 to $15,000 for youth-led projects (leaders aged 14 to 24) that protect or restore nature, mainly in the Global South, with mentoring and other support alongside the money.",
@@ -11,7 +11,12 @@
   "geography": { "scope": "global" },
   "access": "direct",
   "window": "fixed",
-  "amount": { "currency": "USD", "min": 5000, "max": 15000 },
+  "amount": {
+    "currency": "USD",
+    "min": 5000,
+    "max": 15000,
+    "note": "Iris Prize $15,000, Stem Prize $10,000, Seed Prize $5,000"
+  },
   "co_finance_required": null,
   "reporting": null,
   "calls": [
@@ -22,7 +27,6 @@
       "status": "upcoming",
       "opens": null,
       "deadline": null,
-      "expected": "March 2027",
       "evidence": {
         "status": {
           "source_url": "https://theirisproject.org/how-to-apply",
@@ -30,10 +34,17 @@
           "checked_at": "2026-11-08",
           "method": "page"
         }
-      }
+      },
+      "expected": "March 2027"
     }
   ],
   "evidence": {
+    "administered_by": {
+      "source_url": "https://theirisproject.org/the-prize",
+      "quote": "The Iris Project hopes to address this through the provision of grant funding and mentorship that can harness young people's potential whilst rewarding them financially for their work.",
+      "checked_at": "2026-11-08",
+      "method": "page"
+    },
     "applicant_types": {
       "source_url": "https://theirisproject.org/how-to-apply",
       "quote": "Your project or organisation is led by young people aged 14 to 24.",
@@ -61,9 +72,9 @@
     "amount": {
       "source_url": "https://theirisproject.org/the-prize",
       "quote": "The Iris Prize $15,000 Awarded to an established project with the potential to replicate and scale. Ages 16-24 The Stem Prize $10,000 Awarded to an existing project established recently and on a small scale. Ages 16-24 The Seed Prize $5,000",
-      "checked_at": "2026-11-07",
+      "checked_at": "2026-11-08",
       "method": "page"
     }
   },
-  "checked_at": "2026-11-07"
+  "checked_at": "2026-11-08"
 }
