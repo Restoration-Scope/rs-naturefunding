@@ -6,6 +6,8 @@ const utm = (campaign: string) => `utm_source=naturefunding&utm_medium=referral&
 export const RS_URL = `https://restorationscope.com/?${utm('footer')}`
 /** Restoration Scope has no funder-reporting guides yet; this is its donor-reporting page. */
 export const RS_REPORTING_URL = `https://restorationscope.com/solutions/funders?${utm('programme-reporting')}`
+/** The footer's second line, for the operators who read this site. */
+export const RS_FOOTER_REPORTING_URL = `https://restorationscope.com/solutions/funders?${utm('footer-reporting')}`
 
 /** How every page names its builder: one line, the same words as the footer (rs-chief-of-staff surfaces ledger). */
 export const RS_DESCRIPTOR = 'builds digital infrastructure for nature projects: field data, maps and reporting for project teams'
