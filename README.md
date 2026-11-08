@@ -2,7 +2,7 @@
 
 A free directory of grants and funding for nature restoration and conservation projects. Every listing is read from the funder's own page, with the exact words it was taken from and the date it was checked.
 
-Built and maintained by [Restoration Scope](https://restorationscope.com). Listings are never paid for, and the data is open.
+Built and maintained by [Restoration Scope](https://restorationscope.com/?utm_source=github&utm_medium=referral&utm_campaign=naturefunding-readme), which builds digital infrastructure for nature projects: field data, maps and reporting for project teams. Listings are never paid for, and the data is open.
 
 ## How listings are checked
 
