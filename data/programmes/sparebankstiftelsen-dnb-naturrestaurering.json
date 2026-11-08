@@ -15,9 +15,9 @@
   },
   "access": "direct",
   "window": "rolling",
-  "amount": null,
+  "amount": { "currency": "NOK", "max": 50000 },
   "co_finance_required": null,
-  "reporting": "Grantees submit a final report on use of funds; it must be filed before applying again",
+  "reporting": "Grantees must submit a final report before they can apply again",
   "calls": [
     {
       "id": "rolling-up-to-50000-nok",
@@ -26,15 +26,15 @@
       "status": "open",
       "opens": null,
       "deadline": null,
-      "note": "Not accepted 21 November to 31 December",
       "evidence": {
         "status": {
           "source_url": "https://sparebankstiftelsen.no/soke-og-rapportere/",
           "quote": "Beløp inntil 50.000 kroner har løpende søknadsfrist. Du kan sende inn søknaden når som helst, bortsett fra i perioden 21. november til 31. desember.",
-          "checked_at": "2026-11-03",
+          "checked_at": "2026-11-08",
           "method": "page"
         }
-      }
+      },
+      "note": "Not accepted 21 November to 31 December"
     },
     {
       "id": "over-50000-nok",
@@ -43,21 +43,21 @@
       "status": "unknown",
       "opens": null,
       "deadline": null,
-      "recurring": "Deadlines each year on 1 February and 1 September, by 23:59",
       "evidence": {
         "status": {
           "source_url": "https://sparebankstiftelsen.no/soke-og-rapportere/",
           "quote": "For beløp over 50.000 kroner er søknadsfristene: 1. februar og 1. september.",
-          "checked_at": "2026-11-03",
+          "checked_at": "2026-11-08",
           "method": "page"
         },
         "recurring": {
           "source_url": "https://sparebankstiftelsen.no/soke-og-rapportere/",
           "quote": "For beløp over 50.000 kroner er søknadsfristene: 1. februar og 1. september.",
-          "checked_at": "2026-11-03",
+          "checked_at": "2026-11-08",
           "method": "page"
         }
-      }
+      },
+      "recurring": "Deadlines each year on 1 February and 1 September, by 23:59"
     }
   ],
   "evidence": {
@@ -76,21 +76,27 @@
     "access": {
       "source_url": "https://sparebankstiftelsen.no/soke-og-rapportere/",
       "quote": "Du kan sende inn søknaden når som helst, bortsett fra i perioden 21. november til 31. desember.",
-      "checked_at": "2026-11-03",
+      "checked_at": "2026-11-08",
       "method": "page"
     },
     "window": {
       "source_url": "https://sparebankstiftelsen.no/soke-og-rapportere/",
       "quote": "Beløp inntil 50.000 kroner har løpende søknadsfrist. Du kan sende inn søknaden når som helst, bortsett fra i perioden 21. november til 31. desember.",
-      "checked_at": "2026-11-03",
+      "checked_at": "2026-11-08",
+      "method": "page"
+    },
+    "amount": {
+      "source_url": "https://sparebankstiftelsen.no/soke-og-rapportere/",
+      "quote": "Beløp inntil 50.000 kroner har løpende søknadsfrist.",
+      "checked_at": "2026-11-08",
       "method": "page"
     },
     "reporting": {
       "source_url": "https://sparebankstiftelsen.no/soke-og-rapportere/",
       "quote": "dersom tidligere søknad ble innvilget må dere ha sendt inn sluttrapport før dere kan søke igjen",
-      "checked_at": "2026-11-03",
+      "checked_at": "2026-11-08",
       "method": "page"
     }
   },
-  "checked_at": "2026-11-03"
+  "checked_at": "2026-11-04"
 }
