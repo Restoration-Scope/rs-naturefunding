@@ -2,16 +2,25 @@
   "id": "fws-national-fish-passage",
   "name": "National Fish Passage Program",
   "funder": { "name": "U.S. Fish and Wildlife Service", "url": "https://www.fws.gov/" },
-  "administered_by": null,
+  "administered_by": { "name": "U.S. Fish and Wildlife Service", "url": "https://www.fws.gov" },
   "parent": null,
   "url": "https://www.grants.gov/search-results-detail/363699",
   "summary": "US federal funding and technical help for partners that remove dams and other river barriers, replace culverts, restore floodplains or install fishways. Projects are developed with the local Fish and Wildlife Service fish passage biologist before applying.",
   "approaches": ["freshwater", "species_conservation"],
-  "applicant_types": ["ngo", "government", "indigenous_organization"],
+  "applicant_types": [
+    "ngo",
+    "community_group",
+    "indigenous_organization",
+    "research_institution",
+    "individual",
+    "government",
+    "social_enterprise",
+    "company"
+  ],
   "geography": { "scope": "countries", "countries": ["US"], "label": "United States" },
   "access": "direct",
   "window": "fixed",
-  "amount": { "currency": "USD", "max": 1000000 },
+  "amount": { "currency": "USD", "min": 1, "max": 1000000 },
   "co_finance_required": false,
   "reporting": "Recipients file federal financial reports and programme performance reports, on the schedule set in the notice of award.",
   "calls": [
@@ -21,66 +30,77 @@
       "url": "https://www.grants.gov/search-results-detail/363699",
       "status": "open",
       "opens": null,
-      "deadline": { "date": "2027-04-30", "time": "23:59", "timezone": "America/New_York", "text": "Closing Date for Applications: 04/30/2027, by 11:59 PM, ET" },
+      "deadline": {
+        "date": "2027-04-30",
+        "time": "23:59",
+        "timezone": "America/New_York",
+        "text": "Closing Date for Applications: 04/30/2027, by 11:59 PM, ET"
+      },
       "evidence": {
         "status": {
           "source_url": "https://www.grants.gov/grantsws/rest/opportunity/att/download/354778",
           "quote": "allocated $15 million for the National Fish Passage Program",
-          "checked_at": "2026-11-02",
+          "checked_at": "2026-11-08",
           "method": "page"
         },
         "deadline": {
           "source_url": "https://www.grants.gov/grantsws/rest/opportunity/att/download/354778",
           "quote": "Closing Date for Applications: 04/30/2027 Closing Date Explanation Electronically submitted applications must be submitted no later than 11:59 PM, ET, on the listed application due date.",
-          "checked_at": "2026-11-02",
+          "checked_at": "2026-11-08",
           "method": "page"
         }
       }
     }
   ],
   "evidence": {
+    "administered_by": {
+      "source_url": "https://www.grants.gov/grantsws/rest/opportunity/att/download/354778",
+      "quote": "U.S. Fish and Wildlife Service Notice of Funding Opportunity F26AS00105",
+      "checked_at": "2026-11-08",
+      "method": "page"
+    },
     "applicant_types": {
       "source_url": "https://www.grants.gov/grantsws/rest/opportunity/att/download/354778",
-      "quote": "The program seeks and develops projects collaboratively with partners, including but not limited to: State and local agencies, Tribes, non-governmental organizations, other Federal agencies",
-      "checked_at": "2026-11-02",
+      "quote": "Eligible Applicants Unrestricted (i.e., open to any type of entity above)",
+      "checked_at": "2026-11-08",
       "method": "page"
     },
     "geography": {
       "source_url": "https://www.grants.gov/grantsws/rest/opportunity/att/download/354778",
       "quote": "The program is delivered through U.S. Fish and Wildlife Service (Service) field offices nationwide.",
-      "checked_at": "2026-11-02",
+      "checked_at": "2026-11-08",
       "method": "page"
     },
     "access": {
       "source_url": "https://www.grants.gov/grantsws/rest/opportunity/att/download/354778",
       "quote": "Contact a regional NFPP Coordinator in your area for information about program priorities and the application process.",
-      "checked_at": "2026-11-02",
+      "checked_at": "2026-11-08",
       "method": "page"
     },
     "window": {
       "source_url": "https://www.grants.gov/grantsws/rest/opportunity/att/download/354778",
       "quote": "Electronically submitted applications must be submitted no later than 11:59 PM, ET, on the listed application due date.",
-      "checked_at": "2026-11-02",
+      "checked_at": "2026-11-08",
       "method": "page"
     },
     "amount": {
       "source_url": "https://www.grants.gov/grantsws/rest/opportunity/att/download/354778",
-      "quote": "Award Ceiling: $1,000,000",
-      "checked_at": "2026-11-02",
+      "quote": "Award Ceiling: $1,000,000 Award Floor: $1",
+      "checked_at": "2026-11-08",
       "method": "page"
     },
     "co_finance_required": {
       "source_url": "https://www.grants.gov/grantsws/rest/opportunity/att/download/354778",
       "quote": "Cost Sharing Requirement Cost Sharing Required? No",
-      "checked_at": "2026-11-02",
+      "checked_at": "2026-11-08",
       "method": "page"
     },
     "reporting": {
       "source_url": "https://www.grants.gov/grantsws/rest/opportunity/att/download/354778",
       "quote": "Submit Federal Financial reports and Program Performance reports.",
-      "checked_at": "2026-11-02",
+      "checked_at": "2026-11-08",
       "method": "page"
     }
   },
-  "checked_at": "2026-11-02"
+  "checked_at": "2026-11-08"
 }
