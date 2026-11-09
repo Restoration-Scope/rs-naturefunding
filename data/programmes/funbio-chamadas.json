@@ -5,17 +5,24 @@
     "name": "Fundo Brasileiro para a Biodiversidade (FUNBIO)",
     "url": "https://www.funbio.org.br/"
   },
-  "administered_by": null,
+  "administered_by": {
+    "name": "Fundo Brasileiro para a Biodiversidade (FUNBIO)",
+    "url": "https://funbio.org.br"
+  },
   "parent": null,
   "url": "https://chamadas.funbio.org.br/",
   "summary": "The open-call channel of Brazil's biodiversity fund, which runs calls for project proposals on behalf of public and private funders, for example ecological restoration and biodiversity conservation in specific Brazilian regions.",
   "approaches": ["reforestation", "natural_regeneration", "freshwater", "protected_areas"],
-  "applicant_types": null,
+  "applicant_types": ["ngo", "research_institution"],
   "geography": { "scope": "countries", "countries": ["BR"] },
   "access": "direct",
   "window": "fixed",
-  "amount": null,
-  "co_finance_required": null,
+  "amount": {
+    "currency": "BRL",
+    "max": 1000000,
+    "note": "com contrapartida mínima de 10% do valor da proposta"
+  },
+  "co_finance_required": true,
   "reporting": null,
   "calls": [
     {
@@ -101,7 +108,7 @@
         "opens": {
           "source_url": "https://chamadas.funbio.org.br/articulacao-institucional",
           "quote": "20 de outubro de 2026 Publicação da Chamada de Projetos 11/2026",
-          "checked_at": "2026-11-06",
+          "checked_at": "2026-11-09",
           "method": "page"
         },
         "deadline": {
@@ -114,6 +121,18 @@
     }
   ],
   "evidence": {
+    "administered_by": {
+      "source_url": "https://chamadas.funbio.org.br/articulacao-institucional",
+      "quote": "Chamada de Projetos 11/2026 - Articulação Institucional, do Programa de Conservação da Biodiversidade do Litoral do Paraná.",
+      "checked_at": "2026-11-09",
+      "method": "page"
+    },
+    "applicant_types": {
+      "source_url": "https://chamadas.funbio.org.br/articulacao-institucional",
+      "quote": "Público-alvo Organizações da sociedade civil, instituições de pesquisa, universidades, fundações, associações e dema",
+      "checked_at": "2026-11-09",
+      "method": "page"
+    },
     "geography": {
       "source_url": "https://chamadas.funbio.org.br/quem-somos",
       "quote": "O Fundo Brasileiro para a Biodiversidade (FUNBIO) é um mecanismo financeiros nacional privado, sem fins lucrativos",
@@ -129,6 +148,18 @@
     "window": {
       "source_url": "https://chamadas.funbio.org.br/floresta-viva-sao-francisco",
       "quote": "Esta Chamada de Projetos segue etapas definidas, fique atento(a) a elas e aos prazos!",
+      "checked_at": "2026-11-09",
+      "method": "page"
+    },
+    "amount": {
+      "source_url": "https://chamadas.funbio.org.br/articulacao-institucional",
+      "quote": "Valor total da Chamada de Projetos:R$ 1.000.000,00",
+      "checked_at": "2026-11-09",
+      "method": "page"
+    },
+    "co_finance_required": {
+      "source_url": "https://chamadas.funbio.org.br/articulacao-institucional",
+      "quote": "Contrapartida mínima de 10% do valor da proposta",
       "checked_at": "2026-11-09",
       "method": "page"
     }
