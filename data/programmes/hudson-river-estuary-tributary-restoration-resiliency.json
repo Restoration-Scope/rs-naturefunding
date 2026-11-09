@@ -5,34 +5,23 @@
     "name": "New York State Department of Environmental Conservation",
     "url": "https://dec.ny.gov/"
   },
-  "administered_by": null,
+  "administered_by": {
+    "name": "New York State Department of Environmental Conservation",
+    "url": "https://dec.ny.gov"
+  },
   "parent": null,
   "url": "https://dec.ny.gov/sites/default/files/2026-09/hre50tribrestoration.pdf",
   "summary": "Round 50 Hudson River Estuary grants for dam removal, stream crossing and free-flowing tributary restoration projects that improve habitat, water quality and local flood resilience.",
-  "approaches": [
-    "freshwater",
-    "wetlands",
-    "community_conservation"
-  ],
-  "applicant_types": [
-    "ngo",
-    "government",
-    "indigenous_organization"
-  ],
+  "approaches": ["freshwater", "wetlands", "community_conservation"],
+  "applicant_types": ["ngo", "government", "indigenous_organization"],
   "geography": {
     "scope": "countries",
-    "countries": [
-      "US"
-    ],
+    "countries": ["US"],
     "label": "Hudson River Estuary watershed"
   },
   "access": "direct",
   "window": "fixed",
-  "amount": {
-    "currency": "USD",
-    "min": 10500,
-    "max": 200000
-  },
+  "amount": { "currency": "USD", "min": 10500, "max": 200000 },
   "pool": {
     "currency": "USD",
     "value": 400000,
@@ -41,7 +30,7 @@
     "label": "Round 50"
   },
   "co_finance_required": true,
-  "reporting": "Quarterly narrative and expenditure reports, reimbursement documentation, and a final report are eligible administrative work.",
+  "reporting": "Quarterly narrative and expenditure reports, reimbursement request documentation, and a final report upon project completion",
   "calls": [
     {
       "id": "round-50-2026",
@@ -72,6 +61,12 @@
     }
   ],
   "evidence": {
+    "administered_by": {
+      "source_url": "https://dec.ny.gov/sites/default/files/2026-09/hre50tribrestoration.pdf",
+      "quote": "New York State Department of Environmental Conservation Hudson River Estuary Management Program",
+      "checked_at": "2026-11-09",
+      "method": "page"
+    },
     "applicant_types": {
       "source_url": "https://dec.ny.gov/sites/default/files/2026-09/hre50tribrestoration.pdf",
       "quote": "501(c)(3) not-for-profit corporations, Governmental Entities, Municipalities, and Quasi-Governmental Entities",
@@ -118,7 +113,7 @@
       "source_url": "https://dec.ny.gov/sites/default/files/2026-09/hre50tribrestoration.pdf",
       "quote": "preparation of quarterly narrative and expenditure reports, reimbursement request documentation, and preparation of the final report upon project completion",
       "checked_at": "2026-11-09",
-      "method": "human"
+      "method": "page"
     }
   },
   "checked_at": "2026-11-09"
