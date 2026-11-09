@@ -87,9 +87,11 @@ export function listingFor(p: Programme, today = buildDate, country?: string): L
     .sort((a, b) => (a.opens ?? '9999').localeCompare(b.opens ?? '9999'))
   if (upcoming[0]) return { ...base, state: 'upcoming', call: upcoming[0] }
 
-  // Yearly windows where the page doesn't say whether one is open now: no open call, but the dates are worth showing.
-  const recurring = calls.find((c) => c.status === 'unknown' && c.recurring)
-  if (recurring) return { ...base, state: 'none', call: recurring }
+  // Windows where the page doesn't say whether one is open now: no open call, but the dates are worth showing.
+  const unknown = calls
+    .filter((c) => c.status === 'unknown' && (c.recurring || (c.deadline && c.deadline.date >= today)))
+    .sort(byDeadline)
+  if (unknown[0]) return { ...base, state: 'none', call: unknown[0] }
 
   const past = [...calls].sort(byDeadline).reverse()
   if (past[0]) return { ...base, state: 'closed', call: past[0] }

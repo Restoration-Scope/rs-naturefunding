@@ -48,6 +48,8 @@ const when: { text: string; muted?: boolean; title?: string } =
             ? openPartners > 0
               ? { text: `${openPartners} partner programme${openPartners === 1 ? '' : 's'} open` }
               : { text: 'Varies by partner', muted: true }
+            : deadline
+              ? { text: shortDate(deadline.date), muted: true, title: quoted(deadline.text) }
             : yearly
               ? { text: 'Yearly call', muted: true, title: yearly }
               : { text: 'No date', muted: true }
