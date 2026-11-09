@@ -2,7 +2,7 @@
   "id": "sparebankstiftelsen-dnb-naturrestaurering",
   "name": "Sparebankstiftelsen DNB: Naturrestaurering og formidling av naturmangfoldet",
   "funder": { "name": "Sparebankstiftelsen DNB", "url": "https://sparebankstiftelsen.no/" },
-  "administered_by": null,
+  "administered_by": { "name": "Sparebankstiftelsen DNB", "url": "https://sparebankstiftelsen.no" },
   "parent": null,
   "url": "https://sparebankstiftelsen.no/dette-stotter-vi/tips-tema-sider/naturrestaurering-og-formidling-av-naturmangfoldet/",
   "summary": "Norwegian foundation that funds local nature restoration (bogs, stream reopening, kelp forest, pollinator meadows), habitat mapping and clean-ups run by organisations, mainly in Eastern Norway. Small grants are rolling; larger ones have two yearly deadlines.",
@@ -15,7 +15,7 @@
   },
   "access": "direct",
   "window": "rolling",
-  "amount": null,
+  "amount": { "currency": "NOK", "max": 50000 },
   "co_finance_required": null,
   "reporting": "Grantees submit a final report on use of funds; it must be filed before applying again",
   "calls": [
@@ -26,15 +26,15 @@
       "status": "open",
       "opens": null,
       "deadline": null,
-      "note": "Not accepted 21 November to 31 December",
       "evidence": {
         "status": {
           "source_url": "https://sparebankstiftelsen.no/soke-og-rapportere/",
           "quote": "Beløp inntil 50.000 kroner har løpende søknadsfrist. Du kan sende inn søknaden når som helst, bortsett fra i perioden 21. november til 31. desember.",
-          "checked_at": "2026-11-03",
+          "checked_at": "2026-11-09",
           "method": "page"
         }
-      }
+      },
+      "note": "Not accepted 21 November to 31 December"
     },
     {
       "id": "over-50000-nok",
@@ -43,24 +43,30 @@
       "status": "unknown",
       "opens": null,
       "deadline": null,
-      "recurring": "Deadlines each year on 1 February and 1 September, by 23:59",
       "evidence": {
         "status": {
           "source_url": "https://sparebankstiftelsen.no/soke-og-rapportere/",
           "quote": "For beløp over 50.000 kroner er søknadsfristene: 1. februar og 1. september.",
-          "checked_at": "2026-11-03",
+          "checked_at": "2026-11-09",
           "method": "page"
         },
         "recurring": {
           "source_url": "https://sparebankstiftelsen.no/soke-og-rapportere/",
           "quote": "For beløp over 50.000 kroner er søknadsfristene: 1. februar og 1. september.",
-          "checked_at": "2026-11-03",
+          "checked_at": "2026-11-09",
           "method": "page"
         }
-      }
+      },
+      "recurring": "Deadlines each year on 1 February and 1 September, by 23:59"
     }
   ],
   "evidence": {
+    "administered_by": {
+      "source_url": "https://sparebankstiftelsen.no/soke-og-rapportere/",
+      "quote": "Sparebankstiftelsen DNB jakter alltid på gode tiltak.",
+      "checked_at": "2026-11-09",
+      "method": "page"
+    },
     "applicant_types": {
       "source_url": "https://sparebankstiftelsen.no/dette-stotter-vi/tips-tema-sider/naturrestaurering-og-formidling-av-naturmangfoldet/",
       "quote": "Organisasjon eller forening Privat virksomhet med ideelt formål Skole, barnehage eller FAU Offentlig sektor Kommersiell virksomhet Privatperson eller enkeltmannsforetak Organisasjoner, ideelle og offentlige virksomheter som har et organisasjonsnummer i Enhetsregisteret i Brønnøysund kan søke støtte",
@@ -76,21 +82,27 @@
     "access": {
       "source_url": "https://sparebankstiftelsen.no/soke-og-rapportere/",
       "quote": "Du kan sende inn søknaden når som helst, bortsett fra i perioden 21. november til 31. desember.",
-      "checked_at": "2026-11-03",
+      "checked_at": "2026-11-09",
       "method": "page"
     },
     "window": {
       "source_url": "https://sparebankstiftelsen.no/soke-og-rapportere/",
       "quote": "Beløp inntil 50.000 kroner har løpende søknadsfrist. Du kan sende inn søknaden når som helst, bortsett fra i perioden 21. november til 31. desember.",
-      "checked_at": "2026-11-03",
+      "checked_at": "2026-11-09",
+      "method": "page"
+    },
+    "amount": {
+      "source_url": "https://sparebankstiftelsen.no/soke-og-rapportere/",
+      "quote": "Beløp inntil 50.000 kroner har løpende søknadsfrist.",
+      "checked_at": "2026-11-09",
       "method": "page"
     },
     "reporting": {
       "source_url": "https://sparebankstiftelsen.no/soke-og-rapportere/",
       "quote": "dersom tidligere søknad ble innvilget må dere ha sendt inn sluttrapport før dere kan søke igjen",
-      "checked_at": "2026-11-03",
+      "checked_at": "2026-11-09",
       "method": "page"
     }
   },
-  "checked_at": "2026-11-03"
+  "checked_at": "2026-11-04"
 }
