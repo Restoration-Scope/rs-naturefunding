@@ -79,6 +79,7 @@
   "brisbane-city-council-environment-grants": { "reason": null, "failing_sources": [] },
   "btf-large-grants": { "reason": null, "failing_sources": [] },
   "btf-small-grants": { "reason": null, "failing_sources": [] },
+  "caj-outdoor-environmental-protection-fund": { "reason": null, "failing_sources": [] },
   "california-coastal-conservancy": { "reason": null, "failing_sources": [] },
   "caribbean-ocean-trust-grants": { "reason": null, "failing_sources": [] },
   "casa-dos-ventos-parcerias-pela-natureza": { "reason": null, "failing_sources": [] },
@@ -130,6 +131,10 @@
   "conservation-nation-grants": { "reason": null, "failing_sources": [] },
   "coop-sapporo-forest-creation-grant": { "reason": null, "failing_sources": [] },
   "cornare-tejiendo-vida": { "reason": null, "failing_sources": [] },
+  "cornell-land-trust-bird-conservation-small-grants": {
+    "reason": "blocked",
+    "failing_sources": ["cornell-land-trust-bird-conservation-small-grants-1"]
+  },
   "costa-rica-por-siempre-fondo-azul": { "reason": null, "failing_sources": [] },
   "costa-rica-por-siempre-marine-fund": { "reason": null, "failing_sources": [] },
   "crowder-messersmith-conservation-fund": { "reason": null, "failing_sources": [] },
@@ -348,6 +353,8 @@
   "fondation-franklinia": { "reason": null, "failing_sources": [] },
   "fondation-nature-et-decouvertes": { "reason": null, "failing_sources": [] },
   "fondation-patrimoine-naturel-biodiversite": { "reason": null, "failing_sources": [] },
+  "fondation-petersberg-project-grants": { "reason": null, "failing_sources": [] },
+  "fondazione-capellino-nature-has-no-borders": { "reason": null, "failing_sources": [] },
   "fondazione-pavia-bando-ambiente-territorio": { "reason": null, "failing_sources": [] },
   "fondo-marena-microfinanciamientos": { "reason": null, "failing_sources": [] },
   "fonds-landschaft-schweiz": { "reason": null, "failing_sources": [] },
@@ -366,8 +373,14 @@
   "forest-foundation-tfcf-ii": { "reason": null, "failing_sources": [] },
   "forterra-community-restoration-grants": { "reason": null, "failing_sources": [] },
   "foundation-north-regenerative-environment": { "reason": null, "failing_sources": [] },
-  "fpa-chile-citizen-projects": { "reason": null, "failing_sources": [] },
-  "fpa-chile-indigenous-projects": { "reason": null, "failing_sources": [] },
+  "fpa-chile-citizen-projects": {
+    "reason": "timeout",
+    "failing_sources": ["fpa-chile-citizen-projects-2"]
+  },
+  "fpa-chile-indigenous-projects": {
+    "reason": "timeout",
+    "failing_sources": ["fpa-chile-citizen-projects-2"]
+  },
   "fpa2-call-for-projects": { "reason": null, "failing_sources": [] },
   "fpe-small-and-regular-grants": { "reason": null, "failing_sources": [] },
   "fpfs-environment-switzerland": { "reason": null, "failing_sources": [] },
@@ -378,7 +391,7 @@
     "reason": "blocked",
     "failing_sources": ["fukushima-bank-furusato-nature-fund-1"]
   },
-  "funbio-chamadas": { "reason": "timeout", "failing_sources": ["funbio-chamadas-2"] },
+  "funbio-chamadas": { "reason": null, "failing_sources": [] },
   "fund-for-lake-michigan": { "reason": null, "failing_sources": [] },
   "fundacion-ibercaja-sostenibilidad-medioambiente": { "reason": null, "failing_sources": [] },
   "fundacion-mar-adentro-fondo-fma": {
@@ -463,11 +476,17 @@
   "horizon-europe-invasive-species-living-labs": { "reason": null, "failing_sources": [] },
   "horizon-europe-restoration-living-labs": { "reason": null, "failing_sources": [] },
   "hs2-community-environment-fund": { "reason": null, "failing_sources": [] },
+  "hudson-river-estuary-local-stewardship-planning": { "reason": null, "failing_sources": [] },
+  "hudson-river-estuary-tributary-restoration-resiliency": {
+    "reason": null,
+    "failing_sources": []
+  },
   "iba-research-conservation-grants": { "reason": null, "failing_sources": [] },
   "idea-wild-equipment-grants": {
     "reason": "network",
     "failing_sources": ["idea-wild-equipment-grants-1", "idea-wild-equipment-grants-2"]
   },
+  "idf-reconquete-biodiversite": { "reason": null, "failing_sources": [] },
   "ief-conservation-grant": { "reason": null, "failing_sources": [] },
   "ifi-habitats-conservation-fund": { "reason": null, "failing_sources": [] },
   "ihs-grants": { "reason": null, "failing_sources": [] },
@@ -538,6 +557,7 @@
   "james-e-dutton-foundation-grants": { "reason": null, "failing_sources": [] },
   "japan-moe-biodiversity-conservation-subsidy": { "reason": null, "failing_sources": [] },
   "japan-mountain-heritage-fund": { "reason": null, "failing_sources": [] },
+  "japan-nt-association-trust-activity-grant": { "reason": null, "failing_sources": [] },
   "jfge": { "reason": null, "failing_sources": [] },
   "jubitz-mount-hood-environment": { "reason": null, "failing_sources": [] },
   "kaegi-stiftung-biodiversitaet": { "reason": null, "failing_sources": [] },
@@ -552,11 +572,11 @@
   "kncf": { "reason": null, "failing_sources": [] },
   "komeri-green-fund-environment": { "reason": null, "failing_sources": [] },
   "kpfhp-nfhp-funding": { "reason": null, "failing_sources": [] },
-  "kwa-watershed-seed-grants": {
-    "reason": "http",
-    "failing_sources": ["kwa-watershed-seed-grants-1"]
+  "kwa-watershed-seed-grants": { "reason": null, "failing_sources": [] },
+  "kwca-kenya-conservancies-fund": {
+    "reason": "selector",
+    "failing_sources": ["kwca-kenya-conservancies-fund-1", "kwca-kenya-conservancies-fund-2"]
   },
-  "kwca-kenya-conservancies-fund": { "reason": null, "failing_sources": [] },
   "landcare-tasmania-action-grants": {
     "reason": "blocked",
     "failing_sources": ["landcare-tasmania-action-grants-1"]
@@ -600,6 +620,10 @@
     "failing_sources": ["marlborough-working-for-nature-1", "marlborough-working-for-nature-2"]
   },
   "mat-su-salmon-partnership-nfhp": { "reason": null, "failing_sources": [] },
+  "mayo-leader-biodiversity-water-call-2026": {
+    "reason": "network",
+    "failing_sources": ["mayo-leader-biodiversity-water-call-2026-1"]
+  },
   "mayotte-ensemble-pour-les-rivieres": { "reason": null, "failing_sources": [] },
   "mbz-species-conservation-fund": { "reason": null, "failing_sources": [] },
   "medfund-mpa-management-call": { "reason": null, "failing_sources": [] },
@@ -624,6 +648,7 @@
   "mufg-environment-foundation-satoyama-conservation": { "reason": null, "failing_sources": [] },
   "munson-foundation": { "reason": null, "failing_sources": [] },
   "murdock-trust-environmental-stewardship": { "reason": null, "failing_sources": [] },
+  "musashino-bank-midori-fund": { "reason": null, "failing_sources": [] },
   "musser-environmental-initiative": { "reason": null, "failing_sources": [] },
   "mzp-nno-podprogram-a": { "reason": null, "failing_sources": [] },
   "mzuri-wildlife-conservation": { "reason": null, "failing_sources": [] },
@@ -662,6 +687,7 @@
     "reason": "http",
     "failing_sources": ["neighbourhood-ecosystem-fund-1", "neighbourhood-ecosystem-fund-2"]
   },
+  "neiwpcc-hre-watershed-education-stewardship": { "reason": null, "failing_sources": [] },
   "nescan-leaf-aberdeen": { "reason": "network", "failing_sources": ["nescan-leaf-aberdeen-1"] },
   "nfwf-acres-for-america": { "reason": null, "failing_sources": [] },
   "nfwf-aeri": { "reason": null, "failing_sources": [] },
@@ -723,6 +749,7 @@
   "nsw-protecting-our-places": { "reason": null, "failing_sources": [] },
   "nue-stiftung-projektfoerderung": { "reason": null, "failing_sources": [] },
   "nwt-species-conservation-recovery-fund": { "reason": null, "failing_sources": [] },
+  "nys-conservation-partnership-program": { "reason": null, "failing_sources": [] },
   "nz-landcare-fonterra-restoring-wetlands": {
     "reason": "network",
     "failing_sources": ["nz-landcare-fonterra-restoring-wetlands-1"]
@@ -763,6 +790,7 @@
   "panthera-small-cat-action-fund": { "reason": null, "failing_sources": [] },
   "parrot-conservation-grants": { "reason": null, "failing_sources": [] },
   "patagonia-hong-kong-macau-grants": { "reason": null, "failing_sources": [] },
+  "pcp4nbs-public-support-grants": { "reason": null, "failing_sources": [] },
   "peak-district-community-nature-fund": { "reason": null, "failing_sources": [] },
   "pei-wildlife-conservation-fund": { "reason": null, "failing_sources": [] },
   "perth-nrm-swan-alcoa-landcare-program": { "reason": null, "failing_sources": [] },
@@ -803,7 +831,11 @@
   "sadc-tfca-financing-facility": { "reason": null, "failing_sources": [] },
   "saiga-conservation-alliance-small-grants": { "reason": null, "failing_sources": [] },
   "salmon-scotland-wild-fisheries-fund": { "reason": null, "failing_sources": [] },
-  "sandals-foundation-grant-programme": { "reason": null, "failing_sources": [] },
+  "sandals-foundation-grant-programme": {
+    "reason": "blocked",
+    "failing_sources": ["sandals-foundation-grant-programme-1"]
+  },
+  "sango-shizen-nature-coexistence-grant": { "reason": null, "failing_sources": [] },
   "santa-barbara-foundation-conservation-environment-trails": {
     "reason": null,
     "failing_sources": []
@@ -813,6 +845,7 @@
     "reason": "robots",
     "failing_sources": ["sarp-nfhp-aquatic-habitat-restoration-1"]
   },
+  "sask-foundation-jgj-habitat-conservation-fund": { "reason": null, "failing_sources": [] },
   "save-our-seas-keystone-grants": { "reason": null, "failing_sources": [] },
   "save-our-seas-small-grants": { "reason": null, "failing_sources": [] },
   "save-the-frogs-amphibian-conservation-grants": { "reason": null, "failing_sources": [] },
@@ -844,6 +877,10 @@
   "sfv-audubon-grants": { "reason": null, "failing_sources": [] },
   "sg-eco-fund": { "reason": null, "failing_sources": [] },
   "shinnyo-en-environmental-civic-activity-grant": { "reason": null, "failing_sources": [] },
+  "shizugin-furusato-environmental-conservation-fund": {
+    "reason": "blocked",
+    "failing_sources": ["shizugin-furusato-environmental-conservation-fund-1"]
+  },
   "sicily-environment-fund": { "reason": null, "failing_sources": [] },
   "sielmann-stiftung-projektfoerderung": { "reason": null, "failing_sources": [] },
   "sitka-ecosystem-grants": { "reason": null, "failing_sources": [] },
@@ -869,6 +906,7 @@
   "stiftung-naturschutz-sh-biologischer-klimaschutz": { "reason": null, "failing_sources": [] },
   "strangells-stiftelse-grants": { "reason": null, "failing_sources": [] },
   "stun-mv-projektfoerderung": { "reason": null, "failing_sources": [] },
+  "suriname-conservation-foundation-project-financing": { "reason": null, "failing_sources": [] },
   "svensk-vatmarksfond": { "reason": null, "failing_sources": [] },
   "svgef-grants": { "reason": null, "failing_sources": [] },
   "swot-grants": { "reason": null, "failing_sources": [] },
@@ -1022,6 +1060,7 @@
   },
   "wnti-nfhp-fish-habitat-grants": { "reason": null, "failing_sources": [] },
   "worcestershire-natural-networks-lnrs-delivery-fund": { "reason": null, "failing_sources": [] },
+  "world-female-ranger-week-grants": { "reason": null, "failing_sources": [] },
   "wvdep-stream-partners": { "reason": null, "failing_sources": [] },
   "wwce-community-fund": { "reason": null, "failing_sources": [] },
   "wwf-canada-arctic-species-conservation-fund": { "reason": null, "failing_sources": [] },
