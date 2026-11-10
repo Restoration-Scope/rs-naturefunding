@@ -30,7 +30,11 @@
   },
   "access": "direct",
   "window": "fixed",
-  "amount": null,
+  "amount": {
+    "currency": "EUR",
+    "max": 50000,
+    "note": "für Anträge mit einem Zuwendungsbetrag ≤ 50.000 Euro; Entscheidung innerhalb von 3 Monaten nach Eingang der Unterlagen"
+  },
   "co_finance_required": true,
   "reporting": null,
   "calls": [
@@ -75,6 +79,12 @@
       "source_url": "https://stiftung-naturschutzfonds-bw.de/foerderung/wir-foerdern-vielfalt/zuwendungsbereich-allgemeiner-haushalt",
       "quote": "Ankündigung: Die Ausschreibung 2027 startet im Juli 2027.",
       "checked_at": "2026-11-09",
+      "method": "page"
+    },
+    "amount": {
+      "source_url": "https://stiftung-naturschutzfonds-bw.de/foerderung/wir-foerdern-vielfalt/zuwendungsbereich-allgemeiner-haushalt",
+      "quote": "Über die Förderung von eingegangenen Anträgen mit einem Zuwendungsbetrag ≤ 50.000 Euro entscheidet die Geschäftsführung nach Mittelverfügbarkeit i. d. R. innerhalb von 3 Monaten nach Eingang der vollständigen Antragsunterlagen bei der Stiftung Naturschutzfonds.",
+      "checked_at": "2026-11-03",
       "method": "page"
     },
     "co_finance_required": {
