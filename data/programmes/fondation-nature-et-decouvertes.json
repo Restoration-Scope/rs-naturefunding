@@ -5,41 +5,57 @@
     "name": "Fondation Nature & Découvertes",
     "url": "https://fondation.natureetdecouvertes.com/"
   },
-  "administered_by": null,
+  "administered_by": {
+    "name": "Fondation Nature & Découvertes",
+    "url": "https://fondation.natureetdecouvertes.com"
+  },
   "parent": null,
   "url": "https://fondation.natureetdecouvertes.com/deposer-un-projet/",
   "summary": "Grants for non-profit associations in France, Belgium and Luxembourg running field projects to protect nature, from major flagship projects to small local 'Coup de main' actions.",
-  "approaches": [
-    "species_conservation",
-    "protected_areas",
-    "community_conservation"
-  ],
-  "applicant_types": [
-    "ngo"
-  ],
-  "geography": {
-    "scope": "countries",
-    "countries": [
-      "FR",
-      "BE",
-      "LU"
-    ]
-  },
+  "approaches": ["species_conservation", "protected_areas", "community_conservation"],
+  "applicant_types": ["ngo"],
+  "geography": { "scope": "countries", "countries": ["FR", "BE", "LU"] },
   "access": "direct",
-  "window": "unspecified",
-  "amount": {
-    "currency": "EUR",
-    "min": 5000,
-    "max": 20000
-  },
+  "window": "rolling",
+  "amount": { "currency": "EUR", "min": 1500, "max": 3000 },
   "co_finance_required": null,
   "reporting": null,
-  "calls": [],
+  "calls": [
+    {
+      "id": "coup-de-main",
+      "label": "Coup de main – projets locaux",
+      "url": "https://fondation.natureetdecouvertes.com/deposer-un-projet/",
+      "status": "open",
+      "opens": null,
+      "deadline": null,
+      "evidence": {
+        "status": {
+          "source_url": "https://fondation.natureetdecouvertes.com/deposer-un-projet/",
+          "quote": "Les demandes pour les \" Coups de Main \" sont possibles tout au long de l'année mais sont effectivement traitées pour sélection entre début janvier et mi-juillet.",
+          "checked_at": "2026-11-09",
+          "method": "page"
+        },
+        "recurring": {
+          "source_url": "https://fondation.natureetdecouvertes.com/deposer-un-projet/",
+          "quote": "candidatures sont ouvertes tout au long de l'année avec des délibérations en avril, mai, juin et octobre.",
+          "checked_at": "2026-11-09",
+          "method": "page"
+        }
+      },
+      "recurring": "candidatures sont ouvertes tout au long de l'année avec des délibérations en avril, mai, juin et octobre."
+    }
+  ],
   "evidence": {
+    "administered_by": {
+      "source_url": "https://fondation.natureetdecouvertes.com/deposer-un-projet/",
+      "quote": "Fondation Nature & Découvertes",
+      "checked_at": "2026-11-09",
+      "method": "page"
+    },
     "applicant_types": {
       "source_url": "https://fondation.natureetdecouvertes.com/deposer-un-projet/",
       "quote": "Ces projets sont proposés par des associations à but non lucratif",
-      "checked_at": "2026-11-02",
+      "checked_at": "2026-11-09",
       "method": "page"
     },
     "geography": {
@@ -54,10 +70,16 @@
       "checked_at": "2026-11-02",
       "method": "page"
     },
+    "window": {
+      "source_url": "https://fondation.natureetdecouvertes.com/deposer-un-projet/",
+      "quote": "Les demandes pour les \" Coups de Main \" sont possibles tout au long de l'année",
+      "checked_at": "2026-11-09",
+      "method": "page"
+    },
     "amount": {
       "source_url": "https://fondation.natureetdecouvertes.com/deposer-un-projet/",
-      "quote": "avec des dotations s'échelonnant de 5 000 € à 20 000 €.",
-      "checked_at": "2026-11-02",
+      "quote": "Ils représentent une centaine de projets par an pour une aide comprise entre 1 500 et 3 000 €.",
+      "checked_at": "2026-11-09",
       "method": "page"
     }
   },
