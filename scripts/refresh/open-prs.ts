@@ -6,7 +6,7 @@
  * Tier A commit is pushed.
  *   bun scripts/refresh/open-prs.ts [--drafts dir]
  */
-import { existsSync, mkdirSync, readdirSync, readFileSync, writeFileSync } from 'node:fs'
+import { existsSync, mkdirSync, readdirSync, readFileSync, rmSync, writeFileSync } from 'node:fs'
 import { dirname, join, resolve } from 'node:path'
 import type { Draft } from './tier-b'
 
@@ -17,12 +17,19 @@ const bodyFile = join(draftsDir, '..', 'refresh-body.md')
 const runId = process.env.GITHUB_RUN_ID ?? String(Date.now())
 const base = process.env.GITHUB_REF_NAME ?? 'main'
 
-function run(cmd: string[], opts: { allowFail?: boolean } = {}): string {
-  const r = Bun.spawnSync(cmd, { stdout: 'pipe', stderr: 'pipe' })
+function run(cmd: string[], opts: { allowFail?: boolean; cwd?: string } = {}): string {
+  const r = Bun.spawnSync(cmd, { cwd: opts.cwd, stdout: 'pipe', stderr: 'pipe' })
   if (r.exitCode !== 0 && !opts.allowFail) throw new Error(`${cmd.join(' ')} failed: ${r.stderr.toString().trim()}`)
   return r.exitCode === 0 ? r.stdout.toString().trim() : ''
 }
 const json = <T>(cmd: string[]): T => JSON.parse(run(cmd) || '[]')
+const branchPath = (branch: string) => join(draftsDir, '..', 'refresh-worktrees', branch.replaceAll('/', '-'))
+
+function clearInterruptedGitOperation(): void {
+  run(['git', 'rebase', '--abort'], { allowFail: true })
+  run(['git', 'merge', '--abort'], { allowFail: true })
+  run(['git', 'cherry-pick', '--abort'], { allowFail: true })
+}
 
 const LABELS = { refresh: '0e8a16', 'reviewer:approve': 'c2e0c6', 'reviewer:reject': 'e99695', 'reviewer:unclear': 'fbca04' }
 for (const [name, color] of Object.entries(LABELS)) run(['gh', 'label', 'create', name, '--color', color, '--force'], { allowFail: true })
@@ -34,6 +41,8 @@ const openPrs = json<{ number: number; url: string; headRefName: string; body: s
   ['gh', 'pr', 'list', '--label', 'refresh', '--state', 'open', '--json', 'number,url,headRefName,body', '--limit', '200'],
 )
 const log: string[] = []
+clearInterruptedGitOperation()
+run(['git', 'worktree', 'prune'], { allowFail: true })
 
 /** Opens or updates the open refresh issue with this title, using the body in bodyFile. */
 function issue(title: string): void {
@@ -61,16 +70,23 @@ for (const d of drafts) {
   }
 
   run(['git', 'fetch', 'origin', base])
-  run(['git', 'switch', '--create', branch, `origin/${base}`])
-  for (const [path, content] of Object.entries(d.files)) {
-    mkdirSync(dirname(path), { recursive: true })
-    writeFileSync(path, content)
+  const worktree = branchPath(branch)
+  rmSync(worktree, { recursive: true, force: true })
+  mkdirSync(dirname(worktree), { recursive: true })
+  run(['git', 'branch', '-D', branch], { allowFail: true })
+  run(['git', 'worktree', 'add', '-b', branch, worktree, `origin/${base}`])
+  try {
+    for (const [path, content] of Object.entries(d.files)) {
+      const target = join(worktree, path)
+      mkdirSync(dirname(target), { recursive: true })
+      writeFileSync(target, content)
+    }
+    run(['git', 'add', '--', ...Object.keys(d.files)], { cwd: worktree })
+    run(['git', 'commit', '--allow-empty', '-m', `${d.title}\n\n${d.reasons.join('\n')}`], { cwd: worktree })
+    run(['git', 'push', 'origin', `${branch}:refs/heads/${branch}`], { cwd: worktree })
+  } finally {
+    run(['git', 'worktree', 'remove', '--force', worktree], { allowFail: true })
   }
-  run(['git', 'add', '--', ...Object.keys(d.files)])
-  run(['git', 'commit', '--allow-empty', '-m', `${d.title}\n\n${d.reasons.join('\n')}`])
-  run(['git', 'switch', '--detach', `origin/${base}`])
-
-  run(['git', 'push', 'origin', `${branch}:refs/heads/${branch}`])
   const url = run(['gh', 'pr', 'create', '--base', base, '--head', branch, '--title', d.title, '--body-file', bodyFile, '--label', 'refresh', '--label', `reviewer:${d.review?.overall ?? 'unclear'}`], { allowFail: true })
   if (!url) {
     // The repo setting "Allow GitHub Actions to create and approve pull requests" is off: keep the branch and say so in an issue.

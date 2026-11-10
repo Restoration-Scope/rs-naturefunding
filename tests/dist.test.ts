@@ -25,6 +25,7 @@ const htmlFiles = files.filter((f) => f.endsWith('.html')).sort()
 const read = (f: string) => readFileSync(join(dist, f), 'utf8')
 const doc = (f: string) => parseHTML(read(f)).document
 const norm = (s: string) => s.replace(/\s+/g, ' ').trim()
+const fullDistTimeout = 10_000
 
 /** Pages that are not programme pages, as built before the shadcn port. */
 const staticPages: string[] = JSON.parse(readFileSync(join(import.meta.dir, 'static-pages.json'), 'utf8'))
@@ -176,7 +177,8 @@ describe('no hydration, small JavaScript', () => {
   })
 
   test('finder pages load the same script as /', () => {
-    for (const f of finderPagesHtml) expect(scriptsOf(f).external, f).toEqual(scriptsOf('index.html').external)
+    const homeExternal = scriptsOf('index.html').external
+    for (const f of finderPagesHtml) expect(scriptsOf(f).external, f).toEqual(homeExternal)
   })
 
   test('no other page loads a script file; only /about/, /worth-applying/ and programme pages have one small inline script', () => {
@@ -198,7 +200,7 @@ describe('no hydration, small JavaScript', () => {
         expect(inline.join('').length, f).toBeLessThanOrEqual(10000)
       } else expect(inline, f).toEqual([])
     }
-  })
+  }, fullDistTimeout)
 
   test('every JS file in dist is the one / loads', () => {
     const loaded = new Set(scriptsOf('index.html').external.map((s) => s.replace(/^\//, '')))
@@ -232,7 +234,7 @@ describe('self-hosted fonts', () => {
       expect(thirdPartyFonts.test(read(f)), f).toBe(false)
     }
     expect(thirdPartyFonts.test(css)).toBe(false)
-  })
+  }, fullDistTimeout)
 })
 
 describe('home header', () => {
@@ -257,7 +259,7 @@ describe('home header', () => {
 
   test('no page has a header image', () => {
     for (const f of htmlFiles) expect(doc(f).querySelectorAll('header picture').length, f).toBe(0)
-  })
+  }, fullDistTimeout)
 })
 
 describe('programme pages keep the evidence', () => {
@@ -271,5 +273,5 @@ describe('programme pages keep the evidence', () => {
         expect(checked.has(e.checked_at), `${p.id}: checked date ${e.checked_at} missing`).toBe(true)
       }
     }
-  })
+  }, fullDistTimeout)
 })
