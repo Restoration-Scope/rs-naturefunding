@@ -6,13 +6,24 @@
   "parent": null,
   "url": "https://www.grants.gov/search-results-detail/364145",
   "summary": "US federal matching grants for tribes to restore priority rural forest landscapes, including tribal trust land, by reducing wildfire risk, improving fish and wildlife habitat and water, or controlling invasive plants, pests and disease.",
-  "approaches": ["reforestation", "sustainable_land_use", "species_conservation", "community_conservation"],
+  "approaches": [
+    "reforestation",
+    "sustainable_land_use",
+    "species_conservation",
+    "community_conservation"
+  ],
   "applicant_types": ["indigenous_organization"],
-  "geography": null,
+  "geography": { "scope": "countries", "countries": ["US"] },
   "access": "direct",
   "window": "fixed",
   "amount": { "currency": "USD", "max": 300000 },
-  "pool": {"currency": "USD", "value": 1260000, "period": "round", "qualifier": "up_to", "label": "FY2026"},
+  "pool": {
+    "currency": "USD",
+    "value": 1260000,
+    "period": "round",
+    "qualifier": "up_to",
+    "label": "FY2026"
+  },
   "co_finance_required": true,
   "reporting": "Recipients file financial and progress reports at least once a year, and report accomplishments, with maps of where the work happened, in the LaSR database by 28 October each year.",
   "calls": [
@@ -22,61 +33,77 @@
       "url": "https://www.grants.gov/search-results-detail/364145",
       "status": "open",
       "opens": null,
-      "deadline": { "date": "2027-01-26", "time": "23:59", "timezone": "America/New_York", "text": "11:59 p.m. Eastern on Tuesday, January 26, 2027" },
+      "deadline": {
+        "date": "2027-01-26",
+        "time": "23:59",
+        "timezone": "America/New_York",
+        "text": "11:59 p.m. Eastern on Tuesday, January 26, 2027"
+      },
       "evidence": {
         "status": {
           "source_url": "https://www.grants.gov/grantsws/rest/opportunity/att/download/355359",
           "quote": "Up to $1,260,000 in funding will be available for the LSR tribal funding opportunity.",
-          "checked_at": "2026-11-02",
+          "checked_at": "2026-11-12",
           "method": "page"
         },
         "deadline": {
           "source_url": "https://www.grants.gov/grantsws/rest/opportunity/att/download/355359",
           "quote": "Application Due Date: 11:59 p.m. Eastern on Tuesday, January 26, 2027",
-          "checked_at": "2026-11-02",
+          "checked_at": "2026-11-12",
           "method": "page"
         }
       }
     }
   ],
   "evidence": {
-    "pool": {"source_url": "https://www.grants.gov/grantsws/rest/opportunity/att/download/355359", "quote": "Up to $1,260,000 in funding will be available for the LSR tribal funding opportunity.", "checked_at": "2026-11-06", "method": "page"},
     "applicant_types": {
       "source_url": "https://www.grants.gov/grantsws/rest/opportunity/att/download/355359",
       "quote": "Tribal organizations as defined in 25 USC 5304 (l) 1: Eligible to apply at the request of a Federally Recognized Tribe (requires a letter of support from the relevant Tribe).",
-      "checked_at": "2026-11-02",
+      "checked_at": "2026-11-12",
+      "method": "page"
+    },
+    "geography": {
+      "source_url": "https://www.grants.gov/grantsws/rest/opportunity/att/download/355359",
+      "quote": "Indian trust lands are considered eligible lands, as these lands are included within the definition of \"non-industrial private forest land.\"",
+      "checked_at": "2026-11-12",
       "method": "page"
     },
     "access": {
       "source_url": "https://www.grants.gov/grantsws/rest/opportunity/att/download/355359",
       "quote": "There are no limits on the number of applications an applicant may submit to this opportunity.",
-      "checked_at": "2026-11-02",
+      "checked_at": "2026-11-12",
       "method": "page"
     },
     "window": {
       "source_url": "https://www.grants.gov/grantsws/rest/opportunity/att/download/355359",
       "quote": "Announcement Type: Annual Grant Announcement",
-      "checked_at": "2026-11-02",
+      "checked_at": "2026-11-12",
       "method": "page"
     },
     "amount": {
       "source_url": "https://www.grants.gov/grantsws/rest/opportunity/att/download/355359",
       "quote": "Maximum: Up to $300,000",
-      "checked_at": "2026-11-02",
+      "checked_at": "2026-11-12",
+      "method": "page"
+    },
+    "pool": {
+      "source_url": "https://www.grants.gov/grantsws/rest/opportunity/att/download/355359",
+      "quote": "Up to $1,260,000 in funding will be available for the LSR tribal funding opportunity.",
+      "checked_at": "2026-11-12",
       "method": "page"
     },
     "co_finance_required": {
       "source_url": "https://www.grants.gov/grantsws/rest/opportunity/att/download/355359",
       "quote": "Grant recipients must match (cost share) the Federal grant funds 1:1 from non-Federal sources.",
-      "checked_at": "2026-11-02",
+      "checked_at": "2026-11-12",
       "method": "page"
     },
     "reporting": {
       "source_url": "https://www.grants.gov/grantsws/rest/opportunity/att/download/355359",
       "quote": "Accomplishment reporting in the Landscape Scale Restoration database (LaSR) is due no later than October 28 each year.",
-      "checked_at": "2026-11-02",
+      "checked_at": "2026-11-12",
       "method": "page"
     }
   },
-  "checked_at": "2026-11-02"
+  "checked_at": "2026-11-12"
 }
