@@ -355,7 +355,10 @@
   "fondation-patrimoine-naturel-biodiversite": { "reason": null, "failing_sources": [] },
   "fondation-petersberg-project-grants": { "reason": null, "failing_sources": [] },
   "fondazione-capellino-nature-has-no-borders": { "reason": null, "failing_sources": [] },
-  "fondazione-pavia-bando-ambiente-territorio": { "reason": null, "failing_sources": [] },
+  "fondazione-pavia-bando-ambiente-territorio": {
+    "reason": "timeout",
+    "failing_sources": ["fondazione-pavia-bando-ambiente-territorio-1"]
+  },
   "fondo-marena-microfinanciamientos": { "reason": null, "failing_sources": [] },
   "fonds-landschaft-schweiz": { "reason": null, "failing_sources": [] },
   "fonds-maupertuis-biodiversity-calls": { "reason": null, "failing_sources": [] },
@@ -373,14 +376,8 @@
   "forest-foundation-tfcf-ii": { "reason": null, "failing_sources": [] },
   "forterra-community-restoration-grants": { "reason": null, "failing_sources": [] },
   "foundation-north-regenerative-environment": { "reason": null, "failing_sources": [] },
-  "fpa-chile-citizen-projects": {
-    "reason": "timeout",
-    "failing_sources": ["fpa-chile-citizen-projects-2"]
-  },
-  "fpa-chile-indigenous-projects": {
-    "reason": "timeout",
-    "failing_sources": ["fpa-chile-citizen-projects-2"]
-  },
+  "fpa-chile-citizen-projects": { "reason": null, "failing_sources": [] },
+  "fpa-chile-indigenous-projects": { "reason": null, "failing_sources": [] },
   "fpa2-call-for-projects": { "reason": null, "failing_sources": [] },
   "fpe-small-and-regular-grants": { "reason": null, "failing_sources": [] },
   "fpfs-environment-switzerland": { "reason": null, "failing_sources": [] },
@@ -624,7 +621,10 @@
     "reason": "network",
     "failing_sources": ["mayo-leader-biodiversity-water-call-2026-1"]
   },
-  "mayotte-ensemble-pour-les-rivieres": { "reason": null, "failing_sources": [] },
+  "mayotte-ensemble-pour-les-rivieres": {
+    "reason": "timeout",
+    "failing_sources": ["mayotte-ensemble-pour-les-rivieres-1"]
+  },
   "mbz-species-conservation-fund": { "reason": null, "failing_sources": [] },
   "medfund-mpa-management-call": { "reason": null, "failing_sources": [] },
   "menorca-preservation-grants": { "reason": null, "failing_sources": [] },
@@ -640,6 +640,7 @@
   "miljodirektoratet-vannmiljotiltak": { "reason": null, "failing_sources": [] },
   "miljodirektoratet-vindkraft-natur": { "reason": null, "failing_sources": [] },
   "mn-conservation-partners-legacy": { "reason": null, "failing_sources": [] },
+  "mn-dnr-enrtf-community-impact": { "reason": null, "failing_sources": [] },
   "mol-charitable-trust-mauritius": { "reason": null, "failing_sources": [] },
   "monmouth-audubon-bird-conservation-grant": { "reason": null, "failing_sources": [] },
   "montana-audubon-wildlife-fund": { "reason": null, "failing_sources": [] },
@@ -664,6 +665,7 @@
   "nature-networks-fund-wales": { "reason": null, "failing_sources": [] },
   "nature-park-protection-fund-japan": { "reason": null, "failing_sources": [] },
   "naturemade-oekofonds": { "reason": null, "failing_sources": [] },
+  "naturescot-nature-restoration-fund": { "reason": null, "failing_sources": [] },
   "naturschutzfonds-brandenburg": { "reason": null, "failing_sources": [] },
   "naturstiftung-david-projektfoerderung": { "reason": null, "failing_sources": [] },
   "naturstromfonds-ostschweiz": { "reason": null, "failing_sources": [] },
@@ -764,11 +766,8 @@
   "oberoesterreich-fliessgewaesser-renaturierung": { "reason": null, "failing_sources": [] },
   "oberoesterreich-landschaftspflegeinitiativen": { "reason": null, "failing_sources": [] },
   "obwb-wcqi-grants": { "reason": null, "failing_sources": [] },
-  "odfw-ocrf": { "reason": "network", "failing_sources": ["odfw-ocrf-1"] },
-  "odfw-restoration-enhancement": {
-    "reason": "network",
-    "failing_sources": ["odfw-restoration-enhancement-1", "odfw-restoration-enhancement-2"]
-  },
+  "odfw-ocrf": { "reason": null, "failing_sources": [] },
+  "odfw-restoration-enhancement": { "reason": null, "failing_sources": [] },
   "ofb-mission-nature": { "reason": null, "failing_sources": [] },
   "ofb-temeum-micro-projects": { "reason": null, "failing_sources": [] },
   "ohio-lake-erie-community-grant": { "reason": null, "failing_sources": [] },
@@ -779,7 +778,10 @@
   "orbfhp-fish-habitat-rfp": { "reason": null, "failing_sources": [] },
   "oregon-parks-foundation-fund": { "reason": null, "failing_sources": [] },
   "oregon-wildlife-foundation-grants": { "reason": null, "failing_sources": [] },
-  "osi-nelc-due-diligence-fund": { "reason": null, "failing_sources": [] },
+  "osi-nelc-due-diligence-fund": {
+    "reason": "http",
+    "failing_sources": ["osi-nelc-due-diligence-fund-1"]
+  },
   "osme-conservation-fund": { "reason": null, "failing_sources": [] },
   "osme-trevor-poyser-fund": { "reason": null, "failing_sources": [] },
   "otago-eco-fund": { "reason": null, "failing_sources": [] },
@@ -842,7 +844,7 @@
   },
   "sarasota-bay-partners-grants": { "reason": null, "failing_sources": [] },
   "sarp-nfhp-aquatic-habitat-restoration": {
-    "reason": "robots",
+    "reason": "http",
     "failing_sources": ["sarp-nfhp-aquatic-habitat-restoration-1"]
   },
   "sask-foundation-jgj-habitat-conservation-fund": { "reason": null, "failing_sources": [] },
