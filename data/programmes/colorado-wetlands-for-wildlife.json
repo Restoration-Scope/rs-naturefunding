@@ -2,7 +2,7 @@
   "id": "colorado-wetlands-for-wildlife",
   "name": "Wetlands for Wildlife Grants",
   "funder": { "name": "Colorado Parks and Wildlife", "url": "https://cpw.state.co.us/" },
-  "administered_by": null,
+  "administered_by": { "name": "Colorado Parks and Wildlife", "url": "https://cpw.state.co.us" },
   "parent": null,
   "url": "https://cpw.state.co.us/wetlands-wildlife-grants",
   "summary": "Annual grants to restore, enhance and create wetlands and riparian areas in Colorado. Non-profit habitat groups, tribes, local governments and companies can apply; private landowners cannot apply directly.",
@@ -11,7 +11,11 @@
   "geography": { "scope": "countries", "countries": ["US"], "label": "Colorado, United States" },
   "access": "direct",
   "window": "fixed",
-  "amount": null,
+  "amount": {
+    "currency": "USD",
+    "max": 1121000,
+    "note": "Up to approximately $1.121 million. Funding sources are Great Outdoors Colorado and Colorado waterfowl stamps."
+  },
   "co_finance_required": null,
   "reporting": "Quarterly project updates to the CPW Wetlands Program Coordinator until completion, plus a final project report on completion.",
   "calls": [
@@ -22,48 +26,92 @@
       "status": "upcoming",
       "opens": null,
       "deadline": null,
-      "expected": "February 2027",
       "evidence": {
         "status": {
           "source_url": "https://cpw.state.co.us/wetlands-wildlife-grants",
-          "quote": "Applications are closed. The next round of grant applications is expected to open in February 2027.",
-          "checked_at": "2026-11-09",
+          "quote": "The next round of grant applications is expected to open in February 2027.",
+          "checked_at": "2026-11-12",
+          "method": "page"
+        },
+        "recurring": {
+          "source_url": "https://cpw.state.co.us/wetlands-wildlife-grants",
+          "quote": "Colorado Parks and Wildlife annually seeks applications for wetland and riparian restoration, enhancement, and creation projects",
+          "checked_at": "2026-11-12",
+          "method": "page"
+        }
+      },
+      "expected": "February 2027",
+      "recurring": "annually"
+    },
+    {
+      "id": "2024-2025",
+      "label": "2024-2025 Grant Cycle",
+      "url": "https://cpw.state.co.us/wetlands-wildlife-grants",
+      "status": "closed",
+      "opens": null,
+      "deadline": {
+        "date": "2026-02-24",
+        "text": "Applications due to the Wetlands Program Coordinator"
+      },
+      "evidence": {
+        "status": {
+          "source_url": "https://cpw.state.co.us/wetlands-wildlife-grants",
+          "quote": "Applications are closed.",
+          "checked_at": "2026-11-12",
+          "method": "page"
+        },
+        "deadline": {
+          "source_url": "https://cpw.state.co.us/wetlands-wildlife-grants",
+          "quote": "Applications due to the Wetlands Program Coordinator. Date February 24, 2026",
+          "checked_at": "2026-11-12",
           "method": "page"
         }
       }
     }
   ],
   "evidence": {
+    "administered_by": {
+      "source_url": "https://cpw.state.co.us/wetlands-wildlife-grants",
+      "quote": "Colorado Parks and Wildlife annually seeks applications for wetland and riparian restoration, enhancement, and creation projects",
+      "checked_at": "2026-11-12",
+      "method": "page"
+    },
     "applicant_types": {
       "source_url": "https://cpw.state.co.us/wetlands-wildlife-grants",
       "quote": "Local governments, other state and federal land management agencies, tribes, non-profit habitat conservation organizations, and private companies.",
-      "checked_at": "2026-11-09",
+      "checked_at": "2026-11-12",
       "method": "page"
     },
     "geography": {
       "source_url": "https://cpw.state.co.us/wetlands-wildlife-grants",
       "quote": "restore, enhance, and create wetlands and riparian areas in Colorado",
-      "checked_at": "2026-11-09",
+      "checked_at": "2026-11-12",
       "method": "page"
     },
     "access": {
       "source_url": "https://cpw.state.co.us/wetlands-wildlife-grants",
       "quote": "Check Your Eligibility Eligible Grant Recipients",
-      "checked_at": "2026-11-09",
+      "checked_at": "2026-11-12",
       "method": "page"
     },
     "window": {
       "source_url": "https://cpw.state.co.us/wetlands-wildlife-grants",
       "quote": "Colorado Parks and Wildlife annually seeks applications for wetland and riparian restoration, enhancement, and creation projects",
-      "checked_at": "2026-11-09",
+      "checked_at": "2026-11-12",
+      "method": "page"
+    },
+    "amount": {
+      "source_url": "https://cpw.state.co.us/wetlands-wildlife-grants",
+      "quote": "Up to approximately $1.121 million. Funding sources are Great Outdoors Colorado and Colorado waterfowl stamps.",
+      "checked_at": "2026-11-12",
       "method": "page"
     },
     "reporting": {
       "source_url": "https://cpw.state.co.us/wetlands-wildlife-grants",
       "quote": "Each calendar quarter (March 31, June 30, September 30, and December 31) through project completion, the Project Manager must submit a project update",
-      "checked_at": "2026-11-09",
+      "checked_at": "2026-11-12",
       "method": "page"
     }
   },
-  "checked_at": "2026-11-09"
+  "checked_at": "2026-11-12"
 }
