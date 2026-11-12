@@ -10,11 +10,11 @@
   "url": "https://chamadas.funbio.org.br/",
   "summary": "The open-call channel of Brazil's biodiversity fund, which runs calls for project proposals on behalf of public and private funders, for example ecological restoration and biodiversity conservation in specific Brazilian regions.",
   "approaches": ["reforestation", "natural_regeneration", "freshwater", "protected_areas"],
-  "applicant_types": null,
+  "applicant_types": ["ngo"],
   "geography": { "scope": "countries", "countries": ["BR"] },
   "access": "direct",
   "window": "fixed",
-  "amount": null,
+  "amount": { "currency": "BRL", "max": 4000000 },
   "co_finance_required": null,
   "reporting": null,
   "calls": [
@@ -74,7 +74,7 @@
         "deadline": {
           "source_url": "https://chamadas.funbio.org.br/tcsa-porto-sul",
           "quote": "As propostas deverão ser enviadas até o dia 09 de novembro de 2026",
-          "checked_at": "2026-11-10",
+          "checked_at": "2026-11-12",
           "method": "page"
         }
       }
@@ -114,6 +114,12 @@
     }
   ],
   "evidence": {
+    "applicant_types": {
+      "source_url": "https://chamadas.funbio.org.br/tcsa-porto-sul",
+      "quote": "Instituições sem fins lucrativos constituídas há pelo menos 2 anos.",
+      "checked_at": "2026-11-12",
+      "method": "page"
+    },
     "geography": {
       "source_url": "https://chamadas.funbio.org.br/quem-somos",
       "quote": "O Fundo Brasileiro para a Biodiversidade (FUNBIO) é um mecanismo financeiros nacional privado, sem fins lucrativos",
@@ -129,6 +135,12 @@
     "window": {
       "source_url": "https://chamadas.funbio.org.br/floresta-viva-sao-francisco",
       "quote": "Esta Chamada de Projetos segue etapas definidas, fique atento(a) a elas e aos prazos!",
+      "checked_at": "2026-11-12",
+      "method": "page"
+    },
+    "amount": {
+      "source_url": "https://chamadas.funbio.org.br/tcsa-porto-sul",
+      "quote": "Valor total:R$ 4.000.000,00",
       "checked_at": "2026-11-12",
       "method": "page"
     }
