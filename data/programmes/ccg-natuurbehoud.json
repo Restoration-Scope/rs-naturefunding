@@ -10,7 +10,7 @@
   "url": "https://cultuurfondscaribischgebied.com/natuurbehoud/",
   "summary": "Project grants from the Dutch Caribbean culture fund for nature conservation and restoration projects on the six Dutch Caribbean islands, with a strong focus on public awareness and community involvement.",
   "approaches": ["community_conservation"],
-  "applicant_types": ["ngo", "individual"],
+  "applicant_types": ["individual", "ngo", "company"],
   "geography": {
     "scope": "countries",
     "countries": ["CW", "AW", "SX", "BQ"],
@@ -18,15 +18,15 @@
   },
   "access": "direct",
   "window": "fixed",
-  "amount": { "currency": "XCG", "max": 25000, "note": "Maximum subsidy amount per project" },
-  "co_finance_required": null,
+  "amount": { "currency": "XCG", "max": 25000, "note": "Maximum subsidie bedrag per project" },
+  "co_finance_required": true,
   "reporting": "Detailed financial accounting of the grant and an evaluation of results near the end of the project",
   "calls": [],
   "evidence": {
     "applicant_types": {
       "source_url": "https://cultuurfondscaribischgebied.com/criteria-subsidieaanvraag/",
-      "quote": "Wie komt in aanmerking voor subsidie Je bent een natuurlijk persoon (individu) Je bent een rechtspersoon zonder winstoogmerk (stichting of vereniging)",
-      "checked_at": "2026-11-06",
+      "quote": "Je bent een natuurlijk persoon (individu) Je bent een rechtspersoon zonder winstoogmerk (stichting of vereniging) Je bent een rechtspersoon met winstoogmerk en kan aantoonbaar maken dat jouw project binnen de specifieke CCG richtlijnen van 'Publicaties' en 'Filmproducties' valt.",
+      "checked_at": "2026-11-14",
       "method": "page"
     },
     "geography": {
@@ -41,15 +41,21 @@
       "checked_at": "2026-11-14",
       "method": "page"
     },
-    "amount": {
-      "source_url": "https://cultuurfondscaribischgebied.com/criteria-subsidieaanvraag/",
-      "quote": "CCG subsidieert tot een maximum van XCG 25.000,- per project",
-      "checked_at": "2026-11-06",
-      "method": "page"
-    },
     "window": {
       "source_url": "https://cultuurfondscaribischgebied.com/vergaderagenda/",
       "quote": "Voor behandeling van een aanvraag in een Dagelijks Bestuur(DB) vergadering, dient de vooraanvraag op de aangegeven deadline via het aanvraagportaal te zijn ingediend.",
+      "checked_at": "2026-11-14",
+      "method": "page"
+    },
+    "amount": {
+      "source_url": "https://cultuurfondscaribischgebied.com/criteria-subsidieaanvraag/",
+      "quote": "CCG subsidieert tot een maximum van XCG 25.000,- per project",
+      "checked_at": "2026-11-14",
+      "method": "page"
+    },
+    "co_finance_required": {
+      "source_url": "https://cultuurfondscaribischgebied.com/criteria-subsidieaanvraag/",
+      "quote": "Het fonds subsidieert doorgaans niet 100% van het project, maar is altijd een co - financierden van een project.",
       "checked_at": "2026-11-14",
       "method": "page"
     },
@@ -60,5 +66,5 @@
       "method": "page"
     }
   },
-  "checked_at": "2026-11-06"
+  "checked_at": "2026-11-14"
 }
