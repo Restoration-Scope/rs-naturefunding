@@ -5,16 +5,16 @@
     "name": "Fundo Brasileiro para a Biodiversidade (FUNBIO)",
     "url": "https://www.funbio.org.br/"
   },
-  "administered_by": null,
+  "administered_by": { "name": "FUNBIO", "url": "https://funbio.org.br" },
   "parent": null,
   "url": "https://chamadas.funbio.org.br/",
   "summary": "The open-call channel of Brazil's biodiversity fund, which runs calls for project proposals on behalf of public and private funders, for example ecological restoration and biodiversity conservation in specific Brazilian regions.",
   "approaches": ["reforestation", "natural_regeneration", "freshwater", "protected_areas"],
-  "applicant_types": null,
+  "applicant_types": ["ngo"],
   "geography": { "scope": "countries", "countries": ["BR"] },
   "access": "direct",
   "window": "fixed",
-  "amount": null,
+  "amount": { "currency": "BRL", "max": 4000000 },
   "co_finance_required": null,
   "reporting": null,
   "calls": [
@@ -56,25 +56,19 @@
       "label": "Chamada 10/2026 TCSA Porto Sul - Recomposição da Vegetação Nativa no Sul da Bahia",
       "url": "https://chamadas.funbio.org.br/tcsa-porto-sul",
       "status": "closed",
-      "opens": "2026-09-10",
+      "opens": null,
       "deadline": { "date": "2026-11-09", "text": "até o dia 09 de novembro de 2026" },
       "evidence": {
         "status": {
           "source_url": "https://chamadas.funbio.org.br/tcsa-porto-sul",
-          "quote": "Chamada Encerrada. Não é mais possível realizar inscrições nessa chamada",
-          "checked_at": "2026-11-10",
-          "method": "page"
-        },
-        "opens": {
-          "source_url": "https://chamadas.funbio.org.br/tcsa-porto-sul",
-          "quote": "10 de setembro de 2026 Início do Período de Submissão de Propostas",
-          "checked_at": "2026-11-09",
+          "quote": "Chamada Encerrada",
+          "checked_at": "2026-11-14",
           "method": "page"
         },
         "deadline": {
           "source_url": "https://chamadas.funbio.org.br/tcsa-porto-sul",
-          "quote": "As propostas deverão ser enviadas até o dia 09 de novembro de 2026",
-          "checked_at": "2026-11-10",
+          "quote": "as propostas devem ser enviadas até o dia 09 de novembro de 2026",
+          "checked_at": "2026-11-14",
           "method": "page"
         }
       }
@@ -114,6 +108,18 @@
     }
   ],
   "evidence": {
+    "administered_by": {
+      "source_url": "https://chamadas.funbio.org.br/tcsa-porto-sul",
+      "quote": "O FUNBIO é o gestor operacional e responsável pela condução do edital.",
+      "checked_at": "2026-11-14",
+      "method": "page"
+    },
+    "applicant_types": {
+      "source_url": "https://chamadas.funbio.org.br/tcsa-porto-sul",
+      "quote": "Instituições sem fins lucrativos constituídas há pelo menos 2 anos.",
+      "checked_at": "2026-11-14",
+      "method": "page"
+    },
     "geography": {
       "source_url": "https://chamadas.funbio.org.br/quem-somos",
       "quote": "O Fundo Brasileiro para a Biodiversidade (FUNBIO) é um mecanismo financeiros nacional privado, sem fins lucrativos",
@@ -129,6 +135,12 @@
     "window": {
       "source_url": "https://chamadas.funbio.org.br/floresta-viva-sao-francisco",
       "quote": "Esta Chamada de Projetos segue etapas definidas, fique atento(a) a elas e aos prazos!",
+      "checked_at": "2026-11-14",
+      "method": "page"
+    },
+    "amount": {
+      "source_url": "https://chamadas.funbio.org.br/tcsa-porto-sul",
+      "quote": "Serão disponibilizados até R$ 4.000.000,00 (quatro milhões reais), a serem distribuídos entre as propostas aprovadas.",
       "checked_at": "2026-11-14",
       "method": "page"
     }
