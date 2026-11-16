@@ -3,6 +3,7 @@
 // (src/lib/finder-pages.ts), the rest in the address.
 import { pageHref, type PagePaths } from './page-paths'
 import { picker } from './picker'
+import { amountCell } from './table'
 
 const AGING_DAYS = 30
 const HIDDEN_DAYS = 90
@@ -473,6 +474,34 @@ export function initTableFinder() {
         first?.focus()
       }
     }
+  })
+
+  // ---------- Amounts in the reader's currency ----------
+  // Built in US dollars; the reader's pick (kept in localStorage, shared with the worth-it check) redoes each
+  // cell from its data-amount. "" is the funder's own currency.
+  const currencySelect = $<HTMLSelectElement>('[data-currency-select]')
+  const amountCells = [...document.querySelectorAll<HTMLElement>('.c-amount[data-amount]')]
+  function showCurrency(to: string) {
+    for (const td of amountCells) {
+      const c = amountCell(JSON.parse(td.dataset.amount!), to || undefined)
+      const amt = td.querySelector('.amt')
+      const orig = td.querySelector<HTMLElement>('.amt__orig')
+      if (!c || !amt || !orig) continue
+      amt.textContent = c.text
+      orig.textContent = c.original ? `(${c.original})` : ''
+      orig.hidden = !c.original
+    }
+  }
+  try {
+    const kept = localStorage.getItem('nf-currency')
+    if (kept !== null && [...currencySelect.options].some((o) => o.value === kept)) currencySelect.value = kept
+  } catch {}
+  if (currencySelect.value !== 'USD') showCurrency(currencySelect.value)
+  currencySelect.addEventListener('change', () => {
+    try {
+      localStorage.setItem('nf-currency', currencySelect.value)
+    } catch {}
+    showCurrency(currencySelect.value)
   })
 
   // ---------- Wiring ----------

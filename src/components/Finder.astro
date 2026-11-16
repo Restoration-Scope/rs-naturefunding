@@ -4,6 +4,9 @@
 // and its preset, which src/lib/finder.ts keeps in the path rather than the address.
 import Row from './FinderRow.astro'
 import DigestSignup from './DigestSignup.astro'
+import CurrencyOptions from './CurrencyOptions.astro'
+import { longDate } from '../lib/format'
+import { ratesDate } from '../lib/rates'
 import { ArrowDown, ArrowUp, Bird, Building2, ChevronsUpDown, Droplets, LayoutGrid, Microscope, Search, SlidersHorizontal, Trees, Users, Waves, Wheat, X } from 'lucide-react'
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
@@ -193,6 +196,16 @@ const segSelect =
               <option value="amount">Largest amount</option>
               <option value="checked">Recently checked</option>
             </NativeSelect>
+          </div>
+          {/* A display choice, not a filter: no name, so it stays out of the address and Clear all; src/lib/finder.ts
+              keeps it in localStorage (nf-currency, shared with the worth-it check). Top of the sidebar, beside Sort
+              in the sheet. */}
+          <div class="border-b border-rule py-3">
+            <Label htmlFor="currency" className="mb-[0.3rem]">Show amounts in</Label>
+            <NativeSelect id="currency" data-currency-select="" className="w-full">
+              <CurrencyOptions />
+            </NativeSelect>
+            <p class={groupHint}>Converted at the rates of {longDate(ratesDate)}, with the funder’s own figure in brackets.</p>
           </div>
           <fieldset class={group} data-group="status">
             <legend class={groupTitle}>Status<Badge variant="count" data-gcount="status" hidden /></legend>
