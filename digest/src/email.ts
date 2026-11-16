@@ -6,6 +6,7 @@ import { ratesDate } from '../../src/lib/rates'
 import { countryName, regionLabels, type Region } from '../../src/lib/geo'
 import { approachLabels, projectTypes } from '../../src/lib/labels'
 import { markFor } from '../../src/lib/marks'
+import { pageHref, type PagePaths } from '../../src/lib/page-paths'
 import type { Digest, DigestItem, Section } from './digest'
 import { prefsText, type Prefs } from './match'
 
@@ -58,10 +59,11 @@ function funderMark(site: string, org: { name: string; url: string }) {
 export const currencyName = (code: string) =>
   new Intl.NumberFormat('en', { style: 'currency', currency: code, currencyDisplay: 'name' }).formatToParts(2).find((p) => p.type === 'currency')?.value ?? code
 
-/** The finder with the subscriber's choices set, so "see them all" lands on the same list (src/lib/finder.ts fromUrl). */
-export function finderUrl(site: string, prefs: Prefs) {
-  const qs = [prefs.where && `where=${encodeURIComponent(prefs.where).replace('%3A', ':')}`, prefs.approaches.length && `approach=${prefs.approaches.join(',')}`].filter(Boolean).join('&')
-  return `${site}/${qs ? `?${qs}` : ''}`
+/** The site's page for the subscriber's choices: their country's (or region's, or type's) page, with any choice
+ *  no page holds left in the address (src/lib/page-paths.ts, src/lib/finder.ts fromUrl). Without the page map,
+ *  the home finder with both choices in the address. */
+export function finderUrl(site: string, prefs: Prefs, pages: PagePaths = {}) {
+  return `${site}${pageHref(pages, prefs.where, [...prefs.approaches].sort().join(' '))}`
 }
 
 function frame(site: string, preheader: string, body: string, footer?: string) {
@@ -140,7 +142,7 @@ function itemParts(i: DigestItem, site: string, prefs: Prefs, currency?: string)
   }
 }
 
-export function digestEmail(o: { site: string; digest: Digest; prefs: Prefs; currency?: string; since: string; unsubscribeUrl: string; manageUrl: string }): Email {
+export function digestEmail(o: { site: string; pages?: PagePaths; digest: Digest; prefs: Prefs; currency?: string; since: string; unsubscribeUrl: string; manageUrl: string }): Email {
   const { items, total } = o.digest
   const what = prefsText(o.prefs)
   const counts = (['open', 'upcoming', 'new'] as Section[]).map((s) => [s, items.filter((i) => i.section === s).length] as const)
@@ -149,7 +151,9 @@ export function digestEmail(o: { site: string; digest: Digest; prefs: Prefs; cur
   )
   const subject = `${subjectBits.join(', ')}${what ? ` · ${what}` : ''}`
   const intro = `New since ${longDate(o.since.slice(0, 10))}${what ? `, for ${what}` : ''}.`
-  const introHtml = what ? esc(intro).replace(`, for ${esc(what)}`, `, for ${prefsHtml(o.site, o.prefs)}`) : esc(intro)
+  const listUrl = finderUrl(o.site, o.prefs, o.pages)
+  const link = (label: string) => `<a href="${esc(listUrl)}" style="color:${C.brand};">${label}</a>`
+  const introHtml = what ? esc(intro).replace(`, for ${esc(what)}`, `, for ${link(prefsHtml(o.site, o.prefs))}`) : esc(intro)
 
   const fineprint = o.currency
     ? `Amounts are converted to ${currencyName(o.currency)} at the rates of ${longDate(ratesDate)}, with the funder’s own figure in brackets. Check the funder’s page before you apply.`
@@ -176,7 +180,9 @@ export function digestEmail(o: { site: string; digest: Digest; prefs: Prefs; cur
     })
     .join('')
 
-  const more = total > items.length ? `<p style="margin:20px 0 0;">And ${total - items.length} more. <a href="${esc(finderUrl(o.site, o.prefs))}" style="color:${C.brand};">See them all on naturefunding.org</a>.</p>` : ''
+  // Always a way to the subscriber's page (their country's, when it has one), not only when the list was cut.
+  const seeAll = `See all grants${what ? ` for ${what}` : ''} on naturefunding.org`
+  const more = `<p style="margin:20px 0 0;">${total > items.length ? `And ${total - items.length} more. ` : ''}${link(esc(seeAll))}.</p>`
   const body = `<p style="margin:0;color:${C.ink2};font-size:15px;">${introHtml}</p>${sections}${more}
 <p style="margin:24px 0 16px;font-size:14px;color:${C.ink2};">Each listing is checked against the funder’s own page. ${esc(fineprint)}</p>`
   const footer = `You get this because you signed up at naturefunding.org${what ? ` for ${esc(what)}` : ''}. At most one email a week, only when something is new.<br>
@@ -197,6 +203,6 @@ export function digestEmail(o: { site: string; digest: Digest; prefs: Prefs; cur
       ].join('\n\n'),
     )
     .join('\n\n')
-  const text = `${intro}\n\n${textItems}\n${total > items.length ? `\nAnd ${total - items.length} more: ${finderUrl(o.site, o.prefs)}\n` : ''}\n${fineprint}\n\n--\nAt most one email a week, only when something is new.\nChange what you get: ${o.manageUrl}\nUnsubscribe: ${o.unsubscribeUrl}\n\n${TAGLINE}\n`
+  const text = `${intro}\n\n${textItems}\n\n${total > items.length ? `And ${total - items.length} more. ` : ''}${seeAll}: ${listUrl}\n\n${fineprint}\n\n--\nAt most one email a week, only when something is new.\nChange what you get: ${o.manageUrl}\nUnsubscribe: ${o.unsubscribeUrl}\n\n${TAGLINE}\n`
   return { subject, html: frame(o.site, intro, body, footer), text }
 }

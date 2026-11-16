@@ -4,6 +4,7 @@
 import type { Programme } from '../../src/data/schema'
 import { isConsentVersion, type ConsentVersion } from './consent'
 import { buildDigest } from './digest'
+import type { PagePaths } from '../../src/lib/page-paths'
 import { confirmationEmail, digestEmail } from './email'
 import type { DigestEvent } from './events'
 import { cleanCurrency, cleanPrefs, prefsText, type Approach, type Prefs } from './match'
@@ -44,6 +45,8 @@ export type Env = {
 export type Deps = {
   programmes: Map<string, Programme>
   events: DigestEvent[]
+  /** The site's finder pages by preset (scripts/pages.ts), so the digest links the subscriber's country page. */
+  pages?: PagePaths
   /** When the newest commit in the bundle reached main (scripts/history.ts coveredUntil); defaults to now. */
   coveredUntil?: string
   mailer?: Mailer
@@ -251,7 +254,7 @@ export async function runDigest(env: Env, deps: Deps): Promise<RunReport> {
     withNews++
     if (outgoing.length >= limit) continue
     const unsubscribeUrl = `${env.SELF_URL}/unsubscribe?t=${await seal({ k: 'unsubscribe', id: s.id }, env.LIST_SECRET)}`
-    const msg = digestEmail({ site: env.SITE_URL, digest, prefs, currency: s.currency, since, unsubscribeUrl, manageUrl: `${env.SITE_URL}/digest/` })
+    const msg = digestEmail({ site: env.SITE_URL, pages: deps.pages, digest, prefs, currency: s.currency, since, unsubscribeUrl, manageUrl: `${env.SITE_URL}/digest/` })
     outgoing.push({
       row: s,
       email: {
