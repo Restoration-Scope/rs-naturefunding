@@ -235,6 +235,16 @@
     font-weight: 400;
     color: var(--muted-foreground);
   }
+  /* The funder's own figure, under the converted one. */
+  .amt__orig {
+    display: block;
+    font-size: var(--text-sm);
+    font-variant-numeric: tabular-nums;
+    color: var(--muted-foreground);
+  }
+  .amt__orig[hidden] {
+    display: none;
+  }
   .amt__note {
     display: block;
     margin-top: 0.125rem;
@@ -411,6 +421,9 @@
     }
     .amt__note {
       grid-column: 1 / -1;
+    }
+    .amt__orig {
+      grid-column: 1;
     }
     .stamp {
       grid-area: 1 / 2;

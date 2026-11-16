@@ -1,5 +1,5 @@
 import { describe, expect, test } from 'bun:test'
-import { amountShort, boldFigures, effortLevel, effortSignals, geographyFull, sentence } from './format'
+import { amountShort, boldFigures, effortLevel, effortSignals, geographyFull, nameWithFunder, sentence } from './format'
 
 describe('geographyFull', () => {
   test('a region label that is the region name is not repeated', () => {
@@ -119,5 +119,18 @@ describe('effortSignals', () => {
     expect(levels({ ...none, after_award: { reports: 'final' } })[3]).toBe('light')
     expect(levels({ ...none, after_award: { reports: 'other' } })[3]).toBe('some')
     expect(levels({ ...none, eligibility: [{ rule: 'Registered locally', kind: 'legal' }] })[0]).toBe('light')
+  })
+})
+
+describe('nameWithFunder', () => {
+  const p = (name: string, funder: string) => ({ name, funder: { name: funder, url: 'https://example.org' } })
+  test('names the programme and its funder', () => {
+    expect(nameWithFunder(p('Darwin Initiative Main', 'Defra'))).toBe('Darwin Initiative Main, Defra')
+  })
+  test('says the name once when the funder repeats it', () => {
+    expect(nameWithFunder(p('Scottish Rivers Fund', 'Scottish Rivers Fund'))).toBe('Scottish Rivers Fund')
+    expect(nameWithFunder(p('Forest Action Facility', 'Forest Action Facility (established by IUCN and KfW)'))).toBe(
+      'Forest Action Facility (established by IUCN and KfW)',
+    )
   })
 })

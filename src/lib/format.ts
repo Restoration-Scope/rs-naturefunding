@@ -7,6 +7,14 @@ const fmt = (month: 'short' | 'long') => new Intl.DateTimeFormat('en-US', { mont
 const short = fmt('short')
 const long = fmt('long')
 
+/** True when the funder's name already starts with the programme's ("Scottish Rivers Fund" from "Scottish Rivers Fund"). */
+export const funderRepeatsName = (p: Pick<Programme, 'name' | 'funder'>) =>
+  p.funder.name.toLowerCase().startsWith(p.name.toLowerCase())
+
+/** "Darwin Initiative Main, Defra", or the funder's name alone when it already says the programme's. */
+export const nameWithFunder = (p: Pick<Programme, 'name' | 'funder'>) =>
+  funderRepeatsName(p) ? p.funder.name : `${p.name}, ${p.funder.name}`
+
 /** Nov 1, 2026 */
 export const shortDate = (iso: string) => short.format(new Date(`${iso}T00:00:00Z`))
 /** November 1, 2026 */

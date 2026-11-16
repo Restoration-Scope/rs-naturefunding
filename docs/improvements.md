@@ -1,0 +1,10 @@
+# Improvements
+
+What a visitor to naturefunding.org can see or do that they couldn't before, newest first. One line per merged change, added in the same PR (AGENTS.md). The naturefunding.org LinkedIn Page drafts its update posts from this list. Emails count once `DIGEST_SENDING` is `live`.
+
+- 2026-11-16 · Finder shows every amount in one currency, US dollars to start, with a "Show amounts in" picker · https://naturefunding.org/ · #626
+- 2026-11-16 · IKI Small Grants lists its 3 application steps and that consortia can't apply · https://naturefunding.org/p/iki-small-grants/ · #624
+- 2026-11-06 · Amounts paid per tree or per hectare say so instead of reading as per project · 966f02a
+- 2026-11-06 · The total budget of a round shows under the per-project amount, where the funder states it · https://naturefunding.org/p/dfo-cnfasar/ · 73711c6
+- 2026-11-06 · Programme pages open with per project, who can apply and how to apply; the facts sit in three groups; a contents list on wide screens · https://naturefunding.org/p/naturescot-nature-restoration-fund/ · 2a5c039
+- 2026-11-04 · Every programme page has an "Is it worth your time?" check, and "Work to apply" lists the funder's steps where stated · https://naturefunding.org/p/naturescot-nature-restoration-fund/#worth · 48d98b5
