@@ -1,5 +1,5 @@
 import { describe, expect, test } from 'bun:test'
-import { amountShort, boldFigures, geographyFull, sentence } from './format'
+import { amountShort, boldFigures, geographyFull, nameWithFunder, sentence } from './format'
 
 describe('geographyFull', () => {
   test('a region label that is the region name is not repeated', () => {
@@ -46,5 +46,18 @@ describe('boldFigures', () => {
   })
   test('escapes the text around the figures', () => {
     expect(boldFigures('<b> & 10')).toBe(`&lt;b&gt; &amp; ${b('10')}`)
+  })
+})
+
+describe('nameWithFunder', () => {
+  const p = (name: string, funder: string) => ({ name, funder: { name: funder, url: 'https://example.org' } })
+  test('names the programme and its funder', () => {
+    expect(nameWithFunder(p('Darwin Initiative Main', 'Defra'))).toBe('Darwin Initiative Main, Defra')
+  })
+  test('says the name once when the funder repeats it', () => {
+    expect(nameWithFunder(p('Scottish Rivers Fund', 'Scottish Rivers Fund'))).toBe('Scottish Rivers Fund')
+    expect(nameWithFunder(p('Forest Action Facility', 'Forest Action Facility (established by IUCN and KfW)'))).toBe(
+      'Forest Action Facility (established by IUCN and KfW)',
+    )
   })
 })

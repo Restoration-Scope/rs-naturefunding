@@ -3,7 +3,7 @@
 // checked date, so a line still holds up when an answer quotes it alone.
 import type { Call, Evidence, Programme } from '../data/schema'
 import { AGING_DAYS, HIDDEN_DAYS, buildDate, listingFor, programmeById, programmes, sortListings, stats, type Listing } from './data'
-import { amountText, effortText, poolText, geographyFull, geographyText, joinAnd, longDate } from './format'
+import { amountText, effortText, poolText, geographyFull, geographyText, joinAnd, longDate, nameWithFunder } from './format'
 import { accessHelp, accessLabels, applicantLabels, approachLabels } from './labels'
 import { RS_DESCRIPTOR, RS_URL, SITE_NAME, absolute, funderCorrectionUrl, reportProblemUrl } from './site'
 import { countryName } from './geo'
@@ -363,7 +363,7 @@ export function grantJsonLd(l: Listing): object[] {
       '@type': 'WebPage',
       '@id': url,
       url,
-      name: `${p.name}, ${p.funder.name}`,
+      name: nameWithFunder(p),
       dateModified: p.checked_at,
       lastReviewed: p.checked_at,
       isBasedOn: [...new Set(evidenceOf(p).map((e) => e.source_url))],
