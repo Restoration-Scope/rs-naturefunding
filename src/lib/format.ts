@@ -150,6 +150,19 @@ export function effortText(e: Programme['effort']): string | null {
   return [...e.steps, ...(e.more_after ? ['further steps'] : [])].join(' → ')
 }
 
+/**
+ * How heavy applying is, as our label from counts the funder's pages give: Heavy at 3+ steps or 5+ documents,
+ * Light at one step with at most 2 documents, Medium between. Null when the steps aren't stated.
+ */
+export function effortLevel(p: Pick<Programme, 'effort' | 'documents'>): { level: 'Light' | 'Medium' | 'Heavy'; why: string } | null {
+  if (!p.effort) return null
+  const steps = p.effort.steps.length + (p.effort.more_after ? 1 : 0)
+  const docs = p.documents?.length
+  const level = steps >= 3 || (docs ?? 0) >= 5 ? 'Heavy' : steps === 1 && (docs ?? 0) <= 2 ? 'Light' : 'Medium'
+  const parts = [`${steps}${p.effort.more_after ? '+' : ''} ${steps === 1 ? 'step' : 'steps'}`, ...(docs ? [`${docs} ${docs === 1 ? 'document' : 'documents'}`] : [])]
+  return { level, why: parts.join(', ') }
+}
+
 const escapeHtml = (s: string) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;')
 /** A sum of money or a share in text: "€5,000,000", "EUR 2 - 4 million", "Nu. 6.0 million", "25%", "17,000,000 EUR". */
 const figure =

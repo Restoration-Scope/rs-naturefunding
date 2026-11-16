@@ -67,6 +67,36 @@ describe('consortium_required', () => {
   })
 })
 
+describe('eligibility, documents and step dates', () => {
+  test('each eligibility rule has its own quote', () => {
+    const p = fixture()
+    p.eligibility = ['Operating for at least 3 years', 'Registered in Kenya']
+    p.evidence.eligibility = [ev('Applicants must have operated for at least three years.')]
+    expect(problems(p)).toEqual(['evidence.eligibility: each eligibility rule has its own quote: 2 rules, 1 quotes'])
+    p.evidence.eligibility.push(ev('Applicants must be registered in Kenya.'))
+    expect(problems(p)).toEqual([])
+  })
+
+  test('documents need evidence', () => {
+    const p = fixture()
+    p.documents = ['Registration certificate']
+    expect(problems(p)).toEqual(['evidence.documents: documents is stated but has no evidence'])
+  })
+
+  test('a step date needs its year in an effort quote, one entry per step, in order', () => {
+    const p = fixture()
+    p.effort = { steps: ['Concept note', 'Full proposal'], due: ['2027-01-08', null] }
+    p.evidence.effort = [ev('Concept notes are due by 8 January.')]
+    expect(problems(p)).toEqual(['effort.due: no effort quote states the year of 2027-01-08; a yearless date stays null'])
+    p.evidence.effort = [ev('Concept notes are due by 8 January 2027; full proposals by 1 March 2027.')]
+    expect(problems(p)).toEqual([])
+    p.effort.due = ['2027-03-01', '2027-01-08']
+    expect(problems(p)).toEqual(['effort.due: steps are due in order'])
+    p.effort.due = ['2027-01-08']
+    expect(problems(p)).toEqual(['effort.due: one due entry per step: 2 steps, 1 entries'])
+  })
+})
+
 describe('a date quote must state its year', () => {
   test.each([
     ['Applications close 26 November 2026.', true],

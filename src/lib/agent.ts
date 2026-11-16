@@ -25,6 +25,8 @@ export const factIds = {
   approaches: 'approaches',
   reporting: 'reporting',
   effort: 'effort',
+  eligibility: 'eligibility',
+  documents: 'documents',
 } as const
 export const callId = (c: Pick<Call, 'id'>) => `call-${c.id}`
 export const callFactId = (c: Pick<Call, 'id'>, field: 'status' | 'opens' | 'deadline' | 'recurring' | 'countries') => `call-${c.id}-${field}`
@@ -158,6 +160,13 @@ export function programmeMarkdown(p: Programme): string {
     ...(consortium ? [quoteLines(`${n}, consortium required`, consortium, p.evidence.consortium_required, factIds.consortium_required, p)] : []),
     ...(p.administered_by ? [quoteLines(`${n}, run by`, p.administered_by.name, p.evidence.administered_by, factIds.administered_by, p)] : []),
     ...(p.access === 'direct' && p.effort ? [quoteLines(`${n}, steps to apply`, effortText(p.effort)!, p.evidence.effort, factIds.effort, p)] : []),
+    ...(p.access === 'direct' && p.effort?.due
+      ? [`**${n}, when each step is due:** ${p.effort.steps.map((s, i) => `${s}${p.effort!.due![i] ? ` (by ${longDate(p.effort!.due![i]!)})` : ''}`).join('; ')}`]
+      : []),
+    ...(p.access === 'direct' && p.eligibility
+      ? p.eligibility.map((rule, i) => quoteLines(`${n}, rule ${i + 1} an applicant must meet`, rule, p.evidence.eligibility?.[i], factIds.eligibility, p))
+      : []),
+    ...(p.access === 'direct' && p.documents ? [quoteLines(`${n}, documents to have ready`, p.documents.join('; '), p.evidence.documents, factIds.documents, p)] : []),
   ]
   out.push(facts.join('\n\n'))
 

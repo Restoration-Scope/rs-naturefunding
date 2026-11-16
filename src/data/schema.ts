@@ -238,8 +238,27 @@ export const programme = z
         steps: z.array(z.string().min(3).max(80)).min(1).max(5).describe("The steps in order, in our words."),
         /** The page says more steps follow the ones listed, without naming them all. */
         more_after: z.boolean().optional().describe("true when the page says more steps follow the ones listed."),
+        /** When each step is due, as the funder dates it, one entry per step (null for an undated step). Never inferred. */
+        due: z
+          .array(isoDate.nullable())
+          .optional()
+          .describe('When each step is due (YYYY-MM-DD), one entry per step, null for an undated step. Only dates an effort quote states with their year.'),
       })
       .optional(),
+    /** The rules that rule an applicant out, in our words, each one a reader can answer yes or no to. Missing means not listed. */
+    eligibility: z
+      .array(z.string().min(5).max(120))
+      .min(1)
+      .max(8)
+      .optional()
+      .describe('The rules that rule an applicant out, in our words, each phrased so a reader can answer yes or no. evidence.eligibility holds one quote per rule, in the same order. Missing when the pages we read don’t list them.'),
+    /** What to have ready for the first step, in our words ("Registration certificate"). Missing means not stated. */
+    documents: z
+      .array(z.string().min(3).max(120))
+      .min(1)
+      .max(10)
+      .optional()
+      .describe('The documents the funder asks for at the first step, in our words. Missing when the pages we read don’t say.'),
     /** How many applications the funder says it funded, out of how many, and when. Missing means not published. */
     odds: z
       .object({
@@ -261,8 +280,12 @@ export const programme = z
       co_finance_required: evidence.optional(),
       consortium_required: evidence.optional(),
       reporting: evidence.optional(),
-      /** One quote per step at most: a page often names the stages in different places. */
-      effort: z.array(evidence).min(1).max(3).optional(),
+      /** One quote per step at most: a page often names the stages, and their dates, in different places. */
+      effort: z.array(evidence).min(1).max(5).optional(),
+      /** One quote per rule, in the same order as `eligibility`. */
+      eligibility: z.array(evidence).min(1).max(8).optional(),
+      /** A list of documents usually sits in one or two places. */
+      documents: z.array(evidence).min(1).max(3).optional(),
       odds: evidence.optional(),
     }),
     /** The oldest evidence date: every fact above was read on or after this day. */
@@ -283,12 +306,27 @@ export const programme = z
       consortium_required: p.consortium_required !== undefined,
       reporting: p.reporting !== null,
       effort: p.effort !== undefined,
+      eligibility: p.eligibility !== undefined,
+      documents: p.documents !== undefined,
       odds: p.odds !== undefined,
     }
     for (const [field, isStated] of Object.entries(stated)) {
       const e = p.evidence[field as keyof typeof p.evidence]
       if (isStated && !e) issue(['evidence', field], `${field} is stated but has no evidence`)
       if (!isStated && e) issue(['evidence', field], `${field} has evidence but is not stated`)
+    }
+
+    if (p.eligibility && p.evidence.eligibility && p.eligibility.length !== p.evidence.eligibility.length) {
+      issue(['evidence', 'eligibility'], `each eligibility rule has its own quote: ${p.eligibility.length} rules, ${p.evidence.eligibility.length} quotes`)
+    }
+    const due = p.effort?.due
+    if (p.effort && due) {
+      if (due.length !== p.effort.steps.length) issue(['effort', 'due'], `one due entry per step: ${p.effort.steps.length} steps, ${due.length} entries`)
+      if (due.every((d) => d === null)) issue(['effort', 'due'], 'no step is dated; leave due out')
+      const quotes = (p.evidence.effort ?? []).map((e) => e.quote).join(' ')
+      const dated = due.filter((d): d is string => d !== null)
+      for (const d of dated) if (!statesYear(quotes, d)) issue(['effort', 'due'], `no effort quote states the year of ${d}; a yearless date stays null`)
+      if (dated.some((d, i) => i > 0 && d < dated[i - 1]!)) issue(['effort', 'due'], 'steps are due in order')
     }
 
     // A round's pot smaller than one grant from that round is a misread. A year's or a programme's pot

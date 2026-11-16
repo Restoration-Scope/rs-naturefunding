@@ -20,7 +20,7 @@ import { cardClasses } from '@/components/ui/card'
 import { HIDDEN_DAYS, buildDate, callGroups, whereReach, listingFor, programmeById, programmes, sortListings } from '../../lib/data'
 import type { Programme } from '../../data/schema'
 import { pagesFor } from '../../lib/finder-pages'
-import { amountText, effortText, poolText, geographyFull, joinAnd, longDate, pageLabel, sentence, keepAmountTogether } from '../../lib/format'
+import { amountText, effortLevel, effortText, poolText, geographyFull, joinAnd, longDate, pageLabel, sentence, keepAmountTogether } from '../../lib/format'
 import { countryName, regionLabels } from '../../lib/geo'
 import {
   accessHelp,
@@ -31,6 +31,7 @@ import {
 } from '../../lib/labels'
 import { ArrowLeft, Calculator, ChevronDown } from 'lucide-react'
 import WorthCheck from '../../components/WorthCheck.astro'
+import BeforeYouApply from '../../components/BeforeYouApply.astro'
 import { CONTACT_EMAIL, RS_REPORTING_URL, absolute, funderCorrectionUrl, reportProblemUrl } from '../../lib/site'
 
 export const getStaticPaths = (() => programmes.map((p) => ({ params: { id: p.id }, props: { p } }))) satisfies GetStaticPaths
@@ -142,6 +143,9 @@ const worth = {
   steps: p.effort ? p.effort.steps.length + (p.effort.more_after ? 1 : 0) : null,
   odds: p.odds ? Math.round((p.odds.funded / p.odds.applied) * 1000) / 10 : null,
 }
+// Rules, documents and steps get their own section; the Applying group then only names the load.
+const before = p.access === 'direct' && (p.effort !== undefined || p.eligibility !== undefined || p.documents !== undefined)
+const level = effortLevel(p)
 const listingsList = 'm-0 list-none border-t border-rule p-0'
 
 // The left-hand contents on the widest screens: every section this page shows, in order.
@@ -152,6 +156,7 @@ const contents: ContentsItem[] = [
   { href: '#facts-money', label: 'The money', kind: 'money' },
   { href: '#facts-who', label: 'Who can apply', kind: 'who' },
   { href: '#facts-apply', label: 'Applying', kind: 'apply' },
+  ...(before ? [{ href: '#before-title', label: 'Before you apply', kind: 'before' } as const] : []),
   ...(p.access === 'direct' ? [{ href: '#worth', label: 'Is it worth your time?', kind: 'worth' } as const] : []),
   ...(p.calls.length ? [{ href: '#calls-title', label: p.calls.length === 1 ? 'The call' : `Calls (${p.calls.length})`, kind: 'calls' } as const] : []),
   { href: '#reporting-title', label: 'Reporting', kind: 'reporting' },
@@ -362,12 +367,17 @@ const jsonLd = [
         {
           p.access === 'direct' && (
             <Fact
-              id="effort"
+              id={before ? 'work-to-apply' : 'effort'}
               label="Work to apply"
-              value={effortText(p.effort)}
-              evidence={[...(p.evidence.effort ?? []), ...(p.evidence.odds ? [p.evidence.odds] : [])]}
+              value={before ? (level ? `${level.level}: ${level.why}` : 'Steps not stated') : effortText(p.effort)}
+              evidence={[...(before ? [] : (p.evidence.effort ?? [])), ...(p.evidence.odds ? [p.evidence.odds] : [])]}
               missing="Steps not stated"
             >
+              {before && (
+                <p class={factHelp}>
+                  <a class="font-semibold text-ink underline underline-offset-2" href="#before-title">Before you apply</a>: {[p.eligibility && 'the rules', p.documents && 'the documents', p.effort && 'the steps'].filter(Boolean).join(', ').replace(/, ([^,]*)$/, ' and $1')}, in the funder’s words.
+                </p>
+              )}
               <p class="mt-1 text-sm text-ink-2">
                 Chance of funding: {oddsText ?? 'not published'} ·{' '}
                 <a class="font-semibold text-ink underline underline-offset-2" href="#worth">Is it worth your time?</a>
@@ -389,6 +399,8 @@ const jsonLd = [
         }
       </FactGroup>
     </section>
+
+    {before && <BeforeYouApply p={p} />}
 
     {
       p.access === 'direct' && (

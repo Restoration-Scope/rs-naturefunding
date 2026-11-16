@@ -26,6 +26,9 @@ Every listing on naturefunding.org is a JSON file in this folder. The contract i
 | `amount` | Grant size in the funder's currency, `min` and/or `max` as stated. `typical: true` when the funder gives a usual range ("typically", "generally") rather than limits; `max_exclusive: true` when it says "less than"; `per: "year"` for an annual amount; `note` for any other qualifier in the same quote, in our words ("Up to £20,000 in total"). |
 | `co_finance_required` | Whether matching funds are required. |
 | `reporting` | What grantees must report, in our words. Filled only where the funder states it. |
+| `effort` | What applying takes, for `direct` programmes: `steps` in order, in our words (at most 5, 80 characters each: "Concept note", "Full proposal, if invited"); `more_after: true` when the page says further steps follow; `due`, one entry per step, the date each step is due (`null` for an undated one), only when an effort quote states it with its year. Up to 5 quotes in `evidence.effort`. |
+| `eligibility` | The rules that rule an applicant out, in our words, each phrased so a reader can answer yes or no ("Operating for at least 3 years by the deadline", "Average yearly revenue under €500,000"). Hard requirements only: not selection criteria or priorities. At most 8, most decisive first; include a place or organisation rule only when it is stricter than `geography` and `applicant_types` say. `evidence.eligibility` holds one quote per rule, in the same order. |
+| `documents` | What the funder asks applicants to submit at the first step, in our words ("Registration certificate", "Audited accounts for the last 2 years"). Not the application form itself. At most 10, with up to 3 quotes. |
 | `calls` | Rounds of applications (below). |
 | `evidence` | One evidence record per stated fact above. |
 | `checked_at` | The oldest evidence date: every fact was read against the funder's pages on or after this day. |

@@ -1,0 +1,28 @@
+---
+import type { Evidence } from '../data/schema'
+import { boldFigures, pageLabel } from '../lib/format'
+import { notRecheckedPage } from '../lib/data'
+import SourceLink from './SourceLink.astro'
+
+/** One funder quote hanging off a rule, ended by its source icon (the tooltip names the page and date). */
+interface Props {
+  e: Evidence
+  /** Every figure in the quote reads bold (the money facts). */
+  figures?: boolean
+}
+
+const { e, figures = false } = Astro.props
+---
+
+<figure class="mt-[0.4rem]">
+  <blockquote class="max-w-[65ch] border-l-3 border-rule-strong py-[0.1rem] pl-[0.85rem] text-[0.9875rem] text-ink" cite={e.source_url}>
+    <p>
+      {figures ? <span class="before:content-['“'] after:content-['”']" set:html={boldFigures(e.quote)} /> : <span class="before:content-['“'] after:content-['”']">{e.quote}</span>}{' '}<SourceLink
+        url={e.source_url}
+        label={pageLabel(e.source_url)}
+        checked={e.checked_at}
+        reason={notRecheckedPage(e.source_url)}
+      />
+    </p>
+  </blockquote>
+</figure>

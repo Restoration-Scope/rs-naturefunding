@@ -1,5 +1,5 @@
 import { describe, expect, test } from 'bun:test'
-import { amountShort, boldFigures, geographyFull, sentence } from './format'
+import { amountShort, boldFigures, effortLevel, geographyFull, sentence } from './format'
 
 describe('geographyFull', () => {
   test('a region label that is the region name is not repeated', () => {
@@ -46,5 +46,17 @@ describe('boldFigures', () => {
   })
   test('escapes the text around the figures', () => {
     expect(boldFigures('<b> & 10')).toBe(`&lt;b&gt; &amp; ${b('10')}`)
+  })
+})
+
+describe('effortLevel', () => {
+  const steps = (n: number) => Array.from({ length: n }, (_, i) => `Step ${i + 1}`)
+  test('needs the steps', () => expect(effortLevel({ effort: undefined, documents: ['A'] })).toBeNull())
+  test('one step with few documents is light', () =>
+    expect(effortLevel({ effort: { steps: steps(1) }, documents: ['A', 'B'] })).toEqual({ level: 'Light', why: '1 step, 2 documents' }))
+  test('two steps is medium', () => expect(effortLevel({ effort: { steps: steps(2) }, documents: undefined })).toEqual({ level: 'Medium', why: '2 steps' }))
+  test('three stages or five documents is heavy', () => {
+    expect(effortLevel({ effort: { steps: steps(2), more_after: true }, documents: undefined })?.level).toBe('Heavy')
+    expect(effortLevel({ effort: { steps: steps(1) }, documents: ['A', 'B', 'C', 'D', 'E'] })?.level).toBe('Heavy')
   })
 })
