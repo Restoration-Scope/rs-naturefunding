@@ -88,6 +88,7 @@ describe('effortSignals', () => {
       after_award: { reports: 'yearly', audit: true },
     })
     expect(s.map((x) => x.level)).toEqual(['heavy', 'unchecked', 'heavy', 'heavy'])
+    expect(s[0]!.why).toBe('1 rule, with finances requirements.')
     expect(s[2]!.why).toBe('At least 50% of the project, in-kind accepted.')
     expect(s[3]!.why).toBe('Yearly reports and an audit.')
   })

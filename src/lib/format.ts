@@ -189,11 +189,12 @@ export function effortSignals(
   const count = `${rules.length} ${rules.length === 1 ? 'rule' : 'rules'}`
   const bars = [...new Set(rules.map((e) => e.kind).filter((k) => k in kindWords))].map((k) => kindWords[k]!)
   const consortium = p.consortium_required ? ['a consortium'] : []
+  const demands = [...(bars.length ? [`${listOf(bars)} requirements`] : []), ...consortium].join(' and ')
   const qualify: Pick<Signal, 'level' | 'why'> =
     rules.length || consortium.length
       ? {
           level: rules.some((e) => e.kind === 'finances') ? 'heavy' : bars.length || consortium.length ? 'some' : 'light',
-          why: `${rules.length ? count : 'No listed rules'}${bars.length || consortium.length ? `, with ${listOf([...bars.map((w) => `${w} requirements`), ...consortium])}` : ', none on track record, capacity or finances'}.`,
+          why: `${rules.length ? count : 'No listed rules'}${demands ? `, with ${demands}` : ', none on track record, capacity or finances'}.`,
         }
       : signalBlank(p)
 
@@ -204,8 +205,8 @@ export function effortSignals(
 
   const c = p.co_finance
   const [mine, theirs] = (c?.ratio ?? '').split(':').map(Number)
-  // A stated ratio is the exact figure; its share only sets the level.
-  const share = c?.min_share ?? (mine && theirs ? (100 * mine) / (mine + theirs) : undefined)
+  // A stated ratio is the exact figure; its share only sets the level. The schema allows one or the other.
+  const share = mine && theirs ? (100 * mine) / (mine + theirs) : c?.min_share
   const parts = [
     ...(c?.ratio ? [`${mine} of yours for every ${theirs} from the funder`] : c?.min_share !== undefined ? [`at least ${c.min_share}% of the project`] : []),
     ...(c?.min_amount ? [`at least ${c.min_amount.value.toLocaleString('en')} ${c.min_amount.currency}`] : []),

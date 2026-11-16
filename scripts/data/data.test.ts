@@ -105,6 +105,19 @@ describe('eligibility, documents and step dates', () => {
     expect(problems(p)).toEqual([])
   })
 
+  test('a match is a share or a ratio, never both, and never zero', () => {
+    const p = fixture()
+    p.co_finance_required = true
+    p.evidence.co_finance_required = ev('Applicants provide one dollar for every two requested.')
+    p.evidence.co_finance = ev('Applicants provide one dollar for every two requested.')
+    p.co_finance = { ratio: '1:2', min_share: 5 }
+    expect(problems(p)).toEqual(['co_finance: co_finance takes min_share or ratio, not both'])
+    p.co_finance = { ratio: '0:0' }
+    expect(problems(p).join(' ')).toContain('co_finance.ratio')
+    p.co_finance = { ratio: '1:2' }
+    expect(problems(p)).toEqual([])
+  })
+
   test('a misspelled key is refused, not dropped', () => {
     const p = fixture()
     p.after_award = { reports: 'final', audits: true } as never
@@ -151,6 +164,8 @@ describe('a step date must be stated whole in one quote', () => {
     ['Applications close January 8 for projects in 2027.', '2027-01-08', false],
     ['Applications close 8 January 2027.', '2027-02-08', false],
     ['18 January 2027', '2027-01-08', false],
+    ['8 Sept. 2027', '2027-09-08', true],
+    ['8 January 2027', '2027-13-08', false],
   ])('%p states %s: %p', (quote, date, want) => expect(statesDate(quote, date)).toBe(want))
 })
 

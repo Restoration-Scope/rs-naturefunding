@@ -203,7 +203,7 @@ const MONTHS = [
   ['jun', 'juin'],
   ['jul', 'juil'],
   ['aug', 'ago', 'août', 'aoû'],
-  ['sep', 'set'],
+  ['sept', 'sep', 'set'],
   ['oct', 'okt', 'out'],
   ['nov'],
   ['dec', 'dic', 'déc', 'dez'],
@@ -227,6 +227,7 @@ const MONTH_NAMES: Record<number, string> = {
  */
 export const statesDate = (quote: string, date: string) => {
   const [y, m, d] = [date.slice(0, 4), Number(date.slice(5, 7)), Number(date.slice(8))]
+  if (!(m >= 1 && m <= 12)) return false
   const day = String.raw`0?${d}(?:st|nd|rd|th|er|º|\.)?`
   const mm = String.raw`0?${m}`
   const name = String.raw`(?:${[MONTH_NAMES[m], ...MONTHS[m - 1]!].filter(Boolean).join('|')})\.?`
@@ -318,11 +319,11 @@ export const programme = z
     co_finance: z
       .object({
         /** The smallest share of the project the applicant must bring, in percent (a 1:2 match is 33.3). */
-        min_share: z.number().gt(0).max(100).optional().describe('The smallest share of the project the applicant must bring, from its own or third-party funds, in percent (a 1:1 match is 50, 1:2 is 33.3).'),
+        min_share: z.number().gt(0).max(100).optional().describe('The smallest share of the project the applicant must bring, from its own or third-party funds, in percent (a 1:1 match is 50). A match stated as a ratio goes in ratio instead.'),
         /** The match as the funder states a ratio, applicant to funder ("1:2" = one for every two requested). */
         ratio: z
           .string()
-          .regex(/^\d+(\.\d+)?:\d+(\.\d+)?$/)
+          .regex(/^(?!0+(\.0+)?:)\d+(\.\d+)?:(?!0+(\.0+)?$)\d+(\.\d+)?$/)
           .optional()
           .describe('The match as the funder states it as a ratio, applicant to funder: "1:1", "1:2" (one for every two requested).'),
         /** The smallest contribution as a fixed sum, when the funder states one. */
@@ -337,6 +338,7 @@ export const programme = z
         applies_to: z.string().min(5).max(80).optional().describe('Who or what the requirement applies to, when the funder limits it, in our words.'),
       })
       .strict()
+      .refine((c) => c.min_share === undefined || c.ratio === undefined, 'co_finance takes min_share or ratio, not both')
       .refine((c) => c.min_share !== undefined || c.ratio !== undefined || c.min_amount !== undefined || c.in_kind !== undefined, 'co_finance needs min_share, ratio, min_amount or in_kind')
       .optional(),
     /** What a grantee must do after the award, from the funder's pages. Each key only when stated. */
