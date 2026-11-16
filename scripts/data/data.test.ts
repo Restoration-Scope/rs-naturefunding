@@ -1,5 +1,5 @@
 import { describe, expect, test } from 'bun:test'
-import { programme, statesYear, type Programme } from '../../src/data/schema'
+import { programme, statesDate, statesYear, type Programme } from '../../src/data/schema'
 import { checkData } from '../../src/data/load'
 import { comparable, quoteOnPage } from '../../src/data/text'
 import { htmlToText } from './page-text'
@@ -122,9 +122,9 @@ describe('eligibility, documents and step dates', () => {
     const p = fixture()
     p.effort = { steps: ['Concept note', 'Full proposal'], due: ['2027-01-08', null] }
     p.evidence.effort = [ev('Concept notes are due by 8 January.')]
-    expect(problems(p)).toEqual(['effort.due: no effort quote states 2027-01-08 with its day and year together; a yearless date stays null'])
+    expect(problems(p)).toEqual(['effort.due: no effort quote states 2027-01-08 with its day, month and year together; a yearless date stays null'])
     p.evidence.effort = [ev('The project runs through 2027. Concept notes are due by 8 January.')]
-    expect(problems(p)).toEqual(['effort.due: no effort quote states 2027-01-08 with its day and year together; a yearless date stays null'])
+    expect(problems(p)).toEqual(['effort.due: no effort quote states 2027-01-08 with its day, month and year together; a yearless date stays null'])
     p.evidence.effort = [ev('Concept notes are due by 8 January 2027; full proposals by 1 March 2027.')]
     expect(problems(p)).toEqual([])
     p.effort.due = ['2027-03-01', '2027-01-08']
@@ -136,6 +136,22 @@ describe('eligibility, documents and step dates', () => {
     p.effort.due = ['2027-01-08']
     expect(problems(p)).toEqual(['effort.due: one due entry per step: 2 steps, 1 entries'])
   })
+})
+
+describe('a step date must be stated whole in one quote', () => {
+  test.each([
+    ['by January 08, 2027.', '2027-01-08', true],
+    ['8 de enero de 2027', '2027-01-08', true],
+    ['8. Januar 2027', '2027-01-08', true],
+    ['8 Jan. 2027', '2027-01-08', true],
+    ['08.01.2027', '2027-01-08', true],
+    ['due 2027/01/08', '2027-01-08', true],
+    ['the 8th of January, 2027', '2027-01-08', true],
+    ['The project runs through 2027. Applications are due January 8.', '2027-01-08', false],
+    ['Applications close January 8 for projects in 2027.', '2027-01-08', false],
+    ['Applications close 8 January 2027.', '2027-02-08', false],
+    ['18 January 2027', '2027-01-08', false],
+  ])('%p states %s: %p', (quote, date, want) => expect(statesDate(quote, date)).toBe(want))
 })
 
 describe('a date quote must state its year', () => {

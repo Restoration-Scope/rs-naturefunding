@@ -54,7 +54,7 @@ describe('effortLevel', () => {
   test('needs the steps', () => expect(effortLevel({ effort: undefined, documents: ['A'] })).toBeNull())
   test('one step with few documents is light', () =>
     expect(effortLevel({ effort: { steps: steps(1) }, documents: ['A', 'B'] })).toEqual({ level: 'Light', why: '1 step, 2 documents' }))
-  test('two steps is medium', () => expect(effortLevel({ effort: { steps: steps(2) }, documents: undefined })).toEqual({ level: 'Medium', why: '2 steps' }))
+  test('two steps is medium', () => expect(effortLevel({ effort: { steps: steps(2) }, documents: undefined })).toEqual({ level: 'Medium', why: '2 steps, documents not listed' }))
   test('three stages or five documents is heavy', () => {
     expect(effortLevel({ effort: { steps: steps(2), more_after: true }, documents: undefined })?.level).toBe('Heavy')
     expect(effortLevel({ effort: { steps: steps(1) }, documents: ['A', 'B', 'C', 'D', 'E'] })?.level).toBe('Heavy')
@@ -91,6 +91,13 @@ describe('effortSignals', () => {
     expect(s[2]!.why).toBe('At least 50% of the project, in-kind accepted.')
     expect(s[3]!.why).toBe('Yearly reports and an audit.')
   })
+  test('a stated ratio is shown as stated and sets the level by its share', () => {
+    const s = effortSignals({ ...none, co_finance_required: true, co_finance: { ratio: '1:2' } })
+    expect(s[2]).toMatchObject({ level: 'heavy', why: '1 of yours for every 2 from the funder.' })
+    expect(levels({ ...none, co_finance_required: true, co_finance: { ratio: '1:4' } })[2]).toBe('some')
+  })
+  test('applying says when the documents are not listed', () =>
+    expect(effortLevel({ effort: { steps: ['Online form'] }, documents: undefined })?.why).toBe('1 step, documents not listed'))
   test('the number of rules does not change the level, only their kind', () => {
     const cap = (n: number) => Array.from({ length: n }, (_, i) => ({ rule: `Staff rule ${i + 1}`, kind: 'capacity' as const }))
     expect(levels({ ...none, eligibility: cap(1) })[0]).toBe('some')
@@ -109,6 +116,7 @@ describe('effortSignals', () => {
     expect(s[0]!.why).toBe('1 rule, with a consortium.')
     expect(s[2]!.why).toBe('At least 5,000 EUR (Private companies).')
     expect(levels({ ...none, after_award: { reports: 'final' } })[3]).toBe('light')
+    expect(levels({ ...none, after_award: { reports: 'other' } })[3]).toBe('some')
     expect(levels({ ...none, eligibility: [{ rule: 'Registered locally', kind: 'legal' }] })[0]).toBe('light')
   })
 })

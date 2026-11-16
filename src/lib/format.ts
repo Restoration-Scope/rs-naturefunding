@@ -159,7 +159,7 @@ export function effortLevel(p: Pick<Programme, 'effort' | 'documents'>): { level
   const steps = p.effort.steps.length + (p.effort.more_after ? 1 : 0)
   const docs = p.documents?.length
   const level = steps >= 3 || (docs ?? 0) >= 5 ? 'Heavy' : steps === 1 && (docs ?? 0) <= 2 ? 'Light' : 'Medium'
-  const parts = [`${steps}${p.effort.more_after ? '+' : ''} ${steps === 1 ? 'step' : 'steps'}`, ...(docs ? [`${docs} ${docs === 1 ? 'document' : 'documents'}`] : [])]
+  const parts = [`${steps}${p.effort.more_after ? '+' : ''} ${steps === 1 ? 'step' : 'steps'}`, docs ? `${docs} ${docs === 1 ? 'document' : 'documents'}` : 'documents not listed']
   return { level, why: parts.join(', ') }
 }
 
@@ -199,13 +199,15 @@ export function effortSignals(
 
   const lvl = effortLevel(p)
   const apply: Pick<Signal, 'level' | 'why'> = lvl
-    ? { level: lvl.level === 'Light' ? 'light' : lvl.level === 'Medium' ? 'some' : 'heavy', why: `${lvl.level}: ${lvl.why}${p.documents ? '' : ', documents not listed'}.` }
+    ? { level: lvl.level === 'Light' ? 'light' : lvl.level === 'Medium' ? 'some' : 'heavy', why: `${lvl.level}: ${lvl.why}.` }
     : signalBlank(p)
 
   const c = p.co_finance
-  const share = c?.min_share
+  const [mine, theirs] = (c?.ratio ?? '').split(':').map(Number)
+  // A stated ratio is the exact figure; its share only sets the level.
+  const share = c?.min_share ?? (mine && theirs ? (100 * mine) / (mine + theirs) : undefined)
   const parts = [
-    ...(share !== undefined ? [`at least ${share}% of the project`] : []),
+    ...(c?.ratio ? [`${mine} of yours for every ${theirs} from the funder`] : c?.min_share !== undefined ? [`at least ${c.min_share}% of the project`] : []),
     ...(c?.min_amount ? [`at least ${c.min_amount.value.toLocaleString('en')} ${c.min_amount.currency}`] : []),
   ]
   const cofund: Pick<Signal, 'level' | 'why'> =
@@ -242,6 +244,7 @@ const reportLabels = {
   yearly: 'yearly reports',
   twice_yearly: 'reports twice a year',
   quarterly: 'quarterly or more frequent reports',
+  other: 'reports on a set schedule',
   unspecified: 'reports, how often not stated',
 } as const
 

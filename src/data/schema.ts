@@ -194,6 +194,54 @@ export const statesYear = (quote: string, date: string) => {
   )
 }
 
+const MONTHS = [
+  ['jan', 'ene', 'janv', 'janeiro', 'jänner'],
+  ['feb', 'fev', 'févr'],
+  ['mar', 'mär'],
+  ['apr', 'abr', 'avr'],
+  ['may', 'mai', 'mayo', 'maio', 'mei'],
+  ['jun', 'juin'],
+  ['jul', 'juil'],
+  ['aug', 'ago', 'août', 'aoû'],
+  ['sep', 'set'],
+  ['oct', 'okt', 'out'],
+  ['nov'],
+  ['dec', 'dic', 'déc', 'dez'],
+]
+const MONTH_NAMES: Record<number, string> = {
+  1: 'januar[a-z]*|enero|janvier',
+  2: 'februar[a-z]*|febrero|f[ée]vrier|fevereiro',
+  3: 'march|marzo|mars|mar[çc]o|m[äa]rz|maart',
+  4: 'april|abril|avril',
+  6: 'june|junio|juin|junho|juni',
+  7: 'july|julio|juillet|julho|juli',
+  8: 'august|agosto|ao[ûu]t|augustus',
+  9: 'september|septiembre|septembre|setembro',
+  10: 'october|octubre|octobre|outubro|oktober',
+  11: 'november|noviembre|novembre|novembro',
+  12: 'december|diciembre|d[ée]cembre|dezembro|dezember',
+}
+/**
+ * Whether a quote states a whole date: its day, its month (a name in English, Spanish, French, Portuguese,
+ * German or Dutch, or a number) and its year in one expression. "January 8 for projects in 2027" is not 2027-01-08.
+ */
+export const statesDate = (quote: string, date: string) => {
+  const [y, m, d] = [date.slice(0, 4), Number(date.slice(5, 7)), Number(date.slice(8))]
+  const day = String.raw`0?${d}(?:st|nd|rd|th|er|º|\.)?`
+  const mm = String.raw`0?${m}`
+  const name = String.raw`(?:${[MONTH_NAMES[m], ...MONTHS[m - 1]!].filter(Boolean).join('|')})\.?`
+  const year = String.raw`(?:${y}|['‘’]${y.slice(2)})`
+  const gap = String.raw`[\s,]*(?:de\s+|of\s+)?`
+  const forms = [
+    String.raw`${day}${gap}${name}${gap}${year}`,
+    String.raw`${name}\s*${day},?\s*${year}`,
+    String.raw`${day}[./-]${mm}[./-](?:${y}|${y.slice(2)})`,
+    String.raw`${mm}[./-]${day}[./-](?:${y}|${y.slice(2)})`,
+    String.raw`${y}[./-]${mm}[./-]0?${d}`,
+  ]
+  return new RegExp(String.raw`(?<![\p{L}\d])(?:${forms.join('|')})(?![\p{L}\d])`, 'iu').test(quote)
+}
+
 /** Why a call's expected opening is wrong, or null: it is for an upcoming call with no firm date, and names only years its status quote states. */
 export function expectedProblem(c: Pick<Call, 'expected' | 'status' | 'opens' | 'evidence'>): string | null {
   if (!c.expected) return null
@@ -271,6 +319,12 @@ export const programme = z
       .object({
         /** The smallest share of the project the applicant must bring, in percent (a 1:2 match is 33.3). */
         min_share: z.number().gt(0).max(100).optional().describe('The smallest share of the project the applicant must bring, from its own or third-party funds, in percent (a 1:1 match is 50, 1:2 is 33.3).'),
+        /** The match as the funder states a ratio, applicant to funder ("1:2" = one for every two requested). */
+        ratio: z
+          .string()
+          .regex(/^\d+(\.\d+)?:\d+(\.\d+)?$/)
+          .optional()
+          .describe('The match as the funder states it as a ratio, applicant to funder: "1:1", "1:2" (one for every two requested).'),
         /** The smallest contribution as a fixed sum, when the funder states one. */
         min_amount: z
           .object({ value: z.number().positive().describe('The sum.'), currency: z.string().regex(/^[A-Z]{3}$/).describe('ISO 4217 code.') })
@@ -283,16 +337,16 @@ export const programme = z
         applies_to: z.string().min(5).max(80).optional().describe('Who or what the requirement applies to, when the funder limits it, in our words.'),
       })
       .strict()
-      .refine((c) => c.min_share !== undefined || c.min_amount !== undefined || c.in_kind !== undefined, 'co_finance needs min_share, min_amount or in_kind')
+      .refine((c) => c.min_share !== undefined || c.ratio !== undefined || c.min_amount !== undefined || c.in_kind !== undefined, 'co_finance needs min_share, ratio, min_amount or in_kind')
       .optional(),
     /** What a grantee must do after the award, from the funder's pages. Each key only when stated. */
     after_award: z
       .object({
         /** How often grantees report: one report at the end, yearly, twice a year, or quarterly or more often. */
         reports: z
-          .enum(['final', 'interim_and_final', 'yearly', 'twice_yearly', 'quarterly', 'unspecified'])
+          .enum(['final', 'interim_and_final', 'yearly', 'twice_yearly', 'quarterly', 'other', 'unspecified'])
           .optional()
-          .describe('How often grantees report, by the most frequent required report: final (one at the end), interim_and_final (one or two interim reports and a final), yearly, twice_yearly (every six months), quarterly (quarterly or more often), unspecified (reports required, how often not stated).'),
+          .describe('How often grantees report, by the most frequent required report: final (one at the end), interim_and_final (one or two interim reports and a final), yearly, twice_yearly (every six months), quarterly (quarterly or more often), other (a stated schedule none of these fit, such as at set milestones), unspecified (reports required, how often not stated).'),
         /** An external or independent audit of the grant. */
         audit: z.literal(true).optional().describe('true when the funder requires an external or independent audit.'),
         /** The funder visits the project site. */
@@ -345,10 +399,11 @@ export const programme = z
       /** A list of documents usually sits in one or two places. */
       documents: z.array(evidence).min(1).max(3).optional(),
       odds: evidence.optional(),
-    }),
+    }).strict(),
     /** The oldest evidence date: every fact above was read on or after this day. */
     checked_at: isoDate,
   })
+  .strict()
   .superRefine((p, ctx) => {
     const issue = (path: (string | number)[], message: string) => ctx.addIssue({ code: 'custom', path, message })
 
@@ -387,14 +442,9 @@ export const programme = z
       const quotes = (p.evidence.effort ?? []).map((e) => e.quote)
       const dated = due.filter((d): d is string => d !== null)
       for (const d of dated) if (Number.isNaN(Date.parse(d)) || new Date(d).toISOString().slice(0, 10) !== d) issue(['effort', 'due'], `${d} is not a calendar date`)
-      // One quote must carry the date whole, its day and year a few words apart ("8 January 2027", "January 08,
-      // 2027", "08.01.2027"). A year from another sentence is not the step's year.
-      const whole = (q: string, d: string) => {
-        const day = String.raw`(?<!\d)0?${Number(d.slice(8))}(?:st|nd|rd|th)?(?!\d)`
-        const year = String.raw`(?:${d.slice(0, 4)}|['‘’/]${d.slice(2, 4)})(?!\d)`
-        return new RegExp(String.raw`${day}(?:[^.;\n]|\.(?=\d)){0,20}?${year}|${d.slice(0, 4)}-${d.slice(5, 7)}-${d.slice(8)}`, 'i').test(q)
-      }
-      for (const d of dated) if (!quotes.some((q) => whole(q, d))) issue(['effort', 'due'], `no effort quote states ${d} with its day and year together; a yearless date stays null`)
+      // One quote must state the date whole, day, month and year together ("8 January 2027", "Jan. 8, 2027",
+      // "08.01.2027", "2027/01/08"). A year from another sentence is not the step's year.
+      for (const d of dated) if (!quotes.some((q) => statesDate(q, d))) issue(['effort', 'due'], `no effort quote states ${d} with its day, month and year together; a yearless date stays null`)
       if (dated.some((d, i) => i > 0 && d < dated[i - 1]!)) issue(['effort', 'due'], 'steps are due in order')
     }
 
