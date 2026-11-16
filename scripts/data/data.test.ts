@@ -96,6 +96,22 @@ describe('eligibility, documents and step dates', () => {
     expect(problems(p)).toEqual([])
   })
 
+  test('co-funding takes a fractional share, a fixed sum and who it applies to', () => {
+    const p = fixture()
+    p.co_finance_required = true
+    p.evidence.co_finance_required = ev('Non-Indigenous applicants must provide one dollar for every two requested.')
+    p.co_finance = { min_share: 33.3, min_amount: { value: 5000, currency: 'CAD' }, applies_to: 'Non-Indigenous applicants' }
+    p.evidence.co_finance = ev('Non-Indigenous applicants must provide one dollar for every two requested.')
+    expect(problems(p)).toEqual([])
+  })
+
+  test('a misspelled key is refused, not dropped', () => {
+    const p = fixture()
+    p.after_award = { reports: 'final', audits: true } as never
+    p.evidence.after_award = [ev('Grantees submit a final report and an audit.')]
+    expect(problems(p).join(' ')).toContain('audits')
+  })
+
   test('documents need evidence', () => {
     const p = fixture()
     p.documents = ['Registration certificate']
@@ -106,7 +122,9 @@ describe('eligibility, documents and step dates', () => {
     const p = fixture()
     p.effort = { steps: ['Concept note', 'Full proposal'], due: ['2027-01-08', null] }
     p.evidence.effort = [ev('Concept notes are due by 8 January.')]
-    expect(problems(p)).toEqual(['effort.due: no effort quote states the year of 2027-01-08; a yearless date stays null'])
+    expect(problems(p)).toEqual(['effort.due: no effort quote states 2027-01-08 with its day and year together; a yearless date stays null'])
+    p.evidence.effort = [ev('The project runs through 2027. Concept notes are due by 8 January.')]
+    expect(problems(p)).toEqual(['effort.due: no effort quote states 2027-01-08 with its day and year together; a yearless date stays null'])
     p.evidence.effort = [ev('Concept notes are due by 8 January 2027; full proposals by 1 March 2027.')]
     expect(problems(p)).toEqual([])
     p.effort.due = ['2027-03-01', '2027-01-08']

@@ -250,16 +250,17 @@ export const programme = z
         due: z
           .array(isoDate.nullable())
           .optional()
-          .describe('When each step is due (YYYY-MM-DD), one entry per step, null for an undated step. Only dates an effort quote states with their year.'),
+          .describe('When each step is due (YYYY-MM-DD) in the current or next round, one entry per step, null for an undated step. Only dates one effort quote states with their day and year.'),
       })
+      .strict()
       .optional(),
     /** The rules that rule an applicant out, in our words, each phrased as a requirement met (Yes = qualifies, No = ruled out). Missing means not listed. */
     eligibility: z
       .array(
         z.object({
           rule: z.string().min(5).max(120).describe('The rule in our words, phrased as a requirement met: Yes = qualifies, No = ruled out.'),
-          kind: eligibilityKind.describe('What the rule is about: legal (organisation type, registration, base), track_record (years operating, past projects), finances (revenue, accounts, audits), capacity (staff, systems), project (what the project must be), other.'),
-        }),
+          kind: eligibilityKind.describe('What the rule is about: legal (status, registration, independence), track_record (years operating, past projects), finances (a financial bar to meet: a revenue range, audited accounts, a request capped by revenue), capacity (staff, systems, policies), project (scope, size, place, partners), other.'),
+        }).strict(),
       )
       .min(1)
       .max(8)
@@ -268,18 +269,30 @@ export const programme = z
     /** How much co-funding the funder asks for, when `co_finance_required` is true and the page says. */
     co_finance: z
       .object({
-        /** The smallest share of the project the applicant must fund, in percent. */
-        min_share: z.number().int().min(1).max(100).optional().describe('The smallest share of the project the applicant must fund, in percent.'),
+        /** The smallest share of the project the applicant must bring, in percent (a 1:2 match is 33.3). */
+        min_share: z.number().gt(0).max(100).optional().describe('The smallest share of the project the applicant must bring, from its own or third-party funds, in percent (a 1:1 match is 50, 1:2 is 33.3).'),
+        /** The smallest contribution as a fixed sum, when the funder states one. */
+        min_amount: z
+          .object({ value: z.number().positive().describe('The sum.'), currency: z.string().regex(/^[A-Z]{3}$/).describe('ISO 4217 code.') })
+          .strict()
+          .optional()
+          .describe('The smallest contribution as a fixed sum in the funder’s currency, when the funder states one.'),
         /** The funder accepts in-kind contributions (staff time, land, equipment) toward it. */
         in_kind: z.literal(true).optional().describe('true when the funder accepts in-kind contributions toward the co-funding.'),
+        /** Who or what the requirement applies to, when the funder limits it ("Non-Indigenous applicants only"). */
+        applies_to: z.string().min(5).max(80).optional().describe('Who or what the requirement applies to, when the funder limits it, in our words.'),
       })
-      .refine((c) => c.min_share !== undefined || c.in_kind !== undefined, 'co_finance needs min_share or in_kind')
+      .strict()
+      .refine((c) => c.min_share !== undefined || c.min_amount !== undefined || c.in_kind !== undefined, 'co_finance needs min_share, min_amount or in_kind')
       .optional(),
     /** What a grantee must do after the award, from the funder's pages. Each key only when stated. */
     after_award: z
       .object({
         /** How often grantees report: one report at the end, yearly, twice a year, or quarterly or more often. */
-        reports: z.enum(['final', 'yearly', 'twice_yearly', 'quarterly']).optional().describe('How often grantees report: final (one at the end), yearly, twice_yearly, or quarterly (quarterly or more often).'),
+        reports: z
+          .enum(['final', 'interim_and_final', 'yearly', 'twice_yearly', 'quarterly', 'unspecified'])
+          .optional()
+          .describe('How often grantees report, by the most frequent required report: final (one at the end), interim_and_final (one or two interim reports and a final), yearly, twice_yearly (every six months), quarterly (quarterly or more often), unspecified (reports required, how often not stated).'),
         /** An external or independent audit of the grant. */
         audit: z.literal(true).optional().describe('true when the funder requires an external or independent audit.'),
         /** The funder visits the project site. */
@@ -287,6 +300,7 @@ export const programme = z
         /** Grantees must take part in training, a programme or events. */
         training: z.literal(true).optional().describe('true when grantees must take part in training, a capacity programme or events.'),
       })
+      .strict()
       .refine((a) => Object.keys(a).length > 0, 'after_award needs at least one stated duty')
       .optional(),
     /** The day the pages were read for eligibility, documents, steps, co-funding and after-award duties. Missing means not read for them yet. */
@@ -370,10 +384,17 @@ export const programme = z
     if (p.effort && due) {
       if (due.length !== p.effort.steps.length) issue(['effort', 'due'], `one due entry per step: ${p.effort.steps.length} steps, ${due.length} entries`)
       if (due.every((d) => d === null)) issue(['effort', 'due'], 'no step is dated; leave due out')
-      const quotes = (p.evidence.effort ?? []).map((e) => e.quote).join(' ')
+      const quotes = (p.evidence.effort ?? []).map((e) => e.quote)
       const dated = due.filter((d): d is string => d !== null)
       for (const d of dated) if (Number.isNaN(Date.parse(d)) || new Date(d).toISOString().slice(0, 10) !== d) issue(['effort', 'due'], `${d} is not a calendar date`)
-      for (const d of dated) if (!statesYear(quotes, d)) issue(['effort', 'due'], `no effort quote states the year of ${d}; a yearless date stays null`)
+      // One quote must carry the date whole, its day and year a few words apart ("8 January 2027", "January 08,
+      // 2027", "08.01.2027"). A year from another sentence is not the step's year.
+      const whole = (q: string, d: string) => {
+        const day = String.raw`(?<!\d)0?${Number(d.slice(8))}(?:st|nd|rd|th)?(?!\d)`
+        const year = String.raw`(?:${d.slice(0, 4)}|['‘’/]${d.slice(2, 4)})(?!\d)`
+        return new RegExp(String.raw`${day}(?:[^.;\n]|\.(?=\d)){0,20}?${year}|${d.slice(0, 4)}-${d.slice(5, 7)}-${d.slice(8)}`, 'i').test(q)
+      }
+      for (const d of dated) if (!quotes.some((q) => whole(q, d))) issue(['effort', 'due'], `no effort quote states ${d} with its day and year together; a yearless date stays null`)
       if (dated.some((d, i) => i > 0 && d < dated[i - 1]!)) issue(['effort', 'due'], 'steps are due in order')
     }
 
