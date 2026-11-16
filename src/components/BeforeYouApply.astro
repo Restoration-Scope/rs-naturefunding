@@ -43,7 +43,11 @@ const row = 'border-t border-rule py-3 first:border-t-0'
 
   {
     rules.length > 0 && (
-      <div id="eligibility" class:list={box} data-gates>
+      <div
+        id="eligibility"
+        class:list={[box, 'group/gates transition-[border-color,box-shadow] duration-200 data-[out=no]:border-(--stop-dot) data-[out=no]:shadow-[0_0_0_3px_var(--stop),0_0_18px_2px_color-mix(in_srgb,var(--stop-dot)_35%,transparent)]']}
+        data-gates
+      >
         <h3 class={boxTitle}>Can your organisation apply?</h3>
         <p class="mt-1 text-md text-ink-2">These rules rule you out. Answer each one; tap a rule for the funder’s words.</p>
         <ul class="m-0 mt-2 list-none p-0">
@@ -80,7 +84,7 @@ const row = 'border-t border-rule py-3 first:border-t-0'
             </li>
           ))}
         </ul>
-        <p class="mt-3 text-md font-semibold text-ink-2" aria-live="polite" data-verdict data-total={rules.length} data-next={firstDue ? longDate(firstDue) : ''}>
+        <p class="mt-3 text-md font-semibold text-ink-2 group-data-[out=no]/gates:text-(--stop-ink) group-data-[out=yes]/gates:text-ok-ink" aria-live="polite" data-verdict data-total={rules.length} data-next={firstDue ? longDate(firstDue) : ''}>
           Answer all {rules.length} to see if you can apply.
         </p>
         <p class="mt-1 hidden text-md" data-no><a class="font-semibold text-ink underline underline-offset-2" href="/">See other funding</a></p>
@@ -147,9 +151,7 @@ const row = 'border-t border-rule py-3 first:border-t-0'
         const update = () => {
           const answers = [...box.querySelectorAll('[data-gate]')].map((g) => g.querySelector('[aria-pressed="true"]')?.dataset.answer)
           const out = answers.includes('No') ? 'no' : answers.every(Boolean) ? 'yes' : 'open'
-          verdict.classList.toggle('text-warn-ink', out === 'no')
-          verdict.classList.toggle('text-ok-ink', out === 'yes')
-          verdict.classList.toggle('text-ink-2', out === 'open')
+          box.dataset.out = out
           no.classList.toggle('hidden', out !== 'no')
           verdict.textContent =
             out === 'no'
