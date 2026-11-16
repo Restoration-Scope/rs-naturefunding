@@ -10,6 +10,7 @@ import { buildDigest } from '../src/digest'
 import { digestEmail } from '../src/email'
 import { cleanPrefs } from '../src/match'
 import { eventsFromHistory } from './history'
+import { loadPagePaths } from './pages'
 
 const args = process.argv.slice(2)
 const launch = args[0] === '--launch'
@@ -28,6 +29,7 @@ if (digest.items.length === 0) {
 }
 const email = digestEmail({
   site: 'https://naturefunding.org',
+  pages: loadPagePaths(),
   digest,
   prefs,
   since: since.toISOString(),

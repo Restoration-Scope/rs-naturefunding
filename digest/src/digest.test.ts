@@ -7,6 +7,8 @@ import { whereCodes as siteWhereCodes } from '../../src/lib/data'
 import { marks } from '../../src/lib/marks'
 import { buildDigest } from './digest'
 import { digestEmail, finderUrl } from './email'
+import { pagePaths } from '../../src/lib/finder-pages'
+import { pageKey } from '../../src/lib/page-paths'
 import { diffSnapshots, type Snapshot } from './events'
 import { cleanPrefs, matches, whereCodes } from './match'
 import { open, seal } from './token'
@@ -121,6 +123,12 @@ describe('one subscriber’s digest', () => {
     expect(e.html).toContain('https://email.naturefunding.org/unsubscribe?t=x')
     expect(e.text).toContain('New since November 8, 2026, for Kenya.')
   })
+  test('the digest links the country page from the intro and at the end', () => {
+    const d = buildDigest([{ at: '2026-11-10T00:00:00.000Z', kind: 'opened', programme: withOpen.id, call: openCall(withOpen)!.id }], byId, { where: '', approaches: [] }, '2026-11-08T00:00:00.000Z', now)
+    const e = digestEmail({ site: 'https://naturefunding.org', pages: pagePaths, digest: d, prefs: { where: 'CR', approaches: [] }, since: '2026-11-08T00:00:00.000Z', unsubscribeUrl: 'u', manageUrl: 'm' })
+    expect(e.html.split('href="https://naturefunding.org/countries/costa-rica/"').length - 1).toBe(2)
+    expect(e.text).toContain('See all grants for Costa Rica on naturefunding.org: https://naturefunding.org/countries/costa-rica/')
+  })
 })
 
 describe('link tokens', () => {
@@ -134,10 +142,17 @@ describe('link tokens', () => {
 })
 
 describe('finderUrl', () => {
-  test('opens the finder with the same choices', () => {
+  test('without the page map, opens the finder with the same choices', () => {
     expect(finderUrl('https://x.org', { where: '', approaches: [] })).toBe('https://x.org/')
     expect(finderUrl('https://x.org', { where: 'KE', approaches: [] })).toBe('https://x.org/?where=KE')
-    expect(finderUrl('https://x.org', { where: 'r:asia', approaches: ['species_conservation'] })).toBe('https://x.org/?where=r:asia&approach=species_conservation')
+    expect(finderUrl('https://x.org', { where: 'r:asia', approaches: ['species_conservation'] })).toBe('https://x.org/?approach=species_conservation&where=r:asia')
+  })
+  test("with it, opens the subscriber's country page, keeping a type no page holds", () => {
+    const cr = pagePaths[pageKey('CR', '')]!
+    expect(cr).toBe('/countries/costa-rica/')
+    expect(finderUrl('https://x.org', { where: 'CR', approaches: [] }, pagePaths)).toBe(`https://x.org${cr}`)
+    expect(finderUrl('https://x.org', { where: 'CR', approaches: ['mangroves'] }, pagePaths)).toBe(`https://x.org${cr}?approach=mangroves`)
+    expect(finderUrl('https://x.org', { where: 'r:africa', approaches: [] }, pagePaths)).toBe(`https://x.org${pagePaths[pageKey('r:africa', '')]}`)
   })
 })
 

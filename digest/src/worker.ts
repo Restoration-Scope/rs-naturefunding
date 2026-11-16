@@ -3,11 +3,13 @@
 // inside the script, so a data change needs a redeploy, which the deploy workflow does on every run.
 import { loadProgrammes } from '../../src/data/load' with { type: 'macro' }
 import { coveredUntil, eventsFromHistory } from '../scripts/history' with { type: 'macro' }
+import { loadPagePaths } from '../scripts/pages' with { type: 'macro' }
 import { handle, runDigest, type Deps, type Env } from './app'
 
 const deps: Deps = {
   programmes: new Map(loadProgrammes().map((p) => [p.id, p])),
   events: eventsFromHistory(),
+  pages: loadPagePaths(),
   coveredUntil: coveredUntil(),
 }
 
