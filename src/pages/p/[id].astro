@@ -20,7 +20,7 @@ import { cardClasses } from '@/components/ui/card'
 import { HIDDEN_DAYS, buildDate, callGroups, whereReach, listingFor, programmeById, programmes, sortListings } from '../../lib/data'
 import type { Programme } from '../../data/schema'
 import { pagesFor } from '../../lib/finder-pages'
-import { amountText, effortText, poolText, geographyFull, joinAnd, longDate, pageLabel, sentence, keepAmountTogether } from '../../lib/format'
+import { amountText, effortText, poolText, geographyFull, joinAnd, longDate, pageLabel, sentence, keepAmountTogether, funderRepeatsName, nameWithFunder } from '../../lib/format'
 import { countryName, regionLabels } from '../../lib/geo'
 import {
   accessHelp,
@@ -43,7 +43,7 @@ const parent = p.parent ? programmeById.get(p.parent) : undefined
 const children = programmes.filter((c) => c.parent === p.id)
 const childListings = children.map((c) => listingFor(c)).sort(sortListings)
 // "Forest Action Facility" from "Forest Action Facility (established by IUCN and KfW)": show only what the name doesn't say.
-const funderQualifier = p.funder.name.startsWith(p.name)
+const funderQualifier = funderRepeatsName(p)
   ? p.funder.name.slice(p.name.length).trim().replace(/^\((.*)\)$/, '$1').replace(/^./, (ch) => ch.toUpperCase())
   : null
 // An umbrella's own page often leaves these to its partner programmes.
@@ -118,7 +118,7 @@ const callStatusText = (c: Programme['calls'][number]) =>
       ? 'Windows each year; the page doesn’t say if one is open now'
       : callStatusLabel[c.status]
 
-const description = `${p.name} from ${p.funder.name}: ${
+const description = `${funderRepeatsName(p) ? p.funder.name : `${p.name} from ${p.funder.name}`}: ${
   state === 'open' && call?.deadline
     ? `open, deadline ${call.deadline.text}.`
     : state === 'rolling'
@@ -172,7 +172,7 @@ const jsonLd = [
 ---
 
 <Base
-  title={`${p.name}, ${p.funder.name}`}
+  title={nameWithFunder(p)}
   description={description}
   path={`/p/${p.id}/`}
   jsonLd={jsonLd}
