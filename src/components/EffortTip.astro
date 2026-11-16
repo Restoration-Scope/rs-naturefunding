@@ -1,0 +1,32 @@
+---
+import { effortFill, effortLabels } from '../lib/effort-tip'
+
+/** The one tooltip the finder's effort bars share (src/lib/effort-tip.ts fills and places it). Hidden on touch. */
+const bar = 'inline-block h-5 w-2 rounded-[2px] mt-0.5 flex-none'
+const legend = 'inline-block h-3 w-1.5 rounded-[2px]'
+---
+
+<div
+  data-effort-tip
+  hidden
+  aria-hidden="true"
+  class="pointer-events-none fixed z-50 w-max max-w-[min(18rem,calc(100vw-1rem))] rounded-md bg-foreground px-3 py-1.5 text-xs text-balance text-background pointer-coarse:!hidden"
+>
+  <span class="block font-semibold">What it asks of you</span>
+  {
+    effortLabels.map((l) => (
+      <span class="mt-1 flex items-start gap-2" data-tip-row>
+        <span class={bar} data-base={bar} />
+        <span><span class="font-semibold">{l}:</span> <span data-tip-why /></span>
+      </span>
+    ))
+  }
+  <span class="mt-2 grid grid-cols-2 gap-x-3 gap-y-0.5 border-t border-background/25 pt-1.5 opacity-90">
+    <span class="inline-flex items-center gap-1.5"><span class:list={[legend, effortFill.light]} />Light</span>
+    <span class="inline-flex items-center gap-1.5"><span class:list={[legend, effortFill.some]} />Some work</span>
+    <span class="inline-flex items-center gap-1.5"><span class:list={[legend, effortFill.heavy]} />Heavy</span>
+    <span class="inline-flex items-center gap-1.5"><span class:list={[legend, 'border border-dashed border-background/60']} />Not stated</span>
+    <span class="inline-flex items-center gap-1.5" data-tip-unchecked><span class:list={[legend, 'bg-ink-2']} />Not checked yet</span>
+  </span>
+  <span class="mt-1 block opacity-90">Our reading of the funder’s rules, the same for every grant.</span>
+</div>

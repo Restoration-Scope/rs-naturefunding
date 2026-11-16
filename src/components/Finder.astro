@@ -72,6 +72,7 @@ const seg = 'relative min-w-0 rounded-xl border border-border'
 const segLabel = 'pointer-events-none absolute top-2.5 left-4 text-xs font-medium text-foreground'
 const segSelect =
   'block h-full min-h-15 w-full cursor-pointer appearance-none truncate rounded-[inherit] bg-transparent pt-6 pr-6 pb-2.5 pl-4 text-md text-foreground hover:bg-muted focus-visible:outline-offset-[-2px] max-md:min-h-14 placeholder:text-muted-foreground data-empty:text-muted-foreground [&:has(option[value=""]:checked)]:text-muted-foreground'
+import EffortTip from './EffortTip.astro'
 ---
 
   {/* One card over the band's edge: project types as tabs, then where, when and who. */}
@@ -334,7 +335,10 @@ const segSelect =
       </noscript>
     </section>
   </div>
+<EffortTip />
 <script>
   import { initTableFinder } from '../lib/finder'
+  import { initEffortTip } from '../lib/effort-tip'
   initTableFinder()
+  initEffortTip()
 </script>
