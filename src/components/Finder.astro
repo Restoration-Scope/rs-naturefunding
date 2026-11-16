@@ -306,6 +306,7 @@ import EffortTip from './EffortTip.astro'
               <button type="button" data-sort="amount">Amount <span class="arrow" aria-hidden="true"><ChevronsUpDown className="i-none" /><ArrowUp className="i-asc" /><ArrowDown className="i-desc" /></span></button>
               <button type="button" class="h-checked" data-sort="checked" data-alt-for="checked">Checked <span class="arrow" aria-hidden="true"><ChevronsUpDown className="i-none" /><ArrowUp className="i-asc" /><ArrowDown className="i-desc" /></span></button>
             </TableHead>
+            <TableHead scope="col" className="h-effort">What it asks</TableHead>
           </TableRow>
         </TableHeader>
         <TableBody data-list="">
@@ -313,7 +314,7 @@ import EffortTip from './EffortTip.astro'
         </TableBody>
         <TableBody className="later-head" id="later-head" data-later-head="" hidden>
           <TableRow>
-            <TableHead colSpan={3} scope="colgroup">
+            <TableHead colSpan={4} scope="colgroup">
               <span class="later-head__title">Not open now</span>
               <span class="later-head__hint">No call found, or closed. Listed so you can plan ahead.</span>
               <button type="button" class="linkish" data-later-hide>Hide</button>

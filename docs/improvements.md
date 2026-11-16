@@ -2,6 +2,7 @@
 
 What a visitor to naturefunding.org can see or do that they couldn't before, newest first. One line per merged change, added in the same PR (AGENTS.md). The naturefunding.org LinkedIn Page drafts its update posts from this list. Emails count once `DIGEST_SENDING` is `live`.
 
+- 2026-11-16 · A wider finder with a "What it asks" column: four bars per grant for who qualifies, applying, co-funding and after the award, and a "Before you apply" self-check on programme pages · https://naturefunding.org/p/iki-small-grants/ · #625
 - 2026-11-16 · Finder shows every amount in one currency, US dollars to start, with a "Show amounts in" picker · https://naturefunding.org/ · #626
 - 2026-11-16 · IKI Small Grants lists its 3 application steps and that consortia can't apply · https://naturefunding.org/p/iki-small-grants/ · #624
 - 2026-11-06 · Amounts paid per tree or per hectare say so instead of reading as per project · 966f02a

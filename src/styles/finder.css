@@ -109,6 +109,9 @@
   .h-amount {
     width: 13rem;
   }
+  .h-effort {
+    width: 7.5rem;
+  }
 
   .row {
     position: relative;
@@ -258,7 +261,8 @@
     width: fit-content;
     align-items: center;
     gap: 3px;
-    margin-top: 0.25rem;
+    /* Its own column: the padding is the hover area, pulled back so the bars line up with the header. */
+    margin: -0.25rem -0.375rem;
     padding: 0.25rem 0.375rem;
     border-radius: var(--radius-md);
     outline: 2px solid transparent;
@@ -282,14 +286,16 @@
   .effort > .h { background: var(--stop-dot); }
   .effort > .u { border: 1px dashed var(--rule-strong); }
   .effort > .c { background: var(--rule); }
-  /* The work to apply sits under the money, so the two read together. */
+  /* Steps and documents, in words, for rows without bars (applying through a partner). */
   .amt__effort {
     display: block;
     margin-top: 0.125rem;
     font-size: var(--text-sm);
     color: var(--foreground);
   }
-  .c-amount {
+  /* Above the row's link, so the amount's title and the bars' tooltip answer the pointer. */
+  .c-amount,
+  .c-effort {
     position: relative;
     z-index: 2;
   }
@@ -336,7 +342,14 @@
       width: 13rem;
     }
     .h-amount {
-      width: 12.25rem;
+      width: 11rem;
+    }
+    .h-effort {
+      width: 5.5rem;
+    }
+    .tbl thead .h-effort {
+      white-space: normal;
+      line-height: 1.2;
     }
   }
 
@@ -375,7 +388,8 @@
         'route route'
         'kind kind'
         'dl dl'
-        'amount amount';
+        'amount amount'
+        'effort effort';
       align-items: center;
       column-gap: 0.75rem;
       padding: 1rem;
@@ -418,6 +432,17 @@
       align-items: start;
       column-gap: 0.75rem;
       margin-top: 0.75rem;
+    }
+    .c-effort {
+      grid-area: effort;
+      margin-top: 0.625rem;
+    }
+    .c-effort:not(:has(*)) {
+      display: none;
+    }
+    .c-effort .effort {
+      margin: 0;
+      padding: 0;
     }
     .amt__note {
       grid-column: 1 / -1;
