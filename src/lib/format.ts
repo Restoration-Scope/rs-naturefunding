@@ -163,6 +163,74 @@ export function effortLevel(p: Pick<Programme, 'effort' | 'documents'>): { level
   return { level, why: parts.join(', ') }
 }
 
+export type SignalLevel = 'light' | 'some' | 'heavy' | 'unstated' | 'unchecked'
+export type Signal = { key: 'qualify' | 'apply' | 'cofund' | 'after'; label: string; level: SignalLevel; why: string }
+
+const signalBlank = (p: Pick<Programme, 'requirements_checked'>): Pick<Signal, 'level' | 'why'> =>
+  p.requirements_checked ? { level: 'unstated', why: 'The funder’s pages don’t say.' } : { level: 'unchecked', why: 'Not checked yet.' }
+const listOf = (parts: string[]) => parts.join(', ').replace(/, ([^,]*)$/, ' and $1')
+
+/**
+ * What applying and holding the grant ask of an organisation, as four signals the finder shows as bars. Each
+ * level comes from structured facts by fixed rules, so every grant is judged the same way:
+ * - qualify: heavy with a finances rule or 3+ track-record, capacity or finances rules; some with any
+ *   track-record or capacity rule; light with only legal, project or other rules, or none once checked.
+ * - apply: effortLevel (Light, Medium, Heavy).
+ * - cofund: light when none is required; heavy above 25% with no in-kind; some otherwise.
+ * - after: heavy with quarterly reports or an audit; some with yearly or twice-yearly reports, site visits or
+ *   training; light with one final report and nothing else.
+ * Absent facts read "unchecked" until requirements_checked is set, then "unstated": never light.
+ */
+export function effortSignals(
+  p: Pick<Programme, 'eligibility' | 'effort' | 'documents' | 'co_finance_required' | 'co_finance' | 'after_award' | 'requirements_checked'>,
+): Signal[] {
+  const kinds = (p.eligibility ?? []).map((e) => e.kind)
+  const demanding = kinds.filter((k) => k === 'track_record' || k === 'capacity' || k === 'finances')
+  const qualify: Pick<Signal, 'level' | 'why'> = p.eligibility
+    ? kinds.includes('finances') || demanding.length >= 3
+      ? { level: 'heavy', why: `${p.eligibility.length} rules, with ${listOf([...new Set(demanding)].map((k) => kindWords[k]))} requirements.` }
+      : demanding.length
+        ? { level: 'some', why: `${p.eligibility.length} ${p.eligibility.length === 1 ? 'rule' : 'rules'}, with ${listOf([...new Set(demanding)].map((k) => kindWords[k]))} requirements.` }
+        : { level: 'light', why: `${p.eligibility.length} ${p.eligibility.length === 1 ? 'rule' : 'rules'}, none on track record, capacity or finances.` }
+    : p.requirements_checked
+      ? { level: 'light', why: 'No rules found beyond place and organisation type.' }
+      : signalBlank(p)
+
+  const lvl = effortLevel(p)
+  const apply: Pick<Signal, 'level' | 'why'> = lvl
+    ? { level: lvl.level === 'Light' ? 'light' : lvl.level === 'Medium' ? 'some' : 'heavy', why: `${lvl.level}: ${lvl.why}.` }
+    : signalBlank(p)
+
+  const share = p.co_finance?.min_share
+  const cofund: Pick<Signal, 'level' | 'why'> =
+    p.co_finance_required === false
+      ? { level: 'light', why: 'None required.' }
+      : p.co_finance_required === true
+        ? share !== undefined && share > 25 && !p.co_finance?.in_kind
+          ? { level: 'heavy', why: `At least ${share}% of the project.` }
+          : { level: 'some', why: `Required${share !== undefined ? `: at least ${share}%` : ', share not stated'}${p.co_finance?.in_kind ? ', in-kind accepted' : ''}.` }
+        : signalBlank(p)
+
+  const a = p.after_award
+  const duties = a ? [...(a.audit ? ['an audit'] : []), ...(a.site_visits ? ['site visits'] : []), ...(a.training ? ['required training or events'] : [])] : []
+  const reportWords = a?.reports ? reportLabels[a.reports] : 'reporting not stated'
+  const after: Pick<Signal, 'level' | 'why'> = a
+    ? {
+        level: a.reports === 'quarterly' || a.audit ? 'heavy' : a.reports === 'yearly' || a.reports === 'twice_yearly' || duties.length ? 'some' : 'light',
+        why: `${listOf([reportWords, ...duties]).replace(/^./, (c) => c.toUpperCase())}.`,
+      }
+    : signalBlank(p)
+
+  return [
+    { key: 'qualify', label: 'Who qualifies', ...qualify },
+    { key: 'apply', label: 'Applying', ...apply },
+    { key: 'cofund', label: 'Co-funding', ...cofund },
+    { key: 'after', label: 'After the award', ...after },
+  ]
+}
+const kindWords: Record<string, string> = { track_record: 'track-record', capacity: 'capacity', finances: 'finances' }
+const reportLabels = { final: 'one final report', yearly: 'yearly reports', twice_yearly: 'reports twice a year', quarterly: 'quarterly or more frequent reports' } as const
+
 const escapeHtml = (s: string) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;')
 /** A sum of money or a share in text: "€5,000,000", "EUR 2 - 4 million", "Nu. 6.0 million", "25%", "17,000,000 EUR". */
 const figure =

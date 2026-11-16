@@ -1,0 +1,68 @@
+---
+import type { Programme } from '../data/schema'
+import { effortSignals, type SignalLevel } from '../lib/format'
+import Tooltip from './Tooltip.astro'
+
+/**
+ * What a grant asks of an organisation, as four upright bars on a finder row: who qualifies, applying,
+ * co-funding and after the award (src/lib/format.ts effortSignals). Hovering or focusing the set lights it up
+ * and its tooltip names each piece, why it has its colour, and what the colours mean. Touch has no tooltip;
+ * the listing's Before you apply section says the same with the funder's words.
+ */
+interface Props {
+  p: Programme
+}
+
+const { p } = Astro.props
+const signals = effortSignals(p)
+const id = `effort-${p.id}`
+const words: Record<SignalLevel, string> = {
+  light: 'light',
+  some: 'some work',
+  heavy: 'heavy',
+  unstated: 'not stated',
+  unchecked: 'not checked yet',
+}
+// Grey for the unknowns: a dashed outline where the funder's pages are silent, a pale fill where we haven't read them yet.
+const fill: Record<SignalLevel, string> = {
+  light: 'bg-(--ok-dot)',
+  some: 'bg-(--caution-dot)',
+  heavy: 'bg-(--stop-dot)',
+  unstated: 'border border-dashed border-rule-strong',
+  unchecked: 'bg-rule',
+}
+const label = `Effort: ${signals.map((s) => `${s.label}, ${words[s.level]}`).join('; ')}`
+const bar = 'inline-block h-5 w-2 rounded-[2px]'
+const legend = 'inline-block h-3 w-1.5 rounded-[2px]'
+---
+
+<Tooltip id={id} class="effort mt-1 !flex w-fit">
+  <span
+    class="inline-flex items-center gap-[3px] rounded-md px-1.5 py-1 outline-2 outline-transparent transition-[background-color,outline-color] duration-150 group-hover/tip:bg-sunk group-hover/tip:outline-rule-strong focus-visible:bg-sunk"
+    tabindex="0"
+    role="img"
+    aria-label={label}
+    aria-describedby={id}
+    title=""
+  >
+    {signals.map((s) => <span class:list={[bar, fill[s.level]]} />)}
+  </span>
+  <span slot="content" class="block text-left">
+    <span class="block font-semibold">What it asks of you</span>
+    {
+      signals.map((s) => (
+        <span class="mt-1 flex items-start gap-2">
+          <span class:list={[bar, 'mt-0.5 flex-none', fill[s.level], s.level === 'unchecked' && 'bg-ink-2', s.level === 'unstated' && 'border-background/60']} />
+          <span><span class="font-semibold">{s.label}:</span> {s.why}</span>
+        </span>
+      ))
+    }
+    <span class="mt-2 grid grid-cols-2 gap-x-3 gap-y-0.5 border-t border-background/25 pt-1.5 opacity-90">
+      <span class="inline-flex items-center gap-1.5"><span class:list={[legend, fill.light]} />Light</span>
+      <span class="inline-flex items-center gap-1.5"><span class:list={[legend, fill.some]} />Some work</span>
+      <span class="inline-flex items-center gap-1.5"><span class:list={[legend, fill.heavy]} />Heavy</span>
+      <span class="inline-flex items-center gap-1.5"><span class:list={[legend, 'border border-dashed border-background/60']} />Not stated</span>
+    </span>
+    <span class="mt-1 block opacity-90">Our reading of the funder’s rules, the same for every grant.</span>
+  </span>
+</Tooltip>

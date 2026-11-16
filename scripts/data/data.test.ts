@@ -70,10 +70,29 @@ describe('consortium_required', () => {
 describe('eligibility, documents and step dates', () => {
   test('each eligibility rule has its own quote', () => {
     const p = fixture()
-    p.eligibility = ['Operating for at least 3 years', 'Registered in Kenya']
+    p.eligibility = [{ rule: 'Operating for at least 3 years', kind: 'track_record' }, { rule: 'Registered in Kenya', kind: 'legal' }]
     p.evidence.eligibility = [ev('Applicants must have operated for at least three years.')]
     expect(problems(p)).toEqual(['evidence.eligibility: each eligibility rule has its own quote: 2 rules, 1 quotes'])
     p.evidence.eligibility.push(ev('Applicants must be registered in Kenya.'))
+    expect(problems(p)).toEqual([])
+  })
+
+  test('a co-funding share needs co-funding required', () => {
+    const p = fixture()
+    p.co_finance = { min_share: 50 }
+    p.evidence.co_finance = ev('Applicants must match at least 50% of the grant.')
+    expect(problems(p)).toEqual(['co_finance: a co-funding share needs co_finance_required: true'])
+    p.co_finance_required = true
+    p.evidence.co_finance_required = ev('Applicants must match at least 50% of the grant.')
+    expect(problems(p)).toEqual([])
+  })
+
+  test('after-award duties need at least one duty and evidence', () => {
+    const p = fixture()
+    p.after_award = {}
+    p.evidence.after_award = [ev('Grantees report every quarter.')]
+    expect(problems(p)).toEqual(['after_award: after_award needs at least one stated duty'])
+    p.after_award = { reports: 'quarterly' }
     expect(problems(p)).toEqual([])
   })
 

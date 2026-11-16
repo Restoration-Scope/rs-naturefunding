@@ -144,7 +144,7 @@ const worth = {
   odds: p.odds ? Math.round((p.odds.funded / p.odds.applied) * 1000) / 10 : null,
 }
 // Rules, documents and steps get their own section; the Applying group then only names the load.
-const before = p.access === 'direct' && (p.effort !== undefined || p.eligibility !== undefined || p.documents !== undefined)
+const before = p.access === 'direct' && (p.effort !== undefined || p.eligibility !== undefined || p.documents !== undefined || p.after_award !== undefined)
 const level = effortLevel(p)
 const listingsList = 'm-0 list-none border-t border-rule p-0'
 

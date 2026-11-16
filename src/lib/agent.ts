@@ -3,7 +3,7 @@
 // checked date, so a line still holds up when an answer quotes it alone.
 import type { Call, Evidence, Programme } from '../data/schema'
 import { AGING_DAYS, HIDDEN_DAYS, buildDate, listingFor, programmeById, programmes, sortListings, stats, type Listing } from './data'
-import { amountText, effortText, poolText, geographyFull, geographyText, joinAnd, longDate } from './format'
+import { amountText, effortSignals, effortText, poolText, geographyFull, geographyText, joinAnd, longDate } from './format'
 import { accessHelp, accessLabels, applicantLabels, approachLabels } from './labels'
 import { RS_DESCRIPTOR, RS_URL, SITE_NAME, absolute, funderCorrectionUrl, reportProblemUrl } from './site'
 import { countryName } from './geo'
@@ -164,8 +164,10 @@ export function programmeMarkdown(p: Programme): string {
       ? [`**${n}, when each step is due:** ${p.effort.steps.map((s, i) => `${s}${p.effort!.due![i] ? ` (by ${longDate(p.effort!.due![i]!)})` : ''}`).join('; ')}`]
       : []),
     ...(p.access === 'direct' && p.eligibility
-      ? p.eligibility.map((rule, i) => quoteLines(`${n}, rule ${i + 1} an applicant must meet`, rule, p.evidence.eligibility?.[i], factIds.eligibility, p))
+      ? p.eligibility.map(({ rule }, i) => quoteLines(`${n}, rule ${i + 1} an applicant must meet`, rule, p.evidence.eligibility?.[i], factIds.eligibility, p))
       : []),
+    ...(p.access === 'direct' && p.after_award ? [quoteLines(`${n}, after the award`, effortSignals(p)[3]!.why, p.evidence.after_award, 'after-award', p)] : []),
+    ...(p.co_finance ? [quoteLines(`${n}, co-funding share`, effortSignals(p)[2]!.why, p.evidence.co_finance, factIds.co_finance_required, p)] : []),
     ...(p.access === 'direct' && p.documents ? [quoteLines(`${n}, documents to have ready`, p.documents.join('; '), p.evidence.documents, factIds.documents, p)] : []),
   ]
   out.push(facts.join('\n\n'))

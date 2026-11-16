@@ -9,6 +9,7 @@ import { TableCell, TableRow } from '@/components/ui/table'
 import OrgMark from './OrgMark.astro'
 import Route from './Route.astro'
 import RowWhen from './RowWhen.astro'
+import EffortBars from './EffortBars.astro'
 
 interface Props {
   listing: Listing
@@ -78,7 +79,8 @@ const searchText = [p.name, p.funder.name, p.administered_by?.name, p.summary, w
   <TableCell className="c-amount" title={amountFull ?? 'The funder’s page does not state an amount'}>
     {amount ? <span class="amt">{amount}</span> : <span class="amt amt--none">Amount not stated</span>}
     {amount && p.amount?.note && <span class="amt__note">{p.amount.note}</span>}
-    {p.effort && <span class="amt__effort" title={p.effort.steps.join(' → ')}>{effortShort(p.effort)}</span>}
+    {/* Shown once the listing's pages were read for what applying and holding the grant ask (requirements_checked). */}
+    {p.access === 'direct' && p.requirements_checked ? <EffortBars p={p} /> : p.effort && <span class="amt__effort" title={p.effort.steps.join(' → ')}>{effortShort(p.effort)}</span>}
     <Badge variant="tag" className="stamp" data-aging={aging || reason ? '' : undefined} title={stampTitle}>
       {stampText}
     </Badge>

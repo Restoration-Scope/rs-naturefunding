@@ -18,6 +18,14 @@ export const evidence = z.object({
 })
 export type Evidence = z.infer<typeof evidence>
 
+/**
+ * What an eligibility rule asks of the applicant, our classification:
+ * legal (status, registration, independence), track_record (years operating, past projects),
+ * finances (revenue or turnover range, accounts, audits), capacity (staff, systems, policies),
+ * project (the project's scope, size or partners), other.
+ */
+export const eligibilityKind = z.enum(['legal', 'track_record', 'finances', 'capacity', 'project', 'other'])
+
 export const approach = z.enum([
   'reforestation',
   'agroforestry',
@@ -247,11 +255,44 @@ export const programme = z
       .optional(),
     /** The rules that rule an applicant out, in our words, each phrased as a requirement met (Yes = qualifies, No = ruled out). Missing means not listed. */
     eligibility: z
-      .array(z.string().min(5).max(120))
+      .array(
+        z.object({
+          rule: z.string().min(5).max(120).describe('The rule in our words, phrased as a requirement met: Yes = qualifies, No = ruled out.'),
+          kind: eligibilityKind.describe('What the rule is about: legal (organisation type, registration, base), track_record (years operating, past projects), finances (revenue, accounts, audits), capacity (staff, systems), project (what the project must be), other.'),
+        }),
+      )
       .min(1)
       .max(8)
       .optional()
       .describe('The rules that rule an applicant out, in our words, each phrased as a requirement the applicant meets, so Yes means it qualifies and No rules it out. evidence.eligibility holds one quote per rule, in the same order. Missing when the pages we read don’t list them.'),
+    /** How much co-funding the funder asks for, when `co_finance_required` is true and the page says. */
+    co_finance: z
+      .object({
+        /** The smallest share of the project the applicant must fund, in percent. */
+        min_share: z.number().int().min(1).max(100).optional().describe('The smallest share of the project the applicant must fund, in percent.'),
+        /** The funder accepts in-kind contributions (staff time, land, equipment) toward it. */
+        in_kind: z.literal(true).optional().describe('true when the funder accepts in-kind contributions toward the co-funding.'),
+      })
+      .refine((c) => c.min_share !== undefined || c.in_kind !== undefined, 'co_finance needs min_share or in_kind')
+      .optional(),
+    /** What a grantee must do after the award, from the funder's pages. Each key only when stated. */
+    after_award: z
+      .object({
+        /** How often grantees report: one report at the end, yearly, twice a year, or quarterly or more often. */
+        reports: z.enum(['final', 'yearly', 'twice_yearly', 'quarterly']).optional().describe('How often grantees report: final (one at the end), yearly, twice_yearly, or quarterly (quarterly or more often).'),
+        /** An external or independent audit of the grant. */
+        audit: z.literal(true).optional().describe('true when the funder requires an external or independent audit.'),
+        /** The funder visits the project site. */
+        site_visits: z.literal(true).optional().describe('true when the funder says it visits project sites.'),
+        /** Grantees must take part in training, a programme or events. */
+        training: z.literal(true).optional().describe('true when grantees must take part in training, a capacity programme or events.'),
+      })
+      .refine((a) => Object.keys(a).length > 0, 'after_award needs at least one stated duty')
+      .optional(),
+    /** The day the pages were read for eligibility, documents, steps, co-funding and after-award duties. Missing means not read for them yet. */
+    requirements_checked: isoDate
+      .optional()
+      .describe('The day the funder’s pages were read for eligibility, documents, steps, co-funding share and after-award duties. Missing means they haven’t been read for these yet, so an absent fact is unknown, not “none”.'),
     /** What to have ready for the first step, in our words ("Registration certificate"). Missing means not stated. */
     documents: z
       .array(z.string().min(3).max(120))
@@ -284,6 +325,9 @@ export const programme = z
       effort: z.array(evidence).min(1).max(5).optional(),
       /** One quote per rule, in the same order as `eligibility`. */
       eligibility: z.array(evidence).min(1).max(8).optional(),
+      co_finance: evidence.optional(),
+      /** One quote per duty at most. */
+      after_award: z.array(evidence).min(1).max(4).optional(),
       /** A list of documents usually sits in one or two places. */
       documents: z.array(evidence).min(1).max(3).optional(),
       odds: evidence.optional(),
@@ -308,6 +352,8 @@ export const programme = z
       effort: p.effort !== undefined,
       eligibility: p.eligibility !== undefined,
       documents: p.documents !== undefined,
+      co_finance: p.co_finance !== undefined,
+      after_award: p.after_award !== undefined,
       odds: p.odds !== undefined,
     }
     for (const [field, isStated] of Object.entries(stated)) {
@@ -319,6 +365,7 @@ export const programme = z
     if (p.eligibility && p.evidence.eligibility && p.eligibility.length !== p.evidence.eligibility.length) {
       issue(['evidence', 'eligibility'], `each eligibility rule has its own quote: ${p.eligibility.length} rules, ${p.evidence.eligibility.length} quotes`)
     }
+    if (p.co_finance && p.co_finance_required !== true) issue(['co_finance'], 'a co-funding share needs co_finance_required: true')
     const due = p.effort?.due
     if (p.effort && due) {
       if (due.length !== p.effort.steps.length) issue(['effort', 'due'], `one due entry per step: ${p.effort.steps.length} steps, ${due.length} entries`)

@@ -1,5 +1,5 @@
 import { describe, expect, test } from 'bun:test'
-import { amountShort, boldFigures, effortLevel, geographyFull, sentence } from './format'
+import { amountShort, boldFigures, effortLevel, effortSignals, geographyFull, sentence } from './format'
 
 describe('geographyFull', () => {
   test('a region label that is the region name is not repeated', () => {
@@ -58,5 +58,37 @@ describe('effortLevel', () => {
   test('three stages or five documents is heavy', () => {
     expect(effortLevel({ effort: { steps: steps(2), more_after: true }, documents: undefined })?.level).toBe('Heavy')
     expect(effortLevel({ effort: { steps: steps(1) }, documents: ['A', 'B', 'C', 'D', 'E'] })?.level).toBe('Heavy')
+  })
+})
+
+describe('effortSignals', () => {
+  const none = { eligibility: undefined, effort: undefined, documents: undefined, co_finance_required: null, co_finance: undefined, after_award: undefined, requirements_checked: undefined }
+  const levels = (p: Parameters<typeof effortSignals>[0]) => effortSignals(p).map((s) => s.level)
+  test('a listing not read for requirements yet is unchecked, never light', () =>
+    expect(levels(none)).toEqual(['unchecked', 'unchecked', 'unchecked', 'unchecked']))
+  test('once read, absent facts are unstated, except no extra rules is light', () =>
+    expect(levels({ ...none, requirements_checked: '2026-11-16' })).toEqual(['light', 'unstated', 'unstated', 'unstated']))
+  test('a stated co-funding answer counts even before the read', () =>
+    expect(levels({ ...none, co_finance_required: false })[2]).toBe('light'))
+  test('finance rules, big cash match, quarterly reports and audits are heavy', () => {
+    const s = effortSignals({
+      ...none,
+      eligibility: [{ rule: 'Average yearly revenue over €60,000', kind: 'finances' }],
+      co_finance_required: true,
+      co_finance: { min_share: 50 },
+      after_award: { reports: 'yearly', audit: true },
+    })
+    expect(s.map((x) => x.level)).toEqual(['heavy', 'unchecked', 'heavy', 'heavy'])
+    expect(s[3]!.why).toBe('Yearly reports and an audit.')
+  })
+  test('in-kind match and track-record rules are some; one final report is light', () => {
+    const s = effortSignals({
+      ...none,
+      eligibility: [{ rule: 'Operating for 2 years', kind: 'track_record' }, { rule: 'Registered locally', kind: 'legal' }],
+      co_finance_required: true,
+      co_finance: { min_share: 50, in_kind: true },
+      after_award: { reports: 'final' },
+    })
+    expect(s.map((x) => x.level)).toEqual(['some', 'unchecked', 'some', 'light'])
   })
 })
