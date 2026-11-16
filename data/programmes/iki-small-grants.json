@@ -23,7 +23,15 @@
   "window": "fixed",
   "amount": { "currency": "EUR", "min": 60000, "max": 200000 },
   "co_finance_required": null,
+  "consortium_required": false,
   "reporting": null,
+  "effort": {
+    "steps": [
+      "Eligibility check: organisation details, registration and 3 years of accounts",
+      "Full proposal and budget, by invitation",
+      "Review and adjustments with GIZ, if selected"
+    ]
+  },
   "calls": [
     {
       "id": "call-8-2027",
@@ -93,7 +101,33 @@
       "quote": "IKI Small Grants provides funding between EUR 60,000 and EUR 200,000.",
       "checked_at": "2026-11-09",
       "method": "page"
-    }
+    },
+    "consortium_required": {
+      "source_url": "https://iki-small-grants.de/wp-content/uploads/2026/10/Funding-Information-2027-Call-8.pdf",
+      "quote": "Consortia are not eligible and forwarding funds to other implementing organisations is not permitted.",
+      "checked_at": "2026-11-16",
+      "method": "page"
+    },
+    "effort": [
+      {
+        "source_url": "https://iki-small-grants.de/wp-content/uploads/2026/10/Funding-Information-2027-Call-8.pdf",
+        "quote": "must first pass an eligibility check. In this first stage, applicants are asked to provide information on their organisations and submit the following supporting documents:",
+        "checked_at": "2026-11-16",
+        "method": "page"
+      },
+      {
+        "source_url": "https://iki-small-grants.de/wp-content/uploads/2026/10/Funding-Information-2027-Call-8.pdf",
+        "quote": "Qualified organisations will subsequently be invited to submit their project proposals and budget until March 16, 2027, through the same platform.",
+        "checked_at": "2026-11-16",
+        "method": "page"
+      },
+      {
+        "source_url": "https://iki-small-grants.de/wp-content/uploads/2026/10/Funding-Information-2027-Call-8.pdf",
+        "quote": "Please note that a review phase, including close exchange between the applicant organisation and GIZ, will follow the final selection for funding.",
+        "checked_at": "2026-11-16",
+        "method": "page"
+      }
+    ]
   },
   "checked_at": "2026-11-09"
 }
