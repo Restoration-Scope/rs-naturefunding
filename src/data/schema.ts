@@ -245,13 +245,13 @@ export const programme = z
           .describe('When each step is due (YYYY-MM-DD), one entry per step, null for an undated step. Only dates an effort quote states with their year.'),
       })
       .optional(),
-    /** The rules that rule an applicant out, in our words, each one a reader can answer yes or no to. Missing means not listed. */
+    /** The rules that rule an applicant out, in our words, each phrased as a requirement met (Yes = qualifies, No = ruled out). Missing means not listed. */
     eligibility: z
       .array(z.string().min(5).max(120))
       .min(1)
       .max(8)
       .optional()
-      .describe('The rules that rule an applicant out, in our words, each phrased so a reader can answer yes or no. evidence.eligibility holds one quote per rule, in the same order. Missing when the pages we read don’t list them.'),
+      .describe('The rules that rule an applicant out, in our words, each phrased as a requirement the applicant meets, so Yes means it qualifies and No rules it out. evidence.eligibility holds one quote per rule, in the same order. Missing when the pages we read don’t list them.'),
     /** What to have ready for the first step, in our words ("Registration certificate"). Missing means not stated. */
     documents: z
       .array(z.string().min(3).max(120))
@@ -325,6 +325,7 @@ export const programme = z
       if (due.every((d) => d === null)) issue(['effort', 'due'], 'no step is dated; leave due out')
       const quotes = (p.evidence.effort ?? []).map((e) => e.quote).join(' ')
       const dated = due.filter((d): d is string => d !== null)
+      for (const d of dated) if (Number.isNaN(Date.parse(d)) || new Date(d).toISOString().slice(0, 10) !== d) issue(['effort', 'due'], `${d} is not a calendar date`)
       for (const d of dated) if (!statesYear(quotes, d)) issue(['effort', 'due'], `no effort quote states the year of ${d}; a yearless date stays null`)
       if (dated.some((d, i) => i > 0 && d < dated[i - 1]!)) issue(['effort', 'due'], 'steps are due in order')
     }

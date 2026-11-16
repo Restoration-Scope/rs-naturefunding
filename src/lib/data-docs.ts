@@ -26,7 +26,7 @@ export const fieldDocs = {
     co_finance_required: 'true or false when the funder says whether co-funding is required; null when it doesn’t.',
     reporting: 'What the funder asks grantees to report, in our words, or null.',
     effort: 'What applying takes, in our words from the funder’s page: the steps in order, and when each is due if the funder dates it. Missing when the pages we read don’t say.',
-    eligibility: 'The rules that rule an applicant out, in our words, each phrased so a reader can answer yes or no; evidence.eligibility has one quote per rule, in order. Missing when the pages we read don’t list them.',
+    eligibility: 'The rules that rule an applicant out, in our words, each phrased as a requirement the applicant meets, so Yes means it qualifies and No rules it out; evidence.eligibility has one quote per rule, in order. Missing when the pages we read don’t list them.',
     documents: 'The documents the funder asks for at the first step, in our words. Missing when the pages we read don’t say.',
     odds: 'How many applications the funder says it funded, out of how many, and for which round. Missing when the funder doesn’t publish it.',
     calls: 'The rounds of applications we found. Intermediary and invitation-only programmes list none.',

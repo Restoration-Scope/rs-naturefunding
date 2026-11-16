@@ -92,6 +92,10 @@ describe('eligibility, documents and step dates', () => {
     expect(problems(p)).toEqual([])
     p.effort.due = ['2027-03-01', '2027-01-08']
     expect(problems(p)).toEqual(['effort.due: steps are due in order'])
+    p.effort.due = ['2027-02-30', null]
+    p.evidence.effort = [ev('Concept notes are due by 30 February 2027.')]
+    expect(problems(p)).toEqual(['effort.due: 2027-02-30 is not a calendar date'])
+    p.evidence.effort = [ev('Concept notes are due by 8 January 2027; full proposals by 1 March 2027.')]
     p.effort.due = ['2027-01-08']
     expect(problems(p)).toEqual(['effort.due: one due entry per step: 2 steps, 1 entries'])
   })
