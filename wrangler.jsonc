@@ -9,7 +9,7 @@
     "not_found_handling": "404-page"
   },
   "routes": [
-    { "pattern": "naturefunding.org", "custom_domain": true },
-    { "pattern": "www.naturefunding.org", "custom_domain": true }
+    // www.naturefunding.org is the redirect Worker in www/.
+    { "pattern": "naturefunding.org", "custom_domain": true }
   ]
 }
