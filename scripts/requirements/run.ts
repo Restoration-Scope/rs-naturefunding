@@ -14,14 +14,14 @@ import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs'
 import { join } from 'node:path'
 import { parseArgs } from 'node:util'
 import { loadData } from '../../src/data/load'
-import { programme as programmeSchema, type Programme, type Source } from '../../src/data/schema'
+import type { Source } from '../../src/data/schema'
 import { formatJson } from '../refresh/json'
 import { PROMPT_VERSION } from './extract'
 import { politeReader } from './gather'
 import { Cache, claudeModel, Ledger, metered, meteredJev, SpendCapError, typesafeJev, workersModel, type JsonModel } from './models'
 import { run, type Result } from './pipeline'
 import { MANIFEST_DIR, manifestPath, queue } from './queue'
-import { apply, manifest } from './write'
+import { apply, manifest, serialise } from './write'
 
 const { values, positionals } = parseArgs({
   allowPositionals: true,
@@ -76,15 +76,6 @@ const deps = {
   jev: jevModel ? meteredJev(jevModel, ledger, cache, PROMPT_VERSION) : null,
 }
 
-/** Keys in the schema's order, so a written file reads like a hand-written one and diffs stay small. */
-function ordered(p: Programme): Programme {
-  const keys = Object.keys((programmeSchema as unknown as { shape: Record<string, unknown> }).shape)
-  const o = Object.fromEntries(keys.filter((k) => k in p).map((k) => [k, (p as Record<string, unknown>)[k]]))
-  const evKeys = Object.keys((programmeSchema as unknown as { shape: { evidence: { shape: Record<string, unknown> } } }).shape.evidence.shape)
-  o.evidence = Object.fromEntries(evKeys.filter((k) => k in p.evidence).map((k) => [k, (p.evidence as Record<string, unknown>)[k]]))
-  return o as Programme
-}
-
 let currentSources: Source[] = sources
 const summary: { id: string; usd: number; complete: boolean; stamped: boolean; outcomes: Result['outcomes']; docs: number; error?: string }[] = []
 mkdirSync(MANIFEST_DIR, { recursive: true })
@@ -110,7 +101,7 @@ for (const id of ids) {
   // Full result for eval and debugging; page text stays out of the repo.
   writeFileSync(join(out, 'results', `${id}.json`), JSON.stringify({ ...r, gathered: { ...r.gathered, docs: r.gathered.docs.map(({ text: _t, pages: _p, selected: _s, links, ...d }) => ({ ...d, links: links.length })) }, manifest: m }, null, 1))
   if (write) {
-    writeFileSync(join('data', 'programmes', `${id}.json`), formatJson(ordered(applied.next)))
+    writeFileSync(join('data', 'programmes', `${id}.json`), serialise(applied.next, readFileSync(join('data', 'programmes', `${id}.json`), 'utf8')))
     writeFileSync(manifestPath(id), formatJson(m))
     currentSources = applied.sources
   }

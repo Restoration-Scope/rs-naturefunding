@@ -2,7 +2,7 @@ import { describe, expect, test } from 'bun:test'
 import type { z } from 'zod'
 import { programme as programmeSchema, type Programme, type Source } from '../../src/data/schema'
 import { thinFields } from './check'
-import { chunksOf, reconcile, splitText, type Wire } from './extract'
+import { apiWire, chunksOf, reconcile, splitText, toApi, type Wire } from './extract'
 import { classifyLink, gather, lowTextPdf, type Doc, type Reader } from './gather'
 import type { Answer, Question } from './models'
 import { emptyWire, run } from './pipeline'
@@ -90,7 +90,7 @@ const fakeAsk = (answers: Wire[]) => {
     asked.push(user)
     const a = answers.shift()
     if (!a) throw new Error('fake model has no more answers')
-    return schema.parse({ unresolved: [], ...a })
+    return schema.parse({ unresolved: [], ...toApi(a) })
   }
   return { ask, asked }
 }
@@ -317,5 +317,69 @@ describe('queue', () => {
     const due = queue([base, live, read, changed], srcs, { 'c-changed-1': { source_id: 'c-changed-1', last_change: '2026-11-10' } }, '2026-11-16')
     expect(due.map((d) => d.id)).toEqual(['b-live', 'test-grants', 'c-changed'])
     expect(due[2]!.why).toContain('changed on 2026-11-10')
+  })
+})
+
+describe('files and schemas', () => {
+  test('writing a programme keeps its file’s key order and formatting', async () => {
+    const { readdirSync, readFileSync } = await import('node:fs')
+    const { serialise } = await import('./write')
+    const differ: string[] = []
+    let n = 0
+    for (const f of readdirSync('data/programmes')) {
+      const text = readFileSync(`data/programmes/${f}`, 'utf8')
+      const { formatJson } = await import('../refresh/json')
+      const x = JSON.parse(text)
+      // Files in neither house style are rewritten in formatJson's; only the others must round-trip.
+      if (formatJson(x) !== text && `${JSON.stringify(x, null, 2)}\n` !== text) continue
+      n++
+      if (serialise(programmeSchema.parse(x), text) !== text) differ.push(f)
+    }
+    expect(n).toBeGreaterThan(900)
+    expect(differ).toEqual([])
+    // A new key lands where the schema puts it.
+    const x = JSON.parse(readFileSync('data/programmes/rufford-small-grants.json', 'utf8'))
+    const out = JSON.parse(serialise({ ...x, requirements_checked: '2026-11-16' }, readFileSync('data/programmes/rufford-small-grants.json', 'utf8')))
+    const keys = Object.keys(out)
+    expect(keys.indexOf('requirements_checked')).toBeLessThan(keys.indexOf('calls'))
+  })
+  test('the answer schema stays inside the structured-output limits (16 unions, 24 optional)', async () => {
+    const { zodOutputFormat } = await import('@anthropic-ai/sdk/helpers/zod')
+    const { z: zod } = await import('zod')
+    const f = zodOutputFormat(apiWire.extend({ unresolved: zod.array(zod.string()) }) as never) as unknown as { schema: unknown }
+    let unions = 0
+    let optional = 0
+    const walk = (n: unknown): void => {
+      if (!n || typeof n !== 'object') return
+      if (Array.isArray(n)) return n.forEach(walk)
+      const o = n as Record<string, unknown>
+      if (o.anyOf || Array.isArray(o.type)) unions++
+      if (o.properties) optional += Object.keys(o.properties).filter((k) => !((o.required as string[]) ?? []).includes(k)).length
+      Object.values(o).forEach(walk)
+    }
+    walk(f.schema)
+    expect(unions).toBeLessThanOrEqual(16)
+    expect(optional).toBeLessThanOrEqual(24)
+  })
+  test('a reading that would drop a fact the file quotes leaves the field open', async () => {
+    const before = programmeSchema.parse({
+      ...base,
+      documents: ['Map of the site'],
+      evidence: { ...base.evidence, documents: [{ source_url: 'https://test.example.org/grants', quote: 'Attach a map of the site to your application.', checked_at: '2026-11-01', method: 'page' }] },
+    })
+    const pages = { 'https://test.example.org/grants': PAGE, 'https://test.example.org/guidelines.pdf': GUIDE }
+    const r = await run(before, { read: fakeReader(pages), sources: [], cheap: fakeAsk([goodWire()]).ask, strong: null, jev: fakeJev().ask })
+    const { next, manifestBits } = apply(before, r, '2026-11-16', [])
+    expect(next.documents).toEqual(['Map of the site'])
+    expect(manifestBits.outcomes.documents).toBe('unresolved')
+  })
+  test('a Word file is a failed read, not text', async () => {
+    const read: Reader = async (url) =>
+      url.endsWith('.docx')
+        ? { ok: true, finalUrl: url, pdf: false, html: 'PK\x03\x04garbage', bytes: new TextEncoder().encode('PK\x03\x04garbage') }
+        : fakeReader({ 'https://test.example.org/grants': PAGE.replace('/guidelines.pdf', '/guidelines.docx') })(url)
+    const g = await gather(base, { read, sources: [] })
+    expect(g.complete).toBe(false)
+    expect(g.failures.map((f) => f.kind)).toContain('unreadable')
   })
 })

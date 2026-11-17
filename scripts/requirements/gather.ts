@@ -193,6 +193,11 @@ export async function gather(
     let links: Link[] = []
     let selected: string | null = null
     try {
+      const head = new TextDecoder('latin1').decode(r.bytes.slice(0, 8))
+      if (!r.pdf && (/^PK\x03\x04|^\xD0\xCF\x11\xE0|^\{\\rtf/.test(head) || /\.(?:docx?|odt|rtf)(?:$|[?#])/i.test(r.finalUrl))) {
+        failures.push({ url, from, kind: 'unreadable', message: 'a Word, OpenDocument or RTF file: needs conversion' })
+        return null
+      }
       if (r.pdf) {
         pages = pdfPages(r.bytes)
         text = normalise(pages.join('\n'))
@@ -237,7 +242,11 @@ export async function gather(
     // A link code calls strong needs less to be followed than one code can't place. Without Jev, unplaced links
     // count against coverage, never silently dropped.
     if (opts.jev && strong.length + ambiguous.length) {
-      const all = [...strong, ...ambiguous].slice(0, 60)
+      const scored: { c: Candidate & { from: string }; yes: number }[] = []
+      const pool = [...strong, ...ambiguous]
+      // Sixty links per request keeps the state small; every candidate is ranked, none dropped.
+      for (let at = 0; at < pool.length; at += 60) {
+      const all = pool.slice(at, at + 60)
       const questions = Object.fromEntries(
         all.map((c, i) => [
           `l${i}`,
@@ -252,7 +261,8 @@ export async function gather(
         ]),
       )
       const answers = await opts.jev(p.id, { programme: { name: p.name, funder: p.funder.name, page: p.url } }, questions)
-      const scored = all.map((c, i) => ({ c, yes: (answers[`l${i}`] as { noul?: number })?.noul ?? 0 }))
+      scored.push(...all.map((c, i) => ({ c, yes: (answers[`l${i}`] as { noul?: number })?.noul ?? 0 })))
+      }
       const keep = scored.filter((s) => s.yes >= (s.c.score === 'strong' ? LINK_THRESHOLD.strong : LINK_THRESHOLD.ambiguous))
       for (const s of scored) if (!keep.includes(s)) skipped.push({ url: s.c.url, why: `Jev: unlikely to hold this programme's rules (${s.yes.toFixed(2)})` })
       keep.sort((a, b) => b.yes - a.yes)

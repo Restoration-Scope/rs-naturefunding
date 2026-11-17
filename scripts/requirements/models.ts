@@ -25,8 +25,11 @@ export const PRICES: Record<string, { input: number; output: number }> = {
   'jev-latest': { input: 0.042, output: 0 },
 }
 
+/** Prompts over 100K tokens are billed on a higher card. */
+const LONG: Record<string, { input: number; output: number }> = { 'claude-haiku-5-5': { input: 0.5, output: 2.5 } }
+
 export const costOf = (model: string, u: Usage) => {
-  const p = PRICES[model] ?? { input: 10, output: 50 }
+  const p = (u.input_tokens > 100_000 ? LONG[model] : undefined) ?? PRICES[model] ?? { input: 10, output: 50 }
   return (u.input_tokens * p.input + u.output_tokens * p.output) / 1e6
 }
 
@@ -87,17 +90,19 @@ export function claudeModel(model: string, opts: { effort?: 'low' | 'medium' | '
   return {
     name: model,
     async json(system, user, schema) {
-      const res = await client.messages.parse({
+      // Streamed, so long answers at high effort don't hit the request timeout; the schema still constrains the output.
+      const stream = client.messages.stream({
         model,
         max_tokens: opts.maxTokens ?? 16000,
         system,
         messages: [{ role: 'user', content: user }],
         output_config: { format: zodOutputFormat(schema as z.ZodType<unknown> as never), ...(opts.effort ? { effort: opts.effort } : {}) },
       } as never)
-      const r = res as unknown as { stop_reason: string; parsed_output: unknown; usage: Usage }
+      const r = (await stream.finalMessage()) as unknown as { stop_reason: string; content: { type: string; text?: string }[]; usage: Usage }
       if (r.stop_reason === 'refusal') throw new Error(`${model} declined the request`)
       if (r.stop_reason === 'max_tokens') throw new Error(`${model} ran out of output tokens`)
-      return { value: schema.parse(r.parsed_output), usage: { input_tokens: r.usage.input_tokens, output_tokens: r.usage.output_tokens } }
+      const text = r.content.filter((b) => b.type === 'text').map((b) => b.text ?? '').join('')
+      return { value: schema.parse(JSON.parse(text)), usage: { input_tokens: r.usage.input_tokens, output_tokens: r.usage.output_tokens } }
     },
   }
 }

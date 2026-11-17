@@ -251,3 +251,15 @@ export function packQuotes(docs: Doc[], quotes: Quote[], max: number): { packed:
   }
   return groups.length <= max ? { packed: groups.map((g) => g.q), covers: groups.map((g) => g.members) } : null
 }
+
+const words = (s: string) => new Set(comparable(s).split(/[^\p{L}\p{N}]+/u).filter((w) => w.length > 2))
+/** Two quotes state the same thing when one contains the other or most of the shorter one's words are shared. */
+export function sameQuote(a: string, b: string) {
+  const x = comparable(a)
+  const y = comparable(b)
+  if (x.includes(y) || y.includes(x)) return true
+  const wa = words(a)
+  const wb = words(b)
+  const shared = [...wa].filter((w) => wb.has(w)).length
+  return shared / Math.max(1, Math.min(wa.size, wb.size)) >= 0.6
+}

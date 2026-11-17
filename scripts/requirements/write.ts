@@ -7,11 +7,12 @@
  */
 import { programme as programmeSchema, type Evidence, type Programme, type Source } from '../../src/data/schema'
 import { comparable } from '../../src/data/text'
+import { formatJson } from '../refresh/json'
 import type { Field } from './extract'
 import { FIELDS, PROMPT_VERSION } from './extract'
 import type { Doc } from './gather'
 import type { Outcome, Result } from './pipeline'
-import { packQuotes, type Quote } from './verify'
+import { packQuotes, sameQuote, type Quote } from './verify'
 
 export type Manifest = {
   id: string
@@ -69,6 +70,34 @@ export function apply(p: Programme, r: Result, today: string, sources: Source[])
     written.push(field)
   }
 
+  /** What a new reading would lose from the file: a quoted fact, a due date, a typed value or a duty. */
+  const losses = (field: Field, newQuotes: string[]): string[] => {
+    const f = r.facts
+    const keys = FIELD_KEYS[field].filter((k) => k !== 'co_finance_required' && k !== 'consortium_required')
+    const oldQuotes = keys.flatMap((k) => [cur.evidence[k as keyof Programme['evidence']]].flat().filter(Boolean).map((e) => (e as Evidence).quote))
+    const out = oldQuotes.filter((o) => !newQuotes.some((n) => sameQuote(n, o))).map((o) => `the file quotes "${o.slice(0, 80)}", this reading does not`)
+    if (field === 'effort') for (const d of cur.effort?.due ?? []) if (d && !f.effort?.steps.some((s) => s.due === d)) out.push(`the file dates a step ${d}, this reading does not`)
+    if (field === 'eligibility')
+      (cur.eligibility ?? []).forEach((e, i) => {
+        const q = cur.evidence.eligibility?.[i]?.quote
+        const now = q ? f.eligibility.find((x) => sameQuote(x.q.quote, q)) : undefined
+        for (const k of ['min_years', 'revenue', 'request_cap'] as const) if (e[k] !== undefined && JSON.stringify(e[k]) !== JSON.stringify(now?.[k])) out.push(`the file gives "${e.rule}" a ${k}, this reading does not`)
+      })
+    if (field === 'after_award')
+      for (const [k, v] of Object.entries(cur.after_award ?? {})) {
+        const now = f.after_award.find((x) => x.duty === k)
+        if (!now || (k === 'reports' && now.reports !== v)) out.push(`the file says after_award.${k} is ${v}, this reading does not`)
+      }
+    return out
+  }
+  const guard = (field: Field, quotes: Quote[]) => {
+    const lost = losses(field, quotes.map((q) => q.quote))
+    if (!lost.length) return true
+    outcomes[field] = 'unresolved'
+    notes.push(`${field}: not written, ${lost.slice(0, 3).join('; ')}`)
+    return false
+  }
+
   for (const field of FIELDS) {
     const f = r.facts
     const had = FIELD_KEYS[field].some((k) => cur[k] !== undefined && cur[k] !== null)
@@ -97,6 +126,7 @@ export function apply(p: Programme, r: Result, today: string, sources: Source[])
         d.co_finance_required = req.value
         d.evidence.co_finance_required = ev(req.q)
         if (req.value && f.co_finance) {
+          if (cur.co_finance && !guard(field, [f.co_finance.q])) return null
           const { q, ...rest } = f.co_finance
           d.co_finance = rest
           d.evidence.co_finance = ev(q)
@@ -125,6 +155,7 @@ export function apply(p: Programme, r: Result, today: string, sources: Source[])
       continue
     }
     if (field === 'eligibility') {
+      if (!guard(field, f.eligibility.map((e) => e.q))) continue
       tryField(field, (d) => {
         d.eligibility = f.eligibility.map(({ q: _q, ...rule }) => rule)
         d.evidence.eligibility = f.eligibility.map((e) => ev(e.q))
@@ -144,7 +175,7 @@ export function apply(p: Programme, r: Result, today: string, sources: Source[])
         items = items.filter((_, i) => keep.has(i))
         pk = packed(items.map((x) => x.q), 3)
       }
-      if (!pk) continue
+      if (!pk || !guard(field, pk.packed)) continue
       tryField(field, (d) => {
         d.documents = items.map((x) => x.item)
         d.evidence.documents = pk!.packed.map(ev)
@@ -155,7 +186,7 @@ export function apply(p: Programme, r: Result, today: string, sources: Source[])
     if (field === 'effort') {
       const e = f.effort!
       const pk = packed(e.steps.map((s) => s.q), 5)
-      if (!pk) continue
+      if (!pk || !guard(field, pk.packed)) continue
       tryField(field, (d) => {
         const due = e.steps.map((s) => s.due)
         d.effort = { steps: e.steps.map((s) => s.step), ...(e.more_after ? { more_after: true } : {}), ...(due.some(Boolean) ? { due } : {}) }
@@ -166,7 +197,7 @@ export function apply(p: Programme, r: Result, today: string, sources: Source[])
     }
     if (field === 'after_award') {
       const pk = packed(f.after_award.map((a) => a.q), 4)
-      if (!pk) continue
+      if (!pk || !guard(field, pk.packed)) continue
       tryField(field, (d) => {
         const a: NonNullable<Programme['after_award']> = {}
         for (const x of f.after_award) {
@@ -201,6 +232,31 @@ export function apply(p: Programme, r: Result, today: string, sources: Source[])
   }
 
   return { next: cur as Programme, manifestBits: { outcomes, written, notes, requirements_checked: stamp }, sources: nextSources }
+}
+
+/** `next` with the original's key order at every depth; a new key goes where `schemaKeys` puts it among the keys already there, or last. */
+export function keyOrder<T>(next: T, original: unknown, schemaKeys: string[] = []): T {
+  if (Array.isArray(next)) return next.map((v, i) => keyOrder(v, Array.isArray(original) ? original[i] : undefined)) as T
+  if (!next || typeof next !== 'object') return next
+  const orig = original && typeof original === 'object' && !Array.isArray(original) ? (original as Record<string, unknown>) : {}
+  const keys = Object.keys(orig).filter((k) => k in next)
+  for (const k of Object.keys(next)) {
+    if (keys.includes(k)) continue
+    const at = schemaKeys.indexOf(k)
+    const before = at < 0 ? -1 : keys.findIndex((x) => schemaKeys.slice(at + 1).includes(x))
+    keys.splice(before < 0 ? keys.length : before, 0, k)
+  }
+  return Object.fromEntries(keys.map((k) => [k, keyOrder((next as Record<string, unknown>)[k], orig[k])])) as T
+}
+
+/** The programme as its file should read: the file's own key order and formatting, so the diff shows only what changed. */
+export function serialise(next: Programme, originalText: string): string {
+  const original = JSON.parse(originalText) as Programme
+  const shape = (programmeSchema as unknown as { shape: Record<string, { shape?: Record<string, unknown> }> }).shape
+  const o = keyOrder(next, original, Object.keys(shape))
+  o.evidence = keyOrder(next.evidence, original.evidence, Object.keys(shape.evidence!.shape!))
+  const stringify = `${JSON.stringify(original, null, 2)}\n` === originalText && formatJson(original) !== originalText
+  return stringify ? `${JSON.stringify(o, null, 2)}\n` : formatJson(o)
 }
 
 export function manifest(r: Result, today: string, bits: ReturnType<typeof apply>['manifestBits'], models: string[], usd: number): Manifest {

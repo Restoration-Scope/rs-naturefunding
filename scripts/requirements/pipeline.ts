@@ -6,7 +6,7 @@
 import { z } from 'zod'
 import type { Programme, Source } from '../../src/data/schema'
 import { check, JEV, omissions, thinFields, type Judgement } from './check'
-import { chunksOf, extract, FIELDS, SYSTEM, userPrompt, WHOLE_CHARS, wire, type Chunk, type Field, type Wire } from './extract'
+import { apiWire, chunksOf, extract, FIELDS, fromApi, SYSTEM, userPrompt, WHOLE_CHARS, type Chunk, type Field, type Wire } from './extract'
 import { gather, type Gathered, type Reader } from './gather'
 import type { Ask, AskJev } from './models'
 import { emptyFacts, verify, type Facts, type Flag } from './verify'
@@ -30,7 +30,7 @@ export type Result = {
 
 export type Deps = { read: Reader; sources: Source[]; cheap: Ask; strong: Ask | null; jev: AskJev | null }
 
-const escalationWire = wire.extend({
+const escalationWire = apiWire.extend({
   unresolved: z.array(z.enum(FIELDS)).describe('Fields the text leaves genuinely unclear, so a person must read them.'),
 })
 
@@ -90,6 +90,11 @@ export async function run(p: Programme, deps: Deps): Promise<Result> {
   const notes = [...v.notes, ...(first.merged.notes ? [`extractor: ${first.merged.notes}`] : [])]
   const judgements: Judgement[] = []
   for (const f of first.conflicts) flags.push({ field: f, item: 'required', why: 'parts of the text disagree', source: 'verify' })
+  // Steps read from several chunks were put together by code, not read as one list.
+  for (const f of first.spans) flags.push({ field: f, item: 'steps', why: 'the steps come from different parts of the text; check they are one list in order', source: 'verify' })
+  // The text names a rules document we don't have: never a full read.
+  const coverage = [...gathered.reasons]
+  for (const m of first.missing) coverage.push(`the text names a document with rules that was not read: ${m.slice(0, 160)}`)
 
   // Omissions: Jev reads every chunk for fields that came back empty or thin; a yes sends them back.
   const omittedChunks = new Set<string>()
@@ -130,7 +135,8 @@ export async function run(p: Programme, deps: Deps): Promise<Result> {
     } else {
       const context = flags.map((f) => `- ${f.field}: "${f.item}": ${f.why}${f.quote ? ` (quote: "${f.quote.slice(0, 200)}")` : ''}`).join('\n')
       const user = `${userPrompt(p, chunk, 1, flagged)}\n\nA first reader's answer had these problems:\n${context}\n\nRead the text again and give the correct answer for ${flagged.join(', ')}. Leave out anything the text does not state. List in "unresolved" any of these fields the text leaves genuinely unclear.`
-      const s = await deps.strong(p.id, SYSTEM, user, escalationWire)
+      const raw = await deps.strong(p.id, SYSTEM, user, escalationWire)
+      const s = { ...fromApi(raw), unresolved: raw.unresolved }
       const v3 = verify(s, gathered.docs)
       notes.push(...v3.notes.map((n) => `strong: ${n}`), ...(s.notes ? [`strong: ${s.notes}`] : []))
       let after: Flag[] = v3.flags.filter((f) => flagged.includes(f.field))
@@ -155,7 +161,8 @@ export async function run(p: Programme, deps: Deps): Promise<Result> {
   } else for (const f of flagged) unresolved.add(f)
 
   const outcomes = Object.fromEntries(FIELDS.map((f) => [f, unresolved.has(f) ? 'unresolved' : hasField(facts, f) ? 'stated' : 'not_found'])) as Record<Field, Outcome>
-  return { ...base, facts, outcomes, flags, settled, judgements, notes, escalated }
+  const complete = coverage.length === 0
+  return { ...base, gathered: { ...gathered, complete, reasons: [...new Set(coverage)] }, facts, outcomes, flags, settled, judgements, notes, escalated }
 }
 
 function pickField(f: Facts, field: Field) {
