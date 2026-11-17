@@ -47,8 +47,19 @@ export function buildDigest(
   }
 
   const order: Record<Section, number> = { open: 0, upcoming: 1, new: 2 }
+  const open = (i: DigestItem) => i.call?.deadline?.date ?? '9999'
+  const soon = (i: DigestItem) => i.call?.opens ?? '9999'
+  // New programmes you can apply to now come first, then those with a call announced, then the rest by name.
   const sortKey = (i: DigestItem) =>
-    i.section === 'open' ? (i.call?.deadline?.date ?? '9999') : i.section === 'upcoming' ? (i.call?.opens ?? '9999') : ''
+    i.section === 'open'
+      ? open(i)
+      : i.section === 'upcoming'
+        ? soon(i)
+        : !i.call
+          ? '2'
+          : isOpen(i.call, at)
+            ? `0${open(i)}`
+            : `1${soon(i)}`
   // One line per programme: a funder with several rounds open (one per meeting date) shows its next one.
   const seen = new Set<string>()
   const items = [...byKey.values()]

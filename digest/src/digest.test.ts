@@ -94,6 +94,14 @@ describe('one subscriber’s digest', () => {
     expect(d.total).toBe(1)
   })
 
+  test('new programmes with an open call come before those with none, whatever their names', () => {
+    const closed = programmes.filter((p) => p.calls.every((c) => c.status === 'closed')).sort((a, b) => a.name.localeCompare(b.name))[0]!
+    const live = programmes.filter((p) => openCall(p)).sort((a, b) => b.name.localeCompare(a.name))[0]!
+    const events = [closed, live].map((p) => ({ at: '2026-11-10T00:00:00.000Z', kind: 'new_programme' as const, programme: p.id, call: null }))
+    const d = buildDigest(events, byId, { where: '', approaches: [] }, '2026-11-08T00:00:00.000Z', now)
+    expect(d.items.map((i) => i.programme.id)).toEqual([live.id, closed.id])
+  })
+
   test('a call that opened before the last email and opened again after it is news again', () => {
     const c = openCall(withOpen)!
     const events = [
