@@ -12,7 +12,7 @@ import type { Field } from './extract'
 import { FIELDS, PROMPT_VERSION } from './extract'
 import type { Doc } from './gather'
 import type { Outcome, Result } from './pipeline'
-import { packQuotes, sameQuote, type Quote } from './verify'
+import { packQuotes, sameItem, sameQuote, type Quote } from './verify'
 
 export type Manifest = {
   id: string
@@ -44,16 +44,6 @@ const FIELD_KEYS: Record<Field, (keyof Programme)[]> = {
 }
 
 type Draft = Programme & Record<string, unknown>
-
-const words = (s: string) => new Set(comparable(s).split(/[^\p{L}\p{N}]+/u).filter((w) => w.length > 2))
-/** Two names for one item ("Audited accounts", "Latest audited accounts"): most of the shorter one's words are in the other. */
-export function sameItem(a: string, b: string): boolean {
-  const x = words(a)
-  const y = words(b)
-  if (!x.size || !y.size) return comparable(a) === comparable(b)
-  const shared = [...x].filter((w) => y.has(w)).length
-  return shared / Math.min(x.size, y.size) >= 0.5
-}
 
 /** Old items with no counterpart among the new ones, matched one to one so two old items can't share one new item. */
 function unmatched<O, N>(old: O[], now: N[], same: (o: O, n: N) => boolean): O[] {

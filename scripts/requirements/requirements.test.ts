@@ -542,3 +542,28 @@ describe('the stamp: every path that must block it', () => {
     expect(sources.find((s) => s.programme_id === 'test-grants' && s.url === 'https://test.example.org/guidelines.pdf')).toBeTruthy()
   })
 })
+
+describe('reconcile: same item, not same passage', () => {
+  test('two documents named in one passage stay two; one document read twice merges', () => {
+    const a = goodWire()
+    const b = goodWire()
+    const r = reconcile([a, b])
+    expect(r.merged.documents.items.map((d) => d.item)).toEqual(['Latest audited accounts', 'Letter of support from the landowner'])
+    const c = goodWire()
+    c.documents.items = [{ item: 'Audited accounts', doc: 'D2', quote: 'You must submit your latest audited accounts and a letter of support from the landowner' }, { item: 'Landowner letter', doc: 'D2', quote: 'You must submit your latest audited accounts and a letter of support from the landowner' }]
+    expect(reconcile([c, emptyWire()]).merged.documents.items).toHaveLength(2)
+  })
+  test('yearly and quarterly reporting are a conflict', () => {
+    const a = goodWire()
+    const b = goodWire()
+    a.after_award.items = [{ duty: 'reports', reports: 'yearly', doc: 'D2', quote: 'Grantees report every year.' }] as never
+    b.after_award.items = [{ duty: 'reports', reports: 'quarterly', doc: 'D2', quote: 'Grantees report each quarter.' }] as never
+    expect(reconcile([a, b]).conflicts).toContain('after_award')
+  })
+  test('two different co-funding shares are a conflict', () => {
+    const a = goodWire()
+    const b = goodWire()
+    b.co_finance = { ...b.co_finance, min_share: 50 }
+    expect(reconcile([a, b]).conflicts).toContain('co_finance')
+  })
+})

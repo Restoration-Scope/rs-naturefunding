@@ -8,6 +8,7 @@ import { z } from 'zod'
 import type { Programme } from '../../src/data/schema'
 import { applicantType, eligibilityKind } from '../../src/data/schema'
 import { comparable } from '../../src/data/text'
+import { sameItem } from './verify'
 import type { Doc } from './gather'
 import type { Ask } from './models'
 
@@ -295,20 +296,30 @@ export function reconcile(parts: Wire[]): { merged: Wire; conflicts: Field[]; sp
   const conflicts: Field[] = []
   const spans: Field[] = []
   const anyStated = (f: Field) => (parts.some((x) => x[f].status === 'stated') ? 'stated' : 'not_found') as 'stated' | 'not_found'
+  // One item read twice (chunk overlap, page and PDF) merges; two items sharing a passage stay two.
   const uniq = <T extends { quote: string }>(items: T[], key: (t: T) => string) => {
     const out: T[] = []
-    for (const it of items) if (!out.some((o) => sameText(o.quote, it.quote) || sameText(key(o), key(it)))) out.push(it)
+    for (const it of items) if (!out.some((o) => sameItem(key(o), key(it)) && (sameText(o.quote, it.quote) || sameText(key(o), key(it))))) out.push(it)
     return out
   }
   const elig = uniq(parts.flatMap((x) => x.eligibility.items), (i) => i.rule)
   const docs = uniq(parts.flatMap((x) => x.documents.items), (i) => i.item)
-  const duties = uniq(parts.flatMap((x) => x.after_award.items), (i) => i.duty)
+  // A duty is one fact per kind; two readings of how often grantees report are a disagreement, not a choice.
+  const allDuties = parts.flatMap((x) => x.after_award.items)
+  const duties = allDuties.filter((d, i) => allDuties.findIndex((o) => o.duty === d.duty) === i)
+  if (new Set(allDuties.filter((o) => o.duty === 'reports' && o.reports).map((o) => o.reports)).size > 1) conflicts.push('after_award')
   const withSteps = parts.filter((x) => x.effort.steps.length)
   if (withSteps.length > 1) spans.push('effort')
   const effort = withSteps.length === 1 ? withSteps[0]!.effort : { status: anyStated('effort'), steps: uniq(withSteps.flatMap((x) => x.effort.steps), (s) => s.step), more_after: withSteps.some((x) => x.effort.more_after) }
   const pick = <K extends 'co_finance' | 'consortium'>(f: K) => {
     const stated = parts.map((x) => x[f]).filter((v) => v.status === 'stated' && v.required !== null)
     if (new Set(stated.map((v) => v.required)).size > 1) conflicts.push(f)
+    // Two readings that both give a share, ratio or amount and differ disagree.
+    else if (f === 'co_finance')
+      for (const k of ['min_share', 'ratio', 'min_amount'] as const) {
+        const vals = new Set(stated.map((v) => JSON.stringify((v as Wire['co_finance'])[k])).filter((j) => j !== 'null'))
+        if (vals.size > 1 && !conflicts.includes(f)) conflicts.push(f)
+      }
     // The fullest statement wins: a share or ratio beats a bare yes.
     return (stated.sort((a, b) => JSON.stringify(b).length - JSON.stringify(a).length)[0] ?? parts[0]![f]) as Wire[K]
   }

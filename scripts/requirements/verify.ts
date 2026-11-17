@@ -263,3 +263,12 @@ export function sameQuote(a: string, b: string) {
   const shared = [...wa].filter((w) => wb.has(w)).length
   return shared / Math.max(1, Math.min(wa.size, wb.size)) >= 0.6
 }
+
+/** Two names for one item ("Audited accounts", "Latest audited accounts"): most of the shorter one's words are in the other. */
+export function sameItem(a: string, b: string): boolean {
+  const x = words(a)
+  const y = words(b)
+  if (!x.size || !y.size) return comparable(a) === comparable(b)
+  const shared = [...x].filter((w) => y.has(w)).length
+  return shared / Math.min(x.size, y.size) >= 0.5
+}
