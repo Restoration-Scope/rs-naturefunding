@@ -5,8 +5,8 @@ name: Deploy
 # the data (refresh commits land on main unreviewed) and the build, then publishes.
 # Then redeploys the weekly email Worker (digest/), whose bundle inlines the programmes and the git history of
 # data/programmes, so each digest carries the calls that changed since the last one.
-# Needs CLOUDFLARE_API_TOKEN: Workers Scripts edit on the account in wrangler.jsonc, and Workers Routes edit on
-# the naturefunding.org zone for the custom domains (naturefunding.org, email.naturefunding.org).
+# Needs CLOUDFLARE_API_TOKEN: Workers Scripts edit on the account in wrangler.jsonc (it also sets both custom
+# domains, naturefunding.org and email.naturefunding.org).
 on:
   push:
     branches: [main]

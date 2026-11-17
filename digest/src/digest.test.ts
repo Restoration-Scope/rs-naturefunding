@@ -84,8 +84,8 @@ describe('one subscriber’s digest', () => {
   })
 
   test('one line per programme: several open rounds show the one that closes first', () => {
-    const p = programmes.find((x) => x.calls.filter((c) => openCall(x) && c.status === 'open' && c.deadline && c.deadline.date >= today).length >= 2)
-    if (!p) return
+    const p = programmes.find((x) => x.calls.filter((c) => c.status === 'open' && c.deadline && c.deadline.date >= today).length >= 2)!
+    expect(p).toBeDefined()
     const rounds = p.calls.filter((c) => c.status === 'open' && c.deadline && c.deadline.date >= today)
     const events = rounds.map((c) => ({ at: '2026-11-10T00:00:00.000Z', kind: 'opened' as const, programme: p.id, call: c.id }))
     const d = buildDigest(events, byId, { where: '', approaches: [] }, '2026-11-08T00:00:00.000Z', now)
