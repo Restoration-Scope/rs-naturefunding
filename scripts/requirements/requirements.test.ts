@@ -767,3 +767,22 @@ describe('escalation keeps what nothing faulted', () => {
     expect(strong.asked[0]).toContain('keep the first reader')
   })
 })
+
+describe('gold set', () => {
+  const index = JSON.parse(require('node:fs').readFileSync('tests/fixtures/requirements/index.json', 'utf8')) as { programmes: { id: string; split: string }[] }
+  test('every programme is in a split run.ts and eval.ts select on', () => {
+    expect(index.programmes.filter((p) => p.split !== 'tune' && p.split !== 'held')).toEqual([])
+    expect(index.programmes.filter((p) => p.split === 'tune').length).toBe(40)
+    expect(index.programmes.filter((p) => p.split === 'held').length).toBe(20)
+  })
+  test('every fixture parses as gold with quotes', () => {
+    const fs = require('node:fs') as typeof import('node:fs')
+    for (const p of index.programmes) {
+      const file = `tests/fixtures/requirements/${p.id}.json`
+      if (!fs.existsSync(file)) continue
+      const g = JSON.parse(fs.readFileSync(file, 'utf8')) as Gold
+      expect(g.id).toBe(p.id)
+      for (const x of [...g.eligibility, ...g.documents, ...g.effort, ...g.after_award]) expect(x.quote.length).toBeGreaterThan(3)
+    }
+  })
+})
