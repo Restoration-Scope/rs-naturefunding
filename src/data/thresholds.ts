@@ -36,8 +36,8 @@ export function numbersIn(quote: string): Set<number> {
     const frac = m[3] ? Number(`0.${m[3]}`) : 0
     // "1,5" or "1.5": a decimal part; "60,000": thousands, already folded into whole.
     const n = whole + frac
-    found.add(n)
-    if (m[4]) found.add(n * SCALE[m[4].toLowerCase()]!)
+    // "EUR 1 million" states 1,000,000, not 1.
+    found.add(m[4] ? n * SCALE[m[4].toLowerCase()]! : n)
   }
   for (const w of text.split(/[^\p{L}]+/u)) if (w in WORDS) found.add(WORDS[w]!)
   return found
@@ -45,8 +45,26 @@ export function numbersIn(quote: string): Set<number> {
 
 const states = (quote: string, n: number) => numbersIn(quote).has(n)
 
+const YEAR = String.raw`(?:years?|yrs?|jahre?n?|años?|anos?|ans?|année?s?|jaar|jaren|anni|anno|år|vuotta|vuoden|lat|let|年)`
+const MONTH = String.raw`(?:months?|monate?n?|meses|mois|maanden|mesi|månader|måneder|kuukautta|か月|ヶ月|カ月)`
+
+/** The numbers a quote puts right before a unit word ("3 years", "three full years", "1 年以上"), so "36 years" is never 36 months. */
+function numbersBefore(quote: string, unit: string): Set<number> {
+  const text = normalise(quote).toLowerCase()
+  const out = new Set<number>()
+  const named = Object.keys(WORDS).sort((x, y) => y.length - x.length).join('|')
+  const num = String.raw`(\d+(?:[.,]\d+)?|${named})`
+  const re = new RegExp(String.raw`(?<![\p{L}\d])${num}(?:\s*\(\d+\))?\s*(?:[\p{L}-]+\s+){0,2}?${unit}(?![a-zäöüéèàçñ])`, 'giu')
+  for (const m of text.matchAll(re)) {
+    const raw = m[1]!
+    const n = /^\d/.test(raw) ? Number(raw.replace(',', '.')) : WORDS[raw]
+    if (n !== undefined && Number.isFinite(n)) out.add(n)
+  }
+  return out
+}
+
 /** Whether a quote states this many years operating: as years ("3 years", "three years") or as months ("36 months"). */
-export const statesYears = (quote: string, years: number) => states(quote, years) || states(quote, Math.round(years * 12))
+export const statesYears = (quote: string, years: number) => numbersBefore(quote, YEAR).has(years) || numbersBefore(quote, MONTH).has(Math.round(years * 12))
 
 const SYMBOLS: Record<string, RegExp> = {
   EUR: /€|\beuros?\b/i,
@@ -71,6 +89,9 @@ export const statesCurrency = (quote: string, code: string) =>
 const BASE_WORDS =
   /revenue|income|turnover|budget|expenditure|spending|umsatz|einnahmen|jahresbudget|ingresos|presupuesto|facturaci[oó]n|chiffre d'affaires|recettes|revenus|receita|or[çc]amento|faturamento|omzet|begroting|inkomsten|fatturato|bilancio|entrate/i
 
+/** A request held to at most the applicant's own money: "must not exceed", "no more than", "up to". */
+const CAPS = /exceed|no more than|not more than|greater than|larger than|higher than|up to|at most|maximum|überschreiten|nicht mehr als|höchstens|superar|exceder|no más de|dépasser|pas plus de|ultrapassar|niet meer dan|overschrijden|superare|non più di|上回らない|以内/i
+
 /** Whether a quote compares the request with the applicant's own money (revenue, income, turnover, budget). */
 export const namesOwnMoney = (quote: string) => BASE_WORDS.test(normalise(quote))
 
@@ -88,7 +109,8 @@ export function thresholdProblems(t: Thresholds, quote: string): { key: keyof Th
   }
   const r = t.revenue
   if (r) {
-    const missing = [r.min, r.max, r.average_years].filter((n): n is number => n !== undefined && !states(quote, n))
+    const missing = [r.min, r.max].filter((n): n is number => n !== undefined && !states(quote, n))
+    if (r.average_years !== undefined && !numbersBefore(quote, YEAR).has(r.average_years)) missing.push(r.average_years)
     if (missing.length) out.push({ key: 'revenue', why: `the rule's quote does not state ${missing.join(', ')}` })
     else if (!statesCurrency(quote, r.currency)) out.push({ key: 'revenue', why: `the rule's quote does not name ${r.currency}` })
     else if (!namesOwnMoney(quote)) out.push({ key: 'revenue', why: 'the rule’s quote does not name revenue, income or a budget' })
@@ -96,8 +118,9 @@ export function thresholdProblems(t: Thresholds, quote: string): { key: keyof Th
   const c = t.request_cap
   if (c) {
     if (!namesOwnMoney(quote)) out.push({ key: 'request_cap', why: 'the rule’s quote does not compare the request with revenue or a budget' })
-    else if (c.share !== 100 && !states(quote, c.share) && !states(quote, c.share / 100)) {
-      out.push({ key: 'request_cap', why: `the rule's quote does not state ${c.share}%` })
+    // A whole year's revenue needs the quote to compare the request with it; any other share needs its number.
+    else if (c.share === 100 ? !(states(quote, 100) || CAPS.test(normalise(quote))) : !states(quote, c.share) && !states(quote, c.share / 100)) {
+      out.push({ key: 'request_cap', why: c.share === 100 ? 'the rule’s quote does not say the request may not exceed the revenue or budget' : `the rule's quote does not state ${c.share}%` })
     }
   }
   return out

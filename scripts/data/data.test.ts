@@ -169,6 +169,16 @@ describe('typed values on eligibility rules', () => {
     ])
   })
 
+  test('a number means what its unit says', () => {
+    const three = { rule: 'Operating for at least 3 years', kind: 'track_record' as const, min_years: 3 }
+    expect(problems(withRule(three, 'The foundation has supported groups for 36 years.'))).toHaveLength(1)
+    expect(problems(withRule({ ...three, min_years: 1 }, '団体として 1 年以上の実活動の実績'))).toEqual([])
+    const million = { rule: 'Revenue of at least €1', kind: 'finances' as const, revenue: { currency: 'EUR', min: 1, basis: 'revenue' as const } }
+    expect(problems(withRule(million, 'Applicants need an annual revenue of at least EUR 1 million.'))).toHaveLength(1)
+    const cap = { rule: 'Request no more than yearly revenue', kind: 'finances' as const, request_cap: { share: 100, of: 'revenue' as const } }
+    expect(problems(withRule(cap, 'Tell us your annual revenue in the form.'))).toHaveLength(1)
+  })
+
   test('years operating go on a track-record rule', () => {
     const rule = { rule: 'Operating for at least 2 years', kind: 'legal' as const, min_years: 2 }
     expect(problems(withRule(rule, 'Applicants must be registered for two years.'))).toEqual(['eligibility.0.min_years: years operating go on a track_record rule'])
