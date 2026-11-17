@@ -639,7 +639,7 @@ describe('eval: a real run scored against its gold set', () => {
     ],
     documents: w.documents.items.map((d) => ({ item: d.item, quote: d.quote })),
     effort: w.effort.steps.map((s) => ({ step: s.step, due: s.due, quote: s.quote })),
-    co_finance_required: { value: true, quote: w.co_finance.quote },
+    co_finance_required: { value: true, quote: w.co_finance.quote! },
     co_finance: { min_share: 20 },
     consortium_required: null,
     after_award: [{ duty: 'reports', reports: 'final', quote: w.after_award.items[0]!.quote }],
