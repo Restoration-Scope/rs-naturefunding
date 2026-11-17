@@ -10,6 +10,7 @@ A static Astro site (Bun, TypeScript) on Cloudflare static assets. Data lives as
 - **Static site.** Pages are static: no SSR adapter, and search and filters run in the browser on the built data. Separate small Workers (the MCP server, the email signup) may sit beside the site, but they never render its pages.
 - **Neutral.** No paid listings, no ranking by who pays, and the fit of a listing never depends on Restoration Scope. Restoration Scope is named openly as the builder.
 - **Triage criteria.** Use `docs/triage-criteria.md` for the written accept/hold/reject checklist and worked examples that turn these rules into scanner decisions.
+- **Improvements log.** A change a visitor can see adds one line to `docs/improvements.md` in its PR: `- YYYY-MM-DD · what a visitor sees now · a URL that shows it · #PR`. The naturefunding.org LinkedIn Page drafts its update posts from it.
 - Run `bun run check`, `bun run validate`, `bun test` and `bun run build` before committing; there is no CI on PRs.
 
 Astro docs: https://docs.astro.build

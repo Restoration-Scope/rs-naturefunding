@@ -20,7 +20,7 @@ import { cardClasses } from '@/components/ui/card'
 import { HIDDEN_DAYS, buildDate, callGroups, whereReach, listingFor, programmeById, programmes, sortListings } from '../../lib/data'
 import type { Programme } from '../../data/schema'
 import { pagesFor } from '../../lib/finder-pages'
-import { amountText, effortLevel, effortText, poolText, geographyFull, joinAnd, longDate, pageLabel, sentence, keepAmountTogether } from '../../lib/format'
+import { amountText, effortLevel, effortSignals, effortText, poolText, geographyFull, joinAnd, longDate, pageLabel, sentence, keepAmountTogether, funderRepeatsName, programmeTitle } from '../../lib/format'
 import { countryName, regionLabels } from '../../lib/geo'
 import {
   accessHelp,
@@ -44,7 +44,7 @@ const parent = p.parent ? programmeById.get(p.parent) : undefined
 const children = programmes.filter((c) => c.parent === p.id)
 const childListings = children.map((c) => listingFor(c)).sort(sortListings)
 // "Forest Action Facility" from "Forest Action Facility (established by IUCN and KfW)": show only what the name doesn't say.
-const funderQualifier = p.funder.name.startsWith(p.name)
+const funderQualifier = funderRepeatsName(p)
   ? p.funder.name.slice(p.name.length).trim().replace(/^\((.*)\)$/, '$1').replace(/^./, (ch) => ch.toUpperCase())
   : null
 // An umbrella's own page often leaves these to its partner programmes.
@@ -119,7 +119,7 @@ const callStatusText = (c: Programme['calls'][number]) =>
       ? 'Windows each year; the page doesn’t say if one is open now'
       : callStatusLabel[c.status]
 
-const description = `${p.name} from ${p.funder.name}: ${
+const description = `${funderRepeatsName(p) ? p.funder.name : `${p.name} from ${p.funder.name}`}: ${
   state === 'open' && call?.deadline
     ? `open, deadline ${call.deadline.text}.`
     : state === 'rolling'
@@ -177,7 +177,7 @@ const jsonLd = [
 ---
 
 <Base
-  title={`${p.name}, ${p.funder.name}`}
+  title={programmeTitle(p)}
   description={description}
   path={`/p/${p.id}/`}
   jsonLd={jsonLd}
@@ -316,7 +316,10 @@ const jsonLd = [
             </Fact>
           )
         }
-        <Fact id={factIds.co_finance_required} label="Co-funding required" value={yesNo(p.co_finance_required)} evidence={p.evidence.co_finance_required} missing={byPartner} figures />
+        <Fact id={factIds.co_finance_required} label="Co-funding required" value={yesNo(p.co_finance_required)} evidence={[p.evidence.co_finance_required, p.evidence.co_finance].filter((e) => e !== undefined)} missing={byPartner} figures>
+          {/* How much, when the page says: the same words as the finder's Co-funding bar; its quote follows. */}
+          {p.co_finance && p.co_finance_required && <p class={factHelp}><Figures text={effortSignals(p)[2]!.why} /></p>}
+        </Fact>
       </FactGroup>
 
       <FactGroup id="facts-who" kind="who" title="Who can apply">
@@ -369,7 +372,7 @@ const jsonLd = [
             <Fact
               id={before ? 'work-to-apply' : 'effort'}
               label="Work to apply"
-              value={before ? (level ? `${level.level}: ${level.why}` : 'Steps not stated') : effortText(p.effort)}
+              value={before ? (level ? (level.level ? `${level.level}: ${level.why}` : sentence(level.why)) : 'Steps not stated') : effortText(p.effort)}
               evidence={[...(before ? [] : (p.evidence.effort ?? [])), ...(p.evidence.odds ? [p.evidence.odds] : [])]}
               missing="Steps not stated"
             >

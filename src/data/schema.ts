@@ -232,6 +232,8 @@ const MONTHS = [
   ['nov'],
   ['dec', 'dic', 'déc', 'dez'],
 ]
+// Whole names short enough to sit in MONTHS: no dot may follow them ("8 May. 2027" ends a sentence).
+const WHOLE_SHORT = new Set(['janeiro', 'jänner', 'may', 'mai', 'mayo', 'maio', 'mei', 'juin', 'août'])
 const MONTH_NAMES: Record<number, string> = {
   1: 'januar[a-z]*|enero|janvier',
   2: 'februar[a-z]*|febrero|f[ée]vrier|fevereiro',
@@ -248,23 +250,44 @@ const MONTH_NAMES: Record<number, string> = {
 /**
  * Whether a quote states a whole date: its day, its month (a name in English, Spanish, French, Portuguese,
  * German or Dutch, or a number) and its year in one expression. "January 8 for projects in 2027" is not 2027-01-08.
+ * A numeric date with slashes or hyphens that reads two ways (08/01/2027) counts only when its order (DD/MM or
+ * MM/DD) is stated next to it and the other order isn't; dots are day first (08.01.2027).
  */
 export const statesDate = (quote: string, date: string) => {
   const [y, m, d] = [date.slice(0, 4), Number(date.slice(5, 7)), Number(date.slice(8))]
   if (!(m >= 1 && m <= 12)) return false
-  const day = String.raw`0?${d}(?:st|nd|rd|th|er|º|\.)?`
+  const dd = String.raw`0?${d}`
+  // "8." is a day only before its month ("8. Januar 2027"); after one, the dot ends a sentence.
+  const day = String.raw`${dd}(?:st|nd|rd|th|er|º)?`
   const mm = String.raw`0?${m}`
-  const name = String.raw`(?:${[MONTH_NAMES[m], ...MONTHS[m - 1]!].filter(Boolean).join('|')})\.?`
+  // Only an abbreviation takes a dot ("Jan. 8"): after a whole name ("8 January. 2027 projects") it ends a sentence.
+  const short = MONTHS[m - 1]!
+  const whole = [MONTH_NAMES[m], ...short.filter((a) => WHOLE_SHORT.has(a))].filter(Boolean).join('|')
+  const name = String.raw`(?:${whole}|(?:${short.filter((a) => !WHOLE_SHORT.has(a)).join('|')})\.?)`
   const year = String.raw`(?:${y}|['‘’]${y.slice(2)})`
-  const gap = String.raw`[\s,]*(?:de\s+|of\s+)?`
+  const yy = String.raw`(?:${y}|${y.slice(2)})`
+  const gap = String.raw`[\s,-]*(?:de\s+|of\s+)?`
+  const alone = (f: string, flags = 'iu') => new RegExp(String.raw`(?<![\p{L}\d])(?:${f})(?![\p{L}\d])`, flags)
   const forms = [
-    String.raw`${day}${gap}${name}${gap}${year}`,
+    String.raw`${day}\.?${gap}${name}${gap}${year}`,
     String.raw`${name}\s*${day},?\s*${year}`,
-    String.raw`${day}[./-]${mm}[./-](?:${y}|${y.slice(2)})`,
-    String.raw`${mm}[./-]${day}[./-](?:${y}|${y.slice(2)})`,
-    String.raw`${y}[./-]${mm}[./-]0?${d}`,
+    String.raw`${dd}\.${mm}\.${yy}`,
+    String.raw`${y}[./-]${mm}[./-]${dd}`,
   ]
-  return new RegExp(String.raw`(?<![\p{L}\d])(?:${forms.join('|')})(?![\p{L}\d])`, 'iu').test(quote)
+  if (alone(forms.join('|')).test(quote)) return true
+  const twoWays = d <= 12 && d !== m
+  const DMY = /\b(?:dd|jj|tt)[/-]mm\b/i
+  const MDY = /\bmm[/-]dd\b/i
+  // Each match must carry its own order within a few words of its own sentence, so another field's format can't
+  // vouch for it ("closes 08/01/2027. Birth date: DD/MM/YYYY.").
+  const near = (re: RegExp, at: number, len: number) => {
+    const before = quote.slice(Math.max(0, at - 40), at).split(/[.;!?\n]\s/).pop()!
+    const after = quote.slice(at + len, at + len + 40).split(/[.;!?\n](?:\s|$)/)[0]!
+    return re.test(`${before} ${after}`)
+  }
+  const numeric = (f: string, own: RegExp, other: RegExp) =>
+    [...quote.matchAll(alone(f, 'giu'))].some((x) => !twoWays || (near(own, x.index, x[0].length) && !near(other, x.index, x[0].length)))
+  return numeric(String.raw`${dd}[/-]${mm}[/-]${yy}`, DMY, MDY) || numeric(String.raw`${mm}[/-]${dd}[/-]${yy}`, MDY, DMY)
 }
 
 /** Why a call's expected opening is wrong, or null: it is for an upcoming call with no firm date, and names only years its status quote states. */

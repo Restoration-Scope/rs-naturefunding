@@ -3,7 +3,7 @@ import type { Listing } from '../lib/data'
 import { AGING_DAYS, callGroups, listingFor, notRechecked, opensSortDate, programmes, sizeBucketsFor, whereCodes } from '../lib/data'
 import { amountText, effortShort, geographyText, longDate, shortDate } from '../lib/format'
 import { approachLabels, recheckReasons } from '../lib/labels'
-import { compactAmount, usdValue } from '../lib/table'
+import { amountCell, amountData, usdValue } from '../lib/table'
 import { Badge } from '@/components/ui/badge'
 import { TableCell, TableRow } from '@/components/ui/table'
 import OrgMark from './OrgMark.astro'
@@ -19,8 +19,8 @@ const { listing } = Astro.props
 const { p, state, call, aging } = listing
 const deadline = call?.deadline ?? null
 const amountFull = amountText(p.amount)
-// A range never breaks at its dash; the line may break before the currency code instead.
-const amount = compactAmount(p.amount)?.replace(/–/g, '–\u2060').replace(/\u00a0([A-Z]{3})/, ' $1') ?? null
+// In US dollars as built, with the funder's own figure under it; src/lib/finder.ts redoes it in the reader's pick.
+const cell = amountCell(p.amount, 'USD')
 const usd = usdValue(p.amount)
 const where = geographyText(p.geography)
 // An umbrella that funds through partners: how many of its partner programmes are open now.
@@ -76,13 +76,16 @@ const searchText = [p.name, p.funder.name, p.administered_by?.name, p.summary, w
     }
   </TableCell>
 
-  <TableCell className="c-amount" title={amountFull ?? 'The funder’s page does not state an amount'}>
-    {amount ? <span class="amt">{amount}</span> : <span class="amt amt--none">Amount not stated</span>}
-    {amount && p.amount?.note && <span class="amt__note">{p.amount.note}</span>}
-    {/* Shown once the listing's pages were read for what applying and holding the grant ask (requirements_checked). */}
-    {p.access === 'direct' ? <EffortBars p={p} /> : p.effort && <span class="amt__effort" title={p.effort.steps.join(' → ')}>{effortShort(p.effort)}</span>}
+  <TableCell className="c-amount" title={amountFull ?? 'The funder’s page does not state an amount'} data-amount={amountData(p.amount)}>
+    {cell ? <span class="amt">{cell.text}</span> : <span class="amt amt--none">Amount not stated</span>}
+    {cell && <span class="amt__orig" hidden={!cell.original}>{cell.original && `(${cell.original})`}</span>}
+    {cell && p.amount?.note && <span class="amt__note">{p.amount.note}</span>}
     <Badge variant="tag" className="stamp" data-aging={aging || reason ? '' : undefined} title={stampTitle}>
       {stampText}
     </Badge>
+  </TableCell>
+
+  <TableCell className="c-effort">
+    {p.access === 'direct' ? <EffortBars p={p} /> : p.effort && <span class="amt__effort" title={p.effort.steps.join(' → ')}>{effortShort(p.effort)}</span>}
   </TableCell>
 </TableRow>

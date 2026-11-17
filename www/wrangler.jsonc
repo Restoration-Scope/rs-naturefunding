@@ -1,0 +1,14 @@
+{
+  // www.naturefunding.org only: a 301 to the apex, so search engines see one address per page.
+  // The site (../wrangler.jsonc) stays static assets with no Worker script.
+  "$schema": "../node_modules/wrangler/config-schema.json",
+  "name": "naturefunding-www",
+  "account_id": "c72792497a89bc5db0c41066540d52ea",
+  "compatibility_date": "2026-11-01",
+  "main": "src/worker.ts",
+  "workers_dev": false,
+  "preview_urls": false,
+  // No request logs: they would hold visitors' IPs.
+  "observability": { "enabled": false },
+  "routes": [{ "pattern": "www.naturefunding.org", "custom_domain": true }]
+}

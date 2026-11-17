@@ -1,0 +1,24 @@
+---
+// The options of a "Show amounts in" select, the same in the finder and the weekly email form: the common
+// currencies, the funder's own (value ""), then every currency with a rate and a name, A to Z.
+import { usdPerUnit } from '../lib/rates'
+
+interface Props {
+  selected?: string
+}
+
+const { selected = 'USD' } = Astro.props
+const names = new Intl.DisplayNames(['en'], { type: 'currency' })
+const COMMON = ['USD', 'EUR', 'GBP']
+const currencies = Object.keys(usdPerUnit)
+  .filter((c) => !COMMON.includes(c))
+  .map((code) => ({ code, name: names.of(code) ?? code }))
+  .filter((c) => c.name !== c.code)
+  .sort((a, b) => a.name.localeCompare(b.name))
+---
+
+{COMMON.map((c) => <option value={c} selected={c === selected}>{names.of(c)} ({c})</option>)}
+<option value="" selected={selected === ''}>The funder’s own currency</option>
+<optgroup label="All currencies">
+  {currencies.map((c) => <option value={c.code} selected={c.code === selected}>{c.name} ({c.code})</option>)}
+</optgroup>

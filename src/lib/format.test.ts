@@ -1,5 +1,6 @@
 import { describe, expect, test } from 'bun:test'
-import { amountShort, boldFigures, effortLevel, effortSignals, geographyFull, sentence } from './format'
+import { amountShort, boldFigures, effortLevel, effortSignals, geographyFull, nameWithFunder, programmeTitle, sentence } from './format'
+import { inPlace, placeTitle } from './finder-pages'
 
 describe('geographyFull', () => {
   test('a region label that is the region name is not repeated', () => {
@@ -54,7 +55,14 @@ describe('effortLevel', () => {
   test('needs the steps', () => expect(effortLevel({ effort: undefined, documents: ['A'] })).toBeNull())
   test('one step with few documents is light', () =>
     expect(effortLevel({ effort: { steps: steps(1) }, documents: ['A', 'B'] })).toEqual({ level: 'Light', why: '1 step, 2 documents' }))
-  test('two steps is medium', () => expect(effortLevel({ effort: { steps: steps(2) }, documents: undefined })).toEqual({ level: 'Medium', why: '2 steps, documents not listed' }))
+  test('two steps is medium', () => expect(effortLevel({ effort: { steps: steps(2) }, documents: ['A'] })).toEqual({ level: 'Medium', why: '2 steps, 1 document' }))
+  test('unread documents leave the level open unless the steps make it heavy', () => {
+    expect(effortLevel({ effort: { steps: steps(1) }, documents: undefined })).toEqual({ level: null, why: '1 step, documents not checked yet' })
+    expect(effortLevel({ effort: { steps: steps(2) }, documents: undefined })?.level).toBeNull()
+    expect(effortLevel({ effort: { steps: steps(3) }, documents: undefined })?.level).toBe('Heavy')
+  })
+  test('a full read that lists no documents counts none', () =>
+    expect(effortLevel({ effort: { steps: steps(1) }, documents: undefined, requirements_checked: '2026-11-16' })).toEqual({ level: 'Light', why: '1 step, no documents listed' }))
   test('three stages or five documents is heavy', () => {
     expect(effortLevel({ effort: { steps: steps(2), more_after: true }, documents: undefined })?.level).toBe('Heavy')
     expect(effortLevel({ effort: { steps: steps(1) }, documents: ['A', 'B', 'C', 'D', 'E'] })?.level).toBe('Heavy')
@@ -98,7 +106,7 @@ describe('effortSignals', () => {
     expect(levels({ ...none, co_finance_required: true, co_finance: { ratio: '1:4' } })[2]).toBe('some')
   })
   test('applying says when the documents are not listed', () =>
-    expect(effortLevel({ effort: { steps: ['Online form'] }, documents: undefined })?.why).toBe('1 step, documents not listed'))
+    expect(effortLevel({ effort: { steps: ['Online form'] }, documents: undefined })?.why).toBe('1 step, documents not checked yet'))
   test('the number of rules does not change the level, only their kind', () => {
     const cap = (n: number) => Array.from({ length: n }, (_, i) => ({ rule: `Staff rule ${i + 1}`, kind: 'capacity' as const }))
     expect(levels({ ...none, eligibility: cap(1) })[0]).toBe('some')
@@ -119,5 +127,63 @@ describe('effortSignals', () => {
     expect(levels({ ...none, after_award: { reports: 'final' } })[3]).toBe('light')
     expect(levels({ ...none, after_award: { reports: 'other' } })[3]).toBe('some')
     expect(levels({ ...none, eligibility: [{ rule: 'Registered locally', kind: 'legal' }] })[0]).toBe('light')
+  })
+})
+
+describe('nameWithFunder', () => {
+  const p = (name: string, funder: string) => ({ name, funder: { name: funder, url: 'https://example.org' } })
+  test('names the programme and its funder', () => {
+    expect(nameWithFunder(p('Darwin Initiative Main', 'Defra'))).toBe('Darwin Initiative Main, Defra')
+  })
+  test('says the name once when the funder repeats it', () => {
+    expect(nameWithFunder(p('Scottish Rivers Fund', 'Scottish Rivers Fund'))).toBe('Scottish Rivers Fund')
+    expect(nameWithFunder(p('Forest Action Facility', 'Forest Action Facility (established by IUCN and KfW)'))).toBe(
+      'Forest Action Facility (established by IUCN and KfW)',
+    )
+  })
+})
+
+describe('programmeTitle', () => {
+  type A = NonNullable<Parameters<typeof programmeTitle>[0]['amount']>
+  const p = (name: string, funder: string, amount?: Partial<A>) => ({
+    name,
+    funder: { name: funder, url: 'https://example.org' },
+    amount: amount ? ({ currency: 'GBP', ...amount } as A) : null,
+  })
+  test('names the programme, its funder and what it pays', () => {
+    expect(programmeTitle(p('Darwin Initiative Main', 'Defra', { min: 200000, max: 1000000 }))).toBe('Darwin Initiative Main, Defra: £200K–£1M')
+  })
+  test("uses the funder's own short form", () => {
+    expect(programmeTitle(p('IKI Small Grants', 'International Climate Initiative (IKI)', { currency: 'EUR', min: 60000, max: 200000 }))).toBe(
+      'IKI Small Grants: €60K–€200K',
+    )
+  })
+  test('says the name once when the funder repeats it', () => {
+    expect(programmeTitle(p('Forest Action Facility', 'Forest Action Facility (established by IUCN and KfW)'))).toBe('Forest Action Facility')
+  })
+  test('drops the funder before the amount when a named programme runs long', () => {
+    expect(programmeTitle(p('Rufford Small Grants', 'The Rufford Foundation for Nature Conservation Worldwide', { min: 7000, max: 18000 }))).toBe(
+      'Rufford Small Grants: £7K–£18K',
+    )
+  })
+  test('keeps the funder beside a generic name', () => {
+    const t = programmeTitle(p('Small Grants', 'A Very Long Named Foundation for Nature and People Everywhere', { min: 1000, max: 5000 }))
+    expect(t).toBe('Small Grants, A Very Long Named Foundation for Nature and People Everywhere')
+  })
+  test('keeps a currency code in capitals', () => {
+    expect(programmeTitle(p('EAMCEF Grants', 'Eastern Arc Mountains Conservation Endowment Fund (EAMCEF)', { currency: 'TZS', min: 1e7, max: 1e8, per: 'year' }))).toBe(
+      'EAMCEF Grants: TZS 10M–100M a year',
+    )
+  })
+})
+
+describe('placeTitle', () => {
+  test('adds "the" where English needs it', () => {
+    expect(inPlace('United Kingdom')).toBe('the United Kingdom')
+    expect(inPlace('Kenya')).toBe('Kenya')
+  })
+  test('adds the topic when it fits in a search result', () => {
+    expect(placeTitle('Kenya')).toBe('Grants and funding for NGOs in Kenya: nature conservation')
+    expect(placeTitle('United States')).toBe('Grants and funding for NGOs in the United States')
   })
 })
