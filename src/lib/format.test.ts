@@ -55,7 +55,14 @@ describe('effortLevel', () => {
   test('needs the steps', () => expect(effortLevel({ effort: undefined, documents: ['A'] })).toBeNull())
   test('one step with few documents is light', () =>
     expect(effortLevel({ effort: { steps: steps(1) }, documents: ['A', 'B'] })).toEqual({ level: 'Light', why: '1 step, 2 documents' }))
-  test('two steps is medium', () => expect(effortLevel({ effort: { steps: steps(2) }, documents: undefined })).toEqual({ level: 'Medium', why: '2 steps, documents not listed' }))
+  test('two steps is medium', () => expect(effortLevel({ effort: { steps: steps(2) }, documents: ['A'] })).toEqual({ level: 'Medium', why: '2 steps, 1 document' }))
+  test('unread documents leave the level open unless the steps make it heavy', () => {
+    expect(effortLevel({ effort: { steps: steps(1) }, documents: undefined })).toEqual({ level: null, why: '1 step, documents not checked yet' })
+    expect(effortLevel({ effort: { steps: steps(2) }, documents: undefined })?.level).toBeNull()
+    expect(effortLevel({ effort: { steps: steps(3) }, documents: undefined })?.level).toBe('Heavy')
+  })
+  test('a full read that lists no documents counts none', () =>
+    expect(effortLevel({ effort: { steps: steps(1) }, documents: undefined, requirements_checked: '2026-11-16' })).toEqual({ level: 'Light', why: '1 step, no documents listed' }))
   test('three stages or five documents is heavy', () => {
     expect(effortLevel({ effort: { steps: steps(2), more_after: true }, documents: undefined })?.level).toBe('Heavy')
     expect(effortLevel({ effort: { steps: steps(1) }, documents: ['A', 'B', 'C', 'D', 'E'] })?.level).toBe('Heavy')
@@ -99,7 +106,7 @@ describe('effortSignals', () => {
     expect(levels({ ...none, co_finance_required: true, co_finance: { ratio: '1:4' } })[2]).toBe('some')
   })
   test('applying says when the documents are not listed', () =>
-    expect(effortLevel({ effort: { steps: ['Online form'] }, documents: undefined })?.why).toBe('1 step, documents not listed'))
+    expect(effortLevel({ effort: { steps: ['Online form'] }, documents: undefined })?.why).toBe('1 step, documents not checked yet'))
   test('the number of rules does not change the level, only their kind', () => {
     const cap = (n: number) => Array.from({ length: n }, (_, i) => ({ rule: `Staff rule ${i + 1}`, kind: 'capacity' as const }))
     expect(levels({ ...none, eligibility: cap(1) })[0]).toBe('some')

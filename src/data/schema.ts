@@ -224,21 +224,28 @@ const MONTH_NAMES: Record<number, string> = {
 /**
  * Whether a quote states a whole date: its day, its month (a name in English, Spanish, French, Portuguese,
  * German or Dutch, or a number) and its year in one expression. "January 8 for projects in 2027" is not 2027-01-08.
+ * A numeric date with slashes or hyphens that reads two ways (08/01/2027) counts only when the quote states its
+ * order (DD/MM, MM/DD); dots are day first (08.01.2027).
  */
 export const statesDate = (quote: string, date: string) => {
   const [y, m, d] = [date.slice(0, 4), Number(date.slice(5, 7)), Number(date.slice(8))]
   if (!(m >= 1 && m <= 12)) return false
-  const day = String.raw`0?${d}(?:st|nd|rd|th|er|º|\.)?`
+  const dd = String.raw`0?${d}`
+  // "8." is a day only before its month ("8. Januar 2027"); after one, the dot ends a sentence.
+  const day = String.raw`${dd}(?:st|nd|rd|th|er|º)?`
   const mm = String.raw`0?${m}`
   const name = String.raw`(?:${[MONTH_NAMES[m], ...MONTHS[m - 1]!].filter(Boolean).join('|')})\.?`
   const year = String.raw`(?:${y}|['‘’]${y.slice(2)})`
-  const gap = String.raw`[\s,]*(?:de\s+|of\s+)?`
+  const yy = String.raw`(?:${y}|${y.slice(2)})`
+  const gap = String.raw`[\s,-]*(?:de\s+|of\s+)?`
+  const twoWays = d <= 12 && d !== m
   const forms = [
-    String.raw`${day}${gap}${name}${gap}${year}`,
+    String.raw`${day}\.?${gap}${name}${gap}${year}`,
     String.raw`${name}\s*${day},?\s*${year}`,
-    String.raw`${day}[./-]${mm}[./-](?:${y}|${y.slice(2)})`,
-    String.raw`${mm}[./-]${day}[./-](?:${y}|${y.slice(2)})`,
-    String.raw`${y}[./-]${mm}[./-]0?${d}`,
+    String.raw`${dd}\.${mm}\.${yy}`,
+    ...(!twoWays || /\b(?:dd|jj|tt)[/-]mm\b/i.test(quote) ? [String.raw`${dd}[/-]${mm}[/-]${yy}`] : []),
+    ...(!twoWays || /\bmm[/-]dd\b/i.test(quote) ? [String.raw`${mm}[/-]${dd}[/-]${yy}`] : []),
+    String.raw`${y}[./-]${mm}[./-]${dd}`,
   ]
   return new RegExp(String.raw`(?<![\p{L}\d])(?:${forms.join('|')})(?![\p{L}\d])`, 'iu').test(quote)
 }

@@ -190,15 +190,19 @@ export function effortText(e: Programme['effort']): string | null {
 
 /**
  * How heavy applying is, as our label from counts the funder's pages give: Heavy at 3+ steps or 5+ documents,
- * Light at one step with at most 2 documents, Medium between. Null when the steps aren't stated.
+ * Light at one step with at most 2 documents, Medium between. Documents are known when listed, or when the pages
+ * were read in full (requirements_checked) and list none; until then only Heavy can be told, and the level is null.
+ * Null altogether when the steps aren't stated.
  */
-export function effortLevel(p: Pick<Programme, 'effort' | 'documents'>): { level: 'Light' | 'Medium' | 'Heavy'; why: string } | null {
+export function effortLevel(
+  p: Pick<Programme, 'effort' | 'documents' | 'requirements_checked'>,
+): { level: 'Light' | 'Medium' | 'Heavy' | null; why: string } | null {
   if (!p.effort) return null
   const steps = p.effort.steps.length + (p.effort.more_after ? 1 : 0)
-  const docs = p.documents?.length
-  const level = steps >= 3 || (docs ?? 0) >= 5 ? 'Heavy' : steps === 1 && (docs ?? 0) <= 2 ? 'Light' : 'Medium'
-  const parts = [`${steps}${p.effort.more_after ? '+' : ''} ${steps === 1 ? 'step' : 'steps'}`, docs ? `${docs} ${docs === 1 ? 'document' : 'documents'}` : 'documents not listed']
-  return { level, why: parts.join(', ') }
+  const docs = p.documents?.length ?? (p.requirements_checked ? 0 : undefined)
+  const level = steps >= 3 || (docs ?? 0) >= 5 ? 'Heavy' : docs === undefined ? null : steps === 1 && docs <= 2 ? 'Light' : 'Medium'
+  const docWords = docs ? `${docs} ${docs === 1 ? 'document' : 'documents'}` : docs === 0 ? 'no documents listed' : 'documents not checked yet'
+  return { level, why: [`${steps}${p.effort.more_after ? '+' : ''} ${steps === 1 ? 'step' : 'steps'}`, docWords].join(', ') }
 }
 
 export type SignalLevel = 'light' | 'some' | 'heavy' | 'unstated' | 'unchecked'
@@ -213,7 +217,7 @@ const listOf = (parts: string[]) => parts.join(', ').replace(/, ([^,]*)$/, ' and
  * level comes from structured facts by fixed rules, so every grant is judged the same way:
  * - qualify: heavy with a finances rule (a financial bar to meet); some with a track-record or capacity rule
  *   or a required consortium; light with only legal, project or other rules.
- * - apply: effortLevel (Light, Medium, Heavy).
+ * - apply: effortLevel (Light, Medium, Heavy); unchecked while the documents are, unless the steps alone make it heavy.
  * - cofund: light when none is required; heavy above 25% of the project; some otherwise. Accepting in-kind
  *   doesn't lower it: the page rarely says how much of the match may be in kind.
  * - after: heavy with quarterly reports or an audit; light with one final report and nothing else; some
@@ -237,9 +241,11 @@ export function effortSignals(
       : signalBlank(p)
 
   const lvl = effortLevel(p)
-  const apply: Pick<Signal, 'level' | 'why'> = lvl
-    ? { level: lvl.level === 'Light' ? 'light' : lvl.level === 'Medium' ? 'some' : 'heavy', why: `${lvl.level}: ${lvl.why}.` }
-    : signalBlank(p)
+  const apply: Pick<Signal, 'level' | 'why'> = !lvl
+    ? signalBlank(p)
+    : lvl.level
+      ? { level: lvl.level === 'Light' ? 'light' : lvl.level === 'Medium' ? 'some' : 'heavy', why: `${lvl.level}: ${lvl.why}.` }
+      : { level: 'unchecked', why: `${lvl.why.replace(/^./, (x) => x.toUpperCase())}.` }
 
   const c = p.co_finance
   const [mine, theirs] = (c?.ratio ?? '').split(':').map(Number)

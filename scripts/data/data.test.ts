@@ -166,6 +166,15 @@ describe('a step date must be stated whole in one quote', () => {
     ['18 January 2027', '2027-01-08', false],
     ['8 Sept. 2027', '2027-09-08', true],
     ['8 January 2027', '2027-13-08', false],
+    ['Deadline: January 8. 2027 projects will be selected later.', '2027-01-08', false],
+    ['Deadline: 8-Jan-2027', '2027-01-08', true],
+    ['Deadline: 08/01/2027', '2027-01-08', false],
+    ['Deadline: 08/01/2027', '2027-08-01', false],
+    ['Deadline (DD/MM/YYYY): 08/01/2027', '2027-01-08', true],
+    ['Deadline (DD/MM/YYYY): 08/01/2027', '2027-08-01', false],
+    ['Deadline (MM/DD/YYYY): 08/01/2027', '2027-08-01', true],
+    ['Deadline: 25/12/2027', '2027-12-25', true],
+    ['08.01.2027', '2027-08-01', false],
   ])('%p states %s: %p', (quote, date, want) => expect(statesDate(quote, date)).toBe(want))
 })
 

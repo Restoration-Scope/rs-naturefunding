@@ -33,7 +33,7 @@ const row = 'border-t border-rule py-3 first:border-t-0'
 <section aria-labelledby="before-title">
   <SectionHeading kind="before" id="before-title">Before you apply</SectionHeading>
   {
-    level && (
+    level?.level && (
       <p class="flex flex-wrap items-center gap-x-3 gap-y-1 text-md text-ink-2">
         <span class:list={[levelTone[level.level], 'rounded-md px-2.5 py-0.5 text-md font-semibold']}>{level.level}: {level.why}</span>
         <span>Our label, from the steps and documents the funder lists.</span>

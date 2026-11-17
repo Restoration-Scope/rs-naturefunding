@@ -31,30 +31,73 @@ export function initEffortTip() {
   const tip = document.querySelector<HTMLElement>('[data-effort-tip]')
   if (!tip) return
   const rows = [...tip.querySelectorAll<HTMLElement>('[data-tip-row]')]
-  const show = (e: Event) => {
-    const bars = (e.target as Element).closest<HTMLElement>('[data-effort]')
-    if (!bars) return
-    const levels = [...bars.dataset.effort!].map((c) => byCode[c]!)
-    const why = bars.dataset.why!.split('|')
-    rows.forEach((row, i) => {
-      const bar = row.firstElementChild as HTMLElement
-      bar.className = `${bar.dataset.base} ${tipFill[levels[i]!]}`
-      row.querySelector('[data-tip-why]')!.textContent = why[i]!
-    })
-    tip.querySelector<HTMLElement>('[data-tip-unchecked]')!.hidden = !levels.includes('unchecked')
-    tip.hidden = false
+  // The pointer and keyboard focus each own an anchor; the tooltip follows the pointer's, else focus's.
+  let hovered: HTMLElement | null = null
+  let focused: HTMLElement | null = null
+  let shown: HTMLElement | null = null
+  let leaving = 0
+  const place = (bars: HTMLElement) => {
     const r = bars.getBoundingClientRect()
-    const w = tip.offsetWidth
-    tip.style.left = `${Math.max(8, Math.min(r.left - 8, document.documentElement.clientWidth - w - 8))}px`
+    if (r.bottom < 0 || r.top > innerHeight) return void (tip.hidden = true)
+    if (bars !== shown) {
+      const levels = [...bars.dataset.effort!].map((c) => byCode[c]!)
+      const why = bars.dataset.why!.split('|')
+      rows.forEach((row, i) => {
+        const bar = row.firstElementChild as HTMLElement
+        bar.className = `${bar.dataset.base} ${tipFill[levels[i]!]}`
+        row.querySelector('[data-tip-why]')!.textContent = why[i]!
+      })
+      tip.querySelector<HTMLElement>('[data-tip-unchecked]')!.hidden = !levels.includes('unchecked')
+      shown = bars
+    }
+    tip.hidden = false
+    tip.style.left = `${Math.max(8, Math.min(r.left - 8, document.documentElement.clientWidth - tip.offsetWidth - 8))}px`
     tip.style.top = `${Math.max(8, r.top - tip.offsetHeight - 8)}px`
   }
-  const hide = (e: Event) => {
-    const from = (e.target as Element).closest('[data-effort]')
-    if (from && !from.contains((e as MouseEvent).relatedTarget as Node | null)) tip.hidden = true
+  const update = () => {
+    const anchor = hovered ?? focused
+    if (anchor) place(anchor)
+    else tip.hidden = true
   }
-  document.addEventListener('mouseover', show)
-  document.addEventListener('focusin', show)
-  document.addEventListener('mouseout', hide)
-  document.addEventListener('focusout', hide)
-  addEventListener('scroll', () => (tip.hidden = true), { passive: true })
+  const barsOf = (t: EventTarget | null) => (t instanceof Element ? t.closest<HTMLElement>('[data-effort]') : null)
+  // The pointer may cross the gap onto the tooltip to read it (it stays while hovered), so leaving waits a moment.
+  document.addEventListener('mouseover', (e) => {
+    const bars = barsOf(e.target)
+    if (bars || tip.contains(e.target as Node)) clearTimeout(leaving)
+    if (bars) {
+      hovered = bars
+      update()
+    }
+  })
+  document.addEventListener('mouseout', (e) => {
+    const from = barsOf(e.target) ?? (tip.contains(e.target as Node) ? tip : null)
+    const to = e.relatedTarget as Node | null
+    if (!from || (to && (from.contains(to) || tip.contains(to) || barsOf(to) === hovered))) return
+    clearTimeout(leaving)
+    leaving = window.setTimeout(() => {
+      hovered = null
+      update()
+    }, 150)
+  })
+  document.addEventListener('focusin', (e) => {
+    focused = barsOf(e.target)
+    update()
+  })
+  document.addEventListener('focusout', (e) => {
+    if (barsOf(e.target) === focused) focused = null
+    update()
+  })
+  document.addEventListener('keydown', (e) => {
+    if (e.key !== 'Escape' || tip.hidden) return
+    hovered = focused = null
+    tip.hidden = true
+  })
+  addEventListener(
+    'scroll',
+    () => {
+      hovered = null
+      update()
+    },
+    { passive: true },
+  )
 }
