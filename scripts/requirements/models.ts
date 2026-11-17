@@ -1,7 +1,8 @@
 /**
  * The models the requirements pipeline calls, behind small interfaces so tests run with fakes:
- * - a JSON model (cheap extractor, strong escalator): Claude through the Anthropic SDK with structured
- *   outputs, or a Workers AI model through the refresh job's llm.ts;
+ * - a JSON model (cheap extractor, strong escalator): an OpenAI model through the Responses API with a
+ *   strict JSON schema (the default), Claude through the Anthropic SDK with structured outputs, or a
+ *   Workers AI model through the refresh job's llm.ts;
  * - Jev (TypeSafe System One) for narrow typed checks.
  * Every call goes through a Ledger that counts tokens and dollars and stops at the run's spend cap,
  * and through a content-hash cache keyed by model, prompt version and input.
@@ -11,13 +12,20 @@ import { zodOutputFormat } from '@anthropic-ai/sdk/helpers/zod'
 import { createHash } from 'node:crypto'
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs'
 import { join } from 'node:path'
-import type { z } from 'zod'
+import { z } from 'zod'
 import { llmFromEnv } from '../refresh/llm'
 
-export type Usage = { input_tokens: number; output_tokens: number }
+/** `cached_input_tokens` is the part of `input_tokens` served from the provider's prompt cache, billed lower. */
+export type Usage = { input_tokens: number; output_tokens: number; cached_input_tokens?: number }
 
-/** US dollars per million tokens, input and output. Claude Haiku 5.5 costs 5× above 100K input tokens; prompts stay under it. */
-export const PRICES: Record<string, { input: number; output: number }> = {
+/**
+ * US dollars per million tokens: input, output and, where the provider discounts it, cached input.
+ * OpenAI from developers.openai.com/api/docs/pricing (standard tier, read 2026-11-17).
+ */
+export const PRICES: Record<string, { input: number; output: number; cached?: number }> = {
+  'gpt-5.6-luna': { input: 0.2, output: 1.2, cached: 0.02 },
+  'gpt-5.6-terra': { input: 2, output: 12, cached: 0.2 },
+  'gpt-5.6-sol': { input: 4, output: 20, cached: 0.4 },
   'claude-haiku-5-5': { input: 0.1, output: 0.5 },
   'claude-sonnet-5-5': { input: 2, output: 10 },
   'claude-opus-5-5': { input: 4, output: 20 },
@@ -25,12 +33,19 @@ export const PRICES: Record<string, { input: number; output: number }> = {
   'jev-latest': { input: 0.042, output: 0 },
 }
 
-/** Prompts over 100K tokens are billed on a higher card. */
-const LONG: Record<string, { input: number; output: number }> = { 'claude-haiku-5-5': { input: 0.5, output: 2.5 } }
+/** Long prompts are billed on a higher card: Claude Haiku above 100K input tokens, GPT-5.6 above 272K. */
+const LONG: Record<string, { over: number; input: number; output: number; cached?: number }> = {
+  'claude-haiku-5-5': { over: 100_000, input: 0.5, output: 2.5 },
+  'gpt-5.6-luna': { over: 272_000, input: 0.4, output: 1.8, cached: 0.04 },
+  'gpt-5.6-terra': { over: 272_000, input: 4, output: 18, cached: 0.4 },
+  'gpt-5.6-sol': { over: 272_000, input: 8, output: 30, cached: 0.8 },
+}
 
 export const costOf = (model: string, u: Usage) => {
-  const p = (u.input_tokens > 100_000 ? LONG[model] : undefined) ?? PRICES[model] ?? { input: 10, output: 50 }
-  return (u.input_tokens * p.input + u.output_tokens * p.output) / 1e6
+  const long = LONG[model]
+  const p = (long && u.input_tokens > long.over ? long : undefined) ?? PRICES[model] ?? { input: 10, output: 50 }
+  const cached = Math.min(u.cached_input_tokens ?? 0, u.input_tokens)
+  return ((u.input_tokens - cached) * p.input + cached * (p.cached ?? p.input) + u.output_tokens * p.output) / 1e6
 }
 
 export class SpendCapError extends Error {}
@@ -111,6 +126,69 @@ export function claudeModel(model: string, opts: { effort?: 'low' | 'medium' | '
       if (r.stop_reason === 'refusal') throw new SpentError(`${model} declined the request`, usage)
       if (r.stop_reason === 'max_tokens') throw new SpentError(`${model} ran out of output tokens`, usage)
       const text = r.content.filter((b) => b.type === 'text').map((b) => b.text ?? '').join('')
+      try {
+        return { value: schema.parse(JSON.parse(text)), usage }
+      } catch (e) {
+        throw new SpentError(`${model} answered outside the schema: ${(e as Error).message.slice(0, 200)}`, usage)
+      }
+    },
+  }
+}
+
+type OpenAIResponse = {
+  status: string
+  incomplete_details?: { reason?: string } | null
+  output: { type: string; content?: { type: string; text?: string; refusal?: string }[] }[]
+  usage: { input_tokens: number; output_tokens: number; input_tokens_details?: { cached_tokens?: number } }
+}
+
+/** The zod schema as a strict JSON schema: every object closed, every key required, nulls for "not stated". */
+export function strictSchema(schema: z.ZodType<unknown>) {
+  const { $schema: _drop, ...json } = z.toJSONSchema(schema, { io: 'output' }) as Record<string, unknown>
+  return json
+}
+
+/**
+ * An OpenAI model through the Responses API, the answer constrained to the schema (strict structured
+ * outputs). Plain fetch, like the TypeSafe client; retries 429 and 5xx with backoff.
+ */
+export function openaiModel(model: string, opts: { effort?: 'none' | 'low' | 'medium' | 'high'; maxTokens?: number } = {}, key = process.env.OPENAI_API_KEY): JsonModel | null {
+  if (!key) return null
+  return {
+    name: model,
+    async json(system, user, schema) {
+      const body = JSON.stringify({
+        model,
+        instructions: system,
+        input: user,
+        max_output_tokens: opts.maxTokens ?? 32000,
+        ...(opts.effort ? { reasoning: { effort: opts.effort } } : {}),
+        text: { format: { type: 'json_schema', name: 'answer', schema: strictSchema(schema as z.ZodType<unknown>), strict: true } },
+        store: false,
+      })
+      let r: OpenAIResponse
+      for (let attempt = 0; ; attempt++) {
+        const res = await fetch('https://api.openai.com/v1/responses', {
+          method: 'POST',
+          headers: { authorization: `Bearer ${key}`, 'content-type': 'application/json' },
+          body,
+          signal: AbortSignal.timeout(600_000),
+        })
+        if ((res.status === 429 || res.status >= 500) && attempt < 5) {
+          await Bun.sleep(Math.min(Number(res.headers.get('retry-after') ?? 2 ** attempt), 60) * 1000)
+          continue
+        }
+        const text = await res.text()
+        if (!res.ok) throw new Error(`OpenAI HTTP ${res.status}: ${text.slice(0, 300)}`)
+        r = JSON.parse(text) as OpenAIResponse
+        break
+      }
+      const usage: Usage = { input_tokens: r.usage.input_tokens, output_tokens: r.usage.output_tokens, cached_input_tokens: r.usage.input_tokens_details?.cached_tokens ?? 0 }
+      const parts = r.output.filter((o) => o.type === 'message').flatMap((o) => o.content ?? [])
+      const refusal = parts.find((c) => c.type === 'refusal')
+      if (refusal) throw new SpentError(`${model} declined the request: ${(refusal.refusal ?? '').slice(0, 200)}`, usage)
+      if (r.status === 'incomplete') throw new SpentError(`${model} stopped early (${r.incomplete_details?.reason ?? 'unknown'})`, usage)
+      const text = parts.filter((c) => c.type === 'output_text').map((c) => c.text ?? '').join('')
       try {
         return { value: schema.parse(JSON.parse(text)), usage }
       } catch (e) {

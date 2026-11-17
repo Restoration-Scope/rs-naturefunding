@@ -4,7 +4,7 @@ import { programme as programmeSchema, type Programme, type Source } from '../..
 import { thinFields } from './check'
 import { apiWire, chunksOf, reconcile, splitText, toApi, type Wire } from './extract'
 import { classifyLink, gather, lowTextPdf, scannedPages, type Doc, type Reader } from './gather'
-import type { Answer, Question } from './models'
+import { Cache, costOf, Ledger, metered, openaiModel, type Answer, type Question } from './models'
 import { emptyWire, run } from './pipeline'
 import { queue } from './queue'
 import { packQuotes, readsTwoWays, verify } from './verify'
@@ -571,7 +571,7 @@ describe('reconcile: same item, not same passage', () => {
 
 describe('spend', () => {
   test('a paid call that fails still counts, and the cap stops the next call before it is sent', async () => {
-    const { Cache, Ledger, claudeModel, metered } = await import('./models')
+    const { claudeModel } = await import('./models')
     let sent = 0
     const client = {
       messages: {
@@ -685,5 +685,55 @@ describe('eval: a real run scored against its gold set', () => {
     expect(e.stamped_extras).toEqual([{ id: base.id, n: 1 }])
     expect(e.jev.required?.positives).toBe(1)
     expect(e.jev.first_step?.positives).toBe(1)
+  })
+})
+
+describe('OpenAI models', () => {
+  const real = globalThis.fetch
+  const stub = (body: unknown) => {
+    const sent: { url: string; body: Record<string, unknown> }[] = []
+    globalThis.fetch = (async (url: string, init: { body: string }) => {
+      sent.push({ url, body: JSON.parse(init.body) })
+      return new Response(JSON.stringify(body), { status: 200 })
+    }) as never
+    return sent
+  }
+  const usage = { input_tokens: 300_000, output_tokens: 10_000, input_tokens_details: { cached_tokens: 100_000 } }
+  test('the schema goes out strict and closed, and the answer is parsed and priced with cached input', async () => {
+    const answer = toApi(goodWire())
+    const sent = stub({ status: 'completed', output: [{ type: 'reasoning' }, { type: 'message', content: [{ type: 'output_text', text: JSON.stringify(answer) }] }], usage })
+    try {
+      const m = openaiModel('gpt-5.6-luna', { effort: 'medium' }, 'test-key')!
+      const r = await m.json('system', 'user', apiWire)
+      expect(r.value.documents.items).toHaveLength(2)
+      const fmt = (sent[0]!.body.text as { format: { strict: boolean; schema: Record<string, unknown> } }).format
+      expect(fmt.strict).toBe(true)
+      expect(fmt.schema.$schema).toBeUndefined()
+      expect(fmt.schema.additionalProperties).toBe(false)
+      expect(sent[0]!.body.reasoning).toEqual({ effort: 'medium' })
+      // Over 272K input: the long card, with 100K of it cached.
+      expect(costOf('gpt-5.6-luna', r.usage)).toBeCloseTo((200_000 * 0.4 + 100_000 * 0.04 + 10_000 * 1.8) / 1e6, 8)
+    } finally {
+      globalThis.fetch = real
+    }
+  })
+  test('a refusal or an answer cut short is a failed call whose tokens are still counted', async () => {
+    try {
+      for (const body of [
+        { status: 'completed', output: [{ type: 'message', content: [{ type: 'refusal', refusal: 'no' }] }], usage },
+        { status: 'incomplete', incomplete_details: { reason: 'max_output_tokens' }, output: [], usage },
+      ]) {
+        stub(body)
+        const ledger = new Ledger(100)
+        const ask = metered(openaiModel('gpt-5.6-sol', {}, 'test-key')!, ledger, new Cache(null), 't')
+        await expect(ask('x', 'system', 'user', apiWire)).rejects.toThrow(/declined|stopped early/)
+        expect(ledger.total).toBeGreaterThan(0)
+      }
+    } finally {
+      globalThis.fetch = real
+    }
+  })
+  test('no key, no model', () => {
+    expect(openaiModel('gpt-5.6-luna', {}, '')).toBeNull()
   })
 })

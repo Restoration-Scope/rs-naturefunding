@@ -6,10 +6,10 @@
  *   bun scripts/requirements/run.ts --gold tune|held|all   the gold set (never writes data)
  *
  * Options: --dry (write only the run folder), --cap <usd> (spend cap, default 10), --cheap <model>
- * (claude-haiku-5-5 default, or workers), --strong <model> (claude-opus-5-5), --no-jev, --out <dir>
+ * (gpt-5.6-luna default; any gpt-* or claude-* model, or workers), --strong <model> (gpt-5.6-sol), --no-jev, --out <dir>
  * (default .cache/requirements/runs/<time>), --exclude <file> (ids to skip, one per line), --gather-only
  * (crawl only, no keys: documents, failures, text sizes and a cost forecast; page text saved in the run folder).
- * Needs ANTHROPIC_API_KEY (or CLOUDFLARE_* for --cheap workers) and TYPESAFE_API_KEY.
+ * Needs OPENAI_API_KEY (ANTHROPIC_API_KEY for claude-* models, CLOUDFLARE_* for --cheap workers) and TYPESAFE_API_KEY.
  */
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs'
 import { join } from 'node:path'
@@ -19,7 +19,7 @@ import type { Source } from '../../src/data/schema'
 import { formatJson } from '../refresh/json'
 import { chunksOf, PROMPT_VERSION } from './extract'
 import { gather, politeReader } from './gather'
-import { Cache, claudeModel, Ledger, metered, meteredJev, SpendCapError, typesafeJev, workersModel, type JsonModel } from './models'
+import { Cache, claudeModel, costOf, Ledger, metered, meteredJev, openaiModel, SpendCapError, typesafeJev, workersModel, type JsonModel } from './models'
 import { run, type Result } from './pipeline'
 import { MANIFEST_DIR, manifestPath, queue } from './queue'
 import { apply, manifest, serialise } from './write'
@@ -31,8 +31,8 @@ const { values, positionals } = parseArgs({
     gold: { type: 'string' },
     dry: { type: 'boolean', default: false },
     cap: { type: 'string', default: '10' },
-    cheap: { type: 'string', default: 'claude-haiku-5-5' },
-    strong: { type: 'string', default: 'claude-opus-5-5' },
+    cheap: { type: 'string', default: 'gpt-5.6-luna' },
+    strong: { type: 'string', default: 'gpt-5.6-sol' },
     'no-jev': { type: 'boolean', default: false },
     out: { type: 'string' },
     exclude: { type: 'string' },
@@ -82,15 +82,22 @@ if (values['gather-only']) {
   }
   writeFileSync(join(out, 'gather.json'), JSON.stringify(rows, null, 1))
   const t = rows.reduce((a, r) => a + r.tokens, 0)
-  console.log(`\n${rows.length} programmes, ${rows.filter((r) => r.complete).length} complete, ${Math.round(t / rows.length)} input tokens each on average; Haiku extraction about $${((t / 1e6) * 0.1).toFixed(3)} in all. Run folder: ${out}`)
+  console.log(`\n${rows.length} programmes, ${rows.filter((r) => r.complete).length} complete, ${Math.round(t / rows.length)} input tokens each on average; first-pass extraction input about $${costOf(values.cheap!, { input_tokens: t, output_tokens: 0 }).toFixed(3)} in all at ${values.cheap}. Run folder: ${out}`)
   process.exit(0)
 }
 
 const ledger = new Ledger(Number(values.cap))
 const cache = new Cache(join('.cache', 'requirements', 'llm'))
-const cheapModel: JsonModel | null = values.cheap === 'workers' ? workersModel() : claudeModel(values.cheap!, { maxTokens: 16000 })
-if (!cheapModel) throw new Error('no extractor: set the Anthropic or Cloudflare keys')
-const strongModel = claudeModel(values.strong!, { effort: 'high', maxTokens: 32000 })
+/** A model by name: gpt-* through OpenAI, claude-* through Anthropic, `workers` through Cloudflare Workers AI. */
+const modelFor = (name: string, effort: 'medium' | 'high', maxTokens: number): JsonModel | null => {
+  if (name === 'workers') return workersModel()
+  if (name.startsWith('claude-')) return process.env.ANTHROPIC_API_KEY ? claudeModel(name, { ...(effort === 'high' ? { effort } : {}), maxTokens }) : null
+  return openaiModel(name, { effort, maxTokens })
+}
+const cheapModel = modelFor(values.cheap!, 'medium', 32000)
+if (!cheapModel) throw new Error(`no key for ${values.cheap}: set OPENAI_API_KEY (or ANTHROPIC_API_KEY, or the Cloudflare keys for workers)`)
+const strongModel = modelFor(values.strong!, 'high', 64000)
+if (!strongModel) throw new Error(`no key for ${values.strong}`)
 const jevModel = values['no-jev'] ? null : typesafeJev()
 if (!values['no-jev'] && !jevModel) throw new Error('TYPESAFE_API_KEY is not set (pass --no-jev to run without checks)')
 
