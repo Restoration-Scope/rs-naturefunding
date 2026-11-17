@@ -9,6 +9,7 @@ import { parseHTML } from 'linkedom'
 import { evidenceOf } from '../src/data/load'
 import { finderPages } from '../src/lib/finder-pages'
 import { listings, programmes } from '../src/lib/data'
+import { pastIssues } from '../digest/scripts/issues'
 
 const root = join(import.meta.dir, '..')
 const dist = join(root, 'dist')
@@ -35,11 +36,12 @@ const finderPagesHtml = Object.values(finderPages)
   .map((p) => `${p.path.slice(1)}index.html`)
 
 describe('pages', () => {
-  test('the same static pages, plus one page per programme and per finder preset', () => {
+  test('the same static pages, plus one page per programme, per finder preset and per past weekly email', () => {
     const expected = [
       ...staticPages,
       ...programmes.map((p) => `p/${p.id}/index.html`),
       ...finderPagesHtml,
+      ...pastIssues().map((i) => `digest/${i.date}/index.html`),
     ].sort()
     expect(htmlFiles).toEqual(expected)
   })

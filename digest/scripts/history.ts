@@ -1,6 +1,9 @@
 // Reads the digest's events out of git: every commit on the first-parent line that touched data/programmes,
-// compared with its parent. Runs at bundle time (a macro import in src/worker.ts) and in the preview script,
-// from the repo root. CI needs the history, so the deploy checkout uses fetch-depth: 0.
+// compared with its parent. Runs at bundle time (a macro import in src/worker.ts), in the preview script and in the
+// site build (the past issues, issues.ts), from the repo root; node:child_process so it runs under Node as well as
+// Bun. CI needs the history, so the deploy checkout uses fetch-depth: 0.
+import { spawnSync } from 'node:child_process'
+import { programme, type Programme } from '../../src/data/schema'
 import { diffSnapshots, type DigestEvent, type Snapshot } from '../src/events'
 
 const DIR = 'data/programmes'
@@ -8,8 +11,8 @@ const DIR = 'data/programmes'
 type Entry = { id: string; calls: { id: string; status: string }[] }
 
 const git = (args: string[], input?: string) => {
-  const r = Bun.spawnSync(['git', ...args], { stdin: input === undefined ? undefined : new TextEncoder().encode(input) })
-  if (r.exitCode !== 0) throw new Error(`git ${args.join(' ')}: ${r.stderr.toString()}`)
+  const r = spawnSync('git', args, { input, maxBuffer: 1 << 30 })
+  if (r.status !== 0) throw new Error(`git ${args.join(' ')}: ${r.stderr?.toString() ?? r.error}`)
   return r.stdout
 }
 
@@ -27,19 +30,45 @@ function tree(rev: string): Map<string, string> {
   )
 }
 
-/** Reads blobs in one `git cat-file --batch`, parsing only the ids and call statuses. */
-function readBlobs(ids: string[], cache: Map<string, Entry>) {
-  const todo = [...new Set(ids)].filter((id) => !cache.has(id))
-  if (todo.length === 0) return
-  const buf = git(['cat-file', '--batch'], todo.join('\n') + '\n')
+/** Each blob's parsed JSON, read in one `git cat-file --batch`. */
+function catBlobs(ids: string[]): Map<string, unknown> {
+  const out = new Map<string, unknown>()
+  if (ids.length === 0) return out
+  const buf = git(['cat-file', '--batch'], ids.join('\n') + '\n')
   let at = 0
-  for (const id of todo) {
+  for (const id of ids) {
     const nl = buf.indexOf(10, at)
     const size = Number(buf.subarray(at, nl).toString().split(' ')[2])
-    const body = JSON.parse(buf.subarray(nl + 1, nl + 1 + size).toString())
-    cache.set(id, { id: body.id, calls: (body.calls ?? []).map((c: { id: string; status: string }) => ({ id: c.id, status: c.status })) })
+    out.set(id, JSON.parse(buf.subarray(nl + 1, nl + 1 + size).toString()))
     at = nl + 1 + size + 1
   }
+  return out
+}
+
+/** Reads blobs, keeping only the ids and call statuses. */
+function readBlobs(ids: string[], cache: Map<string, Entry>) {
+  const todo = [...new Set(ids)].filter((id) => !cache.has(id))
+  for (const [blob, body] of catBlobs(todo) as Map<string, { id: string; calls?: { id: string; status: string }[] }>)
+    cache.set(blob, { id: body.id, calls: (body.calls ?? []).map((c) => ({ id: c.id, status: c.status })) })
+}
+
+/** The newest commit on the first-parent line at a time, or null before the history (or in a shallow clone). */
+export function commitAt(iso: string, until = 'HEAD'): string | null {
+  return git(['rev-list', '-1', '--first-parent', `--before=${iso}`, until]).toString().trim() || null
+}
+
+/**
+ * Every programme as it stood at a commit. A file today's schema no longer reads (a field renamed since) takes its
+ * current version from `today`, or is left out when it has none.
+ */
+export function programmesAt(rev: string, today: Map<string, Programme>): Map<string, Programme> {
+  const out = new Map<string, Programme>()
+  for (const body of catBlobs([...tree(rev).values()]).values()) {
+    const parsed = programme.safeParse(body)
+    const p = parsed.success ? parsed.data : today.get((body as { id?: string }).id ?? '')
+    if (p) out.set(p.id, p)
+  }
+  return out
 }
 
 /**

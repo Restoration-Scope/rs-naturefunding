@@ -1,0 +1,70 @@
+---
+// One past weekly email on the site (src/pages/digest/[date].astro): the same items, in the same order, as the
+// email to someone who picked no country or project type, with the data as it stood that day.
+import type { Issue } from '../../digest/scripts/issues'
+import type { Section } from '../../digest/src/digest'
+import { itemParts, sectionTitle } from '../../digest/src/email'
+import { programmes } from '../lib/data'
+import OrgMark from './OrgMark.astro'
+
+interface Props {
+  issue: Issue
+}
+
+const { issue } = Astro.props
+const prefs = { where: '', approaches: [] }
+// A programme taken off the site since keeps its line, without a link to a listing that is gone.
+const listed = new Set(programmes.map((p) => p.id))
+const sections = (['open', 'upcoming', 'new'] as Section[])
+  .map((s) => [s, issue.digest.items.filter((i) => i.section === s)] as const)
+  .filter(([, items]) => items.length > 0)
+const more = issue.digest.total - issue.digest.items.length
+const link = 'text-link underline underline-offset-2'
+---
+
+{
+  sections.map(([s, items]) => (
+    <section class="mt-8 first:mt-0">
+      <h2 class="text-2xl font-extrabold">{sectionTitle[s]}</h2>
+      <ul class="mt-2 list-none divide-y divide-rule border-y border-rule pl-0">
+        {items.map((i) => {
+          const x = itemParts(i, '', prefs)
+          const page = listed.has(i.programme.id) ? x.page : null
+          return (
+            <li class="py-4">
+              <p class="text-lg">
+                {x.amount ? <strong class="font-semibold">{x.amount.text}</strong> : <span class="text-ink-2">Amount not stated</span>}
+                {x.place.text && <span class="text-ink-2"> · {x.place.text}</span>}
+              </p>
+              <p class="mt-1">{page ? <a class="underline decoration-rule-strong underline-offset-2" href={page}>{x.name}</a> : x.name}</p>
+              <p class="mt-0.5 flex items-center gap-1.5">
+                <OrgMark org={i.programme.funder} size={16} />
+                {x.funder}
+              </p>
+              <p class="mt-2">
+                <span class:list={[x.live ? 'font-semibold text-brand' : 'text-ink-2']}>{x.status}</span>
+                {x.callLabel && <span class="text-ink-2"> · {x.callLabel}</span>}
+              </p>
+              <p class="mt-2 text-sm">
+                <a class={link} href={x.callUrl}>Funder’s page</a>
+                {page && (
+                  <>
+                    <span class="px-1 text-rule-strong">|</span>
+                    <a class={link} href={page}>Details and evidence</a>
+                  </>
+                )}
+              </p>
+            </li>
+          )
+        })}
+      </ul>
+    </section>
+  ))
+}
+{
+  more > 0 && (
+    <p class="mt-6">
+      And {more} more. <a class={link} href="/">See all grants on naturefunding.org</a>.
+    </p>
+  )
+}
