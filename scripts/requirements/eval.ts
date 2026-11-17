@@ -199,11 +199,19 @@ export function evaluate(results: Scored[], golds: Map<string, Gold>, usd: Recor
       if ((field === 'co_finance' || field === 'consortium') && gold[field].length && !pairs.size) yesNo.missing++
     }
     if (g.co_finance || r.co_finance_written) {
-      for (const k of ['min_share', 'ratio', 'min_amount', 'in_kind'] as const) {
-        const want = g.co_finance?.[k]
-        const got = r.co_finance_written?.[k]
+      // A ratio and a share say the same thing two ways (1:1 is 50%), so they are scored as one share.
+      const share = (c: Gold['co_finance'] | undefined) => {
+        if (c?.min_share !== undefined) return c.min_share
+        const [a, b] = (c?.ratio ?? '').split(':').map(Number)
+        return a! > 0 && b! > 0 ? Math.round((a! / (a! + b!)) * 1000) / 10 : undefined
+      }
+      const same = (k: string, want: unknown, got: unknown) =>
+        k === 'share' && typeof want === 'number' && typeof got === 'number' ? Math.abs(want - got) <= 0.5 : canon(want) === canon(got)
+      for (const k of ['share', 'min_amount', 'in_kind'] as const) {
+        const want = k === 'share' ? share(g.co_finance) : g.co_finance?.[k]
+        const got = k === 'share' ? share(r.co_finance_written) : r.co_finance_written?.[k]
         if (want === undefined && got === undefined) continue
-        if (canon(want) === canon(got)) values.right++
+        if (same(k, want, got)) values.right++
         else {
           values.wrong++
           valueMiss.push(`${id}: co_finance.${k} ${canon(got)}, gold ${canon(want)}`)

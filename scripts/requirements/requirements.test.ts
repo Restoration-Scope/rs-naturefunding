@@ -675,6 +675,15 @@ describe('eval: a real run scored against its gold set', () => {
     // Every judgement is right against this gold set: nothing for Jev to catch.
     for (const [q, t] of Object.entries(e.jev)) if (q !== "omission") expect([q, t.positives]).toEqual([q, 0])
   })
+  test('a ratio and the share it equals score as the same co-funding (1:4 is 20%)', async () => {
+    const s = await scored()
+    const g = gold()
+    g.co_finance = { ratio: '1:4' }
+    const e = evaluate([s], new Map([[base.id, g]]), {})
+    expect(e.value_misses).toEqual([])
+    g.co_finance = { ratio: '1:3' }
+    expect(evaluate([s], new Map([[base.id, g]]), {}).value_misses).toEqual([`${base.id}: co_finance.share 20, gold 25`])
+  })
   test('a wrong due date, kind, threshold or co-funding share is a value miss, a false stamp, and a Jev positive', async () => {
     const s = await scored()
     const g = gold()
