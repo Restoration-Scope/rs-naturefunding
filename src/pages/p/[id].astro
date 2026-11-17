@@ -31,6 +31,7 @@ import {
 } from '../../lib/labels'
 import { ArrowLeft, Calculator, ChevronDown } from 'lucide-react'
 import WorthCheck from '../../components/WorthCheck.astro'
+import { cardAlt, cardPath, hasOwnCard } from '../../lib/og-card'
 import { CONTACT_EMAIL, RS_REPORTING_URL, absolute, funderCorrectionUrl, reportProblemUrl } from '../../lib/site'
 
 export const getStaticPaths = (() => programmes.map((p) => ({ params: { id: p.id }, props: { p } }))) satisfies GetStaticPaths
@@ -177,6 +178,7 @@ const jsonLd = [
   path={`/p/${p.id}/`}
   jsonLd={jsonLd}
   noindex={hidden}
+  image={hasOwnCard(p) ? { path: cardPath(p), alt: cardAlt(p) } : undefined}
 >
   <a slot="beside-logo" class="group/back inline-flex items-center gap-1.5" href="/" data-back><ArrowLeft className="size-4 shrink-0 transition-transform group-hover/back:-translate-x-0.5" aria-hidden="true" /><span data-back-text>All funding</span></a>
   <div slot="band" class="wrap pt-4 pb-6 md:pt-5 md:pb-8 [&_a]:text-shell-ink">

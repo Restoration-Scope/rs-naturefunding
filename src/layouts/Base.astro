@@ -14,9 +14,20 @@ interface Props {
   /** A link back to every grant beside the logo, for pages showing only some (src/components/FinderLanding.astro).
    * A page's own link goes in the `beside-logo` slot instead. */
   allGrants?: boolean
+  /** The page's own social card (a path, e.g. src/lib/og-card.tsx's), else the site's. */
+  image?: { path: string; alt: string }
 }
 
-const { title, description, path, jsonLd, nav = null, noindex = false, allGrants = false } = Astro.props
+const {
+  title,
+  description,
+  path,
+  jsonLd,
+  nav = null,
+  noindex = false,
+  allGrants = false,
+  image = { path: '/og.png', alt: 'naturefunding.org: grants for nature restoration, checked against each funder\'s own page' },
+} = Astro.props
 const canonical = absolute(path)
 const fullTitle = path === '/' ? title : `${title} · ${SITE_NAME}`
 // Every page but the 404 has a Markdown twin for agents (src/lib/agent.ts, src/integrations/prose-twins.ts).
@@ -47,10 +58,10 @@ const ld = jsonLd ? (Array.isArray(jsonLd) ? jsonLd : [jsonLd]) : []
     <meta property="og:title" content={fullTitle} />
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonical} />
-    <meta property="og:image" content={absolute('/og.png')} />
+    <meta property="og:image" content={absolute(image.path)} />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
-    <meta property="og:image:alt" content="naturefunding.org: grants for nature restoration, checked against each funder's own page" />
+    <meta property="og:image:alt" content={image.alt} />
     <meta name="twitter:card" content="summary_large_image" />
     {ld.map((o) => <script type="application/ld+json" set:html={JSON.stringify(o)} />)}
   </head>
