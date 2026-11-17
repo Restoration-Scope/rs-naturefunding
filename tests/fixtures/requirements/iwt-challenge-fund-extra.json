@@ -1,0 +1,18 @@
+{
+  "id": "iwt-challenge-fund-extra",
+  "filled_by": "claude-opus-5-5 reading the funder's pages, 2026-11-17",
+  "checked_by_person": false,
+  "documents_expected": [
+    { "url": "https://iwt.challengefund.org.uk/how-to-apply/extra-applications/", "why": "IWT Extra application page (robots.txt disallows all crawling)" },
+    { "url": "https://iwt.challengefund.org.uk/media/hrenz1dk/r12-iwt-guidance-final-sept26-1.pdf", "why": "Round 12 guidance (robots.txt disallows all crawling)" }
+  ],
+  "coverage_complete": false,
+  "eligibility": [],
+  "documents": [],
+  "effort": [],
+  "co_finance_required": null,
+  "co_finance": null,
+  "consortium_required": null,
+  "after_award": [],
+  "notes": "The site's robots.txt is 'Disallow: /', so the pipeline may not read any page and must not stamp requirements_checked. The gold is deliberately empty: this case tests that a blocked site yields no items and no stamp, and that the manifest records the robots failure."
+}

@@ -234,6 +234,7 @@ describe('gather', () => {
     const at = 'https://test.example.org/grants'
     expect(classifyLink({ href: '/guidelines.pdf', text: 'Guidelines', context: '' }, at, base).score).toBe('strong')
     expect(classifyLink({ href: '/news/2026', text: 'Latest news', context: '' }, at, base).score).toBe('skip')
+    expect(classifyLink({ href: '/proposals/public-support-grants/', text: 'READ REQUEST FOR PROPOSALS', context: '' }, at, base).score).toBe('strong')
     expect(classifyLink({ href: 'https://other.example.com/', text: 'Partner', context: '' }, at, base).score).toBe('skip')
   })
   test('a PDF with little text per page needs OCR', () => {
