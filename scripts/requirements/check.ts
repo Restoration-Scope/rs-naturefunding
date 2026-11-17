@@ -157,7 +157,7 @@ export async function check(jev: AskJev, p: Programme, facts: Facts, docs: Doc[]
       judge('eligibility', it.rule, 'selection', noul(a[`sel${i}`]), q, 'a selection criterion or preference, not a hard rule')
       judge('eligibility', it.rule, 'overreach', noul(a[`over${i}`]), q, 'the rule says more or other than its quote')
       judge('eligibility', it.rule, 'polarity', noul(a[`pol${i}`]), q, 'phrased backwards: meeting it would rule an applicant out')
-      if (it.typed) judge('eligibility', it.rule, 'typed', not(noul(a[`typed${i}`])), q, `the quote does not state ${JSON.stringify(it.typed)}`)
+      if (it.typed) judge('eligibility', it.rule, 'typed', not(noul(a[`typed${i}`])), q, `the quote does not state ${JSON.stringify(it.typed)}`, { expected: JSON.stringify(it.typed) })
       const k = a[`kind${i}`]
       if (k && k.type === 'choice' && eligibilityKind.options.includes(k.choice as never)) {
         const disagree = k.choice !== it.kind
@@ -206,7 +206,7 @@ export async function check(jev: AskJev, p: Programme, facts: Facts, docs: Doc[]
     const a = await jev(p.id, { programme: prog, steps }, qs)
     all.forEach((s, i) => {
       judge('effort', s.step, 'step', not(noul(a[`step${i}`])), s.q, `"${s.step}" is not a stage of applying the text describes`)
-      if (s.due) judge('effort', `${s.step} due ${s.due}`, 'due', not(noul(a[`due${i}`])), s.q, `${s.due} is not when "${s.step}" is due`)
+      if (s.due) judge('effort', s.step, 'due', not(noul(a[`due${i}`])), s.q, `${s.due} is not when "${s.step}" is due`, { expected: s.due })
     })
   }
 
@@ -218,7 +218,7 @@ export async function check(jev: AskJev, p: Programme, facts: Facts, docs: Doc[]
     if (!y.value) continue
     const a = await jev(p.id, { programme: prog, section: section(docs, y.value.q) }, { v: { type: 'noul', instructions: y.question } })
     const yes = noul(a.v)
-    judge(y.field, `required: ${y.value.value}`, 'required', y.value.value ? not(yes) : yes, y.value.q, `the text does not say ${y.value.value ? 'it is required' : 'it is not required'}`)
+    judge(y.field, 'required', 'required', y.value.value ? not(yes) : yes, y.value.q, `the text does not say ${y.value.value ? 'it is required' : 'it is not required'}`, { expected: String(y.value.value) })
   }
 
   // Each co-funding detail is its own claim.
@@ -235,7 +235,7 @@ export async function check(jev: AskJev, p: Programme, facts: Facts, docs: Doc[]
         { programme: prog, section: section(docs, cf.q) },
         Object.fromEntries(claims.map(([k, c]) => [`cf_${k}`, { type: 'noul', instructions: `By \`section\`, is this true of this programme's co-funding: ${c}?` }])),
       )
-      for (const [k, c] of claims) judge('co_finance', k, 'co_finance', not(noul(a[`cf_${k}`])), cf.q, `the text does not say ${c}`)
+      for (const [k, c] of claims) judge('co_finance', k, 'co_finance', not(noul(a[`cf_${k}`])), cf.q, `the text does not say ${c}`, { expected: JSON.stringify((cf as Record<string, unknown>)[k]) })
     }
   }
 
@@ -279,7 +279,7 @@ export async function check(jev: AskJev, p: Programme, facts: Facts, docs: Doc[]
     const r = a.r
     if (!r || r.type !== 'choice') flags.push({ field: 'after_award', item: 'reports', why: 'Jev gave no answer on how often grantees report', quote: reports.q.quote, doc: reports.q.doc, source: 'jev', p: 1 })
     else {
-      judgements.push({ field: 'after_award', item: 'reports', question: 'reports', p: 1 - (r.probabilities[reports.reports] ?? 0), choice: r.choice, expected: reports.reports })
+      judgements.push({ field: 'after_award', item: 'reports', question: 'reports', p: 1 - (r.probabilities[reports.reports] ?? 0), quote: reports.q.quote, choice: r.choice, expected: reports.reports })
       if (r.choice !== reports.reports && r.confidence >= JEV.confidence) flags.push({ field: 'after_award', item: 'reports', why: `reports read as ${reports.reports}, Jev reads ${r.choice}`, quote: reports.q.quote, doc: reports.q.doc, source: 'jev', p: r.confidence })
       else if (r.choice !== reports.reports) flags.push({ field: 'after_award', item: 'reports', why: `report frequency is unclear (${r.choice} at ${r.confidence.toFixed(2)})`, quote: reports.q.quote, doc: reports.q.doc, source: 'jev', p: r.confidence })
     }

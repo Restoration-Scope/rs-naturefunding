@@ -8,6 +8,7 @@ import type { Answer, Question } from './models'
 import { emptyWire, run } from './pipeline'
 import { queue } from './queue'
 import { packQuotes, readsTwoWays, verify } from './verify'
+import { evaluate, type Gold, type Scored } from './eval'
 import { apply } from './write'
 
 const base: Programme = programmeSchema.parse({
@@ -590,5 +591,37 @@ describe('spend', () => {
     await ask2('x', 'system', 'user', apiWire).catch(() => {})
     await expect(ask2('x', 'system', 'user2', apiWire)).rejects.toThrow('spend cap')
     expect(sent).toBe(4)
+  })
+})
+
+describe('eval: what visitors would see, matched one to one', () => {
+  const q = 'Applicants must submit a registration certificate and audited accounts for the last two years.'
+  const gold: Gold = {
+    id: 'g', filled_by: 'test', checked_by_person: false, documents_expected: [{ url: 'https://x.org/call', why: 'call' }], coverage_complete: true,
+    eligibility: [], effort: [], co_finance_required: null, co_finance: null, consortium_required: null, after_award: [], notes: '',
+    documents: [{ item: 'registration certificate', quote: q }, { item: 'audited accounts', quote: q }],
+  }
+  const result = (written: Scored['written_items'], stamped: boolean, id = 'g') =>
+    ({
+      id, facts: { eligibility: [], documents: [], effort: null, co_finance_required: null, consortium_required: null, after_award: [] }, judgements: [],
+      gathered: { docs: [{ url: 'https://x.org/call', final_url: 'https://x.org/call' }], failures: [] },
+      manifest: { requirements_checked: stamped, outcomes: {} }, written_items: written,
+    }) as unknown as Scored
+
+  test('one written item standing for two requirements in one passage is one hit, and its stamp is false', () => {
+    const r = evaluate([result({ documents: [{ name: 'registration certificate', quote: q }] }, true)], new Map([['g', gold]]), {})
+    expect(r.item_recall.documents).toBe(50)
+    expect(r.false_stamps.map((f) => f.id)).toEqual(['g'])
+  })
+  test('a requested gold programme with no result counts every item as missed', () => {
+    const r = evaluate([], new Map([['g', gold]]), {})
+    expect(r.failed).toEqual(['g'])
+    expect(r.item_recall.documents).toBe(0)
+    expect(r.discovery_recall).toBe(0)
+  })
+  test('only written items count: facts the write step dropped are omissions', () => {
+    const r = evaluate([result({}, false)], new Map([['g', gold]]), {})
+    expect(r.omissions).toHaveLength(2)
+    expect(r.stamp_yield.pct).toBe(0)
   })
 })

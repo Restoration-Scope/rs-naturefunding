@@ -125,7 +125,7 @@ for (const id of ids) {
   const models = [cheapModel.name, ...(r.escalated.length ? [strongModel.name] : []), ...(jevModel ? [jevModel.name] : [])]
   const m = manifest(r, today, applied.manifestBits, models, usd)
   // Full result for eval and debugging; page text stays out of the repo.
-  writeFileSync(join(out, 'results', `${id}.json`), JSON.stringify({ ...r, gathered: { ...r.gathered, docs: r.gathered.docs.map(({ text: _t, pages: _p, selected: _s, links, ...d }) => ({ ...d, links: links.length })) }, manifest: m }, null, 1))
+  writeFileSync(join(out, 'results', `${id}.json`), JSON.stringify({ ...r, gathered: { ...r.gathered, docs: r.gathered.docs.map(({ text: _t, pages: _p, selected: _s, links, ...d }) => ({ ...d, links: links.length })) }, manifest: m, written_items: applied.items, co_finance_written: applied.next.co_finance ?? null }, null, 1))
   if (write) {
     writeFileSync(join('data', 'programmes', `${id}.json`), serialise(applied.next, readFileSync(join('data', 'programmes', `${id}.json`), 'utf8')))
     writeFileSync(manifestPath(id), formatJson(m))

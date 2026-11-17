@@ -45,6 +45,9 @@ const FIELD_KEYS: Record<Field, (keyof Programme)[]> = {
 
 type Draft = Programme & Record<string, unknown>
 
+/** One fact as written to the file, with its own quote: what eval scores. */
+export type WrittenItem = { name: string; quote: string; kind?: string; due?: string | null; typed?: Record<string, unknown>; value?: boolean | string }
+
 /** Old items with no counterpart among the new ones, matched one to one so two old items can't share one new item. */
 function unmatched<O, N>(old: O[], now: N[], same: (o: O, n: N) => boolean): O[] {
   const free = [...now]
@@ -56,7 +59,12 @@ function unmatched<O, N>(old: O[], now: N[], same: (o: O, n: N) => boolean): O[]
   })
 }
 
-export function apply(p: Programme, r: Result, today: string, sources: Source[]): { next: Programme; manifestBits: Pick<Manifest, 'outcomes' | 'written' | 'notes' | 'requirements_checked'>; sources: Source[] } {
+export function apply(
+  p: Programme,
+  r: Result,
+  today: string,
+  sources: Source[],
+): { next: Programme; manifestBits: Pick<Manifest, 'outcomes' | 'written' | 'notes' | 'requirements_checked'>; sources: Source[]; items: Partial<Record<Field, WrittenItem[]>> } {
   const docs = new Map(r.gathered.docs.map((d) => [d.ref, d]))
   const outcomes = { ...r.outcomes }
   const notes: string[] = []
@@ -66,6 +74,7 @@ export function apply(p: Programme, r: Result, today: string, sources: Source[])
   let cur: Draft = structuredClone(p) as Draft
   const used: Quote[] = []
   const dropped = new Set<Field>()
+  let docsKept = r.facts.documents
 
   const tryField = (field: Field, edit: (d: Draft) => Quote[] | null) => {
     const draft = structuredClone(cur)
@@ -206,6 +215,7 @@ export function apply(p: Programme, r: Result, today: string, sources: Source[])
         continue
       }
       if (!guard(field, pk.packed)) continue
+      docsKept = items
       tryField(field, (d) => {
         d.documents = items.map((x) => x.item)
         d.evidence.documents = pk!.packed.map(ev)
@@ -286,7 +296,21 @@ export function apply(p: Programme, r: Result, today: string, sources: Source[])
     }
   }
 
-  return { next: cur as Programme, manifestBits: { outcomes, written, notes, requirements_checked: stamp }, sources: nextSources }
+  const f = r.facts
+  const items: Partial<Record<Field, WrittenItem[]>> = {}
+  const typed = (e: (typeof f.eligibility)[number]) => {
+    const t = { ...(e.min_years !== undefined ? { min_years: e.min_years } : {}), ...(e.revenue ? { revenue: e.revenue } : {}), ...(e.request_cap ? { request_cap: e.request_cap } : {}) }
+    return Object.keys(t).length ? { typed: t } : {}
+  }
+  for (const field of written) {
+    if (field === 'eligibility') items.eligibility = f.eligibility.map((e) => ({ name: e.rule, quote: e.q.quote, kind: e.kind, ...typed(e) }))
+    if (field === 'documents') items.documents = docsKept.map((d) => ({ name: d.item, quote: d.q.quote }))
+    if (field === 'effort') items.effort = (f.effort?.steps ?? []).map((s) => ({ name: s.step, quote: s.q.quote, due: s.due }))
+    if (field === 'co_finance' && f.co_finance_required) items.co_finance = [{ name: 'required', quote: f.co_finance_required.q.quote, value: f.co_finance_required.value }]
+    if (field === 'consortium' && f.consortium_required) items.consortium = [{ name: 'required', quote: f.consortium_required.q.quote, value: f.consortium_required.value }]
+    if (field === 'after_award') items.after_award = f.after_award.map((a) => ({ name: a.duty, quote: a.q.quote, ...(a.reports ? { value: a.reports } : {}) }))
+  }
+  return { next: cur as Programme, manifestBits: { outcomes, written, notes, requirements_checked: stamp }, sources: nextSources, items }
 }
 
 /** `next` with the original's key order at every depth; a new key goes where `schemaKeys` puts it among the keys already there, or last. */
