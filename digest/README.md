@@ -12,6 +12,7 @@ It runs as its own Cloudflare Worker on its own hostname, so the site stays stat
 - **The daily run** (cron, 08:00 UTC) picks subscribers whose last email is 7+ days old, builds each one's digest from changes after the last one it covered (`src/digest.ts`), drops calls that have since closed (deadline in the funder's time zone), and sends one email per subscriber, so one refused address doesn't hold back the rest. At most `DAILY_DIGEST_LIMIT` (75) a UTC day across all runs; with the 20 confirmation emails that stays inside Resend's free 100 a day and 3,000 a month, and a large list spreads over the week.
 - **Never twice.** The day's sends are claimed in D1 before any goes to Resend, each with an idempotency key per subscriber and day, and a claim is undone only when Resend certainly sent nothing (a 4xx; a 429 stops the run and gives the rest back). A timeout or 5xx keeps the claim: that subscriber may miss one digest but never gets two. The next digest starts from the bundle's newest commit (`sent_through`), not the send time, so a change deployed after a send still goes out.
 - **Unsubscribe.** Every digest carries `List-Unsubscribe` and `List-Unsubscribe-Post` (RFC 8058), so mail apps unsubscribe in one click; the link in the email opens a one-button page. Unsubscribing deletes the row.
+- **Past issues** on the site (`/digest/` and `/digest/<date>/`): one per week, Monday 08:00 UTC to the next, for someone who picked no country or project type. `scripts/issues.ts` builds them at site build time with the same `buildDigest`, each with the programmes as they stood at that week's last commit (`programmesAt`), so a call that closed since shows as it was.
 - **Sending is off** (`DIGEST_SENDING: "off"`): the daily run only counts who would get an email. The first real send needs Bernat's OK; then set it to `"live"`.
 
 ## Run locally
@@ -55,5 +56,6 @@ Before the first real send (Bernat's OK): a postal address in the email footer; 
 - `src/events.ts`, `scripts/history.ts`: what's new, from git.
 - `src/digest.ts`, `src/match.ts`: one subscriber's digest; filters match the finder (`whereCodes` equals the site's).
 - `src/email.ts`: the confirmation and digest emails (HTML and text).
+- `src/issues.ts`, `scripts/issues.ts`, `../src/components/DigestIssue.astro`: the past issues on the site.
 - `src/consent.ts`: the consent words by version; the row keeps the version.
 - `src/resend.ts`, `src/token.ts`: Resend's HTTP API and the link tokens.

@@ -104,7 +104,16 @@ ${button(o.confirmUrl, 'Confirm my email')}
   return { subject: 'Confirm your weekly naturefunding.org email', html, text }
 }
 
-const sectionTitle: Record<Section, string> = {
+/** "6 calls open, 1 call opening soon, 344 new programmes": the subject, and each past issue's line on the site. */
+export const countsText = (counts: Digest['counts']) =>
+  (Object.entries(counts) as [Section, number][])
+    .filter(([, n]) => n > 0)
+    .map(([s, n]) =>
+      s === 'open' ? plural(n, 'call open', 'calls open') : s === 'upcoming' ? plural(n, 'call opening soon', 'calls opening soon') : plural(n, 'new programme', 'new programmes'),
+    )
+    .join(', ')
+
+export const sectionTitle: Record<Section, string> = {
   open: 'Open now',
   upcoming: 'Opening soon',
   new: 'New on naturefunding.org',
@@ -126,7 +135,8 @@ function placeOf(i: DigestItem, prefs: Prefs) {
   return country ? { text: countryName(country), flag: country } : { text: geographyText(i.programme.geography), flag: null }
 }
 
-function itemParts(i: DigestItem, site: string, prefs: Prefs, currency?: string) {
+/** One item's parts, shared by the email and the past issues on the site (src/components/DigestIssue.astro). */
+export function itemParts(i: DigestItem, site: string, prefs: Prefs, currency?: string) {
   const p = i.programme
   return {
     name: p.name,
@@ -146,10 +156,7 @@ export function digestEmail(o: { site: string; pages?: PagePaths; digest: Digest
   const { items, total } = o.digest
   const what = prefsText(o.prefs)
   const counts = (['open', 'upcoming', 'new'] as Section[]).map((s) => [s, items.filter((i) => i.section === s).length] as const)
-  const subjectBits = (Object.entries(o.digest.counts) as [Section, number][]).filter(([, n]) => n > 0).map(([s, n]) =>
-    s === 'open' ? plural(n, 'call open', 'calls open') : s === 'upcoming' ? plural(n, 'call opening soon', 'calls opening soon') : plural(n, 'new programme', 'new programmes'),
-  )
-  const subject = `${subjectBits.join(', ')}${what ? ` · ${what}` : ''}`
+  const subject = `${countsText(o.digest.counts)}${what ? ` · ${what}` : ''}`
   const intro = `New since ${longDate(o.since.slice(0, 10))}${what ? `, for ${what}` : ''}.`
   const listUrl = finderUrl(o.site, o.prefs, o.pages)
   const link = (label: string) => `<a href="${esc(listUrl)}" style="color:${C.brand};">${label}</a>`
