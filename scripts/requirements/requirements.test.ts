@@ -9,7 +9,7 @@ import { emptyWire, run } from './pipeline'
 import { queue } from './queue'
 import { packQuotes, readsTwoWays, verify } from './verify'
 import { evaluate, type Gold, type Scored } from './eval'
-import { apply } from './write'
+import { apply, manifest } from './write'
 
 const base: Programme = programmeSchema.parse({
   id: 'test-grants',
@@ -623,5 +623,67 @@ describe('eval: what visitors would see, matched one to one', () => {
     const r = evaluate([result({}, false)], new Map([['g', gold]]), {})
     expect(r.omissions).toHaveLength(2)
     expect(r.stamp_yield.pct).toBe(0)
+    expect(r.stamp_yield.right).toBe(0)
+  })
+})
+
+describe('eval: a real run scored against its gold set', () => {
+  const pages = { 'https://test.example.org/grants': PAGE, 'https://test.example.org/guidelines.pdf': GUIDE }
+  const w = goodWire()
+  const gold = (): Gold => ({
+    id: base.id, filled_by: 'test', checked_by_person: false, coverage_complete: true, notes: '',
+    documents_expected: [{ url: 'https://test.example.org/grants', why: 'call' }, { url: 'https://test.example.org/guidelines.pdf', why: 'guidelines' }],
+    eligibility: [
+      { rule: 'Operating for at least 3 years', kind: 'track_record', min_years: 3, quote: w.eligibility.items[0]!.quote },
+      { rule: 'Yearly income of €50,000 to €500,000', kind: 'finances', revenue: { currency: 'EUR', min: 50000, max: 500000, basis: 'revenue' }, quote: w.eligibility.items[1]!.quote },
+    ],
+    documents: w.documents.items.map((d) => ({ item: d.item, quote: d.quote })),
+    effort: w.effort.steps.map((s) => ({ step: s.step, due: s.due, quote: s.quote })),
+    co_finance_required: { value: true, quote: w.co_finance.quote },
+    co_finance: { min_share: 20 },
+    consortium_required: null,
+    after_award: [{ duty: 'reports', reports: 'final', quote: w.after_award.items[0]!.quote }],
+  })
+  const scored = async () => {
+    const r = await run(base, { read: fakeReader(pages), sources: [], cheap: fakeAsk([goodWire()]).ask, strong: null, jev: fakeJev().ask })
+    const a = apply(base, r, '2026-11-16', [])
+    return { ...r, manifest: manifest(r, '2026-11-16', a.manifestBits, ['fake'], 0.01), written_items: a.items, co_finance_written: a.next.co_finance ?? null } as Scored
+  }
+  test('a right read scores full marks, a right stamp, and every Jev judgement gets a label', async () => {
+    const s = await scored()
+    const e = evaluate([s], new Map([[base.id, gold()]]), { [base.id]: 0.01 })
+    expect(e.all_items).toEqual({ recall: 100, precision: 100 })
+    expect(e.value_misses).toEqual([])
+    expect(e.false_stamps).toEqual([])
+    expect(e.stamp_yield.right).toBe(1)
+    expect(e.jev_unlabelled).toEqual([])
+    expect(Object.keys(e.jev)).toEqual(expect.arrayContaining(['selection', 'kind', 'typed', 'first_step', 'step', 'due', 'required', 'co_finance', 'duty', 'reports']))
+    // Every judgement is right against this gold set: nothing for Jev to catch.
+    for (const [q, t] of Object.entries(e.jev)) if (q !== "omission") expect([q, t.positives]).toEqual([q, 0])
+  })
+  test('a wrong due date, kind, threshold or co-funding share is a value miss, a false stamp, and a Jev positive', async () => {
+    const s = await scored()
+    const g = gold()
+    g.effort[1]!.due = '2027-01-15'
+    g.eligibility[0]!.kind = 'legal'
+    g.eligibility[0]!.min_years = 2
+    g.co_finance = { min_share: 25 }
+    const e = evaluate([s], new Map([[base.id, g]]), {})
+    expect(e.value_misses).toHaveLength(4)
+    expect(e.false_stamps[0]?.why).toContain('4 written values differ')
+    expect(e.stamp_yield.right).toBe(0)
+    for (const q of ['due', 'kind', 'typed', 'co_finance']) expect(e.jev[q]?.positives).toBe(1)
+  })
+  test('a wrong yes/no is a miss, and an item the gold set lacks is an extra on the stamp', async () => {
+    const s = await scored()
+    const g = gold()
+    g.co_finance_required!.value = false
+    g.co_finance = null
+    g.documents.pop()
+    const e = evaluate([s], new Map([[base.id, g]]), {})
+    expect(e.yes_no.wrong).toBe(1)
+    expect(e.stamped_extras).toEqual([{ id: base.id, n: 1 }])
+    expect(e.jev.required?.positives).toBe(1)
+    expect(e.jev.first_step?.positives).toBe(1)
   })
 })

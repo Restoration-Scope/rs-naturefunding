@@ -123,6 +123,12 @@ export function evaluate(results: Scored[], golds: Map<string, Gold>, usd: Recor
   const judged: { j: Judgement; wrong: boolean }[] = []
   const byId = new Map(results.map((r) => [r.id, r]))
   const failed: string[] = []
+  /** Items written for a stamped programme that the gold set doesn't list. */
+  const stampedExtras: { id: string; n: number }[] = []
+  let rightStamps = 0
+  /** Jev judgements whose fact can't be found, or whose gold property isn't stated: neither counts for thresholds. */
+  const jevUnlabelled: string[] = []
+  let jevUnscored = 0
 
   for (const [id, g] of golds) {
     const r = byId.get(id)
@@ -152,6 +158,8 @@ export function evaluate(results: Scored[], golds: Map<string, Gold>, usd: Recor
     // What visitors would see: the items written to the file.
     const written = r.written_items ?? {}
     let missed = 0
+    let extra = 0
+    const missBefore = valueMiss.length
     for (const field of FIELD_LIST) {
       const made = written[field] ?? []
       const pairs = pair(gold[field], made)
@@ -160,6 +168,7 @@ export function evaluate(results: Scored[], golds: Map<string, Gold>, usd: Recor
       c.found += pairs.size
       c.made += made.length
       c.right += pairs.size
+      extra += made.length - pairs.size
       gold[field].forEach((gi, i) => {
         if (pairs.has(i)) return
         omissions.push({ id, field, quote: gi.quote.slice(0, 160) })
@@ -212,9 +221,16 @@ export function evaluate(results: Scored[], golds: Map<string, Gold>, usd: Recor
       }
     }
     if (r.manifest.requirements_checked) {
-      if (!g.coverage_complete) falseStamps.push({ id, why: 'the gold set says a full read is not possible from these pages' })
-      else if (missedHere) falseStamps.push({ id, why: `${missedHere} documents the gold set expects were not opened` })
-      else if (missed) falseStamps.push({ id, why: `${missed} requirements the gold set lists were not written` })
+      const wrongHere = valueMiss.length - missBefore
+      const why = [
+        ...(!g.coverage_complete ? ['the gold set says a full read is not possible from these pages'] : []),
+        ...(missedHere ? [`${missedHere} documents the gold set expects were not opened`] : []),
+        ...(missed ? [`${missed} requirements the gold set lists were not written`] : []),
+        ...(wrongHere ? [`${wrongHere} written values differ from the gold set`] : []),
+      ]
+      if (why.length) falseStamps.push({ id, why: why.join('; ') })
+      else rightStamps++
+      if (extra) stampedExtras.push({ id, n: extra })
     }
 
     // Jev's judgements, each labelled against the gold property it is about.
@@ -238,7 +254,10 @@ export function evaluate(results: Scored[], golds: Map<string, Gold>, usd: Recor
         continue
       }
       const at = goldOf(j.field, j)
-      if (!at.found) continue
+      if (!at.found) {
+        jevUnlabelled.push(`${id}: ${j.field}/${j.question} "${j.item}"`)
+        continue
+      }
       const gi = at.gold
       let wrong: boolean | null
       switch (j.question) {
@@ -262,9 +281,11 @@ export function evaluate(results: Scored[], golds: Map<string, Gold>, usd: Recor
           wrong = !gi
       }
       if (wrong !== null) judged.push({ j, wrong })
+      else jevUnscored++
     }
-    // One omission judgment per programme and field: the highest over its chunks, against whether the gold set lists any.
-    for (const [field, p] of omit) judged.push({ j: { field, item: field, question: 'omission', p }, wrong: gold[field].length > 0 })
+    // One omission judgment per programme and field: the highest over its chunks, against whether the gold set lists
+    // items the first reading missed (a thin field may already hold one).
+    for (const [field, p] of omit) judged.push({ j: { field, item: field, question: 'omission', p }, wrong: gold[field].length > fp[field].size })
   }
 
   // Each Jev question as a detector of wrong items (or of a field the text states, for omission).
@@ -297,9 +318,14 @@ export function evaluate(results: Scored[], golds: Map<string, Gold>, usd: Recor
     all_items: { recall: pct(sum('found'), sum('gold')), precision: pct(sum('right'), sum('made')) },
     omissions,
     stamped,
-    /** Stamped out of the gold programmes a full read is possible for: a pipeline that never stamps has no false stamps. */
-    stamp_yield: { stamped, of: stampable, pct: pct(stamped, stampable) },
+    /** Right stamps out of the gold programmes a full read is possible for: a pipeline that never stamps has no false stamps. */
+    stamp_yield: { right: rightStamps, of: stampable, pct: pct(rightStamps, stampable) },
     false_stamps: falseStamps,
+    /** With 0 false stamps out of n, the rate is below about 3/n at 95% (rule of three). */
+    false_stamp_bound: stamped ? (falseStamps.length ? null : Math.round((3 / stamped) * 1000) / 10) : null,
+    stamped_extras: stampedExtras,
+    jev_unlabelled: jevUnlabelled,
+    jev_unscored: jevUnscored,
     typed_values: typed,
     values,
     value_misses: valueMiss,
