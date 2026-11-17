@@ -85,13 +85,13 @@ const goodWire = (): Wire => ({
 })
 
 /** A model that answers from a queue, recording what it was asked. */
-const fakeAsk = (answers: (Wire | { wire: Wire; missing: string[] })[]) => {
+const fakeAsk = (answers: ((Wire & { unresolved?: string[] }) | { wire: Wire; missing: string[] })[]) => {
   const asked: string[] = []
   const ask = async <T,>(_id: string, _system: string, user: string, schema: z.ZodType<T>): Promise<T> => {
     asked.push(user)
     const a = answers.shift()
     if (!a) throw new Error('fake model has no more answers')
-    return schema.parse({ unresolved: [], ...('wire' in a ? toApi(a.wire, a.missing) : toApi(a)) })
+    return schema.parse({ unresolved: ('unresolved' in a && a.unresolved) || [], ...('wire' in a ? toApi(a.wire, a.missing) : toApi(a)) })
   }
   return { ask, asked }
 }
@@ -201,6 +201,13 @@ describe('verify', () => {
     w.co_finance.min_share = 25
     expect(verify(w, docs).facts.co_finance).toBeNull()
   })
+  test('a share read from the most the grant covers is kept (up to 85% of the cost: the applicant brings 15); Jev judges the reading', () => {
+    const w = goodWire()
+    w.co_finance.quote = 'The grant covers up to 85% of the eligible project cost.'
+    w.co_finance.min_share = 15
+    const v = verify(w, [{ ...docs[0]!, text: `${docs[0]!.text} The grant covers up to 85% of the eligible project cost.` }])
+    expect(v.facts.co_finance?.min_share).toBe(15)
+  })
   test('neighbouring quotes pack into one passage to fit the evidence cap', () => {
     const d = doc('D2', GUIDE)
     const qs = [
@@ -281,13 +288,24 @@ describe('pipeline and write', () => {
     expect(r.outcomes.eligibility).toBe('stated')
     expect(strong.asked[0]).toContain('a selection criterion or preference')
   })
-  test('without a strong model a flag leaves the field unresolved and the programme unstamped', async () => {
-    const r = await run(base, { read: fakeReader(pages), sources: [], cheap: fakeAsk([goodWire()]).ask, strong: null, jev: fakeJev([{ match: /^over0$/, p: 0.8 }]).ask })
-    expect(r.outcomes.eligibility).toBe('unresolved')
-    const { next } = apply(base, r, '2026-11-16', [])
+  test('without a strong model a flagged rule drops alone: the sound rule is written, the field is partial and the programme unstamped', async () => {
+    const r = await run(base, { read: fakeReader(pages), sources: [], cheap: fakeAsk([goodWire()]).ask, strong: null, jev: fakeJev([{ match: /^over0$/, p: 0.9 }]).ask })
+    expect(r.outcomes.eligibility).toBe('partial')
+    const { next, manifestBits } = apply(base, r, '2026-11-16', [])
     expect(next.requirements_checked).toBeUndefined()
-    expect(next.eligibility).toBeUndefined()
+    expect(next.eligibility?.map((e) => e.rule)).toEqual(['Yearly income of €50,000 to €500,000'])
+    expect(manifestBits.outcomes.eligibility).toBe('partial')
     expect(next.documents).toHaveLength(2)
+  })
+  test('a flagged step leaves the whole steps field unwritten: a hole in ordered steps misleads', async () => {
+    const r = await run(base, { read: fakeReader(pages), sources: [], cheap: fakeAsk([goodWire()]).ask, strong: null, jev: fakeJev([{ match: /^step0$/, p: 0.1 }]).ask })
+    expect(r.outcomes.effort).toBe('unresolved')
+    expect(apply(base, r, '2026-11-16', []).next.effort).toBeUndefined()
+  })
+  test('polarity is recorded but never flags; overreach needs a high bar', async () => {
+    const r = await run(base, { read: fakeReader(pages), sources: [], cheap: fakeAsk([goodWire()]).ask, strong: null, jev: fakeJev([{ match: /^pol0$/, p: 0.99 }, { match: /^over1$/, p: 0.7 }]).ask })
+    expect(r.judgements.some((j) => j.question === 'polarity' && j.p === 0.99)).toBe(true)
+    expect(r.outcomes.eligibility).toBe('stated')
   })
   test('an omission Jev sees sends the field back to extraction', async () => {
     const thin = goodWire()
@@ -528,7 +546,8 @@ describe('the stamp: every path that must block it', () => {
       return a
     }
     const r = await run(base, { read: fakeReader(pages), sources: [], cheap: fakeAsk([goodWire()]).ask, strong: null, jev: ask })
-    expect(r.outcomes.documents).toBe('unresolved')
+    expect(r.outcomes.documents).toBe('partial')
+    expect(r.facts.documents.map((d) => d.item)).toEqual(['Letter of support from the landowner'])
   })
 
   test('two documents named in one passage are two facts: dropping one leaves the field open', async () => {
@@ -783,6 +802,16 @@ describe('escalation keeps what nothing faulted', () => {
     expect(r.notes.some((n) => n.includes('kept 1 first-reading item'))).toBe(true)
     expect(strong.asked[0]).toContain('"Yearly income of €50,000 to €500,000"')
     expect(strong.asked[0]).toContain('keep the first reader')
+  })
+  test('a field the strong model leaves unresolved keeps the sound rules of both readings and blocks the stamp', async () => {
+    const first = goodWire()
+    first.eligibility.items.push({ rule: 'Shows community involvement', kind: 'project', doc: 'D2', quote: 'Strong applications show community involvement.', min_years: null, revenue: null, request_cap: null })
+    const narrow = { ...goodWire(), unresolved: ['eligibility'] }
+    narrow.eligibility.items = [narrow.eligibility.items[0]!]
+    const r = await run(base, { read: fakeReader(pages), sources: [], cheap: fakeAsk([first]).ask, strong: fakeAsk([narrow]).ask, jev: fakeJev([{ match: /^sel2$/, p: 0.95 }]).ask })
+    expect(r.outcomes.eligibility).toBe('partial')
+    expect(r.facts.eligibility.map((e) => e.rule)).toEqual(['Operating for at least 3 years', 'Yearly income of €50,000 to €500,000'])
+    expect(apply(base, r, '2026-11-16', []).next.requirements_checked).toBeUndefined()
   })
 })
 

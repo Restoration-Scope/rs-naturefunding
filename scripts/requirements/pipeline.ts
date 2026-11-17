@@ -1,6 +1,6 @@
 /**
  * One programme through stages 2–6: gather, extract, verify, check, escalate. The result is verified facts
- * per field with an outcome (stated, not_found, unresolved), the coverage, every flag and Jev judgment, and
+ * per field with an outcome (stated, not_found, partial, unresolved), the coverage, every flag and Jev judgment, and
  * the usage; write.ts turns it into the programme file and the manifest.
  */
 import { z } from 'zod'
@@ -11,7 +11,11 @@ import { gather, type Gathered, type Reader } from './gather'
 import type { Ask, AskJev } from './models'
 import { emptyFacts, sameItem, sameQuote, verify, type Facts, type Flag } from './verify'
 
-export type Outcome = 'stated' | 'not_found' | 'unresolved'
+/** `partial`: a list field some check could not clear; its sound items are written, but it blocks the stamp. */
+export type Outcome = 'stated' | 'not_found' | 'partial' | 'unresolved'
+
+/** List fields where a faulted item drops alone. Steps are one ordered list, so a hole there drops the field. */
+const ITEMWISE: Field[] = ['eligibility', 'documents']
 
 export type Result = {
   id: string
@@ -159,6 +163,14 @@ export async function run(p: Programme, deps: Deps): Promise<Result> {
         escalated.push(f)
         if (s.unresolved.includes(f) || after.some((x) => x.field === f)) {
           unresolved.add(f)
+          if (ITEMWISE.includes(f)) {
+            // Keep what no check faulted: the strong reading's sound items, then the first reading's sound
+            // items it has nothing like.
+            const strongSound = soundOnly(v3.facts, f, after)
+            const kept = keptFromFirst(facts, strongSound, f, flags)
+            setField(facts, strongSound, f)
+            kept?.add(facts)
+          }
           continue
         }
         // The strong model settled it: its reading replaces the first one, except first-reading items no
@@ -175,8 +187,11 @@ export async function run(p: Programme, deps: Deps): Promise<Result> {
       flags = [...flags.filter((x) => unresolved.has(x.field)), ...after.filter((x) => unresolved.has(x.field))]
     }
   } else for (const f of flagged) unresolved.add(f)
+  // Not escalated (no strong model, or too long): drop the faulted items of an itemwise field.
+  for (const f of ITEMWISE) if (unresolved.has(f) && !escalated.includes(f)) setField(facts, soundOnly(facts, f, flags), f)
 
-  const outcomes = Object.fromEntries(FIELDS.map((f) => [f, unresolved.has(f) ? 'unresolved' : hasField(facts, f) ? 'stated' : 'not_found'])) as Record<Field, Outcome>
+  const outcome = (f: Field): Outcome => (unresolved.has(f) ? (ITEMWISE.includes(f) && hasField(facts, f) ? 'partial' : 'unresolved') : hasField(facts, f) ? 'stated' : 'not_found')
+  const outcomes = Object.fromEntries(FIELDS.map((f) => [f, outcome(f)])) as Record<Field, Outcome>
   const complete = coverage.length === 0
   return { ...base, gathered: { ...gathered, complete, reasons: [...new Set(coverage)] }, facts, outcomes, flags, settled, judgements, notes, escalated }
 }
@@ -215,6 +230,16 @@ export function keptFromFirst(first: Facts, strong: Facts, field: Field, flags: 
       to.after_award.push(...duties)
     },
   }
+}
+
+/** One itemwise field's facts without the items a flag names (by name or quote). */
+export function soundOnly(f: Facts, field: Field, flags: Flag[]): Facts {
+  const faulted = flags.filter((x) => x.field === field)
+  const bad = (name: string, quote: string) => faulted.some((fl) => fl.item === name || (fl.quote !== undefined && fl.quote === quote))
+  const one = emptyFacts()
+  if (field === 'eligibility') one.eligibility = f.eligibility.filter((x) => !bad(x.rule, x.q.quote))
+  if (field === 'documents') one.documents = f.documents.filter((x) => !bad(x.item, x.q.quote))
+  return one
 }
 
 function pickField(f: Facts, field: Field) {

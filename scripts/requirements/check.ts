@@ -15,8 +15,15 @@ import type { Facts, Flag, Quote } from './verify'
 
 /** Where a probability becomes a flag. Tuned on the 40 tuning programmes; eval.ts reports each one's precision and recall. */
 export const JEV = {
-  /** P(broken) at or above this flags the item. */
+  /** P(broken) at or above this flags the item, unless `by` sets the question's own bar. */
   flag: 0.5,
+  /**
+   * Per-question bars, from hand-labelled tune-1 flags. Polarity flagged rules restated from an exclusion
+   * list ("Not a for-profit" on "for-profits may not apply"): no true flag among 14 sampled, none of 4 at
+   * 0.75 or above, so it is recorded but never flags. Selection, overreach and first_step at 0.5–0.75 were
+   * mostly sound items (conditional documents, scope limits).
+   */
+  by: { polarity: Infinity, selection: 0.75, overreach: 0.8, first_step: 0.75 } as Record<string, number>,
   /** A Choice whose top option has less than this is too spread to trust. */
   confidence: 0.6,
   /** P(the text states this field) at or above this sends a not_found field back to extraction. */
@@ -109,7 +116,7 @@ export async function check(jev: AskJev, p: Programme, facts: Facts, docs: Doc[]
       return
     }
     judgements.push({ field, item, question, p: broken, quote: q.quote, ...extra })
-    if (broken >= JEV.flag) flags.push({ field, item, why, quote: q.quote, doc: q.doc, source: 'jev', p: broken })
+    if (broken >= (JEV.by[question] ?? JEV.flag)) flags.push({ field, item, why, quote: q.quote, doc: q.doc, source: 'jev', p: broken })
   }
   const not = (y: number | null) => (y === null ? null : 1 - y)
 

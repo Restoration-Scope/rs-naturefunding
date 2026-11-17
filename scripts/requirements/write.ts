@@ -2,7 +2,7 @@
  * Stage 7, write: verified facts go into the programme file surgically, one field at a time, each held to
  * the full schema; a field that breaks it is reverted and left unresolved. A reading that disagrees with a
  * value already in the file keeps the old value and leaves the field unresolved for a person.
- * `requirements_checked` is set only when coverage is complete and no field is unresolved. The coverage
+ * `requirements_checked` is set only when coverage is complete and no field is partial or unresolved. The coverage
  * manifest goes to data/requirements/<id>.json: documents, hashes, chunks, outcomes and cost, no page text.
  */
 import { programme as programmeSchema, type Evidence, type Programme, type Source } from '../../src/data/schema'
@@ -262,7 +262,7 @@ export function apply(
   }
 
   for (const x of dropped) outcomes[x] = 'unresolved'
-  const unresolved = FIELDS.filter((x) => outcomes[x] === 'unresolved')
+  const unresolved = FIELDS.filter((x) => outcomes[x] === 'unresolved' || outcomes[x] === 'partial')
   let stamp = r.gathered.complete && unresolved.length === 0 && !r.error
   if (stamp) {
     const draft = structuredClone(cur)

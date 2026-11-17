@@ -169,7 +169,10 @@ export function verify(w: Wire, docs: Doc[]): { facts: Facts; flags: Flag[]; not
         const c: CoFinance = { q: dq }
         const nums = numbersIn(dq.quote)
         if (cf.min_share !== null && cf.ratio === null) {
-          if (cf.min_share > 0 && cf.min_share <= 100 && (nums.has(cf.min_share) || nums.has(cf.min_share / 100))) c.min_share = cf.min_share
+          // The quote may give the share itself or the most the grant covers ("up to 85% of the cost": the applicant brings 15).
+          const rest = Math.round((100 - cf.min_share) * 10) / 10
+          if (cf.min_share > 0 && cf.min_share < 100 && (nums.has(cf.min_share) || nums.has(cf.min_share / 100) || nums.has(rest))) c.min_share = cf.min_share
+          else if (cf.min_share === 100 && nums.has(100)) c.min_share = 100
           else notes.push(`co_finance: share ${cf.min_share}% dropped, its quote does not state it`)
         }
         if (cf.ratio !== null) {

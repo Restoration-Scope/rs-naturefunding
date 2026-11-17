@@ -12,7 +12,7 @@ import { sameItem } from './verify'
 import type { Doc } from './gather'
 import type { Ask } from './models'
 
-export const PROMPT_VERSION = 'req-2026-11-17.1'
+export const PROMPT_VERSION = 'req-2026-11-17.2'
 
 /** One prompt holds this much page text; above it, chunks. About 50K tokens, under the long-prompt price step (Haiku 100K, GPT-5.6 272K). */
 export const WHOLE_CHARS = 180_000
@@ -195,7 +195,7 @@ export const SYSTEM = `You read a funder's pages and documents about one grant p
 
 Rules for every field:
 - Only what the text states. Never guess or infer. If the text doesn't state a field, give status "not_found" and no items.
-- Every item has "doc" (D1, D2…) and "quote": words copied exactly from that document, 5 to 50 words, in the document's language, that state the item. Copy characters as they appear; no ellipsis, no paraphrase, no translation. Quotes must not span two documents.
+- Every item has "doc" (D1, D2…) and "quote": words copied exactly from that document, 5 to 50 words, in the document's language, that state the item. Copy characters as they appear; no ellipsis, no paraphrase, no translation. A quote is one unbroken run of the document's text: never join a heading to a list item under it, or two lines that aren't next to each other; when a rule is a bullet under a heading such as "Not eligible:", quote the bullet alone. Quotes must not span two documents.
 - Our own words (rule, item, step, applies_to) are short plain English, whatever the page's language.
 - Read for the current or next round. If the text gives different rules for an older round, use the current ones.
 
@@ -206,7 +206,7 @@ documents: what applicants submit at the first step, one item per type of docume
 
 effort: the stages an applicant submits or is reviewed at, in order, at most 5, each "step" 3 to 80 characters ("Concept note", "Full proposal, if invited", "Interview"). Creating an account, filling the form and pressing submit are one step. "due": the date that step is due in the current or next round as YYYY-MM-DD, only when the quote states its day, month and year together; otherwise "". more_after: true when the text says further steps follow the ones listed.
 
-co_finance: required "yes" when applicants must bring matching funds or co-funding, "no" when the text says none is needed, "not_stated" otherwise; "quote" states it. When required and the text says how much: min_share (smallest share of the project the applicant brings, in percent; a 1:1 match is 50), or ratio ("1:2" applicant to funder) when stated as a ratio, never both; min_amount {value, currency} for a fixed sum; in_kind true when staff time, land or equipment count; applies_to (5 to 80 characters) when it covers only some applicants. detail_quote states the amount, if a different sentence.
+co_finance: required "yes" when applicants must bring matching funds or co-funding, "no" when the text says none is needed, "not_stated" otherwise; "quote" states it. When required and the text says how much: min_share (smallest share of the project the applicant brings, in percent; a 1:1 match is 50; when the text says the grant covers at most X% of the project cost, the applicant brings the rest, so min_share is 100 minus X), or ratio ("1:2" applicant to funder) when stated as a ratio, never both; min_amount {value, currency} for a fixed sum; in_kind true when staff time, land or equipment count; applies_to (5 to 80 characters) when it covers only some applicants. detail_quote states the amount, if a different sentence.
 
 consortium: required "yes" when applicants must apply as a consortium of several organisations, "no" when the text says single applicants are fine or consortia are not allowed, "not_stated" otherwise.
 

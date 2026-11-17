@@ -110,6 +110,7 @@ export function evaluate(results: Scored[], golds: Map<string, Gold>, usd: Recor
   const yesNo = { right: 0, wrong: 0, missing: 0 }
   const valueMiss: string[] = []
   const unresolvedFields: string[] = []
+  const partialFields: string[] = []
   const judged: { j: Judgement; wrong: boolean }[] = []
   const byId = new Map(results.map((r) => [r.id, r]))
   const failed: string[] = []
@@ -143,7 +144,10 @@ export function evaluate(results: Scored[], golds: Map<string, Gold>, usd: Recor
         missedHere++
       }
     }
-    for (const k of FIELD_LIST) if (r.manifest.outcomes[k] === 'unresolved') unresolvedFields.push(`${id}: ${k}`)
+    for (const k of FIELD_LIST) {
+      if (r.manifest.outcomes[k] === 'unresolved') unresolvedFields.push(`${id}: ${k}`)
+      if (r.manifest.outcomes[k] === 'partial') partialFields.push(`${id}: ${k}`)
+    }
 
     // What visitors would see: the items written to the file.
     const written = r.written_items ?? {}
@@ -335,6 +339,7 @@ export function evaluate(results: Scored[], golds: Map<string, Gold>, usd: Recor
     values,
     value_misses: valueMiss,
     unresolved: { fields: unresolvedFields.length, of: scored.length * 6, list: unresolvedFields },
+    partial: { fields: partialFields.length, list: partialFields },
     yes_no: yesNo,
     jev: thresholds,
     usd: { total: Math.round(costs.reduce((a, b) => a + b, 0) * 1000) / 1000, per_programme_mean: costs.length ? Math.round((costs.reduce((a, b) => a + b, 0) / costs.length) * 10000) / 10000 : 0, per_programme_max: Math.round(Math.max(0, ...costs) * 10000) / 10000 },
