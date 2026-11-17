@@ -68,18 +68,23 @@ export function robotsAllows(robots: string, path: string): boolean {
   return best?.allow ?? true
 }
 
-function pdfToText(bytes: Uint8Array): string {
+/** A PDF's text, one entry per page (pdftotext separates pages with form feeds), before normalising. */
+export function pdfPages(bytes: Uint8Array): string[] {
   const dir = mkdtempSync(join(tmpdir(), 'nf-pdf-'))
   try {
     const file = join(dir, 'page.pdf')
     writeFileSync(file, bytes)
     const run = Bun.spawnSync(['pdftotext', '-enc', 'UTF-8', file, '-'])
     if (run.exitCode !== 0) throw new Error(`pdftotext failed: ${run.stderr.toString().trim()}`)
-    return normalise(run.stdout.toString())
+    const pages = run.stdout.toString().split('\f')
+    if (pages.length > 1 && !pages.at(-1)!.trim()) pages.pop()
+    return pages
   } finally {
     rmSync(dir, { recursive: true, force: true })
   }
 }
+
+const pdfToText = (bytes: Uint8Array) => normalise(pdfPages(bytes).join('\n'))
 
 const get = (url: string) =>
   fetch(url, {
@@ -100,7 +105,12 @@ function robotsFor(origin: string): Promise<string> {
   return p
 }
 
-export async function readPage(url: string, selector: string | null): Promise<Fetched> {
+export type Raw =
+  | { ok: true; url: string; finalUrl: string; status: number; pdf: boolean; contentType: string; bytes: Uint8Array; body: string }
+  | { ok: false; url: string; kind: FailureKind; message: string }
+
+/** One polite request: robots.txt first, then the bytes, refused when blocked or failed. Shared by the refresh and the requirements gather. */
+export async function fetchRaw(url: string): Promise<Raw> {
   const u = new URL(url)
   if (!robotsAllows(await robotsFor(u.origin), u.pathname + u.search)) {
     return { ok: false, url, kind: 'robots', message: 'robots.txt disallows this page' }
@@ -115,10 +125,19 @@ export async function readPage(url: string, selector: string | null): Promise<Fe
     const timeout = err.name === 'TimeoutError' || err.name === 'AbortError'
     return { ok: false, url, kind: timeout ? 'timeout' : 'network', message: timeout ? `no answer in ${TIMEOUT_MS / 1000}s` : err.message }
   }
-  const pdf = (res.headers.get('content-type') ?? '').includes('pdf') || new TextDecoder().decode(bytes.subarray(0, 4)) === '%PDF'
+  const contentType = res.headers.get('content-type') ?? ''
+  const pdf = contentType.includes('pdf') || new TextDecoder().decode(bytes.subarray(0, 4)) === '%PDF'
   const body = pdf ? '' : new TextDecoder().decode(bytes)
   const failure = classifyResponse(res.status, body)
   if (failure) return { ok: false, url, ...failure }
+  return { ok: true, url, finalUrl: res.url || url, status: res.status, pdf, contentType, bytes, body }
+}
+
+export async function readPage(url: string, selector: string | null): Promise<Fetched> {
+  const raw = await fetchRaw(url)
+  if (!raw.ok) return raw
+  const { pdf, bytes, body } = raw
+  const res = { url: raw.finalUrl, status: raw.status }
   try {
     const text = pdf ? pdfToText(bytes) : await htmlToText(body, selector)
     if (text.length < 40) return { ok: false, url, kind: 'unreadable', message: `only ${text.length} characters of text` }
