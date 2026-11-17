@@ -15,6 +15,36 @@ export const funderRepeatsName = (p: Pick<Programme, 'name' | 'funder'>) =>
 export const nameWithFunder = (p: Pick<Programme, 'name' | 'funder'>) =>
   funderRepeatsName(p) ? p.funder.name : `${p.name}, ${p.funder.name}`
 
+/** Longest title, before " · naturefunding.org", that search results usually show whole. */
+const TITLE_MAX = 60
+/** Words that name no one: a programme called only these ("Conservation Grants") needs its funder beside it. */
+const GENERIC = new Set(
+  'a an and the of for in on to grant grants fund funds funding program programme programs programmes project projects small large micro community communities conservation environment environmental nature biodiversity wildlife habitat restoration climate annual open call capacity scheme award awards support'.split(' '),
+)
+const isGeneric = (name: string) => name.toLowerCase().split(/[^a-z0-9]+/).filter(Boolean).every((w) => GENERIC.has(w))
+
+/**
+ * A programme page's title, for search results: the name, then what it pays ("Darwin Initiative Main, Defra: £200K–£1M"),
+ * keeping the funder (its own short form where it gives one) where it fits, and always where the name alone is generic.
+ */
+export function programmeTitle(p: Pick<Programme, 'name' | 'funder' | 'amount'>): string {
+  const acronym = p.funder.name.match(/\(([A-Z][A-Za-z0-9]{1,9})\)/)?.[1]
+  const plain = p.funder.name.replace(/\s*\(.*\)\s*$/, '')
+  const funder = acronym ?? plain
+  const named =
+    funderRepeatsName(p) || p.name.toLowerCase().includes(plain.toLowerCase()) || (acronym !== undefined && p.name.includes(acronym))
+  const name = funderRepeatsName(p) ? plain : p.name
+  const withFunder = named ? name : `${name}, ${funder}`
+  const short = amountShort(p.amount)?.text.replace(/ per project/, '')
+  const amount = short?.replace(/^(Up|Usually|From|Under) /, (w) => w.toLowerCase())
+  const options = [
+    amount && `${withFunder}: ${amount}`,
+    amount && (named || !isGeneric(name)) && `${name}: ${amount}`,
+    withFunder,
+  ].filter((t): t is string => !!t)
+  return options.find((t) => t.length <= TITLE_MAX) ?? (named || !isGeneric(name) ? name : withFunder)
+}
+
 /** Nov 1, 2026 */
 export const shortDate = (iso: string) => short.format(new Date(`${iso}T00:00:00Z`))
 /** November 1, 2026 */
