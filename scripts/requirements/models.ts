@@ -35,6 +35,13 @@ export const costOf = (model: string, u: Usage) => {
 
 export class SpendCapError extends Error {}
 
+/** A paid call that failed after the tokens were spent (refusal, out of tokens, an answer that breaks the schema). */
+export class SpentError extends Error {
+  constructor(message: string, readonly usage: Usage) {
+    super(message)
+  }
+}
+
 /** Token and dollar totals per model and per programme, with a cap on the run. */
 export class Ledger {
   byModel: Record<string, Usage & { calls: number; usd: number; cached: number }> = {}
@@ -56,8 +63,9 @@ export class Ledger {
     m.usd += usd
     this.byProgramme[programme] = (this.byProgramme[programme] ?? 0) + usd
   }
-  check() {
-    if (this.total >= this.capUsd) throw new SpendCapError(`spend cap of $${this.capUsd} reached`)
+  /** Refuses a call whose likely cost would cross the cap, so the run stops before it, not after. */
+  check(next = 0) {
+    if (this.total + next > this.capUsd) throw new SpendCapError(`spend cap of $${this.capUsd} reached ($${this.total.toFixed(3)} spent, next call about $${next.toFixed(3)})`)
   }
 }
 
@@ -99,10 +107,15 @@ export function claudeModel(model: string, opts: { effort?: 'low' | 'medium' | '
         output_config: { format: zodOutputFormat(schema as z.ZodType<unknown> as never), ...(opts.effort ? { effort: opts.effort } : {}) },
       } as never)
       const r = (await stream.finalMessage()) as unknown as { stop_reason: string; content: { type: string; text?: string }[]; usage: Usage }
-      if (r.stop_reason === 'refusal') throw new Error(`${model} declined the request`)
-      if (r.stop_reason === 'max_tokens') throw new Error(`${model} ran out of output tokens`)
+      const usage = { input_tokens: r.usage.input_tokens, output_tokens: r.usage.output_tokens }
+      if (r.stop_reason === 'refusal') throw new SpentError(`${model} declined the request`, usage)
+      if (r.stop_reason === 'max_tokens') throw new SpentError(`${model} ran out of output tokens`, usage)
       const text = r.content.filter((b) => b.type === 'text').map((b) => b.text ?? '').join('')
-      return { value: schema.parse(JSON.parse(text)), usage: { input_tokens: r.usage.input_tokens, output_tokens: r.usage.output_tokens } }
+      try {
+        return { value: schema.parse(JSON.parse(text)), usage }
+      } catch (e) {
+        throw new SpentError(`${model} answered outside the schema: ${(e as Error).message.slice(0, 200)}`, usage)
+      }
     },
   }
 }
@@ -116,7 +129,9 @@ export function workersModel(model?: string): JsonModel | null {
     name,
     async json(system, user, schema) {
       const { value, usage } = await llm.chatWithUsage(name, `${system}\nAnswer with one JSON object only.`, user)
-      return { value: schema.parse(value), usage }
+      const ok = schema.safeParse(value)
+      if (!ok.success) throw new SpentError(`${name} answered outside the schema: ${ok.error.message.slice(0, 200)}`, usage)
+      return { value: ok.data, usage }
     },
   }
 }
@@ -169,8 +184,16 @@ export function metered(m: JsonModel, ledger: Ledger, cache: Cache, version: str
       ledger.add(m.name, programme, { input_tokens: 0, output_tokens: 0 }, true)
       return schema.parse(hit)
     }
-    ledger.check()
-    const { value, usage } = await m.json(system, user, schema)
+    // About 3.5 characters a token in, and a typical answer of 4K tokens out.
+    ledger.check(costOf(m.name, { input_tokens: Math.ceil((system.length + user.length) / 3.5), output_tokens: 4000 }))
+    let got: { value: T; usage: Usage }
+    try {
+      got = await m.json(system, user, schema)
+    } catch (e) {
+      if (e instanceof SpentError) ledger.add(m.name, programme, e.usage)
+      throw e
+    }
+    const { value, usage } = got
     ledger.add(m.name, programme, usage)
     cache.set(key, value)
     return value
@@ -185,7 +208,8 @@ export function meteredJev(j: Jev, ledger: Ledger, cache: Cache, version: string
       ledger.add(j.name, programme, { input_tokens: 0, output_tokens: 0 }, true)
       return hit
     }
-    ledger.check()
+    // Jev reads the state once per question.
+    ledger.check(costOf(j.name, { input_tokens: Math.ceil(JSON.stringify([state, questions]).length / 3.5) * Math.max(1, Object.keys(questions).length), output_tokens: 0 }))
     const { answers, usage } = await j.ask(state, questions)
     ledger.add(j.name, programme, usage)
     cache.set(key, answers)

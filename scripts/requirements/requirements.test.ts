@@ -567,3 +567,28 @@ describe('reconcile: same item, not same passage', () => {
     expect(reconcile([a, b]).conflicts).toContain('co_finance')
   })
 })
+
+describe('spend', () => {
+  test('a paid call that fails still counts, and the cap stops the next call before it is sent', async () => {
+    const { Cache, Ledger, claudeModel, metered } = await import('./models')
+    let sent = 0
+    const client = {
+      messages: {
+        stream: () => {
+          sent++
+          return { finalMessage: async () => ({ stop_reason: 'max_tokens', content: [], usage: { input_tokens: 100_000, output_tokens: 32_000 } }) }
+        },
+      },
+    }
+    const ledger = new Ledger(5)
+    const ask = metered(claudeModel('claude-opus-5-5', {}, client as never), ledger, new Cache(null), 't')
+    for (let i = 0; i < 3; i++) await ask('x', 'system', 'user', apiWire).catch(() => {})
+    expect(ledger.total).toBeCloseTo(3 * (0.4 + 0.64), 5)
+    expect(sent).toBe(3)
+    const big = new Ledger(1.1)
+    const ask2 = metered(claudeModel('claude-opus-5-5', {}, client as never), big, new Cache(null), 't')
+    await ask2('x', 'system', 'user', apiWire).catch(() => {})
+    await expect(ask2('x', 'system', 'user2', apiWire)).rejects.toThrow('spend cap')
+    expect(sent).toBe(4)
+  })
+})
