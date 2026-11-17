@@ -66,6 +66,15 @@ const openNow = (ls: Listing[]) => {
 }
 const programmes = (n: number) => plural(n, 'grant or funding programme takes', 'grants and funding programmes take')
 
+/** "the United Kingdom", "the Philippines": the names that read with "the" after "in". */
+export const inPlace = (name: string) => (/^United |^Netherlands$|^Philippines$|^Middle East$|Islands$/.test(name) ? `the ${name}` : name)
+
+/** "Grants and funding for NGOs in Kenya: nature conservation", shortened where the place's name is long. */
+export const placeTitle = (name: string) => {
+  const t = `Grants and funding for NGOs in ${inPlace(name)}`
+  return `${t}: nature conservation`.length <= 60 ? `${t}: nature conservation` : t
+}
+
 function placePage(where: string, path: string, name: string, regionName: string, iso2?: string): FinderPage {
   const ls = listings.filter((l) => matchesWhere(l.p, where)).sort(sortListings)
   const codes = (l: Listing) => whereCodes(l.p).split(' ')
@@ -79,9 +88,9 @@ function placePage(where: string, path: string, name: string, regionName: string
     cat: '',
     iso2,
     name,
-    h1: `Grants for nature restoration and conservation in ${name}`,
-    title: `Grants for NGOs in ${name}: restoration and conservation funding`,
-    lead: `${programmes(ls.length)} nature restoration and conservation projects in ${name}: ${namedText}, ${region} cover all of ${regionName} and ${global} are open worldwide. ${openNow(ls)}`,
+    h1: `Grants for nature restoration and conservation in ${inPlace(name)}`,
+    title: placeTitle(name),
+    lead: `${programmes(ls.length)} nature restoration and conservation projects in ${inPlace(name)}: ${namedText}, ${region} cover all of ${regionName} and ${global} are open worldwide. ${openNow(ls)}`,
     listings: ls,
   }
 }
