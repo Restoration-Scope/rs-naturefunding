@@ -80,9 +80,10 @@ export function initEffortTip() {
     const to = e.relatedTarget as Node | null
     const fromBars = barsOf(e.target)
     if (fromBars === dismissed && !(to && dismissed?.contains(to))) dismissed = null
+    // Off the tooltip, wherever to: back onto its bars included.
+    if (tip.contains(e.target as Node) && !(to && tip.contains(to))) overTip = false
     const from = fromBars ?? (tip.contains(e.target as Node) ? tip : null)
     if (!from || (to && (from.contains(to) || tip.contains(to) || barsOf(to) === hovered))) return
-    if (from === tip) overTip = false
     clearTimeout(leaving)
     leaving = window.setTimeout(() => {
       hovered = null

@@ -208,6 +208,8 @@ const MONTHS = [
   ['nov'],
   ['dec', 'dic', 'déc', 'dez'],
 ]
+// Whole names short enough to sit in MONTHS: no dot may follow them ("8 May. 2027" ends a sentence).
+const WHOLE_SHORT = new Set(['janeiro', 'jänner', 'may', 'mai', 'mayo', 'maio', 'mei', 'juin', 'août'])
 const MONTH_NAMES: Record<number, string> = {
   1: 'januar[a-z]*|enero|janvier',
   2: 'februar[a-z]*|febrero|f[ée]vrier|fevereiro',
@@ -234,26 +236,33 @@ export const statesDate = (quote: string, date: string) => {
   // "8." is a day only before its month ("8. Januar 2027"); after one, the dot ends a sentence.
   const day = String.raw`${dd}(?:st|nd|rd|th|er|º)?`
   const mm = String.raw`0?${m}`
-  // Only a short name takes a dot ("Jan. 8"): "8 January. 2027 projects" ends a sentence.
-  const name = String.raw`(?:${MONTH_NAMES[m]}|(?:${MONTHS[m - 1]!.join('|')})\.?)`
+  // Only an abbreviation takes a dot ("Jan. 8"): after a whole name ("8 January. 2027 projects") it ends a sentence.
+  const short = MONTHS[m - 1]!
+  const whole = [MONTH_NAMES[m], ...short.filter((a) => WHOLE_SHORT.has(a))].filter(Boolean).join('|')
+  const name = String.raw`(?:${whole}|(?:${short.filter((a) => !WHOLE_SHORT.has(a)).join('|')})\.?)`
   const year = String.raw`(?:${y}|['‘’]${y.slice(2)})`
   const yy = String.raw`(?:${y}|${y.slice(2)})`
   const gap = String.raw`[\s,-]*(?:de\s+|of\s+)?`
-  const whole = (f: string, flags = 'iu') => new RegExp(String.raw`(?<![\p{L}\d])(?:${f})(?![\p{L}\d])`, flags)
+  const alone = (f: string, flags = 'iu') => new RegExp(String.raw`(?<![\p{L}\d])(?:${f})(?![\p{L}\d])`, flags)
   const forms = [
     String.raw`${day}\.?${gap}${name}${gap}${year}`,
     String.raw`${name}\s*${day},?\s*${year}`,
     String.raw`${dd}\.${mm}\.${yy}`,
     String.raw`${y}[./-]${mm}[./-]${dd}`,
   ]
-  if (whole(forms.join('|')).test(quote)) return true
+  if (alone(forms.join('|')).test(quote)) return true
   const twoWays = d <= 12 && d !== m
   const DMY = /\b(?:dd|jj|tt)[/-]mm\b/i
   const MDY = /\bmm[/-]dd\b/i
-  // Each match must carry its own order within a few words, so another field's format can't vouch for it.
-  const near = (re: RegExp, at: number, len: number) => re.test(quote.slice(Math.max(0, at - 40), at + len + 40))
+  // Each match must carry its own order within a few words of its own sentence, so another field's format can't
+  // vouch for it ("closes 08/01/2027. Birth date: DD/MM/YYYY.").
+  const near = (re: RegExp, at: number, len: number) => {
+    const before = quote.slice(Math.max(0, at - 40), at).split(/[.;!?\n]\s/).pop()!
+    const after = quote.slice(at + len, at + len + 40).split(/[.;!?\n](?:\s|$)/)[0]!
+    return re.test(`${before} ${after}`)
+  }
   const numeric = (f: string, own: RegExp, other: RegExp) =>
-    [...quote.matchAll(whole(f, 'giu'))].some((x) => !twoWays || (near(own, x.index, x[0].length) && !near(other, x.index, x[0].length)))
+    [...quote.matchAll(alone(f, 'giu'))].some((x) => !twoWays || (near(own, x.index, x[0].length) && !near(other, x.index, x[0].length)))
   return numeric(String.raw`${dd}[/-]${mm}[/-]${yy}`, DMY, MDY) || numeric(String.raw`${mm}[/-]${dd}[/-]${yy}`, MDY, DMY)
 }
 
