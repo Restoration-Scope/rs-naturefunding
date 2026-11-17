@@ -42,6 +42,21 @@ are reconciled per programme, not patched per page. It shares the refresh code:
    false `requirements_checked` stamps, item accuracy, and each Jev threshold's
    precision and recall. Keep the set in `tests/fixtures/requirements/` so it runs as
    a test after any prompt, model or question change.
+3. Adjudication, written from the tune set before the held run and applied
+   unchanged to it. The raw score pairs one written item with one gold item on
+   name or quote; a person (or agent) then reads each unpaired item and rules:
+   - Same requirement, other words or a neighbouring sentence of the same passage:
+     a hit.
+   - One written item that states two gold items from one sentence: two hits only
+     if its words name both; otherwise one hit and one miss.
+   - A gold item split into two written items: one hit; the second is not an extra.
+   - A written item the gold set lacks: a sound extra when its quote states a hard
+     requirement of the current round (gold lists at most 8 rules, so it picked
+     others); a wrong extra when it is a selection criterion, an older round's
+     rule, another programme's, or says more than its quote.
+   - A gold item on a document the run never gathered: a discovery miss, counted
+     once in discovery recall, not again as an extraction miss.
+   Report raw and adjudicated numbers side by side.
 
 ## Budgets
 
