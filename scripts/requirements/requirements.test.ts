@@ -388,3 +388,11 @@ test('links: the same page in another language is skipped', () => {
   expect(classifyLink({ href: '/pt/faq', text: 'FAQ', context: '' }, 'https://test.example.org/en/grants', base).why).toBe('another language')
   expect(classifyLink({ href: '/en/faq', text: 'FAQ', context: '' }, 'https://test.example.org/en/grants', base).score).toBe('strong')
 })
+
+test('gather: a page written with and without its trailing slash is read once', async () => {
+  const page = PAGE.replace('<a href="/news">Latest news</a>', '<a href="/faq">FAQ</a> <a href="/faq/">Questions</a>')
+  const faq = 'Test Nature Grants questions. Registered charities may apply; individuals may not. '.repeat(5)
+  const read = fakeReader({ 'https://test.example.org/grants': page, 'https://test.example.org/guidelines.pdf': GUIDE, 'https://test.example.org/faq': faq, 'https://test.example.org/faq/': faq })
+  const g = await gather(base, { read, sources: [] })
+  expect(g.docs.filter((d) => d.url.includes('/faq')).length).toBe(1)
+})

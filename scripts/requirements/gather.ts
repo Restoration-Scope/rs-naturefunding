@@ -70,6 +70,9 @@ const langOf = (path: string) => {
   return m && LANGS.has(m[1]!.toLowerCase()) ? m[1]!.toLowerCase() : null
 }
 
+/** One key for a URL however it is written: no fragment, no trailing slash. */
+export const urlKey = (u: string) => u.replace(/#.*$/, '').replace(/\/(?=$|\?)/, '')
+
 const site = (host: string) => host.replace(/^www\./, '').split('.').slice(-2).join('.')
 
 export type Candidate = Link & { url: string; score: 'strong' | 'ambiguous' | 'skip'; why: string }
@@ -85,7 +88,7 @@ export function classifyLink(link: Link, pageUrl: string, programme: Pick<Progra
   const u = new URL(url)
   if (SKIP_HREF.test(link.href) || !/^https?:$/.test(u.protocol)) return { ...link, url, score: 'skip', why: 'not a page' }
   if (SOCIAL.test(u.hostname)) return { ...link, url, score: 'skip', why: 'social media' }
-  if (url === pageUrl.replace(/#.*$/, '')) return { ...link, url, score: 'skip', why: 'same page' }
+  if (urlKey(url) === urlKey(pageUrl)) return { ...link, url, score: 'skip', why: 'same page' }
   const words = `${link.text} ${decodeURIComponent(u.pathname)}`
   const sameSite = site(u.hostname) === site(new URL(pageUrl).hostname) || site(u.hostname) === site(new URL(programme.url).hostname)
   // The same page in another language spends the crawl bound on text already read.
@@ -176,7 +179,8 @@ export function politeReader(cacheDir: string | null, gapMs = HOST_GAP_MS): Read
 export function seedsOf(p: Programme): string[] {
   const all = [p.url, ...p.calls.map((c) => c.url), ...Object.values(p.evidence).flat().map((e) => e!.source_url)]
   for (const c of p.calls) for (const e of Object.values(c.evidence)) if (e) all.push(e.source_url)
-  return [...new Set(all.map((u) => u.replace(/#.*$/, '')))]
+  const keys = new Set<string>()
+  return all.map((u) => u.replace(/#.*$/, '')).filter((u) => (keys.has(urlKey(u)) ? false : (keys.add(urlKey(u)), true)))
 }
 
 export async function gather(
@@ -191,13 +195,15 @@ export async function gather(
   const reasons: string[] = []
 
   async function open(url: string, from: string | null, anchor: string | null, depth: number): Promise<Doc | null> {
-    seen.add(url)
+    seen.add(urlKey(url))
     const r = await opts.read(url)
     if (!r.ok) {
       failures.push({ url, from, kind: r.kind, message: r.message })
       return null
     }
-    seen.add(r.finalUrl)
+    // A redirect to a page already read adds nothing.
+    if (urlKey(r.finalUrl) !== urlKey(url) && seen.has(urlKey(r.finalUrl))) return null
+    seen.add(urlKey(r.finalUrl))
     let text: string
     let pages: string[] | null = null
     let links: Link[] = []
@@ -228,7 +234,7 @@ export async function gather(
     return doc
   }
 
-  for (const url of seedsOf(p)) await open(url, null, null, 0)
+  for (const url of seedsOf(p)) if (!seen.has(urlKey(url))) await open(url, null, null, 0)
 
   let followed = 0
   let frontier = docs.filter((d) => !d.pdf)
@@ -238,12 +244,12 @@ export async function gather(
     for (const d of frontier) {
       for (const l of d.links) {
         const c = classifyLink(l, d.final_url, p)
-        if (seen.has(c.url) || candidates.has(c.url)) continue
+        if (seen.has(urlKey(c.url)) || candidates.has(urlKey(c.url))) continue
         if (c.score === 'skip') {
           if (c.why !== 'not a page' && c.why !== 'same page') skipped.push({ url: c.url, why: c.why })
           continue
         }
-        candidates.set(c.url, { ...c, from: d.url })
+        candidates.set(urlKey(c.url), { ...c, from: d.url })
       }
     }
     let strong = [...candidates.values()].filter((c) => c.score === 'strong')
@@ -288,6 +294,7 @@ export async function gather(
         failures.push({ url: c.url, from: c.from, kind: 'bound', message: `crawl bound of ${bounds.documents} documents reached` })
         continue
       }
+      if (seen.has(urlKey(c.url))) continue
       followed++
       const d = await open(c.url, c.from, c.text, depth)
       if (d && !d.pdf) next.push(d)
