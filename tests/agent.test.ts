@@ -31,7 +31,9 @@ describe('every page has a Markdown twin', () => {
     expect(sitemap.length).toBeGreaterThan(3)
     for (const path of sitemap) {
       const twin = absolute(twinPath(path))
-      const link = parseHTML(read(htmlFile(path))).document.querySelector('link[rel="alternate"][type="text/markdown"]')
+      // The link sits in the head: parsing only that keeps a thousand finder rows out of the time budget.
+      const head = read(htmlFile(path)).split('</head>')[0]!
+      const link = parseHTML(`${head}</head><body></body></html>`).document.querySelector('link[rel="alternate"][type="text/markdown"]')
       expect(link?.getAttribute('href'), path).toBe(twin)
       expect(existsSync(join(dist, twinPath(path).slice(1))), twin).toBe(true)
       expect(llms.includes(`](${twin})`), `llms.txt lists ${twin}`).toBe(true)
