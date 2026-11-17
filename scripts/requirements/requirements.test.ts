@@ -457,6 +457,19 @@ describe('gather: coverage it must not claim', () => {
     expect(g.failures.find((f) => f.url === 'https://portal.example.net/apply/123')?.kind).toBe('offsite')
   })
 
+  test('the funder’s own file served through a redirect to a file host is first-party', async () => {
+    const page = PAGE.replace('<a href="/news">Latest news</a>', '<a href="/_files/rules.pdf">Grant rules</a>')
+    const pages: Record<string, string> = { 'https://test.example.org/grants': page, 'https://test.example.org/guidelines.pdf': GUIDE }
+    const rules = 'Grant rules. Applicants must be registered charities with two years of accounts. '.repeat(6)
+    const read: Reader = async (url) => {
+      if (url === 'https://test.example.org/_files/rules.pdf') return { ok: true, finalUrl: 'https://abc.filesusr.example/ugd/rules.pdf', pdf: false, html: `<html><body><p>${rules}</p></body></html>`, bytes: new Uint8Array() }
+      return fakeReader(pages)(url)
+    }
+    const g = await gather(base, { read, sources: [] })
+    expect(g.docs.map((d) => d.url)).toContain('https://test.example.org/_files/rules.pdf')
+    expect(g.failures.filter((f) => f.kind === 'offsite')).toEqual([])
+  })
+
   test('a document on another host that names the funder is not used without Jev', async () => {
     const page = PAGE.replace('<a href="/news">Latest news</a>', '<a href="https://guides.example.net/test-nature-grants-guide.pdf">A guide to Test Nature Grants</a>')
     const read = fakeReader({ 'https://test.example.org/grants': page, 'https://test.example.org/guidelines.pdf': GUIDE, 'https://guides.example.net/test-nature-grants-guide.pdf': 'Test Nature Grants: our guide. Applicants must have five years of accounts. '.repeat(6) })

@@ -349,7 +349,9 @@ export async function gather(
   const firstParty = new Set(seedsOf(p).map((u) => URL.parse(u)?.hostname).filter((h): h is string => !!h).map(site))
   for (const d of [...docs]) {
     if (d.depth === 0 || d.low_text) continue
-    const offsite = !firstParty.has(site(new URL(d.final_url).hostname))
+    // By the link the funder published: its own file served through a redirect to a file host (Wix serves
+    // site files from filesusr.com) is still first-party.
+    const offsite = !firstParty.has(site(new URL(d.url).hostname))
     const head = comparable(d.text.slice(0, 20_000))
     const names = [p.name, p.funder.name, p.administered_by?.name].filter((n): n is string => !!n).map((n) => comparable(n).slice(0, 50))
     if (!offsite && names.some((n) => n.length > 4 && head.includes(n))) continue
