@@ -24,7 +24,7 @@ export const JEV = {
 }
 
 /** One raw judgment, for the manifest and the threshold sweep. `broken` is the probability the item is wrong. */
-export type Judgement = { field: Field; item: string; question: string; p: number; choice?: string; expected?: string }
+export type Judgement = { field: Field; item: string; question: string; p: number; quote?: string; choice?: string; expected?: string }
 
 const SECTION = 800
 const OMISSION_CHARS = 24_000
@@ -95,7 +95,7 @@ export async function check(jev: AskJev, p: Programme, facts: Facts, docs: Doc[]
   const judgements: Judgement[] = []
   const prog = programmeState(p)
   const judge = (field: Field, item: string, question: string, broken: number, q: Quote, why: string, extra: Partial<Judgement> = {}) => {
-    judgements.push({ field, item, question, p: broken, ...extra })
+    judgements.push({ field, item, question, p: broken, quote: q.quote, ...extra })
     if (broken >= JEV.flag) flags.push({ field, item, why, quote: q.quote, doc: q.doc, source: 'jev', p: broken })
   }
 
@@ -140,7 +140,7 @@ export async function check(jev: AskJev, p: Programme, facts: Facts, docs: Doc[]
       const k = a[`kind${i}`]
       if (k && k.type === 'choice' && eligibilityKind.options.includes(k.choice as never)) {
         const disagree = k.choice !== it.kind
-        judgements.push({ field: 'eligibility', item: it.rule, question: 'kind', p: 1 - (k.probabilities[it.kind] ?? 0), choice: k.choice, expected: it.kind })
+        judgements.push({ field: 'eligibility', item: it.rule, question: 'kind', p: 1 - (k.probabilities[it.kind] ?? 0), quote: q.quote, choice: k.choice, expected: it.kind })
         if (disagree && k.confidence >= JEV.confidence) flags.push({ field: 'eligibility', item: it.rule, why: `kind is ${it.kind}, Jev reads ${k.choice}`, quote: q.quote, doc: q.doc, source: 'jev', p: k.confidence })
         // A typed value rides on its kind, so a doubtful kind on a typed rule is worth a second look.
         else if (k.confidence < JEV.confidence && (facts.eligibility[i]!.min_years || facts.eligibility[i]!.revenue || facts.eligibility[i]!.request_cap))
