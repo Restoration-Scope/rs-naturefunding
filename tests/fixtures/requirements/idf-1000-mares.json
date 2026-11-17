@@ -1,0 +1,128 @@
+{
+  "id": "idf-1000-mares",
+  "filled_by": "claude-opus-5-5 reading the funder's pages, 2026-11-17",
+  "checked_by_person": false,
+  "documents_expected": [
+    {
+      "url": "https://www.iledefrance.fr/aides-et-appels-a-projets/1-000-mares-en-ile-de-france",
+      "why": "call page: who, what, rates, year-round filing"
+    },
+    {
+      "url": "https://mesdemarches.iledefrance.fr/document-collect/cridfprd/root/public?objectId=6fe09aa3-51d1-41a2-930b-38774bdf6d32;1.0",
+      "why": "cahier des charges 2026: eligibility, ineligible works, required documents, payment and data duties"
+    },
+    {
+      "url": "https://mesdemarches.iledefrance.fr/document-collect/cridfprd/root/public?objectId=e39f3cd3-2275-4ddf-8688-1fd4cf795ab4;1.0",
+      "why": "the technical grid to fill in (Excel)"
+    }
+  ],
+  "coverage_complete": true,
+  "eligibility": [
+    {
+      "rule": "Associations (over a year old, not co-owners' associations) and Départements",
+      "kind": "legal",
+      "quote": "Les bénéficiaires éligibles au titre de ce dispositif sont les : − Associations1 − Départements.",
+      "alt_quotes": [
+        "Toute association doit présenter une ancienneté supérieure à 1 an pour être éligible à ce dispositif."
+      ]
+    },
+    {
+      "rule": "Associations must be more than one year old",
+      "kind": "track_record",
+      "quote": "Toute association doit présenter une ancienneté supérieure à 1 an pour être éligible à ce dispositif."
+    },
+    {
+      "rule": "Pond creation or restoration in Île-de-France, following the SNPN technical guidance",
+      "kind": "project",
+      "quote": "L'éligibilité technique des projets est conditionnée au respect des préconisations techniques de la Société Nationale de Protection de la Nature"
+    },
+    {
+      "rule": "Investment costs only",
+      "kind": "finances",
+      "quote": "Seules les dépenses en investissement sont éligibles."
+    },
+    {
+      "rule": "Minimum project budget: over €2,000 (creation) or €1,000 (restoration)",
+      "kind": "finances",
+      "quote": "Le montant du budget minimum du projet doit être supérieur à 2000€ pour les projets de création, et 1000€ pour les projets de restauration."
+    },
+    {
+      "rule": "No purely aesthetic dredging, fish introduction, amphibian transfers or invasive plantings",
+      "kind": "project",
+      "quote": "Les projets de restauration et curage de mares pour seule ambition d’entretien esthétique et paysager"
+    },
+    {
+      "rule": "Apply before works start (early start only by exception)",
+      "kind": "project",
+      "quote": "toute demande de subvention doit être déposée en amont du démarrage des travaux du projet."
+    }
+  ],
+  "documents": [
+    {
+      "item": "Cover letter to the President of the Regional Council",
+      "quote": "Un courrier de saisine adressé à la Présidente du conseil régional d’Île-de-France ;"
+    },
+    {
+      "item": "Municipality's opinion or the landowner's agreement if not the owner",
+      "quote": "L’avis de la commune ou un courrier manifestant l’accord du propriétaire si le projet est porté par un autre maître d’ouvrage que le propriétaire ;"
+    },
+    {
+      "item": "VAT recovery certificate (template)",
+      "quote": "Un certificat de récupération / non-récupération de la TVA."
+    },
+    {
+      "item": "Bank details (RIB) and SIREN record",
+      "quote": "Un RIB ; − La fiche SIREN ;"
+    },
+    {
+      "item": "Commitment letter to publish internship offers (template)",
+      "quote": "Une lettre d’engagement de la structure à publier une ou plusieurs offres de stages pour une durée minimum de deux mois"
+    },
+    {
+      "item": "Associations: statutes and the signed Regional Charter of Republican Values and Secularism",
+      "quote": "La copie des statuts de l’organisme ; La Charte Régionale des Valeurs de la République et de la Laïcité signée"
+    },
+    {
+      "item": "Technical grid (Excel) with features, schedule and financing plan",
+      "quote": "La grille technique projet à compléter (Excel téléchargeable sur la plateforme de dépôt Mesdémarches ou sur la page web du dispositif)"
+    },
+    {
+      "item": "Detailed cost estimates",
+      "quote": "Le(s) devis estimatif(s) détaillé(s)"
+    },
+    {
+      "item": "Photos of the site as it is now",
+      "quote": "Des photos de l’existant, permettant une visualisation de la zone identifiée pour la mare avant-projet"
+    }
+  ],
+  "effort": [
+    {
+      "step": "File the application on mesdemarches.iledefrance.fr (open all year)",
+      "quote": "Les porteurs de projet peuvent déposer leurs dossiers de candidature toute l'année sur mesdemarches.iledefrance.fr."
+    },
+    {
+      "step": "Sign sworn statements on the SNPN guidance, planning rules and no double regional funding",
+      "quote": "En phase de dépôt de dossier, les porteurs sont invités à attester sur l’honneur les points suivants"
+    },
+    {
+      "step": "Claim the balance within three years of the award",
+      "quote": "Si à l’expiration d’un délai de 3 ans à compter de la date d’attribution de la subvention par l’assemblée délibérante, le bénéficiaire n’a pas transmis à la Région sa demande de solde, la subvention devient caduque et est annulée."
+    }
+  ],
+  "co_finance_required": {
+    "value": true,
+    "quote": "Le dispositif propose un taux maximum d’intervention de 80 % des dépenses éligibles"
+  },
+  "co_finance": {
+    "min_share": 20
+  },
+  "consortium_required": null,
+  "after_award": [
+    {
+      "duty": "reports",
+      "reports": "final",
+      "quote": "l’attestation d’achèvement des travaux signée et datée du bénéficiaire, accompagnée de photos de/des ouvrages réalisés."
+    }
+  ],
+  "notes": "Grants cover up to 80% of costs, capped per pond at €5,000 (creation) or €2,500 (restoration). Year-round filing, decided by the Permanent Commission. Grantees must list the pond on the SNPN Observatoire des mares and upload naturalist data to GeoNat'îdF. The 2026-06 Règlement d'intervention SRB is the general regional biodiversity rulebook; the cahier des charges carries this call's detail, so only it is expected. The three call documents sit behind 'Télécharger' buttons pointing to mesdemarches.iledefrance.fr document-collect links."
+}

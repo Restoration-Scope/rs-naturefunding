@@ -1,0 +1,129 @@
+{
+  "id": "mn-conservation-partners-legacy",
+  "filled_by": "claude-opus-5-5 reading the funder's pages, 2026-11-17",
+  "checked_by_person": false,
+  "documents_expected": [
+    {
+      "url": "https://files.dnr.state.mn.us/fish_wildlife/cpl/fy27-rfp.pdf",
+      "why": "FY2027 Request for Proposals: eligibility, match, forms, financial documents, reporting"
+    },
+    {
+      "url": "https://files.dnr.state.mn.us/fish_wildlife/cpl/funding_schedule.pdf",
+      "why": "FY2027 schedule: Metro and ECP round deadlines"
+    }
+  ],
+  "coverage_complete": true,
+  "eligibility": [
+    {
+      "rule": "Registered 501(c)(3) nonprofits and government entities; not individuals or for-profits",
+      "kind": "legal",
+      "quote": "Registered 501 c(3) nonprofit organizations and government entities are eligible for CPL funding. Private individuals and for-profit organizations may not apply."
+    },
+    {
+      "rule": "Projects restore, protect or enhance prairies, wetlands, forests or fish, game and wildlife habitat in Minnesota",
+      "kind": "project",
+      "quote": "Grants must restore, protect or enhance prairies, wetlands, forests, or habitat for fish, game, or wildlife in Minnesota."
+    },
+    {
+      "rule": "FY2027: projects in the 7-county metro area or Duluth, Rochester or St. Cloud only",
+      "kind": "project",
+      "quote": "Projects must be located within the 7- county metro area or within city limits of cities with a population of 50,000 or greater (Duluth, Rochester, St. Cloud)."
+    },
+    {
+      "rule": "Restoration and enhancement only on easement-protected, public land or in public waters",
+      "kind": "project",
+      "quote": "Permanently protected by a conservation easement as defined in MN Statutes 84C.01; in public ownership (ownership by a unit of government including tribal, federal, state, county, city, school district, special district, etc.); or in public waters"
+    },
+    {
+      "rule": "Grants of $5,000 to $500,000 (ECP up to $75,000); total project cost at most $1,000,000",
+      "kind": "project",
+      "quote": "Grant requests between $5,000 and $500,000. Total project cost may not exceed $1,000,000.",
+      "alt_quotes": ["Grants are limited to a maximum award of $75,000 (minimum $5,000)."]
+    },
+    {
+      "rule": "Poor performance on earlier DNR grants can mean no or partial funding",
+      "kind": "track_record",
+      "quote": "Applicants who performed poorly on prior grants may not be funded, or may be only partially funded until performance has improved."
+    },
+    {
+      "rule": "The Project Manager and the Land Manager must be different people",
+      "kind": "capacity",
+      "quote": "The Land Manager cannot be the same person as the Project Manager."
+    }
+  ],
+  "documents": [
+    {
+      "item": "Signed Land Manager Review and Approval Form, with the Natural Heritage review",
+      "quote": "Applications must include a signed Land Manager Review and Approval Form."
+    },
+    {
+      "item": "Financial documents for nonprofits requesting over $25,000 (statements, Form 990 or audit by income)",
+      "quote": "Nongovernmental organizations requesting over $25,000 are required to submit financial documentation to meet the State Grant Policy 08-06.",
+      "alt_quotes": ["Financial documentation must be submitted for nongovernmental organizations requesting over $25,000."]
+    },
+    {
+      "item": "Public Waters Project Form, for work in public waters",
+      "quote": "A Public Waters Form is required for projects located in public waters."
+    },
+    {
+      "item": "Letters of commitment from match partners",
+      "quote": "Match funds from partners must be supported with letters of commitment."
+    },
+    {
+      "item": "Conservation easement documents, for work on private land",
+      "quote": "For work on private lands, the permanent conservation easement documentation must be uploaded."
+    },
+    {
+      "item": "Engineering design and plans, for construction projects",
+      "quote": "All plans must be submitted with the application."
+    }
+  ],
+  "effort": [
+    {
+      "step": "Submit ECP Round 3 online (first come, first served)",
+      "due": "2027-01-11",
+      "quote": "January 11, 2027: ECP Round 3 closes at 4:00pm."
+    },
+    {
+      "step": "Submit Metro Round 2 online, if funds remain",
+      "due": "2027-02-16",
+      "quote": "If funding remains, Round 2 will open on January 1, 2027 and close on February 16, 2027 at 4:00 PM, CST."
+    },
+    {
+      "step": "Submit ECP Round 4 online",
+      "due": "2027-03-08",
+      "quote": "March 8, 2027: ECP Round 4 closes at 4:00pm."
+    },
+    {
+      "step": "Submit ECP Round 5 online",
+      "due": "2027-05-10",
+      "quote": "May 10, 2027: ECP Round 5 closes at 4:00pm."
+    },
+    {
+      "step": "Map each project site in the online mapping system",
+      "quote": "Each project site must be mapped using the online mapping system."
+    },
+    {
+      "step": "After award: register as a state vendor and sign the grant contract before work starts",
+      "quote": "Grantees will need to register with the State Vendor System before they can enter into a grant contract with the State."
+    }
+  ],
+  "co_finance_required": {
+    "value": true,
+    "quote": "A 10% match of non-state funds is required for all grants. The match may be cash or in-kind resources."
+  },
+  "co_finance": { "ratio": "1:10", "in_kind": true },
+  "consortium_required": {
+    "value": false,
+    "quote": "Partnerships are encouraged."
+  },
+  "after_award": [
+    {
+      "duty": "reports",
+      "reports": "yearly",
+      "quote": "Accomplishment Reports must be submitted by December 31 of each year that the grant is active.",
+      "alt_quotes": ["A Final Accomplishment Report must be submitted with the final payment request by July 25, 2030."]
+    }
+  ],
+  "notes": "FY2027 funds go only to Metro projects (7-county metro plus Duluth, Rochester, St. Cloud): no statewide or new-applicant round. Match is 10% of the grant requested (not of project cost). Reimbursement-based, 5% held back until the final report. Metro Round 1 and ECP Rounds 1–2 have passed; Metro Round 2 runs only if more than $1 million remains. The RFP says 16 September for Metro Round 1 in one place and 15 September in another. The CPL web page returned HTTP 403 to the fetcher; both PDFs were read."
+}
