@@ -1,0 +1,41 @@
+{
+  "id": "utrecht-leefgebieden-bedreigde-soorten",
+  "filled_by": "claude-opus-5-5 reading the funder's pages, 2026-11-17",
+  "checked_by_person": false,
+  "documents_expected": [
+    { "url": "https://www.provincie-utrecht.nl/loket/subsidies/leefgebieden-bedreigde-soorten", "why": "call page: who, criteria, rates, period" },
+    { "url": "https://www.provincie-utrecht.nl/loket/subsidies/hoe-kunt-u-subsidie-aanvragen", "why": "how to apply: the general attachments" },
+    { "url": "https://lokaleregelgeving.overheid.nl/CVDR732379/#hoofdstuk_3", "why": "the regulation, chapter 3: criteria, refusals, attachments, obligations (official publication)" }
+  ],
+  "coverage_complete": true,
+  "eligibility": [
+    { "rule": "Individuals, legal entities, or partnerships with a legal entity as lead", "kind": "legal", "quote": "Subsidie kan worden aangevraagd door natuurlijke personen, rechtspersonen of een samenwerkingsverband waarbij een rechtspersoon optreedt als penvoerder." },
+    { "rule": "Results useful for Utrecht's focal and Red List species or their habitats", "kind": "project", "quote": "de resultaten van de activiteiten zijn relevant en bruikbaar voor instandhouding en ontwikkeling van aandachtsoorten en rode lijstsoorten of hun leefgebieden;" },
+    { "rule": "Shows the effect on these species in the project area", "kind": "project", "quote": "er wordt inzichtelijk gemaakt wat het effect van de voorgenomen activiteiten is op deze soorten in het projectgebied;" },
+    { "rule": "Native, regional planting and seed material", "kind": "project", "quote": "voor zover er plant- en zaaigoed wordt gebruikt, geldt voor bomen en struiken dat deze autochtoon zijn, voor zaden van kruiden geldt dat zij inheems en van regionale afkomst zijn." },
+    { "rule": "Request at least €2,500", "kind": "other", "quote": "het aangevraagde subsidiebedrag minder bedraagt dan € 2500,-;", "alt_quotes": ["De subsidies bedragen minimaal € 2500,- ."] },
+    { "rule": "Not routine management", "kind": "project", "quote": "de activiteit een beheermaatregel betreft." },
+    { "rule": "Not work other provincial schemes (SKNL, SNL, small landscape elements, meadow birds) can fund", "kind": "other", "quote": "het project gefinancierd kan worden door de Subsidieregeling kwaliteitsimpuls natuur en landschap provincie Utrecht, de Subsidieverordening natuur- en landschapsbeheer provincie Utrecht 2016 of hoofdstuk 7 (Kleine landschapselementen) van deze subsidieregeling;", "alt_quotes": ["het gaat om activiteiten voor weidevogels die door andere regelingen reeds gefinancierd kunnen worden;"] }
+  ],
+  "documents": [
+    { "item": "Supporting maps", "quote": "ondersteunend kaartmateriaal;" },
+    { "item": "How management and maintenance are secured", "quote": "een beschrijving van de wijze waarop beheer en onderhoud worden geborgd;" },
+    { "item": "Consent of all partners (partnerships)", "quote": "als er sprake is van een samenwerkingsverband van meerdere deelnemers, een document waaruit de instemming blijkt van alle deelnemers van het samenwerkingsverband;" },
+    { "item": "Landowner or user consent, where needed", "quote": "een document waaruit die toestemming blijkt." },
+    { "item": "Project plan", "quote": "Projectplan: uitgebreide beschrijving van het project;" },
+    { "item": "Budget with financing plan", "quote": "Begroting: begroting en onderbouwing van de kostenposten in de begroting, inclusief dekkingsplan;" },
+    { "item": "Statutes and founding deed (first-time applicants)", "quote": "Als een rechtspersoon voor de eerste keer subsidie aanvraagt, dient hij tevens de oprichtingsakte en de statuten aan te leveren." },
+    { "item": "Latest annual accounts", "quote": "Meest recente definitieve jaarrekening ter bepaling van actuele stand (eigen) vermogen;" },
+    { "item": "Bank statement copy", "quote": "Kopie bankafschrift: kopie van het bankafschrift waaruit de relatie tussen de aanvrager en het IBAN-nummer blijkt;" }
+  ],
+  "effort": [
+    { "step": "Apply with the online form (eHerkenning) while the period is open", "due": "2026-12-31", "quote": "Aanvraagperiode: 1 januari 2026 00:00 - 31 december 2026 23:59", "alt_quotes": ["Onderaan de pagina van de subsidieregeling vindt u de knop 'Aanvragen'."] }
+  ],
+  "co_finance_required": { "value": true, "quote": "95 procent van de subsidiabele kosten tot een max. van 60.000 euro.", "alt_quotes": ["maximaal 95% van de subsidiabele kosten tot een maximum van € 60.000,-."] },
+  "co_finance": { "min_share": 5 },
+  "consortium_required": null,
+  "after_award": [
+    { "duty": "reports", "reports": "final", "quote": "bij het verzoek tot vaststelling van de subsidie de resultaten middels een monitoringsverslag bij te voegen dat minimaal bevat:" }
+  ],
+  "notes": "Grant is 95% (5% own share) outside towns and on non-municipal land in towns; 50% on municipal land in towns, so min_share 5 is the lowest share. First come, first served; €300,000 ceiling for 2026. Works must be done within 3 years and kept for 6. The general attachments page lists more conditional items (KvK extract without eHerkenning, authorisation form for an intermediary, tax statement)."
+}
