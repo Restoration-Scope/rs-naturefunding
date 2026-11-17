@@ -46,7 +46,8 @@ const programmeState = (p: Programme) => ({
   applicant_types: p.applicant_types,
 })
 
-const noul = (a: Answer | undefined) => (a && a.type === 'noul' ? a.noul : 0.5)
+/** P(yes), or null when Jev gave no answer. A missing answer is never read as a middling one. */
+const noul = (a: Answer | undefined) => (a && a.type === 'noul' && Number.isFinite(a.noul) ? a.noul : null)
 
 const OMISSION: Record<Field, string> = {
   eligibility: 'a hard requirement an applicant must meet to be allowed to apply (legal status, years operating, finances, capacity, project scope or partners), beyond a plain list of countries or organisation types',
@@ -81,7 +82,8 @@ export async function omissions(jev: AskJev, p: Programme, chunks: Chunk[], fiel
     )
     const answers = await jev(p.id, { programme: programmeState(p), text: piece.text }, questions)
     for (const f of fields) {
-      const y = noul(answers[f])
+      // No answer: the text may state it, so the field is read again.
+      const y = noul(answers[f]) ?? 1
       judgements.push({ field: f, item: piece.id, question: 'omission', p: y })
       best[f] = Math.max(best[f] ?? 0, y)
     }
@@ -89,18 +91,30 @@ export async function omissions(jev: AskJev, p: Programme, chunks: Chunk[], fiel
   return { fields: fields.filter((f) => (best[f] ?? 0) >= JEV.omission), judgements }
 }
 
+const typedOf = (e: { min_years?: number; revenue?: unknown; request_cap?: unknown }) => {
+  const t = { ...(e.min_years !== undefined ? { min_years: e.min_years } : {}), ...(e.revenue ? { revenue: e.revenue } : {}), ...(e.request_cap ? { request_cap: e.request_cap } : {}) }
+  return Object.keys(t).length ? t : null
+}
+
 /** Jev's questions about every verified item. Returns flags and every raw judgment. */
 export async function check(jev: AskJev, p: Programme, facts: Facts, docs: Doc[]): Promise<{ flags: Flag[]; judgements: Judgement[] }> {
   const flags: Flag[] = []
   const judgements: Judgement[] = []
   const prog = programmeState(p)
-  const judge = (field: Field, item: string, question: string, broken: number, q: Quote, why: string, extra: Partial<Judgement> = {}) => {
+  /** `broken` is P(the item is wrong); null (no answer) flags it. */
+  const judge = (field: Field, item: string, question: string, broken: number | null, q: Quote, why: string, extra: Partial<Judgement> = {}) => {
+    if (broken === null) {
+      judgements.push({ field, item, question, p: 1, quote: q.quote, ...extra, choice: 'no answer' })
+      flags.push({ field, item, why: `Jev gave no answer on: ${why}`, quote: q.quote, doc: q.doc, source: 'jev', p: 1 })
+      return
+    }
     judgements.push({ field, item, question, p: broken, quote: q.quote, ...extra })
     if (broken >= JEV.flag) flags.push({ field, item, why, quote: q.quote, doc: q.doc, source: 'jev', p: broken })
   }
+  const not = (y: number | null) => (y === null ? null : 1 - y)
 
   if (facts.eligibility.length) {
-    const items = facts.eligibility.map((e) => ({ rule: e.rule, kind: e.kind, quote: e.q.quote, section: section(docs, e.q) }))
+    const items = facts.eligibility.map((e) => ({ rule: e.rule, kind: e.kind, quote: e.q.quote, section: section(docs, e.q), ...(typedOf(e) ? { typed: typedOf(e) } : {}) }))
     const qs: Record<string, Question> = {}
     items.forEach((_, i) => {
       qs[`sel${i}`] = {
@@ -118,6 +132,12 @@ export async function check(jev: AskJev, p: Programme, facts: Facts, docs: Doc[]
         instructions: `An applicant that meets \`items[${i}].rule\` exactly as written: by \`items[${i}].section\`, would that applicant be ruled out of applying?`,
         criteria: { true: 'Meeting the rule rules the applicant out: the rule is phrased backwards', false: 'Meeting the rule lets the applicant apply' },
       }
+      if (items[i]!.typed)
+        qs[`typed${i}`] = {
+          type: 'noul',
+          instructions: `Does \`items[${i}].quote\` state exactly the values in \`items[${i}].typed\` as this rule's threshold (min_years: the fewest years an applicant must have operated; revenue: the range the applicant's yearly revenue, budget or spending must fall in, in that currency; request_cap: the largest request as a percent of the applicant's yearly revenue or budget)?`,
+          criteria: { true: 'The quote states these values for this rule', false: 'A value is missing, different, about something else, or read from a number that means something else' },
+        }
       qs[`kind${i}`] = {
         type: 'choice',
         instructions: `What is \`items[${i}].rule\` about?`,
@@ -137,6 +157,7 @@ export async function check(jev: AskJev, p: Programme, facts: Facts, docs: Doc[]
       judge('eligibility', it.rule, 'selection', noul(a[`sel${i}`]), q, 'a selection criterion or preference, not a hard rule')
       judge('eligibility', it.rule, 'overreach', noul(a[`over${i}`]), q, 'the rule says more or other than its quote')
       judge('eligibility', it.rule, 'polarity', noul(a[`pol${i}`]), q, 'phrased backwards: meeting it would rule an applicant out')
+      if (it.typed) judge('eligibility', it.rule, 'typed', not(noul(a[`typed${i}`])), q, `the quote does not state ${JSON.stringify(it.typed)}`)
       const k = a[`kind${i}`]
       if (k && k.type === 'choice' && eligibilityKind.options.includes(k.choice as never)) {
         const disagree = k.choice !== it.kind
@@ -145,7 +166,7 @@ export async function check(jev: AskJev, p: Programme, facts: Facts, docs: Doc[]
         // A typed value rides on its kind, so a doubtful kind on a typed rule is worth a second look.
         else if (k.confidence < JEV.confidence && (facts.eligibility[i]!.min_years || facts.eligibility[i]!.revenue || facts.eligibility[i]!.request_cap))
           flags.push({ field: 'eligibility', item: it.rule, why: `kind is unclear (${k.choice} at ${k.confidence.toFixed(2)}) on a rule with typed values`, quote: q.quote, doc: q.doc, source: 'jev', p: k.confidence })
-      }
+      } else flags.push({ field: 'eligibility', item: it.rule, why: 'Jev gave no answer on what the rule is about', quote: q.quote, doc: q.doc, source: 'jev', p: 1 })
     })
   }
 
@@ -162,24 +183,31 @@ export async function check(jev: AskJev, p: Programme, facts: Facts, docs: Doc[]
       ]),
     )
     const a = await jev(p.id, { programme: prog, items }, qs)
-    items.forEach((it, i) => judge('documents', it.document, 'first_step', 1 - noul(a[`first${i}`]), facts.documents[i]!.q, 'not asked for at the first step'))
+    items.forEach((it, i) => judge('documents', it.document, 'first_step', not(noul(a[`first${i}`])), facts.documents[i]!.q, 'not asked for at the first step'))
   }
 
-  const dated = facts.effort?.steps.map((s, i) => ({ s, i })).filter(({ s }) => s.due) ?? []
-  if (dated.length) {
-    const steps = facts.effort!.steps.map((s) => ({ step: s.step, due: s.due, quote: s.q.quote, section: section(docs, s.q) }))
-    const qs: Record<string, Question> = Object.fromEntries(
-      dated.map(({ i }) => [
-        `due${i}`,
-        {
+  if (facts.effort?.steps.length) {
+    const all = facts.effort.steps
+    const steps = all.map((s) => ({ step: s.step, due: s.due, quote: s.q.quote, section: section(docs, s.q) }))
+    const qs: Record<string, Question> = {}
+    all.forEach((s, i) => {
+      qs[`step${i}`] = {
+        type: 'noul',
+        instructions: `By \`steps[${i}].section\`, is \`steps[${i}].step\` a stage applicants to this programme go through when applying (in this order, as \`steps\` lists them)?`,
+        criteria: { true: 'A stage of applying, as the text describes it', false: 'Not a stage of applying, another programme’s, or not what the text says' },
+      }
+      if (s.due)
+        qs[`due${i}`] = {
           type: 'noul',
           instructions: `Is \`steps[${i}].due\` the date \`steps[${i}].step\` is due in the current or next round, by \`steps[${i}].section\`, rather than another step's date, an opening date, a decision date or a past round's date?`,
           criteria: { true: 'It is when that step is due', false: 'It is some other date' },
-        },
-      ]),
-    )
+        }
+    })
     const a = await jev(p.id, { programme: prog, steps }, qs)
-    for (const { s, i } of dated) judge('effort', `${s.step} due ${s.due}`, 'due', 1 - noul(a[`due${i}`]), s.q, `${s.due} is not when "${s.step}" is due`)
+    all.forEach((s, i) => {
+      judge('effort', s.step, 'step', not(noul(a[`step${i}`])), s.q, `"${s.step}" is not a stage of applying the text describes`)
+      if (s.due) judge('effort', `${s.step} due ${s.due}`, 'due', not(noul(a[`due${i}`])), s.q, `${s.due} is not when "${s.step}" is due`)
+    })
   }
 
   const yesNo: { field: Field; value: { value: boolean; q: Quote } | null; question: string }[] = [
@@ -190,7 +218,41 @@ export async function check(jev: AskJev, p: Programme, facts: Facts, docs: Doc[]
     if (!y.value) continue
     const a = await jev(p.id, { programme: prog, section: section(docs, y.value.q) }, { v: { type: 'noul', instructions: y.question } })
     const yes = noul(a.v)
-    judge(y.field, `required: ${y.value.value}`, 'required', y.value.value ? 1 - yes : yes, y.value.q, `the text does not say ${y.value.value ? 'it is required' : 'it is not required'}`)
+    judge(y.field, `required: ${y.value.value}`, 'required', y.value.value ? not(yes) : yes, y.value.q, `the text does not say ${y.value.value ? 'it is required' : 'it is not required'}`)
+  }
+
+  // Each co-funding detail is its own claim.
+  const cf = facts.co_finance
+  if (cf) {
+    const claims: [string, string][] = []
+    if (cf.min_share !== undefined) claims.push(['min_share', `applicants must bring at least ${cf.min_share}% of the project cost`])
+    if (cf.ratio !== undefined) claims.push(['ratio', `the match is ${cf.ratio} (applicant's share to the grant, as the text states it)`])
+    if (cf.min_amount) claims.push(['min_amount', `applicants must bring at least ${cf.min_amount.value} ${cf.min_amount.currency}`])
+    if (cf.in_kind) claims.push(['in_kind', 'in-kind contributions (staff time, land, equipment) count toward the co-funding'])
+    if (claims.length) {
+      const a = await jev(
+        p.id,
+        { programme: prog, section: section(docs, cf.q) },
+        Object.fromEntries(claims.map(([k, c]) => [`cf_${k}`, { type: 'noul', instructions: `By \`section\`, is this true of this programme's co-funding: ${c}?` }])),
+      )
+      for (const [k, c] of claims) judge('co_finance', k, 'co_finance', not(noul(a[`cf_${k}`])), cf.q, `the text does not say ${c}`)
+    }
+  }
+
+  // Each after-award duty is its own claim.
+  if (facts.after_award.length) {
+    const DUTY: Record<string, string> = {
+      reports: 'submit reports on the grant',
+      audit: 'have the grant externally or independently audited',
+      site_visits: 'receive visits from the funder at the project site',
+      training: 'take part in training, a capacity programme or events',
+    }
+    const a = await jev(
+      p.id,
+      { programme: prog, duties: facts.after_award.map((d) => ({ duty: d.duty, section: section(docs, d.q) })) },
+      Object.fromEntries(facts.after_award.map((d, i) => [`duty${i}`, { type: 'noul', instructions: `By \`duties[${i}].section\`, must a grantee of this programme ${DUTY[d.duty]}?` }])),
+    )
+    facts.after_award.forEach((d, i) => judge('after_award', d.duty, 'duty', not(noul(a[`duty${i}`])), d.q, `the text does not say grantees must ${DUTY[d.duty]}`))
   }
 
   const reports = facts.after_award.find((d) => d.duty === 'reports')
@@ -215,7 +277,8 @@ export async function check(jev: AskJev, p: Programme, facts: Facts, docs: Doc[]
       },
     )
     const r = a.r
-    if (r && r.type === 'choice') {
+    if (!r || r.type !== 'choice') flags.push({ field: 'after_award', item: 'reports', why: 'Jev gave no answer on how often grantees report', quote: reports.q.quote, doc: reports.q.doc, source: 'jev', p: 1 })
+    else {
       judgements.push({ field: 'after_award', item: 'reports', question: 'reports', p: 1 - (r.probabilities[reports.reports] ?? 0), choice: r.choice, expected: reports.reports })
       if (r.choice !== reports.reports && r.confidence >= JEV.confidence) flags.push({ field: 'after_award', item: 'reports', why: `reports read as ${reports.reports}, Jev reads ${r.choice}`, quote: reports.q.quote, doc: reports.q.doc, source: 'jev', p: r.confidence })
       else if (r.choice !== reports.reports) flags.push({ field: 'after_award', item: 'reports', why: `report frequency is unclear (${r.choice} at ${r.confidence.toFixed(2)})`, quote: reports.q.quote, doc: reports.q.doc, source: 'jev', p: r.confidence })

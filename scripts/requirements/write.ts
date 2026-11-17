@@ -45,6 +45,27 @@ const FIELD_KEYS: Record<Field, (keyof Programme)[]> = {
 
 type Draft = Programme & Record<string, unknown>
 
+const words = (s: string) => new Set(comparable(s).split(/[^\p{L}\p{N}]+/u).filter((w) => w.length > 2))
+/** Two names for one item ("Audited accounts", "Latest audited accounts"): most of the shorter one's words are in the other. */
+export function sameItem(a: string, b: string): boolean {
+  const x = words(a)
+  const y = words(b)
+  if (!x.size || !y.size) return comparable(a) === comparable(b)
+  const shared = [...x].filter((w) => y.has(w)).length
+  return shared / Math.min(x.size, y.size) >= 0.5
+}
+
+/** Old items with no counterpart among the new ones, matched one to one so two old items can't share one new item. */
+function unmatched<O, N>(old: O[], now: N[], same: (o: O, n: N) => boolean): O[] {
+  const free = [...now]
+  return old.filter((o) => {
+    const i = free.findIndex((n) => same(o, n))
+    if (i < 0) return true
+    free.splice(i, 1)
+    return false
+  })
+}
+
 export function apply(p: Programme, r: Result, today: string, sources: Source[]): { next: Programme; manifestBits: Pick<Manifest, 'outcomes' | 'written' | 'notes' | 'requirements_checked'>; sources: Source[] } {
   const docs = new Map(r.gathered.docs.map((d) => [d.ref, d]))
   const outcomes = { ...r.outcomes }
@@ -54,6 +75,7 @@ export function apply(p: Programme, r: Result, today: string, sources: Source[])
   const packed = (qs: Quote[], max: number) => packQuotes(r.gathered.docs, qs, max)
   let cur: Draft = structuredClone(p) as Draft
   const used: Quote[] = []
+  const dropped = new Set<Field>()
 
   const tryField = (field: Field, edit: (d: Draft) => Quote[] | null) => {
     const draft = structuredClone(cur)
@@ -70,19 +92,30 @@ export function apply(p: Programme, r: Result, today: string, sources: Source[])
     written.push(field)
   }
 
-  /** What a new reading would lose from the file: a quoted fact, a due date, a typed value or a duty. */
+  /** What a new reading would lose from the file: a quoted fact, an item, a due date, a typed value or a duty. Items are
+   * compared one by one, not by quote: two documents named in one passage are two facts. */
   const losses = (field: Field, newQuotes: string[]): string[] => {
     const f = r.facts
     const keys = FIELD_KEYS[field].filter((k) => k !== 'co_finance_required' && k !== 'consortium_required')
     const oldQuotes = keys.flatMap((k) => [cur.evidence[k as keyof Programme['evidence']]].flat().filter(Boolean).map((e) => (e as Evidence).quote))
     const out = oldQuotes.filter((o) => !newQuotes.some((n) => sameQuote(n, o))).map((o) => `the file quotes "${o.slice(0, 80)}", this reading does not`)
-    if (field === 'effort') for (const d of cur.effort?.due ?? []) if (d && !f.effort?.steps.some((s) => s.due === d)) out.push(`the file dates a step ${d}, this reading does not`)
-    if (field === 'eligibility')
-      (cur.eligibility ?? []).forEach((e, i) => {
-        const q = cur.evidence.eligibility?.[i]?.quote
-        const now = q ? f.eligibility.find((x) => sameQuote(x.q.quote, q)) : undefined
+    if (field === 'effort') {
+      for (const d of cur.effort?.due ?? []) if (d && !f.effort?.steps.some((s) => s.due === d)) out.push(`the file dates a step ${d}, this reading does not`)
+      for (const s of unmatched(cur.effort?.steps ?? [], f.effort?.steps ?? [], (o, n) => sameItem(o, n.step))) out.push(`the file lists the step "${s}", this reading does not`)
+    }
+    if (field === 'documents') for (const d of unmatched(cur.documents ?? [], f.documents, (o, n) => sameItem(o, n.item))) out.push(`the file lists "${d}", this reading does not`)
+    if (field === 'co_finance' && cur.co_finance && f.co_finance)
+      for (const [k, v] of Object.entries(cur.co_finance)) if (JSON.stringify(v) !== JSON.stringify((f.co_finance as Record<string, unknown>)[k])) out.push(`the file gives co_finance.${k} ${JSON.stringify(v)}, this reading does not`)
+    if (field === 'eligibility') {
+      const old = (cur.eligibility ?? []).map((e, i) => ({ e, q: cur.evidence.eligibility?.[i]?.quote ?? '' }))
+      // A rule rephrased on its own quote is the same rule; two rules on one quote must each find their own.
+      const alone = (q: string) => old.filter((x) => sameQuote(x.q, q)).length === 1
+      for (const { e } of unmatched(old, f.eligibility, (o, n) => sameQuote(n.q.quote, o.q) && (alone(o.q) || sameItem(o.e.rule, n.rule)))) out.push(`the file has the rule "${e.rule}", this reading does not`)
+      for (const { e, q } of old) {
+        const now = f.eligibility.find((x) => sameQuote(x.q.quote, q) && (alone(q) || sameItem(e.rule, x.rule)))
         for (const k of ['min_years', 'revenue', 'request_cap'] as const) if (e[k] !== undefined && JSON.stringify(e[k]) !== JSON.stringify(now?.[k])) out.push(`the file gives "${e.rule}" a ${k}, this reading does not`)
-      })
+      }
+    }
     if (field === 'after_award')
       for (const [k, v] of Object.entries(cur.after_award ?? {})) {
         const now = f.after_award.find((x) => x.duty === k)
@@ -171,11 +204,18 @@ export function apply(p: Programme, r: Result, today: string, sources: Source[])
         const groups = new Map<string, number[]>()
         items.forEach((x, i) => groups.set(`${x.q.doc}|${comparable(x.q.quote)}`, [...(groups.get(`${x.q.doc}|${comparable(x.q.quote)}`) ?? []), i]))
         const keep = new Set([...groups.values()].sort((a, b) => b.length - a.length).slice(0, 3).flat())
-        notes.push(`documents: ${items.length - keep.size} items dropped, more than 3 separate passages state them`)
+        notes.push(`documents: ${items.length - keep.size} items left out, more than 3 separate passages state them`)
         items = items.filter((_, i) => keep.has(i))
         pk = packed(items.map((x) => x.q), 3)
+        // The file can hold only some of them: what it shows is true, but not the whole list.
+        dropped.add(field)
       }
-      if (!pk || !guard(field, pk.packed)) continue
+      if (!pk) {
+        outcomes[field] = 'unresolved'
+        notes.push('documents: not written, the quotes do not fit three passages')
+        continue
+      }
+      if (!guard(field, pk.packed)) continue
       tryField(field, (d) => {
         d.documents = items.map((x) => x.item)
         d.evidence.documents = pk!.packed.map(ev)
@@ -186,7 +226,12 @@ export function apply(p: Programme, r: Result, today: string, sources: Source[])
     if (field === 'effort') {
       const e = f.effort!
       const pk = packed(e.steps.map((s) => s.q), 5)
-      if (!pk || !guard(field, pk.packed)) continue
+      if (!pk) {
+        outcomes[field] = 'unresolved'
+        notes.push('effort: not written, the quotes do not fit five passages')
+        continue
+      }
+      if (!guard(field, pk.packed)) continue
       tryField(field, (d) => {
         const due = e.steps.map((s) => s.due)
         d.effort = { steps: e.steps.map((s) => s.step), ...(e.more_after ? { more_after: true } : {}), ...(due.some(Boolean) ? { due } : {}) }
@@ -197,7 +242,12 @@ export function apply(p: Programme, r: Result, today: string, sources: Source[])
     }
     if (field === 'after_award') {
       const pk = packed(f.after_award.map((a) => a.q), 4)
-      if (!pk || !guard(field, pk.packed)) continue
+      if (!pk) {
+        outcomes[field] = 'unresolved'
+        notes.push('after_award: not written, the quotes do not fit four passages')
+        continue
+      }
+      if (!guard(field, pk.packed)) continue
       tryField(field, (d) => {
         const a: NonNullable<Programme['after_award']> = {}
         for (const x of f.after_award) {
@@ -211,21 +261,36 @@ export function apply(p: Programme, r: Result, today: string, sources: Source[])
     }
   }
 
+  for (const x of dropped) outcomes[x] = 'unresolved'
   const unresolved = FIELDS.filter((x) => outcomes[x] === 'unresolved')
-  const stamp = r.gathered.complete && unresolved.length === 0 && !r.error
+  let stamp = r.gathered.complete && unresolved.length === 0 && !r.error
   if (stamp) {
     const draft = structuredClone(cur)
     draft.requirements_checked = today
     if (programmeSchema.safeParse(draft).success) cur = draft
+    else stamp = false
+  }
+  // A reading that can't vouch for the fields now takes back an earlier stamp: visitors would read an absent
+  // fact as "the funder's pages don't say". The manifest keeps when it was last stamped.
+  if (!stamp && cur.requirements_checked) {
+    notes.push(`requirements_checked ${cur.requirements_checked} removed: this reading could not confirm every field`)
+    delete cur.requirements_checked
   }
 
   // The refresh reads a source through its selector: a new quote outside it would look gone, so that
   // source reads the whole page instead.
+  // A page newly cited joins the watch list, read whole.
   const nextSources = sources.map((s) => ({ ...s }))
+  const live = p.calls.some((c) => c.status === 'open' || c.status === 'upcoming')
   for (const q of used) {
     const d = docs.get(q.doc) as Doc
-    const s = nextSources.find((x) => x.url === d.url)
-    if (s?.selector && !(d.selected && comparable(d.selected).includes(comparable(q.quote)))) {
+    let s = nextSources.find((x) => x.programme_id === p.id && x.url === d.url)
+    if (!s) {
+      const n = Math.max(0, ...nextSources.filter((x) => x.programme_id === p.id).map((x) => Number(x.id.slice(p.id.length + 1)) || 0))
+      s = { id: `${p.id}-${n + 1}`, programme_id: p.id, url: d.url, selector: null, hint: null, cycle: live ? 'daily' : p.access === 'direct' ? 'weekly' : 'monthly' }
+      nextSources.push(s)
+      notes.push(`source ${s.id}: added for ${d.url}`)
+    } else if (s.selector && !(d.selected && comparable(d.selected).includes(comparable(q.quote)))) {
       notes.push(`source ${s.id}: selector ${s.selector} dropped, a new quote sits outside it`)
       s.selector = null
     }

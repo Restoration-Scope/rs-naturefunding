@@ -84,13 +84,13 @@ const goodWire = (): Wire => ({
 })
 
 /** A model that answers from a queue, recording what it was asked. */
-const fakeAsk = (answers: Wire[]) => {
+const fakeAsk = (answers: (Wire | { wire: Wire; missing: string[] })[]) => {
   const asked: string[] = []
   const ask = async <T,>(_id: string, _system: string, user: string, schema: z.ZodType<T>): Promise<T> => {
     asked.push(user)
     const a = answers.shift()
     if (!a) throw new Error('fake model has no more answers')
-    return schema.parse({ unresolved: [], ...toApi(a) })
+    return schema.parse({ unresolved: [], ...('wire' in a ? toApi(a.wire, a.missing) : toApi(a)) })
   }
   return { ask, asked }
 }
@@ -110,7 +110,7 @@ const fakeJev = (rules: { match: RegExp; p: number }[] = [], yes = 0.1) => {
       }
       const rule = rules.find((r) => r.match.test(k) || r.match.test(text))
       // Questions phrased "is it right" (first step, due, link, about, required) answer yes by default.
-      const positive = /^(first|due|l\d|about|v$)/.test(k) || /Would following this link/.test(text)
+      const positive = /^(first|due|step|typed|cf_|duty|l\d|about|v$)/.test(k) || /Would following this link/.test(text)
       out[k] = { type: 'noul', noul: rule ? rule.p : positive ? 0.9 : yes }
     }
     return out
@@ -462,5 +462,83 @@ describe('gather: coverage it must not claim', () => {
     const g = await gather(base, { read, sources: [] })
     expect(g.docs.map((d) => d.url)).not.toContain('https://guides.example.net/test-nature-grants-guide.pdf')
     expect(g.complete).toBe(false)
+  })
+})
+
+describe('the stamp: every path that must block it', () => {
+  const pages = { 'https://test.example.org/grants': PAGE, 'https://test.example.org/guidelines.pdf': GUIDE }
+  const stamped = programmeSchema.parse({ ...base, requirements_checked: '2026-01-01' })
+
+  test('a second reading that names an unread rules document blocks the stamp', async () => {
+    const thin = goodWire()
+    thin.documents = { status: 'not_found', items: [] }
+    const cheap = fakeAsk([thin, { wire: { ...emptyWire(), documents: goodWire().documents }, missing: ['Annex 2: eligibility rules'] }])
+    const r = await run(base, { read: fakeReader(pages), sources: [], cheap: cheap.ask, strong: null, jev: fakeJev([{ match: /^documents$/, p: 0.9 }]).ask })
+    expect(r.gathered.complete).toBe(false)
+    expect(apply(base, r, '2026-11-16', []).next.requirements_checked).toBeUndefined()
+  })
+
+  test('without Jev nothing is stamped', async () => {
+    const r = await run(base, { read: fakeReader(pages), sources: [], cheap: fakeAsk([goodWire()]).ask, strong: null, jev: null })
+    expect(apply(base, r, '2026-11-16', []).next.requirements_checked).toBeUndefined()
+  })
+
+  test('a reread that cannot finish takes back the old stamp', async () => {
+    const r = await run(stamped, { read: fakeReader({ 'https://test.example.org/grants': PAGE, 'https://test.example.org/guidelines.pdf': null }), sources: [], cheap: fakeAsk([goodWire()]).ask, strong: null, jev: fakeJev().ask })
+    const { next, manifestBits } = apply(stamped, r, '2026-11-16', [])
+    expect(next.requirements_checked).toBeUndefined()
+    expect(manifestBits.notes.join(' ')).toContain('removed')
+  })
+
+  test('a duty backed by an unrelated quote is caught by Jev', async () => {
+    const w = goodWire()
+    w.after_award.items.push({ duty: 'audit', reports: null, doc: 'D2', quote: 'Strong applications show community involvement.' } as never)
+    const r = await run(base, { read: fakeReader(pages), sources: [], cheap: fakeAsk([w]).ask, strong: null, jev: fakeJev([{ match: /^duty1$/, p: 0.05 }]).ask })
+    expect(r.outcomes.after_award).toBe('unresolved')
+  })
+
+  test('a Jev question left unanswered flags its item', async () => {
+    const jev = fakeJev()
+    const ask: typeof jev.ask = async (id, state, qs) => {
+      const a = await jev.ask(id, state, qs)
+      delete a.first0
+      return a
+    }
+    const r = await run(base, { read: fakeReader(pages), sources: [], cheap: fakeAsk([goodWire()]).ask, strong: null, jev: ask })
+    expect(r.outcomes.documents).toBe('unresolved')
+  })
+
+  test('two documents named in one passage are two facts: dropping one leaves the field open', async () => {
+    const before = programmeSchema.parse({
+      ...base,
+      documents: ['Latest audited accounts', 'Letter of support from the landowner'],
+      evidence: { ...base.evidence, documents: [{ source_url: 'https://test.example.org/guidelines.pdf', quote: 'You must submit your latest audited accounts and a letter of support from the landowner.', checked_at: '2026-11-01', method: 'page' }] },
+    })
+    const w = goodWire()
+    w.documents.items = [{ item: 'Latest audited accounts', doc: 'D2', quote: 'You must submit your latest audited accounts and a letter of support from the landowner.' }]
+    const r = await run(before, { read: fakeReader(pages), sources: [], cheap: fakeAsk([w]).ask, strong: null, jev: fakeJev().ask })
+    const { next, manifestBits } = apply(before, r, '2026-11-16', [])
+    expect(next.documents).toEqual(['Latest audited accounts', 'Letter of support from the landowner'])
+    expect(manifestBits.outcomes.documents).toBe('unresolved')
+    expect(next.requirements_checked).toBeUndefined()
+  })
+
+  test('documents left out to fit three passages leave the field open', async () => {
+    const guide = `${GUIDE} ${'Filler about the programme and its history. '.repeat(30)} Include a site map. ${'More filler text about wetlands. '.repeat(30)} Include a CV for the project lead. ${'Closing words about rivers. '.repeat(30)} Include a land title.`
+    const w = goodWire()
+    w.documents.items.push({ item: 'Site map', doc: 'D2', quote: 'Include a site map.' }, { item: 'CV of the project lead', doc: 'D2', quote: 'Include a CV for the project lead.' }, { item: 'Land title', doc: 'D2', quote: 'Include a land title.' })
+    const r = await run(base, { read: fakeReader({ ...pages, 'https://test.example.org/guidelines.pdf': guide }), sources: [], cheap: fakeAsk([w]).ask, strong: null, jev: fakeJev().ask })
+    const { next, manifestBits } = apply(base, r, '2026-11-16', [])
+    expect(manifestBits.outcomes.documents).toBe('unresolved')
+    expect(next.requirements_checked).toBeUndefined()
+  })
+
+  test('a newly cited page joins the watch list, and only this programme’s selector changes', async () => {
+    const mine: Source = { id: 'test-grants-1', programme_id: 'test-grants', url: 'https://test.example.org/grants', selector: null, hint: null, cycle: 'daily' }
+    const other: Source = { id: 'other-1', programme_id: 'other', url: 'https://test.example.org/guidelines.pdf', selector: 'main', hint: null, cycle: 'daily' }
+    const r = await run(base, { read: fakeReader(pages), sources: [mine, other], cheap: fakeAsk([goodWire()]).ask, strong: null, jev: fakeJev().ask })
+    const { sources } = apply(base, r, '2026-11-16', [mine, other])
+    expect(sources.find((s) => s.id === 'other-1')!.selector).toBe('main')
+    expect(sources.find((s) => s.programme_id === 'test-grants' && s.url === 'https://test.example.org/guidelines.pdf')).toBeTruthy()
   })
 })

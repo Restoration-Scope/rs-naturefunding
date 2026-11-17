@@ -92,9 +92,14 @@ export async function run(p: Programme, deps: Deps): Promise<Result> {
   for (const f of first.conflicts) flags.push({ field: f, item: 'required', why: 'parts of the text disagree', source: 'verify' })
   // Steps read from several chunks were put together by code, not read as one list.
   for (const f of first.spans) flags.push({ field: f, item: 'steps', why: 'the steps come from different parts of the text; check they are one list in order', source: 'verify' })
-  // The text names a rules document we don't have: never a full read.
+  // Everything that stands between this reading and the stamp, from every pass: a rules document the text names
+  // that we don't have, a check that didn't run. One list, so no pass can forget to block it.
   const coverage = [...gathered.reasons]
-  for (const m of first.missing) coverage.push(`the text names a document with rules that was not read: ${m.slice(0, 160)}`)
+  const unread = (names: string[], who = '') => {
+    for (const m of names) coverage.push(`${who}the text names a document with rules that was not read: ${m.slice(0, 160)}`)
+  }
+  unread(first.missing)
+  if (!deps.jev) coverage.push('Jev did not check this reading, so an absent fact is not known to be absent')
 
   // Omissions: Jev reads every chunk for fields that came back empty or thin; a yes sends them back.
   const omittedChunks = new Set<string>()
@@ -108,6 +113,9 @@ export async function run(p: Programme, deps: Deps): Promise<Result> {
       const again = await extract(deps.cheap, p, chunks, o.fields)
       const v2 = verify(again.merged, gathered.docs)
       notes.push(...v2.notes)
+      unread(again.missing, 'second reading: ')
+      for (const f of again.conflicts.filter((x) => o.fields.includes(x))) flags.push({ field: f, item: 'required', why: 'parts of the text disagree (second reading)', source: 'verify' })
+      for (const f of again.spans.filter((x) => o.fields.includes(x))) flags.push({ field: f, item: 'steps', why: 'the steps come from different parts of the text (second reading); check they are one list in order', source: 'verify' })
       for (const f of o.fields) {
         // Keep the fuller reading of a thin field; a field still empty goes to the strong model.
         const before = JSON.stringify(pickField(facts, f)).length
@@ -137,6 +145,7 @@ export async function run(p: Programme, deps: Deps): Promise<Result> {
       const user = `${userPrompt(p, chunk, 1, flagged)}\n\nA first reader's answer had these problems:\n${context}\n\nRead the text again and give the correct answer for ${flagged.join(', ')}. Leave out anything the text does not state. List in "unresolved" any of these fields the text leaves genuinely unclear.`
       const raw = await deps.strong(p.id, SYSTEM, user, escalationWire)
       const s = { ...fromApi(raw), unresolved: raw.unresolved }
+      unread(s.missing_documents, 'strong reading: ')
       const v3 = verify(s, gathered.docs)
       notes.push(...v3.notes.map((n) => `strong: ${n}`), ...(s.notes ? [`strong: ${s.notes}`] : []))
       let after: Flag[] = v3.flags.filter((f) => flagged.includes(f.field))

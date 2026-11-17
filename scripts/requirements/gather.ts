@@ -248,7 +248,7 @@ export async function gather(
       } else {
         text = await htmlToText(r.html)
         links = await linksFrom(r.html)
-        const selector = opts.sources.find((s) => s.url === url)?.selector
+        const selector = opts.sources.find((s) => s.programme_id === p.id && s.url === url)?.selector
         if (selector) selected = await htmlToText(r.html, selector).catch(() => null)
       }
     } catch (e) {
