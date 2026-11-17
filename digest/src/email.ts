@@ -21,6 +21,8 @@ const plural = (n: number, one: string, many: string) => `${n} ${n === 1 ? one :
 
 const RS_URL = 'https://restorationscope.com/?utm_source=naturefunding&utm_medium=email&utm_campaign=digest'
 const TAGLINE = 'naturefunding.org is free and neutral: funders can’t pay to be listed. Built with 💚 by Restoration Scope.'
+// The sender's postal address, which anti-spam law (CAN-SPAM) asks of every email: the company's mailing address.
+export const POSTAL_ADDRESS = 'Restoration Scope LLC, 411 Walnut Street #24052, Green Cove Springs, FL 32043, USA'
 const taglineHtml = esc(TAGLINE).replace('Restoration Scope', `<a href="${RS_URL}" style="color:${C.ink2};">Restoration Scope</a>`)
 
 // Icons in the "for …" line, served from the site as PNG (Gmail and Outlook don't show SVG): the country's flag
@@ -79,7 +81,7 @@ function frame(site: string, preheader: string, body: string, footer?: string) {
 <tr><td style="padding:28px 28px 8px;font-family:${SANS};font-size:16px;line-height:1.5;color:${C.ink};">${body}</td></tr>
 ${footer ? `<tr><td style="padding:20px 28px 28px;font-family:${SANS};font-size:13px;line-height:1.5;color:${C.ink2};border-top:1px solid ${C.rule};">${footer}</td></tr>` : ''}
 </table>
-<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="max-width:600px;"><tr><td align="center" style="padding:14px 28px 0;font-family:${SANS};font-size:12px;line-height:1.5;color:${C.ink2};">${taglineHtml}</td></tr></table>
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="max-width:600px;"><tr><td align="center" style="padding:14px 28px 0;font-family:${SANS};font-size:12px;line-height:1.5;color:${C.ink2};">${taglineHtml}<br>${esc(POSTAL_ADDRESS)}</td></tr></table>
 </td></tr></table>
 </body></html>`
 }
@@ -100,7 +102,7 @@ export function confirmationEmail(o: { site: string; confirmUrl: string; prefs: 
 ${button(o.confirmUrl, 'Confirm my email')}
 <p style="margin:0 0 16px;color:${C.ink2};font-size:14px;">The link works for 3 days. If you didn’t ask for this, ignore this email and we won’t write again.</p>`,
   )
-  const text = `Confirm your email\n\n${lead}\n\nConfirm: ${o.confirmUrl}\n\nThe link works for 3 days. If you didn't ask for this, ignore this email and we won't write again.\n\n--\n${TAGLINE}\n`
+  const text = `Confirm your email\n\n${lead}\n\nConfirm: ${o.confirmUrl}\n\nThe link works for 3 days. If you didn't ask for this, ignore this email and we won't write again.\n\n--\n${TAGLINE}\n${POSTAL_ADDRESS}\n`
   return { subject: 'Confirm your weekly naturefunding.org email', html, text }
 }
 
@@ -210,6 +212,6 @@ export function digestEmail(o: { site: string; pages?: PagePaths; digest: Digest
       ].join('\n\n'),
     )
     .join('\n\n')
-  const text = `${intro}\n\n${textItems}\n\n${total > items.length ? `And ${total - items.length} more. ` : ''}${seeAll}: ${listUrl}\n\n${fineprint}\n\n--\nAt most one email a week, only when something is new.\nChange what you get: ${o.manageUrl}\nUnsubscribe: ${o.unsubscribeUrl}\n\n${TAGLINE}\n`
+  const text = `${intro}\n\n${textItems}\n\n${total > items.length ? `And ${total - items.length} more. ` : ''}${seeAll}: ${listUrl}\n\n${fineprint}\n\n--\nAt most one email a week, only when something is new.\nChange what you get: ${o.manageUrl}\nUnsubscribe: ${o.unsubscribeUrl}\n\n${TAGLINE}\n${POSTAL_ADDRESS}\n`
   return { subject, html: frame(o.site, intro, body, footer), text }
 }
