@@ -63,6 +63,13 @@ const SKIP_HREF = /^(?:mailto:|tel:|javascript:|#)|\.(?:jpe?g|png|gif|svg|webp|z
 const DOC_HREF = /\.(?:pdf|docx?|odt|rtf)(?:$|[?#])/i
 const SOCIAL = /(?:facebook|twitter|x|linkedin|instagram|youtube|tiktok|flickr|vimeo)\.com$/i
 
+const LANGS = new Set('en es pt fr de it nl ja zh ko ru ar sv da no nb nn fi pl cs sk hu ro bg el tr id vi th uk hr sl et lv lt is ga cy ca eu gl'.split(' '))
+/** The language segment a site puts first in its paths ("/pt/faq"), if any. */
+const langOf = (path: string) => {
+  const m = /^\/([a-z]{2})(?:[-_][a-z]{2})?(?:\/|$)/i.exec(path)
+  return m && LANGS.has(m[1]!.toLowerCase()) ? m[1]!.toLowerCase() : null
+}
+
 const site = (host: string) => host.replace(/^www\./, '').split('.').slice(-2).join('.')
 
 export type Candidate = Link & { url: string; score: 'strong' | 'ambiguous' | 'skip'; why: string }
@@ -81,6 +88,9 @@ export function classifyLink(link: Link, pageUrl: string, programme: Pick<Progra
   if (url === pageUrl.replace(/#.*$/, '')) return { ...link, url, score: 'skip', why: 'same page' }
   const words = `${link.text} ${decodeURIComponent(u.pathname)}`
   const sameSite = site(u.hostname) === site(new URL(pageUrl).hostname) || site(u.hostname) === site(new URL(programme.url).hostname)
+  // The same page in another language spends the crawl bound on text already read.
+  const lang = langOf(u.pathname)
+  if (sameSite && lang && lang !== langOf(new URL(pageUrl).pathname)) return { ...link, url, score: 'skip', why: 'another language' }
   const doc = DOC_HREF.test(url)
   const relevant = RELEVANT.test(words) || (RELEVANT.test(link.context) && doc)
   const named = comparable(link.text).length > 3 && comparable(`${link.text} ${link.context}`).includes(comparable(programme.name).slice(0, 40))

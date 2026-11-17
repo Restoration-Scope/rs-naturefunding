@@ -383,3 +383,8 @@ describe('files and schemas', () => {
     expect(g.failures.map((f) => f.kind)).toContain('unreadable')
   })
 })
+
+test('links: the same page in another language is skipped', () => {
+  expect(classifyLink({ href: '/pt/faq', text: 'FAQ', context: '' }, 'https://test.example.org/en/grants', base).why).toBe('another language')
+  expect(classifyLink({ href: '/en/faq', text: 'FAQ', context: '' }, 'https://test.example.org/en/grants', base).score).toBe('strong')
+})
