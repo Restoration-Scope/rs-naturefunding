@@ -11,6 +11,17 @@ const long = fmt('long')
 export const funderRepeatsName = (p: Pick<Programme, 'name' | 'funder'>) =>
   p.funder.name.toLowerCase().startsWith(p.name.toLowerCase())
 
+/** When the funder's name starts with the programme's ("Forest Action Facility (established by IUCN and KfW)"), only
+ * what it adds ("Established by IUCN and KfW", or '' when nothing); null when the funder has its own name. */
+export const funderQualifier = (p: Pick<Programme, 'name' | 'funder'>) =>
+  funderRepeatsName(p)
+    ? p.funder.name
+        .slice(p.name.length)
+        .trim()
+        .replace(/^\((.*)\)$/, '$1')
+        .replace(/^./, (ch) => ch.toUpperCase())
+    : null
+
 /** "Darwin Initiative Main, Defra", or the funder's name alone when it already says the programme's. */
 export const nameWithFunder = (p: Pick<Programme, 'name' | 'funder'>) =>
   funderRepeatsName(p) ? p.funder.name : `${p.name}, ${p.funder.name}`
