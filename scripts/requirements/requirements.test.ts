@@ -737,3 +737,20 @@ describe('OpenAI models', () => {
     expect(openaiModel('gpt-5.6-luna', {}, '')).toBeNull()
   })
 })
+
+describe('escalation keeps what nothing faulted', () => {
+  const pages = { 'https://test.example.org/grants': PAGE, 'https://test.example.org/guidelines.pdf': GUIDE }
+  test('a sound first-reading rule the strong reading drops is kept; the flagged one goes; the strong model sees the first items', async () => {
+    const first = goodWire()
+    first.eligibility.items.push({ rule: 'Shows community involvement', kind: 'project', doc: 'D2', quote: 'Strong applications show community involvement.', min_years: null, revenue: null, request_cap: null })
+    const narrow = goodWire()
+    narrow.eligibility.items = [narrow.eligibility.items[0]!]
+    const strong = fakeAsk([narrow])
+    const r = await run(base, { read: fakeReader(pages), sources: [], cheap: fakeAsk([first]).ask, strong: strong.ask, jev: fakeJev([{ match: /^sel2$/, p: 0.95 }]).ask })
+    expect(r.escalated).toEqual(['eligibility'])
+    expect(r.facts.eligibility.map((e) => e.rule)).toEqual(['Operating for at least 3 years', 'Yearly income of €50,000 to €500,000'])
+    expect(r.notes.some((n) => n.includes('kept 1 first-reading item'))).toBe(true)
+    expect(strong.asked[0]).toContain('"Yearly income of €50,000 to €500,000"')
+    expect(strong.asked[0]).toContain('keep the first reader')
+  })
+})

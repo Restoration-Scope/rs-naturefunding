@@ -9,7 +9,7 @@ import { check, JEV, omissions, thinFields, type Judgement } from './check'
 import { apiWire, chunksOf, extract, FIELDS, fromApi, SYSTEM, userPrompt, WHOLE_CHARS, type Chunk, type Field, type Wire } from './extract'
 import { gather, type Gathered, type Reader } from './gather'
 import type { Ask, AskJev } from './models'
-import { emptyFacts, verify, type Facts, type Flag } from './verify'
+import { emptyFacts, sameItem, sameQuote, verify, type Facts, type Flag } from './verify'
 
 export type Outcome = 'stated' | 'not_found' | 'unresolved'
 
@@ -142,7 +142,8 @@ export async function run(p: Programme, deps: Deps): Promise<Result> {
       notes.push('the flagged text is too long for one escalation')
     } else {
       const context = flags.map((f) => `- ${f.field}: "${f.item}": ${f.why}${f.quote ? ` (quote: "${f.quote.slice(0, 200)}")` : ''}`).join('\n')
-      const user = `${userPrompt(p, chunk, 1, flagged)}\n\nA first reader's answer had these problems:\n${context}\n\nRead the text again and give the correct answer for ${flagged.join(', ')}. Leave out anything the text does not state. List in "unresolved" any of these fields the text leaves genuinely unclear.`
+      const firstItems = flagged.flatMap((f) => listed(facts, f).map((x) => `- ${f}: "${x.name}" (quote: "${x.quote.slice(0, 200)}")`)).join('\n')
+      const user = `${userPrompt(p, chunk, 1, flagged)}\n\nA first reader gave these items:\n${firstItems || '(none)'}\n\nThey had these problems:\n${context}\n\nRead the text again and give the full correct answer for ${flagged.join(', ')}: keep the first reader's items that are right, fix or remove the ones with problems, and add any it missed. Leave out anything the text does not state. List in "unresolved" any of these fields the text leaves genuinely unclear.`
       const raw = await deps.strong(p.id, SYSTEM, user, escalationWire)
       const s = { ...fromApi(raw), unresolved: raw.unresolved }
       unread(s.missing_documents, 'strong reading: ')
@@ -160,8 +161,14 @@ export async function run(p: Programme, deps: Deps): Promise<Result> {
           unresolved.add(f)
           continue
         }
-        // The strong model settled it: its reading replaces the first one.
+        // The strong model settled it: its reading replaces the first one, except first-reading items no
+        // check faulted that it leaves out: it was asked to fix the flagged items, not to drop sound ones.
+        const kept = keptFromFirst(facts, v3.facts, f, flags)
         setField(facts, v3.facts, f)
+        if (kept) {
+          kept.add(facts)
+          notes.push(`${f}: kept ${kept.n} first-reading item${kept.n > 1 ? 's' : ''} no check faulted that the strong reading left out`)
+        }
         settled.push(...flags.filter((x) => x.field === f))
         unseen = unseen.filter((u) => u !== f)
       }
@@ -172,6 +179,42 @@ export async function run(p: Programme, deps: Deps): Promise<Result> {
   const outcomes = Object.fromEntries(FIELDS.map((f) => [f, unresolved.has(f) ? 'unresolved' : hasField(facts, f) ? 'stated' : 'not_found'])) as Record<Field, Outcome>
   const complete = coverage.length === 0
   return { ...base, gathered: { ...gathered, complete, reasons: [...new Set(coverage)] }, facts, outcomes, flags, settled, judgements, notes, escalated }
+}
+
+/** A list field's items as name and quote; steps, yes/no fields and co-funding details are not lists that merge. */
+function listed(f: Facts, field: Field): { name: string; quote: string }[] {
+  if (field === 'eligibility') return f.eligibility.map((x) => ({ name: x.rule, quote: x.q.quote }))
+  if (field === 'documents') return f.documents.map((x) => ({ name: x.item, quote: x.q.quote }))
+  if (field === 'after_award') return f.after_award.map((x) => ({ name: x.duty, quote: x.q.quote }))
+  if (field === 'effort') return (f.effort?.steps ?? []).map((x) => ({ name: x.step, quote: x.q.quote }))
+  return []
+}
+
+/**
+ * First-reading items of a list field that no flag names and the strong reading has nothing like (same
+ * name or same passage). Steps are left to the strong reading: their order can't be merged.
+ */
+export function keptFromFirst(first: Facts, strong: Facts, field: Field, flags: Flag[]): { n: number; add: (to: Facts) => void } | null {
+  if (field !== 'eligibility' && field !== 'documents' && field !== 'after_award') return null
+  const faulted = flags.filter((x) => x.field === field)
+  const now = listed(strong, field)
+  const keep = listed(first, field)
+    .map((x, i) => ({ ...x, i }))
+    .filter((x) => !faulted.some((fl) => fl.item === x.name || (fl.quote && fl.quote === x.quote)) && !now.some((y) => sameItem(x.name, y.name) || sameQuote(x.quote, y.quote)))
+    .map((x) => x.i)
+  if (!keep.length) return null
+  // Taken now: `first` may be the facts the strong reading is about to overwrite.
+  const elig = field === 'eligibility' ? keep.map((i) => first.eligibility[i]!) : []
+  const docs = field === 'documents' ? keep.map((i) => first.documents[i]!) : []
+  const duties = field === 'after_award' ? keep.map((i) => first.after_award[i]!) : []
+  return {
+    n: keep.length,
+    add: (to) => {
+      to.eligibility.push(...elig)
+      to.documents.push(...docs)
+      to.after_award.push(...duties)
+    },
+  }
 }
 
 function pickField(f: Facts, field: Field) {

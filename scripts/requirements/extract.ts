@@ -12,7 +12,7 @@ import { sameItem } from './verify'
 import type { Doc } from './gather'
 import type { Ask } from './models'
 
-export const PROMPT_VERSION = 'req-2026-11-16.1'
+export const PROMPT_VERSION = 'req-2026-11-17.1'
 
 /** One prompt holds this much page text; above it, chunks. About 50K tokens, under the long-prompt price step (Haiku 100K, GPT-5.6 272K). */
 export const WHOLE_CHARS = 180_000

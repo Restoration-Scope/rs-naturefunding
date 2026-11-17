@@ -3,7 +3,7 @@
  * document-discovery recall, omitted requirements, false requirements_checked stamps, item precision,
  * typed-value and yes/no accuracy, each Jev threshold's precision and recall, and the cost per programme.
  *
- *   bun scripts/requirements/eval.ts <run folder> [--split held|tune|all]
+ *   bun scripts/requirements/eval.ts <run folder> [--split held|tune|all] [--ids a,b]   (--ids: only these programmes)
  *
  * Items pair one to one, by quote and name (or by a quote that points at only one item on each side), and
  * only what was written to the file counts: what a visitor would see.
@@ -88,16 +88,6 @@ const goldItems = (g: Gold): Record<Field, (G & { name?: string; gi: GoldItem | 
   co_finance: g.co_finance_required ? [{ ...g.co_finance_required, gi: g.co_finance_required }] : [],
   consortium: g.consortium_required ? [{ ...g.consortium_required, gi: g.consortium_required }] : [],
   after_award: g.after_award.map((x) => ({ ...x, name: x.duty, gi: x })),
-})
-
-/** Every fact the reader produced, written or not, for labelling Jev's judgements. */
-const factItems = (r: Result): Record<Field, (Item & { fact: Record<string, unknown> })[]> => ({
-  eligibility: r.facts.eligibility.map((e) => ({ name: e.rule, quote: e.q.quote, fact: e })),
-  documents: r.facts.documents.map((d) => ({ name: d.item, quote: d.q.quote, fact: d })),
-  effort: (r.facts.effort?.steps ?? []).map((s) => ({ name: s.step, quote: s.q.quote, fact: s })),
-  co_finance: r.facts.co_finance_required ? [{ name: 'required', quote: r.facts.co_finance_required.q.quote, fact: r.facts.co_finance_required }] : [],
-  consortium: r.facts.consortium_required ? [{ name: 'required', quote: r.facts.consortium_required.q.quote, fact: r.facts.consortium_required }] : [],
-  after_award: r.facts.after_award.map((a) => ({ name: a.duty, quote: a.q.quote, fact: a })),
 })
 
 const typedOf = (x: { min_years?: unknown; revenue?: unknown; request_cap?: unknown }) => {
@@ -234,10 +224,17 @@ export function evaluate(results: Scored[], golds: Map<string, Gold>, usd: Recor
     }
 
     // Jev's judgements, each labelled against the gold property it is about.
-    const facts = factItems(r)
-    const fp = Object.fromEntries(FIELD_LIST.map((f) => [f, pair(gold[f], facts[f])])) as Record<Field, Map<number, number>>
+    // The items Jev judged on the first reading, by their own name and quote: an escalation may have
+    // replaced them in the final facts, and their judgements still count.
+    const judgedItems = Object.fromEntries(FIELD_LIST.map((f) => [f, [] as Item[]])) as Record<Field, Item[]>
+    for (const j of r.judgements) {
+      if (j.question.endsWith('@strong') || j.question === 'omission' || j.question === 'co_finance' || !j.quote) continue
+      const list = judgedItems[j.field]
+      if (!list.some((m) => m.name === j.item && m.quote === j.quote)) list.push({ name: j.item, quote: j.quote })
+    }
+    const fp = Object.fromEntries(FIELD_LIST.map((f) => [f, pair(gold[f], judgedItems[f])])) as Record<Field, Map<number, number>>
     const goldOf = (field: Field, j: Judgement) => {
-      const mi = facts[field].findIndex((m) => m.name === j.item && (!j.quote || m.quote === j.quote))
+      const mi = judgedItems[field].findIndex((m) => m.name === j.item && m.quote === j.quote)
       if (mi < 0) return { found: false as const }
       const gIdx = [...fp[field]].find(([, m]) => m === mi)?.[0]
       return gIdx === undefined ? { found: true as const, gold: null } : { found: true as const, gold: gold[field][gIdx]!.gi as GoldItem & { value?: boolean; reports?: string; duty?: string } }
@@ -337,19 +334,22 @@ export function evaluate(results: Scored[], golds: Map<string, Gold>, usd: Recor
 }
 
 if (import.meta.main) {
-  const { values, positionals } = parseArgs({ allowPositionals: true, options: { split: { type: 'string', default: 'held' } } })
+  const { values, positionals } = parseArgs({ allowPositionals: true, options: { split: { type: 'string', default: 'held' }, ids: { type: 'string' } } })
   const dir = positionals[0]
   if (!dir) throw new Error('usage: eval.ts <run folder> [--split held|tune|all]')
   const index = JSON.parse(readFileSync(join(FIXTURES, 'index.json'), 'utf8')) as { programmes: { id: string; split: string }[] }
-  const ids = new Set(index.programmes.filter((p) => values.split === 'all' || p.split === values.split).map((p) => p.id))
+  const only = values.ids ? new Set(values.ids.split(',')) : null
+  const ids = new Set(index.programmes.filter((p) => (values.split === 'all' || p.split === values.split) && (!only || only.has(p.id))).map((p) => p.id))
   const golds = new Map<string, Gold>()
-  for (const id of ids) if (existsSync(join(FIXTURES, `${id}.json`))) golds.set(id, JSON.parse(readFileSync(join(FIXTURES, `${id}.json`), 'utf8')))
+  // A gold id with no fixture yet can't be scored; it is listed, not counted.
+  const noFixture = [...ids].filter((id) => !existsSync(join(FIXTURES, `${id}.json`)))
+  for (const id of ids) if (!noFixture.includes(id)) golds.set(id, JSON.parse(readFileSync(join(FIXTURES, `${id}.json`), 'utf8')))
   const results = readdirSync(join(dir, 'results'))
     .map((f) => JSON.parse(readFileSync(join(dir, 'results', f), 'utf8')) as Scored)
     .filter((r) => ids.has(r.id))
   const report = JSON.parse(readFileSync(join(dir, 'report.json'), 'utf8')) as { summary: { id: string; usd: number }[] }
   const usd = Object.fromEntries(report.summary.map((s) => [s.id, s.usd]))
-  const e = evaluate(results, golds, usd)
-  writeFileSync(join(dir, `eval-${values.split}.json`), JSON.stringify(e, null, 2))
-  console.log(JSON.stringify({ ...e, omissions: e.omissions.length, missed_documents: e.missed_documents.length }, null, 2))
+  const e = { ...evaluate(results, golds, usd), no_fixture: noFixture }
+  writeFileSync(join(dir, `eval-${values.split}${only ? '-ids' : ''}.json`), JSON.stringify(e, null, 2))
+  console.log(JSON.stringify({ ...e, no_fixture: noFixture.length }, null, 2))
 }
