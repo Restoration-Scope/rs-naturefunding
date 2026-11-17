@@ -31,10 +31,13 @@ export function initEffortTip() {
   const tip = document.querySelector<HTMLElement>('[data-effort-tip]')
   if (!tip) return
   const rows = [...tip.querySelectorAll<HTMLElement>('[data-tip-row]')]
-  // The pointer and keyboard focus each own an anchor; the tooltip follows the pointer's, else focus's.
+  // The pointer and keyboard focus each own an anchor; the tooltip follows the pointer's, else focus's. A pointer
+  // resting on the tooltip keeps what it shows; Escape keeps it closed until the pointer leaves that anchor.
   let hovered: HTMLElement | null = null
   let focused: HTMLElement | null = null
   let shown: HTMLElement | null = null
+  let overTip = false
+  let dismissed: HTMLElement | null = null
   let leaving = 0
   const place = (bars: HTMLElement) => {
     const r = bars.getBoundingClientRect()
@@ -55,7 +58,7 @@ export function initEffortTip() {
     tip.style.top = `${Math.max(8, r.top - tip.offsetHeight - 8)}px`
   }
   const update = () => {
-    const anchor = hovered ?? focused
+    const anchor = hovered ?? (overTip && !tip.hidden ? shown : null) ?? focused
     if (anchor) place(anchor)
     else tip.hidden = true
   }
@@ -63,16 +66,23 @@ export function initEffortTip() {
   // The pointer may cross the gap onto the tooltip to read it (it stays while hovered), so leaving waits a moment.
   document.addEventListener('mouseover', (e) => {
     const bars = barsOf(e.target)
-    if (bars || tip.contains(e.target as Node)) clearTimeout(leaving)
-    if (bars) {
+    if (tip.contains(e.target as Node)) {
+      clearTimeout(leaving)
+      overTip = true
+    }
+    if (bars && bars !== dismissed) {
+      clearTimeout(leaving)
       hovered = bars
       update()
     }
   })
   document.addEventListener('mouseout', (e) => {
-    const from = barsOf(e.target) ?? (tip.contains(e.target as Node) ? tip : null)
     const to = e.relatedTarget as Node | null
+    const fromBars = barsOf(e.target)
+    if (fromBars === dismissed && !(to && dismissed?.contains(to))) dismissed = null
+    const from = fromBars ?? (tip.contains(e.target as Node) ? tip : null)
     if (!from || (to && (from.contains(to) || tip.contains(to) || barsOf(to) === hovered))) return
+    if (from === tip) overTip = false
     clearTimeout(leaving)
     leaving = window.setTimeout(() => {
       hovered = null
@@ -81,6 +91,7 @@ export function initEffortTip() {
   })
   document.addEventListener('focusin', (e) => {
     focused = barsOf(e.target)
+    dismissed = null
     update()
   })
   document.addEventListener('focusout', (e) => {
@@ -89,13 +100,16 @@ export function initEffortTip() {
   })
   document.addEventListener('keydown', (e) => {
     if (e.key !== 'Escape' || tip.hidden) return
+    dismissed = hovered ?? shown
     hovered = focused = null
+    overTip = false
     tip.hidden = true
   })
   addEventListener(
     'scroll',
     () => {
       hovered = null
+      overTip = false
       update()
     },
     { passive: true },

@@ -175,6 +175,11 @@ describe('a step date must be stated whole in one quote', () => {
     ['Deadline (MM/DD/YYYY): 08/01/2027', '2027-08-01', true],
     ['Deadline: 25/12/2027', '2027-12-25', true],
     ['08.01.2027', '2027-08-01', false],
+    ['Applications close 8 January. 2027 projects will be selected later.', '2027-01-08', false],
+    ['Application closes 01/08/2027 (MM/DD/YYYY). Enter your birth date as DD/MM/YYYY.', '2027-01-08', true],
+    ['Application closes 01/08/2027 (MM/DD/YYYY). Enter your birth date as DD/MM/YYYY.', '2027-08-01', false],
+    ['Enter your birth date as DD/MM/YYYY in the form on the next page, please. Applications close 01/08/2027.', '2027-08-01', false],
+    ['Jan. 8, 2027', '2027-01-08', true],
   ])('%p states %s: %p', (quote, date, want) => expect(statesDate(quote, date)).toBe(want))
 })
 
