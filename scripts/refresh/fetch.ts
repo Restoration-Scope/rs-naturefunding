@@ -7,6 +7,7 @@ import { createHash } from 'node:crypto'
 import { mkdtempSync, rmSync, writeFileSync } from 'node:fs'
 import { tmpdir } from 'node:os'
 import { join } from 'node:path'
+import { docxText, isDocx } from '../data/docx'
 import { htmlToText, normalise } from '../data/page-text'
 
 export const USER_AGENT = 'Mozilla/5.0 (compatible; naturefunding-refresh/1.0; +https://naturefunding.org/about/)'
@@ -139,7 +140,7 @@ export async function readPage(url: string, selector: string | null): Promise<Fe
   const { pdf, bytes, body } = raw
   const res = { url: raw.finalUrl, status: raw.status }
   try {
-    const text = pdf ? pdfToText(bytes) : await htmlToText(body, selector)
+    const text = pdf ? pdfToText(bytes) : isDocx(bytes) ? normalise(docxText(bytes)) : await htmlToText(body, selector)
     if (text.length < 40) return { ok: false, url, kind: 'unreadable', message: `only ${text.length} characters of text` }
     return { ok: true, url, finalUrl: res.url || url, status: res.status, pdf, text, hash: hashText(text) }
   } catch (e) {

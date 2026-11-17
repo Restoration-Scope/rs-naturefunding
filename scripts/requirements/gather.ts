@@ -11,7 +11,9 @@ import { tmpdir } from 'node:os'
 import { join } from 'node:path'
 import type { Programme, Source } from '../../src/data/schema'
 import { comparable, normalise } from '../../src/data/text'
-import { htmlToText } from '../data/page-text'
+import { docxText, isDocx } from '../data/docx'
+import { decodeEntities, htmlToText } from '../data/page-text'
+import { siteOf } from '../refresh/discover-web'
 import { fetchRaw, hashText, HOST_GAP_MS, pdfPages, type FailureKind } from '../refresh/fetch'
 import type { AskJev } from './models'
 
@@ -55,7 +57,7 @@ export type Gathered = {
 
 /** Words that mark a link to what an applicant must meet or submit, in the languages we list. */
 const RELEVANT =
-  /guideline|guidance|guide\b|handbook|manual|call for (?:proposals|applications)|eligib|criteria|how to apply|application (?:form|process|guide|pack)|apply|faq|frequently asked|terms and conditions|conditions|rules|requirements|prospectus|policy|programme document|funding information|grant agreement|reporting|richtlinie|merkblatt|leitfaden|förderaufruf|ausschreibung|antrag|förderbedingungen|voraussetzung|bases|convocatoria|requisitos|reglamento|gu[ií]a|criterios|solicitud|edital|regulamento|lignes directrices|appel à projets|règlement|cahier des charges|conditions d'éligibilité|dossier de candidature|subsidieregeling|voorwaarden|aanvragen|regeling|beleidsregel|bando|regolamento|募集要項|要綱|応募|助成|ansøg|retningslinjer|søknad|riktlinjer|ansökan|villkor|hakuohje|tukiehdot/i
+  /guideline|guidance|guide\b|handbook|manual|call for (?:proposals|applications)|eligib|criteria|how to apply|application|\bRFA\b|\bRFP\b|apply|faq|frequently asked|terms and conditions|conditions|rules|requirements|prospectus|policy|programme document|funding information|grant agreement|reporting|richtlinie|merkblatt|leitfaden|förderaufruf|ausschreibung|antrag|förderbedingungen|voraussetzung|bases|convocatoria|requisitos|reglamento|gu[ií]a|criterios|solicitud|edital|regulamento|lignes directrices|appel à projets|règlement|cahier des charges|conditions d'éligibilité|dossier de candidature|subsidieregeling|voorwaarden|aanvragen|regeling|beleidsregel|bando|regolamento|募集要項|要綱|応募|助成|ansøg|retningslinjer|søknad|riktlinjer|ansökan|villkor|hakuohje|tukiehdot/i
 
 const NOISE =
   /annual report|news|press|blog|event|privacy|cookie|login|log in|sign in|donat|career|job|vacanc|newsletter|subscribe|twitter|facebook|linkedin|instagram|youtube|past (?:grantees|recipients|projects)|grantees|recipients|awarded|results|winners|impressum|datenschutz|kontakt|contact|sitemap/i
@@ -74,7 +76,14 @@ const langOf = (path: string) => {
 /** One key for a URL however it is written: no fragment, no trailing slash. */
 export const urlKey = (u: string) => u.replace(/#.*$/, '').replace(/\/(?=$|\?)/, '')
 
-const site = (host: string) => host.replace(/^www\./, '').split('.').slice(-2).join('.')
+const site = siteOf
+
+/**
+ * Hosts that only serve a site's own uploaded files (Widen, Wix, Squarespace, Storyblok, Contentful, HubSpot):
+ * a file there linked from the funder's page is the funder's, as when its own link redirects there.
+ */
+const FILE_HOST = /(?:^|\.)(?:widen\.net|widencollective\.com|widencdn\.net|filesusr\.com|wixstatic\.com|squarespace(?:-cdn)?\.com|storyblok\.com|ctfassets\.net|hubspotusercontent[\w-]*\.(?:net|com))$/i
+export const isFileHost = (host: string) => FILE_HOST.test(host)
 
 /** `offsite`: a page on another site whose link is about applying; it is ranked like any link, but never read: a kept one blocks the stamp. */
 export type Candidate = Link & { url: string; score: 'strong' | 'ambiguous' | 'offsite' | 'skip'; why: string; offsite?: true }
@@ -92,11 +101,12 @@ export function classifyLink(link: Link, pageUrl: string, programme: Pick<Progra
   if (SOCIAL.test(u.hostname)) return { ...link, url, score: 'skip', why: 'social media' }
   if (urlKey(url) === urlKey(pageUrl)) return { ...link, url, score: 'skip', why: 'same page' }
   const words = `${link.text} ${decodeURIComponent(u.pathname)}`
-  const sameSite = site(u.hostname) === site(new URL(pageUrl).hostname) || site(u.hostname) === site(new URL(programme.url).hostname)
+  const fileHost = isFileHost(u.hostname)
+  const sameSite = fileHost || site(u.hostname) === site(new URL(pageUrl).hostname) || site(u.hostname) === site(new URL(programme.url).hostname)
   // The same page in another language spends the crawl bound on text already read.
   const lang = langOf(u.pathname)
   if (sameSite && lang && lang !== langOf(new URL(pageUrl).pathname)) return { ...link, url, score: 'skip', why: 'another language' }
-  const doc = DOC_HREF.test(url)
+  const doc = DOC_HREF.test(url) || fileHost
   const relevant = RELEVANT.test(words) || (RELEVANT.test(link.context) && doc)
   const named = comparable(link.text).length > 3 && comparable(`${link.text} ${link.context}`).includes(comparable(programme.name).slice(0, 40))
   if (NOISE.test(link.text) && !relevant) return { ...link, url, score: 'skip', why: 'news, contact or account page' }
@@ -116,7 +126,8 @@ export async function linksFrom(html: string): Promise<Link[]> {
   const marked = await new HTMLRewriter()
     .on('a[href]', {
       element(el) {
-        const n = hrefs.push(el.getAttribute('href') ?? '') - 1
+        // The rewriter hands attributes back raw: `&amp;` in an href is a plain `&` in the URL.
+        const n = hrefs.push(decodeEntities(el.getAttribute('href') ?? '')) - 1
         el.before(` ⟦L${n}⟧ `)
         el.after(` ⟦/L${n}⟧ `)
       },
@@ -238,11 +249,13 @@ export async function gather(
     let selected: string | null = null
     try {
       const head = new TextDecoder('latin1').decode(r.bytes.slice(0, 8))
-      if (!r.pdf && (/^PK\x03\x04|^\xD0\xCF\x11\xE0|^\{\\rtf/.test(head) || /\.(?:docx?|odt|rtf)(?:$|[?#])/i.test(r.finalUrl))) {
-        failures.push({ url, from, kind: 'unreadable', message: 'a Word, OpenDocument or RTF file: needs conversion' })
+      const word = !r.pdf && isDocx(r.bytes)
+      if (!r.pdf && !word && (/^PK\x03\x04|^\xD0\xCF\x11\xE0|^\{\\rtf/.test(head) || /\.(?:docx?|odt|rtf)(?:$|[?#])/i.test(r.finalUrl))) {
+        failures.push({ url, from, kind: 'unreadable', message: 'an old Word (.doc), OpenDocument or RTF file: needs conversion' })
         return null
       }
-      if (r.pdf) {
+      if (word) text = normalise(docxText(r.bytes))
+      else if (r.pdf) {
         pages = pdfPages(r.bytes)
         text = normalise(pages.join('\n'))
       } else {
@@ -349,9 +362,9 @@ export async function gather(
   const firstParty = new Set(seedsOf(p).map((u) => URL.parse(u)?.hostname).filter((h): h is string => !!h).map(site))
   for (const d of [...docs]) {
     if (d.depth === 0 || d.low_text) continue
-    // By the link the funder published: its own file served through a redirect to a file host (Wix serves
-    // site files from filesusr.com) is still first-party.
-    const offsite = !firstParty.has(site(new URL(d.url).hostname))
+    // By the link the funder published: its own file on a file host, linked directly or through a redirect
+    // (Wix serves site files from filesusr.com), is still first-party.
+    const offsite = !firstParty.has(site(new URL(d.url).hostname)) && !isFileHost(new URL(d.url).hostname)
     const head = comparable(d.text.slice(0, 20_000))
     const names = [p.name, p.funder.name, p.administered_by?.name].filter((n): n is string => !!n).map((n) => comparable(n).slice(0, 50))
     if (!offsite && names.some((n) => n.length > 4 && head.includes(n))) continue

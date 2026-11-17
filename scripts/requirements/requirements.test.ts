@@ -786,3 +786,46 @@ describe('gold set', () => {
     }
   })
 })
+
+describe('Word files and file hosts', () => {
+  const { docxText, isDocx } = require('../data/docx') as typeof import('../data/docx')
+  const { normalise } = require('../../src/data/text') as typeof import('../../src/data/text')
+  const word = new Uint8Array(require('node:fs').readFileSync('tests/fixtures/docx/rules.docx'))
+
+  test('a .docx reads as its paragraphs, without field codes, deleted text or a text box twice', () => {
+    expect(isDocx(word)).toBe(true)
+    expect(isDocx(new TextEncoder().encode('%PDF-1.7'))).toBe(false)
+    const text = normalise(docxText(word))
+    expect(text).toContain('Applicants must be registered charities with two years of accounts.')
+    expect(text).toContain('Apply online by 1 March.')
+    expect(text).not.toContain('HYPERLINK')
+    expect(text).not.toContain('by post')
+    expect(text).not.toContain('-28575')
+    expect(text.split('Budget & match: 20%').length).toBe(2)
+    expect(text).toContain('Cap €50,000')
+  })
+
+  test('the funder’s Word file on its file host, linked only as “the Application”, is read as first-party', async () => {
+    const page = PAGE.replace('<a href="/news">Latest news</a>', '<a href="https://test.widen.net/s/abc123/rules-2027">Download the Application</a>')
+    const pages: Record<string, string> = { 'https://test.example.org/grants': page, 'https://test.example.org/guidelines.pdf': GUIDE }
+    const read: Reader = async (url) => {
+      if (url === 'https://test.widen.net/s/abc123/rules-2027') return { ok: true, finalUrl: 'https://cf-store.widencdn.net/test/a/rules.docx', pdf: false, html: new TextDecoder().decode(word), bytes: word }
+      return fakeReader(pages)(url)
+    }
+    const g = await gather(base, { read, sources: [] })
+    const d = g.docs.find((x) => x.url === 'https://test.widen.net/s/abc123/rules-2027')
+    expect(d?.text).toContain('Applicants must be registered charities with two years of accounts.')
+    expect(g.failures).toEqual([])
+  })
+
+  test('two companies under the same country suffix are not one site', () => {
+    const c = classifyLink({ href: 'https://other.co.uk/about', text: 'About us', context: '' }, 'https://funder.co.uk/grants', { name: 'Funder Grants', url: 'https://funder.co.uk/grants' })
+    expect(c.why).toBe('another site')
+  })
+})
+
+test('an href’s entities are decoded, so a query string keeps its parameters', async () => {
+  const { linksFrom } = await import('./gather')
+  const links = await linksFrom('<p><a href="/rfp.docx?rev=1&amp;hash=AB">Download the RFP</a></p>')
+  expect(links[0]?.href).toBe('/rfp.docx?rev=1&hash=AB')
+})
