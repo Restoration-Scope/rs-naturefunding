@@ -76,6 +76,7 @@ const seg = 'relative min-w-0 rounded-xl border border-border'
 const segLabel = 'pointer-events-none absolute top-2.5 left-4 text-xs font-medium text-foreground'
 const segSelect =
   'block h-full min-h-15 w-full cursor-pointer appearance-none truncate rounded-[inherit] bg-transparent pt-6 pr-6 pb-2.5 pl-4 text-md text-foreground hover:bg-muted focus-visible:outline-offset-[-2px] max-md:min-h-14 placeholder:text-muted-foreground data-empty:text-muted-foreground [&:has(option[value=""]:checked)]:text-muted-foreground'
+import EffortTip from './EffortTip.astro'
 ---
 
   {/* One card over the band's edge: project types as tabs, then where, when and who. */}
@@ -305,6 +306,7 @@ const segSelect =
               <button type="button" data-sort="amount">Amount <span class="arrow" aria-hidden="true"><ChevronsUpDown className="i-none" /><ArrowUp className="i-asc" /><ArrowDown className="i-desc" /></span></button>
               <button type="button" class="h-checked" data-sort="checked" data-alt-for="checked">Checked <span class="arrow" aria-hidden="true"><ChevronsUpDown className="i-none" /><ArrowUp className="i-asc" /><ArrowDown className="i-desc" /></span></button>
             </TableHead>
+            <TableHead scope="col" className="h-effort">What it asks</TableHead>
           </TableRow>
         </TableHeader>
         <TableBody data-list="">
@@ -312,7 +314,7 @@ const segSelect =
         </TableBody>
         <TableBody className="later-head" id="later-head" data-later-head="" hidden>
           <TableRow>
-            <TableHead colSpan={3} scope="colgroup">
+            <TableHead colSpan={4} scope="colgroup">
               <span class="later-head__title">Not open now</span>
               <span class="later-head__hint">No call found, or closed. Listed so you can plan ahead.</span>
               <button type="button" class="linkish" data-later-hide>Hide</button>
@@ -348,9 +350,12 @@ const segSelect =
       </noscript>
     </section>
   </div>
+<EffortTip />
 <script>
   import { initTableFinder } from '../lib/finder'
+  import { initEffortTip } from '../lib/effort-tip'
   import { initScrollAreas } from '../lib/scroll-area'
   initTableFinder()
   initScrollAreas()
+  initEffortTip()
 </script>

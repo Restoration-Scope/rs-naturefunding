@@ -1,5 +1,5 @@
 import { describe, expect, test } from 'bun:test'
-import { programme, statesYear, type Programme } from '../../src/data/schema'
+import { programme, statesDate, statesYear, type Programme } from '../../src/data/schema'
 import { checkData } from '../../src/data/load'
 import { comparable, quoteOnPage } from '../../src/data/text'
 import { htmlToText } from './page-text'
@@ -65,6 +65,128 @@ describe('consortium_required', () => {
     p.evidence.consortium_required = ev('Applicants must form a consortium of three organisations.')
     expect(problems(p)).toEqual(['evidence.consortium_required: consortium_required has evidence but is not stated'])
   })
+})
+
+describe('eligibility, documents and step dates', () => {
+  test('each eligibility rule has its own quote', () => {
+    const p = fixture()
+    p.eligibility = [{ rule: 'Operating for at least 3 years', kind: 'track_record' }, { rule: 'Registered in Kenya', kind: 'legal' }]
+    p.evidence.eligibility = [ev('Applicants must have operated for at least three years.')]
+    expect(problems(p)).toEqual(['evidence.eligibility: each eligibility rule has its own quote: 2 rules, 1 quotes'])
+    p.evidence.eligibility.push(ev('Applicants must be registered in Kenya.'))
+    expect(problems(p)).toEqual([])
+  })
+
+  test('a co-funding share needs co-funding required', () => {
+    const p = fixture()
+    p.co_finance = { min_share: 50 }
+    p.evidence.co_finance = ev('Applicants must match at least 50% of the grant.')
+    expect(problems(p)).toEqual(['co_finance: a co-funding share needs co_finance_required: true'])
+    p.co_finance_required = true
+    p.evidence.co_finance_required = ev('Applicants must match at least 50% of the grant.')
+    expect(problems(p)).toEqual([])
+  })
+
+  test('after-award duties need at least one duty and evidence', () => {
+    const p = fixture()
+    p.after_award = {}
+    p.evidence.after_award = [ev('Grantees report every quarter.')]
+    expect(problems(p)).toEqual(['after_award: after_award needs at least one stated duty'])
+    p.after_award = { reports: 'quarterly' }
+    expect(problems(p)).toEqual([])
+  })
+
+  test('co-funding takes a fractional share, a fixed sum and who it applies to', () => {
+    const p = fixture()
+    p.co_finance_required = true
+    p.evidence.co_finance_required = ev('Non-Indigenous applicants must provide one dollar for every two requested.')
+    p.co_finance = { min_share: 33.3, min_amount: { value: 5000, currency: 'CAD' }, applies_to: 'Non-Indigenous applicants' }
+    p.evidence.co_finance = ev('Non-Indigenous applicants must provide one dollar for every two requested.')
+    expect(problems(p)).toEqual([])
+  })
+
+  test('a match is a share or a ratio, never both, and never zero', () => {
+    const p = fixture()
+    p.co_finance_required = true
+    p.evidence.co_finance_required = ev('Applicants provide one dollar for every two requested.')
+    p.evidence.co_finance = ev('Applicants provide one dollar for every two requested.')
+    p.co_finance = { ratio: '1:2', min_share: 5 }
+    expect(problems(p)).toEqual(['co_finance: co_finance takes min_share or ratio, not both'])
+    p.co_finance = { ratio: '0:0' }
+    expect(problems(p).join(' ')).toContain('co_finance.ratio')
+    p.co_finance = { ratio: '1:2' }
+    expect(problems(p)).toEqual([])
+  })
+
+  test('a misspelled key is refused, not dropped', () => {
+    const p = fixture()
+    p.after_award = { reports: 'final', audits: true } as never
+    p.evidence.after_award = [ev('Grantees submit a final report and an audit.')]
+    expect(problems(p).join(' ')).toContain('audits')
+  })
+
+  test('documents need evidence', () => {
+    const p = fixture()
+    p.documents = ['Registration certificate']
+    expect(problems(p)).toEqual(['evidence.documents: documents is stated but has no evidence'])
+  })
+
+  test('a step date needs its year in an effort quote, one entry per step, in order', () => {
+    const p = fixture()
+    p.effort = { steps: ['Concept note', 'Full proposal'], due: ['2027-01-08', null] }
+    p.evidence.effort = [ev('Concept notes are due by 8 January.')]
+    expect(problems(p)).toEqual(['effort.due: no effort quote states 2027-01-08 with its day, month and year together; a yearless date stays null'])
+    p.evidence.effort = [ev('The project runs through 2027. Concept notes are due by 8 January.')]
+    expect(problems(p)).toEqual(['effort.due: no effort quote states 2027-01-08 with its day, month and year together; a yearless date stays null'])
+    p.evidence.effort = [ev('Concept notes are due by 8 January 2027; full proposals by 1 March 2027.')]
+    expect(problems(p)).toEqual([])
+    p.effort.due = ['2027-03-01', '2027-01-08']
+    expect(problems(p)).toEqual(['effort.due: steps are due in order'])
+    p.effort.due = ['2027-02-30', null]
+    p.evidence.effort = [ev('Concept notes are due by 30 February 2027.')]
+    expect(problems(p)).toEqual(['effort.due: 2027-02-30 is not a calendar date'])
+    p.evidence.effort = [ev('Concept notes are due by 8 January 2027; full proposals by 1 March 2027.')]
+    p.effort.due = ['2027-01-08']
+    expect(problems(p)).toEqual(['effort.due: one due entry per step: 2 steps, 1 entries'])
+  })
+})
+
+describe('a step date must be stated whole in one quote', () => {
+  test.each([
+    ['by January 08, 2027.', '2027-01-08', true],
+    ['8 de enero de 2027', '2027-01-08', true],
+    ['8. Januar 2027', '2027-01-08', true],
+    ['8 Jan. 2027', '2027-01-08', true],
+    ['08.01.2027', '2027-01-08', true],
+    ['due 2027/01/08', '2027-01-08', true],
+    ['the 8th of January, 2027', '2027-01-08', true],
+    ['The project runs through 2027. Applications are due January 8.', '2027-01-08', false],
+    ['Applications close January 8 for projects in 2027.', '2027-01-08', false],
+    ['Applications close 8 January 2027.', '2027-02-08', false],
+    ['18 January 2027', '2027-01-08', false],
+    ['8 Sept. 2027', '2027-09-08', true],
+    ['8 January 2027', '2027-13-08', false],
+    ['Deadline: January 8. 2027 projects will be selected later.', '2027-01-08', false],
+    ['Deadline: 8-Jan-2027', '2027-01-08', true],
+    ['Deadline: 08/01/2027', '2027-01-08', false],
+    ['Deadline: 08/01/2027', '2027-08-01', false],
+    ['Deadline (DD/MM/YYYY): 08/01/2027', '2027-01-08', true],
+    ['Deadline (DD/MM/YYYY): 08/01/2027', '2027-08-01', false],
+    ['Deadline (MM/DD/YYYY): 08/01/2027', '2027-08-01', true],
+    ['Deadline: 25/12/2027', '2027-12-25', true],
+    ['08.01.2027', '2027-08-01', false],
+    ['Applications close 8 January. 2027 projects will be selected later.', '2027-01-08', false],
+    ['Application closes 01/08/2027 (MM/DD/YYYY). Enter your birth date as DD/MM/YYYY.', '2027-01-08', true],
+    ['Application closes 01/08/2027 (MM/DD/YYYY). Enter your birth date as DD/MM/YYYY.', '2027-08-01', false],
+    ['Enter your birth date as DD/MM/YYYY in the form on the next page, please. Applications close 01/08/2027.', '2027-08-01', false],
+    ['Jan. 8, 2027', '2027-01-08', true],
+    ['Applications close 8 May. 2027 projects will be selected later.', '2027-05-08', false],
+    ['Applications close 8 Mayo. 2027', '2027-05-08', false],
+    ['8 janv. 2027', '2027-01-08', true],
+    ['8 mai 2027', '2027-05-08', true],
+    ['Application closes 08/01/2027. Birth date: DD/MM/YYYY.', '2027-01-08', false],
+    ['Deadline (DD/MM/YYYY): 08/01/2027.', '2027-01-08', true],
+  ])('%p states %s: %p', (quote, date, want) => expect(statesDate(quote, date)).toBe(want))
 })
 
 describe('a date quote must state its year', () => {

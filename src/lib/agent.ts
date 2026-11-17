@@ -3,7 +3,7 @@
 // checked date, so a line still holds up when an answer quotes it alone.
 import type { Call, Evidence, Programme } from '../data/schema'
 import { AGING_DAYS, HIDDEN_DAYS, buildDate, listingFor, programmeById, programmes, sortListings, stats, type Listing } from './data'
-import { amountText, effortText, poolText, geographyFull, geographyText, joinAnd, longDate, nameWithFunder } from './format'
+import { amountText, effortSignals, effortText, poolText, geographyFull, geographyText, joinAnd, longDate, nameWithFunder } from './format'
 import { accessHelp, accessLabels, applicantLabels, approachLabels } from './labels'
 import { RS_DESCRIPTOR, RS_URL, SITE_NAME, absolute, funderCorrectionUrl, reportProblemUrl } from './site'
 import { countryName } from './geo'
@@ -25,6 +25,8 @@ export const factIds = {
   approaches: 'approaches',
   reporting: 'reporting',
   effort: 'effort',
+  eligibility: 'eligibility',
+  documents: 'documents',
 } as const
 export const callId = (c: Pick<Call, 'id'>) => `call-${c.id}`
 export const callFactId = (c: Pick<Call, 'id'>, field: 'status' | 'opens' | 'deadline' | 'recurring' | 'countries') => `call-${c.id}-${field}`
@@ -158,6 +160,15 @@ export function programmeMarkdown(p: Programme): string {
     ...(consortium ? [quoteLines(`${n}, consortium required`, consortium, p.evidence.consortium_required, factIds.consortium_required, p)] : []),
     ...(p.administered_by ? [quoteLines(`${n}, run by`, p.administered_by.name, p.evidence.administered_by, factIds.administered_by, p)] : []),
     ...(p.access === 'direct' && p.effort ? [quoteLines(`${n}, steps to apply`, effortText(p.effort)!, p.evidence.effort, factIds.effort, p)] : []),
+    ...(p.access === 'direct' && p.effort?.due
+      ? [`**${n}, when each step is due:** ${p.effort.steps.map((s, i) => `${s}${p.effort!.due![i] ? ` (by ${longDate(p.effort!.due![i]!)})` : ''}`).join('; ')}`]
+      : []),
+    ...(p.access === 'direct' && p.eligibility
+      ? p.eligibility.map(({ rule }, i) => quoteLines(`${n}, rule ${i + 1} an applicant must meet`, rule, p.evidence.eligibility?.[i], factIds.eligibility, p))
+      : []),
+    ...(p.access === 'direct' && p.after_award ? [quoteLines(`${n}, after the award`, effortSignals(p)[3]!.why, p.evidence.after_award, 'after-award', p)] : []),
+    ...(p.co_finance ? [quoteLines(`${n}, co-funding share`, effortSignals(p)[2]!.why, p.evidence.co_finance, factIds.co_finance_required, p)] : []),
+    ...(p.access === 'direct' && p.documents ? [quoteLines(`${n}, documents to have ready`, p.documents.join('; '), p.evidence.documents, factIds.documents, p)] : []),
   ]
   out.push(facts.join('\n\n'))
 

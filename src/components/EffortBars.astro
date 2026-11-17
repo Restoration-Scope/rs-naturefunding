@@ -1,0 +1,30 @@
+---
+import type { Programme } from '../data/schema'
+import { effortSignals } from '../lib/format'
+import { effortCode, effortWords } from '../lib/effort-tip'
+
+/**
+ * What a grant asks of an organisation, as four upright bars on a finder row: who qualifies, applying,
+ * co-funding and after the award (src/lib/format.ts effortSignals). A thousand rows carry these, so a row holds
+ * only its bars (styled in finder.css), its levels and its reasons; the finder's one shared tooltip
+ * (EffortTip.astro) reads them on hover or focus. Touch has no tooltip; the listing's Before you apply section
+ * says the same with the funder's words.
+ */
+interface Props {
+  p: Programme
+}
+
+const { p } = Astro.props
+const signals = effortSignals(p)
+const codes = signals.map((s) => effortCode[s.level])
+---
+
+<span
+  class="effort"
+  tabindex="0"
+  role="img"
+  aria-label={`What it asks of you: ${signals.map((s) => `${s.label}, ${effortWords[s.level]}`).join('; ')}`}
+  title=""
+  data-effort={codes.join('')}
+  data-why={signals.map((s) => s.why).join('|')}
+>{codes.map((c) => <i class={c} />)}</span>

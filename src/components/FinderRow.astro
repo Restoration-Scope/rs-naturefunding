@@ -9,6 +9,7 @@ import { TableCell, TableRow } from '@/components/ui/table'
 import OrgMark from './OrgMark.astro'
 import Route from './Route.astro'
 import RowWhen from './RowWhen.astro'
+import EffortBars from './EffortBars.astro'
 
 interface Props {
   listing: Listing
@@ -79,9 +80,12 @@ const searchText = [p.name, p.funder.name, p.administered_by?.name, p.summary, w
     {cell ? <span class="amt">{cell.text}</span> : <span class="amt amt--none">Amount not stated</span>}
     {cell && <span class="amt__orig" hidden={!cell.original}>{cell.original && `(${cell.original})`}</span>}
     {cell && p.amount?.note && <span class="amt__note">{p.amount.note}</span>}
-    {p.effort && <span class="amt__effort" title={p.effort.steps.join(' → ')}>{effortShort(p.effort)}</span>}
     <Badge variant="tag" className="stamp" data-aging={aging || reason ? '' : undefined} title={stampTitle}>
       {stampText}
     </Badge>
+  </TableCell>
+
+  <TableCell className="c-effort">
+    {p.access === 'direct' ? <EffortBars p={p} /> : p.effort && <span class="amt__effort" title={p.effort.steps.join(' → ')}>{effortShort(p.effort)}</span>}
   </TableCell>
 </TableRow>

@@ -18,6 +18,14 @@ export const evidence = z.object({
 })
 export type Evidence = z.infer<typeof evidence>
 
+/**
+ * What an eligibility rule asks of the applicant, our classification:
+ * legal (status, registration, independence), track_record (years operating, past projects),
+ * finances (revenue or turnover range, accounts, audits), capacity (staff, systems, policies),
+ * project (the project's scope, size or partners), other.
+ */
+export const eligibilityKind = z.enum(['legal', 'track_record', 'finances', 'capacity', 'project', 'other'])
+
 export const approach = z.enum([
   'reforestation',
   'agroforestry',
@@ -186,6 +194,78 @@ export const statesYear = (quote: string, date: string) => {
   )
 }
 
+const MONTHS = [
+  ['jan', 'ene', 'janv', 'janeiro', 'jänner'],
+  ['feb', 'fev', 'févr'],
+  ['mar', 'mär'],
+  ['apr', 'abr', 'avr'],
+  ['may', 'mai', 'mayo', 'maio', 'mei'],
+  ['jun', 'juin'],
+  ['jul', 'juil'],
+  ['aug', 'ago', 'août', 'aoû'],
+  ['sept', 'sep', 'set'],
+  ['oct', 'okt', 'out'],
+  ['nov'],
+  ['dec', 'dic', 'déc', 'dez'],
+]
+// Whole names short enough to sit in MONTHS: no dot may follow them ("8 May. 2027" ends a sentence).
+const WHOLE_SHORT = new Set(['janeiro', 'jänner', 'may', 'mai', 'mayo', 'maio', 'mei', 'juin', 'août'])
+const MONTH_NAMES: Record<number, string> = {
+  1: 'januar[a-z]*|enero|janvier',
+  2: 'februar[a-z]*|febrero|f[ée]vrier|fevereiro',
+  3: 'march|marzo|mars|mar[çc]o|m[äa]rz|maart',
+  4: 'april|abril|avril',
+  6: 'june|junio|juin|junho|juni',
+  7: 'july|julio|juillet|julho|juli',
+  8: 'august|agosto|ao[ûu]t|augustus',
+  9: 'september|septiembre|septembre|setembro',
+  10: 'october|octubre|octobre|outubro|oktober',
+  11: 'november|noviembre|novembre|novembro',
+  12: 'december|diciembre|d[ée]cembre|dezembro|dezember',
+}
+/**
+ * Whether a quote states a whole date: its day, its month (a name in English, Spanish, French, Portuguese,
+ * German or Dutch, or a number) and its year in one expression. "January 8 for projects in 2027" is not 2027-01-08.
+ * A numeric date with slashes or hyphens that reads two ways (08/01/2027) counts only when its order (DD/MM or
+ * MM/DD) is stated next to it and the other order isn't; dots are day first (08.01.2027).
+ */
+export const statesDate = (quote: string, date: string) => {
+  const [y, m, d] = [date.slice(0, 4), Number(date.slice(5, 7)), Number(date.slice(8))]
+  if (!(m >= 1 && m <= 12)) return false
+  const dd = String.raw`0?${d}`
+  // "8." is a day only before its month ("8. Januar 2027"); after one, the dot ends a sentence.
+  const day = String.raw`${dd}(?:st|nd|rd|th|er|º)?`
+  const mm = String.raw`0?${m}`
+  // Only an abbreviation takes a dot ("Jan. 8"): after a whole name ("8 January. 2027 projects") it ends a sentence.
+  const short = MONTHS[m - 1]!
+  const whole = [MONTH_NAMES[m], ...short.filter((a) => WHOLE_SHORT.has(a))].filter(Boolean).join('|')
+  const name = String.raw`(?:${whole}|(?:${short.filter((a) => !WHOLE_SHORT.has(a)).join('|')})\.?)`
+  const year = String.raw`(?:${y}|['‘’]${y.slice(2)})`
+  const yy = String.raw`(?:${y}|${y.slice(2)})`
+  const gap = String.raw`[\s,-]*(?:de\s+|of\s+)?`
+  const alone = (f: string, flags = 'iu') => new RegExp(String.raw`(?<![\p{L}\d])(?:${f})(?![\p{L}\d])`, flags)
+  const forms = [
+    String.raw`${day}\.?${gap}${name}${gap}${year}`,
+    String.raw`${name}\s*${day},?\s*${year}`,
+    String.raw`${dd}\.${mm}\.${yy}`,
+    String.raw`${y}[./-]${mm}[./-]${dd}`,
+  ]
+  if (alone(forms.join('|')).test(quote)) return true
+  const twoWays = d <= 12 && d !== m
+  const DMY = /\b(?:dd|jj|tt)[/-]mm\b/i
+  const MDY = /\bmm[/-]dd\b/i
+  // Each match must carry its own order within a few words of its own sentence, so another field's format can't
+  // vouch for it ("closes 08/01/2027. Birth date: DD/MM/YYYY.").
+  const near = (re: RegExp, at: number, len: number) => {
+    const before = quote.slice(Math.max(0, at - 40), at).split(/[.;!?\n]\s/).pop()!
+    const after = quote.slice(at + len, at + len + 40).split(/[.;!?\n](?:\s|$)/)[0]!
+    return re.test(`${before} ${after}`)
+  }
+  const numeric = (f: string, own: RegExp, other: RegExp) =>
+    [...quote.matchAll(alone(f, 'giu'))].some((x) => !twoWays || (near(own, x.index, x[0].length) && !near(other, x.index, x[0].length)))
+  return numeric(String.raw`${dd}[/-]${mm}[/-]${yy}`, DMY, MDY) || numeric(String.raw`${mm}[/-]${dd}[/-]${yy}`, MDY, DMY)
+}
+
 /** Why a call's expected opening is wrong, or null: it is for an upcoming call with no firm date, and names only years its status quote states. */
 export function expectedProblem(c: Pick<Call, 'expected' | 'status' | 'opens' | 'evidence'>): string | null {
   if (!c.expected) return null
@@ -238,8 +318,81 @@ export const programme = z
         steps: z.array(z.string().min(3).max(80)).min(1).max(5).describe("The steps in order, in our words."),
         /** The page says more steps follow the ones listed, without naming them all. */
         more_after: z.boolean().optional().describe("true when the page says more steps follow the ones listed."),
+        /** When each step is due, as the funder dates it, one entry per step (null for an undated step). Never inferred. */
+        due: z
+          .array(isoDate.nullable())
+          .optional()
+          .describe('When each step is due (YYYY-MM-DD) in the current or next round, one entry per step, null for an undated step. Only dates one effort quote states with their day and year.'),
       })
+      .strict()
       .optional(),
+    /** The rules that rule an applicant out, in our words, each phrased as a requirement met (Yes = qualifies, No = ruled out). Missing means not listed. */
+    eligibility: z
+      .array(
+        z.object({
+          rule: z.string().min(5).max(120).describe('The rule in our words, phrased as a requirement met: Yes = qualifies, No = ruled out.'),
+          kind: eligibilityKind.describe('What the rule is about: legal (status, registration, independence), track_record (years operating, past projects), finances (a financial bar to meet: a revenue range, audited accounts, a request capped by revenue), capacity (staff, systems, policies), project (scope, size, place, partners), other.'),
+        }).strict(),
+      )
+      .min(1)
+      .max(8)
+      .optional()
+      .describe('The rules that rule an applicant out, in our words, each phrased as a requirement the applicant meets, so Yes means it qualifies and No rules it out. evidence.eligibility holds one quote per rule, in the same order. Missing when the pages we read don’t list them.'),
+    /** How much co-funding the funder asks for, when `co_finance_required` is true and the page says. */
+    co_finance: z
+      .object({
+        /** The smallest share of the project the applicant must bring, in percent (a 1:2 match is 33.3). */
+        min_share: z.number().gt(0).max(100).optional().describe('The smallest share of the project the applicant must bring, from its own or third-party funds, in percent (a 1:1 match is 50). A match stated as a ratio goes in ratio instead.'),
+        /** The match as the funder states a ratio, applicant to funder ("1:2" = one for every two requested). */
+        ratio: z
+          .string()
+          .regex(/^(?!0+(\.0+)?:)\d+(\.\d+)?:(?!0+(\.0+)?$)\d+(\.\d+)?$/)
+          .optional()
+          .describe('The match as the funder states it as a ratio, applicant to funder: "1:1", "1:2" (one for every two requested).'),
+        /** The smallest contribution as a fixed sum, when the funder states one. */
+        min_amount: z
+          .object({ value: z.number().positive().describe('The sum.'), currency: z.string().regex(/^[A-Z]{3}$/).describe('ISO 4217 code.') })
+          .strict()
+          .optional()
+          .describe('The smallest contribution as a fixed sum in the funder’s currency, when the funder states one.'),
+        /** The funder accepts in-kind contributions (staff time, land, equipment) toward it. */
+        in_kind: z.literal(true).optional().describe('true when the funder accepts in-kind contributions toward the co-funding.'),
+        /** Who or what the requirement applies to, when the funder limits it ("Non-Indigenous applicants only"). */
+        applies_to: z.string().min(5).max(80).optional().describe('Who or what the requirement applies to, when the funder limits it, in our words.'),
+      })
+      .strict()
+      .refine((c) => c.min_share === undefined || c.ratio === undefined, 'co_finance takes min_share or ratio, not both')
+      .refine((c) => c.min_share !== undefined || c.ratio !== undefined || c.min_amount !== undefined || c.in_kind !== undefined, 'co_finance needs min_share, ratio, min_amount or in_kind')
+      .optional(),
+    /** What a grantee must do after the award, from the funder's pages. Each key only when stated. */
+    after_award: z
+      .object({
+        /** How often grantees report: one report at the end, yearly, twice a year, or quarterly or more often. */
+        reports: z
+          .enum(['final', 'interim_and_final', 'yearly', 'twice_yearly', 'quarterly', 'other', 'unspecified'])
+          .optional()
+          .describe('How often grantees report, by the most frequent required report: final (one at the end), interim_and_final (one or two interim reports and a final), yearly, twice_yearly (every six months), quarterly (quarterly or more often), other (a stated schedule none of these fit, such as at set milestones), unspecified (reports required, how often not stated).'),
+        /** An external or independent audit of the grant. */
+        audit: z.literal(true).optional().describe('true when the funder requires an external or independent audit.'),
+        /** The funder visits the project site. */
+        site_visits: z.literal(true).optional().describe('true when the funder says it visits project sites.'),
+        /** Grantees must take part in training, a programme or events. */
+        training: z.literal(true).optional().describe('true when grantees must take part in training, a capacity programme or events.'),
+      })
+      .strict()
+      .refine((a) => Object.keys(a).length > 0, 'after_award needs at least one stated duty')
+      .optional(),
+    /** The day the pages were read for eligibility, documents, steps, co-funding and after-award duties. Missing means not read for them yet. */
+    requirements_checked: isoDate
+      .optional()
+      .describe('The day the funder’s pages were read for eligibility, documents, steps, co-funding share and after-award duties. Missing means they haven’t been read for these yet, so an absent fact is unknown, not “none”.'),
+    /** What to have ready for the first step, in our words ("Registration certificate"). Missing means not stated. */
+    documents: z
+      .array(z.string().min(3).max(120))
+      .min(1)
+      .max(10)
+      .optional()
+      .describe('The documents the funder asks for at the first step, in our words. Missing when the pages we read don’t say.'),
     /** How many applications the funder says it funded, out of how many, and when. Missing means not published. */
     odds: z
       .object({
@@ -261,13 +414,21 @@ export const programme = z
       co_finance_required: evidence.optional(),
       consortium_required: evidence.optional(),
       reporting: evidence.optional(),
-      /** One quote per step at most: a page often names the stages in different places. */
-      effort: z.array(evidence).min(1).max(3).optional(),
+      /** One quote per step at most: a page often names the stages, and their dates, in different places. */
+      effort: z.array(evidence).min(1).max(5).optional(),
+      /** One quote per rule, in the same order as `eligibility`. */
+      eligibility: z.array(evidence).min(1).max(8).optional(),
+      co_finance: evidence.optional(),
+      /** One quote per duty at most. */
+      after_award: z.array(evidence).min(1).max(4).optional(),
+      /** A list of documents usually sits in one or two places. */
+      documents: z.array(evidence).min(1).max(3).optional(),
       odds: evidence.optional(),
-    }),
+    }).strict(),
     /** The oldest evidence date: every fact above was read on or after this day. */
     checked_at: isoDate,
   })
+  .strict()
   .superRefine((p, ctx) => {
     const issue = (path: (string | number)[], message: string) => ctx.addIssue({ code: 'custom', path, message })
 
@@ -283,12 +444,33 @@ export const programme = z
       consortium_required: p.consortium_required !== undefined,
       reporting: p.reporting !== null,
       effort: p.effort !== undefined,
+      eligibility: p.eligibility !== undefined,
+      documents: p.documents !== undefined,
+      co_finance: p.co_finance !== undefined,
+      after_award: p.after_award !== undefined,
       odds: p.odds !== undefined,
     }
     for (const [field, isStated] of Object.entries(stated)) {
       const e = p.evidence[field as keyof typeof p.evidence]
       if (isStated && !e) issue(['evidence', field], `${field} is stated but has no evidence`)
       if (!isStated && e) issue(['evidence', field], `${field} has evidence but is not stated`)
+    }
+
+    if (p.eligibility && p.evidence.eligibility && p.eligibility.length !== p.evidence.eligibility.length) {
+      issue(['evidence', 'eligibility'], `each eligibility rule has its own quote: ${p.eligibility.length} rules, ${p.evidence.eligibility.length} quotes`)
+    }
+    if (p.co_finance && p.co_finance_required !== true) issue(['co_finance'], 'a co-funding share needs co_finance_required: true')
+    const due = p.effort?.due
+    if (p.effort && due) {
+      if (due.length !== p.effort.steps.length) issue(['effort', 'due'], `one due entry per step: ${p.effort.steps.length} steps, ${due.length} entries`)
+      if (due.every((d) => d === null)) issue(['effort', 'due'], 'no step is dated; leave due out')
+      const quotes = (p.evidence.effort ?? []).map((e) => e.quote)
+      const dated = due.filter((d): d is string => d !== null)
+      for (const d of dated) if (Number.isNaN(Date.parse(d)) || new Date(d).toISOString().slice(0, 10) !== d) issue(['effort', 'due'], `${d} is not a calendar date`)
+      // One quote must state the date whole, day, month and year together ("8 January 2027", "Jan. 8, 2027",
+      // "08.01.2027", "2027/01/08"). A year from another sentence is not the step's year.
+      for (const d of dated) if (!quotes.some((q) => statesDate(q, d))) issue(['effort', 'due'], `no effort quote states ${d} with its day, month and year together; a yearless date stays null`)
+      if (dated.some((d, i) => i > 0 && d < dated[i - 1]!)) issue(['effort', 'due'], 'steps are due in order')
     }
 
     // A round's pot smaller than one grant from that round is a misread. A year's or a programme's pot

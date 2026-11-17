@@ -1,8 +1,7 @@
 ---
 import type { Evidence } from '../data/schema'
-import { boldFigures, keepAmountTogether, pageLabel } from '../lib/format'
-import { notRecheckedPage } from '../lib/data'
-import SourceLink from './SourceLink.astro'
+import { keepAmountTogether } from '../lib/format'
+import Quote from './Quote.astro'
 import {
   Banknote,
   Building2,
@@ -83,23 +82,6 @@ const quotes = evidence ? (Array.isArray(evidence) ? evidence : [evidence]) : []
       )
     }
     <slot />
-    {
-      quotes.map((e) => (
-        <figure class="mt-[0.4rem]">
-          {/* The funder's words hang off a rule, so the facts read as one list rather than a stack of boxes. The
-              source icon ends the quote, held to its last word; its tooltip names the page and date. */}
-          <blockquote class="max-w-[65ch] border-l-3 border-rule-strong py-[0.1rem] pl-[0.85rem] text-[0.9875rem] text-ink" cite={e.source_url}>
-            <p>
-              {figures ? <span class="before:content-['“'] after:content-['”']" set:html={boldFigures(e.quote)} /> : <span class="before:content-['“'] after:content-['”']">{e.quote}</span>}{'\u00a0'}<SourceLink
-                url={e.source_url}
-                label={pageLabel(e.source_url)}
-                checked={e.checked_at}
-                reason={notRecheckedPage(e.source_url)}
-              />
-            </p>
-          </blockquote>
-        </figure>
-      ))
-    }
+    {quotes.map((e) => <Quote e={e} figures={figures} />)}
   </dd>
 </div>
