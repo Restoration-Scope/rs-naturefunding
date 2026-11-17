@@ -34,6 +34,7 @@ const loadFonts = () =>
  * Characters no stored font has (a new listing in another script): cut them from Google Fonts for this build,
  * and say so, so the stored subsets catch up (tests/og.test.ts fails until they do).
  */
+/** Whether this build fetched, or failed to fetch, a font no stored file has. Never reset. */
 let fetched = false
 async function fetchMissing(_lang: string, segment: string): Promise<Font[]> {
   fetched = true
@@ -189,11 +190,11 @@ const makeBackground = () =>
   })())
 
 let rendererKey: string | undefined
-/** The renderer's own source, fonts, art and the libraries that draw (their locked versions). */
+/** The renderer's own source, fonts, art and every locked dependency (bun.lock), so a library upgrade redraws. */
 function rendererHash() {
   return (rendererKey ??= (() => {
     const h = createHash('sha256')
-    for (const f of ['src/lib/og-card.tsx', 'src/lib/og-fonts.ts', 'public/img/header/hero-1236.jpg', 'node_modules/satori/package.json', 'node_modules/sharp/package.json'])
+    for (const f of ['src/lib/og-card.tsx', 'src/lib/og-fonts.ts', 'public/img/header/hero-1236.jpg', 'bun.lock'])
       h.update(readFileSync(join(process.cwd(), f)))
     for (const { file } of ogFontFiles()) h.update(file).update(readFileSync(join(OG_FONT_DIR, file)))
     return h.digest('hex')
@@ -207,9 +208,9 @@ const CACHE_DIR = join(process.cwd(), 'node_modules/.cache/og-cards')
 export async function renderCard(p: Programme): Promise<Buffer> {
   const cached = join(CACHE_DIR, `${p.id}-${cardVersion(p)}.jpg`)
   if (existsSync(cached)) return readFileSync(cached)
-  fetched = false
   const jpeg = await drawCard(p)
-  // A card drawn with a fetched font (or a blank where it failed) is drawn again next build.
+  // Once any card needed a fetched font (or got a blank where it failed), no card is cached for the rest of the build:
+  // Satori shares fonts between cards, so a later card may use that font without fetching.
   if (!fetched) {
     mkdirSync(CACHE_DIR, { recursive: true })
     writeFileSync(cached, jpeg)
