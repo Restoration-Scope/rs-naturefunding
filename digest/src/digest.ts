@@ -49,9 +49,11 @@ export function buildDigest(
   const order: Record<Section, number> = { open: 0, upcoming: 1, new: 2 }
   const sortKey = (i: DigestItem) =>
     i.section === 'open' ? (i.call?.deadline?.date ?? '9999') : i.section === 'upcoming' ? (i.call?.opens ?? '9999') : ''
-  const items = [...byKey.values()].sort(
-    (a, b) => order[a.section] - order[b.section] || sortKey(a).localeCompare(sortKey(b)) || a.programme.name.localeCompare(b.programme.name),
-  )
+  // One line per programme: a funder with several rounds open (one per meeting date) shows its next one.
+  const seen = new Set<string>()
+  const items = [...byKey.values()]
+    .sort((a, b) => order[a.section] - order[b.section] || sortKey(a).localeCompare(sortKey(b)) || a.programme.name.localeCompare(b.programme.name))
+    .filter((i) => !seen.has(i.programme.id) && !!seen.add(i.programme.id))
   const counts = { open: 0, upcoming: 0, new: 0 }
   for (const i of items) counts[i.section]++
   return { items: items.slice(0, MAX_ITEMS), total: items.length, counts }

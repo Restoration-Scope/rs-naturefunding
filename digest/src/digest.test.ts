@@ -83,6 +83,17 @@ describe('one subscriber’s digest', () => {
     ])
   })
 
+  test('one line per programme: several open rounds show the one that closes first', () => {
+    const p = programmes.find((x) => x.calls.filter((c) => openCall(x) && c.status === 'open' && c.deadline && c.deadline.date >= today).length >= 2)
+    if (!p) return
+    const rounds = p.calls.filter((c) => c.status === 'open' && c.deadline && c.deadline.date >= today)
+    const events = rounds.map((c) => ({ at: '2026-11-10T00:00:00.000Z', kind: 'opened' as const, programme: p.id, call: c.id }))
+    const d = buildDigest(events, byId, { where: '', approaches: [] }, '2026-11-08T00:00:00.000Z', now)
+    const first = [...rounds].sort((a, b) => a.deadline!.date.localeCompare(b.deadline!.date))[0]!
+    expect(d.items.map((i) => i.call?.id)).toEqual([first.id])
+    expect(d.total).toBe(1)
+  })
+
   test('a call that opened before the last email and opened again after it is news again', () => {
     const c = openCall(withOpen)!
     const events = [
