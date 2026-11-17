@@ -1,5 +1,6 @@
 // Guards on the built site: the pages, the finder's DOM contract, the evidence on each programme page,
-// and how much JavaScript ships. It builds into dist/ first (about 2 s); set DIST_TEST_REUSE=1 to test
+// and how much JavaScript ships. It builds into dist/ first (about 15 s; a minute when the social cards are not
+// cached yet, src/lib/og-card.tsx); set DIST_TEST_REUSE=1 to test
 // the dist/ already there.
 import { describe, expect, test } from 'bun:test'
 import { existsSync, readFileSync, readdirSync } from 'node:fs'
@@ -9,6 +10,8 @@ import { parseHTML } from 'linkedom'
 import { evidenceOf } from '../src/data/load'
 import { finderPages } from '../src/lib/finder-pages'
 import { listings, programmes } from '../src/lib/data'
+import { hasOwnCard } from '../src/lib/og-card'
+import sharp from 'sharp'
 import { pastIssues } from '../digest/scripts/issues'
 
 const root = join(import.meta.dir, '..')
@@ -262,6 +265,22 @@ describe('home header', () => {
 
   test('no page has a header image', () => {
     for (const f of htmlFiles) expect(doc(f).querySelectorAll('header picture').length, f).toBe(0)
+  }, fullDistTimeout)
+})
+
+describe('social cards', () => {
+  test('each programme page points og:image at its own 1200×630 card; hidden ones keep the site card', async () => {
+    for (const p of programmes) {
+      const d = doc(`p/${p.id}/index.html`)
+      const url = new URL(d.querySelector('meta[property="og:image"]')!.getAttribute('content')!)
+      if (!hasOwnCard(p)) {
+        expect(url.pathname, p.id).toBe('/og.png')
+        continue
+      }
+      expect(url.pathname, p.id).toBe(`/og/${p.id}.jpg`)
+      const meta = await sharp(join(dist, url.pathname)).metadata()
+      expect([meta.width, meta.height], p.id).toEqual([1200, 630])
+    }
   }, fullDistTimeout)
 })
 
