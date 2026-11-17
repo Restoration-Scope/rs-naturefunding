@@ -6,7 +6,8 @@
  * marks coverage incomplete, so the programme is never stamped requirements_checked on a partial read.
  */
 import { createHash } from 'node:crypto'
-import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs'
+import { existsSync, mkdirSync, mkdtempSync, readFileSync, rmSync, writeFileSync } from 'node:fs'
+import { tmpdir } from 'node:os'
 import { join } from 'node:path'
 import type { Programme, Source } from '../../src/data/schema'
 import { comparable, normalise } from '../../src/data/text'
@@ -41,7 +42,7 @@ export type Doc = {
   low_text: boolean
 }
 
-export type Failure = { url: string; from: string | null; kind: FailureKind | 'low_text' | 'bound' | 'off_topic'; message: string }
+export type Failure = { url: string; from: string | null; kind: FailureKind | 'low_text' | 'bound' | 'off_topic' | 'offsite'; message: string }
 
 export type Gathered = {
   docs: Doc[]
@@ -75,7 +76,8 @@ export const urlKey = (u: string) => u.replace(/#.*$/, '').replace(/\/(?=$|\?)/,
 
 const site = (host: string) => host.replace(/^www\./, '').split('.').slice(-2).join('.')
 
-export type Candidate = Link & { url: string; score: 'strong' | 'ambiguous' | 'skip'; why: string }
+/** `offsite`: a page on another site whose link is about applying; it is ranked like any link, but never read: a kept one blocks the stamp. */
+export type Candidate = Link & { url: string; score: 'strong' | 'ambiguous' | 'offsite' | 'skip'; why: string; offsite?: true }
 
 /** What code can say about a link: follow it, ask Jev, or skip it, and why. */
 export function classifyLink(link: Link, pageUrl: string, programme: Pick<Programme, 'name' | 'url'>): Candidate {
@@ -98,8 +100,12 @@ export function classifyLink(link: Link, pageUrl: string, programme: Pick<Progra
   const relevant = RELEVANT.test(words) || (RELEVANT.test(link.context) && doc)
   const named = comparable(link.text).length > 3 && comparable(`${link.text} ${link.context}`).includes(comparable(programme.name).slice(0, 40))
   if (NOISE.test(link.text) && !relevant) return { ...link, url, score: 'skip', why: 'news, contact or account page' }
-  if (relevant && (doc || sameSite)) return { ...link, url, score: 'strong', why: doc ? 'a document whose link names rules or guidance' : 'a page whose link names rules or guidance' }
-  if (doc && (sameSite || named)) return { ...link, url, score: 'ambiguous', why: 'a document the link doesn’t describe' }
+  // A document on another host counts only as the funder's own: linked straight from its page, and about the programme by Jev.
+  const off = sameSite ? {} : { offsite: true as const }
+  if (relevant && (doc || sameSite)) return { ...link, url, ...off, score: 'strong', why: doc ? 'a document whose link names rules or guidance' : 'a page whose link names rules or guidance' }
+  if (doc && (sameSite || named)) return { ...link, url, ...off, score: 'ambiguous', why: 'a document the link doesn’t describe' }
+  // An application portal or guide on another site may hold rules we can't vouch for as the funder's: never read, never silently dropped.
+  if (relevant || named) return { ...link, url, offsite: true, score: 'offsite', why: 'a page on another site about applying' }
   if (sameSite && (named || RELEVANT.test(link.context))) return { ...link, url, score: 'ambiguous', why: 'a page near words about applying' }
   return { ...link, url, score: 'skip', why: sameSite ? 'unrelated page' : 'another site' }
 }
@@ -137,6 +143,28 @@ export async function linksFrom(html: string): Promise<Link[]> {
 export const lowTextPdf = (pages: string[]) => {
   const chars = pages.reduce((a, p) => a + normalise(p).length, 0)
   return chars < 400 || chars / Math.max(1, pages.length) < 150
+}
+
+/** Pages of a PDF that carry an image and next to no text: a scan inside an otherwise readable PDF. Blank pages have no image. */
+export function scannedPages(pages: string[], bytes: Uint8Array): number[] {
+  const thin = pages.map((t, i) => ({ i, n: normalise(t).length })).filter((x) => x.n < 200).map((x) => x.i + 1)
+  if (!thin.length || !bytes.length) return []
+  const dir = mkdtempSync(join(tmpdir(), 'nf-img-'))
+  try {
+    const file = join(dir, 'doc.pdf')
+    writeFileSync(file, bytes)
+    const run = Bun.spawnSync(['pdfimages', '-list', file])
+    // Without pdfimages, a thin page can't be told from a blank one: count it as a scan.
+    if (run.exitCode !== 0) return thin
+    const big = new Set<number>()
+    for (const line of run.stdout.toString().split('\n').slice(2)) {
+      const c = line.trim().split(/\s+/)
+      if (c.length > 4 && Number(c[3]) * Number(c[4]) >= 250 * 250) big.add(Number(c[0]))
+    }
+    return thin.filter((n) => big.has(n))
+  } finally {
+    rmSync(dir, { recursive: true, force: true })
+  }
 }
 
 export type Reader = (url: string) => Promise<
@@ -230,6 +258,10 @@ export async function gather(
     const low = pages ? lowTextPdf(pages) : text.length < 300
     const doc: Doc = { ref: `D${docs.length + 1}`, url, final_url: r.finalUrl, from, anchor, depth, pdf: r.pdf, text, pages, selected, links, hash: hashText(text), low_text: low }
     if (low) failures.push({ url, from, kind: 'low_text', message: r.pdf ? 'a scanned or image PDF: needs OCR' : 'too little text: the page may need a browser' })
+    else if (pages) {
+      const scans = scannedPages(pages, r.bytes)
+      if (scans.length) failures.push({ url, from, kind: 'low_text', message: `page${scans.length > 1 ? 's' : ''} ${scans.join(', ')} ${scans.length > 1 ? 'are images' : 'is an image'}: needs OCR` })
+    }
     docs.push(doc)
     return doc
   }
@@ -238,7 +270,8 @@ export async function gather(
 
   let followed = 0
   let frontier = docs.filter((d) => !d.pdf)
-  for (let depth = 1; depth <= bounds.depth && frontier.length; depth++) {
+  // One level past the bound is ranked but not opened: a kept link there blocks the stamp instead of vanishing.
+  for (let depth = 1; depth <= bounds.depth + 1 && frontier.length; depth++) {
     const next: Doc[] = []
     const candidates = new Map<string, Candidate & { from: string }>()
     for (const d of frontier) {
@@ -253,7 +286,7 @@ export async function gather(
       }
     }
     let strong = [...candidates.values()].filter((c) => c.score === 'strong')
-    let ambiguous = [...candidates.values()].filter((c) => c.score === 'ambiguous')
+    let ambiguous = [...candidates.values()].filter((c) => c.score === 'ambiguous' || c.score === 'offsite')
     // Jev ranks every candidate: menus link many pages that name "apply" or "eligibility" for other programmes.
     // A link code calls strong needs less to be followed than one code can't place. Without Jev, unplaced links
     // count against coverage, never silently dropped.
@@ -277,7 +310,8 @@ export async function gather(
         ]),
       )
       const answers = await opts.jev(p.id, { programme: { name: p.name, funder: p.funder.name, page: p.url } }, questions)
-      scored.push(...all.map((c, i) => ({ c, yes: (answers[`l${i}`] as { noul?: number })?.noul ?? 0 })))
+      // A link Jev gave no answer for is followed, never dropped.
+      scored.push(...all.map((c, i) => ({ c, yes: (answers[`l${i}`] as { noul?: number })?.noul ?? 1 })))
       }
       const keep = scored.filter((s) => s.yes >= (s.c.score === 'strong' ? LINK_THRESHOLD.strong : LINK_THRESHOLD.ambiguous))
       for (const s of scored) if (!keep.includes(s)) skipped.push({ url: s.c.url, why: `Jev: unlikely to hold this programme's rules (${s.yes.toFixed(2)})` })
@@ -290,6 +324,14 @@ export async function gather(
       ambiguous = []
     }
     for (const c of [...strong, ...ambiguous]) {
+      if (c.score === 'offsite') {
+        failures.push({ url: c.url, from: c.from, kind: 'offsite', message: 'a page on another site about applying: not read, so its rules are unknown' })
+        continue
+      }
+      if (depth > bounds.depth) {
+        failures.push({ url: c.url, from: c.from, kind: 'bound', message: `past the crawl depth of ${bounds.depth}` })
+        continue
+      }
       if (followed >= bounds.documents) {
         failures.push({ url: c.url, from: c.from, kind: 'bound', message: `crawl bound of ${bounds.documents} documents reached` })
         continue
@@ -302,22 +344,26 @@ export async function gather(
     frontier = next
   }
 
-  // A followed document must be about this programme by its own text, not just its link.
+  // A followed document must be about this programme by its own text, not just its link. One on another host
+  // needs Jev's yes: naming the funder is not enough, since a third party's guide names it too.
+  const firstParty = new Set(seedsOf(p).map((u) => URL.parse(u)?.hostname).filter((h): h is string => !!h).map(site))
   for (const d of [...docs]) {
     if (d.depth === 0 || d.low_text) continue
+    const offsite = !firstParty.has(site(new URL(d.final_url).hostname))
     const head = comparable(d.text.slice(0, 20_000))
     const names = [p.name, p.funder.name, p.administered_by?.name].filter((n): n is string => !!n).map((n) => comparable(n).slice(0, 50))
-    if (names.some((n) => n.length > 4 && head.includes(n))) continue
-    let about = 0.5
+    if (!offsite && names.some((n) => n.length > 4 && head.includes(n))) continue
+    let about = offsite ? 0 : 0.5
     if (opts.jev) {
       const a = await opts.jev(p.id, { programme: { name: p.name, funder: p.funder.name, rounds: p.calls.map((c) => c.label) }, document: { url: d.url, linked_as: d.anchor, opening: d.text.slice(0, 6000) } }, {
         about: { type: 'noul', instructions: 'Is this document about this funding programme (its guidelines, call, application or terms), rather than another programme, a report or general information?' },
       })
-      about = (a.about as { noul?: number })?.noul ?? 0.5
+      about = (a.about as { noul?: number })?.noul ?? (offsite ? 0 : 0.5)
     }
     if (about < 0.5) {
       docs.splice(docs.indexOf(d), 1)
-      failures.push({ url: d.url, from: d.from, kind: 'off_topic', message: `not about this programme (${about.toFixed(2)})` })
+      if (offsite && !opts.jev) failures.push({ url: d.url, from: d.from, kind: 'offsite', message: 'a document on another site: without Jev it can’t be confirmed as the funder’s, so it is not used' })
+      else failures.push({ url: d.url, from: d.from, kind: 'off_topic', message: `not about this programme (${about.toFixed(2)})` })
     }
   }
   docs.forEach((d, i) => (d.ref = `D${i + 1}`))
@@ -325,7 +371,7 @@ export async function gather(
   for (const f of failures) {
     if (f.kind === 'off_topic') continue
     if (f.kind === 'bound') reasons.push(`the crawl bound left ${f.url} unread`)
-    else if (f.kind === 'low_text') reasons.push(`${f.url}: ${f.message}`)
+    else if (f.kind === 'low_text' || f.kind === 'offsite') reasons.push(`${f.url}: ${f.message}`)
     else reasons.push(`${f.url} would not open (${f.kind}: ${f.message})`)
   }
   if (!docs.length) reasons.push('no page opened')

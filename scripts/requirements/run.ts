@@ -72,7 +72,7 @@ if (values['gather-only']) {
     const chars = g.docs.reduce((a, d) => a + d.text.length, 0)
     mkdirSync(join(out, 'docs', id), { recursive: true })
     for (const d of g.docs) writeFileSync(join(out, 'docs', id, `${d.ref}.txt`), `${d.url}\nfrom: ${d.from ?? '(seed)'} [${d.anchor ?? ''}]\n\n${d.text}`)
-    const links = g.docs.flatMap((d) => d.links.map((l) => `${d.ref}\t${l.text}\t${new URL(l.href, d.final_url).toString()}`))
+    const links = g.docs.flatMap((d) => d.links.map((l) => `${d.ref}\t${l.text}\t${URL.parse(l.href, d.final_url)?.toString() ?? l.href}`))
     writeFileSync(join(out, 'docs', id, 'links.tsv'), links.join('\n'))
     writeFileSync(join(out, 'docs', id, 'gathered.json'), JSON.stringify({ docs: g.docs.map((d) => ({ ref: d.ref, url: d.url, from: d.from, anchor: d.anchor, pdf: d.pdf, chars: d.text.length, low_text: d.low_text })), failures: g.failures, skipped: g.skipped, reasons: g.reasons }, null, 1))
     // About 3.5 characters a token; the extractor reads every chunk once with a ~2.5K-token prompt.

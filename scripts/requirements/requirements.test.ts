@@ -3,7 +3,7 @@ import type { z } from 'zod'
 import { programme as programmeSchema, type Programme, type Source } from '../../src/data/schema'
 import { thinFields } from './check'
 import { apiWire, chunksOf, reconcile, splitText, toApi, type Wire } from './extract'
-import { classifyLink, gather, lowTextPdf, type Doc, type Reader } from './gather'
+import { classifyLink, gather, lowTextPdf, scannedPages, type Doc, type Reader } from './gather'
 import type { Answer, Question } from './models'
 import { emptyWire, run } from './pipeline'
 import { queue } from './queue'
@@ -395,4 +395,72 @@ test('gather: a page written with and without its trailing slash is read once', 
   const read = fakeReader({ 'https://test.example.org/grants': page, 'https://test.example.org/guidelines.pdf': GUIDE, 'https://test.example.org/faq': faq, 'https://test.example.org/faq/': faq })
   const g = await gather(base, { read, sources: [] })
   expect(g.docs.filter((d) => d.url.includes('/faq')).length).toBe(1)
+})
+
+/** A two-page PDF: page 1 has text, page 2 only a 300 by 300 grey image. Offsets are left for the reader to rebuild. */
+function scanPdf(text: string): Uint8Array {
+  const img = 'f'.repeat(300 * 300 * 2)
+  const content1 = `BT /F1 10 Tf 40 700 Td ${Array(12).fill(`(${text}) Tj 0 -14 Td`).join(' ')} ET`
+  const content2 = 'q 300 0 0 300 50 400 cm /Im1 Do Q'
+  const objs = [
+    '<< /Type /Catalog /Pages 2 0 R >>',
+    '<< /Type /Pages /Kids [3 0 R 4 0 R] /Count 2 >>',
+    '<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 5 0 R >> >> /Contents 6 0 R >>',
+    '<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Resources << /XObject << /Im1 8 0 R >> >> /Contents 7 0 R >>',
+    '<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica >>',
+    `<< /Length ${content1.length} >>\nstream\n${content1}\nendstream`,
+    `<< /Length ${content2.length} >>\nstream\n${content2}\nendstream`,
+    `<< /Type /XObject /Subtype /Image /Width 300 /Height 300 /ColorSpace /DeviceGray /BitsPerComponent 8 /Filter /ASCIIHexDecode /Length ${img.length + 1} >>\nstream\n${img}>\nendstream`,
+  ]
+  let out = '%PDF-1.4\n'
+  const at: number[] = []
+  objs.forEach((o, i) => {
+    at.push(out.length)
+    out += `${i + 1} 0 obj\n${o}\nendobj\n`
+  })
+  const xref = out.length
+  out += `xref\n0 ${objs.length + 1}\n0000000000 65535 f \n${at.map((n) => `${String(n).padStart(10, '0')} 00000 n \n`).join('')}trailer\n<< /Size ${objs.length + 1} /Root 1 0 R >>\nstartxref\n${xref}\n%%EOF\n`
+  return new TextEncoder().encode(out)
+}
+
+describe('gather: coverage it must not claim', () => {
+  test('a scanned page inside a readable PDF is found', async () => {
+    const pdf = scanPdf('Applicants must be registered charities and must submit audited accounts with the application form.')
+    const { pdfPages } = await import('../refresh/fetch')
+    const pages = pdfPages(pdf)
+    expect(pages.length).toBe(2)
+    expect(lowTextPdf(pages)).toBe(false)
+    expect(scannedPages(pages, pdf)).toEqual([2])
+  })
+
+  test('a relevant link past the crawl depth blocks the stamp', async () => {
+    const link = (href: string, words: string) => `<html><body><main><h1>Test Nature Grants</h1><p>${'Test Nature Grants help community groups restore rivers and wetlands. '.repeat(6)}</p><p><a href="${href}">${words}</a></p></main></body></html>`
+    const read = fakeReader({
+      'https://test.example.org/grants': link('/a', 'Application guide'),
+      'https://test.example.org/a': link('/b', 'Eligibility rules'),
+      'https://test.example.org/b': link('/c', 'Requirements'),
+      'https://test.example.org/c': 'Test Nature Grants requirements. Applicants must have audited accounts.',
+    })
+    const g = await gather(base, { read, sources: [] })
+    expect(g.docs.map((d) => d.url)).not.toContain('https://test.example.org/c')
+    expect(g.complete).toBe(false)
+    expect(g.reasons.join(' ')).toContain('https://test.example.org/c')
+  })
+
+  test('an application portal on another site blocks the stamp and is never read', async () => {
+    const page = PAGE.replace('<a href="/news">Latest news</a>', '<a href="https://portal.example.net/apply/123">Apply here</a>')
+    const read = fakeReader({ 'https://test.example.org/grants': page, 'https://test.example.org/guidelines.pdf': GUIDE, 'https://portal.example.net/apply/123': 'Test Nature Grants application. Applicants must upload a board resolution.' })
+    const g = await gather(base, { read, sources: [], jev: fakeJev().ask })
+    expect(g.docs.map((d) => d.url)).not.toContain('https://portal.example.net/apply/123')
+    expect(g.complete).toBe(false)
+    expect(g.failures.find((f) => f.url === 'https://portal.example.net/apply/123')?.kind).toBe('offsite')
+  })
+
+  test('a document on another host that names the funder is not used without Jev', async () => {
+    const page = PAGE.replace('<a href="/news">Latest news</a>', '<a href="https://guides.example.net/test-nature-grants-guide.pdf">A guide to Test Nature Grants</a>')
+    const read = fakeReader({ 'https://test.example.org/grants': page, 'https://test.example.org/guidelines.pdf': GUIDE, 'https://guides.example.net/test-nature-grants-guide.pdf': 'Test Nature Grants: our guide. Applicants must have five years of accounts. '.repeat(6) })
+    const g = await gather(base, { read, sources: [] })
+    expect(g.docs.map((d) => d.url)).not.toContain('https://guides.example.net/test-nature-grants-guide.pdf')
+    expect(g.complete).toBe(false)
+  })
 })
