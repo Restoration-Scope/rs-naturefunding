@@ -20,8 +20,7 @@ export const ogFontFiles = (): { file: string; name: string; weight: 400 | 600 }
   ...readdirSync(OG_FONT_DIR)
     .filter((f) => /^cjk-.*\.ttf$/.test(f))
     .sort()
-    // Both weights: Satori only falls back to a font of the text's own weight (the facts are 600).
-    .flatMap((file) => [400, 600].map((weight) => ({ file, name: file, weight: weight as 400 | 600 }))),
+    .map((file) => ({ file, name: file, weight: 400 as const })),
 ]
 
 /** The families tried, in order, for characters the Latin fonts lack. */
@@ -31,7 +30,7 @@ const SPACE = /\s/u
 
 /** The characters in `text` that none of the given fonts draws (whitespace aside). */
 export function missingChars(text: string, files = ogFontFiles().map((f) => f.file)): string[] {
-  const parsed = [...new Set(files)].map((f) => create(readFileSync(join(OG_FONT_DIR, f))) as FontFile)
+  const parsed = files.map((f) => create(readFileSync(join(OG_FONT_DIR, f))) as FontFile)
   return [...new Set(text)].filter((ch) => !SPACE.test(ch) && !parsed.some((f) => f.hasGlyphForCodePoint(ch.codePointAt(0)!)))
 }
 
@@ -39,11 +38,12 @@ export function missingChars(text: string, files = ogFontFiles().map((f) => f.fi
 export async function googleSubset(family: string, chars: string): Promise<Buffer | null> {
   const css = await fetch(
     `https://fonts.googleapis.com/css2?family=${encodeURIComponent(family)}:wght@400&text=${encodeURIComponent(chars)}`,
+    { signal: AbortSignal.timeout(10_000) },
   )
   if (!css.ok) throw new Error(`Google Fonts ${family}: HTTP ${css.status}`)
   const url = (await css.text()).match(/url\((https:[^)]+)\)\s*format\('truetype'\)/)?.[1]
   if (!url) return null
-  const ttf = await fetch(url)
+  const ttf = await fetch(url, { signal: AbortSignal.timeout(10_000) })
   // Asked for characters the family lacks, Google Fonts answers with a file URL that fails.
   if (!ttf.ok) return null
   return Buffer.from(await ttf.arrayBuffer())

@@ -10,10 +10,10 @@ import { join } from 'node:path'
 import satori, { type Font } from 'satori'
 import sharp from 'sharp'
 import type { Programme } from '../data/schema'
-import { HIDDEN_DAYS, listingFor } from './data'
-import { amountText, funderRepeatsName, geographyText, longDate, poolText } from './format'
+import { HIDDEN_DAYS, callGroups, listingFor } from './data'
+import { amountText, funderQualifier, geographyText, longDate, poolText } from './format'
 import { accessLabels } from './labels'
-import { markFor } from './marks'
+import { markFor, type Mark } from './marks'
 import { CJK_FAMILIES, OG_FONT_DIR, googleSubset, ogFontFiles } from './og-fonts'
 
 export const OG_WIDTH = 1200
@@ -34,11 +34,18 @@ const loadFonts = () =>
  * Characters no stored font has (a new listing in another script): cut them from Google Fonts for this build,
  * and say so, so the stored subsets catch up (tests/og.test.ts fails until they do).
  */
+let fetched = false
 async function fetchMissing(_lang: string, segment: string): Promise<Font[]> {
+  fetched = true
   console.warn(`og-card: no stored font draws "${segment}"; fetching it. Run bun scripts/images/og-fonts.ts`)
-  for (const family of CJK_FAMILIES) {
-    const data = await googleSubset(family, segment)
-    if (data) return [400, 600].map((weight) => ({ name: `${family} (fetched)`, data, weight: weight as 400 | 600, style: 'normal' as const }))
+  try {
+    for (const family of CJK_FAMILIES) {
+      const data = await googleSubset(family, segment)
+      // Its own name per subset: Satori keeps one font per name, so a second subset of the family would be ignored.
+      if (data) return [{ name: `${family} ${createHash('sha256').update(data).digest('hex').slice(0, 8)}`, data, weight: 400, style: 'normal' }]
+    }
+  } catch (e) {
+    console.warn(`og-card: fetching a font failed: ${e}`)
   }
   // A missing glyph is left blank rather than stopping the deploy; tests/og.test.ts catches it before a commit.
   console.warn(`og-card: no font found for "${segment}"`)
@@ -54,14 +61,9 @@ export type CardContent = { title: string; funder: string | null; facts: CardFac
 /** What the card says: the page's name, funder line and leading facts, in the page's own words. */
 export function cardContent(p: Programme): CardContent {
   const { state, call } = listingFor(p)
-  // "Forest Action Facility (established by IUCN and KfW)" under "Forest Action Facility": only what the name doesn't say.
-  const funder = funderRepeatsName(p)
-    ? p.funder.name
-        .slice(p.name.length)
-        .trim()
-        .replace(/^\((.*)\)$/, '$1')
-        .replace(/^./, (ch) => ch.toUpperCase()) || null
-    : p.funder.name
+  // Under "Forest Action Facility", only what the funder's name adds, as on the page.
+  const qualifier = funderQualifier(p)
+  const funder = qualifier === null ? p.funder.name : qualifier || null
   const facts: CardFact[] = []
   const amount = amountText(p.amount)
   const pool = poolText(p.pool)
@@ -69,9 +71,11 @@ export function cardContent(p: Programme): CardContent {
   else if (pool) facts.push({ label: 'Total budget', value: pool[0]!.toUpperCase() + pool.slice(1) })
   const where = geographyText(p.geography)
   if (where) facts.push({ label: 'Where', value: where })
+  // When calls differ by country, no one date is the programme's: the page shows each country's.
+  const oneCall = callGroups(p).length === 0
   if (state === 'rolling') facts.push({ label: 'Deadline', value: 'Rolling' })
-  else if (call?.status === 'upcoming' && call.opens) facts.push({ label: 'Opens', value: longDate(call.opens) })
-  else if (call?.deadline) facts.push({ label: 'Deadline', value: longDate(call.deadline.date) })
+  else if (oneCall && call?.status === 'upcoming' && call.opens) facts.push({ label: 'Opens', value: longDate(call.opens) })
+  else if (oneCall && call?.deadline) facts.push({ label: 'Deadline', value: longDate(call.deadline.date) })
   else if (p.access === 'intermediary' || p.access === 'invitation_only') facts.push({ label: 'To apply', value: accessLabels[p.access] })
   return { title: p.name, funder, facts }
 }
@@ -82,9 +86,21 @@ export const cardText = (p: Programme) => {
   return [c.title, c.funder ?? '', ...c.facts.flatMap((f) => [f.label, f.value]), 'naturefunding.org', 'From'].join('')
 }
 
-/** Changes whenever the card would, so link previews cached under the old URL refresh. */
-export const cardVersion = (p: Programme) =>
-  createHash('sha256').update(JSON.stringify([cardContent(p), markFor(p.funder)])).digest('hex').slice(0, 10)
+const markFile = (mark: Mark) => (mark.kind === 'icon' ? join(process.cwd(), 'public', mark.src) : null)
+
+/**
+ * Changes whenever the card's pixels would: its content, the mark's bytes, and the renderer's own source, fonts, art
+ * and libraries. It is in the image URL, so link previews cached under the old URL refresh, and keys the build cache.
+ */
+export const cardVersion = (p: Programme) => {
+  const mark = markFile(markFor(p.funder))
+  return createHash('sha256')
+    .update(JSON.stringify(cardContent(p)))
+    .update(mark ? readFileSync(mark) : '')
+    .update(rendererHash())
+    .digest('hex')
+    .slice(0, 10)
+}
 
 export const cardPath = (p: Programme) => `/og/${p.id}.jpg?v=${cardVersion(p)}`
 
@@ -96,15 +112,17 @@ export const cardAlt = (p: Programme) => {
 /** The title steps down as names get longer, so most fit in three lines. */
 const titleSize = (t: string) => (t.length <= 36 ? 68 : t.length <= 64 ? 60 : t.length <= 100 ? 50 : 42)
 
+const factSize = (facts: CardFact[]) => (facts.reduce((n, f) => n + f.value.length, 0) <= 70 ? 24 : 21)
+
 const ink = '#f7f4ef'
 const ink2 = '#beccc2'
 const green = '#254b36'
 
 async function markData(p: Programme): Promise<string | null> {
-  const mark = markFor(p.funder)
-  if (mark.kind !== 'icon') return null
+  const file = markFile(markFor(p.funder))
+  if (!file) return null
   // On a white tile, as on the page: most favicons are drawn for a light background.
-  const png = await sharp(join(process.cwd(), 'public', mark.src))
+  const png = await sharp(file)
     .resize(72, 72, { fit: 'contain', background: '#fff' })
     .extend({ top: 4, bottom: 4, left: 4, right: 4, background: '#fff' })
     .flatten({ background: '#fff' })
@@ -130,19 +148,20 @@ function Card({ c, mark }: { c: CardContent; mark: string | null }) {
           <div style={{ display: 'block', fontFamily: 'Serif', fontSize: titleSize(c.title), lineHeight: 1.1, letterSpacing: '-0.01em', lineClamp: 4 }}>
             {c.title}
           </div>
-          {c.funder && (
+          {(c.funder || mark) && (
             <div style={{ display: 'flex', alignItems: 'center', marginTop: 22, fontSize: 28, color: ink2 }}>
               {mark && <img src={mark} width={40} height={40} style={{ borderRadius: 7, marginRight: 14, flexShrink: 0 }} />}
-              <div style={{ display: 'block', lineClamp: 1 }}>{c.funder}</div>
+              {c.funder && <div style={{ display: 'block', lineClamp: 1 }}>{c.funder}</div>}
             </div>
           )}
         </div>
         {c.facts.length > 0 && (
           <div style={{ display: 'flex', borderTop: `1px solid rgba(190,204,194,0.35)`, paddingTop: 22 }}>
             {c.facts.map((f, i) => (
-              <div key={f.label} style={{ display: 'flex', flexDirection: 'column', flex: f.label === 'Where' ? 1.5 : 1, marginLeft: i ? 28 : 0, minWidth: 0 }}>
+              // Columns share the width by how much they say; long values get a smaller size, so an amount is never cut.
+              <div key={f.label} style={{ display: 'flex', flexDirection: 'column', flexGrow: Math.min(Math.max(f.value.length, 14), 36), flexBasis: 0, marginLeft: i ? 28 : 0, minWidth: 0 }}>
                 <div style={{ fontSize: 20, color: ink2 }}>{f.label}</div>
-                <div style={{ display: 'block', marginTop: 6, fontSize: 24, fontWeight: 600, lineHeight: 1.2, lineClamp: 2 }}>{f.value}</div>
+                <div style={{ display: 'block', marginTop: 6, fontSize: factSize(c.facts), fontWeight: 600, lineHeight: 1.2, lineClamp: f.label === 'Where' ? 2 : 3 }}>{f.value}</div>
               </div>
             ))}
           </div>
@@ -169,27 +188,32 @@ const makeBackground = () =>
       .toBuffer()
   })())
 
-/**
- * Cards already drawn by an earlier build on this machine, keyed by what each card says and by this renderer's
- * own source, fonts and art. CI starts empty and draws every card (about a minute).
- */
-const CACHE_DIR = join(process.cwd(), 'node_modules/.cache/og-cards')
 let rendererKey: string | undefined
-const rendererHash = () =>
-  (rendererKey ??= (() => {
+/** The renderer's own source, fonts, art and the libraries that draw (their locked versions). */
+function rendererHash() {
+  return (rendererKey ??= (() => {
     const h = createHash('sha256')
-    for (const f of ['src/lib/og-card.tsx', 'src/lib/og-fonts.ts', 'public/img/header/hero-1236.jpg']) h.update(readFileSync(join(process.cwd(), f)))
+    for (const f of ['src/lib/og-card.tsx', 'src/lib/og-fonts.ts', 'public/img/header/hero-1236.jpg', 'node_modules/satori/package.json', 'node_modules/sharp/package.json'])
+      h.update(readFileSync(join(process.cwd(), f)))
     for (const { file } of ogFontFiles()) h.update(file).update(readFileSync(join(OG_FONT_DIR, file)))
-    return h.digest('hex').slice(0, 10)
+    return h.digest('hex')
   })())
+}
+
+/** Cards drawn by an earlier build on this machine, by version. CI starts empty and draws every card (about a minute). */
+const CACHE_DIR = join(process.cwd(), 'node_modules/.cache/og-cards')
 
 /** The card as a JPEG. */
 export async function renderCard(p: Programme): Promise<Buffer> {
-  const cached = join(CACHE_DIR, `${p.id}-${cardVersion(p)}-${rendererHash()}.jpg`)
+  const cached = join(CACHE_DIR, `${p.id}-${cardVersion(p)}.jpg`)
   if (existsSync(cached)) return readFileSync(cached)
+  fetched = false
   const jpeg = await drawCard(p)
-  mkdirSync(CACHE_DIR, { recursive: true })
-  writeFileSync(cached, jpeg)
+  // A card drawn with a fetched font (or a blank where it failed) is drawn again next build.
+  if (!fetched) {
+    mkdirSync(CACHE_DIR, { recursive: true })
+    writeFileSync(cached, jpeg)
+  }
   return jpeg
 }
 

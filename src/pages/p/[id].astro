@@ -20,7 +20,7 @@ import { cardClasses } from '@/components/ui/card'
 import { HIDDEN_DAYS, buildDate, callGroups, whereReach, listingFor, programmeById, programmes, sortListings } from '../../lib/data'
 import type { Programme } from '../../data/schema'
 import { pagesFor } from '../../lib/finder-pages'
-import { amountText, effortText, poolText, geographyFull, joinAnd, longDate, pageLabel, sentence, keepAmountTogether, funderRepeatsName, programmeTitle } from '../../lib/format'
+import { amountText, effortText, poolText, geographyFull, joinAnd, longDate, pageLabel, sentence, keepAmountTogether, funderRepeatsName, funderQualifier, programmeTitle } from '../../lib/format'
 import { countryName, regionLabels } from '../../lib/geo'
 import {
   accessHelp,
@@ -44,9 +44,7 @@ const parent = p.parent ? programmeById.get(p.parent) : undefined
 const children = programmes.filter((c) => c.parent === p.id)
 const childListings = children.map((c) => listingFor(c)).sort(sortListings)
 // "Forest Action Facility" from "Forest Action Facility (established by IUCN and KfW)": show only what the name doesn't say.
-const funderQualifier = funderRepeatsName(p)
-  ? p.funder.name.slice(p.name.length).trim().replace(/^\((.*)\)$/, '$1').replace(/^./, (ch) => ch.toUpperCase())
-  : null
+const qualifier = funderQualifier(p)
 // An umbrella's own page often leaves these to its partner programmes.
 const byPartner = childListings.length > 0 ? 'Set by each partner programme' : undefined
 const openChildren = childListings.filter((l) => l.state === 'open' || l.state === 'rolling')
@@ -190,8 +188,8 @@ const jsonLd = [
         <p class="mt-[0.6rem] text-lg text-shell-ink-2 max-md:line-clamp-2" title={p.administered_by ? `${p.funder.name}, run by ${p.administered_by.name}` : undefined}>
           {/* Marks sit on a white tile: most favicons are drawn for a light page, not the green band. */}
           {
-            funderQualifier !== null ? (
-              <><OrgMark org={p.funder} size={24} class={bandMark} /><a href={p.funder.url}>{funderQualifier || 'The funder’s website'}</a></>
+            qualifier !== null ? (
+              <><OrgMark org={p.funder} size={24} class={bandMark} /><a href={p.funder.url}>{qualifier || 'The funder’s website'}</a></>
             ) : (
               <>From <OrgMark org={p.funder} size={24} class={bandMark} /><a href={p.funder.url}>{p.funder.name}</a></>
             )
