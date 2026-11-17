@@ -7,7 +7,8 @@
  *
  * Options: --dry (write only the run folder), --cap <usd> (spend cap, default 10), --cheap <model>
  * (claude-haiku-5-5 default, or workers), --strong <model> (claude-opus-5-5), --no-jev, --out <dir>
- * (default .cache/requirements/runs/<time>), --exclude <file> (ids to skip, one per line).
+ * (default .cache/requirements/runs/<time>), --exclude <file> (ids to skip, one per line), --gather-only
+ * (crawl only, no keys: documents, failures, text sizes and a cost forecast; page text saved in the run folder).
  * Needs ANTHROPIC_API_KEY (or CLOUDFLARE_* for --cheap workers) and TYPESAFE_API_KEY.
  */
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs'
@@ -16,8 +17,8 @@ import { parseArgs } from 'node:util'
 import { loadData } from '../../src/data/load'
 import type { Source } from '../../src/data/schema'
 import { formatJson } from '../refresh/json'
-import { PROMPT_VERSION } from './extract'
-import { politeReader } from './gather'
+import { chunksOf, PROMPT_VERSION } from './extract'
+import { gather, politeReader } from './gather'
 import { Cache, claudeModel, Ledger, metered, meteredJev, SpendCapError, typesafeJev, workersModel, type JsonModel } from './models'
 import { run, type Result } from './pipeline'
 import { MANIFEST_DIR, manifestPath, queue } from './queue'
@@ -35,6 +36,7 @@ const { values, positionals } = parseArgs({
     'no-jev': { type: 'boolean', default: false },
     out: { type: 'string' },
     exclude: { type: 'string' },
+    'gather-only': { type: 'boolean', default: false },
   },
 })
 
@@ -59,6 +61,30 @@ if (values.queue) {
 }
 if (!ids.length) throw new Error('no programmes to read: pass ids, --queue N or --gold tune|held|all')
 for (const id of ids) if (!byId.has(id)) throw new Error(`no programme ${id}`)
+
+if (values['gather-only']) {
+  const read = politeReader(join('.cache', 'requirements', 'pages'))
+  const rows = []
+  for (const id of ids) {
+    const p = byId.get(id)!
+    const g = await gather(p, { read, sources })
+    const chunks = chunksOf(g.docs)
+    const chars = g.docs.reduce((a, d) => a + d.text.length, 0)
+    mkdirSync(join(out, 'docs', id), { recursive: true })
+    for (const d of g.docs) writeFileSync(join(out, 'docs', id, `${d.ref}.txt`), `${d.url}\nfrom: ${d.from ?? '(seed)'} [${d.anchor ?? ''}]\n\n${d.text}`)
+    const links = g.docs.flatMap((d) => d.links.map((l) => `${d.ref}\t${l.text}\t${new URL(l.href, d.final_url).toString()}`))
+    writeFileSync(join(out, 'docs', id, 'links.tsv'), links.join('\n'))
+    writeFileSync(join(out, 'docs', id, 'gathered.json'), JSON.stringify({ docs: g.docs.map((d) => ({ ref: d.ref, url: d.url, from: d.from, anchor: d.anchor, pdf: d.pdf, chars: d.text.length, low_text: d.low_text })), failures: g.failures, skipped: g.skipped, reasons: g.reasons }, null, 1))
+    // About 3.5 characters a token; the extractor reads every chunk once with a ~2.5K-token prompt.
+    const tokens = Math.round(chars / 3.5) + chunks.length * 2500
+    rows.push({ id, docs: g.docs.length, pdfs: g.docs.filter((d) => d.pdf).length, chars, chunks: chunks.length, complete: g.complete, reasons: g.reasons, tokens })
+    console.log(`${id}: ${g.docs.length} docs, ${chars} chars, ${chunks.length} chunks${g.complete ? '' : `, incomplete: ${g.reasons.join(' | ').slice(0, 200)}`}`)
+  }
+  writeFileSync(join(out, 'gather.json'), JSON.stringify(rows, null, 1))
+  const t = rows.reduce((a, r) => a + r.tokens, 0)
+  console.log(`\n${rows.length} programmes, ${rows.filter((r) => r.complete).length} complete, ${Math.round(t / rows.length)} input tokens each on average; Haiku extraction about $${((t / 1e6) * 0.1).toFixed(3)} in all. Run folder: ${out}`)
+  process.exit(0)
+}
 
 const ledger = new Ledger(Number(values.cap))
 const cache = new Cache(join('.cache', 'requirements', 'llm'))
