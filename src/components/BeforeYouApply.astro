@@ -1,0 +1,181 @@
+---
+import type { Programme } from '../data/schema'
+import { buildDate } from '../lib/data'
+import { effortLevel, effortSignals, longDate } from '../lib/format'
+import { cardClasses } from '@/components/ui/card'
+import SectionHeading from './SectionHeading.astro'
+import Quote from './Quote.astro'
+import { ChevronRight, FileText } from 'lucide-react'
+
+/**
+ * What applying asks of an organisation, before it starts: the rules that rule it out (a yes/no self-check),
+ * the documents to have ready, and the steps with their dates. Every line is backed by the funder's words.
+ * The page shows it for direct programmes with at least one of the three stated.
+ */
+interface Props {
+  p: Programme
+}
+
+const { p } = Astro.props
+const level = effortLevel(p)
+const rules = p.eligibility ?? []
+const ruleQuotes = p.evidence.eligibility ?? []
+const steps = p.effort?.steps ?? []
+const due = p.effort?.due ?? []
+// The verdict names the first step's own date only: a later step's date is often for invited applicants.
+const firstDue = due[0] && due[0] >= buildDate ? due[0] : null
+const levelTone = { Light: 'bg-ok text-ok-ink', Medium: 'bg-caution text-caution-ink', Heavy: 'bg-warn text-warn-ink' } as const
+const box = [cardClasses, 'mt-4 px-5 pt-4 pb-5']
+const boxTitle = 'text-xl'
+const row = 'border-t border-rule py-3 first:border-t-0'
+---
+
+<section aria-labelledby="before-title">
+  <SectionHeading kind="before" id="before-title">Before you apply</SectionHeading>
+  {
+    level?.level && (
+      <p class="flex flex-wrap items-center gap-x-3 gap-y-1 text-md text-ink-2">
+        <span class:list={[levelTone[level.level], 'rounded-md px-2.5 py-0.5 text-md font-semibold']}>{level.level}: {level.why}</span>
+        <span>Our label, from the steps and documents the funder lists.</span>
+      </p>
+    )
+  }
+
+  {
+    rules.length > 0 && (
+      <div
+        id="eligibility"
+        class:list={[box, 'group/gates transition-[border-color,box-shadow] duration-200 data-[out=no]:border-(--stop-dot) data-[out=no]:shadow-[0_0_0_3px_var(--stop),0_0_18px_2px_color-mix(in_srgb,var(--stop-dot)_35%,transparent)]']}
+        data-gates
+      >
+        <h3 class={boxTitle}>Can your organisation apply?</h3>
+        <p class="mt-1 text-md text-ink-2">These rules rule you out. Answer each one; tap a rule for the funder’s words.</p>
+        <ul class="m-0 mt-2 list-none p-0">
+          {rules.map(({ rule }, i) => (
+            <li class={row} data-gate>
+              {/* The rule is the toggle: tapping it unfolds the funder's words, so each row stays one line. */}
+              <div class="flex flex-wrap items-start justify-between gap-x-4 gap-y-2">
+                {ruleQuotes[i] ? (
+                  <details class="group/rule min-w-0 flex-1 basis-60">
+                    <summary class="flex cursor-pointer list-none items-start gap-1.5 text-lg font-semibold [&::-webkit-details-marker]:hidden">
+                      <ChevronRight className="mt-[0.35rem] size-4 flex-none text-ink-2 transition-transform group-open/rule:rotate-90" aria-hidden="true" />
+                      <span>{rule}</span>
+                    </summary>
+                    <div class="pl-5.5">
+                      <Quote e={ruleQuotes[i]} />
+                    </div>
+                  </details>
+                ) : (
+                  <p class="min-w-0 flex-1 basis-60 text-lg font-semibold">{rule}</p>
+                )}
+                <div class="flex flex-none gap-1.5" role="group" aria-label={rule}>
+                  {['Yes', 'No'].map((a) => (
+                    <button
+                      type="button"
+                      data-answer={a}
+                      aria-pressed="false"
+                      class="rounded-md border border-control-edge bg-surface px-3 py-1 text-md font-semibold text-ink hover:bg-sunk aria-pressed:border-transparent aria-pressed:bg-ink aria-pressed:text-surface"
+                    >
+                      {a}
+                    </button>
+                  ))}
+                </div>
+              </div>
+            </li>
+          ))}
+        </ul>
+        <p class="mt-3 text-md font-semibold text-ink-2 group-data-[out=no]/gates:text-(--stop-ink) group-data-[out=yes]/gates:text-ok-ink" aria-live="polite" data-verdict data-total={rules.length} data-next={firstDue ? longDate(firstDue) : ''}>
+          Answer all {rules.length} to see if you can apply.
+        </p>
+        <p class="mt-1 hidden text-md" data-no><a class="font-semibold text-ink underline underline-offset-2" href="/">See other funding</a></p>
+      </div>
+    )
+  }
+
+  {
+    p.documents && (
+      <div id="documents" class:list={box}>
+        <h3 class={boxTitle}>Documents to have ready</h3>
+        <ul class="m-0 mt-2 list-none p-0">
+          {p.documents.map((d) => (
+            <li class:list={[row, 'flex items-start gap-2.5 text-lg']}>
+              <FileText className="mt-[0.3rem] size-4 flex-none text-ink-2" aria-hidden="true" />
+              <span>{d}</span>
+            </li>
+          ))}
+        </ul>
+        {(p.evidence.documents ?? []).map((e) => <Quote e={e} />)}
+      </div>
+    )
+  }
+
+  {
+    steps.length > 0 && (
+      <div id="effort" class:list={box}>
+        <h3 class={boxTitle}>The steps</h3>
+        <ol class="m-0 mt-2 list-none p-0">
+          {steps.map((s, i) => {
+            const d = due[i] ?? null
+            return (
+              <li class:list={[row, 'grid grid-cols-[2rem_minmax(0,1fr)] gap-x-2 sm:grid-cols-[2rem_9.5rem_minmax(0,1fr)]']}>
+                <span class="text-lg font-semibold text-ink-2 tabular-nums">{i + 1}.</span>
+                <span class="text-md font-semibold text-ink-2 max-sm:col-start-2 sm:pt-0.5">
+                  {d ? (d >= buildDate ? `By ${longDate(d)}` : `Was due ${longDate(d)}`) : ''}
+                </span>
+                <span class="text-lg max-sm:col-start-2">{s}</span>
+              </li>
+            )
+          })}
+          {p.effort?.more_after && (
+            <li class:list={[row, 'grid grid-cols-[2rem_minmax(0,1fr)] gap-x-2 sm:grid-cols-[2rem_9.5rem_minmax(0,1fr)]']}>
+              <span class="text-lg font-semibold text-ink-2">{steps.length + 1}.</span>
+              <span class="max-sm:hidden" />
+              <span class="text-lg text-ink-2 max-sm:col-start-2">Further steps the page doesn’t name</span>
+            </li>
+          )}
+        </ol>
+        {(p.evidence.effort ?? []).map((e) => <Quote e={e} />)}
+      </div>
+    )
+  }
+  {
+    p.after_award && (
+      <div id="after-award" class:list={box}>
+        <h3 class={boxTitle}>After the award</h3>
+        <p class="mt-2 text-lg">{effortSignals(p)[3]!.why}</p>
+        {(p.evidence.after_award ?? []).map((e) => <Quote e={e} />)}
+      </div>
+    )
+  }
+</section>
+
+{/* Only pages with rules ship the self-check's few lines of script. */}
+{
+  rules.length > 0 && (
+    <script is:inline>
+      for (const box of document.querySelectorAll('[data-gates]')) {
+        const verdict = box.querySelector('[data-verdict]')
+        const no = box.querySelector('[data-no]')
+        const total = Number(verdict.dataset.total)
+        const update = () => {
+          const answers = [...box.querySelectorAll('[data-gate]')].map((g) => g.querySelector('[aria-pressed="true"]')?.dataset.answer)
+          const out = answers.includes('No') ? 'no' : answers.every(Boolean) ? 'yes' : 'open'
+          box.dataset.out = out
+          no.classList.toggle('hidden', out !== 'no')
+          verdict.textContent =
+            out === 'no'
+              ? 'You can’t apply to this one.'
+              : out === 'yes'
+                ? `You meet the rules listed here. Check the funder’s full guidelines before you start.${verdict.dataset.next ? ` The first step is due ${verdict.dataset.next}.` : ''}`
+                : `Answer all ${total} to see if you can apply.`
+        }
+        for (const b of box.querySelectorAll('[data-answer]')) {
+          b.addEventListener('click', () => {
+            for (const x of b.parentElement.querySelectorAll('[data-answer]')) x.setAttribute('aria-pressed', String(x === b && x.getAttribute('aria-pressed') !== 'true'))
+            update()
+          })
+        }
+      }
+    </script>
+  )
+}

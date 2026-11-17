@@ -12,6 +12,7 @@ import { finderPages } from '../src/lib/finder-pages'
 import { listings, programmes } from '../src/lib/data'
 import { hasOwnCard } from '../src/lib/og-card'
 import sharp from 'sharp'
+import { pastIssues } from '../digest/scripts/issues'
 
 const root = join(import.meta.dir, '..')
 const dist = join(root, 'dist')
@@ -38,11 +39,12 @@ const finderPagesHtml = Object.values(finderPages)
   .map((p) => `${p.path.slice(1)}index.html`)
 
 describe('pages', () => {
-  test('the same static pages, plus one page per programme and per finder preset', () => {
+  test('the same static pages, plus one page per programme, per finder preset and per past weekly email', () => {
     const expected = [
       ...staticPages,
       ...programmes.map((p) => `p/${p.id}/index.html`),
       ...finderPagesHtml,
+      ...pastIssues().map((i) => `digest/${i.date}/index.html`),
     ].sort()
     expect(htmlFiles).toEqual(expected)
   })
@@ -184,7 +186,7 @@ describe('no hydration, small JavaScript', () => {
     for (const f of finderPagesHtml) expect(scriptsOf(f).external, f).toEqual(homeExternal)
   })
 
-  test('no other page loads a script file; only /about/, /worth-applying/ and programme pages have one small inline script', () => {
+  test('no other page loads a script file; only /about/, /worth-applying/ and programme pages have small inline scripts', () => {
     for (const f of htmlFiles.filter((x) => x !== 'index.html' && !finderPagesHtml.includes(x))) {
       const { external, inline } = scriptsOf(f)
       expect(external, f).toEqual([])
@@ -197,10 +199,11 @@ describe('no hydration, small JavaScript', () => {
         expect(inline.join('').length).toBeLessThanOrEqual(4500)
       } else if (/^p\/[^/]+\/index\.html$/.test(f)) {
         // The finder's Where carried onto the page (src/lib/where-view.ts) with the contents list
-        // (src/lib/page-contents.ts), and the worth-it check on direct programmes.
+        // (src/lib/page-contents.ts), the worth-it check on direct programmes, and the yes/no rules check in
+        // Before you apply (src/components/BeforeYouApply.astro).
         expect(inline.length, f).toBeGreaterThanOrEqual(1)
-        expect(inline.length, f).toBeLessThanOrEqual(2)
-        expect(inline.join('').length, f).toBeLessThanOrEqual(10000)
+        expect(inline.length, f).toBeLessThanOrEqual(3)
+        expect(inline.join('').length, f).toBeLessThanOrEqual(11500)
       } else expect(inline, f).toEqual([])
     }
   }, fullDistTimeout)

@@ -3,6 +3,8 @@
 What a visitor to naturefunding.org can see or do that they couldn't before, newest first. One line per merged change, added in the same PR (AGENTS.md). The naturefunding.org LinkedIn Page drafts its update posts from this list. Emails count once `DIGEST_SENDING` is `live`.
 
 - 2026-11-16 · A shared programme link previews its own card: the programme's name, funder and logo, amount, where and deadline · https://naturefunding.org/og/rufford-small-grants.jpg · #635
+- 2026-11-16 · The weekly email page lists past issues, each week's email on its own page, so you can see what you'd get before you sign up · https://naturefunding.org/digest/ · #636
+- 2026-11-16 · A wider finder with a "What it asks" column: four bars per grant for who qualifies, applying, co-funding and after the award, and a "Before you apply" self-check on programme pages · https://naturefunding.org/p/iki-small-grants/ · #625
 - 2026-11-16 · Search results show programme pages by name and amount ("Darwin Initiative Main, Defra: £200K–£1M"), and country pages as "Grants and funding for NGOs in …" · https://naturefunding.org/p/darwin-initiative-main/ · #631
 - 2026-11-16 · Links to www.naturefunding.org land on https://naturefunding.org at the same page · https://www.naturefunding.org/countries/ · #630
 - 2026-11-16 · Finder shows every amount in one currency, US dollars to start, with a "Show amounts in" picker · https://naturefunding.org/ · #626

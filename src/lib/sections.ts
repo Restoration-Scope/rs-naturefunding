@@ -1,4 +1,4 @@
-import { Banknote, Calculator, CalendarClock, ClipboardCheck, FileText, FolderTree, Handshake, Info, UserCheck } from 'lucide-react'
+import { Banknote, Calculator, CalendarClock, ClipboardCheck, FileText, FolderTree, Handshake, Info, ListChecks, UserCheck } from 'lucide-react'
 
 /** The programme page's sections: one icon each, shared by the section's heading and its line in the contents
     list. The three fact groups also carry a hue (global.css .tone-*); the rest stay neutral (.tone-plain). */
@@ -8,6 +8,7 @@ export const sections = {
   money: { icon: Banknote, tone: 'tone-money' },
   who: { icon: UserCheck, tone: 'tone-who' },
   apply: { icon: ClipboardCheck, tone: 'tone-apply' },
+  before: { icon: ListChecks, tone: 'tone-apply' },
   worth: { icon: Calculator, tone: 'tone-plain' },
   calls: { icon: CalendarClock, tone: 'tone-plain' },
   reporting: { icon: FileText, tone: 'tone-plain' },

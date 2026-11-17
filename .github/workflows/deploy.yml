@@ -3,7 +3,10 @@ name: Deploy
 # Builds the static site and uploads it as Cloudflare static assets (no Worker script).
 # The project's only CI: agents run the checks before they commit (AGENTS.md); this guards
 # the data (refresh commits land on main unreviewed) and the build, then publishes.
-# Needs CLOUDFLARE_API_TOKEN: Workers Scripts edit on the account in wrangler.jsonc.
+# Then redeploys the weekly email Worker (digest/), whose bundle inlines the programmes and the git history of
+# data/programmes, so each digest carries the calls that changed since the last one.
+# Needs CLOUDFLARE_API_TOKEN: Workers Scripts edit on the account in wrangler.jsonc (it also sets both custom
+# domains, naturefunding.org and email.naturefunding.org).
 on:
   push:
     branches: [main]
@@ -25,6 +28,9 @@ jobs:
       CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
     steps:
       - uses: actions/checkout@v7
+        with:
+          # The digest bundle reads what changed from git history (digest/scripts/history.ts).
+          fetch-depth: 0
       # Astro checks the Node version even under Bun; the runner's preinstalled Node can lag behind.
       - uses: actions/setup-node@v7
         with:
@@ -44,3 +50,8 @@ jobs:
       - name: Deploy to Cloudflare
         if: env.CLOUDFLARE_API_TOKEN != ''
         run: bunx wrangler deploy
+      - name: Deploy the weekly email Worker
+        if: env.CLOUDFLARE_API_TOKEN != ''
+        run: |
+          bun digest/scripts/build.ts
+          bunx wrangler deploy --config digest/wrangler.jsonc
