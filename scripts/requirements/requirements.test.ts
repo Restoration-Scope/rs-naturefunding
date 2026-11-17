@@ -187,6 +187,14 @@ describe('verify', () => {
     expect(readsTwoWays('Deadline 04/05/2027', '2027-05-04')).toBe(true)
     expect(readsTwoWays('Deadline 24/05/2027', '2027-05-24')).toBe(false)
     expect(readsTwoWays('Deadline 4 May 2027', '2027-05-04')).toBe(false)
+    // Its order stated beside it settles it.
+    expect(readsTwoWays('Deadline 04/05/2027 (DD/MM/YYYY)', '2027-05-04')).toBe(false)
+    // verify flags it for a person rather than leaving it silently undated.
+    const w = goodWire()
+    w.effort.steps[1]!.due = '2027-05-04'
+    w.effort.steps[1]!.quote = 'Deadline 04/05/2027'
+    const v = verify(w, [{ ...docs[0]!, text: `${docs[0]!.text} Deadline 04/05/2027` }])
+    expect(v.flags.some((f) => f.why.includes('reads two ways'))).toBe(true)
   })
   test('a share its quote does not state is dropped', () => {
     const w = goodWire()

@@ -48,12 +48,14 @@ export function locate(docs: Doc[], q: { doc: string | null; quote: string | nul
   return null
 }
 
-/** A numeric date the quote also states with day and month swapped ("04/05/2027") can't be told apart. */
+/** A numeric date written so day and month can swap ("04/05/2027") with no DD/MM or MM/DD beside it: statesDate
+ * refuses it, and it is flagged for a person rather than left silently undated. */
 export function readsTwoWays(quote: string, date: string) {
-  const [y, m, d] = [date.slice(0, 4), date.slice(5, 7), date.slice(8)]
-  if (m === d || Number(d) > 12) return false
-  const swapped = `${y}-${d}-${m}`
-  return statesDate(quote, swapped)
+  const [y, m, d] = [date.slice(0, 4), Number(date.slice(5, 7)), Number(date.slice(8))]
+  if (m === d || d > 12) return false
+  const yy = `(?:${y}|${y.slice(2)})`
+  const either = new RegExp(String.raw`(?<![\p{L}\d])(?:0?${d}[/-]0?${m}|0?${m}[/-]0?${d})[/-]${yy}(?![\p{L}\d])`, 'u')
+  return either.test(quote) && !statesDate(quote, date)
 }
 
 const len = (s: string, min: number, max: number) => s.trim().length >= min && s.trim().length <= max
@@ -136,11 +138,11 @@ export function verify(w: Wire, docs: Doc[]): { facts: Facts; flags: Flag[]; not
         if (!isoDate.safeParse(due).success || Number.isNaN(Date.parse(due)) || new Date(due).toISOString().slice(0, 10) !== due) {
           notes.push(`effort "${s.step}": ${due} is not a calendar date; left undated`)
           due = null
-        } else if (!statesDate(q.quote, due)) {
-          notes.push(`effort "${s.step}": the quote does not state ${due} whole; left undated`)
-          due = null
         } else if (readsTwoWays(q.quote, due)) {
           flags.push({ field: 'effort', item: s.step, why: `${due} is written so it reads two ways (day and month swapped)`, quote: q.quote, doc: q.doc, source: 'verify' })
+          due = null
+        } else if (!statesDate(q.quote, due)) {
+          notes.push(`effort "${s.step}": the quote does not state ${due} whole; left undated`)
           due = null
         }
       }
