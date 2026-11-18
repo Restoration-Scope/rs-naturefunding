@@ -6,12 +6,15 @@ import { countriesByRegion, countryRegion } from './geo'
 import type { SizeBucket, State } from './labels'
 import { sizeBuckets } from './labels'
 import { usdPerUnit } from './rates'
+import { daysBetween, effectiveCallStatus, utcDateKey } from './status'
+
+export { daysBetween } from './status'
 
 const data = loadData()
 export const programmes: Programme[] = data.programmes
 
 /** The day this build ran, in UTC. Statuses and freshness are judged against it, and again in the browser. */
-export const buildDate = new Date().toISOString().slice(0, 10)
+export const buildDate = utcDateKey()
 
 export const AGING_DAYS = 30
 export const HIDDEN_DAYS = 90
@@ -31,9 +34,6 @@ const failingPages = new Map(
 )
 /** Set when the daily check could not re-read this page, for the tags under each fact. */
 export const notRecheckedPage = (url: string): RecheckFailure | null => failingPages.get(url) ?? null
-
-export const daysBetween = (from: string, to: string) =>
-  Math.round((Date.parse(to) - Date.parse(from)) / 86_400_000)
 
 export type Listing = {
   p: Programme
@@ -72,18 +72,21 @@ export function callGroups(p: Programme): { codes: string[] | null; listing: Lis
 }
 
 /** `country`: only the calls that take projects from it set the state. */
-export function listingFor(p: Programme, today = buildDate, country?: string): Listing {
-  const ageDays = daysBetween(p.checked_at, today)
+export function listingFor(p: Programme, today: string | Date = buildDate, country?: string): Listing {
+  const now = typeof today === 'string' ? new Date(`${today}T12:00:00Z`) : today
+  const todayKey = utcDateKey(now)
+  const ageDays = daysBetween(p.checked_at, todayKey)
   const base = { p, ageDays, aging: ageDays > AGING_DAYS }
   if (p.access === 'intermediary' || p.access === 'invitation_only') return { ...base, state: 'none', call: null }
   const calls = country ? p.calls.filter((c) => callTakes(c, country)) : p.calls
+  const status = new Map(calls.map((c) => [c, effectiveCallStatus(c, now)]))
 
-  const open = calls.filter((c) => c.status === 'open' && !(c.deadline && c.deadline.date < today)).sort(byDeadline)
+  const open = calls.filter((c) => status.get(c) === 'open').sort(byDeadline)
   // An open call with no deadline is rolling only when the funder says so; otherwise it is open with an undated window.
   if (open[0]) return { ...base, state: p.window === 'rolling' ? 'rolling' : 'open', call: open[0] }
 
   const upcoming = calls
-    .filter((c) => c.status === 'upcoming')
+    .filter((c) => status.get(c) === 'upcoming')
     .sort((a, b) => (a.opens ?? '9999').localeCompare(b.opens ?? '9999'))
   if (upcoming[0]) return { ...base, state: 'upcoming', call: upcoming[0] }
 
@@ -91,7 +94,7 @@ export function listingFor(p: Programme, today = buildDate, country?: string): L
   const recurring = calls.find((c) => c.status === 'unknown' && c.recurring)
   if (recurring) return { ...base, state: 'none', call: recurring }
 
-  const past = [...calls].sort(byDeadline).reverse()
+  const past = calls.filter((c) => status.get(c) === 'closed').sort(byDeadline).reverse()
   if (past[0]) return { ...base, state: 'closed', call: past[0] }
   return { ...base, state: 'none', call: null }
 }

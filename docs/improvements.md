@@ -2,6 +2,7 @@
 
 What a visitor to naturefunding.org can see or do that they couldn't before, newest first. One line per merged change, added in the same PR (AGENTS.md). The naturefunding.org LinkedIn Page drafts its update posts from this list. Emails count once `DIGEST_SENDING` is `live`.
 
+- 2026-11-18 · Call status updates when an opening date or deadline passes: finder cards refresh in the browser, and programme pages rebuild automatically · https://naturefunding.org/p/iki-small-grants/ · #PR
 - 2026-11-18 · Four more open or upcoming funding programmes appear in the finder: WASOP3, EDEKA Südwest, The Fore and Living Cities Canada · https://naturefunding.org/p/living-cities-canada-fund/ · #645
 - 2026-11-18 · Programme pages show updated call statuses and new FCC Community Action Fund 2027 rounds · https://naturefunding.org/p/fcc-community-action-fund/ · #PR
 - 2026-11-17 · The weekly email goes out: subscribers get new calls and programmes for their country and type of project, at most once a week · https://naturefunding.org/digest/ · #637

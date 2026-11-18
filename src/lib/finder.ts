@@ -4,6 +4,8 @@
 import { pageHref, type PagePaths } from './page-paths'
 import { picker } from './picker'
 import { amountCell } from './table'
+import { daysBetween, daysLeft, effectiveListingState, shortDateText, utcDateKey } from './status'
+import type { State } from './labels'
 
 const AGING_DAYS = 30
 const HIDDEN_DAYS = 90
@@ -23,21 +25,28 @@ type Item = {
   where: string[]
   text: string
   /** The deadline cell for each call group, when the programme's calls differ by country; the first is the built one. */
-  cells: Cell[]
-  cell: Cell | null
+  cells: DatedCell[]
+  cell: DatedCell | null
 }
 
 /** One version of a row's deadline cell: `codes` are the countries it is for, `*` the rest, empty the built cell. */
-type Cell = { codes: string[]; state: string; deadline: string; opens: string; html: string }
+type DatedCell = {
+  codes: string[]
+  state: string
+  deadline: string
+  deadlineTime: string
+  deadlineTimezone: string
+  opens: string
+  opensDate: string
+  html: string
+}
 
 type Filters = { q: string; within: string; where: string } & Record<Multi, string[]>
 
-const today = new Date().toISOString().slice(0, 10)
-const days = (from: string, to: string) => Math.round((Date.parse(to) - Date.parse(from)) / 86_400_000)
+const now = new Date()
+const today = utcDateKey(now)
+const days = daysBetween
 const isLater = (state: string) => state === 'none' || state === 'closed'
-// Same as src/lib/format.ts shortDate: Nov 1, 2026.
-const shortFmt = new Intl.DateTimeFormat('en-US', { month: 'short', day: 'numeric', year: 'numeric', timeZone: 'UTC' })
-const shortDate = (iso: string) => shortFmt.format(new Date(`${iso}T00:00:00Z`))
 const plural = (n: number, one: string, many: string) => (n === 1 ? one : many)
 
 // Each sort's natural direction: soonest deadline, largest amount, most recently checked.
@@ -92,7 +101,7 @@ export function initTableFinder() {
   let sort: SortKey = 'deadline'
   let reversed = false
 
-  // ---------- Rows: freshness, days left, and calls that closed since the build ----------
+  // ---------- Rows: freshness, days left, and calls whose dated status changed since the build ----------
   const rows = [...list.rows, ...laterList.rows] as HTMLTableRowElement[]
   const items = rows.flatMap((el): Item[] => {
     const d = el.dataset
@@ -109,11 +118,23 @@ export function initTableFinder() {
       codes: split(t.dataset.whereDl),
       state: t.dataset.state ?? '',
       deadline: t.dataset.deadline ?? '',
+      deadlineTime: t.dataset.deadlineTime ?? '',
+      deadlineTimezone: t.dataset.deadlineTimezone ?? '',
       opens: t.dataset.opens ?? '',
+      opensDate: t.dataset.opensDate ?? '',
       html: t.innerHTML,
     }))
-    const built = { codes: [], state: d.state ?? '', deadline, opens: d.opens ?? '', html: el.querySelector('.dl')?.innerHTML ?? '' }
-    const state = freshen(el, built.state, deadline)
+    const built = {
+      codes: [],
+      state: d.state ?? '',
+      deadline,
+      deadlineTime: d.deadlineTime ?? '',
+      deadlineTimezone: d.deadlineTimezone ?? '',
+      opens: d.opens ?? '',
+      opensDate: d.opensDate ?? '',
+      html: el.querySelector('.dl')?.innerHTML ?? '',
+    }
+    const state = freshen(el, built)
     return [
       {
         el,
@@ -138,21 +159,42 @@ export function initTableFinder() {
     ]
   })
 
-  /** Days left on an open call, or Closed once its deadline has passed since the build. Returns the state it shows. */
-  function freshen(el: HTMLElement, state: string, deadline: string) {
-    if (state !== 'open' || !deadline) return state
-    const left = days(today, deadline)
+  /** Recomputes dated open/upcoming/closed state in the reader's browser. Returns the state it shows. */
+  function freshen(el: HTMLElement, cell: DatedCell) {
+    const state = effectiveListingState(
+      cell.state as State,
+      {
+        opens: cell.opensDate || null,
+        deadline: cell.deadline
+          ? {
+              date: cell.deadline,
+              time: cell.deadlineTime || undefined,
+              timezone: cell.deadlineTimezone || undefined,
+              text: '',
+            }
+          : null,
+      },
+      now,
+    )
     const leftEl = el.querySelector<HTMLElement>('[data-left]')
-    if (left < 0) {
+    const left = cell.deadline ? daysLeft({ date: cell.deadline, timezone: cell.deadlineTimezone || undefined }, now) : null
+    if (state === 'closed') {
       el.dataset.state = 'closed'
       const dl = el.querySelector<HTMLElement>('.dl')
       if (dl)
-        dl.innerHTML = `<span class="dl__when dl__when--muted">${shortDate(deadline)}</span><span class="dl__meta"><span class="status" data-state="closed">Closed</span></span>`
+        dl.innerHTML = `<span class="dl__when dl__when--muted">${cell.deadline ? shortDateText(cell.deadline) : 'Date not stated'}</span><span class="dl__meta"><span class="status" data-state="closed">Closed</span></span>`
       return 'closed'
     }
-    if (leftEl) {
-      leftEl.textContent = left === 0 ? 'Closes today' : left === 1 ? '1 day left' : `${left} days left`
-      leftEl.toggleAttribute('data-soon', left <= 7)
+    if (state === 'open' && cell.state !== 'open' && cell.state !== 'rolling') {
+      el.dataset.state = 'open'
+      const dl = el.querySelector<HTMLElement>('.dl')
+      if (dl)
+        dl.innerHTML = `<span class="dl__when${cell.deadline ? '' : ' dl__when--muted'}">${cell.deadline ? shortDateText(cell.deadline) : 'Date not stated'}</span><span class="dl__meta"><span class="status" data-state="open">Open</span>${left !== null ? `<span class="dl__left" data-left${left <= 7 ? ' data-soon' : ''}></span>` : ''}</span>`
+    }
+    const currentLeft = el.querySelector<HTMLElement>('[data-left]') ?? leftEl
+    if (state === 'open' && left !== null && currentLeft) {
+      currentLeft.textContent = left === 0 ? 'Closes today' : left === 1 ? '1 day left' : `${left} days left`
+      currentLeft.toggleAttribute('data-soon', left <= 7)
     }
     return state
   }
@@ -170,7 +212,7 @@ export function initTableFinder() {
       const dl = i.el.querySelector<HTMLElement>('.dl')
       if (dl) dl.innerHTML = cell.html
       i.el.dataset.state = cell.state
-      i.state = freshen(i.el, cell.state, cell.deadline)
+      i.state = freshen(i.el, cell)
       i.deadline = cell.deadline
       i.opens = cell.opens
       i.sets.status = [i.state]
