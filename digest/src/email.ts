@@ -138,10 +138,10 @@ function callLine(call: Call | null): string {
   return ''
 }
 
-/** The subscriber's country when they chose one (the listing is open to it), else where the listing is open. */
+/** Where the listing is open. Left out when the subscriber chose a country: the email's heading already names it. */
 function placeOf(i: DigestItem, prefs: Prefs) {
-  const country = prefs.where && !prefs.where.startsWith('r:') ? prefs.where : null
-  return country ? { text: countryName(country), flag: country } : { text: geographyText(i.programme.geography), flag: null }
+  const country = prefs.where && !prefs.where.startsWith('r:')
+  return country ? '' : geographyText(i.programme.geography)
 }
 
 /** One item's parts, shared by the email and the past issues on the site (src/components/DigestIssue.astro). */
@@ -184,15 +184,15 @@ export function digestEmail(o: { site: string; pages?: PagePaths; digest: Digest
         .filter((i) => i.section === s)
         .map((i) => {
           const x = itemParts(i, o.site, o.prefs, o.currency)
-          const place = x.place.text ? (x.place.flag ? withIcon(icon(`${o.site}/flags/${x.place.flag}.png`, 21, 14, 2), x.place.text) : esc(x.place.text)) : ''
           const amount = x.amount
-            ? `<strong style="font-weight:600;color:${C.ink};">${esc(x.amount.text)}</strong>${x.amount.original ? `<span style="font-size:15px;color:${C.ink2};"> (${esc(x.amount.original)})</span>` : ''}`
-            : `<span style="color:${C.ink2};">Amount not stated</span>`
+            ? `<strong style="font-weight:700;color:${C.ink};">${esc(x.amount.text)}</strong>${x.amount.original ? `<span style="font-size:15px;color:${C.ink2};"> (${esc(x.amount.original)})</span>` : ''}`
+            : `<span style="font-size:18px;color:${C.ink2};">Amount not stated</span>`
           // The title is the item's one link: our listing, which links on to the funder's page and the evidence.
           const title = `${x.mark}<a href="${esc(x.page)}" style="color:${C.ink};text-decoration:underline;text-decoration-color:${C.ink2};">${esc(x.name)}</a>`
           return row(
             `<div style="font-size:18px;line-height:1.35;">${title}${x.funder ? `<span style="font-size:15px;color:${C.ink2};"> · ${esc(x.funder)}</span>` : ''}</div>
-<div style="font-size:18px;line-height:1.35;margin-top:6px;">${amount}${place ? `<span style="font-size:15px;color:${C.ink2};"> · ${place}</span>` : ''}</div>
+<div style="font-size:24px;line-height:1.25;margin-top:6px;">${amount}</div>
+${x.place ? `<div style="font-size:15px;color:${C.ink2};margin-top:4px;">${esc(x.place)}</div>` : ''}
 ${x.status ? `<div style="font-size:15px;margin-top:6px;"><strong style="color:${C.brand};font-weight:600;">${esc(x.status)}</strong>${x.callLabel ? ` <span style="color:${C.ink2};">· ${esc(x.callLabel)}</span>` : ''}</div>` : ''}`,
             { rule: true },
           )
@@ -220,9 +220,9 @@ ${x.status ? `<div style="font-size:15px;margin-top:6px;"><strong style="color:$
           .filter((i) => i.section === s)
           .map((i) => {
             const x = itemParts(i, o.site, o.prefs, o.currency)
-            const head = [x.amount ? `${x.amount.text}${x.amount.original ? ` (${x.amount.original})` : ''}` : 'Amount not stated', x.place.text].filter(Boolean).join(' · ')
+            const amount = x.amount ? `${x.amount.text}${x.amount.original ? ` (${x.amount.original})` : ''}` : 'Amount not stated'
             const status = x.status ? `${x.status}${x.callLabel ? ` · ${x.callLabel}` : ''}` : null
-            return [`- ${x.name}${x.funder ? ` · ${x.funder}` : ''}`, `  ${head}`, status && `  ${status}`, `  ${x.page}`].filter(Boolean).join('\n')
+            return [`- ${x.name}${x.funder ? ` · ${x.funder}` : ''}`, `  ${amount}`, x.place && `  ${x.place}`, status && `  ${status}`, `  ${x.page}`].filter(Boolean).join('\n')
           }),
       ].join('\n\n'),
     )

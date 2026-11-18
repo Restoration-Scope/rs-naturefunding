@@ -37,10 +37,10 @@ const link = 'text-link underline underline-offset-2'
                 {page ? <a class="text-ink underline decoration-ink-2 underline-offset-2" href={page}>{x.name}</a> : x.name}
                 {x.funder && <span class="text-base text-ink-2"> · {x.funder}</span>}
               </p>
-              <p class="mt-1 text-lg">
-                {x.amount ? <strong class="font-semibold">{x.amount.text}</strong> : <span class="text-ink-2">Amount not stated</span>}
-                {x.place.text && <span class="text-base text-ink-2"> · {x.place.text}</span>}
+              <p class="mt-1.5 text-2xl leading-tight">
+                {x.amount ? <strong class="font-bold">{x.amount.text}</strong> : <span class="text-lg text-ink-2">Amount not stated</span>}
               </p>
+              {x.place && <p class="mt-1 text-ink-2">{x.place}</p>}
               {x.status && (
                 <p class="mt-1.5">
                   <span class="font-semibold text-brand">{x.status}</span>
