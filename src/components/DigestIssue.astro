@@ -36,24 +36,17 @@ const link = 'text-link underline underline-offset-2'
                 {x.amount ? <strong class="font-semibold">{x.amount.text}</strong> : <span class="text-ink-2">Amount not stated</span>}
                 {x.place.text && <span class="text-ink-2"> · {x.place.text}</span>}
               </p>
-              <p class="mt-1">{page ? <a class="underline decoration-rule-strong underline-offset-2" href={page}>{x.name}</a> : x.name}</p>
-              <p class="mt-0.5 flex items-center gap-1.5">
-                <OrgMark org={i.programme.funder} size={16} />
-                {x.funder}
+              <p class="mt-1">
+                <OrgMark org={i.programme.funder} size={16} class="mr-1.5 -mt-0.5" />
+                {page ? <a class="text-ink underline decoration-ink-2 underline-offset-2" href={page}>{x.name}</a> : x.name}
+                {x.funder && <span class="text-ink-2"> · {x.funder}</span>}
               </p>
-              <p class="mt-2">
-                <span class:list={[x.live ? 'font-semibold text-brand' : 'text-ink-2']}>{x.status}</span>
-                {x.callLabel && <span class="text-ink-2"> · {x.callLabel}</span>}
-              </p>
-              <p class="mt-2 text-sm">
-                <a class={link} href={x.callUrl}>Funder’s page</a>
-                {page && (
-                  <>
-                    <span class="px-1 text-rule-strong">|</span>
-                    <a class={link} href={page}>Details and evidence</a>
-                  </>
-                )}
-              </p>
+              {x.status && (
+                <p class="mt-1.5">
+                  <span class="font-semibold text-brand">{x.status}</span>
+                  {x.callLabel && <span class="text-ink-2"> · {x.callLabel}</span>}
+                </p>
+              )}
             </li>
           )
         })}
