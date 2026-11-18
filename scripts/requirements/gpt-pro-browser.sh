@@ -36,11 +36,16 @@ if [ "$cmd" = send ]; then
   allow=(mcp__claude-in-chrome "Read($prompt)"); extra=(--add-dir "$DIR/prompts"); tools="Read"
 elif [ "$cmd" = collect ]; then
   url="${3:-}"; [[ "$url" =~ ^https://chatgpt\.com/c/[A-Za-z0-9-]+$ ]] || { echo "bad url" >&2; exit 2; }
-  js="(() => { const busy = !!document.querySelector('[data-testid=\"stop-button\"]'); const blocks = [...document.querySelectorAll('[data-message-author-role=\"assistant\"] pre code, main pre code')].map(c => c.innerText); const last = blocks.at(-1) || ''; return busy || !last ? 'NFSTATUS:BUSY' : 'NFJSON<<' + last + '>>NFJSON' })()"
+  # The browser tool cuts each result at about 1,000 characters, so the answer comes back in numbered
+  # 900-character chunks of its compact JSON; each chunk call recomputes the text, so no page state is needed.
+  text="(() => { const blocks = [...document.querySelectorAll('[data-message-author-role=\"assistant\"] pre code, main pre code')].map(c => c.innerText); const last = blocks.at(-1) || ''; try { return JSON.stringify(JSON.parse(last)) } catch { return last } })()"
+  count="(() => { const busy = !!document.querySelector('[data-testid=\"stop-button\"]'); const t = $text; return busy || !t ? 'NFSTATUS:BUSY' : 'NFCOUNT:' + Math.ceil(t.length / 900) })()"
+  chunk="(() => { const t = $text; return 'NFC' + I + '<<' + t.slice(I * 900, I * 900 + 900) + '>>NFC' })()"
   step="$PRE
 3. Navigate the tab to $url and wait 10 seconds for the conversation to load.
-4. Run javascript_tool with exactly this code: $js
-5. Close your tab. Print only DONE."
+4. Call javascript_tool directly (never inside browser_batch) with exactly this code: $count
+5. If it returned NFCOUNT:N, then for each I from 0 to N-1 call javascript_tool directly with exactly this code, with I replaced by the number: $chunk
+6. Close your tab. Print only DONE."
   allow=(mcp__claude-in-chrome); extra=(); tools=""
 else
   echo "usage: send <id> | collect <id> <url>" >&2; exit 2
@@ -65,8 +70,10 @@ else
   # The javascript_tool output as the browser returned it, from the stream (tool results are in user events).
   out=$(jq -r 'select(.type=="user") | .message.content[]? | select(.type=="tool_result") | (.content | if type=="array" then map(.text // "") | join("") else . end)' "$log" 2>/dev/null)
   if grep -q 'NFSTATUS:BUSY' <<< "$out"; then exit 75; fi
-  body=$(perl -0ne 'print $1 if /NFJSON<<(.*)>>NFJSON/s' <<< "$out")
-  [ -n "$body" ] || { echo "collect $id: no answer found (log $log)" >&2; exit 1; }
+  n=$(grep -o 'NFCOUNT:[0-9]*' <<< "$out" | tail -1 | cut -d: -f2)
+  [ -n "$n" ] || { echo "collect $id: no answer found (log $log)" >&2; exit 1; }
+  body=$(N="$n" perl -0ne 'my %c; $c{$1} = $2 while /NFC(\d+)<<(.*?)>>NFC/sg; for my $i (0 .. $ENV{N} - 1) { exists $c{$i} or die "missing chunk $i\n"; print $c{$i} }' <<< "$out") \
+    || { echo "collect $id: incomplete answer, $n chunks expected (log $log)" >&2; exit 1; }
   printf '%s' "$body" > "$DIR/answers/$id.txt"
   echo "$DIR/answers/$id.txt"
 fi
