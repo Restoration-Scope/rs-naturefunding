@@ -69,9 +69,13 @@ export function finderUrl(site: string, prefs: Prefs, pages: PagePaths = {}) {
 }
 
 const PAD = 28
-/** A full-width row of the card. Rows split by a divider span the card edge to edge; their content keeps the gutter. */
-const row = (html: string, o: { top?: number; bottom?: number; rule?: boolean } = {}) =>
-  `<tr><td style="padding:${o.top ?? 16}px ${PAD}px ${o.bottom ?? 16}px;font-family:${SANS};font-size:16px;line-height:1.5;color:${C.ink};${o.rule ? `border-top:1px solid ${C.rule};` : ''}">${html}</td></tr>`
+/** A full-width row of the email, its content inside the gutter. */
+const row = (html: string, o: { top?: number; bottom?: number } = {}) =>
+  `<tr><td style="padding:${o.top ?? 16}px ${PAD}px ${o.bottom ?? 16}px;font-family:${SANS};font-size:16px;line-height:1.5;color:${C.ink};">${html}</td></tr>`
+
+/** One grant as a white card on the paper band: rounded, with a soft shadow where the mail client shows one. */
+const card = (html: string) =>
+  `<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="margin:0 0 10px;background:#ffffff;border:1px solid ${C.rule};border-radius:10px;box-shadow:0 1px 2px rgba(27,39,34,0.05),0 3px 10px rgba(27,39,34,0.05);"><tr><td style="padding:16px 18px;font-family:${SANS};font-size:16px;line-height:1.5;color:${C.ink};">${html}</td></tr></table>`
 
 /** rows: the card's rows (row()), between the header and the footer. */
 function frame(site: string, preheader: string, rows: string, footer?: string) {
@@ -157,6 +161,8 @@ export function itemParts(i: DigestItem, site: string, prefs: Prefs, currency?: 
     callLabel: status ? (i.call?.label ?? null) : null,
     amount: amountShort(p.amount, currency),
     place: placeOf(i, prefs),
+    // The project types it funds, with the finder's icons. Left out when the subscriber chose a type: the heading names it.
+    types: prefs.approaches.length ? [] : projectTypes.filter((t) => t.approaches.some((a) => p.approaches.includes(a))).map((t) => ({ key: t.key, label: t.label })),
     page: `${site}/p/${p.id}/`,
   }
 }
@@ -189,26 +195,28 @@ export function digestEmail(o: { site: string; pages?: PagePaths; digest: Digest
             : `<span style="font-size:18px;color:${C.ink2};">Amount not stated</span>`
           // The title is the item's one link: our listing, which links on to the funder's page and the evidence.
           const title = `${x.mark}<a href="${esc(x.page)}" style="color:${C.ink};text-decoration:underline;text-decoration-color:${C.ink2};">${esc(x.name)}</a>`
-          return row(
+          return card(
             `<div style="font-size:18px;line-height:1.35;">${title}${x.funder ? `<span style="font-size:15px;color:${C.ink2};"> · ${esc(x.funder)}</span>` : ''}</div>
 <div style="font-size:24px;line-height:1.25;margin-top:6px;">${amount}</div>
 ${x.place ? `<div style="font-size:15px;color:${C.ink2};margin-top:4px;">${esc(x.place)}</div>` : ''}
+${x.types.length ? `<div style="font-size:14px;color:${C.ink2};margin-top:6px;">${x.types.map((t) => withIcon(icon(`${o.site}/icons/types/${t.key}.png`, 16, 16), t.label)).join('<span style="color:#c4c3be;">&nbsp; · &nbsp;</span>')}</div>` : ''}
 ${x.status ? `<div style="font-size:15px;margin-top:6px;"><strong style="color:${C.brand};font-weight:600;">${esc(x.status)}</strong>${x.callLabel ? ` <span style="color:${C.ink2};">· ${esc(x.callLabel)}</span>` : ''}</div>` : ''}`,
-            { rule: true },
           )
         })
         .join('')
-      return (headed ? row(`<h2 style="margin:0;font-size:15px;font-weight:600;color:${C.ink2};">${sectionTitle[s]}</h2>`, { top: 24, bottom: 10 }) : '') + rows
+      return (headed ? `<h2 style="margin:6px 4px 10px;font-size:15px;font-weight:600;color:${C.ink2};">${sectionTitle[s]}</h2>` : '') + rows
     })
     .join('')
+  // The cards float on a paper band that runs the card's full width.
+  const band = `<tr><td style="background:${C.paper};padding:16px 16px 6px;border-top:1px solid ${C.rule};border-bottom:1px solid ${C.rule};font-family:${SANS};color:${C.ink};">${sections}</td></tr>`
 
   // Always a way to the subscriber's page (their country's, when it has one), not only when the list was cut.
   const seeAll = `See all grants${what ? ` for ${what}` : ''} on naturefunding.org`
   const more = `<p style="margin:0;">${total > items.length ? `And ${total - items.length} more. ` : ''}${link(esc(seeAll))}.</p>`
   const body =
-    row(`<h1 style="margin:0;font-family:${SERIF};font-size:22px;line-height:1.3;font-weight:400;">${introHtml}</h1>`, { top: 24, bottom: headed ? 0 : 18 }) +
-    sections +
-    row(`${more}<p style="margin:16px 0 0;font-size:14px;color:${C.ink2};">Each listing is checked against the funder’s own page. ${esc(fineprint)}</p>`, { top: 18, bottom: 24, rule: true })
+    row(`<h1 style="margin:0;font-family:${SERIF};font-size:22px;line-height:1.3;font-weight:400;">${introHtml}</h1>`, { top: 24, bottom: 18 }) +
+    band +
+    row(`${more}<p style="margin:16px 0 0;font-size:14px;color:${C.ink2};">Each listing is checked against the funder’s own page. ${esc(fineprint)}</p>`, { top: 18, bottom: 24 })
   const footer = `You get this because you signed up at naturefunding.org${what ? ` for ${esc(what)}` : ''}. At most one email a week, only when something is new.<br>
 <a href="${esc(o.manageUrl)}" style="color:${C.ink2};">Change what you get</a> · <a href="${esc(o.unsubscribeUrl)}" style="color:${C.ink2};">Unsubscribe</a>`
 
@@ -222,7 +230,7 @@ ${x.status ? `<div style="font-size:15px;margin-top:6px;"><strong style="color:$
             const x = itemParts(i, o.site, o.prefs, o.currency)
             const amount = x.amount ? `${x.amount.text}${x.amount.original ? ` (${x.amount.original})` : ''}` : 'Amount not stated'
             const status = x.status ? `${x.status}${x.callLabel ? ` · ${x.callLabel}` : ''}` : null
-            return [`- ${x.name}${x.funder ? ` · ${x.funder}` : ''}`, `  ${amount}`, x.place && `  ${x.place}`, status && `  ${status}`, `  ${x.page}`].filter(Boolean).join('\n')
+            return [`- ${x.name}${x.funder ? ` · ${x.funder}` : ''}`, `  ${amount}`, x.place && `  ${x.place}`, x.types.length && `  ${x.types.map((t) => t.label).join(' · ')}`, status && `  ${status}`, `  ${x.page}`].filter(Boolean).join('\n')
           }),
       ].join('\n\n'),
     )

@@ -41,6 +41,16 @@ const link = 'text-link underline underline-offset-2'
                 {x.amount ? <strong class="font-bold">{x.amount.text}</strong> : <span class="text-lg text-ink-2">Amount not stated</span>}
               </p>
               {x.place && <p class="mt-1 text-ink-2">{x.place}</p>}
+              {x.types.length > 0 && (
+                <p class="mt-1.5 flex flex-wrap gap-x-3 gap-y-1 text-sm text-ink-2">
+                  {x.types.map((t) => (
+                    <span class="inline-flex items-center gap-1">
+                      <img src={`/icons/types/${t.key}.svg`} width="16" height="16" alt="" />
+                      {t.label}
+                    </span>
+                  ))}
+                </p>
+              )}
               {x.status && (
                 <p class="mt-1.5">
                   <span class="font-semibold text-brand">{x.status}</span>
