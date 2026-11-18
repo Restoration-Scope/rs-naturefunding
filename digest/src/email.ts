@@ -10,7 +10,7 @@ import { pageHref, type PagePaths } from '../../src/lib/page-paths'
 import type { Digest, DigestItem, Section } from './digest'
 import { prefsText, type Prefs } from './match'
 
-const C = { paper: '#f7f4ef', linen: '#edeae7', ink: '#1b2722', ink2: '#565e5b', brand: '#3a7e49', shell: '#254b36', shellInk2: '#beccc2', rule: '#d8d7d2' }
+const C = { paper: '#f7f4ef', linen: '#edeae7', ink: '#1b2722', ink2: '#565e5b', brand: '#3a7e49', shell: '#254b36', rule: '#d8d7d2' }
 const SANS = "Inter, ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif"
 const SERIF = "'Geist Serif', Georgia, 'Times New Roman', serif"
 
@@ -68,24 +68,25 @@ export function finderUrl(site: string, prefs: Prefs, pages: PagePaths = {}) {
   return `${site}${pageHref(pages, prefs.where, [...prefs.approaches].sort().join(' '))}`
 }
 
-const PAD = 28
+// The cards' padding on every side; floating text lines up with the text inside them.
+const PAD = 20
 const TEXT = `font-family:${SANS};font-size:16px;line-height:1.5;color:${C.ink};`
 /** A row of a card, its content inside the gutter. */
 const row = (html: string, o: { top?: number; bottom?: number } = {}) =>
   `<tr><td style="padding:${o.top ?? 16}px ${PAD}px ${o.bottom ?? 16}px;${TEXT}">${html}</td></tr>`
 
 /** Cards sit side by side on the page background, all one width: rounded, with a soft shadow where the client shows one. */
-const box = (rows: string, border: string = C.rule) =>
-  `<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#ffffff;border:1px solid ${border};border-radius:10px;overflow:hidden;box-shadow:0 1px 2px rgba(27,39,34,0.05),0 3px 10px rgba(27,39,34,0.05);">${rows}</table>`
+const box = (rows: string) =>
+  `<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#ffffff;border:1px solid ${C.rule};border-radius:10px;overflow:hidden;box-shadow:0 1px 2px rgba(27,39,34,0.05),0 3px 10px rgba(27,39,34,0.05);">${rows}</table>`
 const gap = (h: number) => `<div style="height:${h}px;line-height:${h}px;font-size:0;">&nbsp;</div>`
 /** One grant's card. */
-const card = (html: string) => box(row(html, { top: 18, bottom: 18 })) + gap(12)
+const card = (html: string) => box(row(html, { top: PAD, bottom: PAD })) + gap(12)
 /** Text straight on the page background, lined up with the cards' text (gutter plus their border). */
 const floating = (html: string, o: { top?: number; bottom?: number } = {}) => `<div style="padding:${o.top ?? 0}px ${PAD + 1}px ${o.bottom ?? 0}px;${TEXT}">${html}</div>`
 
-const brandBar = (site: string) => `<tr><td style="background:${C.shell};padding:18px ${PAD}px;">
-<a href="${esc(site)}/" style="font-family:${SERIF};font-size:22px;color:${C.paper};text-decoration:none;">naturefunding<span style="color:${C.shellInk2};">.org</span></a>
-</td></tr>`
+/** The wordmark, straight on the page background above everything else. */
+const brand = (site: string) =>
+  floating(`<a href="${esc(site)}/" style="font-family:${SERIF};font-size:22px;color:${C.shell};text-decoration:none;">naturefunding<span style="color:${C.ink2};">.org</span></a>`, { top: 4 })
 
 /** column: the email's cards and floating text, in a centred column 600px wide; footer: centred above the tagline. */
 function frame(preheader: string, column: string, footer?: string) {
@@ -110,13 +111,14 @@ export function confirmationEmail(o: { site: string; confirmUrl: string; prefs: 
   const leadHtml = what ? esc(lead).replace(` for ${esc(what)}`, ` for ${prefsHtml(o.site, o.prefs)}`) : esc(lead)
   const html = frame(
     'One click to start your weekly naturefunding.org email.',
-    box(
-      brandBar(o.site) +
+    brand(o.site) +
+      gap(16) +
+      box(
         row(`<h1 style="margin:0 0 12px;font-family:${SERIF};font-size:26px;font-weight:400;">Confirm your email</h1>
 <p style="margin:0;">${leadHtml}</p>
 ${button(o.confirmUrl, 'Confirm my email')}
-<p style="margin:0 0 16px;color:${C.ink2};font-size:14px;">The link works for 3 days. If you didn’t ask for this, ignore this email and we won’t write again.</p>`, { top: 28, bottom: 8 }),
-    ),
+<p style="margin:0 0 16px;color:${C.ink2};font-size:14px;">The link works for 3 days. If you didn’t ask for this, ignore this email and we won’t write again.</p>`, { top: 24, bottom: 4 }),
+      ),
   )
   const text = `Confirm your email\n\n${lead}\n\nConfirm: ${o.confirmUrl}\n\nThe link works for 3 days. If you didn't ask for this, ignore this email and we won't write again.\n\n--\n${TAGLINE}\n${POSTAL_ADDRESS}\n`
   return { subject: 'Confirm your weekly naturefunding.org email', html, text }
@@ -199,14 +201,16 @@ export function digestEmail(o: { site: string; pages?: PagePaths; digest: Digest
           const amount = x.amount
             ? `<strong style="font-weight:700;color:${C.ink};">${esc(x.amount.text)}</strong>${x.amount.original ? `<span style="font-size:15px;color:${C.ink2};"> (${esc(x.amount.original)})</span>` : ''}`
             : `<span style="font-size:18px;color:${C.ink2};">Amount not stated</span>`
-          // The title is the item's one link: our listing, which links on to the funder's page and the evidence.
-          const title = `${x.mark}<a href="${esc(x.page)}" style="color:${C.ink};text-decoration:underline;text-decoration-color:${C.ink2};">${esc(x.name)}</a>`
+          // The title is the item's one link (our listing, which links on to the funder's page and the evidence):
+          // brand green and semibold, the card's only coloured text besides a live call.
+          const title = `${x.mark}<a href="${esc(x.page)}" style="color:${C.brand};font-weight:600;text-decoration:none;">${esc(x.name)}</a>`
+          // Three groups, most important first: what it is; how much and where; whether it's open and what it funds.
           return card(
-            `<div style="font-size:18px;line-height:1.35;">${title}${x.funder ? `<span style="font-size:15px;color:${C.ink2};"> · ${esc(x.funder)}</span>` : ''}</div>
-<div style="font-size:24px;line-height:1.25;margin-top:6px;">${amount}</div>
-${x.place ? `<div style="font-size:15px;color:${C.ink2};margin-top:4px;">${esc(x.place)}</div>` : ''}
-${x.types.length ? `<div style="font-size:14px;color:${C.ink2};margin-top:6px;">${x.types.map((t) => withIcon(icon(`${o.site}/icons/types/${t.key}.png`, 16, 16), t.label)).join('<span style="color:#c4c3be;">&nbsp; · &nbsp;</span>')}</div>` : ''}
-${x.status ? `<div style="font-size:15px;margin-top:6px;"><strong style="color:${C.brand};font-weight:600;">${esc(x.status)}</strong>${x.callLabel ? ` <span style="color:${C.ink2};">· ${esc(x.callLabel)}</span>` : ''}</div>` : ''}`,
+            `<div style="font-size:17px;line-height:1.35;">${title}${x.funder ? `<span style="font-size:14px;color:${C.ink2};"> · ${esc(x.funder)}</span>` : ''}</div>
+<div style="font-size:24px;line-height:1.2;margin-top:12px;">${amount}</div>
+${x.place ? `<div style="font-size:14px;line-height:1.4;color:${C.ink2};margin-top:3px;">${esc(x.place)}</div>` : ''}
+${x.status ? `<div style="font-size:15px;line-height:1.4;margin-top:14px;"><strong style="color:${C.brand};font-weight:600;">${esc(x.status)}</strong>${x.callLabel ? `<span style="color:${C.ink2};"> · ${esc(x.callLabel)}</span>` : ''}</div>` : ''}
+${x.types.length ? `<div style="font-size:14px;line-height:1.4;color:${C.ink2};margin-top:${x.status ? 8 : 14}px;">${x.types.map((t) => withIcon(icon(`${o.site}/icons/types/${t.key}.png`, 16, 16), t.label)).join('<span style="color:#c4c3be;">&nbsp; · &nbsp;</span>')}</div>` : ''}`,
           )
         })
         .join('')
@@ -218,7 +222,7 @@ ${x.status ? `<div style="font-size:15px;margin-top:6px;"><strong style="color:$
   const seeAll = `See all grants${what ? ` for ${what}` : ''} on naturefunding.org`
   const more = `<p style="margin:0;">${total > items.length ? `And ${total - items.length} more. ` : ''}${link(esc(seeAll))}.</p>`
   const body =
-    box(brandBar(o.site), C.shell) +
+    brand(o.site) +
     floating(`<h1 style="margin:0;font-family:${SERIF};font-size:24px;line-height:1.3;font-weight:400;">${introHtml}</h1>`, { top: 26, bottom: 18 }) +
     sections +
     floating(`${more}<p style="margin:12px 0 0;font-size:14px;color:${C.ink2};">Each listing is checked against the funder’s own page. ${esc(fineprint)}</p>`, { top: 8, bottom: 8 })
