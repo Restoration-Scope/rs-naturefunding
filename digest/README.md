@@ -2,7 +2,7 @@
 
 At most one email a week to each subscriber, listing calls that opened, calls announced and programmes new to the site since their last email, filtered by the country and type of project they chose. Nothing new, no email.
 
-It runs as its own Cloudflare Worker on its own hostname, so the site stays static assets with no Worker script. The sign-up form (`src/components/DigestSignup.astro`) is a plain form post with no JS; the Worker answers with redirects to the static pages under `src/pages/digest/`. Deployed 2026-11-02; sending is off.
+It runs as its own Cloudflare Worker on its own hostname, so the site stays static assets with no Worker script. The sign-up form (`src/components/DigestSignup.astro`) is a plain form post with no JS; the Worker answers with redirects to the static pages under `src/pages/digest/`. Deployed 2026-11-02; sending since 2026-11-17.
 
 ## How it works
 
@@ -12,7 +12,9 @@ It runs as its own Cloudflare Worker on its own hostname, so the site stays stat
 - **The daily run** (cron, 08:00 UTC) picks subscribers whose last email is 7+ days old, builds each one's digest from changes after the last one it covered (`src/digest.ts`), drops calls that have since closed (deadline in the funder's time zone), and sends one email per subscriber, so one refused address doesn't hold back the rest. At most `DAILY_DIGEST_LIMIT` (75) a UTC day across all runs; with the 20 confirmation emails that stays inside Resend's free 100 a day and 3,000 a month, and a large list spreads over the week.
 - **Never twice.** The day's sends are claimed in D1 before any goes to Resend, each with an idempotency key per subscriber and day, and a claim is undone only when Resend certainly sent nothing (a 4xx; a 429 stops the run and gives the rest back). A timeout or 5xx keeps the claim: that subscriber may miss one digest but never gets two. The next digest starts from the bundle's newest commit (`sent_through`), not the send time, so a change deployed after a send still goes out.
 - **Unsubscribe.** Every digest carries `List-Unsubscribe` and `List-Unsubscribe-Post` (RFC 8058), so mail apps unsubscribe in one click; the link in the email opens a one-button page. Unsubscribing deletes the row.
-- **Sending is off** (`DIGEST_SENDING: "off"`): the daily run only counts who would get an email. The first real send needs Bernat's OK; then set it to `"live"`.
+- **Past issues** on the site (`/digest/` and `/digest/<date>/`): one per week, Monday 08:00 UTC to the next, for someone who picked no country or project type. `scripts/issues.ts` builds them at site build time with the same `buildDigest`, each with the programmes as they stood at that week's last commit (`programmesAt`), so a call that closed since shows as it was.
+- **Sending is live** (`DIGEST_SENDING: "live"`, Bernat's OK 2026-11-16). `"off"` makes the daily run only count who would get an email. A subscriber's first email covers what changed since they confirmed. Every email ends with the sender's postal address (`POSTAL_ADDRESS` in `src/email.ts`).
+- **Redeployed from CI** after every push to main (`.github/workflows/deploy.yml`, full git history), so each digest carries the latest calls.
 
 ## Run locally
 
@@ -47,13 +49,12 @@ Done 2026-11-02 from Bernat's Mac (wrangler signed in as bernatfortet@gmail.com)
 4. `bun digest/scripts/setup-secrets.ts`: `RESEND_API_KEY` (a Sending access key for naturefunding.org only) and `LIST_SECRET`, both kept in Keychain and set through stdin.
 5. `DIGEST_LIVE` in `src/lib/site.ts` shows the form on built pages.
 
-Before the first real send (Bernat's OK): a postal address in the email footer; deploy the Worker from the deploy workflow on every data change (checkout with `fetch-depth: 0`, `bun digest/scripts/build.ts`, `bunx wrangler deploy --config digest/wrangler.jsonc`; the CI token needs D1 edit and Workers Routes edit on the zone), so digests carry new calls; then `DIGEST_SENDING` to `"live"`.
-
 ## Files
 
 - `src/app.ts`: routes and the daily run, tested in `src/app.test.ts` against bun:sqlite with `schema.sql` and a recording mailer.
 - `src/events.ts`, `scripts/history.ts`: what's new, from git.
 - `src/digest.ts`, `src/match.ts`: one subscriber's digest; filters match the finder (`whereCodes` equals the site's).
 - `src/email.ts`: the confirmation and digest emails (HTML and text).
+- `src/issues.ts`, `scripts/issues.ts`, `../src/components/DigestIssue.astro`: the past issues on the site.
 - `src/consent.ts`: the consent words by version; the row keeps the version.
 - `src/resend.ts`, `src/token.ts`: Resend's HTTP API and the link tokens.

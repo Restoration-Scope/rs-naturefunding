@@ -6,7 +6,7 @@ import type { Programme } from '../../src/data/schema'
 import { whereCodes as siteWhereCodes } from '../../src/lib/data'
 import { marks } from '../../src/lib/marks'
 import { buildDigest } from './digest'
-import { digestEmail, finderUrl } from './email'
+import { digestEmail, finderUrl, POSTAL_ADDRESS } from './email'
 import { pagePaths } from '../../src/lib/finder-pages'
 import { pageKey } from '../../src/lib/page-paths'
 import { diffSnapshots, type Snapshot } from './events'
@@ -141,6 +141,9 @@ describe('one subscriber’s digest', () => {
     expect(e.html).toContain(`https://naturefunding.org/p/${withOpen.id}/`)
     expect(e.html).toContain('https://email.naturefunding.org/unsubscribe?t=x')
     expect(e.text).toContain('New since November 8, 2026, for Kenya.')
+    // The sender's postal address in both versions (CAN-SPAM).
+    expect(e.html).toContain('411 Walnut Street #24052')
+    expect(e.text).toContain(POSTAL_ADDRESS)
   })
   test('the digest links the country page from the intro and at the end', () => {
     const d = buildDigest([{ at: '2026-11-10T00:00:00.000Z', kind: 'opened', programme: withOpen.id, call: openCall(withOpen)!.id }], byId, { where: '', approaches: [] }, '2026-11-08T00:00:00.000Z', now)
