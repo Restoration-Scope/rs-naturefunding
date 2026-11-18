@@ -69,29 +69,33 @@ export function finderUrl(site: string, prefs: Prefs, pages: PagePaths = {}) {
 }
 
 const PAD = 28
-/** A full-width row of the email, its content inside the gutter. */
+const TEXT = `font-family:${SANS};font-size:16px;line-height:1.5;color:${C.ink};`
+/** A row of a card, its content inside the gutter. */
 const row = (html: string, o: { top?: number; bottom?: number } = {}) =>
-  `<tr><td style="padding:${o.top ?? 16}px ${PAD}px ${o.bottom ?? 16}px;font-family:${SANS};font-size:16px;line-height:1.5;color:${C.ink};">${html}</td></tr>`
+  `<tr><td style="padding:${o.top ?? 16}px ${PAD}px ${o.bottom ?? 16}px;${TEXT}">${html}</td></tr>`
 
-/** One grant as a white card on the paper band: rounded, with a soft shadow where the mail client shows one. */
-const card = (html: string) =>
-  `<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="margin:0 0 10px;background:#ffffff;border:1px solid ${C.rule};border-radius:10px;box-shadow:0 1px 2px rgba(27,39,34,0.05),0 3px 10px rgba(27,39,34,0.05);"><tr><td style="padding:16px 18px;font-family:${SANS};font-size:16px;line-height:1.5;color:${C.ink};">${html}</td></tr></table>`
+/** Cards sit side by side on the page background, all one width: rounded, with a soft shadow where the client shows one. */
+const box = (rows: string, border: string = C.rule) =>
+  `<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#ffffff;border:1px solid ${border};border-radius:10px;overflow:hidden;box-shadow:0 1px 2px rgba(27,39,34,0.05),0 3px 10px rgba(27,39,34,0.05);">${rows}</table>`
+const gap = (h: number) => `<div style="height:${h}px;line-height:${h}px;font-size:0;">&nbsp;</div>`
+/** One grant's card. */
+const card = (html: string) => box(row(html, { top: 18, bottom: 18 })) + gap(12)
+/** Text straight on the page background, lined up with the cards' text (gutter plus their border). */
+const floating = (html: string, o: { top?: number; bottom?: number } = {}) => `<div style="padding:${o.top ?? 0}px ${PAD + 1}px ${o.bottom ?? 0}px;${TEXT}">${html}</div>`
 
-/** rows: the card's rows (row()), between the header and the footer. */
-function frame(site: string, preheader: string, rows: string, footer?: string) {
+const brandBar = (site: string) => `<tr><td style="background:${C.shell};padding:18px ${PAD}px;">
+<a href="${esc(site)}/" style="font-family:${SERIF};font-size:22px;color:${C.paper};text-decoration:none;">naturefunding<span style="color:${C.shellInk2};">.org</span></a>
+</td></tr>`
+
+/** column: the email's cards and floating text, in a centred column 600px wide; footer: centred above the tagline. */
+function frame(preheader: string, column: string, footer?: string) {
   return `<!doctype html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="color-scheme" content="light"><title>naturefunding.org</title></head>
 <body style="margin:0;padding:0;background:${C.linen};">
 <div style="display:none;max-height:0;overflow:hidden;">${esc(preheader)}</div>
 <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:${C.linen};"><tr><td align="center" style="padding:24px 12px;">
-<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="max-width:600px;background:#ffffff;border:1px solid ${C.rule};border-radius:8px;overflow:hidden;">
-<tr><td style="background:${C.shell};padding:18px 28px;">
-<a href="${esc(site)}/" style="font-family:${SERIF};font-size:22px;color:${C.paper};text-decoration:none;">naturefunding<span style="color:${C.shellInk2};">.org</span></a>
-</td></tr>
-${rows}
-${footer ? `<tr><td style="padding:20px 28px 28px;font-family:${SANS};font-size:13px;line-height:1.5;color:${C.ink2};border-top:1px solid ${C.rule};">${footer}</td></tr>` : ''}
-</table>
-<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="max-width:600px;"><tr><td align="center" style="padding:14px 28px 0;font-family:${SANS};font-size:12px;line-height:1.5;color:${C.ink2};">${taglineHtml}<br>${esc(POSTAL_ADDRESS)}</td></tr></table>
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="max-width:600px;"><tr><td align="left">${column}</td></tr>
+<tr><td align="center" style="padding:20px ${PAD}px 0;font-family:${SANS};font-size:12px;line-height:1.5;color:${C.ink2};">${footer ? `<div style="font-size:13px;margin-bottom:14px;">${footer}</div>` : ''}${taglineHtml}<br>${esc(POSTAL_ADDRESS)}</td></tr></table>
 </td></tr></table>
 </body></html>`
 }
@@ -105,12 +109,14 @@ export function confirmationEmail(o: { site: string; confirmUrl: string; prefs: 
   const lead = `Press the button to start getting new nature funding calls by email${what ? ` for ${what}` : ''}${inCurrency}: at most one email a week, and only when there is something new.`
   const leadHtml = what ? esc(lead).replace(` for ${esc(what)}`, ` for ${prefsHtml(o.site, o.prefs)}`) : esc(lead)
   const html = frame(
-    o.site,
     'One click to start your weekly naturefunding.org email.',
-    row(`<h1 style="margin:0 0 12px;font-family:${SERIF};font-size:26px;font-weight:400;">Confirm your email</h1>
+    box(
+      brandBar(o.site) +
+        row(`<h1 style="margin:0 0 12px;font-family:${SERIF};font-size:26px;font-weight:400;">Confirm your email</h1>
 <p style="margin:0;">${leadHtml}</p>
 ${button(o.confirmUrl, 'Confirm my email')}
 <p style="margin:0 0 16px;color:${C.ink2};font-size:14px;">The link works for 3 days. If you didn’t ask for this, ignore this email and we won’t write again.</p>`, { top: 28, bottom: 8 }),
+    ),
   )
   const text = `Confirm your email\n\n${lead}\n\nConfirm: ${o.confirmUrl}\n\nThe link works for 3 days. If you didn't ask for this, ignore this email and we won't write again.\n\n--\n${TAGLINE}\n${POSTAL_ADDRESS}\n`
   return { subject: 'Confirm your weekly naturefunding.org email', html, text }
@@ -204,19 +210,18 @@ ${x.status ? `<div style="font-size:15px;margin-top:6px;"><strong style="color:$
           )
         })
         .join('')
-      return (headed ? `<h2 style="margin:6px 4px 10px;font-size:15px;font-weight:600;color:${C.ink2};">${sectionTitle[s]}</h2>` : '') + rows
+      return (headed ? floating(`<h2 style="margin:0;font-size:15px;font-weight:600;color:${C.ink2};">${sectionTitle[s]}</h2>`, { top: 8, bottom: 10 }) : '') + rows
     })
     .join('')
-  // The cards float on a paper band that runs the card's full width.
-  const band = `<tr><td style="background:${C.paper};padding:16px 16px 6px;border-top:1px solid ${C.rule};border-bottom:1px solid ${C.rule};font-family:${SANS};color:${C.ink};">${sections}</td></tr>`
 
   // Always a way to the subscriber's page (their country's, when it has one), not only when the list was cut.
   const seeAll = `See all grants${what ? ` for ${what}` : ''} on naturefunding.org`
   const more = `<p style="margin:0;">${total > items.length ? `And ${total - items.length} more. ` : ''}${link(esc(seeAll))}.</p>`
   const body =
-    row(`<h1 style="margin:0;font-family:${SERIF};font-size:22px;line-height:1.3;font-weight:400;">${introHtml}</h1>`, { top: 24, bottom: 18 }) +
-    band +
-    row(`${more}<p style="margin:16px 0 0;font-size:14px;color:${C.ink2};">Each listing is checked against the funder’s own page. ${esc(fineprint)}</p>`, { top: 18, bottom: 24 })
+    box(brandBar(o.site), C.shell) +
+    floating(`<h1 style="margin:0;font-family:${SERIF};font-size:24px;line-height:1.3;font-weight:400;">${introHtml}</h1>`, { top: 26, bottom: 18 }) +
+    sections +
+    floating(`${more}<p style="margin:12px 0 0;font-size:14px;color:${C.ink2};">Each listing is checked against the funder’s own page. ${esc(fineprint)}</p>`, { top: 8, bottom: 8 })
   const footer = `You get this because you signed up at naturefunding.org${what ? ` for ${esc(what)}` : ''}. At most one email a week, only when something is new.<br>
 <a href="${esc(o.manageUrl)}" style="color:${C.ink2};">Change what you get</a> · <a href="${esc(o.unsubscribeUrl)}" style="color:${C.ink2};">Unsubscribe</a>`
 
@@ -236,5 +241,5 @@ ${x.status ? `<div style="font-size:15px;margin-top:6px;"><strong style="color:$
     )
     .join('\n\n')
   const text = `${intro}.\n\n${textItems}\n\n${total > items.length ? `And ${total - items.length} more. ` : ''}${seeAll}: ${listUrl}\n\n${fineprint}\n\n--\nAt most one email a week, only when something is new.\nChange what you get: ${o.manageUrl}\nUnsubscribe: ${o.unsubscribeUrl}\n\n${TAGLINE}\n${POSTAL_ADDRESS}\n`
-  return { subject, html: frame(o.site, intro, body, footer), text }
+  return { subject, html: frame(intro, body, footer), text }
 }
