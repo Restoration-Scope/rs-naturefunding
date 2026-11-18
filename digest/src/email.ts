@@ -188,8 +188,8 @@ export function digestEmail(o: { site: string; pages?: PagePaths; digest: Digest
           // The title is the item's one link: our listing, which links on to the funder's page and the evidence.
           const title = `${x.mark}<a href="${esc(x.page)}" style="color:${C.ink};text-decoration:underline;text-decoration-color:${C.ink2};">${esc(x.name)}</a>`
           return row(
-            `<div style="font-size:18px;line-height:1.35;">${amount}${place ? `<span style="font-size:15px;color:${C.ink2};"> · ${place}</span>` : ''}</div>
-<div style="font-size:16px;line-height:1.4;margin-top:6px;">${title}${x.funder ? `<span style="font-size:15px;color:${C.ink2};"> · ${esc(x.funder)}</span>` : ''}</div>
+            `<div style="font-size:18px;line-height:1.35;">${title}${x.funder ? `<span style="font-size:15px;color:${C.ink2};"> · ${esc(x.funder)}</span>` : ''}</div>
+<div style="font-size:18px;line-height:1.35;margin-top:6px;">${amount}${place ? `<span style="font-size:15px;color:${C.ink2};"> · ${place}</span>` : ''}</div>
 ${x.status ? `<div style="font-size:15px;margin-top:6px;"><strong style="color:${C.brand};font-weight:600;">${esc(x.status)}</strong>${x.callLabel ? ` <span style="color:${C.ink2};">· ${esc(x.callLabel)}</span>` : ''}</div>` : ''}`,
             { rule: true },
           )

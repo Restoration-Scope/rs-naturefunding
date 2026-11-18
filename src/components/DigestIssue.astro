@@ -33,13 +33,13 @@ const link = 'text-link underline underline-offset-2'
           return (
             <li class="py-4">
               <p class="text-lg">
-                {x.amount ? <strong class="font-semibold">{x.amount.text}</strong> : <span class="text-ink-2">Amount not stated</span>}
-                {x.place.text && <span class="text-ink-2"> · {x.place.text}</span>}
-              </p>
-              <p class="mt-1">
                 <OrgMark org={i.programme.funder} size={16} class="mr-1.5 -mt-0.5" />
                 {page ? <a class="text-ink underline decoration-ink-2 underline-offset-2" href={page}>{x.name}</a> : x.name}
-                {x.funder && <span class="text-ink-2"> · {x.funder}</span>}
+                {x.funder && <span class="text-base text-ink-2"> · {x.funder}</span>}
+              </p>
+              <p class="mt-1 text-lg">
+                {x.amount ? <strong class="font-semibold">{x.amount.text}</strong> : <span class="text-ink-2">Amount not stated</span>}
+                {x.place.text && <span class="text-base text-ink-2"> · {x.place.text}</span>}
               </p>
               {x.status && (
                 <p class="mt-1.5">
