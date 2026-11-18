@@ -32,7 +32,7 @@ if [ "$cmd" = send ]; then
 5. Click the \"Ask ChatGPT\" textbox and type exactly: naturefunding.org requirements check, programme $id. Follow every instruction in the attached file exactly and reply with the single JSON code block it asks for.
 6. Wait 3 seconds, find the button named \"Send\" and click it. Wait 8 seconds.
 7. Run javascript_tool with: location.href  — it must start with https://chatgpt.com/c/ and must not contain local-chatgpt; if it does, wait 5 seconds and run it again (up to 4 times).
-8. Do NOT close this tab (the answer is still being written). Print only the final chat URL."
+8. Close your tab (ChatGPT keeps working on the server). Print only the final chat URL."
   allow=(mcp__claude-in-chrome "Read($prompt)"); extra=(--add-dir "$DIR/prompts"); tools="Read"
 elif [ "$cmd" = collect ]; then
   url="${3:-}"; [[ "$url" =~ ^https://chatgpt\.com/c/[A-Za-z0-9-]+$ ]] || { echo "bad url" >&2; exit 2; }
@@ -51,7 +51,7 @@ for login in "${LOGINS[@]}"; do
   ( cd "${TMPDIR:-/tmp}" && env -i HOME="$HOME" USER="$USER" LOGNAME="$USER" PATH="$PATH" LANG="${LANG:-en_US.UTF-8}" TMPDIR="${TMPDIR:-/tmp}" \
     CLAUDE_CONFIG_DIR="$HOME/$login" perl -e 'alarm shift; exec @ARGV or die "exec: $!\n"' 420 \
     claude -p "$step" --chrome --model "$MODEL" --tools "$tools" --strict-mcp-config --no-session-persistence \
-      --output-format stream-json --verbose ${extra[@]+"${extra[@]}"} --allowedTools "${allow[@]}" ) > "$log" 2>&1
+      --output-format stream-json --verbose ${extra[@]+"${extra[@]}"} --allowedTools "${allow[@]}" < /dev/null ) > "$log" 2> "$log.err"
   result=$(jq -r 'select(.type=="result") | .result // empty' "$log" 2>/dev/null | tail -1)
   [ "$result" = UNREACHABLE ] || break
 done
