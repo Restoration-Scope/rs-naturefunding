@@ -82,3 +82,14 @@ Claude Code agents build and change the pipeline, make the gold set, and take wh
 the pipeline can't: pages that need a browser, OCR cases, blocked fetches, and
 `unresolved` items. The night-shift job `naturefunding-before-you-apply` does
 these, not the bulk reading.
+
+## GPT Pro as first reader (tried 2026-11-18, not adopted)
+
+`gpt-pro.ts` + `gpt-pro-browser.sh` have GPT Pro on chatgpt.com read the funder's site, and `run.ts --answers` puts its answer in place of the cheap extractor (our copy still verifies every quote). On the 9 held gold programmes with an answer (CI runs 44245159266 baseline, 44251989245 with answers; `eval.ts --ids`):
+
+| | recall | precision | discovery | stamped |
+|---|---|---|---|---|
+| current pipeline | 37.3 | 67.2 | 57.9 | 1 |
+| GPT Pro first reader | 26.4 | 40.8 | 57.9 | 0 |
+
+Noise floor (the 11 held without an answer, same pipeline in both runs): recall 41.9 both, precision 49.6 vs 45.6. GPT Pro skips requirements the cheap model finds, splits one requirement into short fragment quotes, and makes some calls the page doesn't support (consortium "no" from a list of applicant types). It doesn't add discovery: where our fetcher can't open the site (Cornell, SF Bay), its cited pages can't be verified either. Each answer also takes 20–30 minutes, and the Chrome extension blocks reading back answers whose URLs carry query strings.
