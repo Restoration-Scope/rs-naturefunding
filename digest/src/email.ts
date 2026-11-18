@@ -166,16 +166,19 @@ export function digestEmail(o: { site: string; pages?: PagePaths; digest: Digest
   const what = prefsText(o.prefs)
   const counts = (['open', 'upcoming', 'new'] as Section[]).map((s) => [s, items.filter((i) => i.section === s).length] as const)
   const subject = `${countsText(o.digest.counts)}${what ? ` · ${what}` : ''}`
-  const intro = `New since ${longDate(o.since.slice(0, 10))}${what ? `, for ${what}` : ''}.`
+  const sinceText = `since ${longDate(o.since.slice(0, 10))}`
+  const intro = `New${what ? ` for ${what}` : ''} ${sinceText}`
   const listUrl = finderUrl(o.site, o.prefs, o.pages)
   const link = (label: string) => `<a href="${esc(listUrl)}" style="color:${C.brand};">${label}</a>`
-  const introHtml = what ? esc(intro).replace(`, for ${esc(what)}`, `, for ${link(prefsHtml(o.site, o.prefs))}`) : esc(intro)
+  const introHtml = `New${what ? ` for ${link(prefsHtml(o.site, o.prefs))}` : ''} ${esc(sinceText)}`
+  // One section needs no heading of its own: the email's heading already says what it is.
+  const shown = counts.filter(([, n]) => n > 0)
+  const headed = shown.length > 1
 
   const fineprint = o.currency
     ? `Amounts are converted to ${currencyName(o.currency)} at the rates of ${longDate(ratesDate)}, with the funder’s own figure in brackets. Check the funder’s page before you apply.`
     : 'Amounts are as the funder states them. Check the funder’s page before you apply.'
-  const sections = counts
-    .filter(([, n]) => n > 0)
+  const sections = shown
     .map(([s]) => {
       const rows = items
         .filter((i) => i.section === s)
@@ -195,7 +198,7 @@ ${x.status ? `<div style="font-size:15px;margin-top:6px;"><strong style="color:$
           )
         })
         .join('')
-      return row(`<h2 style="margin:0;font-family:${SERIF};font-size:20px;font-weight:400;">${sectionTitle[s]}</h2>`, { top: 24, bottom: 10 }) + rows
+      return (headed ? row(`<h2 style="margin:0;font-size:15px;font-weight:600;color:${C.ink2};">${sectionTitle[s]}</h2>`, { top: 24, bottom: 10 }) : '') + rows
     })
     .join('')
 
@@ -203,28 +206,27 @@ ${x.status ? `<div style="font-size:15px;margin-top:6px;"><strong style="color:$
   const seeAll = `See all grants${what ? ` for ${what}` : ''} on naturefunding.org`
   const more = `<p style="margin:0;">${total > items.length ? `And ${total - items.length} more. ` : ''}${link(esc(seeAll))}.</p>`
   const body =
-    row(`<p style="margin:0;color:${C.ink2};font-size:15px;">${introHtml}</p>`, { top: 28, bottom: 0 }) +
+    row(`<h1 style="margin:0;font-family:${SERIF};font-size:22px;line-height:1.3;font-weight:400;">${introHtml}</h1>`, { top: 24, bottom: headed ? 0 : 18 }) +
     sections +
     row(`${more}<p style="margin:16px 0 0;font-size:14px;color:${C.ink2};">Each listing is checked against the funder’s own page. ${esc(fineprint)}</p>`, { top: 18, bottom: 24, rule: true })
   const footer = `You get this because you signed up at naturefunding.org${what ? ` for ${esc(what)}` : ''}. At most one email a week, only when something is new.<br>
 <a href="${esc(o.manageUrl)}" style="color:${C.ink2};">Change what you get</a> · <a href="${esc(o.unsubscribeUrl)}" style="color:${C.ink2};">Unsubscribe</a>`
 
-  const textItems = counts
-    .filter(([, n]) => n > 0)
+  const textItems = shown
     .map(([s]) =>
       [
-        sectionTitle[s].toUpperCase(),
+        ...(headed ? [sectionTitle[s].toUpperCase()] : []),
         ...items
           .filter((i) => i.section === s)
           .map((i) => {
             const x = itemParts(i, o.site, o.prefs, o.currency)
             const head = [x.amount ? `${x.amount.text}${x.amount.original ? ` (${x.amount.original})` : ''}` : 'Amount not stated', x.place.text].filter(Boolean).join(' · ')
             const status = x.status ? `${x.status}${x.callLabel ? ` · ${x.callLabel}` : ''}` : null
-            return [`- ${head}`, `  ${x.name}${x.funder ? ` · ${x.funder}` : ''}`, status && `  ${status}`, `  ${x.page}`].filter(Boolean).join('\n')
+            return [`- ${x.name}${x.funder ? ` · ${x.funder}` : ''}`, `  ${head}`, status && `  ${status}`, `  ${x.page}`].filter(Boolean).join('\n')
           }),
       ].join('\n\n'),
     )
     .join('\n\n')
-  const text = `${intro}\n\n${textItems}\n\n${total > items.length ? `And ${total - items.length} more. ` : ''}${seeAll}: ${listUrl}\n\n${fineprint}\n\n--\nAt most one email a week, only when something is new.\nChange what you get: ${o.manageUrl}\nUnsubscribe: ${o.unsubscribeUrl}\n\n${TAGLINE}\n${POSTAL_ADDRESS}\n`
+  const text = `${intro}.\n\n${textItems}\n\n${total > items.length ? `And ${total - items.length} more. ` : ''}${seeAll}: ${listUrl}\n\n${fineprint}\n\n--\nAt most one email a week, only when something is new.\nChange what you get: ${o.manageUrl}\nUnsubscribe: ${o.unsubscribeUrl}\n\n${TAGLINE}\n${POSTAL_ADDRESS}\n`
   return { subject, html: frame(o.site, intro, body, footer), text }
 }

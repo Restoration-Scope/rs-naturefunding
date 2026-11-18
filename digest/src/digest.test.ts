@@ -140,7 +140,7 @@ describe('one subscriber’s digest', () => {
     expect(e.subject).toBe('1 call open · Kenya')
     expect(e.html).toContain(`https://naturefunding.org/p/${withOpen.id}/`)
     expect(e.html).toContain('https://email.naturefunding.org/unsubscribe?t=x')
-    expect(e.text).toContain('New since November 8, 2026, for Kenya.')
+    expect(e.text).toContain('New for Kenya since November 8, 2026.')
     // The sender's postal address in both versions (CAN-SPAM).
     expect(e.html).toContain('411 Walnut Street #24052')
     expect(e.text).toContain(POSTAL_ADDRESS)
