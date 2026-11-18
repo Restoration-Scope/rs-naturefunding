@@ -7,6 +7,7 @@
     "db:local": "cd .. && bunx wrangler d1 execute naturefunding-digest --config digest/wrangler.jsonc --local --persist-to digest/.wrangler/state --file digest/schema.sql",
     "dev": "cd .. && bun digest/scripts/build.ts && bunx wrangler dev --config digest/wrangler.jsonc --port 8790 --test-scheduled --persist-to digest/.wrangler/state",
     "preview": "cd .. && bun digest/scripts/preview.ts",
+    "gallery": "cd .. && bun digest/scripts/gallery.ts",
     "test": "bun test src"
   }
 }
