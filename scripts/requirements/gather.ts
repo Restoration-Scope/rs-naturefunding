@@ -224,7 +224,7 @@ export function seedsOf(p: Programme): string[] {
 
 export async function gather(
   p: Programme,
-  opts: { read: Reader; sources: Source[]; jev?: AskJev | null; bounds?: typeof BOUNDS },
+  opts: { read: Reader; sources: Source[]; jev?: AskJev | null; bounds?: typeof BOUNDS; extra?: string[] },
 ): Promise<Gathered> {
   const bounds = opts.bounds ?? BOUNDS
   const docs: Doc[] = []
@@ -280,9 +280,12 @@ export async function gather(
   }
 
   for (const url of seedsOf(p)) if (!seen.has(urlKey(url))) await open(url, null, null, 0)
+  // Pages a first reader (GPT Pro) says it read: opened outside the crawl bound, held to the same about-check as
+  // a followed link, and not crawled further. One that won't open blocks the stamp like any other.
+  for (const url of opts.extra ?? []) if (/^https?:\/\//.test(url) && !seen.has(urlKey(url))) await open(url.replace(/#.*$/, ''), 'first reader', null, 1)
 
   let followed = 0
-  let frontier = docs.filter((d) => !d.pdf)
+  let frontier = docs.filter((d) => !d.pdf && d.depth === 0)
   // One level past the bound is ranked but not opened: a kept link there blocks the stamp instead of vanishing.
   for (let depth = 1; depth <= bounds.depth + 1 && frontier.length; depth++) {
     const next: Doc[] = []

@@ -9,6 +9,7 @@ import { emptyWire, run } from './pipeline'
 import { queue } from './queue'
 import { packQuotes, readsTwoWays, verify } from './verify'
 import { evaluate, type Gold, type Scored } from './eval'
+import { parseAnswer, promptFor, type ProWire } from './gpt-pro'
 import { apply, manifest } from './write'
 
 const base: Programme = programmeSchema.parse({
@@ -875,4 +876,61 @@ test('an href’s entities are decoded, so a query string keeps its parameters',
   const { linksFrom } = await import('./gather')
   const links = await linksFrom('<p><a href="/rfp.docx?rev=1&amp;hash=AB">Download the RFP</a></p>')
   expect(links[0]?.href).toBe('/rfp.docx?rev=1&hash=AB')
+})
+
+describe('GPT Pro as the first reader', () => {
+  const GUIDE_URL = 'https://test.example.org/rules/guidelines'
+  // The guidelines sit where our crawl doesn't reach (no link from the programme page); GPT Pro found them.
+  const pages = { 'https://test.example.org/grants': PAGE.replace('<a href="/guidelines.pdf">programme guidelines</a>', 'programme guidelines'), [GUIDE_URL]: GUIDE }
+  /** goodWire with each quote's URL where the cheap model writes D2. */
+  const proAnswer = (w = goodWire(), read = [GUIDE_URL]): ProWire => {
+    const api = toApi(w)
+    const url = (d: string) => (d === 'D2' ? GUIDE_URL : d)
+    return {
+      ...api,
+      eligibility: { ...api.eligibility, items: api.eligibility.items.map((i) => ({ ...i, doc: url(i.doc) })) },
+      documents: { ...api.documents, items: api.documents.items.map((i) => ({ ...i, doc: url(i.doc) })) },
+      effort: { ...api.effort, steps: api.effort.steps.map((i) => ({ ...i, doc: url(i.doc) })) },
+      after_award: { ...api.after_award, items: api.after_award.items.map((i) => ({ ...i, doc: url(i.doc) })) },
+      co_finance: { ...api.co_finance, doc: url(api.co_finance.doc) },
+      read,
+    }
+  }
+  const noCheap = fakeAsk([]).ask
+
+  test('its reading replaces the cheap model, and every quote is checked on our own copy of the page it cites', async () => {
+    const r = await run(base, { read: fakeReader(pages), sources: [], cheap: noCheap, strong: null, jev: fakeJev().ask, answers: () => proAnswer() })
+    expect(r.gathered.docs.map((d) => d.url)).toEqual(['https://test.example.org/grants', GUIDE_URL])
+    expect(r.gathered.docs[1]!.from).toBe('first reader')
+    expect(r.outcomes).toMatchObject({ eligibility: 'stated', documents: 'stated', effort: 'stated', co_finance: 'stated', after_award: 'stated' })
+    expect(r.facts.eligibility[0]!.q.doc).toBe('D2')
+    const { next } = apply(base, r, '2026-11-17', [])
+    expect(next.requirements_checked).toBe('2026-11-17')
+    expect(next.evidence.documents?.[0]?.source_url).toBe(GUIDE_URL)
+  })
+  test('a quote not on our copy of its page drops, and the field goes no further than what verifies', async () => {
+    const w = goodWire()
+    w.documents.items[0]!.quote = 'You must submit your audited accounts for five years'
+    const r = await run(base, { read: fakeReader(pages), sources: [], cheap: noCheap, strong: null, jev: fakeJev().ask, answers: () => proAnswer(w) })
+    expect(r.facts.documents.map((d) => d.item)).toEqual(['Letter of support from the landowner'])
+    expect(r.outcomes.documents).toBe('partial')
+  })
+  test('a page it cites that we cannot open blocks the stamp', async () => {
+    const r = await run(base, { read: fakeReader({ ...pages, 'https://test.example.org/faq': null }), sources: [], cheap: noCheap, strong: null, jev: fakeJev().ask, answers: () => proAnswer(goodWire(), [GUIDE_URL, 'https://test.example.org/faq']) })
+    expect(r.gathered.complete).toBe(false)
+    expect(apply(base, r, '2026-11-17', []).next.requirements_checked).toBeUndefined()
+  })
+  test('a programme without a stored answer reads with the cheap model as before', async () => {
+    const cheap = fakeAsk([goodWire()])
+    const r = await run(base, { read: fakeReader({ 'https://test.example.org/grants': PAGE, 'https://test.example.org/guidelines.pdf': GUIDE }), sources: [], cheap: cheap.ask, strong: null, jev: fakeJev().ask, answers: () => null })
+    expect(cheap.asked).toHaveLength(1)
+    expect(r.outcomes.eligibility).toBe('stated')
+  })
+  test('the answer parses from its json block; the prompt asks for URLs, not D1', () => {
+    const a = proAnswer()
+    expect(parseAnswer(`Here it is:\n\`\`\`json\n${JSON.stringify(a)}\n\`\`\``).read).toEqual([GUIDE_URL])
+    const prompt = promptFor(base)
+    expect(prompt).not.toContain('D1')
+    expect(prompt).toContain('https://test.example.org/grants')
+  })
 })

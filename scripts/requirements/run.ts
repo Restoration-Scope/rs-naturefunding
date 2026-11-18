@@ -8,7 +8,8 @@
  * Options: --dry (write only the run folder), --cap <usd> (spend cap, default 10), --cheap <model>
  * (gpt-5.6-luna default; any gpt-* or claude-* model, or workers), --strong <model> (gpt-5.6-sol), --no-jev, --out <dir>
  * (default .cache/requirements/runs/<time>), --exclude <file> (ids to skip, one per line), --gather-only
- * (crawl only, no keys: documents, failures, text sizes and a cost forecast; page text saved in the run folder).
+ * (crawl only, no keys: documents, failures, text sizes and a cost forecast; page text saved in the run folder),
+ * --answers (a programme with a stored GPT Pro reading in data/requirements/gpt-pro/ uses it as the first reading).
  * Needs OPENAI_API_KEY (ANTHROPIC_API_KEY for claude-* models, CLOUDFLARE_* for --cheap workers) and TYPESAFE_API_KEY.
  */
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs'
@@ -20,6 +21,7 @@ import { formatJson } from '../refresh/json'
 import { chunksOf, PROMPT_VERSION } from './extract'
 import { gather, politeReader } from './gather'
 import { Cache, claudeModel, costOf, Ledger, metered, meteredJev, openaiModel, SpendCapError, typesafeJev, workersModel, type JsonModel } from './models'
+import { readAnswer } from './gpt-pro'
 import { run, type Result } from './pipeline'
 import { MANIFEST_DIR, manifestPath, queue } from './queue'
 import { apply, manifest, serialise } from './write'
@@ -37,6 +39,7 @@ const { values, positionals } = parseArgs({
     out: { type: 'string' },
     exclude: { type: 'string' },
     'gather-only': { type: 'boolean', default: false },
+    answers: { type: 'boolean', default: false },
   },
 })
 
@@ -107,6 +110,7 @@ const deps = {
   cheap: metered(cheapModel, ledger, cache, PROMPT_VERSION),
   strong: metered(strongModel, ledger, cache, PROMPT_VERSION),
   jev: jevModel ? meteredJev(jevModel, ledger, cache, PROMPT_VERSION) : null,
+  answers: values.answers ? (id: string) => readAnswer(id)?.answer ?? null : undefined,
 }
 
 let currentSources: Source[] = sources
@@ -129,7 +133,8 @@ for (const id of ids) {
   }
   const usd = ledger.byProgramme[id] ?? 0
   const applied = apply(p, r, today, currentSources)
-  const models = [cheapModel.name, ...(r.escalated.length ? [strongModel.name] : []), ...(jevModel ? [jevModel.name] : [])]
+  const first = values.answers && readAnswer(id) ? 'gpt-pro (chatgpt.com)' : cheapModel.name
+  const models = [first, ...(r.escalated.length ? [strongModel.name] : []), ...(jevModel ? [jevModel.name] : [])]
   const m = manifest(r, today, applied.manifestBits, models, usd)
   // Full result for eval and debugging; page text stays out of the repo.
   writeFileSync(join(out, 'results', `${id}.json`), JSON.stringify({ ...r, gathered: { ...r.gathered, docs: r.gathered.docs.map(({ text: _t, pages: _p, selected: _s, links, ...d }) => ({ ...d, links: links.length })) }, manifest: m, written_items: applied.items, co_finance_written: applied.next.co_finance ?? null }, null, 1))

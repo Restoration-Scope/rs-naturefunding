@@ -7,7 +7,8 @@ import { z } from 'zod'
 import type { Programme, Source } from '../../src/data/schema'
 import { check, JEV, omissions, thinFields, type Judgement } from './check'
 import { apiWire, chunksOf, extract, FIELDS, fromApi, SYSTEM, userPrompt, WHOLE_CHARS, type Chunk, type Field, type Wire } from './extract'
-import { gather, type Gathered, type Reader } from './gather'
+import { gather, urlKey, type Doc, type Gathered, type Reader } from './gather'
+import type { ProWire } from './gpt-pro'
 import type { Ask, AskJev } from './models'
 import { emptyFacts, sameItem, sameQuote, verify, type Facts, type Flag } from './verify'
 
@@ -32,7 +33,8 @@ export type Result = {
   error?: string
 }
 
-export type Deps = { read: Reader; sources: Source[]; cheap: Ask; strong: Ask | null; jev: AskJev | null }
+/** `answers`: a stored first reading (GPT Pro, gpt-pro.ts) that replaces the cheap model's for that programme. */
+export type Deps = { read: Reader; sources: Source[]; cheap: Ask; strong: Ask | null; jev: AskJev | null; answers?: (id: string) => ProWire | null }
 
 const escalationWire = apiWire.extend({
   unresolved: z.array(z.enum(FIELDS)).describe('Fields the text leaves genuinely unclear, so a person must read them.'),
@@ -71,7 +73,8 @@ function escalationText(chunks: Chunk[], flags: Flag[], omitted: Set<string>): C
 }
 
 export async function run(p: Programme, deps: Deps): Promise<Result> {
-  const gathered = await gather(p, { read: deps.read, sources: deps.sources, jev: deps.jev })
+  const pre = deps.answers?.(p.id) ?? null
+  const gathered = await gather(p, { read: deps.read, sources: deps.sources, jev: deps.jev, extra: pre ? [...pre.read, ...quotedUrls(pre)] : [] })
   const chunks = chunksOf(gathered.docs)
   const base: Result = {
     id: p.id,
@@ -87,7 +90,7 @@ export async function run(p: Programme, deps: Deps): Promise<Result> {
   }
   if (!gathered.docs.length) return { ...base, notes: ['nothing to read'] }
 
-  const first = await extract(deps.cheap, p, chunks)
+  const first = pre ? fromPro(pre, gathered.docs) : await extract(deps.cheap, p, chunks)
   const v = verify(first.merged, gathered.docs)
   const facts = v.facts
   let flags: Flag[] = [...v.flags]
@@ -265,4 +268,38 @@ export function emptyWire(): Wire {
     after_award: { ...nf, items: [] },
     notes: '',
   }
+}
+
+/** Every URL a stored first reading quotes from. */
+export function quotedUrls(a: ProWire): string[] {
+  const all = [
+    ...a.eligibility.items.map((i) => i.doc),
+    ...a.documents.items.map((i) => i.doc),
+    ...a.effort.steps.map((i) => i.doc),
+    ...a.after_award.items.map((i) => i.doc),
+    a.co_finance.doc,
+    a.co_finance.detail_doc,
+    a.consortium.doc,
+  ]
+  return [...new Set(all.filter((u) => /^https?:\/\//.test(u)))]
+}
+
+/**
+ * A stored first reading as the extractor's: each quote's URL becomes the ref of our own copy of that page. A URL
+ * we hold no copy of becomes "", so verify looks for the quote on every page we read and drops it if none has it.
+ */
+export function fromPro(a: ProWire, docs: Doc[]) {
+  const refOf = (u: string) => (u ? (docs.find((d) => urlKey(d.url) === urlKey(u) || urlKey(d.final_url) === urlKey(u))?.ref ?? '') : '')
+  const mapped = {
+    ...a,
+    eligibility: { ...a.eligibility, items: a.eligibility.items.map((i) => ({ ...i, doc: refOf(i.doc) })) },
+    documents: { ...a.documents, items: a.documents.items.map((i) => ({ ...i, doc: refOf(i.doc) })) },
+    effort: { ...a.effort, steps: a.effort.steps.map((i) => ({ ...i, doc: refOf(i.doc) })) },
+    after_award: { ...a.after_award, items: a.after_award.items.map((i) => ({ ...i, doc: refOf(i.doc) })) },
+    co_finance: { ...a.co_finance, doc: refOf(a.co_finance.doc), detail_doc: refOf(a.co_finance.detail_doc) },
+    consortium: { ...a.consortium, doc: refOf(a.consortium.doc) },
+  }
+  const merged = fromApi(mapped)
+  const { missing_documents: missing, ...wire } = merged
+  return { merged: wire as Wire, conflicts: [] as Field[], spans: [] as Field[], missing, read: docs.map((d) => d.ref) }
 }
