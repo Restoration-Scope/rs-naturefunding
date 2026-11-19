@@ -38,6 +38,8 @@ bun digest/scripts/preview.ts --launch KE reforestation    # launch week: the se
 
 Writes `digest/preview/*.html` and `.txt`. To send the launch-week digest through the local Worker and Resend, build with `DIGEST_BASELINE=1 bun digest/scripts/build.ts` and set a test subscriber's `confirmed_at` before the seed.
 
+Every email side by side (the confirmation and the weekly digest for each kind of choice, desktop and phone width), rendered by the Worker's code from the real data: `bun digest/scripts/gallery.ts` writes `digest/preview/gallery.html`.
+
 ## Deploy
 
 Done 2026-11-02 from Bernat's Mac (wrangler signed in as bernatfortet@gmail.com):

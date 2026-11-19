@@ -47,7 +47,8 @@ describe('pages', () => {
       ...pastIssues().map((i) => `digest/${i.date}/index.html`),
     ].sort()
     expect(htmlFiles).toEqual(expected)
-  })
+    // pastIssues() replays the data's git history: a few seconds, near bun's 5s default.
+  }, 30_000)
 })
 
 describe('finder DOM contract (src/lib/finder.ts)', () => {
