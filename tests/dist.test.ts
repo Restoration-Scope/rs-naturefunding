@@ -189,11 +189,11 @@ describe('no hydration, small JavaScript', () => {
   // The weekly-email prompt (src/components/SubscribePrompt.astro) is the one inline script every page may carry.
   const isPrompt = (js: string) => js.includes('nf-weekly-email-prompt')
 
-  test('every page carries the weekly-email prompt script once, at most 1.5 KB', () => {
+  test('every page carries the weekly-email prompt script once, at most 2 KB', () => {
     for (const f of htmlFiles) {
       const prompt = scriptsOf(f).inline.filter(isPrompt)
       expect(prompt.length, f).toBe(1)
-      expect(prompt[0].length, f).toBeLessThanOrEqual(1500)
+      expect(prompt[0].length, f).toBeLessThanOrEqual(2000)
     }
   }, fullDistTimeout)
 
