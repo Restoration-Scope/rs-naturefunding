@@ -253,6 +253,8 @@ describe('gather', () => {
     // A checklist of attachments lists the documents applicants submit.
     expect(classifyLink({ href: '/checklist.pdf', text: 'Checklist verplichte bijlagen', context: '' }, at, base).score).toBe('strong')
     expect(classifyLink({ href: '/files/Match-Form.docx', text: 'Match Form', context: '' }, at, base).score).toBe('strong')
+    expect(classifyLink({ href: '/files/Allegato_A.pdf', text: 'Allegato A', context: '' }, at, base).score).toBe('strong')
+    expect(classifyLink({ href: '/press/allegations.pdf', text: 'Press statement on corruption allegations', context: '' }, at, base).score).not.toBe('strong')
     expect(classifyLink({ href: '/proposals/public-support-grants/', text: 'READ REQUEST FOR PROPOSALS', context: '' }, at, base).score).toBe('strong')
     expect(classifyLink({ href: 'https://other.example.com/', text: 'Partner', context: '' }, at, base).score).toBe('skip')
   })
