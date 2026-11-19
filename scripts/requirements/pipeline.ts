@@ -227,13 +227,17 @@ export function keptFromFirst(first: Facts, strong: Facts, field: Field, flags: 
   const duties = field === 'after_award' ? keep.map((i) => first.after_award[i]!) : []
   return {
     n: keep.length,
+    // Only into the room the file allows, or the schema refuses the whole field; the strong reading's items come first.
     add: (to) => {
-      to.eligibility.push(...elig)
-      to.documents.push(...docs)
-      to.after_award.push(...duties)
+      to.eligibility.push(...elig.slice(0, Math.max(0, ROOM.eligibility - to.eligibility.length)))
+      to.documents.push(...docs.slice(0, Math.max(0, ROOM.documents - to.documents.length)))
+      to.after_award.push(...duties.slice(0, Math.max(0, ROOM.after_award - to.after_award.length)))
     },
   }
 }
+
+/** The most items the file holds per list (programmeSchema). */
+const ROOM = { eligibility: 8, documents: 10, after_award: 4 }
 
 /** One itemwise field's facts without the items a flag names (by name or quote). */
 export function soundOnly(f: Facts, field: Field, flags: Flag[]): Facts {

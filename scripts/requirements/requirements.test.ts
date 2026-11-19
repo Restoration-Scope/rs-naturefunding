@@ -5,9 +5,9 @@ import { thinFields } from './check'
 import { apiWire, chunksOf, reconcile, splitText, toApi, type Wire } from './extract'
 import { classifyLink, gather, lowTextPdf, scannedPages, type Doc, type Reader } from './gather'
 import { Cache, costOf, Ledger, metered, openaiModel, type Answer, type Question } from './models'
-import { emptyWire, run } from './pipeline'
+import { emptyWire, keptFromFirst, run } from './pipeline'
 import { queue } from './queue'
-import { packQuotes, readsTwoWays, verify } from './verify'
+import { emptyFacts, packQuotes, readsTwoWays, verify } from './verify'
 import { evaluate, type Gold, type Scored } from './eval'
 import { parseAnswer, promptFor, type ProWire } from './gpt-pro'
 import { apply, manifest } from './write'
@@ -934,5 +934,21 @@ describe('GPT Pro as the first reader', () => {
     const prompt = promptFor(base)
     expect(prompt).not.toContain('D1')
     expect(prompt).toContain('https://test.example.org/grants')
+  })
+})
+
+describe('keptFromFirst', () => {
+  test('first-reading rules fill only the room the file allows, so the field is never refused whole', () => {
+    const words = ['wetlands', 'registration', 'budget', 'forestry', 'insurance', 'partners', 'audits', 'mapping', 'training', 'volunteers', 'river', 'permits', 'seedlings', 'fencing', 'grazing', 'drones', 'salmon', 'peat', 'coral', 'bees', 'orchards', 'dunes']
+    const rule = (n: number) => ({ rule: `${words[n]}`, kind: 'other' as const, q: { doc: 'D1', quote: `${words[n]} ${words[n]}ish ${words[n]}wise ${words[n]}ful` } })
+    const first = emptyFacts()
+    first.eligibility = [1, 2, 3, 4, 5].map(rule)
+    const strong = emptyFacts()
+    strong.eligibility = [11, 12, 13, 14, 15, 16].map(rule)
+    const kept = keptFromFirst(first, strong, 'eligibility', [])!
+    expect(kept.n).toBe(5)
+    kept.add(strong)
+    expect(strong.eligibility).toHaveLength(8)
+    expect(strong.eligibility.slice(0, 6).map((r) => r.rule)).toEqual([11, 12, 13, 14, 15, 16].map((n) => rule(n).rule))
   })
 })
