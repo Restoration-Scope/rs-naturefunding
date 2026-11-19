@@ -29,7 +29,7 @@ const taglineHtml = esc(TAGLINE).replace('Restoration Scope', `<a href="${RS_URL
 // (public/flags/), the region's land or the project type's finder icon (public/icons/, scripts/images/email-icons.ts).
 const typeOf = Object.fromEntries(projectTypes.flatMap((t) => t.approaches.map((a) => [a, t.key])))
 const icon = (src: string, w: number, h: number, radius = 0) =>
-  `<img src="${esc(src)}" width="${w}" height="${h}" alt="" style="display:inline-block;vertical-align:-2px;margin-right:4px;border:0;${radius ? `border-radius:${radius}px;` : ''}">`
+  `<img src="${esc(src)}" width="${w}" height="${h}" alt="" border="0" style="display:inline-block;vertical-align:-2px;margin-right:4px;border:0;${radius ? `border-radius:${radius}px;` : ''}">`
 
 /** A quiet pill for a project type: the page's paper tint and a hairline border, icon and label kept together. */
 const badge = (img: string, label: string) =>
@@ -83,15 +83,18 @@ const row = (html: string, o: { top?: number; bottom?: number } = {}) =>
 const box = (rows: string) =>
   `<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#ffffff;border:1px solid ${C.rule};border-radius:10px;overflow:hidden;box-shadow:0 1px 2px rgba(27,39,34,0.05),0 3px 10px rgba(27,39,34,0.05);">${rows}</table>`
 const gap = (h: number) => `<div style="height:${h}px;line-height:${h}px;font-size:0;">&nbsp;</div>`
-/** One grant's card. */
-const card = (html: string) => box(row(html, { top: PAD, bottom: PAD })) + gap(12)
-/** Text straight on the page background, lined up with the cards' text (gutter plus their border). */
-const floating = (html: string, o: { top?: number; bottom?: number } = {}) => `<div style="padding:${o.top ?? 0}px ${PAD + 1}px ${o.bottom ?? 0}px;${TEXT}">${html}</div>`
+/** One grant's card: each block its own row, spaced by the cell's padding (Outlook ignores margins on divs). */
+const card = (blocks: { html: string; top: number }[]) =>
+  box(blocks.map((b, i) => row(b.html, { top: i ? b.top : PAD, bottom: i === blocks.length - 1 ? PAD : 0 })).join('')) + gap(12)
+/** Text straight on the page background, lined up with the cards' text (gutter plus their border). A table cell,
+ *  since Outlook ignores padding on a div. */
+const floating = (html: string, o: { top?: number; bottom?: number } = {}) =>
+  `<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td style="padding:${o.top ?? 0}px ${PAD + 1}px ${o.bottom ?? 0}px;${TEXT}">${html}</td></tr></table>`
 
 /** The wordmark, straight on the page background above everything else. */
 const brand = (site: string) =>
   floating(
-    `<a href="${esc(site)}/" style="font-family:${SERIF};font-size:22px;color:${C.shell};text-decoration:none;"><img src="${esc(site)}/icons/logo.png" width="22" height="22" alt="" style="display:inline-block;vertical-align:-3px;margin-right:7px;border:0;">naturefunding<span style="color:${C.ink2};">.org</span></a>`,
+    `<a href="${esc(site)}/" style="font-family:${SERIF};font-size:22px;color:${C.shell};text-decoration:none;"><img src="${esc(site)}/icons/logo.png" width="22" height="22" alt="" border="0" style="display:inline-block;vertical-align:-3px;margin-right:7px;border:0;">naturefunding<span style="color:${C.ink2};">.org</span></a>`,
     { top: 4 },
   )
 
@@ -218,13 +221,23 @@ export function digestEmail(o: { site: string; pages?: PagePaths; digest: Digest
           // brand green and semibold, the card's only coloured text besides a live call.
           const title = `${x.mark}<a href="${esc(x.page)}" style="color:${C.brand};font-weight:600;text-decoration:none;">${esc(x.name)}</a>`
           // Three groups, most important first: what it is; how much and where; whether it's open and what it funds.
-          return card(
-            `<div style="font-size:17px;line-height:1.35;">${title}${x.funder ? `<span style="font-size:14px;color:${C.ink2};"> · ${esc(x.funder)}</span>` : ''}</div>
-<table role="presentation" cellpadding="0" cellspacing="0" border="0" style="margin-top:12px;border-collapse:separate;"><tr><td style="background:${C.paper};border:0.5px solid ${C.rule};border-radius:12px;padding:10px 14px;font-size:${x.amount ? 24 : 18}px;line-height:1.2;">${amount}</td></tr></table>
-${x.place ? `<div style="font-size:14px;line-height:1.4;color:${C.ink2};margin-top:8px;">${x.flags.map((c) => icon(`${o.site}/flags/${c}.png`, 21, 14, 2)).join('')}${esc(x.place)}</div>` : ''}
-${x.status ? `<div style="font-size:15px;line-height:1.4;margin-top:14px;"><strong style="color:${C.brand};font-weight:600;">${esc(x.status)}</strong>${x.callLabel ? `<span style="color:${C.ink2};"> · ${esc(x.callLabel)}</span>` : ''}</div>` : ''}
-${x.types.length ? `<div style="font-size:13px;line-height:1.4;color:${C.ink2};margin-top:${x.status ? 6 : 12}px;">${x.types.map((t) => badge(icon(`${o.site}/icons/types/${t.key}-muted.png`, 14, 14), t.label)).join(' ')}</div>` : ''}`,
-          )
+          const blocks = [
+            { top: 0, html: `<div style="font-size:17px;line-height:1.35;">${title}${x.funder ? `<span style="font-size:14px;color:${C.ink2};"> · ${esc(x.funder)}</span>` : ''}</div>` },
+            {
+              top: 12,
+              html: `<table role="presentation" cellpadding="0" cellspacing="0" border="0" style="border-collapse:separate;"><tr><td style="background:${C.paper};border:0.5px solid ${C.rule};border-radius:12px;padding:10px 14px;font-size:${x.amount ? 24 : 18}px;line-height:1.2;">${amount}</td></tr></table>`,
+            },
+            x.place && { top: 8, html: `<div style="font-size:14px;line-height:1.4;color:${C.ink2};">${x.flags.map((c) => icon(`${o.site}/flags/${c}.png`, 21, 14, 2)).join('')}${esc(x.place)}</div>` },
+            x.status && {
+              top: 14,
+              html: `<div style="font-size:15px;line-height:1.4;"><strong style="color:${C.brand};font-weight:600;">${esc(x.status)}</strong>${x.callLabel ? `<span style="color:${C.ink2};"> · ${esc(x.callLabel)}</span>` : ''}</div>`,
+            },
+            x.types.length > 0 && {
+              top: x.status ? 6 : 12,
+              html: `<div style="font-size:13px;line-height:1.4;color:${C.ink2};">${x.types.map((t) => badge(icon(`${o.site}/icons/types/${t.key}-muted.png`, 14, 14), t.label)).join(' ')}</div>`,
+            },
+          ]
+          return card(blocks.filter((b) => !!b))
         })
         .join('')
       return (headed ? floating(`<h2 style="margin:0;font-size:15px;font-weight:600;color:${C.ink2};">${sectionTitle[s]}</h2>`, { top: 8, bottom: 10 }) : '') + rows
