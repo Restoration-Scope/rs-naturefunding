@@ -93,3 +93,28 @@ these, not the bulk reading.
 | GPT Pro first reader | 26.4 | 40.8 | 57.9 | 0 |
 
 Noise floor (the 11 held without an answer, same pipeline in both runs): recall 41.9 both, precision 49.6 vs 45.6. GPT Pro skips requirements the cheap model finds, splits one requirement into short fragment quotes, and makes some calls the page doesn't support (consortium "no" from a list of applicant types). It doesn't add discovery: where our fetcher can't open the site (Cornell, SF Bay), its cited pages can't be verified either. Each answer also takes 20–30 minutes, and the Chrome extension blocks reading back answers whose URLs carry query strings.
+
+## Recall work (2026-11-18/19)
+
+Raw `eval.ts` scores (all items), CI runs on the gold set; adjudication (Calibration §3) not yet done, so precision is understated.
+
+| Run | Change | tune recall / precision | held recall / precision | held discovery |
+|---|---|---|---|---|
+| base | before | 40.2 / 47.2 (tune2) | 40.0 / 55.1 | 70.8 |
+| recall-1 | documents take one quote each, up to 10 | 48.3 / 46.7 | 45.2 / 52.6 | 70.8 |
+| recall-2 | + `keptFromFirst`, prompt 18.1 ("decisive" rules), checklist links | 47.9 / 43.4 | 41.9 / 57.1 | 66.7 |
+| recall-3 | prompt 19.1 (below) | 45.2 / 44.9 | 43.3 / 58.2 | 72.9 |
+
+- Kept: the documents cap (document recall 26→46 tune, 35→48 held), `keptFromFirst`, checklist links in `RELEVANT`, prompt 19.x. Prompt 19 writes fewer rules (tune 274→237 made, 125→119 paired): fewer wrong rules shown for ~2 points of recall, the trade we want. Differences of 2–3 points are within run-to-run noise on 20–40 programmes.
+- Prompt 19 came from the batch-1 review: rules that restate the purpose, applicant types, countries or amount; how-to-apply rules (template, word count, file format); softened limits ("as a rule") written as hard rules; decisions and agreement signing as steps; consortium "no" from a list of who may apply.
+- Held was partly seen: recall-2's held misses were read while tuning, so held numbers after recall-1 are optimistic.
+
+Batch 1 (20 programmes, `--queue 20`, ~$2): a cross-family reviewer found errors in ~13% of items; all were fixed by hand before landing (dropped rules, rewritten steps and dates, one consortium fact removed).
+
+Stamps: by raw measure almost every `requirements_checked` the pipeline makes is false (1 of 56 sound). Batches land with `requirements_checked: false` until stamp precision is shown on adjudicated held numbers; facts still show, and absent ones read "Not checked yet".
+
+Weak spots:
+- GitHub runner IPs are blocked by some funders (Cornell, SF Bay, WA). Run batches from the Mac (`OPENAI_API_KEY`, `TYPESAFE_API_KEY` in the env) for those.
+- `.doc` files are unreadable; offsite application portals aren't followed; transient fetch failures leave "nothing to read" (prairie-state, nwt).
+- `statesDate` can't read Japanese era dates (令和9年1月29日), so those dues stay empty.
+- The free-text `reporting` field isn't filled from `after_award.reports` (Anglian shows "Reporting: Not found" with a final report stated).
