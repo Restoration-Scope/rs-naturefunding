@@ -20,6 +20,29 @@
   "amount": { "currency": "GBP", "max": 250 },
   "co_finance_required": null,
   "reporting": null,
+  "effort": { "steps": ["2026 application"] },
+  "eligibility": [
+    {
+      "rule": "Project involves practical outdoor activity by volunteers in Scotland",
+      "kind": "project"
+    },
+    { "rule": "At least 15 volunteers each contribute at least 5 hours", "kind": "project" },
+    {
+      "rule": "Project site is publicly accessible, subject to community-site exceptions",
+      "kind": "project"
+    },
+    {
+      "rule": "Project is completed and feedback submitted by 28 February 2027",
+      "kind": "project"
+    },
+    {
+      "rule": "Project is outside remote rural settings, unless an exception applies",
+      "kind": "project"
+    },
+    { "rule": "Food growing is not the project's primary focus", "kind": "project" },
+    { "rule": "Project does not take place on school grounds", "kind": "project" }
+  ],
+  "after_award": { "reports": "final" },
   "calls": [
     {
       "id": "2026",
@@ -68,7 +91,67 @@
       "quote": "Delivered by Volunteering Matters and supported by the National Lottery Community Fund, Action Earth provides grants of up to £250",
       "checked_at": "2026-11-15",
       "method": "page"
-    }
+    },
+    "effort": [
+      {
+        "source_url": "https://volunteeringmatters.org.uk/project/action-earth/",
+        "quote": "Action Earth is now open for 2026 applications",
+        "checked_at": "2026-11-19",
+        "method": "page"
+      }
+    ],
+    "eligibility": [
+      {
+        "source_url": "https://volunteeringmatters.org.uk/project/action-earth/",
+        "quote": "The project must involve practical outdoor activity by volunteers in Scotland.",
+        "checked_at": "2026-11-19",
+        "method": "page"
+      },
+      {
+        "source_url": "https://volunteeringmatters.org.uk/project/action-earth/",
+        "quote": "A minimum of 15 volunteers (and preferably more) must be involved in the project, each giving at least 5 hours of volunteering time",
+        "checked_at": "2026-11-19",
+        "method": "page"
+      },
+      {
+        "source_url": "https://volunteeringmatters.org.uk/wp-content/uploads/2026/07/Action-Earth-TERMS-AND-CONDITIONS-2026.pdf",
+        "quote": "The project site must be open and accessible to the general public. Exceptions may be made where a community site has limited access such as a Care Home or Hospital.",
+        "checked_at": "2026-11-19",
+        "method": "page"
+      },
+      {
+        "source_url": "https://volunteeringmatters.org.uk/project/action-earth/",
+        "quote": "All projects must be completed and feedback submitted by 28 February 2027.",
+        "checked_at": "2026-11-19",
+        "method": "page"
+      },
+      {
+        "source_url": "https://volunteeringmatters.org.uk/project/action-earth/",
+        "quote": "Projects in remote rural settings (unless involving disabled people/defined health groups or working in areas of multiple deprivation)",
+        "checked_at": "2026-11-19",
+        "method": "page"
+      },
+      {
+        "source_url": "https://volunteeringmatters.org.uk/project/action-earth/",
+        "quote": "Food growing cannot be the primary focus.",
+        "checked_at": "2026-11-19",
+        "method": "page"
+      },
+      {
+        "source_url": "https://volunteeringmatters.org.uk/wp-content/uploads/2026/07/Action-Earth-TERMS-AND-CONDITIONS-2026.pdf",
+        "quote": "We cannot fund any projects on school grounds.",
+        "checked_at": "2026-11-19",
+        "method": "page"
+      }
+    ],
+    "after_award": [
+      {
+        "source_url": "https://volunteeringmatters.org.uk/wp-content/uploads/2026/07/Action-Earth-TERMS-AND-CONDITIONS-2026.pdf",
+        "quote": "Feedback and receipts should be submitted within four weeks of completion of your project.",
+        "checked_at": "2026-11-19",
+        "method": "page"
+      }
+    ]
   },
   "checked_at": "2026-11-15"
 }

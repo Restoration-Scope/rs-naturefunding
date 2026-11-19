@@ -1,0 +1,104 @@
+{
+  "id": "binding-stiftung-biodiversitaet-landschaft",
+  "read_on": "2026-11-19",
+  "prompt_version": "req-2026-11-18.1",
+  "models": ["gpt-5.6-luna", "gpt-5.6-sol", "jev-latest"],
+  "complete": true,
+  "reasons": [],
+  "requirements_checked": false,
+  "documents": [
+    {
+      "ref": "D1",
+      "url": "https://www.binding-stiftung.ch/gesuche/gesuch-einreichen/gesuchseingabe-landschaftsschutz/",
+      "final_url": "https://www.binding-stiftung.ch/gesuche/gesuch-einreichen/gesuchseingabe-landschaftsschutz/",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 2652,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:049e9343c5857b6b4d315bb74e183bc6d9161291112c637e6eb15a3c2d5ebd34"
+    },
+    {
+      "ref": "D2",
+      "url": "https://www.binding-stiftung.ch/gesuche/",
+      "final_url": "https://www.binding-stiftung.ch/gesuche/",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 5451,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:56b841b73fc6726af73817f0901bb4eda8d4e71a55f0796050285b21b7bbd5e0"
+    },
+    {
+      "ref": "D3",
+      "url": "https://www.binding-stiftung.ch/praktisches/faq/",
+      "final_url": "https://www.binding-stiftung.ch/praktisches/#page-104",
+      "from": "https://www.binding-stiftung.ch/gesuche/",
+      "anchor": "finden Sie hier",
+      "depth": 1,
+      "pdf": false,
+      "chars": 8981,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:f94743b47ae617010bdf2f7b7ae7260669841d9449faa655b441b9e6edf7eba1"
+    },
+    {
+      "ref": "D4",
+      "url": "https://www.binding-stiftung.ch/wp-content/uploads/2024/12/Merkblatt_Foerderung_Trockenmauern_Dez24.pdf",
+      "final_url": "https://www.binding-stiftung.ch/wp-content/uploads/2024/12/Merkblatt_Foerderung_Trockenmauern_Dez24.pdf",
+      "from": "https://www.binding-stiftung.ch/gesuche/gesuch-einreichen/gesuchseingabe-landschaftsschutz/",
+      "anchor": "hier",
+      "depth": 1,
+      "pdf": true,
+      "chars": 1359,
+      "pages": 1,
+      "low_text": false,
+      "hash": "sha256:a6a3dfe460e8c2fca246358703d3197cd70498d167f55dd993ec956e7a50d58a"
+    },
+    {
+      "ref": "D5",
+      "url": "https://www.binding-stiftung.ch/wp-content/uploads/2026/05/Foerderbeitraege_2025.pdf",
+      "final_url": "https://www.binding-stiftung.ch/wp-content/uploads/2026/05/Foerderbeitraege_2025.pdf",
+      "from": "https://www.binding-stiftung.ch/praktisches/faq/",
+      "anchor": "Förderbeiträge 2025",
+      "depth": 2,
+      "pdf": true,
+      "chars": 12481,
+      "pages": 11,
+      "low_text": false,
+      "hash": "sha256:261c9b57b0535eb2d1995349a76cf0da1c9190b5f4049e07bee4e22c8c4b3b47"
+    }
+  ],
+  "failures": [],
+  "skipped_links": 95,
+  "chunks": [{ "id": "all", "docs": ["D1", "D2", "D3", "D4", "D5"], "chars": 31593 }],
+  "outcomes": {
+    "eligibility": "stated",
+    "documents": "not_found",
+    "effort": "stated",
+    "co_finance": "not_found",
+    "consortium": "not_found",
+    "after_award": "unresolved"
+  },
+  "written": ["eligibility", "effort"],
+  "escalated": ["eligibility", "after_award"],
+  "flags": [
+    {
+      "field": "after_award",
+      "item": "reports",
+      "why": "report frequency is unclear (unspecified at 0.48)"
+    }
+  ],
+  "notes": [
+    "extractor: The funder says it supports projects subsidiarily and in partnership with other funding institutions and the public sector, but does not explicitly state a mandatory matching-funds requirement. For the 15 December 2026 round, a response is generally expected by the end of March 2027. Applications over CHF 10,000 are considered at a meeting of the Foundation Board approximately three months after the deadline.",
+    "strong: The one-project rule is qualified by “in aller Regel”. D4 applies only to dry-stone wall projects. Reports are required, but their frequency is not stated.",
+    "eligibility: kept 1 first-reading item no check faulted that the strong reading left out",
+    "source binding-stiftung-biodiversitaet-landschaft-2: added for https://www.binding-stiftung.ch/gesuche/gesuch-einreichen/gesuchseingabe-landschaftsschutz/",
+    "source binding-stiftung-biodiversitaet-landschaft-3: added for https://www.binding-stiftung.ch/wp-content/uploads/2024/12/Merkblatt_Foerderung_Trockenmauern_Dez24.pdf"
+  ],
+  "usd": 0.2172
+}

@@ -1,0 +1,72 @@
+{
+  "id": "asa-emergency-grants",
+  "read_on": "2026-11-19",
+  "prompt_version": "req-2026-11-18.1",
+  "models": [
+    "gpt-5.6-luna",
+    "gpt-5.6-sol",
+    "jev-latest"
+  ],
+  "complete": true,
+  "reasons": [],
+  "requirements_checked": false,
+  "documents": [
+    {
+      "ref": "D1",
+      "url": "https://www.amphibians.org/programs/emergency-grants",
+      "final_url": "https://www.amphibians.org/programs/emergency-grants",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 2158,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:6f1b5f292f7d13f18a5ba8b4fb14f6cf0f8521ff9d308a46acc01e758f4d5b23"
+    },
+    {
+      "ref": "D2",
+      "url": "https://www.amphibians.org/policies",
+      "final_url": "https://www.amphibians.org/policies",
+      "from": "https://www.amphibians.org/programs/emergency-grants",
+      "anchor": "Policies & Guidelines",
+      "depth": 1,
+      "pdf": false,
+      "chars": 1070,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:501333d3966895c87ade838a104ba14be852b6e6aeccec2f31b46731cde7f66d"
+    }
+  ],
+  "failures": [],
+  "skipped_links": 55,
+  "chunks": [
+    {
+      "id": "all",
+      "docs": [
+        "D1",
+        "D2"
+      ],
+      "chars": 3408
+    }
+  ],
+  "outcomes": {
+    "eligibility": "stated",
+    "documents": "not_found",
+    "effort": "not_found",
+    "co_finance": "not_found",
+    "consortium": "not_found",
+    "after_award": "not_found"
+  },
+  "written": [
+    "eligibility"
+  ],
+  "escalated": [
+    "eligibility"
+  ],
+  "flags": [],
+  "notes": [
+    "extractor: The supplied text does not state who may apply, where applicants or projects must be located, or any post-award reporting duties."
+  ],
+  "usd": 0.0493
+}

@@ -32,6 +32,33 @@
   },
   "co_finance_required": null,
   "reporting": null,
+  "effort": {
+    "steps": [
+      "Electronic application",
+      "Application review and outcome notification"
+    ]
+  },
+  "eligibility": [
+    {
+      "rule": "Project activity has not started before grant approval",
+      "kind": "project"
+    },
+    {
+      "rule": "No more than one application per applicant per funding round",
+      "kind": "other"
+    },
+    {
+      "rule": "Funded work occurs within 12 months after grant approval",
+      "kind": "project"
+    },
+    {
+      "rule": "Request is between $1,000 and $15,000",
+      "kind": "finances"
+    }
+  ],
+  "after_award": {
+    "reports": "unspecified"
+  },
   "calls": [
     {
       "id": "next-round",
@@ -81,7 +108,55 @@
       "quote": "$1,000-3,000 to support smaller or early-stage projects $3,001-15,000 to support larger or more established projects",
       "checked_at": "2026-11-09",
       "method": "human"
-    }
+    },
+    "effort": [
+      {
+        "source_url": "https://www.biodiversityhb.org/assets/Uploads/EECF-Terms-and-Conditions-2026.docx",
+        "quote": "All applications for funding and reporting must be entered electronically on the forms provided.",
+        "checked_at": "2026-11-19",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.biodiversityhb.org/assets/Uploads/EECF-Terms-and-Conditions-2026.docx",
+        "quote": "Applications will be reviewed and assessed within two months of the closing date and all applicants will be notified of the outcome of their application via email.",
+        "checked_at": "2026-11-19",
+        "method": "page"
+      }
+    ],
+    "eligibility": [
+      {
+        "source_url": "https://www.biodiversityhb.org/assets/Uploads/EECF-Terms-and-Conditions-2026.docx",
+        "quote": "Biodiversity Hawke's Bay does not fund retrospectively. The activity being considered for funding must not start prior to a grant being approved.",
+        "checked_at": "2026-11-19",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.biodiversityhb.org/assets/Uploads/EECF-Terms-and-Conditions-2026.docx",
+        "quote": "Only one application per applicant, per funding round, can be made to the Environmental Enhancement Contestable Fund.",
+        "checked_at": "2026-11-19",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.biodiversityhb.org/assets/Uploads/EECF-Terms-and-Conditions-2026.docx",
+        "quote": "The funding period is 12 months from when the grant is approved. The funded work must occur within this time period.",
+        "checked_at": "2026-11-19",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.biodiversityhb.org/assets/Uploads/EECF-Terms-and-Conditions-2026.docx",
+        "quote": "Minimum amount of funding that can be applied for is $1,000 and the maximum amount of funding that will be granted is $15,000 per funding round.",
+        "checked_at": "2026-11-19",
+        "method": "page"
+      }
+    ],
+    "after_award": [
+      {
+        "source_url": "https://www.biodiversityhb.org/assets/Uploads/EECF-Terms-and-Conditions-2026.docx",
+        "quote": "All applications for funding and reporting must be entered electronically on the forms provided.",
+        "checked_at": "2026-11-19",
+        "method": "page"
+      }
+    ]
   },
   "checked_at": "2026-11-09"
 }

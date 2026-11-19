@@ -1,0 +1,51 @@
+{
+  "id": "apache-tree-grant-program",
+  "read_on": "2026-11-19",
+  "prompt_version": "req-2026-11-18.1",
+  "models": ["gpt-5.6-luna", "jev-latest"],
+  "complete": false,
+  "reasons": [
+    "https://investor.apacorp.com/news-releases/news-release-details/apache-corporation-tree-grant-program-opens-applications-2023 would not open (blocked: HTTP 403)"
+  ],
+  "requirements_checked": false,
+  "documents": [
+    {
+      "ref": "D1",
+      "url": "https://apacorp.com/sustainability/social/community/apache-tree-grant-program/",
+      "final_url": "https://apacorp.com/sustainability/social/community/apache-tree-grant-program/",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 3584,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:2bf7dff40765001838f9c547fda890f015426d11c316b8bdc12e1559d1e6e070"
+    }
+  ],
+  "failures": [
+    {
+      "url": "https://investor.apacorp.com/news-releases/news-release-details/apache-corporation-tree-grant-program-opens-applications-2023",
+      "from": "https://apacorp.com/sustainability/social/community/apache-tree-grant-program/",
+      "kind": "blocked",
+      "message": "HTTP 403"
+    }
+  ],
+  "skipped_links": 48,
+  "chunks": [{ "id": "all", "docs": ["D1"], "chars": 3675 }],
+  "outcomes": {
+    "eligibility": "stated",
+    "documents": "not_found",
+    "effort": "not_found",
+    "co_finance": "not_found",
+    "consortium": "not_found",
+    "after_award": "not_found"
+  },
+  "written": ["eligibility"],
+  "escalated": [],
+  "flags": [],
+  "notes": [
+    "extractor: The 2025-2026 U.K. round is open; the 2026-2027 U.S. round is closed. The text does not state application documents, deadlines, application stages, co-financing, consortium requirements, or post-award duties."
+  ],
+  "usd": 0.0017
+}

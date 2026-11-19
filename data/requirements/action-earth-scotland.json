@@ -1,0 +1,67 @@
+{
+  "id": "action-earth-scotland",
+  "read_on": "2026-11-19",
+  "prompt_version": "req-2026-11-18.1",
+  "models": ["gpt-5.6-luna", "gpt-5.6-sol", "jev-latest"],
+  "complete": true,
+  "reasons": [],
+  "requirements_checked": false,
+  "documents": [
+    {
+      "ref": "D1",
+      "url": "https://volunteeringmatters.org.uk/project/action-earth/",
+      "final_url": "https://volunteeringmatters.org.uk/project/action-earth/",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 14817,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:731614353147b4bea5adcbc1f1786f82a34058f52c9dd159db910a9e262d4f21"
+    },
+    {
+      "ref": "D2",
+      "url": "https://volunteeringmatters.org.uk/wp-content/uploads/2026/07/Action-Earth-TERMS-AND-CONDITIONS-2026.pdf",
+      "final_url": "https://volunteeringmatters.org.uk/wp-content/uploads/2026/07/Action-Earth-TERMS-AND-CONDITIONS-2026.pdf",
+      "from": "https://volunteeringmatters.org.uk/project/action-earth/",
+      "anchor": "Download now",
+      "depth": 1,
+      "pdf": true,
+      "chars": 2623,
+      "pages": 1,
+      "low_text": false,
+      "hash": "sha256:a8f1a0574bccc5b12eac86d85b15e793c09aa887cd4032b963d794d3b556a9d8"
+    }
+  ],
+  "failures": [],
+  "skipped_links": 122,
+  "chunks": [{ "id": "all", "docs": ["D1", "D2"], "chars": 17703 }],
+  "outcomes": {
+    "eligibility": "partial",
+    "documents": "not_found",
+    "effort": "stated",
+    "co_finance": "not_found",
+    "consortium": "not_found",
+    "after_award": "stated"
+  },
+  "written": ["eligibility", "effort", "after_award"],
+  "escalated": ["eligibility"],
+  "flags": [
+    {
+      "field": "eligibility",
+      "item": "Grant request is no more than £250",
+      "why": "kind is project, Jev reads finances"
+    },
+    {
+      "field": "eligibility",
+      "item": "Grant request is no more than £250",
+      "why": "kind is project, Jev reads finances"
+    }
+  ],
+  "notes": [
+    "extractor: Projects pay costs upfront and claim them back after completion. The terms also state that salaries, sessional workers, trainers, fuel costs, lawnmowers, powertools and non-peat-free compost cannot be funded. The public-access rule has stated exceptions for some community sites, such as care homes or hospitals.",
+    "source action-earth-scotland-2: added for https://volunteeringmatters.org.uk/wp-content/uploads/2026/07/Action-Earth-TERMS-AND-CONDITIONS-2026.pdf"
+  ],
+  "usd": 0.072
+}

@@ -1,19 +1,72 @@
 {
   "id": "15-juni-fonden-nature",
   "name": "Nature support area (Plads til naturen and Naturens kvalitet)",
-  "funder": { "name": "15. Juni Fonden", "url": "https://www.15junifonden.dk" },
+  "funder": {
+    "name": "15. Juni Fonden",
+    "url": "https://www.15junifonden.dk"
+  },
   "administered_by": null,
   "parent": null,
   "url": "https://www.15junifonden.dk/vistoetter/natur-jagt",
   "summary": "Danish foundation funding land-based nature projects: rewilding, nature restoration, ecological connections between sites and applied knowledge for managing habitats. Any organisation, company or person with a Danish CVR or CPR number can apply at any time.",
-  "approaches": ["natural_regeneration", "protected_areas"],
-  "applicant_types": ["ngo", "company", "individual"],
-  "geography": { "scope": "countries", "countries": ["DK"], "label": "Denmark" },
+  "approaches": [
+    "natural_regeneration",
+    "protected_areas"
+  ],
+  "applicant_types": [
+    "ngo",
+    "company",
+    "individual"
+  ],
+  "geography": {
+    "scope": "countries",
+    "countries": [
+      "DK"
+    ],
+    "label": "Denmark"
+  },
   "access": "direct",
   "window": "rolling",
   "amount": null,
   "co_finance_required": null,
   "reporting": null,
+  "effort": {
+    "steps": [
+      "Online application via GrantOne"
+    ]
+  },
+  "eligibility": [
+    {
+      "rule": "Have a Danish CVR number or CPR number",
+      "kind": "legal"
+    },
+    {
+      "rule": "Apply for a project that has not started or ended",
+      "kind": "project"
+    },
+    {
+      "rule": "Submit a new project when applying again after previous support",
+      "kind": "track_record"
+    },
+    {
+      "rule": "No overhead, though reasonable running and admin support is allowed",
+      "kind": "project"
+    },
+    {
+      "rule": "Do not request study stays, study trips or congress participation",
+      "kind": "project"
+    },
+    {
+      "rule": "Do not apply on grounds of poor health or poor finances",
+      "kind": "other"
+    }
+  ],
+  "after_award": {
+    "reports": "final"
+  },
+  "documents": [
+    "Budget"
+  ],
   "calls": [
     {
       "id": "rolling",
@@ -56,7 +109,69 @@
       "quote": "Er der en ansøgningsfrist? + Nej.",
       "checked_at": "2026-11-15",
       "method": "page"
-    }
+    },
+    "effort": [
+      {
+        "source_url": "https://www.15junifonden.dk/ansøg",
+        "quote": "Alle ansøgninger skal indsendes via vores digitale ansøgningssystem GrantOne.",
+        "checked_at": "2026-11-19",
+        "method": "page"
+      }
+    ],
+    "eligibility": [
+      {
+        "source_url": "https://www.15junifonden.dk/ansøg",
+        "quote": "Alle organisationer, foreninger, virksomheder og lignende, som har et dansk CVR-nummer og dermed er registreret i Danmark. Desuden kan alle med dansk CPR-nummer søge.",
+        "checked_at": "2026-11-19",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.15junifonden.dk/ansøg",
+        "quote": "Kan man søge penge til igangværende eller afsluttede projekter? + Nej.",
+        "checked_at": "2026-11-19",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.15junifonden.dk/ansøg",
+        "quote": "Ja, så længe det er inden for Fondens støtteområder, og det drejer sig om et nyt projekt.",
+        "checked_at": "2026-11-19",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.15junifonden.dk/ansøg",
+        "quote": "15. Juni Fonden giver ikke tilskud til overhead, men anerkender behovet for en rimelig drifts- og administrationsstøtte.",
+        "checked_at": "2026-11-19",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.15junifonden.dk/ansøg",
+        "quote": "Fonden støtter ikke studieophold, studierejser og kongresdeltagelse.",
+        "checked_at": "2026-11-19",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.15junifonden.dk/ansøg",
+        "quote": "Fonden støtter ikke ansøgninger begrundet i dårligt helbred eller dårlig økonomi.",
+        "checked_at": "2026-11-19",
+        "method": "page"
+      }
+    ],
+    "after_award": [
+      {
+        "source_url": "https://www.15junifonden.dk/ansøg",
+        "quote": "Når projektet er afsluttet, skal der indsendes en slutrapport og et projektregnskab.",
+        "checked_at": "2026-11-19",
+        "method": "page"
+      }
+    ],
+    "documents": [
+      {
+        "source_url": "https://www.15junifonden.dk/ansøg",
+        "quote": "Budget er obligatorisk",
+        "checked_at": "2026-11-19",
+        "method": "page"
+      }
+    ]
   },
   "checked_at": "2026-11-15"
 }

@@ -1,0 +1,72 @@
+{
+  "id": "bergzeit-impact",
+  "read_on": "2026-11-19",
+  "prompt_version": "req-2026-11-18.1",
+  "models": ["gpt-5.6-luna", "gpt-5.6-sol", "jev-latest"],
+  "complete": true,
+  "reasons": [],
+  "requirements_checked": false,
+  "documents": [
+    {
+      "ref": "D1",
+      "url": "https://www.bergzeit.de/bergzeit-impact/",
+      "final_url": "https://www.bergzeit.de/bergzeit-impact/",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 4760,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:d5f3349b8c1c397a25c38ebd3657feac44d7602a7c3f2d15c38e1af4472b2634"
+    },
+    {
+      "ref": "D2",
+      "url": "https://www.bergzeit.de/magazin/bergzeit-impact-jetzt-bewerben/",
+      "final_url": "https://www.bergzeit.de/magazin/bergzeit-impact-jetzt-bewerben/",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 11808,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:e12f32deeef07a5b5ed8b365514ad42d369ed15ccbf691e74406208ed5a27209"
+    }
+  ],
+  "failures": [],
+  "skipped_links": 311,
+  "chunks": [{ "id": "all", "docs": ["D1", "D2"], "chars": 16699 }],
+  "outcomes": {
+    "eligibility": "partial",
+    "documents": "stated",
+    "effort": "stated",
+    "co_finance": "not_found",
+    "consortium": "not_found",
+    "after_award": "not_found"
+  },
+  "written": ["eligibility", "documents", "effort"],
+  "escalated": ["eligibility", "effort"],
+  "flags": [
+    {
+      "field": "eligibility",
+      "item": "Organisation must be based in Germany or Austria",
+      "why": "the quote is not on any gathered document"
+    },
+    {
+      "field": "eligibility",
+      "item": "Organisation must prove its charitable tax status",
+      "why": "the quote is not on any gathered document"
+    },
+    {
+      "field": "eligibility",
+      "item": "Funding request does not exceed EUR 15,000",
+      "why": "kind is project, Jev reads finances"
+    }
+  ],
+  "notes": [
+    "eligibility \"Requested funding must not exceed EUR 15,000\": revenue dropped: the rule’s quote does not name revenue, income or a budget",
+    "extractor: D1 states that one charitable organisation is funded annually with EUR 15,000; D2 describes the amount as up to EUR 15,000. D2 says the amount may be split between two organisations if the vote is not decisive."
+  ],
+  "usd": 0.1192
+}

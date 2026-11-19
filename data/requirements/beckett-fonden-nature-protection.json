@@ -1,0 +1,78 @@
+{
+  "id": "beckett-fonden-nature-protection",
+  "read_on": "2026-11-19",
+  "prompt_version": "req-2026-11-18.1",
+  "models": ["gpt-5.6-luna", "jev-latest"],
+  "complete": false,
+  "reasons": [
+    "https://beckett-fonden.grant.nu/profile/: a page on another site about applying: not read, so its rules are unknown"
+  ],
+  "requirements_checked": false,
+  "documents": [
+    {
+      "ref": "D1",
+      "url": "https://beckett-fonden.dk/vi-stoetter/naturpleje/",
+      "final_url": "https://beckett-fonden.dk/vi-stoetter/naturpleje/",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 1029,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:40bd0fa0bb0dff89d87ba5a562ff2ab5f204d82dd76e7432c115f36600b673b1"
+    },
+    {
+      "ref": "D2",
+      "url": "https://beckett-fonden.dk/saadan-soeger-du/",
+      "final_url": "https://beckett-fonden.dk/saadan-soeger-du/",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 2335,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:a1519be80858ff5e8e3ad3ace644323d471a6761f38124ddd884463ec25177d2"
+    },
+    {
+      "ref": "D3",
+      "url": "https://beckett-fonden.dk/faq/",
+      "final_url": "https://beckett-fonden.dk/faq/",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 2932,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:49130d087d13199e146799ebcdc32ef59ae22015304511f67db115d3ecf3b19d"
+    }
+  ],
+  "failures": [
+    {
+      "url": "https://beckett-fonden.grant.nu/profile/",
+      "from": "https://beckett-fonden.dk/saadan-soeger-du/",
+      "kind": "offsite",
+      "message": "a page on another site about applying: not read, so its rules are unknown"
+    }
+  ],
+  "skipped_links": 29,
+  "chunks": [{ "id": "all", "docs": ["D1", "D2", "D3"], "chars": 6461 }],
+  "outcomes": {
+    "eligibility": "stated",
+    "documents": "stated",
+    "effort": "stated",
+    "co_finance": "not_found",
+    "consortium": "not_found",
+    "after_award": "not_found"
+  },
+  "written": ["eligibility", "documents", "effort"],
+  "escalated": [],
+  "flags": [],
+  "notes": [
+    "extractor: Applications are accepted on a rolling basis with no application deadlines. The application should be written in Danish, but this is stated as guidance rather than a mandatory requirement. Applicants must state an exact requested amount and the timing of the activity in the application.",
+    "source beckett-fonden-nature-protection-3: added for https://beckett-fonden.dk/vi-stoetter/naturpleje/"
+  ],
+  "usd": 0.0032
+}

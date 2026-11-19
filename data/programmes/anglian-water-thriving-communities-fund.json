@@ -1,7 +1,10 @@
 {
   "id": "anglian-water-thriving-communities-fund",
   "name": "Anglian Water's Thriving Communities Fund",
-  "funder": { "name": "Anglian Water", "url": "https://www.anglianwater.co.uk/" },
+  "funder": {
+    "name": "Anglian Water",
+    "url": "https://www.anglianwater.co.uk/"
+  },
   "administered_by": {
     "name": "Cambridgeshire Community Foundation",
     "url": "https://www.cambscf.org.uk/"
@@ -9,18 +12,84 @@
   "parent": null,
   "url": "https://www.cambscf.org.uk/funds/thriving-communities/",
   "summary": "Grants of £5,000 to £100,000 for non-profits in the Anglian Water region delivering physical improvements to the natural water environment, such as habitat restoration, river works and wetland creation, alongside community engagement.",
-  "approaches": ["freshwater", "wetlands", "species_conservation", "community_conservation"],
-  "applicant_types": ["ngo"],
+  "approaches": [
+    "freshwater",
+    "wetlands",
+    "species_conservation",
+    "community_conservation"
+  ],
+  "applicant_types": [
+    "ngo"
+  ],
   "geography": {
     "scope": "countries",
-    "countries": ["GB"],
+    "countries": [
+      "GB"
+    ],
     "label": "Anglian Water region (East of England and Hartlepool)"
   },
   "access": "direct",
   "window": "fixed",
-  "amount": { "currency": "GBP", "min": 5000, "max": 100000 },
-  "co_finance_required": null,
+  "amount": {
+    "currency": "GBP",
+    "min": 5000,
+    "max": 100000
+  },
+  "co_finance_required": false,
+  "consortium_required": false,
   "reporting": null,
+  "effort": {
+    "steps": [
+      "EOI over £50k, or single application up to £50k",
+      "Full application over £50k, if invited"
+    ],
+    "due": [
+      null,
+      "2027-02-01"
+    ]
+  },
+  "eligibility": [
+    {
+      "rule": "Locate the project within Anglian Water's management area",
+      "kind": "project"
+    },
+    {
+      "rule": "Have a track record of successful delivery",
+      "kind": "track_record"
+    },
+    {
+      "rule": "Own the land or hold a lease with 25 years remaining for major capital work",
+      "kind": "project"
+    },
+    {
+      "rule": "Have or promptly obtain planning permission, depending on project size",
+      "kind": "project"
+    },
+    {
+      "rule": "Submit no more than one application in the same round",
+      "kind": "other"
+    },
+    {
+      "rule": "Not seek repeat funding for work substantially funded by Anglian Water",
+      "kind": "project"
+    },
+    {
+      "rule": "Deliver physical interventions or capital work benefiting the natural water environment",
+      "kind": "project"
+    }
+  ],
+  "after_award": {
+    "reports": "final"
+  },
+  "documents": [
+    "Signed governing document",
+    "Accounts for the past year",
+    "Recent bank statement or paying-in slip",
+    "Three quotes for capital items or equipment over £500, if applicable",
+    "CIC 36 form or latest CIC 34 Annual Report, if applicable",
+    "FCA registration form or latest AR30 form, if applicable",
+    "Evidence of a long-term lease, if the organisation does not own the land or building"
+  ],
   "calls": [
     {
       "id": "single-stage-2027-02",
@@ -86,7 +155,117 @@
       "quote": "Grants between £5,000 and £100,000 are available.",
       "checked_at": "2026-11-15",
       "method": "page"
-    }
+    },
+    "co_finance_required": {
+      "source_url": "https://www.cambscf.org.uk/anglian-waters-thriving-communities-fund-faqs/",
+      "quote": "At the moment there is no fixed proportion of other funding required",
+      "checked_at": "2026-11-19",
+      "method": "page"
+    },
+    "consortium_required": {
+      "source_url": "https://www.cambscf.org.uk/anglian-waters-thriving-communities-fund-faqs/",
+      "quote": "Projects can apply as a partnership, but the lead partner which submits the application must meet our not-for-profit requirements",
+      "checked_at": "2026-11-19",
+      "method": "page"
+    },
+    "effort": [
+      {
+        "source_url": "https://www.cambscf.org.uk/funds/thriving-communities/",
+        "quote": "Applications reopen 2nd November with a submission deadline of 1st February 2027 (11.59 ie midday).",
+        "checked_at": "2026-11-19",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.cambscf.org.uk/funds/thriving-communities/",
+        "quote": "EOI applications which are selected to go forward to the second stage will receive an invitation at the beginning of December, with a deadline of 1st February 2027.",
+        "checked_at": "2026-11-19",
+        "method": "page"
+      }
+    ],
+    "eligibility": [
+      {
+        "source_url": "https://www.cambscf.org.uk/anglian-waters-thriving-communities-fund-faqs/",
+        "quote": "You are eligible to apply if your project is within Anglian Water's management area, in other words if you receive water services from Anglian Water.",
+        "checked_at": "2026-11-19",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.cambscf.org.uk/funds/thriving-communities/",
+        "quote": "Applications are sought from non-profit organisations in the Anglian Water region with a track record of successful delivery.",
+        "checked_at": "2026-11-19",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.cambscf.org.uk/anglian-waters-thriving-communities-fund-faqs/",
+        "quote": "For projects involving major capital work, the applicant must own the land or hold a minimum lease of 25 years unexpired term.",
+        "checked_at": "2026-11-19",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.cambscf.org.uk/anglian-waters-thriving-communities-fund-faqs/",
+        "quote": "Yes, for major capital projects you must have planning permission in place before you apply. For smaller projects you may apply if you expect to receive planning permission within 2 months of the submission deadline.",
+        "checked_at": "2026-11-19",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.cambscf.org.uk/anglian-waters-thriving-communities-fund-faqs/",
+        "quote": "You should not submit more than one application for consideration at the same round.",
+        "checked_at": "2026-11-19",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.cambscf.org.uk/funds/thriving-communities/",
+        "quote": "Projects which have previously received substantial amounts from Anglian Water for the same or similar work",
+        "checked_at": "2026-11-19",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.cambscf.org.uk/funds/thriving-communities/",
+        "quote": "This means projects must deliver physical interventions or capital work that makes a positive difference to the natural water environment.",
+        "checked_at": "2026-11-19",
+        "method": "page"
+      }
+    ],
+    "after_award": [
+      {
+        "source_url": "https://www.cambscf.org.uk/applying/",
+        "quote": "Around a month after the end of the project, grants recipients are required to complete an end-of-project reporting form online.",
+        "checked_at": "2026-11-19",
+        "method": "page"
+      }
+    ],
+    "documents": [
+      {
+        "source_url": "https://www.cambscf.org.uk/applying/",
+        "quote": "A signed governing document specific to your organisation, such as articles of association or a constitution, which must confirm that you are operating not for profit.",
+        "checked_at": "2026-11-19",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.cambscf.org.uk/applying/",
+        "quote": "Accounts for the past year. If you are a small unincorporated group, we will accept an income and expenditure document or something similar. If your organisation is less than a year old, please provide a list of your income and expenditure to date. A recent bank statement or paying-in slip, from the last 3 months, to verify your organisation's banking details.",
+        "checked_at": "2026-11-19",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.cambscf.org.uk/applying/",
+        "quote": "If you are applying for a grant to purchase capital items or equipment which would cost over £500, we require three different quotes. If you are a community interest company, we require your CIC 36 form (if you have registered as a CIC in the last 12 months), or your latest CIC 34 Annual Report (if you have been registered as a CIC for over 12 months).",
+        "checked_at": "2026-11-19",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.cambscf.org.uk/applying/",
+        "quote": "If you are a co-operative or a community benefit society, we require your registration form submitted to the Financial Conduct Authority (if you have registered in the last 12 months) or a copy of your most recent AR30 form (if you have been registered for more than 12 months).",
+        "checked_at": "2026-11-19",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.cambscf.org.uk/applying/",
+        "quote": "If you are looking for funding towards a building or land that your organisation does not own, we will need to see evidence of a long-term lease.",
+        "checked_at": "2026-11-19",
+        "method": "page"
+      }
+    ]
   },
   "checked_at": "2026-11-15"
 }

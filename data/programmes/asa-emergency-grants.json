@@ -1,19 +1,61 @@
 {
   "id": "asa-emergency-grants",
   "name": "Amphibian Survival Alliance Emergency Grants",
-  "funder": { "name": "Amphibian Survival Alliance", "url": "https://www.amphibians.org/" },
+  "funder": {
+    "name": "Amphibian Survival Alliance",
+    "url": "https://www.amphibians.org/"
+  },
   "administered_by": null,
   "parent": null,
   "url": "https://www.amphibians.org/programs/emergency-grants",
   "summary": "Rapid grants of up to US$5,000 for short, on-the-ground emergency action (rescue, habitat protection, disease response, field equipment) when an amphibian species or population faces extinction within about six months.",
-  "approaches": ["species_conservation"],
+  "approaches": [
+    "species_conservation"
+  ],
   "applicant_types": null,
   "geography": null,
   "access": "direct",
   "window": "rolling",
-  "amount": { "currency": "USD", "max": 5000 },
+  "amount": {
+    "currency": "USD",
+    "max": 5000
+  },
   "co_finance_required": null,
   "reporting": null,
+  "eligibility": [
+    {
+      "rule": "Species or population faces extinction within 6 months without intervention",
+      "kind": "project"
+    },
+    {
+      "rule": "The threat is acute, time-sensitive and well documented",
+      "kind": "project"
+    },
+    {
+      "rule": "The project provides immediate, short-term, on-the-ground action",
+      "kind": "project"
+    },
+    {
+      "rule": "The project can begin promptly and be implemented within a few months",
+      "kind": "project"
+    },
+    {
+      "rule": "The action can measurably reduce the risk of extinction",
+      "kind": "project"
+    },
+    {
+      "rule": "The grant request does not exceed USD 5,000",
+      "kind": "finances"
+    },
+    {
+      "rule": "Funding covers only direct on-the-ground emergency response costs",
+      "kind": "other"
+    },
+    {
+      "rule": "No overhead, admin fees, research without immediate action, or unclear imminent threat",
+      "kind": "other"
+    }
+  ],
   "calls": [
     {
       "id": "rolling",
@@ -50,7 +92,57 @@
       "quote": "Up to $5,000",
       "checked_at": "2026-11-15",
       "method": "page"
-    }
+    },
+    "eligibility": [
+      {
+        "source_url": "https://www.amphibians.org/programs/emergency-grants",
+        "quote": "You must demonstrate that your species or population faces extinction within 6 months without intervention.",
+        "checked_at": "2026-11-19",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.amphibians.org/programs/emergency-grants",
+        "quote": "Threat that is acute, time-sensitive, and well documented",
+        "checked_at": "2026-11-19",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.amphibians.org/programs/emergency-grants",
+        "quote": "Immediate, short-term, on-the-ground action (not planning, outreach, or long-term restoration)",
+        "checked_at": "2026-11-19",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.amphibians.org/programs/emergency-grants",
+        "quote": "Ready to begin promptly and implemented within weeks to a few months",
+        "checked_at": "2026-11-19",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.amphibians.org/programs/emergency-grants",
+        "quote": "Direct conservation action that can measurably reduce the risk of extinction",
+        "checked_at": "2026-11-19",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.amphibians.org/programs/emergency-grants",
+        "quote": "FundingUp to $5,000",
+        "checked_at": "2026-11-19",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.amphibians.org/programs/emergency-grants",
+        "quote": "Direct costs for on-the-ground emergency response only",
+        "checked_at": "2026-11-19",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.amphibians.org/programs/emergency-grants",
+        "quote": "✕Overhead or indirect costs of any kind ✕Administrative fees or charges ✕Research or studies without immediate conservation action ✕Projects without clear evidence of imminent extinction threat",
+        "checked_at": "2026-11-19",
+        "method": "page"
+      }
+    ]
   },
   "checked_at": "2026-11-15"
 }

@@ -1,0 +1,157 @@
+{
+  "id": "1000-moore",
+  "read_on": "2026-11-19",
+  "prompt_version": "req-2026-11-18.1",
+  "models": ["gpt-5.6-luna", "gpt-5.6-sol", "jev-latest"],
+  "complete": false,
+  "reasons": [
+    "https://www.z-u-g.org/fileadmin/zug/Dateien/Foerderprorgamme/1000_Moore/ank_frl_1000_moore_bf.pdf would not open (robots: robots.txt disallows this page)",
+    "the crawl bound left https://www.z-u-g.org/fileadmin/zug/Dateien/Foerderprorgamme/1000_Moore/261009_1000Moore_Merkblatt_Version16.pdf unread",
+    "the crawl bound left https://www.z-u-g.org/fileadmin/zug/Dateien/Foerderprorgamme/1000_Moore/Schulungspraesentation_1000Moore_Hinweise_zur_Antragstellung_klein_bf.pdf unread",
+    "the crawl bound left https://www.z-u-g.org/fileadmin/zug/Dateien/Foerderprorgamme/1000_Moore/Schulungspraesentation_1000Moore_Anforderungen_Foerderschwerpunkte_klein_bf.pdf unread",
+    "the crawl bound left https://www.z-u-g.org/fileadmin/zug/Dateien/Foerderprorgamme/InAWi/Schulungspraesentation_Anleitung_easy_Online_260105_bf.pdf unread",
+    "the text names a document with rules that was not read: Förderrichtlinie 1.000 Moore",
+    "the text names a document with rules that was not read: Merkblatt Förderrichtlinie 1.000 Moore",
+    "strong reading: the text names a document with rules that was not read: Förderrichtlinie 1.000 Moore",
+    "strong reading: the text names a document with rules that was not read: Merkblatt Förderrichtlinie 1.000 Moore"
+  ],
+  "requirements_checked": false,
+  "documents": [
+    {
+      "ref": "D1",
+      "url": "https://www.z-u-g.org/1000-moore/",
+      "final_url": "https://www.z-u-g.org/1000-moore/",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 7162,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:b6f3ee4e9156ee4f24f23e7fb7acc3281d1419bb4682f9808e5588e3d8c69554"
+    },
+    {
+      "ref": "D2",
+      "url": "https://www.z-u-g.org/1000-moore/foerderaufruf/",
+      "final_url": "https://www.z-u-g.org/1000-moore/foerderaufruf/",
+      "from": "https://www.z-u-g.org/1000-moore/",
+      "anchor": "Förderaufruf",
+      "depth": 1,
+      "pdf": false,
+      "chars": 3386,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:d16c609920470086b67dfd2a777b6f0666e11a664747dff63bc7c62ceac05f00"
+    },
+    {
+      "ref": "D3",
+      "url": "https://www.z-u-g.org/1000-moore/foerderrichtlinie-1000-moore/",
+      "final_url": "https://www.z-u-g.org/1000-moore/foerderrichtlinie-1000-moore/",
+      "from": "https://www.z-u-g.org/1000-moore/foerderaufruf/",
+      "anchor": "Erster Förderaufruf 1.000 Moore geschlossen",
+      "depth": 2,
+      "pdf": false,
+      "chars": 20841,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:c398723cf69f32d25a327a90f48569cc9b9baee31116e9dc4719b8394c734c3c"
+    }
+  ],
+  "failures": [
+    {
+      "url": "https://www.z-u-g.org/fileadmin/zug/Dateien/Foerderprorgamme/1000_Moore/ank_frl_1000_moore_bf.pdf",
+      "from": "https://www.z-u-g.org/1000-moore/",
+      "kind": "robots",
+      "message": "robots.txt disallows this page"
+    },
+    {
+      "url": "https://www.z-u-g.org/fileadmin/zug/Dateien/Foerderprorgamme/1000_Moore/261009_1000Moore_Merkblatt_Version16.pdf",
+      "from": "https://www.z-u-g.org/1000-moore/foerderrichtlinie-1000-moore/",
+      "kind": "bound",
+      "message": "past the crawl depth of 2"
+    },
+    {
+      "url": "https://www.z-u-g.org/fileadmin/zug/Dateien/Foerderprorgamme/1000_Moore/Schulungspraesentation_1000Moore_Hinweise_zur_Antragstellung_klein_bf.pdf",
+      "from": "https://www.z-u-g.org/1000-moore/foerderrichtlinie-1000-moore/",
+      "kind": "bound",
+      "message": "past the crawl depth of 2"
+    },
+    {
+      "url": "https://www.z-u-g.org/fileadmin/zug/Dateien/Foerderprorgamme/1000_Moore/Schulungspraesentation_1000Moore_Anforderungen_Foerderschwerpunkte_klein_bf.pdf",
+      "from": "https://www.z-u-g.org/1000-moore/foerderrichtlinie-1000-moore/",
+      "kind": "bound",
+      "message": "past the crawl depth of 2"
+    },
+    {
+      "url": "https://www.z-u-g.org/fileadmin/zug/Dateien/Foerderprorgamme/InAWi/Schulungspraesentation_Anleitung_easy_Online_260105_bf.pdf",
+      "from": "https://www.z-u-g.org/1000-moore/foerderrichtlinie-1000-moore/",
+      "kind": "bound",
+      "message": "past the crawl depth of 2"
+    }
+  ],
+  "skipped_links": 255,
+  "chunks": [{ "id": "all", "docs": ["D1", "D2", "D3"], "chars": 31680 }],
+  "outcomes": {
+    "eligibility": "partial",
+    "documents": "partial",
+    "effort": "stated",
+    "co_finance": "stated",
+    "consortium": "stated",
+    "after_award": "not_found"
+  },
+  "written": ["eligibility", "documents", "effort", "co_finance", "consortium"],
+  "escalated": ["eligibility", "documents"],
+  "flags": [
+    {
+      "field": "eligibility",
+      "item": "The project has a rewettable area of 5 to 200 hectares",
+      "why": "the quote is not on any gathered document"
+    },
+    {
+      "field": "eligibility",
+      "item": "The applicable project grant stays within the stated maximum",
+      "why": "the quote is not on any gathered document"
+    },
+    {
+      "field": "documents",
+      "item": "Proof of use rights until the end of the purpose-binding period, if the applicant is not the owner",
+      "why": "the quote is not on any gathered document"
+    },
+    {
+      "field": "documents",
+      "item": "Natura 2000 application form, if applicable",
+      "why": "not asked for at the first step"
+    },
+    {
+      "field": "eligibility",
+      "item": "No identical funded measure on the same land in the last 10 years",
+      "why": "kind is project, Jev reads track_record"
+    },
+    {
+      "field": "eligibility",
+      "item": "FSP 1 request does not exceed EUR 30,000 per application",
+      "why": "kind is project, Jev reads finances"
+    },
+    {
+      "field": "eligibility",
+      "item": "Combined FSP 2.1 and 2.2 request does not exceed EUR 600,000",
+      "why": "kind is project, Jev reads finances"
+    },
+    {
+      "field": "eligibility",
+      "item": "FSP 2.1-only request does not exceed EUR 100,000",
+      "why": "kind is project, Jev reads finances"
+    },
+    {
+      "field": "eligibility",
+      "item": "FSP 2.2-only request does not exceed EUR 500,000",
+      "why": "kind is project, Jev reads finances"
+    }
+  ],
+  "notes": [
+    "extractor: The next funding window is announced but no opening date, deadline or current-round application procedure is stated. D2 says the first funding call is closed. The programme page says a further funding window will open later.",
+    "strong: D2 and D3 identify the first funding call as closed. D1 says a later funding window will announce its timing and conditions, so the applicability of D3's rules and application documents to the upcoming window is uncertain.",
+    "source 1000-moore-2: added for https://www.z-u-g.org/1000-moore/foerderrichtlinie-1000-moore/"
+  ],
+  "usd": 0.2424
+}
