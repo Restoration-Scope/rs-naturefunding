@@ -10,6 +10,9 @@ name: Deploy
 on:
   push:
     branches: [main]
+  # Rebuild static date-derived status without waiting for data changes.
+  schedule:
+    - cron: '11 * * * *'
   # The refresh job starts this after its own commits, which trigger no push event.
   workflow_dispatch:
 

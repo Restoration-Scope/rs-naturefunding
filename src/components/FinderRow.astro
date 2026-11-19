@@ -45,7 +45,10 @@ const searchText = [p.name, p.funder.name, p.administered_by?.name, p.summary, w
   className="row"
   data-state={state}
   data-deadline={deadline?.date}
+  data-deadline-time={deadline?.time}
+  data-deadline-timezone={deadline?.timezone}
   data-opens={opensSortDate(call)}
+  data-opens-date={call?.opens ?? undefined}
   data-checked={p.checked_at}
   data-usd={usd ?? undefined}
   data-name={p.name.toLowerCase()}
@@ -69,7 +72,15 @@ const searchText = [p.name, p.funder.name, p.administered_by?.name, p.summary, w
     {/* Calls that differ by country: the finder swaps in the cell for the Where (src/lib/finder.ts). */}
     {
       callGroups(p).map((g) => (
-        <template data-where-dl={g.codes?.join(' ') ?? '*'} data-state={g.listing.state} data-deadline={g.listing.call?.deadline?.date} data-opens={opensSortDate(g.listing.call)}>
+        <template
+          data-where-dl={g.codes?.join(' ') ?? '*'}
+          data-state={g.listing.state}
+          data-deadline={g.listing.call?.deadline?.date}
+          data-deadline-time={g.listing.call?.deadline?.time}
+          data-deadline-timezone={g.listing.call?.deadline?.timezone}
+          data-opens={opensSortDate(g.listing.call)}
+          data-opens-date={g.listing.call?.opens ?? undefined}
+        >
           <RowWhen listing={g.listing} openPartners={openPartners} />
         </template>
       ))

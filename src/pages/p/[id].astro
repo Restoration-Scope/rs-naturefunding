@@ -20,7 +20,7 @@ import { cardClasses } from '@/components/ui/card'
 import { HIDDEN_DAYS, buildDate, callGroups, whereReach, listingFor, programmeById, programmes, sortListings } from '../../lib/data'
 import type { Programme } from '../../data/schema'
 import { pagesFor } from '../../lib/finder-pages'
-import { amountText, effortLevel, effortSignals, effortText, poolText, geographyFull, joinAnd, longDate, pageLabel, sentence, keepAmountTogether, funderRepeatsName, funderQualifier, programmeTitle } from '../../lib/format'
+import { amountText, effortLevel, effortSignals, effortText, poolText, geographyFull, joinAnd, longDate, sentence, funderRepeatsName, funderQualifier, programmeTitle } from '../../lib/format'
 import { countryName, regionLabels } from '../../lib/geo'
 import {
   accessHelp,
@@ -34,6 +34,7 @@ import WorthCheck from '../../components/WorthCheck.astro'
 import { cardAlt, cardPath, hasOwnCard } from '../../lib/og-card'
 import BeforeYouApply from '../../components/BeforeYouApply.astro'
 import { CONTACT_EMAIL, RS_REPORTING_URL, absolute, funderCorrectionUrl, reportProblemUrl } from '../../lib/site'
+import { effectiveCallStatus } from '../../lib/status'
 
 export const getStaticPaths = (() => programmes.map((p) => ({ params: { id: p.id }, props: { p } }))) satisfies GetStaticPaths
 
@@ -84,16 +85,22 @@ const switchCountries = [...new Set(p.geography?.scope === 'countries' ? p.geogr
   .map((code) => ({ code, name: countryName(code) }))
   .sort((a, b) => a.name.localeCompare(b.name))
 /** The one date a folded call shows next to its name. */
+const buildInstant = new Date(`${buildDate}T12:00:00Z`)
+const datedStatus = (c: Programme['calls'][number]) => effectiveCallStatus(c, buildInstant)
+const callState = (c: Programme['calls'][number]) => {
+  const s = datedStatus(c)
+  return p.window === 'rolling' && s === 'open' ? 'rolling' : s === 'open' || s === 'upcoming' || s === 'closed' ? s : 'none'
+}
 const callWhen = (c: Programme['calls'][number]) =>
-  c.status === 'upcoming'
+  datedStatus(c) === 'upcoming'
     ? c.opens
       ? `Opens ${longDate(c.opens)}`
       : c.expected
         ? `Expected ${c.expected}`
         : 'Opening date not announced yet'
     : c.deadline
-      ? `${c.status === 'closed' || c.deadline.date < buildDate ? 'Closed' : 'Closes'} ${longDate(c.deadline.date)}`
-      : c.status === 'open'
+      ? `${datedStatus(c) === 'closed' ? 'Closed' : 'Closes'} ${longDate(c.deadline.date)}`
+      : datedStatus(c) === 'open'
         ? 'No deadline stated'
         : null
 const bandMark = 'mr-1.5 -mt-0.5 box-content rounded-[5px] bg-white p-0.5'
@@ -110,13 +117,13 @@ const byCallDeadline = (a: Programme['calls'][number], b: Programme['calls'][num
   (a.deadline?.date ?? '9999').localeCompare(b.deadline?.date ?? '9999')
 const callsOrdered = call ? [call, ...p.calls.filter((c) => c !== call).sort(byCallDeadline)] : [...p.calls].sort(byCallDeadline)
 // A rolling programme's open call reads as the finder says it: Rolling.
-const rollingCall = (c: Programme['calls'][number]) => p.window === 'rolling' && c.status === 'open'
+const rollingCall = (c: Programme['calls'][number]) => p.window === 'rolling' && datedStatus(c) === 'open'
 const callStatusText = (c: Programme['calls'][number]) =>
   rollingCall(c)
     ? 'Rolling: apply any time'
-    : c.status === 'unknown' && c.recurring
+    : datedStatus(c) === 'unknown' && c.recurring
       ? 'Windows each year; the page doesn’t say if one is open now'
-      : callStatusLabel[c.status]
+      : callStatusLabel[datedStatus(c)]
 
 const description = `${funderRepeatsName(p) ? p.funder.name : `${p.name} from ${p.funder.name}`}: ${
   state === 'open' && call?.deadline
@@ -437,8 +444,8 @@ const jsonLd = [
                 {/* The call names are the funder's own long titles: body type, not headings. */}
                 <span class="flex flex-col items-start gap-1.5">
                   <span class="flex flex-wrap items-center gap-x-2.5 gap-y-1">
-                    <Badge variant="status" state={rollingCall(c) ? 'rolling' : c.status === 'open' ? 'open' : c.status === 'upcoming' ? 'upcoming' : c.status === 'closed' ? 'closed' : 'none'}>
-                      {rollingCall(c) ? 'Rolling' : callStatusLabel[c.status]}
+                    <Badge variant="status" state={callState(c)}>
+                      {rollingCall(c) ? 'Rolling' : callStatusLabel[datedStatus(c)]}
                     </Badge>
                     {/* Whose call it is, at a glance; the names are under Where. */}
                     {c.countries && <span class="flex gap-1 text-lg">{c.countries.map((code) => <Flag code={code} />)}</span>}
@@ -450,7 +457,9 @@ const jsonLd = [
               </summary>
               <a class="mb-1 inline-block text-md pointer-coarse:-mt-2.5 pointer-coarse:py-2.5" href={c.url}>Call page</a>
               <dl class="m-0">
-                <Fact id={callFactId(c, 'status')} label="Status" value={callStatusText(c)} evidence={c.evidence.status} />
+                <Fact id={callFactId(c, 'status')} label="Status" value={null} evidence={c.evidence.status}>
+                  <span slot="value">{callStatusText(c)}</span>
+                </Fact>
                 {c.countries && (
                   <Fact id={callFactId(c, 'countries')} label="Where" value={joinAnd(c.countries.map(countryName))} evidence={c.evidence.countries}>
                     <Countries slot="value" codes={c.countries} />

@@ -10,6 +10,7 @@ import { countryName } from './geo'
 import { LLMS_FULL_PAGES, twinPath } from './twins'
 import { evidenceOf } from '../data/load'
 import type { FinderPage } from './finder-pages'
+import { effectiveCallStatus } from './status'
 
 /** Element ids on a programme page, one per fact, so an answer can link the fact it cites. They match data.json field names. */
 export const factIds = {
@@ -62,7 +63,8 @@ export function statusText(l: Listing): string {
   const note = call?.note && (state === 'open' || state === 'upcoming') ? ` ${call.note}.` : ''
   // With several calls, say which one sets the status: the others may cover other places or dates.
   const which = call && p.calls.length > 1 ? ` (${call.label})` : ''
-  const others = p.calls.filter((c) => c !== call && c.status === 'open' && !(c.deadline && c.deadline.date < buildDate)).length
+  const buildInstant = new Date(`${buildDate}T12:00:00Z`)
+  const others = p.calls.filter((c) => c !== call && effectiveCallStatus(c, buildInstant) === 'open').length
   const more = state === 'open' && others ? ` ${others === 1 ? 'One more call is' : `${others} more calls are`} open; see the listing.` : ''
   switch (state) {
     case 'open':
