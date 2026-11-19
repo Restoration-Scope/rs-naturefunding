@@ -35,7 +35,34 @@ const rest = (ms: number) => {
   if (!read()?.subscribed) write({ next: Date.now() + ms })
 }
 
+// The weekly email's Where follows the page's own: the finder's Where (its header field, on / and the place
+// pages) or a programme page's ?where=. A form whose Where the reader picked keeps their pick.
+function followWhere() {
+  const own = 'select[name=where]'
+  const forms = () => [...document.querySelectorAll<HTMLSelectElement>(`[data-digest-form] ${own}`)]
+  const pageWhere = () =>
+    document.querySelector<HTMLSelectElement>(`[data-ask] ${own}`)?.value ?? new URLSearchParams(location.search).get('where') ?? ''
+  const apply = () => {
+    const w = pageWhere()
+    for (const s of forms())
+      if (!('picked' in s.dataset) && s.value !== w && [...s.options].some((o) => o.value === w)) {
+        s.value = w
+        s.dispatchEvent(new Event('sync'))
+      }
+  }
+  const later = (e: Event) => {
+    if ((e.target as Element).closest?.('[data-digest-form]')) {
+      if (e.type === 'change') (e.target as HTMLElement).dataset.picked = ''
+    } else setTimeout(apply)
+  }
+  // The finder redraws its fields with a "sync" event, which doesn't bubble: listen while it comes down.
+  for (const type of ['change', 'sync', 'click']) document.addEventListener(type, later, true)
+  addEventListener('popstate', apply)
+  apply()
+}
+
 export function initSubscribePrompt() {
+  followWhere()
   const markSubscribed = () => write({ subscribed: true })
   // Confirmed from the email, perhaps in another browser than the one that signed up.
   if (location.pathname === '/digest/subscribed/') markSubscribed()
@@ -63,6 +90,9 @@ export function initSubscribePrompt() {
   const draw = () => {
     card.style.position = fixed ? 'fixed' : 'absolute'
     card.style.top = `${fixed ? target : offset}px`
+    // The pinned card can't scroll, so the country list stops above the bottom of the screen.
+    const list = card.querySelector<HTMLElement>('[role=listbox]')
+    if (list && fixed) list.style.maxHeight = `${Math.max(innerHeight - card.querySelector('[role=combobox]')!.getBoundingClientRect().bottom - 16, 160)}px`
     const rise = (last - offset + innerHeight) / (innerHeight - target)
     const shading = fixed ? MAX_SHADE : Math.min(Math.max(rise * MAX_SHADE, 0), MAX_SHADE)
     shade.hidden = shading <= 0
@@ -86,6 +116,10 @@ export function initSubscribePrompt() {
     if (!seen && (fixed || (d > 0 && now > offset - vh))) {
       seen = true
       rest(SEEN_REST)
+      // The country field searches with flags, as the finder's does (whose script already made it so on /).
+      const where = card.querySelector<HTMLSelectElement>('select[data-flags]')
+      if (where && !where.hidden)
+        import('./picker').then(({ picker }) => picker(where, true, 'top-1/2 left-[0.65rem] -translate-y-1/2', 'pl-[2.4rem]!'))
     }
     draw()
   }
@@ -103,7 +137,8 @@ export function initSubscribePrompt() {
     rest(CLOSED_REST)
   }
   const onKey = (e: KeyboardEvent) => {
-    if (e.key === 'Escape' && seen) close()
+    // Escape in the country list closes only the list.
+    if (e.key === 'Escape' && seen && !e.defaultPrevented) close()
   }
 
   addEventListener('scroll', onScroll, { passive: true })

@@ -1,0 +1,25 @@
+---
+// The options of the weekly email's "Where the project is" select, in the finder's values ("KE", "r:africa"):
+// anywhere, the regions, then each region's countries. The full form and the scroll prompt share them.
+import { countriesByRegion } from '../lib/geo'
+
+interface Props {
+  selected?: string
+}
+
+const { selected = '' } = Astro.props
+---
+
+<option value="">Anywhere</option>
+<optgroup label="Regions">
+  {countriesByRegion.map((r) => <option value={`r:${r.region}`} selected={selected === `r:${r.region}`}>{r.label}</option>)}
+</optgroup>
+{
+  countriesByRegion.map((r) => (
+    <optgroup label={r.label}>
+      {r.countries.map((c) => (
+        <option value={c.code} selected={selected === c.code}>{c.name}</option>
+      ))}
+    </optgroup>
+  ))
+}

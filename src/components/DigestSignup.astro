@@ -7,10 +7,10 @@ import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { NativeSelect } from '@/components/ui/native-select'
 import { CONSENT, CURRENT_CONSENT } from '../../digest/src/consent'
-import { countriesByRegion } from '../lib/geo'
 import { approachLabels } from '../lib/labels'
 // Amounts convert to the reader's currency (the funder's own figure stays beside it); US dollars to start.
 import CurrencyOptions from './CurrencyOptions.astro'
+import WhereOptions from './WhereOptions.astro'
 import { DIGEST_LIVE } from '../lib/site'
 
 interface Props {
@@ -56,6 +56,12 @@ const show = DIGEST_LIVE || import.meta.env.DEV
     <div class="grid gap-3">
       <label class="sr-only" for={`${id}-email`}>Email</label>
       <Input id={`${id}-email`} name="email" type="email" required autoComplete="email" maxLength={254} placeholder="you@example.org" className="min-h-12 text-base!" />
+      <div>
+        <label class="mb-1 block text-left text-sm text-ink-2" for={`${id}-where`}>Where your projects are</label>
+        <NativeSelect id={`${id}-where`} name="where" className="min-h-12 text-base!" data-flags>
+          <WhereOptions selected={where} />
+        </NativeSelect>
+      </div>
       <Button type="submit" className="min-h-12 w-full text-base">Get the weekly email</Button>
     </div>
   ) : (<>
@@ -73,19 +79,7 @@ const show = DIGEST_LIVE || import.meta.env.DEV
     <div>
       <label class={label} for={`${id}-where`}>Where the project is <span class="font-normal text-ink-2">(optional)</span></label>
       <NativeSelect id={`${id}-where`} name="where" className="min-h-11" data-flags>
-        <option value="">Anywhere</option>
-        <optgroup label="Regions">
-          {countriesByRegion.map((r) => <option value={`r:${r.region}`} selected={where === `r:${r.region}`}>{r.label}</option>)}
-        </optgroup>
-        {
-          countriesByRegion.map((r) => (
-            <optgroup label={r.label}>
-              {r.countries.map((c) => (
-                <option value={c.code} selected={where === c.code}>{c.name}</option>
-              ))}
-            </optgroup>
-          ))
-        }
+        <WhereOptions selected={where} />
       </NativeSelect>
     </div>
     <div>
@@ -107,7 +101,7 @@ const show = DIGEST_LIVE || import.meta.env.DEV
 
   {!compact && !bare && <Button type="submit" className="mt-5 min-h-11">Get the weekly email</Button>}
   <p class:list={['mt-3 text-sm text-ink-2', bare && 'text-center']}>
-    {CONSENT[CURRENT_CONSENT]} We keep only your address{!bare && " and these choices"}. <a href="/privacy/#weekly-email">Privacy</a>
+    {CONSENT[CURRENT_CONSENT]} We keep only your address and these choices. <a href="/privacy/#weekly-email">Privacy</a>
   </p>
 </form>
 )}
