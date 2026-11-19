@@ -37,10 +37,10 @@ const link = 'text-link underline underline-offset-2'
                 {page ? <a class="text-ink underline decoration-ink-2 underline-offset-2" href={page}>{x.name}</a> : x.name}
                 {x.funder && <span class="text-base text-ink-2"> · {x.funder}</span>}
               </p>
-              <p class="mt-1.5 text-2xl leading-tight">
+              <p class="mt-2.5 rounded-lg border-[0.5px] border-rule bg-sunk px-3 py-2 text-2xl leading-tight">
                 {x.amount ? <strong class="font-bold">{x.amount.text}</strong> : <span class="text-lg text-ink-2">Amount not stated</span>}
               </p>
-              {x.place && <p class="mt-1 text-ink-2">{x.place}</p>}
+              {x.place && <p class="mt-2 text-ink-2">{x.place}</p>}
               {x.status && (
                 <p class="mt-1.5">
                   <span class="font-semibold text-brand">{x.status}</span>
@@ -48,10 +48,10 @@ const link = 'text-link underline underline-offset-2'
                 </p>
               )}
               {x.types.length > 0 && (
-                <p class="mt-1.5 flex flex-wrap gap-x-3 gap-y-1 text-sm text-ink-2">
+                <p class="mt-2 flex flex-wrap gap-1.5 text-sm text-ink-2">
                   {x.types.map((t) => (
-                    <span class="inline-flex items-center gap-1">
-                      <img src={`/icons/types/${t.key}.svg`} width="16" height="16" alt="" />
+                    <span class="inline-flex items-center gap-1 rounded-full border-[0.5px] border-rule bg-sunk py-0.5 pr-2 pl-1.5">
+                      <img src={`/icons/types/${t.key}.svg`} width="14" height="14" alt="" />
                       {t.label}
                     </span>
                   ))}

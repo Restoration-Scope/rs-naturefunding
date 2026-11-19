@@ -3,7 +3,7 @@
 // exactly what goes out. Run from the repo root:
 //   bun digest/scripts/gallery.ts                   digests of the last 14 days
 //   bun digest/scripts/gallery.ts --since 2026-11-05
-import { mkdirSync, writeFileSync } from 'node:fs'
+import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs'
 import { loadProgrammes } from '../../src/data/load'
 import { buildDigest } from '../src/digest'
 import { confirmationEmail, digestEmail, type Email } from '../src/email'
@@ -52,6 +52,13 @@ const samples: Sample[] = [
   { label: 'Confirmation · no choices', note: 'Sent when someone signs up for everything, amounts in euros.', email: confirmationEmail({ site: SITE, confirmUrl, prefs: cleanPrefs('', []), currency: 'EUR' }) },
 ]
 
+// Images the email loads from the site come from this checkout's public/ instead, so an icon this branch adds
+// shows before it's deployed. Everything else in the HTML stays as sent.
+const localImages = (html: string) =>
+  html.replace(new RegExp(`src="${SITE}/([^"]+\\.png)"`, 'g'), (whole, path: string) =>
+    existsSync(`public/${path}`) ? `src="data:image/png;base64,${readFileSync(`public/${path}`).toString('base64')}"` : whole,
+  )
+
 const esc = (s: string) => s.replaceAll('&', '&amp;').replaceAll('<', '&lt;').replaceAll('>', '&gt;').replaceAll('"', '&quot;')
 
 const columns = samples
@@ -62,7 +69,7 @@ const columns = samples
   ${
     s.email
       ? `<p class="subject"><span>Subject</span> ${esc(s.email.subject)}</p>
-  <iframe title="${esc(s.label)}" srcdoc="${esc(s.email.html)}" onload="fit(this)"></iframe>
+  <iframe title="${esc(s.label)}" srcdoc="${esc(localImages(s.email.html))}" onload="fit(this)"></iframe>
   <details><summary>Plain-text version</summary><pre>${esc(s.email.text)}</pre></details>`
       : '<div class="empty">No email</div>'
   }

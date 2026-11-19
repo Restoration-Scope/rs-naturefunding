@@ -2,6 +2,7 @@
 // - public/icons/regions/<region>: the region's land, drawn from its member countries (src/lib/geo.ts).
 // - public/icons/types/<type>: the lucide icon the finder shows for each project type (Finder.astro).
 // - public/icons/marks/<domain>.png: each funder's mark (public/marks/, from sync-favicons) as a 32×32 PNG.
+// - public/icons/logo: the site's leaf, beside the email's wordmark.
 // Each region and type is an SVG plus a 48×48 PNG, since Gmail and Outlook don't show SVG images
 // (and Outlook doesn't show WebP, the marks' format). sync-favicons also writes a new mark's PNG.
 import { mkdirSync, rmSync, writeFileSync } from 'node:fs'
@@ -60,6 +61,11 @@ for (const [key, Icon] of Object.entries(typeIcons)) {
   const svg = renderToStaticMarkup(createElement(Icon, { size: SIZE, color: BRAND, strokeWidth: 2.5 }))
   await write(join(out, 'types', key), svg)
 }
+// The site's logo leaf (the header in src/layouts/Base.astro), for the email's wordmark: shell green on the
+// email's linen, with linen veins. 66×66, shown at 22×22.
+const logo = `<svg xmlns="http://www.w3.org/2000/svg" width="${SIZE}" height="${SIZE}" viewBox="0 0 24 24"><path d="M12 2.5c-4.6 3.4-7 7-7 10.6a7 7 0 0 0 14 0c0-3.6-2.4-7.2-7-10.6Z" fill="#254b36"/><path d="M12 21.5V9.5m0 4.5 3.2-2.6M12 17l-3.4-2.8" fill="none" stroke="#edeae7" stroke-width="1.8" stroke-linecap="round"/></svg>`
+writeFileSync(join(out, 'logo.svg'), logo)
+await sharp(Buffer.from(logo), { density: 72 * 6 }).resize(66, 66).png({ compressionLevel: 9 }).toFile(join(out, 'logo.png'))
 // Funder marks; sync-favicons writes each new one too.
 for (const m of Object.values(marks)) if (m.file) await writeMarkPng(join(import.meta.dir, '../../public', m.file), m.domain)
 console.log('email icons written to public/icons/')

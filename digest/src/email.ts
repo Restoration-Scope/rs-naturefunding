@@ -31,6 +31,10 @@ const typeOf = Object.fromEntries(projectTypes.flatMap((t) => t.approaches.map((
 const icon = (src: string, w: number, h: number, radius = 0) =>
   `<img src="${esc(src)}" width="${w}" height="${h}" alt="" style="display:inline-block;vertical-align:-2px;margin-right:4px;border:0;${radius ? `border-radius:${radius}px;` : ''}">`
 
+/** A quiet pill for a project type: the page's paper tint and a hairline border, icon and label kept together. */
+const badge = (img: string, label: string) =>
+  `<span style="display:inline-block;white-space:nowrap;margin:4px 2px 0 0;padding:2px 8px 2px 6px;background:${C.paper};border:0.5px solid ${C.rule};border-radius:999px;">${img}${esc(label)}</span>`
+
 /** The icon stays on the same line as the label's first word; the rest of a long label can still wrap. */
 const withIcon = (img: string, label: string) => {
   const [first, ...rest] = esc(label).split(' ')
@@ -86,7 +90,10 @@ const floating = (html: string, o: { top?: number; bottom?: number } = {}) => `<
 
 /** The wordmark, straight on the page background above everything else. */
 const brand = (site: string) =>
-  floating(`<a href="${esc(site)}/" style="font-family:${SERIF};font-size:22px;color:${C.shell};text-decoration:none;">naturefunding<span style="color:${C.ink2};">.org</span></a>`, { top: 4 })
+  floating(
+    `<a href="${esc(site)}/" style="font-family:${SERIF};font-size:22px;color:${C.shell};text-decoration:none;"><img src="${esc(site)}/icons/logo.png" width="22" height="22" alt="" style="display:inline-block;vertical-align:-3px;margin-right:7px;border:0;">naturefunding<span style="color:${C.ink2};">.org</span></a>`,
+    { top: 4 },
+  )
 
 /** column: the email's cards and floating text, in a centred column 600px wide; footer: centred above the tagline. */
 function frame(preheader: string, column: string, footer?: string) {
@@ -207,10 +214,10 @@ export function digestEmail(o: { site: string; pages?: PagePaths; digest: Digest
           // Three groups, most important first: what it is; how much and where; whether it's open and what it funds.
           return card(
             `<div style="font-size:17px;line-height:1.35;">${title}${x.funder ? `<span style="font-size:14px;color:${C.ink2};"> · ${esc(x.funder)}</span>` : ''}</div>
-<div style="font-size:24px;line-height:1.2;margin-top:12px;">${amount}</div>
-${x.place ? `<div style="font-size:14px;line-height:1.4;color:${C.ink2};margin-top:3px;">${esc(x.place)}</div>` : ''}
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="margin-top:12px;border-collapse:separate;"><tr><td style="background:${C.paper};border:0.5px solid ${C.rule};border-radius:8px;padding:10px 12px;font-size:24px;line-height:1.2;">${amount}</td></tr></table>
+${x.place ? `<div style="font-size:14px;line-height:1.4;color:${C.ink2};margin-top:8px;">${esc(x.place)}</div>` : ''}
 ${x.status ? `<div style="font-size:15px;line-height:1.4;margin-top:14px;"><strong style="color:${C.brand};font-weight:600;">${esc(x.status)}</strong>${x.callLabel ? `<span style="color:${C.ink2};"> · ${esc(x.callLabel)}</span>` : ''}</div>` : ''}
-${x.types.length ? `<div style="font-size:14px;line-height:1.4;color:${C.ink2};margin-top:${x.status ? 8 : 14}px;">${x.types.map((t) => withIcon(icon(`${o.site}/icons/types/${t.key}.png`, 16, 16), t.label)).join('<span style="color:#c4c3be;">&nbsp; · &nbsp;</span>')}</div>` : ''}`,
+${x.types.length ? `<div style="font-size:13px;line-height:1.4;color:${C.ink2};margin-top:${x.status ? 6 : 12}px;">${x.types.map((t) => badge(icon(`${o.site}/icons/types/${t.key}.png`, 14, 14), t.label)).join(' ')}</div>` : ''}`,
           )
         })
         .join('')
