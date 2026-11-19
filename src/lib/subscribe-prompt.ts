@@ -25,7 +25,10 @@ const read = (): Stored | null => {
 const write = (s: Stored) => {
   try {
     localStorage.setItem(KEY, JSON.stringify(s))
-  } catch {}
+    return true
+  } catch {
+    return false
+  }
 }
 
 /** Whether the stored choices allow the prompt now. */
@@ -74,27 +77,39 @@ export function initSubscribePrompt() {
   const card = document.querySelector<HTMLElement>('[data-subscribe-prompt]')
   const shade = document.querySelector<HTMLElement>('[data-subscribe-shade]')
   const root = document.documentElement
-  // Pages under one and a half screens have nothing to scroll past.
-  if (!card || !shade || !mayAsk(read(), Date.now()) || root.scrollHeight <= 1.5 * innerHeight) return
+  const stored = read()
+  // Without a note that sticks, a closed card would come back on every page.
+  if (!card || !shade || !mayAsk(stored, Date.now()) || !write(stored!)) return
 
-  card.hidden = false
+  const room = root.scrollHeight - innerHeight
   const y = () => Math.max(root.scrollTop, 0)
+  // Out of reach of the keyboard until it shows.
+  card.inert = true
+  card.hidden = false
   // Where the card pins: the middle of the screen.
   let target = (innerHeight - card.offsetHeight) / 2
   let fixed = false
-  // The card's top in the page while it moves with it; it starts just below the fold.
-  let offset = innerHeight + Math.max(target, MIN_DROP)
   let last = y()
+  // The card's top in the page while it moves with it; it starts just below the fold, also when the page opens
+  // part way down.
+  let offset = innerHeight + Math.max(target, MIN_DROP, last)
   let seen = false
+  let closed = false
+  // Only on a page long enough for the card to reach the middle, and a screen tall enough to hold it.
+  if (room < offset - target || target < 8) {
+    card.hidden = true
+    return
+  }
 
   const draw = () => {
+    if (closed) return
     card.style.position = fixed ? 'fixed' : 'absolute'
     card.style.top = `${fixed ? target : offset}px`
     // The pinned card can't scroll, so the country list stops above the bottom of the screen.
     const list = card.querySelector<HTMLElement>('[role=listbox]')
     if (list)
       list.style.maxHeight = fixed
-        ? `min(22rem, 60dvh, ${Math.max(innerHeight - card.querySelector('[role=combobox]')!.getBoundingClientRect().bottom - 16, 160)}px)`
+        ? `min(22rem, 60dvh, ${Math.max(innerHeight - card.querySelector('[role=combobox]')!.getBoundingClientRect().bottom - 16, 0)}px)`
         : ''
     const rise = (last - offset + innerHeight) / (innerHeight - target)
     const shading = fixed ? MAX_SHADE : Math.min(Math.max(rise * MAX_SHADE, 0), MAX_SHADE)
@@ -110,14 +125,15 @@ export function initSubscribePrompt() {
     else if (d < 0 && fixed) {
       // Let go where it is, so it slides down with the page.
       fixed = false
-      offset = last + target
+      offset = now + target
     } else if (d < 0 && !fixed && now < offset - vh) {
       // Gone below the fold: wait there again, just under the bottom edge.
-      offset = vh + Math.max(target, MIN_DROP, last)
+      offset = vh + Math.max(target, MIN_DROP, now)
     }
     last = now
     if (!seen && (fixed || (d > 0 && now > offset - vh))) {
       seen = true
+      card.inert = false
       rest(SEEN_REST)
       // The country field searches with flags, as the finder's does (whose script already made it so on /).
       const where = card.querySelector<HTMLSelectElement>('select[data-flags]')
@@ -130,11 +146,12 @@ export function initSubscribePrompt() {
     draw()
   }
   const onResize = () => {
-    target = (innerHeight - card.offsetHeight) / 2
+    target = Math.max((innerHeight - card.offsetHeight) / 2, 8)
     onScroll()
   }
 
   const close = () => {
+    closed = true
     card.hidden = true
     shade.hidden = true
     removeEventListener('scroll', onScroll)
