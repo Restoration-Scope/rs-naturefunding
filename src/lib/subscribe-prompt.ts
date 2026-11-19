@@ -92,7 +92,10 @@ export function initSubscribePrompt() {
     card.style.top = `${fixed ? target : offset}px`
     // The pinned card can't scroll, so the country list stops above the bottom of the screen.
     const list = card.querySelector<HTMLElement>('[role=listbox]')
-    if (list && fixed) list.style.maxHeight = `${Math.max(innerHeight - card.querySelector('[role=combobox]')!.getBoundingClientRect().bottom - 16, 160)}px`
+    if (list)
+      list.style.maxHeight = fixed
+        ? `min(22rem, 60dvh, ${Math.max(innerHeight - card.querySelector('[role=combobox]')!.getBoundingClientRect().bottom - 16, 160)}px)`
+        : ''
     const rise = (last - offset + innerHeight) / (innerHeight - target)
     const shading = fixed ? MAX_SHADE : Math.min(Math.max(rise * MAX_SHADE, 0), MAX_SHADE)
     shade.hidden = shading <= 0
@@ -119,7 +122,10 @@ export function initSubscribePrompt() {
       // The country field searches with flags, as the finder's does (whose script already made it so on /).
       const where = card.querySelector<HTMLSelectElement>('select[data-flags]')
       if (where && !where.hidden)
-        import('./picker').then(({ picker }) => picker(where, true, 'top-1/2 left-[0.65rem] -translate-y-1/2', 'pl-[2.4rem]!'))
+        import('./picker').then(({ picker }) => {
+          picker(where, true, 'top-1/2 left-[0.65rem] -translate-y-1/2', 'pl-[2.4rem]!')
+          draw()
+        })
     }
     draw()
   }

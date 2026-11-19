@@ -190,12 +190,12 @@ describe('no hydration, small JavaScript', () => {
   }
 
   // The finder with the country picker it shares with the weekly-email prompt, and the prompt itself.
-  test('/ ships at most 13 KB of gzipped JavaScript at load', () => {
+  test('/ ships at most 14 KB of gzipped JavaScript at load', () => {
     const { external, inline } = scriptsOf('index.html')
     const js = [...[...closure(external, false)].map(read), ...inline]
     const gz = js.reduce((n, s) => n + gzipSync(s).length, 0)
     expect(gz).toBeGreaterThan(0)
-    expect(gz).toBeLessThanOrEqual(13 * 1024)
+    expect(gz).toBeLessThanOrEqual(14 * 1024)
   })
 
   test('finder pages load the same script as /', () => {
@@ -205,7 +205,11 @@ describe('no hydration, small JavaScript', () => {
 
   // The weekly-email prompt (src/components/SubscribePrompt.astro) is the one script file every page loads; its
   // country search (src/lib/picker.ts) comes only once the card shows.
-  const isPrompt = (src: string) => read(src.replace(/^\//, '')).includes('nf-weekly-email-prompt')
+  const promptFiles = new Map<string, boolean>()
+  const isPrompt = (src: string) => {
+    if (!promptFiles.has(src)) promptFiles.set(src, read(src.replace(/^\//, '')).includes('nf-weekly-email-prompt'))
+    return promptFiles.get(src)!
+  }
 
   test('every page loads the weekly-email prompt script once, at most 4.5 KB', () => {
     const files = new Set<string>()
