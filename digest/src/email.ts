@@ -212,14 +212,14 @@ export function digestEmail(o: { site: string; pages?: PagePaths; digest: Digest
           const x = itemParts(i, o.site, o.prefs, o.currency)
           const amount = x.amount
             ? `<strong style="font-weight:700;color:${C.ink};">${esc(x.amount.text)}</strong>${x.amount.original ? `<span style="font-size:15px;color:${C.ink2};"> (${esc(x.amount.original)})</span>` : ''}`
-            : `<span style="font-size:18px;color:${C.ink2};">Amount not stated</span>`
+            : `<span style="color:${C.ink2};">Amount not stated</span>`
           // The title is the item's one link (our listing, which links on to the funder's page and the evidence):
           // brand green and semibold, the card's only coloured text besides a live call.
           const title = `${x.mark}<a href="${esc(x.page)}" style="color:${C.brand};font-weight:600;text-decoration:none;">${esc(x.name)}</a>`
           // Three groups, most important first: what it is; how much and where; whether it's open and what it funds.
           return card(
             `<div style="font-size:17px;line-height:1.35;">${title}${x.funder ? `<span style="font-size:14px;color:${C.ink2};"> · ${esc(x.funder)}</span>` : ''}</div>
-<table role="presentation" cellpadding="0" cellspacing="0" border="0" style="margin-top:12px;border-collapse:separate;"><tr><td style="background:${C.paper};border:0.5px solid ${C.rule};border-radius:12px;padding:10px 14px;font-size:24px;line-height:1.2;">${amount}</td></tr></table>
+<table role="presentation" cellpadding="0" cellspacing="0" border="0" style="margin-top:12px;border-collapse:separate;"><tr><td style="background:${C.paper};border:0.5px solid ${C.rule};border-radius:12px;padding:10px 14px;font-size:${x.amount ? 24 : 18}px;line-height:1.2;">${amount}</td></tr></table>
 ${x.place ? `<div style="font-size:14px;line-height:1.4;color:${C.ink2};margin-top:8px;">${x.flags.map((c) => icon(`${o.site}/flags/${c}.png`, 21, 14, 2)).join('')}${esc(x.place)}</div>` : ''}
 ${x.status ? `<div style="font-size:15px;line-height:1.4;margin-top:14px;"><strong style="color:${C.brand};font-weight:600;">${esc(x.status)}</strong>${x.callLabel ? `<span style="color:${C.ink2};"> · ${esc(x.callLabel)}</span>` : ''}</div>` : ''}
 ${x.types.length ? `<div style="font-size:13px;line-height:1.4;color:${C.ink2};margin-top:${x.status ? 6 : 12}px;">${x.types.map((t) => badge(icon(`${o.site}/icons/types/${t.key}-muted.png`, 14, 14), t.label)).join(' ')}</div>` : ''}`,
