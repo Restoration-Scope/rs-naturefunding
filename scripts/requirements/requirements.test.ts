@@ -566,14 +566,16 @@ describe('the stamp: every path that must block it', () => {
     expect(next.requirements_checked).toBeUndefined()
   })
 
-  test('documents left out to fit three passages leave the field open', async () => {
+  test('a document list spread over a page keeps every item, one quote each', async () => {
     const guide = `${GUIDE} ${'Filler about the programme and its history. '.repeat(30)} Include a site map. ${'More filler text about wetlands. '.repeat(30)} Include a CV for the project lead. ${'Closing words about rivers. '.repeat(30)} Include a land title.`
     const w = goodWire()
     w.documents.items.push({ item: 'Site map', doc: 'D2', quote: 'Include a site map.' }, { item: 'CV of the project lead', doc: 'D2', quote: 'Include a CV for the project lead.' }, { item: 'Land title', doc: 'D2', quote: 'Include a land title.' })
     const r = await run(base, { read: fakeReader({ ...pages, 'https://test.example.org/guidelines.pdf': guide }), sources: [], cheap: fakeAsk([w]).ask, strong: null, jev: fakeJev().ask })
     const { next, manifestBits } = apply(base, r, '2026-11-16', [])
-    expect(manifestBits.outcomes.documents).toBe('unresolved')
-    expect(next.requirements_checked).toBeUndefined()
+    expect(manifestBits.outcomes.documents).toBe('stated')
+    expect(next.documents).toHaveLength(5)
+    expect(next.evidence.documents!.length).toBeGreaterThan(3)
+    expect(next.evidence.documents!.length).toBeLessThanOrEqual(5)
   })
 
   test('a newly cited page joins the watch list, and only this programme’s selector changes', async () => {

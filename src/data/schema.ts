@@ -455,8 +455,8 @@ export const programme = z
       co_finance: evidence.optional(),
       /** One quote per duty at most. */
       after_award: z.array(evidence).min(1).max(4).optional(),
-      /** A list of documents usually sits in one or two places. */
-      documents: z.array(evidence).min(1).max(3).optional(),
+      /** A list of documents usually sits in one to three passages; a list spread over a page takes one quote per document at most. */
+      documents: z.array(evidence).min(1).max(10).optional(),
       odds: evidence.optional(),
     }).strict(),
     /** The oldest evidence date: every fact above was read on or after this day. */
@@ -498,6 +498,9 @@ export const programme = z
       if ((e.revenue || e.request_cap) && e.kind !== 'finances') issue(['eligibility', i, 'kind'], 'a revenue range or request cap goes on a finances rule')
       const quote = p.evidence.eligibility?.[i]?.quote
       if (quote) for (const t of thresholdProblems(e, quote)) issue(['eligibility', i, t.key], t.why)
+    }
+    if (p.documents && p.evidence.documents && p.evidence.documents.length > Math.max(3, p.documents.length)) {
+      issue(['evidence', 'documents'], `more than 3 quotes only at one per document: ${p.documents.length} documents, ${p.evidence.documents.length} quotes`)
     }
     if (p.co_finance && p.co_finance_required !== true) issue(['co_finance'], 'a co-funding share needs co_finance_required: true')
     const due = p.effort?.due

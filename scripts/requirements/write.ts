@@ -73,7 +73,6 @@ export function apply(
   const packed = (qs: Quote[], max: number) => packQuotes(r.gathered.docs, qs, max)
   let cur: Draft = structuredClone(p) as Draft
   const used: Quote[] = []
-  const dropped = new Set<Field>()
   let docsKept = r.facts.documents
 
   const tryField = (field: Field, edit: (d: Draft) => Quote[] | null) => {
@@ -196,22 +195,13 @@ export function apply(
       continue
     }
     if (field === 'documents') {
-      let items = f.documents
-      let pk = packed(items.map((x) => x.q), 3)
-      if (!pk) {
-        // Too many separate passages: keep the items the three fullest passages state.
-        const groups = new Map<string, number[]>()
-        items.forEach((x, i) => groups.set(`${x.q.doc}|${comparable(x.q.quote)}`, [...(groups.get(`${x.q.doc}|${comparable(x.q.quote)}`) ?? []), i]))
-        const keep = new Set([...groups.values()].sort((a, b) => b.length - a.length).slice(0, 3).flat())
-        notes.push(`documents: ${items.length - keep.size} items left out, more than 3 separate passages state them`)
-        items = items.filter((_, i) => keep.has(i))
-        pk = packed(items.map((x) => x.q), 3)
-        // The file can hold only some of them: what it shows is true, but not the whole list.
-        dropped.add(field)
-      }
+      const items = f.documents
+      // The fewest passages that state every item: three when the list sits together, else up to one per document.
+      let pk: ReturnType<typeof packed> = null
+      for (let max = 3; !pk && max <= Math.max(3, items.length); max++) pk = packed(items.map((x) => x.q), max)
       if (!pk) {
         outcomes[field] = 'unresolved'
-        notes.push('documents: not written, the quotes do not fit three passages')
+        notes.push('documents: not written, the quotes do not fit one passage per document')
         continue
       }
       if (!guard(field, pk.packed)) continue
@@ -261,7 +251,6 @@ export function apply(
     }
   }
 
-  for (const x of dropped) outcomes[x] = 'unresolved'
   const unresolved = FIELDS.filter((x) => outcomes[x] === 'unresolved' || outcomes[x] === 'partial')
   let stamp = r.gathered.complete && unresolved.length === 0 && !r.error
   if (stamp) {
