@@ -47,7 +47,8 @@ describe('pages', () => {
       ...pastIssues().map((i) => `digest/${i.date}/index.html`),
     ].sort()
     expect(htmlFiles).toEqual(expected)
-  })
+    // pastIssues() replays the data's git history: a few seconds, near bun's 5s default.
+  }, 30_000)
 })
 
 describe('finder DOM contract (src/lib/finder.ts)', () => {
@@ -173,12 +174,29 @@ describe('no hydration, small JavaScript', () => {
     }
   })
 
-  test('/ ships at most 12 KB of gzipped JavaScript', () => {
+  // A script file with the files it imports, at load (`from "./x.js"`) or later (`import(`./x.js`)`).
+  const importsOf = (f: string, lazy: boolean) =>
+    [...read(f).matchAll(lazy ? /(?:from\s*|import\s*\(\s*)["'`]\.\/([^"'`]+\.js)/g : /from\s*["'`]\.\/([^"'`]+\.js)/g)].map(
+      (m) => join('_astro', m[1]!),
+    )
+  const closure = (srcs: string[], lazy: boolean) => {
+    const seen = new Set<string>()
+    const visit = (f: string) => {
+      if (seen.has(f)) return
+      seen.add(f)
+      for (const g of importsOf(f, lazy)) visit(g)
+    }
+    for (const s of srcs) visit(s.replace(/^\//, ''))
+    return seen
+  }
+
+  // The finder with the country picker it shares with the weekly-email prompt, and the prompt itself.
+  test('/ ships at most 14 KB of gzipped JavaScript at load', () => {
     const { external, inline } = scriptsOf('index.html')
-    const js = [...external.map((src) => read(src.replace(/^\//, ''))), ...inline]
+    const js = [...[...closure(external, false)].map(read), ...inline]
     const gz = js.reduce((n, s) => n + gzipSync(s).length, 0)
     expect(gz).toBeGreaterThan(0)
-    expect(gz).toBeLessThanOrEqual(12 * 1024)
+    expect(gz).toBeLessThanOrEqual(14 * 1024)
   })
 
   test('finder pages load the same script as /', () => {
@@ -186,10 +204,29 @@ describe('no hydration, small JavaScript', () => {
     for (const f of finderPagesHtml) expect(scriptsOf(f).external, f).toEqual(homeExternal)
   })
 
-  test('no other page loads a script file; only /about/, /worth-applying/ and programme pages have small inline scripts', () => {
+  // The weekly-email prompt (src/components/SubscribePrompt.astro) is the one script file every page loads; its
+  // country search (src/lib/picker.ts) comes only once the card shows.
+  const promptFiles = new Map<string, boolean>()
+  const isPrompt = (src: string) => {
+    if (!promptFiles.has(src)) promptFiles.set(src, read(src.replace(/^\//, '')).includes('nf-weekly-email-prompt'))
+    return promptFiles.get(src)!
+  }
+
+  test('every page loads the weekly-email prompt script once, at most 4.5 KB', () => {
+    const files = new Set<string>()
+    for (const f of htmlFiles) {
+      const prompt = scriptsOf(f).external.filter(isPrompt)
+      expect(prompt.length, f).toBe(1)
+      files.add(prompt[0]!)
+    }
+    expect(files.size).toBe(1)
+    for (const src of files) expect(read(src.replace(/^\//, '')).length).toBeLessThanOrEqual(4500)
+  }, fullDistTimeout)
+
+  test('no other page loads another script file; only /about/, /worth-applying/ and programme pages have small inline scripts', () => {
     for (const f of htmlFiles.filter((x) => x !== 'index.html' && !finderPagesHtml.includes(x))) {
       const { external, inline } = scriptsOf(f)
-      expect(external, f).toEqual([])
+      expect(external.filter((src) => !isPrompt(src)), f).toEqual([])
       if (f === 'about/index.html') {
         expect(inline.length).toBeLessThanOrEqual(1)
         expect(inline.join('').length).toBeLessThanOrEqual(400)
@@ -208,8 +245,8 @@ describe('no hydration, small JavaScript', () => {
     }
   }, fullDistTimeout)
 
-  test('every JS file in dist is the one / loads', () => {
-    const loaded = new Set(scriptsOf('index.html').external.map((s) => s.replace(/^\//, '')))
+  test('every JS file in dist is one / loads, at once or later', () => {
+    const loaded = closure(scriptsOf('index.html').external, true)
     expect(files.filter((f) => f.endsWith('.js')).sort()).toEqual([...loaded].sort())
   })
 })

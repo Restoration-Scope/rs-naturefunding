@@ -5,8 +5,8 @@ import { loadProgrammes } from '../../src/data/load'
 import type { Programme } from '../../src/data/schema'
 import { whereCodes as siteWhereCodes } from '../../src/lib/data'
 import { marks } from '../../src/lib/marks'
-import { buildDigest } from './digest'
-import { digestEmail, finderUrl, POSTAL_ADDRESS } from './email'
+import { buildDigest, type DigestItem } from './digest'
+import { digestEmail, finderUrl, itemParts, POSTAL_ADDRESS } from './email'
 import { pagePaths } from '../../src/lib/finder-pages'
 import { pageKey } from '../../src/lib/page-paths'
 import { diffSnapshots, type Snapshot } from './events'
@@ -140,7 +140,7 @@ describe('one subscriber’s digest', () => {
     expect(e.subject).toBe('1 call open · Kenya')
     expect(e.html).toContain(`https://naturefunding.org/p/${withOpen.id}/`)
     expect(e.html).toContain('https://email.naturefunding.org/unsubscribe?t=x')
-    expect(e.text).toContain('New since November 8, 2026, for Kenya.')
+    expect(e.text).toContain('New for Kenya since November 8, 2026.')
     // The sender's postal address in both versions (CAN-SPAM).
     expect(e.html).toContain('411 Walnut Street #24052')
     expect(e.text).toContain(POSTAL_ADDRESS)
@@ -182,5 +182,22 @@ describe('funder marks', () => {
   test('every stored mark has its email PNG (run bun scripts/images/email-icons.ts after sync-favicons)', () => {
     const missing = Object.values(marks).filter((m) => m.file && !existsSync(join(import.meta.dir, '../../public/icons/marks', `${m.domain}.png`)))
     expect(missing.map((m) => m.domain)).toEqual([])
+  })
+})
+
+describe('email images', () => {
+  test('every image a card can show is in public/: flags, type badges, the logo', () => {
+    const site = 'https://naturefunding.org'
+    const prefs = cleanPrefs('', [])
+    const all = loadProgrammes()
+    // Antarctica is a valid country code with no flag file: it must not ask for one.
+    const aq = { ...all[0], geography: { scope: 'countries', countries: ['AQ'] } } as Programme
+    const srcs = [...all, aq].flatMap((programme) => {
+      const x = itemParts({ programme, section: 'new' } as DigestItem, site, prefs)
+      return [...x.flags.map((c) => `flags/${c}.png`), ...x.types.map((t) => `icons/types/${t.key}-muted.png`)]
+    })
+    srcs.push('icons/logo.png')
+    const missing = [...new Set(srcs)].filter((s) => !existsSync(join(import.meta.dir, '../../public', s)))
+    expect(missing).toEqual([])
   })
 })

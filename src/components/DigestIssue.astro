@@ -33,27 +33,35 @@ const link = 'text-link underline underline-offset-2'
           return (
             <li class="py-4">
               <p class="text-lg">
-                {x.amount ? <strong class="font-semibold">{x.amount.text}</strong> : <span class="text-ink-2">Amount not stated</span>}
-                {x.place.text && <span class="text-ink-2"> · {x.place.text}</span>}
+                <OrgMark org={i.programme.funder} size={16} class="mr-1.5 -mt-0.5" />
+                {page ? <a class="text-ink underline decoration-ink-2 underline-offset-2" href={page}>{x.name}</a> : x.name}
+                {x.funder && <span class="text-base text-ink-2"> · {x.funder}</span>}
               </p>
-              <p class="mt-1">{page ? <a class="underline decoration-rule-strong underline-offset-2" href={page}>{x.name}</a> : x.name}</p>
-              <p class="mt-0.5 flex items-center gap-1.5">
-                <OrgMark org={i.programme.funder} size={16} />
-                {x.funder}
+              <p class:list={['mt-2.5 w-fit rounded-xl border-[0.5px] border-rule bg-sunk px-3.5 py-2 leading-tight', x.amount ? 'text-2xl' : 'text-lg']}>
+                {x.amount ? <strong class="font-bold">{x.amount.text}</strong> : <span class="text-ink-2">Amount not stated</span>}
               </p>
-              <p class="mt-2">
-                <span class:list={[x.live ? 'font-semibold text-brand' : 'text-ink-2']}>{x.status}</span>
-                {x.callLabel && <span class="text-ink-2"> · {x.callLabel}</span>}
-              </p>
-              <p class="mt-2 text-sm">
-                <a class={link} href={x.callUrl}>Funder’s page</a>
-                {page && (
-                  <>
-                    <span class="px-1 text-rule-strong">|</span>
-                    <a class={link} href={page}>Details and evidence</a>
-                  </>
-                )}
-              </p>
+              {x.place && (
+                <p class="mt-2 text-ink-2">
+                  {x.flags.map((c) => <img class="mr-1 inline-block rounded-[2px] align-[-2px]" src={`/flags/${c}.svg`} width="21" height="14" alt="" />)}
+                  {x.place}
+                </p>
+              )}
+              {x.status && (
+                <p class="mt-1.5">
+                  <span class="font-semibold text-brand">{x.status}</span>
+                  {x.callLabel && <span class="text-ink-2"> · {x.callLabel}</span>}
+                </p>
+              )}
+              {x.types.length > 0 && (
+                <p class="mt-2 flex flex-wrap gap-1.5 text-sm text-ink-2">
+                  {x.types.map((t) => (
+                    <span class="inline-flex items-center gap-1 rounded-full border-[0.5px] border-rule bg-sunk px-2 py-0.5">
+                      <img src={`/icons/types/${t.key}-muted.svg`} width="14" height="14" alt="" />
+                      {t.label}
+                    </span>
+                  ))}
+                </p>
+              )}
             </li>
           )
         })}

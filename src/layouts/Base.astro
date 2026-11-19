@@ -2,6 +2,7 @@
 import '../styles/global.css'
 import { RS_DESCRIPTOR, RS_FOOTER_REPORTING_URL, RS_URL, SITE_NAME, absolute, generalReportUrl } from '../lib/site'
 import { twinPath } from '../lib/twins'
+import SubscribePrompt from '../components/SubscribePrompt.astro'
 
 interface Props {
   title: string
@@ -136,6 +137,9 @@ const ld = jsonLd ? (Array.isArray(jsonLd) ? jsonLd : [jsonLd]) : []
         <p class="lg:col-span-full">Data <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>.</p>
       </div>
     </footer>
+
+    {/* The weekly email's own pages already ask; the 404 has nothing to read. */}
+    <SubscribePrompt show={!path.startsWith('/digest/') && path !== '/404/'} />
 
     <script>
       // Visit counts in PostHog, cookieless: no cookies or storage, visitors are a daily hash on PostHog's side.
