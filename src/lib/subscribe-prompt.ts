@@ -34,9 +34,7 @@ const write = (s: Stored) => {
 /** Whether the stored choices allow the prompt now. */
 export const mayAsk = (s: Stored | null, now: number) => s !== null && !s.subscribed && !(s.next && s.next > now)
 
-const rest = (ms: number) => {
-  if (!read()?.subscribed) write({ next: Date.now() + ms })
-}
+const rest = (ms: number) => read()?.subscribed || write({ next: Date.now() + ms })
 
 // The weekly email's Where follows the page's own: the finder's Where (its header field, on / and the place
 // pages) or a programme page's ?where=. A form whose Where the reader picked keeps their pick.
@@ -131,10 +129,13 @@ export function initSubscribePrompt() {
       offset = vh + Math.max(target, MIN_DROP, now)
     }
     last = now
-    if (!seen && (fixed || (d > 0 && now > offset - vh))) {
+    draw()
+    // Seen once any of it is on screen, after a scroll or a resize.
+    if (!seen && card.getBoundingClientRect().top < vh) {
       seen = true
       card.inert = false
-      rest(SEEN_REST)
+      // A note that won't keep would bring the card back on every page.
+      if (!rest(SEEN_REST)) return close()
       // The country field searches with flags, as the finder's does (whose script already made it so on /).
       const where = card.querySelector<HTMLSelectElement>('select[data-flags]')
       if (where && !where.hidden)
@@ -143,7 +144,6 @@ export function initSubscribePrompt() {
           draw()
         })
     }
-    draw()
   }
   const onResize = () => {
     target = Math.max((innerHeight - card.offsetHeight) / 2, 8)
