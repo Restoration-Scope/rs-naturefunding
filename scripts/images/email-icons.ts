@@ -20,6 +20,7 @@ import { marks } from '../../src/lib/marks'
 import { writeMarkPng } from '../data/sync-favicons'
 
 const BRAND = '#3a7e49' // --brand in src/styles/global.css
+const INK2 = '#565e5b' // --ink-2
 const SIZE = 24
 const out = join(import.meta.dir, '../../public/icons')
 rmSync(out, { recursive: true, force: true })
@@ -60,6 +61,8 @@ const typeIcons = { forests: Trees, coasts: Waves, wetlands: Droplets, grassland
 for (const [key, Icon] of Object.entries(typeIcons)) {
   const svg = renderToStaticMarkup(createElement(Icon, { size: SIZE, color: BRAND, strokeWidth: 2.5 }))
   await write(join(out, 'types', key), svg)
+  // Grey, for the quiet type badges on the email's cards and the past issues.
+  await write(join(out, 'types', `${key}-muted`), renderToStaticMarkup(createElement(Icon, { size: SIZE, color: INK2, strokeWidth: 2.5 })))
 }
 // The site's logo leaf (the header in src/layouts/Base.astro), for the email's wordmark: shell green on the
 // email's linen, with linen veins. 66×66, shown at 22×22.
