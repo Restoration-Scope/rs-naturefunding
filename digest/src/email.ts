@@ -3,7 +3,7 @@
 import type { Call } from '../../src/data/schema'
 import { amountShort, geographyText, longDate } from '../../src/lib/format'
 import { ratesDate } from '../../src/lib/rates'
-import { countryName, regionLabels, type Region } from '../../src/lib/geo'
+import { countryName, countryRegion, regionLabels, type Region } from '../../src/lib/geo'
 import { approachLabels, projectTypes } from '../../src/lib/labels'
 import { markFor } from '../../src/lib/marks'
 import { pageHref, type PagePaths } from '../../src/lib/page-paths'
@@ -176,10 +176,11 @@ export function itemParts(i: DigestItem, site: string, prefs: Prefs, currency?: 
     callLabel: status ? (i.call?.label ?? null) : null,
     amount: amountShort(p.amount, currency),
     place: placeOf(i, prefs),
-    // The flags of the countries it names, when there are 3 at most; more would crowd the line.
+    // The flags of the countries it names, when there are 3 at most; more would crowd the line. Only countries in
+    // countryRegion have a flag in public/flags/ (scripts/images/flags.ts), so Antarctica gets none.
     flags: (() => {
       const g = p.geography
-      return placeOf(i, prefs) && g?.scope === 'countries' && g.countries.length <= 3 ? g.countries : []
+      return placeOf(i, prefs) && g?.scope === 'countries' && g.countries.length <= 3 ? g.countries.filter((c) => c in countryRegion) : []
     })(),
     // The project types it funds, with the finder's icons. Left out when the subscriber chose a type: the heading names it.
     types: prefs.approaches.length ? [] : projectTypes.filter((t) => t.approaches.some((a) => p.approaches.includes(a))).map((t) => ({ key: t.key, label: t.label })),
