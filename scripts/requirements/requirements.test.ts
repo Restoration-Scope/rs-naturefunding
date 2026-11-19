@@ -250,6 +250,9 @@ describe('gather', () => {
     const at = 'https://test.example.org/grants'
     expect(classifyLink({ href: '/guidelines.pdf', text: 'Guidelines', context: '' }, at, base).score).toBe('strong')
     expect(classifyLink({ href: '/news/2026', text: 'Latest news', context: '' }, at, base).score).toBe('skip')
+    // A checklist of attachments lists the documents applicants submit.
+    expect(classifyLink({ href: '/checklist.pdf', text: 'Checklist verplichte bijlagen', context: '' }, at, base).score).toBe('strong')
+    expect(classifyLink({ href: '/files/Match-Form.docx', text: 'Match Form', context: '' }, at, base).score).toBe('strong')
     expect(classifyLink({ href: '/proposals/public-support-grants/', text: 'READ REQUEST FOR PROPOSALS', context: '' }, at, base).score).toBe('strong')
     expect(classifyLink({ href: 'https://other.example.com/', text: 'Partner', context: '' }, at, base).score).toBe('skip')
   })
