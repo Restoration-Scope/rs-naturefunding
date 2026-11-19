@@ -186,9 +186,21 @@ describe('no hydration, small JavaScript', () => {
     for (const f of finderPagesHtml) expect(scriptsOf(f).external, f).toEqual(homeExternal)
   })
 
+  // The weekly-email prompt (src/components/SubscribePrompt.astro) is the one inline script every page may carry.
+  const isPrompt = (js: string) => js.includes('nf-weekly-email-prompt')
+
+  test('every page carries the weekly-email prompt script once, at most 1.5 KB', () => {
+    for (const f of htmlFiles) {
+      const prompt = scriptsOf(f).inline.filter(isPrompt)
+      expect(prompt.length, f).toBe(1)
+      expect(prompt[0].length, f).toBeLessThanOrEqual(1500)
+    }
+  }, fullDistTimeout)
+
   test('no other page loads a script file; only /about/, /worth-applying/ and programme pages have small inline scripts', () => {
     for (const f of htmlFiles.filter((x) => x !== 'index.html' && !finderPagesHtml.includes(x))) {
-      const { external, inline } = scriptsOf(f)
+      const { external } = scriptsOf(f)
+      const inline = scriptsOf(f).inline.filter((js) => !isPrompt(js))
       expect(external, f).toEqual([])
       if (f === 'about/index.html') {
         expect(inline.length).toBeLessThanOrEqual(1)
