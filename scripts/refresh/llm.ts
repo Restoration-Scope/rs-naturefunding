@@ -13,7 +13,11 @@ export type Llm = {
   /** Page text beyond this is cut, to stay inside the provider's input limit. */
   maxChars: number
   chat(model: string, system: string, user: string): Promise<unknown>
+  /** The same call, with the token counts the provider billed, for cost accounting. */
+  chatWithUsage(model: string, system: string, user: string): Promise<{ value: unknown; usage: Usage }>
 }
+
+export type Usage = { input_tokens: number; output_tokens: number }
 
 type Provider = { baseUrl: string; key: string; extractor: string; reviewer: string; maxChars: number; catalog: string }
 
@@ -72,7 +76,7 @@ export function llmFromEnv(env = process.env): Llm | null {
     extractor: env.LLM_EXTRACTOR?.trim() || p.extractor,
     reviewer: env.LLM_REVIEWER?.trim() || p.reviewer,
     maxChars: p.maxChars,
-    async chat(model, system, user) {
+    async chatWithUsage(model, system, user) {
       const messages = [{ role: 'system', content: system }, { role: 'user', content: user }]
       // Workers AI caps answers at a few hundred tokens by default, which a reasoning model uses up before it answers.
       const base = { model, messages, temperature: 0, max_tokens: 8192 }
@@ -81,10 +85,18 @@ export function llmFromEnv(env = process.env): Llm | null {
       const text = await res.text()
       if (!res.ok) throw new Error(`${name} ${model}: HTTP ${res.status} ${text.slice(0, 300)}`)
       try {
-        return parseJsonAnswer(answerText(JSON.parse(text)))
+        const json = JSON.parse(text)
+        const u = json.usage ?? json.result?.usage ?? {}
+        return {
+          value: parseJsonAnswer(answerText(json)),
+          usage: { input_tokens: Number(u.prompt_tokens ?? u.input_tokens ?? 0), output_tokens: Number(u.completion_tokens ?? u.output_tokens ?? 0) },
+        }
       } catch (e) {
         throw new Error(`${name} ${model}: ${(e as Error).message}`)
       }
+    },
+    async chat(model, system, user) {
+      return (await this.chatWithUsage(model, system, user)).value
     },
   }
 }

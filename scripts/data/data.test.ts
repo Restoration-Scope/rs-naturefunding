@@ -151,6 +151,76 @@ describe('eligibility, documents and step dates', () => {
   })
 })
 
+describe('typed values on eligibility rules', () => {
+  const withRule = (rule: NonNullable<Programme['eligibility']>[number], quote: string) => {
+    const p = fixture()
+    p.eligibility = [rule]
+    p.evidence.eligibility = [ev(quote)]
+    return p
+  }
+
+  test('years operating, stated as years, words or months', () => {
+    const rule = { rule: 'Operating for at least 3 years', kind: 'track_record' as const, min_years: 3 }
+    expect(problems(withRule(rule, 'Applicants must have operated for at least 3 years.'))).toEqual([])
+    expect(problems(withRule(rule, 'Applicants must have operated for at least three years.'))).toEqual([])
+    expect(problems(withRule(rule, 'Organisations must have existed for 36 months.'))).toEqual([])
+    expect(problems(withRule(rule, 'Organisations must have existed for some years.'))).toEqual([
+      "eligibility.0.min_years: the rule's quote does not state 3 years (or 36 months)",
+    ])
+  })
+
+  test('a number means what its unit says', () => {
+    const three = { rule: 'Operating for at least 3 years', kind: 'track_record' as const, min_years: 3 }
+    expect(problems(withRule(three, 'The foundation has supported groups for 36 years.'))).toHaveLength(1)
+    expect(problems(withRule({ ...three, min_years: 1 }, '団体として 1 年以上の実活動の実績'))).toEqual([])
+    const million = { rule: 'Revenue of at least €1', kind: 'finances' as const, revenue: { currency: 'EUR', min: 1, basis: 'revenue' as const } }
+    expect(problems(withRule(million, 'Applicants need an annual revenue of at least EUR 1 million.'))).toHaveLength(1)
+    const cap = { rule: 'Request no more than yearly revenue', kind: 'finances' as const, request_cap: { share: 100, of: 'revenue' as const } }
+    expect(problems(withRule(cap, 'Tell us your annual revenue in the form.'))).toHaveLength(1)
+  })
+
+  test('years operating go on a track-record rule', () => {
+    const rule = { rule: 'Operating for at least 2 years', kind: 'legal' as const, min_years: 2 }
+    expect(problems(withRule(rule, 'Applicants must be registered for two years.'))).toEqual(['eligibility.0.min_years: years operating go on a track_record rule'])
+  })
+
+  test('a revenue range needs its numbers and currency in the quote', () => {
+    const rule = {
+      rule: 'Average yearly revenue of €60,000 to €500,000', kind: 'finances' as const,
+      revenue: { currency: 'EUR', min: 60000, max: 500000, basis: 'revenue' as const, average_years: 3 },
+    }
+    const quote = 'Over the last three years the applicant must have an average annual revenue of at least EUR 60,000 and no more than EUR 500,000.'
+    expect(problems(withRule(rule, quote))).toEqual([])
+    expect(problems(withRule(rule, quote.replace('EUR 500,000', '€500.000')))).toEqual([])
+    expect(problems(withRule(rule, quote.replace('500,000', '400,000')))).toEqual(["eligibility.0.revenue: the rule's quote does not state 500000"])
+    expect(problems(withRule({ ...rule, revenue: { ...rule.revenue, currency: 'USD' } }, quote))).toEqual(["eligibility.0.revenue: the rule's quote does not name USD"])
+  })
+
+  test('a budget cap in millions and a scale word', () => {
+    const rule = { rule: 'Yearly budget under $2 million', kind: 'finances' as const, revenue: { currency: 'USD', max: 2_000_000, basis: 'budget' as const } }
+    expect(problems(withRule(rule, 'Organizations with annual budgets of less than $2 million are eligible.'))).toEqual([])
+    expect(problems(withRule(rule, 'Organizations with annual budgets of less than $2M are eligible.'))).toEqual([])
+  })
+
+  test('a request capped by revenue', () => {
+    const rule = { rule: 'Your request is no more than your yearly revenue', kind: 'finances' as const, request_cap: { share: 100, of: 'revenue' as const } }
+    expect(problems(withRule(rule, 'The requested amount must not exceed the average annual revenue of the organisation.'))).toEqual([])
+    const half = { ...rule, request_cap: { share: 50, of: 'budget' as const } }
+    expect(problems(withRule(half, 'Requests may not exceed 50% of your annual operating budget.'))).toEqual([])
+    expect(problems(withRule(half, 'Requests may not exceed your annual operating budget.'))).toEqual(["eligibility.0.request_cap: the rule's quote does not state 50%"])
+    expect(problems(withRule(rule, 'Requests may not exceed the grant ceiling of the round.'))).toEqual([
+      'eligibility.0.request_cap: the rule’s quote does not compare the request with revenue or a budget',
+    ])
+  })
+
+  test('a revenue range or request cap goes on a finances rule, and unknown keys are refused', () => {
+    const rule = { rule: 'Your request is no more than your yearly revenue', kind: 'capacity' as const, request_cap: { share: 100, of: 'revenue' as const } }
+    expect(problems(withRule(rule, 'The request must not exceed the annual revenue.'))).toEqual(['eligibility.0.kind: a revenue range or request cap goes on a finances rule'])
+    const typo = { rule: 'Operating for at least 3 years', kind: 'track_record' as const, min_year: 3 } as never
+    expect(problems(withRule(typo, 'Applicants must have operated for at least 3 years.')).join(' ')).toContain('min_year')
+  })
+})
+
 describe('a step date must be stated whole in one quote', () => {
   test.each([
     ['by January 08, 2027.', '2027-01-08', true],

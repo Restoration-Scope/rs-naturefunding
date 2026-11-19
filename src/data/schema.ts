@@ -1,6 +1,7 @@
 import { z } from 'zod'
 import { deadlinePassed } from '../../scripts/refresh/deadline'
 import { meaningfulQuote, MIN_QUOTE_CHARS } from './text'
+import { thresholdProblems } from './thresholds'
 
 export const isoDate = z.string().regex(/^\d{4}-\d{2}-\d{2}$/, 'YYYY-MM-DD')
 /** Caps on free text, so a model's output can't carry a page-sized string into a listing. */
@@ -25,6 +26,29 @@ export type Evidence = z.infer<typeof evidence>
  * project (the project's scope, size or partners), other.
  */
 export const eligibilityKind = z.enum(['legal', 'track_record', 'finances', 'capacity', 'project', 'other'])
+
+const currency = z.string().regex(/^[A-Z]{3}$/)
+
+/** A revenue or budget range an applicant must fall in, per year, as an eligibility rule states it. */
+export const revenueRange = z
+  .object({
+    currency: currency.describe('ISO 4217 code of the amounts.'),
+    min: z.number().positive().optional().describe('The smallest yearly revenue or budget allowed.'),
+    max: z.number().positive().optional().describe('The largest yearly revenue or budget allowed.'),
+    basis: z.enum(['revenue', 'budget', 'expenditure']).describe('What the range is of: revenue (income, turnover), budget (the yearly operating budget) or expenditure (yearly spending).'),
+    average_years: z.number().int().min(2).max(10).optional().describe('The range is an average over this many recent years.'),
+  })
+  .strict()
+  .refine((r) => r.min !== undefined || r.max !== undefined, 'a revenue range needs min or max')
+  .refine((r) => r.min === undefined || r.max === undefined || r.min <= r.max, 'min is above max')
+
+/** The largest request an applicant may make, as a share of its own yearly revenue or budget. */
+export const requestCap = z
+  .object({
+    share: z.number().gt(0).max(1000).describe('The largest request, in percent of the applicant’s yearly revenue or budget: 100 means no more than one year’s revenue, 50 half of it.'),
+    of: z.enum(['revenue', 'budget']).describe('What the cap is a share of: revenue (income, turnover) or budget.'),
+  })
+  .strict()
 
 export const approach = z.enum([
   'reforestation',
@@ -332,6 +356,16 @@ export const programme = z
         z.object({
           rule: z.string().min(5).max(120).describe('The rule in our words, phrased as a requirement met: Yes = qualifies, No = ruled out.'),
           kind: eligibilityKind.describe('What the rule is about: legal (status, registration, independence), track_record (years operating, past projects), finances (a financial bar to meet: a revenue range, audited accounts, a request capped by revenue), capacity (staff, systems, policies), project (scope, size, place, partners), other.'),
+          min_years: z
+            .number()
+            .gt(0)
+            .max(100)
+            .optional()
+            .describe('The fewest years the applicant must have been operating, when the rule states it (36 months is 3). Only on a track_record rule; its quote states the number.'),
+          revenue: revenueRange.optional().describe('The yearly revenue or budget range the applicant must fall in, when the rule states it. Only on a finances rule; its quote states each number and the currency.'),
+          request_cap: requestCap
+            .optional()
+            .describe('The largest request as a share of the applicant’s yearly revenue or budget, when the rule caps it. Only on a finances rule.'),
         }).strict(),
       )
       .min(1)
@@ -421,8 +455,8 @@ export const programme = z
       co_finance: evidence.optional(),
       /** One quote per duty at most. */
       after_award: z.array(evidence).min(1).max(4).optional(),
-      /** A list of documents usually sits in one or two places. */
-      documents: z.array(evidence).min(1).max(3).optional(),
+      /** A list of documents usually sits in one to three passages; a list spread over a page takes one quote per document at most. */
+      documents: z.array(evidence).min(1).max(10).optional(),
       odds: evidence.optional(),
     }).strict(),
     /** The oldest evidence date: every fact above was read on or after this day. */
@@ -458,6 +492,15 @@ export const programme = z
 
     if (p.eligibility && p.evidence.eligibility && p.eligibility.length !== p.evidence.eligibility.length) {
       issue(['evidence', 'eligibility'], `each eligibility rule has its own quote: ${p.eligibility.length} rules, ${p.evidence.eligibility.length} quotes`)
+    }
+    for (const [i, e] of (p.eligibility ?? []).entries()) {
+      if (e.min_years !== undefined && e.kind !== 'track_record') issue(['eligibility', i, 'min_years'], 'years operating go on a track_record rule')
+      if ((e.revenue || e.request_cap) && e.kind !== 'finances') issue(['eligibility', i, 'kind'], 'a revenue range or request cap goes on a finances rule')
+      const quote = p.evidence.eligibility?.[i]?.quote
+      if (quote) for (const t of thresholdProblems(e, quote)) issue(['eligibility', i, t.key], t.why)
+    }
+    if (p.documents && p.evidence.documents && p.evidence.documents.length > Math.max(3, p.documents.length)) {
+      issue(['evidence', 'documents'], `more than 3 quotes only at one per document: ${p.documents.length} documents, ${p.evidence.documents.length} quotes`)
     }
     if (p.co_finance && p.co_finance_required !== true) issue(['co_finance'], 'a co-funding share needs co_finance_required: true')
     const due = p.effort?.due

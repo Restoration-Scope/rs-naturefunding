@@ -36,11 +36,11 @@
   "eligibility": [
     { "rule": "Not an individual, a one-person organisation or a government body", "kind": "legal" },
     { "rule": "Based and registered in an ODA-eligible country", "kind": "legal" },
-    { "rule": "Operating for at least 3 years by the submission deadline", "kind": "track_record" },
-    { "rule": "Average yearly revenue of €60,000 to €500,000 over the last 3 years", "kind": "finances" },
+    { "rule": "Operating for at least 3 years by the submission deadline", "kind": "track_record", "min_years": 3 },
+    { "rule": "Average yearly revenue of €60,000 to €500,000 over the last 3 years", "kind": "finances", "revenue": { "currency": "EUR", "min": 60000, "max": 500000, "basis": "revenue", "average_years": 3 } },
     { "rule": "Dedicated accounting staff and a software-based accounting system", "kind": "capacity" },
     { "rule": "You run the project yourselves: no consortium, no passing funds to others", "kind": "project" },
-    { "rule": "Your request is no more than your average yearly revenue", "kind": "finances" },
+    { "rule": "Your request is no more than your average yearly revenue", "kind": "finances", "request_cap": { "share": 100, "of": "revenue" } },
     { "rule": "The project is in one country, at local, sub-national or national level", "kind": "project" }
   ],
   "after_award": { "training": true },

@@ -8,8 +8,10 @@ import { createHash } from 'node:crypto'
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs'
 import { join } from 'node:path'
 import { normalise } from '../../src/data/text'
+import { docxText, isDocx } from './docx'
 
 const CACHE_DIR = join(process.cwd(), '.cache', 'pages')
+const DOCX = 'application/vnd.openxmlformats-officedocument.wordprocessingml.document'
 const USER_AGENT =
   'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0 Safari/537.36 naturefunding.org-checker'
 
@@ -78,7 +80,8 @@ async function fetchRaw(url: string, fresh: boolean): Promise<{ meta: Cached; by
   const bytes = Buffer.from(await res.arrayBuffer())
   const contentType = res.headers.get('content-type') ?? ''
   const isPdf = contentType.includes('pdf') || bytes.subarray(0, 4).toString() === '%PDF'
-  const meta: Cached = { url, status: res.status, contentType: isPdf ? 'application/pdf' : contentType, fetchedAt: new Date().toISOString(), file: `${key(url)}.${isPdf ? 'pdf' : 'html'}` }
+  const kind = isPdf ? 'pdf' : isDocx(bytes) ? 'docx' : 'html'
+  const meta: Cached = { url, status: res.status, contentType: isPdf ? 'application/pdf' : kind === 'docx' ? DOCX : contentType, fetchedAt: new Date().toISOString(), file: `${key(url)}.${kind}` }
   writeFileSync(join(CACHE_DIR, meta.file), bytes)
   writeFileSync(metaPath, JSON.stringify(meta, null, 2))
   return { meta, bytes }
@@ -95,7 +98,9 @@ export async function fetchPage(url: string, opts: { selector?: string | null; f
   if (meta.status >= 400) throw new Error(`HTTP ${meta.status}`)
   const text = meta.contentType === 'application/pdf'
     ? pdfToText(join(CACHE_DIR, meta.file))
-    : await htmlToText(bytes.toString('utf8'), opts.selector ?? null)
+    : meta.contentType === DOCX
+      ? normalise(docxText(new Uint8Array(bytes)))
+      : await htmlToText(bytes.toString('utf8'), opts.selector ?? null)
   return { url, status: meta.status, contentType: meta.contentType, text, fetchedAt: meta.fetchedAt }
 }
 

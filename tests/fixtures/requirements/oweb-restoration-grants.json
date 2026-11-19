@@ -1,0 +1,79 @@
+{
+  "id": "oweb-restoration-grants",
+  "filled_by": "claude-opus-5-5 reading the funder's pages, 2026-11-17",
+  "checked_by_person": false,
+  "documents_expected": [
+    { "url": "https://www.oregon.gov/oweb/grants/pages/restoration.aspx", "why": "programme page: dates, eligible applicants and projects, match, how to apply" },
+    { "url": "https://www.oregon.gov/oweb/Documents/Evaluation-Criteria-Restoration.pdf", "why": "evaluation criteria, including applicant capacity and track record" },
+    { "url": "https://www.oregon.gov/oweb/Forms/Match-Form.docx", "why": "match funding form submitted with the application" },
+    { "url": "https://www.oregon.gov/oweb/manage-grant/Pages/report-to-oweb.aspx", "why": "progress and project completion reports" }
+  ],
+  "coverage_complete": true,
+  "eligibility": [
+    {
+      "rule": "Tribes, watershed councils, conservation districts, nonprofits, schools, universities or local governments (not state agencies)",
+      "kind": "legal",
+      "quote": "Any Tribe, watershed council, soil and water conservation district, not-for-profit corporation, school, Oregon institution of higher education, independent not-for-profit institution of higher education, or political subdivision of this state that is not a state agency."
+    },
+    {
+      "rule": "Legally established entity with a federal tax ID (FEIN)",
+      "kind": "legal",
+      "quote": "OWEB may enter into agreements only with legally established entities."
+    },
+    {
+      "rule": "Registered in SAM (with a UEI) before the grant agreement",
+      "kind": "legal",
+      "quote": "Per federal guidance, all OWEB grantees must be registered at the System for Award Management (SAM) before receiving a grant agreement."
+    },
+    {
+      "rule": "Restoration of instream, riparian, upland, wetland or estuarine habitat in Oregon; not maintenance, enforcement or mitigation work",
+      "kind": "project",
+      "quote": "A watershed improvement project constructed solely to comply with a state or federal agency enforcement order, legal judgment, or mitigation requirement. Routine project maintenance costs."
+    },
+    {
+      "rule": "Applicant's track record and capacity for long-term stewardship are scored",
+      "kind": "track_record",
+      "quote": "What is the applicant’s track record in managing projects,"
+    }
+  ],
+  "documents": [
+    {
+      "item": "Match Funding Form (cash or in-kind, secured or pending)",
+      "quote": "Use this form to identify the type(s) of match (cash or in-kind), the status of the match (secured or pending)"
+    },
+    {
+      "item": "Signature or letter of support from each secured match source",
+      "quote": "you must provide either the signature of an authorized representative of the match source in the Match Funding Source Signature/Date column or attach a letter of support from the match funding source"
+    }
+  ],
+  "effort": [
+    {
+      "step": "Request an OGMS login by email if the organisation has none",
+      "quote": "If no login exists for an organization, please email Fiscal Staff to request one."
+    },
+    {
+      "step": "Apply in the online application system",
+      "due": "2027-02-01",
+      "quote": "Open: October 13, 2026 - Close: 5 pm (PT), February 1, 2027"
+    },
+    {
+      "step": "Technical review team reads the application and may visit the site",
+      "quote": "Technical Review Teams (TRT) read applications and may participate in site visits on proposed project sites."
+    }
+  ],
+  "co_finance_required": { "value": true, "quote": "Required Match: 25%" },
+  "co_finance": { "min_share": 25, "in_kind": true },
+  "consortium_required": {
+    "value": false,
+    "quote": "A state agency or federal agency may partner with an eligible entity."
+  },
+  "after_award": [
+    {
+      "duty": "reports",
+      "reports": "interim_and_final",
+      "quote": "Refer to the front page and Exhibit B of your grant agreement for report deadlines and format of required progress reports.",
+      "alt_quotes": ["All Project Completion Reporting (PCR) is now done via OWEB's Grant Management System (OGMS)."]
+    }
+  ],
+  "notes": "No maximum request. The page states the match as 25% without saying of what; OWEB's budgeting guidance (GoBIG) defines it, so min_share 25 is read as a share of the project. The match form shows cash or in-kind both count. Offered every summer and winter; the current round closes 1 February 2027. The gather read the page and eight navigation pages but left the evaluation criteria, GoBIG and match form unread; the online-application link lost its colon to an undecoded HTML entity (&#58;)."
+}

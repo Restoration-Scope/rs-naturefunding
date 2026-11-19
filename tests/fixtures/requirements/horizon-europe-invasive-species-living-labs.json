@@ -1,0 +1,33 @@
+{
+  "id": "horizon-europe-invasive-species-living-labs",
+  "filled_by": "claude-opus-5-5 reading the funder's pages, 2026-11-17",
+  "checked_by_person": false,
+  "documents_expected": [
+    { "url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/topic-details/HORIZON-CL6-2027-01-BIODIV-04", "why": "topic page (a single-page app; its text is in the topicDetails JSON)" },
+    { "url": "https://ec.europa.eu/info/funding-tenders/opportunities/docs/2021-2027/horizon/wp-call/2026-2027/wp-9-food-bioeconomy-natural-resources-agriculture-and-environment_horizon-2026-2027_en.pdf", "why": "work programme: topic scope, budget, opening and deadline" },
+    { "url": "https://ec.europa.eu/info/funding-tenders/opportunities/docs/2021-2027/horizon/wp-call/2026-2027/wp-15-general-annexes_horizon-2026-2027_en.pdf", "why": "general annexes: consortium rule, application parts, funding rate, reporting" }
+  ],
+  "coverage_complete": true,
+  "eligibility": [
+    { "rule": "Consortium of three independent legal entities in three countries, at least one in an EU Member State", "kind": "legal", "quote": "only legal entities forming a consortium are eligible to participate in actions provided that the consortium includes, as beneficiaries, three legal entities independent from each other and each established in a different country as follows: - at least one independent legal entity established in a Member State; and - at least two other independent legal entities, each established in different Member States or Associated Countries." },
+    { "rule": "Entities in China can't take part in research and innovation actions", "kind": "legal", "quote": "Unless otherwise stated, legal entities established in China are not eligible to participate in any Horizon Europe Research and Innovation Action (RIA)." },
+    { "rule": "Public bodies, research organisations and universities need a gender equality plan", "kind": "legal", "quote": "In addition, to be eligible, legal entities from Member States and Associated Countries that are public bodies, research organisations or higher education establishments" },
+    { "rule": "At least three living labs of 10 to 20 experimental sites each", "kind": "project", "quote": "set up at least three living labs, composed each of 10 to 20 experimental sites" },
+    { "rule": "Living labs in at least three EU Member States or Associated Countries", "kind": "project", "quote": "living labs are expected to be located in at least three different EU Member States and/or Associated Countries" }
+  ],
+  "documents": [
+    { "item": "Part A: administrative forms and budget, filled in online", "quote": "Part A (to be filled in directly online) contains administrative information about the applicant organisations (future coordinator and beneficiaries and affiliated entities), the summarised budget for the proposal and call-specific questions" },
+    { "item": "Part B: technical description, 40 pages at most", "quote": "Part B (to be downloaded from the Portal submission system, completed and then assembled and re-uploaded as a PDF in the system) contains the technical description of the project.", "alt_quotes": ["the limit for a full application is 40 pages"] }
+  ],
+  "effort": [
+    { "step": "Build the consortium and submit electronically through the Funding & Tenders Portal", "quote": "All proposals must be submitted electronically via the EU Funders & Tenders Portal electronic submission system" },
+    { "step": "Call opens 20 April 2027", "due": "2027-09-22", "quote": "Opening: 20 Apr 2027 Deadline(s): 22 Sep 2027" }
+  ],
+  "co_finance_required": { "value": false, "quote": "Research and innovation action: 100%" },
+  "co_finance": null,
+  "consortium_required": { "value": true, "quote": "only legal entities forming a consortium are eligible to participate in actions" },
+  "after_award": [
+    { "duty": "reports", "reports": "interim_and_final", "quote": "There will be one or several interim payments linked to a periodic report, depending on the duration of the project. At the end of the project, the consortium will be invited to submit a report on the basis of which the final grant amount will be calculated." }
+  ],
+  "notes": "Forthcoming research and innovation action: EUR 24 million for about 3 projects of around EUR 8 million. Up to 30% of the EU funding may go to third parties through calls (max EUR 60,000 each). The topic page is a single-page app: its text is only in the topicDetails JSON, which the pipeline doesn't seed for this topic. Deadline 17:00 Brussels time."
+}
