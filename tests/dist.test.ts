@@ -249,6 +249,11 @@ describe('no hydration, small JavaScript', () => {
     const loaded = closure(scriptsOf('index.html').external, true)
     expect(files.filter((f) => f.endsWith('.js')).sort()).toEqual([...loaded].sort())
   })
+
+  // bareDynamicImports (astro.config.mjs) swaps Vite's preload helper, about 700 bytes gzipped, for a bare call.
+  test("no JS file ships Vite's preload helper", () => {
+    for (const f of files.filter((x) => x.endsWith('.js'))) expect(read(f).includes('vite:preloadError'), f).toBe(false)
+  })
 })
 
 describe('self-hosted fonts', () => {

@@ -23,10 +23,24 @@ function reactAtBuildTime() {
   }
 }
 
+/**
+ * Vite wraps each `import()` in a helper (about 700 bytes gzipped, on every page through the weekly-email prompt)
+ * that preloads the lazy chunk's own imports and CSS. Astro already puts a script's CSS in the page, and the browser
+ * fetches a chunk's imports when it loads it, so this swaps the helper for a bare call (tests/dist.test.ts).
+ * @returns {import('vite').Plugin}
+ */
+function bareDynamicImports() {
+  return {
+    name: 'bare-dynamic-imports',
+    apply: 'build',
+    load: (id) => (id === '\0vite/preload-helper.js' ? 'export const __vitePreload = (load) => load()' : undefined),
+  }
+}
+
 // https://astro.build/config
 export default defineConfig({
   integrations: [reactAtBuildTime(), proseTwins()],
   // Programme pages keep their one script inline (tests/dist.test.ts sets their budget); Vite's 4 KB default
   // would split it into a file once the page's contents list joined the Where view.
-  vite: { plugins: [tailwindcss()], build: { assetsInlineLimit: 7000 } },
+  vite: { plugins: [tailwindcss(), bareDynamicImports()], build: { assetsInlineLimit: 7000 } },
 })
