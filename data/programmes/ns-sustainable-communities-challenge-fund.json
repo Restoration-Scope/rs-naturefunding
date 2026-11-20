@@ -1,14 +1,33 @@
 {
   "id": "ns-sustainable-communities-challenge-fund",
   "name": "Sustainable Communities Challenge Fund",
-  "funder": { "name": "Government of Nova Scotia", "url": "https://nschallengefund.ca/" },
+  "funder": {
+    "name": "Government of Nova Scotia",
+    "url": "https://nschallengefund.ca/"
+  },
   "administered_by": null,
   "parent": null,
   "url": "https://nschallengefund.ca/",
   "summary": "Provincial climate-action grants for Nova Scotia community organizations; the adaptation stream funds ecosystem and nature-based projects such as coastal restoration, alongside mitigation work like buildings and energy.",
-  "approaches": ["wetlands", "coastal_marine", "freshwater", "community_conservation"],
-  "applicant_types": ["ngo", "indigenous_organization", "government", "research_institution"],
-  "geography": { "scope": "countries", "countries": ["CA"], "label": "Nova Scotia" },
+  "approaches": [
+    "wetlands",
+    "coastal_marine",
+    "freshwater",
+    "community_conservation"
+  ],
+  "applicant_types": [
+    "ngo",
+    "indigenous_organization",
+    "government",
+    "research_institution"
+  ],
+  "geography": {
+    "scope": "countries",
+    "countries": [
+      "CA"
+    ],
+    "label": "Nova Scotia"
+  },
   "access": "direct",
   "window": "fixed",
   "amount": {
@@ -19,6 +38,51 @@
   },
   "co_finance_required": true,
   "reporting": "Brief quarterly progress reports; after completion a final impact report with a financial report.",
+  "effort": {
+    "steps": [
+      "Pre-screening",
+      "Full application",
+      "Application evaluation"
+    ],
+    "due": [
+      "2026-06-25",
+      "2026-07-23",
+      null
+    ]
+  },
+  "eligibility": [
+    {
+      "rule": "If a non-profit: NS society or co-op, Canadian charity or federal non-profit operating in NS",
+      "kind": "legal"
+    },
+    {
+      "rule": "Project is based in Nova Scotia and meets at least one core objective",
+      "kind": "project"
+    },
+    {
+      "rule": "Organisation submits no more than two applications in an intake round",
+      "kind": "other"
+    },
+    {
+      "rule": "Previous grantee is in good standing with its prior project before reapplying",
+      "kind": "other"
+    },
+    {
+      "rule": "Round 4 project is fully completed by November 30, 2027",
+      "kind": "project"
+    },
+    {
+      "rule": "Project is a community priority, shown by consultation, a community plan or a council letter",
+      "kind": "project"
+    }
+  ],
+  "co_finance": {
+    "min_share": 20,
+    "in_kind": true
+  },
+  "after_award": {
+    "reports": "quarterly"
+  },
   "calls": [
     {
       "id": "round-4",
@@ -87,7 +151,7 @@
     },
     "co_finance_required": {
       "source_url": "https://nschallengefund.ca/funding-opportunities/",
-      "quote": "A minimum of 20% of eligible project costs must be contributed by the applicant.",
+      "quote": "An applicant must make a financial contribution to the project, and their overall contribution may be a combination of cash and in-kind according to the cost-sharing requirements below.",
       "checked_at": "2026-11-20",
       "method": "page"
     },
@@ -96,7 +160,79 @@
       "quote": "Recipients are required to provide brief quarterly progress reports on whether their project is on track and any challenges they are experiencing. Upon project completion recipients submit a Final Impact Report, including a financial report on how the Fund was spent,",
       "checked_at": "2026-11-20",
       "method": "page"
-    }
+    },
+    "effort": [
+      {
+        "source_url": "https://nschallengefund.ca/how-to-apply/",
+        "quote": "June 25, 2026 @ 2:00PM: Pre-screening deadline",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://nschallengefund.ca/how-to-apply/",
+        "quote": "July 23, 2026 @ 2:00PM: Full application deadline",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://nschallengefund.ca/how-to-apply/",
+        "quote": "Step 3: Application Evaluation",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "eligibility": [
+      {
+        "source_url": "https://nschallengefund.ca/how-to-apply/",
+        "quote": "Registered, Nova Scotia-based, non-profit societies/ cooperatives in good standing; Registered Canadian charities actively operating in Nova Scotia; or Federally incorporated non-profit organizations operating in Nova Scotia.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://nschallengefund.ca/funding-opportunities/",
+        "quote": "To be eligible, projects must be based in Nova Scotia and must meet at least one of the two core objectives (mitigation or adaptation).",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://nschallengefund.ca/funding-opportunities/",
+        "quote": "Organizations may submit a maximum of two applications for consideration in each intake round.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://nschallengefund.ca/funding-opportunities/",
+        "quote": "Organizations that have received a grant from the Fund can reapply if they are in good standing with their prior project.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://nschallengefund.ca/funding-opportunities/",
+        "quote": "All Round 4 projects must be fully completed by November 30, 2027.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://nschallengefund.ca/wp-content/uploads/2026/05/Round-4-Applicant-Guide.pdf",
+        "quote": "a community priority. This could be demonstrated by providing evidence of consultation or engagement and buy-in, it could be identified in a community plan/municipal document or by having a letter of support from a municipal council.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "co_finance": {
+      "source_url": "https://nschallengefund.ca/funding-opportunities/",
+      "quote": "A minimum of 20% of eligible project costs must be contributed by the applicant. The financial contribution may be made by project partners or alternate funding sources such as federal funding. In-kind contributions such as staff time can count toward the applicant's contribution to a maximum of 10%.",
+      "checked_at": "2026-11-20",
+      "method": "page"
+    },
+    "after_award": [
+      {
+        "source_url": "https://nschallengefund.ca/how-to-apply/",
+        "quote": "Recipients are required to provide brief quarterly progress reports on whether their project is on track and any challenges they are experiencing.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ]
   },
   "checked_at": "2026-11-20"
 }

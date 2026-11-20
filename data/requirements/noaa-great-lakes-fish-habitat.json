@@ -1,0 +1,681 @@
+{
+  "id": "noaa-great-lakes-fish-habitat",
+  "read_on": "2026-11-20",
+  "prompt_version": "req-2026-11-20.1",
+  "models": ["cursor:gpt-5.6-luna-high", "cursor:gpt-5.6-sol-high"],
+  "complete": false,
+  "reasons": [
+    "71 links could not be ranked without Jev",
+    "104 links could not be ranked without Jev",
+    "the crawl bound left https://www.fisheries.noaa.gov/privacy-policy unread",
+    "the crawl bound left https://www.fisheries.noaa.gov/topic/marine-life-viewing-guidelines/overview unread",
+    "the crawl bound left https://www.fisheries.noaa.gov/topic/marine-life-viewing-guidelines/guidelines-and-distances unread",
+    "the crawl bound left https://www.fisheries.noaa.gov/topic/marine-life-viewing-guidelines/photography-and-video unread",
+    "the crawl bound left https://www.fisheries.noaa.gov/topic/marine-life-viewing-guidelines/what-you-can-do unread",
+    "the crawl bound left https://www.fisheries.noaa.gov/topic/marine-life-viewing-guidelines/resources unread",
+    "the crawl bound left https://www.fisheries.noaa.gov/new-england-mid-atlantic/marine-life-viewing-guidelines/share-shore-seals-new-england-mid-atlantic unread",
+    "the crawl bound left https://www.fisheries.noaa.gov/national/marine-life-viewing-guidelines/protect-dolphins-campaign unread",
+    "the crawl bound left https://www.fisheries.noaa.gov/national/marine-life-viewing-guidelines/permitting-scientific-research-using-small-unmanned unread",
+    "the crawl bound left https://www.fisheries.noaa.gov/alaska/marine-life-viewing-guidelines/alaska-marine-mammal-viewing-guidelines-and-regulations unread",
+    "the crawl bound left https://www.fisheries.noaa.gov/pacific-islands/marine-life-viewing-guidelines/viewing-marine-wildlife-hawaii unread",
+    "the crawl bound left http://www.westcoast.fisheries.noaa.gov/protected_species/marine_mammals/watching.html unread",
+    "the crawl bound left https://www.fisheries.noaa.gov/new-england-mid-atlantic/marine-life-viewing-guidelines/whale-watching-and-wildlife-viewing-new unread",
+    "the crawl bound left https://media.fisheries.noaa.gov/dam-migration/noaa_southeast_marinemammal_seaturtle_viewingguidelines_brochure_2014_508.pdf unread",
+    "the crawl bound left https://media.fisheries.noaa.gov/dam-migration/noaa_southeast_marinemammal_seaturtle_viewingguidelines_brochure_spanish_508.pdf unread",
+    "the crawl bound left https://media.fisheries.noaa.gov/dam-migration/mm_of_alaska_arctic_finalpdf.pdf unread",
+    "the crawl bound left https://www.fisheries.noaa.gov/resource/document/large-whale-entanglement-photo-documentation-checklist unread",
+    "the crawl bound left https://www.fisheries.noaa.gov/resource/outreach-materials/protected-marine-species-identification-guide-southeast-united-states unread",
+    "the crawl bound left https://www.fisheries.noaa.gov/resource/outreach-materials/alaska-harbor-seal-approach-guidelines-glacial-fjords unread",
+    "the crawl bound left https://www.fisheries.noaa.gov/rules-and-announcements/bulletins unread",
+    "the crawl bound left https://www.fisheries.noaa.gov/rules-and-announcements/open-for-comment unread",
+    "the crawl bound left https://www.fisheries.noaa.gov/rules-and-announcements/plans-and-agreements unread",
+    "the crawl bound left https://www.fisheries.noaa.gov/rules-and-announcements/notices-and-rules?page=0 unread",
+    "the crawl bound left https://www.fisheries.noaa.gov/rules-and-announcements/notices-and-rules?page=1 unread",
+    "the crawl bound left https://www.fisheries.noaa.gov/rules-and-announcements/notices-and-rules?page=2 unread",
+    "the crawl bound left https://www.fisheries.noaa.gov/rules-and-announcements/notices-and-rules?page=3 unread",
+    "the crawl bound left https://www.fisheries.noaa.gov/rules-and-announcements/notices-and-rules?page=131 unread",
+    "the crawl bound left https://www.fisheries.noaa.gov/rules-and-announcements/notices-and-rules?title=&field_management_area_value%5B1%5D=1&field_species_vocab_target_id=&sort_by=field_relevant_date_value unread",
+    "the crawl bound left https://www.fisheries.noaa.gov/rules-and-announcements/open-for-comment?title=&field_management_area_value%5B1%5D=1&field_species_vocab_target_id=&sort_by=field_comments_close_value unread",
+    "the crawl bound left https://www.fisheries.noaa.gov/rules-and-announcements/plans-and-agreements?title=&field_management_area_value%5B1%5D=1&sort_by=title unread",
+    "the crawl bound left https://www.fisheries.noaa.gov/alaska/rules-and-regulations/regulations-acts-treaties-and-agreements-federal-fisheries-alaska unread",
+    "the crawl bound left https://www.fisheries.noaa.gov/tags/small-entity-compliance-guide?title=&field_species_vocab_target_id=&field_region_vocab_target_id%5B1000001106%5D=1000001106&sort_by=created unread",
+    "the crawl bound left https://www.fisheries.noaa.gov/rules-and-announcements/notices-and-rules?title=&field_management_area_value%5B3%5D=3&field_species_vocab_target_id=&sort_by=field_relevant_date_value unread",
+    "the crawl bound left https://www.fisheries.noaa.gov/rules-and-announcements/open-for-comment?title=&field_management_area_value%5B3%5D=3&field_species_vocab_target_id=&sort_by=field_comments_close_value unread",
+    "the crawl bound left https://www.fisheries.noaa.gov/rules-and-announcements/plans-and-agreements?title=&field_management_area_value%5B3%5D=3&sort_by=title unread",
+    "the crawl bound left https://www.fisheries.noaa.gov/rules-and-announcements/bulletins?title=&field_management_area_value%5B3%5D=3&field_species_vocab_target_id=&sort_by=created unread",
+    "the crawl bound left https://www.fisheries.noaa.gov/tags/small-entity-compliance-guide?title=&field_species_vocab_target_id=&field_region_vocab_target_id%5B1000001121%5D=1000001121&sort_by=created unread",
+    "the crawl bound left https://www.fisheries.noaa.gov/rules-and-announcements/notices-and-rules?title=&field_management_area_value%5B4%5D=4&field_species_vocab_target_id=&sort_by=field_relevant_date_value unread",
+    "the crawl bound left https://www.fisheries.noaa.gov/rules-and-announcements/open-for-comment?title=&field_management_area_value%5B4%5D=4&field_species_vocab_target_id=&sort_by=field_comments_close_value unread",
+    "the crawl bound left https://www.fisheries.noaa.gov/rules-and-announcements/bulletins?title=&field_management_area_value%5B4%5D=4&field_species_vocab_target_id=&sort_by=created unread",
+    "the crawl bound left https://www.fisheries.noaa.gov/tags/small-entity-compliance-guide?title=&field_topics_vocab_target_id%5B1000000035%5D=1000000035&field_species_vocab_target_id=&sort_by=created unread",
+    "the crawl bound left https://www.fisheries.noaa.gov/rules-and-announcements/notices-and-rules?title=&field_management_area_value%5B6%5D=6&field_management_area_value%5B7%5D=7&field_species_vocab_target_id=&sort_by=field_relevant_date_value unread",
+    "the crawl bound left https://www.fisheries.noaa.gov/rules-and-announcements/open-for-comment?title=&field_management_area_value%5B6%5D=6&field_management_area_value%5B7%5D=7&field_species_vocab_target_id=&sort_by=field_comments_close_value unread",
+    "the crawl bound left https://www.fisheries.noaa.gov/rules-and-announcements/plans-and-agreements?title=&field_management_area_value%5B6%5D=6&field_management_area_value%5B7%5D=7&sort_by=title unread",
+    "the crawl bound left https://www.fisheries.noaa.gov/rules-and-announcements/bulletins?title=&field_management_area_value%5B6%5D=6&field_management_area_value%5B7%5D=7&field_species_vocab_target_id=&sort_by=created unread",
+    "the crawl bound left https://www.fisheries.noaa.gov/tags/small-entity-compliance-guide?title=&field_species_vocab_target_id=&field_region_vocab_target_id%5B1000001111%5D=1000001111&sort_by=created unread",
+    "the crawl bound left https://www.fisheries.noaa.gov/rules-and-announcements/notices-and-rules?title=&field_management_area_value%5B2%5D=2&field_species_vocab_target_id=&sort_by=field_relevant_date_value unread",
+    "the crawl bound left https://www.fisheries.noaa.gov/rules-and-announcements/open-for-comment?title=&field_management_area_value%5B2%5D=2&field_species_vocab_target_id=&sort_by=field_comments_close_value unread",
+    "the crawl bound left https://www.fisheries.noaa.gov/southeast/rules-and-regulations/current-fishing-regulations-us-caribbean unread",
+    "the crawl bound left https://www.fisheries.noaa.gov/rules-and-announcements/plans-and-agreements?title=&management_area%5BCaribbean%5D=Caribbean&sort_by=title unread",
+    "the crawl bound left https://www.fisheries.noaa.gov/rules-and-announcements/plans-and-agreements?title=&field_management_area_value%5B2%5D=2&sort_by=title unread",
+    "the crawl bound left https://www.fisheries.noaa.gov/rules-and-announcements/notices-and-rules?title=&field_management_area_value%5B5%5D=5&field_species_vocab_target_id=&sort_by=field_relevant_date_value unread",
+    "the crawl bound left https://www.fisheries.noaa.gov/rules-and-announcements/open-for-comment?title=&field_management_area_value%5B5%5D=5&field_species_vocab_target_id=&sort_by=field_comments_close_value unread",
+    "the crawl bound left https://www.fisheries.noaa.gov/rules-and-announcements/plans-and-agreements?title=&field_management_area_value%5B5%5D=5&sort_by=title unread",
+    "the crawl bound left https://www.fisheries.noaa.gov/rules-and-announcements/notices-and-rules?title=&field_management_area_value%5B8%5D=8&field_species_vocab_target_id=&sort_by=field_relevant_date_value unread",
+    "the crawl bound left https://www.fisheries.noaa.gov/rules-and-announcements/open-for-comment?title=&field_management_area_value%5B8%5D=8&field_species_vocab_target_id=&sort_by=field_comments_close_value unread",
+    "the crawl bound left https://www.fisheries.noaa.gov/southeast/rules-and-regulations/current-fishing-regulations-south-atlantic unread",
+    "the crawl bound left https://www.fisheries.noaa.gov/rules-and-announcements/plans-and-agreements?title=&field_management_area_value%5B8%5D=8&sort_by=title unread",
+    "the crawl bound left https://www.fisheries.noaa.gov/rules-and-announcements/bulletins?title=&field_management_area_value%5B8%5D=8&field_species_vocab_target_id=&sort_by=created unread",
+    "the crawl bound left https://www.fisheries.noaa.gov/rules-and-announcements/notices-and-rules?title=&field_management_area_value%5B9%5D=9&field_species_vocab_target_id=&sort_by=field_relevant_date_value unread",
+    "the crawl bound left https://www.fisheries.noaa.gov/rules-and-announcements/open-for-comment?title=&field_management_area_value%5B9%5D=9&field_species_vocab_target_id=&sort_by=field_comments_close_value unread",
+    "the crawl bound left https://www.fisheries.noaa.gov/rules-and-announcements/plans-and-agreements?title=&field_management_area_value%5B9%5D=9&sort_by=title unread",
+    "the crawl bound left https://www.fisheries.noaa.gov/rules-and-announcements/bulletins?title=&field_management_area_value%5B9%5D=9&field_species_vocab_target_id=&sort_by=created unread",
+    "the crawl bound left https://www.fisheries.noaa.gov/tags/small-entity-compliance-guide?title=&field_species_vocab_target_id=&field_region_vocab_target_id%5B1000001126%5D=1000001126&sort_by=created unread",
+    "the crawl bound left https://www.fisheries.noaa.gov/national/rules-and-regulations/appeals unread",
+    "the crawl bound left https://www.fisheries.noaa.gov/tags/small-entity-compliance-guide?title=&field_species_vocab_target_id=&sort_by=created unread",
+    "the crawl bound left https://www.fisheries.noaa.gov/resources/publication-databases?page=0 unread",
+    "the crawl bound left https://www.fisheries.noaa.gov/resources/publication-databases?page=1 unread",
+    "the crawl bound left https://www.fisheries.noaa.gov/resources/publication-databases?page=2 unread",
+    "the crawl bound left https://www.commerce.gov/sites/default/files/2023-08/eRA%20Commons%20Registration%20-%20Business%20Process%20Guide.pdf unread",
+    "the crawl bound left https://www.commerce.gov/sites/default/files/2023-08/eRA%20Commons%20Registration%20-%20Presentation.pdf unread",
+    "the crawl bound left https://www.commerce.gov/sites/default/files/2023-08/Application%20Submission%20and%20Tracking%20-%20Presentation.pdf unread",
+    "the crawl bound left https://www.commerce.gov/sites/default/files/2023-08/Application%20Submission%20and%20Tracking%20-%20Business%20Process%20Guide.pdf unread",
+    "the crawl bound left https://www.commerce.gov/sites/default/files/2023-09/Account%20Management%20-%20Information%20Sheet%20092123.pdf unread",
+    "the text names a document with rules that was not read: Notice of Funding Opportunity announcement posted to www.Grants.gov",
+    "Jev did not check this reading, so an absent fact is not known to be absent",
+    "strong reading: the text names a document with rules that was not read: Notice of Funding Opportunity announcement (NOAA-NMFS-HCPO-2024-28122)",
+    "strong reading: the text names a document with rules that was not read: NOAA RC Implementation Monitoring (Tier 1) Guidance"
+  ],
+  "requirements_checked": false,
+  "documents": [
+    {
+      "ref": "D1",
+      "url": "https://www.fisheries.noaa.gov/grant/noaa-great-lakes-fish-habitat-restoration-partnership-grants",
+      "final_url": "https://www.fisheries.noaa.gov/grant/noaa-great-lakes-fish-habitat-restoration-partnership-grants",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 12581,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:9d41520f9746332c1acf1da4190036f935f48af4a68a4c07a035eb088999696c"
+    },
+    {
+      "ref": "D2",
+      "url": "https://www.fisheries.noaa.gov/topic/marine-life-viewing-guidelines",
+      "final_url": "https://www.fisheries.noaa.gov/topic/marine-life-viewing-guidelines",
+      "from": "https://www.fisheries.noaa.gov/grant/noaa-great-lakes-fish-habitat-restoration-partnership-grants",
+      "anchor": "Marine Life Viewing Guidelines",
+      "depth": 1,
+      "pdf": false,
+      "chars": 34632,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:ef2dd7b48542dc48faee456815e475c6283b66db4ea5e186bf463285d4fe0763"
+    },
+    {
+      "ref": "D3",
+      "url": "https://www.fisheries.noaa.gov/rules-and-announcements/notices-and-rules",
+      "final_url": "https://www.fisheries.noaa.gov/rules-and-announcements/notices-and-rules",
+      "from": "https://www.fisheries.noaa.gov/grant/noaa-great-lakes-fish-habitat-restoration-partnership-grants",
+      "anchor": "Fishery Management Info",
+      "depth": 1,
+      "pdf": false,
+      "chars": 12503,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:bf6c1a43c295702ebd3621ca6c5d6daec4ed107b52dcf88708b8a6ec0a38f009"
+    },
+    {
+      "ref": "D4",
+      "url": "https://www.fisheries.noaa.gov/rules-and-regulations/fisheries",
+      "final_url": "https://www.fisheries.noaa.gov/rules-and-regulations/fisheries",
+      "from": "https://www.fisheries.noaa.gov/grant/noaa-great-lakes-fish-habitat-restoration-partnership-grants",
+      "anchor": "Rules & Regulations by Region",
+      "depth": 1,
+      "pdf": false,
+      "chars": 11141,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:7843ad2dd43fcd500aec42bd432cc6f074d10827efad0baa934d178905a086f3"
+    },
+    {
+      "ref": "D5",
+      "url": "https://www.fisheries.noaa.gov/rules-and-regulations/protected-resources",
+      "final_url": "https://www.fisheries.noaa.gov/rules-and-regulations/protected-resources",
+      "from": "https://www.fisheries.noaa.gov/grant/noaa-great-lakes-fish-habitat-restoration-partnership-grants",
+      "anchor": "Regulations & Actions",
+      "depth": 1,
+      "pdf": false,
+      "chars": 11141,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:7843ad2dd43fcd500aec42bd432cc6f074d10827efad0baa934d178905a086f3"
+    },
+    {
+      "ref": "D6",
+      "url": "https://www.fisheries.noaa.gov/resources/publication-databases",
+      "final_url": "https://www.fisheries.noaa.gov/resources/publication-databases",
+      "from": "https://www.fisheries.noaa.gov/grant/noaa-great-lakes-fish-habitat-restoration-partnership-grants",
+      "anchor": "Publication Databases",
+      "depth": 1,
+      "pdf": false,
+      "chars": 11946,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:e11f04f053e203420938e13a73fab9358c8b265fb40d04350b00272743a7941b"
+    },
+    {
+      "ref": "D7",
+      "url": "https://www.fisheries.noaa.gov/national/funding-financial-services/grant-application-process",
+      "final_url": "https://www.fisheries.noaa.gov/national/funding-financial-services/grant-application-process",
+      "from": "https://www.fisheries.noaa.gov/grant/noaa-great-lakes-fish-habitat-restoration-partnership-grants",
+      "anchor": "Grant Application Process",
+      "depth": 1,
+      "pdf": false,
+      "chars": 17904,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:59305b9f80cdfb8cbfebbd072570c89d8faa7da5624e45d432fc40444fe3aff0"
+    },
+    {
+      "ref": "D8",
+      "url": "https://media.fisheries.noaa.gov/dam-migration/noaa-glri-qapp-guidance-2015.pdf",
+      "final_url": "https://media.fisheries.noaa.gov/dam-migration/noaa-glri-qapp-guidance-2015.pdf",
+      "from": "https://www.fisheries.noaa.gov/grant/noaa-great-lakes-fish-habitat-restoration-partnership-grants",
+      "anchor": "Quality Assurance Project Plan Guidance (PDF, 4 pages)",
+      "depth": 1,
+      "pdf": true,
+      "chars": 7616,
+      "pages": 4,
+      "low_text": false,
+      "hash": "sha256:9e67f600ab2bdba160184a0656a8e357c40b51b27eb5c4742dd86ef7861c35b8"
+    },
+    {
+      "ref": "D9",
+      "url": "https://www.fisheries.noaa.gov/rules-and-regulations",
+      "final_url": "https://www.fisheries.noaa.gov/rules-and-regulations",
+      "from": "https://www.fisheries.noaa.gov/grant/noaa-great-lakes-fish-habitat-restoration-partnership-grants",
+      "anchor": "Rules & Regulations",
+      "depth": 1,
+      "pdf": false,
+      "chars": 11323,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:c8e72e30bd3ea7fcd52e9b337d23bed12bf256c36e4bfa5bf97a4063504dc12f"
+    }
+  ],
+  "failures": [
+    {
+      "url": "https://www.fisheries.noaa.gov/privacy-policy",
+      "from": "https://www.fisheries.noaa.gov/grant/noaa-great-lakes-fish-habitat-restoration-partnership-grants",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://www.fisheries.noaa.gov/topic/marine-life-viewing-guidelines/overview",
+      "from": "https://www.fisheries.noaa.gov/topic/marine-life-viewing-guidelines",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://www.fisheries.noaa.gov/topic/marine-life-viewing-guidelines/guidelines-and-distances",
+      "from": "https://www.fisheries.noaa.gov/topic/marine-life-viewing-guidelines",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://www.fisheries.noaa.gov/topic/marine-life-viewing-guidelines/photography-and-video",
+      "from": "https://www.fisheries.noaa.gov/topic/marine-life-viewing-guidelines",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://www.fisheries.noaa.gov/topic/marine-life-viewing-guidelines/what-you-can-do",
+      "from": "https://www.fisheries.noaa.gov/topic/marine-life-viewing-guidelines",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://www.fisheries.noaa.gov/topic/marine-life-viewing-guidelines/resources",
+      "from": "https://www.fisheries.noaa.gov/topic/marine-life-viewing-guidelines",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://www.fisheries.noaa.gov/new-england-mid-atlantic/marine-life-viewing-guidelines/share-shore-seals-new-england-mid-atlantic",
+      "from": "https://www.fisheries.noaa.gov/topic/marine-life-viewing-guidelines",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://www.fisheries.noaa.gov/national/marine-life-viewing-guidelines/protect-dolphins-campaign",
+      "from": "https://www.fisheries.noaa.gov/topic/marine-life-viewing-guidelines",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://www.fisheries.noaa.gov/national/marine-life-viewing-guidelines/permitting-scientific-research-using-small-unmanned",
+      "from": "https://www.fisheries.noaa.gov/topic/marine-life-viewing-guidelines",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://www.fisheries.noaa.gov/alaska/marine-life-viewing-guidelines/alaska-marine-mammal-viewing-guidelines-and-regulations",
+      "from": "https://www.fisheries.noaa.gov/topic/marine-life-viewing-guidelines",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://www.fisheries.noaa.gov/pacific-islands/marine-life-viewing-guidelines/viewing-marine-wildlife-hawaii",
+      "from": "https://www.fisheries.noaa.gov/topic/marine-life-viewing-guidelines",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "http://www.westcoast.fisheries.noaa.gov/protected_species/marine_mammals/watching.html",
+      "from": "https://www.fisheries.noaa.gov/topic/marine-life-viewing-guidelines",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://www.fisheries.noaa.gov/new-england-mid-atlantic/marine-life-viewing-guidelines/whale-watching-and-wildlife-viewing-new",
+      "from": "https://www.fisheries.noaa.gov/topic/marine-life-viewing-guidelines",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://media.fisheries.noaa.gov/dam-migration/noaa_southeast_marinemammal_seaturtle_viewingguidelines_brochure_2014_508.pdf",
+      "from": "https://www.fisheries.noaa.gov/topic/marine-life-viewing-guidelines",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://media.fisheries.noaa.gov/dam-migration/noaa_southeast_marinemammal_seaturtle_viewingguidelines_brochure_spanish_508.pdf",
+      "from": "https://www.fisheries.noaa.gov/topic/marine-life-viewing-guidelines",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://media.fisheries.noaa.gov/dam-migration/mm_of_alaska_arctic_finalpdf.pdf",
+      "from": "https://www.fisheries.noaa.gov/topic/marine-life-viewing-guidelines",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://www.fisheries.noaa.gov/resource/document/large-whale-entanglement-photo-documentation-checklist",
+      "from": "https://www.fisheries.noaa.gov/topic/marine-life-viewing-guidelines",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://www.fisheries.noaa.gov/resource/outreach-materials/protected-marine-species-identification-guide-southeast-united-states",
+      "from": "https://www.fisheries.noaa.gov/topic/marine-life-viewing-guidelines",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://www.fisheries.noaa.gov/resource/outreach-materials/alaska-harbor-seal-approach-guidelines-glacial-fjords",
+      "from": "https://www.fisheries.noaa.gov/topic/marine-life-viewing-guidelines",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://www.fisheries.noaa.gov/privacy-policy",
+      "from": "https://www.fisheries.noaa.gov/topic/marine-life-viewing-guidelines",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://www.fisheries.noaa.gov/rules-and-announcements/bulletins",
+      "from": "https://www.fisheries.noaa.gov/rules-and-announcements/notices-and-rules",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://www.fisheries.noaa.gov/rules-and-announcements/open-for-comment",
+      "from": "https://www.fisheries.noaa.gov/rules-and-announcements/notices-and-rules",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://www.fisheries.noaa.gov/rules-and-announcements/plans-and-agreements",
+      "from": "https://www.fisheries.noaa.gov/rules-and-announcements/notices-and-rules",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://www.fisheries.noaa.gov/rules-and-announcements/notices-and-rules?page=0",
+      "from": "https://www.fisheries.noaa.gov/rules-and-announcements/notices-and-rules",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://www.fisheries.noaa.gov/rules-and-announcements/notices-and-rules?page=1",
+      "from": "https://www.fisheries.noaa.gov/rules-and-announcements/notices-and-rules",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://www.fisheries.noaa.gov/rules-and-announcements/notices-and-rules?page=2",
+      "from": "https://www.fisheries.noaa.gov/rules-and-announcements/notices-and-rules",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://www.fisheries.noaa.gov/rules-and-announcements/notices-and-rules?page=3",
+      "from": "https://www.fisheries.noaa.gov/rules-and-announcements/notices-and-rules",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://www.fisheries.noaa.gov/rules-and-announcements/notices-and-rules?page=131",
+      "from": "https://www.fisheries.noaa.gov/rules-and-announcements/notices-and-rules",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://www.fisheries.noaa.gov/rules-and-announcements/notices-and-rules?title=&field_management_area_value%5B1%5D=1&field_species_vocab_target_id=&sort_by=field_relevant_date_value",
+      "from": "https://www.fisheries.noaa.gov/rules-and-regulations/fisheries",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://www.fisheries.noaa.gov/rules-and-announcements/open-for-comment?title=&field_management_area_value%5B1%5D=1&field_species_vocab_target_id=&sort_by=field_comments_close_value",
+      "from": "https://www.fisheries.noaa.gov/rules-and-regulations/fisheries",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://www.fisheries.noaa.gov/rules-and-announcements/plans-and-agreements?title=&field_management_area_value%5B1%5D=1&sort_by=title",
+      "from": "https://www.fisheries.noaa.gov/rules-and-regulations/fisheries",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://www.fisheries.noaa.gov/alaska/rules-and-regulations/regulations-acts-treaties-and-agreements-federal-fisheries-alaska",
+      "from": "https://www.fisheries.noaa.gov/rules-and-regulations/fisheries",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://www.fisheries.noaa.gov/tags/small-entity-compliance-guide?title=&field_species_vocab_target_id=&field_region_vocab_target_id%5B1000001106%5D=1000001106&sort_by=created",
+      "from": "https://www.fisheries.noaa.gov/rules-and-regulations/fisheries",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://www.fisheries.noaa.gov/rules-and-announcements/notices-and-rules?title=&field_management_area_value%5B3%5D=3&field_species_vocab_target_id=&sort_by=field_relevant_date_value",
+      "from": "https://www.fisheries.noaa.gov/rules-and-regulations/fisheries",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://www.fisheries.noaa.gov/rules-and-announcements/open-for-comment?title=&field_management_area_value%5B3%5D=3&field_species_vocab_target_id=&sort_by=field_comments_close_value",
+      "from": "https://www.fisheries.noaa.gov/rules-and-regulations/fisheries",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://www.fisheries.noaa.gov/rules-and-announcements/plans-and-agreements?title=&field_management_area_value%5B3%5D=3&sort_by=title",
+      "from": "https://www.fisheries.noaa.gov/rules-and-regulations/fisheries",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://www.fisheries.noaa.gov/rules-and-announcements/bulletins?title=&field_management_area_value%5B3%5D=3&field_species_vocab_target_id=&sort_by=created",
+      "from": "https://www.fisheries.noaa.gov/rules-and-regulations/fisheries",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://www.fisheries.noaa.gov/tags/small-entity-compliance-guide?title=&field_species_vocab_target_id=&field_region_vocab_target_id%5B1000001121%5D=1000001121&sort_by=created",
+      "from": "https://www.fisheries.noaa.gov/rules-and-regulations/fisheries",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://www.fisheries.noaa.gov/rules-and-announcements/notices-and-rules?title=&field_management_area_value%5B4%5D=4&field_species_vocab_target_id=&sort_by=field_relevant_date_value",
+      "from": "https://www.fisheries.noaa.gov/rules-and-regulations/fisheries",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://www.fisheries.noaa.gov/rules-and-announcements/open-for-comment?title=&field_management_area_value%5B4%5D=4&field_species_vocab_target_id=&sort_by=field_comments_close_value",
+      "from": "https://www.fisheries.noaa.gov/rules-and-regulations/fisheries",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://www.fisheries.noaa.gov/rules-and-announcements/bulletins?title=&field_management_area_value%5B4%5D=4&field_species_vocab_target_id=&sort_by=created",
+      "from": "https://www.fisheries.noaa.gov/rules-and-regulations/fisheries",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://www.fisheries.noaa.gov/tags/small-entity-compliance-guide?title=&field_topics_vocab_target_id%5B1000000035%5D=1000000035&field_species_vocab_target_id=&sort_by=created",
+      "from": "https://www.fisheries.noaa.gov/rules-and-regulations/fisheries",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://www.fisheries.noaa.gov/rules-and-announcements/notices-and-rules?title=&field_management_area_value%5B6%5D=6&field_management_area_value%5B7%5D=7&field_species_vocab_target_id=&sort_by=field_relevant_date_value",
+      "from": "https://www.fisheries.noaa.gov/rules-and-regulations/fisheries",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://www.fisheries.noaa.gov/rules-and-announcements/open-for-comment?title=&field_management_area_value%5B6%5D=6&field_management_area_value%5B7%5D=7&field_species_vocab_target_id=&sort_by=field_comments_close_value",
+      "from": "https://www.fisheries.noaa.gov/rules-and-regulations/fisheries",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://www.fisheries.noaa.gov/rules-and-announcements/plans-and-agreements?title=&field_management_area_value%5B6%5D=6&field_management_area_value%5B7%5D=7&sort_by=title",
+      "from": "https://www.fisheries.noaa.gov/rules-and-regulations/fisheries",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://www.fisheries.noaa.gov/rules-and-announcements/bulletins?title=&field_management_area_value%5B6%5D=6&field_management_area_value%5B7%5D=7&field_species_vocab_target_id=&sort_by=created",
+      "from": "https://www.fisheries.noaa.gov/rules-and-regulations/fisheries",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://www.fisheries.noaa.gov/tags/small-entity-compliance-guide?title=&field_species_vocab_target_id=&field_region_vocab_target_id%5B1000001111%5D=1000001111&sort_by=created",
+      "from": "https://www.fisheries.noaa.gov/rules-and-regulations/fisheries",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://www.fisheries.noaa.gov/rules-and-announcements/notices-and-rules?title=&field_management_area_value%5B2%5D=2&field_species_vocab_target_id=&sort_by=field_relevant_date_value",
+      "from": "https://www.fisheries.noaa.gov/rules-and-regulations/fisheries",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://www.fisheries.noaa.gov/rules-and-announcements/open-for-comment?title=&field_management_area_value%5B2%5D=2&field_species_vocab_target_id=&sort_by=field_comments_close_value",
+      "from": "https://www.fisheries.noaa.gov/rules-and-regulations/fisheries",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://www.fisheries.noaa.gov/southeast/rules-and-regulations/current-fishing-regulations-us-caribbean",
+      "from": "https://www.fisheries.noaa.gov/rules-and-regulations/fisheries",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://www.fisheries.noaa.gov/rules-and-announcements/plans-and-agreements?title=&management_area%5BCaribbean%5D=Caribbean&sort_by=title",
+      "from": "https://www.fisheries.noaa.gov/rules-and-regulations/fisheries",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://www.fisheries.noaa.gov/rules-and-announcements/plans-and-agreements?title=&field_management_area_value%5B2%5D=2&sort_by=title",
+      "from": "https://www.fisheries.noaa.gov/rules-and-regulations/fisheries",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://www.fisheries.noaa.gov/rules-and-announcements/notices-and-rules?title=&field_management_area_value%5B5%5D=5&field_species_vocab_target_id=&sort_by=field_relevant_date_value",
+      "from": "https://www.fisheries.noaa.gov/rules-and-regulations/fisheries",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://www.fisheries.noaa.gov/rules-and-announcements/open-for-comment?title=&field_management_area_value%5B5%5D=5&field_species_vocab_target_id=&sort_by=field_comments_close_value",
+      "from": "https://www.fisheries.noaa.gov/rules-and-regulations/fisheries",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://www.fisheries.noaa.gov/rules-and-announcements/plans-and-agreements?title=&field_management_area_value%5B5%5D=5&sort_by=title",
+      "from": "https://www.fisheries.noaa.gov/rules-and-regulations/fisheries",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://www.fisheries.noaa.gov/rules-and-announcements/notices-and-rules?title=&field_management_area_value%5B8%5D=8&field_species_vocab_target_id=&sort_by=field_relevant_date_value",
+      "from": "https://www.fisheries.noaa.gov/rules-and-regulations/fisheries",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://www.fisheries.noaa.gov/rules-and-announcements/open-for-comment?title=&field_management_area_value%5B8%5D=8&field_species_vocab_target_id=&sort_by=field_comments_close_value",
+      "from": "https://www.fisheries.noaa.gov/rules-and-regulations/fisheries",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://www.fisheries.noaa.gov/southeast/rules-and-regulations/current-fishing-regulations-south-atlantic",
+      "from": "https://www.fisheries.noaa.gov/rules-and-regulations/fisheries",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://www.fisheries.noaa.gov/rules-and-announcements/plans-and-agreements?title=&field_management_area_value%5B8%5D=8&sort_by=title",
+      "from": "https://www.fisheries.noaa.gov/rules-and-regulations/fisheries",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://www.fisheries.noaa.gov/rules-and-announcements/bulletins?title=&field_management_area_value%5B8%5D=8&field_species_vocab_target_id=&sort_by=created",
+      "from": "https://www.fisheries.noaa.gov/rules-and-regulations/fisheries",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://www.fisheries.noaa.gov/rules-and-announcements/notices-and-rules?title=&field_management_area_value%5B9%5D=9&field_species_vocab_target_id=&sort_by=field_relevant_date_value",
+      "from": "https://www.fisheries.noaa.gov/rules-and-regulations/fisheries",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://www.fisheries.noaa.gov/rules-and-announcements/open-for-comment?title=&field_management_area_value%5B9%5D=9&field_species_vocab_target_id=&sort_by=field_comments_close_value",
+      "from": "https://www.fisheries.noaa.gov/rules-and-regulations/fisheries",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://www.fisheries.noaa.gov/rules-and-announcements/plans-and-agreements?title=&field_management_area_value%5B9%5D=9&sort_by=title",
+      "from": "https://www.fisheries.noaa.gov/rules-and-regulations/fisheries",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://www.fisheries.noaa.gov/rules-and-announcements/bulletins?title=&field_management_area_value%5B9%5D=9&field_species_vocab_target_id=&sort_by=created",
+      "from": "https://www.fisheries.noaa.gov/rules-and-regulations/fisheries",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://www.fisheries.noaa.gov/tags/small-entity-compliance-guide?title=&field_species_vocab_target_id=&field_region_vocab_target_id%5B1000001126%5D=1000001126&sort_by=created",
+      "from": "https://www.fisheries.noaa.gov/rules-and-regulations/fisheries",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://www.fisheries.noaa.gov/national/rules-and-regulations/appeals",
+      "from": "https://www.fisheries.noaa.gov/rules-and-regulations/fisheries",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://www.fisheries.noaa.gov/tags/small-entity-compliance-guide?title=&field_species_vocab_target_id=&sort_by=created",
+      "from": "https://www.fisheries.noaa.gov/rules-and-regulations/fisheries",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://www.fisheries.noaa.gov/resources/publication-databases?page=0",
+      "from": "https://www.fisheries.noaa.gov/resources/publication-databases",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://www.fisheries.noaa.gov/resources/publication-databases?page=1",
+      "from": "https://www.fisheries.noaa.gov/resources/publication-databases",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://www.fisheries.noaa.gov/resources/publication-databases?page=2",
+      "from": "https://www.fisheries.noaa.gov/resources/publication-databases",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://www.commerce.gov/sites/default/files/2023-08/eRA%20Commons%20Registration%20-%20Business%20Process%20Guide.pdf",
+      "from": "https://www.fisheries.noaa.gov/national/funding-financial-services/grant-application-process",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://www.commerce.gov/sites/default/files/2023-08/eRA%20Commons%20Registration%20-%20Presentation.pdf",
+      "from": "https://www.fisheries.noaa.gov/national/funding-financial-services/grant-application-process",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://www.commerce.gov/sites/default/files/2023-08/Application%20Submission%20and%20Tracking%20-%20Presentation.pdf",
+      "from": "https://www.fisheries.noaa.gov/national/funding-financial-services/grant-application-process",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://www.commerce.gov/sites/default/files/2023-08/Application%20Submission%20and%20Tracking%20-%20Business%20Process%20Guide.pdf",
+      "from": "https://www.fisheries.noaa.gov/national/funding-financial-services/grant-application-process",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://www.commerce.gov/sites/default/files/2023-09/Account%20Management%20-%20Information%20Sheet%20092123.pdf",
+      "from": "https://www.fisheries.noaa.gov/national/funding-financial-services/grant-application-process",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    }
+  ],
+  "skipped_links": 1783,
+  "chunks": [
+    { "id": "all", "docs": ["D1", "D2", "D3", "D4", "D5", "D6", "D7", "D8", "D9"], "chars": 132461 }
+  ],
+  "outcomes": {
+    "eligibility": "stated",
+    "documents": "not_found",
+    "effort": "stated",
+    "co_finance": "not_found",
+    "consortium": "not_found",
+    "after_award": "not_found"
+  },
+  "written": ["eligibility", "effort"],
+  "escalated": ["eligibility"],
+  "flags": [],
+  "notes": [
+    "extractor: D1 contains an older fiscal year 2025 reference, but its current schedule states fiscal year 2027 and a September 4, 2026 deadline. D8 says its general guidance may not apply to all projects and that Data Management Plan guidance will be in the NOFO.",
+    "strong: D1's About section labels the September 4, 2026 deadline as fiscal year 2025, but its schedule and When to Apply section label it fiscal year 2027."
+  ],
+  "usd": 0
+}

@@ -9,14 +9,76 @@
   "parent": null,
   "url": "https://www.nlwkn.niedersachsen.de/gak/gak-150237.html",
   "summary": "Niedersachsen grants for creating and restoring ponds, wet biotopes, rewetted farmland, hedges and open-land habitats and species roosts in designated conservation areas, plus land purchase and conservation concepts. Municipalities and non-profit legal persons can apply, with a minimum grant of EUR 25,000. The 2026 round has ended; further rounds will be announced on the NLWKN page.",
-  "approaches": ["wetlands", "species_conservation", "sustainable_land_use"],
-  "applicant_types": ["ngo", "government"],
-  "geography": { "scope": "countries", "countries": ["DE"], "label": "Niedersachsen" },
+  "approaches": [
+    "wetlands",
+    "species_conservation",
+    "sustainable_land_use"
+  ],
+  "applicant_types": [
+    "ngo",
+    "government"
+  ],
+  "geography": {
+    "scope": "countries",
+    "countries": [
+      "DE"
+    ],
+    "label": "Niedersachsen"
+  },
   "access": "direct",
   "window": "fixed",
-  "amount": { "currency": "EUR", "min": 25000, "note": "Minimum requested grant" },
-  "co_finance_required": null,
+  "amount": {
+    "currency": "EUR",
+    "min": 25000,
+    "note": "Minimum requested grant"
+  },
+  "co_finance_required": true,
   "reporting": null,
+  "eligibility": [
+    {
+      "rule": "Completes the project by 31 December 2026",
+      "kind": "project"
+    },
+    {
+      "rule": "The project is in a Niedersachsen conservation-priority area listed in the Naturschutzkulisse",
+      "kind": "project"
+    },
+    {
+      "rule": "The project is not a compensation or replacement measure for an intervention in nature and landscape",
+      "kind": "project"
+    },
+    {
+      "rule": "The project's funds can be drawn no later than 15 December 2026",
+      "kind": "project"
+    },
+    {
+      "rule": "Land to buy is not already publicly owned, bar justified cases on non-state land",
+      "kind": "project"
+    },
+    {
+      "rule": "Acquired land has no more than 50% retained tree cover",
+      "kind": "project"
+    },
+    {
+      "rule": "The project does not acquire fish ponds",
+      "kind": "project"
+    },
+    {
+      "rule": "Project has not started before the application",
+      "kind": "project"
+    }
+  ],
+  "co_finance": {
+    "min_share": 10,
+    "applies_to": "municipalities and municipal associations"
+  },
+  "documents": [
+    "Applicant declarations, parts A to D",
+    "Landowner declaration of intent, if purchasing land",
+    "Land acquisition cost plan template, if purchasing land",
+    "Investment measures cost plan template, for investment measures",
+    "Lower Nature Conservation Authority statement, if required"
+  ],
   "calls": [
     {
       "id": "2026-2",
@@ -65,7 +127,102 @@
       "quote": "Die Frist für evtl. weitere Antragsverfahren wird zu gegebener Zeit auf dieser Seite bekannt gegeben.",
       "checked_at": "2026-11-20",
       "method": "page"
-    }
+    },
+    "co_finance_required": {
+      "source_url": "https://www.nlwkn.niedersachsen.de/download/114292/Foerderbedingungen_Niedersachsen_2026.pdf",
+      "quote": "Die Zuwendung kann bis zu 100 %, bei Gemeinden und Gemeindeverbänden bis zu 90 %, der zuwendungsfähigen Ausgaben betragen.",
+      "checked_at": "2026-11-20",
+      "method": "page"
+    },
+    "eligibility": [
+      {
+        "source_url": "https://www.nlwkn.niedersachsen.de/gak/gak-150237.html",
+        "quote": "Es handelt sich um eine einjährige Fördermaßnahme mit einem Projektdurchführungszeitraum bis zum 31.12.2026.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.nlwkn.niedersachsen.de/download/114292/Foerderbedingungen_Niedersachsen_2026.pdf",
+        "quote": "Die vorstehend genannten Fördermaßnahmen 2.1, 2.2 und 2.3 werden nur in bestimmten Gebieten in Niedersachsen gefördert, die für den Naturschutz von besonderer Bedeutung sind (Naturschutzkulisse).",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.nlwkn.niedersachsen.de/download/114292/Foerderbedingungen_Niedersachsen_2026.pdf",
+        "quote": "Maßnahmen, die Ausgleichs- und Ersatzmaßnahmen für Eingriffe in Natur und Landschaft i. S. d. § 14 Bundesnaturschutzgesetz darstellen",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.nlwkn.niedersachsen.de/download/114292/Foerderbedingungen_Niedersachsen_2026.pdf",
+        "quote": "Vorhaben, deren Mittelabruf erst nach dem 15. Dezember 2026 erfolgen kann",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.nlwkn.niedersachsen.de/download/114292/Foerderbedingungen_Niedersachsen_2026.pdf",
+        "quote": "Erwerb von Grundstücken, die sich bereits im öffentlichen Eigentum befinden. In naturschutzfachlich begründeten Fällen kann bei Zuwendungsempfängern nach Nummer 5.1 für nicht landeseigene Grundstücke eine Ausnahme zugelassen werden",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.nlwkn.niedersachsen.de/download/114292/Foerderbedingungen_Niedersachsen_2026.pdf",
+        "quote": "Erwerb von Flächen mit einem Anteil von mehr als 50% an Baumbestand (Wald), welcher erhalten werden soll",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.nlwkn.niedersachsen.de/download/114292/Foerderbedingungen_Niedersachsen_2026.pdf",
+        "quote": "Erwerb von Fischteichen",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.nlwkn.niedersachsen.de/download/114292/Foerderbedingungen_Niedersachsen_2026.pdf",
+        "quote": "Anträge auf Zuwendungen sind vor Beginn der Vorhaben bei der Bewilligungsbehörde zu stellen.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "co_finance": {
+      "source_url": "https://www.nlwkn.niedersachsen.de/download/114292/Foerderbedingungen_Niedersachsen_2026.pdf",
+      "quote": "Die Zuwendung kann bis zu 100 %, bei Gemeinden und Gemeindeverbänden bis zu 90 %, der zuwendungsfähigen Ausgaben betragen.",
+      "checked_at": "2026-11-20",
+      "method": "page"
+    },
+    "documents": [
+      {
+        "source_url": "https://www.nlwkn.niedersachsen.de/gak/gak-150237.html",
+        "quote": "Antragsformular 2026 - Maßnahme A (DOCX, 0,09 MB) Erklärungen des Antragstellenden 2026 - Teile A + B (DOCX, 0,09 MB) Erklärung des Antragstellenden 2026 - Teil C (DOCX, 0,02 MB) Erklärung des Antragstellenden 2026 - Teil D (DOCX, 0,02 MB) Absichtserklärung Flächeneigentümer 2026 (nur bei Flächenankauf) (DOCX, 0,02 MB) Vorlage Kostenplan Grunderwerb 2026 (XLSX, 0,01 MB)",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.nlwkn.niedersachsen.de/gak/gak-150237.html",
+        "quote": "Vorlage Kostenplan investive Maßnahmen 2026 (XLSX, 0,01 MB)",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.nlwkn.niedersachsen.de/download/114292/Foerderbedingungen_Niedersachsen_2026.pdf",
+        "quote": "unterschriebener Erklärungen des Zuwendungsempfängers und ggf. erforderlicher Stellungnahme der Unteren Naturschutzbehörde",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "effort": [
+      {
+        "source_url": "https://www.nlwkn.niedersachsen.de/gak/gak-150237.html",
+        "quote": "Die vollständigen Anträge senden Sie bitte - postalisch oder digital - an:",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ]
   },
-  "checked_at": "2026-11-20"
+  "checked_at": "2026-11-20",
+  "effort": {
+    "steps": [
+      "Application to NLWKN"
+    ]
+  }
 }
