@@ -1,7 +1,10 @@
 {
   "id": "gef-sgp-costa-rica",
   "name": "Programa de Pequeñas Donaciones del FMAM - Costa Rica",
-  "funder": { "name": "Global Environment Facility", "url": "https://www.thegef.org/" },
+  "funder": {
+    "name": "Global Environment Facility",
+    "url": "https://www.thegef.org/"
+  },
   "administered_by": {
     "name": "UNDP Costa Rica (GEF Small Grants Programme)",
     "url": "https://www.pequenasdonacionescr.org/"
@@ -16,13 +19,62 @@
     "reforestation",
     "community_conservation"
   ],
-  "applicant_types": ["ngo", "community_group"],
-  "geography": { "scope": "countries", "countries": ["CR"] },
+  "applicant_types": [
+    "ngo",
+    "community_group"
+  ],
+  "geography": {
+    "scope": "countries",
+    "countries": [
+      "CR"
+    ]
+  },
   "access": "direct",
   "window": "fixed",
-  "amount": { "currency": "USD", "max": 40000 },
-  "co_finance_required": null,
+  "amount": {
+    "currency": "USD",
+    "max": 40000
+  },
+  "co_finance_required": true,
   "reporting": null,
+  "effort": {
+    "steps": [
+      "Project idea profile by email",
+      "Final project document (PRODOC), if selected",
+      "National Steering Committee review"
+    ],
+    "due": [
+      "2026-09-15",
+      null,
+      null
+    ]
+  },
+  "eligibility": [
+    {
+      "rule": "Is a nonprofit civil-society organization",
+      "kind": "legal"
+    },
+    {
+      "rule": "Has valid legal personality",
+      "kind": "legal"
+    },
+    {
+      "rule": "Has demonstrated experience in the area",
+      "kind": "track_record"
+    },
+    {
+      "rule": "Has strategic alliances with international cooperation, government and/or academic entities",
+      "kind": "other"
+    },
+    {
+      "rule": "Project lasts 12 to 18 months",
+      "kind": "project"
+    },
+    {
+      "rule": "Submits only one proposal per organisation",
+      "kind": "other"
+    }
+  ],
   "calls": [
     {
       "id": "gef-8-2026",
@@ -88,7 +140,117 @@
       "quote": "Se aceptarán propuestas con un monto de financiamiento de hasta US$40.000.",
       "checked_at": "2026-11-20",
       "method": "page"
-    }
+    },
+    "effort": [
+      {
+        "source_url": "https://www.pequenasdonacionescr.org/convocatoria-gef-8-2026/",
+        "quote": "El PPD recibirá propuestas a la dirección de correo electrónico: ingrid.sanchez@undp.org, a partir del 13 de agosto y antes del 15 de septiembre de 2026, 11:00 p. m. (hora de Costa Rica).",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.pequenasdonacionescr.org/wp-content/uploads/2026/08/Bases_Convocatoria_PPD-GEF_OP8_2026-2.pdf",
+        "quote": "Si una idea de proyecto es seleccionada, el siguiente paso terminar de ajustar la propuesta para consolidar el documento de proyecto (PRODOC).",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.pequenasdonacionescr.org/wp-content/uploads/2026/08/Bases_Convocatoria_PPD-GEF_OP8_2026-2.pdf",
+        "quote": "Una vez recibido el PRODOC, la Coordinación Nacional convoca a una reunión a las personas integrantes del Comité Directivo Nacional (CDN), quienes analizan cada PRODOC para su posible selección final.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "eligibility": [
+      {
+        "source_url": "https://www.pequenasdonacionescr.org/convocatoria-gef-8-2026/",
+        "quote": "organizaciones de la sociedad civil sin fines de lucro",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.pequenasdonacionescr.org/convocatoria-gef-8-2026/",
+        "quote": "tener personería jurídica válida",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.pequenasdonacionescr.org/convocatoria-gef-8-2026/",
+        "quote": "tener experiencia demostrada en la zona",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.pequenasdonacionescr.org/convocatoria-gef-8-2026/",
+        "quote": "alianzas estratégicas con otras entidades de cooperación internacional, gubernamentales y/o académicas",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.pequenasdonacionescr.org/convocatoria-gef-8-2026/",
+        "quote": "los proyectos se ejecutarán durante 12 a 18 meses",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.pequenasdonacionescr.org/wp-content/uploads/2026/08/Bases_Convocatoria_PPD-GEF_OP8_2026-2.pdf",
+        "quote": "Presentar solo una propuesta por parte de la organización.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "co_finance_required": {
+      "source_url": "https://www.pequenasdonacionescr.org/wp-content/uploads/2026/08/Bases_Convocatoria_PPD-GEF_OP8_2026-2.pdf",
+      "quote": "La organización debe aportar una contrapartida del 100% de la donación solicitada (es decir, se debe igualar el monto solicitado).",
+      "checked_at": "2026-11-20",
+      "method": "page"
+    },
+    "co_finance": {
+      "source_url": "https://www.pequenasdonacionescr.org/wp-content/uploads/2026/08/Bases_Convocatoria_PPD-GEF_OP8_2026-2.pdf",
+      "quote": "La organización debe aportar una contrapartida del 100% de la donación solicitada (es decir, se debe igualar el monto solicitado). Esta contrapartida podrá ser en especie",
+      "checked_at": "2026-11-20",
+      "method": "page"
+    },
+    "documents": [
+      {
+        "source_url": "https://www.pequenasdonacionescr.org/wp-content/uploads/2026/08/Bases_Convocatoria_PPD-GEF_OP8_2026-2.pdf",
+        "quote": "Se deberá adjuntar junto con la propuesta de proyecto, copia de personería jurídica, calidades de la persona representante legal y copia de la cédula de identidad.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.pequenasdonacionescr.org/wp-content/uploads/2026/08/Bases_Convocatoria_PPD-GEF_OP8_2026-2.pdf",
+        "quote": "Presentar al menos 1 carta de recomendación o apoyo de alguna organización o institución aliada",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "after_award": [
+      {
+        "source_url": "https://www.pequenasdonacionescr.org/wp-content/uploads/2026/08/Bases_Convocatoria_PPD-GEF_OP8_2026-2.pdf",
+        "quote": "El seguimiento es continuo, mediante reportes, visitas y auditorías según el monto y riesgo.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.pequenasdonacionescr.org/wp-content/uploads/2026/08/Bases_Convocatoria_PPD-GEF_OP8_2026-2.pdf",
+        "quote": "presentar informes finales dentro de 60 días",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ]
   },
-  "checked_at": "2026-11-20"
+  "checked_at": "2026-11-20",
+  "co_finance": {
+    "min_share": 50,
+    "in_kind": true
+  },
+  "documents": [
+    "Copy of legal-personality certificate",
+    "Legal representative details and ID copy",
+    "At least one recommendation or support letter from a partner"
+  ],
+  "after_award": {
+    "reports": "unspecified"
+  }
 }

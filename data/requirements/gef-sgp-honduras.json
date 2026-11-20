@@ -1,0 +1,49 @@
+{
+  "id": "gef-sgp-honduras",
+  "read_on": "2026-11-20",
+  "prompt_version": "req-2026-11-20.1",
+  "models": ["cursor:gpt-5.6-luna-high"],
+  "complete": false,
+  "reasons": [
+    "the text names a document with rules that was not read: Salvaguardias Sociales y Ambientales del PNUD: http://undp.org/es/honduras/gestion-responsable-de-los-riesgos-ambientales-sociales-y-comunitarios",
+    "the text names a document with rules that was not read: Estrategia Nacional de País del PPD 2024-2028",
+    "the text names a document with rules that was not read: Metodología del Programa de Pequeñas Donaciones (PPD) en Honduras",
+    "Jev did not check this reading, so an absent fact is not known to be absent"
+  ],
+  "requirements_checked": false,
+  "documents": [
+    {
+      "ref": "D1",
+      "url": "https://www.undp.org/sites/g/files/zskgke326/files/2026-02/pnud-hn-ppd-convocatoria-i-ronda-proyectos-comunitarios-ppd-2026.pdf",
+      "final_url": "https://www.undp.org/sites/g/files/zskgke326/files/2026-02/pnud-hn-ppd-convocatoria-i-ronda-proyectos-comunitarios-ppd-2026.pdf",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": true,
+      "chars": 50137,
+      "pages": 28,
+      "low_text": false,
+      "hash": "sha256:4e4fa610d6af34e5549ff9f7c246da3ef1e98d90dcde409956fdd94e9b9abc07"
+    }
+  ],
+  "failures": [],
+  "skipped_links": 0,
+  "chunks": [{ "id": "all", "docs": ["D1"], "chars": 50283 }],
+  "outcomes": {
+    "eligibility": "stated",
+    "documents": "stated",
+    "effort": "stated",
+    "co_finance": "stated",
+    "consortium": "not_found",
+    "after_award": "not_found"
+  },
+  "written": ["eligibility", "documents", "effort", "co_finance"],
+  "escalated": [],
+  "flags": [],
+  "notes": [
+    "co_finance: share 10% dropped, its quote does not state it",
+    "extractor: D1 covers the closed first 2026 round. It also sets project duration at 12–16 months and requires documentation of Free, Prior and Informed Consent for proposals benefiting Indigenous or Afro-Honduran groups.",
+    "source gef-sgp-honduras-1: selector main dropped, a new quote sits outside it"
+  ],
+  "usd": 0
+}

@@ -1,19 +1,85 @@
 {
   "id": "gef-sgp-peru",
   "name": "Programa de Pequeñas Donaciones del FMAM - Perú",
-  "funder": { "name": "Global Environment Facility", "url": "https://www.thegef.org/" },
-  "administered_by": { "name": "UNDP Peru", "url": "https://www.undp.org/es/peru" },
+  "funder": {
+    "name": "Global Environment Facility",
+    "url": "https://www.thegef.org/"
+  },
+  "administered_by": {
+    "name": "UNDP Peru",
+    "url": "https://www.undp.org/es/peru"
+  },
   "parent": "gef-sgp",
   "url": "https://www.ppdperu.org/convocatorias/",
   "summary": "Peru's SGP country programme, led with the Ministry of Environment and run by UNDP, funds community projects and larger strategic landscape projects by Peruvian civil society organisations in selected Andean districts.",
-  "approaches": ["community_conservation", "grasslands", "sustainable_land_use", "freshwater"],
-  "applicant_types": ["community_group", "ngo"],
-  "geography": { "scope": "countries", "countries": ["PE"] },
+  "approaches": [
+    "community_conservation",
+    "grasslands",
+    "sustainable_land_use",
+    "freshwater"
+  ],
+  "applicant_types": [
+    "community_group",
+    "ngo"
+  ],
+  "geography": {
+    "scope": "countries",
+    "countries": [
+      "PE"
+    ]
+  },
   "access": "direct",
   "window": "fixed",
   "amount": null,
-  "co_finance_required": null,
+  "co_finance_required": true,
   "reporting": null,
+  "effort": {
+    "steps": [
+      "Proposal by email to the C3 or C5 call",
+      "Selection by the National Steering Committee"
+    ],
+    "more_after": true
+  },
+  "eligibility": [
+    {
+      "rule": "For C3, have a southern Andean address and be nonprofit",
+      "kind": "legal"
+    },
+    {
+      "rule": "Valid legal personality in Peru with current powers at submission; for C5, 8+ years operating",
+      "kind": "legal"
+    },
+    {
+      "rule": "For C5, a nonprofit civil-society organisation, not a community-based organisation",
+      "kind": "legal"
+    },
+    {
+      "rule": "Only one PPD project per organisation per operational phase",
+      "kind": "other"
+    },
+    {
+      "rule": "For C5, 8+ years of organisational experience in Andean rural development themes",
+      "kind": "track_record"
+    },
+    {
+      "rule": "For C5, 5+ years of experience in the region applied for",
+      "kind": "track_record"
+    },
+    {
+      "rule": "For C5, cover the entire selected landscape, not only part of it",
+      "kind": "project"
+    }
+  ],
+  "co_finance": {
+    "min_share": 50,
+    "in_kind": true,
+    "applies_to": "C5 strategic projects"
+  },
+  "documents": [
+    "SUNARP registry entry copy (PDF)",
+    "Updated registry power-of-attorney validity certificate (PDF)",
+    "SUNAT RUC record (PDF)"
+  ],
   "calls": [
     {
       "id": "gef8-c3-2026",
@@ -21,7 +87,10 @@
       "url": "https://www.ppdperu.org/convocatoria-gef8-2026-c3/",
       "status": "closed",
       "opens": "2026-07-30",
-      "deadline": { "date": "2026-09-07", "text": "Fecha de Fin 07/09/2026" },
+      "deadline": {
+        "date": "2026-09-07",
+        "text": "Fecha de Fin 07/09/2026"
+      },
       "evidence": {
         "status": {
           "source_url": "https://www.ppdperu.org/convocatoria-gef8-2026-c3/",
@@ -49,7 +118,10 @@
       "url": "https://www.ppdperu.org/convocatoria-ppd-gef-8-c5-2026-proyectos-estrategicos/",
       "status": "closed",
       "opens": "2026-09-15",
-      "deadline": { "date": "2026-10-19", "text": "Fecha de Fin 19/10/2026" },
+      "deadline": {
+        "date": "2026-10-19",
+        "text": "Fecha de Fin 19/10/2026"
+      },
       "evidence": {
         "status": {
           "source_url": "https://www.ppdperu.org/convocatoria-ppd-gef-8-c5-2026-proyectos-estrategicos/",
@@ -102,7 +174,103 @@
       "quote": "Fecha de Fin 07/09/2026",
       "checked_at": "2026-11-15",
       "method": "page"
-    }
+    },
+    "co_finance_required": {
+      "source_url": "https://www.ppdperu.org/wp-content/uploads/2026/09/Bases_PPD_GEF8_PE_C5.pdf",
+      "quote": "Es un requisito del Programa contar con un cofinanciamiento mínimo equivalente al monto a solicitar al PPD (1 a 1 o 100%).",
+      "checked_at": "2026-11-20",
+      "method": "page"
+    },
+    "effort": [
+      {
+        "source_url": "https://www.ppdperu.org/wp-content/uploads/2026/08/Bases_PPD_GEF8_PC_C3-rvdo.pdf",
+        "quote": "Para presentar su propuesta, seguir los siguientes pasos:",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.ppdperu.org/wp-content/uploads/2026/09/Bases_PPD_GEF8_PE_C5.pdf",
+        "quote": "El Comité Directivo Nacional PPD seleccionará las propuestas, de acuerdo con los siguientes criterios:",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.ppdperu.org/wp-content/uploads/2026/09/Bases_PPD_GEF8_PE_C5.pdf",
+        "quote": "Las organizaciones con propuestas seleccionadas deberán presentar documentación que sustente un buen historial financiero, técnico y legal.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "eligibility": [
+      {
+        "source_url": "https://www.ppdperu.org/wp-content/uploads/2026/08/Bases_PPD_GEF8_PC_C3-rvdo.pdf",
+        "quote": "Además de contar con domicilio en alguna región del sur andino y no tener fines de lucro.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.ppdperu.org/wp-content/uploads/2026/09/Bases_PPD_GEF8_PE_C5.pdf",
+        "quote": "Es requisito indispensable para la entidad proponente, tener personería jurídica válida en el Perú (con al menos 8 años de operación) y con poderes y facultades vigentes a la fecha de presentación.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.ppdperu.org/wp-content/uploads/2026/09/Bases_PPD_GEF8_PE_C5.pdf",
+        "quote": "Como entidad proponente, pueden concursar organizaciones de la sociedad civil sin fines de lucro, entre ellas organizaciones no gubernamentales, entidades académicas y de investigación. En la presente convocatoria, las organizaciones de base comunitaria (OBC) solo pueden participar en calidad de aliados en el proyecto.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.ppdperu.org/wp-content/uploads/2026/09/Bases_PPD_GEF8_PE_C5.pdf",
+        "quote": "Se aclara que una misma entidad solo puede firmar un proyecto por fase operativa y fuente financiera con el PPD.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.ppdperu.org/wp-content/uploads/2026/09/Bases_PPD_GEF8_PE_C5.pdf",
+        "quote": "Al menos 8 años de experiencia -como organización- en temas relacionados al desarrollo rural andino, como la agricultura familiar, la conservación de la (agro)biodiversidad, la gestión del agua, los emprendimientos comunitarios, cadenas de valor o bionegocios, restauración de ecosistemas, entre otros.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.ppdperu.org/wp-content/uploads/2026/09/Bases_PPD_GEF8_PE_C5.pdf",
+        "quote": "Al menos 5 años de experiencia en la Región a la cual se postula.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.ppdperu.org/wp-content/uploads/2026/09/Bases_PPD_GEF8_PE_C5.pdf",
+        "quote": "Cada proyecto estratégico liderará un paisaje productivo priorizado que abarca todo el paisaje2 en forma integral (no parcialmente), que podrá ser:",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "co_finance": {
+      "source_url": "https://www.ppdperu.org/wp-content/uploads/2026/09/Bases_PPD_GEF8_PE_C5.pdf",
+      "quote": "Es un requisito del Programa contar con un cofinanciamiento mínimo equivalente al monto a solicitar al PPD (1 a 1 o 100%). El cofinanciamiento puede provenir de fuentes en efectivo o en especies (valorizado)",
+      "checked_at": "2026-11-20",
+      "method": "page"
+    },
+    "documents": [
+      {
+        "source_url": "https://www.ppdperu.org/wp-content/uploads/2026/08/Bases_PPD_GEF8_PC_C3-rvdo.pdf",
+        "quote": "Copia literal de la partida registral de SUNARP de la organización proponente (pdf)",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.ppdperu.org/wp-content/uploads/2026/08/Bases_PPD_GEF8_PC_C3-rvdo.pdf",
+        "quote": "Vigencia de poder actualizada de la partida registral (pdf)",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.ppdperu.org/wp-content/uploads/2026/08/Bases_PPD_GEF8_PC_C3-rvdo.pdf",
+        "quote": "Ficha RUC de la SUNAT de la organización proponente (pdf)",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ]
   },
   "checked_at": "2026-11-15"
 }

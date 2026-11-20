@@ -1,0 +1,127 @@
+{
+  "id": "groningen-invasieve-exoten",
+  "read_on": "2026-11-20",
+  "prompt_version": "req-2026-11-20.1",
+  "models": ["cursor:gpt-5.6-luna-high"],
+  "complete": false,
+  "reasons": [
+    "6 links could not be ranked without Jev",
+    "4 links could not be ranked without Jev",
+    "https://www.provinciegroningen.nl/fileadmin/user_upload/Documenten/Dossiers/Natuur/_Online__Plan_van_Aanpak_Exoten_in_Toom_001.pdf: pages 1, 19, 37 are images: needs OCR",
+    "the text names a document with rules that was not read: Officiële subsidieregeling",
+    "the text names a document with rules that was not read: Plan van Aanpak Exoten in Toom, hoofdstuk 6.2 A, B en/of C",
+    "the text names a document with rules that was not read: Plan van Aanpak - Exoten in Toom",
+    "the text names a document with rules that was not read: Unielijst van de EU-exotenverordening",
+    "the text names a document with rules that was not read: Procedureregeling subsidies provincie Groningen 2018",
+    "the text names a document with rules that was not read: Openstellingsbesluit",
+    "the text names a document with rules that was not read: Verordening (EU) 1143/2014",
+    "the text names a document with rules that was not read: Subsidieregeling invasieve exoten",
+    "the text names a document with rules that was not read: Plan van Aanpak - Exoten in Toom van de provincie Groningen",
+    "the text names a document with rules that was not read: verordening (EU) 1143/2014 betreffende de preventie en beheersing van de introductie en verspreiding van invasieve uitheemse soorten",
+    "the text names a document with rules that was not read: Algemene wet bestuursrecht",
+    "the text names a document with rules that was not read: Kaderverordening subsidies provincie Groningen 2017",
+    "Jev did not check this reading, so an absent fact is not known to be absent"
+  ],
+  "requirements_checked": false,
+  "documents": [
+    {
+      "ref": "D1",
+      "url": "https://www.provinciegroningen.nl/subsidies/natuur-en-landschap/invasieve-exoten/",
+      "final_url": "https://www.provinciegroningen.nl/subsidies/natuur-en-landschap/invasieve-exoten/",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 6398,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:207850d0db6747f178bce84f469177d779fff819bc9ba0b9863b9a65fcb7726e"
+    },
+    {
+      "ref": "D2",
+      "url": "https://lokaleregelgeving.overheid.nl/CVDR763350",
+      "final_url": "https://lokaleregelgeving.overheid.nl/CVDR763350",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 36579,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:73d6a3b59bc3f03490712ad2362c7396054bb27152fccc091f1850db82465343"
+    },
+    {
+      "ref": "D3",
+      "url": "https://www.provinciegroningen.nl/fileadmin/user_upload/Documenten/Dossiers/Natuur/_Online__Plan_van_Aanpak_Exoten_in_Toom_001.pdf",
+      "final_url": "https://www.provinciegroningen.nl/fileadmin/user_upload/Documenten/Dossiers/Natuur/_Online__Plan_van_Aanpak_Exoten_in_Toom_001.pdf",
+      "from": "https://www.provinciegroningen.nl/subsidies/natuur-en-landschap/invasieve-exoten/",
+      "anchor": "Plan van Aanpak Exoten in Toom",
+      "depth": 1,
+      "pdf": true,
+      "chars": 222341,
+      "pages": 102,
+      "low_text": false,
+      "hash": "sha256:21258420154a580ffc97e6dcc3a7816d31ddb7266db402fdd763e90f6f6fd065"
+    },
+    {
+      "ref": "D4",
+      "url": "https://lokaleregelgeving.overheid.nl/CVDR763350?",
+      "final_url": "https://lokaleregelgeving.overheid.nl/CVDR763350?",
+      "from": "https://lokaleregelgeving.overheid.nl/CVDR763350",
+      "anchor": "Regeling tekst",
+      "depth": 1,
+      "pdf": false,
+      "chars": 36579,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:73d6a3b59bc3f03490712ad2362c7396054bb27152fccc091f1850db82465343"
+    }
+  ],
+  "failures": [
+    {
+      "url": "https://www.provinciegroningen.nl/fileadmin/user_upload/Documenten/Dossiers/Natuur/_Online__Plan_van_Aanpak_Exoten_in_Toom_001.pdf",
+      "from": "https://www.provinciegroningen.nl/subsidies/natuur-en-landschap/invasieve-exoten/",
+      "kind": "low_text",
+      "message": "pages 1, 19, 37 are images: needs OCR"
+    }
+  ],
+  "skipped_links": 81,
+  "chunks": [
+    { "id": "c1", "docs": ["D1"], "chars": 6492 },
+    { "id": "c2", "docs": ["D2"], "chars": 36640 },
+    { "id": "c3", "docs": ["D3"], "chars": 40244 },
+    { "id": "c4", "docs": ["D3"], "chars": 40001 },
+    { "id": "c5", "docs": ["D3"], "chars": 40197 },
+    { "id": "c6", "docs": ["D3"], "chars": 40196 },
+    { "id": "c7", "docs": ["D3"], "chars": 40236 },
+    { "id": "c8", "docs": ["D3"], "chars": 30497 },
+    { "id": "c9", "docs": ["D4"], "chars": 36702 }
+  ],
+  "outcomes": {
+    "eligibility": "stated",
+    "documents": "stated",
+    "effort": "unresolved",
+    "co_finance": "stated",
+    "consortium": "not_found",
+    "after_award": "unresolved"
+  },
+  "written": ["eligibility", "documents", "co_finance"],
+  "escalated": [],
+  "flags": [
+    { "field": "after_award", "item": "required", "why": "parts of the text disagree" },
+    {
+      "field": "effort",
+      "item": "steps",
+      "why": "the steps come from different parts of the text; check they are one list in order"
+    }
+  ],
+  "notes": [
+    "eligibility: 9 rules past the 8th dropped",
+    "documents: 3 past the 10th dropped",
+    "effort \"Application for an area plan, eradication project or volunteer initiative\": the quote does not state 2026-10-30 whole; left undated",
+    "extractor: The page describes three subsidy components; component-specific requirements are in the official subsidy regulation. | The regulation has three routes: area plans, invasive-exotic control, and volunteer-group support. Applicant requirements and submission documents differ by route. D2 does not state the 2026 application deadline; it says the application period is set by an openstellingsbesluit. | This part is a policy plan and does not state applicant requirements or application procedures. | D3 is a 2025–2030 policy plan and does not state application requirements for the 2026 subsidy programme. | D3 describes a proposed subsidy scheme and planned activities, but does not state applicant requirements, submission documents, application stages, co-financing, consortium rules or post-award duties. | D3 describes invasive-species impacts, controllability and management strategies; it does not state applicant requirements, submission documents, application stages, co-financing, consortium ",
+    "the flagged text is too long for one escalation",
+    "source groningen-invasieve-exoten-2: selector article dropped, a new quote sits outside it"
+  ],
+  "usd": 0
+}

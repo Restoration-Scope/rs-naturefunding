@@ -1,0 +1,55 @@
+{
+  "id": "gef-sgp-zimbabwe",
+  "read_on": "2026-11-20",
+  "prompt_version": "req-2026-11-20.1",
+  "models": ["cursor:gpt-5.6-luna-high", "cursor:gpt-5.6-sol-high"],
+  "complete": false,
+  "reasons": [
+    "the text names a document with rules that was not read: Attached proposal template",
+    "the text names a document with rules that was not read: GEFSGP budget template",
+    "the text names a document with rules that was not read: UNDP Code of Ethics: https://www.undp.org/sites/g/files/zskgke326/files/2023-09/FINAL-UNDPCODE-OF-ETHICS.pdf",
+    "the text names a document with rules that was not read: UNDP Social and Environmental Standards: https://sestoolkit.info.undp.org/sites/g/files/zskgke446/files/SES%20Document%20Library/Social%20and%20Environmental%20",
+    "Jev did not check this reading, so an absent fact is not known to be absent",
+    "strong reading: the text names a document with rules that was not read: GEF SGP proposal template",
+    "strong reading: the text names a document with rules that was not read: GEF SGP budget template",
+    "strong reading: the text names a document with rules that was not read: Low Value Grant guidelines",
+    "strong reading: the text names a document with rules that was not read: UNDP Code of Ethics",
+    "strong reading: the text names a document with rules that was not read: UNDP Social and Environmental Standards"
+  ],
+  "requirements_checked": false,
+  "documents": [
+    {
+      "ref": "D1",
+      "url": "https://www.undp.org/sites/g/files/zskgke326/files/2026-05/undp-zwe-gefsgp-second-call-for-proposals-2026.pdf",
+      "final_url": "https://www.undp.org/sites/g/files/zskgke326/files/2026-05/undp-zwe-gefsgp-second-call-for-proposals-2026.pdf",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": true,
+      "chars": 19994,
+      "pages": 9,
+      "low_text": false,
+      "hash": "sha256:ff1ff9538fc83655b12b44ddd319469ec79e5aef37a4d055b2c4d804ce25e309"
+    }
+  ],
+  "failures": [],
+  "skipped_links": 0,
+  "chunks": [{ "id": "all", "docs": ["D1"], "chars": 20122 }],
+  "outcomes": {
+    "eligibility": "stated",
+    "documents": "stated",
+    "effort": "stated",
+    "co_finance": "not_found",
+    "consortium": "not_found",
+    "after_award": "not_found"
+  },
+  "written": ["eligibility", "documents", "effort"],
+  "escalated": ["eligibility", "documents", "effort"],
+  "flags": [],
+  "notes": [
+    "extractor: Successful applicants must revise proposals by 20 July 2026. The call also requires grantees to open a separate project bank account and follow UNDP ethics and safeguards; these duties are outside the specified after-award duty types.",
+    "eligibility: kept 1 first-reading item no check faulted that the strong reading left out",
+    "source gef-sgp-zimbabwe-1: selector main dropped, a new quote sits outside it"
+  ],
+  "usd": 0
+}

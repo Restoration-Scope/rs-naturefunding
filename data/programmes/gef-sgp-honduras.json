@@ -1,7 +1,10 @@
 {
   "id": "gef-sgp-honduras",
   "name": "Programa de Pequeñas Donaciones del FMAM - Honduras",
-  "funder": { "name": "Global Environment Facility", "url": "https://www.thegef.org/" },
+  "funder": {
+    "name": "Global Environment Facility",
+    "url": "https://www.thegef.org/"
+  },
   "administered_by": null,
   "parent": "gef-sgp",
   "url": "https://www.undp.org/sites/g/files/zskgke326/files/2026-02/pnud-hn-ppd-convocatoria-i-ronda-proyectos-comunitarios-ppd-2026.pdf",
@@ -12,13 +15,88 @@
     "reforestation",
     "sustainable_land_use"
   ],
-  "applicant_types": ["community_group", "indigenous_organization"],
-  "geography": { "scope": "countries", "countries": ["HN"] },
+  "applicant_types": [
+    "community_group",
+    "indigenous_organization"
+  ],
+  "geography": {
+    "scope": "countries",
+    "countries": [
+      "HN"
+    ]
+  },
   "access": "direct",
   "window": "fixed",
-  "amount": { "currency": "USD", "min": 20000, "max": 35000 },
+  "amount": {
+    "currency": "USD",
+    "min": 20000,
+    "max": 35000
+  },
   "co_finance_required": true,
   "reporting": "Projects must include a monitoring component that tracks the indicators set by the programme under its 2024-2028 country strategy.",
+  "effort": {
+    "steps": [
+      "Project profile and capacity forms by email",
+      "PPD evaluation and NSC profile selection",
+      "Proposal-writing workshop, if selected",
+      "NSC approval of final proposal"
+    ],
+    "due": [
+      "2026-03-06",
+      null,
+      null,
+      null
+    ]
+  },
+  "eligibility": [
+    {
+      "rule": "Has legal personality and financial-technical capacity, or uses an eligible intermediary if it lacks legal personality.",
+      "kind": "legal"
+    },
+    {
+      "rule": "Has a current legal representative.",
+      "kind": "legal"
+    },
+    {
+      "rule": "Has a democratically elected board.",
+      "kind": "legal"
+    },
+    {
+      "rule": "Keeps accounting records required by law up to date.",
+      "kind": "capacity"
+    },
+    {
+      "rule": "Has a national bank account with at least two registered signatures.",
+      "kind": "capacity"
+    },
+    {
+      "rule": "Is registered and has a National Tax Registry.",
+      "kind": "legal"
+    },
+    {
+      "rule": "Is not a for-profit organisation, municipality or central-government entity.",
+      "kind": "legal"
+    },
+    {
+      "rule": "Is located in the PPD's prioritised or influence areas.",
+      "kind": "project"
+    }
+  ],
+  "co_finance": {
+    "min_share": 10,
+    "in_kind": true
+  },
+  "documents": [
+    "Community organisational-capacity form, Annex 1",
+    "Intermediary-organisation form, Annex 2, if applicable",
+    "Submission note or email to the National Steering Committee",
+    "Legal-personality document",
+    "Current board minutes",
+    "National Tax Registry copy",
+    "Intermediary operating permit copy, if applicable",
+    "Intermediary National Tax Registry copy, if applicable",
+    "Intermediary legal-personality and statutes documents, if applicable"
+  ],
   "calls": [
     {
       "id": "ronda-comunitaria-2026-1",
@@ -26,7 +104,10 @@
       "url": "https://www.undp.org/sites/g/files/zskgke326/files/2026-02/pnud-hn-ppd-convocatoria-i-ronda-proyectos-comunitarios-ppd-2026.pdf",
       "status": "closed",
       "opens": "2026-02-16",
-      "deadline": { "date": "2026-03-06", "text": "06 de marzo de 2026" },
+      "deadline": {
+        "date": "2026-03-06",
+        "text": "06 de marzo de 2026"
+      },
       "evidence": {
         "status": {
           "source_url": "https://www.undp.org/sites/g/files/zskgke326/files/2026-02/pnud-hn-ppd-convocatoria-i-ronda-proyectos-comunitarios-ppd-2026.pdf",
@@ -82,7 +163,7 @@
     },
     "co_finance_required": {
       "source_url": "https://www.undp.org/sites/g/files/zskgke326/files/2026-02/pnud-hn-ppd-convocatoria-i-ronda-proyectos-comunitarios-ppd-2026.pdf",
-      "quote": "Los proponentes deberán aportar un cofinanciamiento para incrementar el impacto de las subvenciones.",
+      "quote": "Los proponentes deberán aportar un cofinanciamiento para incrementar el impacto de las subvenciones. Se solicita un cofinanciamiento de un equivalente mínimo de 10% y hasta un 30% del total del proyecto para cada proyecto.",
       "checked_at": "2026-11-20",
       "method": "page"
     },
@@ -91,7 +172,121 @@
       "quote": "con un componente de monitoreo con indicadores establecidos por el PPD según lo acordado en el marco de la Estrategia Nacional de País del PPD 2024-2028",
       "checked_at": "2026-11-20",
       "method": "page"
-    }
+    },
+    "effort": [
+      {
+        "source_url": "https://www.undp.org/sites/g/files/zskgke326/files/2026-02/pnud-hn-ppd-convocatoria-i-ronda-proyectos-comunitarios-ppd-2026.pdf",
+        "quote": "Las fichas institucionales y perfiles de ideas de proyectos deben ser enviados usando los formatos del anexo 1, 2 y 3 (según corresponda) en el plazo establecido en esta convocatoria del 16 de febrero al 06 de marzo 2026",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.undp.org/sites/g/files/zskgke326/files/2026-02/pnud-hn-ppd-convocatoria-i-ronda-proyectos-comunitarios-ppd-2026.pdf",
+        "quote": "Una vez cerrada la convocatoria y después de haber recibidos las fichas de perfiles de proyectos y la ficha de capacidad organizacional -financiera, las mismas serán evaluadas por personal de PPD para su aprobación previo a la fase de elaboración de propuestas.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.undp.org/sites/g/files/zskgke326/files/2026-02/pnud-hn-ppd-convocatoria-i-ronda-proyectos-comunitarios-ppd-2026.pdf",
+        "quote": "Con el acompañamiento de los equipos y la facilitación técnicos de PPD se realizará un taller participativo de elaboración de propuestas de proyectos comunitarios que han sido elegidos.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.undp.org/sites/g/files/zskgke326/files/2026-02/pnud-hn-ppd-convocatoria-i-ronda-proyectos-comunitarios-ppd-2026.pdf",
+        "quote": "Durante el taller los proponentes elaboraran un documento conceptual del proyecto bajo la metodología establecida por PPD, y luego con la asistencia de facilitadores del PPD se perfeccionan y fortalecen las propuestas técnicas y financieras que serán presentadas para su aprobación en una reunión del Comité Directivo Nacional del PPD.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.undp.org/sites/g/files/zskgke326/files/2026-02/pnud-hn-ppd-convocatoria-i-ronda-proyectos-comunitarios-ppd-2026.pdf",
+        "quote": "Al contar con los perfiles seleccionadas por el equipo técnico, el PPD convocará a reunión del Comité directivo nacional el cual decidirá cuales perfiles serán aprobados para formulación de proyectos.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "eligibility": [
+      {
+        "source_url": "https://www.undp.org/sites/g/files/zskgke326/files/2026-02/pnud-hn-ppd-convocatoria-i-ronda-proyectos-comunitarios-ppd-2026.pdf",
+        "quote": "que tengan una personería jurídica y con capacidades de gestión financiera- técnica. En caso de que una organización de base comunitaria no cuente con personería jurídica, se puede optar a una organización intermediaria.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.undp.org/sites/g/files/zskgke326/files/2026-02/pnud-hn-ppd-convocatoria-i-ronda-proyectos-comunitarios-ppd-2026.pdf",
+        "quote": "Que cuente con un representante legal, cuyo nombramiento se encuentre vigente.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.undp.org/sites/g/files/zskgke326/files/2026-02/pnud-hn-ppd-convocatoria-i-ronda-proyectos-comunitarios-ppd-2026.pdf",
+        "quote": "Que cuente con una junta directiva electa democráticamente por los socios de la organización.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.undp.org/sites/g/files/zskgke326/files/2026-02/pnud-hn-ppd-convocatoria-i-ronda-proyectos-comunitarios-ppd-2026.pdf",
+        "quote": "Que tenga actualizados los registros contables aplicables que demanda la ley.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.undp.org/sites/g/files/zskgke326/files/2026-02/pnud-hn-ppd-convocatoria-i-ronda-proyectos-comunitarios-ppd-2026.pdf",
+        "quote": "Que posea cuentas en el sistema bancario nacional, a nombre de la organización, con al menos dos firmas registradas.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.undp.org/sites/g/files/zskgke326/files/2026-02/pnud-hn-ppd-convocatoria-i-ronda-proyectos-comunitarios-ppd-2026.pdf",
+        "quote": "Que esté inscrita y cuente con el Registro Tributario Nacional.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.undp.org/sites/g/files/zskgke326/files/2026-02/pnud-hn-ppd-convocatoria-i-ronda-proyectos-comunitarios-ppd-2026.pdf",
+        "quote": "No son elegibles organizaciones con fines de lucro (Sociedades Anónimas o cualquier otra figura jurídica con fines de lucro), municipalidades, entidades de Gobierno Central y sus programas institucionales entre otras.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.undp.org/sites/g/files/zskgke326/files/2026-02/pnud-hn-ppd-convocatoria-i-ronda-proyectos-comunitarios-ppd-2026.pdf",
+        "quote": "Las organizaciones locales y/o grupos comunitarios o de sociedad civil proponentes deberán estar ubicadas en las zonas geográficas priorizadas y/o de influencia del PPD para esta Convocatoria, descritas en la sección 6 del presente documento.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "co_finance": {
+      "source_url": "https://www.undp.org/sites/g/files/zskgke326/files/2026-02/pnud-hn-ppd-convocatoria-i-ronda-proyectos-comunitarios-ppd-2026.pdf",
+      "quote": "Se solicita un cofinanciamiento de un equivalente mínimo de 10% y hasta un 30% del total del proyecto para cada proyecto. Ese puede ser en especie o en efectivo.",
+      "checked_at": "2026-11-20",
+      "method": "page"
+    },
+    "documents": [
+      {
+        "source_url": "https://www.undp.org/sites/g/files/zskgke326/files/2026-02/pnud-hn-ppd-convocatoria-i-ronda-proyectos-comunitarios-ppd-2026.pdf",
+        "quote": "ficha de capacidad organizacional comunitaria (Anexo 1), la ficha organizacional de intermediario (Anexo 2, cuando aplique) y el 2 El monto será otorgado en Lempiras en su equivalente a la tasa cambiaria del momento de otorgar la subvención. perfil de idea de proyecto (Anexo 3)",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.undp.org/sites/g/files/zskgke326/files/2026-02/pnud-hn-ppd-convocatoria-i-ronda-proyectos-comunitarios-ppd-2026.pdf",
+        "quote": "nota o correo electrónico de remisión dirigida al Comité Directivo Nacional del Programa de Pequeñas Donaciones",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.undp.org/sites/g/files/zskgke326/files/2026-02/pnud-hn-ppd-convocatoria-i-ronda-proyectos-comunitarios-ppd-2026.pdf",
+        "quote": "Adjuntar la personería jurídica Aspectos Legales ¿Tiene su Organización una Escritura pública de constitución? ¿Tiene su Organización Junta Directiva? ¿esta activa la junta directiva? Adjunte el acta de la junta directiva actualizada ¿Tiene su organización RTN? Por favor facilitar una copia",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.undp.org/sites/g/files/zskgke326/files/2026-02/pnud-hn-ppd-convocatoria-i-ronda-proyectos-comunitarios-ppd-2026.pdf",
+        "quote": "Por favor facilitar una copia del permiso de operación. ¿Cuenta con RTN? Por favor facilitar copia del RTN ' ¿Cuenta con personería jurídica y sus estatutos? Por favor facilitar copia de la documentación mencionada.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ]
   },
   "checked_at": "2026-11-20"
 }

@@ -1,7 +1,10 @@
 {
   "id": "gef-sgp-india",
   "name": "GEF Small Grants Programme India",
-  "funder": { "name": "Global Environment Facility", "url": "https://www.thegef.org/" },
+  "funder": {
+    "name": "Global Environment Facility",
+    "url": "https://www.thegef.org/"
+  },
   "administered_by": {
     "name": "The Energy and Resources Institute (TERI)",
     "url": "https://www.teriin.org/"
@@ -16,13 +19,94 @@
     "mangroves",
     "agroforestry"
   ],
-  "applicant_types": ["ngo"],
-  "geography": { "scope": "countries", "countries": ["IN"] },
+  "applicant_types": [
+    "ngo"
+  ],
+  "geography": {
+    "scope": "countries",
+    "countries": [
+      "IN"
+    ]
+  },
   "access": "direct",
   "window": "fixed",
-  "amount": { "currency": "USD", "max": 75000 },
+  "amount": {
+    "currency": "USD",
+    "max": 75000
+  },
   "co_finance_required": true,
+  "consortium_required": false,
   "reporting": null,
+  "effort": {
+    "steps": [
+      "Online proposal submission and hard-copy delivery",
+      "Eligibility and administrative screening",
+      "Technical and financial evaluation",
+      "Three-tier review and selection",
+      "National Steering Committee final approval"
+    ],
+    "due": [
+      "2026-09-15",
+      null,
+      null,
+      null,
+      null
+    ]
+  },
+  "eligibility": [
+    {
+      "rule": "Registered as a trust or society in India for more than 5 years",
+      "kind": "legal"
+    },
+    {
+      "rule": "Have a valid, updated NITI Aayog DARPAN ID",
+      "kind": "legal"
+    },
+    {
+      "rule": "Have at least 5 years of relevant community-programme experience in the focus landscape",
+      "kind": "track_record",
+      "min_years": 5
+    },
+    {
+      "rule": "Have an office in the selected intervention landscape state",
+      "kind": "project"
+    },
+    {
+      "rule": "Has completed at least 3 relevant projects of INR 15 lakh+ each (INR 5 lakh in North-East)",
+      "kind": "track_record"
+    },
+    {
+      "rule": "Have 3 government/philanthropy/foundation-funded projects in the focus landscape, or 2 in North-East",
+      "kind": "track_record"
+    },
+    {
+      "rule": "Have average project-grant turnover of at least INR 30,00,000 over the last 3 financial years",
+      "kind": "finances"
+    },
+    {
+      "rule": "Not have been debarred by any Government or UN agency",
+      "kind": "legal"
+    }
+  ],
+  "co_finance": {
+    "ratio": "1:1",
+    "in_kind": true
+  },
+  "after_award": {
+    "reports": "unspecified"
+  },
+  "documents": [
+    "Registration certificate of the organization",
+    "DARPAN portal registration certificate",
+    "IT returns for FY 2023-24, 2024-25 and 2025-26",
+    "Audited accounts for FY 2023-24, 2024-25 and 2025-26",
+    "Annual report for FY 2025-26",
+    "Proof of office in the focus landscape",
+    "Proof of co-financing for the submitted proposal",
+    "Detailed, verified CVs of proposed project professionals",
+    "Self-declaration accepting TERI General Terms and Conditions",
+    "Undertaking of non-debarment and no political or religious fundraising"
+  ],
   "calls": [
     {
       "id": "op8-community-grants",
@@ -91,9 +175,131 @@
     "co_finance_required": {
       "source_url": "https://sgp-india.org/assets/pdf/SGPOP8-India-RFP.pdf",
       "quote": "Applicants must provide a minimum co-financing contribution equivalent to the SGP grant amount, maintaining at least a 1:1 ratio.",
-      "checked_at": "2026-11-15",
+      "checked_at": "2026-11-20",
       "method": "page"
-    }
+    },
+    "consortium_required": {
+      "source_url": "https://sgp-india.org/assets/pdf/Frequently-Asked-Questions.pdf",
+      "quote": "Yes, consortiums can apply, and more than two organizations can be part of one.",
+      "checked_at": "2026-11-20",
+      "method": "page"
+    },
+    "effort": [
+      {
+        "source_url": "https://sgp-india.org/assets/pdf/SGPOP8-India-RFP.pdf",
+        "quote": "Proposals should be submitted online on or before 15 September 2026. Hard copies should be sent by courier to Small Grants Program Secretariat, TERI, New Delhi.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://sgp-india.org/assets/pdf/SGPOP8-India-RFP.pdf",
+        "quote": "All submitted proposals will be screened for eligibility",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://sgp-india.org/assets/pdf/SGPOP8-India-RFP.pdf",
+        "quote": "A two-step Quality and Cost Based Selection (QCBS) approach shall be adopted for examination of the project proposals (80% Technical and 20% Financial).",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://sgp-india.org/assets/pdf/SGPOP8-India-RFP.pdf",
+        "quote": "Eligible proposals will be compiled and reviewed through the three-tier review and selection mechanism of the Small Grants Programme (SGP).",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://sgp-india.org/assets/pdf/SGPOP8-India-RFP.pdf",
+        "quote": "Based on the recommendations of the review process, the final approval of projects will be made by the National Steering Committee (NSC).",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "eligibility": [
+      {
+        "source_url": "https://sgp-india.org/assets/pdf/SGPOP8-India-RFP.pdf",
+        "quote": "The NGO/CSO/CBO should be registered as a trust / society in India for more than 5 years.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://sgp-india.org/assets/pdf/SGPOP8-India-RFP.pdf",
+        "quote": "NGO/CSO/CBO must be registered at the DARPAN portal of NITI Aayog and should have a valid unique ID with updated details.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://sgp-india.org/assets/pdf/SGPOP8-India-RFP.pdf",
+        "quote": "The organization must have at least 5 years of experience working on community- based programmes in the field of environment, climate change, biodiversity conservation, land degradation, waste management and urban solutions in the focus landscape.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://sgp-india.org/assets/pdf/SGPOP8-India-RFP.pdf",
+        "quote": "The applicant organization should have an office in the selected intervention landscape state",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://sgp-india.org/assets/pdf/SGP-OP8-Proposal-Template.docx",
+        "quote": "List minimum 3 projects of project value INR 15 Lakhs and above in the field of biodiversity, climate change, land degradation, waste management and urban solutions preferably in the focused landscape (Relaxation in the eligibility criteria for applicants from North-East Region in terms of project value is INR 5 lakhs).",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://sgp-india.org/assets/pdf/SGPOP8-India-RFP.pdf",
+        "quote": "NGOs/CBOs/CSOs should have experience in implementing minimum 3 government/philanthropy/foundation funded projects in the focused landscape in the last 5 financial years, viz. FY 2021-22, 2022-23, 2023-24, 2024-25 and 2025-26. (Relaxation in the eligibility criteria for applicants from North-East Region in terms of minimum projects is 2).",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://sgp-india.org/assets/pdf/Frequently-Asked-Questions.pdf",
+        "quote": "The applicant organization should have received an average annual turnover of INR 30,00,000 (Thirty Lakhs) from project grants over the last 3 financial years (2023-24, 2024-25 and 2025-26), supported by audited accounts and the Auditor's Report.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://sgp-india.org/assets/pdf/SGPOP8-India-RFP.pdf",
+        "quote": "The organization should not have been debarred by any Government or UN agency, at any point of time.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "co_finance": {
+      "source_url": "https://sgp-india.org/assets/pdf/SGPOP8-India-RFP.pdf",
+      "quote": "Applicants must provide a minimum co-financing contribution equivalent to the SGP grant amount, maintaining at least a 1:1 ratio. Cofinancing may be provided in the form of cash and/or in-kind contributions.",
+      "checked_at": "2026-11-20",
+      "method": "page"
+    },
+    "after_award": [
+      {
+        "source_url": "https://sgp-india.org/assets/pdf/SGP-OP8-Proposal-Template.docx",
+        "quote": "NGOs will be required to submit technical and financial reports on the online portal at regular intervals.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "documents": [
+      {
+        "source_url": "https://sgp-india.org/assets/pdf/SGP-OP8-Proposal-Template.docx",
+        "quote": "Registration Certificate of the Organization Darpan Portal Registration Certificate PAN Card 80G Certificate 12 A Certificate IT returns for the FY 2023-24, 2024-25 and 2025-26 (mandatory) Audited accounts including Balance Sheet Income and Expenditure Schedules Notes of Accounts Auditors' Report for the FY 2023-24, 2024-25 and 2025-26 to be submitted. Annual Report for FY 2025-26",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://sgp-india.org/assets/pdf/SGP-OP8-Proposal-Template.docx",
+        "quote": "Proof of the office in the focus landscape to be submitted. Proof of co-financing generated for the SGP proposal being submitted. Detailed and duly verified CVs of professionals (Proposed Project Team) to be provided as per the format given in Annex 3. A self-declaration that the organization it has Full acceptance of the TERI General Terms and Conditions (GTC).",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://sgp-india.org/assets/pdf/SGP-OP8-Proposal-Template.docx",
+        "quote": "An Undertaking by the organization that it has not been debarred by any Government or UN agency, at any point of time and affirming that no donations will be raised through the project for political or religious activities or programmes.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ]
   },
   "checked_at": "2026-11-15"
 }
