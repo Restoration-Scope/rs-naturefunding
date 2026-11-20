@@ -1,0 +1,161 @@
+{
+  "id": "funbio-chamadas",
+  "read_on": "2026-11-20",
+  "prompt_version": "req-2026-11-19.2",
+  "models": ["cursor:gpt-5.6-luna-high"],
+  "complete": false,
+  "reasons": [
+    "8 links could not be ranked without Jev",
+    "https://chamadas.funbio.org.br/floresta-viva-sao-francisco/download/regulamento?id=95b0e8a0-3da3-4935-964c-b6dbc92c183c: too little text: the page may need a browser",
+    "https://chamadas.funbio.org.br/tcsa-porto-sul/download/regulamento?id=6aca838c-dd29-4c68-9320-7a1ea7d8185d: too little text: the page may need a browser",
+    "https://chamadas.funbio.org.br/articulacao-institucional/download/regulamento?id=ce031820-df78-4b2e-8bd3-d8b0d3b108d4: too little text: the page may need a browser",
+    "the text names a document with rules that was not read: Regulamento/Edital 04/2026 Floresta Viva - Águas do São Francisco",
+    "the text names a document with rules that was not read: Regulamento da Chamada de Projetos 10/2026 - TCSA Porto Sul",
+    "the text names a document with rules that was not read: Regulamento da Chamada de Projetos 11/2026 - Articulação Institucional",
+    "Jev did not check this reading, so an absent fact is not known to be absent"
+  ],
+  "requirements_checked": false,
+  "documents": [
+    {
+      "ref": "D1",
+      "url": "https://chamadas.funbio.org.br/",
+      "final_url": "https://chamadas.funbio.org.br/",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 1109,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:7a6491c75016ebb86df69b23da3a1c48257898d450d1f42921495348d00019cc"
+    },
+    {
+      "ref": "D2",
+      "url": "https://chamadas.funbio.org.br/floresta-viva-sao-francisco",
+      "final_url": "https://chamadas.funbio.org.br/floresta-viva-sao-francisco",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 4076,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:c9804526d8288c09d1d4286d025ea3a48a75a16dc3208f03633233f9faa04c67"
+    },
+    {
+      "ref": "D3",
+      "url": "https://chamadas.funbio.org.br/tcsa-porto-sul",
+      "final_url": "https://chamadas.funbio.org.br/tcsa-porto-sul",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 3525,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:7ec6e9db224c617bfaaf731c6316801619933f7db46ca3c5dc3573d742534c47"
+    },
+    {
+      "ref": "D4",
+      "url": "https://chamadas.funbio.org.br/articulacao-institucional",
+      "final_url": "https://chamadas.funbio.org.br/articulacao-institucional",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 3597,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:0820232df76fc20928224d18a584a3de18906ec8442ab3dfcac29b6c011b4709"
+    },
+    {
+      "ref": "D5",
+      "url": "https://chamadas.funbio.org.br/quem-somos",
+      "final_url": "https://chamadas.funbio.org.br/quem-somos",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 1253,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:eed969b99e14d699296fddb191345164c93d5b96c92291a58266b83a8127806e"
+    },
+    {
+      "ref": "D6",
+      "url": "https://chamadas.funbio.org.br/floresta-viva-sao-francisco/download/regulamento?id=95b0e8a0-3da3-4935-964c-b6dbc92c183c",
+      "final_url": "https://chamadas.funbio.org.br/floresta-viva-sao-francisco/download/regulamento?id=95b0e8a0-3da3-4935-964c-b6dbc92c183c",
+      "from": "https://chamadas.funbio.org.br/floresta-viva-sao-francisco",
+      "anchor": "Baixe o regulamento",
+      "depth": 1,
+      "pdf": false,
+      "chars": 0,
+      "pages": null,
+      "low_text": true,
+      "hash": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "ref": "D7",
+      "url": "https://chamadas.funbio.org.br/tcsa-porto-sul/download/regulamento?id=6aca838c-dd29-4c68-9320-7a1ea7d8185d",
+      "final_url": "https://chamadas.funbio.org.br/tcsa-porto-sul/download/regulamento?id=6aca838c-dd29-4c68-9320-7a1ea7d8185d",
+      "from": "https://chamadas.funbio.org.br/tcsa-porto-sul",
+      "anchor": "Baixe o regulamento",
+      "depth": 1,
+      "pdf": false,
+      "chars": 0,
+      "pages": null,
+      "low_text": true,
+      "hash": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "ref": "D8",
+      "url": "https://chamadas.funbio.org.br/articulacao-institucional/download/regulamento?id=ce031820-df78-4b2e-8bd3-d8b0d3b108d4",
+      "final_url": "https://chamadas.funbio.org.br/articulacao-institucional/download/regulamento?id=ce031820-df78-4b2e-8bd3-d8b0d3b108d4",
+      "from": "https://chamadas.funbio.org.br/articulacao-institucional",
+      "anchor": "Baixe o regulamento",
+      "depth": 1,
+      "pdf": false,
+      "chars": 0,
+      "pages": null,
+      "low_text": true,
+      "hash": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "failures": [
+    {
+      "url": "https://chamadas.funbio.org.br/floresta-viva-sao-francisco/download/regulamento?id=95b0e8a0-3da3-4935-964c-b6dbc92c183c",
+      "from": "https://chamadas.funbio.org.br/floresta-viva-sao-francisco",
+      "kind": "low_text",
+      "message": "too little text: the page may need a browser"
+    },
+    {
+      "url": "https://chamadas.funbio.org.br/tcsa-porto-sul/download/regulamento?id=6aca838c-dd29-4c68-9320-7a1ea7d8185d",
+      "from": "https://chamadas.funbio.org.br/tcsa-porto-sul",
+      "kind": "low_text",
+      "message": "too little text: the page may need a browser"
+    },
+    {
+      "url": "https://chamadas.funbio.org.br/articulacao-institucional/download/regulamento?id=ce031820-df78-4b2e-8bd3-d8b0d3b108d4",
+      "from": "https://chamadas.funbio.org.br/articulacao-institucional",
+      "kind": "low_text",
+      "message": "too little text: the page may need a browser"
+    }
+  ],
+  "skipped_links": 29,
+  "chunks": [{ "id": "all", "docs": ["D1", "D2", "D3", "D4", "D5"], "chars": 13864 }],
+  "outcomes": {
+    "eligibility": "stated",
+    "documents": "not_found",
+    "effort": "stated",
+    "co_finance": "stated",
+    "consortium": "not_found",
+    "after_award": "not_found"
+  },
+  "written": ["eligibility", "effort", "co_finance"],
+  "escalated": [],
+  "flags": [],
+  "notes": [
+    "extractor: The two-year nonprofit constitution rule is stated for Edital 04/2026. Chamada 10/2026 is closed and is not used for current-round requirements. D4's errata replaces the execution period with 24 months and the submission deadline with 04 December 2026. D2 requires proposals to use nine specified objectives."
+  ],
+  "usd": 0
+}

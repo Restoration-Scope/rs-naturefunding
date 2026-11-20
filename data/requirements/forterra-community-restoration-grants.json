@@ -1,0 +1,101 @@
+{
+  "id": "forterra-community-restoration-grants",
+  "read_on": "2026-11-20",
+  "prompt_version": "req-2026-11-19.2",
+  "models": ["cursor:gpt-5.6-luna-high", "cursor:gpt-5.6-sol-high"],
+  "complete": false,
+  "reasons": [
+    "14 links could not be ranked without Jev",
+    "15 links could not be ranked without Jev",
+    "the text names a document with rules that was not read: Public accessibility flow chart",
+    "the text names a document with rules that was not read: US Forest Service definition of native plants",
+    "Jev did not check this reading, so an absent fact is not known to be absent"
+  ],
+  "requirements_checked": false,
+  "documents": [
+    {
+      "ref": "D1",
+      "url": "https://forterra.org/our-work/programs/community-restoration-grants/",
+      "final_url": "https://forterra.org/our-work/programs/community-restoration-grants/",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 10096,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:899dfbbe11b85c37abc82b2f86fce3e089efcd6b1e8ea79aa1dfa88791f96214"
+    },
+    {
+      "ref": "D2",
+      "url": "https://forterra.org/wp-content/uploads/2026/03/CRG-Frequently-Asked-Questions.pdf",
+      "final_url": "https://forterra.org/wp-content/uploads/2026/03/CRG-Frequently-Asked-Questions.pdf",
+      "from": "https://forterra.org/our-work/programs/community-restoration-grants/",
+      "anchor": "Frequently Asked Questions",
+      "depth": 1,
+      "pdf": true,
+      "chars": 6683,
+      "pages": 5,
+      "low_text": false,
+      "hash": "sha256:c788c63c6213274569d24828ebb190f5087e3702cb895fa02071a2c84477c7c4"
+    },
+    {
+      "ref": "D3",
+      "url": "https://forterra.org/wp-content/uploads/2023/09/Landowner-Letter-of-Support_CRG-Application.docx",
+      "final_url": "https://forterra.org/wp-content/uploads/2023/09/Landowner-Letter-of-Support_CRG-Application.docx",
+      "from": "https://forterra.org/our-work/programs/community-restoration-grants/",
+      "anchor": "letter template here",
+      "depth": 1,
+      "pdf": false,
+      "chars": 492,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:6dc100853a4511d1afd062e1fec72600ee7a1fb782511adfb8008ef7a9ac1edb"
+    },
+    {
+      "ref": "D4",
+      "url": "https://forterra.org/non-discrimination-policy/",
+      "final_url": "https://forterra.org/non-discrimination-policy/",
+      "from": "https://forterra.org/our-work/programs/community-restoration-grants/",
+      "anchor": "Non-Discrimination Policy",
+      "depth": 1,
+      "pdf": false,
+      "chars": 3130,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:6e9c2bb97aa895817068af34758761b7eab5b8a73130fcf8f48327be8fb41ded"
+    },
+    {
+      "ref": "D5",
+      "url": "https://forterra.org/privacy-policy",
+      "final_url": "https://forterra.org/privacy-policy/",
+      "from": "https://forterra.org/our-work/programs/community-restoration-grants/",
+      "anchor": "Privacy Policy & Terms and Conditions",
+      "depth": 1,
+      "pdf": false,
+      "chars": 10779,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:28156c6a9ead485f9320a3a45d41e7038964add97fe6c3236e33058a547d5a55"
+    }
+  ],
+  "failures": [],
+  "skipped_links": 293,
+  "chunks": [{ "id": "all", "docs": ["D1", "D2", "D3", "D4", "D5"], "chars": 31911 }],
+  "outcomes": {
+    "eligibility": "stated",
+    "documents": "stated",
+    "effort": "stated",
+    "co_finance": "not_found",
+    "consortium": "not_found",
+    "after_award": "stated"
+  },
+  "written": ["eligibility", "documents", "effort", "after_award"],
+  "escalated": ["effort", "after_award"],
+  "flags": [],
+  "notes": [
+    "extractor: D1 says Round 2 applications open on January 11, 2026, but its programme timeline and the supplied next-round data give Round 2 as 2027; the 2027 dates were used.",
+    "source forterra-community-restoration-grants-2: added for https://forterra.org/wp-content/uploads/2026/03/CRG-Frequently-Asked-Questions.pdf"
+  ],
+  "usd": 0
+}

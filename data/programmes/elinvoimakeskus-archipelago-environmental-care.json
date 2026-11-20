@@ -21,6 +21,13 @@
   "amount": null,
   "co_finance_required": true,
   "reporting": null,
+  "effort": { "steps": ["Grant application"], "due": ["2026-12-09"] },
+  "eligibility": [
+    {
+      "rule": "The project is in a designated archipelago municipality or named island",
+      "kind": "project"
+    }
+  ],
   "calls": [
     {
       "id": "2026",
@@ -79,9 +86,74 @@
     "co_finance_required": {
       "source_url": "https://elinvoimakeskus.fi/avustus-saariston-ymparistonhoitoon",
       "quote": "Saariston ympäristönhoidon hankkeille voidaan myöntää enintään 80 prosenttia hyväksytyistä kustannuksista",
-      "checked_at": "2026-11-15",
+      "checked_at": "2026-11-20",
       "method": "page"
-    }
+    },
+    "effort": [
+      {
+        "source_url": "https://elinvoimakeskus.fi/avustus-saariston-ymparistonhoitoon",
+        "quote": "Voit hakea avustusta ajalla 26.10.–9.12.2026.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "eligibility": [
+      {
+        "source_url": "https://elinvoimakeskus.fi/avustus-saariston-ymparistonhoitoon",
+        "quote": "Avusta myönnetään vain valtioneuvoston asetuksessa määritellyille saaristokunnille ja tiettyjen kuntien nimetyille saarille.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "co_finance": {
+      "source_url": "https://elinvoimakeskus.fi/avustus-saariston-ymparistonhoitoon",
+      "quote": "Saariston ympäristönhoidon hankkeille voidaan myöntää enintään 80 prosenttia hyväksytyistä kustannuksista ja saaristossa sijaitsevien rakennusten korjauksiin enintään 50 prosenttia hyväksytyistä toimenpiteistä ja materiaaleista.",
+      "checked_at": "2026-11-20",
+      "method": "page"
+    },
+    "documents": [
+      {
+        "source_url": "https://sa01elysuomifilomakkeet.blob.core.windows.net/blobsuomifilomakkeet/ELY/ely90k2i_fi_hakuohje_saariston_ympariston_hoito.pdf",
+        "quote": "Hakemukseen tulee liittää selvitys kohteen omistusoikeudesta (esim. lainhuutotodistus tai luovutuskirja).",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://sa01elysuomifilomakkeet.blob.core.windows.net/blobsuomifilomakkeet/ELY/ely90k2i_fi_hakuohje_saariston_ympariston_hoito.pdf",
+        "quote": "Hakemukseen tulee liittää valokuvia kohteesta ja sen sijoittumisesta ympäristöönsä.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://sa01elysuomifilomakkeet.blob.core.windows.net/blobsuomifilomakkeet/ELY/ely90k2i_fi_hakuohje_saariston_ympariston_hoito.pdf",
+        "quote": "Hakemukseen tulee liittää eritelty kustannusarvio, haettava avustusmäärä ja kunnostustyön kokonaiskustannukset.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://sa01elysuomifilomakkeet.blob.core.windows.net/blobsuomifilomakkeet/ELY/ely90k2i_fi_hakuohje_saariston_ympariston_hoito.pdf",
+        "quote": "Hakemukseen tulee liittää kartta, josta ilmenee missä kunnostettava kohde tai rakennus sijaitsee",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://sa01elysuomifilomakkeet.blob.core.windows.net/blobsuomifilomakkeet/ELY/ely90k2i_fi_hakuohje_saariston_ympariston_hoito.pdf",
+        "quote": "Hakemukseen on liitettävä selvitys yhteyshenkilön oikeudesta toimia yhteisön lukuun (nimenkirjoitusoikeus), milloin hakijana on juridinen henkilö (yhdistys, järjestö tai muu yhteisö).",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ]
   },
-  "checked_at": "2026-11-15"
+  "checked_at": "2026-11-15",
+  "co_finance": {
+    "min_share": 20,
+    "applies_to": "Environmental care projects; building repairs need 50%"
+  },
+  "documents": [
+    "Proof of site ownership, e.g. title deed",
+    "Photographs of the site and its surroundings",
+    "Itemised cost estimate",
+    "Location map",
+    "Proof of signing authority, for organisations"
+  ]
 }

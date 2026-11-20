@@ -1,0 +1,50 @@
+{
+  "id": "forest-action-facility",
+  "read_on": "2026-11-20",
+  "prompt_version": "req-2026-11-19.2",
+  "models": ["cursor:gpt-5.6-luna-high"],
+  "complete": false,
+  "reasons": [
+    "https://forestactionfacility.org/funding-opportunities/ would not open (network: ECONNRESET: The socket connection was closed unexpectedly. For more information, pass `verbose: true` in the second argument to fetch())",
+    "https://forestactionfacility.org/ would not open (network: ECONNRESET: The socket connection was closed unexpectedly. For more information, pass `verbose: true` in the second argument to fetch())",
+    "https://forestactionfacility.org/wp-content/uploads/2026/09/FAF-Grant-Making-Policy-eng.pdf would not open (network: ECONNRESET: The socket connection was closed unexpectedly. For more information, pass `verbose: true` in the second argument to fetch())",
+    "no page opened"
+  ],
+  "requirements_checked": false,
+  "documents": [],
+  "failures": [
+    {
+      "url": "https://forestactionfacility.org/funding-opportunities/",
+      "from": null,
+      "kind": "network",
+      "message": "ECONNRESET: The socket connection was closed unexpectedly. For more information, pass `verbose: true` in the second argument to fetch()"
+    },
+    {
+      "url": "https://forestactionfacility.org/",
+      "from": null,
+      "kind": "network",
+      "message": "ECONNRESET: The socket connection was closed unexpectedly. For more information, pass `verbose: true` in the second argument to fetch()"
+    },
+    {
+      "url": "https://forestactionfacility.org/wp-content/uploads/2026/09/FAF-Grant-Making-Policy-eng.pdf",
+      "from": null,
+      "kind": "network",
+      "message": "ECONNRESET: The socket connection was closed unexpectedly. For more information, pass `verbose: true` in the second argument to fetch()"
+    }
+  ],
+  "skipped_links": 0,
+  "chunks": [{ "id": "all", "docs": [], "chars": 0 }],
+  "outcomes": {
+    "eligibility": "unresolved",
+    "documents": "unresolved",
+    "effort": "unresolved",
+    "co_finance": "unresolved",
+    "consortium": "unresolved",
+    "after_award": "unresolved"
+  },
+  "written": [],
+  "escalated": [],
+  "flags": [],
+  "notes": ["nothing to read"],
+  "usd": 0
+}

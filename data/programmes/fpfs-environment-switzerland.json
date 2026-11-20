@@ -14,6 +14,31 @@
   "amount": null,
   "co_finance_required": null,
   "reporting": "Grantees must send an activity or end-of-project report and financial statements at the end of the project.",
+  "effort": { "steps": ["Online application"] },
+  "eligibility": [
+    { "rule": "Organisation headquartered in Switzerland", "kind": "legal" },
+    {
+      "rule": "Not a business, sole trader, sports club, university or public body (cantonal/municipal museums excepted)",
+      "kind": "legal"
+    },
+    { "rule": "Project is within the stated environmental support axes", "kind": "project" },
+    { "rule": "Project has not already taken place", "kind": "project" },
+    { "rule": "Project is not a construction or renovation project", "kind": "project" },
+    { "rule": "Applies at least four months before the project starts", "kind": "project" },
+    { "rule": "No other FPFS application from the organisation this year", "kind": "other" }
+  ],
+  "after_award": { "reports": "final" },
+  "documents": [
+    "Project summary letter",
+    "Complete project description",
+    "Organisation and project budget",
+    "Project financing plan",
+    "Last financial report",
+    "Last activity report",
+    "Signed organisation statutes",
+    "Valid tax exemption certificate, if available",
+    "Bank-issued account document"
+  ],
   "calls": [
     {
       "id": "rolling",
@@ -62,7 +87,87 @@
       "quote": "un rapport d'activités et/ou de fin de projet ainsi que les états financiers devront obligatoirement être envoyés à la fin du projet",
       "checked_at": "2026-11-15",
       "method": "page"
-    }
+    },
+    "effort": [
+      {
+        "source_url": "https://www.fpfs.ch/pages/deposer-une-demande",
+        "quote": "Les demandes doivent être exclusivement adressées en ligne via ce formulaire.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "eligibility": [
+      {
+        "source_url": "https://www.fpfs.ch/pages/deposer-une-demande",
+        "quote": "Les organisations soutenues doivent impérativement avoir leur siège en Suisse.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.fpfs.ch/pages/deposer-une-demande",
+        "quote": "Club sportif Entité commerciale, entreprise individuelle Collectivités publiques (canton, commune, etc.), excepté les musées cantonaux et communaux Universités",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.fpfs.ch/pages/deposer-une-demande",
+        "quote": "Dans le domaine de l'environnement en Suisse, la FPFS n'accepte pas de demandes en dehors des axes soutien détaillés dans la rubrique Action humanitaire et Environnement.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.fpfs.ch/pages/deposer-une-demande",
+        "quote": "Projet ayant déjà eu lieu",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.fpfs.ch/pages/deposer-une-demande",
+        "quote": "Projet de construction/rénovation",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.fpfs.ch/pages/deposer-une-demande",
+        "quote": "Les demandes doivent être déposées au minimum quatre mois avant le début du projet.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.fpfs.ch/pages/deposer-une-demande",
+        "quote": "La FPFS n'accepte qu'une seule demande par an et par organisation.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "after_award": [
+      {
+        "source_url": "https://www.fpfs.ch/pages/deposer-une-demande",
+        "quote": "Important : un rapport d'activités et/ou de fin de projet ainsi que les états financiers devront obligatoirement être envoyés à la fin du projet.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "documents": [
+      {
+        "source_url": "https://www.fpfs.ch/pages/deposer-une-demande",
+        "quote": "Lettre résumant le projet et le montant sollicité Descriptif complet du projet détaillant : - Le résumé des missions de votre organisation - Les objectifs du projet - La durée du projet - Le public/les bénéficiaires - Les résultats attendus Budget comprenant :",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.fpfs.ch/pages/deposer-une-demande",
+        "quote": "Plan de financement comprenant : - La liste de toutes les organisations sollicitées pour le financement du projet et les montants associés - L'état actualisé des demandes/contributions déjà reçues Dernier rapport financier Dernier rapport d'activités Statuts signés de l'organisation Attestation d'exonération fiscale valable (si disponible)",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.fpfs.ch/pages/deposer-une-demande",
+        "quote": "Document justificatif du compte bancaire avec en-tête de la banque (Attestation de compte, Relevé d'identité bancaire ou Relevé de compte)",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ]
   },
   "checked_at": "2026-11-15"
 }
