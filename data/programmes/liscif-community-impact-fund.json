@@ -16,8 +16,38 @@
   "access": "direct",
   "window": "fixed",
   "amount": null,
-  "co_finance_required": null,
+  "co_finance_required": false,
   "reporting": null,
+  "effort": {
+    "steps": ["Letter of Intent", "Full Proposal, if invited"],
+    "due": ["2026-11-20", null]
+  },
+  "eligibility": [
+    {
+      "rule": "Incorporates Actions of the Comprehensive Conservation and Management Plan",
+      "kind": "project"
+    },
+    {
+      "rule": "Completes the project in the LIS region, or serves qualifying CT and NY communities for outreach and education",
+      "kind": "project"
+    },
+    { "rule": "Addresses common challenges and LISCIF Funding Priorities", "kind": "project" },
+    {
+      "rule": "Is not a federal agency, except as a partner in an eligible recipient's proposal",
+      "kind": "legal"
+    },
+    {
+      "rule": "Does not primarily conduct research or monitoring, except to assess grant-funded results",
+      "kind": "project"
+    }
+  ],
+  "after_award": { "reports": "quarterly", "site_visits": true, "training": true },
+  "documents": [
+    "Organizational budget",
+    "General location map, unless the project is region-wide",
+    "Potential partner organizations list with role descriptions",
+    "Proposal budget"
+  ],
   "calls": [
     {
       "id": "2027",
@@ -66,7 +96,99 @@
       "quote": "This is the fourth round of LISCIF funding.",
       "checked_at": "2026-11-20",
       "method": "human"
-    }
+    },
+    "co_finance_required": {
+      "source_url": "https://estuaries.org/wp-content/uploads/2026/09/LISCIF27-Informational-Webinar.pdf",
+      "quote": "No match requirements",
+      "checked_at": "2026-11-20",
+      "method": "page"
+    },
+    "effort": [
+      {
+        "source_url": "https://estuaries.org/wp-content/uploads/2026/08/LISCIF-RFA-2027-Final.pdf",
+        "quote": "Letters of Intent (LoIs) are Due: November 20, 2026, by 4:00 pm EST.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://estuaries.org/wp-content/uploads/2026/08/LISCIF-RFA-2027-Final.pdf",
+        "quote": "RAE will request a Full Proposal from qualifying applicants",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "eligibility": [
+      {
+        "source_url": "https://estuaries.org/wp-content/uploads/2026/08/LISCIF-RFA-2027-Final.pdf",
+        "quote": "Projects must incorporate Actions of the Comprehensive Conservation and Management Plan (CCMP).",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://estuaries.org/wp-content/uploads/2026/08/LISCIF-RFA-2027-Final.pdf",
+        "quote": "Projects funded under LISCIF must be completed within the LIS geographic region (see region map: https://estuaries.org/liscif/)or, in the case of outreach and education, include communities in Connecticut and New York that use the Long Island Sound for recreation, sustenance, or economic activities.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://estuaries.org/wp-content/uploads/2026/08/LISCIF-RFA-2027-Final.pdf",
+        "quote": "Applicant activities and projects funded under LISCIF must address common challenges and the priorities identified above under \"Funding Priorities.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://estuaries.org/wp-content/uploads/2026/08/LISCIF-RFA-2027-Final.pdf",
+        "quote": "Federal agencies are not eligible recipients of funding but may be included as partners in proposals submitted by eligible recipients.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://estuaries.org/wp-content/uploads/2026/08/LISCIF-RFA-2027-Final.pdf",
+        "quote": "LISCIF27 will not fund proposals in which the primary purpose is research or monitoring; however, research and monitoring may be funded as part of a larger grant, where the purpose of the research or monitoring is to assess results and outcomes of the grant-funded activity.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "after_award": [
+      {
+        "source_url": "https://estuaries.org/wp-content/uploads/2026/08/LISCIF-RFA-2027-Final.pdf",
+        "quote": "Grantees must submit quarterly progress reports as well as a final report.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://estuaries.org/wp-content/uploads/2026/08/LISCIF-RFA-2027-Final.pdf",
+        "quote": "RAE conducts periodic on-site audits of financial records and programmatic progress of all grantees.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://estuaries.org/wp-content/uploads/2026/08/LISCIF-RFA-2027-Final.pdf",
+        "quote": "Grantees will be required to participate in an Annual Learning Exchange meeting during the period of the award, to be held within the LIS region.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "documents": [
+      {
+        "source_url": "https://estuaries.org/wp-content/uploads/2026/08/LISCIF-RFA-2027-Final.pdf",
+        "quote": "Organizational Budget",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://estuaries.org/wp-content/uploads/2026/08/LISCIF-RFA-2027-Final.pdf",
+        "quote": "A map or maps of the proposed project area is required for all proposals except those which are region-wide in scope. Attach a single PDF file, standard letter size, 3 pages max., 10 MB max. List of Potential Partner Organizations with brief descriptions of roles",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://estuaries.org/wp-content/uploads/2026/08/LISCIF-RFA-2027-Final.pdf",
+        "quote": "A budget table is also required of all proposals.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ]
   },
   "checked_at": "2026-11-20"
 }

@@ -13,8 +13,45 @@
   "window": "fixed",
   "amount": { "currency": "EUR", "min": 2000, "max": 10000 },
   "pool": { "currency": "EUR", "value": 80000, "period": "year", "label": "2026" },
-  "co_finance_required": null,
   "reporting": null,
+  "eligibility": [
+    {
+      "rule": "Projects in a village or city must be connected to the landscape",
+      "kind": "project"
+    },
+    {
+      "rule": "Activities are lawful and compatible with the public interest, morals and public order",
+      "kind": "legal"
+    },
+    {
+      "rule": "Activities are primarily directed at Groningen, benefit its residents, or otherwise serve the province",
+      "kind": "project"
+    },
+    {
+      "rule": "Activities have not started before the application is submitted",
+      "kind": "project"
+    },
+    {
+      "rule": "The same activities and eligible costs have not already received the maximum permitted subsidy",
+      "kind": "finances"
+    },
+    {
+      "rule": "The applicant has no outstanding European Commission recovery order",
+      "kind": "legal"
+    }
+  ],
+  "documents": [
+    "Project plan",
+    "Photos of the initial situation",
+    "Management plan",
+    "Completed project budget and financing plan",
+    "Chamber of Commerce extract, if applicable",
+    "Copies of commitments or applications from other financiers, if applicable",
+    "Copies of issued permits, if applicable",
+    "Authorization form, if applicable",
+    "De minimis declaration, if applicable",
+    "Own procurement policy, if applicable"
+  ],
   "calls": [
     {
       "id": "2026",
@@ -75,7 +112,93 @@
       "quote": "De te verstrekken subsidie bedraagt minimaal € 2.000,- en maximaal € 10.000,-.",
       "checked_at": "2026-11-20",
       "method": "page"
-    }
+    },
+    "eligibility": [
+      {
+        "source_url": "https://www.provinciegroningen.nl/subsidies/natuur-en-landschap/groene-initiatieven/",
+        "quote": "Wanneer het project plaatsvindt ín het dorp of in de stad, moet het wel verbonden zijn met het landschap.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://lokaleregelgeving.overheid.nl/CVDR609089",
+        "quote": "de aanvrager doelstellingen nastreeft of activiteiten ontplooit die in strijd zijn met de wet, het algemeen belang, de goede zeden of de openbare orde",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://lokaleregelgeving.overheid.nl/CVDR609089",
+        "quote": "de activiteiten van de aanvrager niet of niet in overwegende mate gericht zullen zijn op de provincie Groningen, niet ten goede komen aan ingezetenen van de provincie of niet op andere wijze het belang van de provincie dienen",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://lokaleregelgeving.overheid.nl/CVDR609089",
+        "quote": "de activiteiten waarvoor subsidie wordt verstrekt, zijn aangevangen voorafgaand aan het indienen van de aanvraag",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://lokaleregelgeving.overheid.nl/CVDR609089",
+        "quote": "voor dezelfde activiteiten en subsidiabele kosten op grond van enige regeling reeds subsidie is verstrekt tot het op grond van Europese verordeningen toegestane maximale subsidiepercentage of -bedrag",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://lokaleregelgeving.overheid.nl/CVDR609089",
+        "quote": "ten aanzien van de subsidieaanvrager een uitstaand bevel tot terugvordering bestaat volgend op een eerdere beschikking van de Europese Commissie",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "documents": [
+      {
+        "source_url": "https://www.provinciegroningen.nl/subsidies/natuur-en-landschap/groene-initiatieven/",
+        "quote": "Een projectplan met een heldere omschrijving van het voorgenomen project. U omschrijft daarin het doel, het verwachte resultaat, de doelgroep en hoeveel mensen u denkt te bereiken. Daarnaast voegt u foto's van de beginsituatie en een beheerplan toe. Een ingevuld format projectbegroting en financieringsplan ( XLSX-bestand, 14 KB). Als van toepassing: Uittreksel van de Kamer van Koophandel.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.provinciegroningen.nl/subsidies/natuur-en-landschap/groene-initiatieven/",
+        "quote": "Kopieën van toezeggingen/aanvragen van de bijdragen van de overige financiers. Kopieën van afgeven vergunningen. Machtingsformulier ( PDF-bestand, 359 KB). De-minimisverklaring ( PDF-bestand, 251 KB).",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.provinciegroningen.nl/subsidies/natuur-en-landschap/groene-initiatieven/",
+        "quote": "Eigen aanbestedingsbeleid.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "effort": [
+      {
+        "source_url": "https://www.provinciegroningen.nl/subsidies/natuur-en-landschap/groene-initiatieven/",
+        "quote": "Voordat u een aanvraag indient, bespreekt u uw project met Janneke Verdijk, team Natuur.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.provinciegroningen.nl/subsidies/natuur-en-landschap/groene-initiatieven/",
+        "quote": "Aanvragen voor 2026 moeten vóór 1 december 2026 bij de provincie binnen zijn.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.provinciegroningen.nl/subsidies/natuur-en-landschap/groene-initiatieven/",
+        "quote": "Gedeputeerde Staten beslissen over uw aanvraag.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ]
   },
-  "checked_at": "2026-11-20"
+  "checked_at": "2026-11-20",
+  "effort": {
+    "steps": [
+      "Discuss the project with the province",
+      "Application",
+      "Provincial review and decision"
+    ]
+  },
+  "co_finance_required": null
 }

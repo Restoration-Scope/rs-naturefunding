@@ -14,6 +14,13 @@
   "amount": null,
   "co_finance_required": null,
   "reporting": null,
+  "effort": { "steps": ["Contact LEF to check project fit", "Application form"] },
+  "eligibility": [
+    {
+      "rule": "Displays strong leadership and an integrated bottom-up approach involving local communities",
+      "kind": "capacity"
+    }
+  ],
   "calls": [
     {
       "id": "rolling",
@@ -56,7 +63,47 @@
       "quote": "supports existing conservation initiatives in Sri Lanka with their work by providing grant funding",
       "checked_at": "2026-11-20",
       "method": "page"
-    }
+    },
+    "effort": [
+      {
+        "source_url": "https://www.lankaenvironmentfund.org/grants",
+        "quote": "However, prior to applying, please contact us to see if your project is viable for funding.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.lankaenvironmentfund.org/grants",
+        "quote": "All applicants need to complete and submit our application form.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "eligibility": [
+      {
+        "source_url": "https://www.lankaenvironmentfund.org/grants",
+        "quote": "The applicants must display strong effective leadership and emphasise on integrated bottom up approaches, by consulting with, mobilizing and involving local communities in a manner that demonstrates positive community impact.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "documents": [
+      {
+        "source_url": "https://www.tfaforms.com/5109112",
+        "quote": "Documents required to complete the application: Proof of Legal Status Budget Template (to be uploaded in Section 7 of this application form).",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "after_award": [
+      {
+        "source_url": "https://www.tfaforms.com/5109112",
+        "quote": "Please note that at the end of the project, you will be asked to report on these indicators.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ]
   },
-  "checked_at": "2026-11-20"
+  "checked_at": "2026-11-20",
+  "documents": ["Proof of legal status", "Budget on the LEF template"],
+  "after_award": { "reports": "final" }
 }

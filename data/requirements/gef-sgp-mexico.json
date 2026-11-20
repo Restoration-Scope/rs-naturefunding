@@ -1,0 +1,97 @@
+{
+  "id": "gef-sgp-mexico",
+  "read_on": "2026-11-20",
+  "prompt_version": "req-2026-11-20.1",
+  "models": ["cursor:gpt-5.6-luna-high"],
+  "complete": false,
+  "reasons": [
+    "6 links could not be ranked without Jev",
+    "5 links could not be ranked without Jev",
+    "https://www.ppdmexico.org/_files/ugd/dbb031_8dfbdd9a2406426381e9535dd3eceac5.pdf: page 1 is an image: needs OCR",
+    "the text names a document with rules that was not read: PPD landscapes page with the eligible municipalities: https://www.ppdmexico.org/paisajes",
+    "the text names a document with rules that was not read: Documento de recomendaciones para la inclusión del enfoque de género en los proyectos del PPD",
+    "the text names a document with rules that was not read: Directrices para nuevos SIPAM: https://openknowledge.fao.org/server/api/core/bitstreams/686391a9-f65f-4e8a-8b4a-122b3549b1b0/content",
+    "Jev did not check this reading, so an absent fact is not known to be absent"
+  ],
+  "requirements_checked": false,
+  "documents": [
+    {
+      "ref": "D1",
+      "url": "https://www.ppdmexico.org/convocatorias/fase8convocatoria2026",
+      "final_url": "https://www.ppdmexico.org/convocatorias/fase8convocatoria2026",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 50880,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:7f89dae3ada106b71ef330ecf37eabb0b8a7ba93e1a88adbe11d05fe70d75333"
+    },
+    {
+      "ref": "D2",
+      "url": "https://www.ppdmexico.org/convocatorias",
+      "final_url": "https://www.ppdmexico.org/convocatorias",
+      "from": "https://www.ppdmexico.org/convocatorias/fase8convocatoria2026",
+      "anchor": "Convocatorias",
+      "depth": 1,
+      "pdf": false,
+      "chars": 512,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:cfcd98436d51afb19eecd7062ce5d8c56c017c978b6d69990153dcaef66f1a14"
+    },
+    {
+      "ref": "D3",
+      "url": "https://www.ppdmexico.org/_files/ugd/dbb031_95f0c52438e044499f5eaa31d9e7f600.docx?dn=Formulario%20de%20perfil_260806.docx",
+      "final_url": "https://32537906-831f-4188-9bcb-02b58854ec62.filesusr.com/ugd/dbb031_95f0c52438e044499f5eaa31d9e7f600.docx?dn=Formulario%20de%20perfil_260806.docx",
+      "from": "https://www.ppdmexico.org/convocatorias/fase8convocatoria2026",
+      "anchor": "aquí",
+      "depth": 1,
+      "pdf": false,
+      "chars": 15088,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:0628a47c6816d0a92a5873647512cdd56da30c2e15523109b3db71cfe5e930e8"
+    },
+    {
+      "ref": "D4",
+      "url": "https://www.ppdmexico.org/_files/ugd/dbb031_8dfbdd9a2406426381e9535dd3eceac5.pdf",
+      "final_url": "https://32537906-831f-4188-9bcb-02b58854ec62.filesusr.com/ugd/dbb031_8dfbdd9a2406426381e9535dd3eceac5.pdf",
+      "from": "https://www.ppdmexico.org/convocatorias/fase8convocatoria2026",
+      "anchor": "aquí",
+      "depth": 1,
+      "pdf": true,
+      "chars": 5608,
+      "pages": 11,
+      "low_text": false,
+      "hash": "sha256:659eed8f70d3c66a961fb10a18e7d3b84e89466da58789c1eecbfe8f23507331"
+    }
+  ],
+  "failures": [
+    {
+      "url": "https://www.ppdmexico.org/_files/ugd/dbb031_8dfbdd9a2406426381e9535dd3eceac5.pdf",
+      "from": "https://www.ppdmexico.org/convocatorias/fase8convocatoria2026",
+      "kind": "low_text",
+      "message": "page 1 is an image: needs OCR"
+    }
+  ],
+  "skipped_links": 31,
+  "chunks": [{ "id": "all", "docs": ["D1", "D2", "D3", "D4"], "chars": 72675 }],
+  "outcomes": {
+    "eligibility": "stated",
+    "documents": "stated",
+    "effort": "stated",
+    "co_finance": "stated",
+    "consortium": "not_found",
+    "after_award": "not_found"
+  },
+  "written": ["eligibility", "documents", "effort", "co_finance"],
+  "escalated": [],
+  "flags": [],
+  "notes": [
+    "effort \"Project profile or idea\": the quote does not state 2027-03-30 whole; left undated",
+    "extractor: The next listed cut-off is 30 March 2027. The 20 January 2027 full-proposal deadline appears tied to the earlier cut-off and is not used. D1 requests a 30-second community-planning video, while D3 also describes a different 1.5-minute video as optional."
+  ],
+  "usd": 0
+}

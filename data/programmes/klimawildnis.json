@@ -9,14 +9,53 @@
   "parent": null,
   "url": "https://www.z-u-g.org/klimawildnis/",
   "summary": "German federal funding (natural climate protection action programme, measure 4.1) for buying or securing smaller areas of at least 25 to 50 ha left to self-directed wilderness development, plus posts for wilderness ambassadors. Open to public bodies and non-profits.",
-  "approaches": ["protected_areas", "natural_regeneration"],
-  "applicant_types": ["government", "ngo"],
-  "geography": { "scope": "countries", "countries": ["DE"] },
+  "approaches": [
+    "protected_areas",
+    "natural_regeneration"
+  ],
+  "applicant_types": [
+    "government",
+    "ngo"
+  ],
+  "geography": {
+    "scope": "countries",
+    "countries": [
+      "DE"
+    ]
+  },
   "access": "direct",
   "window": "fixed",
   "amount": null,
-  "co_finance_required": null,
-  "reporting": null,
+  "co_finance_required": true,
+  "reporting": "A final report and financial statement within six months of the grant period; ambassador projects also report yearly.",
+  "effort": {
+    "steps": [
+      "Application via the easy-Online portal"
+    ],
+    "due": [
+      "2027-12-31"
+    ]
+  },
+  "eligibility": [
+    {
+      "rule": "For land purchases, land of at least 50 ha (25 ha for old broadleaf forest, lakes, mires, floodplains or coasts)",
+      "kind": "project"
+    },
+    {
+      "rule": "For ambassador projects, an area with wilderness potential well over 50 ha",
+      "kind": "project"
+    }
+  ],
+  "documents": [
+    "Project description (PDF)",
+    "Proof of signing authority, if the signatory is not a statutory representative",
+    "Further declarations of the applicant (form)",
+    "Private applicants new to ZUG: statutes and last two certified annual accounts",
+    "Separation accounting declaration",
+    "Proof of third-party funds, if any",
+    "Land projects: certified valuation report",
+    "Ambassador projects: proof of wilderness potential well beyond the minimum sizes"
+  ],
   "calls": [
     {
       "id": "call-to-2027",
@@ -24,7 +63,10 @@
       "url": "https://www.z-u-g.org/klimawildnis/foerderrichtlinie-klimawildnis/",
       "status": "open",
       "opens": null,
-      "deadline": { "date": "2027-12-31", "text": "31. Dezember 2027" },
+      "deadline": {
+        "date": "2027-12-31",
+        "text": "31. Dezember 2027"
+      },
       "evidence": {
         "status": {
           "source_url": "https://www.z-u-g.org/klimawildnis/",
@@ -65,7 +107,100 @@
       "quote": "Förderaufruf bis: 31.12.2027",
       "checked_at": "2026-11-20",
       "method": "page"
+    },
+    "co_finance_required": {
+      "source_url": "https://www.z-u-g.org/fileadmin/zug/Dateien/Foerderprorgamme/KlimaWildnis/frl_klimawildnis_bf.pdf",
+      "quote": "Eigenmittel sind in Abhängigkeit des finanziellen Leistungsvermögens und als Ausdruck des Eigeninteresses in angemessener Höhe einzubringen.",
+      "checked_at": "2026-11-20",
+      "method": "page"
+    },
+    "effort": [
+      {
+        "source_url": "https://www.z-u-g.org/klimawildnis/foerderrichtlinie-klimawildnis/",
+        "quote": "Stellen Sie bis zum 31. Dezember 2027 Ihren Antrag über das easy-Online Portal des Bundes.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "eligibility": [
+      {
+        "source_url": "https://www.z-u-g.org/klimawildnis/foerderrichtlinie-klimawildnis/",
+        "quote": "der Ankauf von geeigneten Flächen mit einer Mindestgröße von 50 ha. der Ankauf von mindestens 100-jährigen Laubwaldflächen, Waldflächen mit langer Habitatkontinuität, Flächen in Seen, Mooren und Auen sowie Flächen an Küsten mit einer Mindestgröße von 25 ha.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.z-u-g.org/klimawildnis/foerderrichtlinie-klimawildnis/",
+        "quote": "Zuwendungsfähig ist der Einsatz von je einer/m KlimaWildnisBotschafter*in in einem Gebiet mit Wildnispotenzial (Potenzialraum), das deutlich über 50 ha hinausgeht.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "documents": [
+      {
+        "source_url": "https://www.z-u-g.org/fileadmin/zug/Dateien/Foerderprorgamme/KlimaWildnis/KlimaWildnis_Hinweise_zur_Antragstellung.pdf",
+        "quote": "Vorhabenbeschreibung im PDF-Format (Fragen siehe unter 2.1) • Nachweis der Zeichnungsberechtigung, sofern die unterzeichnende Person nicht aufgrund gesetzlicher Regelungen vertretungsberechtigt ist (z. B. Bürgermeister bei Kommunen) • Formular „Weitere Erklärungen des Antragstellenden“ (siehe Anhang 7.5)",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.z-u-g.org/fileadmin/zug/Dateien/Foerderprorgamme/KlimaWildnis/KlimaWildnis_Hinweise_zur_Antragstellung.pdf",
+        "quote": "Wenn nein, dann reichen Sie bitte die folgenden Unterlagen ein: • Satzung/Gesellschaftsvertrag (soweit zutreffend), • die beiden letzten durch sachverständige Buch- oder Wirtschaftsprüfer*innen",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.z-u-g.org/fileadmin/zug/Dateien/Foerderprorgamme/KlimaWildnis/KlimaWildnis_Hinweise_zur_Antragstellung.pdf",
+        "quote": "Trennungsrechnung: Erklärung zur buchhalterischen Trennung der wirtschaftlichen und nicht wirtschaftlichen Tätigkeiten (siehe Anhang 7.5) • Nachweis über Drittmittel, sofern Mittel Dritter für das Vorhaben zur Verfügung stehen oder beantragt wurden",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.z-u-g.org/fileadmin/zug/Dateien/Foerderprorgamme/KlimaWildnis/KlimaWildnis_Hinweise_zur_Antragstellung.pdf",
+        "quote": "Wertgutachten eines/einer öffentlich bestellten und vereidigten oder zertifizierten Gutachter*in entsprechend Nr. 2.1 der Förderrichtlinie KlimaWildnis und Anhang 7.4 dieser Hinweise.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.z-u-g.org/fileadmin/zug/Dateien/Foerderprorgamme/KlimaWildnis/KlimaWildnis_Hinweise_zur_Antragstellung.pdf",
+        "quote": "Nachweis des regionalen Wildnispotenzials, das deutlich über die in 2.1 genannten Mindestgrößen hinausgeht",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "co_finance": {
+      "source_url": "https://www.z-u-g.org/klimawildnis/foerderrichtlinie-klimawildnis/",
+      "quote": "Der Finanzierungsanteil des Bundes beträgt bei den KlimaWildnisBotschafter*innen bis zu 90% der zuwendungsfähigen projektbezogenen Ausgaben.",
+      "checked_at": "2026-11-20",
+      "method": "page"
+    },
+    "after_award": [
+      {
+        "source_url": "https://www.z-u-g.org/fileadmin/zug/Dateien/Foerderprorgamme/KlimaWildnis/frl_klimawildnis_bf.pdf",
+        "quote": "Die Tätigkeiten des/der KlimaWildnisBotschafter*in sind jährlich in Berichtsform nachzuweisen.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.z-u-g.org/fileadmin/zug/Dateien/Foerderprorgamme/KlimaWildnis/KlimaWildnis_Hinweise_zur_Antragstellung.pdf",
+        "quote": "Die zweckentsprechende Verwendung der Fördermittel ist der ZUG spätestens sechs Monate nach Ablauf des Bewilligungszeitraums nachzuweisen. Der Verwendungsnachweis (VN) besteht aus einem Sachbericht (Schlussbericht) und einem zahlenmäßigen Nachweis.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "reporting": {
+      "source_url": "https://www.z-u-g.org/fileadmin/zug/Dateien/Foerderprorgamme/KlimaWildnis/KlimaWildnis_Hinweise_zur_Antragstellung.pdf",
+      "quote": "Die zweckentsprechende Verwendung der Fördermittel ist der ZUG spätestens sechs Monate nach Ablauf des Bewilligungszeitraums nachzuweisen. Der Verwendungsnachweis (VN) besteht aus einem Sachbericht (Schlussbericht) und einem zahlenmäßigen Nachweis.",
+      "checked_at": "2026-11-20",
+      "method": "page"
     }
   },
-  "checked_at": "2026-11-08"
+  "checked_at": "2026-11-08",
+  "co_finance": {
+    "min_share": 10,
+    "applies_to": "Wilderness ambassador (KWB) projects"
+  },
+  "after_award": {
+    "reports": "yearly"
+  }
 }

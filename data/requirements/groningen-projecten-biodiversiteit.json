@@ -1,0 +1,71 @@
+{
+  "id": "groningen-projecten-biodiversiteit",
+  "read_on": "2026-11-20",
+  "prompt_version": "req-2026-11-20.1",
+  "models": ["cursor:gpt-5.6-luna-high"],
+  "complete": false,
+  "reasons": [
+    "11 links could not be ranked without Jev",
+    "https://www.provinciegroningen.nl/fileadmin/user_upload/Afbeeldingen/Beleid_en_documenten/Akkoord_Mit_Mekoar-_2025-2027_vk.pdf: pages 1, 3, 8, 10, 12, 14, 17, 18, 22, 25, 26, 28, 30, 34, 36, 40, 45, 54 are images: needs OCR",
+    "the text names a document with rules that was not read: Officiële subsidieregeling",
+    "the text names a document with rules that was not read: Aanbestedingsregels",
+    "the text names a document with rules that was not read: Programma Landelijk Gebied 3 (PLG3)",
+    "the text names a document with rules that was not read: Actuele Lijst Groninger soorten en habitats",
+    "Jev did not check this reading, so an absent fact is not known to be absent"
+  ],
+  "requirements_checked": false,
+  "documents": [
+    {
+      "ref": "D1",
+      "url": "https://www.provinciegroningen.nl/subsidies/natuur-en-landschap/projecten-biodiversiteit/",
+      "final_url": "https://www.provinciegroningen.nl/subsidies/natuur-en-landschap/projecten-biodiversiteit/",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 6520,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:f21a315df297f00dbc6c5c9d0549e2ca9ff9916603beb75dd556ce446726d8bc"
+    },
+    {
+      "ref": "D2",
+      "url": "https://www.provinciegroningen.nl/fileadmin/user_upload/Afbeeldingen/Beleid_en_documenten/Akkoord_Mit_Mekoar-_2025-2027_vk.pdf",
+      "final_url": "https://www.provinciegroningen.nl/fileadmin/user_upload/Afbeeldingen/Beleid_en_documenten/Akkoord_Mit_Mekoar-_2025-2027_vk.pdf",
+      "from": "https://www.provinciegroningen.nl/subsidies/natuur-en-landschap/projecten-biodiversiteit/",
+      "anchor": "coalitieakkoord 'Mit Mekoar'",
+      "depth": 1,
+      "pdf": true,
+      "chars": 71822,
+      "pages": 54,
+      "low_text": false,
+      "hash": "sha256:29623ed2d67003816390fda93d2d3ad6be2aa9ff6880f8d5de1ce19d81445552"
+    }
+  ],
+  "failures": [
+    {
+      "url": "https://www.provinciegroningen.nl/fileadmin/user_upload/Afbeeldingen/Beleid_en_documenten/Akkoord_Mit_Mekoar-_2025-2027_vk.pdf",
+      "from": "https://www.provinciegroningen.nl/subsidies/natuur-en-landschap/projecten-biodiversiteit/",
+      "kind": "low_text",
+      "message": "pages 1, 3, 8, 10, 12, 14, 17, 18, 22, 25, 26, 28, 30, 34, 36, 40, 45, 54 are images: needs OCR"
+    }
+  ],
+  "skipped_links": 37,
+  "chunks": [{ "id": "all", "docs": ["D1", "D2"], "chars": 78693 }],
+  "outcomes": {
+    "eligibility": "stated",
+    "documents": "stated",
+    "effort": "stated",
+    "co_finance": "not_found",
+    "consortium": "not_found",
+    "after_award": "stated"
+  },
+  "written": ["eligibility", "documents", "effort", "after_award"],
+  "escalated": [],
+  "flags": [],
+  "notes": [
+    "effort \"Application\": the quote does not state 2026-11-30 whole; left undated",
+    "extractor: The biodiversity-priority-theme condition is currently not applicable under the coalition agreement and may change in future."
+  ],
+  "usd": 0
+}
