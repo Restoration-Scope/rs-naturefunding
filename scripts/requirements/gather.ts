@@ -133,9 +133,10 @@ export function classifyLink(link: Link, pageUrl: string, programme: Pick<Progra
   const lang = langOf(u.pathname)
   if (sameSite && lang && lang !== langOf(new URL(pageUrl).pathname)) return { ...link, url, score: 'skip', why: 'another language' }
   const doc = DOC_HREF.test(url) || fileHost
-  // The path counts only past the part it shares with the page or the programme's own URL: a sibling programme
-  // under /grants/funding-applications/ is not about applying because its folder is.
-  const words = `${link.text} ${ownPath(u, [pageUrl, programme.url])}`
+  // The path counts only past the folders it shares with the programme's own page: a sibling programme under
+  // /grants/funding-applications/ is not about applying because its folder is. Folders shared only with the
+  // linking page still count (CEPF's /grants/before-you-apply/ pages are guidance for every applicant).
+  const words = `${link.text} ${ownPath(u, [programme.url])}`
   const relevant = RELEVANT.test(words) || (RELEVANT.test(link.context) && doc)
   const named = comparable(link.text).length > 3 && comparable(`${link.text} ${link.context}`).includes(comparable(programme.name).slice(0, 40))
   if (NOISE.test(link.text) && !relevant) return { ...link, url, score: 'skip', why: 'news, contact or account page' }
