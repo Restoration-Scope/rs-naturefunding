@@ -1,0 +1,86 @@
+{
+  "id": "rainforest-trust-feasibility-awards",
+  "read_on": "2026-11-20",
+  "prompt_version": "req-2026-11-20.1",
+  "models": ["cursor:gpt-5.6-luna-high", "cursor:gpt-5.6-sol-high"],
+  "complete": false,
+  "reasons": [
+    "23 links could not be ranked without Jev",
+    "18 links could not be ranked without Jev",
+    "Jev did not check this reading, so an absent fact is not known to be absent"
+  ],
+  "requirements_checked": false,
+  "documents": [
+    {
+      "ref": "D1",
+      "url": "https://www.rainforesttrust.org/get-involved/apply-for-funding/",
+      "final_url": "https://www.rainforesttrust.org/get-involved/apply-for-funding/",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 18203,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:8f781ccffe63e9c1c2cff05120d680ae3917aa5977a762dd3e6a5f3c92de056a"
+    },
+    {
+      "ref": "D2",
+      "url": "https://www.rainforesttrust.org/faqs/",
+      "final_url": "https://www.rainforesttrust.org/faqs/",
+      "from": "https://www.rainforesttrust.org/get-involved/apply-for-funding/",
+      "anchor": "Frequently Asked Questions",
+      "depth": 1,
+      "pdf": false,
+      "chars": 5673,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:73a52c02144c5c6a8bc9d76adb7260c7c1368b083bbf37cc7c29863b33f2638f"
+    },
+    {
+      "ref": "D3",
+      "url": "https://www.rainforesttrust.org/privacy-policy/",
+      "final_url": "https://www.rainforesttrust.org/privacy-policy/",
+      "from": "https://www.rainforesttrust.org/get-involved/apply-for-funding/",
+      "anchor": "Privacy Policy",
+      "depth": 1,
+      "pdf": false,
+      "chars": 20359,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:05f42bb0ff7ec1408ca35d0feecb52446aaef4a27ac10a7c25bea5470471c8d2"
+    },
+    {
+      "ref": "D4",
+      "url": "https://www.rainforesttrust.org/uk-3/privacy-policy/",
+      "final_url": "https://www.rainforesttrust.org/uk-3/privacy-policy/",
+      "from": "https://www.rainforesttrust.org/get-involved/apply-for-funding/",
+      "anchor": "UK Privacy Policy",
+      "depth": 1,
+      "pdf": false,
+      "chars": 21306,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:83a92cf4b1cc6ef5798cd0892fe71207ede9298786c0caa380c05bf8611937ab"
+    }
+  ],
+  "failures": [],
+  "skipped_links": 400,
+  "chunks": [{ "id": "all", "docs": ["D1", "D2", "D3", "D4"], "chars": 66026 }],
+  "outcomes": {
+    "eligibility": "stated",
+    "documents": "not_found",
+    "effort": "stated",
+    "co_finance": "not_found",
+    "consortium": "not_found",
+    "after_award": "not_found"
+  },
+  "written": ["eligibility", "effort"],
+  "escalated": ["eligibility"],
+  "flags": [],
+  "notes": [
+    "extractor: Feasibility Awards address specific information gaps as precursors to Protected or Conserved Area Creation Awards. Concept notes are accepted anytime. For the currently unprotected requirement, Biosphere Reserves, World Heritage Sites and RAMSAR Reserves do not count as officially protected by those designations alone.",
+    "eligibility: kept 1 first-reading item no check faulted that the strong reading left out"
+  ],
+  "usd": 0
+}

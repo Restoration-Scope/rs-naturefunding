@@ -1,0 +1,69 @@
+{
+  "id": "oekofonds-energie-thun",
+  "read_on": "2026-11-20",
+  "prompt_version": "req-2026-11-20.1",
+  "models": ["cursor:gpt-5.6-luna-high"],
+  "complete": false,
+  "reasons": [
+    "5 links could not be ranked without Jev",
+    "https://energiethun.ch/app/uploads/2026/05/2026-04-01_Reglement-Oekofonds.pdf: pages 1, 6 are images: needs OCR",
+    "the text names a document with rules that was not read: Beitragsgesuch Ökofonds Hinweise PDF",
+    "the text names a document with rules that was not read: Wirkungsraum Ökofonds PDF",
+    "Jev did not check this reading, so an absent fact is not known to be absent"
+  ],
+  "requirements_checked": false,
+  "documents": [
+    {
+      "ref": "D1",
+      "url": "https://energiethun.ch/unser-engagement/oekofonds/",
+      "final_url": "https://energiethun.ch/ueber-uns/unternehmen/oekofonds/",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 3905,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:bcbeba7f76bcf1d6bc6d33329db43309bf291bd33e8b98a5cc67104e83747df1"
+    },
+    {
+      "ref": "D2",
+      "url": "https://energiethun.ch/app/uploads/2026/05/2026-04-01_Reglement-Oekofonds.pdf",
+      "final_url": "https://energiethun.ch/app/uploads/2026/05/2026-04-01_Reglement-Oekofonds.pdf",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": true,
+      "chars": 9324,
+      "pages": 6,
+      "low_text": false,
+      "hash": "sha256:8b8307dd5367a3c38df2df73041bb85b03e6224ad38288cdc8da65689af33daf"
+    }
+  ],
+  "failures": [
+    {
+      "url": "https://energiethun.ch/app/uploads/2026/05/2026-04-01_Reglement-Oekofonds.pdf",
+      "from": null,
+      "kind": "low_text",
+      "message": "pages 1, 6 are images: needs OCR"
+    }
+  ],
+  "skipped_links": 31,
+  "chunks": [{ "id": "all", "docs": ["D1", "D2"], "chars": 13390 }],
+  "outcomes": {
+    "eligibility": "stated",
+    "documents": "not_found",
+    "effort": "stated",
+    "co_finance": "stated",
+    "consortium": "not_found",
+    "after_award": "stated"
+  },
+  "written": ["eligibility", "effort", "co_finance", "after_award"],
+  "escalated": [],
+  "flags": [],
+  "notes": [
+    "extractor: Projects required by law are generally not supported. Contributions under CHF 2,000 are not paid. D1 lists two 2027 committee meetings with deadlines, so applicants choose between rounds and effort.due is left blank.",
+    "source oekofonds-energie-thun-2: selector main dropped, a new quote sits outside it"
+  ],
+  "usd": 0
+}

@@ -14,6 +14,17 @@
   "amount": { "currency": "EUR", "min": 1000, "max": 10000 },
   "co_finance_required": true,
   "reporting": null,
+  "effort": { "steps": ["Application through the AgoraNatura platform"] },
+  "eligibility": [
+    {
+      "rule": "Keep environmental education and public relations at or below 50% of the grant",
+      "kind": "project"
+    },
+    { "rule": "Project has not started or been completed before the grant", "kind": "project" },
+    { "rule": "Plantings are high-stem (Hochstamm) fruit trees only", "kind": "project" }
+  ],
+  "co_finance": { "min_share": 20, "in_kind": true },
+  "documents": ["Cost plan", "Tax exemption certificate, if required", "Project profile image"],
   "calls": [
     {
       "id": "2026",
@@ -91,7 +102,55 @@
       "quote": "Die Förderung erfolgt projektbezogen mit 80 % der zuwendungsfähigen Ausgaben; der Eigenanteil kann auch durch Erbringung von ehrenamtlichem Engagement (15 €/h) erbracht werden.",
       "checked_at": "2026-11-20",
       "method": "page"
-    }
+    },
+    "effort": [
+      {
+        "source_url": "https://www.agora-natura.de/faq",
+        "quote": "Wenn Sie ein passendes Programm gefunden haben, können Sie direkt mit dem Bewerbungsprozess beginnen und Ihre Bewerbung über die Plattform einreichen.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "eligibility": [
+      {
+        "source_url": "https://www.agora-natura.de/gemeinsam-fuer-streuobstparadiese",
+        "quote": "Nicht gefördert werden Umweltbildungsmaßnahmen und Öffentlichkeitsarbeit, wenn diese mehr als 50 % der Fördersumme ausmachen.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.agora-natura.de/gemeinsam-fuer-streuobstparadiese",
+        "quote": "Projekte, die bereits begonnen haben oder bereits abgeschlossen sind, sind nicht förderfähig.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.agora-natura.de/gemeinsam-fuer-streuobstparadiese",
+        "quote": "Gefördert werden Projekte zur Neuanlage, Verbesserung oder Wiederherstellung artenreicher Streuobstflächen (ausschließlich Hochstamm-Pflanzungen).",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "co_finance": {
+      "source_url": "https://www.agora-natura.de/gemeinsam-fuer-streuobstparadiese",
+      "quote": "Die Förderung erfolgt projektbezogen mit 80 % der zuwendungsfähigen Ausgaben; der Eigenanteil kann auch durch Erbringung von ehrenamtlichem Engagement (15 €/h) erbracht werden.",
+      "checked_at": "2026-11-20",
+      "method": "page"
+    },
+    "documents": [
+      {
+        "source_url": "https://www.agora-natura.de/faq",
+        "quote": "Kostenplan hochladen und Freistellungsbescheid ergänzen (falls erforderlich)",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.agora-natura.de/faq",
+        "quote": "Projektprofilbild hochladen",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ]
   },
   "checked_at": "2026-11-20"
 }

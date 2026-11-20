@@ -1,0 +1,44 @@
+{
+  "id": "noe-lfv-foerderrichtlinie",
+  "read_on": "2026-11-20",
+  "prompt_version": "req-2026-11-20.1",
+  "models": ["cursor:gpt-5.6-luna-high"],
+  "complete": false,
+  "reasons": ["Jev did not check this reading, so an absent fact is not known to be absent"],
+  "requirements_checked": false,
+  "documents": [
+    {
+      "ref": "D1",
+      "url": "https://noe-lfv.at/download/foerderungen/NOE-LFV_Foerderrichtlinie.pdf",
+      "final_url": "https://noe-lfv.at/download/foerderungen/NOE-LFV_Foerderrichtlinie.pdf",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": true,
+      "chars": 33004,
+      "pages": 15,
+      "low_text": false,
+      "hash": "sha256:155d4b4c3244bd45bfa8158d8686fa772684ad7250df75e34b1cd358f1345aa5"
+    }
+  ],
+  "failures": [],
+  "skipped_links": 0,
+  "chunks": [{ "id": "all", "docs": ["D1"], "chars": 33093 }],
+  "outcomes": {
+    "eligibility": "stated",
+    "documents": "stated",
+    "effort": "stated",
+    "co_finance": "unresolved",
+    "consortium": "not_found",
+    "after_award": "stated"
+  },
+  "written": ["eligibility", "documents", "effort", "after_award"],
+  "escalated": [],
+  "flags": [],
+  "notes": [
+    "extractor: Applications are generally required before the project starts. Förderprogramm 2027 rates are maximum rates and apply only during the stated submission phase; demolition funding requires removal without an official order.",
+    "co_finance: the file states whether co-funding is required, this reading found nothing",
+    "source noe-lfv-foerderrichtlinie-1: selector main dropped, a new quote sits outside it"
+  ],
+  "usd": 0
+}

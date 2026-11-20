@@ -1,0 +1,453 @@
+{
+  "id": "nrw-gruene-infrastruktur-richtlinie",
+  "read_on": "2026-11-20",
+  "prompt_version": "req-2026-11-20.1",
+  "models": ["cursor:gpt-5.6-luna-high"],
+  "complete": false,
+  "reasons": [
+    "21 links could not be ranked without Jev",
+    "46 links could not be ranked without Jev",
+    "80 links could not be ranked without Jev",
+    "https://www.bra.nrw.de/system/files/media/document/file/die_gi_rl_und_die_efre_foerderbekanntmachung_gi.pdf: pages 3, 5, 6, 17 are images: needs OCR",
+    "https://www.bra.nrw.de/system/files/media/document/file/20250304_foerderbekanntmachnung_gi_neu.pdf: page 1 is an image: needs OCR",
+    "https://recht.nrw.de/taxonomy/term/33827: too little text: the page may need a browser",
+    "https://circabc.europa.eu/ui/group/3f466d71-92a7-49eb-9c63-6cb0fadf29dc/library/dc48dc2a-b87f-4e54-9852-a18c7239260e/details?download=true would not open (http: HTTP 404)",
+    "the crawl bound left https://commission.europa.eu/cookies-policy_en unread",
+    "the crawl bound left https://commission.europa.eu/privacy-policy-websites-managed-european-commission_en unread",
+    "the crawl bound left https://www.bra.nrw.de/karriere/faqs unread",
+    "the crawl bound left https://recht.nrw.de/fragen-und-antworten-faq unread",
+    "the crawl bound left https://recht.nrw.de/system/files/pdf/state-law-ministerial-gazette/2023/07/27/ae779a/2023-07-28-richtlinien-ueber-die-gewaehrung-von-zu.pdf unread",
+    "the crawl bound left https://commission.europa.eu/legal-notice/vulnerability-disclosure-policy_bg unread",
+    "the crawl bound left https://commission.europa.eu/legal-notice/vulnerability-disclosure-policy_es unread",
+    "the crawl bound left https://commission.europa.eu/legal-notice/vulnerability-disclosure-policy_cs unread",
+    "the crawl bound left https://commission.europa.eu/legal-notice/vulnerability-disclosure-policy_da unread",
+    "the crawl bound left https://commission.europa.eu/legal-notice/vulnerability-disclosure-policy_de unread",
+    "the crawl bound left https://commission.europa.eu/legal-notice/vulnerability-disclosure-policy_et unread",
+    "the crawl bound left https://commission.europa.eu/legal-notice/vulnerability-disclosure-policy_el unread",
+    "the crawl bound left https://commission.europa.eu/legal-notice/vulnerability-disclosure-policy_fr unread",
+    "the crawl bound left https://commission.europa.eu/legal-notice/vulnerability-disclosure-policy_ga unread",
+    "the crawl bound left https://commission.europa.eu/legal-notice/vulnerability-disclosure-policy_hr unread",
+    "the crawl bound left https://commission.europa.eu/legal-notice/vulnerability-disclosure-policy_it unread",
+    "the crawl bound left https://commission.europa.eu/legal-notice/vulnerability-disclosure-policy_lv unread",
+    "the crawl bound left https://commission.europa.eu/legal-notice/vulnerability-disclosure-policy_lt unread",
+    "the crawl bound left https://commission.europa.eu/legal-notice/vulnerability-disclosure-policy_hu unread",
+    "the crawl bound left https://commission.europa.eu/legal-notice/vulnerability-disclosure-policy_mt unread",
+    "the crawl bound left https://commission.europa.eu/legal-notice/vulnerability-disclosure-policy_nl unread",
+    "the crawl bound left https://commission.europa.eu/legal-notice/vulnerability-disclosure-policy_pl unread",
+    "the crawl bound left https://commission.europa.eu/legal-notice/vulnerability-disclosure-policy_pt unread",
+    "the crawl bound left https://commission.europa.eu/legal-notice/vulnerability-disclosure-policy_ro unread",
+    "the crawl bound left https://commission.europa.eu/legal-notice/vulnerability-disclosure-policy_sk unread",
+    "the crawl bound left https://commission.europa.eu/legal-notice/vulnerability-disclosure-policy_sl unread",
+    "the crawl bound left https://commission.europa.eu/legal-notice/vulnerability-disclosure-policy_fi unread",
+    "the crawl bound left https://commission.europa.eu/legal-notice/vulnerability-disclosure-policy_sv unread",
+    "the crawl bound left https://commission.europa.eu/strategy-and-policy_en unread",
+    "the crawl bound left https://commission.europa.eu/topics/fiscal-policy_en unread",
+    "the crawl bound left https://commission.europa.eu/topics/regional-and-urban-policy_en unread",
+    "the crawl bound left https://ec.europa.eu/stories/safe-clicks/ unread",
+    "the crawl bound left https://commission.europa.eu/topics/foreign-affairs-and-security-policy_en unread",
+    "the crawl bound left https://commission.europa.eu/resources/statistics/tracking-eu-policy-performance-and-recovery_en unread",
+    "the crawl bound left https://commission.europa.eu/resources/statistics/guide-european-statistics_en unread",
+    "the crawl bound left https://commission.europa.eu/resources/europa-web-guide_en unread",
+    "the crawl bound left https://commission.europa.eu/get-involved/engage-eu-policymaking/conference-future-europe_en unread",
+    "the crawl bound left https://commission.europa.eu/get-involved/engage-eu-policymaking/european-citizens-initiative_en unread",
+    "the crawl bound left https://commission.europa.eu/get-involved/engage-eu-policymaking/petition-eu_en unread",
+    "the crawl bound left https://commission.europa.eu/get-involved/engage-eu-policymaking_en unread",
+    "https://ec.europa.eu/environment/nature/ecosystems/docs/GI-Brochure-210x210-DE-web.pdf: a document on another site: without Jev it can’t be confirmed as the funder’s, so it is not used",
+    "https://commission.europa.eu/legal-notice/vulnerability-disclosure-policy_en: a document on another site: without Jev it can’t be confirmed as the funder’s, so it is not used",
+    "the text names a document with rules that was not read: Leitfaden „Biodiversitätsfördernde Maßnahmen auf Freiflächen, Ausgleichsflächen und an Gebäuden unter besonderer Berücksichtigung von landeseigenen Liegenschaft",
+    "the text names a document with rules that was not read: Verwaltungsvorschriften zur Landeshaushaltsordnung, einschließlich VVG zu § 44 LHO",
+    "the text names a document with rules that was not read: Bodenschutz- und Altlastenförderrichtlinien vom 13. Januar 2015",
+    "the text names a document with rules that was not read: EFRE/JTF-Rahmenrichtlinie NRW vom 7. November 2023",
+    "Jev did not check this reading, so an absent fact is not known to be absent"
+  ],
+  "requirements_checked": false,
+  "documents": [
+    {
+      "ref": "D1",
+      "url": "https://www.bra.nrw.de/umwelt-gesundheit-arbeitsschutz/umwelt/natur-und-landschaftsschutz-fischerei/foerderungen-im-natur-und-landschaftsschutz/foerderung-gemaess-der-gruene-infrastruktur-richtlinie",
+      "final_url": "https://www.bra.nrw.de/umwelt-gesundheit-arbeitsschutz/umwelt/natur-und-landschaftsschutz-fischerei/foerderungen-im-natur-und-landschaftsschutz/foerderung-gemaess-der-gruene-infrastruktur-richtlinie",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 11530,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:9659f68fb8c8a2791a968484de945e08ad970a9225954f8edd390c240c46344d"
+    },
+    {
+      "ref": "D2",
+      "url": "https://www.bra.nrw.de/system/files/media/document/file/die_gi_rl_und_die_efre_foerderbekanntmachung_gi.pdf",
+      "final_url": "https://www.bra.nrw.de/system/files/media/document/file/die_gi_rl_und_die_efre_foerderbekanntmachung_gi.pdf",
+      "from": "https://www.bra.nrw.de/umwelt-gesundheit-arbeitsschutz/umwelt/natur-und-landschaftsschutz-fischerei/foerderungen-im-natur-und-landschaftsschutz/foerderung-gemaess-der-gruene-infrastruktur-richtlinie",
+      "anchor": "Informationsveranstaltung \"EFRE Grüne Infrastruktur\"",
+      "depth": 1,
+      "pdf": true,
+      "chars": 9400,
+      "pages": 24,
+      "low_text": false,
+      "hash": "sha256:235d858a5c053d695f51dae726a4eb1e32052afa4298ee67f8da63c243a468fd"
+    },
+    {
+      "ref": "D3",
+      "url": "https://www.bra.nrw.de/system/files/media/document/file/20250304_foerderbekanntmachnung_gi_neu.pdf",
+      "final_url": "https://www.bra.nrw.de/system/files/media/document/file/20250304_foerderbekanntmachnung_gi_neu.pdf",
+      "from": "https://www.bra.nrw.de/umwelt-gesundheit-arbeitsschutz/umwelt/natur-und-landschaftsschutz-fischerei/foerderungen-im-natur-und-landschaftsschutz/foerderung-gemaess-der-gruene-infrastruktur-richtlinie",
+      "anchor": "Förderbekanntmachung Grüne Infrastruktur",
+      "depth": 1,
+      "pdf": true,
+      "chars": 13059,
+      "pages": 8,
+      "low_text": false,
+      "hash": "sha256:e36b9a4940778cbe37628a55c20b7f927cac6d1ae626abcbb4ffff3d2f54e49c"
+    },
+    {
+      "ref": "D4",
+      "url": "https://recht.nrw.de/taxonomy/term/33827",
+      "final_url": "https://recht.nrw.de/taxonomy/term/33827/",
+      "from": "https://www.bra.nrw.de/umwelt-gesundheit-arbeitsschutz/umwelt/natur-und-landschaftsschutz-fischerei/foerderungen-im-natur-und-landschaftsschutz/foerderung-gemaess-der-gruene-infrastruktur-richtlinie",
+      "anchor": "Förderrichtlinie Grüne Infrastruktur",
+      "depth": 1,
+      "pdf": false,
+      "chars": 138,
+      "pages": null,
+      "low_text": true,
+      "hash": "sha256:ab561c3d2a340ad98dcfc9f062455f22c9b8fe54a2a5a1645b0a59d57701e575"
+    },
+    {
+      "ref": "D5",
+      "url": "https://www.bra.nrw.de/karriere/stellenausschreibungen-der-bezirksregierung-arnsberg",
+      "final_url": "https://www.bra.nrw.de/karriere/stellenausschreibungen-der-bezirksregierung-arnsberg",
+      "from": "https://www.bra.nrw.de/umwelt-gesundheit-arbeitsschutz/umwelt/natur-und-landschaftsschutz-fischerei/foerderungen-im-natur-und-landschaftsschutz/foerderung-gemaess-der-gruene-infrastruktur-richtlinie",
+      "anchor": "Stellenausschreibungen",
+      "depth": 1,
+      "pdf": false,
+      "chars": 7084,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:28682cfa884bc2693304a88e0450cb03eeb71aa0907ab38ca04cd92a4b17757c"
+    },
+    {
+      "ref": "D6",
+      "url": "https://recht.nrw.de/lrmb/verwaltungsvorschrift/28072023-richtlinien-ueber-die-gewaehrung-von-zuwendung-zur-schaffung",
+      "final_url": "https://recht.nrw.de/lrmb/verwaltungsvorschrift/28072023-richtlinien-ueber-die-gewaehrung-von-zuwendung-zur-schaffung/",
+      "from": "https://recht.nrw.de/taxonomy/term/33827",
+      "anchor": "https://recht.nrw.de/lrmb/verwaltungsvorschrift/28072023-richtlinien-ueber-die-gewaehrung-von-zuwendung-zur-schaffung",
+      "depth": 2,
+      "pdf": false,
+      "chars": 23573,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:1257133f156eb17db810c633d5031d5abf90000e5334f6836a9e968852a0647a"
+    }
+  ],
+  "failures": [
+    {
+      "url": "https://www.bra.nrw.de/system/files/media/document/file/die_gi_rl_und_die_efre_foerderbekanntmachung_gi.pdf",
+      "from": "https://www.bra.nrw.de/umwelt-gesundheit-arbeitsschutz/umwelt/natur-und-landschaftsschutz-fischerei/foerderungen-im-natur-und-landschaftsschutz/foerderung-gemaess-der-gruene-infrastruktur-richtlinie",
+      "kind": "low_text",
+      "message": "pages 3, 5, 6, 17 are images: needs OCR"
+    },
+    {
+      "url": "https://www.bra.nrw.de/system/files/media/document/file/20250304_foerderbekanntmachnung_gi_neu.pdf",
+      "from": "https://www.bra.nrw.de/umwelt-gesundheit-arbeitsschutz/umwelt/natur-und-landschaftsschutz-fischerei/foerderungen-im-natur-und-landschaftsschutz/foerderung-gemaess-der-gruene-infrastruktur-richtlinie",
+      "kind": "low_text",
+      "message": "page 1 is an image: needs OCR"
+    },
+    {
+      "url": "https://recht.nrw.de/taxonomy/term/33827",
+      "from": "https://www.bra.nrw.de/umwelt-gesundheit-arbeitsschutz/umwelt/natur-und-landschaftsschutz-fischerei/foerderungen-im-natur-und-landschaftsschutz/foerderung-gemaess-der-gruene-infrastruktur-richtlinie",
+      "kind": "low_text",
+      "message": "too little text: the page may need a browser"
+    },
+    {
+      "url": "https://circabc.europa.eu/ui/group/3f466d71-92a7-49eb-9c63-6cb0fadf29dc/library/dc48dc2a-b87f-4e54-9852-a18c7239260e/details?download=true",
+      "from": "https://ec.europa.eu/environment/nature/ecosystems/docs/GI-Brochure-210x210-DE-web.pdf",
+      "kind": "http",
+      "message": "HTTP 404"
+    },
+    {
+      "url": "https://commission.europa.eu/cookies-policy_en",
+      "from": "https://ec.europa.eu/environment/nature/ecosystems/docs/GI-Brochure-210x210-DE-web.pdf",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://commission.europa.eu/privacy-policy-websites-managed-european-commission_en",
+      "from": "https://ec.europa.eu/environment/nature/ecosystems/docs/GI-Brochure-210x210-DE-web.pdf",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://www.bra.nrw.de/karriere/faqs",
+      "from": "https://www.bra.nrw.de/karriere/stellenausschreibungen-der-bezirksregierung-arnsberg",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://recht.nrw.de/fragen-und-antworten-faq",
+      "from": "https://recht.nrw.de/lrmb/verwaltungsvorschrift/28072023-richtlinien-ueber-die-gewaehrung-von-zuwendung-zur-schaffung",
+      "kind": "bound",
+      "message": "past the crawl depth of 2"
+    },
+    {
+      "url": "https://recht.nrw.de/system/files/pdf/state-law-ministerial-gazette/2023/07/27/ae779a/2023-07-28-richtlinien-ueber-die-gewaehrung-von-zu.pdf",
+      "from": "https://recht.nrw.de/lrmb/verwaltungsvorschrift/28072023-richtlinien-ueber-die-gewaehrung-von-zuwendung-zur-schaffung",
+      "kind": "bound",
+      "message": "past the crawl depth of 2"
+    },
+    {
+      "url": "https://commission.europa.eu/legal-notice/vulnerability-disclosure-policy_bg",
+      "from": "https://commission.europa.eu/legal-notice/vulnerability-disclosure-policy_en",
+      "kind": "bound",
+      "message": "past the crawl depth of 2"
+    },
+    {
+      "url": "https://commission.europa.eu/legal-notice/vulnerability-disclosure-policy_es",
+      "from": "https://commission.europa.eu/legal-notice/vulnerability-disclosure-policy_en",
+      "kind": "bound",
+      "message": "past the crawl depth of 2"
+    },
+    {
+      "url": "https://commission.europa.eu/legal-notice/vulnerability-disclosure-policy_cs",
+      "from": "https://commission.europa.eu/legal-notice/vulnerability-disclosure-policy_en",
+      "kind": "bound",
+      "message": "past the crawl depth of 2"
+    },
+    {
+      "url": "https://commission.europa.eu/legal-notice/vulnerability-disclosure-policy_da",
+      "from": "https://commission.europa.eu/legal-notice/vulnerability-disclosure-policy_en",
+      "kind": "bound",
+      "message": "past the crawl depth of 2"
+    },
+    {
+      "url": "https://commission.europa.eu/legal-notice/vulnerability-disclosure-policy_de",
+      "from": "https://commission.europa.eu/legal-notice/vulnerability-disclosure-policy_en",
+      "kind": "bound",
+      "message": "past the crawl depth of 2"
+    },
+    {
+      "url": "https://commission.europa.eu/legal-notice/vulnerability-disclosure-policy_et",
+      "from": "https://commission.europa.eu/legal-notice/vulnerability-disclosure-policy_en",
+      "kind": "bound",
+      "message": "past the crawl depth of 2"
+    },
+    {
+      "url": "https://commission.europa.eu/legal-notice/vulnerability-disclosure-policy_el",
+      "from": "https://commission.europa.eu/legal-notice/vulnerability-disclosure-policy_en",
+      "kind": "bound",
+      "message": "past the crawl depth of 2"
+    },
+    {
+      "url": "https://commission.europa.eu/legal-notice/vulnerability-disclosure-policy_fr",
+      "from": "https://commission.europa.eu/legal-notice/vulnerability-disclosure-policy_en",
+      "kind": "bound",
+      "message": "past the crawl depth of 2"
+    },
+    {
+      "url": "https://commission.europa.eu/legal-notice/vulnerability-disclosure-policy_ga",
+      "from": "https://commission.europa.eu/legal-notice/vulnerability-disclosure-policy_en",
+      "kind": "bound",
+      "message": "past the crawl depth of 2"
+    },
+    {
+      "url": "https://commission.europa.eu/legal-notice/vulnerability-disclosure-policy_hr",
+      "from": "https://commission.europa.eu/legal-notice/vulnerability-disclosure-policy_en",
+      "kind": "bound",
+      "message": "past the crawl depth of 2"
+    },
+    {
+      "url": "https://commission.europa.eu/legal-notice/vulnerability-disclosure-policy_it",
+      "from": "https://commission.europa.eu/legal-notice/vulnerability-disclosure-policy_en",
+      "kind": "bound",
+      "message": "past the crawl depth of 2"
+    },
+    {
+      "url": "https://commission.europa.eu/legal-notice/vulnerability-disclosure-policy_lv",
+      "from": "https://commission.europa.eu/legal-notice/vulnerability-disclosure-policy_en",
+      "kind": "bound",
+      "message": "past the crawl depth of 2"
+    },
+    {
+      "url": "https://commission.europa.eu/legal-notice/vulnerability-disclosure-policy_lt",
+      "from": "https://commission.europa.eu/legal-notice/vulnerability-disclosure-policy_en",
+      "kind": "bound",
+      "message": "past the crawl depth of 2"
+    },
+    {
+      "url": "https://commission.europa.eu/legal-notice/vulnerability-disclosure-policy_hu",
+      "from": "https://commission.europa.eu/legal-notice/vulnerability-disclosure-policy_en",
+      "kind": "bound",
+      "message": "past the crawl depth of 2"
+    },
+    {
+      "url": "https://commission.europa.eu/legal-notice/vulnerability-disclosure-policy_mt",
+      "from": "https://commission.europa.eu/legal-notice/vulnerability-disclosure-policy_en",
+      "kind": "bound",
+      "message": "past the crawl depth of 2"
+    },
+    {
+      "url": "https://commission.europa.eu/legal-notice/vulnerability-disclosure-policy_nl",
+      "from": "https://commission.europa.eu/legal-notice/vulnerability-disclosure-policy_en",
+      "kind": "bound",
+      "message": "past the crawl depth of 2"
+    },
+    {
+      "url": "https://commission.europa.eu/legal-notice/vulnerability-disclosure-policy_pl",
+      "from": "https://commission.europa.eu/legal-notice/vulnerability-disclosure-policy_en",
+      "kind": "bound",
+      "message": "past the crawl depth of 2"
+    },
+    {
+      "url": "https://commission.europa.eu/legal-notice/vulnerability-disclosure-policy_pt",
+      "from": "https://commission.europa.eu/legal-notice/vulnerability-disclosure-policy_en",
+      "kind": "bound",
+      "message": "past the crawl depth of 2"
+    },
+    {
+      "url": "https://commission.europa.eu/legal-notice/vulnerability-disclosure-policy_ro",
+      "from": "https://commission.europa.eu/legal-notice/vulnerability-disclosure-policy_en",
+      "kind": "bound",
+      "message": "past the crawl depth of 2"
+    },
+    {
+      "url": "https://commission.europa.eu/legal-notice/vulnerability-disclosure-policy_sk",
+      "from": "https://commission.europa.eu/legal-notice/vulnerability-disclosure-policy_en",
+      "kind": "bound",
+      "message": "past the crawl depth of 2"
+    },
+    {
+      "url": "https://commission.europa.eu/legal-notice/vulnerability-disclosure-policy_sl",
+      "from": "https://commission.europa.eu/legal-notice/vulnerability-disclosure-policy_en",
+      "kind": "bound",
+      "message": "past the crawl depth of 2"
+    },
+    {
+      "url": "https://commission.europa.eu/legal-notice/vulnerability-disclosure-policy_fi",
+      "from": "https://commission.europa.eu/legal-notice/vulnerability-disclosure-policy_en",
+      "kind": "bound",
+      "message": "past the crawl depth of 2"
+    },
+    {
+      "url": "https://commission.europa.eu/legal-notice/vulnerability-disclosure-policy_sv",
+      "from": "https://commission.europa.eu/legal-notice/vulnerability-disclosure-policy_en",
+      "kind": "bound",
+      "message": "past the crawl depth of 2"
+    },
+    {
+      "url": "https://commission.europa.eu/strategy-and-policy_en",
+      "from": "https://commission.europa.eu/legal-notice/vulnerability-disclosure-policy_en",
+      "kind": "bound",
+      "message": "past the crawl depth of 2"
+    },
+    {
+      "url": "https://commission.europa.eu/topics/fiscal-policy_en",
+      "from": "https://commission.europa.eu/legal-notice/vulnerability-disclosure-policy_en",
+      "kind": "bound",
+      "message": "past the crawl depth of 2"
+    },
+    {
+      "url": "https://commission.europa.eu/topics/regional-and-urban-policy_en",
+      "from": "https://commission.europa.eu/legal-notice/vulnerability-disclosure-policy_en",
+      "kind": "bound",
+      "message": "past the crawl depth of 2"
+    },
+    {
+      "url": "https://ec.europa.eu/stories/safe-clicks/",
+      "from": "https://commission.europa.eu/legal-notice/vulnerability-disclosure-policy_en",
+      "kind": "bound",
+      "message": "past the crawl depth of 2"
+    },
+    {
+      "url": "https://commission.europa.eu/topics/foreign-affairs-and-security-policy_en",
+      "from": "https://commission.europa.eu/legal-notice/vulnerability-disclosure-policy_en",
+      "kind": "bound",
+      "message": "past the crawl depth of 2"
+    },
+    {
+      "url": "https://commission.europa.eu/resources/statistics/tracking-eu-policy-performance-and-recovery_en",
+      "from": "https://commission.europa.eu/legal-notice/vulnerability-disclosure-policy_en",
+      "kind": "bound",
+      "message": "past the crawl depth of 2"
+    },
+    {
+      "url": "https://commission.europa.eu/resources/statistics/guide-european-statistics_en",
+      "from": "https://commission.europa.eu/legal-notice/vulnerability-disclosure-policy_en",
+      "kind": "bound",
+      "message": "past the crawl depth of 2"
+    },
+    {
+      "url": "https://commission.europa.eu/resources/europa-web-guide_en",
+      "from": "https://commission.europa.eu/legal-notice/vulnerability-disclosure-policy_en",
+      "kind": "bound",
+      "message": "past the crawl depth of 2"
+    },
+    {
+      "url": "https://commission.europa.eu/get-involved/engage-eu-policymaking/conference-future-europe_en",
+      "from": "https://commission.europa.eu/legal-notice/vulnerability-disclosure-policy_en",
+      "kind": "bound",
+      "message": "past the crawl depth of 2"
+    },
+    {
+      "url": "https://commission.europa.eu/get-involved/engage-eu-policymaking/european-citizens-initiative_en",
+      "from": "https://commission.europa.eu/legal-notice/vulnerability-disclosure-policy_en",
+      "kind": "bound",
+      "message": "past the crawl depth of 2"
+    },
+    {
+      "url": "https://commission.europa.eu/get-involved/engage-eu-policymaking/petition-eu_en",
+      "from": "https://commission.europa.eu/legal-notice/vulnerability-disclosure-policy_en",
+      "kind": "bound",
+      "message": "past the crawl depth of 2"
+    },
+    {
+      "url": "https://commission.europa.eu/get-involved/engage-eu-policymaking_en",
+      "from": "https://commission.europa.eu/legal-notice/vulnerability-disclosure-policy_en",
+      "kind": "bound",
+      "message": "past the crawl depth of 2"
+    },
+    {
+      "url": "https://commission.europa.eu/cookies-policy_en",
+      "from": "https://commission.europa.eu/legal-notice/vulnerability-disclosure-policy_en",
+      "kind": "bound",
+      "message": "past the crawl depth of 2"
+    },
+    {
+      "url": "https://commission.europa.eu/privacy-policy-websites-managed-european-commission_en",
+      "from": "https://commission.europa.eu/legal-notice/vulnerability-disclosure-policy_en",
+      "kind": "bound",
+      "message": "past the crawl depth of 2"
+    },
+    {
+      "url": "https://ec.europa.eu/environment/nature/ecosystems/docs/GI-Brochure-210x210-DE-web.pdf",
+      "from": "https://www.bra.nrw.de/umwelt-gesundheit-arbeitsschutz/umwelt/natur-und-landschaftsschutz-fischerei/foerderungen-im-natur-und-landschaftsschutz/foerderung-gemaess-der-gruene-infrastruktur-richtlinie",
+      "kind": "offsite",
+      "message": "a document on another site: without Jev it can’t be confirmed as the funder’s, so it is not used"
+    },
+    {
+      "url": "https://commission.europa.eu/legal-notice/vulnerability-disclosure-policy_en",
+      "from": "https://ec.europa.eu/environment/nature/ecosystems/docs/GI-Brochure-210x210-DE-web.pdf",
+      "kind": "offsite",
+      "message": "a document on another site: without Jev it can’t be confirmed as the funder’s, so it is not used"
+    }
+  ],
+  "skipped_links": 522,
+  "chunks": [{ "id": "all", "docs": ["D1", "D2", "D3", "D4", "D5", "D6"], "chars": 66425 }],
+  "outcomes": {
+    "eligibility": "stated",
+    "documents": "stated",
+    "effort": "stated",
+    "co_finance": "stated",
+    "consortium": "not_found",
+    "after_award": "stated"
+  },
+  "written": ["eligibility", "documents", "effort", "co_finance", "after_award"],
+  "escalated": [],
+  "flags": [],
+  "notes": [
+    "extractor: D2 describes the EFRE/JTF route and gives an older final application date of 31 December 2025. D3 contains EFRE/JTF-specific conditions, including exclusion of GI RL number 2 l; these apply when EU funds are used. D6 is the current GI RL and states that it expires on 31 December 2029.",
+    "source nrw-gruene-infrastruktur-richtlinie-2: added for https://recht.nrw.de/lrmb/verwaltungsvorschrift/28072023-richtlinien-ueber-die-gewaehrung-von-zuwendung-zur-schaffung",
+    "source nrw-gruene-infrastruktur-richtlinie-3: added for https://www.bra.nrw.de/system/files/media/document/file/20250304_foerderbekanntmachnung_gi_neu.pdf"
+  ],
+  "usd": 0
+}

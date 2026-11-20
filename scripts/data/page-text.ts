@@ -28,6 +28,7 @@ const NAMED: Record<string, string> = {
   auml: 'ä', euml: 'ë', iuml: 'ï', ouml: 'ö', uuml: 'ü', acirc: 'â', ecirc: 'ê', ocirc: 'ô', ccedil: 'ç',
   ntilde: 'ñ', atilde: 'ã', otilde: 'õ', szlig: 'ß', Aacute: 'Á', Eacute: 'É', Oacute: 'Ó', Uacute: 'Ú',
   oslash: 'ø', Oslash: 'Ø', aring: 'å', Aring: 'Å', aelig: 'æ', AElig: 'Æ', Auml: 'Ä', Ouml: 'Ö', Uuml: 'Ü',
+  sect: '§',
 }
 
 export function decodeEntities(s: string): string {

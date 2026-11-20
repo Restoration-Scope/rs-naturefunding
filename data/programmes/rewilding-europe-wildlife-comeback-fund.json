@@ -1,14 +1,25 @@
 {
   "id": "rewilding-europe-wildlife-comeback-fund",
   "name": "European Wildlife Comeback Fund",
-  "funder": { "name": "Rewilding Europe", "url": "https://rewildingeurope.com/" },
+  "funder": {
+    "name": "Rewilding Europe",
+    "url": "https://rewildingeurope.com/"
+  },
   "administered_by": null,
   "parent": null,
   "url": "https://rewildingeurope.com/european-wildlife-comeback-fund/",
   "summary": "Flexible funding for organisations in Europe whose keystone species reintroductions or population reinforcements are ready to go, with legal permits, animal source and landowner agreement in place.",
-  "approaches": ["species_conservation"],
+  "approaches": [
+    "species_conservation"
+  ],
   "applicant_types": null,
-  "geography": { "scope": "regions", "regions": ["europe"], "label": "Across Europe" },
+  "geography": {
+    "scope": "regions",
+    "regions": [
+      "europe"
+    ],
+    "label": "Across Europe"
+  },
   "access": "direct",
   "window": "rolling",
   "amount": {
@@ -19,6 +30,29 @@
   },
   "co_finance_required": null,
   "reporting": null,
+  "effort": {
+    "steps": [
+      "Funding request"
+    ]
+  },
+  "eligibility": [
+    {
+      "rule": "Actively reintroducing a keystone species in a European landscape",
+      "kind": "project"
+    },
+    {
+      "rule": "Secured the source of the animals",
+      "kind": "project"
+    },
+    {
+      "rule": "Has landowner or manager agreement to release the animals",
+      "kind": "project"
+    },
+    {
+      "rule": "Has completed all legal requirements, including permits and feasibility assessments",
+      "kind": "project"
+    }
+  ],
   "calls": [
     {
       "id": "standing",
@@ -61,7 +95,41 @@
       "quote": "If the above criteria apply to your initiative and your reintroduction or translocation is ready to go, then let us know!",
       "checked_at": "2026-11-20",
       "method": "page"
-    }
+    },
+    "effort": [
+      {
+        "source_url": "https://rewildingeurope.com/european-wildlife-comeback-fund/",
+        "quote": "Send us your request for funding",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "eligibility": [
+      {
+        "source_url": "https://rewildingeurope.com/european-wildlife-comeback-fund/",
+        "quote": "You are an organisation actively reintroducing a keystone species in European landscapes",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://rewildingeurope.com/european-wildlife-comeback-fund/",
+        "quote": "You have secured the source of the animals",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://rewildingeurope.com/european-wildlife-comeback-fund/",
+        "quote": "You have the agreement of the landowner/manager to release the animals",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://rewildingeurope.com/european-wildlife-comeback-fund/",
+        "quote": "You have completed all the legal requirements (especially permits and feasibility assessments)",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ]
   },
   "checked_at": "2026-11-20"
 }

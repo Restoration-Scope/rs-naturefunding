@@ -9,14 +9,43 @@
   "parent": null,
   "url": "https://www.npsnm.org/nps-sponsored-grants-donations/",
   "summary": "Small grants for native plant restoration, conservation, research and education projects, covering supplies, tools, seeds, equipment rental and contractors. Members and non-members can apply.",
-  "approaches": ["community_conservation", "species_conservation"],
-  "applicant_types": ["ngo", "community_group", "individual"],
+  "approaches": [
+    "community_conservation",
+    "species_conservation"
+  ],
+  "applicant_types": [
+    "ngo",
+    "community_group",
+    "individual"
+  ],
   "geography": null,
   "access": "direct",
   "window": "fixed",
-  "amount": { "currency": "USD", "max": 5000, "note": "At most two grants at this size" },
+  "amount": {
+    "currency": "USD",
+    "max": 5000,
+    "note": "At most two grants at this size"
+  },
   "co_finance_required": null,
   "reporting": "Written year-end summary report due by November 1.",
+  "effort": {
+    "steps": [
+      "Complete and submit the application"
+    ]
+  },
+  "eligibility": [
+    {
+      "rule": "Project aligns with at least one element of NPSNM's mission",
+      "kind": "project"
+    },
+    {
+      "rule": "Pollinator garden projects assure the garden is maintained into the future",
+      "kind": "project"
+    }
+  ],
+  "after_award": {
+    "reports": "interim_and_final"
+  },
   "calls": [
     {
       "id": "2027-grants",
@@ -72,7 +101,37 @@
       "quote": "Successful grant winners are required to submit a written, year-end summary report (a template will be provided) due by November 1.",
       "checked_at": "2026-11-20",
       "method": "page"
-    }
+    },
+    "effort": [
+      {
+        "source_url": "https://www.npsnm.org/wp-content/uploads/2026/07/Carter-Grant-application-2026-for-2027.pdf",
+        "quote": "Please send the signed application in PDF form to: cartergrantapps@gmail.com",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "eligibility": [
+      {
+        "source_url": "https://www.npsnm.org/nps-sponsored-grants-donations/",
+        "quote": "Grants are awarded only to projects that align with at least one element of our mission.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.npsnm.org/nps-sponsored-grants-donations/",
+        "quote": "However, additional gardens are to be funded only if there is assurance of the garden's continued maintenance into the future.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "after_award": [
+      {
+        "source_url": "https://www.npsnm.org/nps-sponsored-grants-donations/",
+        "quote": "Successful grant winners are required to submit a written, year-end summary report (a template will be provided) due by November 1. If the project is not yet complete by then, it will be a status and progress report with a final report due afterward.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ]
   },
   "checked_at": "2026-11-20"
 }
