@@ -1,0 +1,112 @@
+{
+  "id": "nawca-us-standard",
+  "read_on": "2026-11-20",
+  "prompt_version": "req-2026-11-20.1",
+  "models": ["cursor:gpt-5.6-luna-high", "cursor:gpt-5.6-sol-high"],
+  "complete": false,
+  "reasons": [
+    "9 links could not be ranked without Jev",
+    "6 links could not be ranked without Jev",
+    "https://www.grants.gov/search-results-detail/361755 would not open (network: unable to verify the first certificate)",
+    "https://www.grants.gov/grantsws/rest/opportunity/att/download/350975 would not open (network: unable to verify the first certificate)",
+    "https://www.grants.gov/grantsws/rest/opportunity/att/download/350976 would not open (network: unable to verify the first certificate)",
+    "https://www.fws.gov/sites/default/files/documents/2026-07/north-american-wetlands-conservation-act-us-eligibility-criteria-and-processes.pdf: page 1 is an image: needs OCR",
+    "the text names a document with rules that was not read: U.S. Standard Proposal Instructions: https://www.fws.gov/media/north-american-wetlands-conservation-act-unitedstates-standard-grants-proposal-instructions",
+    "the text names a document with rules that was not read: Proposal Outline Template",
+    "the text names a document with rules that was not read: U.S. Standard Proposal Tables Template",
+    "the text names a document with rules that was not read: U.S. Grant Administration Standards",
+    "Jev did not check this reading, so an absent fact is not known to be absent",
+    "strong reading: the text names a document with rules that was not read: U.S. Standard Proposal Instructions",
+    "strong reading: the text names a document with rules that was not read: Proposal Outline Template",
+    "strong reading: the text names a document with rules that was not read: U.S. Grant Administration Standards"
+  ],
+  "requirements_checked": false,
+  "documents": [
+    {
+      "ref": "D1",
+      "url": "https://www.fws.gov/service/north-american-wetlands-conservation-act-nawca-grants-us-standard",
+      "final_url": "https://www.fws.gov/service/north-american-wetlands-conservation-act-nawca-us-standard-grants",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 7578,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:fd107f30ee67750a2a2c31ba469491681eaba19aeafa1431b38c050fdfc4f22a"
+    },
+    {
+      "ref": "D2",
+      "url": "https://www.fws.gov/media/157342",
+      "final_url": "https://www.fws.gov/media/north-american-wetlands-conservation-act-united-states-small-and-standard-grant-proposal",
+      "from": "https://www.fws.gov/service/north-american-wetlands-conservation-act-nawca-grants-us-standard",
+      "anchor": "U.S. Eligibility Criteria and Processes",
+      "depth": 1,
+      "pdf": false,
+      "chars": 4806,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:e530d184761ff308509739ad30818a56e0bf216bc46d2027d8793f008b264222"
+    },
+    {
+      "ref": "D3",
+      "url": "https://www.fws.gov/sites/default/files/documents/2026-07/north-american-wetlands-conservation-act-us-eligibility-criteria-and-processes.pdf",
+      "final_url": "https://www.fws.gov/sites/default/files/documents/2026-07/north-american-wetlands-conservation-act-us-eligibility-criteria-and-processes.pdf",
+      "from": "https://www.fws.gov/media/157342",
+      "anchor": "",
+      "depth": 2,
+      "pdf": true,
+      "chars": 57270,
+      "pages": 18,
+      "low_text": false,
+      "hash": "sha256:403d0064c75099a1ad5f82ce6df279f61ad2b572918c4ace4ac6bd09b038d98c"
+    }
+  ],
+  "failures": [
+    {
+      "url": "https://www.grants.gov/search-results-detail/361755",
+      "from": null,
+      "kind": "network",
+      "message": "unable to verify the first certificate"
+    },
+    {
+      "url": "https://www.grants.gov/grantsws/rest/opportunity/att/download/350975",
+      "from": null,
+      "kind": "network",
+      "message": "unable to verify the first certificate"
+    },
+    {
+      "url": "https://www.grants.gov/grantsws/rest/opportunity/att/download/350976",
+      "from": null,
+      "kind": "network",
+      "message": "unable to verify the first certificate"
+    },
+    {
+      "url": "https://www.fws.gov/sites/default/files/documents/2026-07/north-american-wetlands-conservation-act-us-eligibility-criteria-and-processes.pdf",
+      "from": "https://www.fws.gov/media/157342",
+      "kind": "low_text",
+      "message": "page 1 is an image: needs OCR"
+    }
+  ],
+  "skipped_links": 215,
+  "chunks": [{ "id": "all", "docs": ["D1", "D2", "D3"], "chars": 70119 }],
+  "outcomes": {
+    "eligibility": "stated",
+    "documents": "stated",
+    "effort": "stated",
+    "co_finance": "stated",
+    "consortium": "not_found",
+    "after_award": "stated"
+  },
+  "written": ["eligibility", "documents", "effort", "co_finance", "after_award"],
+  "escalated": ["eligibility", "effort"],
+  "flags": [],
+  "notes": [
+    "extractor: D3 is updated July 2026 and gives the current or next-cycle timing rather than the listed closed 2026-2 round. It lists Cycle 1 as September 25, 2026 and Cycle 2 as pending. D3 covers both U.S. Small and U.S. Standard grants; Standard-specific requirements were used only where stated.",
+    "strong: D3 is dated July 2026 and identifies September 25, 2026 as the upcoming Cycle 1 deadline; the listed May 7, 2026 round is not described in the gathered text.",
+    "eligibility: kept 1 first-reading item no check faulted that the strong reading left out",
+    "source nawca-us-standard-3: added for https://www.fws.gov/sites/default/files/documents/2026-07/north-american-wetlands-conservation-act-us-eligibility-criteria-and-processes.pdf",
+    "source nawca-us-standard-4: added for https://www.fws.gov/service/north-american-wetlands-conservation-act-nawca-grants-us-standard"
+  ],
+  "usd": 0
+}

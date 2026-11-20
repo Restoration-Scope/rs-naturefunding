@@ -1,0 +1,60 @@
+{
+  "id": "ncnps-alice-zawadzki-land-conservation-fund",
+  "read_on": "2026-11-20",
+  "prompt_version": "req-2026-11-20.1",
+  "models": ["cursor:gpt-5.6-luna-high"],
+  "complete": false,
+  "reasons": [
+    "2 links could not be ranked without Jev",
+    "6 links could not be ranked without Jev",
+    "Jev did not check this reading, so an absent fact is not known to be absent"
+  ],
+  "requirements_checked": false,
+  "documents": [
+    {
+      "ref": "D1",
+      "url": "https://ncwildflower.org/alice-zawadzki-fund/",
+      "final_url": "https://ncwildflower.org/alice-zawadzki-fund/",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 3318,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:0501ec1eb653bd85d435fd6d7e72edf68fd851edf5d2c325606370c0cfbe1b9c"
+    },
+    {
+      "ref": "D2",
+      "url": "https://ncwildflower.org/alice-zawadzki-faq/",
+      "final_url": "https://ncwildflower.org/alice-zawadzki-faq/",
+      "from": "https://ncwildflower.org/alice-zawadzki-fund/",
+      "anchor": "FAQ",
+      "depth": 1,
+      "pdf": false,
+      "chars": 1286,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:37f93ea755ea6a861afcee112e407351c38b7d65becea529cbb7bd3034c1a4d7"
+    }
+  ],
+  "failures": [],
+  "skipped_links": 79,
+  "chunks": [{ "id": "all", "docs": ["D1", "D2"], "chars": 4779 }],
+  "outcomes": {
+    "eligibility": "stated",
+    "documents": "not_found",
+    "effort": "stated",
+    "co_finance": "not_found",
+    "consortium": "not_found",
+    "after_award": "stated"
+  },
+  "written": ["eligibility", "effort", "after_award"],
+  "escalated": [],
+  "flags": [],
+  "notes": [
+    "extractor: Award recipients must also acknowledge the fund in printed materials, social media, and signage, as practicable.",
+    "source ncnps-alice-zawadzki-land-conservation-fund-2: added for https://ncwildflower.org/alice-zawadzki-faq/"
+  ],
+  "usd": 0
+}

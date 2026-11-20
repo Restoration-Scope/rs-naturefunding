@@ -1,0 +1,87 @@
+{
+  "id": "musser-environmental-initiative",
+  "read_on": "2026-11-20",
+  "prompt_version": "req-2026-11-20.1",
+  "models": ["cursor:gpt-5.6-luna-high", "cursor:gpt-5.6-sol-high"],
+  "complete": false,
+  "reasons": [
+    "3 links could not be ranked without Jev",
+    "2 links could not be ranked without Jev",
+    "Jev did not check this reading, so an absent fact is not known to be absent"
+  ],
+  "requirements_checked": false,
+  "documents": [
+    {
+      "ref": "D1",
+      "url": "https://musserfund.org/environmental-initiative-program/",
+      "final_url": "https://musserfund.org/environmental-initiative-program/",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 10491,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:a1f47f66e17231a8228580edf55768f3619ed7015a63612e600469b6c4771e22"
+    },
+    {
+      "ref": "D2",
+      "url": "https://musserfund.org/faqs/",
+      "final_url": "https://musserfund.org/faqs/",
+      "from": "https://musserfund.org/environmental-initiative-program/",
+      "anchor": "FAQ",
+      "depth": 1,
+      "pdf": false,
+      "chars": 2690,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:0a34e8802088ad35a867d00af538a2859e9a7a36f9fc9ba8074068178f3cc850"
+    },
+    {
+      "ref": "D3",
+      "url": "https://musserfund.org/wp-content/uploads/2026/02/Environmental-Granting-History-2026-2025.pdf",
+      "final_url": "https://musserfund.org/wp-content/uploads/2026/02/Environmental-Granting-History-2026-2025.pdf",
+      "from": "https://musserfund.org/environmental-initiative-program/",
+      "anchor": "Download",
+      "depth": 1,
+      "pdf": true,
+      "chars": 1849,
+      "pages": 1,
+      "low_text": false,
+      "hash": "sha256:0e175c83abae2b324cef4754a30740f844bebda872dbaac839743d7c7f57f3ad"
+    },
+    {
+      "ref": "D4",
+      "url": "https://musserfund.org/wp-content/uploads/2020/11/ENV-Final-Report-Requirements-Feb-2020.pdf",
+      "final_url": "https://musserfund.org/wp-content/uploads/2020/11/ENV-Final-Report-Requirements-Feb-2020.pdf",
+      "from": "https://musserfund.org/environmental-initiative-program/",
+      "anchor": "DOWNLOAD",
+      "depth": 1,
+      "pdf": true,
+      "chars": 2319,
+      "pages": 1,
+      "low_text": false,
+      "hash": "sha256:25e8e8d775ff5139df0c4eb500e2d4c46bfb141205a0f7886f79dbd361c05528"
+    }
+  ],
+  "failures": [],
+  "skipped_links": 13,
+  "chunks": [{ "id": "all", "docs": ["D1", "D2", "D3", "D4"], "chars": 17896 }],
+  "outcomes": {
+    "eligibility": "stated",
+    "documents": "stated",
+    "effort": "stated",
+    "co_finance": "not_found",
+    "consortium": "not_found",
+    "after_award": "stated"
+  },
+  "written": ["eligibility", "documents", "effort", "after_award"],
+  "escalated": ["eligibility"],
+  "flags": [],
+  "notes": [
+    "extractor: Planning grants are optional and are not required before applying for implementation funding. Applicants may seek either planning or implementation funds during a grant period.",
+    "eligibility: kept 1 first-reading item no check faulted that the strong reading left out",
+    "source musser-environmental-initiative-2: added for https://musserfund.org/faqs/"
+  ],
+  "usd": 0
+}

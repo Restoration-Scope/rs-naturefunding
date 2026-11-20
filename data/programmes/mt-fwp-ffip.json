@@ -29,9 +29,70 @@
   "access": "direct",
   "window": "fixed",
   "amount": null,
-  "pool": {"currency": "USD", "value": 1000000, "period": "year", "qualifier": "about"},
-  "co_finance_required": null,
+  "pool": {
+    "currency": "USD",
+    "value": 1000000,
+    "period": "year",
+    "qualifier": "about"
+  },
+  "co_finance_required": true,
+  "consortium_required": false,
   "reporting": null,
+  "effort": {
+    "steps": [
+      "Talk to the area FWP fisheries biologist first",
+      "Summer or winter application",
+      "Citizen Review Panel review",
+      "Fish & Wildlife Commission funding decision"
+    ]
+  },
+  "eligibility": [
+    {
+      "rule": "Evaluate the problem's cause, take a large-scale view and benefit the angling public",
+      "kind": "project"
+    },
+    {
+      "rule": "Have written landowner permission",
+      "kind": "project"
+    },
+    {
+      "rule": "Avoid interfering with adjacent landowners' water or property rights",
+      "kind": "project"
+    },
+    {
+      "rule": "Demonstrate public benefits and accomplish at least one listed program goal",
+      "kind": "project"
+    },
+    {
+      "rule": "Budget excludes admin, travel, coordination, overhead, monitoring, studies, design-only, contingency and land purchase",
+      "kind": "project"
+    },
+    {
+      "rule": "Ensure riparian fencing does not adversely affect wildlife",
+      "kind": "project"
+    },
+    {
+      "rule": "Commits to maintain the project for at least 20 years",
+      "kind": "project"
+    }
+  ],
+  "co_finance": {
+    "min_share": 50,
+    "applies_to": "permanent irrigation diversions"
+  },
+  "after_award": {
+    "site_visits": true
+  },
+  "documents": [
+    "Itemized project budget",
+    "Project site plan-view map",
+    "Project plans or detailed restoration sketches",
+    "Pre-project photographs",
+    "Landowner support letter, if applicant differs from landowner",
+    "Local FWP fisheries biologist statement or letter",
+    "Supplemental water leasing or water salvage questionnaire, if applicable",
+    "Relevant maintenance plans, if applicable"
+  ],
   "calls": [
     {
       "id": "summer-2026",
@@ -83,7 +144,12 @@
     }
   ],
   "evidence": {
-    "pool": {"source_url": "https://fwp.mt.gov/ffip", "quote": "Approximately $1 million are available each year for projects that revitalize wild fish populations.", "checked_at": "2026-11-06", "method": "page"},
+    "pool": {
+      "source_url": "https://fwp.mt.gov/ffip",
+      "quote": "Approximately $1 million are available each year for projects that revitalize wild fish populations.",
+      "checked_at": "2026-11-06",
+      "method": "page"
+    },
     "applicant_types": {
       "source_url": "https://fwp.mt.gov/ffip",
       "quote": "Any entity with a good on-the-ground project that benefits wild fish can apply for funding through the Future Fisheries Improvement Program, including (but is not limited to) landowners, anglers, civic groups, conservation districts, or governmental agencies.",
@@ -107,7 +173,135 @@
       "quote": "The Future Fisheries Improvement has a summer and winter funding cycle each year.",
       "checked_at": "2026-11-02",
       "method": "page"
-    }
+    },
+    "co_finance_required": {
+      "source_url": "https://myfwp.mt.gov/getRepositoryFile?objectID=115237",
+      "quote": "Permanent irrigation diversions must have at least a 50% match.",
+      "checked_at": "2026-11-20",
+      "method": "page"
+    },
+    "consortium_required": {
+      "source_url": "https://myfwp.mt.gov/getRepositoryFile?objectID=115237",
+      "quote": "Any individual or group can apply.",
+      "checked_at": "2026-11-20",
+      "method": "page"
+    },
+    "effort": [
+      {
+        "source_url": "https://fwp.mt.gov/ffip",
+        "quote": "Talk to your area fisheries biologist about your project idea prior to filling out an application.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://fwp.mt.gov/ffip",
+        "quote": "Submit applications to the Future Fisheries Coordinator at the FWP headquarters in Helena at FWPFFIP@mt.gov. They must be received on or before May 15 (summer cycle) or November 15 (winter cycle) to be considered for funding.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://fwp.mt.gov/ffip",
+        "quote": "Applications are sorted, sent to the Future Fisheries Citizen Review Panel, and posted on the Future Fisheries webpage to provide the opportunity for public review and comment.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://fwp.mt.gov/ffip",
+        "quote": "Review Panel funding recommendations are forwarded to the Fish & Wildlife Commission for final action during their August or February meetings (corresponding to the summer and winter funding cycles).",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "eligibility": [
+      {
+        "source_url": "https://myfwp.mt.gov/getRepositoryFile?objectID=115237",
+        "quote": "Projects must evaluate the cause of the problem, incorporate a large-scale view of the project and surrounding area, and benefit the angling public.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://myfwp.mt.gov/getRepositoryFile?objectID=115237",
+        "quote": "Projects must have written landowner permission.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://fwp.mt.gov/ffip",
+        "quote": "Project applicants must also affirm that work would be conducted with the approval of the landowner on whose property the project is being completed, and would not interfere with water or property rights of adjacent landowners.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://fwp.mt.gov/ffip",
+        "quote": "Applicants must demonstrate benefits to the public and accomplish one or more of the goals listed below:",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://myfwp.mt.gov/getRepositoryFile?objectID=115237",
+        "quote": "Funding cannot be used for administration, travel, coordination, overhead, monitoring, assessment or studies, design alone (must be design/build), contingency, or land acquisition.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://fwp.mt.gov/ffip",
+        "quote": "Applications involving installation of riparian fencing must ensure the project does not adversely affect wildlife species.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://myfwp.mt.gov/getRepositoryFile?objectID=115237",
+        "quote": "A 20-year maintenance commitment is required",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "co_finance": {
+      "source_url": "https://myfwp.mt.gov/getRepositoryFile?objectID=115237",
+      "quote": "Permanent irrigation diversions must have at least a 50% match.",
+      "checked_at": "2026-11-20",
+      "method": "page"
+    },
+    "after_award": [
+      {
+        "source_url": "https://fwp.mt.gov/ffip",
+        "quote": "The final 10% of the grant award will not be released until the Future Fisheries Coordinator or a designated FWP representative visits the site and verifies project completion.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "documents": [
+      {
+        "source_url": "https://myfwp.mt.gov/getRepositoryFile?objectID=115237",
+        "quote": "Attach itemized (line item) budget - see budget template H. Attach project location map(s) that include: Extent of the project, including context (relation to major landmark or town) Indication of public and private property Riparian buffer locations and widths (if applicable) and grazing locations I. Attach project plans: Detailed sketches or plan views with the location and proposed restoration",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://fwp.mt.gov/ffip",
+        "quote": "A plan-view map of the project site showing specific location(s) of planned restoration activities. At a minimum, a support letter from the landowner (if the applicant differs from the landowner). A statement or letter or support from the local FWP fisheries biologist.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://fwp.mt.gov/ffip",
+        "quote": "Pre-project photos are required.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://myfwp.mt.gov/getRepositoryFile?objectID=115237",
+        "quote": "If water leasing or water salvage is involved, attach a supplemental questionnaire (https://myfwp.mt.gov/getRepositoryFile?objectID=36110)",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://myfwp.mt.gov/getRepositoryFile?objectID=115237",
+        "quote": "Attach any relevant maintenance plans.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ]
   },
   "checked_at": "2026-11-02"
 }
