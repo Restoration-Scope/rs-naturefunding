@@ -1,9 +1,9 @@
 import { existsSync, readdirSync, readFileSync } from 'node:fs'
 import { basename, join } from 'node:path'
 import type { z } from 'zod'
-import { programme, sources as sourcesSchema, type Evidence, type Programme, type Source } from './schema'
+import { countryList, programme, sources as sourcesSchema, type CountryList, type Evidence, type Programme, type Source } from './schema'
 
-export type DataSet = { programmes: Programme[]; sources: Source[] }
+export type DataSet = { programmes: Programme[]; sources: Source[]; lists: CountryList[] }
 export type CheckResult = DataSet & { issues: string[] }
 
 const formatIssues = (where: string, error: z.ZodError) =>
@@ -51,6 +51,25 @@ export function checkData(
     else if (parent.parent !== null) issues.push(`programmes/${p.id}.json: parent ${p.parent} has a parent itself; one level only`)
   }
 
+  // A programme that points to an official list holds every country on it, so the page never misses one.
+  const listsDir = join(programmesDir, '..', 'lists')
+  const lists = new Map<string, CountryList>()
+  for (const file of existsSync(listsDir) ? readdirSync(listsDir).filter((f) => f.endsWith('.json')) : []) {
+    const parsed = countryList.safeParse(JSON.parse(readFileSync(join(listsDir, file), 'utf8')))
+    if (!parsed.success) issues.push(...formatIssues(`lists/${file}`, parsed.error))
+    else lists.set(parsed.data.id, parsed.data)
+  }
+  for (const p of programmes) {
+    const g = p.geography
+    if (g?.scope !== 'countries' || !g.list) continue
+    const list = lists.get(g.list)
+    if (!list) issues.push(`programmes/${p.id}.json: geography.list ${g.list} is not in data/lists`)
+    else {
+      const missing = list.countries.filter((c) => !g.countries.includes(c))
+      if (missing.length) issues.push(`programmes/${p.id}.json: geography.countries lacks ${missing.join(', ')} from ${list.name}`)
+    }
+  }
+
   let sources: Source[] = []
   if (sourcesFile !== null) {
     if (!existsSync(sourcesFile)) issues.push('sources.json: missing')
@@ -74,14 +93,14 @@ export function checkData(
     }
   }
 
-  return { programmes, sources, issues }
+  return { programmes, sources, lists: [...lists.values()], issues }
 }
 
 /** For the site build: every file valid or the build fails. */
 export function loadData(): DataSet {
-  const { programmes, sources, issues } = checkData()
+  const { programmes, sources, lists, issues } = checkData()
   if (issues.length > 0) throw new Error(`data/ has ${issues.length} problem(s):\n${issues.join('\n')}`)
-  return { programmes, sources }
+  return { programmes, sources, lists }
 }
 
 /** Every programme, validated, sorted by id. */
