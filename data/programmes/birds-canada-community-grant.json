@@ -23,8 +23,20 @@
     "max": 5000,
     "typical": true
   },
-  "co_finance_required": null,
+  "co_finance_required": false,
   "reporting": null,
+  "effort": {
+    "steps": [
+      "Online application",
+      "Eligibility screening",
+      "Grant Review Committee review"
+    ],
+    "due": [
+      "2026-09-29",
+      null,
+      null
+    ]
+  },
   "calls": [
     {
       "id": "annual-september",
@@ -68,7 +80,129 @@
       "quote": "Projects are typically awarded between $2,000 and $5,000.",
       "checked_at": "2026-11-15",
       "method": "page"
-    }
+    },
+    "effort": [
+      {
+        "source_url": "https://view.publitas.com/86653/2036007/pdfs/398e0d00-9156-4a40-91af-5d3cffe38645.pdf",
+        "quote": "Applications are due 29 September 2026 at 5:00 PM Pacific Time",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://view.publitas.com/86653/2036007/pdfs/398e0d00-9156-4a40-91af-5d3cffe38645.pdf",
+        "quote": "We will screen applications for eligibility based on the criteria in this guide.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://view.publitas.com/86653/2036007/pdfs/398e0d00-9156-4a40-91af-5d3cffe38645.pdf",
+        "quote": "An external Grant Review Committee, comprising volunteers with diverse experience from across the country, will then review eligible applications using this evaluation rubric.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "eligibility": [
+      {
+        "source_url": "https://view.publitas.com/86653/2036007/pdfs/398e0d00-9156-4a40-91af-5d3cffe38645.pdf",
+        "quote": "Applicants must be based in Canada.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://view.publitas.com/86653/2036007/pdfs/398e0d00-9156-4a40-91af-5d3cffe38645.pdf",
+        "quote": "Ineligible applicants include: ● ● ● ● For-profit organizations Municipal, provincial, or federal government Persons applying as individuals Post-secondary students undertaking research projects.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://view.publitas.com/86653/2036007/pdfs/398e0d00-9156-4a40-91af-5d3cffe38645.pdf",
+        "quote": "Only one application per organization will be accepted.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://view.publitas.com/86653/2036007/pdfs/398e0d00-9156-4a40-91af-5d3cffe38645.pdf",
+        "quote": "Projects must have a clear focus on birds and align with at least one of the Birds Canada Community Grant objectives",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://view.publitas.com/86653/2036007/pdfs/398e0d00-9156-4a40-91af-5d3cffe38645.pdf",
+        "quote": "Project activities must take place in Canada or in non-breeding areas that are used by migratory bird species that spend part of the year in Canada.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://view.publitas.com/86653/2036007/pdfs/398e0d00-9156-4a40-91af-5d3cffe38645.pdf",
+        "quote": "Project activities must take place between 1 January 2027 and 31 December 2027.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://view.publitas.com/86653/2036007/pdfs/398e0d00-9156-4a40-91af-5d3cffe38645.pdf",
+        "quote": "Lobbying, political advocacy, or partisan activities that promote a particular social, political, or economic point of view Research projects that entail the sacrificing or harm of study subjects Activities required as part of a provincial or federal permit Bird rehabilitation or veterinary training or services Land acquisition",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "co_finance_required": {
+      "source_url": "https://view.publitas.com/86653/2036007/pdfs/398e0d00-9156-4a40-91af-5d3cffe38645.pdf",
+      "quote": "There is no matching funds requirement.",
+      "checked_at": "2026-11-20",
+      "method": "page"
+    },
+    "documents": [
+      {
+        "source_url": "https://view.publitas.com/86653/2036007/pdfs/398e0d00-9156-4a40-91af-5d3cffe38645.pdf",
+        "quote": "If collaborating with an Indigenous partner, please include a letter of support from that partner.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "after_award": [
+      {
+        "source_url": "https://view.publitas.com/86653/2036007/pdfs/398e0d00-9156-4a40-91af-5d3cffe38645.pdf",
+        "quote": "We request a brief one-page report outlining the project achievements by 31 December 2027.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ]
   },
-  "checked_at": "2026-11-15"
+  "checked_at": "2026-11-15",
+  "eligibility": [
+    {
+      "rule": "Is based in Canada",
+      "kind": "legal"
+    },
+    {
+      "rule": "Not a for-profit, government body, individual or post-secondary student doing research",
+      "kind": "legal"
+    },
+    {
+      "rule": "Submits only one application per organisation",
+      "kind": "other"
+    },
+    {
+      "rule": "Project has a clear focus on birds and meets at least one programme objective",
+      "kind": "project"
+    },
+    {
+      "rule": "Activities are in Canada or in non-breeding areas of birds that spend part of the year there",
+      "kind": "project"
+    },
+    {
+      "rule": "Activities take place between 1 January and 31 December 2027",
+      "kind": "project"
+    },
+    {
+      "rule": "Not lobbying, harmful research, permit-required work, bird rehabilitation or land acquisition",
+      "kind": "project"
+    }
+  ],
+  "documents": [
+    "Letter of support from an Indigenous partner, if collaborating with one"
+  ],
+  "after_award": {
+    "reports": "final"
+  }
 }

@@ -1,0 +1,71 @@
+{
+  "id": "california-state-duck-stamp-project",
+  "read_on": "2026-11-20",
+  "prompt_version": "req-2026-11-20.1",
+  "models": ["cursor:gpt-5.6-luna-high"],
+  "complete": false,
+  "reasons": [
+    "9 links could not be ranked without Jev",
+    "13 links could not be ranked without Jev",
+    "the text names a document with rules that was not read: FY 2026 Proposal Solicitation Notice (PDF)",
+    "Jev did not check this reading, so an absent fact is not known to be absent"
+  ],
+  "requirements_checked": false,
+  "documents": [
+    {
+      "ref": "D1",
+      "url": "https://wildlife.ca.gov/Grants/Duck-Stamp",
+      "final_url": "https://wildlife.ca.gov/Grants/Duck-Stamp",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 6969,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:0ae73f5bb9728c6c60bcaf9bdf32f8b8663754967f308e360e50bd4012191470"
+    },
+    {
+      "ref": "D2",
+      "url": "https://wildlife.ca.gov/Conditions-of-Use",
+      "final_url": "https://wildlife.ca.gov/Conditions-of-Use",
+      "from": "https://wildlife.ca.gov/Grants/Duck-Stamp",
+      "anchor": "Conditions of Use",
+      "depth": 1,
+      "pdf": false,
+      "chars": 16339,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:3daeac9505601e61ff8bcf133da690a1c7ee40ebe29aa1e6bd3045468e5725b8"
+    },
+    {
+      "ref": "D3",
+      "url": "https://wildlife.ca.gov/Privacy-Policy",
+      "final_url": "https://wildlife.ca.gov/Privacy-Policy",
+      "from": "https://wildlife.ca.gov/Grants/Duck-Stamp",
+      "anchor": "Privacy Policy",
+      "depth": 1,
+      "pdf": false,
+      "chars": 7256,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:e589495b08bdb0e39d102373ed41a0cded8715dbab993dd2ed03ac9891f605a5"
+    }
+  ],
+  "failures": [],
+  "skipped_links": 115,
+  "chunks": [{ "id": "all", "docs": ["D1", "D2", "D3"], "chars": 30835 }],
+  "outcomes": {
+    "eligibility": "stated",
+    "documents": "stated",
+    "effort": "stated",
+    "co_finance": "not_found",
+    "consortium": "not_found",
+    "after_award": "not_found"
+  },
+  "written": ["eligibility", "documents", "effort"],
+  "escalated": [],
+  "flags": [],
+  "notes": [],
+  "usd": 0
+}

@@ -28,6 +28,27 @@
   },
   "co_finance_required": null,
   "reporting": null,
+  "effort": {
+    "steps": [
+      "Reserve acquisition or project application"
+    ]
+  },
+  "eligibility": [
+    {
+      "rule": "For site purchases, the site has a management plan in place",
+      "kind": "project"
+    },
+    {
+      "rule": "For project grants, has the site owner's permission for the project",
+      "kind": "project"
+    }
+  ],
+  "after_award": {
+    "reports": "final"
+  },
+  "documents": [
+    "Site map, for site purchases"
+  ],
   "calls": [],
   "evidence": {
     "geography": {
@@ -47,7 +68,45 @@
       "quote": "the fund can give grants up to £1500 for practical conservation work in the UK such as pond creation",
       "checked_at": "2026-11-14",
       "method": "page"
-    }
+    },
+    "effort": [
+      {
+        "source_url": "https://thebhs.org/funding/the-land-fund",
+        "quote": "To apply, download the relevant application form, which can be filled in on your computer, and return by email the BHS Conservation officer.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "eligibility": [
+      {
+        "source_url": "https://thebhs.org/funding/the-land-fund",
+        "quote": "with a management plan in place",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.thebhs.org/images/stories/Forms/BHS_Cons_fund_project_form.docx",
+        "quote": "Confirm that permission has been given by the site owner for the project",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "after_award": [
+      {
+        "source_url": "https://www.thebhs.org/images/stories/Forms/BHS_Cons_fund_project_form.docx",
+        "quote": "The applicant must submit a report one month after completion of the project including at least 2 photographs and the numbers of people involved.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "documents": [
+      {
+        "source_url": "https://www.thebhs.org/images/stories/Forms/BHS_Cons_fund_aquisition_form.docx",
+        "quote": "Map (attached)",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ]
   },
   "checked_at": "2026-11-14"
 }

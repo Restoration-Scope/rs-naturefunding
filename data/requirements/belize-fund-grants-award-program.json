@@ -1,0 +1,123 @@
+{
+  "id": "belize-fund-grants-award-program",
+  "read_on": "2026-11-20",
+  "prompt_version": "req-2026-11-20.1",
+  "models": ["cursor:gpt-5.6-luna-high", "cursor:gpt-5.6-sol-high"],
+  "complete": false,
+  "reasons": [
+    "19 links could not be ranked without Jev",
+    "18 links could not be ranked without Jev",
+    "https://grants.belizefund.bz/ would not open (network: ERR_TLS_CERT_ALTNAME_INVALID fetching \"https://grants.belizefund.bz/\". For more information, pass `verbose: true` in the second argument to fetch())",
+    "Jev did not check this reading, so an absent fact is not known to be absent"
+  ],
+  "requirements_checked": false,
+  "documents": [
+    {
+      "ref": "D1",
+      "url": "https://belizefund.bz/grants-award-program/",
+      "final_url": "https://belizefund.bz/our-work/grants-award-program/",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 8458,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:34c7defb800b851e919a245f601bbdf3c212be659c3f00986a0ee88ed89e0888"
+    },
+    {
+      "ref": "D2",
+      "url": "https://belizefund.bz/5th-call-for-proposals/",
+      "final_url": "https://belizefund.bz/5th-call-for-proposals/",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 9657,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:f312c63bd3d7cf37aefb3b5298ee126a90862617c91a004df8c0a32e0fdf4787"
+    },
+    {
+      "ref": "D3",
+      "url": "https://belizefund.bz/how-to-apply/call-for-proposals/",
+      "final_url": "https://belizefund.bz/how-to-apply/call-for-proposals/",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 2023,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:8e601f7a1fd0b1998fdf008f8b425f658f399c4014107c3c7ccdd2cbecef2172"
+    },
+    {
+      "ref": "D4",
+      "url": "https://belizefund.bz/how-to-apply/",
+      "final_url": "https://belizefund.bz/how-to-apply/",
+      "from": "https://belizefund.bz/grants-award-program/",
+      "anchor": "How To Apply",
+      "depth": 1,
+      "pdf": false,
+      "chars": 4123,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:3919f78e2fbee6943a890126b7af2f1f7dfe7d3e5ea2afe8a3d56be36ee4a5e4"
+    },
+    {
+      "ref": "D5",
+      "url": "https://belizefund.bz/how-to-apply/frequently-asked-questions/",
+      "final_url": "https://belizefund.bz/how-to-apply/frequently-asked-questions/",
+      "from": "https://belizefund.bz/grants-award-program/",
+      "anchor": "FAQ's",
+      "depth": 1,
+      "pdf": false,
+      "chars": 5724,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:af1bb2104fc9073c77877c7f9bd69bb2fc7ff6866a8206d659af2fd332b6c84f"
+    },
+    {
+      "ref": "D6",
+      "url": "https://belizefund.bz/category/call-for-proposals/",
+      "final_url": "https://belizefund.bz/category/call-for-proposals/",
+      "from": "https://belizefund.bz/5th-call-for-proposals/",
+      "anchor": "Call For Proposals",
+      "depth": 1,
+      "pdf": false,
+      "chars": 2046,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:2a95fa2a8f6701d206b3a2dc6a4ac5490f5c8236a681133e093e2e6b4b0429a6"
+    }
+  ],
+  "failures": [
+    {
+      "url": "https://grants.belizefund.bz/",
+      "from": "https://belizefund.bz/how-to-apply/",
+      "kind": "network",
+      "message": "ERR_TLS_CERT_ALTNAME_INVALID fetching \"https://grants.belizefund.bz/\". For more information, pass `verbose: true` in the second argument to fetch()"
+    }
+  ],
+  "skipped_links": 131,
+  "chunks": [{ "id": "all", "docs": ["D1", "D2", "D3", "D4", "D5", "D6"], "chars": 32578 }],
+  "outcomes": {
+    "eligibility": "stated",
+    "documents": "stated",
+    "effort": "stated",
+    "co_finance": "stated",
+    "consortium": "not_found",
+    "after_award": "not_found"
+  },
+  "written": ["eligibility", "documents", "effort", "co_finance"],
+  "escalated": ["eligibility"],
+  "flags": [],
+  "notes": [
+    "co_finance: share 10% dropped, its quote does not state it",
+    "extractor: Co-financing varies by grant type: 10% for Medium Grants, 25% for Large Grants, and 10% for Community Grants above BZ$50,000. Private businesses are required to provide 1:1 co-financing. Community Grant applicants may be registered for less than a year but must demonstrate at least a year of activity.",
+    "strong: eligibility \"For Community Grants, is active for 1+ year and has a governing body that meets regularly\": min_years dropped: the rule's quote does not state 1 years (or 12 months)",
+    "source belize-fund-grants-award-program-4: added for https://belizefund.bz/how-to-apply/frequently-asked-questions/",
+    "source belize-fund-grants-award-program-5: added for https://belizefund.bz/how-to-apply/"
+  ],
+  "usd": 0
+}

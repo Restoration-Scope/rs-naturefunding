@@ -1,0 +1,48 @@
+{
+  "id": "casa-dos-ventos-parcerias-pela-natureza",
+  "read_on": "2026-11-20",
+  "prompt_version": "req-2026-11-20.1",
+  "models": ["cursor:gpt-5.6-luna-high", "cursor:gpt-5.6-sol-high"],
+  "complete": false,
+  "reasons": [
+    "2 links could not be ranked without Jev",
+    "the text names a document with rules that was not read: Regulamento do edital",
+    "Jev did not check this reading, so an absent fact is not known to be absent",
+    "strong reading: the text names a document with rules that was not read: regulamento do edital"
+  ],
+  "requirements_checked": false,
+  "documents": [
+    {
+      "ref": "D1",
+      "url": "https://www.casadosventos.com.br/noticias/casa-dos-ventos-abre-inscricoes-para-edital-parcerias-pela-natureza-2026",
+      "final_url": "https://www.casadosventos.com.br/noticias/casa-dos-ventos-abre-inscricoes-para-edital-parcerias-pela-natureza-2026",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 7774,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:0fb825f9b23caa12725ff26e109f2e3eb2ca5fe9156d68afa3c9c47cce2efa9f"
+    }
+  ],
+  "failures": [],
+  "skipped_links": 45,
+  "chunks": [{ "id": "all", "docs": ["D1"], "chars": 7901 }],
+  "outcomes": {
+    "eligibility": "stated",
+    "documents": "stated",
+    "effort": "stated",
+    "co_finance": "not_found",
+    "consortium": "not_found",
+    "after_award": "stated"
+  },
+  "written": ["eligibility", "documents", "effort", "after_award"],
+  "escalated": ["eligibility", "effort"],
+  "flags": [],
+  "notes": [
+    "extractor: The 2026 cycle is closed. Priority for areas influenced by Casa dos Ventos projects is stated as a priority, not a hard eligibility rule.",
+    "strong: effort \"Application submission\": the quote does not state 2026-09-11 whole; left undated"
+  ],
+  "usd": 0
+}

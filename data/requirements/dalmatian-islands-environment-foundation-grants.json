@@ -1,0 +1,55 @@
+{
+  "id": "dalmatian-islands-environment-foundation-grants",
+  "read_on": "2026-11-20",
+  "prompt_version": "req-2026-11-20.1",
+  "models": ["cursor:gpt-5.6-luna-high", "cursor:gpt-5.6-sol-high"],
+  "complete": false,
+  "reasons": [
+    "11 links could not be ranked without Jev",
+    "https://dalmatianenvironment.org/wp-content/uploads/2026/03/DIEF-FUNDING-GUIDANCE.pdf would not open (http: HTTP 404)",
+    "the text names a document with rules that was not read: Funding Guidance document (in English)",
+    "Jev did not check this reading, so an absent fact is not known to be absent",
+    "strong reading: the text names a document with rules that was not read: Funding Guidance document"
+  ],
+  "requirements_checked": false,
+  "documents": [
+    {
+      "ref": "D1",
+      "url": "https://dalmatianenvironment.org/apply-for-a-grant/",
+      "final_url": "https://dalmatianenvironment.org/apply-for-a-grant/",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 3884,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:b1f00badfac3b87693986d2b99b27582a2e04036ca7fd0f01968663aa67a1bb1"
+    }
+  ],
+  "failures": [
+    {
+      "url": "https://dalmatianenvironment.org/wp-content/uploads/2026/03/DIEF-FUNDING-GUIDANCE.pdf",
+      "from": "https://dalmatianenvironment.org/apply-for-a-grant/",
+      "kind": "http",
+      "message": "HTTP 404"
+    }
+  ],
+  "skipped_links": 20,
+  "chunks": [{ "id": "all", "docs": ["D1"], "chars": 3948 }],
+  "outcomes": {
+    "eligibility": "stated",
+    "documents": "not_found",
+    "effort": "stated",
+    "co_finance": "not_found",
+    "consortium": "not_found",
+    "after_award": "not_found"
+  },
+  "written": ["eligibility", "effort"],
+  "escalated": ["eligibility"],
+  "flags": [],
+  "notes": [
+    "extractor: Calls open approximately three times a year; applicants must check the deadline for each call. The grant agreement is signed after Steering Committee approval."
+  ],
+  "usd": 0
+}
