@@ -9,14 +9,42 @@
   "parent": null,
   "url": "https://www.nres.gov.my/ms-my/teras/perhutanan/NCTF/Pages/default.aspx",
   "summary": "A national trust fund that pays for managing, monitoring and protecting biodiversity areas and species, plus research, capacity building and sustainable financing. Local NGOs, community organisations, research bodies and agencies can apply by email to the secretariat.",
-  "approaches": ["protected_areas", "species_conservation", "research"],
-  "applicant_types": ["government", "research_institution", "ngo", "community_group"],
-  "geography": { "scope": "countries", "countries": ["MY"] },
+  "approaches": [
+    "protected_areas",
+    "species_conservation",
+    "research"
+  ],
+  "applicant_types": [
+    "government",
+    "research_institution",
+    "ngo",
+    "community_group"
+  ],
+  "geography": {
+    "scope": "countries",
+    "countries": [
+      "MY"
+    ]
+  },
   "access": "direct",
   "window": "fixed",
   "amount": null,
-  "co_finance_required": null,
-  "reporting": null,
+  "co_finance_required": false,
+  "reporting": "Two progress reports, then a final report within 3 months of completing the activities.",
+  "effort": {
+    "steps": [
+      "Application form by email and hard copy to the Secretariat",
+      "Secretariat completeness and eligibility check",
+      "Technical Committee evaluation, possibly with a presentation",
+      "Trust Fund Committee approval"
+    ],
+    "due": [
+      "2025-10-31",
+      null,
+      null,
+      null
+    ]
+  },
   "calls": [
     {
       "id": "2025-window",
@@ -24,7 +52,10 @@
       "url": "https://www.nres.gov.my/ms-my/teras/perhutanan/NCTF/Pages/default.aspx",
       "status": "closed",
       "opens": null,
-      "deadline": { "date": "2025-10-31", "text": "31 OKTOBER 2025" },
+      "deadline": {
+        "date": "2025-10-31",
+        "text": "31 OKTOBER 2025"
+      },
       "evidence": {
         "status": {
           "source_url": "https://www.nres.gov.my/ms-my/teras/perhutanan/NCTF/Pages/default.aspx",
@@ -65,7 +96,119 @@
       "quote": "3. Tarikh permohonan dana Tabung Amanah NCTF ditutup pada 31 OKTOBER 2025",
       "checked_at": "2026-11-20",
       "method": "page"
+    },
+    "effort": [
+      {
+        "source_url": "https://www.nres.gov.my/ms-my/teras/perhutanan/NCTF/Pages/default.aspx",
+        "quote": "Tarikh permohonan dana Tabung Amanah NCTF ditutup pada 31 OKTOBER 2025",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.nres.gov.my/ms-my/teras/perhutanan/NCTF/Pages/default.aspx",
+        "quote": "Kemukakan permohonan secara e-mel dan salinan cetakan kepada Sekretariat menggunakan format yang disediakan.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.nres.gov.my/ms-my/teras/perhutanan/NCTF/Documents/Garis%20Panduan%20Permohonan%20Dana%20NCTF%20(Revised%207%20November%202023).pdf",
+        "quote": "Pra Semakan akan dilakukan oleh Sekretariat NCTF untuk maklumat dan dokumen yang diberikan adalah lengkap.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.nres.gov.my/ms-my/teras/perhutanan/NCTF/Documents/Garis%20Panduan%20Permohonan%20Dana%20NCTF%20(Revised%207%20November%202023).pdf",
+        "quote": "Hanya cadangan yang telah memenuhi kriteria kelayakan, dan memberikan maklumat yang relevan akan dinilai oleh Jawatankuasa Teknikal. Pemohon mungkin dikehendaki membentangkan cadangan projek kepada Jawatankuasa Teknikal NCTF.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.nres.gov.my/ms-my/teras/perhutanan/NCTF/Documents/Garis%20Panduan%20Permohonan%20Dana%20NCTF%20(Revised%207%20November%202023).pdf",
+        "quote": "Jawatankuasa Teknikal NCTF hendaklah mengemukakan dan mengesyorkan cadangan kepada Jawatankuasa Kumpulan Wang Amanah NCTF untuk pertimbangan dan kelulusan",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "eligibility": [
+      {
+        "source_url": "https://www.nres.gov.my/ms-my/teras/perhutanan/NCTF/Documents/Garis%20Panduan%20Permohonan%20Dana%20NCTF%20(Revised%207%20November%202023).pdf",
+        "quote": "Ketua projek tidak layak memohon geran NCTF sekiranya projek yang sedang berjalan masih belum diselesaikan.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.nres.gov.my/ms-my/teras/perhutanan/NCTF/Documents/Garis%20Panduan%20Permohonan%20Dana%20NCTF%20(Revised%207%20November%202023).pdf",
+        "quote": "Tempoh masa aktiviti projek/kajian adalah antara 6 bulan hingga 24 bulan sahaja.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.nres.gov.my/ms-my/teras/perhutanan/NCTF/Documents/Garis%20Panduan%20Permohonan%20Dana%20NCTF%20(Revised%207%20November%202023).pdf",
+        "quote": "Dana tidak boleh digunakan untuk kegunaan berikut: a. pengkomersialan; b. penajaan akademik atau biasiswa; dan c. pembayaran emolumen termasuk gaji, honorarium, elaun ikhtisas dan sagu hati.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "documents": [
+      {
+        "source_url": "https://www.nres.gov.my/ms-my/teras/perhutanan/NCTF/Documents/Garis%20Panduan%20Permohonan%20Dana%20NCTF%20(Revised%207%20November%202023).pdf",
+        "quote": "dokumen pendaftaran organisasi; penyata kewangan terkini (diaudit); struktur organisasi; Kelulusan permit, jika berkenaan; surat komitmen pembiayaan bersama, jika berkenaan; dan salinan penyata bank / buku bank.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.nres.gov.my/ms-my/teras/perhutanan/NCTF/Documents/Garis%20Panduan%20Permohonan%20Dana%20NCTF%20(Revised%207%20November%202023).pdf",
+        "quote": "Pemohon dana perlu mengemukakan resume bagi setiap ahli pasukan projek yang disenaraikan.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "after_award": [
+      {
+        "source_url": "https://www.nres.gov.my/ms-my/teras/perhutanan/NCTF/Documents/Garis%20Panduan%20Permohonan%20Dana%20NCTF%20(Revised%207%20November%202023).pdf",
+        "quote": "Kadar penyaluran kedua dan ketiga iaitu 40% dan 20% akan disalurkan selepas laporan kemajuan prestasi pertama dan kedua dikemukakan kepada pihak sekretariat. Bagi penyaluran akhir sebanyak 10%, penerima dana perlu terlebih dahulu menyediakan laporan akhir dalam tempoh 3 bulan selepas semua aktiviti yang dinyatakan dalam dokumen perjanjian dilaksanakan.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "reporting": {
+      "source_url": "https://www.nres.gov.my/ms-my/teras/perhutanan/NCTF/Documents/Garis%20Panduan%20Permohonan%20Dana%20NCTF%20(Revised%207%20November%202023).pdf",
+      "quote": "Kadar penyaluran kedua dan ketiga iaitu 40% dan 20% akan disalurkan selepas laporan kemajuan prestasi pertama dan kedua dikemukakan kepada pihak sekretariat. Bagi penyaluran akhir sebanyak 10%, penerima dana perlu terlebih dahulu menyediakan laporan akhir dalam tempoh 3 bulan selepas semua aktiviti yang dinyatakan dalam dokumen perjanjian dilaksanakan.",
+      "checked_at": "2026-11-20",
+      "method": "page"
+    },
+    "co_finance_required": {
+      "source_url": "https://www.nres.gov.my/ms-my/teras/perhutanan/NCTF/Documents/Garis%20Panduan%20Permohonan%20Dana%20NCTF%20(Revised%207%20November%202023).pdf",
+      "quote": "Bahagian 7: Perincian Berkaitan Pembiayaan bersama (co-funding) dan In-kind (Jika ada)",
+      "checked_at": "2026-11-20",
+      "method": "page"
     }
   },
-  "checked_at": "2026-11-20"
+  "checked_at": "2026-11-20",
+  "eligibility": [
+    {
+      "rule": "Project leader has no ongoing project still unfinished",
+      "kind": "other"
+    },
+    {
+      "rule": "Project runs between 6 and 24 months",
+      "kind": "project"
+    },
+    {
+      "rule": "Funds not used for commercialisation, scholarships, or salaries and other emoluments",
+      "kind": "project"
+    }
+  ],
+  "documents": [
+    "Organisation registration document",
+    "Latest audited financial statement",
+    "Organisation structure",
+    "Permit approvals, if applicable",
+    "Co-funding commitment letter, if applicable",
+    "Copy of bank statement or bank book",
+    "CV of each project team member"
+  ],
+  "after_award": {
+    "reports": "interim_and_final"
+  }
 }

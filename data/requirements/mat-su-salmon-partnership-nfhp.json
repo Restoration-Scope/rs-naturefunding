@@ -1,0 +1,102 @@
+{
+  "id": "mat-su-salmon-partnership-nfhp",
+  "read_on": "2026-11-20",
+  "prompt_version": "req-2026-11-20.1",
+  "models": ["cursor:gpt-5.6-luna-high"],
+  "complete": false,
+  "reasons": [
+    "14 links could not be ranked without Jev",
+    "13 links could not be ranked without Jev",
+    "the text names a document with rules that was not read: Appendix 12 of the Mat-Su Salmon Partnership Strategic Action Plan",
+    "the text names a document with rules that was not read: ACE ACT (congress.gov), page 28",
+    "the text names a document with rules that was not read: USFWS General Award Terms and Conditions",
+    "Jev did not check this reading, so an absent fact is not known to be absent"
+  ],
+  "requirements_checked": false,
+  "documents": [
+    {
+      "ref": "D1",
+      "url": "https://matsusalmon.org/funding-opportunity-6/",
+      "final_url": "https://matsusalmon.org/funding-opportunity-6/",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 2289,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:5770a1af7a0cbfdc78fa2cda526b31052239c0df5c7c9dc1232c9bb5707e9511"
+    },
+    {
+      "ref": "D2",
+      "url": "https://matsusalmon.org/wp-content/uploads/2026/06/FY27-MSBSHP-Funding-Application-and-Guidelines.pdf",
+      "final_url": "https://matsusalmon.org/wp-content/uploads/2026/06/FY27-MSBSHP-Funding-Application-and-Guidelines.pdf",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": true,
+      "chars": 59439,
+      "pages": 23,
+      "low_text": false,
+      "hash": "sha256:a9f127c5647a02ac1dbbe6f49fc9b735768504d3a00713efa48ee66631b09f34"
+    },
+    {
+      "ref": "D3",
+      "url": "https://matsusalmon.org/databases/",
+      "final_url": "https://matsusalmon.org/databases/",
+      "from": "https://matsusalmon.org/funding-opportunity-6/",
+      "anchor": "Databases",
+      "depth": 1,
+      "pdf": false,
+      "chars": 3008,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:4f2265b5dd520075c242a550f9bb8226f6ed1e07d3a5f1c7c262f620e8d447d5"
+    },
+    {
+      "ref": "D4",
+      "url": "https://matsusalmon.org/wp-content/uploads/2013/02/2019-Addendum-to-Partnership-Strategic-Action-Plan.pdf",
+      "final_url": "https://matsusalmon.org/wp-content/uploads/2013/02/2019-Addendum-to-Partnership-Strategic-Action-Plan.pdf",
+      "from": "https://matsusalmon.org/funding-opportunity-6/",
+      "anchor": "2019 Addendum to the Strategic Action Plan",
+      "depth": 1,
+      "pdf": true,
+      "chars": 35864,
+      "pages": 19,
+      "low_text": false,
+      "hash": "sha256:74d942b0859b3bd6f3271a970aac911f85215e28fa3301da39bbae87086e9535"
+    },
+    {
+      "ref": "D5",
+      "url": "https://matsusalmon.org/wp-content/uploads/2025/10/Salmon-Habitat-Related-Databases-and-Webmaps_Dec-2024.pdf",
+      "final_url": "https://matsusalmon.org/wp-content/uploads/2025/10/Salmon-Habitat-Related-Databases-and-Webmaps_Dec-2024.pdf",
+      "from": "https://matsusalmon.org/databases/",
+      "anchor": "Salmon Habitat Related Databases and Webmaps_Dec 2024",
+      "depth": 2,
+      "pdf": true,
+      "chars": 4783,
+      "pages": 2,
+      "low_text": false,
+      "hash": "sha256:8f043fdd7df04f67be0183e515698aecb2ebfe79ba340430453f739e7d184025"
+    }
+  ],
+  "failures": [],
+  "skipped_links": 137,
+  "chunks": [{ "id": "all", "docs": ["D1", "D2", "D3", "D4", "D5"], "chars": 106033 }],
+  "outcomes": {
+    "eligibility": "stated",
+    "documents": "stated",
+    "effort": "stated",
+    "co_finance": "stated",
+    "consortium": "not_found",
+    "after_award": "stated"
+  },
+  "written": ["eligibility", "documents", "effort", "co_finance", "after_award"],
+  "escalated": [],
+  "flags": [],
+  "notes": [
+    "extractor: The strategic plan update is in progress, so the 2019 Addendum remains the foundational reference for this FY27 RFP. Individual project match is not required, but the Partnership must meet a 1:1 aggregate match ratio and match may affect funding decisions. Signed landowner consent is required for selected on-the-ground restoration projects.",
+    "source mat-su-salmon-partnership-nfhp-1: selector main dropped, a new quote sits outside it"
+  ],
+  "usd": 0
+}

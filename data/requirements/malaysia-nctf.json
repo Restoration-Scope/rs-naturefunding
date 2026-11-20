@@ -1,0 +1,52 @@
+{
+  "id": "malaysia-nctf",
+  "read_on": "2026-11-20",
+  "prompt_version": "req-2026-11-20.1",
+  "models": ["cursor:gpt-5.6-luna-high"],
+  "complete": false,
+  "reasons": [
+    "6 links could not be ranked without Jev",
+    "https://www.nres.gov.my/ms-my/teras/biodiversiti/NCTF/Documents/NCTF%20APPLICATION%20FORM%20v3.%20Jan2021.docx would not open (http: HTTP 404)",
+    "the text names a document with rules that was not read: Garis Panduan Permohonan NCTF TERKINI November 2023",
+    "Jev did not check this reading, so an absent fact is not known to be absent"
+  ],
+  "requirements_checked": false,
+  "documents": [
+    {
+      "ref": "D1",
+      "url": "https://www.nres.gov.my/ms-my/teras/perhutanan/NCTF/Pages/default.aspx",
+      "final_url": "https://www.nres.gov.my/ms-my/teras/perhutanan/NCTF/Pages/default.aspx",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 5507,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:4b0713a1de18c4be853ced8bca1e6adbaad264d5b29be02c10b29f670efe4b4c"
+    }
+  ],
+  "failures": [
+    {
+      "url": "https://www.nres.gov.my/ms-my/teras/biodiversiti/NCTF/Documents/NCTF%20APPLICATION%20FORM%20v3.%20Jan2021.docx",
+      "from": "https://www.nres.gov.my/ms-my/teras/perhutanan/NCTF/Pages/default.aspx",
+      "kind": "http",
+      "message": "HTTP 404"
+    }
+  ],
+  "skipped_links": 89,
+  "chunks": [{ "id": "all", "docs": ["D1"], "chars": 5590 }],
+  "outcomes": {
+    "eligibility": "not_found",
+    "documents": "not_found",
+    "effort": "stated",
+    "co_finance": "not_found",
+    "consortium": "not_found",
+    "after_award": "not_found"
+  },
+  "written": ["effort"],
+  "escalated": [],
+  "flags": [],
+  "notes": [],
+  "usd": 0
+}
