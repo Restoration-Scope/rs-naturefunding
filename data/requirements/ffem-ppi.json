@@ -1,0 +1,126 @@
+{
+  "id": "ffem-ppi",
+  "read_on": "2026-11-20",
+  "prompt_version": "req-2026-11-20.1",
+  "models": ["cursor:gpt-5.6-luna-high"],
+  "complete": false,
+  "reasons": [
+    "27 links could not be ranked without Jev",
+    "13 links could not be ranked without Jev",
+    "the text names a document with rules that was not read: Plaquette PPI 2025",
+    "Jev did not check this reading, so an absent fact is not known to be absent"
+  ],
+  "requirements_checked": false,
+  "documents": [
+    {
+      "ref": "D1",
+      "url": "https://www.programmeppi.org/le-ppi/",
+      "final_url": "https://www.programmeppi.org/le-ppi/",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 4629,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:89a1e8de21f9431880e08ef06586761a4ebe82d7a034a02b884aa7b57e996a50"
+    },
+    {
+      "ref": "D2",
+      "url": "https://www.programmeppi.org/ppi-7-un-demarrage-dynamique-et-les-resultats-sont-la/",
+      "final_url": "https://www.programmeppi.org/ppi-7-un-demarrage-dynamique-et-les-resultats-sont-la/",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 5251,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:d9446668fb8bad0c504008114b4d41fec24cfb5b7a284102ee2fd7444a7e57e9"
+    },
+    {
+      "ref": "D3",
+      "url": "https://ffem.fr/en/ppi-tool-african-csos",
+      "final_url": "https://ffem.fr/en/ppi-tool-african-csos",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 5083,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:54a7c9e55c021a24212da13a979cdb776d6b65f305b9350b16585e5c288b1a81"
+    },
+    {
+      "ref": "D4",
+      "url": "https://www.programmeppi.org/en/aap/",
+      "final_url": "https://www.programmeppi.org/en/aap/",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 737,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:209e4f8d21de298be51201b15d72871746460b24de191ba69330c41cb4f35015"
+    },
+    {
+      "ref": "D5",
+      "url": "https://ffem.fr/en/frequently-asked-questions",
+      "final_url": "https://ffem.fr/en/frequently-asked-questions",
+      "from": "https://ffem.fr/en/ppi-tool-african-csos",
+      "anchor": "FAQ",
+      "depth": 1,
+      "pdf": false,
+      "chars": 10221,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:bbdbfe36d1f66ae3feee0ccf3d0d3361315876670cc5b2023ab0f07e46643033"
+    },
+    {
+      "ref": "D6",
+      "url": "https://ffem.fr/en/taking-closer-look-guide-action",
+      "final_url": "https://ffem.fr/en/taking-closer-look-guide-action",
+      "from": "https://ffem.fr/en/ppi-tool-african-csos",
+      "anchor": "Capitalization at the FFEM",
+      "depth": 1,
+      "pdf": false,
+      "chars": 14131,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:e70035ba9fed256fbcf9c86bf9e56e5b1e27f045fccf67185e7e6e71298abf13"
+    },
+    {
+      "ref": "D7",
+      "url": "https://www.ffem.fr/sites/ffem/files/2024-03-10-26-51/20240223_Note%20finance%20carbone_vCOPIL_2.1.pdf",
+      "final_url": "https://www.ffem.fr/sites/ffem/files/2024-03-10-26-51/20240223_Note%20finance%20carbone_vCOPIL_2.1.pdf",
+      "from": "https://ffem.fr/en/frequently-asked-questions",
+      "anchor": "Read the Note for project proponents",
+      "depth": 2,
+      "pdf": true,
+      "chars": 12035,
+      "pages": 5,
+      "low_text": false,
+      "hash": "sha256:b9fa6cd4861e25d6d3382dd657396d84cc5d5b5188a0aaa5ef31f56502481161"
+    }
+  ],
+  "failures": [],
+  "skipped_links": 313,
+  "chunks": [{ "id": "all", "docs": ["D1", "D2", "D3", "D4", "D5", "D6", "D7"], "chars": 52752 }],
+  "outcomes": {
+    "eligibility": "stated",
+    "documents": "not_found",
+    "effort": "stated",
+    "co_finance": "not_found",
+    "consortium": "not_found",
+    "after_award": "not_found"
+  },
+  "written": ["eligibility", "effort"],
+  "escalated": [],
+  "flags": [],
+  "notes": [
+    "extractor: The “Nouveaux partenaires 1 PPI 7” round closed on 2025-12-18. D4 states that there is no open call at present. A French NGO may co-finance a local initiative, but this is optional.",
+    "source ffem-ppi-5: added for https://ffem.fr/en/frequently-asked-questions"
+  ],
+  "usd": 0
+}

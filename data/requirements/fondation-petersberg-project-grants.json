@@ -1,0 +1,74 @@
+{
+  "id": "fondation-petersberg-project-grants",
+  "read_on": "2026-11-20",
+  "prompt_version": "req-2026-11-20.1",
+  "models": ["cursor:gpt-5.6-luna-high"],
+  "complete": false,
+  "reasons": [
+    "5 links could not be ranked without Jev",
+    "the text names a document with rules that was not read: Anforderungen",
+    "the text names a document with rules that was not read: Förderungsgrundsätze",
+    "the text names a document with rules that was not read: Was wir nicht fördern",
+    "Jev did not check this reading, so an absent fact is not known to be absent"
+  ],
+  "requirements_checked": false,
+  "documents": [
+    {
+      "ref": "D1",
+      "url": "https://fondationpetersberg.ch/gesuche/",
+      "final_url": "https://fondationpetersberg.ch/gesuche/",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 2667,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:aeac4551beecc2b533fc4dd2f7d9ec327f32a5b9f12d6984b226a389a232af81"
+    },
+    {
+      "ref": "D2",
+      "url": "https://fondationpetersberg.ch/gesuche/termine/",
+      "final_url": "https://fondationpetersberg.ch/gesuche/termine/",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 2908,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:3b7800c10adf8cdd0d4dabc766e87a6f6a481bd4c8cc9b175c1a92e31f8bd203"
+    },
+    {
+      "ref": "D3",
+      "url": "https://fondationpetersberg.ch/foerderung/foerderreglement/",
+      "final_url": "https://fondationpetersberg.ch/foerderung/foerderreglement/",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 7607,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:2fb0366263361e4b8604fa53772cafea9b9a24e62d735b1d5a98df4e7ff267ed"
+    }
+  ],
+  "failures": [],
+  "skipped_links": 94,
+  "chunks": [{ "id": "all", "docs": ["D1", "D2", "D3"], "chars": 13370 }],
+  "outcomes": {
+    "eligibility": "stated",
+    "documents": "stated",
+    "effort": "stated",
+    "co_finance": "stated",
+    "consortium": "not_found",
+    "after_award": "stated"
+  },
+  "written": ["eligibility", "documents", "effort", "co_finance", "after_award"],
+  "escalated": [],
+  "flags": [],
+  "notes": [
+    "extractor: Two submission dates are stated without a year: 15 March and 15 September. For projects under CHF 20,000, the project sketch is the basis for the decision; larger projects may proceed to a full project description."
+  ],
+  "usd": 0
+}

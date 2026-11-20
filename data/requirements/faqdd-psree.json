@@ -1,0 +1,70 @@
+{
+  "id": "faqdd-psree",
+  "read_on": "2026-11-20",
+  "prompt_version": "req-2026-11-20.1",
+  "models": ["cursor:gpt-5.6-luna-high", "cursor:gpt-5.6-sol-high"],
+  "complete": false,
+  "reasons": [
+    "13 links could not be ranked without Jev",
+    "https://faqdd.qc.ca/wp-content/uploads/2026/06/psree-guidededepotdeprojet.pdf: page 1 is an image: needs OCR",
+    "the text names a document with rules that was not read: Cadre normatif du programme",
+    "Jev did not check this reading, so an absent fact is not known to be absent",
+    "strong reading: the text names a document with rules that was not read: Cadre normatif du programme"
+  ],
+  "requirements_checked": false,
+  "documents": [
+    {
+      "ref": "D1",
+      "url": "https://faqdd.qc.ca/programmes/psree/",
+      "final_url": "https://faqdd.qc.ca/programmes/psree/",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 4820,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:1a827b0021761a7a40965ee8ffbee0deb61135585b5a3b2b0190b4ab57c854ad"
+    },
+    {
+      "ref": "D2",
+      "url": "https://faqdd.qc.ca/wp-content/uploads/2026/06/psree-guidededepotdeprojet.pdf",
+      "final_url": "https://faqdd.qc.ca/wp-content/uploads/2026/06/psree-guidededepotdeprojet.pdf",
+      "from": "https://faqdd.qc.ca/programmes/psree/",
+      "anchor": "Guide de dépôt de projet",
+      "depth": 1,
+      "pdf": true,
+      "chars": 48419,
+      "pages": 25,
+      "low_text": false,
+      "hash": "sha256:55f2af4562065b7f25bc06be00d2308a478e2f9382737a8dea57486833706a03"
+    }
+  ],
+  "failures": [
+    {
+      "url": "https://faqdd.qc.ca/wp-content/uploads/2026/06/psree-guidededepotdeprojet.pdf",
+      "from": "https://faqdd.qc.ca/programmes/psree/",
+      "kind": "low_text",
+      "message": "page 1 is an image: needs OCR"
+    }
+  ],
+  "skipped_links": 47,
+  "chunks": [{ "id": "all", "docs": ["D1", "D2"], "chars": 53437 }],
+  "outcomes": {
+    "eligibility": "stated",
+    "documents": "stated",
+    "effort": "stated",
+    "co_finance": "stated",
+    "consortium": "not_found",
+    "after_award": "stated"
+  },
+  "written": ["eligibility", "documents", "effort", "co_finance", "after_award"],
+  "escalated": ["co_finance"],
+  "flags": [],
+  "notes": [
+    "effort \"Submit the application online\": the quote does not state 2026-07-30 whole; left undated",
+    "extractor: This is the sixth call for projects in 2026. The programme's normative framework prevails over the guide and was not provided. Applicant contributions differ by applicant type: 25% for public bodies and nonprofits, and 50% for private companies.",
+    "source faqdd-psree-2: added for https://faqdd.qc.ca/wp-content/uploads/2026/06/psree-guidededepotdeprojet.pdf"
+  ],
+  "usd": 0
+}
