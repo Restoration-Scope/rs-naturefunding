@@ -17,6 +17,33 @@
   "amount": { "currency": "EUR", "max": 15000 },
   "co_finance_required": null,
   "reporting": null,
+  "effort": { "steps": ["Application submission"] },
+  "eligibility": [
+    { "rule": "Operates in Lanzarote and La Graciosa", "kind": "project" },
+    { "rule": "Current on regional, state tax and Social Security obligations", "kind": "legal" },
+    { "rule": "Current on association registration obligations", "kind": "legal" },
+    { "rule": "Not barred from receiving Cabildo de Lanzarote aid", "kind": "legal" },
+    { "rule": "Has no pending subsidy repayment obligations", "kind": "legal" },
+    { "rule": "Has no final sanction removing subsidy eligibility", "kind": "legal" },
+    { "rule": "Not subject to specified association-law prohibition grounds", "kind": "legal" },
+    {
+      "rule": "Has not applied for bankruptcy and is not insolvent, bankrupt, under judicial intervention or actively disqualified",
+      "kind": "legal"
+    }
+  ],
+  "after_award": { "reports": "final" },
+  "documents": [
+    "Sworn declaration",
+    "Responsible declaration",
+    "Explanatory project report",
+    "Income and expenditure budget",
+    "Entity statutes",
+    "Updated association-register certificate",
+    "Representative's ID and proof of representation",
+    "State tax compliance certificate",
+    "Canary Islands tax compliance certificate",
+    "Social Security compliance certificate"
+  ],
   "calls": [
     {
       "id": "2026",
@@ -77,7 +104,93 @@
       "quote": "se otorgarán cuantías máximas de 15.000 euros",
       "checked_at": "2026-11-03",
       "method": "page"
-    }
+    },
+    "effort": [
+      {
+        "source_url": "https://lanzarotebiosfera.org/la-reserva-de-la-biosfera-abre-la-convocatoria-de-subvenciones-a-proyectos-en-materia-de-sostenibilidad-2026",
+        "quote": "las asociaciones y colectivos disponen de diez días hábiles para presentar sus iniciativas",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "eligibility": [
+      {
+        "source_url": "https://lanzarotebiosfera.org/la-reserva-de-la-biosfera-abre-la-convocatoria-de-subvenciones-a-proyectos-en-materia-de-sostenibilidad-2026",
+        "quote": "dirigidas a entidades sin ánimo de lucro que desarrollen su labor en Lanzarote y La Graciosa",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://lanzarotebiosfera.org/wp-content/uploads/2025/10/Anexo-II-Declaracion-Jurada.pdf",
+        "quote": "Que se halla al corriente en el cumplimiento de las obligaciones tributarias con la Comunidad Autónoma, la Hacienda Estatal y la Seguridad Social.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://lanzarotebiosfera.org/wp-content/uploads/2025/10/Anexo-II-Declaracion-Jurada.pdf",
+        "quote": "Que se halla al corriente en el cumplimiento de sus obligaciones registrales como Asociación",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://lanzarotebiosfera.org/wp-content/uploads/2025/10/Anexo-II-Declaracion-Jurada.pdf",
+        "quote": "Que no se halla inhabilitado para recibir ayudas o subvenciones del Cabildo de Lanzarote.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://lanzarotebiosfera.org/wp-content/uploads/2025/10/Anexo-III-Declaracion-responsable.pdf",
+        "quote": "No tener pendiente el pago de obligaciones por reintegro de subvenciones.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://lanzarotebiosfera.org/wp-content/uploads/2025/10/Anexo-III-Declaracion-responsable.pdf",
+        "quote": "No haber sido sancionado mediante resolución firme con la pérdida de la posibilidad de obtener subvenciones según la Ley General de Subvenciones o la Ley General Tributaria.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://lanzarotebiosfera.org/wp-content/uploads/2025/10/Anexo-III-Declaracion-responsable.pdf",
+        "quote": "No estar incurso en las causas de prohibición prevista en los apartados 5 y 6 del artículo 4 de la Ley Orgánica 1/2002, de 22 de marzo, reguladora del Derecho de Asociación.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://lanzarotebiosfera.org/wp-content/uploads/2025/10/Anexo-III-Declaracion-responsable.pdf",
+        "quote": "No haber solicitado la declaración de concurso, no haber sido declarado insolvente en cualquier procedimiento, no hallarse declarado en concurso, no estar sujetos a intervención judicial o haber sido inhabilitados conforme a la Ley Concursal sin que haya concluido el periodo de inhabilitación",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "after_award": [
+      {
+        "source_url": "https://lanzarotebiosfera.org/informacion-convocatoria-subvenciones-por-concurrencia-competitiva-para-asociaciones-sin-animo-de-lucro-lanzarote-y-la-graciosa",
+        "quote": "Memoria Justificativa.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "documents": [
+      {
+        "source_url": "https://lanzarotebiosfera.org/informacion-convocatoria-subvenciones-por-concurrencia-competitiva-para-asociaciones-sin-animo-de-lucro-lanzarote-y-la-graciosa",
+        "quote": "Anexo II: Declaración Jurada Anexo III: Declaración Responsable Bases definitivas subvención concurrencia RB Anexo IV: Memoria explicativa del proyecto Anexo V: Presupuesto de ingresos y gastos",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://lanzarotebiosfera.org/informacion-convocatoria-subvenciones-por-concurrencia-competitiva-para-asociaciones-sin-animo-de-lucro-lanzarote-y-la-graciosa",
+        "quote": "Estatutos de la entidad (Asociación, Fundación, etc.) • Certificado actualizado en el Registro de Asociaciones de la Junta Directiva. • D.N.I. del representante y acreditación de su representación.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://lanzarotebiosfera.org/wp-content/uploads/2025/10/Anexo-I-Instancia-Solicitud-1.pdf",
+        "quote": "Certificado de estar al corriente con la Hacienda Estatal • Certificado de estar al corriente con la Hacienda Canaria • Certificado de estar al corriente con la Seguridad Social",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ]
   },
   "checked_at": "2026-11-03"
 }

@@ -29,8 +29,41 @@
   "access": "direct",
   "window": "unspecified",
   "amount": null,
-  "co_finance_required": null,
+  "co_finance_required": true,
   "reporting": "A report on the condition of the area every two years.",
+  "effort": {
+    "steps": [
+      "Eligibility pre-inquiry",
+      "Funding application",
+      "Application review"
+    ]
+  },
+  "eligibility": [
+    {
+      "rule": "Applicant is based in Kreisgebiet Nordfriesland",
+      "kind": "legal"
+    },
+    {
+      "rule": "Habitat works: no other funding option, and the work upgrades the natural area",
+      "kind": "project"
+    },
+    {
+      "rule": "Project not yet started",
+      "kind": "project"
+    }
+  ],
+  "co_finance": {
+    "min_share": 10,
+    "applies_to": "Biotope-shaping measures where the applicant has own interest"
+  },
+  "after_award": {
+    "reports": "other"
+  },
+  "documents": [
+    "Project area map",
+    "Cost estimate",
+    "Purchase-price reasonableness certificate, for land acquisitions"
+  ],
   "calls": [],
   "evidence": {
     "applicant_types": {
@@ -51,12 +84,92 @@
       "checked_at": "2026-11-15",
       "method": "page"
     },
+    "co_finance_required": {
+      "source_url": "https://www.nordfriesland.de/Dienste-Leistungen/F%C3%B6rdermittel/Naturschutzprojekte-aus-Ersatzgeld/?kuo=2&sub=0",
+      "quote": "Bei Förderungen von biotopgestaltenden Maßnahmen bestehen Förderquoten von 100% oder 90% in den Fällen, bei dem der Antragsteller ein Eigeninteresse an der Maßnahmenumsetzung hat.",
+      "checked_at": "2026-11-20",
+      "method": "page"
+    },
     "reporting": {
       "source_url": "https://www.nordfriesland.de/Dienste-Leistungen/F%C3%B6rdermittel/Naturschutzprojekte-aus-Ersatzgeld/?kuo=2&sub=0",
       "quote": "Bericht über Zustand der Fläche, alle 2 Jahre",
       "checked_at": "2026-11-15",
       "method": "page"
-    }
+    },
+    "effort": [
+      {
+        "source_url": "https://www.nordfriesland.de/Dienste-Leistungen/F%C3%B6rdermittel/Naturschutzprojekte-aus-Ersatzgeld/?kuo=2&sub=0",
+        "quote": "Sie reichen uns ihre Voranfrage zur Förderfähigkeit formlos per Mail oder telefonisch ein.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.nordfriesland.de/Dienste-Leistungen/F%C3%B6rdermittel/Naturschutzprojekte-aus-Ersatzgeld/?kuo=2&sub=0",
+        "quote": "Sie formulieren einen Antrag für die Förderung über Ersatzgelder.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.nordfriesland.de/Dienste-Leistungen/F%C3%B6rdermittel/Naturschutzprojekte-aus-Ersatzgeld/?kuo=2&sub=0",
+        "quote": "Der Kreis Nordfriesland prüft Ihren Antrag",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "eligibility": [
+      {
+        "source_url": "https://www.nordfriesland.de/Dienste-Leistungen/F%C3%B6rdermittel/Naturschutzprojekte-aus-Ersatzgeld/?kuo=2&sub=0",
+        "quote": "Zuwendungsempfänger können Kommunen, kommunale Körperschaften, Vereine und Verbände sowie Anstalten öffentlichen Rechts aus dem Kreisgebiet Nordfriesland sein.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.nordfriesland.de/Dienste-Leistungen/F%C3%B6rdermittel/Naturschutzprojekte-aus-Ersatzgeld/?kuo=2&sub=0",
+        "quote": "Biotopgestaltende Maßnahmen, für die keine weitere Fördermöglichkeit besteht, noch nicht begonnen wurden & eine Aufwertung des Naturraums bewirken:",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.nordfriesland.de/Dienste-Leistungen/F%C3%B6rdermittel/Naturschutzprojekte-aus-Ersatzgeld/?kuo=2&sub=0",
+        "quote": "Für eine Förderfähigkeit, darf Ihr Vorhaben noch nicht begonnen werden sein.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "co_finance": {
+      "source_url": "https://www.nordfriesland.de/Dienste-Leistungen/F%C3%B6rdermittel/Naturschutzprojekte-aus-Ersatzgeld/?kuo=2&sub=0",
+      "quote": "Bei Förderungen von biotopgestaltenden Maßnahmen bestehen Förderquoten von 100% oder 90% in den Fällen, bei dem der Antragsteller ein Eigeninteresse an der Maßnahmenumsetzung hat.",
+      "checked_at": "2026-11-20",
+      "method": "page"
+    },
+    "after_award": [
+      {
+        "source_url": "https://www.nordfriesland.de/Dienste-Leistungen/F%C3%B6rdermittel/Naturschutzprojekte-aus-Ersatzgeld/?kuo=2&sub=0",
+        "quote": "6. Bericht über Zustand der Fläche, alle 2 Jahre",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "documents": [
+      {
+        "source_url": "https://www.nordfriesland.de/Dienste-Leistungen/F%C3%B6rdermittel/Naturschutzprojekte-aus-Ersatzgeld/?kuo=2&sub=0",
+        "quote": "Darstellung auf einer Karte",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.nordfriesland.de/Dienste-Leistungen/F%C3%B6rdermittel/Naturschutzprojekte-aus-Ersatzgeld/?kuo=2&sub=0",
+        "quote": "Kostenschätzung benötigt",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.nordfriesland.de/Dienste-Leistungen/F%C3%B6rdermittel/Naturschutzprojekte-aus-Ersatzgeld/?kuo=2&sub=0",
+        "quote": "bei Flächenerwerben ist eine Angemessenheitsbescheinigung über den Kaufpreis beizulegen",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ]
   },
   "checked_at": "2026-11-15"
 }

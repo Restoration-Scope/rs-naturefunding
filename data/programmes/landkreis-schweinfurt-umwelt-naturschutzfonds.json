@@ -28,8 +28,35 @@
   "access": "direct",
   "window": "unspecified",
   "amount": null,
-  "co_finance_required": null,
+  "co_finance_required": true,
   "reporting": null,
+  "effort": {
+    "steps": [
+      "Application with supporting documents"
+    ]
+  },
+  "eligibility": [
+    {
+      "rule": "Have the measure agreed with the district office or have its nature-protection significance professionally recognised",
+      "kind": "project"
+    },
+    {
+      "rule": "An individual or group, or an association whose statutes are dedicated to nature conservation",
+      "kind": "legal"
+    },
+    {
+      "rule": "Not have state funding available and expected for the measures",
+      "kind": "project"
+    }
+  ],
+  "co_finance": {
+    "min_share": 50
+  },
+  "documents": [
+    "Short description of the completed measure",
+    "Overview site plan or sketch showing the affected area",
+    "Paid invoices"
+  ],
   "calls": [],
   "evidence": {
     "applicant_types": {
@@ -49,7 +76,67 @@
       "quote": "Die Förderung setzt einen Antrag voraus, der innerhalb von zwei Monaten nach Abschluss der Maßnahme beim Landratsamt Schweinfurt einzureichen ist.",
       "checked_at": "2026-11-14",
       "method": "page"
-    }
+    },
+    "co_finance_required": {
+      "source_url": "https://www.landkreis-schweinfurt.de/fileadmin/inhalt_seiten/rechtssammlung/PULA_01_30.06.2020_Anlage_zu_TOP_3.pdf",
+      "quote": "Der Fördersatz beträgt grundsätzlich 50%.",
+      "checked_at": "2026-11-20",
+      "method": "page"
+    },
+    "effort": [
+      {
+        "source_url": "https://www.landkreis-schweinfurt.de/fileadmin/inhalt_seiten/rechtssammlung/PULA_01_30.06.2020_Anlage_zu_TOP_3.pdf",
+        "quote": "Die Förderung setzt einen Antrag voraus, der innerhalb von zwei Monaten nach Abschluss der Maßnahme beim Landratsamt Schweinfurt einzureichen ist.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "eligibility": [
+      {
+        "source_url": "https://www.landkreis-schweinfurt.de/fileadmin/inhalt_seiten/rechtssammlung/PULA_01_30.06.2020_Anlage_zu_TOP_3.pdf",
+        "quote": "die im Einvernehmen mit dem Landratsamt - untere Naturschutzbehörde - durchgeführt worden sind oder deren naturund umweltschutzbezogene Bedeutung fachlich anerkannt werden kann.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.landkreis-schweinfurt.de/fileadmin/inhalt_seiten/rechtssammlung/PULA_01_30.06.2020_Anlage_zu_TOP_3.pdf",
+        "quote": "Zuwendungsempfänger können sein: a) Einzelpersonen oder Personengruppen oder b) Vereine und Organisationen, die sich satzungsgemäß dem Naturschutz und der Landschaftspflege widmen.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.landkreis-schweinfurt.de/fileadmin/inhalt_seiten/rechtssammlung/PULA_01_30.06.2020_Anlage_zu_TOP_3.pdf",
+        "quote": "Zuwendungen entfallen, soweit eine Bezuschussung der Maßnahmen von staatlicher Seite möglich und zu erwarten ist.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "co_finance": {
+      "source_url": "https://www.landkreis-schweinfurt.de/fileadmin/inhalt_seiten/rechtssammlung/PULA_01_30.06.2020_Anlage_zu_TOP_3.pdf",
+      "quote": "Der Fördersatz beträgt grundsätzlich 50%.",
+      "checked_at": "2026-11-20",
+      "method": "page"
+    },
+    "documents": [
+      {
+        "source_url": "https://www.landkreis-schweinfurt.de/fileadmin/inhalt_seiten/rechtssammlung/PULA_01_30.06.2020_Anlage_zu_TOP_3.pdf",
+        "quote": "kurze Darstellung der durchgeführten Maßnahme",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.landkreis-schweinfurt.de/fileadmin/inhalt_seiten/rechtssammlung/PULA_01_30.06.2020_Anlage_zu_TOP_3.pdf",
+        "quote": "Übersichtslageplan oder Skizze, woraus die von der Maßnahme betroffene Fläche ersichtlich ist",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.landkreis-schweinfurt.de/fileadmin/inhalt_seiten/rechtssammlung/PULA_01_30.06.2020_Anlage_zu_TOP_3.pdf",
+        "quote": "bezahlte Rechnungen",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ]
   },
   "checked_at": "2026-11-14"
 }

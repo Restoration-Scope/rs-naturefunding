@@ -34,6 +34,45 @@
   },
   "co_finance_required": null,
   "reporting": "A completion report within 20 days of the activity ending; the grant is paid after the final amount is set.",
+  "effort": {
+    "steps": [
+      "Application by email or post",
+      "Presentation and questions at review meeting"
+    ]
+  },
+  "eligibility": [
+    {
+      "rule": "Not connected to a political party, religion or election candidate",
+      "kind": "legal"
+    },
+    {
+      "rule": "Not a for-profit organisation",
+      "kind": "legal"
+    },
+    {
+      "rule": "Not a crime group or closely associated with one",
+      "kind": "legal"
+    },
+    {
+      "rule": "Not receiving another City subsidy for the activity",
+      "kind": "project"
+    },
+    {
+      "rule": "Not starting the activity before the grant decision",
+      "kind": "project"
+    },
+    {
+      "rule": "Completing the activity by March 31 of the relevant fiscal year",
+      "kind": "project"
+    }
+  ],
+  "after_award": {
+    "reports": "final"
+  },
+  "documents": [
+    "Activity plan",
+    "Income and expenditure budget plan"
+  ],
   "calls": [
     {
       "id": "fy2026",
@@ -89,7 +128,81 @@
       "quote": "補助金の交付は、活動終了後に実績報告書を提出していただき、補助金額を確定したあとになります。",
       "checked_at": "2026-11-14",
       "method": "page"
-    }
+    },
+    "effort": [
+      {
+        "source_url": "https://www.city.kitakyushu.lg.jp/kankyou/file_0371.html",
+        "quote": "補助金の交付を希望する団体は、「補助金交付申請書」に必要書類を添付して、下記連絡先へ電子メールまたは郵送でご提出ください。 募集期間 令和8年4月1日(水曜日)から4月14日(火曜日)(必着)",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.city.kitakyushu.lg.jp/kankyou/file_0371.html",
+        "quote": "応募者には検討会当日対面で活動内容のプレゼンテーションと検討会委員からの質疑に応答していただきます。 (注:やむを得ない場合はオンラインでのご参加も可能です。)(令和8年5月19日(火曜日)実施予定)",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "eligibility": [
+      {
+        "source_url": "https://www.city.kitakyushu.lg.jp/kankyou/file_0371.html",
+        "quote": "特定の政党若しくは宗教又は公職の選挙の候補者の支持に関係のある団体でないこと",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.city.kitakyushu.lg.jp/kankyou/file_0371.html",
+        "quote": "営利を目的とした団体でないこと",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.city.kitakyushu.lg.jp/kankyou/file_0371.html",
+        "quote": "暴力団又は暴力団若しくは暴力団員と密接な関係を有する団体(者)でないこと",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.city.kitakyushu.lg.jp/kankyou/file_0371.html",
+        "quote": "市から他の補助金などの交付を受けていない活動が対象となります。",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.city.kitakyushu.lg.jp/kankyou/file_0371.html",
+        "quote": "交付決定前の活動は助成対象とはなりません。",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.city.kitakyushu.lg.jp/files/000837206.pdf",
+        "quote": "当該年度の 3月31日までに完了できるものとする。",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "after_award": [
+      {
+        "source_url": "https://www.city.kitakyushu.lg.jp/kankyou/file_0371.html",
+        "quote": "補助金の交付は、活動終了後に実績報告書を提出していただき、補助金額を確定したあとになります。",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "documents": [
+      {
+        "source_url": "https://www.city.kitakyushu.lg.jp/kankyou/file_0371.html",
+        "quote": "活動計画書(様式第2号)",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.city.kitakyushu.lg.jp/kankyou/file_0371.html",
+        "quote": "収支予算計画書(様式第3号)",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ]
   },
   "checked_at": "2026-11-14"
 }

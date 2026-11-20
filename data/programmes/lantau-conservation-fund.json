@@ -1,14 +1,29 @@
 {
   "id": "lantau-conservation-fund",
   "name": "Lantau Conservation Fund (Conservation and Related Projects)",
-  "funder": { "name": "Lantau Conservation Fund, Hong Kong", "url": "https://www.lcf.gov.hk/" },
+  "funder": {
+    "name": "Lantau Conservation Fund, Hong Kong",
+    "url": "https://www.lcf.gov.hk/"
+  },
   "administered_by": null,
   "parent": null,
   "url": "https://www.lcf.gov.hk/en/application/faq.html",
   "summary": "Hong Kong government fund for conservation projects on Lantau, in three streams: conservation management agreements, research, and education and engagement. Local tax-exempt charities and non-profit companies apply.",
-  "approaches": ["community_conservation", "protected_areas", "research"],
-  "applicant_types": ["ngo"],
-  "geography": { "scope": "countries", "countries": ["HK"], "label": "Lantau, Hong Kong" },
+  "approaches": [
+    "community_conservation",
+    "protected_areas",
+    "research"
+  ],
+  "applicant_types": [
+    "ngo"
+  ],
+  "geography": {
+    "scope": "countries",
+    "countries": [
+      "HK"
+    ],
+    "label": "Lantau, Hong Kong"
+  },
   "access": "direct",
   "window": "fixed",
   "amount": {
@@ -19,7 +34,43 @@
     "note": "HK$250,000 minimum is a firm threshold; only the maximum is \"generally\" applied. Maximum is for the Conservation Management Agreement stream; Research HK$2.5m, Education HK$2.0m"
   },
   "co_finance_required": null,
+  "consortium_required": false,
   "reporting": null,
+  "effort": {
+    "steps": [
+      "Hard-copy and soft-copy application submission",
+      "LCFAC application assessment",
+      "Project presentation to LCFAC, if needed"
+    ]
+  },
+  "eligibility": [
+    {
+      "rule": "Has legal capacity to enter into a contract",
+      "kind": "legal"
+    },
+    {
+      "rule": "Not an organisation registered only under the Societies Ordinance (Cap. 151)",
+      "kind": "legal"
+    },
+    {
+      "rule": "If a company, its articles bar distributing profits or property to members",
+      "kind": "legal"
+    }
+  ],
+  "after_award": {
+    "reports": "twice_yearly",
+    "audit": true,
+    "site_visits": true
+  },
+  "documents": [
+    "Documentary proof of applicant organisation eligibility",
+    "Project Leader's curriculum vitae, at most 2 pages",
+    "Project budget",
+    "Appendix A re-submission form, for previously rejected applications only",
+    "Research office covering letter, for applicable post-secondary research projects",
+    "Project location and area map",
+    "Appendix B External Assessor"
+  ],
   "calls": [],
   "evidence": {
     "applicant_types": {
@@ -51,7 +102,105 @@
       "quote": "The application period will be announced through the LCF website.",
       "checked_at": "2026-11-20",
       "method": "page"
-    }
+    },
+    "consortium_required": {
+      "source_url": "https://www.lcf.gov.hk/filemanager/content/doc/LCF-GuideToAppl.pdf",
+      "quote": "Each application must be submitted by a single organisation as described in Section 4.1 above.",
+      "checked_at": "2026-11-20",
+      "method": "page"
+    },
+    "effort": [
+      {
+        "source_url": "https://www.lcf.gov.hk/en/application/faq.html",
+        "quote": "The Applicant Organisation shall submit the completed Application Form and Appendix in both original hard copy and soft copy.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.lcf.gov.hk/en/application/faq.html",
+        "quote": "The Lantau Conservation Fund Advisory Committee (LCFAC) is responsible for assessing the applications.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.lcf.gov.hk/en/application/faq.html",
+        "quote": "The Applicant Organisation's attendance at meeting(s) of the LCFAC to present their project proposals will be on a need basis.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "eligibility": [
+      {
+        "source_url": "https://www.lcf.gov.hk/en/application/faq.html",
+        "quote": "Only organisations having legal capacities to enter into contract and satisfying one of the following criteria are eligible to apply for funding support for Conservation and Related Projects under the LCF:",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.lcf.gov.hk/filemanager/content/doc/LCF-GuideToAppl.pdf",
+        "quote": "Excluding organisations only registered under the Societies Ordinance (Cap. 151).",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.lcf.gov.hk/en/application/faq.html",
+        "quote": "which must include clauses prohibiting the distribution of the organisation's profits or properties amongst its members upon dissolution; and its objects and powers shall not include the distribution of profits to members",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "after_award": [
+      {
+        "source_url": "https://www.lcf.gov.hk/en/application/faq.html",
+        "quote": "Progress report(s); Annual audited accounts; Completion report together with the final audited accounts; and Project summaries showing the progress, findings, outcome and achievement.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.lcf.gov.hk/en/application/faq.html",
+        "quote": "The above-mentioned audited accounts shall be audited by a certified public accountant (practising) within the meaning of section 2 of the Professional Accountants Ordinance (Cap. 50).",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.lcf.gov.hk/filemanager/content/doc/LCF-GuideToAppl.pdf",
+        "quote": "The Government (including the representatives hereafter) may attend any activities / events and conduct surprise inspection of the project.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.lcf.gov.hk/filemanager/content/doc/LCF-GuideToAppl.pdf",
+        "quote": "The reporting period of a progress report should cover 6 months or any period as agreed by the government representative.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "documents": [
+      {
+        "source_url": "https://www.lcf.gov.hk/en/application/faq.html",
+        "quote": "Copies of documentary proof of the Applicant Organisation's eligibility Section 4.1 Not required MS Word / PDF Project Leader's curriculum vitae (at most 2 pages) Section 8.13 Not required MS Word / PDF Budget Section 9",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.lcf.gov.hk/en/application/faq.html",
+        "quote": "Supplementary information to the Application Form, e.g. Text, photos, diagrams, tables or charts (at most ten A4 pages) Section 8.2 Not required MS Word / Excel Appendix A Re-submission form (for previously rejected applications only) Section 8.3 Not required MS Word Covering letter from research office (for Research project submitted by post-secondary education institution)",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.lcf.gov.hk/en/application/faq.html",
+        "quote": "Map of the project location and area Section 8.9 Not required MS Word / PDF Written consent of owner(s) / tenant(s) / government department(s) of the land(s) or premise(s) involved for conducting the project and associated activities Section 8.11 Not required Scanned copies in PDF Curriculum vitae(s) of Project Staff with relevant conservation project experience (at most 2 pages per staff)",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.lcf.gov.hk/en/application/faq.html",
+        "quote": "Appendix B External Assessor",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ]
   },
   "checked_at": "2026-11-20"
 }
