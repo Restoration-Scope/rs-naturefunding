@@ -1,0 +1,64 @@
+{
+  "id": "usfws-partners-for-fish-and-wildlife",
+  "read_on": "2026-11-20",
+  "prompt_version": "req-2026-11-20.1",
+  "models": ["cursor:gpt-5.6-luna-high", "cursor:gpt-5.6-sol-high"],
+  "complete": false,
+  "reasons": [
+    "the text names a document with rules that was not read: https://www.whitehouse.gov/presidential-actions/",
+    "the text names a document with rules that was not read: https://www.doi.gov/document-library/secretary-order",
+    "the text names a document with rules that was not read: DOI General Terms and Conditions",
+    "the text names a document with rules that was not read: FWS General Award Terms and Conditions",
+    "Jev did not check this reading, so an absent fact is not known to be absent",
+    "strong reading: the text names a document with rules that was not read: Presidential actions: https://www.whitehouse.gov/presidential-actions/",
+    "strong reading: the text names a document with rules that was not read: DOI Secretary's Orders: https://www.doi.gov/document-library/secretary-order"
+  ],
+  "requirements_checked": false,
+  "documents": [
+    {
+      "ref": "D1",
+      "url": "https://simpler.grants.gov/opportunity/213b091b-76cd-4987-ad5f-beeaf8939fc7",
+      "final_url": "https://simpler.grants.gov/opportunity/213b091b-76cd-4987-ad5f-beeaf8939fc7",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 6684,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:97f1ee7fa3d4167c467467406a4df45ad9ca07b8001a58c9c25bcc0088e09f77"
+    },
+    {
+      "ref": "D2",
+      "url": "https://files.simpler.grants.gov/opportunities/213b091b-76cd-4987-ad5f-beeaf8939fc7/attachments/62b6f3f8-2a2b-428f-b828-804eb795d780/4.10.26_Foa_Content_of_F26AS00068.pdf",
+      "final_url": "https://files.simpler.grants.gov/opportunities/213b091b-76cd-4987-ad5f-beeaf8939fc7/attachments/62b6f3f8-2a2b-428f-b828-804eb795d780/4.10.26_Foa_Content_of_F26AS00068.pdf",
+      "from": "https://simpler.grants.gov/opportunity/213b091b-76cd-4987-ad5f-beeaf8939fc7",
+      "anchor": "4.10.26_Foa_Content_of_F26AS00068.pdf",
+      "depth": 1,
+      "pdf": true,
+      "chars": 37403,
+      "pages": 15,
+      "low_text": false,
+      "hash": "sha256:cbc5eae1a7803c728b872a749b2cd30cd6c9e7aa97279289a5720ffd063f3958"
+    }
+  ],
+  "failures": [],
+  "skipped_links": 31,
+  "chunks": [{ "id": "all", "docs": ["D1", "D2"], "chars": 44454 }],
+  "outcomes": {
+    "eligibility": "stated",
+    "documents": "stated",
+    "effort": "stated",
+    "co_finance": "stated",
+    "consortium": "not_found",
+    "after_award": "stated"
+  },
+  "written": ["eligibility", "documents", "effort", "co_finance", "after_award"],
+  "escalated": ["eligibility"],
+  "flags": [],
+  "notes": [
+    "extractor: Applications are accepted on a rolling basis. The FY26 processing date is May 30, 2026, while electronically submitted applications from invited applicants are due September 30, 2026; regional deadlines vary. A simplified application route may be available for qualifying applicants.",
+    "source usfws-partners-for-fish-and-wildlife-2: added for https://files.simpler.grants.gov/opportunities/213b091b-76cd-4987-ad5f-beeaf8939fc7/attachments/62b6f3f8-2a2b-428f-b828-804eb795d780/4.10.26_Foa_Content_of_F26AS00068.pdf"
+  ],
+  "usd": 0
+}

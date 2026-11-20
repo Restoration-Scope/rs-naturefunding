@@ -1,0 +1,99 @@
+{
+  "id": "vlaanderen-projectsubsidies-natuur",
+  "read_on": "2026-11-20",
+  "prompt_version": "req-2026-11-20.1",
+  "models": ["cursor:gpt-5.6-luna-high"],
+  "complete": false,
+  "reasons": [
+    "19 links could not be ranked without Jev",
+    "15 links could not be ranked without Jev",
+    "the text names a document with rules that was not read: Draaiboek aanvraag en rapportering",
+    "the text names a document with rules that was not read: Lijst natuurstreefbeelden",
+    "the text names a document with rules that was not read: Prioritaire acties",
+    "the text names a document with rules that was not read: Rapportering lijst verantwoordingsstukken",
+    "the text names a document with rules that was not read: Volmachtformulier",
+    "the text names a document with rules that was not read: Handboek voor beheerders - habitats",
+    "the text names a document with rules that was not read: Handboek voor beheerder - soorten",
+    "the text names a document with rules that was not read: Programmatische Aanpak Stikstof: PAS-programmadocument",
+    "the text names a document with rules that was not read: Algemene herstelstrategie",
+    "the text names a document with rules that was not read: PAS-gebiedsanalyses",
+    "the text names a document with rules that was not read: PAS-deelzones-stikstofsanering",
+    "the text names a document with rules that was not read: PAS-gebiedsanalyses - Overzicht Excel",
+    "the text names a document with rules that was not read: https://lv.vlaanderen.be/landbouwbeleid/plattelandsontwikkeling/communicatieverplichtingen-begunstigden",
+    "Jev did not check this reading, so an absent fact is not known to be absent"
+  ],
+  "requirements_checked": false,
+  "documents": [
+    {
+      "ref": "D1",
+      "url": "https://natuurenbos.vlaanderen.be/subsidies-en-projectoproepen/subsidiesprojectoproepen-inrichting-van-natuur/projectoproep-natuur",
+      "final_url": "https://natuurenbos.vlaanderen.be/subsidies-en-projectoproepen/subsidiesprojectoproepen-inrichting-van-natuur/projectoproep-natuur",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 19459,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:aae7b6b84a2640557216b055e7946ac6c1985b61893b19ded45811dfcdc21ea9"
+    },
+    {
+      "ref": "D2",
+      "url": "https://natuurenbos.vlaanderen.be/faq",
+      "final_url": "https://natuurenbos.vlaanderen.be/faq",
+      "from": "https://natuurenbos.vlaanderen.be/subsidies-en-projectoproepen/subsidiesprojectoproepen-inrichting-van-natuur/projectoproep-natuur",
+      "anchor": "FAQ",
+      "depth": 1,
+      "pdf": false,
+      "chars": 881,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:6d7c170609b7789b8037d55589268aa42539a5c4e2e938921e7b841071ddcf79"
+    },
+    {
+      "ref": "D3",
+      "url": "https://lv.vlaanderen.be/beleid/landbouwbeleid-eu/gemeenschappelijk-landbouwbeleid-glb",
+      "final_url": "https://lv.vlaanderen.be/beleid/landbouwbeleid-eu/gemeenschappelijk-landbouwbeleid-glb",
+      "from": "https://natuurenbos.vlaanderen.be/subsidies-en-projectoproepen/subsidiesprojectoproepen-inrichting-van-natuur/projectoproep-natuur",
+      "anchor": "GLB-voorwaarden voor de programmaperiode 2023-2027",
+      "depth": 1,
+      "pdf": false,
+      "chars": 2137,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:90f7f47977af1a2b9048f02a7b93ea50244eba989b4c6356413b7fe230961c48"
+    },
+    {
+      "ref": "D4",
+      "url": "https://natuurenbos.vlaanderen.be/algemenevoorwaarden",
+      "final_url": "https://natuurenbos.vlaanderen.be/algemenevoorwaarden",
+      "from": "https://natuurenbos.vlaanderen.be/subsidies-en-projectoproepen/subsidiesprojectoproepen-inrichting-van-natuur/projectoproep-natuur",
+      "anchor": "Algemene voorwaarden",
+      "depth": 1,
+      "pdf": false,
+      "chars": 6070,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:ab600343a633da7428eb1f9ce4853e95097cea2b96c131e14c366874fe37d54a"
+    }
+  ],
+  "failures": [],
+  "skipped_links": 156,
+  "chunks": [{ "id": "all", "docs": ["D1", "D2", "D3", "D4"], "chars": 29340 }],
+  "outcomes": {
+    "eligibility": "stated",
+    "documents": "stated",
+    "effort": "stated",
+    "co_finance": "unresolved",
+    "consortium": "not_found",
+    "after_award": "stated"
+  },
+  "written": ["eligibility", "documents", "effort", "after_award"],
+  "escalated": [],
+  "flags": [],
+  "notes": [
+    "extractor: D1 refers to 221 PAS subzones in the 2026 focus but later refers to 193 PAS subzones in a scoring aspect.",
+    "co_finance: the file states whether co-funding is required, this reading found nothing"
+  ],
+  "usd": 0
+}

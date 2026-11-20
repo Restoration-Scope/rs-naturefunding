@@ -32,8 +32,34 @@
     "max": 150000,
     "note": "Local Conservation Grant Program, for recreational lands and natural areas, plus associated costs"
   },
-  "co_finance_required": null,
+  "co_finance_required": true,
   "reporting": null,
+  "effort": {
+    "steps": [
+      "Call VHCB staff to discuss the project",
+      "Application of interest, for working forestlands only",
+      "Full application",
+      "VHCB staff review and property visit",
+      "Board decision at a board meeting"
+    ]
+  },
+  "eligibility": [
+    {
+      "rule": "Is a 501(c)(3) nonprofit, a Vermont municipality or a certain state agency",
+      "kind": "legal"
+    },
+    {
+      "rule": "Shows long-term benefit to Vermonters through a lasting-effect mechanism",
+      "kind": "project"
+    },
+    {
+      "rule": "For local conservation, demonstrates municipal support from the project town",
+      "kind": "project"
+    }
+  ],
+  "documents": [
+    "Conservation application budget"
+  ],
   "calls": [],
   "evidence": {
     "applicant_types": {
@@ -59,7 +85,83 @@
       "quote": "grants of up to $150,000 plus associated costs are available for the purchase of recreational lands and natural areas",
       "checked_at": "2026-11-14",
       "method": "page"
+    },
+    "co_finance_required": {
+      "source_url": "https://vhcb.org/conservation/conservation-applications-funding-programs/",
+      "quote": "Applicants are required to provide one-third of total project costs from other sources",
+      "checked_at": "2026-11-20",
+      "method": "page"
+    },
+    "effort": [
+      {
+        "source_url": "https://vhcb.org/conservation/conservation-applications-funding-programs/",
+        "quote": "Eligible applicants are asked to call VHCB staff to discuss your project prior to completing an application.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://vhcb.org/conservation/conservation-applications-funding-programs/",
+        "quote": "To apply, first submit the application of interest.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://vhcb.org/conservation/conservation-applications-funding-programs/",
+        "quote": "Once this application is approved, applicants need to submit the full conservation application linked below.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://vhcb.org/conservation/conservation-applications-funding-programs/",
+        "quote": "VHCB conservation staff will review the application, visit the subject property, and compile a project summary for the Board.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://vhcb.org/conservation/conservation-applications-funding-programs/",
+        "quote": "The Board makes final funding decisions at regular board meetings.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "eligibility": [
+      {
+        "source_url": "https://vhcb.org/conservation/conservation-applications-funding-programs/",
+        "quote": "Eligible applicants are nonprofit housing and conservation organizations with federal 501(c)(3) status, Vermont municipalities, and certain state agencies.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://vhcb.org/conservation/conservation-applications-funding-programs/",
+        "quote": "All applicants are required to show long-term benefit to Vermonters through deed restrictions or other mechanisms that ensure the funds provided will have a lasting effect.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://vhcb.org/conservation/conservation-applications-funding-programs/",
+        "quote": "must demonstrate municipal support from the town where the project is located",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "documents": [
+      {
+        "source_url": "https://vhcb.org/conservation/conservation-applications-funding-programs/",
+        "quote": "VHCB Conservation Application Budget (Excel file)",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "co_finance": {
+      "source_url": "https://vhcb.org/conservation/conservation-applications-funding-programs/",
+      "quote": "Applicants are required to provide one-third of total project costs from other sources",
+      "checked_at": "2026-11-20",
+      "method": "page"
     }
   },
-  "checked_at": "2026-11-14"
+  "checked_at": "2026-11-14",
+  "co_finance": {
+    "min_share": 33.3,
+    "applies_to": "Local Conservation Grant Program only"
+  }
 }

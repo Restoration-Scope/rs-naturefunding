@@ -39,8 +39,66 @@
     "label": "the 2026 call",
     "note": "EUR 50,000 of it is for farmland bird and partridge projects."
   },
-  "co_finance_required": null,
+  "co_finance_required": true,
+  "consortium_required": false,
   "reporting": null,
+  "effort": {
+    "steps": [
+      "Standard-form application by email",
+      "Assessment and minister decision"
+    ]
+  },
+  "eligibility": [
+    {
+      "rule": "Applies as the land manager or an authorized representative of the manager",
+      "kind": "legal"
+    },
+    {
+      "rule": "Projectsubsidie Natuur is not possible for the project",
+      "kind": "project"
+    },
+    {
+      "rule": "Project site’s main use is not explicitly nature conservation",
+      "kind": "project"
+    },
+    {
+      "rule": "Target species occurs at or near the site and the measure has sufficient chance of success",
+      "kind": "project"
+    },
+    {
+      "rule": "Targets the species’ broader local habitat",
+      "kind": "project"
+    },
+    {
+      "rule": "Uses the subsidy only for site works; no staff, machine purchases or prior studies",
+      "kind": "project"
+    },
+    {
+      "rule": "Does not carry out legal obligations, including mandatory permit mitigation",
+      "kind": "project"
+    },
+    {
+      "rule": "No other specifically designated subsidy is available for the project costs",
+      "kind": "project"
+    }
+  ],
+  "co_finance": {
+    "min_share": 30
+  },
+  "after_award": {
+    "reports": "final"
+  },
+  "documents": [
+    "Project area map at scale 1:5000 or larger",
+    "Schematic plan of the works",
+    "Plan of approach",
+    "Cost overview with estimate per work, including and excluding VAT",
+    "Necessary powers of attorney, if applicable",
+    "Co-owners information form, if applicable",
+    "Environmental permit, if applicable",
+    "Nature permit or VEN exemption, if applicable",
+    "Permission for protected immovable heritage, if required"
+  ],
   "calls": [
     {
       "id": "2026",
@@ -104,7 +162,117 @@
       "quote": "De aanvraag wordt ingediend door een natuurlijk persoon, een privaatrechtelijk persoon of een lokaal bestuur",
       "checked_at": "2026-11-14",
       "method": "page"
-    }
+    },
+    "co_finance_required": {
+      "source_url": "https://natuurenbos.vlaanderen.be/subsidies-en-projectoproepen/subsidiesprojectoproepen-inrichting-van-natuur/projectoproep-soorten",
+      "quote": "De projectsubsidie bedraagt 70% van de totale weerhouden projectkost.",
+      "checked_at": "2026-11-20",
+      "method": "page"
+    },
+    "consortium_required": {
+      "source_url": "https://natuurenbos.vlaanderen.be/sites/default/files/documenten/PSS2026_aanvraagformulier.docx",
+      "quote": "Er mag per dossier maar één aanvrager zijn.",
+      "checked_at": "2026-11-20",
+      "method": "page"
+    },
+    "effort": [
+      {
+        "source_url": "https://natuurenbos.vlaanderen.be/subsidies-en-projectoproepen/subsidiesprojectoproepen-inrichting-van-natuur/projectoproep-soorten",
+        "quote": "U kunt een project indienen tot uiterlijk 20 juli 2026. Dien uw project in via het standaardformulier en mail dat door naar aves.cd.anb@vlaanderen.be.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://natuurenbos.vlaanderen.be/sites/default/files/documenten/reglement_projectoproep_soorten_2026.pdf",
+        "quote": "21/07/2026 - 15/10/2026: beoordeling van de projecten, administratieve behandeling van de selectie, advisering door de Inspecteur van Financiën en beslissing door de minister.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "eligibility": [
+      {
+        "source_url": "https://natuurenbos.vlaanderen.be/sites/default/files/documenten/reglement_projectoproep_soorten_2026.pdf",
+        "quote": "De aanvraag wordt ingediend door een natuurlijk persoon, een privaatrechtelijk persoon of een lokaal bestuur1, als beheerder of namens de beheerder (gevolmachtigde).",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://natuurenbos.vlaanderen.be/subsidies-en-projectoproepen/subsidiesprojectoproepen-inrichting-van-natuur/projectoproep-soorten",
+        "quote": "Het project kan enkel worden aangevraagd als een projectsubsidie natuur niet mogelijk is.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://natuurenbos.vlaanderen.be/sites/default/files/documenten/reglement_projectoproep_soorten_2026.pdf",
+        "quote": "Het project richt zich heel specifiek op een of meerdere ingrepen die het leefgebied van een aantal soorten versterken op percelen waarvan het hoofdgebruik zich niet expliciet richt op natuurbehoud.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://natuurenbos.vlaanderen.be/sites/default/files/documenten/reglement_projectoproep_soorten_2026.pdf",
+        "quote": "Uiteraard zijn maatregelen voor een soort maar zinvol als de soort op die plek of op een nabije, overbrugbare afstand voorkomt en als de maatregel op die plek voldoende kansen biedt op slagen.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://natuurenbos.vlaanderen.be/sites/default/files/documenten/reglement_projectoproep_soorten_2026.pdf",
+        "quote": "Hoewel de geplande maatregelen kleinschalig zijn, moet het projectvoorstel zich richten op het ruimere lokale leefgebied van de soort in kwestie.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://natuurenbos.vlaanderen.be/sites/default/files/documenten/reglement_projectoproep_soorten_2026.pdf",
+        "quote": "De subsidie wordt gebruikt voor concrete terreininrichting. Worden niet vergoed: personeelskosten; de aankoop van machines en materieel (de huur van machines en materieel wel); kosten voor voorafgaand onderzoek/studie, inclusief archeologienota of bodemonderzoek.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://natuurenbos.vlaanderen.be/sites/default/files/documenten/reglement_projectoproep_soorten_2026.pdf",
+        "quote": "Het project of de projectmaatregel kan niet bestaan uit het uitvoeren van wettelijke verplichtingen (inclusief verplichtende mitigerende maatregelen van een vergunning)",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://natuurenbos.vlaanderen.be/sites/default/files/documenten/reglement_projectoproep_soorten_2026.pdf",
+        "quote": "Projectkosten komen alleen in aanmerking als er geen andere, specifiek daarvoor bestemde subsidiemogelijkheden zijn",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "co_finance": {
+      "source_url": "https://natuurenbos.vlaanderen.be/subsidies-en-projectoproepen/subsidiesprojectoproepen-inrichting-van-natuur/projectoproep-soorten",
+      "quote": "De projectsubsidie bedraagt 70% van de totale weerhouden projectkost.",
+      "checked_at": "2026-11-20",
+      "method": "page"
+    },
+    "after_award": [
+      {
+        "source_url": "https://natuurenbos.vlaanderen.be/sites/default/files/documenten/reglement_projectoproep_soorten_2026.pdf",
+        "quote": "Ten laatste 6 maanden na volledige uitvoering van het project en uiterlijk 27 maanden na toekenning van de subsidie, wordt de eindrapportering ingediend samen met het inhoudelijke eindverslag en het financiële eindrapport.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "documents": [
+      {
+        "source_url": "https://natuurenbos.vlaanderen.be/sites/default/files/documenten/reglement_projectoproep_soorten_2026.pdf",
+        "quote": "een duidelijk liggingsplan op schaal 1/5000 of groter, een schematisch plan van de inrichtingswerken en plan van aanpak, een kostenoverzicht met de raming (incl en excl BTW) per inrichtingswerk, noodzakelijke volmachten",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://natuurenbos.vlaanderen.be/sites/default/files/documenten/PSS2026_aanvraagformulier.docx",
+        "quote": "het formulier Gegevens van de mede-eigenaars van een grond waarvoor een subsidie voor soorten wordt aangevraagd (zie vraag 6) een schematisch plan van de inrichtingswerken (zie vraag 11) een overzicht van de kosten (zie vraag 12) een plan van aanpak waarin u meer in detail beschrijft hoe de inrichtingswerken uitgevoerd zullen worden (zie vraag 11 en 14)",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://natuurenbos.vlaanderen.be/sites/default/files/documenten/PSS2026_aanvraagformulier.docx",
+        "quote": "een omgevingsvergunning, als dat van toepassing is (zie ook www.natuurenbos.be/projectoproep-soorten) een natuurvergunning of VEN-ontheffing, als dat van toepassing is (zie ook www.natuurenbos.be/projectoproep-soorten) een toelating als het perceel in beschermd onroerend erfgoed ligt, als dat vereist is",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ]
   },
   "checked_at": "2026-11-14"
 }
