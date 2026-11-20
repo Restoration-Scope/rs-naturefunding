@@ -1,0 +1,302 @@
+{
+  "id": "mt-fwp-ffip",
+  "read_on": "2026-11-20",
+  "prompt_version": "req-2026-11-20.1",
+  "models": ["cursor:gpt-5.6-luna-high"],
+  "complete": false,
+  "reasons": [
+    "60 links could not be ranked without Jev",
+    "18 links could not be ranked without Jev",
+    "https://myfwp.mt.gov/getRepositoryFile?objectID=115208 would not open (unreadable: an old Word (.doc), OpenDocument or RTF file: needs conversion)",
+    "https://fwp.mt.gov/binaries/content/assets/fwp/fish/future-fisheries-program/future-fisheries-fwp-statement.pdf: a scanned or image PDF: needs OCR",
+    "https://fwp.mt.gov/binaries/content/assets/fwp/fish/future-fisheries-program/future-fisheries-fwp-statement.doc would not open (unreadable: an old Word (.doc), OpenDocument or RTF file: needs conversion)",
+    "the crawl bound left https://myfwp.mt.gov/getRepositoryFile?objectID=26093 unread",
+    "the crawl bound left https://myfwp.mt.gov/getRepositoryFile?objectID=40083 unread",
+    "the crawl bound left https://myfwp.mt.gov/getRepositoryFile?objectID=34461 unread",
+    "the crawl bound left https://mt.gov/1240-X06.pdf unread",
+    "the crawl bound left https://fwp.mt.gov/buyandapply/hunting-licenses unread",
+    "the crawl bound left https://fwp.mt.gov/buyandapply/fishinglicenses unread",
+    "the crawl bound left https://fwp.mt.gov/buyandapply/conservation-license unread",
+    "the crawl bound left https://fwp.mt.gov/buyandapply/fees-and-general-information unread",
+    "the crawl bound left https://fwp.mt.gov/buyandapply/registerboatsandvehicles unread",
+    "the crawl bound left https://fwp.mt.gov/buyandapply/outfitter-licenses unread",
+    "the crawl bound left https://fwp.mt.gov/binaries/content/assets/fwp/buyandapply/license-ambassador/license-fees-for-2026_web.pdf unread",
+    "the crawl bound left https://fwp.mt.gov/binaries/content/assets/fwp/buyandapply/license-ambassador/ambassador-guide-book_web.pdf unread",
+    "the crawl bound left https://fwp.mt.gov/buyandapply/licenseproviders unread",
+    "the crawl bound left https://fwp.mt.gov/buyandapply/aquatic-invasive-species-prevention-pass unread",
+    "the crawl bound left https://fwp.mt.gov/buyandapply/statelandsrecreation unread",
+    "the crawl bound left https://fwp.mt.gov/buyandapply/vehiclekilledsalvagepermit unread",
+    "the crawl bound left https://fwp.mt.gov/buyandapply/specialuseriverpermits unread",
+    "the crawl bound left https://fwp.mt.gov/buyandapply/commercialwildlifeandscientificpermits unread",
+    "the crawl bound left https://fwp.mt.gov/buyandapply/residencyinfo unread",
+    "the crawl bound left https://fwp.mt.gov/buyandapply/licenseandpermitfaq unread",
+    "the text names a document with rules that was not read: Budget Template",
+    "the text names a document with rules that was not read: Supplemental Questionnaire for Water Leasing or Water Salvage Projects",
+    "the text names a document with rules that was not read: Grant Recipient Instructions",
+    "the text names a document with rules that was not read: Example Landowner Agreement",
+    "the text names a document with rules that was not read: Future Fisheries Improvement Program Review Panel Fact Sheet",
+    "the text names a document with rules that was not read: Design Guidelines",
+    "the text names a document with rules that was not read: Electric Fencing Report",
+    "the text names a document with rules that was not read: A Landowner's Guide to Wildlife Friendly Fences - How to Build Fence with Wildlife in Mind",
+    "Jev did not check this reading, so an absent fact is not known to be absent"
+  ],
+  "requirements_checked": false,
+  "documents": [
+    {
+      "ref": "D1",
+      "url": "https://fwp.mt.gov/ffip",
+      "final_url": "https://fwp.mt.gov/ffip",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 23467,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:ab352bbd808ea69579cb0b78d1d5a3a5a1fc7c091174b3f931cae4c3fa5dd471"
+    },
+    {
+      "ref": "D2",
+      "url": "https://fwp.mt.gov/buyandapply",
+      "final_url": "https://fwp.mt.gov/buyandapply",
+      "from": "https://fwp.mt.gov/ffip",
+      "anchor": "Buy and apply",
+      "depth": 1,
+      "pdf": false,
+      "chars": 1943,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:221dfe0011d02c39a5e7ff5a76eb2bf0ced816db2ca904d7fa2bee36b2223f91"
+    },
+    {
+      "ref": "D3",
+      "url": "https://myfwp.mt.gov/getRepositoryFile?objectID=115237",
+      "final_url": "https://myfwp.mt.gov/getRepositoryFile?objectID=115237",
+      "from": "https://fwp.mt.gov/ffip",
+      "anchor": "Application Form - Fillable PDF",
+      "depth": 1,
+      "pdf": true,
+      "chars": 8119,
+      "pages": 6,
+      "low_text": false,
+      "hash": "sha256:cd786094acf048e52e259904450b12220f09f600b70bc4d55b1da9ab35f8b359"
+    },
+    {
+      "ref": "D4",
+      "url": "https://fwp.mt.gov/binaries/content/assets/fwp/fish/future-fisheries-program/future-fisheries-fwp-statement.pdf",
+      "final_url": "https://fwp.mt.gov/binaries/content/assets/fwp/fish/future-fisheries-program/future-fisheries-fwp-statement.pdf",
+      "from": "https://fwp.mt.gov/ffip",
+      "anchor": "PDF",
+      "depth": 1,
+      "pdf": true,
+      "chars": 342,
+      "pages": 1,
+      "low_text": true,
+      "hash": "sha256:99903b6743599b4e5d1d98bbb9f2c99a3226a205faadf93ea69ed9c3f9e09a7c"
+    },
+    {
+      "ref": "D5",
+      "url": "https://myfwp.mt.gov/getRepositoryFile?objectID=31900",
+      "final_url": "https://myfwp.mt.gov/getRepositoryFile?objectID=31900",
+      "from": "https://fwp.mt.gov/ffip",
+      "anchor": "Future Fisheries Fencing Guidelines.",
+      "depth": 1,
+      "pdf": true,
+      "chars": 3197,
+      "pages": 2,
+      "low_text": false,
+      "hash": "sha256:dd91c22bae716a6eddf9e5512f1df6692b7af248cfff32c53c8655426239b63f"
+    },
+    {
+      "ref": "D6",
+      "url": "https://fwp.mt.gov/binaries/content/assets/fwp/aboutfwp/grants/future-fisheries/ffip-2023-report.pdf",
+      "final_url": "https://fwp.mt.gov/binaries/content/assets/fwp/aboutfwp/grants/future-fisheries/ffip-2023-report.pdf",
+      "from": "https://fwp.mt.gov/ffip",
+      "anchor": "2023 Interim Report",
+      "depth": 1,
+      "pdf": true,
+      "chars": 2811,
+      "pages": 2,
+      "low_text": false,
+      "hash": "sha256:0d792339ae1fde6f8cec4c74c0a57020cb246cf2232cb0b1b9217827c3b74b42"
+    },
+    {
+      "ref": "D7",
+      "url": "https://myfwp.mt.gov/getRepositoryFile?objectID=26094",
+      "final_url": "https://myfwp.mt.gov/getRepositoryFile?objectID=26094",
+      "from": "https://fwp.mt.gov/ffip",
+      "anchor": "Grant Application Form (PDF)",
+      "depth": 1,
+      "pdf": true,
+      "chars": 8105,
+      "pages": 6,
+      "low_text": false,
+      "hash": "sha256:ed1526e03a632dd0cabbb2a7bbf76f0884eb6bd4a41979f7c3fc342f5d63e7a1"
+    }
+  ],
+  "failures": [
+    {
+      "url": "https://myfwp.mt.gov/getRepositoryFile?objectID=115208",
+      "from": "https://fwp.mt.gov/ffip",
+      "kind": "unreadable",
+      "message": "an old Word (.doc), OpenDocument or RTF file: needs conversion"
+    },
+    {
+      "url": "https://fwp.mt.gov/binaries/content/assets/fwp/fish/future-fisheries-program/future-fisheries-fwp-statement.pdf",
+      "from": "https://fwp.mt.gov/ffip",
+      "kind": "low_text",
+      "message": "a scanned or image PDF: needs OCR"
+    },
+    {
+      "url": "https://fwp.mt.gov/binaries/content/assets/fwp/fish/future-fisheries-program/future-fisheries-fwp-statement.doc",
+      "from": "https://fwp.mt.gov/ffip",
+      "kind": "unreadable",
+      "message": "an old Word (.doc), OpenDocument or RTF file: needs conversion"
+    },
+    {
+      "url": "https://myfwp.mt.gov/getRepositoryFile?objectID=26093",
+      "from": "https://fwp.mt.gov/ffip",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://myfwp.mt.gov/getRepositoryFile?objectID=40083",
+      "from": "https://fwp.mt.gov/ffip",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://myfwp.mt.gov/getRepositoryFile?objectID=34461",
+      "from": "https://fwp.mt.gov/ffip",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://mt.gov/1240-X06.pdf",
+      "from": "https://fwp.mt.gov/ffip",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://fwp.mt.gov/buyandapply/hunting-licenses",
+      "from": "https://fwp.mt.gov/buyandapply",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://fwp.mt.gov/buyandapply/fishinglicenses",
+      "from": "https://fwp.mt.gov/buyandapply",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://fwp.mt.gov/buyandapply/conservation-license",
+      "from": "https://fwp.mt.gov/buyandapply",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://fwp.mt.gov/buyandapply/fees-and-general-information",
+      "from": "https://fwp.mt.gov/buyandapply",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://fwp.mt.gov/buyandapply/registerboatsandvehicles",
+      "from": "https://fwp.mt.gov/buyandapply",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://fwp.mt.gov/buyandapply/outfitter-licenses",
+      "from": "https://fwp.mt.gov/buyandapply",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://fwp.mt.gov/binaries/content/assets/fwp/buyandapply/license-ambassador/license-fees-for-2026_web.pdf",
+      "from": "https://fwp.mt.gov/buyandapply",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://fwp.mt.gov/binaries/content/assets/fwp/buyandapply/license-ambassador/ambassador-guide-book_web.pdf",
+      "from": "https://fwp.mt.gov/buyandapply",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://fwp.mt.gov/buyandapply/licenseproviders",
+      "from": "https://fwp.mt.gov/buyandapply",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://fwp.mt.gov/buyandapply/aquatic-invasive-species-prevention-pass",
+      "from": "https://fwp.mt.gov/buyandapply",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://fwp.mt.gov/buyandapply/statelandsrecreation",
+      "from": "https://fwp.mt.gov/buyandapply",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://fwp.mt.gov/buyandapply/vehiclekilledsalvagepermit",
+      "from": "https://fwp.mt.gov/buyandapply",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://fwp.mt.gov/buyandapply/specialuseriverpermits",
+      "from": "https://fwp.mt.gov/buyandapply",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://fwp.mt.gov/buyandapply/commercialwildlifeandscientificpermits",
+      "from": "https://fwp.mt.gov/buyandapply",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://fwp.mt.gov/buyandapply/residencyinfo",
+      "from": "https://fwp.mt.gov/buyandapply",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://fwp.mt.gov/buyandapply/licenseandpermitfaq",
+      "from": "https://fwp.mt.gov/buyandapply",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://mt.gov/1240-X06.pdf",
+      "from": "https://fwp.mt.gov/buyandapply",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    }
+  ],
+  "skipped_links": 142,
+  "chunks": [{ "id": "all", "docs": ["D1", "D2", "D3", "D4", "D5", "D6", "D7"], "chars": 48757 }],
+  "outcomes": {
+    "eligibility": "stated",
+    "documents": "stated",
+    "effort": "stated",
+    "co_finance": "stated",
+    "consortium": "stated",
+    "after_award": "stated"
+  },
+  "written": ["eligibility", "documents", "effort", "co_finance", "consortium", "after_award"],
+  "escalated": [],
+  "flags": [],
+  "notes": [
+    "extractor: D1 identifies the Winter 2027 deadline as November 15, 2027; the Summer 2026 cycle is historical. Final project reports are not required. Approved projects require a 20-year maintenance commitment and applicable permits.",
+    "source mt-fwp-ffip-2: added for https://myfwp.mt.gov/getRepositoryFile?objectID=115237",
+    "source mt-fwp-ffip-3: added for https://fwp.mt.gov/binaries/content/assets/fwp/fish/future-fisheries-program/future-fisheries-fwp-statement.pdf"
+  ],
+  "usd": 0
+}
