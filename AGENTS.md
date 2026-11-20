@@ -4,7 +4,7 @@ A static Astro site (Bun, TypeScript) on Cloudflare static assets. Data lives as
 
 ## Mission
 
-Restoration Scope backs the people doing the work on the ground; this site gets their projects funded for the least effort. Operators must choose between doing the work and applying for grants, so we do the finding, rule out grants they can't apply to or that cost more effort than they return, and spell out what applying takes. Writing support comes later, as help, not automated applications. Build the engine, not hand fixes: each lesson becomes a rule, check or prompt that holds for every listing and gives legitimate results at scale. The workflow: `docs/grant-workflow.html`.
+Restoration Scope backs the people doing the work on the ground; this site gets their projects funded for the least effort. Operators must choose between doing the work and applying for grants, so we do the finding, rule out grants they can't apply to or that cost more effort than they return, and spell out what applying takes. Writing support comes later, as help, not automated applications. Build the engine, not hand fixes: each lesson becomes a rule, check or prompt that holds for every listing and gives legitimate results at scale. The workflow has four stages (`docs/grant-workflow.html`): **Discovery** fills a backlog of leads; **Gathering** collects everything later stages need from the funder (call pages, documents, the form, FAQs, earlier rounds); **Triage** validates each entry (accept, hold, reject); **Processing** turns the evidence into what an operator needs to decide (rules, effort, fit).
 
 ## Rules
 
