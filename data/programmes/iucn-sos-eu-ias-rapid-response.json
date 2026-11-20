@@ -1,13 +1,25 @@
 {
   "id": "iucn-sos-eu-ias-rapid-response",
   "name": "European Invasive Alien Species Rapid-Response Fund",
-  "funder": { "name": "European Union", "url": "https://commission.europa.eu/" },
-  "administered_by": { "name": "IUCN Save Our Species", "url": "https://iucnsos.org/" },
+  "funder": {
+    "name": "European Union",
+    "url": "https://commission.europa.eu/"
+  },
+  "administered_by": {
+    "name": "IUCN Save Our Species",
+    "url": "https://iucnsos.org/"
+  },
   "parent": "iucn-sos",
   "url": "https://iucnsos.org/initiative/european-invasive-alien-species-rapid-response-fund/",
   "summary": "Fast-track grants for early detection and rapid eradication of newly arriving invasive alien plants and animals in the European Union, run by IUCN Save Our Species with EU funding.",
-  "approaches": ["species_conservation"],
-  "applicant_types": ["ngo", "research_institution", "government"],
+  "approaches": [
+    "species_conservation"
+  ],
+  "applicant_types": [
+    "ngo",
+    "research_institution",
+    "government"
+  ],
   "geography": {
     "scope": "countries",
     "countries": [
@@ -43,9 +55,27 @@
   },
   "access": "direct",
   "window": "fixed",
-  "amount": { "currency": "EUR", "min": 10000, "max": 50000 },
+  "amount": {
+    "currency": "EUR",
+    "min": 10000,
+    "max": 50000
+  },
   "co_finance_required": null,
   "reporting": null,
+  "effort": {
+    "steps": [
+      "Application via the IUCN Grants Portal"
+    ],
+    "due": [
+      "2027-02-10"
+    ]
+  },
+  "eligibility": [
+    {
+      "rule": "Project acts on an alien species at an early stage of invasion",
+      "kind": "project"
+    }
+  ],
   "calls": [
     {
       "id": "2026-2027-call",
@@ -111,7 +141,23 @@
       "quote": "Grants ranging from €10,000 to €50,000 are available for projects of up to 12 months.",
       "checked_at": "2026-11-20",
       "method": "page"
-    }
+    },
+    "effort": [
+      {
+        "source_url": "https://iucnsos.org/call-for-proposals/",
+        "quote": "Deadline: Wednesday, 10 February 2027 at 14:00 CEST",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "eligibility": [
+      {
+        "source_url": "https://iucnsos.org/initiative/european-invasive-alien-species-rapid-response-fund/",
+        "quote": "Eligible actions must focus on the early stages of invasion by alien plant and animal species, including macroalgae, that have a high potential to spread and cause ecological harm.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ]
   },
   "checked_at": "2026-11-15"
 }
