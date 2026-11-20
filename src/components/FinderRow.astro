@@ -43,6 +43,8 @@ const searchText = [p.name, p.funder.name, p.administered_by?.name, p.summary, w
 {/* Row internals are styled by class in src/styles/finder.css, which also reflows them at narrow widths. */}
 <TableRow
   className="row"
+  data-id={p.id}
+  data-call={call?.id}
   data-state={state}
   data-deadline={deadline?.date}
   data-deadline-time={deadline?.time}
@@ -74,6 +76,7 @@ const searchText = [p.name, p.funder.name, p.administered_by?.name, p.summary, w
       callGroups(p).map((g) => (
         <template
           data-where-dl={g.codes?.join(' ') ?? '*'}
+          data-call={g.listing.call?.id}
           data-state={g.listing.state}
           data-deadline={g.listing.call?.deadline?.date}
           data-deadline-time={g.listing.call?.deadline?.time}

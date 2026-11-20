@@ -81,7 +81,9 @@ stays text and never greys anything out.
 Claude Code agents build and change the pipeline, make the gold set, and take what
 the pipeline can't: pages that need a browser, OCR cases, blocked fetches, and
 `unresolved` items. The night-shift job `naturefunding-before-you-apply` does
-these, not the bulk reading.
+these, not the bulk reading. The weekly summary issue lists them as leads (a rules
+document the text names that wasn't read, an application page on another site, an
+unresolved field), open calls first; `bun scripts/requirements/leads.ts` prints all.
 
 ## GPT Pro as first reader (tried 2026-11-18, not adopted)
 

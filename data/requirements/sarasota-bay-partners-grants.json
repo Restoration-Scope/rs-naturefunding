@@ -1,0 +1,121 @@
+{
+  "id": "sarasota-bay-partners-grants",
+  "read_on": "2026-11-20",
+  "prompt_version": "req-2026-11-20.1",
+  "models": ["cursor:gpt-5.6-luna-high"],
+  "complete": false,
+  "reasons": [
+    "33 links could not be ranked without Jev",
+    "https://eadn-wc04-1243468.nxedge.io/wp-content/uploads/SBEP-Operating-Procedures-Manual-revised-7-2016.pdf: pages 1, 32, 33 are images: needs OCR",
+    "https://eadn-wc04-1243468.nxedge.io/wp-content/uploads/2026-Sarasota-Bay-Partners-Grants-Information-Packet.pdf: a document on another site: without Jev it can’t be confirmed as the funder’s, so it is not used",
+    "https://eadn-wc04-1243468.nxedge.io/wp-content/uploads/SBEP-Operating-Procedures-Manual-revised-7-2016.pdf: a document on another site: without Jev it can’t be confirmed as the funder’s, so it is not used",
+    "the text names a document with rules that was not read: 2026 Sarasota Bay Partners Grants Information Packet",
+    "Jev did not check this reading, so an absent fact is not known to be absent"
+  ],
+  "requirements_checked": false,
+  "documents": [
+    {
+      "ref": "D1",
+      "url": "https://sarasotabay.org/get-involved/apply-for-a-grant/",
+      "final_url": "https://sarasotabay.org/get-involved/apply-for-a-grant/",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 7405,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:3f308a4e29c64a6cc0300b3817495a753eace2316da40b48a560d85e96217d0a"
+    },
+    {
+      "ref": "D2",
+      "url": "https://sarasotabay.org/about-sbep/management-conference/policy/",
+      "final_url": "https://sarasotabay.org/about-sbep/management-conference/policy/",
+      "from": "https://sarasotabay.org/get-involved/apply-for-a-grant/",
+      "anchor": "Policy Board",
+      "depth": 1,
+      "pdf": false,
+      "chars": 2693,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:adb10f8142fafe15cecfd2669ffd31614491096d21b9217bfd67f6e1eb499040"
+    },
+    {
+      "ref": "D3",
+      "url": "https://sarasotabay.org/our-estuaries/field-guide/",
+      "final_url": "https://sarasotabay.org/our-estuaries/field-guide/",
+      "from": "https://sarasotabay.org/get-involved/apply-for-a-grant/",
+      "anchor": "Field Guide",
+      "depth": 1,
+      "pdf": false,
+      "chars": 2747,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:7b6b3757e222ef5a4974d1efbba9d8c53f1dfb9a62494582556b6713e8b4f88a"
+    },
+    {
+      "ref": "D4",
+      "url": "https://sarasotabay.org/wp-content/uploads/2025-Sarasota-Bay-Partners-Grants-Application-1.docx",
+      "final_url": "https://sarasotabay.org/wp-content/uploads/2025-Sarasota-Bay-Partners-Grants-Application-1.docx",
+      "from": "https://sarasotabay.org/get-involved/apply-for-a-grant/",
+      "anchor": "View last year's application",
+      "depth": 1,
+      "pdf": false,
+      "chars": 12282,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:24e3bfe8f7065859c83563fbd7de1a1d2f2cfa94ac5f5efb33b09657d940c94a"
+    },
+    {
+      "ref": "D5",
+      "url": "https://sarasotabay.org/wp-content/uploads/2026-Sarasota-Bay-Partners-Grants-Application.docx",
+      "final_url": "https://sarasotabay.org/wp-content/uploads/2026-Sarasota-Bay-Partners-Grants-Application.docx",
+      "from": "https://sarasotabay.org/get-involved/apply-for-a-grant/",
+      "anchor": "2026 Bay Partners Grant Application",
+      "depth": 1,
+      "pdf": false,
+      "chars": 12450,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:864be5b20006450b332063d53df692dd5bd826cd067f807214fe11aa09103c1b"
+    }
+  ],
+  "failures": [
+    {
+      "url": "https://eadn-wc04-1243468.nxedge.io/wp-content/uploads/SBEP-Operating-Procedures-Manual-revised-7-2016.pdf",
+      "from": "https://sarasotabay.org/about-sbep/management-conference/policy/",
+      "kind": "low_text",
+      "message": "pages 1, 32, 33 are images: needs OCR"
+    },
+    {
+      "url": "https://eadn-wc04-1243468.nxedge.io/wp-content/uploads/2026-Sarasota-Bay-Partners-Grants-Information-Packet.pdf",
+      "from": "https://sarasotabay.org/get-involved/apply-for-a-grant/",
+      "kind": "offsite",
+      "message": "a document on another site: without Jev it can’t be confirmed as the funder’s, so it is not used"
+    },
+    {
+      "url": "https://eadn-wc04-1243468.nxedge.io/wp-content/uploads/SBEP-Operating-Procedures-Manual-revised-7-2016.pdf",
+      "from": "https://sarasotabay.org/about-sbep/management-conference/policy/",
+      "kind": "offsite",
+      "message": "a document on another site: without Jev it can’t be confirmed as the funder’s, so it is not used"
+    }
+  ],
+  "skipped_links": 167,
+  "chunks": [{ "id": "all", "docs": ["D1", "D2", "D3", "D4", "D5"], "chars": 38279 }],
+  "outcomes": {
+    "eligibility": "stated",
+    "documents": "stated",
+    "effort": "stated",
+    "co_finance": "stated",
+    "consortium": "not_found",
+    "after_award": "stated"
+  },
+  "written": ["eligibility", "documents", "effort", "co_finance", "after_award"],
+  "escalated": [],
+  "flags": [],
+  "notes": [
+    "extractor: D5 is the current 2026 application; D4 is the prior 2025 application and its dates are not used.",
+    "source sarasota-bay-partners-grants-2: added for https://sarasotabay.org/wp-content/uploads/2026-Sarasota-Bay-Partners-Grants-Application.docx"
+  ],
+  "usd": 0
+}
