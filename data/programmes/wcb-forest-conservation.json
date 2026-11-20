@@ -1,46 +1,25 @@
 {
   "id": "wcb-forest-conservation",
   "name": "WCB Forest Conservation Program",
-  "funder": {
+  "funder": { "name": "California Wildlife Conservation Board", "url": "https://wcb.ca.gov/" },
+  "administered_by": {
     "name": "California Wildlife Conservation Board",
-    "url": "https://wcb.ca.gov/"
+    "url": "https://www.grants.ca.gov/grants/forest-conservation"
   },
-  "administered_by": null,
   "parent": null,
   "url": "https://wcb.ca.gov/programs/forest",
   "summary": "California state grants for planning, acquisition and restoration projects in the state's forests, such as meadow restoration, post-fire restoration, aspen stand enhancement and hazard fuel-reduction thinning.",
-  "approaches": [
-    "reforestation",
-    "protected_areas"
-  ],
-  "applicant_types": [
-    "ngo",
-    "government",
-    "indigenous_organization"
-  ],
-  "geography": {
-    "scope": "countries",
-    "countries": [
-      "US"
-    ],
-    "label": "California"
-  },
+  "approaches": ["reforestation", "protected_areas"],
+  "applicant_types": ["ngo", "government", "indigenous_organization"],
+  "geography": { "scope": "countries", "countries": ["US"], "label": "California" },
   "access": "direct",
-  "window": "unspecified",
+  "window": "fixed",
   "amount": null,
   "co_finance_required": false,
   "reporting": null,
-  "effort": {
-    "steps": [
-      "Pre-application",
-      "Full application, if invited"
-    ]
-  },
+  "effort": { "steps": ["Pre-application", "Full application, if invited"] },
   "eligibility": [
-    {
-      "rule": "Project provides at least one WCB Strategic Plan benefit",
-      "kind": "project"
-    },
+    { "rule": "Project provides at least one WCB Strategic Plan benefit", "kind": "project" },
     {
       "rule": "Planning grant leads to a qualifying future implementation project",
       "kind": "project"
@@ -54,9 +33,7 @@
       "kind": "project"
     }
   ],
-  "after_award": {
-    "reports": "final"
-  },
+  "after_award": { "reports": "final" },
   "calls": [
     {
       "id": "project-portal",
@@ -76,6 +53,12 @@
     }
   ],
   "evidence": {
+    "administered_by": {
+      "source_url": "https://www.grants.ca.gov/grants/forest-conservation",
+      "quote": "Grantor: Wildlife Conservation Board",
+      "checked_at": "2026-11-20",
+      "method": "page"
+    },
     "applicant_types": {
       "source_url": "https://www.grants.ca.gov/grants/forest-conservation",
       "quote": "Eligible Applicants: Nonprofit Public Agency Tribal Government",
@@ -91,6 +74,12 @@
     "access": {
       "source_url": "https://wcb.ca.gov/Grants",
       "quote": "WCB is now accepting pre-applications through the new WCB Project Portal.",
+      "checked_at": "2026-11-20",
+      "method": "page"
+    },
+    "window": {
+      "source_url": "https://www.grants.ca.gov/grants/forest-conservation",
+      "quote": "Open Date: 5/10/22 00:00",
       "checked_at": "2026-11-20",
       "method": "page"
     },
