@@ -9,7 +9,7 @@
  * TIER_B_DEADLINE_MINUTES after start, and pages left over stay due for the next run.
  */
 import { appendFileSync, mkdirSync, readFileSync, rmSync, writeFileSync } from 'node:fs'
-import { join, resolve } from 'node:path'
+import { dirname, join, resolve } from 'node:path'
 import { checkData } from '../../src/data/load'
 import type { Programme, Source } from '../../src/data/schema'
 import { programme as programmeSchema } from '../../src/data/schema'
@@ -21,8 +21,8 @@ import {
   acceptedPath, isDue, nextState, programmeChecks, PROGRAMMES_PATH, readJson, RUN_PATH, SOURCES_PATH, writeJson,
   type Accepted, type RunReport, type SourceStates,
 } from './state'
-import { extractAndReview, proposalKey, type Change, type Draft } from './tier-b'
-import { applyTierA, classify, dateOf, quotesAt, type Tier } from './tier'
+import { extractAndReview, needsPerson, proposalKey, type Change, type Draft } from './tier-b'
+import { applyTierA, classify, dateOf, dateQuoted, quotesAt, type Tier } from './tier'
 
 const args = process.argv.slice(2)
 const flag = (name: string) => {
@@ -103,6 +103,31 @@ for (const [id, p] of programmes) {
   programmes.set(id, result.programme)
   writeFileSync(programmeFile(id), formatJson(result.programme))
 }
+
+// Changed pages: a fact whose quote is still verbatim on the page is dated today without accepting
+// the new page version, so dates never wait on a review (decisions/2026-11-20-refresh-auto-commit-rule.md).
+const changedPages = new Map<string, string>()
+for (const [s, t] of tiers) {
+  if (t.tier === 'B' && !t.reasons.some((r) => r.startsWith('redirected'))) changedPages.set(s.url, (reads.get(s) as Extract<Fetched, { ok: true }>).text)
+}
+for (const s of due) if (!reads.get(s)!.ok) changedPages.delete(s.url)
+let datedFacts = 0
+let datedProgrammes = 0
+if (changedPages.size) {
+  for (const [id, p] of programmes) {
+    const { programme: next, dated } = dateQuoted(p, changedPages, now)
+    if (!dated) continue
+    const check = programmeSchema.safeParse(next)
+    if (!check.success) {
+      invalid.push(`${id}: ${check.error.issues.map((i) => `${i.path.join('.')}: ${i.message}`).join('; ')}`)
+      continue
+    }
+    datedFacts += dated
+    datedProgrammes++
+    programmes.set(id, next)
+    writeFileSync(programmeFile(id), formatJson(next))
+  }
+}
 for (const line of invalid) console.error(`not written, the Tier A result fails the schema: ${line}`)
 
 const llm = llmFromEnv()
@@ -128,12 +153,26 @@ const hold = (ids: Iterable<string>) => {
 hold(readToday.keys())
 const report = writeState()
 
-const { done, deferred } = await withinBudget(
-  toDraft,
-  (s) => draftFor(s, programmes.get(s.programme_id)!, reads.get(s) as Extract<Fetched, { ok: true }>, (tiers.get(s) as Extract<Tier, { tier: 'B' }>).reasons),
-  { parallel: draftParallel, deadline: draftDeadline },
-)
+// Pages of one programme are drafted one after another, each from the programme as the one
+// before left it, so a draft committed to main is never overwritten by the next.
+const lanes = new Map<string, Promise<unknown>>()
+const inReview = new Set<string>()
+const draftInLane = (s: Source): Promise<Draft> => {
+  const next = (lanes.get(s.programme_id) ?? Promise.resolve()).then(() =>
+    draftFor(s, programmes.get(s.programme_id)!, reads.get(s) as Extract<Fetched, { ok: true }>, (tiers.get(s) as Extract<Tier, { tier: 'B' }>).reasons))
+  lanes.set(s.programme_id, next.catch(() => {}))
+  return next
+}
+const { done, deferred } = await withinBudget(toDraft, draftInLane, { parallel: draftParallel, deadline: draftDeadline })
+let committed = 0
 for (const [s, draft] of done) {
+  if (draft.committed) {
+    for (const [path, content] of Object.entries(draft.files)) {
+      mkdirSync(dirname(join(process.cwd(), path)), { recursive: true })
+      writeFileSync(join(process.cwd(), path), content)
+    }
+    committed++
+  }
   writeFileSync(join(draftsDir, `${s.id}.json`), JSON.stringify(draft, null, 2))
   states[s.id] = readToday.get(s.id)!
 }
@@ -168,7 +207,8 @@ function writeState(): RunReport {
 const summary = [
   `### Refresh ${today}`,
   `Sources: ${report.sources.checked} checked, ${report.sources.unchanged} unchanged (Tier A), ${report.sources.changed} changed (Tier B), ${report.sources.failed} failed.`,
-  `Changed pages: ${covered.length} already proposed by an open PR, ${done.length} drafted, ${deferred.length} left for the next run (time budget).`,
+  `Changed pages: ${covered.length} already proposed by an open PR, ${done.length} drafted (${committed} committed to main, ${done.length - committed} for review), ${deferred.length} left for the next run (time budget).`,
+  `Dated without a PR: ${datedFacts} facts still quoted on changed pages, in ${datedProgrammes} programmes.`,
   `Calls closed: ${callsClosed}. Programmes not re-checked (a page they cite failed): ${report.programmes.not_rechecked}. Stale over 30 days: ${report.programmes.stale_over_30_days}.`,
   ...due.filter((s) => !reads.get(s)!.ok).map((s) => {
     const r = reads.get(s) as Extract<Fetched, { ok: false }>
@@ -215,11 +255,17 @@ async function draftFor(s: Source, p: Programme, read: Extract<Fetched, { ok: tr
       ...r.schemaErrors.map((e) => `- ${e}`),
       '',
       '---',
-      `Auto-merge is off (decisions/2026-11-01-refresh-auto-merge-off.md): check each quote on the page before merging. Merging also accepts this version of the page, so the next run compares against it.${runUrl ? ` Run: ${runUrl}` : ''}`,
+      `Only drafts the reviewer fully passes commit by themselves (decisions/2026-11-20-refresh-auto-commit-rule.md): check each quote on the page before merging. Merging also accepts this version of the page, so the next run compares against it.${runUrl ? ` Run: ${runUrl}` : ''}`,
     ].join('\n')
     // Only the schema's parsed value is ever written; a draft that fails the schema becomes an issue.
     if (!r.programme) return { ...base, files: {}, title, body, datesOnly: false, review: r.review, error: 'the draft does not fit the schema' }
     const key = proposalKey(s, read.hash, r.programme)
+    // A PR of this run is opened from main with its whole programme file, so a later commit to that
+    // programme would be undone by it: once one page goes to review, the programme's other pages do too.
+    const why = needsPerson(r, reasons) ?? (inReview.has(p.id) ? 'another page of this programme went to review in this run' : null)
+    // A clean draft goes straight to main: later drafts of this programme in the run start from it.
+    if (why) inReview.add(p.id)
+    else programmes.set(p.id, r.programme)
     return {
       ...base,
       key,
@@ -228,10 +274,11 @@ async function draftFor(s: Source, p: Programme, read: Extract<Fetched, { ok: tr
         [`data/checks/accepted/${s.id}.json`]: formatJson({ hash: read.hash, accepted_at: today } satisfies Accepted),
       },
       title: applied.length ? title : `${title} (dates only)`,
-      body: `${body}\n\n<!-- refresh-key: ${key} -->`,
+      body: `${body}\n${why ? `Needs a person: ${why}.` : 'Committed to main: the reviewer found nothing wrong.'}\n\n<!-- refresh-key: ${key} -->`,
       datesOnly: applied.length === 0,
       review: r.review,
       error: null,
+      committed: !why,
     }
   } catch (e) {
     const message = (e as Error).message
