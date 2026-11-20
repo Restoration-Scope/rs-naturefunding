@@ -38,7 +38,7 @@ const drafts: Draft[] = existsSync(draftsDir)
   ? readdirSync(draftsDir).filter((f) => f.endsWith('.json')).map((f) => JSON.parse(readFileSync(join(draftsDir, f), 'utf8')))
   : []
 const openPrs = json<{ number: number; url: string; headRefName: string; body: string }[]>(
-  ['gh', 'pr', 'list', '--label', 'refresh', '--state', 'open', '--json', 'number,url,headRefName,body', '--limit', '200'],
+  ['gh', 'pr', 'list', '--label', 'refresh', '--state', 'open', '--json', 'number,url,headRefName,body', '--limit', '1000'],
 )
 const log: string[] = []
 clearInterruptedGitOperation()
