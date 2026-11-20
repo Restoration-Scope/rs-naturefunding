@@ -38,6 +38,28 @@
   },
   "co_finance_required": true,
   "reporting": null,
+  "effort": {
+    "steps": [
+      "Grant application"
+    ],
+    "due": [
+      "2027-01-15"
+    ]
+  },
+  "eligibility": [
+    {
+      "rule": "Is a tax-exempt organization under Section 501(c)(3)",
+      "kind": "legal"
+    },
+    {
+      "rule": "Has a primary mission conserving or stewarding private lands",
+      "kind": "other"
+    },
+    {
+      "rule": "Has formally adopted the Alliance's Land Trust Standards and Practices before applying",
+      "kind": "capacity"
+    }
+  ],
   "calls": [
     {
       "id": "2027-round",
@@ -46,10 +68,10 @@
       "status": "open",
       "opens": null,
       "deadline": {
-        "date": "2027-01-11",
+        "date": "2027-01-15",
         "time": "17:00",
         "timezone": "America/New_York",
-        "text": "5:00 p.m. EST on Monday, January 11, 2027"
+        "text": "Friday, Jan. 15, 2027, by 5 p.m. Eastern"
       },
       "evidence": {
         "status": {
@@ -59,10 +81,10 @@
           "method": "human"
         },
         "deadline": {
-          "source_url": "https://dec.ny.gov/nature/open-space/grant-partnerships-land-trust-alliance",
-          "quote": "Applications are due by 5:00 p.m. EST on Monday, January 11, 2027.",
-          "checked_at": "2026-11-09",
-          "method": "human"
+          "source_url": "https://landtrustalliance.org/resources/connect/field-services/new-york/new-york-state-conservation-partnership-program",
+          "quote": "The deadline for all applications is Friday, Jan. 15, 2027, by 5 p.m. Eastern.",
+          "checked_at": "2026-11-20",
+          "method": "page"
         }
       }
     }
@@ -109,7 +131,56 @@
       "quote": "The New York State Conservation Partnership Program offers competitive matching grants to qualified New York land trusts",
       "checked_at": "2026-11-09",
       "method": "human"
-    }
+    },
+    "effort": [
+      {
+        "source_url": "https://landtrustalliance.org/resources/connect/field-services/new-york/new-york-state-conservation-partnership-program",
+        "quote": "The deadline for all applications is Friday, Jan. 15, 2027, by 5 p.m. Eastern.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "eligibility": [
+      {
+        "source_url": "https://landtrustalliance.org/resources/connect/field-services/new-york/new-york-state-conservation-partnership-program",
+        "quote": "Applicant is a tax-exempt organization under Section 501 (c)(3) of the Internal Revenue Code.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://landtrustalliance.org/resources/connect/field-services/new-york/new-york-state-conservation-partnership-program",
+        "quote": "Applicants' primary mission is the conservation and/or stewardship of private lands.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://landtrustalliance.org/resources/connect/field-services/new-york/new-york-state-conservation-partnership-program",
+        "quote": "Applicant has formally adopted the Alliance's Land Trust Standards and Practices (revised 2017) by submitting a board resolution to the Land Trust Alliance.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "co_finance": {
+      "source_url": "https://a.storyblok.com/f/120093/x/c1572603a1/nyscpp-request-for-applications-2027_final.pdf",
+      "quote": "A minimum 25% match is required for all Conservation Partnership Program Grants. The match is based on the total project budget, with the grant funds covering up to 75% and the applicant match covering at least 25%. Depending on the grant category, the required match may be cash or a combination of cash and in-kind.",
+      "checked_at": "2026-11-20",
+      "method": "page"
+    },
+    "after_award": [
+      {
+        "source_url": "https://a.storyblok.com/f/120093/x/c1572603a1/nyscpp-request-for-applications-2027_final.pdf",
+        "quote": "Interim reports are due by April 30, 2028. Final reports are due 30 days after the end of the grant period or no later than April 30, 2029.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ]
   },
-  "checked_at": "2026-11-09"
+  "checked_at": "2026-11-09",
+  "co_finance": {
+    "min_share": 25,
+    "in_kind": true
+  },
+  "after_award": {
+    "reports": "interim_and_final"
+  }
 }

@@ -1,0 +1,108 @@
+{
+  "id": "oak-foundation-environment",
+  "read_on": "2026-11-20",
+  "prompt_version": "req-2026-11-20.1",
+  "models": ["cursor:gpt-5.6-luna-high"],
+  "complete": false,
+  "reasons": [
+    "13 links could not be ranked without Jev",
+    "7 links could not be ranked without Jev",
+    "https://oakfnd.org/wp-content/uploads/2019/11/Oak-Foundation-Grant-application-process-and-timeline.pdf: page 1 is an image: needs OCR",
+    "the text names a document with rules that was not read: document about our people-centred approach",
+    "Jev did not check this reading, so an absent fact is not known to be absent"
+  ],
+  "requirements_checked": false,
+  "documents": [
+    {
+      "ref": "D1",
+      "url": "https://oakfnd.org/programmes/environment/",
+      "final_url": "https://oakfnd.org/programmes/environment/",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 9450,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:63d58db49cf9b4596bd8f50154aa8c7f9eba3ce13a814e06d04afd64af5ae419"
+    },
+    {
+      "ref": "D2",
+      "url": "https://oakfnd.org/grant-making/",
+      "final_url": "https://oakfnd.org/grant-making/",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 9272,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:eec795cc000d15de3ef3e8f7be8ae3cefc244046e6fddaf4882968badb051310"
+    },
+    {
+      "ref": "D3",
+      "url": "https://oakfnd.org/faq/",
+      "final_url": "https://oakfnd.org/faq-applying-for-funding-what-we-fund/",
+      "from": "https://oakfnd.org/programmes/environment/",
+      "anchor": "FAQ page",
+      "depth": 1,
+      "pdf": false,
+      "chars": 21495,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:0743475d9936600131d60ff01e4fc145f0a112c45e16506225aa619d4c0e1f67"
+    },
+    {
+      "ref": "D4",
+      "url": "https://oakfnd.org/privacy-policy/",
+      "final_url": "https://oakfnd.org/privacy-policy/",
+      "from": "https://oakfnd.org/programmes/environment/",
+      "anchor": "Privacy policy, security protocols and terms of use",
+      "depth": 1,
+      "pdf": false,
+      "chars": 14356,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:dee144c89b7a17a931761afaa7a55556e4189c1097e0ead5684e8d1d8dad40f4"
+    },
+    {
+      "ref": "D5",
+      "url": "https://oakfnd.org/wp-content/uploads/2019/11/Oak-Foundation-Grant-application-process-and-timeline.pdf",
+      "final_url": "https://oakfnd.org/wp-content/uploads/2019/11/Oak-Foundation-Grant-application-process-and-timeline.pdf",
+      "from": "https://oakfnd.org/grant-making/",
+      "anchor": "Read this document for more information on our timeline and process.",
+      "depth": 1,
+      "pdf": true,
+      "chars": 3524,
+      "pages": 3,
+      "low_text": false,
+      "hash": "sha256:a0f884a97df25b522b6373761aa5ff58065b4e3284e6bb72527cf26368cb0715"
+    }
+  ],
+  "failures": [
+    {
+      "url": "https://oakfnd.org/wp-content/uploads/2019/11/Oak-Foundation-Grant-application-process-and-timeline.pdf",
+      "from": "https://oakfnd.org/grant-making/",
+      "kind": "low_text",
+      "message": "page 1 is an image: needs OCR"
+    }
+  ],
+  "skipped_links": 125,
+  "chunks": [{ "id": "all", "docs": ["D1", "D2", "D3", "D4", "D5"], "chars": 58565 }],
+  "outcomes": {
+    "eligibility": "stated",
+    "documents": "not_found",
+    "effort": "stated",
+    "co_finance": "stated",
+    "consortium": "not_found",
+    "after_award": "not_found"
+  },
+  "written": ["eligibility", "effort", "co_finance"],
+  "escalated": [],
+  "flags": [],
+  "notes": [
+    "extractor: The Environment Programme has three sub-programmes with different geographic scopes. Oak accepts unsolicited Letters of Enquiry on a rolling basis; full applications are invitation-only. The 50% project and 20% organisational budget limits are stated as general limits with exceptions discussed with the programme officer.",
+    "source oak-foundation-environment-3: added for https://oakfnd.org/faq/"
+  ],
+  "usd": 0
+}
