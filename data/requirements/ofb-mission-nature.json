@@ -1,0 +1,151 @@
+{
+  "id": "ofb-mission-nature",
+  "read_on": "2026-11-20",
+  "prompt_version": "req-2026-11-20.1",
+  "models": ["cursor:gpt-5.6-luna-high"],
+  "complete": false,
+  "reasons": [
+    "20 links could not be ranked without Jev",
+    "22 links could not be ranked without Jev",
+    "https://ofb.gouv.fr/faq?page=0 would not open (robots: robots.txt disallows this page)",
+    "https://ofb.gouv.fr/faq?page=1 would not open (robots: robots.txt disallows this page)",
+    "https://ofb.gouv.fr/faq?page=2 would not open (robots: robots.txt disallows this page)",
+    "https://ofb.gouv.fr/faq?page=3 would not open (robots: robots.txt disallows this page)",
+    "https://ofb.gouv.fr/faq?page=4 would not open (robots: robots.txt disallows this page)",
+    "the crawl bound left https://ofb.gouv.fr/faq?page=5 unread",
+    "the crawl bound left https://ofb.gouv.fr/faq?page=6 unread",
+    "the crawl bound left https://ofb.gouv.fr/faq?page=7 unread",
+    "the crawl bound left https://ofb.gouv.fr/faq?page=8 unread",
+    "the text names a document with rules that was not read: Programme d'intervention de l'OFB — https://ofb.gouv.fr/doc/le-programme-intervention",
+    "Jev did not check this reading, so an absent fact is not known to be absent"
+  ],
+  "requirements_checked": false,
+  "documents": [
+    {
+      "ref": "D1",
+      "url": "https://ofb.gouv.fr/financements/aap-mission-nature",
+      "final_url": "https://ofb.gouv.fr/financements/aap-mission-nature",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 11861,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:43fd76f5b08f6fe2687e1c6bf495567b543bf97adf45974981c6d9f96dd452b4"
+    },
+    {
+      "ref": "D2",
+      "url": "https://ofb.gouv.fr/faq",
+      "final_url": "https://ofb.gouv.fr/faq",
+      "from": "https://ofb.gouv.fr/financements/aap-mission-nature",
+      "anchor": "FAQ",
+      "depth": 1,
+      "pdf": false,
+      "chars": 20460,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:c4c9b10d98a5ed440be5586beac44b56889943c82b56a57ab12430cd8b05c6ad"
+    },
+    {
+      "ref": "D3",
+      "url": "https://ofb.gouv.fr/sites/ofb-gouv-fr/files/2026-11/ofb_26_1464_aap_mission_nature_2027_reglement_administratif.pdf",
+      "final_url": "https://ofb.gouv.fr/sites/ofb-gouv-fr/files/2026-11/ofb_26_1464_aap_mission_nature_2027_reglement_administratif.pdf",
+      "from": "https://ofb.gouv.fr/financements/aap-mission-nature",
+      "anchor": "Règlement administratif de l'appel à projets Mission Nature 2027 PDF - 701.88 Ko",
+      "depth": 1,
+      "pdf": true,
+      "chars": 71362,
+      "pages": 24,
+      "low_text": false,
+      "hash": "sha256:31c8bd863a913dae84b6cac7bc14463578af431b288f315f1c8758e4d8d0202c"
+    },
+    {
+      "ref": "D4",
+      "url": "https://ofb.gouv.fr/evenements/webinaire-de-presentation-de-appel-a-projets-mission-nature-2027",
+      "final_url": "https://ofb.gouv.fr/evenements/webinaire-de-presentation-de-appel-a-projets-mission-nature-2027",
+      "from": "https://ofb.gouv.fr/financements/aap-mission-nature",
+      "anchor": "Webinaire de présentation de l'appel à projets Mission Nature 2027",
+      "depth": 1,
+      "pdf": false,
+      "chars": 11217,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:2698ffe1f79d116e94541dce2df0a03c0503c2e6bf069cbe7e20b010b86885d5"
+    }
+  ],
+  "failures": [
+    {
+      "url": "https://ofb.gouv.fr/faq?page=0",
+      "from": "https://ofb.gouv.fr/faq",
+      "kind": "robots",
+      "message": "robots.txt disallows this page"
+    },
+    {
+      "url": "https://ofb.gouv.fr/faq?page=1",
+      "from": "https://ofb.gouv.fr/faq",
+      "kind": "robots",
+      "message": "robots.txt disallows this page"
+    },
+    {
+      "url": "https://ofb.gouv.fr/faq?page=2",
+      "from": "https://ofb.gouv.fr/faq",
+      "kind": "robots",
+      "message": "robots.txt disallows this page"
+    },
+    {
+      "url": "https://ofb.gouv.fr/faq?page=3",
+      "from": "https://ofb.gouv.fr/faq",
+      "kind": "robots",
+      "message": "robots.txt disallows this page"
+    },
+    {
+      "url": "https://ofb.gouv.fr/faq?page=4",
+      "from": "https://ofb.gouv.fr/faq",
+      "kind": "robots",
+      "message": "robots.txt disallows this page"
+    },
+    {
+      "url": "https://ofb.gouv.fr/faq?page=5",
+      "from": "https://ofb.gouv.fr/faq",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://ofb.gouv.fr/faq?page=6",
+      "from": "https://ofb.gouv.fr/faq",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://ofb.gouv.fr/faq?page=7",
+      "from": "https://ofb.gouv.fr/faq",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://ofb.gouv.fr/faq?page=8",
+      "from": "https://ofb.gouv.fr/faq",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    }
+  ],
+  "skipped_links": 685,
+  "chunks": [{ "id": "all", "docs": ["D1", "D2", "D3", "D4"], "chars": 115440 }],
+  "outcomes": {
+    "eligibility": "stated",
+    "documents": "stated",
+    "effort": "stated",
+    "co_finance": "stated",
+    "consortium": "stated",
+    "after_award": "stated"
+  },
+  "written": ["eligibility", "documents", "effort", "co_finance", "consortium", "after_award"],
+  "escalated": [],
+  "flags": [],
+  "notes": [
+    "extractor: The supplied page and regulation describe the 5th edition, Mission Nature 2027, rather than the listed 4th edition 2026; this extraction uses the 2027 rules. D2 contains no programme-specific requirements in the supplied text.",
+    "source ofb-mission-nature-2: added for https://ofb.gouv.fr/sites/ofb-gouv-fr/files/2026-11/ofb_26_1464_aap_mission_nature_2027_reglement_administratif.pdf"
+  ],
+  "usd": 0
+}
