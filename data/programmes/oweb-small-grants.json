@@ -1,12 +1,19 @@
 {
   "id": "oweb-small-grants",
   "name": "OWEB Small Grant Program",
-  "funder": { "name": "Oregon Watershed Enhancement Board", "url": "https://www.oregon.gov/oweb/" },
+  "funder": {
+    "name": "Oregon Watershed Enhancement Board",
+    "url": "https://www.oregon.gov/oweb/"
+  },
   "administered_by": null,
   "parent": null,
   "url": "https://www.oregon.gov/oweb/grants/small-grants/pages/small-grants.aspx",
   "summary": "Competitive grants of up to $20,000 for on-the-ground watershed restoration in Oregon, such as riparian planting, fish passage and erosion control, reviewed by regional Small Grant Teams through the year.",
-  "approaches": ["freshwater", "wetlands", "sustainable_land_use"],
+  "approaches": [
+    "freshwater",
+    "wetlands",
+    "sustainable_land_use"
+  ],
   "applicant_types": [
     "indigenous_organization",
     "community_group",
@@ -14,12 +21,61 @@
     "government",
     "research_institution"
   ],
-  "geography": { "scope": "countries", "countries": ["US"], "label": "Oregon" },
+  "geography": {
+    "scope": "countries",
+    "countries": [
+      "US"
+    ],
+    "label": "Oregon"
+  },
   "access": "direct",
   "window": "rolling",
-  "amount": { "currency": "USD", "max": 20000 },
+  "amount": {
+    "currency": "USD",
+    "max": 20000
+  },
   "co_finance_required": true,
   "reporting": null,
+  "effort": {
+    "steps": [
+      "Small Grant Projects application",
+      "Small Grant Team review"
+    ],
+    "due": [
+      "2027-04-15",
+      null
+    ]
+  },
+  "eligibility": [
+    {
+      "rule": "Be a legally established entity",
+      "kind": "legal"
+    },
+    {
+      "rule": "Clearly demonstrate a watershed benefit to aquatic species, wildlife, or watershed health",
+      "kind": "project"
+    },
+    {
+      "rule": "Use and clearly identify technical guidance from at least one approved source",
+      "kind": "project"
+    },
+    {
+      "rule": "Be distinct from projects already funded or being considered by OWEB",
+      "kind": "project"
+    },
+    {
+      "rule": "Is an on-the-ground restoration project",
+      "kind": "project"
+    }
+  ],
+  "after_award": {
+    "reports": "unspecified"
+  },
+  "documents": [
+    "Pre-project site photos",
+    "Map of the project site",
+    "Cooperative landowner agreement signed by landowners"
+  ],
   "calls": [
     {
       "id": "rolling",
@@ -72,10 +128,93 @@
     },
     "co_finance_required": {
       "source_url": "https://www.oregon.gov/oweb/grants/small-grants/pages/small-grants.aspx",
-      "quote": "Funding Max Request: $20,000 Match Requirement: 25%",
+      "quote": "Match Requirement: 25%",
+      "checked_at": "2026-11-20",
+      "method": "page"
+    },
+    "effort": [
+      {
+        "source_url": "https://www.oregon.gov/oweb/grants/small-grants/pages/small-grants.aspx",
+        "quote": "Small Grant Areas accept applications year-round until April 15, 2027.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.oregon.gov/oweb/grants/small-grants/pages/small-grants.aspx",
+        "quote": "At a minimum, all Teams must conduct reviews on submitted applications four times in the state fiscal year (July 1 through June 30).",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "eligibility": [
+      {
+        "source_url": "https://www.oregon.gov/oweb/grants/small-grants/pages/small-grants.aspx",
+        "quote": "OWEB may enter into agreements only with legally established entities.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.oregon.gov/oweb/grants/small-grants/pages/small-grants.aspx",
+        "quote": "Clearly demonstrates watershed benefit to aquatic species, wildlife, or watershed health.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.oregon.gov/oweb/grants/small-grants/pages/small-grants.aspx",
+        "quote": "Uses and clearly identifies (by practice code or page number and paragraph) in the small grant application technical guidance from at least one of the eight approved sources.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.oregon.gov/oweb/grants/small-grants/pages/small-grants.aspx",
+        "quote": "Distinct and different from projects already funded (or being considered for funding) by OWEB.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.oregon.gov/oweb/grants/small-grants/pages/small-grants.aspx",
+        "quote": "On-the-ground restoration project in Oregon.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "after_award": [
+      {
+        "source_url": "https://www.oregon.gov/oweb/manage-grant/Pages/report-to-oweb.aspx",
+        "quote": "Post-Implementation Status Reports (PISRs) are required for all OWEB restoration grants.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "documents": [
+      {
+        "source_url": "https://www.oregon.gov/oweb/Documents/SGP-Application-Guidance.pdf",
+        "quote": "Pre-project Photos* Attach color photographs of the site showing current conditions and setting post-project monitoring photo points.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.oregon.gov/oweb/Documents/SGP-Application-Guidance.pdf",
+        "quote": "Maps * Attach a map of the project site with sufficient detail to show the location of the work to be performed.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.oregon.gov/oweb/Documents/SGP-Application-Guidance.pdf",
+        "quote": "Cooperative Landowner Agreement* Landowners must sign a cooperative agreement.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "co_finance": {
+      "source_url": "https://www.oregon.gov/oweb/grants/small-grants/pages/small-grants.aspx",
+      "quote": "Demonstrates 25% secured match funding, based on the total OWEB award.",
       "checked_at": "2026-11-20",
       "method": "page"
     }
   },
-  "checked_at": "2026-11-20"
+  "checked_at": "2026-11-20",
+  "co_finance": {
+    "ratio": "1:4"
+  }
 }

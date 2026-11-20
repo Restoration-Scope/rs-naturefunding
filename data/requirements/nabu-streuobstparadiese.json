@@ -1,0 +1,61 @@
+{
+  "id": "nabu-streuobstparadiese",
+  "read_on": "2026-11-20",
+  "prompt_version": "req-2026-11-20.1",
+  "models": ["cursor:gpt-5.6-luna-high"],
+  "complete": false,
+  "reasons": [
+    "8 links could not be ranked without Jev",
+    "3 links could not be ranked without Jev",
+    "the text names a document with rules that was not read: AgoraNatura How-to guide: https://www.agora-natura.de/howto",
+    "Jev did not check this reading, so an absent fact is not known to be absent"
+  ],
+  "requirements_checked": false,
+  "documents": [
+    {
+      "ref": "D1",
+      "url": "https://www.agora-natura.de/gemeinsam-fuer-streuobstparadiese",
+      "final_url": "https://www.agora-natura.de/gemeinsam-fuer-streuobstparadiese",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 3762,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:fdb62bea77bdc139ceba35c1283dc3b495bf6cba97a0b78c28bbba1b0e0365e1"
+    },
+    {
+      "ref": "D2",
+      "url": "https://www.agora-natura.de/faq",
+      "final_url": "https://www.agora-natura.de/faq",
+      "from": "https://www.agora-natura.de/gemeinsam-fuer-streuobstparadiese",
+      "anchor": "FAQ",
+      "depth": 1,
+      "pdf": false,
+      "chars": 7721,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:47a6cd2dfda4faa90712aa79b24885f1ba4352532b49134f12e2098563df0088"
+    }
+  ],
+  "failures": [],
+  "skipped_links": 40,
+  "chunks": [{ "id": "all", "docs": ["D1", "D2"], "chars": 11677 }],
+  "outcomes": {
+    "eligibility": "stated",
+    "documents": "stated",
+    "effort": "stated",
+    "co_finance": "stated",
+    "consortium": "not_found",
+    "after_award": "not_found"
+  },
+  "written": ["eligibility", "documents", "effort", "co_finance"],
+  "escalated": [],
+  "flags": [],
+  "notes": [
+    "extractor: The 2026 call closed on 2026-08-31. The next call is announced for summer 2027, but its deadline and any updated rules are not stated. The public-funding exclusion is qualified by “in der Regel” and is not treated as a hard eligibility rule.",
+    "source nabu-streuobstparadiese-2: added for https://www.agora-natura.de/faq"
+  ],
+  "usd": 0
+}

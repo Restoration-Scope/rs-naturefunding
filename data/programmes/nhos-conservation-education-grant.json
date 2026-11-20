@@ -17,6 +17,23 @@
   "amount": { "currency": "USD", "min": 100, "max": 1000 },
   "co_finance_required": null,
   "reporting": null,
+  "effort": { "steps": ["Application submission", "Conservation and Education Committee review"] },
+  "eligibility": [
+    {
+      "rule": "Requesting a specific project, not general funding within a larger project",
+      "kind": "project"
+    },
+    {
+      "rule": "Not using the grant for conference speaker, attendee or travel expenses",
+      "kind": "project"
+    },
+    {
+      "rule": "Funds administered and accounted for by a not-for-profit organisation",
+      "kind": "legal"
+    }
+  ],
+  "after_award": { "reports": "final" },
+  "documents": ["Two written recommendations"],
   "calls": [
     {
       "id": "rolling",
@@ -59,7 +76,57 @@
       "quote": "Range of grant monies is from $100-$1000.",
       "checked_at": "2026-11-20",
       "method": "page"
-    }
+    },
+    "effort": [
+      {
+        "source_url": "https://newhampshireorchidsociety.wildapricot.org/grant_application/",
+        "quote": "Applications may be sent by email to conservation@nhorchids.org or by postal mail to:",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://newhampshireorchidsociety.wildapricot.org/grant_application/",
+        "quote": "Applications are presented to the Conservation and Education Committee for review",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "eligibility": [
+      {
+        "source_url": "https://newhampshireorchidsociety.wildapricot.org/grant_application/",
+        "quote": "Request must be specific, \"general funding\" within a much larger project will not be awarded.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://newhampshireorchidsociety.wildapricot.org/grant_application/",
+        "quote": "This grant process is specifically not to be used to cover speaker or attendee expenses at conferences or gatherings, nor any conference-related travel expenses.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://newhampshireorchidsociety.wildapricot.org/resources/Documents/Online%20Forms/NHOS%20Grant%20Application%20Form.docx",
+        "quote": "NHOS policy as a not-for profit, requires administration and accounting of the funds by another not-for -profit.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "after_award": [
+      {
+        "source_url": "https://newhampshireorchidsociety.wildapricot.org/resources/Documents/Online%20Forms/NHOS%20Grant%20Application%20Form.docx",
+        "quote": "This report may include a talk at a Society meeting or show, a written report, photo essay etc. and shall be scheduled and completed within 1 year of receiving the grant unless an extension is authorized by NHOS.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "documents": [
+      {
+        "source_url": "https://newhampshireorchidsociety.wildapricot.org/resources/Documents/Online%20Forms/NHOS%20Grant%20Application%20Form.docx",
+        "quote": "Two written recommendations are required by someone who is not directly involved with the project attesting to the relevance of the project and the qualifications of the applicant including their reliability to fulfill the terms of the grant.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ]
   },
   "checked_at": "2026-11-20"
 }

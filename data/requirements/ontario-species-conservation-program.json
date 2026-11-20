@@ -1,0 +1,46 @@
+{
+  "id": "ontario-species-conservation-program",
+  "read_on": "2026-11-20",
+  "prompt_version": "req-2026-11-20.1",
+  "models": ["cursor:gpt-5.6-luna-high"],
+  "complete": false,
+  "reasons": [
+    "8 links could not be ranked without Jev",
+    "the text names a document with rules that was not read: 2027-28 Species Conservation Program Guidelines",
+    "Jev did not check this reading, so an absent fact is not known to be absent"
+  ],
+  "requirements_checked": false,
+  "documents": [
+    {
+      "ref": "D1",
+      "url": "https://www.ontario.ca/page/species-conservation-program",
+      "final_url": "https://www.ontario.ca/page/species-conservation-program",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 9603,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:10dd309cda22cf6009436153490aac87ed92fb89e0ed2fc31c702efbd3f97714"
+    }
+  ],
+  "failures": [],
+  "skipped_links": 67,
+  "chunks": [{ "id": "all", "docs": ["D1"], "chars": 9672 }],
+  "outcomes": {
+    "eligibility": "stated",
+    "documents": "not_found",
+    "effort": "stated",
+    "co_finance": "not_found",
+    "consortium": "not_found",
+    "after_award": "not_found"
+  },
+  "written": ["eligibility", "effort"],
+  "escalated": [],
+  "flags": [],
+  "notes": [
+    "extractor: The page says further eligibility requirements and annual funding priorities are in the 2027-28 Species Conservation Program Guidelines."
+  ],
+  "usd": 0
+}
