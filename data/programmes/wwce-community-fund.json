@@ -12,63 +12,32 @@
   "parent": null,
   "url": "https://wwce.org/community/apply-for-a-grant/",
   "summary": "Small grants for Wiltshire community and voluntary groups whose projects support wildlife conservation, climate mitigation, carbon reduction or fuel poverty relief, with a panel deciding awards several times a year.",
-  "approaches": [
-    "species_conservation",
-    "community_conservation"
-  ],
-  "applicant_types": [
-    "community_group"
-  ],
-  "geography": {
-    "scope": "countries",
-    "countries": [
-      "GB"
-    ],
-    "label": "Wiltshire, England"
-  },
+  "approaches": ["species_conservation", "community_conservation"],
+  "applicant_types": ["community_group"],
+  "geography": { "scope": "countries", "countries": ["GB"], "label": "Wiltshire, England" },
   "access": "direct",
   "window": "rolling",
-  "amount": {
-    "currency": "GBP",
-    "max": 5000
-  },
+  "amount": { "currency": "GBP", "max": 5000, "note": "smaller grants up to £500 also available" },
   "co_finance_required": null,
   "reporting": null,
   "effort": {
-    "steps": [
-      "Standard grant application or small grant application",
-      "Panel review and scoring"
-    ]
+    "steps": ["Standard grant application or small grant application", "Panel review and scoring"]
   },
   "eligibility": [
-    {
-      "rule": "Have charitable aims and apply for a charitable project",
-      "kind": "project"
-    },
+    { "rule": "Have charitable aims and apply for a charitable project", "kind": "project" },
     {
       "rule": "Have a formal governing document, a management committee and a bank account",
       "kind": "legal"
     },
-    {
-      "rule": "Have a safeguarding policy",
-      "kind": "capacity"
-    },
-    {
-      "rule": "Have relevant insurance and a basic Health and Safety policy",
-      "kind": "capacity"
-    },
-    {
-      "rule": "Project does not start before the grant decision",
-      "kind": "project"
-    },
+    { "rule": "Have a safeguarding policy", "kind": "capacity" },
+    { "rule": "Have relevant insurance and a basic Health and Safety policy", "kind": "capacity" },
+    { "rule": "Project does not start before the grant decision", "kind": "project" },
     {
       "rule": "Not a commercial company, statutory body, or group promoting political or religious aims",
       "kind": "legal"
     }
   ],
-  "after_award": {
-    "reports": "final"
-  },
+  "after_award": { "reports": "final" },
   "documents": [
     "Constitution, governing document or set of rules",
     "Most recent annual accounts, or last year's income and expenditure and current budget",
@@ -84,7 +53,6 @@
       "status": "open",
       "opens": null,
       "deadline": null,
-      "note": "Panel meets three times a year; 2027 meeting dates not yet confirmed",
       "evidence": {
         "status": {
           "source_url": "https://wwce.org/community/apply-for-a-grant/",
@@ -92,32 +60,50 @@
           "checked_at": "2026-11-15",
           "method": "page"
         }
-      }
+      },
+      "note": "Panel meets three times a year; 2027 meeting dates not yet confirmed"
+    },
+    {
+      "id": "small-grants",
+      "label": "Community Fund – small grant applications (rolling)",
+      "url": "https://wwce.org/community/apply-for-a-grant/",
+      "status": "open",
+      "opens": null,
+      "deadline": null,
+      "evidence": {
+        "status": {
+          "source_url": "https://wwce.org/community/apply-for-a-grant/",
+          "quote": "The fund is currently open for applications and the panel meet twice a year to decide awards.",
+          "checked_at": "2026-11-20",
+          "method": "page"
+        }
+      },
+      "note": "Small grant applications can be submitted and considered outside of the meetings."
     }
   ],
   "evidence": {
     "administered_by": {
       "source_url": "https://wwce.org/community/apply-for-a-grant/",
       "quote": "The Community Fund is managed by a Community Fund Panel and administered by Wiltshire Wildlife Trust.",
-      "checked_at": "2026-11-15",
+      "checked_at": "2026-11-20",
       "method": "page"
     },
     "applicant_types": {
       "source_url": "https://wwce.org/community/apply-for-a-grant/",
       "quote": "Grants have been allocated to a range of community and voluntary group across Wiltshire",
-      "checked_at": "2026-11-15",
+      "checked_at": "2026-11-20",
       "method": "page"
     },
     "geography": {
       "source_url": "https://wwce.org/community/apply-for-a-grant/",
       "quote": "To be considered for funding, the objectives of your Wiltshire-based project should reflect WWCE's own aims.",
-      "checked_at": "2026-11-15",
+      "checked_at": "2026-11-20",
       "method": "page"
     },
     "access": {
       "source_url": "https://wwce.org/community/apply-for-a-grant/",
       "quote": "Projects seeking up to £5000 can apply using our grant application form",
-      "checked_at": "2026-11-15",
+      "checked_at": "2026-11-20",
       "method": "page"
     },
     "window": {
@@ -128,8 +114,8 @@
     },
     "amount": {
       "source_url": "https://wwce.org/community/apply-for-a-grant/",
-      "quote": "Projects seeking up to £5000 can apply using our grant application form",
-      "checked_at": "2026-11-15",
+      "quote": "Projects seeking up to £5000 can apply using our grant application form, while those in need of a smaller boost of up to £500 can use our small grants application form.",
+      "checked_at": "2026-11-20",
       "method": "page"
     },
     "effort": [
