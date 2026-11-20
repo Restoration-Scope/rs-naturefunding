@@ -1,19 +1,59 @@
 {
   "id": "wcb-inland-wetlands-conservation",
   "name": "Inland Wetlands Conservation Program",
-  "funder": { "name": "California Wildlife Conservation Board", "url": "https://wcb.ca.gov/" },
+  "funder": {
+    "name": "California Wildlife Conservation Board",
+    "url": "https://wcb.ca.gov/"
+  },
   "administered_by": null,
   "parent": null,
   "url": "https://wcb.ca.gov/Programs/Wetlands",
   "summary": "California state funding for protecting, restoring and enhancing wetlands and associated habitat on the Central Valley floor, in support of the Central Valley Joint Venture's bird population goals.",
-  "approaches": ["wetlands", "species_conservation", "grasslands", "protected_areas"],
-  "applicant_types": ["ngo", "government"],
-  "geography": { "scope": "countries", "countries": ["US"], "label": "Central Valley, California" },
+  "approaches": [
+    "wetlands",
+    "species_conservation",
+    "grasslands",
+    "protected_areas"
+  ],
+  "applicant_types": [
+    "ngo",
+    "government"
+  ],
+  "geography": {
+    "scope": "countries",
+    "countries": [
+      "US"
+    ],
+    "label": "Central Valley, California"
+  },
   "access": "direct",
   "window": "unspecified",
   "amount": null,
-  "co_finance_required": null,
+  "co_finance_required": false,
   "reporting": null,
+  "effort": {
+    "steps": [
+      "Pre-application",
+      "Full application, if invited"
+    ]
+  },
+  "eligibility": [
+    {
+      "rule": "Project provides protected/restored biodiversity, climate action, or expanded public access to nature",
+      "kind": "project"
+    },
+    {
+      "rule": "Implementation project has intermediate or advanced design plans",
+      "kind": "project"
+    },
+    {
+      "rule": "Acquisition is from a willing seller and does not exceed fair market value",
+      "kind": "project"
+    }
+  ],
+  "after_award": {
+    "reports": "final"
+  },
   "calls": [
     {
       "id": "project-portal",
@@ -50,7 +90,55 @@
       "quote": "Unless otherwise limited by applicable funding sources or individual program guidelines, WCB has the authority under FGC section 1350(c) to award grants to 501(c)(3) nonprofit organizations, local governmental agencies, federal agencies, state agencies, and California Native American tribes.",
       "checked_at": "2026-11-20",
       "method": "page"
-    }
+    },
+    "co_finance_required": {
+      "source_url": "https://nrm.dfg.ca.gov/FileHandler.ashx?DocumentID=199421",
+      "quote": "Cost share is not required but may be beneficial, in particular to complete a larger project.",
+      "checked_at": "2026-11-20",
+      "method": "page"
+    },
+    "effort": [
+      {
+        "source_url": "https://nrm.dfg.ca.gov/FileHandler.ashx?DocumentID=199421",
+        "quote": "Applicants will first submit a Pre-application.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://nrm.dfg.ca.gov/FileHandler.ashx?DocumentID=199421",
+        "quote": "WCB staff will select Pre-applications to move forward and will invite the selected applicants to submit Full Applications.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "eligibility": [
+      {
+        "source_url": "https://nrm.dfg.ca.gov/FileHandler.ashx?DocumentID=199421",
+        "quote": "All projects shall provide one or more of the following benefits, as identified in WCB's Strategic Plan:  Protected or restored biodiversity;  Climate change action; and/or  Expanded public access to nature.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://nrm.dfg.ca.gov/FileHandler.ashx?DocumentID=199421",
+        "quote": "Implementation applications must include intermediate or advanced design plans (e.g., design plans at ~65% level of development or higher).",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://nrm.dfg.ca.gov/FileHandler.ashx?DocumentID=199421",
+        "quote": "Acquisitions, in the form of conservation easement, water rights, and fee purchases, must be from willing sellers and at a price that does not exceed the fair market value.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "after_award": [
+      {
+        "source_url": "https://nrm.dfg.ca.gov/FileHandler.ashx?DocumentID=199421",
+        "quote": "All grantees doing restoration, development, scientific studies, and planning will be required to provide a final report.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ]
   },
   "checked_at": "2026-11-20"
 }

@@ -1,0 +1,66 @@
+{
+  "id": "zaa-conservation-initiatives-grants",
+  "read_on": "2026-11-20",
+  "prompt_version": "req-2026-11-20.1",
+  "models": ["cursor:gpt-5.6-luna-high"],
+  "complete": false,
+  "reasons": [
+    "5 links could not be ranked without Jev",
+    "https://storage.googleapis.com/msgsndr/GZkEnjj191nalXyulDao/media/66ec5524d3594daaa9fdf9ae.pdf: a document on another site: without Jev it can’t be confirmed as the funder’s, so it is not used",
+    "https://storage.googleapis.com/msgsndr/GZkEnjj191nalXyulDao/media/689f637724858a59631d6f5a.pdf: a document on another site: without Jev it can’t be confirmed as the funder’s, so it is not used",
+    "https://storage.googleapis.com/msgsndr/GZkEnjj191nalXyulDao/media/689f63fbbb58f58cfb6af45a.pdf: a document on another site: without Jev it can’t be confirmed as the funder’s, so it is not used",
+    "the text names a document with rules that was not read: Conservation Factsheet",
+    "Jev did not check this reading, so an absent fact is not known to be absent"
+  ],
+  "requirements_checked": false,
+  "documents": [
+    {
+      "ref": "D1",
+      "url": "https://zooassociation.org/conservation-grants",
+      "final_url": "https://zooassociation.org/conservation-grants",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 26375,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:c8cc3e504416d5560f1cb02082bdf82f15d6a086cd4b2dc5b706d6bc038f6c13"
+    }
+  ],
+  "failures": [
+    {
+      "url": "https://storage.googleapis.com/msgsndr/GZkEnjj191nalXyulDao/media/66ec5524d3594daaa9fdf9ae.pdf",
+      "from": "https://zooassociation.org/conservation-grants",
+      "kind": "offsite",
+      "message": "a document on another site: without Jev it can’t be confirmed as the funder’s, so it is not used"
+    },
+    {
+      "url": "https://storage.googleapis.com/msgsndr/GZkEnjj191nalXyulDao/media/689f637724858a59631d6f5a.pdf",
+      "from": "https://zooassociation.org/conservation-grants",
+      "kind": "offsite",
+      "message": "a document on another site: without Jev it can’t be confirmed as the funder’s, so it is not used"
+    },
+    {
+      "url": "https://storage.googleapis.com/msgsndr/GZkEnjj191nalXyulDao/media/689f63fbbb58f58cfb6af45a.pdf",
+      "from": "https://zooassociation.org/conservation-grants",
+      "kind": "offsite",
+      "message": "a document on another site: without Jev it can’t be confirmed as the funder’s, so it is not used"
+    }
+  ],
+  "skipped_links": 80,
+  "chunks": [{ "id": "all", "docs": ["D1"], "chars": 26434 }],
+  "outcomes": {
+    "eligibility": "not_found",
+    "documents": "not_found",
+    "effort": "stated",
+    "co_finance": "not_found",
+    "consortium": "not_found",
+    "after_award": "not_found"
+  },
+  "written": ["effort"],
+  "escalated": [],
+  "flags": [],
+  "notes": [],
+  "usd": 0
+}

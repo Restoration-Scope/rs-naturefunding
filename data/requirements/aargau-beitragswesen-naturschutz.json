@@ -1,0 +1,94 @@
+{
+  "id": "aargau-beitragswesen-naturschutz",
+  "read_on": "2026-11-20",
+  "prompt_version": "req-2026-11-20.1",
+  "models": ["cursor:gpt-5.6-luna-high"],
+  "complete": false,
+  "reasons": [
+    "3 links could not be ranked without Jev",
+    "https://www.ag.ch/media/kanton-aargau/bvu/umwelt-natur/natur-und-landschaftsschutz/biodiversitaet/arbeitsrapport-v2022-01-10.rtf would not open (unreadable: an old Word (.doc), OpenDocument or RTF file: needs conversion)",
+    "the text names a document with rules that was not read: Naturschutzbeitragsverordnung (NBV) (SAR 785,152)",
+    "Jev did not check this reading, so an absent fact is not known to be absent"
+  ],
+  "requirements_checked": false,
+  "documents": [
+    {
+      "ref": "D1",
+      "url": "https://www.ag.ch/de/themen/umwelt-natur/natur-und-landschaftsschutz/aktiv-fuer-natur-und-landschaft/beitragswesen-naturschutz",
+      "final_url": "https://www.ag.ch/de/themen/umwelt-natur/natur-und-landschaftsschutz/aktiv-fuer-natur-und-landschaft/beitragswesen-naturschutz",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 7395,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:ce55d392725228364262d91f6cb5eb9afaf6ce8a58f93156552e640fde9a214b"
+    },
+    {
+      "ref": "D2",
+      "url": "https://www.ag.ch/media/kanton-aargau/bvu/umwelt-natur/natur-und-landschaftsschutz/aktiv-fuer-natur-und-landschaft/beitragswesen-naturschutz/beitragswesen-naturschutzstundenansaetze.pdf",
+      "final_url": "https://www.ag.ch/media/kanton-aargau/bvu/umwelt-natur/natur-und-landschaftsschutz/aktiv-fuer-natur-und-landschaft/beitragswesen-naturschutz/beitragswesen-naturschutzstundenansaetze.pdf",
+      "from": "https://www.ag.ch/de/themen/umwelt-natur/natur-und-landschaftsschutz/aktiv-fuer-natur-und-landschaft/beitragswesen-naturschutz",
+      "anchor": "Beitragswesen Naturschutz: Stundenansätze in Franken (PDF, 1 Seite, 98 KB)",
+      "depth": 1,
+      "pdf": true,
+      "chars": 1217,
+      "pages": 1,
+      "low_text": false,
+      "hash": "sha256:1fe179263d27f252ea6b074b2229fd0b7a5f281c80bb9e5f2673932878161bbd"
+    },
+    {
+      "ref": "D3",
+      "url": "https://www.ag.ch/media/kanton-aargau/bvu/umwelt-natur/natur-und-landschaftsschutz/aktiv-fuer-natur-und-landschaft/beitragswesen-naturschutz/anleitung-kartenausschnitte-erstellen-2019-02-07.pdf",
+      "final_url": "https://www.ag.ch/media/kanton-aargau/bvu/umwelt-natur/natur-und-landschaftsschutz/aktiv-fuer-natur-und-landschaft/beitragswesen-naturschutz/anleitung-kartenausschnitte-erstellen-2019-02-07.pdf",
+      "from": "https://www.ag.ch/de/themen/umwelt-natur/natur-und-landschaftsschutz/aktiv-fuer-natur-und-landschaft/beitragswesen-naturschutz",
+      "anchor": "Anleitung zur Erstellung des Kartenausschnitts (PDF, 8 Seiten, 1,3 MB)",
+      "depth": 1,
+      "pdf": true,
+      "chars": 10419,
+      "pages": 8,
+      "low_text": false,
+      "hash": "sha256:dc14e951913aa28dd18594fb5397ec0d75d7eda5e4b15cafdd77cc2fb3b6dbd6"
+    },
+    {
+      "ref": "D4",
+      "url": "https://www.ag.ch/media/kanton-aargau/bvu/umwelt-natur/natur-und-landschaftsschutz/biodiversitaet/auszahlungsantrag.pdf",
+      "final_url": "https://www.ag.ch/media/kanton-aargau/bvu/umwelt-natur/natur-und-landschaftsschutz/biodiversitaet/auszahlungsantrag.pdf",
+      "from": "https://www.ag.ch/de/themen/umwelt-natur/natur-und-landschaftsschutz/aktiv-fuer-natur-und-landschaft/beitragswesen-naturschutz",
+      "anchor": "Auszahlungsantrag (PDF, 2 Seiten, 72 KB)",
+      "depth": 1,
+      "pdf": true,
+      "chars": 676,
+      "pages": 1,
+      "low_text": false,
+      "hash": "sha256:4a55e1457e6e8d5e82aae10f0a3e00c4d721e5ea96e4c8e3247985a7c3f957e5"
+    }
+  ],
+  "failures": [
+    {
+      "url": "https://www.ag.ch/media/kanton-aargau/bvu/umwelt-natur/natur-und-landschaftsschutz/biodiversitaet/arbeitsrapport-v2022-01-10.rtf",
+      "from": "https://www.ag.ch/de/themen/umwelt-natur/natur-und-landschaftsschutz/aktiv-fuer-natur-und-landschaft/beitragswesen-naturschutz",
+      "kind": "unreadable",
+      "message": "an old Word (.doc), OpenDocument or RTF file: needs conversion"
+    }
+  ],
+  "skipped_links": 30,
+  "chunks": [{ "id": "all", "docs": ["D1", "D2", "D3", "D4"], "chars": 20823 }],
+  "outcomes": {
+    "eligibility": "stated",
+    "documents": "stated",
+    "effort": "stated",
+    "co_finance": "not_found",
+    "consortium": "not_found",
+    "after_award": "not_found"
+  },
+  "written": ["eligibility", "documents", "effort"],
+  "escalated": [],
+  "flags": [],
+  "notes": [
+    "extractor: Implementation project applications are accepted twice yearly, by the end of April and the end of October; no day or year is stated. Contributions may range from 0 to 100 percent of costs, but matching funding is not stated as required.",
+    "source aargau-beitragswesen-naturschutz-2: added for https://www.ag.ch/media/kanton-aargau/bvu/umwelt-natur/natur-und-landschaftsschutz/aktiv-fuer-natur-und-landschaft/beitragswesen-naturschutz/anleitung-kartenausschnitte-erstellen-2019-02-07.pdf"
+  ],
+  "usd": 0
+}

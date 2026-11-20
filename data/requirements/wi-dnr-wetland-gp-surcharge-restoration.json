@@ -1,0 +1,94 @@
+{
+  "id": "wi-dnr-wetland-gp-surcharge-restoration",
+  "read_on": "2026-11-20",
+  "prompt_version": "req-2026-11-20.1",
+  "models": ["cursor:gpt-5.6-luna-high"],
+  "complete": false,
+  "reasons": [
+    "12 links could not be ranked without Jev",
+    "29 links could not be ranked without Jev",
+    "https://apps.dnr.wi.gov/doclink/forms/3500-129.pdf: a document on another site: without Jev it can’t be confirmed as the funder’s, so it is not used",
+    "Jev did not check this reading, so an absent fact is not known to be absent"
+  ],
+  "requirements_checked": false,
+  "documents": [
+    {
+      "ref": "D1",
+      "url": "https://dnr.wisconsin.gov/topic/wetlands/GPSurchargeFunding",
+      "final_url": "https://dnr.wisconsin.gov/topic/wetlands/GPSurchargeFunding",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 5437,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:60e9bcf8620040c57c6ee9a8cd28fe59d7e60581abc2fc2b09a83b58eda52478"
+    },
+    {
+      "ref": "D2",
+      "url": "https://dnr.wisconsin.gov/sites/default/files/topic/Wetlands/GP_Surcharge_Program_Guidelines_2023.pdf",
+      "final_url": "https://dnr.wisconsin.gov/sites/default/files/topic/Wetlands/GP_Surcharge_Program_Guidelines_2023.pdf",
+      "from": "https://dnr.wisconsin.gov/topic/wetlands/GPSurchargeFunding",
+      "anchor": "GP Surcharge Program Guidelines",
+      "depth": 1,
+      "pdf": true,
+      "chars": 5995,
+      "pages": 2,
+      "low_text": false,
+      "hash": "sha256:0cf5e7fcb251dffbf514c04f0278405eec57a1bed22f2c85520a4890c6fa7306"
+    },
+    {
+      "ref": "D3",
+      "url": "https://dnr.wisconsin.gov/permits/water",
+      "final_url": "https://dnr.wisconsin.gov/permits/water",
+      "from": "https://dnr.wisconsin.gov/topic/wetlands/GPSurchargeFunding",
+      "anchor": "Water Permit Applications",
+      "depth": 1,
+      "pdf": false,
+      "chars": 2830,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:a410a235b1aa7add6bad50f397a7629c43ac6ef92bdc93d922040acef0f0ebf1"
+    },
+    {
+      "ref": "D4",
+      "url": "https://dnr.wisconsin.gov/site/",
+      "final_url": "https://dnr.wisconsin.gov/site",
+      "from": "https://dnr.wisconsin.gov/topic/wetlands/GPSurchargeFunding",
+      "anchor": "Site requirements",
+      "depth": 1,
+      "pdf": false,
+      "chars": 1761,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:9722affcf6abd455925ddb50e72891ac7380237058108dbcc7058a8b284cb7fd"
+    }
+  ],
+  "failures": [
+    {
+      "url": "https://apps.dnr.wi.gov/doclink/forms/3500-129.pdf",
+      "from": "https://dnr.wisconsin.gov/topic/wetlands/GPSurchargeFunding",
+      "kind": "offsite",
+      "message": "a document on another site: without Jev it can’t be confirmed as the funder’s, so it is not used"
+    }
+  ],
+  "skipped_links": 126,
+  "chunks": [{ "id": "all", "docs": ["D1", "D2", "D3", "D4"], "chars": 16533 }],
+  "outcomes": {
+    "eligibility": "stated",
+    "documents": "stated",
+    "effort": "stated",
+    "co_finance": "stated",
+    "consortium": "not_found",
+    "after_award": "not_found"
+  },
+  "written": ["eligibility", "documents", "effort", "co_finance"],
+  "escalated": [],
+  "flags": [],
+  "notes": [
+    "extractor: D2 states that external groups must enter into a contract with the DNR before funding can be awarded. D1 gives the 2026 deadline; D2 states the deadline without a year.",
+    "source wi-dnr-wetland-gp-surcharge-restoration-2: added for https://dnr.wisconsin.gov/sites/default/files/topic/Wetlands/GP_Surcharge_Program_Guidelines_2023.pdf"
+  ],
+  "usd": 0
+}

@@ -12,14 +12,70 @@
   "parent": null,
   "url": "https://wwce.org/community/apply-for-a-grant/",
   "summary": "Small grants for Wiltshire community and voluntary groups whose projects support wildlife conservation, climate mitigation, carbon reduction or fuel poverty relief, with a panel deciding awards several times a year.",
-  "approaches": ["species_conservation", "community_conservation"],
-  "applicant_types": ["community_group"],
-  "geography": { "scope": "countries", "countries": ["GB"], "label": "Wiltshire, England" },
+  "approaches": [
+    "species_conservation",
+    "community_conservation"
+  ],
+  "applicant_types": [
+    "community_group"
+  ],
+  "geography": {
+    "scope": "countries",
+    "countries": [
+      "GB"
+    ],
+    "label": "Wiltshire, England"
+  },
   "access": "direct",
   "window": "rolling",
-  "amount": { "currency": "GBP", "max": 5000 },
+  "amount": {
+    "currency": "GBP",
+    "max": 5000
+  },
   "co_finance_required": null,
   "reporting": null,
+  "effort": {
+    "steps": [
+      "Standard grant application or small grant application",
+      "Panel review and scoring"
+    ]
+  },
+  "eligibility": [
+    {
+      "rule": "Have charitable aims and apply for a charitable project",
+      "kind": "project"
+    },
+    {
+      "rule": "Have a formal governing document, a management committee and a bank account",
+      "kind": "legal"
+    },
+    {
+      "rule": "Have a safeguarding policy",
+      "kind": "capacity"
+    },
+    {
+      "rule": "Have relevant insurance and a basic Health and Safety policy",
+      "kind": "capacity"
+    },
+    {
+      "rule": "Project does not start before the grant decision",
+      "kind": "project"
+    },
+    {
+      "rule": "Not a commercial company, statutory body, or group promoting political or religious aims",
+      "kind": "legal"
+    }
+  ],
+  "after_award": {
+    "reports": "final"
+  },
+  "documents": [
+    "Constitution, governing document or set of rules",
+    "Most recent annual accounts, or last year's income and expenditure and current budget",
+    "Safeguarding Policy and GDPR/Data Protection Policy, if separate",
+    "Health and Safety Policy or Risk Assessment",
+    "Evidence of insurance"
+  ],
   "calls": [
     {
       "id": "rolling",
@@ -75,7 +131,87 @@
       "quote": "Projects seeking up to £5000 can apply using our grant application form",
       "checked_at": "2026-11-15",
       "method": "page"
-    }
+    },
+    "effort": [
+      {
+        "source_url": "https://wwce.org/community/apply-for-a-grant/",
+        "quote": "Projects seeking up to £5000 can apply using our grant application form, while those in need of a smaller boost of up to £500 can use our small grants application form.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://wwce.org/wp-content/uploads/2026/07/WWCE-CF-Guide-for-applicants-July-26.pdf",
+        "quote": "Completed applications are shared with members of the Panel who meet several times a year to consider each application, score them against the specified criteria and come to a decision.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "eligibility": [
+      {
+        "source_url": "https://wwce.org/wp-content/uploads/2026/07/WWCE-CF-Guide-for-applicants-July-26.pdf",
+        "quote": "the applicant's aims and the project for which the grant is applied for must be charitable.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://wwce.org/wp-content/uploads/2026/07/WWCE-CF-Guide-for-applicants-July-26.pdf",
+        "quote": "Applicants must have a formal governing document (a constitution or a set of rules), a management committee (however named) being a group of people taking responsibility for the applicant’s actions and use of funds and a bank account.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://wwce.org/wp-content/uploads/2026/07/WWCE-CF-Guide-for-applicants-July-26.pdf",
+        "quote": "Applicants must have a Safeguarding Policy.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://wwce.org/wp-content/uploads/2026/07/WWCE-CF-Guide-for-applicants-July-26.pdf",
+        "quote": "Relevant insurance such as liability insurance is also required and basic Health and Safety policy.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://wwce.org/wp-content/uploads/2026/07/WWCE-CF-Guide-for-applicants-July-26.pdf",
+        "quote": "Projects that have started before the grant application has been determined",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://wwce.org/wp-content/uploads/2026/07/WWCE-CF-Guide-for-applicants-July-26.pdf",
+        "quote": "Commercial companies Statutory organisations or the direct replacement of statutory funding Political groups or activities promoting political objectives Religious groups promoting religious beliefs",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "after_award": [
+      {
+        "source_url": "https://wwce.org/wp-content/uploads/2026/07/WWCE-CF-Guide-for-applicants-July-26.pdf",
+        "quote": "Groups receiving grants must report on their projects when completed.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "documents": [
+      {
+        "source_url": "https://wwce.org/wp-content/uploads/2026/01/WWCE-CFP-Grant-application-form-fillable-revised-2026-JAN22.pdf",
+        "quote": "Constitution / governing document / set of rules for your organisation b) Annual accounts - the most recent that are available. If you don't have these, please show us your income and expenditure for the last year and your current budget. c) Safeguarding Policy and GDPR/Data Protection Policy (if separate).",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://wwce.org/wp-content/uploads/2026/01/WWCE-CFP-Grant-application-form-fillable-revised-2026-JAN22.pdf",
+        "quote": "Health and Safety Policy or Risk Assessment.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://wwce.org/wp-content/uploads/2026/01/WWCE-CFP-Grant-application-form-fillable-revised-2026-JAN22.pdf",
+        "quote": "Evidence that you have insurance for your activity or organisation.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ]
   },
   "checked_at": "2026-11-15"
 }
