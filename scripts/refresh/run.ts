@@ -156,6 +156,7 @@ const report = writeState()
 // Pages of one programme are drafted one after another, each from the programme as the one
 // before left it, so a draft committed to main is never overwritten by the next.
 const lanes = new Map<string, Promise<unknown>>()
+const inReview = new Set<string>()
 const draftInLane = (s: Source): Promise<Draft> => {
   const next = (lanes.get(s.programme_id) ?? Promise.resolve()).then(() =>
     draftFor(s, programmes.get(s.programme_id)!, reads.get(s) as Extract<Fetched, { ok: true }>, (tiers.get(s) as Extract<Tier, { tier: 'B' }>).reasons))
@@ -259,9 +260,12 @@ async function draftFor(s: Source, p: Programme, read: Extract<Fetched, { ok: tr
     // Only the schema's parsed value is ever written; a draft that fails the schema becomes an issue.
     if (!r.programme) return { ...base, files: {}, title, body, datesOnly: false, review: r.review, error: 'the draft does not fit the schema' }
     const key = proposalKey(s, read.hash, r.programme)
-    const why = needsPerson(r, reasons)
+    // A PR of this run is opened from main with its whole programme file, so a later commit to that
+    // programme would be undone by it: once one page goes to review, the programme's other pages do too.
+    const why = needsPerson(r, reasons) ?? (inReview.has(p.id) ? 'another page of this programme went to review in this run' : null)
     // A clean draft goes straight to main: later drafts of this programme in the run start from it.
-    if (!why) programmes.set(p.id, r.programme)
+    if (why) inReview.add(p.id)
+    else programmes.set(p.id, r.programme)
     return {
       ...base,
       key,
