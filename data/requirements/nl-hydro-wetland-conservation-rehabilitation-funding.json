@@ -1,0 +1,141 @@
+{
+  "id": "nl-hydro-wetland-conservation-rehabilitation-funding",
+  "read_on": "2026-11-20",
+  "prompt_version": "req-2026-11-20.1",
+  "models": ["cursor:gpt-5.6-luna-high"],
+  "complete": false,
+  "reasons": [
+    "17 links could not be ranked without Jev",
+    "27 links could not be ranked without Jev",
+    "23 links could not be ranked without Jev",
+    "the text names a document with rules that was not read: Muskrat Falls Wetland and Riparian Plan",
+    "Jev did not check this reading, so an absent fact is not known to be absent"
+  ],
+  "requirements_checked": false,
+  "documents": [
+    {
+      "ref": "D1",
+      "url": "https://nlhydro.com/community",
+      "final_url": "https://nlhydro.com/community/",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 11014,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:87c09da5e5f84bbc0167dbabf41c6d7009bf0d80a429c84acb53e2621ebffce5"
+    },
+    {
+      "ref": "D2",
+      "url": "https://nlhydro.com/work-with-us/faq/",
+      "final_url": "https://nlhydro.com/work-with-us/faq/",
+      "from": "https://nlhydro.com/community",
+      "anchor": "FAQ",
+      "depth": 1,
+      "pdf": false,
+      "chars": 3213,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:351c0b8bef0e982231907d259e8125fbb30398992163d1ea82508eabaa2e7b62"
+    },
+    {
+      "ref": "D3",
+      "url": "https://nlhydro.com/electric-vehicles/ultrafastchargerfaq/",
+      "final_url": "https://nlhydro.com/electric-vehicles/ultrafastchargerfaq/",
+      "from": "https://nlhydro.com/community",
+      "anchor": "Ultra-Fast Charger FAQ",
+      "depth": 1,
+      "pdf": false,
+      "chars": 7484,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:02e133e50033dcb31e535517cab822c4a4f1823aa0afd4de618fe0267daafbbd"
+    },
+    {
+      "ref": "D4",
+      "url": "https://nlhydro.com/wp-content/uploads/2023/12/NLHydro_Community-Investment-Program_Application-Details-Checklist_Nov2022.pdf",
+      "final_url": "https://nlhydro.com/wp-content/uploads/2023/12/NLHydro_Community-Investment-Program_Application-Details-Checklist_Nov2022.pdf",
+      "from": "https://nlhydro.com/community",
+      "anchor": "Application Details & Checklist",
+      "depth": 1,
+      "pdf": true,
+      "chars": 1936,
+      "pages": 1,
+      "low_text": false,
+      "hash": "sha256:0bf60eb3199ead45683c6e4a29f8dfd10a82a8935e8750442499439b287391cd"
+    },
+    {
+      "ref": "D5",
+      "url": "https://nlhydro.com/wp-content/uploads/2026/11/2027-Application-Form-R0-2026-11-16.docx",
+      "final_url": "https://nlhydro.com/wp-content/uploads/2026/11/2027-Application-Form-R0-2026-11-16.docx",
+      "from": "https://nlhydro.com/community",
+      "anchor": "application form",
+      "depth": 1,
+      "pdf": false,
+      "chars": 1594,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:bc22ad5684db309cfd1462e683783992269ced518f33a43b60eb0cbe0ec2b583"
+    },
+    {
+      "ref": "D6",
+      "url": "https://nlhydro.com/good-to-know/apply-today-for-the-2024-trades-technology-scholarships-for-women/",
+      "final_url": "https://nlhydro.com/good-to-know/apply-today-for-the-2024-trades-technology-scholarships-for-women/",
+      "from": "https://nlhydro.com/community",
+      "anchor": "here",
+      "depth": 1,
+      "pdf": false,
+      "chars": 2828,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:d22bf2c98dddaee4e1a4a1a8f479b5486ae6b775e8c84f557c42d4b79a7687d9"
+    },
+    {
+      "ref": "D7",
+      "url": "https://nlhydro.com/wp-content/uploads/2024/09/2024-IBA-Scholarship-Application-Form_Final.pdf",
+      "final_url": "https://nlhydro.com/wp-content/uploads/2024/09/2024-IBA-Scholarship-Application-Form_Final.pdf",
+      "from": "https://nlhydro.com/community",
+      "anchor": "click here",
+      "depth": 1,
+      "pdf": true,
+      "chars": 4145,
+      "pages": 5,
+      "low_text": false,
+      "hash": "sha256:f58a7e3e00740ab71bc94a5654c5287cecef09b4f8ebba47107aaba46a33ae9b"
+    },
+    {
+      "ref": "D8",
+      "url": "https://nlhydro.com/electric-vehicles/faq-2/",
+      "final_url": "https://nlhydro.com/electric-vehicles/faq-2/",
+      "from": "https://nlhydro.com/electric-vehicles/ultrafastchargerfaq/",
+      "anchor": "FAQ",
+      "depth": 2,
+      "pdf": false,
+      "chars": 11986,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:723fe611d0e89644255965aa7999c370961db69e71ea010cffade20584a5f799"
+    }
+  ],
+  "failures": [],
+  "skipped_links": 305,
+  "chunks": [
+    { "id": "all", "docs": ["D1", "D2", "D3", "D4", "D5", "D6", "D7", "D8"], "chars": 45226 }
+  ],
+  "outcomes": {
+    "eligibility": "not_found",
+    "documents": "not_found",
+    "effort": "stated",
+    "co_finance": "not_found",
+    "consortium": "not_found",
+    "after_award": "not_found"
+  },
+  "written": ["effort"],
+  "escalated": [],
+  "flags": [],
+  "notes": [
+    "extractor: The supplied wetland materials state the next 2027 allocation deadline as March 31, 2027; they do not state 2026 round-specific rules. The listed funding priorities are preferences, not hard eligibility requirements."
+  ],
+  "usd": 0
+}

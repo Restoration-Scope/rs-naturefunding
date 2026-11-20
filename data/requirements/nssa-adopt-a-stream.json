@@ -1,0 +1,109 @@
+{
+  "id": "nssa-adopt-a-stream",
+  "read_on": "2026-11-20",
+  "prompt_version": "req-2026-11-20.1",
+  "models": ["cursor:gpt-5.6-luna-high"],
+  "complete": false,
+  "reasons": [
+    "17 links could not be ranked without Jev",
+    "1 links could not be ranked without Jev",
+    "http://www.adoptastream.ca/sites/default/files/NSSA%20Adopt%20A%20Stream_Detailed%20Project%20Application%20Budget.GROUPNAME.xlsx would not open (unreadable: an old Word (.doc), OpenDocument or RTF file: needs conversion)",
+    "Jev did not check this reading, so an absent fact is not known to be absent"
+  ],
+  "requirements_checked": false,
+  "documents": [
+    {
+      "ref": "D1",
+      "url": "http://www.adoptastream.ca/planning-and-funding/project-funding",
+      "final_url": "http://www.adoptastream.ca/planning-and-funding/project-funding",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 4373,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:d5b6dcede6d35d87d8828fe0c7d6000730b7521a58c25ace8a7cc8876bec163c"
+    },
+    {
+      "ref": "D2",
+      "url": "http://www.adoptastream.ca/planning-and-funding/application-criteria-and-forms",
+      "final_url": "http://www.adoptastream.ca/planning-and-funding/application-criteria-and-forms",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 7008,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:d9b2122326cd40c32cc53b48a908b3df6745ea00afb91148de0799e44a976a67"
+    },
+    {
+      "ref": "D3",
+      "url": "http://www.adoptastream.ca/project-design/nova-scotia-adopt-stream-manual",
+      "final_url": "http://www.adoptastream.ca/project-design/nova-scotia-adopt-stream-manual",
+      "from": "http://www.adoptastream.ca/planning-and-funding/project-funding",
+      "anchor": "Nova Scotia Adopt A Stream Manual",
+      "depth": 1,
+      "pdf": false,
+      "chars": 2231,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:4b22229142a8b4263bba7dd0d2f4e7e27b16595eca91e812bca63f44e0e415ee"
+    },
+    {
+      "ref": "D4",
+      "url": "http://www.adoptastream.ca/sites/default/files/NSSA%20Adopt%20A%20Stream_Project%20Funding%20Application.GROUP%20NAME.docx",
+      "final_url": "http://www.adoptastream.ca/sites/default/files/NSSA%20Adopt%20A%20Stream_Project%20Funding%20Application.GROUP%20NAME.docx",
+      "from": "http://www.adoptastream.ca/planning-and-funding/application-criteria-and-forms",
+      "anchor": "Adopt A Stream Project Application Form",
+      "depth": 1,
+      "pdf": false,
+      "chars": 2896,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:250170dd7e325eada7be2a08281ef96ce8495e02ca9a99a9523fcb5617c3d0c4"
+    },
+    {
+      "ref": "D5",
+      "url": "http://manual.adoptastream.ca/",
+      "final_url": "http://manual.adoptastream.ca/",
+      "from": "http://www.adoptastream.ca/project-design/nova-scotia-adopt-stream-manual",
+      "anchor": "Nova Scotia Adopt A Stream Manual: A Watershed Approach to Community-Based Stewardship",
+      "depth": 2,
+      "pdf": false,
+      "chars": 1336,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:c2803d6b8186949690a789ac8412a297343ea130e808c15d48a0417ffb4c9cc5"
+    }
+  ],
+  "failures": [
+    {
+      "url": "http://www.adoptastream.ca/sites/default/files/NSSA%20Adopt%20A%20Stream_Detailed%20Project%20Application%20Budget.GROUPNAME.xlsx",
+      "from": "http://www.adoptastream.ca/planning-and-funding/application-criteria-and-forms",
+      "kind": "unreadable",
+      "message": "an old Word (.doc), OpenDocument or RTF file: needs conversion"
+    }
+  ],
+  "skipped_links": 112,
+  "chunks": [{ "id": "all", "docs": ["D1", "D2", "D3", "D4", "D5"], "chars": 18536 }],
+  "outcomes": {
+    "eligibility": "stated",
+    "documents": "stated",
+    "effort": "stated",
+    "co_finance": "stated",
+    "consortium": "not_found",
+    "after_award": "not_found"
+  },
+  "written": ["eligibility", "documents", "effort", "co_finance"],
+  "escalated": [],
+  "flags": [],
+  "notes": [
+    "effort \"Application and budget forms\": the quote does not state 2025-01-20 whole; left undated",
+    "co_finance: share 50% dropped, its quote does not state it",
+    "extractor: For projects receiving up to $10,000, the applicant contribution can be entirely in-kind; projects receiving more than $10,000 require at least 10% cash funding. Late 2025 proposals are accepted but kept on file and reviewed based on available funding and the potential to complete the project in the current field season.",
+    "source nssa-adopt-a-stream-3: added for http://www.adoptastream.ca/sites/default/files/NSSA%20Adopt%20A%20Stream_Project%20Funding%20Application.GROUP%20NAME.docx"
+  ],
+  "usd": 0
+}

@@ -1,0 +1,127 @@
+{
+  "id": "nue-stiftung-projektfoerderung",
+  "read_on": "2026-11-20",
+  "prompt_version": "req-2026-11-20.1",
+  "models": ["cursor:gpt-5.6-luna-high"],
+  "complete": false,
+  "reasons": [
+    "17 links could not be ranked without Jev",
+    "16 links could not be ranked without Jev",
+    "Jev did not check this reading, so an absent fact is not known to be absent"
+  ],
+  "requirements_checked": false,
+  "documents": [
+    {
+      "ref": "D1",
+      "url": "https://www.nue-stiftung.de/antragstellung/foerderrichtlinien",
+      "final_url": "https://www.nue-stiftung.de/antragstellung/foerderrichtlinien",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 13090,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:0bea66009a03220c2d19a11a272b348779ea0adcc1fa8763803b378f04d1a031"
+    },
+    {
+      "ref": "D2",
+      "url": "https://www.nue-stiftung.de/aktuelles/termine",
+      "final_url": "https://www.nue-stiftung.de/aktuelles/termine",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 1664,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:54d0bbda4f82547e8160d6c013de0fcdbd0fec4242ce2971d58bb17e455d8a1c"
+    },
+    {
+      "ref": "D3",
+      "url": "https://www.nue-stiftung.de/antragstellung",
+      "final_url": "https://www.nue-stiftung.de/antragstellung",
+      "from": "https://www.nue-stiftung.de/antragstellung/foerderrichtlinien",
+      "anchor": "Antragstellung",
+      "depth": 1,
+      "pdf": false,
+      "chars": 768,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:a1ffe57fc574f560cc5c4bae70a0c08213ae92ce05493ae85d08e144c3940e3e"
+    },
+    {
+      "ref": "D4",
+      "url": "https://www.nue-stiftung.de/antragstellung/von-der-projektidee-zum-antrag-1",
+      "final_url": "https://www.nue-stiftung.de/antragstellung/von-der-projektidee-zum-antrag-1",
+      "from": "https://www.nue-stiftung.de/antragstellung/foerderrichtlinien",
+      "anchor": "Von der Projektidee zum Antrag",
+      "depth": 1,
+      "pdf": false,
+      "chars": 3026,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:ef952201f67604411330c360a6349af63b2d4ac4d193953edb1c4f271cb9752f"
+    },
+    {
+      "ref": "D5",
+      "url": "https://www.nue-stiftung.de/projektabwicklung/checkliste-zum-projektabschluss",
+      "final_url": "https://www.nue-stiftung.de/projektabwicklung/checkliste-zum-projektabschluss",
+      "from": "https://www.nue-stiftung.de/antragstellung/foerderrichtlinien",
+      "anchor": "Checkliste zum Projektabschluss",
+      "depth": 1,
+      "pdf": false,
+      "chars": 1565,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:4ffad069bba50334d486ec95e535b29a2fa52ae1f190d7b93428341adf7f8bfc"
+    },
+    {
+      "ref": "D6",
+      "url": "https://www.nue-stiftung.de/_Resources/Persistent/d/e/b/6/deb62db7ba2a014c4e2e64d488715fd7c8aaafde/Fo%CC%88rderantrag_HH.pdf",
+      "final_url": "https://www.nue-stiftung.de/_Resources/Persistent/d/e/b/6/deb62db7ba2a014c4e2e64d488715fd7c8aaafde/Fo%CC%88rderantrag_HH.pdf",
+      "from": "https://www.nue-stiftung.de/antragstellung/von-der-projektidee-zum-antrag-1",
+      "anchor": "Hamburg",
+      "depth": 2,
+      "pdf": true,
+      "chars": 6765,
+      "pages": 3,
+      "low_text": false,
+      "hash": "sha256:15f31afca573b71df0f550ffe0537a03305e430c817b0c3e4ccbdc0710dde01f"
+    },
+    {
+      "ref": "D7",
+      "url": "https://www.nue-stiftung.de/_Resources/Persistent/e/b/0/6/eb06cb25f0a06494da5157cfbe5c744534e27914/F%C3%B6rderantrag_MV_neu.pdf",
+      "final_url": "https://www.nue-stiftung.de/_Resources/Persistent/e/b/0/6/eb06cb25f0a06494da5157cfbe5c744534e27914/F%C3%B6rderantrag_MV_neu.pdf",
+      "from": "https://www.nue-stiftung.de/antragstellung/von-der-projektidee-zum-antrag-1",
+      "anchor": "Mecklenburg-Vorpommern",
+      "depth": 2,
+      "pdf": true,
+      "chars": 6811,
+      "pages": 3,
+      "low_text": false,
+      "hash": "sha256:3c26d20a118958d5eb55e84e5c08b5eba3a046a497f6da04896ec186065cff83"
+    }
+  ],
+  "failures": [],
+  "skipped_links": 90,
+  "chunks": [{ "id": "all", "docs": ["D1", "D2", "D3", "D4", "D5", "D6", "D7"], "chars": 34753 }],
+  "outcomes": {
+    "eligibility": "stated",
+    "documents": "stated",
+    "effort": "stated",
+    "co_finance": "stated",
+    "consortium": "not_found",
+    "after_award": "stated"
+  },
+  "written": ["eligibility", "documents", "effort", "co_finance", "after_award"],
+  "escalated": [],
+  "flags": [],
+  "notes": [
+    "extractor: Hamburg and Mecklenburg-Vorpommern have separate rules. D2 lists Hamburg's displayed deadline as 15.02.27 for the 06.04.27 meeting; its only listed Mecklenburg-Vorpommern deadline is 19.10.26 for 07.12.26. Because D2 uses two-digit years, these dates are not placed in due. Final reporting is due within three months after project completion in Hamburg and six months in Mecklenburg-Vorpommern. Available third-party funds must be used, but no co-finance amount is stated.",
+    "source nue-stiftung-projektfoerderung-3: added for https://www.nue-stiftung.de/_Resources/Persistent/e/b/0/6/eb06cb25f0a06494da5157cfbe5c744534e27914/F%C3%B6rderantrag_MV_neu.pdf",
+    "source nue-stiftung-projektfoerderung-4: added for https://www.nue-stiftung.de/antragstellung/von-der-projektidee-zum-antrag-1",
+    "source nue-stiftung-projektfoerderung-5: added for https://www.nue-stiftung.de/_Resources/Persistent/d/e/b/6/deb62db7ba2a014c4e2e64d488715fd7c8aaafde/Fo%CC%88rderantrag_HH.pdf"
+  ],
+  "usd": 0
+}
