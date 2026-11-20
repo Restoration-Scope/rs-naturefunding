@@ -10,10 +10,10 @@
   "applicant_types": null,
   "geography": { "scope": "countries", "countries": ["CH"] },
   "access": "direct",
-  "window": "unspecified",
+  "window": "rolling",
   "amount": null,
   "co_finance_required": null,
-  "reporting": null,
+  "reporting": "Final report must be submitted within six months after project completion.",
   "calls": [],
   "evidence": {
     "geography": {
@@ -24,8 +24,20 @@
     },
     "access": {
       "source_url": "https://www.ernst-goehner-stiftung.ch/index.php/de/Gesuche",
-      "quote": "Es werden nur auf dem Postweg eingereichte Gesuche geprüft.",
-      "checked_at": "2026-11-09",
+      "quote": "Es werden nur Gesuche geprüft, die via Gesuchsplattform eingehen.",
+      "checked_at": "2026-11-20",
+      "method": "page"
+    },
+    "window": {
+      "source_url": "https://www.ernst-goehner-stiftung.ch/index.php/de/Gesuche",
+      "quote": "Ab dem 1. Dezember 2026 können Gesuche online über unsere neue Gesuchsplattform eingereicht werden.",
+      "checked_at": "2026-11-20",
+      "method": "page"
+    },
+    "reporting": {
+      "source_url": "https://www.ernst-goehner-stiftung.ch/index.php/de/Gesuche",
+      "quote": "Spätestens sechs Monate nach Abschluss des Projekts ist ein Schlussbericht gemäss dem entsprechenden Merkblatt einzureichen.",
+      "checked_at": "2026-11-20",
       "method": "page"
     }
   },
