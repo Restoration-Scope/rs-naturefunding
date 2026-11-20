@@ -1,0 +1,101 @@
+{
+  "id": "bayern-lnpr",
+  "read_on": "2026-11-20",
+  "prompt_version": "req-2026-11-20.1",
+  "models": ["cursor:gpt-5.6-luna-high", "cursor:gpt-5.6-sol-high"],
+  "complete": false,
+  "reasons": [
+    "19 links could not be ranked without Jev",
+    "25 links could not be ranked without Jev",
+    "the text names a document with rules that was not read: Bayerische Haushaltsordnung (BayHO), insbesondere Art. 23 und 44",
+    "the text names a document with rules that was not read: Die dazu erlassenen Verwaltungsvorschriften",
+    "the text names a document with rules that was not read: Bundesnaturschutzgesetz (BNatSchG)",
+    "the text names a document with rules that was not read: Bayerisches Naturschutzgesetz (BayNatSchG)",
+    "the text names a document with rules that was not read: Die jeweilige Schutzgebietsverordnung",
+    "the text names a document with rules that was not read: Richtlinien für Zuwendungen zu wasserwirtschaftlichen Vorhaben (RZWas)",
+    "the text names a document with rules that was not read: Richtlinie für Zuwendungen zu waldbaulichen Maßnahmen im Rahmen eines forstlichen Förderprogramms",
+    "the text names a document with rules that was not read: Einschlägige Förderrichtlinien (RÖFE)",
+    "the text names a document with rules that was not read: Jeweilige Förderbestimmungen, zum Beispiel der GAK",
+    "the text names a document with rules that was not read: Gesondertes Vollzugsschreiben",
+    "Jev did not check this reading, so an absent fact is not known to be absent",
+    "strong reading: the text names a document with rules that was not read: Gesondertes Vollzugsschreiben defining Nature Park ranger requirements"
+  ],
+  "requirements_checked": false,
+  "documents": [
+    {
+      "ref": "D1",
+      "url": "https://www.gesetze-bayern.de/Content/Document/BayVV_7912_1_U_13349/true",
+      "final_url": "https://www.gesetze-bayern.de/Content/Document/BayVV_7912_1_U_13349/true",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 34797,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:112304480a74a2dc6e4d3ff59584c709d68d651f7502c71173e36ddcb28e95f4"
+    },
+    {
+      "ref": "D2",
+      "url": "https://www.gesetze-bayern.de/Content/Document/BayVV_7912_1_U_13349",
+      "final_url": "https://www.gesetze-bayern.de/Content/Document/BayVV_7912_1_U_13349",
+      "from": "https://www.gesetze-bayern.de/Content/Document/BayVV_7912_1_U_13349/true",
+      "anchor": "7912.1-U Richtlinien zur Förderung von Maßnahmen des Natur- und Artenschutzes, der Landschaftspflege sowie der naturverträglichen Erholung in Naturparken (Landschaftspflege- und Naturpark-Richtlinien ",
+      "depth": 1,
+      "pdf": false,
+      "chars": 2232,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:2a49eae62bf3582e50c570de8d9bfe3419e005d874f3e24051931d7aa53753b3"
+    },
+    {
+      "ref": "D3",
+      "url": "https://www.gesetze-bayern.de/Content/Document/BayVV_7912_1_U_13349-NN4",
+      "final_url": "https://www.gesetze-bayern.de/Content/Document/BayVV_7912_1_U_13349-NN4",
+      "from": "https://www.gesetze-bayern.de/Content/Document/BayVV_7912_1_U_13349/true",
+      "anchor": "4. Zuwendungsvoraussetzungen",
+      "depth": 1,
+      "pdf": false,
+      "chars": 4100,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:44c4b0dc857fc89bd91b516dc7f31c4d5d5ecb01336e536e933633798d2bd50c"
+    },
+    {
+      "ref": "D4",
+      "url": "https://www.gesetze-bayern.de/Content/Document/BayVV_7912_1_U_13349-NN8",
+      "final_url": "https://www.gesetze-bayern.de/Content/Document/BayVV_7912_1_U_13349-NN8",
+      "from": "https://www.gesetze-bayern.de/Content/Document/BayVV_7912_1_U_13349/true",
+      "anchor": "8. Antragstellung",
+      "depth": 1,
+      "pdf": false,
+      "chars": 3915,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:b4642991e7825232fe30d491745814b7516fc254109362052263001f80071eca"
+    }
+  ],
+  "failures": [],
+  "skipped_links": 96,
+  "chunks": [{ "id": "all", "docs": ["D1", "D2", "D3", "D4"], "chars": 45638 }],
+  "outcomes": {
+    "eligibility": "stated",
+    "documents": "stated",
+    "effort": "stated",
+    "co_finance": "stated",
+    "consortium": "not_found",
+    "after_award": "stated"
+  },
+  "written": ["eligibility", "documents", "effort", "co_finance", "after_award"],
+  "escalated": ["eligibility"],
+  "flags": [],
+  "notes": [
+    "co_finance: share 10% dropped, its quote does not state it",
+    "extractor: The text applies from 2026-01-01 through 2026-12-31. Awards made under the previous version are handled under the previous rules.",
+    "strong: The supplied rules apply from 2026-01-01 through 2026-12-31.",
+    "source bayern-lnpr-2: added for https://www.gesetze-bayern.de/Content/Document/BayVV_7912_1_U_13349",
+    "source bayern-lnpr-3: added for https://www.gesetze-bayern.de/Content/Document/BayVV_7912_1_U_13349-NN4",
+    "source bayern-lnpr-4: added for https://www.gesetze-bayern.de/Content/Document/BayVV_7912_1_U_13349-NN8"
+  ],
+  "usd": 0
+}

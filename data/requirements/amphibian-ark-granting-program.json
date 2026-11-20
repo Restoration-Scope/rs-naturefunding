@@ -1,0 +1,136 @@
+{
+  "id": "amphibian-ark-granting-program",
+  "read_on": "2026-11-20",
+  "prompt_version": "req-2026-11-20.1",
+  "models": ["cursor:gpt-5.6-luna-high"],
+  "complete": false,
+  "reasons": [
+    "25 links could not be ranked without Jev",
+    "14 links could not be ranked without Jev",
+    "https://www.amphibianark.org/fileadmin/uploads/aark/AArk_Templates/AArk_Program_Grants_Reference_Document_2026.pdf: page 5 is an image: needs OCR",
+    "https://www.amphibianark.org/fileadmin/uploads/aark/AArk_Templates/AArk_Emergency_Grants_Guidelines.pdf: a scanned or image PDF: needs OCR",
+    "https://www.amphibianark.org/fileadmin/uploads/aark/AArk_Templates/AArk-WAZA-Husbandry-Guidelines-template-English.doc would not open (unreadable: an old Word (.doc), OpenDocument or RTF file: needs conversion)",
+    "the text names a document with rules that was not read: Institutional Readiness checklist",
+    "Jev did not check this reading, so an absent fact is not known to be absent"
+  ],
+  "requirements_checked": false,
+  "documents": [
+    {
+      "ref": "D1",
+      "url": "https://www.amphibianark.org/seed-grant-winners/",
+      "final_url": "https://www.amphibianark.org/our-response/aark-granting-program/",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 20395,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:1385df494e4b491462eef048e754f6e36df18ed60d211cddcc8374526df17921"
+    },
+    {
+      "ref": "D2",
+      "url": "https://www.amphibianark.org/fileadmin/uploads/aark/AArk_Templates/AArk_Program_Grants_Reference_Document_2026.pdf",
+      "final_url": "https://www.amphibianark.org/fileadmin/uploads/aark/AArk_Templates/AArk_Program_Grants_Reference_Document_2026.pdf",
+      "from": "https://www.amphibianark.org/seed-grant-winners/",
+      "anchor": "here for your reference",
+      "depth": 1,
+      "pdf": true,
+      "chars": 6871,
+      "pages": 5,
+      "low_text": false,
+      "hash": "sha256:b9d6b8311bdb5fa19254a1cc0f25bfe284e8a3d37f3ed642546ba3a352110389"
+    },
+    {
+      "ref": "D3",
+      "url": "https://www.amphibianark.org/fileadmin/uploads/aark/AArk_Templates/AArk_Workshop_Grants_Reference_Document_2026.pdf",
+      "final_url": "https://www.amphibianark.org/fileadmin/uploads/aark/AArk_Templates/AArk_Workshop_Grants_Reference_Document_2026.pdf",
+      "from": "https://www.amphibianark.org/seed-grant-winners/",
+      "anchor": "here for your reference",
+      "depth": 1,
+      "pdf": true,
+      "chars": 2851,
+      "pages": 2,
+      "low_text": false,
+      "hash": "sha256:2ae86e767c3133b46e19dda758e4e3660af940299caa361baecbbb92c235a014"
+    },
+    {
+      "ref": "D4",
+      "url": "https://www.amphibianark.org/fileadmin/uploads/aark/AArk_Templates/AArk_Emergency_Grants_Guidelines.pdf",
+      "final_url": "https://www.amphibianark.org/fileadmin/uploads/aark/AArk_Templates/AArk_Emergency_Grants_Guidelines.pdf",
+      "from": "https://www.amphibianark.org/seed-grant-winners/",
+      "anchor": "Emergency Grants Guidelines",
+      "depth": 1,
+      "pdf": true,
+      "chars": 35,
+      "pages": 2,
+      "low_text": true,
+      "hash": "sha256:154bf1232e627588f80e8b13c41693a4fee8e5a03061bd419624adf45a61acf8"
+    },
+    {
+      "ref": "D5",
+      "url": "https://www.amphibianark.org/terms-conditions/",
+      "final_url": "https://www.amphibianark.org/terms-conditions/",
+      "from": "https://www.amphibianark.org/seed-grant-winners/",
+      "anchor": "Terms & Conditions",
+      "depth": 1,
+      "pdf": false,
+      "chars": 4500,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:eba047384a2adf329a67afd3d4b9e190dbf0efc232bbe8590f327ab1fe0a35df"
+    },
+    {
+      "ref": "D6",
+      "url": "https://www.amphibianark.org/cookies-privacy-policy/",
+      "final_url": "https://www.amphibianark.org/cookies-privacy-policy/",
+      "from": "https://www.amphibianark.org/seed-grant-winners/",
+      "anchor": "Cookies & Privacy Policy",
+      "depth": 1,
+      "pdf": false,
+      "chars": 7848,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:96b1255a456d2708ba8b13236d8fb810ffb3ed510c826d605eec4b54a67ca4e1"
+    }
+  ],
+  "failures": [
+    {
+      "url": "https://www.amphibianark.org/fileadmin/uploads/aark/AArk_Templates/AArk_Program_Grants_Reference_Document_2026.pdf",
+      "from": "https://www.amphibianark.org/seed-grant-winners/",
+      "kind": "low_text",
+      "message": "page 5 is an image: needs OCR"
+    },
+    {
+      "url": "https://www.amphibianark.org/fileadmin/uploads/aark/AArk_Templates/AArk_Emergency_Grants_Guidelines.pdf",
+      "from": "https://www.amphibianark.org/seed-grant-winners/",
+      "kind": "low_text",
+      "message": "a scanned or image PDF: needs OCR"
+    },
+    {
+      "url": "https://www.amphibianark.org/fileadmin/uploads/aark/AArk_Templates/AArk-WAZA-Husbandry-Guidelines-template-English.doc",
+      "from": "https://www.amphibianark.org/seed-grant-winners/",
+      "kind": "unreadable",
+      "message": "an old Word (.doc), OpenDocument or RTF file: needs conversion"
+    }
+  ],
+  "skipped_links": 136,
+  "chunks": [{ "id": "all", "docs": ["D1", "D2", "D3", "D4", "D5", "D6"], "chars": 43389 }],
+  "outcomes": {
+    "eligibility": "stated",
+    "documents": "stated",
+    "effort": "stated",
+    "co_finance": "stated",
+    "consortium": "not_found",
+    "after_award": "stated"
+  },
+  "written": ["eligibility", "documents", "effort", "co_finance", "after_award"],
+  "escalated": [],
+  "flags": [],
+  "notes": [
+    "extractor: The 2026 grants cycle is closed; D1 says the 2027 cycle is next. The supplied rules combine program, workshop and emergency grant tracks. D2 and D3 are reference documents, not applications. Other stated post-award duties include bank details, a signed MOU, photos, husbandry guidelines and an action plan. D4 contains no readable substantive text in the supplied material.",
+    "source amphibian-ark-granting-program-2: added for https://www.amphibianark.org/fileadmin/uploads/aark/AArk_Templates/AArk_Program_Grants_Reference_Document_2026.pdf",
+    "source amphibian-ark-granting-program-3: added for https://www.amphibianark.org/fileadmin/uploads/aark/AArk_Templates/AArk_Workshop_Grants_Reference_Document_2026.pdf"
+  ],
+  "usd": 0
+}

@@ -9,14 +9,67 @@
   "parent": null,
   "url": "https://www.naturschutzfonds.bayern.de/aufgaben/foerderung/antragstellung/index.html",
   "summary": "Bavarian state foundation that funds nature conservation and landscape care projects in Bavaria, including habitat and species protection. Applications are written and must be filed before the project starts.",
-  "approaches": ["species_conservation", "protected_areas"],
+  "approaches": [
+    "species_conservation",
+    "protected_areas"
+  ],
   "applicant_types": null,
-  "geography": { "scope": "countries", "countries": ["DE"], "label": "Bavaria" },
+  "geography": {
+    "scope": "countries",
+    "countries": [
+      "DE"
+    ],
+    "label": "Bavaria"
+  },
   "access": "direct",
   "window": "unspecified",
   "amount": null,
-  "co_finance_required": null,
+  "co_finance_required": true,
   "reporting": null,
+  "effort": {
+    "steps": [
+      "Written application, via nature conservation authorities for most project types"
+    ]
+  },
+  "eligibility": [
+    {
+      "rule": "Has the capacity to carry out projects successfully and proper management",
+      "kind": "capacity"
+    },
+    {
+      "rule": "Has not started the project at the time of application",
+      "kind": "project"
+    },
+    {
+      "rule": "Has no legal obligation to finance or carry out the project",
+      "kind": "project"
+    },
+    {
+      "rule": "For land purchase or lease: a municipality, recognised conservation body, or charity mainly for conservation",
+      "kind": "legal"
+    },
+    {
+      "rule": "For landscape-care measures, is a non-state person controlling the project land",
+      "kind": "legal"
+    },
+    {
+      "rule": "For lease projects, has a lease of at least 10 years without ordinary termination",
+      "kind": "project"
+    }
+  ],
+  "co_finance": {
+    "min_share": 10
+  },
+  "after_award": {
+    "reports": "unspecified"
+  },
+  "documents": [
+    "TK 25 map excerpt",
+    "Cadastral map excerpt at 1:5,000 with marked project objects and relevant conservation areas",
+    "Market value certificate for the purchase or lease price",
+    "Lease contract draft, for lease projects",
+    "Association bylaws, for a first application"
+  ],
   "calls": [],
   "evidence": {
     "geography": {
@@ -30,7 +83,99 @@
       "quote": "Förderanträge sind schriftlich zu stellen.",
       "checked_at": "2026-11-20",
       "method": "page"
-    }
+    },
+    "co_finance_required": {
+      "source_url": "https://www.naturschutzfonds.bayern.de/aufgaben/foerderung/doc/merkblatt_zur_antragstellung.pdf",
+      "quote": "Der Vorhabenträger hat grundsätzlich einen angemessenen Eigenanteil von mindestens 10 % der förderfähigen Ausgaben zu tragen.",
+      "checked_at": "2026-11-20",
+      "method": "page"
+    },
+    "effort": [
+      {
+        "source_url": "https://www.naturschutzfonds.bayern.de/aufgaben/foerderung/antragstellung/index.html",
+        "quote": "Förderanträge sind schriftlich zu stellen.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.naturschutzfonds.bayern.de/aufgaben/foerderung/doc/foerderrichtlinien.pdf",
+        "quote": "Förderanträge bei Maßnahmen nach Ziff. II. 2.1, 2.2, 2.4, 2.5 und 2.7 sind über die örtlich zuständige untere und höhere Naturschutzbehörde an die Stiftung zu leiten.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "eligibility": [
+      {
+        "source_url": "https://www.naturschutzfonds.bayern.de/aufgaben/foerderung/antragstellung/index.html",
+        "quote": "Antragsteller für Zuwendungen des Bayerischen Naturschutzfonds können natürliche und juristische Personen sein, sofern die nötige Befähigung zur erfolgreichen Durchführung von Vorhaben und die ordnungsgemäße Geschäftsführung gegeben ist.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.naturschutzfonds.bayern.de/aufgaben/foerderung/doc/antragsformular.pdf",
+        "quote": "zum Zeitpunkt der Antragstellung mit der Maßnahme noch nicht begonnen wurde",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.naturschutzfonds.bayern.de/aufgaben/foerderung/doc/foerderrichtlinien.pdf",
+        "quote": "Es werden nur Vorhaben gefördert, zu deren Finanzierung oder Durchführung eine rechtliche Verpflichtung (z.B. als Ausgleich oder Ersatz gem. §§ 13 ff. des Bundesnaturschutzgesetzes - BNatSchG-) nicht besteht.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.naturschutzfonds.bayern.de/aufgaben/foerderung/doc/foerderrichtlinien.pdf",
+        "quote": "II. 2.1: kommunale Gebietskörperschaften und anerkannte Naturschutzverbände nach § 29 BNatSchG; sonstige nichtstaatliche rechtsfähige Organisationen unter folgenden Voraussetzungen: - sie widmen sich satzungsgemäß überwiegend der Förderung des Naturschutzes und der Landschaftspflege, - die Gemeinnützigkeit im Sinne des Abschnitts \"Steuerbegünstigte Zwecke\" der Abgabenordnung ist anerkannt,",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.naturschutzfonds.bayern.de/aufgaben/foerderung/doc/foerderrichtlinien.pdf",
+        "quote": "nichtstaatliche juristische sowie natürliche Personen, soweit sie Verfügungsberechtigte der maßnahmegegenständlichen Fläche sind",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.naturschutzfonds.bayern.de/aufgaben/foerderung/doc/foerderrichtlinien.pdf",
+        "quote": "mindestens 10-jährige Pachtvertragslaufzeit unter Ausschluss des ordentlichen Kündigungsrechts",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "co_finance": {
+      "source_url": "https://www.naturschutzfonds.bayern.de/aufgaben/foerderung/doc/merkblatt_zur_antragstellung.pdf",
+      "quote": "Der Vorhabenträger hat grundsätzlich einen angemessenen Eigenanteil von mindestens 10 % der förderfähigen Ausgaben zu tragen.",
+      "checked_at": "2026-11-20",
+      "method": "page"
+    },
+    "after_award": [
+      {
+        "source_url": "https://www.naturschutzfonds.bayern.de/aufgaben/foerderung/doc/foerderrichtlinien.pdf",
+        "quote": "Nachweis der Mittelverwendung",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "documents": [
+      {
+        "source_url": "https://www.naturschutzfonds.bayern.de/aufgaben/foerderung/antragstellung/index.html",
+        "quote": "Kartenausschnitt TK 25 Kartenausschnitt Flurkarte M 1:5.000 mit Markierung der Förderobjekte und ggf. weiterer Flächen, die bereits Naturschutzzwecken dienen Marktwertbescheinigung über den Kauf-/Pachtpreis",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.naturschutzfonds.bayern.de/aufgaben/foerderung/antragstellung/index.html",
+        "quote": "Bei Pachtvorhaben Pachtvertragsentwurf",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.naturschutzfonds.bayern.de/aufgaben/foerderung/antragstellung/index.html",
+        "quote": "Bei erstmaliger Antragstellung: Vereinssatzung des Maßnahmeträgers",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ]
   },
   "checked_at": "2026-11-20"
 }

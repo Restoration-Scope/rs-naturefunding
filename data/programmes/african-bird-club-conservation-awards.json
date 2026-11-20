@@ -1,23 +1,63 @@
 {
   "id": "african-bird-club-conservation-awards",
   "name": "African Bird Club Conservation Awards",
-  "funder": { "name": "African Bird Club", "url": "https://www.africanbirdclub.org/" },
+  "funder": {
+    "name": "African Bird Club",
+    "url": "https://www.africanbirdclub.org/"
+  },
   "administered_by": null,
   "parent": null,
   "url": "https://www.africanbirdclub.org/apply-for-an-award/",
   "summary": "Small awards of up to GBP 3,000 for people resident in Africa and African institutions running bird and habitat conservation projects: surveys and monitoring, education, local bird clubs and awareness. A separate Expedition Award of up to GBP 5,000 exists for larger projects outside the applicant's home country.",
-  "approaches": ["species_conservation", "community_conservation"],
-  "applicant_types": ["individual", "ngo"],
+  "approaches": [
+    "species_conservation",
+    "community_conservation"
+  ],
+  "applicant_types": [
+    "individual",
+    "ngo"
+  ],
   "geography": {
     "scope": "regions",
-    "regions": ["africa"],
+    "regions": [
+      "africa"
+    ],
     "label": "The African continent and related islands"
   },
   "access": "direct",
   "window": "fixed",
-  "amount": { "currency": "GBP", "max": 3000 },
+  "amount": {
+    "currency": "GBP",
+    "max": 3000
+  },
   "co_finance_required": null,
   "reporting": "Successful applicants must submit a final project report with a financial summary, which may be published; ABC can reclaim the award if it is not submitted.",
+  "effort": {
+    "steps": [
+      "Application form and project proposal",
+      "Conservation Committee review"
+    ]
+  },
+  "eligibility": [
+    {
+      "rule": "Individual normally resident in an African country, or an institution based there",
+      "kind": "legal"
+    },
+    {
+      "rule": "Have a clear conservation objective",
+      "kind": "project"
+    },
+    {
+      "rule": "Start the project after the funding decision date",
+      "kind": "project"
+    }
+  ],
+  "after_award": {
+    "reports": "final"
+  },
+  "documents": [
+    "Location map(s)"
+  ],
   "calls": [
     {
       "id": "annual-rounds",
@@ -79,7 +119,57 @@
       "quote": "Conservation Awards of up to £3,000 each may be made to individuals who are normally resident in an African country or to institutions based there.",
       "checked_at": "2026-11-20",
       "method": "page"
-    }
+    },
+    "effort": [
+      {
+        "source_url": "https://www.africanbirdclub.org/apply-for-an-award/",
+        "quote": "A detailed project proposal is required and applicants must complete and submit our standard application form",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.africanbirdclub.org/apply-for-an-award/",
+        "quote": "the Conservation Committee to review the proposal and request any further information they may need from the applicant",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "eligibility": [
+      {
+        "source_url": "https://www.africanbirdclub.org/conservation-programmes/",
+        "quote": "Conservation Awards of up to £3,000 each may be made to individuals who are normally resident in an African country or to institutions based there.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.africanbirdclub.org/conservation-programmes/",
+        "quote": "so long as there is a clear conservation objective",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.africanbirdclub.org/apply-for-an-award/",
+        "quote": "A project must not start before the decision date",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "after_award": [
+      {
+        "source_url": "https://www.africanbirdclub.org/apply-for-an-award/",
+        "quote": "A condition of all awards that ABC makes is that the successful applicants must submit a final project report (including a financial summary) to us",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "documents": [
+      {
+        "source_url": "https://www.africanbirdclub.org/wp-content/uploads/2026/11/ABC-Conservation-Award-Application-form-2027.docx",
+        "quote": "You must include location map(s) inserted below within this document",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ]
   },
   "checked_at": "2026-11-09"
 }

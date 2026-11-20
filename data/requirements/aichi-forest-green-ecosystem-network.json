@@ -1,0 +1,65 @@
+{
+  "id": "aichi-forest-green-ecosystem-network",
+  "read_on": "2026-11-20",
+  "prompt_version": "req-2026-11-20.1",
+  "models": ["cursor:gpt-5.6-luna-high", "cursor:gpt-5.6-sol-high"],
+  "complete": false,
+  "reasons": [
+    "https://www.pref.aichi.jp/soshiki/kankyokatsudo/morikankyou.html would not open (blocked: HTTP 200 bot challenge page)",
+    "the text names a document with rules that was not read: あいち森と緑づくり生態系ネットワーク形成事業実施要領",
+    "the text names a document with rules that was not read: あいち森と緑づくり生態系ネットワーク形成事業交付金交付要綱",
+    "Jev did not check this reading, so an absent fact is not known to be absent",
+    "strong reading: the text names a document with rules that was not read: あいち森と緑づくり生態系ネットワーク形成事業実施要領",
+    "strong reading: the text names a document with rules that was not read: あいち森と緑づくり生態系ネットワーク形成事業交付金交付要綱"
+  ],
+  "requirements_checked": false,
+  "documents": [
+    {
+      "ref": "D1",
+      "url": "https://www.pref.aichi.jp/uploaded/attachment/633107.pdf",
+      "final_url": "https://www.pref.aichi.jp/uploaded/attachment/633107.pdf",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": true,
+      "chars": 4247,
+      "pages": 5,
+      "low_text": false,
+      "hash": "sha256:08813419950c6fc091c30707080b7657d2244e65b73e226b527f066806881648"
+    }
+  ],
+  "failures": [
+    {
+      "url": "https://www.pref.aichi.jp/soshiki/kankyokatsudo/morikankyou.html",
+      "from": null,
+      "kind": "blocked",
+      "message": "HTTP 200 bot challenge page"
+    }
+  ],
+  "skipped_links": 0,
+  "chunks": [{ "id": "all", "docs": ["D1"], "chars": 4322 }],
+  "outcomes": {
+    "eligibility": "stated",
+    "documents": "unresolved",
+    "effort": "stated",
+    "co_finance": "not_found",
+    "consortium": "stated",
+    "after_award": "not_found"
+  },
+  "written": ["eligibility", "effort", "consortium"],
+  "escalated": ["eligibility", "documents", "effort", "consortium"],
+  "flags": [
+    {
+      "field": "documents",
+      "item": "Implementation plan",
+      "why": "the quote is not on any gathered document"
+    }
+  ],
+  "notes": [
+    "effort \"Implementation plan and required attachments\": the quote does not state 2026-03-13 whole; left undated",
+    "extractor: For hard improvements that create property, the parent and child organisations apply jointly; the child organisation carries out the work and receives that portion directly. Payment is generally made after completion through settlement, with receipts and other expenditure evidence required.",
+    "strong: effort \"Initial application by email\": the quote does not state 2026-03-13 whole; left undated",
+    "source aichi-forest-green-ecosystem-network-2: selector main dropped, a new quote sits outside it"
+  ],
+  "usd": 0
+}
