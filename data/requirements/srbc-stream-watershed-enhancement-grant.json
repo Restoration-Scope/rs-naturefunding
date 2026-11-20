@@ -1,0 +1,123 @@
+{
+  "id": "srbc-stream-watershed-enhancement-grant",
+  "read_on": "2026-11-20",
+  "prompt_version": "req-2026-11-20.1",
+  "models": ["cursor:gpt-5.6-luna-high", "cursor:gpt-5.6-sol-high"],
+  "complete": false,
+  "reasons": [
+    "8 links could not be ranked without Jev",
+    "https://www.srbc.gov/our-work/grants/docs/stream-watershed-enhancement-grant-overview-webinar-slides-20261001.pdf: pages 1, 10, 12, 13, 14, 16 are images: needs OCR",
+    "the text names a document with rules that was not read: Grant Application",
+    "Jev did not check this reading, so an absent fact is not known to be absent"
+  ],
+  "requirements_checked": false,
+  "documents": [
+    {
+      "ref": "D1",
+      "url": "https://srbc.gov/our-work/grants/stream-watershed-enhancement-grant.html",
+      "final_url": "https://www.srbc.gov/our-work/grants/stream-watershed-enhancement-grant.html",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 1556,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:094921f4e825fa66627de9afd93ab132431d494da0d4fb92864a8fd1ca0e24e3"
+    },
+    {
+      "ref": "D2",
+      "url": "https://srbc.gov/our-work/grants/docs/stream-watershed-enhancement-grant-guidelines.pdf",
+      "final_url": "https://www.srbc.gov/our-work/grants/docs/stream-watershed-enhancement-grant-guidelines.pdf",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": true,
+      "chars": 4556,
+      "pages": 3,
+      "low_text": false,
+      "hash": "sha256:760ccb9503dadea63de752805d27fe72d24e7df72ff4fcd8bf0d46aaf23323f0"
+    },
+    {
+      "ref": "D3",
+      "url": "https://www.srbc.gov/our-work/grants/docs/stream-watershed-enhancement-grant-application-guide.pdf",
+      "final_url": "https://www.srbc.gov/our-work/grants/docs/stream-watershed-enhancement-grant-application-guide.pdf",
+      "from": "https://srbc.gov/our-work/grants/stream-watershed-enhancement-grant.html",
+      "anchor": "Application User Guide",
+      "depth": 1,
+      "pdf": true,
+      "chars": 5495,
+      "pages": 7,
+      "low_text": false,
+      "hash": "sha256:c9a3d3fdde0e2d8d83dbfaf1a6611fdb86638075ac4afa39c4560d0e3789fc34"
+    },
+    {
+      "ref": "D4",
+      "url": "https://www.srbc.gov/our-work/grants/docs/stream-watershed-enhancement-grant-faq.pdf",
+      "final_url": "https://www.srbc.gov/our-work/grants/docs/stream-watershed-enhancement-grant-faq.pdf",
+      "from": "https://srbc.gov/our-work/grants/stream-watershed-enhancement-grant.html",
+      "anchor": "Frequently Asked Questions",
+      "depth": 1,
+      "pdf": true,
+      "chars": 4440,
+      "pages": 3,
+      "low_text": false,
+      "hash": "sha256:92e7b119baac219abcbbed3382f0e23b956f7426afb322d53a0d2032712cdbb1"
+    },
+    {
+      "ref": "D5",
+      "url": "https://www.srbc.gov/our-work/grants/docs/stream-watershed-enhancement-grant-agreement.pdf",
+      "final_url": "https://www.srbc.gov/our-work/grants/docs/stream-watershed-enhancement-grant-agreement.pdf",
+      "from": "https://srbc.gov/our-work/grants/stream-watershed-enhancement-grant.html",
+      "anchor": "Stream & Watershed Enhancement Grant Funding Agreement",
+      "depth": 1,
+      "pdf": true,
+      "chars": 10260,
+      "pages": 5,
+      "low_text": false,
+      "hash": "sha256:7a1a6e73d38ce675c671a9ac0a6cfc14aefed2b168aa2ef19c40718c8f732856"
+    },
+    {
+      "ref": "D6",
+      "url": "https://www.srbc.gov/our-work/grants/docs/stream-watershed-enhancement-grant-overview-webinar-slides-20261001.pdf",
+      "final_url": "https://www.srbc.gov/our-work/grants/docs/stream-watershed-enhancement-grant-overview-webinar-slides-20261001.pdf",
+      "from": "https://srbc.gov/our-work/grants/stream-watershed-enhancement-grant.html",
+      "anchor": "Introductory Webinar Slides (10/01/26)",
+      "depth": 1,
+      "pdf": true,
+      "chars": 5017,
+      "pages": 16,
+      "low_text": false,
+      "hash": "sha256:0dbe031450d7cae8d78fe122c5a1cf0f56e9efc7bf94951a8c64ab7ce8aa39ae"
+    }
+  ],
+  "failures": [
+    {
+      "url": "https://www.srbc.gov/our-work/grants/docs/stream-watershed-enhancement-grant-overview-webinar-slides-20261001.pdf",
+      "from": "https://srbc.gov/our-work/grants/stream-watershed-enhancement-grant.html",
+      "kind": "low_text",
+      "message": "pages 1, 10, 12, 13, 14, 16 are images: needs OCR"
+    }
+  ],
+  "skipped_links": 9,
+  "chunks": [{ "id": "all", "docs": ["D1", "D2", "D3", "D4", "D5", "D6"], "chars": 32326 }],
+  "outcomes": {
+    "eligibility": "stated",
+    "documents": "not_found",
+    "effort": "stated",
+    "co_finance": "stated",
+    "consortium": "not_found",
+    "after_award": "stated"
+  },
+  "written": ["eligibility", "effort", "co_finance", "after_award"],
+  "escalated": ["eligibility"],
+  "flags": [],
+  "notes": [
+    "extractor: The agreement requires project completion by 2027-12-31. Reimbursement requests must include receipts or invoices marked “Paid” and detailed labor records.",
+    "eligibility: kept 1 first-reading item no check faulted that the strong reading left out",
+    "source srbc-stream-watershed-enhancement-grant-1: selector main dropped, a new quote sits outside it",
+    "source srbc-stream-watershed-enhancement-grant-3: added for https://www.srbc.gov/our-work/grants/docs/stream-watershed-enhancement-grant-faq.pdf",
+    "source srbc-stream-watershed-enhancement-grant-4: added for https://www.srbc.gov/our-work/grants/docs/stream-watershed-enhancement-grant-agreement.pdf"
+  ],
+  "usd": 0
+}

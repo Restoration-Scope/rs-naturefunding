@@ -1,19 +1,62 @@
 {
   "id": "sustain-sc-land-water-action-platform",
   "name": "Sustain SC Land and Water Action Platform grants",
-  "funder": { "name": "Sustain South Carolina", "url": "https://www.sustainsouthcarolina.org" },
+  "funder": {
+    "name": "Sustain South Carolina",
+    "url": "https://www.sustainsouthcarolina.org"
+  },
   "administered_by": null,
   "parent": null,
   "url": "https://www.sustainsouthcarolina.org/land-water-action-platform",
   "summary": "Corporate-funded grants for South Carolina land-conservation non-profits and Indigenous-led organisations, paying due diligence (title, appraisals, surveys, closing costs) and land value for acquisitions and easements. Funds go to the non-profit working with the landowner. Rounds through the year.",
-  "approaches": ["protected_areas"],
-  "applicant_types": ["ngo", "indigenous_organization"],
-  "geography": { "scope": "countries", "countries": ["US"], "label": "South Carolina" },
+  "approaches": [
+    "protected_areas"
+  ],
+  "applicant_types": [
+    "ngo",
+    "indigenous_organization"
+  ],
+  "geography": {
+    "scope": "countries",
+    "countries": [
+      "US"
+    ],
+    "label": "South Carolina"
+  },
   "access": "direct",
   "window": "fixed",
   "amount": null,
   "co_finance_required": null,
   "reporting": "Quarterly written progress check-ins until the land project is completed.",
+  "effort": {
+    "steps": [
+      "Round 1 or Round 2 application"
+    ]
+  },
+  "eligibility": [
+    {
+      "rule": "Is not a public agency",
+      "kind": "legal"
+    },
+    {
+      "rule": "Not a stewardship project",
+      "kind": "project"
+    },
+    {
+      "rule": "Project is located in South Carolina",
+      "kind": "project"
+    }
+  ],
+  "after_award": {
+    "reports": "quarterly"
+  },
+  "documents": [
+    "Supplemental document, if using a Bank application",
+    "Property shapefiles",
+    "Three property images",
+    "Applicant organisation logo",
+    "Project budget"
+  ],
   "calls": [
     {
       "id": "2026-round-1",
@@ -96,7 +139,63 @@
       "quote": "Once funds are awarded, quarterly written progress check-ins will occur until the land project is completed.",
       "checked_at": "2026-11-16",
       "method": "page"
-    }
+    },
+    "effort": [
+      {
+        "source_url": "https://www.sustainsouthcarolina.org/land-water-action-platform",
+        "quote": "Round 1 Quarterly Applications close February 20, 2026. Applicants will be notified about awards the week of April 6, 2026. Round 2 Quarterly Applications close on July 31, 2026.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "eligibility": [
+      {
+        "source_url": "https://www.sustainsouthcarolina.org/s/2026-LAWAP-Application-and-Elegibility-Criteria-Guidelines.pdf",
+        "quote": "While public agencies are not eligible to apply for LAWAP funding",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.sustainsouthcarolina.org/s/2026-LAWAP-Application-and-Elegibility-Criteria-Guidelines.pdf",
+        "quote": "LAWAP will not fund stewardship projects during 2026.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.sustainsouthcarolina.org/s/2026-LAWAP-Application-and-Elegibility-Criteria-Guidelines.pdf",
+        "quote": "Service Area: Project must be located within South Carolina.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "after_award": [
+      {
+        "source_url": "https://www.sustainsouthcarolina.org/s/2026-LAWAP-Application-and-Elegibility-Criteria-Guidelines.pdf",
+        "quote": "Once funds are awarded, quarterly written progress check-ins will occur until the land project is completed.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "documents": [
+      {
+        "source_url": "https://www.sustainsouthcarolina.org/s/2026-LAWAP-Application-and-Elegibility-Criteria-Guidelines.pdf",
+        "quote": "A supplemental document and required upload documentation will accompany the Bank application. Further instructions are included in the application section. Property shapefile(s) will be uploaded with the application. Three Images of the property will be uploaded with the application.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.sustainsouthcarolina.org/s/2026-LAWAP-Application-and-Elegibility-Criteria-Guidelines.pdf",
+        "quote": "The applicant's organization logo will be uploaded with the application.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.sustainsouthcarolina.org/s/2026-LAWAP-Application-and-Elegibility-Criteria-Guidelines.pdf",
+        "quote": "Project budget is required and will Include:",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ]
   },
   "checked_at": "2026-11-16"
 }
