@@ -1,19 +1,62 @@
 {
   "id": "thames-water-enhance-the-river",
   "name": "Enhance the River (River Health and Community Fund)",
-  "funder": { "name": "Thames Water", "url": "https://www.thameswater.co.uk/" },
+  "funder": {
+    "name": "Thames Water",
+    "url": "https://www.thameswater.co.uk/"
+  },
   "administered_by": null,
   "parent": null,
   "url": "https://www.thameswater.co.uk/about-us/community/community-funding",
   "summary": "Thames Water grants of up to £150,000 for catchment-scale river habitat restoration, fish passage, floodplain reconnection and invasive species work, part of a fund running to 2030. The first round has closed; later rounds are to be announced.",
-  "approaches": ["freshwater", "wetlands"],
-  "applicant_types": ["ngo", "community_group", "social_enterprise", "government"],
-  "geography": { "scope": "countries", "countries": ["GB"], "label": "Thames Water supply area" },
+  "approaches": [
+    "freshwater",
+    "wetlands"
+  ],
+  "applicant_types": [
+    "ngo",
+    "community_group",
+    "social_enterprise",
+    "government"
+  ],
+  "geography": {
+    "scope": "countries",
+    "countries": [
+      "GB"
+    ],
+    "label": "Thames Water supply area"
+  },
   "access": "direct",
   "window": "fixed",
-  "amount": { "currency": "GBP", "max": 150000 },
+  "amount": {
+    "currency": "GBP",
+    "max": 150000
+  },
   "co_finance_required": null,
   "reporting": null,
+  "effort": {
+    "steps": [
+      "Complete and submit application form",
+      "Panel review"
+    ],
+    "due": [
+      "2027-01-11",
+      null
+    ]
+  },
+  "eligibility": [
+    {
+      "rule": "Project is in the Thames Water region",
+      "kind": "project"
+    },
+    {
+      "rule": "Partnership project is completed by December 2029",
+      "kind": "project"
+    }
+  ],
+  "after_award": {
+    "reports": "unspecified"
+  },
   "calls": [
     {
       "id": "round-1",
@@ -21,7 +64,10 @@
       "url": "https://www.thameswater.co.uk/about-us/community/community-funding",
       "status": "closed",
       "opens": "2026-04-01",
-      "deadline": { "date": "2026-05-27", "text": "closed on 27 May 2026" },
+      "deadline": {
+        "date": "2026-05-27",
+        "text": "closed on 27 May 2026"
+      },
       "evidence": {
         "status": {
           "source_url": "https://www.thameswater.co.uk/about-us/community/community-funding",
@@ -74,7 +120,43 @@
       "quote": "Please check that your organisation is within our supply area before applying.",
       "checked_at": "2026-11-09",
       "method": "page"
-    }
+    },
+    "effort": [
+      {
+        "source_url": "https://www.thameswater.co.uk/about-us/community/community-funding",
+        "quote": "The second application window is now open and will close on 11 January 2027.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.thameswater.co.uk/media-library/cycl5gqn/enhance-the-river-overview-and-application-guide.pdf",
+        "quote": "Applications will be reviewed by a panel of local experts, using the assessment criteria outlined on this page.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "eligibility": [
+      {
+        "source_url": "https://www.thameswater.co.uk/media-library/cycl5gqn/enhance-the-river-overview-and-application-guide.pdf",
+        "quote": "Check your project is in the Thames Water region before applying.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.thameswater.co.uk/media-library/cycl5gqn/enhance-the-river-overview-and-application-guide.pdf",
+        "quote": "All partnership projects must be completed by December 2029.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "after_award": [
+      {
+        "source_url": "https://www.thameswater.co.uk/media-library/cycl5gqn/enhance-the-river-overview-and-application-guide.pdf",
+        "quote": "Successful applicants will also need to provide regular project updates and complete associated reporting forms.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ]
   },
   "checked_at": "2026-11-09"
 }

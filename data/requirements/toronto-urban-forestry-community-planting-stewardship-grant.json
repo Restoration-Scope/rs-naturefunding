@@ -1,0 +1,47 @@
+{
+  "id": "toronto-urban-forestry-community-planting-stewardship-grant",
+  "read_on": "2026-11-20",
+  "prompt_version": "req-2026-11-20.1",
+  "models": ["cursor:gpt-5.6-luna-high"],
+  "complete": false,
+  "reasons": [
+    "the text names a document with rules that was not read: Grant guidelines",
+    "the text names a document with rules that was not read: Letter of Understanding (LOU)",
+    "Jev did not check this reading, so an absent fact is not known to be absent"
+  ],
+  "requirements_checked": false,
+  "documents": [
+    {
+      "ref": "D1",
+      "url": "https://www.toronto.ca/services-payments/water-environment/environmental-grants-incentives/urban-forestry-grants-and-incentives/urban-forestry-community-grants/",
+      "final_url": "https://www.toronto.ca/services-payments/water-environment/environmental-grants-incentives/urban-forestry-grants-and-incentives/urban-forestry-community-grants/",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 21165,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:6d609794de4eada54e7a94ba7c09de2274da1b9242218871e592b65fe81c29d8"
+    }
+  ],
+  "failures": [],
+  "skipped_links": 20,
+  "chunks": [{ "id": "all", "docs": ["D1"], "chars": 21338 }],
+  "outcomes": {
+    "eligibility": "stated",
+    "documents": "not_found",
+    "effort": "stated",
+    "co_finance": "stated",
+    "consortium": "not_found",
+    "after_award": "stated"
+  },
+  "written": ["eligibility", "effort", "co_finance", "after_award"],
+  "escalated": [],
+  "flags": [],
+  "notes": [
+    "co_finance: share 50% dropped, its quote does not state it",
+    "extractor: The page states that 2026 applications are closed. It also describes a separate Greening Partnership Grant; the eligibility and project duration recorded here are for the Community Planting and Stewardship Grant."
+  ],
+  "usd": 0
+}
