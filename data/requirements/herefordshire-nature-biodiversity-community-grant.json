@@ -1,0 +1,55 @@
+{
+  "id": "herefordshire-nature-biodiversity-community-grant",
+  "read_on": "2026-11-20",
+  "prompt_version": "req-2026-11-20.1",
+  "models": ["cursor:gpt-5.6-luna-high"],
+  "complete": false,
+  "reasons": [
+    "https://www.herefordshire.gov.uk/media/ye0mtncz/nature-biodiversity-community-grant-scheme-info-leaflet.pdf would not open (robots: robots.txt disallows this page)",
+    "the text names a document with rules that was not read: Herefordshire Local Nature Recovery Strategy (LNRS)",
+    "the text names a document with rules that was not read: Scheme info leaflet",
+    "the text names a document with rules that was not read: Terms and conditions",
+    "Jev did not check this reading, so an absent fact is not known to be absent"
+  ],
+  "requirements_checked": false,
+  "documents": [
+    {
+      "ref": "D1",
+      "url": "https://www.herefordshire.gov.uk/directories/grants/nature-and-biodiversity-community-grant-scheme",
+      "final_url": "https://www.herefordshire.gov.uk/directories/grants/nature-and-biodiversity-community-grant-scheme",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 10348,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:3a5755e093a4f5bd103bdb21c97b99f9b790504535c7a87180385cefbfc255c7"
+    }
+  ],
+  "failures": [
+    {
+      "url": "https://www.herefordshire.gov.uk/media/ye0mtncz/nature-biodiversity-community-grant-scheme-info-leaflet.pdf",
+      "from": "https://www.herefordshire.gov.uk/directories/grants/nature-and-biodiversity-community-grant-scheme",
+      "kind": "robots",
+      "message": "robots.txt disallows this page"
+    }
+  ],
+  "skipped_links": 22,
+  "chunks": [{ "id": "all", "docs": ["D1"], "chars": 10459 }],
+  "outcomes": {
+    "eligibility": "stated",
+    "documents": "stated",
+    "effort": "stated",
+    "co_finance": "stated",
+    "consortium": "not_found",
+    "after_award": "stated"
+  },
+  "written": ["eligibility", "documents", "effort", "co_finance", "after_award"],
+  "escalated": [],
+  "flags": [],
+  "notes": [
+    "extractor: The 2026 round reopened on 1 June 2026 and closed on 31 August 2026. Grants were to be awarded by 31 October 2026, with projects, final evidence and claims due by 31 March 2027. Additional documents are requested after an offer, not at the first application stage."
+  ],
+  "usd": 0
+}

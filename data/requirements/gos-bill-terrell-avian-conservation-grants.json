@@ -1,0 +1,108 @@
+{
+  "id": "gos-bill-terrell-avian-conservation-grants",
+  "read_on": "2026-11-20",
+  "prompt_version": "req-2026-11-20.1",
+  "models": ["cursor:gpt-5.6-luna-high"],
+  "complete": false,
+  "reasons": [
+    "42 links could not be ranked without Jev",
+    "14 links could not be ranked without Jev",
+    "11 links could not be ranked without Jev",
+    "https://www.gos.org/GrantRequestFormForGOSConservationGrant.doc would not open (unreadable: an old Word (.doc), OpenDocument or RTF file: needs conversion)",
+    "https://www.gos.org/rarereport6.doc would not open (unreadable: an old Word (.doc), OpenDocument or RTF file: needs conversion)",
+    "https://www.gos.org/rarereport6.rtf would not open (unreadable: an old Word (.doc), OpenDocument or RTF file: needs conversion)",
+    "Jev did not check this reading, so an absent fact is not known to be absent"
+  ],
+  "requirements_checked": false,
+  "documents": [
+    {
+      "ref": "D1",
+      "url": "https://www.gos.org/bt_conservationgrants",
+      "final_url": "https://www.gos.org/bt_conservationgrants",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 7105,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:b63b3e1e206b56c4c5986c46a1156147edd930f809d617ae73c39ef08c3eabdb"
+    },
+    {
+      "ref": "D2",
+      "url": "https://www.gos.org/2023-checklist",
+      "final_url": "https://www.gos.org/2023-checklist",
+      "from": "https://www.gos.org/bt_conservationgrants",
+      "anchor": "2023 Checklist",
+      "depth": 1,
+      "pdf": false,
+      "chars": 19347,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:57439f256b8f39961ded6b2d5277311fd65f77f059e1eac2093b0d80edcc000a"
+    },
+    {
+      "ref": "D3",
+      "url": "https://www.gos.org/checklist-and-records-committee",
+      "final_url": "https://www.gos.org/checklist-and-records-committee",
+      "from": "https://www.gos.org/bt_conservationgrants",
+      "anchor": "Checklist and Records Committee",
+      "depth": 1,
+      "pdf": false,
+      "chars": 5423,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:6a897e52948df9a5d207eae541cec4ed1940b942a664328d112227b827f094f3"
+    },
+    {
+      "ref": "D4",
+      "url": "https://www.gos.org/2019-checklist",
+      "final_url": "https://www.gos.org/2019-checklist",
+      "from": "https://www.gos.org/checklist-and-records-committee",
+      "anchor": "The Regular List",
+      "depth": 2,
+      "pdf": false,
+      "chars": 19313,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:62b772ea2125223183d1f9a2ca18c1fde6396f7e8736b2c3a20dec61d08bf59d"
+    }
+  ],
+  "failures": [
+    {
+      "url": "https://www.gos.org/GrantRequestFormForGOSConservationGrant.doc",
+      "from": "https://www.gos.org/bt_conservationgrants",
+      "kind": "unreadable",
+      "message": "an old Word (.doc), OpenDocument or RTF file: needs conversion"
+    },
+    {
+      "url": "https://www.gos.org/rarereport6.doc",
+      "from": "https://www.gos.org/checklist-and-records-committee",
+      "kind": "unreadable",
+      "message": "an old Word (.doc), OpenDocument or RTF file: needs conversion"
+    },
+    {
+      "url": "https://www.gos.org/rarereport6.rtf",
+      "from": "https://www.gos.org/checklist-and-records-committee",
+      "kind": "unreadable",
+      "message": "an old Word (.doc), OpenDocument or RTF file: needs conversion"
+    }
+  ],
+  "skipped_links": 190,
+  "chunks": [{ "id": "all", "docs": ["D1", "D2", "D3", "D4"], "chars": 51578 }],
+  "outcomes": {
+    "eligibility": "stated",
+    "documents": "stated",
+    "effort": "stated",
+    "co_finance": "not_found",
+    "consortium": "not_found",
+    "after_award": "stated"
+  },
+  "written": ["eligibility", "documents", "effort", "after_award"],
+  "escalated": [],
+  "flags": [],
+  "notes": [
+    "extractor: The annual deadline is stated as December 31 without a year. Grant recipients are required to present project results at a GOS meeting; publication in The Oriole is encouraged but not required."
+  ],
+  "usd": 0
+}

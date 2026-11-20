@@ -17,6 +17,8 @@
   "amount": { "currency": "JPY", "max": 1000000 },
   "co_finance_required": null,
   "reporting": "Grantees submit a results report promptly once the funded project is complete.",
+  "effort": { "steps": ["Grant application"] },
+  "after_award": { "reports": "final" },
   "calls": [],
   "evidence": {
     "applicant_types": {
@@ -48,7 +50,23 @@
       "quote": "助成を受けた者は、助成対象事業が完了したとき、速やかに所定の助成実績報告書を提出しなければならない。",
       "checked_at": "2026-11-20",
       "method": "page"
-    }
+    },
+    "effort": [
+      {
+        "source_url": "https://nature.hokkaido-np.co.jp/project/jyoseikitei.html",
+        "quote": "所定の助成申請書を、期日までに北海道新聞野生生物基金理事長に提出するものとする。",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "after_award": [
+      {
+        "source_url": "https://nature.hokkaido-np.co.jp/project/jyoseikitei.html",
+        "quote": "助成対象事業が完了したとき、速やかに所定の助成実績報告書を提出しなければならない。",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ]
   },
   "checked_at": "2026-11-20"
 }

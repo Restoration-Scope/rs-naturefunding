@@ -9,9 +9,19 @@
   "parent": null,
   "url": "https://sede.gva.es/es/proc861",
   "summary": "Competitive grants in the Valencian Community for non-profit associations and foundations running animal biodiversity conservation projects, such as bird and bat nest boxes, wildlife ramps in water ponds and habitat improvements. The same procedure also has an animal-welfare line (Modalidad A), not listed here.",
-  "approaches": ["species_conservation"],
-  "applicant_types": ["ngo"],
-  "geography": { "scope": "countries", "countries": ["ES"], "label": "Comunitat Valenciana" },
+  "approaches": [
+    "species_conservation"
+  ],
+  "applicant_types": [
+    "ngo"
+  ],
+  "geography": {
+    "scope": "countries",
+    "countries": [
+      "ES"
+    ],
+    "label": "Comunitat Valenciana"
+  },
   "access": "direct",
   "window": "fixed",
   "amount": {
@@ -19,8 +29,42 @@
     "max": 18000,
     "note": "Modalidad B (biodiversity), VAT included, up to 80% of project cost"
   },
-  "co_finance_required": null,
+  "co_finance_required": true,
   "reporting": null,
+  "eligibility": [
+    {
+      "rule": "Have legal personality and be non-profit under the statutes",
+      "kind": "legal"
+    },
+    {
+      "rule": "Have biodiversity conservation, ecosystem balance or habitat protection as a main purpose or activity",
+      "kind": "other"
+    },
+    {
+      "rule": "Be current on state and regional tax and Social Security obligations",
+      "kind": "legal"
+    },
+    {
+      "rule": "Not be subject to beneficiary prohibitions under Article 13",
+      "kind": "legal"
+    }
+  ],
+  "co_finance": {
+    "min_share": 20
+  },
+  "after_award": {
+    "reports": "final"
+  },
+  "documents": [
+    "Proof of legal personality, representative authority and social purpose",
+    "Tax identification and representative identity proof, if consultation is not authorized",
+    "Registration certificate or statutes proving entity status",
+    "State and regional tax-clearance evidence, if consultation is not authorized",
+    "Social Security clearance certificate, if consultation is opposed",
+    "Programme of activities with schedule, budget and planned means",
+    "Competent authority authorization for projects involving catalogued species",
+    "Construction report, works project and building licence, for b.6 building projects, where applicable"
+  ],
   "calls": [
     {
       "id": "2026",
@@ -28,7 +72,10 @@
       "url": "https://sede.gva.es/es/proc861",
       "status": "closed",
       "opens": "2026-09-21",
-      "deadline": { "date": "2026-10-02", "text": "hasta 02-10-2026" },
+      "deadline": {
+        "date": "2026-10-02",
+        "text": "hasta 02-10-2026"
+      },
       "evidence": {
         "status": {
           "source_url": "https://sede.gva.es/es/proc861",
@@ -81,7 +128,103 @@
       "quote": "Las entidades beneficiarias presentarán en cada convocatoria, una única solicitud de subvención dónde se podrá seleccionar las actividades de la modalidad A o B.",
       "checked_at": "2026-11-20",
       "method": "page"
-    }
+    },
+    "co_finance_required": {
+      "source_url": "https://sede.gva.es/es/proc861",
+      "quote": "El importe máximo de la subvención a conceder a cada beneficiario por la realización de una o varias de las actuaciones subvencionables de la Modalidad B será de 18.000 euros, IVA incluido, pudiéndose financiar hasta el 80% de la ejecución de los proyectos o actividades.",
+      "checked_at": "2026-11-20",
+      "method": "page"
+    },
+    "eligibility": [
+      {
+        "source_url": "https://sede.gva.es/es/proc861",
+        "quote": "entidades, asociaciones o fundaciones con personalidad jurídica, sin ánimo de lucro, reconocido en sus estatutos",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://sede.gva.es/es/proc861",
+        "quote": "que tengan como principal finalidad o que realicen actividades que contribuyan a la conservación de la biodiversidad y equilibrio de los ecosistemas de los animales y la mejora de su hábitat y la protección del medio ambiente.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://sede.gva.es/es/proc861",
+        "quote": "Acreditación de estar al corriente de las obligaciones tributarias, estatales y autonómicas, y con la Seguridad Social",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://siac-front.gva.es/siac-front/public/descarga/es/F151441",
+        "quote": "No estar incurso en ninguno de los supuestos previstos en el artículo 13 de la Ley 38/2003, de 17 de noviembre, general de subvenciones",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "co_finance": {
+      "source_url": "https://sede.gva.es/es/proc861",
+      "quote": "El importe máximo de la subvención a conceder a cada beneficiario por la realización de una o varias de las actuaciones subvencionables de la Modalidad B será de 18.000 euros, IVA incluido, pudiéndose financiar hasta el 80% de la ejecución de los proyectos o actividades.",
+      "checked_at": "2026-11-20",
+      "method": "page"
+    },
+    "after_award": [
+      {
+        "source_url": "https://sede.gva.es/es/proc861",
+        "quote": "la memoria justificativa del proyecto realizado, con indicación de las actividades realizadas y la descripción de los objetivos y resultados alcanzados",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "documents": [
+      {
+        "source_url": "https://sede.gva.es/es/proc861",
+        "quote": "Acreditación de la personalidad jurídica del solicitante, de la identidad y capacitación de su representante y también de su objeto social en caso de asociaciones y entidades sin ánimo de lucro",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://sede.gva.es/es/proc861",
+        "quote": "Número de identificación fiscal de la persona jurídica solicitante y acreditación de la identidad del representante legal, en caso de no autorizar su consulta por el órgano gestor del procedimiento.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://siac-front.gva.es/siac-front/public/descarga/es/F151441",
+        "quote": "Certificación acreditativa de inscripción en el registro oficial correspondiente o en su defecto, copia de los estatutos o documentación que acredite el carácter de entidades",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://sede.gva.es/es/proc861",
+        "quote": "para poder consultar los datos de estar al corriente de los pagos con la Agencia Tributaria, estatal y autonómica, y los datos de identidad fiscal ante la Agencia Estatal de la Administración. En caso contrario, la persona interesada deberá aportar los documentos acreditativos correspondientes.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://siac-front.gva.es/siac-front/public/descarga/es/F151441",
+        "quote": "Certificado de estar al corriente de los pagos con la Tesorería de la Seguridad Social, en caso de oponerse a la consulta interactiva de documentación.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://siac-front.gva.es/siac-front/public/descarga/es/F151441",
+        "quote": "Programa de actuaciones donde consten claramente el tipo de actividad a realizar según la Modalidad de actuaciones escogida, con indicación del calendario, el presupuesto estimado y desglosado para cada una de las actividades para las que se solicita la ayuda, y los medios que se prevé emplear.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://siac-front.gva.es/siac-front/public/descarga/es/F151441",
+        "quote": "Autorización del órgano competente por tratarse de proyectos de especies catalogadas.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://sede.gva.es/es/proc861",
+        "quote": "En relación con los tipos de actuaciones a.6 y b.6 se aportará memoria descriptiva de la construcción o proyecto de adecuación de las instalaciones, proyecto de obra y licencia de obra del ayuntamiento correspondiente, en su caso.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ]
   },
   "checked_at": "2026-11-20"
 }

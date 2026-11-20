@@ -1,0 +1,46 @@
+{
+  "id": "girona-nonprofit-nature-conservation",
+  "read_on": "2026-11-20",
+  "prompt_version": "req-2026-11-20.1",
+  "models": ["cursor:gpt-5.6-luna-high"],
+  "complete": false,
+  "reasons": [
+    "the text names a document with rules that was not read: Bases específiques reguladores de subvencions de la Diputació de Girona per a actuacions, per part d'organitzacions no lucratives, de conservació del patrimoni ",
+    "Jev did not check this reading, so an absent fact is not known to be absent"
+  ],
+  "requirements_checked": false,
+  "documents": [
+    {
+      "ref": "D1",
+      "url": "https://seu.ddgi.cat/web/recursos/document/14295/15480/Convocatoria_de_subvencions_per_a_actuacions__per_part_d_organitzacions_no_lucratives__de_conservacio_del_patrimoni_natural_i_per_a_la_custodia_del_territori_2026-2027.pdf",
+      "final_url": "https://seu.ddgi.cat/web/recursos/document/14295/15480/Convocatoria_de_subvencions_per_a_actuacions__per_part_d_organitzacions_no_lucratives__de_conservacio_del_patrimoni_natural_i_per_a_la_custodia_del_territori_2026-2027.pdf",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": true,
+      "chars": 14099,
+      "pages": 6,
+      "low_text": false,
+      "hash": "sha256:b1e0b3d9658981d262fdce8e166db57ab288d65ef4d8eaf8c9ba4f5af81d83d3"
+    }
+  ],
+  "failures": [],
+  "skipped_links": 0,
+  "chunks": [{ "id": "all", "docs": ["D1"], "chars": 14344 }],
+  "outcomes": {
+    "eligibility": "stated",
+    "documents": "not_found",
+    "effort": "stated",
+    "co_finance": "stated",
+    "consortium": "not_found",
+    "after_award": "stated"
+  },
+  "written": ["eligibility", "effort", "co_finance", "after_award"],
+  "escalated": [],
+  "flags": [],
+  "notes": [
+    "extractor: D1 covers two routes: Line 1 for annual or biennial projects in 2026–2027 and Line 2 for multi-year co-funded projects in 2025–2028. Line 2 has annual application windows.",
+    "source girona-nonprofit-nature-conservation-1: selector main dropped, a new quote sits outside it"
+  ],
+  "usd": 0
+}

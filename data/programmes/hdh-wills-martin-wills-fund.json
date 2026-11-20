@@ -1,19 +1,60 @@
 {
   "id": "hdh-wills-martin-wills-fund",
   "name": "Martin Wills Fund",
-  "funder": { "name": "HDH Wills 1965 Charitable Trust", "url": "https://hdhwills.org/" },
+  "funder": {
+    "name": "HDH Wills 1965 Charitable Trust",
+    "url": "https://hdhwills.org/"
+  },
   "administered_by": null,
   "parent": null,
   "url": "https://hdhwills.org/grants/",
   "summary": "Grants for small and medium-sized charities in the UK and Ireland running projects that protect, restore and enhance wildlife and habitats, with a yearly application window.",
-  "approaches": ["species_conservation"],
-  "applicant_types": ["ngo"],
-  "geography": { "scope": "countries", "countries": ["GB", "IE"] },
+  "approaches": [
+    "species_conservation"
+  ],
+  "applicant_types": [
+    "ngo"
+  ],
+  "geography": {
+    "scope": "countries",
+    "countries": [
+      "GB",
+      "IE"
+    ]
+  },
   "access": "direct",
   "window": "fixed",
-  "amount": { "currency": "GBP", "min": 5000, "max": 20000, "typical": true },
+  "amount": {
+    "currency": "GBP",
+    "min": 5000,
+    "max": 20000,
+    "typical": true
+  },
   "co_finance_required": null,
   "reporting": null,
+  "effort": {
+    "steps": [
+      "Online application and documentation"
+    ]
+  },
+  "eligibility": [
+    {
+      "rule": "Be a registered charity",
+      "kind": "legal"
+    },
+    {
+      "rule": "Have annual income under £5 million",
+      "kind": "finances",
+      "revenue": {
+        "currency": "GBP",
+        "max": 5000000,
+        "basis": "revenue"
+      }
+    }
+  ],
+  "documents": [
+    "Project budget"
+  ],
   "calls": [
     {
       "id": "yearly-window",
@@ -69,7 +110,37 @@
       "quote": "Grants typically range from £5,000 to £20,000",
       "checked_at": "2026-11-20",
       "method": "page"
-    }
+    },
+    "effort": [
+      {
+        "source_url": "https://hdhwills.org/grants/grant-applications-faqs/",
+        "quote": "Applicants can apply for funding by completing our online grant application form and submitting the required documentation",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "eligibility": [
+      {
+        "source_url": "https://hdhwills.org/grants/",
+        "quote": "Charities registered and working in the UK and Ireland",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://hdhwills.org/grants/",
+        "quote": "Small and medium-sized organisations with an annual income under £5 million",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "documents": [
+      {
+        "source_url": "https://hdhwills.org/grants/grant-applications-faqs/",
+        "quote": "including details of the project, budget, and expected outcomes",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ]
   },
   "checked_at": "2026-11-20"
 }

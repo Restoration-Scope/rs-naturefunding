@@ -32,6 +32,37 @@
   "amount": null,
   "co_finance_required": true,
   "reporting": "A list of costs with auditable invoices and proof of payment, after the work ends.",
+  "effort": {
+    "steps": [
+      "Application before project begins",
+      "Decision on the application"
+    ]
+  },
+  "eligibility": [
+    {
+      "rule": "Project takes place within the city of Gießen",
+      "kind": "project"
+    },
+    {
+      "rule": "Project starts after the application decision and follows professional principles",
+      "kind": "project"
+    },
+    {
+      "rule": "Proper care of the funded project is guaranteed",
+      "kind": "capacity"
+    },
+    {
+      "rule": "Has the consent of the property owner",
+      "kind": "other"
+    }
+  ],
+  "after_award": {
+    "reports": "final"
+  },
+  "documents": [
+    "Description of the planned measures",
+    "Site documents such as plans, cost estimates and a financing plan"
+  ],
   "calls": [],
   "evidence": {
     "applicant_types": {
@@ -61,9 +92,75 @@
     "co_finance_required": {
       "source_url": "https://www.giessen.de/media/custom/640_41_1.PDF",
       "quote": "Der Förderungshöchstsatz beträgt 50 % der nachgewiesenen Herstellungskosten.",
-      "checked_at": "2026-11-15",
+      "checked_at": "2026-11-20",
+      "method": "page"
+    },
+    "effort": [
+      {
+        "source_url": "https://www.giessen.de/media/custom/640_41_1.PDF",
+        "quote": "Die Anträge sind vor Beginn der Maßnahme beim Magistrat der Universitätsstadt Gießen, Amt für Umwelt und Natur, einzureichen.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.giessen.de/media/custom/640_41_1.PDF",
+        "quote": "Danach wird über den Förderungsantrag entschieden.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "eligibility": [
+      {
+        "source_url": "https://www.giessen.de/media/custom/640_41_1.PDF",
+        "quote": "Gefördert werden nur Vorhaben im Bereich der Stadt Gießen.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.giessen.de/media/custom/640_41_1.PDF",
+        "quote": "das Projekt erst nach Entscheidung über den Antrag begonnen wird und gewährleistet ist, dass es nach fachlichen Grundsätzen ausgeführt wird",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.giessen.de/media/custom/640_41_1.PDF",
+        "quote": "die sachgemäße Pflege der geförderten Projekte gewährleistet ist",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.giessen.de/media/custom/640_41_1.PDF",
+        "quote": "die Zustimmung des Eigentümers und die erforderlichen öffentlich-rechtlichen Genehmigungen, Erlaubnisse und ähnliches vorliegen",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "after_award": [
+      {
+        "source_url": "https://www.giessen.de/media/custom/640_41_1.PDF",
+        "quote": "Nach Abschluss der Maßnahme hat der Antragsteller dem Amt für Umwelt und Natur eine Zusammenstellung der entstandenen Kosten sowie prüffähige Rechnungs- und Zahlungsbelege vorzulegen.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "documents": [
+      {
+        "source_url": "https://www.giessen.de/media/custom/640_41_1.PDF",
+        "quote": "Neben der Beschreibung der durchzuführenden Maßnahmen müssen dem Antrag Unterlagen beigefügt werden, die eine Begutachtung des Objektes ermöglichen (z. B. Planunterlagen, Kostenvoranschläge und Gesamtfinanzierungsplan).",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "co_finance": {
+      "source_url": "https://www.giessen.de/media/custom/640_41_1.PDF",
+      "quote": "Der Förderungshöchstsatz beträgt 50 % der nachgewiesenen Herstellungskosten. Werden die Arbeiten in Eigenleistung durchgeführt, beträgt der Förderungshöchstsatz 100 % der nachgewiesenen Materialkosten.",
+      "checked_at": "2026-11-20",
       "method": "page"
     }
   },
-  "checked_at": "2026-11-15"
+  "checked_at": "2026-11-15",
+  "co_finance": {
+    "min_share": 50,
+    "applies_to": "Work not done by the applicant as own labour"
+  }
 }
