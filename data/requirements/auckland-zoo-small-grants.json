@@ -1,0 +1,101 @@
+{
+  "id": "auckland-zoo-small-grants",
+  "read_on": "2026-11-20",
+  "prompt_version": "req-2026-11-20.1",
+  "models": ["cursor:gpt-5.6-luna-high"],
+  "complete": false,
+  "reasons": [
+    "4 links could not be ranked without Jev",
+    "9 links could not be ranked without Jev",
+    "https://cdn.aucklandunlimited.com/zoo/assets/media/small-grant-application-form-2019.doc would not open (unreadable: an old Word (.doc), OpenDocument or RTF file: needs conversion)",
+    "https://cdn.aucklandunlimited.com/zoo/assets/media/small-grant-application-form.doc would not open (unreadable: an old Word (.doc), OpenDocument or RTF file: needs conversion)",
+    "the text names a document with rules that was not read: Small Grant Application Form (142.0 KB DOC file)",
+    "Jev did not check this reading, so an absent fact is not known to be absent"
+  ],
+  "requirements_checked": false,
+  "documents": [
+    {
+      "ref": "D1",
+      "url": "https://aucklandzoo.co.nz/get-involved/small-grants-programme",
+      "final_url": "https://www.aucklandzoo.co.nz/get-involved/small-grants-programme",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 8156,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:bd1b5b293a8e176d555d2ee0959dd21b3a89197ffbe6713b50c9f90eae54d459"
+    },
+    {
+      "ref": "D2",
+      "url": "https://www.aucklandzoo.co.nz/privacy-policy",
+      "final_url": "https://www.aucklandzoo.co.nz/privacy-policy",
+      "from": "https://aucklandzoo.co.nz/get-involved/small-grants-programme",
+      "anchor": "Privacy Policy",
+      "depth": 1,
+      "pdf": false,
+      "chars": 35286,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:8b62f6a0f63d5faf1b2d62b12387de693267bd61e6afdf88cd403a141172144b"
+    },
+    {
+      "ref": "D3",
+      "url": "https://www.aucklandzoo.co.nz/terms-and-conditions",
+      "final_url": "https://www.aucklandzoo.co.nz/terms-and-conditions",
+      "from": "https://aucklandzoo.co.nz/get-involved/small-grants-programme",
+      "anchor": "Terms and Conditions",
+      "depth": 1,
+      "pdf": false,
+      "chars": 35289,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:7ceadac160a3c36d6c23a9bc5d8932b219da0334b90c81d7e0579ec4a002bbbc"
+    },
+    {
+      "ref": "D4",
+      "url": "https://www.aucklandzoo.co.nz/new-ticketing-faqs",
+      "final_url": "https://www.aucklandzoo.co.nz/new-ticketing-faqs",
+      "from": "https://www.aucklandzoo.co.nz/privacy-policy",
+      "anchor": "here",
+      "depth": 2,
+      "pdf": false,
+      "chars": 7887,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:3dd40439a6cf06bc1870196bbac678e78c7f1ecac696a5cfa646593f0f2221b5"
+    }
+  ],
+  "failures": [
+    {
+      "url": "https://cdn.aucklandunlimited.com/zoo/assets/media/small-grant-application-form-2019.doc",
+      "from": "https://aucklandzoo.co.nz/get-involved/small-grants-programme",
+      "kind": "unreadable",
+      "message": "an old Word (.doc), OpenDocument or RTF file: needs conversion"
+    },
+    {
+      "url": "https://cdn.aucklandunlimited.com/zoo/assets/media/small-grant-application-form.doc",
+      "from": "https://aucklandzoo.co.nz/get-involved/small-grants-programme",
+      "kind": "unreadable",
+      "message": "an old Word (.doc), OpenDocument or RTF file: needs conversion"
+    }
+  ],
+  "skipped_links": 163,
+  "chunks": [{ "id": "all", "docs": ["D1", "D2", "D3", "D4"], "chars": 87084 }],
+  "outcomes": {
+    "eligibility": "stated",
+    "documents": "not_found",
+    "effort": "stated",
+    "co_finance": "not_found",
+    "consortium": "not_found",
+    "after_award": "not_found"
+  },
+  "written": ["eligibility", "effort"],
+  "escalated": [],
+  "flags": [],
+  "notes": [
+    "extractor: The annual round is closed, but no closing date or next-round date is stated. D1 says the application amount must be at least 25% of the project's overall budget, excluding in-kind support, but does not state that matching funds are required. After a successful application, Auckland Zoo requires bank-account documentation for payment."
+  ],
+  "usd": 0
+}

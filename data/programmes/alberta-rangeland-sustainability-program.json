@@ -33,6 +33,34 @@
   "amount": null,
   "co_finance_required": null,
   "reporting": "Recipients complete annual reports and one final report covering project status and expenditures.",
+  "effort": {
+    "steps": [
+      "Application submitted by email"
+    ],
+    "due": [
+      "2026-09-16"
+    ]
+  },
+  "eligibility": [
+    {
+      "rule": "If an NGO or non-profit: registered under the Alberta Societies Act, or shows proof of registration",
+      "kind": "legal"
+    },
+    {
+      "rule": "Project supports one or more priority funding themes",
+      "kind": "project"
+    },
+    {
+      "rule": "Not a statutory grazing-disposition duty, not linked to cutting grazing rent, no ongoing maintenance",
+      "kind": "project"
+    }
+  ],
+  "after_award": {
+    "reports": "yearly"
+  },
+  "documents": [
+    "Proof of registration, if a non-profit not registered under the ASA"
+  ],
   "calls": [
     {
       "id": "2026",
@@ -99,7 +127,51 @@
       "quote": "Grant recipients will be expected to complete annual reports and one final report. Reports will include project status and expenditures.",
       "checked_at": "2026-11-06",
       "method": "page"
-    }
+    },
+    "effort": [
+      {
+        "source_url": "https://www.alberta.ca/rangeland-sustainability-program",
+        "quote": "Applications are available online and are due 11:59 pm MST on September 16, 2026",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "eligibility": [
+      {
+        "source_url": "https://www.alberta.ca/rangeland-sustainability-program",
+        "quote": "Non-government organizations registered under the Alberta Societies Act (ASA) non-profit organizations (those that may not be registered under the ASA- will be required to provide proof of registration)",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.alberta.ca/rangeland-sustainability-program",
+        "quote": "Develop an eligible project that supports one or more of the priority funding themes listed below.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.alberta.ca/rangeland-sustainability-program",
+        "quote": "activities considered to be statutory requirements for disposition management (example: grazing disposition holder responsibilities outlined in legislation and their disposition agreement) any project directly or indirectly linked in reducing grazing rental any project requiring ongoing maintenance, repair/replacement – temporary solutions needing active maintenance",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "after_award": [
+      {
+        "source_url": "https://www.alberta.ca/rangeland-sustainability-program",
+        "quote": "Grant recipients will be expected to complete annual reports and one final report.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "documents": [
+      {
+        "source_url": "https://www.alberta.ca/rangeland-sustainability-program",
+        "quote": "will be required to provide proof of registration",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ]
   },
   "checked_at": "2026-11-06"
 }

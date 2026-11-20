@@ -9,14 +9,79 @@
   "parent": null,
   "url": "https://www.gesetze-bayern.de/Content/Document/BayVV_7912_1_U_13349/true",
   "summary": "Bavarian state grants covering a share of project costs for habitat conservation and creation, species protection, peatland and orchard measures and visitor guidance. Conservation associations, landscape management associations and municipalities apply via the district nature authority. The guideline expires on 31 Dec 2026; recheck for a successor in January 2027.",
-  "approaches": ["peatlands", "wetlands", "species_conservation", "protected_areas"],
-  "applicant_types": ["ngo", "government"],
-  "geography": { "scope": "countries", "countries": ["DE"], "label": "Bavaria" },
+  "approaches": [
+    "peatlands",
+    "wetlands",
+    "species_conservation",
+    "protected_areas"
+  ],
+  "applicant_types": [
+    "ngo",
+    "government"
+  ],
+  "geography": {
+    "scope": "countries",
+    "countries": [
+      "DE"
+    ],
+    "label": "Bavaria"
+  },
   "access": "direct",
   "window": "unspecified",
   "amount": null,
   "co_finance_required": true,
   "reporting": null,
+  "effort": {
+    "steps": [
+      "Application via the lower nature conservation authority, before work starts",
+      "Authority opinion and review by the district government"
+    ]
+  },
+  "eligibility": [
+    {
+      "rule": "A municipality, nature park body, landscape-care or conservation association, landowner, or a group of these",
+      "kind": "legal"
+    },
+    {
+      "rule": "Only non-economic activities are proposed",
+      "kind": "project"
+    },
+    {
+      "rule": "Measures on protected sites do not conflict with the applicable protection objective",
+      "kind": "project"
+    },
+    {
+      "rule": "The applicant or a third party is not legally required to carry out the project",
+      "kind": "project"
+    },
+    {
+      "rule": "The owner or rights holder consents before work on third-party land",
+      "kind": "project"
+    },
+    {
+      "rule": "The project has no funding from other Bavarian state programmes",
+      "kind": "project"
+    },
+    {
+      "rule": "Total eligible project costs exceed €5,000",
+      "kind": "project"
+    }
+  ],
+  "co_finance": {
+    "in_kind": true,
+    "applies_to": "All projects except projects funded at up to 100% on moorland",
+    "min_share": 10
+  },
+  "after_award": {
+    "reports": "unspecified"
+  },
+  "documents": [
+    "Evidence that funding requirements are met",
+    "Project explanatory report",
+    "Site overview map",
+    "Cost estimate",
+    "Financing plan"
+  ],
   "calls": [],
   "evidence": {
     "applicant_types": {
@@ -39,10 +104,120 @@
     },
     "co_finance_required": {
       "source_url": "https://www.gesetze-bayern.de/Content/Document/BayVV_7912_1_U_13349/true",
-      "quote": "In jedem Fall ist, außer bei Vorhaben nach Satz 4, eine angemessene Beteiligung des Vorhabenträgers von mindestens 10 % der zuwendungsfähigen Ausgaben sicherzustellen",
+      "quote": "In jedem Fall ist, außer bei Vorhaben nach Satz 4, eine angemessene Beteiligung des Vorhabenträgers von mindestens 10 % der zuwendungsfähigen Ausgaben sicherzustellen (vergleiche auch Nr. 5.4.3).",
       "checked_at": "2026-11-20",
       "method": "page"
-    }
+    },
+    "effort": [
+      {
+        "source_url": "https://www.gesetze-bayern.de/Content/Document/BayVV_7912_1_U_13349-NN8",
+        "quote": "Der Antrag ist vor Beginn der Maßnahme elektronisch einzureichen.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.gesetze-bayern.de/Content/Document/BayVV_7912_1_U_13349/true",
+        "quote": "Anträge werden über die Kreisverwaltungsbehörde - untere Naturschutzbehörde - bei der Bewilligungsbehörde eingereicht.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.gesetze-bayern.de/Content/Document/BayVV_7912_1_U_13349/true",
+        "quote": "Die untere Naturschutzbehörde legt ihre Stellungnahme dem Antrag bei.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.gesetze-bayern.de/Content/Document/BayVV_7912_1_U_13349/true",
+        "quote": "Bewilligungsbehörde ist die örtlich zuständige Regierung - höhere Naturschutzbehörde.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "eligibility": [
+      {
+        "source_url": "https://www.gesetze-bayern.de/Content/Document/BayVV_7912_1_U_13349/true",
+        "quote": "Zuwendungsempfänger können sein: - kommunale Körperschaften, - Träger der Naturparke, - Landschaftspflegeverbände sowie Vereine und Organisationen, die sich satzungsgemäß dem Naturschutz und der Landschaftspflege widmen, - Eigentümer oder Besitzer der für Vorhaben vorgesehenen Grundstücke, - Zusammenschlüsse der vorgenannten Zuwendungsempfänger,",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.gesetze-bayern.de/Content/Document/BayVV_7912_1_U_13349",
+        "quote": "Es werden nur nichtwirtschaftliche Tätigkeiten gefördert.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.gesetze-bayern.de/Content/Document/BayVV_7912_1_U_13349-NN4",
+        "quote": "Bei geschützten Flächen und Einzelbestandteilen der Natur dürfen die Maßnahmen dem in der jeweiligen Verordnung festgelegten oder anderweitig durch die Naturschutzbehörden bestimmten Schutzziel nicht widersprechen.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.gesetze-bayern.de/Content/Document/BayVV_7912_1_U_13349-NN4",
+        "quote": "Vorhaben, zu deren Durchführung der Antragsteller selbst oder Dritte rechtlich verpflichtet sind, können nicht gefördert werden.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.gesetze-bayern.de/Content/Document/BayVV_7912_1_U_13349-NN4",
+        "quote": "Bei allen Vorhaben, die auf fremdem Grund und Boden durchgeführt werden sollen, ist die vorherige Zustimmung des Eigentümers oder sonstigen dinglich Berechtigten einzuholen.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.gesetze-bayern.de/Content/Document/BayVV_7912_1_U_13349/true",
+        "quote": "Für dasselbe Vorhaben darf keine Zuwendung aus anderen Programmen des Freistaates Bayern in Anspruch genommen werden.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.gesetze-bayern.de/Content/Document/BayVV_7912_1_U_13349/true",
+        "quote": "Zuwendungen werden gewährt, wenn die zuwendungsfähigen Gesamtausgaben eines Antrags 5 000 € übersteigen.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "co_finance": {
+      "source_url": "https://www.gesetze-bayern.de/Content/Document/BayVV_7912_1_U_13349/true",
+      "quote": "Beim Vorhabenträger verbleibt in jedem Fall die angemessene Beteiligung von mindestens 10 % der förderfähigen Ausgaben. 5.4.3 1Eigenleistungen dürfen auf den Eigenanteil angerechnet werden.",
+      "checked_at": "2026-11-20",
+      "method": "page"
+    },
+    "after_award": [
+      {
+        "source_url": "https://www.gesetze-bayern.de/Content/Document/BayVV_7912_1_U_13349/true",
+        "quote": "Der Verwendungsnachweis ist elektronisch zu erbringen.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "documents": [
+      {
+        "source_url": "https://www.gesetze-bayern.de/Content/Document/BayVV_7912_1_U_13349-NN8",
+        "quote": "Nachweise zum Vorliegen der Fördervoraussetzungen (zum Beispiel Fachgutachten, Arbeitsprogramme, Pflegekonzepte, Landschaftspläne, öffentlich-rechtliche Gestattungen, Zustimmung des Eigentümers).",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.gesetze-bayern.de/Content/Document/BayVV_7912_1_U_13349-NN8",
+        "quote": "Erläuterungsbericht, in dem die vorgesehenen Vorhaben darzustellen sind;",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.gesetze-bayern.de/Content/Document/BayVV_7912_1_U_13349-NN8",
+        "quote": "Übersichtslageplan, in den die Fläche oder der Einzelbestandteil der Natur und gegebenenfalls die durch die Maßnahme betroffenen Teilflächen eingetragen sind. 8.3.4 1Kostenvoranschlag zur Ermittlung der voraussichtlichen Ausgaben unter Berücksichtigung aller hierfür maßgeblichen Umstände.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.gesetze-bayern.de/Content/Document/BayVV_7912_1_U_13349-NN8",
+        "quote": "Finanzierungsplan mit einer Gegenüberstellung der mit dem Zuwendungszweck zusammenhängenden Ausgaben einschließlich Anteil und Umfang der beabsichtigten Eigenleistungen und der vorgesehenen Finanzierung mit Angabe der freiwilligen Beteiligungen und Beiträge Dritter, Höhe der Eigenmittel sowie Höhe der beantragten Zuwendung.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ]
   },
   "checked_at": "2026-11-20"
 }
