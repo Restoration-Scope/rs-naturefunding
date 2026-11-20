@@ -2,6 +2,7 @@
 
 What a visitor to naturefunding.org can see or do that they couldn't before, newest first. One line per merged change, added in the same PR (AGENTS.md). The naturefunding.org LinkedIn Page drafts its update posts from this list. Emails count once `DIGEST_SENDING` is `live`.
 
+- 2026-11-20 · 43 more programmes show Before you apply (Whitley Award, Waterloo Foundation tropical rainforests, Kraków nature protection, Zeeland SKNL and more), each fact in the funder's words and checked by a second reader · https://naturefunding.org/p/waters-for-georgia/#before-title · #PR
 - 2026-11-20 · 30 more programmes show Before you apply (Stuttgart nature fund, Steele-Reese Idaho and Montana, Sunshine Coast Environment Levy, Taronga field grants and more), each fact in the funder's words and checked by a second reader · https://naturefunding.org/p/sunshine-coast-environment-levy-grants/#before-title · #859
 - 2026-11-20 · 27 more programmes show Before you apply (Save The Frogs, South Carolina Conservation Bank, Florida Sea Turtle Grants, Seychelles Blue Grants Fund and more), each fact in the funder's words and checked by a second reader · https://naturefunding.org/p/sea-turtle-grants-program-florida/#before-title · #858
 - 2026-11-20 · 28 more programmes show Before you apply (Upper Austria nature grants, OFB Mission Nature, Ontario Great Lakes Local Action Fund, OWEB Focused Investment Partnerships and more), each fact in the funder's words and checked by a second reader · https://naturefunding.org/p/ofb-mission-nature/#before-title · #857

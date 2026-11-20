@@ -1,0 +1,129 @@
+{
+  "id": "wceet-annual-round",
+  "read_on": "2026-11-20",
+  "prompt_version": "req-2026-11-20.1",
+  "models": ["cursor:gpt-5.6-luna-high"],
+  "complete": false,
+  "reasons": [
+    "3 links could not be ranked without Jev",
+    "8 links could not be ranked without Jev",
+    "http://www.wceet.org.nz/wp-content/uploads/2016/02/WCEET-Funding-Agreement-Updated-2016.doc would not open (unreadable: an old Word (.doc), OpenDocument or RTF file: needs conversion)",
+    "http://www.wceet.org.nz/wp-content/uploads/2023/03/WCEET-Application-Form-revised-March-2021.doc would not open (unreadable: an old Word (.doc), OpenDocument or RTF file: needs conversion)",
+    "Jev did not check this reading, so an absent fact is not known to be absent"
+  ],
+  "requirements_checked": false,
+  "documents": [
+    {
+      "ref": "D1",
+      "url": "http://www.wceet.org.nz/funding/",
+      "final_url": "http://www.wceet.org.nz/funding/",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 3700,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:54e7b539bba21f6e1233a15b71604eba4bfd74c135e30145afa16ef4d39a296f"
+    },
+    {
+      "ref": "D2",
+      "url": "http://www.wceet.org.nz/wp-content/uploads/2023/03/WCEET-Guidelines-revised-March-2021.pdf",
+      "final_url": "http://www.wceet.org.nz/wp-content/uploads/2023/03/WCEET-Guidelines-revised-March-2021.pdf",
+      "from": "http://www.wceet.org.nz/funding/",
+      "anchor": "guidelines",
+      "depth": 1,
+      "pdf": true,
+      "chars": 19262,
+      "pages": 8,
+      "low_text": false,
+      "hash": "sha256:8bb72b7b5a6612c6d282fdf77c63a86574a85cc82a76cf1629f8acad2da7e096"
+    },
+    {
+      "ref": "D3",
+      "url": "http://www.wceet.org.nz/funding/how-to-apply/",
+      "final_url": "http://www.wceet.org.nz/funding/how-to-apply/",
+      "from": "http://www.wceet.org.nz/funding/",
+      "anchor": "How to Apply",
+      "depth": 1,
+      "pdf": false,
+      "chars": 1590,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:e55f291294ac4bdc6f4b5180f74d3fbdfd89186127b96970f5db65b52ac53190"
+    },
+    {
+      "ref": "D4",
+      "url": "http://www.wceet.org.nz/funding/application-form/",
+      "final_url": "http://www.wceet.org.nz/funding/application-form/",
+      "from": "http://www.wceet.org.nz/funding/",
+      "anchor": "Application Form",
+      "depth": 1,
+      "pdf": false,
+      "chars": 1334,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:70581cb4105ec5c6533d046492bb213eaf3eea63b9bc386907f11fdfe212936f"
+    },
+    {
+      "ref": "D5",
+      "url": "http://www.wceet.org.nz/wp-content/uploads/2016/02/WCEET-Funding-Agreement-Updated-2016.pdf",
+      "final_url": "http://www.wceet.org.nz/wp-content/uploads/2016/02/WCEET-Funding-Agreement-Updated-2016.pdf",
+      "from": "http://www.wceet.org.nz/funding/application-form/",
+      "anchor": "",
+      "depth": 2,
+      "pdf": true,
+      "chars": 11797,
+      "pages": 11,
+      "low_text": false,
+      "hash": "sha256:4212b159740abbcbe7f2a48c8dde279b2e8ea0e2e3937065edafab03c9c08134"
+    },
+    {
+      "ref": "D6",
+      "url": "http://www.wceet.org.nz/wp-content/uploads/2023/03/WCEET-Application-Form-revised-March-2021.pdf",
+      "final_url": "http://www.wceet.org.nz/wp-content/uploads/2023/03/WCEET-Application-Form-revised-March-2021.pdf",
+      "from": "http://www.wceet.org.nz/funding/application-form/",
+      "anchor": "WCEET Funding Application Form",
+      "depth": 2,
+      "pdf": true,
+      "chars": 12206,
+      "pages": 11,
+      "low_text": false,
+      "hash": "sha256:b7810c640aa3362f8b6e1a662d4e7a3a40d5820f526b90134a7ae174ff26cfcd"
+    }
+  ],
+  "failures": [
+    {
+      "url": "http://www.wceet.org.nz/wp-content/uploads/2016/02/WCEET-Funding-Agreement-Updated-2016.doc",
+      "from": "http://www.wceet.org.nz/funding/application-form/",
+      "kind": "unreadable",
+      "message": "an old Word (.doc), OpenDocument or RTF file: needs conversion"
+    },
+    {
+      "url": "http://www.wceet.org.nz/wp-content/uploads/2023/03/WCEET-Application-Form-revised-March-2021.doc",
+      "from": "http://www.wceet.org.nz/funding/application-form/",
+      "kind": "unreadable",
+      "message": "an old Word (.doc), OpenDocument or RTF file: needs conversion"
+    }
+  ],
+  "skipped_links": 73,
+  "chunks": [{ "id": "all", "docs": ["D1", "D2", "D3", "D4", "D5", "D6"], "chars": 50657 }],
+  "outcomes": {
+    "eligibility": "stated",
+    "documents": "stated",
+    "effort": "stated",
+    "co_finance": "not_found",
+    "consortium": "not_found",
+    "after_award": "stated"
+  },
+  "written": ["eligibility", "documents", "effort", "after_award"],
+  "escalated": [],
+  "flags": [],
+  "notes": [
+    "extractor: Reporting wording differs: D2 requires status reports by 31 March each year and describes project-completion and multi-year interim reports; D6 requires progress reports at six-monthly intervals or as agreed and a final report.",
+    "source wceet-annual-round-2: added for http://www.wceet.org.nz/funding/how-to-apply/",
+    "source wceet-annual-round-3: added for http://www.wceet.org.nz/wp-content/uploads/2023/03/WCEET-Guidelines-revised-March-2021.pdf",
+    "source wceet-annual-round-4: added for http://www.wceet.org.nz/wp-content/uploads/2023/03/WCEET-Application-Form-revised-March-2021.pdf"
+  ],
+  "usd": 0
+}

@@ -17,6 +17,14 @@
   "amount": { "currency": "NZD", "max": 10000 },
   "co_finance_required": null,
   "reporting": "Funds must be used within 12 months, and recipients give a brief report on outcomes with photos.",
+  "effort": { "steps": ["Action Hub project registration", "Complete and email application form"] },
+  "eligibility": [
+    {
+      "rule": "Action Hub profile set up or reviewed within the last 12 months",
+      "kind": "capacity"
+    }
+  ],
+  "after_award": { "reports": "final" },
   "calls": [
     {
       "id": "annual-march",
@@ -78,7 +86,37 @@
       "quote": "Application process for non-member organisations and private land-owners",
       "checked_at": "2026-11-20",
       "method": "page"
-    }
+    },
+    "effort": [
+      {
+        "source_url": "https://wildfortaranaki.nz/wp-content/uploads/2026/02/Community-funding-application-2026.docx",
+        "quote": "1. Sign on and register your project (if you haven't already) on the Wild for Taranaki ACTION HUB",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://wildfortaranaki.nz/wp-content/uploads/2026/02/Community-funding-application-2026.docx",
+        "quote": "2. Fill in the form below and tell us what you are seeking funding for. 3. Send your completed form to contact@wildfortaranaki.nz by the 31st March.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "eligibility": [
+      {
+        "source_url": "https://wildfortaranaki.nz/community-fund/",
+        "quote": "Applicants must have set up or reviewed their Action Hub profile in the last 12 months.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "after_award": [
+      {
+        "source_url": "https://wildfortaranaki.nz/community-fund/",
+        "quote": "Applicants must provide a brief report on the outcomes of funding (including photos), so that we can monitor how our funding makes an impact on Taranaki's biodiversity.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ]
   },
   "checked_at": "2026-11-20"
 }

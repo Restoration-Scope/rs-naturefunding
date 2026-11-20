@@ -1,0 +1,100 @@
+{
+  "id": "wos-project-grants",
+  "read_on": "2026-11-20",
+  "prompt_version": "req-2026-11-20.1",
+  "models": ["cursor:gpt-5.6-luna-high"],
+  "complete": false,
+  "reasons": [
+    "1 links could not be ranked without Jev",
+    "5 links could not be ranked without Jev",
+    "Jev did not check this reading, so an absent fact is not known to be absent"
+  ],
+  "requirements_checked": false,
+  "documents": [
+    {
+      "ref": "D1",
+      "url": "https://birdsin.wales/small-grant-scheme",
+      "final_url": "https://birdsin.wales/small-grant-scheme/",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 9841,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:28fd37722414f54c498f9f3e2d693b0551b319a7f8f441738ec5b08daa73b4d1"
+    },
+    {
+      "ref": "D2",
+      "url": "https://birdsin.wales/wp-content/uploads/2024/01/Application-Form-WOS-Project-Grants.pdf",
+      "final_url": "https://birdsin.wales/wp-content/uploads/2024/01/Application-Form-WOS-Project-Grants.pdf",
+      "from": "https://birdsin.wales/small-grant-scheme",
+      "anchor": "Application Form (PDF File)",
+      "depth": 1,
+      "pdf": true,
+      "chars": 3755,
+      "pages": 5,
+      "low_text": false,
+      "hash": "sha256:c053ae5b96b6d002b057f52635b899bfff08ec44b1efb750bf05ad966158b225"
+    },
+    {
+      "ref": "D3",
+      "url": "https://birdsin.wales/wp-content/uploads/2023/03/Background-notes-1-WOS-Project-Grants.pdf",
+      "final_url": "https://birdsin.wales/wp-content/uploads/2023/03/Background-notes-1-WOS-Project-Grants.pdf",
+      "from": "https://birdsin.wales/small-grant-scheme",
+      "anchor": "Project Grants Background notes",
+      "depth": 1,
+      "pdf": true,
+      "chars": 2741,
+      "pages": 2,
+      "low_text": false,
+      "hash": "sha256:21dedb28195a92717b16a92da022b058bf6d7ef8635a898658dee7483f6396a5"
+    },
+    {
+      "ref": "D4",
+      "url": "https://birdsin.wales/wp-content/uploads/2024/01/WOS-Application-Form-Project-Grants-2023.docx",
+      "final_url": "https://birdsin.wales/wp-content/uploads/2024/01/WOS-Application-Form-Project-Grants-2023.docx",
+      "from": "https://birdsin.wales/small-grant-scheme",
+      "anchor": "Application Form (Word Doc)",
+      "depth": 1,
+      "pdf": false,
+      "chars": 3274,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:6a02fd0de405a3a80c157d1c83e1f0dd15df97247b391c9cca3384589a67423c"
+    },
+    {
+      "ref": "D5",
+      "url": "https://birdsin.wales/terms-conditions/",
+      "final_url": "https://birdsin.wales/terms-conditions/",
+      "from": "https://birdsin.wales/small-grant-scheme",
+      "anchor": "Terms & Conditions",
+      "depth": 1,
+      "pdf": false,
+      "chars": 11034,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:4ce343b2a927b439c2679eecec1870cb0af5346ad8920f308e69cf096910d437"
+    }
+  ],
+  "failures": [],
+  "skipped_links": 356,
+  "chunks": [{ "id": "all", "docs": ["D1", "D2", "D3", "D4", "D5"], "chars": 31293 }],
+  "outcomes": {
+    "eligibility": "stated",
+    "documents": "stated",
+    "effort": "stated",
+    "co_finance": "not_found",
+    "consortium": "not_found",
+    "after_award": "stated"
+  },
+  "written": ["eligibility", "documents", "effort", "after_award"],
+  "escalated": [],
+  "flags": [],
+  "notes": [
+    "extractor: D1 is the current programme page for 2025. D3's older background notes state that the short report is due by the end of December in the grant year, while the application form says its date will be agreed. Priority species and additional or match funding are preferences, not hard eligibility rules.",
+    "source wos-project-grants-2: added for https://birdsin.wales/wp-content/uploads/2023/03/Background-notes-1-WOS-Project-Grants.pdf",
+    "source wos-project-grants-3: added for https://birdsin.wales/wp-content/uploads/2024/01/Application-Form-WOS-Project-Grants.pdf"
+  ],
+  "usd": 0
+}

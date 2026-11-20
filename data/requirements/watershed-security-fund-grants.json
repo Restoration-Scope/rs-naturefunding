@@ -1,0 +1,118 @@
+{
+  "id": "watershed-security-fund-grants",
+  "read_on": "2026-11-20",
+  "prompt_version": "req-2026-11-20.1",
+  "models": ["cursor:gpt-5.6-luna-high", "cursor:gpt-5.6-sol-high"],
+  "complete": false,
+  "reasons": [
+    "8 links could not be ranked without Jev",
+    "https://watershedsecurityfund.ca/wp-content/uploads/2026/09/Guide-to-Grants-Program-Application-2026-1.pdf: pages 1, 11, 22, 24 are images: needs OCR",
+    "https://www.un.org/development/desa/indigenouspeoples/wp-content/uploads/sites/19/2018/11/UNDRIP_E_web.pdf: a document on another site: without Jev it can’t be confirmed as the funder’s, so it is not used",
+    "the text names a document with rules that was not read: Circle on Philanthropy I4DM Definitional Matrix",
+    "the text names a document with rules that was not read: Budget form",
+    "Jev did not check this reading, so an absent fact is not known to be absent"
+  ],
+  "requirements_checked": false,
+  "documents": [
+    {
+      "ref": "D1",
+      "url": "https://watershedsecurityfund.ca/grants/",
+      "final_url": "https://watershedsecurityfund.ca/grants/",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 11999,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:ba04970dbfd6dcd34ad7c3ac0d19df70f614d386aa4394713a6756b1dddd7ea6"
+    },
+    {
+      "ref": "D2",
+      "url": "https://watershedsecurityfund.ca/faq/",
+      "final_url": "https://watershedsecurityfund.ca/faq/",
+      "from": "https://watershedsecurityfund.ca/grants/",
+      "anchor": "General FAQ",
+      "depth": 1,
+      "pdf": false,
+      "chars": 11587,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:6a37f6ea5fe54e3a40c07e04ed522bd6a01eb34bf36ecaa78bd1382afa484dbd"
+    },
+    {
+      "ref": "D3",
+      "url": "https://watershedsecurityfund.ca/grants-program-faq/",
+      "final_url": "https://watershedsecurityfund.ca/grants-program-faq/",
+      "from": "https://watershedsecurityfund.ca/grants/",
+      "anchor": "Grants FAQ",
+      "depth": 1,
+      "pdf": false,
+      "chars": 43508,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:dff6c700939228620e72fe9dc5d857d6ae793ac317c4df2bfde1a967e0b258d0"
+    },
+    {
+      "ref": "D4",
+      "url": "https://watershedsecurityfund.ca/wp-content/uploads/2026/09/Guide-to-Grants-Program-Application-2026-1.pdf",
+      "final_url": "https://watershedsecurityfund.ca/wp-content/uploads/2026/09/Guide-to-Grants-Program-Application-2026-1.pdf",
+      "from": "https://watershedsecurityfund.ca/grants/",
+      "anchor": "Application Guide",
+      "depth": 1,
+      "pdf": true,
+      "chars": 20176,
+      "pages": 24,
+      "low_text": false,
+      "hash": "sha256:d84317e76bffc50864c32502b6ba7635f06b08b2896d824f791002b73595d213"
+    },
+    {
+      "ref": "D5",
+      "url": "https://watershedsecurityfund.ca/wp-content/uploads/2026/09/WSF-Application-Form-2026-Final-1.docx",
+      "final_url": "https://watershedsecurityfund.ca/wp-content/uploads/2026/09/WSF-Application-Form-2026-Final-1.docx",
+      "from": "https://watershedsecurityfund.ca/grants/",
+      "anchor": "Application Form",
+      "depth": 1,
+      "pdf": false,
+      "chars": 29423,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:7a366b697780b91c3c9e80cb8c56ca8f5d444790951c4987d149bf254bb18809"
+    }
+  ],
+  "failures": [
+    {
+      "url": "https://watershedsecurityfund.ca/wp-content/uploads/2026/09/Guide-to-Grants-Program-Application-2026-1.pdf",
+      "from": "https://watershedsecurityfund.ca/grants/",
+      "kind": "low_text",
+      "message": "pages 1, 11, 22, 24 are images: needs OCR"
+    },
+    {
+      "url": "https://www.un.org/development/desa/indigenouspeoples/wp-content/uploads/sites/19/2018/11/UNDRIP_E_web.pdf",
+      "from": "https://watershedsecurityfund.ca/grants/",
+      "kind": "offsite",
+      "message": "a document on another site: without Jev it can’t be confirmed as the funder’s, so it is not used"
+    }
+  ],
+  "skipped_links": 50,
+  "chunks": [{ "id": "all", "docs": ["D1", "D2", "D3", "D4", "D5"], "chars": 117317 }],
+  "outcomes": {
+    "eligibility": "stated",
+    "documents": "stated",
+    "effort": "stated",
+    "co_finance": "stated",
+    "consortium": "stated",
+    "after_award": "stated"
+  },
+  "written": ["eligibility", "documents", "effort", "co_finance", "consortium", "after_award"],
+  "escalated": ["eligibility"],
+  "flags": [],
+  "notes": [
+    "effort \"Application submission (portal, Word document or support call)\": the quote does not state 2026-11-10 whole; left undated",
+    "extractor: Intake 4 is closed. The sources differ on expected approval timing: D4 says grants approved in March 2027, while D5 says approved in April 2027; D1 only says recipients announced in spring 2027.",
+    "source watershed-security-fund-grants-2: added for https://watershedsecurityfund.ca/grants-program-faq/",
+    "source watershed-security-fund-grants-3: added for https://watershedsecurityfund.ca/wp-content/uploads/2026/09/Guide-to-Grants-Program-Application-2026-1.pdf",
+    "source watershed-security-fund-grants-4: added for https://watershedsecurityfund.ca/wp-content/uploads/2026/09/WSF-Application-Form-2026-Final-1.docx"
+  ],
+  "usd": 0
+}

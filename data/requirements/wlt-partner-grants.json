@@ -1,0 +1,57 @@
+{
+  "id": "wlt-partner-grants",
+  "read_on": "2026-11-20",
+  "prompt_version": "req-2026-11-20.1",
+  "models": ["cursor:gpt-5.6-luna-high", "cursor:gpt-5.6-sol-high"],
+  "complete": false,
+  "reasons": [
+    "9 links could not be ranked without Jev",
+    "8 links could not be ranked without Jev",
+    "Jev did not check this reading, so an absent fact is not known to be absent"
+  ],
+  "requirements_checked": false,
+  "documents": [
+    {
+      "ref": "D1",
+      "url": "https://www.worldlandtrust.org/project-proposal-guidelines",
+      "final_url": "https://www.worldlandtrust.org/project-proposal-guidelines/",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 8102,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:5c1c0d9138db32eec99cf76275aca2f31d49a71611de4596a42e9f7758977154"
+    },
+    {
+      "ref": "D2",
+      "url": "https://www.worldlandtrust.org/faqs/",
+      "final_url": "https://www.worldlandtrust.org/faqs/",
+      "from": "https://www.worldlandtrust.org/project-proposal-guidelines",
+      "anchor": "FAQs",
+      "depth": 1,
+      "pdf": false,
+      "chars": 27428,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:89a87335d95baa93ce37710bb6c37c8b8078fe62537056c24e7fa620a5a3b327"
+    }
+  ],
+  "failures": [],
+  "skipped_links": 372,
+  "chunks": [{ "id": "all", "docs": ["D1", "D2"], "chars": 35723 }],
+  "outcomes": {
+    "eligibility": "stated",
+    "documents": "not_found",
+    "effort": "stated",
+    "co_finance": "not_found",
+    "consortium": "not_found",
+    "after_award": "not_found"
+  },
+  "written": ["eligibility", "effort"],
+  "escalated": ["eligibility"],
+  "flags": [],
+  "notes": ["source wlt-partner-grants-2: added for https://www.worldlandtrust.org/faqs/"],
+  "usd": 0
+}

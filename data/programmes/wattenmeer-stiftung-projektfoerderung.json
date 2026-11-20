@@ -29,6 +29,32 @@
   "amount": null,
   "co_finance_required": null,
   "reporting": "A statement of how the funds were used, with a narrative report, within three months of project end; yearly interim accounts for multi-year projects.",
+  "effort": {
+    "steps": [
+      "Spring or autumn application"
+    ]
+  },
+  "eligibility": [
+    {
+      "rule": "Proves tax-exempt status with a tax office notice, unless a public-law body",
+      "kind": "legal"
+    },
+    {
+      "rule": "The project serves charitable purposes under the Fiscal Code",
+      "kind": "project"
+    },
+    {
+      "rule": "The project has not started, unless prior-start approval is granted",
+      "kind": "project"
+    }
+  ],
+  "after_award": {
+    "reports": "yearly"
+  },
+  "documents": [
+    "Tax office exemption notice, unless a public-law body",
+    "Cost and financing plan showing own contribution"
+  ],
   "calls": [
     {
       "id": "twice-yearly",
@@ -84,7 +110,63 @@
       "quote": "Spätestens drei Monate nach Abschluss der Förderungsmaßnahme hat der Projektträger einen Nachweis über die verwendeten Mittel zu erbringen",
       "checked_at": "2026-11-14",
       "method": "page"
-    }
+    },
+    "effort": [
+      {
+        "source_url": "https://www.umwelt.niedersachsen.de/download/114046/Foerderrichtlinien.pdf",
+        "quote": "Anträge der Projektträger müssen bis zum 1. Januar bei der Geschäftsführung eingegangen sein, wenn sie in der Frühjahrssitzung behandelt werden sollen. Für die jeweilige Herbstsitzung ist Stichtag der 1. Juli.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "eligibility": [
+      {
+        "source_url": "https://www.umwelt.niedersachsen.de/download/114046/Foerderrichtlinien.pdf",
+        "quote": "Antragstellende Körperschaften (ausgenommen sind Körperschaften des öffentlichen Rechts) müssen die Steuerbegünstigung durch Vorlage des Freistellungsbescheides des Finanzamtes nachweisen.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.umwelt.niedersachsen.de/download/114046/Foerderrichtlinien.pdf",
+        "quote": "Die Genehmigung von Fördermitteln erfolgt ausschließlich für gemeinnützige Zwecke im Sinne des Abschnitts \"Steuerbegünstigte Zwecke\" der Abgabenordnung.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.umwelt.niedersachsen.de/download/114046/Foerderrichtlinien.pdf",
+        "quote": "Eine Förderung bereits begonnener Projekte ist ausgeschlossen. Die Zustimmung zu einem vorzeitigen Maßnahmebeginn kann auf Antrag erteilt werden.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "after_award": [
+      {
+        "source_url": "https://www.umwelt.niedersachsen.de/download/114046/Foerderrichtlinien.pdf",
+        "quote": "Bei Projekten mit einer mehrjährigen Laufzeit ist eine jährliche Zwischenabrechnung vorzunehmen.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.umwelt.niedersachsen.de/download/114046/Foerderrichtlinien.pdf",
+        "quote": "Spätestens drei Monate nach Abschluss der Förderungsmaßnahme hat der Projektträger einen Nachweis über die verwendeten Mittel zu erbringen",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "documents": [
+      {
+        "source_url": "https://www.umwelt.niedersachsen.de/download/114046/Foerderrichtlinien.pdf",
+        "quote": "Vorlage des Freistellungsbescheides des Finanzamtes",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.umwelt.niedersachsen.de/download/114046/Foerderrichtlinien.pdf",
+        "quote": "Kosten- und Finanzierungsplan mit Ausweisung des Eigenanteils",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ]
   },
   "checked_at": "2026-11-14"
 }

@@ -1,19 +1,85 @@
 {
   "id": "wdfw-wildlife-diversity-grants",
   "name": "Wildlife Diversity Grant Program (2027-2029)",
-  "funder": { "name": "Washington Department of Fish and Wildlife", "url": "https://wdfw.wa.gov/" },
+  "funder": {
+    "name": "Washington Department of Fish and Wildlife",
+    "url": "https://wdfw.wa.gov/"
+  },
   "administered_by": null,
   "parent": null,
   "url": "https://wdfw.wa.gov/species-habitats/at-risk/wildlife-diversity-grants",
   "summary": "Biennial grants for conservation and recovery actions and data collection for at-risk Washington wildlife, via a pre-proposal and invited full proposal. Habitat restoration, easements and land acquisition are not funded.",
-  "approaches": ["species_conservation"],
-  "applicant_types": ["ngo", "government", "research_institution", "indigenous_organization"],
-  "geography": { "scope": "countries", "countries": ["US"], "label": "Washington" },
+  "approaches": [
+    "species_conservation"
+  ],
+  "applicant_types": [
+    "ngo",
+    "government",
+    "research_institution",
+    "indigenous_organization"
+  ],
+  "geography": {
+    "scope": "countries",
+    "countries": [
+      "US"
+    ],
+    "label": "Washington"
+  },
   "access": "direct",
   "window": "fixed",
-  "amount": { "currency": "USD", "min": 25000, "max": 250000 },
-  "co_finance_required": null,
+  "amount": {
+    "currency": "USD",
+    "min": 25000,
+    "max": 250000
+  },
+  "co_finance_required": false,
   "reporting": null,
+  "effort": {
+    "steps": [
+      "Pre-proposal application form",
+      "Full proposal, if invited"
+    ]
+  },
+  "eligibility": [
+    {
+      "rule": "Applicant is affiliated with an entity that will enter a grant agreement if selected",
+      "kind": "legal"
+    },
+    {
+      "rule": "Applicant is not WDFW staff",
+      "kind": "legal"
+    },
+    {
+      "rule": "Project activities benefit species populations in Washington",
+      "kind": "project"
+    },
+    {
+      "rule": "Project benefits eligible SGCN or SGIN",
+      "kind": "project"
+    },
+    {
+      "rule": "Project does not primarily involve habitat restoration, conservation easements, or land acquisition",
+      "kind": "project"
+    },
+    {
+      "rule": "Project is not focused on general outreach or environmental education",
+      "kind": "project"
+    },
+    {
+      "rule": "Project does not primarily benefit species outside WDFW Wildlife Diversity Division's scope",
+      "kind": "project"
+    },
+    {
+      "rule": "Non-tribal projects on tribal lands or using tribal data have written tribal permission",
+      "kind": "project"
+    }
+  ],
+  "after_award": {
+    "reports": "unspecified"
+  },
+  "documents": [
+    "Pre-proposal narrative file"
+  ],
   "calls": [
     {
       "id": "bn27-29-pre-proposal",
@@ -80,7 +146,93 @@
       "quote": "Grant budgets can range from a minimum of $25,000 and a maximum of $250,000 per project.",
       "checked_at": "2026-11-14",
       "method": "page"
-    }
+    },
+    "co_finance_required": {
+      "source_url": "https://wdfw.wa.gov/sites/default/files/2026-10/bn27-29-wildlife-diversity-grant-opportunity_0.pdf",
+      "quote": "Cost sharing or matching is not required, but WDFW may consider this favorably when evaluating proposals.",
+      "checked_at": "2026-11-20",
+      "method": "page"
+    },
+    "effort": [
+      {
+        "source_url": "https://wdfw.wa.gov/sites/default/files/2026-10/bn27-29-wildlife-diversity-grant-opportunity_0.pdf",
+        "quote": "Grant applicants must submit a pre-proposal application form no later than 11:59 p.m. on Nov. 13, 2026.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://wdfw.wa.gov/sites/default/files/2026-10/bn27-29-wildlife-diversity-grant-opportunity_0.pdf",
+        "quote": "The deadline for a full proposal is Jan. 25, 2027.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "eligibility": [
+      {
+        "source_url": "https://wdfw.wa.gov/sites/default/files/2026-10/bn27-29-wildlife-diversity-grant-opportunity_0.pdf",
+        "quote": "The applicant must be affiliated with a public, nonprofit, academic, or tribal entity that will enter a grant agreement with WDFW should their proposal be selected for funding.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://wdfw.wa.gov/sites/default/files/2026-10/bn27-29-wildlife-diversity-grant-opportunity_0.pdf",
+        "quote": "WDFW staff are not eligible to receive funds from this program.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://wdfw.wa.gov/sites/default/files/2026-10/bn27-29-wildlife-diversity-grant-opportunity_0.pdf",
+        "quote": "All project activities must be directed toward benefitting species populations in Washington.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://wdfw.wa.gov/sites/default/files/2026-10/bn27-29-wildlife-diversity-grant-opportunity_0.pdf",
+        "quote": "Projects that benefit the following SGCN and SGIN are eligible for this grant funding.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://wdfw.wa.gov/sites/default/files/2026-10/bn27-29-wildlife-diversity-grant-opportunity_0.pdf",
+        "quote": "Habitat restoration2, conservation easements, or land acquisition",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://wdfw.wa.gov/sites/default/files/2026-10/bn27-29-wildlife-diversity-grant-opportunity_0.pdf",
+        "quote": "Projects that are focused on general outreach and environmental education are not eligible for this grant opportunity.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://wdfw.wa.gov/sites/default/files/2026-10/bn27-29-wildlife-diversity-grant-opportunity_0.pdf",
+        "quote": "Projects that primarily benefit species outside WDFW Wildlife Diversity Division's scope of responsibility are not eligible.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://wdfw.wa.gov/sites/default/files/2026-10/bn27-29-wildlife-diversity-grant-opportunity_0.pdf",
+        "quote": "Any proposals by non-tribal entities for projects that include activities on tribal reservation lands, or use of tribal data, must provide written permission from the respective tribe(s).",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "after_award": [
+      {
+        "source_url": "https://wdfw.wa.gov/sites/default/files/2026-10/bn27-29-wildlife-diversity-grant-opportunity_0.pdf",
+        "quote": "Grantees will be expected to provide WDFW progress reports on project activities to date and provide all deliverables for the pay period.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "documents": [
+      {
+        "source_url": "https://wdfw.wa.gov/sites/default/files/2026-10/bn27-29-wildlife-diversity-grant-opportunity_0.pdf",
+        "quote": "Required attachment: Pre-proposal narrative file:",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ]
   },
   "checked_at": "2026-11-14"
 }

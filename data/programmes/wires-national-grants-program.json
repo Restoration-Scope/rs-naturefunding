@@ -9,9 +9,21 @@
   "parent": null,
   "url": "https://www.wires.org.au/wildlife-programs/national-grants-program",
   "summary": "Competitive one-off grants across four tiers for Australian wildlife carers, rescue organisations, environmental NGOs, community groups and consortia, supporting wildlife rescue and rehabilitation, habitat restoration and native species recovery projects of 6 to 12 months.",
-  "approaches": ["species_conservation", "community_conservation"],
-  "applicant_types": ["individual", "ngo", "community_group"],
-  "geography": { "scope": "countries", "countries": ["AU"] },
+  "approaches": [
+    "species_conservation",
+    "community_conservation"
+  ],
+  "applicant_types": [
+    "individual",
+    "ngo",
+    "community_group"
+  ],
+  "geography": {
+    "scope": "countries",
+    "countries": [
+      "AU"
+    ]
+  },
   "access": "direct",
   "window": "fixed",
   "amount": {
@@ -20,7 +32,55 @@
     "note": "Top tier for consortia; environmental NGOs and community groups up to 10,000, carers up to 1,000, rescue organisations up to 5,000"
   },
   "co_finance_required": null,
+  "consortium_required": false,
   "reporting": null,
+  "effort": {
+    "steps": [
+      "Online grant portal application",
+      "Eligibility check",
+      "Assessment Panel review"
+    ]
+  },
+  "eligibility": [
+    {
+      "rule": "Be a legal entity able to enter a legally binding agreement",
+      "kind": "legal"
+    },
+    {
+      "rule": "Have operated in this capacity for at least 2 years",
+      "kind": "track_record",
+      "min_years": 2
+    },
+    {
+      "rule": "Have no overdue reports for previously funded grants",
+      "kind": "capacity"
+    },
+    {
+      "rule": "Have no current active grant with WIRES",
+      "kind": "other"
+    },
+    {
+      "rule": "Tier 1 or 2 applicants have held an appropriate permit for 2 years",
+      "kind": "legal"
+    },
+    {
+      "rule": "Tier 3 or 4 applicants are Australian organisations with a current ABN",
+      "kind": "legal"
+    }
+  ],
+  "after_award": {
+    "reports": "interim_and_final"
+  },
+  "documents": [
+    "Rehabilitation or vet licence, for Tier 1 or 2",
+    "Driver's licence or other authorised ID, if an individual",
+    "ABN and ACNC incorporation number, if applicable",
+    "Reference",
+    "Quotes for all budget lines",
+    "Photos of existing setup, if applying for facility updates or repairs",
+    "Partner support letters with roles and resources, for Tier 3 or 4",
+    "Written consent of the site owner or manager, for Tier 3 or 4 sites the applicant does not own or manage"
+  ],
   "calls": [
     {
       "id": "2026",
@@ -92,8 +152,117 @@
       "quote": "A total funding pool of up to $200,000 is available across four tiers.",
       "checked_at": "2026-11-14",
       "method": "page"
-    }
+    },
+    "consortium_required": {
+      "source_url": "https://www.wires.org.au/hubfs/WIRES_National_Grants_Program_2026_Guidelines.pdf",
+      "quote": "Tier 1: Individually Licensed Wildlife Rescuers and Carers",
+      "checked_at": "2026-11-20",
+      "method": "page"
+    },
+    "effort": [
+      {
+        "source_url": "https://www.wires.org.au/hubfs/WIRES_National_Grants_Program_2026_Guidelines.pdf",
+        "quote": "To apply for a WIRES Grant, applicants must meet the eligibility criteria and accurately complete the application form for the appropriate funding tier and submit on time.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.wires.org.au/hubfs/WIRES_National_Grants_Program_2026_Guidelines.pdf",
+        "quote": "WIRES will conduct an eligibility check.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.wires.org.au/hubfs/WIRES_National_Grants_Program_2026_Guidelines.pdf",
+        "quote": "These collated applications will be assessed by the Assessment Panel.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "eligibility": [
+      {
+        "source_url": "https://www.wires.org.au/hubfs/WIRES_National_Grants_Program_2026_Guidelines.pdf",
+        "quote": "Be a legal entity, able to enter into a legally binding agreement",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.wires.org.au/hubfs/WIRES_National_Grants_Program_2026_Guidelines.pdf",
+        "quote": "have been operating in this capacity for a minimum of two years",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.wires.org.au/hubfs/WIRES_National_Grants_Program_2026_Guidelines.pdf",
+        "quote": "Not have overdue progress or acquittal reports for previously funded grants",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.wires.org.au/hubfs/WIRES_National_Grants_Program_2026_Guidelines.pdf",
+        "quote": "Not have a current active grant with WIRES",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.wires.org.au/hubfs/WIRES_National_Grants_Program_2026_Guidelines.pdf",
+        "quote": "Grantees must have held an appropriate permit per the state they operate in for a minimum of two (2) years",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.wires.org.au/hubfs/WIRES_National_Grants_Program_2026_Guidelines.pdf",
+        "quote": "Be registered as an Australian organisation with a current ABN and operate in Australia",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "after_award": [
+      {
+        "source_url": "https://www.wires.org.au/hubfs/WIRES_National_Grants_Program_2026_Guidelines.pdf",
+        "quote": "Reports due - Final for Tier 1 & 2 projects, Progress for Tier 3 & 4 projects May 2027 Final Report due and project completed - Tier 3 & 4 projects November 2027",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "documents": [
+      {
+        "source_url": "https://www.wires.org.au/hubfs/WIRES_National_Grants_Program_2026_Guidelines.pdf",
+        "quote": "Meet licensing requirements as outlined above for each state and provide a copy of their rehabilitation licence or vet licence",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.wires.org.au/hubfs/WIRES_National_Grants_Program_2026_Guidelines.pdf",
+        "quote": "If an individual, provide a copy of their driver's licence or other authorised form of ID (e.g. passport) • If an organisation, provide their ABN and, if applicable, their ACNC incorporation number • Provide a reference (must not be the applicant, a member of the applicant's immediate family, or a member of the same group or collective)",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.wires.org.au/hubfs/WIRES_National_Grants_Program_2026_Guidelines.pdf",
+        "quote": "Provide appropriate quotes for all budget lines of their proposal • If applying for updates to, or repairs/replacement of enclosures/facilities, provide photos of existing set up",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.wires.org.au/hubfs/WIRES_National_Grants_Program_2026_Guidelines.pdf",
+        "quote": "Provide letters of support from partners including the roles/responsibilities the project partner will undertake, and the resources it will contribute (both cash and in-kind, if any)",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.wires.org.au/hubfs/WIRES_National_Grants_Program_2026_Guidelines.pdf",
+        "quote": "Written consent is required from the property owner and/or property manager that allows for the implementation of the proposed project on each project site",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ]
   },
   "checked_at": "2026-11-14",
-  "pool": { "currency": "AUD", "value": 200000, "period": "round", "label": "the 2026 round" }
+  "pool": {
+    "currency": "AUD",
+    "value": 200000,
+    "period": "round",
+    "label": "the 2026 round"
+  }
 }

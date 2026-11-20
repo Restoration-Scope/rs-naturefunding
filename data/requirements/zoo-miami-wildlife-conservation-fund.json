@@ -1,0 +1,98 @@
+{
+  "id": "zoo-miami-wildlife-conservation-fund",
+  "read_on": "2026-11-20",
+  "prompt_version": "req-2026-11-20.1",
+  "models": ["cursor:gpt-5.6-luna-high"],
+  "complete": false,
+  "reasons": [
+    "20 links could not be ranked without Jev",
+    "26 links could not be ranked without Jev",
+    "https://www.zoomiami.org/assets/2891/zmwcf_fillable_application_2026.pdf: pages 4, 5 are images: needs OCR",
+    "the text names a document with rules that was not read: W-9 Fillable Form",
+    "the text names a document with rules that was not read: W-8 ECI Fillable Form",
+    "the text names a document with rules that was not read: Animal Welfare Considerations for Field Conservation Projects",
+    "the text names a document with rules that was not read: Center for Plant Conservation Guidelines",
+    "Jev did not check this reading, so an absent fact is not known to be absent"
+  ],
+  "requirements_checked": false,
+  "documents": [
+    {
+      "ref": "D1",
+      "url": "https://www.zoomiami.org/zoo-miami-wildlife-conservation-grants",
+      "final_url": "https://www.zoomiami.org/zoo-miami-wildlife-conservation-grants",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 41068,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:d75a290a8121e350aa94208c533b0273eaca3f3d6b3ea76c11daf89ccebcf261"
+    },
+    {
+      "ref": "D2",
+      "url": "https://www.zoomiami.org/faq",
+      "final_url": "https://www.zoomiami.org/faq",
+      "from": "https://www.zoomiami.org/zoo-miami-wildlife-conservation-grants",
+      "anchor": "FAQ",
+      "depth": 1,
+      "pdf": false,
+      "chars": 21874,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:b66ab90ab6b4aee2d899b3e99843bf47dffb5f3c4e90d1decff3abbbf79dcbd1"
+    },
+    {
+      "ref": "D3",
+      "url": "https://www.zoomiami.org/assets/2891/zmwcf_fillable_application_2026.pdf",
+      "final_url": "https://assets.speakcdn.com/assets/2891/zmwcf_fillable_application_2026.pdf",
+      "from": "https://www.zoomiami.org/zoo-miami-wildlife-conservation-grants",
+      "anchor": "Apply Here!",
+      "depth": 1,
+      "pdf": true,
+      "chars": 7001,
+      "pages": 6,
+      "low_text": false,
+      "hash": "sha256:cd296c9878428d9349a55dfb348fe7fd101c56fe474595c25dc563ac2b0fa237"
+    },
+    {
+      "ref": "D4",
+      "url": "https://www.zoomiami.org/terms-and-conditions",
+      "final_url": "https://www.zoomiami.org/terms-and-conditions",
+      "from": "https://www.zoomiami.org/zoo-miami-wildlife-conservation-grants",
+      "anchor": "Terms & Conditions",
+      "depth": 1,
+      "pdf": false,
+      "chars": 18706,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:311e78da7f632efd388aedcb6d04fd2c154372965a976f0a0536ef25d6f44266"
+    }
+  ],
+  "failures": [
+    {
+      "url": "https://www.zoomiami.org/assets/2891/zmwcf_fillable_application_2026.pdf",
+      "from": "https://www.zoomiami.org/zoo-miami-wildlife-conservation-grants",
+      "kind": "low_text",
+      "message": "pages 4, 5 are images: needs OCR"
+    }
+  ],
+  "skipped_links": 479,
+  "chunks": [{ "id": "all", "docs": ["D1", "D2", "D3", "D4"], "chars": 89149 }],
+  "outcomes": {
+    "eligibility": "stated",
+    "documents": "stated",
+    "effort": "stated",
+    "co_finance": "not_found",
+    "consortium": "not_found",
+    "after_award": "stated"
+  },
+  "written": ["eligibility", "documents", "effort", "after_award"],
+  "escalated": [],
+  "flags": [],
+  "notes": [
+    "extractor: Strong applications are expressly not mandated. Funded publications, social media posts, website information and presentations must acknowledge Zoo Miami's support. All application materials must be submitted in English.",
+    "source zoo-miami-wildlife-conservation-fund-2: added for https://www.zoomiami.org/assets/2891/zmwcf_fillable_application_2026.pdf"
+  ],
+  "usd": 0
+}

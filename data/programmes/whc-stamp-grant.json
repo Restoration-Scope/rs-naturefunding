@@ -1,12 +1,19 @@
 {
   "id": "whc-stamp-grant",
   "name": "Canadian Wildlife Habitat Conservation Stamp Program",
-  "funder": { "name": "Wildlife Habitat Canada", "url": "https://whc.org/" },
+  "funder": {
+    "name": "Wildlife Habitat Canada",
+    "url": "https://whc.org/"
+  },
   "administered_by": null,
   "parent": null,
   "url": "https://whc.org/grants/stamp-grant/",
   "summary": "One-year grants of C$1,000 to C$150,000, matched 1:1, for conserving and restoring priority wetland and waterfowl habitat across Canada. The 2027-28 round closed on 18 October 2026.",
-  "approaches": ["wetlands", "species_conservation", "research"],
+  "approaches": [
+    "wetlands",
+    "species_conservation",
+    "research"
+  ],
   "applicant_types": [
     "ngo",
     "indigenous_organization",
@@ -16,12 +23,71 @@
     "individual",
     "government"
   ],
-  "geography": { "scope": "countries", "countries": ["CA"] },
+  "geography": {
+    "scope": "countries",
+    "countries": [
+      "CA"
+    ]
+  },
   "access": "direct",
   "window": "fixed",
-  "amount": { "currency": "CAD", "min": 1000, "max": 150000 },
+  "amount": {
+    "currency": "CAD",
+    "min": 1000,
+    "max": 150000
+  },
   "co_finance_required": true,
   "reporting": "Interim reports due mid-September and final reports due mid-March of each grant year.",
+  "effort": {
+    "steps": [
+      "Online application",
+      "WHC eligibility review",
+      "External review panel"
+    ]
+  },
+  "eligibility": [
+    {
+      "rule": "Not a federal-level organization, employee, department, agency or crown corporation",
+      "kind": "legal"
+    },
+    {
+      "rule": "Project takes place between April 1, 2027 and March 31, 2028",
+      "kind": "project"
+    },
+    {
+      "rule": "Project is time-limited and goal-oriented",
+      "kind": "project"
+    },
+    {
+      "rule": "Project received WHC funding no more than twice previously, unless substantially changed",
+      "kind": "track_record"
+    },
+    {
+      "rule": "No endowment contributions or costs directly related to acquiring land or an interest in land",
+      "kind": "project"
+    },
+    {
+      "rule": "Networking project has clear learning objectives and a follow-up component",
+      "kind": "project"
+    },
+    {
+      "rule": "Research project includes a Canadian NAWMP Joint Venture support letter",
+      "kind": "project"
+    }
+  ],
+  "co_finance": {
+    "min_share": 50,
+    "in_kind": true
+  },
+  "after_award": {
+    "reports": "interim_and_final",
+    "site_visits": true
+  },
+  "documents": [
+    "Activity Table",
+    "Joint Venture scientific or technical committee support letter, for research projects",
+    "Administrative office confirmation letter, for academic institution applicants"
+  ],
   "calls": [
     {
       "id": "2027-28",
@@ -29,7 +95,10 @@
       "url": "https://whc.org/grants/stamp-grant/",
       "status": "closed",
       "opens": null,
-      "deadline": { "date": "2026-10-18", "text": "October 18, 2026" },
+      "deadline": {
+        "date": "2026-10-18",
+        "text": "October 18, 2026"
+      },
       "evidence": {
         "status": {
           "source_url": "https://whc.org/grants/stamp-grant/",
@@ -78,8 +147,8 @@
       "method": "page"
     },
     "co_finance_required": {
-      "source_url": "https://whc.org/grants/stamp-grant/",
-      "quote": "Clearly demonstrate a minimum 1:1 funding match ratio",
+      "source_url": "https://whc.org/wp-content/uploads/2026/07/WHC-STAMP-Guidelines-FINAL.pdf",
+      "quote": "The STAMP is a matching funds program, with a required match ratio of a minimum 1:1.",
       "checked_at": "2026-11-20",
       "method": "page"
     },
@@ -88,7 +157,111 @@
       "quote": "Reporting periods: Interim Reports due mid-September 2025 Final Reports due mid-March 2026",
       "checked_at": "2026-11-20",
       "method": "page"
-    }
+    },
+    "effort": [
+      {
+        "source_url": "https://whc.org/wp-content/uploads/2026/07/2027-2028-Stamp-Call-for-Proposals-1.pdf",
+        "quote": "Apply online before October 18, 2026.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://whc.org/wp-content/uploads/2026/07/2027-2028-Stamp-Call-for-Proposals-1.pdf",
+        "quote": "Grant applications submitted by the October 18, 2026 deadline will be reviewed by WHC Staff for eligibility.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://whc.org/wp-content/uploads/2026/07/2027-2028-Stamp-Call-for-Proposals-1.pdf",
+        "quote": "A review panel made up of technical and professional subject matter experts will review and score each eligible application according to determined criteria.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "eligibility": [
+      {
+        "source_url": "https://whc.org/wp-content/uploads/2026/07/WHC-STAMP-Guidelines-FINAL.pdf",
+        "quote": "Federal level organizations or individuals: Government employees, departments, agencies, and crown corporations.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://whc.org/wp-content/uploads/2026/07/2027-2028-Stamp-Call-for-Proposals-1.pdf",
+        "quote": "Take place between April 1, 2027 and March 31, 2028.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://whc.org/wp-content/uploads/2026/07/2027-2028-Stamp-Call-for-Proposals-1.pdf",
+        "quote": "Be time-limited and goal-oriented.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://whc.org/wp-content/uploads/2026/07/2027-2028-Stamp-Call-for-Proposals-1.pdf",
+        "quote": "Not have received WHC funding more than twice previously, unless substantial changes have been made to the project design;",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://whc.org/wp-content/uploads/2026/07/2027-2028-Stamp-Call-for-Proposals-1.pdf",
+        "quote": "WHC will not fund: Contributions to an endowment fund; Costs directly related to acquiring land or an interest in land, including a lease, conservation easement or conservation covenant;",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://whc.org/wp-content/uploads/2026/07/2027-2028-Stamp-Call-for-Proposals-1.pdf",
+        "quote": "Projects must include clear learning objectives and a follow-up component to show long-term program benefits.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://whc.org/wp-content/uploads/2026/07/WHC-STAMP-Guidelines-FINAL.pdf",
+        "quote": "Research projects require a letter of support, attached at application submission, from the scientific or technical committee of the associated North American Waterfowl Management Plan Habitat (or Species) Joint Venture in Canada.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "co_finance": {
+      "source_url": "https://whc.org/wp-content/uploads/2026/07/WHC-STAMP-Guidelines-FINAL.pdf",
+      "quote": "A minimum 1:1 funding match ratio must clearly be demonstrated in the application. WHC contributions cannot exceed 50% of the project costs. Match can come from cash or in-kind contributions.",
+      "checked_at": "2026-11-20",
+      "method": "page"
+    },
+    "after_award": [
+      {
+        "source_url": "https://whc.org/wp-content/uploads/2026/07/WHC-STAMP-Guidelines-FINAL.pdf",
+        "quote": "Reporting Mechanism (completed at Interim and Final Reporting)",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://whc.org/wp-content/uploads/2026/07/STAMP-LOA-EN-2027-2028.pdf",
+        "quote": "access to visit the premises or site where the activities funded under this Agreement are being carried out",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "documents": [
+      {
+        "source_url": "https://whc.org/wp-content/uploads/2026/07/STAMP-A-Guide-to-the-WHC-Activity-Table-1.pdf",
+        "quote": "The activity tables are used to report on project deliverables, participants and acres. It is submitted with the application, as well as with interim and final reports.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://whc.org/wp-content/uploads/2026/07/WHC-STAMP-Guidelines-FINAL.pdf",
+        "quote": "Research projects require a letter of support, attached at application submission, from the scientific or technical committee of the associated North American Waterfowl Management Plan Habitat (or Species) Joint Venture in Canada.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://whc.org/wp-content/uploads/2026/07/WHC-STAMP-Guidelines-FINAL.pdf",
+        "quote": "Provide a letter at application submission, from the administrative office confirming that the draft WHC Letter of Agreement has been reviewed, including any comments or changes that may need to be considered if the grant application is successful.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ]
   },
   "checked_at": "2026-11-20"
 }
