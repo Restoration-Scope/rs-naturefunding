@@ -9,9 +9,20 @@
   "parent": null,
   "url": "https://natuurenbos.vlaanderen.be/subsidies-en-projectoproepen/subsidiesprojectoproepen-inrichting-van-natuur/projectoproep-natuur-je-buurt",
   "summary": "Flemish call funding projects that bring nature close to people in Flanders, with a net gain in nature area or quality: urban nature, nature experience and green development. Local councils and private associations can apply.",
-  "approaches": ["urban_nature"],
-  "applicant_types": ["ngo", "government"],
-  "geography": { "scope": "countries", "countries": ["BE"], "label": "Flemish Region" },
+  "approaches": [
+    "urban_nature"
+  ],
+  "applicant_types": [
+    "ngo",
+    "government"
+  ],
+  "geography": {
+    "scope": "countries",
+    "countries": [
+      "BE"
+    ],
+    "label": "Flemish Region"
+  },
   "access": "direct",
   "window": "fixed",
   "amount": {
@@ -21,6 +32,62 @@
   },
   "co_finance_required": true,
   "reporting": "A substantive final report and a financial final report are due at the latest 6 months after the project is completed.",
+  "effort": {
+    "steps": [
+      "Project proposal via the e-loket"
+    ],
+    "due": [
+      "2026-09-30"
+    ]
+  },
+  "eligibility": [
+    {
+      "rule": "Is not a Flemish or federal authority, unless it is a care facility",
+      "kind": "legal"
+    },
+    {
+      "rule": "Is not an educational institution",
+      "kind": "legal"
+    },
+    {
+      "rule": "Shows ownership and management rights for the project",
+      "kind": "project"
+    },
+    {
+      "rule": "Has a concrete, supported project in the Flemish Region that increases nature area or improves nature quality",
+      "kind": "project"
+    },
+    {
+      "rule": "Has not started the project and can start it within one year",
+      "kind": "project"
+    },
+    {
+      "rule": "Can complete the project within three years after funding notification",
+      "kind": "project"
+    },
+    {
+      "rule": "Project land is not owned by a school, nor owned or managed by the Agency for Nature and Forests",
+      "kind": "project"
+    }
+  ],
+  "co_finance": {
+    "min_share": 25
+  },
+  "after_award": {
+    "reports": "final"
+  },
+  "documents": [
+    "Ownership or management-right evidence for every project parcel",
+    "Project budget using the required template",
+    "Key figures using the required template",
+    "Project area layout plan with areas, quantities and species",
+    "Maintenance or management plan for the nature elements",
+    "Photos of the current situation",
+    "Site context sketch for Type A proposals",
+    "Marked cadastral extract for projects on public land",
+    "Transfer deed or 10-year use agreement for qualifying government-owned land",
+    "Mandate when applying on behalf of an organisation or as a government"
+  ],
   "calls": [
     {
       "id": "2026",
@@ -90,7 +157,7 @@
     "co_finance_required": {
       "source_url": "https://natuurenbos.vlaanderen.be/subsidies-en-projectoproepen/subsidiesprojectoproepen-inrichting-van-natuur/projectoproep-natuur-je-buurt",
       "quote": "De totale financiering bedraagt maximaal 75%, met een maximum van 100.000 euro.",
-      "checked_at": "2026-11-14",
+      "checked_at": "2026-11-20",
       "method": "page"
     },
     "reporting": {
@@ -98,7 +165,111 @@
       "quote": "Ten laatste 6 maanden na realisatie van het project moet u een inhoudelijk eindverslag en een financieel eindrapport indienen.",
       "checked_at": "2026-11-14",
       "method": "page"
-    }
+    },
+    "effort": [
+      {
+        "source_url": "https://natuurenbos.vlaanderen.be/subsidies-en-projectoproepen/subsidiesprojectoproepen-inrichting-van-natuur/projectoproep-natuur-je-buurt",
+        "quote": "Dien uw projectvoorstel in via het e-loket tot 30 september 2026 10 u.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "eligibility": [
+      {
+        "source_url": "https://natuurenbos.vlaanderen.be/subsidies-en-projectoproepen/subsidiesprojectoproepen-inrichting-van-natuur/projectoproep-natuur-je-buurt",
+        "quote": "Met uitzondering van zorgvoorzieningen kunnen overheden (Vlaamse, Federale) geen aanvraag indienen.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://natuurenbos.vlaanderen.be/subsidies-en-projectoproepen/subsidiesprojectoproepen-inrichting-van-natuur/projectoproep-natuur-je-buurt",
+        "quote": "Onderwijsinstellingen kunnen in deze oproep geen projectvoorstel indienen.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://natuurenbos.vlaanderen.be/subsidies-en-projectoproepen/subsidiesprojectoproepen-inrichting-van-natuur/projectoproep-natuur-je-buurt",
+        "quote": "De aanvrager toont eigendom en beheersituatie aan.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://natuurenbos.vlaanderen.be/subsidies-en-projectoproepen/subsidiesprojectoproepen-inrichting-van-natuur/projectoproep-natuur-je-buurt",
+        "quote": "Enkel concrete en gedragen projecten in het Vlaamse Gewest die leiden tot een netto toename van de oppervlakte natuur of tot een verbetering van de natuurkwaliteit komen in aanmerking voor financiering.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://natuurenbos.vlaanderen.be/subsidies-en-projectoproepen/subsidiesprojectoproepen-inrichting-van-natuur/projectoproep-natuur-je-buurt",
+        "quote": "Het project mag nog niet in uitvoering zijn, maar moet wel binnen een termijn van één jaar van start kunnen gaan.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://natuurenbos.vlaanderen.be/subsidies-en-projectoproepen/subsidiesprojectoproepen-inrichting-van-natuur/projectoproep-natuur-je-buurt",
+        "quote": "Het project moet gerealiseerd kunnen worden binnen een termijn van drie jaar na kennisgeving van financiering.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://natuurenbos.vlaanderen.be/sites/default/files/documenten/nijb2026-reglement.pdf",
+        "quote": "Volgende percelen zijn uitgesloten voor financiering: a. gronden in eigendom van onderwijsinstellingen b. gronden in eigendom van het Agentschap voor Natuur en Bos c. gronden die in beheer zijn van het Agentschap voor Natuur en Bos",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "co_finance": {
+      "source_url": "https://natuurenbos.vlaanderen.be/sites/default/files/documenten/nijb2026-inhoud-blanco-projectvoorstel-type-b.docx",
+      "quote": "Dit bedrag kan maximum 75% (met een max. van 15.000 euro) bedragen van de projectbegroting van financierbare kosten.",
+      "checked_at": "2026-11-20",
+      "method": "page"
+    },
+    "after_award": [
+      {
+        "source_url": "https://natuurenbos.vlaanderen.be/subsidies-en-projectoproepen/subsidiesprojectoproepen-inrichting-van-natuur/projectoproep-natuur-je-buurt",
+        "quote": "Ten laatste 6 maanden na realisatie van het project moet u een inhoudelijk eindverslag en een financieel eindrapport indienen.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "documents": [
+      {
+        "source_url": "https://natuurenbos.vlaanderen.be/sites/default/files/documenten/nijb2026-checklist-verplichte-bijlagen.docx",
+        "quote": "Bewijs van eigendom en/of beheerrecht voor alle vermelde percelen van het projectgebied",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://natuurenbos.vlaanderen.be/sites/default/files/documenten/nijb2026-checklist-verplichte-bijlagen.docx",
+        "quote": "Projectbegroting (VERPLICHT sjabloon op www.natuurinjebuurt.be) Kencijfers Stap 2 Kencijfers (VERPLICHT sjabloon op www.natuurinjebuurt.be) Inrichtingsplan Stap 2 Inrichtingsplan(nen) van het projectgebied met vermelding van oppervlaktes, aantallen en soorten",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://natuurenbos.vlaanderen.be/sites/default/files/documenten/nijb2026-checklist-verplichte-bijlagen.docx",
+        "quote": "Beheerplan (of onderhoudsplan) voor de aan te leggen en/of reeds aanwezige natuurelementen (minstens) in het projectgebied Foto's Stap 2 Foto's van de huidige situatie Situatieschets Stap 2 Voor type A projectvoorstellen: situatieschets(en) die de (ecologische of maatschappelijke) aansluiting van het projectgebied met de bredere omgeving duidt/duiden.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://natuurenbos.vlaanderen.be/sites/default/files/documenten/nijb2026-checklist-verplichte-bijlagen.docx",
+        "quote": "Voor projectvoorstellen op openbaar domein (dit kan niet aangeduide worden in het eLoket): een kadastraal uittreksel met daarop aangeduid de betrokken domeinen, hun oppervlakte en hun eigenaar.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://natuurenbos.vlaanderen.be/sites/default/files/documenten/nijb2026-checklist-verplichte-bijlagen.docx",
+        "quote": "Is het perceel in eigendom van Vlaamse of Federale overheden of instellingen? Dan moet een overdrachtsakte of een duurzame gebruiksovereenkomst voor minstens 10jaar toegevoegd worden.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://natuurenbos.vlaanderen.be/sites/default/files/documenten/nijb2026-inhoud-blanco-projectvoorstel-type-a.docx",
+        "quote": "Bij de aanvraag moet u een mandaat toevoegen dat aangeeft dat u in naam van uw organisatie het projectvoorstel mag indienen.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ]
   },
   "checked_at": "2026-11-14"
 }

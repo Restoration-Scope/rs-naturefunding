@@ -1,0 +1,137 @@
+{
+  "id": "kyoto-forest-culture-conservation-project",
+  "read_on": "2026-11-20",
+  "prompt_version": "req-2026-11-20.1",
+  "models": ["cursor:gpt-5.6-luna-high", "cursor:gpt-5.6-sol-high"],
+  "complete": false,
+  "reasons": [
+    "9 links could not be ranked without Jev",
+    "https://www.pref.kyoto.jp/shinrinhozen/documents/04bosyuyoko-syuryo.pdf: page 20 is an image: needs OCR",
+    "the text names a document with rules that was not read: 補助金等の交付に関する規則（昭和35年京都府規則第23号）",
+    "Jev did not check this reading, so an absent fact is not known to be absent",
+    "strong reading: the text names a document with rules that was not read: 補助金等の交付に関する規則（昭和35年京都府規則第23号）"
+  ],
+  "requirements_checked": false,
+  "documents": [
+    {
+      "ref": "D1",
+      "url": "https://www.pref.kyoto.jp/shinrinhozen/moribunka.html",
+      "final_url": "https://www.pref.kyoto.jp/shinrinhozen/moribunka.html",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 2228,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:bd817cb97f60207ac5edddf2b64e8e8b2ffef7dadde5ba34f4da22065efe584e"
+    },
+    {
+      "ref": "D2",
+      "url": "https://www.pref.kyoto.jp/shinrinhozen/documents/04bosyuyoko-syuryo.pdf",
+      "final_url": "https://www.pref.kyoto.jp/shinrinhozen/documents/04bosyuyoko-syuryo.pdf",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": true,
+      "chars": 15059,
+      "pages": 20,
+      "low_text": false,
+      "hash": "sha256:cfd677454a4c8ba837a41566192d6ca4fa2abe899433ceff1d26199980da9045"
+    },
+    {
+      "ref": "D3",
+      "url": "https://www.pref.kyoto.jp/shinrinhozen/documents/13kofuyoko.pdf",
+      "final_url": "https://www.pref.kyoto.jp/shinrinhozen/documents/13kofuyoko.pdf",
+      "from": "https://www.pref.kyoto.jp/shinrinhozen/moribunka.html",
+      "anchor": "豊かな森を育てる府民税及び森林環境譲与税関係事業補助金交付要綱(PDF:141KB)",
+      "depth": 1,
+      "pdf": true,
+      "chars": 1844,
+      "pages": 3,
+      "low_text": false,
+      "hash": "sha256:1051f0a306c1990b0ee7a85ef074ea8bfbc0490510fe18793db0484d331534bb"
+    },
+    {
+      "ref": "D4",
+      "url": "https://www.pref.kyoto.jp/shinrinhozen/documents/14yoryo.pdf",
+      "final_url": "https://www.pref.kyoto.jp/shinrinhozen/documents/14yoryo.pdf",
+      "from": "https://www.pref.kyoto.jp/shinrinhozen/moribunka.html",
+      "anchor": "京の森林文化保全継承事業実施要領(PDF:185KB)",
+      "depth": 1,
+      "pdf": true,
+      "chars": 2322,
+      "pages": 2,
+      "low_text": false,
+      "hash": "sha256:3f382ae0b884636b42f7582c0baeb091e848f2388ff12a84e139840bf00d80e1"
+    },
+    {
+      "ref": "D5",
+      "url": "https://www.pref.kyoto.jp/sitepolicy.html",
+      "final_url": "https://www.pref.kyoto.jp/sitepolicy.html",
+      "from": "https://www.pref.kyoto.jp/shinrinhozen/moribunka.html",
+      "anchor": "このサイトの考え方",
+      "depth": 1,
+      "pdf": false,
+      "chars": 1914,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:1ee83886429b1afd6055ebfadc457edc930aa5c02ab6b6d4351e736068d7df5c"
+    },
+    {
+      "ref": "D6",
+      "url": "https://www.pref.kyoto.jp/guideline.html",
+      "final_url": "https://www.pref.kyoto.jp/guideline.html",
+      "from": "https://www.pref.kyoto.jp/sitepolicy.html",
+      "anchor": "京都府ウェブアクセシビリティガイドライン(抜粋)",
+      "depth": 2,
+      "pdf": false,
+      "chars": 3960,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:927db26db4585895256e5a47fba9be00c5dc7b6bd8efe3e378b2820de5f0a274"
+    },
+    {
+      "ref": "D7",
+      "url": "https://www.pref.kyoto.jp/documents/guideline2022.pdf",
+      "final_url": "https://www.pref.kyoto.jp/documents/guideline2022.pdf",
+      "from": "https://www.pref.kyoto.jp/sitepolicy.html",
+      "anchor": "京都府ウェブアクセシビリティガイドライン(全文)(PDF:1,631KB)",
+      "depth": 2,
+      "pdf": true,
+      "chars": 8102,
+      "pages": 10,
+      "low_text": false,
+      "hash": "sha256:a263c922cd0d735782cbbe720470c64d31fb2fae383f571147507fc94182b748"
+    }
+  ],
+  "failures": [
+    {
+      "url": "https://www.pref.kyoto.jp/shinrinhozen/documents/04bosyuyoko-syuryo.pdf",
+      "from": null,
+      "kind": "low_text",
+      "message": "page 20 is an image: needs OCR"
+    }
+  ],
+  "skipped_links": 112,
+  "chunks": [{ "id": "all", "docs": ["D1", "D2", "D3", "D4", "D5", "D6", "D7"], "chars": 36243 }],
+  "outcomes": {
+    "eligibility": "stated",
+    "documents": "stated",
+    "effort": "stated",
+    "co_finance": "stated",
+    "consortium": "not_found",
+    "after_award": "stated"
+  },
+  "written": ["eligibility", "documents", "effort", "co_finance", "after_award"],
+  "escalated": ["eligibility", "effort", "after_award"],
+  "flags": [],
+  "notes": [
+    "effort \"Project plan submission\": the quote does not state 2026-09-11 whole; left undated",
+    "extractor: The FY2026 call is closed. The grant is capped at ¥1,000,000, with a five-year cumulative cap of ¥1,000,000 for the same grantee. Awardees must complete the project by 2027-03-15, display a wooden sign publicising the forest-environment-tax funding, keep financial records and evidence for five years, and begin work only after the grant decision except where the stated advance-start procedure applies. Expert advice is optional.",
+    "strong: effort \"Project plan submission\": the quote does not state 2026-09-11 whole; left undated",
+    "strong: The FY2026 call is closed.",
+    "source kyoto-forest-culture-conservation-project-1: selector main dropped, a new quote sits outside it"
+  ],
+  "usd": 0
+}

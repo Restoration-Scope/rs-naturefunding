@@ -1,19 +1,54 @@
 {
   "id": "john-sage-foundation-grants",
   "name": "John Sage Foundation annual grants",
-  "funder": { "name": "John Sage Foundation", "url": "https://www.johnsagefoundation.org/" },
+  "funder": {
+    "name": "John Sage Foundation",
+    "url": "https://www.johnsagefoundation.org/"
+  },
   "administered_by": null,
   "parent": null,
   "url": "https://www.johnsagefoundation.org/guidelines",
   "summary": "Annual grants for Maine projects in ecological restoration, land conservation and stewardship, water quality and wildlife rehabilitation, with priority for smaller organisations. It also funds climate, education and research work.",
-  "approaches": ["protected_areas", "species_conservation"],
-  "applicant_types": ["ngo", "government"],
-  "geography": { "scope": "countries", "countries": ["US"], "label": "Maine" },
+  "approaches": [
+    "protected_areas",
+    "species_conservation"
+  ],
+  "applicant_types": [
+    "ngo",
+    "government"
+  ],
+  "geography": {
+    "scope": "countries",
+    "countries": [
+      "US"
+    ],
+    "label": "Maine"
+  },
   "access": "direct",
   "window": "fixed",
-  "amount": { "currency": "USD", "min": 500, "max": 50000, "typical": true },
+  "amount": {
+    "currency": "USD",
+    "min": 500,
+    "max": 50000,
+    "typical": true
+  },
   "co_finance_required": null,
   "reporting": "An interim report is due six months into the project and a final report on completion.",
+  "effort": {
+    "steps": [
+      "Application materials"
+    ]
+  },
+  "after_award": {
+    "reports": "interim_and_final"
+  },
+  "documents": [
+    "Most recent 501(c)(3) ruling",
+    "Property appraisal, for land acquisition or conservation easement support",
+    "Proposed easements, for land acquisition support",
+    "Supporting maps if not in the appraisal, for land acquisition support",
+    "Easement terms, for conservation easement support"
+  ],
   "calls": [
     {
       "id": "annual",
@@ -75,7 +110,43 @@
       "quote": "Interim report: due six months into the project.",
       "checked_at": "2026-11-15",
       "method": "page"
-    }
+    },
+    "effort": [
+      {
+        "source_url": "https://www.johnsagefoundation.org/guidelines",
+        "quote": "All application materials must be received no later than April 30 for consideration at the Foundation's annual meeting in May.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "after_award": [
+      {
+        "source_url": "https://www.johnsagefoundation.org/guidelines",
+        "quote": "Interim report: due six months into the project. Download the Interim Report (PDF) Final report: Due upon completion of the project.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "documents": [
+      {
+        "source_url": "https://www.johnsagefoundation.org/guidelines",
+        "quote": "The organization's most recent 501(c)(3) ruling",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.johnsagefoundation.org/guidelines",
+        "quote": "a property appraisal, proposed easements, and supporting maps (if not in the appraisal). Conservation easement support: include the easement terms",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.johnsagefoundation.org/guidelines",
+        "quote": "a copy of the appraisal",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ]
   },
   "checked_at": "2026-11-15"
 }

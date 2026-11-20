@@ -1,0 +1,45 @@
+{
+  "id": "mpf-prairie-garden-grants",
+  "read_on": "2026-11-20",
+  "prompt_version": "req-2026-11-20.1",
+  "models": ["cursor:gpt-5.6-luna-high"],
+  "complete": false,
+  "reasons": [
+    "1 links could not be ranked without Jev",
+    "Jev did not check this reading, so an absent fact is not known to be absent"
+  ],
+  "requirements_checked": false,
+  "documents": [
+    {
+      "ref": "D1",
+      "url": "https://moprairie.org/mission/grants/",
+      "final_url": "https://moprairie.org/mission/grants/",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 7308,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:c5c28e7ba88fbe20dcca126d3806974b3fcde9fe08c012d888005d84abc0d59a"
+    }
+  ],
+  "failures": [],
+  "skipped_links": 104,
+  "chunks": [{ "id": "all", "docs": ["D1"], "chars": 7358 }],
+  "outcomes": {
+    "eligibility": "stated",
+    "documents": "not_found",
+    "effort": "stated",
+    "co_finance": "stated",
+    "consortium": "not_found",
+    "after_award": "stated"
+  },
+  "written": ["eligibility", "effort", "co_finance", "after_award"],
+  "escalated": [],
+  "flags": [],
+  "notes": [
+    "extractor: D1 describes the 2026 round. No application deadline is stated. Secured matching funds may improve evaluation but are not required."
+  ],
+  "usd": 0
+}
