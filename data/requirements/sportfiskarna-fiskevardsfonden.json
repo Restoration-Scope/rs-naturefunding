@@ -1,0 +1,72 @@
+{
+  "id": "sportfiskarna-fiskevardsfonden",
+  "read_on": "2026-11-20",
+  "prompt_version": "req-2026-11-20.1",
+  "models": ["cursor:gpt-5.6-luna-high"],
+  "complete": false,
+  "reasons": [
+    "12 links could not be ranked without Jev",
+    "10 links could not be ranked without Jev",
+    "Jev did not check this reading, so an absent fact is not known to be absent"
+  ],
+  "requirements_checked": false,
+  "documents": [
+    {
+      "ref": "D1",
+      "url": "https://www.sportfiskarna.se/forening/ekonomiska-bidrag/fiskevardsfonden/",
+      "final_url": "https://www.sportfiskarna.se/forening/ekonomiska-bidrag/fiskevardsfonden/",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 17517,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:776c3ebecb49f47bccce656330b87ece5a425cb76502d1451b0551c4690da88b"
+    },
+    {
+      "ref": "D2",
+      "url": "https://www.sportfiskarna.se/integritetspolicy/",
+      "final_url": "https://www.sportfiskarna.se/integritetspolicy/",
+      "from": "https://www.sportfiskarna.se/forening/ekonomiska-bidrag/fiskevardsfonden/",
+      "anchor": "Integritetspolicy",
+      "depth": 1,
+      "pdf": false,
+      "chars": 20813,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:7d0df119e0714e73d0af3cb563d6b9ec48dc5eff35167b324cf02b12db96c971"
+    },
+    {
+      "ref": "D3",
+      "url": "https://www.sportfiskarna.se/cookiepolicy/",
+      "final_url": "https://www.sportfiskarna.se/cookiepolicy/",
+      "from": "https://www.sportfiskarna.se/forening/ekonomiska-bidrag/fiskevardsfonden/",
+      "anchor": "Cookiepolicy",
+      "depth": 1,
+      "pdf": false,
+      "chars": 18026,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:21b8d621a5546967a64704b5ea35c278222402d6aae21751b76adfbb648d2080"
+    }
+  ],
+  "failures": [],
+  "skipped_links": 742,
+  "chunks": [{ "id": "all", "docs": ["D1", "D2", "D3"], "chars": 56733 }],
+  "outcomes": {
+    "eligibility": "stated",
+    "documents": "stated",
+    "effort": "stated",
+    "co_finance": "stated",
+    "consortium": "not_found",
+    "after_award": "stated"
+  },
+  "written": ["eligibility", "documents", "effort", "co_finance", "after_award"],
+  "escalated": [],
+  "flags": [],
+  "notes": [
+    "extractor: The page says the 2026 round is closed and that a new application period opens before 2027. The two-year support option is described as new for 2026."
+  ],
+  "usd": 0
+}

@@ -17,6 +17,11 @@
   "amount": null,
   "co_finance_required": null,
   "reporting": null,
+  "effort": { "steps": ["Initial discussion"] },
+  "eligibility": [
+    { "rule": "Is a citizen of a gibbon habitat country", "kind": "legal" },
+    { "rule": "Research has a clear conservation link", "kind": "project" }
+  ],
   "calls": [
     {
       "id": "rolling",
@@ -53,7 +58,29 @@
       "quote": "The grant is available on an ongoing basis. Please email us for an initial discussion - we're always happy to hear from applicants.",
       "checked_at": "2026-11-20",
       "method": "page"
-    }
+    },
+    "effort": [
+      {
+        "source_url": "https://gibbons.asia/save-the-gibbon-grant/",
+        "quote": "Please email us for an initial discussion",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "eligibility": [
+      {
+        "source_url": "https://gibbons.asia/save-the-gibbon-grant/",
+        "quote": "Are you a citizen of a gibbon habitat country?",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://gibbons.asia/save-the-gibbon-grant/",
+        "quote": "Please note: this grant will not support research unless there is a clear conservation link.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ]
   },
   "checked_at": "2026-11-20"
 }

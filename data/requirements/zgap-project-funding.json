@@ -1,0 +1,204 @@
+{
+  "id": "zgap-project-funding",
+  "read_on": "2026-11-20",
+  "prompt_version": "req-2026-11-20.1",
+  "models": ["cursor:gpt-5.6-luna-high"],
+  "complete": false,
+  "reasons": [
+    "22 links could not be ranked without Jev",
+    "24 links could not be ranked without Jev",
+    "the crawl bound left https://www.zgap.de/files/Mitgliedsantraege/ZGAP%20Aufnahmeantrag%20Persoenliche%20Mitgliedschaft.pdf unread",
+    "the crawl bound left https://www.zgap.de/files/Mitgliedsantraege/ZGAP%20Aufnahmeantrag%20Institutionelle%20Mitgliedschaft.pdf unread",
+    "the crawl bound left https://www.zgap.de/files/Mitgliedsantraege/ZGAP%20SEPA-Lastschriftmandat.pdf unread",
+    "the crawl bound left https://www.zgap.de/index.php/mitgliedschaft/mitgliedsformular/antrag-f%C3%BCr-privatpersonen?view=article&id=10:impressum&catid=2 unread",
+    "the crawl bound left https://www.zgap.de/index.php/mitgliedschaft/mitgliedsformular/antrag-f%C3%BCr-privatpersonen?view=article&id=43:datenschutz&catid=14 unread",
+    "the crawl bound left https://www.zgap.de/index.php/mitgliedschaft/mitgliedsformular/antrag-f%C3%BCr-privatpersonen-2?view=article&id=10:impressum&catid=2 unread",
+    "the crawl bound left https://www.zgap.de/index.php/mitgliedschaft/mitgliedsformular/antrag-f%C3%BCr-privatpersonen-2?view=article&id=43:datenschutz&catid=14 unread",
+    "Jev did not check this reading, so an absent fact is not known to be absent"
+  ],
+  "requirements_checked": false,
+  "documents": [
+    {
+      "ref": "D1",
+      "url": "https://www.zgap.de/index.php/projekte/antragsunterlagen",
+      "final_url": "https://www.zgap.de/index.php/projekte/antragsunterlagen",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 4357,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:b7dedfc2ee4feb2fc70d1f650174a50c486905f577d3592ae75a821be144611c"
+    },
+    {
+      "ref": "D2",
+      "url": "https://www.zgap.de/index.php/mitgliedschaft/mitgliedsformular/antrag-f%C3%BCr-privatpersonen",
+      "final_url": "https://www.zgap.de/index.php/mitgliedschaft/mitgliedsformular/antrag-f%C3%BCr-privatpersonen",
+      "from": "https://www.zgap.de/index.php/projekte/antragsunterlagen",
+      "anchor": "Antrag für Privatpersonen",
+      "depth": 1,
+      "pdf": false,
+      "chars": 5021,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:0178ffc074abacbdd77646bb14cb80dd1f26bc801385c1422b1b5f27f4210d2d"
+    },
+    {
+      "ref": "D3",
+      "url": "https://www.zgap.de/index.php/mitgliedschaft/mitgliedsformular/antrag-f%C3%BCr-privatpersonen-2",
+      "final_url": "https://www.zgap.de/index.php/mitgliedschaft/mitgliedsformular/antrag-f%C3%BCr-privatpersonen-2",
+      "from": "https://www.zgap.de/index.php/projekte/antragsunterlagen",
+      "anchor": "Antrag für Institutionen",
+      "depth": 1,
+      "pdf": false,
+      "chars": 5245,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:acb7188e4a0ffaf6fa640b3a2273a7cf869d6b50d3f8a330e5c468971a599919"
+    },
+    {
+      "ref": "D4",
+      "url": "https://www.zgap.de/files/Foerderung/ZGAP-Forderrichtlinien%202026.pdf",
+      "final_url": "https://www.zgap.de/files/Foerderung/ZGAP-Forderrichtlinien%202026.pdf",
+      "from": "https://www.zgap.de/index.php/projekte/antragsunterlagen",
+      "anchor": "Förderrichtlinien (PDF) öffnen",
+      "depth": 1,
+      "pdf": true,
+      "chars": 4302,
+      "pages": 2,
+      "low_text": false,
+      "hash": "sha256:d6403a739dc0a9d97011ddf223b9e2ee9cfd9a4280b853cac61e9c4edcd17673"
+    },
+    {
+      "ref": "D5",
+      "url": "https://www.zgap.de/files/Foerderung/A_form_v16.docx",
+      "final_url": "https://www.zgap.de/files/Foerderung/A_form_v16.docx",
+      "from": "https://www.zgap.de/index.php/projekte/antragsunterlagen",
+      "anchor": "Antrag A (WORD) öffnen",
+      "depth": 1,
+      "pdf": false,
+      "chars": 4220,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:bd46dfbb574778cbbcba62807c73c3b6f16df25d5d9a5384ec2d47eda2013c9b"
+    },
+    {
+      "ref": "D6",
+      "url": "https://www.zgap.de/files/Foerderung/EAP_form_v16.docx",
+      "final_url": "https://www.zgap.de/files/Foerderung/EAP_form_v16.docx",
+      "from": "https://www.zgap.de/index.php/projekte/antragsunterlagen",
+      "anchor": "Antrag EAP (WORD) öffnen",
+      "depth": 1,
+      "pdf": false,
+      "chars": 5743,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:9f5ec14653110d3040fbced37f36eb4c525d84df9e9d1ac841584ef06df51c00"
+    },
+    {
+      "ref": "D7",
+      "url": "https://www.zgap.de/files/Foerderung/FR_form_v16a.docx",
+      "final_url": "https://www.zgap.de/files/Foerderung/FR_form_v16a.docx",
+      "from": "https://www.zgap.de/index.php/projekte/antragsunterlagen",
+      "anchor": "Antrag FR (WORD) öffnen",
+      "depth": 1,
+      "pdf": false,
+      "chars": 4517,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:aaae39de21efa6bff943a941a87c5e6cc914ccd4edd4811bae809014f245392a"
+    },
+    {
+      "ref": "D8",
+      "url": "https://www.zgap.de/index.php/projekte/antragsunterlagen?view=article&id=10:impressum&catid=2",
+      "final_url": "https://www.zgap.de/index.php/projekte/antragsunterlagen?view=article&id=10:impressum&catid=2",
+      "from": "https://www.zgap.de/index.php/projekte/antragsunterlagen",
+      "anchor": "Impressum",
+      "depth": 1,
+      "pdf": false,
+      "chars": 4042,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:77f307bd0395e7006718c6e2405deb163019d66d65b776cced3fbf659d20ee77"
+    },
+    {
+      "ref": "D9",
+      "url": "https://www.zgap.de/index.php/projekte/antragsunterlagen?view=article&id=43:datenschutz&catid=14",
+      "final_url": "https://www.zgap.de/index.php/projekte/antragsunterlagen?view=article&id=43:datenschutz&catid=14",
+      "from": "https://www.zgap.de/index.php/projekte/antragsunterlagen",
+      "anchor": "Datenschutz",
+      "depth": 1,
+      "pdf": false,
+      "chars": 33496,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:f48b30e7cef59c62b5a9baa087be0aebbbe9119323340bf6554f35ad8e865ff6"
+    }
+  ],
+  "failures": [
+    {
+      "url": "https://www.zgap.de/files/Mitgliedsantraege/ZGAP%20Aufnahmeantrag%20Persoenliche%20Mitgliedschaft.pdf",
+      "from": "https://www.zgap.de/index.php/mitgliedschaft/mitgliedsformular/antrag-f%C3%BCr-privatpersonen",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://www.zgap.de/files/Mitgliedsantraege/ZGAP%20Aufnahmeantrag%20Institutionelle%20Mitgliedschaft.pdf",
+      "from": "https://www.zgap.de/index.php/mitgliedschaft/mitgliedsformular/antrag-f%C3%BCr-privatpersonen",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://www.zgap.de/files/Mitgliedsantraege/ZGAP%20SEPA-Lastschriftmandat.pdf",
+      "from": "https://www.zgap.de/index.php/mitgliedschaft/mitgliedsformular/antrag-f%C3%BCr-privatpersonen",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://www.zgap.de/index.php/mitgliedschaft/mitgliedsformular/antrag-f%C3%BCr-privatpersonen?view=article&id=10:impressum&catid=2",
+      "from": "https://www.zgap.de/index.php/mitgliedschaft/mitgliedsformular/antrag-f%C3%BCr-privatpersonen",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://www.zgap.de/index.php/mitgliedschaft/mitgliedsformular/antrag-f%C3%BCr-privatpersonen?view=article&id=43:datenschutz&catid=14",
+      "from": "https://www.zgap.de/index.php/mitgliedschaft/mitgliedsformular/antrag-f%C3%BCr-privatpersonen",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://www.zgap.de/index.php/mitgliedschaft/mitgliedsformular/antrag-f%C3%BCr-privatpersonen-2?view=article&id=10:impressum&catid=2",
+      "from": "https://www.zgap.de/index.php/mitgliedschaft/mitgliedsformular/antrag-f%C3%BCr-privatpersonen-2",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://www.zgap.de/index.php/mitgliedschaft/mitgliedsformular/antrag-f%C3%BCr-privatpersonen-2?view=article&id=43:datenschutz&catid=14",
+      "from": "https://www.zgap.de/index.php/mitgliedschaft/mitgliedsformular/antrag-f%C3%BCr-privatpersonen-2",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    }
+  ],
+  "skipped_links": 326,
+  "chunks": [
+    { "id": "all", "docs": ["D1", "D2", "D3", "D4", "D5", "D6", "D7", "D8", "D9"], "chars": 72297 }
+  ],
+  "outcomes": {
+    "eligibility": "stated",
+    "documents": "stated",
+    "effort": "stated",
+    "co_finance": "not_found",
+    "consortium": "not_found",
+    "after_award": "stated"
+  },
+  "written": ["eligibility", "documents", "effort", "after_award"],
+  "escalated": [],
+  "flags": [],
+  "notes": [
+    "extractor: New time-limited project applications are closed until 11 January 2027; no closing deadline is stated for the upcoming intake. D4 also requires acknowledgement of ZGAP support in project publications or presentations and generally requires unused funds to be returned within three months after the agreed project end.",
+    "source zgap-project-funding-2: added for https://www.zgap.de/files/Foerderung/ZGAP-Forderrichtlinien%202026.pdf",
+    "source zgap-project-funding-3: added for https://www.zgap.de/files/Foerderung/A_form_v16.docx"
+  ],
+  "usd": 0
+}

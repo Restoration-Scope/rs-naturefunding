@@ -1,0 +1,72 @@
+{
+  "id": "triodos-foundation-natuur-biodiversiteit",
+  "read_on": "2026-11-20",
+  "prompt_version": "req-2026-11-20.1",
+  "models": ["cursor:gpt-5.6-luna-high"],
+  "complete": false,
+  "reasons": [
+    "10 links could not be ranked without Jev",
+    "the text names a document with rules that was not read: Veelgestelde vragen",
+    "Jev did not check this reading, so an absent fact is not known to be absent"
+  ],
+  "requirements_checked": false,
+  "documents": [
+    {
+      "ref": "D1",
+      "url": "https://www.triodosfoundation.nl/aanvragen",
+      "final_url": "https://www.triodosfoundation.nl/aanvragen",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 7123,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:8a757b01dbc142324dad0af70e714f01f47b2fb89b124ba3c82352bfe610c044"
+    },
+    {
+      "ref": "D2",
+      "url": "https://www.triodosfoundation.nl/aanvragen/quickscan",
+      "final_url": "https://www.triodosfoundation.nl/aanvragen/quickscan",
+      "from": "https://www.triodosfoundation.nl/aanvragen",
+      "anchor": "Doe de verplichte quickscan",
+      "depth": 1,
+      "pdf": false,
+      "chars": 1540,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:752a4c3e5e8fcbd2ee292d00108275d088335c021fada1e14eceb2439e201273"
+    },
+    {
+      "ref": "D3",
+      "url": "https://www.triodosfoundation.nl/klachtenregeling",
+      "final_url": "https://www.triodosfoundation.nl/klachtenregeling",
+      "from": "https://www.triodosfoundation.nl/aanvragen",
+      "anchor": "Een klacht indienen",
+      "depth": 1,
+      "pdf": false,
+      "chars": 2695,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:267cfe1caef98c04d37a6c595c7233d325909abf73e3a1aa65ba8df26b6104aa"
+    }
+  ],
+  "failures": [],
+  "skipped_links": 59,
+  "chunks": [{ "id": "all", "docs": ["D1", "D2", "D3"], "chars": 11654 }],
+  "outcomes": {
+    "eligibility": "stated",
+    "documents": "not_found",
+    "effort": "stated",
+    "co_finance": "stated",
+    "consortium": "not_found",
+    "after_award": "not_found"
+  },
+  "written": ["eligibility", "effort", "co_finance"],
+  "escalated": [],
+  "flags": [],
+  "notes": [
+    "extractor: The quickscan presents co-financing from at least one other party as a condition, while the later finance criteria describe co-financing as preferred. Applications are reviewed quarterly; the page gives application windows and decision months but no years."
+  ],
+  "usd": 0
+}

@@ -1,0 +1,109 @@
+{
+  "id": "tbep-bay-mini-grants",
+  "read_on": "2026-11-20",
+  "prompt_version": "req-2026-11-20.1",
+  "models": ["cursor:gpt-5.6-luna-high"],
+  "complete": false,
+  "reasons": [
+    "33 links could not be ranked without Jev",
+    "29 links could not be ranked without Jev",
+    "24 links could not be ranked without Jev",
+    "the crawl bound left https://tbep.org/mec-category/policy-board/ unread",
+    "the text names a document with rules that was not read: Comprehensive Conservation and Management Plan for Tampa Bay (CCMP)",
+    "the text names a document with rules that was not read: Required budget template",
+    "Jev did not check this reading, so an absent fact is not known to be absent"
+  ],
+  "requirements_checked": false,
+  "documents": [
+    {
+      "ref": "D1",
+      "url": "https://tbep.org/get-involved/funding-opportunities/bay-mini-grants/",
+      "final_url": "https://tbep.org/get-involved/funding-opportunities/bay-mini-grants/",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 13237,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:85eef74242cdf180660d202f1728ac66ae48d5078541cfceb54af4bf32bcc6ff"
+    },
+    {
+      "ref": "D2",
+      "url": "https://tbep.org/about-tbep/boards-committees/policy-board/",
+      "final_url": "https://tbep.org/about-tbep/boards-committees/policy-board/",
+      "from": "https://tbep.org/get-involved/funding-opportunities/bay-mini-grants/",
+      "anchor": "Policy Board",
+      "depth": 1,
+      "pdf": false,
+      "chars": 15765,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:f45e12b3b30942747518f822d5e6d3f154d29a40d533616d23747bddf990ea56"
+    },
+    {
+      "ref": "D3",
+      "url": "https://tbep.org/our-work/restoration-research/",
+      "final_url": "https://tbep.org/our-work/restoration-research/",
+      "from": "https://tbep.org/get-involved/funding-opportunities/bay-mini-grants/",
+      "anchor": "Apply for a Grant",
+      "depth": 1,
+      "pdf": false,
+      "chars": 3462,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:d3069832c90222243069e6b544e1916d74ae798ac947c18a53fa65df25ddb194"
+    },
+    {
+      "ref": "D4",
+      "url": "https://tbep.org/privacy-policy/",
+      "final_url": "https://tbep.org/privacy-policy/",
+      "from": "https://tbep.org/get-involved/funding-opportunities/bay-mini-grants/",
+      "anchor": "Privacy",
+      "depth": 1,
+      "pdf": false,
+      "chars": 6009,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:21604d7f12bd3d5627b4c9f804bd3f86ddf251b282a736a855a9ea9e373457ab"
+    },
+    {
+      "ref": "D5",
+      "url": "https://tbep.org/events/tbep-policy-board-meeting-14/",
+      "final_url": "https://tbep.org/events/tbep-policy-board-meeting-14/",
+      "from": "https://tbep.org/about-tbep/boards-committees/policy-board/",
+      "anchor": "TBEP Policy Board Meeting",
+      "depth": 2,
+      "pdf": false,
+      "chars": 2481,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:57c60824e6c728d51a9e8ab3e330be0f216a03af28e656772ab855e90b283649"
+    }
+  ],
+  "failures": [
+    {
+      "url": "https://tbep.org/mec-category/policy-board/",
+      "from": "https://tbep.org/events/tbep-policy-board-meeting-14/",
+      "kind": "bound",
+      "message": "past the crawl depth of 2"
+    }
+  ],
+  "skipped_links": 480,
+  "chunks": [{ "id": "all", "docs": ["D1", "D2", "D3", "D4", "D5"], "chars": 41601 }],
+  "outcomes": {
+    "eligibility": "stated",
+    "documents": "stated",
+    "effort": "stated",
+    "co_finance": "stated",
+    "consortium": "not_found",
+    "after_award": "stated"
+  },
+  "written": ["eligibility", "documents", "effort", "co_finance", "after_award"],
+  "escalated": [],
+  "flags": [],
+  "notes": [
+    "extractor: The detailed timeline gives a September 16, 2026 deadline for the 2027 grants, while the next application period is only dated summer to fall 2027."
+  ],
+  "usd": 0
+}

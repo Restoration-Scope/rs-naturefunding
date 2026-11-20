@@ -1,0 +1,132 @@
+{
+  "id": "psc-southern-fund",
+  "read_on": "2026-11-20",
+  "prompt_version": "req-2026-11-20.1",
+  "models": ["cursor:gpt-5.6-luna-high", "cursor:gpt-5.6-sol-high"],
+  "complete": false,
+  "reasons": [
+    "18 links could not be ranked without Jev",
+    "19 links could not be ranked without Jev",
+    "the text names a document with rules that was not read: Project Concept application",
+    "the text names a document with rules that was not read: Detailed Proposal application",
+    "the text names a document with rules that was not read: Fund's Contribution Agreements",
+    "Jev did not check this reading, so an absent fact is not known to be absent",
+    "strong reading: the text names a document with rules that was not read: Project Concept application",
+    "strong reading: the text names a document with rules that was not read: Detailed Proposal application"
+  ],
+  "requirements_checked": false,
+  "documents": [
+    {
+      "ref": "D1",
+      "url": "https://www.psc.org/news-announcements/southern-fund-issues-their-2027-call-for-proposals/",
+      "final_url": "https://www.psc.org/news-announcements/southern-fund-issues-their-2027-call-for-proposals/",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 3281,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:b7b03e3047bdf05797188ceca153007d6000506ec587c3e61d788c6f52e9be29"
+    },
+    {
+      "ref": "D2",
+      "url": "https://www.psc.org/about-us/history-purpose/faqs/",
+      "final_url": "https://www.psc.org/about-us/history-purpose/faqs/",
+      "from": "https://www.psc.org/news-announcements/southern-fund-issues-their-2027-call-for-proposals/",
+      "anchor": "FAQs",
+      "depth": 1,
+      "pdf": false,
+      "chars": 3555,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:82dcbf31d47509cc8422631b53fdf8669b4587175c1c83b1b45b7e91ae31da2a"
+    },
+    {
+      "ref": "D3",
+      "url": "https://www.psc.org/download/728/2027/19753/sf-2027-call-for-project-concepts.pdf",
+      "final_url": "https://www.psc.org/download/728/2027/19753/sf-2027-call-for-project-concepts.pdf",
+      "from": "https://www.psc.org/news-announcements/southern-fund-issues-their-2027-call-for-proposals/",
+      "anchor": "SF 2027 Call for Project Concepts",
+      "depth": 1,
+      "pdf": true,
+      "chars": 27433,
+      "pages": 14,
+      "low_text": false,
+      "hash": "sha256:5444b59fbfbd226e304d4dad2b183c09ab174223ee2fd14dbbded6d01b3112fa"
+    },
+    {
+      "ref": "D4",
+      "url": "https://www.psc.org/download/728/2027/19754/strategic-plan-of-the-southern-fund-committee-2.pdf",
+      "final_url": "https://www.psc.org/download/728/2027/19754/strategic-plan-of-the-southern-fund-committee-2.pdf",
+      "from": "https://www.psc.org/news-announcements/southern-fund-issues-their-2027-call-for-proposals/",
+      "anchor": "Strategic Plan of the Southern Fund Committee",
+      "depth": 1,
+      "pdf": true,
+      "chars": 29284,
+      "pages": 14,
+      "low_text": false,
+      "hash": "sha256:84be803c518cce16022cbdbe63b3c5f71c70368ab3a0dda3b6e37db29c0698d8"
+    },
+    {
+      "ref": "D5",
+      "url": "https://www.psc.org/download/728/2027/20119/sf-2027-guidelines-to-stage-two-detailed-proposals.pdf",
+      "final_url": "https://www.psc.org/download/728/2027/20119/sf-2027-guidelines-to-stage-two-detailed-proposals.pdf",
+      "from": "https://www.psc.org/news-announcements/southern-fund-issues-their-2027-call-for-proposals/",
+      "anchor": "SF 2027 Guidelines to Stage Two Detailed Proposals",
+      "depth": 1,
+      "pdf": true,
+      "chars": 7393,
+      "pages": 4,
+      "low_text": false,
+      "hash": "sha256:0054a799c145c2514214b16298c881c3c7400d9f073221515b0796282a003d38"
+    },
+    {
+      "ref": "D6",
+      "url": "https://www.psc.org/privacy-policy/",
+      "final_url": "https://www.psc.org/privacy-policy/",
+      "from": "https://www.psc.org/news-announcements/southern-fund-issues-their-2027-call-for-proposals/",
+      "anchor": "Privacy Policy",
+      "depth": 1,
+      "pdf": false,
+      "chars": 4782,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:1028a2daec3e8d9f03309c78aee0f1b44bbb16fc718a8014a18b7a9417a76470"
+    },
+    {
+      "ref": "D7",
+      "url": "https://www.psc.org/terms-conditions/",
+      "final_url": "https://www.psc.org/terms-conditions/",
+      "from": "https://www.psc.org/news-announcements/southern-fund-issues-their-2027-call-for-proposals/",
+      "anchor": "Terms & Disclaimers",
+      "depth": 1,
+      "pdf": false,
+      "chars": 6748,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:bb8557d3abbd4180a386bfc0581e7f896dc0d34fd92c67df067cf8384b6286a3"
+    }
+  ],
+  "failures": [],
+  "skipped_links": 213,
+  "chunks": [{ "id": "all", "docs": ["D1", "D2", "D3", "D4", "D5", "D6", "D7"], "chars": 83701 }],
+  "outcomes": {
+    "eligibility": "stated",
+    "documents": "not_found",
+    "effort": "stated",
+    "co_finance": "not_found",
+    "consortium": "not_found",
+    "after_award": "stated"
+  },
+  "written": ["eligibility", "effort", "after_award"],
+  "escalated": ["eligibility"],
+  "flags": [],
+  "notes": [
+    "extractor: The 2027 concept deadline is closed. D1 says applications for 2028 will open in June 2027, but gives no 2028 deadline. D5 concerns Stage Two and invited proponents only. The geographic limitation is softened as “unlikely,” so it was not treated as a hard eligibility rule.",
+    "strong: Applications for 2028 will open in June 2027; the available eligibility rules are for 2027.",
+    "source psc-southern-fund-2: added for https://www.psc.org/download/728/2027/19753/sf-2027-call-for-project-concepts.pdf",
+    "source psc-southern-fund-3: added for https://www.psc.org/download/728/2027/19754/strategic-plan-of-the-southern-fund-committee-2.pdf"
+  ],
+  "usd": 0
+}

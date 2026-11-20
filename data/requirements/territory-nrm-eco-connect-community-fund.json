@@ -1,0 +1,65 @@
+{
+  "id": "territory-nrm-eco-connect-community-fund",
+  "read_on": "2026-11-20",
+  "prompt_version": "req-2026-11-20.1",
+  "models": ["cursor:gpt-5.6-luna-high"],
+  "complete": false,
+  "reasons": [
+    "3 links could not be ranked without Jev",
+    "https://da28f051-637e-4b97-a84d-ab7614d10758.usrfiles.com/ugd/da28f0_5b2ba73ee98946709597eb5524b6c9d3.pdf: a document on another site: without Jev it can’t be confirmed as the funder’s, so it is not used",
+    "the text names a document with rules that was not read: Guidelines",
+    "Jev did not check this reading, so an absent fact is not known to be absent"
+  ],
+  "requirements_checked": false,
+  "documents": [
+    {
+      "ref": "D1",
+      "url": "https://www.territorynrm.org.au/ecoconnect-community-fund",
+      "final_url": "https://www.territorynrm.org.au/ecoconnect-community-fund",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 3133,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:d3077658e39d3fb690db20b4ad23a98bb1d85023ec1bd370d58382b7400d98f4"
+    },
+    {
+      "ref": "D2",
+      "url": "https://www.territorynrm.org.au/events",
+      "final_url": "https://www.territorynrm.org.au/events",
+      "from": "https://www.territorynrm.org.au/ecoconnect-community-fund",
+      "anchor": "DOWNLOAD APPLICATION FORM",
+      "depth": 1,
+      "pdf": false,
+      "chars": 1586,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:a46072432d2d4c6167c236511d21c7cd139f27f5da40aa8daf9e6df3bb8eead2"
+    }
+  ],
+  "failures": [
+    {
+      "url": "https://da28f051-637e-4b97-a84d-ab7614d10758.usrfiles.com/ugd/da28f0_5b2ba73ee98946709597eb5524b6c9d3.pdf",
+      "from": "https://www.territorynrm.org.au/ecoconnect-community-fund",
+      "kind": "offsite",
+      "message": "a document on another site: without Jev it can’t be confirmed as the funder’s, so it is not used"
+    }
+  ],
+  "skipped_links": 68,
+  "chunks": [{ "id": "all", "docs": ["D1", "D2"], "chars": 4912 }],
+  "outcomes": {
+    "eligibility": "not_found",
+    "documents": "not_found",
+    "effort": "stated",
+    "co_finance": "not_found",
+    "consortium": "not_found",
+    "after_award": "not_found"
+  },
+  "written": ["effort"],
+  "escalated": [],
+  "flags": [],
+  "notes": [],
+  "usd": 0
+}

@@ -1,0 +1,122 @@
+{
+  "id": "sophie-danforth-conservation-biology-fund",
+  "read_on": "2026-11-20",
+  "prompt_version": "req-2026-11-20.1",
+  "models": ["cursor:gpt-5.6-luna-high"],
+  "complete": false,
+  "reasons": [
+    "14 links could not be ranked without Jev",
+    "15 links could not be ranked without Jev",
+    "https://www.rwpzoo.org/wp-content/uploads/2022/09/Reciprocity-Benefits-2021.pdf would not open (http: HTTP 404)",
+    "https://www.irs.gov/pub/irs-pdf/fw9.pdf: a document on another site: without Jev it can’t be confirmed as the funder’s, so it is not used",
+    "https://www.irs.gov/pub/irs-pdf/fw8bene.pdf: a document on another site: without Jev it can’t be confirmed as the funder’s, so it is not used",
+    "Jev did not check this reading, so an absent fact is not known to be absent"
+  ],
+  "requirements_checked": false,
+  "documents": [
+    {
+      "ref": "D1",
+      "url": "https://www.rwpzoo.org/danforth-conservation-grants/",
+      "final_url": "https://www.rwpzoo.org/danforth-conservation-grants/",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 26995,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:838c042c69791626b9dec69678a241486d8ade784ead49a732d2665f3377fc16"
+    },
+    {
+      "ref": "D2",
+      "url": "https://www.rwpzoo.org/visit/zoo-faqs/",
+      "final_url": "https://www.rwpzoo.org/visit/zoo-faqs/",
+      "from": "https://www.rwpzoo.org/danforth-conservation-grants/",
+      "anchor": "FAQs",
+      "depth": 1,
+      "pdf": false,
+      "chars": 14793,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:c7854001039d75eca25cc4a66c7b292331af17fb3e553fb9fbed8855ae1da5e8"
+    },
+    {
+      "ref": "D3",
+      "url": "https://www.rwpzoo.org/wp-content/uploads/2026/09/SDCBF-Grant-Application-2027.docx",
+      "final_url": "https://www.rwpzoo.org/wp-content/uploads/2026/09/SDCBF-Grant-Application-2027.docx",
+      "from": "https://www.rwpzoo.org/danforth-conservation-grants/",
+      "anchor": "SDCBF Grant Application 2027",
+      "depth": 1,
+      "pdf": false,
+      "chars": 2870,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:a24e2237d219a4b2730bc28e91b0f77bc92c7fa138af8671dcfbbbd35a5d23aa"
+    },
+    {
+      "ref": "D4",
+      "url": "https://www.rwpzoo.org/wp-content/uploads/2026/09/SDCBF-Guidelines-Eligibility.pdf",
+      "final_url": "https://www.rwpzoo.org/wp-content/uploads/2026/09/SDCBF-Guidelines-Eligibility.pdf",
+      "from": "https://www.rwpzoo.org/danforth-conservation-grants/",
+      "anchor": "SDCBF Guidelines and Eligibility 2027",
+      "depth": 1,
+      "pdf": true,
+      "chars": 3670,
+      "pages": 2,
+      "low_text": false,
+      "hash": "sha256:533f7df4f63cee041a62cf137a321afa1d6a57d509e7820c87a26cebec4f3853"
+    },
+    {
+      "ref": "D5",
+      "url": "https://www.rwpzoo.org/privacy-policy/",
+      "final_url": "https://www.rwpzoo.org/privacy-policy/",
+      "from": "https://www.rwpzoo.org/danforth-conservation-grants/",
+      "anchor": "Privacy Policy",
+      "depth": 1,
+      "pdf": false,
+      "chars": 8200,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:9b86ac6032a0d889e54475cd84c6eb013150db47caf7470cbcf1d50a1a7f0ffc"
+    }
+  ],
+  "failures": [
+    {
+      "url": "https://www.rwpzoo.org/wp-content/uploads/2022/09/Reciprocity-Benefits-2021.pdf",
+      "from": "https://www.rwpzoo.org/visit/zoo-faqs/",
+      "kind": "http",
+      "message": "HTTP 404"
+    },
+    {
+      "url": "https://www.irs.gov/pub/irs-pdf/fw9.pdf",
+      "from": "https://www.rwpzoo.org/danforth-conservation-grants/",
+      "kind": "offsite",
+      "message": "a document on another site: without Jev it can’t be confirmed as the funder’s, so it is not used"
+    },
+    {
+      "url": "https://www.irs.gov/pub/irs-pdf/fw8bene.pdf",
+      "from": "https://www.rwpzoo.org/danforth-conservation-grants/",
+      "kind": "offsite",
+      "message": "a document on another site: without Jev it can’t be confirmed as the funder’s, so it is not used"
+    }
+  ],
+  "skipped_links": 138,
+  "chunks": [{ "id": "all", "docs": ["D1", "D2", "D3", "D4", "D5"], "chars": 57160 }],
+  "outcomes": {
+    "eligibility": "stated",
+    "documents": "stated",
+    "effort": "stated",
+    "co_finance": "not_found",
+    "consortium": "not_found",
+    "after_award": "stated"
+  },
+  "written": ["eligibility", "documents", "effort", "after_award"],
+  "escalated": [],
+  "flags": [],
+  "notes": [
+    "extractor: Award notification is April 15, 2027. Funding is distributed within 60 days of award notification after required documentation. International awardees may need phone-based financial verification before payment. Partial funding may be considered under the stated conditions.",
+    "source sophie-danforth-conservation-biology-fund-2: added for https://www.rwpzoo.org/wp-content/uploads/2026/09/SDCBF-Guidelines-Eligibility.pdf",
+    "source sophie-danforth-conservation-biology-fund-3: added for https://www.rwpzoo.org/wp-content/uploads/2026/09/SDCBF-Grant-Application-2027.docx"
+  ],
+  "usd": 0
+}
