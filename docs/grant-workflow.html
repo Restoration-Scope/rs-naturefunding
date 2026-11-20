@@ -183,7 +183,7 @@
          Mermaid goes inside <script type="text/plain" class="mermaid"> as is: no HTML escaping. -->
     <section id="find">
       <h2>1a. From tip to listing: finding leads</h2>
-      <p>Two jobs in <code>refresh.yml</code> raise leads; none becomes a listing by itself. No model is called here: the EU and grants.gov searches are keyword APIs and Exa is a search engine. Triage has no script yet. Green: code that decides. Blue: an outside API or model is called. Amber: a person or agent decides. Red: left out. Purple: a file or record. Solid arrows: flow and writes; dotted: reads; two heads: reads and writes.</p>
+      <p>Two jobs in <code>refresh.yml</code> raise leads; none becomes a listing by itself. No model is called here: the EU and grants.gov searches are keyword APIs and Exa is a search engine. Triage has no script yet: the open <code>discovery</code> issues wait for an agent session or Bernat. Functions: <code>isNbsEuTopic</code>, <code>isNbsUsOpportunity</code>, <code>organisationLead</code>, <code>newCandidates</code> and <code>fileDiscoveryIssue</code> in <code>scripts/refresh/discover.ts</code>; <code>newLeads</code> in <code>scripts/refresh/discover-web.ts</code>. Green: code that decides. Blue: an outside API or model is called. Amber: a person or agent decides. Red: left out. Purple: a file or record. Solid arrows: flow and writes; dotted: reads; two heads: reads and writes.</p>
       <script type="text/plain" class="mermaid">
 flowchart TB
   EU["fa:fa-landmark EU Funding & Tenders API<br/>daily 05:17 UTC, discover.ts<br/>out: topics, deadlines"]
@@ -197,10 +197,10 @@ flowchart TB
   DATA[("data/programmes<br/>data/sources.json")]
   DISC[("data/checks/discovered.json<br/>keys eu:, us:, web:")]
   ISS[("GitHub issue<br/>label discovery")]
-  TRI["fa:fa-user Triage, no script<br/>agent session or Bernat<br/>docs/triage-criteria.md"]
+  TRI["fa:fa-user Triage, no script yet<br/>an agent session or Bernat<br/>reads each issue against<br/>docs/triage-criteria.md"]
   REJ["fa:fa-x Reject<br/>farmer payments, students,<br/>agencies only, not nature"]
   HOLD["fa:fa-pause Hold for Bernat<br/>details only off the<br/>funder’s site, or unclear"]
-  ACC["fa:fa-arrow-right Accept: 1b"]
+  ACC["fa:fa-arrow-right Accept<br/>write the listing, 1b"]
   EU --> EUF --> NC
   US --> USF --> NC
   EXA --> NL
@@ -211,7 +211,7 @@ flowchart TB
   TRI --> REJ & HOLD & ACC
   class EUF,USF,NL,NC good
   class EU,US,EXA,DIR info
-  class TRI,HOLD warn
+  class TRI,HOLD,ACC warn
   class REJ bad
   class DATA,DISC,ISS store
       </script>
@@ -219,17 +219,17 @@ flowchart TB
 
     <section id="list">
       <h2>1b. From tip to listing: adding a listing</h2>
-      <p>An agent writes the file from the funder’s own page; every gate after that is code. There is no CI on pull requests, so the agent runs <code>bun test</code>, <code>check</code> and <code>build</code> before it commits. Colours and arrows as in 1a.</p>
+      <p>An agent writes the file from the funder’s own page; every gate after that is code. There is no CI on pull requests, so the agent runs <code>bun test</code>, <code>check</code> and <code>build</code> before it commits. Functions: <code>checkData</code> in <code>src/data/load.ts</code>; <code>statesYear</code> and <code>statesDate</code> in <code>src/data/schema.ts</code>; <code>deadlinePassed</code> in <code>scripts/refresh/deadline.ts</code>; <code>fetchPage</code> in <code>scripts/data/page-text.ts</code>; <code>quoteOnPage</code> in <code>src/data/text.ts</code>. <code>{id}</code> is the programme id. Colours and arrows as in 1a.</p>
       <script type="text/plain" class="mermaid">
 flowchart TB
   WR["fa:fa-pen-line Agent writes the listing<br/>quotes copied from page-text.ts"]
-  PROG[("data/programmes/id.json<br/>per fact: source_url, quote,<br/>checked_at, method")]
+  PROG[("data/programmes/{id}.json<br/>per fact: source_url, quote,<br/>checked_at, method")]
   SS["fa:fa-list-plus sync-sources.ts<br/>a source per cited URL"]
   SRC[("data/sources.json<br/>url, selector, cycle")]
   VAL["fa:fa-shield-check validate.ts: checkData<br/>zod schema, statesYear, statesDate,<br/>deadlinePassed; every URL watched"]
   VQ["fa:fa-quote verify-quotes.ts<br/>fetchPage, quoteOnPage per quote"]
   MERGE["fa:fa-git-merge Pull request to main<br/>agent or Bernat merges;<br/>deploy.yml publishes, 1d"]
-  RQ["fa:fa-file-search Requirements, diagram 2<br/>manifest: data/requirements/id.json"]
+  RQ[("fa:fa-file-search Requirements, diagram 2<br/>manifest: data/requirements/{id}.json")]
   WR -->|writes| PROG
   PROG -.-> SS
   SS -->|writes| SRC
@@ -240,22 +240,22 @@ flowchart TB
   PROG -.-> RQ
   class SS,VAL,VQ good
   class WR,MERGE warn
-  class PROG,SRC store
+  class PROG,SRC,RQ store
       </script>
     </section>
 
     <section id="refresh">
       <h2>1c. Keeping listings current: the daily read</h2>
-      <p><code>scripts/refresh/run.ts</code>, the “Read pages” step of <code>refresh.yml</code>, daily at 05:17 UTC. Tier A is code only and lands on main. Tier B goes to two models from different families on Cloudflare Workers AI and becomes a pull request (1d). Colours and arrows as in 1a.</p>
+      <p><code>scripts/refresh/run.ts</code>, the “Read pages” step of <code>refresh.yml</code>, daily at 05:17 UTC. Tier A is code only and lands on main. Tier B goes to two models from different families on Cloudflare Workers AI and becomes a pull request (1d). Jev is not called anywhere in section 1; it checks requirements in section 2. Functions: <code>isDue</code> and <code>programmeChecks</code> in <code>state.ts</code>; <code>readPages</code> in <code>fetch.ts</code>; <code>classify</code> and <code>applyTierA</code> in <code>tier.ts</code> (with <code>quoteOnPage</code> from <code>src/data/text.ts</code> and <code>deadlinePassed</code> from <code>deadline.ts</code>); <code>extractAndReview</code> and <code>applyExtraction</code> in <code>tier-b.ts</code>, models called through <code>llm.ts</code>; all under <code>scripts/refresh/</code>. <code>{source-id}</code> is the id in <code>data/sources.json</code>. Colours and arrows as in 1a.</p>
       <script type="text/plain" class="mermaid">
 flowchart TB
   SRC[("data/sources.json<br/>cycle per source")]
   CST[("data/checks/sources.json<br/>last_ok, last_hash, last_error")]
   RD["fa:fa-download isDue, readPages<br/>state.ts, fetch.ts: robots.txt,<br/>4 s per host, text + sha256"]
-  ACC[("data/checks/accepted/source.json<br/>hash of the accepted page")]
+  ACC[("data/checks/accepted/{source-id}.json<br/>hash of the accepted page")]
   CL["fa:fa-split classify, tier.ts<br/>same hash? every quote<br/>still on the page? same site?"]
   TA["fa:fa-check applyTierA, tier.ts<br/>facts dated today; calls past<br/>deadlinePassed close"]
-  PROG[("data/programmes/id.json")]
+  PROG[("data/programmes/{id}.json")]
   WS["fa:fa-save writeState, run.ts<br/>nextState, programmeChecks"]
   PCH[("data/checks/programmes.json<br/>“not re-checked since”")]
   RUNJ[("data/checks/run.json<br/>served as /health.json")]
@@ -263,7 +263,7 @@ flowchart TB
   EX["fa:fa-bot Extractor: gpt-oss-120b<br/>in: facts, page text<br/>out: facts, each with a quote"]
   AP["fa:fa-shield-check applyExtraction, tier-b.ts<br/>zod schema, LIMITS, quoteOnPage"]
   RV["fa:fa-bot Reviewer: llama-4-scout-17b<br/>in: draft, page text<br/>out: verdicts, overall, missed"]
-  DRAFT[(".cache/refresh-drafts/source.json<br/>not committed")]
+  DRAFT[(".cache/refresh-drafts/{source-id}.json<br/>not committed")]
   SRC & CST -.-> RD
   RD --> CL
   RD -->|failed read| WS
@@ -282,7 +282,7 @@ flowchart TB
 
     <section id="land">
       <h2>1d. Keeping listings current: landing and publishing</h2>
-      <p>The rest of <code>refresh.yml</code>, its Monday 06:43 UTC weekly mode, and <code>deploy.yml</code>. Tier A commits go straight to main; every changed fact waits for a person on a pull request. Colours and arrows as in 1a.</p>
+      <p>The rest of <code>refresh.yml</code>, its Monday 06:43 UTC weekly mode, and <code>deploy.yml</code>. Tier A commits go straight to main; every changed fact waits on a pull request. No refresh pull request has been merged so far: an agent session or Bernat checks them against the page and lands the good changes in batches on main, and the rest are closed as superseded. An open decision (20 Nov 2026) would commit clean drafts directly. <code>checkLink</code> is in <code>weekly.ts</code>; the commit step is in <code>refresh.yml</code>; <code>deploy.yml</code> runs hourly at :11. Colours and arrows as in 1a.</p>
       <script type="text/plain" class="mermaid">
 flowchart TB
   STATE[("data/ from run.ts<br/>and discovery")]
@@ -294,11 +294,11 @@ flowchart TB
   COMMIT["fa:fa-git-commit Commit step<br/>git add data/, rebase,<br/>valid_or_upstream, push"]
   DRAFT[(".cache/refresh-drafts")]
   OP["fa:fa-git-pull-request open-prs.ts<br/>a PR per draft; same<br/>refresh-key kept, old closed"]
-  PRR[("Tier B pull request<br/>labels refresh, reviewer:verdict<br/>fact, was, now, quote")]
+  PRR[("Tier B pull request<br/>changes programmes/{id}.json and<br/>checks/accepted/{source-id}.json;<br/>labels refresh, reviewer:verdict")]
   ISSR[("GitHub issue, label refresh<br/>draft had no files")]
-  REV["fa:fa-user Bernat reviews<br/>checks each quote, merges;<br/>auto-merge off"]
+  REV["fa:fa-user Agent session or Bernat<br/>checks each quote; merging<br/>accepts the page hash;<br/>auto-merge off, none merged yet"]
   DISP["fa:fa-play gh workflow run deploy.yml"]
-  DEP["fa:fa-rocket deploy.yml: push, hourly, dispatch<br/>validate, astro build, wrangler deploy<br/>→ naturefunding.org, digest Worker"]
+  DEP["fa:fa-rocket deploy.yml: push, hourly :11, dispatch<br/>validate, astro build, wrangler deploy<br/>→ naturefunding.org, digest Worker"]
   READS[("build reads programmes,<br/>rates, checks/programmes.json,<br/>checks/run.json")]
   SR -->|writes| RATES
   WK -->|writes| LINKS
@@ -309,7 +309,7 @@ flowchart TB
   DRAFT -.-> OP
   OP --> PRR --> REV
   OP --> ISSR
-  REV -->|"merge to main"| DEP
+  REV -->|"merge, or batch commit"| DEP
   READS -.-> DEP
   class SR info
   class COMMIT,OP,DISP,WK,DEP good
@@ -334,7 +334,7 @@ flowchart TB
   S -->|fixed| VE
   S -->|unresolved| P["fa:fa-user Agent or Bernat<br/>browser, OCR, blocked pages"]
   C -->|clean| W
-  W["fa:fa-file-json 7 Write<br/>facts + coverage in data/requirements"] --> LA
+  W["fa:fa-file-json 7 Write<br/>facts into data/programmes,<br/>coverage in data/requirements"] --> LA
   LA["fa:fa-git-pull-request 8 Land<br/>cross-family fact review per batch"] --> B
   B["fa:fa-gauge Effort bars, computed at build<br/>no model picks a colour"]
   class Q,G,VE,B good
