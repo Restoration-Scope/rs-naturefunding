@@ -2,6 +2,7 @@
 
 What a visitor to naturefunding.org can see or do that they couldn't before, newest first. One line per merged change, added in the same PR (AGENTS.md). The naturefunding.org LinkedIn Page drafts its update posts from this list. Emails count once `DIGEST_SENDING` is `live`.
 
+- 2026-11-20 · Japanese prefecture grants written in era dates (令和9年1月30日) show their deadline and close on time, and calls in time zones like CEST or Indochina Time close at the funder's hour instead of hours early · https://naturefunding.org/p/yamanashi-invasive-species-control-subsidy/ · #851
 - 2026-11-20 · A programme whose funder page changed keeps showing today's checked date on every fact still quoted word for word on that page, instead of waiting days for a review · https://naturefunding.org/p/1000-moore/ · #844
 - 2026-11-20 · 30 more programmes show Before you apply (NFWF Klamath Basin, Longleaf Landscape Stewardship, Five Star and Urban Waters, Acres for America and more), each fact in the funder's words and checked by a second reader · https://naturefunding.org/programmes/nfwf-klamath-basin/#before-title · #843
 - 2026-11-20 · 23 more programmes show Before you apply (IUCN BEST, Keidanren Nature Conservation Fund, US Forest Service Landscape Scale Restoration, Fundación Unicaja and more), each fact in the funder's words and checked by a second reader · https://naturefunding.org/programmes/iucn-best/#before-title · #842
