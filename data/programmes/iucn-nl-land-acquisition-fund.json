@@ -9,11 +9,22 @@
   "parent": null,
   "url": "https://www.iucn.nl/en/news/call-for-proposals-for-ngos-and-csos-protecting-nature-under-threat/",
   "summary": "Fund for locally registered conservation NGOs and civil society organisations in Africa, Asia, Latin America and the Pacific to buy or lease land and set up other area-based protection that secures habitat for threatened species. Grant size is set in the applicant guidelines.",
-  "approaches": ["protected_areas", "species_conservation", "community_conservation"],
-  "applicant_types": ["ngo"],
+  "approaches": [
+    "protected_areas",
+    "species_conservation",
+    "community_conservation"
+  ],
+  "applicant_types": [
+    "ngo"
+  ],
   "geography": {
     "scope": "regions",
-    "regions": ["africa", "asia", "latin_america_caribbean", "oceania"],
+    "regions": [
+      "africa",
+      "asia",
+      "latin_america_caribbean",
+      "oceania"
+    ],
     "label": "Africa, Asia, Latin America and the Pacific"
   },
   "access": "direct",
@@ -21,6 +32,31 @@
   "amount": null,
   "co_finance_required": null,
   "reporting": null,
+  "eligibility": [
+    {
+      "rule": "Locally registered as a non-profit NGO or CSO in an eligible region",
+      "kind": "legal"
+    },
+    {
+      "rule": "Directly responsible for preparing and implementing the grant project",
+      "kind": "project"
+    },
+    {
+      "rule": "Have a qualifying organisational bank account",
+      "kind": "capacity"
+    },
+    {
+      "rule": "Have proven conservation-area management experience and capacity",
+      "kind": "capacity"
+    },
+    {
+      "rule": "Not an individual, commercial/government organisation, or project in agriculture, education, rescue or rehabilitation",
+      "kind": "project"
+    }
+  ],
+  "documents": [
+    "Map(s) of the project area within the wider landscape"
+  ],
   "calls": [
     {
       "id": "2026-round",
@@ -28,7 +64,10 @@
       "url": "https://www.iucn.nl/en/news/call-for-proposals-for-ngos-and-csos-protecting-nature-under-threat/",
       "status": "closed",
       "opens": null,
-      "deadline": { "date": "2026-05-01", "text": "Friday, 1 May, 2026" },
+      "deadline": {
+        "date": "2026-05-01",
+        "text": "Friday, 1 May, 2026"
+      },
       "evidence": {
         "status": {
           "source_url": "https://www.iucn.nl/en/news/call-for-proposals-for-ngos-and-csos-protecting-nature-under-threat/",
@@ -69,7 +108,71 @@
       "quote": "The deadline for applications is Friday, 1 May, 2026.",
       "checked_at": "2026-11-09",
       "method": "page"
-    }
+    },
+    "eligibility": [
+      {
+        "source_url": "https://www.iucn.nl/en/news/call-for-proposals-for-ngos-and-csos-protecting-nature-under-threat/",
+        "quote": "be locally registered as a non-profit organisation, non-governmental organisation (NGOs) or civil society organisation (CSOs) in Africa, Asia, Latin America, or the Pacific",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.iucn.nl/en/news/call-for-proposals-for-ngos-and-csos-protecting-nature-under-threat/",
+        "quote": "be directly responsible for the preparation and implementation of the grant project",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.iucn.nl/en/news/call-for-proposals-for-ngos-and-csos-protecting-nature-under-threat/",
+        "quote": "have a bank account in the name of the organisation and in the place where the organisation is established or where the project is carried out",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.iucn.nl/en/news/call-for-proposals-for-ngos-and-csos-protecting-nature-under-threat/",
+        "quote": "have proven experience and capacity in managing conservation areas, including project management, financial management, and financial control",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.iucn.nl/en/news/call-for-proposals-for-ngos-and-csos-protecting-nature-under-threat/",
+        "quote": "private individuals; commercial (for profit) organisations; governmental institutions; and projects or organisations with a primary focus on sustainable agricultural systems, education, rescue, or rehabilitation centres",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "documents": [
+      {
+        "source_url": "https://www.iucn.nl/app/uploads/2026/01/LAF-pre-proposal-format-2026.docx",
+        "quote": "Map(s) of the project area - map(s) should also show the project area within the wider landscape and highlight any other areas that enjoy some form of (legal) protection, indigenous territories, community lands, or sustainably certified forestry concessions",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "effort": [
+      {
+        "source_url": "https://www.iucn.nl/en/news/call-for-proposals-for-ngos-and-csos-protecting-nature-under-threat/",
+        "quote": "The deadline for applications is Friday, 1 May, 2026.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.iucn.nl/app/uploads/2026/01/IUCN-NL-Land-Acquisition-Fund_Criteria-2026.pdf",
+        "quote": "a limited number of applicants will be invited to submit a full proposal.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ]
   },
-  "checked_at": "2026-11-09"
+  "checked_at": "2026-11-09",
+  "effort": {
+    "steps": [
+      "Pre-proposal of up to 4 pages, by email",
+      "Full proposal, if invited"
+    ],
+    "due": [
+      "2026-05-01",
+      null
+    ]
+  }
 }

@@ -1,0 +1,110 @@
+{
+  "id": "gef-sgp-malawi",
+  "read_on": "2026-11-20",
+  "prompt_version": "req-2026-11-20.1",
+  "models": ["cursor:gpt-5.6-luna-high"],
+  "complete": false,
+  "reasons": [
+    "22 links could not be ranked without Jev",
+    "30 links could not be ranked without Jev",
+    "https://sgp.undp.org/all-documents/country-documents/2349-op8-sgp-malawi-country-programme-strategy/file.html: pages 1, 37 are images: needs OCR",
+    "the text names a document with rules that was not read: Current Call for Concepts/Proposals",
+    "the text names a document with rules that was not read: SGP areas of work section",
+    "Jev did not check this reading, so an absent fact is not known to be absent"
+  ],
+  "requirements_checked": false,
+  "documents": [
+    {
+      "ref": "D1",
+      "url": "https://sgp.undp.org/all-documents/country-documents/2349-op8-sgp-malawi-country-programme-strategy/file.html",
+      "final_url": "https://sgp.undp.org/all-documents/country-documents/2349-op8-sgp-malawi-country-programme-strategy/file.html",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": true,
+      "chars": 88754,
+      "pages": 37,
+      "low_text": false,
+      "hash": "sha256:77f4119743cd4998ec9ebadef5235a816350d5dedda2c00722df820a71d8221e"
+    },
+    {
+      "ref": "D2",
+      "url": "https://sgp.undp.org/index.php?option=com_countrypages&view=countrypage&country=70&Itemid=271",
+      "final_url": "https://sgp.undp.org/index.php?option=com_countrypages&view=countrypage&country=70&Itemid=271",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 3688,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:b7aa29ef6aa817d90beccf301aacb65284586581bdfc3ed15b4bf9da4d5cb31a"
+    },
+    {
+      "ref": "D3",
+      "url": "https://sgp.undp.org/about-us-157/how-to-apply.html",
+      "final_url": "https://sgp.undp.org/about-us-157/how-to-apply.html",
+      "from": "https://sgp.undp.org/index.php?option=com_countrypages&view=countrypage&country=70&Itemid=271",
+      "anchor": "How to Apply",
+      "depth": 1,
+      "pdf": false,
+      "chars": 5048,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:e46ccd1f34935003920cc55fa9037756e1b7f3841919036ddc06ce5b2d569021"
+    },
+    {
+      "ref": "D4",
+      "url": "https://sgp.undp.org/about-us-157/grant-eligibility.html",
+      "final_url": "https://sgp.undp.org/about-us-157/grant-eligibility.html",
+      "from": "https://sgp.undp.org/index.php?option=com_countrypages&view=countrypage&country=70&Itemid=271",
+      "anchor": "Grant Eligibility",
+      "depth": 1,
+      "pdf": false,
+      "chars": 3373,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:c952265d24c3eaf071df1dbe0c0499b8ad3a07c4756557689de4fa2c41d524d0"
+    },
+    {
+      "ref": "D5",
+      "url": "https://sgp.undp.org/our-approach-153/policy-impact.html",
+      "final_url": "https://sgp.undp.org/our-approach-153/policy-impact.html",
+      "from": "https://sgp.undp.org/index.php?option=com_countrypages&view=countrypage&country=70&Itemid=271",
+      "anchor": "Policy Impact",
+      "depth": 1,
+      "pdf": false,
+      "chars": 6102,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:54200e16b93a9e234773742649bca616313a42fc9251e5674f2f2735a0dd063d"
+    }
+  ],
+  "failures": [
+    {
+      "url": "https://sgp.undp.org/all-documents/country-documents/2349-op8-sgp-malawi-country-programme-strategy/file.html",
+      "from": null,
+      "kind": "low_text",
+      "message": "pages 1, 37 are images: needs OCR"
+    }
+  ],
+  "skipped_links": 336,
+  "chunks": [{ "id": "all", "docs": ["D1", "D2", "D3", "D4", "D5"], "chars": 107727 }],
+  "outcomes": {
+    "eligibility": "stated",
+    "documents": "stated",
+    "effort": "stated",
+    "co_finance": "not_found",
+    "consortium": "not_found",
+    "after_award": "stated"
+  },
+  "written": ["eligibility", "documents", "effort", "after_award"],
+  "escalated": [],
+  "flags": [],
+  "notes": [
+    "extractor: D1 is the OP8 strategy for 2026–2028. D3 is generic SGP guidance and states a US$75,000 maximum, while D1 states grants of up to US$50,000 for Malawi.",
+    "source gef-sgp-malawi-3: added for https://sgp.undp.org/about-us-157/how-to-apply.html",
+    "source gef-sgp-malawi-2: selector main dropped, a new quote sits outside it"
+  ],
+  "usd": 0
+}

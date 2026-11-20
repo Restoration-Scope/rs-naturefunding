@@ -1,0 +1,47 @@
+{
+  "id": "giessen-natur-landschaftsschutz-zuschuesse",
+  "read_on": "2026-11-20",
+  "prompt_version": "req-2026-11-20.1",
+  "models": ["cursor:gpt-5.6-luna-high", "cursor:gpt-5.6-sol-high"],
+  "complete": false,
+  "reasons": [
+    "the text names a document with rules that was not read: Allgemeine Richtlinien über die Gewährung von Zuschüssen an Vereine und Verbände",
+    "Jev did not check this reading, so an absent fact is not known to be absent"
+  ],
+  "requirements_checked": false,
+  "documents": [
+    {
+      "ref": "D1",
+      "url": "https://www.giessen.de/media/custom/640_41_1.PDF",
+      "final_url": "https://www.giessen.de/media/custom/640_41_1.PDF?1729518085?direct",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": true,
+      "chars": 4641,
+      "pages": 4,
+      "low_text": false,
+      "hash": "sha256:70ac5015696fa073824989c6cab01b7a54b4d54abb53ff569ff00958a082b662"
+    }
+  ],
+  "failures": [],
+  "skipped_links": 0,
+  "chunks": [{ "id": "all", "docs": ["D1"], "chars": 4708 }],
+  "outcomes": {
+    "eligibility": "stated",
+    "documents": "stated",
+    "effort": "stated",
+    "co_finance": "stated",
+    "consortium": "not_found",
+    "after_award": "stated"
+  },
+  "written": ["eligibility", "documents", "effort", "co_finance", "after_award"],
+  "escalated": ["eligibility"],
+  "flags": [],
+  "notes": [
+    "co_finance: share 50% dropped, its quote does not state it",
+    "extractor: The document was adopted on 15 March 1988 and states no current or next application round.",
+    "source giessen-natur-landschaftsschutz-zuschuesse-1: selector main dropped, a new quote sits outside it"
+  ],
+  "usd": 0
+}

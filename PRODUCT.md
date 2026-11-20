@@ -25,7 +25,7 @@ Every fact carries its source page, a verbatim quote and a checked date; nothing
 ## Operating Context
 
 - Built and openly funded by Restoration Scope, which sells monitoring software to restoration NGOs, carbon developers and funders. The directory is a trust asset; the RS tie-in stays quiet (footer, light links to funder-reporting guides).
-- A daily job re-reads funder pages; changes go through review before they are published.
+- A daily job re-reads funder pages when due (daily with an open or upcoming call, else weekly or monthly); it dates unchanged pages and closes passed deadlines itself, and proposes every other change as a PR it never merges.
 - Competitor failure to avoid: listing a funder as "open until 2030" when it takes no applications.
 
 ## Capabilities and Constraints

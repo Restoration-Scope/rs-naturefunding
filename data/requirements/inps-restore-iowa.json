@@ -1,0 +1,67 @@
+{
+  "id": "inps-restore-iowa",
+  "read_on": "2026-11-20",
+  "prompt_version": "req-2026-11-20.1",
+  "models": ["cursor:gpt-5.6-luna-high"],
+  "complete": false,
+  "reasons": [
+    "2 links could not be ranked without Jev",
+    "https://www.iowanativeplants.org/wp-content/uploads/2022/04/INPS-grantapp.doc would not open (unreadable: an old Word (.doc), OpenDocument or RTF file: needs conversion)",
+    "the text names a document with rules that was not read: Grant guidelines",
+    "Jev did not check this reading, so an absent fact is not known to be absent"
+  ],
+  "requirements_checked": false,
+  "documents": [
+    {
+      "ref": "D1",
+      "url": "https://www.iowanativeplants.org/grants/",
+      "final_url": "https://www.iowanativeplants.org/grants/",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 1885,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:b1a63f8dd041063375946cc0565119900ea0823e87a334f713cd6a2a7d577b24"
+    },
+    {
+      "ref": "D2",
+      "url": "https://www.iowanativeplants.org/wp-content/uploads/2022/04/INPSGrantInformationFor2021.pdf",
+      "final_url": "https://www.iowanativeplants.org/wp-content/uploads/2022/04/INPSGrantInformationFor2021.pdf",
+      "from": "https://www.iowanativeplants.org/grants/",
+      "anchor": "Small Grants Program",
+      "depth": 1,
+      "pdf": true,
+      "chars": 5245,
+      "pages": 3,
+      "low_text": false,
+      "hash": "sha256:92126cb65d0045974ca73ebe1ec16e37bfb6da521ef2f846cc7d30f36de7541b"
+    }
+  ],
+  "failures": [
+    {
+      "url": "https://www.iowanativeplants.org/wp-content/uploads/2022/04/INPS-grantapp.doc",
+      "from": "https://www.iowanativeplants.org/grants/",
+      "kind": "unreadable",
+      "message": "an old Word (.doc), OpenDocument or RTF file: needs conversion"
+    }
+  ],
+  "skipped_links": 18,
+  "chunks": [{ "id": "all", "docs": ["D1", "D2"], "chars": 7348 }],
+  "outcomes": {
+    "eligibility": "not_found",
+    "documents": "not_found",
+    "effort": "stated",
+    "co_finance": "not_found",
+    "consortium": "not_found",
+    "after_award": "not_found"
+  },
+  "written": ["effort"],
+  "escalated": [],
+  "flags": [],
+  "notes": [
+    "extractor: D1 provides current Restore Iowa! information but no exact deadline or application requirements. D2 is older information about INPS Small Grants, not Restore Iowa! Grants, so its rules were not applied."
+  ],
+  "usd": 0
+}

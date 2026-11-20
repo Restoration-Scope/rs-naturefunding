@@ -1,0 +1,58 @@
+{
+  "id": "jubitz-mount-hood-environment",
+  "read_on": "2026-11-20",
+  "prompt_version": "req-2026-11-20.1",
+  "models": ["cursor:gpt-5.6-luna-high"],
+  "complete": false,
+  "reasons": [
+    "8 links could not be ranked without Jev",
+    "Jev did not check this reading, so an absent fact is not known to be absent"
+  ],
+  "requirements_checked": false,
+  "documents": [
+    {
+      "ref": "D1",
+      "url": "https://jubitz.org/grantmaking/environment-grantmaking/",
+      "final_url": "https://jubitz.org/grantmaking/environment-grantmaking/",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 1732,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:76f9c1fc0535a32083a087f84d68a34292d5fafe6b62fa70708a0a1f0582fc31"
+    },
+    {
+      "ref": "D2",
+      "url": "https://jubitz.org/grantmaking/grants/",
+      "final_url": "https://jubitz.org/grantmaking/grants/",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 2123,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:df9c9e0acb6711c20d490d292d2fa7e77f84ee9ae8ab7ca068aa9922f6769a92"
+    }
+  ],
+  "failures": [],
+  "skipped_links": 13,
+  "chunks": [{ "id": "all", "docs": ["D1", "D2"], "chars": 3976 }],
+  "outcomes": {
+    "eligibility": "stated",
+    "documents": "stated",
+    "effort": "stated",
+    "co_finance": "not_found",
+    "consortium": "not_found",
+    "after_award": "not_found"
+  },
+  "written": ["eligibility", "documents", "effort"],
+  "escalated": [],
+  "flags": [],
+  "notes": [
+    "extractor: Spring proposals are due March 31 and fall proposals are due September 30, but the page does not state years. Current and former grantees may proceed directly to the online grant portal without submitting an LOI. Typical grants are $5,000–$25,000 for a one-year term."
+  ],
+  "usd": 0
+}

@@ -1,0 +1,48 @@
+{
+  "id": "gef-sgp-paraguay",
+  "read_on": "2026-11-20",
+  "prompt_version": "req-2026-11-20.1",
+  "models": ["cursor:gpt-5.6-luna-high"],
+  "complete": false,
+  "reasons": [
+    "the text names a document with rules that was not read: Estrategia 8a Fase Operativa PPD Paraguay (Archivo 1)",
+    "the text names a document with rules that was not read: Formato Propuesta de proyecto PPD FO 8 (Archivo 2)",
+    "Jev did not check this reading, so an absent fact is not known to be absent"
+  ],
+  "requirements_checked": false,
+  "documents": [
+    {
+      "ref": "D1",
+      "url": "https://www.undp.org/sites/g/files/zskgke326/files/2026-01/bases-y-condiciones-1a-convocatoria-op8.pdf",
+      "final_url": "https://www.undp.org/sites/g/files/zskgke326/files/2026-01/bases-y-condiciones-1a-convocatoria-op8.pdf",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": true,
+      "chars": 7531,
+      "pages": 4,
+      "low_text": false,
+      "hash": "sha256:eb7c7495542e842bf249c480e4f457be3f8760df513eb1bbf3a128ffb5fce1d7"
+    }
+  ],
+  "failures": [],
+  "skipped_links": 0,
+  "chunks": [{ "id": "all", "docs": ["D1"], "chars": 7652 }],
+  "outcomes": {
+    "eligibility": "stated",
+    "documents": "stated",
+    "effort": "stated",
+    "co_finance": "stated",
+    "consortium": "not_found",
+    "after_award": "not_found"
+  },
+  "written": ["eligibility", "documents", "effort", "co_finance"],
+  "escalated": [],
+  "flags": [],
+  "notes": [
+    "co_finance: share 100% dropped, its quote does not state it",
+    "extractor: The bank account is requested only if the proposal is selected; it is not a first-step submission document.",
+    "source gef-sgp-paraguay-1: selector main dropped, a new quote sits outside it"
+  ],
+  "usd": 0
+}

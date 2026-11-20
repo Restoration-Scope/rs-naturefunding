@@ -1,0 +1,299 @@
+{
+  "id": "hessen-fischereifoerderung",
+  "read_on": "2026-11-20",
+  "prompt_version": "req-2026-11-20.1",
+  "models": ["cursor:gpt-5.6-luna-high", "cursor:gpt-5.6-sol-high"],
+  "complete": false,
+  "reasons": [
+    "26 links could not be ranked without Jev",
+    "41 links could not be ranked without Jev",
+    "https://landwirtschaft.hessen.de/sites/landwirtschaft.hessen.de/files/2021-07/fischereifoerderrichtlinie.pdf: a scanned or image PDF: needs OCR",
+    "the crawl bound left https://landwirtschaft.hessen.de/sites/landwirtschaft.hessen.de/files/2021-07/erklaerung_de-minimis-beihilfe.pdf unread",
+    "the crawl bound left https://landwirtschaft.hessen.de/klimaschutz/klimarichtlinie unread",
+    "the crawl bound left https://landwirtschaft.hessen.de/klimaschutz/foerderung-klimarichtlinie/investive-kommunale-massnahmen-zur-reduzierung-der-treibhausgasemissionen-in-hessischen-kommunen unread",
+    "the crawl bound left https://landwirtschaft.hessen.de/klimaschutz/foerderung-klimarichtlinie/kommunale-massnahmen unread",
+    "the crawl bound left https://landwirtschaft.hessen.de/sites/landwirtschaft.hessen.de/files/2026-04/flyer-trinkwasserbrunnen-dinlang.pdf unread",
+    "the crawl bound left https://landwirtschaft.hessen.de/sites/landwirtschaft.hessen.de/files/2025-09/kommunale-klimarichtlinie_web.pdf unread",
+    "the crawl bound left https://landwirtschaft.hessen.de/sites/landwirtschaft.hessen.de/files/2025-12/250701_klima-richtliniennovelle_clean_stanz_barrierefrei-final.pdf unread",
+    "the crawl bound left https://landwirtschaft.hessen.de/sites/landwirtschaft.hessen.de/files/2025-07/2025-07-01-faq_novelle_final_km.pdf unread",
+    "the crawl bound left https://landwirtschaft.hessen.de/Presse/Gruendach-und-Photovoltaikanlage-auf-dem-Dietzenbacher-Capitol unread",
+    "the crawl bound left https://landwirtschaft.hessen.de/Themen-A-Z/Klima-Richtlinie unread",
+    "the crawl bound left https://landwirtschaft.hessen.de/sites/landwirtschaft.hessen.de/files/2026-10/anleitung_zur_einrichtung_eines_zugangs_zu_elia-online.pdf unread",
+    "the crawl bound left https://landwirtschaft.hessen.de/sites/landwirtschaft.hessen.de/files/2026-10/quickstart-guide-nutzende-organisationen-v1.2_barrierefrei.pdf unread",
+    "the crawl bound left https://landwirtschaft.hessen.de/sites/landwirtschaft.hessen.de/files/2026-10/klickanleitung_berechtigungssteuerung_he_stand_juni_26.pdf unread",
+    "the crawl bound left https://landwirtschaft.hessen.de/sites/landwirtschaft.hessen.de/files/2026-10/beschreibung_antragsversand_nach_hessen.pdf unread",
+    "the crawl bound left https://landwirtschaft.hessen.de/sites/landwirtschaft.hessen.de/files/2021-07/ueberwachungsplan_hessen_2021.pdf unread",
+    "the crawl bound left https://landwirtschaft.hessen.de/sites/landwirtschaft.hessen.de/files/2026-02/ueberwachungsprogramm-anlagen-ie-rl-2026.pdf unread",
+    "the crawl bound left https://landwirtschaft.hessen.de/sites/landwirtschaft.hessen.de/files/2023-05/ueberwachungsplan_stoerfallvo_mit_karte_2023_erstellt_20230412.pdf unread",
+    "the crawl bound left https://landwirtschaft.hessen.de/Themen-A-Z/Anlagengenehmigung unread",
+    "the text names a document with rules that was not read: Fischereiförderrichtlinie",
+    "the text names a document with rules that was not read: Richtlinie für die Gewährung von Zuwendungen zur nachhaltigen Sicherung und Erhaltung der heimischen Fische sowie zur Förderung von Investitionen in den Bereich",
+    "Jev did not check this reading, so an absent fact is not known to be absent",
+    "strong reading: the text names a document with rules that was not read: Fischereiförderrichtlinie (FFR)"
+  ],
+  "requirements_checked": false,
+  "documents": [
+    {
+      "ref": "D1",
+      "url": "https://landwirtschaft.hessen.de/wasser/fischerei",
+      "final_url": "https://landwirtschaft.hessen.de/wasser/fischerei",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 10910,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:36f71b2e39c499863c857b4d0b91d017187bc724690b72b5d9309d16506ee4da"
+    },
+    {
+      "ref": "D2",
+      "url": "https://landwirtschaft.hessen.de/klimaschutz/foerderung-klimarichtlinie",
+      "final_url": "https://landwirtschaft.hessen.de/klimaschutz/foerderung-klimarichtlinie",
+      "from": "https://landwirtschaft.hessen.de/wasser/fischerei",
+      "anchor": "Förderung - Klimarichtlinie",
+      "depth": 1,
+      "pdf": false,
+      "chars": 8029,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:380d433e8b8c89a999024f777c18fccfaf311bc5cf9980eee683f06b454fee2b"
+    },
+    {
+      "ref": "D3",
+      "url": "https://landwirtschaft.hessen.de/umwelt/anlagengenehmigung-ueberwachung-sicherheit",
+      "final_url": "https://landwirtschaft.hessen.de/umwelt/anlagengenehmigung-ueberwachung-sicherheit",
+      "from": "https://landwirtschaft.hessen.de/wasser/fischerei",
+      "anchor": "Anlagengenehmigung, -überwachung, -sicherheit",
+      "depth": 1,
+      "pdf": false,
+      "chars": 18203,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:233180cf6d4cf61242fb539b25ae7bd7d4c2f043bb7a3bbd814328a1a229c79d"
+    },
+    {
+      "ref": "D4",
+      "url": "https://landwirtschaft.hessen.de/sites/landwirtschaft.hessen.de/files/2025-04/20250326_fragenkatalog_fischerpruefung_deu.pdf",
+      "final_url": "https://landwirtschaft.hessen.de/sites/landwirtschaft.hessen.de/files/2025-04/20250326_fragenkatalog_fischerpruefung_deu.pdf",
+      "from": "https://landwirtschaft.hessen.de/wasser/fischerei",
+      "anchor": "Fischerprüfungsfragen und -antworten Hessen ohne Lösungen (PDF/283.87 KB) Öffnet sich in einem neuen Fenster",
+      "depth": 1,
+      "pdf": true,
+      "chars": 135667,
+      "pages": 55,
+      "low_text": false,
+      "hash": "sha256:e6628a800bd7d71e8e53a5a7bc9dca68062b5ffa72ffeffda46aa8784e8cd3c6"
+    },
+    {
+      "ref": "D5",
+      "url": "https://landwirtschaft.hessen.de/sites/landwirtschaft.hessen.de/files/2025-06/fischerpruefungsfragen_und-antworten_hessen_mit_loesungen.pdf",
+      "final_url": "https://landwirtschaft.hessen.de/sites/landwirtschaft.hessen.de/files/2025-06/fischerpruefungsfragen_und-antworten_hessen_mit_loesungen.pdf",
+      "from": "https://landwirtschaft.hessen.de/wasser/fischerei",
+      "anchor": "Fischerprüfungsfragen und -antworten Hessen mit Lösungen (PDF/316.06 KB) Öffnet sich in einem neuen Fenster",
+      "depth": 1,
+      "pdf": true,
+      "chars": 135845,
+      "pages": 56,
+      "low_text": false,
+      "hash": "sha256:e33c6472ce7fc3f0b4544ef41617c2c5df2a1c5018b06c3a00afd39cba28a83e"
+    },
+    {
+      "ref": "D6",
+      "url": "https://landwirtschaft.hessen.de/sites/landwirtschaft.hessen.de/files/2021-07/fischereifoerderrichtlinie.pdf",
+      "final_url": "https://landwirtschaft.hessen.de/sites/landwirtschaft.hessen.de/files/2021-07/fischereifoerderrichtlinie.pdf",
+      "from": "https://landwirtschaft.hessen.de/wasser/fischerei",
+      "anchor": "Fischereiförderrichtlinie (PDF/737.28 KB) Öffnet sich in einem neuen Fenster",
+      "depth": 1,
+      "pdf": true,
+      "chars": 0,
+      "pages": 12,
+      "low_text": true,
+      "hash": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "ref": "D7",
+      "url": "https://landwirtschaft.hessen.de/sites/landwirtschaft.hessen.de/files/2021-07/mantelbogen_antrag.pdf",
+      "final_url": "https://landwirtschaft.hessen.de/sites/landwirtschaft.hessen.de/files/2021-07/mantelbogen_antrag.pdf",
+      "from": "https://landwirtschaft.hessen.de/wasser/fischerei",
+      "anchor": "Mantelbogen Antrag (PDF/55.02 KB) Öffnet sich in einem neuen Fenster",
+      "depth": 1,
+      "pdf": true,
+      "chars": 6364,
+      "pages": 3,
+      "low_text": false,
+      "hash": "sha256:7b70ec3a448b49caa7903e85ce0b26ab2b26bf51eb6ffd1c0a1b456b77f09c43"
+    },
+    {
+      "ref": "D8",
+      "url": "https://landwirtschaft.hessen.de/sites/landwirtschaft.hessen.de/files/2021-07/antrag_besatzplan.pdf",
+      "final_url": "https://landwirtschaft.hessen.de/sites/landwirtschaft.hessen.de/files/2021-07/antrag_besatzplan.pdf",
+      "from": "https://landwirtschaft.hessen.de/wasser/fischerei",
+      "anchor": "Antrag Besatzplan (PDF/44.79 KB) Öffnet sich in einem neuen Fenster",
+      "depth": 1,
+      "pdf": true,
+      "chars": 2279,
+      "pages": 2,
+      "low_text": false,
+      "hash": "sha256:3f3471f88d3f7b035f4b069af44bd41527b3e3da195b58cd1c13eb26aba988e1"
+    },
+    {
+      "ref": "D9",
+      "url": "https://landwirtschaft.hessen.de/sites/landwirtschaft.hessen.de/files/2021-07/kosten-_und_finanzierungsplan.pdf",
+      "final_url": "https://landwirtschaft.hessen.de/sites/landwirtschaft.hessen.de/files/2021-07/kosten-_und_finanzierungsplan.pdf",
+      "from": "https://landwirtschaft.hessen.de/wasser/fischerei",
+      "anchor": "Kosten- und Finanzierungsplan (PDF/32.24 KB) Öffnet sich in einem neuen Fenster",
+      "depth": 1,
+      "pdf": true,
+      "chars": 1324,
+      "pages": 1,
+      "low_text": false,
+      "hash": "sha256:83423051d87ff8cfe25cadd1a2c0ab39001c151db115fd552f2b3b8e996d0106"
+    }
+  ],
+  "failures": [
+    {
+      "url": "https://landwirtschaft.hessen.de/sites/landwirtschaft.hessen.de/files/2021-07/fischereifoerderrichtlinie.pdf",
+      "from": "https://landwirtschaft.hessen.de/wasser/fischerei",
+      "kind": "low_text",
+      "message": "a scanned or image PDF: needs OCR"
+    },
+    {
+      "url": "https://landwirtschaft.hessen.de/sites/landwirtschaft.hessen.de/files/2021-07/erklaerung_de-minimis-beihilfe.pdf",
+      "from": "https://landwirtschaft.hessen.de/wasser/fischerei",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://landwirtschaft.hessen.de/klimaschutz/klimarichtlinie",
+      "from": "https://landwirtschaft.hessen.de/klimaschutz/foerderung-klimarichtlinie",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://landwirtschaft.hessen.de/klimaschutz/foerderung-klimarichtlinie/investive-kommunale-massnahmen-zur-reduzierung-der-treibhausgasemissionen-in-hessischen-kommunen",
+      "from": "https://landwirtschaft.hessen.de/klimaschutz/foerderung-klimarichtlinie",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://landwirtschaft.hessen.de/klimaschutz/foerderung-klimarichtlinie/kommunale-massnahmen",
+      "from": "https://landwirtschaft.hessen.de/klimaschutz/foerderung-klimarichtlinie",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://landwirtschaft.hessen.de/sites/landwirtschaft.hessen.de/files/2026-04/flyer-trinkwasserbrunnen-dinlang.pdf",
+      "from": "https://landwirtschaft.hessen.de/klimaschutz/foerderung-klimarichtlinie",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://landwirtschaft.hessen.de/sites/landwirtschaft.hessen.de/files/2025-09/kommunale-klimarichtlinie_web.pdf",
+      "from": "https://landwirtschaft.hessen.de/klimaschutz/foerderung-klimarichtlinie",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://landwirtschaft.hessen.de/sites/landwirtschaft.hessen.de/files/2025-12/250701_klima-richtliniennovelle_clean_stanz_barrierefrei-final.pdf",
+      "from": "https://landwirtschaft.hessen.de/klimaschutz/foerderung-klimarichtlinie",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://landwirtschaft.hessen.de/sites/landwirtschaft.hessen.de/files/2025-07/2025-07-01-faq_novelle_final_km.pdf",
+      "from": "https://landwirtschaft.hessen.de/klimaschutz/foerderung-klimarichtlinie",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://landwirtschaft.hessen.de/Presse/Gruendach-und-Photovoltaikanlage-auf-dem-Dietzenbacher-Capitol",
+      "from": "https://landwirtschaft.hessen.de/klimaschutz/foerderung-klimarichtlinie",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://landwirtschaft.hessen.de/Themen-A-Z/Klima-Richtlinie",
+      "from": "https://landwirtschaft.hessen.de/klimaschutz/foerderung-klimarichtlinie",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://landwirtschaft.hessen.de/sites/landwirtschaft.hessen.de/files/2026-10/anleitung_zur_einrichtung_eines_zugangs_zu_elia-online.pdf",
+      "from": "https://landwirtschaft.hessen.de/umwelt/anlagengenehmigung-ueberwachung-sicherheit",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://landwirtschaft.hessen.de/sites/landwirtschaft.hessen.de/files/2026-10/quickstart-guide-nutzende-organisationen-v1.2_barrierefrei.pdf",
+      "from": "https://landwirtschaft.hessen.de/umwelt/anlagengenehmigung-ueberwachung-sicherheit",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://landwirtschaft.hessen.de/sites/landwirtschaft.hessen.de/files/2026-10/klickanleitung_berechtigungssteuerung_he_stand_juni_26.pdf",
+      "from": "https://landwirtschaft.hessen.de/umwelt/anlagengenehmigung-ueberwachung-sicherheit",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://landwirtschaft.hessen.de/sites/landwirtschaft.hessen.de/files/2026-10/beschreibung_antragsversand_nach_hessen.pdf",
+      "from": "https://landwirtschaft.hessen.de/umwelt/anlagengenehmigung-ueberwachung-sicherheit",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://landwirtschaft.hessen.de/sites/landwirtschaft.hessen.de/files/2021-07/ueberwachungsplan_hessen_2021.pdf",
+      "from": "https://landwirtschaft.hessen.de/umwelt/anlagengenehmigung-ueberwachung-sicherheit",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://landwirtschaft.hessen.de/sites/landwirtschaft.hessen.de/files/2026-02/ueberwachungsprogramm-anlagen-ie-rl-2026.pdf",
+      "from": "https://landwirtschaft.hessen.de/umwelt/anlagengenehmigung-ueberwachung-sicherheit",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://landwirtschaft.hessen.de/sites/landwirtschaft.hessen.de/files/2023-05/ueberwachungsplan_stoerfallvo_mit_karte_2023_erstellt_20230412.pdf",
+      "from": "https://landwirtschaft.hessen.de/umwelt/anlagengenehmigung-ueberwachung-sicherheit",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://landwirtschaft.hessen.de/Themen-A-Z/Anlagengenehmigung",
+      "from": "https://landwirtschaft.hessen.de/umwelt/anlagengenehmigung-ueberwachung-sicherheit",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    }
+  ],
+  "skipped_links": 411,
+  "chunks": [
+    { "id": "c1", "docs": ["D1", "D2", "D3"], "chars": 37511 },
+    { "id": "c2", "docs": ["D4"], "chars": 40144 },
+    { "id": "c3", "docs": ["D4"], "chars": 40184 },
+    { "id": "c4", "docs": ["D4"], "chars": 40131 },
+    { "id": "c5", "docs": ["D4"], "chars": 20576 },
+    { "id": "c6", "docs": ["D5"], "chars": 40159 },
+    { "id": "c7", "docs": ["D5"], "chars": 40197 },
+    { "id": "c8", "docs": ["D5"], "chars": 40194 },
+    { "id": "c9", "docs": ["D5"], "chars": 20723 },
+    { "id": "c10", "docs": ["D7", "D8", "D9"], "chars": 10524 }
+  ],
+  "outcomes": {
+    "eligibility": "stated",
+    "documents": "stated",
+    "effort": "stated",
+    "co_finance": "not_found",
+    "consortium": "not_found",
+    "after_award": "not_found"
+  },
+  "written": ["eligibility", "documents", "effort"],
+  "escalated": ["documents"],
+  "flags": [],
+  "notes": [
+    "extractor: D2 and D3 do not state requirements for this programme. | D4 is a fishing-exam question catalogue and states no requirements for applicants to this grant programme. | D4 is a fishing examination question catalogue and states no grant application, eligibility, submission, process, co-finance, consortium or post-award requirements. | D4 is a fishing licence examination question catalogue and states no grant programme requirements. | D5 is a fishing-exam question catalogue and states no grant application rules. | D5 is a fisheries examination question catalogue and states no application requirements for this programme. | D5 is a fishing examination question catalogue and does not state requirements for this grant programme. | This document is a fishing licence examination question catalogue and states no grant application or award requirements. | The application form cites the Fischereiförderrichtlinie dated 27 February 2012. No application deadline, round, or post-award duties are stated",
+    "source hessen-fischereifoerderung-2: added for https://landwirtschaft.hessen.de/sites/landwirtschaft.hessen.de/files/2021-07/mantelbogen_antrag.pdf"
+  ],
+  "usd": 0
+}

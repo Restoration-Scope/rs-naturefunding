@@ -1,0 +1,51 @@
+{
+  "id": "gef-sgp-malaysia",
+  "read_on": "2026-11-20",
+  "prompt_version": "req-2026-11-20.1",
+  "models": ["cursor:gpt-5.6-luna-high", "cursor:gpt-5.6-sol-high"],
+  "complete": false,
+  "reasons": [
+    "7 links could not be ranked without Jev",
+    "the text names a document with rules that was not read: GEF-SGP UNDP OP8 Operational Guidelines",
+    "the text names a document with rules that was not read: GEF-SGP MY OP8 Country Programme Strategy (CPS)",
+    "Jev did not check this reading, so an absent fact is not known to be absent",
+    "strong reading: the text names a document with rules that was not read: GEF-SGP UNDP OP8 Operational Guidelines",
+    "strong reading: the text names a document with rules that was not read: GEF-SGP MY OP8 Call For Proposal",
+    "strong reading: the text names a document with rules that was not read: GEF-SGP MY OP8 Country Programme Strategy (CPS)"
+  ],
+  "requirements_checked": false,
+  "documents": [
+    {
+      "ref": "D1",
+      "url": "https://sgpmalaysia.org/apply-for-grant/",
+      "final_url": "https://sgpmalaysia.org/apply-for-grant/",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 8126,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:fec8538375dc9bca06eec2b6c3bc629daa90072245b959672ba9de1eab5ddc89"
+    }
+  ],
+  "failures": [],
+  "skipped_links": 18,
+  "chunks": [{ "id": "all", "docs": ["D1"], "chars": 8179 }],
+  "outcomes": {
+    "eligibility": "stated",
+    "documents": "stated",
+    "effort": "stated",
+    "co_finance": "unresolved",
+    "consortium": "not_found",
+    "after_award": "not_found"
+  },
+  "written": ["eligibility", "documents", "effort"],
+  "escalated": ["effort"],
+  "flags": [],
+  "notes": [
+    "extractor: Priority is given to listed landscapes and seascapes: 70% of projects will be supported there, while up to 30% may be supported outside them subject to stated conditions.",
+    "co_finance: the file states whether co-funding is required, this reading found nothing"
+  ],
+  "usd": 0
+}

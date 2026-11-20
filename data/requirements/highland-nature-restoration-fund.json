@@ -1,0 +1,141 @@
+{
+  "id": "highland-nature-restoration-fund",
+  "read_on": "2026-11-20",
+  "prompt_version": "req-2026-11-20.1",
+  "models": ["cursor:gpt-5.6-luna-high"],
+  "complete": false,
+  "reasons": [
+    "9 links could not be ranked without Jev",
+    "7 links could not be ranked without Jev",
+    "5 links could not be ranked without Jev",
+    "the crawl bound left https://www.highland.gov.uk/downloads/file/2072/fair-work-first-summary-guidance unread",
+    "the crawl bound left https://www.highland.gov.uk/downloads/file/2073/nature-restoration-fund-application-form unread",
+    "the crawl bound left https://www.highland.gov.uk/downloads/file/2074/nature-restoration-fund-assessment-criteria unread",
+    "the crawl bound left https://www.highland.gov.uk/downloads/file/2075/nature-restoration-fund-guidance-notes unread",
+    "the crawl bound left https://www.highland.gov.uk/downloads/file/2076/use-of-artificial-intelligence-in-funding-applications-guidance unread",
+    "the text names a document with rules that was not read: Fair Work First summary guidance",
+    "the text names a document with rules that was not read: Nature Restoration Fund assessment criteria",
+    "the text names a document with rules that was not read: Nature Restoration Fund guidance notes",
+    "Jev did not check this reading, so an absent fact is not known to be absent"
+  ],
+  "requirements_checked": false,
+  "documents": [
+    {
+      "ref": "D1",
+      "url": "https://www.highland.gov.uk/nature-biodiversity/nature-restoration-fund",
+      "final_url": "https://www.highland.gov.uk/nature-biodiversity/nature-restoration-fund",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 5082,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:a1a436ab666c20ee7e64ee8cce1bc9522d693d1bbb47443babbe0d70938404c8"
+    },
+    {
+      "ref": "D2",
+      "url": "https://www.highland.gov.uk/news/article/17416/nature-restoration-fund-community-grants-programme-opens-for-applications",
+      "final_url": "https://www.highland.gov.uk/news/article/17416/nature-restoration-fund-community-grants-programme-opens-for-applications",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 8318,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:47f3671aa900de1dbe7828cd35a612fc7f662d16122684ce1d67dead9d8740f6"
+    },
+    {
+      "ref": "D3",
+      "url": "https://www.highland.gov.uk/nature-biodiversity/nature-restoration-fund/2",
+      "final_url": "https://www.highland.gov.uk/nature-biodiversity/nature-restoration-fund/2",
+      "from": "https://www.highland.gov.uk/nature-biodiversity/nature-restoration-fund",
+      "anchor": "Who can apply",
+      "depth": 1,
+      "pdf": false,
+      "chars": 5751,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:26c230fedb6852cb00f477600d6e205998f72be2cfb300ce0a53022aeec6e539"
+    },
+    {
+      "ref": "D4",
+      "url": "https://www.highland.gov.uk/nature-biodiversity/nature-restoration-fund/3",
+      "final_url": "https://www.highland.gov.uk/nature-biodiversity/nature-restoration-fund/3",
+      "from": "https://www.highland.gov.uk/nature-biodiversity/nature-restoration-fund",
+      "anchor": "How to apply",
+      "depth": 1,
+      "pdf": false,
+      "chars": 3152,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:ca0ba21e6977b41054f4ff56898d55b371797198dd5aa9abf61b53b09181f20a"
+    },
+    {
+      "ref": "D5",
+      "url": "https://www.highland.gov.uk/downloads/download/508/nature-restoration-fund",
+      "final_url": "https://www.highland.gov.uk/downloads/download/508/nature-restoration-fund",
+      "from": "https://www.highland.gov.uk/nature-biodiversity/nature-restoration-fund/2",
+      "anchor": "Fair Work First summary guidance",
+      "depth": 2,
+      "pdf": false,
+      "chars": 1804,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:0caf877e8d84a4a681cabe0f553c14fd4418c192056fd8421baa113a949933a8"
+    }
+  ],
+  "failures": [
+    {
+      "url": "https://www.highland.gov.uk/downloads/file/2072/fair-work-first-summary-guidance",
+      "from": "https://www.highland.gov.uk/downloads/download/508/nature-restoration-fund",
+      "kind": "bound",
+      "message": "past the crawl depth of 2"
+    },
+    {
+      "url": "https://www.highland.gov.uk/downloads/file/2073/nature-restoration-fund-application-form",
+      "from": "https://www.highland.gov.uk/downloads/download/508/nature-restoration-fund",
+      "kind": "bound",
+      "message": "past the crawl depth of 2"
+    },
+    {
+      "url": "https://www.highland.gov.uk/downloads/file/2074/nature-restoration-fund-assessment-criteria",
+      "from": "https://www.highland.gov.uk/downloads/download/508/nature-restoration-fund",
+      "kind": "bound",
+      "message": "past the crawl depth of 2"
+    },
+    {
+      "url": "https://www.highland.gov.uk/downloads/file/2075/nature-restoration-fund-guidance-notes",
+      "from": "https://www.highland.gov.uk/downloads/download/508/nature-restoration-fund",
+      "kind": "bound",
+      "message": "past the crawl depth of 2"
+    },
+    {
+      "url": "https://www.highland.gov.uk/downloads/file/2076/use-of-artificial-intelligence-in-funding-applications-guidance",
+      "from": "https://www.highland.gov.uk/downloads/download/508/nature-restoration-fund",
+      "kind": "bound",
+      "message": "past the crawl depth of 2"
+    }
+  ],
+  "skipped_links": 200,
+  "chunks": [{ "id": "all", "docs": ["D1", "D2", "D3", "D4", "D5"], "chars": 24845 }],
+  "outcomes": {
+    "eligibility": "stated",
+    "documents": "stated",
+    "effort": "stated",
+    "co_finance": "not_found",
+    "consortium": "not_found",
+    "after_award": "not_found"
+  },
+  "written": ["eligibility", "documents", "effort"],
+  "escalated": [],
+  "flags": [],
+  "notes": [
+    "effort \"Application form and supporting documents\": the quote does not state 2026-10-09 whole; left undated",
+    "extractor: The 2026/27 round is closed and applications were assessed on a rolling basis. Organisations with alternative governance structures were asked to contact the funder before applying. Successful applicants are asked to submit further documentation.",
+    "source highland-nature-restoration-fund-3: added for https://www.highland.gov.uk/nature-biodiversity/nature-restoration-fund/2",
+    "source highland-nature-restoration-fund-4: added for https://www.highland.gov.uk/nature-biodiversity/nature-restoration-fund/3"
+  ],
+  "usd": 0
+}

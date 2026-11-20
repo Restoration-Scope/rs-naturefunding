@@ -1,23 +1,92 @@
 {
   "id": "gef-sgp-cso-challenge",
   "name": "GEF SGP CSO Challenge Program",
-  "funder": { "name": "Global Environment Facility", "url": "https://www.thegef.org/" },
-  "administered_by": { "name": "IUCN", "url": "https://www.iucn.org/" },
+  "funder": {
+    "name": "Global Environment Facility",
+    "url": "https://www.thegef.org/"
+  },
+  "administered_by": {
+    "name": "IUCN",
+    "url": "https://www.iucn.org/"
+  },
   "parent": null,
   "url": "https://csochallenge.org/",
   "summary": "Global GEF and IUCN programme giving larger grants to civil society organisations that scale or replicate proven environmental solutions, including community-based management of threatened ecosystems and species, through regional calls.",
-  "approaches": ["community_conservation", "sustainable_land_use"],
-  "applicant_types": ["ngo"],
+  "approaches": [
+    "community_conservation",
+    "sustainable_land_use"
+  ],
+  "applicant_types": [
+    "ngo"
+  ],
   "geography": {
     "scope": "regions",
-    "regions": ["africa", "asia", "latin_america_caribbean", "middle_east", "oceania", "europe"],
+    "regions": [
+      "africa",
+      "asia",
+      "latin_america_caribbean",
+      "middle_east",
+      "oceania",
+      "europe"
+    ],
     "label": "GEF SGP-eligible recipient countries"
   },
   "access": "direct",
   "window": "fixed",
-  "amount": { "currency": "USD", "max": 300000 },
+  "amount": {
+    "currency": "USD",
+    "max": 300000
+  },
   "co_finance_required": false,
+  "consortium_required": false,
   "reporting": null,
+  "effort": {
+    "steps": [
+      "Concept Note",
+      "Eligibility check",
+      "Full Proposal, if invited"
+    ]
+  },
+  "eligibility": [
+    {
+      "rule": "Have a legal entity and a bank account in the organisation's name",
+      "kind": "legal"
+    },
+    {
+      "rule": "Be authorised to receive foreign charitable contributions and directly implement the project",
+      "kind": "capacity"
+    },
+    {
+      "rule": "Base the proposal on existing work with high potential for impact and scalability",
+      "kind": "track_record"
+    },
+    {
+      "rule": "Not be a government body receiving grant funding directly",
+      "kind": "legal"
+    },
+    {
+      "rule": "Have no relationship that could create a conflict of interest",
+      "kind": "legal"
+    },
+    {
+      "rule": "Not be a current IUCN or GEF employee or immediate family member",
+      "kind": "legal"
+    },
+    {
+      "rule": "Exclude third-party sub-grants, pure research and conservation planning",
+      "kind": "project"
+    },
+    {
+      "rule": "Submit no more than two proposals as lead partner and receive no more than one grant",
+      "kind": "other"
+    }
+  ],
+  "documents": [
+    "Articles of incorporation, constitution, statutes, government decree, registration certificate or bylaws",
+    "In-country registration certificate, if applicable",
+    "Project location map",
+    "CVs of key project staff"
+  ],
   "calls": [
     {
       "id": "2026-regional-calls",
@@ -79,7 +148,103 @@
       "quote": "Co-funding is not required but is strongly encouraged and strengthens the proposal.",
       "checked_at": "2026-11-20",
       "method": "page"
-    }
+    },
+    "consortium_required": {
+      "source_url": "https://csochallenge.org/uploads/SGP_CSO_Concept_Guidance_For_Applicants.pdf",
+      "quote": "The lead partner may apply alone or with co-applicants.",
+      "checked_at": "2026-11-20",
+      "method": "page"
+    },
+    "effort": [
+      {
+        "source_url": "https://csochallenge.org/uploads/GEF%20SGP%20CSO%20Challenge%20Overview.pdf",
+        "quote": "Proposals (Concept Notes) will be shortlisted based on the evaluation by a Selection Committee.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://csochallenge.org/uploads/SGP_CSO_Concept_Guidance_For_Applicants.pdf",
+        "quote": "Step 1: Eligibility check",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://csochallenge.org/uploads/GEF%20SGP%20CSO%20Challenge%20Overview.pdf",
+        "quote": "Shortlisted applicants will be asked to develop Full Proposals.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "eligibility": [
+      {
+        "source_url": "https://csochallenge.org/uploads/GEF%20SGP%20CSO%20Challenge%20Overview.pdf",
+        "quote": "Proponents must be Civil Society Organizations (CSOs) with legal entity and a bank account in the name of the organization",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://csochallenge.org/uploads/SGP_CSO_Concept_Guidance_For_Applicants.pdf",
+        "quote": "Eligible applicants are local, national, regional, or international civil society organizations (CSOs) that are authorized to receive charitable contributions from foreign sources, maintain a bank account in the organization's name, and are directly responsible for implementing the project.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://csochallenge.org/uploads/GEF%20SGP%20CSO%20Challenge%20Overview.pdf",
+        "quote": "be based on existing work with high potential for impact and scalability (not just a concept)",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://csochallenge.org/uploads/SGP_CSO_Concept_Guidance_For_Applicants.pdf",
+        "quote": "Governments may participate in project activities but are not eligible to receive grant funding directly.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://csochallenge.org/uploads/SGP_CSO_Concept_Guidance_For_Applicants.pdf",
+        "quote": "Applicants must not have any personal, financial, political, or other relationship that could create a conflict of interest in relation to this funding opportunity.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://csochallenge.org/uploads/SGP_CSO_Concept_Guidance_For_Applicants.pdf",
+        "quote": "Current employees of IUCN or the GEF, and their immediate family members, are not eligible to apply.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://csochallenge.org/uploads/SGP_CSO_Concept_Guidance_For_Applicants.pdf",
+        "quote": "In addition, financial support to third parties through sub-grants and pure research or conservation planning are ineligible.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://csochallenge.org/uploads/SGP_CSO_Concept_Guidance_For_Applicants.pdf",
+        "quote": "An applicant may submit a maximum of two proposals as lead partner and may be a co-applicant in any number of applications but may receive only one grant; if both proposals score highly, only the higher-scoring one is selected.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "documents": [
+      {
+        "source_url": "https://csochallenge.org/uploads/SGP_CSO_Concept_Guidance_For_Applicants.pdf",
+        "quote": "Articles of Incorporation, Constitution, Statutes, Government Decree, as appropriate (certificate of registration or bylaws) Organization in-country registration certificate (if applicable)",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://csochallenge.org/uploads/SGP_CSO_Concept_Guidance_For_Applicants.pdf",
+        "quote": "Location map",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://csochallenge.org/uploads/SGP_CSO_Concept_Guidance_For_Applicants.pdf",
+        "quote": "CVs of key project staff",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ]
   },
   "checked_at": "2026-11-20"
 }

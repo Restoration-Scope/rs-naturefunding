@@ -1,0 +1,84 @@
+{
+  "id": "gef-sgp-turkiye",
+  "read_on": "2026-11-20",
+  "prompt_version": "req-2026-11-20.1",
+  "models": ["cursor:gpt-5.6-luna-high"],
+  "complete": false,
+  "reasons": [
+    "the text names a document with rules that was not read: SGP Ulusal Strateji Belgesi",
+    "Jev did not check this reading, so an absent fact is not known to be absent"
+  ],
+  "requirements_checked": false,
+  "documents": [
+    {
+      "ref": "D1",
+      "url": "https://gefsgp.com/",
+      "final_url": "https://gefsgp.com/",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 2809,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:75dfc592702075cf2725075d255550c7c28d2217c9a968705da52468991d1639"
+    },
+    {
+      "ref": "D2",
+      "url": "https://gefsgp.com/sgp-turkiye",
+      "final_url": "https://gefsgp.com/sgp-turkiye",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 20302,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:b9fe232de1bb53394ea549b539a5e78cfe5dbb6be2c2461c97fe6e3fb7871137"
+    },
+    {
+      "ref": "D3",
+      "url": "https://gefsgp.com/hakkimizda",
+      "final_url": "https://gefsgp.com/hakkimizda",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 20543,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:2a6558f3c52aefa597d35058232b6810cbc92cd454f72568cc9bab7d42050923"
+    },
+    {
+      "ref": "D4",
+      "url": "https://gefsgp.com/nasil-calisir",
+      "final_url": "https://gefsgp.com/nasil-calisir",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 1955,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:611c3ae2fc9f5abd3695f4a07853815f862c9fc4092ac05ba548f282e3a693e2"
+    }
+  ],
+  "failures": [],
+  "skipped_links": 110,
+  "chunks": [{ "id": "all", "docs": ["D1", "D2", "D3", "D4"], "chars": 45777 }],
+  "outcomes": {
+    "eligibility": "stated",
+    "documents": "not_found",
+    "effort": "stated",
+    "co_finance": "not_found",
+    "consortium": "not_found",
+    "after_award": "stated"
+  },
+  "written": ["eligibility", "effort", "after_award"],
+  "escalated": [],
+  "flags": [],
+  "notes": [
+    "extractor: No current or next round, deadline, application checklist, or call-specific rules are stated in D1-D4."
+  ],
+  "usd": 0
+}
