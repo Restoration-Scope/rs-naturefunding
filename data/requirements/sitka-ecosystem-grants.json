@@ -1,0 +1,72 @@
+{
+  "id": "sitka-ecosystem-grants",
+  "read_on": "2026-11-20",
+  "prompt_version": "req-2026-11-20.1",
+  "models": ["cursor:gpt-5.6-luna-high"],
+  "complete": false,
+  "reasons": [
+    "15 links could not be ranked without Jev",
+    "18 links could not be ranked without Jev",
+    "Jev did not check this reading, so an absent fact is not known to be absent"
+  ],
+  "requirements_checked": false,
+  "documents": [
+    {
+      "ref": "D1",
+      "url": "https://www.sitkagear.com/grants",
+      "final_url": "https://www.sitkagear.com/grants",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 7699,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:7f6632c7502cb0c22a2e742fbfc1158498d527406f64074eac0c1c439e3ec616"
+    },
+    {
+      "ref": "D2",
+      "url": "https://www.sitkagear.com/gear-guide",
+      "final_url": "https://www.sitkagear.com/gear-guide",
+      "from": "https://www.sitkagear.com/grants",
+      "anchor": "Holiday Gear Guide",
+      "depth": 1,
+      "pdf": false,
+      "chars": 1502,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:193c8669c93f227bc80d0587acb1827090b569c53913fc5bf2a813fc67d9d1a6"
+    },
+    {
+      "ref": "D3",
+      "url": "https://www.sitkagear.com/sitka-editorial-policy",
+      "final_url": "https://www.sitkagear.com/sitka-editorial-policy",
+      "from": "https://www.sitkagear.com/grants",
+      "anchor": "Editorial Policy",
+      "depth": 1,
+      "pdf": false,
+      "chars": 863,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:be9f8887e3e5ab5408ef10edfc5b29668b7740bdbd3ce3de63cf23b3c0753095"
+    }
+  ],
+  "failures": [],
+  "skipped_links": 90,
+  "chunks": [{ "id": "all", "docs": ["D1", "D2", "D3"], "chars": 10313 }],
+  "outcomes": {
+    "eligibility": "stated",
+    "documents": "stated",
+    "effort": "stated",
+    "co_finance": "not_found",
+    "consortium": "not_found",
+    "after_award": "not_found"
+  },
+  "written": ["eligibility", "documents", "effort"],
+  "escalated": [],
+  "flags": [],
+  "notes": [
+    "extractor: Applications are by invitation only. Grantees are expected to provide SITKA with rights of first refusal for popular publication and other media coverage of their project, efforts and findings."
+  ],
+  "usd": 0
+}
