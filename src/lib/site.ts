@@ -4,6 +4,10 @@ export const SITE_NAME = 'naturefunding.org'
 const utm = (campaign: string) => `utm_source=naturefunding&utm_medium=referral&utm_campaign=${campaign}`
 
 export const RS_URL = `https://restorationscope.com/?${utm('footer')}`
+/** Restoration Scope's page about this site (the header credit and the footer attribution link there). */
+const rsAboutThisSite = (campaign: string) => `https://restorationscope.com/naturefunding?${utm(campaign)}`
+export const RS_HEADER_URL = rsAboutThisSite('header')
+export const RS_FOOTER_URL = rsAboutThisSite('footer')
 /** Restoration Scope has no funder-reporting guides yet; this is its donor-reporting page. */
 export const RS_REPORTING_URL = `https://restorationscope.com/solutions/funders?${utm('programme-reporting')}`
 /** The footer's second line, for the operators who read this site. */

@@ -1,6 +1,6 @@
 ---
 import '../styles/global.css'
-import { RS_DESCRIPTOR, RS_FOOTER_REPORTING_URL, RS_URL, SITE_NAME, absolute, generalReportUrl } from '../lib/site'
+import { RS_DESCRIPTOR, RS_FOOTER_REPORTING_URL, RS_FOOTER_URL, RS_HEADER_URL, SITE_NAME, absolute, generalReportUrl } from '../lib/site'
 import { twinPath } from '../lib/twins'
 import SubscribePrompt from '../components/SubscribePrompt.astro'
 
@@ -74,6 +74,8 @@ const ld = jsonLd ? (Array.isArray(jsonLd) ? jsonLd : [jsonLd]) : []
     <header class="bg-shell text-shell-ink [&_:focus-visible]:outline-brand-light [&_a]:text-inherit">
       <div class="wrap flex flex-wrap items-center justify-between gap-x-6 gap-y-2 py-3.5">
         <div class="flex flex-wrap items-center gap-x-4 gap-y-1">
+        {/* The builder, named on every page beside the site name; it never changes what is listed or how. */}
+        <div class="flex flex-wrap items-baseline gap-x-2.5">
         <a class="inline-flex items-center gap-[0.45rem] pointer-coarse:min-h-11 font-serif text-2xl font-normal [font-synthesis-weight:none] no-underline" href="/" aria-label="naturefunding.org, home">
           <svg class="text-brand-light" viewBox="0 0 24 24" aria-hidden="true" width="22" height="22">
             <path d="M12 2.5c-4.6 3.4-7 7-7 10.6a7 7 0 0 0 14 0c0-3.6-2.4-7.2-7-10.6Z" fill="currentColor" />
@@ -81,6 +83,8 @@ const ld = jsonLd ? (Array.isArray(jsonLd) ? jsonLd : [jsonLd]) : []
           </svg>
           <span>naturefunding<span class="text-shell-ink-2">.org</span></span>
         </a>
+        <a class="inline-block text-xs text-shell-ink-2! pointer-coarse:py-2.5 no-underline decoration-brand-light underline-offset-[0.3em] hover:text-shell-ink! hover:underline" href={RS_HEADER_URL}>by Restoration Scope</a>
+        </div>
         {
           // Beside the logo, a way back: to every grant, or the page's own (a programme page's back to the finder).
           (allGrants || Astro.slots.has('beside-logo')) && (
@@ -124,7 +128,7 @@ const ld = jsonLd ? (Array.isArray(jsonLd) ? jsonLd : [jsonLd]) : []
     <footer class="mt-20 border-t border-rule bg-sunk text-md text-ink-2-on-linen [&_a]:text-ink">
       <div class="wrap grid grid-cols-[minmax(0,1fr)] gap-x-12 gap-y-4 pt-8 pb-10 lg:grid-cols-[minmax(0,28rem)_minmax(0,1fr)]">
         <p>
-          Built and maintained by <a href={RS_URL}>Restoration Scope</a>, which {RS_DESCRIPTOR}. See how Restoration Scope helps teams <a href={RS_FOOTER_REPORTING_URL}>report to their funders</a>. Listings are free, and funders can’t pay to be listed or ranked.
+          Built and maintained by <a href={RS_FOOTER_URL}>Restoration Scope</a>, which {RS_DESCRIPTOR}. See how Restoration Scope helps teams <a href={RS_FOOTER_REPORTING_URL}>report to their funders</a>. Listings are free, and funders can’t pay to be listed or ranked.
         </p>
         <ul class="m-0 flex list-none flex-wrap gap-x-5 gap-y-[0.35rem] p-0 pointer-coarse:gap-y-0 pointer-coarse:[&_a]:inline-block pointer-coarse:[&_a]:py-2.5">
           <li><a href="/countries/">Grants by place and type</a></li>
