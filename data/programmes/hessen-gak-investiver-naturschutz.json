@@ -33,6 +33,35 @@
   },
   "co_finance_required": true,
   "reporting": null,
+  "effort": {
+    "steps": [
+      "Complete application or short project sketch"
+    ],
+    "due": [
+      "2026-01-31"
+    ]
+  },
+  "eligibility": [
+    {
+      "rule": "The project derives from the listed technical plans and replaces otherwise necessary conservation authority measures",
+      "kind": "project"
+    },
+    {
+      "rule": "The project is not already legally required, including statutory nature-compensation obligations",
+      "kind": "project"
+    }
+  ],
+  "co_finance": {
+    "min_share": 10,
+    "applies_to": "Land purchases, and projects by municipalities or districts"
+  },
+  "documents": [
+    "Signed applicant declaration",
+    "Signed landowner consent to the measure",
+    "Signed landowner declaration of intent to sell",
+    "Detailed expenditure plan by budget year",
+    "Overview map, site plan and register of affected or acquired parcels"
+  ],
   "calls": [
     {
       "id": "2026",
@@ -87,8 +116,8 @@
     },
     "co_finance_required": {
       "source_url": "https://landwirtschaft.hessen.de/naturschutz-und-artenvielfalt/foerderung",
-      "quote": "Der Zuwendungsempfänger hat einen Eigenanteil in Höhe von 10 Prozent der zuwendungsfähigen Ausgaben zu leisten.",
-      "checked_at": "2026-11-14",
+      "quote": "Die Zuwendung kann bis zu 100 Prozent, bei Gemeinden und Gemeindeverbänden bis zu 90 Prozent der förderfähigen Ausgaben betragen.",
+      "checked_at": "2026-11-20",
       "method": "page"
     },
     "window": {
@@ -96,7 +125,55 @@
       "quote": "Stichtag für das kommende Antragsjahr ist der 31. Januar 2026.",
       "checked_at": "2026-11-14",
       "method": "page"
-    }
+    },
+    "effort": [
+      {
+        "source_url": "https://rp-darmstadt.hessen.de/umwelt-und-energie/naturschutz/foerderung/foerderung-gak",
+        "quote": "Stichtag für das kommende Antragsjahr ist der 31. Januar 2026. Sollte Ihnen eine vollständige Antragstellung bis zum Stichtag nicht möglich sein, übersenden Sie bitte eine kurze Projektskizze",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "eligibility": [
+      {
+        "source_url": "https://landwirtschaft.hessen.de/naturschutz-und-artenvielfalt/foerderung",
+        "quote": "Es können nur solche Vorhaben gefördert werden, die sich aus den oben genannten fachlichen Plänen ergeben oder daraus ableiten lassen, die der Erreichung eines günstigen Erhaltungszustandes der geschützten Arten und Lebensräumen dienen und die insofern an die Stelle ansonsten notwendiger von der Naturschutzverwaltung durchzuführender Schutzmaßnahmen treten.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://landwirtschaft.hessen.de/naturschutz-und-artenvielfalt/foerderung",
+        "quote": "Sind beantragte Vorhaben oder Teile davon bereits rechtlich vorgeschrieben (zum Beispiel naturschutzrechtliche Kompensationsverpflichtungen), können diese im Rahmen einer möglichen Zuwendung nicht berücksichtigt werden.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "co_finance": {
+      "source_url": "https://rp-darmstadt.hessen.de/sites/rp-darmstadt.hessen.de/files/2025-10/projektantrag_hessen_ausfuellbar_version_131224.pdf",
+      "quote": "Bei Grunderwerb betragen die zuwendungsfähigen Ausgaben bis zu 100% des ortsüblichen Verkehrswerts vergleichbarer Grundstücke. In begründeten Ausnahmefällen von besonderem Landesinteresse können höhere Ausgaben von bis zu 110% des ortsüblichen Verkehrswertes für zuwendungsfähig erklärt werden. Der Zuwendungsempfänger hat einen Eigenanteil i.H.v. 10% der zuwendungsfähigen Ausgaben zu leisten.",
+      "checked_at": "2026-11-20",
+      "method": "page"
+    },
+    "documents": [
+      {
+        "source_url": "https://rp-darmstadt.hessen.de/sites/rp-darmstadt.hessen.de/files/2025-10/projektantrag_hessen_ausfuellbar_version_131224.pdf",
+        "quote": "Unterschriebene \"Erklärung Antragsteller\" Unterschriebene \"Zustimmung Flächeneigentümer Maßnahme\" Unterschriebene \"Absichtserklärung Flächeneigentümer Verkauf\"",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://rp-darmstadt.hessen.de/sites/rp-darmstadt.hessen.de/files/2025-10/projektantrag_hessen_ausfuellbar_version_131224.pdf",
+        "quote": "Detaillierter Ausgabenplan mit Zuordnung der Ausgaben zu Haushaltsjahren Übersichtskarte und Lageplan",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://rp-darmstadt.hessen.de/sites/rp-darmstadt.hessen.de/files/2025-10/projektantrag_hessen_ausfuellbar_version_131224.pdf",
+        "quote": "Ein Verzeichnis der betroffenen bzw. zu erwerbenden Flurstücke/Ankaufskulisse (Größe / Flurstückbezeichnung / Zielfläche o. Tauschfläche / Pacht /) mit Lageplan ist dem Antrag beizufügen.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ]
   },
   "checked_at": "2026-11-14"
 }

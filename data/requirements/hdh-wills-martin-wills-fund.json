@@ -1,0 +1,113 @@
+{
+  "id": "hdh-wills-martin-wills-fund",
+  "read_on": "2026-11-20",
+  "prompt_version": "req-2026-11-20.1",
+  "models": ["cursor:gpt-5.6-luna-high"],
+  "complete": false,
+  "reasons": [
+    "2 links could not be ranked without Jev",
+    "the text names a document with rules that was not read: Grant criteria page",
+    "Jev did not check this reading, so an absent fact is not known to be absent"
+  ],
+  "requirements_checked": false,
+  "documents": [
+    {
+      "ref": "D1",
+      "url": "https://hdhwills.org/grants/",
+      "final_url": "https://hdhwills.org/grants/",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 4908,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:39f64f1ecd95b93b1d93d7944457eecf23828296947ed9e5d88347e29e64cafa"
+    },
+    {
+      "ref": "D2",
+      "url": "https://hdhwills.org/grants/grant-applications-faqs/",
+      "final_url": "https://hdhwills.org/grants/grant-applications-faqs/",
+      "from": "https://hdhwills.org/grants/",
+      "anchor": "Grant Applications FAQs",
+      "depth": 1,
+      "pdf": false,
+      "chars": 3058,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:3ab93ff5ccb9b4e57e07f3a73d03f74188fcc06eee91d8afe1a9de5fdb9740d5"
+    },
+    {
+      "ref": "D3",
+      "url": "https://hdhwills.org/grants/online-application-form/",
+      "final_url": "https://hdhwills.org/grants/online-application-form/",
+      "from": "https://hdhwills.org/grants/",
+      "anchor": "ONLINE APPLICATION",
+      "depth": 1,
+      "pdf": false,
+      "chars": 1473,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:7c7cce90ca2d24207d37bb92fe3efac12c821079aa49a7c3af254461169d7e36"
+    },
+    {
+      "ref": "D4",
+      "url": "https://hdhwills.org/privacy-policy/",
+      "final_url": "https://hdhwills.org/privacy-policy/",
+      "from": "https://hdhwills.org/grants/",
+      "anchor": "Privacy Policy",
+      "depth": 1,
+      "pdf": false,
+      "chars": 10190,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:2005394f4bbbf6d89c8df760a4b2c36543a227660341c585ee3956d2c11b9d50"
+    },
+    {
+      "ref": "D5",
+      "url": "https://hdhwills.org/wp-content/uploads/2019/01/Data-Privacy-Impact-Assessment.docx",
+      "final_url": "https://hdhwills.org/wp-content/uploads/2019/01/Data-Privacy-Impact-Assessment.docx",
+      "from": "https://hdhwills.org/privacy-policy/",
+      "anchor": "Data Privacy Impact Assessment",
+      "depth": 2,
+      "pdf": false,
+      "chars": 1894,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:c906170306668d0381f0b35e04a813b0bce08522fab1c3b508d3e336fd4e4c98"
+    },
+    {
+      "ref": "D6",
+      "url": "https://hdhwills.org/wp-content/uploads/2026/10/CCTV-Policy.docx",
+      "final_url": "https://hdhwills.org/wp-content/uploads/2026/10/CCTV-Policy.docx",
+      "from": "https://hdhwills.org/privacy-policy/",
+      "anchor": "CCTV policy",
+      "depth": 2,
+      "pdf": false,
+      "chars": 6002,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:b162d635601b3cb28ff5943a63f2426f0b969a7f0eec6a4c440b80553b70bd93"
+    }
+  ],
+  "failures": [],
+  "skipped_links": 28,
+  "chunks": [{ "id": "all", "docs": ["D1", "D2", "D3", "D4", "D5", "D6"], "chars": 28149 }],
+  "outcomes": {
+    "eligibility": "stated",
+    "documents": "stated",
+    "effort": "stated",
+    "co_finance": "not_found",
+    "consortium": "not_found",
+    "after_award": "stated"
+  },
+  "written": ["eligibility", "documents", "effort", "after_award"],
+  "escalated": [],
+  "flags": [],
+  "notes": [
+    "extractor: The application window is stated as 1 April to 31 August, but no year is given, so no due date is recorded. D1 says Martin Wills Fund decisions are made in early December; D2 gives a general month-by-month review statement.",
+    "source hdh-wills-martin-wills-fund-2: added for https://hdhwills.org/grants/grant-applications-faqs/",
+    "source hdh-wills-martin-wills-fund-3: added for https://hdhwills.org/privacy-policy/"
+  ],
+  "usd": 0
+}

@@ -2,6 +2,7 @@
 
 What a visitor to naturefunding.org can see or do that they couldn't before, newest first. One line per merged change, added in the same PR (AGENTS.md). The naturefunding.org LinkedIn Page drafts its update posts from this list. Emails count once `DIGEST_SENDING` is `live`.
 
+- 2026-11-20 · 28 more programmes show Before you apply (Heritage Council Community Heritage Grants, Inland Fisheries Ireland habitats fund, HCF Holomua Pāpio grants, Highland Nature Restoration Fund and more), each fact in the funder's words and checked by a second reader · https://naturefunding.org/p/ifi-habitats-conservation-fund/#before-title · #PR
 - 2026-11-20 · 26 more programmes show Before you apply (Eastern Brook Trout Joint Venture, Hong Kong Environment and Conservation Fund, Dulverton Trust, Disney Conservation Fund and more), each fact in the funder's words and checked by a second reader · https://naturefunding.org/p/ebtjv-habitat-project-funding/#before-title · #766
 - 2026-11-20 · 22 more programmes show Before you apply (California Tribal Nature-Based Solutions, Compagnia di San Paolo Simbiosi, Davis Conservation Foundation, Cornare Tejiendo Vida and more), each fact in the funder's words and checked by a second reader · https://naturefunding.org/p/cnra-tribal-nature-based-solutions/#before-title · #765
 - 2026-11-20 · The BirdsCaribbean Betty Petersen Conservation Fund shows its 2027 round as suspended, as the funder states · https://naturefunding.org/p/birdscaribbean-betty-petersen-conservation-fund/ · #764
