@@ -2,7 +2,7 @@
 
 What a visitor to naturefunding.org can see or do that they couldn't before, newest first. One line per merged change, added in the same PR (AGENTS.md). The naturefunding.org LinkedIn Page drafts its update posts from this list. Emails count once `DIGEST_SENDING` is `live`.
 
-- 2026-11-20 · 23 more programmes show Before you apply (KlimaWildnis, Miljødirektoratet, Maine Natural Resource Conservation, Mid Suffolk and more), each fact in the funder's words and checked by a second reader · https://naturefunding.org/p/klimawildnis/#before-title · #PR
+- 2026-11-20 · 23 more programmes show Before you apply (KlimaWildnis, Miljødirektoratet, Maine Natural Resource Conservation, Mid Suffolk and more), each fact in the funder's words and checked by a second reader · https://naturefunding.org/p/klimawildnis/#before-title · #754
 - 2026-11-20 · 24 more programmes show Before you apply (IKI, GEF Small Grants, Hudson River Estuary, Ian Potter and more), each fact in the funder's words and checked by a second reader · https://naturefunding.org/p/iki-medium-grants/#before-title · #753
 - 2026-11-20 · 25 more programmes show Before you apply (Esmée Fairbairn, Foundation North, EPA SNEP, Fundo Ecos and more), each fact in the funder's words and checked by a second reader; Norwegian and Danish quotes now show ø, å and æ instead of codes · https://naturefunding.org/p/fundo-ecos/#before-title · #751
 - 2026-11-20 · 25 more programmes show Before you apply (DBU, Coast Funds, DFO, Chesapeake Bay Trust and more), each fact in the funder's words and checked by a second reader · https://naturefunding.org/p/dfo-habitat-stewardship-aquatic/#before-title · #657
