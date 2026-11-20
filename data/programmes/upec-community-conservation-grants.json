@@ -16,13 +16,50 @@
     "freshwater",
     "species_conservation"
   ],
-  "applicant_types": ["ngo"],
-  "geography": { "scope": "countries", "countries": ["US"], "label": "Upper Peninsula, Michigan" },
+  "applicant_types": [
+    "ngo"
+  ],
+  "geography": {
+    "scope": "countries",
+    "countries": [
+      "US"
+    ],
+    "label": "Upper Peninsula, Michigan"
+  },
   "access": "direct",
   "window": "fixed",
-  "amount": { "currency": "USD", "min": 1500, "max": 10000, "typical": true },
+  "amount": {
+    "currency": "USD",
+    "min": 1500,
+    "max": 10000,
+    "typical": true
+  },
   "co_finance_required": null,
   "reporting": "A detailed budget is expected, and a final report on how the money was spent.",
+  "effort": {
+    "steps": [
+      "Application form"
+    ],
+    "due": [
+      "2027-01-11"
+    ]
+  },
+  "eligibility": [
+    {
+      "rule": "Have 501(c)3 status",
+      "kind": "legal"
+    },
+    {
+      "rule": "Project takes place in the UP",
+      "kind": "project"
+    }
+  ],
+  "after_award": {
+    "reports": "final"
+  },
+  "documents": [
+    "Detailed budget"
+  ],
   "calls": [
     {
       "id": "round-2027",
@@ -30,7 +67,10 @@
       "url": "https://www.upenvironment.org/community-conservation-grants",
       "status": "open",
       "opens": null,
-      "deadline": { "date": "2027-01-11", "text": "January 11, 2027" },
+      "deadline": {
+        "date": "2027-01-11",
+        "text": "January 11, 2027"
+      },
       "evidence": {
         "status": {
           "source_url": "https://www.upenvironment.org/community-conservation-grants",
@@ -83,7 +123,45 @@
       "quote": "A detailed budget is expected, as well as a final report on how the money was actually spent.",
       "checked_at": "2026-11-20",
       "method": "page"
-    }
+    },
+    "effort": [
+      {
+        "source_url": "https://www.upenvironment.org/community-conservation-grants",
+        "quote": "Applications for the 2027 round of grants are due January 11, 2027. Apply by filling out the form below.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "eligibility": [
+      {
+        "source_url": "https://www.upenvironment.org/community-conservation-grants",
+        "quote": "Applicants must have 501(c)3 status",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.upenvironment.org/community-conservation-grants",
+        "quote": "the project must take place in the UP",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "after_award": [
+      {
+        "source_url": "https://www.upenvironment.org/community-conservation-grants",
+        "quote": "a final report on how the money was actually spent.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "documents": [
+      {
+        "source_url": "https://www.upenvironment.org/community-conservation-grants",
+        "quote": "A detailed budget is expected",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ]
   },
   "checked_at": "2026-11-20"
 }

@@ -1,20 +1,86 @@
 {
   "id": "utrecht-bestrijding-invasieve-exoten",
   "name": "Provincie Utrecht Subsidie Bestrijding en beheersing invasieve exoten",
-  "funder": { "name": "Provincie Utrecht", "url": "https://www.provincie-utrecht.nl/" },
+  "funder": {
+    "name": "Provincie Utrecht",
+    "url": "https://www.provincie-utrecht.nl/"
+  },
   "administered_by": null,
   "parent": null,
   "url": "https://www.provincie-utrecht.nl/loket/subsidies/bestrijding-en-beheersing-invasieve-exoten",
   "summary": "Province of Utrecht subsidy (chapter 4 of its rural-area regulation) for controlling priority invasive alien species and restoring biodiversity after their damage in nature areas; up to 100% of costs and EUR 75,000 per project.",
-  "approaches": ["species_conservation"],
-  "applicant_types": ["ngo", "company"],
-  "geography": { "scope": "countries", "countries": ["NL"], "label": "Province of Utrecht" },
+  "approaches": [
+    "species_conservation"
+  ],
+  "applicant_types": [
+    "ngo",
+    "company"
+  ],
+  "geography": {
+    "scope": "countries",
+    "countries": [
+      "NL"
+    ],
+    "label": "Province of Utrecht"
+  },
   "access": "direct",
   "window": "fixed",
-  "amount": { "currency": "EUR", "max": 75000, "note": "Up to 100% of eligible costs" },
-  "pool": { "currency": "EUR", "value": 500000, "period": "year", "label": "2026" },
+  "amount": {
+    "currency": "EUR",
+    "max": 75000,
+    "note": "Up to 100% of eligible costs"
+  },
+  "pool": {
+    "currency": "EUR",
+    "value": 500000,
+    "period": "year",
+    "label": "2026"
+  },
   "co_finance_required": null,
+  "consortium_required": false,
   "reporting": "Share a monitoring report with the province after the work, covering the starting situation, methods used and end situation; record the species in the national flora and fauna database.",
+  "eligibility": [
+    {
+      "rule": "Carries out the activity in, or directs it at, the Province of Utrecht",
+      "kind": "project"
+    },
+    {
+      "rule": "Shows the relevant species can demonstrably harm biodiversity at the project location",
+      "kind": "project"
+    },
+    {
+      "rule": "Makes lasting reduction of the invasive species plausible, unless the activity is efficacy research",
+      "kind": "project"
+    },
+    {
+      "rule": "For invasive exotic crayfish, conducts research specifically into control and management methods",
+      "kind": "project"
+    },
+    {
+      "rule": "Uses native, autochthonous and regionally sourced planting and seed material for biodiversity restoration",
+      "kind": "project"
+    },
+    {
+      "rule": "Does not use glyphosate to control the invasive species",
+      "kind": "project"
+    },
+    {
+      "rule": "Targets one or more of the listed invasive alien species",
+      "kind": "project"
+    },
+    {
+      "rule": "Execution projects take place in a listed area (NNN, Natura 2000, KRW waters, species habitats and others)",
+      "kind": "project"
+    }
+  ],
+  "documents": [
+    "Project plan: place, species, measures, planning, upkeep and monitoring",
+    "Map of project locations and planned measures",
+    "Consent of all partners, for a partnership",
+    "Signed De-minimis declaration, if used",
+    "Budget with cost justification and funding plan",
+    "Incorporation deed and statutes, for a first application"
+  ],
   "calls": [
     {
       "id": "2026",
@@ -87,12 +153,124 @@
       "checked_at": "2026-11-20",
       "method": "page"
     },
+    "consortium_required": {
+      "source_url": "https://lokaleregelgeving.overheid.nl/CVDR732379",
+      "quote": "Subsidie kan worden verstrekt aan: a. rechtspersonen;",
+      "checked_at": "2026-11-20",
+      "method": "page"
+    },
     "reporting": {
       "source_url": "https://lokaleregelgeving.overheid.nl/CVDR732379",
       "quote": "na afloop van uitvoeringsactiviteiten de resultaten van de gesubsidieerde activiteiten middels een monitoringsverslag te delen met de provincie Utrecht",
       "checked_at": "2026-11-20",
       "method": "page"
-    }
+    },
+    "eligibility": [
+      {
+        "source_url": "https://www.provincie-utrecht.nl/loket/subsidies/bestrijding-en-beheersing-invasieve-exoten",
+        "quote": "De activiteit uitgevoerd wordt in of is gericht op de provincie Utrecht.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.provincie-utrecht.nl/loket/subsidies/bestrijding-en-beheersing-invasieve-exoten",
+        "quote": "De activiteit betrekking heeft op locaties waar de soorten, genoemd onder 2. de biodiversiteit aantoonbaar negatief kunnen beïnvloeden of hebben beïnvloed",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.provincie-utrecht.nl/loket/subsidies/bestrijding-en-beheersing-invasieve-exoten",
+        "quote": "Vooraf aannemelijk kan worden gemaakt dat de activiteit in hoge mate bijdraagt aan het blijvend terugdringen van desbetreffende invasieve exoot op de beoogde locatie, tenzij de activiteit onderzoek naar één of meer bestrijdingsmethoden betreft waarvan de effectiviteit juist onderzocht zal worden.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.provincie-utrecht.nl/loket/subsidies/bestrijding-en-beheersing-invasieve-exoten",
+        "quote": "Een activiteit gericht op uitheemse invasieve rivierkreeftsoorten komt uitsluitend voor subsidie in aanmerking indien het specifiek 'onderzoek naar bestrijdings- en beheersmethoden' betreft.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.provincie-utrecht.nl/loket/subsidies/bestrijding-en-beheersing-invasieve-exoten",
+        "quote": "Een activiteit gericht op herstel van biodiversiteit na schade veroorzaakt door een of meer invasieve exoten, komt uitsluitend voor subsidie in aanmerking indien benodigd plant- en zaaigoed dat wordt gebruikt om het ecosysteem weerbaarder te maken tegen exoten, inheems, autochtoon en van regionale afkomst is.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://lokaleregelgeving.overheid.nl/CVDR732379",
+        "quote": "toepassing van glyfosaat om invasieve exoten te bestrijden of te beheersen",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://lokaleregelgeving.overheid.nl/CVDR732379",
+        "quote": "de activiteit is gericht op bestrijding en beheersing van, dan wel het herstel van biodiversiteit na schade door één of meer van de volgende invasieve exoten:",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://lokaleregelgeving.overheid.nl/CVDR732379",
+        "quote": "i. leefgebieden van Utrechtse aandachtsoorten; ii. het Natuurnetwerk Nederland (NNN); iii. KRW-oppervlaktewaterlichamen; iv. Natura 2000-gebieden; v. Weidevogelkerngebieden; vi. Ganzenrustgebieden; vii. Groene contour; viii. Waterparels; ix. Kleine landschapselementen; x. Waardevolle houtopstanden buiten de bebouwde kom;",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "documents": [
+      {
+        "source_url": "https://lokaleregelgeving.overheid.nl/CVDR732379",
+        "quote": "een projectplan dat in ieder geval beschrijft waar het project of programma wordt uitgevoerd",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://lokaleregelgeving.overheid.nl/CVDR732379",
+        "quote": "Met ondersteunend kaartmateriaal wordt bedoeld dat op kaart aangegeven wordt op welke locatie(s) het project betrekking heeft en waar de voorgenomen maatregelen uitgevoerd gaan worden.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://lokaleregelgeving.overheid.nl/CVDR732379",
+        "quote": "als er sprake is van een samenwerkingsverband van meerdere deelnemers, een document waaruit de instemming blijkt van alle deelnemers van het samenwerkingsverband",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://lokaleregelgeving.overheid.nl/CVDR732379",
+        "quote": "als gebruik wordt gemaakt van een De-minimisverordening, een volledig ingevulde en ondertekende De-minimisverklaring.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.provincie-utrecht.nl/loket/subsidies/hoe-kunt-u-subsidie-aanvragen",
+        "quote": "Begroting: begroting en onderbouwing van de kostenposten in de begroting, inclusief dekkingsplan; De meest recente statuten: Als een rechtspersoon voor de eerste keer subsidie aanvraagt, dient hij tevens de oprichtingsakte en de statuten aan te leveren.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "effort": [
+      {
+        "source_url": "https://lokaleregelgeving.overheid.nl/CVDR732379",
+        "quote": "Dit gebeurt d.m.v. het invullen van een digitaal formulier op de site van de provincie.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "after_award": [
+      {
+        "source_url": "https://lokaleregelgeving.overheid.nl/CVDR732379",
+        "quote": "na afloop van uitvoeringsactiviteiten de resultaten van de gesubsidieerde activiteiten middels een monitoringsverslag te delen met de provincie Utrecht.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ]
   },
-  "checked_at": "2026-11-20"
+  "checked_at": "2026-11-20",
+  "effort": {
+    "steps": [
+      "Digital application form with attachments"
+    ]
+  },
+  "after_award": {
+    "reports": "final"
+  }
 }

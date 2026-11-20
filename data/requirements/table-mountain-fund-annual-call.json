@@ -1,0 +1,60 @@
+{
+  "id": "table-mountain-fund-annual-call",
+  "read_on": "2026-11-20",
+  "prompt_version": "req-2026-11-20.1",
+  "models": ["cursor:gpt-5.6-luna-high"],
+  "complete": false,
+  "reasons": [
+    "4 links could not be ranked without Jev",
+    "the text names a document with rules that was not read: Full proposal guidelines",
+    "Jev did not check this reading, so an absent fact is not known to be absent"
+  ],
+  "requirements_checked": false,
+  "documents": [
+    {
+      "ref": "D1",
+      "url": "https://www.thetablemountainfund.org.za/grants/",
+      "final_url": "https://www.thetablemountainfund.org.za/grants/",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 4461,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:4bc9c85997777645f3a661898cc5510182b2a3d047cd32f914c7b8bab4d1dbc9"
+    },
+    {
+      "ref": "D2",
+      "url": "https://www.thetablemountainfund.org.za/wp-content/uploads/2026/03/TMF-Call-for-Concept-Proposals-FY2027.pdf",
+      "final_url": "https://www.thetablemountainfund.org.za/wp-content/uploads/2026/03/TMF-Call-for-Concept-Proposals-FY2027.pdf",
+      "from": "https://www.thetablemountainfund.org.za/grants/",
+      "anchor": "Download the full proposal guidelines",
+      "depth": 1,
+      "pdf": true,
+      "chars": 9115,
+      "pages": 4,
+      "low_text": false,
+      "hash": "sha256:d1b62d0075255d3daab57fffdca1f5a77eb19a111a3cf42f2f3e9ce08f13a967"
+    }
+  ],
+  "failures": [],
+  "skipped_links": 48,
+  "chunks": [{ "id": "all", "docs": ["D1", "D2"], "chars": 13825 }],
+  "outcomes": {
+    "eligibility": "stated",
+    "documents": "not_found",
+    "effort": "stated",
+    "co_finance": "not_found",
+    "consortium": "not_found",
+    "after_award": "not_found"
+  },
+  "written": ["eligibility", "effort"],
+  "escalated": [],
+  "flags": [],
+  "notes": [
+    "extractor: Co-financing is favourably considered but is not stated as required. Successful projects must attend and present at Fynbos Forum at least once during the project term and provide a short project video. The 2027 call is stated to open in early 2027, but its deadline and requirements are not provided.",
+    "source table-mountain-fund-annual-call-2: added for https://www.thetablemountainfund.org.za/wp-content/uploads/2026/03/TMF-Call-for-Concept-Proposals-FY2027.pdf"
+  ],
+  "usd": 0
+}

@@ -1,0 +1,50 @@
+{
+  "id": "tuebingen-umwelt-naturschutz-projektfoerderung",
+  "read_on": "2026-11-20",
+  "prompt_version": "req-2026-11-20.1",
+  "models": ["cursor:gpt-5.6-luna-high"],
+  "complete": false,
+  "reasons": [
+    "the text names a document with rules that was not read: Hauptsatzung",
+    "the text names a document with rules that was not read: Haushaltsplan",
+    "the text names a document with rules that was not read: Beiblatt Anlage Rücklagen für alle städtischen Förderrichtlinien der Universitätsstadt Tübingen",
+    "the text names a document with rules that was not read: Ökokontoverordnung vom 19. Dezember 2010 (ÖKVO)",
+    "Jev did not check this reading, so an absent fact is not known to be absent"
+  ],
+  "requirements_checked": false,
+  "documents": [
+    {
+      "ref": "D1",
+      "url": "https://www.tuebingen.de/verwaltung/formular/77.pdf",
+      "final_url": "https://www.tuebingen.de/verwaltung/uploads/formular_foerderrichtlinien_zuschuesse_umwelt_naturschutz.pdf",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": true,
+      "chars": 11112,
+      "pages": 4,
+      "low_text": false,
+      "hash": "sha256:d43d309f92fcf65e11c803bf7566f7bf7480b084dcdd82e631a00e8f15fb23ea"
+    }
+  ],
+  "failures": [],
+  "skipped_links": 0,
+  "chunks": [{ "id": "all", "docs": ["D1"], "chars": 11182 }],
+  "outcomes": {
+    "eligibility": "stated",
+    "documents": "stated",
+    "effort": "stated",
+    "co_finance": "stated",
+    "consortium": "not_found",
+    "after_award": "stated"
+  },
+  "written": ["eligibility", "documents", "effort", "co_finance", "after_award"],
+  "escalated": [],
+  "flags": [],
+  "notes": [
+    "co_finance: share 10% dropped, its quote does not state it",
+    "extractor: D1 distinguishes regular funding from project funding; this extraction covers project funding. Project applications may be submitted for the following year or during the year. The 30 June date is described as an optional planning cutoff, not a mandatory project-funding deadline. Individuals have a maximum grant rate of 50 percent; associations, federations and initiatives have a maximum rate of 90 percent.",
+    "source tuebingen-umwelt-naturschutz-projektfoerderung-1: selector main dropped, a new quote sits outside it"
+  ],
+  "usd": 0
+}

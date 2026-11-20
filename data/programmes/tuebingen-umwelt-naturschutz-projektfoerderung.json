@@ -9,14 +9,70 @@
   "parent": null,
   "url": "https://www.tuebingen.de/verwaltung/formular/77.pdf",
   "summary": "Tübingen city grants for time-limited nature projects such as creating and caring for habitats and protecting threatened species. Covers up to 90 percent of eligible costs for groups.",
-  "approaches": ["grasslands", "wetlands", "species_conservation"],
-  "applicant_types": ["ngo", "community_group", "individual"],
-  "geography": { "scope": "countries", "countries": ["DE"], "label": "Tübingen" },
+  "approaches": [
+    "grasslands",
+    "wetlands",
+    "species_conservation"
+  ],
+  "applicant_types": [
+    "ngo",
+    "community_group",
+    "individual"
+  ],
+  "geography": {
+    "scope": "countries",
+    "countries": [
+      "DE"
+    ],
+    "label": "Tübingen"
+  },
   "access": "direct",
   "window": "rolling",
   "amount": null,
-  "co_finance_required": null,
+  "co_finance_required": true,
   "reporting": null,
+  "effort": {
+    "steps": [
+      "Project funding application"
+    ]
+  },
+  "eligibility": [
+    {
+      "rule": "The project mainly preserves natural conditions or improves impaired environmental concerns in Tübingen.",
+      "kind": "project"
+    },
+    {
+      "rule": "Names a person responsible for implementation, funds and contact with the city.",
+      "kind": "capacity"
+    },
+    {
+      "rule": "The project is neither required by a third party nor eligible for Ökopunkte under §2 Abs.1 ÖKVO.",
+      "kind": "project"
+    },
+    {
+      "rule": "Is not a recipient of regular funding.",
+      "kind": "other"
+    },
+    {
+      "rule": "The project is not located on house or allotment gardens.",
+      "kind": "project"
+    },
+    {
+      "rule": "The project lasts no longer than three years.",
+      "kind": "project"
+    }
+  ],
+  "co_finance": {
+    "min_share": 10,
+    "applies_to": "Associations and initiatives; individuals bring at least 50%"
+  },
+  "after_award": {
+    "reports": "final"
+  },
+  "documents": [
+    "Property owner's consent declaration for maintenance or upkeep measures",
+    "Budget for an association or initiative applying for more than €1,000"
+  ],
   "calls": [
     {
       "id": "project-funding",
@@ -59,7 +115,87 @@
       "quote": "Anträge für die Projektförderung können sowohl für das Folgejahr als auch unterjährig gestellt werden.",
       "checked_at": "2026-11-20",
       "method": "page"
-    }
+    },
+    "co_finance_required": {
+      "source_url": "https://www.tuebingen.de/verwaltung/formular/77.pdf",
+      "quote": "Übernommen werden maximal 90 Prozent der zuschussfähigen Aufwendungen. Für Einzelpersonen beträgt die Förderquote maximal 50 Prozent der zuschussfähigen Aufwendungen.",
+      "checked_at": "2026-11-20",
+      "method": "page"
+    },
+    "effort": [
+      {
+        "source_url": "https://www.tuebingen.de/verwaltung/formular/77.pdf",
+        "quote": "Die Förderung muss schriftlich mit dem jeweiligen Antragsformular bei der Stabsstelle Umweltund Klimaschutz beantragt werden.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "eligibility": [
+      {
+        "source_url": "https://www.tuebingen.de/verwaltung/formular/77.pdf",
+        "quote": "zu Maßnahmen oder für Leistungen, die in besonderem Maße dem Erhalt der natürlichen Umweltbedingungen oder zur Verbesserung von beeinträchtigten Umweltbelangen schwerpunktmäßig auf dem Gebiet der Universitätsstadt Tübingen beitragen.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.tuebingen.de/verwaltung/formular/77.pdf",
+        "quote": "Voraussetzung für die Gewährung eines städtischen Zuschusses ist die Benennung einer Person, die für die Umsetzung der Maßnahme bzw. die Verwendung der Fördermittel verantwortlich und Ansprechpartner_in für die Stadtverwaltung ist.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.tuebingen.de/verwaltung/formular/77.pdf",
+        "quote": "Nicht förderfähig sind insbesondere Maßnahmen, für die eine Verpflichtung durch Dritte besteht oder für die Ökopunkte gemäß §2 Abs.1 der Ökokontoverordnung vom 19. Dezember 2010 (ÖKVO) erzielt werden können.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.tuebingen.de/verwaltung/formular/77.pdf",
+        "quote": "Ausgenommen sind Regelzuschussempfänger_innen.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.tuebingen.de/verwaltung/formular/77.pdf",
+        "quote": "Maßnahmen auf Haus- oder Schrebergärten sind nicht förderfähig.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.tuebingen.de/verwaltung/formular/77.pdf",
+        "quote": "Die Projektlaufzeit darf drei Jahre nicht überschreiten.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "co_finance": {
+      "source_url": "https://www.tuebingen.de/verwaltung/formular/77.pdf",
+      "quote": "Übernommen werden maximal 90 Prozent der zuschussfähigen Aufwendungen. Für Einzelpersonen beträgt die Förderquote maximal 50 Prozent der zuschussfähigen Aufwendungen.",
+      "checked_at": "2026-11-20",
+      "method": "page"
+    },
+    "after_award": [
+      {
+        "source_url": "https://www.tuebingen.de/verwaltung/formular/77.pdf",
+        "quote": "Beizulegen ist ein Sachbericht über die geleistete Arbeit sowie die Nachweise über die Verwendung der Zuschüsse (Belege, Rechnungen, etc).",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "documents": [
+      {
+        "source_url": "https://www.tuebingen.de/verwaltung/formular/77.pdf",
+        "quote": "bei Pflege- oder Unterhaltungsmaßnahmen Erklärung der/des Eigentümer_in, dass er/sie mit der Maßnahme einverstanden ist",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.tuebingen.de/verwaltung/formular/77.pdf",
+        "quote": "bei Vereinen / Initiativen, die mehr als 1.000 Euro Projektmittel beantragen: Wirtschaftsplan des Vereins/der Initiative",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ]
   },
   "checked_at": "2026-11-20"
 }
