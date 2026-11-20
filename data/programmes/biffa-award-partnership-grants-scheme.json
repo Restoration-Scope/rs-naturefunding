@@ -1,19 +1,75 @@
 {
   "id": "biffa-award-partnership-grants-scheme",
   "name": "Biffa Award Partnership Grants Scheme (natural environment theme)",
-  "funder": { "name": "Biffa Award", "url": "https://www.biffa-award.org/" },
+  "funder": {
+    "name": "Biffa Award",
+    "url": "https://www.biffa-award.org/"
+  },
   "administered_by": null,
   "parent": null,
   "url": "https://www.biffa-award.org/who-we-support/partnership-grants-scheme-closed",
   "summary": "Large grants of £250,000 to £1,000,000 for constituted not-for-profits near Biffa sites, with a natural environment theme for protecting and restoring species, habitats and natural processes. A built environment theme runs alongside; the 2026 round is closed.",
-  "approaches": ["species_conservation", "protected_areas"],
-  "applicant_types": ["ngo"],
+  "approaches": [
+    "species_conservation",
+    "protected_areas"
+  ],
+  "applicant_types": [
+    "ngo"
+  ],
   "geography": null,
   "access": "direct",
   "window": "fixed",
-  "amount": { "currency": "GBP", "min": 250000, "max": 1000000 },
+  "amount": {
+    "currency": "GBP",
+    "min": 250000,
+    "max": 1000000
+  },
   "co_finance_required": true,
   "reporting": null,
+  "effort": {
+    "steps": [
+      "Expression of Interest",
+      "Full Application, if invited"
+    ],
+    "due": [
+      "2026-05-29",
+      null
+    ]
+  },
+  "eligibility": [
+    {
+      "rule": "Has a fully constituted charitable or not-for-profit status and no share capital",
+      "kind": "legal"
+    },
+    {
+      "rule": "Not a local authority, hospice, hospital, care/day-care/rehab/activity/wellness centre, allotment, school or college",
+      "kind": "legal"
+    },
+    {
+      "rule": "Project site is within 25 miles of a significant Biffa operation or active landfill site",
+      "kind": "project"
+    },
+    {
+      "rule": "Project site is within 10 miles of a licensed landfill site",
+      "kind": "project"
+    },
+    {
+      "rule": "Not a village hall, community centre or church",
+      "kind": "legal"
+    },
+    {
+      "rule": "Secures all shortfall funding",
+      "kind": "finances"
+    },
+    {
+      "rule": "Has planning permission and required work licences before submitting the Expression of Interest",
+      "kind": "project"
+    },
+    {
+      "rule": "For Natural Environment projects on land it does not own, has a signed 25-year landowner access agreement",
+      "kind": "project"
+    }
+  ],
   "calls": [
     {
       "id": "2026",
@@ -21,7 +77,11 @@
       "url": "https://www.biffa-award.org/who-we-support/partnership-grants-scheme-closed",
       "status": "closed",
       "opens": null,
-      "deadline": { "date": "2026-05-29", "time": "17:00", "text": "5pm, 29 May 2026" },
+      "deadline": {
+        "date": "2026-05-29",
+        "time": "17:00",
+        "text": "5pm, 29 May 2026"
+      },
       "evidence": {
         "status": {
           "source_url": "https://www.biffa-award.org/who-we-support/partnership-grants-scheme-closed",
@@ -64,11 +124,75 @@
       "method": "page"
     },
     "co_finance_required": {
-      "source_url": "https://www.biffa-award.org/who-we-support/partnership-grants-scheme-closed",
-      "quote": "A Third Party Contributor to fund 10% of the application value should be identified",
+      "source_url": "https://www.biffa-award.org/about-us/frequently-asked-questions",
+      "quote": "The remaining 10% must come from another source.",
       "checked_at": "2026-11-20",
       "method": "page"
-    }
+    },
+    "effort": [
+      {
+        "source_url": "https://www.biffa-award.org/who-we-support/partnership-grants-scheme-closed",
+        "quote": "Expression of Interest submission deadline date: 5pm, 29 May 2026",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.biffa-award.org/who-we-support/partnership-grants-scheme-closed",
+        "quote": "Full Application submission (if invited forward)",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "eligibility": [
+      {
+        "source_url": "https://www.biffa-award.org/who-we-support/partnership-grants-scheme-closed",
+        "quote": "The organisation must be a fully constituted, charitable or not-for-profit organisation with no share capital.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.biffa-award.org/who-we-support/partnership-grants-scheme-closed",
+        "quote": "Unfortunately, local authorities, hospices, hospitals, day-care centres, rehabilitation units, residential care facilities, allotment sites, activity centres, wellness centres and schools/colleges are not eligible to make an application through the Biffa Award scheme.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.biffa-award.org/who-we-support/partnership-grants-scheme-closed",
+        "quote": "The project site must be within 25 miles of a significant Biffa Operation or active Biffa Landfill Site",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.biffa-award.org/who-we-support/partnership-grants-scheme-closed",
+        "quote": "The project site must ALSO be within 10 miles of a licenced landfill site",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.biffa-award.org/who-we-support/partnership-grants-scheme-closed",
+        "quote": "Village halls, community centres and churches are excluded from making an application to the Partnership Grants Scheme.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.biffa-award.org/who-we-support/partnership-grants-scheme-closed",
+        "quote": "All shortfall funding must be secured",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.biffa-award.org/who-we-support/partnership-grants-scheme-closed",
+        "quote": "Planning permission and or licences to undertake any work must have been granted prior to the submission of an Expression of Interest",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.biffa-award.org/who-we-support/partnership-grants-scheme-closed",
+        "quote": "A fully signed landowner agreement, giving permission to access the site for maintenance, surveying and monitoring for at least 25 years post completion of the project must be in in place for Natural Environment projects, if the applicant does not own the land",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ]
   },
   "checked_at": "2026-11-20"
 }

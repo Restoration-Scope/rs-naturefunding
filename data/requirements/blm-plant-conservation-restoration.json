@@ -1,0 +1,93 @@
+{
+  "id": "blm-plant-conservation-restoration",
+  "read_on": "2026-11-20",
+  "prompt_version": "req-2026-11-20.1",
+  "models": ["cursor:gpt-5.6-luna-high", "cursor:gpt-5.6-sol-high"],
+  "complete": false,
+  "reasons": [
+    "5 links could not be ranked without Jev",
+    "https://files.simpler.grants.gov/opportunities/8608180b-b65c-45e6-844c-c420e4c78c2d/attachments/245e0537-21e7-4f50-8669-54f0f47821c9/O_Attachment_B_Budget_Detail_Narrative_-_02.09.2026.xlsx would not open (unreadable: an old Word (.doc), OpenDocument or RTF file: needs conversion)",
+    "https://www.grants.gov/privacy-policy would not open (network: unable to verify the first certificate)",
+    "the text names a document with rules that was not read: Attachment - Submission Instructions & Tips",
+    "the text names a document with rules that was not read: Quick Start Guide for Applicants",
+    "the text names a document with rules that was not read: DOI General Terms and Conditions",
+    "the text names a document with rules that was not read: https://www.whitehouse.gov/presidential-actions/",
+    "the text names a document with rules that was not read: https://www.doi.gov/document-library/secretary-order",
+    "the text names a document with rules that was not read: 2 CFR Part 184 - Buy America Preferences for Infrastructure Project",
+    "Jev did not check this reading, so an absent fact is not known to be absent"
+  ],
+  "requirements_checked": false,
+  "documents": [
+    {
+      "ref": "D1",
+      "url": "https://simpler.grants.gov/opportunity/8608180b-b65c-45e6-844c-c420e4c78c2d",
+      "final_url": "https://simpler.grants.gov/opportunity/8608180b-b65c-45e6-844c-c420e4c78c2d",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 7507,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:4f13e6e94effc6a3f3f77e7c9edb5b77c53b3916eafa021b20629560d569b6ee"
+    },
+    {
+      "ref": "D2",
+      "url": "https://files.simpler.grants.gov/opportunities/8608180b-b65c-45e6-844c-c420e4c78c2d/attachments/bce7e455-228e-4933-9b20-260196a19328/03_M_15.245_Attachment_A.docx",
+      "final_url": "https://files.simpler.grants.gov/opportunities/8608180b-b65c-45e6-844c-c420e4c78c2d/attachments/bce7e455-228e-4933-9b20-260196a19328/03_M_15.245_Attachment_A.docx",
+      "from": "https://simpler.grants.gov/opportunity/8608180b-b65c-45e6-844c-c420e4c78c2d",
+      "anchor": "03_M_15.245_Attachment_A.docx",
+      "depth": 1,
+      "pdf": false,
+      "chars": 5973,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:89bcf63ddc4c8cb5ef27357e8ab3175124bb1f4b72840417c054f26bf60356ae"
+    },
+    {
+      "ref": "D3",
+      "url": "https://files.simpler.grants.gov/opportunities/8608180b-b65c-45e6-844c-c420e4c78c2d/attachments/fc33e1a9-236e-4449-8c49-40e94409efc3/Foa_Content_of_L26AS00050_Plants.pdf",
+      "final_url": "https://files.simpler.grants.gov/opportunities/8608180b-b65c-45e6-844c-c420e4c78c2d/attachments/fc33e1a9-236e-4449-8c49-40e94409efc3/Foa_Content_of_L26AS00050_Plants.pdf",
+      "from": "https://simpler.grants.gov/opportunity/8608180b-b65c-45e6-844c-c420e4c78c2d",
+      "anchor": "Foa_Content_of_L26AS00050_Plants.pdf",
+      "depth": 1,
+      "pdf": true,
+      "chars": 50454,
+      "pages": 22,
+      "low_text": false,
+      "hash": "sha256:a2c2a6342879c72a98fa271982b001b59fa2bd9f9dfc7c525940c2e1a058a5dd"
+    }
+  ],
+  "failures": [
+    {
+      "url": "https://files.simpler.grants.gov/opportunities/8608180b-b65c-45e6-844c-c420e4c78c2d/attachments/245e0537-21e7-4f50-8669-54f0f47821c9/O_Attachment_B_Budget_Detail_Narrative_-_02.09.2026.xlsx",
+      "from": "https://simpler.grants.gov/opportunity/8608180b-b65c-45e6-844c-c420e4c78c2d",
+      "kind": "unreadable",
+      "message": "an old Word (.doc), OpenDocument or RTF file: needs conversion"
+    },
+    {
+      "url": "https://www.grants.gov/privacy-policy",
+      "from": "https://simpler.grants.gov/opportunity/8608180b-b65c-45e6-844c-c420e4c78c2d",
+      "kind": "network",
+      "message": "unable to verify the first certificate"
+    }
+  ],
+  "skipped_links": 30,
+  "chunks": [{ "id": "all", "docs": ["D1", "D2", "D3"], "chars": 64565 }],
+  "outcomes": {
+    "eligibility": "stated",
+    "documents": "stated",
+    "effort": "stated",
+    "co_finance": "stated",
+    "consortium": "not_found",
+    "after_award": "stated"
+  },
+  "written": ["eligibility", "documents", "effort", "co_finance", "after_award"],
+  "escalated": ["documents"],
+  "flags": [],
+  "notes": [
+    "extractor: The FY26 round closed on September 28, 2026. No next-round rules are stated in the supplied text.",
+    "source blm-plant-conservation-restoration-2: added for https://files.simpler.grants.gov/opportunities/8608180b-b65c-45e6-844c-c420e4c78c2d/attachments/fc33e1a9-236e-4449-8c49-40e94409efc3/Foa_Content_of_L26AS00050_Plants.pdf"
+  ],
+  "usd": 0
+}

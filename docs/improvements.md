@@ -2,6 +2,7 @@
 
 What a visitor to naturefunding.org can see or do that they couldn't before, newest first. One line per merged change, added in the same PR (AGENTS.md). The naturefunding.org LinkedIn Page drafts its update posts from this list. Emails count once `DIGEST_SENDING` is `live`.
 
+- 2026-11-20 · 27 more programmes show Before you apply (Birds Canada, Boston Tree Alliance, Biffa Award, Bremen and more), each fact in the funder's words and checked by a second reader · https://naturefunding.org/p/birds-canada-community-grant/#before-title · #PR
 - 2026-11-20 · 27 more programmes show Before you apply (The Fore Nature Recovery Fund, Triodos Foundation, TNC New York, Stiftung Naturschutz Berlin and more), each fact in the funder's words and checked by a second reader · https://naturefunding.org/p/the-fore-nature-recovery-fund/#before-title · #759
 - 2026-11-20 · 27 more programmes show Before you apply (Save Our Seas, Rainforest Trust, Sielmann Stiftung, Peak District Community Nature Fund and more), each fact in the funder's words and checked by a second reader · https://naturefunding.org/p/save-our-seas-small-grants/#before-title · #758
 - 2026-11-20 · 25 more programmes show Before you apply (Northumbrian Water Branch Out, OWEB Small Grants, NSW Environmental Trust, Panthera Small Cat Action Fund and more), each fact in the funder's words and checked by a second reader · https://naturefunding.org/p/panthera-small-cat-action-fund/#before-title · #756

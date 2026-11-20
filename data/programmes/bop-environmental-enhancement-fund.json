@@ -34,6 +34,30 @@
   },
   "co_finance_required": null,
   "reporting": null,
+  "effort": {
+    "steps": [
+      "Application form submission",
+      "Initial eligibility screening",
+      "Project assessment"
+    ]
+  },
+  "eligibility": [
+    {
+      "rule": "Is a community group, not an individual, company, government agency or council (Tier 1 may admit companies)",
+      "kind": "legal"
+    },
+    {
+      "rule": "Does not receive other Council programme funding for the same work, except uncovered project aspects",
+      "kind": "project"
+    },
+    {
+      "rule": "The group and the project location are in the Bay of Plenty",
+      "kind": "project"
+    }
+  ],
+  "after_award": {
+    "reports": "unspecified"
+  },
   "calls": [],
   "evidence": {
     "applicant_types": {
@@ -59,7 +83,55 @@
       "quote": "You can apply for up to $25,000 per financial year (July 1 to June 30) for your project.",
       "checked_at": "2026-11-02",
       "method": "page"
-    }
+    },
+    "effort": [
+      {
+        "source_url": "https://www.boprc.govt.nz/living-in-the-bay/community-funding/environmental-enhancement-fund/",
+        "quote": "Download and complete the Application Form and email this to eefund@boprc.govt.nz.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.boprc.govt.nz/living-in-the-bay/community-funding/environmental-enhancement-fund/",
+        "quote": "Stage one is an initial screening by our Environmental Enhancement Fund Coordinator to check off the basic eligibility criteria and ensure the application is complete (outlined above).",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.boprc.govt.nz/living-in-the-bay/community-funding/environmental-enhancement-fund/",
+        "quote": "Stage two is an assessment of the project with one of our in-house subject matter experts (depending on the nature of your project).",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "eligibility": [
+      {
+        "source_url": "https://www.boprc.govt.nz/living-in-the-bay/community-funding/environmental-enhancement-fund/",
+        "quote": "You are a community based group (not a private individual, commercial entity*, Government agency or district/city council). *Note: solely at Council staff discretion, EEF Tier One (up to $5000) applications may be considered for commercial entities if the project is otherwise eligible.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.boprc.govt.nz/living-in-the-bay/community-funding/environmental-enhancement-fund/",
+        "quote": "Your project is not receiving funding from any other Bay of Plenty Regional Council programmes for the same work (however, aspects of the project not covered under other programme funding criteria may be eligible to apply to the EEF).",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.boprc.govt.nz/living-in-the-bay/community-funding/environmental-enhancement-fund/",
+        "quote": "Your project group and location are in the Bay of Plenty.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "after_award": [
+      {
+        "source_url": "https://www.boprc.govt.nz/living-in-the-bay/community-funding/environmental-enhancement-fund/",
+        "quote": "You're committed to the long-term success of the project, including maintaining the project, and will do regular monitoring and reporting to let us know how it's going.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ]
   },
   "checked_at": "2026-11-02"
 }
