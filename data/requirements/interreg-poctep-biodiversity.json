@@ -1,0 +1,630 @@
+{
+  "id": "interreg-poctep-biodiversity",
+  "read_on": "2026-11-20",
+  "prompt_version": "req-2026-11-20.1",
+  "models": ["cursor:gpt-5.6-luna-high"],
+  "complete": false,
+  "reasons": [
+    "15 links could not be ranked without Jev",
+    "30 links could not be ranked without Jev",
+    "https://www.poctep.eu/wp-content/uploads/2026/07/Bases_9_Conv_v15_22_07_26_ES_VF.pdf: page 1 is an image: needs OCR",
+    "https://www.poctep.eu/wp-content/uploads/2026/07/Bases_9_Conv_v15_22_07_26_PT_VF.pdf: page 1 is an image: needs OCR",
+    "the crawl bound left https://www.poctep.eu/wp-content/uploads/2026/07/Criterios_eval_9Conv_FPP_22_07_26_VF.pdf unread",
+    "the crawl bound left https://www.poctep.eu/wp-content/uploads/2026/07/Criterios_eval_9Conv_FPP_22_07_26_PT_VF.pdf unread",
+    "the crawl bound left https://www.poctep.eu/wp-content/uploads/2026/10/FdC_VF_convo9_V2.docx unread",
+    "the crawl bound left https://www.poctep.eu/wp-content/uploads/2026/07/Guia_FDC_convo9_VF_02_09_26.pdf unread",
+    "the crawl bound left https://www.poctep.eu/wp-content/uploads/2026/07/Declaracion_BU_9Conv_FPP_VF.docx unread",
+    "the crawl bound left https://www.poctep.eu/wp-content/uploads/2026/07/Bases_Convo10_ES_VF.pdf unread",
+    "the crawl bound left https://www.poctep.eu/wp-content/uploads/2026/07/Bases_Convo10_PT_VF.pdf unread",
+    "the crawl bound left https://www.poctep.eu/wp-content/uploads/2025/01/criterios_seleccion_vf_cs_es.pdf unread",
+    "the crawl bound left https://www.poctep.eu/wp-content/uploads/2026/07/FdC_V9_16_12_24_10conv.docx unread",
+    "the crawl bound left https://www.poctep.eu/wp-content/uploads/2026/08/Guia_FDC_V21_19_08_26_convo10_Rev_Solvencia.pdf unread",
+    "the crawl bound left https://www.poctep.eu/wp-content/uploads/2022/12/03_Declaracion_BP_ES_V2_31_10_2022.docx unread",
+    "the crawl bound left https://www.poctep.eu/wp-content/uploads/2025/02/Ayudas_Estado_Anexo2_Autotest_2_V2.docx unread",
+    "the crawl bound left https://www.poctep.eu/wp-content/uploads/2022/12/Ayudas_Estado_Anexo3_Decl_minimis.docx unread",
+    "the crawl bound left https://www.poctep.eu/seminarios-poctep/abierta-la-8a-convocatoria-poctep-2021-2027-webinar-27-de-junio/ unread",
+    "the crawl bound left https://www.poctep.eu/seminarios-poctep/10-02-2025-webinar-preparacion-6a-convocatoria-poctep/ unread",
+    "the crawl bound left https://poctep.eu/wp-content/uploads/2022/12/bases_adm_convo1_vf_cs_es.pdf unread",
+    "the crawl bound left https://www.poctep.eu/wp-content/uploads/2022/12/bases_adm_convo2_vf_cs_es.pdf unread",
+    "the crawl bound left https://poctep.eu/wp-content/uploads/2022/12/bases_adm_convo3_vf_cs_es.pdf unread",
+    "the crawl bound left https://www.poctep.eu/wp-content/uploads/2023/03/Bases_Adm_Convo4_VF_CS_ES-1.pdf unread",
+    "the crawl bound left https://www.poctep.eu/wp-content/uploads/2024/11/Bases_Adm_Convo5_VF_CS_ES-2.pdf unread",
+    "the crawl bound left https://www.poctep.eu/wp-content/uploads/2025/01/Bases_Adm_Convo6_VF_CS_ES.pdf unread",
+    "the crawl bound left https://www.poctep.eu/portada/convocatorias-de-proyectos-indicaciones-para-registro-de-entidades-en-coffee-interreg/ unread",
+    "the crawl bound left https://poctep.eu/wp-content/uploads/2022/12/Guia_registro_usuarios_221207.pdf unread",
+    "the crawl bound left https://poctep.eu/wp-content/uploads/2022/12/Guia_registro_entidades_Espanolas_publicas_Cooffee_221207.pdf unread",
+    "the crawl bound left https://poctep.eu/wp-content/uploads/2022/12/Guia_registro_entidades_No_espanolas_publicas_Cooffee_221207.pdf unread",
+    "the crawl bound left https://www.poctep.eu/wp-content/uploads/2023/01/Formulario_candidatura_CoFFEE_Interreg_221208_enlaces-1.pdf unread",
+    "the crawl bound left https://www.poctep.eu/wp-content/uploads/2023/01/FdC_V7_30_01_23.docx unread",
+    "the crawl bound left https://www.poctep.eu/wp-content/uploads/2024/11/Guia_FDC_V11_19_04_23.pdf unread",
+    "the crawl bound left https://www.poctep.eu/wp-content/uploads/2025/02/Bases_Adm_Convo7_ES_VF_aprobadas_CS-2.pdf unread",
+    "the crawl bound left https://poctep.eu/wp-content/uploads/2022/12/criterios_seleccion_vf_cs_es.pdf unread",
+    "the crawl bound left https://www.poctep.eu/wp-content/uploads/2023/01/FdC_V7_30_01_23-1.docx unread",
+    "the crawl bound left https://www.poctep.eu/wp-content/uploads/2025/03/Guia_FDC_V17_21_03_25_convo7.pdf unread",
+    "the crawl bound left https://www.poctep.eu/wp-content/uploads/2025/02/01_Manual_cuantific_indic_CANDIDATURAS_Prioridades_1_a_4_V2_17_02_25.pdf unread",
+    "the crawl bound left https://www.poctep.eu/wp-content/uploads/2023/01/00_Manual_cuantificacion_indicadores_Prioridad7.pdf unread",
+    "the crawl bound left https://www.poctep.eu/wp-content/uploads/2024/03/02_Manual_cuantific_indic_CANDIDATURAS_Prioridad_5_13_03_24-1.pdf unread",
+    "the crawl bound left https://www.poctep.eu/wp-content/uploads/2025/03/CoFFEE_Acesso_e_assinatura_VF.pdf unread",
+    "the crawl bound left https://www.poctep.eu/wp-content/uploads/2025/04/Accesos_coffee_20250401_vf.pdf unread",
+    "the crawl bound left https://www.poctep.eu/wp-content/uploads/2024/04/0002_OP5_CENCYL.pdf unread",
+    "the crawl bound left https://www.poctep.eu/wp-content/uploads/2024/04/0006_EUROACE_NEB.pdf unread",
+    "the crawl bound left https://www.euro-ace.eu/sites/default/files/attached_documents/mapa%20area%20funcional%20EXTREMADURA%20.pdf unread",
+    "the crawl bound left https://www.poctep.eu/wp-content/uploads/2024/04/0007_MURTIGAS_MAS.pdf unread",
+    "the crawl bound left https://www.poctep.eu/wp-content/uploads/2025/04/20250415_Estrategia-EGEXUR.pdf unread",
+    "the crawl bound left https://www.poctep.eu/wp-content/uploads/2025/06/Bases_Convo8_P6_OP5_ES_aprobadas_CS.pdf unread",
+    "the crawl bound left https://www.poctep.eu/wp-content/uploads/2025/06/Criterios_seleccion_Convo_8_ES_aprobados_CS.pdf unread",
+    "the crawl bound left https://www.poctep.eu/wp-content/uploads/2025/06/FdC_V10_16_06_25_convo8.docx unread",
+    "the crawl bound left https://www.poctep.eu/wp-content/uploads/2025/06/Guia_FDC_V18_16_06_25_convo8.pdf unread",
+    "the crawl bound left https://www.poctep.eu/wp-content/uploads/2025/09/03_Manual_cuantific_indic_CANDIDATURAS_Prioridad_6_23_09_25.pdf unread",
+    "the crawl bound left https://www.poctep.eu/wp-content/uploads/2025/07/Guia_registro_CAND_250710.pdf unread",
+    "the crawl bound left https://www.poctep.eu/wp-content/uploads/2025/07/Guia_registro_entidades_No_espanolas_publicas_Cooffee_250710.pdf unread",
+    "the crawl bound left https://www.poctep.eu/wp-content/uploads/2025/07/Guia_registro_entidades_Espanolas_publicas_Cooffee_250710.pdf unread",
+    "the crawl bound left https://www.poctep.eu/secciones/convocatorias/ unread",
+    "the crawl bound left https://www.poctep.eu/wp-content/uploads/2026/07/FdC_VF_convo9.docx unread",
+    "the crawl bound left https://www.poctep.eu/wp-content/uploads/2026/07/Mod_Acuerdo_constitucion_GTSpp_9Conv_VF.docx unread",
+    "the text names a document with rules that was not read: Bases 10a convocatoria",
+    "Jev did not check this reading, so an absent fact is not known to be absent"
+  ],
+  "requirements_checked": false,
+  "documents": [
+    {
+      "ref": "D1",
+      "url": "https://www.poctep.eu/convocatorias-abiertas-poctep-2021-2027/",
+      "final_url": "https://www.poctep.eu/convocatorias-abiertas-poctep-2021-2027/",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 4339,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:d07f908f61a52d76913acd75872c037158aa1776c58167cb1b3deadc3b7697ed"
+    },
+    {
+      "ref": "D2",
+      "url": "https://www.poctep.eu/convocatorias-cerradas/",
+      "final_url": "https://www.poctep.eu/convocatorias-cerradas/",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 17006,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:d034002130ea18469d99daba9ea67804193fea8f4fc063b6b10add386f62b7cf"
+    },
+    {
+      "ref": "D3",
+      "url": "https://www.poctep.eu/convocatorias",
+      "final_url": "https://www.poctep.eu/convocatorias/",
+      "from": "https://www.poctep.eu/convocatorias-abiertas-poctep-2021-2027/",
+      "anchor": "CONVOCATORIAS",
+      "depth": 1,
+      "pdf": false,
+      "chars": 7260,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:41840ea263b02aeb29ec6ddafe161793c88f39ab8e063b06cbb493c23af61d06"
+    },
+    {
+      "ref": "D4",
+      "url": "https://www.poctep.eu/proximas-convocatorias/",
+      "final_url": "https://www.poctep.eu/proximas-convocatorias/",
+      "from": "https://www.poctep.eu/convocatorias-abiertas-poctep-2021-2027/",
+      "anchor": "Próximas convocatorias",
+      "depth": 1,
+      "pdf": false,
+      "chars": 9646,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:b11c9d802ecf0cba06abf807ea71c309d0354abb0fcca9ad163b77d6afe5abbf"
+    },
+    {
+      "ref": "D5",
+      "url": "https://www.poctep.eu/1a-a-6a-convocatorias/",
+      "final_url": "https://www.poctep.eu/1a-a-6a-convocatorias/",
+      "from": "https://www.poctep.eu/convocatorias-cerradas/",
+      "anchor": "1a a 6a convocatorias",
+      "depth": 1,
+      "pdf": false,
+      "chars": 9207,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:3c1f07e3f7ecefd3d64203918969b3625e26108b65755e75817edc655bc754ae"
+    },
+    {
+      "ref": "D6",
+      "url": "https://www.poctep.eu/7a-convocatoria-2/",
+      "final_url": "https://www.poctep.eu/7a-convocatoria-2/",
+      "from": "https://www.poctep.eu/convocatorias-cerradas/",
+      "anchor": "7a convocatoria",
+      "depth": 1,
+      "pdf": false,
+      "chars": 8058,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:e7269e396d426f0e3c475d0f756d60c34dffc88ddcdb5c30b10b63d434bdd505"
+    },
+    {
+      "ref": "D7",
+      "url": "https://www.poctep.eu/8a-convocatoria-poctep-2021-2027-2/",
+      "final_url": "https://www.poctep.eu/8a-convocatoria-poctep-2021-2027-2/",
+      "from": "https://www.poctep.eu/convocatorias-cerradas/",
+      "anchor": "8a convocatoria",
+      "depth": 1,
+      "pdf": false,
+      "chars": 8383,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:8e157dfcfb2ff44d612b7ee4d86b420b192112d3bcb2e75347589f727d6c4a85"
+    },
+    {
+      "ref": "D8",
+      "url": "https://www.poctep.eu/portada/9a-y-10a-convocatorias-poctep-aprobadas-bases-para-las-convocatorias-de-septiembre/",
+      "final_url": "https://www.poctep.eu/portada/9a-y-10a-convocatorias-poctep-aprobadas-bases-para-las-convocatorias-de-septiembre/",
+      "from": "https://www.poctep.eu/convocatorias-cerradas/",
+      "anchor": "Bases publicadas",
+      "depth": 1,
+      "pdf": false,
+      "chars": 16705,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:ca2548e62242bea6b69bd2a2dc9fd9e8017a9c862af5df1b8949082b08a73bea"
+    },
+    {
+      "ref": "D9",
+      "url": "https://www.poctep.eu/wp-content/uploads/2026/07/Bases_9_Conv_v15_22_07_26_ES_VF.pdf",
+      "final_url": "https://www.poctep.eu/wp-content/uploads/2026/07/Bases_9_Conv_v15_22_07_26_ES_VF.pdf",
+      "from": "https://www.poctep.eu/convocatorias-cerradas/",
+      "anchor": "descarga en castellano",
+      "depth": 1,
+      "pdf": true,
+      "chars": 42063,
+      "pages": 18,
+      "low_text": false,
+      "hash": "sha256:7e773017c7f8d0e0cdbb6ccd4aad9df512de87a2b61b015b397f3f1168eafef6"
+    },
+    {
+      "ref": "D10",
+      "url": "https://www.poctep.eu/wp-content/uploads/2026/07/Bases_9_Conv_v15_22_07_26_PT_VF.pdf",
+      "final_url": "https://www.poctep.eu/wp-content/uploads/2026/07/Bases_9_Conv_v15_22_07_26_PT_VF.pdf",
+      "from": "https://www.poctep.eu/convocatorias-cerradas/",
+      "anchor": "download em português",
+      "depth": 1,
+      "pdf": true,
+      "chars": 41315,
+      "pages": 18,
+      "low_text": false,
+      "hash": "sha256:ee5b999ffb601937723aba94a67ac8275a9974e9abaef4e3845fd7885c532cce"
+    }
+  ],
+  "failures": [
+    {
+      "url": "https://www.poctep.eu/wp-content/uploads/2026/07/Bases_9_Conv_v15_22_07_26_ES_VF.pdf",
+      "from": "https://www.poctep.eu/convocatorias-cerradas/",
+      "kind": "low_text",
+      "message": "page 1 is an image: needs OCR"
+    },
+    {
+      "url": "https://www.poctep.eu/wp-content/uploads/2026/07/Bases_9_Conv_v15_22_07_26_PT_VF.pdf",
+      "from": "https://www.poctep.eu/convocatorias-cerradas/",
+      "kind": "low_text",
+      "message": "page 1 is an image: needs OCR"
+    },
+    {
+      "url": "https://www.poctep.eu/wp-content/uploads/2026/07/Criterios_eval_9Conv_FPP_22_07_26_VF.pdf",
+      "from": "https://www.poctep.eu/convocatorias-cerradas/",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://www.poctep.eu/wp-content/uploads/2026/07/Criterios_eval_9Conv_FPP_22_07_26_PT_VF.pdf",
+      "from": "https://www.poctep.eu/convocatorias-cerradas/",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://www.poctep.eu/wp-content/uploads/2026/10/FdC_VF_convo9_V2.docx",
+      "from": "https://www.poctep.eu/convocatorias-cerradas/",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://www.poctep.eu/wp-content/uploads/2026/07/Guia_FDC_convo9_VF_02_09_26.pdf",
+      "from": "https://www.poctep.eu/convocatorias-cerradas/",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://www.poctep.eu/wp-content/uploads/2026/07/Declaracion_BU_9Conv_FPP_VF.docx",
+      "from": "https://www.poctep.eu/convocatorias-cerradas/",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://www.poctep.eu/wp-content/uploads/2026/07/Bases_Convo10_ES_VF.pdf",
+      "from": "https://www.poctep.eu/convocatorias-cerradas/",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://www.poctep.eu/wp-content/uploads/2026/07/Bases_Convo10_PT_VF.pdf",
+      "from": "https://www.poctep.eu/convocatorias-cerradas/",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://www.poctep.eu/wp-content/uploads/2025/01/criterios_seleccion_vf_cs_es.pdf",
+      "from": "https://www.poctep.eu/convocatorias-cerradas/",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://www.poctep.eu/wp-content/uploads/2026/07/FdC_V9_16_12_24_10conv.docx",
+      "from": "https://www.poctep.eu/convocatorias-cerradas/",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://www.poctep.eu/wp-content/uploads/2026/08/Guia_FDC_V21_19_08_26_convo10_Rev_Solvencia.pdf",
+      "from": "https://www.poctep.eu/convocatorias-cerradas/",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://www.poctep.eu/wp-content/uploads/2022/12/03_Declaracion_BP_ES_V2_31_10_2022.docx",
+      "from": "https://www.poctep.eu/convocatorias-cerradas/",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://www.poctep.eu/wp-content/uploads/2025/02/Ayudas_Estado_Anexo2_Autotest_2_V2.docx",
+      "from": "https://www.poctep.eu/convocatorias-cerradas/",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://www.poctep.eu/wp-content/uploads/2022/12/Ayudas_Estado_Anexo3_Decl_minimis.docx",
+      "from": "https://www.poctep.eu/convocatorias-cerradas/",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://www.poctep.eu/seminarios-poctep/abierta-la-8a-convocatoria-poctep-2021-2027-webinar-27-de-junio/",
+      "from": "https://www.poctep.eu/proximas-convocatorias/",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://www.poctep.eu/seminarios-poctep/10-02-2025-webinar-preparacion-6a-convocatoria-poctep/",
+      "from": "https://www.poctep.eu/proximas-convocatorias/",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://poctep.eu/wp-content/uploads/2022/12/bases_adm_convo1_vf_cs_es.pdf",
+      "from": "https://www.poctep.eu/1a-a-6a-convocatorias/",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://www.poctep.eu/wp-content/uploads/2022/12/bases_adm_convo2_vf_cs_es.pdf",
+      "from": "https://www.poctep.eu/1a-a-6a-convocatorias/",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://poctep.eu/wp-content/uploads/2022/12/bases_adm_convo3_vf_cs_es.pdf",
+      "from": "https://www.poctep.eu/1a-a-6a-convocatorias/",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://www.poctep.eu/wp-content/uploads/2023/03/Bases_Adm_Convo4_VF_CS_ES-1.pdf",
+      "from": "https://www.poctep.eu/1a-a-6a-convocatorias/",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://www.poctep.eu/wp-content/uploads/2024/11/Bases_Adm_Convo5_VF_CS_ES-2.pdf",
+      "from": "https://www.poctep.eu/1a-a-6a-convocatorias/",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://www.poctep.eu/wp-content/uploads/2025/01/Bases_Adm_Convo6_VF_CS_ES.pdf",
+      "from": "https://www.poctep.eu/1a-a-6a-convocatorias/",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://www.poctep.eu/wp-content/uploads/2025/01/criterios_seleccion_vf_cs_es.pdf",
+      "from": "https://www.poctep.eu/1a-a-6a-convocatorias/",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://www.poctep.eu/portada/convocatorias-de-proyectos-indicaciones-para-registro-de-entidades-en-coffee-interreg/",
+      "from": "https://www.poctep.eu/1a-a-6a-convocatorias/",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://poctep.eu/wp-content/uploads/2022/12/Guia_registro_usuarios_221207.pdf",
+      "from": "https://www.poctep.eu/1a-a-6a-convocatorias/",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://poctep.eu/wp-content/uploads/2022/12/Guia_registro_entidades_Espanolas_publicas_Cooffee_221207.pdf",
+      "from": "https://www.poctep.eu/1a-a-6a-convocatorias/",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://poctep.eu/wp-content/uploads/2022/12/Guia_registro_entidades_No_espanolas_publicas_Cooffee_221207.pdf",
+      "from": "https://www.poctep.eu/1a-a-6a-convocatorias/",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://www.poctep.eu/wp-content/uploads/2023/01/Formulario_candidatura_CoFFEE_Interreg_221208_enlaces-1.pdf",
+      "from": "https://www.poctep.eu/1a-a-6a-convocatorias/",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://www.poctep.eu/wp-content/uploads/2022/12/03_Declaracion_BP_ES_V2_31_10_2022.docx",
+      "from": "https://www.poctep.eu/1a-a-6a-convocatorias/",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://www.poctep.eu/wp-content/uploads/2025/02/Ayudas_Estado_Anexo2_Autotest_2_V2.docx",
+      "from": "https://www.poctep.eu/1a-a-6a-convocatorias/",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://www.poctep.eu/wp-content/uploads/2022/12/Ayudas_Estado_Anexo3_Decl_minimis.docx",
+      "from": "https://www.poctep.eu/1a-a-6a-convocatorias/",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://www.poctep.eu/wp-content/uploads/2023/01/FdC_V7_30_01_23.docx",
+      "from": "https://www.poctep.eu/1a-a-6a-convocatorias/",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://www.poctep.eu/wp-content/uploads/2024/11/Guia_FDC_V11_19_04_23.pdf",
+      "from": "https://www.poctep.eu/1a-a-6a-convocatorias/",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://www.poctep.eu/wp-content/uploads/2025/02/Bases_Adm_Convo7_ES_VF_aprobadas_CS-2.pdf",
+      "from": "https://www.poctep.eu/7a-convocatoria-2/",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://poctep.eu/wp-content/uploads/2022/12/criterios_seleccion_vf_cs_es.pdf",
+      "from": "https://www.poctep.eu/7a-convocatoria-2/",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://www.poctep.eu/wp-content/uploads/2023/01/FdC_V7_30_01_23-1.docx",
+      "from": "https://www.poctep.eu/7a-convocatoria-2/",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://www.poctep.eu/wp-content/uploads/2025/03/Guia_FDC_V17_21_03_25_convo7.pdf",
+      "from": "https://www.poctep.eu/7a-convocatoria-2/",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://www.poctep.eu/wp-content/uploads/2025/02/01_Manual_cuantific_indic_CANDIDATURAS_Prioridades_1_a_4_V2_17_02_25.pdf",
+      "from": "https://www.poctep.eu/7a-convocatoria-2/",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://www.poctep.eu/wp-content/uploads/2023/01/00_Manual_cuantificacion_indicadores_Prioridad7.pdf",
+      "from": "https://www.poctep.eu/7a-convocatoria-2/",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://www.poctep.eu/wp-content/uploads/2024/03/02_Manual_cuantific_indic_CANDIDATURAS_Prioridad_5_13_03_24-1.pdf",
+      "from": "https://www.poctep.eu/7a-convocatoria-2/",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://www.poctep.eu/wp-content/uploads/2025/03/CoFFEE_Acesso_e_assinatura_VF.pdf",
+      "from": "https://www.poctep.eu/7a-convocatoria-2/",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://www.poctep.eu/wp-content/uploads/2025/04/Accesos_coffee_20250401_vf.pdf",
+      "from": "https://www.poctep.eu/7a-convocatoria-2/",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://www.poctep.eu/wp-content/uploads/2024/04/0002_OP5_CENCYL.pdf",
+      "from": "https://www.poctep.eu/8a-convocatoria-poctep-2021-2027-2/",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://www.poctep.eu/wp-content/uploads/2024/04/0006_EUROACE_NEB.pdf",
+      "from": "https://www.poctep.eu/8a-convocatoria-poctep-2021-2027-2/",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://www.euro-ace.eu/sites/default/files/attached_documents/mapa%20area%20funcional%20EXTREMADURA%20.pdf",
+      "from": "https://www.poctep.eu/8a-convocatoria-poctep-2021-2027-2/",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://www.poctep.eu/wp-content/uploads/2024/04/0007_MURTIGAS_MAS.pdf",
+      "from": "https://www.poctep.eu/8a-convocatoria-poctep-2021-2027-2/",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://www.poctep.eu/wp-content/uploads/2025/04/20250415_Estrategia-EGEXUR.pdf",
+      "from": "https://www.poctep.eu/8a-convocatoria-poctep-2021-2027-2/",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://www.poctep.eu/wp-content/uploads/2025/06/Bases_Convo8_P6_OP5_ES_aprobadas_CS.pdf",
+      "from": "https://www.poctep.eu/8a-convocatoria-poctep-2021-2027-2/",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://www.poctep.eu/wp-content/uploads/2025/06/Criterios_seleccion_Convo_8_ES_aprobados_CS.pdf",
+      "from": "https://www.poctep.eu/8a-convocatoria-poctep-2021-2027-2/",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://www.poctep.eu/wp-content/uploads/2025/06/FdC_V10_16_06_25_convo8.docx",
+      "from": "https://www.poctep.eu/8a-convocatoria-poctep-2021-2027-2/",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://www.poctep.eu/wp-content/uploads/2025/06/Guia_FDC_V18_16_06_25_convo8.pdf",
+      "from": "https://www.poctep.eu/8a-convocatoria-poctep-2021-2027-2/",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://www.poctep.eu/wp-content/uploads/2025/09/03_Manual_cuantific_indic_CANDIDATURAS_Prioridad_6_23_09_25.pdf",
+      "from": "https://www.poctep.eu/8a-convocatoria-poctep-2021-2027-2/",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://www.poctep.eu/wp-content/uploads/2025/07/Guia_registro_CAND_250710.pdf",
+      "from": "https://www.poctep.eu/8a-convocatoria-poctep-2021-2027-2/",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://www.poctep.eu/wp-content/uploads/2025/07/Guia_registro_entidades_No_espanolas_publicas_Cooffee_250710.pdf",
+      "from": "https://www.poctep.eu/8a-convocatoria-poctep-2021-2027-2/",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://www.poctep.eu/wp-content/uploads/2025/07/Guia_registro_entidades_Espanolas_publicas_Cooffee_250710.pdf",
+      "from": "https://www.poctep.eu/8a-convocatoria-poctep-2021-2027-2/",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://www.poctep.eu/secciones/convocatorias/",
+      "from": "https://www.poctep.eu/portada/9a-y-10a-convocatorias-poctep-aprobadas-bases-para-las-convocatorias-de-septiembre/",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://www.poctep.eu/wp-content/uploads/2026/07/Bases_Convo10_ES_VF.pdf",
+      "from": "https://www.poctep.eu/portada/9a-y-10a-convocatorias-poctep-aprobadas-bases-para-las-convocatorias-de-septiembre/",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://www.poctep.eu/wp-content/uploads/2026/07/Bases_Convo10_PT_VF.pdf",
+      "from": "https://www.poctep.eu/portada/9a-y-10a-convocatorias-poctep-aprobadas-bases-para-las-convocatorias-de-septiembre/",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://www.poctep.eu/wp-content/uploads/2026/07/Criterios_eval_9Conv_FPP_22_07_26_VF.pdf",
+      "from": "https://www.poctep.eu/portada/9a-y-10a-convocatorias-poctep-aprobadas-bases-para-las-convocatorias-de-septiembre/",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://www.poctep.eu/wp-content/uploads/2026/07/Criterios_eval_9Conv_FPP_22_07_26_PT_VF.pdf",
+      "from": "https://www.poctep.eu/portada/9a-y-10a-convocatorias-poctep-aprobadas-bases-para-las-convocatorias-de-septiembre/",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://www.poctep.eu/wp-content/uploads/2026/07/FdC_VF_convo9.docx",
+      "from": "https://www.poctep.eu/portada/9a-y-10a-convocatorias-poctep-aprobadas-bases-para-las-convocatorias-de-septiembre/",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://www.poctep.eu/wp-content/uploads/2026/07/Guia_FDC_convo9_VF_02_09_26.pdf",
+      "from": "https://www.poctep.eu/portada/9a-y-10a-convocatorias-poctep-aprobadas-bases-para-las-convocatorias-de-septiembre/",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://www.poctep.eu/wp-content/uploads/2026/07/Declaracion_BU_9Conv_FPP_VF.docx",
+      "from": "https://www.poctep.eu/portada/9a-y-10a-convocatorias-poctep-aprobadas-bases-para-las-convocatorias-de-septiembre/",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://www.poctep.eu/wp-content/uploads/2026/07/Mod_Acuerdo_constitucion_GTSpp_9Conv_VF.docx",
+      "from": "https://www.poctep.eu/portada/9a-y-10a-convocatorias-poctep-aprobadas-bases-para-las-convocatorias-de-septiembre/",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://www.poctep.eu/wp-content/uploads/2026/07/FdC_V9_16_12_24_10conv.docx",
+      "from": "https://www.poctep.eu/portada/9a-y-10a-convocatorias-poctep-aprobadas-bases-para-las-convocatorias-de-septiembre/",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://www.poctep.eu/wp-content/uploads/2026/08/Guia_FDC_V21_19_08_26_convo10_Rev_Solvencia.pdf",
+      "from": "https://www.poctep.eu/portada/9a-y-10a-convocatorias-poctep-aprobadas-bases-para-las-convocatorias-de-septiembre/",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    }
+  ],
+  "skipped_links": 362,
+  "chunks": [
+    {
+      "id": "all",
+      "docs": ["D1", "D2", "D3", "D4", "D5", "D6", "D7", "D8", "D9", "D10"],
+      "chars": 165250
+    }
+  ],
+  "outcomes": {
+    "eligibility": "stated",
+    "documents": "stated",
+    "effort": "stated",
+    "co_finance": "stated",
+    "consortium": "stated",
+    "after_award": "not_found"
+  },
+  "written": ["eligibility", "documents", "effort", "co_finance", "consortium"],
+  "escalated": [],
+  "flags": [],
+  "notes": [
+    "effort \"Application via CoFFEE Interreg\": the quote does not state 2026-11-17 whole; left undated",
+    "extractor: The 10th call closed on 2026-11-17. D4 states that no future calls are currently planned.",
+    "source interreg-poctep-biodiversity-3: added for https://www.poctep.eu/convocatorias"
+  ],
+  "usd": 0
+}

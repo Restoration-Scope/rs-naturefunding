@@ -14,6 +14,23 @@
   "amount": { "currency": "USD", "max": 7500, "note": "Maximum funding ask per proposal" },
   "co_finance_required": false,
   "reporting": null,
+  "effort": { "steps": ["Proposal submission", "Technical review"], "due": ["2026-11-10", null] },
+  "eligibility": [
+    {
+      "rule": "Organization is involved in land management with wildlife conservation purposes.",
+      "kind": "other"
+    },
+    {
+      "rule": "Project has management for non-game wildlife as its primary focus.",
+      "kind": "project"
+    },
+    { "rule": "Project work is not completed before funding is available.", "kind": "project" },
+    {
+      "rule": "Additional funding is listed and secured when the project costs much more than requested.",
+      "kind": "finances"
+    }
+  ],
+  "after_award": { "reports": "final" },
   "calls": [
     {
       "id": "round-2027",
@@ -81,7 +98,55 @@
       "quote": "All DNR Partners including County Conservation Boards, Sportsman's Groups, nonprofit conservation organizations. Any organization involved in land management with wildlife conservation purposes.",
       "checked_at": "2026-11-20",
       "method": "page"
-    }
+    },
+    "effort": [
+      {
+        "source_url": "https://www.iowadnr.gov/media/9842/download?inline",
+        "quote": "DUE DATE: Proposals must be received before midnight on November 10, 2026.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.iowadnr.gov/media/9842/download?inline",
+        "quote": "All proposals received will be reviewed by an IDNR technical review committee and will be scored based upon:",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "eligibility": [
+      {
+        "source_url": "https://www.iowadnr.gov/media/9842/download?inline",
+        "quote": "Any organization involved in land management with wildlife conservation purposes.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.iowadnr.gov/media/9842/download?inline",
+        "quote": "Projects to be considered will have management for non-game wildlife as their primary focus",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.iowadnr.gov/media/9842/download?inline",
+        "quote": "The money provided can not be used for reimbursement on projects already completed before the grant money is available on or before May 15, 2027.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.iowadnr.gov/media/9842/download?inline",
+        "quote": "If the project will cost a great deal more than what is requested in the grant application, the source of additional funding must be listed and secured.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "after_award": [
+      {
+        "source_url": "https://www.iowadnr.gov/programs-services/wildlife-diversity-program/wildlife-grants-funding/grant-opportunities",
+        "quote": "reporting requirements at the completion of the grant will be slightly different for each program.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ]
   },
   "checked_at": "2026-11-20"
 }

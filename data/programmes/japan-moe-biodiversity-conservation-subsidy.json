@@ -1,19 +1,46 @@
 {
   "id": "japan-moe-biodiversity-conservation-subsidy",
   "name": "Biodiversity Conservation Promotion Support Project (生物多様性保全推進交付金)",
-  "funder": { "name": "Japan Ministry of the Environment", "url": "https://www.env.go.jp/" },
+  "funder": {
+    "name": "Japan Ministry of the Environment",
+    "url": "https://www.env.go.jp/"
+  },
   "administered_by": null,
   "parent": null,
   "url": "https://www.env.go.jp/nature/biodic/hozen/index.html",
   "summary": "Japanese Ministry of the Environment subsidy for local biodiversity conservation and restoration: nature-positive plans, habitat work in important areas, ex-situ conservation by zoos and habitat improvement for rare species. Municipalities, NPOs and businesses can carry out projects. Pages are in Japanese.",
-  "approaches": ["species_conservation", "protected_areas", "community_conservation"],
-  "applicant_types": ["government", "ngo", "company"],
+  "approaches": [
+    "species_conservation",
+    "protected_areas",
+    "community_conservation"
+  ],
+  "applicant_types": [
+    "government",
+    "ngo",
+    "company"
+  ],
   "geography": null,
   "access": "direct",
   "window": "fixed",
   "amount": null,
   "co_finance_required": true,
   "reporting": null,
+  "effort": {
+    "steps": [
+      "Application",
+      "Review"
+    ]
+  },
+  "eligibility": [
+    {
+      "rule": "Project is implemented under a law and matches an eligible activity category",
+      "kind": "project"
+    },
+    {
+      "rule": "Key-area and satoyama projects (3, 6): applicant is a council, set up by the grant application",
+      "kind": "project"
+    }
+  ],
   "calls": [
     {
       "id": "fy2026",
@@ -46,8 +73,8 @@
       "method": "page"
     },
     "co_finance_required": {
-      "source_url": "https://www.env.go.jp/nature/biodic/hozen/index.html",
-      "quote": "活動等に必要な経費の一部を国が交付します。",
+      "source_url": "https://www.env.go.jp/press/press_03555.html",
+      "quote": "生物多様性増進活動の基盤整備(交付率1/2、原則2年以内)",
       "checked_at": "2026-11-20",
       "method": "page"
     },
@@ -56,7 +83,45 @@
       "quote": "公募期間は、令和8年3月23日(月)から同年6月30日(火)までです。",
       "checked_at": "2026-11-20",
       "method": "page"
+    },
+    "effort": [
+      {
+        "source_url": "https://www.env.go.jp/press/press_03555.html",
+        "quote": "公募期間は、令和8年3月23日(月)から同年6月30日(火)までです。",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.env.go.jp/press/press_03555.html",
+        "quote": "審査・採択します。",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "eligibility": [
+      {
+        "source_url": "https://www.env.go.jp/nature/biodic/hozen/index.html",
+        "quote": "法律に基づき実施する事業(下記交付対象事業のいずれかに該当するもの)",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.env.go.jp/content/000371232.pdf",
+        "quote": "＜対象事業（３）、（６）＞ 協議会が設置されていなくても応募できるか。 交付申請書の提出までに協議会の設立が見込まれる場合、応募の対象となります。",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "co_finance": {
+      "source_url": "https://www.env.go.jp/press/press_03555.html",
+      "quote": "①　生物多様性増進活動の基盤整備（交付率1/2、原則２年以内） ②　生物多様性増進活動の活動基盤強化（定額:上限150万円、原則２年以内） ③　重要地域の保全・再生（交付率1/2、原則２年以内） ④　動植物園等による生息域外保全（定額:上限200万円、原則３年以内） ⑤　国内希少種の生息環境改善（定額:上限250万円又は上限150万円、原則３年以内） ⑥　重要里地里山等における社会経済的課題と環境的課題を統合的に解決しようとする活動（交付率1/2、原則２年以内）",
+      "checked_at": "2026-11-20",
+      "method": "page"
     }
   },
-  "checked_at": "2026-11-20"
+  "checked_at": "2026-11-20",
+  "co_finance": {
+    "min_share": 50,
+    "applies_to": "Groundwork, key-area and satoyama projects (categories 1, 3 and 6)"
+  }
 }

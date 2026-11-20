@@ -9,14 +9,53 @@
   "parent": null,
   "url": "https://www.iyobank.co.jp/about/csr/environment/ever-green/index.html",
   "summary": "Public interest trust grants of generally up to 500,000 yen for practical and survey activities that conserve nature and biodiversity in Ehime Prefecture, open to nonprofits, schools, voluntary groups and individuals based there.",
-  "approaches": ["community_conservation", "species_conservation"],
-  "applicant_types": ["ngo", "community_group", "individual"],
-  "geography": { "scope": "countries", "countries": ["JP"], "label": "Ehime Prefecture" },
+  "approaches": [
+    "community_conservation",
+    "species_conservation"
+  ],
+  "applicant_types": [
+    "ngo",
+    "community_group",
+    "individual"
+  ],
+  "geography": {
+    "scope": "countries",
+    "countries": [
+      "JP"
+    ],
+    "label": "Ehime Prefecture"
+  },
   "access": "direct",
   "window": "fixed",
-  "amount": { "currency": "JPY", "max": 500000, "typical": true },
+  "amount": {
+    "currency": "JPY",
+    "max": 500000,
+    "typical": true
+  },
   "co_finance_required": null,
   "reporting": "Grantees submit a usage report and a results report on their activities and how the grant was used.",
+  "effort": {
+    "steps": [
+      "Application form submission"
+    ]
+  },
+  "eligibility": [
+    {
+      "rule": "Has its main activity base in Ehime Prefecture",
+      "kind": "legal"
+    },
+    {
+      "rule": "If supported for 3 consecutive years, applies no earlier than the second fiscal year after the final supported year",
+      "kind": "other"
+    },
+    {
+      "rule": "Is not an organized crime group member or related person",
+      "kind": "legal"
+    }
+  ],
+  "after_award": {
+    "reports": "unspecified"
+  },
   "calls": [
     {
       "id": "2026",
@@ -24,7 +63,10 @@
       "url": "https://www.iyobank.co.jp/about/csr/environment/ever-green/index.html",
       "status": "closed",
       "opens": "2026-04-01",
-      "deadline": { "date": "2026-08-31", "text": "2026年8月31日(当日消印有効)" },
+      "deadline": {
+        "date": "2026-08-31",
+        "text": "2026年8月31日(当日消印有効)"
+      },
       "evidence": {
         "status": {
           "source_url": "https://www.iyobank.co.jp/about/csr/environment/ever-green/index.html",
@@ -83,7 +125,43 @@
       "quote": "活動成果及び助成金の使用結果について使用報告書及び成果報告書をご提出いただきます。",
       "checked_at": "2026-11-14",
       "method": "page"
-    }
+    },
+    "effort": [
+      {
+        "source_url": "https://www.iyobank.co.jp/about/csr/environment/ever-green/index.html",
+        "quote": "助成を希望される方は、助成金交付申請書にご記入をいただき、下記のお問い合わせ先(当行もしくは三井住友信託銀行)までご郵送下さい。募集締め切りは2026年8月31日です。",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "eligibility": [
+      {
+        "source_url": "https://www.iyobank.co.jp/about/pdf/ever_green_youkou_2026.pdf",
+        "quote": "愛媛県内に主たる活動拠点がある",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.iyobank.co.jp/about/pdf/ever_green_youkou_2026.pdf",
+        "quote": "3年連続で助成を受けた場合は最終助成年度の翌々年度以降に申請可能となります。",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.iyobank.co.jp/about/pdf/ever_green_shinsei_2026.pdf",
+        "quote": "現在、次の各号に掲げる者(以下これらを「暴力団員等」という。 )のいずれにも該当しないこと",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "after_award": [
+      {
+        "source_url": "https://www.iyobank.co.jp/about/pdf/ever_green_youkou_2026.pdf",
+        "quote": "活動成果及び助成金の使用結果について使用報告書及び成果報告書をご提出いただきます。",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ]
   },
   "checked_at": "2026-11-14"
 }

@@ -28,8 +28,28 @@
   "access": "direct",
   "window": "fixed",
   "amount": null,
-  "co_finance_required": null,
+  "co_finance_required": true,
   "reporting": null,
+  "effort": {
+    "steps": [
+      "Application"
+    ]
+  },
+  "eligibility": [
+    {
+      "rule": "No grant for the measure is available from other programmes",
+      "kind": "project"
+    }
+  ],
+  "co_finance": {
+    "min_share": 20
+  },
+  "documents": [
+    "Short description of the measure",
+    "Parcel number and cadastral district",
+    "Property owner or owner's consent",
+    "Cost estimate or invoice, if the measure is already completed"
+  ],
   "calls": [
     {
       "id": "annual",
@@ -79,7 +99,55 @@
       "quote": "Entsprechende Anträge können von Organisationen, Vereinen oder Privatpersonen bis 30. September dieses Jahres gestellt werden.",
       "checked_at": "2026-11-15",
       "method": "page"
-    }
+    },
+    "co_finance_required": {
+      "source_url": "https://www.kitzingen.de/buergerservice/aktuelles/aktuelles-2026/foerderung-naturschutz/",
+      "quote": "Der Fördersatz beträgt grundsätzlich 70 Prozent der entstandenen tatsächlichen Kosten.",
+      "checked_at": "2026-11-20",
+      "method": "page"
+    },
+    "effort": [
+      {
+        "source_url": "https://www.kitzingen.de/buergerservice/aktuelles/aktuelles-2026/foerderung-naturschutz/",
+        "quote": "Entsprechende Anträge können von Organisationen, Vereinen oder Privatpersonen bis 30. September dieses Jahres gestellt werden.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "eligibility": [
+      {
+        "source_url": "https://www.kitzingen.de/buergerservice/aktuelles/aktuelles-2026/foerderung-naturschutz/",
+        "quote": "Eine Förderung entfällt, sofern Zuschüsse aus anderen Programmen beantragt werden können.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "co_finance": {
+      "source_url": "https://www.kitzingen.de/digitales-buergerbuero/natur-umwelt-nachhaltigkeit/natur-und-artenschutz/informationen-und-rechtliches/naturschutzfonds-richtlinien/",
+      "quote": "Je nach Bedeutung der Maßnahme und den finanziellen Verhältnissen des Antragstellers kann die Förderung bis auf 10 % gekürzt bzw. auf 80 % der Aufwendungen erhöht werden.",
+      "checked_at": "2026-11-20",
+      "method": "page"
+    },
+    "documents": [
+      {
+        "source_url": "https://www.kitzingen.de/buergerservice/aktuelles/aktuelles-2026/foerderung-naturschutz/",
+        "quote": "Kurze Beschreibung der Maßnahme; Übersichtslageplan (sofern vorhanden), in dem die Lage der Maßnahme gekennzeichnet ist; Angabe der Flurnummer und der Gemarkung",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.kitzingen.de/buergerservice/aktuelles/aktuelles-2026/foerderung-naturschutz/",
+        "quote": "Eigentümer des Grundstückes bzw. Eigentümereinverständnis",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.kitzingen.de/buergerservice/aktuelles/aktuelles-2026/foerderung-naturschutz/",
+        "quote": "Kosten der Maßnahme (Kostenvoranschlag oder Rechnung, wenn die Maßnahme bereits durchgeführt ist)",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ]
   },
   "checked_at": "2026-11-15"
 }

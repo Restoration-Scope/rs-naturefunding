@@ -1,0 +1,85 @@
+{
+  "id": "indiana-audubon-mumford-keller-project-grants",
+  "read_on": "2026-11-20",
+  "prompt_version": "req-2026-11-20.1",
+  "models": ["cursor:gpt-5.6-luna-high"],
+  "complete": false,
+  "reasons": [
+    "20 links could not be ranked without Jev",
+    "28 links could not be ranked without Jev",
+    "Jev did not check this reading, so an absent fact is not known to be absent"
+  ],
+  "requirements_checked": false,
+  "documents": [
+    {
+      "ref": "D1",
+      "url": "https://indianaaudubon.org/mumfordandkeller/",
+      "final_url": "https://indianaaudubon.org/mumfordandkeller/",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 10506,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:093cc4ed4acfa1d7878d2e9daac98a4776dc0d31f6226b9f7ff0e65a40b0d099"
+    },
+    {
+      "ref": "D2",
+      "url": "https://indianaaudubon.org/bird-guide-ambassadors/",
+      "final_url": "https://indianaaudubon.org/bird-guide-ambassadors/",
+      "from": "https://indianaaudubon.org/mumfordandkeller/",
+      "anchor": "Bird Guide Ambassador Program",
+      "depth": 1,
+      "pdf": false,
+      "chars": 10305,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:0c472781d7cf90c941f12db40a09d5c854d7c75b9b51713cefe645044e350c85"
+    },
+    {
+      "ref": "D3",
+      "url": "https://indianaaudubon.org/wp-content/uploads/2026/11/ias_field_checklist_2026.pdf",
+      "final_url": "https://indianaaudubon.org/wp-content/uploads/2026/11/ias_field_checklist_2026.pdf",
+      "from": "https://indianaaudubon.org/mumfordandkeller/",
+      "anchor": "Indiana Bird Checklist",
+      "depth": 1,
+      "pdf": true,
+      "chars": 11279,
+      "pages": 2,
+      "low_text": false,
+      "hash": "sha256:ecd0eb829e2b67853a95112000dfdb8d2f72d8dabb48e644d071d7480cc5ca74"
+    },
+    {
+      "ref": "D4",
+      "url": "https://indianaaudubon.org/wp-content/uploads/2025/10/bird-guide-ambassadors-agreement.pdf",
+      "final_url": "https://indianaaudubon.org/wp-content/uploads/2025/10/bird-guide-ambassadors-agreement.pdf",
+      "from": "https://indianaaudubon.org/bird-guide-ambassadors/",
+      "anchor": "Bird Guide Ambassador Agreement and Expectations",
+      "depth": 2,
+      "pdf": true,
+      "chars": 2990,
+      "pages": 2,
+      "low_text": false,
+      "hash": "sha256:7161e36226ab7fd12015dcec000520282db92a8a381214008ea2bb826c8e0e31"
+    }
+  ],
+  "failures": [],
+  "skipped_links": 423,
+  "chunks": [{ "id": "all", "docs": ["D1", "D2", "D3", "D4"], "chars": 35593 }],
+  "outcomes": {
+    "eligibility": "not_found",
+    "documents": "not_found",
+    "effort": "stated",
+    "co_finance": "stated",
+    "consortium": "not_found",
+    "after_award": "not_found"
+  },
+  "written": ["effort", "co_finance"],
+  "escalated": [],
+  "flags": [],
+  "notes": [
+    "extractor: The application window is June 1 to August 15, and awards are announced by October 1; no year is stated."
+  ],
+  "usd": 0
+}
