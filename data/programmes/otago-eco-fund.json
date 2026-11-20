@@ -1,30 +1,14 @@
 {
   "id": "otago-eco-fund",
   "name": "ECO Fund (Environment Community Otago Funding)",
-  "funder": {
-    "name": "Otago Regional Council",
-    "url": "https://www.orc.govt.nz/"
-  },
-  "administered_by": null,
+  "funder": { "name": "Otago Regional Council", "url": "https://www.orc.govt.nz/" },
+  "administered_by": { "name": "Otago Regional Council", "url": "https://www.orc.govt.nz" },
   "parent": null,
   "url": "https://www.orc.govt.nz/environment/enhancing-and-protecting/grants-and-funding/eco-fund",
   "summary": "Annual contestable grants from Otago Regional Council for community-led projects that protect, enhance or promote the environment in Otago, including biodiversity scaling-up, weed removal and revegetation. The 2026 round has closed.",
-  "approaches": [
-    "community_conservation",
-    "natural_regeneration"
-  ],
-  "applicant_types": [
-    "ngo",
-    "community_group",
-    "indigenous_organization"
-  ],
-  "geography": {
-    "scope": "countries",
-    "countries": [
-      "NZ"
-    ],
-    "label": "Otago"
-  },
+  "approaches": ["community_conservation", "natural_regeneration"],
+  "applicant_types": ["ngo", "community_group", "indigenous_organization"],
+  "geography": { "scope": "countries", "countries": ["NZ"], "label": "Otago" },
   "access": "direct",
   "window": "fixed",
   "amount": {
@@ -41,10 +25,7 @@
       "url": "https://www.orc.govt.nz/environment/enhancing-and-protecting/grants-and-funding/eco-fund",
       "status": "closed",
       "opens": "2026-03-16",
-      "deadline": {
-        "date": "2026-04-19",
-        "text": "19 April 2026: ECO Fund round closes"
-      },
+      "deadline": { "date": "2026-04-19", "text": "19 April 2026: ECO Fund round closes" },
       "evidence": {
         "status": {
           "source_url": "https://www.orc.govt.nz/environment/enhancing-and-protecting/grants-and-funding/eco-fund",
@@ -68,16 +49,22 @@
     }
   ],
   "evidence": {
+    "administered_by": {
+      "source_url": "https://www.orc.govt.nz/environment/enhancing-and-protecting/grants-and-funding/eco-fund/eligibility",
+      "quote": "The Otago Regional Council looks after Otago's environment, ensuring activities comply with legislation.",
+      "checked_at": "2026-11-20",
+      "method": "page"
+    },
     "applicant_types": {
       "source_url": "https://www.orc.govt.nz/environment/enhancing-and-protecting/grants-and-funding/eco-fund/eligibility",
       "quote": "Registered charitable trusts Yes Yes Yes Yes Yes Yes Resident and ratepayer groups No Yes No Yes No Yes Unincorporated groups No Yes No Yes No Yes Iwi / hapū",
-      "checked_at": "2026-11-09",
+      "checked_at": "2026-11-20",
       "method": "page"
     },
     "geography": {
       "source_url": "https://www.orc.govt.nz/environment/enhancing-and-protecting/grants-and-funding/eco-fund/eligibility",
       "quote": "Project must be located in Otago.",
-      "checked_at": "2026-11-09",
+      "checked_at": "2026-11-20",
       "method": "page"
     },
     "access": {
