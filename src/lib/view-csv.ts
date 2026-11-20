@@ -69,3 +69,18 @@ export function csvFileName(pathname: string, date: string) {
   const page = pathname.split('/').filter(Boolean).join('-')
   return `naturefunding-${page ? `${page}-` : ''}${date}.csv`
 }
+
+/** Fetches /data.csv, cuts it to the `shown` programmes and saves it. Throws when the fetch fails or the page is stale. */
+export async function saveViewCsv(shown: { id: string; call?: string }[], pathname: string, date: string) {
+  const res = await fetch('/data.csv')
+  if (!res.ok) throw new Error(String(res.status))
+  const csv = pickProgrammes(await res.text(), shown)
+  if (csv === null) throw new Error('stale')
+  // The byte-order mark makes Excel read it as UTF-8, so names like Galápagos keep their accents.
+  const blob = new Blob(['\uFEFF', csv], { type: 'text/csv;charset=utf-8' })
+  const a = document.createElement('a')
+  a.href = URL.createObjectURL(blob)
+  a.download = csvFileName(pathname, date)
+  a.click()
+  setTimeout(() => URL.revokeObjectURL(a.href), 1000)
+}
