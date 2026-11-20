@@ -1,0 +1,168 @@
+{
+  "id": "arbor-day-planting-partners",
+  "read_on": "2026-11-20",
+  "prompt_version": "req-2026-11-20.1",
+  "models": ["cursor:gpt-5.6-luna-high"],
+  "complete": false,
+  "reasons": [
+    "25 links could not be ranked without Jev",
+    "28 links could not be ranked without Jev",
+    "40 links could not be ranked without Jev",
+    "the crawl bound left https://www.arborday.org/tree-care-maintenance/health-issues unread",
+    "the crawl bound left https://shop.arborday.org/faq unread",
+    "Jev did not check this reading, so an absent fact is not known to be absent"
+  ],
+  "requirements_checked": false,
+  "documents": [
+    {
+      "ref": "D1",
+      "url": "https://www.arborday.org/planting-partner",
+      "final_url": "https://www.arborday.org/planting-partner",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 5685,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:b92b16ec406672c9da3df02992a5a08066e556f890db2848d0fc3e9a5132bfeb"
+    },
+    {
+      "ref": "D2",
+      "url": "https://www.arborday.org/forests",
+      "final_url": "https://www.arborday.org/forests",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 8057,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:f4c880c6a469188d285d9577955141fda5b7543a53fb71fef43b020b7d240b16"
+    },
+    {
+      "ref": "D3",
+      "url": "https://www.arborday.org/faqs",
+      "final_url": "https://www.arborday.org/faqs",
+      "from": "https://www.arborday.org/planting-partner",
+      "anchor": "FAQs",
+      "depth": 1,
+      "pdf": false,
+      "chars": 18558,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:65471595d3d5243d9271bd275337c89f470f3d01253b4a261666971c115c1a12"
+    },
+    {
+      "ref": "D4",
+      "url": "https://www.arborday.org/tree-guide",
+      "final_url": "https://www.arborday.org/tree-guide",
+      "from": "https://www.arborday.org/planting-partner",
+      "anchor": "Tree Guide",
+      "depth": 1,
+      "pdf": false,
+      "chars": 4854,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:7a9112517bf301f3fd5f88962979efc391b6210734c618c3be723962c0750244"
+    },
+    {
+      "ref": "D5",
+      "url": "https://www.arborday.org/privacy",
+      "final_url": "https://www.arborday.org/privacy",
+      "from": "https://www.arborday.org/planting-partner",
+      "anchor": "Privacy Policy",
+      "depth": 1,
+      "pdf": false,
+      "chars": 41979,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:26110c25e5ccd90c96a868291f8fa31dee4b423b9b60c6c89bc7f5b0316ed25f"
+    },
+    {
+      "ref": "D6",
+      "url": "https://www.arborday.org/accessibility",
+      "final_url": "https://www.arborday.org/accessibility",
+      "from": "https://www.arborday.org/planting-partner",
+      "anchor": "Accessibility Policy",
+      "depth": 1,
+      "pdf": false,
+      "chars": 3289,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:89c616b8351377257457c787753d16b0083745c30ef3dc7e29a65642afb3c95b"
+    },
+    {
+      "ref": "D7",
+      "url": "https://shop.arborday.org/treeguide",
+      "final_url": "https://shop.arborday.org/treeguide",
+      "from": "https://www.arborday.org/tree-guide",
+      "anchor": "Search for Trees",
+      "depth": 2,
+      "pdf": false,
+      "chars": 5621,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:89ca334f18ebba1e62e4dc33c30f66157551b35e27124d462418ce695386b47a"
+    },
+    {
+      "ref": "D8",
+      "url": "https://www.arborday.org/tree-guide/anatomy-tree",
+      "final_url": "https://www.arborday.org/tree-guide/anatomy-tree",
+      "from": "https://www.arborday.org/tree-guide",
+      "anchor": "Anatomy of a Tree",
+      "depth": 2,
+      "pdf": false,
+      "chars": 6169,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:0de4bf9418232010baaa4dbec927e504e47c3dfb992e8b31cd896934b2e26c92"
+    },
+    {
+      "ref": "D9",
+      "url": "https://www.arborday.org/tree-guide/classification-glossary",
+      "final_url": "https://www.arborday.org/tree-guide/classification-glossary",
+      "from": "https://www.arborday.org/tree-guide",
+      "anchor": "Tree Classification & Glossary",
+      "depth": 2,
+      "pdf": false,
+      "chars": 9526,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:e5fcce5a47bce8121a963ce5b29545d9d84ee12302131a29dec06f33093da22d"
+    }
+  ],
+  "failures": [
+    {
+      "url": "https://www.arborday.org/tree-care-maintenance/health-issues",
+      "from": "https://shop.arborday.org/treeguide",
+      "kind": "bound",
+      "message": "past the crawl depth of 2"
+    },
+    {
+      "url": "https://shop.arborday.org/faq",
+      "from": "https://shop.arborday.org/treeguide",
+      "kind": "bound",
+      "message": "past the crawl depth of 2"
+    }
+  ],
+  "skipped_links": 727,
+  "chunks": [
+    { "id": "all", "docs": ["D1", "D2", "D3", "D4", "D5", "D6", "D7", "D8", "D9"], "chars": 104580 }
+  ],
+  "outcomes": {
+    "eligibility": "not_found",
+    "documents": "not_found",
+    "effort": "stated",
+    "co_finance": "not_found",
+    "consortium": "not_found",
+    "after_award": "not_found"
+  },
+  "written": ["effort"],
+  "escalated": [],
+  "flags": [],
+  "notes": [
+    "extractor: The text describes a planting-partner network and a fit form, not a grant round. It states no funding amount, deadline, submission documents, co-financing, consortium requirement or post-award duties."
+  ],
+  "usd": 0
+}

@@ -1,0 +1,70 @@
+{
+  "id": "yamanashi-invasive-species-control-subsidy",
+  "read_on": "2026-11-20",
+  "prompt_version": "req-2026-11-20.1",
+  "models": ["cursor:gpt-5.6-luna-high", "cursor:gpt-5.6-sol-high"],
+  "complete": false,
+  "reasons": [
+    "10 links could not be ranked without Jev",
+    "https://www.pref.yamanashi.jp/documents/103774/yousiki.doc would not open (unreadable: an old Word (.doc), OpenDocument or RTF file: needs conversion)",
+    "the text names a document with rules that was not read: 山梨県補助金等交付規則（昭和38年山梨県規則第25号）",
+    "Jev did not check this reading, so an absent fact is not known to be absent",
+    "strong reading: the text names a document with rules that was not read: 山梨県補助金等交付規則（昭和38年山梨県規則第25号）"
+  ],
+  "requirements_checked": false,
+  "documents": [
+    {
+      "ref": "D1",
+      "url": "https://www.pref.yamanashi.jp/shizen/220402.html",
+      "final_url": "https://www.pref.yamanashi.jp/shizen/220402.html",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 1262,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:fc422d15bebc8f7972645e5d004e835d5aeb5a05cd2dedb4825a7a769d70b584"
+    },
+    {
+      "ref": "D2",
+      "url": "https://www.pref.yamanashi.jp/documents/103774/kouhuyoukou.pdf",
+      "final_url": "https://www.pref.yamanashi.jp/documents/103774/kouhuyoukou.pdf",
+      "from": "https://www.pref.yamanashi.jp/shizen/220402.html",
+      "anchor": "山梨県外来生物防除事業費補助金交付要綱(PDF:170KB)",
+      "depth": 1,
+      "pdf": true,
+      "chars": 2728,
+      "pages": 4,
+      "low_text": false,
+      "hash": "sha256:7a7841d22cd7cde180cd4fb18b8351f4d8877ec74a9496ca17528035d40236f7"
+    }
+  ],
+  "failures": [
+    {
+      "url": "https://www.pref.yamanashi.jp/documents/103774/yousiki.doc",
+      "from": "https://www.pref.yamanashi.jp/shizen/220402.html",
+      "kind": "unreadable",
+      "message": "an old Word (.doc), OpenDocument or RTF file: needs conversion"
+    }
+  ],
+  "skipped_links": 30,
+  "chunks": [{ "id": "all", "docs": ["D1", "D2"], "chars": 4195 }],
+  "outcomes": {
+    "eligibility": "stated",
+    "documents": "stated",
+    "effort": "stated",
+    "co_finance": "not_found",
+    "consortium": "not_found",
+    "after_award": "stated"
+  },
+  "written": ["eligibility", "documents", "effort", "after_award"],
+  "escalated": ["after_award"],
+  "flags": [],
+  "notes": [
+    "effort \"Application submission\": the quote does not state 2027-01-30 whole; left undated",
+    "extractor: D1 says approximately five applications are accepted on a first-come basis. D1 includes an area map in the application documents; D2 additionally requires an activity expense calculation.",
+    "source yamanashi-invasive-species-control-subsidy-2: added for https://www.pref.yamanashi.jp/documents/103774/kouhuyoukou.pdf"
+  ],
+  "usd": 0
+}

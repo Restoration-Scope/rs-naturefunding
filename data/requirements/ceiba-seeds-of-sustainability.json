@@ -1,0 +1,94 @@
+{
+  "id": "ceiba-seeds-of-sustainability",
+  "read_on": "2026-11-20",
+  "prompt_version": "req-2026-11-20.1",
+  "models": ["cursor:gpt-5.6-luna-high"],
+  "complete": false,
+  "reasons": [
+    "13 links could not be ranked without Jev",
+    "16 links could not be ranked without Jev",
+    "https://ceiba.org/wp-content/uploads/impact-Report.pdf: page 1 is an image: needs OCR",
+    "Jev did not check this reading, so an absent fact is not known to be absent"
+  ],
+  "requirements_checked": false,
+  "documents": [
+    {
+      "ref": "D1",
+      "url": "https://ceiba.org/partners/sosgrant/",
+      "final_url": "https://ceiba.org/partners/sosgrant/",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 13042,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:83dd54b8cf61eea5729567d6f8579ff3ce985a98c5835423f07bdb6d34c4a02d"
+    },
+    {
+      "ref": "D2",
+      "url": "https://ceiba.org/research/research-application/",
+      "final_url": "https://ceiba.org/research/research-application/",
+      "from": "https://ceiba.org/partners/sosgrant/",
+      "anchor": "Research Application",
+      "depth": 1,
+      "pdf": false,
+      "chars": 16720,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:aafb0a8cbb33e8061fc7677f52ca8f5229885c4467a70ffc41efde69317e7122"
+    },
+    {
+      "ref": "D3",
+      "url": "https://ceiba.org/wp-content/uploads/impact-Report.pdf",
+      "final_url": "https://ceiba.org/wp-content/uploads/impact-Report.pdf",
+      "from": "https://ceiba.org/partners/sosgrant/",
+      "anchor": "Impact Report",
+      "depth": 1,
+      "pdf": true,
+      "chars": 12245,
+      "pages": 9,
+      "low_text": false,
+      "hash": "sha256:c3dca29183da0fff7068a74623a7aa40877c331fa84b8252df6c4e03b59649a7"
+    },
+    {
+      "ref": "D4",
+      "url": "https://ceiba.org/wp-content/uploads/Accepted-Volunteer-FAQ_rev07-2020.pdf",
+      "final_url": "https://ceiba.org/wp-content/uploads/Accepted-Volunteer-FAQ_rev07-2020.pdf",
+      "from": "https://ceiba.org/research/research-application/",
+      "anchor": "FAQ document",
+      "depth": 2,
+      "pdf": true,
+      "chars": 18265,
+      "pages": 5,
+      "low_text": false,
+      "hash": "sha256:cd2439b10cc2a082e341017242826050de5fa4e8adba04a624020f2475ac2896"
+    }
+  ],
+  "failures": [
+    {
+      "url": "https://ceiba.org/wp-content/uploads/impact-Report.pdf",
+      "from": "https://ceiba.org/partners/sosgrant/",
+      "kind": "low_text",
+      "message": "page 1 is an image: needs OCR"
+    }
+  ],
+  "skipped_links": 237,
+  "chunks": [{ "id": "all", "docs": ["D1", "D2", "D3", "D4"], "chars": 60713 }],
+  "outcomes": {
+    "eligibility": "stated",
+    "documents": "stated",
+    "effort": "stated",
+    "co_finance": "stated",
+    "consortium": "not_found",
+    "after_award": "stated"
+  },
+  "written": ["eligibility", "documents", "effort", "co_finance", "after_award"],
+  "escalated": [],
+  "flags": [],
+  "notes": [
+    "eligibility \"Have a total annual budget below $500,000\": revenue range dropped: Invalid string: must match pattern /^[A-Z]{3}$/",
+    "extractor: The 2026/27 grant cycle is closed, and funding decisions have been finalized. D2–D4 concern Ceiba research or volunteer programmes rather than this grant."
+  ],
+  "usd": 0
+}

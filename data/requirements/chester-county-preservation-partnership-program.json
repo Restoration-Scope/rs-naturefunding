@@ -1,0 +1,50 @@
+{
+  "id": "chester-county-preservation-partnership-program",
+  "read_on": "2026-11-20",
+  "prompt_version": "req-2026-11-20.1",
+  "models": ["cursor:gpt-5.6-luna-high", "cursor:gpt-5.6-sol-high"],
+  "complete": false,
+  "reasons": [
+    "the text names a document with rules that was not read: Appraisal Policy",
+    "the text names a document with rules that was not read: Baseline Documentation Report Checklist for Conservation Easements",
+    "the text names a document with rules that was not read: Conservation Easement",
+    "the text names a document with rules that was not read: Declaration of Covenants, Conditions, and Restrictions",
+    "Jev did not check this reading, so an absent fact is not known to be absent"
+  ],
+  "requirements_checked": false,
+  "documents": [
+    {
+      "ref": "D1",
+      "url": "https://www.chesco.org/DocumentCenter/View/82582/R38-PPP-Manual",
+      "final_url": "https://www.chesco.org/DocumentCenter/View/82582/R38-PPP-Manual",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": true,
+      "chars": 109803,
+      "pages": 49,
+      "low_text": false,
+      "hash": "sha256:3cde189a5142ec6e1fd8f440c1d70b504d58855df7bc7fec221df1770c2c73aa"
+    }
+  ],
+  "failures": [],
+  "skipped_links": 0,
+  "chunks": [{ "id": "all", "docs": ["D1"], "chars": 109885 }],
+  "outcomes": {
+    "eligibility": "stated",
+    "documents": "stated",
+    "effort": "stated",
+    "co_finance": "stated",
+    "consortium": "not_found",
+    "after_award": "stated"
+  },
+  "written": ["eligibility", "documents", "effort", "co_finance", "after_award"],
+  "escalated": ["eligibility"],
+  "flags": [],
+  "notes": [
+    "co_finance: share 50% dropped, its quote does not state it",
+    "extractor: D1 contains separate Conservancy Acquisition and Conservancy Public Benefit Improvement routes, with route-specific eligibility and submission requirements. Funding limits vary by route and project type.",
+    "source chester-county-preservation-partnership-program-1: selector main dropped, a new quote sits outside it"
+  ],
+  "usd": 0
+}

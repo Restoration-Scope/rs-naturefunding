@@ -26,6 +26,25 @@
   "amount": null,
   "co_finance_required": null,
   "reporting": null,
+  "effort": {
+    "steps": [
+      "Application",
+      "Double-blind assessment"
+    ]
+  },
+  "eligibility": [
+    {
+      "rule": "Active member of the Australasian Bat Society",
+      "kind": "other"
+    },
+    {
+      "rule": "No conference travel, travel-led short activities, another body's duties, recurrent funding or salaries",
+      "kind": "project"
+    }
+  ],
+  "documents": [
+    "Copy of applicant CV"
+  ],
   "calls": [
     {
       "id": "2026",
@@ -62,7 +81,43 @@
       "quote": "When: A call for applications occurs once a year.",
       "checked_at": "2026-11-15",
       "method": "page"
-    }
+    },
+    "effort": [
+      {
+        "source_url": "http://www.ausbats.org.au/regular-abs-grants.html",
+        "quote": "Members must submit a completed application form outlining the project's objectives, methodology, timeline, budget details and contribution to the conservation and/or knowledge of bats in Australasia.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "http://www.ausbats.org.au/regular-abs-grants.html",
+        "quote": "The assessment process will be double-blind, and all applications will be anonymised prior to being passed onto the assessment panel.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "eligibility": [
+      {
+        "source_url": "https://www.ausbats.org.au/uploads/4/4/9/0/44908845/regular_abs_grants_application_form.docx",
+        "quote": "Remember, you MUST be an active member of the ABS to be eligible to apply for a grant",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.ausbats.org.au/uploads/4/4/9/0/44908845/advice_for_applicants_to_abs_grants.pdf",
+        "quote": "ABS grants cannot be used for: conference travel; attendance at meetings or other short-term activities mainly involving travel; activities which are properly the responsibility of another organisation or body; recurrent funding of existing projects; or payment of salaries, wages etc.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "documents": [
+      {
+        "source_url": "https://www.ausbats.org.au/uploads/4/4/9/0/44908845/regular_abs_grants_application_form.docx",
+        "quote": "Please include a copy of your CV with your application.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ]
   },
   "checked_at": "2026-11-15"
 }
