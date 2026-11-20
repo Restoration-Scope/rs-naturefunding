@@ -160,10 +160,6 @@ import EffortTip from './EffortTip.astro'
           <span class="tabular-nums" data-shown>{now.length} of {sorted.length} shown</span>
           <button type="button" class="linkish" data-reset data-clear hidden>Clear all</button>
         </p>
-        {/* Its own line: beside the count and Clear all it doesn't fit the column. */}
-        <p class="col-span-full -mt-1 mb-2 hidden text-sm xl:block">
-          <button type="button" class={csvButton} data-csv title={csvTitle}><Download className="size-3.5 self-center" aria-hidden="true" />Download CSV</button>
-        </p>
         <Label htmlFor="q" className="col-span-full mb-[0.3rem] max-xl:sr-only">Search</Label>
         <Input id="q" name="q" type="search" placeholder="Search funder or place" autoComplete="off" />
         <button
@@ -265,6 +261,11 @@ import EffortTip from './EffortTip.astro'
             </div>
           </fieldset>
 
+          {/* Wide screens only, under the last filter group: phones and tablets get no download. */}
+          <p class="hidden pt-3.5 text-sm xl:block">
+            <button type="button" class={csvButton} data-csv title={csvTitle}><Download className="size-3.5 self-center" aria-hidden="true" />Download CSV</button>
+          </p>
+
         </ScrollArea>
 
         <div class="flex items-center gap-3 border-t border-rule bg-surface px-4 pt-[0.65rem] pb-[calc(0.65rem+env(safe-area-inset-bottom))] xl:hidden!">
@@ -295,7 +296,6 @@ import EffortTip from './EffortTip.astro'
           <span class="whitespace-nowrap tabular-nums" data-shown>{now.length} of {sorted.length} shown</span>
           <span class="@min-[40rem]/tbl:hidden" data-sort-line>Open calls first, soonest deadline first</span>
           <button type="button" class="linkish" data-reset data-clear hidden>Clear all filters</button>
-          <button type="button" class:list={[csvButton, 'ml-auto']} data-csv title={csvTitle}><Download className="size-3.5 self-center" aria-hidden="true" />Download CSV</button>
         </div>
       </div>
       <p class="sr-only" aria-live="polite" data-live></p>
