@@ -1,19 +1,60 @@
 {
   "id": "yampa-river-fund-grants",
   "name": "Yampa River Fund grants",
-  "funder": { "name": "Yampa River Fund", "url": "https://www.yampariverfund.org/" },
-  "administered_by": { "name": "Yampa Valley Community Foundation", "url": "https://yvcf.org/" },
+  "funder": {
+    "name": "Yampa River Fund",
+    "url": "https://www.yampariverfund.org/"
+  },
+  "administered_by": {
+    "name": "Yampa Valley Community Foundation",
+    "url": "https://yvcf.org/"
+  },
   "parent": null,
   "url": "https://www.yampariverfund.org/grants",
   "summary": "A basin-wide community fund that pays for river restoration, riparian and in-channel habitat work, and water leases to support river flows in the Yampa Basin. Nonprofits, public bodies and irrigation entities apply in an annual spring cycle.",
-  "approaches": ["freshwater"],
-  "applicant_types": ["ngo", "government"],
-  "geography": { "scope": "countries", "countries": ["US"], "label": "Yampa Basin" },
+  "approaches": [
+    "freshwater"
+  ],
+  "applicant_types": [
+    "ngo",
+    "government"
+  ],
+  "geography": {
+    "scope": "countries",
+    "countries": [
+      "US"
+    ],
+    "label": "Yampa Basin"
+  },
   "access": "direct",
   "window": "fixed",
   "amount": null,
   "co_finance_required": null,
   "reporting": "Programmatic and financial progress report every 6 months, plus a final report with a financial report.",
+  "effort": {
+    "steps": [
+      "15-minute eligibility consultation",
+      "Required technical assistance",
+      "Online grant application",
+      "Steering Committee/Advisory Technical Committee meeting"
+    ]
+  },
+  "eligibility": [
+    {
+      "rule": "Supporting a science-based project classified in one listed project pool",
+      "kind": "project"
+    },
+    {
+      "rule": "Keeping a multi-year or multi-phase project within three years",
+      "kind": "project"
+    }
+  ],
+  "documents": [
+    "Project budget",
+    "Project timeline",
+    "Evaluation and monitoring plan",
+    "Letters of support from affected project area landowners and/or water users"
+  ],
   "calls": [
     {
       "id": "spring-2026",
@@ -21,7 +62,10 @@
       "url": "https://www.yampariverfund.org/grants",
       "status": "closed",
       "opens": "2026-02-17",
-      "deadline": { "date": "2026-04-01", "text": "April 1, 2026" },
+      "deadline": {
+        "date": "2026-04-01",
+        "text": "April 1, 2026"
+      },
       "evidence": {
         "status": {
           "source_url": "https://www.yampariverfund.org/grants",
@@ -80,7 +124,55 @@
       "quote": "The applicant shall provide the YRF a programmatic and financial progress report every 6 months",
       "checked_at": "2026-11-16",
       "method": "page"
-    }
+    },
+    "effort": [
+      {
+        "source_url": "https://www.yampariverfund.org/s/YRF_Application_Guidelines_2026_FINAL.pdf",
+        "quote": "All applicants for Yampa River Fund grant awards are required to conduct a 15-minute consultation with the Yampa River Fund manager to review eligibility and project details.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.yampariverfund.org/grants",
+        "quote": "Technical assistance is REQUIRED.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.yampariverfund.org/grants",
+        "quote": "APPLICATIONS ARE DUE April 1, 2026",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.yampariverfund.org/grants",
+        "quote": "Applicants will be expected to meet with a joint Steering Committee/Advisory Technical Committee meeting to answer questions on the afternoon of May 7.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "eligibility": [
+      {
+        "source_url": "https://www.yampariverfund.org/s/YRF_Application_Guidelines_2026_FINAL.pdf",
+        "quote": "Support science-based projects classified in one of the project pools listed below.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.yampariverfund.org/s/YRF_Application_Guidelines_2026_FINAL.pdf",
+        "quote": "multi-year or multi-phase projects are allowed but cannot exceed three years.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "documents": [
+      {
+        "source_url": "https://www.yampariverfund.org/s/YRF_Application_Guidelines_2026_FINAL.pdf",
+        "quote": "Provide project budget, timeline, evaluation and monitoring plan, and letter(s) of support from affected project area landowners and/or water users.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ]
   },
   "checked_at": "2026-11-16"
 }

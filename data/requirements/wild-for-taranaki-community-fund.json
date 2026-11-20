@@ -1,0 +1,59 @@
+{
+  "id": "wild-for-taranaki-community-fund",
+  "read_on": "2026-11-20",
+  "prompt_version": "req-2026-11-20.1",
+  "models": ["cursor:gpt-5.6-luna-high"],
+  "complete": false,
+  "reasons": [
+    "3 links could not be ranked without Jev",
+    "Jev did not check this reading, so an absent fact is not known to be absent"
+  ],
+  "requirements_checked": false,
+  "documents": [
+    {
+      "ref": "D1",
+      "url": "https://wildfortaranaki.nz/community-fund/",
+      "final_url": "https://wildfortaranaki.nz/community-fund/",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 5664,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:af44db378b9b817623f83eb170136017f17d7878e92a473760cad48da23ad547"
+    },
+    {
+      "ref": "D2",
+      "url": "https://wildfortaranaki.nz/wp-content/uploads/2026/02/Community-funding-application-2026.docx",
+      "final_url": "https://wildfortaranaki.nz/wp-content/uploads/2026/02/Community-funding-application-2026.docx",
+      "from": "https://wildfortaranaki.nz/community-fund/",
+      "anchor": "application form",
+      "depth": 1,
+      "pdf": false,
+      "chars": 2320,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:f156661067e478a45bae89216033bddc5dbfe2cfb4990149188dbb96d2f049f6"
+    }
+  ],
+  "failures": [],
+  "skipped_links": 42,
+  "chunks": [{ "id": "all", "docs": ["D1", "D2"], "chars": 8202 }],
+  "outcomes": {
+    "eligibility": "stated",
+    "documents": "not_found",
+    "effort": "stated",
+    "co_finance": "not_found",
+    "consortium": "not_found",
+    "after_award": "stated"
+  },
+  "written": ["eligibility", "effort", "after_award"],
+  "escalated": [],
+  "flags": [],
+  "notes": [
+    "extractor: The 2026 Community Fund is closed; applications are accepted annually during March. Non-member applicants must provide additional biodiversity-benefit information. The application maximum is $10,000, and funds must be used within 12 months of receipt. Successful applicants agree to project profiling, publicity acknowledgement, and returning surplus or unspent funds.",
+    "source wild-for-taranaki-community-fund-2: added for https://wildfortaranaki.nz/wp-content/uploads/2026/02/Community-funding-application-2026.docx"
+  ],
+  "usd": 0
+}
