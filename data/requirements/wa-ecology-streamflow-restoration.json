@@ -1,0 +1,762 @@
+{
+  "id": "wa-ecology-streamflow-restoration",
+  "read_on": "2026-11-20",
+  "prompt_version": "req-2026-11-20.1",
+  "models": ["cursor:gpt-5.6-luna-high", "cursor:gpt-5.6-sol-high"],
+  "complete": false,
+  "reasons": [
+    "23 links could not be ranked without Jev",
+    "123 links could not be ranked without Jev",
+    "http://apps.ecology.wa.gov/publications/SummaryPages/2511021.html would not open (http: HTTP 404)",
+    "the crawl bound left https://apps.ecology.wa.gov/publications/SummaryPages/2501005.html unread",
+    "the crawl bound left https://ecology.wa.gov/About-us/How-we-operate/Scientific-services/Quality-assurance/Quality-assurance-for-NEP-grantees unread",
+    "the crawl bound left https://apps.ecology.wa.gov/publications/documents/2511021.pdf unread",
+    "the crawl bound left https://ecology.wa.gov/regulations-permits?cats=22 unread",
+    "the crawl bound left https://ecology.wa.gov/regulations-permits/laws-rules-rulemaking/rulemaking/rulemaking-faq unread",
+    "the crawl bound left https://ecology.wa.gov/regulations-permits/laws-rules-rulemaking/rulemaking/economics-analyses unread",
+    "the crawl bound left https://ecology.wa.gov/regulations-permits/laws-rules-rulemaking/rulemaking/index unread",
+    "the crawl bound left https://ecology.wa.gov/regulations-permits/laws-rules-rulemaking/rulemaking/wac-173-408-455 unread",
+    "the crawl bound left https://ecology.wa.gov/regulations-permits/laws-rules-rulemaking/rulemaking/wac-173-423-clean-vehicles-program unread",
+    "the crawl bound left https://ecology.wa.gov/regulations-permits/laws-rules-rulemaking/rulemaking/wac-173-424-455-clean-fuels-program unread",
+    "the crawl bound left https://ecology.wa.gov/regulations-permits/laws-rules-rulemaking/rulemaking/wac-173-441-446-linkage unread",
+    "the crawl bound left https://ecology.wa.gov/regulations-permits/laws-rules-rulemaking/rulemaking/wac-173-443-hydrofluorocarbons-and-other unread",
+    "the crawl bound left https://ecology.wa.gov/Regulations-Permits/Laws-rules-rulemaking/Rulemaking/WAC-173-445 unread",
+    "the crawl bound left https://ecology.wa.gov/regulations-permits/laws-rules-rulemaking/rulemaking/wac-173-448 unread",
+    "the crawl bound left https://ecology.wa.gov/regulations-permits/laws-rules-rulemaking/rulemaking/wac-173-460 unread",
+    "the crawl bound left https://ecology.wa.gov/regulations-permits/laws-rules-rulemaking/rulemaking/wac-173-476-400 unread",
+    "the crawl bound left https://ecology.wa.gov/regulations-permits/laws-rules-rulemaking/rulemaking/wac-173-26-27-shoreline-management-act unread",
+    "the crawl bound left https://ecology.wa.gov/Regulations-Permits/Laws-rules-rulemaking/Rulemaking/WAC-173-135 unread",
+    "the crawl bound left https://ecology.wa.gov/regulations-permits/laws-rules-rulemaking/rulemaking/wac-173-166 unread",
+    "the crawl bound left https://ecology.wa.gov/regulations-permits/laws-rules-rulemaking/rulemaking/wac-173-175 unread",
+    "the crawl bound left https://ecology.wa.gov/regulations-permits/laws-rules-rulemaking/rulemaking/wac-173-201a-harmful-algal-blooms unread",
+    "the crawl bound left https://ecology.wa.gov/regulations-permits/laws-rules-rulemaking/rulemaking/wac-173-201a-lake-nutrient-criteria unread",
+    "the crawl bound left https://ecology.wa.gov/regulations-permits/laws-rules-rulemaking/rulemaking/wac-173-201a-outstanding-resource-waters unread",
+    "the crawl bound left https://ecology.wa.gov/regulations-permits/laws-rules-rulemaking/rulemaking/wac-173-217 unread",
+    "the crawl bound left https://ecology.wa.gov/regulations-permits/laws-rules-rulemaking/rulemaking/wac-173-224-water-quality-permit-fees unread",
+    "the crawl bound left https://ecology.wa.gov/Regulations-Permits/Laws-rules-rulemaking/Rulemaking/WAC-173-305 unread",
+    "the crawl bound left https://ecology.wa.gov/regulations-permits/laws-rules-rulemaking/rulemaking/wac-173-310 unread",
+    "the crawl bound left https://ecology.wa.gov/regulations-permits/laws-rules-rulemaking/rulemaking/wac-173-316 unread",
+    "the crawl bound left https://ecology.wa.gov/Regulations-Permits/Laws-rules/Rulemaking/WAC-173-331-Dec15 unread",
+    "the crawl bound left https://ecology.wa.gov/Regulations-Permits/Laws-rules-rulemaking/Rulemaking/WAC-173-491-Jul13 unread",
+    "the crawl bound left https://ecology.wa.gov/Regulations-Permits/Laws-rules-rulemaking/Rulemaking/WAC-173-331-Dec15 unread",
+    "the crawl bound left https://ecology.wa.gov/Regulations-Permits/Laws-rules/Rulemaking/WAC-173-333-Oct15 unread",
+    "the crawl bound left https://ecology.wa.gov/Regulations-Permits/Laws-rules-rulemaking/Rulemaking/WAC-173-333-Oct15 unread",
+    "the crawl bound left https://ecology.wa.gov/regulations-permits/laws-rules-rulemaking/rulemaking/wac-173-339-lead-in-cosmetics unread",
+    "the crawl bound left https://ecology.wa.gov/regulations-permits/laws-rules-rulemaking/rulemaking/wac-173-350 unread",
+    "the crawl bound left https://ecology.wa.gov/regulations-permits/laws-rules-rulemaking/rulemaking/wac-173-350-wac-173-351 unread",
+    "the crawl bound left https://ecology.wa.gov/regulations-permits/laws-rules-rulemaking/rulemaking/wac-173-910 unread",
+    "the crawl bound left https://ecology.wa.gov/regulations-permits/laws-rules-rulemaking/rulemaking/wac-173-950 unread",
+    "the crawl bound left https://ecology.wa.gov/regulations-permits/laws-rules-rulemaking/rulemaking/wac-173-182-186-oil-spill-contingency-plans unread",
+    "the crawl bound left https://ecology.wa.gov/regulations-permits/laws-rules-rulemaking/rulemaking/wac-173-188 unread",
+    "the crawl bound left https://ecology.wa.gov/regulations-permits/laws-rules-rulemaking/rulemaking/wac-173-455-400-50 unread",
+    "the crawl bound left https://ecology.wa.gov/regulations-permits/laws-rules-rulemaking/rulemaking/wac-173-446-offsets-us-forest-protocol unread",
+    "the crawl bound left https://ecology.wa.gov/regulations-permits/laws-rules-rulemaking/closed-rulemaking/wac-173-425-430-400 unread",
+    "the crawl bound left https://ecology.wa.gov/regulations-permits/laws-rules-rulemaking/closed-rulemaking/wac-173-443-hydrofluorocarbons unread",
+    "the crawl bound left https://ecology.wa.gov/regulations-permits/laws-rules-rulemaking/rulemaking/wac-173-424 unread",
+    "the crawl bound left https://ecology.wa.gov/regulations-permits/laws-rules-rulemaking/rulemaking/wac-173-423 unread",
+    "the crawl bound left https://ecology.wa.gov/regulations-permits/laws-rules-rulemaking/rulemaking/wac-173-446-offsets unread",
+    "the crawl bound left https://ecology.wa.gov/regulations-permits/laws-rules-rulemaking/rulemaking/wac-173-400-401-air-pollution-sources unread",
+    "the crawl bound left https://ecology.wa.gov/regulations-permits/laws-rules-rulemaking/closed-rulemaking/wac-173-441-446 unread",
+    "the crawl bound left https://ecology.wa.gov/regulations-permits/laws-rules-rulemaking/closed-rulemaking/wac-173-446b unread",
+    "the crawl bound left https://ecology.wa.gov/regulations-permits/laws-rules-rulemaking/closed-rulemaking/wac-173-446-apcr unread",
+    "the crawl bound left https://ecology.wa.gov/regulations-permits/laws-rules-rulemaking/closed-rulemaking/wac-173-443-455 unread",
+    "the crawl bound left https://ecology.wa.gov/regulations-permits/laws-rules-rulemaking/closed-rulemaking/wac173-423-400jan18 unread",
+    "the crawl bound left https://ecology.wa.gov/regulations-permits/laws-rules-rulemaking/closed-rulemaking/wac-173-424-455 unread",
+    "the crawl bound left https://ecology.wa.gov/regulations-permits/laws-rules-rulemaking/closed-rulemaking/wac-173-446 unread",
+    "the crawl bound left https://ecology.wa.gov/regulations-permits/laws-rules-rulemaking/closed-rulemaking/wac-173-446a unread",
+    "the crawl bound left https://ecology.wa.gov/regulations-permits/laws-rules-rulemaking/closed-rulemaking/wac-173-441 unread",
+    "the crawl bound left https://ecology.wa.gov/regulations-permits/laws-rules-rulemaking/closed-rulemaking/wac-173-444 unread",
+    "the crawl bound left https://ecology.wa.gov/regulations-permits/laws-rules-rulemaking/closed-rulemaking/wac173-443 unread",
+    "the crawl bound left https://ecology.wa.gov/regulations-permits/laws-rules-rulemaking/closed-rulemaking/wac-173-442-441-overview unread",
+    "the crawl bound left https://ecology.wa.gov/regulations-permits/laws-rules-rulemaking/closed-rulemaking/wac-173-507-508-513-514-515-watershed-restoration unread",
+    "the crawl bound left https://ecology.wa.gov/regulations-permits/laws-rules-rulemaking/rulemaking/wac-173-167-2026 unread",
+    "the crawl bound left https://ecology.wa.gov/regulations-permits/laws-rules-rulemaking/rulemaking/wac173-201a-variances unread",
+    "the crawl bound left https://ecology.wa.gov/regulations-permits/laws-rules-rulemaking/rulemaking/wac-173-167-2025 unread",
+    "the crawl bound left https://ecology.wa.gov/regulations-permits/laws-rules-rulemaking/rulemaking/wac-173-158 unread",
+    "the crawl bound left https://ecology.wa.gov/regulations-permits/laws-rules-rulemaking/rulemaking/wac-173-224 unread",
+    "the crawl bound left https://ecology.wa.gov/regulations-permits/laws-rules-rulemaking/closed-rulemaking/wac-173-503a-feb15 unread",
+    "the crawl bound left https://ecology.wa.gov/regulations-permits/laws-rules-rulemaking/closed-rulemaking/wac-173-525-mar05 unread",
+    "the crawl bound left https://ecology.wa.gov/regulations-permits/laws-rules-rulemaking/closed-rulemaking/wac-173-526-mar05 unread",
+    "the crawl bound left https://ecology.wa.gov/regulations-permits/laws-rules-rulemaking/closed-rulemaking/wac-173-167-2024-28119efcad412da8f533ebdc1470dba2 unread",
+    "the crawl bound left https://ecology.wa.gov/regulations-permits/laws-rules-rulemaking/closed-rulemaking/wac-173-201a-hhc unread",
+    "the crawl bound left https://ecology.wa.gov/regulations-permits/laws-rules-rulemaking/closed-rulemaking/wac-173-201a-natural-conditions unread",
+    "the crawl bound left https://ecology.wa.gov/regulations-permits/laws-rules-rulemaking/closed-rulemaking/wac-173-201a-aquatic-life-toxics-criteria unread",
+    "the crawl bound left https://ecology.wa.gov/regulations-permits/laws-rules-rulemaking/closed-rulemaking/wac-173-224 unread",
+    "the crawl bound left https://ecology.wa.gov/regulations-permits/laws-rules-rulemaking/closed-rulemaking/wac173-201a-salmon-spawning-habitat unread",
+    "the crawl bound left https://ecology.wa.gov/regulations-permits/laws-rules-rulemaking/closed-rulemaking/wac173-201a-chelan-uaa unread",
+    "the crawl bound left https://ecology.wa.gov/Regulations-Permits/Laws-rules-rulemaking/Closed-rulemaking/WAC173-201A-revisions unread",
+    "the crawl bound left https://ecology.wa.gov/regulations-permits/laws-rules-rulemaking/rulemaking/wac-173-905 unread",
+    "the crawl bound left https://ecology.wa.gov/regulations-permits/laws-rules-rulemaking/rulemaking/wac-173-337-nov2023 unread",
+    "the crawl bound left https://ecology.wa.gov/regulations-permits/laws-rules-rulemaking/rulemaking/wac-173-339 unread",
+    "the crawl bound left https://ecology.wa.gov/regulations-permits/laws-rules-rulemaking/closed-rulemaking/wac-173-187 unread",
+    "the crawl bound left https://ecology.wa.gov/regulations-permits/laws-rules-rulemaking/closed-rulemaking/wac-173-340 unread",
+    "the crawl bound left https://app.leg.wa.gov/wac/ unread",
+    "the crawl bound left https://leg.wa.gov/state-laws-and-rules/washington-state-register/ unread",
+    "the crawl bound left https://ecology.wa.gov/Regulations-Permits/Guidance-technical-assistance/Facility-Site-database unread",
+    "the crawl bound left https://ecology.wa.gov/Regulations-Permits/Reporting-requirements/Plastic-producer-registration unread",
+    "the crawl bound left https://apps.ecology.wa.gov/paris/PermitLookup.aspx unread",
+    "the crawl bound left https://ecology.wa.gov/Regulations-Permits/Reporting-requirements/Solid-waste-facilities-reporting unread",
+    "the crawl bound left https://secureaccess.wa.gov/myAccess/saw/select.do unread",
+    "the text names a document with rules that was not read: Funding Guidelines: Streamflow Restoration Competitive Grants, 2026",
+    "the text names a document with rules that was not read: Streamflow Restoration Funding rule (Chapter 173-566 WAC)",
+    "the text names a document with rules that was not read: Administrative Requirements for Grants and Loans (the Yellow Book)",
+    "the text names a document with rules that was not read: Quality Assurance Project Plan (QAPP) template and guidance",
+    "Jev did not check this reading, so an absent fact is not known to be absent",
+    "strong reading: the text names a document with rules that was not read: Funding Guidelines: Streamflow Restoration Competitive Grants, 2026"
+  ],
+  "requirements_checked": false,
+  "documents": [
+    {
+      "ref": "D1",
+      "url": "https://ecology.wa.gov/about-us/payments-contracts-grants/grants-loans/find-a-grant-or-loan/streamflow-restoration-implementation-grants",
+      "final_url": "https://ecology.wa.gov/about-us/payments-contracts-grants/grants-loans/find-a-grant-or-loan/streamflow-restoration-implementation-grants",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 4917,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:0f2de2567f5e921006c1c1834942daeb2c1c2c6d30eecb307bbffce328d6c28a"
+    },
+    {
+      "ref": "D2",
+      "url": "https://ecology.wa.gov/about-us/payments-contracts-grants/grants-loans",
+      "final_url": "https://ecology.wa.gov/about-us/payments-contracts-grants/grants-loans",
+      "from": "https://ecology.wa.gov/about-us/payments-contracts-grants/grants-loans/find-a-grant-or-loan/streamflow-restoration-implementation-grants",
+      "anchor": "Apply for or manage a grant or loan",
+      "depth": 1,
+      "pdf": false,
+      "chars": 8996,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:b4bd8cfc6f43a710492df70b3a8380a6c9cf067b978f0f16d67d471650f6497f"
+    },
+    {
+      "ref": "D3",
+      "url": "https://ecology.wa.gov/About-us/Payments-contracts-grants/Grants-loans/Grant-loan-guidance",
+      "final_url": "https://ecology.wa.gov/about-us/payments-contracts-grants/grants-loans/grant-loan-guidance",
+      "from": "https://ecology.wa.gov/about-us/payments-contracts-grants/grants-loans/find-a-grant-or-loan/streamflow-restoration-implementation-grants",
+      "anchor": "Get guidance for managing a grant or loan",
+      "depth": 1,
+      "pdf": false,
+      "chars": 6110,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:7360a425835623d4981d4a8d9c0fa0421900871f18ba93e812d5f0458384abf9"
+    },
+    {
+      "ref": "D4",
+      "url": "https://apps.ecology.wa.gov/publications/SummaryPages/2511021.html",
+      "final_url": "https://apps.ecology.wa.gov/publications/SummaryPages/2511021.html",
+      "from": "https://ecology.wa.gov/about-us/payments-contracts-grants/grants-loans/find-a-grant-or-loan/streamflow-restoration-implementation-grants",
+      "anchor": "funding guidelines",
+      "depth": 1,
+      "pdf": false,
+      "chars": 2086,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:3b43869cfc97591f63e64c7f00f85d09ba98a8e6276dcd423bdf35bf7eead076"
+    },
+    {
+      "ref": "D5",
+      "url": "https://appswr.ecology.wa.gov/docs/WaterRights/wrwebpdf/StreamflowRestorationGrantApplicationStatus.pdf",
+      "final_url": "https://appswr.ecology.wa.gov/docs/WaterRights/wrwebpdf/StreamflowRestorationGrantApplicationStatus.pdf",
+      "from": "https://ecology.wa.gov/about-us/payments-contracts-grants/grants-loans/find-a-grant-or-loan/streamflow-restoration-implementation-grants",
+      "anchor": "16 projects in 11 watersheds",
+      "depth": 1,
+      "pdf": true,
+      "chars": 4759,
+      "pages": 1,
+      "low_text": false,
+      "hash": "sha256:4e0dbe0497a044cb0a1585c8020168330bd5dd0b0f770c7a176e4a0cbc24ff74"
+    },
+    {
+      "ref": "D6",
+      "url": "https://ecology.wa.gov/regulations-permits/laws-rules-rulemaking/rulemaking",
+      "final_url": "https://ecology.wa.gov/regulations-permits/laws-rules-rulemaking/rulemaking",
+      "from": "https://ecology.wa.gov/about-us/payments-contracts-grants/grants-loans/find-a-grant-or-loan/streamflow-restoration-implementation-grants",
+      "anchor": "Laws, rules, & rulemaking",
+      "depth": 1,
+      "pdf": false,
+      "chars": 23572,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:e1e221cb9678056661bd287d32dc7702067585200ed28b1e0bf4775b9de9f52b"
+    },
+    {
+      "ref": "D7",
+      "url": "https://ecology.wa.gov/Footer/Online-tools-publications/Online-tools-databases",
+      "final_url": "https://ecology.wa.gov/footer-pages/online-tools-publications/online-tools-databases",
+      "from": "https://ecology.wa.gov/about-us/payments-contracts-grants/grants-loans/find-a-grant-or-loan/streamflow-restoration-implementation-grants",
+      "anchor": "Online tools",
+      "depth": 1,
+      "pdf": false,
+      "chars": 9279,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:5ad516666edea1efa17006481bcc0de5e3fdc3393cf15a2e9839b165f3d3bc4c"
+    }
+  ],
+  "failures": [
+    {
+      "url": "http://apps.ecology.wa.gov/publications/SummaryPages/2511021.html",
+      "from": "https://ecology.wa.gov/about-us/payments-contracts-grants/grants-loans/find-a-grant-or-loan/streamflow-restoration-implementation-grants",
+      "kind": "http",
+      "message": "HTTP 404"
+    },
+    {
+      "url": "https://apps.ecology.wa.gov/publications/SummaryPages/2501005.html",
+      "from": "https://ecology.wa.gov/About-us/Payments-contracts-grants/Grants-loans/Grant-loan-guidance",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://ecology.wa.gov/About-us/How-we-operate/Scientific-services/Quality-assurance/Quality-assurance-for-NEP-grantees",
+      "from": "https://ecology.wa.gov/About-us/Payments-contracts-grants/Grants-loans/Grant-loan-guidance",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://apps.ecology.wa.gov/publications/documents/2511021.pdf",
+      "from": "https://apps.ecology.wa.gov/publications/SummaryPages/2511021.html",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://ecology.wa.gov/regulations-permits?cats=22",
+      "from": "https://ecology.wa.gov/regulations-permits/laws-rules-rulemaking/rulemaking",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://ecology.wa.gov/regulations-permits/laws-rules-rulemaking/rulemaking/rulemaking-faq",
+      "from": "https://ecology.wa.gov/regulations-permits/laws-rules-rulemaking/rulemaking",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://ecology.wa.gov/regulations-permits/laws-rules-rulemaking/rulemaking/economics-analyses",
+      "from": "https://ecology.wa.gov/regulations-permits/laws-rules-rulemaking/rulemaking",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://ecology.wa.gov/regulations-permits/laws-rules-rulemaking/rulemaking/index",
+      "from": "https://ecology.wa.gov/regulations-permits/laws-rules-rulemaking/rulemaking",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://ecology.wa.gov/regulations-permits/laws-rules-rulemaking/rulemaking/wac-173-408-455",
+      "from": "https://ecology.wa.gov/regulations-permits/laws-rules-rulemaking/rulemaking",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://ecology.wa.gov/regulations-permits/laws-rules-rulemaking/rulemaking/wac-173-423-clean-vehicles-program",
+      "from": "https://ecology.wa.gov/regulations-permits/laws-rules-rulemaking/rulemaking",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://ecology.wa.gov/regulations-permits/laws-rules-rulemaking/rulemaking/wac-173-424-455-clean-fuels-program",
+      "from": "https://ecology.wa.gov/regulations-permits/laws-rules-rulemaking/rulemaking",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://ecology.wa.gov/regulations-permits/laws-rules-rulemaking/rulemaking/wac-173-441-446-linkage",
+      "from": "https://ecology.wa.gov/regulations-permits/laws-rules-rulemaking/rulemaking",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://ecology.wa.gov/regulations-permits/laws-rules-rulemaking/rulemaking/wac-173-443-hydrofluorocarbons-and-other",
+      "from": "https://ecology.wa.gov/regulations-permits/laws-rules-rulemaking/rulemaking",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://ecology.wa.gov/Regulations-Permits/Laws-rules-rulemaking/Rulemaking/WAC-173-445",
+      "from": "https://ecology.wa.gov/regulations-permits/laws-rules-rulemaking/rulemaking",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://ecology.wa.gov/regulations-permits/laws-rules-rulemaking/rulemaking/wac-173-448",
+      "from": "https://ecology.wa.gov/regulations-permits/laws-rules-rulemaking/rulemaking",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://ecology.wa.gov/regulations-permits/laws-rules-rulemaking/rulemaking/wac-173-460",
+      "from": "https://ecology.wa.gov/regulations-permits/laws-rules-rulemaking/rulemaking",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://ecology.wa.gov/regulations-permits/laws-rules-rulemaking/rulemaking/wac-173-476-400",
+      "from": "https://ecology.wa.gov/regulations-permits/laws-rules-rulemaking/rulemaking",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://ecology.wa.gov/regulations-permits/laws-rules-rulemaking/rulemaking/wac-173-26-27-shoreline-management-act",
+      "from": "https://ecology.wa.gov/regulations-permits/laws-rules-rulemaking/rulemaking",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://ecology.wa.gov/Regulations-Permits/Laws-rules-rulemaking/Rulemaking/WAC-173-135",
+      "from": "https://ecology.wa.gov/regulations-permits/laws-rules-rulemaking/rulemaking",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://ecology.wa.gov/regulations-permits/laws-rules-rulemaking/rulemaking/wac-173-166",
+      "from": "https://ecology.wa.gov/regulations-permits/laws-rules-rulemaking/rulemaking",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://ecology.wa.gov/regulations-permits/laws-rules-rulemaking/rulemaking/wac-173-175",
+      "from": "https://ecology.wa.gov/regulations-permits/laws-rules-rulemaking/rulemaking",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://ecology.wa.gov/regulations-permits/laws-rules-rulemaking/rulemaking/wac-173-201a-harmful-algal-blooms",
+      "from": "https://ecology.wa.gov/regulations-permits/laws-rules-rulemaking/rulemaking",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://ecology.wa.gov/regulations-permits/laws-rules-rulemaking/rulemaking/wac-173-201a-lake-nutrient-criteria",
+      "from": "https://ecology.wa.gov/regulations-permits/laws-rules-rulemaking/rulemaking",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://ecology.wa.gov/regulations-permits/laws-rules-rulemaking/rulemaking/wac-173-201a-outstanding-resource-waters",
+      "from": "https://ecology.wa.gov/regulations-permits/laws-rules-rulemaking/rulemaking",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://ecology.wa.gov/regulations-permits/laws-rules-rulemaking/rulemaking/wac-173-217",
+      "from": "https://ecology.wa.gov/regulations-permits/laws-rules-rulemaking/rulemaking",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://ecology.wa.gov/regulations-permits/laws-rules-rulemaking/rulemaking/wac-173-224-water-quality-permit-fees",
+      "from": "https://ecology.wa.gov/regulations-permits/laws-rules-rulemaking/rulemaking",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://ecology.wa.gov/Regulations-Permits/Laws-rules-rulemaking/Rulemaking/WAC-173-305",
+      "from": "https://ecology.wa.gov/regulations-permits/laws-rules-rulemaking/rulemaking",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://ecology.wa.gov/regulations-permits/laws-rules-rulemaking/rulemaking/wac-173-310",
+      "from": "https://ecology.wa.gov/regulations-permits/laws-rules-rulemaking/rulemaking",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://ecology.wa.gov/regulations-permits/laws-rules-rulemaking/rulemaking/wac-173-316",
+      "from": "https://ecology.wa.gov/regulations-permits/laws-rules-rulemaking/rulemaking",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://ecology.wa.gov/Regulations-Permits/Laws-rules/Rulemaking/WAC-173-331-Dec15",
+      "from": "https://ecology.wa.gov/regulations-permits/laws-rules-rulemaking/rulemaking",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://ecology.wa.gov/Regulations-Permits/Laws-rules-rulemaking/Rulemaking/WAC-173-491-Jul13",
+      "from": "https://ecology.wa.gov/regulations-permits/laws-rules-rulemaking/rulemaking",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://ecology.wa.gov/Regulations-Permits/Laws-rules-rulemaking/Rulemaking/WAC-173-331-Dec15",
+      "from": "https://ecology.wa.gov/regulations-permits/laws-rules-rulemaking/rulemaking",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://ecology.wa.gov/Regulations-Permits/Laws-rules/Rulemaking/WAC-173-333-Oct15",
+      "from": "https://ecology.wa.gov/regulations-permits/laws-rules-rulemaking/rulemaking",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://ecology.wa.gov/Regulations-Permits/Laws-rules-rulemaking/Rulemaking/WAC-173-333-Oct15",
+      "from": "https://ecology.wa.gov/regulations-permits/laws-rules-rulemaking/rulemaking",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://ecology.wa.gov/regulations-permits/laws-rules-rulemaking/rulemaking/wac-173-339-lead-in-cosmetics",
+      "from": "https://ecology.wa.gov/regulations-permits/laws-rules-rulemaking/rulemaking",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://ecology.wa.gov/regulations-permits/laws-rules-rulemaking/rulemaking/wac-173-350",
+      "from": "https://ecology.wa.gov/regulations-permits/laws-rules-rulemaking/rulemaking",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://ecology.wa.gov/regulations-permits/laws-rules-rulemaking/rulemaking/wac-173-350-wac-173-351",
+      "from": "https://ecology.wa.gov/regulations-permits/laws-rules-rulemaking/rulemaking",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://ecology.wa.gov/regulations-permits/laws-rules-rulemaking/rulemaking/wac-173-910",
+      "from": "https://ecology.wa.gov/regulations-permits/laws-rules-rulemaking/rulemaking",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://ecology.wa.gov/regulations-permits/laws-rules-rulemaking/rulemaking/wac-173-950",
+      "from": "https://ecology.wa.gov/regulations-permits/laws-rules-rulemaking/rulemaking",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://ecology.wa.gov/regulations-permits/laws-rules-rulemaking/rulemaking/wac-173-182-186-oil-spill-contingency-plans",
+      "from": "https://ecology.wa.gov/regulations-permits/laws-rules-rulemaking/rulemaking",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://ecology.wa.gov/regulations-permits/laws-rules-rulemaking/rulemaking/wac-173-188",
+      "from": "https://ecology.wa.gov/regulations-permits/laws-rules-rulemaking/rulemaking",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://ecology.wa.gov/regulations-permits/laws-rules-rulemaking/rulemaking/wac-173-455-400-50",
+      "from": "https://ecology.wa.gov/regulations-permits/laws-rules-rulemaking/rulemaking",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://ecology.wa.gov/regulations-permits/laws-rules-rulemaking/rulemaking/wac-173-446-offsets-us-forest-protocol",
+      "from": "https://ecology.wa.gov/regulations-permits/laws-rules-rulemaking/rulemaking",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://ecology.wa.gov/regulations-permits/laws-rules-rulemaking/closed-rulemaking/wac-173-425-430-400",
+      "from": "https://ecology.wa.gov/regulations-permits/laws-rules-rulemaking/rulemaking",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://ecology.wa.gov/regulations-permits/laws-rules-rulemaking/closed-rulemaking/wac-173-443-hydrofluorocarbons",
+      "from": "https://ecology.wa.gov/regulations-permits/laws-rules-rulemaking/rulemaking",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://ecology.wa.gov/regulations-permits/laws-rules-rulemaking/rulemaking/wac-173-424",
+      "from": "https://ecology.wa.gov/regulations-permits/laws-rules-rulemaking/rulemaking",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://ecology.wa.gov/regulations-permits/laws-rules-rulemaking/rulemaking/wac-173-423",
+      "from": "https://ecology.wa.gov/regulations-permits/laws-rules-rulemaking/rulemaking",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://ecology.wa.gov/regulations-permits/laws-rules-rulemaking/rulemaking/wac-173-446-offsets",
+      "from": "https://ecology.wa.gov/regulations-permits/laws-rules-rulemaking/rulemaking",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://ecology.wa.gov/regulations-permits/laws-rules-rulemaking/rulemaking/wac-173-400-401-air-pollution-sources",
+      "from": "https://ecology.wa.gov/regulations-permits/laws-rules-rulemaking/rulemaking",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://ecology.wa.gov/regulations-permits/laws-rules-rulemaking/closed-rulemaking/wac-173-441-446",
+      "from": "https://ecology.wa.gov/regulations-permits/laws-rules-rulemaking/rulemaking",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://ecology.wa.gov/regulations-permits/laws-rules-rulemaking/closed-rulemaking/wac-173-446b",
+      "from": "https://ecology.wa.gov/regulations-permits/laws-rules-rulemaking/rulemaking",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://ecology.wa.gov/regulations-permits/laws-rules-rulemaking/closed-rulemaking/wac-173-446-apcr",
+      "from": "https://ecology.wa.gov/regulations-permits/laws-rules-rulemaking/rulemaking",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://ecology.wa.gov/regulations-permits/laws-rules-rulemaking/closed-rulemaking/wac-173-443-455",
+      "from": "https://ecology.wa.gov/regulations-permits/laws-rules-rulemaking/rulemaking",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://ecology.wa.gov/regulations-permits/laws-rules-rulemaking/closed-rulemaking/wac173-423-400jan18",
+      "from": "https://ecology.wa.gov/regulations-permits/laws-rules-rulemaking/rulemaking",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://ecology.wa.gov/regulations-permits/laws-rules-rulemaking/closed-rulemaking/wac-173-424-455",
+      "from": "https://ecology.wa.gov/regulations-permits/laws-rules-rulemaking/rulemaking",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://ecology.wa.gov/regulations-permits/laws-rules-rulemaking/closed-rulemaking/wac-173-446",
+      "from": "https://ecology.wa.gov/regulations-permits/laws-rules-rulemaking/rulemaking",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://ecology.wa.gov/regulations-permits/laws-rules-rulemaking/closed-rulemaking/wac-173-446a",
+      "from": "https://ecology.wa.gov/regulations-permits/laws-rules-rulemaking/rulemaking",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://ecology.wa.gov/regulations-permits/laws-rules-rulemaking/closed-rulemaking/wac-173-441",
+      "from": "https://ecology.wa.gov/regulations-permits/laws-rules-rulemaking/rulemaking",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://ecology.wa.gov/regulations-permits/laws-rules-rulemaking/closed-rulemaking/wac-173-444",
+      "from": "https://ecology.wa.gov/regulations-permits/laws-rules-rulemaking/rulemaking",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://ecology.wa.gov/regulations-permits/laws-rules-rulemaking/closed-rulemaking/wac173-443",
+      "from": "https://ecology.wa.gov/regulations-permits/laws-rules-rulemaking/rulemaking",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://ecology.wa.gov/regulations-permits/laws-rules-rulemaking/closed-rulemaking/wac-173-442-441-overview",
+      "from": "https://ecology.wa.gov/regulations-permits/laws-rules-rulemaking/rulemaking",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://ecology.wa.gov/regulations-permits/laws-rules-rulemaking/closed-rulemaking/wac-173-507-508-513-514-515-watershed-restoration",
+      "from": "https://ecology.wa.gov/regulations-permits/laws-rules-rulemaking/rulemaking",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://ecology.wa.gov/regulations-permits/laws-rules-rulemaking/rulemaking/wac-173-167-2026",
+      "from": "https://ecology.wa.gov/regulations-permits/laws-rules-rulemaking/rulemaking",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://ecology.wa.gov/regulations-permits/laws-rules-rulemaking/rulemaking/wac173-201a-variances",
+      "from": "https://ecology.wa.gov/regulations-permits/laws-rules-rulemaking/rulemaking",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://ecology.wa.gov/regulations-permits/laws-rules-rulemaking/rulemaking/wac-173-167-2025",
+      "from": "https://ecology.wa.gov/regulations-permits/laws-rules-rulemaking/rulemaking",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://ecology.wa.gov/regulations-permits/laws-rules-rulemaking/rulemaking/wac-173-158",
+      "from": "https://ecology.wa.gov/regulations-permits/laws-rules-rulemaking/rulemaking",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://ecology.wa.gov/regulations-permits/laws-rules-rulemaking/rulemaking/wac-173-224",
+      "from": "https://ecology.wa.gov/regulations-permits/laws-rules-rulemaking/rulemaking",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://ecology.wa.gov/regulations-permits/laws-rules-rulemaking/closed-rulemaking/wac-173-503a-feb15",
+      "from": "https://ecology.wa.gov/regulations-permits/laws-rules-rulemaking/rulemaking",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://ecology.wa.gov/regulations-permits/laws-rules-rulemaking/closed-rulemaking/wac-173-525-mar05",
+      "from": "https://ecology.wa.gov/regulations-permits/laws-rules-rulemaking/rulemaking",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://ecology.wa.gov/regulations-permits/laws-rules-rulemaking/closed-rulemaking/wac-173-526-mar05",
+      "from": "https://ecology.wa.gov/regulations-permits/laws-rules-rulemaking/rulemaking",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://ecology.wa.gov/regulations-permits/laws-rules-rulemaking/closed-rulemaking/wac-173-167-2024-28119efcad412da8f533ebdc1470dba2",
+      "from": "https://ecology.wa.gov/regulations-permits/laws-rules-rulemaking/rulemaking",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://ecology.wa.gov/regulations-permits/laws-rules-rulemaking/closed-rulemaking/wac-173-201a-hhc",
+      "from": "https://ecology.wa.gov/regulations-permits/laws-rules-rulemaking/rulemaking",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://ecology.wa.gov/regulations-permits/laws-rules-rulemaking/closed-rulemaking/wac-173-201a-natural-conditions",
+      "from": "https://ecology.wa.gov/regulations-permits/laws-rules-rulemaking/rulemaking",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://ecology.wa.gov/regulations-permits/laws-rules-rulemaking/closed-rulemaking/wac-173-201a-aquatic-life-toxics-criteria",
+      "from": "https://ecology.wa.gov/regulations-permits/laws-rules-rulemaking/rulemaking",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://ecology.wa.gov/regulations-permits/laws-rules-rulemaking/closed-rulemaking/wac-173-224",
+      "from": "https://ecology.wa.gov/regulations-permits/laws-rules-rulemaking/rulemaking",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://ecology.wa.gov/regulations-permits/laws-rules-rulemaking/closed-rulemaking/wac173-201a-salmon-spawning-habitat",
+      "from": "https://ecology.wa.gov/regulations-permits/laws-rules-rulemaking/rulemaking",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://ecology.wa.gov/regulations-permits/laws-rules-rulemaking/closed-rulemaking/wac173-201a-chelan-uaa",
+      "from": "https://ecology.wa.gov/regulations-permits/laws-rules-rulemaking/rulemaking",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://ecology.wa.gov/Regulations-Permits/Laws-rules-rulemaking/Closed-rulemaking/WAC173-201A-revisions",
+      "from": "https://ecology.wa.gov/regulations-permits/laws-rules-rulemaking/rulemaking",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://ecology.wa.gov/regulations-permits/laws-rules-rulemaking/rulemaking/wac-173-905",
+      "from": "https://ecology.wa.gov/regulations-permits/laws-rules-rulemaking/rulemaking",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://ecology.wa.gov/regulations-permits/laws-rules-rulemaking/rulemaking/wac-173-337-nov2023",
+      "from": "https://ecology.wa.gov/regulations-permits/laws-rules-rulemaking/rulemaking",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://ecology.wa.gov/regulations-permits/laws-rules-rulemaking/rulemaking/wac-173-339",
+      "from": "https://ecology.wa.gov/regulations-permits/laws-rules-rulemaking/rulemaking",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://ecology.wa.gov/regulations-permits/laws-rules-rulemaking/closed-rulemaking/wac-173-187",
+      "from": "https://ecology.wa.gov/regulations-permits/laws-rules-rulemaking/rulemaking",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://ecology.wa.gov/regulations-permits/laws-rules-rulemaking/closed-rulemaking/wac-173-340",
+      "from": "https://ecology.wa.gov/regulations-permits/laws-rules-rulemaking/rulemaking",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://app.leg.wa.gov/wac/",
+      "from": "https://ecology.wa.gov/regulations-permits/laws-rules-rulemaking/rulemaking",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://leg.wa.gov/state-laws-and-rules/washington-state-register/",
+      "from": "https://ecology.wa.gov/regulations-permits/laws-rules-rulemaking/rulemaking",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://ecology.wa.gov/Regulations-Permits/Guidance-technical-assistance/Facility-Site-database",
+      "from": "https://ecology.wa.gov/Footer/Online-tools-publications/Online-tools-databases",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://ecology.wa.gov/Regulations-Permits/Reporting-requirements/Plastic-producer-registration",
+      "from": "https://ecology.wa.gov/Footer/Online-tools-publications/Online-tools-databases",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://apps.ecology.wa.gov/paris/PermitLookup.aspx",
+      "from": "https://ecology.wa.gov/Footer/Online-tools-publications/Online-tools-databases",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://ecology.wa.gov/Regulations-Permits/Reporting-requirements/Solid-waste-facilities-reporting",
+      "from": "https://ecology.wa.gov/Footer/Online-tools-publications/Online-tools-databases",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://secureaccess.wa.gov/myAccess/saw/select.do",
+      "from": "https://ecology.wa.gov/Footer/Online-tools-publications/Online-tools-databases",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    }
+  ],
+  "skipped_links": 567,
+  "chunks": [{ "id": "all", "docs": ["D1", "D2", "D3", "D4", "D5", "D6", "D7"], "chars": 61340 }],
+  "outcomes": {
+    "eligibility": "stated",
+    "documents": "stated",
+    "effort": "stated",
+    "co_finance": "stated",
+    "consortium": "not_found",
+    "after_award": "stated"
+  },
+  "written": ["eligibility", "documents", "effort", "co_finance", "after_award"],
+  "escalated": ["effort"],
+  "flags": [],
+  "notes": [
+    "extractor: The current application period is closed. D1 lists project priorities separately from hard eligibility requirements. D4 describes the 2026 round as having an extended deadline of March 17, 2026, at 5 p.m.",
+    "source wa-ecology-streamflow-restoration-2: added for https://ecology.wa.gov/About-us/Payments-contracts-grants/Grants-loans/Grant-loan-guidance",
+    "source wa-ecology-streamflow-restoration-3: added for https://apps.ecology.wa.gov/publications/SummaryPages/2511021.html"
+  ],
+  "usd": 0
+}

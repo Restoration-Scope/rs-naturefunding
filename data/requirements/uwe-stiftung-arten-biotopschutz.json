@@ -1,0 +1,84 @@
+{
+  "id": "uwe-stiftung-arten-biotopschutz",
+  "read_on": "2026-11-20",
+  "prompt_version": "req-2026-11-20.1",
+  "models": ["cursor:gpt-5.6-luna-high"],
+  "complete": false,
+  "reasons": [
+    "7 links could not be ranked without Jev",
+    "Jev did not check this reading, so an absent fact is not known to be absent"
+  ],
+  "requirements_checked": false,
+  "documents": [
+    {
+      "ref": "D1",
+      "url": "https://uwe-stiftung.de/foerderung/",
+      "final_url": "https://uwe-stiftung.de/foerderung/",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 4187,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:e3e6664e1808c95b6b32852e128d26d7d325f290c0473063dc0425115be6d23c"
+    },
+    {
+      "ref": "D2",
+      "url": "https://uwe-stiftung.de/ums-formular/",
+      "final_url": "https://uwe-stiftung.de/ums-formular/",
+      "from": "https://uwe-stiftung.de/foerderung/",
+      "anchor": "Antragsformular UWE macht Schule",
+      "depth": 1,
+      "pdf": false,
+      "chars": 825,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:5fd84784d0ada036cab8a77eae13835bebdb5fa7d20d3054e88fe975379620a7"
+    },
+    {
+      "ref": "D3",
+      "url": "https://uwe-stiftung.de/foerderantrag-stellen/",
+      "final_url": "https://uwe-stiftung.de/foerderantrag-stellen/",
+      "from": "https://uwe-stiftung.de/foerderung/",
+      "anchor": "Förderantrag stellen",
+      "depth": 1,
+      "pdf": false,
+      "chars": 798,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:71c1abdd0e65be7c5d6a6b13954ce349eace20342550813ee089409e77b6a371"
+    },
+    {
+      "ref": "D4",
+      "url": "https://uwe-stiftung.de/wp-content/uploads/2025/07/Satzung_2025.pdf",
+      "final_url": "https://uwe-stiftung.de/wp-content/uploads/2025/07/Satzung_2025.pdf",
+      "from": "https://uwe-stiftung.de/foerderung/",
+      "anchor": "Satzung",
+      "depth": 1,
+      "pdf": true,
+      "chars": 10985,
+      "pages": 5,
+      "low_text": false,
+      "hash": "sha256:10eee05ca0cfb50f55dc57b01fe61641f88f48ae8829e0fc58fd792046af38a1"
+    }
+  ],
+  "failures": [],
+  "skipped_links": 36,
+  "chunks": [{ "id": "all", "docs": ["D1", "D2", "D3", "D4"], "chars": 17188 }],
+  "outcomes": {
+    "eligibility": "stated",
+    "documents": "not_found",
+    "effort": "stated",
+    "co_finance": "stated",
+    "consortium": "not_found",
+    "after_award": "stated"
+  },
+  "written": ["eligibility", "effort", "co_finance", "after_award"],
+  "escalated": [],
+  "flags": [],
+  "notes": [
+    "extractor: D1 lists decision dates of 22 April 2026 and 18 November 2026; these are not application deadlines."
+  ],
+  "usd": 0
+}
