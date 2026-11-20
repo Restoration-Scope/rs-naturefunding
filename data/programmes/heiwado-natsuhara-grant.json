@@ -20,8 +20,37 @@
     "max": 500000,
     "note": "General grant ceiling per project; the first-step grant for new groups is capped at 100,000 yen"
   },
-  "co_finance_required": null,
+  "co_finance_required": false,
   "reporting": null,
+  "effort": {
+    "steps": [
+      "Application package by post",
+      "First-stage document review",
+      "Second-stage presentation and Q&A, if invited for general grant"
+    ]
+  },
+  "eligibility": [
+    {
+      "rule": "Active 2+ years for a general grant, or never funded before for a First Step grant",
+      "kind": "track_record"
+    },
+    {
+      "rule": "Research activities are linked to practical activities and are not academic research",
+      "kind": "project"
+    },
+    { "rule": "The project does not continue across fiscal years", "kind": "project" },
+    { "rule": "The organisation submits one project", "kind": "project" },
+    { "rule": "The project is planned and carried out by citizens", "kind": "project" }
+  ],
+  "after_award": { "reports": "final", "training": true, "site_visits": true },
+  "documents": [
+    "Project plan",
+    "Budget",
+    "Constitution, bylaws or rules; start-up groups must prepare them",
+    "Recent activity report, unless a first-step first-year group has not completed a fiscal year",
+    "Recent financial statement, unless a first-step first-year group has not completed a fiscal year",
+    "Pre-application checklist"
+  ],
   "calls": [
     {
       "id": "fy2027",
@@ -92,7 +121,105 @@
       "quote": "事務局(NPO法人まちづくりスポット大津)",
       "checked_at": "2026-11-20",
       "method": "page"
-    }
+    },
+    "co_finance_required": {
+      "source_url": "https://www.natsuhara-g.com/faq/before_faq",
+      "quote": "自己資金は必須ではありません。",
+      "checked_at": "2026-11-20",
+      "method": "page"
+    },
+    "effort": [
+      {
+        "source_url": "https://www.natsuhara-g.com/wp-content/uploads/2026/10/Natsuhara-yoshiki-01.docx",
+        "quote": "応募書類の締め切りは、2027年2月1日(月)(消印有効)です。",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.natsuhara-g.com/wp-content/uploads/2026/10/2027natsuhara_bosyu.pdf",
+        "quote": "第 1 次選考 書類選考 ( 非公開 )",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.natsuhara-g.com/wp-content/uploads/2026/10/2027natsuhara_bosyu.pdf",
+        "quote": "第 2 次選考 プレゼンテーション (1 団体ごとに選考委員の前での発表 ・ 質疑応答 )",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "eligibility": [
+      {
+        "source_url": "https://www.natsuhara-g.com/about_site-2/recruitment",
+        "quote": "ただし、ファーストステップ助成については過去に助成を受けられた団体は対象外となります。 助成金の額と種類 一般助成 2年以上の活動実績があり、先進的で他のモデルとなるような事業についての助成",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.natsuhara-g.com/about_site-2/recruitment",
+        "quote": "調査研究活動(実践活動に結びつくものとし、学術的な研究活動は対象となりません。)",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.natsuhara-g.com/faq/before_faq",
+        "quote": "年度を越えての活動は対象外となります。",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.natsuhara-g.com/faq/before_faq",
+        "quote": "団体1事業の申請です。",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.natsuhara-g.com/about_site-2/recruitment",
+        "quote": "市民が主体となって企画し行っている",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "after_award": [
+      {
+        "source_url": "https://www.natsuhara-g.com/beneficiary",
+        "quote": "実績報告書(全助成団体)提出",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.natsuhara-g.com/beneficiary",
+        "quote": "市民環境講座2回 ※時期は目安 ※出席必須(一般助成1年目、ファーストステップ1年目)",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.natsuhara-g.com/beneficiary",
+        "quote": "活動訪問開始(一般助成1年目団体には1回スタッフが訪問)",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "documents": [
+      {
+        "source_url": "https://www.natsuhara-g.com/wp-content/uploads/2026/10/2027natsuhara_bosyu.pdf",
+        "quote": "2 夏原グラント助成金 事業計画書 (様式第 2 号) 3 夏原グラント助成金 予算書 (様式第 3 号) 4 定款、 規約、 会則等 5 団体の直近の事業報告書と収支決算書、 またはそれに準ずるもの 6 団体の活動が分かるリーフレット、 パンフレット、 会報等 (任意提出) 7 応募前チェックシート (ダウンロードしてチェックを行い、 同封してください)",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.natsuhara-g.com/wp-content/uploads/2026/10/2027natsuhara_bosyu.pdf",
+        "quote": "4 定款、 規約、 会則等 (立ち上げ団体は作成してください)",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.natsuhara-g.com/wp-content/uploads/2026/10/2027natsuhara_bosyu.pdf",
+        "quote": "5 団体の直近の事業報告書と収支決算書、 またはそれに準ずるもの (立ち上げてから 1 事業年度が終了していない場合は不要)",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ]
   },
   "checked_at": "2026-11-20"
 }

@@ -1,0 +1,120 @@
+{
+  "id": "gulf-partnership-project-assistance-fund",
+  "read_on": "2026-11-20",
+  "prompt_version": "req-2026-11-20.1",
+  "models": ["cursor:gpt-5.6-luna-high"],
+  "complete": false,
+  "reasons": [
+    "4 links could not be ranked without Jev",
+    "https://img1.wsimg.com/blobby/go/3a420357-df48-42fd-8b54-f7834f190178/downloads/3ea65a61-853e-4c24-8f1b-a587ca8ad38a/PGCLC%20PAF%20RFP.pdf?ver=1794433121049: page 1 is an image: needs OCR",
+    "Jev did not check this reading, so an absent fact is not known to be absent"
+  ],
+  "requirements_checked": false,
+  "documents": [
+    {
+      "ref": "D1",
+      "url": "https://www.gulfpartnership.org/project-assistance-fund-1",
+      "final_url": "https://gulfpartnership.org/project-assistance-fund-1",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 4083,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:573e47b7b25a9cbc18e38c067bc01c2366cff5434adf76703fd7992f80fe2ab4"
+    },
+    {
+      "ref": "D2",
+      "url": "https://img1.wsimg.com/blobby/go/3a420357-df48-42fd-8b54-f7834f190178/downloads/3ea65a61-853e-4c24-8f1b-a587ca8ad38a/PGCLC%20PAF%20RFP.pdf?ver=1794433121049",
+      "final_url": "https://img1.wsimg.com/blobby/go/3a420357-df48-42fd-8b54-f7834f190178/downloads/3ea65a61-853e-4c24-8f1b-a587ca8ad38a/PGCLC%20PAF%20RFP.pdf?ver=1794433121049",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": true,
+      "chars": 10661,
+      "pages": 6,
+      "low_text": false,
+      "hash": "sha256:0ebdbe2c1c742a48f0089be4250cdbb3abd370c5baf4e170b8acbae63ee59949"
+    },
+    {
+      "ref": "D3",
+      "url": "https://img1.wsimg.com/blobby/go/3a420357-df48-42fd-8b54-f7834f190178/downloads/6ff4ba63-bc7c-453a-af8d-19e9ee8a9c73/PAF%20Application%20North%20FL%20Capacity.pdf?ver=1794433121050",
+      "final_url": "https://img1.wsimg.com/blobby/go/3a420357-df48-42fd-8b54-f7834f190178/downloads/6ff4ba63-bc7c-453a-af8d-19e9ee8a9c73/PAF%20Application%20North%20FL%20Capacity.pdf?ver=1794433121050",
+      "from": "https://www.gulfpartnership.org/project-assistance-fund-1",
+      "anchor": "North FL Capacity Fund Application (pdf)Download",
+      "depth": 1,
+      "pdf": true,
+      "chars": 3438,
+      "pages": 3,
+      "low_text": false,
+      "hash": "sha256:f0d3b7f333c9d63a34f6f1598134fb29dd0dde0dd0668c2346a2dd978e75c9c4"
+    },
+    {
+      "ref": "D4",
+      "url": "https://img1.wsimg.com/blobby/go/3a420357-df48-42fd-8b54-f7834f190178/downloads/7b97357b-a6ab-46d1-9838-d6e3ff663c4e/PGCLC%20PAF%20Application.pdf?ver=1794433121050",
+      "final_url": "https://img1.wsimg.com/blobby/go/3a420357-df48-42fd-8b54-f7834f190178/downloads/7b97357b-a6ab-46d1-9838-d6e3ff663c4e/PGCLC%20PAF%20Application.pdf?ver=1794433121050",
+      "from": "https://www.gulfpartnership.org/project-assistance-fund-1",
+      "anchor": "PAF Application (pdf)Download",
+      "depth": 1,
+      "pdf": true,
+      "chars": 4720,
+      "pages": 5,
+      "low_text": false,
+      "hash": "sha256:50790e9ad332eddc9d2de761452c7d402e42708ff5b90bd9aa9798e4640ec8d2"
+    },
+    {
+      "ref": "D5",
+      "url": "https://gulfpartnership.org/privacy-policy",
+      "final_url": "https://gulfpartnership.org/privacy-policy",
+      "from": "https://www.gulfpartnership.org/project-assistance-fund-1",
+      "anchor": "Privacy Policy",
+      "depth": 1,
+      "pdf": false,
+      "chars": 726,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:e5ec9fc8f668be17aa7a9c1233b4462230b05b0697c05a7a03bf45ff17f7234e"
+    },
+    {
+      "ref": "D6",
+      "url": "https://gulfpartnership.org/accessibility-policy",
+      "final_url": "https://gulfpartnership.org/accessibility-policy",
+      "from": "https://www.gulfpartnership.org/project-assistance-fund-1",
+      "anchor": "Accessibility Policy",
+      "depth": 1,
+      "pdf": false,
+      "chars": 1557,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:8af31f8d6196a6566330ba2fea30b7d7230e338ab6fe9ff09c48a8e494ea0b5a"
+    }
+  ],
+  "failures": [
+    {
+      "url": "https://img1.wsimg.com/blobby/go/3a420357-df48-42fd-8b54-f7834f190178/downloads/3ea65a61-853e-4c24-8f1b-a587ca8ad38a/PGCLC%20PAF%20RFP.pdf?ver=1794433121049",
+      "from": null,
+      "kind": "low_text",
+      "message": "page 1 is an image: needs OCR"
+    }
+  ],
+  "skipped_links": 74,
+  "chunks": [{ "id": "all", "docs": ["D1", "D2", "D3", "D4", "D5", "D6"], "chars": 26218 }],
+  "outcomes": {
+    "eligibility": "stated",
+    "documents": "stated",
+    "effort": "stated",
+    "co_finance": "stated",
+    "consortium": "not_found",
+    "after_award": "stated"
+  },
+  "written": ["eligibility", "documents", "effort", "co_finance", "after_award"],
+  "escalated": [],
+  "flags": [],
+  "notes": [
+    "extractor: D3 is a separate North Florida Capacity Fund addendum; the listed round is PAF proposals.",
+    "source gulf-partnership-project-assistance-fund-2: selector main dropped, a new quote sits outside it",
+    "source gulf-partnership-project-assistance-fund-3: added for https://img1.wsimg.com/blobby/go/3a420357-df48-42fd-8b54-f7834f190178/downloads/7b97357b-a6ab-46d1-9838-d6e3ff663c4e/PGCLC%20PAF%20Application.pdf?ver=1794433121050"
+  ],
+  "usd": 0
+}
