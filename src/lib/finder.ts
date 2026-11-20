@@ -467,6 +467,7 @@ export function initTableFinder() {
 
   // ---------- Download CSV: the rows shown, in their order ----------
   async function downloadCsv() {
+    const date = utcDateKey(new Date())
     const shownRows = [...list.rows, ...(laterOn ? [...laterList.rows] : [])].filter((r) => !r.hidden)
     const shown = shownRows.flatMap((r) => (r.dataset.id ? [{ id: r.dataset.id, call: r.dataset.call }] : []))
     try {
@@ -478,7 +479,7 @@ export function initTableFinder() {
       const blob = new Blob(['\uFEFF', csv], { type: 'text/csv;charset=utf-8' })
       const a = document.createElement('a')
       a.href = URL.createObjectURL(blob)
-      a.download = csvFileName(location.pathname, utcDateKey(new Date()))
+      a.download = csvFileName(location.pathname, date)
       a.click()
       setTimeout(() => URL.revokeObjectURL(a.href), 1000)
       csvError.hidden = true
