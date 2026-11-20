@@ -174,9 +174,13 @@ export function applyExtraction(original: Programme, source: Source, x: Extracti
       p.calls[p.calls.indexOf(existing)] = next
     } else {
       for (const [k, e] of Object.entries(existing.evidence) as [keyof Call['evidence'], Evidence | undefined][]) {
-        if (!e) continue
+        // Evidence from another page is that page's to date or requote.
+        if (!e || e.source_url !== source.url) continue
         if (stillOnPage(e.quote)) e.checked_at = today
-        else if (next.evidence[k]) existing.evidence[k] = next.evidence[k]
+        else if (next.evidence[k]) {
+          changes.push({ path: `${path}.evidence.${k}`, kind: 'requoted', old: e.quote, new: next.evidence[k]!.quote, quote: next.evidence[k]!.quote })
+          existing.evidence[k] = next.evidence[k]
+        }
       }
     }
   }
@@ -283,7 +287,9 @@ export function readReview(answer: unknown): Review {
   const overall = a.overall === 'approve' || a.overall === 'reject' ? a.overall : 'unclear'
   const verdicts = (Array.isArray(a.verdicts) ? a.verdicts : []).filter(isRecord).slice(0, 50)
     .map((v) => ({ path: clip(v.path, 120), verdict: clip(v.verdict, 20), reason: clip(v.reason, 300) }))
-  return { overall, verdicts, missed: clip(a.missed, 1000) }
+  // A "missed" that is not a string (a list, an object) still counts as something missed.
+  const missed = typeof a.missed === 'string' || a.missed == null || (Array.isArray(a.missed) && a.missed.length === 0) ? clip(a.missed, 1000) : JSON.stringify(a.missed).slice(0, 1000)
+  return { overall, verdicts, missed }
 }
 
 const nothingMissed = (missed: string) => /^\s*(|none|nothing|n\/?a|no)\.?\s*$/i.test(missed)
@@ -304,6 +310,8 @@ export function needsPerson(
   if (!r.review) return 'no reviewer answer'
   if (r.review.overall !== 'approve') return `the reviewer says ${r.review.overall}`
   if (!nothingMissed(r.review.missed)) return 'the reviewer says the draft missed something'
+  const paths = r.changes.map((c) => c.path)
+  if (new Set(paths).size !== paths.length) return 'the draft changes one fact twice'
   const rejected = r.changes.filter((c) => c.kind === 'rejected').length
   if (rejected) return `${rejected} fact(s) rejected`
   if (r.unconfirmed.length) return `${r.unconfirmed.length} quote(s) gone from the page`

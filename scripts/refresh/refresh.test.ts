@@ -378,7 +378,7 @@ describe('Tier B apply', () => {
     expect(changes[0]).toMatchObject({ path: 'calls[round-2]', kind: 'rejected' })
     expect(programme!.calls.map((c) => c.id)).not.toContain('round-2')
     expect(readReview({ overall: 'yes', verdicts: [{ path: 'amount', verdict: 'supported', reason: 'r'.repeat(500), x: 1 }, 'junk'], missed: 5 }))
-      .toEqual({ overall: 'unclear', verdicts: [{ path: 'amount', verdict: 'supported', reason: 'r'.repeat(300) }], missed: '' })
+      .toEqual({ overall: 'unclear', verdicts: [{ path: 'amount', verdict: 'supported', reason: 'r'.repeat(300) }], missed: '5' })
   })
   test('amount qualifiers the draft leaves out are kept; null removes one; "less than" goes with the max', () => {
     const base = fixture()
@@ -568,6 +568,11 @@ describe('auto-commit rule', () => {
     expect(needsPerson({ ...clean, truncated: true }, reasons)).toBe('the page text was cut for the models')
     expect(needsPerson(clean, ['redirected to another site: https://other.example/'])).toBe('the page redirected to another site')
     expect(needsPerson({ ...clean, review: null }, reasons)).toBe('no reviewer answer')
+    expect(needsPerson({ ...clean, changes: [change('amount'), change('amount')] }, reasons)).toBe('the draft changes one fact twice')
+  })
+  test('a "missed" list from the reviewer still counts as missed', () => {
+    expect(readReview({ overall: 'approve', verdicts: [], missed: ['The deadline moved'] }).missed).toContain('The deadline moved')
+    expect(readReview({ overall: 'approve', verdicts: [], missed: [] }).missed).toBe('')
   })
 })
 

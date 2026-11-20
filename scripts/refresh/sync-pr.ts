@@ -4,7 +4,7 @@
  * conflicts resolve to the later date. Any other conflict stops, merge aborted, exit 2.
  *   bun scripts/refresh/sync-pr.ts <pr number> [--dry-run]
  */
-import { mkdirSync, readFileSync, rmSync, writeFileSync } from 'node:fs'
+import { existsSync, mkdirSync, readFileSync, rmSync, writeFileSync } from 'node:fs'
 import { join, resolve } from 'node:path'
 
 const DATE_LINE = /^(\s*"(?:checked_at|accepted_at)": ")(\d{4}-\d{2}-\d{2})(",?)$/
@@ -71,7 +71,11 @@ if (import.meta.main) {
       if (!merged.ok) {
         const conflicted = must(['git', 'diff', '--name-only', '--diff-filter=U'], dir).split('\n').filter(Boolean)
         const stuck = conflicted.filter((f) => {
-          const fixed = resolveDateConflicts(readFileSync(join(dir, f), 'utf8'))
+          // A modify/delete conflict leaves no markers: that is never only dates.
+          if (!existsSync(join(dir, f))) return true
+          const text = readFileSync(join(dir, f), 'utf8')
+          if (!text.includes('<<<<<<< ')) return true
+          const fixed = resolveDateConflicts(text)
           if (fixed === null) return true
           writeFileSync(join(dir, f), fixed)
           must(['git', 'add', '--', f], dir)

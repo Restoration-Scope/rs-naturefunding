@@ -64,6 +64,17 @@ for (const d of drafts) {
   const prefix = `refresh/${d.source.id}-`
   const branch = `${prefix}${runId}`
   const previous = openPrs.filter((p) => p.headRefName.startsWith(prefix))
+  // A committed draft counts only if main has exactly the files the run wrote: a failed push or the
+  // commit step's fallback to upstream files means it did not land, so it gets a PR after all.
+  if (d.committed) {
+    run(['git', 'fetch', 'origin', base])
+    const landed = Object.entries(d.files).every(([path, content]) => run(['git', 'show', `origin/${base}:${path}`], { allowFail: true }) === content.trim())
+    if (!landed) {
+      d.committed = false
+      writeFileSync(bodyFile, d.body.replace('Committed to main: the reviewer found nothing wrong.', 'Needs a person: the reviewer passed it, but the commit did not land on main intact.'))
+      log.push(`not landed ${d.source.id}`)
+    }
+  }
   if (d.committed) {
     for (const p of previous) {
       run(['gh', 'pr', 'close', String(p.number), '--comment', 'Superseded: the daily refresh committed a newer reading of this page to main (decisions/2026-11-20-refresh-auto-commit-rule.md).', '--delete-branch'], { allowFail: true })
