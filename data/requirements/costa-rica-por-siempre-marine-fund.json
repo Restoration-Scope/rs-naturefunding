@@ -1,0 +1,193 @@
+{
+  "id": "costa-rica-por-siempre-marine-fund",
+  "read_on": "2026-11-20",
+  "prompt_version": "req-2026-11-20.1",
+  "models": ["cursor:gpt-5.6-luna-high", "cursor:gpt-5.6-sol-high"],
+  "complete": false,
+  "reasons": [
+    "31 links could not be ranked without Jev",
+    "21 links could not be ranked without Jev",
+    "https://costaricaporsiempre.org/wp-content/uploads/2026/06/Lineamientos.pdf: page 1 is an image: needs OCR",
+    "https://costaricaporsiempre.org/wp-content/uploads/2026/07/PREGUNTAS-CONVOCATORIA.pdf: page 1 is an image: needs OCR",
+    "https://costaricaporsiempre.org/wp-content/uploads/2026/09/Lineamientos-Convocatoria-N%C2%B03-Efectividad-de-manejo.pdf: page 1 is an image: needs OCR",
+    "the text names a document with rules that was not read: Manual de Políticas y Procedimientos de la Asociación Costa Rica por Siempre",
+    "the text names a document with rules that was not read: Anexo 1. Disposiciones sobre integridad, elegibilidad y Salvaguardas en propuestas de la XIV Convocatoria de Conservación Marina 2026",
+    "the text names a document with rules that was not read: Anexo 2. Elaboración del presupuesto para propuestas de proyectos",
+    "the text names a document with rules that was not read: Perfiles de Proyecto y/o Términos de Referencia correspondientes al concurso",
+    "Jev did not check this reading, so an absent fact is not known to be absent",
+    "strong reading: the text names a document with rules that was not read: Anexo 1. Disposiciones sobre integridad, elegibilidad y Salvaguardas en propuestas de la XIV Convocatoria de Conservación Marina 2026",
+    "strong reading: the text names a document with rules that was not read: Anexo 2 Elaboración del presupuesto para propuestas de proyectos"
+  ],
+  "requirements_checked": false,
+  "documents": [
+    {
+      "ref": "D1",
+      "url": "https://costaricaporsiempre.org/conservacion-marina/",
+      "final_url": "https://costaricaporsiempre.org/conservacion-marina/",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 6620,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:859dc67e93a2ae2942618b4b2f0cf0a3227c087f9b1d588962562789b6b3d6f5"
+    },
+    {
+      "ref": "D2",
+      "url": "https://costaricaporsiempre.org/conservacion-marino-costera/",
+      "final_url": "https://costaricaporsiempre.org/programa-areas-protegidas/conservacion-marino-costera/",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 10969,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:e33a8432cd67c23f8bfbd5f6d7ea52ae4c72e02964dd461c91e07ccd4551a889"
+    },
+    {
+      "ref": "D3",
+      "url": "https://costaricaporsiempre.org/convocatoria-fondo-azul/",
+      "final_url": "https://costaricaporsiempre.org/convocatoria-fondo-azul/",
+      "from": "https://costaricaporsiempre.org/conservacion-marina/",
+      "anchor": "Convocatoria fondo azul",
+      "depth": 1,
+      "pdf": false,
+      "chars": 6139,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:ec06c7e6320902dfe4cc3ee5b0efa1182ea764d61ae8298d9bbe897e6ea9127b"
+    },
+    {
+      "ref": "D4",
+      "url": "https://costaricaporsiempre.org/wp-content/uploads/2026/06/Lineamientos.pdf",
+      "final_url": "https://costaricaporsiempre.org/wp-content/uploads/2026/06/Lineamientos.pdf",
+      "from": "https://costaricaporsiempre.org/conservacion-marina/",
+      "anchor": "Descargar Lineamientos",
+      "depth": 1,
+      "pdf": true,
+      "chars": 30966,
+      "pages": 17,
+      "low_text": false,
+      "hash": "sha256:f7e1c260907948366e0ef99a50787ac0aac6641d2457565abb054806d030ba19"
+    },
+    {
+      "ref": "D5",
+      "url": "https://costaricaporsiempre.org/wp-content/uploads/2026/07/PREGUNTAS-CONVOCATORIA.pdf",
+      "final_url": "https://costaricaporsiempre.org/wp-content/uploads/2026/07/PREGUNTAS-CONVOCATORIA.pdf",
+      "from": "https://costaricaporsiempre.org/conservacion-marina/",
+      "anchor": "Ver respuestas",
+      "depth": 1,
+      "pdf": true,
+      "chars": 3270,
+      "pages": 3,
+      "low_text": false,
+      "hash": "sha256:b04d9918e23a91b40bc0f0e98cbe00476cf8e49619c2d4b13f28c1d4ad48e3ec"
+    },
+    {
+      "ref": "D6",
+      "url": "https://costaricaporsiempre.org/wp-content/uploads/2026/09/Lineamientos-Convocatoria-N%C2%B03-Efectividad-de-manejo.pdf",
+      "final_url": "https://costaricaporsiempre.org/wp-content/uploads/2026/09/Lineamientos-Convocatoria-N%C2%B03-Efectividad-de-manejo.pdf",
+      "from": "https://costaricaporsiempre.org/convocatoria-fondo-azul/",
+      "anchor": "Descargar lineamientos",
+      "depth": 2,
+      "pdf": true,
+      "chars": 27788,
+      "pages": 15,
+      "low_text": false,
+      "hash": "sha256:cadb529a8ae4b1511652283978540e8f389c849a833a62069ed75d463ba8c6f2"
+    }
+  ],
+  "failures": [
+    {
+      "url": "https://costaricaporsiempre.org/wp-content/uploads/2026/06/Lineamientos.pdf",
+      "from": "https://costaricaporsiempre.org/conservacion-marina/",
+      "kind": "low_text",
+      "message": "page 1 is an image: needs OCR"
+    },
+    {
+      "url": "https://costaricaporsiempre.org/wp-content/uploads/2026/07/PREGUNTAS-CONVOCATORIA.pdf",
+      "from": "https://costaricaporsiempre.org/conservacion-marina/",
+      "kind": "low_text",
+      "message": "page 1 is an image: needs OCR"
+    },
+    {
+      "url": "https://costaricaporsiempre.org/wp-content/uploads/2026/09/Lineamientos-Convocatoria-N%C2%B03-Efectividad-de-manejo.pdf",
+      "from": "https://costaricaporsiempre.org/convocatoria-fondo-azul/",
+      "kind": "low_text",
+      "message": "page 1 is an image: needs OCR"
+    }
+  ],
+  "skipped_links": 321,
+  "chunks": [{ "id": "all", "docs": ["D1", "D2", "D3", "D4", "D5", "D6"], "chars": 86569 }],
+  "outcomes": {
+    "eligibility": "partial",
+    "documents": "partial",
+    "effort": "stated",
+    "co_finance": "not_found",
+    "consortium": "not_found",
+    "after_award": "not_found"
+  },
+  "written": ["eligibility", "documents", "effort"],
+  "escalated": ["eligibility", "documents", "effort"],
+  "flags": [
+    {
+      "field": "eligibility",
+      "item": "Being legally constituted, represented and active in Costa Rica",
+      "why": "the quote is not on any gathered document"
+    },
+    {
+      "field": "eligibility",
+      "item": "Being registered with the Ministry of Finance to provide professional services and issue electronic invoices",
+      "why": "the quote is not on any gathered document"
+    },
+    {
+      "field": "eligibility",
+      "item": "Having a current occupational-risk policy with coverage in Costa Rica",
+      "why": "the quote is not on any gathered document"
+    },
+    {
+      "field": "eligibility",
+      "item": "Prior ACRXS consultants must have a rating of at least 75% and no serious service fault",
+      "why": "the quote is not on any gathered document"
+    },
+    {
+      "field": "documents",
+      "item": "Signed declaration of limitations",
+      "why": "the quote is not on any gathered document"
+    },
+    {
+      "field": "documents",
+      "item": "Conflict of interest form",
+      "why": "the quote is not on any gathered document"
+    },
+    {
+      "field": "documents",
+      "item": "Technical proposal",
+      "why": "the quote is not on any gathered document"
+    },
+    {
+      "field": "documents",
+      "item": "Project budget",
+      "why": "the quote is not on any gathered document"
+    },
+    {
+      "field": "documents",
+      "item": "Environmental and Social Action Plan",
+      "why": "the quote is not on any gathered document"
+    },
+    {
+      "field": "documents",
+      "item": "Environmental and Social Action Plan",
+      "why": "the quote is not on any gathered document"
+    }
+  ],
+  "notes": [
+    "extractor: D2 concerns a 2024 call. D3 and D6 concern the separate Fondo Azul Costa Rica, not this Fondo de Conservación Marina call. D1 identifies Call No. 14, while D4 names it the XIV Convocatoria de Conservación Marina 2026.",
+    "strong: effort \"Proposal submission\": the quote does not state 2026-07-31 whole; left undated",
+    "strong: D2 concerns an older 2024 round. D3 and D6 concern the separate Fondo Azul call and were not used.",
+    "source costa-rica-por-siempre-marine-fund-3: added for https://costaricaporsiempre.org/wp-content/uploads/2026/06/Lineamientos.pdf"
+  ],
+  "usd": 0
+}

@@ -15,10 +15,15 @@
     "species_conservation",
     "sustainable_land_use"
   ],
-  "applicant_types": ["community_group", "ngo"],
+  "applicant_types": [
+    "community_group",
+    "ngo"
+  ],
   "geography": {
     "scope": "countries",
-    "countries": ["CO"],
+    "countries": [
+      "CO"
+    ],
     "label": "Protected areas in Cornare's jurisdiction, Antioquia"
   },
   "access": "direct",
@@ -31,6 +36,38 @@
   },
   "co_finance_required": true,
   "reporting": null,
+  "eligibility": [
+    {
+      "rule": "Is a community action board, vereda water board or environmental NGO from a vereda in a Cornare protected area",
+      "kind": "legal"
+    },
+    {
+      "rule": "Tourism activities relate to the protected area's conservation objectives and permitted uses",
+      "kind": "project"
+    },
+    {
+      "rule": "Tourism initiatives do not involve possessing or harming wild fauna",
+      "kind": "project"
+    },
+    {
+      "rule": "Waste projects are not only campaigns, clean-ups, collection or bins without a recovery process",
+      "kind": "project"
+    },
+    {
+      "rule": "Waste projects include an educational and community appropriation component",
+      "kind": "project"
+    }
+  ],
+  "co_finance": {
+    "min_share": 30,
+    "in_kind": true
+  },
+  "documents": [
+    "Investment plan",
+    "Timeline",
+    "Work plan",
+    "Participant list"
+  ],
   "calls": [
     {
       "id": "2026-fifth-call",
@@ -38,7 +75,10 @@
       "url": "https://www.cornare.gov.co/informacion-de-interes/lineamientos-tejiendo-vida-para-las-areas-protegidas-2026/",
       "status": "closed",
       "opens": "2026-10-03",
-      "deadline": { "date": "2026-11-08", "text": "08/11/2026" },
+      "deadline": {
+        "date": "2026-11-08",
+        "text": "08/11/2026"
+      },
       "note": "Only groups that filled in the intention form between 29/08/2026 and 27/09/2026 can submit projects; submissions are received 03/10/2026 to 08/11/2026",
       "evidence": {
         "status": {
@@ -95,10 +135,101 @@
     },
     "co_finance_required": {
       "source_url": "https://www.cornare.gov.co/Participacion_ciudadana/Lineamientos_Tejiendo_Vida_Areas_Protegidas_2026.pdf",
-      "quote": "d) La propuesta económica deberá reflejar el aporte de cofinanciación o contrapartida que será entregado por la organización comunitaria, ya sea en recursos monetarios o en mano de obra, por un valor equivalente como mínimo al 30 % del valor total del proyecto.",
+      "quote": "La propuesta económica deberá reflejar el aporte de cofinanciación o contrapartida que será entregado por la organización comunitaria, ya sea en recursos monetarios o en mano de obra, por un valor equivalente como mínimo al 30 % del valor total del proyecto.",
       "checked_at": "2026-11-20",
       "method": "page"
-    }
+    },
+    "eligibility": [
+      {
+        "source_url": "https://www.cornare.gov.co/Participacion_ciudadana/Lineamientos_Tejiendo_Vida_Areas_Protegidas_2026.pdf",
+        "quote": "Juntas de Acción Comunal, Acueductos Veredales o Multiveredales y ONG ambientales, pertenecientes a veredas que se encuentran dentro de alguna de las Áreas Protegidas de la jurisdicción de Cornare",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.cornare.gov.co/Participacion_ciudadana/Lineamientos_Tejiendo_Vida_Areas_Protegidas_2026.pdf",
+        "quote": "las actividades propuestas deberán guardar relación con los objetivos de conservación del Área Protegida y ser compatibles con los usos permitidos, la zonificación y las disposiciones establecidas en su respectivo plan de manejo.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.cornare.gov.co/Participacion_ciudadana/Lineamientos_Tejiendo_Vida_Areas_Protegidas_2026.pdf",
+        "quote": "no contemplar actividades que impliquen la tenencia o afectación de fauna silvestre.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.cornare.gov.co/Participacion_ciudadana/Lineamientos_Tejiendo_Vida_Areas_Protegidas_2026.pdf",
+        "quote": "No serán objeto de financiación proyectos cuyo alcance se limite exclusivamente a campañas educativas, jornadas de limpieza, recolección de residuos, instalación de puntos ecológicos o adquisición de recipientes para separación en la fuente, cuando estas actividades no estén articuladas con un proceso concreto de aprovechamiento, tratamiento o valorización.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.cornare.gov.co/Participacion_ciudadana/Lineamientos_Tejiendo_Vida_Areas_Protegidas_2026.pdf",
+        "quote": "Incorporar obligatoriamente un componente educativo y de apropiación comunitaria, orientado al fortalecimiento de conocimientos y prácticas relacionadas con la prevención, separación, aprovechamiento, tratamiento y valorización de residuos.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "co_finance": {
+      "source_url": "https://www.cornare.gov.co/Participacion_ciudadana/Lineamientos_Tejiendo_Vida_Areas_Protegidas_2026.pdf",
+      "quote": "La propuesta económica deberá reflejar el aporte de cofinanciación o contrapartida que será entregado por la organización comunitaria, ya sea en recursos monetarios o en mano de obra, por un valor equivalente como mínimo al 30 % del valor total del proyecto.",
+      "checked_at": "2026-11-20",
+      "method": "page"
+    },
+    "documents": [
+      {
+        "source_url": "https://www.cornare.gov.co/Participacion_ciudadana/Lineamientos_Tejiendo_Vida_Areas_Protegidas_2026.pdf",
+        "quote": "Los documentos requeridos incluyen el plan de inversión, cronograma, plan de trabajo y listado de participantes.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "effort": [
+      {
+        "source_url": "https://www.cornare.gov.co/Participacion_ciudadana/Lineamientos_Tejiendo_Vida_Areas_Protegidas_2026.pdf",
+        "quote": "Diligenciar el formulario de intención durante la fase de convocatoria, de acuerdo con las fechas establecidas en el cronograma.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.cornare.gov.co/Participacion_ciudadana/Lineamientos_Tejiendo_Vida_Areas_Protegidas_2026.pdf",
+        "quote": "Participar en los espacios de acompañamiento establecidos para la formulación de los proyectos.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.cornare.gov.co/Participacion_ciudadana/Lineamientos_Tejiendo_Vida_Areas_Protegidas_2026.pdf",
+        "quote": "Presentar la iniciativa dentro de las fechas establecidas y en el formato definido por la Corporación, acompañada de la totalidad de los anexos solicitados",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.cornare.gov.co/Participacion_ciudadana/Lineamientos_Tejiendo_Vida_Areas_Protegidas_2026.pdf",
+        "quote": "Posteriormente, entregará al comité evaluador la información necesaria para la asignación de puntajes, de acuerdo con los criterios establecidos, y la selección de los 30 proyectos ganadores.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "after_award": [
+      {
+        "source_url": "https://www.cornare.gov.co/Participacion_ciudadana/Lineamientos_Tejiendo_Vida_Areas_Protegidas_2026.pdf",
+        "quote": "Al presentar el primer informe de avance correspondiente al 50% de la ejecución técnica del proyecto ($15.000.000) 3. Al presentar el segundo informe que dé cuenta del 100% de la ejecución técnica del proyecto",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ]
   },
-  "checked_at": "2026-11-20"
+  "checked_at": "2026-11-20",
+  "effort": {
+    "steps": [
+      "Intention form",
+      "Project formulation support sessions",
+      "Full project with all annexes",
+      "Technical check and evaluation committee"
+    ]
+  },
+  "after_award": {
+    "reports": "interim_and_final"
+  }
 }
