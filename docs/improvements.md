@@ -2,6 +2,7 @@
 
 What a visitor to naturefunding.org can see or do that they couldn't before, newest first. One line per merged change, added in the same PR (AGENTS.md). The naturefunding.org LinkedIn Page drafts its update posts from this list. Emails count once `DIGEST_SENDING` is `live`.
 
+- 2026-11-20 · The BirdsCaribbean Betty Petersen Conservation Fund shows its 2027 round as suspended, as the funder states · https://naturefunding.org/p/birdscaribbean-betty-petersen-conservation-fund/ · #764
 - 2026-11-20 · 27 more programmes show Before you apply (Birds Canada, Boston Tree Alliance, Biffa Award, Bremen and more), each fact in the funder's words and checked by a second reader · https://naturefunding.org/p/birds-canada-community-grant/#before-title · #763
 - 2026-11-20 · 28 more programmes show Before you apply (Burning Foundation, CEPF Wallacea, Casco Bay Estuary Partnership, Chester County Preservation Partnership and more), each fact in the funder's words and checked by a second reader · https://naturefunding.org/p/cepf-wallacea/#before-title · #762
 - 2026-11-20 · 29 more programmes show Before you apply (ANK Auen, Bayerischer Naturschutzfonds, American Orchid Society, Amphibian Ark and more), each fact in the funder's words and checked by a second reader · https://naturefunding.org/p/ank-auen/#before-title · #761
