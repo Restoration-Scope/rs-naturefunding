@@ -1,0 +1,43 @@
+{
+  "id": "oberoesterreich-allgemeine-fischereifoerderung",
+  "read_on": "2026-11-20",
+  "prompt_version": "req-2026-11-20.1",
+  "models": ["cursor:gpt-5.6-luna-high", "cursor:gpt-5.6-sol-high"],
+  "complete": false,
+  "reasons": ["Jev did not check this reading, so an absent fact is not known to be absent"],
+  "requirements_checked": false,
+  "documents": [
+    {
+      "ref": "D1",
+      "url": "https://www.land-oberoesterreich.gv.at/20826.htm",
+      "final_url": "https://www.land-oberoesterreich.gv.at/20826.htm",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 8071,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:e075231ae73dd42137db9c6f740cf25721ee9ec4ca61cf16206d5f0895d5cacc"
+    }
+  ],
+  "failures": [],
+  "skipped_links": 100,
+  "chunks": [{ "id": "all", "docs": ["D1"], "chars": 8132 }],
+  "outcomes": {
+    "eligibility": "stated",
+    "documents": "stated",
+    "effort": "stated",
+    "co_finance": "unresolved",
+    "consortium": "not_found",
+    "after_award": "not_found"
+  },
+  "written": ["eligibility", "documents", "effort"],
+  "escalated": ["effort"],
+  "flags": [],
+  "notes": [
+    "extractor: Requirements and supporting documents differ by measure; D1 states no application deadline.",
+    "co_finance: the file states whether co-funding is required, this reading found nothing"
+  ],
+  "usd": 0
+}

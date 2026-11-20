@@ -1,7 +1,10 @@
 {
   "id": "shinnyo-en-environmental-civic-activity-grant",
   "name": "Shinnyo-en Environmental Conservation and Biodiversity Protection Civic Activity Grant",
-  "funder": { "name": "Shinnyo-en", "url": "https://www.shinnyo-en.or.jp/" },
+  "funder": {
+    "name": "Shinnyo-en",
+    "url": "https://www.shinnyo-en.or.jp/"
+  },
   "administered_by": {
     "name": "Environmental Partnership Council (EPC)",
     "url": "http://www.epc.or.jp/"
@@ -9,14 +12,77 @@
   "parent": null,
   "url": "https://epc.or.jp/pp_dept/grant/shinnyoen_josei_koubo_2026",
   "summary": "Annual grants of up to JPY 1 million for Japan-based non-profit citizen groups carrying out biodiversity conservation activities, about 12 projects a year. The 2026 call has closed.",
-  "approaches": ["community_conservation", "species_conservation"],
-  "applicant_types": ["ngo", "community_group"],
-  "geography": { "scope": "countries", "countries": ["JP"] },
+  "approaches": [
+    "community_conservation",
+    "species_conservation"
+  ],
+  "applicant_types": [
+    "ngo",
+    "community_group"
+  ],
+  "geography": {
+    "scope": "countries",
+    "countries": [
+      "JP"
+    ]
+  },
   "access": "direct",
   "window": "fixed",
-  "amount": { "currency": "JPY", "max": 1000000 },
+  "amount": {
+    "currency": "JPY",
+    "max": 1000000
+  },
   "co_finance_required": null,
   "reporting": null,
+  "effort": {
+    "steps": [
+      "Email application",
+      "Selection committee review"
+    ]
+  },
+  "eligibility": [
+    {
+      "rule": "Is based in Japan and primarily works domestically on biodiversity conservation or related training",
+      "kind": "project"
+    },
+    {
+      "rule": "Is a private nonprofit organisation",
+      "kind": "legal"
+    },
+    {
+      "rule": "Has at least 1 year of operating history",
+      "kind": "track_record",
+      "min_years": 1
+    },
+    {
+      "rule": "Has at least 5 members or activity members",
+      "kind": "capacity"
+    },
+    {
+      "rule": "Has bylaws and issues activity and financial reports showing past activity",
+      "kind": "capacity"
+    },
+    {
+      "rule": "Does not conduct activities targeting pet animals",
+      "kind": "project"
+    },
+    {
+      "rule": "Not within the 2-year pause after receiving this grant 2 years in a row",
+      "kind": "other"
+    }
+  ],
+  "after_award": {
+    "reports": "unspecified"
+  },
+  "documents": [
+    "Organisation bylaws or rules",
+    "Latest activity report",
+    "Latest financial statement",
+    "Latest activity plan",
+    "Latest budget",
+    "Organisation profile material, up to 2 items",
+    "Biography of the organisation's leader"
+  ],
   "calls": [
     {
       "id": "2026",
@@ -88,7 +154,93 @@
       "quote": "一般社団法人環境パートナーシップ会議(EPC)は、真如苑より、環境保全・生物保護 市民活動助成 \"地球・自然・いのちへ\"助成金事務局を受託しております。",
       "checked_at": "2026-11-20",
       "method": "page"
-    }
+    },
+    "effort": [
+      {
+        "source_url": "https://epc.or.jp/wp-content/uploads/2020/04/2026_shinnyo-en_kankyo-jyosei_youkou.pdf",
+        "quote": "E-mail にて下記書類を添付か、ファイルストレージサービス等で送付 (2026 年 6 月 15 日(月)午前 11:00 メール必着、持込・郵送不可)",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://epc.or.jp/pp_dept/grant/shinnyo-en_grant_result_2026",
+        "quote": "選考委員会では応募団体の皆さまからの申請書の情報を基に内容を精査し、様々な角度から議論し、慎重に選考させて頂きました。",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "eligibility": [
+      {
+        "source_url": "https://epc.or.jp/pp_dept/grant/shinnyoen_josei_koubo_2026",
+        "quote": "日本国内に活動拠点を置き、主として国内で生物多様性の保全及び生物多様性に関わる人材育成に資する活動に取り組む団体。",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://epc.or.jp/pp_dept/grant/shinnyoen_josei_koubo_2026",
+        "quote": "民間非営利団体。法人格の有無を問わない",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://epc.or.jp/pp_dept/grant/shinnyoen_josei_koubo_2026",
+        "quote": "1年以上の活動実績を有している団体。",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://epc.or.jp/pp_dept/grant/shinnyoen_josei_koubo_2026",
+        "quote": "5 名以上の会員もしくは活動メンバーがいること",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://epc.or.jp/pp_dept/grant/shinnyoen_josei_koubo_2026",
+        "quote": "規約等の整備、事業報告書、決算報告書といった過去の活動実績が分かるものを発行していること。",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://epc.or.jp/wp-content/uploads/2020/04/2026_shinnyo-en_kankyo-jyosei_youkou.pdf",
+        "quote": "(ペット等の愛玩動物を対象とした活動は含 みません)",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://epc.or.jp/pp_dept/grant/shinnyoen_josei_koubo_2026",
+        "quote": "連続して2年助成を受けた団体は、その後2年間は申請できない。",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "after_award": [
+      {
+        "source_url": "https://epc.or.jp/wp-content/uploads/2020/04/2026_shinnyo-en_kankyo-jyosei_youkou.pdf",
+        "quote": "別途助成金事務局が定める報告フォームに従って、期日までに報告書を提出する。",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "documents": [
+      {
+        "source_url": "https://epc.or.jp/pp_dept/grant/shinnyoen_josei_koubo_2026",
+        "quote": "組織の規約を示すもの(「会則」や「定款」など) 4.団体の直近の事業報告書 5.団体の直近の決算書 6.団体の直近の事業計画書 7.団体の直近の予算書",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://epc.or.jp/pp_dept/grant/shinnyoen_josei_koubo_2026",
+        "quote": "団体の概要が分かるパンフレット、ニュースレター、報道掲載など(2点以内)",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://epc.or.jp/pp_dept/grant/shinnyoen_josei_koubo_2026",
+        "quote": "団体の責任者の略歴(様式自由、200〜400字以内)",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ]
   },
   "checked_at": "2026-11-20"
 }

@@ -30,6 +30,36 @@
   "amount": null,
   "co_finance_required": null,
   "reporting": null,
+  "effort": {
+    "steps": [
+      "Eligibility check as a qualified entity, before portal access",
+      "Application with documents"
+    ],
+    "due": [
+      null,
+      "2027-01-31"
+    ]
+  },
+  "eligibility": [
+    {
+      "rule": "A funded conservation easement is held by an eligible trust fund recipient",
+      "kind": "project"
+    },
+    {
+      "rule": "If a nonprofit, its principal activity is acquiring and managing land for conservation or historic preservation",
+      "kind": "legal"
+    }
+  ],
+  "documents": [
+    "Letter of intent or purchase contract",
+    "Title insurance commitment",
+    "Preliminary appraisal",
+    "Photographs, two minimum",
+    "Maps or GIS shapefiles",
+    "Signed landowner acknowledgement",
+    "Signed match agreement, if applicable",
+    "Signed income attestation, if applicable"
+  ],
   "calls": [
     {
       "id": "quarterly-rounds",
@@ -79,7 +109,61 @@
       "quote": "Please refer to these quarterly deadlines for the first part, the Application Phase: January 31 April 30 July 31 October 31",
       "checked_at": "2026-11-14",
       "method": "page"
-    }
+    },
+    "effort": [
+      {
+        "source_url": "https://www.sccbank.sc.gov/grant-application-instructions",
+        "quote": "The Bank has established an internal procedure to verify applicant eligibility and, if applicable, to collect necessary documentation prior to creating a \"New Organization\" on the Bank's online application portal.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.sccbank.sc.gov/",
+        "quote": "JANUARY 31, 2027 Next Application Deadline",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "eligibility": [
+      {
+        "source_url": "https://www.sccbank.sc.gov/grant-application-instructions",
+        "quote": "The South Carolina Conservation Bank Act requires that any conservation easement funded by the Bank must be held by an eligible trust fund recipient.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://irp.cdn-website.com/4adb4cdb/files/uploaded/2025-07-31+Internal+Procedure+for+Verifying+Applicant+Eligibility.pdf",
+        "quote": "Has a principal activity of acquiring and managing land interests for conservation or historic preservation",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "documents": [
+      {
+        "source_url": "https://www.sccbank.sc.gov/grant-application-instructions",
+        "quote": "A copy of the letter of intent or purchase contract that reflects the transaction contemplated in this application.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.sccbank.sc.gov/grant-application-instructions",
+        "quote": "A commitment to insure title to the real estate interests subject to this application.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.sccbank.sc.gov/grant-application-instructions",
+        "quote": "A Preliminary Appraisal, which should include a brief description of comparable sales, if applicable, and analysis used to arrive at the value of the property interest subject to this application. Baseline Report Documentation or Land Management Plan, if available Photographs (two minimum) Maps and/or GIS Shapefiles Landowner Acknowledgement, signed Match Agreement, signed, if applicable",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.sccbank.sc.gov/grant-application-instructions",
+        "quote": "Income Attestation, signed, if applicable",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ]
   },
   "checked_at": "2026-11-14"
 }

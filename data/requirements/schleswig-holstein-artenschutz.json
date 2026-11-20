@@ -1,0 +1,67 @@
+{
+  "id": "schleswig-holstein-artenschutz",
+  "read_on": "2026-11-20",
+  "prompt_version": "req-2026-11-20.1",
+  "models": ["cursor:gpt-5.6-luna-high"],
+  "complete": false,
+  "reasons": [
+    "https://www.schleswig-holstein.de/DE/fachinhalte/N/naturschutz/Downloads/RiliFoerderungArtenschutz.pdf?__blob=publicationFile&v=4: a scanned or image PDF: needs OCR",
+    "the text names a document with rules that was not read: Richtlinien für die Gewährung von Zuwendungen für verschiedene Maßnahmen des Artenschutzes vom 25.10.2024",
+    "the text names a document with rules that was not read: § 44 Landeshaushaltsordnung (LHO) und die dazu ergangenen Verwaltungsvorschriften",
+    "Jev did not check this reading, so an absent fact is not known to be absent"
+  ],
+  "requirements_checked": false,
+  "documents": [
+    {
+      "ref": "D1",
+      "url": "https://www.schleswig-holstein.de/DE/fachinhalte/N/naturschutz/natschutz_allgem_05_Foerd_03_SH01.html",
+      "final_url": "https://www.schleswig-holstein.de/DE/fachinhalte/N/naturschutz/natschutz_allgem_05_Foerd_03_SH01.html",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 12366,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:066b6370071494d6879ade95394de083e781f8f5d1253e3f21c2f4e3c360beae"
+    },
+    {
+      "ref": "D2",
+      "url": "https://www.schleswig-holstein.de/DE/fachinhalte/N/naturschutz/Downloads/RiliFoerderungArtenschutz.pdf?__blob=publicationFile&v=4",
+      "final_url": "https://www.schleswig-holstein.de/DE/fachinhalte/N/naturschutz/Downloads/RiliFoerderungArtenschutz.pdf?__blob=publicationFile&v=4",
+      "from": "https://www.schleswig-holstein.de/DE/fachinhalte/N/naturschutz/natschutz_allgem_05_Foerd_03_SH01.html",
+      "anchor": "Richtlinien für die Gewährung von Zuwendungen für verschiedene Maßnahmen des Artenschutzes vom 25.10.2024 (Amtsblatt Schleswig-Holstein vom 04. Dezember 2024, Nummer 2024/74) (PDF, 837KB, Datei ist ni",
+      "depth": 1,
+      "pdf": true,
+      "chars": 0,
+      "pages": 5,
+      "low_text": true,
+      "hash": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "failures": [
+    {
+      "url": "https://www.schleswig-holstein.de/DE/fachinhalte/N/naturschutz/Downloads/RiliFoerderungArtenschutz.pdf?__blob=publicationFile&v=4",
+      "from": "https://www.schleswig-holstein.de/DE/fachinhalte/N/naturschutz/natschutz_allgem_05_Foerd_03_SH01.html",
+      "kind": "low_text",
+      "message": "a scanned or image PDF: needs OCR"
+    }
+  ],
+  "skipped_links": 320,
+  "chunks": [{ "id": "all", "docs": ["D1"], "chars": 12480 }],
+  "outcomes": {
+    "eligibility": "stated",
+    "documents": "stated",
+    "effort": "stated",
+    "co_finance": "not_found",
+    "consortium": "not_found",
+    "after_award": "not_found"
+  },
+  "written": ["eligibility", "documents", "effort"],
+  "escalated": [],
+  "flags": [],
+  "notes": [
+    "extractor: The application must arrive by 30 September of the current financial year, but the text does not state a year. The application must be submitted before the measure begins."
+  ],
+  "usd": 0
+}

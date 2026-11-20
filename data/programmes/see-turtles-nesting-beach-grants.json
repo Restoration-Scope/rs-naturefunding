@@ -1,16 +1,31 @@
 {
   "id": "see-turtles-nesting-beach-grants",
   "name": "SEE Turtles Billion Baby Turtles Nesting Beach Grants",
-  "funder": { "name": "SEE Turtles", "url": "https://www.seeturtles.org/" },
+  "funder": {
+    "name": "SEE Turtles",
+    "url": "https://www.seeturtles.org/"
+  },
   "administered_by": null,
   "parent": null,
   "url": "https://www.seeturtles.org/grants",
   "summary": "Small grants for sea turtle organisations in the Global South, mostly to pay local people to patrol nesting beaches and protect nests. Three funds (general, new initiative, emergency) were all closed when read.",
-  "approaches": ["species_conservation", "coastal_marine", "community_conservation"],
-  "applicant_types": ["ngo"],
+  "approaches": [
+    "species_conservation",
+    "coastal_marine",
+    "community_conservation"
+  ],
+  "applicant_types": [
+    "ngo"
+  ],
   "geography": {
     "scope": "regions",
-    "regions": ["africa", "asia", "latin_america_caribbean", "middle_east", "oceania"],
+    "regions": [
+      "africa",
+      "asia",
+      "latin_america_caribbean",
+      "middle_east",
+      "oceania"
+    ],
     "label": "Global South (US, Europe, Japan and Australia not eligible, their territories are)"
   },
   "access": "direct",
@@ -22,6 +37,20 @@
   },
   "co_finance_required": null,
   "reporting": null,
+  "eligibility": [
+    {
+      "rule": "Project excludes environmental education, advocacy, scientific research and beach cleanups",
+      "kind": "project"
+    },
+    {
+      "rule": "Submits at most one proposal per nesting area, unless an established partner",
+      "kind": "other"
+    },
+    {
+      "rule": "Seeks only one listed fund for each project",
+      "kind": "other"
+    }
+  ],
   "calls": [
     {
       "id": "general-fund",
@@ -96,7 +125,27 @@
       "quote": "Grant requests are up to US $10,000 per season but please note that most grants are between $2,000 - $5,000.",
       "checked_at": "2026-11-20",
       "method": "page"
-    }
+    },
+    "eligibility": [
+      {
+        "source_url": "https://www.seeturtles.org/grants",
+        "quote": "We do not fund environmental education, advocacy, scientific research, or beach cleanups",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.seeturtles.org/grants",
+        "quote": "we only accept one proposal at a time per nesting area from an organization (except for established partners)",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.seeturtles.org/grants",
+        "quote": "we don't fund one project from more than one of these funds",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ]
   },
   "checked_at": "2026-11-20"
 }
