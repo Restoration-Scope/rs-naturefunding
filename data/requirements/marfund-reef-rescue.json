@@ -1,0 +1,77 @@
+{
+  "id": "marfund-reef-rescue",
+  "read_on": "2026-11-20",
+  "prompt_version": "req-2026-11-20.1",
+  "models": ["cursor:gpt-5.6-luna-high"],
+  "complete": false,
+  "reasons": [
+    "8 links could not be ranked without Jev",
+    "https://fondosam.org/public/anexos-annexs/en/Proposal_format_2026.docx: a document on another site: without Jev it can’t be confirmed as the funder’s, so it is not used",
+    "https://fondosam.org/public/anexos-annexs/en/Annex2.Indicators_2026.docx: a document on another site: without Jev it can’t be confirmed as the funder’s, so it is not used",
+    "https://fondosam.org/public/anexos-annexs/en/AppendixB_DueDiligence_2026.docx: a document on another site: without Jev it can’t be confirmed as the funder’s, so it is not used",
+    "https://fondosam.org/public/anexos-annexs/en/SustainableBusinessForm_2026.docx: a document on another site: without Jev it can’t be confirmed as the funder’s, so it is not used",
+    "the text names a document with rules that was not read: RfP guidelines for the Reef Rescue Initiative Window",
+    "the text names a document with rules that was not read: MAR Fund Environmental and Social Management System (ESMS)",
+    "the text names a document with rules that was not read: Appendix B - 2026",
+    "Jev did not check this reading, so an absent fact is not known to be absent"
+  ],
+  "requirements_checked": false,
+  "documents": [
+    {
+      "ref": "D1",
+      "url": "https://marfund.org/en/request-for-proposals-2026/",
+      "final_url": "https://marfund.org/en/request-for-proposals-2026/",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 28674,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:080abf3d8e794f8ee387cbfa758ec63713979f008aa963df8621fff9c9b3432e"
+    }
+  ],
+  "failures": [
+    {
+      "url": "https://fondosam.org/public/anexos-annexs/en/Proposal_format_2026.docx",
+      "from": "https://marfund.org/en/request-for-proposals-2026/",
+      "kind": "offsite",
+      "message": "a document on another site: without Jev it can’t be confirmed as the funder’s, so it is not used"
+    },
+    {
+      "url": "https://fondosam.org/public/anexos-annexs/en/Annex2.Indicators_2026.docx",
+      "from": "https://marfund.org/en/request-for-proposals-2026/",
+      "kind": "offsite",
+      "message": "a document on another site: without Jev it can’t be confirmed as the funder’s, so it is not used"
+    },
+    {
+      "url": "https://fondosam.org/public/anexos-annexs/en/AppendixB_DueDiligence_2026.docx",
+      "from": "https://marfund.org/en/request-for-proposals-2026/",
+      "kind": "offsite",
+      "message": "a document on another site: without Jev it can’t be confirmed as the funder’s, so it is not used"
+    },
+    {
+      "url": "https://fondosam.org/public/anexos-annexs/en/SustainableBusinessForm_2026.docx",
+      "from": "https://marfund.org/en/request-for-proposals-2026/",
+      "kind": "offsite",
+      "message": "a document on another site: without Jev it can’t be confirmed as the funder’s, so it is not used"
+    }
+  ],
+  "skipped_links": 138,
+  "chunks": [{ "id": "all", "docs": ["D1"], "chars": 28737 }],
+  "outcomes": {
+    "eligibility": "stated",
+    "documents": "stated",
+    "effort": "stated",
+    "co_finance": "stated",
+    "consortium": "not_found",
+    "after_award": "stated"
+  },
+  "written": ["eligibility", "documents", "effort", "co_finance", "after_award"],
+  "escalated": [],
+  "flags": [],
+  "notes": [
+    "extractor: The Reef Rescue Initiative window is not restricted to specific protected areas; all coral reefs within the Mesoamerican Reef region are eligible. The maximum grant is US$33,000 for projects lasting up to 24 months. Proposals may be submitted in English or Spanish. The page does not state a reporting frequency."
+  ],
+  "usd": 0
+}
