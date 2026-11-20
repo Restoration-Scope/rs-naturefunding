@@ -1,0 +1,86 @@
+{
+  "id": "ewb-naturemade-oekofonds",
+  "read_on": "2026-11-20",
+  "prompt_version": "req-2026-11-20.1",
+  "models": ["cursor:gpt-5.6-luna-high"],
+  "complete": false,
+  "reasons": [
+    "24 links could not be ranked without Jev",
+    "25 links could not be ranked without Jev",
+    "Jev did not check this reading, so an absent fact is not known to be absent"
+  ],
+  "requirements_checked": false,
+  "documents": [
+    {
+      "ref": "D1",
+      "url": "https://www.ewb.ch/nachhaltigkeit/okofonds/ewb-naturemade-okofonds",
+      "final_url": "https://www.ewb.ch/angebot/aues-fuer-baern/oekofonds/oekofonds-naturemade.php",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 5721,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:c57165cf4ebcfff9739c74931219a39e40051b2db65674581224b7bf183c6fa7"
+    },
+    {
+      "ref": "D2",
+      "url": "https://www.ewb.ch/media/docs/pdf/rechtliches/rechtliches-organisationsreglement-oekofonds-naturemade.pdf",
+      "final_url": "https://www.ewb.ch/media/docs/pdf/rechtliches/rechtliches-organisationsreglement-oekofonds-naturemade.pdf",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": true,
+      "chars": 7038,
+      "pages": 5,
+      "low_text": false,
+      "hash": "sha256:cbc469784398c3b7b33ea05d1ef677018051d4445eb2a93a38a1b5b2556a44e0"
+    },
+    {
+      "ref": "D3",
+      "url": "https://www.ewb.ch/ueber-uns/unternehmen/kraftwerke/",
+      "final_url": "https://www.ewb.ch/ueber-uns/unternehmen/kraftwerke/",
+      "from": "https://www.ewb.ch/nachhaltigkeit/okofonds/ewb-naturemade-okofonds",
+      "anchor": "Produktionsanlagen",
+      "depth": 1,
+      "pdf": false,
+      "chars": 4365,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:7dfbbf0afe6cf7ef465f536cae6d95dd829afb4b9e0d50a10d49f062f49aefc1"
+    },
+    {
+      "ref": "D4",
+      "url": "https://www.ewb.ch/wissen/fragen-antworten/",
+      "final_url": "https://www.ewb.ch/wissen/fragen-antworten/",
+      "from": "https://www.ewb.ch/nachhaltigkeit/okofonds/ewb-naturemade-okofonds",
+      "anchor": "FAQs & Dokumente",
+      "depth": 1,
+      "pdf": false,
+      "chars": 4097,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:1eb26a4d8990b6725db6e9524bbd3ea6a75a7c4d7ee4dc8e966c2c5bf1062516"
+    }
+  ],
+  "failures": [],
+  "skipped_links": 413,
+  "chunks": [{ "id": "all", "docs": ["D1", "D2", "D3", "D4"], "chars": 21709 }],
+  "outcomes": {
+    "eligibility": "stated",
+    "documents": "not_found",
+    "effort": "stated",
+    "co_finance": "not_found",
+    "consortium": "not_found",
+    "after_award": "not_found"
+  },
+  "written": ["eligibility", "effort"],
+  "escalated": [],
+  "flags": [],
+  "notes": [
+    "extractor: Third-party funding must be declared. Third-party co-financing is sought where possible, but the text does not make it mandatory. No deadlines, applicant types, submission documents, or post-award duties are stated.",
+    "source ewb-naturemade-oekofonds-1: selector main dropped, a new quote sits outside it"
+  ],
+  "usd": 0
+}

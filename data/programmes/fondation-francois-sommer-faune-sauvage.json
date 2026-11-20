@@ -1,13 +1,23 @@
 {
   "id": "fondation-francois-sommer-faune-sauvage",
   "name": "Appel à projets faune sauvage et habitats",
-  "funder": { "name": "Fondation François Sommer", "url": "https://fondationfrancoissommer.org/" },
+  "funder": {
+    "name": "Fondation François Sommer",
+    "url": "https://fondationfrancoissommer.org/"
+  },
   "administered_by": null,
   "parent": null,
   "url": "https://fondationfrancoissommer.org/candidatez-lappel-projets-2026-de-la-fondation-franois-sommer-en-faveur-de-la-faune-sauvage/",
   "summary": "Yearly call from a French foundation for projects on the management, conservation and rehabilitation of wildlife and its habitats, with project grants and smaller micro-project grants from a total pot of about EUR 500,000. The 2026 round has closed.",
-  "approaches": ["species_conservation", "community_conservation"],
-  "applicant_types": ["ngo", "company", "research_institution"],
+  "approaches": [
+    "species_conservation",
+    "community_conservation"
+  ],
+  "applicant_types": [
+    "ngo",
+    "company",
+    "research_institution"
+  ],
   "geography": null,
   "access": "direct",
   "window": "fixed",
@@ -17,8 +27,69 @@
     "max": 80000,
     "note": "Projects (budget over EUR 30,000) get EUR 20,000 to 80,000; micro-projects (budget up to EUR 30,000) get EUR 3,000 to 6,000."
   },
-  "co_finance_required": null,
+  "co_finance_required": true,
+  "consortium_required": false,
   "reporting": null,
+  "effort": {
+    "steps": [
+      "Online application with project, budget and admin documents",
+      "Pre-selection by the Nature Committee",
+      "Final selection by the Nature Committee"
+    ],
+    "due": [
+      "2026-09-01",
+      null,
+      null
+    ]
+  },
+  "eligibility": [
+    {
+      "rule": "Applicant is a French civil-society organisation",
+      "kind": "legal"
+    },
+    {
+      "rule": "Applicant is not an individual",
+      "kind": "legal"
+    },
+    {
+      "rule": "A full-format project (not a micro-project) has a research dimension",
+      "kind": "project"
+    },
+    {
+      "rule": "Target species are vertebrates, insects or arachnids, not other invertebrates",
+      "kind": "project"
+    },
+    {
+      "rule": "Project not yet started, except a new unstarted work package of 1+ year with co-funding planned",
+      "kind": "project"
+    },
+    {
+      "rule": "Project lasts no more than 3 years",
+      "kind": "project"
+    },
+    {
+      "rule": "Entity submits only one project in this call",
+      "kind": "capacity"
+    },
+    {
+      "rule": "Study area is in France, in Europe with at least one site in France, or in Africa",
+      "kind": "project"
+    }
+  ],
+  "after_award": {
+    "reports": "twice_yearly"
+  },
+  "documents": [
+    "Project or micro-project document, Word template",
+    "Budget and financing document, Excel template",
+    "Latest annual activity report",
+    "Approved accounts report for the last closed financial year",
+    "Statutes and organisation SIRET or SIREN number",
+    "Technical partners' letters of commitment",
+    "CVs of the project lead and key technical partners",
+    "Proof of acquired co-financing",
+    "Acceptance-of-regulations attestation"
+  ],
   "calls": [
     {
       "id": "2026",
@@ -26,7 +97,10 @@
       "url": "https://fondationfrancoissommer.org/candidatez-lappel-projets-2026-de-la-fondation-franois-sommer-en-faveur-de-la-faune-sauvage/",
       "status": "closed",
       "opens": "2026-05-27",
-      "deadline": { "date": "2026-09-01", "text": "1er septembre 2026" },
+      "deadline": {
+        "date": "2026-09-01",
+        "text": "1er septembre 2026"
+      },
       "evidence": {
         "status": {
           "source_url": "https://fondationfrancoissommer.org/candidatez-lappel-projets-2026-de-la-fondation-franois-sommer-en-faveur-de-la-faune-sauvage/",
@@ -73,7 +147,138 @@
       "quote": "Projets : entre 20 000 € et 80 000 € maximum par « projet ». Est considéré comme « projet », un projet ayant un budget total > 30 000€. Micro-projets : entre 3 000 € et 6 000€ maximum par « micro-projet ».",
       "checked_at": "2026-11-20",
       "method": "page"
+    },
+    "co_finance_required": {
+      "source_url": "https://fondationfrancoissommer.org/wp-content/uploads/2026/05/FFS_REGLEMENT_2026.pdf",
+      "quote": "L'apport de co-financements de partenaires (hors autofinancement des porteurs de projet) est obligatoire pour les projets (ne concerne pas les micro-projets).",
+      "checked_at": "2026-11-20",
+      "method": "page"
+    },
+    "consortium_required": {
+      "source_url": "https://fondationfrancoissommer.org/wp-content/uploads/2026/05/FFS_REGLEMENT_2026.pdf",
+      "quote": "Les projets soumis pourront être portés par une ou plusieurs entités.",
+      "checked_at": "2026-11-20",
+      "method": "page"
+    },
+    "effort": [
+      {
+        "source_url": "https://fondationfrancoissommer.org/wp-content/uploads/2026/05/FFS_REGLEMENT_2026.pdf",
+        "quote": "Le dossier de candidature complet (formulaire accompagné des pièces 1, 2 et 3) devra être soumis en ligne, avant le 1er septembre 2026 à 23h59.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://fondationfrancoissommer.org/wp-content/uploads/2026/05/FFS_REGLEMENT_2026.pdf",
+        "quote": "29 septembre 2026 : Présélection d’une vingtaine de dossiers par le Comité Nature et annonce des résultats aux porteurs de projets présélectionnés ;",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://fondationfrancoissommer.org/wp-content/uploads/2026/05/FFS_REGLEMENT_2026.pdf",
+        "quote": "1er décembre 2026 : Sélection finale par le Comité Nature ;",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "eligibility": [
+      {
+        "source_url": "https://fondationfrancoissommer.org/wp-content/uploads/2026/05/FFS_REGLEMENT_2026.pdf",
+        "quote": "doivent être portés par des organisations de la société civile française pour être éligibles.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://fondationfrancoissommer.org/wp-content/uploads/2026/05/FFS_REGLEMENT_2026.pdf",
+        "quote": "Les personnes physiques ne sont pas éligibles.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://fondationfrancoissommer.org/wp-content/uploads/2026/05/AAP2026_WEBINAIRE_VF-1.pdf",
+        "quote": "Format PROJET Ne sont pas éligibles, les projets dont la dimension recherche est absente:",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://fondationfrancoissommer.org/wp-content/uploads/2026/05/FFS_REGLEMENT_2026.pdf",
+        "quote": "Est entendu par faune sauvage, les vertébrés, insectes et arachnides (sauvages terrestres). Les études sur les autres taxa invertébrés terrestres et aquatiques en tant qu’espèces cibles ne sont pas éligibles.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://fondationfrancoissommer.org/wp-content/uploads/2026/05/FFS_REGLEMENT_2026.pdf",
+        "quote": "Les projets déjà engagés ne sont pas éligibles à l’Appel à projets sauf exception. Dans ce cas, seuls les projets demandant une aide bien argumentée pour un groupe de tâches particulier ou un nouveau volet d’activités non commencées d’une durée minimale d’un an et pour lesquels des co-financements sont prévus, pourront être pris en compte.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://fondationfrancoissommer.org/wp-content/uploads/2026/05/AAP2026_WEBINAIRE_VF-1.pdf",
+        "quote": "Durée: maximum 3 ans",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://fondationfrancoissommer.org/wp-content/uploads/2026/05/FFS_REGLEMENT_2026.pdf",
+        "quote": "Une entité ne peut soumettre qu'un seul projet dans le cadre du présent Appel à projets.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://fondationfrancoissommer.org/wp-content/uploads/2026/05/FFS_REGLEMENT_2026.pdf",
+        "quote": "Le territoire d’étude du projet doit se situer en France métropolitaine ou ultramarine, en Europe (si au moins un des sites d’étude se situe en France) ou en Afrique.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "after_award": [
+      {
+        "source_url": "https://fondationfrancoissommer.org/wp-content/uploads/2026/05/FFS_REGLEMENT_2026.pdf",
+        "quote": "Les indicateurs de résultats du projet à faire remonter chaque fin d'année ;",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://fondationfrancoissommer.org/wp-content/uploads/2026/05/FFS_REGLEMENT_2026.pdf",
+        "quote": "Un état des lieux financier d’exécution du projet, sera remis par les porteurs de projets, au 30 juin et au 31 décembre de chaque année.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "documents": [
+      {
+        "source_url": "https://fondationfrancoissommer.org/wp-content/uploads/2026/05/FFS_REGLEMENT_2026.pdf",
+        "quote": "Le document de projet ou micro-projet (template Word).",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://fondationfrancoissommer.org/wp-content/uploads/2026/05/FFS_REGLEMENT_2026.pdf",
+        "quote": "le document de budget et de financement (template Excel) : Il comporte différentes parties à renseigner : calendrier, livrables, budget détaillé, plan de financement, montants sollicités auprès de la Fondation. ❸ Les pièces administratives suivantes : → Dernier rapport annuel d'activités ; → Rapport des comptes approuvés du dernier exercice clos ;",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://fondationfrancoissommer.org/wp-content/uploads/2026/05/FFS_REGLEMENT_2026.pdf",
+        "quote": "Statuts et numéro SIRET ou SIREN de l'organisme ; → Lettres d'engagement des partenaires techniques ; → CV du porteur de projet et des partenaires techniques clés impliqués dans le projet ; → Justificatifs des co-financements acquis.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://fondationfrancoissommer.org/wp-content/uploads/2026/05/AAP2026_WEBINAIRE_VF-1.pdf",
+        "quote": "Compléter l'attestation d'acceptation du règlement",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "co_finance": {
+      "source_url": "https://fondationfrancoissommer.org/wp-content/uploads/2026/05/FFS_REGLEMENT_2026.pdf",
+      "quote": "Dans les deux cas, l’aide financière de la Fondation devra être comprise entre 1/5ème et 2/3 du budget total du projet ou micro-projet.",
+      "checked_at": "2026-11-20",
+      "method": "page"
     }
   },
-  "checked_at": "2026-11-20"
+  "checked_at": "2026-11-20",
+  "co_finance": {
+    "min_share": 33.3
+  }
 }
