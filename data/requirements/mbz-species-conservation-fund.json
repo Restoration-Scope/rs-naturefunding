@@ -1,0 +1,113 @@
+{
+  "id": "mbz-species-conservation-fund",
+  "read_on": "2026-11-20",
+  "prompt_version": "req-2026-11-20.1",
+  "models": ["cursor:gpt-5.6-luna-high", "cursor:gpt-5.6-sol-high"],
+  "complete": false,
+  "reasons": [
+    "26 links could not be ranked without Jev",
+    "25 links could not be ranked without Jev",
+    "Jev did not check this reading, so an absent fact is not known to be absent"
+  ],
+  "requirements_checked": false,
+  "documents": [
+    {
+      "ref": "D1",
+      "url": "https://www.speciesconservation.org/biodiversity-nature-people/conservation-philanthropy/grants/",
+      "final_url": "https://www.speciesconservation.org/biodiversity-nature-people/conservation-philanthropy/grants/",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 4964,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:20205f770d42bf1a0406cde8cbc365ee3d04ac85160862a52396029b1468236c"
+    },
+    {
+      "ref": "D2",
+      "url": "https://www.speciesconservation.org/biodiversity-nature-people/conservation-philanthropy/grants/faqs/",
+      "final_url": "https://www.speciesconservation.org/biodiversity-nature-people/conservation-philanthropy/grants/faqs/",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 8323,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:2f2c9b37ae5578aed99d9365a6a220dd4d8b86305feea922a4d6f6ce68c0a341"
+    },
+    {
+      "ref": "D3",
+      "url": "https://application.speciesconservation.org/",
+      "final_url": "https://application.speciesconservation.org/",
+      "from": "https://www.speciesconservation.org/biodiversity-nature-people/conservation-philanthropy/grants/",
+      "anchor": "Apply",
+      "depth": 1,
+      "pdf": false,
+      "chars": 528,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:1154e4a7cfa916d419339dc4f6b4c5bc66e9fde1be49eada435e5357087eced2"
+    },
+    {
+      "ref": "D4",
+      "url": "https://www.speciesconservation.org/biodiversity-nature-people/conservation-philanthropy/grants/application-criteria/",
+      "final_url": "https://www.speciesconservation.org/biodiversity-nature-people/conservation-philanthropy/grants/application-criteria/",
+      "from": "https://www.speciesconservation.org/biodiversity-nature-people/conservation-philanthropy/grants/",
+      "anchor": "Application Criteria",
+      "depth": 1,
+      "pdf": false,
+      "chars": 6646,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:c063fe1105138b1d0be63505a9f463730c4dde5505f875a00b1b5125aeec66e0"
+    },
+    {
+      "ref": "D5",
+      "url": "https://www.speciesconservation.org/privacy-policy/",
+      "final_url": "https://www.speciesconservation.org/privacy-policy/",
+      "from": "https://www.speciesconservation.org/biodiversity-nature-people/conservation-philanthropy/grants/",
+      "anchor": "Privacy Policy",
+      "depth": 1,
+      "pdf": false,
+      "chars": 6611,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:6de5b810f46804c0e7921a53842bbf56d1f4b980a470eebf2848768d9899ed60"
+    },
+    {
+      "ref": "D6",
+      "url": "https://application.speciesconservation.org/print.php",
+      "final_url": "https://application.speciesconservation.org/print.php",
+      "from": "https://application.speciesconservation.org/",
+      "anchor": "view a PRINT-FRIENDLY version of the entire application form in a new window",
+      "depth": 2,
+      "pdf": false,
+      "chars": 7260,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:3c9f38d2f6aef515c1d00ecb061955c7adcc74140314bf974d41d437151e8231"
+    }
+  ],
+  "failures": [],
+  "skipped_links": 289,
+  "chunks": [{ "id": "all", "docs": ["D1", "D2", "D3", "D4", "D5", "D6"], "chars": 35266 }],
+  "outcomes": {
+    "eligibility": "stated",
+    "documents": "stated",
+    "effort": "stated",
+    "co_finance": "not_found",
+    "consortium": "not_found",
+    "after_award": "stated"
+  },
+  "written": ["eligibility", "documents", "effort", "after_award"],
+  "escalated": ["eligibility"],
+  "flags": [],
+  "notes": [
+    "extractor: D1 labels the January 2027 window “Closed” despite giving future dates, and its September block mixes 2027 opening dates with a 15 October 2026 deadline. This output uses the supplied January 2027 and September 2026 rounds.",
+    "source mbz-species-conservation-fund-3: added for https://www.speciesconservation.org/biodiversity-nature-people/conservation-philanthropy/grants/application-criteria/",
+    "source mbz-species-conservation-fund-4: added for https://application.speciesconservation.org/print.php"
+  ],
+  "usd": 0
+}

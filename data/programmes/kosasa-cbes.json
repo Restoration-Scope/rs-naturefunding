@@ -1,14 +1,27 @@
 {
   "id": "kosasa-cbes",
   "name": "Kosasa Foundation Community-Based Environmental Stewardship (CBES) Grant",
-  "funder": { "name": "Kosasa Foundation", "url": "https://www.kosasafoundation.org/" },
+  "funder": {
+    "name": "Kosasa Foundation",
+    "url": "https://www.kosasafoundation.org/"
+  },
   "administered_by": null,
   "parent": null,
   "url": "https://www.kosasafoundation.org/programs/community-based-environmental-stewardship/",
   "summary": "Grants to Hawaii nonprofits running community-engaged projects that improve specific environmental conditions and protect natural resources and island ecosystems. Standard grants up to $50,000, with larger multiyear grants for complex projects.",
-  "approaches": ["community_conservation"],
-  "applicant_types": ["ngo"],
-  "geography": { "scope": "countries", "countries": ["US"], "label": "Hawaii" },
+  "approaches": [
+    "community_conservation"
+  ],
+  "applicant_types": [
+    "ngo"
+  ],
+  "geography": {
+    "scope": "countries",
+    "countries": [
+      "US"
+    ],
+    "label": "Hawaii"
+  },
   "access": "direct",
   "window": "fixed",
   "amount": {
@@ -16,8 +29,40 @@
     "max": 200000,
     "note": "Up to $50,000 for projects of up to 18 months; multiyear grants up to $100,000 a year, $200,000 over two years."
   },
-  "co_finance_required": null,
+  "co_finance_required": false,
   "reporting": null,
+  "effort": {
+    "steps": [
+      "Eligibility questionnaire",
+      "Community Based Environmental Stewardship application"
+    ],
+    "due": [
+      null,
+      "2027-07-30"
+    ]
+  },
+  "eligibility": [
+    {
+      "rule": "Is a 501(c)(3) nonprofit, or a fiscal sponsor applying for a project without 501(c)(3) status",
+      "kind": "legal"
+    },
+    {
+      "rule": "Keep annual grant funding at or below 20% of the annual operating budget",
+      "kind": "finances",
+      "request_cap": {
+        "share": 20,
+        "of": "budget"
+      }
+    },
+    {
+      "rule": "Avoid the listed excluded costs, projects and activities",
+      "kind": "project"
+    }
+  ],
+  "documents": [
+    "Fiscal sponsor's organizational budget, if applying through a fiscal sponsor",
+    "Fiscal sponsor's board information, if applying through a fiscal sponsor"
+  ],
   "calls": [
     {
       "id": "2027",
@@ -79,7 +124,61 @@
       "quote": "Grants up to $50,000 total: Requests may support projects lasting up to 18 months and must demonstrate specific, measurable environmental stewardship outcomes. Multiyear Grants up to $100,000 per year, for a maximum of $200,000 over two years",
       "checked_at": "2026-11-20",
       "method": "page"
-    }
+    },
+    "co_finance_required": {
+      "source_url": "https://www.kosasafoundation.org/frequently-asked-questions/",
+      "quote": "While it is not a requirement to have other sources of revenue for a project, your request should be reasonable relative to your operating budget and capacity.",
+      "checked_at": "2026-11-20",
+      "method": "page"
+    },
+    "effort": [
+      {
+        "source_url": "https://www.kosasafoundation.org/grantseekers/",
+        "quote": "Complete our short questionnaire so we can determine whether your organization is eligible to apply for the funding opportunity you've selected.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.kosasafoundation.org/grantseekers/",
+        "quote": "May 2027 - July 30, 2027 Community Based Environmental Stewardship *",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "eligibility": [
+      {
+        "source_url": "https://www.kosasafoundation.org/frequently-asked-questions/",
+        "quote": "Non 501(c)(3) organizations, endowments, debt reduction, annual galas or single-event sponsorships, organizations doing work outside the state of Hawaii, projects that re-grant Kosasa funds, religious or lobbying activities Kosasa Foundation will consider applications from organizations that serve as fiscal sponsors for other projects that do not have their own 501c3 status.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.kosasafoundation.org/programs/community-based-environmental-stewardship/",
+        "quote": "Annual grant funding from the Kosasa Foundation may not exceed 20% of the applicant organization's annual operating budget for the most recently completed fiscal year.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.kosasafoundation.org/grantseekers/",
+        "quote": "Non 501(c)3 organizations, endowments, debt reduction, annual galas or single event sponsorships, projects that do not benefit communities in Hawai'i, projects that re-grant Kosasa funds, religious or lobbying activites.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "documents": [
+      {
+        "source_url": "https://www.kosasafoundation.org/grantseekers/",
+        "quote": "the fiscal sponsor's organizational budget",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.kosasafoundation.org/grantseekers/",
+        "quote": "organizational budget and board",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ]
   },
   "checked_at": "2026-11-20"
 }

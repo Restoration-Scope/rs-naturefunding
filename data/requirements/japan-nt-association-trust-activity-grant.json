@@ -1,0 +1,132 @@
+{
+  "id": "japan-nt-association-trust-activity-grant",
+  "read_on": "2026-11-20",
+  "prompt_version": "req-2026-11-20.1",
+  "models": ["cursor:gpt-5.6-luna-high", "cursor:gpt-5.6-sol-high"],
+  "complete": false,
+  "reasons": [
+    "1 links could not be ranked without Jev",
+    "https://www.ntrust.or.jp/subsidy/images/kakuninhyo.pdf: a scanned or image PDF: needs OCR",
+    "the text names a document with rules that was not read: Prescribed pledge form (誓約書), sent after the grant decision",
+    "Jev did not check this reading, so an absent fact is not known to be absent"
+  ],
+  "requirements_checked": false,
+  "documents": [
+    {
+      "ref": "D1",
+      "url": "https://www.ntrust.or.jp/subsidy/",
+      "final_url": "https://www.ntrust.or.jp/subsidy/",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 8930,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:c2720e1f41bf29a66de10c9e87d5e1bc6f50896b48fea0cbf56f8ea5ec8bc2e2"
+    },
+    {
+      "ref": "D2",
+      "url": "https://www.ntrust.or.jp/subsidy/images/2026flyer.pdf",
+      "final_url": "https://www.ntrust.or.jp/subsidy/images/2026flyer.pdf",
+      "from": "https://www.ntrust.or.jp/subsidy/",
+      "anchor": "第22期ナショナル・トラスト活動助成チラシ[PDF]",
+      "depth": 1,
+      "pdf": true,
+      "chars": 2485,
+      "pages": 2,
+      "low_text": false,
+      "hash": "sha256:88b1fb4ec417c9065f00afe268b04191d7966054183bc125377f675f49e6ac79"
+    },
+    {
+      "ref": "D3",
+      "url": "https://www.ntrust.or.jp/subsidy/images/bosyuyoko.pdf",
+      "final_url": "https://www.ntrust.or.jp/subsidy/images/bosyuyoko.pdf",
+      "from": "https://www.ntrust.or.jp/subsidy/",
+      "anchor": "募集要項 PDF ダウンロード",
+      "depth": 1,
+      "pdf": true,
+      "chars": 3325,
+      "pages": 5,
+      "low_text": false,
+      "hash": "sha256:3172cc0e3f12308ad11994910a7109d679a5652b8d3a4624a11dd5c7151c4a25"
+    },
+    {
+      "ref": "D4",
+      "url": "https://www.ntrust.or.jp/subsidy/images/20shinseisyo.docx",
+      "final_url": "https://www.ntrust.or.jp/subsidy/images/20shinseisyo.docx",
+      "from": "https://www.ntrust.or.jp/subsidy/",
+      "anchor": "申請書 Word ダウンロード",
+      "depth": 1,
+      "pdf": false,
+      "chars": 896,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:685a7ec7efcbb6b57155676e51ac4c7b2baea7b64cfbe0038bd81ef07768146a"
+    },
+    {
+      "ref": "D5",
+      "url": "https://www.ntrust.or.jp/subsidy/images/kinyuuyouryou.pdf",
+      "final_url": "https://www.ntrust.or.jp/subsidy/images/kinyuuyouryou.pdf",
+      "from": "https://www.ntrust.or.jp/subsidy/",
+      "anchor": "申請書の記入要領 PDF ダウンロード",
+      "depth": 1,
+      "pdf": true,
+      "chars": 2078,
+      "pages": 4,
+      "low_text": false,
+      "hash": "sha256:7fbdaaefb5a93fac48ef152875f4f41d3212a5b4f53fbeef7156412e5b4a4ba5"
+    },
+    {
+      "ref": "D6",
+      "url": "https://www.ntrust.or.jp/subsidy/images/kakuninhyo.pdf",
+      "final_url": "https://www.ntrust.or.jp/subsidy/images/kakuninhyo.pdf",
+      "from": "https://www.ntrust.or.jp/subsidy/",
+      "anchor": "提出書類確認表 PDF ダウンロード",
+      "depth": 1,
+      "pdf": true,
+      "chars": 313,
+      "pages": 1,
+      "low_text": true,
+      "hash": "sha256:ec34a1142d9dba760ae685340fd8c35c718def4f11fd904b9d8f6241ae7ba18d"
+    }
+  ],
+  "failures": [
+    {
+      "url": "https://www.ntrust.or.jp/subsidy/images/kakuninhyo.pdf",
+      "from": "https://www.ntrust.or.jp/subsidy/",
+      "kind": "low_text",
+      "message": "a scanned or image PDF: needs OCR"
+    }
+  ],
+  "skipped_links": 3,
+  "chunks": [{ "id": "all", "docs": ["D1", "D2", "D3", "D4", "D5", "D6"], "chars": 18676 }],
+  "outcomes": {
+    "eligibility": "stated",
+    "documents": "stated",
+    "effort": "unresolved",
+    "co_finance": "not_found",
+    "consortium": "not_found",
+    "after_award": "stated"
+  },
+  "written": ["eligibility", "documents", "after_award"],
+  "escalated": ["eligibility", "documents", "effort", "after_award"],
+  "flags": [
+    {
+      "field": "effort",
+      "item": "Application submission",
+      "why": "the quote is not on any gathered document"
+    },
+    {
+      "field": "effort",
+      "item": "Application submission",
+      "why": "the quote is not on any gathered document"
+    }
+  ],
+  "notes": [
+    "extractor: Applications are accepted from 2026-04-01 until the grant total is reached; no fixed closing date is stated. The source also requires completing the described activity, promptly sending land registration or lease documents, retaining contracts and receipts for five years, submitting a pledge before payment, and presenting results at the annual results presentation. These duties are not represented by the after_award categories.",
+    "source japan-nt-association-trust-activity-grant-2: added for https://www.ntrust.or.jp/subsidy/images/bosyuyoko.pdf",
+    "source japan-nt-association-trust-activity-grant-3: added for https://www.ntrust.or.jp/subsidy/images/kakuninhyo.pdf"
+  ],
+  "usd": 0
+}

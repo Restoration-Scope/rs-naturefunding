@@ -1,0 +1,180 @@
+{
+  "id": "miljodirektoratet-naturrestaurering",
+  "read_on": "2026-11-20",
+  "prompt_version": "req-2026-11-20.1",
+  "models": ["cursor:gpt-5.6-luna-high", "cursor:gpt-5.6-sol-high"],
+  "complete": false,
+  "reasons": [
+    "5 links could not be ranked without Jev",
+    "47 links could not be ranked without Jev",
+    "24 links could not be ranked without Jev",
+    "the crawl bound left https://soknadssenter.miljodirektoratet.no/Innsyn/Detaljer?id=319670 unread",
+    "the crawl bound left https://soknadssenter.miljodirektoratet.no/Innsyn/Detaljer?id=265422 unread",
+    "the crawl bound left https://soknadssenter.miljodirektoratet.no/FilSkjemavedlegg?id=192&token=jk5ag4eFEMruKmO5iI2z-9dMY3IjYc0AjhEsc-M80t41 unread",
+    "the text names a document with rules that was not read: Forskrift om tilskudd til naturrestaurering",
+    "the text names a document with rules that was not read: Utlysningsteksten",
+    "the text names a document with rules that was not read: Grunneiererklæring mal",
+    "Jev did not check this reading, so an absent fact is not known to be absent",
+    "strong reading: the text names a document with rules that was not read: Forskrift om tilskudd til naturrestaurering"
+  ],
+  "requirements_checked": false,
+  "documents": [
+    {
+      "ref": "D1",
+      "url": "https://soknadssenter.miljodirektoratet.no/NaturrestaureringSkjema/Startside/Index?id=82",
+      "final_url": "https://soknadssenter.miljodirektoratet.no/NaturrestaureringSkjema/Startside/Index?id=82",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 8083,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:715e7596c72719fb22e7213a6cec71c6c6d99a568a67899eb98f3d979822f25a"
+    },
+    {
+      "ref": "D2",
+      "url": "https://soknadssenter.miljodirektoratet.no/",
+      "final_url": "https://soknadssenter.miljodirektoratet.no/",
+      "from": "https://soknadssenter.miljodirektoratet.no/NaturrestaureringSkjema/Startside/Index?id=82",
+      "anchor": "Søknadssenter",
+      "depth": 1,
+      "pdf": false,
+      "chars": 9463,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:5f6e5e89b30462bab32d90892aaa118edbe5e6f357eba92d254f7b46760d3cbd"
+    },
+    {
+      "ref": "D3",
+      "url": "https://soknadssenter.miljodirektoratet.no/Innsyn/Skjema/Naturrestaurering",
+      "final_url": "https://soknadssenter.miljodirektoratet.no/Innsyn/Skjema/Naturrestaurering",
+      "from": "https://soknadssenter.miljodirektoratet.no/NaturrestaureringSkjema/Startside/Index?id=82",
+      "anchor": "søknadsarkivet",
+      "depth": 1,
+      "pdf": false,
+      "chars": 27396,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:01fb98d81d66473ecfa24043ec4ae5a7624127f1c43c4eca9f1408279f08efd7"
+    },
+    {
+      "ref": "D4",
+      "url": "https://soknadssenter.miljodirektoratet.no/Innsyn",
+      "final_url": "https://soknadssenter.miljodirektoratet.no/Innsyn/Skjema",
+      "from": "https://soknadssenter.miljodirektoratet.no/",
+      "anchor": "Til søknadsarkivet",
+      "depth": 2,
+      "pdf": false,
+      "chars": 7503,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:783171e1289c9838d75c45a5043f324701d9b974849daa3385afe0f4cc239223"
+    },
+    {
+      "ref": "D5",
+      "url": "https://soknadssenter.miljodirektoratet.no/Skjema/56",
+      "final_url": "https://soknadssenter.miljodirektoratet.no/KlimakvoteregisterSkjema/Startside/Index?id=56",
+      "from": "https://soknadssenter.miljodirektoratet.no/",
+      "anchor": "Søknad til det norske klimakvoteregisteret",
+      "depth": 2,
+      "pdf": false,
+      "chars": 3604,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:b344cdee8fb98a355737d4f76f4005968b0082655eb4d1bdaa189de9b656fc8d"
+    },
+    {
+      "ref": "D6",
+      "url": "https://soknadssenter.miljodirektoratet.no/Hjem/Nyhetsoversikt/Nyhetssak/10441",
+      "final_url": "https://soknadssenter.miljodirektoratet.no/Hjem/Nyhetsoversikt/Nyhetssak/10441",
+      "from": "https://soknadssenter.miljodirektoratet.no/",
+      "anchor": "Søknad om endring",
+      "depth": 2,
+      "pdf": false,
+      "chars": 766,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:35607defd0f5c1422e838beccd0258179b15b8570c24a71e12d37781e0e1a4b2"
+    },
+    {
+      "ref": "D7",
+      "url": "https://soknadssenter.miljodirektoratet.no/Hjem/Nyhetsoversikt/Nyhetssak/8330",
+      "final_url": "https://soknadssenter.miljodirektoratet.no/Hjem/Nyhetsoversikt/Nyhetssak/8330",
+      "from": "https://soknadssenter.miljodirektoratet.no/",
+      "anchor": "Tilgang til alle søknader for en virksomhet",
+      "depth": 2,
+      "pdf": false,
+      "chars": 1374,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:8c63c819a039c51f04dae8d9e630406a11bf4e93cd8709de7266662340f1fc60"
+    },
+    {
+      "ref": "D8",
+      "url": "https://soknadssenter.miljodirektoratet.no/Innsyn/Detaljer?id=316131",
+      "final_url": "https://soknadssenter.miljodirektoratet.no/Innsyn/Detaljer?id=316131",
+      "from": "https://soknadssenter.miljodirektoratet.no/Innsyn/Skjema/Naturrestaurering",
+      "anchor": "Søknad om tilskudd til naturrestaurering",
+      "depth": 2,
+      "pdf": false,
+      "chars": 713,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:79c204fd743039ee6c76659e09bca06a46332c24135a50cfed0d57cf2e6f1a5a"
+    },
+    {
+      "ref": "D9",
+      "url": "https://soknadssenter.miljodirektoratet.no/Innsyn/Detaljer?id=320153",
+      "final_url": "https://soknadssenter.miljodirektoratet.no/Innsyn/Detaljer?id=320153",
+      "from": "https://soknadssenter.miljodirektoratet.no/Innsyn/Skjema/Naturrestaurering",
+      "anchor": "Søknad om tilskudd til naturrestaurering",
+      "depth": 2,
+      "pdf": false,
+      "chars": 706,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:5ddff2efacef80f66de79b9cac8fde9696b4221ed5b633dff8867c1b68fd4e0e"
+    }
+  ],
+  "failures": [
+    {
+      "url": "https://soknadssenter.miljodirektoratet.no/Innsyn/Detaljer?id=319670",
+      "from": "https://soknadssenter.miljodirektoratet.no/Innsyn/Skjema/Naturrestaurering",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://soknadssenter.miljodirektoratet.no/Innsyn/Detaljer?id=265422",
+      "from": "https://soknadssenter.miljodirektoratet.no/Innsyn/Skjema/Naturrestaurering",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://soknadssenter.miljodirektoratet.no/FilSkjemavedlegg?id=192&token=jk5ag4eFEMruKmO5iI2z-9dMY3IjYc0AjhEsc-M80t41",
+      "from": "https://soknadssenter.miljodirektoratet.no/Skjema/56",
+      "kind": "bound",
+      "message": "past the crawl depth of 2"
+    }
+  ],
+  "skipped_links": 560,
+  "chunks": [
+    { "id": "all", "docs": ["D1", "D2", "D3", "D4", "D5", "D6", "D7", "D8", "D9"], "chars": 60938 }
+  ],
+  "outcomes": {
+    "eligibility": "stated",
+    "documents": "stated",
+    "effort": "stated",
+    "co_finance": "not_found",
+    "consortium": "not_found",
+    "after_award": "stated"
+  },
+  "written": ["eligibility", "documents", "effort", "after_award"],
+  "escalated": ["eligibility"],
+  "flags": [],
+  "notes": [
+    "extractor: D1 mentions a 2027 budget allocation but displays a 15 January 2026 deadline. The supplied listing identifies the upcoming round as 2027 with deadline 2027-01-15, but that date is not stated in the gathered documents.",
+    "eligibility: kept 1 first-reading item no check faulted that the strong reading left out"
+  ],
+  "usd": 0
+}
