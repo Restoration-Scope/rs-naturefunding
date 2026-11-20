@@ -1,19 +1,43 @@
 {
   "id": "northumbrian-water-branch-out-inns",
   "name": "Branch Out Invasive Non-Native Species fund",
-  "funder": { "name": "Northumbrian Water Limited", "url": "https://www.nwg.co.uk/" },
+  "funder": {
+    "name": "Northumbrian Water Limited",
+    "url": "https://www.nwg.co.uk/"
+  },
   "administered_by": null,
   "parent": null,
   "url": "https://www.nwg.co.uk/responsibility/environment/branch-out-funds/invasive-non-native-species/",
   "summary": "Water-company fund for projects that manage or eradicate invasive non-native species in the catchments where it operates, up to £15,000 with no match required.",
-  "approaches": ["species_conservation"],
+  "approaches": [
+    "species_conservation"
+  ],
   "applicant_types": null,
   "geography": null,
   "access": "direct",
   "window": "fixed",
-  "amount": { "currency": "GBP", "max": 15000 },
+  "amount": {
+    "currency": "GBP",
+    "max": 15000
+  },
   "co_finance_required": false,
   "reporting": null,
+  "effort": {
+    "steps": [
+      "Application submission",
+      "Application review"
+    ],
+    "due": [
+      "2027-01-31",
+      null
+    ]
+  },
+  "eligibility": [
+    {
+      "rule": "Project mainly controls or eradicates INNS in the Northumbrian Water or Essex & Suffolk Water supply area",
+      "kind": "project"
+    }
+  ],
   "calls": [
     {
       "id": "2026-27",
@@ -21,7 +45,10 @@
       "url": "https://www.nwg.co.uk/responsibility/environment/branch-out-funds/invasive-non-native-species/",
       "status": "open",
       "opens": "2026-10-01",
-      "deadline": { "date": "2027-01-31", "text": "31 January 2027" },
+      "deadline": {
+        "date": "2027-01-31",
+        "text": "31 January 2027"
+      },
       "evidence": {
         "status": {
           "source_url": "https://www.nwg.co.uk/responsibility/environment/branch-out-funds/invasive-non-native-species/",
@@ -68,7 +95,40 @@
       "quote": "Applications of up to £15,000 are welcome, and do not require match funding.",
       "checked_at": "2026-11-20",
       "method": "page"
-    }
+    },
+    "effort": [
+      {
+        "source_url": "https://www.nwg.co.uk/responsibility/environment/branch-out-funds/invasive-non-native-species/",
+        "quote": "Applications will be accepted from 1 October 2026 until 31 January 2027.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.nwg.co.uk/responsibility/environment/branch-out-funds/invasive-non-native-species/",
+        "quote": "All submissions will be reviewed following the closing date",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "eligibility": [
+      {
+        "source_url": "https://www.nwg.co.uk/globalassets/corporate/environment-pdfs/branch-out/inns-eligibility-and-guidance-leaflet-nw.pdf",
+        "quote": "Projects must be primarily aimed at the control/eradication (generally termed management) of INNS populations within NW's supply area.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "after_award": [
+      {
+        "source_url": "https://www.nwg.co.uk/globalassets/corporate/environment-pdfs/branch-out/inns-eligibility-and-guidance-leaflet-nw.pdf",
+        "quote": "A report on the progress of the project must be submitted to Northumbrian Water every year and /or on project completion (whichever occurs first).",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ]
   },
-  "checked_at": "2026-11-20"
+  "checked_at": "2026-11-20",
+  "after_award": {
+    "reports": "yearly"
+  }
 }

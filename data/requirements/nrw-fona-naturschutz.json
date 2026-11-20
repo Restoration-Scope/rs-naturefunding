@@ -1,0 +1,87 @@
+{
+  "id": "nrw-fona-naturschutz",
+  "read_on": "2026-11-20",
+  "prompt_version": "req-2026-11-20.1",
+  "models": ["cursor:gpt-5.6-luna-high"],
+  "complete": false,
+  "reasons": [
+    "10 links could not be ranked without Jev",
+    "11 links could not be ranked without Jev",
+    "the text names a document with rules that was not read: Richtlinien über die Gewährung von Zuwendungen für Maßnahmen des Naturschutzes und der Landschaftspflege (Förderrichtlinien Naturschutz - FöNa)",
+    "Jev did not check this reading, so an absent fact is not known to be absent"
+  ],
+  "requirements_checked": false,
+  "documents": [
+    {
+      "ref": "D1",
+      "url": "https://www.nordrhein-westfalen-foerdert.nrw/foerdermassnahmen/naturschutz-foena-2026",
+      "final_url": "https://www.nordrhein-westfalen-foerdert.nrw/foerdermassnahmen/naturschutz-foena-2026",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 5493,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:ab5cdbb2fb31ad28cd79a8cbc4a27f9b895fe5e9584fa0ebc3003b4bb0250b3b"
+    },
+    {
+      "ref": "D2",
+      "url": "https://www.nordrhein-westfalen-foerdert.nrw/schritt-fuer-schritt-durch-die-antragstellung",
+      "final_url": "https://www.nordrhein-westfalen-foerdert.nrw/schritt-fuer-schritt-durch-die-antragstellung",
+      "from": "https://www.nordrhein-westfalen-foerdert.nrw/foerdermassnahmen/naturschutz-foena-2026",
+      "anchor": "Wie läuft eine Antragstellung auf Nordrhein-Westfalen fördert ab?",
+      "depth": 1,
+      "pdf": false,
+      "chars": 4106,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:f0d493cb3e7accf23352d4e0eba7718fe3dd87a1307ad3168847f3a844014a62"
+    },
+    {
+      "ref": "D3",
+      "url": "https://www.nordrhein-westfalen-foerdert.nrw/was-passiert-nach-der-antragstellung",
+      "final_url": "https://www.nordrhein-westfalen-foerdert.nrw/was-passiert-nach-der-antragstellung",
+      "from": "https://www.nordrhein-westfalen-foerdert.nrw/foerdermassnahmen/naturschutz-foena-2026",
+      "anchor": "Was passiert nach einer erfolgreichen Antragstellung?",
+      "depth": 1,
+      "pdf": false,
+      "chars": 3388,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:60ea67a1e05c91d0bf6b1ecdd39c9e0659c19a090c510b2d40dce60938d32ce7"
+    },
+    {
+      "ref": "D4",
+      "url": "https://www.nordrhein-westfalen-foerdert.nrw/ihr-antrag-wurde-bewilligt-wie-geht-es-weiter",
+      "final_url": "https://www.nordrhein-westfalen-foerdert.nrw/ihr-antrag-wurde-bewilligt-wie-geht-es-weiter",
+      "from": "https://www.nordrhein-westfalen-foerdert.nrw/foerdermassnahmen/naturschutz-foena-2026",
+      "anchor": "Ihr Antrag ist bewilligt. Wie geht es weiter?",
+      "depth": 1,
+      "pdf": false,
+      "chars": 3521,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:9f280d37020b853d9d5ea53e91825a91a7a02a03b1e6c1b6dead081b8a979a5a"
+    }
+  ],
+  "failures": [],
+  "skipped_links": 34,
+  "chunks": [{ "id": "all", "docs": ["D1", "D2", "D3", "D4"], "chars": 17206 }],
+  "outcomes": {
+    "eligibility": "stated",
+    "documents": "not_found",
+    "effort": "stated",
+    "co_finance": "not_found",
+    "consortium": "not_found",
+    "after_award": "stated"
+  },
+  "written": ["eligibility", "effort", "after_award"],
+  "escalated": [],
+  "flags": [],
+  "notes": [
+    "source nrw-fona-naturschutz-2: added for https://www.nordrhein-westfalen-foerdert.nrw/was-passiert-nach-der-antragstellung",
+    "source nrw-fona-naturschutz-3: added for https://www.nordrhein-westfalen-foerdert.nrw/ihr-antrag-wurde-bewilligt-wie-geht-es-weiter"
+  ],
+  "usd": 0
+}

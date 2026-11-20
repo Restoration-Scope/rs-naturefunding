@@ -1,0 +1,60 @@
+{
+  "id": "ofb-temeum-micro-projects",
+  "read_on": "2026-11-20",
+  "prompt_version": "req-2026-11-20.1",
+  "models": ["cursor:gpt-5.6-luna-high"],
+  "complete": false,
+  "reasons": [
+    "https://temeum.ofb.fr/financer-des-projets/les-campagnes-de-financement-temeum would not open (http: HTTP 404)",
+    "https://temeum.ofb.fr/: too little text: the page may need a browser",
+    "Jev did not check this reading, so an absent fact is not known to be absent"
+  ],
+  "requirements_checked": false,
+  "documents": [
+    {
+      "ref": "D1",
+      "url": "https://temeum.ofb.fr/",
+      "final_url": "https://temeum.ofb.fr/",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 47,
+      "pages": null,
+      "low_text": true,
+      "hash": "sha256:6eeeeb0b9e43b60fb5990791a35b97c00437cd3669979231905247894700c7f0"
+    }
+  ],
+  "failures": [
+    {
+      "url": "https://temeum.ofb.fr/financer-des-projets/les-campagnes-de-financement-temeum",
+      "from": null,
+      "kind": "http",
+      "message": "HTTP 404"
+    },
+    {
+      "url": "https://temeum.ofb.fr/",
+      "from": null,
+      "kind": "low_text",
+      "message": "too little text: the page may need a browser"
+    }
+  ],
+  "skipped_links": 0,
+  "chunks": [{ "id": "all", "docs": ["D1"], "chars": 82 }],
+  "outcomes": {
+    "eligibility": "not_found",
+    "documents": "not_found",
+    "effort": "not_found",
+    "co_finance": "unresolved",
+    "consortium": "not_found",
+    "after_award": "not_found"
+  },
+  "written": [],
+  "escalated": [],
+  "flags": [],
+  "notes": [
+    "extractor: The programme website was temporarily unavailable, so no requirements could be verified for the 2026 or 2027 campaign.",
+    "co_finance: the file states whether co-funding is required, this reading found nothing"
+  ],
+  "usd": 0
+}

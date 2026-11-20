@@ -1,12 +1,18 @@
 {
   "id": "ontario-species-conservation-program",
   "name": "Species Conservation Program",
-  "funder": { "name": "Government of Ontario", "url": "https://www.ontario.ca/" },
+  "funder": {
+    "name": "Government of Ontario",
+    "url": "https://www.ontario.ca/"
+  },
   "administered_by": null,
   "parent": null,
   "url": "https://www.ontario.ca/page/species-conservation-program",
   "summary": "Annual Ontario grants for habitat preservation and rehabilitation, threat mitigation and related conservation work for species at risk, open to NGOs, Indigenous groups, individuals and others. Land purchase is limited to conservation bodies, Indigenous communities and municipalities.",
-  "approaches": ["species_conservation", "community_conservation"],
+  "approaches": [
+    "species_conservation",
+    "community_conservation"
+  ],
   "applicant_types": [
     "research_institution",
     "government",
@@ -15,12 +21,48 @@
     "individual",
     "ngo"
   ],
-  "geography": { "scope": "countries", "countries": ["CA"], "label": "Ontario" },
+  "geography": {
+    "scope": "countries",
+    "countries": [
+      "CA"
+    ],
+    "label": "Ontario"
+  },
   "access": "direct",
   "window": "fixed",
   "amount": null,
   "co_finance_required": null,
   "reporting": null,
+  "effort": {
+    "steps": [
+      "Application submission"
+    ],
+    "due": [
+      "2026-12-02"
+    ]
+  },
+  "eligibility": [
+    {
+      "rule": "The project benefits species assessed by COSSARO as extirpated, endangered, threatened or special concern",
+      "kind": "project"
+    },
+    {
+      "rule": "For land purchases: Indigenous community, municipality, or conservation group that acquired land in the past 5 years",
+      "kind": "legal"
+    },
+    {
+      "rule": "Is a legal entity",
+      "kind": "legal"
+    },
+    {
+      "rule": "Has fewer than three current Species Conservation Program projects",
+      "kind": "other"
+    },
+    {
+      "rule": "Project is not required by law or done to meet regulatory requirements",
+      "kind": "project"
+    }
+  ],
   "calls": [
     {
       "id": "2027-28",
@@ -74,7 +116,70 @@
       "quote": "Each year, Ontario invests in projects through the Species Conservation Program that contribute to the protection and conservation of plants and animals at risk.",
       "checked_at": "2026-11-20",
       "method": "page"
-    }
+    },
+    "effort": [
+      {
+        "source_url": "https://www.ontario.ca/page/species-conservation-program",
+        "quote": "Applications must be submitted electronically through the Transfer Payment Ontario portal by 3 p.m. on December 2, 2026.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "eligibility": [
+      {
+        "source_url": "https://www.ontario.ca/page/species-conservation-program",
+        "quote": "To be eligible for consideration, conservation projects must benefit species that have been assessed by the Committee on the Status of Species at Risk in Ontario (COSSARO) as: extirpated endangered threatened special concern",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.ontario.ca/page/species-conservation-program",
+        "quote": "conservation organizations (such as non-governmental, not-for-profit and charitable corporations whose work focuses on environmental protection, conservation or restoration) that have acquired a property for conservation purposes in the past 5 years Indigenous communities municipal governments",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://forms.mgcs.gov.on.ca/dataset/401b7ff9-39cd-416e-afc4-e6d304b29d4e/resource/183e38b4-58b8-4593-9dd5-41e8c01f03b7/download/species-conservation-program-2027-28-guidelines_final_en.pdf",
+        "quote": "Applicants must be legal entities",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://forms.mgcs.gov.on.ca/dataset/401b7ff9-39cd-416e-afc4-e6d304b29d4e/resource/183e38b4-58b8-4593-9dd5-41e8c01f03b7/download/species-conservation-program-2027-28-guidelines_final_en.pdf",
+        "quote": "Organizations must have less than three current Species Conservation Program projects to be eligible for funding.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://forms.mgcs.gov.on.ca/dataset/401b7ff9-39cd-416e-afc4-e6d304b29d4e/resource/183e38b4-58b8-4593-9dd5-41e8c01f03b7/download/species-conservation-program-2027-28-guidelines_final_en.pdf",
+        "quote": "Projects or studies that are required by law are not eligible, including activities that are being undertaken to fulfill regulatory requirements.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "after_award": [
+      {
+        "source_url": "https://forms.mgcs.gov.on.ca/dataset/401b7ff9-39cd-416e-afc4-e6d304b29d4e/resource/183e38b4-58b8-4593-9dd5-41e8c01f03b7/download/species-conservation-program-2027-28-guidelines_final_en.pdf",
+        "quote": "For multi-year projects not in their final year, an interim report with financial documentation is due April 15 of each year of the project, or on other date(s) negotiated with the ministry.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "documents": [
+      {
+        "source_url": "https://forms.mgcs.gov.on.ca/dataset/401b7ff9-39cd-416e-afc4-e6d304b29d4e/resource/183e38b4-58b8-4593-9dd5-41e8c01f03b7/download/species-conservation-program-2027-28-guidelines_final_en.pdf",
+        "quote": "Application is complete in full, with all required components including an application form, budget and threats and knowledge gaps table.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ]
   },
-  "checked_at": "2026-11-20"
+  "checked_at": "2026-11-20",
+  "after_award": {
+    "reports": "yearly"
+  },
+  "documents": [
+    "Project budget",
+    "Threats and knowledge gaps table"
+  ]
 }

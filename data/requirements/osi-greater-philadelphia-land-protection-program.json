@@ -1,0 +1,80 @@
+{
+  "id": "osi-greater-philadelphia-land-protection-program",
+  "read_on": "2026-11-20",
+  "prompt_version": "req-2026-11-20.1",
+  "models": ["cursor:gpt-5.6-luna-high", "cursor:gpt-5.6-sol-high"],
+  "complete": false,
+  "reasons": [
+    "4 links could not be ranked without Jev",
+    "3 links could not be ranked without Jev",
+    "Jev did not check this reading, so an absent fact is not known to be absent"
+  ],
+  "requirements_checked": false,
+  "documents": [
+    {
+      "ref": "D1",
+      "url": "https://www.openspaceinstitute.org/funds/gplpp",
+      "final_url": "https://www.openspaceinstitute.org/funds/gplpp",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 10888,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:5b26e733504e622ea754043a86c30d37a86068e78a0500f20f6cbfb640d07876"
+    },
+    {
+      "ref": "D2",
+      "url": "https://assets.openspaceinstitute.org/production/GPLPP/Neighborhood-Conservation-Grant-Package.pdf?dm=1795037455",
+      "final_url": "https://assets.openspaceinstitute.org/production/GPLPP/Neighborhood-Conservation-Grant-Package.pdf?dm=1795037455",
+      "from": "https://www.openspaceinstitute.org/funds/gplpp",
+      "anchor": "Grant Package",
+      "depth": 1,
+      "pdf": true,
+      "chars": 27697,
+      "pages": 16,
+      "low_text": false,
+      "hash": "sha256:4a39d7c0a663598315cb473e7bfbcfd7a7dfbeecb3f2f93aebe23f627404e43e"
+    },
+    {
+      "ref": "D3",
+      "url": "https://www.openspaceinstitute.org/privacy",
+      "final_url": "https://www.openspaceinstitute.org/privacy",
+      "from": "https://www.openspaceinstitute.org/funds/gplpp",
+      "anchor": "Privacy Policy",
+      "depth": 1,
+      "pdf": false,
+      "chars": 18043,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:04307c5b08220f91365ac4058abf999f86e1a71f3171e3e846a1ae9ae450d56d"
+    }
+  ],
+  "failures": [],
+  "skipped_links": 191,
+  "chunks": [{ "id": "all", "docs": ["D1", "D2", "D3"], "chars": 56995 }],
+  "outcomes": {
+    "eligibility": "partial",
+    "documents": "stated",
+    "effort": "stated",
+    "co_finance": "stated",
+    "consortium": "not_found",
+    "after_award": "stated"
+  },
+  "written": ["eligibility", "documents", "effort", "co_finance", "after_award"],
+  "escalated": ["eligibility"],
+  "flags": [
+    {
+      "field": "eligibility",
+      "item": "Not requesting operational support, land or easement purchases, transaction costs, restoration capital, stewardship implementation, or tax and insurance fees",
+      "why": "a rule is 5 to 120 characters"
+    }
+  ],
+  "notes": [
+    "extractor: The reference application says the applicant must be a tax-exempt nonprofit, while the grant summary separately lists Philadelphia or Camden City municipal agency partners as eligible.",
+    "strong: D2 lists municipal agency partners as eligible, but its application form says the applicant must be a tax-exempt nonprofit organization.",
+    "source osi-greater-philadelphia-land-protection-program-2: added for https://assets.openspaceinstitute.org/production/GPLPP/Neighborhood-Conservation-Grant-Package.pdf?dm=1795037455"
+  ],
+  "usd": 0
+}

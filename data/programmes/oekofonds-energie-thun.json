@@ -1,19 +1,52 @@
 {
   "id": "oekofonds-energie-thun",
   "name": "Ökofonds Energie Thun",
-  "funder": { "name": "Energie Thun AG", "url": "https://energiethun.ch/" },
+  "funder": {
+    "name": "Energie Thun AG",
+    "url": "https://energiethun.ch/"
+  },
   "administered_by": null,
   "parent": null,
   "url": "https://energiethun.ch/unser-engagement/oekofonds/",
   "summary": "Environmental fund of a Thun utility that pays for projects in the Thun region such as habitat for endangered species and river improvements. Applications are sent by form ahead of twice-yearly committee meetings.",
-  "approaches": ["species_conservation", "freshwater"],
-  "applicant_types": ["government", "ngo"],
-  "geography": { "scope": "countries", "countries": ["CH"], "label": "Region Thun" },
+  "approaches": [
+    "species_conservation",
+    "freshwater"
+  ],
+  "applicant_types": [
+    "government",
+    "ngo"
+  ],
+  "geography": {
+    "scope": "countries",
+    "countries": [
+      "CH"
+    ],
+    "label": "Region Thun"
+  },
   "access": "direct",
   "window": "fixed",
   "amount": null,
-  "co_finance_required": null,
+  "co_finance_required": false,
   "reporting": null,
+  "effort": {
+    "steps": [
+      "Completed application form sent by email"
+    ]
+  },
+  "eligibility": [
+    {
+      "rule": "The project is in the defined area around the power plant",
+      "kind": "project"
+    },
+    {
+      "rule": "No recurring payments; no expropriations, studies, concepts or impact checks without a direct project link",
+      "kind": "project"
+    }
+  ],
+  "after_award": {
+    "reports": "final"
+  },
   "calls": [
     {
       "id": "2027-spring",
@@ -21,7 +54,10 @@
       "url": "https://energiethun.ch/unser-engagement/oekofonds/",
       "status": "open",
       "opens": null,
-      "deadline": { "date": "2027-03-08", "text": "Eingabefrist: 8. März 2027" },
+      "deadline": {
+        "date": "2027-03-08",
+        "text": "Eingabefrist: 8. März 2027"
+      },
       "evidence": {
         "status": {
           "source_url": "https://energiethun.ch/unser-engagement/oekofonds/",
@@ -43,7 +79,10 @@
       "url": "https://energiethun.ch/unser-engagement/oekofonds/",
       "status": "open",
       "opens": null,
-      "deadline": { "date": "2027-09-21", "text": "Eingabefrist: 21. September 2027" },
+      "deadline": {
+        "date": "2027-09-21",
+        "text": "Eingabefrist: 21. September 2027"
+      },
       "evidence": {
         "status": {
           "source_url": "https://energiethun.ch/unser-engagement/oekofonds/",
@@ -84,7 +123,43 @@
       "quote": "Projekte der öffentlichen Hand und Organisationen im Umfeld des Kraftwerks (siehe Wirkungsraum) ökologisch unterstützt bzw. finanziert werden",
       "checked_at": "2026-11-20",
       "method": "page"
-    }
+    },
+    "co_finance_required": {
+      "source_url": "https://energiethun.ch/app/uploads/2026/05/2026-04-01_Reglement-Oekofonds.pdf",
+      "quote": "Ein fixer Beitragssatz ist nicht vorgesehen, d.h. im Grundsatz ist auch eine Totalfinanzierung möglich.",
+      "checked_at": "2026-11-20",
+      "method": "page"
+    },
+    "effort": [
+      {
+        "source_url": "https://energiethun.ch/unser-engagement/oekofonds/",
+        "quote": "Senden Sie das ausgefüllte Gesuch an simone.matzinger@energiethun.ch.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "eligibility": [
+      {
+        "source_url": "https://energiethun.ch/app/uploads/2026/05/2026-04-01_Reglement-Oekofonds.pdf",
+        "quote": "Damit sollen nach Prüfung und Genehmigung des Lenkungsausschusses Projekte der öffentlichen Hand und Organisationen im Umfeld des Kraftwerks (siehe Wirkungsraum) ökologisch unterstützt bzw. finanziert werden.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://energiethun.ch/app/uploads/2026/05/2026-04-01_Reglement-Oekofonds.pdf",
+        "quote": "Nicht unterstützt werden regelmässig wiederkehrende Beitragszahlungen (z. B. Bewirtschaftungsentschädigungen), ebenso nicht unterstützungswürdig sind Enteignungen, wissenschaftliche Untersuchungen, Konzepte, Erfolgskontrollen etc., die keinen direkten Bezug zu einem Projekt des Ökofonds aufweisen.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "after_award": [
+      {
+        "source_url": "https://energiethun.ch/app/uploads/2026/05/2026-04-01_Reglement-Oekofonds.pdf",
+        "quote": "Der Gesuchsteller überreicht nach Projektabschluss der Energie Thun AG einen Schlussbericht (Baubericht, neue Situation mit Fotodokumentation etc.).",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ]
   },
   "checked_at": "2026-11-20"
 }

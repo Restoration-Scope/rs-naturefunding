@@ -1,0 +1,83 @@
+{
+  "id": "overijssel-aandachtsoorten",
+  "read_on": "2026-11-20",
+  "prompt_version": "req-2026-11-20.1",
+  "models": ["cursor:gpt-5.6-luna-high"],
+  "complete": false,
+  "reasons": [
+    "12 links could not be ranked without Jev",
+    "14 links could not be ranked without Jev",
+    "https://loket.overijssel.nl/aanvraag?schema=subondersteunenoverijsselseaandachtsoorten&locale=nl_NL would not open (robots: robots.txt disallows this page)",
+    "https://loket.overijssel.nl/aanvraag?schema=bijlagenasturen&locale=nl_NL would not open (robots: robots.txt disallows this page)",
+    "the text names a document with rules that was not read: Aandachtsoortenlijst Overijssel",
+    "the text names a document with rules that was not read: Richtlijnen Verbeteren leefgebied van aandachtsoorten",
+    "the text names a document with rules that was not read: Uitvoeringsbesluit subsidies Overijssel 2022, hoofdstuk 1 en paragraaf 4.28 Ondersteunen van Overijsselse aandachtsoorten",
+    "the text names a document with rules that was not read: Algemene Subsidieverordening Overijssel 2005",
+    "the text names a document with rules that was not read: Algemene wet bestuursrecht (titel 4.2 subsidies)",
+    "the text names a document with rules that was not read: Algemene De-minimisverordening",
+    "the text names a document with rules that was not read: De-minimisverordening Landbouw",
+    "Jev did not check this reading, so an absent fact is not known to be absent"
+  ],
+  "requirements_checked": false,
+  "documents": [
+    {
+      "ref": "D1",
+      "url": "https://regelen.overijssel.nl/Producten_en_diensten/Subsidies/Natuur_en_landschap/Ondersteunen_van_Overijsselse_aandachtsoorten",
+      "final_url": "https://regelen.overijssel.nl/Producten_en_diensten/Subsidies/Natuur_en_landschap/Ondersteunen_van_Overijsselse_aandachtsoorten",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 15413,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:92c5786ee808936e6149a5b546ff5d9b1797bcf308895277c337ea9b9e765d72"
+    },
+    {
+      "ref": "D2",
+      "url": "https://regelen.overijssel.nl/Algemene_informatie/Informatie_over_subsidies/Bijlagen_nasturen",
+      "final_url": "https://regelen.overijssel.nl/Algemene_informatie/Informatie_over_subsidies/Bijlagen_nasturen",
+      "from": "https://regelen.overijssel.nl/Producten_en_diensten/Subsidies/Natuur_en_landschap/Ondersteunen_van_Overijsselse_aandachtsoorten",
+      "anchor": "Bijlage nasturen",
+      "depth": 1,
+      "pdf": false,
+      "chars": 2366,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:5c5ceaf8fb07604bbcf10cf7047ab5bc70758fd89c724c68c4c4eb7b33f5a67e"
+    }
+  ],
+  "failures": [
+    {
+      "url": "https://loket.overijssel.nl/aanvraag?schema=subondersteunenoverijsselseaandachtsoorten&locale=nl_NL",
+      "from": "https://regelen.overijssel.nl/Producten_en_diensten/Subsidies/Natuur_en_landschap/Ondersteunen_van_Overijsselse_aandachtsoorten",
+      "kind": "robots",
+      "message": "robots.txt disallows this page"
+    },
+    {
+      "url": "https://loket.overijssel.nl/aanvraag?schema=bijlagenasturen&locale=nl_NL",
+      "from": "https://regelen.overijssel.nl/Algemene_informatie/Informatie_over_subsidies/Bijlagen_nasturen",
+      "kind": "robots",
+      "message": "robots.txt disallows this page"
+    }
+  ],
+  "skipped_links": 78,
+  "chunks": [{ "id": "all", "docs": ["D1", "D2"], "chars": 18167 }],
+  "outcomes": {
+    "eligibility": "stated",
+    "documents": "stated",
+    "effort": "stated",
+    "co_finance": "stated",
+    "consortium": "not_found",
+    "after_award": "not_found"
+  },
+  "written": ["eligibility", "documents", "effort", "co_finance"],
+  "escalated": [],
+  "flags": [],
+  "notes": [
+    "effort \"Digital application with requested attachments\": the quote does not state 2026-12-31 whole; left undated",
+    "co_finance: share 10% dropped, its quote does not state it",
+    "extractor: The 2026 application window closes on 2026-12-31 or when the budget is exhausted. Complete applications are handled in order of receipt; the 2026 budget is €504,506."
+  ],
+  "usd": 0
+}
