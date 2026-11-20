@@ -1,0 +1,44 @@
+{
+  "id": "stadt-ruesselsheim-naturschutz-zuschuesse",
+  "read_on": "2026-11-20",
+  "prompt_version": "req-2026-11-20.1",
+  "models": ["cursor:gpt-5.6-luna-high"],
+  "complete": false,
+  "reasons": ["Jev did not check this reading, so an absent fact is not known to be absent"],
+  "requirements_checked": false,
+  "documents": [
+    {
+      "ref": "D1",
+      "url": "https://www.ruesselsheim.de/klima-und-umwelt/natur--und-artenschutz/index.php.media/20828/Foerderrichtlinie_Naturschutz_Ruesselsheim-vom-14.Mai-2024_Beschuss.pdf",
+      "final_url": "https://www.ruesselsheim.de/klima-und-umwelt/natur--und-artenschutz/index.php.media/20828/Foerderrichtlinie_Naturschutz_Ruesselsheim-vom-14.Mai-2024_Beschuss.pdf",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": true,
+      "chars": 11145,
+      "pages": 4,
+      "low_text": false,
+      "hash": "sha256:a6d8e77a81d95086fd9475684cae4bf1479c5b70e34a3565dc5c96d7eb79f12e"
+    }
+  ],
+  "failures": [],
+  "skipped_links": 0,
+  "chunks": [{ "id": "all", "docs": ["D1"], "chars": 11325 }],
+  "outcomes": {
+    "eligibility": "stated",
+    "documents": "stated",
+    "effort": "stated",
+    "co_finance": "stated",
+    "consortium": "not_found",
+    "after_award": "not_found"
+  },
+  "written": ["eligibility", "documents", "effort", "co_finance"],
+  "escalated": [],
+  "flags": [],
+  "notes": [
+    "co_finance: share 40% dropped, its quote does not state it",
+    "extractor: The guideline entered into force on 14.05.2024 and states that it replaces the 1989 guideline. No application deadline or round schedule is stated.",
+    "source stadt-ruesselsheim-naturschutz-zuschuesse-1: selector main dropped, a new quote sits outside it"
+  ],
+  "usd": 0
+}

@@ -1,0 +1,99 @@
+{
+  "id": "taisei-nature-historical-environment-fund",
+  "read_on": "2026-11-20",
+  "prompt_version": "req-2026-11-20.1",
+  "models": ["cursor:gpt-5.6-luna-high", "cursor:gpt-5.6-sol-high"],
+  "complete": false,
+  "reasons": [
+    "9 links could not be ranked without Jev",
+    "25 links could not be ranked without Jev",
+    "the text names a document with rules that was not read: 2026 grant application form (助成金申請書), downloadable from https://www.taisei.co.jp/corp/society/kikin/",
+    "Jev did not check this reading, so an absent fact is not known to be absent"
+  ],
+  "requirements_checked": false,
+  "documents": [
+    {
+      "ref": "D1",
+      "url": "https://www.taisei.co.jp/corp/society/kikin/",
+      "final_url": "https://www.taisei.co.jp/corp/society/kikin/",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 2244,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:8565a0ff950c03a08e573403d7ba3f4e46636b7a39aeb18a234d65abfb70c7fd"
+    },
+    {
+      "ref": "D2",
+      "url": "https://www.taisei.co.jp/corp/society/kikin/pdf/2026_taisei_kikin.pdf",
+      "final_url": "https://www.taisei.co.jp/corp/society/kikin/pdf/2026_taisei_kikin.pdf",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": true,
+      "chars": 2944,
+      "pages": 3,
+      "low_text": false,
+      "hash": "sha256:44a37e359ab7bf830e3974d85c3cb4dde6fa0d7d6b3f8232065d3a49a214ad34"
+    },
+    {
+      "ref": "D3",
+      "url": "https://www.taisei.co.jp/corp/society/kikin/year/",
+      "final_url": "https://www.taisei.co.jp/corp/society/kikin/year/",
+      "from": "https://www.taisei.co.jp/corp/society/kikin/",
+      "anchor": "年度別助成実績一覧を見る",
+      "depth": 1,
+      "pdf": false,
+      "chars": 1952,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:47dca535f30cdd024870d9f8c4955d4aefbdb45858eb50a01c9a296e946b3e31"
+    },
+    {
+      "ref": "D4",
+      "url": "https://www.taisei.co.jp/corp/society/kikin/pdf/taisei_kikin_syusi.pdf",
+      "final_url": "https://www.taisei.co.jp/corp/society/kikin/pdf/taisei_kikin_syusi.pdf",
+      "from": "https://www.taisei.co.jp/corp/society/kikin/",
+      "anchor": "助成活動・研究報告書、助成金収支報告書(記入例)[PDF:67KB]",
+      "depth": 1,
+      "pdf": true,
+      "chars": 981,
+      "pages": 2,
+      "low_text": false,
+      "hash": "sha256:137bcbd346213e49412a461651abdd1439902abf60a153faef81a847993159bf"
+    },
+    {
+      "ref": "D5",
+      "url": "https://www.taisei.co.jp/saiyo/pdf/jobreturn.pdf",
+      "final_url": "https://www.taisei.co.jp/saiyo/pdf/jobreturn.pdf",
+      "from": "https://www.taisei.co.jp/corp/society/kikin/year/",
+      "anchor": "ジョブリターン制度",
+      "depth": 2,
+      "pdf": true,
+      "chars": 751,
+      "pages": 1,
+      "low_text": false,
+      "hash": "sha256:adf0473d3661effae20b293afc2471f50fff362740fdb4a14eba442b799fb89b"
+    }
+  ],
+  "failures": [],
+  "skipped_links": 356,
+  "chunks": [{ "id": "all", "docs": ["D1", "D2", "D3", "D4", "D5"], "chars": 9419 }],
+  "outcomes": {
+    "eligibility": "stated",
+    "documents": "stated",
+    "effort": "stated",
+    "co_finance": "not_found",
+    "consortium": "stated",
+    "after_award": "stated"
+  },
+  "written": ["eligibility", "documents", "effort", "consortium", "after_award"],
+  "escalated": ["effort"],
+  "flags": [],
+  "notes": [
+    "extractor: After selection, awarded corporations must submit a current matters certificate, while awarded unincorporated groups must submit a copy of the representative's photo ID. Grantees must identify the fund in their publications, reports or websites. D4 is a 2023 example document, not a current-round requirement."
+  ],
+  "usd": 0
+}

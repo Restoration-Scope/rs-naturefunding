@@ -1,0 +1,67 @@
+{
+  "id": "stiftung-vto-foerderung",
+  "read_on": "2026-11-20",
+  "prompt_version": "req-2026-11-20.1",
+  "models": ["cursor:gpt-5.6-luna-high", "cursor:gpt-5.6-sol-high"],
+  "complete": false,
+  "reasons": [
+    "6 links could not be ranked without Jev",
+    "https://ornithologen-thueringen.de/fileadmin/user_upload/Downloads/Antraege/f_antrag_2021_1_.doc would not open (unreadable: an old Word (.doc), OpenDocument or RTF file: needs conversion)",
+    "Jev did not check this reading, so an absent fact is not known to be absent"
+  ],
+  "requirements_checked": false,
+  "documents": [
+    {
+      "ref": "D1",
+      "url": "https://ornithologen-thueringen.de/stiftung/foerderung",
+      "final_url": "https://ornithologen-thueringen.de/stiftung/foerderung",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 6612,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:30f2d81071d729031f2c3f7f3f8187fd9390c4c7e46f61f0c0dd3007c31ef47f"
+    },
+    {
+      "ref": "D2",
+      "url": "https://ornithologen-thueringen.de/fileadmin/user_upload/Downloads/Antraege/f_antrag_2021.pdf",
+      "final_url": "https://ornithologen-thueringen.de/fileadmin/user_upload/Downloads/Antraege/f_antrag_2021.pdf",
+      "from": "https://ornithologen-thueringen.de/stiftung/foerderung",
+      "anchor": "Antrag ausfüllen",
+      "depth": 1,
+      "pdf": true,
+      "chars": 2732,
+      "pages": 3,
+      "low_text": false,
+      "hash": "sha256:bb86698c18f7015bb61acec753ba5089beeb4e0b40a8b886643afeac38dc3d9d"
+    }
+  ],
+  "failures": [
+    {
+      "url": "https://ornithologen-thueringen.de/fileadmin/user_upload/Downloads/Antraege/f_antrag_2021_1_.doc",
+      "from": "https://ornithologen-thueringen.de/stiftung/foerderung",
+      "kind": "unreadable",
+      "message": "an old Word (.doc), OpenDocument or RTF file: needs conversion"
+    }
+  ],
+  "skipped_links": 61,
+  "chunks": [{ "id": "all", "docs": ["D1", "D2"], "chars": 9592 }],
+  "outcomes": {
+    "eligibility": "stated",
+    "documents": "not_found",
+    "effort": "stated",
+    "co_finance": "stated",
+    "consortium": "not_found",
+    "after_award": "stated"
+  },
+  "written": ["eligibility", "effort", "co_finance", "after_award"],
+  "escalated": ["after_award"],
+  "flags": [],
+  "notes": [
+    "extractor: D2 is a 2021 application form. No current or next-round deadline is stated. D1 says projects are usually funded up to €3,000; larger and multi-year projects are possible.",
+    "source stiftung-vto-foerderung-2: added for https://ornithologen-thueringen.de/fileadmin/user_upload/Downloads/Antraege/f_antrag_2021.pdf"
+  ],
+  "usd": 0
+}

@@ -1,0 +1,60 @@
+{
+  "id": "south-downs-beelines-fund",
+  "read_on": "2026-11-20",
+  "prompt_version": "req-2026-11-20.1",
+  "models": ["cursor:gpt-5.6-luna-high"],
+  "complete": false,
+  "reasons": [
+    "14 links could not be ranked without Jev",
+    "13 links could not be ranked without Jev",
+    "Jev did not check this reading, so an absent fact is not known to be absent"
+  ],
+  "requirements_checked": false,
+  "documents": [
+    {
+      "ref": "D1",
+      "url": "https://southdownstrust.org.uk/apply-for-funding/beelines-fund",
+      "final_url": "https://southdownstrust.org.uk/beelines-fund/",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 6451,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:68894c211666a20e490b167deffa8463cf007a4af9e640a8f228354078015788"
+    },
+    {
+      "ref": "D2",
+      "url": "https://southdownstrust.org.uk/apply-for-funding/",
+      "final_url": "https://southdownstrust.org.uk/grants/",
+      "from": "https://southdownstrust.org.uk/apply-for-funding/beelines-fund",
+      "anchor": "Apply for Funding",
+      "depth": 1,
+      "pdf": false,
+      "chars": 5264,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:e82357d8f1259f87a064710e9983ee792795accbe13624d49ffa99aa063a1243"
+    }
+  ],
+  "failures": [],
+  "skipped_links": 233,
+  "chunks": [{ "id": "all", "docs": ["D1", "D2"], "chars": 11929 }],
+  "outcomes": {
+    "eligibility": "stated",
+    "documents": "not_found",
+    "effort": "stated",
+    "co_finance": "unresolved",
+    "consortium": "not_found",
+    "after_award": "not_found"
+  },
+  "written": ["eligibility", "effort"],
+  "escalated": [],
+  "flags": [],
+  "notes": [
+    "extractor: 2026 submissions of interest are closed. Grants are usually no more than £5,000 and are typically capped at lower amounts for private landowners.",
+    "co_finance: not written, the file quotes \"we also consider in-kind contributions such as labour and equipment\", this reading does not"
+  ],
+  "usd": 0
+}

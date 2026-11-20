@@ -1,0 +1,59 @@
+{
+  "id": "tnc-vermont-biodiversity-fund",
+  "read_on": "2026-11-20",
+  "prompt_version": "req-2026-11-20.1",
+  "models": ["cursor:gpt-5.6-luna-high"],
+  "complete": false,
+  "reasons": [
+    "12 links could not be ranked without Jev",
+    "11 links could not be ranked without Jev",
+    "Jev did not check this reading, so an absent fact is not known to be absent"
+  ],
+  "requirements_checked": false,
+  "documents": [
+    {
+      "ref": "D1",
+      "url": "https://www.nature.org/en-us/about-us/where-we-work/united-states/vermont/stories-in-vermont/vermont-biodiversity-fund/",
+      "final_url": "https://www.nature.org/en-us/about-us/where-we-work/united-states/vermont/stories-in-vermont/vermont-biodiversity-fund/",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 10626,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:559359b4b3d37157c92260565c90aa5346fadafeb59789caf2ebb0a2f8ce91df"
+    },
+    {
+      "ref": "D2",
+      "url": "https://www.nature.org/en-us/about-us/faqs/",
+      "final_url": "https://www.nature.org/en-us/about-us/faqs/",
+      "from": "https://www.nature.org/en-us/about-us/where-we-work/united-states/vermont/stories-in-vermont/vermont-biodiversity-fund/",
+      "anchor": "FAQ",
+      "depth": 1,
+      "pdf": false,
+      "chars": 44616,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:b66649f45b52d4d389fcfc7654cf5ebe796f089e36ea2ec196fb88cbc700ff9c"
+    }
+  ],
+  "failures": [],
+  "skipped_links": 245,
+  "chunks": [{ "id": "all", "docs": ["D1", "D2"], "chars": 55564 }],
+  "outcomes": {
+    "eligibility": "stated",
+    "documents": "stated",
+    "effort": "stated",
+    "co_finance": "not_found",
+    "consortium": "not_found",
+    "after_award": "not_found"
+  },
+  "written": ["eligibility", "documents", "effort"],
+  "escalated": [],
+  "flags": [],
+  "notes": [
+    "extractor: Matching funds are a preference, not stated as required. All grantees must work with TNC on public announcements highlighting the project's biodiversity benefits and climate resilience and TNC's funding."
+  ],
+  "usd": 0
+}

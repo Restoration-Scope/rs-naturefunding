@@ -1,0 +1,179 @@
+{
+  "id": "tokyo-zoo-wildlife-conservation-fund",
+  "read_on": "2026-11-20",
+  "prompt_version": "req-2026-11-20.1",
+  "models": ["cursor:gpt-5.6-luna-high", "cursor:gpt-5.6-sol-high"],
+  "complete": false,
+  "reasons": [
+    "10 links could not be ranked without Jev",
+    "21 links could not be ranked without Jev",
+    "the crawl bound left https://www.tokyo-zoo.net/file/wildlife-conservation-fund/houkoku_gifu_u.pdf unread",
+    "Jev did not check this reading, so an absent fact is not known to be absent"
+  ],
+  "requirements_checked": false,
+  "documents": [
+    {
+      "ref": "D1",
+      "url": "https://www.tokyo-zoo.net/wildlife-conservation-fund/index.html",
+      "final_url": "https://www.tokyo-zoo.net/wildlife-conservation-fund/index.html",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 2509,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:570c8ece5019e01f9c1a9d90cf85d03d336fd2cc8b602355e3d2040992eb2577"
+    },
+    {
+      "ref": "D2",
+      "url": "https://www.tokyo-zoo.net/wildlife-conservation-fund/application/index.html",
+      "final_url": "https://www.tokyo-zoo.net/wildlife-conservation-fund/application/index.html",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 3251,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:07bf59cde041c63ea459fe027c3f574a4c4019a195ccd2295aab8b641837e3be"
+    },
+    {
+      "ref": "D3",
+      "url": "https://www.tokyo-zoo.net/wildlife-conservation-fund/list/index.html",
+      "final_url": "https://www.tokyo-zoo.net/wildlife-conservation-fund/list/index.html",
+      "from": "https://www.tokyo-zoo.net/wildlife-conservation-fund/index.html",
+      "anchor": "助成対象一覧",
+      "depth": 1,
+      "pdf": false,
+      "chars": 9933,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:b5405814b7ba6d67523e8fdc198adcbaafae79c9b9cccd4636c9f219a2ca5ae0"
+    },
+    {
+      "ref": "D4",
+      "url": "https://www.tokyo-zoo.net/file/wildlife-conservation-fund/application/fund_guideline_2026.pdf",
+      "final_url": "https://www.tokyo-zoo.net/file/wildlife-conservation-fund/application/fund_guideline_2026.pdf",
+      "from": "https://www.tokyo-zoo.net/wildlife-conservation-fund/application/index.html",
+      "anchor": "助成対象活動募集要領",
+      "depth": 1,
+      "pdf": true,
+      "chars": 5337,
+      "pages": 8,
+      "low_text": false,
+      "hash": "sha256:095e76b95544a3cac9454c4a515e137775e645b5d2fab03a0166a1d90d12a8bf"
+    },
+    {
+      "ref": "D5",
+      "url": "https://www.tokyo-zoo.net/file/wildlife-conservation-fund/application/fund_application_organization_2026_general.docx",
+      "final_url": "https://www.tokyo-zoo.net/file/wildlife-conservation-fund/application/fund_application_organization_2026_general.docx",
+      "from": "https://www.tokyo-zoo.net/wildlife-conservation-fund/application/index.html",
+      "anchor": "一般部門:[団体用]応募書類・報告書",
+      "depth": 1,
+      "pdf": false,
+      "chars": 1874,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:dc80b9ec7f0cc07354ebfcaa1616a9c67ad306b78b73f418f7d167df7edea344"
+    },
+    {
+      "ref": "D6",
+      "url": "https://www.tokyo-zoo.net/file/wildlife-conservation-fund/application/fund_application_individual_2026_general.docx",
+      "final_url": "https://www.tokyo-zoo.net/file/wildlife-conservation-fund/application/fund_application_individual_2026_general.docx",
+      "from": "https://www.tokyo-zoo.net/wildlife-conservation-fund/application/index.html",
+      "anchor": "一般部門:[個人用]応募書類・報告書",
+      "depth": 1,
+      "pdf": false,
+      "chars": 1809,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:ef707bb89c533174d11f21e506f183cbc2fca070ac9d388c7da16797a2f838d6"
+    },
+    {
+      "ref": "D7",
+      "url": "https://www.tokyo-zoo.net/file/wildlife-conservation-fund/application/fund_application_2026_students.docx",
+      "final_url": "https://www.tokyo-zoo.net/file/wildlife-conservation-fund/application/fund_application_2026_students.docx",
+      "from": "https://www.tokyo-zoo.net/wildlife-conservation-fund/application/index.html",
+      "anchor": "中高校生部門:応募書類・報告書",
+      "depth": 1,
+      "pdf": false,
+      "chars": 1882,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:bfcdc8fc99d8c4e4106f40f7c973c5909814e64d29fb9ccf49113ce7783fdfc7"
+    },
+    {
+      "ref": "D8",
+      "url": "https://www.tokyo-zoo.net/file/wildlife-conservation-fund/application/fund_application_organization_2026_partner.docx",
+      "final_url": "https://www.tokyo-zoo.net/file/wildlife-conservation-fund/application/fund_application_organization_2026_partner.docx",
+      "from": "https://www.tokyo-zoo.net/wildlife-conservation-fund/application/index.html",
+      "anchor": "東京動物園協会保全パートナー部門:[団体用]応募書類・報告書",
+      "depth": 1,
+      "pdf": false,
+      "chars": 1799,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:3c87b706c7adc3994f994817708e8c26682273bdf2207ca171270cf42b4f1cd5"
+    },
+    {
+      "ref": "D9",
+      "url": "https://www.tokyo-zoo.net/file/wildlife-conservation-fund/application/fund_application_individual_2026_partner.docx",
+      "final_url": "https://www.tokyo-zoo.net/file/wildlife-conservation-fund/application/fund_application_individual_2026_partner.docx",
+      "from": "https://www.tokyo-zoo.net/wildlife-conservation-fund/application/index.html",
+      "anchor": "東京動物園協会保全パートナー部門:[個人用]応募書類・報告書",
+      "depth": 1,
+      "pdf": false,
+      "chars": 1735,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:fa409f9b1e835b22c73fe200fe06e6c5b576b98e00525ce2db9d289e3257605d"
+    },
+    {
+      "ref": "D10",
+      "url": "https://www.tokyo-zoo.net/wildlife-conservation-fund/faq/index.html",
+      "final_url": "https://www.tokyo-zoo.net/wildlife-conservation-fund/faq/index.html",
+      "from": "https://www.tokyo-zoo.net/wildlife-conservation-fund/application/index.html",
+      "anchor": "応募に関するQ&A",
+      "depth": 1,
+      "pdf": false,
+      "chars": 2766,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:aa8d3edd616c1f878a56e12faead63d3454b021a38bb795fc8435f0f665c7267"
+    }
+  ],
+  "failures": [
+    {
+      "url": "https://www.tokyo-zoo.net/file/wildlife-conservation-fund/houkoku_gifu_u.pdf",
+      "from": "https://www.tokyo-zoo.net/wildlife-conservation-fund/list/index.html",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    }
+  ],
+  "skipped_links": 345,
+  "chunks": [
+    {
+      "id": "all",
+      "docs": ["D1", "D2", "D3", "D4", "D5", "D6", "D7", "D8", "D9", "D10"],
+      "chars": 34677
+    }
+  ],
+  "outcomes": {
+    "eligibility": "stated",
+    "documents": "not_found",
+    "effort": "stated",
+    "co_finance": "not_found",
+    "consortium": "not_found",
+    "after_award": "stated"
+  },
+  "written": ["eligibility", "effort", "after_award"],
+  "escalated": ["after_award"],
+  "flags": [],
+  "notes": [
+    "eligibility \"Has at least 1 year of wildlife conservation activity\": min_years dropped: the rule's quote does not state 1 years (or 12 months)",
+    "extractor: The FY2026 general-division round is closed. D10 states that applications from overseas are allowed and that there is no restriction on the applicant's activity or residence region. Separate student and three-year partner divisions are listed but were not applied here.",
+    "source tokyo-zoo-wildlife-conservation-fund-3: added for https://www.tokyo-zoo.net/file/wildlife-conservation-fund/application/fund_guideline_2026.pdf"
+  ],
+  "usd": 0
+}
