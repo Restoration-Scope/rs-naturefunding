@@ -43,6 +43,7 @@ const searchText = [p.name, p.funder.name, p.administered_by?.name, p.summary, w
 {/* Row internals are styled by class in src/styles/finder.css, which also reflows them at narrow widths. */}
 <TableRow
   className="row"
+  data-id={p.id}
   data-state={state}
   data-deadline={deadline?.date}
   data-deadline-time={deadline?.time}

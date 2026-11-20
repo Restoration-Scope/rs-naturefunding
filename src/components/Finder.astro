@@ -7,7 +7,7 @@ import DigestSignup from './DigestSignup.astro'
 import CurrencyOptions from './CurrencyOptions.astro'
 import { longDate } from '../lib/format'
 import { ratesDate } from '../lib/rates'
-import { ArrowDown, ArrowUp, Bird, Building2, ChevronsUpDown, Droplets, LayoutGrid, Microscope, Search, SlidersHorizontal, Trees, Users, Waves, Wheat, X } from 'lucide-react'
+import { ArrowDown, ArrowUp, Bird, Download, Building2, ChevronsUpDown, Droplets, LayoutGrid, Microscope, Search, SlidersHorizontal, Trees, Users, Waves, Wheat, X } from 'lucide-react'
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
 import { Checkbox } from '@/components/ui/checkbox'
@@ -76,6 +76,9 @@ const seg = 'relative min-w-0 rounded-xl border border-border'
 const segLabel = 'pointer-events-none absolute top-2.5 left-4 text-xs font-medium text-foreground'
 const segSelect =
   'block h-full min-h-15 w-full cursor-pointer appearance-none truncate rounded-[inherit] bg-transparent pt-6 pr-6 pb-2.5 pl-4 text-md text-foreground hover:bg-muted focus-visible:outline-offset-[-2px] max-md:min-h-14 placeholder:text-muted-foreground data-empty:text-muted-foreground [&:has(option[value=""]:checked)]:text-muted-foreground'
+// Download CSV: the rows the view shows, cut from /data.csv by src/lib/finder.ts (src/lib/view-csv.ts).
+const csvButton = 'linkish inline-flex items-baseline gap-1 whitespace-nowrap'
+const csvTitle = 'Download the programmes shown, with every column of /data.csv'
 import EffortTip from './EffortTip.astro'
 ---
 
@@ -156,6 +159,10 @@ import EffortTip from './EffortTip.astro'
         <p class="col-span-full -mt-0.75 mb-2 hidden items-baseline justify-between gap-3 text-sm text-muted-foreground xl:flex">
           <span class="tabular-nums" data-shown>{now.length} of {sorted.length} shown</span>
           <button type="button" class="linkish" data-reset data-clear hidden>Clear all</button>
+        </p>
+        {/* Its own line: beside the count and Clear all it doesn't fit the column. */}
+        <p class="col-span-full -mt-1 mb-2 hidden text-sm xl:block">
+          <button type="button" class={csvButton} data-csv title={csvTitle}><Download className="size-3.5 self-center" aria-hidden="true" />Download CSV</button>
         </p>
         <Label htmlFor="q" className="col-span-full mb-[0.3rem] max-xl:sr-only">Search</Label>
         <Input id="q" name="q" type="search" placeholder="Search funder or place" autoComplete="off" />
@@ -288,6 +295,7 @@ import EffortTip from './EffortTip.astro'
           <span class="whitespace-nowrap tabular-nums" data-shown>{now.length} of {sorted.length} shown</span>
           <span class="@min-[40rem]/tbl:hidden" data-sort-line>Open calls first, soonest deadline first</span>
           <button type="button" class="linkish" data-reset data-clear hidden>Clear all filters</button>
+          <button type="button" class:list={[csvButton, 'ml-auto']} data-csv title={csvTitle}><Download className="size-3.5 self-center" aria-hidden="true" />Download CSV</button>
         </div>
       </div>
       <p class="sr-only" aria-live="polite" data-live></p>

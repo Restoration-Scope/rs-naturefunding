@@ -4,6 +4,7 @@
 import { pageHref, type PagePaths } from './page-paths'
 import { picker } from './picker'
 import { amountCell } from './table'
+import { csvFileName, pickProgrammes } from './view-csv'
 import { daysBetween, daysLeft, effectiveListingState, shortDateText, utcDateKey } from './status'
 import type { State } from './labels'
 
@@ -98,6 +99,8 @@ export function initTableFinder() {
   let approach: string[] = []
 
   let showLater = false
+  /** Whether the not-open rows show after the last apply(), asked for or forced by the filters. */
+  let laterOn = false
   let sort: SortKey = 'deadline'
   let reversed = false
 
@@ -403,7 +406,7 @@ export function initTableFinder() {
     }
     // Not-open rows show when asked for, when the status filter names them, or when they are all that matches.
     const forced = f.status.some(isLater) || (shownNow === 0 && shownLater > 0)
-    const laterOn = showLater || forced
+    laterOn = showLater || forced
     laterHead.hidden = !laterOn || shownLater === 0
     laterList.hidden = !laterOn
     const shown = shownNow + (laterOn ? shownLater : 0)
@@ -452,6 +455,25 @@ export function initTableFinder() {
     toUrl(f)
     // Each tab's link carries the current place and filters, so a new-tab open keeps them as a click does.
     for (const c of cats) if (c instanceof HTMLAnchorElement) c.href = pageHref(pages, f.where, c.dataset.cat ?? '', new URLSearchParams(location.search))
+  }
+
+  // ---------- Download CSV: the rows shown, in their order ----------
+  async function downloadCsv() {
+    const shownRows = [...list.rows, ...(laterOn ? [...laterList.rows] : [])].filter((r) => !r.hidden)
+    const ids = shownRows.map((r) => r.dataset.id ?? '').filter(Boolean)
+    try {
+      const res = await fetch('/data.csv')
+      if (!res.ok) throw new Error(String(res.status))
+      const blob = new Blob([pickProgrammes(await res.text(), ids)], { type: 'text/csv;charset=utf-8' })
+      const a = document.createElement('a')
+      a.href = URL.createObjectURL(blob)
+      a.download = csvFileName(location.pathname, today)
+      a.click()
+      setTimeout(() => URL.revokeObjectURL(a.href), 1000)
+      live.textContent = `Downloaded ${ids.length} ${plural(ids.length, 'programme', 'programmes')} as CSV`
+    } catch {
+      live.textContent = 'The download failed. Try again, or get every programme at /data.csv.'
+    }
   }
 
   function reset() {
@@ -621,6 +643,10 @@ export function initTableFinder() {
     if (t.closest('[data-later-show]')) {
       showLater = true
       apply()
+      return
+    }
+    if (t.closest('[data-csv]')) {
+      void downloadCsv()
       return
     }
     if (t.closest('[data-reset]')) reset()
