@@ -1,0 +1,74 @@
+{
+  "id": "fondazione-capellino-nature-has-no-borders",
+  "read_on": "2026-11-20",
+  "prompt_version": "req-2026-11-20.1",
+  "models": ["cursor:gpt-5.6-luna-high"],
+  "complete": false,
+  "reasons": [
+    "8 links could not be ranked without Jev",
+    "Jev did not check this reading, so an absent fact is not known to be absent"
+  ],
+  "requirements_checked": false,
+  "documents": [
+    {
+      "ref": "D1",
+      "url": "https://fondazionecapellino.org/en/recommunity/nature-has-no-borders",
+      "final_url": "https://fondazionecapellino.org/en/recommunity/nature-has-no-borders",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 6118,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:ae58ca300da0480b32239ecf7332533f29ad33736936f3521fd67b33ed247284"
+    },
+    {
+      "ref": "D2",
+      "url": "https://fondazionecapellino.org/hubfs/Call%20for%20projects%20EN.pdf?hsLang=en",
+      "final_url": "https://fondazionecapellino.org/hubfs/Call%20for%20projects%20EN.pdf?hsLang=en",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": true,
+      "chars": 13408,
+      "pages": 6,
+      "low_text": false,
+      "hash": "sha256:27d1522742a64814727e31694b5a84637c6365979fb91558f1f1e10d8e0e7729"
+    },
+    {
+      "ref": "D3",
+      "url": "https://fondazionecapellino.org/hubfs/NATURE%20HAS%20NO%20BORDERS%20_%20UK-2.pdf?hsLang=en",
+      "final_url": "https://fondazionecapellino.org/hubfs/NATURE%20HAS%20NO%20BORDERS%20_%20UK-2.pdf?hsLang=en",
+      "from": "https://fondazionecapellino.org/en/recommunity/nature-has-no-borders",
+      "anchor": "Read the Call for Projects",
+      "depth": 1,
+      "pdf": true,
+      "chars": 13516,
+      "pages": 6,
+      "low_text": false,
+      "hash": "sha256:3a3eeb691954e51a75103fcaec0e12c23a207c385437f735c558d135df5d3fe1"
+    }
+  ],
+  "failures": [],
+  "skipped_links": 36,
+  "chunks": [{ "id": "all", "docs": ["D1", "D2", "D3"], "chars": 33414 }],
+  "outcomes": {
+    "eligibility": "stated",
+    "documents": "stated",
+    "effort": "stated",
+    "co_finance": "stated",
+    "consortium": "not_found",
+    "after_award": "not_found"
+  },
+  "written": ["eligibility", "documents", "effort", "co_finance"],
+  "escalated": [],
+  "flags": [],
+  "notes": [
+    "co_finance: share 50% dropped, its quote does not state it",
+    "extractor: D2 and D3 contain conflicting or typographical dates; use D3's corrected dates. The call also requires support for the ECI, open-data principles, and audiovisual material, but these duties are outside the available after-award duty types.",
+    "source fondazione-capellino-nature-has-no-borders-3: added for https://fondazionecapellino.org/hubfs/NATURE%20HAS%20NO%20BORDERS%20_%20UK-2.pdf?hsLang=en",
+    "source fondazione-capellino-nature-has-no-borders-2: selector main dropped, a new quote sits outside it"
+  ],
+  "usd": 0
+}

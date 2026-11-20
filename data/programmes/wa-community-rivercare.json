@@ -31,9 +31,54 @@
     "min": 3000,
     "max": 10000
   },
-  "pool": {"currency": "AUD", "value": 100000, "period": "round", "label": "Round 10"},
+  "pool": {
+    "currency": "AUD",
+    "value": 100000,
+    "period": "round",
+    "label": "Round 10"
+  },
   "co_finance_required": null,
   "reporting": null,
+  "effort": {
+    "steps": [
+      "Application",
+      "Panel assessment"
+    ],
+    "due": [
+      "2026-12-11",
+      null
+    ]
+  },
+  "eligibility": [
+    {
+      "rule": "Have a volunteer base",
+      "kind": "capacity"
+    },
+    {
+      "rule": "Be incorporated, or be sponsored to administer grant funding",
+      "kind": "legal"
+    },
+    {
+      "rule": "Address at least one eligible project criterion",
+      "kind": "project"
+    },
+    {
+      "rule": "Demonstrate a clear public benefit for projects on private land",
+      "kind": "project"
+    }
+  ],
+  "after_award": {
+    "reports": "yearly"
+  },
+  "documents": [
+    "Landowner or land manager letter of support (may follow, but needed before approval)",
+    "Project site map",
+    "Project timeline",
+    "Project budget",
+    "Supporting evidence for budget estimates, if applicable",
+    "Sponsor details and agreement evidence, if sponsored",
+    "ATO Statement by a supplier form, if applicable"
+  ],
   "calls": [
     {
       "id": "round-10",
@@ -70,7 +115,12 @@
     }
   ],
   "evidence": {
-    "pool": {"source_url": "https://dbca.wa.gov.au/management/swan-canning-riverpark/community-rivercare-program-funding", "quote": "Through Round 10 a total of $100,000 is available to deliver on-ground projects during 2027-28.", "checked_at": "2026-11-06", "method": "page"},
+    "pool": {
+      "source_url": "https://dbca.wa.gov.au/management/swan-canning-riverpark/community-rivercare-program-funding",
+      "quote": "Through Round 10 a total of $100,000 is available to deliver on-ground projects during 2027-28.",
+      "checked_at": "2026-11-06",
+      "method": "page"
+    },
     "applicant_types": {
       "source_url": "https://dbca.wa.gov.au/management/swan-canning-riverpark/community-rivercare-program-funding",
       "quote": "Grants of between $3,000 and $10,000 (ex GST) in total for the duration of the project will be provided to community volunteer groups",
@@ -100,7 +150,75 @@
       "quote": "Grants of between $3,000 and $10,000 (ex GST) in total for the duration of the project will be provided to community volunteer groups",
       "checked_at": "2026-11-02",
       "method": "page"
-    }
+    },
+    "effort": [
+      {
+        "source_url": "https://www.dbca.wa.gov.au/media/7362/download",
+        "quote": "Applications close 11 December 2026 (No late applications will be accepted)",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.dbca.wa.gov.au/media/7362/download",
+        "quote": "All applications will be assessed by a panel consisting of representatives with relevant expertise including foreshore restoration, fauna habitat and water quality.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "eligibility": [
+      {
+        "source_url": "https://www.dbca.wa.gov.au/media/7362/download",
+        "quote": "Community groups with a volunteer base.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.dbca.wa.gov.au/media/7362/download",
+        "quote": "Community groups must be incorporated or sponsored (under an auspicing arrangement) by another group or organisation that will administer their grant funding (see section 13 for more information about sponsorship).",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.dbca.wa.gov.au/media/7362/download",
+        "quote": "Must address at least one of the following criteria:",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.dbca.wa.gov.au/media/7362/download",
+        "quote": "For projects on private land, a clear benefit to the public must be demonstrated.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "after_award": [
+      {
+        "source_url": "https://www.dbca.wa.gov.au/media/7362/download",
+        "quote": "A completed report is to be submitted by the grant recipient at the end of each financial year of the project (a reporting template will be supplied by DBCA to the grant recipient).",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "documents": [
+      {
+        "source_url": "https://www.dbca.wa.gov.au/media/7362/download",
+        "quote": "A letter of support for the project from the land owner(s) or land manager(s) including maintenance commitments and any covenants on the project site. Note: although this may not be available at the time of submission, it is a mandatory requirement prior to funding approval. • Map(s) of the project site clearly showing the location, North arrow and extent of the project.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.dbca.wa.gov.au/media/7362/download",
+        "quote": "Timeline for the project identifying when major activities will occur. • Budget clearly detailing what the grant will pay for.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.dbca.wa.gov.au/media/7362/download",
+        "quote": "Supporting evidence to justify budget estimates (if applicable). • Applicants with a sponsor (auspicor) will need to provide the sponsoring organisation's details and evidence of their agreement to receive and administer the grant funding. • ATO Statement by a supplier form (if applicable).",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ]
   },
   "checked_at": "2026-11-02"
 }
