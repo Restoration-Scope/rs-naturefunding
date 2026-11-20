@@ -1,0 +1,136 @@
+{
+  "id": "riverwoods-development-grant",
+  "read_on": "2026-11-20",
+  "prompt_version": "req-2026-11-20.1",
+  "models": ["cursor:gpt-5.6-luna-high"],
+  "complete": false,
+  "reasons": [
+    "14 links could not be ranked without Jev",
+    "18 links could not be ranked without Jev",
+    "https://www.riverwoods.org.uk/wp-content/uploads/2026/09/Riverwoods-Development-Grant-Application-Guidance-Round-2.pdf: page 1 is an image: needs OCR",
+    "https://scottishwildlifetrust.org.uk/wp-content/uploads/2018/05/Retential-and-disposal-policy.pdf: page 1 is an image: needs OCR",
+    "https://scottishwildlifetrust.org.uk/wp-content/uploads/2018/05/Retential-and-disposal-policy.pdf: a document on another site: without Jev it can’t be confirmed as the funder’s, so it is not used",
+    "the text names a document with rules that was not read: National Lottery Heritage Fund guidance",
+    "the text names a document with rules that was not read: Riverwoods Blueprint Project guidelines",
+    "Jev did not check this reading, so an absent fact is not known to be absent"
+  ],
+  "requirements_checked": false,
+  "documents": [
+    {
+      "ref": "D1",
+      "url": "https://www.riverwoods.org.uk/our-work/the-blueprint-project/riverwoods-development-grant/",
+      "final_url": "https://www.riverwoods.org.uk/our-work/the-blueprint-project/riverwoods-development-grant/",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 12746,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:df33285cba6deeb5cc254f1d18baf9872d4c4992088cefbad08267b074bd40e4"
+    },
+    {
+      "ref": "D2",
+      "url": "https://www.riverwoods.org.uk/wp-content/uploads/2026/09/Riverwoods-Development-Grant-Application-Guidance-Round-2.pdf",
+      "final_url": "https://www.riverwoods.org.uk/wp-content/uploads/2026/09/Riverwoods-Development-Grant-Application-Guidance-Round-2.pdf",
+      "from": "https://www.riverwoods.org.uk/our-work/the-blueprint-project/riverwoods-development-grant/",
+      "anchor": "Riverwoods Development Grant - Application Guidance (Round 2)",
+      "depth": 1,
+      "pdf": true,
+      "chars": 29119,
+      "pages": 21,
+      "low_text": false,
+      "hash": "sha256:0b9b105426fe96067b0fd52513e6f180f320d606371af74c76d2aa2ea023da94"
+    },
+    {
+      "ref": "D3",
+      "url": "https://www.riverwoods.org.uk/wp-content/uploads/2026/09/Riverwoods-Development-Grant-Application-Form-Round-2.pdf",
+      "final_url": "https://www.riverwoods.org.uk/wp-content/uploads/2026/09/Riverwoods-Development-Grant-Application-Form-Round-2.pdf",
+      "from": "https://www.riverwoods.org.uk/our-work/the-blueprint-project/riverwoods-development-grant/",
+      "anchor": "Riverwoods Development Grant - Application Form (Round 2) [PDF]",
+      "depth": 1,
+      "pdf": true,
+      "chars": 6926,
+      "pages": 14,
+      "low_text": false,
+      "hash": "sha256:622e154bc62f4e26de187168fcf93ca7b37b9d43cac39df122b8e7a473ea04dc"
+    },
+    {
+      "ref": "D4",
+      "url": "https://www.riverwoods.org.uk/wp-content/uploads/2026/09/Riverwoods-Development-Grant-Application-Form-Round-2.docx",
+      "final_url": "https://www.riverwoods.org.uk/wp-content/uploads/2026/09/Riverwoods-Development-Grant-Application-Form-Round-2.docx",
+      "from": "https://www.riverwoods.org.uk/our-work/the-blueprint-project/riverwoods-development-grant/",
+      "anchor": "Riverwoods Development Grant - Application Form (Round 2) [Word]",
+      "depth": 1,
+      "pdf": false,
+      "chars": 6970,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:9b0a1befb484ea19ac726e56b76e3c9fd5fcdd8c05d2f93528e50658e07d658d"
+    },
+    {
+      "ref": "D5",
+      "url": "https://www.riverwoods.org.uk/faqs/",
+      "final_url": "https://www.riverwoods.org.uk/faqs/",
+      "from": "https://www.riverwoods.org.uk/our-work/the-blueprint-project/riverwoods-development-grant/",
+      "anchor": "FAQs",
+      "depth": 1,
+      "pdf": false,
+      "chars": 11793,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:53aad20a19424108a6998f3c3f217aef71221f61d917753471d3709ae851c0d4"
+    },
+    {
+      "ref": "D6",
+      "url": "https://www.riverwoods.org.uk/privacy-policy/",
+      "final_url": "https://www.riverwoods.org.uk/privacy-policy/",
+      "from": "https://www.riverwoods.org.uk/our-work/the-blueprint-project/riverwoods-development-grant/",
+      "anchor": "Privacy Policy",
+      "depth": 1,
+      "pdf": false,
+      "chars": 24888,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:90f08806edf99b99524c4a5ca31bf73d9dc0e3ed1409125dfc161862cf743ecf"
+    }
+  ],
+  "failures": [
+    {
+      "url": "https://www.riverwoods.org.uk/wp-content/uploads/2026/09/Riverwoods-Development-Grant-Application-Guidance-Round-2.pdf",
+      "from": "https://www.riverwoods.org.uk/our-work/the-blueprint-project/riverwoods-development-grant/",
+      "kind": "low_text",
+      "message": "page 1 is an image: needs OCR"
+    },
+    {
+      "url": "https://scottishwildlifetrust.org.uk/wp-content/uploads/2018/05/Retential-and-disposal-policy.pdf",
+      "from": "https://www.riverwoods.org.uk/privacy-policy/",
+      "kind": "low_text",
+      "message": "page 1 is an image: needs OCR"
+    },
+    {
+      "url": "https://scottishwildlifetrust.org.uk/wp-content/uploads/2018/05/Retential-and-disposal-policy.pdf",
+      "from": "https://www.riverwoods.org.uk/privacy-policy/",
+      "kind": "offsite",
+      "message": "a document on another site: without Jev it can’t be confirmed as the funder’s, so it is not used"
+    }
+  ],
+  "skipped_links": 103,
+  "chunks": [{ "id": "all", "docs": ["D1", "D2", "D3", "D4", "D5", "D6"], "chars": 93574 }],
+  "outcomes": {
+    "eligibility": "stated",
+    "documents": "stated",
+    "effort": "stated",
+    "co_finance": "stated",
+    "consortium": "not_found",
+    "after_award": "stated"
+  },
+  "written": ["eligibility", "documents", "effort", "co_finance", "after_award"],
+  "escalated": [],
+  "flags": [],
+  "notes": [
+    "extractor: Round One information is historical; these results use Round Two (2026-2028). Applications from individuals are accepted only under exceptional circumstances. Funding requests are expected to be within the £10,000-£20,000 range, but there is no minimum Grant request threshold.",
+    "source riverwoods-development-grant-2: added for https://www.riverwoods.org.uk/wp-content/uploads/2026/09/Riverwoods-Development-Grant-Application-Guidance-Round-2.pdf"
+  ],
+  "usd": 0
+}

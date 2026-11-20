@@ -1,0 +1,78 @@
+{
+  "id": "rdck-local-conservation-fund",
+  "read_on": "2026-11-20",
+  "prompt_version": "req-2026-11-20.1",
+  "models": ["cursor:gpt-5.6-luna-high", "cursor:gpt-5.6-sol-high"],
+  "complete": false,
+  "reasons": [
+    "10 links could not be ranked without Jev",
+    "https://kootenayconservation.ca/wp-content/uploads/2026/07/2026-06-10-Local-Conservation-Fund-Procedure-Final.pdf: page 1 is an image: needs OCR",
+    "the text names a document with rules that was not read: LCF Policy",
+    "the text names a document with rules that was not read: KLLCF Guidance Document",
+    "Jev did not check this reading, so an absent fact is not known to be absent",
+    "strong reading: the text names a document with rules that was not read: Local Conservation Fund (LCF) Policy",
+    "strong reading: the text names a document with rules that was not read: KLLCF Guidance Document"
+  ],
+  "requirements_checked": false,
+  "documents": [
+    {
+      "ref": "D1",
+      "url": "https://kootenayconservation.ca/regional-district-of-central-kootenay/",
+      "final_url": "https://kootenayconservation.ca/regional-district-of-central-kootenay/",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 6932,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:2c372bf2ec0423f29a3c379779562c21807301040f3f2a571bce7cbddfb90793"
+    },
+    {
+      "ref": "D2",
+      "url": "https://kootenayconservation.ca/wp-content/uploads/2026/07/2026-06-10-Local-Conservation-Fund-Procedure-Final.pdf",
+      "final_url": "https://kootenayconservation.ca/wp-content/uploads/2026/07/2026-06-10-Local-Conservation-Fund-Procedure-Final.pdf",
+      "from": "https://kootenayconservation.ca/regional-district-of-central-kootenay/",
+      "anchor": "Local Conservation Fund Procedure",
+      "depth": 1,
+      "pdf": true,
+      "chars": 28146,
+      "pages": 14,
+      "low_text": false,
+      "hash": "sha256:48eaa07a01875f29487d66a3f078b70d26453bb95453ad73dac27b8eb292607f"
+    }
+  ],
+  "failures": [
+    {
+      "url": "https://kootenayconservation.ca/wp-content/uploads/2026/07/2026-06-10-Local-Conservation-Fund-Procedure-Final.pdf",
+      "from": "https://kootenayconservation.ca/regional-district-of-central-kootenay/",
+      "kind": "low_text",
+      "message": "page 1 is an image: needs OCR"
+    }
+  ],
+  "skipped_links": 102,
+  "chunks": [{ "id": "all", "docs": ["D1", "D2"], "chars": 35378 }],
+  "outcomes": {
+    "eligibility": "partial",
+    "documents": "stated",
+    "effort": "stated",
+    "co_finance": "not_found",
+    "consortium": "not_found",
+    "after_award": "stated"
+  },
+  "written": ["eligibility", "documents", "effort", "after_award"],
+  "escalated": ["eligibility", "effort"],
+  "flags": [
+    {
+      "field": "eligibility",
+      "item": "Project is not one of the listed ineligible activities",
+      "why": "the quote is not on any gathered document"
+    }
+  ],
+  "notes": [
+    "extractor: General 2027 project applications are currently being reviewed. Land acquisition or covenant proposals are accepted on an ongoing basis due to the time sensitivity of securement projects. The general project cycle gives only September/October, November/December, January, February and March/April, not exact dates.",
+    "strong: D1 accepts local governments directly, but D2's mandatory proponent clause names only registered nonprofit societies, First Nations, or proponents partnering with an eligible organization.",
+    "source rdck-local-conservation-fund-2: added for https://kootenayconservation.ca/wp-content/uploads/2026/07/2026-06-10-Local-Conservation-Fund-Procedure-Final.pdf"
+  ],
+  "usd": 0
+}

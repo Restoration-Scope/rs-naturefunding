@@ -1,0 +1,64 @@
+{
+  "id": "shizugin-furusato-environmental-conservation-fund",
+  "read_on": "2026-11-20",
+  "prompt_version": "req-2026-11-20.1",
+  "models": ["cursor:gpt-5.6-luna-high", "cursor:gpt-5.6-sol-high"],
+  "complete": false,
+  "reasons": [
+    "https://www.pref.shizuoka.jp/kurashikankyo/kankyo/1040676/1057924.html would not open (blocked: HTTP 200 bot challenge page)",
+    "the text names a document with rules that was not read: 助成金給付申請書記入要領",
+    "the text names a document with rules that was not read: 当基金給付規程",
+    "Jev did not check this reading, so an absent fact is not known to be absent",
+    "strong reading: the text names a document with rules that was not read: 助成金給付申請書記入要領"
+  ],
+  "requirements_checked": false,
+  "documents": [
+    {
+      "ref": "D1",
+      "url": "https://www.pref.shizuoka.jp/_res/projects/default_project/_page_/001/057/924/youryou.pdf",
+      "final_url": "https://www.pref.shizuoka.jp/_res/projects/default_project/_page_/001/057/924/youryou.pdf",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": true,
+      "chars": 2079,
+      "pages": 2,
+      "low_text": false,
+      "hash": "sha256:8e92db3f70cfafe3ac5adfc9b7eab4ee8dcc79e90fc56a8e3548cd398372e2a4"
+    }
+  ],
+  "failures": [
+    {
+      "url": "https://www.pref.shizuoka.jp/kurashikankyo/kankyo/1040676/1057924.html",
+      "from": null,
+      "kind": "blocked",
+      "message": "HTTP 200 bot challenge page"
+    }
+  ],
+  "skipped_links": 0,
+  "chunks": [{ "id": "all", "docs": ["D1"], "chars": 2187 }],
+  "outcomes": {
+    "eligibility": "stated",
+    "documents": "unresolved",
+    "effort": "stated",
+    "co_finance": "not_found",
+    "consortium": "not_found",
+    "after_award": "stated"
+  },
+  "written": ["eligibility", "effort", "after_award"],
+  "escalated": ["eligibility", "documents"],
+  "flags": [
+    {
+      "field": "documents",
+      "item": "Materials specified in the application instructions",
+      "why": "the quote is not on any gathered document"
+    }
+  ],
+  "notes": [
+    "effort \"Application period\": the quote does not state 2026-12-23 whole; left undated",
+    "extractor: D1 labels the call 2026年度, while eligible activities are in 2027年度 (April 2027–March 2028). Grant-funded equipment, signs, booklets and printed materials must display that they are part of the grant project.",
+    "strong: D1 calls the application FY2026 while stating that funded activities take place in FY2027.",
+    "eligibility: kept 1 first-reading item no check faulted that the strong reading left out"
+  ],
+  "usd": 0
+}

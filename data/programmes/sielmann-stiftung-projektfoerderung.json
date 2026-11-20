@@ -1,19 +1,68 @@
 {
   "id": "sielmann-stiftung-projektfoerderung",
   "name": "Projektförderung Naturschutz und Artenvielfalt",
-  "funder": { "name": "Heinz Sielmann Stiftung", "url": "https://www.sielmann-stiftung.de/" },
+  "funder": {
+    "name": "Heinz Sielmann Stiftung",
+    "url": "https://www.sielmann-stiftung.de/"
+  },
   "administered_by": null,
   "parent": null,
   "url": "https://www.sielmann-stiftung.de/natur-artenschutz/projektfoerderung",
   "summary": "Foundation grants, with four application rounds a year, for habitat restoration, land purchase for conservation and species protection projects with a focus on Germany, open to German non-profit bodies.",
-  "approaches": ["species_conservation", "protected_areas", "community_conservation"],
-  "applicant_types": ["ngo", "research_institution", "government"],
-  "geography": { "scope": "countries", "countries": ["DE"], "label": "Germany" },
+  "approaches": [
+    "species_conservation",
+    "protected_areas",
+    "community_conservation"
+  ],
+  "applicant_types": [
+    "ngo",
+    "research_institution",
+    "government"
+  ],
+  "geography": {
+    "scope": "countries",
+    "countries": [
+      "DE"
+    ],
+    "label": "Germany"
+  },
   "access": "direct",
   "window": "fixed",
   "amount": null,
   "co_finance_required": false,
   "reporting": "An interim report at each year end for projects running past 31 December, then a final report and an account of how the funds were spent within one month of the project's end.",
+  "effort": {
+    "steps": [
+      "Online application",
+      "Document review"
+    ]
+  },
+  "eligibility": [
+    {
+      "rule": "Is a formally recognised nonprofit or a public-law body",
+      "kind": "legal"
+    },
+    {
+      "rule": "If based outside Germany, meets German charity law and the project links to nature in Germany",
+      "kind": "legal"
+    },
+    {
+      "rule": "Does not submit the same funding application elsewhere in parallel",
+      "kind": "other"
+    },
+    {
+      "rule": "Not technical environmental protection, a statutory duty, or a project already started",
+      "kind": "project"
+    }
+  ],
+  "after_award": {
+    "reports": "interim_and_final"
+  },
+  "documents": [
+    "Organisation's statutes",
+    "Current tax exemption notice",
+    "Cost and financing plan"
+  ],
   "calls": [
     {
       "id": "2026-4",
@@ -21,7 +70,10 @@
       "url": "https://www.sielmann-stiftung.de/natur-artenschutz/projektfoerderung",
       "status": "closed",
       "opens": null,
-      "deadline": { "date": "2026-09-30", "text": "30.09.2026" },
+      "deadline": {
+        "date": "2026-09-30",
+        "text": "30.09.2026"
+      },
       "evidence": {
         "status": {
           "source_url": "https://www.sielmann-stiftung.de/natur-artenschutz/projektfoerderung",
@@ -43,7 +95,10 @@
       "url": "https://www.sielmann-stiftung.de/natur-artenschutz/projektfoerderung",
       "status": "open",
       "opens": null,
-      "deadline": { "date": "2027-01-31", "text": "31.01.2027" },
+      "deadline": {
+        "date": "2027-01-31",
+        "text": "31.01.2027"
+      },
       "evidence": {
         "status": {
           "source_url": "https://www.sielmann-stiftung.de/natur-artenschutz/projektfoerderung",
@@ -87,7 +142,7 @@
     },
     "co_finance_required": {
       "source_url": "https://www.sielmann-stiftung.de/natur-artenschutz/projektfoerderung",
-      "quote": "Nein, Eigenmittel sind nicht zwingend erforderlich",
+      "quote": "Nein, Eigenmittel sind nicht zwingend erforderlich, können sich aber in manchen Fällen positiv auf eine Bewilligung des beantragten Projekts auswirken.",
       "checked_at": "2026-11-20",
       "method": "page"
     },
@@ -96,7 +151,75 @@
       "quote": "Nach Projektabschluss ist innerhalb eines Monats ein Abschlussbericht zusammen mit einem Verwendungsnachweis über die erhaltenen Fördermittel einzureichen.",
       "checked_at": "2026-11-20",
       "method": "page"
-    }
+    },
+    "effort": [
+      {
+        "source_url": "https://www.sielmann-stiftung.de/natur-artenschutz/projektfoerderung/foerderantrag-stellen",
+        "quote": "Anschließend können Sie einen Antrag auf Projektfinanzierung stellen, indem Sie das Formular auf dieser Seite vollständig ausfüllen und absenden.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.sielmann-stiftung.de/natur-artenschutz/projektfoerderung",
+        "quote": "Im Anschluss prüfen wir Ihre Unterlagen sorgfältig.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "eligibility": [
+      {
+        "source_url": "https://www.sielmann-stiftung.de/natur-artenschutz/projektfoerderung",
+        "quote": "Wir dürfen nur formal als gemeinnützig anerkannte Körperschaften und öffentlich-rechtlich verfasste Körperschaften mit Sitz in Deutschland unterstützen.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.sielmann-stiftung.de/natur-artenschutz/projektfoerderung",
+        "quote": "Körperschaften mit Sitz im Ausland können nur dann eine Förderung erhalten, wenn sie alle Anforderungen des deutschen Gemeinnützigkeitsrechts erfüllen und ein unmittelbarer Bezug des Projektgegenstands oder -inhalts auf Natur- und Umweltthemen im Inland besteht.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.sielmann-stiftung.de/natur-artenschutz/projektfoerderung",
+        "quote": "Bitte beachten Sie, dass die parallele Einreichung desselben Förderantrags bei einer anderen Einrichtung eine Förderung durch uns ausschließt.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.sielmann-stiftung.de/files/images/images-1-hss/1-natur-und-artenschutz/7-foerderprojekte/0-downloads/foerderrichtlinie-2023.pdf",
+        "quote": "Vorhaben des technischen Umweltschutzes Projekte, die der Erfüllung gesetzlicher Pflichtaufgaben dienen bereits begonnene Vorhaben",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "after_award": [
+      {
+        "source_url": "https://www.sielmann-stiftung.de/natur-artenschutz/projektfoerderung",
+        "quote": "Läuft ein gefördertes Projekt über den 31.12. eines Jahres hinaus, ist zum Jahresende ein Zwischenbericht vorzulegen. Nach Abschluss eines Projekts müssen Sie einen rechnerischen Verwendungsnachweis mit einem Abschlussbericht bei uns einreichen.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "documents": [
+      {
+        "source_url": "https://www.sielmann-stiftung.de/natur-artenschutz/projektfoerderung",
+        "quote": "Satzung Ihrer Organisation",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.sielmann-stiftung.de/natur-artenschutz/projektfoerderung",
+        "quote": "der aktuelle Freistellungsbescheid des Finanzamtes",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.sielmann-stiftung.de/natur-artenschutz/projektfoerderung",
+        "quote": "ein Kosten- und Finanzierungsplan",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ]
   },
   "checked_at": "2026-11-20"
 }
