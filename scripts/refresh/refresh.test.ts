@@ -6,6 +6,7 @@ import { deadlineInstant, deadlinePassed, parseZone } from './deadline'
 import { classifyResponse, hashText, readPages, robotsAllows, type Fetched } from './fetch'
 import { formatJson } from './json'
 import { answerText, llmFromEnv, provider } from './llm'
+import { sourceOfBranch, withinBudget } from './pool'
 import { isDue, nextState, programmeChecks, type SourceState } from './state'
 import { applyTierA, classify, quotesAt } from './tier'
 import { applyExtraction, LIMITS, proposalKey, readReview } from './tier-b'
@@ -477,5 +478,42 @@ describe('LLM provider from the environment', () => {
     expect(answerText({ choices: [{ message: { content: '{"a":1}' } }] })).toBe('{"a":1}')
     expect(answerText({ result: { response: '{}' } })).toBe('{}')
     expect(() => answerText({ choices: [{ message: { content: null, reasoning_content: '…' }, finish_reason: 'length' }] })).toThrow('finish_reason length')
+  })
+})
+
+describe('Tier B time budget', () => {
+  const slow = (ms: number) => async (n: number) => {
+    await Bun.sleep(ms)
+    return n * 2
+  }
+  test('runs every item, a few at a time, in item order', async () => {
+    let running = 0
+    let most = 0
+    const work = async (n: number) => {
+      most = Math.max(most, ++running)
+      await Bun.sleep(5)
+      running--
+      return n
+    }
+    const r = await withinBudget([1, 2, 3, 4, 5, 6, 7], work, { parallel: 3, deadline: Date.now() + 5_000 })
+    expect(r.done.map(([n]) => n)).toEqual([1, 2, 3, 4, 5, 6, 7])
+    expect(r.deferred).toEqual([])
+    expect(most).toBe(3)
+  })
+  test('at the deadline, stops waiting and leaves the rest for the next run', async () => {
+    const started = Date.now()
+    const r = await withinBudget([1, 2, 3, 4, 5], slow(50), { parallel: 2, deadline: Date.now() + 75 })
+    expect(Date.now() - started).toBeLessThan(200)
+    expect(r.done).toEqual([[1, 2], [2, 4]])
+    expect(r.deferred).toEqual([3, 4, 5])
+  })
+  test('a hung draft is abandoned, not awaited', async () => {
+    const hang = (n: number) => (n === 1 ? new Promise<number>(() => {}) : Promise.resolve(n))
+    const r = await withinBudget([1, 2, 3], hang, { parallel: 2, deadline: Date.now() + 30 })
+    expect(r.done).toEqual([[2, 2], [3, 3]])
+    expect(r.deferred).toEqual([1])
+  })
+  test('source id from a refresh branch', () => {
+    expect(sourceOfBranch('refresh/cultuurfonds-natuur-1-43715323675')).toBe('cultuurfonds-natuur-1')
   })
 })

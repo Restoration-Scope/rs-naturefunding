@@ -61,8 +61,12 @@ jobs:
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
 
+      # run.ts stops drafting changed pages 50 minutes in (TIER_B_DEADLINE_MINUTES). This step
+      # timeout is the backstop: a timed-out step fails without cancelling the job, so the commit
+      # step below still saves the unchanged pages' dates, which run.ts writes before any model call.
       - name: Read pages
         if: env.MODE == 'daily'
+        timeout-minutes: 62
         env:
           ONLY: ${{ inputs.only }}
           SIMULATE: ${{ inputs.simulate }}
