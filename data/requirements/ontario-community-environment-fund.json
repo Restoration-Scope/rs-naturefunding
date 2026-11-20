@@ -1,0 +1,105 @@
+{
+  "id": "ontario-community-environment-fund",
+  "read_on": "2026-11-20",
+  "prompt_version": "req-2026-11-20.1",
+  "models": ["cursor:gpt-5.6-luna-high"],
+  "complete": false,
+  "reasons": [
+    "6 links could not be ranked without Jev",
+    "12 links could not be ranked without Jev",
+    "18 links could not be ranked without Jev",
+    "the crawl bound left https://www.ontario.ca/document/stormwater-management-planning-and-design-manual-0 unread",
+    "the crawl bound left https://www.ontario.ca/page/water-taking-and-transfer-user-guide-clarifications-and-exemptions unread",
+    "the text names a document with rules that was not read: Detailed application form instruction document available within TPON",
+    "the text names a document with rules that was not read: OCEF budget template provided within TPON",
+    "the text names a document with rules that was not read: Transfer Payment Agreement",
+    "Jev did not check this reading, so an absent fact is not known to be absent"
+  ],
+  "requirements_checked": false,
+  "documents": [
+    {
+      "ref": "D1",
+      "url": "https://www.ontario.ca/page/ontario-community-environment-fund",
+      "final_url": "https://www.ontario.ca/page/ontario-community-environment-fund",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 12553,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:93cfb8d01dd1d118127136547c28563fc14e8b01ea31d91a75260923830a776f"
+    },
+    {
+      "ref": "D2",
+      "url": "https://www.ontario.ca/page/ontario-community-environment-fund-application-guide",
+      "final_url": "https://www.ontario.ca/page/ontario-community-environment-fund-application-guide",
+      "from": "https://www.ontario.ca/page/ontario-community-environment-fund",
+      "anchor": "Ontario Community Environment Fund application guide",
+      "depth": 1,
+      "pdf": false,
+      "chars": 35290,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:d0b9e62c25a50ae14188080c5b61888e98b310959e69572c28e447b39aef5cc3"
+    },
+    {
+      "ref": "D3",
+      "url": "https://www.ontario.ca/page/transfer-payment-operational-policy",
+      "final_url": "https://www.ontario.ca/page/transfer-payment-operational-policy",
+      "from": "https://www.ontario.ca/page/ontario-community-environment-fund-application-guide",
+      "anchor": "Transfer Payment Operational Policy",
+      "depth": 2,
+      "pdf": false,
+      "chars": 37039,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:490fd6c63a52e83b9a825f76e670c1cab158e44a3ce84e17841e442f7c6a0960"
+    },
+    {
+      "ref": "D4",
+      "url": "https://www.ontario.ca/page/water-taking-user-guide-environmental-activity-and-sector-registry",
+      "final_url": "https://www.ontario.ca/page/water-taking-user-guide-environmental-activity-and-sector-registry",
+      "from": "https://www.ontario.ca/page/ontario-community-environment-fund-application-guide",
+      "anchor": "water taking EASR",
+      "depth": 2,
+      "pdf": false,
+      "chars": 58249,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:750d81955cf901f993a3a3d24e3ebaeb0064375cc0b84f07887884e43fb76b09"
+    }
+  ],
+  "failures": [
+    {
+      "url": "https://www.ontario.ca/document/stormwater-management-planning-and-design-manual-0",
+      "from": "https://www.ontario.ca/page/water-taking-user-guide-environmental-activity-and-sector-registry",
+      "kind": "bound",
+      "message": "past the crawl depth of 2"
+    },
+    {
+      "url": "https://www.ontario.ca/page/water-taking-and-transfer-user-guide-clarifications-and-exemptions",
+      "from": "https://www.ontario.ca/page/water-taking-user-guide-environmental-activity-and-sector-registry",
+      "kind": "bound",
+      "message": "past the crawl depth of 2"
+    }
+  ],
+  "skipped_links": 275,
+  "chunks": [{ "id": "all", "docs": ["D1", "D2", "D3", "D4"], "chars": 143749 }],
+  "outcomes": {
+    "eligibility": "stated",
+    "documents": "stated",
+    "effort": "stated",
+    "co_finance": "not_found",
+    "consortium": "not_found",
+    "after_award": "stated"
+  },
+  "written": ["eligibility", "documents", "effort", "after_award"],
+  "escalated": [],
+  "flags": [],
+  "notes": [
+    "extractor: D2 is the 2025 application guide, with a 2025-09-24 deadline. D1 was updated in 2026 and reports current investment information but gives no new application deadline or application-package requirements. Other funding sources are permitted but matching funds are not stated as mandatory.",
+    "source ontario-community-environment-fund-2: added for https://www.ontario.ca/page/ontario-community-environment-fund-application-guide"
+  ],
+  "usd": 0
+}

@@ -1,20 +1,91 @@
 {
   "id": "usfs-landscape-scale-restoration-tribes",
   "name": "Landscape Scale Restoration Grant Program for Tribes",
-  "funder": { "name": "USDA Forest Service", "url": "https://www.fs.usda.gov/" },
+  "funder": {
+    "name": "USDA Forest Service",
+    "url": "https://www.fs.usda.gov/"
+  },
   "administered_by": null,
   "parent": null,
   "url": "https://www.grants.gov/search-results-detail/364145",
   "summary": "US federal matching grants for tribes to restore priority rural forest landscapes, including tribal trust land, by reducing wildfire risk, improving fish and wildlife habitat and water, or controlling invasive plants, pests and disease.",
-  "approaches": ["reforestation", "sustainable_land_use", "species_conservation", "community_conservation"],
-  "applicant_types": ["indigenous_organization"],
+  "approaches": [
+    "reforestation",
+    "sustainable_land_use",
+    "species_conservation",
+    "community_conservation"
+  ],
+  "applicant_types": [
+    "indigenous_organization"
+  ],
   "geography": null,
   "access": "direct",
   "window": "fixed",
-  "amount": { "currency": "USD", "max": 300000 },
-  "pool": {"currency": "USD", "value": 1260000, "period": "round", "qualifier": "up_to", "label": "FY2026"},
+  "amount": {
+    "currency": "USD",
+    "max": 300000
+  },
+  "pool": {
+    "currency": "USD",
+    "value": 1260000,
+    "period": "round",
+    "qualifier": "up_to",
+    "label": "FY2026"
+  },
   "co_finance_required": true,
   "reporting": "Recipients file financial and progress reports at least once a year, and report accomplishments, with maps of where the work happened, in the LaSR database by 28 October each year.",
+  "eligibility": [
+    {
+      "rule": "If a Tribal organisation: applies at the request of a federally recognised Tribe, with its support letter",
+      "kind": "legal"
+    },
+    {
+      "rule": "On-the-ground work only on rural non-Federal land, outside Census places of over 50,000 people",
+      "kind": "project"
+    },
+    {
+      "rule": "Furthers a Tribal forest management plan, State Forest Action Plan or equivalent strategy",
+      "kind": "project"
+    },
+    {
+      "rule": "Achieves at least one of the national on-the-ground quantitative measures",
+      "kind": "project"
+    },
+    {
+      "rule": "No construction, land acquisition or easements, or payments made directly to private landowners",
+      "kind": "project"
+    },
+    {
+      "rule": "Registered in SAM.gov before applying",
+      "kind": "legal"
+    }
+  ],
+  "documents": [
+    "Project narrative of up to 5 pages",
+    "Detailed budget with Federal funding and match in each category",
+    "Letter of support from the Tribe, for Tribal organisations",
+    "FS 1500-34 equipment justification, if buying equipment with Federal funds"
+  ],
+  "effort": {
+    "steps": [
+      "Application by email to the national LSR inbox",
+      "Eligibility screening",
+      "Scoring and ranking by the national review panel",
+      "Risk review, with a financial capability questionnaire"
+    ],
+    "due": [
+      "2027-01-26",
+      null,
+      null,
+      null
+    ]
+  },
+  "co_finance": {
+    "min_share": 50
+  },
+  "after_award": {
+    "reports": "yearly"
+  },
   "calls": [
     {
       "id": "fy2026",
@@ -22,7 +93,12 @@
       "url": "https://www.grants.gov/search-results-detail/364145",
       "status": "open",
       "opens": null,
-      "deadline": { "date": "2027-01-26", "time": "23:59", "timezone": "America/New_York", "text": "11:59 p.m. Eastern on Tuesday, January 26, 2027" },
+      "deadline": {
+        "date": "2027-01-26",
+        "time": "23:59",
+        "timezone": "America/New_York",
+        "text": "11:59 p.m. Eastern on Tuesday, January 26, 2027"
+      },
       "evidence": {
         "status": {
           "source_url": "https://www.grants.gov/grantsws/rest/opportunity/att/download/355359",
@@ -40,7 +116,12 @@
     }
   ],
   "evidence": {
-    "pool": {"source_url": "https://www.grants.gov/grantsws/rest/opportunity/att/download/355359", "quote": "Up to $1,260,000 in funding will be available for the LSR tribal funding opportunity.", "checked_at": "2026-11-06", "method": "page"},
+    "pool": {
+      "source_url": "https://www.grants.gov/grantsws/rest/opportunity/att/download/355359",
+      "quote": "Up to $1,260,000 in funding will be available for the LSR tribal funding opportunity.",
+      "checked_at": "2026-11-06",
+      "method": "page"
+    },
     "applicant_types": {
       "source_url": "https://www.grants.gov/grantsws/rest/opportunity/att/download/355359",
       "quote": "Tribal organizations as defined in 25 USC 5304 (l) 1: Eligible to apply at the request of a Federally Recognized Tribe (requires a letter of support from the relevant Tribe).",
@@ -76,7 +157,111 @@
       "quote": "Accomplishment reporting in the Landscape Scale Restoration database (LaSR) is due no later than October 28 each year.",
       "checked_at": "2026-11-02",
       "method": "page"
-    }
+    },
+    "eligibility": [
+      {
+        "source_url": "https://www.grants.gov/grantsws/rest/opportunity/att/download/355359",
+        "quote": "Eligible to apply at the request of a Federally Recognized Tribe (requires a letter of support from the relevant Tribe).",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.grants.gov/grantsws/rest/opportunity/att/download/355359",
+        "quote": "Projects that do not meet eligibility, including anywhere the on-the-ground activities take place on urban land (Census places with greater than 50,000 people) or on Federal land.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.grants.gov/grantsws/rest/opportunity/att/download/355359",
+        "quote": "Project furthers priorities in a State Forest Action Plan, or equivalent Restoration Strategy (e.g. Tribal forest management plan).",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.grants.gov/grantsws/rest/opportunity/att/download/355359",
+        "quote": "Each LSR project must directly demonstrate measurable accomplishments for at least one of the on-the-ground quantitative measures listed below",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.grants.gov/grantsws/rest/opportunity/att/download/355359",
+        "quote": "Construction or improvements of building (facilities), and land improvements including but not limited to buildings, roads, culverts, dams, ponds, and major earthwork projects. o Land acquisition projects, including conservation easements or the use of partner purchase of land as match. o Cost-share, reimbursement, and other types of payments provided directly to private landowners.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.grants.gov/grantsws/rest/opportunity/att/download/355359",
+        "quote": "Register in SAM.gov before applying.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "documents": [
+      {
+        "source_url": "https://www.grants.gov/grantsws/rest/opportunity/att/download/355359",
+        "quote": "Project Narrative (5-page limit).",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.grants.gov/grantsws/rest/opportunity/att/download/355359",
+        "quote": "Detailed Budget Table or Spreadsheet in whole numbers, with Federal funding and match amounts in each relevant budget category.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.grants.gov/grantsws/rest/opportunity/att/download/355359",
+        "quote": "Eligible to apply at the request of a Federally Recognized Tribe (requires a letter of support from the relevant Tribe).",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.grants.gov/grantsws/rest/opportunity/att/download/355359",
+        "quote": "For projects using Federal funds to purchase equipment: Fill out, sign, and submit FS 1500-34 Grant Equipment Justification and Certification Statement.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "effort": [
+      {
+        "source_url": "https://www.grants.gov/grantsws/rest/opportunity/att/download/355359",
+        "quote": "Final applications must be emailed to SM.FS.LSR@usda.gov by 11:59 p.m. Eastern, Tuesday January 26, 2027.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.grants.gov/grantsws/rest/opportunity/att/download/355359",
+        "quote": "Applications will undergo a preliminary review to ensure eligibility and verify requirements.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.grants.gov/grantsws/rest/opportunity/att/download/355359",
+        "quote": "The national review panel will review, scope, and rank applications using the Review Criteria stated above and develop a recommended ranked project list.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.grants.gov/grantsws/rest/opportunity/att/download/355359",
+        "quote": "Before any grant is awarded, the applicant will submit a Financial Capability Questionnaire/Checklist FS-1500-22A/B.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "co_finance": {
+      "source_url": "https://www.grants.gov/grantsws/rest/opportunity/att/download/355359",
+      "quote": "Grant recipients must match (cost share) the Federal grant funds 1:1 from non-Federal sources.",
+      "checked_at": "2026-11-20",
+      "method": "page"
+    },
+    "after_award": [
+      {
+        "source_url": "https://www.grants.gov/grantsws/rest/opportunity/att/download/355359",
+        "quote": "Interim financial reports (SF-425) and progress reports are required annually at a minimum for awarded projects.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ]
   },
   "checked_at": "2026-11-02"
 }

@@ -1,0 +1,83 @@
+{
+  "id": "nsw-protecting-our-places",
+  "read_on": "2026-11-20",
+  "prompt_version": "req-2026-11-20.1",
+  "models": ["cursor:gpt-5.6-luna-high"],
+  "complete": false,
+  "reasons": [
+    "9 links could not be ranked without Jev",
+    "https://www.nsw.gov.au/sites/default/files/noindex/2026-06/protecting-our-places-grants-program-guidelines.pdf would not open (robots: robots.txt disallows this page)",
+    "https://www.nsw.gov.au/sites/default/files/noindex/2026-06/protecting-our-places-grants-2026-application-form.docx would not open (robots: robots.txt disallows this page)",
+    "https://www.nsw.gov.au/sites/default/files/noindex/2026-06/protecting-our-places-grants-2026-application-guide.pdf would not open (robots: robots.txt disallows this page)",
+    "https://www.nsw.gov.au/sites/default/files/noindex/2026-06/protecting-our-places-grants-2026-sample-letter-of-support.docx would not open (robots: robots.txt disallows this page)",
+    "https://www.nsw.gov.au/sites/default/files/noindex/2026-06/protecting-our-places-grants-2026-sample-letter-of-endorsement.docx would not open (robots: robots.txt disallows this page)",
+    "the text names a document with rules that was not read: Protecting Our Places Grants Program Guidelines (PDF 7.55MB)",
+    "Jev did not check this reading, so an absent fact is not known to be absent"
+  ],
+  "requirements_checked": false,
+  "documents": [
+    {
+      "ref": "D1",
+      "url": "https://www.nsw.gov.au/grants-and-funding/protecting-our-places-2026",
+      "final_url": "https://www.nsw.gov.au/grants-and-funding/protecting-our-places-2026",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 12999,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:68a8b4ecc966bc162eec3da0bd6b62677d4ef7e41a586325923d4c13d3192932"
+    }
+  ],
+  "failures": [
+    {
+      "url": "https://www.nsw.gov.au/sites/default/files/noindex/2026-06/protecting-our-places-grants-program-guidelines.pdf",
+      "from": "https://www.nsw.gov.au/grants-and-funding/protecting-our-places-2026",
+      "kind": "robots",
+      "message": "robots.txt disallows this page"
+    },
+    {
+      "url": "https://www.nsw.gov.au/sites/default/files/noindex/2026-06/protecting-our-places-grants-2026-application-form.docx",
+      "from": "https://www.nsw.gov.au/grants-and-funding/protecting-our-places-2026",
+      "kind": "robots",
+      "message": "robots.txt disallows this page"
+    },
+    {
+      "url": "https://www.nsw.gov.au/sites/default/files/noindex/2026-06/protecting-our-places-grants-2026-application-guide.pdf",
+      "from": "https://www.nsw.gov.au/grants-and-funding/protecting-our-places-2026",
+      "kind": "robots",
+      "message": "robots.txt disallows this page"
+    },
+    {
+      "url": "https://www.nsw.gov.au/sites/default/files/noindex/2026-06/protecting-our-places-grants-2026-sample-letter-of-support.docx",
+      "from": "https://www.nsw.gov.au/grants-and-funding/protecting-our-places-2026",
+      "kind": "robots",
+      "message": "robots.txt disallows this page"
+    },
+    {
+      "url": "https://www.nsw.gov.au/sites/default/files/noindex/2026-06/protecting-our-places-grants-2026-sample-letter-of-endorsement.docx",
+      "from": "https://www.nsw.gov.au/grants-and-funding/protecting-our-places-2026",
+      "kind": "robots",
+      "message": "robots.txt disallows this page"
+    }
+  ],
+  "skipped_links": 98,
+  "chunks": [{ "id": "all", "docs": ["D1"], "chars": 13080 }],
+  "outcomes": {
+    "eligibility": "stated",
+    "documents": "stated",
+    "effort": "stated",
+    "co_finance": "not_found",
+    "consortium": "not_found",
+    "after_award": "stated"
+  },
+  "written": ["eligibility", "documents", "effort", "after_award"],
+  "escalated": [],
+  "flags": [],
+  "notes": [
+    "effort \"Application form\": the quote does not state 2026-07-31 whole; left undated",
+    "extractor: Stage 2 implementation is not automatic and depends on satisfactory completion of Stage 1 requirements. Stage 1 funding must not be used for on-ground activities."
+  ],
+  "usd": 0
+}

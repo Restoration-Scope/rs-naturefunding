@@ -1,0 +1,68 @@
+{
+  "id": "quebec-cic-wetland-support-program",
+  "read_on": "2026-11-20",
+  "prompt_version": "req-2026-11-20.1",
+  "models": ["cursor:gpt-5.6-luna-high", "cursor:gpt-5.6-sol-high"],
+  "complete": false,
+  "reasons": [
+    "4 links could not be ranked without Jev",
+    "https://cdn.prod.website-files.com/68484b9cd3c465b7c453486d/6aa2b4a22305d4144b4b01f9_Cadre_normatif_AP3_VF.pdf: pages 1, 19 are images: needs OCR",
+    "https://cdn.prod.website-files.com/68484b9cd3c465b7c453486d/6aa2b4a22305d4144b4b01f9_Cadre_normatif_AP3_VF.pdf: a document on another site: without Jev it can’t be confirmed as the funder’s, so it is not used",
+    "the text names a document with rules that was not read: Cadre normatif",
+    "Jev did not check this reading, so an absent fact is not known to be absent",
+    "strong reading: the text names a document with rules that was not read: Cadre normatif"
+  ],
+  "requirements_checked": false,
+  "documents": [
+    {
+      "ref": "D1",
+      "url": "https://www.mobilisationcanards.ca/accompagnement-et-financement",
+      "final_url": "https://www.mobilisationcanards.ca/accompagnement-et-financement",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 7328,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:8d758f053b004001ebb409300c03d9e59294daf9b006fdd4d2bd3ef1ecedaf6c"
+    }
+  ],
+  "failures": [
+    {
+      "url": "https://cdn.prod.website-files.com/68484b9cd3c465b7c453486d/6aa2b4a22305d4144b4b01f9_Cadre_normatif_AP3_VF.pdf",
+      "from": "https://www.mobilisationcanards.ca/accompagnement-et-financement",
+      "kind": "low_text",
+      "message": "pages 1, 19 are images: needs OCR"
+    },
+    {
+      "url": "https://cdn.prod.website-files.com/68484b9cd3c465b7c453486d/6aa2b4a22305d4144b4b01f9_Cadre_normatif_AP3_VF.pdf",
+      "from": "https://www.mobilisationcanards.ca/accompagnement-et-financement",
+      "kind": "offsite",
+      "message": "a document on another site: without Jev it can’t be confirmed as the funder’s, so it is not used"
+    }
+  ],
+  "skipped_links": 38,
+  "chunks": [{ "id": "all", "docs": ["D1"], "chars": 7405 }],
+  "outcomes": {
+    "eligibility": "partial",
+    "documents": "not_found",
+    "effort": "stated",
+    "co_finance": "not_found",
+    "consortium": "not_found",
+    "after_award": "not_found"
+  },
+  "written": ["eligibility", "effort"],
+  "escalated": ["eligibility"],
+  "flags": [
+    {
+      "field": "eligibility",
+      "item": "Have a site owner's agreement for project-related activities",
+      "why": "the quote is not on any gathered document"
+    }
+  ],
+  "notes": [
+    "strong: D1 says applicants answering yes to its questions may be eligible; the normative framework containing full programme details was not provided."
+  ],
+  "usd": 0
+}

@@ -1,0 +1,60 @@
+{
+  "id": "stun-mv-projektfoerderung",
+  "read_on": "2026-11-20",
+  "prompt_version": "req-2026-11-20.1",
+  "models": ["cursor:gpt-5.6-luna-high"],
+  "complete": false,
+  "reasons": [
+    "15 links could not be ranked without Jev",
+    "the text names a document with rules that was not read: Naturschutzausführungsgesetz MV, § 37 Abs. 3, Punkte 4 bis 6",
+    "Jev did not check this reading, so an absent fact is not known to be absent"
+  ],
+  "requirements_checked": false,
+  "documents": [
+    {
+      "ref": "D1",
+      "url": "https://www.stun-mv.de/foerderrichtlinie/",
+      "final_url": "https://www.stun-mv.de/foerderrichtlinie/",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 6556,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:fd7e780eefa5287192d97fcfd7012b5f512fb6ec7264f6a981671e0084a5ce7d"
+    },
+    {
+      "ref": "D2",
+      "url": "https://www.stun-mv.de/wp-content/uploads/2024/01/Foerderrichtlinie.pdf",
+      "final_url": "https://www.stun-mv.de/wp-content/uploads/2024/01/Foerderrichtlinie.pdf",
+      "from": "https://www.stun-mv.de/foerderrichtlinie/",
+      "anchor": "PDF-Download Förderrichtlinie",
+      "depth": 1,
+      "pdf": true,
+      "chars": 5871,
+      "pages": 3,
+      "low_text": false,
+      "hash": "sha256:13b19068a498aca9f65f3c12c3076c4b64ec5c4de10230e6a9b87faacc24a22f"
+    }
+  ],
+  "failures": [],
+  "skipped_links": 29,
+  "chunks": [{ "id": "all", "docs": ["D1", "D2"], "chars": 12627 }],
+  "outcomes": {
+    "eligibility": "stated",
+    "documents": "not_found",
+    "effort": "stated",
+    "co_finance": "stated",
+    "consortium": "not_found",
+    "after_award": "stated"
+  },
+  "written": ["eligibility", "effort", "co_finance", "after_award"],
+  "escalated": [],
+  "flags": [],
+  "notes": [
+    "extractor: Recipients must acknowledge Stiftung funding in publications about funded projects; further publicity measures are decided case by case.",
+    "source stun-mv-projektfoerderung-2: added for https://www.stun-mv.de/wp-content/uploads/2024/01/Foerderrichtlinie.pdf"
+  ],
+  "usd": 0
+}

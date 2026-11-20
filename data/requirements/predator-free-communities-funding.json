@@ -1,0 +1,110 @@
+{
+  "id": "predator-free-communities-funding",
+  "read_on": "2026-11-20",
+  "prompt_version": "req-2026-11-20.1",
+  "models": ["cursor:gpt-5.6-luna-high"],
+  "complete": false,
+  "reasons": [
+    "24 links could not be ranked without Jev",
+    "25 links could not be ranked without Jev",
+    "the crawl bound left https://shop.predatorfreenz.org/products/practical-guide-to-trapping-incl-shipping unread",
+    "the crawl bound left https://www.doc.govt.nz/globalassets/documents/conservation/threats-and-impacts/pf2050/trapping-guide-pf2050.pdf unread",
+    "the crawl bound left https://predatorfreenz.org/stories/stoat-rat-checklist/ unread",
+    "the text names a document with rules that was not read: National Animal Welfare Advisory Committee (NAWAC) testing guidelines (PDF)",
+    "the text names a document with rules that was not read: Online application form",
+    "Jev did not check this reading, so an absent fact is not known to be absent"
+  ],
+  "requirements_checked": false,
+  "documents": [
+    {
+      "ref": "D1",
+      "url": "https://predatorfreenz.org/about-us/predator-free-new-zealand-trust/predator-free-communities-funding/",
+      "final_url": "https://predatorfreenz.org/about-us/predator-free-new-zealand-trust/predator-free-communities-funding/",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 8593,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:f38d70e99f7c9180d166eb03a9cbd2b5793560518d42a27fcca63dfa9485f513"
+    },
+    {
+      "ref": "D2",
+      "url": "https://predatorfreenz.org/toolkits/schools-toolkit/predator-control-guide-for-schools/",
+      "final_url": "https://predatorfreenz.org/toolkits/schools-toolkit/predator-control-guide-for-schools/",
+      "from": "https://predatorfreenz.org/about-us/predator-free-new-zealand-trust/predator-free-communities-funding/",
+      "anchor": "Predator control guide for schools",
+      "depth": 1,
+      "pdf": false,
+      "chars": 9249,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:ace39547cef9676a5ff5f246a75d875569d153b21e3d85ae2af94905774ca5c5"
+    },
+    {
+      "ref": "D3",
+      "url": "https://predatorfreenz.org/wp-content/uploads/2025/03/PFNZ-Communities-Funding-application-questions.pdf",
+      "final_url": "https://predatorfreenz.org/wp-content/uploads/2025/03/PFNZ-Communities-Funding-application-questions.pdf",
+      "from": "https://predatorfreenz.org/about-us/predator-free-new-zealand-trust/predator-free-communities-funding/",
+      "anchor": "preview (PDF, 187 KB)",
+      "depth": 1,
+      "pdf": true,
+      "chars": 1727,
+      "pages": 2,
+      "low_text": false,
+      "hash": "sha256:c594a445fe4de7a5cf85b8627ac1540d49ccb79e28701a8634ec020a8ce51e99"
+    },
+    {
+      "ref": "D4",
+      "url": "https://predatorfreenz.org/stories/things-you-should-know/getting-your-hands-dirty-with-a-practical-guide-to-trapping/",
+      "final_url": "https://predatorfreenz.org/stories/things-you-should-know/getting-your-hands-dirty-with-a-practical-guide-to-trapping/",
+      "from": "https://predatorfreenz.org/toolkits/schools-toolkit/predator-control-guide-for-schools/",
+      "anchor": "Getting your hands dirty with a practical guide to trapping",
+      "depth": 2,
+      "pdf": false,
+      "chars": 5669,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:194c8f090ee20b91ddf7a6b1a6d8d9329fd369b206cc84adf2d5505f3e5d79f1"
+    }
+  ],
+  "failures": [
+    {
+      "url": "https://shop.predatorfreenz.org/products/practical-guide-to-trapping-incl-shipping",
+      "from": "https://predatorfreenz.org/stories/things-you-should-know/getting-your-hands-dirty-with-a-practical-guide-to-trapping/",
+      "kind": "bound",
+      "message": "past the crawl depth of 2"
+    },
+    {
+      "url": "https://www.doc.govt.nz/globalassets/documents/conservation/threats-and-impacts/pf2050/trapping-guide-pf2050.pdf",
+      "from": "https://predatorfreenz.org/stories/things-you-should-know/getting-your-hands-dirty-with-a-practical-guide-to-trapping/",
+      "kind": "bound",
+      "message": "past the crawl depth of 2"
+    },
+    {
+      "url": "https://predatorfreenz.org/stories/stoat-rat-checklist/",
+      "from": "https://predatorfreenz.org/stories/things-you-should-know/getting-your-hands-dirty-with-a-practical-guide-to-trapping/",
+      "kind": "bound",
+      "message": "past the crawl depth of 2"
+    }
+  ],
+  "skipped_links": 310,
+  "chunks": [{ "id": "all", "docs": ["D1", "D2", "D3", "D4"], "chars": 26043 }],
+  "outcomes": {
+    "eligibility": "stated",
+    "documents": "not_found",
+    "effort": "stated",
+    "co_finance": "not_found",
+    "consortium": "not_found",
+    "after_award": "stated"
+  },
+  "written": ["eligibility", "effort", "after_award"],
+  "escalated": [],
+  "flags": [],
+  "notes": [
+    "extractor: Funding is currently closed. Funding rounds are generally in March/April and July/August. D3 is an application example and is subject to change; it is not the funding application form.",
+    "source predator-free-communities-funding-2: added for https://predatorfreenz.org/wp-content/uploads/2025/03/PFNZ-Communities-Funding-application-questions.pdf"
+  ],
+  "usd": 0
+}

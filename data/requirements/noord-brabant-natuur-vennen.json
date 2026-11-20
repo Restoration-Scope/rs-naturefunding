@@ -1,0 +1,111 @@
+{
+  "id": "noord-brabant-natuur-vennen",
+  "read_on": "2026-11-20",
+  "prompt_version": "req-2026-11-20.1",
+  "models": ["cursor:gpt-5.6-luna-high"],
+  "complete": false,
+  "reasons": [
+    "4 links could not be ranked without Jev",
+    "https://repository.officiele-overheidspublicaties.nl/externebijlagen/exb-2019-8522/1/bijlage/exb-2019-8522.pdf: page 1 is an image: needs OCR",
+    "https://repository.officiele-overheidspublicaties.nl/externebijlagen/exb-2019-8522/1/bijlage/exb-2019-8522.pdf: a document on another site: without Jev it can’t be confirmed as the funder’s, so it is not used",
+    "the text names a document with rules that was not read: Bijlage 7: Maatregelenkaart voor biodiversiteit en leefgebieden Noord-Brabant",
+    "the text names a document with rules that was not read: Bijlage 8: Toelichting Maatregelenkaart voor biodiversiteit en leefgebieden in Noord-Brabant",
+    "the text names a document with rules that was not read: Bijlage 9 bij de Subsidieregeling natuur Noord-Brabant",
+    "the text names a document with rules that was not read: Algemene subsidieverordening Noord-Brabant",
+    "the text names a document with rules that was not read: Regeling algemene subsidienormen Noord-Brabant",
+    "the text names a document with rules that was not read: Bijlage 1 (prioritaire soorten)",
+    "the text names a document with rules that was not read: Maatregelenkaart (bijlage 7)",
+    "the text names a document with rules that was not read: Toelichting Maatregelenkaart (bijlage 8)",
+    "the text names a document with rules that was not read: Algemene subsidieverordening Noord-Brabant (Asv)",
+    "the text names a document with rules that was not read: Maatregelenkaart voor biodiversiteit en leefgebieden Noord-Brabant (bijlage 7)",
+    "the text names a document with rules that was not read: Toelichting Maatregelenkaart voor biodiversiteit en leefgebieden in Noord-Brabant (bijlage 8)",
+    "the text names a document with rules that was not read: Bijlage 9 behorende bij artikel 1.6 van de Subsidieregeling natuur Noord-Brabant",
+    "Jev did not check this reading, so an absent fact is not known to be absent"
+  ],
+  "requirements_checked": false,
+  "documents": [
+    {
+      "ref": "D1",
+      "url": "https://lokaleregelgeving.overheid.nl/CVDR601479",
+      "final_url": "https://lokaleregelgeving.overheid.nl/CVDR601479",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 287330,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:83d59645a83a41c34b9605aa0686d503dc33227b435a45ab413238f3e135e99a"
+    },
+    {
+      "ref": "D2",
+      "url": "https://lokaleregelgeving.overheid.nl/CVDR601479?",
+      "final_url": "https://lokaleregelgeving.overheid.nl/CVDR601479?",
+      "from": "https://lokaleregelgeving.overheid.nl/CVDR601479",
+      "anchor": "Regeling tekst",
+      "depth": 1,
+      "pdf": false,
+      "chars": 287330,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:83d59645a83a41c34b9605aa0686d503dc33227b435a45ab413238f3e135e99a"
+    }
+  ],
+  "failures": [
+    {
+      "url": "https://repository.officiele-overheidspublicaties.nl/externebijlagen/exb-2019-8522/1/bijlage/exb-2019-8522.pdf",
+      "from": "https://lokaleregelgeving.overheid.nl/CVDR601479",
+      "kind": "low_text",
+      "message": "page 1 is an image: needs OCR"
+    },
+    {
+      "url": "https://repository.officiele-overheidspublicaties.nl/externebijlagen/exb-2019-8522/1/bijlage/exb-2019-8522.pdf",
+      "from": "https://lokaleregelgeving.overheid.nl/CVDR601479",
+      "kind": "offsite",
+      "message": "a document on another site: without Jev it can’t be confirmed as the funder’s, so it is not used"
+    }
+  ],
+  "skipped_links": 178,
+  "chunks": [
+    { "id": "c1", "docs": ["D1"], "chars": 40016 },
+    { "id": "c2", "docs": ["D1"], "chars": 39917 },
+    { "id": "c3", "docs": ["D1"], "chars": 37017 },
+    { "id": "c4", "docs": ["D1"], "chars": 40040 },
+    { "id": "c5", "docs": ["D1"], "chars": 40073 },
+    { "id": "c6", "docs": ["D1"], "chars": 40073 },
+    { "id": "c7", "docs": ["D1"], "chars": 40002 },
+    { "id": "c8", "docs": ["D1"], "chars": 21276 },
+    { "id": "c9", "docs": ["D2"], "chars": 40078 },
+    { "id": "c10", "docs": ["D2"], "chars": 39979 },
+    { "id": "c11", "docs": ["D2"], "chars": 37079 },
+    { "id": "c12", "docs": ["D2"], "chars": 40102 },
+    { "id": "c13", "docs": ["D2"], "chars": 40135 },
+    { "id": "c14", "docs": ["D2"], "chars": 40135 },
+    { "id": "c15", "docs": ["D2"], "chars": 40064 },
+    { "id": "c16", "docs": ["D2"], "chars": 21338 }
+  ],
+  "outcomes": {
+    "eligibility": "stated",
+    "documents": "stated",
+    "effort": "unresolved",
+    "co_finance": "stated",
+    "consortium": "stated",
+    "after_award": "unresolved"
+  },
+  "written": ["eligibility", "documents", "co_finance", "consortium"],
+  "escalated": [],
+  "flags": [
+    { "field": "after_award", "item": "required", "why": "parts of the text disagree" },
+    {
+      "field": "effort",
+      "item": "steps",
+      "why": "the steps come from different parts of the text; check they are one list in order"
+    }
+  ],
+  "notes": [
+    "eligibility: 18 rules past the 8th dropped",
+    "extractor: D1 is the version valid from 2026-02-10, while section 1 lists the latest application period as 2025-03-03 to 2025-12-15. The regulation states that the subsidy is 100% of eligible costs but does not expressly state whether matching funds are required. | The stated evidence requirements apply to subsidies of € 125.000 and higher. This part does not state the programme's applicant eligibility or first-step application requirements. | Execution projects under section 9 receive 90% of eligible costs; research projects under section 11 receive 100%. Section 10 concerns forest revitalisation and is outside this programme. | The excerpt also requires administration of activity-related expenses and income and a declaration of actual costs and revenues at final settlement. | This part does not state programme-specific rules for Herstel en behoud vennen; it covers other sections of the regulation. | This part lists species and habitats; it states no applicant requirements, documents, applicatio",
+    "the flagged text is too long for one escalation"
+  ],
+  "usd": 0
+}

@@ -12,14 +12,65 @@
   "parent": null,
   "url": "https://www.musashinobank.co.jp/sustainability/environment/biodiversity/midori.html",
   "summary": "Public-interest trust grants for individuals and groups carrying out natural environment conservation and creation activities in Saitama Prefecture, Japan. Applications are taken in a set autumn window.",
-  "approaches": ["species_conservation", "community_conservation"],
-  "applicant_types": ["individual", "community_group", "ngo"],
-  "geography": { "scope": "countries", "countries": ["JP"], "label": "Saitama Prefecture" },
+  "approaches": [
+    "species_conservation",
+    "community_conservation"
+  ],
+  "applicant_types": [
+    "individual",
+    "community_group",
+    "ngo"
+  ],
+  "geography": {
+    "scope": "countries",
+    "countries": [
+      "JP"
+    ],
+    "label": "Saitama Prefecture"
+  },
   "access": "direct",
   "window": "fixed",
-  "amount": { "currency": "JPY", "max": 500000, "note": "Up to two-thirds of the amount needed" },
+  "amount": {
+    "currency": "JPY",
+    "max": 500000,
+    "note": "Up to two-thirds of the amount needed"
+  },
   "co_finance_required": true,
   "reporting": "A grant-use report, with receipts attached, is due to the trustee by the set deadline.",
+  "effort": {
+    "steps": [
+      "Application submission",
+      "Committee review"
+    ]
+  },
+  "eligibility": [
+    {
+      "rule": "Not-for-profit organisation, group or individual in Saitama Prefecture",
+      "kind": "legal"
+    },
+    {
+      "rule": "Is substantively involved in the activity",
+      "kind": "capacity"
+    },
+    {
+      "rule": "Runs the activity during the grant period",
+      "kind": "project"
+    },
+    {
+      "rule": "Not mere gardening or non-native planting, and no publications sold for a fee",
+      "kind": "project"
+    },
+    {
+      "rule": "Not funded by this trust in each of the last 3 years (as a rule)",
+      "kind": "other"
+    }
+  ],
+  "after_award": {
+    "reports": "unspecified"
+  },
+  "documents": [
+    "Quotation for purchases or deliverables costing ¥30,000 or more"
+  ],
   "calls": [
     {
       "id": "fy2027",
@@ -27,7 +78,11 @@
       "url": "https://www.musashinobank.co.jp/sustainability/environment/biodiversity/midori.html",
       "status": "open",
       "opens": "2026-10-01",
-      "deadline": { "date": "2026-12-11", "timezone": "Asia/Tokyo", "text": "2026年12月11日(金)" },
+      "deadline": {
+        "date": "2026-12-11",
+        "timezone": "Asia/Tokyo",
+        "text": "2026年12月11日(金)"
+      },
       "evidence": {
         "status": {
           "source_url": "https://www.musashinobank.co.jp/sustainability/environment/biodiversity/midori.html",
@@ -89,7 +144,7 @@
     },
     "co_finance_required": {
       "source_url": "https://www.musashinobank.co.jp/sustainability/environment/biodiversity/pdf/youkou.pdf",
-      "quote": "必要とする金額の 3 分の 2 以内、50 万円を上限とします",
+      "quote": "必要とする金額の 3 分の 2 以内、50 万円を上限とします(1 万円単位)",
       "checked_at": "2026-11-20",
       "method": "page"
     },
@@ -98,7 +153,78 @@
       "quote": "期限までに受託者(三菱UFJ信託銀行)宛てご提 出ください。報告書には領収書の添付が必要となります。",
       "checked_at": "2026-11-20",
       "method": "page"
+    },
+    "effort": [
+      {
+        "source_url": "https://www.musashinobank.co.jp/sustainability/environment/biodiversity/midori.html",
+        "quote": "2027年度助成金給付の募集について [申請受付期間] 2026年10月1日(木)~2026年12月11日(金)",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.musashinobank.co.jp/sustainability/environment/biodiversity/pdf/youkou.pdf",
+        "quote": "学識経験者等からなる運営委員会で審査を 行い",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "eligibility": [
+      {
+        "source_url": "https://www.musashinobank.co.jp/sustainability/environment/biodiversity/pdf/youkou.pdf",
+        "quote": "埼玉県内の営利を目的としない法人・団体もしくは個人",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.musashinobank.co.jp/sustainability/environment/biodiversity/pdf/youkou.pdf",
+        "quote": "応募者は主体的に活動に関わる必要があります",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.musashinobank.co.jp/sustainability/environment/biodiversity/pdf/youkou.pdf",
+        "quote": "上記の期間中に実施する事業を助成の対象とします。",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.musashinobank.co.jp/sustainability/environment/biodiversity/faq-midori.html",
+        "quote": "単なる園芸、外来種等の植生や、有償の冊子等の発行も対象外となります。",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.musashinobank.co.jp/sustainability/environment/biodiversity/faq-midori.html",
+        "quote": "原則として連続して3年間助成を受けた団体等は申請できません。",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "after_award": [
+      {
+        "source_url": "https://www.musashinobank.co.jp/sustainability/environment/biodiversity/pdf/youkou.pdf",
+        "quote": "助成先は助成目的に沿った活動を行い、活動結果を受託者に報告します。",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "documents": [
+      {
+        "source_url": "https://www.musashinobank.co.jp/sustainability/environment/biodiversity/pdf/youkou.pdf",
+        "quote": "給付金で 3 万円以上の物品購入や成果物作成等を希望する場合、見積書 の添付が必要です。",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "co_finance": {
+      "source_url": "https://www.musashinobank.co.jp/sustainability/environment/biodiversity/faq-midori.html",
+      "quote": "申請できる金額は、必要とする金額の3分の2以内で、上限は50万円です。",
+      "checked_at": "2026-11-20",
+      "method": "page"
     }
   },
-  "checked_at": "2026-11-20"
+  "checked_at": "2026-11-20",
+  "co_finance": {
+    "min_share": 33.3
+  }
 }

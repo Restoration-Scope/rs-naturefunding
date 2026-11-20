@@ -1,19 +1,68 @@
 {
   "id": "oregon-dsl-submerged-lands-enhancement-fund",
   "name": "Oregon DSL Submerged Lands Enhancement Fund",
-  "funder": { "name": "Oregon Department of State Lands", "url": "https://www.oregon.gov/dsl" },
+  "funder": {
+    "name": "Oregon Department of State Lands",
+    "url": "https://www.oregon.gov/dsl"
+  },
   "administered_by": null,
   "parent": null,
   "url": "https://www.oregon.gov/dsl/waterways/Pages/SLEF.aspx",
   "summary": "Biennial grants for projects that restore, enhance or protect the beds and banks of Oregon-owned waterways, including fish and wildlife habitat, water quality and removal of derelict structures and marine debris. Nonprofits, watershed councils, Tribes and public bodies can apply, with a 25% match.",
-  "approaches": ["freshwater", "species_conservation"],
-  "applicant_types": ["ngo", "government", "indigenous_organization"],
-  "geography": { "scope": "countries", "countries": ["US"], "label": "Oregon" },
+  "approaches": [
+    "freshwater",
+    "species_conservation"
+  ],
+  "applicant_types": [
+    "ngo",
+    "government",
+    "indigenous_organization"
+  ],
+  "geography": {
+    "scope": "countries",
+    "countries": [
+      "US"
+    ],
+    "label": "Oregon"
+  },
   "access": "direct",
   "window": "fixed",
   "amount": null,
   "co_finance_required": true,
   "reporting": null,
+  "effort": {
+    "steps": [
+      "Grant application"
+    ],
+    "due": [
+      "2026-04-30"
+    ]
+  },
+  "eligibility": [
+    {
+      "rule": "Not a federal agency",
+      "kind": "legal"
+    },
+    {
+      "rule": "Project is not associated with compensatory mitigation requirements",
+      "kind": "project"
+    }
+  ],
+  "co_finance": {
+    "min_share": 25,
+    "in_kind": true,
+    "applies_to": "projects not initiated by DSL"
+  },
+  "documents": [
+    "Street or highway location map with road directions",
+    "Assessor map containing the riparian uplands",
+    "Scaled drawing of existing and proposed structures and activity",
+    "Legal description and delineation of the work area",
+    "Project schedule",
+    "Itemized project budget",
+    "Work Plan or Operation & Maintenance Plans, if prepared",
+    "Confirmation of contributing match"
+  ],
   "calls": [
     {
       "id": "2025-27",
@@ -63,7 +112,55 @@
       "quote": "A 25% funding match is required for all projects not initiated by DSL (in-kind or cash).",
       "checked_at": "2026-11-20",
       "method": "page"
-    }
+    },
+    "effort": [
+      {
+        "source_url": "https://www.oregon.gov/dsl/waterways/Documents/SLEF_Grant_Application.pdf",
+        "quote": "2025-27 Grant Cycle Deadline: April 30, 2026",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "eligibility": [
+      {
+        "source_url": "https://www.oregon.gov/dsl/waterways/Pages/SLEF.aspx",
+        "quote": "Federal agencies are not eligible to receive funds.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.oregon.gov/dsl/waterways/Pages/SLEF.aspx",
+        "quote": "Projects associated with compensatory mitigation requirements are not eligible for funding.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "co_finance": {
+      "source_url": "https://www.oregon.gov/dsl/waterways/Pages/SLEF.aspx",
+      "quote": "A 25% funding match is required for all projects not initiated by DSL (in-kind or cash).",
+      "checked_at": "2026-11-20",
+      "method": "page"
+    },
+    "documents": [
+      {
+        "source_url": "https://www.oregon.gov/dsl/waterways/Documents/SLEF_Grant_Application.pdf",
+        "quote": "A street or highway location map with road directions to the site from the nearest main highway or road. Assessor map that contains the riparian uplands. Do not mark on this map. A separate drawing to a scale of 1 inch = 100 feet of all existing and proposed structures and activity.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.oregon.gov/dsl/waterways/Documents/SLEF_Grant_Application.pdf",
+        "quote": "A legal description of the work area with an accurate delineation of the area relative to the tax lot boundaries of the upland parcel. (The Department may require a survey for this purpose). e) Project schedule including beginning and completion. f) Itemized Project Budget, including use of requested funds and contributing match funds.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.oregon.gov/dsl/waterways/Documents/SLEF_Grant_Application.pdf",
+        "quote": "All Work Plan or Operation & Maintenance Plans that have been prepared for the proposed activities. h) Confirmation of contributing match.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ]
   },
   "checked_at": "2026-11-20"
 }

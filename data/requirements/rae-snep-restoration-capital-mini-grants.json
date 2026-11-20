@@ -1,0 +1,144 @@
+{
+  "id": "rae-snep-restoration-capital-mini-grants",
+  "read_on": "2026-11-20",
+  "prompt_version": "req-2026-11-20.1",
+  "models": ["cursor:gpt-5.6-luna-high"],
+  "complete": false,
+  "reasons": [
+    "14 links could not be ranked without Jev",
+    "16 links could not be ranked without Jev",
+    "the text names a document with rules that was not read: RAE Property Management Guide",
+    "the text names a document with rules that was not read: EPA Procurement guide",
+    "Jev did not check this reading, so an absent fact is not known to be absent"
+  ],
+  "requirements_checked": false,
+  "documents": [
+    {
+      "ref": "D1",
+      "url": "https://estuaries.org/2026-snep-mini-grants/",
+      "final_url": "https://estuaries.org/2026-snep-mini-grants/",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 12934,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:c43db02fc1efa64ee75bc53ae590149fd339b7447deedb80bf52250217bebb27"
+    },
+    {
+      "ref": "D2",
+      "url": "https://estuaries.org/2026-snep-mini-grants/2026-snep-minig-rfp-fin/",
+      "final_url": "https://estuaries.org/wp-content/uploads/2026/08/2026-SNEP-MiniG-RFP-fin.pdf",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": true,
+      "chars": 7548,
+      "pages": 4,
+      "low_text": false,
+      "hash": "sha256:6dc2d12f2779e8452442051656e2731680ed9f2c484169eea884ab0950d7f99f"
+    },
+    {
+      "ref": "D3",
+      "url": "https://estuaries.org/impact-of-the-rae-alliance/",
+      "final_url": "https://estuaries.org/impact-of-the-rae-alliance/",
+      "from": "https://estuaries.org/2026-snep-mini-grants/",
+      "anchor": "See Our Impact See how the RAE Alliance is creating real-world impact from funding & policy to caring for all coastal communities.",
+      "depth": 1,
+      "pdf": false,
+      "chars": 14853,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:8f063b23d27c597e1c184c500ccef7353cda97650d46aecd21328154e736cd5a"
+    },
+    {
+      "ref": "D4",
+      "url": "https://estuaries.org/affiliate-membership/",
+      "final_url": "https://estuaries.org/affiliate-membership/",
+      "from": "https://estuaries.org/2026-snep-mini-grants/",
+      "anchor": "Affiliate Membership Join our list of Affiliate Members. Apply today to become a member of the RAE family.",
+      "depth": 1,
+      "pdf": false,
+      "chars": 13902,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:e58df970f2360efd6fa981045a14610289a0da70dcb03bbb47622e527e6b864a"
+    },
+    {
+      "ref": "D5",
+      "url": "https://estuaries.org/swig26-grant-application/",
+      "final_url": "https://estuaries.org/swig26-grant-application/",
+      "from": "https://estuaries.org/2026-snep-mini-grants/",
+      "anchor": "SWIG26 Full Proposal Applicants Click Here",
+      "depth": 1,
+      "pdf": false,
+      "chars": 13244,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:d38a1f3486c2ab6476300af7b75252c117b588551e143ac7368fefc0e4147f52"
+    },
+    {
+      "ref": "D6",
+      "url": "https://estuaries.org/wp-content/uploads/2026/05/0-SWIG26-RFP-ext-4may26.pdf",
+      "final_url": "https://estuaries.org/wp-content/uploads/2026/05/0-SWIG26-RFP-ext-4may26.pdf",
+      "from": "https://estuaries.org/swig26-grant-application/",
+      "anchor": "SWIG26 Request for Proposals",
+      "depth": 2,
+      "pdf": true,
+      "chars": 40727,
+      "pages": 18,
+      "low_text": false,
+      "hash": "sha256:ba8b3f9878414f92a2fde7ed7313e9ae66579fb1195eef9c9130ddffb46df799"
+    },
+    {
+      "ref": "D7",
+      "url": "https://estuaries.org/home/6-swig26-metrix/",
+      "final_url": "https://estuaries.org/wp-content/uploads/2026/04/6-SWIG26-metrix.docx",
+      "from": "https://estuaries.org/swig26-grant-application/",
+      "anchor": "SWIG26 Metrics Checklist",
+      "depth": 2,
+      "pdf": false,
+      "chars": 6217,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:756acd24dae5e3aefd9141f3974163899e8156721d9de5bcdb8e1de858055118"
+    },
+    {
+      "ref": "D8",
+      "url": "https://estuaries.org/wp-content/uploads/2026/02/3-SWIG26-budget-guide-rev.pdf",
+      "final_url": "https://estuaries.org/wp-content/uploads/2026/02/3-SWIG26-budget-guide-rev.pdf",
+      "from": "https://estuaries.org/swig26-grant-application/",
+      "anchor": "SWIG26 Budget Guidance",
+      "depth": 2,
+      "pdf": true,
+      "chars": 13265,
+      "pages": 5,
+      "low_text": false,
+      "hash": "sha256:e63e0c1f3ed488fac94be851c07f5bad5ff5207278d2e63c912661389180b163"
+    }
+  ],
+  "failures": [],
+  "skipped_links": 597,
+  "chunks": [
+    { "id": "all", "docs": ["D1", "D2", "D3", "D4", "D5", "D6", "D7", "D8"], "chars": 123625 }
+  ],
+  "outcomes": {
+    "eligibility": "stated",
+    "documents": "not_found",
+    "effort": "stated",
+    "co_finance": "unresolved",
+    "consortium": "not_found",
+    "after_award": "stated"
+  },
+  "written": ["eligibility", "effort", "after_award"],
+  "escalated": [],
+  "flags": [],
+  "notes": [
+    "co_finance: share 24.81% dropped, its quote does not state it",
+    "extractor: D5-D8 describe SWIG26 Watershed Implementation Grants, a separate programme, and were not used for this mini-grant extraction.",
+    "co_finance: not written, the file quotes \"Non-federal matching funds equivalent to 33% of the award amount is required. Ma\", this reading does not; the file gives co_finance.min_share 24.8, this reading does not",
+    "source rae-snep-restoration-capital-mini-grants-2: selector main dropped, a new quote sits outside it"
+  ],
+  "usd": 0
+}

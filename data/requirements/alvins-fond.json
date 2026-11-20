@@ -1,11 +1,11 @@
 {
   "id": "alvins-fond",
-  "read_on": "2026-11-19",
-  "prompt_version": "req-2026-11-18.1",
-  "models": ["gpt-5.6-luna", "jev-latest"],
+  "read_on": "2026-11-20",
+  "prompt_version": "req-2026-11-20.1",
+  "models": ["cursor:gpt-5.6-luna-high"],
   "complete": false,
   "reasons": [
-    "https://alvinsfond.se/ would not open (network: The socket connection was closed unexpectedly. For more information, pass `verbose: true` in the second argument to fetch())",
+    "https://alvinsfond.se/ would not open (network: ECONNRESET: The socket connection was closed unexpectedly. For more information, pass `verbose: true` in the second argument to fetch())",
     "no page opened"
   ],
   "requirements_checked": false,
@@ -15,7 +15,7 @@
       "url": "https://alvinsfond.se/",
       "from": null,
       "kind": "network",
-      "message": "The socket connection was closed unexpectedly. For more information, pass `verbose: true` in the second argument to fetch()"
+      "message": "ECONNRESET: The socket connection was closed unexpectedly. For more information, pass `verbose: true` in the second argument to fetch()"
     }
   ],
   "skipped_links": 0,

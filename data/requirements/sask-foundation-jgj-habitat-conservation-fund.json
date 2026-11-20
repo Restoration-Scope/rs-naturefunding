@@ -1,0 +1,94 @@
+{
+  "id": "sask-foundation-jgj-habitat-conservation-fund",
+  "read_on": "2026-11-20",
+  "prompt_version": "req-2026-11-20.1",
+  "models": ["cursor:gpt-5.6-luna-high", "cursor:gpt-5.6-sol-high"],
+  "complete": false,
+  "reasons": [
+    "11 links could not be ranked without Jev",
+    "6 links could not be ranked without Jev",
+    "https://saskfoundation.ca/wp-content/uploads/2023/08/GLM-Collaborator-Feature-08.16.2023.pdf would not open (http: HTTP 404)",
+    "the text names a document with rules that was not read: Final Grant Report Form",
+    "Jev did not check this reading, so an absent fact is not known to be absent"
+  ],
+  "requirements_checked": false,
+  "documents": [
+    {
+      "ref": "D1",
+      "url": "https://saskfoundation.ca/grant/jgj-habitat-conservation-fund/",
+      "final_url": "https://saskfoundation.ca/grant/jgj-habitat-conservation-fund/",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 12287,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:496461ddbc02629fb0b853cf2778547ae5f46f07287d529d70450302ee2caed1"
+    },
+    {
+      "ref": "D2",
+      "url": "https://saskfoundation.ca/donor-service-policy/",
+      "final_url": "https://saskfoundation.ca/donor-service-policy/",
+      "from": "https://saskfoundation.ca/grant/jgj-habitat-conservation-fund/",
+      "anchor": "Donor Service Policy",
+      "depth": 1,
+      "pdf": false,
+      "chars": 11889,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:32065cf4c067bc432bcac088d569bab05ca13777b1c389c42087573084e32a23"
+    },
+    {
+      "ref": "D3",
+      "url": "https://saskfoundation.ca/privacy-policy/",
+      "final_url": "https://saskfoundation.ca/privacy-policy/",
+      "from": "https://saskfoundation.ca/grant/jgj-habitat-conservation-fund/",
+      "anchor": "Privacy Policy",
+      "depth": 1,
+      "pdf": false,
+      "chars": 7380,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:d8a6656fb486669177e03efb0dd6a082076fada50d7973536e789740349fa745"
+    },
+    {
+      "ref": "D4",
+      "url": "https://saskfoundation.ca/privacypolicy",
+      "final_url": "https://saskfoundation.ca/wp-content/uploads/2026/04/Saskatchewan-Community-Foundation-Privacy-Policy.pdf",
+      "from": "https://saskfoundation.ca/privacy-policy/",
+      "anchor": "If you would like to read our Privacy Policy or download a copy of the Privacy Policy, please click here. Read Privacy Policy",
+      "depth": 2,
+      "pdf": true,
+      "chars": 11956,
+      "pages": 5,
+      "low_text": false,
+      "hash": "sha256:68448e68863c9858a24c7fb4939bd32fed45409a4710d93fdb438544ba11abd2"
+    }
+  ],
+  "failures": [
+    {
+      "url": "https://saskfoundation.ca/wp-content/uploads/2023/08/GLM-Collaborator-Feature-08.16.2023.pdf",
+      "from": "https://saskfoundation.ca/grant/jgj-habitat-conservation-fund/",
+      "kind": "http",
+      "message": "HTTP 404"
+    }
+  ],
+  "skipped_links": 645,
+  "chunks": [{ "id": "all", "docs": ["D1", "D2", "D3", "D4"], "chars": 43969 }],
+  "outcomes": {
+    "eligibility": "stated",
+    "documents": "stated",
+    "effort": "stated",
+    "co_finance": "not_found",
+    "consortium": "not_found",
+    "after_award": "stated"
+  },
+  "written": ["eligibility", "documents", "effort", "after_award"],
+  "escalated": ["eligibility"],
+  "flags": [],
+  "notes": [
+    "extractor: The page lists the current deadline as August 3, 2026, but also says applications must be received by August 1 each year. It warns that guidelines and criteria may change before the August 3 application process opens."
+  ],
+  "usd": 0
+}

@@ -1,0 +1,201 @@
+{
+  "id": "snf-bw-allgemeiner-haushalt",
+  "read_on": "2026-11-20",
+  "prompt_version": "req-2026-11-20.1",
+  "models": ["cursor:gpt-5.6-luna-high", "cursor:gpt-5.6-sol-high"],
+  "complete": false,
+  "reasons": [
+    "15 links could not be ranked without Jev",
+    "14 links could not be ranked without Jev",
+    "13 links could not be ranked without Jev",
+    "https://stiftung-naturschutzfonds-bw.de/fileadmin/user_upload/Downloads/Grundlagen_der_Foerderung/SNF_Foerderleitlinie_07_2026_bf.pdf: page 1 is an image: needs OCR",
+    "https://stiftung-naturschutzfonds-bw.de/fileadmin/user_upload/Downloads/Grundlagen_der_Foerderung/SNF_Hinweise_zur_Foerderleitlinie_03_2026_bf.pdf: page 1 is an image: needs OCR",
+    "the crawl bound left https://stiftung-naturschutzfonds-bw.de/foerderung/wir-foerdern-vielfalt/zuwendungsbereich-ersatzzahlungen unread",
+    "the text names a document with rules that was not read: Landeshaushaltsordnung für Baden-Württemberg (LHO)",
+    "the text names a document with rules that was not read: Allgemeine Nebenbestimmungen für Zuwendungen zur Projektförderung (ANBest-P)",
+    "the text names a document with rules that was not read: Allgemeine Nebenbestimmungen für Zuwendungen zur Projektförderung an kommunale Körperschaften (ANBest-K)",
+    "the text names a document with rules that was not read: Baufachliche Nebenbestimmungen (NBest-Bau)",
+    "the text names a document with rules that was not read: Allgemeine Verwaltungsvorschriften zu § 44 LHO (VV-LHO)",
+    "the text names a document with rules that was not read: Honorarsätze bei Projektförderung (Anhang 8, Stand 07/2025)",
+    "Jev did not check this reading, so an absent fact is not known to be absent"
+  ],
+  "requirements_checked": false,
+  "documents": [
+    {
+      "ref": "D1",
+      "url": "https://stiftung-naturschutzfonds-bw.de/foerderung/wir-foerdern-vielfalt/zuwendungsbereich-allgemeiner-haushalt",
+      "final_url": "https://stiftung-naturschutzfonds-bw.de/foerderung/wir-foerdern-vielfalt/zuwendungsbereich-allgemeiner-haushalt",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 4288,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:67109e523155309ac0009074f4afebf3e2b8ae1c19b2a0dae762b6749c61d587"
+    },
+    {
+      "ref": "D2",
+      "url": "https://stiftung-naturschutzfonds-bw.de/fileadmin/user_upload/Downloads/Grundlagen_der_Foerderung/SNF_Foerderleitlinie_07_2026_bf.pdf",
+      "final_url": "https://stiftung-naturschutzfonds-bw.de/fileadmin/user_upload/Downloads/Grundlagen_der_Foerderung/SNF_Foerderleitlinie_07_2026_bf.pdf",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": true,
+      "chars": 24018,
+      "pages": 14,
+      "low_text": false,
+      "hash": "sha256:1df104164749816b082af68eabf55d20ae27c43ec3c7f53bc64cc1a790e41c1c"
+    },
+    {
+      "ref": "D3",
+      "url": "https://stiftung-naturschutzfonds-bw.de/downloads/unterlagen-fuer-die-antragstellung",
+      "final_url": "https://stiftung-naturschutzfonds-bw.de/downloads/unterlagen-fuer-die-antragstellung",
+      "from": "https://stiftung-naturschutzfonds-bw.de/foerderung/wir-foerdern-vielfalt/zuwendungsbereich-allgemeiner-haushalt",
+      "anchor": "Unterlagen für die Antragstellung",
+      "depth": 1,
+      "pdf": false,
+      "chars": 4796,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:4988d7390ff08b3233870ae0d639bc4e76fda40548ffc4f55b23aae83e634de0"
+    },
+    {
+      "ref": "D4",
+      "url": "https://stiftung-naturschutzfonds-bw.de/fileadmin/user_upload/Downloads/Grundlagen_der_Foerderung/SNF_Hinweise_zur_Foerderleitlinie_03_2026_bf.pdf",
+      "final_url": "https://stiftung-naturschutzfonds-bw.de/fileadmin/user_upload/Downloads/Grundlagen_der_Foerderung/SNF_Hinweise_zur_Foerderleitlinie_03_2026_bf.pdf",
+      "from": "https://stiftung-naturschutzfonds-bw.de/downloads/unterlagen-fuer-die-antragstellung",
+      "anchor": "Hinweise zur Förderleitlinie",
+      "depth": 2,
+      "pdf": true,
+      "chars": 36606,
+      "pages": 23,
+      "low_text": false,
+      "hash": "sha256:5e0b3f26ee07ba58f77137ef14a8be622eff15b444336c6f236fbac3cfcecd00"
+    },
+    {
+      "ref": "D5",
+      "url": "https://stiftung-naturschutzfonds-bw.de/fileadmin/user_upload/Downloads/Unterlagen_fuer_die_Antragstellung/Anhang_6b_Antragsformular_Ersatzzahlungen_10_2026_bf.pdf",
+      "final_url": "https://stiftung-naturschutzfonds-bw.de/fileadmin/user_upload/Downloads/Unterlagen_fuer_die_Antragstellung/Anhang_6b_Antragsformular_Ersatzzahlungen_10_2026_bf.pdf",
+      "from": "https://stiftung-naturschutzfonds-bw.de/downloads/unterlagen-fuer-die-antragstellung",
+      "anchor": "Antragsformular Zuwendungsbereich Ersatzzahlungen (Stand 10/2026) (PDF) - HFLL-Anhang 6b",
+      "depth": 2,
+      "pdf": true,
+      "chars": 7214,
+      "pages": 7,
+      "low_text": false,
+      "hash": "sha256:ee3eb40013ec462f32da5fc7cdc34ea05f33762591e9b9a6d24c6d9cbe8628a4"
+    },
+    {
+      "ref": "D6",
+      "url": "https://stiftung-naturschutzfonds-bw.de/fileadmin/user_upload/Downloads/Unterlagen_fuer_die_Antragstellung/Anhang_6c_Besch%C3%A4ftigung_von_Personal_07_2025_nbf.pdf",
+      "final_url": "https://stiftung-naturschutzfonds-bw.de/fileadmin/user_upload/Downloads/Unterlagen_fuer_die_Antragstellung/Anhang_6c_Besch%C3%A4ftigung_von_Personal_07_2025_nbf.pdf",
+      "from": "https://stiftung-naturschutzfonds-bw.de/downloads/unterlagen-fuer-die-antragstellung",
+      "anchor": "Formular Beschäftigung von Personal (Stand 07/2025) (PDF) - HFLL-Anhang 6c",
+      "depth": 2,
+      "pdf": true,
+      "chars": 1581,
+      "pages": 1,
+      "low_text": false,
+      "hash": "sha256:a5a060baa037dd3d3f037149b2798f142c24f6c611e51df311755973a26e8e3a"
+    },
+    {
+      "ref": "D7",
+      "url": "https://stiftung-naturschutzfonds-bw.de/fileadmin/user_upload/Downloads/Unterlagen_fuer_die_Antragstellung/Anhang_4_Ma%C3%9Fnahmenkatalog_Verwendung_EZ_Stand_02_2023_bf.pdf",
+      "final_url": "https://stiftung-naturschutzfonds-bw.de/fileadmin/user_upload/Downloads/Unterlagen_fuer_die_Antragstellung/Anhang_4_Ma%C3%9Fnahmenkatalog_Verwendung_EZ_Stand_02_2023_bf.pdf",
+      "from": "https://stiftung-naturschutzfonds-bw.de/downloads/unterlagen-fuer-die-antragstellung",
+      "anchor": "Maßnahmenvorschläge zur Verwendung der Ersatzzahlungen (Stand 02/2023) (PDF) - HFLL-Anhang 4",
+      "depth": 2,
+      "pdf": true,
+      "chars": 17882,
+      "pages": 10,
+      "low_text": false,
+      "hash": "sha256:63d012b0b5e43ee36bbced5f2976d711fe0960dd8c5de51a60feababc84eca5b"
+    },
+    {
+      "ref": "D8",
+      "url": "https://stiftung-naturschutzfonds-bw.de/fileadmin/user_upload/Downloads/Unterlagen_fuer_die_Antragstellung/Anhang_5_Hinweise_Erstellung_Fachkonzept_Stand_11_2022_bf.pdf",
+      "final_url": "https://stiftung-naturschutzfonds-bw.de/fileadmin/user_upload/Downloads/Unterlagen_fuer_die_Antragstellung/Anhang_5_Hinweise_Erstellung_Fachkonzept_Stand_11_2022_bf.pdf",
+      "from": "https://stiftung-naturschutzfonds-bw.de/downloads/unterlagen-fuer-die-antragstellung",
+      "anchor": "Hinweise zur Erstellung von Fachkonzepten für die Verwendung von Ersatzzahlungen (Stand 11/2022) (PDF) - HFLL-Anhang 5",
+      "depth": 2,
+      "pdf": true,
+      "chars": 4566,
+      "pages": 3,
+      "low_text": false,
+      "hash": "sha256:8e0479a63602336ee568e306a9835c0fc10979c792754fe7855307e3871a7fa4"
+    },
+    {
+      "ref": "D9",
+      "url": "https://stiftung-naturschutzfonds-bw.de/fileadmin/user_upload/Downloads/Unterlagen_fuer_die_Antragstellung/Anhang_6a_Antragsformular_Allgemeiner_Haushalt_10_2026_bf.pdf",
+      "final_url": "https://stiftung-naturschutzfonds-bw.de/fileadmin/user_upload/Downloads/Unterlagen_fuer_die_Antragstellung/Anhang_6a_Antragsformular_Allgemeiner_Haushalt_10_2026_bf.pdf",
+      "from": "https://stiftung-naturschutzfonds-bw.de/downloads/unterlagen-fuer-die-antragstellung",
+      "anchor": "Antragsformular Zuwendungsbereich Allgemeiner Haushalt (Stand 10/2026) (PDF) - HFLL-Anhang 6a",
+      "depth": 2,
+      "pdf": true,
+      "chars": 7019,
+      "pages": 7,
+      "low_text": false,
+      "hash": "sha256:b38d6347e2f6dff9419134d6a9d3217fa06ad3d0505d7cb5d4307b4be7672950"
+    },
+    {
+      "ref": "D10",
+      "url": "https://stiftung-naturschutzfonds-bw.de/foerderung/wir-foerdern-vielfalt",
+      "final_url": "https://stiftung-naturschutzfonds-bw.de/foerderung/wir-foerdern-vielfalt",
+      "from": "https://stiftung-naturschutzfonds-bw.de/downloads/unterlagen-fuer-die-antragstellung",
+      "anchor": "Fördermittel beantragen",
+      "depth": 2,
+      "pdf": false,
+      "chars": 5386,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:509df46ab77839966e776fa66bd2c0b69ef8ed061bbe21093b97ff6a06f79f9a"
+    }
+  ],
+  "failures": [
+    {
+      "url": "https://stiftung-naturschutzfonds-bw.de/fileadmin/user_upload/Downloads/Grundlagen_der_Foerderung/SNF_Foerderleitlinie_07_2026_bf.pdf",
+      "from": null,
+      "kind": "low_text",
+      "message": "page 1 is an image: needs OCR"
+    },
+    {
+      "url": "https://stiftung-naturschutzfonds-bw.de/fileadmin/user_upload/Downloads/Grundlagen_der_Foerderung/SNF_Hinweise_zur_Foerderleitlinie_03_2026_bf.pdf",
+      "from": "https://stiftung-naturschutzfonds-bw.de/downloads/unterlagen-fuer-die-antragstellung",
+      "kind": "low_text",
+      "message": "page 1 is an image: needs OCR"
+    },
+    {
+      "url": "https://stiftung-naturschutzfonds-bw.de/foerderung/wir-foerdern-vielfalt/zuwendungsbereich-ersatzzahlungen",
+      "from": "https://stiftung-naturschutzfonds-bw.de/foerderung/wir-foerdern-vielfalt",
+      "kind": "bound",
+      "message": "past the crawl depth of 2"
+    }
+  ],
+  "skipped_links": 149,
+  "chunks": [
+    {
+      "id": "all",
+      "docs": ["D1", "D2", "D3", "D4", "D5", "D6", "D7", "D8", "D9", "D10"],
+      "chars": 115731
+    }
+  ],
+  "outcomes": {
+    "eligibility": "stated",
+    "documents": "stated",
+    "effort": "stated",
+    "co_finance": "stated",
+    "consortium": "not_found",
+    "after_award": "stated"
+  },
+  "written": ["eligibility", "documents", "effort", "co_finance", "after_award"],
+  "escalated": ["documents"],
+  "flags": [],
+  "notes": [
+    "extractor: The 2026 call is closed. The funder announces that the 2027 call starts in July 2027. Applications over €50,000 have an annual 2 November deadline; applications of €50,000 or less can be submitted continuously. Own contributions generally apply, with stated exceptions for some public institutions.",
+    "source snf-bw-allgemeiner-haushalt-1: selector main dropped, a new quote sits outside it",
+    "source snf-bw-allgemeiner-haushalt-3: added for https://stiftung-naturschutzfonds-bw.de/fileadmin/user_upload/Downloads/Grundlagen_der_Foerderung/SNF_Hinweise_zur_Foerderleitlinie_03_2026_bf.pdf",
+    "source snf-bw-allgemeiner-haushalt-4: added for https://stiftung-naturschutzfonds-bw.de/fileadmin/user_upload/Downloads/Unterlagen_fuer_die_Antragstellung/Anhang_6a_Antragsformular_Allgemeiner_Haushalt_10_2026_bf.pdf"
+  ],
+  "usd": 0
+}

@@ -1,19 +1,73 @@
 {
   "id": "fws-national-fish-passage",
   "name": "National Fish Passage Program",
-  "funder": { "name": "U.S. Fish and Wildlife Service", "url": "https://www.fws.gov/" },
+  "funder": {
+    "name": "U.S. Fish and Wildlife Service",
+    "url": "https://www.fws.gov/"
+  },
   "administered_by": null,
   "parent": null,
   "url": "https://www.grants.gov/search-results-detail/363699",
   "summary": "US federal funding and technical help for partners that remove dams and other river barriers, replace culverts, restore floodplains or install fishways. Projects are developed with the local Fish and Wildlife Service fish passage biologist before applying.",
-  "approaches": ["freshwater", "species_conservation"],
-  "applicant_types": ["ngo", "government", "indigenous_organization"],
-  "geography": { "scope": "countries", "countries": ["US"], "label": "United States" },
+  "approaches": [
+    "freshwater",
+    "species_conservation"
+  ],
+  "applicant_types": [
+    "ngo",
+    "government",
+    "indigenous_organization"
+  ],
+  "geography": {
+    "scope": "countries",
+    "countries": [
+      "US"
+    ],
+    "label": "United States"
+  },
   "access": "direct",
   "window": "fixed",
-  "amount": { "currency": "USD", "max": 1000000 },
+  "amount": {
+    "currency": "USD",
+    "max": 1000000
+  },
   "co_finance_required": false,
   "reporting": "Recipients file federal financial reports and programme performance reports, on the schedule set in the notice of award.",
+  "eligibility": [
+    {
+      "rule": "Not part of Federal or State compensatory mitigation, in-lieu fee programmes or mitigation banks",
+      "kind": "project"
+    },
+    {
+      "rule": "Fish passage is not already required under an existing Federal or State regulatory programme",
+      "kind": "project"
+    },
+    {
+      "rule": "No fish passage work at facilities actively licensed or permitted by FERC",
+      "kind": "project"
+    },
+    {
+      "rule": "Registered in SAM.gov before applying, unless applying as a natural person",
+      "kind": "legal"
+    }
+  ],
+  "effort": {
+    "steps": [
+      "Contact local fish passage programme staff to develop the project",
+      "Eligibility and merit review by regional programme staff",
+      "Application in GrantSolutions, if selected and invited",
+      "Risk review"
+    ],
+    "due": [
+      null,
+      null,
+      "2027-04-30",
+      null
+    ]
+  },
+  "after_award": {
+    "reports": "unspecified"
+  },
   "calls": [
     {
       "id": "fy2026",
@@ -21,7 +75,12 @@
       "url": "https://www.grants.gov/search-results-detail/363699",
       "status": "open",
       "opens": null,
-      "deadline": { "date": "2027-04-30", "time": "23:59", "timezone": "America/New_York", "text": "Closing Date for Applications: 04/30/2027, by 11:59 PM, ET" },
+      "deadline": {
+        "date": "2027-04-30",
+        "time": "23:59",
+        "timezone": "America/New_York",
+        "text": "Closing Date for Applications: 04/30/2027, by 11:59 PM, ET"
+      },
       "evidence": {
         "status": {
           "source_url": "https://www.grants.gov/grantsws/rest/opportunity/att/download/354778",
@@ -80,7 +139,67 @@
       "quote": "Submit Federal Financial reports and Program Performance reports.",
       "checked_at": "2026-11-02",
       "method": "page"
-    }
+    },
+    "eligibility": [
+      {
+        "source_url": "https://www.grants.gov/grantsws/rest/opportunity/att/download/354778",
+        "quote": "Projects not eligible for program funding include any projects that are part of any Federal or State compensatory mitigation, including in-lieu fee programs and mitigation banks.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.grants.gov/grantsws/rest/opportunity/att/download/354778",
+        "quote": "Projects are also not eligible if fish passage is a condition provided by existing Federal or State regulatory programs.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.grants.gov/grantsws/rest/opportunity/att/download/354778",
+        "quote": "program funds may not be used to construct, operate, or maintain fish passage at facilities actively licensed or permitted by the Federal Energy Regulatory Commission.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.grants.gov/grantsws/rest/opportunity/att/download/354778",
+        "quote": "Before applying, all applicants except individuals applying as a natural person must be registered in SAM.gov.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "effort": [
+      {
+        "source_url": "https://www.grants.gov/grantsws/rest/opportunity/att/download/354778",
+        "quote": "Applicants seeking technical or financial assistance from the National Fish Passage Program are required to contact local program staff BEFORE developing or submitting an application.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.grants.gov/grantsws/rest/opportunity/att/download/354778",
+        "quote": "Applications in GrantSolutions should be submitted by invitation only after Regional FAC staff determine eligibility (Section Eligibility Review) and review responses to selection criteria (Section Merit Review).",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.grants.gov/grantsws/rest/opportunity/att/download/354778",
+        "quote": "Closing Date for Applications: 04/30/2027",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.grants.gov/grantsws/rest/opportunity/att/download/354778",
+        "quote": "Prior to making an award, the applicant will be assessed for their level of risk per 2 CFR 200.206.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "after_award": [
+      {
+        "source_url": "https://www.grants.gov/grantsws/rest/opportunity/att/download/354778",
+        "quote": "Submit Federal Financial reports and Program Performance reports.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ]
   },
   "checked_at": "2026-11-02"
 }

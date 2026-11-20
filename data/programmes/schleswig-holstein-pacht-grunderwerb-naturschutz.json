@@ -30,6 +30,30 @@
   "amount": null,
   "co_finance_required": null,
   "reporting": null,
+  "effort": {
+    "steps": [
+      "Application before project start"
+    ]
+  },
+  "eligibility": [
+    {
+      "rule": "Project areas lie in one of the listed conservation areas",
+      "kind": "project"
+    },
+    {
+      "rule": "The competent nature authority confirms the conservation need and eligible expenses",
+      "kind": "project"
+    }
+  ],
+  "after_award": {
+    "reports": "other"
+  },
+  "documents": [
+    "Overview plan and detailed maps with parcel information, including cadastral map extract where applicable",
+    "Cost breakdown including ancillary costs",
+    "Independent valuation certificate for land acquisition confirming the purchase price does not exceed market value",
+    "Financing plan"
+  ],
   "calls": [],
   "evidence": {
     "applicant_types": {
@@ -49,7 +73,57 @@
       "quote": "Antragsvordrucke können hier angefordert werden.",
       "checked_at": "2026-11-16",
       "method": "page"
-    }
+    },
+    "effort": [
+      {
+        "source_url": "https://www.schleswig-holstein.de/DE/fachinhalte/N/naturschutz/Downloads/Rili_Pacht_Grunderwerb.pdf?__blob=publicationFile&v=2",
+        "quote": "Der Antrag ist rechtzeitig vor Beginn der Maßnahme zu stellen.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "eligibility": [
+      {
+        "source_url": "https://www.schleswig-holstein.de/DE/fachinhalte/N/naturschutz/Downloads/Rili_Pacht_Grunderwerb.pdf?__blob=publicationFile&v=2",
+        "quote": "Die Flächen liegen in einer der folgenden Kulissen:",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.schleswig-holstein.de/DE/fachinhalte/N/naturschutz/Downloads/Rili_Pacht_Grunderwerb.pdf?__blob=publicationFile&v=2",
+        "quote": "Die obere Naturschutzbehörde (ONB) oder oberste Naturschutzbehörde bestätigt das fachliche Erfordernis sowie die zuwendungsfähigen Ausgaben nach Ziffer 2.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "after_award": [
+      {
+        "source_url": "https://www.schleswig-holstein.de/DE/fachinhalte/N/naturschutz/Downloads/Rili_Pacht_Grunderwerb.pdf?__blob=publicationFile&v=2",
+        "quote": "Die Antragstellerin oder der Antragsteller verpflichtet sich, die mit der Zuwendung sichergestellte Fläche im Sinne des Naturschutzes zu nutzen, zu pflegen, zu erhalten und zu festgelegten Zeitpunkten darüber zu berichten.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "documents": [
+      {
+        "source_url": "https://www.schleswig-holstein.de/DE/fachinhalte/N/naturschutz/Downloads/Rili_Pacht_Grunderwerb.pdf?__blob=publicationFile&v=2",
+        "quote": "mit Planunterlagen bestehend aus Übersichtsplan und Detailkarten im geeigneten Maßstab mit Flurstücksangaben, gegebenenfalls Flurkartenauszug, d) welche Lage, Größe, welchen ökologischen Wert die Flächen besitzen und Art und Umfang der bisherigen Nutzung. 7.1.2 Darüber hinaus sind beizufügen: a) eine Kostenaufstellung, einschließlich der Nebenkosten (Ziffer 5.3)",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.schleswig-holstein.de/DE/fachinhalte/N/naturschutz/Downloads/Rili_Pacht_Grunderwerb.pdf?__blob=publicationFile&v=2",
+        "quote": "bei Grunderwerb eine Bescheinigung einer unabhängig qualifizierten Schätzerin oder eines unabhängigen qualifizierten Schätzers oder einer ordnungsgemäß zugelassenen amtlichen Stelle, mit der bestätigt wird, dass der Kaufpreis den Marktwert nicht übersteigt.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.schleswig-holstein.de/DE/fachinhalte/N/naturschutz/Downloads/Rili_Pacht_Grunderwerb.pdf?__blob=publicationFile&v=2",
+        "quote": "ein Finanzierungsplan.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ]
   },
   "checked_at": "2026-11-16"
 }

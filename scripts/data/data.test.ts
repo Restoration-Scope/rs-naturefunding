@@ -256,6 +256,12 @@ describe('a step date must be stated whole in one quote', () => {
     ['8 mai 2027', '2027-05-08', true],
     ['Application closes 08/01/2027. Birth date: DD/MM/YYYY.', '2027-01-08', false],
     ['Deadline (DD/MM/YYYY): 08/01/2027.', '2027-01-08', true],
+    ['(3)提出期限 令和9年1月30日(金曜日)必着', '2027-01-30', true],
+    ['提出期限：令和９年１月３０日', '2027-01-30', true],
+    ['締切 2027年1月30日', '2027-01-30', true],
+    ['令和元年5月1日', '2019-05-01', true],
+    ['令和9年1月30日', '2026-01-30', false],
+    ['令和8年度 1月30日', '2027-01-30', false],
   ])('%p states %s: %p', (quote, date, want) => expect(statesDate(quote, date)).toBe(want))
 })
 
@@ -279,6 +285,13 @@ describe('a date quote must state its year', () => {
     ['Deadline 11/26/2027', false],
     ['Round 26 closes in November', false],
   ])('%p → %p', (quote, ok) => expect(statesYear(quote, '2026-11-26')).toBe(ok))
+
+  test.each([
+    ['提出期限 令和8年11月26日', true],
+    ['令和８年11月26日', true],
+    ['募集期間 令和8年度', false],
+    ['令和18年11月26日', false],
+  ])('Japanese era %p → %p', (quote, ok) => expect(statesYear(quote, '2026-11-26')).toBe(ok))
 
   test('a yearless deadline quote fails validation', () => {
     const p = fixture()
@@ -462,8 +475,8 @@ describe('an open call cannot be past its deadline', () => {
     expect(problems(withDeadline('2026-10-31', '17:00', 'Europe/Madrid'))).toHaveLength(1)
   })
 
-  test('an unreadable timezone gives the call the benefit of the doubt', () => {
-    expect(problems(withDeadline('2026-10-31', '17:00', 'Funder time'))).toEqual([])
+  test('an unreadable timezone is refused, but never closes the call early', () => {
+    expect(problems(withDeadline('2026-10-31', '17:00', 'Funder time'))).toEqual([expect.stringMatching(/^calls\.0\.deadline\.timezone: can't read the timezone "Funder time"/)])
   })
 
   test('a closed call may have any past deadline', () => {

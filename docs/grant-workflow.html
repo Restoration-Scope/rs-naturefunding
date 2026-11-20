@@ -1,0 +1,565 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Grant workflow</title>
+<script>
+  // Theme before first paint: saved choice, else the system's, else dark (pele.run's own).
+  (function () {
+    var t;
+    try { t = localStorage.getItem('pele-theme'); } catch (e) {}
+    if (t !== 'light' && t !== 'dark') t = matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+    document.documentElement.dataset.theme = t;
+  })();
+</script>
+<style>
+  /* Styles follow pele.run (Flexoki palette). Light page chrome is the Flexoki light counterpart. */
+  :root {
+    --font-size-title: clamp(2rem, 4vw, 2.5rem);
+    --font-size-heading: 1.25rem;
+    --font-size-body: clamp(1rem, .875rem + .2vw, 1.125rem);
+    --font-size-small: .875rem;
+    --radius-small: 6px;
+    --radius-panel: 12px;
+    --radius-pill: 999px;
+    --header-height: 64px;
+    --gutter: 24px;
+    --reading: calc(var(--font-size-body) * 42);
+    --sidebar-width: 180px;
+    --sidebar-gap: 32px;
+    /* Where the content column starts: the left gutter, plus the sidebar when there is one. */
+    --content-start: var(--gutter);
+    --font-sans: -apple-system, BlinkMacSystemFont, "Inter Variable", Inter, "Segoe UI", Helvetica, Arial, sans-serif;
+    --font-mono: ui-monospace, SFMono-Regular, "Cascadia Code", "IBM Plex Mono", "Roboto Mono", Menlo, Monaco, Consolas, monospace;
+  }
+  :root[data-theme="dark"] {
+    color-scheme: dark;
+    --ink: #100f0f; --panel: #1c1b1a; --line: #282726; --line-hover: #343331; --line-active: #403e3c;
+    --faint: #575653; --muted: #878580; --body: #cecdc3; --paper: #cecdc3; --hover: #f2f0e5;
+    --green: #879a39; --red: #d14d41; --accent: var(--paper);
+    --pele-fg: #cecdc3; --pele-muted: #878580; --pele-line: #cecdc3; --pele-accent: #4385be; --pele-critical: #d14d41;
+    --pele-series-1: #d14d41; --pele-series-2: #da702c; --pele-series-3: #d0a215; --pele-series-4: #879a39;
+    --pele-series-5: #3aa99f; --pele-series-6: #4385be; --pele-series-7: #8b7ec8; --pele-series-8: #ce5d97;
+    /* Meaning colours: `class X good` in a diagram fills node X (see .pele-node rules below). */
+    --pele-good: #24372a; --pele-warn: #3d3215; --pele-bad: #3e1f1c; --pele-info: #1c2b3d; --pele-store: #2c2638;
+    --pele-good-line: #879a39; --pele-warn-line: #d0a215; --pele-bad-line: #d14d41; --pele-info-line: #4385be; --pele-store-line: #8b7ec8;
+  }
+  :root[data-theme="light"] {
+    color-scheme: light;
+    --ink: #fffcf0; --panel: #f2f0e5; --line: #e6e4d9; --line-hover: #dad8ce; --line-active: #cecdc3;
+    --faint: #b7b5ac; --muted: #6f6e69; --body: #100f0f; --paper: #100f0f; --hover: #100f0f;
+    --green: #66800b; --red: #af3029; --accent: var(--paper);
+    --pele-fg: #100f0f; --pele-muted: #6f6e69; --pele-line: #100f0f; --pele-accent: #205ea6; --pele-critical: #af3029;
+    --pele-series-1: #af3029; --pele-series-2: #bc5215; --pele-series-3: #ad8301; --pele-series-4: #66800b;
+    --pele-series-5: #24837b; --pele-series-6: #205ea6; --pele-series-7: #5e409d; --pele-series-8: #a02f6f;
+    --pele-good: #e4eccb; --pele-warn: #f6e7b8; --pele-bad: #f6d6d0; --pele-info: #d6e4f3; --pele-store: #e6e0f3;
+    --pele-good-line: #66800b; --pele-warn-line: #ad8301; --pele-bad-line: #af3029; --pele-info-line: #205ea6; --pele-store-line: #5e409d;
+  }
+
+  /* `class <ids> good|warn|bad|info|store` colours nodes in flowchart, state and ER diagrams, following the theme
+     (classDef colours can't: they are fixed, and Pele rejects var() in them). Sequence diagrams use rect var(--pele-good). */
+  .pele-node.good > :is(rect, path, polygon, circle, ellipse) { fill: var(--pele-good); stroke: var(--pele-good-line); }
+  .pele-node.warn > :is(rect, path, polygon, circle, ellipse) { fill: var(--pele-warn); stroke: var(--pele-warn-line); }
+  .pele-node.bad > :is(rect, path, polygon, circle, ellipse) { fill: var(--pele-bad); stroke: var(--pele-bad-line); }
+  .pele-node.info > :is(rect, path, polygon, circle, ellipse) { fill: var(--pele-info); stroke: var(--pele-info-line); }
+  .pele-node.store > :is(rect, path, polygon, circle, ellipse) { fill: var(--pele-store); stroke: var(--pele-store-line); }
+
+  body {
+    margin: 0; background: var(--ink); color: var(--body);
+    font-family: var(--font-sans); font-size: var(--font-size-body); line-height: 1.55;
+    text-rendering: optimizeLegibility; -webkit-font-smoothing: antialiased;
+  }
+  a { color: var(--paper); text-decoration-color: var(--faint); text-underline-offset: 3px; }
+  a:hover { color: var(--hover); text-decoration-color: currentColor; }
+  code { font-family: var(--font-mono); font-size: .9em; }
+
+  .site-header {
+    position: absolute; inset-inline: 0; top: 0; height: var(--header-height);
+    display: flex; align-items: center; justify-content: flex-end; padding-inline: 24px;
+  }
+
+  /* Light/Dark switch: pele.run's segmented control. */
+  .segmented-control {
+    --selected-index: 0; position: relative; isolation: isolate; display: inline-grid;
+    grid-auto-flow: column; grid-auto-columns: 1fr; border-radius: var(--radius-pill);
+    background: var(--panel); font-size: var(--font-size-small);
+  }
+  .segmented-control::before {
+    content: ""; position: absolute; inset-block: 0; inset-inline-start: 0; z-index: -1;
+    width: 50%; border-radius: var(--radius-pill); background: var(--line); pointer-events: none;
+    transform: translateX(calc(var(--selected-index) * 100%)); transition: transform .2s;
+  }
+  .segmented-control:has(> button:nth-of-type(2)[aria-pressed="true"]) { --selected-index: 1; }
+  .segmented-control > button {
+    border: 0; background: none; font: inherit; color: var(--muted); cursor: pointer;
+    padding: 4px 10px; border-radius: var(--radius-pill); user-select: none;
+  }
+  .segmented-control > button[aria-pressed="true"], .segmented-control > button:hover { color: var(--paper); }
+  .segmented-control > button:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+  @media (prefers-reduced-motion: reduce) { .segmented-control::before { transition: none; } }
+
+  /* Left table of contents, as on pele.run's docs pages. */
+  .toc { user-select: none; display: grid; gap: 8px; }
+  .toc a { color: var(--muted); font-size: var(--font-size-small); line-height: 1.25; text-decoration: none; transition: color .2s; }
+  .toc a:hover, .toc a[aria-current="location"] { color: var(--paper); }
+  .toc .toc-title { color: var(--paper); font-weight: 500; }
+  .toc .toc-children { display: grid; gap: 8px; border-inline-start: 1px solid var(--line); padding-inline-start: 12px; }
+  .toc-sidebar {
+    position: fixed; top: var(--header-height); inset-inline-start: var(--gutter);
+    width: var(--sidebar-width);
+    max-height: calc(100dvh - var(--header-height) - 20px); overflow-y: auto;
+  }
+  .toc-inline { display: none; margin: 32px 0 0; padding: 16px 20px; border-radius: var(--radius-panel); background: var(--panel); }
+
+  /* Edge to edge: the column runs from the sidebar (or left gutter) to the right gutter. Diagram cards fill it;
+     text stays at reading width, centered on the page. */
+  .docs-layout { padding: 64px var(--gutter) 72px var(--content-start); }
+  @media (width >= 761px) {
+    body.has-toc { --content-start: calc(var(--gutter) + var(--sidebar-width) + var(--sidebar-gap)); }
+  }
+  .docs-title, main > section > h2, main > section > p {
+    max-width: var(--reading);
+    margin-inline-start: max(0px, (100vw - var(--reading)) / 2 - var(--content-start));
+    margin-inline-end: auto;
+  }
+  @media (width <= 760px) {
+    .toc-sidebar { display: none; }
+    body.has-toc .toc-inline { display: grid; }
+  }
+  body:not(.has-toc) .toc-sidebar { display: none; }
+
+  .docs-title h1 { color: var(--paper); font-size: var(--font-size-title); letter-spacing: -.025em; line-height: 1.2; font-weight: 600; margin: 0; }
+  .lede { margin: 16px 0 0; }
+  main > section { scroll-margin-top: 32px; }
+  main > section > h2 { color: var(--paper); font-size: var(--font-size-heading); font-weight: 500; margin-block: 56px 16px; }
+  main > section > p { margin-block: 0 16px; }
+
+  /* Diagram card: pele.run's example-card, with diagram colors drawn from the panel tones. */
+  .example-card { border-radius: var(--radius-panel); background: var(--panel); margin: 0 0 20px; padding: 12px 20px 24px; overflow: hidden; }
+  .example-label { min-height: 28px; display: flex; align-items: center; justify-content: space-between; gap: 16px; margin-inline-end: -8px; color: var(--muted); font-size: var(--font-size-small); }
+  .example-type { font-family: var(--font-mono); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .copy-button { display: grid; place-items: center; width: 28px; height: 28px; border: 0; border-radius: var(--radius-small); background: none; color: var(--muted); cursor: pointer; }
+  .copy-button:hover { background: var(--line); color: var(--paper); }
+  .copy-button:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; }
+  .copy-button[data-copied] { color: var(--green); }
+  .example-figure {
+    display: block; width: 100%; min-width: 0; margin-top: 18px; color: var(--muted); font-size: var(--font-size-small);
+    --pele-font: var(--font-sans); --pele-font-mono: var(--font-mono); --pele-radius: var(--radius-small);
+    --pele-bg: var(--panel); --pele-surface: var(--line); --pele-surface-alt: var(--line-hover); --pele-border: var(--line-active);
+  }
+  /* Diagrams grow to the card's width (up to 1.5x their natural size, so small ones don't get huge text) and stop at
+     the screen's height. Pele sets an inline max-width, hence !important. */
+  .example-figure svg.pele {
+    display: block; width: 100%; height: auto; margin-inline: auto;
+    max-width: min(100%, var(--grow-to, 100%)) !important;
+    max-height: calc(100dvh - 120px);
+  }
+  .example-figure svg.pele:focus { outline: none; }
+  .example-source { font-family: var(--font-mono); white-space: pre-wrap; margin: 0; overflow-x: auto; }
+  @media (width <= 480px) { .example-card { padding-inline: 16px; } }
+
+  ::selection { background: color-mix(in srgb, var(--paper) 18%, transparent); }
+</style>
+</head>
+<body>
+<header class="site-header">
+  <div class="segmented-control" role="group" aria-label="Theme">
+    <button type="button" data-theme-choice="light">Light</button>
+    <button type="button" data-theme-choice="dark">Dark</button>
+  </div>
+</header>
+<nav class="toc toc-sidebar" aria-label="Diagrams"></nav>
+
+<div class="docs-layout">
+  <div class="docs-title">
+    <h1>Grant workflow</h1>
+    <p class="lede">Four stages: Discovery fills a backlog, Gathering collects the intel, Triage validates each entry, Processing gives operators the evidence to decide.</p>
+  </div>
+  <nav class="toc toc-inline" aria-label="Diagrams"></nav>
+
+  <main>
+    <!-- One <section> per diagram. The h2 becomes its table-of-contents entry.
+         Mermaid goes inside <script type="text/plain" class="mermaid"> as is: no HTML escaping. -->
+    <section id="stages">
+      <h2>The four stages</h2>
+      <p>Discovery fills a backlog; Gathering collects everything later steps need; Triage validates each entry; Processing turns the evidence into what an operator needs to make the call. Keeping current re-reads what is listed. Today Gathering runs only after a listing exists (inside the requirements pipeline); the target is to gather before Triage, so Triage decides on the full picture. Green: code that decides. Blue: an outside API or model is called, or not built yet (“Next”). Amber: a person or agent decides. Red: left out. Purple: a file or record. Solid arrows: flow and writes; dotted: reads; two heads: reads and writes.</p>
+      <script type="text/plain" class="mermaid">
+flowchart LR
+  D["fa:fa-radar 1 Discovery<br/>goal: a backlog of leads<br/>out: discovery issues,<br/>discovered.json"]
+  G["fa:fa-folder-search 2 Gathering<br/>goal: all the intel<br/>out: pages, documents,<br/>forms, past rounds"]
+  T["fa:fa-list-checks 3 Triage<br/>goal: validated entries<br/>out: accept, hold, reject;<br/>data/programmes/{id}.json"]
+  P["fa:fa-scale 4 Processing<br/>goal: evidence to decide<br/>out: rules, effort, fit"]
+  K["fa:fa-refresh-cw 5 Keeping current<br/>daily read, weekly links"]
+  D --> G --> T --> P
+  P --> K
+  K -->|"page changed"| G
+  class D,K good
+  class G,P info
+  class T warn
+      </script>
+    </section>
+
+    <section id="discovery">
+      <h2>1. Discovery: fill the backlog</h2>
+      <p>Two jobs in <code>refresh.yml</code> raise leads; none becomes a listing by itself. No model is called here: the EU and grants.gov searches are keyword APIs and Exa is a search engine. The backlog is the open <code>discovery</code> issues. Functions: <code>isNbsEuTopic</code>, <code>isNbsUsOpportunity</code>, <code>organisationLead</code>, <code>newCandidates</code> and <code>fileDiscoveryIssue</code> in <code>scripts/refresh/discover.ts</code>; <code>newLeads</code> in <code>scripts/refresh/discover-web.ts</code>. Green: code that decides. Blue: an outside API or model is called, or not built yet (“Next”). Amber: a person or agent decides. Red: left out. Purple: a file or record. Solid arrows: flow and writes; dotted: reads; two heads: reads and writes.</p>
+      <script type="text/plain" class="mermaid">
+flowchart TB
+  EU["fa:fa-landmark EU Funding & Tenders API<br/>daily 05:17 UTC, discover.ts<br/>out: topics, deadlines"]
+  US["fa:fa-flag grants.gov API<br/>daily, discover.ts; 8 agencies<br/>out: synopsis, applicants"]
+  EXA["fa:fa-search Exa search API<br/>Mondays, discover-web.ts<br/>22 queries, ~$0.50: URLs"]
+  DIR["fa:fa-book-open Directories, guides<br/>tips only, never copied"]
+  EUF["fa:fa-filter isNbsEuTopic<br/>by topic code"]
+  USF["fa:fa-filter isNbsUsOpportunity<br/>organisationLead"]
+  NL["fa:fa-filter newLeads<br/>no NOT_FUNDERS sites,<br/>one lead per site"]
+  NC["fa:fa-copy newCandidates<br/>not raised, not in data/"]
+  DATA[("data/programmes<br/>data/sources.json")]
+  DISC[("data/checks/discovered.json<br/>keys eu:, us:, web:")]
+  ISS[("GitHub issue<br/>label discovery")]
+  EU --> EUF --> NC
+  US --> USF --> NC
+  EXA --> NL
+  DATA -.-> NC & NL
+  NC & NL <-->|"reads, writes:<br/>raise once"| DISC
+  NC & NL -->|a row per lead| ISS
+  DIR -.->|"tips for where to look"| BL
+  ISS --> BL
+  BL["fa:fa-inbox Backlog<br/>open discovery issues,<br/>to Gathering"]
+  class EUF,USF,NL,NC good
+  class EU,US,EXA,DIR info
+  class DATA,DISC,ISS store
+  class BL warn
+      </script>
+    </section>
+
+    <section id="gathering">
+      <h2>2. Gathering: collect the intel</h2>
+      <p>Built today as stages 1–2 of the requirements pipeline (<code>scripts/requirements/</code>), for listed programmes only. Next: run it for each backlog lead before Triage, and widen it from the call’s rules to everything an applicant meets: the form itself, FAQs, earlier rounds, launch posts and who got funded. What it finds is evidence for later stages, never a fact by itself. Functions: <code>queue</code> in <code>queue.ts</code>; <code>seedsOf</code>, <code>gather</code>, <code>politeReader</code>, <code>linksFrom</code>, <code>classifyLink</code> (<code>RELEVANT</code>, <code>NOISE</code>), <code>lowTextPdf</code>, <code>BOUNDS</code> in <code>gather.ts</code>; the about-check calls Jev. Colours and arrows as in 1.</p>
+      <script type="text/plain" class="mermaid">
+flowchart TB
+  BL[("Backlog: discovery issue")]
+  PROG[("data/programmes/{id}.json<br/>cited pages, call pages")]
+  Q["fa:fa-list-ordered queue, queue.ts<br/>never read, page changed,<br/>new round, 12 months old"]
+  SEED["fa:fa-sprout seedsOf<br/>cited and call pages"]
+  RD["fa:fa-download politeReader<br/>robots.txt, gap per host,<br/>.cache pages, PDF text"]
+  LK["fa:fa-link linksFrom, classifyLink<br/>RELEVANT vs NOISE:<br/>strong, ambiguous, offsite, skip"]
+  JR["fa:fa-bot Jev ranks ambiguous links<br/>and checks each document is<br/>about this programme"]
+  BD["fa:fa-ruler BOUNDS<br/>depth 2, 8 documents"]
+  LOW["fa:fa-scan lowTextPdf<br/>scanned pages: needs OCR"]
+  MAN[("data/requirements/{id}.json<br/>documents, hashes, failures,<br/>skipped links, reasons")]
+  N1["fa:fa-mouse-pointer-click Next: the form itself<br/>fields, dropdowns, uploads,<br/>embedded forms, portals"]
+  N2["fa:fa-history Next: around the call<br/>FAQs, earlier rounds, launch<br/>posts, who got funded"]
+  N3["fa:fa-flag Next: leads queue<br/>unread documents, offsite<br/>portals, contradictions"]
+  BL -.->|"Next: gather before Triage"| SEED
+  PROG -.-> Q --> SEED --> RD --> LK
+  LK -->|ambiguous| JR --> BD
+  LK -->|strong| BD
+  BD -->|"follow, depth +1"| RD
+  RD --> LOW
+  BD -->|"bound hit, fetch failed,<br/>offsite, low text"| MAN
+  BD -->|"gathered text"| MAN
+  RD -.-> N1 & N2
+  MAN -.-> N3
+  class Q,SEED,RD,LK,BD,LOW good
+  class JR,N1,N2,N3 info
+  class BL,PROG,MAN store
+      </script>
+    </section>
+
+    <section id="triage">
+      <h2>3a. Triage: decide</h2>
+      <p>No script yet: an agent session or Bernat reads each lead and its gathered pages against <code>docs/triage-criteria.md</code>. Colours and arrows as in 1.</p>
+      <script type="text/plain" class="mermaid">
+flowchart TB
+  BL[("Backlog lead<br/>+ gathered pages")]
+  TRI["fa:fa-user Triage, no script yet<br/>an agent session or Bernat<br/>docs/triage-criteria.md"]
+  REJ["fa:fa-x Reject<br/>farmer payments, students,<br/>agencies only, not nature, closed"]
+  HOLD["fa:fa-pause Hold for Bernat<br/>details only off the funder’s site,<br/>unclear, or a lead not a fact"]
+  ACC["fa:fa-arrow-right Accept<br/>write the listing, 3b"]
+  BL --> TRI --> REJ & HOLD & ACC
+  class TRI,HOLD,ACC warn
+  class REJ bad
+  class BL store
+      </script>
+    </section>
+
+    <section id="listing">
+      <h2>3b. Triage: write and validate the listing</h2>
+      <p>An agent writes the file from the funder’s own page; every gate after that is code. There is no CI on pull requests, so the agent runs <code>bun test</code>, <code>check</code> and <code>build</code> before it commits. Functions: <code>checkData</code> in <code>src/data/load.ts</code>; <code>statesYear</code> and <code>statesDate</code> in <code>src/data/schema.ts</code>; <code>deadlinePassed</code> in <code>scripts/refresh/deadline.ts</code>; <code>fetchPage</code> in <code>scripts/data/page-text.ts</code>; <code>quoteOnPage</code> in <code>src/data/text.ts</code>. <code>{id}</code> is the programme id. Colours and arrows as in 1.</p>
+      <script type="text/plain" class="mermaid">
+flowchart TB
+  WR["fa:fa-pen-line Agent writes the listing<br/>quotes copied from page-text.ts"]
+  PROG[("data/programmes/{id}.json<br/>per fact: source_url, quote,<br/>checked_at, method")]
+  SS["fa:fa-list-plus sync-sources.ts<br/>a source per cited URL"]
+  SRC[("data/sources.json<br/>url, selector, cycle")]
+  VAL["fa:fa-shield-check validate.ts: checkData<br/>zod schema, statesYear, statesDate,<br/>deadlinePassed; every URL watched"]
+  VQ["fa:fa-quote verify-quotes.ts<br/>fetchPage, quoteOnPage per quote"]
+  MERGE["fa:fa-git-merge Pull request to main<br/>agent or Bernat merges;<br/>deploy.yml publishes, 1d"]
+  RQ[("fa:fa-file-search Processing, 4a<br/>manifest: data/requirements/{id}.json")]
+  WR -->|writes| PROG
+  PROG -.-> SS
+  SS -->|writes| SRC
+  PROG & SRC -.-> VAL
+  VAL -->|passes| VQ
+  VQ -->|passes| MERGE
+  VAL & VQ -->|fails| WR
+  PROG -.-> RQ
+  class SS,VAL,VQ good
+  class WR,MERGE warn
+  class PROG,SRC,RQ store
+      </script>
+    </section>
+
+    <section id="read">
+      <h2>4a. Processing: read what it takes to apply</h2>
+      <p>Stages 3–8 of the requirements pipeline, on what Gathering collected. Code owns the workflow and every check it can state; models only read language. One programme at a time, ~30 per pull request. Functions: <code>chunksOf</code>, <code>extract</code>, <code>reconcile</code> in <code>extract.ts</code>; <code>verify</code>, <code>locate</code> in <code>verify.ts</code>; <code>check</code>, <code>omissions</code> in <code>check.ts</code>; <code>run</code> in <code>pipeline.ts</code>; <code>apply</code>, <code>manifest</code> in <code>write.ts</code>.</p>
+      <script type="text/plain" class="mermaid">
+flowchart TB
+  G[("Gathered text, 2<br/>pages and documents")] --> E
+  E["fa:fa-bot 3 Extract, cheap model<br/>each item with a verbatim quote, or not_found"] --> VE
+  VE{"fa:fa-shield-check 4 Verify, code<br/>schema, quote on page, dates"}
+  VE -->|fails| D["fa:fa-trash Item dropped"]
+  VE -->|passes| C
+  C{"fa:fa-scale 5 Check, Jev<br/>rule vs quote, polarity, missed facts"}
+  C -->|flagged| S["fa:fa-brain 6 Escalate, strong model<br/>fixed or unresolved"]
+  S -->|fixed| VE
+  S -->|unresolved| P["fa:fa-user Agent or Bernat<br/>browser, OCR, blocked pages"]
+  C -->|clean| W
+  W["fa:fa-file-json 7 Write<br/>facts into data/programmes,<br/>coverage in data/requirements"] --> LA
+  LA["fa:fa-git-pull-request 8 Land<br/>cross-family fact review per batch"] --> B
+  B["fa:fa-gauge Effort bars, computed at build<br/>no model picks a colour"]
+  class VE,B good
+  class G store
+  class E,C info
+  class S,P,LA warn
+  class D bad
+  class W store
+      </script>
+    </section>
+
+    <section id="apply">
+      <h2>4b. Processing: the applicant’s view</h2>
+      <p>What we structure from the pages, and how it turns into a decision for one operator. “Next” marks what isn’t built yet.</p>
+      <script type="text/plain" class="mermaid">
+flowchart TB
+  CP["fa:fa-globe Call page and everything it links"]
+  CP --> HOW["fa:fa-mouse-pointer-click Next: how you apply<br/>online form, PDF or Word form, portal, email"]
+  CP --> ST["fa:fa-footprints Steps and due dates"]
+  CP --> DO["fa:fa-files Documents at the first step"]
+  CP --> EL["fa:fa-ban Rules that rule you out<br/>typed: years operating, revenue"]
+  CP --> MO["fa:fa-coins Amount, co-funding, consortium"]
+  CP --> AF["fa:fa-clipboard-list After the award<br/>reports, audits, visits"]
+  CP --> HI["fa:fa-eye Next: hidden criteria<br/>form fields, FAQs, earlier rounds,<br/>launch posts, who got funded"]
+  HI -->|"limit only in an earlier round,<br/>or guidance named but not linked"| FL["fa:fa-flag A lead, not a fact<br/>flag to Bernat, ask the funder"]
+  HOW & ST & DO & EL & MO & AF & HI --> FIT
+  FIT{"fa:fa-user-check For this operator"}
+  FIT -->|"can’t apply"| NO["fa:fa-x Next: greyed out"]
+  FIT -->|"effort beyond the return"| LOW["fa:fa-arrow-down Ranked down<br/>effort bars, worth-applying check"]
+  FIT -->|good fit| GO["fa:fa-check Worth applying"]
+  GO --> WR["fa:fa-pen-line Next: writing support<br/>help, not automated applications"]
+  class ST,DO,EL,MO,AF,LOW,GO good
+  class HOW,HI,WR,FIT info
+  class FL warn
+  class NO bad
+  class CP store
+      </script>
+    </section>
+
+    <section id="refresh">
+      <h2>5a. Keeping current: the daily read</h2>
+      <p><code>scripts/refresh/run.ts</code>, the “Read pages” step of <code>refresh.yml</code>, daily at 05:17 UTC. Tier A is code only and lands on main. Tier B goes to two models from different families on Cloudflare Workers AI and becomes a pull request (5b). Jev is not called anywhere in section 1; it checks requirements in Gathering and Processing. Functions: <code>isDue</code> and <code>programmeChecks</code> in <code>state.ts</code>; <code>readPages</code> in <code>fetch.ts</code>; <code>classify</code> and <code>applyTierA</code> in <code>tier.ts</code> (with <code>quoteOnPage</code> from <code>src/data/text.ts</code> and <code>deadlinePassed</code> from <code>deadline.ts</code>); <code>extractAndReview</code> and <code>applyExtraction</code> in <code>tier-b.ts</code>, models called through <code>llm.ts</code>; all under <code>scripts/refresh/</code>. <code>{source-id}</code> is the id in <code>data/sources.json</code>. Colours and arrows as in 1.</p>
+      <script type="text/plain" class="mermaid">
+flowchart TB
+  SRC[("data/sources.json<br/>cycle per source")]
+  CST[("data/checks/sources.json<br/>last_ok, last_hash, last_error")]
+  RD["fa:fa-download isDue, readPages<br/>state.ts, fetch.ts: robots.txt,<br/>4 s per host, text + sha256"]
+  ACC[("data/checks/accepted/{source-id}.json<br/>hash of the accepted page")]
+  CL["fa:fa-split classify, tier.ts<br/>same hash? every quote<br/>still on the page? same site?"]
+  TA["fa:fa-check applyTierA, tier.ts<br/>facts dated today; calls past<br/>deadlinePassed close"]
+  PROG[("data/programmes/{id}.json")]
+  WS["fa:fa-save writeState, run.ts<br/>nextState, programmeChecks"]
+  PCH[("data/checks/programmes.json<br/>“not re-checked since”")]
+  RUNJ[("data/checks/run.json<br/>served as /health.json")]
+  POOL["fa:fa-timer pool.ts<br/>openPrPageHashes, withinBudget<br/>4 at a time, until 50 min"]
+  EX["fa:fa-bot Extractor: gpt-oss-120b<br/>in: facts, page text<br/>out: facts, each with a quote"]
+  AP["fa:fa-shield-check applyExtraction, tier-b.ts<br/>zod schema, LIMITS, quoteOnPage"]
+  RV["fa:fa-bot Reviewer: llama-4-scout-17b<br/>in: draft, page text<br/>out: verdicts, overall, missed"]
+  DRAFT[(".cache/refresh-drafts/{source-id}.json<br/>not committed")]
+  SRC & CST -.-> RD
+  RD --> CL
+  RD -->|failed read| WS
+  ACC -.-> CL
+  CL -->|first read| ACC
+  CL -->|"Tier A: unchanged"| TA
+  TA -->|writes| PROG
+  TA --> WS
+  WS -->|writes| CST & PCH & RUNJ
+  CL -->|"Tier B: changed"| POOL --> EX --> AP --> RV --> DRAFT
+  class RD,CL,TA,WS,POOL,AP good
+  class EX,RV info
+  class SRC,CST,ACC,PROG,PCH,RUNJ,DRAFT store
+      </script>
+    </section>
+
+    <section id="land">
+      <h2>5b. Keeping current: landing and publishing</h2>
+      <p>The rest of <code>refresh.yml</code>, its Monday 06:43 UTC weekly mode, and <code>deploy.yml</code>. Tier A commits go straight to main; every changed fact waits on a pull request. No refresh pull request has been merged so far: an agent session or Bernat checks them against the page and lands the good changes in batches on main, and the rest are closed as superseded. An open decision (20 Nov 2026) would commit clean drafts directly. <code>checkLink</code> is in <code>weekly.ts</code>; the commit step is in <code>refresh.yml</code>; <code>deploy.yml</code> runs hourly at :11. Colours and arrows as in 1.</p>
+      <script type="text/plain" class="mermaid">
+flowchart TB
+  STATE[("data/ from run.ts<br/>and discovery")]
+  SR["fa:fa-coins sync-rates.ts, daily<br/>open.er-api.com rates"]
+  RATES[("data/rates.json")]
+  WK["fa:fa-link weekly.ts, Mondays<br/>checkLink on every link"]
+  LINKS[("data/checks/links.json")]
+  SUM[("GitHub issue<br/>label refresh-summary")]
+  COMMIT["fa:fa-git-commit Commit step<br/>git add data/, rebase,<br/>valid_or_upstream, push"]
+  DRAFT[(".cache/refresh-drafts")]
+  OP["fa:fa-git-pull-request open-prs.ts<br/>a PR per draft; same<br/>refresh-key kept, old closed"]
+  PRR[("Tier B pull request<br/>changes programmes/{id}.json and<br/>checks/accepted/{source-id}.json;<br/>labels refresh, reviewer:verdict")]
+  ISSR[("GitHub issue, label refresh<br/>draft had no files")]
+  REV["fa:fa-user Agent session or Bernat<br/>checks each quote; merging<br/>accepts the page hash;<br/>auto-merge off, none merged yet"]
+  DISP["fa:fa-play gh workflow run deploy.yml"]
+  DEP["fa:fa-rocket deploy.yml: push, hourly :11, dispatch<br/>validate, astro build, wrangler deploy<br/>→ naturefunding.org, digest Worker"]
+  READS[("build reads programmes,<br/>rates, checks/programmes.json,<br/>checks/run.json")]
+  SR -->|writes| RATES
+  WK -->|writes| LINKS
+  WK --> SUM
+  STATE & RATES & LINKS -.-> COMMIT
+  COMMIT -->|"pushed to main"| DISP --> DEP
+  COMMIT --> OP
+  DRAFT -.-> OP
+  OP --> PRR --> REV
+  OP --> ISSR
+  REV -->|"merge, or batch commit"| DEP
+  READS -.-> DEP
+  class SR info
+  class COMMIT,OP,DISP,WK,DEP good
+  class REV warn
+  class STATE,RATES,LINKS,SUM,DRAFT,PRR,ISSR,READS store
+      </script>
+    </section>
+  </main>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/lucide@0.469.0/dist/umd/lucide.min.js"
+        integrity="sha384-hJnF5AwidE18GSWTAGHv3ByzzvfNZ1Tcx5y1UUV3WkauuMCEzBJBMSwSt/PUPXnM"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/pele@1.13.0/dist/pele.global.js"
+        integrity="sha384-vDPV1LDXGIwjU5/gMUtHbn/WAmwRmOgkQpiq+Rm4d/BPTsdfpIUpvi2xVET6z85W"
+        crossorigin="anonymous"></script>
+<script>
+(function () {
+  var root = document.documentElement;
+
+  // Theme switch. Colors are CSS variables, so diagrams change without re-rendering.
+  var buttons = document.querySelectorAll('[data-theme-choice]');
+  function showTheme() {
+    buttons.forEach(function (b) { b.setAttribute('aria-pressed', String(b.dataset.themeChoice === root.dataset.theme)); });
+  }
+  buttons.forEach(function (b) {
+    b.addEventListener('click', function () {
+      root.dataset.theme = b.dataset.themeChoice;
+      try { localStorage.setItem('pele-theme', root.dataset.theme); } catch (e) {}
+      showTheme();
+    });
+  });
+  showTheme();
+
+  function dedent(text) {
+    var lines = text.replace(/^\s*\n/, '').replace(/\s+$/, '').split('\n');
+    var indent = Math.min.apply(null, lines.filter(function (l) { return l.trim(); }).map(function (l) { return l.match(/^\s*/)[0].length; }));
+    return lines.map(function (l) { return l.slice(indent); }).join('\n');
+  }
+  function slug(text) {
+    return text.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '') || 'diagram';
+  }
+  // Icons: `fa:fa-<name>` in a label draws the Lucide icon of that name (lucide.dev/icons), e.g. fa:fa-mail.
+  function lucideIcon(name) {
+    var key = String(name).replace(/^[a-z]*:/, '').replace(/^fa-/, '');
+    var pascal = key.split('-').map(function (w) { return w.charAt(0).toUpperCase() + w.slice(1); }).join('');
+    var node = window.lucide && lucide.icons && lucide.icons[pascal];
+    if (!node) return null;
+    if (node[0] === 'svg') node = node[2]; // the UMD build wraps the children in ['svg', attrs, children]
+    var children = node.map(function (child) {
+      var attrs = Object.keys(child[1]).map(function (k) { return k + '="' + child[1][k] + '"'; }).join(' ');
+      return '<' + child[0] + ' ' + attrs + '/>';
+    }).join('');
+    return '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">' + children + '</svg>';
+  }
+  var copyIcon = '<svg aria-hidden="true" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"></rect><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"></path></svg>';
+
+  // Diagrams: each Mermaid script becomes a card.
+  document.querySelectorAll('script.mermaid').forEach(function (script) {
+    var source = dedent(script.textContent);
+    var card = document.createElement('div');
+    card.className = 'example-card';
+    card.innerHTML = '<div class="example-label"><span class="example-type"></span>' +
+      '<button type="button" class="copy-button" aria-label="Copy Mermaid source" title="Copy Mermaid source">' + copyIcon + '</button></div>' +
+      '<div class="example-figure"></div>';
+    script.replaceWith(card);
+    var type = card.querySelector('.example-type');
+    var figure = card.querySelector('.example-figure');
+    var copy = card.querySelector('.copy-button');
+    if (!navigator.clipboard) copy.hidden = true;
+    copy.addEventListener('click', function () {
+      navigator.clipboard.writeText(source).then(function () {
+        copy.setAttribute('data-copied', '');
+        setTimeout(function () { copy.removeAttribute('data-copied'); }, 1200);
+      }, function () { copy.hidden = true; });
+    });
+    if (window.pele) {
+      pele.mount(figure, source, {
+        icons: lucideIcon,
+        onRender: function (r) { type.textContent = r.type; figure.style.setProperty('--grow-to', Math.round(r.width * 1.5) + 'px'); }
+      });
+    } else {
+      var pre = document.createElement('pre');
+      pre.className = 'example-source';
+      pre.textContent = source;
+      figure.appendChild(pre);
+    }
+  });
+
+  // Table of contents from the sections' h2s; shown only with two or more diagrams.
+  var sections = Array.prototype.filter.call(document.querySelectorAll('main > section'), function (s) { return s.querySelector('h2'); });
+  if (sections.length < 2) return;
+  document.body.classList.add('has-toc');
+  var links = [], used = {};
+  sections.forEach(function (s) {
+    var id = s.id || slug(s.querySelector('h2').textContent), n = 1;
+    while (used[id + (n > 1 ? '-' + n : '')]) n++;
+    s.id = id + (n > 1 ? '-' + n : '');
+    used[s.id] = true;
+  });
+  document.querySelectorAll('nav.toc').forEach(function (nav) {
+    var title = document.createElement('a');
+    title.className = 'toc-title';
+    title.href = '#';
+    title.textContent = document.querySelector('.docs-title h1').textContent;
+    var children = document.createElement('div');
+    children.className = 'toc-children';
+    sections.forEach(function (s) {
+      var a = document.createElement('a');
+      a.href = '#' + s.id;
+      a.textContent = s.querySelector('h2').textContent;
+      children.appendChild(a);
+      links.push(a);
+    });
+    nav.append(title, children);
+  });
+  function markCurrent() {
+    var current = sections[0];
+    sections.forEach(function (s) { if (s.getBoundingClientRect().top < innerHeight * 0.35) current = s; });
+    if (innerHeight + scrollY >= document.documentElement.scrollHeight - 2) current = sections[sections.length - 1];
+    links.forEach(function (a) {
+      if (a.getAttribute('href') === '#' + current.id) a.setAttribute('aria-current', 'location');
+      else a.removeAttribute('aria-current');
+    });
+  }
+  addEventListener('scroll', markCurrent, { passive: true });
+  addEventListener('resize', markCurrent);
+  markCurrent();
+})();
+</script>
+</body>
+</html>

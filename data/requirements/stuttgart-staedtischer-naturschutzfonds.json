@@ -1,0 +1,190 @@
+{
+  "id": "stuttgart-staedtischer-naturschutzfonds",
+  "read_on": "2026-11-20",
+  "prompt_version": "req-2026-11-20.1",
+  "models": ["cursor:gpt-5.6-luna-high", "cursor:gpt-5.6-sol-high"],
+  "complete": false,
+  "reasons": [
+    "1 links could not be ranked without Jev",
+    "the crawl bound left https://www.stuttgart.de/medien/ibs/2.1_anlage_2a_erlaeuterungen_zu_de-minimis-beihilfen_v2025.pdf unread",
+    "the crawl bound left https://www.stuttgart.de/medien/ibs/2.2_anlage_2b_erklaerung_ueber_erhaltene_und_beantragte_de-minimis-beihilfen.pdf unread",
+    "the text names a document with rules that was not read: Geschäftsanweisung für die Gewährung von städtischen Zuwendungen vom 10. November 2005 in der jeweils geltenden Fassung",
+    "the text names a document with rules that was not read: Handlungsleitfaden für die Sanierung von Trockenmauern",
+    "the text names a document with rules that was not read: Nebenbestimmungen zur Bezuschussung von Geräten und Maschinen",
+    "the text names a document with rules that was not read: Anlage 2a: Erläuterungen zu De-minimis-Beihilfen",
+    "the text names a document with rules that was not read: Anlage 2b: Erklärung über De-minimis-Beihilfen",
+    "the text names a document with rules that was not read: Verordnung (EU) Nr. 1408/2013 über De-minimis-Beihilfen im Agrarsektor",
+    "the text names a document with rules that was not read: Verordnung (EU) Nr. 319/2019 zur Änderung der Verordnung (EU) Nr. 1408/2013",
+    "Jev did not check this reading, so an absent fact is not known to be absent",
+    "strong reading: the text names a document with rules that was not read: Antrag Naturschutzfonds Anlage 2a: Erläuterungen zu De-minimis-Beihilfen",
+    "strong reading: the text names a document with rules that was not read: Handlungsleitfaden für die Sanierung von Trockenmauern",
+    "strong reading: the text names a document with rules that was not read: Nebenbestimmungen zur Bezuschussung von Geräten und Maschinen"
+  ],
+  "requirements_checked": false,
+  "documents": [
+    {
+      "ref": "D1",
+      "url": "https://www.stuttgart.de/leben/umwelt/naturschutz/staedtischer-naturfonds",
+      "final_url": "https://www.stuttgart.de/leben/umwelt/naturschutz/staedtischer-naturfonds",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 5116,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:a7ba0cc8fdb70262d82f7de5d5b7d1b2c41be9f414aa2a8e4534e360605dabc5"
+    },
+    {
+      "ref": "D2",
+      "url": "https://www.stuttgart.de/medien/ibs/1.0_antrag_auf_gewaehrung_einer_zuwendung_aus_dem_naturschutzfonds_v202608.pdf",
+      "final_url": "https://www.stuttgart.de/medien/ibs/1.0_antrag_auf_gewaehrung_einer_zuwendung_aus_dem_naturschutzfonds_v202608.pdf",
+      "from": "https://www.stuttgart.de/leben/umwelt/naturschutz/staedtischer-naturfonds",
+      "anchor": "Antrag auf Gewährung einer Zuwendung aus dem NaturschutzfondsPDF-Datei1,02 MB",
+      "depth": 1,
+      "pdf": true,
+      "chars": 6058,
+      "pages": 4,
+      "low_text": false,
+      "hash": "sha256:47b511e6ddf37327063338d71c5ac1329c84bd8221e21bf6b93fd05c199b1bd2"
+    },
+    {
+      "ref": "D3",
+      "url": "https://www.stuttgart.de/medien/ibs/1.1_anlage_1_einverstaendniserklaerung_grundstueckseigentuemer.pdf",
+      "final_url": "https://www.stuttgart.de/medien/ibs/1.1_anlage_1_einverstaendniserklaerung_grundstueckseigentuemer.pdf",
+      "from": "https://www.stuttgart.de/leben/umwelt/naturschutz/staedtischer-naturfonds",
+      "anchor": "Antrag Naturschutzfonds Anlage 1.1: EinverständniserklärungPDF-Datei748,17 kB",
+      "depth": 1,
+      "pdf": true,
+      "chars": 1415,
+      "pages": 1,
+      "low_text": false,
+      "hash": "sha256:521ff483826b17c9e5f9284961ad76bbb46423a7b2d99bcd280a18e151525064"
+    },
+    {
+      "ref": "D4",
+      "url": "https://www.stuttgart.de/medien/ibs/1.2-naturschutzfonds-dsgvo-art13.pdf",
+      "final_url": "https://www.stuttgart.de/medien/ibs/1.2-naturschutzfonds-dsgvo-art13.pdf",
+      "from": "https://www.stuttgart.de/leben/umwelt/naturschutz/staedtischer-naturfonds",
+      "anchor": "Antrag Naturschutzfonds Anlage 1.2: Hinweise DSGVOPDF-Datei23,56 kB",
+      "depth": 1,
+      "pdf": true,
+      "chars": 2199,
+      "pages": 1,
+      "low_text": false,
+      "hash": "sha256:a222182fe0c2d9701f4f75c4376be2274cb096e31808228e4cb4d16ab1f9208e"
+    },
+    {
+      "ref": "D5",
+      "url": "https://www.stuttgart.de/medien/ibs/1.3-naturschutzfonds-nebenbestimmungen-trockenmauern.pdf",
+      "final_url": "https://www.stuttgart.de/medien/ibs/1.3-naturschutzfonds-nebenbestimmungen-trockenmauern.pdf",
+      "from": "https://www.stuttgart.de/leben/umwelt/naturschutz/staedtischer-naturfonds",
+      "anchor": "Antrag Naturschutzfonds Anlage 1.3: Nebenbestimmungen für die Förderung von TrockenmauernPDF-Datei311,71 kB",
+      "depth": 1,
+      "pdf": true,
+      "chars": 4701,
+      "pages": 2,
+      "low_text": false,
+      "hash": "sha256:94e7bd55ed1a536a2292d4954342e8c6f6b591ee5cb4e75be42bddc8eb07fd85"
+    },
+    {
+      "ref": "D6",
+      "url": "https://www.stuttgart.de/medien/ibs/2.1-rps-33-hinweise-fachgerecht-baumschnitt.pdf",
+      "final_url": "https://www.stuttgart.de/medien/ibs/2.1-rps-33-hinweise-fachgerecht-baumschnitt.pdf",
+      "from": "https://www.stuttgart.de/leben/umwelt/naturschutz/staedtischer-naturfonds",
+      "anchor": "Antrag Naturschutzfonds Anlage 2.1: Fachliche Hinweise zum Schnitt von StreuobstbäumenPDF-Datei569,26 kB",
+      "depth": 1,
+      "pdf": true,
+      "chars": 3086,
+      "pages": 2,
+      "low_text": false,
+      "hash": "sha256:ef960e30cb18454447314467f855a9d764780b68cebc16cd1b0ac581fa89f166"
+    },
+    {
+      "ref": "D7",
+      "url": "https://www.stuttgart.de/medien/ibs/naturschutzfonds-foerderrichtlinie-2022-02-03.pdf",
+      "final_url": "https://www.stuttgart.de/medien/ibs/naturschutzfonds-foerderrichtlinie-2022-02-03.pdf",
+      "from": "https://www.stuttgart.de/leben/umwelt/naturschutz/staedtischer-naturfonds",
+      "anchor": "Naturschutzfonds: FörderrichtliniePDF-Datei495,81 kB",
+      "depth": 1,
+      "pdf": true,
+      "chars": 10168,
+      "pages": 4,
+      "low_text": false,
+      "hash": "sha256:332629403e4c0c1745435cac4ef0c2992efc206f103eb77fe538a2a3b06a9b41"
+    },
+    {
+      "ref": "D8",
+      "url": "https://www.stuttgart.de/medien/ibs/lhs-naturschutzfonds-festbetragsfoerderung-20260421.pdf",
+      "final_url": "https://www.stuttgart.de/medien/ibs/lhs-naturschutzfonds-festbetragsfoerderung-20260421.pdf",
+      "from": "https://www.stuttgart.de/leben/umwelt/naturschutz/staedtischer-naturfonds",
+      "anchor": "Naturschutzfond: Festbeträge 2026PDF-Datei187,37 kB",
+      "depth": 1,
+      "pdf": true,
+      "chars": 15517,
+      "pages": 8,
+      "low_text": false,
+      "hash": "sha256:d10cdc19efe0b0d37b8b63f64646fcddab3bab90167991fd1e60289b46439cfd"
+    },
+    {
+      "ref": "D9",
+      "url": "https://www.stuttgart.de/medien/ibs/2.2-rps-33-infoblatt-mistel.pdf",
+      "final_url": "https://www.stuttgart.de/medien/ibs/2.2-rps-33-infoblatt-mistel.pdf",
+      "from": "https://www.stuttgart.de/leben/umwelt/naturschutz/staedtischer-naturfonds",
+      "anchor": "Antrag Naturschutzfonds Anlage 2.2: MistelentfernungPDF-Datei329,99 kB",
+      "depth": 1,
+      "pdf": true,
+      "chars": 1579,
+      "pages": 1,
+      "low_text": false,
+      "hash": "sha256:d654f122382620a92e9d2b8b096a5324eeb78a50fbb589ba430e6553b7230339"
+    }
+  ],
+  "failures": [
+    {
+      "url": "https://www.stuttgart.de/medien/ibs/2.1_anlage_2a_erlaeuterungen_zu_de-minimis-beihilfen_v2025.pdf",
+      "from": "https://www.stuttgart.de/leben/umwelt/naturschutz/staedtischer-naturfonds",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://www.stuttgart.de/medien/ibs/2.2_anlage_2b_erklaerung_ueber_erhaltene_und_beantragte_de-minimis-beihilfen.pdf",
+      "from": "https://www.stuttgart.de/leben/umwelt/naturschutz/staedtischer-naturfonds",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    }
+  ],
+  "skipped_links": 57,
+  "chunks": [
+    { "id": "all", "docs": ["D1", "D2", "D3", "D4", "D5", "D6", "D7", "D8", "D9"], "chars": 51487 }
+  ],
+  "outcomes": {
+    "eligibility": "partial",
+    "documents": "stated",
+    "effort": "stated",
+    "co_finance": "stated",
+    "consortium": "not_found",
+    "after_award": "stated"
+  },
+  "written": ["eligibility", "documents", "effort", "co_finance", "after_award"],
+  "escalated": ["eligibility", "documents"],
+  "flags": [
+    {
+      "field": "eligibility",
+      "item": "Not receiving or applying for other public environmental grants for the same measure",
+      "why": "the quote is not on any gathered document"
+    },
+    {
+      "field": "eligibility",
+      "item": "Not receiving or applying for other public environmental funding for the same measure",
+      "why": "the quote is not on any gathered document"
+    }
+  ],
+  "notes": [
+    "extractor: The fixed-amount funding was revised in 2026, with the updated version applying from 2026-04-22. The guideline says applications should arrive by 31 March, but gives no year, so no due date is recorded.",
+    "source stuttgart-staedtischer-naturschutzfonds-2: added for https://www.stuttgart.de/medien/ibs/naturschutzfonds-foerderrichtlinie-2022-02-03.pdf",
+    "source stuttgart-staedtischer-naturschutzfonds-3: added for https://www.stuttgart.de/medien/ibs/1.0_antrag_auf_gewaehrung_einer_zuwendung_aus_dem_naturschutzfonds_v202608.pdf",
+    "source stuttgart-staedtischer-naturschutzfonds-4: added for https://www.stuttgart.de/medien/ibs/lhs-naturschutzfonds-festbetragsfoerderung-20260421.pdf"
+  ],
+  "usd": 0
+}
