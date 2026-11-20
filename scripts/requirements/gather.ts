@@ -57,10 +57,18 @@ export type Gathered = {
 
 /** Words that mark a link to what an applicant must meet or submit, in the languages we list. */
 const RELEVANT =
-  /guideline|guidance|guide\b|checklist|attachments?\b|annex(?:es)?\b|enclosures?|supporting documents|required documents|match(?:ing)? form|bijlage|anlage|pi[eè]ces (?:justificatives|à joindre)|anexos?\b|\ballegat[oi]\b|handbook|manual|(?:call|requests?) for (?:proposals|applications)|eligib|criteria|how to apply|application|\bRFA\b|\bRFP\b|apply|faq|frequently asked|terms and conditions|conditions|rules|requirements|prospectus|policy|programme document|funding information|grant agreement|reporting|richtlinie|merkblatt|leitfaden|förderaufruf|ausschreibung|antrag|förderbedingungen|voraussetzung|bases|convocatoria|requisitos|reglamento|gu[ií]a|criterios|solicitud|edital|regulamento|lignes directrices|appel à projets|règlement|cahier des charges|conditions d'éligibilité|dossier de candidature|subsidieregeling|voorwaarden|aanvragen|regeling|beleidsregel|bando|regolamento|募集要項|要綱|応募|助成|ansøg|retningslinjer|søknad|riktlinjer|ansökan|villkor|hakuohje|tukiehdot/i
+  /guideline|guidance|guide\b|checklist|attachments?\b|annex(?:es)?\b|enclosures?|supporting documents|required documents|match(?:ing)? form|bijlage|anlage|pi[eè]ces (?:justificatives|à joindre)|anexos?\b|\ballegat[oi]\b|handbook|manual|(?:call|requests?) for (?:proposals|applications)|eligib|criteria|how to apply|application|\bRFA\b|\bRFP\b|apply|faq|frequently asked|terms and conditions|conditions|rules|requirements|prospectus|(?:grants?|grant-?making|funding|fund|eligibility|applicants?|application|indirect[ -]costs?|safeguard(?:ing)?|procurement|programme|program)\b[\w ,&-]{0,25}?polic(?:y|ies)|polic(?:y|ies) (?:on|for)\b|programme document|funding information|grant agreement|reporting|richtlinie|merkblatt|leitfaden|förderaufruf|ausschreibung|antrag|förderbedingungen|voraussetzung|bases|convocatoria|requisitos|reglamento|gu[ií]a|criterios|solicitud|edital|regulamento|lignes directrices|appel à projets|règlement|cahier des charges|conditions d'éligibilité|dossier de candidature|subsidieregeling|voorwaarden|aanvragen|regeling|beleidsregel|bando|regolamento|募集要項|要綱|応募|助成|ansøg|retningslinjer|søknad|riktlinjer|ansökan|villkor|hakuohje|tukiehdot/i
 
 const NOISE =
   /annual report|news|press|blog|event|privacy|cookie|login|log in|sign in|donat|career|job|vacanc|newsletter|subscribe|twitter|facebook|linkedin|instagram|youtube|past (?:grantees|recipients|projects)|grantees|recipients|awarded|results|winners|impressum|datenschutz|kontakt|contact|sitemap/i
+
+/**
+ * A site's own legal and account pages, linked from every page's footer: never a programme's rules, whatever
+ * else their words match ("Privacy Policy", "Conditions of Use"). Tested on the link's words and the URL's
+ * last segment, before relevance. Bare "Terms and Conditions" is not here: funders put grant terms under that name.
+ */
+export const SITE_PAGE =
+  /privacy|cookie|data[ -]protection|datenschutz|impressum|integritetspolicy|個人情報|legal[ -]notice|mentions[ -]l[ée]gales|aviso[ -]legal|terms[ -]of[ -](?:use|service|sale)|conditions[ -]of[ -]use|conditions[ -]d'utilisation|website[ -]terms|\buse[ -]policy|accessibility|disclaimer|copyright|refund[ -]polic|(?:sms|mobile)[ -]terms|sitemap/i
 
 const SKIP_HREF = /^(?:mailto:|tel:|javascript:|#)|\.(?:jpe?g|png|gif|svg|webp|zip|mp4|mp3)(?:$|\?)/i
 const DOC_HREF = /\.(?:pdf|docx?|odt|rtf)(?:$|[?#])/i
@@ -88,6 +96,23 @@ export const isFileHost = (host: string) => FILE_HOST.test(host)
 /** `offsite`: a page on another site whose link is about applying; it is ranked like any link, but never read: a kept one blocks the stamp. */
 export type Candidate = Link & { url: string; score: 'strong' | 'ambiguous' | 'offsite' | 'skip'; why: string; offsite?: true }
 
+/** The segments of a link's path past the longest folder prefix it shares with any of these pages on its host. */
+export function ownPath(u: URL, pages: string[]): string {
+  const segs = (p: string) => decodeURIComponent(p).split('/').filter(Boolean)
+  const mine = segs(u.pathname)
+  let shared = 0
+  for (const page of pages) {
+    const other = URL.parse(page)
+    if (!other || other.hostname !== u.hostname) continue
+    // The link keeps at least its own last segment.
+    const folders = segs(other.pathname)
+    let n = 0
+    while (n < folders.length && n < mine.length - 1 && folders[n] === mine[n]) n++
+    shared = Math.max(shared, n)
+  }
+  return mine.slice(shared).join('/')
+}
+
 /** What code can say about a link: follow it, ask Jev, or skip it, and why. */
 export function classifyLink(link: Link, pageUrl: string, programme: Pick<Programme, 'name' | 'url'>): Candidate {
   let url: string
@@ -100,13 +125,17 @@ export function classifyLink(link: Link, pageUrl: string, programme: Pick<Progra
   if (SKIP_HREF.test(link.href) || !/^https?:$/.test(u.protocol)) return { ...link, url, score: 'skip', why: 'not a page' }
   if (SOCIAL.test(u.hostname)) return { ...link, url, score: 'skip', why: 'social media' }
   if (urlKey(url) === urlKey(pageUrl)) return { ...link, url, score: 'skip', why: 'same page' }
-  const words = `${link.text} ${decodeURIComponent(u.pathname)}`
+  const path = decodeURIComponent(u.pathname)
+  if (SITE_PAGE.test(link.text) || SITE_PAGE.test(path.split('/').filter(Boolean).at(-1) ?? '')) return { ...link, url, score: 'skip', why: 'privacy, cookie, legal or site terms page' }
   const fileHost = isFileHost(u.hostname)
   const sameSite = fileHost || site(u.hostname) === site(new URL(pageUrl).hostname) || site(u.hostname) === site(new URL(programme.url).hostname)
   // The same page in another language spends the crawl bound on text already read.
   const lang = langOf(u.pathname)
   if (sameSite && lang && lang !== langOf(new URL(pageUrl).pathname)) return { ...link, url, score: 'skip', why: 'another language' }
   const doc = DOC_HREF.test(url) || fileHost
+  // The path counts only past the part it shares with the page or the programme's own URL: a sibling programme
+  // under /grants/funding-applications/ is not about applying because its folder is.
+  const words = `${link.text} ${ownPath(u, [pageUrl, programme.url])}`
   const relevant = RELEVANT.test(words) || (RELEVANT.test(link.context) && doc)
   const named = comparable(link.text).length > 3 && comparable(`${link.text} ${link.context}`).includes(comparable(programme.name).slice(0, 40))
   if (NOISE.test(link.text) && !relevant) return { ...link, url, score: 'skip', why: 'news, contact or account page' }
@@ -212,6 +241,23 @@ export function politeReader(cacheDir: string | null, gapMs = HOST_GAP_MS): Read
     }
     return out
   }
+}
+
+/** Words that name a kind of funding, not a programme: what is left of a name after the funder's must say more. */
+const GENERIC_NAME = new Set('the a an of for and our grant grants fund funds funding programme programmes program programs scheme schemes call calls foundation trust'.split(' '))
+
+/**
+ * How a document names this programme, folded for matching: its full name, and its name without the funder's or
+ * administrator's ("Keystone Grants" for "Save Our Seas Foundation Keystone Grants") when what is left still
+ * says which programme. Never the funder's name alone.
+ */
+export function programmeNames(p: Pick<Programme, 'name' | 'funder' | 'administered_by'>): string[] {
+  const full = comparable(p.name)
+  let short = full
+  for (const org of [p.funder.name, p.administered_by?.name]) if (org) short = short.replace(comparable(org), ' ')
+  short = normalise(short).replace(/^[\s,:–—-]+|[\s,:–—-]+$/g, '')
+  const distinctive = short.split(/[^\p{L}\p{N}]+/u).some((w) => w.length > 1 && !GENERIC_NAME.has(w))
+  return [...new Set([full.slice(0, 50), ...(distinctive && short.length > 4 ? [short.slice(0, 50)] : [])])].filter((n) => n.length > 4)
 }
 
 /** The pages a programme cites: its main page, its calls' pages and every evidence source. */
@@ -360,8 +406,10 @@ export async function gather(
     frontier = next
   }
 
-  // A followed document must be about this programme by its own text, not just its link. One on another host
-  // needs Jev's yes: naming the funder is not enough, since a third party's guide names it too.
+  // A followed document must be about this programme by its own text, not just its link. Naming the funder is not
+  // enough: every page of its site does, its other programmes' included, and a third party's guide names it too.
+  // Only the programme's own name lets a first-party document skip Jev; one on another host always needs Jev's yes.
+  const names = programmeNames(p)
   const firstParty = new Set(seedsOf(p).map((u) => URL.parse(u)?.hostname).filter((h): h is string => !!h).map(site))
   for (const d of [...docs]) {
     if (d.depth === 0 || d.low_text) continue
@@ -369,8 +417,7 @@ export async function gather(
     // (Wix serves site files from filesusr.com), is still first-party.
     const offsite = !firstParty.has(site(new URL(d.url).hostname)) && !isFileHost(new URL(d.url).hostname)
     const head = comparable(d.text.slice(0, 20_000))
-    const names = [p.name, p.funder.name, p.administered_by?.name].filter((n): n is string => !!n).map((n) => comparable(n).slice(0, 50))
-    if (!offsite && names.some((n) => n.length > 4 && head.includes(n))) continue
+    if (!offsite && names.some((n) => head.includes(n))) continue
     let about = offsite ? 0 : 0.5
     if (opts.jev) {
       const a = await opts.jev(p.id, { programme: { name: p.name, funder: p.funder.name, rounds: p.calls.map((c) => c.label) }, document: { url: d.url, linked_as: d.anchor, opening: d.text.slice(0, 6000) } }, {

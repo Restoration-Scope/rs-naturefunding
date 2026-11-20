@@ -3,7 +3,8 @@ import type { z } from 'zod'
 import { programme as programmeSchema, type Programme, type Source } from '../../src/data/schema'
 import { thinFields } from './check'
 import { apiWire, chunksOf, reconcile, splitText, toApi, type Wire } from './extract'
-import { classifyLink, gather, lowTextPdf, scannedPages, type Doc, type Reader } from './gather'
+import { classifyLink, gather, lowTextPdf, programmeNames, scannedPages, type Doc, type Reader } from './gather'
+import { leadsOf, leadsSection, UNREAD_DOC } from './leads'
 import { Cache, costOf, Ledger, metered, openaiModel, type Answer, type Question } from './models'
 import { emptyWire, keptFromFirst, run } from './pipeline'
 import { queue } from './queue'
@@ -509,6 +510,145 @@ describe('gather: coverage it must not claim', () => {
     const g = await gather(base, { read, sources: [] })
     expect(g.docs.map((d) => d.url)).not.toContain('https://guides.example.net/test-nature-grants-guide.pdf')
     expect(g.complete).toBe(false)
+  })
+})
+
+describe('gather: site pages and sibling programmes', () => {
+  const at = 'https://test.example.org/grants'
+  const score = (href: string, text: string) => classifyLink({ href, text, context: '' }, at, base).score
+
+  test('privacy, cookie and site terms pages are skipped whatever else their words match', () => {
+    // Link words and URLs from manifests that read them as rules (2026-11-20).
+    for (const [href, text] of [
+      ['/privacy-policy/', 'Privacy Policy'],
+      ['/cookie-policy/', 'Cookie Policy'],
+      ['/Policies/State-Privacy-Policy', 'Policies'],
+      ['/coast-funds-privacy-policy/', 'terms and conditions'],
+      ['/Use', 'Conditions of Use'],
+      ['/terms-and-conditions', 'Terms of use'],
+      ['/datenschutz', 'Datenschutz'],
+      ['/integritetspolicy/', 'Integritetspolicy'],
+      ['/accessibility-policy', 'Accessibility Policy'],
+      ['/policies/refund-policy', 'Refund Policy'],
+      ['/terms-conditions/', 'Terms & Disclaimers'],
+    ]) expect(`${text}: ${score(href, text)}`).toBe(`${text}: skip`)
+  })
+
+  test('policy counts only as a funding policy', () => {
+    for (const [href, text] of [
+      ['/wp-content/uploads/glft_updated_equipment_policy.pdf', 'GLFT Policy on Equipment Purchase'],
+      ['/apply-grant/application-information/indirect-cost-policy', 'NFWF Indirect Cost Policy for Applicants'],
+      ['/wp-content/uploads/Policy_Grant_Request.pdf', 'Grants Request Policy'],
+      ['/wp-content/uploads/CCEFF-Funding-Approval-Policy.pdf', 'Funding Approval Policy'],
+      ['/wp-content/uploads/Safeguarding-Policy.pdf', 'Safeguarding policy'],
+      ['/community-funding/environmental-programme-grants-policy/', 'Environmental Programme Grants Policy'],
+      // Funders publish grant terms under the bare name; only the site's own terms are skipped.
+      ['/our-community/grants/terms-and-conditions/', 'Terms and Conditions'],
+    ]) expect(`${text}: ${score(href, text)}`).toBe(`${text}: strong`)
+    for (const [href, text] of [
+      ['/about/boards/policy-board/', 'Policy Board'],
+      ['/law-and-policy', 'Law & Policy'],
+      ['/about/coi-policy/', 'Conflict of Interest Policy'],
+      ['/being-an-ocean-advocate-talk-to-your-policymakers/', 'Talk to Your Policymakers'],
+      ['/wp-content/uploads/CCTV-Policy.docx', 'CCTV policy'],
+    ]) expect(`${text}: ${score(href, text)}`).not.toBe(`${text}: strong`)
+  })
+
+  // Save Our Seas (2026-11-20): the Keystone page links the funder's other grants under the same folder, whose
+  // path says "applications"; they used up the bound and the Keystone stage 2 form went unread.
+  const url = 'https://ocean.example.org/grants/funding-applications/keystone-grants/'
+  const keystone = programmeSchema.parse({
+    ...base,
+    id: 'ocean-fund-keystone-grants',
+    name: 'Ocean Fund Keystone Grants',
+    funder: { name: 'Ocean Fund', url: 'https://ocean.example.org/' },
+    url,
+    evidence: Object.fromEntries(Object.entries(base.evidence).map(([k, e]) => [k, { ...e, source_url: url }])),
+  })
+  const words = (s: string) => `${s} `.repeat(30)
+  const siblings = ['small-grants', 'ocean-storytelling-film-grant', 'ocean-storytelling-photography-grant', 'conservation-fellowship']
+  const stage = (n: number) => `https://ocean.example.org/wp-content/uploads/2026/10/application-guidelines-keystone-grant-stage-${n}-form.pdf`
+  const page = `<html><body><main><h1>Keystone Grants</h1><p>${words('Ocean Fund Keystone Grants support projects in the ocean. Apply online once the call opens.')}</p>
+<p>Our other grants: <a href="/grants/funding-applications/small-grants/">Small Grants</a> <a href="/grants/funding-applications/ocean-storytelling-film-grant/">Ocean Storytelling Film Grant</a> <a href="/grants/funding-applications/ocean-storytelling-photography-grant/">Ocean Storytelling Photography Grant</a> <a href="/grants/funding-applications/conservation-fellowship/">Conservation Fellowship</a>. Apply for each separately.</p>
+<p><a href="/faq/">FAQ</a> <a href="${stage(1)}">Stage 1 form with guidelines</a> <a href="${stage(2)}">Stage 2 form with guidelines</a></p>
+<footer><a href="/privacy-policy/">Privacy Policy</a> <a href="/terms/">Terms</a></footer></main></body></html>`
+  const pages: Record<string, string> = {
+    [url]: page,
+    'https://ocean.example.org/faq/': words('Keystone Grants questions. Applicants must be registered organisations.'),
+    [stage(1)]: words('Keystone Grants stage 1. Applicants must submit a concept note.'),
+    [stage(2)]: words('Keystone Grants stage 2. Applicants must submit a full budget.'),
+    'https://ocean.example.org/privacy-policy/': words('Ocean Fund privacy policy. We process your personal data.'),
+    'https://ocean.example.org/terms/': words('Ocean Fund website terms. Use of this site.'),
+    ...Object.fromEntries(siblings.map((s) => [`https://ocean.example.org/grants/funding-applications/${s}/`, words(`Ocean Fund ${s}. Applicants must be students.`)])),
+  }
+
+  test('a sibling programme’s page and the site’s privacy page don’t use up the bound, without Jev', async () => {
+    const g = await gather(keystone, { read: fakeReader(pages), sources: [], bounds: { depth: 2, documents: 4 } })
+    const read = g.docs.map((d) => d.url)
+    expect(read).toContain(stage(2))
+    expect(read).toContain(stage(1))
+    expect(read).toContain('https://ocean.example.org/faq/')
+    for (const s of siblings) expect(read).not.toContain(`https://ocean.example.org/grants/funding-applications/${s}/`)
+    expect(read).not.toContain('https://ocean.example.org/privacy-policy/')
+    expect(g.reasons.join(' ')).not.toContain('crawl bound')
+  })
+
+  test('naming the funder does not make a page about this programme; naming the programme does', async () => {
+    // A sibling linked as guidance gets past the link check; its own text names only the funder and another grant.
+    const linked = page.replace('<a href="/faq/">FAQ</a>', '<a href="/faq/">FAQ</a> <a href="/grants/small-grants-guidelines/">Grant guidelines</a>')
+    const read = fakeReader({ ...pages, [url]: linked, 'https://ocean.example.org/grants/small-grants-guidelines/': words('Ocean Fund Small Grants guidelines. Applicants must be students.') })
+    const jev = fakeJev([{ match: /^about$/, p: 0.1 }])
+    const g = await gather(keystone, { read, sources: [], jev: jev.ask })
+    const docs = g.docs.map((d) => d.url)
+    expect(docs).not.toContain('https://ocean.example.org/grants/small-grants-guidelines/')
+    expect(g.failures.find((f) => f.url === 'https://ocean.example.org/grants/small-grants-guidelines/')?.kind).toBe('off_topic')
+    // The FAQ and forms say "Keystone Grants" without the funder: the programme's own name, so Jev isn't asked.
+    expect(docs).toContain('https://ocean.example.org/faq/')
+    expect(docs).toContain(stage(2))
+  })
+
+  test('a programme’s names: in full, and without the funder only when what is left says which programme', () => {
+    expect(programmeNames(keystone)).toEqual(['ocean fund keystone grants', 'keystone grants'])
+    expect(programmeNames({ ...keystone, name: 'Ocean Fund Grants' })).toEqual(['ocean fund grants'])
+    expect(programmeNames(base)).toEqual(['test nature grants'])
+  })
+})
+
+describe('leads for a person', () => {
+  const call = (status: string) => ({ status }) as Programme['calls'][number]
+  const m = (id: string, reasons: string[], failures: { url: string; kind: string }[] = [], unresolved: string[] = []) => ({
+    id,
+    reasons,
+    failures: failures.map((f) => ({ ...f, from: null, message: '' })) as never,
+    outcomes: Object.fromEntries(['eligibility', 'documents', 'effort', 'co_finance', 'consortium', 'after_award'].map((f) => [f, unresolved.includes(f) ? 'unresolved' : 'stated'])) as never,
+  })
+
+  test('unread rules documents, offsite pages and unresolved fields become one lead per programme, open calls first', () => {
+    const leads = leadsOf(
+      [
+        m('closed-one', [`${UNREAD_DOC}Grant agreement template`]),
+        m('open-one', [`${UNREAD_DOC}Application guidance`, `second reading: ${UNREAD_DOC}Application guidance`, 'Jev did not check this reading'], [
+          { url: 'https://portal.example.net/apply', kind: 'offsite' },
+          { url: 'https://portal.example.net/apply', kind: 'offsite' },
+          { url: 'https://ocean.example.org/terms/', kind: 'bound' },
+        ], ['eligibility']),
+        m('nothing', ['Jev did not check this reading']),
+        m('removed', [`${UNREAD_DOC}Old guide`]),
+      ],
+      [
+        { id: 'closed-one', calls: [call('closed')] },
+        { id: 'open-one', calls: [call('closed'), call('open')] },
+        { id: 'nothing', calls: [call('open')] },
+      ],
+    )
+    expect(leads).toEqual([
+      { id: 'open-one', status: 'open', unread: ['Application guidance'], offsite: ['https://portal.example.net/apply'], unresolved: ['eligibility'] },
+      { id: 'closed-one', status: 'closed', unread: ['Grant agreement template'], offsite: [], unresolved: [] },
+    ])
+    const section = leadsSection(leads, 1).join('\n')
+    expect(section).toContain('2 programmes: 2 name a rules document')
+    expect(section).toContain('`open-one` (open)')
+    expect(section).not.toContain('closed-one')
   })
 })
 
