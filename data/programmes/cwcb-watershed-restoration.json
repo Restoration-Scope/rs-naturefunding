@@ -12,8 +12,20 @@
   "access": "direct",
   "window": "rolling",
   "amount": null,
-  "co_finance_required": null,
+  "co_finance_required": true,
   "reporting": null,
+  "effort": { "steps": ["Project discussion with CWCB staff", "Application"] },
+  "eligibility": [
+    {
+      "rule": "Not a local government outside the National Flood Insurance Program",
+      "kind": "legal"
+    }
+  ],
+  "documents": [
+    "Statement of Work",
+    "Budget & Schedule",
+    "Letters of support, if any (including from basin roundtables)"
+  ],
   "calls": [
     {
       "id": "rolling-2026",
@@ -63,7 +75,58 @@
       "quote": "Colorado Watershed Restoration Grants",
       "checked_at": "2026-11-15",
       "method": "page"
+    },
+    "effort": [
+      {
+        "source_url": "https://dnrweblink.state.co.us/CWCB/0/edoc/230844/cwrp_app_special2026.pdf",
+        "quote": "Prior to submitting an application, interested parties must contact the CWCB to discuss potential projects.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://cwcb.colorado.gov/watershed-grants",
+        "quote": "All grant applications must be submitted via the CWCB Portal along with the current \"Statement of Work\" and \"Budget & Schedule.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "eligibility": [
+      {
+        "source_url": "https://cwcb.colorado.gov/watershed-grants",
+        "quote": "(Local governments that do not participate in the National Flood Insurance Program will not be eligible for funding).",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "documents": [
+      {
+        "source_url": "https://cwcb.colorado.gov/watershed-grants",
+        "quote": "All grant applications must be submitted via the CWCB Portal along with the current \"Statement of Work\" and \"Budget & Schedule.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://cwcb.colorado.gov/watershed-grants",
+        "quote": "All letters of support, including those from basin roundtables, must be submitted through the CWCB Portal by the application deadline.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "after_award": [
+      {
+        "source_url": "https://dnrweblink.state.co.us/CWCB/0/edoc/230844/cwrp_app_special2026.pdf",
+        "quote": "The applicant shall provide the CWCB progress reports and expenditure reports every six months, beginning from the date of the execution of a contract.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "co_finance_required": {
+      "source_url": "https://dnrweblink.state.co.us/CWCB/0/edoc/230844/cwrp_app_special2026.pdf",
+      "quote": "A minimum of 25% match is required for all Capacity Building, Planning, and Engineering Grants. A minimum of 50% match is required for all Implementation Grants.",
+      "checked_at": "2026-11-20",
+      "method": "page"
     }
   },
-  "checked_at": "2026-11-15"
+  "checked_at": "2026-11-15",
+  "after_award": { "reports": "twice_yearly" }
 }

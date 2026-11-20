@@ -18,6 +18,23 @@
   },
   "co_finance_required": true,
   "reporting": null,
+  "effort": {
+    "steps": [
+      "Pre-application",
+      "Pre-application review",
+      "Full application with documents, if invited"
+    ]
+  },
+  "eligibility": [
+    {
+      "rule": "Project starts no earlier than four months after national submission or the next provincial meeting",
+      "kind": "project"
+    },
+    {
+      "rule": "Receive at most one award per year, unless lead applicant for multiple organisations",
+      "kind": "other"
+    }
+  ],
   "calls": [
     {
       "id": "standing",
@@ -69,10 +86,44 @@
     },
     "co_finance_required": {
       "source_url": "https://www.cultuurfonds.nl/aanvragen",
-      "quote": "Bij provinciale projecten draagt het fonds maximaal 25% bij aan de projectkosten, tot een maximaal bedrag van € 10.000.",
-      "checked_at": "2026-11-08",
+      "quote": "Bij landelijke projecten draagt het fonds maximaal 50% bij aan de projectkosten",
+      "checked_at": "2026-11-20",
       "method": "page"
-    }
+    },
+    "effort": [
+      {
+        "source_url": "https://www.cultuurfonds.nl/aanvragen/projectaanvraag-stichtingen-en-verenigingen",
+        "quote": "Je doet een vooraanvraag",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.cultuurfonds.nl/aanvragen/projectaanvraag-stichtingen-en-verenigingen",
+        "quote": "Het Cultuurfonds beoordeelt je vooraanvraag",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.cultuurfonds.nl/aanvragen/projectaanvraag-stichtingen-en-verenigingen",
+        "quote": "Je voegt documenten toe",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "eligibility": [
+      {
+        "source_url": "https://www.cultuurfonds.nl/aanvragen",
+        "quote": "Je project vindt niet binnen 4 maanden na indiening plaats (landelijk) of niet voor de eerstvolgende vergadering (provinciaal)",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.cultuurfonds.nl/aanvragen/projectaanvraag-stichtingen-en-verenigingen",
+        "quote": "Via deze aanvraagroute kent het Cultuurfonds maximaal één keer per jaar een bijdrage toe. Als je als stichting of vereniging penvoerder bent voor een projectaanvraag namens meerdere organisaties, kan je wel meerdere toekenningen per jaar ontvangen.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ]
   },
   "checked_at": "2026-11-08"
 }
