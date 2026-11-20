@@ -2,6 +2,7 @@
 
 What a visitor to naturefunding.org can see or do that they couldn't before, newest first. One line per merged change, added in the same PR (AGENTS.md). The naturefunding.org LinkedIn Page drafts its update posts from this list. Emails count once `DIGEST_SENDING` is `live`.
 
+- 2026-11-20 · 28 more programmes show Before you apply (Burning Foundation, CEPF Wallacea, Casco Bay Estuary Partnership, Chester County Preservation Partnership and more), each fact in the funder's words and checked by a second reader · https://naturefunding.org/p/cepf-wallacea/#before-title · #762
 - 2026-11-20 · 29 more programmes show Before you apply (ANK Auen, Bayerischer Naturschutzfonds, American Orchid Society, Amphibian Ark and more), each fact in the funder's words and checked by a second reader · https://naturefunding.org/p/ank-auen/#before-title · #761
 - 2026-11-20 · 28 more programmes show Before you apply (California Wildlife Conservation Board, Wildnisfonds, Waddenfonds, Veolia Environmental Trust and more), each fact in the funder's words and checked by a second reader · https://naturefunding.org/p/wildnisfonds/#before-title · #760
 - 2026-11-20 · 27 more programmes show Before you apply (The Fore Nature Recovery Fund, Triodos Foundation, TNC New York, Stiftung Naturschutz Berlin and more), each fact in the funder's words and checked by a second reader · https://naturefunding.org/p/the-fore-nature-recovery-fund/#before-title · #759

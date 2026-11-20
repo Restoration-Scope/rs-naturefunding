@@ -1,19 +1,79 @@
 {
   "id": "burning-foundation-environmental-programs",
   "name": "Burning Foundation Environmental Programs",
-  "funder": { "name": "Burning Foundation", "url": "https://www.burningfoundation.org/" },
+  "funder": {
+    "name": "Burning Foundation",
+    "url": "https://www.burningfoundation.org/"
+  },
   "administered_by": null,
   "parent": null,
   "url": "https://www.burningfoundation.org/areas-of-interest",
   "summary": "Grants of USD 5,000 to 15,000 to 501(c)(3) public charities in Washington and Oregon that preserve habitat that supports biodiversity, with preference for local and statewide groups. Two letter-of-interest cycles a year.",
-  "approaches": ["protected_areas"],
-  "applicant_types": ["ngo"],
-  "geography": { "scope": "countries", "countries": ["US"], "label": "Washington and Oregon" },
+  "approaches": [
+    "protected_areas"
+  ],
+  "applicant_types": [
+    "ngo"
+  ],
+  "geography": {
+    "scope": "countries",
+    "countries": [
+      "US"
+    ],
+    "label": "Washington and Oregon"
+  },
   "access": "direct",
   "window": "fixed",
-  "amount": { "currency": "USD", "min": 5000, "max": 15000 },
+  "amount": {
+    "currency": "USD",
+    "min": 5000,
+    "max": 15000
+  },
   "co_finance_required": null,
   "reporting": null,
+  "effort": {
+    "steps": [
+      "Letter of interest",
+      "Full proposal, if invited"
+    ]
+  },
+  "eligibility": [
+    {
+      "rule": "Be a 501(c)(3) public charity classified under 509(a)(1) or 509(a)(2)",
+      "kind": "legal"
+    },
+    {
+      "rule": "Not be a quasi-governmental organization",
+      "kind": "legal"
+    },
+    {
+      "rule": "Not a request for multi-year support",
+      "kind": "project"
+    },
+    {
+      "rule": "Not request support for research projects or scholarships",
+      "kind": "project"
+    },
+    {
+      "rule": "Not be a school, university or fundraising affiliate",
+      "kind": "legal"
+    },
+    {
+      "rule": "No habitat restoration that does not restore habitat to its native state",
+      "kind": "project"
+    },
+    {
+      "rule": "No habitat restoration in areas fragmented by agricultural use",
+      "kind": "project"
+    },
+    {
+      "rule": "No restoration work on state or federal land",
+      "kind": "project"
+    }
+  ],
+  "after_award": {
+    "reports": "final"
+  },
   "calls": [
     {
       "id": "spring-fall-cycles",
@@ -69,7 +129,79 @@
       "quote": "Grants range from $5,000 to $15,000.",
       "checked_at": "2026-11-20",
       "method": "page"
-    }
+    },
+    "effort": [
+      {
+        "source_url": "https://www.burningfoundation.org/policies-and-guidelines/application-guidelines",
+        "quote": "All applicants must fill out a letter of interest by the Spring or Fall due date.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.burningfoundation.org/policies-and-guidelines/application-guidelines",
+        "quote": "Applicants will receive a notification whether they will be asked to submit a proposal",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "eligibility": [
+      {
+        "source_url": "https://www.burningfoundation.org/policies-and-guidelines/foundation-policies",
+        "quote": "501(c)(3) groups (that are classified as a Public Charity under 509(a)(1) or 509(a)(2))",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.burningfoundation.org/policies-and-guidelines/foundation-policies",
+        "quote": "Quasi-governmental organizations, such as: Regional Fisheries Enhancement groups Soil and Water Conservation Districts Watershed Councils",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.burningfoundation.org/policies-and-guidelines/foundation-policies",
+        "quote": "The Foundation no longer accepts requests for multi-year support.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.burningfoundation.org/policies-and-guidelines/foundation-policies",
+        "quote": "Requests for research projects or scholarships.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.burningfoundation.org/policies-and-guidelines/foundation-policies",
+        "quote": "Requests from schools, universities, or their fundraising affiliates.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.burningfoundation.org/policies-and-guidelines/foundation-policies",
+        "quote": "Requests for habitat restoration that does not restore habitat to its native state.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.burningfoundation.org/policies-and-guidelines/foundation-policies",
+        "quote": "Requests for habitat restoration in areas that have been fragmented by agriculture use.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.burningfoundation.org/policies-and-guidelines/foundation-policies",
+        "quote": "Requests for restoration work done on state or federal land.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "after_award": [
+      {
+        "source_url": "https://www.burningfoundation.org/policies-and-guidelines/verification-and-reporting",
+        "quote": "All Grant Agreements, Check Verifications, and Final Reports for 2019 grants and beyond must be submitted using our online portal.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ]
   },
   "checked_at": "2026-11-20"
 }

@@ -1,0 +1,59 @@
+{
+  "id": "casco-bay-resilience-monitoring-grants",
+  "read_on": "2026-11-20",
+  "prompt_version": "req-2026-11-20.1",
+  "models": ["cursor:gpt-5.6-luna-high"],
+  "complete": false,
+  "reasons": [
+    "6 links could not be ranked without Jev",
+    "Jev did not check this reading, so an absent fact is not known to be absent"
+  ],
+  "requirements_checked": false,
+  "documents": [
+    {
+      "ref": "D1",
+      "url": "https://www.cascobayestuary.org/about-us/grant-opportunities/",
+      "final_url": "https://www.cascobayestuary.org/about-us/grant-opportunities/",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 2454,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:0a5451214afaf3d16d07f82186877f1823ebe0d9d3d37e3de351f58ac2c22544"
+    },
+    {
+      "ref": "D2",
+      "url": "https://www.cascobayestuary.org/wp-content/uploads/2026/10/CBEP_RMGrantsRFA_Fall2026-2.pdf",
+      "final_url": "https://www.cascobayestuary.org/wp-content/uploads/2026/10/CBEP_RMGrantsRFA_Fall2026-2.pdf",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": true,
+      "chars": 29199,
+      "pages": 15,
+      "low_text": false,
+      "hash": "sha256:45d25d40a31a7681f5955db8c85002f89d2632eef6e3e61c6502ece05547355a"
+    }
+  ],
+  "failures": [],
+  "skipped_links": 84,
+  "chunks": [{ "id": "all", "docs": ["D1", "D2"], "chars": 31838 }],
+  "outcomes": {
+    "eligibility": "stated",
+    "documents": "not_found",
+    "effort": "stated",
+    "co_finance": "stated",
+    "consortium": "not_found",
+    "after_award": "not_found"
+  },
+  "written": ["eligibility", "effort", "co_finance"],
+  "escalated": [],
+  "flags": [],
+  "notes": [
+    "extractor: Applicants may submit multiple pre-applications, but no more than one project concept from each applicant may proceed to a full application. D2 appears to contain a date error, stating applicants would be invited by November 7, 2025; D1 and the stated Fall 2026 round indicate the current round is 2026.",
+    "source casco-bay-resilience-monitoring-grants-1: selector main dropped, a new quote sits outside it"
+  ],
+  "usd": 0
+}
