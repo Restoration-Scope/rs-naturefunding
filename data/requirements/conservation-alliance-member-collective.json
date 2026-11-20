@@ -1,0 +1,83 @@
+{
+  "id": "conservation-alliance-member-collective",
+  "read_on": "2026-11-20",
+  "prompt_version": "req-2026-11-20.1",
+  "models": ["cursor:gpt-5.6-luna-high", "cursor:gpt-5.6-sol-high"],
+  "complete": false,
+  "reasons": [
+    "20 links could not be ranked without Jev",
+    "18 links could not be ranked without Jev",
+    "Jev did not check this reading, so an absent fact is not known to be absent"
+  ],
+  "requirements_checked": false,
+  "documents": [
+    {
+      "ref": "D1",
+      "url": "https://conservationalliance.com/member-collective-grants/",
+      "final_url": "https://conservationalliance.com/member-collective-grants/",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 11328,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:ff870b0af42c47609f2f9ebdbf26e3300269b341c8279096666289289f628f49"
+    },
+    {
+      "ref": "D2",
+      "url": "https://conservationalliance.com/wp-content/uploads/2025/11/TCA_ConservationStrategy_2025_26.pdf",
+      "final_url": "https://conservationalliance.com/wp-content/uploads/2025/11/TCA_ConservationStrategy_2025_26.pdf",
+      "from": "https://conservationalliance.com/member-collective-grants/",
+      "anchor": "TCA's Conservation Strategy",
+      "depth": 1,
+      "pdf": true,
+      "chars": 13234,
+      "pages": 4,
+      "low_text": false,
+      "hash": "sha256:d0dc5c855dada90dc819cb70f8be8a8c3cb469dfa46c8551622e2077332113b0"
+    },
+    {
+      "ref": "D3",
+      "url": "https://conservationalliance.com/2026/11/the-conservation-alliance-2026-give-guide/",
+      "final_url": "https://conservationalliance.com/2026/11/the-conservation-alliance-2026-give-guide/",
+      "from": "https://conservationalliance.com/member-collective-grants/",
+      "anchor": "",
+      "depth": 1,
+      "pdf": false,
+      "chars": 15018,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:1c5ce1eaf10b1977858e833ece75fe8106daecb88744aa8433991a6315621b54"
+    },
+    {
+      "ref": "D4",
+      "url": "https://conservationalliance.com/privacy-policy",
+      "final_url": "https://conservationalliance.com/privacy-policy/",
+      "from": "https://conservationalliance.com/member-collective-grants/",
+      "anchor": "Privacy Policy",
+      "depth": 1,
+      "pdf": false,
+      "chars": 11012,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:28f135d2d42656684a4a3e96bf8dd8adc26586900db614ba82ff5e47d1a05d5a"
+    }
+  ],
+  "failures": [],
+  "skipped_links": 224,
+  "chunks": [{ "id": "all", "docs": ["D1", "D2", "D3", "D4"], "chars": 51153 }],
+  "outcomes": {
+    "eligibility": "not_found",
+    "documents": "not_found",
+    "effort": "stated",
+    "co_finance": "not_found",
+    "consortium": "not_found",
+    "after_award": "not_found"
+  },
+  "written": ["effort"],
+  "escalated": ["eligibility"],
+  "flags": [],
+  "notes": [],
+  "usd": 0
+}

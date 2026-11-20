@@ -9,14 +9,88 @@
   "parent": null,
   "url": "https://portal.ct.gov/deep/open-space/open-space-and-watershed-land-acquisition-grant-program",
   "summary": "Competitive state grants for land trusts, municipalities and water companies in Connecticut to buy land that will be preserved in perpetuity as open space or water supply land, favouring projects that leverage private and municipal funds.",
-  "approaches": ["protected_areas", "freshwater"],
-  "applicant_types": ["ngo", "government", "company"],
-  "geography": { "scope": "countries", "countries": ["US"], "label": "Connecticut" },
+  "approaches": [
+    "protected_areas",
+    "freshwater"
+  ],
+  "applicant_types": [
+    "ngo",
+    "government",
+    "company"
+  ],
+  "geography": {
+    "scope": "countries",
+    "countries": [
+      "US"
+    ],
+    "label": "Connecticut"
+  },
   "access": "direct",
   "window": "fixed",
   "amount": null,
   "co_finance_required": true,
   "reporting": null,
+  "effort": {
+    "steps": [
+      "Application and supporting documentation",
+      "Appraisal submission",
+      "Appraisal review submission"
+    ],
+    "due": [
+      "2026-11-06",
+      "2026-12-04",
+      "2027-01-04"
+    ]
+  },
+  "eligibility": [
+    {
+      "rule": "Nonprofit land conservation organizations are duly authorized 501(c)(3) organizations",
+      "kind": "legal"
+    },
+    {
+      "rule": "Land not acquired before the application deadline, unless the Commissioner waives this in writing",
+      "kind": "project"
+    },
+    {
+      "rule": "Previous OSWA projects awarded before 2023 are completed or funds are turned back or rescinded",
+      "kind": "track_record"
+    },
+    {
+      "rule": "The acquisition is conserved in perpetuity in its natural, scenic, and open condition",
+      "kind": "project"
+    },
+    {
+      "rule": "The land is not used for commercial purposes other than forest management or agricultural use",
+      "kind": "project"
+    },
+    {
+      "rule": "The land is not used for recreational purposes requiring intensive development",
+      "kind": "project"
+    },
+    {
+      "rule": "The land is not acquired by eminent domain",
+      "kind": "project"
+    },
+    {
+      "rule": "The new acquisition is publicly accessible, unless exempt",
+      "kind": "project"
+    }
+  ],
+  "co_finance": {
+    "min_share": 35,
+    "applies_to": "Outside EJ, distressed or targeted communities (25% inside them)"
+  },
+  "documents": [
+    "IRS 501(c)(3) determination letter, if a nonprofit",
+    "Certificate of Legal Existence, not more than two years old, if a nonprofit or water company",
+    "Charitable Solicitation Registration verification or proof of exemption, if a nonprofit",
+    "Most recent IRS 990 Tax Form link, if a nonprofit",
+    "State Single Audit submission proof or Exemption Form for the preceding 3 years",
+    "Municipal Plan of Conservation and Development proof or OPM approval, if a municipality",
+    "Class I or Class II classification proof, if a water company",
+    "PURA permission for sale of Class III land",
+    "Municipal CEO approval letter, when the stated location condition applies"
+  ],
   "calls": [
     {
       "id": "2026",
@@ -71,11 +145,107 @@
       "method": "page"
     },
     "co_finance_required": {
-      "source_url": "https://portal.ct.gov/deep/open-space/open-space-and-watershed-land-acquisition-grant-program",
-      "quote": "Applicants must show a reasonable anticipation that cost-share match funding will be available within one year of the State grant being awarded.",
-      "checked_at": "2026-11-14",
+      "source_url": "https://portal.ct.gov/-/media/deep/open_space/oswa/2026/2026_guidelines_faqs.pdf?rev=87bee1f327ff4a27a250b6f532be236b&hash=A2AEE215E441E08D5FFE1C8D94240856",
+      "quote": "Each applicant is required to secure funds from other sources to match DEEP's grant award.",
+      "checked_at": "2026-11-20",
       "method": "page"
-    }
+    },
+    "effort": [
+      {
+        "source_url": "https://portal.ct.gov/deep/open-space/open-space-and-watershed-land-acquisition-grant-program",
+        "quote": "Applications must be submitted by November 6, 2026",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://portal.ct.gov/deep/open-space/open-space-and-watershed-land-acquisition-grant-program",
+        "quote": "Appraisals must be submitted by December 4, 2026",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://portal.ct.gov/deep/open-space/open-space-and-watershed-land-acquisition-grant-program",
+        "quote": "Appraisal Reviews must be submitted by January 4, 2027",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "eligibility": [
+      {
+        "source_url": "https://portal.ct.gov/-/media/deep/open_space/oswa/2026/2026_guidelines_faqs.pdf?rev=87bee1f327ff4a27a250b6f532be236b&hash=A2AEE215E441E08D5FFE1C8D94240856",
+        "quote": "Non-profit land conservation organizations must attach an IRS 501(c)(3) Determination Letter as evidence that they are a duly authorized 501(c)(3).",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://portal.ct.gov/-/media/deep/open_space/oswa/2026/2026_guidelines_faqs.pdf?rev=87bee1f327ff4a27a250b6f532be236b&hash=A2AEE215E441E08D5FFE1C8D94240856",
+        "quote": "If land was acquired by applicant prior to the grant application deadline, PROJECT IS REJECTED (unless a waiver, in writing by the DEEP Commissioner, is provided with the grant application).",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://portal.ct.gov/-/media/deep/open_space/oswa/2026/2026_guidelines_faqs.pdf?rev=87bee1f327ff4a27a250b6f532be236b&hash=A2AEE215E441E08D5FFE1C8D94240856",
+        "quote": "If an applicant has projects, awarded prior to 2023 that are not closed or turned back, the PROJECT IS REJECTED.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://portal.ct.gov/-/media/deep/open_space/oswa/2026/2026_guidelines_faqs.pdf?rev=87bee1f327ff4a27a250b6f532be236b&hash=A2AEE215E441E08D5FFE1C8D94240856",
+        "quote": "Applicant must be willing to conserve the funded acquisition property in perpetuity, predominantly in its natural, scenic, and open condition.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://portal.ct.gov/-/media/deep/open_space/oswa/2026/2026_guidelines_faqs.pdf?rev=87bee1f327ff4a27a250b6f532be236b&hash=A2AEE215E441E08D5FFE1C8D94240856",
+        "quote": "If land is to be used for commercial purposes (other than forest management/agricultural use), PROJECT IS REJECTED.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://portal.ct.gov/-/media/deep/open_space/oswa/2026/2026_guidelines_faqs.pdf?rev=87bee1f327ff4a27a250b6f532be236b&hash=A2AEE215E441E08D5FFE1C8D94240856",
+        "quote": "If the land is to be used for recreational purposes requiring intensive recreational development (golf courses, driving ranges, tennis courts, ballfields, swimming pools and uses by motorized vehicles other than vehicles needed by water companies to carry out their purposes), PROJECT IS REJECTED",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://portal.ct.gov/-/media/deep/open_space/oswa/2026/2026_guidelines_faqs.pdf?rev=87bee1f327ff4a27a250b6f532be236b&hash=A2AEE215E441E08D5FFE1C8D94240856",
+        "quote": "If land is to be acquired by eminent domain, PROJECT IS REJECTED.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://portal.ct.gov/-/media/deep/open_space/oswa/2026/2026_guidelines_faqs.pdf?rev=87bee1f327ff4a27a250b6f532be236b&hash=A2AEE215E441E08D5FFE1C8D94240856",
+        "quote": "If applicant has not clearly demonstrated how this new acquisition will be publicly accessible (unless exempt), PROJECT IS REJECTED.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "co_finance": {
+      "source_url": "https://portal.ct.gov/-/media/deep/open_space/oswa/2026/2026_guidelines_faqs.pdf?rev=87bee1f327ff4a27a250b6f532be236b&hash=A2AEE215E441E08D5FFE1C8D94240856",
+      "quote": "65% of fair market value",
+      "checked_at": "2026-11-20",
+      "method": "page"
+    },
+    "documents": [
+      {
+        "source_url": "https://portal.ct.gov/-/media/deep/open_space/oswa/2026/2026-oswa-application-final-with-appraisal-extension.pdf?rev=c57b177c88da408d8c3abbb10a608908&hash=F77BBAFB155B039F1A73978CDE00206A",
+        "quote": "IRS 501(c)(3) Determination Letter (non-profits)  Certificate of Legal Existence from the Secretary of State, not more than two years old (nonprofits & water companies) DEEP -OSWA -APPLICATION Page 1 of 9  Verification of Charitable Solicitation Registration with the Department of Consumer Protection or proof of exemption (non-profits)",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://portal.ct.gov/-/media/deep/open_space/oswa/2026/2026-oswa-application-final-with-appraisal-extension.pdf?rev=c57b177c88da408d8c3abbb10a608908&hash=F77BBAFB155B039F1A73978CDE00206A",
+        "quote": "Link to most recent 990 Tax Form from the Internal Revenue Service (non-profits)  Proof of submission of State Single Audit or Exemption Form for the preceding 3 years, whichever is appropriate (all applicants)  Proof of up-to-date Municipal Plan of Conservation and Development or approval letter from OPM (Municipalities)",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://portal.ct.gov/-/media/deep/open_space/oswa/2026/2026-oswa-application-final-with-appraisal-extension.pdf?rev=c57b177c88da408d8c3abbb10a608908&hash=F77BBAFB155B039F1A73978CDE00206A",
+        "quote": "Proof that land can be classified as Class I or Class II (water companies)  Proof of permission from PURA for sale of Class III land (all applicants)  Municipal CEO approval letter for purchase of property in targeted, distressed or EJ community by land trust, water company or municipality outside the municipality where the property is located (all applicants)",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ]
   },
   "checked_at": "2026-11-14"
 }
