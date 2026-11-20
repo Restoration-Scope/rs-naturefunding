@@ -1,19 +1,66 @@
 {
   "id": "psf-community-salmon-program",
   "name": "Community Salmon Program Grants",
-  "funder": { "name": "Pacific Salmon Foundation", "url": "https://psf.ca/" },
+  "funder": {
+    "name": "Pacific Salmon Foundation",
+    "url": "https://psf.ca/"
+  },
   "administered_by": null,
   "parent": null,
   "url": "https://psf.ca/work/community/community-salmon-program/community-grants/",
   "summary": "Twice-yearly grants for volunteer, community and Indigenous-led salmon habitat assessment, restoration and stewardship projects in British Columbia and the Yukon. The foundation pays up to half of project costs; the rest is matched by funds or in-kind work.",
-  "approaches": ["freshwater", "species_conservation", "community_conservation"],
-  "applicant_types": ["community_group", "ngo", "indigenous_organization"],
-  "geography": { "scope": "countries", "countries": ["CA"], "label": "British Columbia and Yukon" },
+  "approaches": [
+    "freshwater",
+    "species_conservation",
+    "community_conservation"
+  ],
+  "applicant_types": [
+    "community_group",
+    "ngo",
+    "indigenous_organization"
+  ],
+  "geography": {
+    "scope": "countries",
+    "countries": [
+      "CA"
+    ],
+    "label": "British Columbia and Yukon"
+  },
   "access": "direct",
   "window": "fixed",
   "amount": null,
   "co_finance_required": true,
   "reporting": null,
+  "effort": {
+    "steps": [
+      "Online application",
+      "Application assessment"
+    ]
+  },
+  "eligibility": [
+    {
+      "rule": "Be community-based and take place in B.C. or the Yukon",
+      "kind": "project"
+    },
+    {
+      "rule": "Include significant volunteer involvement, with exceptions for Indigenous or remote organizations",
+      "kind": "project"
+    },
+    {
+      "rule": "For stock assessment projects, show an innovative one-time investment, not ongoing operational funding",
+      "kind": "project"
+    }
+  ],
+  "co_finance": {
+    "min_share": 50,
+    "in_kind": true
+  },
+  "documents": [
+    "Project budget with volunteer or community hours",
+    "Necessary permits and letters of support",
+    "Letters of support from stewardship organizations or industry groups",
+    "Final Report for previous CSP projects, if required"
+  ],
   "calls": [
     {
       "id": "fall-spring-intakes",
@@ -67,9 +114,69 @@
     "co_finance_required": {
       "source_url": "https://psf.ca/work/community/community-salmon-program/community-grants/",
       "quote": "PSF will pay up to 50% of the total value of each project, and the rest must be matched by other funds and in-kind donations or work.",
-      "checked_at": "2026-11-09",
+      "checked_at": "2026-11-20",
       "method": "page"
-    }
+    },
+    "effort": [
+      {
+        "source_url": "https://psf.ca/work/community/community-salmon-program/community-grants/",
+        "quote": "Apply online",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://psf.ca/work/community/community-salmon-program/community-grants/",
+        "quote": "Applications are assessed by a Technical Review Committee and Grants Committee comprising PSF staff, board members, community representatives and independent salmon experts.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "eligibility": [
+      {
+        "source_url": "https://psf.ca/work/community/community-salmon-program/community-grants/",
+        "quote": "Be community-based and take place in B.C. or the Yukon;",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://psf.ca/work/community/community-salmon-program/community-grants/",
+        "quote": "Include significant volunteer involvement, with some exceptions for Indigenous or remote organizations;",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://psf.ca/work/community/community-salmon-program/community-grants/",
+        "quote": "As of 2026, proposed stock assessment projects must clearly show that they represent an innovative, one-time investment-not a request for ongoing operational funding.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "co_finance": {
+      "source_url": "https://psf.ca/work/community/community-salmon-program/community-grants/",
+      "quote": "PSF will pay up to 50% of the total value of each project, and the rest must be matched by other funds and in-kind donations or work.",
+      "checked_at": "2026-11-20",
+      "method": "page"
+    },
+    "documents": [
+      {
+        "source_url": "https://psf.ca/work/community/community-salmon-program/community-grants/",
+        "quote": "Include all necessary details and volunteer or community hours in the budget.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://psf.ca/work/community/community-salmon-program/community-grants/",
+        "quote": "Have the necessary permits and letters of support from relevant agencies, Crown and First Nations governments, or landowners; and, Have letters of support from relevant stewardship organizations or industry groups, even if they are not involved in the project.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://psf.ca/work/community/community-salmon-program/community-grants/",
+        "quote": "Submit the Final Report for any previous CSP projects if required.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ]
   },
   "checked_at": "2026-11-09"
 }

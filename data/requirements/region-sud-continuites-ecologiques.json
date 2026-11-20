@@ -1,0 +1,72 @@
+{
+  "id": "region-sud-continuites-ecologiques",
+  "read_on": "2026-11-20",
+  "prompt_version": "req-2026-11-20.1",
+  "models": ["cursor:gpt-5.6-luna-high"],
+  "complete": false,
+  "reasons": [
+    "10 links could not be ranked without Jev",
+    "13 links could not be ranked without Jev",
+    "https://aiden.maregionsud.fr/annexes/REGLEMENT_BUDGETAIRE_FINANCIER.pdf would not open (timeout: no answer in 30s)",
+    "the text names a document with rules that was not read: Règlement budgétaire et financier de la Région en vigueur à la date of vote",
+    "the text names a document with rules that was not read: Charte du respect des valeurs de la République de la Région Provence-Alpes-Côte d'Azur",
+    "the text names a document with rules that was not read: Contrat d'engagement républicain for associations and foundations",
+    "Jev did not check this reading, so an absent fact is not known to be absent"
+  ],
+  "requirements_checked": false,
+  "documents": [
+    {
+      "ref": "D1",
+      "url": "https://www.maregionsud.fr/vos-aides/detail/preservation-maintien-et-restauration-des-continuites-ecologiques",
+      "final_url": "https://www.maregionsud.fr/vos-aides/detail/preservation-maintien-et-restauration-des-continuites-ecologiques",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 5424,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:2666c496effd15339c892998129b8aeea0802bbbbf6a264a2b2b0a75ffb8f825"
+    },
+    {
+      "ref": "D2",
+      "url": "https://www.maregionsud.fr/vos-aides/guide-usagers-faq",
+      "final_url": "https://www.maregionsud.fr/vos-aides/guide-usagers-faq",
+      "from": "https://www.maregionsud.fr/vos-aides/detail/preservation-maintien-et-restauration-des-continuites-ecologiques",
+      "anchor": "Guide usagers - FAQ",
+      "depth": 1,
+      "pdf": false,
+      "chars": 26145,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:d2a398d65ef47b5ab06800b808eba63587a266b285a8936bc5c9a6a5af4ef3df"
+    }
+  ],
+  "failures": [
+    {
+      "url": "https://aiden.maregionsud.fr/annexes/REGLEMENT_BUDGETAIRE_FINANCIER.pdf",
+      "from": "https://www.maregionsud.fr/vos-aides/guide-usagers-faq",
+      "kind": "timeout",
+      "message": "no answer in 30s"
+    }
+  ],
+  "skipped_links": 185,
+  "chunks": [{ "id": "all", "docs": ["D1", "D2"], "chars": 31882 }],
+  "outcomes": {
+    "eligibility": "stated",
+    "documents": "not_found",
+    "effort": "stated",
+    "co_finance": "stated",
+    "consortium": "not_found",
+    "after_award": "stated"
+  },
+  "written": ["eligibility", "effort", "co_finance", "after_award"],
+  "escalated": [],
+  "flags": [],
+  "notes": [
+    "effort \"Application submission\": the quote does not state 2027-01-15 whole; left undated",
+    "extractor: D1 gives a submission deadline of 15 January 2027 but does not name a round. The 80% ceiling is stated against the retained eligible amount.",
+    "source region-sud-continuites-ecologiques-2: added for https://www.maregionsud.fr/vos-aides/guide-usagers-faq"
+  ],
+  "usd": 0
+}

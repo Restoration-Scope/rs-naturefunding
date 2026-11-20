@@ -1,19 +1,43 @@
 {
   "id": "psgb-conservation-grants",
   "name": "PSGB Conservation Grants",
-  "funder": { "name": "Primate Society of Great Britain", "url": "https://psgb.org/" },
+  "funder": {
+    "name": "Primate Society of Great Britain",
+    "url": "https://psgb.org/"
+  },
   "administered_by": null,
   "parent": null,
   "url": "https://psgb.org/pages/37",
   "summary": "Small grants for work of direct benefit to primate conservation, such as threat reduction, surveys, compensation schemes and conservation education. A linked Born Free grant targets range-state nationals working in the field.",
-  "approaches": ["species_conservation", "community_conservation"],
-  "applicant_types": ["individual"],
+  "approaches": [
+    "species_conservation",
+    "community_conservation"
+  ],
+  "applicant_types": [
+    "individual"
+  ],
   "geography": null,
   "access": "direct",
   "window": "fixed",
-  "amount": { "currency": "GBP", "max": 1250, "typical": true },
+  "amount": {
+    "currency": "GBP",
+    "max": 1250,
+    "typical": true
+  },
   "co_finance_required": null,
   "reporting": null,
+  "effort": {
+    "steps": [
+      "Convenor agreement to apply, for non-member range-state nationals",
+      "Application (March 1 or November 1)"
+    ]
+  },
+  "eligibility": [
+    {
+      "rule": "Is a PSGB member or a primate range state national who is not a member",
+      "kind": "legal"
+    }
+  ],
   "calls": [
     {
       "id": "twice-yearly",
@@ -63,7 +87,51 @@
       "quote": "PSGB Grants are open to PSGB members and to primate range state nationals who are not members.",
       "checked_at": "2026-11-20",
       "method": "page"
-    }
+    },
+    "effort": [
+      {
+        "source_url": "https://hubble-live-assets.s3.eu-west-1.amazonaws.com/psgb/redactor2_assets/files/512/Conservation_Grant_Guidance_Notes_Dec24.pdf",
+        "quote": "Grants will be awarded only to members of PSGB, or to citizens of primate range states. If the latter please contact the Convenor, cwp@psgb.org , for agreement to apply.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://psgb.org/pages/37",
+        "quote": "Grant deadlines will fall take place twice per year on March 1st and November 1st.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "eligibility": [
+      {
+        "source_url": "https://psgb.org/pages/37",
+        "quote": "PSGB Grants are open to PSGB members and to primate range state nationals who are not members.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "documents": [
+      {
+        "source_url": "https://hubble-live-assets.s3.eu-west-1.amazonaws.com/psgb/redactor2_assets/files/512/Conservation_Grant_Guidance_Notes_Dec24.pdf",
+        "quote": "References must be sent direct to the Convenor by the referee, NOT by the applicant.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "after_award": [
+      {
+        "source_url": "https://hubble-live-assets.s3.eu-west-1.amazonaws.com/psgb/redactor2_assets/files/512/Conservation_Grant_Guidance_Notes_Dec24.pdf",
+        "quote": "To provide, within 3 months of completion of the study, a 700-word summary of the project for publication in Primate Eye and on the PSGB website.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ]
   },
-  "checked_at": "2026-11-20"
+  "checked_at": "2026-11-20",
+  "documents": [
+    "References, sent directly by the referee"
+  ],
+  "after_award": {
+    "reports": "final"
+  }
 }
