@@ -1,0 +1,80 @@
+{
+  "id": "mayotte-ensemble-pour-les-rivieres",
+  "read_on": "2026-11-20",
+  "prompt_version": "req-2026-11-20.1",
+  "models": ["cursor:gpt-5.6-luna-high", "cursor:gpt-5.6-sol-high"],
+  "complete": false,
+  "reasons": [
+    "15 links could not be ranked without Jev",
+    "https://www.mayotte.fr/ressources/appels/2026_AAP_DPE_1793382347.pdf would not open (timeout: no answer in 30s)",
+    "Jev did not check this reading, so an absent fact is not known to be absent"
+  ],
+  "requirements_checked": false,
+  "documents": [
+    {
+      "ref": "D1",
+      "url": "https://www.mayotte.fr/services-en-ligne/opportunites/appels-a-projets",
+      "final_url": "https://www.mayotte.fr/services-en-ligne/opportunites/appels-a-projets",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 11245,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:26828b75df250a4b911c168ce4216884018246f51f976baad87d88c67054a321"
+    },
+    {
+      "ref": "D2",
+      "url": "https://www.mayotte.fr/ressources/appels/2026_AAP_DTEE_1793158479.pdf",
+      "final_url": "https://www.mayotte.fr/ressources/appels/2026_AAP_DTEE_1793158479.pdf",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": true,
+      "chars": 37165,
+      "pages": 16,
+      "low_text": false,
+      "hash": "sha256:0ec69c6f152f9444e898e2958380e89ae2a38520dfbd568457ea19b3f3fed9a6"
+    },
+    {
+      "ref": "D3",
+      "url": "https://www.mayotte.fr/ressources/appels/2026_AAP_DTEE_1793158682.pdf",
+      "final_url": "https://www.mayotte.fr/ressources/appels/2026_AAP_DTEE_1793158682.pdf",
+      "from": "https://www.mayotte.fr/services-en-ligne/opportunites/appels-a-projets",
+      "anchor": "Dossier de l'appel AAP n° 00154 (PDF, 343 Ko)",
+      "depth": 1,
+      "pdf": true,
+      "chars": 28295,
+      "pages": 14,
+      "low_text": false,
+      "hash": "sha256:f5b628ab2d9034d8463e45fc26ca88cd412f4bf08f4762299ce9dced46ff17ad"
+    }
+  ],
+  "failures": [
+    {
+      "url": "https://www.mayotte.fr/ressources/appels/2026_AAP_DPE_1793382347.pdf",
+      "from": "https://www.mayotte.fr/services-en-ligne/opportunites/appels-a-projets",
+      "kind": "timeout",
+      "message": "no answer in 30s"
+    }
+  ],
+  "skipped_links": 224,
+  "chunks": [{ "id": "all", "docs": ["D1", "D2", "D3"], "chars": 77051 }],
+  "outcomes": {
+    "eligibility": "stated",
+    "documents": "stated",
+    "effort": "stated",
+    "co_finance": "stated",
+    "consortium": "not_found",
+    "after_award": "stated"
+  },
+  "written": ["eligibility", "documents", "effort", "co_finance", "after_award"],
+  "escalated": ["documents"],
+  "flags": [],
+  "notes": [
+    "extractor: D2 labels the first-edition financial parameters and calendar as proposed for validation and contains placeholders; D1 states the current closing date. D2 also states a 12-month duration in its parameter table but later sets a maximum project duration of 3 years.",
+    "source mayotte-ensemble-pour-les-rivieres-2: selector main dropped, a new quote sits outside it"
+  ],
+  "usd": 0
+}

@@ -15,8 +15,50 @@
   "access": "direct",
   "window": "fixed",
   "amount": null,
-  "co_finance_required": null,
+  "co_finance_required": true,
   "reporting": null,
+  "effort": {
+    "steps": [
+      "Project description and cost estimate by email",
+      "Application review for fit and available funds",
+      "Technical opinions from nature conservation authorities"
+    ],
+    "due": ["2027-01-31", null, null]
+  },
+  "eligibility": [
+    { "rule": "Not a direct state administration body", "kind": "legal" },
+    {
+      "rule": "For land acquisition, be a local authority or recognised conservation association",
+      "kind": "legal"
+    },
+    { "rule": "The project has not started yet", "kind": "project" },
+    {
+      "rule": "Not a compensation measure, nor a project the applicant or a third party is legally required to do",
+      "kind": "project"
+    },
+    {
+      "rule": "The applicant or third parties have no economic interest or profit motive in the project",
+      "kind": "project"
+    },
+    {
+      "rule": "In protected areas, target the defined or designated protection objective",
+      "kind": "project"
+    }
+  ],
+  "co_finance": { "in_kind": true },
+  "after_award": { "reports": "final" },
+  "documents": [
+    "Project description with location and cost estimate",
+    "Necessity and appropriateness statement",
+    "Proof of total financing with detailed total cost breakdown",
+    "Implementation period information",
+    "Cadastral map extract at scale 1:10,000",
+    "Landowner consent",
+    "Current land register extract",
+    "Required permits and approvals",
+    "Notification Ordinance form",
+    "Signing authorisation, if the signatory is not registered as authorised"
+  ],
   "calls": [
     {
       "id": "requests-2027",
@@ -59,7 +101,105 @@
       "quote": "Wir nehmen Ihre Förderanfragen für das Jahr 2027 bis zum 31.01.2027 entgegen.",
       "checked_at": "2026-11-20",
       "method": "page"
-    }
+    },
+    "co_finance_required": {
+      "source_url": "https://www.lanu.de/media/tyfo20273-55acb50ef0152bb2eaf4ffb9d2a8cdf4/lanu_infoblatt_foerderrichtlinie-saechsische-naturschutzfonds_2001.pdf",
+      "quote": "Eine Förderung ist nur bei angemessener Eigenbeteiligung des Zuwendungsempfängers möglich.",
+      "checked_at": "2026-11-20",
+      "method": "page"
+    },
+    "effort": [
+      {
+        "source_url": "https://www.lanu.de/themen/foerderung/antragsverfahren/antragsverfahren-fuer-die-foerderrichtlinie-der-lanu~ba1497.html",
+        "quote": "Wir nehmen Ihre Förderanfragen für das Jahr 2027 bis zum 31.01.2027 entgegen. Bitte senden Sie uns eine Projektbeschreibung mit Ortsangabe und Kostenschätzung per E-Mail an den unten stehenden Kontakt zu.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.lanu.de/themen/foerderung/antragsverfahren/antragsverfahren-fuer-die-foerderrichtlinie-der-lanu~ba1497.html",
+        "quote": "Es erfolgt eine Prüfung des Antrages auf grundsätzliche Einordnungsbarkeit in das Förderspektrum des Naturschutzfonds sowie auf Mittelverfügbarkeit für das Vorhaben",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.lanu.de/themen/foerderung/antragsverfahren/antragsverfahren-fuer-die-foerderrichtlinie-der-lanu~ba1497.html",
+        "quote": "worauf bei positivem Ergebnis fachliche Stellungnahmen der zuständigen Naturschutzbehörden eingeholt werden.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "eligibility": [
+      {
+        "source_url": "https://www.lanu.de/themen/foerderung/antragsverfahren/antragsverfahren-fuer-die-foerderrichtlinie-der-lanu~ba1497.html",
+        "quote": "Grundsätzlich ist jeder antragsberechtigt, mit Ausnahme der unmittelbaren Staatsverwaltung.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.lanu.de/themen/foerderung/antragsverfahren/antragsverfahren-fuer-die-foerderrichtlinie-der-lanu~ba1497.html",
+        "quote": "Bei Grunderwerb sind nur Gebietskörperschaften und anerkannte Naturschutzverbände antragsberechtigt.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.lanu.de/media/tyfo20273-55acb50ef0152bb2eaf4ffb9d2a8cdf4/lanu_infoblatt_foerderrichtlinie-saechsische-naturschutzfonds_2001.pdf",
+        "quote": "Zuwendungen werden nur gewährt, wenn mit dem Vorhaben noch nicht begonnen worden ist.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.lanu.de/media/tyfo20273-55acb50ef0152bb2eaf4ffb9d2a8cdf4/lanu_infoblatt_foerderrichtlinie-saechsische-naturschutzfonds_2001.pdf",
+        "quote": "Nicht förderfähig sind Ausgleichs- und Ersatzmaßnahmen nach § 9 Abs. 2 und 3 SächsNatSchG sowie Vorhaben, zu deren Umsetzung der Antragsteller oder ein Dritter nach anderen Rechtsvorschriften verpflichtet ist.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.lanu.de/media/tyfo20273-55acb50ef0152bb2eaf4ffb9d2a8cdf4/lanu_infoblatt_foerderrichtlinie-saechsische-naturschutzfonds_2001.pdf",
+        "quote": "Liegt dem beantragten Projekt ein wirtschaftliches Interesse beziehungsweise eine Gewinnerzielungsabsicht des Antragstellers oder von Dritten zugrunde, ist eine Förderung ausgeschlossen.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.lanu.de/media/tyfo20273-55acb50ef0152bb2eaf4ffb9d2a8cdf4/lanu_infoblatt_foerderrichtlinie-saechsische-naturschutzfonds_2001.pdf",
+        "quote": "Vorhaben in Schutzgebieten werden vorbehaltlich der sonstigen Voraussetzungen nur gefördert, wenn sie auf das durch eine Behandlungsrichtlinie beziehungsweise einen Pflege- und Entwicklungsplan definierte oder durch die zuständige Naturschutzfachbehörde bestimmte Schutzziel gerichtet sind.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "co_finance": {
+      "source_url": "https://www.lanu.de/media/tyfo20273-55acb50ef0152bb2eaf4ffb9d2a8cdf4/lanu_infoblatt_foerderrichtlinie-saechsische-naturschutzfonds_2001.pdf",
+      "quote": "Der Finanzierungsanteil des Zuwendungsempfängers kann auch durch wertgleiche unbare Eigenleistungen, wie eigene Arbeitsleistung und Stellung von Gerät, Material, erbracht werden.",
+      "checked_at": "2026-11-20",
+      "method": "page"
+    },
+    "after_award": [
+      {
+        "source_url": "https://www.lanu.de/themen/foerderung/antragsverfahren/antragsverfahren-fuer-die-foerderrichtlinie-der-lanu~ba1497.html",
+        "quote": "Nach Ablauf des im Zuwendungsbescheid festgelegten Förderzeitraumes erfolgt eine Verwendungsnachweisprüfung. Grundlage ist der sachliche und zahlenmäßige Nachweis über die Durchführung des geförderten Vorhabens.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "documents": [
+      {
+        "source_url": "https://www.lanu.de/themen/foerderung/antragsverfahren/antragsverfahren-fuer-die-foerderrichtlinie-der-lanu~ba1497.html",
+        "quote": "Bitte senden Sie uns eine Projektbeschreibung mit Ortsangabe und Kostenschätzung per E-Mail an den unten stehenden Kontakt zu.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.lanu.de/themen/foerderung/antragsverfahren/antragsverfahren-fuer-die-foerderrichtlinie-der-lanu~ba1497.html",
+        "quote": "Angaben zur Notwendigkeit und Zweckmäßigkeit ein Nachweis der Gesamtfinanzierung mit detaillierter Gesamtkostenübersicht Angaben zum Durchführungszeitraum ein Flurkartenauszug (Maßstab 1:10.000) eine Einwilligung des Flächeneigentümers ein aktueller Grundbuchauszug sonstige erforderliche Erlaubnisse/Genehmigungen Formular zur Mitteilungsverordnung",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.lanu.de/themen/foerderung/antragsverfahren/antragsverfahren-fuer-die-foerderrichtlinie-der-lanu~ba1497.html",
+        "quote": "Unterzeichnende Antragsteller von Organisationen müssen im Vereinsregister als vertretungsberechtigt eingetragen sein oder andernfalls eine Unterschriftenbevollmächtigung vorlegen.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ]
   },
   "checked_at": "2026-11-20"
 }

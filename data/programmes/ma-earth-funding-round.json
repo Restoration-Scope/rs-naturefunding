@@ -21,6 +21,31 @@
   "amount": { "currency": "USD", "min": 2000, "max": 15000 },
   "co_finance_required": null,
   "reporting": "Projects commit to regular documentation and evaluation of their results, through their own reports and third-party assessments.",
+  "effort": { "steps": ["Application submission", "Fundraising campaign, if accepted"] },
+  "eligibility": [
+    {
+      "rule": "Be rooted in regenerative principles and support the thriving of life, culture and nature",
+      "kind": "project"
+    },
+    {
+      "rule": "Take a holistic approach to the whole community, landscape and natural systems",
+      "kind": "project"
+    },
+    {
+      "rule": "Have an established track record of previous activities in a particular place",
+      "kind": "track_record"
+    },
+    { "rule": "Support ongoing education, community cohesion and resilience", "kind": "project" },
+    {
+      "rule": "Make authentic claims about success and commit to regular documentation and evaluation",
+      "kind": "capacity"
+    },
+    {
+      "rule": "Use a host partner if not a registered nonprofit or not in a Stripe-supported country",
+      "kind": "legal"
+    }
+  ],
+  "after_award": { "reports": "unspecified" },
   "calls": [
     {
       "id": "round-4",
@@ -81,7 +106,67 @@
       "quote": "is committed to providing regular documentation and evaluation. This includes self-reporting as well as participation in third-party assessments.",
       "checked_at": "2026-11-09",
       "method": "page"
-    }
+    },
+    "effort": [
+      {
+        "source_url": "https://maearth.com/fundraise",
+        "quote": "Submit your application",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://maearth.com/fundraise",
+        "quote": "Accepted projects join a live funding round, fundraising with community support and amplifying their impact with matching funds.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "eligibility": [
+      {
+        "source_url": "https://maearth.com/fundraise",
+        "quote": "Nature-based Projects are rooted in regenerative principles and support the thriving of life, culture, and nature.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://maearth.com/fundraise",
+        "quote": "Comprehensive Projects take a holistic approach, seeking to understand their relationship to the whole community, landscape, and natural systems.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://maearth.com/fundraise",
+        "quote": "Established Organization and/or project have an established track record of previous activities in a particular place.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://maearth.com/fundraise",
+        "quote": "Community-led Supports ongoing education, community cohesion, and resilience.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://maearth.com/fundraise",
+        "quote": "Verifiable Makes authentic claims about what success looks like, and is committed to providing regular documentation and evaluation.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://maearth.com/fundraise",
+        "quote": "You will need a host partner if you're not a registered nonprofit or if you're not in a Stripe-supported country.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "after_award": [
+      {
+        "source_url": "https://maearth.com/fundraise",
+        "quote": "Makes authentic claims about what success looks like, and is committed to providing regular documentation and evaluation. This includes self-reporting as well as participation in third-party assessments.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ]
   },
   "checked_at": "2026-11-09"
 }
