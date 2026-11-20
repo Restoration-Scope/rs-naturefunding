@@ -189,16 +189,42 @@ export const geography = z.discriminatedUnion('scope', [
   z.object({
     scope: z.literal('countries'),
     countries: z.array(iso2).min(1).max(250),
-    /** Plain-language name of a region or hotspot the funder uses, e.g. "Tropical Andes". */
+    /**
+     * Plain-language name of a region or hotspot the funder uses, e.g. "Tropical Andes". On one country, a label
+     * other than its name is an area inside it ("Yamanashi Prefecture"), and the page doesn't say the whole country,
+     * unless `whole` says the label still means all of it ("All 50 states and DC").
+     */
     label: name.optional(),
+    /** The official list the funder points to (a file in data/lists): `countries` must hold every country on it. */
+    list: slug.optional().describe('The official country list the funder points to, by id (e.g. "dac-oda-recipients"); `countries` holds every country on it.'),
+    whole: z.literal(true).optional().describe('True when the funder takes all of each country even though the label is not just its name ("All 50 states and DC", "France, including overseas territories"); otherwise such a label names an area inside the country.'),
   }),
-  /** Eligibility the funder states as a group, e.g. "ODA-eligible countries", with no country list. */
+  /**
+   * Eligibility the funder states as a group with no country list we can copy, e.g. "Low- and middle-income
+   * countries". The page can't confirm a country is in the group, only that its region is.
+   */
   z.object({
     scope: z.literal('regions'),
     regions: z.array(region).min(1),
     label: name.min(3),
+    /** The funder takes every country in these regions ("across Africa"), so a country in them is covered. */
+    whole: z.literal(true).optional().describe('True when the funder takes every country in these regions; otherwise the label names a narrower group and a country is only maybe covered.'),
   }),
 ])
+
+/** An official country list a funder points to (the OECD DAC list of ODA recipients), read from its publisher. */
+export const countryList = z.object({
+  id: slug,
+  name,
+  source_url: url,
+  quote: z.string().max(400).refine(meaningfulQuote),
+  checked_at: isoDate,
+  note: z.string().min(3).max(300).optional(),
+  /** Countries the publisher says leave the list, and the day they do. */
+  leaves: z.record(iso2, isoDate).optional(),
+  countries: z.array(iso2).min(1),
+})
+export type CountryList = z.infer<typeof countryList>
 
 const organisation = z.object({ name, url })
 

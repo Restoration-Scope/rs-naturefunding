@@ -1,0 +1,121 @@
+{
+  "id": "virginia-environmental-endowment-virginia-program",
+  "read_on": "2026-11-20",
+  "prompt_version": "req-2026-11-20.1",
+  "models": ["cursor:gpt-5.6-luna-high"],
+  "complete": false,
+  "reasons": [
+    "9 links could not be ranked without Jev",
+    "8 links could not be ranked without Jev",
+    "https://www.vee.org/grant-programs-application/proposal-requirements/ would not open (http: HTTP 404)",
+    "Jev did not check this reading, so an absent fact is not known to be absent"
+  ],
+  "requirements_checked": false,
+  "documents": [
+    {
+      "ref": "D1",
+      "url": "https://www.vee.org/grant-programs-application/general-grants/",
+      "final_url": "https://www.vee.org/grant-programs-application/general-grants/",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 5322,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:91b7e438accf6ea0077a40d725b525653ed4cff47c00212bb12eef199078c134"
+    },
+    {
+      "ref": "D2",
+      "url": "https://www.vee.org/faq/",
+      "final_url": "https://www.vee.org/faq/",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 4763,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:30cff895ffe958b122dd9130414ed8426958b9d652040df43f8698089b45636b"
+    },
+    {
+      "ref": "D3",
+      "url": "https://www.vee.org/grant-programs-application/",
+      "final_url": "https://www.vee.org/grant-programs-application/",
+      "from": "https://www.vee.org/grant-programs-application/general-grants/",
+      "anchor": "Grant Programs",
+      "depth": 1,
+      "pdf": false,
+      "chars": 3139,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:4d1fe7c2713e662d1380e216f7ffd214c4f750d6b1be8f499a4bd26186708797"
+    },
+    {
+      "ref": "D4",
+      "url": "https://www.vee.org/grant-programs-application/reporting-requirements/",
+      "final_url": "https://www.vee.org/grant-programs-application/reporting-requirements/",
+      "from": "https://www.vee.org/grant-programs-application/general-grants/",
+      "anchor": "Reporting Requirements",
+      "depth": 1,
+      "pdf": false,
+      "chars": 2443,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:23016e9d5c4c5953d0b97959d03c44e87ff87f6b29798d38e0a3a8dcaaefe281"
+    },
+    {
+      "ref": "D5",
+      "url": "https://www.vee.org/wp-content/uploads/2026/04/VA-Program-Application-0426.docx",
+      "final_url": "https://www.vee.org/wp-content/uploads/2026/04/VA-Program-Application-0426.docx",
+      "from": "https://www.vee.org/grant-programs-application/general-grants/",
+      "anchor": "revised application here",
+      "depth": 1,
+      "pdf": false,
+      "chars": 5613,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:d691e7f2f477f7fcc812a7c142287906bd4eeeefa98345c9b0c8839160a2fb45"
+    },
+    {
+      "ref": "D6",
+      "url": "https://www.vee.org/wp-content/uploads/2019/04/2019-JRWQIP-04-29-Application.docx",
+      "final_url": "https://www.vee.org/wp-content/uploads/2019/04/2019-JRWQIP-04-29-Application.docx",
+      "from": "https://www.vee.org/faq/",
+      "anchor": "Application for Funding Consideration",
+      "depth": 1,
+      "pdf": false,
+      "chars": 9430,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:386bc69bd05bffcd63c7936a1b7fd66a0f6ac7d5c96bfb1bc4c9a0dc7f84c789"
+    }
+  ],
+  "failures": [
+    {
+      "url": "https://www.vee.org/grant-programs-application/proposal-requirements/",
+      "from": "https://www.vee.org/faq/",
+      "kind": "http",
+      "message": "HTTP 404"
+    }
+  ],
+  "skipped_links": 52,
+  "chunks": [{ "id": "all", "docs": ["D1", "D2", "D3", "D4", "D5", "D6"], "chars": 31423 }],
+  "outcomes": {
+    "eligibility": "stated",
+    "documents": "stated",
+    "effort": "stated",
+    "co_finance": "stated",
+    "consortium": "not_found",
+    "after_award": "stated"
+  },
+  "written": ["eligibility", "documents", "effort", "co_finance", "after_award"],
+  "escalated": [],
+  "flags": [],
+  "notes": [
+    "co_finance: share 50% dropped, its quote does not state it",
+    "extractor: D1 states June 15 and December 1 deadlines each year but gives no year; when a date falls on a weekend or holiday, the following business day is the deadline. D1 and D5 provide the current application materials; older D6 material concerns the separate James River Water Quality Improvement Program.",
+    "source virginia-environmental-endowment-virginia-program-3: added for https://www.vee.org/wp-content/uploads/2026/04/VA-Program-Application-0426.docx"
+  ],
+  "usd": 0
+}

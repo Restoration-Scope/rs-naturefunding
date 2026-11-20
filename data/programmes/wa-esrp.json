@@ -40,6 +40,29 @@
   },
   "co_finance_required": false,
   "reporting": null,
+  "eligibility": [
+    {
+      "rule": "Beach small grants: endorsed by a local MRC, Lead Entity, Lead Integrating Organization or Shore Friendly program",
+      "kind": "project"
+    },
+    {
+      "rule": "Not a stand-alone recreational access or chemical contamination remediation project",
+      "kind": "project"
+    },
+    {
+      "rule": "Work does not relieve obligatory payment or mitigation requirements",
+      "kind": "project"
+    }
+  ],
+  "after_award": {
+    "reports": "twice_yearly"
+  },
+  "documents": [
+    "Draft cost estimate or budget worksheet",
+    "Vicinity map, plus site plan or parcel map",
+    "All available design materials, for restoration projects",
+    "Portfolio Program Status Sheet, for portfolio projects"
+  ],
   "calls": [
     {
       "id": "restoration-protection-2027-29",
@@ -132,9 +155,84 @@
     "co_finance_required": {
       "source_url": "https://rco.wa.gov/grant/estuary-and-salmon-restoration-program/",
       "quote": "Match is not required for any ESRP grant program in the 2026 grant round.",
-      "checked_at": "2026-11-02",
+      "checked_at": "2026-11-20",
       "method": "page"
-    }
+    },
+    "eligibility": [
+      {
+        "source_url": "https://rco.wa.gov/wp-content/uploads/2025/10/Beach-Restoration-Small-Grants-RFP-2027-29.pdf",
+        "quote": "Projects must be endorsed by at least one of the following local nearshore planning and conservation organizations: Marine Resources Committee, Lead Entity, Lead Integrating Organization, and/or Shore Friendly program.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://rco.wa.gov/grant/estuary-and-salmon-restoration-program/",
+        "quote": "Projects that primarily provide recreational access or remediate chemical contamination are not eligible as stand-alone projects",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://rco.wa.gov/grant/estuary-and-salmon-restoration-program/",
+        "quote": "Grants will not be awarded for work that relieves obligatory payment or mitigation requirements.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "after_award": [
+      {
+        "source_url": "https://rco.wa.gov/wp-content/uploads/2025/10/Beach-Restoration-Small-Grants-RFP-2027-29.pdf",
+        "quote": "Sponsors are required to enter two progress reports a year for all funded projects using the PRISM Online progress reporting tool. Sponsors are also required to complete and submit a final report in PRISM Online at the completion of their projects.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "documents": [
+      {
+        "source_url": "https://rco.wa.gov/wp-content/uploads/2022/01/ESRP-ResProtRFP.pdf",
+        "quote": "Draft Cost Estimate or Budget Worksheet. You may create your own budget format for this proposal stage",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://rco.wa.gov/wp-content/uploads/2022/01/ESRP-ResProtRFP.pdf",
+        "quote": "Maps • General vicinity map for all projects • Site plan for restoration projects • Parcel map for acquisition projects",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://rco.wa.gov/wp-content/uploads/2022/01/ESRP-ResProtRFP.pdf",
+        "quote": "All Available Design Materials for Restoration Projects.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://rco.wa.gov/wp-content/uploads/2022/01/ESRP-ResProtRFP.pdf",
+        "quote": "(Portfolio Program Applicants Only) Portfolio Program Status Sheet - please complete only the Pre-Proposal portion of the sheet",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "effort": [
+      {
+        "source_url": "https://rco.wa.gov/grant/estuary-and-salmon-restoration-program/",
+        "quote": "Pre-Proposals Due in PRISM February 9, 2026 Pre-Proposal Site Visits March 2, 2026 - March 26, 2026 Applicants Invited to Submit Full Proposals April 8, 2026",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://rco.wa.gov/wp-content/uploads/2025/10/Beach-Restoration-Small-Grants-RFP-2027-29.pdf",
+        "quote": "The BRSGP application process consists of three main requirements: 1) a pre-proposal, 2) a virtual site visit, and 3) a full application",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ]
   },
-  "checked_at": "2026-11-02"
+  "checked_at": "2026-11-02",
+  "effort": {
+    "steps": [
+      "Pre-proposal in PRISM",
+      "Pre-proposal site visit",
+      "Full proposal, if invited"
+    ]
+  }
 }

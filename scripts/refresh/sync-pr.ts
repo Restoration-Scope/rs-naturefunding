@@ -1,7 +1,8 @@
 /**
  * Brings a refresh PR up to date with main so it can merge. The daily job dates facts on main
  * while a PR waits, so the two often differ only in `checked_at` / `accepted_at` dates: those
- * conflicts resolve to the later date. Any other conflict stops, merge aborted, exit 2.
+ * conflicts resolve to the later date. Any other conflict stops, merge aborted, exit 2. The result
+ * (or a head that already has main) must pass validation, else exit 4 and nothing is pushed. Prints the head to merge.
  *   bun scripts/refresh/sync-pr.ts <pr number> [--dry-run]
  */
 import { existsSync, mkdirSync, readFileSync, rmSync, writeFileSync } from 'node:fs'
@@ -64,9 +65,8 @@ if (import.meta.main) {
   must(['git', 'worktree', 'add', '--detach', dir, `origin/${branch}`])
   let code = 0
   try {
-    if (sh(['git', 'merge-base', '--is-ancestor', 'origin/main', 'HEAD'], dir).ok) {
-      console.log(`#${num} already has main`)
-    } else {
+    const hasMain = sh(['git', 'merge-base', '--is-ancestor', 'origin/main', 'HEAD'], dir).ok
+    if (!hasMain) {
       const merged = sh(['git', 'merge', '--no-edit', '-m', 'Merge main into this refresh PR', 'origin/main'], dir)
       if (!merged.ok) {
         const conflicted = must(['git', 'diff', '--name-only', '--diff-filter=U'], dir).split('\n').filter(Boolean)
@@ -87,16 +87,18 @@ if (import.meta.main) {
           code = 2
         } else must(['git', 'commit', '--no-edit'], dir)
       }
-      if (code === 0) {
-        const valid = sh(['bun', resolve('scripts', 'data', 'validate.ts')], dir)
-        if (!valid.ok) {
-          console.error(`#${num}: merged with main but data/ fails validation:\n${valid.err || valid.out}`)
-          code = 2
-        } else if (dryRun) console.log(`#${num}: merges with main cleanly (dry run, not pushed)`)
-        else {
-          must(['git', 'push', 'origin', `HEAD:refs/heads/${branch}`], dir)
-          console.log(`#${num}: main merged in and pushed`)
-        }
+    }
+    if (code === 0) {
+      const valid = sh(['bun', resolve('scripts', 'data', 'validate.ts')], dir)
+      const head = must(['git', 'rev-parse', 'HEAD'], dir)
+      if (!valid.ok) {
+        console.error(`#${num}: ${hasMain ? 'has main' : 'merged with main'} but data/ fails validation:\n${valid.err || valid.out}`)
+        code = 4
+      } else if (hasMain) console.log(`#${num} already has main; head ${head}`)
+      else if (dryRun) console.log(`#${num}: merges with main cleanly (dry run, not pushed)`)
+      else {
+        must(['git', 'push', 'origin', `HEAD:refs/heads/${branch}`], dir)
+        console.log(`#${num}: main merged in and pushed; head ${head}`)
       }
     }
   } finally {

@@ -1,0 +1,60 @@
+{
+  "id": "texas-coastal-management-program-grants",
+  "read_on": "2026-11-20",
+  "prompt_version": "req-2026-11-20.1",
+  "models": ["cursor:gpt-5.6-luna-high", "cursor:gpt-5.6-sol-high"],
+  "complete": false,
+  "reasons": [
+    "https://www.glo.texas.gov/sites/default/files/2026-04/CMP%20Cycle%2032%20Guidance.pdf: page 32 is an image: needs OCR",
+    "the text names a document with rules that was not read: Cycle 32 Financial & Administrative Guidance documents for both NOAA and GOMESA funded projects",
+    "the text names a document with rules that was not read: Coastal Zone Management Act §306A Guidance of April 2025",
+    "the text names a document with rules that was not read: NPS guidance documents",
+    "the text names a document with rules that was not read: NOAA's data sharing policy, effective January 1, 2013",
+    "Jev did not check this reading, so an absent fact is not known to be absent",
+    "strong reading: the text names a document with rules that was not read: Cycle 32 Financial & Administrative Guidance for NOAA-funded projects",
+    "strong reading: the text names a document with rules that was not read: Cycle 32 Financial & Administrative Guidance for GOMESA-funded projects"
+  ],
+  "requirements_checked": false,
+  "documents": [
+    {
+      "ref": "D1",
+      "url": "https://www.glo.texas.gov/sites/default/files/2026-04/CMP%20Cycle%2032%20Guidance.pdf",
+      "final_url": "https://www.glo.texas.gov/sites/default/files/2026-04/CMP%20Cycle%2032%20Guidance.pdf",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": true,
+      "chars": 98073,
+      "pages": 45,
+      "low_text": false,
+      "hash": "sha256:706609f3a3729461008a07f8be2f03825382db7c2613dc7f76b19651616deaaf"
+    }
+  ],
+  "failures": [
+    {
+      "url": "https://www.glo.texas.gov/sites/default/files/2026-04/CMP%20Cycle%2032%20Guidance.pdf",
+      "from": null,
+      "kind": "low_text",
+      "message": "page 32 is an image: needs OCR"
+    }
+  ],
+  "skipped_links": 0,
+  "chunks": [{ "id": "all", "docs": ["D1"], "chars": 98177 }],
+  "outcomes": {
+    "eligibility": "stated",
+    "documents": "stated",
+    "effort": "stated",
+    "co_finance": "stated",
+    "consortium": "not_found",
+    "after_award": "stated"
+  },
+  "written": ["eligibility", "documents", "effort", "co_finance", "after_award"],
+  "escalated": ["documents", "effort"],
+  "flags": [],
+  "notes": [
+    "extractor: Cycle 32 closed on 2026-06-03. NOAA projects require a 40% match, while GOMESA projects do not require matching funds. Supporting documentation for conditionally selected projects was due 2026-11-11. The guide contains additional route-specific timing and documentation requirements, including a possible timing distinction between the main application materials and Appendix C's §306A required forms.",
+    "documents: kept 2 first-reading items no check faulted that the strong reading left out",
+    "source texas-coastal-management-program-grants-1: selector main dropped, a new quote sits outside it"
+  ],
+  "usd": 0
+}

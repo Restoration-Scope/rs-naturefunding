@@ -1,0 +1,82 @@
+{
+  "id": "tennessee-stream-wetland-restoration-grant",
+  "read_on": "2026-11-20",
+  "prompt_version": "req-2026-11-20.1",
+  "models": ["cursor:gpt-5.6-luna-high"],
+  "complete": false,
+  "reasons": [
+    "14 links could not be ranked without Jev",
+    "https://www.tn.gov/content/dam/tn/environment/grants/documents/dwr/grants_dwr_swr_webex-instructions-for-virtual-meetings.pdf: pages 1, 4, 5 are images: needs OCR",
+    "the text names a document with rules that was not read: Request for Proposals (RFP)",
+    "Jev did not check this reading, so an absent fact is not known to be absent"
+  ],
+  "requirements_checked": false,
+  "documents": [
+    {
+      "ref": "D1",
+      "url": "https://www.tn.gov/environment/about-tdec/grants/water/stream-wetland-restoration.html",
+      "final_url": "https://www.tn.gov/environment/about-tdec/grants/water/stream-wetland-restoration.html",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 8210,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:05dd1fe2a634da6aaa8df98747dbe026f29b6f29330eb890aa33b0b7aacd3fcb"
+    },
+    {
+      "ref": "D2",
+      "url": "https://www.tn.gov/content/dam/tn/environment/grants/documents/dwr/grants_dwr_swr_webex-instructions-for-virtual-meetings.pdf",
+      "final_url": "https://www.tn.gov/content/dam/tn/environment/grants/documents/dwr/grants_dwr_swr_webex-instructions-for-virtual-meetings.pdf",
+      "from": "https://www.tn.gov/environment/about-tdec/grants/water/stream-wetland-restoration.html",
+      "anchor": "WebEx Instructions for Virtual Meetings",
+      "depth": 1,
+      "pdf": true,
+      "chars": 1583,
+      "pages": 6,
+      "low_text": false,
+      "hash": "sha256:3f45ac0aae11fb521c8fb6d701617ebb4260280c355240c82a47a60c72d6dfdf"
+    },
+    {
+      "ref": "D3",
+      "url": "https://www.tn.gov/content/dam/tn/environment/grants/documents/dwr/grants_dwr_swr_2026-grant-program-manual.pdf",
+      "final_url": "https://www.tn.gov/content/dam/tn/environment/grants/documents/dwr/grants_dwr_swr_2026-grant-program-manual.pdf",
+      "from": "https://www.tn.gov/environment/about-tdec/grants/water/stream-wetland-restoration.html",
+      "anchor": "Stream and Wetland Grant Program Manual",
+      "depth": 1,
+      "pdf": true,
+      "chars": 26359,
+      "pages": 13,
+      "low_text": false,
+      "hash": "sha256:a7ed151db62deac3f65ec5373de8030cae23a02f011a5b897f0046865703158c"
+    }
+  ],
+  "failures": [
+    {
+      "url": "https://www.tn.gov/content/dam/tn/environment/grants/documents/dwr/grants_dwr_swr_webex-instructions-for-virtual-meetings.pdf",
+      "from": "https://www.tn.gov/environment/about-tdec/grants/water/stream-wetland-restoration.html",
+      "kind": "low_text",
+      "message": "pages 1, 4, 5 are images: needs OCR"
+    }
+  ],
+  "skipped_links": 107,
+  "chunks": [{ "id": "all", "docs": ["D1", "D2", "D3"], "chars": 36727 }],
+  "outcomes": {
+    "eligibility": "stated",
+    "documents": "stated",
+    "effort": "stated",
+    "co_finance": "stated",
+    "consortium": "not_found",
+    "after_award": "stated"
+  },
+  "written": ["eligibility", "documents", "effort", "co_finance", "after_award"],
+  "escalated": [],
+  "flags": [],
+  "notes": [
+    "co_finance: share 20% dropped, its quote does not state it",
+    "extractor: The full proposal is invitation-only. The 2026 application deadline was September 30, 2026.",
+    "source tennessee-stream-wetland-restoration-grant-2: added for https://www.tn.gov/content/dam/tn/environment/grants/documents/dwr/grants_dwr_swr_2026-grant-program-manual.pdf"
+  ],
+  "usd": 0
+}

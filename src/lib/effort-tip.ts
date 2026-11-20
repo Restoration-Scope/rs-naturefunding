@@ -1,7 +1,7 @@
 /**
  * The finder's effort bars (EffortBars.astro) and their one shared tooltip (EffortTip.astro). A row carries its
  * levels in data-effort and its reasons in data-why; hovering or focusing it fills the tooltip and places it
- * above the bars. Shared, because a tooltip per row would triple the size of a thousand-row page.
+ * left of the bars. Shared, because a tooltip per row would triple the size of a thousand-row page.
  */
 export type Level = 'light' | 'some' | 'heavy' | 'unstated' | 'unchecked'
 export const effortLabels = ['Who qualifies', 'Applying', 'Co-funding', 'After the award']
@@ -46,16 +46,27 @@ export function initEffortTip() {
       const levels = [...bars.dataset.effort!].map((c) => byCode[c]!)
       const why = bars.dataset.why!.split('|')
       rows.forEach((row, i) => {
-        const bar = row.firstElementChild as HTMLElement
-        bar.className = `${bar.dataset.base} ${tipFill[levels[i]!]}`
-        row.querySelector('[data-tip-why]')!.textContent = why[i]!
+        const bar = row.querySelector<HTMLElement>('[data-base]')!
+        const level = levels[i]!
+        bar.className = `${bar.dataset.base} ${tipFill[level]}`
+        row.querySelector('[data-tip-level]')!.textContent = effortWords[level].replace(/^./, (x) => x.toUpperCase())
+        const reason = row.querySelector<HTMLElement>('[data-tip-why]')!
+        reason.textContent = why[i]!
+        // "Not checked yet." only repeats the title.
+        reason.hidden = why[i]!.replace(/\.$/, '').toLowerCase() === effortWords[level]
       })
-      tip.querySelector<HTMLElement>('[data-tip-unchecked]')!.hidden = !levels.includes('unchecked')
       shown = bars
     }
     tip.hidden = false
-    tip.style.left = `${Math.max(8, Math.min(r.left - 8, document.documentElement.clientWidth - tip.offsetWidth - 8))}px`
-    tip.style.top = `${Math.max(8, r.top - tip.offsetHeight - 8)}px`
+    // To the left of the bars, centred on them; above them when the left has no room.
+    const left = r.left - tip.offsetWidth - 8
+    if (left >= 8) {
+      tip.style.left = `${left}px`
+      tip.style.top = `${Math.max(8, Math.min(r.top + r.height / 2 - tip.offsetHeight / 2, innerHeight - tip.offsetHeight - 8))}px`
+    } else {
+      tip.style.left = `${Math.max(8, Math.min(r.left - 8, document.documentElement.clientWidth - tip.offsetWidth - 8))}px`
+      tip.style.top = `${Math.max(8, r.top - tip.offsetHeight - 8)}px`
+    }
   }
   const update = () => {
     const anchor = hovered ?? (overTip && !tip.hidden ? shown : null) ?? focused

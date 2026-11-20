@@ -1,0 +1,112 @@
+{
+  "id": "toyo-tire-environmental-protection-fund",
+  "read_on": "2026-11-20",
+  "prompt_version": "req-2026-11-20.1",
+  "models": ["cursor:gpt-5.6-luna-high"],
+  "complete": false,
+  "reasons": [
+    "19 links could not be ranked without Jev",
+    "36 links could not be ranked without Jev",
+    "Jev did not check this reading, so an absent fact is not known to be absent"
+  ],
+  "requirements_checked": false,
+  "documents": [
+    {
+      "ref": "D1",
+      "url": "https://www.philanthropy.or.jp/project/toyotires/",
+      "final_url": "https://www.philanthropy.or.jp/project/toyotires/",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 904,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:1076d84fa23a6d213e83d2c0298cf5374d32c863d8da5f69a41292a384ab1605"
+    },
+    {
+      "ref": "D2",
+      "url": "https://www.philanthropy.or.jp/project/toyotires/2027ann/",
+      "final_url": "https://www.philanthropy.or.jp/project/toyotires/2027ann/",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 2704,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:6beffd363c98fc9b9bc36e9ffe7c9072fe5e475be4422d96cf275e4d23e37ccb"
+    },
+    {
+      "ref": "D3",
+      "url": "https://www.philanthropy.or.jp/project_cat/subsidy/",
+      "final_url": "https://www.philanthropy.or.jp/project_cat/subsidy/",
+      "from": "https://www.philanthropy.or.jp/project/toyotires/",
+      "anchor": "助成事業",
+      "depth": 1,
+      "pdf": false,
+      "chars": 1396,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:dba29830aeca45e0214a00002d51d9857ce1b164f1c6405241ab1455330106bf"
+    },
+    {
+      "ref": "D4",
+      "url": "https://www.philanthropy.or.jp/project/toyotires/2026ann/",
+      "final_url": "https://www.philanthropy.or.jp/project/toyotires/2026ann/",
+      "from": "https://www.philanthropy.or.jp/project/toyotires/",
+      "anchor": "2026年度募集要項",
+      "depth": 1,
+      "pdf": false,
+      "chars": 2685,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:53c6776c69578260a1188ea99b18cf413b028e6b97ebbb526573789ea365e0c0"
+    },
+    {
+      "ref": "D5",
+      "url": "https://www.philanthropy.or.jp/project/toyotires/2025ann/",
+      "final_url": "https://www.philanthropy.or.jp/project/toyotires/2025ann/",
+      "from": "https://www.philanthropy.or.jp/project/toyotires/",
+      "anchor": "2025年度募集要項",
+      "depth": 1,
+      "pdf": false,
+      "chars": 2569,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:4fbc26d54703833e193253ce7dbcbc1f18cc186f37d9fb028dbe359b36f203c2"
+    },
+    {
+      "ref": "D6",
+      "url": "https://www.philanthropy.or.jp/wp-content/uploads/2026/06/2027%E5%B9%B4%E5%BA%A6TOYO-TIRE%E7%92%B0%E5%A2%83%E4%BF%9D%E8%AD%B7%E5%9F%BA%E9%87%91%E4%B8%AD%E9%96%93%E5%A0%B1%E5%91%8A%E6%9B%B8_%E5%9B%A3%E4%BD%93%E5%90%8D.docx",
+      "final_url": "https://www.philanthropy.or.jp/wp-content/uploads/2026/06/2027%E5%B9%B4%E5%BA%A6TOYO-TIRE%E7%92%B0%E5%A2%83%E4%BF%9D%E8%AD%B7%E5%9F%BA%E9%87%91%E4%B8%AD%E9%96%93%E5%A0%B1%E5%91%8A%E6%9B%B8_%E5%9B%A3%E4%BD%93%E5%90%8D.docx",
+      "from": "https://www.philanthropy.or.jp/project/toyotires/2027ann/",
+      "anchor": "中間報告書",
+      "depth": 1,
+      "pdf": false,
+      "chars": 382,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:73497d7f8b490e235c8ebbc4a054b968f8557a7bbf77f82ad24925082a7889df"
+    }
+  ],
+  "failures": [],
+  "skipped_links": 191,
+  "chunks": [{ "id": "all", "docs": ["D1", "D2", "D3", "D4", "D5", "D6"], "chars": 11476 }],
+  "outcomes": {
+    "eligibility": "stated",
+    "documents": "stated",
+    "effort": "stated",
+    "co_finance": "stated",
+    "consortium": "not_found",
+    "after_award": "stated"
+  },
+  "written": ["eligibility", "documents", "effort", "co_finance", "after_award"],
+  "escalated": [],
+  "flags": [],
+  "notes": [
+    "eligibility \"Have at least 1 year of activity record\": min_years dropped: the rule's quote does not state 1 years (or 12 months)",
+    "extractor: The current FY2027 call requires an interim report from organisations that previously received funding and continue their activities, or that received FY2026 funding. D2 also lists 定款 and 役員名簿, but each source entry is shorter than the required eight-character quote minimum."
+  ],
+  "usd": 0
+}
