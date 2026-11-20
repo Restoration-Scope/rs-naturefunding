@@ -32,8 +32,61 @@
   "access": "direct",
   "window": "fixed",
   "amount": null,
-  "co_finance_required": null,
+  "co_finance_required": true,
   "reporting": null,
+  "effort": {
+    "steps": [
+      "Project sketch to the Thüringer Aufbaubank",
+      "Full application, if invited"
+    ]
+  },
+  "eligibility": [
+    {
+      "rule": "Applicant is not a natural person for a project under items 2.5 or 2.6",
+      "kind": "legal"
+    },
+    {
+      "rule": "Projects under items 2.5 or 2.6 make a substantial contribution to climate adaptation",
+      "kind": "project"
+    },
+    {
+      "rule": "Project implementation is not already required by another public-law obligation",
+      "kind": "project"
+    },
+    {
+      "rule": "Work on the project has not started before the application is filed",
+      "kind": "project"
+    },
+    {
+      "rule": "Applicant company is not an undertaking in difficulty",
+      "kind": "legal"
+    },
+    {
+      "rule": "Applicant company has complied with any earlier Commission recovery order",
+      "kind": "legal"
+    },
+    {
+      "rule": "Item 2.2 investments are not aimed at increasing agricultural or forestry production",
+      "kind": "project"
+    },
+    {
+      "rule": "Item 2.4 information providers have required competence and qualified staff",
+      "kind": "capacity"
+    }
+  ],
+  "co_finance": {
+    "in_kind": true,
+    "applies_to": "Projects whose funding rate is below 100%"
+  },
+  "after_award": {
+    "reports": "unspecified",
+    "site_visits": true
+  },
+  "documents": [
+    "Estimated project costs and planned financing",
+    "Statement from the lower nature conservation authority",
+    "Statement from the national landscape administration, for projects focused on national landscapes"
+  ],
   "calls": [
     {
       "id": "annual-competition",
@@ -47,13 +100,13 @@
         "status": {
           "source_url": "https://dokumente.aufbaubank.de/11064-ENL-Richtlinie.pdf",
           "quote": "Zur ersten Einschätzung eines Vorhabens ist bis zum 01.09. des Vorjahres ein aussagefähiger Wettbewerbsbeitrag",
-          "checked_at": "2026-11-16",
+          "checked_at": "2026-11-20",
           "method": "page"
         },
         "recurring": {
           "source_url": "https://dokumente.aufbaubank.de/11064-ENL-Richtlinie.pdf",
           "quote": "Zur ersten Einschätzung eines Vorhabens ist bis zum 01.09. des Vorjahres ein aussagefähiger Wettbewerbsbeitrag",
-          "checked_at": "2026-11-16",
+          "checked_at": "2026-11-20",
           "method": "page"
         }
       }
@@ -63,27 +116,137 @@
     "applicant_types": {
       "source_url": "https://dokumente.aufbaubank.de/11064-ENL-Richtlinie.pdf",
       "quote": "Zuwendungsempfänger sind natürliche und juristische Personen des öffentlichen und privaten Rechts sowie Personengesellschaften.",
-      "checked_at": "2026-11-16",
+      "checked_at": "2026-11-20",
       "method": "page"
     },
     "geography": {
       "source_url": "https://dokumente.aufbaubank.de/11064-ENL-Richtlinie.pdf",
       "quote": "Zuwendungen nach den Nrn. 2.1 bis 2.4 werden grundsätzlich für Vorhaben in ganz Thüringen gewährt.",
-      "checked_at": "2026-11-16",
+      "checked_at": "2026-11-20",
       "method": "page"
     },
     "access": {
       "source_url": "https://dokumente.aufbaubank.de/11064-ENL-Richtlinie.pdf",
       "quote": "Im Ergebnis des Wettbewerbsverfahrens ist der Antrag nach Aufforderung durch die Thüringer Aufbaubank nach den folgenden Vorgaben einzureichen",
-      "checked_at": "2026-11-16",
+      "checked_at": "2026-11-20",
       "method": "page"
     },
     "window": {
       "source_url": "https://dokumente.aufbaubank.de/11064-ENL-Richtlinie.pdf",
       "quote": "Zur ersten Einschätzung eines Vorhabens ist bis zum 01.09. des Vorjahres ein aussagefähiger Wettbewerbsbeitrag",
-      "checked_at": "2026-11-16",
+      "checked_at": "2026-11-20",
       "method": "page"
-    }
+    },
+    "co_finance_required": {
+      "source_url": "https://dokumente.aufbaubank.de/11064-ENL-Richtlinie.pdf",
+      "quote": "Die Zuwendungen werden als Projektförderung in Form von zweckgebundenen, nicht rückzahlbaren Zuschüssen im Wege der Anteilsfinanzierung gewährt.",
+      "checked_at": "2026-11-20",
+      "method": "page"
+    },
+    "effort": [
+      {
+        "source_url": "https://dokumente.aufbaubank.de/11064-ENL-Richtlinie.pdf",
+        "quote": "Zur ersten Einschätzung eines Vorhabens ist bis zum 01.09. des Vorjahres ein aussagefähiger Wettbewerbsbeitrag (Vorhabenskizze), einschließlich der geschätzten Vorhabenkosten sowie der vorgesehenen Finanzierung sowie mit einer Stellungnahme der zuständigen unteren Naturschutzbehörden der Landkreise bzw. kreisfreien Städte bei der Bewilligungsstelle einzureichen.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://dokumente.aufbaubank.de/11064-ENL-Richtlinie.pdf",
+        "quote": "Im Ergebnis des Wettbewerbsverfahrens ist der Antrag nach Aufforderung durch die Thüringer Aufbaubank nach den folgenden Vorgaben einzureichen:",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "eligibility": [
+      {
+        "source_url": "https://dokumente.aufbaubank.de/11064-ENL-Richtlinie.pdf",
+        "quote": "Bei Vorhaben nach den Nrn. 2.5 und 2.6 sind natürliche Personen von der Förderung ausgeschlossen.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://dokumente.aufbaubank.de/11064-ENL-Richtlinie.pdf",
+        "quote": "Für Vorhaben nach den Nrn. 2.5 oder 2.6 ist zusätzlich ein wesentlicher Beitrag zur Anpassung an den Klimawandel zu bestätigen.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://dokumente.aufbaubank.de/11064-ENL-Richtlinie.pdf",
+        "quote": "Die Vorhaben werden nur gefördert, soweit zu ihrer Durchführung nicht andere öffentlichrechtliche Verpflichtungen für den Vorhabenträger bzw. für Dritte aus bestandskräftigen Bescheiden bestehen",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://dokumente.aufbaubank.de/11064-ENL-Richtlinie.pdf",
+        "quote": "Die Anträge sind vor Beginn der Arbeiten für das Vorhaben oder die Tätigkeit bei der Bewilligungsstelle zu stellen.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://dokumente.aufbaubank.de/11064-ENL-Richtlinie.pdf",
+        "quote": "Einem Unternehmen in Schwierigkeiten im Sinne von Art. 2 Abs. 14 der VO (EU) Nr. 702/2014 dürfen keine Zuwendungen gewährt werden.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://dokumente.aufbaubank.de/11064-ENL-Richtlinie.pdf",
+        "quote": "Gleiches gilt für ein Unternehmen, das einer Rückforderungsanordnung aufgrund eines früheren Beschlusses der Kommission zur Feststellung der Unzulässigkeit einer Beihilfe und ihrer Unvereinbarkeit mit dem Binnenmarkt nicht nachgekommen ist.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://dokumente.aufbaubank.de/11064-ENL-Richtlinie.pdf",
+        "quote": "Für Vorhaben nach Nr. 2.2 dürfen die Investitionen nicht auf die Steigerung der landoder forstwirtschaftlichen Erzeugung ausgerichtet sein.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://dokumente.aufbaubank.de/11064-ENL-Richtlinie.pdf",
+        "quote": "Für Vorhaben zur Informationsvermittlung nach Nr. 2.4 müssen die Anbieter umweltund naturschutzbezogener Öffentlichkeits- und Bildungsarbeit die erforderliche Kompetenz aufweisen und entsprechend qualifiziertes Personal mit Fachwissen einsetzen.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "co_finance": {
+      "source_url": "https://dokumente.aufbaubank.de/11064-ENL-Richtlinie.pdf",
+      "quote": "Unbare Leistungen gemeinnütziger Vereinigungen in Form von Arbeitsleistungen können bei Vorhaben nach den Nrn. 2.1 bis 2.4 bis zur Höhe des Eigenanteils berücksichtigt werden",
+      "checked_at": "2026-11-20",
+      "method": "page"
+    },
+    "after_award": [
+      {
+        "source_url": "https://dokumente.aufbaubank.de/11064-ENL-Richtlinie.pdf",
+        "quote": "Die Zuwendungsempfänger haben die ordnungsgemäße Verwendung der Mittel entsprechend den Regelungen der Ziffern 6.1 bis 6.4 der ANBest-P bzw. der ANBestGk bei der Bewilligungsstelle nachzuweisen.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://dokumente.aufbaubank.de/11064-ENL-Richtlinie.pdf",
+        "quote": "Die Förderung nach dieser Richtlinie beinhaltet Kontrollen, ob die Voraussetzungen für die Gewährung von Beihilfen eingehalten wurden. Das schließt ausdrücklich auch Kontrollen vor Ort ein.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "documents": [
+      {
+        "source_url": "https://dokumente.aufbaubank.de/11064-ENL-Richtlinie.pdf",
+        "quote": "ein aussagefähiger Wettbewerbsbeitrag (Vorhabenskizze), einschließlich der geschätzten Vorhabenkosten sowie der vorgesehenen Finanzierung",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://dokumente.aufbaubank.de/11064-ENL-Richtlinie.pdf",
+        "quote": "mit einer Stellungnahme der zuständigen unteren Naturschutzbehörden der Landkreise bzw. kreisfreien Städte",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://dokumente.aufbaubank.de/11064-ENL-Richtlinie.pdf",
+        "quote": "Bei Wettbewerbsbeiträgen, die sich schwerpunktmäßig auf Nationale Naturlandschaften beziehen, sind die örtlich zuständigen Verwaltungsstellen der Nationalen Naturlandschaften vom Antragsteller einzubeziehen. Die Verwaltungsstellen geben eine Stellungnahme gegenüber dem Antragsteller ab.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ]
   },
-  "checked_at": "2026-11-16"
+  "checked_at": "2026-11-20"
 }

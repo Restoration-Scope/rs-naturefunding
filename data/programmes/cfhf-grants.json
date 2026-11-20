@@ -19,7 +19,8 @@
   "geography": {
     "scope": "regions",
     "regions": ["africa", "asia", "latin_america_caribbean", "middle_east"],
-    "label": "Africa, Asia, the Caribbean, Latin America, and the Middle East"
+    "label": "Africa, Asia, the Caribbean, Latin America, and the Middle East",
+    "whole": true
   },
   "access": "direct",
   "window": "fixed",
@@ -33,6 +34,40 @@
   },
   "co_finance_required": null,
   "reporting": "Grantees submit a final report; multi-year grantees also submit an interim progress report, an interim financial report and a second-year work plan before the end of the first grant period.",
+  "effort": { "steps": ["Concept application", "Full proposal, if invited"] },
+  "eligibility": [
+    {
+      "rule": "Applicant is not a government department, except a public university or research center.",
+      "kind": "legal"
+    },
+    {
+      "rule": "Applicant is not an unregistered charity or NGO pending registration.",
+      "kind": "legal"
+    },
+    {
+      "rule": "Applicant is not a business, B-Corp, co-op, private limited company, or social enterprise without charitable status.",
+      "kind": "legal"
+    },
+    {
+      "rule": "Organisation has experience and accomplishments beyond a limited track record.",
+      "kind": "track_record"
+    },
+    { "rule": "Project is not based in a post-Soviet or Balkan state.", "kind": "project" },
+    {
+      "rule": "Project is not a microenterprise, ecotourism, or livelihood project.",
+      "kind": "project"
+    },
+    {
+      "rule": "Project does not request buildings, water systems, pumps, wells, or large equipment purchases.",
+      "kind": "project"
+    },
+    {
+      "rule": "Grant request does not exceed 25% of the organisation's total operating budget.",
+      "kind": "finances",
+      "request_cap": { "share": 25, "of": "budget" }
+    }
+  ],
+  "after_award": { "reports": "interim_and_final" },
   "calls": [
     {
       "id": "yearly-window",
@@ -46,13 +81,13 @@
         "status": {
           "source_url": "https://cfhfoundation.grantsmanagement08.com/?page_id=6",
           "quote": "The concept application (or LOI) is open two times per year: October 15 - December 22 May 1 - June 15",
-          "checked_at": "2026-11-09",
+          "checked_at": "2026-11-20",
           "method": "page"
         },
         "recurring": {
           "source_url": "https://cfhfoundation.grantsmanagement08.com/?page_id=6",
           "quote": "The concept application (or LOI) is open two times per year: October 15 - December 22 May 1 - June 15",
-          "checked_at": "2026-11-09",
+          "checked_at": "2026-11-20",
           "method": "page"
         }
       }
@@ -62,45 +97,117 @@
     "administered_by": {
       "source_url": "https://cfhfoundation.grantsmanagement08.com/",
       "quote": "c/o Prentice A. Zinn, Administrator GMA Foundations 2 Liberty Square, Suite 500 Boston, Massachusetts 02109",
-      "checked_at": "2026-11-09",
+      "checked_at": "2026-11-20",
       "method": "page"
     },
     "applicant_types": {
       "source_url": "https://cfhfoundation.grantsmanagement08.com/",
       "quote": "Most organizations that can provide evidence of their non-governmental status or charitable purpose are eligible to apply, including non-governmental organizations, nonprofit organizations, civil society organizations, community-based organizations, and colleges, universities, and other academic institutions.",
-      "checked_at": "2026-11-09",
+      "checked_at": "2026-11-20",
       "method": "page"
     },
     "geography": {
       "source_url": "https://cfhfoundation.grantsmanagement08.com/",
       "quote": "The Foundation supports local, state, and regional organizations in Africa, Asia, the Caribbean, Latin America, and the Middle East, where the projects are based.",
-      "checked_at": "2026-11-09",
+      "checked_at": "2026-11-20",
       "method": "page"
     },
     "amount": {
       "source_url": "https://cfhfoundation.grantsmanagement08.com/",
       "quote": "There is no minimum or maximum grant size. It is anticipated that most grants will fall in the $25,000-$50,000 per year range.",
-      "checked_at": "2026-11-16",
+      "checked_at": "2026-11-20",
       "method": "page"
     },
     "access": {
       "source_url": "https://cfhfoundation.grantsmanagement08.com/?page_id=6",
       "quote": "The foundation has an online, two-phase application system comprised of a short concept application, followed by a limited number of invited full proposals.",
-      "checked_at": "2026-11-09",
+      "checked_at": "2026-11-20",
       "method": "page"
     },
     "window": {
       "source_url": "https://cfhfoundation.grantsmanagement08.com/?page_id=6",
       "quote": "The concept application (or LOI) is open two times per year",
-      "checked_at": "2026-11-09",
+      "checked_at": "2026-11-20",
       "method": "page"
     },
     "reporting": {
       "source_url": "https://cfhfoundation.grantsmanagement08.com/",
       "quote": "Interim progress reports, interim financial reports and second-year work plans for multi-year grants are due 30 days before the end of the recipient's first grant period.",
-      "checked_at": "2026-11-09",
+      "checked_at": "2026-11-20",
       "method": "page"
-    }
+    },
+    "effort": [
+      {
+        "source_url": "https://cfhfoundation.grantsmanagement08.com/?page_id=6",
+        "quote": "Submit your online concept application between October 15 and December 22 or between May 1 and June 15.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://cfhfoundation.grantsmanagement08.com/?page_id=6",
+        "quote": "followed by a limited number of invited full proposals.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "eligibility": [
+      {
+        "source_url": "https://cfhfoundation.grantsmanagement08.com/?page_id=7",
+        "quote": "Government departments, except public universities and research centers.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://cfhfoundation.grantsmanagement08.com/?page_id=7",
+        "quote": "Unregistered charities or NGOs pending registration",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://cfhfoundation.grantsmanagement08.com/?page_id=7",
+        "quote": "Businesses, B-Corps, Co-ops, Private Limited Companies Social enterprises without charitable status",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://cfhfoundation.grantsmanagement08.com/?page_id=7",
+        "quote": "The Foundation does not fund organizations with limited experience and accomplishments, even if they use a well-established organization as a fiscal agent.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://cfhfoundation.grantsmanagement08.com/",
+        "quote": "It does not support projects in post-Soviet states or Balkan states.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://cfhfoundation.grantsmanagement08.com/?page_id=7",
+        "quote": "Microenterprise, ecotourism, and livelihood projects: The Foundation does not fund these economic development projects.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://cfhfoundation.grantsmanagement08.com/?page_id=7",
+        "quote": "The Foundation does not fund buildings, water systems, pumps, wells, or large equipment purchases.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "http://cfhfoundation.grantsmanagement08.com/wp-content/uploads/2023/02/CFH-LOI-Questions.pdf",
+        "quote": "The foundation does not makes grant that exceed 25% of an organization's total operating budget.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "after_award": [
+      {
+        "source_url": "https://cfhfoundation.grantsmanagement08.com/?page_id=7",
+        "quote": "Submit an interim report with any request for follow-up support. Submit a final report at the end of the grant period or project phase.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ]
   },
-  "checked_at": "2026-11-09"
+  "checked_at": "2026-11-20"
 }

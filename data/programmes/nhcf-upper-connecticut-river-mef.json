@@ -1,16 +1,27 @@
 {
   "id": "nhcf-upper-connecticut-river-mef",
   "name": "Upper Connecticut River Mitigation and Enhancement Fund",
-  "funder": { "name": "New Hampshire Charitable Foundation", "url": "https://www.nhcf.org/" },
+  "funder": {
+    "name": "New Hampshire Charitable Foundation",
+    "url": "https://www.nhcf.org/"
+  },
   "administered_by": null,
   "parent": null,
   "url": "https://www.nhcf.org/mef",
   "summary": "Grants for restoring, protecting and enhancing the Connecticut River, its wetlands and shorelands upstream of White River Junction, funded from a hydroelectric relicensing settlement. Tax-exempt nonprofits and municipalities apply after talking to staff.",
-  "approaches": ["freshwater", "wetlands"],
-  "applicant_types": ["ngo", "government"],
+  "approaches": [
+    "freshwater",
+    "wetlands"
+  ],
+  "applicant_types": [
+    "ngo",
+    "government"
+  ],
   "geography": {
     "scope": "countries",
-    "countries": ["US"],
+    "countries": [
+      "US"
+    ],
     "label": "Upper Connecticut River watershed (NH and VT)"
   },
   "access": "direct",
@@ -18,6 +29,61 @@
   "amount": null,
   "co_finance_required": null,
   "reporting": "A final grant report with a final metrics form is due at the end of the funding period; applicants must also file interim or final reports on all outstanding projects before applying again.",
+  "effort": {
+    "steps": [
+      "Pre-application consultation",
+      "Concept paper",
+      "Full application, if invited"
+    ],
+    "due": [
+      null,
+      "2024-12-05",
+      "2025-02-06"
+    ]
+  },
+  "eligibility": [
+    {
+      "rule": "Is a 501(c)(3) or government entity, or has a tax-exempt fiscal sponsor and agreement",
+      "kind": "legal"
+    },
+    {
+      "rule": "Project is in the Connecticut River watershed above White River Junction, VT",
+      "kind": "project"
+    },
+    {
+      "rule": "White River sub-watershed projects offer exceptional benefits not found upstream",
+      "kind": "project"
+    },
+    {
+      "rule": "No watershed culvert inventory; replacements only in watershed initiatives or qualifying dam projects",
+      "kind": "project"
+    },
+    {
+      "rule": "Does not seek funding for generic conservation studies or management planning",
+      "kind": "project"
+    },
+    {
+      "rule": "Project-specific studies show implementation will not need more MEF funding",
+      "kind": "project"
+    },
+    {
+      "rule": "Does not propose an environmental education or outreach project",
+      "kind": "project"
+    },
+    {
+      "rule": "Conservation easements funded include riparian buffer zone language",
+      "kind": "project"
+    }
+  ],
+  "after_award": {
+    "reports": "final"
+  },
+  "documents": [
+    "Detailed project area map with GPS coordinates",
+    "Project budget using the MEF template",
+    "Completed MEF Project Metrics Form",
+    "Completed fiscal sponsorship form, if applying with a fiscal sponsor"
+  ],
   "calls": [
     {
       "id": "2024-25",
@@ -25,18 +91,21 @@
       "url": "https://www.nhcf.org/mef",
       "status": "closed",
       "opens": null,
-      "deadline": { "date": "2024-12-05", "text": "Thursday, December 5, 2024 (concept paper)" },
+      "deadline": {
+        "date": "2024-12-05",
+        "text": "Thursday, December 5, 2024 (concept paper)"
+      },
       "evidence": {
         "status": {
           "source_url": "https://www.nhcf.org/mef",
           "quote": "This fund is not accepting applications at this time.",
-          "checked_at": "2026-11-12",
+          "checked_at": "2026-11-20",
           "method": "page"
         },
         "deadline": {
           "source_url": "https://www.nhcf.org/mef",
           "quote": "Submit by Thursday, December 5, 2024.",
-          "checked_at": "2026-11-12",
+          "checked_at": "2026-11-20",
           "method": "page"
         }
       }
@@ -46,33 +115,131 @@
     "applicant_types": {
       "source_url": "https://www.nhcf.org/mef",
       "quote": "Must be recognized as tax-exempt under Section 501(c)(3) of the Internal Revenue Code, or be a municipality or other subdivision of government.",
-      "checked_at": "2026-11-12",
+      "checked_at": "2026-11-20",
       "method": "page"
     },
     "geography": {
       "source_url": "https://www.nhcf.org/mef",
       "quote": "Funding is limited to the Connecticut River watershed upstream of the confluence of the White River and the Connecticut River at White River Junction, VT and West Lebanon, NH.",
-      "checked_at": "2026-11-12",
+      "checked_at": "2026-11-20",
       "method": "page"
     },
     "access": {
       "source_url": "https://www.nhcf.org/mef",
       "quote": "Pre-application consultation is required.",
-      "checked_at": "2026-11-12",
+      "checked_at": "2026-11-20",
       "method": "page"
     },
     "window": {
       "source_url": "https://www.nhcf.org/mef",
       "quote": "Submit by Thursday, December 5, 2024.",
-      "checked_at": "2026-11-12",
+      "checked_at": "2026-11-20",
       "method": "page"
     },
     "reporting": {
       "source_url": "https://www.nhcf.org/mef",
       "quote": "At the end of your funding period, complete and submit a final grant report (including a final metrics form reflecting actual project accomplishments).",
-      "checked_at": "2026-11-12",
+      "checked_at": "2026-11-20",
       "method": "page"
-    }
+    },
+    "effort": [
+      {
+        "source_url": "https://www.nhcf.org/mef",
+        "quote": "Pre-application consultation is required.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.nhcf.org/mef",
+        "quote": "Submit by Thursday, December 5, 2024.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.nhcf.org/mef",
+        "quote": "If invited, all concept paper proposals are required to complete the full application through GrantSource by Thursday, February 6, 2025, by 5:00 pm.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "eligibility": [
+      {
+        "source_url": "https://www.nhcf.org/wp-content/uploads/2022/07/MEF-Application-Instructions-2022.docx",
+        "quote": "Organizations must be recognized as tax-exempt under Section 501c3 of the Internal Revenue Code, or be a government entity. Nonprofit organizations or community groups that do not have 501c3 status may apply if another tax-exempt organization serves as fiscal sponsor (and executes a fiscal-sponsor agreement).",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.nhcf.org/mef",
+        "quote": "Funding is limited to the Connecticut River watershed upstream of the confluence of the White River and the Connecticut River at White River Junction, VT and West Lebanon, NH.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.nhcf.org/mef",
+        "quote": "Projects within the White River sub-watershed will be considered ONLY when those projects offer \"exceptional environmental benefits not available in the upper Connecticut River watershed.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.nhcf.org/wp-content/uploads/2022/07/MEF-Application-Instructions-2022.docx",
+        "quote": "no longer fund individual culvert replacement or watershed culvert-inventory projects. MEF will consider culvert replacements as part of a larger, watershed-level initiative, or culvert replacements that are directly related to improving AOP at one or more identified dam-connectivity improvement projects that have known in-stream resources and significant connectivity miles",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.nhcf.org/wp-content/uploads/2022/07/MEF-Application-Instructions-2022.docx",
+        "quote": "The MEF directly funds implementation of conservation and restoration projects, and will not consider proposals that seek funding to study generic conservation objectives or management planning.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.nhcf.org/wp-content/uploads/2022/07/MEF-Application-Instructions-2022.docx",
+        "quote": "Specific, project-based studies (such as engineering reports investigating the feasibility of a specific dam removal project) are permitted if the Applicant can demonstrate reasonable viability of Project implementation being funded without additional MEF support in the future.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.nhcf.org/wp-content/uploads/2022/07/MEF-Application-Instructions-2022.docx",
+        "quote": "Projects aimed at environmental education or outreach will not be funded.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.nhcf.org/wp-content/uploads/2022/07/MEF-Application-Instructions-2022.docx",
+        "quote": "MEF funding for conservation easements require said easements to include riparian buffer zone (RBZ) language.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "after_award": [
+      {
+        "source_url": "https://www.nhcf.org/mef",
+        "quote": "At the end of your funding period, complete and submit a final grant report (including a final metrics form reflecting actual project accomplishments).",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "documents": [
+      {
+        "source_url": "https://www.nhcf.org/wp-content/uploads/2022/07/MEF-Application-Instructions-2022.docx",
+        "quote": "One or more detailed maps showing the location of the proposed project or program. PDF format is preferred. Applications must include (either on the map or in the narrative) GPS coordinates for the project. PLEASE NOTE: Multiple maps must be combined into one file prior to uploading. Completed MEF Project Metrics Form, uploaded in Excel format, showing anticipated project outcomes.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.nhcf.org/wp-content/uploads/2022/07/MEF-Application-Instructions-2022.docx",
+        "quote": "Project budget, using the MEF template, uploaded in Excel format with details on income and expenses, including cash and in-kind contributions from other sources and the status of those sources",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.nhcf.org/how-can-we-help-you/apply-for-a-grant/fiscal-sponsorship-agreement/",
+        "quote": "If you apply for grant funding from the Foundation with a fiscal sponsor, you must submit a completed fiscal sponsorship form with your application.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ]
   },
-  "checked_at": "2026-11-12"
+  "checked_at": "2026-11-20"
 }

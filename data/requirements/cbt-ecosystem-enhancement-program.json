@@ -1,0 +1,73 @@
+{
+  "id": "cbt-ecosystem-enhancement-program",
+  "read_on": "2026-11-20",
+  "prompt_version": "req-2026-11-20.1",
+  "models": ["cursor:gpt-5.6-luna-high"],
+  "complete": false,
+  "reasons": [
+    "13 links could not be ranked without Jev",
+    "the text names a document with rules that was not read: Application Guide/Worksheet",
+    "Jev did not check this reading, so an absent fact is not known to be absent"
+  ],
+  "requirements_checked": false,
+  "documents": [
+    {
+      "ref": "D1",
+      "url": "https://ourtrust.org/grants-programs/ecosystem-enhancement-program/",
+      "final_url": "https://ourtrust.org/grants-programs/ecosystem-enhancement-program/",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 7663,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:6b0c372600215a373b2ddd4d82f9b7f6b915fb4f14645ab07926db5c548e6e5a"
+    },
+    {
+      "ref": "D2",
+      "url": "https://ourtrust.org/wp-content/uploads/2026/07/2026_27_ProgramGuide_EcosystemEnhancementProgramFINAL-1.pdf",
+      "final_url": "https://ourtrust.org/wp-content/uploads/2026/07/2026_27_ProgramGuide_EcosystemEnhancementProgramFINAL-1.pdf",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": true,
+      "chars": 9101,
+      "pages": 4,
+      "low_text": false,
+      "hash": "sha256:7bde70b2bd956634c9e24ea7fe50e7c0ac433816264292876dbb663d69701ca3"
+    },
+    {
+      "ref": "D3",
+      "url": "https://ourtrust.org/privacy-policy/",
+      "final_url": "https://ourtrust.org/privacy-policy/",
+      "from": "https://ourtrust.org/grants-programs/ecosystem-enhancement-program/",
+      "anchor": "Privacy Policy",
+      "depth": 1,
+      "pdf": false,
+      "chars": 4541,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:ad85c183deefed2a7da6057a70374499545a400c110d69c095c350b6d96f2c82"
+    }
+  ],
+  "failures": [],
+  "skipped_links": 184,
+  "chunks": [{ "id": "all", "docs": ["D1", "D2", "D3"], "chars": 21644 }],
+  "outcomes": {
+    "eligibility": "stated",
+    "documents": "not_found",
+    "effort": "stated",
+    "co_finance": "stated",
+    "consortium": "not_found",
+    "after_award": "not_found"
+  },
+  "written": ["eligibility", "effort", "co_finance"],
+  "escalated": [],
+  "flags": [],
+  "notes": [
+    "extractor: D2 requires effectiveness monitoring and maintenance, which is not represented by the permitted after-award duty types. D1 labels the intake open, while D2 provides the specific 2026/27 deadlines.",
+    "source cbt-ecosystem-enhancement-program-1: selector main dropped, a new quote sits outside it"
+  ],
+  "usd": 0
+}

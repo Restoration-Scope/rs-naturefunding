@@ -19,15 +19,30 @@
     "sustainable_land_use",
     "community_conservation"
   ],
-  "applicant_types": ["ngo", "community_group", "company", "research_institution", "government"],
+  "applicant_types": [
+    "ngo",
+    "community_group",
+    "company",
+    "research_institution",
+    "government"
+  ],
   "geography": {
     "scope": "regions",
-    "regions": ["latin_america_caribbean", "africa", "oceania", "europe", "north_america"],
+    "regions": [
+      "latin_america_caribbean",
+      "africa",
+      "oceania",
+      "europe",
+      "north_america"
+    ],
     "label": "EU outermost regions (ORs) and Overseas Countries and Territories (OCTs)"
   },
   "access": "direct",
   "window": "fixed",
-  "amount": { "currency": "EUR", "max": 100000 },
+  "amount": {
+    "currency": "EUR",
+    "max": 100000
+  },
   "pool": {
     "currency": "EUR",
     "value": 23400000,
@@ -35,7 +50,60 @@
     "note": "Across all four BESTLIFE2030 calls, including the ones already run"
   },
   "co_finance_required": true,
+  "consortium_required": false,
   "reporting": "Projects track results against a logframe with SMART indicators and must contribute to at least one of the programme's mandatory biodiversity indicators.",
+  "effort": {
+    "steps": [
+      "Eligibility check",
+      "Concept note",
+      "Full proposal with detailed budget, if invited",
+      "Due diligence, if requested"
+    ],
+    "due": [
+      null,
+      "2026-12-08",
+      null,
+      null
+    ]
+  },
+  "eligibility": [
+    {
+      "rule": "Legal entity registered in an OR or OCT; not an international organisation, individual consultant or sole trader",
+      "kind": "legal"
+    },
+    {
+      "rule": "Directly responsible for preparing and running the project, not acting as an intermediary",
+      "kind": "legal"
+    },
+    {
+      "rule": "Has a bank account in the organisation's name in the establishment or project location",
+      "kind": "capacity"
+    },
+    {
+      "rule": "Runs a project lasting 18 to 36 months, including potential extensions",
+      "kind": "project"
+    },
+    {
+      "rule": "Starts the project between July and September 2027",
+      "kind": "project"
+    },
+    {
+      "rule": "Is not a fundamentally research-based project",
+      "kind": "project"
+    },
+    {
+      "rule": "Is not in a situation listed in the European Commission's EDES system",
+      "kind": "legal"
+    }
+  ],
+  "co_finance": {
+    "min_share": 5
+  },
+  "documents": [
+    "Concept note budget summary",
+    "Signed co-applicant mandate, if applying with co-applicants",
+    "Co-applicant sworn statement, if applying with co-applicants"
+  ],
   "calls": [
     {
       "id": "call-3",
@@ -59,7 +127,7 @@
         "deadline": {
           "source_url": "https://bestlife2030.org/news/from-eu-biodiversity-priorities-to-local-action-bestlife2030-launches-its-third-call-for-proposals/",
           "quote": "Concept notes must be submitted by 8 December 2026 at 14:00 CET.",
-          "checked_at": "2026-11-15",
+          "checked_at": "2026-11-20",
           "method": "page"
         }
       }
@@ -97,7 +165,7 @@
     "applicant_types": {
       "source_url": "https://bestlife2030.org/wp-content/uploads/BESTLIFE2030_3rd_Call_Guidelines_Applicants_EN.pdf",
       "quote": "Local non-profit organisations, local non-governmental organisations (NGOs); • Local civil society organisations (CSOs); • Local community-based organisations (CBOs); • SMEs as defined by the European Commission2; • Local research institutes and organisations (provided eligible activities are implemented); • Local sub-governmental bodies, e.g. municipalities and groups thereof;",
-      "checked_at": "2026-11-15",
+      "checked_at": "2026-11-20",
       "method": "page"
     },
     "geography": {
@@ -109,7 +177,7 @@
     "access": {
       "source_url": "https://bestlife2030.org/news/from-eu-biodiversity-priorities-to-local-action-bestlife2030-launches-its-third-call-for-proposals/",
       "quote": "Applications are managed through the IUCN Grant Management System and may be submitted in English or French.",
-      "checked_at": "2026-11-15",
+      "checked_at": "2026-11-20",
       "method": "page"
     },
     "window": {
@@ -121,21 +189,129 @@
     "amount": {
       "source_url": "https://bestlife2030.org/wp-content/uploads/BESTLIFE2030_3rd_Call_Guidelines_Applicants_EN.pdf",
       "quote": "BESTLIFE2030 grants amount to a maximum of EUR 100,000 per recipient.",
-      "checked_at": "2026-11-15",
+      "checked_at": "2026-11-20",
       "method": "page"
     },
     "co_finance_required": {
       "source_url": "https://bestlife2030.org/wp-content/uploads/BESTLIFE2030_3rd_Call_Guidelines_Applicants_EN.pdf",
-      "quote": "Co-funding must cover at least 5% of the total budget.",
-      "checked_at": "2026-11-15",
+      "quote": "A minimum of 5% co-funding of the total budget is required",
+      "checked_at": "2026-11-20",
+      "method": "page"
+    },
+    "consortium_required": {
+      "source_url": "https://bestlife2030.org/wp-content/uploads/BESTLIFE2030_3rd_Call_Guidelines_Applicants_EN.pdf",
+      "quote": "The lead applicant may act individually or with co-applicant(s).",
+      "checked_at": "2026-11-20",
       "method": "page"
     },
     "reporting": {
       "source_url": "https://bestlife2030.org/wp-content/uploads/BL2030_MEL_Info-session_FP_EN_2CfP.pdf",
       "quote": "All projects MUST contribute to at least ONE indicator from the 'Biodiversity' category.",
-      "checked_at": "2026-11-15",
+      "checked_at": "2026-11-20",
       "method": "page"
-    }
+    },
+    "effort": [
+      {
+        "source_url": "https://bestlife2030.org/news/from-eu-biodiversity-priorities-to-local-action-bestlife2030-launches-its-third-call-for-proposals/",
+        "quote": "The application process begins with an eligibility stage, followed by a concept note for eligible applicants.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://bestlife2030.org/wp-content/uploads/BESTLIFE2030_3rd_Call_Guidelines_Applicants_EN.pdf",
+        "quote": "Concept notes must be submitted by 8 December 2026 at 14:00 CET.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://bestlife2030.org/news/from-eu-biodiversity-priorities-to-local-action-bestlife2030-launches-its-third-call-for-proposals/",
+        "quote": "Shortlisted applicants will then be invited to submit a full proposal.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://bestlife2030.org/wp-content/uploads/BESTLIFE2030_3rd_Call_Guidelines_Applicants_EN.pdf",
+        "quote": "Complete the Full Detailed Budget form for the full project implementation period.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://bestlife2030.org/wp-content/uploads/BESTLIFE2030_3rd_Call_Guidelines_Applicants_EN.pdf",
+        "quote": "Complete the Due Diligence form when it is made available and requested in the application process.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "eligibility": [
+      {
+        "source_url": "https://bestlife2030.org/wp-content/uploads/BESTLIFE2030_3rd_Call_Guidelines_Applicants_EN.pdf",
+        "quote": "A private or public legal entity registered in ORs and/or OCTs (*). International organisations (inclusive of regional organisations with international membership), individual consultants and sole traders are not eligible to receive a grant (**).",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://bestlife2030.org/wp-content/uploads/BESTLIFE2030_3rd_Call_Guidelines_Applicants_EN.pdf",
+        "quote": "Directly responsible for the preparation and implementation of the grant project. Applications submitted by a body acting as an intermediary for a third party are not eligible.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://bestlife2030.org/wp-content/uploads/BESTLIFE2030_3rd_Call_Guidelines_Applicants_EN.pdf",
+        "quote": "Have a bank account in the name of the organisation and in the place where the Grantee is established or where the project is carried out",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://bestlife2030.org/wp-content/uploads/BESTLIFE2030_3rd_Call_Guidelines_Applicants_EN.pdf",
+        "quote": "Project duration must range between 18 to 36 months (including any potential extensions)",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://bestlife2030.org/wp-content/uploads/BESTLIFE2030_3rd_Call_Guidelines_Applicants_EN.pdf",
+        "quote": "Projects must have a start date between July to September 2027.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://bestlife2030.org/wp-content/uploads/BESTLIFE2030_3rd_Call_Guidelines_Applicants_EN.pdf",
+        "quote": "Not be fundamentally research projects.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://bestlife2030.org/wp-content/uploads/BESTLIFE2030_3rd_Call_Guidelines_Applicants_EN.pdf",
+        "quote": "Potential applicants may not participate in the call for proposals or be awarded grants if they are in any of the situations listed in the European Commission's EDES system.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "co_finance": {
+      "source_url": "https://bestlife2030.org/wp-content/uploads/BESTLIFE2030_3rd_Call_Guidelines_Applicants_EN.pdf",
+      "quote": "A minimum of 5% co-funding of the total budget is required",
+      "checked_at": "2026-11-20",
+      "method": "page"
+    },
+    "documents": [
+      {
+        "source_url": "https://bestlife2030.org/wp-content/uploads/BESTLIFE2030_3rd_Call_Guidelines_Applicants_EN.pdf",
+        "quote": "Download and complete the concept note budget summary in the chosen language.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://bestlife2030.org/wp-content/uploads/BESTLIFE2030_3rd_Call_Guidelines_Applicants_EN.pdf",
+        "quote": "signed co-applicant mandates",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://bestlife2030.org/wp-content/uploads/BESTLIFE2030_3rd_Call_Guidelines_Applicants_EN.pdf",
+        "quote": "sworn statements where relevant",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ]
   },
   "checked_at": "2026-11-02"
 }

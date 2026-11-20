@@ -1,0 +1,60 @@
+{
+  "id": "wcn-conservation-partners",
+  "read_on": "2026-11-20",
+  "prompt_version": "req-2026-11-20.1",
+  "models": ["cursor:gpt-5.6-luna-high"],
+  "complete": false,
+  "reasons": [
+    "5 links could not be ranked without Jev",
+    "12 links could not be ranked without Jev",
+    "Jev did not check this reading, so an absent fact is not known to be absent"
+  ],
+  "requirements_checked": false,
+  "documents": [
+    {
+      "ref": "D1",
+      "url": "https://wildnet.org/approach/conservation-partners/how-we-select-our-partners/",
+      "final_url": "https://wildnet.org/approach/conservation-partners/how-we-select-our-partners/",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 5313,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:e4bb34c43c8bb421620c6d897d61abe502deb47f55564d858d4cafa52ac8bc6e"
+    },
+    {
+      "ref": "D2",
+      "url": "https://wildnet.org/about-wcn/faq/",
+      "final_url": "https://wildnet.org/about-wcn/faq/",
+      "from": "https://wildnet.org/approach/conservation-partners/how-we-select-our-partners/",
+      "anchor": "FAQ",
+      "depth": 1,
+      "pdf": false,
+      "chars": 10354,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:8e86dab573a8f200624f4e679c5b964d38a9c3dbac7da6504fa74c5ceeb04149"
+    }
+  ],
+  "failures": [],
+  "skipped_links": 210,
+  "chunks": [{ "id": "all", "docs": ["D1", "D2"], "chars": 15898 }],
+  "outcomes": {
+    "eligibility": "stated",
+    "documents": "stated",
+    "effort": "stated",
+    "co_finance": "not_found",
+    "consortium": "not_found",
+    "after_award": "stated"
+  },
+  "written": ["eligibility", "documents", "effort", "after_award"],
+  "escalated": [],
+  "flags": [],
+  "notes": [
+    "extractor: Partners are added on a rolling basis, but unsolicited partnership applications are not currently accepted.",
+    "source wcn-conservation-partners-2: added for https://wildnet.org/about-wcn/faq/"
+  ],
+  "usd": 0
+}

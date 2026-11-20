@@ -1,23 +1,56 @@
 {
   "id": "saiga-conservation-alliance-small-grants",
   "name": "Saiga Conservation Alliance Small Grants Programme",
-  "funder": { "name": "Saiga Conservation Alliance", "url": "https://saiga-conservation.org/" },
+  "funder": {
+    "name": "Saiga Conservation Alliance",
+    "url": "https://saiga-conservation.org/"
+  },
   "administered_by": null,
   "parent": null,
   "url": "https://saiga-conservation.org/projects/small-grants-programme/",
   "summary": "Grants of up to £5,000 for individuals, organisations and institutions in Kazakhstan, Mongolia, Uzbekistan and saiga consumer countries for field conservation, research, community engagement and education work on saigas.",
-  "approaches": ["species_conservation", "community_conservation", "research"],
-  "applicant_types": ["individual", "ngo", "research_institution"],
+  "approaches": [
+    "species_conservation",
+    "community_conservation",
+    "research"
+  ],
+  "applicant_types": [
+    "individual",
+    "ngo",
+    "research_institution"
+  ],
   "geography": {
     "scope": "countries",
-    "countries": ["KZ", "MN", "UZ", "CN", "SG", "VN", "MY"],
+    "countries": [
+      "KZ",
+      "MN",
+      "UZ",
+      "CN",
+      "SG",
+      "VN",
+      "MY"
+    ],
     "label": "Kazakhstan, Mongolia, Uzbekistan and saiga consumer countries"
   },
   "access": "direct",
   "window": "fixed",
-  "amount": { "currency": "GBP", "max": 5000 },
+  "amount": {
+    "currency": "GBP",
+    "max": 5000
+  },
   "co_finance_required": null,
   "reporting": null,
+  "effort": {
+    "steps": [
+      "Online application form"
+    ]
+  },
+  "eligibility": [
+    {
+      "rule": "Not based in Russia, and the project is not carried out there",
+      "kind": "project"
+    }
+  ],
   "calls": [
     {
       "id": "2027",
@@ -68,7 +101,23 @@
       "quote": "Up to £5,000 in funding for an individual project.",
       "checked_at": "2026-11-12",
       "method": "page"
-    }
+    },
+    "effort": [
+      {
+        "source_url": "https://saiga-conservation.org/projects/small-grants-programme/",
+        "quote": "Applications are submitted through an online form.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "eligibility": [
+      {
+        "source_url": "https://saiga-conservation.org/projects/small-grants-programme/",
+        "quote": "SCA is currently unable to fund programmes implemented in, or individuals based in, the Russian Federation.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ]
   },
   "checked_at": "2026-11-12"
 }

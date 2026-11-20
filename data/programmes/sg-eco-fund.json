@@ -9,9 +9,23 @@
   "parent": null,
   "url": "https://www.mse.gov.sg/sgecofund",
   "summary": "Co-funding for community-engaging environmental projects in Singapore, from small Sprout grants to large Main grants. Nature and biodiversity is one of several eligible areas alongside climate, energy and waste.",
-  "approaches": ["community_conservation", "urban_nature"],
-  "applicant_types": ["individual", "company", "ngo", "government"],
-  "geography": { "scope": "countries", "countries": ["SG"], "label": "Singapore" },
+  "approaches": [
+    "community_conservation",
+    "urban_nature"
+  ],
+  "applicant_types": [
+    "individual",
+    "company",
+    "ngo",
+    "government"
+  ],
+  "geography": {
+    "scope": "countries",
+    "countries": [
+      "SG"
+    ],
+    "label": "Singapore"
+  },
   "access": "direct",
   "window": "fixed",
   "amount": {
@@ -21,6 +35,43 @@
   },
   "co_finance_required": true,
   "reporting": null,
+  "effort": {
+    "steps": [
+      "Online application form for Sprout or Main Category",
+      "10-minute pitch, if invited after shortlisting"
+    ]
+  },
+  "eligibility": [
+    {
+      "rule": "Singapore citizen/PR (18+, resident), a team of 18+ residents with one, or a Singapore-registered organisation",
+      "kind": "legal"
+    },
+    {
+      "rule": "Projects improve the environment or advance environmental sustainability in Singapore",
+      "kind": "project"
+    },
+    {
+      "rule": "Projects engage or involve the community",
+      "kind": "project"
+    },
+    {
+      "rule": "The same project has not received funding from another government grant scheme",
+      "kind": "project"
+    }
+  ],
+  "co_finance": {
+    "min_share": 20
+  },
+  "after_award": {
+    "reports": "other",
+    "audit": true
+  },
+  "documents": [
+    "Proposal deck",
+    "ACRA business profile report or ROS profile, for Main Category",
+    "Audited financial reports for the last 3 years (Main Category organisations; not public agencies)",
+    "CVs of key project team members (Main Category; not public agencies)"
+  ],
   "calls": [
     {
       "id": "recurring-rounds",
@@ -34,13 +85,13 @@
         "status": {
           "source_url": "https://www.mse.gov.sg/sgecofund/apply",
           "quote": "All application forms must be successfully submitted by 23:59 of the respective deadline.",
-          "checked_at": "2026-11-09",
+          "checked_at": "2026-11-20",
           "method": "page"
         },
         "recurring": {
           "source_url": "https://www.mse.gov.sg/sgecofund/apply",
           "quote": "Sprout 1 January to 30 April 30 April July 1 August 1 May to 31 August 31 August November 1 December 1 September to 31 December 31 December March (following year) 1 April (following year) Main 1 May to 31 August 31 August March (following year) 1 April (following year)",
-          "checked_at": "2026-11-09",
+          "checked_at": "2026-11-20",
           "method": "page"
         }
       }
@@ -50,39 +101,119 @@
     "applicant_types": {
       "source_url": "https://www.mse.gov.sg/sgecofund/eligibility-criteria",
       "quote": "Team of Individuals: All individuals must be 18 years old and above, and residing in Singapore; the group must have at least one Singapore Citizen or Permanent Resident; Organisations: Singapore-registered organisations, including companies, charities, government and non-government organisations",
-      "checked_at": "2026-11-09",
+      "checked_at": "2026-11-20",
       "method": "page"
     },
     "geography": {
       "source_url": "https://www.mse.gov.sg/sgecofund/eligibility-criteria",
       "quote": "Improve the environment or advance environmental sustainability in Singapore",
-      "checked_at": "2026-11-09",
+      "checked_at": "2026-11-20",
       "method": "page"
     },
     "access": {
       "source_url": "https://www.mse.gov.sg/sgecofund/apply",
       "quote": "Complete the online application form",
-      "checked_at": "2026-11-09",
+      "checked_at": "2026-11-20",
       "method": "page"
     },
     "window": {
       "source_url": "https://www.mse.gov.sg/sgecofund/apply",
       "quote": "SG Eco Fund application timelines for each category",
-      "checked_at": "2026-11-09",
+      "checked_at": "2026-11-20",
       "method": "page"
     },
     "amount": {
       "source_url": "https://www.mse.gov.sg/sgecofund/funding-support",
       "quote": "capped at a grant amount of $30,000 for the Sprout category or $1 million for the Main category",
-      "checked_at": "2026-11-09",
+      "checked_at": "2026-11-20",
       "method": "page"
     },
     "co_finance_required": {
       "source_url": "https://www.mse.gov.sg/sgecofund/funding-support",
       "quote": "The SG Eco Fund works on a co-funding basis.",
-      "checked_at": "2026-11-09",
+      "checked_at": "2026-11-20",
       "method": "page"
-    }
+    },
+    "effort": [
+      {
+        "source_url": "https://www.mse.gov.sg/sgecofund/apply",
+        "quote": "Complete the online application form (opens in new tab)",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.mse.gov.sg/sgecofund/apply",
+        "quote": "If your project is shortlisted, you may be invited to give a 10-minute pitch using your previously submitted deck.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "eligibility": [
+      {
+        "source_url": "https://www.mse.gov.sg/sgecofund/eligibility-criteria",
+        "quote": "Individuals: Must be a Singapore Citizen or Permanent Resident, 18 years old and above, and residing in Singapore; Team of Individuals: All individuals must be 18 years old and above, and residing in Singapore; the group must have at least one Singapore Citizen or Permanent Resident; Organisations: Singapore-registered organisations",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.mse.gov.sg/sgecofund/eligibility-criteria",
+        "quote": "Improve the environment or advance environmental sustainability in Singapore;",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.mse.gov.sg/sgecofund/eligibility-criteria",
+        "quote": "Engage and/or involve the community;",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.mse.gov.sg/take-action/sgecofund/faq/",
+        "quote": "Applicants are not allowed to receive funding from more than one government grant scheme for the same project.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "co_finance": {
+      "source_url": "https://www.mse.gov.sg/sgecofund/funding-support",
+      "quote": "If the application is approved, the applicant may receive funding of up to 80% of the supportable cost items, capped at a grant amount of $30,000 for the Sprout category or $1 million for the Main category.",
+      "checked_at": "2026-11-20",
+      "method": "page"
+    },
+    "after_award": [
+      {
+        "source_url": "https://www.mse.gov.sg/sgecofund/funding-support",
+        "quote": "Project progress and/or completion reports.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.mse.gov.sg/sgecofund/funding-support",
+        "quote": "For projects with an approved grant quantum of more than S$30,000 - A report of factual findings on their claims, prepared by an external auditor.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "documents": [
+      {
+        "source_url": "https://www.mse.gov.sg/sgecofund/apply",
+        "quote": "Proposal deck",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.mse.gov.sg/sgecofund/apply",
+        "quote": "ACRA business profile report or ROS profile; Audited financial report for the last three years* (for organisations, excluding public agencies);",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.mse.gov.sg/sgecofund/apply",
+        "quote": "CV of key project team members (not required for public agencies).",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ]
   },
-  "checked_at": "2026-11-09"
+  "checked_at": "2026-11-20"
 }

@@ -1,0 +1,83 @@
+{
+  "id": "sun-vechta-foerderung",
+  "read_on": "2026-11-20",
+  "prompt_version": "req-2026-11-20.1",
+  "models": ["cursor:gpt-5.6-luna-high"],
+  "complete": false,
+  "reasons": ["Jev did not check this reading, so an absent fact is not known to be absent"],
+  "requirements_checked": false,
+  "documents": [
+    {
+      "ref": "D1",
+      "url": "https://www.sun-vechta.de/",
+      "final_url": "https://www.sun-vechta.de/",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 5131,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:87aaffd0f81789ed807dabe2f236431a9234d07922a0e65210502fd2cbc615f2"
+    },
+    {
+      "ref": "D2",
+      "url": "https://www.sun-vechta.de/img/anlage-von-mehrjaehrigen-bluehstreifen-und-bluehflaechen-aenderung-richtlinie-2025.pdf",
+      "final_url": "https://www.sun-vechta.de/img/anlage-von-mehrjaehrigen-bluehstreifen-und-bluehflaechen-aenderung-richtlinie-2025.pdf",
+      "from": "https://www.sun-vechta.de/",
+      "anchor": "Anlage von mehrjährigen Blühstreifen und Blühflächen",
+      "depth": 1,
+      "pdf": true,
+      "chars": 3254,
+      "pages": 2,
+      "low_text": false,
+      "hash": "sha256:4d47a64f3da326038ee40314e0deab7e9da6409a6fc2164b522e94bb16602cfc"
+    },
+    {
+      "ref": "D3",
+      "url": "https://www.sun-vechta.de/img/antrag-auf-zuschussbewilligung-08-2023.docx",
+      "final_url": "https://www.sun-vechta.de/img/antrag-auf-zuschussbewilligung-08-2023.docx",
+      "from": "https://www.sun-vechta.de/",
+      "anchor": "Antrag auf Zuschussbewilligung (.docx)",
+      "depth": 1,
+      "pdf": false,
+      "chars": 978,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:10b34031a90977f721e901d924b8fb6f56be3471eef88aad1265d88705503345"
+    },
+    {
+      "ref": "D4",
+      "url": "https://www.sun-vechta.de/img/antrag-auf-zuschussbewilligung-08-2023.pdf",
+      "final_url": "https://www.sun-vechta.de/img/antrag-auf-zuschussbewilligung-08-2023.pdf",
+      "from": "https://www.sun-vechta.de/",
+      "anchor": "Antrag auf Zuschussbewilligung (.pdf)",
+      "depth": 1,
+      "pdf": true,
+      "chars": 1022,
+      "pages": 2,
+      "low_text": false,
+      "hash": "sha256:02de9ba0a9275fd75034346d6ab4777ce0bce4c9cf4a1c990b1bd27dd5c7a50e"
+    }
+  ],
+  "failures": [],
+  "skipped_links": 2,
+  "chunks": [{ "id": "all", "docs": ["D1", "D2", "D3", "D4"], "chars": 10859 }],
+  "outcomes": {
+    "eligibility": "stated",
+    "documents": "stated",
+    "effort": "stated",
+    "co_finance": "not_found",
+    "consortium": "not_found",
+    "after_award": "not_found"
+  },
+  "written": ["eligibility", "documents", "effort"],
+  "escalated": [],
+  "flags": [],
+  "notes": [
+    "extractor: D2 is a measure-specific guideline for establishing perennial flowering strips and areas. Its new funding rates apply from 2026-01-01. D2 requires paid invoices and proof of payment for disbursement. D3 and D4 are August 2023 application forms.",
+    "source sun-vechta-foerderung-2: added for https://www.sun-vechta.de/img/antrag-auf-zuschussbewilligung-08-2023.docx",
+    "source sun-vechta-foerderung-3: added for https://www.sun-vechta.de/img/anlage-von-mehrjaehrigen-bluehstreifen-und-bluehflaechen-aenderung-richtlinie-2025.pdf"
+  ],
+  "usd": 0
+}

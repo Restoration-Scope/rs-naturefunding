@@ -3,7 +3,6 @@
 // (src/lib/finder-pages.ts), the rest in the address.
 import { pageHref, type PagePaths } from './page-paths'
 import { picker } from './picker'
-import { amountCell } from './table'
 import { daysBetween, daysLeft, effectiveListingState, shortDateText, utcDateKey } from './status'
 import type { State } from './labels'
 
@@ -32,6 +31,8 @@ type Item = {
 /** One version of a row's deadline cell: `codes` are the countries it is for, `*` the rest, empty the built cell. */
 type DatedCell = {
   codes: string[]
+  /** The call this cell shows, for Download CSV. */
+  call: string
   state: string
   deadline: string
   deadlineTime: string
@@ -74,6 +75,8 @@ export function initTableFinder() {
   const emptyHead = $<HTMLElement>('[data-empty-head]')
   const clearEls = [...document.querySelectorAll<HTMLElement>('[data-clear]')]
   const badge = $<HTMLElement>('[data-filter-count]')
+  const csvButtons = [...document.querySelectorAll<HTMLElement>('[data-csv]')]
+  const csvError = $<HTMLElement>('[data-csv-error]')
   const sortSelect = $<HTMLSelectElement>('[data-sort-select]')
   const sheet = $<HTMLElement>('[data-sheet]')
   const backdrop = $<HTMLElement>('[data-backdrop]')
@@ -98,6 +101,8 @@ export function initTableFinder() {
   let approach: string[] = []
 
   let showLater = false
+  /** Whether the not-open rows show after the last apply(), asked for or forced by the filters. */
+  let laterOn = false
   let sort: SortKey = 'deadline'
   let reversed = false
 
@@ -116,6 +121,7 @@ export function initTableFinder() {
     const split = (s?: string) => (s ? s.split(' ') : [])
     const alts = [...el.querySelectorAll<HTMLTemplateElement>('template[data-where-dl]')].map((t) => ({
       codes: split(t.dataset.whereDl),
+      call: t.dataset.call ?? '',
       state: t.dataset.state ?? '',
       deadline: t.dataset.deadline ?? '',
       deadlineTime: t.dataset.deadlineTime ?? '',
@@ -126,6 +132,7 @@ export function initTableFinder() {
     }))
     const built = {
       codes: [],
+      call: d.call ?? '',
       state: d.state ?? '',
       deadline,
       deadlineTime: d.deadlineTime ?? '',
@@ -212,6 +219,7 @@ export function initTableFinder() {
       const dl = i.el.querySelector<HTMLElement>('.dl')
       if (dl) dl.innerHTML = cell.html
       i.el.dataset.state = cell.state
+      i.el.dataset.call = cell.call
       i.state = freshen(i.el, cell)
       i.deadline = cell.deadline
       i.opens = cell.opens
@@ -403,7 +411,7 @@ export function initTableFinder() {
     }
     // Not-open rows show when asked for, when the status filter names them, or when they are all that matches.
     const forced = f.status.some(isLater) || (shownNow === 0 && shownLater > 0)
-    const laterOn = showLater || forced
+    laterOn = showLater || forced
     laterHead.hidden = !laterOn || shownLater === 0
     laterList.hidden = !laterOn
     const shown = shownNow + (laterOn ? shownLater : 0)
@@ -438,6 +446,7 @@ export function initTableFinder() {
     // Nothing to show: no header, no end card, just the message where the rows would be.
     emptyEl.hidden = shown > 0
     tableWrap.hidden = shown === 0
+    for (const b of csvButtons) b.hidden = shown === 0
     if (shown === 0) endfold.hidden = true
     // laterN counts not-open rows the other filters match, which the status filter may be hiding.
     emptyHead.textContent = laterN === 0 ? 'Nothing matches.' : 'Nothing open matches.'
@@ -452,6 +461,23 @@ export function initTableFinder() {
     toUrl(f)
     // Each tab's link carries the current place and filters, so a new-tab open keeps them as a click does.
     for (const c of cats) if (c instanceof HTMLAnchorElement) c.href = pageHref(pages, f.where, c.dataset.cat ?? '', new URLSearchParams(location.search))
+  }
+
+  // ---------- Download CSV: the rows shown, in their order ----------
+  async function downloadCsv() {
+    const date = utcDateKey(new Date())
+    const shownRows = [...list.rows, ...(laterOn ? [...laterList.rows] : [])].filter((r) => !r.hidden)
+    const shown = shownRows.flatMap((r) => (r.dataset.id ? [{ id: r.dataset.id, call: r.dataset.call }] : []))
+    try {
+      // Loaded on the click, so the CSV code stays out of the page's load-time budget (tests/dist.test.ts).
+      const { saveViewCsv } = await import('./view-csv')
+      await saveViewCsv(shown, location.pathname, date)
+      csvError.hidden = true
+      live.textContent = `Downloaded ${shown.length} ${plural(shown.length, 'programme', 'programmes')} as CSV`
+    } catch {
+      csvError.hidden = false
+      live.textContent = csvError.textContent ?? ''
+    }
   }
 
   function reset() {
@@ -523,16 +549,27 @@ export function initTableFinder() {
   // cell from its data-amount. "" is the funder's own currency.
   const currencySelect = $<HTMLSelectElement>('[data-currency-select]')
   const amountCells = [...document.querySelectorAll<HTMLElement>('.c-amount[data-amount]')]
+  // The converter and its rates load only off the default: a reader on US dollars, as built, fetches nothing more.
+  // If they fail to load, the select goes back to the currency the cells show.
+  let shownCurrency = 'USD'
   function showCurrency(to: string) {
-    for (const td of amountCells) {
-      const c = amountCell(JSON.parse(td.dataset.amount!), to || undefined)
-      const amt = td.querySelector('.amt')
-      const orig = td.querySelector<HTMLElement>('.amt__orig')
-      if (!c || !amt || !orig) continue
-      amt.textContent = c.text
-      orig.textContent = c.original ? `(${c.original})` : ''
-      orig.hidden = !c.original
-    }
+    import('./table').then(
+      ({ amountCell }) => {
+        for (const td of amountCells) {
+          const c = amountCell(JSON.parse(td.dataset.amount!), to || undefined)
+          const amt = td.querySelector('.amt')
+          const orig = td.querySelector<HTMLElement>('.amt__orig')
+          if (!c || !amt || !orig) continue
+          amt.textContent = c.text
+          orig.textContent = c.original ? `(${c.original})` : ''
+          orig.hidden = !c.original
+        }
+        shownCurrency = to
+      },
+      () => {
+        currencySelect.value = shownCurrency
+      },
+    )
   }
   try {
     const kept = localStorage.getItem('nf-currency')
@@ -621,6 +658,10 @@ export function initTableFinder() {
     if (t.closest('[data-later-show]')) {
       showLater = true
       apply()
+      return
+    }
+    if (t.closest('[data-csv]')) {
+      void downloadCsv()
       return
     }
     if (t.closest('[data-reset]')) reset()

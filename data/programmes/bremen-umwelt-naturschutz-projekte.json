@@ -24,8 +24,50 @@
   "access": "direct",
   "window": "unspecified",
   "amount": null,
-  "co_finance_required": null,
+  "co_finance_required": true,
   "reporting": null,
+  "effort": {
+    "steps": [
+      "Project application",
+      "Application review"
+    ]
+  },
+  "eligibility": [
+    {
+      "rule": "Is a recognised nonprofit in Bremen with capacity to execute the project",
+      "kind": "legal"
+    },
+    {
+      "rule": "Has an active information, education or action-related connection to Bremen",
+      "kind": "project"
+    },
+    {
+      "rule": "Serves Bremen's special public interest and exclusively charitable purposes",
+      "kind": "project"
+    },
+    {
+      "rule": "Targets a defined result within a fixed period",
+      "kind": "project"
+    },
+    {
+      "rule": "Cannot proceed without the funding or within the desired timeframe",
+      "kind": "project"
+    },
+    {
+      "rule": "Has secured the project's total financing",
+      "kind": "finances"
+    },
+    {
+      "rule": "Project activities not started before the funding commitment",
+      "kind": "project"
+    }
+  ],
+  "co_finance": {
+    "in_kind": true
+  },
+  "after_award": {
+    "reports": "interim_and_final"
+  },
   "calls": [],
   "evidence": {
     "geography": {
@@ -39,7 +81,85 @@
       "quote": "gewährt auf Antrag Zuschüsse für Projekte im Bereich Umwelt- und Naturschutz",
       "checked_at": "2026-11-02",
       "method": "page"
-    }
+    },
+    "co_finance_required": {
+      "source_url": "https://buergerservice.bremen.de/sixcms/media.php/5/2015_11_05_ABl_Nr_0250_RiLi_FoerderungNaturschutz_signed.pdf",
+      "quote": "Der Antragsteller hat grundsätzlich einen angemessenen Eigenanteil an den förderfähigen Gesamtkosten des Projektes zu erbringen.",
+      "checked_at": "2026-11-20",
+      "method": "page"
+    },
+    "effort": [
+      {
+        "source_url": "https://www.service.bremen.de/dienstleistungen/foerderung-von-projekten-zu-umwelt-und-naturschutz-sowie-zur-bildung-fuer-nachhaltige-entwicklung-beantragen-17124",
+        "quote": "Projektanträge sind mit dem dafür vorgesehenen Antragsformular einzureichen.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://buergerservice.bremen.de/sixcms/media.php/5/2015_11_05_ABl_Nr_0250_RiLi_FoerderungNaturschutz_signed.pdf",
+        "quote": "Sobald der Antrag vollständig vorliegt, erfolgt eine sorgfältige Prüfung des Antrages.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "eligibility": [
+      {
+        "source_url": "https://buergerservice.bremen.de/sixcms/media.php/5/2015_11_05_ABl_Nr_0250_RiLi_FoerderungNaturschutz_signed.pdf",
+        "quote": "Antragsberechtigt sind als gemeinnützig anerkannte Vereine und Einrichtungen mit Sitz in der Stadt Bremen, die über die notwendigen sachlichen und fachlichen Voraussetzungen für die Projektausführung verfügen.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.service.bremen.de/dienstleistungen/foerderung-von-projekten-zu-umwelt-und-naturschutz-sowie-zur-bildung-fuer-nachhaltige-entwicklung-beantragen-17124",
+        "quote": "Alle Projekte müssen einen aktiven Informations-, Bildungs- oder Handlungsbezug zur Stadtgemeinde Bremen aufweisen.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://buergerservice.bremen.de/sixcms/media.php/5/2015_11_05_ABl_Nr_0250_RiLi_FoerderungNaturschutz_signed.pdf",
+        "quote": "Es werden nur Projekte gefördert, die in besonderem öffentlichen Interesse der Stadtgemeinde Bremen liegen und ausschließlich gemeinnützigen Zwecken dienen.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://buergerservice.bremen.de/sixcms/media.php/5/2015_11_05_ABl_Nr_0250_RiLi_FoerderungNaturschutz_signed.pdf",
+        "quote": "Es sind nur Projekte förderfähig, die ein definiertes Ergebnis in einem festgelegten Zeitraum zum Ziel haben.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://buergerservice.bremen.de/sixcms/media.php/5/2015_11_05_ABl_Nr_0250_RiLi_FoerderungNaturschutz_signed.pdf",
+        "quote": "Eine Förderung wird nur gewährt, wenn das Projekt ohne diese Förderung nicht oder nicht innerhalb des gewünschten Zeitraums durchgeführt werden kann.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://buergerservice.bremen.de/sixcms/media.php/5/2015_11_05_ABl_Nr_0250_RiLi_FoerderungNaturschutz_signed.pdf",
+        "quote": "Die Gesamtfinanzierung des Projektes muss gesichert sein.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://buergerservice.bremen.de/sixcms/media.php/5/2015_11_05_ABl_Nr_0250_RiLi_FoerderungNaturschutz_signed.pdf",
+        "quote": "Es werden nur Projekte gefördert, mit deren Projektaktivitäten vor der Förderzusage der zuständigen Stelle noch nicht begonnen worden ist.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "co_finance": {
+      "source_url": "https://buergerservice.bremen.de/sixcms/media.php/5/2015_11_05_ABl_Nr_0250_RiLi_FoerderungNaturschutz_signed.pdf",
+      "quote": "Als Stundensatz für ehrenamtliche Eigenarbeitsleistungen wird maximal das 1,5-fache des im Bremischen Tariftreue- und Vergabegesetz festgeschriebenen Mindestlohns anerkannt.",
+      "checked_at": "2026-11-20",
+      "method": "page"
+    },
+    "after_award": [
+      {
+        "source_url": "https://buergerservice.bremen.de/sixcms/media.php/5/2015_11_05_ABl_Nr_0250_RiLi_FoerderungNaturschutz_signed.pdf",
+        "quote": "Im Falle einer Förderung hat der Zuwendungsempfänger die zweckentsprechende Mittelverwendung durch einen Sach- und einen Finanzbericht nachzuweisen. Die Berichte sind spätestens innerhalb von drei Monaten nach Ende des Förderzeitraums vorzulegen. Bei Projektlaufzeiten von über 18 Monaten werden Zwischenberichte angefordert.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ]
   },
   "checked_at": "2026-11-02"
 }

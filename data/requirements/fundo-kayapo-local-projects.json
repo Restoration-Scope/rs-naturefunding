@@ -1,0 +1,80 @@
+{
+  "id": "fundo-kayapo-local-projects",
+  "read_on": "2026-11-20",
+  "prompt_version": "req-2026-11-20.1",
+  "models": ["cursor:gpt-5.6-luna-high"],
+  "complete": false,
+  "reasons": [
+    "3 links could not be ranked without Jev",
+    "https://chamadas.funbio.org.br/projetos-locais-fundo-kayapo/download/regulamento?id=df0058df-88ae-4e15-9322-88ef69f36d1f: too little text: the page may need a browser",
+    "the text names a document with rules that was not read: Regulamento",
+    "Jev did not check this reading, so an absent fact is not known to be absent"
+  ],
+  "requirements_checked": false,
+  "documents": [
+    {
+      "ref": "D1",
+      "url": "https://chamadas.funbio.org.br/projetos-locais-fundo-kayapo",
+      "final_url": "https://chamadas.funbio.org.br/projetos-locais-fundo-kayapo",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 3044,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:394a823ecbf3279aec4df81d98c2a78302de76fed5aade22f20ea983bd52755e"
+    },
+    {
+      "ref": "D2",
+      "url": "https://chamadas.funbio.org.br/projetos-locais-fundo-kayapo/download/regulamento?id=df0058df-88ae-4e15-9322-88ef69f36d1f",
+      "final_url": "https://chamadas.funbio.org.br/projetos-locais-fundo-kayapo/download/regulamento?id=df0058df-88ae-4e15-9322-88ef69f36d1f",
+      "from": "https://chamadas.funbio.org.br/projetos-locais-fundo-kayapo",
+      "anchor": "Baixe o regulamento",
+      "depth": 1,
+      "pdf": false,
+      "chars": 0,
+      "pages": null,
+      "low_text": true,
+      "hash": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "ref": "D3",
+      "url": "https://chamadas.funbio.org.br/static/P-42-2020-Politica-de-Privacidade-do-Funbio_revMai2023.pdf",
+      "final_url": "https://chamadas.funbio.org.br/static/P-42-2020-Politica-de-Privacidade-do-Funbio_revMai2023.pdf",
+      "from": "https://chamadas.funbio.org.br/projetos-locais-fundo-kayapo",
+      "anchor": "Política de Privacidade",
+      "depth": 1,
+      "pdf": true,
+      "chars": 23149,
+      "pages": 14,
+      "low_text": false,
+      "hash": "sha256:24b8bcbc39b8ad81a9881cf2ac609d15cf4e9d381bf0d9b7db6ab4d47482637c"
+    }
+  ],
+  "failures": [
+    {
+      "url": "https://chamadas.funbio.org.br/projetos-locais-fundo-kayapo/download/regulamento?id=df0058df-88ae-4e15-9322-88ef69f36d1f",
+      "from": "https://chamadas.funbio.org.br/projetos-locais-fundo-kayapo",
+      "kind": "low_text",
+      "message": "too little text: the page may need a browser"
+    }
+  ],
+  "skipped_links": 4,
+  "chunks": [{ "id": "all", "docs": ["D1", "D3"], "chars": 26454 }],
+  "outcomes": {
+    "eligibility": "stated",
+    "documents": "not_found",
+    "effort": "not_found",
+    "co_finance": "not_found",
+    "consortium": "not_found",
+    "after_award": "not_found"
+  },
+  "written": ["eligibility"],
+  "escalated": [],
+  "flags": [],
+  "notes": [
+    "extractor: The 5th cycle (call 007/2024) is closed and applications are no longer possible."
+  ],
+  "usd": 0
+}

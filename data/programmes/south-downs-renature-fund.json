@@ -1,19 +1,75 @@
 {
   "id": "south-downs-renature-fund",
   "name": "ReNature Fund",
-  "funder": { "name": "South Downs National Park Trust", "url": "https://southdownstrust.org.uk/" },
+  "funder": {
+    "name": "South Downs National Park Trust",
+    "url": "https://southdownstrust.org.uk/"
+  },
   "administered_by": null,
   "parent": null,
   "url": "https://southdownstrust.org.uk/renature-fund/",
   "summary": "Capital grants of £2,000 to £25,000 for practical habitat creation and improvement in or linked to the South Downs National Park, open to community groups, charities, councils and land managers. Enquiry form first.",
-  "approaches": ["community_conservation", "grasslands", "freshwater"],
-  "applicant_types": ["government", "ngo", "social_enterprise", "community_group"],
-  "geography": { "scope": "countries", "countries": ["GB"], "label": "South Downs National Park" },
+  "approaches": [
+    "community_conservation",
+    "grasslands",
+    "freshwater"
+  ],
+  "applicant_types": [
+    "government",
+    "ngo",
+    "social_enterprise",
+    "community_group"
+  ],
+  "geography": {
+    "scope": "countries",
+    "countries": [
+      "GB"
+    ],
+    "label": "South Downs National Park"
+  },
   "access": "direct",
   "window": "fixed",
-  "amount": { "currency": "GBP", "min": 2000, "max": 25000, "note": "Towards capital costs." },
-  "co_finance_required": null,
+  "amount": {
+    "currency": "GBP",
+    "min": 2000,
+    "max": 25000,
+    "note": "Towards capital costs."
+  },
+  "co_finance_required": true,
   "reporting": "Grant conditions usually include providing habitat monitoring information for up to 10 years and allowing monitoring visits.",
+  "effort": {
+    "steps": [
+      "Enquiry form",
+      "Suitability review",
+      "Full application, if invited"
+    ]
+  },
+  "eligibility": [
+    {
+      "rule": "Own the land or have the landowner's permission and follow the agreed management plan",
+      "kind": "project"
+    },
+    {
+      "rule": "Private landowner or commercial partner projects are not for profit and strongly benefit wildlife and the community",
+      "kind": "project"
+    },
+    {
+      "rule": "Not for training, land purchase, vehicles, statutory or BNG duties, non-native projects, past work or recoverable VAT",
+      "kind": "project"
+    }
+  ],
+  "co_finance": {
+    "min_share": 20,
+    "in_kind": true,
+    "applies_to": "wildlife trusts, private landowners and commercial partners"
+  },
+  "after_award": {
+    "reports": "unspecified",
+    "site_visits": true
+  },
+  "documents": [
+    "Basic map showing site boundary area"
+  ],
   "calls": [
     {
       "id": "april-october",
@@ -27,13 +83,13 @@
         "status": {
           "source_url": "https://southdownstrust.org.uk/renature-fund/",
           "quote": "Deadlines: 1st April and 1st October, annually.",
-          "checked_at": "2026-11-12",
+          "checked_at": "2026-11-20",
           "method": "page"
         },
         "recurring": {
           "source_url": "https://southdownstrust.org.uk/renature-fund/",
           "quote": "Deadlines: 1st April and 1st October, annually.",
-          "checked_at": "2026-11-12",
+          "checked_at": "2026-11-20",
           "method": "page"
         }
       }
@@ -43,39 +99,113 @@
     "applicant_types": {
       "source_url": "https://southdownstrust.org.uk/app/uploads/2026/06/ReNature-Funding-Guide.pdf",
       "quote": "Applications are welcome from local authorities, parish councils, charities, community interest companies, constituted voluntary groups, landowners and land managers.",
-      "checked_at": "2026-11-12",
+      "checked_at": "2026-11-20",
       "method": "page"
     },
     "geography": {
       "source_url": "https://southdownstrust.org.uk/app/uploads/2026/06/ReNature-Funding-Guide.pdf",
       "quote": "Sites must be within the South Downs National Park, or create significant habitat links into or out of the National Park.",
-      "checked_at": "2026-11-12",
+      "checked_at": "2026-11-20",
       "method": "page"
     },
     "access": {
       "source_url": "https://southdownstrust.org.uk/renature-fund/",
       "quote": "Please read the funding guide above and complete an enquiry form in the first instance.",
-      "checked_at": "2026-11-12",
+      "checked_at": "2026-11-20",
       "method": "page"
     },
     "window": {
       "source_url": "https://southdownstrust.org.uk/app/uploads/2026/06/ReNature-Funding-Guide.pdf",
       "quote": "Full applications can be submitted twice a year, in April and October.",
-      "checked_at": "2026-11-12",
+      "checked_at": "2026-11-20",
       "method": "page"
     },
     "amount": {
       "source_url": "https://southdownstrust.org.uk/renature-fund/",
       "quote": "Grants of £2,000 to £25,000 are available from the South Downs National Park Trust towards capital costs.",
-      "checked_at": "2026-11-12",
+      "checked_at": "2026-11-20",
+      "method": "page"
+    },
+    "co_finance_required": {
+      "source_url": "https://southdownstrust.org.uk/app/uploads/2026/06/ReNature-Funding-Guide.pdf",
+      "quote": "Wildlife trusts, private landowners and commercial partners are expected to contribute at least 20% of the total project cost, unless there are exceptional circumstances or significant contributions through labour, equipment or future land management costs.",
+      "checked_at": "2026-11-20",
       "method": "page"
     },
     "reporting": {
       "source_url": "https://southdownstrust.org.uk/app/uploads/2026/06/ReNature-Funding-Guide.pdf",
       "quote": "providing habitat monitoring information for up to 10 years allowing access for SDNP staff monitoring visits (with advance notice given)",
-      "checked_at": "2026-11-12",
+      "checked_at": "2026-11-20",
       "method": "page"
-    }
+    },
+    "effort": [
+      {
+        "source_url": "https://southdownstrust.org.uk/renature-fund/",
+        "quote": "complete an enquiry form in the first instance.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://southdownstrust.org.uk/renature-fund/",
+        "quote": "South Downs National Park staff will review your proposal and it's suitability, before advising whether to proceed with a full application.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://southdownstrust.org.uk/app/uploads/2026/06/ReNature-Funding-Guide.pdf",
+        "quote": "Full applications can be submitted twice a year, in April and October.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "eligibility": [
+      {
+        "source_url": "https://southdownstrust.org.uk/app/uploads/2026/06/ReNature-Funding-Guide.pdf",
+        "quote": "The applicant must either own the land or have the landowner's permission to carry out the work and follow the agreed management plan.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://southdownstrust.org.uk/app/uploads/2026/06/ReNature-Funding-Guide.pdf",
+        "quote": "Private landowners and commercial partners may apply if the project is not for profit and offers strong benefits for wildlife and the community.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://southdownstrust.org.uk/app/uploads/2026/06/ReNature-Funding-Guide.pdf",
+        "quote": "organisational training, unless essential to deliver the project and additional to your typical statutory responsibility. land acquisition purchase of vehicles costs linked to statutory duties or planning conditions including delivering Biodiversity Net Gain requirements. projects primarily supporting non-native species work that has already been completed recoverable VAT",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "co_finance": {
+      "source_url": "https://southdownstrust.org.uk/app/uploads/2026/06/ReNature-Funding-Guide.pdf",
+      "quote": "Wildlife trusts, private landowners and commercial partners are expected to contribute at least 20% of the total project cost, unless there are exceptional circumstances or significant contributions through labour, equipment or future land management costs.",
+      "checked_at": "2026-11-20",
+      "method": "page"
+    },
+    "after_award": [
+      {
+        "source_url": "https://southdownstrust.org.uk/app/uploads/2026/06/ReNature-Funding-Guide.pdf",
+        "quote": "providing habitat monitoring information for up to 10 years",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://southdownstrust.org.uk/app/uploads/2026/06/ReNature-Funding-Guide.pdf",
+        "quote": "allowing access for SDNP staff monitoring visits (with advance notice given)",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "documents": [
+      {
+        "source_url": "https://southdownstrust.org.uk/app/uploads/2025/09/Enquiry-Form-NR.docx",
+        "quote": "Please send a basic map showing the site boundary area.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ]
   },
-  "checked_at": "2026-11-12"
+  "checked_at": "2026-11-20"
 }

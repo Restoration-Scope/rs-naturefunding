@@ -42,8 +42,41 @@
     "currency": "USD",
     "max": 500000
   },
-  "co_finance_required": null,
+  "co_finance_required": false,
+  "consortium_required": true,
   "reporting": "Grantees must build at least three indicators from the Fund's Core Indicator Framework into their project logframe; the Fund uses them to monitor and report project outcomes.",
+  "eligibility": [
+    {
+      "rule": "The project qualifies as Ecosystem-based Adaptation",
+      "kind": "project"
+    },
+    {
+      "rule": "The project falls under no more than 1 Strategic Objective and 2 Action Pillars",
+      "kind": "project"
+    },
+    {
+      "rule": "The project lasts 24 months or less",
+      "kind": "project"
+    },
+    {
+      "rule": "The project is built or based on existing work",
+      "kind": "project"
+    },
+    {
+      "rule": "The lead applicant and partner organisations are legally recognised entities",
+      "kind": "legal"
+    }
+  ],
+  "documents": [
+    "Applicant Declaration",
+    "Co-applicant Mandate, for consortia",
+    "Theory of Change, Logframe and Project Activities Form",
+    "Detailed budget in the Excel template",
+    "Due Diligence and Financial Capacity Questionnaire",
+    "Articles of Incorporation, Constitution, Statutes or Government Decree",
+    "Organisation in-country registration certificate, if applicable",
+    "CVs of main personnel assigned to the project"
+  ],
   "calls": [
     {
       "id": "2026-medium",
@@ -81,7 +114,7 @@
     "administered_by": {
       "source_url": "https://globalebafund.org/about-the-global-eba-fund/",
       "quote": "Implemented by IUCN and UNEP, with funding from the International Climate Initiative (IKI) of the German Federal Ministry for the Environment, Climate Action, Nature Conservation and Nuclear Safety (BMUKN)",
-      "checked_at": "2026-11-15",
+      "checked_at": "2026-11-20",
       "method": "page"
     },
     "applicant_types": {
@@ -114,12 +147,121 @@
       "checked_at": "2026-11-12",
       "method": "page"
     },
+    "co_finance_required": {
+      "source_url": "https://globalebafund.org/wp-content/uploads/2026/10/FAQ_Global-EbA-Fund-Open-Calls-for-Proposals_Oct26.pdf",
+      "quote": "Own- or third-party funds are not a requirement; however, co-financing from the applicant would demonstrate an institutional investment in the project.",
+      "checked_at": "2026-11-20",
+      "method": "page"
+    },
+    "consortium_required": {
+      "source_url": "https://globalebafund.org/wp-content/uploads/2026/10/FAQ_Global-EbA-Fund-Open-Calls-for-Proposals_Oct26.pdf",
+      "quote": "However, for both windows for projects with country-level activities a consortium with one or more local organizations is required with at least 25% of the budget allocated to local partners, subject to full compliance with all standards and due diligence requirements.",
+      "checked_at": "2026-11-20",
+      "method": "page"
+    },
     "reporting": {
       "source_url": "https://globalebafund.org/medium-size-grants/",
       "quote": "Applicants must identify at least three relevant indicators from the Core Indicator Framework and incorporate them into the individual project's logical framework.",
       "checked_at": "2026-11-12",
       "method": "page"
-    }
+    },
+    "eligibility": [
+      {
+        "source_url": "https://globalebafund.org/medium-size-grants/",
+        "quote": "Must qualify as \"Ecosystem-based Adaptation",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://globalebafund.org/medium-size-grants/",
+        "quote": "Falls under a maximum of 1 Strategic Objective and a maximum of 2 Action Pillars of the Global EbA Fund.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://globalebafund.org/medium-size-grants/",
+        "quote": "Project duration of 24 months or less.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://globalebafund.org/medium-size-grants/",
+        "quote": "Project must be built / based off existing work.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://globalebafund.org/medium-size-grants/",
+        "quote": "Lead applicant and partner organisations must be legally recognised entities.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "documents": [
+      {
+        "source_url": "https://globalebafund.org/medium-size-grants/",
+        "quote": "Applicant Declaration Co-applicant Mandate Medium-Size Grants Application Form Theory of Change, Logframe and Project Activities Form* Project Proposal Budget Template Due Diligence and Financial Capacity Questionnaire",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://globalebafund.org/wp-content/uploads/2026/08/Global-EbA-Fund-Grants-Procedure-Manual.pdf",
+        "quote": "Annex 1(c)(i): Articles of Incorporation, Constitution, Statutes, Government Decree, as appropriate; and Annex: 1(c)(ii): Organisation in-country registration certificate (if applicable)",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://globalebafund.org/wp-content/uploads/2026/08/Global-EbA-Fund-Grants-Procedure-Manual.pdf",
+        "quote": "you will also be asked to provide the CVs of main personnel assigned to the project.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "effort": [
+      {
+        "source_url": "https://globalebafund.org/medium-size-grants/",
+        "quote": "All applications must be submitted on the online platform.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://globalebafund.org/wp-content/uploads/2026/08/Global-EbA-Fund-Grants-Procedure-Manual.pdf",
+        "quote": "Duly submitted project proposals will be reviewed by expert reviewers",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://globalebafund.org/wp-content/uploads/2026/08/Global-EbA-Fund-Grants-Procedure-Manual.pdf",
+        "quote": "Only shortlisted applicants will be requested to submit:",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "after_award": [
+      {
+        "source_url": "https://globalebafund.org/wp-content/uploads/2026/08/Global-EbA-Fund-Grants-Procedure-Manual.pdf",
+        "quote": "Grantees are required to report on the progress of their respective projects on a 6-months basis.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://globalebafund.org/wp-content/uploads/2026/08/Global-EbA-Fund-Grants-Procedure-Manual.pdf",
+        "quote": "It is required to undertake an external audit for the project funded by the Global EbA Fund.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ]
   },
-  "checked_at": "2026-11-12"
+  "checked_at": "2026-11-12",
+  "effort": {
+    "steps": [
+      "Online application with supporting documents",
+      "Expert review",
+      "ESMS questionnaire and remaining due diligence, if shortlisted"
+    ]
+  },
+  "after_award": {
+    "reports": "twice_yearly",
+    "audit": true
+  }
 }

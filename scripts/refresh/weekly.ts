@@ -1,12 +1,14 @@
 /**
  * The weekly pass: checks every link the listings show (link rot) into data/checks/links.json,
  * then posts a summary issue: what was checked and changed this week, pages failing 3+ times
- * in a row, programmes not fully re-read in 30 days, broken links and open refresh PRs.
+ * in a row, programmes not fully re-read in 30 days, broken links, open refresh PRs and the requirements
+ * reading's leads (unread rules documents, application pages on other sites, unresolved fields).
  *   bun scripts/refresh/weekly.ts [--no-issue]
  */
 import { appendFileSync, mkdirSync, writeFileSync } from 'node:fs'
 import { join } from 'node:path'
 import { checkData } from '../../src/data/load'
+import { leadsOf, leadsSection, readManifests } from '../requirements/leads'
 import type { Programme } from '../../src/data/schema'
 import { classifyResponse, readPages, USER_AGENT, type Fetched } from './fetch'
 import { LINKS_PATH, readJson, SOURCES_PATH, writeJson, type LinkState, type SourceStates } from './state'
@@ -81,6 +83,8 @@ const body = [
   '',
   '### Refresh PRs waiting for review',
   ...(openPrs.length ? openPrs.map((p) => `- ${p.title}: ${p.url}`) : ['None.']),
+  '',
+  ...leadsSection(leadsOf(readManifests(), programmes)),
 ].join('\n')
 
 console.log(body)

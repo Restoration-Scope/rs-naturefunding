@@ -9,29 +9,18 @@
   "parent": null,
   "url": "https://landwirtschaft.hessen.de/naturschutz-und-artenvielfalt/foerderung/foerderungen-im-bereich-natur-und-artenschutz/massnahmen-des-naturschutzes-und-der-landschaftspflege-aus-mitteln-der-ersatzzahlung",
   "summary": "Funding from compensation payments for voluntary nature conservation and landscape measures in Hessen, such as renaturing streams and floodplains, planting hedges and orchards, clearing scrub and converting arable land to grassland. Associations, clubs, individuals and public bodies apply to the nature conservation authority.",
-  "approaches": [
-    "freshwater",
-    "grasslands",
-    "reforestation"
-  ],
-  "applicant_types": [
-    "ngo",
-    "individual",
-    "government",
-    "community_group"
-  ],
-  "geography": {
-    "scope": "countries",
-    "countries": [
-      "DE"
-    ],
-    "label": "Hessen"
-  },
+  "approaches": ["freshwater", "grasslands", "reforestation"],
+  "applicant_types": ["ngo", "individual", "government", "community_group"],
+  "geography": { "scope": "countries", "countries": ["DE"], "label": "Hessen" },
   "access": "direct",
   "window": "rolling",
   "amount": null,
-  "co_finance_required": null,
+  "co_finance_required": false,
   "reporting": null,
+  "effort": { "steps": ["Application to the nature conservation authority"] },
+  "eligibility": [
+    { "rule": "Carries out the measure voluntarily without a legal obligation", "kind": "project" }
+  ],
   "calls": [
     {
       "id": "standing",
@@ -73,6 +62,28 @@
       "source_url": "https://landwirtschaft.hessen.de/naturschutz-und-artenvielfalt/foerderung/foerderungen-im-bereich-natur-und-artenschutz/massnahmen-des-naturschutzes-und-der-landschaftspflege-aus-mitteln-der-ersatzzahlung",
       "quote": "Antragsfrist: keine",
       "checked_at": "2026-11-15",
+      "method": "page"
+    },
+    "effort": [
+      {
+        "source_url": "https://landwirtschaft.hessen.de/naturschutz-und-artenvielfalt/foerderung/foerderungen-im-bereich-natur-und-artenschutz/massnahmen-des-naturschutzes-und-der-landschaftspflege-aus-mitteln-der-ersatzzahlung",
+        "quote": "kann hierfür bei der Naturschutzbehörde Fördermittel aus den Ersatzzahlungen beantragen.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "eligibility": [
+      {
+        "source_url": "https://landwirtschaft.hessen.de/naturschutz-und-artenvielfalt/foerderung/foerderungen-im-bereich-natur-und-artenschutz/massnahmen-des-naturschutzes-und-der-landschaftspflege-aus-mitteln-der-ersatzzahlung",
+        "quote": "ausschließlich Maßnahmen, die freiwillig ohne rechtliche Verpflichtung durchgeführt werden.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "co_finance_required": {
+      "source_url": "https://landwirtschaft.hessen.de/naturschutz-und-artenvielfalt/foerderung/foerderungen-im-bereich-natur-und-artenschutz/massnahmen-des-naturschutzes-und-der-landschaftspflege-aus-mitteln-der-ersatzzahlung",
+      "quote": "Fördersatz: bis 100 %",
+      "checked_at": "2026-11-20",
       "method": "page"
     }
   },

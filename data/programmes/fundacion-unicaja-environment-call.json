@@ -1,24 +1,85 @@
 {
   "id": "fundacion-unicaja-environment-call",
   "name": "Fundación Unicaja Environment Projects Call",
-  "funder": { "name": "Fundación Unicaja", "url": "https://www.fundacionunicaja.com/" },
+  "funder": {
+    "name": "Fundación Unicaja",
+    "url": "https://www.fundacionunicaja.com/"
+  },
   "administered_by": null,
   "parent": null,
   "url": "https://www.fundacionunicaja.com/convocatoria-medio-ambiente/",
   "summary": "Call for environmental projects in Andalucía and the province of Ciudad Real, covering preservation, conservation and restoration of biodiversity and natural areas as well as environmental education.",
-  "approaches": ["species_conservation", "protected_areas", "wetlands"],
+  "approaches": [
+    "species_conservation",
+    "protected_areas",
+    "wetlands"
+  ],
   "applicant_types": null,
   "geography": {
     "scope": "countries",
-    "countries": ["ES"],
+    "countries": [
+      "ES"
+    ],
     "label": "Andalucía and Ciudad Real province"
   },
   "access": "direct",
   "window": "fixed",
-  "amount": { "currency": "EUR", "min": 10000, "max": 100000 },
-  "pool": { "currency": "EUR", "value": 1500000, "period": "round", "qualifier": "up_to" },
+  "amount": {
+    "currency": "EUR",
+    "min": 10000,
+    "max": 100000
+  },
+  "pool": {
+    "currency": "EUR",
+    "value": 1500000,
+    "period": "round",
+    "qualifier": "up_to"
+  },
   "co_finance_required": null,
   "reporting": null,
+  "eligibility": [
+    {
+      "rule": "Is legally constituted",
+      "kind": "legal"
+    },
+    {
+      "rule": "Is domiciled in Spanish territory",
+      "kind": "legal"
+    },
+    {
+      "rule": "Main activity lies in one of the environmental fields the call defines",
+      "kind": "other"
+    },
+    {
+      "rule": "Can demonstrate solvency to execute the project",
+      "kind": "capacity"
+    },
+    {
+      "rule": "Completes the project within 12 months",
+      "kind": "project"
+    },
+    {
+      "rule": "Includes an activity for the Fundación Unicaja Volunteer Club",
+      "kind": "project"
+    },
+    {
+      "rule": "Submits only one proposal to this call",
+      "kind": "other"
+    }
+  ],
+  "after_award": {
+    "reports": "final"
+  },
+  "documents": [
+    "Application letter",
+    "Explanatory project dossier including the requested amount",
+    "Tax identification card copy",
+    "IDs of governing body members",
+    "Current governing body composition document",
+    "Statutes copy",
+    "Entity bank account ownership certificate",
+    "Detailed project budget"
+  ],
   "calls": [
     {
       "id": "2026",
@@ -57,7 +118,7 @@
     "geography": {
       "source_url": "https://www.fundacionunicaja.com/wp-content/uploads/2026/11/Bases-Convocatoria-Medio-Ambiente.pdf",
       "quote": "Los proyectos se desarrollarán en el ámbito territorial de la Fundación Unicaja: Andalucía y la provincia de Ciudad Real.",
-      "checked_at": "2026-11-15",
+      "checked_at": "2026-11-20",
       "method": "page"
     },
     "access": {
@@ -83,7 +144,95 @@
       "quote": "Dotación total de la convocatoria: hasta 1.500.000 €",
       "checked_at": "2026-11-13",
       "method": "page"
-    }
+    },
+    "eligibility": [
+      {
+        "source_url": "https://www.fundacionunicaja.com/wp-content/uploads/2026/11/Bases-Convocatoria-Medio-Ambiente.pdf",
+        "quote": "Estar legalmente constituida.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.fundacionunicaja.com/wp-content/uploads/2026/11/Bases-Convocatoria-Medio-Ambiente.pdf",
+        "quote": "Estar domiciliada en el territorio español.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.fundacionunicaja.com/wp-content/uploads/2026/11/Bases-Convocatoria-Medio-Ambiente.pdf",
+        "quote": "Desarrollar su actividad principal en alguno de los ámbitos definidos en el apartado primero.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.fundacionunicaja.com/wp-content/uploads/2026/11/Bases-Convocatoria-Medio-Ambiente.pdf",
+        "quote": "Acreditar su solvencia para la ejecución del proyecto mediante la documentación requerida a tal efecto.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.fundacionunicaja.com/wp-content/uploads/2026/11/Bases-Convocatoria-Medio-Ambiente.pdf",
+        "quote": "El período máximo de ejecución del proyecto será de 12 meses.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.fundacionunicaja.com/wp-content/uploads/2026/11/Bases-Convocatoria-Medio-Ambiente.pdf",
+        "quote": "La entidad beneficiaria deberá incluir en el proyecto una actividad específica en la que pueda participar el Club de Voluntarios de Fundación Unicaja.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.fundacionunicaja.com/wp-content/uploads/2026/11/Bases-Convocatoria-Medio-Ambiente.pdf",
+        "quote": "Cada entidad podrá presentar una única propuesta.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "after_award": [
+      {
+        "source_url": "https://www.fundacionunicaja.com/wp-content/uploads/2026/11/Bases-Convocatoria-Medio-Ambiente.pdf",
+        "quote": "Las entidades seleccionadas deberán justificar la ejecución completa de la iniciativa objeto de la ayuda mediante la presentación de una memoria final en la que se describan el desarrollo del proyecto, las actividades realizadas, los resultados alcanzados, el impacto obtenido y el grado de cumplimiento de los objetivos y compromisos asumidos.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "documents": [
+      {
+        "source_url": "https://www.fundacionunicaja.com/wp-content/uploads/2026/11/Bases-Convocatoria-Medio-Ambiente.pdf",
+        "quote": "Carta de solicitud y dossier explicativo del proyecto en el que se incluya el importe solicitado. •Documentación en cumplimiento con la Ley de Prevención de Blanqueo y Financiación del Terrorismo: - Fotocopia de la tarjeta fiscal. - Fotocopia de los DNIs de los miembros del órgano de administración. - Fotocopia de la composición actual del órgano de administración",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.fundacionunicaja.com/wp-content/uploads/2026/11/Bases-Convocatoria-Medio-Ambiente.pdf",
+        "quote": "Fotocopia de los Estatutos. - Certificado de titularidad de cuenta de la entidad",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.fundacionunicaja.com/wp-content/uploads/2026/11/Bases-Convocatoria-Medio-Ambiente.pdf",
+        "quote": "Presupuesto detallado del proyecto, conforme al modelo disponible en el formulario web",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "effort": [
+      {
+        "source_url": "https://www.fundacionunicaja.com/wp-content/uploads/2026/11/Bases-Convocatoria-Medio-Ambiente.pdf",
+        "quote": "El plazo de presentación de proyectos será hasta las 14.00 h del día 4 de diciembre de 2026.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ]
   },
-  "checked_at": "2026-11-13"
+  "checked_at": "2026-11-13",
+  "effort": {
+    "steps": [
+      "Online application with the required documents"
+    ],
+    "due": [
+      "2026-12-04"
+    ]
+  }
 }

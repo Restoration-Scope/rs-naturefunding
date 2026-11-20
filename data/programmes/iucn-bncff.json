@@ -21,6 +21,19 @@
   "amount": { "currency": "EUR", "min": 50000, "max": 200000, "typical": true },
   "co_finance_required": null,
   "reporting": null,
+  "effort": {
+    "steps": [
+      "Expression of Interest",
+      "Call for Proposals, if invited",
+      "Proposal evaluation by the Grant Approval Committee"
+    ]
+  },
+  "eligibility": [
+    {
+      "rule": "Project duration is at most 18 months, or up to 21 months in exceptional and well-justified cases",
+      "kind": "project"
+    }
+  ],
   "calls": [
     {
       "id": "phase-3-eoi",
@@ -55,15 +68,43 @@
     "access": {
       "source_url": "https://cdn.prod.website-files.com/66ed61a3ff8bbef53ef26e82/6aa93b58fec3976195faa994_BNCFF_EOI_Context_and_Priority_Areas%20ENG.pdf",
       "quote": "Phase 1: Expression of Interest (EOI), submitted through this Microsoft form.",
-      "checked_at": "2026-11-15",
+      "checked_at": "2026-11-20",
       "method": "page"
     },
     "amount": {
       "source_url": "https://cdn.prod.website-files.com/66ed61a3ff8bbef53ef26e82/6aa93b58fec3976195faa994_BNCFF_EOI_Context_and_Priority_Areas%20ENG.pdf",
       "quote": "The indicative budget range for projects is €50,000 - €200,000.",
-      "checked_at": "2026-11-15",
+      "checked_at": "2026-11-20",
       "method": "page"
-    }
+    },
+    "effort": [
+      {
+        "source_url": "https://cdn.prod.website-files.com/66ed61a3ff8bbef53ef26e82/6aa93b58fec3976195faa994_BNCFF_EOI_Context_and_Priority_Areas%20ENG.pdf",
+        "quote": "Phase 1: Expression of Interest (EOI), submitted through this Microsoft form.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://cdn.prod.website-files.com/66ed61a3ff8bbef53ef26e82/6aa93b58fec3976195faa994_BNCFF_EOI_Context_and_Priority_Areas%20ENG.pdf",
+        "quote": "Phase 2: Call for Proposals (CfP), selected EOI concepts are invited to submit all required documentation at the CfP stage.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://cdn.prod.website-files.com/66ed61a3ff8bbef53ef26e82/6aa93b58fec3976195faa994_BNCFF_EOI_Context_and_Priority_Areas%20ENG.pdf",
+        "quote": "Phase 3: Proposals are evaluated by an independent Grant Approval Committee (GAC)",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "eligibility": [
+      {
+        "source_url": "https://cdn.prod.website-files.com/66ed61a3ff8bbef53ef26e82/6aa93b58fec3976195faa994_BNCFF_EOI_Context_and_Priority_Areas%20ENG.pdf",
+        "quote": "Maximum project duration: 18 months. In exceptional and well-justified cases, up to 3 additional months may be considered (max. 21 months).",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ]
   },
   "checked_at": "2026-11-12"
 }

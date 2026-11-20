@@ -18,6 +18,18 @@
   "amount": { "currency": "USD", "min": 1000, "max": 12000 },
   "co_finance_required": null,
   "reporting": null,
+  "effort": { "steps": ["Funding inquiry", "Full proposal, if invited"] },
+  "eligibility": [
+    {
+      "rule": "Project lead is a national of the low- or middle-income country where the work takes place",
+      "kind": "project"
+    }
+  ],
+  "documents": [
+    "Proposed project paragraph",
+    "Brief bio of project lead",
+    "Approximate budget and project timeline"
+  ],
   "calls": [
     {
       "id": "rolling",
@@ -60,7 +72,49 @@
       "quote": "MCAF grants range from $1,000 to $12,000.",
       "checked_at": "2026-11-09",
       "method": "page"
-    }
+    },
+    "effort": [
+      {
+        "source_url": "https://www.neaq.org/conservation-and-research/marine-conservation-action-fund/",
+        "quote": "Once a funding inquiry is received",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.neaq.org/conservation-and-research/marine-conservation-action-fund/",
+        "quote": "whether we would like to invite a full proposal",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "eligibility": [
+      {
+        "source_url": "https://www.neaq.org/conservation-and-research/marine-conservation-action-fund/",
+        "quote": "Project leaders must be a national of the low- or middle-income country where the work is taking place.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "documents": [
+      {
+        "source_url": "https://www.neaq.org/conservation-and-research/marine-conservation-action-fund/",
+        "quote": "a paragraph about your proposed project",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.neaq.org/conservation-and-research/marine-conservation-action-fund/",
+        "quote": "a brief bio of the project lead",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.neaq.org/conservation-and-research/marine-conservation-action-fund/",
+        "quote": "an approximate budget and timeline",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ]
   },
   "checked_at": "2026-11-09"
 }

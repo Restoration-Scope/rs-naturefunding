@@ -9,36 +9,212 @@
   "parent": null,
   "url": "https://www.erca.go.jp/jfge/english/wwd/grants.html",
   "summary": "Annual grants from a Japanese public fund for non-profit environmental organisations working in Japan or in ODA-recipient countries, covering nature protection and restoration, forest conservation, agroforestry and other conservation work; non-Japanese applicants apply through a Japan-based agent, in Japanese.",
-  "approaches": [
-    "reforestation",
-    "agroforestry",
-    "species_conservation",
-    "sustainable_land_use"
-  ],
-  "applicant_types": [
-    "ngo",
-    "community_group"
-  ],
+  "approaches": ["reforestation", "agroforestry", "species_conservation", "sustainable_land_use"],
+  "applicant_types": ["ngo", "community_group"],
   "geography": {
-    "scope": "regions",
-    "regions": [
-      "africa",
-      "asia",
-      "latin_america_caribbean",
-      "middle_east",
-      "oceania",
-      "europe"
+    "scope": "countries",
+    "countries": [
+      "AF",
+      "AL",
+      "AM",
+      "AO",
+      "AR",
+      "AZ",
+      "BA",
+      "BD",
+      "BF",
+      "BI",
+      "BJ",
+      "BO",
+      "BR",
+      "BT",
+      "BW",
+      "BY",
+      "BZ",
+      "CD",
+      "CF",
+      "CG",
+      "CI",
+      "CM",
+      "CN",
+      "CO",
+      "CR",
+      "CU",
+      "CV",
+      "DJ",
+      "DM",
+      "DO",
+      "DZ",
+      "EC",
+      "EG",
+      "ER",
+      "ET",
+      "FJ",
+      "FM",
+      "GA",
+      "GD",
+      "GE",
+      "GH",
+      "GM",
+      "GN",
+      "GQ",
+      "GT",
+      "GW",
+      "GY",
+      "HN",
+      "HT",
+      "ID",
+      "IN",
+      "IQ",
+      "IR",
+      "JM",
+      "JO",
+      "JP",
+      "KE",
+      "KG",
+      "KH",
+      "KI",
+      "KM",
+      "KP",
+      "KZ",
+      "LA",
+      "LB",
+      "LC",
+      "LK",
+      "LR",
+      "LS",
+      "LY",
+      "MA",
+      "MD",
+      "ME",
+      "MG",
+      "MH",
+      "MK",
+      "ML",
+      "MM",
+      "MN",
+      "MR",
+      "MS",
+      "MU",
+      "MV",
+      "MW",
+      "MX",
+      "MY",
+      "MZ",
+      "NA",
+      "NE",
+      "NG",
+      "NI",
+      "NP",
+      "NR",
+      "NU",
+      "PA",
+      "PE",
+      "PG",
+      "PH",
+      "PK",
+      "PS",
+      "PW",
+      "PY",
+      "RS",
+      "RW",
+      "SB",
+      "SD",
+      "SH",
+      "SL",
+      "SN",
+      "SO",
+      "SR",
+      "SS",
+      "ST",
+      "SV",
+      "SY",
+      "SZ",
+      "TD",
+      "TG",
+      "TH",
+      "TJ",
+      "TK",
+      "TL",
+      "TM",
+      "TN",
+      "TO",
+      "TR",
+      "TV",
+      "TZ",
+      "UA",
+      "UG",
+      "UZ",
+      "VC",
+      "VE",
+      "VN",
+      "VU",
+      "WF",
+      "WS",
+      "XK",
+      "YE",
+      "ZA",
+      "ZM",
+      "ZW"
     ],
-    "label": "Japan and developing regions (DAC list of ODA recipients)"
+    "label": "Japan and developing regions (DAC list of ODA recipients)",
+    "list": "dac-oda-recipients"
   },
   "access": "direct",
   "window": "fixed",
-  "amount": {
-    "currency": "JPY",
-    "max": 8000000
-  },
+  "amount": { "currency": "JPY", "max": 8000000 },
   "co_finance_required": null,
   "reporting": "Grantees submit a yearly Report on Achievements and Activities and a self-assessment sheet; multi-year grants add a mid-term consultation and an activity sharing meeting in the final year.",
+  "effort": {
+    "steps": ["Request forms via the online JFGE system"],
+    "more_after": true,
+    "due": ["2026-11-16"]
+  },
+  "eligibility": [
+    {
+      "rule": "For work in developing regions, already has a track record in the target region",
+      "kind": "track_record"
+    },
+    {
+      "rule": "Overseas applicants: has an agent with a Japanese bank account who can work in Japanese",
+      "kind": "capacity"
+    },
+    {
+      "rule": "Groups without corporate status: has by-laws and a decision-making structure",
+      "kind": "legal"
+    },
+    {
+      "rule": "Groups without corporate status: has a self-auditing accounting system and an office",
+      "kind": "capacity"
+    },
+    {
+      "rule": "Have no connection to an organized crime group or its controlled organization",
+      "kind": "legal"
+    },
+    {
+      "rule": "Activity gets no other subsidy, grant or commissioned funds from the Japanese government",
+      "kind": "project"
+    },
+    {
+      "rule": "At least one year of experience in the field of the grant activities",
+      "kind": "track_record",
+      "min_years": 1
+    },
+    {
+      "rule": "No grant revoked, restitution ordered or penalty under the Subsidies Act in the past 3 years",
+      "kind": "legal"
+    }
+  ],
+  "after_award": { "reports": "yearly" },
+  "documents": [
+    "Articles of incorporation or by-laws",
+    "List of board members and other constituent members",
+    "Budget statement for FY2026",
+    "Financial statements for FY2024 and FY2025",
+    "Agent power of attorney document, for Category B projects",
+    "Agent qualification documents, for Category B projects",
+    "Materials and maps explaining organizational activities"
+  ],
   "calls": [
     {
       "id": "fy2027",
@@ -56,19 +232,19 @@
         "status": {
           "source_url": "https://www.erca.go.jp/jfge/english/wwd/grants.html",
           "quote": "Application period for FY2027 is from Oct.13 to Nov.16, 2026.",
-          "checked_at": "2026-11-18",
+          "checked_at": "2026-11-20",
           "method": "page"
         },
         "opens": {
           "source_url": "https://www.erca.go.jp/jfge/english/pdf/2027_Guide_to_the_JFGE_Grant_Program_Request_Forms.pdf",
           "quote": "Acceptance period for request forms: 12:00 p.m. October 13, 2026 (Tue) to 1:00 p.m. November 16, 2026 (Mon)",
-          "checked_at": "2026-11-18",
+          "checked_at": "2026-11-20",
           "method": "page"
         },
         "deadline": {
           "source_url": "https://www.erca.go.jp/jfge/english/pdf/2027_Guide_to_the_JFGE_Grant_Program_Request_Forms.pdf",
           "quote": "Acceptance period for request forms: 12:00 p.m. October 13, 2026 (Tue) to 1:00 p.m. November 16, 2026 (Mon)",
-          "checked_at": "2026-11-18",
+          "checked_at": "2026-11-20",
           "method": "page"
         }
       }
@@ -78,39 +254,119 @@
     "applicant_types": {
       "source_url": "https://www.erca.go.jp/jfge/english/pdf/2027_Guide_to_the_JFGE_Grant_Program_Request_Forms.pdf",
       "quote": "Those eligible to receive grants are private organizations engaged in environmental conservation activities that fall into one of the following categories:",
-      "checked_at": "2026-11-15",
+      "checked_at": "2026-11-20",
       "method": "page"
     },
     "geography": {
       "source_url": "https://www.erca.go.jp/jfge/english/pdf/2027_Guide_to_the_JFGE_Grant_Program_Request_Forms.pdf",
       "quote": "Target Regions for Activities Japan, developing regions",
-      "checked_at": "2026-11-15",
+      "checked_at": "2026-11-20",
       "method": "page"
     },
     "access": {
       "source_url": "https://www.erca.go.jp/jfge/english/wwd/grants.html",
       "quote": "Please apply within this period through internet.",
-      "checked_at": "2026-11-15",
+      "checked_at": "2026-11-20",
       "method": "page"
     },
     "window": {
       "source_url": "https://www.erca.go.jp/jfge/english/wwd/grants.html",
       "quote": "Application period for FY2027 is from Oct.13 to Nov.16, 2026.",
-      "checked_at": "2026-11-15",
+      "checked_at": "2026-11-20",
       "method": "page"
     },
     "amount": {
       "source_url": "https://www.erca.go.jp/jfge/english/pdf/2027_Guide_to_the_JFGE_Grant_Program_Request_Forms.pdf",
       "quote": "2,000,000 - 8,000,000 yen Category A, B, C projects",
-      "checked_at": "2026-11-15",
+      "checked_at": "2026-11-20",
       "method": "page"
     },
     "reporting": {
       "source_url": "https://www.erca.go.jp/jfge/english/pdf/2027_Guide_to_the_JFGE_Grant_Program_Request_Forms.pdf",
       "quote": "Grant recipients are required to submit a \"Report on Achievements and Activities\" within one month after the conclusion of the grant activities",
-      "checked_at": "2026-11-15",
+      "checked_at": "2026-11-20",
       "method": "page"
-    }
+    },
+    "effort": [
+      {
+        "source_url": "https://www.erca.go.jp/jfge/english/pdf/2027_Guide_to_the_JFGE_Grant_Program_Request_Forms.pdf",
+        "quote": "Acceptance period for request forms: 12:00 p.m. October 13, 2026 (Tue) to 1:00 p.m. November 16, 2026 (Mon)",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "eligibility": [
+      {
+        "source_url": "https://www.erca.go.jp/jfge/english/pdf/2027_Guide_to_the_JFGE_Grant_Program_Request_Forms.pdf",
+        "quote": "In the case of activities in developing regions, the applicant organization must already have a track record of activities in the target region.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.erca.go.jp/jfge/english/wwd/grants.html",
+        "quote": "Do you have any agent (organization or individual) that has a bank account in Japan and can communicate with JFGE about the project both verbally and writtenly in Japanese?",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.erca.go.jp/jfge/english/pdf/2027_Guide_to_the_JFGE_Grant_Program_Request_Forms.pdf",
+        "quote": "without corporate status that meet all of the following conditions: a. The organization has by-laws in place, corresponding to articles of incorporation or articles of contribution. b. The organization has an established structure to make decisions for the organization and to execute the activities related to the request.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.erca.go.jp/jfge/english/pdf/2027_Guide_to_the_JFGE_Grant_Program_Request_Forms.pdf",
+        "quote": "The organization has an accounting system in place, capable of accounting for and auditing itself. d. The organization has an office functioning as the base of its activities.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.erca.go.jp/jfge/english/pdf/2027_Guide_to_the_JFGE_Grant_Program_Request_Forms.pdf",
+        "quote": "The organization has any connection to an organized crime group as defined in the Act on Prevention of Unjust Acts by Organized Crime Group Members, or to an organization under the control of such a group.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.erca.go.jp/jfge/english/pdf/2027_Guide_to_the_JFGE_Grant_Program_Request_Forms.pdf",
+        "quote": "receive funding from sources other than the JFGE, such as through subsidies, grants, or commissioned funds (NGO grant aid, NGO project subsidies, JICA Grassroots Technical Cooperation, Children's Dream Fund, Welfare and Medical Service Agency (WAM) subsidies, Regional Circular and Ecological Spheres Support System Development Project, etc.) from the government or from Japanese government bodies.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.erca.go.jp/jfge/english/pdf/2027_Guide_to_the_JFGE_Grant_Program_Request_Forms.pdf",
+        "quote": "Organizations with at least one year of experience in the field related to the grant activities.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.erca.go.jp/jfge/english/pdf/2027_Guide_to_the_JFGE_Grant_Program_Request_Forms.pdf",
+        "quote": "If the organization has, within the past three years, faced measures such as the revocation of a grant decision, an order for restitution, or penalties based on the \"Act on Regulation of Execution of Budget Pertaining to Subsidies, etc.\" for the grant project in question, or for other subsidized or grant-funded projects",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "after_award": [
+      {
+        "source_url": "https://www.erca.go.jp/jfge/english/pdf/2027_Guide_to_the_JFGE_Grant_Program_Request_Forms.pdf",
+        "quote": "Grant recipients are required to submit a \"Report on Achievements and Activities\" within one month after the conclusion of the grant activities or by April 10 after the end of the fiscal year, and to prepare and submit a \"Self-Assessment Sheet\" concerning their own grant project.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "documents": [
+      {
+        "source_url": "https://www.erca.go.jp/jfge/english/pdf/2027_Guide_to_the_JFGE_Grant_Program_Request_Forms.pdf",
+        "quote": "The articles of incorporation or by-laws of the organization 3) List of board members and other constituent members of the organization 4) Budget statement for FY2026 5) Financial statement for FY2025 6) Financial statement for FY2024 7) Agent power of attorney document , Agent qualification documents (Category B)",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.erca.go.jp/jfge/english/pdf/2027_Guide_to_the_JFGE_Grant_Program_Request_Forms.pdf",
+        "quote": "Materials and maps explaining organizational activities",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ]
   },
-  "checked_at": "2026-11-15"
+  "checked_at": "2026-11-20"
 }

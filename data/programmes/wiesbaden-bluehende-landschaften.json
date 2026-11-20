@@ -34,8 +34,61 @@
     "unit": "tree",
     "note": "Cap per tree for single trees and tree rows; other measures are paid per area or as a share of costs"
   },
-  "co_finance_required": null,
+  "co_finance_required": true,
   "reporting": "Applicants document the project, supplying pictures and observations during and after the work.",
+  "effort": {
+    "steps": [
+      "Postal application with form and attachments"
+    ]
+  },
+  "eligibility": [
+    {
+      "rule": "The project does not damage valuable habitats or species",
+      "kind": "project"
+    },
+    {
+      "rule": "The project is not required by law or an official condition",
+      "kind": "project"
+    },
+    {
+      "rule": "The project is not a measure recognised under an ecological compensation account",
+      "kind": "project"
+    },
+    {
+      "rule": "The project is not already funded by a state or federal programme",
+      "kind": "project"
+    },
+    {
+      "rule": "The project is not part of a farm's Bioland conversion or a condition for EU premiums",
+      "kind": "project"
+    },
+    {
+      "rule": "The applicant commits to maintain the measure for at least 5 years",
+      "kind": "project"
+    },
+    {
+      "rule": "Non-owners have written owner consent for measures under 2.1 and 2.2",
+      "kind": "legal"
+    },
+    {
+      "rule": "The project has not started before the grant is approved",
+      "kind": "project"
+    }
+  ],
+  "co_finance": {
+    "min_share": 20,
+    "in_kind": true,
+    "applies_to": "Measures funded at 80% of eligible costs"
+  },
+  "after_award": {
+    "reports": "final"
+  },
+  "documents": [
+    "Cost breakdown or quote for the proposed measure",
+    "Site plan",
+    "Photos",
+    "Owner consent, for tenants, associations or measures on buildings"
+  ],
   "calls": [],
   "evidence": {
     "applicant_types": {
@@ -62,12 +115,110 @@
       "checked_at": "2026-11-14",
       "method": "page"
     },
+    "co_finance_required": {
+      "source_url": "https://www.wiesbaden.de/medien/downloads/leben-wohnen/umwelt-naturschutz/18-V-36-0005-Anlage-zur-SV_Foerderprogramm_Bluehende-Landschaften.pdf",
+      "quote": "Die Förderung erfolgt in Höhe von 80 % der durch Rechnung nachgewiesenen Kosten für Materialien und Dienstleistungen bei Fremdvergabe.",
+      "checked_at": "2026-11-20",
+      "method": "page"
+    },
     "reporting": {
       "source_url": "https://www.wiesbaden.de/leben-in-wiesbaden/umwelt-natur-klima/natur-landschaft/bluehende-landschaften",
       "quote": "Sie dokumentieren: Sie stellen während und nach der Durchführung Bilder und Beobachtungen zur Verfügung.",
       "checked_at": "2026-11-14",
       "method": "page"
-    }
+    },
+    "effort": [
+      {
+        "source_url": "https://www.wiesbaden.de/medien/downloads/leben-wohnen/umwelt-naturschutz/18-V-36-0005-Anlage-zur-SV_Foerderprogramm_Bluehende-Landschaften.pdf",
+        "quote": "Förderanträge sind unter Verwendung des Antragsformulars per Briefpost in einfacher Ausfertigung einzureichen.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "eligibility": [
+      {
+        "source_url": "https://www.wiesbaden.de/medien/downloads/leben-wohnen/umwelt-naturschutz/18-V-36-0005-Anlage-zur-SV_Foerderprogramm_Bluehende-Landschaften.pdf",
+        "quote": "durch die wertvolle Biotope oder Arten beeinträchtigt oder zerstört werden",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.wiesbaden.de/medien/downloads/leben-wohnen/umwelt-naturschutz/18-V-36-0005-Anlage-zur-SV_Foerderprogramm_Bluehende-Landschaften.pdf",
+        "quote": "zu deren Durchführung eine rechtliche Verpflichtung (z.B. durch eine Rechtsvorschrift oder durch eine Auflage in einem Bescheid) besteht",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.wiesbaden.de/medien/downloads/leben-wohnen/umwelt-naturschutz/18-V-36-0005-Anlage-zur-SV_Foerderprogramm_Bluehende-Landschaften.pdf",
+        "quote": "die im Rahmen einer Ökokontomaßnahme anerkannt wurden",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.wiesbaden.de/medien/downloads/leben-wohnen/umwelt-naturschutz/18-V-36-0005-Anlage-zur-SV_Foerderprogramm_Bluehende-Landschaften.pdf",
+        "quote": "die bereits durch andere Programme des Landes oder des Bundes gefördert werden",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.wiesbaden.de/medien/downloads/leben-wohnen/umwelt-naturschutz/18-V-36-0005-Anlage-zur-SV_Foerderprogramm_Bluehende-Landschaften.pdf",
+        "quote": "die von Landwirtschaftsbetrieben im Zusammenhang mit der Umstellung des Betriebes auf \"Bioland\" durchgeführt werden oder die Voraussetzung für den Erhalt von EU-Prämien sind (z.B. Greening-Maßnahmen).",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.wiesbaden.de/medien/downloads/leben-wohnen/umwelt-naturschutz/18-V-36-0005-Anlage-zur-SV_Foerderprogramm_Bluehende-Landschaften.pdf",
+        "quote": "Maßnahmen werden nur gefördert, wenn der Antragsteller bestätigt, auch bei fehlender weiterer Förderungsmöglichkeit die Maßnahme mindestens für 5 Jahre im festgelegten Sinne zu unterhalten.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.wiesbaden.de/medien/downloads/leben-wohnen/umwelt-naturschutz/18-V-36-0005-Anlage-zur-SV_Foerderprogramm_Bluehende-Landschaften.pdf",
+        "quote": "Sofern der Antragsteller bei Maßnahmen nach 2.1 und 2.2 nicht gleichzeitig Hausbzw. Grundstückseigentümer ist, werden Zuwendungen nur dann gewährt, wenn der Eigentümer/die Eigentümergemeinschaft das Einverständnis zur Inanspruchnahme des Grundstückes/Gebäudes im Antragsverfahren schriftlich erklärt.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.wiesbaden.de/medien/downloads/leben-wohnen/umwelt-naturschutz/18-V-36-0005-Anlage-zur-SV_Foerderprogramm_Bluehende-Landschaften.pdf",
+        "quote": "Mit dem zu fördernden Vorhaben darf nicht vor Bewilligung der Zuwendung begonnen werden.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "co_finance": {
+      "source_url": "https://www.wiesbaden.de/medien/downloads/leben-wohnen/umwelt-naturschutz/18-V-36-0005-Anlage-zur-SV_Foerderprogramm_Bluehende-Landschaften.pdf",
+      "quote": "Dies setzt voraus, dass Eigenleistungen in Höhe von 20 % der zu bezuschussenden Kosten erbracht werden und dass für diese eine Geltendmachung im Rahmen der Aufwandsentschädigung verzichtet wird.",
+      "checked_at": "2026-11-20",
+      "method": "page"
+    },
+    "after_award": [
+      {
+        "source_url": "https://www.wiesbaden.de/medien/downloads/leben-wohnen/umwelt-naturschutz/18-V-36-0005-Anlage-zur-SV_Foerderprogramm_Bluehende-Landschaften.pdf",
+        "quote": "Nachweise über die Durchführung der Maßnahme (z.B. Fotos, Beschreibungen, Berichtsausfertigungen bei Monitoringmaßnahmen usw.) sind dem Abruf des Zuschusses beizufügen.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "documents": [
+      {
+        "source_url": "https://www.wiesbaden.de/medien/downloads/leben-wohnen/umwelt-naturschutz/Antragsformular-Stand-20190726.pdf",
+        "quote": "Kostenaufstellung / Angebot zur beantragten Maßnahme • Lageplan, Fotos",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.wiesbaden.de/medien/downloads/leben-wohnen/umwelt-naturschutz/Antragsformular-Stand-20190726.pdf",
+        "quote": "Bei Pächtern oder Vereinen ist die Zustimmung des Grundstückseigentümers nachzuweisen.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.wiesbaden.de/medien/downloads/leben-wohnen/umwelt-naturschutz/Antragsformular-Stand-20190726.pdf",
+        "quote": "Bei Maßnahmen an Gebäuden ist die Zustimmung des Eigentümers oder der Eigentümergemeinschaft zur beantragten Maßnahme nachzuweisen.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ]
   },
   "checked_at": "2026-11-14"
 }

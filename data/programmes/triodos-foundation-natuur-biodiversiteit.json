@@ -1,14 +1,27 @@
 {
   "id": "triodos-foundation-natuur-biodiversiteit",
   "name": "Triodos Foundation donations: Natuur & biodiversiteit",
-  "funder": { "name": "Triodos Foundation", "url": "https://www.triodosfoundation.nl/" },
+  "funder": {
+    "name": "Triodos Foundation",
+    "url": "https://www.triodosfoundation.nl/"
+  },
   "administered_by": null,
   "parent": null,
   "url": "https://www.triodosfoundation.nl/aanvragen",
   "summary": "Donations of typically EUR 5,000 to 20,000, covering at most a quarter of the budget, for Dutch non-profits whose projects protect, restore and raise the profile of nature and biodiversity. A quickscan comes first, then a full application with quarterly review.",
-  "approaches": ["community_conservation"],
-  "applicant_types": ["ngo"],
-  "geography": { "scope": "countries", "countries": ["NL"], "label": "Netherlands" },
+  "approaches": [
+    "community_conservation"
+  ],
+  "applicant_types": [
+    "ngo"
+  ],
+  "geography": {
+    "scope": "countries",
+    "countries": [
+      "NL"
+    ],
+    "label": "Netherlands"
+  },
   "access": "direct",
   "window": "rolling",
   "amount": {
@@ -20,6 +33,38 @@
   },
   "co_finance_required": true,
   "reporting": null,
+  "effort": {
+    "steps": [
+      "Quickscan",
+      "Application form with all attachments",
+      "Review against themes, criteria and available funds"
+    ]
+  },
+  "eligibility": [
+    {
+      "rule": "Operate as a non-profit organisation",
+      "kind": "legal"
+    },
+    {
+      "rule": "Have an independent board with at least three members",
+      "kind": "capacity"
+    },
+    {
+      "rule": "Have a project with a clear start, end, budget and funding plan",
+      "kind": "project"
+    },
+    {
+      "rule": "Have impact beyond only the local level",
+      "kind": "project"
+    },
+    {
+      "rule": "Do not primarily conduct or establish commercial activities",
+      "kind": "legal"
+    }
+  ],
+  "co_finance": {
+    "min_share": 75
+  },
   "calls": [
     {
       "id": "standing",
@@ -33,13 +78,13 @@
         "status": {
           "source_url": "https://www.triodosfoundation.nl/aanvragen",
           "quote": "Jij vraagt een schenking aan tussen: Je hoort ons besluit in: 1 januari en 31 maart Juni 1 april en 30 juni September 1 juli en 30 september December 1 oktober en 31 december Maart",
-          "checked_at": "2026-11-15",
+          "checked_at": "2026-11-20",
           "method": "page"
         },
         "recurring": {
           "source_url": "https://www.triodosfoundation.nl/aanvragen",
           "quote": "Jij vraagt een schenking aan tussen: Je hoort ons besluit in: 1 januari en 31 maart Juni 1 april en 30 juni September 1 juli en 30 september December 1 oktober en 31 december Maart",
-          "checked_at": "2026-11-15",
+          "checked_at": "2026-11-20",
           "method": "page"
         }
       }
@@ -49,39 +94,103 @@
     "applicant_types": {
       "source_url": "https://www.triodosfoundation.nl/aanvragen",
       "quote": "Je werkt aan meer dan alleen lokale impact, jouw aanpak kan brederdoorwerken en je organisatie werkt non-profit.",
-      "checked_at": "2026-11-15",
+      "checked_at": "2026-11-20",
       "method": "page"
     },
     "geography": {
       "source_url": "https://www.triodosfoundation.nl/aanvragen",
       "quote": "Triodos Foundation steunt organisaties in Nederland die werken aan natuur & biodiversiteit of landbouw & voedsel.",
-      "checked_at": "2026-11-15",
+      "checked_at": "2026-11-20",
       "method": "page"
     },
     "access": {
       "source_url": "https://www.triodosfoundation.nl/aanvragen",
       "quote": "Alleen aanvragen die na een afgeronde quickscan met een volledig aanvraagformulier worden ingediend, nemen we in behandeling.",
-      "checked_at": "2026-11-15",
+      "checked_at": "2026-11-20",
       "method": "page"
     },
     "window": {
       "source_url": "https://www.triodosfoundation.nl/aanvragen",
       "quote": "Jij vraagt een schenking aan tussen: Je hoort ons besluit in: 1 januari en 31 maart Juni 1 april en 30 juni September 1 juli en 30 september December 1 oktober en 31 december Maart",
-      "checked_at": "2026-11-15",
+      "checked_at": "2026-11-20",
       "method": "page"
     },
     "amount": {
       "source_url": "https://www.triodosfoundation.nl/aanvragen",
       "quote": "We doneren gemiddeld tussen de € 5.000 en € 20.000 per project. Daarbij dekken we maximaal 25% van je begroting.",
-      "checked_at": "2026-11-15",
+      "checked_at": "2026-11-20",
       "method": "page"
     },
     "co_finance_required": {
       "source_url": "https://www.triodosfoundation.nl/aanvragen",
-      "quote": "We doneren gemiddeld tussen de € 5.000 en € 20.000 per project. Daarbij dekken we maximaal 25% van je begroting.",
-      "checked_at": "2026-11-15",
+      "quote": "En er is minimaal één andere partij die financieel bijdraagt of daar is concreet zicht op.",
+      "checked_at": "2026-11-20",
+      "method": "page"
+    },
+    "effort": [
+      {
+        "source_url": "https://www.triodosfoundation.nl/aanvragen",
+        "quote": "De quickscan is verplicht.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.triodosfoundation.nl/aanvragen",
+        "quote": "Dan krijg je na de quickscan toegang tot het aanvraagformulier. Vul dit volledig in.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.triodosfoundation.nl/aanvragen",
+        "quote": "Verstuur je aanvraag met alle bijlagen",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.triodosfoundation.nl/aanvragen",
+        "quote": "Daarna beoordelen we of jouw aanvraag past bij onze thema's, criteria en beschikbare middelen.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "eligibility": [
+      {
+        "source_url": "https://www.triodosfoundation.nl/aanvragen",
+        "quote": "en je organisatie werkt non-profit.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.triodosfoundation.nl/aanvragen",
+        "quote": "heeft een onafhankelijk bestuur met minimaal drie leden",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.triodosfoundation.nl/aanvragen",
+        "quote": "Je project heeft een duidelijk begin, einde, begroting en dekkingsplan.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.triodosfoundation.nl/aanvragen",
+        "quote": "alleen lokale impact hebben, zonder duidelijke mogelijkheid om breder door te werken",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.triodosfoundation.nl/aanvragen",
+        "quote": "vooral commerciële activiteiten uitvoeren of willen opzetten",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "co_finance": {
+      "source_url": "https://www.triodosfoundation.nl/aanvragen",
+      "quote": "Daarbij dekken we maximaal 25% van je begroting.",
+      "checked_at": "2026-11-20",
       "method": "page"
     }
   },
-  "checked_at": "2026-11-15"
+  "checked_at": "2026-11-20"
 }

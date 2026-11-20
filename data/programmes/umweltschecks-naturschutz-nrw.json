@@ -9,18 +9,63 @@
   "parent": null,
   "url": "https://www.nordrhein-westfalen-foerdert.nrw/foerdermassnahmen/umweltschecks-naturschutz-nrw-2026-2026",
   "summary": "Small grants from North Rhine-Westphalia for local associations, initiatives, individuals and private companies working to protect and strengthen nature and landscape, and so species diversity, in the state. The 2026 window has ended; late applications are considered at the funder's discretion.",
-  "approaches": ["community_conservation", "species_conservation"],
-  "applicant_types": ["community_group", "ngo", "individual", "company"],
+  "approaches": [
+    "community_conservation",
+    "species_conservation"
+  ],
+  "applicant_types": [
+    "community_group",
+    "ngo",
+    "individual",
+    "company"
+  ],
   "geography": {
     "scope": "countries",
-    "countries": ["DE"],
+    "countries": [
+      "DE"
+    ],
     "label": "North Rhine-Westphalia, Germany"
   },
   "access": "direct",
   "window": "fixed",
-  "amount": { "currency": "EUR", "min": 2000, "max": 2000 },
+  "amount": {
+    "currency": "EUR",
+    "min": 2000,
+    "max": 2000
+  },
   "co_finance_required": null,
   "reporting": null,
+  "effort": {
+    "steps": [
+      "Online application",
+      "Application review"
+    ]
+  },
+  "eligibility": [
+    {
+      "rule": "Has at least €2,000 in eligible project expenditure",
+      "kind": "project"
+    },
+    {
+      "rule": "Completes the project by 31 December of the relevant budget year",
+      "kind": "project"
+    },
+    {
+      "rule": "Uses no other EU, federal or NRW funding for the project",
+      "kind": "project"
+    },
+    {
+      "rule": "Has no more than one measure considered per year",
+      "kind": "project"
+    },
+    {
+      "rule": "Project is not part of the regular activity of the applicant",
+      "kind": "project"
+    }
+  ],
+  "after_award": {
+    "reports": "final"
+  },
   "calls": [
     {
       "id": "2026",
@@ -28,7 +73,10 @@
       "url": "https://www.nordrhein-westfalen-foerdert.nrw/foerdermassnahmen/umweltschecks-naturschutz-nrw-2026-2026",
       "status": "closed",
       "opens": "2026-02-25",
-      "deadline": { "date": "2026-10-31", "text": "Antragsfrist: 25.02.2026 - 31.10.2026" },
+      "deadline": {
+        "date": "2026-10-31",
+        "text": "Antragsfrist: 25.02.2026 - 31.10.2026"
+      },
       "evidence": {
         "status": {
           "source_url": "https://www.nordrhein-westfalen-foerdert.nrw/foerdermassnahmen/umweltschecks-naturschutz-nrw-2026-2026",
@@ -80,9 +128,63 @@
     "amount": {
       "source_url": "https://recht.nrw.de/lrmb/verwaltungsvorschrift/23012026-richtlinie-ueber-die-gewaehrung-von-zuwendungen-im-rahmen-der/",
       "quote": "Das Land Nordrhein-Westfalen beteiligt sich mit einem Festbetrag in Höhe von 2 000 Euro an einem Vorhaben.",
-      "checked_at": "2026-11-12",
+      "checked_at": "2026-11-20",
       "method": "page"
-    }
+    },
+    "effort": [
+      {
+        "source_url": "https://recht.nrw.de/lrmb/verwaltungsvorschrift/23012026-richtlinie-ueber-die-gewaehrung-von-zuwendungen-im-rahmen-der/",
+        "quote": "Anträge sind im Online-Förderportal auf Basis des dort bereitgestellten Online-Antrages zu stellen",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.nordrhein-westfalen-foerdert.nrw/was-passiert-nach-der-antragstellung",
+        "quote": "Nachdem Sie Ihren Antrag eingereicht haben, wird er geprüft und bearbeitet.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "eligibility": [
+      {
+        "source_url": "https://recht.nrw.de/lrmb/verwaltungsvorschrift/23012026-richtlinie-ueber-die-gewaehrung-von-zuwendungen-im-rahmen-der/",
+        "quote": "das Vorhaben mindestens 2 000 Euro oder mehr förderfähige Ausgaben aufweist",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://recht.nrw.de/lrmb/verwaltungsvorschrift/23012026-richtlinie-ueber-die-gewaehrung-von-zuwendungen-im-rahmen-der/",
+        "quote": "das Vorhaben bis zum 31. Dezember des jeweiligen Haushaltsjahres abgeschlossen wird",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://recht.nrw.de/lrmb/verwaltungsvorschrift/23012026-richtlinie-ueber-die-gewaehrung-von-zuwendungen-im-rahmen-der/",
+        "quote": "hierfür keine andere Förderung der Europäischen Union, des Bundes oder des Landes Nordrhein-Westfalen in Anspruch genommen wird",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://recht.nrw.de/lrmb/verwaltungsvorschrift/23012026-richtlinie-ueber-die-gewaehrung-von-zuwendungen-im-rahmen-der/",
+        "quote": "Je Zuwendungsempfängerin oder Zuwendungsempfänger kann eine Maßnahme pro Jahr berücksichtigt werden.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://recht.nrw.de/lrmb/verwaltungsvorschrift/23012026-richtlinie-ueber-die-gewaehrung-von-zuwendungen-im-rahmen-der/",
+        "quote": "Weiterhin sind nur Ausgaben zuwendungsfähig, die durch Maßnahmen verursacht werden, die keine Aufwendungen für die regelmäßige Tätigkeit der Zuwendungsempfängerin oder des Zuwendungsempfängers darstellen. Laufende Betriebs- und Personalkosten sind nicht zuwendungsfähig.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "after_award": [
+      {
+        "source_url": "https://recht.nrw.de/lrmb/verwaltungsvorschrift/23012026-richtlinie-ueber-die-gewaehrung-von-zuwendungen-im-rahmen-der/",
+        "quote": "Der Verwendungsnachweis ist online auf Basis des dort bereitgestellten Online-Verwendungsnachweises zu führen.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ]
   },
   "checked_at": "2026-11-12"
 }

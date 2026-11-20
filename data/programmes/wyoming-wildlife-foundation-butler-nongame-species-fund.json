@@ -35,6 +35,33 @@
   },
   "co_finance_required": null,
   "reporting": null,
+  "effort": {
+    "steps": [
+      "Online application"
+    ]
+  },
+  "eligibility": [
+    {
+      "rule": "Applying through an organization rather than directly as an individual",
+      "kind": "legal"
+    },
+    {
+      "rule": "Submitting a final report before a new request if previously funded",
+      "kind": "other"
+    }
+  ],
+  "after_award": {
+    "reports": "final"
+  },
+  "documents": [
+    "Project budget, unless requesting general operating funds",
+    "Organization budget for the current or following fiscal year",
+    "Most recently completed fiscal year-end income statement",
+    "Current board of directors list",
+    "Most recently completed fiscal year-end balance sheet",
+    "Fiscal sponsorship letter, if using another organization's nonprofit status",
+    "Fiscal sponsor's financial information, if using a fiscal sponsor"
+  ],
   "calls": [
     {
       "id": "2026",
@@ -50,19 +77,19 @@
         "status": {
           "source_url": "https://www.wycf.org/butler-nongame-species-fund",
           "quote": "Butler Nongame Species Fund Status Closed County All Counties Opens June 15, 2026 Deadline September 15, 2026",
-          "checked_at": "2026-11-15",
+          "checked_at": "2026-11-20",
           "method": "page"
         },
         "opens": {
           "source_url": "https://www.wycf.org/butler-nongame-species-fund",
           "quote": "Opens June 15, 2026 Deadline September 15, 2026",
-          "checked_at": "2026-11-15",
+          "checked_at": "2026-11-20",
           "method": "page"
         },
         "deadline": {
           "source_url": "https://www.wycf.org/butler-nongame-species-fund",
           "quote": "Opens June 15, 2026 Deadline September 15, 2026",
-          "checked_at": "2026-11-15",
+          "checked_at": "2026-11-20",
           "method": "page"
         }
       }
@@ -72,33 +99,95 @@
     "administered_by": {
       "source_url": "https://www.wycf.org/butler-nongame-species-fund",
       "quote": "the fund-administered by the Wyoming Wildlife Foundation-provides grants",
-      "checked_at": "2026-11-15",
+      "checked_at": "2026-11-20",
       "method": "page"
     },
     "applicant_types": {
       "source_url": "https://www.wycf.org/butler-nongame-species-fund",
       "quote": "Nonprofit organizations exempt from federal taxation under Section 501(c)(3) of the Internal Revenue Code.",
-      "checked_at": "2026-11-15",
+      "checked_at": "2026-11-20",
       "method": "page"
     },
     "geography": {
       "source_url": "https://www.wycf.org/butler-nongame-species-fund",
       "quote": "provides grants for projects that conserve Wyoming's 554 nongame species through habitat restoration, conservation, and other impactful initiatives.",
-      "checked_at": "2026-11-15",
+      "checked_at": "2026-11-20",
       "method": "page"
     },
     "access": {
       "source_url": "https://www.wycf.org/butler-nongame-species-fund",
       "quote": "WYCF accepts one application per organization per grant deadline.",
-      "checked_at": "2026-11-15",
+      "checked_at": "2026-11-20",
       "method": "page"
     },
     "amount": {
       "source_url": "https://www.wycf.org/butler-nongame-species-fund",
       "quote": "Most grant amounts awarded are between $1,000-$5,000, with other amounts considered.",
-      "checked_at": "2026-11-15",
+      "checked_at": "2026-11-20",
       "method": "page"
-    }
+    },
+    "effort": [
+      {
+        "source_url": "https://wyomingwildlifefoundation.org/grants/application-instructions",
+        "quote": "There is no time limit on entering data in the online application",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "eligibility": [
+      {
+        "source_url": "https://wyomingwildlifefoundation.org/grants/application-instructions",
+        "quote": "We are not able to provide funding directly to individuals.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.wycf.org/butler-nongame-species-fund",
+        "quote": "If you have previously received funding, a final report must be submitted prior to submitting a new grant request.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "after_award": [
+      {
+        "source_url": "https://wyomingwildlifefoundation.org/grants/final-reporting",
+        "quote": "Unless otherwise stated in the award letter, all grant recipients must turn in a final report.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "documents": [
+      {
+        "source_url": "https://wyomingwildlifefoundation.org/grants/application-instructions",
+        "quote": "Project Budget - Your project budget may be submitted in any format but you must include projected expenses and revenues.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://wyomingwildlifefoundation.org/grants/application-instructions",
+        "quote": "Organization Budget - You must submit your total annual budget for the current fiscal year, unless the program occurs in the following year; then submit the following year's budget.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://wyomingwildlifefoundation.org/grants/application-instructions",
+        "quote": "We would like your most recently completed fiscal year end (FYE) Income Statement. You may submit this piece as an Excel spreadsheet, PDF, or Word document. Board of Directors List - Please include a current list of all members of your organization's board of directors.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://wyomingwildlifefoundation.org/grants/application-instructions",
+        "quote": "We would like your most recently completed fiscal year end (FYE) Balance Sheet.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://wyomingwildlifefoundation.org/grants/application-instructions",
+        "quote": "If you do not have your own 501(c)(3), and you are using another organization's nonprofit status, we require a letter of fiscal sponsorship stating that grants received will be managed by the nonprofit organization. We will also need your fiscal sponsor's financial information.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ]
   },
-  "checked_at": "2026-11-15"
+  "checked_at": "2026-11-20"
 }

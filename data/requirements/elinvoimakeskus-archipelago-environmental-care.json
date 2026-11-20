@@ -1,0 +1,69 @@
+{
+  "id": "elinvoimakeskus-archipelago-environmental-care",
+  "read_on": "2026-11-20",
+  "prompt_version": "req-2026-11-19.2",
+  "models": ["cursor:gpt-5.6-luna-high"],
+  "complete": false,
+  "reasons": [
+    "11 links could not be ranked without Jev",
+    "16 links could not be ranked without Jev",
+    "https://sa01elysuomifilomakkeet.blob.core.windows.net/blobsuomifilomakkeet/ELY/ely90k2i_fi_hakuohje_saariston_ympariston_hoito.pdf: a document on another site: without Jev it can’t be confirmed as the funder’s, so it is not used",
+    "the text names a document with rules that was not read: Valtioneuvoston asetus saaristokunnista ja muiden kuntien saaristo-osista, joihin sovelletaan saaristokuntaa koskevia säännöksiä 1089/2016",
+    "Jev did not check this reading, so an absent fact is not known to be absent"
+  ],
+  "requirements_checked": false,
+  "documents": [
+    {
+      "ref": "D1",
+      "url": "https://elinvoimakeskus.fi/avustus-saariston-ymparistonhoitoon",
+      "final_url": "https://elinvoimakeskus.fi/avustus-saariston-ymparistonhoitoon",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 17594,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:97db5ad0938244c3fecc78516d31b54208017a0aed51e54e85e07bae5bada179"
+    },
+    {
+      "ref": "D2",
+      "url": "https://elinvoimakeskus.fi/inspect/faq",
+      "final_url": "https://elinvoimakeskus.fi/inspect/faq",
+      "from": "https://elinvoimakeskus.fi/avustus-saariston-ymparistonhoitoon",
+      "anchor": "FAQ",
+      "depth": 1,
+      "pdf": false,
+      "chars": 19249,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:05c3b7985fc4b0f914d3c5335b688c9cbf5da310c191de418fe97f9d4581e956"
+    }
+  ],
+  "failures": [
+    {
+      "url": "https://sa01elysuomifilomakkeet.blob.core.windows.net/blobsuomifilomakkeet/ELY/ely90k2i_fi_hakuohje_saariston_ympariston_hoito.pdf",
+      "from": "https://elinvoimakeskus.fi/avustus-saariston-ymparistonhoitoon",
+      "kind": "offsite",
+      "message": "a document on another site: without Jev it can’t be confirmed as the funder’s, so it is not used"
+    }
+  ],
+  "skipped_links": 605,
+  "chunks": [{ "id": "all", "docs": ["D1", "D2"], "chars": 37046 }],
+  "outcomes": {
+    "eligibility": "stated",
+    "documents": "not_found",
+    "effort": "stated",
+    "co_finance": "stated",
+    "consortium": "not_found",
+    "after_award": "not_found"
+  },
+  "written": ["eligibility", "effort", "co_finance"],
+  "escalated": [],
+  "flags": [],
+  "notes": [
+    "co_finance: share 20% dropped, its quote does not state it",
+    "extractor: The grant must be used within the period stated in the grant decision; the maximum use period is the award year and the following two years. The grant cap is 80% for archipelago environmental care projects and 50% for repairs to buildings located in the archipelago."
+  ],
+  "usd": 0
+}

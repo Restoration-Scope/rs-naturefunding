@@ -1,0 +1,50 @@
+{
+  "id": "thueringen-enl-natur-und-landschaft",
+  "read_on": "2026-11-20",
+  "prompt_version": "req-2026-11-20.1",
+  "models": ["cursor:gpt-5.6-luna-high"],
+  "complete": false,
+  "reasons": [
+    "the text names a document with rules that was not read: Auswahlkriterien (www.aufbaubank.de)",
+    "the text names a document with rules that was not read: Allgemeiner Teil des GAP-SP für die Bundesrepublik Deutschland, Ziffer 4.7.1",
+    "the text names a document with rules that was not read: Anwendungshinweise der Thüringer Aufbaubank (www.aufbaubank.de)",
+    "the text names a document with rules that was not read: Allgemeine Nebenbestimmungen für Zuwendungen zur Projektförderung (ANBest-P/ANBest-Gk)",
+    "the text names a document with rules that was not read: Informationsblatt „Publizitätsmaßnahmen zur Förderung aus dem GAP-Strategieplan 2023 bis 2027 für die Bundesrepublik Deutschland“",
+    "Jev did not check this reading, so an absent fact is not known to be absent"
+  ],
+  "requirements_checked": false,
+  "documents": [
+    {
+      "ref": "D1",
+      "url": "https://dokumente.aufbaubank.de/11064-ENL-Richtlinie.pdf",
+      "final_url": "https://dokumente.aufbaubank.de/11064-ENL-Richtlinie.pdf",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": true,
+      "chars": 33050,
+      "pages": 11,
+      "low_text": false,
+      "hash": "sha256:7d405395460a8e79e0098d2356961f6a5d821868999b62e910c4eb6c56d952a8"
+    }
+  ],
+  "failures": [],
+  "skipped_links": 0,
+  "chunks": [{ "id": "all", "docs": ["D1"], "chars": 33125 }],
+  "outcomes": {
+    "eligibility": "stated",
+    "documents": "stated",
+    "effort": "stated",
+    "co_finance": "stated",
+    "consortium": "not_found",
+    "after_award": "stated"
+  },
+  "written": ["eligibility", "documents", "effort", "co_finance", "after_award"],
+  "escalated": [],
+  "flags": [],
+  "notes": [
+    "extractor: D1 is the 2023 directive, which expires on 31 December 2029. The annual sketch deadline is 1 September of the previous year; the 2023 transition round used 15 October 2022. The documents required with the full application are announced when the applicant is invited.",
+    "source thueringen-enl-natur-und-landschaft-1: selector main dropped, a new quote sits outside it"
+  ],
+  "usd": 0
+}

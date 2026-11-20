@@ -1,23 +1,74 @@
 {
   "id": "nfwf-pacific-seabird",
   "name": "NFWF Pacific Seabird Program",
-  "funder": { "name": "National Fish and Wildlife Foundation", "url": "https://www.nfwf.org/" },
+  "funder": {
+    "name": "National Fish and Wildlife Foundation",
+    "url": "https://www.nfwf.org/"
+  },
   "administered_by": null,
   "parent": null,
   "url": "https://www.nfwf.org/programs/seabirds",
   "summary": "Grants for Pacific seabird conservation: invasive predator management, breeding habitat restoration, colony establishment, bycatch reduction and monitoring. The 2026 call covered the California Current, Hawaii, the Humboldt Current and the central tropical Pacific.",
-  "approaches": ["species_conservation", "coastal_marine", "research"],
-  "applicant_types": ["ngo", "government", "indigenous_organization", "research_institution"],
+  "approaches": [
+    "species_conservation",
+    "coastal_marine",
+    "research"
+  ],
+  "applicant_types": [
+    "ngo",
+    "government",
+    "indigenous_organization",
+    "research_institution"
+  ],
   "geography": {
     "scope": "regions",
-    "regions": ["north_america", "latin_america_caribbean", "oceania"],
+    "regions": [
+      "north_america",
+      "latin_america_caribbean",
+      "oceania"
+    ],
     "label": "Four Pacific geographies: California Current, Hawaiian Archipelago, Humboldt Current, central tropical Pacific"
   },
   "access": "direct",
   "window": "fixed",
-  "amount": { "currency": "USD", "min": 50000, "max": 750000, "typical": true },
+  "amount": {
+    "currency": "USD",
+    "min": 50000,
+    "max": 750000,
+    "typical": true
+  },
   "co_finance_required": true,
   "reporting": null,
+  "eligibility": [
+    {
+      "rule": "Not an unincorporated individual or business",
+      "kind": "legal"
+    },
+    {
+      "rule": "The project directly and measurably contributes to program goals",
+      "kind": "project"
+    },
+    {
+      "rule": "No funds for ongoing legal compliance, including permit conditions, mitigation, and settlement agreements",
+      "kind": "project"
+    }
+  ],
+  "co_finance": {
+    "ratio": "1:1",
+    "in_kind": true
+  },
+  "after_award": {
+    "reports": "interim_and_final"
+  },
+  "documents": [
+    "Full Proposal Narrative",
+    "Statement of Litigation, unless a federal, state or local government applicant",
+    "Board list, or statement that none exists if the organisation has no Board",
+    "GAAP Audited Financial Statements",
+    "IRS Form 990",
+    "Single Audit",
+    "Applicant Controls Questionnaire"
+  ],
   "calls": [
     {
       "id": "2026-rfp",
@@ -35,13 +86,13 @@
         "status": {
           "source_url": "https://www.nfwf.org/programs/seabirds/pacific-seabird-program-2026-request-proposals",
           "quote": "Full Proposal Due Date: Monday, August 24, 2026, by 11:59 PM Eastern Standard Time",
-          "checked_at": "2026-11-12",
+          "checked_at": "2026-11-20",
           "method": "page"
         },
         "deadline": {
           "source_url": "https://www.nfwf.org/programs/seabirds/pacific-seabird-program-2026-request-proposals",
           "quote": "Full Proposal Due Date: Monday, August 24, 2026, by 11:59 PM Eastern Standard Time",
-          "checked_at": "2026-11-12",
+          "checked_at": "2026-11-20",
           "method": "page"
         }
       }
@@ -51,39 +102,109 @@
     "applicant_types": {
       "source_url": "https://www.nfwf.org/programs/seabirds/pacific-seabird-program-2026-request-proposals",
       "quote": "Eligible applicants include: non-profit 501(c) organizations, Federal government agencies, state government agencies, local governments, municipal governments, Tribal Governments and Organizations, educational institutions and international organizations.",
-      "checked_at": "2026-11-12",
+      "checked_at": "2026-11-20",
       "method": "page"
     },
     "geography": {
       "source_url": "https://www.nfwf.org/programs/seabirds/pacific-seabird-program-2026-request-proposals",
       "quote": "The 2026 Request for Proposals (RFP) will consider projects from four broad geographies within the Pacific: 1) California Current, 2) Hawaiian Archipelago, 3) Humboldt Current, and 4) locations in the central tropical Pacific",
-      "checked_at": "2026-11-12",
+      "checked_at": "2026-11-20",
       "method": "page"
     },
     "access": {
       "source_url": "https://www.nfwf.org/programs/seabirds/pacific-seabird-program-2026-request-proposals",
       "quote": "(NFWF) is accepting proposals that implement actions in support of business plan focal seabird species.",
-      "checked_at": "2026-11-12",
+      "checked_at": "2026-11-20",
       "method": "page"
     },
     "window": {
       "source_url": "https://www.nfwf.org/programs/seabirds/pacific-seabird-program-2026-request-proposals",
       "quote": "during this single call for proposals",
-      "checked_at": "2026-11-12",
+      "checked_at": "2026-11-20",
       "method": "page"
     },
     "amount": {
       "source_url": "https://www.nfwf.org/programs/seabirds/pacific-seabird-program-2026-request-proposals",
       "quote": "in 2026 awards should fall within a broad range of $50,000 to $750,000.",
-      "checked_at": "2026-11-12",
+      "checked_at": "2026-11-20",
       "method": "page"
     },
     "co_finance_required": {
       "source_url": "https://www.nfwf.org/programs/seabirds/pacific-seabird-program-2026-request-proposals",
       "quote": "A minimum of a 1:1 match (federal and non-federal match are eligible) of cash and/or in-kind services is required.",
-      "checked_at": "2026-11-12",
+      "checked_at": "2026-11-20",
       "method": "page"
-    }
+    },
+    "eligibility": [
+      {
+        "source_url": "https://www.nfwf.org/programs/seabirds/pacific-seabird-program-2026-request-proposals",
+        "quote": "Ineligible applicants include unincorporated individuals and businesses.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.nfwf.org/programs/seabirds/pacific-seabird-program-2026-request-proposals",
+        "quote": "All proposals must specifically address how projects will directly and measurably contribute to the accomplishment of program goals.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.nfwf.org/programs/seabirds/pacific-seabird-program-2026-request-proposals",
+        "quote": "NFWF funds may not be used to support ongoing efforts to comply with legal requirements, including permit conditions, mitigation and settlement agreements.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "co_finance": {
+      "source_url": "https://www.nfwf.org/programs/seabirds/pacific-seabird-program-2026-request-proposals",
+      "quote": "A minimum of a 1:1 match (federal and non-federal match are eligible) of cash and/or in-kind services is required.",
+      "checked_at": "2026-11-20",
+      "method": "page"
+    },
+    "after_award": [
+      {
+        "source_url": "https://www.nfwf.org/sites/default/files/2019-12/business-plan-pacific-seabirds.pdf",
+        "quote": "individual grantees will be required to track relevant metrics from Table 5 for demonstrating progress on project activities and outcomes, and to report out on them in their interim and final programmatic reports",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "documents": [
+      {
+        "source_url": "https://www.nfwf.org/sites/default/files/2026-07/seabirds-2026-tip-sheet.pdf",
+        "quote": "Full Proposal Narrative: The most important upload is your actual full proposal narrative.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.nfwf.org/sites/default/files/2026-07/seabirds-2026-tip-sheet.pdf",
+        "quote": "Statement of Litigation Yes Template provided in Easygrants online application \"Uploads\" section. Federal, state, and local government applicants are not required to complete this section. Board of Trustees or Directors Yes Provide a list of members. If your organization is not a nonprofit and does not have a Board, upload a document stating that none exists. GAAP Audited Financial Statements* Yes",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.nfwf.org/sites/default/files/2026-07/seabirds-2026-tip-sheet.pdf",
+        "quote": "IRS Form 990* Yes Please refer to the Required Financial Documents and FAQs webpage for details on all financial information required for submission. Single Audit* Yes Please refer to the Required Financial Documents and FAQs webpage for details on all financial information required for submission. Applicant Controls Questionnaire Yes",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "effort": [
+      {
+        "source_url": "https://www.nfwf.org/programs/seabirds/pacific-seabird-program-2026-request-proposals",
+        "quote": "Full Proposal Due Date: Monday, August 24, 2026, by 11:59 PM Eastern Standard Time",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ]
   },
-  "checked_at": "2026-11-12"
+  "checked_at": "2026-11-20",
+  "effort": {
+    "steps": [
+      "Full proposal"
+    ],
+    "due": [
+      "2026-08-24"
+    ]
+  }
 }

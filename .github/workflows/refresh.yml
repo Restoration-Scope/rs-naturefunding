@@ -61,8 +61,12 @@ jobs:
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
 
+      # run.ts stops drafting changed pages 50 minutes in (TIER_B_DEADLINE_MINUTES). This step
+      # timeout is the backstop: a timed-out step fails without cancelling the job, so the commit
+      # step below still saves the unchanged pages' dates, which run.ts writes before any model call.
       - name: Read pages
         if: env.MODE == 'daily'
+        timeout-minutes: 62
         env:
           ONLY: ${{ inputs.only }}
           SIMULATE: ${{ inputs.simulate }}
@@ -109,16 +113,36 @@ jobs:
             git merge --abort 2>/dev/null || true
             git cherry-pick --abort 2>/dev/null || true
           }
+          # A line-by-line merge of a programme file that a PR changed during the run can mix the two
+          # versions into one that fails validation (20 Nov: dates from the run, facts from the PR).
+          # Then keep the PR's version of every programme file it changed; they get new dates when next due.
+          valid_or_upstream() {
+            bun run validate >/dev/null 2>&1 && return 0
+            upstream="origin/$GITHUB_REF_NAME"
+            changed=$(git diff --name-only --diff-filter=d "$GITHUB_SHA" "$upstream" -- data/programmes)
+            deleted=$(git diff --name-only --diff-filter=D "$GITHUB_SHA" "$upstream" -- data/programmes)
+            [ -n "$changed" ] && git checkout "$upstream" -- $changed
+            [ -n "$deleted" ] && git rm -q --ignore-unmatch -- $deleted
+            # A draft committed by the run also accepted its page: undo that too, so the page is drafted again.
+            for f in $changed $deleted; do
+              for sid in $(jq -r --arg p "$(basename "$f" .json)" '.[] | select(.programme_id == $p) | .id' data/sources.json); do
+                a="data/checks/accepted/$sid.json"
+                git checkout "$upstream" -- "$a" 2>/dev/null || git rm -q --ignore-unmatch -- "$a"
+              done
+            done
+            git commit -q -m "Refresh: keep the version of programmes changed during the run" || true
+            bun run validate
+          }
 
           for _ in 1 2 3; do
             git fetch origin "$GITHUB_REF_NAME"
-            if git rebase "origin/$GITHUB_REF_NAME" && git push origin "HEAD:$GITHUB_REF_NAME"; then
+            if git rebase "origin/$GITHUB_REF_NAME" && valid_or_upstream && git push origin "HEAD:$GITHUB_REF_NAME"; then
               echo "pushed=true" >> "$GITHUB_OUTPUT"; exit 0
             fi
 
             cleanup_git_state
             git fetch origin "$GITHUB_REF_NAME"
-            if git merge --no-edit -X theirs "origin/$GITHUB_REF_NAME" && git push origin "HEAD:$GITHUB_REF_NAME"; then
+            if git merge --no-edit -X theirs "origin/$GITHUB_REF_NAME" && valid_or_upstream && git push origin "HEAD:$GITHUB_REF_NAME"; then
               echo "pushed=true" >> "$GITHUB_OUTPUT"; exit 0
             fi
 

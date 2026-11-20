@@ -1,0 +1,159 @@
+{
+  "id": "gef-sgp-india",
+  "read_on": "2026-11-20",
+  "prompt_version": "req-2026-11-20.1",
+  "models": ["cursor:gpt-5.6-luna-high", "cursor:gpt-5.6-sol-high"],
+  "complete": false,
+  "reasons": [
+    "16 links could not be ranked without Jev",
+    "15 links could not be ranked without Jev",
+    "https://sgp-india.org/assets/pdf/SGPOP8-India-RFP.pdf: pages 1, 20 are images: needs OCR",
+    "https://sgp-india.org/assets/pdf/Biodiversity-Conservation-and-Land-Restoration.pdf: page 14 is an image: needs OCR",
+    "https://sgp-india.org/assets/pdf/Frequently-Asked-Questions.pdf: page 1 is an image: needs OCR",
+    "Jev did not check this reading, so an absent fact is not known to be absent"
+  ],
+  "requirements_checked": false,
+  "documents": [
+    {
+      "ref": "D1",
+      "url": "https://sgp-india.org/apply-for-grants.php",
+      "final_url": "https://sgp-india.org/apply-for-grants.php",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 2477,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:dc1dd55426a5272a1ddef82af59b7fbae7fffeac229360fe3e89aff18aaccaa1"
+    },
+    {
+      "ref": "D2",
+      "url": "https://sgp-india.org/assets/pdf/SGPOP8-India-RFP.pdf",
+      "final_url": "https://sgp-india.org/assets/pdf/SGPOP8-India-RFP.pdf",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": true,
+      "chars": 31285,
+      "pages": 20,
+      "low_text": false,
+      "hash": "sha256:56fe5023a3607e2b47a7034a7efe00d643471c7c2d43660eb108eb31cd411e33"
+    },
+    {
+      "ref": "D3",
+      "url": "https://sgp-india.org/policy-impact.php",
+      "final_url": "https://sgp-india.org/policy-impact.php",
+      "from": "https://sgp-india.org/apply-for-grants.php",
+      "anchor": "Policy Impact",
+      "depth": 1,
+      "pdf": false,
+      "chars": 4526,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:5bbf676c4b76ec077936d55484ab49ed644209249c9c4138084e843d99cc6601"
+    },
+    {
+      "ref": "D4",
+      "url": "https://sgp-india.org/assets/pdf/Brochure_SGP-OP8_2026.pdf",
+      "final_url": "https://sgp-india.org/assets/pdf/Brochure_SGP-OP8_2026.pdf",
+      "from": "https://sgp-india.org/apply-for-grants.php",
+      "anchor": "Brochure",
+      "depth": 1,
+      "pdf": true,
+      "chars": 6787,
+      "pages": 2,
+      "low_text": false,
+      "hash": "sha256:4d436a4ea4679824048fe2e61a44af52eb1b1c46c66e335408fc6545112cb9d5"
+    },
+    {
+      "ref": "D5",
+      "url": "https://sgp-india.org/assets/pdf/Biodiversity-Conservation-and-Land-Restoration.pdf",
+      "final_url": "https://sgp-india.org/assets/pdf/Biodiversity-Conservation-and-Land-Restoration.pdf",
+      "from": "https://sgp-india.org/apply-for-grants.php",
+      "anchor": "Thematic Session",
+      "depth": 1,
+      "pdf": true,
+      "chars": 21423,
+      "pages": 15,
+      "low_text": false,
+      "hash": "sha256:f78628b052ff6ba04dfc2323fcef5c642862feaec4c1d0019767055c58f095f8"
+    },
+    {
+      "ref": "D6",
+      "url": "https://sgp-india.org/assets/pdf/SGP-OP8-Proposal-Template.docx",
+      "final_url": "https://sgp-india.org/assets/pdf/SGP-OP8-Proposal-Template.docx",
+      "from": "https://sgp-india.org/apply-for-grants.php",
+      "anchor": "Download Proposal Format",
+      "depth": 1,
+      "pdf": false,
+      "chars": 39531,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:ee0ffdf0b965b9e9f3f476b7a7c6a27d81f71b79ddd644aa5a24279f10fba7cd"
+    },
+    {
+      "ref": "D7",
+      "url": "https://sgp-india.org/assets/pdf/Frequently-Asked-Questions.pdf",
+      "final_url": "https://sgp-india.org/assets/pdf/Frequently-Asked-Questions.pdf",
+      "from": "https://sgp-india.org/apply-for-grants.php",
+      "anchor": "Frequently Asked Questions",
+      "depth": 1,
+      "pdf": true,
+      "chars": 26188,
+      "pages": 12,
+      "low_text": false,
+      "hash": "sha256:97b73abe92a47df3184acfb0948f342a3742827df573f31f3b2117c62fb57d48"
+    }
+  ],
+  "failures": [
+    {
+      "url": "https://sgp-india.org/assets/pdf/SGPOP8-India-RFP.pdf",
+      "from": null,
+      "kind": "low_text",
+      "message": "pages 1, 20 are images: needs OCR"
+    },
+    {
+      "url": "https://sgp-india.org/assets/pdf/Biodiversity-Conservation-and-Land-Restoration.pdf",
+      "from": "https://sgp-india.org/apply-for-grants.php",
+      "kind": "low_text",
+      "message": "page 14 is an image: needs OCR"
+    },
+    {
+      "url": "https://sgp-india.org/assets/pdf/Frequently-Asked-Questions.pdf",
+      "from": "https://sgp-india.org/apply-for-grants.php",
+      "kind": "low_text",
+      "message": "page 1 is an image: needs OCR"
+    }
+  ],
+  "skipped_links": 111,
+  "chunks": [{ "id": "all", "docs": ["D1", "D2", "D3", "D4", "D5", "D6", "D7"], "chars": 133020 }],
+  "outcomes": {
+    "eligibility": "partial",
+    "documents": "stated",
+    "effort": "stated",
+    "co_finance": "stated",
+    "consortium": "stated",
+    "after_award": "stated"
+  },
+  "written": ["eligibility", "documents", "effort", "co_finance", "consortium", "after_award"],
+  "escalated": ["eligibility", "after_award"],
+  "flags": [
+    {
+      "field": "eligibility",
+      "item": "Have at least 3 government, philanthropy or foundation-funded projects in the focus landscape in the last 5 financial years",
+      "why": "a rule is 5 to 120 characters"
+    }
+  ],
+  "notes": [
+    "eligibility \"Have average project-grant turnover of at least INR 30,00,000 over the last 3 financial years\": revenue dropped: the rule's quote does not state 3000000, 3",
+    "co_finance: ratio 1:1 dropped, its quote does not state it",
+    "extractor: D7 gives a conflicting deadline of 31 August 2026 and project duration of 18–24 months. D1 and the D2 RFP for the listed round state 15 September 2026 and 12–24 months, so D1/D2 were used.",
+    "strong: eligibility \"Have average project-grant turnover of at least INR 30,00,000 over the last 3 financial years\": revenue dropped: the rule's quote does not state 3000000",
+    "strong: D2 requires registration for more than 5 years, while D7 describes at least 5 years of registration.",
+    "source gef-sgp-india-2: selector main dropped, a new quote sits outside it",
+    "source gef-sgp-india-3: added for https://sgp-india.org/assets/pdf/SGP-OP8-Proposal-Template.docx",
+    "source gef-sgp-india-4: added for https://sgp-india.org/assets/pdf/Frequently-Asked-Questions.pdf"
+  ],
+  "usd": 0
+}

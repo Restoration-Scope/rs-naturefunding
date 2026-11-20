@@ -1,0 +1,113 @@
+{
+  "id": "steele-reese-idaho-montana-conservation",
+  "read_on": "2026-11-20",
+  "prompt_version": "req-2026-11-20.1",
+  "models": ["cursor:gpt-5.6-luna-high"],
+  "complete": false,
+  "reasons": [
+    "8 links could not be ranked without Jev",
+    "11 links could not be ranked without Jev",
+    "the text names a document with rules that was not read: 2026 Letter of Inquiry Information Packet",
+    "Jev did not check this reading, so an absent fact is not known to be absent"
+  ],
+  "requirements_checked": false,
+  "documents": [
+    {
+      "ref": "D1",
+      "url": "https://steele-reese.org/how-to-apply/idaho-and-montana-grant-program",
+      "final_url": "https://steele-reese.org/how-to-apply/idaho-and-montana-grant-program",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 5239,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:bab0186e25d097f777d4e100d45d46690f7083065d9307b3add96e7059ab6f6e"
+    },
+    {
+      "ref": "D2",
+      "url": "https://steele-reese.org/what-we-fund/guidelines-grant-policy",
+      "final_url": "https://steele-reese.org/what-we-fund/guidelines-grant-policy",
+      "from": "https://steele-reese.org/how-to-apply/idaho-and-montana-grant-program",
+      "anchor": "Guidelines and Grant Policy",
+      "depth": 1,
+      "pdf": false,
+      "chars": 2691,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:6d6b4e258b3b9d3ad9610421061b0f9012ac89e7d27e08001cb157d188bfdbd7"
+    },
+    {
+      "ref": "D3",
+      "url": "https://steele-reese.org/how-to-apply",
+      "final_url": "https://steele-reese.org/how-to-apply",
+      "from": "https://steele-reese.org/how-to-apply/idaho-and-montana-grant-program",
+      "anchor": "How To Apply",
+      "depth": 1,
+      "pdf": false,
+      "chars": 3554,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:d9961cd7cf2a9b0adb37031df8d5506a3881596ca772551f1078bd6de36ec09c"
+    },
+    {
+      "ref": "D4",
+      "url": "https://steele-reese.org/how-to-apply/apply-online",
+      "final_url": "https://steele-reese.org/how-to-apply/apply-online",
+      "from": "https://steele-reese.org/how-to-apply/idaho-and-montana-grant-program",
+      "anchor": "Apply Online",
+      "depth": 1,
+      "pdf": false,
+      "chars": 814,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:9a85ce37b868fa7854fd6db49b034ae63418de484f46eb20eda2a100d88363e0"
+    },
+    {
+      "ref": "D5",
+      "url": "https://steele-reese.org/resources/new-application-process",
+      "final_url": "https://steele-reese.org/resources/new-application-process",
+      "from": "https://steele-reese.org/how-to-apply/idaho-and-montana-grant-program",
+      "anchor": "New Application Process",
+      "depth": 1,
+      "pdf": false,
+      "chars": 1407,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:b4fdb12f98ce721aa2c859f4d71998adbc0ad82a30b61d1cdc4f57afbf855f32"
+    },
+    {
+      "ref": "D6",
+      "url": "https://steele-reese.org/assets/pages/2025_S-R_F_Letter_of_Inquiry_Info_Packet.docx",
+      "final_url": "https://steele-reese.org/assets/pages/2025_S-R_F_Letter_of_Inquiry_Info_Packet.docx",
+      "from": "https://steele-reese.org/how-to-apply/idaho-and-montana-grant-program",
+      "anchor": "2026 Letter of Inquiry Information Packet",
+      "depth": 1,
+      "pdf": false,
+      "chars": 35919,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:2083048d6470e4dde4d1835765d6cc2a8bab89158d1ea87c0866c8fb879e6fc5"
+    }
+  ],
+  "failures": [],
+  "skipped_links": 36,
+  "chunks": [{ "id": "all", "docs": ["D1", "D2", "D3", "D4", "D5", "D6"], "chars": 50480 }],
+  "outcomes": {
+    "eligibility": "stated",
+    "documents": "not_found",
+    "effort": "stated",
+    "co_finance": "not_found",
+    "consortium": "not_found",
+    "after_award": "stated"
+  },
+  "written": ["eligibility", "effort", "after_award"],
+  "escalated": [],
+  "flags": [],
+  "notes": [
+    "extractor: D6 is explicitly a 2025 packet and was not used for 2026-round dates or rules. D1 states that the 2026 LOI process closed on January 18, 2026 after 100 LOIs and that invited full applications were due April 1, 2026.",
+    "source steele-reese-idaho-montana-conservation-3: added for https://steele-reese.org/what-we-fund/guidelines-grant-policy"
+  ],
+  "usd": 0
+}

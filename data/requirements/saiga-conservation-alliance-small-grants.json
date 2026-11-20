@@ -1,0 +1,107 @@
+{
+  "id": "saiga-conservation-alliance-small-grants",
+  "read_on": "2026-11-20",
+  "prompt_version": "req-2026-11-20.1",
+  "models": ["cursor:gpt-5.6-luna-high"],
+  "complete": false,
+  "reasons": [
+    "14 links could not be ranked without Jev",
+    "17 links could not be ranked without Jev",
+    "12 links could not be ranked without Jev",
+    "https://saiga-conservation.org/our-work/international-policy would not open (http: HTTP 404)",
+    "Jev did not check this reading, so an absent fact is not known to be absent"
+  ],
+  "requirements_checked": false,
+  "documents": [
+    {
+      "ref": "D1",
+      "url": "https://saiga-conservation.org/projects/small-grants-programme/",
+      "final_url": "https://saiga-conservation.org/our-work/grants-and-awards/small-grants-programme",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 5222,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:05910ff9adf0b7b593864dde81476aa80a41c24880fcdb01d36ae4830b792423"
+    },
+    {
+      "ref": "D2",
+      "url": "https://saiga-conservation.org/saigas/policy-and-protection",
+      "final_url": "https://saiga-conservation.org/saigas/policy-and-protection",
+      "from": "https://saiga-conservation.org/projects/small-grants-programme/",
+      "anchor": "Saiga Policy & Protection International agreements and national protection",
+      "depth": 1,
+      "pdf": false,
+      "chars": 6023,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:d765b9f314424733995a00bf5be6c19f9309658e927d62b59853d56233a04302"
+    },
+    {
+      "ref": "D3",
+      "url": "https://saiga-conservation.org/our-work/international-cooperation-and-policy",
+      "final_url": "https://saiga-conservation.org/our-work/international-cooperation-and-policy",
+      "from": "https://saiga-conservation.org/projects/small-grants-programme/",
+      "anchor": "International Cooperation & Policy",
+      "depth": 1,
+      "pdf": false,
+      "chars": 5352,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:91d06939bd409fba0fb1fb16672e272e38f57425358c538b2a500f8beefe81cd"
+    },
+    {
+      "ref": "D4",
+      "url": "https://saiga-conservation.org/privacy-policy",
+      "final_url": "https://saiga-conservation.org/privacy-policy",
+      "from": "https://saiga-conservation.org/projects/small-grants-programme/",
+      "anchor": "Privacy Policy",
+      "depth": 1,
+      "pdf": false,
+      "chars": 11955,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:ff31c355efb8d1772e3c0f5cc1cab1ba374a2f74e8218cf9e551bbcbdb4d12b6"
+    },
+    {
+      "ref": "D5",
+      "url": "https://saiga-conservation.org/projects?theme=International%20Policy%20%26%20Cooperation",
+      "final_url": "https://saiga-conservation.org/projects?theme=International%20Policy%20%26%20Cooperation",
+      "from": "https://saiga-conservation.org/our-work/international-cooperation-and-policy",
+      "anchor": "Explore all International Cooperation & Policy projects",
+      "depth": 2,
+      "pdf": false,
+      "chars": 19202,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:ecc60e165c50b7cd02292fc1c223967f46d97265079e1eb1bfea4aa9904c2097"
+    }
+  ],
+  "failures": [
+    {
+      "url": "https://saiga-conservation.org/our-work/international-policy",
+      "from": "https://saiga-conservation.org/saigas/policy-and-protection",
+      "kind": "http",
+      "message": "HTTP 404"
+    }
+  ],
+  "skipped_links": 367,
+  "chunks": [{ "id": "all", "docs": ["D1", "D2", "D3", "D4", "D5"], "chars": 48475 }],
+  "outcomes": {
+    "eligibility": "stated",
+    "documents": "not_found",
+    "effort": "stated",
+    "co_finance": "not_found",
+    "consortium": "not_found",
+    "after_award": "not_found"
+  },
+  "written": ["eligibility", "effort"],
+  "escalated": [],
+  "flags": [],
+  "notes": [
+    "extractor: Applications are currently closed; the next round opens in Spring 2027. No exact application deadline is stated."
+  ],
+  "usd": 0
+}

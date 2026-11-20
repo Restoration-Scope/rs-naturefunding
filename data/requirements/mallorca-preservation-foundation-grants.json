@@ -1,0 +1,93 @@
+{
+  "id": "mallorca-preservation-foundation-grants",
+  "read_on": "2026-11-20",
+  "prompt_version": "req-2026-11-20.1",
+  "models": ["cursor:gpt-5.6-luna-high"],
+  "complete": false,
+  "reasons": [
+    "12 links could not be ranked without Jev",
+    "4 links could not be ranked without Jev",
+    "https://mallorcapreservation.org/pdf/MAPF_Brochure_2024_ES.pdf: pages 1, 10, 15 are images: needs OCR",
+    "Jev did not check this reading, so an absent fact is not known to be absent"
+  ],
+  "requirements_checked": false,
+  "documents": [
+    {
+      "ref": "D1",
+      "url": "https://mallorcapreservation.org/en/grants",
+      "final_url": "https://mallorcapreservation.org/en/grants",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 3617,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:f0f7cfcc1a38714e0638e26e91a5c6296598b661314e70d5164b07ae68b4cf2f"
+    },
+    {
+      "ref": "D2",
+      "url": "https://mallorcapreservation.org/pdf/MAPF_Brochure_2024_ES.pdf",
+      "final_url": "https://mallorcapreservation.org/pdf/MAPF_Brochure_2024_ES.pdf",
+      "from": "https://mallorcapreservation.org/en/grants",
+      "anchor": "Brochure",
+      "depth": 1,
+      "pdf": true,
+      "chars": 14878,
+      "pages": 15,
+      "low_text": false,
+      "hash": "sha256:b5a8e6f4fd7446959cca0b519585157d67427fed49a4cbaee7e92e9e3700844d"
+    },
+    {
+      "ref": "D3",
+      "url": "https://mallorcapreservation.org/en/privacy",
+      "final_url": "https://mallorcapreservation.org/en/privacy",
+      "from": "https://mallorcapreservation.org/en/grants",
+      "anchor": "Privacy Policy",
+      "depth": 1,
+      "pdf": false,
+      "chars": 11565,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:a3825016d0e7ec5ae9855adc4de6dfe2738c5facb9e8517e4146ef38f36c479d"
+    },
+    {
+      "ref": "D4",
+      "url": "https://mallorcapreservation.org/en/cookies",
+      "final_url": "https://mallorcapreservation.org/en/cookies",
+      "from": "https://mallorcapreservation.org/en/grants",
+      "anchor": "Cookie Policy",
+      "depth": 1,
+      "pdf": false,
+      "chars": 4064,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:798b32415ecfbd82921e4a2db33cf6d0c312bcfc485434f8b51fbc7c8a7eb642"
+    }
+  ],
+  "failures": [
+    {
+      "url": "https://mallorcapreservation.org/pdf/MAPF_Brochure_2024_ES.pdf",
+      "from": "https://mallorcapreservation.org/en/grants",
+      "kind": "low_text",
+      "message": "pages 1, 10, 15 are images: needs OCR"
+    }
+  ],
+  "skipped_links": 113,
+  "chunks": [{ "id": "all", "docs": ["D1", "D2", "D3", "D4"], "chars": 34543 }],
+  "outcomes": {
+    "eligibility": "stated",
+    "documents": "not_found",
+    "effort": "stated",
+    "co_finance": "not_found",
+    "consortium": "not_found",
+    "after_award": "not_found"
+  },
+  "written": ["eligibility", "effort"],
+  "escalated": [],
+  "flags": [],
+  "notes": [
+    "extractor: After approval by the SC members, the grantee must sign a Grant Agreement with specific terms of collaboration."
+  ],
+  "usd": 0
+}

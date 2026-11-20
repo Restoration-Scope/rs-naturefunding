@@ -1,0 +1,90 @@
+{
+  "id": "stiftung-artenschutz-small-grants",
+  "read_on": "2026-11-20",
+  "prompt_version": "req-2026-11-20.1",
+  "models": ["cursor:gpt-5.6-luna-high", "cursor:gpt-5.6-sol-high"],
+  "complete": false,
+  "reasons": [
+    "6 links could not be ranked without Jev",
+    "the text names a document with rules that was not read: Proposal form",
+    "the text names a document with rules that was not read: Budget form",
+    "the text names a document with rules that was not read: Funding contract",
+    "the text names a document with rules that was not read: Reporting forms",
+    "Jev did not check this reading, so an absent fact is not known to be absent"
+  ],
+  "requirements_checked": false,
+  "documents": [
+    {
+      "ref": "D1",
+      "url": "https://stiftung-artenschutz.de/en_US/grants/small-grants/",
+      "final_url": "https://stiftung-artenschutz.de/en_US/grants/small-grants/",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 2539,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:a9fb35f639699a35563d21c304690400feb486329b60154bf82c13a0e02c9cc1"
+    },
+    {
+      "ref": "D2",
+      "url": "https://stiftung-artenschutz.de/en_US/grants/",
+      "final_url": "https://stiftung-artenschutz.de/en_US/grants/",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 3557,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:2d5ce118320a1a00e1602ec91541cd604c1dd16f9be66151b4caf49c3b4eb13f"
+    },
+    {
+      "ref": "D3",
+      "url": "https://stiftung-artenschutz.de/assets/Uploads/Grants/Proposal-Guidelines_-Stiftung-Artenschutz.pdf",
+      "final_url": "https://stiftung-artenschutz.de/assets/Uploads/Grants/Proposal-Guidelines_-Stiftung-Artenschutz.pdf",
+      "from": "https://stiftung-artenschutz.de/en_US/grants/small-grants/",
+      "anchor": "Proposal guidelines",
+      "depth": 1,
+      "pdf": true,
+      "chars": 12098,
+      "pages": 5,
+      "low_text": false,
+      "hash": "sha256:c10819070f16574c430a9dc7cdbe20907693b585d10af846e90824cbafd2e496"
+    },
+    {
+      "ref": "D4",
+      "url": "https://stiftung-artenschutz.de/assets/Uploads/Grants/2024_Ausschreibung_Small-grants_-ENG.pdf",
+      "final_url": "https://stiftung-artenschutz.de/assets/Uploads/Grants/2024_Ausschreibung_Small-grants_-ENG.pdf",
+      "from": "https://stiftung-artenschutz.de/en_US/grants/small-grants/",
+      "anchor": "Grant call",
+      "depth": 1,
+      "pdf": true,
+      "chars": 6208,
+      "pages": 4,
+      "low_text": false,
+      "hash": "sha256:3906315f3ddd2337653768b587e639a54703ed3f45420ffec5d99c734ca6e1d7"
+    }
+  ],
+  "failures": [],
+  "skipped_links": 40,
+  "chunks": [{ "id": "all", "docs": ["D1", "D2", "D3", "D4"], "chars": 24910 }],
+  "outcomes": {
+    "eligibility": "stated",
+    "documents": "stated",
+    "effort": "stated",
+    "co_finance": "not_found",
+    "consortium": "not_found",
+    "after_award": "stated"
+  },
+  "written": ["eligibility", "documents", "effort", "after_award"],
+  "escalated": ["after_award"],
+  "flags": [],
+  "notes": [
+    "extractor: D4 contains the Call 2024 rules. D1 and D2 state that there is currently no open call. D2 gives an older end-of-October selection timing, while D4 says selection is until mid-November.",
+    "source stiftung-artenschutz-small-grants-3: added for https://stiftung-artenschutz.de/assets/Uploads/Grants/2024_Ausschreibung_Small-grants_-ENG.pdf",
+    "source stiftung-artenschutz-small-grants-4: added for https://stiftung-artenschutz.de/assets/Uploads/Grants/Proposal-Guidelines_-Stiftung-Artenschutz.pdf"
+  ],
+  "usd": 0
+}

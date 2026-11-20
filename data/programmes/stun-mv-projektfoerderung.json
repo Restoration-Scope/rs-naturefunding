@@ -9,46 +9,140 @@
   "parent": null,
   "url": "https://www.stun-mv.de/foerderrichtlinie/",
   "summary": "Small foundation grants of up to EUR 1,000 for defined nature conservation and landscape-care projects in Mecklenburg-Vorpommern. The funding guideline on the page is dated May 2012.",
-  "approaches": ["species_conservation", "research"],
-  "applicant_types": ["individual", "ngo", "government"],
-  "geography": { "scope": "countries", "countries": ["DE"], "label": "Mecklenburg-Vorpommern" },
+  "approaches": [
+    "species_conservation",
+    "research"
+  ],
+  "applicant_types": [
+    "individual",
+    "ngo",
+    "government"
+  ],
+  "geography": {
+    "scope": "countries",
+    "countries": [
+      "DE"
+    ],
+    "label": "Mecklenburg-Vorpommern"
+  },
   "access": "direct",
   "window": "unspecified",
-  "amount": { "currency": "EUR", "max": 1000 },
+  "amount": {
+    "currency": "EUR",
+    "max": 1000
+  },
   "co_finance_required": true,
   "reporting": null,
+  "effort": {
+    "steps": [
+      "Submit the funding application"
+    ]
+  },
+  "eligibility": [
+    {
+      "rule": "A defined, stand-alone project, not institutional funding",
+      "kind": "project"
+    },
+    {
+      "rule": "Project serves points 4 to 6 of § 37(3) of the MV Nature Conservation Implementation Act",
+      "kind": "project"
+    },
+    {
+      "rule": "Have the prerequisites and abilities needed to deliver the project",
+      "kind": "capacity"
+    },
+    {
+      "rule": "Start a project that has not already begun",
+      "kind": "project"
+    },
+    {
+      "rule": "Do not use funds for wage subsidies, travel reimbursements or consulting fees",
+      "kind": "project"
+    }
+  ],
+  "after_award": {
+    "reports": "final"
+  },
   "calls": [],
   "evidence": {
     "geography": {
       "source_url": "https://www.stun-mv.de/foerderrichtlinie/",
       "quote": "Diese Mittel sollen nur für Projekte in Mecklenburg-Vorpommern eingesetzt werden.",
-      "checked_at": "2026-11-09",
+      "checked_at": "2026-11-20",
       "method": "page"
     },
     "access": {
       "source_url": "https://www.stun-mv.de/foerderrichtlinie/",
       "quote": "Anträge auf Förderung sind an die Geschäftsstelle der Stiftung Umwelt- und Naturschutz Mecklenburg-Vorpommern zu übersenden.",
-      "checked_at": "2026-11-09",
+      "checked_at": "2026-11-20",
       "method": "page"
     },
     "amount": {
       "source_url": "https://www.stun-mv.de/foerderrichtlinie/",
       "quote": "Die Höchstförderung pro Projekt beträgt 1.000,- €.",
-      "checked_at": "2026-11-09",
+      "checked_at": "2026-11-20",
       "method": "page"
     },
     "co_finance_required": {
-      "source_url": "https://www.stun-mv.de/foerderrichtlinie/",
+      "source_url": "https://www.stun-mv.de/wp-content/uploads/2024/01/Foerderrichtlinie.pdf",
       "quote": "Der Antragsteller hat einen angemessenen Eigenanteil zu erbringen.",
-      "checked_at": "2026-11-09",
+      "checked_at": "2026-11-20",
       "method": "page"
     },
     "applicant_types": {
       "source_url": "https://www.stun-mv.de/foerderrichtlinie/",
       "quote": "Antragsberechtigt sind natürliche und juristische Personen des privaten und öffentlichen Rechts.",
-      "checked_at": "2026-11-09",
+      "checked_at": "2026-11-20",
       "method": "page"
-    }
+    },
+    "effort": [
+      {
+        "source_url": "https://www.stun-mv.de/foerderrichtlinie/",
+        "quote": "Anträge auf Förderung sind an die Geschäftsstelle der Stiftung Umwelt- und Naturschutz Mecklenburg-Vorpommern zu übersenden.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "eligibility": [
+      {
+        "source_url": "https://www.stun-mv.de/wp-content/uploads/2024/01/Foerderrichtlinie.pdf",
+        "quote": "Die Stiftung Umwelt- und Naturschutz M-V fördert nur einzeln abgegrenzte bzw. abgrenzbare Vorhaben (Projektförderung). Es wird keine institutionelle Förderung gewährt.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.stun-mv.de/wp-content/uploads/2024/01/Foerderrichtlinie.pdf",
+        "quote": "Die Vorhaben müssen mit den Punkten 4 bis 6 des § 37 Abs. 3 des Naturschutzausführungsgesetzes MV übereinstimmen bzw. zur Verwirklichung dieser Punkte beitragen.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.stun-mv.de/wp-content/uploads/2024/01/Foerderrichtlinie.pdf",
+        "quote": "Der Bewilligungsempfänger muss über die für die Projektdurchführung erforderlichen Voraussetzungen und Fähigkeiten verfügen.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.stun-mv.de/wp-content/uploads/2024/01/Foerderrichtlinie.pdf",
+        "quote": "Es erfolgt keine Förderung bereits begonnener Projekte.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.stun-mv.de/wp-content/uploads/2024/01/Foerderrichtlinie.pdf",
+        "quote": "Die Fördermittel dürfen nicht für Lohnkostenzuschüsse, Fahrtkostenerstattungen, Beratungshonorare o. A. verwendet werden.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "after_award": [
+      {
+        "source_url": "https://www.stun-mv.de/foerderrichtlinie/",
+        "quote": "Nachdem die zugewendeten Mittel abgefordert sind, spätestens jedoch nach Ablauf des Bewilligungszeitraumes, hat der Bewilligungsempfänger einen Verwendungsnachweis bei der Stiftung Umwelt- und Naturschutz M-V einzureichen.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ]
   },
-  "checked_at": "2026-11-09"
+  "checked_at": "2026-11-20"
 }

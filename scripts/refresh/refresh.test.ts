@@ -6,9 +6,11 @@ import { deadlineInstant, deadlinePassed, parseZone } from './deadline'
 import { classifyResponse, hashText, readPages, robotsAllows, type Fetched } from './fetch'
 import { formatJson } from './json'
 import { answerText, llmFromEnv, provider } from './llm'
+import { sourceOfBranch, withinBudget } from './pool'
 import { isDue, nextState, programmeChecks, type SourceState } from './state'
-import { applyTierA, classify, quotesAt } from './tier'
-import { applyExtraction, LIMITS, proposalKey, readReview } from './tier-b'
+import { applyTierA, classify, dateQuoted, quotesAt } from './tier'
+import { resolveDateConflicts } from './sync-pr'
+import { applyExtraction, LIMITS, needsPerson, proposalKey, readReview, type Change, type Review } from './tier-b'
 
 const URL_A = 'https://funder.example/call'
 const URL_B = 'https://funder.example/eligibility'
@@ -376,7 +378,7 @@ describe('Tier B apply', () => {
     expect(changes[0]).toMatchObject({ path: 'calls[round-2]', kind: 'rejected' })
     expect(programme!.calls.map((c) => c.id)).not.toContain('round-2')
     expect(readReview({ overall: 'yes', verdicts: [{ path: 'amount', verdict: 'supported', reason: 'r'.repeat(500), x: 1 }, 'junk'], missed: 5 }))
-      .toEqual({ overall: 'unclear', verdicts: [{ path: 'amount', verdict: 'supported', reason: 'r'.repeat(300) }], missed: '' })
+      .toEqual({ overall: 'unclear', verdicts: [{ path: 'amount', verdict: 'supported', reason: 'r'.repeat(300) }], missed: '5' })
   })
   test('amount qualifiers the draft leaves out are kept; null removes one; "less than" goes with the max', () => {
     const base = fixture()
@@ -477,5 +479,112 @@ describe('LLM provider from the environment', () => {
     expect(answerText({ choices: [{ message: { content: '{"a":1}' } }] })).toBe('{"a":1}')
     expect(answerText({ result: { response: '{}' } })).toBe('{}')
     expect(() => answerText({ choices: [{ message: { content: null, reasoning_content: '…' }, finish_reason: 'length' }] })).toThrow('finish_reason length')
+  })
+})
+
+describe('Tier B time budget', () => {
+  const slow = (ms: number) => async (n: number) => {
+    await Bun.sleep(ms)
+    return n * 2
+  }
+  test('runs every item, a few at a time, in item order', async () => {
+    let running = 0
+    let most = 0
+    const work = async (n: number) => {
+      most = Math.max(most, ++running)
+      await Bun.sleep(5)
+      running--
+      return n
+    }
+    const r = await withinBudget([1, 2, 3, 4, 5, 6, 7], work, { parallel: 3, deadline: Date.now() + 5_000 })
+    expect(r.done.map(([n]) => n)).toEqual([1, 2, 3, 4, 5, 6, 7])
+    expect(r.deferred).toEqual([])
+    expect(most).toBe(3)
+  })
+  test('at the deadline, stops waiting and leaves the rest for the next run', async () => {
+    const started = Date.now()
+    const r = await withinBudget([1, 2, 3, 4, 5], slow(50), { parallel: 2, deadline: Date.now() + 75 })
+    expect(Date.now() - started).toBeLessThan(200)
+    expect(r.done).toEqual([[1, 2], [2, 4]])
+    expect(r.deferred).toEqual([3, 4, 5])
+  })
+  test('a hung draft is abandoned, not awaited', async () => {
+    const hang = (n: number) => (n === 1 ? new Promise<number>(() => {}) : Promise.resolve(n))
+    const r = await withinBudget([1, 2, 3], hang, { parallel: 2, deadline: Date.now() + 30 })
+    expect(r.done).toEqual([[2, 2], [3, 3]])
+    expect(r.deferred).toEqual([1])
+  })
+  test('source id from a refresh branch', () => {
+    expect(sourceOfBranch('refresh/cultuurfonds-natuur-1-43715323675')).toBe('cultuurfonds-natuur-1')
+  })
+})
+
+describe('changed page: dates without a PR', () => {
+  const now = new Date('2026-11-21T06:00:00Z')
+  test('dates facts still quoted on the changed page, leaves gone quotes and other pages alone', () => {
+    const page = 'News! Apply online. Applications are open. Up to USD 60,000. Deadline: 15 March 2027, 17:00 CET'
+    const { programme: p, dated } = dateQuoted(fixture(), new Map([[URL_A, page]]), now)
+    expect(dated).toBe(4)
+    expect(p.evidence.access?.checked_at).toBe('2026-11-21')
+    expect(p.calls[0].evidence.status.checked_at).toBe('2026-11-21')
+    expect(p.calls[0].evidence.deadline?.checked_at).toBe('2026-11-21')
+    expect(p.evidence.amount?.checked_at).toBe('2026-10-01')
+    expect(p.evidence.geography?.checked_at).toBe('2026-10-01')
+    expect(p.amount).toEqual(fixture().amount)
+    expect(p.checked_at).toBe('2026-10-01')
+  })
+  test('programme date moves once every fact is dated', () => {
+    const pages = new Map([[URL_A, 'Apply online. Applications are open. Up to USD 50,000. Deadline: 15 March 2027, 17:00 CET'], [URL_B, 'Community groups may apply. Open to applicants worldwide.']])
+    expect(dateQuoted(fixture(), pages, now).programme.checked_at).toBe('2026-11-21')
+  })
+  test('an upcoming call due to open keeps its date', () => {
+    const f = fixture()
+    f.calls[0] = { ...f.calls[0], status: 'upcoming', opens: '2026-11-01', evidence: { ...f.calls[0].evidence, opens: ev(URL_A, 'Opens 1 November 2026') } }
+    const { programme: p } = dateQuoted(f, new Map([[URL_A, 'Applications are open. Opens 1 November 2026']]), now)
+    expect(p.calls[0].evidence.status.checked_at).toBe('2026-10-01')
+    expect(p.calls[0].evidence.opens?.checked_at).toBe('2026-11-21')
+  })
+})
+
+describe('auto-commit rule', () => {
+  const change = (path: string, kind: Change['kind'] = 'changed'): Change => ({ path, kind, old: 1, new: 2, quote: 'q' })
+  const review = (over: Partial<Review> = {}): Review => ({ overall: 'approve', verdicts: [{ path: 'amount', verdict: 'supported', reason: '' }], missed: '', ...over })
+  const clean = { programme: fixture(), changes: [change('amount')], unconfirmed: [], schemaErrors: [], review: review(), truncated: false }
+  const reasons = ['page text changed since the last accepted read']
+  test('a fully passed draft commits', () => {
+    expect(needsPerson(clean, reasons)).toBeNull()
+    expect(needsPerson({ ...clean, changes: [] }, reasons)).toBeNull()
+    expect(needsPerson({ ...clean, review: review({ missed: 'None.' }) }, reasons)).toBeNull()
+  })
+  test('anything short of that needs a person', () => {
+    expect(needsPerson({ ...clean, review: review({ overall: 'reject' }) }, reasons)).toBe('the reviewer says reject')
+    expect(needsPerson({ ...clean, review: review({ overall: 'unclear' }) }, reasons)).toBe('the reviewer says unclear')
+    expect(needsPerson({ ...clean, review: review({ missed: 'The deadline moved to 1 May 2027' }) }, reasons)).toBe('the reviewer says the draft missed something')
+    expect(needsPerson({ ...clean, changes: [change('amount'), change('calls[x]', 'rejected')] }, reasons)).toBe('1 fact(s) rejected')
+    expect(needsPerson({ ...clean, unconfirmed: ['evidence.amount: "Up to USD 50,000"'] }, reasons)).toBe('1 quote(s) gone from the page')
+    expect(needsPerson({ ...clean, review: review({ verdicts: [{ path: 'amount', verdict: 'unsupported', reason: '' }] }) }, reasons)).toContain('amount')
+    expect(needsPerson({ ...clean, changes: [change('amount'), change('geography')] }, reasons)).toContain('geography')
+    expect(needsPerson({ ...clean, programme: null }, reasons)).toBe('the draft does not fit the schema')
+    expect(needsPerson({ ...clean, truncated: true }, reasons)).toBe('the page text was cut for the models')
+    expect(needsPerson(clean, ['redirected to another site: https://other.example/'])).toBe('the page redirected to another site')
+    expect(needsPerson({ ...clean, review: null }, reasons)).toBe('no reviewer answer')
+    expect(needsPerson({ ...clean, changes: [change('amount'), change('amount')] }, reasons)).toBe('the draft changes one fact twice')
+  })
+  test('a "missed" list from the reviewer still counts as missed', () => {
+    expect(readReview({ overall: 'approve', verdicts: [], missed: ['The deadline moved'] }).missed).toContain('The deadline moved')
+    expect(readReview({ overall: 'approve', verdicts: [], missed: [] }).missed).toBe('')
+  })
+})
+
+describe('refresh PR sync with main', () => {
+  const hunk = (a: string, b: string) => `{\n<<<<<<< HEAD\n${a}\n=======\n${b}\n>>>>>>> origin/main\n}`
+  test('date-only conflicts take the later date', () => {
+    expect(resolveDateConflicts(hunk('  "checked_at": "2026-11-21",', '  "checked_at": "2026-11-20",'))).toBe('{\n  "checked_at": "2026-11-21",\n}')
+    expect(resolveDateConflicts(hunk('  "checked_at": "2026-11-03"\n  "quote": "x",', '  "checked_at": "2026-11-20"\n  "quote": "x",'))).toBe('{\n  "checked_at": "2026-11-20"\n  "quote": "x",\n}')
+  })
+  test('any other conflict stops', () => {
+    expect(resolveDateConflicts(hunk('  "max": 5000,', '  "max": 6000,'))).toBeNull()
+    expect(resolveDateConflicts(hunk('  "checked_at": "2026-11-21",', '  "checked_at": "2026-11-20",\n  "x": 1,'))).toBeNull()
+    expect(resolveDateConflicts(hunk('  "checked_at": "2026-11-21",', '  "accepted_at": "2026-11-20",'))).toBeNull()
   })
 })

@@ -1,0 +1,96 @@
+{
+  "id": "national-geographic-society-grants",
+  "read_on": "2026-11-20",
+  "prompt_version": "req-2026-11-20.1",
+  "models": ["cursor:gpt-5.6-luna-high"],
+  "complete": false,
+  "reasons": [
+    "9 links could not be ranked without Jev",
+    "13 links could not be ranked without Jev",
+    "https://funding.nationalgeographic.org/s/fundingopportunity/119Hr000000CohcIAC/rfp-the-human-thread: too little text: the page may need a browser",
+    "the text names a document with rules that was not read: The specific RFP grant posting",
+    "the text names a document with rules that was not read: The guidelines for the chosen opportunity",
+    "Jev did not check this reading, so an absent fact is not known to be absent"
+  ],
+  "requirements_checked": false,
+  "documents": [
+    {
+      "ref": "D1",
+      "url": "https://www.nationalgeographic.org/explore/grants-investments/",
+      "final_url": "https://www.nationalgeographic.org/explore/grants-investments",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 11165,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:8bed2b2faebc8a6a4304b882f92b07188cda325c86c8ff9f5b6ec71a59c2f617"
+    },
+    {
+      "ref": "D2",
+      "url": "https://www.nationalgeographic.org/learn/educators/mapmaker-launch-guide",
+      "final_url": "https://www.nationalgeographic.org/learn/educators/mapmaker-launch-guide",
+      "from": "https://www.nationalgeographic.org/explore/grants-investments/",
+      "anchor": "MapMaker",
+      "depth": 1,
+      "pdf": false,
+      "chars": 4011,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:53e941bc6ab0baa78d353f4e289d0279a00e47a71621a0f4b595f03aa7339a83"
+    },
+    {
+      "ref": "D3",
+      "url": "https://funding.nationalgeographic.org/s/fundingopportunity/119Hr000000CohcIAC/rfp-the-human-thread",
+      "final_url": "https://funding.nationalgeographic.org/s/fundingopportunity/119Hr000000CohcIAC/rfp-the-human-thread",
+      "from": "https://www.nationalgeographic.org/explore/grants-investments/",
+      "anchor": "Apply",
+      "depth": 1,
+      "pdf": false,
+      "chars": 0,
+      "pages": null,
+      "low_text": true,
+      "hash": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "ref": "D4",
+      "url": "https://images.nationalgeographic.org/image/upload/v1784570721/NGS%20Main%20Site/Grants%20and%20Investments/Budget_Guidelines.pdf",
+      "final_url": "https://images.nationalgeographic.org/image/upload/v1784570721/NGS%20Main%20Site/Grants%20and%20Investments/Budget_Guidelines.pdf",
+      "from": "https://www.nationalgeographic.org/explore/grants-investments/",
+      "anchor": "budget guidelines.",
+      "depth": 1,
+      "pdf": true,
+      "chars": 5287,
+      "pages": 3,
+      "low_text": false,
+      "hash": "sha256:610a4d75399333d2ffbd7c6502064b8ee0f694172bc95b978ee94b91079dbf6c"
+    }
+  ],
+  "failures": [
+    {
+      "url": "https://funding.nationalgeographic.org/s/fundingopportunity/119Hr000000CohcIAC/rfp-the-human-thread",
+      "from": "https://www.nationalgeographic.org/explore/grants-investments/",
+      "kind": "low_text",
+      "message": "too little text: the page may need a browser"
+    }
+  ],
+  "skipped_links": 199,
+  "chunks": [{ "id": "all", "docs": ["D1", "D2", "D4"], "chars": 20925 }],
+  "outcomes": {
+    "eligibility": "stated",
+    "documents": "stated",
+    "effort": "stated",
+    "co_finance": "not_found",
+    "consortium": "not_found",
+    "after_award": "stated"
+  },
+  "written": ["eligibility", "documents", "effort", "after_award"],
+  "escalated": [],
+  "flags": [],
+  "notes": [
+    "extractor: The Society has transitioned from open-call grants to specific RFPs, whose eligibility and deadlines vary. The only current opportunity named is The Human Thread, due 2026-12-01. D2 is an unrelated MapMaker guide.",
+    "source national-geographic-society-grants-2: added for https://images.nationalgeographic.org/image/upload/v1784570721/NGS%20Main%20Site/Grants%20and%20Investments/Budget_Guidelines.pdf"
+  ],
+  "usd": 0
+}

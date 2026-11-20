@@ -1,0 +1,133 @@
+{
+  "id": "wales-landfill-disposals-tax-communities-scheme",
+  "read_on": "2026-11-20",
+  "prompt_version": "req-2026-11-20.1",
+  "models": ["cursor:gpt-5.6-luna-high"],
+  "complete": false,
+  "reasons": [
+    "31 links could not be ranked without Jev",
+    "16 links could not be ranked without Jev",
+    "the text names a document with rules that was not read: LDTCS Guidance for Applicants",
+    "the text names a document with rules that was not read: Application form",
+    "the text names a document with rules that was not read: Map of eligible sites",
+    "the text names a document with rules that was not read: Application guidance around the scheme and the application process",
+    "Jev did not check this reading, so an absent fact is not known to be absent"
+  ],
+  "requirements_checked": false,
+  "documents": [
+    {
+      "ref": "D1",
+      "url": "https://wcva.cymru/funding/landfill-disposals-tax-communities-scheme/",
+      "final_url": "https://wcva.cymru/funding/landfill-disposals-tax-communities-scheme/",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 10053,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:78b4035db4bd55c4b3a7d7280c51de537bb1f20c04a4c635816c8091a933edae"
+    },
+    {
+      "ref": "D2",
+      "url": "https://wcva.cymru/training-info/training-terms-conditions/",
+      "final_url": "https://wcva.cymru/training-info/training-terms-conditions/",
+      "from": "https://wcva.cymru/funding/landfill-disposals-tax-communities-scheme/",
+      "anchor": "Training terms & conditions",
+      "depth": 1,
+      "pdf": false,
+      "chars": 6295,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:20f2f6f322afb32f2e67063da4779f66c16af1d0898561f155497afc7612f1ec"
+    },
+    {
+      "ref": "D3",
+      "url": "https://wcva.cymru/wp-content/uploads/2026/04/LDTCS-Guidance-for-Applicants.pdf",
+      "final_url": "https://wcva.cymru/wp-content/uploads/2026/04/LDTCS-Guidance-for-Applicants.pdf",
+      "from": "https://wcva.cymru/funding/landfill-disposals-tax-communities-scheme/",
+      "anchor": "read our scheme guidance",
+      "depth": 1,
+      "pdf": true,
+      "chars": 30263,
+      "pages": 20,
+      "low_text": false,
+      "hash": "sha256:376049f14b143fa4dc570c753aa548433cc407ddd9a945453de24153990a27f3"
+    },
+    {
+      "ref": "D4",
+      "url": "https://wcva.cymru/wp-content/uploads/2026/11/WcVA_Landfill_English_26_LR.pdf",
+      "final_url": "https://wcva.cymru/wp-content/uploads/2026/11/WcVA_Landfill_English_26_LR.pdf",
+      "from": "https://wcva.cymru/funding/landfill-disposals-tax-communities-scheme/",
+      "anchor": "Download",
+      "depth": 1,
+      "pdf": true,
+      "chars": 63382,
+      "pages": 62,
+      "low_text": false,
+      "hash": "sha256:b8e7bb27c2b8cd8794608259009d6b0dc1a4acefef24e0d7aeb536eb7a53a488"
+    },
+    {
+      "ref": "D5",
+      "url": "https://wcva.cymru/wp-content/uploads/2025/11/Landfill-Disposals-Tax-Communities-Scheme-Annual-Report-25.pdf",
+      "final_url": "https://wcva.cymru/wp-content/uploads/2025/11/Landfill-Disposals-Tax-Communities-Scheme-Annual-Report-25.pdf",
+      "from": "https://wcva.cymru/funding/landfill-disposals-tax-communities-scheme/",
+      "anchor": "Download",
+      "depth": 1,
+      "pdf": true,
+      "chars": 64052,
+      "pages": 64,
+      "low_text": false,
+      "hash": "sha256:c83c14fac514264861ceac8b48f09fffb1d70fec09fd71f80ac397c8c12519df"
+    },
+    {
+      "ref": "D6",
+      "url": "https://wcva.cymru/terms-and-conditions/",
+      "final_url": "https://wcva.cymru/terms-and-conditions/",
+      "from": "https://wcva.cymru/funding/landfill-disposals-tax-communities-scheme/",
+      "anchor": "Terms and conditions",
+      "depth": 1,
+      "pdf": false,
+      "chars": 15601,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:b8a43e0a265d7da506050e56c57b2b7997ca57bd902805803f171bacf90aa88d"
+    }
+  ],
+  "failures": [],
+  "skipped_links": 386,
+  "chunks": [
+    { "id": "c1", "docs": ["D1", "D2"], "chars": 16586 },
+    { "id": "c2", "docs": ["D3"], "chars": 30443 },
+    { "id": "c3", "docs": ["D4"], "chars": 40051 },
+    { "id": "c4", "docs": ["D4"], "chars": 25211 },
+    { "id": "c5", "docs": ["D5"], "chars": 40160 },
+    { "id": "c6", "docs": ["D5"], "chars": 25834 },
+    { "id": "c7", "docs": ["D6"], "chars": 15736 }
+  ],
+  "outcomes": {
+    "eligibility": "stated",
+    "documents": "stated",
+    "effort": "unresolved",
+    "co_finance": "stated",
+    "consortium": "not_found",
+    "after_award": "stated"
+  },
+  "written": ["eligibility", "documents", "co_finance", "after_award"],
+  "escalated": [],
+  "flags": [
+    {
+      "field": "effort",
+      "item": "steps",
+      "why": "the steps come from different parts of the text; check they are one list in order"
+    }
+  ],
+  "notes": [
+    "eligibility: 3 rules past the 8th dropped",
+    "effort: steps past the 5th dropped",
+    "extractor: The fund is currently closed. Biodiversity projects extending outside the five-mile radius may be considered case by case for full or partial funding. Nationally significant applicants must contact WCVA before applying. | The current round had two application windows, with no preferential treatment for window one. | D4 is a retrospective 2025/26 annual report. It records Round 13 application windows opening in October and November 2025, but does not state application stages, required documents, co-finance or consortium rules. | This part contains case studies, grant awards and KPI results; it does not state applicant requirements, application steps, submission documents or post-award duties. | The report covers the 2024/25 Round 12. The eligible-sites map can change between rounds and applicants are advised to check it when applying. Priority-theme contributions are scored as part of assessment, not stated as hard eligibility requirements. | This annual report states project achievemen",
+    "the flagged text is too long for one escalation",
+    "source wales-landfill-disposals-tax-communities-scheme-2: added for https://wcva.cymru/wp-content/uploads/2026/04/LDTCS-Guidance-for-Applicants.pdf"
+  ],
+  "usd": 0
+}

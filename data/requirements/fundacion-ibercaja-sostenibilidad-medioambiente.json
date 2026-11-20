@@ -1,0 +1,135 @@
+{
+  "id": "fundacion-ibercaja-sostenibilidad-medioambiente",
+  "read_on": "2026-11-20",
+  "prompt_version": "req-2026-11-20.1",
+  "models": ["cursor:gpt-5.6-luna-high"],
+  "complete": false,
+  "reasons": [
+    "3 links could not be ranked without Jev",
+    "https://www.fundacionibercaja.es/resources/activities/documents/1780390157-1780390156732.pdf: pages 1, 2, 3, 4 are images: needs OCR",
+    "https://www.fundacionibercaja.es/resources/activities/documents/1780390185-1780390182746.pdf: pages 1, 8 are images: needs OCR",
+    "https://www.fundacionibercaja.es/resources/activities/documents/1780390200-1780390199102.pdf: a scanned or image PDF: needs OCR",
+    "Jev did not check this reading, so an absent fact is not known to be absent"
+  ],
+  "requirements_checked": false,
+  "documents": [
+    {
+      "ref": "D1",
+      "url": "https://www.fundacionibercaja.es/convocatorias/convocatoria-2026-sostenibilidad-y-proteccion-del-medioambiente/",
+      "final_url": "https://www.fundacionibercaja.es/convocatorias/convocatoria-2026-sostenibilidad-y-proteccion-del-medioambiente/",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 4723,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:d84d78e6716407e0b669cb5e5f77fb0ab3daabb5047bf759d2911f5c29843222"
+    },
+    {
+      "ref": "D2",
+      "url": "https://www.fundacionibercaja.es/resources/activities/documents/1780390157-1780390156732.pdf",
+      "final_url": "https://www.fundacionibercaja.es/resources/activities/documents/1780390157-1780390156732.pdf",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": true,
+      "chars": 12659,
+      "pages": 11,
+      "low_text": false,
+      "hash": "sha256:fcfc2ee3afda07f3a0d795ea4b6c47f19fa312bbcb565d3969aa243f27027ad6"
+    },
+    {
+      "ref": "D3",
+      "url": "https://www.fundacionibercaja.es/forms/contacto/actividad/convocatoria-2026-sostenibilidad-y-proteccion-del-medioambiente/",
+      "final_url": "https://www.fundacionibercaja.es/forms/contacto/actividad/convocatoria-2026-sostenibilidad-y-proteccion-del-medioambiente/",
+      "from": "https://www.fundacionibercaja.es/convocatorias/convocatoria-2026-sostenibilidad-y-proteccion-del-medioambiente/",
+      "anchor": "",
+      "depth": 1,
+      "pdf": false,
+      "chars": 4365,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:88d5de42529e6db567141204228aef43a58e50559f6010f527574270b4207dd6"
+    },
+    {
+      "ref": "D4",
+      "url": "https://www.fundacionibercaja.es/resources/activities/documents/1780390185-1780390182746.pdf",
+      "final_url": "https://www.fundacionibercaja.es/resources/activities/documents/1780390185-1780390182746.pdf",
+      "from": "https://www.fundacionibercaja.es/convocatorias/convocatoria-2026-sostenibilidad-y-proteccion-del-medioambiente/",
+      "anchor": "Manual de registro y acreditación",
+      "depth": 1,
+      "pdf": true,
+      "chars": 12107,
+      "pages": 17,
+      "low_text": false,
+      "hash": "sha256:7700c79329d1aa5e5d39107c82de46b76fdd393b21ee8d932f8ede94f6e7e340"
+    },
+    {
+      "ref": "D5",
+      "url": "https://www.fundacionibercaja.es/resources/activities/documents/1780390200-1780390199102.pdf",
+      "final_url": "https://www.fundacionibercaja.es/resources/activities/documents/1780390200-1780390199102.pdf",
+      "from": "https://www.fundacionibercaja.es/convocatorias/convocatoria-2026-sostenibilidad-y-proteccion-del-medioambiente/",
+      "anchor": "Preguntas frecuentes",
+      "depth": 1,
+      "pdf": true,
+      "chars": 30,
+      "pages": 11,
+      "low_text": true,
+      "hash": "sha256:7923b9678498494cb6de3745498e0e26bde01169053f74f9413633400278b8fa"
+    },
+    {
+      "ref": "D6",
+      "url": "https://www.fundacionibercaja.es/resources/activities/documents/1790317812-1790317811412.pdf",
+      "final_url": "https://www.fundacionibercaja.es/resources/activities/documents/1790317812-1790317811412.pdf",
+      "from": "https://www.fundacionibercaja.es/convocatorias/convocatoria-2026-sostenibilidad-y-proteccion-del-medioambiente/",
+      "anchor": "Declaración responsable no inscripción Seguridad Social",
+      "depth": 1,
+      "pdf": true,
+      "chars": 2720,
+      "pages": 1,
+      "low_text": false,
+      "hash": "sha256:9503d9f04f8ff1b94b9e2da503f5f4d9f9f612386895c0f424520b37db642c89"
+    }
+  ],
+  "failures": [
+    {
+      "url": "https://www.fundacionibercaja.es/resources/activities/documents/1780390157-1780390156732.pdf",
+      "from": null,
+      "kind": "low_text",
+      "message": "pages 1, 2, 3, 4 are images: needs OCR"
+    },
+    {
+      "url": "https://www.fundacionibercaja.es/resources/activities/documents/1780390185-1780390182746.pdf",
+      "from": "https://www.fundacionibercaja.es/convocatorias/convocatoria-2026-sostenibilidad-y-proteccion-del-medioambiente/",
+      "kind": "low_text",
+      "message": "pages 1, 8 are images: needs OCR"
+    },
+    {
+      "url": "https://www.fundacionibercaja.es/resources/activities/documents/1780390200-1780390199102.pdf",
+      "from": "https://www.fundacionibercaja.es/convocatorias/convocatoria-2026-sostenibilidad-y-proteccion-del-medioambiente/",
+      "kind": "low_text",
+      "message": "a scanned or image PDF: needs OCR"
+    }
+  ],
+  "skipped_links": 126,
+  "chunks": [{ "id": "all", "docs": ["D1", "D2", "D3", "D4", "D5", "D6"], "chars": 37813 }],
+  "outcomes": {
+    "eligibility": "not_found",
+    "documents": "stated",
+    "effort": "stated",
+    "co_finance": "not_found",
+    "consortium": "not_found",
+    "after_award": "stated"
+  },
+  "written": ["documents", "effort", "after_award"],
+  "escalated": [],
+  "flags": [],
+  "notes": [
+    "extractor: Accreditation must be validated before project submission. The funder may request visits or an audit, but the text does not make these mandatory duties. After acceptance, project publicity must mention Fundación Ibercaja and include its logo.",
+    "source fundacion-ibercaja-sostenibilidad-medioambiente-3: added for https://www.fundacionibercaja.es/resources/activities/documents/1780390185-1780390182746.pdf",
+    "source fundacion-ibercaja-sostenibilidad-medioambiente-2: selector main dropped, a new quote sits outside it",
+    "source fundacion-ibercaja-sostenibilidad-medioambiente-4: added for https://www.fundacionibercaja.es/resources/activities/documents/1790317812-1790317811412.pdf"
+  ],
+  "usd": 0
+}

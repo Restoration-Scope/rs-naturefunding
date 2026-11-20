@@ -1,0 +1,56 @@
+{
+  "id": "hokkaido-shimbun-wildlife-fund",
+  "read_on": "2026-11-20",
+  "prompt_version": "req-2026-11-20.1",
+  "models": ["cursor:gpt-5.6-luna-high"],
+  "complete": false,
+  "reasons": [
+    "19 links could not be ranked without Jev",
+    "Jev did not check this reading, so an absent fact is not known to be absent"
+  ],
+  "requirements_checked": false,
+  "documents": [
+    {
+      "ref": "D1",
+      "url": "https://nature.hokkaido-np.co.jp/project/jyosei.html",
+      "final_url": "https://nature.hokkaido-np.co.jp/project/jyosei.html",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 1280,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:ec479abf4e09eb4dae7ba098696fbb3984612052c19986333008583f987367fe"
+    },
+    {
+      "ref": "D2",
+      "url": "https://nature.hokkaido-np.co.jp/project/jyoseikitei.html",
+      "final_url": "https://nature.hokkaido-np.co.jp/project/jyoseikitei.html",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 1002,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:f5af625c7e35ca58168d6a7b1fd11ea415cdfd043e37955f4211403d40d90340"
+    }
+  ],
+  "failures": [],
+  "skipped_links": 21,
+  "chunks": [{ "id": "all", "docs": ["D1", "D2"], "chars": 2419 }],
+  "outcomes": {
+    "eligibility": "not_found",
+    "documents": "not_found",
+    "effort": "stated",
+    "co_finance": "not_found",
+    "consortium": "not_found",
+    "after_award": "stated"
+  },
+  "written": ["effort", "after_award"],
+  "escalated": [],
+  "flags": [],
+  "notes": [],
+  "usd": 0
+}

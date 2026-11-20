@@ -1,19 +1,73 @@
 {
   "id": "goodplanet-action-carbone-solidaire",
   "name": "Fondation GoodPlanet Action Carbone Solidaire project submission",
-  "funder": { "name": "Fondation GoodPlanet", "url": "https://www.goodplanet.org/" },
+  "funder": {
+    "name": "Fondation GoodPlanet",
+    "url": "https://www.goodplanet.org/"
+  },
   "administered_by": null,
   "parent": null,
   "url": "https://www.goodplanet.org/fr/deposer-son-projet/",
   "summary": "Foundation funding for NGOs and associations in France or abroad running field projects on agroecology, essential services or restoring and protecting marine and coastal ecosystems. The submission form opens only in set periods, not yet announced.",
-  "approaches": ["coastal_marine", "sustainable_land_use"],
-  "applicant_types": ["ngo", "social_enterprise"],
+  "approaches": [
+    "coastal_marine",
+    "sustainable_land_use"
+  ],
+  "applicant_types": [
+    "ngo",
+    "social_enterprise"
+  ],
   "geography": null,
   "access": "direct",
   "window": "fixed",
-  "amount": { "currency": "EUR", "min": 50000, "max": 100000, "typical": true, "per": "year" },
+  "amount": {
+    "currency": "EUR",
+    "min": 50000,
+    "max": 100000,
+    "typical": true,
+    "per": "year"
+  },
   "co_finance_required": null,
   "reporting": null,
+  "effort": {
+    "steps": [
+      "Project submission form"
+    ]
+  },
+  "eligibility": [
+    {
+      "rule": "Has environmental and socio-economic inequality impacts",
+      "kind": "project"
+    },
+    {
+      "rule": "Has proven experience in project management and environmental work",
+      "kind": "track_record"
+    },
+    {
+      "rule": "Project fits agroecology, essential services or marine and coastal ecosystems",
+      "kind": "project"
+    },
+    {
+      "rule": "Is not an individual or an association with high member turnover",
+      "kind": "legal"
+    },
+    {
+      "rule": "Is not a project dominated by scientific research",
+      "kind": "project"
+    },
+    {
+      "rule": "Not a carbon sequestration project (e.g. reforestation) funded by carbon contributions",
+      "kind": "project"
+    },
+    {
+      "rule": "Is not in a French foreign ministry red or orange zone",
+      "kind": "project"
+    },
+    {
+      "rule": "An international project reduces at least 3,000 tonnes of CO2eq annually",
+      "kind": "project"
+    }
+  ],
   "calls": [
     {
       "id": "submission-form",
@@ -57,7 +111,65 @@
       "quote": "désormais le formulaire sera ouvert sur des périodes spécifiques de l'année",
       "checked_at": "2026-11-15",
       "method": "page"
-    }
+    },
+    "effort": [
+      {
+        "source_url": "https://www.goodplanet.org/fr/deposer-son-projet/",
+        "quote": "La proposition doit être déposée via le formulaire ci-dessus.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "eligibility": [
+      {
+        "source_url": "https://www.goodplanet.org/fr/deposer-son-projet/",
+        "quote": "Les impacts doivent être à la fois environnementaux et contribuer à la réduction des inégalités socio-économiques ;",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.goodplanet.org/fr/deposer-son-projet/",
+        "quote": "Les porteurs de projet doivent témoigner d'une expérience avérée dans la gestion de projets et dans le secteur environnemental.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.goodplanet.org/fr/deposer-son-projet/",
+        "quote": "La Fondation GoodPlanet intervient sur 3 familles de solution : développer l'agroécologie, assurer l'accès aux biens et services essentiels (accès à une énergie renouvelable et durable, valorisation des ordures ménagères), préserver, restaurer et protéger les écosystèmes marins et côtiers.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.goodplanet.org/fr/deposer-son-projet/",
+        "quote": "Les projets individuels ou portés par une association avec un fort turn-over de ses membres (type association étudiante) ;",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.goodplanet.org/fr/deposer-son-projet/",
+        "quote": "Les projets à dominante de recherche scientifique ;",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.goodplanet.org/fr/deposer-son-projet/",
+        "quote": "Les projets de séquestration (reforestation ou afforestation par exemple) financés par contribution à la neutralité carbone",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.goodplanet.org/fr/deposer-son-projet/",
+        "quote": "Les zones de projet ne doivent pas être « déconseillées » par le ministère des affaires étrangères français (zones rouges ou oranges).",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.goodplanet.org/fr/deposer-son-projet/",
+        "quote": "Les projets internationaux dont la réduction des émissions annuelle est inférieure à 3 000 tonnes de CO2eq",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ]
   },
   "checked_at": "2026-11-15"
 }

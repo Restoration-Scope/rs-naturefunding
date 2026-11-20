@@ -1,13 +1,22 @@
 {
   "id": "tokyo-zoo-wildlife-conservation-fund",
   "name": "Tokyo Zoological Park Society Wildlife Conservation Fund",
-  "funder": { "name": "Tokyo Zoological Park Society", "url": "https://www.tokyo-zoo.net/" },
+  "funder": {
+    "name": "Tokyo Zoological Park Society",
+    "url": "https://www.tokyo-zoo.net/"
+  },
   "administered_by": null,
   "parent": null,
   "url": "https://www.tokyo-zoo.net/wildlife-conservation-fund/index.html",
   "summary": "Yearly grants of up to JPY 1 million for practical wildlife conservation, research and outreach activities by organisations or individuals with at least a year of conservation experience. A 3-year partner division on a set theme also exists.",
-  "approaches": ["species_conservation", "research"],
-  "applicant_types": ["ngo", "individual"],
+  "approaches": [
+    "species_conservation",
+    "research"
+  ],
+  "applicant_types": [
+    "ngo",
+    "individual"
+  ],
   "geography": null,
   "access": "direct",
   "window": "fixed",
@@ -19,6 +28,38 @@
   },
   "co_finance_required": null,
   "reporting": null,
+  "effort": {
+    "steps": [
+      "Application submission",
+      "Document review"
+    ]
+  },
+  "eligibility": [
+    {
+      "rule": "Has at least 1 year of wildlife conservation activity",
+      "kind": "track_record"
+    },
+    {
+      "rule": "Does not mainly pursue political, religious or profit-making activities",
+      "kind": "legal"
+    },
+    {
+      "rule": "Does not outsource all or most of the activity to another organisation",
+      "kind": "project"
+    },
+    {
+      "rule": "Activity is not intended to earn income",
+      "kind": "project"
+    },
+    {
+      "rule": "Activity has no religious or political propaganda intent",
+      "kind": "project"
+    }
+  ],
+  "after_award": {
+    "reports": "interim_and_final",
+    "training": true
+  },
   "calls": [
     {
       "id": "fy2026",
@@ -26,7 +67,10 @@
       "url": "https://www.tokyo-zoo.net/wildlife-conservation-fund/application/index.html",
       "status": "closed",
       "opens": "2026-02-01",
-      "deadline": { "date": "2026-02-28", "text": "2026年2月28日(土)" },
+      "deadline": {
+        "date": "2026-02-28",
+        "text": "2026年2月28日(土)"
+      },
       "evidence": {
         "status": {
           "source_url": "https://www.tokyo-zoo.net/wildlife-conservation-fund/index.html",
@@ -37,13 +81,13 @@
         "opens": {
           "source_url": "https://www.tokyo-zoo.net/wildlife-conservation-fund/application/index.html",
           "quote": "応募期間 2026年2月1日(日)~2026年2月28日(土)",
-          "checked_at": "2026-11-12",
+          "checked_at": "2026-11-20",
           "method": "page"
         },
         "deadline": {
           "source_url": "https://www.tokyo-zoo.net/wildlife-conservation-fund/application/index.html",
           "quote": "応募期間 2026年2月1日(日)~2026年2月28日(土)",
-          "checked_at": "2026-11-12",
+          "checked_at": "2026-11-20",
           "method": "page"
         }
       }
@@ -53,27 +97,87 @@
     "applicant_types": {
       "source_url": "https://www.tokyo-zoo.net/wildlife-conservation-fund/application/index.html",
       "quote": "野生生物保全活動の実績が1年以上あり、かつ、政治活動、宗教活動または営利事業を主たる目的としない団体あるいは個人とします。",
-      "checked_at": "2026-11-12",
+      "checked_at": "2026-11-20",
       "method": "page"
     },
     "access": {
       "source_url": "https://www.tokyo-zoo.net/wildlife-conservation-fund/application/index.html",
       "quote": "応募方法 募集要領をよくお読みいただいたうえ、応募書類に必要事項を記入し、申請フォームにてお送りください。",
-      "checked_at": "2026-11-12",
+      "checked_at": "2026-11-20",
       "method": "page"
     },
     "window": {
       "source_url": "https://www.tokyo-zoo.net/wildlife-conservation-fund/application/index.html",
       "quote": "応募期間 2026年2月1日(日)~2026年2月28日(土)",
-      "checked_at": "2026-11-12",
+      "checked_at": "2026-11-20",
       "method": "page"
     },
     "amount": {
       "source_url": "https://www.tokyo-zoo.net/wildlife-conservation-fund/application/index.html",
       "quote": "(1)一般部門 100万円/年を上限とします。",
-      "checked_at": "2026-11-12",
+      "checked_at": "2026-11-20",
       "method": "page"
-    }
+    },
+    "effort": [
+      {
+        "source_url": "https://www.tokyo-zoo.net/wildlife-conservation-fund/application/index.html",
+        "quote": "応募期間 2026年2月1日(日)~2026年2月28日(土)",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.tokyo-zoo.net/file/wildlife-conservation-fund/application/fund_guideline_2026.pdf",
+        "quote": "提出された書類等に基づいて審査を行い",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "eligibility": [
+      {
+        "source_url": "https://www.tokyo-zoo.net/wildlife-conservation-fund/application/index.html",
+        "quote": "野生生物保全活動の実績が1年以上あり",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.tokyo-zoo.net/wildlife-conservation-fund/application/index.html",
+        "quote": "政治活動、宗教活動または営利事業を主たる目的としない団体あるいは個人とします。",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.tokyo-zoo.net/wildlife-conservation-fund/application/index.html",
+        "quote": "活動の全部または大部分を他の団体などに請け負わせて実施する活動",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.tokyo-zoo.net/wildlife-conservation-fund/application/index.html",
+        "quote": "収益を得ることを目的とした活動",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.tokyo-zoo.net/wildlife-conservation-fund/application/index.html",
+        "quote": "宗教的または政治的宣伝意図を有する活動",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "after_award": [
+      {
+        "source_url": "https://www.tokyo-zoo.net/file/wildlife-conservation-fund/application/fund_guideline_2026.pdf",
+        "quote": "中間活 動報告書及び中間会計報告書を提出してください。また、令和9年5月31日までに活動 報告書及び会計報告書を提出してください",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.tokyo-zoo.net/file/wildlife-conservation-fund/application/fund_guideline_2026.pdf",
+        "quote": "報告講演会後に報告会要旨(A4 1枚)を作成いただき",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ]
   },
   "checked_at": "2026-11-12"
 }

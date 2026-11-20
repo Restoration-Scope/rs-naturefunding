@@ -14,6 +14,37 @@
   "amount": null,
   "co_finance_required": null,
   "reporting": "Final report, generally due one year after the final payment.",
+  "effort": {
+    "steps": [
+      "Letter of Inquiry (rolling; over $50,000 by the closing date)",
+      "Proposal, if invited",
+      "Staff review and site visit"
+    ],
+    "more_after": true,
+    "due": ["2026-12-04", "2027-01-08", null]
+  },
+  "eligibility": [
+    {
+      "rule": "Holds 501(c)(3) status or uses a 501(c)(3) fiscal agent in good standing",
+      "kind": "legal"
+    },
+    {
+      "rule": "Has at least three board officers: president, secretary and treasurer",
+      "kind": "legal"
+    },
+    { "rule": "Has at least 51% unrelated voting board members", "kind": "legal" },
+    {
+      "rule": "Applies for a one-time project with defined beginnings and endings",
+      "kind": "project"
+    },
+    { "rule": "Has financial stability to sustain the project", "kind": "finances" },
+    {
+      "rule": "Not for individuals, special events, debt or deficits, political activities or general operating costs",
+      "kind": "project"
+    },
+    { "rule": "No France-Merrick grant final payment in the last two years", "kind": "other" }
+  ],
+  "after_award": { "reports": "final" },
   "calls": [
     {
       "id": "rolling-loi",
@@ -26,7 +57,7 @@
         "status": {
           "source_url": "https://www.france-merrickfdn.org/apply-for-a-grant/our-process/",
           "quote": "We accept LOIs on a rolling basis and encourage organizations to send them anytime.",
-          "checked_at": "2026-11-15",
+          "checked_at": "2026-11-20",
           "method": "page"
         }
       },
@@ -37,33 +68,117 @@
     "applicant_types": {
       "source_url": "https://www.france-merrickfdn.org/apply-for-a-grant/our-process/",
       "quote": "Legal organization name, mailing address and 501(c)(3) Tax ID number of the organization/fiscal sponsor",
-      "checked_at": "2026-11-15",
+      "checked_at": "2026-11-20",
       "method": "page"
     },
     "geography": {
       "source_url": "https://www.france-merrickfdn.org/areas-of-focus/environment/",
       "quote": "supporting organizations that are involved in preserving and protecting the waters and natural areas in the State of Maryland",
-      "checked_at": "2026-11-15",
+      "checked_at": "2026-11-20",
       "method": "page"
     },
     "access": {
       "source_url": "https://www.france-merrickfdn.org/apply-for-a-grant/our-process/",
       "quote": "the first step for an organization interested in applying for a grant is to send the Foundation a 1-3 page Letter of Inquiry (LOI)",
-      "checked_at": "2026-11-15",
+      "checked_at": "2026-11-20",
       "method": "page"
     },
     "window": {
       "source_url": "https://www.france-merrickfdn.org/apply-for-a-grant/our-process/",
       "quote": "We accept LOIs on a rolling basis and encourage organizations to send them anytime.",
-      "checked_at": "2026-11-15",
+      "checked_at": "2026-11-20",
       "method": "page"
     },
     "reporting": {
       "source_url": "https://www.france-merrickfdn.org/apply-for-a-grant/our-process/",
       "quote": "Final reports are generally due one year after the final payment date.",
-      "checked_at": "2026-11-15",
+      "checked_at": "2026-11-20",
       "method": "page"
-    }
+    },
+    "effort": [
+      {
+        "source_url": "https://www.france-merrickfdn.org/apply-for-a-grant/our-process/",
+        "quote": "We accept LOIs on a rolling basis and encourage organizations to send them anytime.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.france-merrickfdn.org/apply-for-a-grant/our-process/",
+        "quote": "December 4, 2026",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.france-merrickfdn.org/apply-for-a-grant/our-process/",
+        "quote": "One month after decision is made on LOI",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.france-merrickfdn.org/apply-for-a-grant/our-process/",
+        "quote": "January 8, 2027",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.france-merrickfdn.org/wp-content/uploads/2026/07/France-Merrick-Foundation-FAQ-0726.pdf",
+        "quote": "Once received, each proposal is assigned to a staff member, who conducts a thorough review including follow-up questions and a site visit.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "eligibility": [
+      {
+        "source_url": "https://www.france-merrickfdn.org/wp-content/uploads/2026/07/France-Merrick-Foundation-FAQ-0726.pdf",
+        "quote": "Applicants must be a non-profit organization holding 501(c)(3) status under the Internal Revenue Code or have a 501(c)(3) fiscal agent in good standing.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.france-merrickfdn.org/wp-content/uploads/2026/07/France-Merrick-Foundation-FAQ-0726.pdf",
+        "quote": "Per Maryland law, the non-profit must have at least three officers on its Board of Directors: president, secretary, and treasurer.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.france-merrickfdn.org/wp-content/uploads/2026/07/France-Merrick-Foundation-FAQ-0726.pdf",
+        "quote": "Per U.S. law, the Board of Directors must have at least 51% \"unrelated\" voting board members, who are not related by family or through business partnerships.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.france-merrickfdn.org/wp-content/uploads/2026/07/France-Merrick-Foundation-FAQ-0726.pdf",
+        "quote": "The Foundation funds one-time projects with defined beginnings and endings.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.france-merrickfdn.org/apply-for-a-grant/",
+        "quote": "Applicants must have the financial stability to sustain the project for which funding is sought.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.france-merrickfdn.org/apply-for-a-grant/",
+        "quote": "Individuals Special events or advertising space in programs Deficit financing/debt reduction Political activities General operating/annual giving",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.france-merrickfdn.org/apply-for-a-grant/our-process/",
+        "quote": "Per Foundation policy, new funding requests may only be submitted after completing a two-year waiting period from the final payment date of a previous grant.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "after_award": [
+      {
+        "source_url": "https://www.france-merrickfdn.org/apply-for-a-grant/our-process/",
+        "quote": "Final reports are generally due one year after the final payment date.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ]
   },
-  "checked_at": "2026-11-15"
+  "checked_at": "2026-11-20"
 }

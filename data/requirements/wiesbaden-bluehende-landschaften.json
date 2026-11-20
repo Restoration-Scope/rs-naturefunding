@@ -1,0 +1,87 @@
+{
+  "id": "wiesbaden-bluehende-landschaften",
+  "read_on": "2026-11-20",
+  "prompt_version": "req-2026-11-20.1",
+  "models": ["cursor:gpt-5.6-luna-high"],
+  "complete": false,
+  "reasons": [
+    "2 links could not be ranked without Jev",
+    "the text names a document with rules that was not read: Förderrichtlinien der Landeshauptstadt Wiesbaden über die Gewährung von Zuschüssen in der jeweils gültigen Fassung",
+    "Jev did not check this reading, so an absent fact is not known to be absent"
+  ],
+  "requirements_checked": false,
+  "documents": [
+    {
+      "ref": "D1",
+      "url": "https://www.wiesbaden.de/leben-in-wiesbaden/umwelt-natur-klima/natur-landschaft/bluehende-landschaften",
+      "final_url": "https://www.wiesbaden.de/leben-wohnen/umwelt-natur-klima/natur-landschaft/bluehende-landschaften",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 5068,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:e66b236b5e4ffd4d38b70e2128b074e1e3188920a3006bb072a482f525643c35"
+    },
+    {
+      "ref": "D2",
+      "url": "https://www.wiesbaden.de/medien/downloads/leben-wohnen/umwelt-naturschutz/18-V-36-0005-Anlage-zur-SV_Foerderprogramm_Bluehende-Landschaften.pdf",
+      "final_url": "https://www.wiesbaden.de/medien/downloads/leben-wohnen/umwelt-naturschutz/18-V-36-0005-Anlage-zur-SV_Foerderprogramm_Bluehende-Landschaften.pdf",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": true,
+      "chars": 16265,
+      "pages": 8,
+      "low_text": false,
+      "hash": "sha256:6b37dbfdcafda59c1ec81cc97af4409c89f16396c87ada9243afad8b51db38a2"
+    },
+    {
+      "ref": "D3",
+      "url": "https://www.wiesbaden.de/medien/downloads/leben-wohnen/umwelt-naturschutz/Antragsformular-Stand-20190726.pdf",
+      "final_url": "https://www.wiesbaden.de/medien/downloads/leben-wohnen/umwelt-naturschutz/Antragsformular-Stand-20190726.pdf",
+      "from": "https://www.wiesbaden.de/leben-in-wiesbaden/umwelt-natur-klima/natur-landschaft/bluehende-landschaften",
+      "anchor": "Zuschuss-AntragPDF-Datei349,21 kB",
+      "depth": 1,
+      "pdf": true,
+      "chars": 6472,
+      "pages": 4,
+      "low_text": false,
+      "hash": "sha256:75ce733381cd69eb9ffdb5e8f905f8cc187a63a27e014e82215487aef52643d4"
+    },
+    {
+      "ref": "D4",
+      "url": "https://www.wiesbaden.de/medien/downloads/leben-wohnen/umwelt-naturschutz/UAW_Faltblatt_Foerderprogramm_Artenschutz_180928_RZ.pdf",
+      "final_url": "https://www.wiesbaden.de/medien/downloads/leben-wohnen/umwelt-naturschutz/UAW_Faltblatt_Foerderprogramm_Artenschutz_180928_RZ.pdf",
+      "from": "https://www.wiesbaden.de/leben-in-wiesbaden/umwelt-natur-klima/natur-landschaft/bluehende-landschaften",
+      "anchor": "Flyer Blühende Landschaften - Förderinformationen KompaktPDF-Datei5,96 MB",
+      "depth": 1,
+      "pdf": true,
+      "chars": 3008,
+      "pages": 2,
+      "low_text": false,
+      "hash": "sha256:f8b32acd6e80ac0243c3784e8237c62701d2dbfe1070370ae5249fea89db807e"
+    }
+  ],
+  "failures": [],
+  "skipped_links": 45,
+  "chunks": [{ "id": "all", "docs": ["D1", "D2", "D3", "D4"], "chars": 31601 }],
+  "outcomes": {
+    "eligibility": "stated",
+    "documents": "stated",
+    "effort": "stated",
+    "co_finance": "stated",
+    "consortium": "not_found",
+    "after_award": "stated"
+  },
+  "written": ["eligibility", "documents", "effort", "co_finance", "after_award"],
+  "escalated": [],
+  "flags": [],
+  "notes": [
+    "extractor: No round or deadline is stated. The supplied form is marked 20190726 and the guideline is dated March 2018.",
+    "source wiesbaden-bluehende-landschaften-2: selector main dropped, a new quote sits outside it",
+    "source wiesbaden-bluehende-landschaften-3: added for https://www.wiesbaden.de/medien/downloads/leben-wohnen/umwelt-naturschutz/Antragsformular-Stand-20190726.pdf"
+  ],
+  "usd": 0
+}

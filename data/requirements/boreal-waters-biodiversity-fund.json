@@ -1,0 +1,99 @@
+{
+  "id": "boreal-waters-biodiversity-fund",
+  "read_on": "2026-11-20",
+  "prompt_version": "req-2026-11-20.1",
+  "models": ["cursor:gpt-5.6-luna-high", "cursor:gpt-5.6-sol-high"],
+  "complete": false,
+  "reasons": [
+    "14 links could not be ranked without Jev",
+    "13 links could not be ranked without Jev",
+    "Jev did not check this reading, so an absent fact is not known to be absent"
+  ],
+  "requirements_checked": false,
+  "documents": [
+    {
+      "ref": "D1",
+      "url": "https://www.borealwaters.org/stories/2026-biodiversity-fund",
+      "final_url": "https://www.borealwaters.org/stories/2026-biodiversity-fund",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 10608,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:8891dcbf9cb5e04b010cdabe2dc01b99f023726a09b67524852cd960e886ce05"
+    },
+    {
+      "ref": "D2",
+      "url": "https://www.borealwaters.org/grants-scholarships/apply-for-a-scholarship",
+      "final_url": "https://www.borealwaters.org/grants-scholarships/apply-for-a-scholarship",
+      "from": "https://www.borealwaters.org/stories/2026-biodiversity-fund",
+      "anchor": "Apply For a Scholarship",
+      "depth": 1,
+      "pdf": false,
+      "chars": 7053,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:e5476d9edf7f8c7b288798bc64adc749dcee5d5d3d8db9616157e72961ee7f47"
+    },
+    {
+      "ref": "D3",
+      "url": "https://www.borealwaters.org/privacy-policy",
+      "final_url": "https://www.borealwaters.org/privacy-policy",
+      "from": "https://www.borealwaters.org/stories/2026-biodiversity-fund",
+      "anchor": "Privacy Policy",
+      "depth": 1,
+      "pdf": false,
+      "chars": 3158,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:bc759bfea5decfa793a865ecb806a598c6cadbcfc815cd4f820146baae98c260"
+    },
+    {
+      "ref": "D4",
+      "url": "https://www.borealwaters.org/cookie-policy",
+      "final_url": "https://www.borealwaters.org/cookie-policy",
+      "from": "https://www.borealwaters.org/stories/2026-biodiversity-fund",
+      "anchor": "Cookie Policy",
+      "depth": 1,
+      "pdf": false,
+      "chars": 1335,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:5f2e18fc734b9628fb3227f8224d65c9c112c43fecab09ce18b0da22931373b9"
+    },
+    {
+      "ref": "D5",
+      "url": "https://www.borealwaters.org/stories/scholarship-applications-open-december-1st",
+      "final_url": "https://www.borealwaters.org/stories/scholarship-applications-open-december-1st",
+      "from": "https://www.borealwaters.org/grants-scholarships/apply-for-a-scholarship",
+      "anchor": "Scholarship Applications Open December 1: What to Know Before You Apply November 3, 2026 Scholarships open December 1. Whether you're planning for college, trades, or an apprenticeship, here's how to ",
+      "depth": 2,
+      "pdf": false,
+      "chars": 3910,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:cb7cbb273105340355bd721d05ac39b8dba6622cf35df9bf517cd839d39220c3"
+    }
+  ],
+  "failures": [],
+  "skipped_links": 162,
+  "chunks": [{ "id": "all", "docs": ["D1", "D2", "D3", "D4", "D5"], "chars": 26733 }],
+  "outcomes": {
+    "eligibility": "stated",
+    "documents": "not_found",
+    "effort": "stated",
+    "co_finance": "not_found",
+    "consortium": "not_found",
+    "after_award": "not_found"
+  },
+  "written": ["eligibility", "effort"],
+  "escalated": ["eligibility"],
+  "flags": [],
+  "notes": [
+    "extractor: D1 describes a 2026 LOI process followed by applications for invited applicants. A detailed budget is not required at the LOI stage. Multi-year grants are approved one year at a time and subject to annual review and approval.",
+    "eligibility: kept 1 first-reading item no check faulted that the strong reading left out"
+  ],
+  "usd": 0
+}

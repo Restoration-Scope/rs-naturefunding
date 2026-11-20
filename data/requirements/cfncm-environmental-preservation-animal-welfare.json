@@ -1,0 +1,75 @@
+{
+  "id": "cfncm-environmental-preservation-animal-welfare",
+  "read_on": "2026-11-20",
+  "prompt_version": "req-2026-11-20.1",
+  "models": ["cursor:gpt-5.6-luna-high", "cursor:gpt-5.6-sol-high"],
+  "complete": false,
+  "reasons": [
+    "12 links could not be ranked without Jev",
+    "15 links could not be ranked without Jev",
+    "https://stdidcfncmprod.blob.core.windows.net/cfncm/documents/EPAW-Info-Session.pdf: pages 1, 11 are images: needs OCR",
+    "https://stdidcfncmprod.blob.core.windows.net/cfncm/documents/EPAW-Info-Session.pdf: a document on another site: without Jev it can’t be confirmed as the funder’s, so it is not used",
+    "Jev did not check this reading, so an absent fact is not known to be absent"
+  ],
+  "requirements_checked": false,
+  "documents": [
+    {
+      "ref": "D1",
+      "url": "https://cfncm.org/nonprofits/grant-opportunities/environmental-preservation-animal-welfare",
+      "final_url": "https://cfncm.org/nonprofits/grant-opportunities/environmental-preservation-animal-welfare",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 6008,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:683ac9c45de91b0f03d1b7ab494af6ec360ae823622a0b6dc6a6e1ac7399d733"
+    },
+    {
+      "ref": "D2",
+      "url": "https://cfncm.org/nonprofits/grant-faqs",
+      "final_url": "https://cfncm.org/nonprofits/grant-faqs",
+      "from": "https://cfncm.org/nonprofits/grant-opportunities/environmental-preservation-animal-welfare",
+      "anchor": "Grant FAQs",
+      "depth": 1,
+      "pdf": false,
+      "chars": 10128,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:9c9e9ec23f2121a609833158cd9911da188775a713ba9b88e2e528d9ad5c2bf1"
+    }
+  ],
+  "failures": [
+    {
+      "url": "https://stdidcfncmprod.blob.core.windows.net/cfncm/documents/EPAW-Info-Session.pdf",
+      "from": "https://cfncm.org/nonprofits/grant-opportunities/environmental-preservation-animal-welfare",
+      "kind": "low_text",
+      "message": "pages 1, 11 are images: needs OCR"
+    },
+    {
+      "url": "https://stdidcfncmprod.blob.core.windows.net/cfncm/documents/EPAW-Info-Session.pdf",
+      "from": "https://cfncm.org/nonprofits/grant-opportunities/environmental-preservation-animal-welfare",
+      "kind": "offsite",
+      "message": "a document on another site: without Jev it can’t be confirmed as the funder’s, so it is not used"
+    }
+  ],
+  "skipped_links": 202,
+  "chunks": [{ "id": "all", "docs": ["D1", "D2"], "chars": 16396 }],
+  "outcomes": {
+    "eligibility": "stated",
+    "documents": "stated",
+    "effort": "stated",
+    "co_finance": "not_found",
+    "consortium": "not_found",
+    "after_award": "stated"
+  },
+  "written": ["eligibility", "documents", "effort", "after_award"],
+  "escalated": ["eligibility"],
+  "flags": [],
+  "notes": [
+    "extractor: D1 gives February 23, March 13, and April 17 without a year. D2 says organizations based outside the region may apply when the work is clearly carried out in one or more local towns.",
+    "source cfncm-environmental-preservation-animal-welfare-2: added for https://cfncm.org/nonprofits/grant-faqs"
+  ],
+  "usd": 0
+}

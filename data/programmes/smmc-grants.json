@@ -24,6 +24,44 @@
   "amount": null,
   "co_finance_required": null,
   "reporting": null,
+  "effort": {
+    "steps": [
+      "Pre-application consultation",
+      "Grant application submission",
+      "Initial review",
+      "Legal review",
+      "Policy review"
+    ],
+    "more_after": true
+  },
+  "eligibility": [
+    {
+      "rule": "If a nonprofit, qualifies under Section 501(c)(3)",
+      "kind": "legal"
+    },
+    {
+      "rule": "Adopt contract policies increasing outreach and advertising to disadvantaged businesses and individuals",
+      "kind": "capacity"
+    },
+    {
+      "rule": "No costs outside the grant period or ordinary operating overhead like rent, mortgage, property taxes or utilities",
+      "kind": "project"
+    }
+  ],
+  "after_award": {
+    "reports": "quarterly",
+    "site_visits": true
+  },
+  "documents": [
+    "Detailed scope of work narrative with specific tasks",
+    "Detailed budget",
+    "Project implementation timeline with completion dates for each task",
+    "Detailed description of the need for the grant",
+    "Preliminary project plans, if any",
+    "Payee Data Record (STD 204) and Supplement (STD 205)",
+    "Overhead, vehicle and cell phone policies",
+    "Written justification for advance funds, if requested"
+  ],
   "calls": [
     {
       "id": "rolling",
@@ -37,7 +75,7 @@
         "status": {
           "source_url": "https://smmc.ca.gov/grants/",
           "quote": "Applications are accepted on a rolling basis.",
-          "checked_at": "2026-11-15",
+          "checked_at": "2026-11-20",
           "method": "page"
         }
       }
@@ -47,21 +85,107 @@
     "applicant_types": {
       "source_url": "https://smmc.ca.gov/grants/",
       "quote": "The Santa Monica Mountains Conservancy is pleased to assist non-profit organizations, local public agencies, and tribes by providing grant funding for projects that preserve open space and habitat",
-      "checked_at": "2026-11-15",
+      "checked_at": "2026-11-20",
       "method": "page"
     },
     "access": {
       "source_url": "https://smmc.ca.gov/grants/",
       "quote": "The first step for receiving grant funding is to contact Conservancy staff for a consultation before beginning your application.",
-      "checked_at": "2026-11-15",
+      "checked_at": "2026-11-20",
       "method": "page"
     },
     "window": {
       "source_url": "https://smmc.ca.gov/grants/",
       "quote": "Applications are accepted on a rolling basis.",
-      "checked_at": "2026-11-15",
+      "checked_at": "2026-11-20",
       "method": "page"
-    }
+    },
+    "effort": [
+      {
+        "source_url": "https://smmc.ca.gov/grants/",
+        "quote": "The first step for receiving grant funding is to contact Conservancy staff for a consultation before beginning your application.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://smmc.ca.gov/wp-content/uploads/2026/10/SMMC-Grant-Admin-Manual-2026.10-1.pdf",
+        "quote": "As the initial, formal step in the grant application process, the applicant shall submit a fully executed grant application form",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://smmc.ca.gov/wp-content/uploads/2026/10/SMMC-Grant-Admin-Manual-2026.10-1.pdf",
+        "quote": "The Budgets and Grants Officer or representative from the SMMC grants team performs initial review of grant applications",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://smmc.ca.gov/wp-content/uploads/2026/10/SMMC-Grant-Admin-Manual-2026.10-1.pdf",
+        "quote": "Applications will be reviewed by the Chief Staff Counsel for consistency with the Act and applicable grant requirements.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://smmc.ca.gov/wp-content/uploads/2026/10/SMMC-Grant-Admin-Manual-2026.10-1.pdf",
+        "quote": "The Chief Deputy Director reviews applications for consistency with the Conservancy work program.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "eligibility": [
+      {
+        "source_url": "https://smmc.ca.gov/wp-content/uploads/2026/10/SMMC-Grant-Admin-Manual-2026.10-1.pdf",
+        "quote": "Eligible nonprofit organizations must qualify under Section 501(c)(3) of the Internal Revenue Code.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://smmc.ca.gov/wp-content/uploads/2026/10/SMMC-Grant-Admin-Manual-2026.10-1.pdf",
+        "quote": "Applicant has adopted contract policies for the purpose of increasing outreach and advertising to disadvantaged businesses and individuals.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://smmc.ca.gov/wp-content/uploads/2026/10/SMMC-Grant-Admin-Manual-2026.10-1.pdf",
+        "quote": "Examples of ineligible costs (except in rare circumstances when specifically approved in writing by the Conservancy): outside the grant performance period, indirect overhead business expenses of the grantee's fixed or ordinary operating costs such as rent, mortgage payments, property taxes or utilities",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "after_award": [
+      {
+        "source_url": "https://smmc.ca.gov/wp-content/uploads/2026/10/SMMC-Grant-Admin-Manual-2026.10-1.pdf",
+        "quote": "Project Status Reports shall be required every quarter (Exhibit F).",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://smmc.ca.gov/wp-content/uploads/2026/10/SMMC-Grant-Admin-Manual-2026.10-1.pdf",
+        "quote": "Grantee agrees to permit periodic site visits by the State to determine if development work is in accordance with the approved Project Description including a final inspection upon Project completion.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "documents": [
+      {
+        "source_url": "https://smmc.ca.gov/grants/",
+        "quote": "a detailed scope of work narrative, including a list of specific tasks, a detailed budget; a timeline for project implementation (including a completion date for each task), any preliminary project plans; and a detailed description of the need for the grant",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://smmc.ca.gov/wp-content/uploads/2026/10/SMMC-Grant-Admin-Manual-2026.10-1.pdf",
+        "quote": "As the initial, formal step in the grant application process, the applicant shall submit a fully executed grant application form (see Exhibit A), including explanations of overhead, vehicle and cell phone policies, and a payee data record (STD 204 and 205, Exhibit B).",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://smmc.ca.gov/wp-content/uploads/2026/10/SMMC-Grant-Admin-Manual-2026.10-1.pdf",
+        "quote": "If the applicant requests advance funds, the applicant must provide a written justification for consideration by the Conservancy",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ]
   },
-  "checked_at": "2026-11-15"
+  "checked_at": "2026-11-20"
 }

@@ -1,0 +1,93 @@
+{
+  "id": "blm-threatened-endangered-species",
+  "read_on": "2026-11-20",
+  "prompt_version": "req-2026-11-20.1",
+  "models": ["cursor:gpt-5.6-luna-high", "cursor:gpt-5.6-sol-high"],
+  "complete": false,
+  "reasons": [
+    "1 links could not be ranked without Jev",
+    "https://files.simpler.grants.gov/opportunities/a517c913-b573-41f9-85a1-7cdc134525db/attachments/14a8cf8c-89a4-456c-9dac-f397d23ed9da/O_Attachment_B_Budget_Detail_Narrative_-_02.09.2026.xlsx would not open (unreadable: an old Word (.doc), OpenDocument or RTF file: needs conversion)",
+    "https://www.grants.gov/privacy-policy would not open (network: unable to verify the first certificate)",
+    "the text names a document with rules that was not read: Attachment - Submission Instructions & Tips",
+    "the text names a document with rules that was not read: Grants.gov Quick Start Guide for Applicants",
+    "the text names a document with rules that was not read: Grants.gov Forms Repository form instructions",
+    "the text names a document with rules that was not read: DOI General Terms and Conditions",
+    "Jev did not check this reading, so an absent fact is not known to be absent"
+  ],
+  "requirements_checked": false,
+  "documents": [
+    {
+      "ref": "D1",
+      "url": "https://simpler.grants.gov/opportunity/a517c913-b573-41f9-85a1-7cdc134525db",
+      "final_url": "https://simpler.grants.gov/opportunity/a517c913-b573-41f9-85a1-7cdc134525db",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 7080,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:b0ac8585807439beb723234cc8b9f91cfecf2a13dde81263b11b855a22f23c20"
+    },
+    {
+      "ref": "D2",
+      "url": "https://files.simpler.grants.gov/opportunities/a517c913-b573-41f9-85a1-7cdc134525db/attachments/4b456289-c9fb-42eb-ba33-c1b0a69f5086/Foa_Content_of_L26AS00043_TES.pdf",
+      "final_url": "https://files.simpler.grants.gov/opportunities/a517c913-b573-41f9-85a1-7cdc134525db/attachments/4b456289-c9fb-42eb-ba33-c1b0a69f5086/Foa_Content_of_L26AS00043_TES.pdf",
+      "from": "https://simpler.grants.gov/opportunity/a517c913-b573-41f9-85a1-7cdc134525db",
+      "anchor": "Foa_Content_of_L26AS00043_TES.pdf",
+      "depth": 1,
+      "pdf": true,
+      "chars": 50201,
+      "pages": 21,
+      "low_text": false,
+      "hash": "sha256:a9b0de19b5dc9594d3265f3e8ef1bdc93b25c4a5df7e62d7f2ec262a1bed3754"
+    },
+    {
+      "ref": "D3",
+      "url": "https://files.simpler.grants.gov/opportunities/a517c913-b573-41f9-85a1-7cdc134525db/attachments/315bc3ef-48ba-44c9-bd94-331d6394bb7a/03_M_15.246_Attachment_A_TES.docx",
+      "final_url": "https://files.simpler.grants.gov/opportunities/a517c913-b573-41f9-85a1-7cdc134525db/attachments/315bc3ef-48ba-44c9-bd94-331d6394bb7a/03_M_15.246_Attachment_A_TES.docx",
+      "from": "https://simpler.grants.gov/opportunity/a517c913-b573-41f9-85a1-7cdc134525db",
+      "anchor": "03_M_15.246_Attachment_A_TES.docx",
+      "depth": 1,
+      "pdf": false,
+      "chars": 7303,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:48fe02c50e8322273a5d8380cc7302ce857cf7256cc51db7372d76e133c28714"
+    }
+  ],
+  "failures": [
+    {
+      "url": "https://files.simpler.grants.gov/opportunities/a517c913-b573-41f9-85a1-7cdc134525db/attachments/14a8cf8c-89a4-456c-9dac-f397d23ed9da/O_Attachment_B_Budget_Detail_Narrative_-_02.09.2026.xlsx",
+      "from": "https://simpler.grants.gov/opportunity/a517c913-b573-41f9-85a1-7cdc134525db",
+      "kind": "unreadable",
+      "message": "an old Word (.doc), OpenDocument or RTF file: needs conversion"
+    },
+    {
+      "url": "https://www.grants.gov/privacy-policy",
+      "from": "https://simpler.grants.gov/opportunity/a517c913-b573-41f9-85a1-7cdc134525db",
+      "kind": "network",
+      "message": "unable to verify the first certificate"
+    }
+  ],
+  "skipped_links": 30,
+  "chunks": [{ "id": "all", "docs": ["D1", "D2", "D3"], "chars": 65216 }],
+  "outcomes": {
+    "eligibility": "stated",
+    "documents": "stated",
+    "effort": "stated",
+    "co_finance": "stated",
+    "consortium": "not_found",
+    "after_award": "stated"
+  },
+  "written": ["eligibility", "documents", "effort", "co_finance", "after_award"],
+  "escalated": ["documents"],
+  "flags": [],
+  "notes": [
+    "extractor: The FY26 round closed on September 11, 2026. Reporting frequency is specified in the Notice of Award.",
+    "documents: kept 1 first-reading item no check faulted that the strong reading left out",
+    "source blm-threatened-endangered-species-2: added for https://files.simpler.grants.gov/opportunities/a517c913-b573-41f9-85a1-7cdc134525db/attachments/4b456289-c9fb-42eb-ba33-c1b0a69f5086/Foa_Content_of_L26AS00043_TES.pdf",
+    "source blm-threatened-endangered-species-3: added for https://files.simpler.grants.gov/opportunities/a517c913-b573-41f9-85a1-7cdc134525db/attachments/315bc3ef-48ba-44c9-bd94-331d6394bb7a/03_M_15.246_Attachment_A_TES.docx"
+  ],
+  "usd": 0
+}

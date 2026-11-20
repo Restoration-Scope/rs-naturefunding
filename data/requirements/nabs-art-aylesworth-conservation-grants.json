@@ -1,0 +1,73 @@
+{
+  "id": "nabs-art-aylesworth-conservation-grants",
+  "read_on": "2026-11-20",
+  "prompt_version": "req-2026-11-20.1",
+  "models": ["cursor:gpt-5.6-luna-high"],
+  "complete": false,
+  "reasons": [
+    "13 links could not be ranked without Jev",
+    "16 links could not be ranked without Jev",
+    "Jev did not check this reading, so an absent fact is not known to be absent"
+  ],
+  "requirements_checked": false,
+  "documents": [
+    {
+      "ref": "D1",
+      "url": "https://www.nabluebirdsociety.org/grants/",
+      "final_url": "https://www.nabluebirdsociety.org/grants/",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 9626,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:1255de1a93c0b95393363971585b63523e36b35e0c7d4be1a790d45205168ec9"
+    },
+    {
+      "ref": "D2",
+      "url": "https://www.nabluebirdsociety.org/scouting-youth-project-guidelines/",
+      "final_url": "https://www.nabluebirdsociety.org/scouting-youth-project-guidelines/",
+      "from": "https://www.nabluebirdsociety.org/grants/",
+      "anchor": "Scouting/Youth Project Guidelines",
+      "depth": 1,
+      "pdf": false,
+      "chars": 5270,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:d9f428058ff61c54b666e3ec526d5819cf19a635a8f1d49d2d35d6cd23dd8ee2"
+    },
+    {
+      "ref": "D3",
+      "url": "https://www.nabluebirdsociety.org/wp-content/uploads/2026/05/Grants-2026.pdf",
+      "final_url": "https://www.nabluebirdsociety.org/wp-content/uploads/2026/05/Grants-2026.pdf",
+      "from": "https://www.nabluebirdsociety.org/grants/",
+      "anchor": "(Click here to download as a PDF document)",
+      "depth": 1,
+      "pdf": true,
+      "chars": 9086,
+      "pages": 4,
+      "low_text": false,
+      "hash": "sha256:2ff5dabe80393080e8a9b0018eb9d241fcb8cd1599fbf166254b3e90f97e284f"
+    }
+  ],
+  "failures": [],
+  "skipped_links": 62,
+  "chunks": [{ "id": "all", "docs": ["D1", "D2", "D3"], "chars": 24324 }],
+  "outcomes": {
+    "eligibility": "not_found",
+    "documents": "stated",
+    "effort": "stated",
+    "co_finance": "not_found",
+    "consortium": "not_found",
+    "after_award": "stated"
+  },
+  "written": ["documents", "effort", "after_award"],
+  "escalated": [],
+  "flags": [],
+  "notes": [
+    "extractor: Conservation grants can be submitted at any time. The matching-funds requirement applies to the separate Susan Lordi-Marker Challenge Grants, not the Art Aylesworth Conservation Grants.",
+    "source nabs-art-aylesworth-conservation-grants-2: added for https://www.nabluebirdsociety.org/wp-content/uploads/2026/05/Grants-2026.pdf"
+  ],
+  "usd": 0
+}

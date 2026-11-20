@@ -35,8 +35,28 @@
     "max": 6000,
     "note": "Or up to 50% of the crowdfunding target"
   },
-  "co_finance_required": null,
+  "co_finance_required": true,
   "reporting": "Deliver the project within nine months of crowdfunding and complete a mandatory impact report on Spacehive.",
+  "effort": {
+    "steps": [
+      "Project page and fund application on Spacehive",
+      "Project verification",
+      "Crowdfunding campaign to reach the target"
+    ]
+  },
+  "eligibility": [
+    {
+      "rule": "Not a private business, social enterprise, unitary authority, faith group, housing association or individual",
+      "kind": "legal"
+    },
+    {
+      "rule": "Run by an organisation based in the West of England MCA or North Somerset Council area",
+      "kind": "project"
+    }
+  ],
+  "after_award": {
+    "reports": "final"
+  },
   "calls": [],
   "evidence": {
     "administered_by": {
@@ -74,7 +94,70 @@
       "quote": "deliver your project within nine months and complete an impact report on Spacehive. This is mandatory",
       "checked_at": "2026-11-14",
       "method": "page"
+    },
+    "effort": [
+      {
+        "source_url": "https://www.westofengland-ca.gov.uk/what-we-do/environment/community-nature-fund/",
+        "quote": "Create a project page",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.westofengland-ca.gov.uk/what-we-do/environment/community-nature-fund/",
+        "quote": "Apply for the Mayor's Community Nature Fund",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.westofengland-ca.gov.uk/what-we-do/environment/community-nature-fund/",
+        "quote": "Get your project verified",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.westofengland-ca.gov.uk/what-we-do/environment/community-nature-fund/",
+        "quote": "Start crowdfunding",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "eligibility": [
+      {
+        "source_url": "https://www.westofengland-ca.gov.uk/what-we-do/environment/community-nature-fund/",
+        "quote": "The following are not eligible to apply for funding: Private, profit-making businesses Social enterprises Unitary authorities Schools Inclusive faith and religious groups Housing associations Projects led by individuals",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.westofengland-ca.gov.uk/what-we-do/environment/community-nature-fund/",
+        "quote": "Projects delivered or run by organisations based outside of the West of England Mayoral Combined Authority and North Somerset Council areas",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "after_award": [
+      {
+        "source_url": "https://www.westofengland-ca.gov.uk/what-we-do/environment/community-nature-fund/",
+        "quote": "complete an impact report on Spacehive",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "co_finance_required": {
+      "source_url": "https://www.westofengland-ca.gov.uk/what-we-do/environment/community-nature-fund/",
+      "quote": "Projects must hit their crowdfunding target to receive a Mayor's Community Nature Fund donation.",
+      "checked_at": "2026-11-20",
+      "method": "page"
+    },
+    "co_finance": {
+      "source_url": "https://www.westofengland-ca.gov.uk/what-we-do/environment/community-nature-fund/",
+      "quote": "selected projects may receive up to 50% or £6,000 towards their fundraising target from the Mayor's Community Nature Fund.",
+      "checked_at": "2026-11-20",
+      "method": "page"
     }
   },
-  "checked_at": "2026-11-14"
+  "checked_at": "2026-11-14",
+  "co_finance": {
+    "min_share": 50
+  }
 }

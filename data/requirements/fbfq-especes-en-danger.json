@@ -1,0 +1,46 @@
+{
+  "id": "fbfq-especes-en-danger",
+  "read_on": "2026-11-20",
+  "prompt_version": "req-2026-11-20.1",
+  "models": ["cursor:gpt-5.6-luna-high"],
+  "complete": false,
+  "reasons": [
+    "21 links could not be ranked without Jev",
+    "the text names a document with rules that was not read: Document d'information",
+    "Jev did not check this reading, so an absent fact is not known to be absent"
+  ],
+  "requirements_checked": false,
+  "documents": [
+    {
+      "ref": "D1",
+      "url": "https://www.fbfq.ca/programme/especes-en-danger/",
+      "final_url": "https://www.fbfq.ca/programme/especes-en-danger/",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 6560,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:29c1c86020acdfdbd3a0b4333c3a888d3d5ee535bfa2cd1be05689935114ff6f"
+    }
+  ],
+  "failures": [],
+  "skipped_links": 54,
+  "chunks": [{ "id": "all", "docs": ["D1"], "chars": 6621 }],
+  "outcomes": {
+    "eligibility": "stated",
+    "documents": "stated",
+    "effort": "stated",
+    "co_finance": "not_found",
+    "consortium": "not_found",
+    "after_award": "stated"
+  },
+  "written": ["eligibility", "documents", "effort", "after_award"],
+  "escalated": [],
+  "flags": [],
+  "notes": [
+    "extractor: The page is an overview and says the information document contains essential eligibility, eligible-expense and programme-requirement details. The December 1 deadline is listed without a year, so no due date is recorded."
+  ],
+  "usd": 0
+}

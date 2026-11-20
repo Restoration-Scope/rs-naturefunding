@@ -1,19 +1,50 @@
 {
   "id": "turtle-conservation-fund-grants",
   "name": "Turtle Conservation Fund grants",
-  "funder": { "name": "Turtle Conservation Fund", "url": "https://turtleconservationfund.org/" },
+  "funder": {
+    "name": "Turtle Conservation Fund",
+    "url": "https://turtleconservationfund.org/"
+  },
   "administered_by": null,
   "parent": null,
   "url": "https://turtleconservationfund.org/grants/",
   "summary": "Small grants twice a year for conservation and research projects on highly threatened tortoises and freshwater turtles; marine turtles are not funded.",
-  "approaches": ["species_conservation", "research"],
-  "applicant_types": ["ngo", "individual"],
+  "approaches": [
+    "species_conservation",
+    "research"
+  ],
+  "applicant_types": [
+    "ngo",
+    "individual"
+  ],
   "geography": null,
   "access": "direct",
   "window": "fixed",
-  "amount": { "currency": "USD", "min": 1000, "max": 5000, "typical": true },
+  "amount": {
+    "currency": "USD",
+    "min": 1000,
+    "max": 5000,
+    "typical": true
+  },
   "co_finance_required": null,
   "reporting": null,
+  "effort": {
+    "steps": [
+      "Electronic proposal submission",
+      "Internal review"
+    ]
+  },
+  "eligibility": [
+    {
+      "rule": "Project does not concern marine turtles",
+      "kind": "project"
+    }
+  ],
+  "documents": [
+    "Photo of the primary study species",
+    "Good-resolution project site map",
+    "CVs for the principal investigators or co-PIs"
+  ],
   "calls": [
     {
       "id": "cycles",
@@ -27,13 +58,13 @@
         "status": {
           "source_url": "https://turtleconservationfund.org/grants/",
           "quote": "Grant Application Deadlines: June 1 and December 1.",
-          "checked_at": "2026-11-09",
+          "checked_at": "2026-11-20",
           "method": "page"
         },
         "recurring": {
           "source_url": "https://turtleconservationfund.org/grants/",
           "quote": "Grant Application Deadlines: June 1 and December 1.",
-          "checked_at": "2026-11-09",
+          "checked_at": "2026-11-20",
           "method": "page"
         }
       }
@@ -43,27 +74,63 @@
     "access": {
       "source_url": "https://turtleconservationfund.org/grant-application-guidelines/",
       "quote": "Submit applications electronically using our TCF Proposal Template",
-      "checked_at": "2026-11-09",
+      "checked_at": "2026-11-20",
       "method": "page"
     },
     "window": {
       "source_url": "https://turtleconservationfund.org/grants/",
       "quote": "There are two funding cycles annually.",
-      "checked_at": "2026-11-09",
+      "checked_at": "2026-11-20",
       "method": "page"
     },
     "amount": {
       "source_url": "https://turtleconservationfund.org/grants/",
       "quote": "TCF Awards are approximately in the $1000 to $5000 range per project",
-      "checked_at": "2026-11-09",
+      "checked_at": "2026-11-20",
       "method": "page"
     },
     "applicant_types": {
       "source_url": "https://turtleconservationfund.org/grants/",
       "quote": "Awards are granted to organizations or individuals for specific conservation or research projects",
-      "checked_at": "2026-11-09",
+      "checked_at": "2026-11-20",
       "method": "page"
-    }
+    },
+    "effort": [
+      {
+        "source_url": "https://turtleconservationfund.org/grant-application-guidelines/",
+        "quote": "Submit applications electronically using our TCF Proposal Template",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://turtleconservationfund.org/grant-application-guidelines/",
+        "quote": "All TCF Awards are granted through an internal review process carried out by the TCF Review Board.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "eligibility": [
+      {
+        "source_url": "https://turtleconservationfund.org/grants/",
+        "quote": "We do not support work on marine turtles.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "documents": [
+      {
+        "source_url": "https://turtleconservationfund.org/wp-content/uploads/TCF_Proposal_Template_v.7.2026.docx",
+        "quote": "The inclusion of a photo of the study species and a map depicting the study site is required.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://turtleconservationfund.org/wp-content/uploads/TCF_Proposal_Template_v.7.2026.docx",
+        "quote": "C.V.'s for the Principal Investigator(s) or Co-P.I.s",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ]
   },
-  "checked_at": "2026-11-09"
+  "checked_at": "2026-11-20"
 }

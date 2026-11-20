@@ -12,14 +12,82 @@
   "parent": null,
   "url": "https://www.lfvbayern.de/f%C3%B6rderstelle",
   "summary": "Bavarian fishing-levy funding, run by the state fisheries association's funding office, for angling clubs and fishing-rights holders. Covers maintaining and improving natural fish habitat, alongside fish stocking, youth and training work.",
-  "approaches": ["freshwater", "species_conservation"],
-  "applicant_types": ["ngo"],
-  "geography": { "scope": "countries", "countries": ["DE"], "label": "Bavaria" },
+  "approaches": [
+    "freshwater",
+    "species_conservation"
+  ],
+  "applicant_types": [
+    "ngo"
+  ],
+  "geography": {
+    "scope": "countries",
+    "countries": [
+      "DE"
+    ],
+    "label": "Bavaria"
+  },
   "access": "direct",
   "window": "unspecified",
   "amount": null,
   "co_finance_required": true,
   "reporting": null,
+  "effort": {
+    "steps": [
+      "Register on the portal and get the organisation approved",
+      "Submit the online application",
+      "District fisheries association pre-check",
+      "Funding office review"
+    ],
+    "more_after": true
+  },
+  "eligibility": [
+    {
+      "rule": "Be a legally capable person or organisation",
+      "kind": "legal"
+    },
+    {
+      "rule": "Relate the measures to Bavarian fish waters or benefit Bavarian fisheries",
+      "kind": "project"
+    },
+    {
+      "rule": "Habitat measures go beyond legal upkeep duties and are not a third party's duty",
+      "kind": "project"
+    },
+    {
+      "rule": "Be the measure carrier or provide a clear participation agreement",
+      "kind": "project"
+    },
+    {
+      "rule": "Habitat measures rest on an overall concept with target species, agreed with authorities",
+      "kind": "project"
+    },
+    {
+      "rule": "Not be a pond farmer or pond-farmer association",
+      "kind": "legal"
+    },
+    {
+      "rule": "For rights or property acquisition, be LFV, BFV or a local authority",
+      "kind": "project"
+    }
+  ],
+  "co_finance": {
+    "in_kind": true
+  },
+  "after_award": {
+    "reports": "final"
+  },
+  "documents": [
+    "Ecological necessity justification",
+    "Measure description with plan or sketch",
+    "Planned cost breakdown",
+    "Planned financing details",
+    "Fisheries advisory service consent",
+    "Authority approval or positive statement, if required",
+    "Maintenance-obligation declaration",
+    "Written agreement on project carrier and financing, if not solely applicant-funded",
+    "Market research with comparison offers, if required",
+    "Cooperation and financing declaration for cooperation projects"
+  ],
   "calls": [
     {
       "id": "current-funding",
@@ -33,13 +101,13 @@
         "status": {
           "source_url": "https://www.lfvbayern.de/f%C3%B6rderstelle",
           "quote": "Förderanträge, die noch im laufenden Förderjahr bearbeitet werden sollen, müssen spätestens bis 30. September bei der Förderstelle vorliegen.",
-          "checked_at": "2026-11-12",
+          "checked_at": "2026-11-20",
           "method": "page"
         },
         "recurring": {
           "source_url": "https://www.lfvbayern.de/f%C3%B6rderstelle",
           "quote": "Förderanträge, die noch im laufenden Förderjahr bearbeitet werden sollen, müssen spätestens bis 30. September bei der Förderstelle vorliegen.",
-          "checked_at": "2026-11-12",
+          "checked_at": "2026-11-20",
           "method": "page"
         }
       }
@@ -55,27 +123,149 @@
     "geography": {
       "source_url": "https://www.lfvbayern.de/f%C3%B6rderstelle",
       "quote": "Förderrichtlinie zur Fischereiabgabe in Bayern 2025-2027",
-      "checked_at": "2026-11-12",
+      "checked_at": "2026-11-20",
       "method": "page"
     },
     "access": {
       "source_url": "https://www.lfvbayern.de/f%C3%B6rderstelle",
       "quote": "Förderanträge müssen digital über das Förderportal eingereicht werden.",
-      "checked_at": "2026-11-12",
+      "checked_at": "2026-11-20",
       "method": "page"
     },
     "co_finance_required": {
-      "source_url": "https://www.lfvbayern.de/_files/ugd/dedae4_ff966cc07d03418f98ff3c99025843c4.pdf",
-      "quote": "Der Anteil der Eigenmittel des Antragstellers muss, nach Abzug etwaiger weiterer Finanzierungsmittel Dritter, mindestens 10 % betragen, sofern nicht ausdrücklich ein Fördersatz über 90 % vorgesehen ist.",
-      "checked_at": "2026-11-03",
+      "source_url": "https://www.lfvbayern.de/_files/ugd/dedae4_af8ab645143f49d9a6df44027f8803ea.pdf",
+      "quote": "Eine im Finanzierungsplan des Antrags ausgewiesene Beteiligung Dritter an diesen Vorhaben ist förderunschädlich, solange ein Eigenanteil des Antragstellers von mind. 5% erbracht wird.",
+      "checked_at": "2026-11-20",
       "method": "page"
     },
     "administered_by": {
       "source_url": "https://www.lfvbayern.de/f%C3%B6rderstelle",
       "quote": "Die Gewährung und Verwaltung der Fördermittel erfolgt durch die Förderstelle des Landesfischereiverbandes Bayern.",
-      "checked_at": "2026-11-12",
+      "checked_at": "2026-11-20",
       "method": "page"
-    }
+    },
+    "effort": [
+      {
+        "source_url": "https://www.lfvbayern.de/_files/ugd/dedae4_6a9111b3a3b94799b777f0877677dd50.pdf",
+        "quote": "Bevor ein Förderantrag gestellt werden kann, muss die Registrierung im System erfolgreich abgeschlossen sein.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.lfvbayern.de/_files/ugd/dedae4_6a9111b3a3b94799b777f0877677dd50.pdf",
+        "quote": "Ihre Organisation (z. B. Fischereiverein) muss durch den Fischereiverband Ihres Regierungsbezirkes geprüft und freigegeben worden sein.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.lfvbayern.de/f%C3%B6rderstelle",
+        "quote": "Förderanträge müssen digital über das Förderportal eingereicht werden.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.lfvbayern.de/_files/ugd/dedae4_6a9111b3a3b94799b777f0877677dd50.pdf",
+        "quote": "Der Antrag befindet sich zur Vorabprüfung bei Ihrem zuständigen Fischereiverband Ihres Regierungsbezirkes.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.lfvbayern.de/_files/ugd/dedae4_6a9111b3a3b94799b777f0877677dd50.pdf",
+        "quote": "Nach erfolgter Stellungnahme wird der Antrag an die Förderstelle des Landesfischereiverbandes Bayern e.V. weitergeleitet.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "eligibility": [
+      {
+        "source_url": "https://www.lfvbayern.de/_files/ugd/dedae4_af8ab645143f49d9a6df44027f8803ea.pdf",
+        "quote": "Antragsberechtigt sind nur rechtsfähige Personen und Organisationen.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.lfvbayern.de/_files/ugd/dedae4_e0f1879d06ba4edb9e6ec7df5299848a.pdf",
+        "quote": "dass sich die Maßnahmen der Antragsteller auf bayerische Fischgewässer beziehen oder in anderer Weise der bayerischen Fischerei zugutekommen.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.lfvbayern.de/_files/ugd/dedae4_ff966cc07d03418f98ff3c99025843c4.pdf",
+        "quote": "Generelle Voraussetzung zur Förderung der unter Nr. 2.1 genannten Maßnahmen ist, dass sie über die Gewässerunterhaltspflicht oder bestehende gesetzliche Auflagen und rechtliche Verpflichtungen hinausgehen und dass es sich nicht um Pflichten Dritter, insbesondere nichtstaatlicher Einrichtungen, handelt",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.lfvbayern.de/_files/ugd/dedae4_e0f1879d06ba4edb9e6ec7df5299848a.pdf",
+        "quote": "bei denen der Antragsteller Maßnahmenträger ist oder eine eindeutige Vereinbarung über eine Beteiligung an der Maßnahme vorgelegt wird.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.lfvbayern.de/_files/ugd/dedae4_ff966cc07d03418f98ff3c99025843c4.pdf",
+        "quote": "Grundlage aller Fördermaßnahmen zur Verbesserung und zum Erhalt des Lebensraums der Fische ist ein Gesamtkonzept inkl. Zielfischarten, das mit den jeweiligen Fachbehörden, der Fachberatung und dem BFV abgestimmt sein muss und das bestimmte, vom Förderbeirat beschlossene Mindestkriterien erfüllt.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.lfvbayern.de/_files/ugd/dedae4_e0f1879d06ba4edb9e6ec7df5299848a.pdf",
+        "quote": "Teichwirte und deren Zusammenschlüsse können keine Förderung aus Fischereiabgabemitteln erhalten.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.lfvbayern.de/_files/ugd/dedae4_ff966cc07d03418f98ff3c99025843c4.pdf",
+        "quote": "muss der Maßnahmenträger (und damit \"Antragsteller\") der LFV, ein BFV oder eine Gebietskörperschaft sein.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "co_finance": {
+      "source_url": "https://www.lfvbayern.de/_files/ugd/dedae4_e0f1879d06ba4edb9e6ec7df5299848a.pdf",
+      "quote": "Freiwillige Arbeitsleistungen können gem. der in Ziffer I der Anlage zum IMS vom 08.08.2022 (Gz. H2-58133-1) bekannt gegebenen zuschussfähigen Höchstsätze als Eigenleistung angesetzt werden.",
+      "checked_at": "2026-11-20",
+      "method": "page"
+    },
+    "after_award": [
+      {
+        "source_url": "https://www.lfvbayern.de/_files/ugd/dedae4_ff966cc07d03418f98ff3c99025843c4.pdf",
+        "quote": "Für alle Maßnahmen nach Nr. 2.1 ist die Durchführung anhand eines schriftlichen Berichts sowie einer Fotodokumentation, die mit dem Verwendungsnachweis (VN) einzureichen ist, zu belegen.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "documents": [
+      {
+        "source_url": "https://www.lfvbayern.de/_files/ugd/dedae4_8f56f7db76ee457a84c54b40025dd3d1.pdf",
+        "quote": "Begründung, warum die Durchführung der Maßnahme aus ökologischen Gesichtspunkten notwendig ist (Siehe Nr. 2.2 des Anhangs der FiAbgaR.) Angaben liegen vor Angaben liegen nicht vor Bemerkung: Angaben erforderlich! Beschreibung der Maßnahme (inkl. Plan oder Skizze) Angaben liegen vor Angaben liegen nicht vor Bemerkung: Angaben erforderlich! Aufstellung der geplanten Kosten",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.lfvbayern.de/_files/ugd/dedae4_8f56f7db76ee457a84c54b40025dd3d1.pdf",
+        "quote": "Angaben zur geplanten Finanzierung Angaben liegen vor Angaben liegen nicht vor Bemerkung: L 4/LFV - 02b-02.2025 Angaben erforderlich! Zustimmung der zuständigen Fachberatung für Fischerei",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.lfvbayern.de/_files/ugd/dedae4_8f56f7db76ee457a84c54b40025dd3d1.pdf",
+        "quote": "Genehmigungsbescheid oder positive Stellungnahme der zuständigen Kreisverwaltungsbehörde und ggf. weiteren Fachbehörden (z. B. WWA) Angaben liegen vor Angaben liegen nicht vor Bemerkung: Angaben erforderlich! Angaben liegen vor Erklärung zur Unterhaltsverpflichtung",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.lfvbayern.de/_files/ugd/dedae4_8f56f7db76ee457a84c54b40025dd3d1.pdf",
+        "quote": "Schriftliche Vereinbarung zur Trägerschaft und Finanzierung der Maßnahme, soweit die Maßnahme nicht durch den Antragsteller allein getragen und finanziert wird",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.lfvbayern.de/f%C3%B6rderstelle",
+        "quote": "ggf. Markterkundung mit Vergleichsangeboten Antragsteller ist der Antragsberechtigte; bei Fischereivereinen der Vereinsvorsitzende als gesetzlicher Vertreter. Bei Kooperationsprojekten ist eine Erklärung zur Zusammenarbeit und Finanzierung einzureichen.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ]
   },
   "checked_at": "2026-11-03"
 }

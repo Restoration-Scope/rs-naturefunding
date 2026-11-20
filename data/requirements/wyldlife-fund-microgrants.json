@@ -1,0 +1,59 @@
+{
+  "id": "wyldlife-fund-microgrants",
+  "read_on": "2026-11-20",
+  "prompt_version": "req-2026-11-20.1",
+  "models": ["cursor:gpt-5.6-luna-high"],
+  "complete": false,
+  "reasons": [
+    "7 links could not be ranked without Jev",
+    "10 links could not be ranked without Jev",
+    "Jev did not check this reading, so an absent fact is not known to be absent"
+  ],
+  "requirements_checked": false,
+  "documents": [
+    {
+      "ref": "D1",
+      "url": "https://www.thewyldlifefund.org/microgrants",
+      "final_url": "https://thewyldlifefund.org/programs/microgrants/",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 5376,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:b2045b77665342f68c6b849b919edd746a73719092fe012bb14ef05199648550"
+    },
+    {
+      "ref": "D2",
+      "url": "https://thewyldlifefund.org/privacy-policy/",
+      "final_url": "https://thewyldlifefund.org/privacy-policy/",
+      "from": "https://www.thewyldlifefund.org/microgrants",
+      "anchor": "PRIVACY POLICY",
+      "depth": 1,
+      "pdf": false,
+      "chars": 6773,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:1e505a03f3066aa9ebb5139b301b34bf086194dd9f1e2d7ff4a9c3d2afcc688d"
+    }
+  ],
+  "failures": [],
+  "skipped_links": 93,
+  "chunks": [{ "id": "all", "docs": ["D1", "D2"], "chars": 12319 }],
+  "outcomes": {
+    "eligibility": "stated",
+    "documents": "not_found",
+    "effort": "stated",
+    "co_finance": "not_found",
+    "consortium": "not_found",
+    "after_award": "not_found"
+  },
+  "written": ["eligibility", "effort"],
+  "escalated": [],
+  "flags": [],
+  "notes": [
+    "extractor: First-time applicants must contact the funder before submission. Emergency or immediate needs receive priority. The submission window is stated as December 1 of the current year, without a specific year."
+  ],
+  "usd": 0
+}

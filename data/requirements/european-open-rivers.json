@@ -1,0 +1,57 @@
+{
+  "id": "european-open-rivers",
+  "read_on": "2026-11-20",
+  "prompt_version": "req-2026-11-20.1",
+  "models": ["cursor:gpt-5.6-luna-high"],
+  "complete": false,
+  "reasons": [
+    "https://openrivers.eu/grants/apply-for-a-grant/ would not open (network: ECONNRESET: The socket connection was closed unexpectedly. For more information, pass `verbose: true` in the second argument to fetch())",
+    "https://openrivers.eu/about/ would not open (network: ECONNRESET: The socket connection was closed unexpectedly. For more information, pass `verbose: true` in the second argument to fetch())",
+    "https://openrivers.eu/grants/frequently-asked-questions/ would not open (network: ECONNRESET: The socket connection was closed unexpectedly. For more information, pass `verbose: true` in the second argument to fetch())",
+    "https://openrivers.eu/grants/grant-types/ would not open (network: ECONNRESET: The socket connection was closed unexpectedly. For more information, pass `verbose: true` in the second argument to fetch())",
+    "no page opened"
+  ],
+  "requirements_checked": false,
+  "documents": [],
+  "failures": [
+    {
+      "url": "https://openrivers.eu/grants/apply-for-a-grant/",
+      "from": null,
+      "kind": "network",
+      "message": "ECONNRESET: The socket connection was closed unexpectedly. For more information, pass `verbose: true` in the second argument to fetch()"
+    },
+    {
+      "url": "https://openrivers.eu/about/",
+      "from": null,
+      "kind": "network",
+      "message": "ECONNRESET: The socket connection was closed unexpectedly. For more information, pass `verbose: true` in the second argument to fetch()"
+    },
+    {
+      "url": "https://openrivers.eu/grants/frequently-asked-questions/",
+      "from": null,
+      "kind": "network",
+      "message": "ECONNRESET: The socket connection was closed unexpectedly. For more information, pass `verbose: true` in the second argument to fetch()"
+    },
+    {
+      "url": "https://openrivers.eu/grants/grant-types/",
+      "from": null,
+      "kind": "network",
+      "message": "ECONNRESET: The socket connection was closed unexpectedly. For more information, pass `verbose: true` in the second argument to fetch()"
+    }
+  ],
+  "skipped_links": 0,
+  "chunks": [{ "id": "all", "docs": [], "chars": 0 }],
+  "outcomes": {
+    "eligibility": "unresolved",
+    "documents": "unresolved",
+    "effort": "unresolved",
+    "co_finance": "unresolved",
+    "consortium": "unresolved",
+    "after_award": "unresolved"
+  },
+  "written": [],
+  "escalated": [],
+  "flags": [],
+  "notes": ["nothing to read"],
+  "usd": 0
+}

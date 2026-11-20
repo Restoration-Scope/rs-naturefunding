@@ -1,40 +1,44 @@
 {
   "id": "maki-foundation-grants",
   "name": "Maki Foundation environmental grants",
-  "funder": {
-    "name": "Maki Foundation",
-    "url": "https://makifoundation.org/"
-  },
+  "funder": { "name": "Maki Foundation", "url": "https://makifoundation.org/" },
   "administered_by": null,
   "parent": null,
   "url": "https://makifoundation.org/guidelines.html",
   "summary": "Small annual grants for groups protecting wildlands, rivers and wetlands, biodiversity and public lands in six Rocky Mountain and Southwest US states. Buildings, tree planting and cleanups are excluded.",
-  "approaches": [
-    "protected_areas",
-    "freshwater",
-    "wetlands",
-    "species_conservation"
-  ],
-  "applicant_types": [
-    "ngo"
-  ],
+  "approaches": ["protected_areas", "freshwater", "wetlands", "species_conservation"],
+  "applicant_types": ["ngo"],
   "geography": {
     "scope": "countries",
-    "countries": [
-      "US"
-    ],
+    "countries": ["US"],
     "label": "New Mexico, Colorado, Utah, Idaho, Wyoming and Montana"
   },
   "access": "direct",
   "window": "fixed",
-  "amount": {
-    "currency": "USD",
-    "min": 1000,
-    "max": 5000,
-    "typical": true
-  },
+  "amount": { "currency": "USD", "min": 1000, "max": 5000, "typical": true },
   "co_finance_required": null,
   "reporting": null,
+  "effort": {
+    "steps": ["Letter of inquiry (first-time applicants)", "Full application"],
+    "due": [null, "2026-04-30"]
+  },
+  "eligibility": [
+    {
+      "rule": "No acquisition or construction of recreation facilities, buildings, parks, reservoirs, or similar projects",
+      "kind": "project"
+    },
+    {
+      "rule": "No wildlife rehabilitation, zoos, recycling, tree planting, toxic cleanup, films, or fellowships",
+      "kind": "project"
+    }
+  ],
+  "documents": [
+    "Narrative proposal",
+    "Organization and project budgets",
+    "Current financial statement",
+    "Board and key staff list with staff backgrounds",
+    "Federal tax exemption ruling"
+  ],
   "calls": [
     {
       "id": "2026",
@@ -42,21 +46,18 @@
       "url": "https://makifoundation.org/guidelines.html",
       "status": "closed",
       "opens": null,
-      "deadline": {
-        "date": "2026-04-30",
-        "text": "April 30th, 2026"
-      },
+      "deadline": { "date": "2026-04-30", "text": "April 30th, 2026" },
       "evidence": {
         "status": {
           "source_url": "https://makifoundation.org/guidelines.html",
           "quote": "To be considered in the current year, proposals must be received by April 30th, 2026.",
-          "checked_at": "2026-11-16",
+          "checked_at": "2026-11-20",
           "method": "page"
         },
         "deadline": {
           "source_url": "https://makifoundation.org/guidelines.html",
           "quote": "To be considered in the current year, proposals must be received by April 30th, 2026.",
-          "checked_at": "2026-11-16",
+          "checked_at": "2026-11-20",
           "method": "page"
         }
       }
@@ -66,33 +67,81 @@
     "geography": {
       "source_url": "https://makifoundation.org/guidelines.html",
       "quote": "The Maki Foundation's geographic area of interest includes New Mexico, Colorado, Utah, Idaho, Wyoming, and Montana.",
-      "checked_at": "2026-11-16",
+      "checked_at": "2026-11-20",
       "method": "page"
     },
     "access": {
       "source_url": "https://makifoundation.org/guidelines.html",
       "quote": "If you have never received a grant from the Maki Foundation, please send a brief letter of inquiry",
-      "checked_at": "2026-11-16",
+      "checked_at": "2026-11-20",
       "method": "page"
     },
     "window": {
       "source_url": "https://makifoundation.org/guidelines.html",
       "quote": "The Board of Directors meets once a year in mid-summer.",
-      "checked_at": "2026-11-16",
+      "checked_at": "2026-11-20",
       "method": "page"
     },
     "amount": {
       "source_url": "https://makifoundation.org/guidelines.html",
       "quote": "Most awards range from $1,000 to $5,000.",
-      "checked_at": "2026-11-16",
+      "checked_at": "2026-11-20",
       "method": "page"
     },
     "applicant_types": {
       "source_url": "https://makifoundation.org/guidelines.html",
       "quote": "Federal tax exemption ruling",
-      "checked_at": "2026-11-16",
+      "checked_at": "2026-11-20",
       "method": "page"
-    }
+    },
+    "effort": [
+      {
+        "source_url": "https://makifoundation.org/guidelines.html",
+        "quote": "If you have never received a grant from the Maki Foundation, please send a brief letter of inquiry to makifoundation@gmail.com or the mailing address, and we will be in touch:",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://makifoundation.org/guidelines.html",
+        "quote": "To be considered in the current year, proposals must be received by April 30th, 2026.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "eligibility": [
+      {
+        "source_url": "https://makifoundation.org/guidelines.html",
+        "quote": "The Foundation does not consider requests for the acquisition or construction of community recreation facilities, buildings, municipal parks, reservoirs, and similar projects.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://makifoundation.org/guidelines.html",
+        "quote": "Limited resources preclude consideration of funding for wildlife rehabilitation centers, zoos, recycling programs, tree planting projects, toxic waste cleanup, film productions, and fellowships.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "documents": [
+      {
+        "source_url": "https://makifoundation.org/guidelines.html",
+        "quote": "Narrative proposal (4 pages or less, 1 inch margin); see below for narrative content Budget of organization, and project budget, including sources and amount of support committed vs. requested Current financial statement (no tax returns or 990s)",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://makifoundation.org/guidelines.html",
+        "quote": "List of current board of directors and key staff members, with brief background information for staff only",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://makifoundation.org/guidelines.html",
+        "quote": "Federal tax exemption ruling",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ]
   },
-  "checked_at": "2026-11-16"
+  "checked_at": "2026-11-20"
 }

@@ -32,8 +32,43 @@
     "max": 24999,
     "note": "Control projects by municipalities, water boards and nature/land managers: 100% of costs, up to EUR 24,999. Volunteer groups: up to EUR 1,000."
   },
-  "co_finance_required": null,
+  "co_finance_required": false,
   "reporting": null,
+  "eligibility": [
+    {
+      "rule": "Targets invasive exotics on the EU list or the provincial action plan",
+      "kind": "project"
+    },
+    {
+      "rule": "Does not use chemical pesticides to control exotics",
+      "kind": "project"
+    },
+    {
+      "rule": "Control projects include baseline measurement, monitoring and aftercare",
+      "kind": "project"
+    },
+    {
+      "rule": "Volunteer initiatives use proper protective equipment and clear working arrangements",
+      "kind": "capacity"
+    },
+    {
+      "rule": "Eradication projects demonstrably contribute to protecting or restoring biodiversity in Groningen",
+      "kind": "project"
+    },
+    {
+      "rule": "Volunteer groups have prior written permission from the landowner or manager",
+      "kind": "project"
+    }
+  ],
+  "documents": [
+    "Project budget",
+    "Project plan",
+    "Project area map",
+    "Chamber of Commerce extract, if applicable",
+    "Statutes, if applicable",
+    "Recent baseline survey of invasive exotics, for control projects",
+    "Target species, area and planned measures, for volunteer groups"
+  ],
   "calls": [
     {
       "id": "deadline-2026-10-30",
@@ -49,13 +84,13 @@
         "status": {
           "source_url": "https://www.provinciegroningen.nl/subsidies/natuur-en-landschap/invasieve-exoten/",
           "quote": "Aanvragen voor 2026 moeten vóór 31 oktober 2026 bij de provincie binnen zijn.",
-          "checked_at": "2026-11-16",
+          "checked_at": "2026-11-20",
           "method": "page"
         },
         "deadline": {
           "source_url": "https://www.provinciegroningen.nl/subsidies/natuur-en-landschap/invasieve-exoten/",
           "quote": "Aanvragen voor 2026 moeten vóór 31 oktober 2026 bij de provincie binnen zijn.",
-          "checked_at": "2026-11-16",
+          "checked_at": "2026-11-20",
           "method": "page"
         }
       }
@@ -65,33 +100,128 @@
     "applicant_types": {
       "source_url": "https://lokaleregelgeving.overheid.nl/CVDR763350",
       "quote": "kan alleen worden verstrekt aan gemeenten, waterschappen en natuur- en terrein beherende organisaties",
-      "checked_at": "2026-11-16",
+      "checked_at": "2026-11-20",
       "method": "page"
     },
     "geography": {
       "source_url": "https://lokaleregelgeving.overheid.nl/CVDR763350",
       "quote": "een project om een of meer invasieve exoten op een of meer locaties in de provincie Groningen, te bestrijden",
-      "checked_at": "2026-11-16",
+      "checked_at": "2026-11-20",
       "method": "page"
     },
     "access": {
       "source_url": "https://lokaleregelgeving.overheid.nl/CVDR763350",
       "quote": "Een aanvraag wordt ingediend met behulp van een door Gedeputeerde Staten vastgesteld aanvraagformulier",
-      "checked_at": "2026-11-16",
+      "checked_at": "2026-11-20",
       "method": "page"
     },
     "window": {
       "source_url": "https://lokaleregelgeving.overheid.nl/CVDR763350",
       "quote": "een periode waarbinnen een aanvraag om subsidie moet zijn ontvangen",
-      "checked_at": "2026-11-16",
+      "checked_at": "2026-11-20",
       "method": "page"
     },
     "amount": {
       "source_url": "https://lokaleregelgeving.overheid.nl/CVDR763350",
       "quote": "De subsidie bedraagt 100% van de subsidiabele kosten met een maximum van € 24.999,-.",
-      "checked_at": "2026-11-16",
+      "checked_at": "2026-11-20",
       "method": "page"
-    }
+    },
+    "co_finance_required": {
+      "source_url": "https://lokaleregelgeving.overheid.nl/CVDR763350",
+      "quote": "De subsidie bedraagt 100% van de subsidiabele kosten met een maximum van € 24.999,-.",
+      "checked_at": "2026-11-20",
+      "method": "page"
+    },
+    "eligibility": [
+      {
+        "source_url": "https://www.provinciegroningen.nl/subsidies/natuur-en-landschap/invasieve-exoten/",
+        "quote": "De activiteiten richten zich op de invasieve exoten die zijn opgenomen op de EU Unielijst of in het Plan van Aanpak Exoten in Toom, hoofdstuk 6.2 A, B en/of C.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.provinciegroningen.nl/subsidies/natuur-en-landschap/invasieve-exoten/",
+        "quote": "Het gebruik van chemische bestrijdingsmiddelen voor het bestrijden van exoten is niet toegestaan.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.provinciegroningen.nl/subsidies/natuur-en-landschap/invasieve-exoten/",
+        "quote": "Bij gebiedsplannen en bestrijdingsprojecten is een nulmeting, monitoring en nazorg verplicht.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.provinciegroningen.nl/subsidies/natuur-en-landschap/invasieve-exoten/",
+        "quote": "Bij vrijwilligersinitiatieven wordt gewerkt met de juiste beschermingsmiddelen en duidelijke werkafspraken.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.provinciegroningen.nl/subsidies/natuur-en-landschap/invasieve-exoten/",
+        "quote": "Het gaat om projecten die aantoonbaar bijdragen aan het beschermen of herstellen van de biodiversiteit in Groningen.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://lokaleregelgeving.overheid.nl/CVDR763350",
+        "quote": "de activiteit plaats zal vinden op gronden, wateren of terreinen zonder dat hier voorafgaand schriftelijk toestemming voor is verleend door de eigenaar of beheerder",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "documents": [
+      {
+        "source_url": "https://www.provinciegroningen.nl/subsidies/natuur-en-landschap/invasieve-exoten/",
+        "quote": "Projectbegroting Projectplan Kaart van het projectgebied Uittreksel KvK (als dat van toepassing is) Statuten (als dat van toepassing is)",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://lokaleregelgeving.overheid.nl/CVDR763350",
+        "quote": "een recente nulmeting van de invasieve exoten die aanwezig zijn in het gebied waar de bestrijdingsmaatregelen zich op richten",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://lokaleregelgeving.overheid.nl/CVDR763350",
+        "quote": "Informatie over welke invasieve exoten bestreden gaan worden, op welk gebied de vrijwilligersgroep zich richt en wat de beoogde maatregelen zijn",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "effort": [
+      {
+        "source_url": "https://lokaleregelgeving.overheid.nl/CVDR763350",
+        "quote": "Een aanvraag wordt ingediend met behulp van een door Gedeputeerde Staten vastgesteld aanvraagformulier en gaat vergezeld van de daarin genoemde verplichte bijlagen.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.provinciegroningen.nl/subsidies/natuur-en-landschap/invasieve-exoten/",
+        "quote": "Bestrijdingsprojecten: via een tenderprocedure, waarbij aanvragen worden vergeleken op kwaliteit.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "after_award": [
+      {
+        "source_url": "https://lokaleregelgeving.overheid.nl/CVDR763350",
+        "quote": "ter afsluiting van het project een resultaatmeting uit te voeren van de invasieve exoten die nog aanwezig zijn in het gebied waar de bestrijdingsmaatregelen zich op gericht hebben en deze te overleggen aan Gedeputeerde Staten.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ]
   },
-  "checked_at": "2026-11-16"
+  "checked_at": "2026-11-20",
+  "effort": {
+    "steps": [
+      "Application form with required attachments",
+      "Quality tender review (control projects)"
+    ]
+  },
+  "after_award": {
+    "reports": "final"
+  }
 }

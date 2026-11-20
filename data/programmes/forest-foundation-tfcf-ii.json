@@ -1,19 +1,68 @@
 {
   "id": "forest-foundation-tfcf-ii",
   "name": "Tropical Forest Conservation Fund II (Forest Landscape and Focused Grants)",
-  "funder": { "name": "Forest Foundation Philippines", "url": "https://www.forestfoundation.ph/" },
+  "funder": {
+    "name": "Forest Foundation Philippines",
+    "url": "https://www.forestfoundation.ph/"
+  },
   "administered_by": null,
   "parent": null,
   "url": "https://www.forestfoundation.ph/grant-programs/",
   "summary": "Grants for forest protection and sustainable management projects in the Sierra Madre, Palawan, Samar-Leyte and Mindanao landscapes, open to registered organisations, social enterprises and professionals. No request for proposals is open at present.",
-  "approaches": ["community_conservation", "protected_areas", "sustainable_land_use"],
-  "applicant_types": ["ngo", "social_enterprise", "individual"],
-  "geography": { "scope": "countries", "countries": ["PH"] },
+  "approaches": [
+    "community_conservation",
+    "protected_areas",
+    "sustainable_land_use"
+  ],
+  "applicant_types": [
+    "ngo",
+    "social_enterprise",
+    "individual"
+  ],
+  "geography": {
+    "scope": "countries",
+    "countries": [
+      "PH"
+    ]
+  },
   "access": "direct",
   "window": "fixed",
   "amount": null,
   "co_finance_required": false,
   "reporting": null,
+  "effort": {
+    "steps": [
+      "Register, complete and submit proposal",
+      "Proposal evaluation",
+      "Proposal revisions"
+    ]
+  },
+  "eligibility": [
+    {
+      "rule": "Is duly registered",
+      "kind": "legal"
+    },
+    {
+      "rule": "Is not a corporation",
+      "kind": "legal"
+    },
+    {
+      "rule": "Not a private or family-owned land/farm owner",
+      "kind": "legal"
+    },
+    {
+      "rule": "Is not a government agency",
+      "kind": "legal"
+    }
+  ],
+  "documents": [
+    "Community endorsements, if applicable",
+    "Maps and/or project boundary points, if applicable",
+    "Photos, if applicable",
+    "Sample works and pegs for advocacy materials, if applicable",
+    "CV and/or credentials, if applicable",
+    "Endorsement for individual proponents"
+  ],
   "calls": [
     {
       "id": "tfcf-ii-rfp",
@@ -26,7 +75,7 @@
         "status": {
           "source_url": "https://www.forestfoundation.ph/requests-for-proposals/",
           "quote": "Tropical Forest Conservation Fund-II (TFCF-II) There are no open Requests for Proposals (RFPs) at this time.",
-          "checked_at": "2026-11-09",
+          "checked_at": "2026-11-20",
           "method": "page"
         }
       },
@@ -37,33 +86,99 @@
     "applicant_types": {
       "source_url": "https://www.forestfoundation.ph/grant-programs/",
       "quote": "Duly-registered individuals, organizations, and firms, such as professionals, non government organizations, social enterprises, and consultancy groups, among others, working on projects related to forest protection and conservation in the Philippines.",
-      "checked_at": "2026-11-09",
+      "checked_at": "2026-11-20",
       "method": "page"
     },
     "geography": {
       "source_url": "https://www.forestfoundation.ph/grant-programs/",
       "quote": "Duly-registered individuals, organizations, and firms, such as professionals, non government organizations, social enterprises, and consultancy groups, among others, working on projects related to forest protection and conservation in the Philippines.",
-      "checked_at": "2026-11-09",
+      "checked_at": "2026-11-20",
       "method": "page"
     },
     "access": {
       "source_url": "https://www.forestfoundation.ph/grant-programs/",
       "quote": "You may submit your proposal at https://grants.forestfoundation.ph.",
-      "checked_at": "2026-11-09",
+      "checked_at": "2026-11-20",
       "method": "page"
     },
     "window": {
       "source_url": "https://www.forestfoundation.ph/grant-programs/",
       "quote": "The RFP includes: scope of the grants program, eligible activities, grant categories, and proposal submission timeline.",
-      "checked_at": "2026-11-09",
+      "checked_at": "2026-11-20",
       "method": "page"
     },
     "co_finance_required": {
       "source_url": "https://www.forestfoundation.ph/grant-programs/",
       "quote": "Seek possible co-financing (encouraged, but not required)",
-      "checked_at": "2026-11-09",
+      "checked_at": "2026-11-20",
       "method": "page"
-    }
+    },
+    "effort": [
+      {
+        "source_url": "https://www.forestfoundation.ph/apply-for-a-grant/",
+        "quote": "Step 1 Register as a proponent in our Grant Portal and log in. Step 2 Fill out the proposal form in the grant portal, ensuring that you upload the relevant attachments. Once completed, submit the form for evaluation.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.forestfoundation.ph/grant-programs/",
+        "quote": "Proposals are evaluated based on the following criteria:",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.forestfoundation.ph/grant-programs/",
+        "quote": "please anticipate multiple rounds of revisions during the proposal process.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "eligibility": [
+      {
+        "source_url": "https://www.forestfoundation.ph/grant-programs/",
+        "quote": "Duly-registered individuals, organizations, and firms",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.forestfoundation.ph/grant-programs/",
+        "quote": "Corporations are not eligible to apply for the grant program",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.forestfoundation.ph/grant-programs/",
+        "quote": "Can private individual and family-owned land/farm owners apply for a grant? No.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.forestfoundation.ph/grant-programs/",
+        "quote": "Can government agencies apply for a grant? No.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "documents": [
+      {
+        "source_url": "https://www.forestfoundation.ph/grant-programs/",
+        "quote": "Community endorsements Maps and/or project boundary points Photos Sample works and pegs for advocacy materials",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.forestfoundation.ph/grant-programs/",
+        "quote": "CV and/or credentials",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.forestfoundation.ph/grant-programs/",
+        "quote": "Endorsement for individual proponents",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ]
   },
-  "checked_at": "2026-11-09"
+  "checked_at": "2026-11-20"
 }

@@ -1,0 +1,154 @@
+{
+  "id": "wcb-inland-wetlands-conservation",
+  "read_on": "2026-11-20",
+  "prompt_version": "req-2026-11-20.1",
+  "models": ["cursor:gpt-5.6-luna-high"],
+  "complete": false,
+  "reasons": [
+    "17 links could not be ranked without Jev",
+    "10 links could not be ranked without Jev",
+    "https://nrm.dfg.ca.gov/FileHandler.ashx?DocumentID=199421: page 1 is an image: needs OCR",
+    "the text names a document with rules that was not read: CDFW's State Wildlife Action Plan (SWAP)",
+    "the text names a document with rules that was not read: Areas of Conservation Emphasis (ACE 3.0)",
+    "the text names a document with rules that was not read: WCB's Minimum Standards for Monitoring Protocols",
+    "the text names a document with rules that was not read: WCB's Proposition 68 Guidelines",
+    "the text names a document with rules that was not read: Grant Agreement templates",
+    "Jev did not check this reading, so an absent fact is not known to be absent"
+  ],
+  "requirements_checked": false,
+  "documents": [
+    {
+      "ref": "D1",
+      "url": "https://wcb.ca.gov/Programs/Wetlands",
+      "final_url": "https://wcb.ca.gov/Programs/Wetlands",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 2229,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:a4e139e4203c57ed49e7590cc2ff44d841f1734d2c01911d8ee3b20654ce18e3"
+    },
+    {
+      "ref": "D2",
+      "url": "https://wcb.ca.gov/Grants",
+      "final_url": "https://wcb.ca.gov/Grants",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 2183,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:ded98e2f28a724270924645277b38352fe82d888307f88a0c481b721117bed95"
+    },
+    {
+      "ref": "D3",
+      "url": "https://nrm.dfg.ca.gov/FileHandler.ashx?DocumentID=199421",
+      "final_url": "https://nrm.dfg.ca.gov/FileHandler.ashx?DocumentID=199421",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": true,
+      "chars": 56454,
+      "pages": 22,
+      "low_text": false,
+      "hash": "sha256:7816bd871c9e32c72c2bef4d2b7edebc2d5e44da37122c3545e8787dbc0ce7e2"
+    },
+    {
+      "ref": "D4",
+      "url": "https://wcb.ca.gov/About/FAQ",
+      "final_url": "https://wcb.ca.gov/About/FAQ",
+      "from": "https://wcb.ca.gov/Programs/Wetlands",
+      "anchor": "FAQ",
+      "depth": 1,
+      "pdf": false,
+      "chars": 4975,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:b537ebb99d9e798bedd2508bd62432de51ea90939485876bb0c955f56683e4aa"
+    },
+    {
+      "ref": "D5",
+      "url": "https://wcb.ca.gov/Use",
+      "final_url": "https://wcb.ca.gov/Use",
+      "from": "https://wcb.ca.gov/Programs/Wetlands",
+      "anchor": "Conditions of Use",
+      "depth": 1,
+      "pdf": false,
+      "chars": 13744,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:746241a05f1837096752b27e5a1465dc0b06c638af91f4ab494b01dee8025a6c"
+    },
+    {
+      "ref": "D6",
+      "url": "https://wcb.ca.gov/Privacy",
+      "final_url": "https://wcb.ca.gov/Privacy",
+      "from": "https://wcb.ca.gov/Programs/Wetlands",
+      "anchor": "Privacy Policy",
+      "depth": 1,
+      "pdf": false,
+      "chars": 7138,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:4db6dbf151569a6482cb2c54877717e8e3e0514ea97c732367fefff7e0fa7ad4"
+    },
+    {
+      "ref": "D7",
+      "url": "https://nrm.dfg.ca.gov/FileHandler.ashx?DocumentID=242475&inline",
+      "final_url": "https://nrm.dfg.ca.gov/FileHandler.ashx?DocumentID=242475&inline",
+      "from": "https://wcb.ca.gov/Grants",
+      "anchor": "WCB Project Portal Applicant Guide (PDF)",
+      "depth": 1,
+      "pdf": true,
+      "chars": 10169,
+      "pages": 9,
+      "low_text": false,
+      "hash": "sha256:3f582fac37389e7fb5ad419e85af57c54c96f25f122990a09df73a9e31449cb3"
+    },
+    {
+      "ref": "D8",
+      "url": "https://nrm.dfg.ca.gov/FileHandler.ashx?DocumentID=243867&inline",
+      "final_url": "https://nrm.dfg.ca.gov/FileHandler.ashx?DocumentID=243867&inline",
+      "from": "https://wcb.ca.gov/Grants",
+      "anchor": "FAQs",
+      "depth": 1,
+      "pdf": true,
+      "chars": 1694,
+      "pages": 1,
+      "low_text": false,
+      "hash": "sha256:34b25b0510e29bd648cebd31767b8a4c2bc02d7ee1db92ba69ff904c0caaec1f"
+    }
+  ],
+  "failures": [
+    {
+      "url": "https://nrm.dfg.ca.gov/FileHandler.ashx?DocumentID=199421",
+      "from": null,
+      "kind": "low_text",
+      "message": "page 1 is an image: needs OCR"
+    }
+  ],
+  "skipped_links": 76,
+  "chunks": [
+    { "id": "all", "docs": ["D1", "D2", "D3", "D4", "D5", "D6", "D7", "D8"], "chars": 99267 }
+  ],
+  "outcomes": {
+    "eligibility": "stated",
+    "documents": "not_found",
+    "effort": "stated",
+    "co_finance": "stated",
+    "consortium": "not_found",
+    "after_award": "stated"
+  },
+  "written": ["eligibility", "effort", "co_finance", "after_award"],
+  "escalated": [],
+  "flags": [],
+  "notes": [
+    "extractor: Current pre-applications use the WCB Project Portal. Applicants already invited to prepare a full application under the old process continue working with assigned WCB staff and submit by email.",
+    "source wcb-inland-wetlands-conservation-2: selector main dropped, a new quote sits outside it",
+    "source wcb-inland-wetlands-conservation-4: added for https://nrm.dfg.ca.gov/FileHandler.ashx?DocumentID=242475&inline"
+  ],
+  "usd": 0
+}

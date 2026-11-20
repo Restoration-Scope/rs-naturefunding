@@ -31,8 +31,56 @@
     "max": 500000,
     "note": "Full cost up to 200,000 yen, three quarters of the rest"
   },
-  "co_finance_required": null,
+  "co_finance_required": true,
   "reporting": null,
+  "effort": {
+    "steps": [
+      "Proposal delivered in person, with an interview on its content",
+      "Review and selection by the prefecture"
+    ]
+  },
+  "eligibility": [
+    {
+      "rule": "Has bylaws and an identifiable representative",
+      "kind": "legal"
+    },
+    {
+      "rule": "Is not a profit-making organisation for forest activities",
+      "kind": "legal"
+    },
+    {
+      "rule": "Is not a public body, affiliate, or political or religious organisation",
+      "kind": "legal"
+    },
+    {
+      "rule": "Has received this subsidy fewer than 3 times, unless an exception applies",
+      "kind": "other"
+    },
+    {
+      "rule": "The project is entirely in Toyama Prefecture, in forests other than national forests",
+      "kind": "project"
+    },
+    {
+      "rule": "The project is non-commercial",
+      "kind": "project"
+    },
+    {
+      "rule": "Has consent from land and tree owners and the local association",
+      "kind": "project"
+    },
+    {
+      "rule": "Members of the group carry out the project themselves",
+      "kind": "capacity"
+    }
+  ],
+  "after_award": {
+    "reports": "final"
+  },
+  "documents": [
+    "Project location map (about 1:50,000) and detail map (about 1:5,000)",
+    "Organisation bylaws",
+    "Officers and members roster"
+  ],
   "calls": [
     {
       "id": "fy2026",
@@ -45,7 +93,7 @@
         "status": {
           "source_url": "https://www.pref.toyama.jp/1603/kendodukuri/shinrinkasen/shinrin/moridukuri/jigyou/teian.html",
           "quote": "令和8年度の事業募集は終了しました。 募集期間は令和8年2月12日(木)~3月19日(木)",
-          "checked_at": "2026-11-15",
+          "checked_at": "2026-11-20",
           "method": "page"
         }
       },
@@ -56,33 +104,135 @@
     "applicant_types": {
       "source_url": "https://www.pref.toyama.jp/1603/moridukuriteian.html",
       "quote": "提案した事業を会員自らで実施することのできる団体、グループなどです。",
-      "checked_at": "2026-11-15",
+      "checked_at": "2026-11-20",
       "method": "page"
     },
     "geography": {
       "source_url": "https://www.pref.toyama.jp/1603/moridukuriteian.html",
       "quote": "県内の森林内での活動を主とし、次のいずれかを目的とする事業とします。",
-      "checked_at": "2026-11-15",
+      "checked_at": "2026-11-20",
       "method": "page"
     },
     "access": {
       "source_url": "https://www.pref.toyama.jp/1603/moridukuriteian.html",
       "quote": "県民の皆さんが自ら企画し、実践する森づくり事業を募集します。",
-      "checked_at": "2026-11-15",
+      "checked_at": "2026-11-20",
       "method": "page"
     },
     "window": {
       "source_url": "https://www.pref.toyama.jp/1603/kendodukuri/shinrinkasen/shinrin/moridukuri/jigyou/teian.html",
       "quote": "令和8年度の事業募集は終了しました。",
-      "checked_at": "2026-11-15",
+      "checked_at": "2026-11-20",
       "method": "page"
     },
     "amount": {
       "source_url": "https://www.pref.toyama.jp/1603/moridukuriteian.html",
       "quote": "補助の対象となる経費のうち20万円までは10分の10以内、20万円を越える部分についてはその4分の3以内(上限額50万円)",
-      "checked_at": "2026-11-15",
+      "checked_at": "2026-11-20",
+      "method": "page"
+    },
+    "co_finance_required": {
+      "source_url": "https://www.pref.toyama.jp/1603/moridukuriteian.html",
+      "quote": "20万円を越える部分についてはその4分の3以内(上限額50万円)",
+      "checked_at": "2026-11-20",
+      "method": "page"
+    },
+    "effort": [
+      {
+        "source_url": "https://www.pref.toyama.jp/1603/moridukuriteian.html",
+        "quote": "下記の提出先に直接ご持参ください(お越しの際は事前連絡下さい)。提案内容を聞き取りさせていただきます。",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.pref.toyama.jp/1603/moridukuriteian.html",
+        "quote": "提案いただいた事業は、審査を行い、その結果を基に、県が予算の範囲内で事業の採択を決定します。",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "eligibility": [
+      {
+        "source_url": "https://www.pref.toyama.jp/documents/12380/jissiyouryou.pdf",
+        "quote": "規約等を有し、代表者が明らかな団体",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.pref.toyama.jp/documents/12380/jissiyouryou.pdf",
+        "quote": "営利を目的として森づくりに関する活動を実施する団体等でない団体",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.pref.toyama.jp/documents/12380/jissiyouryou.pdf",
+        "quote": "国、地方自治法(昭和22年法律第67号)に定める地方公共団体及びそれらの外郭団体 (以下「地方公共団体等」という。)、政治活動又は宗教活動を行うことを目的とする 団体等でない団体",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.pref.toyama.jp/1603/moridukuriteian.html",
+        "quote": "補助を受けることができる回数は通算で3回までです。(ただし、会員以外から参加者を募り、「とやま森林浴の森」を活用した森林教室を実施する事業又は、児童や学生を対象に森林内での森づくり体験活動を実施する事業についてはこの限りでありません。)",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.pref.toyama.jp/documents/12380/jissiyouryou.pdf",
+        "quote": "すべて県内で実施する事業であること。なお、整備や利活用の対象とする森林は森林 法(昭和26年法律第249号)第2条に規定する民有林とする。",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.pref.toyama.jp/documents/12380/jissiyouryou.pdf",
+        "quote": "営利を目的としない事業であること。",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.pref.toyama.jp/documents/12380/jissiyouryou.pdf",
+        "quote": "関係する土地や立木の所有者の承諾及び地元自治会等の同意を得ている事業であるこ と。",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.pref.toyama.jp/1603/moridukuriteian.html",
+        "quote": "提案した事業を会員自らで実施することのできる団体、グループなどです。",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "after_award": [
+      {
+        "source_url": "https://www.pref.toyama.jp/documents/12380/jissiyouryou.pdf",
+        "quote": "実施団体は、事業完了後、事業完了日から起算して1箇月を経過した日、または2月末日 のいずれか早い期日までに、次の各号に定める書類を提出しなければならない。",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "documents": [
+      {
+        "source_url": "https://www.pref.toyama.jp/documents/12380/jissiyouryou.pdf",
+        "quote": "提案事業実施箇所位置図(1/50,000程度)、詳細図(1/5,000程度)(任意様式)",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.pref.toyama.jp/documents/12380/jissiyouryou.pdf",
+        "quote": "団体の規約及び役員・会員の名簿(任意様式)",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "co_finance": {
+      "source_url": "https://www.pref.toyama.jp/1603/moridukuriteian.html",
+      "quote": "補助の対象となる経費のうち20万円までは10分の10以内、20万円を越える部分についてはその4分の3以内(上限額50万円)",
+      "checked_at": "2026-11-20",
       "method": "page"
     }
   },
-  "checked_at": "2026-11-15"
+  "checked_at": "2026-11-20",
+  "co_finance": {
+    "min_share": 25,
+    "applies_to": "Eligible costs above JPY 200,000"
+  }
 }

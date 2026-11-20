@@ -15,9 +15,152 @@
   "approaches": ["community_conservation", "sustainable_land_use", "mangroves", "urban_nature"],
   "applicant_types": ["ngo", "company"],
   "geography": {
-    "scope": "regions",
-    "regions": ["africa", "asia", "latin_america_caribbean", "middle_east", "oceania", "europe"],
-    "label": "ODA-eligible countries"
+    "scope": "countries",
+    "countries": [
+      "AF",
+      "AL",
+      "AM",
+      "AO",
+      "AR",
+      "AZ",
+      "BA",
+      "BD",
+      "BF",
+      "BI",
+      "BJ",
+      "BO",
+      "BR",
+      "BT",
+      "BW",
+      "BY",
+      "BZ",
+      "CD",
+      "CF",
+      "CG",
+      "CI",
+      "CM",
+      "CN",
+      "CO",
+      "CR",
+      "CU",
+      "CV",
+      "DJ",
+      "DM",
+      "DO",
+      "DZ",
+      "EC",
+      "EG",
+      "ER",
+      "ET",
+      "FJ",
+      "FM",
+      "GA",
+      "GD",
+      "GE",
+      "GH",
+      "GM",
+      "GN",
+      "GQ",
+      "GT",
+      "GW",
+      "GY",
+      "HN",
+      "HT",
+      "ID",
+      "IN",
+      "IQ",
+      "IR",
+      "JM",
+      "JO",
+      "KE",
+      "KG",
+      "KH",
+      "KI",
+      "KM",
+      "KP",
+      "KZ",
+      "LA",
+      "LB",
+      "LC",
+      "LK",
+      "LR",
+      "LS",
+      "LY",
+      "MA",
+      "MD",
+      "ME",
+      "MG",
+      "MH",
+      "MK",
+      "ML",
+      "MM",
+      "MN",
+      "MR",
+      "MS",
+      "MU",
+      "MV",
+      "MW",
+      "MX",
+      "MY",
+      "MZ",
+      "NA",
+      "NE",
+      "NG",
+      "NI",
+      "NP",
+      "NR",
+      "NU",
+      "PA",
+      "PE",
+      "PG",
+      "PH",
+      "PK",
+      "PS",
+      "PW",
+      "PY",
+      "RS",
+      "RW",
+      "SB",
+      "SD",
+      "SH",
+      "SL",
+      "SN",
+      "SO",
+      "SR",
+      "SS",
+      "ST",
+      "SV",
+      "SY",
+      "SZ",
+      "TD",
+      "TG",
+      "TH",
+      "TJ",
+      "TK",
+      "TL",
+      "TM",
+      "TN",
+      "TO",
+      "TR",
+      "TV",
+      "TZ",
+      "UA",
+      "UG",
+      "UZ",
+      "VC",
+      "VE",
+      "VN",
+      "VU",
+      "WF",
+      "WS",
+      "XK",
+      "YE",
+      "ZA",
+      "ZM",
+      "ZW"
+    ],
+    "label": "ODA-eligible countries",
+    "list": "dac-oda-recipients"
   },
   "access": "direct",
   "window": "fixed",
@@ -34,14 +177,44 @@
     "due": ["2027-01-08", "2027-03-16", null]
   },
   "eligibility": [
-    { "rule": "Not an individual, a one-person organisation or a government body", "kind": "legal" },
+    {
+      "rule": "Not an individual, a one-person organisation or a government body",
+      "kind": "legal"
+    },
     { "rule": "Based and registered in an ODA-eligible country", "kind": "legal" },
-    { "rule": "Operating for at least 3 years by the submission deadline", "kind": "track_record", "min_years": 3 },
-    { "rule": "Average yearly revenue of €60,000 to €500,000 over the last 3 years", "kind": "finances", "revenue": { "currency": "EUR", "min": 60000, "max": 500000, "basis": "revenue", "average_years": 3 } },
-    { "rule": "Dedicated accounting staff and a software-based accounting system", "kind": "capacity" },
-    { "rule": "You run the project yourselves: no consortium, no passing funds to others", "kind": "project" },
-    { "rule": "Your request is no more than your average yearly revenue", "kind": "finances", "request_cap": { "share": 100, "of": "revenue" } },
-    { "rule": "The project is in one country, at local, sub-national or national level", "kind": "project" }
+    {
+      "rule": "Operating for at least 3 years by the submission deadline",
+      "kind": "track_record",
+      "min_years": 3
+    },
+    {
+      "rule": "Average yearly revenue of €60,000 to €500,000 over the last 3 years",
+      "kind": "finances",
+      "revenue": {
+        "currency": "EUR",
+        "min": 60000,
+        "max": 500000,
+        "basis": "revenue",
+        "average_years": 3
+      }
+    },
+    {
+      "rule": "Dedicated accounting staff and a software-based accounting system",
+      "kind": "capacity"
+    },
+    {
+      "rule": "You run the project yourselves: no consortium, no passing funds to others",
+      "kind": "project"
+    },
+    {
+      "rule": "Your request is no more than your average yearly revenue",
+      "kind": "finances",
+      "request_cap": { "share": 100, "of": "revenue" }
+    },
+    {
+      "rule": "The project is in one country, at local, sub-national or national level",
+      "kind": "project"
+    }
   ],
   "after_award": { "training": true },
   "requirements_checked": "2026-11-16",
@@ -88,7 +261,7 @@
     "administered_by": {
       "source_url": "https://iki-small-grants.de/about/programme/",
       "quote": "IKI Small Grants is implemented by Deutsche Gesellschaft für Internationale Zusammenarbeit (GIZ) GmbH.",
-      "checked_at": "2026-11-15",
+      "checked_at": "2026-11-20",
       "method": "page"
     },
     "applicant_types": {
@@ -100,7 +273,7 @@
     "geography": {
       "source_url": "https://iki-small-grants.de/wp-content/uploads/2026/10/Funding-Information-2027-Call-8.pdf",
       "quote": "Projects must be implemented in countries that fulfil the criteria for Official Development Assistance (ODA) with the same exemptions for applying organisations mentioned under 2.1.",
-      "checked_at": "2026-11-15",
+      "checked_at": "2026-11-20",
       "method": "page"
     },
     "access": {
@@ -124,32 +297,32 @@
     "consortium_required": {
       "source_url": "https://iki-small-grants.de/wp-content/uploads/2026/10/Funding-Information-2027-Call-8.pdf",
       "quote": "Consortia are not eligible and forwarding funds to other implementing organisations is not permitted.",
-      "checked_at": "2026-11-16",
+      "checked_at": "2026-11-20",
       "method": "page"
     },
     "effort": [
       {
         "source_url": "https://iki-small-grants.de/wp-content/uploads/2026/10/Funding-Information-2027-Call-8.pdf",
         "quote": "must first pass an eligibility check. In this first stage, applicants are asked to provide information on their organisations and submit the following supporting documents:",
-        "checked_at": "2026-11-16",
+        "checked_at": "2026-11-20",
         "method": "page"
       },
       {
         "source_url": "https://iki-small-grants.de/wp-content/uploads/2026/10/Funding-Information-2027-Call-8.pdf",
         "quote": "Interested organisations must submit this information and these documents via the application platform by January 08, 2027.",
-        "checked_at": "2026-11-16",
+        "checked_at": "2026-11-20",
         "method": "page"
       },
       {
         "source_url": "https://iki-small-grants.de/wp-content/uploads/2026/10/Funding-Information-2027-Call-8.pdf",
         "quote": "Qualified organisations will subsequently be invited to submit their project proposals and budget until March 16, 2027, through the same platform.",
-        "checked_at": "2026-11-16",
+        "checked_at": "2026-11-20",
         "method": "page"
       },
       {
         "source_url": "https://iki-small-grants.de/wp-content/uploads/2026/10/Funding-Information-2027-Call-8.pdf",
         "quote": "Please note that a review phase, including close exchange between the applicant organisation and GIZ, will follow the final selection for funding.",
-        "checked_at": "2026-11-16",
+        "checked_at": "2026-11-20",
         "method": "page"
       }
     ],
@@ -157,49 +330,49 @@
       {
         "source_url": "https://iki-small-grants.de/wp-content/uploads/2026/10/Funding-Information-2027-Call-8.pdf",
         "quote": "Individuals or natural persons, one-person organisations and governmental organisations are not eligible for funding.",
-        "checked_at": "2026-11-16",
+        "checked_at": "2026-11-20",
         "method": "page"
       },
       {
         "source_url": "https://iki-small-grants.de/wp-content/uploads/2026/10/Funding-Information-2027-Call-8.pdf",
         "quote": "Applicants must be based and registered in countries that meet the criteria for Official Development Assistance (ODA)",
-        "checked_at": "2026-11-16",
+        "checked_at": "2026-11-20",
         "method": "page"
       },
       {
         "source_url": "https://iki-small-grants.de/wp-content/uploads/2026/10/Funding-Information-2027-Call-8.pdf",
         "quote": "The applicant organisation must have been operative for at least three years (36 months by the time of the submission deadline).",
-        "checked_at": "2026-11-16",
+        "checked_at": "2026-11-20",
         "method": "page"
       },
       {
         "source_url": "https://iki-small-grants.de/wp-content/uploads/2026/10/Funding-Information-2027-Call-8.pdf",
         "quote": "Over the last three years the applicant organisation must have generated an average annual revenue of at least EUR 60,000 and no more than EUR 500,000.",
-        "checked_at": "2026-11-16",
+        "checked_at": "2026-11-20",
         "method": "page"
       },
       {
         "source_url": "https://iki-small-grants.de/wp-content/uploads/2026/10/Funding-Information-2027-Call-8.pdf",
         "quote": "The applicant organisation must have dedicated accounting staff and have accounting principles that ensure internal as well as external control mechanisms. It must also employ a software-based accounting system that complies with respective national standards.",
-        "checked_at": "2026-11-16",
+        "checked_at": "2026-11-20",
         "method": "page"
       },
       {
         "source_url": "https://iki-small-grants.de/wp-content/uploads/2026/10/Funding-Information-2027-Call-8.pdf",
         "quote": "Consortia are not eligible and forwarding funds to other implementing organisations is not permitted.",
-        "checked_at": "2026-11-16",
+        "checked_at": "2026-11-20",
         "method": "page"
       },
       {
         "source_url": "https://iki-small-grants.de/wp-content/uploads/2026/10/Funding-Information-2027-Call-8.pdf",
         "quote": "Furthermore, the requested funding volume must not exceed the average annual revenue of the implementing organisation over the past three years.",
-        "checked_at": "2026-11-16",
+        "checked_at": "2026-11-20",
         "method": "page"
       },
       {
         "source_url": "https://iki-small-grants.de/wp-content/uploads/2026/10/Funding-Information-2027-Call-8.pdf",
         "quote": "Projects must be implemented on a local, sub-national or national level. No multi-country projects can be funded.",
-        "checked_at": "2026-11-16",
+        "checked_at": "2026-11-20",
         "method": "page"
       }
     ],
@@ -207,7 +380,7 @@
       {
         "source_url": "https://iki-small-grants.de/wp-content/uploads/2026/10/Funding-Information-2027-Call-8.pdf",
         "quote": "Successful implementation in the IKI Small Grants programme includes participation in capacity development curriculum.",
-        "checked_at": "2026-11-16",
+        "checked_at": "2026-11-20",
         "method": "page"
       }
     ],
@@ -215,13 +388,13 @@
       {
         "source_url": "https://iki-small-grants.de/wp-content/uploads/2026/10/Funding-Information-2027-Call-8.pdf",
         "quote": "Registration certificates Financial statements covering the last three available years, including relevant information on the applicant's revenue Note: The most recent financial statements must cover a period ending no earlier than June 2025.",
-        "checked_at": "2026-11-16",
+        "checked_at": "2026-11-20",
         "method": "page"
       },
       {
         "source_url": "https://iki-small-grants.de/wp-content/uploads/2026/10/Funding-Information-2027-Call-8.pdf",
         "quote": "Completed revenue template Accounting & procurement guidelines",
-        "checked_at": "2026-11-16",
+        "checked_at": "2026-11-20",
         "method": "page"
       }
     ]

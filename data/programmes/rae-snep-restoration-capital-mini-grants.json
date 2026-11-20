@@ -40,6 +40,35 @@
   },
   "co_finance_required": true,
   "reporting": "A brief final report with photos is submitted with the single reimbursement request.",
+  "effort": {
+    "steps": [
+      "Application"
+    ],
+    "due": [
+      "2026-09-15"
+    ]
+  },
+  "eligibility": [
+    {
+      "rule": "Use funded items or activities within the SNEP Region",
+      "kind": "project"
+    },
+    {
+      "rule": "Request reimbursement only for one-time expenses, not projects or ongoing programs",
+      "kind": "project"
+    },
+    {
+      "rule": "Be registered with SAM at the time of award",
+      "kind": "legal"
+    },
+    {
+      "rule": "Reimbursement excludes salary, fringe and indirect costs, and drones",
+      "kind": "project"
+    }
+  ],
+  "after_award": {
+    "reports": "final"
+  },
   "calls": [
     {
       "id": "2026-round",
@@ -56,13 +85,13 @@
         "status": {
           "source_url": "https://estuaries.org/2026-snep-mini-grants/2026-snep-minig-rfp-fin/",
           "quote": "Application Deadline: Sept. 15, 2026",
-          "checked_at": "2026-11-17",
+          "checked_at": "2026-11-20",
           "method": "page"
         },
         "deadline": {
           "source_url": "https://estuaries.org/2026-snep-mini-grants/2026-snep-minig-rfp-fin/",
           "quote": "Applications must be received by 4:00 p.m. on Tuesday, Sept. 15, 2026.",
-          "checked_at": "2026-11-17",
+          "checked_at": "2026-11-20",
           "method": "page"
         }
       }
@@ -72,59 +101,101 @@
     "geography": {
       "source_url": "https://estuaries.org/2026-snep-mini-grants/",
       "quote": "SNEP Mini-Grants will fund the purchase of supplies, equipment and other one-time expenses necessary to restore clean water, healthy ecosystems and sustainable communities in Rhode Island and Southeastern Massachusetts.",
-      "checked_at": "2026-11-17",
+      "checked_at": "2026-11-20",
       "method": "page"
     },
     "access": {
       "source_url": "https://estuaries.org/2026-snep-mini-grants/",
       "quote": "Restore America's Estuaries is now accepting applications for the 2026 Southeast New England Program (SNEP) Restoration Capital Mini-Grants.",
-      "checked_at": "2026-11-17",
+      "checked_at": "2026-11-20",
       "method": "page"
     },
     "window": {
       "source_url": "https://estuaries.org/2026-snep-mini-grants/",
       "quote": "Restore America's Estuaries is now accepting applications for the 2026 Southeast New England Program (SNEP) Restoration Capital Mini-Grants.",
-      "checked_at": "2026-11-17",
+      "checked_at": "2026-11-20",
       "method": "page"
     },
     "amount": {
       "source_url": "https://estuaries.org/2026-snep-mini-grants/",
       "quote": "Individual awards will range from $1000 to $10,000.",
-      "checked_at": "2026-11-17",
+      "checked_at": "2026-11-20",
       "method": "page"
     },
     "administered_by": {
       "source_url": "https://estuaries.org/2026-snep-mini-grants/2026-snep-minig-rfp-fin/",
       "quote": "The program is funded by the U.S. Environmental Protection Agency (EPA), through its Southeast New England Program (SNEP), and is administered by Restore America's Estuaries (RAE).",
-      "checked_at": "2026-11-17",
+      "checked_at": "2026-11-20",
       "method": "page"
     },
     "applicant_types": {
       "source_url": "https://estuaries.org/2026-snep-mini-grants/2026-snep-minig-rfp-fin/",
       "quote": "Eligible applicants include state, county and local governments and their subdivisions, tribes, regional planning organizations, non-profit organizations, and academic institutions.",
-      "checked_at": "2026-11-17",
+      "checked_at": "2026-11-20",
       "method": "page"
     },
     "co_finance_required": {
       "source_url": "https://estuaries.org/2026-snep-mini-grants/2026-snep-minig-rfp-fin/",
       "quote": "Non-federal matching funds equivalent to 33% of the award amount is required. Match may be in the form of cash or in-kind",
-      "checked_at": "2026-11-17",
+      "checked_at": "2026-11-20",
       "method": "page"
     },
+    "effort": [
+      {
+        "source_url": "https://estuaries.org/2026-snep-mini-grants/2026-snep-minig-rfp-fin/",
+        "quote": "Applications must be received by 4:00 p.m. on Tuesday, Sept. 15, 2026.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "eligibility": [
+      {
+        "source_url": "https://estuaries.org/2026-snep-mini-grants/2026-snep-minig-rfp-fin/",
+        "quote": "Organizations need not be located within the SNEP Region to be eligible for funding, but grant funds must be used exclusively for the purchase of items that will be used within the region, or to support activities within the region.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://estuaries.org/2026-snep-mini-grants/2026-snep-minig-rfp-fin/",
+        "quote": "Mini-grants may not be used to fund projects or ongoing programs, but will provide reimbursement for one-time expenses.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://estuaries.org/2026-snep-mini-grants/2026-snep-minig-rfp-fin/",
+        "quote": "Award recipients must be registered with the Federal System Award Management Registration (SAM) at the time of the award.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://estuaries.org/2026-snep-mini-grants/2026-snep-minig-rfp-fin/",
+        "quote": "Ineligible costs for reimbursement include salary, fringe and indirect costs; however, these costs may be used toward in-kind non-federal match. Drones are ineligible for purchase under this grant.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
     "co_finance": {
       "source_url": "https://estuaries.org/2026-snep-mini-grants/2026-snep-minig-rfp-fin/",
       "quote": "Non-federal matching funds equivalent to 33% of the award amount is required. Match may be in the form of cash or in-kind",
-      "checked_at": "2026-11-17",
+      "checked_at": "2026-11-20",
       "method": "page"
     },
     "reporting": {
       "source_url": "https://estuaries.org/2026-snep-mini-grants/2026-snep-minig-rfp-fin/",
       "quote": "All reimbursable expenditures must be included in a single request; a brief final report, with photos, will be required with the request for reimbursement.",
-      "checked_at": "2026-11-17",
+      "checked_at": "2026-11-20",
       "method": "page"
-    }
+    },
+    "after_award": [
+      {
+        "source_url": "https://estuaries.org/2026-snep-mini-grants/2026-snep-minig-rfp-fin/",
+        "quote": "All reimbursable expenditures must be included in a single request; a brief final report, with photos, will be required with the request for reimbursement.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ]
   },
-  "checked_at": "2026-11-17",
+  "checked_at": "2026-11-20",
   "co_finance": {
     "min_share": 24.8,
     "in_kind": true

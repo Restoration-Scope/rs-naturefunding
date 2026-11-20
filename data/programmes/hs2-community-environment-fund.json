@@ -1,49 +1,278 @@
 {
   "id": "hs2-community-environment-fund",
   "name": "HS2 Community and Environment Fund",
-  "funder": { "name": "HS2 Ltd", "url": "https://www.hs2.org.uk/" },
-  "administered_by": { "name": "Groundwork UK", "url": "https://www.groundwork.org.uk/" },
+  "funder": {
+    "name": "HS2 Ltd",
+    "url": "https://www.hs2.org.uk/"
+  },
+  "administered_by": {
+    "name": "Groundwork UK",
+    "url": "https://www.groundwork.org.uk/"
+  },
   "parent": null,
   "url": "https://hs2funds.org.uk/home/community-environment-fund/",
   "summary": "Grants for community and environment projects, including nature conservation and biodiversity enhancement, in communities disrupted by HS2 construction between London and the West Midlands.",
-  "approaches": ["community_conservation", "urban_nature"],
-  "applicant_types": ["community_group", "ngo", "social_enterprise"],
+  "approaches": [
+    "community_conservation",
+    "urban_nature"
+  ],
+  "applicant_types": [
+    "community_group",
+    "ngo",
+    "social_enterprise"
+  ],
   "geography": {
     "scope": "countries",
-    "countries": ["GB"],
+    "countries": [
+      "GB"
+    ],
     "label": "Communities along the HS2 London to West Midlands route"
   },
   "access": "direct",
   "window": "unspecified",
   "amount": null,
-  "co_finance_required": null,
+  "co_finance_required": true,
+  "consortium_required": false,
   "reporting": null,
+  "effort": {
+    "steps": [
+      "Online eligibility checker",
+      "Online application (Local) or Stage One application (Strategic)",
+      "Stage Two application, if invited (Strategic only)"
+    ]
+  },
+  "eligibility": [
+    {
+      "rule": "Formally established for public benefit and not for profit",
+      "kind": "legal"
+    },
+    {
+      "rule": "Have a governing document preventing financial benefit to members, Directors or Trustees",
+      "kind": "legal"
+    },
+    {
+      "rule": "Have at least 3 unrelated people on the committee",
+      "kind": "capacity"
+    },
+    {
+      "rule": "Have your own bank account requiring 2 signatories",
+      "kind": "capacity"
+    },
+    {
+      "rule": "Companies limited by guarantee and CICs have operated at least 2 years and submitted first accounts",
+      "kind": "track_record"
+    },
+    {
+      "rule": "Demonstrate HS2's effect on the community and base the project in a defined target area",
+      "kind": "project"
+    },
+    {
+      "rule": "For capital funding over £20,000, own the freehold or have sufficient leasehold interest",
+      "kind": "project"
+    },
+    {
+      "rule": "Social enterprises have a local social mission and completed asset lock",
+      "kind": "legal"
+    }
+  ],
+  "co_finance": {
+    "in_kind": true,
+    "applies_to": "CEF Strategic grants from £100,001 to £250,000",
+    "min_share": 10
+  },
+  "after_award": {
+    "reports": "unspecified"
+  },
+  "documents": [
+    "Governing document",
+    "Full copy of organisation's accounts",
+    "Recent bank statement, if the organisation is less than one year old",
+    "Leasehold or freehold document, if capital funding exceeds £20,000",
+    "Safeguarding policy, if working with children, young people or vulnerable adults",
+    "Evidence of confirmed match contributions",
+    "Proof of identity for the Main Contact, if applicable",
+    "Proof of address for the Main Contact, if applicable",
+    "Freeholder or landowner permission form, for capital projects up to £20,000",
+    "Written confirmation from schools involved, for school projects"
+  ],
   "calls": [],
   "evidence": {
     "administered_by": {
       "source_url": "https://hs2funds.org.uk/home/community-environment-fund/",
       "quote": "Always contact Groundwork UK directly if you have any questions about the Fund",
-      "checked_at": "2026-11-12",
+      "checked_at": "2026-11-20",
       "method": "page"
     },
     "applicant_types": {
       "source_url": "https://hs2funds.org.uk/home/community-environment-fund/",
       "quote": "including resident's associations, constituted community groups, Community Interest Companies (limited by guarantee only), social enterprises, community businesses and registered charities.",
-      "checked_at": "2026-11-12",
+      "checked_at": "2026-11-20",
       "method": "page"
     },
     "geography": {
       "source_url": "https://hs2funds.org.uk/home/community-environment-fund/",
       "quote": "to add benefit to communities along the route that are demonstrably disrupted by the construction of HS2 from London to West Midlands",
-      "checked_at": "2026-11-12",
+      "checked_at": "2026-11-20",
       "method": "page"
     },
     "access": {
       "source_url": "https://hs2funds.org.uk/home/community-environment-fund/",
       "quote": "Take the eligibility quiz This short quiz will check that your project meets the basic requirements to be eligible for funding. If your project meets the criteria you will be then given a link to the application form.",
-      "checked_at": "2026-11-12",
+      "checked_at": "2026-11-20",
       "method": "page"
-    }
+    },
+    "co_finance_required": {
+      "source_url": "https://hs2funds.org.uk/wp-content/uploads/2026/09/CEF-Guidance-FAQs.pdf",
+      "quote": "For CEF (Strategic) grants from £100,001 to £250,000 there is a 10% minimum match contribution for all applications",
+      "checked_at": "2026-11-20",
+      "method": "page"
+    },
+    "consortium_required": {
+      "source_url": "https://hs2funds.org.uk/wp-content/uploads/2026/09/CEF-Guidance-FAQs.pdf",
+      "quote": "Some organisations may decide to work together and adopt a joint approach; however, any application to CEF must be made by an organisation which has a legal entity.",
+      "checked_at": "2026-11-20",
+      "method": "page"
+    },
+    "effort": [
+      {
+        "source_url": "https://hs2funds.org.uk/wp-content/uploads/2026/09/CEF-Guidance-FAQs.pdf",
+        "quote": "For all CEF Local projects, it is a two stage process with applicants completing an online eligibility checker before submitting an application through the online portal.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://hs2funds.org.uk/wp-content/uploads/2026/09/CEF-Guidance-FAQs.pdf",
+        "quote": "The next stage will be to submit a Stage One application form which will be reviewed to ensure the project is of demonstrable impact and meet the Funds criteria.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://hs2funds.org.uk/wp-content/uploads/2026/09/CEF-Guidance-FAQs.pdf",
+        "quote": "For applications that are approved through this stage, the final stage is to submit a Stage Two application through the online portal.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "eligibility": [
+      {
+        "source_url": "https://hs2funds.org.uk/wp-content/uploads/2026/09/CEF-Guidance-FAQs.pdf",
+        "quote": "You are eligible to apply for funding if your organisation is formally established for public benefit and is not for profit.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://hs2funds.org.uk/wp-content/uploads/2026/09/CEF-Guidance-FAQs.pdf",
+        "quote": "a governing document (e.g. constitution or memorandum and articles of association) which includes appropriate statements on members, Directors or Trustees not benefiting financially from the organisation or its dissolution",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://hs2funds.org.uk/wp-content/uploads/2026/09/CEF-Guidance-FAQs.pdf",
+        "quote": "a minimum of 3 unrelated people on the committee",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://hs2funds.org.uk/wp-content/uploads/2026/09/CEF-Guidance-FAQs.pdf",
+        "quote": "have your own bank account (which requires 2 signatories)",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://hs2funds.org.uk/wp-content/uploads/2026/09/CEF-Guidance-FAQs.pdf",
+        "quote": "Companies limited by guarantee and CICs limited by guarantee must have been operating for a minimum of 2 years and submitted at least their first set of accounts to Companies House.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://hs2funds.org.uk/community-environment-fund-eligibility-check/",
+        "quote": "If you cannot demonstrate how the construction of HS2 affects your community or the project is not based in one of the defined target areas, then you are not eligible for funding through this programme.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://hs2funds.org.uk/wp-content/uploads/2026/09/CEF-Guidance-FAQs.pdf",
+        "quote": "To be eligible to apply for capital funding of £20,001 or over, your organisation must either own the freehold interest or have a sufficient leasehold interest in the land involved in your project.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://hs2funds.org.uk/wp-content/uploads/2026/09/CEF-Guidance-FAQs.pdf",
+        "quote": "Your governance document must have a clear local social mission and a fully completed asset lock to ensure assets are used for community benefit.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "co_finance": {
+      "source_url": "https://hs2funds.org.uk/wp-content/uploads/2026/09/CEF-Guidance-FAQs.pdf",
+      "quote": "Potential sources of match contributions (partnership funding) include both cash and non-cash (also known as in-kind match funding).",
+      "checked_at": "2026-11-20",
+      "method": "page"
+    },
+    "after_award": [
+      {
+        "source_url": "https://hs2funds.org.uk/wp-content/uploads/2026/09/CEF-Guidance-FAQs.pdf",
+        "quote": "You will therefore be asked to submit regular progress reports on you project to confirm what has been delivered and achieved through the funding.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "documents": [
+      {
+        "source_url": "https://hs2funds.org.uk/wp-content/uploads/2026/09/CEF-Guidance-FAQs.pdf",
+        "quote": "You should submit the document which formally governs the running of your organisation.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://hs2funds.org.uk/wp-content/uploads/2026/09/CEF-Guidance-FAQs.pdf",
+        "quote": "A full copy of your organisation's accounts will need to be provided with your application - micro company accounts will not be accepted.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://hs2funds.org.uk/wp-content/uploads/2026/09/CEF-Guidance-FAQs.pdf",
+        "quote": "If your organisation is less than a year old, you will also need to provide a copy of a recent bank statement.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://hs2funds.org.uk/wp-content/uploads/2026/09/CEF-Guidance-FAQs.pdf",
+        "quote": "To demonstrate this, you must supply a copy of your leasehold or freehold document with your application.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://hs2funds.org.uk/wp-content/uploads/2026/09/CEF-Guidance-FAQs.pdf",
+        "quote": "If your organisation works with children, young people or vulnerable adults you will need to provide a copy of your organisation's safeguarding policy with your application.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://hs2funds.org.uk/wp-content/uploads/2026/09/CEF-Guidance-FAQs.pdf",
+        "quote": "Evidence of confirmed match contributions will need to be provided with your application.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://hs2funds.org.uk/wp-content/uploads/2026/09/CEF-Guidance-FAQs.pdf",
+        "quote": "Proof of identity - your current signed passport; or a current UK or EEA photocard driving licence. Proof of address - utility bills (gas, electric bills issued within the last 3 months)",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://hs2funds.org.uk/wp-content/uploads/2025/08/Guidance-for-Projects-Involving-Schools.pdf",
+        "quote": "You will find the Funds permission form that will need to be completed by the freeholder/landowner and submitted with your application here",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://hs2funds.org.uk/wp-content/uploads/2025/08/Guidance-for-Projects-Involving-Schools.pdf",
+        "quote": "Along with your application, you will need to submit written confirmation from the schools involved in your project.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ]
   },
-  "checked_at": "2026-11-12"
+  "checked_at": "2026-11-20"
 }

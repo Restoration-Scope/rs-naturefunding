@@ -1,0 +1,113 @@
+{
+  "id": "olta-ssco-species-conservation",
+  "read_on": "2026-11-20",
+  "prompt_version": "req-2026-11-20.1",
+  "models": ["cursor:gpt-5.6-luna-high", "cursor:gpt-5.6-sol-high"],
+  "complete": false,
+  "reasons": [
+    "16 links could not be ranked without Jev",
+    "11 links could not be ranked without Jev",
+    "https://olta.ca/cdn-cgi/l/email-protection would not open (http: HTTP 404)",
+    "the text names a document with rules that was not read: OLTA SSCO Application Form (within the Foundant grant application portal)",
+    "the text names a document with rules that was not read: OLTA SSCO Project Budget Spreadsheets - Securement & Conservation Action",
+    "the text names a document with rules that was not read: OLTA SSCO 2026 - 27 Agreement Sample (draft)",
+    "the text names a document with rules that was not read: Canadian Land Trust Standards and Practices (2019)",
+    "the text names a document with rules that was not read: The Baseline Documentation Report: A guide and template for Land Trusts, Landowners, and Advisors (2022)",
+    "Jev did not check this reading, so an absent fact is not known to be absent"
+  ],
+  "requirements_checked": false,
+  "documents": [
+    {
+      "ref": "D1",
+      "url": "https://olta.ca/grants/",
+      "final_url": "https://olta.ca/what-we-do/grants/",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 9642,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:74b24137e3bc29638d82e7f886f87f41530cd798adf4a411aeb994580f9f78a4"
+    },
+    {
+      "ref": "D2",
+      "url": "https://olta.ca/programs/strengthening-species-conservation-in-ontario/",
+      "final_url": "https://olta.ca/programs/strengthening-species-conservation-in-ontario/",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 2904,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:cf6686acaa63c1fb1774d3d75335a84d7e6e3f0a00491b60af16f908f8da51a5"
+    },
+    {
+      "ref": "D3",
+      "url": "https://olta.ca/programs/protected-areas-reporting/",
+      "final_url": "https://olta.ca/programs/protected-areas-reporting/",
+      "from": "https://olta.ca/grants/",
+      "anchor": "Protected Areas Reporting",
+      "depth": 1,
+      "pdf": false,
+      "chars": 3321,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:eaba694495e2c8bc08ce066db4d1597eeeafdbd294453d5d530294ed1b1983c4"
+    },
+    {
+      "ref": "D4",
+      "url": "https://olta.ca/wp-content/uploads/2026/11/2026-27-OLTA-SSCO-Guidelines-For-Applicants.pdf",
+      "final_url": "https://olta.ca/wp-content/uploads/2026/11/2026-27-OLTA-SSCO-Guidelines-For-Applicants.pdf",
+      "from": "https://olta.ca/grants/",
+      "anchor": "These guidelines",
+      "depth": 1,
+      "pdf": true,
+      "chars": 40998,
+      "pages": 22,
+      "low_text": false,
+      "hash": "sha256:b1ef71e28043d20985def44ada0531cfa2d33558a518cec0ce5fbfc60075c182"
+    },
+    {
+      "ref": "D5",
+      "url": "https://olta.ca/wp-content/uploads/2025/08/SARAFGuidelines_Fall2025_FINAL.pdf",
+      "final_url": "https://olta.ca/wp-content/uploads/2025/08/SARAFGuidelines_Fall2025_FINAL.pdf",
+      "from": "https://olta.ca/grants/",
+      "anchor": "SARAF Guidelines Fall 2025",
+      "depth": 1,
+      "pdf": true,
+      "chars": 20673,
+      "pages": 14,
+      "low_text": false,
+      "hash": "sha256:b1e97c0827b03b7c85eb49e191cb593dde227994a8cf4c552273fc24663a694e"
+    }
+  ],
+  "failures": [
+    {
+      "url": "https://olta.ca/cdn-cgi/l/email-protection",
+      "from": "https://olta.ca/programs/protected-areas-reporting/",
+      "kind": "http",
+      "message": "HTTP 404"
+    }
+  ],
+  "skipped_links": 148,
+  "chunks": [{ "id": "all", "docs": ["D1", "D2", "D3", "D4", "D5"], "chars": 78043 }],
+  "outcomes": {
+    "eligibility": "stated",
+    "documents": "stated",
+    "effort": "stated",
+    "co_finance": "stated",
+    "consortium": "not_found",
+    "after_award": "stated"
+  },
+  "written": ["eligibility", "documents", "effort", "co_finance", "after_award"],
+  "escalated": ["eligibility"],
+  "flags": [],
+  "notes": [
+    "co_finance: share 50% dropped, its quote does not state it",
+    "extractor: D4 is the current 2026/27 guidance. Securement and Conservation Action projects use different application routes and required documents. Several documentation requirements apply at milestones or final payment rather than the first submission. The matching requirement excludes provincial government funds, and matching funds may include cash and in-kind contributions.",
+    "source olta-ssco-species-conservation-3: added for https://olta.ca/wp-content/uploads/2026/11/2026-27-OLTA-SSCO-Guidelines-For-Applicants.pdf"
+  ],
+  "usd": 0
+}

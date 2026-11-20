@@ -1,0 +1,107 @@
+{
+  "id": "ga-murayama-grants",
+  "read_on": "2026-11-20",
+  "prompt_version": "req-2026-11-20.1",
+  "models": ["cursor:gpt-5.6-luna-high"],
+  "complete": false,
+  "reasons": [
+    "4 links could not be ranked without Jev",
+    "https://ga-foundation.or.jp/files/ga-teikan_260817.pdf: page 1 is an image: needs OCR",
+    "the text names a document with rules that was not read: 助成事業規程",
+    "Jev did not check this reading, so an absent fact is not known to be absent"
+  ],
+  "requirements_checked": false,
+  "documents": [
+    {
+      "ref": "D1",
+      "url": "https://ga-foundation.or.jp/entry.html",
+      "final_url": "https://ga-foundation.or.jp/entry.html",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 1958,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:f8181465b607094ca520bc4c1967c5adf513ea6a9add71b2432c7f5f6c055923"
+    },
+    {
+      "ref": "D2",
+      "url": "https://ga-foundation.or.jp/subsidy.html",
+      "final_url": "https://ga-foundation.or.jp/subsidy.html",
+      "from": "https://ga-foundation.or.jp/entry.html",
+      "anchor": "助成事業",
+      "depth": 1,
+      "pdf": false,
+      "chars": 569,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:831a372b26ab9ef43ab5d7fecd44cb30d2354b2c7ffdd5b512cba84c3f0d2676"
+    },
+    {
+      "ref": "D3",
+      "url": "https://ga-foundation.or.jp/files/ga-teikan_260817.pdf",
+      "final_url": "https://ga-foundation.or.jp/files/ga-teikan_260817.pdf",
+      "from": "https://ga-foundation.or.jp/entry.html",
+      "anchor": "定款",
+      "depth": 1,
+      "pdf": true,
+      "chars": 7715,
+      "pages": 15,
+      "low_text": false,
+      "hash": "sha256:838d87142cd8f4404009ef4e06825517dbb4a531fbf909cfa55333589aa3708b"
+    },
+    {
+      "ref": "D4",
+      "url": "https://ga-foundation.or.jp/files/koufu_shinseisho.pdf",
+      "final_url": "https://ga-foundation.or.jp/files/koufu_shinseisho.pdf",
+      "from": "https://ga-foundation.or.jp/entry.html",
+      "anchor": "⬇助成金交付申請書をダウンロード",
+      "depth": 1,
+      "pdf": true,
+      "chars": 465,
+      "pages": 1,
+      "low_text": false,
+      "hash": "sha256:a5d69e3ee54a3712ffa7b2ae8d4256d8b65087d6bda272053f56f59542a388e4"
+    },
+    {
+      "ref": "D5",
+      "url": "https://ga-foundation.or.jp/grantee.html",
+      "final_url": "https://ga-foundation.or.jp/grantee.html",
+      "from": "https://ga-foundation.or.jp/subsidy.html",
+      "anchor": "助成決定団体 →",
+      "depth": 2,
+      "pdf": false,
+      "chars": 333,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:98ebbe30503a34c1cb5791f005b93d532532e1afb043bd77ebdb60183d83fa63"
+    }
+  ],
+  "failures": [
+    {
+      "url": "https://ga-foundation.or.jp/files/ga-teikan_260817.pdf",
+      "from": "https://ga-foundation.or.jp/entry.html",
+      "kind": "low_text",
+      "message": "page 1 is an image: needs OCR"
+    }
+  ],
+  "skipped_links": 12,
+  "chunks": [{ "id": "all", "docs": ["D1", "D2", "D3", "D4", "D5"], "chars": 11557 }],
+  "outcomes": {
+    "eligibility": "not_found",
+    "documents": "stated",
+    "effort": "stated",
+    "co_finance": "not_found",
+    "consortium": "not_found",
+    "after_award": "stated"
+  },
+  "written": ["documents", "effort", "after_award"],
+  "escalated": [],
+  "flags": [],
+  "notes": [
+    "effort \"Application by post\": the quote does not state 2026-11-30 whole; left undated",
+    "extractor: Detailed eligibility, including disqualifying conditions, is in the missing 助成事業規程."
+  ],
+  "usd": 0
+}

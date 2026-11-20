@@ -30,17 +30,47 @@
   "access": "direct",
   "window": "fixed",
   "amount": null,
-  "co_finance_required": null,
+  "co_finance_required": true,
   "reporting": null,
+  "effort": {
+    "steps": [
+      "Application submission"
+    ]
+  },
+  "eligibility": [
+    {
+      "rule": "Land tenants apply with the agreement of the owner",
+      "kind": "legal"
+    },
+    {
+      "rule": "Have no double funding for the measure",
+      "kind": "project"
+    },
+    {
+      "rule": "Measure has not started or finished before applying",
+      "kind": "project"
+    }
+  ],
+  "documents": [
+    "Declaration that there is no legal duty to create or maintain the measure",
+    "Description of the measure, including its timing",
+    "Overview map (1:25,000) and site plan (1:5,000)",
+    "Cadastral details (district, field and parcels) of the site",
+    "Financing plan setting out own and external funds",
+    "At least two cost estimates if work is contracted out or equipment bought or hired",
+    "Proof of long-term maintenance, such as a long-term lease, if applicable",
+    "Required permits or consents from third parties, especially landowners, if applicable",
+    "Statement from the municipal council on the measure"
+  ],
   "calls": [
     {
       "id": "annual-application",
-      "label": "Annual application (by 1 September)",
+      "label": "Annual application (by 31 October)",
       "url": "https://wetteraukreis.de/service/natur-landwirtschaft-wasser/dienstleistungen/zuwendungen-zur-foerderung-von-naturschutzmassnahmen",
       "status": "unknown",
       "opens": null,
       "deadline": null,
-      "recurring": "Applications must arrive by 1 September each year, before the measure starts.",
+      "recurring": "The 2023 funding rules say applications for the current year must arrive by 31 October; the service page still says 1 September.",
       "evidence": {
         "status": {
           "source_url": "https://wetteraukreis.de/service/natur-landwirtschaft-wasser/dienstleistungen/zuwendungen-zur-foerderung-von-naturschutzmassnahmen",
@@ -49,9 +79,9 @@
           "method": "page"
         },
         "recurring": {
-          "source_url": "https://wetteraukreis.de/service/natur-landwirtschaft-wasser/dienstleistungen/zuwendungen-zur-foerderung-von-naturschutzmassnahmen",
-          "quote": "Sie müssen bis spätestens 01. September eines Jahres vorliegen.",
-          "checked_at": "2026-11-15",
+          "source_url": "https://wetteraukreis.de/fileadmin/2_Service/natur_landschaft/2023_Foerderrichtlinie_Naturschutz_aktuell.pdf",
+          "quote": "Anträge für das laufende Jahr müssen spätestens zum 31. Oktober des laufenden Jahres vorliegen.",
+          "checked_at": "2026-11-20",
           "method": "page"
         }
       }
@@ -81,7 +111,82 @@
       "quote": "Sie müssen bis spätestens 01. September eines Jahres vorliegen.",
       "checked_at": "2026-11-15",
       "method": "page"
-    }
+    },
+    "effort": [
+      {
+        "source_url": "https://wetteraukreis.de/service/natur-landwirtschaft-wasser/dienstleistungen/zuwendungen-zur-foerderung-von-naturschutzmassnahmen",
+        "quote": "Anträge sind vor Beginn der Maßnahme beim Kreisausschuss des Wetteraukreises, Fachdienst Naturschutz und Landschaftspflege, Europaplatz, 61169 Friedberg/H. zu stellen.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "eligibility": [
+      {
+        "source_url": "https://wetteraukreis.de/service/natur-landwirtschaft-wasser/dienstleistungen/zuwendungen-zur-foerderung-von-naturschutzmassnahmen",
+        "quote": "Eigentümer/innen und Pächter/innen geeigneter Grundstücke im Einvernehmen mit dem/der Eigentümer/in.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://wetteraukreis.de/service/natur-landwirtschaft-wasser/dienstleistungen/zuwendungen-zur-foerderung-von-naturschutzmassnahmen",
+        "quote": "Eine Doppelförderung ist ausgeschlossen.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://wetteraukreis.de/fileadmin/2_Service/natur_landschaft/2023_Foerderrichtlinie_Naturschutz_aktuell.pdf",
+        "quote": "Anträge von bereits begonnenen oder abgeschlossenen Maßnahmen und Projekten können nicht berücksichtigt werden.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "documents": [
+      {
+        "source_url": "https://wetteraukreis.de/fileadmin/2_Service/natur_landschaft/2023_Foerderrichtlinie_Naturschutz_aktuell.pdf",
+        "quote": "3. eine Erklärung darüber, dass für die beantragte Maßnahme keine rechtliche Verpflichtung zur Neuanlage oder zur Pflege besteht, 4. eine aussagekräftige Beschreibung der Maßnahme/des Projektes einschließlich der zeitlichen Durchführung, 5. ein Übersichtsplan im Maßstab 1:25.000 und ein Lageplan im Maßstab 1:5.000,",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://wetteraukreis.de/fileadmin/2_Service/natur_landschaft/2023_Foerderrichtlinie_Naturschutz_aktuell.pdf",
+        "quote": "6. Angabe von Gemarkung, Flur und Flurstücken, auf dem/denen die Maßnahme/Pflegemaßnahme stattfinden soll/en, 7. ein Finanzierungsplan, der Eigen- und Fremdmittel prüfbar gegenüberstellt, 8. mindestens zwei Kostenvoranschläge bei etwaiger Fremdvergabe von Pflegeeinsätzen oder Wiederherstellung und Neuanlage von Biotopen sowie beim Kauf oder der Ausleihe von Geräten und Maschinen,",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://wetteraukreis.de/fileadmin/2_Service/natur_landschaft/2023_Foerderrichtlinie_Naturschutz_aktuell.pdf",
+        "quote": "9. gegebenenfalls Nachweise über die dauerhaft zu gewährleistende Sicherstellung der Pflege zum Beispiel durch langfristige Pachtverträge oder andere vertragliche Vereinbarungen, 10. gegebenenfalls erforderliche behördliche Genehmigungen, Bewilligungen oder Erlaubnisse von Dritten, insbesondere von Flächeneigentümern, 11. Stellungnahme des Magistrats/Gemeindevorstands zu der Maßnahme.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "co_finance_required": {
+      "source_url": "https://wetteraukreis.de/fileadmin/2_Service/natur_landschaft/2023_Foerderrichtlinie_Naturschutz_aktuell.pdf",
+      "quote": "Erstattet werden können 1. bis zu 70 % der förderfähigen Kosten je nach Art, Umfang und Erfordernis einer Maßnahme/eines Projekts gemäß Punkt II. dieser Richtlinie, 2. bis zu 90 % der förderfähigen Kosten für Wildsaat- und Pflanzgut aus zertifizierter regionaler Herkunft,",
+      "checked_at": "2026-11-20",
+      "method": "page"
+    },
+    "co_finance": {
+      "source_url": "https://wetteraukreis.de/fileadmin/2_Service/natur_landschaft/2023_Foerderrichtlinie_Naturschutz_aktuell.pdf",
+      "quote": "Erstattet werden können 1. bis zu 70 % der förderfähigen Kosten je nach Art, Umfang und Erfordernis einer Maßnahme/eines Projekts gemäß Punkt II. dieser Richtlinie, 2. bis zu 90 % der förderfähigen Kosten für Wildsaat- und Pflanzgut aus zertifizierter regionaler Herkunft,",
+      "checked_at": "2026-11-20",
+      "method": "page"
+    },
+    "after_award": [
+      {
+        "source_url": "https://wetteraukreis.de/fileadmin/2_Service/natur_landschaft/2023_Foerderrichtlinie_Naturschutz_aktuell.pdf",
+        "quote": "Nach Abschluss der Maßnahme/des Projekts ist zeitnah ein Abschlussbericht (möglichst mit Fotos) mit einer Aufstellung der tatsächlich angefallenen Kosten, die anhand von Rechnungen und Zahlungsbelegen nachzuweisen sind, vorzulegen.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ]
   },
-  "checked_at": "2026-11-15"
+  "checked_at": "2026-11-15",
+  "co_finance": {
+    "min_share": 30,
+    "applies_to": "Most measures; certified regional seed and plants funded up to 90%"
+  },
+  "after_award": {
+    "reports": "final"
+  }
 }

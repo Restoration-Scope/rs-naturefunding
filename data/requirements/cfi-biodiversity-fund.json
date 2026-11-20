@@ -1,0 +1,204 @@
+{
+  "id": "cfi-biodiversity-fund",
+  "read_on": "2026-11-20",
+  "prompt_version": "req-2026-11-20.1",
+  "models": ["cursor:gpt-5.6-luna-high"],
+  "complete": false,
+  "reasons": [
+    "8 links could not be ranked without Jev",
+    "11 links could not be ranked without Jev",
+    "https://www.communityfoundation.ie/grants/biodiversity-fund-2026/ would not open (http: HTTP 404)",
+    "https://www.communityfoundation.ie/wp-content/uploads/Individuals-Families-1.pdf: page 1 is an image: needs OCR",
+    "https://www.communityfoundation.ie/wp-content/uploads/Corporate-Giving-with-Community-Foundation-Ireland.pdf: page 1 is an image: needs OCR",
+    "https://www.communityfoundation.ie/wp-content/uploads/CFI-Professional-Advisors-8PA4-web-1.pdf: page 1 is an image: needs OCR",
+    "https://www.communityfoundation.ie/wp-content/uploads/Community-Foundation-Ireland-Legacy-8PA4-web.pdf: page 1 is an image: needs OCR",
+    "https://www.communityfoundation.ie/wp-content/uploads/CFI-Endowment-8PA4-web-1.pdf: page 1 is an image: needs OCR",
+    "the crawl bound left https://www.communityfoundation.ie/grants/collaborating-for-impact-fund-2026/ unread",
+    "the text names a document with rules that was not read: Full details, eligibility criteria and application guidance linked from D1",
+    "Jev did not check this reading, so an absent fact is not known to be absent"
+  ],
+  "requirements_checked": false,
+  "documents": [
+    {
+      "ref": "D1",
+      "url": "https://www.communityfoundation.ie/newsroom/communities-invited-to-protect-nature/",
+      "final_url": "https://www.communityfoundation.ie/newsroom/communities-invited-to-protect-nature/",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 3941,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:f8641f8033db97a458abc9c130bde7598896d9e4a6ebdb4e5a73b6d13765a56a"
+    },
+    {
+      "ref": "D2",
+      "url": "https://www.communityfoundation.ie/strategic-giving-guide/",
+      "final_url": "https://www.communityfoundation.ie/strategic-giving-guide/",
+      "from": "https://www.communityfoundation.ie/newsroom/communities-invited-to-protect-nature/",
+      "anchor": "Strategic Giving",
+      "depth": 1,
+      "pdf": false,
+      "chars": 5686,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:b46b8c38a7a6b0552fb893123a3bf354c2ac217c6ec39e0a842a69adbd4f0e5a"
+    },
+    {
+      "ref": "D3",
+      "url": "https://www.communityfoundation.ie/apply-for-funding/",
+      "final_url": "https://www.communityfoundation.ie/apply-for-funding/",
+      "from": "https://www.communityfoundation.ie/newsroom/communities-invited-to-protect-nature/",
+      "anchor": "Apply for Funding",
+      "depth": 1,
+      "pdf": false,
+      "chars": 3962,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:daa30df6d9e130459de33a956899a7ce7a44deb119721e4efce723d09835b277"
+    },
+    {
+      "ref": "D4",
+      "url": "https://www.communityfoundation.ie/privacy-cookie-policy/",
+      "final_url": "https://www.communityfoundation.ie/privacy-cookie-policy/",
+      "from": "https://www.communityfoundation.ie/newsroom/communities-invited-to-protect-nature/",
+      "anchor": "Privacy & Cookie Policy",
+      "depth": 1,
+      "pdf": false,
+      "chars": 5877,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:611262d41d002896b856c417d3f28067d9a9f040e370547b15c32c6018f638b8"
+    },
+    {
+      "ref": "D5",
+      "url": "https://www.communityfoundation.ie/wp-content/uploads/Individuals-Families-1.pdf",
+      "final_url": "https://www.communityfoundation.ie/wp-content/uploads/Individuals-Families-1.pdf",
+      "from": "https://www.communityfoundation.ie/strategic-giving-guide/",
+      "anchor": "Individuals and Families Guide",
+      "depth": 2,
+      "pdf": true,
+      "chars": 5341,
+      "pages": 6,
+      "low_text": false,
+      "hash": "sha256:ec6b4d1f138acdc3c2ef0887d9c888f1300f30799fe7764e51420526e67c628d"
+    },
+    {
+      "ref": "D6",
+      "url": "https://www.communityfoundation.ie/wp-content/uploads/Corporate-Giving-with-Community-Foundation-Ireland.pdf",
+      "final_url": "https://www.communityfoundation.ie/wp-content/uploads/Corporate-Giving-with-Community-Foundation-Ireland.pdf",
+      "from": "https://www.communityfoundation.ie/strategic-giving-guide/",
+      "anchor": "Companies Guide",
+      "depth": 2,
+      "pdf": true,
+      "chars": 7763,
+      "pages": 8,
+      "low_text": false,
+      "hash": "sha256:6b72f86bfd03cab9a95905ab5ade6137ede8b670c7566c0f612f22e3d6621447"
+    },
+    {
+      "ref": "D7",
+      "url": "https://www.communityfoundation.ie/wp-content/uploads/CFI-Professional-Advisors-8PA4-web-1.pdf",
+      "final_url": "https://www.communityfoundation.ie/wp-content/uploads/CFI-Professional-Advisors-8PA4-web-1.pdf",
+      "from": "https://www.communityfoundation.ie/strategic-giving-guide/",
+      "anchor": "Professional Advisors & Family Offices Guide",
+      "depth": 2,
+      "pdf": true,
+      "chars": 9483,
+      "pages": 8,
+      "low_text": false,
+      "hash": "sha256:2017e0e0d791f97c5b1788993e472a81184b95fe905f9fd9c0043542e8847762"
+    },
+    {
+      "ref": "D8",
+      "url": "https://www.communityfoundation.ie/wp-content/uploads/Community-Foundation-Ireland-Legacy-8PA4-web.pdf",
+      "final_url": "https://www.communityfoundation.ie/wp-content/uploads/Community-Foundation-Ireland-Legacy-8PA4-web.pdf",
+      "from": "https://www.communityfoundation.ie/strategic-giving-guide/",
+      "anchor": "Your Legacy Gift Guide",
+      "depth": 2,
+      "pdf": true,
+      "chars": 9687,
+      "pages": 8,
+      "low_text": false,
+      "hash": "sha256:0f2f2160afa4b7ad8db4bc2ecbfa0ee2bbc49f0941f7df88ffb609cce5a8f6ad"
+    },
+    {
+      "ref": "D9",
+      "url": "https://www.communityfoundation.ie/wp-content/uploads/CFI-Endowment-8PA4-web-1.pdf",
+      "final_url": "https://www.communityfoundation.ie/wp-content/uploads/CFI-Endowment-8PA4-web-1.pdf",
+      "from": "https://www.communityfoundation.ie/strategic-giving-guide/",
+      "anchor": "Endowment Fund Guide",
+      "depth": 2,
+      "pdf": true,
+      "chars": 10205,
+      "pages": 8,
+      "low_text": false,
+      "hash": "sha256:2811ce48571f5c9ea1973dc37ddc9cfeaa95fb685a7c87e35e13c01a9b856c2c"
+    }
+  ],
+  "failures": [
+    {
+      "url": "https://www.communityfoundation.ie/grants/biodiversity-fund-2026/",
+      "from": null,
+      "kind": "http",
+      "message": "HTTP 404"
+    },
+    {
+      "url": "https://www.communityfoundation.ie/wp-content/uploads/Individuals-Families-1.pdf",
+      "from": "https://www.communityfoundation.ie/strategic-giving-guide/",
+      "kind": "low_text",
+      "message": "page 1 is an image: needs OCR"
+    },
+    {
+      "url": "https://www.communityfoundation.ie/wp-content/uploads/Corporate-Giving-with-Community-Foundation-Ireland.pdf",
+      "from": "https://www.communityfoundation.ie/strategic-giving-guide/",
+      "kind": "low_text",
+      "message": "page 1 is an image: needs OCR"
+    },
+    {
+      "url": "https://www.communityfoundation.ie/wp-content/uploads/CFI-Professional-Advisors-8PA4-web-1.pdf",
+      "from": "https://www.communityfoundation.ie/strategic-giving-guide/",
+      "kind": "low_text",
+      "message": "page 1 is an image: needs OCR"
+    },
+    {
+      "url": "https://www.communityfoundation.ie/wp-content/uploads/Community-Foundation-Ireland-Legacy-8PA4-web.pdf",
+      "from": "https://www.communityfoundation.ie/strategic-giving-guide/",
+      "kind": "low_text",
+      "message": "page 1 is an image: needs OCR"
+    },
+    {
+      "url": "https://www.communityfoundation.ie/wp-content/uploads/CFI-Endowment-8PA4-web-1.pdf",
+      "from": "https://www.communityfoundation.ie/strategic-giving-guide/",
+      "kind": "low_text",
+      "message": "page 1 is an image: needs OCR"
+    },
+    {
+      "url": "https://www.communityfoundation.ie/grants/collaborating-for-impact-fund-2026/",
+      "from": "https://www.communityfoundation.ie/apply-for-funding/",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    }
+  ],
+  "skipped_links": 61,
+  "chunks": [
+    { "id": "all", "docs": ["D1", "D2", "D3", "D4", "D5", "D6", "D7", "D8", "D9"], "chars": 63464 }
+  ],
+  "outcomes": {
+    "eligibility": "not_found",
+    "documents": "stated",
+    "effort": "stated",
+    "co_finance": "not_found",
+    "consortium": "not_found",
+    "after_award": "not_found"
+  },
+  "written": ["documents", "effort"],
+  "escalated": [],
+  "flags": [],
+  "notes": [
+    "extractor: D1 describes separate Biodiversity Action Plan Development and Implementation grant strands. The supplied D1 text does not state the 2026-10-02 deadline.",
+    "source cfi-biodiversity-fund-3: added for https://www.communityfoundation.ie/apply-for-funding/"
+  ],
+  "usd": 0
+}

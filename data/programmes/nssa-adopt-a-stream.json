@@ -12,14 +12,49 @@
   "parent": null,
   "url": "http://www.adoptastream.ca/planning-and-funding/project-funding",
   "summary": "Financial and technical support for Nova Scotia community groups restoring fish habitat, such as fish passage, riparian and in-stream work, covering up to half of eligible project costs from the Sportfish Habitat Fund.",
-  "approaches": ["freshwater", "community_conservation"],
-  "applicant_types": ["ngo", "community_group"],
-  "geography": { "scope": "countries", "countries": ["CA"], "label": "Nova Scotia" },
+  "approaches": [
+    "freshwater",
+    "community_conservation"
+  ],
+  "applicant_types": [
+    "ngo",
+    "community_group"
+  ],
+  "geography": {
+    "scope": "countries",
+    "countries": [
+      "CA"
+    ],
+    "label": "Nova Scotia"
+  },
   "access": "direct",
   "window": "fixed",
   "amount": null,
   "co_finance_required": true,
   "reporting": null,
+  "effort": {
+    "steps": [
+      "Application and budget forms"
+    ]
+  },
+  "eligibility": [
+    {
+      "rule": "Is a non-profit organization",
+      "kind": "legal"
+    },
+    {
+      "rule": "Project work is not required by the Fisheries Act or a government order",
+      "kind": "project"
+    }
+  ],
+  "co_finance": {
+    "min_share": 50,
+    "in_kind": true
+  },
+  "documents": [
+    "Project site photos",
+    "Detailed project budget spreadsheet"
+  ],
   "calls": [
     {
       "id": "2025",
@@ -27,18 +62,21 @@
       "url": "http://www.adoptastream.ca/planning-and-funding/application-criteria-and-forms",
       "status": "closed",
       "opens": null,
-      "deadline": { "date": "2025-01-20", "text": "January 20th, 2025" },
+      "deadline": {
+        "date": "2025-01-20",
+        "text": "January 20th, 2025"
+      },
       "evidence": {
         "status": {
           "source_url": "http://www.adoptastream.ca/planning-and-funding/application-criteria-and-forms",
           "quote": "ANNUAL APPLICATION DEADLINE - 2025 extension January 20th To allow for review and timely notice of approval of project funding for the coming field season, the deadline is January 20th, 2025.",
-          "checked_at": "2026-11-12",
+          "checked_at": "2026-11-20",
           "method": "page"
         },
         "deadline": {
           "source_url": "http://www.adoptastream.ca/planning-and-funding/application-criteria-and-forms",
           "quote": "ANNUAL APPLICATION DEADLINE - 2025 extension January 20th To allow for review and timely notice of approval of project funding for the coming field season, the deadline is January 20th, 2025.",
-          "checked_at": "2026-11-12",
+          "checked_at": "2026-11-20",
           "method": "page"
         }
       }
@@ -48,39 +86,81 @@
     "applicant_types": {
       "source_url": "http://www.adoptastream.ca/planning-and-funding/application-criteria-and-forms",
       "quote": "provides financial and technical support to non-profit, community groups in Nova Scotia undertaking projects that improve or restore fish habitat and fish populations",
-      "checked_at": "2026-11-12",
+      "checked_at": "2026-11-20",
       "method": "page"
     },
     "geography": {
       "source_url": "http://www.adoptastream.ca/planning-and-funding/application-criteria-and-forms",
       "quote": "provides financial and technical support to non-profit, community groups in Nova Scotia undertaking projects that improve or restore fish habitat and fish populations",
-      "checked_at": "2026-11-12",
+      "checked_at": "2026-11-20",
       "method": "page"
     },
     "access": {
       "source_url": "http://www.adoptastream.ca/planning-and-funding/application-criteria-and-forms",
       "quote": "Scroll down page for the application and budget forms.",
-      "checked_at": "2026-11-12",
+      "checked_at": "2026-11-20",
       "method": "page"
     },
     "window": {
       "source_url": "http://www.adoptastream.ca/planning-and-funding/application-criteria-and-forms",
       "quote": "ANNUAL APPLICATION DEADLINE - 2025 extension January 20th To allow for review and timely notice of approval of project funding for the coming field season, the deadline is January 20th, 2025.",
-      "checked_at": "2026-11-12",
+      "checked_at": "2026-11-20",
       "method": "page"
     },
     "co_finance_required": {
       "source_url": "http://www.adoptastream.ca/planning-and-funding/application-criteria-and-forms",
       "quote": "NSSA Adopt A Stream Project Funding will contribute up to 50% of eligible project costs.",
-      "checked_at": "2026-11-12",
+      "checked_at": "2026-11-20",
       "method": "page"
     },
     "administered_by": {
       "source_url": "http://www.adoptastream.ca/planning-and-funding/project-funding",
       "quote": "The funding that the NSSA receives from the Nova Scotia Sportfish Habitat Fund is distributed to community groups for habitat restoration projects",
-      "checked_at": "2026-11-12",
+      "checked_at": "2026-11-20",
       "method": "page"
-    }
+    },
+    "effort": [
+      {
+        "source_url": "http://www.adoptastream.ca/planning-and-funding/application-criteria-and-forms",
+        "quote": "Applications must be sent electronically in Word and Excel formats",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "eligibility": [
+      {
+        "source_url": "http://www.adoptastream.ca/planning-and-funding/application-criteria-and-forms",
+        "quote": "non-profit, community groups",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "http://www.adoptastream.ca/planning-and-funding/application-criteria-and-forms",
+        "quote": "Work required of a project proponent, owner, or occupier by the Fisheries Act or under any order or mitigation requirement issued by DFO, Environment Canada, NS Environment or any other government department.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "co_finance": {
+      "source_url": "http://www.adoptastream.ca/planning-and-funding/application-criteria-and-forms",
+      "quote": "Adopt A Stream will contribute financial support to match the value of the community organizations' volunteer time, donated services & materials, and other financial support. NSSA Adopt A Stream Project Funding will contribute up to 50% of eligible project costs.",
+      "checked_at": "2026-11-20",
+      "method": "page"
+    },
+    "documents": [
+      {
+        "source_url": "http://www.adoptastream.ca/sites/default/files/NSSA%20Adopt%20A%20Stream_Project%20Funding%20Application.GROUP%20NAME.docx",
+        "quote": "Attach representative photos of proposed work sites / watercourses",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "http://www.adoptastream.ca/sites/default/files/NSSA%20Adopt%20A%20Stream_Project%20Funding%20Application.GROUP%20NAME.docx",
+        "quote": "Also attach the Detailed Project Budget (Microsoft Excel Spreadsheet template)",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ]
   },
-  "checked_at": "2026-11-12"
+  "checked_at": "2026-11-20"
 }

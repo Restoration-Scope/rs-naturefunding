@@ -23,6 +23,14 @@
   "amount": { "currency": "USD", "max": 150000 },
   "co_finance_required": null,
   "reporting": null,
+  "effort": { "steps": ["Grant portal proposal"] },
+  "eligibility": [
+    { "rule": "Be duly registered under Philippine laws", "kind": "legal" },
+    {
+      "rule": "Be actively working in or directly involved with the project landscape",
+      "kind": "project"
+    }
+  ],
   "calls": [],
   "evidence": {
     "administered_by": {
@@ -54,7 +62,29 @@
       "quote": "Strategic grants may amount to up to US$ 150,000 or pesos equivalent.",
       "checked_at": "2026-11-15",
       "method": "page"
-    }
+    },
+    "effort": [
+      {
+        "source_url": "https://www.forestfoundation.ph/apply-for-a-grant/",
+        "quote": "Fill out the proposal form in the grant portal, ensuring that you upload the relevant attachments. Once completed, submit the form for evaluation.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "eligibility": [
+      {
+        "source_url": "https://www.forestfoundation.ph/wp-content/uploads/2026/06/SGP8-Online-Briefer-June-5-2026.pdf",
+        "quote": "Be reminded that all NGOs and CBOs must be duly registered under the Philippine laws.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.forestfoundation.ph/wp-content/uploads/2026/06/SGP8-Online-Briefer-June-5-2026.pdf",
+        "quote": "They must be actively working in, or directly involved with, the landscape where the proposed project will be implemented to qualify for grant provisions.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ]
   },
   "checked_at": "2026-11-08"
 }

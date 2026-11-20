@@ -119,6 +119,8 @@ export function geographyFull(g: Programme['geography']): string | null {
     const regions = joinAnd(g.regions.map((r) => regionLabels[r]))
     return regions === g.label ? regions : `${g.label} (${regions})`
   }
+  // An official list runs to 100+ names; the page folds them away and says where the list comes from.
+  if (g.list) return `${g.label ?? 'Listed countries'} (${g.countries.length} countries and territories)`
   const list = joinAnd(g.countries.map(countryName))
   return g.label ? `${g.label}: ${list}` : list
 }
@@ -255,7 +257,7 @@ export function effortSignals(
   const apply: Pick<Signal, 'level' | 'why'> = !lvl
     ? signalBlank(p)
     : lvl.level
-      ? { level: lvl.level === 'Light' ? 'light' : lvl.level === 'Medium' ? 'some' : 'heavy', why: `${lvl.level}: ${lvl.why}.` }
+      ? { level: lvl.level === 'Light' ? 'light' : lvl.level === 'Medium' ? 'some' : 'heavy', why: `${lvl.why.replace(/^./, (x) => x.toUpperCase())}.` }
       : { level: 'unchecked', why: `${lvl.why.replace(/^./, (x) => x.toUpperCase())}.` }
 
   const c = p.co_finance

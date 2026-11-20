@@ -1,0 +1,186 @@
+{
+  "id": "fbfq-aqha",
+  "read_on": "2026-11-20",
+  "prompt_version": "req-2026-11-20.1",
+  "models": ["cursor:gpt-5.6-luna-high", "cursor:gpt-5.6-sol-high"],
+  "complete": false,
+  "reasons": [
+    "9 links could not be ranked without Jev",
+    "https://www.fbfq.ca/wp-content/uploads/2026/10/DOC_info_AQHA_2026.pdf: page 1 is an image: needs OCR",
+    "https://www.fbfq.ca/wp-content/uploads/2026/04/do21-11_aqha_attestationfintravaux.doc would not open (unreadable: an old Word (.doc), OpenDocument or RTF file: needs conversion)",
+    "https://www.fbfq.ca/wp-content/uploads/2026/04/gu_rotenone_mffp.pdf: page 101 is an image: needs OCR",
+    "the text names a document with rules that was not read: Document d'information",
+    "the text names a document with rules that was not read: Guide diagnostique pour l'évaluation d'un lac à omble de fontaine avant un aménagement d'habitat",
+    "the text names a document with rules that was not read: Lignes directrices sur les ensemencements de poissons (MRNF, 2008)",
+    "Jev did not check this reading, so an absent fact is not known to be absent",
+    "strong reading: the text names a document with rules that was not read: Formulaire de demande d'aide du programme AQHA",
+    "strong reading: the text names a document with rules that was not read: Guide diagnostique pour l'évaluation d'un lac à omble de fontaine avant un aménagement d'habitat",
+    "strong reading: the text names a document with rules that was not read: Taux de location de machinerie lourde avec opérateur et équipements divers"
+  ],
+  "requirements_checked": false,
+  "documents": [
+    {
+      "ref": "D1",
+      "url": "https://www.fbfq.ca/programme/amelioration-de-la-qualite-des-habitats-aquatiques-aqha/",
+      "final_url": "https://www.fbfq.ca/programme/amelioration-de-la-qualite-des-habitats-aquatiques-aqha/",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 7445,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:9cc7a2b57d97f62121b535fa1128929dd7b311c5fcfcfe9246f4e816addde5b2"
+    },
+    {
+      "ref": "D2",
+      "url": "https://www.fbfq.ca/wp-content/uploads/2026/10/DOC_info_AQHA_2026.pdf",
+      "final_url": "https://www.fbfq.ca/wp-content/uploads/2026/10/DOC_info_AQHA_2026.pdf",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": true,
+      "chars": 41460,
+      "pages": 15,
+      "low_text": false,
+      "hash": "sha256:1b764195125105649c100c0c48f77de7d55784131f45e7984845472b19765fb4"
+    },
+    {
+      "ref": "D3",
+      "url": "https://www.fbfq.ca/wp-content/uploads/2026/04/formulairecontributions_v_finaleweb-1.docx",
+      "final_url": "https://www.fbfq.ca/wp-content/uploads/2026/04/formulairecontributions_v_finaleweb-1.docx",
+      "from": "https://www.fbfq.ca/programme/amelioration-de-la-qualite-des-habitats-aquatiques-aqha/",
+      "anchor": "Formulaire de contributions en biens et services",
+      "depth": 1,
+      "pdf": false,
+      "chars": 1032,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:bbb73368f0b234c34ab12410e40ec0e59d1c7b3059d13f53494af65333d2ced4"
+    },
+    {
+      "ref": "D4",
+      "url": "https://www.fbfq.ca/wp-content/uploads/2026/04/instructions_bilan_financier_mars2021-3.pdf",
+      "final_url": "https://www.fbfq.ca/wp-content/uploads/2026/04/instructions_bilan_financier_mars2021-3.pdf",
+      "from": "https://www.fbfq.ca/programme/amelioration-de-la-qualite-des-habitats-aquatiques-aqha/",
+      "anchor": "Instructions bilan financier",
+      "depth": 1,
+      "pdf": true,
+      "chars": 3977,
+      "pages": 1,
+      "low_text": false,
+      "hash": "sha256:428600afff272186a6ca6d13e3966a8aad46bf5ef6ef1cd3a4ea654d5b27d7fb"
+    },
+    {
+      "ref": "D5",
+      "url": "https://www.fbfq.ca/wp-content/uploads/2026/04/138_qu_est_ce_qu_un_suivi.pdf",
+      "final_url": "https://www.fbfq.ca/wp-content/uploads/2026/04/138_qu_est_ce_qu_un_suivi.pdf",
+      "from": "https://www.fbfq.ca/programme/amelioration-de-la-qualite-des-habitats-aquatiques-aqha/",
+      "anchor": "Qu'est-ce qu'un suivi?",
+      "depth": 1,
+      "pdf": true,
+      "chars": 4667,
+      "pages": 2,
+      "low_text": false,
+      "hash": "sha256:28d32499a48b6ecd5f3e115d424862e81c49699eed7940688a9991e6cb524bed"
+    },
+    {
+      "ref": "D6",
+      "url": "https://www.fbfq.ca/wp-content/uploads/2026/04/gu_rotenone_mffp.pdf",
+      "final_url": "https://www.fbfq.ca/wp-content/uploads/2026/04/gu_rotenone_mffp.pdf",
+      "from": "https://www.fbfq.ca/programme/amelioration-de-la-qualite-des-habitats-aquatiques-aqha/",
+      "anchor": "Guide d'utilisation de la roténone pour la restauration de populations allopatriques d'ombles de fontaine au Québec",
+      "depth": 1,
+      "pdf": true,
+      "chars": 233561,
+      "pages": 101,
+      "low_text": false,
+      "hash": "sha256:55fa50f1e463fc5f05077a1a1ceaf7a748e4831eea14713537e0f904d36ffe7b"
+    },
+    {
+      "ref": "D7",
+      "url": "https://www.fbfq.ca/wp-content/uploads/2026/04/141_dore_jaune_suivi.pdf",
+      "final_url": "https://www.fbfq.ca/wp-content/uploads/2026/04/141_dore_jaune_suivi.pdf",
+      "from": "https://www.fbfq.ca/programme/amelioration-de-la-qualite-des-habitats-aquatiques-aqha/",
+      "anchor": "Suivi et évaluation des aménagements : doré jaune",
+      "depth": 1,
+      "pdf": true,
+      "chars": 5664,
+      "pages": 3,
+      "low_text": false,
+      "hash": "sha256:a5e8d3b90caadfdf21da714f41ed560a201102f5242644adfacc26334dd4ee93"
+    },
+    {
+      "ref": "D8",
+      "url": "https://www.fbfq.ca/wp-content/uploads/2026/04/142_touladi_suivi.pdf",
+      "final_url": "https://www.fbfq.ca/wp-content/uploads/2026/04/142_touladi_suivi.pdf",
+      "from": "https://www.fbfq.ca/programme/amelioration-de-la-qualite-des-habitats-aquatiques-aqha/",
+      "anchor": "Suivi et évaluation des aménagements : touladi",
+      "depth": 1,
+      "pdf": true,
+      "chars": 7870,
+      "pages": 3,
+      "low_text": false,
+      "hash": "sha256:9ead976502779e433824191aebcc5cc3f102639c4a27c7bc39e64cc640aff4d7"
+    }
+  ],
+  "failures": [
+    {
+      "url": "https://www.fbfq.ca/wp-content/uploads/2026/10/DOC_info_AQHA_2026.pdf",
+      "from": null,
+      "kind": "low_text",
+      "message": "page 1 is an image: needs OCR"
+    },
+    {
+      "url": "https://www.fbfq.ca/wp-content/uploads/2026/04/do21-11_aqha_attestationfintravaux.doc",
+      "from": "https://www.fbfq.ca/programme/amelioration-de-la-qualite-des-habitats-aquatiques-aqha/",
+      "kind": "unreadable",
+      "message": "an old Word (.doc), OpenDocument or RTF file: needs conversion"
+    },
+    {
+      "url": "https://www.fbfq.ca/wp-content/uploads/2026/04/gu_rotenone_mffp.pdf",
+      "from": "https://www.fbfq.ca/programme/amelioration-de-la-qualite-des-habitats-aquatiques-aqha/",
+      "kind": "low_text",
+      "message": "page 101 is an image: needs OCR"
+    }
+  ],
+  "skipped_links": 40,
+  "chunks": [
+    { "id": "c1", "docs": ["D1"], "chars": 7544 },
+    { "id": "c2", "docs": ["D2"], "chars": 39929 },
+    { "id": "c3", "docs": ["D2"], "chars": 3231 },
+    { "id": "c4", "docs": ["D3", "D4", "D5"], "chars": 10283 },
+    { "id": "c5", "docs": ["D6"], "chars": 40159 },
+    { "id": "c6", "docs": ["D6"], "chars": 40049 },
+    { "id": "c7", "docs": ["D6"], "chars": 40132 },
+    { "id": "c8", "docs": ["D6"], "chars": 40093 },
+    { "id": "c9", "docs": ["D6"], "chars": 39985 },
+    { "id": "c10", "docs": ["D6"], "chars": 40177 },
+    { "id": "c11", "docs": ["D6"], "chars": 3345 },
+    { "id": "c12", "docs": ["D7", "D8"], "chars": 13911 }
+  ],
+  "outcomes": {
+    "eligibility": "stated",
+    "documents": "stated",
+    "effort": "stated",
+    "co_finance": "stated",
+    "consortium": "not_found",
+    "after_award": "stated"
+  },
+  "written": ["eligibility", "documents", "effort", "co_finance", "after_award"],
+  "escalated": ["eligibility", "documents", "effort", "after_award", "co_finance"],
+  "flags": [],
+  "notes": [
+    "eligibility: 16 rules past the 8th dropped",
+    "documents: 5 past the 10th dropped",
+    "extractor: D1 is an overview and says the Document d'information contains the eligibility criteria, eligible expenses and programme requirements. Projects north of the 49th parallel, the St. Lawrence River or the Gulf may receive additional funding through the Fonds pour la faune nordique. | The annual deadline is 1 December, but no year is stated. Funding may cover up to 75% of eligible project costs; the source also states that a project could be funded at 80 under the Northern Wildlife Fund modalities. Restoration and management works require annual follow-up for at least three years after completion. The source requires a signed agreement and permits, but these are not eligibility rules under the requested classification. | This annex adds criteria for the Fonds pour la faune nordique. Funding is allocated through 2023–2026 project calls subject to available funds; awarded aid may cover up to 80% of eligible costs for a maximum of 24 months after project acceptance. | D5 is dated May 2012 and",
+    "strong: co_finance: share 25% dropped, its quote does not state it",
+    "strong: The annual 1 December deadline gives no year, so due is blank. Northern Wildlife Fund projects require at least 20% contributions instead of the standard 25%. Restoration and development works require annual monitoring for at least three years after project completion.",
+    "eligibility: kept 6 first-reading items no check faulted that the strong reading left out",
+    "documents: kept 4 first-reading items no check faulted that the strong reading left out",
+    "after_award: kept 1 first-reading item no check faulted that the strong reading left out",
+    "source fbfq-aqha-1: selector main dropped, a new quote sits outside it",
+    "source fbfq-aqha-3: added for https://www.fbfq.ca/wp-content/uploads/2026/04/141_dore_jaune_suivi.pdf"
+  ],
+  "usd": 0
+}

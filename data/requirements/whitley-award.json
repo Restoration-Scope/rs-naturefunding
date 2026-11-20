@@ -1,0 +1,106 @@
+{
+  "id": "whitley-award",
+  "read_on": "2026-11-20",
+  "prompt_version": "req-2026-11-20.1",
+  "models": ["cursor:gpt-5.6-luna-high", "cursor:gpt-5.6-sol-high"],
+  "complete": false,
+  "reasons": [
+    "23 links could not be ranked without Jev",
+    "25 links could not be ranked without Jev",
+    "https://wfn.eformsolutions.com/assets/images/2027%20WFN%20Application%20Guidelines_FINAL.pdf: a document on another site: without Jev it can’t be confirmed as the funder’s, so it is not used",
+    "https://d2pmqwflrfqd3y.cloudfront.net/content/uploads/2026/07/30161009/2027-WhitleyAward_EligibleCountries.pdf: a document on another site: without Jev it can’t be confirmed as the funder’s, so it is not used",
+    "the text names a document with rules that was not read: Whitley Award application guidelines",
+    "the text names a document with rules that was not read: Full list of eligible countries",
+    "Jev did not check this reading, so an absent fact is not known to be absent",
+    "strong reading: the text names a document with rules that was not read: Whitley Award application guidelines",
+    "strong reading: the text names a document with rules that was not read: Full list of eligible countries"
+  ],
+  "requirements_checked": false,
+  "documents": [
+    {
+      "ref": "D1",
+      "url": "https://whitleyaward.org/apply-for-conservation-funding/apply-for-a-whitley-award/",
+      "final_url": "https://whitleyaward.org/apply-for-conservation-funding/apply-for-a-whitley-award/",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 5363,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:bd06674abbef8481a539c291071d4b6520b7dc96538d1bfec0c9eeb3d8c1ff29"
+    },
+    {
+      "ref": "D2",
+      "url": "https://whitleyaward.org/apply-for-conservation-funding/eligibility/",
+      "final_url": "https://whitleyaward.org/apply-for-conservation-funding/eligibility/",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 6689,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:202a95a2a8ea6314fb3563d70a91a779fdf2ef698b74dc572a1b6b0f39aa32e6"
+    },
+    {
+      "ref": "D3",
+      "url": "https://whitleyaward.org/apply-for-conservation-funding/",
+      "final_url": "https://whitleyaward.org/apply-for-conservation-funding/",
+      "from": "https://whitleyaward.org/apply-for-conservation-funding/apply-for-a-whitley-award/",
+      "anchor": "Apply",
+      "depth": 1,
+      "pdf": false,
+      "chars": 2983,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:0e867dec585817b72e7896629b232e2adb37193b9bc8537abd5fea6e839705d8"
+    },
+    {
+      "ref": "D4",
+      "url": "https://whitleyaward.org/apply-for-conservation-funding/eligibility-and-application-faqs/",
+      "final_url": "https://whitleyaward.org/apply-for-conservation-funding/eligibility-and-application-faqs/",
+      "from": "https://whitleyaward.org/apply-for-conservation-funding/apply-for-a-whitley-award/",
+      "anchor": "FAQs",
+      "depth": 1,
+      "pdf": false,
+      "chars": 14478,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:c50f5349697ac286db48602ee4ba98f70607f83c4d3bfba0c57158264e55cad9"
+    }
+  ],
+  "failures": [
+    {
+      "url": "https://wfn.eformsolutions.com/assets/images/2027%20WFN%20Application%20Guidelines_FINAL.pdf",
+      "from": "https://whitleyaward.org/apply-for-conservation-funding/apply-for-a-whitley-award/",
+      "kind": "offsite",
+      "message": "a document on another site: without Jev it can’t be confirmed as the funder’s, so it is not used"
+    },
+    {
+      "url": "https://d2pmqwflrfqd3y.cloudfront.net/content/uploads/2026/07/30161009/2027-WhitleyAward_EligibleCountries.pdf",
+      "from": "https://whitleyaward.org/apply-for-conservation-funding/eligibility/",
+      "kind": "offsite",
+      "message": "a document on another site: without Jev it can’t be confirmed as the funder’s, so it is not used"
+    }
+  ],
+  "skipped_links": 111,
+  "chunks": [{ "id": "all", "docs": ["D1", "D2", "D3", "D4"], "chars": 30056 }],
+  "outcomes": {
+    "eligibility": "stated",
+    "documents": "stated",
+    "effort": "stated",
+    "co_finance": "not_found",
+    "consortium": "not_found",
+    "after_award": "not_found"
+  },
+  "written": ["eligibility", "documents", "effort"],
+  "escalated": ["documents", "effort"],
+  "flags": [],
+  "notes": [
+    "extractor: Applications for the 2027 Whitley Awards are closed. No exact application deadline date is stated in the gathered text. The eligibility page also says individuals working in isolation, as well as team or joint entries, are not eligible.",
+    "documents: kept 1 first-reading item no check faulted that the strong reading left out",
+    "source whitley-award-3: added for https://whitleyaward.org/apply-for-conservation-funding/eligibility-and-application-faqs/"
+  ],
+  "usd": 0
+}

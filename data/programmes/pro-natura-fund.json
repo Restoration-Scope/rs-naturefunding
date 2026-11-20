@@ -9,8 +9,15 @@
   "parent": null,
   "url": "https://www.pronaturajapan.com/foundation/pronatura_fund.html",
   "summary": "Annual grants for nature conservation activities and research in Japan and in developing regions overseas, including a track for community-rooted citizen groups. Applications run in a yearly early-summer window announced on the foundation's news page.",
-  "approaches": ["species_conservation", "community_conservation"],
-  "applicant_types": ["ngo", "community_group", "research_institution"],
+  "approaches": [
+    "species_conservation",
+    "community_conservation"
+  ],
+  "applicant_types": [
+    "ngo",
+    "community_group",
+    "research_institution"
+  ],
   "geography": null,
   "access": "direct",
   "window": "fixed",
@@ -21,6 +28,50 @@
   },
   "co_finance_required": null,
   "reporting": "Grantees submit an interim report mid-project, then a results report and accounts report after the project ends, and present results at a meeting in Tokyo.",
+  "eligibility": [
+    {
+      "rule": "A group of at least 3 members",
+      "kind": "capacity"
+    },
+    {
+      "rule": "Can plan and carry out nature conservation research or activities",
+      "kind": "capacity"
+    },
+    {
+      "rule": "Does not conduct activities for profit",
+      "kind": "legal"
+    },
+    {
+      "rule": "Is not organized for political, ideological or religious activities",
+      "kind": "legal"
+    },
+    {
+      "rule": "Is not an antisocial force",
+      "kind": "legal"
+    },
+    {
+      "rule": "Does not carry out activities commissioned by another institution",
+      "kind": "other"
+    },
+    {
+      "rule": "For B-2, has 2 years of conservation activity by the application date",
+      "kind": "track_record"
+    },
+    {
+      "rule": "For overseas grants, includes at least one Japanese member who can liaise with the funder",
+      "kind": "capacity"
+    }
+  ],
+  "after_award": {
+    "reports": "interim_and_final",
+    "training": true
+  },
+  "documents": [
+    "B-2 articles of association or rules",
+    "B-2 organization information leaflet",
+    "B-2 recent newsletter showing activities",
+    "Overseas Expenditure Schedule"
+  ],
   "calls": [
     {
       "id": "annual",
@@ -34,13 +85,13 @@
         "status": {
           "source_url": "https://www.pronaturajapan.com/foundation/pronatura_fund.html",
           "quote": "募集の開始やスケジュールの詳細は「お知らせ」にてご案内します。",
-          "checked_at": "2026-11-09",
+          "checked_at": "2026-11-20",
           "method": "page"
         },
         "recurring": {
           "source_url": "https://www.pronaturajapan.com/foundation/pronatura_fund.html",
           "quote": "応募期間:毎年6月上旬~7月中旬頃",
-          "checked_at": "2026-11-09",
+          "checked_at": "2026-11-20",
           "method": "page"
         }
       }
@@ -50,33 +101,131 @@
     "access": {
       "source_url": "https://www.pronaturajapan.com/foundation/pronatura_fund.html",
       "quote": "応募用URLの取得 登録したメールアドレスに「応募用URL」が送られます。",
-      "checked_at": "2026-11-09",
+      "checked_at": "2026-11-20",
       "method": "page"
     },
     "window": {
       "source_url": "https://www.pronaturajapan.com/foundation/pronatura_fund.html",
       "quote": "応募期間:毎年6月上旬~7月中旬頃",
-      "checked_at": "2026-11-09",
+      "checked_at": "2026-11-20",
       "method": "page"
     },
     "amount": {
       "source_url": "https://www.pronaturajapan.com/foundation/pronatura_fund.html",
       "quote": "1件あたり上限100万円/1~2年間 1:1件あたり上限100万円/1年間 2:1件あたり上限50万円/1年間 1件あたり上限100万円/1年間 1件あたり上限100万円/1年間 または 上限200万円/2年間 1件あたり上限100万円/1~3年間",
-      "checked_at": "2026-11-09",
+      "checked_at": "2026-11-20",
       "method": "page"
     },
     "reporting": {
       "source_url": "https://www.pronaturajapan.com/foundation/pronatura_fund.html",
       "quote": "プロジェクトの中間時期に、研究・活動の中間報告書を提出していただきます。 プロジェクト終了後、助成成果報告書と会計報告書を提出していただきます。",
-      "checked_at": "2026-11-09",
+      "checked_at": "2026-11-20",
       "method": "page"
     },
     "applicant_types": {
       "source_url": "https://www.pronaturajapan.com/foundation/pronatura_fund.html",
       "quote": "自然保護に関する調査・研究および活動を進める能力のある団体。",
-      "checked_at": "2026-11-09",
+      "checked_at": "2026-11-20",
       "method": "page"
-    }
+    },
+    "eligibility": [
+      {
+        "source_url": "https://www.pronaturajapan.com/foundation/pdf/%E5%8B%9F%E9%9B%86%E8%A6%81%E9%A0%85%E3%83%BB%E8%B2%BB%E7%9B%AE%E4%B8%80%E8%A6%A7/37th%20(2026)%20APPLICATION%20PROCEDURES%20FOR%20OVERSEAS%20GRANT.pdf",
+        "quote": "The grant is applicable for groups only (consists of at least 3 members).",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.pronaturajapan.com/foundation/pdf/%E5%8B%9F%E9%9B%86%E8%A6%81%E9%A0%85%E3%83%BB%E8%B2%BB%E7%9B%AE%E4%B8%80%E8%A6%A7/%E7%AC%AC37%E6%9C%9F%EF%BC%882026%E5%B9%B4%E5%BA%A6%EF%BC%89%E3%83%97%E3%83%AD%E3%83%BB%E3%83%8A%E3%83%88%E3%82%A5%E3%83%BC%E3%83%A9%E3%83%BB%E3%83%95%E3%82%A1%E3%83%B3%E3%83%89%E5%8A%A9%E6%88%90%E3%80%80%E5%8B%9F%E9%9B%86%E8%A6%81%E9%A0%85.pdf",
+        "quote": "自然保護のための調査・研究・活動を企画、遂行できること。",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.pronaturajapan.com/foundation/pdf/%E5%8B%9F%E9%9B%86%E8%A6%81%E9%A0%85%E3%83%BB%E8%B2%BB%E7%9B%AE%E4%B8%80%E8%A6%A7/%E7%AC%AC37%E6%9C%9F%EF%BC%882026%E5%B9%B4%E5%BA%A6%EF%BC%89%E3%83%97%E3%83%AD%E3%83%BB%E3%83%8A%E3%83%88%E3%82%A5%E3%83%BC%E3%83%A9%E3%83%BB%E3%83%95%E3%82%A1%E3%83%B3%E3%83%89%E5%8A%A9%E6%88%90%E3%80%80%E5%8B%9F%E9%9B%86%E8%A6%81%E9%A0%85.pdf",
+        "quote": "営利を目的とした活動を行う団体(株式会社等) 。",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.pronaturajapan.com/foundation/pdf/%E5%8B%9F%E9%9B%86%E8%A6%81%E9%A0%85%E3%83%BB%E8%B2%BB%E7%9B%AE%E4%B8%80%E8%A6%A7/%E7%AC%AC37%E6%9C%9F%EF%BC%882026%E5%B9%B4%E5%BA%A6%EF%BC%89%E3%83%97%E3%83%AD%E3%83%BB%E3%83%8A%E3%83%88%E3%82%A5%E3%83%BC%E3%83%A9%E3%83%BB%E3%83%95%E3%82%A1%E3%83%B3%E3%83%89%E5%8A%A9%E6%88%90%E3%80%80%E5%8B%9F%E9%9B%86%E8%A6%81%E9%A0%85.pdf",
+        "quote": "特定の政治・思想・宗教等の活動を目的とした団体。",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.pronaturajapan.com/foundation/pdf/%E5%8B%9F%E9%9B%86%E8%A6%81%E9%A0%85%E3%83%BB%E8%B2%BB%E7%9B%AE%E4%B8%80%E8%A6%A7/%E7%AC%AC37%E6%9C%9F%EF%BC%882026%E5%B9%B4%E5%BA%A6%EF%BC%89%E3%83%97%E3%83%AD%E3%83%BB%E3%83%8A%E3%83%88%E3%82%A5%E3%83%BC%E3%83%A9%E3%83%BB%E3%83%95%E3%82%A1%E3%83%B3%E3%83%89%E5%8A%A9%E6%88%90%E3%80%80%E5%8B%9F%E9%9B%86%E8%A6%81%E9%A0%85.pdf",
+        "quote": "暴力団などの反社会的勢力。",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.pronaturajapan.com/foundation/pdf/%E5%8B%9F%E9%9B%86%E8%A6%81%E9%A0%85%E3%83%BB%E8%B2%BB%E7%9B%AE%E4%B8%80%E8%A6%A7/%E7%AC%AC37%E6%9C%9F%EF%BC%882026%E5%B9%B4%E5%BA%A6%EF%BC%89%E3%83%97%E3%83%AD%E3%83%BB%E3%83%8A%E3%83%88%E3%82%A5%E3%83%BC%E3%83%A9%E3%83%BB%E3%83%95%E3%82%A1%E3%83%B3%E3%83%89%E5%8A%A9%E6%88%90%E3%80%80%E5%8B%9F%E9%9B%86%E8%A6%81%E9%A0%85.pdf",
+        "quote": "他の機関から委託を受けて活動を行う団体。",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.pronaturajapan.com/foundation/pdf/%E5%8B%9F%E9%9B%86%E8%A6%81%E9%A0%85%E3%83%BB%E8%B2%BB%E7%9B%AE%E4%B8%80%E8%A6%A7/%E7%AC%AC37%E6%9C%9F%EF%BC%882026%E5%B9%B4%E5%BA%A6%EF%BC%89%E3%83%97%E3%83%AD%E3%83%BB%E3%83%8A%E3%83%88%E3%82%A5%E3%83%BC%E3%83%A9%E3%83%BB%E3%83%95%E3%82%A1%E3%83%B3%E3%83%89%E5%8A%A9%E6%88%90%E3%80%80%E5%8B%9F%E9%9B%86%E8%A6%81%E9%A0%85.pdf",
+        "quote": "自然保護活動の実績が申請時点で 2 年以上ある団体である必要があります。",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.pronaturajapan.com/foundation/pdf/%E5%8B%9F%E9%9B%86%E8%A6%81%E9%A0%85%E3%83%BB%E8%B2%BB%E7%9B%AE%E4%B8%80%E8%A6%A7/37th%20(2026)%20APPLICATION%20PROCEDURES%20FOR%20OVERSEAS%20GRANT.pdf",
+        "quote": "The applicant group must include at least one Japanese member who knows the group members well, understands the details of the project, and is capable of being a liaison between the group and PNFJ.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "after_award": [
+      {
+        "source_url": "https://www.pronaturajapan.com/foundation/pronatura_fund.html",
+        "quote": "プロジェクトの中間時期に、研究・活動の中間報告書を提出していただきます。 プロジェクト終了後、助成成果報告書と会計報告書を提出していただきます。",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.pronaturajapan.com/foundation/pronatura_fund.html",
+        "quote": "プロジェクト終了後、11月末~12月頭に東京で開催される助成成果発表会で成果の発表を行っていただきます。",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "documents": [
+      {
+        "source_url": "https://www.pronaturajapan.com/foundation/pdf/%E5%8B%9F%E9%9B%86%E8%A6%81%E9%A0%85%E3%83%BB%E8%B2%BB%E7%9B%AE%E4%B8%80%E8%A6%A7/%E7%AC%AC37%E6%9C%9F%EF%BC%882026%E5%B9%B4%E5%BA%A6%EF%BC%89%E3%83%97%E3%83%AD%E3%83%BB%E3%83%8A%E3%83%88%E3%82%A5%E3%83%BC%E3%83%A9%E3%83%BB%E3%83%95%E3%82%A1%E3%83%B3%E3%83%89%E5%8A%A9%E6%88%90%E3%80%80%E5%8B%9F%E9%9B%86%E8%A6%81%E9%A0%85.pdf",
+        "quote": "・プロジェクト計画書(必須) :Word 様式を PDF 形式に変換して提出 ・プロジェクト対象地域の地図(任意) :PDF 形式のみ提出可 【国内活動助成の地域型市民活動枠】 ・団体の定款や規約、団体の案内リーフレット、活動の様子の分かる直近のニュースレター等",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.pronaturajapan.com/foundation/pdf/%E5%8B%9F%E9%9B%86%E8%A6%81%E9%A0%85%E3%83%BB%E8%B2%BB%E7%9B%AE%E4%B8%80%E8%A6%A7/37th%20(2026)%20APPLICATION%20PROCEDURES%20FOR%20OVERSEAS%20GRANT.pdf",
+        "quote": "Application Form B\" and \"Expenditure Schedule (ES)",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "effort": [
+      {
+        "source_url": "https://www.pronaturajapan.com/foundation/pdf/%E5%8B%9F%E9%9B%86%E8%A6%81%E9%A0%85%E3%83%BB%E8%B2%BB%E7%9B%AE%E4%B8%80%E8%A6%A7/37th%20(2026)%20APPLICATION%20PROCEDURES%20FOR%20OVERSEAS%20GRANT.pdf",
+        "quote": "Application close: 9 July 2026 18:00（Japan）",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.pronaturajapan.com/foundation/pronatura_fund.html",
+        "quote": "専門家による審査委員会にて選考の後、当財団理事会の決議を経て、助成先を決定します。",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ]
   },
-  "checked_at": "2026-11-09"
+  "checked_at": "2026-11-20",
+  "effort": {
+    "steps": [
+      "Online application",
+      "Expert committee review and board decision"
+    ]
+  }
 }

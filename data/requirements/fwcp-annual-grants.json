@@ -1,0 +1,115 @@
+{
+  "id": "fwcp-annual-grants",
+  "read_on": "2026-11-20",
+  "prompt_version": "req-2026-11-20.1",
+  "models": ["cursor:gpt-5.6-luna-high"],
+  "complete": false,
+  "reasons": [
+    "6 links could not be ranked without Jev",
+    "the text names a document with rules that was not read: Coastal, Columbia, and Peace regional grant guidance",
+    "the text names a document with rules that was not read: Coastal, Columbia, and Peace regional action plans",
+    "the text names a document with rules that was not read: FWCP Contribution Agreement, including Schedule B and Schedule C",
+    "Jev did not check this reading, so an absent fact is not known to be absent"
+  ],
+  "requirements_checked": false,
+  "documents": [
+    {
+      "ref": "D1",
+      "url": "https://fwcp.ca/apply-for-funding/",
+      "final_url": "https://fwcp.ca/funding.html",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 17009,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:f1b36ef1bd70c378e73986707a427bf42c03608b5fd85e6f6fa17bf674f195e2"
+    },
+    {
+      "ref": "D2",
+      "url": "https://fwcp.ca/content/dam/fwcp-web/documents/user-guides/User-Guide-Submitting-a-Change-Request-Jul-09-2025.pdf",
+      "final_url": "https://fwcp.ca/content/dam/fwcp-web/documents/user-guides/User-Guide-Submitting-a-Change-Request-Jul-09-2025.pdf",
+      "from": "https://fwcp.ca/apply-for-funding/",
+      "anchor": "Submitting a change request",
+      "depth": 1,
+      "pdf": true,
+      "chars": 5018,
+      "pages": 7,
+      "low_text": false,
+      "hash": "sha256:a7ad93ea02b1f9b1906ff241621fa8c126f9db5071161913a2de40c1591ed3ff"
+    },
+    {
+      "ref": "D3",
+      "url": "https://fwcp.ca/content/dam/fwcp-web/documents/user-guides/User-Guide-Submitting-a-Draft-Final-Report-Jul-09-2025.pdf",
+      "final_url": "https://fwcp.ca/content/dam/fwcp-web/documents/user-guides/User-Guide-Submitting-a-Draft-Final-Report-Jul-09-2025.pdf",
+      "from": "https://fwcp.ca/apply-for-funding/",
+      "anchor": "Submitting a draft final report",
+      "depth": 1,
+      "pdf": true,
+      "chars": 10152,
+      "pages": 11,
+      "low_text": false,
+      "hash": "sha256:89559840078cd59ef131122bbec2b386ded74c5396e3f4c361b1ff8752603e42"
+    },
+    {
+      "ref": "D4",
+      "url": "https://fwcp.ca/content/dam/fwcp-web/documents/user-guides/User-Guide-Submitting-a-Progress-Report-Jul-09-2025.pdf",
+      "final_url": "https://fwcp.ca/content/dam/fwcp-web/documents/user-guides/User-Guide-Submitting-a-Progress-Report-Jul-09-2025.pdf",
+      "from": "https://fwcp.ca/apply-for-funding/",
+      "anchor": "Submitting a progress report",
+      "depth": 1,
+      "pdf": true,
+      "chars": 7461,
+      "pages": 9,
+      "low_text": false,
+      "hash": "sha256:a1677c6d87b4140bb6517022ecd4906319ddb4391e2d4880c8c65c3ad5cbf181"
+    },
+    {
+      "ref": "D5",
+      "url": "https://fwcp.ca/content/dam/fwcp-web/documents/user-guides/User-Guide-Submitting-an-Statement-of-Account-Jul-09-2025.pdf",
+      "final_url": "https://fwcp.ca/content/dam/fwcp-web/documents/user-guides/User-Guide-Submitting-an-Statement-of-Account-Jul-09-2025.pdf",
+      "from": "https://fwcp.ca/apply-for-funding/",
+      "anchor": "Submitting a statement of account",
+      "depth": 1,
+      "pdf": true,
+      "chars": 11127,
+      "pages": 10,
+      "low_text": false,
+      "hash": "sha256:d727fc989a637b9cdcb21b470688c904e434fd8cbe8dfd8b35ff5b56ab83ab93"
+    },
+    {
+      "ref": "D6",
+      "url": "https://fwcp.ca/privacy-policy.html",
+      "final_url": "https://fwcp.ca/privacy-policy.html",
+      "from": "https://fwcp.ca/apply-for-funding/",
+      "anchor": "Privacy Policy",
+      "depth": 1,
+      "pdf": false,
+      "chars": 6242,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:ed3d337e0033ce136c22fc069aa8046527f12e2687b796cb1f44da4345823b1c"
+    }
+  ],
+  "failures": [],
+  "skipped_links": 61,
+  "chunks": [{ "id": "all", "docs": ["D1", "D2", "D3", "D4", "D5", "D6"], "chars": 57889 }],
+  "outcomes": {
+    "eligibility": "stated",
+    "documents": "stated",
+    "effort": "stated",
+    "co_finance": "not_found",
+    "consortium": "not_found",
+    "after_award": "stated"
+  },
+  "written": ["eligibility", "documents", "effort", "after_award"],
+  "escalated": [],
+  "flags": [],
+  "notes": [
+    "effort \"Annual grant application\": the quote does not state 2026-11-02 whole; left undated",
+    "extractor: The 2026 annual intake closed November 2, 2026. FWCP says 2027-2028 annual guidance will be available in July 2027 and that changes will apply to the annual intake opening in 2027. The supplied text does not provide separate requirements for year-round Community Engagement, Land Securement, or Seed grants.",
+    "source fwcp-annual-grants-2: added for https://fwcp.ca/content/dam/fwcp-web/documents/user-guides/User-Guide-Submitting-a-Draft-Final-Report-Jul-09-2025.pdf"
+  ],
+  "usd": 0
+}

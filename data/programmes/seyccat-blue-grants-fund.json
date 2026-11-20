@@ -9,9 +9,23 @@
   "parent": null,
   "url": "https://seyccat.org/blue-grants-fund/about-the-bgf/",
   "summary": "Annual grant round for Seychellois-led projects in marine conservation, habitat rehabilitation, sustainable fisheries and blue-economy work, with small, medium and large grant sizes. Overseas-based applicants are not eligible.",
-  "approaches": ["coastal_marine", "protected_areas", "community_conservation"],
-  "applicant_types": ["ngo", "individual", "company", "government"],
-  "geography": { "scope": "countries", "countries": ["SC"] },
+  "approaches": [
+    "coastal_marine",
+    "protected_areas",
+    "community_conservation"
+  ],
+  "applicant_types": [
+    "ngo",
+    "individual",
+    "company",
+    "government"
+  ],
+  "geography": {
+    "scope": "countries",
+    "countries": [
+      "SC"
+    ]
+  },
   "access": "direct",
   "window": "fixed",
   "amount": {
@@ -19,8 +33,34 @@
     "max": 2000000,
     "note": "Small grants up to SCR 100,000, medium up to 1 million, large up to 2 million"
   },
-  "co_finance_required": null,
+  "co_finance_required": false,
   "reporting": null,
+  "effort": {
+    "steps": [
+      "Concept note with logframe, itemised budget and Gantt chart",
+      "Full project proposal, if invited (medium and large grants)"
+    ]
+  },
+  "eligibility": [
+    {
+      "rule": "NGOs and businesses are registered in Seychelles for at least 1 year; businesses are majority Seychellois-owned",
+      "kind": "legal"
+    },
+    {
+      "rule": "For large grants, be an NGO or governmental entity with large-project experience and formal accounting systems",
+      "kind": "capacity"
+    }
+  ],
+  "after_award": {
+    "site_visits": true
+  },
+  "documents": [
+    "Itemised budget",
+    "Logframe",
+    "Gantt chart",
+    "CVs",
+    "Company profiles"
+  ],
   "calls": [
     {
       "id": "annual-call",
@@ -34,13 +74,13 @@
         "status": {
           "source_url": "https://seyccat.org/blue-grants-fund/about-the-bgf/",
           "quote": "Important Note: Applications are currently closed.",
-          "checked_at": "2026-11-09",
+          "checked_at": "2026-11-20",
           "method": "page"
         },
         "recurring": {
           "source_url": "https://seyccat.org/blue-grants-fund/about-the-bgf/",
           "quote": "Every year in April, SeyCCAT opens a 6-week application window for the submission of project proposals under the Blue Grants Fund.",
-          "checked_at": "2026-11-09",
+          "checked_at": "2026-11-20",
           "method": "page"
         }
       }
@@ -50,33 +90,95 @@
     "applicant_types": {
       "source_url": "https://seyccat.org/blue-grants-fund/who-can-apply/",
       "quote": "ALL CITIZENS OF SEYCHELLES GOVERNMENT DEPARTMENT / AGENCIES PARASTATAL ORGANISATION LOCALLY-REGISTERED NGOS (MUST BE REGISTERED FOR AT LEAST 1 YEAR) BUSINESSES WITH MAJORITY SEYCHELLOIS OWNERSHIP",
-      "checked_at": "2026-11-09",
+      "checked_at": "2026-11-20",
       "method": "page"
     },
     "geography": {
       "source_url": "https://seyccat.org/blue-grants-fund/about-the-bgf/",
       "quote": "The Blue Grants Fund (BGF) provides funding to innovative Seychellois-led projects that advance marine conservation, sustainable fisheries, and other key areas within the blue economy sector.",
-      "checked_at": "2026-11-09",
+      "checked_at": "2026-11-20",
       "method": "page"
     },
     "access": {
       "source_url": "https://seyccat.org/blue-grants-fund/about-the-bgf/",
       "quote": "Every year in April, SeyCCAT opens a 6-week application window for the submission of project proposals under the Blue Grants Fund.",
-      "checked_at": "2026-11-09",
+      "checked_at": "2026-11-20",
       "method": "page"
     },
     "window": {
       "source_url": "https://seyccat.org/blue-grants-fund/about-the-bgf/",
       "quote": "Every year in April, SeyCCAT opens a 6-week application window for the submission of project proposals under the Blue Grants Fund.",
-      "checked_at": "2026-11-09",
+      "checked_at": "2026-11-20",
       "method": "page"
     },
     "amount": {
       "source_url": "https://seyccat.org/blue-grants-fund/about-the-bgf/",
       "quote": "Our grant sizes are small up to (SCR 100,000), medium (up to 1 Million) and large (up to 2 Million).",
-      "checked_at": "2026-11-09",
+      "checked_at": "2026-11-20",
       "method": "page"
-    }
+    },
+    "co_finance_required": {
+      "source_url": "https://seyccat.org/wp-content/uploads/2026/04/SeyCCAT-Project-Full-Proposal-2026.docx",
+      "quote": "Co-financing is not needed for small grants (but may be indicated) and is encouraged for medium and large grants.",
+      "checked_at": "2026-11-20",
+      "method": "page"
+    },
+    "effort": [
+      {
+        "source_url": "https://seyccat.org/blue-grants-fund/how-to-apply/",
+        "quote": "Applicants must prepare a concept note, a logframe, a gantt chart, and an itemised budget.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://seyccat.org/blue-grants-fund/how-to-apply/",
+        "quote": "If successful, applicants for medium and large grants will be invited to stage 2, where they need to submit a full project proposal.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "eligibility": [
+      {
+        "source_url": "https://seyccat.org/blue-grants-fund/who-can-apply/",
+        "quote": "LOCALLY-REGISTERED NGOS (MUST BE REGISTERED FOR AT LEAST 1 YEAR) BUSINESSES WITH MAJORITY SEYCHELLOIS OWNERSHIP (MUST BE REGISTERD FOR AT LEAST 1 YEAR)",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://seyccat.org/blue-grants-fund/who-can-apply/",
+        "quote": "The large grants are available only to NGOs and governmental entities with a proven track record of managing large projects and formal financial accounting systems.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "after_award": [
+      {
+        "source_url": "https://seyccat.org/wp-content/uploads/2025/03/Application-Guideline_-A-How-to-Guide.pdf",
+        "quote": "Sites visit to assess project implementation",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "documents": [
+      {
+        "source_url": "https://seyccat.org/blue-grants-fund/how-to-apply/",
+        "quote": "concept note, logframe, budget and gantt chart",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://seyccat.org/blue-grants-fund/how-to-apply/",
+        "quote": "Applicants must prepare a concept note, a logframe, a gantt chart, and an itemised budget.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://seyccat.org/blue-grants-fund/how-to-apply/",
+        "quote": "Other project-relevant documents, including CVs and company profiles, are to be submitted as well.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ]
   },
-  "checked_at": "2026-11-09"
+  "checked_at": "2026-11-20"
 }

@@ -1,7 +1,10 @@
 {
   "id": "padi-aware-community-grants",
   "name": "PADI AWARE Foundation Community Grant Program",
-  "funder": { "name": "PADI AWARE Foundation", "url": "https://www.padi.com/aware" },
+  "funder": {
+    "name": "PADI AWARE Foundation",
+    "url": "https://www.padi.com/aware"
+  },
   "administered_by": null,
   "parent": null,
   "url": "https://www.padi.com/aware/grant-funding-criteria",
@@ -12,13 +15,43 @@
     "species_conservation",
     "community_conservation"
   ],
-  "applicant_types": ["ngo", "company"],
+  "applicant_types": [
+    "ngo",
+    "company"
+  ],
   "geography": null,
   "access": "direct",
   "window": "fixed",
-  "amount": { "currency": "USD", "max": 10000 },
+  "amount": {
+    "currency": "USD",
+    "max": 10000
+  },
   "co_finance_required": null,
   "reporting": "Grantees submit an online Project Report on the project's outcomes, due within one month of the project's end.",
+  "effort": {
+    "steps": [
+      "Eligibility Quiz",
+      "Application and Project Budget"
+    ]
+  },
+  "eligibility": [
+    {
+      "rule": "Annual budget is less than USD 1 million if the applicant is a nonprofit",
+      "kind": "finances",
+      "revenue": {
+        "currency": "USD",
+        "max": 1000000,
+        "basis": "budget"
+      }
+    }
+  ],
+  "after_award": {
+    "reports": "final"
+  },
+  "documents": [
+    "Recent financial statement confirming annual budget is less than 1 million USD, if a nonprofit",
+    "Project Budget"
+  ],
   "calls": [
     {
       "id": "2027",
@@ -68,7 +101,51 @@
       "quote": "All grantees are expected, as part of their funding agreement, to provide a Project Report on the outcomes of the agreed upon project at the end of the funding cycle.",
       "checked_at": "2026-11-15",
       "method": "page"
-    }
+    },
+    "effort": [
+      {
+        "source_url": "https://www.padi.com/aware/grant-funding-criteria",
+        "quote": "All potential applicants will be required to complete an initial Eligibility Quiz.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.padi.com/aware/grant-funding-criteria",
+        "quote": "The application must be completed in its entirety and submitted with a Project Budget online with the link that is provided to you.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "eligibility": [
+      {
+        "source_url": "https://www.padi.com/aware/grant-funding-criteria",
+        "quote": "All non-profit organizations must submit a recent financial statement confirming your organization's annual budget is less than 1 million USD",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "after_award": [
+      {
+        "source_url": "https://www.padi.com/aware/grant-funding-criteria",
+        "quote": "All grantees are expected, as part of their funding agreement, to provide a Project Report on the outcomes of the agreed upon project at the end of the funding cycle.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "documents": [
+      {
+        "source_url": "https://www.padi.com/aware/grant-funding-criteria",
+        "quote": "All non-profit organizations must submit a recent financial statement confirming your organization's annual budget is less than 1 million USD",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.padi.com/aware/grant-funding-criteria",
+        "quote": "The application must be completed in its entirety and submitted with a Project Budget online with the link that is provided to you.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ]
   },
   "checked_at": "2026-11-15"
 }

@@ -1,14 +1,29 @@
 {
   "id": "texas-coastal-management-program-grants",
   "name": "Texas Coastal Management Program grants",
-  "funder": { "name": "Texas General Land Office", "url": "https://www.glo.texas.gov" },
+  "funder": {
+    "name": "Texas General Land Office",
+    "url": "https://www.glo.texas.gov"
+  },
   "administered_by": null,
   "parent": null,
   "url": "https://www.glo.texas.gov/sites/default/files/2026-04/CMP%20Cycle%2032%20Guidance.pdf",
   "summary": "Reimbursement grants for coastal projects on public land in the Texas coastal zone, including habitat creation and restoration, from federal NOAA and GOMESA funds. Eligible applicants include 501(c)(3) and 501(c)(4) nonprofits with a Texas office.",
-  "approaches": ["coastal_marine", "wetlands"],
-  "applicant_types": ["ngo", "government"],
-  "geography": { "scope": "countries", "countries": ["US"], "label": "Texas coastal zone" },
+  "approaches": [
+    "coastal_marine",
+    "wetlands"
+  ],
+  "applicant_types": [
+    "ngo",
+    "government"
+  ],
+  "geography": {
+    "scope": "countries",
+    "countries": [
+      "US"
+    ],
+    "label": "Texas coastal zone"
+  },
   "access": "direct",
   "window": "fixed",
   "amount": {
@@ -18,6 +33,57 @@
   },
   "co_finance_required": true,
   "reporting": null,
+  "effort": {
+    "steps": [
+      "Application",
+      "Site visit, if necessary",
+      "Supporting documents, work plan and budget, if conditionally selected"
+    ]
+  },
+  "eligibility": [
+    {
+      "rule": "Nonprofit applicant is registered as a 501(c)(3) or 501(c)(4) and has an office in Texas",
+      "kind": "legal"
+    },
+    {
+      "rule": "Project is located within the Coastal Zone Boundary",
+      "kind": "project"
+    },
+    {
+      "rule": "Project occurs on publicly owned land, or qualifying non-federal lease or easement land",
+      "kind": "project"
+    },
+    {
+      "rule": "Project is consistent with CMP goals and enforceable policies",
+      "kind": "project"
+    },
+    {
+      "rule": "Project does not cause adverse effects to coastal natural resource areas",
+      "kind": "project"
+    },
+    {
+      "rule": "Project directly addresses or implements a listed funding priority",
+      "kind": "project"
+    },
+    {
+      "rule": "GOMESA project meets a GOMESA authorized use",
+      "kind": "project"
+    }
+  ],
+  "co_finance": {
+    "min_share": 40,
+    "applies_to": "Applicants requesting NOAA funds"
+  },
+  "after_award": {
+    "reports": "quarterly"
+  },
+  "documents": [
+    "Project budget",
+    "Location map",
+    "Available permits (GOMESA; if applicable for NOAA)",
+    "1–3 letters of support",
+    "Draft site plan and site photos (GOMESA), or site plan, photos or final designs (NOAA §306A)"
+  ],
   "calls": [
     {
       "id": "cycle-32",
@@ -25,18 +91,21 @@
       "url": "https://www.glo.texas.gov/sites/default/files/2026-04/CMP%20Cycle%2032%20Guidance.pdf",
       "status": "closed",
       "opens": null,
-      "deadline": { "date": "2026-06-03", "text": "Applications are due June 3, 2026." },
+      "deadline": {
+        "date": "2026-06-03",
+        "text": "Applications are due June 3, 2026."
+      },
       "evidence": {
         "status": {
           "source_url": "https://www.glo.texas.gov/sites/default/files/2026-04/CMP%20Cycle%2032%20Guidance.pdf",
           "quote": "Applications are due June 3, 2026.",
-          "checked_at": "2026-11-09",
+          "checked_at": "2026-11-20",
           "method": "page"
         },
         "deadline": {
           "source_url": "https://www.glo.texas.gov/sites/default/files/2026-04/CMP%20Cycle%2032%20Guidance.pdf",
           "quote": "Applications are due June 3, 2026.",
-          "checked_at": "2026-11-09",
+          "checked_at": "2026-11-20",
           "method": "page"
         }
       },
@@ -47,39 +116,143 @@
     "applicant_types": {
       "source_url": "https://www.glo.texas.gov/sites/default/files/2026-04/CMP%20Cycle%2032%20Guidance.pdf",
       "quote": "Councils of governments and other regional governmental entities within the coastal zone boundary • The Galveston Bay Estuary Program • The Coastal Bend Bays and Estuaries Program • Nonprofit Organizations*",
-      "checked_at": "2026-11-09",
+      "checked_at": "2026-11-20",
       "method": "page"
     },
     "geography": {
       "source_url": "https://www.glo.texas.gov/sites/default/files/2026-04/CMP%20Cycle%2032%20Guidance.pdf",
       "quote": "Projects must be located within the Coastal Zone Boundary established by the Texas Legislature in 1995.",
-      "checked_at": "2026-11-09",
+      "checked_at": "2026-11-20",
       "method": "page"
     },
     "access": {
       "source_url": "https://www.glo.texas.gov/sites/default/files/2026-04/CMP%20Cycle%2032%20Guidance.pdf",
       "quote": "Applications must be submitted through the GLO's Coastal Resources Application Portal (https://txglo.smapply.us/).",
-      "checked_at": "2026-11-09",
+      "checked_at": "2026-11-20",
       "method": "page"
     },
     "window": {
       "source_url": "https://www.glo.texas.gov/sites/default/files/2026-04/CMP%20Cycle%2032%20Guidance.pdf",
       "quote": "Applications are due June 3, 2026.",
-      "checked_at": "2026-11-09",
+      "checked_at": "2026-11-20",
       "method": "page"
     },
     "amount": {
       "source_url": "https://www.glo.texas.gov/sites/default/files/2026-04/CMP%20Cycle%2032%20Guidance.pdf",
       "quote": "Applicants may request up to a maximum of $5 million in GOMESA funding.",
-      "checked_at": "2026-11-09",
+      "checked_at": "2026-11-20",
       "method": "page"
     },
     "co_finance_required": {
       "source_url": "https://www.glo.texas.gov/sites/default/files/2026-04/CMP%20Cycle%2032%20Guidance.pdf",
       "quote": "Applicants requesting NOAA funds must provide a local and/or third-party match of 40% of the total project cost to comply with federal matching requirements.",
-      "checked_at": "2026-11-09",
+      "checked_at": "2026-11-20",
       "method": "page"
-    }
+    },
+    "effort": [
+      {
+        "source_url": "https://www.glo.texas.gov/sites/default/files/2026-04/CMP%20Cycle%2032%20Guidance.pdf",
+        "quote": "Applications are due June 3, 2026.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.glo.texas.gov/sites/default/files/2026-04/CMP%20Cycle%2032%20Guidance.pdf",
+        "quote": "CMP Review Team reviews applications and conducts site visits, if necessary.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.glo.texas.gov/sites/default/files/2026-04/CMP%20Cycle%2032%20Guidance.pdf",
+        "quote": "submit additional supporting documentation, a draft work plan, and a budget narrative, which will be used by CMP staff to further determine funding status. If the applicant and the GLO mutually agree on project scope and budget, and all supporting documentation is received by November 11, 2026",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "eligibility": [
+      {
+        "source_url": "https://www.glo.texas.gov/sites/default/files/2026-04/CMP%20Cycle%2032%20Guidance.pdf",
+        "quote": "Nonprofit organizations applying for funding must be registered as a 501(c)(3) or 501(c)(4) and have an office located in Texas.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.glo.texas.gov/sites/default/files/2026-04/CMP%20Cycle%2032%20Guidance.pdf",
+        "quote": "Projects must be located within the Coastal Zone Boundary established by the Texas Legislature in 1995.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.glo.texas.gov/sites/default/files/2026-04/CMP%20Cycle%2032%20Guidance.pdf",
+        "quote": "Projects must occur on publicly owned land (local government-owned or state-owned land) and cannot occur on private or federally owned land or land owned by a nonprofit organization unless there is a perpetual lease or conservation easement in place.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.glo.texas.gov/sites/default/files/2026-04/CMP%20Cycle%2032%20Guidance.pdf",
+        "quote": "Proposed projects must be consistent with the CMP goals and enforceable policies to be eligible for funding.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.glo.texas.gov/sites/default/files/2026-04/CMP%20Cycle%2032%20Guidance.pdf",
+        "quote": "Applicants must demonstrate that the proposed projects will not cause adverse effects to coastal natural resource areas (see Appendix I).",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.glo.texas.gov/sites/default/files/2026-04/CMP%20Cycle%2032%20Guidance.pdf",
+        "quote": "Projects must directly address and/or implement a funding priority listed below.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.glo.texas.gov/sites/default/files/2026-04/CMP%20Cycle%2032%20Guidance.pdf",
+        "quote": "CMP GOMESA projects must meet a GOMESA authorized use (see Appendix E).",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "co_finance": {
+      "source_url": "https://www.glo.texas.gov/sites/default/files/2026-04/CMP%20Cycle%2032%20Guidance.pdf",
+      "quote": "Applicants requesting NOAA funds must provide a local and/or third-party match of 40% of the total project cost to comply with federal matching requirements.",
+      "checked_at": "2026-11-20",
+      "method": "page"
+    },
+    "after_award": [
+      {
+        "source_url": "https://www.glo.texas.gov/sites/default/files/2026-04/CMP%20Cycle%2032%20Administrative%20and%20Financial%20Guidance%20for%20NOAA-Funded%20Projects.pdf",
+        "quote": "Subrecipients will submit progress reports, deliverables, and reimbursement requests to the GLO via the CMPReceipts@glo.texas.gov either monthly or quarterly. Reporting frequency is determined by project and entity type.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.glo.texas.gov/sites/default/files/2026-04/CMP%20Cycle%2032%20Guidance.pdf",
+        "quote": "NPS related projects will need to quantify the amount of pollution the project successfully reduces in the final report.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "documents": [
+      {
+        "source_url": "https://www.glo.texas.gov/sites/default/files/2026-04/CMP%20Cycle%2032%20Guidance.pdf",
+        "quote": "Include project budget • Location Map • Available Permits • 1-3 Letters of Support",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.glo.texas.gov/sites/default/files/2026-04/CMP%20Cycle%2032%20Guidance.pdf",
+        "quote": "Project draft site plan and site photos o site plan should include the proposed location of all construction activities CMP NOAA Projects • Project Application o Include project budget • Location Map • Available Permits, if applicable",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.glo.texas.gov/sites/default/files/2026-04/CMP%20Cycle%2032%20Guidance.pdf",
+        "quote": "Project draft site plan, site photos, or final engineering and designs",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ]
   },
-  "checked_at": "2026-11-09"
+  "checked_at": "2026-11-20"
 }

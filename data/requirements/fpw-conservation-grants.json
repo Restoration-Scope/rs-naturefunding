@@ -1,0 +1,53 @@
+{
+  "id": "fpw-conservation-grants",
+  "read_on": "2026-11-20",
+  "prompt_version": "req-2026-11-20.1",
+  "models": ["cursor:gpt-5.6-luna-high"],
+  "complete": false,
+  "reasons": [
+    "5 links could not be ranked without Jev",
+    "https://img1.wsimg.com/blobby/go/ac39b623-b980-478f-9418-4ae2a903bc38/downloads/0696e337-5609-4bbf-855a-92d422c85743/FPW%20GOApply%20User%20Guide_2026.pdf?ver=1788890098883: a document on another site: without Jev it can’t be confirmed as the funder’s, so it is not used",
+    "Jev did not check this reading, so an absent fact is not known to be absent"
+  ],
+  "requirements_checked": false,
+  "documents": [
+    {
+      "ref": "D1",
+      "url": "https://thefpw.org/grant-programs",
+      "final_url": "https://thefpw.org/grant-programs",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 9524,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:e1cff4eb9588e1313d3cec88049844e769683ea9aa67eb684c431f6a49296712"
+    }
+  ],
+  "failures": [
+    {
+      "url": "https://img1.wsimg.com/blobby/go/ac39b623-b980-478f-9418-4ae2a903bc38/downloads/0696e337-5609-4bbf-855a-92d422c85743/FPW%20GOApply%20User%20Guide_2026.pdf?ver=1788890098883",
+      "from": "https://thefpw.org/grant-programs",
+      "kind": "offsite",
+      "message": "a document on another site: without Jev it can’t be confirmed as the funder’s, so it is not used"
+    }
+  ],
+  "skipped_links": 5,
+  "chunks": [{ "id": "all", "docs": ["D1"], "chars": 9570 }],
+  "outcomes": {
+    "eligibility": "stated",
+    "documents": "not_found",
+    "effort": "stated",
+    "co_finance": "stated",
+    "consortium": "not_found",
+    "after_award": "stated"
+  },
+  "written": ["eligibility", "effort", "co_finance", "after_award"],
+  "escalated": [],
+  "flags": [],
+  "notes": [
+    "extractor: The FAQ says there is no set match amount, but more demonstrated input strengthens the application."
+  ],
+  "usd": 0
+}

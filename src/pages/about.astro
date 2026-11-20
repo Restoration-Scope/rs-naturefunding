@@ -108,7 +108,7 @@ const key =
     </ul>
     <p>And we leave out, for now:</p>
     <ul>
-      <li>funders whose website we can’t check again every day, so their facts would go out of date;</li>
+      <li>funders whose website our checking job can’t read, so their facts would go out of date;</li>
       <li>prizes for past work, and programmes whose page only describes an old or suspended round;</li>
       <li>second rounds that are by invitation only, since the first round is where you apply;</li>
       <li>anything we only found in another directory and could not confirm on the funder’s own page.</li>
@@ -183,11 +183,14 @@ const key =
 
     <h2 id="how-often">How often we check</h2>
     <ol class="mt-[0.6rem] mb-0 max-w-[66ch] pl-[1.4rem] *:pl-1 *:marker:font-bold *:marker:text-ink-2 [&>li+li]:mt-[0.4rem]">
-      <li>Every day, a job reads the funder pages that are due: most every day, the rest every week or month.</li>
+      <li>
+        Every day, a job reads the funder pages that are due: daily while a programme has an open or upcoming call,
+        otherwise every week, or every month when you can’t apply directly.
+      </li>
       <li>If a page still shows the words we quoted, those facts get a new checked date.</li>
       <li>
-        If a page changed or can’t be read, the date stays where it was. A change becomes a proposed edit, and it
-        goes live only after a person approves it.
+        If a page changed or can’t be read, the date stays where it was. A change becomes a proposed edit, and the
+        job never publishes it on its own.
       </li>
       <li>
         When a deadline date passes, the finder shows the call as closed. It doesn’t compare times of day, so on the

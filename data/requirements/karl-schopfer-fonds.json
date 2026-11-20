@@ -1,0 +1,126 @@
+{
+  "id": "karl-schopfer-fonds",
+  "read_on": "2026-11-20",
+  "prompt_version": "req-2026-11-20.1",
+  "models": ["cursor:gpt-5.6-luna-high", "cursor:gpt-5.6-sol-high"],
+  "complete": false,
+  "reasons": [
+    "11 links could not be ranked without Jev",
+    "2 links could not be ranked without Jev",
+    "Jev did not check this reading, so an absent fact is not known to be absent"
+  ],
+  "requirements_checked": false,
+  "documents": [
+    {
+      "ref": "D1",
+      "url": "https://www.karlschopferfonds.org/",
+      "final_url": "https://www.karlschopferfonds.org/",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 9406,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:d3910977d3201a5b00d5efc00789c72773707a865d2990b8e1d618aa406f8584"
+    },
+    {
+      "ref": "D2",
+      "url": "https://www.karlschopferfonds.org/wp-content/uploads/2019/08/KSF_Antrag_de.pdf",
+      "final_url": "https://www.karlschopferfonds.org/wp-content/uploads/2019/08/KSF_Antrag_de.pdf",
+      "from": "https://www.karlschopferfonds.org/",
+      "anchor": "Unterstützungsgesuch",
+      "depth": 1,
+      "pdf": true,
+      "chars": 9951,
+      "pages": 15,
+      "low_text": false,
+      "hash": "sha256:e946cfab42c4bf93540d53194e7bcc4015c1d05b271faad8f5241cda8c2d32a6"
+    },
+    {
+      "ref": "D3",
+      "url": "https://www.karlschopferfonds.org/wp-content/uploads/2019/08/KSF_Vergaberichtlinien_2019.pdf",
+      "final_url": "https://www.karlschopferfonds.org/wp-content/uploads/2019/08/KSF_Vergaberichtlinien_2019.pdf",
+      "from": "https://www.karlschopferfonds.org/",
+      "anchor": "Vergaberichtlinien",
+      "depth": 1,
+      "pdf": true,
+      "chars": 6656,
+      "pages": 5,
+      "low_text": false,
+      "hash": "sha256:f40a042ef120b0d733d30d37909bbd54cf9a01704c5223d9de7f16e5a43729fc"
+    },
+    {
+      "ref": "D4",
+      "url": "https://www.karlschopferfonds.org/wp-content/uploads/2018/12/KSF_Stiftungsstatut.pdf",
+      "final_url": "https://www.karlschopferfonds.org/wp-content/uploads/2018/12/KSF_Stiftungsstatut.pdf",
+      "from": "https://www.karlschopferfonds.org/",
+      "anchor": "Statut",
+      "depth": 1,
+      "pdf": true,
+      "chars": 6728,
+      "pages": 5,
+      "low_text": false,
+      "hash": "sha256:5090f4c6a83fb2975ebc90ff1fb0ae6580973203b167bffa5ba0bc005d6b6676"
+    },
+    {
+      "ref": "D5",
+      "url": "https://www.karlschopferfonds.org/wp-content/uploads/2026/02/KSF_Vergabungen_bis_2025.pdf",
+      "final_url": "https://www.karlschopferfonds.org/wp-content/uploads/2026/02/KSF_Vergabungen_bis_2025.pdf",
+      "from": "https://www.karlschopferfonds.org/",
+      "anchor": "Vergabungen 1999 - 2025",
+      "depth": 1,
+      "pdf": true,
+      "chars": 12219,
+      "pages": 6,
+      "low_text": false,
+      "hash": "sha256:5f0ec91ed46549934018e5b6329b1b477fdf8c804466c3674c96cbe1fea51a0e"
+    },
+    {
+      "ref": "D6",
+      "url": "https://www.karlschopferfonds.org/wp-content/uploads/2026/03/KSF_Aufwertung_Areal_2019-2026.pdf",
+      "final_url": "https://www.karlschopferfonds.org/wp-content/uploads/2026/03/KSF_Aufwertung_Areal_2019-2026.pdf",
+      "from": "https://www.karlschopferfonds.org/",
+      "anchor": "Aufwertung Areal 2019 - 2026",
+      "depth": 1,
+      "pdf": true,
+      "chars": 2386,
+      "pages": 1,
+      "low_text": false,
+      "hash": "sha256:6612d50d7492a70c01689bd4743e7e74920d74f2acec038a6fdef49ca4d4fd1d"
+    },
+    {
+      "ref": "D7",
+      "url": "https://www.karlschopferfonds.org/cookie-richtlinie",
+      "final_url": "https://www.karlschopferfonds.org/cookie-richtlinie/",
+      "from": "https://www.karlschopferfonds.org/",
+      "anchor": "Cookie-Richtlinie",
+      "depth": 1,
+      "pdf": false,
+      "chars": 7575,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:cdb07a225d07f8c9f4766ae8e768fc327f0fae217d86b102727df714d7daad99"
+    }
+  ],
+  "failures": [],
+  "skipped_links": 30,
+  "chunks": [{ "id": "all", "docs": ["D1", "D2", "D3", "D4", "D5", "D6", "D7"], "chars": 55859 }],
+  "outcomes": {
+    "eligibility": "not_found",
+    "documents": "stated",
+    "effort": "stated",
+    "co_finance": "not_found",
+    "consortium": "not_found",
+    "after_award": "stated"
+  },
+  "written": ["documents", "effort", "after_award"],
+  "escalated": ["after_award"],
+  "flags": [],
+  "notes": [
+    "extractor: D2 and D3 contain guidelines dated 2018. D1's current page states deadlines of 30 April and 31 October without giving a year.",
+    "source karl-schopfer-fonds-2: added for https://www.karlschopferfonds.org/wp-content/uploads/2019/08/KSF_Antrag_de.pdf",
+    "source karl-schopfer-fonds-3: added for https://www.karlschopferfonds.org/wp-content/uploads/2019/08/KSF_Vergaberichtlinien_2019.pdf"
+  ],
+  "usd": 0
+}

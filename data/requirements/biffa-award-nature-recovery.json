@@ -1,0 +1,103 @@
+{
+  "id": "biffa-award-nature-recovery",
+  "read_on": "2026-11-20",
+  "prompt_version": "req-2026-11-20.1",
+  "models": ["cursor:gpt-5.6-luna-high", "cursor:gpt-5.6-sol-high"],
+  "complete": false,
+  "reasons": [
+    "12 links could not be ranked without Jev",
+    "13 links could not be ranked without Jev",
+    "https://www.biffa-award.org/sites/default/files/2025-12/BOM156_Guidance-Notes-for-MGS-online-application_V28_0825-1.pdf: page 1 is an image: needs OCR",
+    "https://live-twt-d8-biffa-award.pantheonsite.io/sites/default/files/2025-12/BOM156_Guidance-Notes-for-MGS-online-application_V28_0825-1.pdf would not open (robots: robots.txt disallows this page)",
+    "the text names a document with rules that was not read: Entrust website: specific rules around the Contributing Third Party (https://www.entrust.org.uk)",
+    "Jev did not check this reading, so an absent fact is not known to be absent"
+  ],
+  "requirements_checked": false,
+  "documents": [
+    {
+      "ref": "D1",
+      "url": "https://www.biffa-award.org/rebuilding-biodiversity/",
+      "final_url": "https://www.biffa-award.org/who-we-support/nature-recovery",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 5038,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:1ef674207644ac88a7ac40c882cc47930e0c5584ef68dec322d5f8d8ff15d4db"
+    },
+    {
+      "ref": "D2",
+      "url": "https://www.biffa-award.org/about-us/frequently-asked-questions",
+      "final_url": "https://www.biffa-award.org/about-us/frequently-asked-questions",
+      "from": "https://www.biffa-award.org/rebuilding-biodiversity/",
+      "anchor": "Frequently Asked Questions",
+      "depth": 1,
+      "pdf": false,
+      "chars": 10017,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:a362f31d2ecd4dd6bf8fc2635e6b605d482d275a247b43d19b3725063fdba8a7"
+    },
+    {
+      "ref": "D3",
+      "url": "https://www.biffa-award.org/sites/default/files/2025-12/BOM156_Guidance-Notes-for-MGS-online-application_V28_0825-1.pdf",
+      "final_url": "https://www.biffa-award.org/sites/default/files/2025-12/BOM156_Guidance-Notes-for-MGS-online-application_V28_0825-1.pdf",
+      "from": "https://www.biffa-award.org/rebuilding-biodiversity/",
+      "anchor": "Guidance Notes",
+      "depth": 1,
+      "pdf": true,
+      "chars": 29393,
+      "pages": 20,
+      "low_text": false,
+      "hash": "sha256:dcb4e1d0ed5714e50a29674f42af1058cd9bf7ce7371577eb07c1812b77f8156"
+    },
+    {
+      "ref": "D4",
+      "url": "https://www.biffa-award.org/privacy-policy",
+      "final_url": "https://www.biffa-award.org/privacy-policy",
+      "from": "https://www.biffa-award.org/rebuilding-biodiversity/",
+      "anchor": "Privacy policy",
+      "depth": 1,
+      "pdf": false,
+      "chars": 1144,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:21cdc24e8d53e64f6a4b74c00181738a41cbb4a82670c72decfbd522e852b051"
+    }
+  ],
+  "failures": [
+    {
+      "url": "https://www.biffa-award.org/sites/default/files/2025-12/BOM156_Guidance-Notes-for-MGS-online-application_V28_0825-1.pdf",
+      "from": "https://www.biffa-award.org/rebuilding-biodiversity/",
+      "kind": "low_text",
+      "message": "page 1 is an image: needs OCR"
+    },
+    {
+      "url": "https://live-twt-d8-biffa-award.pantheonsite.io/sites/default/files/2025-12/BOM156_Guidance-Notes-for-MGS-online-application_V28_0825-1.pdf",
+      "from": "https://www.biffa-award.org/rebuilding-biodiversity/",
+      "kind": "robots",
+      "message": "robots.txt disallows this page"
+    }
+  ],
+  "skipped_links": 63,
+  "chunks": [{ "id": "all", "docs": ["D1", "D2", "D3", "D4"], "chars": 46127 }],
+  "outcomes": {
+    "eligibility": "stated",
+    "documents": "stated",
+    "effort": "stated",
+    "co_finance": "stated",
+    "consortium": "not_found",
+    "after_award": "not_found"
+  },
+  "written": ["eligibility", "documents", "effort", "co_finance"],
+  "escalated": ["eligibility"],
+  "flags": [],
+  "notes": [
+    "extractor: D1 requires at least 10 years remaining for a Nature Recovery landowner agreement, while D3 later lists a signed landowner agreement for at least 8 years at Full Application stage. The text also states post-award timing for conditions, work and claims, but does not state reports, audits, site visits or training.",
+    "source biffa-award-nature-recovery-2: added for https://www.biffa-award.org/about-us/frequently-asked-questions",
+    "source biffa-award-nature-recovery-3: added for https://www.biffa-award.org/sites/default/files/2025-12/BOM156_Guidance-Notes-for-MGS-online-application_V28_0825-1.pdf"
+  ],
+  "usd": 0
+}

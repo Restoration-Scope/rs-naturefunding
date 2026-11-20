@@ -1,19 +1,49 @@
 {
   "id": "wild-about-devon-community-wildlife-grants",
   "name": "Wild About Devon Community Wildlife Grant Scheme",
-  "funder": { "name": "Devon Communities Together", "url": "https://www.devoncommunities.org.uk/" },
+  "funder": {
+    "name": "Devon Communities Together",
+    "url": "https://www.devoncommunities.org.uk/"
+  },
   "administered_by": null,
   "parent": null,
   "url": "https://www.devoncommunities.org.uk/projects/wild-about-devon-community-wildlife-grant-scheme-2025-0",
   "summary": "Small grants of up to £500 for community groups, charities, councils, schools and similar not-for-profit bodies in Devon for projects that help local wildlife and involve local people.",
-  "approaches": ["community_conservation", "species_conservation"],
-  "applicant_types": ["community_group", "ngo", "social_enterprise", "government"],
-  "geography": { "scope": "countries", "countries": ["GB"], "label": "Devon (including Plymouth)" },
+  "approaches": [
+    "community_conservation",
+    "species_conservation"
+  ],
+  "applicant_types": [
+    "community_group",
+    "ngo",
+    "social_enterprise",
+    "government"
+  ],
+  "geography": {
+    "scope": "countries",
+    "countries": [
+      "GB"
+    ],
+    "label": "Devon (including Plymouth)"
+  },
   "access": "direct",
   "window": "fixed",
-  "amount": { "currency": "GBP", "max": 500 },
+  "amount": {
+    "currency": "GBP",
+    "max": 500
+  },
   "co_finance_required": null,
   "reporting": null,
+  "eligibility": [
+    {
+      "rule": "No non-native planting (unless clearly justified) or poorly sourced wildflower seeds or trees",
+      "kind": "project"
+    },
+    {
+      "rule": "No purely garden projects without wildlife benefit, beekeeping projects or school trips",
+      "kind": "project"
+    }
+  ],
   "calls": [
     {
       "id": "2026-27",
@@ -62,7 +92,21 @@
       "quote": "the grant scheme offers up to £500 for projects that benefit local wildlife",
       "checked_at": "2026-11-14",
       "method": "page"
-    }
+    },
+    "eligibility": [
+      {
+        "source_url": "https://www.devoncommunities.org.uk/projects/wild-about-devon-community-wildlife-grant-scheme-2025-0",
+        "quote": "Non-native planting, including bulbs (unless you have a very clear reason, like adapting to climate change!) Poorly-sourced wildflower seeds or trees (some retail wildflower packs can be inappropriate",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.devoncommunities.org.uk/projects/wild-about-devon-community-wildlife-grant-scheme-2025-0",
+        "quote": "Purely garden projects without obvious wildlife benefit Beekeeping projects School trips",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ]
   },
   "checked_at": "2026-11-14"
 }

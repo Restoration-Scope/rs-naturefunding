@@ -1,0 +1,89 @@
+{
+  "id": "mzp-nno-podprogram-a",
+  "read_on": "2026-11-20",
+  "prompt_version": "req-2026-11-20.1",
+  "models": ["cursor:gpt-5.6-luna-high"],
+  "complete": false,
+  "reasons": [
+    "5 links could not be ranked without Jev",
+    "the text names a document with rules that was not read: Příručka pro žadatele a příjemce dotace MŽP - Program na podporu projektů NNO",
+    "Jev did not check this reading, so an absent fact is not known to be absent"
+  ],
+  "requirements_checked": false,
+  "documents": [
+    {
+      "ref": "D1",
+      "url": "https://mzp.gov.cz/cz/agenda/prehled-dotaci/program-na-podporu-projektu-nno",
+      "final_url": "https://mzp.gov.cz/cz/agenda/prehled-dotaci/program-na-podporu-projektu-nno",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 6706,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:b9b0f7322b5a991fc11b1a91082552bdfa652eebcb32a1c410b8847d3f037294"
+    },
+    {
+      "ref": "D2",
+      "url": "https://mzp.gov.cz/cz/agenda/prehled-dotaci/program-na-podporu-projektu-nno/vyzva-programu-na-podporu-projektu-nno-pro-rok-2027-podprogram-a-podprogram-na-podporu-projektu-nno",
+      "final_url": "https://mzp.gov.cz/cz/agenda/prehled-dotaci/program-na-podporu-projektu-nno/vyzva-programu-na-podporu-projektu-nno-pro-rok-2027-podprogram-a-podprogram-na-podporu-projektu-nno",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 7235,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:4b249ec7fde9cf73b9ba26a61de0bc4e915051e22ec5969dfef4da6eb53d164c"
+    },
+    {
+      "ref": "D3",
+      "url": "https://mzp.gov.cz/system/files/2026-09/320-Vyzva_NNO_prgA_2027-20260902.pdf",
+      "final_url": "https://mzp.gov.cz/system/files/2026-09/320-Vyzva_NNO_prgA_2027-20260902.pdf",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": true,
+      "chars": 42970,
+      "pages": 25,
+      "low_text": false,
+      "hash": "sha256:79b2db1bd8b2be9d555b5a54f300ad503b6c4fb5cee0e3a8b1c42a237b2dfda6"
+    },
+    {
+      "ref": "D4",
+      "url": "https://mzp.gov.cz/system/files/2026-09/320-Manual%20GRANTYS%20-%2020260827.pdf",
+      "final_url": "https://mzp.gov.cz/system/files/2026-09/320-Manual%20GRANTYS%20-%2020260827.pdf",
+      "from": "https://mzp.gov.cz/cz/agenda/prehled-dotaci/program-na-podporu-projektu-nno/vyzva-programu-na-podporu-projektu-nno-pro-rok-2027-podprogram-a-podprogram-na-podporu-projektu-nno",
+      "anchor": "Manuál systému Grantys MŽP (PDF, 2.45 MB)",
+      "depth": 1,
+      "pdf": true,
+      "chars": 33307,
+      "pages": 23,
+      "low_text": false,
+      "hash": "sha256:587b1b8d292adf94b17a05f738703b1be4a30035fe9fe47a89f829afa714ed7c"
+    }
+  ],
+  "failures": [],
+  "skipped_links": 278,
+  "chunks": [{ "id": "all", "docs": ["D1", "D2", "D3", "D4"], "chars": 90881 }],
+  "outcomes": {
+    "eligibility": "stated",
+    "documents": "stated",
+    "effort": "stated",
+    "co_finance": "stated",
+    "consortium": "not_found",
+    "after_award": "stated"
+  },
+  "written": ["eligibility", "documents", "effort", "co_finance", "after_award"],
+  "escalated": [],
+  "flags": [],
+  "notes": [
+    "effort \"Grantys application and data-box copy\": the quote does not state 2026-10-05 whole; left undated",
+    "co_finance: share 30% dropped, its quote does not state it",
+    "extractor: The 2027 call is closed. The detailed mandatory attachment list is in the unprovided applicant handbook.",
+    "source mzp-nno-podprogram-a-2: selector main dropped, a new quote sits outside it",
+    "source mzp-nno-podprogram-a-3: added for https://mzp.gov.cz/system/files/2026-09/320-Manual%20GRANTYS%20-%2020260827.pdf"
+  ],
+  "usd": 0
+}

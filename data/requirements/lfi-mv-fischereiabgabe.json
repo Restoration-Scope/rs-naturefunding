@@ -1,0 +1,107 @@
+{
+  "id": "lfi-mv-fischereiabgabe",
+  "read_on": "2026-11-20",
+  "prompt_version": "req-2026-11-20.1",
+  "models": ["cursor:gpt-5.6-luna-high"],
+  "complete": false,
+  "reasons": [
+    "9 links could not be ranked without Jev",
+    "10 links could not be ranked without Jev",
+    "https://www.lfi-mv.de/faq-foerderportal/bWFpbHRvOnNlcnZpY2VkZXNrQGxmaS1tdi5kZQ== would not open (http: HTTP 404)",
+    "Jev did not check this reading, so an absent fact is not known to be absent"
+  ],
+  "requirements_checked": false,
+  "documents": [
+    {
+      "ref": "D1",
+      "url": "https://www.lfi-mv.de/foerderfinder/fischereiabgabe/",
+      "final_url": "https://www.lfi-mv.de/foerderfinder/fischereiabgabe/",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 5603,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:36d1561c57d600a08fd9d6c88d2428ea1e725bef6983c15773bdccbb6a66bf92"
+    },
+    {
+      "ref": "D2",
+      "url": "https://www.lfi-mv.de/export/sites/lfi/.galleries/fischereiabgabe/foerderrichtlinie-mv.pdf",
+      "final_url": "https://www.lfi-mv.de/export/sites/lfi/.galleries/fischereiabgabe/foerderrichtlinie-mv.pdf",
+      "from": "https://www.lfi-mv.de/foerderfinder/fischereiabgabe/",
+      "anchor": "Richtlinie Fischereiabgabe (PDF 215,08 KB)",
+      "depth": 1,
+      "pdf": true,
+      "chars": 8487,
+      "pages": 5,
+      "low_text": false,
+      "hash": "sha256:6712521dea4fd071e929b1cafb58ada60dabdb5ba961abaf2648af0e17f4a3f8"
+    },
+    {
+      "ref": "D3",
+      "url": "https://www.lfi-mv.de/export/sites/lfi/.galleries/fischereiabgabe/merklatt-fischereiabgabe.pdf",
+      "final_url": "https://www.lfi-mv.de/export/sites/lfi/.galleries/fischereiabgabe/merklatt-fischereiabgabe.pdf",
+      "from": "https://www.lfi-mv.de/foerderfinder/fischereiabgabe/",
+      "anchor": "Merkblatt (PDF 126,44 KB)",
+      "depth": 1,
+      "pdf": true,
+      "chars": 3671,
+      "pages": 2,
+      "low_text": false,
+      "hash": "sha256:c0bbd483b08cf3f539e606d226f2893bf6e4e3f21bd2bbb80a28b4018264d458"
+    },
+    {
+      "ref": "D4",
+      "url": "https://www.lfi-mv.de/export/sites/lfi/.galleries/grundsatzdokumente/datenschutzhinweis-ds-gvo.pdf",
+      "final_url": "https://www.lfi-mv.de/export/sites/lfi/.galleries/grundsatzdokumente/datenschutzhinweis-ds-gvo.pdf",
+      "from": "https://www.lfi-mv.de/foerderfinder/fischereiabgabe/",
+      "anchor": "Datenschutzhinweis nach Art. 13, 14 und 21 DS-GVO (PDF 94,44 KB)",
+      "depth": 1,
+      "pdf": true,
+      "chars": 11962,
+      "pages": 5,
+      "low_text": false,
+      "hash": "sha256:f7c6fea61d8db5ed8977bcc9fad8bbf281ee83953e9d83bd2d93b62f897e4386"
+    },
+    {
+      "ref": "D5",
+      "url": "https://www.lfi-mv.de/faq-foerderportal/",
+      "final_url": "https://www.lfi-mv.de/faq-foerderportal/",
+      "from": "https://www.lfi-mv.de/foerderfinder/fischereiabgabe/",
+      "anchor": "hier.",
+      "depth": 1,
+      "pdf": false,
+      "chars": 10967,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:b44c4c1970c957a180003580c00589f03c4412ace818207e07a200d0521c3a34"
+    }
+  ],
+  "failures": [
+    {
+      "url": "https://www.lfi-mv.de/faq-foerderportal/bWFpbHRvOnNlcnZpY2VkZXNrQGxmaS1tdi5kZQ==",
+      "from": "https://www.lfi-mv.de/faq-foerderportal/",
+      "kind": "http",
+      "message": "HTTP 404"
+    }
+  ],
+  "skipped_links": 89,
+  "chunks": [{ "id": "all", "docs": ["D1", "D2", "D3", "D4", "D5"], "chars": 41415 }],
+  "outcomes": {
+    "eligibility": "stated",
+    "documents": "stated",
+    "effort": "stated",
+    "co_finance": "stated",
+    "consortium": "not_found",
+    "after_award": "stated"
+  },
+  "written": ["eligibility", "documents", "effort", "co_finance", "after_award"],
+  "escalated": [],
+  "flags": [],
+  "notes": [
+    "extractor: The guideline states that it expires on 31 December 2027. The current information directs applicants to the funding portal; written applications remain possible in exceptional cases.",
+    "source lfi-mv-fischereiabgabe-2: added for https://www.lfi-mv.de/export/sites/lfi/.galleries/fischereiabgabe/foerderrichtlinie-mv.pdf"
+  ],
+  "usd": 0
+}

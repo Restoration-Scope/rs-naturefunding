@@ -1,7 +1,10 @@
 {
   "id": "gef-sgp-cepf-executed",
   "name": "GEF Small Grants Programme (CEPF-executed countries)",
-  "funder": { "name": "Global Environment Facility", "url": "https://www.thegef.org/" },
+  "funder": {
+    "name": "Global Environment Facility",
+    "url": "https://www.thegef.org/"
+  },
   "administered_by": {
     "name": "Critical Ecosystem Partnership Fund (CEPF)",
     "url": "https://www.cepf.net/"
@@ -9,9 +12,21 @@
   "parent": "gef-sgp",
   "url": "https://www.cepf.net/gef-small-grants-program",
   "summary": "GEF Small Grants run by CEPF for Conservation International in Equatorial Guinea, Libya and Saint Vincent and the Grenadines, giving grants of up to US$75,000 to registered civil society organisations through competitive calls.",
-  "approaches": ["community_conservation", "species_conservation"],
-  "applicant_types": ["ngo"],
-  "geography": { "scope": "countries", "countries": ["GQ", "LY", "VC"] },
+  "approaches": [
+    "community_conservation",
+    "species_conservation"
+  ],
+  "applicant_types": [
+    "ngo"
+  ],
+  "geography": {
+    "scope": "countries",
+    "countries": [
+      "GQ",
+      "LY",
+      "VC"
+    ]
+  },
   "access": "direct",
   "window": "fixed",
   "amount": {
@@ -21,6 +36,49 @@
   },
   "co_finance_required": null,
   "reporting": null,
+  "effort": {
+    "steps": [
+      "Letter of Inquiry",
+      "Eligibility screening and preliminary technical review",
+      "National Steering Committee consideration",
+      "Full project proposal, if invited"
+    ],
+    "more_after": true
+  },
+  "eligibility": [
+    {
+      "rule": "Is legally registered in the country in question",
+      "kind": "legal"
+    },
+    {
+      "rule": "Has a bank account that accepts foreign-currency wire transfers",
+      "kind": "capacity"
+    },
+    {
+      "rule": "Government-owned applicants are independent, can receive private funds and cannot claim sovereign immunity",
+      "kind": "legal"
+    },
+    {
+      "rule": "Implements no more than one SGP grant at a time during a GEF Operational Phase",
+      "kind": "other"
+    },
+    {
+      "rule": "Targets the relevant Country Program Strategy's thematic and geographic priorities",
+      "kind": "project"
+    },
+    {
+      "rule": "Does not fund land purchases, physical resettlement or potential harm to critical habitat",
+      "kind": "project"
+    },
+    {
+      "rule": "Does not fund activities prohibited by CEPF environmental and social safeguards",
+      "kind": "project"
+    }
+  ],
+  "after_award": {
+    "reports": "other",
+    "site_visits": true
+  },
   "calls": [],
   "evidence": {
     "administered_by": {
@@ -58,7 +116,97 @@
       "quote": "It is anticipated that there will be at least one call for proposals in each country in both 2026 and 2027.",
       "checked_at": "2026-11-04",
       "method": "page"
-    }
+    },
+    "effort": [
+      {
+        "source_url": "https://www.cepf.net/gef-small-grants-program",
+        "quote": "Applicants should prepare a Letter of Inquiry (LOI), following the template for the relevant country, in one of the languages specified in the call for proposals.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.cepf.net/gef-small-grants-program",
+        "quote": "All LOIs submitted will first be screened to confirm their eligibility. Eligible LOIs will then undergo preliminary technical review.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.cepf.net/gef-small-grants-program",
+        "quote": "shortlisted applications will be further considered during a meeting of the National Steering Committee (NSC) for the country in question",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.cepf.net/gef-small-grants-program",
+        "quote": "organizations whose LOIs are selected will be invited to submit full project proposals",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "eligibility": [
+      {
+        "source_url": "https://www.cepf.net/gef-small-grants-program",
+        "quote": "are legally registered in the country in question",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.cepf.net/gef-small-grants-program",
+        "quote": "have a bank account in the organization's name that can receive payments by wire transfer in foreign currency",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.cepf.net/gef-small-grants-program",
+        "quote": "the enterprise or institution has a legal personality independent of any government agency or actor, that the enterprise or institution has the authority to apply for and receive private funds in its own name and capacity, and that the enterprise or institution may not assert a claim of sovereign immunity.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.cepf.net/gef-small-grants-program",
+        "quote": "Any given CSO is permitted to implement no more than one SGP grant at a time during a GEF Operational Phase.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.cepf.net/gef-small-grants-program",
+        "quote": "Proposed activities must target the thematic and geographic priorities set out in the relevant Country Program Strategy.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.cepf.net/gef-small-grants-program",
+        "quote": "Grants must not be used for the purchase of land, physical resettlement of people or activities that have the potential to cause adverse impacts to critical habitat.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.cepf.net/gef-small-grants-program",
+        "quote": "Grants must not be used for any other activities prohibited by CEPF's environmental and social safeguard policies.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "after_award": [
+      {
+        "source_url": "https://www.cepf.net/resources/documents/gef-sgp-svg-operational-procedures-english",
+        "quote": "Grantees submit evidence of milestone completion throughout the life of the grant.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.cepf.net/resources/documents/gef-sgp-svg-operational-procedures-english",
+        "quote": "At project completion, all grantees are required to submit a Final Completion and Impact Report, following the template in Annex 1, within two months of the project end date.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.cepf.net/resources/documents/gef-sgp-svg-operational-procedures-english",
+        "quote": "The National Coordinator, accompanied, in some cases, by CEPF staff, conducts site visits to selected grants",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ]
   },
   "checked_at": "2026-11-04"
 }

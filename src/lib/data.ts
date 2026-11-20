@@ -2,7 +2,7 @@ import { existsSync, readFileSync } from 'node:fs'
 import { join } from 'node:path'
 import { loadData } from '../data/load'
 import type { Call, Programme } from '../data/schema'
-import { countriesByRegion, countryRegion } from './geo'
+import { countriesByRegion, countryName, countryRegion } from './geo'
 import type { SizeBucket, State } from './labels'
 import { sizeBuckets } from './labels'
 import { usdPerUnit } from './rates'
@@ -12,6 +12,8 @@ export { daysBetween } from './status'
 
 const data = loadData()
 export const programmes: Programme[] = data.programmes
+/** Official country lists funders point to (data/lists), by id. */
+export const countryLists = new Map(data.lists.map((l) => [l.id, l]))
 
 /** The day this build ran, in UTC. Statuses and freshness are judged against it, and again in the browser. */
 export const buildDate = utcDateKey()
@@ -154,13 +156,34 @@ export function whereCodes(p: Programme): string {
   return [...g.countries, ...[...regions].map((r) => `r:${r}`)].join(' ')
 }
 
-/** whereCodes with each region spelled out as its countries, so a page can tell whether it takes one country. */
+/**
+ * whereCodes with each region spelled out as its countries, so a page can tell whether it takes one country.
+ * A funder's group inside a region ("ODA-eligible countries") may leave a country out: its region is `?:<region>`
+ * and its countries `?<code>`, which the page reads as "check", never as a yes.
+ */
 export function whereReach(p: Programme): string {
   const g = p.geography
   if (g?.scope !== 'regions') return whereCodes(p)
   const countries = countriesByRegion.filter((r) => g.regions.includes(r.region)).flatMap((r) => r.countries.map((c) => c.code))
+  if (!g.whole) return [...g.regions.map((r) => `?:${r}`), ...countries.map((c) => `?${c}`)].join(' ')
   return [whereCodes(p), ...countries].join(' ')
 }
+
+/**
+ * The area a programme's country list stands for, for a page's "Includes" line. `part`: the label names an area
+ * inside one country ("Yamanashi Prefecture" in Japan), so the page never says the whole country. `within`: the
+ * label names the group or area its countries sit in ("Tropical Andes", "ODA-eligible countries").
+ */
+export function whereArea(p: Programme): { part?: string; within?: string } {
+  const g = p.geography
+  if (g?.scope !== 'countries' || !g.label || (g.whole && g.countries.length === 1)) return {}
+  if (comparableName(g.label) === comparableName(g.countries.map(countryName).join(' '))) return {}
+  return g.countries.length === 1 ? { part: g.label } : { within: g.label }
+}
+
+/** A place name with case, accents, "the", "and" and punctuation folded away, so "Hong Kong & Macau" matches "Hong Kong and Macau". */
+const comparableName = (s: string) =>
+  s.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/\b(the|and)\b|[^a-z]+/g, ' ').trim().split(/\s+/).sort().join(' ')
 
 export const stats = {
   programmes: listings.length,

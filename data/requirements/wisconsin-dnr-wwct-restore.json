@@ -1,0 +1,228 @@
+{
+  "id": "wisconsin-dnr-wwct-restore",
+  "read_on": "2026-11-20",
+  "prompt_version": "req-2026-11-20.1",
+  "models": ["cursor:gpt-5.6-luna-high", "cursor:gpt-5.6-sol-high"],
+  "complete": false,
+  "reasons": [
+    "22 links could not be ranked without Jev",
+    "25 links could not be ranked without Jev",
+    "https://dnr.wisconsin.gov/sites/default/files/topic/Wetlands/WWCT_Guidance_2019.pdf: page 1 is an image: needs OCR",
+    "https://dnr.wisconsin.gov/sites/default/files/topic/Wetlands/WWCT_Final_Instrument_June_23_2023.pdf: pages 1, 96, 98, 103, 121, 152, 161, 167, 183, 211, 217, 238, 253, 267 are images: needs OCR",
+    "https://dnr.wisconsin.gov/sites/default/files/topic/Wetlands/WetlandCompensatoryMitigationGuidelines.pdf would not open (http: HTTP 404)",
+    "the crawl bound left https://dnr.wisconsin.gov/site/ unread",
+    "https://apps.dnr.wi.gov/doclink/forms/8700-363.pdf: a document on another site: without Jev it can’t be confirmed as the funder’s, so it is not used",
+    "the text names a document with rules that was not read: WWCT Program Instrument",
+    "the text names a document with rules that was not read: Guidelines for Compensatory Mitigation in Wisconsin",
+    "the text names a document with rules that was not read: WI Wetland Conservation Trust Grant Application (Form 8700-363)",
+    "the text names a document with rules that was not read: Mitigation Easement Template",
+    "the text names a document with rules that was not read: Covenant Template",
+    "the text names a document with rules that was not read: 2013 Guidelines for Wetland Compensatory Mitigation in Wisconsin",
+    "the text names a document with rules that was not read: Federal Rule on Compensatory Mitigation: Mitigation for Aquatic Resources (33 CFR Parts 325 and 332)",
+    "the text names a document with rules that was not read: Compensation Site Plan Wisconsin Wetland Conservation Trust (WWCT) Project",
+    "the text names a document with rules that was not read: Existing Advanced Watershed Plans (where applicable)",
+    "the text names a document with rules that was not read: Appendix A",
+    "the text names a document with rules that was not read: 33 CFR 332.3(h)",
+    "the text names a document with rules that was not read: Appendix E",
+    "the text names a document with rules that was not read: Appendix A, element VI",
+    "Jev did not check this reading, so an absent fact is not known to be absent",
+    "strong reading: the text names a document with rules that was not read: WI Wetland Conservation Trust Grant Application (Form 8700-363)",
+    "strong reading: the text names a document with rules that was not read: WWCT Program Instrument",
+    "strong reading: the text names a document with rules that was not read: Guidelines for Compensatory Mitigation in Wisconsin",
+    "strong reading: the text names a document with rules that was not read: WWCT Mitigation Easement Template",
+    "strong reading: the text names a document with rules that was not read: WWCT Covenant Template"
+  ],
+  "requirements_checked": false,
+  "documents": [
+    {
+      "ref": "D1",
+      "url": "https://dnr.wisconsin.gov/topic/Wetlands/wwct/applicants.html",
+      "final_url": "https://dnr.wisconsin.gov/topic/Wetlands/wwct/applicants.html",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 7953,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:01246536d2e48c12ea4f4278603dafe49d5c69df5c5269c2e6ce14b6c13f0940"
+    },
+    {
+      "ref": "D2",
+      "url": "https://dnr.wisconsin.gov/sites/default/files/topic/Wetlands/WWCT_Guidance_2019.pdf",
+      "final_url": "https://dnr.wisconsin.gov/sites/default/files/topic/Wetlands/WWCT_Guidance_2019.pdf",
+      "from": "https://dnr.wisconsin.gov/topic/Wetlands/wwct/applicants.html",
+      "anchor": "WWCT Guidance",
+      "depth": 1,
+      "pdf": true,
+      "chars": 28349,
+      "pages": 12,
+      "low_text": false,
+      "hash": "sha256:a268d20eec088451f00bed223737b940e38d9e7489a19b63f120cffab9b0a992"
+    },
+    {
+      "ref": "D3",
+      "url": "https://dnr.wisconsin.gov/sites/default/files/topic/Wetlands/WWCTDesirableProjectSites.pdf",
+      "final_url": "https://dnr.wisconsin.gov/sites/default/files/topic/Wetlands/WWCTDesirableProjectSites.pdf",
+      "from": "https://dnr.wisconsin.gov/topic/Wetlands/wwct/applicants.html",
+      "anchor": "Desirable Project Sites",
+      "depth": 1,
+      "pdf": true,
+      "chars": 2015,
+      "pages": 2,
+      "low_text": false,
+      "hash": "sha256:8c76d2b0636a07efcc8a9a3fc64000a445d91b55d194ec072d4d9fb1b44a0607"
+    },
+    {
+      "ref": "D4",
+      "url": "https://dnr.wisconsin.gov/sites/default/files/topic/Wetlands/mitigation/2023_Ch_16_Contract_Template.pdf",
+      "final_url": "https://dnr.wisconsin.gov/sites/default/files/topic/Wetlands/mitigation/2023_Ch_16_Contract_Template.pdf",
+      "from": "https://dnr.wisconsin.gov/topic/Wetlands/wwct/applicants.html",
+      "anchor": "Contract Template",
+      "depth": 1,
+      "pdf": true,
+      "chars": 14703,
+      "pages": 5,
+      "low_text": false,
+      "hash": "sha256:2fdea5000a7aa7b84e8af2bda2dc988852e677bfa0651adb2469fb229e89bf06"
+    },
+    {
+      "ref": "D5",
+      "url": "https://dnr.wisconsin.gov/sites/default/files/topic/Wetlands/WWCT_Final_Instrument_June_23_2023.pdf",
+      "final_url": "https://dnr.wisconsin.gov/sites/default/files/topic/Wetlands/WWCT_Final_Instrument_June_23_2023.pdf",
+      "from": "https://dnr.wisconsin.gov/topic/Wetlands/wwct/applicants.html",
+      "anchor": "Program Instrument",
+      "depth": 1,
+      "pdf": true,
+      "chars": 696730,
+      "pages": 270,
+      "low_text": false,
+      "hash": "sha256:b95f8a2c831b7704ddce63ec719a9af427e976de8c91aeba42ebb119eed97325"
+    },
+    {
+      "ref": "D6",
+      "url": "https://dnr.wisconsin.gov/sites/default/files/topic/Wetlands/WWCT%20Consultant%20List_6.1.2026.pdf",
+      "final_url": "https://dnr.wisconsin.gov/sites/default/files/topic/Wetlands/WWCT%20Consultant%20List_6.1.2026.pdf",
+      "from": "https://dnr.wisconsin.gov/topic/Wetlands/wwct/applicants.html",
+      "anchor": "Consultant List",
+      "depth": 1,
+      "pdf": true,
+      "chars": 6195,
+      "pages": 4,
+      "low_text": false,
+      "hash": "sha256:8af1712f20114c015e611e056113a58cae4afb7709414c8cfa743f7cb0a4250f"
+    },
+    {
+      "ref": "D7",
+      "url": "https://dnr.wisconsin.gov/permits/water",
+      "final_url": "https://dnr.wisconsin.gov/permits/water",
+      "from": "https://dnr.wisconsin.gov/topic/Wetlands/wwct/applicants.html",
+      "anchor": "Water Permit Applications",
+      "depth": 1,
+      "pdf": false,
+      "chars": 2830,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:a410a235b1aa7add6bad50f397a7629c43ac6ef92bdc93d922040acef0f0ebf1"
+    }
+  ],
+  "failures": [
+    {
+      "url": "https://dnr.wisconsin.gov/sites/default/files/topic/Wetlands/WWCT_Guidance_2019.pdf",
+      "from": "https://dnr.wisconsin.gov/topic/Wetlands/wwct/applicants.html",
+      "kind": "low_text",
+      "message": "page 1 is an image: needs OCR"
+    },
+    {
+      "url": "https://dnr.wisconsin.gov/sites/default/files/topic/Wetlands/WWCT_Final_Instrument_June_23_2023.pdf",
+      "from": "https://dnr.wisconsin.gov/topic/Wetlands/wwct/applicants.html",
+      "kind": "low_text",
+      "message": "pages 1, 96, 98, 103, 121, 152, 161, 167, 183, 211, 217, 238, 253, 267 are images: needs OCR"
+    },
+    {
+      "url": "https://dnr.wisconsin.gov/sites/default/files/topic/Wetlands/WetlandCompensatoryMitigationGuidelines.pdf",
+      "from": "https://dnr.wisconsin.gov/topic/Wetlands/wwct/applicants.html",
+      "kind": "http",
+      "message": "HTTP 404"
+    },
+    {
+      "url": "https://dnr.wisconsin.gov/site/",
+      "from": "https://dnr.wisconsin.gov/topic/Wetlands/wwct/applicants.html",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://dnr.wisconsin.gov/site/",
+      "from": "https://dnr.wisconsin.gov/permits/water",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://apps.dnr.wi.gov/doclink/forms/8700-363.pdf",
+      "from": "https://dnr.wisconsin.gov/topic/Wetlands/wwct/applicants.html",
+      "kind": "offsite",
+      "message": "a document on another site: without Jev it can’t be confirmed as the funder’s, so it is not used"
+    }
+  ],
+  "skipped_links": 103,
+  "chunks": [
+    { "id": "c1", "docs": ["D1", "D2", "D3"], "chars": 38754 },
+    { "id": "c2", "docs": ["D4"], "chars": 14900 },
+    { "id": "c3", "docs": ["D5"], "chars": 40180 },
+    { "id": "c4", "docs": ["D5"], "chars": 40187 },
+    { "id": "c5", "docs": ["D5"], "chars": 39966 },
+    { "id": "c6", "docs": ["D5"], "chars": 40149 },
+    { "id": "c7", "docs": ["D5"], "chars": 40167 },
+    { "id": "c8", "docs": ["D5"], "chars": 40078 },
+    { "id": "c9", "docs": ["D5"], "chars": 40174 },
+    { "id": "c10", "docs": ["D5"], "chars": 40150 },
+    { "id": "c11", "docs": ["D5"], "chars": 40121 },
+    { "id": "c12", "docs": ["D5"], "chars": 40021 },
+    { "id": "c13", "docs": ["D5"], "chars": 39772 },
+    { "id": "c14", "docs": ["D5"], "chars": 40134 },
+    { "id": "c15", "docs": ["D5"], "chars": 39293 },
+    { "id": "c16", "docs": ["D5"], "chars": 40101 },
+    { "id": "c17", "docs": ["D5"], "chars": 40180 },
+    { "id": "c18", "docs": ["D5"], "chars": 39731 },
+    { "id": "c19", "docs": ["D5"], "chars": 40172 },
+    { "id": "c20", "docs": ["D5"], "chars": 40196 },
+    { "id": "c21", "docs": ["D5"], "chars": 6863 },
+    { "id": "c22", "docs": ["D6", "D7"], "chars": 9344 }
+  ],
+  "outcomes": {
+    "eligibility": "partial",
+    "documents": "partial",
+    "effort": "stated",
+    "co_finance": "not_found",
+    "consortium": "not_found",
+    "after_award": "stated"
+  },
+  "written": ["eligibility", "documents", "effort", "after_award"],
+  "escalated": ["eligibility", "documents"],
+  "flags": [
+    {
+      "field": "eligibility",
+      "item": "A State Lands applicant is a nonprofit conservation organization with a project entirely on Wisconsin DNR-owned or eased lands",
+      "why": "a rule is 5 to 120 characters"
+    },
+    {
+      "field": "documents",
+      "item": "List of wetland restoration projects completed within the last 10 years, if the applicant hires contractors or consultants",
+      "why": "a document is 3 to 120 characters"
+    },
+    {
+      "field": "documents",
+      "item": "Documentation showing the proposed project is located on Department land and endorsed by the local DNR property manager, for State Lands applicants",
+      "why": "a document is 3 to 120 characters"
+    }
+  ],
+  "notes": [
+    "eligibility: 2 rules past the 8th dropped",
+    "extractor: D1 is the current 2026 RFP page and lists SW Lake Michigan (HUC 040400) as the available service area. D2 is guidance revised in October 2018 and describes later project-development stages. | D4 is a contract template with placeholders. It does not state current-round eligibility, first-step submissions, application deadlines, or programme-specific applicant requirements. | D5 is a program instrument describing WWCT administration and mitigation projects. It does not state applicant eligibility rules, first-step submissions, application stages, or grantee duties. | This instrument describes the Sponsor's WWCT mitigation-site selection and reporting duties; it does not state applicant eligibility, first-step documents, co-finance, consortium requirements or grantee after-award duties. | This part is a 2023 WWCT program instrument with easement and covenant templates; it does not state current or next-round application requirements. | This excerpt describes WWCT's mitigation instrument a",
+    "strong: D2 was revised in October 2018; D1 states the current 2026 round requirements where they differ.",
+    "source wisconsin-dnr-wwct-restore-2: added for https://dnr.wisconsin.gov/sites/default/files/topic/Wetlands/WWCT_Guidance_2019.pdf",
+    "source wisconsin-dnr-wwct-restore-3: added for https://dnr.wisconsin.gov/sites/default/files/topic/Wetlands/WWCTDesirableProjectSites.pdf",
+    "source wisconsin-dnr-wwct-restore-4: added for https://dnr.wisconsin.gov/sites/default/files/topic/Wetlands/WWCT_Final_Instrument_June_23_2023.pdf"
+  ],
+  "usd": 0
+}

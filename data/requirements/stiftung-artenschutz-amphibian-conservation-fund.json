@@ -1,0 +1,113 @@
+{
+  "id": "stiftung-artenschutz-amphibian-conservation-fund",
+  "read_on": "2026-11-20",
+  "prompt_version": "req-2026-11-20.1",
+  "models": ["cursor:gpt-5.6-luna-high", "cursor:gpt-5.6-sol-high"],
+  "complete": false,
+  "reasons": [
+    "5 links could not be ranked without Jev",
+    "the text names a document with rules that was not read: Budget Form",
+    "Jev did not check this reading, so an absent fact is not known to be absent"
+  ],
+  "requirements_checked": false,
+  "documents": [
+    {
+      "ref": "D1",
+      "url": "https://stiftung-artenschutz.de/en_US/grants/amphibian-conservation-fund/",
+      "final_url": "https://stiftung-artenschutz.de/en_US/grants/amphibian-conservation-fund/",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 2887,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:6d341f7046acdff860bf8e628e75e56d2a722e790ef28ace0d6380ed62abdafc"
+    },
+    {
+      "ref": "D2",
+      "url": "https://stiftung-artenschutz.de/en_US/grants/",
+      "final_url": "https://stiftung-artenschutz.de/en_US/grants/",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 3557,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:2d5ce118320a1a00e1602ec91541cd604c1dd16f9be66151b4caf49c3b4eb13f"
+    },
+    {
+      "ref": "D3",
+      "url": "https://stiftung-artenschutz.de/assets/Uploads/Amphibien-Fonds/2026_Ausschreibung_-Amphibian-Fonds_ENG.pdf",
+      "final_url": "https://stiftung-artenschutz.de/assets/Uploads/Amphibien-Fonds/2026_Ausschreibung_-Amphibian-Fonds_ENG.pdf",
+      "from": "https://stiftung-artenschutz.de/en_US/grants/amphibian-conservation-fund/",
+      "anchor": "Full text of Grant call",
+      "depth": 1,
+      "pdf": true,
+      "chars": 6345,
+      "pages": 4,
+      "low_text": false,
+      "hash": "sha256:c23d2e057053080c11aa0f4fbc5be287eaf46152fd2cfd831a3c3192dee4468b"
+    },
+    {
+      "ref": "D4",
+      "url": "https://stiftung-artenschutz.de/assets/Uploads/Grants/2025_Grant-Call-Amphibian-Conservation-Fund.pdf",
+      "final_url": "https://stiftung-artenschutz.de/assets/Uploads/Grants/2025_Grant-Call-Amphibian-Conservation-Fund.pdf",
+      "from": "https://stiftung-artenschutz.de/en_US/grants/amphibian-conservation-fund/",
+      "anchor": "",
+      "depth": 1,
+      "pdf": true,
+      "chars": 6347,
+      "pages": 4,
+      "low_text": false,
+      "hash": "sha256:2675ef59ef619da6ec511173ef123931516b472ab7707b33ec41a8a7f46e4fed"
+    },
+    {
+      "ref": "D5",
+      "url": "https://stiftung-artenschutz.de/assets/Uploads/Grants/2026_Proposal-Form_-Stiftung-Artenschutz.docx",
+      "final_url": "https://stiftung-artenschutz.de/assets/Uploads/Grants/2026_Proposal-Form_-Stiftung-Artenschutz.docx",
+      "from": "https://stiftung-artenschutz.de/en_US/grants/amphibian-conservation-fund/",
+      "anchor": "Proposal form",
+      "depth": 1,
+      "pdf": false,
+      "chars": 4680,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:bca5a8076212208efae75edfd2c6c89f40a42a350140945e7558492d9258d6bc"
+    },
+    {
+      "ref": "D6",
+      "url": "https://stiftung-artenschutz.de/assets/Uploads/Grants/Proposal-Guidelines_-Stiftung-Artenschutz.pdf",
+      "final_url": "https://stiftung-artenschutz.de/assets/Uploads/Grants/Proposal-Guidelines_-Stiftung-Artenschutz.pdf",
+      "from": "https://stiftung-artenschutz.de/en_US/grants/amphibian-conservation-fund/",
+      "anchor": "Proposal guidelines",
+      "depth": 1,
+      "pdf": true,
+      "chars": 12098,
+      "pages": 5,
+      "low_text": false,
+      "hash": "sha256:c10819070f16574c430a9dc7cdbe20907693b585d10af846e90824cbafd2e496"
+    }
+  ],
+  "failures": [],
+  "skipped_links": 46,
+  "chunks": [{ "id": "all", "docs": ["D1", "D2", "D3", "D4", "D5", "D6"], "chars": 36887 }],
+  "outcomes": {
+    "eligibility": "stated",
+    "documents": "stated",
+    "effort": "stated",
+    "co_finance": "not_found",
+    "consortium": "not_found",
+    "after_award": "stated"
+  },
+  "written": ["eligibility", "documents", "effort", "after_award"],
+  "escalated": ["after_award"],
+  "flags": [],
+  "notes": [
+    "extractor: D3 gives the current or next deadline as 31 July 2026, while D4 gives the older 31 August 2025 deadline. D1 and D2 state that there are currently no open calls. D3 requires a reference letter for every full proposal, while D5 and D6 say a support letter is only necessary for a new project partner. D3 says the legal-status document is ideally submitted initially and mandatory after a positive decision, while D5 lists it in the application checklist.",
+    "source stiftung-artenschutz-amphibian-conservation-fund-3: added for https://stiftung-artenschutz.de/assets/Uploads/Amphibien-Fonds/2026_Ausschreibung_-Amphibian-Fonds_ENG.pdf",
+    "source stiftung-artenschutz-amphibian-conservation-fund-4: added for https://stiftung-artenschutz.de/assets/Uploads/Grants/2026_Proposal-Form_-Stiftung-Artenschutz.docx"
+  ],
+  "usd": 0
+}

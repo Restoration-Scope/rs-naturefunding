@@ -1,0 +1,85 @@
+{
+  "id": "hifadhi-blu-mca-grants",
+  "read_on": "2026-11-20",
+  "prompt_version": "req-2026-11-20.1",
+  "models": ["cursor:gpt-5.6-luna-high", "cursor:gpt-5.6-sol-high"],
+  "complete": false,
+  "reasons": [
+    "5 links could not be ranked without Jev",
+    "https://blog.wiomsa.net/wp-content/uploads/2025/10/Call-for-Motivation-Letters_Hifadhi-Blu_2025_Final.pdf: a document on another site: without Jev it can’t be confirmed as the funder’s, so it is not used",
+    "the text names a document with rules that was not read: Full eligibility criteria",
+    "the text names a document with rules that was not read: Full call for motivation letters",
+    "Jev did not check this reading, so an absent fact is not known to be absent",
+    "strong reading: the text names a document with rules that was not read: Full eligibility criteria",
+    "strong reading: the text names a document with rules that was not read: Full call for motivation letters"
+  ],
+  "requirements_checked": false,
+  "documents": [
+    {
+      "ref": "D1",
+      "url": "https://wiomsa.org/hifadhiblu/grant-technical-support/",
+      "final_url": "https://wiomsa.org/hifadhiblu/grant-technical-support/",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 17101,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:04104a76e879c638a9c6117d3344c4e7620ca104a68a5604ca57eec5611d74df"
+    },
+    {
+      "ref": "D2",
+      "url": "https://wiomsa.org/hifadhiblu/2025/11/04/new-funding-opportunity-for-marine-conservation-management-hifadhi-blu-call-for-motivation-letters/",
+      "final_url": "https://wiomsa.org/hifadhiblu/2025/11/04/new-funding-opportunity-for-marine-conservation-management-hifadhi-blu-call-for-motivation-letters/",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 6661,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:f0fe2cb79bc661aaee2bfa116e58f9b75016d3624ba84404570a693731250afd"
+    },
+    {
+      "ref": "D3",
+      "url": "https://wiomsa.org/hifadhiblu/2026/07/13/beyond-funding-hifadhi-blu-invests-in-stronger-management-systems-for-ocean-conservation/",
+      "final_url": "https://wiomsa.org/hifadhiblu/2026/07/13/beyond-funding-hifadhi-blu-invests-in-stronger-management-systems-for-ocean-conservation/",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 7556,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:6a57a2f92d51cb79767f05d7617dfec4e5c2f909abe6922ac91805b36c9e3869"
+    }
+  ],
+  "failures": [
+    {
+      "url": "https://blog.wiomsa.net/wp-content/uploads/2025/10/Call-for-Motivation-Letters_Hifadhi-Blu_2025_Final.pdf",
+      "from": "https://wiomsa.org/hifadhiblu/2025/11/04/new-funding-opportunity-for-marine-conservation-management-hifadhi-blu-call-for-motivation-letters/",
+      "kind": "offsite",
+      "message": "a document on another site: without Jev it can’t be confirmed as the funder’s, so it is not used"
+    }
+  ],
+  "skipped_links": 94,
+  "chunks": [{ "id": "all", "docs": ["D1", "D2", "D3"], "chars": 31685 }],
+  "outcomes": {
+    "eligibility": "stated",
+    "documents": "stated",
+    "effort": "stated",
+    "co_finance": "not_found",
+    "consortium": "not_found",
+    "after_award": "not_found"
+  },
+  "written": ["eligibility", "documents", "effort"],
+  "escalated": ["eligibility"],
+  "flags": [],
+  "notes": [
+    "effort \"Motivation letter\": the quote does not state 2025-11-29 whole; left undated",
+    "extractor: D1 describes the earlier Cohort 1 process and January 2025 deadline. D2 is the current Cohort 2 call. D3 reports post-call selections and adds no applicant requirements.",
+    "strong: D1 describes the older Cohort 1 round; current Cohort 2 eligibility is taken from D2."
+  ],
+  "usd": 0
+}

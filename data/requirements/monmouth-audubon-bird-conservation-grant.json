@@ -1,0 +1,148 @@
+{
+  "id": "monmouth-audubon-bird-conservation-grant",
+  "read_on": "2026-11-20",
+  "prompt_version": "req-2026-11-20.1",
+  "models": ["cursor:gpt-5.6-luna-high"],
+  "complete": false,
+  "reasons": [
+    "11 links could not be ranked without Jev",
+    "10 links could not be ranked without Jev",
+    "127 links could not be ranked without Jev",
+    "the crawl bound left https://www.squarespace.com/extensions/home unread",
+    "the crawl bound left https://www.squarespace.com/payments unread",
+    "the crawl bound left https://www.squarespace.com/privacy-policy-tr unread",
+    "the text names a document with rules that was not read: Grant Agreement",
+    "Jev did not check this reading, so an absent fact is not known to be absent"
+  ],
+  "requirements_checked": false,
+  "documents": [
+    {
+      "ref": "D1",
+      "url": "https://www.monmouthaudubon.org/mc-bird-conservation-grant",
+      "final_url": "https://www.monmouthaudubon.org/mc-bird-conservation-grant",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 5908,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:182624a98ffa2fa73262ee477d3b872582e9de93570bd5e6bc13c20aa4ab2a7b"
+    },
+    {
+      "ref": "D2",
+      "url": "https://www.monmouthaudubon.org/monmouth-county-checklist",
+      "final_url": "https://www.monmouthaudubon.org/monmouth-county-checklist",
+      "from": "https://www.monmouthaudubon.org/mc-bird-conservation-grant",
+      "anchor": "Monmouth County Checklist",
+      "depth": 1,
+      "pdf": false,
+      "chars": 1145,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:dc3ea0d61b335877c1bf59d09b0c371f397e46744111deaae7202e7a4ef4fdb8"
+    },
+    {
+      "ref": "D3",
+      "url": "https://www.monmouthaudubon.org/faqs",
+      "final_url": "https://www.monmouthaudubon.org/faqs",
+      "from": "https://www.monmouthaudubon.org/mc-bird-conservation-grant",
+      "anchor": "FAQs",
+      "depth": 1,
+      "pdf": false,
+      "chars": 25947,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:273d6751b9779e7eee8d44981501d166f09ccebca9efcaba2d84a6ede0c03409"
+    },
+    {
+      "ref": "D4",
+      "url": "https://www.monmouthaudubon.org/s/Grant-Non-profit-Resolution.pdf",
+      "final_url": "https://static1.squarespace.com/static/5a0335b2f09ca4fd624cb729/t/618cc690402c55508b8ada1a/1636615877812/Grant+Non-profit+Resolution.pdf",
+      "from": "https://www.monmouthaudubon.org/mc-bird-conservation-grant",
+      "anchor": "Non-profit Resolution form",
+      "depth": 1,
+      "pdf": true,
+      "chars": 2685,
+      "pages": 2,
+      "low_text": false,
+      "hash": "sha256:ee46584a91e4601ddd3aba72fdfb8b51681c3e6f27f64178b59939ec8de0a487"
+    },
+    {
+      "ref": "D5",
+      "url": "https://www.monmouthaudubon.org/s/Downloadable-Grant-Application-Information-2025-26.pdf",
+      "final_url": "https://static1.squarespace.com/static/5a0335b2f09ca4fd624cb729/t/68d5f0642d6afe203853479b/1758851172296/Downloadable+Grant+Application+Information+2025-26.pdf",
+      "from": "https://www.monmouthaudubon.org/mc-bird-conservation-grant",
+      "anchor": "Downloadable Grant Application Information",
+      "depth": 1,
+      "pdf": true,
+      "chars": 5087,
+      "pages": 3,
+      "low_text": false,
+      "hash": "sha256:08c65e2b8fa1bf67e19b63fd601a55bd4b30f1b63c303a97779fa0e0c943d7d4"
+    },
+    {
+      "ref": "D6",
+      "url": "https://dena-temple.squarespace.com/s/BirdsofMonmouthCounty_Final.pdf",
+      "final_url": "https://static1.squarespace.com/static/5a0335b2f09ca4fd624cb729/t/5a1b251e8165f542d6aa17cc/1511728414174/BirdsofMonmouthCounty_Final.pdf",
+      "from": "https://www.monmouthaudubon.org/monmouth-county-checklist",
+      "anchor": "Click here",
+      "depth": 2,
+      "pdf": true,
+      "chars": 8763,
+      "pages": 2,
+      "low_text": false,
+      "hash": "sha256:34962e59464e80c1ddd6fa4519f31d51cced0cc946ded5d1cf62fdd4df2eb985"
+    },
+    {
+      "ref": "D7",
+      "url": "http://www.squarespace.com/?channel=word_of_mouth&subchannel=customer&source=footer&campaign=4fd1028ee4b02be53c65dfb3",
+      "final_url": "https://www.squarespace.com/?channel=word_of_mouth&subchannel=customer&source=footer&campaign=4fd1028ee4b02be53c65dfb3",
+      "from": "https://www.monmouthaudubon.org/monmouth-county-checklist",
+      "anchor": "Squarespace",
+      "depth": 2,
+      "pdf": false,
+      "chars": 26026,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:cd1d2164b9df09e74b5db228687c246d4269909ef035ce017a79a9833f27bd8b"
+    }
+  ],
+  "failures": [
+    {
+      "url": "https://www.squarespace.com/extensions/home",
+      "from": "http://www.squarespace.com/?channel=word_of_mouth&subchannel=customer&source=footer&campaign=4fd1028ee4b02be53c65dfb3",
+      "kind": "bound",
+      "message": "past the crawl depth of 2"
+    },
+    {
+      "url": "https://www.squarespace.com/payments",
+      "from": "http://www.squarespace.com/?channel=word_of_mouth&subchannel=customer&source=footer&campaign=4fd1028ee4b02be53c65dfb3",
+      "kind": "bound",
+      "message": "past the crawl depth of 2"
+    },
+    {
+      "url": "https://www.squarespace.com/privacy-policy-tr",
+      "from": "http://www.squarespace.com/?channel=word_of_mouth&subchannel=customer&source=footer&campaign=4fd1028ee4b02be53c65dfb3",
+      "kind": "bound",
+      "message": "past the crawl depth of 2"
+    }
+  ],
+  "skipped_links": 273,
+  "chunks": [{ "id": "all", "docs": ["D1", "D2", "D3", "D4", "D5", "D6", "D7"], "chars": 76596 }],
+  "outcomes": {
+    "eligibility": "stated",
+    "documents": "stated",
+    "effort": "stated",
+    "co_finance": "stated",
+    "consortium": "not_found",
+    "after_award": "stated"
+  },
+  "written": ["eligibility", "documents", "effort", "co_finance", "after_award"],
+  "escalated": [],
+  "flags": [],
+  "notes": [
+    "extractor: The 2026 round is closed. This is a reimbursement grant. Grantees must also submit a minimum of 3 representative photos or other graphics for MCAS publications and online use."
+  ],
+  "usd": 0
+}

@@ -9,14 +9,64 @@
   "parent": null,
   "url": "https://wwnrt.wyo.gov/how-to-apply/how-to-apply",
   "summary": "Grants from a Wyoming state trust for improving terrestrial and aquatic wildlife habitat, watershed enhancement and open-space conservation easements, open to nonprofits and governmental organisations. Applications are due twice a year.",
-  "approaches": ["species_conservation", "freshwater", "protected_areas"],
-  "applicant_types": ["ngo", "government"],
-  "geography": { "scope": "countries", "countries": ["US"], "label": "Wyoming, United States" },
+  "approaches": [
+    "species_conservation",
+    "freshwater",
+    "protected_areas"
+  ],
+  "applicant_types": [
+    "ngo",
+    "government"
+  ],
+  "geography": {
+    "scope": "countries",
+    "countries": [
+      "US"
+    ],
+    "label": "Wyoming, United States"
+  },
   "access": "direct",
   "window": "fixed",
   "amount": null,
   "co_finance_required": null,
   "reporting": "Sponsors maintain projects and report on progress and completion; monitoring and reporting requirements vary by project and are set out in the application.",
+  "effort": {
+    "steps": [
+      "Application for funding",
+      "Staff review of pre-proposal",
+      "On-site review, if selected"
+    ]
+  },
+  "eligibility": [
+    {
+      "rule": "The project provides a public benefit",
+      "kind": "project"
+    },
+    {
+      "rule": "The project does not reintroduce native or non-native game or non-game species under the Endangered Species Act",
+      "kind": "project"
+    },
+    {
+      "rule": "The project does not seek fee simple acquisition of real property",
+      "kind": "project"
+    },
+    {
+      "rule": "The project does not purchase water rights",
+      "kind": "project"
+    },
+    {
+      "rule": "Not used to meet required mitigation; funds may only expand on it",
+      "kind": "project"
+    }
+  ],
+  "after_award": {
+    "reports": "unspecified"
+  },
+  "documents": [
+    "Maps",
+    "Letters of recommendation",
+    "Cover letter"
+  ],
   "calls": [
     {
       "id": "twice-yearly",
@@ -30,13 +80,13 @@
         "status": {
           "source_url": "https://wwnrt.wyo.gov/how-to-apply/how-to-apply",
           "quote": "Application deadlines are March 1 and September 1 annually",
-          "checked_at": "2026-11-09",
+          "checked_at": "2026-11-20",
           "method": "page"
         },
         "recurring": {
           "source_url": "https://wwnrt.wyo.gov/how-to-apply/how-to-apply",
           "quote": "Application deadlines are March 1 and September 1 annually",
-          "checked_at": "2026-11-09",
+          "checked_at": "2026-11-20",
           "method": "page"
         }
       }
@@ -46,33 +96,101 @@
     "applicant_types": {
       "source_url": "https://wwnrt.wyo.gov/how-to-apply/how-to-apply",
       "quote": "The Board may grant funds only to non-profit and governmental organizations",
-      "checked_at": "2026-11-09",
+      "checked_at": "2026-11-20",
       "method": "page"
     },
     "geography": {
       "source_url": "https://wwnrt.wyo.gov/how-to-apply/how-to-apply",
       "quote": "Conservation, maintenance, protection and development of wildlife resources, the environment, and Wyoming's natural resource heritage.",
-      "checked_at": "2026-11-09",
+      "checked_at": "2026-11-20",
       "method": "page"
     },
     "access": {
       "source_url": "https://wwnrt.wyo.gov/how-to-apply/how-to-apply",
       "quote": "Applicants for funding should use the form attached to these guidelines.",
-      "checked_at": "2026-11-09",
+      "checked_at": "2026-11-20",
       "method": "page"
     },
     "window": {
       "source_url": "https://wwnrt.wyo.gov/how-to-apply/how-to-apply",
       "quote": "Projects will be funded twice annually, with funds made available for approved projects in July and January.",
-      "checked_at": "2026-11-09",
+      "checked_at": "2026-11-20",
       "method": "page"
     },
     "reporting": {
       "source_url": "https://wwnrt.wyo.gov/how-to-apply/how-to-apply",
       "quote": "Sponsoring entities will have the responsibility to maintain projects, and to report on progress and completion.",
-      "checked_at": "2026-11-09",
+      "checked_at": "2026-11-20",
       "method": "page"
-    }
+    },
+    "effort": [
+      {
+        "source_url": "https://wwnrt.wyo.gov/how-to-apply/how-to-apply",
+        "quote": "Applicants for funding should use the form attached to these guidelines.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://wwnrt.wyo.gov/how-to-apply/how-to-apply",
+        "quote": "All applications submitted will be considered pre-proposals, will be reviewed by WWNRT staff and subsequently reported to the Board.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://wwnrt.wyo.gov/how-to-apply/how-to-apply",
+        "quote": "Projects selected for final consideration by the Board in any grant cycle will be reviewed on-site by a committee of WWNRT Board members prior to funding.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "eligibility": [
+      {
+        "source_url": "https://wwnrt.wyo.gov/how-to-apply/how-to-apply",
+        "quote": "Projects are required to provide a public benefit.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://wwnrt.wyo.gov/how-to-apply/how-to-apply",
+        "quote": "No funds shall be made available for the reintroduction of any native or non-native game or non-game species pursuant to the Endangered Species Act.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://wwnrt.wyo.gov/how-to-apply/how-to-apply",
+        "quote": "No funds shall be disbursed for fee simple acquisition of real property.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://wwnrt.wyo.gov/how-to-apply/how-to-apply",
+        "quote": "No funds shall be disbursed to purchase water rights, and no water rights may be accepted as gift, transfer, bequest, or donation unless such water rights are attached to real property.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://wwnrt.wyo.gov/how-to-apply/how-to-apply",
+        "quote": "Trust fund monies may be used to expand on, but not meet required mitigation, preclude regulatory actions, or for voluntary actions with a primary purpose of enhancing wildlife habitat, the environment or natural resource values.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "after_award": [
+      {
+        "source_url": "https://wwnrt.wyo.gov/how-to-apply/how-to-apply",
+        "quote": "Sponsoring entities will have the responsibility to maintain projects, and to report on progress and completion.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "documents": [
+      {
+        "source_url": "https://wwnrt.wyo.gov/how-to-apply/how-to-apply",
+        "quote": "Electronic applications should be submitted as separate attachments as follows: a. Application b. Maps c. Letters of recommendation d. Other attachments, including cover letter",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ]
   },
-  "checked_at": "2026-11-09"
+  "checked_at": "2026-11-20"
 }

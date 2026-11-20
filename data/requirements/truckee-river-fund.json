@@ -1,0 +1,87 @@
+{
+  "id": "truckee-river-fund",
+  "read_on": "2026-11-20",
+  "prompt_version": "req-2026-11-20.1",
+  "models": ["cursor:gpt-5.6-luna-high"],
+  "complete": false,
+  "reasons": [
+    "23 links could not be ranked without Jev",
+    "29 links could not be ranked without Jev",
+    "the text names a document with rules that was not read: Grant agreement",
+    "Jev did not check this reading, so an absent fact is not known to be absent"
+  ],
+  "requirements_checked": false,
+  "documents": [
+    {
+      "ref": "D1",
+      "url": "https://nevadafund.org/nonprofits/request-proposals/",
+      "final_url": "https://nevadafund.org/nonprofits/request-proposals/",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 16657,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:1e2f2dbe09e4e34e1c272a05c82957f5a1d192bbb57561d930b8179e6fd4ec6f"
+    },
+    {
+      "ref": "D2",
+      "url": "https://nevadafund.org/nonprofits/grant-recognition-guidelines/",
+      "final_url": "https://nevadafund.org/nonprofits/grant-recognition-guidelines/",
+      "from": "https://nevadafund.org/nonprofits/request-proposals/",
+      "anchor": "Grant Recognition Guidelines",
+      "depth": 1,
+      "pdf": false,
+      "chars": 3872,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:53790780dc1456721e52061d2ffc56af8bc7a91451cbfddee5ea6f9b8e758445"
+    },
+    {
+      "ref": "D3",
+      "url": "https://nevadafund.org/scholarships/scholarship-resources/",
+      "final_url": "https://nevadafund.org/scholarships/scholarship-resources/",
+      "from": "https://nevadafund.org/nonprofits/request-proposals/",
+      "anchor": "Scholarship Resources & FAQs",
+      "depth": 1,
+      "pdf": false,
+      "chars": 8416,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:460009fccc24a73186598e44e800f23c18187f9a1ac43a7ab682585cf59fe211"
+    },
+    {
+      "ref": "D4",
+      "url": "https://nevadafund.org/about/frequently-asked-questions/",
+      "final_url": "https://nevadafund.org/about/frequently-asked-questions/",
+      "from": "https://nevadafund.org/nonprofits/request-proposals/",
+      "anchor": "FAQ",
+      "depth": 1,
+      "pdf": false,
+      "chars": 9644,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:46c2ad0ff0b552d46b1dd55ca60d5313c5adf6cd95d7daae1a8c27770a6a8ae0"
+    }
+  ],
+  "failures": [],
+  "skipped_links": 241,
+  "chunks": [{ "id": "all", "docs": ["D1", "D2", "D3", "D4"], "chars": 39071 }],
+  "outcomes": {
+    "eligibility": "stated",
+    "documents": "stated",
+    "effort": "stated",
+    "co_finance": "stated",
+    "consortium": "not_found",
+    "after_award": "stated"
+  },
+  "written": ["eligibility", "documents", "effort", "co_finance", "after_award"],
+  "escalated": [],
+  "flags": [],
+  "notes": [
+    "co_finance: share 20% dropped, its quote does not state it",
+    "extractor: D1 also contains separate Nevada Dream Tags material, which was excluded. The reporting schedule is not stated."
+  ],
+  "usd": 0
+}

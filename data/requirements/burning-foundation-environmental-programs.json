@@ -1,0 +1,99 @@
+{
+  "id": "burning-foundation-environmental-programs",
+  "read_on": "2026-11-20",
+  "prompt_version": "req-2026-11-20.1",
+  "models": ["cursor:gpt-5.6-luna-high"],
+  "complete": false,
+  "reasons": [
+    "3 links could not be ranked without Jev",
+    "2 links could not be ranked without Jev",
+    "Jev did not check this reading, so an absent fact is not known to be absent"
+  ],
+  "requirements_checked": false,
+  "documents": [
+    {
+      "ref": "D1",
+      "url": "https://www.burningfoundation.org/areas-of-interest",
+      "final_url": "https://www.burningfoundation.org/areas-of-interest",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 1638,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:9573cbeaa1b24319a5d821eb4fee5901c4e45deab437d755601e8930f315eb05"
+    },
+    {
+      "ref": "D2",
+      "url": "https://www.burningfoundation.org/policies-and-guidelines/application-guidelines",
+      "final_url": "https://www.burningfoundation.org/policies-and-guidelines/application-guidelines",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 1612,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:aa978d0cacc4aba7b5a848eb54a4b7102bbb90bda1d1188a8029cd5249437bff"
+    },
+    {
+      "ref": "D3",
+      "url": "https://www.burningfoundation.org/policies-and-guidelines/foundation-policies",
+      "final_url": "https://www.burningfoundation.org/policies-and-guidelines/foundation-policies",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 2396,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:a62050cd2f2683b66067b4f2cbeaa0f7896c619a1d4da142d1b2b5cc33937ea4"
+    },
+    {
+      "ref": "D4",
+      "url": "https://www.burningfoundation.org/policies-and-guidelines",
+      "final_url": "https://www.burningfoundation.org/policies-and-guidelines",
+      "from": "https://www.burningfoundation.org/areas-of-interest",
+      "anchor": "Policies and Guidelines",
+      "depth": 1,
+      "pdf": false,
+      "chars": 656,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:0f0ddfa32d37f7d1ba7f278b519bf13f6eed64d54b2043a2134ced60025e4bb7"
+    },
+    {
+      "ref": "D5",
+      "url": "https://www.burningfoundation.org/policies-and-guidelines/verification-and-reporting",
+      "final_url": "https://www.burningfoundation.org/policies-and-guidelines/verification-and-reporting",
+      "from": "https://www.burningfoundation.org/areas-of-interest",
+      "anchor": "Verification and Reporting",
+      "depth": 1,
+      "pdf": false,
+      "chars": 888,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:ede19f9dc93c287c0867266271477dd9c8599875669686fc08cec8d97ba1a044"
+    }
+  ],
+  "failures": [],
+  "skipped_links": 21,
+  "chunks": [{ "id": "all", "docs": ["D1", "D2", "D3", "D4", "D5"], "chars": 7740 }],
+  "outcomes": {
+    "eligibility": "stated",
+    "documents": "not_found",
+    "effort": "stated",
+    "co_finance": "not_found",
+    "consortium": "not_found",
+    "after_award": "stated"
+  },
+  "written": ["eligibility", "effort", "after_award"],
+  "escalated": [],
+  "flags": [],
+  "notes": [
+    "extractor: Spring and fall cycles are stated, but the deadlines are given only as relative dates. Applicants whose LOI or proposal was denied must wait a year before reapplying. D3 also states additional exclusions, including museums, animal sanctuaries, wildlife rescue, energy-related programmes, land purchases, capital campaigns, gardening programmes, urban or community parks, urban forests, environmental education, science or nature centres, agriculturally focused land trusts, farms, art installations, and habitat restoration on state or federal land.",
+    "source burning-foundation-environmental-programs-4: added for https://www.burningfoundation.org/policies-and-guidelines/verification-and-reporting"
+  ],
+  "usd": 0
+}

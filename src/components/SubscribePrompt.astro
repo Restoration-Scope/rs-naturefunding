@@ -34,15 +34,9 @@ const render = show && (DIGEST_LIVE || import.meta.env.DEV)
               <path d="M6 6l12 12M18 6 6 18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" />
             </svg>
           </button>
-          <div class="mx-auto grid size-16 place-items-center rounded-full bg-shell text-brand-light">
-            <svg viewBox="0 0 24 24" aria-hidden="true" width="30" height="30">
-              <path d="M12 2.5c-4.6 3.4-7 7-7 10.6a7 7 0 0 0 14 0c0-3.6-2.4-7.2-7-10.6Z" fill="currentColor" />
-              <path class="stroke-shell" d="M12 21.5V9.5m0 4.5 3.2-2.6M12 17l-3.4-2.8" fill="none" stroke-width="1.8" stroke-linecap="round" />
-            </svg>
-          </div>
-          <h2 id="subscribe-prompt-title" class="mt-5 text-center text-2xl font-semibold tracking-[-0.01em]">New funding calls by email</h2>
+          <h2 id="subscribe-prompt-title" class="text-center text-2xl font-semibold tracking-[-0.01em]">New funding calls by email</h2>
           <p class="mx-auto mt-2 max-w-[34ch] text-center text-ink-2">
-            Restoration and conservation grants, checked against each funder’s own page. At most once a week, only when a call opens or a programme is added.
+            New restoration grants, at most once a week.
           </p>
           <div class="mt-6">
             <DigestSignup bare id="digest-prompt" />

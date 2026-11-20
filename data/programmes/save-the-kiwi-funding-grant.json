@@ -1,19 +1,56 @@
 {
   "id": "save-the-kiwi-funding-grant",
   "name": "Save the Kiwi Annual Funding Grant",
-  "funder": { "name": "Save the Kiwi Trust", "url": "https://savethekiwi.nz/" },
+  "funder": {
+    "name": "Save the Kiwi Trust",
+    "url": "https://savethekiwi.nz/"
+  },
   "administered_by": null,
   "parent": null,
   "url": "https://savethekiwi.nz/about-us/what-we-do/funding/",
   "summary": "Grants to community kiwi conservation groups and research bodies in Aotearoa New Zealand for kiwi recovery work such as predator control, habitat and population work, and research that benefits kiwi.",
-  "approaches": ["species_conservation", "community_conservation", "research"],
-  "applicant_types": ["community_group", "research_institution"],
-  "geography": { "scope": "countries", "countries": ["NZ"], "label": "Aotearoa New Zealand" },
+  "approaches": [
+    "species_conservation",
+    "community_conservation",
+    "research"
+  ],
+  "applicant_types": [
+    "community_group",
+    "research_institution"
+  ],
+  "geography": {
+    "scope": "countries",
+    "countries": [
+      "NZ"
+    ],
+    "label": "Aotearoa New Zealand",
+    "whole": true
+  },
   "access": "direct",
   "window": "fixed",
   "amount": null,
   "co_finance_required": null,
   "reporting": null,
+  "effort": {
+    "steps": [
+      "Online application via the portal",
+      "Application assessment"
+    ]
+  },
+  "eligibility": [
+    {
+      "rule": "If an organisation: university, zoo, research body, charity, incorporated society, kiwi or Landcare group",
+      "kind": "legal"
+    },
+    {
+      "rule": "Undertake work that is not carried out by the Department of Conservation",
+      "kind": "project"
+    }
+  ],
+  "after_award": {
+    "reports": "interim_and_final",
+    "site_visits": true
+  },
   "calls": [
     {
       "id": "2026",
@@ -90,7 +127,49 @@
       "quote": "Applications will open 1 April and close 9pm 30 April 2026.",
       "checked_at": "2026-11-15",
       "method": "page"
-    }
+    },
+    "effort": [
+      {
+        "source_url": "https://savethekiwi.nz/about-us/what-we-do/funding/",
+        "quote": "Applications will only be accepted via our online portal",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://savethekiwi.nz/about-us/what-we-do/funding/",
+        "quote": "Applications are assessed by the Kiwi Recovery Group members.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "eligibility": [
+      {
+        "source_url": "https://savethekiwi.nz/about-us/what-we-do/funding/funding-criteria/",
+        "quote": "University, zoo and/or recognised research facility Registered charitable trust, charitable foundation, or charitable organisation Incorporated society Kiwi conservation group, association, or society Landcare group",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://savethekiwi.nz/about-us/what-we-do/funding/funding-criteria/",
+        "quote": "Work undertaken by the Department of Conservation is not eligible for funding from Save the Kiwi.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "after_award": [
+      {
+        "source_url": "https://savethekiwi.nz/about-us/what-we-do/funding/terms-and-conditions/",
+        "quote": "The funded organisation will provide to Save the Kiwi an interim progress report on the project no later than 9th April in the financial year for which funding is provided, and a final report no later than 30th July at the conclusion of the financial year for which funding was provided.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://savethekiwi.nz/about-us/what-we-do/funding/terms-and-conditions/",
+        "quote": "The funded organisation will provide reasonable access to the project as requested by the Trust's executive director, trustees and/or regional coordinators.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ]
   },
   "checked_at": "2026-11-15"
 }

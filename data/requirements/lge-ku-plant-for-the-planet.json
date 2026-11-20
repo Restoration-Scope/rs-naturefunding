@@ -1,0 +1,73 @@
+{
+  "id": "lge-ku-plant-for-the-planet",
+  "read_on": "2026-11-20",
+  "prompt_version": "req-2026-11-20.1",
+  "models": ["cursor:gpt-5.6-luna-high"],
+  "complete": false,
+  "reasons": [
+    "21 links could not be ranked without Jev",
+    "20 links could not be ranked without Jev",
+    "Jev did not check this reading, so an absent fact is not known to be absent"
+  ],
+  "requirements_checked": false,
+  "documents": [
+    {
+      "ref": "D1",
+      "url": "https://lge-ku.com/environment/plants-and-wildlife/tree-planting-grants",
+      "final_url": "https://lge-ku.com/environment/plants-and-wildlife/tree-planting-grants",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 10131,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:3f1a9e212aefa440be5b4a65b41a137a583bb007a357c022ed4340a8e3ce9c8e"
+    },
+    {
+      "ref": "D2",
+      "url": "https://lge-ku.com/sites/default/files/media/files/downloads/LGEKU-Moving-Checklist.pdf",
+      "final_url": "https://lge-ku.com/sites/default/files/media/files/downloads/LGEKU-Moving-Checklist.pdf",
+      "from": "https://lge-ku.com/environment/plants-and-wildlife/tree-planting-grants",
+      "anchor": "Download (0.54mb)",
+      "depth": 1,
+      "pdf": true,
+      "chars": 5207,
+      "pages": 2,
+      "low_text": false,
+      "hash": "sha256:8e1f659c263ca5bca3c8bbb25c03ca6f6144a2a6be17e3d38c84d73ddcccb582"
+    },
+    {
+      "ref": "D3",
+      "url": "https://lge-ku.com/privacy",
+      "final_url": "https://lge-ku.com/privacy",
+      "from": "https://lge-ku.com/environment/plants-and-wildlife/tree-planting-grants",
+      "anchor": "Privacy policy",
+      "depth": 1,
+      "pdf": false,
+      "chars": 36524,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:364e0a7759b55b3f5cd0447c7b48179178385e42c2d914c7a5019c6f97466b9e"
+    }
+  ],
+  "failures": [],
+  "skipped_links": 279,
+  "chunks": [{ "id": "all", "docs": ["D1", "D2", "D3"], "chars": 52263 }],
+  "outcomes": {
+    "eligibility": "stated",
+    "documents": "not_found",
+    "effort": "stated",
+    "co_finance": "unresolved",
+    "consortium": "not_found",
+    "after_award": "not_found"
+  },
+  "written": ["eligibility", "effort"],
+  "escalated": [],
+  "flags": [],
+  "notes": [
+    "extractor: Applications are accepted in October 2026. Award notifications are sent approximately two months after the application period. The page calls these matching grants but does not state an applicant matching amount or explicit co-finance requirement.",
+    "co_finance: the file states whether co-funding is required, this reading found nothing"
+  ],
+  "usd": 0
+}

@@ -21,6 +21,21 @@
   "amount": { "currency": "USD", "min": 35000, "max": 150000 },
   "co_finance_required": null,
   "reporting": "Applicants need the ability to track measurable outcomes and carry out required reporting and analysis.",
+  "effort": {
+    "steps": ["Letter of Interest (LOI)", "Complete application, if invited"],
+    "due": ["2027-01-31", "2027-02-28"]
+  },
+  "eligibility": [
+    {
+      "rule": "Be a 501(c)3 nonprofit organization or be fiscally sponsored by one",
+      "kind": "legal"
+    },
+    {
+      "rule": "Use funds only for projects: no lobbying, unrelated operations, retrospective costs, unmeasured work or projects abroad",
+      "kind": "project"
+    }
+  ],
+  "after_award": { "reports": "unspecified" },
   "calls": [
     {
       "id": "2027-loi",
@@ -88,7 +103,43 @@
       "quote": "Ability to deliver the project within the proposed timeframe, manage funds provided and conduct required reporting and analysis.",
       "checked_at": "2026-11-07",
       "method": "page"
-    }
+    },
+    "effort": [
+      {
+        "source_url": "https://www.elevarfund.org/grants/eligibility-guidelines/",
+        "quote": "Letter of Interest (LOI) must be received by January 31, 2027",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.elevarfund.org/grants/eligibility-guidelines/",
+        "quote": "If invited, complete applications are due by February 28, 2027",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "eligibility": [
+      {
+        "source_url": "https://www.elevarfund.org/grants/eligibility-guidelines/",
+        "quote": "501(c)3 nonprofit organizations or fiscally sponsored by one",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.elevarfund.org/grants/eligibility-guidelines/",
+        "quote": "Political lobbying activities General operating support unrelated to the project Retrospective reimbursement for completed activities Projects lacking measurable impact metrics Projects outside the United States",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "after_award": [
+      {
+        "source_url": "https://www.elevarfund.org/grants/eligibility-guidelines/",
+        "quote": "Ability to deliver the project within the proposed timeframe, manage funds provided and conduct required reporting and analysis.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ]
   },
   "checked_at": "2026-11-07"
 }

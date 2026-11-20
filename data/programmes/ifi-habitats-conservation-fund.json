@@ -1,19 +1,62 @@
 {
   "id": "ifi-habitats-conservation-fund",
   "name": "Habitats and Conservation Funding Call",
-  "funder": { "name": "Inland Fisheries Ireland", "url": "https://www.fisheriesireland.ie/" },
+  "funder": {
+    "name": "Inland Fisheries Ireland",
+    "url": "https://www.fisheriesireland.ie/"
+  },
   "administered_by": null,
   "parent": null,
   "url": "https://www.fisheriesireland.ie/our-services/funding/habitats-conservation-funding-call-2026",
   "summary": "Grants for river and lake habitat rehabilitation and conservation in the Republic of Ireland, including spawning enhancement, bank protection, fencing and invasive species control. Angling clubs, local groups and other third parties can apply.",
-  "approaches": ["freshwater", "species_conservation"],
-  "applicant_types": ["community_group", "government"],
-  "geography": { "scope": "countries", "countries": ["IE"], "label": "Republic of Ireland" },
+  "approaches": [
+    "freshwater",
+    "species_conservation"
+  ],
+  "applicant_types": [
+    "community_group",
+    "government"
+  ],
+  "geography": {
+    "scope": "countries",
+    "countries": [
+      "IE"
+    ],
+    "label": "Republic of Ireland",
+    "whole": true
+  },
   "access": "direct",
   "window": "fixed",
   "amount": null,
-  "co_finance_required": null,
+  "co_finance_required": true,
   "reporting": null,
+  "effort": {
+    "steps": [
+      "Discuss the project with local IFI staff",
+      "Expression of Interest application",
+      "Full application, if the EOI is accepted"
+    ],
+    "due": [
+      null,
+      "2026-12-10",
+      "2027-02-04"
+    ]
+  },
+  "eligibility": [
+    {
+      "rule": "Holds a valid salmon or sea trout licence (SSTRCPF) or a Midland Fisheries permit (MFF)",
+      "kind": "other"
+    }
+  ],
+  "co_finance": {
+    "min_share": 20,
+    "applies_to": "Feasibility studies and development plans"
+  },
+  "after_award": {
+    "reports": "final",
+    "audit": true,
+    "site_visits": true
+  },
   "calls": [
     {
       "id": "2026",
@@ -32,13 +75,13 @@
         "status": {
           "source_url": "https://www.fisheriesireland.ie/our-services/funding/habitats-conservation-funding-call-2026",
           "quote": "all applicants must firstly complete an 'Expression of Interest' application on Inland Fisheries Ireland's online grant management portal before 4:00pm on Friday, December 11th 2025.",
-          "checked_at": "2026-11-09",
+          "checked_at": "2026-11-20",
           "method": "page"
         },
         "deadline": {
           "source_url": "https://www.fisheriesireland.ie/our-services/funding/habitats-conservation-funding-call-2026",
           "quote": "all applicants must firstly complete an 'Expression of Interest' application on Inland Fisheries Ireland's online grant management portal before 4:00pm on Friday, December 11th 2025.",
-          "checked_at": "2026-11-09",
+          "checked_at": "2026-11-20",
           "method": "page"
         }
       }
@@ -48,27 +91,104 @@
     "applicant_types": {
       "source_url": "https://www.fisheriesireland.ie/our-services/funding/habitats-conservation-funding-call-2026",
       "quote": "Organisations and individuals that are eligible to submit an EOI include all groups, associations, clubs, local authorities, licence holders or other appropriate bodies",
-      "checked_at": "2026-11-09",
+      "checked_at": "2026-11-20",
       "method": "page"
     },
     "geography": {
       "source_url": "https://www.fisheriesireland.ie/our-services/funding/habitats-conservation-funding-call-2026",
       "quote": "Grant funding is available to Inland Fisheries Ireland and to eligible third parties throughout the Republic of Ireland to support sustainable fisheries habitats and conservation.",
-      "checked_at": "2026-11-09",
+      "checked_at": "2026-11-20",
       "method": "page"
     },
     "access": {
       "source_url": "https://www.fisheriesireland.ie/our-services/funding/habitats-conservation-funding-call-2026",
       "quote": "Applications are only accepted upon registration on the Web Portal Login where an initial expression of interest (EOI) can be submitted.",
-      "checked_at": "2026-11-09",
+      "checked_at": "2026-11-20",
       "method": "page"
     },
     "window": {
       "source_url": "https://www.fisheriesireland.ie/our-services/funding/habitats-conservation-funding-call-2026",
       "quote": "all applicants must firstly complete an 'Expression of Interest' application on Inland Fisheries Ireland's online grant management portal before 4:00pm on Friday, December 11th 2025.",
-      "checked_at": "2026-11-09",
+      "checked_at": "2026-11-20",
       "method": "page"
-    }
+    },
+    "co_finance_required": {
+      "source_url": "https://www.fisheriesireland.ie/our-services/funding/habitats-conservation-funding-call-2027",
+      "quote": "Feasibility studies/development plans which lead to future projects under the above headings. To a maximum of 80% funding or €25,000 whichever is less).",
+      "checked_at": "2026-11-20",
+      "method": "page"
+    },
+    "effort": [
+      {
+        "source_url": "https://www.fisheriesireland.ie/sites/default/files/2026-11/Habitats%20and%20Conservation%20Funding%20Call%20guide%202027.pdf",
+        "quote": "Applicants must engage with the relevant River Basin District inspector or assistant inspector and the Projects Office to discuss proposals before submitting an application (Appendix 2).",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.fisheriesireland.ie/our-services/funding/habitats-conservation-funding-call-2027",
+        "quote": "As part of a new two-step process, all applicants must firstly complete an 'Expression of Interest' application on Inland Fisheries Ireland's online grant management portal before 8:00pm on Thursday, December 10th 2026.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.fisheriesireland.ie/our-services/funding/habitats-conservation-funding-call-2027",
+        "quote": "After the expression of interest has been completed, full applications must then be submitted to Inland Fisheries Ireland via the online grant management portal by 5:30 pm on Thursday, February 4th, 2027.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.fisheriesireland.ie/sites/default/files/2026-11/Habitats%20and%20Conservation%20Funding%20Call%20guide%202027.pdf",
+        "quote": "EOI's are preliminarily evaluated by the RBD and the Projects Office. Only successful proposals that meet the minimum criteria will be allowed to progress.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "eligibility": [
+      {
+        "source_url": "https://www.fisheriesireland.ie/sites/default/files/2026-11/Habitats%20and%20Conservation%20Funding%20Call%20guide%202027.pdf",
+        "quote": "Valid licence number required when applying for SSTRCPF, Valid Permit number required when applying for MFF.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "co_finance": {
+      "source_url": "https://www.fisheriesireland.ie/our-services/funding/habitats-conservation-funding-call-2027",
+      "quote": "Feasibility studies/development plans which lead to future projects under the above headings. To a maximum of 80% funding or €25,000 whichever is less).",
+      "checked_at": "2026-11-20",
+      "method": "page"
+    },
+    "after_award": [
+      {
+        "source_url": "https://www.fisheriesireland.ie/sites/default/files/2021-11/sample-letter-of-offer-and-funding-agreement.pdf",
+        "quote": "Drawdown of funds is also dependent on the provision of a completion report for the project.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.fisheriesireland.ie/sites/default/files/2021-11/sample-letter-of-offer-and-funding-agreement.pdf",
+        "quote": "Audits will be conducted over 5 years following the agreed completion of the project.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.fisheriesireland.ie/sites/default/files/2021-11/sample-letter-of-offer-and-funding-agreement.pdf",
+        "quote": "The project works will be inspected by Inland Fisheries Ireland staff to ensure all works are conducted in line with best practice and to the satisfaction of Inland Fisheries Ireland.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "documents": [
+      {
+        "source_url": "https://www.fisheriesireland.ie/sites/default/files/2026-11/Habitats%20and%20Conservation%20Funding%20Call%20guide%202027.pdf",
+        "quote": "Photographs of the proposed site/s that illustrate all the elements of the project, Photographs should identify the issues before work is done.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ]
   },
-  "checked_at": "2026-11-09"
+  "checked_at": "2026-11-20",
+  "documents": [
+    "Photographs of the proposed site showing the issues before works"
+  ]
 }

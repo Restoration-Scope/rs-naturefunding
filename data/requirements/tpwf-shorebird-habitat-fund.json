@@ -1,0 +1,74 @@
+{
+  "id": "tpwf-shorebird-habitat-fund",
+  "read_on": "2026-11-20",
+  "prompt_version": "req-2026-11-20.1",
+  "models": ["cursor:gpt-5.6-luna-high"],
+  "complete": false,
+  "reasons": [
+    "9 links could not be ranked without Jev",
+    "the text names a document with rules that was not read: Learn How to Apply",
+    "Jev did not check this reading, so an absent fact is not known to be absent"
+  ],
+  "requirements_checked": false,
+  "documents": [
+    {
+      "ref": "D1",
+      "url": "https://www.tpwf.org/projects/shmrf/",
+      "final_url": "https://www.tpwf.org/projects/shmrf/",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 3223,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:07e1d995037dee99f3c06025918f36f6bbba3116f606bf7ce1eea3226348c301"
+    },
+    {
+      "ref": "D2",
+      "url": "https://www.tpwf.org/wp-content/uploads/2026/08/SHMRF-Application_July-2026.pdf",
+      "final_url": "https://www.tpwf.org/wp-content/uploads/2026/08/SHMRF-Application_July-2026.pdf",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": true,
+      "chars": 4812,
+      "pages": 3,
+      "low_text": false,
+      "hash": "sha256:eb6a495747fa8a672af97c1c24b2e3eafb0990d95c03b2da0755e76a102dcfec"
+    },
+    {
+      "ref": "D3",
+      "url": "https://www.tpwf.org/faq/",
+      "final_url": "https://www.tpwf.org/faq/",
+      "from": "https://www.tpwf.org/projects/shmrf/",
+      "anchor": "Membership FAQ",
+      "depth": 1,
+      "pdf": false,
+      "chars": 6682,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:3a819ab709805ec56686d79a615b00a7487473bb7e51874aeec210be46938c8d"
+    }
+  ],
+  "failures": [],
+  "skipped_links": 112,
+  "chunks": [{ "id": "all", "docs": ["D1", "D2", "D3"], "chars": 14955 }],
+  "outcomes": {
+    "eligibility": "stated",
+    "documents": "stated",
+    "effort": "stated",
+    "co_finance": "stated",
+    "consortium": "not_found",
+    "after_award": "stated"
+  },
+  "written": ["eligibility", "documents", "effort", "co_finance", "after_award"],
+  "escalated": [],
+  "flags": [],
+  "notes": [
+    "co_finance: share 25% dropped, its quote does not state it",
+    "extractor: D2 is the July 2026 application and states $2,500–$30,000 per project; D1 states $5,000–$30,000. D2 says projects should be completed within six months, so this is not treated as a hard eligibility rule.",
+    "source tpwf-shorebird-habitat-fund-2: selector main dropped, a new quote sits outside it"
+  ],
+  "usd": 0
+}

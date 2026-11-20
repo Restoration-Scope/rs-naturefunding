@@ -1,0 +1,89 @@
+{
+  "id": "fasl-marine-protected-areas-restoration",
+  "read_on": "2026-11-20",
+  "prompt_version": "req-2026-11-19.2",
+  "models": ["cursor:gpt-5.6-luna-high"],
+  "complete": false,
+  "reasons": [
+    "4 links could not be ranked without Jev",
+    "https://fondsdactionsaintlaurent.org/wp-content/uploads/2026/07/FASL_PAMP_fiche_depot_PDF.pdf: page 1 is an image: needs OCR",
+    "https://fondsdactionsaintlaurent.org/wp-content/uploads/2026/02/FASL_PAMP_Guide-demandeur_PDF.pdf: page 1 is an image: needs OCR",
+    "the text names a document with rules that was not read: Convention de financement",
+    "Jev did not check this reading, so an absent fact is not known to be absent"
+  ],
+  "requirements_checked": false,
+  "documents": [
+    {
+      "ref": "D1",
+      "url": "https://fondsdactionsaintlaurent.org/nos-programmes/aires-marines-protegees/",
+      "final_url": "https://fondsdactionsaintlaurent.org/nos-programmes/aires-marines-protegees/",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 15310,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:ba3db75892f0dcc300301df11b035d1abab7cf95b9f4992df5bf039549428225"
+    },
+    {
+      "ref": "D2",
+      "url": "https://fondsdactionsaintlaurent.org/wp-content/uploads/2026/07/FASL_PAMP_fiche_depot_PDF.pdf",
+      "final_url": "https://fondsdactionsaintlaurent.org/wp-content/uploads/2026/07/FASL_PAMP_fiche_depot_PDF.pdf",
+      "from": "https://fondsdactionsaintlaurent.org/nos-programmes/aires-marines-protegees/",
+      "anchor": "Formulaire de dépôt du projet",
+      "depth": 1,
+      "pdf": true,
+      "chars": 5747,
+      "pages": 8,
+      "low_text": false,
+      "hash": "sha256:a0c1a8b681436fe2ba66775f217af7785934ad95e9515251f47a723c04e4b3d2"
+    },
+    {
+      "ref": "D3",
+      "url": "https://fondsdactionsaintlaurent.org/wp-content/uploads/2026/02/FASL_PAMP_Guide-demandeur_PDF.pdf",
+      "final_url": "https://fondsdactionsaintlaurent.org/wp-content/uploads/2026/02/FASL_PAMP_Guide-demandeur_PDF.pdf",
+      "from": "https://fondsdactionsaintlaurent.org/nos-programmes/aires-marines-protegees/",
+      "anchor": "Guide du demandeur",
+      "depth": 1,
+      "pdf": true,
+      "chars": 20493,
+      "pages": 6,
+      "low_text": false,
+      "hash": "sha256:97b112f7ce5aa8e9dfff4adae9a2e3b47401ce89d8f6237cde04f946d12ddc6f"
+    }
+  ],
+  "failures": [
+    {
+      "url": "https://fondsdactionsaintlaurent.org/wp-content/uploads/2026/07/FASL_PAMP_fiche_depot_PDF.pdf",
+      "from": "https://fondsdactionsaintlaurent.org/nos-programmes/aires-marines-protegees/",
+      "kind": "low_text",
+      "message": "page 1 is an image: needs OCR"
+    },
+    {
+      "url": "https://fondsdactionsaintlaurent.org/wp-content/uploads/2026/02/FASL_PAMP_Guide-demandeur_PDF.pdf",
+      "from": "https://fondsdactionsaintlaurent.org/nos-programmes/aires-marines-protegees/",
+      "kind": "low_text",
+      "message": "page 1 is an image: needs OCR"
+    }
+  ],
+  "skipped_links": 29,
+  "chunks": [{ "id": "all", "docs": ["D1", "D2", "D3"], "chars": 42049 }],
+  "outcomes": {
+    "eligibility": "stated",
+    "documents": "stated",
+    "effort": "stated",
+    "co_finance": "stated",
+    "consortium": "not_found",
+    "after_award": "stated"
+  },
+  "written": ["eligibility", "documents", "effort", "co_finance", "after_award"],
+  "escalated": [],
+  "flags": [],
+  "notes": [
+    "extractor: D1 says partner support letters may be submitted during the analysis period, although its required-attachments list names them. Restoration duration differs between D1, which states two to two and a half years, and D3, which states two to three years; D3 was used for the structured rule.",
+    "source fasl-marine-protected-areas-restoration-2: added for https://fondsdactionsaintlaurent.org/wp-content/uploads/2026/02/FASL_PAMP_Guide-demandeur_PDF.pdf",
+    "source fasl-marine-protected-areas-restoration-3: added for https://fondsdactionsaintlaurent.org/wp-content/uploads/2026/07/FASL_PAMP_fiche_depot_PDF.pdf"
+  ],
+  "usd": 0
+}

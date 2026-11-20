@@ -1,13 +1,22 @@
 {
   "id": "toto-water-environment-fund",
   "name": "TOTO Water Environment Fund (TOTO水環境基金)",
-  "funder": { "name": "TOTO Ltd.", "url": "https://jp.toto.com/" },
+  "funder": {
+    "name": "TOTO Ltd.",
+    "url": "https://jp.toto.com/"
+  },
   "administered_by": null,
   "parent": null,
   "url": "https://jp.toto.com/company/sustainability/mizukikin/apply/",
   "summary": "Annual grants from TOTO for non-profit citizen groups carrying out practical work to conserve and restore local water environments and biodiversity in Japan, plus water-resource and sanitation work overseas. Domestic grants reach JPY 800,000, overseas JPY 4 million.",
-  "approaches": ["freshwater", "community_conservation"],
-  "applicant_types": ["ngo", "community_group"],
+  "approaches": [
+    "freshwater",
+    "community_conservation"
+  ],
+  "applicant_types": [
+    "ngo",
+    "community_group"
+  ],
   "geography": null,
   "access": "direct",
   "window": "fixed",
@@ -18,6 +27,48 @@
   },
   "co_finance_required": null,
   "reporting": "Grantees submit a progress report on main activities twice a year and a completion and financial report once a year in April.",
+  "effort": {
+    "steps": [
+      "Online application form",
+      "Internal selection meeting, possibly with an interview"
+    ]
+  },
+  "eligibility": [
+    {
+      "rule": "Is a non-profit civic group, with or without legal entity status",
+      "kind": "legal"
+    },
+    {
+      "rule": "Has headquarters or a branch in Japan, or can contact the fund office in Japan at any time",
+      "kind": "legal"
+    },
+    {
+      "rule": "Has purposes and activities not biased toward a specific religion or politics",
+      "kind": "legal"
+    },
+    {
+      "rule": "Has no relationship with antisocial forces",
+      "kind": "legal"
+    },
+    {
+      "rule": "Was not funded for the same project for 3+ years, unless it has creative and clearly different activities",
+      "kind": "track_record"
+    },
+    {
+      "rule": "Budget excludes non-activity meetings, unskilled outsourcing, member honoraria, course fees and media ads",
+      "kind": "project"
+    }
+  ],
+  "after_award": {
+    "reports": "twice_yearly"
+  },
+  "documents": [
+    "Project location map or photos",
+    "2025 fiscal-year accounts",
+    "2026 fiscal-year business plan",
+    "Project description video, approximately 5 minutes",
+    "Materials used in the project description video"
+  ],
   "calls": [
     {
       "id": "22nd",
@@ -25,24 +76,28 @@
       "url": "https://jp.toto.com/company/sustainability/mizukikin/apply/",
       "status": "closed",
       "opens": "2026-07-01",
-      "deadline": { "date": "2026-08-31", "timezone": "Asia/Tokyo", "text": "2026年8月31日(月)" },
+      "deadline": {
+        "date": "2026-08-31",
+        "timezone": "Asia/Tokyo",
+        "text": "2026年8月31日(月)"
+      },
       "evidence": {
         "status": {
           "source_url": "https://jp.toto.com/company/sustainability/mizukikin/apply/",
           "quote": "第22回「TOTO水環境基金」の助成先団体の募集を終了しました。",
-          "checked_at": "2026-11-09",
+          "checked_at": "2026-11-20",
           "method": "page"
         },
         "opens": {
           "source_url": "https://jp.toto.com/assets/files/TOTO_WEF_2026_%E5%8B%9F%E9%9B%86%E8%A6%81%E9%A0%85%20.pdf",
           "quote": "募集 期間 2026年 7 月 1 日(水)〜2026年 8 月 31 日(月)",
-          "checked_at": "2026-11-09",
+          "checked_at": "2026-11-20",
           "method": "page"
         },
         "deadline": {
           "source_url": "https://jp.toto.com/assets/files/TOTO_WEF_2026_%E5%8B%9F%E9%9B%86%E8%A6%81%E9%A0%85%20.pdf",
           "quote": "募集 期間 2026年 7 月 1 日(水)〜2026年 8 月 31 日(月)",
-          "checked_at": "2026-11-09",
+          "checked_at": "2026-11-20",
           "method": "page"
         }
       }
@@ -52,33 +107,119 @@
     "applicant_types": {
       "source_url": "https://jp.toto.com/assets/files/TOTO_WEF_2026_%E5%8B%9F%E9%9B%86%E8%A6%81%E9%A0%85%20.pdf",
       "quote": "営利を目的としない市民活動団体(法人格の有無や種類は問いません)",
-      "checked_at": "2026-11-09",
+      "checked_at": "2026-11-20",
       "method": "page"
     },
     "access": {
       "source_url": "https://jp.toto.com/assets/files/TOTO_WEF_2026_%E5%8B%9F%E9%9B%86%E8%A6%81%E9%A0%85%20.pdf",
       "quote": "TOTOホームページ 内に掲 載の応 募フォームにアクセスのうえ、 画 面の 指 示に従い、ご応 募ください。",
-      "checked_at": "2026-11-09",
+      "checked_at": "2026-11-20",
       "method": "page"
     },
     "window": {
       "source_url": "https://jp.toto.com/company/sustainability/mizukikin/apply/",
       "quote": "第22回「TOTO水環境基金」の助成先団体の募集を終了しました。",
-      "checked_at": "2026-11-09",
+      "checked_at": "2026-11-20",
       "method": "page"
     },
     "amount": {
       "source_url": "https://jp.toto.com/assets/files/TOTO_WEF_2026_%E5%8B%9F%E9%9B%86%E8%A6%81%E9%A0%85%20.pdf",
       "quote": "上限80万円 海外助成 各国・各エリアの水資源保全や衛生的かつ 快適な生活環境づくりに向けた実践活動 上限400万円",
-      "checked_at": "2026-11-09",
+      "checked_at": "2026-11-20",
       "method": "page"
     },
     "reporting": {
       "source_url": "https://jp.toto.com/assets/files/TOTO_WEF_2026_%E5%8B%9F%E9%9B%86%E8%A6%81%E9%A0%85%20.pdf",
       "quote": "成果報告の提出 1主要活動 のレポート (年2回) 2完了報告書・収支決算報告書(年1回/4月)",
-      "checked_at": "2026-11-09",
+      "checked_at": "2026-11-20",
       "method": "page"
-    }
+    },
+    "effort": [
+      {
+        "source_url": "https://jp.toto.com/assets/files/TOTO_WEF_2026_%E5%8B%9F%E9%9B%86%E8%A6%81%E9%A0%85%20.pdf",
+        "quote": "TOTOホームページ 内に掲 載の応 募フォームにアクセスのうえ、 画 面の 指 示に従い、ご応 募ください。",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://jp.toto.com/assets/files/TOTO_WEF_2026_%E5%8B%9F%E9%9B%86%E8%A6%81%E9%A0%85%20.pdf",
+        "quote": "選 考ポイントに基づ いて、社内選 考 会 議にて決 定します。",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://jp.toto.com/assets/files/TOTO_WEF_2026_%E5%8B%9F%E9%9B%86%E8%A6%81%E9%A0%85%20.pdf",
+        "quote": "選 考の 過 程で面 談を実 施させていただく場合 があります。",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "eligibility": [
+      {
+        "source_url": "https://jp.toto.com/assets/files/TOTO_WEF_2026_%E5%8B%9F%E9%9B%86%E8%A6%81%E9%A0%85%20.pdf",
+        "quote": "営利を目的としない市民活動団体(法人格の有無や種類は問いません)",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://jp.toto.com/assets/files/TOTO_WEF_2026_%E5%8B%9F%E9%9B%86%E8%A6%81%E9%A0%85%20.pdf",
+        "quote": "日本国内に本部もしくは支部を有する団体 (但し、日本国内に本部・支部がない場合でも、 TOTO水環境基金事務局(日本) と随時コンタクトがとれる場合は、ご応募可能です)",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://jp.toto.com/assets/files/TOTO_WEF_2026_%E5%8B%9F%E9%9B%86%E8%A6%81%E9%A0%85%20.pdf",
+        "quote": "目的や内容が、 特定の宗教や政治などに偏っていない団体",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://jp.toto.com/assets/files/TOTO_WEF_2026_%E5%8B%9F%E9%9B%86%E8%A6%81%E9%A0%85%20.pdf",
+        "quote": "反社会的勢力等と交際、 関係がない団体",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://jp.toto.com/assets/files/TOTO_WEF_2026_%E5%8B%9F%E9%9B%86%E8%A6%81%E9%A0%85%20.pdf",
+        "quote": "※原則、過去に当基金の助成を3年以上受けたプロジェクトはご 応募いただけません。ただし、当該プロジェクトに創意工夫がな され、活動内容に明確な違いが見られる場合はご応募可能で す。",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://jp.toto.com/assets/files/TOTO_WEF_2026_%E5%8B%9F%E9%9B%86%E8%A6%81%E9%A0%85%20.pdf",
+        "quote": "❶活動に直接関わらない会議費(総会・理事会等、飲食代含む) ❷専門性を伴わない(団体内で実施可能な)作業の外部委託費 (整備活動やイベント運営の外部発注など) ❸団体役員、会員への謝金 ❹資格取得のための受講料 ❺マスコミ広告費用 ❻その他、当社が助成対象として不適当であると判断した費用",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "after_award": [
+      {
+        "source_url": "https://jp.toto.com/assets/files/TOTO_WEF_2026_%E5%8B%9F%E9%9B%86%E8%A6%81%E9%A0%85%20.pdf",
+        "quote": "1主要活動 のレポート (年2回) 2完了報告書・収支決算報告書(年1回/4月)",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "documents": [
+      {
+        "source_url": "https://jp.toto.com/assets/files/TOTO_WEF_2026_%E5%8B%9F%E9%9B%86%E8%A6%81%E9%A0%85%20.pdf",
+        "quote": "・応 募プロジェクトの活 動 場 所がわかる地 図や写 真 ・2025 年度の 決 算書",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://jp.toto.com/assets/files/TOTO_WEF_2026_%E5%8B%9F%E9%9B%86%E8%A6%81%E9%A0%85%20.pdf",
+        "quote": "・2026 年度の事 業 計 画 書",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://jp.toto.com/assets/files/TOTO_WEF_2026_%E5%8B%9F%E9%9B%86%E8%A6%81%E9%A0%85%20.pdf",
+        "quote": "・応 募プロジェクト内容 の説 明 動 画(5分 程 度 )および 動 画で 使 用した資 料",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ]
   },
-  "checked_at": "2026-11-09"
+  "checked_at": "2026-11-20"
 }

@@ -1,0 +1,87 @@
+{
+  "id": "floresta-viva-recaatingar",
+  "read_on": "2026-11-20",
+  "prompt_version": "req-2026-11-20.1",
+  "models": ["cursor:gpt-5.6-luna-high"],
+  "complete": false,
+  "reasons": [
+    "8 links could not be ranked without Jev",
+    "6 links could not be ranked without Jev",
+    "the text names a document with rules that was not read: Edital completo e documentos de apoio",
+    "the text names a document with rules that was not read: Lista de municípios elegíveis",
+    "Jev did not check this reading, so an absent fact is not known to be absent"
+  ],
+  "requirements_checked": false,
+  "documents": [
+    {
+      "ref": "D1",
+      "url": "https://floresta-viva.fbds.org.br/apoio-a-recuperacao-socioprodutiva-de-terras-degradadas-do-bioma-caatinga",
+      "final_url": "https://floresta-viva.fbds.org.br/apoio-a-recuperacao-socioprodutiva-de-terras-degradadas-do-bioma-caatinga",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 15963,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:f25673b78f39c25cb82a50d8b1577a76705ee4f148d527ed6c9b01d6523c9eb4"
+    },
+    {
+      "ref": "D2",
+      "url": "https://floresta-viva.fbds.org.br/o-edital-recaatingar-da-iniciativa-floresta",
+      "final_url": "https://floresta-viva.fbds.org.br/o-edital-recaatingar-da-iniciativa-floresta",
+      "from": "https://floresta-viva.fbds.org.br/apoio-a-recuperacao-socioprodutiva-de-terras-degradadas-do-bioma-caatinga",
+      "anchor": "Edital Recaatingar divulga resultado do primeiro ciclo e abre inscrições para o segundo",
+      "depth": 1,
+      "pdf": false,
+      "chars": 2228,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:9141d33f96707210135b4b0efbbbdcd44def97dac63b267ba3fce94eb319df0b"
+    },
+    {
+      "ref": "D3",
+      "url": "https://floresta-viva.fbds.org.br/primeiro-ciclo-edital-reecatingar-divulgacao-prorrogada",
+      "final_url": "https://floresta-viva.fbds.org.br/primeiro-ciclo-edital-reecatingar-divulgacao-prorrogada",
+      "from": "https://floresta-viva.fbds.org.br/apoio-a-recuperacao-socioprodutiva-de-terras-degradadas-do-bioma-caatinga",
+      "anchor": "Primeiro Ciclo Edital Reecatingar: divulgação prorrogada",
+      "depth": 1,
+      "pdf": false,
+      "chars": 1271,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:142d8699d0581d9b49227e0672a9a29013316bc668ada478c338f074d8012752"
+    },
+    {
+      "ref": "D4",
+      "url": "https://floresta-viva.fbds.org.br/edital-recaatingar-divulga-resultado-da-analise-preliminar",
+      "final_url": "https://floresta-viva.fbds.org.br/edital-recaatingar-divulga-resultado-da-analise-preliminar",
+      "from": "https://floresta-viva.fbds.org.br/apoio-a-recuperacao-socioprodutiva-de-terras-degradadas-do-bioma-caatinga",
+      "anchor": "Edital Recaatingar divulga resultado da Análise Preliminar",
+      "depth": 1,
+      "pdf": false,
+      "chars": 6698,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:e299b11d70adae7fbf27cf72f97fc42fae647767e8d3200b11aa5e16e21fad5f"
+    }
+  ],
+  "failures": [],
+  "skipped_links": 24,
+  "chunks": [{ "id": "all", "docs": ["D1", "D2", "D3", "D4"], "chars": 26943 }],
+  "outcomes": {
+    "eligibility": "stated",
+    "documents": "stated",
+    "effort": "stated",
+    "co_finance": "stated",
+    "consortium": "not_found",
+    "after_award": "stated"
+  },
+  "written": ["eligibility", "documents", "effort", "co_finance", "after_award"],
+  "escalated": [],
+  "flags": [],
+  "notes": [
+    "extractor: The first cycle is closed and the second cycle is open. An institution selected in the first cycle cannot submit a new proposal in the second cycle. Project execution may last up to 60 months."
+  ],
+  "usd": 0
+}

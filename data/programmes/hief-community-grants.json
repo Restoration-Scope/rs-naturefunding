@@ -21,6 +21,35 @@
   "amount": { "currency": "GBP", "min": 5000, "max": 20000 },
   "co_finance_required": null,
   "reporting": null,
+  "effort": { "steps": ["Expression of interest (EOI)"] },
+  "eligibility": [
+    {
+      "rule": "Show strong leadership, use an integrated bottom-up approach, involve communities and demonstrate positive impact",
+      "kind": "capacity"
+    },
+    {
+      "rule": "If over £1m annual income or non-local, evidence capacity need or local-community delivery impact",
+      "kind": "capacity"
+    },
+    {
+      "rule": "If over £1m annual income or non-local, have an informal discussion with HIEF before applying",
+      "kind": "other"
+    },
+    {
+      "rule": "If over £1m annual income or non-local, request at least 10% of the project budget from HIEF",
+      "kind": "finances"
+    },
+    { "rule": "Delivers clear, identifiable environmental benefits", "kind": "project" },
+    {
+      "rule": "Lead the project through the community or evidence full local-community support",
+      "kind": "project"
+    },
+    {
+      "rule": "Propose neither an individual PhD nor a specialist research study",
+      "kind": "project"
+    },
+    { "rule": "Do not propose pure research", "kind": "project" }
+  ],
   "calls": [
     {
       "id": "2027-round",
@@ -33,7 +62,7 @@
         "status": {
           "source_url": "https://hief.scot/apply-for-a-grant/",
           "quote": "The next grant deadline will be in late Feburary - early March 2027. Exact dates will be available on the HIEF website before the end of 2026.",
-          "checked_at": "2026-11-15",
+          "checked_at": "2026-11-20",
           "method": "page"
         }
       },
@@ -44,33 +73,91 @@
     "applicant_types": {
       "source_url": "https://hief.scot/apply-for-a-grant/",
       "quote": "Local non-profit organisations, associations, clubs or unions, social co-operative enterprises and/or other local bodies, including research centres, are strongly encouraged to apply for grants.",
-      "checked_at": "2026-11-15",
+      "checked_at": "2026-11-20",
       "method": "page"
     },
     "geography": {
       "source_url": "https://hief.scot/apply-for-a-grant/",
       "quote": "The HIEF will support projects throughout the Scottish Highlands and Islands",
-      "checked_at": "2026-11-15",
+      "checked_at": "2026-11-20",
       "method": "page"
     },
     "access": {
       "source_url": "https://hief.scot/apply-for-a-grant/",
       "quote": "get in touch with [email protected] for a discussion prior to applying",
-      "checked_at": "2026-11-15",
+      "checked_at": "2026-11-20",
       "method": "page"
     },
     "window": {
       "source_url": "https://hief.scot/apply-for-a-grant/",
       "quote": "The next grant deadline will be in late Feburary - early March 2027.",
-      "checked_at": "2026-11-15",
+      "checked_at": "2026-11-20",
       "method": "page"
     },
     "amount": {
       "source_url": "https://hief.scot/apply-for-a-grant/",
       "quote": "HIEF awards grants between £5,000 and £20,000 for community-led projects that protect and restore nature in the Scottish Highlands & Islands.",
-      "checked_at": "2026-11-15",
+      "checked_at": "2026-11-20",
       "method": "page"
-    }
+    },
+    "effort": [
+      {
+        "source_url": "https://hief.scot/apply-for-a-grant/",
+        "quote": "before completing an EoI",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "eligibility": [
+      {
+        "source_url": "https://hief.scot/apply-for-a-grant/",
+        "quote": "All applicants must display strong and effective leadership and emphasise an integrated, bottom-up approach, consulting with, mobilising and involving local communities and demonstrating positive community impact.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://hief.scot/apply-for-a-grant/",
+        "quote": "The applicant can evidence i) the need for their capacity building to support local communities or ii) how they will work with local communities to deliver tangible impact",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://hief.scot/apply-for-a-grant/",
+        "quote": "The organisation has had an informal discussion with [email protected] prior to applying",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://hief.scot/apply-for-a-grant/",
+        "quote": "The HIEF funding requested constitutes at least 10% of the overall project budget",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://hief.scot/apply-for-a-grant/",
+        "quote": "There must be clear, identifiable environmental benefit(s)",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://hief.scot/apply-for-a-grant/",
+        "quote": "The project must be either community-led or evidence full support from local communities.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://hief.scot/apply-for-a-grant/",
+        "quote": "Individual PhD applications and specialist research studies will not be considered for funding.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://hief.scot/apply-for-a-grant/",
+        "quote": "Pure research will not be considered for funding.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ]
   },
-  "checked_at": "2026-11-15"
+  "checked_at": "2026-11-20"
 }
