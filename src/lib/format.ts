@@ -255,7 +255,7 @@ export function effortSignals(
   const apply: Pick<Signal, 'level' | 'why'> = !lvl
     ? signalBlank(p)
     : lvl.level
-      ? { level: lvl.level === 'Light' ? 'light' : lvl.level === 'Medium' ? 'some' : 'heavy', why: `${lvl.level}: ${lvl.why}.` }
+      ? { level: lvl.level === 'Light' ? 'light' : lvl.level === 'Medium' ? 'some' : 'heavy', why: `${lvl.why.replace(/^./, (x) => x.toUpperCase())}.` }
       : { level: 'unchecked', why: `${lvl.why.replace(/^./, (x) => x.toUpperCase())}.` }
 
   const c = p.co_finance

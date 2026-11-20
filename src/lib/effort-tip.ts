@@ -46,11 +46,15 @@ export function initEffortTip() {
       const levels = [...bars.dataset.effort!].map((c) => byCode[c]!)
       const why = bars.dataset.why!.split('|')
       rows.forEach((row, i) => {
-        const bar = row.firstElementChild as HTMLElement
-        bar.className = `${bar.dataset.base} ${tipFill[levels[i]!]}`
-        row.querySelector('[data-tip-why]')!.textContent = why[i]!
+        const bar = row.querySelector<HTMLElement>('[data-base]')!
+        const level = levels[i]!
+        bar.className = `${bar.dataset.base} ${tipFill[level]}`
+        row.querySelector('[data-tip-level]')!.textContent = effortWords[level].replace(/^./, (x) => x.toUpperCase())
+        const reason = row.querySelector<HTMLElement>('[data-tip-why]')!
+        reason.textContent = why[i]!
+        // "Not checked yet." only repeats the title.
+        reason.hidden = why[i]!.replace(/\.$/, '').toLowerCase() === effortWords[level]
       })
-      tip.querySelector<HTMLElement>('[data-tip-unchecked]')!.hidden = !levels.includes('unchecked')
       shown = bars
     }
     tip.hidden = false
