@@ -1,19 +1,51 @@
 {
   "id": "fws-tribal-wildlife-grants",
   "name": "Tribal Wildlife Grants",
-  "funder": { "name": "U.S. Fish and Wildlife Service", "url": "https://www.fws.gov/" },
+  "funder": {
+    "name": "U.S. Fish and Wildlife Service",
+    "url": "https://www.fws.gov/"
+  },
   "administered_by": null,
   "parent": null,
   "url": "https://www.fws.gov/service/tribal-wildlife-grants",
   "summary": "Yearly US federal grants for federally recognised tribal governments to run fish and wildlife conservation on lands of interest to the tribe, often for species of cultural or traditional importance, including habitat work.",
-  "approaches": ["species_conservation", "community_conservation"],
-  "applicant_types": ["indigenous_organization"],
-  "geography": { "scope": "countries", "countries": ["US"], "label": "United States (federally recognised tribes)" },
+  "approaches": [
+    "species_conservation",
+    "community_conservation"
+  ],
+  "applicant_types": [
+    "indigenous_organization"
+  ],
+  "geography": {
+    "scope": "countries",
+    "countries": [
+      "US"
+    ],
+    "label": "United States (federally recognised tribes)"
+  },
   "access": "direct",
   "window": "fixed",
-  "amount": { "currency": "USD", "min": 25000, "max": 200000 },
+  "amount": {
+    "currency": "USD",
+    "min": 25000,
+    "max": 200000
+  },
   "co_finance_required": false,
   "reporting": "Recipients file federal financial reports and programme performance reports, on the schedule set in the notice of award.",
+  "eligibility": [
+    {
+      "rule": "Be a federally recognized Tribal government",
+      "kind": "legal"
+    },
+    {
+      "rule": "Do not use grant funds for land acquisitions",
+      "kind": "project"
+    },
+    {
+      "rule": "Any active TWG award is up to date on its required reports",
+      "kind": "track_record"
+    }
+  ],
   "calls": [
     {
       "id": "fy2026",
@@ -21,7 +53,12 @@
       "url": "https://www.grants.gov/search-results-detail/362774",
       "status": "closed",
       "opens": null,
-      "deadline": { "date": "2026-08-14", "time": "23:59", "timezone": "America/New_York", "text": "Closing Date for Applications: 08/14/2026, by 11:59 PM, ET" },
+      "deadline": {
+        "date": "2026-08-14",
+        "time": "23:59",
+        "timezone": "America/New_York",
+        "text": "Closing Date for Applications: 08/14/2026, by 11:59 PM, ET"
+      },
       "evidence": {
         "status": {
           "source_url": "https://www.grants.gov/grantsws/rest/opportunity/att/download/352983",
@@ -80,7 +117,82 @@
       "quote": "Submit Federal Financial reports and Program Performance reports.",
       "checked_at": "2026-11-02",
       "method": "page"
-    }
+    },
+    "eligibility": [
+      {
+        "source_url": "https://www.fws.gov/service/tribal-wildlife-grants",
+        "quote": "Federally recognized Tribal governments",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.fws.gov/service/tribal-wildlife-grants",
+        "quote": "Land acquisitions are not allowed.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.grants.gov/grantsws/rest/opportunity/att/download/352983",
+        "quote": "Recipient Tribes must meet all reporting requirements for previously awarded, active TWG Program awards before they are eligible to receive new funds.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "effort": [
+      {
+        "source_url": "https://www.grants.gov/grantsws/rest/opportunity/att/download/352983",
+        "quote": "Closing Date for Applications: 08/14/2026",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "after_award": [
+      {
+        "source_url": "https://www.grants.gov/grantsws/rest/opportunity/att/download/352983",
+        "quote": "Submit Federal Financial reports and Program Performance reports.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "documents": [
+      {
+        "source_url": "https://www.grants.gov/grantsws/rest/opportunity/att/download/352983",
+        "quote": "• Cover Page • Tribal Resolution, if available (may be submitted later if selected for an award) • SF-424, Application for Federal Assistance • A completed Budget Information form: SF-424A (Non-Construction projects) or SF-424C (Construction projects)",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.grants.gov/grantsws/rest/opportunity/att/download/352983",
+        "quote": "• Project Abstract Summary form (OMB Form Number: 4040-0019) • Project Narrative (10-page limit) • Budget Narrative:",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.grants.gov/grantsws/rest/opportunity/att/download/352983",
+        "quote": "• If applicable, a Conflict of Interest Disclosure • Overlap or Duplication of Effort Statement",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ]
   },
-  "checked_at": "2026-11-02"
+  "checked_at": "2026-11-02",
+  "effort": {
+    "steps": [
+      "Application"
+    ],
+    "due": [
+      "2026-08-14"
+    ]
+  },
+  "after_award": {
+    "reports": "unspecified"
+  },
+  "documents": [
+    "Cover page",
+    "Budget form SF-424A or SF-424C",
+    "Project abstract summary",
+    "Project narrative of up to 10 pages",
+    "Budget narrative",
+    "Overlap or duplication of effort statement"
+  ]
 }

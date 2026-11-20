@@ -1,0 +1,73 @@
+{
+  "id": "fremont-area-community-foundation-ice-mountain-environmental-stewardship-fund",
+  "read_on": "2026-11-20",
+  "prompt_version": "req-2026-11-20.1",
+  "models": ["cursor:gpt-5.6-luna-high"],
+  "complete": false,
+  "reasons": [
+    "35 links could not be ranked without Jev",
+    "33 links could not be ranked without Jev",
+    "the text names a document with rules that was not read: Specific guidelines for each grant round",
+    "Jev did not check this reading, so an absent fact is not known to be absent"
+  ],
+  "requirements_checked": false,
+  "documents": [
+    {
+      "ref": "D1",
+      "url": "https://facommunityfoundation.org/home/grants/types-of-grants/ice-mountain/",
+      "final_url": "https://facommunityfoundation.org/home/grants/types-of-grants/ice-mountain/",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 4017,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:e5bebf18f07acaca360ed7a9d077847caa57add97d041855f3c0bee5818f92dc"
+    },
+    {
+      "ref": "D2",
+      "url": "https://facommunityfoundation.org/home/grants/how-to-apply/",
+      "final_url": "https://facommunityfoundation.org/home/grants/how-to-apply/",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 4177,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:3b894bbd852ecbfe1744732e0b600d4690dbdc070b76315a90f00ea340002f52"
+    },
+    {
+      "ref": "D3",
+      "url": "https://facommunityfoundation.org/home/scholarships/how-to-apply/",
+      "final_url": "https://facommunityfoundation.org/home/scholarships/how-to-apply/",
+      "from": "https://facommunityfoundation.org/home/grants/types-of-grants/ice-mountain/",
+      "anchor": "How to Apply",
+      "depth": 1,
+      "pdf": false,
+      "chars": 6781,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:97622b8caa467f2d854014b30344fee6ffeda1507f6744f81919564edcdd4e3d"
+    }
+  ],
+  "failures": [],
+  "skipped_links": 267,
+  "chunks": [{ "id": "all", "docs": ["D1", "D2", "D3"], "chars": 15305 }],
+  "outcomes": {
+    "eligibility": "stated",
+    "documents": "not_found",
+    "effort": "stated",
+    "co_finance": "not_found",
+    "consortium": "not_found",
+    "after_award": "not_found"
+  },
+  "written": ["eligibility", "effort"],
+  "escalated": [],
+  "flags": [],
+  "notes": [
+    "extractor: The page states June 1 opening and July 15 deadline, but no year. If a deadline falls on a weekend or holiday, applications are due the next business day."
+  ],
+  "usd": 0
+}

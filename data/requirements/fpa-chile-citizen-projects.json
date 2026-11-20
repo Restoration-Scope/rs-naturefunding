@@ -1,0 +1,405 @@
+{
+  "id": "fpa-chile-citizen-projects",
+  "read_on": "2026-11-20",
+  "prompt_version": "req-2026-11-20.1",
+  "models": ["cursor:gpt-5.6-luna-high", "cursor:gpt-5.6-sol-high"],
+  "complete": false,
+  "reasons": [
+    "1 links could not be ranked without Jev",
+    "https://fondos.mma.gob.cl/wp-content/uploads/2023/09/Taller-Como-Postular-a-Proyectos-Ciudadanos-FPA-2024.pdf: pages 1, 4, 6, 21, 27, 29 are images: needs OCR",
+    "https://fondos.mma.gob.cl/wp-content/uploads/2026/09/30%C2%B0-FPA-2027-Proyectos-Sustentables-Ciudadanos.pdf: pages 1, 3, 4, 20, 26, 27, 29 are images: needs OCR",
+    "https://fondos.mma.gob.cl/wp-content/uploads/2026/08/Bases-Proyectos-Sustentables-Ciudadanos-FPA-2027.pdf: page 1 is an image: needs OCR",
+    "https://fondos.mma.gob.cl/wp-content/uploads/2026/08/Manual-de-Funcionamiento-Organismos-Beneficiarios-FPA-2027.pdf: page 1 is an image: needs OCR",
+    "the crawl bound left https://fondos.mma.gob.cl/wp-content/uploads/2026/10/Anexo-01-Requerimientos-Obligatorio-Punto-Verde-2027-Actualizado.docx unread",
+    "the crawl bound left https://fondos.mma.gob.cl/wp-content/uploads/2026/08/Anexo-02-Requerimientos-Obligatorio-Invernadero-2027.docx unread",
+    "the crawl bound left https://fondos.mma.gob.cl/wp-content/uploads/2026/08/Anexo-03-Requerimientos-Equipo-Obligatorios-SFV-Off-Grid-2027.docx unread",
+    "the crawl bound left https://fondos.mma.gob.cl/wp-content/uploads/2026/08/Anexo-04-Requerimientos-Equipo-Obligatorios-SFV-On-Grid-2027.docx unread",
+    "the crawl bound left https://fondos.mma.gob.cl/wp-content/uploads/2026/08/Anexo-05-Requerimientos-de-Equipo-Obligatorios-SST-2027.docx unread",
+    "the crawl bound left https://fondos.mma.gob.cl/wp-content/uploads/2026/08/Anexo-06-Pauta-de-Evaluacion-FPA-2027-PSC.pdf unread",
+    "the crawl bound left https://fondos.mma.gob.cl/wp-content/uploads/2026/08/Anexo-07-Carta-Compromiso-Asociado-Estrat%E2%80%9Agico-Ambiental-2027.docx unread",
+    "the crawl bound left https://fondos.mma.gob.cl/wp-content/uploads/2026/08/Anexo-08-Sugerencias-para-incorporar-Enfoque-de-Genero-2027.pdf unread",
+    "the crawl bound left https://fondos.mma.gob.cl/wp-content/uploads/2026/08/Anexo-09-Ratificacion-Compromiso-OA-y-Asociado-Estrategico-Ambiental-2027.docx unread",
+    "the crawl bound left https://fondos.mma.gob.cl/wp-content/uploads/2026/08/Anexo-10-Carta-Autorizacion-Uso-Sitio-o-Area-2027.docx unread",
+    "the crawl bound left https://fondos.mma.gob.cl/wp-content/uploads/2026/08/Anexo-11-Declaracion-Simple-Domicilio-Codeudora-o-Codeudor-Solidario-2027.docx unread",
+    "the crawl bound left https://fondos.mma.gob.cl/wp-content/uploads/2026/08/Anexo-12-Declaracion-Simple-Vigencia-Estatutos-2026.docx unread",
+    "the crawl bound left https://fondos.mma.gob.cl/wp-content/uploads/2026/08/Listados-Establecimientos-SNCAE.pdf unread",
+    "the crawl bound left https://fondos.mma.gob.cl/wp-content/uploads/2026/08/Listado-Instituciones-Acreditadas-Oficina-Verde.pdf unread",
+    "the crawl bound left https://fondos.mma.gob.cl/wp-content/uploads/2026/09/Listado-Municipios-Certificados-SCAM.pdf unread",
+    "the crawl bound left https://fondos.mma.gob.cl/wp-content/uploads/2019/12/Bases_Generales-fpa.pdf unread",
+    "the text names a document with rules that was not read: Bases Proyectos Sustentables Ciudadanos - FPA 2027",
+    "the text names a document with rules that was not read: Manual de Funcionamiento Organismos Beneficiarios - FPA 2027",
+    "the text names a document with rules that was not read: Bases Generales del FPA",
+    "the text names a document with rules that was not read: Manual de Funcionamiento para Organismos Beneficiarios FPA 2027",
+    "the text names a document with rules that was not read: Respuestas a consultas sobre las Bases del concurso",
+    "the text names a document with rules that was not read: Anexo 1: Requerimientos Obligatorios - Punto Verde",
+    "the text names a document with rules that was not read: Anexo 2: Requerimientos Obligatorios - Invernadero",
+    "the text names a document with rules that was not read: Anexo 3: Requerimientos de Equipamiento Obligatorios - Sistema Fotovoltaico (SFV) Off Grid",
+    "the text names a document with rules that was not read: Anexo 4: Requerimientos de Equipamiento Obligatorios - Sistema Fotovoltaico (SFV) On Grid",
+    "the text names a document with rules that was not read: Anexo 5: Requerimientos de Equipamiento Obligatorios - Sistema Solar Térmico (SST)",
+    "the text names a document with rules that was not read: Calendario del Concurso",
+    "the text names a document with rules that was not read: Manual de Procedimientos para el Control, Resguardo, Cobro y Devolución de Boletas de Garantía u otros Instrumentos de Garantía recepcionados por la Subsecretar",
+    "the text names a document with rules that was not read: Bases del Concurso",
+    "the text names a document with rules that was not read: Bases Especiales del Concurso correspondiente",
+    "the text names a document with rules that was not read: Anexos Técnicos",
+    "the text names a document with rules that was not read: Respuestas otorgadas en el periodo de postulación",
+    "the text names a document with rules that was not read: Bases Especiales del Concurso FPA 2027",
+    "the text names a document with rules that was not read: Formulario de Postulación",
+    "the text names a document with rules that was not read: Bases del Concurso FPA 2027 – Proyectos Sustentables Ciudadanos",
+    "the text names a document with rules that was not read: Anexos N° 1, 3, 4, 7 and 10 of the FPA 2027 Bases",
+    "the text names a document with rules that was not read: Bases FPA 2027",
+    "the text names a document with rules that was not read: Pauta de Evaluación (Anexo N° 6)",
+    "the text names a document with rules that was not read: Las respuestas a consultas sobre las Bases del concurso",
+    "the text names a document with rules that was not read: Respuestas otorgadas en el período de postulación",
+    "the text names a document with rules that was not read: Instrucción Técnica General RIC N°9.1/2021: Diseño y Ejecución de las Instalaciones Fotovoltaicas Aisladas de las Redes de Distribución",
+    "the text names a document with rules that was not read: Bases especiales",
+    "the text names a document with rules that was not read: Manual de funcionamiento",
+    "the text names a document with rules that was not read: Pliego Técnico Normativo RIC N° 09, Sistemas de Autogeneración",
+    "the text names a document with rules that was not read: Itemizado Técnico de Sistemas Solares Térmicos de MINVU (IT_SST_MINVU_V.3_2018)",
+    "the text names a document with rules that was not read: SEC authorized equipment list: https://www.sec.cl/gda/equipamientoautorizado/",
+    "the text names a document with rules that was not read: Bases Especiales del Concurso",
+    "the text names a document with rules that was not read: Bases Especiales del XXX Concurso del Fondo de Protección Ambiental año 2027: \"Proyectos Sustentables Ciudadanos\"",
+    "the text names a document with rules that was not read: Manual de Funcionamiento para Organismos Beneficiarios de Concursos del XXX Fondo de Protección Ambiental para el año 2027",
+    "the text names a document with rules that was not read: Decreto Supremo N° 29, de 2024, del Ministerio de Salud: https://www.bcn.cl/leychile/navegar?idNorma=1220286",
+    "the text names a document with rules that was not read: Norma Chilena N° 3.322",
+    "Jev did not check this reading, so an absent fact is not known to be absent",
+    "strong reading: the text names a document with rules that was not read: Bases Especiales del Concurso FPA 2027 Proyectos Sustentables Ciudadanos",
+    "strong reading: the text names a document with rules that was not read: Manual de Funcionamiento para Organismos Beneficiarios FPA 2027",
+    "strong reading: the text names a document with rules that was not read: Formulario de Postulación FPA 2027",
+    "strong reading: the text names a document with rules that was not read: Anexo N°1: Requerimientos Obligatorios - Punto Verde",
+    "strong reading: the text names a document with rules that was not read: Anexo N°2: Requerimientos Obligatorios - Invernadero",
+    "strong reading: the text names a document with rules that was not read: Anexo N°3: Requerimientos de Equipamiento Obligatorios - Sistema Fotovoltaico (SFV) Off Grid",
+    "strong reading: the text names a document with rules that was not read: Anexo N°4: Requerimientos de Equipamiento Obligatorios - Sistema Fotovoltaico (SFV) On Grid",
+    "strong reading: the text names a document with rules that was not read: Anexo correspondiente al Sistema Solar Térmico (SST)"
+  ],
+  "requirements_checked": false,
+  "documents": [
+    {
+      "ref": "D1",
+      "url": "https://fondos.mma.gob.cl/fpa-2027-proyectos-sustentables-ciudadanos/",
+      "final_url": "https://fondos.mma.gob.cl/fpa-2027-proyectos-sustentables-ciudadanos/",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 3533,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:c0b6ce421097ec562c4a0160d5d3f8fd364fdd2412c77ef67f8e710866645a4d"
+    },
+    {
+      "ref": "D2",
+      "url": "https://fondos.mma.gob.cl/que-es-fpa/",
+      "final_url": "https://fondos.mma.gob.cl/que-es-fpa/",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 853,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:39e38c2e8c25cdb2f9ae194f62557129a6a96028bad1b2735f7f665d6abd08b8"
+    },
+    {
+      "ref": "D3",
+      "url": "https://fondos.mma.gob.cl/wp-content/uploads/2023/09/Taller-Como-Postular-a-Proyectos-Ciudadanos-FPA-2024.pdf",
+      "final_url": "https://fondos.mma.gob.cl/wp-content/uploads/2023/09/Taller-Como-Postular-a-Proyectos-Ciudadanos-FPA-2024.pdf",
+      "from": "https://fondos.mma.gob.cl/fpa-2027-proyectos-sustentables-ciudadanos/",
+      "anchor": "PPT Taller cómo postular",
+      "depth": 1,
+      "pdf": true,
+      "chars": 11520,
+      "pages": 29,
+      "low_text": false,
+      "hash": "sha256:0eea744f25f67ecb7aaecb41e24d414ec490002e0f1ba1f5961964dde1020ec8"
+    },
+    {
+      "ref": "D4",
+      "url": "https://fondos.mma.gob.cl/wp-content/uploads/2026/09/30%C2%B0-FPA-2027-Proyectos-Sustentables-Ciudadanos.pdf",
+      "final_url": "https://fondos.mma.gob.cl/wp-content/uploads/2026/09/30%C2%B0-FPA-2027-Proyectos-Sustentables-Ciudadanos.pdf",
+      "from": "https://fondos.mma.gob.cl/fpa-2027-proyectos-sustentables-ciudadanos/",
+      "anchor": "PPT - Capacitación FPA 2027",
+      "depth": 1,
+      "pdf": true,
+      "chars": 11565,
+      "pages": 29,
+      "low_text": false,
+      "hash": "sha256:15ed897d5503ba5edf38d70b07e7dcb80fb18dbac1be8b24be6c7e0c72476993"
+    },
+    {
+      "ref": "D5",
+      "url": "https://fondos.mma.gob.cl/wp-content/uploads/2026/08/Bases-Proyectos-Sustentables-Ciudadanos-FPA-2027.pdf",
+      "final_url": "https://fondos.mma.gob.cl/wp-content/uploads/2026/08/Bases-Proyectos-Sustentables-Ciudadanos-FPA-2027.pdf",
+      "from": "https://fondos.mma.gob.cl/fpa-2027-proyectos-sustentables-ciudadanos/",
+      "anchor": "Bases Proyectos Sustentables Ciudadanos - FPA 2027",
+      "depth": 1,
+      "pdf": true,
+      "chars": 69050,
+      "pages": 26,
+      "low_text": false,
+      "hash": "sha256:f3b28df0d54b0efd5095506129790ed1d5b77893d5ed16fbb206a2dcb1c3b8b8"
+    },
+    {
+      "ref": "D6",
+      "url": "https://fondos.mma.gob.cl/wp-content/uploads/2026/08/Manual-de-Funcionamiento-Organismos-Beneficiarios-FPA-2027.pdf",
+      "final_url": "https://fondos.mma.gob.cl/wp-content/uploads/2026/08/Manual-de-Funcionamiento-Organismos-Beneficiarios-FPA-2027.pdf",
+      "from": "https://fondos.mma.gob.cl/fpa-2027-proyectos-sustentables-ciudadanos/",
+      "anchor": "Manual de Funcionamiento Organismos Beneficiarios - FPA 2027",
+      "depth": 1,
+      "pdf": true,
+      "chars": 87157,
+      "pages": 37,
+      "low_text": false,
+      "hash": "sha256:863f0a7fd6c37abd808c9403292645f4169fa413c1bdb9f9a8a40fae73ec395c"
+    },
+    {
+      "ref": "D7",
+      "url": "https://fondos.mma.gob.cl/wp-content/uploads/2026/09/Publicacion-Respuestas-Consultas-Bases-FPA-2027-Proyectos-Sustentables-Ciudadanos.pdf",
+      "final_url": "https://fondos.mma.gob.cl/wp-content/uploads/2026/09/Publicacion-Respuestas-Consultas-Bases-FPA-2027-Proyectos-Sustentables-Ciudadanos.pdf",
+      "from": "https://fondos.mma.gob.cl/fpa-2027-proyectos-sustentables-ciudadanos/",
+      "anchor": "Publicación Respuestas Consultas Bases - FPA 2027 Proyectos Sustentables Ciudadanos",
+      "depth": 1,
+      "pdf": true,
+      "chars": 87747,
+      "pages": 26,
+      "low_text": false,
+      "hash": "sha256:e0393cd5af40d27ff1a8b489df009511a0002ec77286347add35927bec7d8d49"
+    },
+    {
+      "ref": "D8",
+      "url": "https://fondos.mma.gob.cl/wp-content/uploads/2026/08/Resolucion-Exenta-04883-2026-Aprueba-bases-concurso-FPA-Ciudadanos.pdf",
+      "final_url": "https://fondos.mma.gob.cl/wp-content/uploads/2026/08/Resolucion-Exenta-04883-2026-Aprueba-bases-concurso-FPA-Ciudadanos.pdf",
+      "from": "https://fondos.mma.gob.cl/fpa-2027-proyectos-sustentables-ciudadanos/",
+      "anchor": "Resolución Exenta N° 04883-2026 Aprueba bases concurso FPA Ciudadanos",
+      "depth": 1,
+      "pdf": true,
+      "chars": 117718,
+      "pages": 54,
+      "low_text": false,
+      "hash": "sha256:068c1a30f141fa4a01aa2f8f3688f7a4cfc18c77a655fa5195b521ef4a48f759"
+    },
+    {
+      "ref": "D9",
+      "url": "https://fondos.mma.gob.cl/wp-content/uploads/2026/08/Resolucion-Exenta-04882-2026-Aprueba-Manual-de-Funcionamiento-FPA-2027.pdf",
+      "final_url": "https://fondos.mma.gob.cl/wp-content/uploads/2026/08/Resolucion-Exenta-04882-2026-Aprueba-Manual-de-Funcionamiento-FPA-2027.pdf",
+      "from": "https://fondos.mma.gob.cl/fpa-2027-proyectos-sustentables-ciudadanos/",
+      "anchor": "Resolución Exenta N° 04882-2026 Aprueba Manual de Funcionamiento FPA 2027",
+      "depth": 1,
+      "pdf": true,
+      "chars": 85076,
+      "pages": 36,
+      "low_text": false,
+      "hash": "sha256:8d228eb3a53d76610207e39756a993a6c59c5335df2282de4a521c41a0cfe0f3"
+    },
+    {
+      "ref": "D10",
+      "url": "https://fondos.mma.gob.cl/wp-content/uploads/2026/10/Resolucion-Exenta-05562-2026-Modifica-Bases-Especiales-Ciudadanos-FPA-2027.pdf",
+      "final_url": "https://fondos.mma.gob.cl/wp-content/uploads/2026/10/Resolucion-Exenta-05562-2026-Modifica-Bases-Especiales-Ciudadanos-FPA-2027.pdf",
+      "from": "https://fondos.mma.gob.cl/fpa-2027-proyectos-sustentables-ciudadanos/",
+      "anchor": "Resolución Exenta 05562-2026 - Modifica Bases Especiales Ciudadanos FPA 2027",
+      "depth": 1,
+      "pdf": true,
+      "chars": 16104,
+      "pages": 6,
+      "low_text": false,
+      "hash": "sha256:bddaede56adbfbcd4874c3d7928bba02306ae4d2dfc4ad9f5d720ad33ca4b735"
+    }
+  ],
+  "failures": [
+    {
+      "url": "https://fondos.mma.gob.cl/wp-content/uploads/2023/09/Taller-Como-Postular-a-Proyectos-Ciudadanos-FPA-2024.pdf",
+      "from": "https://fondos.mma.gob.cl/fpa-2027-proyectos-sustentables-ciudadanos/",
+      "kind": "low_text",
+      "message": "pages 1, 4, 6, 21, 27, 29 are images: needs OCR"
+    },
+    {
+      "url": "https://fondos.mma.gob.cl/wp-content/uploads/2026/09/30%C2%B0-FPA-2027-Proyectos-Sustentables-Ciudadanos.pdf",
+      "from": "https://fondos.mma.gob.cl/fpa-2027-proyectos-sustentables-ciudadanos/",
+      "kind": "low_text",
+      "message": "pages 1, 3, 4, 20, 26, 27, 29 are images: needs OCR"
+    },
+    {
+      "url": "https://fondos.mma.gob.cl/wp-content/uploads/2026/08/Bases-Proyectos-Sustentables-Ciudadanos-FPA-2027.pdf",
+      "from": "https://fondos.mma.gob.cl/fpa-2027-proyectos-sustentables-ciudadanos/",
+      "kind": "low_text",
+      "message": "page 1 is an image: needs OCR"
+    },
+    {
+      "url": "https://fondos.mma.gob.cl/wp-content/uploads/2026/08/Manual-de-Funcionamiento-Organismos-Beneficiarios-FPA-2027.pdf",
+      "from": "https://fondos.mma.gob.cl/fpa-2027-proyectos-sustentables-ciudadanos/",
+      "kind": "low_text",
+      "message": "page 1 is an image: needs OCR"
+    },
+    {
+      "url": "https://fondos.mma.gob.cl/wp-content/uploads/2026/10/Anexo-01-Requerimientos-Obligatorio-Punto-Verde-2027-Actualizado.docx",
+      "from": "https://fondos.mma.gob.cl/fpa-2027-proyectos-sustentables-ciudadanos/",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://fondos.mma.gob.cl/wp-content/uploads/2026/08/Anexo-02-Requerimientos-Obligatorio-Invernadero-2027.docx",
+      "from": "https://fondos.mma.gob.cl/fpa-2027-proyectos-sustentables-ciudadanos/",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://fondos.mma.gob.cl/wp-content/uploads/2026/08/Anexo-03-Requerimientos-Equipo-Obligatorios-SFV-Off-Grid-2027.docx",
+      "from": "https://fondos.mma.gob.cl/fpa-2027-proyectos-sustentables-ciudadanos/",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://fondos.mma.gob.cl/wp-content/uploads/2026/08/Anexo-04-Requerimientos-Equipo-Obligatorios-SFV-On-Grid-2027.docx",
+      "from": "https://fondos.mma.gob.cl/fpa-2027-proyectos-sustentables-ciudadanos/",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://fondos.mma.gob.cl/wp-content/uploads/2026/08/Anexo-05-Requerimientos-de-Equipo-Obligatorios-SST-2027.docx",
+      "from": "https://fondos.mma.gob.cl/fpa-2027-proyectos-sustentables-ciudadanos/",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://fondos.mma.gob.cl/wp-content/uploads/2026/08/Anexo-06-Pauta-de-Evaluacion-FPA-2027-PSC.pdf",
+      "from": "https://fondos.mma.gob.cl/fpa-2027-proyectos-sustentables-ciudadanos/",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://fondos.mma.gob.cl/wp-content/uploads/2026/08/Anexo-07-Carta-Compromiso-Asociado-Estrat%E2%80%9Agico-Ambiental-2027.docx",
+      "from": "https://fondos.mma.gob.cl/fpa-2027-proyectos-sustentables-ciudadanos/",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://fondos.mma.gob.cl/wp-content/uploads/2026/08/Anexo-08-Sugerencias-para-incorporar-Enfoque-de-Genero-2027.pdf",
+      "from": "https://fondos.mma.gob.cl/fpa-2027-proyectos-sustentables-ciudadanos/",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://fondos.mma.gob.cl/wp-content/uploads/2026/08/Anexo-09-Ratificacion-Compromiso-OA-y-Asociado-Estrategico-Ambiental-2027.docx",
+      "from": "https://fondos.mma.gob.cl/fpa-2027-proyectos-sustentables-ciudadanos/",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://fondos.mma.gob.cl/wp-content/uploads/2026/08/Anexo-10-Carta-Autorizacion-Uso-Sitio-o-Area-2027.docx",
+      "from": "https://fondos.mma.gob.cl/fpa-2027-proyectos-sustentables-ciudadanos/",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://fondos.mma.gob.cl/wp-content/uploads/2026/08/Anexo-11-Declaracion-Simple-Domicilio-Codeudora-o-Codeudor-Solidario-2027.docx",
+      "from": "https://fondos.mma.gob.cl/fpa-2027-proyectos-sustentables-ciudadanos/",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://fondos.mma.gob.cl/wp-content/uploads/2026/08/Anexo-12-Declaracion-Simple-Vigencia-Estatutos-2026.docx",
+      "from": "https://fondos.mma.gob.cl/fpa-2027-proyectos-sustentables-ciudadanos/",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://fondos.mma.gob.cl/wp-content/uploads/2026/08/Listados-Establecimientos-SNCAE.pdf",
+      "from": "https://fondos.mma.gob.cl/fpa-2027-proyectos-sustentables-ciudadanos/",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://fondos.mma.gob.cl/wp-content/uploads/2026/08/Listado-Instituciones-Acreditadas-Oficina-Verde.pdf",
+      "from": "https://fondos.mma.gob.cl/fpa-2027-proyectos-sustentables-ciudadanos/",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://fondos.mma.gob.cl/wp-content/uploads/2026/09/Listado-Municipios-Certificados-SCAM.pdf",
+      "from": "https://fondos.mma.gob.cl/fpa-2027-proyectos-sustentables-ciudadanos/",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://fondos.mma.gob.cl/wp-content/uploads/2019/12/Bases_Generales-fpa.pdf",
+      "from": "https://fondos.mma.gob.cl/que-es-fpa/",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    }
+  ],
+  "skipped_links": 32,
+  "chunks": [
+    { "id": "c1", "docs": ["D1", "D2", "D3", "D4"], "chars": 28028 },
+    { "id": "c2", "docs": ["D5"], "chars": 40098 },
+    { "id": "c3", "docs": ["D5"], "chars": 30888 },
+    { "id": "c4", "docs": ["D6"], "chars": 40100 },
+    { "id": "c5", "docs": ["D6"], "chars": 40139 },
+    { "id": "c6", "docs": ["D6"], "chars": 10602 },
+    { "id": "c7", "docs": ["D7"], "chars": 40029 },
+    { "id": "c8", "docs": ["D7"], "chars": 39872 },
+    { "id": "c9", "docs": ["D7"], "chars": 11599 },
+    { "id": "c10", "docs": ["D8"], "chars": 40165 },
+    { "id": "c11", "docs": ["D8"], "chars": 40197 },
+    { "id": "c12", "docs": ["D8"], "chars": 40210 },
+    { "id": "c13", "docs": ["D8"], "chars": 2590 },
+    { "id": "c14", "docs": ["D9"], "chars": 40163 },
+    { "id": "c15", "docs": ["D9"], "chars": 39872 },
+    { "id": "c16", "docs": ["D9"], "chars": 8761 },
+    { "id": "c17", "docs": ["D10"], "chars": 16337 }
+  ],
+  "outcomes": {
+    "eligibility": "partial",
+    "documents": "partial",
+    "effort": "stated",
+    "co_finance": "not_found",
+    "consortium": "stated",
+    "after_award": "stated"
+  },
+  "written": ["eligibility", "documents", "effort", "consortium", "after_award"],
+  "escalated": ["eligibility", "documents", "after_award", "effort"],
+  "flags": [
+    {
+      "field": "eligibility",
+      "item": "Meet mandatory requirements for an off-grid photovoltaic system that is installed or improved",
+      "why": "the quote is not on any gathered document"
+    },
+    {
+      "field": "eligibility",
+      "item": "Is a private, nonprofit legal entity",
+      "why": "the quote is not on any gathered document"
+    },
+    {
+      "field": "documents",
+      "item": "Anexo 7: Carta de Compromiso Organismo Asociado Estratégico Ambiental, if presenting a SCAM/SIAAM municipality as associated",
+      "why": "a document is 3 to 120 characters"
+    },
+    {
+      "field": "documents",
+      "item": "Anexo 1, if the project installs or enables a green point",
+      "why": "the quote is not on any gathered document"
+    },
+    {
+      "field": "eligibility",
+      "item": "Not be closely tied to public administration or publicly funded for operations",
+      "why": "the quote is not on any gathered document"
+    },
+    {
+      "field": "documents",
+      "item": "Annex 1, if installing or enabling a green point",
+      "why": "the quote is not on any gathered document"
+    }
+  ],
+  "notes": [
+    "eligibility: 35 rules past the 8th dropped",
+    "documents: 9 past the 10th dropped",
+    "effort \"Postulation\": the quote does not state 2026-10-14 whole; left undated",
+    "effort: steps past the 5th dropped",
+    "extractor: D3 describes the older 2024 round; D4 is used for current 2027 rules. | The supplied part references additional rules in the Bases Generales, the Manual and Annexes 1–5; their contents are not included here. | At least one Organismo Asociado is mandatory, but the text does not state that its support is matching finance. Section 8.1 documents, public-funds registration and the guarantee apply only to awarded organisations. The excerpt mentions approval of a final technical and financial report but does not state a reporting duty or schedule. | El documento es un manual de funcionamiento para organismos beneficiarios del FPA 2027 y se centra principalmente en obligaciones posteriores a la adjudicación. | This part concerns post-award beneficiary obligations, including spending restrictions, reporting, supervision, visibility and intellectual property. It does not state initial application requirements or deadlines. | The manual states content standards for educational materials and gives",
+    "after_award: kept 2 first-reading items no check faulted that the strong reading left out",
+    "source fpa-chile-citizen-projects-3: added for https://fondos.mma.gob.cl/wp-content/uploads/2026/09/Publicacion-Respuestas-Consultas-Bases-FPA-2027-Proyectos-Sustentables-Ciudadanos.pdf",
+    "source fpa-chile-citizen-projects-4: added for https://fondos.mma.gob.cl/wp-content/uploads/2026/08/Bases-Proyectos-Sustentables-Ciudadanos-FPA-2027.pdf",
+    "source fpa-chile-citizen-projects-5: added for https://fondos.mma.gob.cl/wp-content/uploads/2026/09/30%C2%B0-FPA-2027-Proyectos-Sustentables-Ciudadanos.pdf",
+    "source fpa-chile-citizen-projects-6: added for https://fondos.mma.gob.cl/wp-content/uploads/2026/08/Resolucion-Exenta-04883-2026-Aprueba-bases-concurso-FPA-Ciudadanos.pdf",
+    "source fpa-chile-citizen-projects-7: added for https://fondos.mma.gob.cl/wp-content/uploads/2026/08/Manual-de-Funcionamiento-Organismos-Beneficiarios-FPA-2027.pdf"
+  ],
+  "usd": 0
+}

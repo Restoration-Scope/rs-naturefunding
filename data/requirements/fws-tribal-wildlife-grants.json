@@ -1,0 +1,76 @@
+{
+  "id": "fws-tribal-wildlife-grants",
+  "read_on": "2026-11-20",
+  "prompt_version": "req-2026-11-20.1",
+  "models": ["cursor:gpt-5.6-luna-high"],
+  "complete": false,
+  "reasons": [
+    "10 links could not be ranked without Jev",
+    "https://www.grants.gov/search-results-detail/362774 would not open (network: unable to verify the first certificate)",
+    "https://www.grants.gov/grantsws/rest/opportunity/att/download/352983 would not open (network: unable to verify the first certificate)",
+    "https://www.fishwildlife.org/application/files/2616/0087/6829/STWG_2020_Report_Final.pdf: pages 23, 61, 97, 131, 184 are images: needs OCR",
+    "https://www.fishwildlife.org/application/files/2616/0087/6829/STWG_2020_Report_Final.pdf: a document on another site: without Jev it can’t be confirmed as the funder’s, so it is not used",
+    "the text names a document with rules that was not read: Fiscal Year 2026 Tribal Wildlife Grants Notice of Funding Opportunity (F26AS00040)",
+    "Jev did not check this reading, so an absent fact is not known to be absent"
+  ],
+  "requirements_checked": false,
+  "documents": [
+    {
+      "ref": "D1",
+      "url": "https://www.fws.gov/service/tribal-wildlife-grants",
+      "final_url": "https://www.fws.gov/service/tribal-wildlife-grants",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 5096,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:ff34a1ec870f3ed74b8901946299e5596e51dd0849e8aa1257fa543e37f392a6"
+    }
+  ],
+  "failures": [
+    {
+      "url": "https://www.grants.gov/search-results-detail/362774",
+      "from": null,
+      "kind": "network",
+      "message": "unable to verify the first certificate"
+    },
+    {
+      "url": "https://www.grants.gov/grantsws/rest/opportunity/att/download/352983",
+      "from": null,
+      "kind": "network",
+      "message": "unable to verify the first certificate"
+    },
+    {
+      "url": "https://www.fishwildlife.org/application/files/2616/0087/6829/STWG_2020_Report_Final.pdf",
+      "from": "https://www.fws.gov/service/tribal-wildlife-grants",
+      "kind": "low_text",
+      "message": "pages 23, 61, 97, 131, 184 are images: needs OCR"
+    },
+    {
+      "url": "https://www.fishwildlife.org/application/files/2616/0087/6829/STWG_2020_Report_Final.pdf",
+      "from": "https://www.fws.gov/service/tribal-wildlife-grants",
+      "kind": "offsite",
+      "message": "a document on another site: without Jev it can’t be confirmed as the funder’s, so it is not used"
+    }
+  ],
+  "skipped_links": 105,
+  "chunks": [{ "id": "all", "docs": ["D1"], "chars": 5159 }],
+  "outcomes": {
+    "eligibility": "stated",
+    "documents": "not_found",
+    "effort": "not_found",
+    "co_finance": "unresolved",
+    "consortium": "not_found",
+    "after_award": "not_found"
+  },
+  "written": ["eligibility"],
+  "escalated": [],
+  "flags": [],
+  "notes": [
+    "co_finance: the file states whether co-funding is required, this reading found nothing",
+    "source fws-tribal-wildlife-grants-2: added for https://www.fws.gov/service/tribal-wildlife-grants"
+  ],
+  "usd": 0
+}

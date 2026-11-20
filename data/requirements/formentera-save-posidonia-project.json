@@ -1,0 +1,51 @@
+{
+  "id": "formentera-save-posidonia-project",
+  "read_on": "2026-11-20",
+  "prompt_version": "req-2026-11-20.1",
+  "models": ["cursor:gpt-5.6-luna-high", "cursor:gpt-5.6-sol-high"],
+  "complete": false,
+  "reasons": [
+    "the text names a document with rules that was not read: Plan estratégico de subvenciones 2026 y 2027 del Consell Insular de Formentera",
+    "the text names a document with rules that was not read: Ley 38/2003, de 17 de noviembre, general de subvenciones",
+    "the text names a document with rules that was not read: Decreto legislativo 2/2005, de 28 de diciembre, por el que se aprueba el texto refundido de la Ley de subvenciones de las Illes Balears",
+    "the text names a document with rules that was not read: Real Decreto 887/2006, de 21 de julio, por el que se aprueba el Reglamento de la Ley 38/2003, de 17 de noviembre, general de subvenciones",
+    "Jev did not check this reading, so an absent fact is not known to be absent"
+  ],
+  "requirements_checked": false,
+  "documents": [
+    {
+      "ref": "D1",
+      "url": "https://intranet.caib.es/eboibfront/pdf/es/2026/46/1216661",
+      "final_url": "https://intranet.caib.es/eboibfront/pdf/es/2026/46/1216661",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": true,
+      "chars": 114587,
+      "pages": 29,
+      "low_text": false,
+      "hash": "sha256:afdebb3c67126872e0733cdc72c037001eadb0b11a39ea90b22496d91c470d9a"
+    }
+  ],
+  "failures": [],
+  "skipped_links": 0,
+  "chunks": [{ "id": "all", "docs": ["D1"], "chars": 114664 }],
+  "outcomes": {
+    "eligibility": "stated",
+    "documents": "stated",
+    "effort": "stated",
+    "co_finance": "unresolved",
+    "consortium": "not_found",
+    "after_award": "stated"
+  },
+  "written": ["eligibility", "documents", "effort", "after_award"],
+  "escalated": ["eligibility"],
+  "flags": [],
+  "notes": [
+    "extractor: The exact calendar deadline is not stated; the call gives 30 business days from the business day after publication in the BOIB. Evidence of merits is requested only if the applicant wins and is therefore excluded from first-step documents.",
+    "eligibility: kept 2 first-reading items no check faulted that the strong reading left out",
+    "co_finance: the file states whether co-funding is required, this reading found nothing",
+    "source formentera-save-posidonia-project-1: selector main dropped, a new quote sits outside it"
+  ],
+  "usd": 0
+}

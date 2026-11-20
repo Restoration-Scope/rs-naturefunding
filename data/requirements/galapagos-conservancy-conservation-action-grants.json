@@ -1,0 +1,102 @@
+{
+  "id": "galapagos-conservancy-conservation-action-grants",
+  "read_on": "2026-11-20",
+  "prompt_version": "req-2026-11-20.1",
+  "models": ["cursor:gpt-5.6-luna-high"],
+  "complete": false,
+  "reasons": [
+    "9 links could not be ranked without Jev",
+    "7 links could not be ranked without Jev",
+    "https://www.galapagos.org/wp-content/uploads/2026/05/guia-de-aplicacion-a-subvenciones-de-galapagos-conservancy-2026.pdf: pages 7, 12 are images: needs OCR",
+    "https://www.galapagos.org/wp-content/uploads/2025/06/manual-de-uso-aplicacion-subvenciones-GC2-2025.pdf: page 1 is an image: needs OCR",
+    "the text names a document with rules that was not read: Manual de uso aplicación subvenciones",
+    "Jev did not check this reading, so an absent fact is not known to be absent"
+  ],
+  "requirements_checked": false,
+  "documents": [
+    {
+      "ref": "D1",
+      "url": "https://www.galapagos.org/about_us/conservation-action-grants/",
+      "final_url": "https://www.galapagos.org/about_us/conservation-action-grants/",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 2874,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:54592dff9479ca873dce8a9b7b0774956ce03369560d8eaa397d41f60fe3813e"
+    },
+    {
+      "ref": "D2",
+      "url": "https://www.galapagos.org/wp-content/uploads/2026/05/guia-de-aplicacion-a-subvenciones-de-galapagos-conservancy-2026.pdf",
+      "final_url": "https://www.galapagos.org/wp-content/uploads/2026/05/guia-de-aplicacion-a-subvenciones-de-galapagos-conservancy-2026.pdf",
+      "from": "https://www.galapagos.org/about_us/conservation-action-grants/",
+      "anchor": "",
+      "depth": 1,
+      "pdf": true,
+      "chars": 7932,
+      "pages": 12,
+      "low_text": false,
+      "hash": "sha256:016a2ad652a1835f2a3a25611171ef34ffe656be7302a64d11ac55d63a64c679"
+    },
+    {
+      "ref": "D3",
+      "url": "https://www.galapagos.org/wp-content/uploads/2025/06/manual-de-uso-aplicacion-subvenciones-GC2-2025.pdf",
+      "final_url": "https://www.galapagos.org/wp-content/uploads/2025/06/manual-de-uso-aplicacion-subvenciones-GC2-2025.pdf",
+      "from": "https://www.galapagos.org/about_us/conservation-action-grants/",
+      "anchor": "MANUAL DE USO APLICACIÓN SUBVENCIONES",
+      "depth": 1,
+      "pdf": true,
+      "chars": 3990,
+      "pages": 10,
+      "low_text": false,
+      "hash": "sha256:2d80b579677fcbfcf8e95c2de9369b86779359cb346f0646be3fdccbbd831cb7"
+    },
+    {
+      "ref": "D4",
+      "url": "https://www.galapagos.org/about_us/about-us/privacy-policy/",
+      "final_url": "https://www.galapagos.org/about_us/about-us/privacy-policy/",
+      "from": "https://www.galapagos.org/about_us/conservation-action-grants/",
+      "anchor": "Privacy Policy",
+      "depth": 1,
+      "pdf": false,
+      "chars": 11876,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:a29e660952cf1b026971434bd6010c1dd0c4181b75c1099caddf302b83717dbb"
+    }
+  ],
+  "failures": [
+    {
+      "url": "https://www.galapagos.org/wp-content/uploads/2026/05/guia-de-aplicacion-a-subvenciones-de-galapagos-conservancy-2026.pdf",
+      "from": "https://www.galapagos.org/about_us/conservation-action-grants/",
+      "kind": "low_text",
+      "message": "pages 7, 12 are images: needs OCR"
+    },
+    {
+      "url": "https://www.galapagos.org/wp-content/uploads/2025/06/manual-de-uso-aplicacion-subvenciones-GC2-2025.pdf",
+      "from": "https://www.galapagos.org/about_us/conservation-action-grants/",
+      "kind": "low_text",
+      "message": "page 1 is an image: needs OCR"
+    }
+  ],
+  "skipped_links": 134,
+  "chunks": [{ "id": "all", "docs": ["D1", "D2", "D3", "D4"], "chars": 27311 }],
+  "outcomes": {
+    "eligibility": "stated",
+    "documents": "not_found",
+    "effort": "stated",
+    "co_finance": "stated",
+    "consortium": "not_found",
+    "after_award": "not_found"
+  },
+  "written": ["eligibility", "effort", "co_finance"],
+  "escalated": [],
+  "flags": [],
+  "notes": [
+    "extractor: The 2026 round is closed. D2 identifies priorities, but these are not hard eligibility rules. D1 links a separate application manual that was not provided.",
+    "source galapagos-conservancy-conservation-action-grants-2: added for https://www.galapagos.org/wp-content/uploads/2026/05/guia-de-aplicacion-a-subvenciones-de-galapagos-conservancy-2026.pdf"
+  ],
+  "usd": 0
+}

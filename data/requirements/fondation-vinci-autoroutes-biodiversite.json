@@ -1,0 +1,53 @@
+{
+  "id": "fondation-vinci-autoroutes-biodiversite",
+  "read_on": "2026-11-20",
+  "prompt_version": "req-2026-11-20.1",
+  "models": ["cursor:gpt-5.6-luna-high"],
+  "complete": false,
+  "reasons": ["Jev did not check this reading, so an absent fact is not known to be absent"],
+  "requirements_checked": false,
+  "documents": [
+    {
+      "ref": "D1",
+      "url": "https://fondation.vinci-autoroutes.com/fr/soutien-de-projets-en-faveur-de-la-biodiversite/",
+      "final_url": "https://fondation.vinci-autoroutes.com/fr/soutien-de-projets-en-faveur-de-la-biodiversite/",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 2610,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:be9adeec3f3518f80b50a4148c81c9a81f215917c5dec3c8921c41dbb2323390"
+    },
+    {
+      "ref": "D2",
+      "url": "https://fondation.vinci-autoroutes.com/fr/demande-de-soutien/",
+      "final_url": "https://fondation.vinci-autoroutes.com/fr/demande-de-soutien/",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 3261,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:f6bb18ff1f2c3b4f8cca2357169c6ad4088fef7d050ec8e612e69ee6956f3e13"
+    }
+  ],
+  "failures": [],
+  "skipped_links": 55,
+  "chunks": [{ "id": "all", "docs": ["D1", "D2"], "chars": 6050 }],
+  "outcomes": {
+    "eligibility": "stated",
+    "documents": "not_found",
+    "effort": "stated",
+    "co_finance": "not_found",
+    "consortium": "not_found",
+    "after_award": "not_found"
+  },
+  "written": ["eligibility", "effort"],
+  "escalated": [],
+  "flags": [],
+  "notes": [],
+  "usd": 0
+}
