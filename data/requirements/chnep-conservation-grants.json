@@ -1,0 +1,121 @@
+{
+  "id": "chnep-conservation-grants",
+  "read_on": "2026-11-20",
+  "prompt_version": "req-2026-11-20.1",
+  "models": ["cursor:gpt-5.6-luna-high"],
+  "complete": false,
+  "reasons": [
+    "11 links could not be ranked without Jev",
+    "https://www.chnep.org/_files/ugd/252fd8_03b145b10fb74b4daf9292ab46ab1507.pdf: page 2 is an image: needs OCR",
+    "https://myfwc.com/media/20455/land-cover-classification-revision-2018.pdf would not open (blocked: HTTP 403)",
+    "https://www.chnep.org/_files/ugd/252fd8_800c072926e246dca95ae6090588bbff.pdf: pages 81, 82, 84, 85, 86 are images: needs OCR",
+    "the text names a document with rules that was not read: Comprehensive Conservation and Management Plan (CCMP)",
+    "Jev did not check this reading, so an absent fact is not known to be absent"
+  ],
+  "requirements_checked": false,
+  "documents": [
+    {
+      "ref": "D1",
+      "url": "https://www.chnep.org/chnep-conservation-grants",
+      "final_url": "https://www.chnep.org/chnep-conservation-grants",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 4426,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:c330c93e668153c06006028a09e7c579240198a4bc571dc4f21d96b916995a07"
+    },
+    {
+      "ref": "D2",
+      "url": "https://www.chnep.org/neport-project-reporting",
+      "final_url": "https://www.chnep.org/neport-project-reporting",
+      "from": "https://www.chnep.org/chnep-conservation-grants",
+      "anchor": "NEPORT",
+      "depth": 1,
+      "pdf": false,
+      "chars": 2252,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:d0adad37530de2c61579825682e7b09ecfc9fef740faef02b4065aae2c389bf9"
+    },
+    {
+      "ref": "D3",
+      "url": "https://www.chnep.org/_files/ugd/252fd8_77974166fd224bae90d9d164a953830f.docx?dn=9.25.26%20CHNEP%20Conservation%20Grant%20Application%20FY2027.docx",
+      "final_url": "https://www.chnep.org/_files/ugd/252fd8_77974166fd224bae90d9d164a953830f.docx?dn=9.25.26%20CHNEP%20Conservation%20Grant%20Application%20FY2027.docx",
+      "from": "https://www.chnep.org/chnep-conservation-grants",
+      "anchor": "Conservation Grant Application",
+      "depth": 1,
+      "pdf": false,
+      "chars": 10995,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:37b94868694561f2770f4220ef1225a089521d5a0ae9e3111e12464a3e28f951"
+    },
+    {
+      "ref": "D4",
+      "url": "https://www.chnep.org/_files/ugd/252fd8_03b145b10fb74b4daf9292ab46ab1507.pdf",
+      "final_url": "https://www.chnep.org/_files/ugd/252fd8_03b145b10fb74b4daf9292ab46ab1507.pdf",
+      "from": "https://www.chnep.org/chnep-conservation-grants",
+      "anchor": "Example Final Report",
+      "depth": 1,
+      "pdf": true,
+      "chars": 4389,
+      "pages": 4,
+      "low_text": false,
+      "hash": "sha256:d2662e214741ed9e9ff6e6341d175c9b6790745880b0567632ebe073dbb2386a"
+    },
+    {
+      "ref": "D5",
+      "url": "https://www.chnep.org/_files/ugd/252fd8_800c072926e246dca95ae6090588bbff.pdf",
+      "final_url": "https://www.chnep.org/_files/ugd/252fd8_800c072926e246dca95ae6090588bbff.pdf",
+      "from": "https://www.chnep.org/neport-project-reporting",
+      "anchor": "FLUCCS Codes",
+      "depth": 2,
+      "pdf": true,
+      "chars": 117841,
+      "pages": 95,
+      "low_text": false,
+      "hash": "sha256:77146b45e19003fcdfa457febe3fc5cb2dbb9799ea6dda72a0690d310510086d"
+    }
+  ],
+  "failures": [
+    {
+      "url": "https://www.chnep.org/_files/ugd/252fd8_03b145b10fb74b4daf9292ab46ab1507.pdf",
+      "from": "https://www.chnep.org/chnep-conservation-grants",
+      "kind": "low_text",
+      "message": "page 2 is an image: needs OCR"
+    },
+    {
+      "url": "https://myfwc.com/media/20455/land-cover-classification-revision-2018.pdf",
+      "from": "https://www.chnep.org/neport-project-reporting",
+      "kind": "blocked",
+      "message": "HTTP 403"
+    },
+    {
+      "url": "https://www.chnep.org/_files/ugd/252fd8_800c072926e246dca95ae6090588bbff.pdf",
+      "from": "https://www.chnep.org/neport-project-reporting",
+      "kind": "low_text",
+      "message": "pages 81, 82, 84, 85, 86 are images: needs OCR"
+    }
+  ],
+  "skipped_links": 83,
+  "chunks": [{ "id": "all", "docs": ["D1", "D2", "D3", "D4", "D5"], "chars": 140619 }],
+  "outcomes": {
+    "eligibility": "stated",
+    "documents": "stated",
+    "effort": "stated",
+    "co_finance": "stated",
+    "consortium": "not_found",
+    "after_award": "stated"
+  },
+  "written": ["eligibility", "documents", "effort", "co_finance", "after_award"],
+  "escalated": [],
+  "flags": [],
+  "notes": [
+    "extractor: The source text gives the spring cutoff as before April 1, 2027 or April 1, 2027, while the supplied round metadata says 2027-03-31. FY27 projects should conclude with deliverables and the final invoice by September 1, 2027; this is post-award.",
+    "source chnep-conservation-grants-2: added for https://www.chnep.org/_files/ugd/252fd8_77974166fd224bae90d9d164a953830f.docx?dn=9.25.26%20CHNEP%20Conservation%20Grant%20Application%20FY2027.docx"
+  ],
+  "usd": 0
+}

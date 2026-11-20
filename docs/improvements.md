@@ -2,6 +2,7 @@
 
 What a visitor to naturefunding.org can see or do that they couldn't before, newest first. One line per merged change, added in the same PR (AGENTS.md). The naturefunding.org LinkedIn Page drafts its update posts from this list. Emails count once `DIGEST_SENDING` is `live`.
 
+- 2026-11-20 · 14 more programmes show Before you apply (Prairie State Conservation Fund, Oregon Restoration Grants, Fonds Landschaft Schweiz, Nebraska Environmental Trust and more), each fact in the funder's words and checked by a second reader · https://naturefunding.org/programmes/oweb-restoration-grants/#before-title · #PR
 - 2026-11-20 · 29 more programmes show Before you apply (Latvian species and habitat fund, Malaysia NCTF, Metro community stewardship grants, Minnesota Outdoor Heritage Fund and more), each fact in the funder's words and checked by a second reader · https://naturefunding.org/p/lvaf-species-habitat-improvement/#before-title · #836
 - 2026-11-20 · 26 more programmes show Before you apply (NAWCA US Standard, Montana Future Fisheries, Nature Networks Fund Wales, National Geographic Society grants and more), each fact in the funder's words and checked by a second reader · https://naturefunding.org/p/nawca-us-standard/#before-title · #835
 - 2026-11-20 · 24 more programmes show Before you apply (Kleberg Foundation, Kyoto forest culture, Landcare Tasmania, LAWPRO Community Water Fund and more), each fact in the funder's words and checked by a second reader · https://naturefunding.org/p/kleberg-wildlife-conservation-animal-science/#before-title · #833

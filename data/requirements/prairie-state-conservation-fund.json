@@ -1,0 +1,122 @@
+{
+  "id": "prairie-state-conservation-fund",
+  "read_on": "2026-11-20",
+  "prompt_version": "req-2026-11-20.1",
+  "models": ["cursor:gpt-5.6-luna-high"],
+  "complete": false,
+  "reasons": [
+    "4 links could not be ranked without Jev",
+    "https://prairiestateconservation.org/wp-content/uploads/2025/02/PSCF-FAQs-Final-02-10-2025.pdf would not open (http: HTTP 404)",
+    "the text names a document with rules that was not read: Grant agreement",
+    "Jev did not check this reading, so an absent fact is not known to be absent"
+  ],
+  "requirements_checked": false,
+  "documents": [
+    {
+      "ref": "D1",
+      "url": "https://prairiestateconservation.org/prairie-state-conservation-fund/",
+      "final_url": "https://prairiestateconservation.org/prairie-state-conservation-fund/",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 5740,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:664c128a54f5cedf12bde43484e38a008f6df982a17bec0370f538339626e89d"
+    },
+    {
+      "ref": "D2",
+      "url": "https://prairiestateconservation.org/prairie-state-conservation-fund/stewardship-challenge-grant-program/",
+      "final_url": "https://prairiestateconservation.org/stewardship-challenge-grant-program/",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 6702,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:ccf7ed27afe049ef7a58b2d1b828b401b9a66ba7737c023a15ac741ab1ab3be5"
+    },
+    {
+      "ref": "D3",
+      "url": "https://prairiestateconservation.org/wp-content/uploads/2025/12/StewardshipAppScoringSheet_Final_Web.pdf",
+      "final_url": "https://prairiestateconservation.org/wp-content/uploads/2025/12/StewardshipAppScoringSheet_Final_Web.pdf",
+      "from": "https://prairiestateconservation.org/prairie-state-conservation-fund/stewardship-challenge-grant-program/",
+      "anchor": "Project Evaluation Sheet",
+      "depth": 1,
+      "pdf": true,
+      "chars": 3475,
+      "pages": 6,
+      "low_text": false,
+      "hash": "sha256:911fe48659a04649876fea7ffbc2abe74a1b0e7a2e59091d6020918055c14aa7"
+    },
+    {
+      "ref": "D4",
+      "url": "https://prairiestateconservation.org/wp-content/uploads/2025/12/PSCC-Stewardship-Program_2026WebVersion-1.pdf",
+      "final_url": "https://prairiestateconservation.org/wp-content/uploads/2025/12/PSCC-Stewardship-Program_2026WebVersion-1.pdf",
+      "from": "https://prairiestateconservation.org/prairie-state-conservation-fund/stewardship-challenge-grant-program/",
+      "anchor": "Program Guidelines and Procedures",
+      "depth": 1,
+      "pdf": true,
+      "chars": 6836,
+      "pages": 3,
+      "low_text": false,
+      "hash": "sha256:6d5a790125158931ef78cab9c18b41c51e41d75ee3969e79fc95f24da834d441"
+    },
+    {
+      "ref": "D5",
+      "url": "https://prairiestateconservation.org/wp-content/uploads/2026/01/2026CSAppForm_FINAL-1.pdf",
+      "final_url": "https://prairiestateconservation.org/wp-content/uploads/2026/01/2026CSAppForm_FINAL-1.pdf",
+      "from": "https://prairiestateconservation.org/prairie-state-conservation-fund/stewardship-challenge-grant-program/",
+      "anchor": "Project Work Plan",
+      "depth": 1,
+      "pdf": true,
+      "chars": 5011,
+      "pages": 4,
+      "low_text": false,
+      "hash": "sha256:79f078501a4b39a5260354dea8ad34ff3ba648e5289d1c9b34b8440e02740d5c"
+    },
+    {
+      "ref": "D6",
+      "url": "https://prairiestateconservation.org/wp-content/uploads/2025/12/PSCC-StewardshipFAQs_12-09-2025.pdf",
+      "final_url": "https://prairiestateconservation.org/wp-content/uploads/2025/12/PSCC-StewardshipFAQs_12-09-2025.pdf",
+      "from": "https://prairiestateconservation.org/prairie-state-conservation-fund/stewardship-challenge-grant-program/",
+      "anchor": "Frequently Asked Questions - Stewardship Challenge Grant Program",
+      "depth": 1,
+      "pdf": true,
+      "chars": 6819,
+      "pages": 5,
+      "low_text": false,
+      "hash": "sha256:673e16417edfbe01e311862e13ef6eb677f0e743cb4ff73ae5978539e9b79a05"
+    }
+  ],
+  "failures": [
+    {
+      "url": "https://prairiestateconservation.org/wp-content/uploads/2025/02/PSCF-FAQs-Final-02-10-2025.pdf",
+      "from": "https://prairiestateconservation.org/prairie-state-conservation-fund/",
+      "kind": "http",
+      "message": "HTTP 404"
+    }
+  ],
+  "skipped_links": 111,
+  "chunks": [{ "id": "all", "docs": ["D1", "D2", "D3", "D4", "D5", "D6"], "chars": 35742 }],
+  "outcomes": {
+    "eligibility": "stated",
+    "documents": "stated",
+    "effort": "stated",
+    "co_finance": "stated",
+    "consortium": "not_found",
+    "after_award": "stated"
+  },
+  "written": ["eligibility", "documents", "effort", "co_finance", "after_award"],
+  "escalated": [],
+  "flags": [],
+  "notes": [
+    "effort \"Full proposal\": the quote does not state 2027-09-17 whole; left undated",
+    "extractor: The 2027 page provides the current full-proposal dates. D4 and D5 are 2026 materials, while D6 is dated December 2025.",
+    "source prairie-state-conservation-fund-3: added for https://prairiestateconservation.org/wp-content/uploads/2026/01/2026CSAppForm_FINAL-1.pdf",
+    "source prairie-state-conservation-fund-4: added for https://prairiestateconservation.org/wp-content/uploads/2025/12/PSCC-StewardshipFAQs_12-09-2025.pdf"
+  ],
+  "usd": 0
+}
