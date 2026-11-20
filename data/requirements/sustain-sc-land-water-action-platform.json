@@ -1,0 +1,59 @@
+{
+  "id": "sustain-sc-land-water-action-platform",
+  "read_on": "2026-11-20",
+  "prompt_version": "req-2026-11-20.1",
+  "models": ["cursor:gpt-5.6-luna-high"],
+  "complete": false,
+  "reasons": [
+    "3 links could not be ranked without Jev",
+    "Jev did not check this reading, so an absent fact is not known to be absent"
+  ],
+  "requirements_checked": false,
+  "documents": [
+    {
+      "ref": "D1",
+      "url": "https://www.sustainsouthcarolina.org/land-water-action-platform",
+      "final_url": "https://www.sustainsouthcarolina.org/land-water-action-platform",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 4945,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:da9220af3c41acdc7fc4364a7cbe58528799b4a6668c38c7889ce2aa443348db"
+    },
+    {
+      "ref": "D2",
+      "url": "https://www.sustainsouthcarolina.org/s/2026-LAWAP-Application-and-Elegibility-Criteria-Guidelines.pdf",
+      "final_url": "https://static1.squarespace.com/static/5fd7c514819561099a4b75e0/t/695eea02a51b34554d8fb808/1767827970320/2026+LAWAP+Application+and+Elegibility+Criteria-Guidelines.pdf",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": true,
+      "chars": 4867,
+      "pages": 2,
+      "low_text": false,
+      "hash": "sha256:415c1fbcc1071d53a2db2d12fe9749f630676b60f2b3194f57cd4e819cddabdd"
+    }
+  ],
+  "failures": [],
+  "skipped_links": 88,
+  "chunks": [{ "id": "all", "docs": ["D1", "D2"], "chars": 10010 }],
+  "outcomes": {
+    "eligibility": "stated",
+    "documents": "stated",
+    "effort": "stated",
+    "co_finance": "not_found",
+    "consortium": "not_found",
+    "after_award": "stated"
+  },
+  "written": ["eligibility", "documents", "effort", "after_award"],
+  "escalated": [],
+  "flags": [],
+  "notes": [
+    "extractor: D2 says an applicant may provide a narrative if the project does not align with the Conservation Priority Map, but it does not state whether this substitutes for the stated medium-to-high ranking requirement. After project closure, the grantee must notify the SVP-Conservation within 30 days.",
+    "source sustain-sc-land-water-action-platform-2: selector main dropped, a new quote sits outside it"
+  ],
+  "usd": 0
+}

@@ -1,14 +1,32 @@
 {
   "id": "south-downs-beelines-fund",
   "name": "South Downs National Park Trust Beelines Fund",
-  "funder": { "name": "South Downs National Park Trust", "url": "https://southdownstrust.org.uk/" },
+  "funder": {
+    "name": "South Downs National Park Trust",
+    "url": "https://southdownstrust.org.uk/"
+  },
   "administered_by": null,
   "parent": null,
   "url": "https://southdownstrust.org.uk/apply-for-funding/beelines-fund",
   "summary": "Grants, usually up to £5,000, to establish or restore pollinator habitat on sites inside the South Downs National Park, covering seed, equipment, mowing services and ground-prep machinery hire. Annual submissions of interest.",
-  "approaches": ["grasslands", "species_conservation", "community_conservation"],
-  "applicant_types": ["ngo", "community_group", "government", "individual"],
-  "geography": { "scope": "countries", "countries": ["GB"], "label": "South Downs National Park" },
+  "approaches": [
+    "grasslands",
+    "species_conservation",
+    "community_conservation"
+  ],
+  "applicant_types": [
+    "ngo",
+    "community_group",
+    "government",
+    "individual"
+  ],
+  "geography": {
+    "scope": "countries",
+    "countries": [
+      "GB"
+    ],
+    "label": "South Downs National Park"
+  },
   "access": "direct",
   "window": "unspecified",
   "amount": {
@@ -19,6 +37,18 @@
   },
   "co_finance_required": true,
   "reporting": null,
+  "effort": {
+    "steps": [
+      "Submission of interest",
+      "Site visit if shortlisted"
+    ]
+  },
+  "eligibility": [
+    {
+      "rule": "No apiary creation or improvement projects",
+      "kind": "project"
+    }
+  ],
   "calls": [
     {
       "id": "2026-submissions",
@@ -68,6 +98,28 @@
       "checked_at": "2026-11-20",
       "method": "page"
     },
+    "effort": [
+      {
+        "source_url": "https://southdownstrust.org.uk/apply-for-funding/beelines-fund",
+        "quote": "Submissions of interest are closed for 2026.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://southdownstrust.org.uk/apply-for-funding/beelines-fund",
+        "quote": "Shortlisted projects will receive a site visit during spring",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "eligibility": [
+      {
+        "source_url": "https://southdownstrust.org.uk/apply-for-funding/beelines-fund",
+        "quote": "The fund is unable to support apiary creation or improvement projects.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
     "co_finance": {
       "source_url": "https://southdownstrust.org.uk/apply-for-funding/beelines-fund",
       "quote": "we also consider in-kind contributions such as labour and equipment",
@@ -76,5 +128,7 @@
     }
   },
   "checked_at": "2026-11-20",
-  "co_finance": { "in_kind": true }
+  "co_finance": {
+    "in_kind": true
+  }
 }
