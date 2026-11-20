@@ -2,6 +2,7 @@
 
 What a visitor to naturefunding.org can see or do that they couldn't before, newest first. One line per merged change, added in the same PR (AGENTS.md). The naturefunding.org LinkedIn Page drafts its update posts from this list. Emails count once `DIGEST_SENDING` is `live`.
 
+- 2026-11-20 · 30 more programmes show Before you apply (NFWF Klamath Basin, Longleaf Landscape Stewardship, Five Star and Urban Waters, Acres for America and more), each fact in the funder's words and checked by a second reader · https://naturefunding.org/programmes/nfwf-klamath-basin/#before-title · #PR
 - 2026-11-20 · 24 more programmes show Before you apply (Kleberg Foundation, Kyoto forest culture, Landcare Tasmania, LAWPRO Community Water Fund and more), each fact in the funder's words and checked by a second reader · https://naturefunding.org/p/kleberg-wildlife-conservation-animal-science/#before-title · #833
 - 2026-11-20 · 28 more programmes show Before you apply (Illinois DNR natural areas stewardship, Interreg POCTEP biodiversity, IUCN Global EbA Fund, JFGE and more), each fact in the funder's words and checked by a second reader · https://naturefunding.org/p/illinois-dnr-natural-areas-stewardship/#before-title · #832
 - 2026-11-20 · 28 more programmes show Before you apply (GEF Small Grants Costa Rica, GEF Small Grants Sri Lanka, Girona nature conservation grants, Great Lakes Fishery Trust habitat grants and more), each fact in the funder's words and checked by a second reader · https://naturefunding.org/p/gef-sgp-costa-rica/#before-title · #831
