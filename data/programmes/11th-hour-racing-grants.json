@@ -1,23 +1,14 @@
 {
   "id": "11th-hour-racing-grants",
   "name": "11th Hour Racing grants (Ecosystem Restoration focus area)",
-  "funder": {
-    "name": "11th Hour Racing",
-    "url": "https://www.11thhourracing.org/"
-  },
-  "administered_by": null,
+  "funder": { "name": "11th Hour Racing", "url": "https://www.11thhourracing.org/" },
+  "administered_by": { "name": "11th Hour Racing, Inc.", "url": "https://www.11thhourracing.org" },
   "parent": null,
   "url": "https://www.11thhourracing.org/grant-giving",
   "summary": "Project grants, typically one year, for nonprofits, favouring local pilot projects with measurable outcomes; one of three focus areas is coastal habitat restoration. Priority to the US East Coast, Puerto Rico, Hawaii and the Caribbean.",
-  "approaches": [
-    "coastal_marine"
-  ],
-  "applicant_types": [
-    "ngo"
-  ],
-  "geography": {
-    "scope": "global"
-  },
+  "approaches": ["coastal_marine"],
+  "applicant_types": ["ngo"],
+  "geography": { "scope": "global" },
   "access": "direct",
   "window": "unspecified",
   "amount": {
@@ -29,6 +20,11 @@
   },
   "co_finance_required": null,
   "reporting": null,
+  "eligibility": [
+    { "rule": "Funding tied to a specific project with measurable outcomes", "kind": "project" },
+    { "rule": "Not general, capital, infrastructure or endowment funding", "kind": "project" }
+  ],
+  "requirements_checked": "2026-11-17",
   "calls": [
     {
       "id": "current",
@@ -48,6 +44,12 @@
     }
   ],
   "evidence": {
+    "administered_by": {
+      "source_url": "https://www.11thhourracing.org/grant-giving",
+      "quote": "Under the 11th Hour Racing umbrella, activities are provided through 11th Hour Racing, Inc., which serves as the impact entity",
+      "checked_at": "2026-11-20",
+      "method": "page"
+    },
     "applicant_types": {
       "source_url": "https://www.11thhourracing.org/grant-giving",
       "quote": "We prioritize projects led by 501(c)(3) organizations, but other types of nonprofit or charitable entities may apply",
@@ -87,16 +89,5 @@
       }
     ]
   },
-  "checked_at": "2026-11-17",
-  "eligibility": [
-    {
-      "rule": "Funding tied to a specific project with measurable outcomes",
-      "kind": "project"
-    },
-    {
-      "rule": "Not general, capital, infrastructure or endowment funding",
-      "kind": "project"
-    }
-  ],
-  "requirements_checked": "2026-11-17"
+  "checked_at": "2026-11-17"
 }
