@@ -123,6 +123,13 @@ jobs:
             deleted=$(git diff --name-only --diff-filter=D "$GITHUB_SHA" "$upstream" -- data/programmes)
             [ -n "$changed" ] && git checkout "$upstream" -- $changed
             [ -n "$deleted" ] && git rm -q --ignore-unmatch -- $deleted
+            # A draft committed by the run also accepted its page: undo that too, so the page is drafted again.
+            for f in $changed $deleted; do
+              for sid in $(jq -r --arg p "$(basename "$f" .json)" '.[] | select(.programme_id == $p) | .id' data/sources.json); do
+                a="data/checks/accepted/$sid.json"
+                git checkout "$upstream" -- "$a" 2>/dev/null || git rm -q --ignore-unmatch -- "$a"
+              done
+            done
             git commit -q -m "Refresh: keep the version of programmes changed during the run" || true
             bun run validate
           }

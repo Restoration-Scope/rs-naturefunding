@@ -97,3 +97,29 @@ export function applyTierA(original: Programme, okUrls: Set<string>, now: Date):
   const changed = JSON.stringify(p) !== JSON.stringify(original)
   return { programme: p, changed, closed, opened }
 }
+
+/**
+ * Dates the facts on changed pages (`pages`: url → page text read today) whose quote is still
+ * verbatim on the page, without accepting the new page version: the fact as quoted is still
+ * there, whatever else moved. Facts whose quote is gone keep their date for the review.
+ * An upcoming call due to open keeps its date, as in Tier A. Never changes a value.
+ */
+export function dateQuoted(original: Programme, pages: Map<string, string>, now: Date): { programme: Programme; dated: number } {
+  const p: Programme = structuredClone(original)
+  const today = dateOf(now)
+  const held = new Set(p.calls.filter((c) => c.status === 'upcoming' && c.opens && c.opens <= today).map((c) => c.evidence.status))
+  const comparableText = new Map<string, string>()
+  let dated = 0
+  for (const { evidence } of evidenceRefs(p)) {
+    const text = pages.get(evidence.source_url)
+    if (text === undefined || evidence.checked_at >= today || held.has(evidence)) continue
+    if (!comparableText.has(evidence.source_url)) comparableText.set(evidence.source_url, comparable(text))
+    if (!quoteOnPage(comparableText.get(evidence.source_url)!, evidence.quote)) continue
+    evidence.checked_at = today
+    dated++
+  }
+  const dates = evidenceRefs(p).map((r) => r.evidence.checked_at)
+  const oldest = dates.length ? dates.reduce((a, b) => (a < b ? a : b)) : p.checked_at
+  if (oldest > p.checked_at) p.checked_at = oldest
+  return { programme: p, dated }
+}

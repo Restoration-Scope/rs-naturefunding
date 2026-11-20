@@ -1,6 +1,6 @@
 ---
 title: Refresh commits changes only when the reviewer finds nothing wrong; dates stop waiting on PRs
-status: open
+status: approved
 kind: temporary
 filed: 2026-11-20
 by: Refresh PR backlog triage
@@ -33,3 +33,7 @@ Revisits [the 1 Nov call](2026-11-01-refresh-auto-merge-off.md). Nothing is buil
 - Sort with PR numbers: `refresh-backlog-2026-11-20.md` in the side-session notes folder
 - `scripts/refresh/run.ts` (draftFor), `scripts/refresh/open-prs.ts`, `scripts/refresh/tier-b.ts`
 - Closed #67: its source `cepf-indo-burma-4` is no longer watched. No PR was a duplicate of a newer one: `open-prs.ts` already closes those.
+
+## Feedback
+
+- 2026-11-20 Bernat · approved: "Approve it" (in the naturefunding.org daily-check thread). Building parts 1, 2 and 4; part 3 after the first green scheduled run.
