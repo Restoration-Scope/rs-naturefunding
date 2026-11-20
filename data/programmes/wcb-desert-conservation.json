@@ -1,47 +1,29 @@
 {
   "id": "wcb-desert-conservation",
   "name": "WCB Desert Conservation Program",
-  "funder": {
+  "funder": { "name": "California Wildlife Conservation Board", "url": "https://wcb.ca.gov/" },
+  "administered_by": {
     "name": "California Wildlife Conservation Board",
-    "url": "https://wcb.ca.gov/"
+    "url": "https://grants.ca.gov/grants/desert-conservation-program"
   },
-  "administered_by": null,
   "parent": null,
   "url": "https://wcb.ca.gov/programs/desert",
   "summary": "California state grants for acquisition, restoration and management projects in the Mojave and Colorado Deserts, including riparian and upland restoration, invasive plant control and seed propagation. Pre-applications are taken continuously.",
-  "approaches": [
-    "protected_areas",
-    "freshwater",
-    "species_conservation"
-  ],
-  "applicant_types": [
-    "ngo",
-    "government",
-    "indigenous_organization"
-  ],
+  "approaches": ["protected_areas", "freshwater", "species_conservation"],
+  "applicant_types": ["ngo", "government", "indigenous_organization"],
   "geography": {
     "scope": "countries",
-    "countries": [
-      "US"
-    ],
+    "countries": ["US"],
     "label": "Mojave and Colorado Deserts, California"
   },
   "access": "direct",
   "window": "rolling",
-  "amount": null,
+  "amount": { "currency": "USD", "max": 5000000, "note": "total estimated available funding" },
   "co_finance_required": false,
   "reporting": null,
-  "effort": {
-    "steps": [
-      "Pre-application",
-      "Full Application, if invited"
-    ]
-  },
+  "effort": { "steps": ["Pre-application", "Full Application, if invited"] },
   "eligibility": [
-    {
-      "rule": "Nonprofit applicants have 501(c)(3) tax-exempt status",
-      "kind": "legal"
-    },
+    { "rule": "Nonprofit applicants have 501(c)(3) tax-exempt status", "kind": "legal" },
     {
       "rule": "Project provides protected or restored biodiversity, climate action, or public access to nature",
       "kind": "project"
@@ -55,9 +37,7 @@
       "kind": "project"
     }
   ],
-  "after_award": {
-    "reports": "final"
-  },
+  "after_award": { "reports": "final" },
   "calls": [
     {
       "id": "continuous-pre-applications",
@@ -77,6 +57,12 @@
     }
   ],
   "evidence": {
+    "administered_by": {
+      "source_url": "https://grants.ca.gov/grants/desert-conservation-program",
+      "quote": "Passage of the California Desert Conservation Act established the Desert Conservation Program under the administration of the Wildlife Conservation Board.",
+      "checked_at": "2026-11-20",
+      "method": "page"
+    },
     "applicant_types": {
       "source_url": "https://wcb.ca.gov/programs/desert",
       "quote": "Entities eligible to apply for grant funding under the Desert Conservation Program include: federal and state agencies, local public agencies, tribal entities, and non-profits with 501 (c)(3) tax exempt status.",
@@ -98,6 +84,12 @@
     "window": {
       "source_url": "https://wcb.ca.gov/programs/desert",
       "quote": "The Wildlife Conservation Board accepts pre-applications for acquisition, restoration, and management projects on a continuous basis.",
+      "checked_at": "2026-11-20",
+      "method": "page"
+    },
+    "amount": {
+      "source_url": "https://grants.ca.gov/grants/desert-conservation-program",
+      "quote": "Total estimated available funding The total projected dollar amount of the grant. $5,000,000.00",
       "checked_at": "2026-11-20",
       "method": "page"
     },
