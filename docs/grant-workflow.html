@@ -174,16 +174,35 @@
 <div class="docs-layout">
   <div class="docs-title">
     <h1>Grant workflow</h1>
-    <p class="lede">How naturefunding.org finds a grant, checks it and works out what it takes an operator to apply.</p>
+    <p class="lede">Four stages: Discovery fills a backlog, Gathering collects the intel, Triage validates each entry, Processing gives operators the evidence to decide.</p>
   </div>
   <nav class="toc toc-inline" aria-label="Diagrams"></nav>
 
   <main>
     <!-- One <section> per diagram. The h2 becomes its table-of-contents entry.
          Mermaid goes inside <script type="text/plain" class="mermaid"> as is: no HTML escaping. -->
-    <section id="find">
-      <h2>1a. From tip to listing: finding leads</h2>
-      <p>Two jobs in <code>refresh.yml</code> raise leads; none becomes a listing by itself. No model is called here: the EU and grants.gov searches are keyword APIs and Exa is a search engine. Triage has no script yet: the open <code>discovery</code> issues wait for an agent session or Bernat. Functions: <code>isNbsEuTopic</code>, <code>isNbsUsOpportunity</code>, <code>organisationLead</code>, <code>newCandidates</code> and <code>fileDiscoveryIssue</code> in <code>scripts/refresh/discover.ts</code>; <code>newLeads</code> in <code>scripts/refresh/discover-web.ts</code>. Green: code that decides. Blue: an outside API or model is called. Amber: a person or agent decides. Red: left out. Purple: a file or record. Solid arrows: flow and writes; dotted: reads; two heads: reads and writes.</p>
+    <section id="stages">
+      <h2>The four stages</h2>
+      <p>Discovery fills a backlog; Gathering collects everything later steps need; Triage validates each entry; Processing turns the evidence into what an operator needs to make the call. Keeping current re-reads what is listed. Today Gathering runs only after a listing exists (inside the requirements pipeline); the target is to gather before Triage, so Triage decides on the full picture. Green: code that decides. Blue: an outside API or model is called, or not built yet (“Next”). Amber: a person or agent decides. Red: left out. Purple: a file or record. Solid arrows: flow and writes; dotted: reads; two heads: reads and writes.</p>
+      <script type="text/plain" class="mermaid">
+flowchart LR
+  D["fa:fa-radar 1 Discovery<br/>goal: a backlog of leads<br/>out: discovery issues,<br/>discovered.json"]
+  G["fa:fa-folder-search 2 Gathering<br/>goal: all the intel<br/>out: pages, documents,<br/>forms, past rounds"]
+  T["fa:fa-list-checks 3 Triage<br/>goal: validated entries<br/>out: accept, hold, reject;<br/>data/programmes/{id}.json"]
+  P["fa:fa-scale 4 Processing<br/>goal: evidence to decide<br/>out: rules, effort, fit"]
+  K["fa:fa-refresh-cw 5 Keeping current<br/>daily read, weekly links"]
+  D --> G --> T --> P
+  P --> K
+  K -->|"page changed"| G
+  class D,K good
+  class G,P info
+  class T warn
+      </script>
+    </section>
+
+    <section id="discovery">
+      <h2>1. Discovery: fill the backlog</h2>
+      <p>Two jobs in <code>refresh.yml</code> raise leads; none becomes a listing by itself. No model is called here: the EU and grants.gov searches are keyword APIs and Exa is a search engine. The backlog is the open <code>discovery</code> issues. Functions: <code>isNbsEuTopic</code>, <code>isNbsUsOpportunity</code>, <code>organisationLead</code>, <code>newCandidates</code> and <code>fileDiscoveryIssue</code> in <code>scripts/refresh/discover.ts</code>; <code>newLeads</code> in <code>scripts/refresh/discover-web.ts</code>. Green: code that decides. Blue: an outside API or model is called, or not built yet (“Next”). Amber: a person or agent decides. Red: left out. Purple: a file or record. Solid arrows: flow and writes; dotted: reads; two heads: reads and writes.</p>
       <script type="text/plain" class="mermaid">
 flowchart TB
   EU["fa:fa-landmark EU Funding & Tenders API<br/>daily 05:17 UTC, discover.ts<br/>out: topics, deadlines"]
@@ -197,29 +216,76 @@ flowchart TB
   DATA[("data/programmes<br/>data/sources.json")]
   DISC[("data/checks/discovered.json<br/>keys eu:, us:, web:")]
   ISS[("GitHub issue<br/>label discovery")]
-  TRI["fa:fa-user Triage, no script yet<br/>an agent session or Bernat<br/>reads each issue against<br/>docs/triage-criteria.md"]
-  REJ["fa:fa-x Reject<br/>farmer payments, students,<br/>agencies only, not nature"]
-  HOLD["fa:fa-pause Hold for Bernat<br/>details only off the<br/>funder’s site, or unclear"]
-  ACC["fa:fa-arrow-right Accept<br/>write the listing, 1b"]
   EU --> EUF --> NC
   US --> USF --> NC
   EXA --> NL
   DATA -.-> NC & NL
   NC & NL <-->|"reads, writes:<br/>raise once"| DISC
   NC & NL -->|a row per lead| ISS
-  ISS & DIR --> TRI
-  TRI --> REJ & HOLD & ACC
+  DIR -.->|"tips for where to look"| BL
+  ISS --> BL
+  BL["fa:fa-inbox Backlog<br/>open discovery issues,<br/>to Gathering"]
   class EUF,USF,NL,NC good
   class EU,US,EXA,DIR info
-  class TRI,HOLD,ACC warn
-  class REJ bad
   class DATA,DISC,ISS store
+  class BL warn
       </script>
     </section>
 
-    <section id="list">
-      <h2>1b. From tip to listing: adding a listing</h2>
-      <p>An agent writes the file from the funder’s own page; every gate after that is code. There is no CI on pull requests, so the agent runs <code>bun test</code>, <code>check</code> and <code>build</code> before it commits. Functions: <code>checkData</code> in <code>src/data/load.ts</code>; <code>statesYear</code> and <code>statesDate</code> in <code>src/data/schema.ts</code>; <code>deadlinePassed</code> in <code>scripts/refresh/deadline.ts</code>; <code>fetchPage</code> in <code>scripts/data/page-text.ts</code>; <code>quoteOnPage</code> in <code>src/data/text.ts</code>. <code>{id}</code> is the programme id. Colours and arrows as in 1a.</p>
+    <section id="gathering">
+      <h2>2. Gathering: collect the intel</h2>
+      <p>Built today as stages 1–2 of the requirements pipeline (<code>scripts/requirements/</code>), for listed programmes only. Next: run it for each backlog lead before Triage, and widen it from the call’s rules to everything an applicant meets: the form itself, FAQs, earlier rounds, launch posts and who got funded. What it finds is evidence for later stages, never a fact by itself. Functions: <code>queue</code> in <code>queue.ts</code>; <code>seedsOf</code>, <code>gather</code>, <code>politeReader</code>, <code>linksFrom</code>, <code>classifyLink</code> (<code>RELEVANT</code>, <code>NOISE</code>), <code>lowTextPdf</code>, <code>BOUNDS</code> in <code>gather.ts</code>; the about-check calls Jev. Colours and arrows as in 1.</p>
+      <script type="text/plain" class="mermaid">
+flowchart TB
+  BL[("Backlog: discovery issue")]
+  PROG[("data/programmes/{id}.json<br/>cited pages, call pages")]
+  Q["fa:fa-list-ordered queue, queue.ts<br/>never read, page changed,<br/>new round, 12 months old"]
+  SEED["fa:fa-sprout seedsOf<br/>cited and call pages"]
+  RD["fa:fa-download politeReader<br/>robots.txt, gap per host,<br/>.cache pages, PDF text"]
+  LK["fa:fa-link linksFrom, classifyLink<br/>RELEVANT vs NOISE:<br/>strong, ambiguous, offsite, skip"]
+  JR["fa:fa-bot Jev ranks ambiguous links<br/>and checks each document is<br/>about this programme"]
+  BD["fa:fa-ruler BOUNDS<br/>depth 2, 8 documents"]
+  LOW["fa:fa-scan lowTextPdf<br/>scanned pages: needs OCR"]
+  MAN[("data/requirements/{id}.json<br/>documents, hashes, failures,<br/>skipped links, reasons")]
+  N1["fa:fa-mouse-pointer-click Next: the form itself<br/>fields, dropdowns, uploads,<br/>embedded forms, portals"]
+  N2["fa:fa-history Next: around the call<br/>FAQs, earlier rounds, launch<br/>posts, who got funded"]
+  N3["fa:fa-flag Next: leads queue<br/>unread documents, offsite<br/>portals, contradictions"]
+  BL -.->|"Next: gather before Triage"| SEED
+  PROG -.-> Q --> SEED --> RD --> LK
+  LK -->|ambiguous| JR --> BD
+  LK -->|strong| BD
+  BD -->|"follow, depth +1"| RD
+  RD --> LOW
+  BD -->|"bound hit, fetch failed,<br/>offsite, low text"| MAN
+  BD -->|"gathered text"| MAN
+  RD -.-> N1 & N2
+  MAN -.-> N3
+  class Q,SEED,RD,LK,BD,LOW good
+  class JR,N1,N2,N3 info
+  class BL,PROG,MAN store
+      </script>
+    </section>
+
+    <section id="triage">
+      <h2>3a. Triage: decide</h2>
+      <p>No script yet: an agent session or Bernat reads each lead and its gathered pages against <code>docs/triage-criteria.md</code>. Colours and arrows as in 1.</p>
+      <script type="text/plain" class="mermaid">
+flowchart TB
+  BL[("Backlog lead<br/>+ gathered pages")]
+  TRI["fa:fa-user Triage, no script yet<br/>an agent session or Bernat<br/>docs/triage-criteria.md"]
+  REJ["fa:fa-x Reject<br/>farmer payments, students,<br/>agencies only, not nature, closed"]
+  HOLD["fa:fa-pause Hold for Bernat<br/>details only off the funder’s site,<br/>unclear, or a lead not a fact"]
+  ACC["fa:fa-arrow-right Accept<br/>write the listing, 3b"]
+  BL --> TRI --> REJ & HOLD & ACC
+  class TRI,HOLD,ACC warn
+  class REJ bad
+  class BL store
+      </script>
+    </section>
+
+    <section id="listing">
+      <h2>3b. Triage: write and validate the listing</h2>
+      <p>An agent writes the file from the funder’s own page; every gate after that is code. There is no CI on pull requests, so the agent runs <code>bun test</code>, <code>check</code> and <code>build</code> before it commits. Functions: <code>checkData</code> in <code>src/data/load.ts</code>; <code>statesYear</code> and <code>statesDate</code> in <code>src/data/schema.ts</code>; <code>deadlinePassed</code> in <code>scripts/refresh/deadline.ts</code>; <code>fetchPage</code> in <code>scripts/data/page-text.ts</code>; <code>quoteOnPage</code> in <code>src/data/text.ts</code>. <code>{id}</code> is the programme id. Colours and arrows as in 1.</p>
       <script type="text/plain" class="mermaid">
 flowchart TB
   WR["fa:fa-pen-line Agent writes the listing<br/>quotes copied from page-text.ts"]
@@ -229,7 +295,7 @@ flowchart TB
   VAL["fa:fa-shield-check validate.ts: checkData<br/>zod schema, statesYear, statesDate,<br/>deadlinePassed; every URL watched"]
   VQ["fa:fa-quote verify-quotes.ts<br/>fetchPage, quoteOnPage per quote"]
   MERGE["fa:fa-git-merge Pull request to main<br/>agent or Bernat merges;<br/>deploy.yml publishes, 1d"]
-  RQ[("fa:fa-file-search Requirements, diagram 2<br/>manifest: data/requirements/{id}.json")]
+  RQ[("fa:fa-file-search Processing, 4a<br/>manifest: data/requirements/{id}.json")]
   WR -->|writes| PROG
   PROG -.-> SS
   SS -->|writes| SRC
@@ -244,9 +310,64 @@ flowchart TB
       </script>
     </section>
 
+    <section id="read">
+      <h2>4a. Processing: read what it takes to apply</h2>
+      <p>Stages 3–8 of the requirements pipeline, on what Gathering collected. Code owns the workflow and every check it can state; models only read language. One programme at a time, ~30 per pull request. Functions: <code>chunksOf</code>, <code>extract</code>, <code>reconcile</code> in <code>extract.ts</code>; <code>verify</code>, <code>locate</code> in <code>verify.ts</code>; <code>check</code>, <code>omissions</code> in <code>check.ts</code>; <code>run</code> in <code>pipeline.ts</code>; <code>apply</code>, <code>manifest</code> in <code>write.ts</code>.</p>
+      <script type="text/plain" class="mermaid">
+flowchart TB
+  G[("Gathered text, 2<br/>pages and documents")] --> E
+  E["fa:fa-bot 3 Extract, cheap model<br/>each item with a verbatim quote, or not_found"] --> VE
+  VE{"fa:fa-shield-check 4 Verify, code<br/>schema, quote on page, dates"}
+  VE -->|fails| D["fa:fa-trash Item dropped"]
+  VE -->|passes| C
+  C{"fa:fa-scale 5 Check, Jev<br/>rule vs quote, polarity, missed facts"}
+  C -->|flagged| S["fa:fa-brain 6 Escalate, strong model<br/>fixed or unresolved"]
+  S -->|fixed| VE
+  S -->|unresolved| P["fa:fa-user Agent or Bernat<br/>browser, OCR, blocked pages"]
+  C -->|clean| W
+  W["fa:fa-file-json 7 Write<br/>facts into data/programmes,<br/>coverage in data/requirements"] --> LA
+  LA["fa:fa-git-pull-request 8 Land<br/>cross-family fact review per batch"] --> B
+  B["fa:fa-gauge Effort bars, computed at build<br/>no model picks a colour"]
+  class VE,B good
+  class G store
+  class E,C info
+  class S,P,LA warn
+  class D bad
+  class W store
+      </script>
+    </section>
+
+    <section id="apply">
+      <h2>4b. Processing: the applicant’s view</h2>
+      <p>What we structure from the pages, and how it turns into a decision for one operator. “Next” marks what isn’t built yet.</p>
+      <script type="text/plain" class="mermaid">
+flowchart TB
+  CP["fa:fa-globe Call page and everything it links"]
+  CP --> HOW["fa:fa-mouse-pointer-click Next: how you apply<br/>online form, PDF or Word form, portal, email"]
+  CP --> ST["fa:fa-footprints Steps and due dates"]
+  CP --> DO["fa:fa-files Documents at the first step"]
+  CP --> EL["fa:fa-ban Rules that rule you out<br/>typed: years operating, revenue"]
+  CP --> MO["fa:fa-coins Amount, co-funding, consortium"]
+  CP --> AF["fa:fa-clipboard-list After the award<br/>reports, audits, visits"]
+  CP --> HI["fa:fa-eye Next: hidden criteria<br/>form fields, FAQs, earlier rounds,<br/>launch posts, who got funded"]
+  HI -->|"limit only in an earlier round,<br/>or guidance named but not linked"| FL["fa:fa-flag A lead, not a fact<br/>flag to Bernat, ask the funder"]
+  HOW & ST & DO & EL & MO & AF & HI --> FIT
+  FIT{"fa:fa-user-check For this operator"}
+  FIT -->|"can’t apply"| NO["fa:fa-x Next: greyed out"]
+  FIT -->|"effort beyond the return"| LOW["fa:fa-arrow-down Ranked down<br/>effort bars, worth-applying check"]
+  FIT -->|good fit| GO["fa:fa-check Worth applying"]
+  GO --> WR["fa:fa-pen-line Next: writing support<br/>help, not automated applications"]
+  class ST,DO,EL,MO,AF,LOW,GO good
+  class HOW,HI,WR,FIT info
+  class FL warn
+  class NO bad
+  class CP store
+      </script>
+    </section>
+
     <section id="refresh">
-      <h2>1c. Keeping listings current: the daily read</h2>
-      <p><code>scripts/refresh/run.ts</code>, the “Read pages” step of <code>refresh.yml</code>, daily at 05:17 UTC. Tier A is code only and lands on main. Tier B goes to two models from different families on Cloudflare Workers AI and becomes a pull request (1d). Jev is not called anywhere in section 1; it checks requirements in section 2. Functions: <code>isDue</code> and <code>programmeChecks</code> in <code>state.ts</code>; <code>readPages</code> in <code>fetch.ts</code>; <code>classify</code> and <code>applyTierA</code> in <code>tier.ts</code> (with <code>quoteOnPage</code> from <code>src/data/text.ts</code> and <code>deadlinePassed</code> from <code>deadline.ts</code>); <code>extractAndReview</code> and <code>applyExtraction</code> in <code>tier-b.ts</code>, models called through <code>llm.ts</code>; all under <code>scripts/refresh/</code>. <code>{source-id}</code> is the id in <code>data/sources.json</code>. Colours and arrows as in 1a.</p>
+      <h2>5a. Keeping current: the daily read</h2>
+      <p><code>scripts/refresh/run.ts</code>, the “Read pages” step of <code>refresh.yml</code>, daily at 05:17 UTC. Tier A is code only and lands on main. Tier B goes to two models from different families on Cloudflare Workers AI and becomes a pull request (5b). Jev is not called anywhere in section 1; it checks requirements in Gathering and Processing. Functions: <code>isDue</code> and <code>programmeChecks</code> in <code>state.ts</code>; <code>readPages</code> in <code>fetch.ts</code>; <code>classify</code> and <code>applyTierA</code> in <code>tier.ts</code> (with <code>quoteOnPage</code> from <code>src/data/text.ts</code> and <code>deadlinePassed</code> from <code>deadline.ts</code>); <code>extractAndReview</code> and <code>applyExtraction</code> in <code>tier-b.ts</code>, models called through <code>llm.ts</code>; all under <code>scripts/refresh/</code>. <code>{source-id}</code> is the id in <code>data/sources.json</code>. Colours and arrows as in 1.</p>
       <script type="text/plain" class="mermaid">
 flowchart TB
   SRC[("data/sources.json<br/>cycle per source")]
@@ -281,8 +402,8 @@ flowchart TB
     </section>
 
     <section id="land">
-      <h2>1d. Keeping listings current: landing and publishing</h2>
-      <p>The rest of <code>refresh.yml</code>, its Monday 06:43 UTC weekly mode, and <code>deploy.yml</code>. Tier A commits go straight to main; every changed fact waits on a pull request. No refresh pull request has been merged so far: an agent session or Bernat checks them against the page and lands the good changes in batches on main, and the rest are closed as superseded. An open decision (20 Nov 2026) would commit clean drafts directly. <code>checkLink</code> is in <code>weekly.ts</code>; the commit step is in <code>refresh.yml</code>; <code>deploy.yml</code> runs hourly at :11. Colours and arrows as in 1a.</p>
+      <h2>5b. Keeping current: landing and publishing</h2>
+      <p>The rest of <code>refresh.yml</code>, its Monday 06:43 UTC weekly mode, and <code>deploy.yml</code>. Tier A commits go straight to main; every changed fact waits on a pull request. No refresh pull request has been merged so far: an agent session or Bernat checks them against the page and lands the good changes in batches on main, and the rest are closed as superseded. An open decision (20 Nov 2026) would commit clean drafts directly. <code>checkLink</code> is in <code>weekly.ts</code>; the commit step is in <code>refresh.yml</code>; <code>deploy.yml</code> runs hourly at :11. Colours and arrows as in 1.</p>
       <script type="text/plain" class="mermaid">
 flowchart TB
   STATE[("data/ from run.ts<br/>and discovery")]
@@ -315,61 +436,6 @@ flowchart TB
   class COMMIT,OP,DISP,WK,DEP good
   class REV warn
   class STATE,RATES,LINKS,SUM,DRAFT,PRR,ISSR,READS store
-      </script>
-    </section>
-
-    <section id="read">
-      <h2>2. Reading what it takes to apply</h2>
-      <p>Code owns the workflow and every check it can state; models only read language. One programme at a time, ~30 per pull request.</p>
-      <script type="text/plain" class="mermaid">
-flowchart TB
-  Q["fa:fa-list-ordered 1 Queue<br/>never read, page changed, new round, 12 months old"] --> G
-  G["fa:fa-link 2 Gather<br/>call pages and linked PDFs, depth 2, up to 8"] --> E
-  E["fa:fa-bot 3 Extract, cheap model<br/>each item with a verbatim quote, or not_found"] --> VE
-  VE{"fa:fa-shield-check 4 Verify, code<br/>schema, quote on page, dates"}
-  VE -->|fails| D["fa:fa-trash Item dropped"]
-  VE -->|passes| C
-  C{"fa:fa-scale 5 Check, Jev<br/>rule vs quote, polarity, missed facts"}
-  C -->|flagged| S["fa:fa-brain 6 Escalate, strong model<br/>fixed or unresolved"]
-  S -->|fixed| VE
-  S -->|unresolved| P["fa:fa-user Agent or Bernat<br/>browser, OCR, blocked pages"]
-  C -->|clean| W
-  W["fa:fa-file-json 7 Write<br/>facts into data/programmes,<br/>coverage in data/requirements"] --> LA
-  LA["fa:fa-git-pull-request 8 Land<br/>cross-family fact review per batch"] --> B
-  B["fa:fa-gauge Effort bars, computed at build<br/>no model picks a colour"]
-  class Q,G,VE,B good
-  class E,C info
-  class S,P,LA warn
-  class D bad
-  class W store
-      </script>
-    </section>
-
-    <section id="apply">
-      <h2>3. The applicant’s view</h2>
-      <p>What we structure from the pages, and how it turns into a decision for one operator. “Next” marks what isn’t built yet.</p>
-      <script type="text/plain" class="mermaid">
-flowchart TB
-  CP["fa:fa-globe Call page and everything it links"]
-  CP --> HOW["fa:fa-mouse-pointer-click Next: how you apply<br/>online form, PDF or Word form, portal, email"]
-  CP --> ST["fa:fa-footprints Steps and due dates"]
-  CP --> DO["fa:fa-files Documents at the first step"]
-  CP --> EL["fa:fa-ban Rules that rule you out<br/>typed: years operating, revenue"]
-  CP --> MO["fa:fa-coins Amount, co-funding, consortium"]
-  CP --> AF["fa:fa-clipboard-list After the award<br/>reports, audits, visits"]
-  CP --> HI["fa:fa-eye Next: hidden criteria<br/>form fields, FAQs, earlier rounds,<br/>launch posts, who got funded"]
-  HI -->|"limit only in an earlier round,<br/>or guidance named but not linked"| FL["fa:fa-flag A lead, not a fact<br/>flag to Bernat, ask the funder"]
-  HOW & ST & DO & EL & MO & AF & HI --> FIT
-  FIT{"fa:fa-user-check For this operator"}
-  FIT -->|"can’t apply"| NO["fa:fa-x Next: greyed out"]
-  FIT -->|"effort beyond the return"| LOW["fa:fa-arrow-down Ranked down<br/>effort bars, worth-applying check"]
-  FIT -->|good fit| GO["fa:fa-check Worth applying"]
-  GO --> WR["fa:fa-pen-line Next: writing support<br/>help, not automated applications"]
-  class ST,DO,EL,MO,AF,LOW,GO good
-  class HOW,HI,WR,FIT info
-  class FL warn
-  class NO bad
-  class CP store
       </script>
     </section>
   </main>

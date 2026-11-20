@@ -7,7 +7,7 @@ import DigestSignup from './DigestSignup.astro'
 import CurrencyOptions from './CurrencyOptions.astro'
 import { longDate } from '../lib/format'
 import { ratesDate } from '../lib/rates'
-import { ArrowDown, ArrowUp, Bird, Building2, ChevronsUpDown, Droplets, LayoutGrid, Microscope, Search, SlidersHorizontal, Trees, Users, Waves, Wheat, X } from 'lucide-react'
+import { ArrowDown, ArrowUp, Bird, Download, Building2, ChevronsUpDown, Droplets, LayoutGrid, Microscope, Search, SlidersHorizontal, Trees, Users, Waves, Wheat, X } from 'lucide-react'
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
 import { Checkbox } from '@/components/ui/checkbox'
@@ -48,7 +48,8 @@ const skipLink = 'absolute -top-16 left-4 z-10 rounded-md bg-surface px-3.5 py-2
 // The sidebar holds the filters the header card doesn't: status, how to apply and size. Every group stays open:
 // a heading, then all its options. The badge counts its filters that are on.
 // A legend sits on its fieldset's top edge, so the heading carries the group's top space.
-const group = 'border-b border-rule pb-3.5 last:border-b-0'
+// The last group has no rule; on wide screens Download CSV follows it, under a rule.
+const group = 'border-b border-rule pb-3.5 last:border-b-0 max-xl:last-of-type:border-b-0'
 const groupTitle = 'mb-2 flex items-center gap-2 px-0 pt-3.5 pb-0 text-sm font-medium text-foreground'
 const groupHint = 'mt-[0.3rem] text-xs leading-[1.4] text-ink-2'
 const opt =
@@ -76,6 +77,9 @@ const seg = 'relative min-w-0 rounded-xl border border-border'
 const segLabel = 'pointer-events-none absolute top-2.5 left-4 text-xs font-medium text-foreground'
 const segSelect =
   'block h-full min-h-15 w-full cursor-pointer appearance-none truncate rounded-[inherit] bg-transparent pt-6 pr-6 pb-2.5 pl-4 text-md text-foreground hover:bg-muted focus-visible:outline-offset-[-2px] max-md:min-h-14 placeholder:text-muted-foreground data-empty:text-muted-foreground [&:has(option[value=""]:checked)]:text-muted-foreground'
+// Download CSV: the rows the view shows, cut from /data.csv by src/lib/finder.ts (src/lib/view-csv.ts).
+const csvButton = 'linkish inline-flex items-baseline gap-1 whitespace-nowrap'
+const csvTitle = 'The programmes shown, one row each, with the columns of /data.csv'
 import EffortTip from './EffortTip.astro'
 ---
 
@@ -257,6 +261,13 @@ import EffortTip from './EffortTip.astro'
               <p class={groupHint}>Converted roughly to US dollars, only for this filter.</p>
             </div>
           </fieldset>
+
+          {/* Wide screens only, under the last filter group: phones and tablets get no download. */}
+          <p class="hidden pt-3.5 text-sm xl:block">
+            {/* Hidden until src/lib/finder.ts runs and finds rows to download. */}
+            <button type="button" class={csvButton} data-csv title={csvTitle} hidden><Download className="size-3.5 self-center" aria-hidden="true" />Download CSV</button>
+            <span class:list={[groupHint, 'block']} data-csv-error hidden>The download didn’t work. Reload the page and try again, or get every programme in <a href="/data.csv">data.csv</a>.</span>
+          </p>
 
         </ScrollArea>
 
