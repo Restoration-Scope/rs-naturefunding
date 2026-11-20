@@ -1,19 +1,87 @@
 {
   "id": "toronto-pollinateto-community-grants",
   "name": "City of Toronto PollinateTO Community Grants",
-  "funder": { "name": "City of Toronto", "url": "https://www.toronto.ca/" },
+  "funder": {
+    "name": "City of Toronto",
+    "url": "https://www.toronto.ca/"
+  },
   "administered_by": null,
   "parent": null,
   "url": "https://www.toronto.ca/services-payments/water-environment/environmental-grants-incentives/pollinateto-community-grants/",
   "summary": "City grants for resident-led groups, charities and non-profits to create or expand publicly visible pollinator gardens in Toronto.",
-  "approaches": ["urban_nature", "community_conservation"],
-  "applicant_types": ["community_group", "ngo", "indigenous_organization"],
-  "geography": { "scope": "countries", "countries": ["CA"], "label": "Toronto" },
+  "approaches": [
+    "urban_nature",
+    "community_conservation"
+  ],
+  "applicant_types": [
+    "community_group",
+    "ngo",
+    "indigenous_organization"
+  ],
+  "geography": {
+    "scope": "countries",
+    "countries": [
+      "CA"
+    ],
+    "label": "Toronto"
+  },
   "access": "direct",
   "window": "fixed",
-  "amount": { "currency": "CAD", "max": 5000 },
+  "amount": {
+    "currency": "CAD",
+    "max": 5000
+  },
   "co_finance_required": null,
   "reporting": null,
+  "effort": {
+    "steps": [
+      "Online application with supporting documents",
+      "Eligibility screening and committee review"
+    ]
+  },
+  "eligibility": [
+    {
+      "rule": "Has at least three Toronto residents from separate households",
+      "kind": "other"
+    },
+    {
+      "rule": "Is not a for-profit business",
+      "kind": "legal"
+    },
+    {
+      "rule": "Is not a building or property manager",
+      "kind": "legal"
+    },
+    {
+      "rule": "Is not a grant-making organization",
+      "kind": "legal"
+    },
+    {
+      "rule": "If previously funded via PollinateTO, has completed the project",
+      "kind": "track_record"
+    },
+    {
+      "rule": "The project is not already fully complete",
+      "kind": "project"
+    },
+    {
+      "rule": "Gardens are visible to the public",
+      "kind": "project"
+    },
+    {
+      "rule": "Each garden is within 30 m of a reliable water source",
+      "kind": "project"
+    }
+  ],
+  "after_award": {
+    "reports": "final",
+    "training": true
+  },
+  "documents": [
+    "Property Owner Permission Letter, if not an approved City park",
+    "Proposed Budget using the PollinateTO Budget Template",
+    "Photos of proposed garden locations"
+  ],
   "calls": [
     {
       "id": "2026-27",
@@ -21,7 +89,10 @@
       "url": "https://www.toronto.ca/services-payments/water-environment/environmental-grants-incentives/pollinateto-community-grants/",
       "status": "closed",
       "opens": "2026-09-09",
-      "deadline": { "date": "2026-10-28", "text": "Applications close: October 28, 2026" },
+      "deadline": {
+        "date": "2026-10-28",
+        "text": "Applications close: October 28, 2026"
+      },
       "evidence": {
         "status": {
           "source_url": "https://www.toronto.ca/services-payments/water-environment/environmental-grants-incentives/pollinateto-community-grants/",
@@ -74,7 +145,105 @@
       "quote": "Grants of up to $5,000 are available to support community-led projects that:",
       "checked_at": "2026-11-20",
       "method": "page"
-    }
+    },
+    "effort": [
+      {
+        "source_url": "https://www.toronto.ca/services-payments/water-environment/environmental-grants-incentives/pollinateto-community-grants/",
+        "quote": "You must apply using the online application form before the deadline.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.toronto.ca/services-payments/water-environment/environmental-grants-incentives/pollinateto-community-grants/",
+        "quote": "Applications will be screened for eligibility by City of Toronto staff.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "eligibility": [
+      {
+        "source_url": "https://www.toronto.ca/services-payments/water-environment/environmental-grants-incentives/pollinateto-community-grants/",
+        "quote": "Groups must have at least three residents of Toronto from separate households.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.toronto.ca/services-payments/water-environment/environmental-grants-incentives/pollinateto-community-grants/",
+        "quote": "for-profit businesses",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.toronto.ca/services-payments/water-environment/environmental-grants-incentives/pollinateto-community-grants/",
+        "quote": "building and property managers",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.toronto.ca/services-payments/water-environment/environmental-grants-incentives/pollinateto-community-grants/",
+        "quote": "grant-making organizations",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.toronto.ca/services-payments/water-environment/environmental-grants-incentives/pollinateto-community-grants/",
+        "quote": "groups previously funded via PollinateTO that have completed their project",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.toronto.ca/services-payments/water-environment/environmental-grants-incentives/pollinateto-community-grants/",
+        "quote": "projects that are already fully complete (seeking retroactive funding)",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.toronto.ca/services-payments/water-environment/environmental-grants-incentives/pollinateto-community-grants/",
+        "quote": "gardens that are not visible to the public",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.toronto.ca/services-payments/water-environment/environmental-grants-incentives/pollinateto-community-grants/",
+        "quote": "must be within 30 m of a reliable water source",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "after_award": [
+      {
+        "source_url": "https://www.toronto.ca/services-payments/water-environment/environmental-grants-incentives/pollinateto-community-grants/",
+        "quote": "Use this online form when you are ready to submit your final report.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.toronto.ca/services-payments/water-environment/environmental-grants-incentives/pollinateto-community-grants/",
+        "quote": "Successful applicants will also take part in the How to PollinateTO training program",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "documents": [
+      {
+        "source_url": "https://www.toronto.ca/wp-content/uploads/2026/09/9805-PollinateTOApplicationQuestionsSummary2026-2027.pdf",
+        "quote": "Property Owner Permission Letter(s). Required for each proposed garden location except approved City Parks.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.toronto.ca/wp-content/uploads/2026/09/9805-PollinateTOApplicationQuestionsSummary2026-2027.pdf",
+        "quote": "Upload a Proposed Budget using the PollinateTO Budget Template (.XLSX)",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.toronto.ca/wp-content/uploads/2026/09/9805-PollinateTOApplicationQuestionsSummary2026-2027.pdf",
+        "quote": "Upload Proposed Garden Location Photos.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ]
   },
   "checked_at": "2026-11-20"
 }
