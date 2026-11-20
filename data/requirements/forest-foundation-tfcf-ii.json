@@ -1,0 +1,100 @@
+{
+  "id": "forest-foundation-tfcf-ii",
+  "read_on": "2026-11-20",
+  "prompt_version": "req-2026-11-20.1",
+  "models": ["cursor:gpt-5.6-luna-high", "cursor:gpt-5.6-sol-high"],
+  "complete": false,
+  "reasons": [
+    "24 links could not be ranked without Jev",
+    "16 links could not be ranked without Jev",
+    "the text names a document with rules that was not read: Request for Proposals (RFP)",
+    "Jev did not check this reading, so an absent fact is not known to be absent"
+  ],
+  "requirements_checked": false,
+  "documents": [
+    {
+      "ref": "D1",
+      "url": "https://www.forestfoundation.ph/grant-programs/",
+      "final_url": "https://www.forestfoundation.ph/grant-programs/",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 23846,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:5d4f4e4bec1a85bd826ee94ee921cb3e68bc1786aab7aa615f9c4af90529e570"
+    },
+    {
+      "ref": "D2",
+      "url": "https://www.forestfoundation.ph/requests-for-proposals/",
+      "final_url": "https://www.forestfoundation.ph/requests-for-proposals/",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 2651,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:f2785df082c67fd53082b22ebbb23e03d43821782b77273eea3e2bb4c6c671cf"
+    },
+    {
+      "ref": "D3",
+      "url": "https://www.forestfoundation.ph/apply-for-a-grant/",
+      "final_url": "https://www.forestfoundation.ph/apply-for-a-grant/",
+      "from": "https://www.forestfoundation.ph/grant-programs/",
+      "anchor": "Submit A Proposal",
+      "depth": 1,
+      "pdf": false,
+      "chars": 2209,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:4de816423c0b9f98e60fb79ba1777e54a59050be41bcbe2760ef041d2d3ada09"
+    },
+    {
+      "ref": "D4",
+      "url": "https://www.forestfoundation.ph/wp-content/uploads/2026/06/SGP8-Online-Briefer-June-5-2026.pdf",
+      "final_url": "https://www.forestfoundation.ph/wp-content/uploads/2026/06/SGP8-Online-Briefer-June-5-2026.pdf",
+      "from": "https://www.forestfoundation.ph/grant-programs/",
+      "anchor": "Download the program brief",
+      "depth": 1,
+      "pdf": true,
+      "chars": 8597,
+      "pages": 2,
+      "low_text": false,
+      "hash": "sha256:bd5dfc906f6344a1287833867271dc28ccb4daaa9af47f5a60097fc380df1b9d"
+    },
+    {
+      "ref": "D5",
+      "url": "https://www.forestfoundation.ph/privacy-policy/",
+      "final_url": "https://www.forestfoundation.ph/privacy-policy/",
+      "from": "https://www.forestfoundation.ph/grant-programs/",
+      "anchor": "Privacy Policy",
+      "depth": 1,
+      "pdf": false,
+      "chars": 10739,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:42c63c81dc7f270a63e148b2f55e72d2b8b81ee5fee8579a1d26df8f9bd05328"
+    }
+  ],
+  "failures": [],
+  "skipped_links": 162,
+  "chunks": [{ "id": "all", "docs": ["D1", "D2", "D3", "D4", "D5"], "chars": 48594 }],
+  "outcomes": {
+    "eligibility": "stated",
+    "documents": "stated",
+    "effort": "stated",
+    "co_finance": "stated",
+    "consortium": "not_found",
+    "after_award": "not_found"
+  },
+  "written": ["eligibility", "documents", "effort", "co_finance"],
+  "escalated": ["documents"],
+  "flags": [],
+  "notes": [
+    "extractor: The TFCF-II RFP is closed: D2 says there are no open Requests for Proposals. D1 gives general Foundation-wide guidance, says proposals are accepted on a rolling basis, and provides no TFCF-II-specific deadline or round rules.",
+    "source forest-foundation-tfcf-ii-3: added for https://www.forestfoundation.ph/apply-for-a-grant/"
+  ],
+  "usd": 0
+}

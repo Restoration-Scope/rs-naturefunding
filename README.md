@@ -8,7 +8,7 @@ Built and maintained by [Restoration Scope](https://restorationscope.com/?utm_so
 
 - Each fact (deadline, amount, eligibility, region) carries the source page, a verbatim quote from it, and the date it was checked.
 - Directories and other funding lists only tell us where to look. We never copy a listing from them.
-- A daily job re-reads each funder page. Unchanged pages get a new checked date; changed pages open a pull request that is reviewed against the saved page before it goes live.
+- A job runs every day and re-reads each funder page when it is due: daily while a programme has an open or upcoming call, otherwise weekly, or monthly when applicants can't apply directly. Unchanged pages get a new checked date; a changed page opens a pull request, and the job never merges it itself.
 - Spot something wrong? [Open an issue](https://github.com/Restoration-Scope/rs-naturefunding/issues/new).
 
 ## Licences

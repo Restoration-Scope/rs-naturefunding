@@ -1,0 +1,74 @@
+{
+  "id": "fws-coastal-program-fy26",
+  "read_on": "2026-11-20",
+  "prompt_version": "req-2026-11-20.1",
+  "models": ["cursor:gpt-5.6-luna-high", "cursor:gpt-5.6-sol-high"],
+  "complete": false,
+  "reasons": [
+    "1 links could not be ranked without Jev",
+    "https://www.grants.gov/privacy-policy would not open (network: unable to verify the first certificate)",
+    "the text names a document with rules that was not read: Current regional Coastal Program strategic habitat conservation plan",
+    "the text names a document with rules that was not read: DOI General Terms and Conditions",
+    "the text names a document with rules that was not read: FWS General Award Terms and Conditions",
+    "the text names a document with rules that was not read: Presidential actions: https://www.whitehouse.gov/presidential-actions/",
+    "the text names a document with rules that was not read: DOI Secretary's Orders: https://www.doi.gov/document-library/secretary-order",
+    "the text names a document with rules that was not read: SAM.gov Financial Assistance General Representations and Certifications",
+    "the text names a document with rules that was not read: 2 CFR §200 Subpart E cost principles",
+    "Jev did not check this reading, so an absent fact is not known to be absent"
+  ],
+  "requirements_checked": false,
+  "documents": [
+    {
+      "ref": "D1",
+      "url": "https://simpler.grants.gov/opportunity/362470",
+      "final_url": "https://simpler.grants.gov/opportunity/9d8d48d9-1b2e-46ba-9533-1e43c9d4b7a3",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 6182,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:dee17e0f569c6fc8dd9ee1d4e780bee1fada2a53a4278eba1da89aef9d51604c"
+    },
+    {
+      "ref": "D2",
+      "url": "https://files.simpler.grants.gov/opportunities/9d8d48d9-1b2e-46ba-9533-1e43c9d4b7a3/attachments/b7507874-48f8-4780-8759-a44c44d5d3b2/5.19.2026_Foa_Content_of_F26AS00069.pdf",
+      "final_url": "https://files.simpler.grants.gov/opportunities/9d8d48d9-1b2e-46ba-9533-1e43c9d4b7a3/attachments/b7507874-48f8-4780-8759-a44c44d5d3b2/5.19.2026_Foa_Content_of_F26AS00069.pdf",
+      "from": "https://simpler.grants.gov/opportunity/362470",
+      "anchor": "5.19.2026_Foa_Content_of_F26AS00069.pdf",
+      "depth": 1,
+      "pdf": true,
+      "chars": 36525,
+      "pages": 15,
+      "low_text": false,
+      "hash": "sha256:7284f71a40a19a3e9d58ca113187e2a891a95487eab348b4f7fe96ac5d6adade"
+    }
+  ],
+  "failures": [
+    {
+      "url": "https://www.grants.gov/privacy-policy",
+      "from": "https://simpler.grants.gov/opportunity/362470",
+      "kind": "network",
+      "message": "unable to verify the first certificate"
+    }
+  ],
+  "skipped_links": 30,
+  "chunks": [{ "id": "all", "docs": ["D1", "D2"], "chars": 43016 }],
+  "outcomes": {
+    "eligibility": "stated",
+    "documents": "stated",
+    "effort": "stated",
+    "co_finance": "stated",
+    "consortium": "not_found",
+    "after_award": "stated"
+  },
+  "written": ["eligibility", "documents", "effort", "co_finance", "after_award"],
+  "escalated": ["effort"],
+  "flags": [],
+  "notes": [
+    "extractor: The notice gives multiple timing statements: a May 30, 2026 deadline for FY26 processing, a September 30, 2026 deadline for invited applicants, and varying regional rolling deadlines. Reporting frequency is specified in the Notice of Award.",
+    "source fws-coastal-program-fy26-2: added for https://files.simpler.grants.gov/opportunities/9d8d48d9-1b2e-46ba-9533-1e43c9d4b7a3/attachments/b7507874-48f8-4780-8759-a44c44d5d3b2/5.19.2026_Foa_Content_of_F26AS00069.pdf"
+  ],
+  "usd": 0
+}

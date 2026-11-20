@@ -9,14 +9,42 @@
   "parent": null,
   "url": "https://www.fbfq.ca/programmes-daide-financiere/proteger-les-habitats-volet-principal/",
   "summary": "Grants for initiatives that protect high-value habitats on private land in Québec and steward the protected sites, including acquisition planning and stewardship. Applications go in at two fixed intakes each year.",
-  "approaches": ["protected_areas", "community_conservation"],
+  "approaches": [
+    "protected_areas",
+    "community_conservation"
+  ],
   "applicant_types": null,
   "geography": null,
   "access": "direct",
   "window": "fixed",
   "amount": null,
-  "co_finance_required": null,
+  "co_finance_required": true,
   "reporting": null,
+  "effort": {
+    "steps": [
+      "Financial assistance application"
+    ]
+  },
+  "eligibility": [
+    {
+      "rule": "Legally constituted public or private organisation",
+      "kind": "legal"
+    },
+    {
+      "rule": "Not recurring mission activities, projects with a signed acquisition deed, or projects not aimed at habitat protection",
+      "kind": "project"
+    }
+  ],
+  "after_award": {
+    "reports": "final"
+  },
+  "documents": [
+    "Financial planning and project monitoring table",
+    "Authorisation resolution, if the signer is not the president, CEO or a director",
+    "Charter or letters patent, if not already sent or if changed",
+    "Financial or technical support letters from partners",
+    "Map of the project area with its total area"
+  ],
   "calls": [
     {
       "id": "spring-fall-intakes",
@@ -54,7 +82,78 @@
       "quote": "Date limite 1er mars et 1er octobre",
       "checked_at": "2026-11-20",
       "method": "page"
+    },
+    "effort": [
+      {
+        "source_url": "https://www.fbfq.ca/programmes-daide-financiere/proteger-les-habitats-volet-principal/",
+        "quote": "Les demandes d'aide financière doivent être transmises à l'aide du formulaire officiel du programme, par courriel à projets@fbfq.ca, avec l'ensemble des pièces jointes requises.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "eligibility": [
+      {
+        "source_url": "https://www.fbfq.ca/wp-content/uploads/2026/09/DOC_info_proteger_habt_volet_princ_2026_FINAL.pdf",
+        "quote": "Tout organisme publi c ou privé légalement constitué peut soumettre une demande d'aide financière dans le cadre du programme .",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.fbfq.ca/programmes-daide-financiere/proteger-les-habitats-volet-principal/",
+        "quote": "Le programme ne finance pas : activités récurrentes liées à la mission d'un organisme (ex. : concertation) ; Projets pour lesquels l'acte d'acquisition est déjà signé ; Projets ne visant pas spécifiquement la protection des habitats naturels",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "after_award": [
+      {
+        "source_url": "https://www.fbfq.ca/wp-content/uploads/2026/09/DOC_info_proteger_habt_volet_princ_2026_FINAL.pdf",
+        "quote": "Les documents qui devront être fournis à la fin du projet sont : - Le Rapport final incluant :",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "documents": [
+      {
+        "source_url": "https://www.fbfq.ca/programmes-daide-financiere/proteger-les-habitats-volet-principal/",
+        "quote": "Tableau de planification financière et de suivi du projet",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.fbfq.ca/wp-content/uploads/2026/09/DOC_info_proteger_habt_volet_princ_2026_FINAL.pdf",
+        "quote": "Si la personne autorisée à signer n'occupe pas un poste en tant que président, président -directeur général ou administrateur de l 'organisme : résolution de l 'organisme demandeur",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.fbfq.ca/wp-content/uploads/2026/09/DOC_info_proteger_habt_volet_princ_2026_FINAL.pdf",
+        "quote": "Copie de la charte ou des lettres patentes de l'organisme si elles n'ont pas déjà été transmises ou si elles ont été modifiées ; • Formulaire avec toutes les sections « obligatoires » complétées, en format .PDF original signé par la personne autorisée ; • Copies des lettres d'appui financier et/ou technique des partenaires ;",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.fbfq.ca/wp-content/uploads/2026/09/DOC_info_proteger_habt_volet_princ_2026_FINAL.pdf",
+        "quote": "Une carte présentant le secteur/territoire visé par le projet ainsi que la superficie totale",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "co_finance_required": {
+      "source_url": "https://www.fbfq.ca/wp-content/uploads/2026/09/DOC_info_proteger_habt_volet_princ_2026_FINAL.pdf",
+      "quote": "Le montant de l'aide financière accordée peut couvrir un maximum de 75 % des coûts totaux admissibles.",
+      "checked_at": "2026-11-20",
+      "method": "page"
+    },
+    "co_finance": {
+      "source_url": "https://www.fbfq.ca/wp-content/uploads/2026/09/DOC_info_proteger_habt_volet_princ_2026_FINAL.pdf",
+      "quote": "Le montant de l'aide financière accordée peut couvrir un maximum de 75 % des coûts totaux admissibles.",
+      "checked_at": "2026-11-20",
+      "method": "page"
     }
   },
-  "checked_at": "2026-11-20"
+  "checked_at": "2026-11-20",
+  "co_finance": {
+    "min_share": 25
+  }
 }

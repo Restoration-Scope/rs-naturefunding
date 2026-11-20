@@ -1,0 +1,114 @@
+{
+  "id": "fpe-small-and-regular-grants",
+  "read_on": "2026-11-20",
+  "prompt_version": "req-2026-11-20.1",
+  "models": ["cursor:gpt-5.6-luna-high"],
+  "complete": false,
+  "reasons": [
+    "25 links could not be ranked without Jev",
+    "23 links could not be ranked without Jev",
+    "http://grantsonline.fpe.ph/: too little text: the page may need a browser",
+    "http://fpe.ph/assets/downloads/Organizational_Registry_Form.doc would not open (unreadable: an old Word (.doc), OpenDocument or RTF file: needs conversion)",
+    "the text names a document with rules that was not read: Specific guidelines for the strategic focus",
+    "Jev did not check this reading, so an absent fact is not known to be absent"
+  ],
+  "requirements_checked": false,
+  "documents": [
+    {
+      "ref": "D1",
+      "url": "https://www.fpe.ph/type-of-grants.html",
+      "final_url": "https://www.fpe.ph/type-of-grants.html",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 3309,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:9b229bd07de7d154eece426dc47f8d664a46e371884b79ae043ce785477833f8"
+    },
+    {
+      "ref": "D2",
+      "url": "https://www.fpe.ph/grants-application-requirements.html",
+      "final_url": "https://www.fpe.ph/grants-application-requirements.html",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 5213,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:46d28bc69f1b60abbfd99620820ba48b67590d076b2ebd4ef406afb0ef304c10"
+    },
+    {
+      "ref": "D3",
+      "url": "https://www.fpe.ph/cross_cutting_criteria.html",
+      "final_url": "https://www.fpe.ph/cross_cutting_criteria.html",
+      "from": "https://www.fpe.ph/type-of-grants.html",
+      "anchor": "Cross-Cutting Criteria",
+      "depth": 1,
+      "pdf": false,
+      "chars": 3183,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:c4a26b46e7847cc1a3fbe432051a3aff8eaee4ee3dd113577d4fbbdbea2f9013"
+    },
+    {
+      "ref": "D4",
+      "url": "http://grantsonline.fpe.ph/",
+      "final_url": "https://grantsonline.fpe.ph/",
+      "from": "https://www.fpe.ph/type-of-grants.html",
+      "anchor": "Apply for Grants",
+      "depth": 1,
+      "pdf": false,
+      "chars": 36,
+      "pages": null,
+      "low_text": true,
+      "hash": "sha256:a9fb2e0db1b9905cae2ca1536be9ab91114fa2f9c967cc031fb4324a48ca3e1f"
+    },
+    {
+      "ref": "D5",
+      "url": "https://www.fpe.ph/privacy-policy.html",
+      "final_url": "https://www.fpe.ph/privacy-policy.html",
+      "from": "https://www.fpe.ph/type-of-grants.html",
+      "anchor": "Privacy Policy",
+      "depth": 1,
+      "pdf": false,
+      "chars": 3883,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:e3d69a295509cf381fe062e9474b4faa06ab2f445722717faa10f103bb86ce02"
+    }
+  ],
+  "failures": [
+    {
+      "url": "http://grantsonline.fpe.ph/",
+      "from": "https://www.fpe.ph/type-of-grants.html",
+      "kind": "low_text",
+      "message": "too little text: the page may need a browser"
+    },
+    {
+      "url": "http://fpe.ph/assets/downloads/Organizational_Registry_Form.doc",
+      "from": "https://www.fpe.ph/grants-application-requirements.html",
+      "kind": "unreadable",
+      "message": "an old Word (.doc), OpenDocument or RTF file: needs conversion"
+    }
+  ],
+  "skipped_links": 132,
+  "chunks": [{ "id": "all", "docs": ["D1", "D2", "D3", "D4", "D5"], "chars": 16054 }],
+  "outcomes": {
+    "eligibility": "stated",
+    "documents": "stated",
+    "effort": "stated",
+    "co_finance": "not_found",
+    "consortium": "not_found",
+    "after_award": "stated"
+  },
+  "written": ["eligibility", "documents", "effort", "after_award"],
+  "escalated": [],
+  "flags": [],
+  "notes": [
+    "extractor: D2 presents generic FPE grant qualifications; D1 describes Small and Regular Grants separately. No round-specific rules or deadlines are provided."
+  ],
+  "usd": 0
+}

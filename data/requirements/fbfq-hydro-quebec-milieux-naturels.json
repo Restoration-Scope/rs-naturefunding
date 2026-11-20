@@ -1,0 +1,75 @@
+{
+  "id": "fbfq-hydro-quebec-milieux-naturels",
+  "read_on": "2026-11-20",
+  "prompt_version": "req-2026-11-20.1",
+  "models": ["cursor:gpt-5.6-luna-high", "cursor:gpt-5.6-sol-high"],
+  "complete": false,
+  "reasons": [
+    "12 links could not be ranked without Jev",
+    "https://www.fbfq.ca/wp-content/uploads/2026/09/DOC_info_HQ_2026.pdf: page 1 is an image: needs OCR",
+    "the text names a document with rules that was not read: Instructions détaillées",
+    "Jev did not check this reading, so an absent fact is not known to be absent"
+  ],
+  "requirements_checked": false,
+  "documents": [
+    {
+      "ref": "D1",
+      "url": "https://www.fbfq.ca/programme/hydro-quebec-pour-la-mise-en-valeur-des-milieux-naturels/",
+      "final_url": "https://www.fbfq.ca/programme/hydro-quebec-pour-la-mise-en-valeur-des-milieux-naturels/",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 6807,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:d9a122caf8d4550db0ae3c2ba39581936ad9021f05e7d0249bf44a6eec839075"
+    },
+    {
+      "ref": "D2",
+      "url": "https://www.fbfq.ca/wp-content/uploads/2026/09/DOC_info_HQ_2026.pdf",
+      "final_url": "https://www.fbfq.ca/wp-content/uploads/2026/09/DOC_info_HQ_2026.pdf",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": true,
+      "chars": 27098,
+      "pages": 11,
+      "low_text": false,
+      "hash": "sha256:255a0c63d6344d220d73074206a55cecc324daf8c86419424efda4ca45a80b48"
+    }
+  ],
+  "failures": [
+    {
+      "url": "https://www.fbfq.ca/wp-content/uploads/2026/09/DOC_info_HQ_2026.pdf",
+      "from": null,
+      "kind": "low_text",
+      "message": "page 1 is an image: needs OCR"
+    }
+  ],
+  "skipped_links": 44,
+  "chunks": [{ "id": "all", "docs": ["D1", "D2"], "chars": 34093 }],
+  "outcomes": {
+    "eligibility": "partial",
+    "documents": "stated",
+    "effort": "stated",
+    "co_finance": "stated",
+    "consortium": "not_found",
+    "after_award": "stated"
+  },
+  "written": ["eligibility", "documents", "effort", "co_finance", "after_award"],
+  "escalated": ["eligibility", "co_finance"],
+  "flags": [
+    {
+      "field": "eligibility",
+      "item": "For acquisition, is a nonprofit conserving and protecting Quebec's natural heritage",
+      "why": "the quote is not on any gathered document"
+    }
+  ],
+  "notes": [
+    "extractor: D2 is updated September 2026 and gives an annual 1 December deadline, but no year is stated. After award, the promoter must sign an agreement, obtain required permits, provide a public inauguration or disclosure activity and press review, and maintain project infrastructure where applicable.",
+    "strong: D2 also says municipal acquisition projects may qualify exceptionally under strict conditions, conflicting with the acquisition nonprofit rule; the extracted municipal conditions are incomplete. Co-finance is at least 25% for requests below $100,000 and 50% for requests of $100,000 or more.",
+    "source fbfq-hydro-quebec-milieux-naturels-1: selector main dropped, a new quote sits outside it"
+  ],
+  "usd": 0
+}
