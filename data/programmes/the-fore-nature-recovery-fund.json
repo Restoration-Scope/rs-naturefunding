@@ -1,14 +1,28 @@
 {
   "id": "the-fore-nature-recovery-fund",
   "name": "Nature Recovery Fund",
-  "funder": { "name": "The Fore", "url": "https://www.thefore.org/" },
+  "funder": {
+    "name": "The Fore",
+    "url": "https://www.thefore.org/"
+  },
   "administered_by": null,
   "parent": null,
   "url": "https://www.thefore.org/nature-recovery-fund/",
   "summary": "Unrestricted, multi-year funding plus mentoring and skilled-volunteer support for small UK charities and social enterprises restoring, expanding and connecting habitats, working with landowners and communities, or widening participation in conservation. Applicants register in a short window and go through The Fore's staged selection.",
-  "approaches": ["natural_regeneration", "community_conservation"],
-  "applicant_types": ["ngo", "social_enterprise"],
-  "geography": { "scope": "countries", "countries": ["GB"] },
+  "approaches": [
+    "natural_regeneration",
+    "community_conservation"
+  ],
+  "applicant_types": [
+    "ngo",
+    "social_enterprise"
+  ],
+  "geography": {
+    "scope": "countries",
+    "countries": [
+      "GB"
+    ]
+  },
   "access": "direct",
   "window": "fixed",
   "amount": {
@@ -18,6 +32,37 @@
   },
   "co_finance_required": null,
   "reporting": null,
+  "effort": {
+    "steps": [
+      "Registration",
+      "Full application, if confirmed a place",
+      "Online ideas-testing meeting, if long listed",
+      "Funding panel review, if shortlisted"
+    ]
+  },
+  "eligibility": [
+    {
+      "rule": "Is a registered charity, CIC limited by guarantee, or charitable or asset-locked CBS",
+      "kind": "legal"
+    },
+    {
+      "rule": "Has annual revenue below £500,000",
+      "kind": "finances",
+      "revenue": {
+        "currency": "GBP",
+        "max": 500000,
+        "basis": "revenue"
+      }
+    },
+    {
+      "rule": "Has its UK registration approved, not still in process",
+      "kind": "legal"
+    },
+    {
+      "rule": "Has no active grant, or has closed it and had a grant closure call",
+      "kind": "other"
+    }
+  ],
   "calls": [
     {
       "id": "spring-2027",
@@ -67,7 +112,59 @@
       "quote": "With our wraparound support package of up to £45,000 of unrestricted funding",
       "checked_at": "2026-11-20",
       "method": "page"
-    }
+    },
+    "effort": [
+      {
+        "source_url": "https://thefore.org/application-process/",
+        "quote": "The first step to applying is to register your interest.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://thefore.org/application-process/",
+        "quote": "You have around three weeks to complete your application",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://thefore.org/application-process/",
+        "quote": "Long listed applicants are invited via email for an \"ideas testing\" meeting with one of our \"Strategic Applicant Consultants",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://thefore.org/application-process/",
+        "quote": "Stage 3: Shortlisted applications are taken to our funding panels",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "eligibility": [
+      {
+        "source_url": "https://www.thefore.org/who-we-fund/",
+        "quote": "Registered Charities (including those constituted as charitable trusts, charitable unincorporated associations, charitable incorporated organisations and charitable companies limited by guarantee), Community Interest Companies (CICs) limited by guarantee, or Community Benefit Societies (CBSs) that are either Charitable CBSs or non-charitable CBSs with an asset lock",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.thefore.org/who-we-fund/",
+        "quote": "Your annual revenue should be less than £500k",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://thefore.org/faqs/",
+        "quote": "We are unable to fund organisations whose registration (as a charity, community interest company limited by guarantee, charitable incorporated organisation or community benefit society in the UK) is in process but has not yet been approved.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.thefore.org/who-we-fund/",
+        "quote": "If you have an active grant, you can't reapply until your existing grant has closed and you've had a \"grant closure\" call with our team",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ]
   },
   "checked_at": "2026-11-20"
 }
