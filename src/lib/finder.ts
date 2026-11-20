@@ -3,8 +3,6 @@
 // (src/lib/finder-pages.ts), the rest in the address.
 import { pageHref, type PagePaths } from './page-paths'
 import { picker } from './picker'
-import { amountCell } from './table'
-import { csvFileName, pickProgrammes } from './view-csv'
 import { daysBetween, daysLeft, effectiveListingState, shortDateText, utcDateKey } from './status'
 import type { State } from './labels'
 
@@ -471,17 +469,9 @@ export function initTableFinder() {
     const shownRows = [...list.rows, ...(laterOn ? [...laterList.rows] : [])].filter((r) => !r.hidden)
     const shown = shownRows.flatMap((r) => (r.dataset.id ? [{ id: r.dataset.id, call: r.dataset.call }] : []))
     try {
-      const res = await fetch('/data.csv')
-      if (!res.ok) throw new Error(String(res.status))
-      const csv = pickProgrammes(await res.text(), shown)
-      if (csv === null) throw new Error('stale')
-      // The byte-order mark makes Excel read it as UTF-8, so names like Galápagos keep their accents.
-      const blob = new Blob(['\uFEFF', csv], { type: 'text/csv;charset=utf-8' })
-      const a = document.createElement('a')
-      a.href = URL.createObjectURL(blob)
-      a.download = csvFileName(location.pathname, date)
-      a.click()
-      setTimeout(() => URL.revokeObjectURL(a.href), 1000)
+      // Loaded on the click, so the CSV code stays out of the page's load-time budget (tests/dist.test.ts).
+      const { saveViewCsv } = await import('./view-csv')
+      await saveViewCsv(shown, location.pathname, date)
       csvError.hidden = true
       live.textContent = `Downloaded ${shown.length} ${plural(shown.length, 'programme', 'programmes')} as CSV`
     } catch {
@@ -559,16 +549,27 @@ export function initTableFinder() {
   // cell from its data-amount. "" is the funder's own currency.
   const currencySelect = $<HTMLSelectElement>('[data-currency-select]')
   const amountCells = [...document.querySelectorAll<HTMLElement>('.c-amount[data-amount]')]
+  // The converter and its rates load only off the default: a reader on US dollars, as built, fetches nothing more.
+  // If they fail to load, the select goes back to the currency the cells show.
+  let shownCurrency = 'USD'
   function showCurrency(to: string) {
-    for (const td of amountCells) {
-      const c = amountCell(JSON.parse(td.dataset.amount!), to || undefined)
-      const amt = td.querySelector('.amt')
-      const orig = td.querySelector<HTMLElement>('.amt__orig')
-      if (!c || !amt || !orig) continue
-      amt.textContent = c.text
-      orig.textContent = c.original ? `(${c.original})` : ''
-      orig.hidden = !c.original
-    }
+    import('./table').then(
+      ({ amountCell }) => {
+        for (const td of amountCells) {
+          const c = amountCell(JSON.parse(td.dataset.amount!), to || undefined)
+          const amt = td.querySelector('.amt')
+          const orig = td.querySelector<HTMLElement>('.amt__orig')
+          if (!c || !amt || !orig) continue
+          amt.textContent = c.text
+          orig.textContent = c.original ? `(${c.original})` : ''
+          orig.hidden = !c.original
+        }
+        shownCurrency = to
+      },
+      () => {
+        currencySelect.value = shownCurrency
+      },
+    )
   }
   try {
     const kept = localStorage.getItem('nf-currency')
