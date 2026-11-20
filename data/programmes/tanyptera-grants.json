@@ -1,7 +1,10 @@
 {
   "id": "tanyptera-grants",
   "name": "Tanyptera Grants",
-  "funder": { "name": "Tanyptera Trust", "url": "https://www.northwestinvertebrates.org.uk/" },
+  "funder": {
+    "name": "Tanyptera Trust",
+    "url": "https://www.northwestinvertebrates.org.uk/"
+  },
   "administered_by": {
     "name": "Tanyptera Project, National Museums Liverpool",
     "url": "https://www.northwestinvertebrates.org.uk/"
@@ -9,18 +12,46 @@
   "parent": null,
   "url": "https://www.northwestinvertebrates.org.uk/grants/",
   "summary": "Small grants for invertebrate surveys, recording, training, equipment and hands-on habitat creation to support invertebrate conservation in North West England; individuals, recording groups and organisations can apply.",
-  "approaches": ["species_conservation", "research"],
-  "applicant_types": ["individual", "community_group", "ngo"],
+  "approaches": [
+    "species_conservation",
+    "research"
+  ],
+  "applicant_types": [
+    "individual",
+    "community_group",
+    "ngo"
+  ],
   "geography": {
     "scope": "countries",
-    "countries": ["GB"],
+    "countries": [
+      "GB"
+    ],
     "label": "Cheshire, Lancashire, Merseyside and Greater Manchester"
   },
   "access": "direct",
   "window": "rolling",
-  "amount": { "currency": "GBP", "max": 1000, "typical": true },
+  "amount": {
+    "currency": "GBP",
+    "max": 1000,
+    "typical": true
+  },
   "co_finance_required": null,
   "reporting": null,
+  "effort": {
+    "steps": [
+      "Application"
+    ]
+  },
+  "eligibility": [
+    {
+      "rule": "The project is not marine, already completed or a duplicate of a successful application",
+      "kind": "project"
+    },
+    {
+      "rule": "Applicants for training or resources are based within NW England",
+      "kind": "other"
+    }
+  ],
   "calls": [
     {
       "id": "rolling",
@@ -81,8 +112,35 @@
       "quote": "We have £10,000 available this year",
       "checked_at": "2026-11-20",
       "method": "page"
-    }
+    },
+    "effort": [
+      {
+        "source_url": "https://www.northwestinvertebrates.org.uk/grants/",
+        "quote": "an application being submitted",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "eligibility": [
+      {
+        "source_url": "https://www.northwestinvertebrates.org.uk/grants/",
+        "quote": "We are sorry but we do not fund marine projects, activities that have already taken place or proposals which duplicate previous successful applications.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.northwestinvertebrates.org.uk/grants/",
+        "quote": "Support training and other personal development for people based in NW England. Assist with the purchase of equipment and reference books for people based in NW England.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ]
   },
   "checked_at": "2026-11-20",
-  "pool": { "currency": "GBP", "value": 10000, "period": "year", "label": "available this year" }
+  "pool": {
+    "currency": "GBP",
+    "value": 10000,
+    "period": "year",
+    "label": "available this year"
+  }
 }

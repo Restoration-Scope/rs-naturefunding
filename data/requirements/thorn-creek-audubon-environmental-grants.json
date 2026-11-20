@@ -1,0 +1,60 @@
+{
+  "id": "thorn-creek-audubon-environmental-grants",
+  "read_on": "2026-11-20",
+  "prompt_version": "req-2026-11-20.1",
+  "models": ["cursor:gpt-5.6-luna-high"],
+  "complete": false,
+  "reasons": [
+    "2 links could not be ranked without Jev",
+    "the text names a document with rules that was not read: Thorn Creek Audubon grant submission requirements",
+    "Jev did not check this reading, so an absent fact is not known to be absent"
+  ],
+  "requirements_checked": false,
+  "documents": [
+    {
+      "ref": "D1",
+      "url": "https://www.thorncreekaudubonsociety.org/grants",
+      "final_url": "https://www.thorncreekaudubonsociety.org/grants",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 2098,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:3f9f671b1ade617062b56091ec872788546022ee62650e6206ae84b9b68fc40c"
+    },
+    {
+      "ref": "D2",
+      "url": "https://www.thorncreekaudubonsociety.org/s/Thorn-Creek-Audubon-Grant-Application01.docx",
+      "final_url": "https://static1.squarespace.com/static/5f19a99834c29a6d46e08e02/t/6a1ed0453678f0579258bcc9/1780404293502/Thorn-Creek-Audubon-Grant-Application01.docx",
+      "from": "https://www.thorncreekaudubonsociety.org/grants",
+      "anchor": "CLICK HERE to download the submission requirements and application",
+      "depth": 1,
+      "pdf": false,
+      "chars": 1187,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:9bc39e7eb81f6f2bd4d9a55474ea993859b42310cf92ff97a11fa36f4744f104"
+    }
+  ],
+  "failures": [],
+  "skipped_links": 32,
+  "chunks": [{ "id": "all", "docs": ["D1", "D2"], "chars": 3507 }],
+  "outcomes": {
+    "eligibility": "not_found",
+    "documents": "stated",
+    "effort": "stated",
+    "co_finance": "not_found",
+    "consortium": "not_found",
+    "after_award": "stated"
+  },
+  "written": ["documents", "effort", "after_award"],
+  "escalated": [],
+  "flags": [],
+  "notes": [
+    "extractor: D1 states up to $500 per grant; D2 states up to $500 per project.",
+    "source thorn-creek-audubon-environmental-grants-2: added for https://www.thorncreekaudubonsociety.org/s/Thorn-Creek-Audubon-Grant-Application01.docx"
+  ],
+  "usd": 0
+}

@@ -1,0 +1,160 @@
+{
+  "id": "utrecht-bestrijding-invasieve-exoten",
+  "read_on": "2026-11-20",
+  "prompt_version": "req-2026-11-20.1",
+  "models": ["cursor:gpt-5.6-luna-high"],
+  "complete": false,
+  "reasons": [
+    "9 links could not be ranked without Jev",
+    "12 links could not be ranked without Jev",
+    "https://www.provincie-utrecht.nl/sites/default/files/2024-12/Overzicht%20vaste%20uurtarieven%20per%20functiegroep%202025%2C%20december%202024.pdf would not open (http: HTTP 404)",
+    "the text names a document with rules that was not read: Article 4.6 of the Algemene Subsidieverordening van de provincie Utrecht (ASV)",
+    "the text names a document with rules that was not read: Subsidieregeling Leefomgeving landelijk gebied",
+    "the text names a document with rules that was not read: Subsidieregelgeving provincie Utrecht",
+    "the text names a document with rules that was not read: Openstellingsbesluit: subsidieplafonds natuur 2026",
+    "the text names a document with rules that was not read: Algemene subsidieverordening provincie Utrecht 2022",
+    "the text names a document with rules that was not read: Beleidsregel subsidiabele kosten projectsubsidies",
+    "the text names a document with rules that was not read: Beleidsregel Toezicht en naleving subsidies",
+    "the text names a document with rules that was not read: De-minimisverordening",
+    "the text names a document with rules that was not read: AsvpU",
+    "the text names a document with rules that was not read: Beleidsregel projectsubsidies",
+    "the text names a document with rules that was not read: Algemene Subsidieregeling provincie Utrecht (AsvpU)",
+    "the text names a document with rules that was not read: Unielijst",
+    "the text names a document with rules that was not read: Utrechtse lijst van invasieve soorten",
+    "the text names a document with rules that was not read: The programme-specific subsidieregeling",
+    "the text names a document with rules that was not read: Algemene subsidie verordening provincie Utrecht (AsvpU)",
+    "the text names a document with rules that was not read: Beleidsregel exploitatiesubsidies",
+    "the text names a document with rules that was not read: Kwaliteitsgids",
+    "the text names a document with rules that was not read: KIWA-richtlijn",
+    "the text names a document with rules that was not read: Faunaschade Preventiekit, module wolven",
+    "Jev did not check this reading, so an absent fact is not known to be absent"
+  ],
+  "requirements_checked": false,
+  "documents": [
+    {
+      "ref": "D1",
+      "url": "https://www.provincie-utrecht.nl/loket/subsidies/bestrijding-en-beheersing-invasieve-exoten",
+      "final_url": "https://www.provincie-utrecht.nl/loket/subsidies/bestrijding-en-beheersing-invasieve-exoten",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 7614,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:1c9a1448f6d19c68177b0038e4122af0bf0ca2dc4a0fdd0f8c6531d711a08fef"
+    },
+    {
+      "ref": "D2",
+      "url": "https://lokaleregelgeving.overheid.nl/CVDR732379",
+      "final_url": "https://lokaleregelgeving.overheid.nl/CVDR732379",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 409979,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:00eb29dbe09c79651d4836db7ac9e8dd8565cab3dd2b69c7ddd198f26e1c1018"
+    },
+    {
+      "ref": "D3",
+      "url": "https://www.provincie-utrecht.nl/loket/subsidies/hoe-kunt-u-subsidie-aanvragen",
+      "final_url": "https://www.provincie-utrecht.nl/loket/subsidies/hoe-kunt-u-subsidie-aanvragen",
+      "from": "https://www.provincie-utrecht.nl/loket/subsidies/bestrijding-en-beheersing-invasieve-exoten",
+      "anchor": "Hier leest u meer over het aanvragen van subsidie.",
+      "depth": 1,
+      "pdf": false,
+      "chars": 11752,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:022db189487d3cd8307d1150df453e8396140d06843ced5a69c031bf3b35be5f"
+    },
+    {
+      "ref": "D4",
+      "url": "https://lokaleregelgeving.overheid.nl/CVDR732379?",
+      "final_url": "https://lokaleregelgeving.overheid.nl/CVDR732379?",
+      "from": "https://lokaleregelgeving.overheid.nl/CVDR732379",
+      "anchor": "Regeling tekst",
+      "depth": 1,
+      "pdf": false,
+      "chars": 409979,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:00eb29dbe09c79651d4836db7ac9e8dd8565cab3dd2b69c7ddd198f26e1c1018"
+    }
+  ],
+  "failures": [
+    {
+      "url": "https://www.provincie-utrecht.nl/sites/default/files/2024-12/Overzicht%20vaste%20uurtarieven%20per%20functiegroep%202025%2C%20december%202024.pdf",
+      "from": "https://lokaleregelgeving.overheid.nl/CVDR732379",
+      "kind": "http",
+      "message": "HTTP 404"
+    }
+  ],
+  "skipped_links": 267,
+  "chunks": [
+    { "id": "c1", "docs": ["D1"], "chars": 7718 },
+    { "id": "c2", "docs": ["D2"], "chars": 39963 },
+    { "id": "c3", "docs": ["D2"], "chars": 39969 },
+    { "id": "c4", "docs": ["D2"], "chars": 40065 },
+    { "id": "c5", "docs": ["D2"], "chars": 40054 },
+    { "id": "c6", "docs": ["D2"], "chars": 39030 },
+    { "id": "c7", "docs": ["D2"], "chars": 40074 },
+    { "id": "c8", "docs": ["D2"], "chars": 40019 },
+    { "id": "c9", "docs": ["D2"], "chars": 39776 },
+    { "id": "c10", "docs": ["D2"], "chars": 40057 },
+    { "id": "c11", "docs": ["D2"], "chars": 40019 },
+    { "id": "c12", "docs": ["D2"], "chars": 26769 },
+    { "id": "c13", "docs": ["D3"], "chars": 11947 },
+    { "id": "c14", "docs": ["D4"], "chars": 40025 },
+    { "id": "c15", "docs": ["D4"], "chars": 40031 },
+    { "id": "c16", "docs": ["D4"], "chars": 40127 },
+    { "id": "c17", "docs": ["D4"], "chars": 40116 },
+    { "id": "c18", "docs": ["D4"], "chars": 39092 },
+    { "id": "c19", "docs": ["D4"], "chars": 40136 },
+    { "id": "c20", "docs": ["D4"], "chars": 40081 },
+    { "id": "c21", "docs": ["D4"], "chars": 39838 },
+    { "id": "c22", "docs": ["D4"], "chars": 40119 },
+    { "id": "c23", "docs": ["D4"], "chars": 40081 },
+    { "id": "c24", "docs": ["D4"], "chars": 26831 }
+  ],
+  "outcomes": {
+    "eligibility": "partial",
+    "documents": "stated",
+    "effort": "unresolved",
+    "co_finance": "not_found",
+    "consortium": "stated",
+    "after_award": "unresolved"
+  },
+  "written": ["eligibility", "documents", "consortium"],
+  "escalated": [],
+  "flags": [
+    {
+      "field": "eligibility",
+      "item": "Targets one or more of the listed invasive exotic species",
+      "why": "the quote is not on any gathered document"
+    },
+    {
+      "field": "eligibility",
+      "item": "Targets one or more of the named invasive exotic species",
+      "why": "the quote is not on any gathered document"
+    },
+    { "field": "after_award", "item": "required", "why": "parts of the text disagree" },
+    {
+      "field": "effort",
+      "item": "steps",
+      "why": "the steps come from different parts of the text; check they are one list in order"
+    }
+  ],
+  "notes": [
+    "eligibility: 16 rules past the 8th dropped",
+    "documents: 6 past the 10th dropped",
+    "effort: steps past the 5th dropped",
+    "extractor: The page does not list the required application attachments. Maximum subsidy is 100% of eligible costs, capped at €75,000 for control, management, restoration and research projects, and €10,000 for area plans or citizen involvement. | The excerpt is the regulation version effective from 2026-10-09. It ends at Article 4.7(a), so the grant amount and any co-financing terms are not stated here. | D2 also requires the funded activities to be completed within five years after the grant award, with a possible extension of up to five years. For implementation and research activities, the targeted invasive species must be recorded in the National Database Flora and Fauna at project start. The monitoring report must describe the starting situation, work or control method, and ending situation. | This part does not state rules for the Provincie Utrecht Subsidie Bestrijding en beheersing invasieve exoten programme. | The excerpt gives general application guidance; its later NNN land-acquisition p",
+    "the flagged text is too long for one escalation",
+    "source utrecht-bestrijding-invasieve-exoten-3: added for https://www.provincie-utrecht.nl/loket/subsidies/hoe-kunt-u-subsidie-aanvragen",
+    "source utrecht-bestrijding-invasieve-exoten-4: added for https://lokaleregelgeving.overheid.nl/CVDR732379?"
+  ],
+  "usd": 0
+}
