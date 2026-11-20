@@ -14,6 +14,9 @@ export function initWhereView() {
   const countryNames = new Intl.DisplayNames(['en'], { type: 'region' })
   const nameOf = (w: string) => (w.startsWith('r:') ? (regionNames[w.slice(2)] ?? w) : (countryNames.of(w) ?? w))
   const covers = (w: string) => reach.has('*') || reach.has(w) || (w.startsWith('r:') && reach.has(`R:${w.slice(2)}`))
+  // The funder names a group ("ODA-eligible countries") inside this place's region: maybe, never a yes.
+  const maybe = (w: string) => !covers(w) && (reach.has(`?${w}`) || (w.startsWith('r:') && reach.has(`?:${w.slice(2)}`)))
+  const { wherePart: partOf, whereWithin: within } = root.dataset
 
   const box = document.querySelector<HTMLElement>('[data-apply]')
   const parts = all<HTMLElement>('[data-group]', box ?? document)
@@ -54,7 +57,8 @@ export function initWhereView() {
       return el ? [el] : []
     }
     const named = () => [...flag(), name]
-    const covered = !where || covers(where)
+    // A maybe keeps the apply box: the visitor checks the funder's list, then applies.
+    const covered = !where || covers(where) || maybe(where)
     const country = where && !where.startsWith('r:') ? where : ''
 
     // Start from the built page: calls home in their order, nothing added.
@@ -77,9 +81,18 @@ export function initWhereView() {
     if (where) {
       // The apply box's country picker already says the place and leads out of it.
       if (!select) place('chip')
-      if (covered) {
-        const via = place('covered')?.querySelector<HTMLElement>('[data-where-via]')
-        if (via && part?.dataset.callLabel && part.dataset.group !== '*') via.textContent = `, in the call “${part.dataset.callLabel}”`
+      if (maybe(where)) {
+        const check = place('maybe')?.querySelector('[data-where-check]')
+        if (check && !country) {
+          const region = document.createElement('span')
+          region.dataset.whereName = ''
+          check.replaceChildren('check which countries in ', region, ' it takes')
+        }
+      }
+      else if (covered) {
+        const via = place(partOf ? 'part' : 'covered')?.querySelector<HTMLElement>('[data-where-via]')
+        const call = part?.dataset.callLabel && part.dataset.group !== '*' ? `, in the call “${part.dataset.callLabel}”` : ''
+        if (via) via.textContent = `${within ? `, within ${within}` : ''}${call}`
       } else place('uncovered')
     }
 

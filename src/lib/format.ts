@@ -119,6 +119,8 @@ export function geographyFull(g: Programme['geography']): string | null {
     const regions = joinAnd(g.regions.map((r) => regionLabels[r]))
     return regions === g.label ? regions : `${g.label} (${regions})`
   }
+  // An official list runs to 100+ names; the page folds them away and says where the list comes from.
+  if (g.list) return `${g.label ?? 'Listed countries'} (${g.countries.length} countries and territories)`
   const list = joinAnd(g.countries.map(countryName))
   return g.label ? `${g.label}: ${list}` : list
 }
