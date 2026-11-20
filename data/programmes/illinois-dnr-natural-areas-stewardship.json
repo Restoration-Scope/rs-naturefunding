@@ -30,6 +30,43 @@
   },
   "co_finance_required": true,
   "reporting": null,
+  "effort": {
+    "steps": [
+      "GATA Portal registration",
+      "Application materials through Amplifund"
+    ]
+  },
+  "eligibility": [
+    {
+      "rule": "Be a 501(c)(3) Conservation Land Trust whose purposes include restoration and stewardship of land for conservation",
+      "kind": "legal"
+    },
+    {
+      "rule": "Registered in the State of Illinois Grantee Portal before the deadline",
+      "kind": "legal"
+    },
+    {
+      "rule": "Conduct the project on an Illinois nature preserve, dedicated buffer, or land and water reserve",
+      "kind": "project"
+    },
+    {
+      "rule": "Have a current approved management schedule and own the site or have an executed owner agreement",
+      "kind": "project"
+    },
+    {
+      "rule": "Not an NGO whose main purpose is fundraising for local government conservation agencies",
+      "kind": "legal"
+    }
+  ],
+  "documents": [
+    "Project narrative",
+    "Map of each site showing the proposed activities",
+    "Approved management schedule for each site",
+    "Landowner agreement and notice to the Commission, if not the landowner",
+    "W-9 form",
+    "IRS determination letter, if new to Illinois state grants in 3 years",
+    "Two price quotes for equipment of $5,000 or more"
+  ],
   "calls": [
     {
       "id": "current-round",
@@ -82,10 +119,105 @@
     },
     "co_finance_required": {
       "source_url": "https://dnr.illinois.gov/grants/stewardshipgrants.html",
-      "quote": "Application Deadline: TBD Grant Amount: Up to $100,000 Match: 5% or $1000, whichever is less.",
-      "checked_at": "2026-11-09",
+      "quote": "Match: 5% or $1000, whichever is less.",
+      "checked_at": "2026-11-20",
       "method": "page"
-    }
+    },
+    "effort": [
+      {
+        "source_url": "https://dnr.illinois.gov/grants/stewardshipgrants.html",
+        "quote": "Applicants must be registered in the State of Illinois Grantee Portal prior to the application deadline date.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://dnr.illinois.gov/grants/stewardshipgrants.html",
+        "quote": "Please submit application materials through the Amplifund portal.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "eligibility": [
+      {
+        "source_url": "https://dnr.illinois.gov/grants/stewardshipgrants.html",
+        "quote": "Conservation Land Trusts exempt from taxation under Section 501(c)(3) of the federal Internal Revenue Code and include in its purposes the restoration and stewardship of land for conservation purposes.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://dnr.illinois.gov/grants/stewardshipgrants.html",
+        "quote": "Applicants must be registered in the State of Illinois Grantee Portal prior to the application deadline date.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://dnr.illinois.gov/grants/stewardshipgrants.html",
+        "quote": "All projects must be on eligible lands. This includes Illinois nature preserves, dedicated buffers, and land and water reserves.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://dnr.illinois.gov/grants/stewardshipgrants.html",
+        "quote": "Project sites must have a current and approved management schedule and must be owned by the applicant or there must be an executed agreement between the conservation land trust and the property owner.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://dnr.illinois.gov/content/dam/soi/en/web/dnr/grants/documents/stewardship-grant-documents/2027-nas-grant-nofo.pdf",
+        "quote": "Non-Governmental Organizations whose primary purpose is to fundraise for local government conservation agencies are not eligible.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "documents": [
+      {
+        "source_url": "https://dnr.illinois.gov/grants/stewardshipgrants.html",
+        "quote": "The project narrative must be completed and submitted in Amplifund.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://dnr.illinois.gov/content/dam/soi/en/web/dnr/grants/documents/stewardship-grant-documents/2027-nas-grant-nofo.pdf",
+        "quote": "Copy of executed agreement between the applicant and the landowner (if applicable) o Copy of notification of executed agreement to Commission (if applicable) o Maps for each site that identify the location of proposed activities o Copy of approved Management Schedule for each site included in the Project Narrative",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://dnr.illinois.gov/content/dam/soi/en/web/dnr/grants/documents/stewardship-grant-documents/2027-nas-grant-nofo.pdf",
+        "quote": "W-9: All applicants must complete and provide the latest W-9 version as found at www.IRS.gov.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://dnr.illinois.gov/content/dam/soi/en/web/dnr/grants/documents/stewardship-grant-documents/2027-nas-grant-nofo.pdf",
+        "quote": "Not-for-profit applicants that have not done business with the State of Illinois in the last 3 years or have reorganized since last doing business with the State must provide a copy of their IRS Determination Letter",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://dnr.illinois.gov/content/dam/soi/en/web/dnr/grants/documents/stewardship-grant-documents/2027-nas-grant-nofo.pdf",
+        "quote": "Two price quotes for equipment purchase with value of $5,000 or more.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "after_award": [
+      {
+        "source_url": "https://dnr.illinois.gov/content/dam/soi/en/web/dnr/grants/documents/stewardship-grant-documents/2027-nas-grant-nofo.pdf",
+        "quote": "Quarterly Progress Reports: If the amount of grant funds awarded exceeds $25,000.00, the grantee is required to provide to the DNR quarterly progress reports that describe the progress of the project and expenditures of funds",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://dnr.illinois.gov/content/dam/soi/en/web/dnr/grants/documents/stewardship-grant-documents/2027-nas-grant-nofo.pdf",
+        "quote": "The grantee shall submit a written Final Report to the department no later than 30 days following the completion of the Project or the ending date of the grant agreement, whichever is earlier",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ]
   },
-  "checked_at": "2026-11-09"
+  "checked_at": "2026-11-09",
+  "after_award": {
+    "reports": "quarterly"
+  }
 }

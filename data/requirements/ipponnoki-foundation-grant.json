@@ -1,0 +1,51 @@
+{
+  "id": "ipponnoki-foundation-grant",
+  "read_on": "2026-11-20",
+  "prompt_version": "req-2026-11-20.1",
+  "models": ["cursor:gpt-5.6-luna-high", "cursor:gpt-5.6-sol-high"],
+  "complete": false,
+  "reasons": [
+    "9 links could not be ranked without Jev",
+    "the text names a document with rules that was not read: 助成実施要綱",
+    "the text names a document with rules that was not read: 助成申込書(記載要領)",
+    "the text names a document with rules that was not read: 収支予算(記載要領)",
+    "the text names a document with rules that was not read: 助成事業お問合せQ&A",
+    "Jev did not check this reading, so an absent fact is not known to be absent",
+    "strong reading: the text names a document with rules that was not read: 助成実施要綱"
+  ],
+  "requirements_checked": false,
+  "documents": [
+    {
+      "ref": "D1",
+      "url": "https://ipponnoki.jp/assist/",
+      "final_url": "https://ipponnoki.jp/assist/",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 9577,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:b4892137911bacf8da92e0d9c0650bbc695b1c584f3c4ffe77c29ae73095dcf1"
+    }
+  ],
+  "failures": [],
+  "skipped_links": 79,
+  "chunks": [{ "id": "all", "docs": ["D1"], "chars": 9618 }],
+  "outcomes": {
+    "eligibility": "stated",
+    "documents": "stated",
+    "effort": "stated",
+    "co_finance": "stated",
+    "consortium": "not_found",
+    "after_award": "stated"
+  },
+  "written": ["eligibility", "documents", "effort", "co_finance", "after_award"],
+  "escalated": ["eligibility"],
+  "flags": [],
+  "notes": [
+    "co_finance: share 50% dropped, its quote does not state it",
+    "extractor: The page states two annual rounds with different project periods and application windows, but no year is stated for those windows, so no exact due date can be assigned."
+  ],
+  "usd": 0
+}
