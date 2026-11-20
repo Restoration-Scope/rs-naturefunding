@@ -1,33 +1,21 @@
 {
   "id": "waddenfonds-stuw",
   "name": "Waddenfonds STUW (medium-sized projects, Nature theme)",
-  "funder": {
-    "name": "Waddenfonds",
-    "url": "https://waddenfonds.nl/"
-  },
+  "funder": { "name": "Waddenfonds", "url": "https://waddenfonds.nl/" },
   "administered_by": null,
   "parent": null,
   "url": "https://waddenfonds.nl/subsidie-aanvragen/subsidieregeling-stuw-23/",
   "summary": "Dutch Wadden Sea fund's subsidy for medium-sized projects (up to EUR 1 million) across eight themes. The Nature theme backs projects that restore and strengthen ecology in the Wadden region, from tidal habitat to bird breeding sites.",
-  "approaches": [
-    "coastal_marine",
-    "species_conservation",
-    "wetlands"
-  ],
+  "approaches": ["coastal_marine", "species_conservation", "wetlands"],
   "applicant_types": null,
   "geography": {
     "scope": "countries",
-    "countries": [
-      "NL"
-    ],
+    "countries": ["NL"],
     "label": "Waddenfonds working area (Wadden Sea region)"
   },
   "access": "direct",
   "window": "fixed",
-  "amount": {
-    "currency": "EUR",
-    "max": 1000000
-  },
+  "amount": { "currency": "EUR", "max": 1000000 },
   "co_finance_required": true,
   "reporting": null,
   "effort": {
@@ -36,11 +24,7 @@
       "Complete subsidy application",
       "Completeness check and assessment"
     ],
-    "due": [
-      null,
-      "2027-03-26",
-      null
-    ]
+    "due": [null, "2027-03-26", null]
   },
   "eligibility": [
     {
@@ -59,15 +43,10 @@
       "rule": "Applicant and participating parties have no outstanding unlawful-state-aid recovery order",
       "kind": "legal"
     },
-    {
-      "rule": "Eligible project costs of at least €200,000",
-      "kind": "project"
-    },
-    {
-      "rule": "Project has at least a supra-local effect",
-      "kind": "project"
-    }
+    { "rule": "Eligible project costs of at least €200,000", "kind": "project" },
+    { "rule": "Project has at least a supra-local effect", "kind": "project" }
   ],
+  "co_finance": { "min_share": 10 },
   "documents": [
     "Project plan",
     "Budget",
@@ -119,7 +98,7 @@
     "geography": {
       "source_url": "https://waddenfonds.nl/subsidie-aanvragen/",
       "quote": "Om in aanmerking te komen voor een subsidie, moet uw project worden gerealiseerd in het werkingsgebied van het Waddenfonds.",
-      "checked_at": "2026-11-15",
+      "checked_at": "2026-11-20",
       "method": "page"
     },
     "access": {
@@ -137,6 +116,12 @@
     "amount": {
       "source_url": "https://waddenfonds.nl/subsidie-aanvragen/subsidieregeling-stuw-23/",
       "quote": "Per subsidieverzoek kan er maximaal € 1 miljoen worden aangevraagd.",
+      "checked_at": "2026-11-20",
+      "method": "page"
+    },
+    "co_finance_required": {
+      "source_url": "https://lokaleregelgeving.overheid.nl/CVDR754328/2",
+      "quote": "De subsidie voor activiteiten die naar het oordeel van het dagelijks bestuur geen staatssteun vormt in de zin van artikel 107, eerste lid, VWEU, bedraagt nooit meer dan 90% van de subsidiabele kosten",
       "checked_at": "2026-11-20",
       "method": "page"
     },
@@ -198,6 +183,12 @@
         "method": "page"
       }
     ],
+    "co_finance": {
+      "source_url": "https://lokaleregelgeving.overheid.nl/CVDR754328/2",
+      "quote": "De subsidie voor activiteiten die naar het oordeel van het dagelijks bestuur geen staatssteun vormt in de zin van artikel 107, eerste lid, VWEU, bedraagt nooit meer dan 90% van de subsidiabele kosten",
+      "checked_at": "2026-11-20",
+      "method": "page"
+    },
     "documents": [
       {
         "source_url": "https://waddenfonds.nl/wp-content/uploads/2024/04/Werkbestand-Format-projectplan-met-tabellen-indicatoren-en-streefwaarden-DB-versie-18-4-2024-opgeschoond.pdf",
@@ -241,22 +232,7 @@
         "checked_at": "2026-11-20",
         "method": "page"
       }
-    ],
-    "co_finance_required": {
-      "source_url": "https://lokaleregelgeving.overheid.nl/CVDR754328/2",
-      "quote": "De subsidie voor activiteiten die naar het oordeel van het dagelijks bestuur geen staatssteun vormt in de zin van artikel 107, eerste lid, VWEU, bedraagt nooit meer dan 90% van de subsidiabele kosten",
-      "checked_at": "2026-11-20",
-      "method": "page"
-    },
-    "co_finance": {
-      "source_url": "https://lokaleregelgeving.overheid.nl/CVDR754328/2",
-      "quote": "De subsidie voor activiteiten die naar het oordeel van het dagelijks bestuur geen staatssteun vormt in de zin van artikel 107, eerste lid, VWEU, bedraagt nooit meer dan 90% van de subsidiabele kosten",
-      "checked_at": "2026-11-20",
-      "method": "page"
-    }
+    ]
   },
-  "checked_at": "2026-11-15",
-  "co_finance": {
-    "min_share": 10
-  }
+  "checked_at": "2026-11-20"
 }
