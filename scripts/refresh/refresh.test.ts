@@ -8,8 +8,9 @@ import { formatJson } from './json'
 import { answerText, llmFromEnv, provider } from './llm'
 import { sourceOfBranch, withinBudget } from './pool'
 import { isDue, nextState, programmeChecks, type SourceState } from './state'
-import { applyTierA, classify, quotesAt } from './tier'
-import { applyExtraction, LIMITS, proposalKey, readReview } from './tier-b'
+import { applyTierA, classify, dateQuoted, quotesAt } from './tier'
+import { resolveDateConflicts } from './sync-pr'
+import { applyExtraction, LIMITS, needsPerson, proposalKey, readReview, type Change, type Review } from './tier-b'
 
 const URL_A = 'https://funder.example/call'
 const URL_B = 'https://funder.example/eligibility'
@@ -515,5 +516,70 @@ describe('Tier B time budget', () => {
   })
   test('source id from a refresh branch', () => {
     expect(sourceOfBranch('refresh/cultuurfonds-natuur-1-43715323675')).toBe('cultuurfonds-natuur-1')
+  })
+})
+
+describe('changed page: dates without a PR', () => {
+  const now = new Date('2026-11-21T06:00:00Z')
+  test('dates facts still quoted on the changed page, leaves gone quotes and other pages alone', () => {
+    const page = 'News! Apply online. Applications are open. Up to USD 60,000. Deadline: 15 March 2027, 17:00 CET'
+    const { programme: p, dated } = dateQuoted(fixture(), new Map([[URL_A, page]]), now)
+    expect(dated).toBe(4)
+    expect(p.evidence.access?.checked_at).toBe('2026-11-21')
+    expect(p.calls[0].evidence.status.checked_at).toBe('2026-11-21')
+    expect(p.calls[0].evidence.deadline?.checked_at).toBe('2026-11-21')
+    expect(p.evidence.amount?.checked_at).toBe('2026-10-01')
+    expect(p.evidence.geography?.checked_at).toBe('2026-10-01')
+    expect(p.amount).toEqual(fixture().amount)
+    expect(p.checked_at).toBe('2026-10-01')
+  })
+  test('programme date moves once every fact is dated', () => {
+    const pages = new Map([[URL_A, 'Apply online. Applications are open. Up to USD 50,000. Deadline: 15 March 2027, 17:00 CET'], [URL_B, 'Community groups may apply. Open to applicants worldwide.']])
+    expect(dateQuoted(fixture(), pages, now).programme.checked_at).toBe('2026-11-21')
+  })
+  test('an upcoming call due to open keeps its date', () => {
+    const f = fixture()
+    f.calls[0] = { ...f.calls[0], status: 'upcoming', opens: '2026-11-01', evidence: { ...f.calls[0].evidence, opens: ev(URL_A, 'Opens 1 November 2026') } }
+    const { programme: p } = dateQuoted(f, new Map([[URL_A, 'Applications are open. Opens 1 November 2026']]), now)
+    expect(p.calls[0].evidence.status.checked_at).toBe('2026-10-01')
+    expect(p.calls[0].evidence.opens?.checked_at).toBe('2026-11-21')
+  })
+})
+
+describe('auto-commit rule', () => {
+  const change = (path: string, kind: Change['kind'] = 'changed'): Change => ({ path, kind, old: 1, new: 2, quote: 'q' })
+  const review = (over: Partial<Review> = {}): Review => ({ overall: 'approve', verdicts: [{ path: 'amount', verdict: 'supported', reason: '' }], missed: '', ...over })
+  const clean = { programme: fixture(), changes: [change('amount')], unconfirmed: [], schemaErrors: [], review: review(), truncated: false }
+  const reasons = ['page text changed since the last accepted read']
+  test('a fully passed draft commits', () => {
+    expect(needsPerson(clean, reasons)).toBeNull()
+    expect(needsPerson({ ...clean, changes: [] }, reasons)).toBeNull()
+    expect(needsPerson({ ...clean, review: review({ missed: 'None.' }) }, reasons)).toBeNull()
+  })
+  test('anything short of that needs a person', () => {
+    expect(needsPerson({ ...clean, review: review({ overall: 'reject' }) }, reasons)).toBe('the reviewer says reject')
+    expect(needsPerson({ ...clean, review: review({ overall: 'unclear' }) }, reasons)).toBe('the reviewer says unclear')
+    expect(needsPerson({ ...clean, review: review({ missed: 'The deadline moved to 1 May 2027' }) }, reasons)).toBe('the reviewer says the draft missed something')
+    expect(needsPerson({ ...clean, changes: [change('amount'), change('calls[x]', 'rejected')] }, reasons)).toBe('1 fact(s) rejected')
+    expect(needsPerson({ ...clean, unconfirmed: ['evidence.amount: "Up to USD 50,000"'] }, reasons)).toBe('1 quote(s) gone from the page')
+    expect(needsPerson({ ...clean, review: review({ verdicts: [{ path: 'amount', verdict: 'unsupported', reason: '' }] }) }, reasons)).toContain('amount')
+    expect(needsPerson({ ...clean, changes: [change('amount'), change('geography')] }, reasons)).toContain('geography')
+    expect(needsPerson({ ...clean, programme: null }, reasons)).toBe('the draft does not fit the schema')
+    expect(needsPerson({ ...clean, truncated: true }, reasons)).toBe('the page text was cut for the models')
+    expect(needsPerson(clean, ['redirected to another site: https://other.example/'])).toBe('the page redirected to another site')
+    expect(needsPerson({ ...clean, review: null }, reasons)).toBe('no reviewer answer')
+  })
+})
+
+describe('refresh PR sync with main', () => {
+  const hunk = (a: string, b: string) => `{\n<<<<<<< HEAD\n${a}\n=======\n${b}\n>>>>>>> origin/main\n}`
+  test('date-only conflicts take the later date', () => {
+    expect(resolveDateConflicts(hunk('  "checked_at": "2026-11-21",', '  "checked_at": "2026-11-20",'))).toBe('{\n  "checked_at": "2026-11-21",\n}')
+    expect(resolveDateConflicts(hunk('  "checked_at": "2026-11-03"\n  "quote": "x",', '  "checked_at": "2026-11-20"\n  "quote": "x",'))).toBe('{\n  "checked_at": "2026-11-20"\n  "quote": "x",\n}')
+  })
+  test('any other conflict stops', () => {
+    expect(resolveDateConflicts(hunk('  "max": 5000,', '  "max": 6000,'))).toBeNull()
+    expect(resolveDateConflicts(hunk('  "checked_at": "2026-11-21",', '  "checked_at": "2026-11-20",\n  "x": 1,'))).toBeNull()
+    expect(resolveDateConflicts(hunk('  "checked_at": "2026-11-21",', '  "accepted_at": "2026-11-20",'))).toBeNull()
   })
 })

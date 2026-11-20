@@ -271,6 +271,8 @@ export type Draft = {
   datesOnly: boolean
   review: Review | null
   error: string | null
+  /** True when the run wrote `files` to main itself (needsPerson found nothing); open-prs.ts then only closes older PRs for the page. */
+  committed?: boolean
 }
 
 const clip = (v: unknown, max: number) => (typeof v === 'string' ? v.slice(0, max) : '')
@@ -282,6 +284,32 @@ export function readReview(answer: unknown): Review {
   const verdicts = (Array.isArray(a.verdicts) ? a.verdicts : []).filter(isRecord).slice(0, 50)
     .map((v) => ({ path: clip(v.path, 120), verdict: clip(v.verdict, 20), reason: clip(v.reason, 300) }))
   return { overall, verdicts, missed: clip(a.missed, 1000) }
+}
+
+const nothingMissed = (missed: string) => /^\s*(|none|nothing|n\/?a|no)\.?\s*$/i.test(missed)
+
+/**
+ * Why a draft needs a person, or null when it may commit straight to main
+ * (decisions/2026-11-20-refresh-auto-commit-rule.md): it fits the schema, the reviewer
+ * approves and marks every applied change "supported", flags nothing missed, no fact was
+ * rejected, no quote went missing, the page was read whole and did not redirect to another site.
+ */
+export function needsPerson(
+  r: { programme: Programme | null; changes: Change[]; unconfirmed: string[]; schemaErrors: string[]; review: Review | null; truncated: boolean },
+  reasons: string[],
+): string | null {
+  if (!r.programme || r.schemaErrors.length) return 'the draft does not fit the schema'
+  if (reasons.some((x) => x.startsWith('redirected'))) return 'the page redirected to another site'
+  if (r.truncated) return 'the page text was cut for the models'
+  if (!r.review) return 'no reviewer answer'
+  if (r.review.overall !== 'approve') return `the reviewer says ${r.review.overall}`
+  if (!nothingMissed(r.review.missed)) return 'the reviewer says the draft missed something'
+  const rejected = r.changes.filter((c) => c.kind === 'rejected').length
+  if (rejected) return `${rejected} fact(s) rejected`
+  if (r.unconfirmed.length) return `${r.unconfirmed.length} quote(s) gone from the page`
+  const unsupported = r.changes.filter((c) => r.review!.verdicts.find((v) => v.path === c.path)?.verdict.trim().toLowerCase() !== 'supported')
+  if (unsupported.length) return `the reviewer does not mark ${unsupported.map((c) => c.path).slice(0, 3).join(', ')} as supported`
+  return null
 }
 
 export async function extractAndReview(llm: Llm, p: Programme, source: Source, pageText: string, now: Date) {

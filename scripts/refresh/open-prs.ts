@@ -1,12 +1,13 @@
 /**
  * Opens one pull request per Tier B draft, on a new branch from the refreshed branch (main). An open PR with
  * the same proposal (same page version and facts, check dates aside; see proposalKey) is kept;
- * a different one for the same page is closed as superseded.
+ * a different one for the same page is closed as superseded. A draft run.ts already committed to
+ * main (Draft.committed) opens nothing and closes the open PRs for its page.
  * A draft with nothing to change becomes an issue instead. Runs in Actions after the
  * Tier A commit is pushed.
  *   bun scripts/refresh/open-prs.ts [--drafts dir]
  */
-import { existsSync, mkdirSync, readdirSync, readFileSync, rmSync, writeFileSync } from 'node:fs'
+import { appendFileSync, existsSync, mkdirSync, readdirSync, readFileSync, rmSync, writeFileSync } from 'node:fs'
 import { dirname, join, resolve } from 'node:path'
 import type { Draft } from './tier-b'
 
@@ -63,6 +64,14 @@ for (const d of drafts) {
   const prefix = `refresh/${d.source.id}-`
   const branch = `${prefix}${runId}`
   const previous = openPrs.filter((p) => p.headRefName.startsWith(prefix))
+  if (d.committed) {
+    for (const p of previous) {
+      run(['gh', 'pr', 'close', String(p.number), '--comment', 'Superseded: the daily refresh committed a newer reading of this page to main (decisions/2026-11-20-refresh-auto-commit-rule.md).', '--delete-branch'], { allowFail: true })
+      log.push(`closed ${p.url} (committed to main)`)
+    }
+    log.push(`committed ${d.source.id}`)
+    continue
+  }
   const same = d.key && previous.find((p) => p.body.includes(`<!-- refresh-key: ${d.key} -->`))
   if (same) {
     log.push(`unchanged ${same.url}`)
@@ -103,3 +112,7 @@ for (const d of drafts) {
 }
 
 console.log(log.length ? log.join('\n') : 'no Tier B drafts')
+const count = (prefix: string) => log.filter((l) => l.startsWith(prefix)).length
+const tally = `Tier B: ${count('committed')} committed to main, ${count('opened https')} new PRs, ${count('unchanged')} PRs kept, ${count('closed')} older PRs closed, ${count('opened issue') + count('updated issue')} issues.`
+console.log(tally)
+if (process.env.GITHUB_STEP_SUMMARY) appendFileSync(process.env.GITHUB_STEP_SUMMARY, `${tally}\n`)
