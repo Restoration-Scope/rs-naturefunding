@@ -1,22 +1,35 @@
 import { describe, expect, test } from 'bun:test'
-import { csvFileName, csvRecords, pickProgrammes } from './view-csv'
+import { csvFields, csvFileName, csvRecords, pickProgrammes } from './view-csv'
 
-const csv = ['programme_id,programme,call_note', 'a,Alpha,', 'b,Beta,"two\nlines, quoted ""here"""', 'b,Beta,second call', 'c,Gamma,', ''].join('\n')
+const header = 'programme_id,programme,call_id,call_note'
+const rows = ['a,Alpha,,', 'b,Beta,b-2025,"two\nlines, quoted ""here"""', 'b,Beta,b-2026,this year', 'c,Gamma,c-1,']
+const csv = [header, ...rows, ''].join('\n')
 
 describe('csvRecords', () => {
   test('keeps newlines inside quoted cells', () => {
-    expect(csvRecords(csv)).toEqual(['programme_id,programme,call_note', 'a,Alpha,', 'b,Beta,"two\nlines, quoted ""here"""', 'b,Beta,second call', 'c,Gamma,'])
+    expect(csvRecords(csv)).toEqual([header, ...rows])
+  })
+})
+
+describe('csvFields', () => {
+  test('unquotes cells with commas, quotes and newlines', () => {
+    expect(csvFields(rows[1]!)).toEqual(['b', 'Beta', 'b-2025', 'two\nlines, quoted "here"'])
   })
 })
 
 describe('pickProgrammes', () => {
-  test('keeps the header and every call of the shown programmes, in view order', () => {
-    expect(pickProgrammes(csv, ['c', 'b'])).toBe(
-      ['programme_id,programme,call_note', 'c,Gamma,', 'b,Beta,"two\nlines, quoted ""here"""', 'b,Beta,second call', ''].join('\n'),
+  test('one row per shown programme, the call its row shows, in view order', () => {
+    expect(pickProgrammes(csv, [{ id: 'c', call: 'c-1' }, { id: 'b', call: 'b-2026' }, { id: 'a' }])).toBe(
+      [header, 'c,Gamma,c-1,', 'b,Beta,b-2026,this year', 'a,Alpha,,', ''].join('\n'),
+    )
+  })
+  test('a row showing no call, or a call not in the file, takes the first record', () => {
+    expect(pickProgrammes(csv, [{ id: 'b' }, { id: 'c', call: 'gone' }])).toBe(
+      [header, 'b,Beta,b-2025,"two\nlines, quoted ""here"""', 'c,Gamma,c-1,', ''].join('\n'),
     )
   })
   test('no programmes shown gives the header alone', () => {
-    expect(pickProgrammes(csv, [])).toBe('programme_id,programme,call_note\n')
+    expect(pickProgrammes(csv, [])).toBe(`${header}\n`)
   })
 })
 

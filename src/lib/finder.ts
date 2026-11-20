@@ -33,6 +33,8 @@ type Item = {
 /** One version of a row's deadline cell: `codes` are the countries it is for, `*` the rest, empty the built cell. */
 type DatedCell = {
   codes: string[]
+  /** The call this cell shows, for Download CSV. */
+  call: string
   state: string
   deadline: string
   deadlineTime: string
@@ -75,6 +77,7 @@ export function initTableFinder() {
   const emptyHead = $<HTMLElement>('[data-empty-head]')
   const clearEls = [...document.querySelectorAll<HTMLElement>('[data-clear]')]
   const badge = $<HTMLElement>('[data-filter-count]')
+  const csvButtons = [...document.querySelectorAll<HTMLElement>('[data-csv]')]
   const sortSelect = $<HTMLSelectElement>('[data-sort-select]')
   const sheet = $<HTMLElement>('[data-sheet]')
   const backdrop = $<HTMLElement>('[data-backdrop]')
@@ -119,6 +122,7 @@ export function initTableFinder() {
     const split = (s?: string) => (s ? s.split(' ') : [])
     const alts = [...el.querySelectorAll<HTMLTemplateElement>('template[data-where-dl]')].map((t) => ({
       codes: split(t.dataset.whereDl),
+      call: t.dataset.call ?? '',
       state: t.dataset.state ?? '',
       deadline: t.dataset.deadline ?? '',
       deadlineTime: t.dataset.deadlineTime ?? '',
@@ -129,6 +133,7 @@ export function initTableFinder() {
     }))
     const built = {
       codes: [],
+      call: d.call ?? '',
       state: d.state ?? '',
       deadline,
       deadlineTime: d.deadlineTime ?? '',
@@ -215,6 +220,7 @@ export function initTableFinder() {
       const dl = i.el.querySelector<HTMLElement>('.dl')
       if (dl) dl.innerHTML = cell.html
       i.el.dataset.state = cell.state
+      i.el.dataset.call = cell.call
       i.state = freshen(i.el, cell)
       i.deadline = cell.deadline
       i.opens = cell.opens
@@ -441,6 +447,7 @@ export function initTableFinder() {
     // Nothing to show: no header, no end card, just the message where the rows would be.
     emptyEl.hidden = shown > 0
     tableWrap.hidden = shown === 0
+    for (const b of csvButtons) b.hidden = shown === 0
     if (shown === 0) endfold.hidden = true
     // laterN counts not-open rows the other filters match, which the status filter may be hiding.
     emptyHead.textContent = laterN === 0 ? 'Nothing matches.' : 'Nothing open matches.'
@@ -460,17 +467,18 @@ export function initTableFinder() {
   // ---------- Download CSV: the rows shown, in their order ----------
   async function downloadCsv() {
     const shownRows = [...list.rows, ...(laterOn ? [...laterList.rows] : [])].filter((r) => !r.hidden)
-    const ids = shownRows.map((r) => r.dataset.id ?? '').filter(Boolean)
+    const shown = shownRows.flatMap((r) => (r.dataset.id ? [{ id: r.dataset.id, call: r.dataset.call }] : []))
     try {
       const res = await fetch('/data.csv')
       if (!res.ok) throw new Error(String(res.status))
-      const blob = new Blob([pickProgrammes(await res.text(), ids)], { type: 'text/csv;charset=utf-8' })
+      // The byte-order mark makes Excel read it as UTF-8, so names like Galápagos keep their accents.
+      const blob = new Blob(['\uFEFF', pickProgrammes(await res.text(), shown)], { type: 'text/csv;charset=utf-8' })
       const a = document.createElement('a')
       a.href = URL.createObjectURL(blob)
       a.download = csvFileName(location.pathname, today)
       a.click()
       setTimeout(() => URL.revokeObjectURL(a.href), 1000)
-      live.textContent = `Downloaded ${ids.length} ${plural(ids.length, 'programme', 'programmes')} as CSV`
+      live.textContent = `Downloaded ${shown.length} ${plural(shown.length, 'programme', 'programmes')} as CSV`
     } catch {
       live.textContent = 'The download failed. Try again, or get every programme at /data.csv.'
     }
