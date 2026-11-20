@@ -7,13 +7,21 @@
   "url": "https://www.provinciegroningen.nl/subsidies/natuur-en-landschap/groene-initiatieven/",
   "summary": "Province of Groningen subsidy for projects by residents' groups and non-profit foundations or associations that strengthen nature and landscape around their living environment, such as landscape structures linking village and countryside. 2026 budget EUR 80,000, first come first served.",
   "approaches": ["community_conservation"],
-  "applicant_types": ["ngo", "community_group", "individual"],
+  "applicant_types": ["ngo", "individual"],
   "geography": { "scope": "countries", "countries": ["NL"], "label": "Groningen" },
   "access": "direct",
   "window": "fixed",
   "amount": { "currency": "EUR", "min": 2000, "max": 10000 },
   "pool": { "currency": "EUR", "value": 80000, "period": "year", "label": "2026" },
-  "reporting": null,
+  "co_finance_required": null,
+  "reporting": "After completing the project you have 13 weeks to request the subsidy settlement and provide the required documentation.",
+  "effort": {
+    "steps": [
+      "Discuss the project with the province",
+      "Application",
+      "Provincial review and decision"
+    ]
+  },
   "eligibility": [
     {
       "rule": "Projects in a village or city must be connected to the landscape",
@@ -73,7 +81,8 @@
           "checked_at": "2026-11-20",
           "method": "page"
         }
-      }
+      },
+      "note": "Budget 80.000 euro beschikbaar for 2026."
     }
   ],
   "evidence": {
@@ -101,18 +110,44 @@
       "checked_at": "2026-11-20",
       "method": "page"
     },
-    "pool": {
-      "source_url": "https://www.provinciegroningen.nl/subsidies/natuur-en-landschap/groene-initiatieven/",
-      "quote": "Voor 2026 is 80.000 euro beschikbaar.",
-      "checked_at": "2026-11-20",
-      "method": "page"
-    },
     "amount": {
       "source_url": "https://lokaleregelgeving.overheid.nl/CVDR609089",
       "quote": "De te verstrekken subsidie bedraagt minimaal € 2.000,- en maximaal € 10.000,-.",
       "checked_at": "2026-11-20",
       "method": "page"
     },
+    "pool": {
+      "source_url": "https://www.provinciegroningen.nl/subsidies/natuur-en-landschap/groene-initiatieven/",
+      "quote": "Voor 2026 is 80.000 euro beschikbaar.",
+      "checked_at": "2026-11-20",
+      "method": "page"
+    },
+    "reporting": {
+      "source_url": "https://www.provinciegroningen.nl/subsidies/natuur-en-landschap/groene-initiatieven/",
+      "quote": "Na het afronden van uw project heeft u 13 weken de tijd om de vaststelling van de subsidie aan te vragen.",
+      "checked_at": "2026-11-20",
+      "method": "page"
+    },
+    "effort": [
+      {
+        "source_url": "https://www.provinciegroningen.nl/subsidies/natuur-en-landschap/groene-initiatieven/",
+        "quote": "Voordat u een aanvraag indient, bespreekt u uw project met Janneke Verdijk, team Natuur.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.provinciegroningen.nl/subsidies/natuur-en-landschap/groene-initiatieven/",
+        "quote": "Aanvragen voor 2026 moeten vóór 1 december 2026 bij de provincie binnen zijn.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.provinciegroningen.nl/subsidies/natuur-en-landschap/groene-initiatieven/",
+        "quote": "Gedeputeerde Staten beslissen over uw aanvraag.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
     "eligibility": [
       {
         "source_url": "https://www.provinciegroningen.nl/subsidies/natuur-en-landschap/groene-initiatieven/",
@@ -170,35 +205,7 @@
         "checked_at": "2026-11-20",
         "method": "page"
       }
-    ],
-    "effort": [
-      {
-        "source_url": "https://www.provinciegroningen.nl/subsidies/natuur-en-landschap/groene-initiatieven/",
-        "quote": "Voordat u een aanvraag indient, bespreekt u uw project met Janneke Verdijk, team Natuur.",
-        "checked_at": "2026-11-20",
-        "method": "page"
-      },
-      {
-        "source_url": "https://www.provinciegroningen.nl/subsidies/natuur-en-landschap/groene-initiatieven/",
-        "quote": "Aanvragen voor 2026 moeten vóór 1 december 2026 bij de provincie binnen zijn.",
-        "checked_at": "2026-11-20",
-        "method": "page"
-      },
-      {
-        "source_url": "https://www.provinciegroningen.nl/subsidies/natuur-en-landschap/groene-initiatieven/",
-        "quote": "Gedeputeerde Staten beslissen over uw aanvraag.",
-        "checked_at": "2026-11-20",
-        "method": "page"
-      }
     ]
   },
-  "checked_at": "2026-11-20",
-  "effort": {
-    "steps": [
-      "Discuss the project with the province",
-      "Application",
-      "Provincial review and decision"
-    ]
-  },
-  "co_finance_required": null
+  "checked_at": "2026-11-20"
 }
