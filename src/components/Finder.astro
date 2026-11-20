@@ -48,7 +48,8 @@ const skipLink = 'absolute -top-16 left-4 z-10 rounded-md bg-surface px-3.5 py-2
 // The sidebar holds the filters the header card doesn't: status, how to apply and size. Every group stays open:
 // a heading, then all its options. The badge counts its filters that are on.
 // A legend sits on its fieldset's top edge, so the heading carries the group's top space.
-const group = 'border-b border-rule pb-3.5 last:border-b-0'
+// The last group has no rule; on wide screens Download CSV follows it, under a rule.
+const group = 'border-b border-rule pb-3.5 last:border-b-0 max-xl:last-of-type:border-b-0'
 const groupTitle = 'mb-2 flex items-center gap-2 px-0 pt-3.5 pb-0 text-sm font-medium text-foreground'
 const groupHint = 'mt-[0.3rem] text-xs leading-[1.4] text-ink-2'
 const opt =
@@ -263,7 +264,9 @@ import EffortTip from './EffortTip.astro'
 
           {/* Wide screens only, under the last filter group: phones and tablets get no download. */}
           <p class="hidden pt-3.5 text-sm xl:block">
-            <button type="button" class={csvButton} data-csv title={csvTitle}><Download className="size-3.5 self-center" aria-hidden="true" />Download CSV</button>
+            {/* Hidden until src/lib/finder.ts runs and finds rows to download. */}
+            <button type="button" class={csvButton} data-csv title={csvTitle} hidden><Download className="size-3.5 self-center" aria-hidden="true" />Download CSV</button>
+            <span class:list={[groupHint, 'block']} data-csv-error hidden>The download didn’t work. Reload the page and try again, or get every programme in <a href="/data.csv">data.csv</a>.</span>
           </p>
 
         </ScrollArea>

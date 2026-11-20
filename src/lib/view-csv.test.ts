@@ -23,10 +23,12 @@ describe('pickProgrammes', () => {
       [header, 'c,Gamma,c-1,', 'b,Beta,b-2026,this year', 'a,Alpha,,', ''].join('\n'),
     )
   })
-  test('a row showing no call, or a call not in the file, takes the first record', () => {
-    expect(pickProgrammes(csv, [{ id: 'b' }, { id: 'c', call: 'gone' }])).toBe(
-      [header, 'b,Beta,b-2025,"two\nlines, quoted ""here"""', 'c,Gamma,c-1,', ''].join('\n'),
-    )
+  test('a row showing no call takes the first record', () => {
+    expect(pickProgrammes(csv, [{ id: 'b' }])).toBe([header, 'b,Beta,b-2025,"two\nlines, quoted ""here"""', ''].join('\n'))
+  })
+  test('a call or programme no longer in the file gives null, so the reader reloads', () => {
+    expect(pickProgrammes(csv, [{ id: 'c', call: 'gone' }])).toBeNull()
+    expect(pickProgrammes(csv, [{ id: 'z' }])).toBeNull()
   })
   test('no programmes shown gives the header alone', () => {
     expect(pickProgrammes(csv, [])).toBe(`${header}\n`)

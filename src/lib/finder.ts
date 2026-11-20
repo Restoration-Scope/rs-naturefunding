@@ -78,6 +78,7 @@ export function initTableFinder() {
   const clearEls = [...document.querySelectorAll<HTMLElement>('[data-clear]')]
   const badge = $<HTMLElement>('[data-filter-count]')
   const csvButtons = [...document.querySelectorAll<HTMLElement>('[data-csv]')]
+  const csvError = $<HTMLElement>('[data-csv-error]')
   const sortSelect = $<HTMLSelectElement>('[data-sort-select]')
   const sheet = $<HTMLElement>('[data-sheet]')
   const backdrop = $<HTMLElement>('[data-backdrop]')
@@ -471,16 +472,20 @@ export function initTableFinder() {
     try {
       const res = await fetch('/data.csv')
       if (!res.ok) throw new Error(String(res.status))
+      const csv = pickProgrammes(await res.text(), shown)
+      if (csv === null) throw new Error('stale')
       // The byte-order mark makes Excel read it as UTF-8, so names like Galápagos keep their accents.
-      const blob = new Blob(['\uFEFF', pickProgrammes(await res.text(), shown)], { type: 'text/csv;charset=utf-8' })
+      const blob = new Blob(['\uFEFF', csv], { type: 'text/csv;charset=utf-8' })
       const a = document.createElement('a')
       a.href = URL.createObjectURL(blob)
-      a.download = csvFileName(location.pathname, today)
+      a.download = csvFileName(location.pathname, utcDateKey(new Date()))
       a.click()
       setTimeout(() => URL.revokeObjectURL(a.href), 1000)
+      csvError.hidden = true
       live.textContent = `Downloaded ${shown.length} ${plural(shown.length, 'programme', 'programmes')} as CSV`
     } catch {
-      live.textContent = 'The download failed. Try again, or get every programme at /data.csv.'
+      csvError.hidden = false
+      live.textContent = csvError.textContent ?? ''
     }
   }
 

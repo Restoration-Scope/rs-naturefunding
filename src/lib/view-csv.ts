@@ -43,9 +43,10 @@ export function csvFields(record: string): string[] {
 
 /**
  * The header plus one record per shown programme, in `shown` order: the record of the call its row shows, or its
- * first record when the row shows no call (a programme with no call has just one).
+ * first record when the row shows no call (a programme with no call has just one). Null when a programme or call
+ * the page shows is no longer in the file: the page is older than the data, and a reload fixes it.
  */
-export function pickProgrammes(text: string, shown: { id: string; call?: string }[]): string {
+export function pickProgrammes(text: string, shown: { id: string; call?: string }[]): string | null {
   const [header = '', ...rows] = csvRecords(text)
   const callCol = header.split(',').indexOf('call_id')
   const byId = new Map<string, string[]>()
@@ -53,11 +54,13 @@ export function pickProgrammes(text: string, shown: { id: string; call?: string 
     const id = r.slice(0, r.indexOf(','))
     byId.set(id, [...(byId.get(id) ?? []), r])
   }
-  const picked = shown.flatMap(({ id, call }) => {
+  const picked: string[] = []
+  for (const { id, call } of shown) {
     const records = byId.get(id) ?? []
-    const match = call ? records.find((r) => csvFields(r)[callCol] === call) : undefined
-    return match ?? records[0] ?? []
-  })
+    const record = call ? records.find((r) => csvFields(r)[callCol] === call) : records[0]
+    if (!record) return null
+    picked.push(record)
+  }
   return `${[header, ...picked].join('\n')}\n`
 }
 
