@@ -3,6 +3,7 @@
 What a visitor to naturefunding.org can see or do that they couldn't before, newest first. One line per merged change, added in the same PR (AGENTS.md). The naturefunding.org LinkedIn Page drafts its update posts from this list. Emails count once `DIGEST_SENDING` is `live`.
 
 - 2026-11-20 · A programme that takes a whole country under a longer name ("All 50 states and DC", "France, including overseas territories") now says it includes that country instead of only part of it · https://naturefunding.org/p/bells-brewery-grassroots-water-stewardship/?where=US · #863
+- 2026-11-20 · The finder's effort tooltip is simpler: four blocks, each titled with its colour, name and level, then the reason · https://naturefunding.org/ · #834
 - 2026-11-20 · A programme page filtered to a country no longer says it's included when the funder names a narrower group: ODA-eligible calls list the exact OECD DAC countries, other groups say to check, and a prefecture grant says it covers only part of the country · https://naturefunding.org/p/iki-small-grants/?where=DE · #854
 - 2026-11-20 · The weekly-email pop-up is shorter: no logo, a one-line intro, and Email and Projects in labels beside their fields · https://naturefunding.org/ · #837
 - 2026-11-20 · 24 more programmes show Before you apply (Washington salmon recovery, VHCB conservation grants, Flanders nature projects, WA Aboriginal Ranger Program and more), each fact in the funder's words and checked by a second reader · https://naturefunding.org/p/wa-rco-salmon-recovery/#before-title · #861
