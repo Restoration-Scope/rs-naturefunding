@@ -1,0 +1,70 @@
+{
+  "id": "orbfhp-fish-habitat-rfp",
+  "read_on": "2026-11-20",
+  "prompt_version": "req-2026-11-20.1",
+  "models": ["cursor:gpt-5.6-luna-high"],
+  "complete": false,
+  "reasons": [
+    "3 links could not be ranked without Jev",
+    "https://orbfhp.com/wp-content/uploads/2026/09/ORBFHP-FY27-RFP-Info-Webinar.pptx would not open (unreadable: an old Word (.doc), OpenDocument or RTF file: needs conversion)",
+    "the text names a document with rules that was not read: Full RFP",
+    "the text names a document with rules that was not read: Application materials",
+    "the text names a document with rules that was not read: Guidance on how to apply",
+    "Jev did not check this reading, so an absent fact is not known to be absent"
+  ],
+  "requirements_checked": false,
+  "documents": [
+    {
+      "ref": "D1",
+      "url": "https://orbfhp.com/funding/",
+      "final_url": "https://orbfhp.com/funding/",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 7736,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:efa45a3d4e6212bd772ad73c54bfaf4f2114cf9ee54a48740c684f36f2ca44a5"
+    },
+    {
+      "ref": "D2",
+      "url": "https://orbfhp.com/funding/orbfhp-fy27-rfp-info-webinar/",
+      "final_url": "https://orbfhp.com/funding/orbfhp-fy27-rfp-info-webinar/",
+      "from": "https://orbfhp.com/funding/",
+      "anchor": "Download the presentation slides",
+      "depth": 1,
+      "pdf": false,
+      "chars": 796,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:8d33cb34e435e9d1e16cdf2c6b9071d5926425c36905a99dcf0b9635a1b30014"
+    }
+  ],
+  "failures": [
+    {
+      "url": "https://orbfhp.com/wp-content/uploads/2026/09/ORBFHP-FY27-RFP-Info-Webinar.pptx",
+      "from": "https://orbfhp.com/funding/orbfhp-fy27-rfp-info-webinar/",
+      "kind": "unreadable",
+      "message": "an old Word (.doc), OpenDocument or RTF file: needs conversion"
+    }
+  ],
+  "skipped_links": 43,
+  "chunks": [{ "id": "all", "docs": ["D1", "D2"], "chars": 8683 }],
+  "outcomes": {
+    "eligibility": "not_found",
+    "documents": "not_found",
+    "effort": "not_found",
+    "co_finance": "stated",
+    "consortium": "not_found",
+    "after_award": "stated"
+  },
+  "written": ["co_finance", "after_award"],
+  "escalated": [],
+  "flags": [],
+  "notes": [
+    "co_finance: ratio 1:1 dropped, its quote does not state it",
+    "extractor: FY27 is closed; the deadline was 2026-10-09. Who may apply is not stated. Priority sites receive strongest consideration, but this is not an eligibility rule. The full RFP, application materials and guidance on how to apply were not provided."
+  ],
+  "usd": 0
+}

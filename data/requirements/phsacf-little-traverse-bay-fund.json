@@ -1,0 +1,135 @@
+{
+  "id": "phsacf-little-traverse-bay-fund",
+  "read_on": "2026-11-20",
+  "prompt_version": "req-2026-11-20.1",
+  "models": ["cursor:gpt-5.6-luna-high"],
+  "complete": false,
+  "reasons": [
+    "15 links could not be ranked without Jev",
+    "19 links could not be ranked without Jev",
+    "12 links could not be ranked without Jev",
+    "the crawl bound left https://www.phsacf.org/grants/apply-for-funding unread",
+    "the text names a document with rules that was not read: Current Little Traverse Bay Watershed Management Plan",
+    "Jev did not check this reading, so an absent fact is not known to be absent"
+  ],
+  "requirements_checked": false,
+  "documents": [
+    {
+      "ref": "D1",
+      "url": "https://www.phsacf.org/grants/what-we-fund/little-traverse-bay-protection-and-restoration-fund-grants",
+      "final_url": "https://www.phsacf.org/grants/what-we-fund/little-traverse-bay-protection-and-restoration-fund-grants",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 3308,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:1a1048400454699e194f622d3ff45a9f9051fc26b0d42d79b8c716cf40ac5fc2"
+    },
+    {
+      "ref": "D2",
+      "url": "https://www.phsacf.org/grants/grant-faqs",
+      "final_url": "https://www.phsacf.org/grants/grant-faqs",
+      "from": "https://www.phsacf.org/grants/what-we-fund/little-traverse-bay-protection-and-restoration-fund-grants",
+      "anchor": "Grant FAQs",
+      "depth": 1,
+      "pdf": false,
+      "chars": 15373,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:8be3c1fd50f1ed7a01a3ec67f305daea61f2128a17cb0461cc03ec689cd6e4c7"
+    },
+    {
+      "ref": "D3",
+      "url": "https://www.phsacf.org/scholarships/apply-scholarships",
+      "final_url": "https://www.phsacf.org/scholarships/apply-scholarships",
+      "from": "https://www.phsacf.org/grants/what-we-fund/little-traverse-bay-protection-and-restoration-fund-grants",
+      "anchor": "Apply for Scholarships",
+      "depth": 1,
+      "pdf": false,
+      "chars": 4575,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:f1cdca45dc6cfb97b69e2deb3ccb2ab894be5497aff61c47314292558b64ac02"
+    },
+    {
+      "ref": "D4",
+      "url": "https://www.phsacf.org/scholarships/scholarship-faqs",
+      "final_url": "https://www.phsacf.org/scholarships/scholarship-faqs",
+      "from": "https://www.phsacf.org/grants/what-we-fund/little-traverse-bay-protection-and-restoration-fund-grants",
+      "anchor": "Scholarship FAQs",
+      "depth": 1,
+      "pdf": false,
+      "chars": 4246,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:3b75daf35b1ce133288c7ca23b7dc30c3ae3b65962f9b799d1aba838cb937d2f"
+    },
+    {
+      "ref": "D5",
+      "url": "https://www.phsacf.org/grants/our-grants",
+      "final_url": "https://www.phsacf.org/grants/our-grants",
+      "from": "https://www.phsacf.org/grants/grant-faqs",
+      "anchor": "eligibility requirements",
+      "depth": 2,
+      "pdf": false,
+      "chars": 1875,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:7ed4d897e19f45693805d5b1ee67640a0eab9c33f814c26c9de348bcbbb76507"
+    },
+    {
+      "ref": "D6",
+      "url": "https://www.phsacf.org/application/files/1517/6788/7179/PHSACF_Scholarship_Index_2026.pdf",
+      "final_url": "https://www.phsacf.org/application/files/1517/6788/7179/PHSACF_Scholarship_Index_2026.pdf",
+      "from": "https://www.phsacf.org/scholarships/apply-scholarships",
+      "anchor": "index of scholarships available by school.",
+      "depth": 2,
+      "pdf": true,
+      "chars": 2009,
+      "pages": 1,
+      "low_text": false,
+      "hash": "sha256:7a27a46938b469c2967f47f83de55bb3ca62a23a7c9514ec48195c93f5d16534"
+    },
+    {
+      "ref": "D7",
+      "url": "https://www.phsacf.org/application/files/4517/6788/7179/PHSACF_Scholarship_Catalog_2026.pdf",
+      "final_url": "https://www.phsacf.org/application/files/4517/6788/7179/PHSACF_Scholarship_Catalog_2026.pdf",
+      "from": "https://www.phsacf.org/scholarships/apply-scholarships",
+      "anchor": "2026-27 Scholarship Catalog (pdf)",
+      "depth": 2,
+      "pdf": true,
+      "chars": 43789,
+      "pages": 15,
+      "low_text": false,
+      "hash": "sha256:69767435d68c96b5aa17ca503f77987b6a21633384c2c7306e07ee83be57c58b"
+    }
+  ],
+  "failures": [
+    {
+      "url": "https://www.phsacf.org/grants/apply-for-funding",
+      "from": "https://www.phsacf.org/grants/our-grants",
+      "kind": "bound",
+      "message": "past the crawl depth of 2"
+    }
+  ],
+  "skipped_links": 191,
+  "chunks": [{ "id": "all", "docs": ["D1", "D2", "D3", "D4", "D5", "D6", "D7"], "chars": 76286 }],
+  "outcomes": {
+    "eligibility": "stated",
+    "documents": "stated",
+    "effort": "stated",
+    "co_finance": "not_found",
+    "consortium": "not_found",
+    "after_award": "stated"
+  },
+  "written": ["eligibility", "documents", "effort", "after_award"],
+  "escalated": [],
+  "flags": [],
+  "notes": [
+    "extractor: D1 describes a 2025 grant cycle with applications due Monday, February 3 and up to 20 months to complete the work. D2's general FAQ lists February 1 and generally describes a nine-month grant term.",
+    "source phsacf-little-traverse-bay-fund-2: added for https://www.phsacf.org/grants/grant-faqs"
+  ],
+  "usd": 0
+}
