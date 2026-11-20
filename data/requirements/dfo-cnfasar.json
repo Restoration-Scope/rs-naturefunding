@@ -1,0 +1,136 @@
+{
+  "id": "dfo-cnfasar",
+  "read_on": "2026-11-20",
+  "prompt_version": "req-2026-11-20.1",
+  "models": ["cursor:gpt-5.6-luna-high", "cursor:gpt-5.6-sol-high"],
+  "complete": false,
+  "reasons": [
+    "10 links could not be ranked without Jev",
+    "8 links could not be ranked without Jev",
+    "3 links could not be ranked without Jev",
+    "http://www.tbs-sct.gc.ca/pol/doc-eng.aspx?id=27088&utm_source=referral&utm_medium=e-mail&utm_campaign=web_mobile_standard would not open (network: ECONNREFUSED: Unable to connect. Is the computer able to access the url?)",
+    "the crawl bound left http://www.tbs-sct.gc.ca/pol/doc-eng.aspx?id=12316 unread",
+    "the crawl bound left http://www.tbs-sct.gc.ca/pol/doc-eng.aspx?id=12316&section=text unread",
+    "the text names a document with rules that was not read: Existing federal aquatic species at risk recovery documents available on the SARA Public Registry, including recovery strategies, management plans, and action p",
+    "Jev did not check this reading, so an absent fact is not known to be absent"
+  ],
+  "requirements_checked": false,
+  "documents": [
+    {
+      "ref": "D1",
+      "url": "https://www.dfo-mpo.gc.ca/species-especes/sara-lep/cnfasar-fnceap/index-eng.html",
+      "final_url": "https://www.dfo-mpo.gc.ca/species-especes/sara-lep/cnfasar-fnceap/index-eng.html",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 2532,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:3b075e606f18336f166ffe051a5257b78cdbfb0a9ad16ba88959216ca727126c"
+    },
+    {
+      "ref": "D2",
+      "url": "https://www.dfo-mpo.gc.ca/species-especes/sara-lep/cnfasar-fnceap/how-to-apply-comment-appliquer-eng.html",
+      "final_url": "https://www.dfo-mpo.gc.ca/species-especes/sara-lep/cnfasar-fnceap/how-to-apply-comment-appliquer-eng.html",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 13100,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:243441d333faad1c839a81aecfc50971a71960d0245eca5275a4313d6a102b61"
+    },
+    {
+      "ref": "D3",
+      "url": "https://www.dfo-mpo.gc.ca/terms-avis/terms-conditions-avis-eng.htm",
+      "final_url": "https://www.dfo-mpo.gc.ca/terms-avis/terms-conditions-avis-eng.htm",
+      "from": "https://www.dfo-mpo.gc.ca/species-especes/sara-lep/cnfasar-fnceap/index-eng.html",
+      "anchor": "Terms and conditions",
+      "depth": 1,
+      "pdf": false,
+      "chars": 15807,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:31a065dc7f09bd892fbed95cfdcbc43041913578499a19c2cdeddb7edc7204a3"
+    },
+    {
+      "ref": "D4",
+      "url": "https://www.dfo-mpo.gc.ca/species-especes/documents/sara-lep/cnfasar-fnceap/canada-nature-fund-fonds-aquatic-aquatiques-eng.docx",
+      "final_url": "https://www.dfo-mpo.gc.ca/species-especes/documents/sara-lep/cnfasar-fnceap/canada-nature-fund-fonds-aquatic-aquatiques-eng.docx",
+      "from": "https://www.dfo-mpo.gc.ca/species-especes/sara-lep/cnfasar-fnceap/how-to-apply-comment-appliquer-eng.html",
+      "anchor": "Apply for funding (DOCX, 300 KB)",
+      "depth": 1,
+      "pdf": false,
+      "chars": 28868,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:0bcea858760b80126044d385753bc73e3c3898645b9420351d08b9f76f2a0679"
+    },
+    {
+      "ref": "D5",
+      "url": "https://www.dfo-mpo.gc.ca/terms-avis/copyright-droits-FAQ-eng.htm",
+      "final_url": "https://www.dfo-mpo.gc.ca/terms-avis/copyright-droits-FAQ-eng.htm",
+      "from": "https://www.dfo-mpo.gc.ca/terms-avis/terms-conditions-avis-eng.htm",
+      "anchor": "Frequently Asked Questions",
+      "depth": 2,
+      "pdf": false,
+      "chars": 10934,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:45a9590514a74c32ec168108484a3cf9e0534e3d466b61862c2dfb83f5e167c5"
+    },
+    {
+      "ref": "D6",
+      "url": "https://www.dfo-mpo.gc.ca/terms-avis/reproduce-reproduire-eng.pdf",
+      "final_url": "https://www.dfo-mpo.gc.ca/terms-avis/reproduce-reproduire-eng.pdf",
+      "from": "https://www.dfo-mpo.gc.ca/terms-avis/terms-conditions-avis-eng.htm",
+      "anchor": "complete this form",
+      "depth": 2,
+      "pdf": true,
+      "chars": 4045,
+      "pages": 4,
+      "low_text": false,
+      "hash": "sha256:943f3be7e0938b9877f27fe4edb91904fc2b8a34a41e99e50b87926361eaae4f"
+    }
+  ],
+  "failures": [
+    {
+      "url": "http://www.tbs-sct.gc.ca/pol/doc-eng.aspx?id=27088&utm_source=referral&utm_medium=e-mail&utm_campaign=web_mobile_standard",
+      "from": "https://www.dfo-mpo.gc.ca/terms-avis/terms-conditions-avis-eng.htm",
+      "kind": "network",
+      "message": "ECONNREFUSED: Unable to connect. Is the computer able to access the url?"
+    },
+    {
+      "url": "http://www.tbs-sct.gc.ca/pol/doc-eng.aspx?id=12316",
+      "from": "https://www.dfo-mpo.gc.ca/terms-avis/copyright-droits-FAQ-eng.htm",
+      "kind": "bound",
+      "message": "past the crawl depth of 2"
+    },
+    {
+      "url": "http://www.tbs-sct.gc.ca/pol/doc-eng.aspx?id=12316&section=text",
+      "from": "https://www.dfo-mpo.gc.ca/terms-avis/copyright-droits-FAQ-eng.htm",
+      "kind": "bound",
+      "message": "past the crawl depth of 2"
+    }
+  ],
+  "skipped_links": 217,
+  "chunks": [{ "id": "all", "docs": ["D1", "D2", "D3", "D4", "D5", "D6"], "chars": 76258 }],
+  "outcomes": {
+    "eligibility": "stated",
+    "documents": "not_found",
+    "effort": "stated",
+    "co_finance": "stated",
+    "consortium": "not_found",
+    "after_award": "not_found"
+  },
+  "written": ["eligibility", "effort", "co_finance"],
+  "escalated": ["eligibility", "effort"],
+  "flags": [],
+  "notes": [
+    "extractor: The 1:1 funding match is not required, but multiple partners and their cash or in-kind contributions must be identified. Indigenous leadership, priority places or threats, project size, and multi-year status are preferences rather than hard eligibility rules.",
+    "source dfo-cnfasar-2: added for https://www.dfo-mpo.gc.ca/species-especes/documents/sara-lep/cnfasar-fnceap/canada-nature-fund-fonds-aquatic-aquatiques-eng.docx"
+  ],
+  "usd": 0
+}

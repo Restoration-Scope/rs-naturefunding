@@ -28,6 +28,25 @@
   },
   "co_finance_required": null,
   "reporting": null,
+  "effort": {
+    "steps": [
+      "Online application form",
+      "Board review"
+    ]
+  },
+  "eligibility": [
+    {
+      "rule": "Demonstrates a clear and measurable impact on nature conservation",
+      "kind": "project"
+    },
+    {
+      "rule": "The focus species is part of Amersfoort Zoo's animal collection",
+      "kind": "project"
+    }
+  ],
+  "after_award": {
+    "reports": "interim_and_final"
+  },
   "calls": [
     {
       "id": "2026",
@@ -70,7 +89,43 @@
       "quote": "Previously approved grants have ranged from €1,000 to €5,000.",
       "checked_at": "2026-11-02",
       "method": "page"
-    }
+    },
+    "effort": [
+      {
+        "source_url": "https://wildlifefund.nl/en/submit-project/",
+        "quote": "Only applications submitted through our official application form will be considered.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://wildlifefund.nl/wp-content/uploads/2021/11/Projectcriteria-and-conditions.pdf",
+        "quote": "The board of the DierenPark Amersfoort Wildlife Fund meets three times a year to review applications",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "eligibility": [
+      {
+        "source_url": "https://wildlifefund.nl/en/submit-project/",
+        "quote": "We only consider projects that demonstrate a clear and measurable impact on nature conservation.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://wildlifefund.nl/wp-content/uploads/2021/11/Projectcriteria-and-conditions.pdf",
+        "quote": "The species addressed in this project are part of the animal collection in Amersfoort Zoo",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "after_award": [
+      {
+        "source_url": "https://wildlifefund.nl/wp-content/uploads/2021/11/Projectcriteria-and-conditions.pdf",
+        "quote": "Within a year after the project approval the recipient submits a progress report. A final report including the allocation of the budget expenditure should be submitted after the project is finished.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ]
   },
   "checked_at": "2026-11-02"
 }

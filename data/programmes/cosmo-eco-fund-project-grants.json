@@ -1,19 +1,73 @@
 {
   "id": "cosmo-eco-fund-project-grants",
   "name": "COSMO Eco Fund project grants",
-  "funder": { "name": "COSMO Energy Holdings", "url": "https://www.cosmo-energy.co.jp/ja/" },
+  "funder": {
+    "name": "COSMO Energy Holdings",
+    "url": "https://www.cosmo-energy.co.jp/ja/"
+  },
   "administered_by": null,
   "parent": null,
   "url": "https://www.cosmo-energy.co.jp/ja/actions/phil/kankyo/info.html",
   "summary": "Grants for private non-profit groups running forest conservation and other natural-environment projects in Japan or overseas (overseas projects need a contact point in Japan). One-year grant period that can be continued for up to three years.",
-  "approaches": ["community_conservation"],
-  "applicant_types": ["ngo", "community_group"],
-  "geography": { "scope": "global" },
+  "approaches": [
+    "community_conservation"
+  ],
+  "applicant_types": [
+    "ngo",
+    "community_group"
+  ],
+  "geography": {
+    "scope": "global"
+  },
   "access": "direct",
   "window": "fixed",
-  "amount": { "currency": "JPY", "max": 2000000, "per": "year", "note": "First-year cap" },
+  "amount": {
+    "currency": "JPY",
+    "max": 2000000,
+    "per": "year",
+    "note": "First-year cap"
+  },
   "co_finance_required": null,
   "reporting": "Activity report, financial report, photos and receipts, normally twice a year (around September and February), plus monthly progress reports.",
+  "effort": {
+    "steps": [
+      "Application submission",
+      "Document review and hearing"
+    ]
+  },
+  "eligibility": [
+    {
+      "rule": "Operates mainly as a nonprofit organization",
+      "kind": "legal"
+    },
+    {
+      "rule": "Does not conduct political or religious activities",
+      "kind": "other"
+    },
+    {
+      "rule": "Has no ties to antisocial forces",
+      "kind": "legal"
+    },
+    {
+      "rule": "For overseas projects, has a Japan contact and can communicate in Japanese",
+      "kind": "project"
+    }
+  ],
+  "after_award": {
+    "reports": "quarterly",
+    "site_visits": true
+  },
+  "documents": [
+    "First-year budget plan",
+    "Organization bylaws",
+    "List of officers",
+    "Statement of founding purpose",
+    "Previous year's activity report",
+    "Audit report",
+    "Previous year's financial report",
+    "Current year's activity plan",
+    "Current year's income and expenditure budget"
+  ],
   "calls": [
     {
       "id": "fy2026",
@@ -21,7 +75,10 @@
       "url": "https://www.cosmo-energy.co.jp/ja/actions/phil/kankyo/info.html",
       "status": "closed",
       "opens": null,
-      "deadline": { "date": "2025-11-09", "text": "2025年11月9日(日)" },
+      "deadline": {
+        "date": "2025-11-09",
+        "text": "2025年11月9日(日)"
+      },
       "evidence": {
         "status": {
           "source_url": "https://www.cosmo-energy.co.jp/ja/actions/phil/kankyo/info.html",
@@ -74,7 +131,81 @@
       "quote": "プロジェクトの実施期間中は、プロジェクトの活動状況が確認できる活動 報告書、会計報告書、写真(動画可)、領収書(スキャンデータ)を原則として年2回(9月・2月頃)ご提出ください。 ・費用は、報告書提出後に後払いとなります ・助成期間中は月一度の進捗報告が必要な他",
       "checked_at": "2026-11-14",
       "method": "page"
-    }
+    },
+    "effort": [
+      {
+        "source_url": "https://www.cosmo-energy.co.jp/ja/actions/phil/kankyo/info.html",
+        "quote": "3.応募締切 2025年11月9日(日)",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.cosmo-energy.co.jp/content/dam/corp/jp/ja/sc/kankyo/eco/info/pdf/cosmoecokikin_chirashi_2025.pdf",
+        "quote": "選考期間 (書類審査、 ヒアリング) :2026年1月下旬まで",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "eligibility": [
+      {
+        "source_url": "https://www.cosmo-energy.co.jp/content/dam/corp/jp/ja/sc/kankyo/eco/info/pdf/cosmoecokikin_projectyouryou_2026.pdf",
+        "quote": "(3)非営利活動を主とする団体",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.cosmo-energy.co.jp/content/dam/corp/jp/ja/sc/kankyo/eco/info/pdf/cosmoecokikin_projectyouryou_2026.pdf",
+        "quote": "(4)政治・宗教活動を行わない団体",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.cosmo-energy.co.jp/content/dam/corp/jp/ja/sc/kankyo/eco/info/pdf/cosmoecokikin_projectyouryou_2026.pdf",
+        "quote": "(5)反社会的勢力に関わりのない団体",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.cosmo-energy.co.jp/ja/actions/phil/kankyo/info.html",
+        "quote": "海外の場合は日本国内に窓口があり、日本語で連絡が取れることが必要",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "after_award": [
+      {
+        "source_url": "https://www.cosmo-energy.co.jp/ja/actions/phil/kankyo/info.html",
+        "quote": "助成期間中は月一度の進捗報告が必要",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.cosmo-energy.co.jp/content/dam/corp/jp/ja/sc/kankyo/eco/info/pdf/cosmoecokikin_projectyouryou_2026.pdf",
+        "quote": "現地視察もしくはそれに代替する形で視察を行いますのでご協力下 さい。",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "documents": [
+      {
+        "source_url": "https://www.cosmo-energy.co.jp/ja/actions/phil/kankyo/info.html",
+        "quote": "1年目予算計画書フォーマット(エクセル)",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.cosmo-energy.co.jp/content/dam/corp/jp/ja/sc/kankyo/eco/info/pdf/cosmoecokikin_projectyouryou_2026.pdf",
+        "quote": "(2)申請団体会則(定款) (3)役員名簿 (4)設立趣意書 (5)前年度事業報告書 (6)監査報告書と前年度会計報告書 (7)本年度事業計画書",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.cosmo-energy.co.jp/content/dam/corp/jp/ja/sc/kankyo/eco/info/pdf/cosmoecokikin_projectyouryou_2026.pdf",
+        "quote": "(8)本年度収支予算書",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ]
   },
   "checked_at": "2026-11-14"
 }

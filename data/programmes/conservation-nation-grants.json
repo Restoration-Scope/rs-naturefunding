@@ -1,19 +1,62 @@
 {
   "id": "conservation-nation-grants",
   "name": "Conservation Nation Grant Program",
-  "funder": { "name": "Conservation Nation", "url": "https://conservationnation.org/" },
+  "funder": {
+    "name": "Conservation Nation",
+    "url": "https://conservationnation.org/"
+  },
   "administered_by": null,
   "parent": null,
   "url": "https://conservationnation.org/our-work/grants/",
   "summary": "Grants of up to US$5,000 for early- to mid-career conservationists, including individuals and staff of conservation nonprofits, to run field research and conservation projects anywhere in the world. The 2026 window has closed.",
-  "approaches": ["species_conservation", "community_conservation", "research"],
-  "applicant_types": ["individual"],
-  "geography": { "scope": "global" },
+  "approaches": [
+    "species_conservation",
+    "community_conservation",
+    "research"
+  ],
+  "applicant_types": [
+    "individual"
+  ],
+  "geography": {
+    "scope": "global"
+  },
   "access": "direct",
   "window": "unspecified",
-  "amount": { "currency": "USD", "max": 5000 },
+  "amount": {
+    "currency": "USD",
+    "max": 5000
+  },
   "co_finance_required": null,
   "reporting": "Grantees file semi-annual and final reports with a financial accounting, and contribute short blogs, posts or field videos on how the funds were used.",
+  "effort": {
+    "steps": [
+      "Grant application through the portal"
+    ],
+    "due": [
+      "2026-07-15"
+    ]
+  },
+  "eligibility": [
+    {
+      "rule": "Have up to 7 years of conservation experience",
+      "kind": "track_record"
+    },
+    {
+      "rule": "Have access to a USD-capable electronic-funds bank account",
+      "kind": "capacity"
+    },
+    {
+      "rule": "Administer grant activities between September 2026 and September 2027",
+      "kind": "project"
+    }
+  ],
+  "after_award": {
+    "reports": "interim_and_final",
+    "training": true
+  },
+  "documents": [
+    "Role Model Video"
+  ],
   "calls": [
     {
       "id": "2026",
@@ -79,7 +122,57 @@
       "quote": "Submit a semi-annual report and a final report",
       "checked_at": "2026-11-09",
       "method": "page"
-    }
+    },
+    "effort": [
+      {
+        "source_url": "https://conservationnation.org/2026-grant-program-application-information-2/",
+        "quote": "Applications close at 11:59 PM EST on July 15, 2026",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "eligibility": [
+      {
+        "source_url": "https://conservationnation.org/2026-grant-program-application-information-2/",
+        "quote": "Early- to mid-career conservationists (up to 7 years of conservation experience)",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://conservationnation.org/2026-grant-program-application-information-2/",
+        "quote": "Applicants must have access to a bank account capable of receiving electronic funds in USD.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://conservationnation.org/2026-grant-program-application-information-2/",
+        "quote": "Applicants must be prepared to administer grant activities between September 2026 and September 2027",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "after_award": [
+      {
+        "source_url": "https://conservationnation.org/2026-grant-program-application-information-2/",
+        "quote": "Submit a semi-annual report and a final report",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://conservationnation.org/2026-grant-program-application-information-2/",
+        "quote": "Attend at least one Conservation Nation Network Coffee & Chat virtual event",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "documents": [
+      {
+        "source_url": "https://conservationnation.org/2026-grant-program-application-information-2/",
+        "quote": "Record the required Role Model Video in advance",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ]
   },
   "checked_at": "2026-11-09"
 }

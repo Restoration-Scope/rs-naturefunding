@@ -1,0 +1,72 @@
+{
+  "id": "downlands-trust-grants",
+  "read_on": "2026-11-20",
+  "prompt_version": "req-2026-11-20.1",
+  "models": ["cursor:gpt-5.6-luna-high"],
+  "complete": false,
+  "reasons": [
+    "16 links could not be ranked without Jev",
+    "Jev did not check this reading, so an absent fact is not known to be absent"
+  ],
+  "requirements_checked": false,
+  "documents": [
+    {
+      "ref": "D1",
+      "url": "https://www.downlandstrust.org.uk/apply-for-a-grant.html",
+      "final_url": "https://www.downlandstrust.org.uk/apply-for-a-grant.html",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 1871,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:863f1451f3a2ed31a19f5eb7c85e6b0b363de6135de85e368ae48b7099d4e65c"
+    },
+    {
+      "ref": "D2",
+      "url": "https://www.downlandstrust.org.uk/how-the-money-is-spent.html",
+      "final_url": "https://www.downlandstrust.org.uk/how-the-money-is-spent.html",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 2379,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:6a5f36645a44c276874233fe9077475f67a2816c7d44028cd82029fbe93b5d4c"
+    },
+    {
+      "ref": "D3",
+      "url": "https://www.downlandstrust.org.uk/uploads/1/3/3/0/13300605/grant_application_-_other_organisations_v5.docx",
+      "final_url": "https://www.downlandstrust.org.uk/uploads/1/3/3/0/13300605/grant_application_-_other_organisations_v5.docx",
+      "from": "https://www.downlandstrust.org.uk/apply-for-a-grant.html",
+      "anchor": "",
+      "depth": 1,
+      "pdf": false,
+      "chars": 4579,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:73c980c6f7cc3c407ad983066810b81b055bd85a36df43262de7d3e222b05fcd"
+    }
+  ],
+  "failures": [],
+  "skipped_links": 33,
+  "chunks": [{ "id": "all", "docs": ["D1", "D2", "D3"], "chars": 9164 }],
+  "outcomes": {
+    "eligibility": "stated",
+    "documents": "stated",
+    "effort": "stated",
+    "co_finance": "not_found",
+    "consortium": "not_found",
+    "after_award": "stated"
+  },
+  "written": ["eligibility", "documents", "effort", "after_award"],
+  "escalated": [],
+  "flags": [],
+  "notes": [
+    "extractor: The Trust says grants are solely at its discretion. No round-specific deadline or grant amount is stated.",
+    "source downlands-trust-grants-4: added for https://www.downlandstrust.org.uk/uploads/1/3/3/0/13300605/grant_application_-_other_organisations_v5.docx"
+  ],
+  "usd": 0
+}

@@ -1,0 +1,59 @@
+{
+  "id": "ct-botanical-society-small-grants",
+  "read_on": "2026-11-20",
+  "prompt_version": "req-2026-11-20.1",
+  "models": ["cursor:gpt-5.6-luna-high", "cursor:gpt-5.6-sol-high"],
+  "complete": false,
+  "reasons": [
+    "11 links could not be ranked without Jev",
+    "Jev did not check this reading, so an absent fact is not known to be absent"
+  ],
+  "requirements_checked": false,
+  "documents": [
+    {
+      "ref": "D1",
+      "url": "https://www.ct-botanical-society.org/grants/",
+      "final_url": "https://www.ct-botanical-society.org/grants/",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 4728,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:b898ab35a47c2f770c16d20f0188392a9860808fd2fd0a64fbc73b7ce75f26c9"
+    },
+    {
+      "ref": "D2",
+      "url": "https://www.ct-botanical-society.org/wp-content/uploads/2025/02/CBS-Small-Grants-Application-2025-fillable-.docx",
+      "final_url": "https://www.ct-botanical-society.org/wp-content/uploads/2025/02/CBS-Small-Grants-Application-2025-fillable-.docx",
+      "from": "https://www.ct-botanical-society.org/grants/",
+      "anchor": "GRANT APPLICATION FORM",
+      "depth": 1,
+      "pdf": false,
+      "chars": 3211,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:3494e0f93991ff77713ae93221b6b932351381c18b33536e7bf6fa7085b72432"
+    }
+  ],
+  "failures": [],
+  "skipped_links": 32,
+  "chunks": [{ "id": "all", "docs": ["D1", "D2"], "chars": 8180 }],
+  "outcomes": {
+    "eligibility": "stated",
+    "documents": "stated",
+    "effort": "stated",
+    "co_finance": "not_found",
+    "consortium": "not_found",
+    "after_award": "stated"
+  },
+  "written": ["eligibility", "documents", "effort", "after_award"],
+  "escalated": ["eligibility"],
+  "flags": [],
+  "notes": [
+    "extractor: Applications are accepted once yearly, with the current annual-round date not stated. The page includes a 2025-specific deadline that was not used. CBS must be credited in publicity resulting from funded initiatives.",
+    "source ct-botanical-society-small-grants-2: added for https://www.ct-botanical-society.org/wp-content/uploads/2025/02/CBS-Small-Grants-Application-2025-fillable-.docx"
+  ],
+  "usd": 0
+}
