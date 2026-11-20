@@ -1,0 +1,68 @@
+{
+  "id": "hudson-river-estuary-tributary-restoration-resiliency",
+  "read_on": "2026-11-20",
+  "prompt_version": "req-2026-11-20.1",
+  "models": ["cursor:gpt-5.6-luna-high", "cursor:gpt-5.6-sol-high"],
+  "complete": false,
+  "reasons": [
+    "https://dec.ny.gov/sites/default/files/2026-09/hre50tribrestoration.pdf: page 33 is an image: needs OCR",
+    "the text names a document with rules that was not read: SFS Handbook: SFS Training for Vendors guide",
+    "the text names a document with rules that was not read: New York State Contract for Grants - Standard Terms and Conditions",
+    "the text names a document with rules that was not read: Appendix A - Statewide Terms and Conditions",
+    "the text names a document with rules that was not read: Attachment A-1 Agency Specific Terms and Conditions",
+    "the text names a document with rules that was not read: Attachment A-2 Program Specific Terms and Conditions",
+    "Jev did not check this reading, so an absent fact is not known to be absent"
+  ],
+  "requirements_checked": false,
+  "documents": [
+    {
+      "ref": "D1",
+      "url": "https://dec.ny.gov/sites/default/files/2026-09/hre50tribrestoration.pdf",
+      "final_url": "https://dec.ny.gov/sites/default/files/2026-09/hre50tribrestoration.pdf",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": true,
+      "chars": 168729,
+      "pages": 63,
+      "low_text": false,
+      "hash": "sha256:9cbf9a74f763760c341a103576872ed7056d07d96d00e1316b9298b1d5b4daf6"
+    }
+  ],
+  "failures": [
+    {
+      "url": "https://dec.ny.gov/sites/default/files/2026-09/hre50tribrestoration.pdf",
+      "from": null,
+      "kind": "low_text",
+      "message": "page 33 is an image: needs OCR"
+    }
+  ],
+  "skipped_links": 0,
+  "chunks": [{ "id": "all", "docs": ["D1"], "chars": 168819 }],
+  "outcomes": {
+    "eligibility": "partial",
+    "documents": "stated",
+    "effort": "stated",
+    "co_finance": "stated",
+    "consortium": "not_found",
+    "after_award": "stated"
+  },
+  "written": ["eligibility", "documents", "effort", "co_finance", "after_award"],
+  "escalated": ["eligibility"],
+  "flags": [
+    {
+      "field": "eligibility",
+      "item": "The bidder owns the property or has an applicable access agreement",
+      "why": "the quote is not on any gathered document"
+    },
+    {
+      "field": "eligibility",
+      "item": "The bidder owns the property or has an applicable access agreement",
+      "why": "the quote is not on any gathered document"
+    }
+  ],
+  "notes": [
+    "extractor: The minimum match is stated as 10% of the grant funding amount; 15% or more receives additional scoring points. Requirements and documents vary by project type and site conditions."
+  ],
+  "usd": 0
+}

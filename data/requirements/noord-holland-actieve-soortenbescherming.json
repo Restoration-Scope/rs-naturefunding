@@ -1,0 +1,82 @@
+{
+  "id": "noord-holland-actieve-soortenbescherming",
+  "read_on": "2026-11-20",
+  "prompt_version": "req-2026-11-20.1",
+  "models": ["cursor:gpt-5.6-luna-high"],
+  "complete": false,
+  "reasons": [
+    "11 links could not be ranked without Jev",
+    "https://mijnsubsidie.noord-holland.nl/regeling/6a58beee35c5d3129cbeadf9: too little text: the page may need a browser",
+    "the text names a document with rules that was not read: Uitvoeringsregeling subsidie actieve soortenbescherming Noord-Holland 2026",
+    "Jev did not check this reading, so an absent fact is not known to be absent"
+  ],
+  "requirements_checked": false,
+  "documents": [
+    {
+      "ref": "D1",
+      "url": "https://www.noord-holland.nl/Producten_op_alfabet/Actieve_soortenbescherming_Noord_Holland_2026_subsidie",
+      "final_url": "https://www.noord-holland.nl/Producten_op_alfabet/Actieve_soortenbescherming_Noord_Holland_2026_subsidie",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 9298,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:e337effef8ea3a0ad029efaf13ceee9892e52238e38453182682136dbc278afa"
+    },
+    {
+      "ref": "D2",
+      "url": "https://mijnsubsidie.noord-holland.nl/regeling/6a58beee35c5d3129cbeadf9",
+      "final_url": "https://mijnsubsidie.noord-holland.nl/regeling/6a58beee35c5d3129cbeadf9",
+      "from": "https://www.noord-holland.nl/Producten_op_alfabet/Actieve_soortenbescherming_Noord_Holland_2026_subsidie",
+      "anchor": "Digitaal indienen via Subsidieportaal",
+      "depth": 1,
+      "pdf": false,
+      "chars": 0,
+      "pages": null,
+      "low_text": true,
+      "hash": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "ref": "D3",
+      "url": "https://www.noord-holland.nl/productfiles/126436b3-34cb-48c6-bc5c-f18d3581ba91.docx",
+      "final_url": "https://www.noord-holland.nl/productfiles/126436b3-34cb-48c6-bc5c-f18d3581ba91.docx",
+      "from": "https://www.noord-holland.nl/Producten_op_alfabet/Actieve_soortenbescherming_Noord_Holland_2026_subsidie",
+      "anchor": "Indienen subsidieaanvraag per post.docx",
+      "depth": 1,
+      "pdf": false,
+      "chars": 10493,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:514c81f4a901ef4df2c082de06280d219256fa2da3e062dd42d835c50d94bc61"
+    }
+  ],
+  "failures": [
+    {
+      "url": "https://mijnsubsidie.noord-holland.nl/regeling/6a58beee35c5d3129cbeadf9",
+      "from": "https://www.noord-holland.nl/Producten_op_alfabet/Actieve_soortenbescherming_Noord_Holland_2026_subsidie",
+      "kind": "low_text",
+      "message": "too little text: the page may need a browser"
+    }
+  ],
+  "skipped_links": 43,
+  "chunks": [{ "id": "all", "docs": ["D1", "D3"], "chars": 20123 }],
+  "outcomes": {
+    "eligibility": "stated",
+    "documents": "stated",
+    "effort": "stated",
+    "co_finance": "stated",
+    "consortium": "not_found",
+    "after_award": "not_found"
+  },
+  "written": ["eligibility", "documents", "effort", "co_finance"],
+  "escalated": [],
+  "flags": [],
+  "notes": [
+    "co_finance: share 15% dropped, its quote does not state it",
+    "extractor: Research activities are subsidised at 100% of eligible costs; physical measures at 85%. The page warns that the €200,000 subsidy ceiling is likely to be reached.",
+    "source noord-holland-actieve-soortenbescherming-2: added for https://www.noord-holland.nl/productfiles/126436b3-34cb-48c6-bc5c-f18d3581ba91.docx"
+  ],
+  "usd": 0
+}
