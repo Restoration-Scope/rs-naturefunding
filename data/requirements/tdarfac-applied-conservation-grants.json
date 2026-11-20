@@ -1,0 +1,106 @@
+{
+  "id": "tdarfac-applied-conservation-grants",
+  "read_on": "2026-11-20",
+  "prompt_version": "req-2026-11-20.1",
+  "models": ["cursor:gpt-5.6-luna-high"],
+  "complete": false,
+  "reasons": [
+    "6 links could not be ranked without Jev",
+    "https://www.foundationforappliedconservation.org/s/Fomba_Fanoratana_Tetikasa_Fangataham_bola_TDARFAC.pptx would not open (unreadable: an old Word (.doc), OpenDocument or RTF file: needs conversion)",
+    "Jev did not check this reading, so an absent fact is not known to be absent"
+  ],
+  "requirements_checked": false,
+  "documents": [
+    {
+      "ref": "D1",
+      "url": "https://www.foundationforappliedconservation.org/grants",
+      "final_url": "https://www.foundationforappliedconservation.org/grants",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 11035,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:f1945b2e54c351394d84d1bcba88ddbc956e4632419f4af3c52ae7e78cadc8d2"
+    },
+    {
+      "ref": "D2",
+      "url": "https://www.foundationforappliedconservation.org/s/TDARFAC_2027_Grant_Template.pdf",
+      "final_url": "https://static1.squarespace.com/static/63beeec342c6640c276025ac/t/6a85fb1365a7ff471794a052/1787165459748/TDARFAC_2027_Grant_Template.pdf",
+      "from": "https://www.foundationforappliedconservation.org/grants",
+      "anchor": "Prepare Your Project Proposal Using the TDARFAC Template.",
+      "depth": 1,
+      "pdf": true,
+      "chars": 5970,
+      "pages": 5,
+      "low_text": false,
+      "hash": "sha256:99b1364de4d012441f1a063a72649b21bc55c75debcaadf2b2599a4623e85d9e"
+    },
+    {
+      "ref": "D3",
+      "url": "https://www.foundationforappliedconservation.org/s/Torolalana_Fangataham_Bola_Malagasy.pdf",
+      "final_url": "https://static1.squarespace.com/static/63beeec342c6640c276025ac/t/69166ede4a6aa8632c725e17/1763077854268/Torolalana_Fangataham_Bola_Malagasy.pdf",
+      "from": "https://www.foundationforappliedconservation.org/grants",
+      "anchor": "Torolalana Fangataham-bola (Malagasy) - Adapted from the University of Wisconsin-Madison Writing Center document Planning and Writing a Grant Proposal: The Basics",
+      "depth": 1,
+      "pdf": true,
+      "chars": 2882,
+      "pages": 2,
+      "low_text": false,
+      "hash": "sha256:1921d374f5654122caffacba09c0cbdbefc2c59c860e5c3b47ac306e8881781d"
+    },
+    {
+      "ref": "D4",
+      "url": "https://www.foundationforappliedconservation.org/s/Research-Writing-Tips-Revised-ENG.pdf",
+      "final_url": "https://static1.squarespace.com/static/63beeec342c6640c276025ac/t/69166ab94a5db417af6686ed/1763076793266/Research+%26+Writing+Tips+Revised+ENG.pdf",
+      "from": "https://www.foundationforappliedconservation.org/grants",
+      "anchor": "Research & Writing Tips (English",
+      "depth": 1,
+      "pdf": true,
+      "chars": 5125,
+      "pages": 4,
+      "low_text": false,
+      "hash": "sha256:dd78cb9dc0059333549a695ecc6de5076a02ffa9e8434cd1f8637346c692e4ea"
+    },
+    {
+      "ref": "D5",
+      "url": "https://www.foundationforappliedconservation.org/s/Fikarohana_sy_Fanoratana_Torolalana_Malagasy.pdf",
+      "final_url": "https://static1.squarespace.com/static/63beeec342c6640c276025ac/t/69166adfe2606b5a3c535d56/1763076831702/Fikarohana_sy_Fanoratana_Torolalana_Malagasy.pdf",
+      "from": "https://www.foundationforappliedconservation.org/grants",
+      "anchor": "Research & Writing Tips (Malagasy",
+      "depth": 1,
+      "pdf": true,
+      "chars": 2567,
+      "pages": 2,
+      "low_text": false,
+      "hash": "sha256:107e90b0d6b49666c0a9bd122618633388ed36fb8108c3653d42a36518a67324"
+    }
+  ],
+  "failures": [
+    {
+      "url": "https://www.foundationforappliedconservation.org/s/Fomba_Fanoratana_Tetikasa_Fangataham_bola_TDARFAC.pptx",
+      "from": "https://www.foundationforappliedconservation.org/grants",
+      "kind": "unreadable",
+      "message": "an old Word (.doc), OpenDocument or RTF file: needs conversion"
+    }
+  ],
+  "skipped_links": 52,
+  "chunks": [{ "id": "all", "docs": ["D1", "D2", "D3", "D4", "D5"], "chars": 28362 }],
+  "outcomes": {
+    "eligibility": "stated",
+    "documents": "stated",
+    "effort": "stated",
+    "co_finance": "not_found",
+    "consortium": "not_found",
+    "after_award": "stated"
+  },
+  "written": ["eligibility", "documents", "effort", "after_award"],
+  "escalated": [],
+  "flags": [],
+  "notes": [
+    "extractor: For 2027, February 2027 Conservation Masterminds participants receive priority consideration, but funding is open to all eligible applicants and participation does not guarantee an award. Proposals must be anonymous for double-blind review and submitted in English as one Word or PDF file. Recipients must track KPI targets, maintain an Issue Tracker, update a Risk Assessment, complete a self-assessment, and acknowledge TDARFAC support in publications.",
+    "source tdarfac-applied-conservation-grants-2: added for https://www.foundationforappliedconservation.org/s/TDARFAC_2027_Grant_Template.pdf"
+  ],
+  "usd": 0
+}

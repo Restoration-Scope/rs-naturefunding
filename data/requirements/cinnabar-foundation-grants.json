@@ -1,0 +1,99 @@
+{
+  "id": "cinnabar-foundation-grants",
+  "read_on": "2026-11-20",
+  "prompt_version": "req-2026-11-20.1",
+  "models": ["cursor:gpt-5.6-luna-high"],
+  "complete": false,
+  "reasons": [
+    "13 links could not be ranked without Jev",
+    "the text names a document with rules that was not read: Grant application form and instructions",
+    "Jev did not check this reading, so an absent fact is not known to be absent"
+  ],
+  "requirements_checked": false,
+  "documents": [
+    {
+      "ref": "D1",
+      "url": "https://www.thecinnabarfoundation.org/programproject-grants.html",
+      "final_url": "https://www.thecinnabarfoundation.org/programproject-grants.html",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 3243,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:b8d514e1607773f591fa1f5047a2823475f02aa9c76891ec64a778969ee2d37d"
+    },
+    {
+      "ref": "D2",
+      "url": "https://www.thecinnabarfoundation.org/when-to-apply.html",
+      "final_url": "https://www.thecinnabarfoundation.org/when-to-apply.html",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 1122,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:9b8635d89abec919f6537291dbd48e78948e5900efc0583db4a785abbd8250c7"
+    },
+    {
+      "ref": "D3",
+      "url": "https://www.thecinnabarfoundation.org/apply-for-a-grant.html",
+      "final_url": "https://www.thecinnabarfoundation.org/apply-for-a-grant.html",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 1695,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:2bfeb95fd29e632dac32bcd66202104a2be897ec14374d5d73c07835f2b6f465"
+    },
+    {
+      "ref": "D4",
+      "url": "https://www.thecinnabarfoundation.org/conservation-program-areas-and-funding-priorities.html",
+      "final_url": "https://www.thecinnabarfoundation.org/conservation-program-areas-and-funding-priorities.html",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 5540,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:7212dd3145b7ad8fb90eef8160abb9c16f4d501cb048987c06f69d36e4073ab4"
+    },
+    {
+      "ref": "D5",
+      "url": "https://www.thecinnabarfoundation.org/grant-guidelines-quick-reference-guide.html",
+      "final_url": "https://www.thecinnabarfoundation.org/grant-guidelines-quick-reference-guide.html",
+      "from": "https://www.thecinnabarfoundation.org/programproject-grants.html",
+      "anchor": "Grant Guidelines: Quick Reference Guide",
+      "depth": 1,
+      "pdf": false,
+      "chars": 1953,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:c64e2fc9995a013f683c1e6e45cc2138936a1951ae5da4e8cc987cc6092bf8ca"
+    }
+  ],
+  "failures": [],
+  "skipped_links": 127,
+  "chunks": [{ "id": "all", "docs": ["D1", "D2", "D3", "D4", "D5"], "chars": 14056 }],
+  "outcomes": {
+    "eligibility": "stated",
+    "documents": "stated",
+    "effort": "stated",
+    "co_finance": "stated",
+    "consortium": "not_found",
+    "after_award": "stated"
+  },
+  "written": ["eligibility", "documents", "effort", "co_finance", "after_award"],
+  "escalated": [],
+  "flags": [],
+  "notes": [
+    "extractor: D4 contains an outdated 2026 reference within a page otherwise labelled 2027. D1 separately requires an interim/final report from applicant organisations that received a 2026 grant.",
+    "source cinnabar-foundation-grants-5: added for https://www.thecinnabarfoundation.org/grant-guidelines-quick-reference-guide.html"
+  ],
+  "usd": 0
+}
