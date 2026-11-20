@@ -1,0 +1,98 @@
+{
+  "id": "waitt-roc-grants",
+  "read_on": "2026-11-20",
+  "prompt_version": "req-2026-11-20.1",
+  "models": ["cursor:gpt-5.6-luna-high"],
+  "complete": false,
+  "reasons": [
+    "18 links could not be ranked without Jev",
+    "12 links could not be ranked without Jev",
+    "Jev did not check this reading, so an absent fact is not known to be absent"
+  ],
+  "requirements_checked": false,
+  "documents": [
+    {
+      "ref": "D1",
+      "url": "https://www.waittfoundation.org/roc-grants",
+      "final_url": "https://www.waittfoundation.org/roc-grants",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 5674,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:aaee4bb51004a49aac5b23b72ba5a90b8e1cf14246a6c2342d62f1a9c4eee011"
+    },
+    {
+      "ref": "D2",
+      "url": "https://www.waittfoundation.org/roc-grants-faq",
+      "final_url": "https://www.waittfoundation.org/roc-grants-faq",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 1281,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:3f9e327968f2829965c36625e1cf6dbd9bab532ce85bf8b1e2dd80cdcfc8b447"
+    },
+    {
+      "ref": "D3",
+      "url": "https://www.waittfoundation.org/_files/ugd/47d1fd_50a5099063af438c827bd07e352e539e.pdf",
+      "final_url": "https://www.waittfoundation.org/_files/ugd/47d1fd_50a5099063af438c827bd07e352e539e.pdf",
+      "from": "https://www.waittfoundation.org/roc-grants",
+      "anchor": "including budget sample",
+      "depth": 1,
+      "pdf": true,
+      "chars": 486,
+      "pages": 1,
+      "low_text": false,
+      "hash": "sha256:2dcf9bccdd977a886e61a4063b67d831ccbd0ea2cd121167747f732a2ac508ef"
+    },
+    {
+      "ref": "D4",
+      "url": "https://www.waittfoundation.org/privacy-policy",
+      "final_url": "https://www.waittfoundation.org/privacy-policy",
+      "from": "https://www.waittfoundation.org/roc-grants",
+      "anchor": "Privacy Policy",
+      "depth": 1,
+      "pdf": false,
+      "chars": 821,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:756f12bf660529fa8d8bccf923902a70f664c8b27da8e063013b28ce6b25e11a"
+    },
+    {
+      "ref": "D5",
+      "url": "https://www.waittfoundation.org/terms-and-conditions",
+      "final_url": "https://www.waittfoundation.org/terms-and-conditions",
+      "from": "https://www.waittfoundation.org/roc-grants",
+      "anchor": "Terms of Use",
+      "depth": 1,
+      "pdf": false,
+      "chars": 821,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:756f12bf660529fa8d8bccf923902a70f664c8b27da8e063013b28ce6b25e11a"
+    }
+  ],
+  "failures": [],
+  "skipped_links": 78,
+  "chunks": [{ "id": "all", "docs": ["D1", "D2", "D3", "D4", "D5"], "chars": 9599 }],
+  "outcomes": {
+    "eligibility": "stated",
+    "documents": "stated",
+    "effort": "stated",
+    "co_finance": "not_found",
+    "consortium": "not_found",
+    "after_award": "not_found"
+  },
+  "written": ["eligibility", "documents", "effort"],
+  "escalated": [],
+  "flags": [],
+  "notes": [
+    "extractor: ROC applicants complete only the first stage of a larger two-stage system. Applications are reviewed monthly on a rolling basis, with no submission deadline."
+  ],
+  "usd": 0
+}

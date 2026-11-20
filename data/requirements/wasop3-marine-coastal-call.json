@@ -1,0 +1,63 @@
+{
+  "id": "wasop3-marine-coastal-call",
+  "read_on": "2026-11-20",
+  "prompt_version": "req-2026-11-20.1",
+  "models": ["cursor:gpt-5.6-luna-high"],
+  "complete": false,
+  "reasons": [
+    "5 links could not be ranked without Jev",
+    "https://drive.google.com/uc?export=download&id=1jY5eycNcwLN4Zy6Ye5T67bPfIeSh898_ would not open (robots: robots.txt disallows this page)",
+    "https://drive.google.com/uc?export=download&id=1b7vEPjiRCbqm_MGw7gPbi6YhCjj9mYH_ would not open (robots: robots.txt disallows this page)",
+    "the text names a document with rules that was not read: Règlement de l'appel à projets",
+    "the text names a document with rules that was not read: Tous les documents de l'appel à projets",
+    "Jev did not check this reading, so an absent fact is not known to be absent"
+  ],
+  "requirements_checked": false,
+  "documents": [
+    {
+      "ref": "D1",
+      "url": "https://www.prcmarine.org/article/wasaop-appel-a-projets-ouvert?lang=fr",
+      "final_url": "https://www.prcmarine.org/article/wasaop-appel-a-projets-ouvert?lang=fr",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 2409,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:91f9d78d07d57805e5fac27c96a5a90c7cce3c26b1fed84e0c8f70b0b18ba601"
+    }
+  ],
+  "failures": [
+    {
+      "url": "https://drive.google.com/uc?export=download&id=1jY5eycNcwLN4Zy6Ye5T67bPfIeSh898_",
+      "from": null,
+      "kind": "robots",
+      "message": "robots.txt disallows this page"
+    },
+    {
+      "url": "https://drive.google.com/uc?export=download&id=1b7vEPjiRCbqm_MGw7gPbi6YhCjj9mYH_",
+      "from": null,
+      "kind": "robots",
+      "message": "robots.txt disallows this page"
+    }
+  ],
+  "skipped_links": 49,
+  "chunks": [{ "id": "all", "docs": ["D1"], "chars": 2493 }],
+  "outcomes": {
+    "eligibility": "not_found",
+    "documents": "not_found",
+    "effort": "stated",
+    "co_finance": "unresolved",
+    "consortium": "not_found",
+    "after_award": "not_found"
+  },
+  "written": ["effort"],
+  "escalated": [],
+  "flags": [],
+  "notes": [
+    "extractor: D1 is an announcement page and does not state eligibility, submission-document, co-financing, consortium or post-award rules. It directs applicants to the regulations and the other call documents.",
+    "co_finance: the file states whether co-funding is required, this reading found nothing"
+  ],
+  "usd": 0
+}

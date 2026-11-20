@@ -1,0 +1,89 @@
+{
+  "id": "wood-pawcatuck-wild-scenic-community-grants",
+  "read_on": "2026-11-20",
+  "prompt_version": "req-2026-11-20.1",
+  "models": ["cursor:gpt-5.6-luna-high"],
+  "complete": false,
+  "reasons": [
+    "9 links could not be ranked without Jev",
+    "14 links could not be ranked without Jev",
+    "the text names a document with rules that was not read: Wood-Pawcatuck Wild and Scenic Rivers Stewardship Plan, Chapter Six",
+    "the text names a document with rules that was not read: Wood-Pawcatuck Watershed Flood Resiliency Management Plan, Appendix F: Town Summary Sheets",
+    "Jev did not check this reading, so an absent fact is not known to be absent"
+  ],
+  "requirements_checked": false,
+  "documents": [
+    {
+      "ref": "D1",
+      "url": "https://wpwildrivers.org/wild-and-scenic-community-grants/",
+      "final_url": "https://wpwildrivers.org/apply-for-a-community-grant/",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 2693,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:36b8acf32cb36be32a89873c5201d395b0371abab1fb9f9960afac1590837b72"
+    },
+    {
+      "ref": "D2",
+      "url": "https://wpwildrivers.org/faqs/",
+      "final_url": "https://wpwildrivers.org/faqs/",
+      "from": "https://wpwildrivers.org/wild-and-scenic-community-grants/",
+      "anchor": "FAQs",
+      "depth": 1,
+      "pdf": false,
+      "chars": 13543,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:e6bd60777ef268584176e9170d6912a3a42c5e1b39e38b0bc1587637a2d8e31a"
+    },
+    {
+      "ref": "D3",
+      "url": "https://wpwildrivers.org/wp/wp-content/uploads/2026/11/Formatted-2026-2027-Community-Grant-Instructions.pdf",
+      "final_url": "https://wpwildrivers.org/wp/wp-content/uploads/2026/11/Formatted-2026-2027-Community-Grant-Instructions.pdf",
+      "from": "https://wpwildrivers.org/wild-and-scenic-community-grants/",
+      "anchor": "Click here for Grant Instructions",
+      "depth": 1,
+      "pdf": true,
+      "chars": 7599,
+      "pages": 3,
+      "low_text": false,
+      "hash": "sha256:43907ecf9d5c63f674338862f6f7228ad0aa507e28e48ff3793fb188951d70ba"
+    },
+    {
+      "ref": "D4",
+      "url": "https://wpwildrivers.org/wp/wp-content/uploads/2026/11/2026-2027-Community-Grant-Application.docx",
+      "final_url": "https://wpwildrivers.org/wp/wp-content/uploads/2026/11/2026-2027-Community-Grant-Application.docx",
+      "from": "https://wpwildrivers.org/wild-and-scenic-community-grants/",
+      "anchor": "Click here for the Application",
+      "depth": 1,
+      "pdf": false,
+      "chars": 3035,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:17ed0b3b0eb2e33e61fba22cc47266bb248c3723aa93e45037ccc0c4c718c9b2"
+    }
+  ],
+  "failures": [],
+  "skipped_links": 54,
+  "chunks": [{ "id": "all", "docs": ["D1", "D2", "D3", "D4"], "chars": 27439 }],
+  "outcomes": {
+    "eligibility": "stated",
+    "documents": "stated",
+    "effort": "stated",
+    "co_finance": "stated",
+    "consortium": "not_found",
+    "after_award": "stated"
+  },
+  "written": ["eligibility", "documents", "effort", "co_finance", "after_award"],
+  "escalated": [],
+  "flags": [],
+  "notes": [
+    "extractor: The 2026 instructions identify water quality and quantity, habitat, and ecologically harmful species as topics receiving elevated consideration; these are priorities, not stated eligibility requirements. The grant cannot be used as a match for other federal grant programs.",
+    "source wood-pawcatuck-wild-scenic-community-grants-2: added for https://wpwildrivers.org/wp/wp-content/uploads/2026/11/Formatted-2026-2027-Community-Grant-Instructions.pdf",
+    "source wood-pawcatuck-wild-scenic-community-grants-3: added for https://wpwildrivers.org/wp/wp-content/uploads/2026/11/2026-2027-Community-Grant-Application.docx"
+  ],
+  "usd": 0
+}

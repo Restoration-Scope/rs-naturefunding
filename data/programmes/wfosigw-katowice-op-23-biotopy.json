@@ -29,6 +29,14 @@
   "amount": null,
   "co_finance_required": true,
   "reporting": null,
+  "effort": {
+    "steps": [
+      "Application via the New Beneficiary Portal"
+    ]
+  },
+  "co_finance": {
+    "min_share": 20
+  },
   "calls": [
     {
       "id": "rolling",
@@ -74,8 +82,22 @@
     },
     "co_finance_required": {
       "source_url": "https://wfosigw.katowice.pl/nabory/op-23/",
-      "quote": "Intensywność dofinansowania: dotacja do 80%",
-      "checked_at": "2026-11-14",
+      "quote": "dotacja do 80%",
+      "checked_at": "2026-11-20",
+      "method": "page"
+    },
+    "effort": [
+      {
+        "source_url": "https://wfosigw.katowice.pl/nabory/op-23/",
+        "quote": "Składanie wniosków odbywa się tylko za pomocą Nowego Portalu Beneficjenta.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "co_finance": {
+      "source_url": "https://wfosigw.katowice.pl/nabory/op-23/",
+      "quote": "dotacja do 80%",
+      "checked_at": "2026-11-20",
       "method": "page"
     }
   },
