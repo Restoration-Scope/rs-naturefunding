@@ -1,0 +1,73 @@
+{
+  "id": "oregon-wildlife-foundation-grants",
+  "read_on": "2026-11-20",
+  "prompt_version": "req-2026-11-20.1",
+  "models": ["cursor:gpt-5.6-luna-high"],
+  "complete": false,
+  "reasons": [
+    "12 links could not be ranked without Jev",
+    "16 links could not be ranked without Jev",
+    "Jev did not check this reading, so an absent fact is not known to be absent"
+  ],
+  "requirements_checked": false,
+  "documents": [
+    {
+      "ref": "D1",
+      "url": "https://myowf.org/grants",
+      "final_url": "https://myowf.org/grants",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 10277,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:c2adfd565f6a11bf58a50049e6fa640a21373f083a838152989d89c22db90117"
+    },
+    {
+      "ref": "D2",
+      "url": "https://myowf.org/privacy-policy",
+      "final_url": "https://myowf.org/privacy-policy",
+      "from": "https://myowf.org/grants",
+      "anchor": "Privacy Policy.",
+      "depth": 1,
+      "pdf": false,
+      "chars": 7620,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:31f07e1067a644dc77157369ede2208cbf2a658409c8eb037cf93ffda696df06"
+    },
+    {
+      "ref": "D3",
+      "url": "https://myowf.org/faqs",
+      "final_url": "https://myowf.org/faqs",
+      "from": "https://myowf.org/grants",
+      "anchor": "FAQs",
+      "depth": 1,
+      "pdf": false,
+      "chars": 11734,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:d54a9d85d575ed3fa64175866b9b11aeaf955ae2aca150e15892ea90782f2ba7"
+    }
+  ],
+  "failures": [],
+  "skipped_links": 396,
+  "chunks": [{ "id": "all", "docs": ["D1", "D2", "D3"], "chars": 29826 }],
+  "outcomes": {
+    "eligibility": "stated",
+    "documents": "stated",
+    "effort": "stated",
+    "co_finance": "stated",
+    "consortium": "not_found",
+    "after_award": "stated"
+  },
+  "written": ["eligibility", "documents", "effort", "co_finance", "after_award"],
+  "escalated": [],
+  "flags": [],
+  "notes": [
+    "co_finance: share 50% dropped, its quote does not state it",
+    "extractor: Public recognition of the Foundation's support is expected, and evidence of public recognition is required in the final report. Approved applicants cannot apply for additional funding until the final report and required documentary evidence are received."
+  ],
+  "usd": 0
+}

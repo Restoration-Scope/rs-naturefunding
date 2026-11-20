@@ -1,0 +1,71 @@
+{
+  "id": "reverse-the-red-accelerator-award",
+  "read_on": "2026-11-20",
+  "prompt_version": "req-2026-11-20.1",
+  "models": ["cursor:gpt-5.6-luna-high", "cursor:gpt-5.6-sol-high"],
+  "complete": false,
+  "reasons": [
+    "16 links could not be ranked without Jev",
+    "15 links could not be ranked without Jev",
+    "the text names a document with rules that was not read: Application page",
+    "Jev did not check this reading, so an absent fact is not known to be absent"
+  ],
+  "requirements_checked": false,
+  "documents": [
+    {
+      "ref": "D1",
+      "url": "https://www.reversethered.org/accelerator-award",
+      "final_url": "https://www.reversethered.org/accelerator-award",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 5342,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:c20bf1b338b3c02f32a83cb87fddf53dd00e15b17431cab196b0e4ed3062699a"
+    },
+    {
+      "ref": "D2",
+      "url": "https://www.reversethered.org/zoo-and-aquarium-guide",
+      "final_url": "https://www.reversethered.org/zoo-and-aquarium-guide",
+      "from": "https://www.reversethered.org/accelerator-award",
+      "anchor": "Zoo and Aquarium Guide",
+      "depth": 1,
+      "pdf": false,
+      "chars": 3336,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:49aaf96ce9c7fd5e0862c200d72e962171d49cfe2ddf92ea9c88bcd6c57f8952"
+    },
+    {
+      "ref": "D3",
+      "url": "https://www.reversethered.org/privacy",
+      "final_url": "https://www.reversethered.org/privacy",
+      "from": "https://www.reversethered.org/accelerator-award",
+      "anchor": "Privacy Policy",
+      "depth": 1,
+      "pdf": false,
+      "chars": 30852,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:c9a8086861b0eb1945c07bc2bb230ce6d644026df6a561c74de9556287cbe5ec"
+    }
+  ],
+  "failures": [],
+  "skipped_links": 153,
+  "chunks": [{ "id": "all", "docs": ["D1", "D2", "D3"], "chars": 39829 }],
+  "outcomes": {
+    "eligibility": "stated",
+    "documents": "not_found",
+    "effort": "stated",
+    "co_finance": "not_found",
+    "consortium": "not_found",
+    "after_award": "not_found"
+  },
+  "written": ["eligibility", "effort"],
+  "escalated": ["eligibility"],
+  "flags": [],
+  "notes": ["extractor: D1 describes the 2026 round; no later-round rules are provided."],
+  "usd": 0
+}

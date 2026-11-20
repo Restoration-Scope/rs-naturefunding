@@ -1,0 +1,129 @@
+{
+  "id": "perth-nrm-swan-alcoa-landcare-program",
+  "read_on": "2026-11-20",
+  "prompt_version": "req-2026-11-20.1",
+  "models": ["cursor:gpt-5.6-luna-high"],
+  "complete": false,
+  "reasons": [
+    "7 links could not be ranked without Jev",
+    "9 links could not be ranked without Jev",
+    "https://www.perthnrm.com/nrmwp/wp-content/uploads/2026/01/Funding-Guidelines-SALP-2027.pdf: pages 1, 17, 18 are images: needs OCR",
+    "https://www.perthnrm.com/nrmwp/wp-content/uploads/2026/01/Example-Application-SALP-2027.pdf: page 1 is an image: needs OCR",
+    "the text names a document with rules that was not read: Funding Agreement, including its reporting requirements appendix",
+    "Jev did not check this reading, so an absent fact is not known to be absent"
+  ],
+  "requirements_checked": false,
+  "documents": [
+    {
+      "ref": "D1",
+      "url": "https://www.perthnrm.com/project/swan-alcoa-landcare-program-salp/",
+      "final_url": "https://www.perthnrm.com/project/swan-alcoa-landcare-program-salp/",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 5384,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:347d5d19b415376141e71af6630c31bc1cbb5db3be83372db27272645a84afed"
+    },
+    {
+      "ref": "D2",
+      "url": "https://www.perthnrm.com/privacy-policy/",
+      "final_url": "https://www.perthnrm.com/privacy-policy/",
+      "from": "https://www.perthnrm.com/project/swan-alcoa-landcare-program-salp/",
+      "anchor": "Privacy Policy",
+      "depth": 1,
+      "pdf": false,
+      "chars": 8851,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:6d37007f1e65cc34a70251194b66933cf877a6b4de00dda83f02db06749ddf97"
+    },
+    {
+      "ref": "D3",
+      "url": "https://www.perthnrm.com/terms/",
+      "final_url": "https://www.perthnrm.com/terms/",
+      "from": "https://www.perthnrm.com/project/swan-alcoa-landcare-program-salp/",
+      "anchor": "Terms & Conditions",
+      "depth": 1,
+      "pdf": false,
+      "chars": 4259,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:eda2eb820648af02e119c8e7993f036b986aacd6c43f51916048746de4917200"
+    },
+    {
+      "ref": "D4",
+      "url": "https://www.perthnrm.com/nrmwp/wp-content/uploads/2026/01/Funding-Guidelines-SALP-2027.pdf",
+      "final_url": "https://www.perthnrm.com/nrmwp/wp-content/uploads/2026/01/Funding-Guidelines-SALP-2027.pdf",
+      "from": "https://www.perthnrm.com/project/swan-alcoa-landcare-program-salp/",
+      "anchor": "Funding Guidelines",
+      "depth": 1,
+      "pdf": true,
+      "chars": 45535,
+      "pages": 18,
+      "low_text": false,
+      "hash": "sha256:64a45bdc87985e31715d6f34ae3196a1bc81889aff5458c45ea39ea40678c836"
+    },
+    {
+      "ref": "D5",
+      "url": "https://www.perthnrm.com/nrmwp/wp-content/uploads/2026/01/Landowner-Permission-Form-Template-2027.docx",
+      "final_url": "https://www.perthnrm.com/nrmwp/wp-content/uploads/2026/01/Landowner-Permission-Form-Template-2027.docx",
+      "from": "https://www.perthnrm.com/project/swan-alcoa-landcare-program-salp/",
+      "anchor": "Landowner Permission Form",
+      "depth": 1,
+      "pdf": false,
+      "chars": 898,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:085aca83a90608b7e56e407ded6e97d222538731ee278ec563aa74298accd6bf"
+    },
+    {
+      "ref": "D6",
+      "url": "https://www.perthnrm.com/nrmwp/wp-content/uploads/2026/01/Example-Application-SALP-2027.pdf",
+      "final_url": "https://www.perthnrm.com/nrmwp/wp-content/uploads/2026/01/Example-Application-SALP-2027.pdf",
+      "from": "https://www.perthnrm.com/project/swan-alcoa-landcare-program-salp/",
+      "anchor": "Example Application Form",
+      "depth": 1,
+      "pdf": true,
+      "chars": 10993,
+      "pages": 11,
+      "low_text": false,
+      "hash": "sha256:8c5b4d3027893a064bd9d3c86105598998700499def53a9ebaee105d5125d4f3"
+    }
+  ],
+  "failures": [
+    {
+      "url": "https://www.perthnrm.com/nrmwp/wp-content/uploads/2026/01/Funding-Guidelines-SALP-2027.pdf",
+      "from": "https://www.perthnrm.com/project/swan-alcoa-landcare-program-salp/",
+      "kind": "low_text",
+      "message": "pages 1, 17, 18 are images: needs OCR"
+    },
+    {
+      "url": "https://www.perthnrm.com/nrmwp/wp-content/uploads/2026/01/Example-Application-SALP-2027.pdf",
+      "from": "https://www.perthnrm.com/project/swan-alcoa-landcare-program-salp/",
+      "kind": "low_text",
+      "message": "page 1 is an image: needs OCR"
+    }
+  ],
+  "skipped_links": 240,
+  "chunks": [{ "id": "all", "docs": ["D1", "D2", "D3", "D4", "D5", "D6"], "chars": 76835 }],
+  "outcomes": {
+    "eligibility": "stated",
+    "documents": "stated",
+    "effort": "stated",
+    "co_finance": "stated",
+    "consortium": "not_found",
+    "after_award": "stated"
+  },
+  "written": ["eligibility", "documents", "effort", "co_finance", "after_award"],
+  "escalated": [],
+  "flags": [],
+  "notes": [
+    "effort \"Application form and uploads\": the quote does not state 2026-04-30 whole; left undated",
+    "extractor: The 2027 round closed at 6pm on 2026-04-30. Insurance is stated as something the applicant or sponsor should have, and general cash or in-kind contributions are favourably regarded rather than generally mandatory.",
+    "source perth-nrm-swan-alcoa-landcare-program-2: added for https://www.perthnrm.com/nrmwp/wp-content/uploads/2026/01/Funding-Guidelines-SALP-2027.pdf"
+  ],
+  "usd": 0
+}
