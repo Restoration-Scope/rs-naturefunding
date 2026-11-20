@@ -1,0 +1,65 @@
+{
+  "id": "afield-nature-communities-fund",
+  "read_on": "2026-11-19",
+  "prompt_version": "req-2026-11-18.1",
+  "models": ["gpt-5.6-luna", "gpt-5.6-sol", "jev-latest"],
+  "complete": false,
+  "reasons": [
+    "https://docs.google.com/document/d/1wOk7AtufvcuO5HKY8YIJyNWTQeYEBoHv/edit?usp=sharing&ouid=113372277536627561209&rtpof=true&sd=true: a page on another site about applying: not read, so its rules are unknown"
+  ],
+  "requirements_checked": false,
+  "documents": [
+    {
+      "ref": "D1",
+      "url": "https://www.afield.org.uk/nature",
+      "final_url": "https://www.afield.org.uk/nature",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 21557,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:bdd44d1f0abb3a6d915c20b2f1b30d94e6a467eb224bd455e089d8d5ee1127f4"
+    },
+    {
+      "ref": "D2",
+      "url": "https://www.afield.org.uk/terms-and-conditions",
+      "final_url": "https://www.afield.org.uk/terms-and-conditions",
+      "from": "https://www.afield.org.uk/nature",
+      "anchor": "application terms and conditions (opens in a new tab)",
+      "depth": 1,
+      "pdf": false,
+      "chars": 7078,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:cb6971d3f09e824bf6269d67a8a072b227a6ad635ea1019126aef50f7d2e0079"
+    }
+  ],
+  "failures": [
+    {
+      "url": "https://docs.google.com/document/d/1wOk7AtufvcuO5HKY8YIJyNWTQeYEBoHv/edit?usp=sharing&ouid=113372277536627561209&rtpof=true&sd=true",
+      "from": "https://www.afield.org.uk/nature",
+      "kind": "offsite",
+      "message": "a page on another site about applying: not read, so its rules are unknown"
+    }
+  ],
+  "skipped_links": 37,
+  "chunks": [{ "id": "all", "docs": ["D1", "D2"], "chars": 28786 }],
+  "outcomes": {
+    "eligibility": "stated",
+    "documents": "not_found",
+    "effort": "stated",
+    "co_finance": "not_found",
+    "consortium": "stated",
+    "after_award": "stated"
+  },
+  "written": ["eligibility", "effort", "consortium", "after_award"],
+  "escalated": ["consortium", "after_award"],
+  "flags": [],
+  "notes": [
+    "extractor: This is the first open call, with applications closing on 2 December 2026 at 23:59. The grant is for two years and grantees are expected to attend cohort sessions and report during the funded period.",
+    "strong: Consortium applications are not required; this round funds individuals. Reporting is classified as quarterly because quarterly information sharing is required."
+  ],
+  "usd": 0.0625
+}

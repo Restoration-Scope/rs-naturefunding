@@ -1,0 +1,149 @@
+{
+  "id": "aca-msl-resident-draw-grants",
+  "read_on": "2026-11-19",
+  "prompt_version": "req-2026-11-18.1",
+  "models": ["gpt-5.6-luna", "gpt-5.6-sol", "jev-latest"],
+  "complete": false,
+  "reasons": [
+    "the text names a document with rules that was not read: ACA Grounds for Disqualification"
+  ],
+  "requirements_checked": false,
+  "documents": [
+    {
+      "ref": "D1",
+      "url": "https://www.ab-conservation.com/grants-program/msl-grants/overview",
+      "final_url": "https://www.ab-conservation.com/grants-program/msl-grants/overview/",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 3927,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:7bc70db294c5a67e36e557f671dd8813ee8ab6b852d663b5bd4af472fa81163c"
+    },
+    {
+      "ref": "D2",
+      "url": "https://www.ab-conservation.com/downloads/grants/MSL_Resident_Draw_Grants_Submission_Guidelines_2027-28.pdf",
+      "final_url": "https://www.ab-conservation.com/downloads/grants/MSL_Resident_Draw_Grants_Submission_Guidelines_2027-28.pdf",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": true,
+      "chars": 15988,
+      "pages": 8,
+      "low_text": false,
+      "hash": "sha256:8f84342e960662e2e09d63c6822aa605ee2fb8062cdf42588a206d5ebcaac5ad"
+    },
+    {
+      "ref": "D3",
+      "url": "https://www.ab-conservation.com/downloads/grants/MSL_Resident_Draw_Grants_Submission_Guidelines_2026-27.pdf",
+      "final_url": "https://www.ab-conservation.com/downloads/grants/MSL_Resident_Draw_Grants_Submission_Guidelines_2026-27.pdf",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": true,
+      "chars": 15890,
+      "pages": 8,
+      "low_text": false,
+      "hash": "sha256:eb4f5e8024416bbb166350ba46620452ceb7e02687f4ba37a4dcdb44841649ec"
+    },
+    {
+      "ref": "D4",
+      "url": "https://www.ab-conservation.com/grants-program/msl-grants/applicant-information/",
+      "final_url": "https://www.ab-conservation.com/grants-program/msl-grants/applicant-information/",
+      "from": "https://www.ab-conservation.com/grants-program/msl-grants/overview",
+      "anchor": "Applicant Info",
+      "depth": 1,
+      "pdf": false,
+      "chars": 3810,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:4875393a7586d9ab7948afc801a9da285e5df2c89dc53fc123bd1bd51154b9d4"
+    },
+    {
+      "ref": "D5",
+      "url": "https://www.ab-conservation.com/grants-program/faq/",
+      "final_url": "https://www.ab-conservation.com/grants-program/faq/",
+      "from": "https://www.ab-conservation.com/grants-program/msl-grants/overview",
+      "anchor": "FAQ",
+      "depth": 1,
+      "pdf": false,
+      "chars": 16624,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:dbe17015e8ce5747456503f389a5f27a3bc2ca1d1b971e1d6477cdf680b61a60"
+    },
+    {
+      "ref": "D6",
+      "url": "https://www.ab-conservation.com/downloads/grants/MSL_Resident_Draw_Grants_Project_Agreement_2026-27.pdf",
+      "final_url": "https://www.ab-conservation.com/downloads/grants/MSL_Resident_Draw_Grants_Project_Agreement_2026-27.pdf",
+      "from": "https://www.ab-conservation.com/grants-program/faq/",
+      "anchor": "Download the MSLRDG funding agreement.",
+      "depth": 2,
+      "pdf": true,
+      "chars": 10233,
+      "pages": 7,
+      "low_text": false,
+      "hash": "sha256:70d47cda65e38d13ca02618e99c798a2b82bb80c18eb1cf1b504ddb29110d901"
+    },
+    {
+      "ref": "D7",
+      "url": "https://www.ab-conservation.com/downloads/grants/MSL_Resident_Draw_Grants_Project_Agreement_2027-28.pdf",
+      "final_url": "https://www.ab-conservation.com/downloads/grants/MSL_Resident_Draw_Grants_Project_Agreement_2027-28.pdf",
+      "from": "https://www.ab-conservation.com/grants-program/msl-grants/applicant-information/",
+      "anchor": "Minister's Special Licence Resident Draw Grants Project Agreement",
+      "depth": 2,
+      "pdf": true,
+      "chars": 10233,
+      "pages": 7,
+      "low_text": false,
+      "hash": "sha256:74862520f4caf13d1fc52b00a8de0a47e210a739f0263acaf2be832cb79b776a"
+    },
+    {
+      "ref": "D8",
+      "url": "https://www.ab-conservation.com/grants-program/msl-grants/recipient-information/",
+      "final_url": "https://www.ab-conservation.com/grants-program/msl-grants/recipient-information/",
+      "from": "https://www.ab-conservation.com/grants-program/msl-grants/applicant-information/",
+      "anchor": "Recipient Information",
+      "depth": 2,
+      "pdf": false,
+      "chars": 3721,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:7302076d3d9ba1b617c67380bf2c3cef2f2eee5b9914aacbfd9fec85c5f73cbc"
+    }
+  ],
+  "failures": [],
+  "skipped_links": 464,
+  "chunks": [
+    { "id": "all", "docs": ["D1", "D2", "D3", "D4", "D5", "D6", "D7", "D8"], "chars": 81673 }
+  ],
+  "outcomes": {
+    "eligibility": "stated",
+    "documents": "not_found",
+    "effort": "stated",
+    "co_finance": "not_found",
+    "consortium": "not_found",
+    "after_award": "unresolved"
+  },
+  "written": ["eligibility", "effort"],
+  "escalated": ["after_award"],
+  "flags": [
+    {
+      "field": "after_award",
+      "item": "audit",
+      "why": "the text does not say grantees must have the grant externally or independently audited"
+    },
+    {
+      "field": "after_award",
+      "item": "site_visits",
+      "why": "the text does not say grantees must receive visits from the funder at the project site"
+    }
+  ],
+  "notes": [
+    "extractor: The 2027-28 guidelines and agreement were used as the current round. The application form itself is not treated as a submitted document, and no separate first-step supporting documents are specified; applicants are told not to append supporting documents.",
+    "source aca-msl-resident-draw-grants-2: selector main dropped, a new quote sits outside it"
+  ],
+  "usd": 0.1004
+}

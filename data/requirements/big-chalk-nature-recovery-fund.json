@@ -1,0 +1,70 @@
+{
+  "id": "big-chalk-nature-recovery-fund",
+  "read_on": "2026-11-19",
+  "prompt_version": "req-2026-11-18.1",
+  "models": ["gpt-5.6-luna", "gpt-5.6-sol", "jev-latest"],
+  "complete": true,
+  "reasons": [],
+  "requirements_checked": false,
+  "documents": [
+    {
+      "ref": "D1",
+      "url": "https://www.big-chalk.org/news/big-chalk-nature-recovery-fund-funding-starts-to-flow",
+      "final_url": "https://www.big-chalk.org/news/big-chalk-nature-recovery-fund-funding-starts-to-flow",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 5980,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:6a813ae0565e6fecea78e181a3a6caecb47966c37871383017f866c44edd63b8"
+    },
+    {
+      "ref": "D2",
+      "url": "https://big-chalk.files.svdcdn.com/production/assets/images/Documents/Big-Chalk-2026-Nature-Recovery-Fund-guidance.pdf?dm=1786542592",
+      "final_url": "https://big-chalk.files.svdcdn.com/production/assets/images/Documents/Big-Chalk-2026-Nature-Recovery-Fund-guidance.pdf?dm=1786542592",
+      "from": "https://www.big-chalk.org/news/big-chalk-nature-recovery-fund-funding-starts-to-flow",
+      "anchor": "Read the Applicant Guidance in full",
+      "depth": 1,
+      "pdf": true,
+      "chars": 32317,
+      "pages": 13,
+      "low_text": false,
+      "hash": "sha256:f7632ea5dd001da9cb63a02abf8bb98d2fbfd518e7a5bcf08a274979e837899a"
+    }
+  ],
+  "failures": [],
+  "skipped_links": 20,
+  "chunks": [{ "id": "all", "docs": ["D1", "D2"], "chars": 38644 }],
+  "outcomes": {
+    "eligibility": "stated",
+    "documents": "stated",
+    "effort": "stated",
+    "co_finance": "unresolved",
+    "consortium": "stated",
+    "after_award": "unresolved"
+  },
+  "written": ["eligibility", "documents", "effort", "consortium"],
+  "escalated": ["co_finance", "documents", "after_award"],
+  "flags": [
+    {
+      "field": "after_award",
+      "item": "reports",
+      "why": "reports read as final, Jev reads quarterly"
+    },
+    {
+      "field": "after_award",
+      "item": "reports",
+      "why": "reports read as final, Jev reads quarterly"
+    }
+  ],
+  "notes": [
+    "extractor: D2 is the August 2026 Applicant Guidance. Applications are assessed on a rolling basis, and documentation and monitoring vary by grant size and whether the application is for top-up funding.",
+    "strong: No supporting documents are stated for the Expression of Interest. D2 requires supporting documents only at the later full-application stage. Reporting frequency differs by grant size: a completion report for small grants and quarterly reports for standard grants.",
+    "documents: kept 4 first-reading items no check faulted that the strong reading left out",
+    "co_finance: the file says required true, this reading says false",
+    "source big-chalk-nature-recovery-fund-2: added for https://big-chalk.files.svdcdn.com/production/assets/images/Documents/Big-Chalk-2026-Nature-Recovery-Fund-guidance.pdf?dm=1786542592"
+  ],
+  "usd": 0.0876
+}

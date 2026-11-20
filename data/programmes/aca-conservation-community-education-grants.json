@@ -9,14 +9,56 @@
   "parent": null,
   "url": "https://www.ab-conservation.com/grants-program/aca-conservation-community-and-education-grants/overview/",
   "summary": "Alberta Conservation Association grants for non-research projects related to wildlife, fish, habitats, conservation education and outdoor activities in Alberta.",
-  "approaches": ["species_conservation", "freshwater"],
+  "approaches": [
+    "species_conservation",
+    "freshwater"
+  ],
   "applicant_types": null,
-  "geography": { "scope": "countries", "countries": ["CA"], "label": "Alberta" },
+  "geography": {
+    "scope": "countries",
+    "countries": [
+      "CA"
+    ],
+    "label": "Alberta"
+  },
   "access": "direct",
   "window": "fixed",
   "amount": null,
-  "co_finance_required": null,
+  "co_finance_required": false,
   "reporting": "Recipients must provide a progress report by September 1, 2027 and a final report by March 15, 2028.",
+  "effort": {
+    "steps": [
+      "Online application"
+    ],
+    "due": [
+      "2026-12-10"
+    ]
+  },
+  "eligibility": [
+    {
+      "rule": "The project takes place within Alberta",
+      "kind": "project"
+    },
+    {
+      "rule": "Individual applicants have the required insurance",
+      "kind": "capacity"
+    },
+    {
+      "rule": "The project applies to only one ACA grant program",
+      "kind": "project"
+    },
+    {
+      "rule": "The grant is not used for overhead, fundraising, out-of-Alberta travel, or out-of-term costs",
+      "kind": "project"
+    },
+    {
+      "rule": "Required permits, licenses, and permissions are obtained before the project starts",
+      "kind": "legal"
+    }
+  ],
+  "after_award": {
+    "reports": "interim_and_final"
+  },
   "calls": [
     {
       "id": "2026-application-window",
@@ -24,7 +66,10 @@
       "url": "https://www.ab-conservation.com/grants-program/aca-conservation-community-and-education-grants/overview/",
       "status": "open",
       "opens": "2026-11-01",
-      "deadline": { "date": "2026-12-10", "text": "December 10, 2026" },
+      "deadline": {
+        "date": "2026-12-10",
+        "text": "December 10, 2026"
+      },
       "evidence": {
         "status": {
           "source_url": "https://www.ab-conservation.com/grants-program/aca-conservation-community-and-education-grants/overview/",
@@ -66,12 +111,66 @@
       "checked_at": "2026-11-15",
       "method": "human"
     },
+    "co_finance_required": {
+      "source_url": "https://www.ab-conservation.com/grants-program/faq/",
+      "quote": "Co-funding is not necessary.",
+      "checked_at": "2026-11-19",
+      "method": "page"
+    },
     "reporting": {
       "source_url": "https://www.ab-conservation.com/downloads/grants/ACA_Conservation_Community_and_Education_Grants_Project_Agreement_Blank_2027-2028.pdf",
       "quote": "Provide a progress report to ACA by September 1, 2027. The progress report should be in ACA's template, which can be found on ACA's website www.ab-conservation.com b. Provide a final report to ACA by March 15, 2028.",
       "checked_at": "2026-11-15",
       "method": "human"
-    }
+    },
+    "effort": [
+      {
+        "source_url": "https://www.ab-conservation.com/grants-program/aca-conservation-community-and-education-grants/overview/",
+        "quote": "Next opportunity to apply November 1, 2026 - December 10, 2026",
+        "checked_at": "2026-11-19",
+        "method": "page"
+      }
+    ],
+    "eligibility": [
+      {
+        "source_url": "https://www.ab-conservation.com/grants-program/faq/",
+        "quote": "No, the grants are for projects taking place within Alberta only.",
+        "checked_at": "2026-11-19",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.ab-conservation.com/grants-program/faq/",
+        "quote": "Individuals can apply for funding from the CCEG, but you have to have the proper insurance, such as WCB, liability insurance for any work done on your property, etc.",
+        "checked_at": "2026-11-19",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.ab-conservation.com/grants-program/overview/which-grant-should-i-apply-for/",
+        "quote": "A project can only apply to one ACA grant program.",
+        "checked_at": "2026-11-19",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.ab-conservation.com/downloads/grants/ACA_Conservation_Community_and_Education_Grants_Project_Agreement_Blank_2026-2027.pdf",
+        "quote": "Not use the grant for overhead expenses, general fundraising, travel to/from Alberta from outside Alberta, and costs made before the start date or after the end date of the agreement.",
+        "checked_at": "2026-11-19",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.ab-conservation.com/downloads/grants/ACA_Conservation_Community_and_Education_Grants_Project_Agreement_Blank_2026-2027.pdf",
+        "quote": "The RECIPIENT shall perform all work in accordance with all applicable laws, regulations, rules, codes and ordinances of authorities having jurisdiction and will obtain any and all permits/licenses and permissions required to carry out activities described in this agreement prior to the start of the project",
+        "checked_at": "2026-11-19",
+        "method": "page"
+      }
+    ],
+    "after_award": [
+      {
+        "source_url": "https://www.ab-conservation.com/downloads/grants/ACA_Conservation_Community_and_Education_Grants_Project_Agreement_Blank_2026-2027.pdf",
+        "quote": "Provide a progress report to ACA by September 1, 2026. The progress report should be in ACA's template, which can be found on ACA's website www.ab-conservation.com",
+        "checked_at": "2026-11-19",
+        "method": "page"
+      }
+    ]
   },
   "checked_at": "2026-11-15"
 }

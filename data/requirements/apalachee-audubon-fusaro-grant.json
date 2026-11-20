@@ -1,0 +1,82 @@
+{
+  "id": "apalachee-audubon-fusaro-grant",
+  "read_on": "2026-11-19",
+  "prompt_version": "req-2026-11-18.1",
+  "models": ["gpt-5.6-luna", "gpt-5.6-sol", "jev-latest"],
+  "complete": true,
+  "reasons": [],
+  "requirements_checked": false,
+  "documents": [
+    {
+      "ref": "D1",
+      "url": "https://www.apalachee.org/apalachee-audubon-grant",
+      "final_url": "https://www.apalachee.org/apalachee-audubon-grant",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 4495,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:95e5ba4bbd98b21e186afc39515709f31865c58fb05007b8f00a79144a1870d1"
+    },
+    {
+      "ref": "D2",
+      "url": "https://www.apalachee.org/s/2026-Ben-Fusaro-Conservation-Grant-Info-and-Rubric.pdf",
+      "final_url": "https://static1.squarespace.com/static/593e984c9de4bbf286f8f851/t/6aa8940da706975155e887c5/1789432845184/2026-Ben-Fusaro-Conservation-Grant-Info-and-Rubric.pdf",
+      "from": "https://www.apalachee.org/apalachee-audubon-grant",
+      "anchor": "Download 2026 Grant Application and Rubric",
+      "depth": 1,
+      "pdf": true,
+      "chars": 3662,
+      "pages": 2,
+      "low_text": false,
+      "hash": "sha256:3db46abbc249dbe3b530c51e2a37cfb4ae19864aeb322aa1f450dd0ecfb90262"
+    }
+  ],
+  "failures": [],
+  "skipped_links": 65,
+  "chunks": [{ "id": "all", "docs": ["D1", "D2"], "chars": 8384 }],
+  "outcomes": {
+    "eligibility": "partial",
+    "documents": "stated",
+    "effort": "stated",
+    "co_finance": "not_found",
+    "consortium": "stated",
+    "after_award": "unresolved"
+  },
+  "written": ["eligibility", "documents", "effort", "consortium"],
+  "escalated": ["after_award", "consortium", "eligibility"],
+  "flags": [
+    {
+      "field": "after_award",
+      "item": "reports",
+      "why": "the quote is not on any gathered document"
+    },
+    {
+      "field": "eligibility",
+      "item": "Request is no more than $500",
+      "why": "kind is project, Jev reads finances"
+    },
+    {
+      "field": "after_award",
+      "item": "reports",
+      "why": "report frequency is unclear (unspecified at 0.42)"
+    },
+    {
+      "field": "eligibility",
+      "item": "Request is no more than $500",
+      "why": "kind is project, Jev reads finances"
+    },
+    {
+      "field": "after_award",
+      "item": "reports",
+      "why": "report frequency is unclear (unspecified at 0.26)"
+    }
+  ],
+  "notes": [
+    "extractor: Awarded grantees also receive follow-up from a Board representative during project completion. The 2026 call offers two awards of up to $500 each.",
+    "source apalachee-audubon-fusaro-grant-2: added for https://www.apalachee.org/s/2026-Ben-Fusaro-Conservation-Grant-Info-and-Rubric.pdf"
+  ],
+  "usd": 0.0615
+}

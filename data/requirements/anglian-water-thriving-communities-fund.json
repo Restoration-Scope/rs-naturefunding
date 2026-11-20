@@ -1,0 +1,97 @@
+{
+  "id": "anglian-water-thriving-communities-fund",
+  "read_on": "2026-11-19",
+  "prompt_version": "req-2026-11-18.1",
+  "models": ["gpt-5.6-luna", "gpt-5.6-sol", "jev-latest"],
+  "complete": false,
+  "reasons": [
+    "https://www.anglianwater.co.uk/environment/supporting-our-communities/thriving-communities-fund: a page on another site about applying: not read, so its rules are unknown",
+    "the text names a document with rules that was not read: Overall organisational eligibility guidance",
+    "the text names a document with rules that was not read: General application document checklist",
+    "the text names a document with rules that was not read: Reporting guidance",
+    "the text names a document with rules that was not read: Fund-specific application form"
+  ],
+  "requirements_checked": false,
+  "documents": [
+    {
+      "ref": "D1",
+      "url": "https://www.cambscf.org.uk/funds/thriving-communities/",
+      "final_url": "https://www.cambscf.org.uk/funds/thriving-communities/",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 19739,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:51e44a5954a4b704004f5d6f5b0372590e74ff76600fa32beae6137164da9828"
+    },
+    {
+      "ref": "D2",
+      "url": "https://www.cambscf.org.uk/anglian-waters-thriving-communities-fund-faqs/",
+      "final_url": "https://www.cambscf.org.uk/anglian-waters-thriving-communities-fund-faqs/",
+      "from": "https://www.cambscf.org.uk/funds/thriving-communities/",
+      "anchor": "FAQ",
+      "depth": 1,
+      "pdf": false,
+      "chars": 10769,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:03de68285e1247b19f1f92393fa1fac8b3bb035b8f5dab0011e3f9ebbd81ea26"
+    },
+    {
+      "ref": "D3",
+      "url": "https://www.cambscf.org.uk/applying/",
+      "final_url": "https://www.cambscf.org.uk/applying/",
+      "from": "https://www.cambscf.org.uk/funds/thriving-communities/",
+      "anchor": "Application guidance",
+      "depth": 1,
+      "pdf": false,
+      "chars": 28786,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:c0ed9c16b4f2b9359cf5f36ce8f34d1395a4943a217852e5741b7398bcd12e9f"
+    }
+  ],
+  "failures": [
+    {
+      "url": "https://www.anglianwater.co.uk/environment/supporting-our-communities/thriving-communities-fund",
+      "from": "https://www.cambscf.org.uk/funds/thriving-communities/",
+      "kind": "offsite",
+      "message": "a page on another site about applying: not read, so its rules are unknown"
+    },
+    {
+      "url": "https://www.cambscf.org.uk/wp-content/uploads/2025/10/Guidance-for-CICs-Social-Enterprises.pdf",
+      "from": "https://www.cambscf.org.uk/applying/",
+      "kind": "off_topic",
+      "message": "not about this programme (0.18)"
+    },
+    {
+      "url": "https://www.cambscf.org.uk/wp-content/uploads/2025/01/General-Application-Form-Guide.docx",
+      "from": "https://www.cambscf.org.uk/applying/",
+      "kind": "off_topic",
+      "message": "not about this programme (0.17)"
+    }
+  ],
+  "skipped_links": 137,
+  "chunks": [{ "id": "all", "docs": ["D1", "D2", "D3"], "chars": 59634 }],
+  "outcomes": {
+    "eligibility": "stated",
+    "documents": "stated",
+    "effort": "stated",
+    "co_finance": "stated",
+    "consortium": "stated",
+    "after_award": "stated"
+  },
+  "written": ["eligibility", "documents", "effort", "co_finance", "consortium", "after_award"],
+  "escalated": ["co_finance", "consortium", "eligibility", "after_award"],
+  "flags": [],
+  "notes": [
+    "extractor: The listed round is the £5,000–£50,000 single-stage route. Larger grants use a separate Expression of Interest and second-stage process. Partnership applications are permitted, but the lead partner must meet the not-for-profit requirements and remain responsible for delivery, reporting and compliance.",
+    "strong: Partnerships are optional, not mandatory. No fixed co-financing proportion is required; other funding is recommended for larger projects using the separate EOI process and expected for significant capital projects.",
+    "eligibility: kept 1 first-reading item no check faulted that the strong reading left out",
+    "source anglian-water-thriving-communities-fund-2: added for https://www.cambscf.org.uk/anglian-waters-thriving-communities-fund-faqs/",
+    "source anglian-water-thriving-communities-fund-3: added for https://www.cambscf.org.uk/applying/"
+  ],
+  "usd": 0.1564
+}

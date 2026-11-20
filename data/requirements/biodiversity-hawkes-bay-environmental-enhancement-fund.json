@@ -1,0 +1,124 @@
+{
+  "id": "biodiversity-hawkes-bay-environmental-enhancement-fund",
+  "read_on": "2026-11-19",
+  "prompt_version": "req-2026-11-18.1",
+  "models": ["gpt-5.6-luna", "gpt-5.6-sol", "jev-latest"],
+  "complete": false,
+  "reasons": [
+    "https://public-hbrc.datacomsphere.co.nz/online-services/new/EECFApplication/step/1: a page on another site about applying: not read, so its rules are unknown",
+    "the crawl bound left https://www.biodiversityhb.org/projects-funding-and-resources/projects-funding-and-resources/environmental-enhancement-fund/ unread",
+    "the crawl bound left https://www.biodiversityhb.org/projects-funding-and-resources/projects-funding-and-resources/how-to-write-funding-applications/ unread",
+    "the text names a document with rules that was not read: Environmental Enhancement Contestable Fund Application Form, including the eligibility guidelines",
+    "strong reading: the text names a document with rules that was not read: Environmental Enhancement Contestable Fund Application Form"
+  ],
+  "requirements_checked": false,
+  "documents": [
+    {
+      "ref": "D1",
+      "url": "https://www.biodiversityhb.org/projects-funding-and-resources/environmental-enhancement-fund/",
+      "final_url": "https://www.biodiversityhb.org/projects-funding-and-resources/environmental-enhancement-fund/",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 5644,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:1594e9ab7e9d7f0187bd6ed0640ead2e80f3050dc26e3094581ce402826045c3"
+    },
+    {
+      "ref": "D2",
+      "url": "https://www.biodiversityhb.org/assets/Uploads/EECF-Terms-and-Conditions-2026.docx",
+      "final_url": "https://www.biodiversityhb.org/assets/Uploads/EECF-Terms-and-Conditions-2026.docx",
+      "from": "https://www.biodiversityhb.org/projects-funding-and-resources/environmental-enhancement-fund/",
+      "anchor": "Environmental Enhancement Contestable Fund - Terms and Conditions",
+      "depth": 1,
+      "pdf": false,
+      "chars": 4064,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:e2e340b94c443a705fce1ce82ea0a7bdc5ee5779c1efa0ce6238db780bc2557d"
+    },
+    {
+      "ref": "D3",
+      "url": "https://www.biodiversityhb.org/projects-funding-and-resources/how-to-write-funding-applications/",
+      "final_url": "https://www.biodiversityhb.org/projects-funding-and-resources/how-to-write-funding-applications/",
+      "from": "https://www.biodiversityhb.org/projects-funding-and-resources/environmental-enhancement-fund/",
+      "anchor": "How to write funding applications",
+      "depth": 1,
+      "pdf": false,
+      "chars": 3043,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:17af481356524a8e7c29bdeae490adecc00a13ea01a158e54db927e97cb5d3fa"
+    },
+    {
+      "ref": "D4",
+      "url": "https://www.biodiversityhb.org/projects-funding-and-resources/",
+      "final_url": "https://www.biodiversityhb.org/projects-funding-and-resources/",
+      "from": "https://www.biodiversityhb.org/projects-funding-and-resources/how-to-write-funding-applications/",
+      "anchor": "Projects, Funding & Resources",
+      "depth": 2,
+      "pdf": false,
+      "chars": 3242,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:d092b4361369773b74eff65765834c5c2ed00ca7b3b122752baaa1615a83019d"
+    }
+  ],
+  "failures": [
+    {
+      "url": "https://public-hbrc.datacomsphere.co.nz/online-services/new/EECFApplication/step/1",
+      "from": "https://www.biodiversityhb.org/projects-funding-and-resources/environmental-enhancement-fund/",
+      "kind": "offsite",
+      "message": "a page on another site about applying: not read, so its rules are unknown"
+    },
+    {
+      "url": "https://www.biodiversityhb.org/projects-funding-and-resources/projects-funding-and-resources/environmental-enhancement-fund/",
+      "from": "https://www.biodiversityhb.org/projects-funding-and-resources/",
+      "kind": "bound",
+      "message": "past the crawl depth of 2"
+    },
+    {
+      "url": "https://www.biodiversityhb.org/projects-funding-and-resources/projects-funding-and-resources/how-to-write-funding-applications/",
+      "from": "https://www.biodiversityhb.org/projects-funding-and-resources/",
+      "kind": "bound",
+      "message": "past the crawl depth of 2"
+    }
+  ],
+  "skipped_links": 213,
+  "chunks": [{ "id": "all", "docs": ["D1", "D2", "D3", "D4"], "chars": 16704 }],
+  "outcomes": {
+    "eligibility": "partial",
+    "documents": "not_found",
+    "effort": "stated",
+    "co_finance": "not_found",
+    "consortium": "not_found",
+    "after_award": "stated"
+  },
+  "written": ["eligibility", "effort", "after_award"],
+  "escalated": ["eligibility", "after_award"],
+  "flags": [
+    {
+      "field": "eligibility",
+      "item": "Applicant is based in Hawke's Bay",
+      "why": "kind is other, Jev reads project"
+    },
+    {
+      "field": "eligibility",
+      "item": "Applicant is based in Hawke's Bay",
+      "why": "kind is other, Jev reads project"
+    },
+    {
+      "field": "eligibility",
+      "item": "Request is between NZD 1,000 and NZD 15,000",
+      "why": "kind is project, Jev reads finances"
+    }
+  ],
+  "notes": [
+    "extractor: The next funding round is due to open in March 2027, but no day-specific application deadline is stated. The terms say it is unusual for Biodiversity Hawke's Bay to meet the full project cost, but they do not require matching funding. Successful applicants also have claim, invoice, publicity and acknowledgement obligations.",
+    "strong: D1 says the next round is due to open in March 2027, while the linked terms document is named for 2026. The application form containing additional eligibility guidelines was not provided.",
+    "source biodiversity-hawkes-bay-environmental-enhancement-fund-2: added for https://www.biodiversityhb.org/assets/Uploads/EECF-Terms-and-Conditions-2026.docx"
+  ],
+  "usd": 0.0877
+}

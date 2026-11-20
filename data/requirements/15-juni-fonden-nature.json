@@ -1,0 +1,79 @@
+{
+  "id": "15-juni-fonden-nature",
+  "read_on": "2026-11-19",
+  "prompt_version": "req-2026-11-18.1",
+  "models": ["gpt-5.6-luna", "gpt-5.6-sol", "jev-latest"],
+  "complete": false,
+  "reasons": [
+    "https://juni-fonden.files.svdcdn.com/production/documents/15_juni_fonden_uddelingsstrategi.pdf?dm=1787752851: page 1 is an image: needs OCR",
+    "the text names a document with rules that was not read: Af­rapporteringsskema"
+  ],
+  "requirements_checked": false,
+  "documents": [
+    {
+      "ref": "D1",
+      "url": "https://www.15junifonden.dk/vistoetter/natur-jagt",
+      "final_url": "https://www.15junifonden.dk/vistoetter/natur-jagt",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 9937,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:02fe6aa593a632a822c8fc540d840896b15c39ca56ff08fdc2df0a2abe5782dd"
+    },
+    {
+      "ref": "D2",
+      "url": "https://www.15junifonden.dk/ansøg",
+      "final_url": "https://www.15junifonden.dk/ans%C3%B8g",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 8575,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:cf9743e99c198686304f241293afe84b382bfdae04154bbcd8e26a8cc0ec2abb"
+    },
+    {
+      "ref": "D3",
+      "url": "https://juni-fonden.files.svdcdn.com/production/documents/15_juni_fonden_uddelingsstrategi.pdf?dm=1787752851",
+      "final_url": "https://juni-fonden.files.svdcdn.com/production/documents/15_juni_fonden_uddelingsstrategi.pdf?dm=1787752851",
+      "from": "https://www.15junifonden.dk/ansøg",
+      "anchor": "Læs uddelingsstrategi",
+      "depth": 1,
+      "pdf": true,
+      "chars": 15434,
+      "pages": 20,
+      "low_text": false,
+      "hash": "sha256:9fe3384886b13bd9324af5f642fc32db3d89b940330a5db667b7aaec31212fb8"
+    }
+  ],
+  "failures": [
+    {
+      "url": "https://juni-fonden.files.svdcdn.com/production/documents/15_juni_fonden_uddelingsstrategi.pdf?dm=1787752851",
+      "from": "https://www.15junifonden.dk/ansøg",
+      "kind": "low_text",
+      "message": "page 1 is an image: needs OCR"
+    }
+  ],
+  "skipped_links": 27,
+  "chunks": [{ "id": "all", "docs": ["D1", "D2", "D3"], "chars": 34231 }],
+  "outcomes": {
+    "eligibility": "stated",
+    "documents": "stated",
+    "effort": "stated",
+    "co_finance": "not_found",
+    "consortium": "not_found",
+    "after_award": "stated"
+  },
+  "written": ["eligibility", "documents", "effort", "after_award"],
+  "escalated": ["eligibility", "after_award"],
+  "flags": [],
+  "notes": [
+    "extractor: Applications are rolling with no deadline. The stated processing time is 4–5 months. Reporting and auditor requirements vary by grant size; the auditor requirement applies to grants of 250,000 DKK or more, with the stated exception for institutions under Rigsrevisionen.",
+    "strong: Reporting requirements vary by grant size. The required revisorerklæring is not classified as an audit because the text does not state that the grant must undergo an external or independent audit."
+  ],
+  "usd": 0.1325
+}
