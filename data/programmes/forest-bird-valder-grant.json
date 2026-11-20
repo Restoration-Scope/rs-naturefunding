@@ -9,14 +9,44 @@
   "parent": null,
   "url": "https://www.forestandbird.org.nz/valder-conservation-grant",
   "summary": "Small annual grants from Forest & Bird for individuals or groups running conservation projects in the Waikato region, such as pest control, monitoring and fencing. Can pay for equipment, travel and consumables.",
-  "approaches": ["species_conservation", "community_conservation"],
-  "applicant_types": ["individual", "community_group"],
-  "geography": { "scope": "countries", "countries": ["NZ"], "label": "Waikato region" },
+  "approaches": [
+    "species_conservation",
+    "community_conservation"
+  ],
+  "applicant_types": [
+    "individual",
+    "community_group"
+  ],
+  "geography": {
+    "scope": "countries",
+    "countries": [
+      "NZ"
+    ],
+    "label": "Waikato region"
+  },
   "access": "direct",
   "window": "fixed",
-  "amount": { "currency": "NZD", "max": 5000, "typical": true },
+  "amount": {
+    "currency": "NZD",
+    "max": 5000,
+    "typical": true
+  },
   "co_finance_required": null,
   "reporting": "Successful applicants present their results to the Waikato Branch when the research or project is completed.",
+  "effort": {
+    "steps": [
+      "Application form and email submission"
+    ]
+  },
+  "eligibility": [
+    {
+      "rule": "Request excludes food, accommodation, vehicles, study fees, university equipment and thesis costs",
+      "kind": "project"
+    }
+  ],
+  "documents": [
+    "Detailed budget"
+  ],
   "calls": [
     {
       "id": "annual",
@@ -78,7 +108,42 @@
       "quote": "Successful applicants will be required to present their results to the Waikato Branch when their research or project is completed.",
       "checked_at": "2026-11-20",
       "method": "page"
-    }
+    },
+    "effort": [
+      {
+        "source_url": "https://www.forestandbird.org.nz/valder-conservation-grant",
+        "quote": "To apply for the Valder Grant, please download and complete the following application form and email to:",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "eligibility": [
+      {
+        "source_url": "https://www.forestandbird.org.nz/valder-conservation-grant",
+        "quote": "It cannot be used for food, accommodation, vehicle purchase, student study fees, equipment already available from the university, thesis production.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "documents": [
+      {
+        "source_url": "https://www.forestandbird.org.nz/sites/default/files/2023-11/Valder%20Conservation%20Grant%20Application%20Form%202023_0.pdf",
+        "quote": "Include a detailed budget",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "after_award": [
+      {
+        "source_url": "https://www.forestandbird.org.nz/valder-conservation-grant",
+        "quote": "Successful applicants will be required to present their results to the Waikato Branch when their research or project is completed.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ]
   },
-  "checked_at": "2026-11-20"
+  "checked_at": "2026-11-20",
+  "after_award": {
+    "reports": "final"
+  }
 }

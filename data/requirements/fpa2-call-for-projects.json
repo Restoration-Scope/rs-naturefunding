@@ -1,0 +1,59 @@
+{
+  "id": "fpa2-call-for-projects",
+  "read_on": "2026-11-20",
+  "prompt_version": "req-2026-11-20.1",
+  "models": ["cursor:gpt-5.6-luna-high"],
+  "complete": false,
+  "reasons": [
+    "6 links could not be ranked without Jev",
+    "7 links could not be ranked without Jev",
+    "Jev did not check this reading, so an absent fact is not known to be absent"
+  ],
+  "requirements_checked": false,
+  "documents": [
+    {
+      "ref": "D1",
+      "url": "https://www.fpa2.org/en/submit-a-project",
+      "final_url": "https://www.fpa2.org/en/submit-a-project",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 2143,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:842e2ba0736ae7b4085c37663d1d79bd83339b27c9c82949bf7b2778297352a0"
+    },
+    {
+      "ref": "D2",
+      "url": "https://www.fpa2.org/en/general-terms-and-conditions-55",
+      "final_url": "https://www.fpa2.org/en/general-terms-and-conditions-55",
+      "from": "https://www.fpa2.org/en/submit-a-project",
+      "anchor": "General terms and conditions",
+      "depth": 1,
+      "pdf": false,
+      "chars": 10791,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:ea425ece707f5d8a55b710716c0f798cd1fec2de7e742a6f96211b0841412eac"
+    }
+  ],
+  "failures": [],
+  "skipped_links": 132,
+  "chunks": [{ "id": "all", "docs": ["D1", "D2"], "chars": 13110 }],
+  "outcomes": {
+    "eligibility": "stated",
+    "documents": "not_found",
+    "effort": "stated",
+    "co_finance": "not_found",
+    "consortium": "not_found",
+    "after_award": "not_found"
+  },
+  "written": ["eligibility", "effort"],
+  "escalated": [],
+  "flags": [],
+  "notes": [
+    "extractor: D1 says the project selection process is based on following steps but does not list those steps. D2 contains website sales terms, not grant requirements."
+  ],
+  "usd": 0
+}

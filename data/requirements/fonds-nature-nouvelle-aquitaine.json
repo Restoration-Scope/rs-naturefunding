@@ -1,0 +1,82 @@
+{
+  "id": "fonds-nature-nouvelle-aquitaine",
+  "read_on": "2026-11-20",
+  "prompt_version": "req-2026-11-20.1",
+  "models": ["cursor:gpt-5.6-luna-high"],
+  "complete": false,
+  "reasons": [
+    "10 links could not be ranked without Jev",
+    "6 links could not be ranked without Jev",
+    "https://les-aides.nouvelle-aquitaine.fr/transition-energetique-et-ecologique/fonds-nature-nouvelle-aquitaine-territoire-uni-pour-restaurer-nos-ecosystemes would not open (http: HTTP 404)",
+    "the text names a document with rules that was not read: AAP Fonds NAture",
+    "Jev did not check this reading, so an absent fact is not known to be absent"
+  ],
+  "requirements_checked": false,
+  "documents": [
+    {
+      "ref": "D1",
+      "url": "https://territoires.nouvelle-aquitaine.fr/actualites/fonds-nature-2026-neuf-projets-pour-restaurer-la-biodiversite-en-nouvelle-aquitaine",
+      "final_url": "https://territoires.nouvelle-aquitaine.fr/actualites/fonds-nature-2026-neuf-projets-pour-restaurer-la-biodiversite-en-nouvelle-aquitaine",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 10587,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:141e60757650c69cdd61f5018a7e649fee36f1cab155c69ecdd2a098d3183957"
+    },
+    {
+      "ref": "D2",
+      "url": "https://les-aides.nouvelle-aquitaine.fr/",
+      "final_url": "https://les-aides.nouvelle-aquitaine.fr/",
+      "from": "https://territoires.nouvelle-aquitaine.fr/actualites/fonds-nature-2026-neuf-projets-pour-restaurer-la-biodiversite-en-nouvelle-aquitaine",
+      "anchor": "Guide des aides",
+      "depth": 1,
+      "pdf": false,
+      "chars": 8931,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:1b9fe06609e5d16243100fa7ebf54e22490a8c7ef218c7c6111de874896eca0c"
+    },
+    {
+      "ref": "D3",
+      "url": "https://les-aides.nouvelle-aquitaine.fr/les-donnees-publiques-du-guide-des-aides",
+      "final_url": "https://les-aides.nouvelle-aquitaine.fr/les-donnees-publiques-du-guide-des-aides",
+      "from": "https://les-aides.nouvelle-aquitaine.fr/",
+      "anchor": "Données",
+      "depth": 2,
+      "pdf": false,
+      "chars": 4445,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:104902067143e1f3c6303568503c93691bfbdebd8076a02744c7cebe50cf2fab"
+    }
+  ],
+  "failures": [
+    {
+      "url": "https://les-aides.nouvelle-aquitaine.fr/transition-energetique-et-ecologique/fonds-nature-nouvelle-aquitaine-territoire-uni-pour-restaurer-nos-ecosystemes",
+      "from": null,
+      "kind": "http",
+      "message": "HTTP 404"
+    }
+  ],
+  "skipped_links": 140,
+  "chunks": [{ "id": "all", "docs": ["D1", "D2", "D3"], "chars": 24464 }],
+  "outcomes": {
+    "eligibility": "not_found",
+    "documents": "not_found",
+    "effort": "stated",
+    "co_finance": "unresolved",
+    "consortium": "not_found",
+    "after_award": "not_found"
+  },
+  "written": ["effort"],
+  "escalated": [],
+  "flags": [],
+  "notes": [
+    "extractor: D1 also describes awarded projects from the first 2026 call; the stated deadline applies to the next selection committee. Programme-specific application rules are not included.",
+    "co_finance: the file states whether co-funding is required, this reading found nothing"
+  ],
+  "usd": 0
+}
