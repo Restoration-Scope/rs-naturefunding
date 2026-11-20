@@ -1,12 +1,19 @@
 {
   "id": "dfo-cnfasar",
   "name": "Canada Nature Fund for Aquatic Species at Risk",
-  "funder": { "name": "Fisheries and Oceans Canada", "url": "https://www.dfo-mpo.gc.ca/" },
+  "funder": {
+    "name": "Fisheries and Oceans Canada",
+    "url": "https://www.dfo-mpo.gc.ca/"
+  },
   "administered_by": null,
   "parent": null,
   "url": "https://www.dfo-mpo.gc.ca/species-especes/sara-lep/cnfasar-fnceap/index-eng.html",
   "summary": "Multi-year, multi-partner stewardship projects that recover and protect aquatic species at risk in Canada, with about $15.5 million a year available in the fourth round (2027-2031). Indigenous-led projects are prioritised.",
-  "approaches": ["species_conservation", "freshwater", "coastal_marine"],
+  "approaches": [
+    "species_conservation",
+    "freshwater",
+    "coastal_marine"
+  ],
   "applicant_types": [
     "ngo",
     "indigenous_organization",
@@ -16,7 +23,12 @@
     "research_institution",
     "company"
   ],
-  "geography": { "scope": "countries", "countries": ["CA"] },
+  "geography": {
+    "scope": "countries",
+    "countries": [
+      "CA"
+    ]
+  },
   "access": "direct",
   "window": "fixed",
   "amount": {
@@ -32,8 +44,38 @@
     "period": "year",
     "note": "Over the 2027-2031 round"
   },
-  "co_finance_required": null,
+  "co_finance_required": false,
   "reporting": null,
+  "effort": {
+    "steps": [
+      "Project proposal"
+    ],
+    "due": [
+      "2026-11-16"
+    ]
+  },
+  "eligibility": [
+    {
+      "rule": "Benefits multiple aquatic species at risk: one SARA-listed and another SARA-listed or COSEWIC-assessed",
+      "kind": "project"
+    },
+    {
+      "rule": "Directly addresses recovery measures in existing federal aquatic species at risk recovery documents",
+      "kind": "project"
+    },
+    {
+      "rule": "Engages multiple partners providing financial or in-kind project support",
+      "kind": "project"
+    },
+    {
+      "rule": "Is implemented between April 1, 2027 and March 31, 2031",
+      "kind": "project"
+    },
+    {
+      "rule": "Plans to share project information and results publicly or with other CNFASAR recipients",
+      "kind": "project"
+    }
+  ],
   "calls": [
     {
       "id": "round-4-2027-2031",
@@ -99,7 +141,53 @@
       "quote": "Other costs that support the conservation and protection of Canada's fish, fish habitat, and aquatic species at risk",
       "checked_at": "2026-11-20",
       "method": "page"
-    }
+    },
+    "co_finance_required": {
+      "source_url": "https://www.dfo-mpo.gc.ca/species-especes/documents/sara-lep/cnfasar-fnceap/canada-nature-fund-fonds-aquatic-aquatiques-eng.docx",
+      "quote": "Although a 1:1 funding match is not required, proponents must identify project partners and outline their respective cash and/or in-kind contributions to the project.",
+      "checked_at": "2026-11-20",
+      "method": "page"
+    },
+    "effort": [
+      {
+        "source_url": "https://www.dfo-mpo.gc.ca/species-especes/sara-lep/cnfasar-fnceap/how-to-apply-comment-appliquer-eng.html",
+        "quote": "To apply for this funding, project leads must complete a project proposal form and email it to the regional coordinator in the region in which the proposed project will be implemented by November 16, 2026, at 23:59 (Pacific time).",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "eligibility": [
+      {
+        "source_url": "https://www.dfo-mpo.gc.ca/species-especes/documents/sara-lep/cnfasar-fnceap/canada-nature-fund-fonds-aquatic-aquatiques-eng.docx",
+        "quote": "Meaningfully benefit multiple aquatic species at risk, including a minimum of one Species at Risk Act (SARA) aquatic listed species (or designatable unit), and at least one other SARA-listed or at-risk Committee on the Status of Endangered Wildlife in Canada (COSEWIC) assessed species (or designatable unit).",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.dfo-mpo.gc.ca/species-especes/documents/sara-lep/cnfasar-fnceap/canada-nature-fund-fonds-aquatic-aquatiques-eng.docx",
+        "quote": "Directly address recovery measures set out in existing federal aquatic species at risk recovery documents (available on the SARA Public Registry).",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.dfo-mpo.gc.ca/species-especes/documents/sara-lep/cnfasar-fnceap/canada-nature-fund-fonds-aquatic-aquatiques-eng.docx",
+        "quote": "Engage multiple partners. A partner is defined as a person or organization that provides financial or in-kind support to the project, such as activity planning, activity development and implementation.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.dfo-mpo.gc.ca/species-especes/documents/sara-lep/cnfasar-fnceap/canada-nature-fund-fonds-aquatic-aquatiques-eng.docx",
+        "quote": "Be implemented between April 1, 2027 and March 31, 2031.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.dfo-mpo.gc.ca/species-especes/documents/sara-lep/cnfasar-fnceap/canada-nature-fund-fonds-aquatic-aquatiques-eng.docx",
+        "quote": "Plan to share project information and results publicly and/or with other CNFASAR recipients.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ]
   },
   "checked_at": "2026-11-20"
 }

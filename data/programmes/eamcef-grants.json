@@ -9,9 +9,24 @@
   "parent": null,
   "url": "https://easternarc.or.tz/grants/",
   "summary": "Micro, medium and multi-year grants from a Tanzanian endowment fund for conservation and community projects in the Eastern Arc Mountains, with a yearly call for community development and climate adaptation grants.",
-  "approaches": ["community_conservation", "protected_areas"],
-  "applicant_types": ["government", "ngo", "community_group", "research_institution", "individual"],
-  "geography": { "scope": "countries", "countries": ["TZ"], "label": "Eastern Arc Mountains" },
+  "approaches": [
+    "community_conservation",
+    "protected_areas"
+  ],
+  "applicant_types": [
+    "government",
+    "ngo",
+    "community_group",
+    "research_institution",
+    "individual"
+  ],
+  "geography": {
+    "scope": "countries",
+    "countries": [
+      "TZ"
+    ],
+    "label": "Eastern Arc Mountains"
+  },
   "access": "direct",
   "window": "fixed",
   "amount": {
@@ -21,8 +36,40 @@
     "per": "year",
     "note": "Medium project grants"
   },
-  "co_finance_required": null,
+  "co_finance_required": true,
+  "consortium_required": false,
   "reporting": null,
+  "eligibility": [
+    {
+      "rule": "NGOs and community groups work with local communities",
+      "kind": "project"
+    },
+    {
+      "rule": "Community groups have 5+ members recognized by the village government",
+      "kind": "legal"
+    },
+    {
+      "rule": "NGOs registered at least 2 years before applying",
+      "kind": "legal"
+    },
+    {
+      "rule": "Projects with foreign partners request support only for the Tanzanian portion",
+      "kind": "project"
+    }
+  ],
+  "co_finance": {
+    "min_share": 5,
+    "in_kind": true,
+    "applies_to": "forest conservation and community development projects"
+  },
+  "documents": [
+    "Proposal cover sheet",
+    "Authorized Organizational Representative or individual applicant certification",
+    "Conflict of interest certification",
+    "Detailed, itemized budget for each year of support requested",
+    "Budget justification annex of no more than 5 pages",
+    "Reference information annex, for research proposals"
+  ],
   "calls": [
     {
       "id": "annual-community-grants",
@@ -78,7 +125,128 @@
       "quote": "EAMCEF considers proposals for cooperative projects involving Tanzanian and foreign organizations, provided the support is requested only for the Tanzanian portion of the collaborative effort.",
       "checked_at": "2026-11-20",
       "method": "page"
-    }
+    },
+    "co_finance_required": {
+      "source_url": "https://easternarc.or.tz/wp-content/uploads/2023/10/EAMCEF-GUIDELINE-BOOK_2022.pdf",
+      "quote": "All forest conservation and community development projects need to have some level of financial or in-kind input to complement the funding provided by EAMCEF.",
+      "checked_at": "2026-11-20",
+      "method": "page"
+    },
+    "consortium_required": {
+      "source_url": "https://easternarc.or.tz/wp-content/uploads/2023/10/EAMCEF-GUIDELINE-BOOK_2022.pdf",
+      "quote": "The Recipient can as well be the Implementer in cases where the management of the funds and the implementation of project activities are all vested into one and the same organization.",
+      "checked_at": "2026-11-20",
+      "method": "page"
+    },
+    "eligibility": [
+      {
+        "source_url": "https://easternarc.or.tz/grants/",
+        "quote": "Eligible NGOs and local community groups must be those working with local communities.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://easternarc.or.tz/grants/",
+        "quote": "A group of five or more people recognized by the village government is defined as a local community group in this context.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://easternarc.or.tz/grants/",
+        "quote": "Any applying NGO must have been registered at least 2 years before the proposing date.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://easternarc.or.tz/grants/",
+        "quote": "EAMCEF considers proposals for cooperative projects involving Tanzanian and foreign organizations, provided the support is requested only for the Tanzanian portion of the collaborative effort.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "co_finance": {
+      "source_url": "https://easternarc.or.tz/wp-content/uploads/2023/10/EAMCEF-GUIDELINE-BOOK_2022.pdf",
+      "quote": "The level of contribution depends on the type of submission and project that is proposed, but at a minimum should equal at least 5% of the total project costs.",
+      "checked_at": "2026-11-20",
+      "method": "page"
+    },
+    "documents": [
+      {
+        "source_url": "https://easternarc.or.tz/wp-content/uploads/2023/10/EAMCEF-GUIDELINE-BOOK_2022.pdf",
+        "quote": "All project applicants must complete the cover sheet and provide the information required in the proposal.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://easternarc.or.tz/wp-content/uploads/2023/10/EAMCEF-GUIDELINE-BOOK_2022.pdf",
+        "quote": "Certification for Authorized Organizational Representative (AOR) or Individual Applicant The AOR is required to complete certifications regarding the accuracy and completeness of statements contained in the proposal, as well as to certify that the organization (or individual) agree to accept the obligation to comply with award terms and conditions. · Certification Regarding Conflict of Interest",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://easternarc.or.tz/wp-content/uploads/2023/10/EAMCEF-GUIDELINE-BOOK_2022.pdf",
+        "quote": "The proposal must contain a detailed, itemized budget for each year of support requested.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://easternarc.or.tz/wp-content/uploads/2023/10/EAMCEF-GUIDELINE-BOOK_2022.pdf",
+        "quote": "A detailed budget justification should appear in a separate annex. The annex should include a budget justification of no more than 5 pages to justify the budget numbers provided in this section.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://easternarc.or.tz/wp-content/uploads/2023/10/EAMCEF-GUIDELINE-BOOK_2022.pdf",
+        "quote": "For all research proposals, reference information is required and should appear in an annex.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "effort": [
+      {
+        "source_url": "https://easternarc.or.tz/grants/",
+        "quote": "Last week of September proposals due in offices of EAMCEF",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://easternarc.or.tz/grants/",
+        "quote": "Review processes completed and projects selected and ranked for funding",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://easternarc.or.tz/grants/",
+        "quote": "Board meets and reaches funding decision regarding projects",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "after_award": [
+      {
+        "source_url": "https://easternarc.or.tz/wp-content/uploads/2023/10/EAMCEF-GUIDELINE-BOOK_2022.pdf",
+        "quote": "Discrete/Medium Grants - Projects approved for one to three years submit an end of the 1stand 2nd tranche funds reports, giving technical and financial details and a final report at the conclusion of the project.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://easternarc.or.tz/wp-content/uploads/2023/10/EAMCEF-GUIDELINE-BOOK_2022.pdf",
+        "quote": "Undertaking of a field visit in which EAMCEF monitoring staff will be able to verify what have actually been undertaken in the implementation of the planned activities.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ]
   },
-  "checked_at": "2026-11-20"
+  "checked_at": "2026-11-20",
+  "effort": {
+    "steps": [
+      "Proposal",
+      "Review and ranking",
+      "Board funding decision"
+    ]
+  },
+  "after_award": {
+    "reports": "other",
+    "site_visits": true
+  }
 }

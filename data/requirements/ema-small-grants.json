@@ -1,0 +1,73 @@
+{
+  "id": "ema-small-grants",
+  "read_on": "2026-11-20",
+  "prompt_version": "req-2026-11-20.1",
+  "models": ["cursor:gpt-5.6-luna-high"],
+  "complete": false,
+  "reasons": [
+    "11 links could not be ranked without Jev",
+    "14 links could not be ranked without Jev",
+    "Jev did not check this reading, so an absent fact is not known to be absent"
+  ],
+  "requirements_checked": false,
+  "documents": [
+    {
+      "ref": "D1",
+      "url": "https://www.elephantmanagers.org/Small-Grants-Program",
+      "final_url": "https://www.elephantmanagers.org/Small-Grants-Program",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 1826,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:674bbf844c1d7f7c14533277cbfcb325ec3ee70f7e74ba1129d743a229ec8b19"
+    },
+    {
+      "ref": "D2",
+      "url": "https://www.elephantmanagers.org/FAQs",
+      "final_url": "https://www.elephantmanagers.org/FAQs",
+      "from": "https://www.elephantmanagers.org/Small-Grants-Program",
+      "anchor": "FAQs",
+      "depth": 1,
+      "pdf": false,
+      "chars": 7815,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:167d25719365f917b309b227238b4f2eae264ca6da808a19abec7cf53e2a209c"
+    },
+    {
+      "ref": "D3",
+      "url": "https://www.elephantmanagers.org/resources/Documents/EMA.SmallGrant2026.Application%20FINAL_.pdf",
+      "final_url": "https://cdn.wildapricot.com/279664/resources/Documents/EMA.SmallGrant2026.Application%20FINAL_.pdf?version=1768400139000&Policy=eyJTdGF0ZW1lbnQiOiBbeyJSZXNvdXJjZSI6Imh0dHBzOi8vY2RuLndpbGRhcHJpY290LmNvbS8yNzk2NjQvcmVzb3VyY2VzL0RvY3VtZW50cy9FTUEuU21hbGxHcmFudDIwMjYuQXBwbGljYXRpb24lMjBGSU5BTF8ucGRmP3ZlcnNpb249MTc2ODQwMDEzOTAwMCIsIkNvbmRpdGlvbiI6eyJEYXRlTGVzc1RoYW4iOnsiQVdTOkVwb2NoVGltZSI6MTc5NTE3ODkwNn0sIklwQWRkcmVzcyI6eyJBV1M6U291cmNlSXAiOiIwLjAuMC4wLzAifX19XX0_&Signature=slzzDwew-nDgZn157cBECA72AL44yweJEhVVipbWtLX9cC~QH2-uzq-GmqxeoYm8OJl77cc9QrxrZE2d-jgGvszzXpkSP5paUMVPuKcbX8NYRj-atcWNTfCq8Av2opymmpz3HShH20JDW5v0qLFDirAbcgAXM6OZq4j6K9n5qkx16nOWewXwHm5RUGeutnTy9dRBJXYgV2rFI69sj39Ll7PFDeBGC~IahZ~CO1g~Cul83Rl7BLb7BFr0hOjXp~ZB2ZTQ6k8NqAPIJAedNsjw1cwb8i6fF1b2BV~yoflbZNfNpNCxAmhomQfDG5t3J6It1TFdobKG5BJ6zOtCzzcMWA__&Key-Pair-Id=K27MGQSHTHAGGF",
+      "from": "https://www.elephantmanagers.org/Small-Grants-Program",
+      "anchor": "Click here to download the application form.",
+      "depth": 1,
+      "pdf": true,
+      "chars": 5154,
+      "pages": 2,
+      "low_text": false,
+      "hash": "sha256:bb15f5e731fe28551c75f9afd9398534195432acab0aa406ec85acf0aae05100"
+    }
+  ],
+  "failures": [],
+  "skipped_links": 59,
+  "chunks": [{ "id": "all", "docs": ["D1", "D2", "D3"], "chars": 15162 }],
+  "outcomes": {
+    "eligibility": "not_found",
+    "documents": "stated",
+    "effort": "stated",
+    "co_finance": "not_found",
+    "consortium": "not_found",
+    "after_award": "stated"
+  },
+  "written": ["documents", "effort", "after_award"],
+  "escalated": [],
+  "flags": [],
+  "notes": [
+    "extractor: The 2026 programme prioritizes education and community outreach, capacity-building in local communities, and improved captive elephant management and welfare; these are priorities rather than hard eligibility rules. The application guidance says AI should only supplement proposal development.",
+    "source ema-small-grants-2: added for https://www.elephantmanagers.org/resources/Documents/EMA.SmallGrant2026.Application%20FINAL_.pdf"
+  ],
+  "usd": 0
+}

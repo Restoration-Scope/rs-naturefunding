@@ -1,0 +1,106 @@
+{
+  "id": "dierenpark-amersfoort-wildlife-fund",
+  "read_on": "2026-11-20",
+  "prompt_version": "req-2026-11-20.1",
+  "models": ["cursor:gpt-5.6-luna-high"],
+  "complete": false,
+  "reasons": [
+    "7 links could not be ranked without Jev",
+    "https://wildlifefund.nl/wp-content/uploads/2021/06/30_projectcriteria-en-voorwaarden.doc would not open (unreadable: an old Word (.doc), OpenDocument or RTF file: needs conversion)",
+    "Jev did not check this reading, so an absent fact is not known to be absent"
+  ],
+  "requirements_checked": false,
+  "documents": [
+    {
+      "ref": "D1",
+      "url": "https://wildlifefund.nl/en/submit-project/",
+      "final_url": "https://wildlifefund.nl/en/submit-project/",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 4357,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:6b5580b44a77a1703ee2920da97f91c457097438f26d75ad7d6e0b8abec37730"
+    },
+    {
+      "ref": "D2",
+      "url": "https://wildlifefund.nl/en/about-wlf/policy-plan/",
+      "final_url": "https://wildlifefund.nl/en/about-wlf/policy-plan/",
+      "from": "https://wildlifefund.nl/en/submit-project/",
+      "anchor": "Policy Plan",
+      "depth": 1,
+      "pdf": false,
+      "chars": 924,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:af506e14ebd1324c0146f7947440e1ea5628892f5dcc83224127d8a0dbb6c04a"
+    },
+    {
+      "ref": "D3",
+      "url": "https://wildlifefund.nl/wp-content/uploads/2021/11/Projectcriteria-and-conditions.pdf",
+      "final_url": "https://wildlifefund.nl/wp-content/uploads/2021/11/Projectcriteria-and-conditions.pdf",
+      "from": "https://wildlifefund.nl/en/submit-project/",
+      "anchor": "English: Projectcriteria and conditions",
+      "depth": 1,
+      "pdf": true,
+      "chars": 2367,
+      "pages": 2,
+      "low_text": false,
+      "hash": "sha256:56d3631dbadbed094fd0d3cfad6a6136ae714fc724643ed8a6c7f91f5894b0b8"
+    },
+    {
+      "ref": "D4",
+      "url": "https://wildlifefund.nl/wp-content/uploads/2022/02/ENGELS-Bijlage-4-Rapportage-format.pdf",
+      "final_url": "https://wildlifefund.nl/wp-content/uploads/2022/02/ENGELS-Bijlage-4-Rapportage-format.pdf",
+      "from": "https://wildlifefund.nl/en/submit-project/",
+      "anchor": "English: Rapportage format",
+      "depth": 1,
+      "pdf": true,
+      "chars": 4059,
+      "pages": 2,
+      "low_text": false,
+      "hash": "sha256:c3e4f490b5c9522ee616f5d3566831de85d98e98dd7a9a0ee5745bf912af750f"
+    },
+    {
+      "ref": "D5",
+      "url": "https://wildlifefund.nl/wp-content/uploads/2021/06/beleidsplan-2020-2023.pdf",
+      "final_url": "https://wildlifefund.nl/wp-content/uploads/2021/06/beleidsplan-2020-2023.pdf",
+      "from": "https://wildlifefund.nl/en/about-wlf/policy-plan/",
+      "anchor": "Beleidsplan-2020-2023.pdf",
+      "depth": 2,
+      "pdf": true,
+      "chars": 11439,
+      "pages": 8,
+      "low_text": false,
+      "hash": "sha256:996c3df3d8f93c9f0fa8e021da91d9433ef1a035899147ab5744a0b58f06545e"
+    }
+  ],
+  "failures": [
+    {
+      "url": "https://wildlifefund.nl/wp-content/uploads/2021/06/30_projectcriteria-en-voorwaarden.doc",
+      "from": "https://wildlifefund.nl/en/submit-project/",
+      "kind": "unreadable",
+      "message": "an old Word (.doc), OpenDocument or RTF file: needs conversion"
+    }
+  ],
+  "skipped_links": 25,
+  "chunks": [{ "id": "all", "docs": ["D1", "D2", "D3", "D4", "D5"], "chars": 23805 }],
+  "outcomes": {
+    "eligibility": "stated",
+    "documents": "stated",
+    "effort": "stated",
+    "co_finance": "not_found",
+    "consortium": "not_found",
+    "after_award": "stated"
+  },
+  "written": ["eligibility", "documents", "effort", "after_award"],
+  "escalated": [],
+  "flags": [],
+  "notes": [
+    "extractor: D1 says there is no open call and does not state a 2026 deadline. It also says attachments will not be taken into account, although the form lists attachment uploads.",
+    "source dierenpark-amersfoort-wildlife-fund-2: added for https://wildlifefund.nl/wp-content/uploads/2021/11/Projectcriteria-and-conditions.pdf"
+  ],
+  "usd": 0
+}

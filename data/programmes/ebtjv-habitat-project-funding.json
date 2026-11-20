@@ -9,7 +9,10 @@
   "parent": null,
   "url": "https://www.easternbrooktrout.net/projects/funding/2027-funding-application-information",
   "summary": "Federal National Fish Habitat Partnership money, distributed by the Eastern Brook Trout Joint Venture, for projects that conserve and restore habitat supporting wild brook trout. Applicants go through a pre-application and then an invited full application.",
-  "approaches": ["freshwater", "species_conservation"],
+  "approaches": [
+    "freshwater",
+    "species_conservation"
+  ],
   "applicant_types": null,
   "geography": null,
   "access": "direct",
@@ -19,8 +22,16 @@
     "max": 50000,
     "note": "Maximum that may be requested under EBTJV-NFHP funds"
   },
-  "co_finance_required": null,
+  "co_finance_required": true,
   "reporting": null,
+  "effort": {
+    "steps": [
+      "Contact EBTJV point of contact",
+      "Pre-application",
+      "Full application, if invited",
+      "Federal review (NFHP and USFWS)"
+    ]
+  },
   "calls": [
     {
       "id": "fy27",
@@ -28,7 +39,10 @@
       "url": "https://www.easternbrooktrout.net/projects/funding/2027-funding-application-information",
       "status": "closed",
       "opens": "2026-06-22",
-      "deadline": { "date": "2026-07-15", "text": "closed on July 15" },
+      "deadline": {
+        "date": "2026-07-15",
+        "text": "closed on July 15"
+      },
       "evidence": {
         "status": {
           "source_url": "https://www.easternbrooktrout.net/projects/funding/2027-funding-application-information",
@@ -70,7 +84,91 @@
       "quote": "A maximum of $50,000 may be requested.",
       "checked_at": "2026-11-20",
       "method": "page"
-    }
+    },
+    "effort": [
+      {
+        "source_url": "https://www.easternbrooktrout.net/projects/funding/2027-funding-application-information",
+        "quote": "Applicants are required to contact their EBTJV state or federal point of contact prior to submitting a pre-application.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.easternbrooktrout.net/projects/funding/2027-funding-application-information",
+        "quote": "This RFP opened on June 22, 2026 with a pre-application form and closed on July 15.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.easternbrooktrout.net/projects/funding/2027-funding-application-information",
+        "quote": "This table is only required for the second, full application step, for those selected.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://easternbrooktrout.net/projects/funding/2027-funding-application-information/fy27-program-information",
+        "quote": "Pre-Application Submission (Required) Invitation-Only Full Proposal Program and Federal Review (NFHP and USFWS)",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "eligibility": [
+      {
+        "source_url": "https://easternbrooktrout.net/projects/funding/2027-funding-application-information/fy27-program-information",
+        "quote": "Eligible Applicants State, county, and local governments Federal resource and land management agencies Private, Public, and State controlled institutions of higher education Watershed groups and coalitions Nonprofits having a 501 (c)(3) status with the IRS Native American tribal governments (Federally recognized) Native American tribal organizations (other than Federally recognized)",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://easternbrooktrout.net/projects/funding/2027-funding-application-information/fy27-application-guidance",
+        "quote": "These funds can only be used for on-the-ground brook trout conservation and restoration projects in the native eastern range, and related design and short-term monitoring activities; they may not be used for research projects.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "co_finance_required": {
+      "source_url": "https://easternbrooktrout.net/projects/funding/2027-funding-application-information/fy27-program-information",
+      "quote": "Funding must be matched with nonfederal contributions* (this requirement is waived for Tribal projects).",
+      "checked_at": "2026-11-20",
+      "method": "page"
+    },
+    "co_finance": {
+      "source_url": "https://easternbrooktrout.net/projects/funding/2027-funding-application-information/fy27-application-guidance",
+      "quote": "Projects receiving NFHP funds must meet the applicable non-federal cost-share requirement. To meet the 1:1 non-federal match requirement, non-federal funds contributions must not come from, be matched to, or otherwise tied to a federal source. Match may include cash, time, materials, or other in-kind services.",
+      "checked_at": "2026-11-20",
+      "method": "page"
+    },
+    "after_award": [
+      {
+        "source_url": "https://easternbrooktrout.net/projects/funding/2027-funding-application-information/fy27-application-guidance",
+        "quote": "All organizations that receive NFHP funding are required to complete all requirements for federal grants, including registration on the federal System for Award Management (SAM.gov), Automated Standard Application for Payments (ASAP), Grants Solutions grant management system, and provide interim and annual reports to the FWS and EBTJV.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://easternbrooktrout.net/projects/funding/2027-funding-application-information/fy27-application-guidance",
+        "quote": "EBTJV will also require a project end report with photos.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ]
   },
-  "checked_at": "2026-11-20"
+  "checked_at": "2026-11-20",
+  "eligibility": [
+    {
+      "rule": "A state, local or federal government body, university, watershed group, IRS 501(c)(3) nonprofit or tribe",
+      "kind": "legal"
+    },
+    {
+      "rule": "On-the-ground brook trout habitat project in its native eastern range, not research",
+      "kind": "project"
+    }
+  ],
+  "co_finance": {
+    "ratio": "1:1",
+    "in_kind": true,
+    "applies_to": "Projects not led by a Tribe"
+  },
+  "after_award": {
+    "reports": "yearly"
+  }
 }

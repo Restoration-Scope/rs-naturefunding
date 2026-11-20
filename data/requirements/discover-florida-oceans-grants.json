@@ -1,0 +1,85 @@
+{
+  "id": "discover-florida-oceans-grants",
+  "read_on": "2026-11-20",
+  "prompt_version": "req-2026-11-20.1",
+  "models": ["cursor:gpt-5.6-luna-high"],
+  "complete": false,
+  "reasons": [
+    "4 links could not be ranked without Jev",
+    "the text names a document with rules that was not read: Online application",
+    "Jev did not check this reading, so an absent fact is not known to be absent"
+  ],
+  "requirements_checked": false,
+  "documents": [
+    {
+      "ref": "D1",
+      "url": "https://wildlifeflorida.org/discover-floridas-oceans-tag-grants/",
+      "final_url": "https://wildlifeflorida.org/discover-floridas-oceans-tag-grants/",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 45631,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:5a5e31e164c86a97c2e34295d6de27c90c5d117a56dae423956b726c29a62939"
+    },
+    {
+      "ref": "D2",
+      "url": "https://wildlifeflorida.org/privacy-policy/",
+      "final_url": "https://wildlifeflorida.org/privacy-policy/",
+      "from": "https://wildlifeflorida.org/discover-floridas-oceans-tag-grants/",
+      "anchor": "Privacy Policy",
+      "depth": 1,
+      "pdf": false,
+      "chars": 4764,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:fda8542195f7d87b55efa651d3606948ab75d88dcffb75c458033326440bbdcc"
+    },
+    {
+      "ref": "D3",
+      "url": "https://wildlifeflorida.org/terms-conditions/",
+      "final_url": "https://wildlifeflorida.org/terms-conditions/",
+      "from": "https://wildlifeflorida.org/discover-floridas-oceans-tag-grants/",
+      "anchor": "Terms & Conditions",
+      "depth": 1,
+      "pdf": false,
+      "chars": 3850,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:ae27d90336598670d2d9bf462abc3208ca28ea91c00e5fa29844ddcaa52d01c7"
+    },
+    {
+      "ref": "D4",
+      "url": "https://wildlifeflorida.org/digital-millennium-copyright-act-policy/",
+      "final_url": "https://wildlifeflorida.org/digital-millennium-copyright-act-policy/",
+      "from": "https://wildlifeflorida.org/discover-floridas-oceans-tag-grants/",
+      "anchor": "Digital Millennium Copyright Act Policy",
+      "depth": 1,
+      "pdf": false,
+      "chars": 10460,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:35257eb87eb67e724b96dca9633fc661b7ddd3686c7ed74944b810991b458426"
+    }
+  ],
+  "failures": [],
+  "skipped_links": 163,
+  "chunks": [{ "id": "all", "docs": ["D1", "D2", "D3", "D4"], "chars": 65214 }],
+  "outcomes": {
+    "eligibility": "stated",
+    "documents": "not_found",
+    "effort": "stated",
+    "co_finance": "stated",
+    "consortium": "not_found",
+    "after_award": "not_found"
+  },
+  "written": ["eligibility", "effort", "co_finance"],
+  "escalated": [],
+  "flags": [],
+  "notes": [
+    "extractor: Additional eligibility requirements and funding restrictions are provided in the online application."
+  ],
+  "usd": 0
+}
