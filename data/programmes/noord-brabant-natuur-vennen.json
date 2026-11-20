@@ -1,20 +1,87 @@
 {
   "id": "noord-brabant-natuur-vennen",
   "name": "Provincie Noord-Brabant Subsidieregeling natuur: Herstel en behoud vennen; uitvoering en onderzoek",
-  "funder": { "name": "Provincie Noord-Brabant", "url": "https://www.brabant.nl/" },
+  "funder": {
+    "name": "Provincie Noord-Brabant",
+    "url": "https://www.brabant.nl/"
+  },
   "administered_by": null,
   "parent": null,
   "url": "https://lokaleregelgeving.overheid.nl/CVDR601479",
   "summary": "Provincial project subsidy for restoring or maintaining fens and pools (ecotope types V1, V2, V3, V6) in Noord-Brabant, including preparatory research. Legal entities or partnerships of legal entities can apply; requests under EUR 25,000 are refused. The last application period ended on 15 December 2025 and the current regulation sets no later period.",
-  "approaches": ["wetlands", "freshwater"],
-  "applicant_types": ["ngo", "company", "government"],
-  "geography": { "scope": "countries", "countries": ["NL"], "label": "Noord-Brabant" },
+  "approaches": [
+    "wetlands",
+    "freshwater"
+  ],
+  "applicant_types": [
+    "ngo",
+    "company",
+    "government"
+  ],
+  "geography": {
+    "scope": "countries",
+    "countries": [
+      "NL"
+    ],
+    "label": "Noord-Brabant"
+  },
   "access": "direct",
   "window": "fixed",
-  "amount": { "currency": "EUR", "min": 25000, "note": "Requests below EUR 25,000 are refused" },
-  "pool": { "currency": "EUR", "value": 790994, "period": "round", "label": "the 2025 round" },
-  "co_finance_required": null,
+  "amount": {
+    "currency": "EUR",
+    "min": 25000,
+    "note": "Requests below EUR 25,000 are refused"
+  },
+  "pool": {
+    "currency": "EUR",
+    "value": 790994,
+    "period": "round",
+    "label": "the 2025 round"
+  },
+  "co_finance_required": false,
+  "consortium_required": false,
   "reporting": "Monitoring for the life of the project, an annual progress report when the project runs over 12 months, and results made accessible to others.",
+  "eligibility": [
+    {
+      "rule": "Project has not begun before the application",
+      "kind": "project"
+    },
+    {
+      "rule": "Project is not one of the applicant's statutory tasks",
+      "kind": "legal"
+    },
+    {
+      "rule": "No prior provincial subsidy was granted for the project",
+      "kind": "legal"
+    },
+    {
+      "rule": "Project is carried out in Noord-Brabant",
+      "kind": "project"
+    },
+    {
+      "rule": "Project concerns a fen with ecotope type V1, V2, V3 or V6",
+      "kind": "project"
+    },
+    {
+      "rule": "Project concerns a measure listed on the Measures Map or its explanation",
+      "kind": "project"
+    },
+    {
+      "rule": "Applicant can complete the project within five years after its start date",
+      "kind": "project"
+    },
+    {
+      "rule": "Applicant monitors the project throughout its duration",
+      "kind": "capacity"
+    }
+  ],
+  "documents": [
+    "Project location map",
+    "Realistic project planning",
+    "Monitoring plan meeting Appendix 9 requirements",
+    "Project plan with a balanced and realistic budget",
+    "Cooperation agreement, if a partnership lacks legal personality"
+  ],
   "calls": [
     {
       "id": "2025",
@@ -86,12 +153,111 @@
       "checked_at": "2026-11-20",
       "method": "page"
     },
+    "co_finance_required": {
+      "source_url": "https://lokaleregelgeving.overheid.nl/CVDR601479",
+      "quote": "De hoogte van de subsidie bedraagt 100% van de subsidiabele kosten.",
+      "checked_at": "2026-11-20",
+      "method": "page"
+    },
+    "consortium_required": {
+      "source_url": "https://lokaleregelgeving.overheid.nl/CVDR601479",
+      "quote": "a. rechtspersonen;",
+      "checked_at": "2026-11-20",
+      "method": "page"
+    },
     "reporting": {
       "source_url": "https://lokaleregelgeving.overheid.nl/CVDR601479",
       "quote": "overlegt jaarlijks een tussentijds voortgangsverslag, indien de periode van uitvoering van de activiteiten waarvoor de subsidie wordt verstrekt meer dan twaalf maanden bedraagt",
       "checked_at": "2026-11-20",
       "method": "page"
-    }
+    },
+    "eligibility": [
+      {
+        "source_url": "https://lokaleregelgeving.overheid.nl/CVDR601479",
+        "quote": "reeds voor indiening van de aanvraag is begonnen met de uitvoering van het project",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://lokaleregelgeving.overheid.nl/CVDR601479",
+        "quote": "het project behoort tot de wettelijke taken van de subsidieaanvrager",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://lokaleregelgeving.overheid.nl/CVDR601479",
+        "quote": "voor het project reeds provinciale subsidie is verstrekt",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://lokaleregelgeving.overheid.nl/CVDR601479",
+        "quote": "het project wordt uitgevoerd in de provincie Noord-Brabant, blijkend uit een kaart van de projectlocatie of projectlocaties",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://lokaleregelgeving.overheid.nl/CVDR601479",
+        "quote": "het project heeft betrekking op een ven met ecotooptype V1, V2, V3 of V6",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://lokaleregelgeving.overheid.nl/CVDR601479",
+        "quote": "het project betreft een maatregel als opgenomen op de Maatregelenkaart of in de Toelichting Maatregelenkaart",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://lokaleregelgeving.overheid.nl/CVDR601479",
+        "quote": "de subsidieaanvrager kan het project binnen vijf jaar na de startdatum afronden, blijkend uit een realistische planning",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://lokaleregelgeving.overheid.nl/CVDR601479",
+        "quote": "de subsidieaanvrager monitort projecten gericht op behoud of herstel gedurende de looptijd van het project, blijkend uit een monitoringsplan dat voldoet aan de vereisten, opgenomen in bijlage 9, behorende bij deze regeling",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "documents": [
+      {
+        "source_url": "https://lokaleregelgeving.overheid.nl/CVDR601479",
+        "quote": "blijkend uit een kaart van de projectlocatie of projectlocaties",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://lokaleregelgeving.overheid.nl/CVDR601479",
+        "quote": "blijkend uit een realistische planning; f. de subsidieaanvrager monitort projecten gericht op behoud of herstel gedurende de looptijd van het project, blijkend uit een monitoringsplan dat voldoet aan de vereisten, opgenomen in bijlage 9, behorende bij deze regeling",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://lokaleregelgeving.overheid.nl/CVDR601479",
+        "quote": "aan het project ligt een projectplan ten grondslag, waarin in ieder geval is opgenomen: 1°. op welke wijze wordt voldaan aan de vereisten in deze paragraaf; 2°. een sluitende en realistische begroting.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://lokaleregelgeving.overheid.nl/CVDR601479",
+        "quote": "draagt het project de instemming van alle deelnemers van het samenwerkingsverband, blijkend uit een samenwerkingsovereenkomst.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "after_award": [
+      {
+        "source_url": "https://lokaleregelgeving.overheid.nl/CVDR601479",
+        "quote": "overlegt jaarlijks een tussentijds voortgangsverslag, indien de periode van uitvoering van de activiteiten waarvoor de subsidie wordt verstrekt meer dan twaalf maanden bedraagt",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ]
   },
-  "checked_at": "2026-11-20"
+  "checked_at": "2026-11-20",
+  "after_award": {
+    "reports": "yearly"
+  }
 }

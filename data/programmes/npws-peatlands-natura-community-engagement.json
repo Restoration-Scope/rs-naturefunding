@@ -9,8 +9,13 @@
   "parent": null,
   "url": "https://www.npws.ie/peatlands-and-turf-cutting/peatlands-and-natura-community-engagement-scheme-2026",
   "summary": "Competitive fund for community and local organisations running peatland and Natura 2000 site projects such as conservation management, monitoring, invasive species and fire control, funding 80% of costs. The 2026 call is closed; the page does not say whether it recurs.",
-  "approaches": ["peatlands", "community_conservation"],
-  "applicant_types": ["community_group"],
+  "approaches": [
+    "peatlands",
+    "community_conservation"
+  ],
+  "applicant_types": [
+    "community_group"
+  ],
   "geography": null,
   "access": "direct",
   "window": "fixed",
@@ -21,6 +26,59 @@
   },
   "co_finance_required": true,
   "reporting": null,
+  "effort": {
+    "steps": [
+      "Application submission",
+      "NPWS application assessment"
+    ],
+    "due": [
+      "2026-01-09",
+      null
+    ]
+  },
+  "eligibility": [
+    {
+      "rule": "Has legal status",
+      "kind": "legal"
+    },
+    {
+      "rule": "Is not a local authority or commercial project",
+      "kind": "project"
+    },
+    {
+      "rule": "If outside Natura 2000, is a peatland site",
+      "kind": "project"
+    },
+    {
+      "rule": "Can be delivered in a realistic timeframe during 2026",
+      "kind": "project"
+    },
+    {
+      "rule": "Does not solely benefit an individual, use unrelated equipment or generate income",
+      "kind": "project"
+    },
+    {
+      "rule": "Does not include access or road improvement measures or drains on bogs used for turf cutting or commercial uses",
+      "kind": "project"
+    },
+    {
+      "rule": "Carries out improvement works only when necessary, not ordinary maintenance",
+      "kind": "project"
+    }
+  ],
+  "co_finance": {
+    "in_kind": true,
+    "min_share": 20
+  },
+  "after_award": {
+    "reports": "final"
+  },
+  "documents": [
+    "Method statement, for physical works",
+    "Preferred supplier quotations for goods and services",
+    "Proof of legal status of the group or organisation",
+    "Written consent of affected landowners, if applicable"
+  ],
   "calls": [
     {
       "id": "2026",
@@ -28,7 +86,10 @@
       "url": "https://www.npws.ie/peatlands-and-turf-cutting/peatlands-and-natura-community-engagement-scheme-2026",
       "status": "closed",
       "opens": null,
-      "deadline": { "date": "2026-01-09", "text": "09 January 2026" },
+      "deadline": {
+        "date": "2026-01-09",
+        "text": "09 January 2026"
+      },
       "evidence": {
         "status": {
           "source_url": "https://www.npws.ie/peatlands-and-turf-cutting/peatlands-and-natura-community-engagement-scheme-2026",
@@ -71,11 +132,109 @@
       "method": "page"
     },
     "co_finance_required": {
-      "source_url": "https://www.npws.ie/peatlands-and-turf-cutting/peatlands-and-natura-community-engagement-scheme-2026",
-      "quote": "The maximum grant available is 80% of the costs of the project to a maximum of €40,000",
+      "source_url": "https://www.npws.ie/sites/default/files/files/pces-2026-terms-and-conditions-english.pdf",
+      "quote": "The remaining project costs must be funded through match funding in the form of financial contributions, voluntary and in-kind hours or donations.",
       "checked_at": "2026-11-20",
       "method": "page"
-    }
+    },
+    "effort": [
+      {
+        "source_url": "https://www.npws.ie/sites/default/files/files/pces-2026-terms-and-conditions-english.pdf",
+        "quote": "Applications will be accepted for 2026 projects until 9th January 2026.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.npws.ie/sites/default/files/files/pces-2026-terms-and-conditions-english.pdf",
+        "quote": "The NPWS will assess and recommend applications for consideration for funding under the scheme.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "eligibility": [
+      {
+        "source_url": "https://www.npws.ie/sites/default/files/files/pces-2026-terms-and-conditions-english.pdf",
+        "quote": "Proof of the legal status of any community group or organisation must be submitted with an application.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.npws.ie/sites/default/files/files/pces-2026-terms-and-conditions-english.pdf",
+        "quote": "Please note that local authority or commercial projects are not eligible for funding under this Scheme.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.npws.ie/sites/default/files/files/pces-2026-terms-and-conditions-english.pdf",
+        "quote": "Applications for sites that are not Natura 2000 will only be considered if they are peatland sites.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.npws.ie/sites/default/files/files/pces-2026-terms-and-conditions-english.pdf",
+        "quote": "Projects funded under the scheme should be commenced as soon as practicable and must be capable of being delivered in a realistic time-frame and during the 2026 calendar year.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.npws.ie/sites/default/files/files/pces-2026-terms-and-conditions-english.pdf",
+        "quote": " Projects that solely benefit an individual  Equipment, unless directly associated with the project  Income generating projects",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.npws.ie/sites/default/files/files/pces-2026-terms-and-conditions-english.pdf",
+        "quote": "Funding for access or road improvement measures or drains on bogs being used for turf cutting or commercial uses will not be eligible for funding under this scheme.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.npws.ie/sites/default/files/files/pces-2026-terms-and-conditions-english.pdf",
+        "quote": "Improvement works must be necessary and not merely ordinary maintenance or of a kind which the applicants could reasonably be expected to do for themselves.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "co_finance": {
+      "source_url": "https://www.npws.ie/sites/default/files/files/pces-2026-terms-and-conditions-english.pdf",
+      "quote": "Grants available under Category 2 will be between €500 and €20,000, with the maximum grant available being 80% of the costs of the project. The remaining project costs must be funded through match funding in the form of financial contributions, voluntary and in-kind hours or donations.",
+      "checked_at": "2026-11-20",
+      "method": "page"
+    },
+    "after_award": [
+      {
+        "source_url": "https://www.npws.ie/sites/default/files/files/pces-2026-terms-and-conditions-english.pdf",
+        "quote": "A completion report will be required on completion of the project.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "documents": [
+      {
+        "source_url": "https://www.npws.ie/sites/default/files/files/pces-2026-terms-and-conditions-english.pdf",
+        "quote": "For physical works a method statement must be also submitted appropriate to the scale and nature of the project.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.npws.ie/sites/default/files/files/pces-2026-terms-and-conditions-english.pdf",
+        "quote": "Project timelines and milestones should also be provided. Quotations must be supplied from the supplier for specific goods/materials/services. Goods catalogues will not be accepted as quotations. Please submit the preferred quotation with your application but retain on file other quotes received for audit purposes.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.npws.ie/sites/default/files/files/pces-2026-terms-and-conditions-english.pdf",
+        "quote": "Proof of the legal status of any community group or organisation must be submitted with an application.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.npws.ie/sites/default/files/files/pces-2026-terms-and-conditions-english.pdf",
+        "quote": "This written consent must be submitted with the application form",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ]
   },
   "checked_at": "2026-11-20"
 }
