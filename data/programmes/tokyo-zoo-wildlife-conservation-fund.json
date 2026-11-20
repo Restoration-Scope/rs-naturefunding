@@ -2,13 +2,13 @@
   "id": "tokyo-zoo-wildlife-conservation-fund",
   "name": "Tokyo Zoological Park Society Wildlife Conservation Fund",
   "funder": { "name": "Tokyo Zoological Park Society", "url": "https://www.tokyo-zoo.net/" },
-  "administered_by": null,
+  "administered_by": { "name": "公益財団法人東京動物園協会", "url": "https://www.tokyo-zoo.net/" },
   "parent": null,
   "url": "https://www.tokyo-zoo.net/wildlife-conservation-fund/index.html",
   "summary": "Yearly grants of up to JPY 1 million for practical wildlife conservation, research and outreach activities by organisations or individuals with at least a year of conservation experience. A 3-year partner division on a set theme also exists.",
   "approaches": ["species_conservation", "research"],
   "applicant_types": ["ngo", "individual"],
-  "geography": null,
+  "geography": { "scope": "global" },
   "access": "direct",
   "window": "fixed",
   "amount": {
@@ -31,7 +31,7 @@
         "status": {
           "source_url": "https://www.tokyo-zoo.net/wildlife-conservation-fund/index.html",
           "quote": "令和8年度(2026年度)助成の応募受付は終了しました",
-          "checked_at": "2026-11-12",
+          "checked_at": "2026-11-20",
           "method": "page"
         },
         "opens": {
@@ -50,9 +50,21 @@
     }
   ],
   "evidence": {
+    "administered_by": {
+      "source_url": "https://www.tokyo-zoo.net/wildlife-conservation-fund/index.html",
+      "quote": "公益財団法人東京動物園協会は、設立趣旨のひとつである「人と動物の共存への貢献」をいっそう進めるために、「東京動物園協会野生生物保全基金」を2011年に設置し",
+      "checked_at": "2026-11-20",
+      "method": "page"
+    },
     "applicant_types": {
       "source_url": "https://www.tokyo-zoo.net/wildlife-conservation-fund/application/index.html",
       "quote": "野生生物保全活動の実績が1年以上あり、かつ、政治活動、宗教活動または営利事業を主たる目的としない団体あるいは個人とします。",
+      "checked_at": "2026-11-20",
+      "method": "page"
+    },
+    "geography": {
+      "source_url": "https://www.tokyo-zoo.net/wildlife-conservation-fund/index.html",
+      "quote": "国内外のさまざまな主体による野生生物保全活動を推進し、その価値を多くの人に伝えることも目的としています",
       "checked_at": "2026-11-20",
       "method": "page"
     },
@@ -75,5 +87,5 @@
       "method": "page"
     }
   },
-  "checked_at": "2026-11-12"
+  "checked_at": "2026-11-20"
 }
