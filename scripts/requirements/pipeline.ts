@@ -8,6 +8,7 @@ import type { Programme, Source } from '../../src/data/schema'
 import { check, JEV, omissions, thinFields, type Judgement } from './check'
 import { apiWire, chunksOf, extract, FIELDS, fromApi, SYSTEM, userPrompt, WHOLE_CHARS, type Chunk, type Field, type Wire } from './extract'
 import { gather, urlKey, type Doc, type Gathered, type Reader } from './gather'
+import { UNREAD_DOC } from './leads'
 import type { ProWire } from './gpt-pro'
 import type { Ask, AskJev } from './models'
 import { emptyFacts, sameItem, sameQuote, verify, type Facts, type Flag } from './verify'
@@ -103,7 +104,7 @@ export async function run(p: Programme, deps: Deps): Promise<Result> {
   // that we don't have, a check that didn't run. One list, so no pass can forget to block it.
   const coverage = [...gathered.reasons]
   const unread = (names: string[], who = '') => {
-    for (const m of names) coverage.push(`${who}the text names a document with rules that was not read: ${m.slice(0, 160)}`)
+    for (const m of names) coverage.push(`${who}${UNREAD_DOC}${m.slice(0, 160)}`)
   }
   unread(first.missing)
   if (!deps.jev) coverage.push('Jev did not check this reading, so an absent fact is not known to be absent')
