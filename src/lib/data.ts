@@ -176,7 +176,7 @@ export function whereReach(p: Programme): string {
  */
 export function whereArea(p: Programme): { part?: string; within?: string } {
   const g = p.geography
-  if (g?.scope !== 'countries' || !g.label) return {}
+  if (g?.scope !== 'countries' || !g.label || (g.whole && g.countries.length === 1)) return {}
   if (comparableName(g.label) === comparableName(g.countries.map(countryName).join(' '))) return {}
   return g.countries.length === 1 ? { part: g.label } : { within: g.label }
 }

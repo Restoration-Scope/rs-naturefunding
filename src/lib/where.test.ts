@@ -25,6 +25,7 @@ describe('whether a programme page says it takes a country', () => {
   test.each([
     [{ scope: 'countries', countries: ['JP'], label: 'Yamanashi Prefecture' }, { part: 'Yamanashi Prefecture' }],
     [{ scope: 'countries', countries: ['DK'], label: 'Denmark' }, {}],
+    [{ scope: 'countries', countries: ['US'], label: 'All 50 states and DC', whole: true }, {}],
     [{ scope: 'countries', countries: ['HK', 'MO'], label: 'Hong Kong & Macao' }, {}],
     [{ scope: 'countries', countries: ['CO', 'EC', 'PE'], label: 'Tropical Andes' }, { within: 'Tropical Andes' }],
     [{ scope: 'countries', countries: ['CO'] }, {}],
