@@ -42,6 +42,69 @@
   },
   "co_finance_required": true,
   "reporting": "Quarterly narrative and expenditure reports, reimbursement documentation, and a final report are eligible administrative work.",
+  "effort": {
+    "steps": [
+      "SFS prequalification",
+      "Bid submission",
+      "Bid and project eligibility determination",
+      "Project evaluation, scoring and selection"
+    ],
+    "due": [
+      null,
+      "2026-12-17",
+      null,
+      null
+    ]
+  },
+  "eligibility": [
+    {
+      "rule": "A not-for-profit has 501(c)(3) status, New York incorporation and current charities reporting",
+      "kind": "legal"
+    },
+    {
+      "rule": "A not-for-profit is prequalified in SFS by the bid due date",
+      "kind": "legal"
+    },
+    {
+      "rule": "The project is located on a perennial stream",
+      "kind": "project"
+    },
+    {
+      "rule": "Project objectives, tasks and deliverables are completed and invoiced within the contract term",
+      "kind": "project"
+    },
+    {
+      "rule": "Crossing replacement projects pass at least a 1% annual chance storm",
+      "kind": "project"
+    },
+    {
+      "rule": "Project activities are not already funded by another NYS or federal assistance grant",
+      "kind": "project"
+    },
+    {
+      "rule": "Not an individual or unincorporated group",
+      "kind": "legal"
+    }
+  ],
+  "co_finance": {
+    "min_share": 9.09,
+    "in_kind": true
+  },
+  "after_award": {
+    "reports": "quarterly"
+  },
+  "documents": [
+    "Location map showing streams and project locations",
+    "Site photos showing current conditions",
+    "Project timeline from September 1, 2027 to August 31, 2030",
+    "QAPP applicability worksheet",
+    "Initial reconnaissance documentation, for Dam Removal Construction projects",
+    "Floodplain map with project location, if applicable",
+    "Property ownership proof or landowner permission",
+    "Signed sexual harassment prevention certification",
+    "Executive Order 16 certification",
+    "Gender-based violence and workplace certification"
+  ],
   "calls": [
     {
       "id": "round-50-2026",
@@ -111,15 +174,125 @@
     "co_finance_required": {
       "source_url": "https://dec.ny.gov/sites/default/files/2026-09/hre50tribrestoration.pdf",
       "quote": "For this grant opportunity, Bidders must match at least 10% of the grant funding amount.",
-      "checked_at": "2026-11-09",
-      "method": "human"
+      "checked_at": "2026-11-20",
+      "method": "page"
     },
     "reporting": {
       "source_url": "https://dec.ny.gov/sites/default/files/2026-09/hre50tribrestoration.pdf",
       "quote": "preparation of quarterly narrative and expenditure reports, reimbursement request documentation, and preparation of the final report upon project completion",
       "checked_at": "2026-11-09",
       "method": "human"
-    }
+    },
+    "effort": [
+      {
+        "source_url": "https://dec.ny.gov/sites/default/files/2026-09/hre50tribrestoration.pdf",
+        "quote": "All Bidders must be Prequalified in the SFS Grants Management System at the time and date that the bid is due.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://dec.ny.gov/sites/default/files/2026-09/hre50tribrestoration.pdf",
+        "quote": "Bid Due December 17, 2026; 3:00 p.m. ET",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://dec.ny.gov/sites/default/files/2026-09/hre50tribrestoration.pdf",
+        "quote": "Step 1: Bid and Project Eligibility Determination",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://dec.ny.gov/sites/default/files/2026-09/hre50tribrestoration.pdf",
+        "quote": "Step 2: Project Evaluation, Scoring and Selection",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "eligibility": [
+      {
+        "source_url": "https://dec.ny.gov/sites/default/files/2026-09/hre50tribrestoration.pdf",
+        "quote": "is qualified for tax-exempt status under Section 501(c)(3) of the Federal Internal Revenue Code, has filed a Certificate of Incorporation to be incorporated in New York State and is current in their charities reporting requirements with the Office of the Attorney General.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://dec.ny.gov/sites/default/files/2026-09/hre50tribrestoration.pdf",
+        "quote": "A not-for-profit organization must also be prequalified in SFS Grants Management by the bid due date to be determined eligible under this grant opportunity.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://dec.ny.gov/sites/default/files/2026-09/hre50tribrestoration.pdf",
+        "quote": "The project must be located on a perennial stream.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://dec.ny.gov/sites/default/files/2026-09/hre50tribrestoration.pdf",
+        "quote": "All projects must have defined objectives, tasks, and deliverables accounted for in performance measures that can be completed and invoiced within a three-year contract period/term of September 1, 2027 through August 31, 2030.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://dec.ny.gov/sites/default/files/2026-09/hre50tribrestoration.pdf",
+        "quote": "Crossing replacement projects must be designed to pass, at a minimum, a 1% annual chance storm (100-year flood).",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://dec.ny.gov/sites/default/files/2026-09/hre50tribrestoration.pdf",
+        "quote": "Projects already receiving funds from another NYS or Federal assistance grant program are not eligible to receive funding for the same project activities identified in this RFA.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://dec.ny.gov/sites/default/files/2026-09/hre50tribrestoration.pdf",
+        "quote": "Individuals and unincorporated groups are not eligible for this grant opportunity.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "co_finance": {
+      "source_url": "https://dec.ny.gov/sites/default/files/2026-09/hre50tribrestoration.pdf",
+      "quote": "In-Kind contributions are non-cash donations provided by non-state and/or non-federal third parties, which can include equipment, supplies, services, and other expendable property. Matching share contributions must support the objectives outlined in the work plan. For this grant opportunity, Bidders must match at least 10% of the grant funding amount.",
+      "checked_at": "2026-11-20",
+      "method": "page"
+    },
+    "after_award": [
+      {
+        "source_url": "https://dec.ny.gov/sites/default/files/2026-09/hre50tribrestoration.pdf",
+        "quote": "Quarterly Narrative Reports must be submitted in narrative form, no later than 30 days from the end of the calendar quarter.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "documents": [
+      {
+        "source_url": "https://dec.ny.gov/sites/default/files/2026-09/hre50tribrestoration.pdf",
+        "quote": "Location map showing stream(s) and location(s) to be addressed. c. ☐ Pictures of the site that establish the current conditions. d. ☐ A project timeline, showing project start date of September 1, 2027 with a completion date of August 31, 2030. e. ☐ QAPP Worksheet (applicability) f. ☐ Documentation of initial reconnaissance for dam removal (HRE Project Type 1)",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://dec.ny.gov/sites/default/files/2026-09/hre50tribrestoration.pdf",
+        "quote": "If the project is wholly or partially in a 0.2% (500 year) or 1% (100 year) annual chance of occurrence floodplain, the applicable floodplain map with the location of the project indicated is uploaded.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://dec.ny.gov/sites/default/files/2026-09/hre50tribrestoration.pdf",
+        "quote": "Proof of property ownership or landowner permission must be provided as an upload to the Bid, as outlined in \"Required Permissions\" (see page 15).",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://dec.ny.gov/sites/default/files/2026-09/hre50tribrestoration.pdf",
+        "quote": "The required certification for sexual harassment prevention is uploaded. 14. ☐ The required certification for Executive Order 16 is uploaded. 15. ☐ The required certification for Gender-Based Violence and the Workplace is uploaded.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ]
   },
   "checked_at": "2026-11-09"
 }

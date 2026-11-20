@@ -32,9 +32,70 @@
     "max": 75000,
     "typical": true
   },
-  "pool": {"currency": "USD", "value": 1500000, "period": "year"},
+  "pool": {
+    "currency": "USD",
+    "value": 1500000,
+    "period": "year"
+  },
   "co_finance_required": null,
   "reporting": null,
+  "effort": {
+    "steps": [
+      "Conversation with a program officer about fit (new applicants)",
+      "Application in the Grantee Portal"
+    ],
+    "due": [
+      null,
+      "2027-03-26"
+    ]
+  },
+  "eligibility": [
+    {
+      "rule": "A 501(c)(3) public charity, or fiscally sponsored by one",
+      "kind": "legal"
+    },
+    {
+      "rule": "In compliance with the Secretary of State where the organisation is headquartered",
+      "kind": "legal"
+    },
+    {
+      "rule": "Completed at least one full fiscal year of operations before applying",
+      "kind": "track_record",
+      "min_years": 1
+    },
+    {
+      "rule": "No environmental education programmes or religious activities",
+      "kind": "project"
+    },
+    {
+      "rule": "No trails, bike paths, developed parklands, gardens, nature centers, bioswales, green roofs or permeable pavements",
+      "kind": "project"
+    },
+    {
+      "rule": "No political campaigns, electoral politics or lobbying on pending legislation",
+      "kind": "project"
+    },
+    {
+      "rule": "No stand-alone conferences, publications, films, events, websites or videos",
+      "kind": "project"
+    },
+    {
+      "rule": "No endowments, capital campaigns or debt reduction",
+      "kind": "project"
+    }
+  ],
+  "after_award": {
+    "reports": "interim_and_final"
+  },
+  "documents": [
+    "Secretary of State compliance confirmation (a screenshot is fine)",
+    "Fiscal sponsorship agreement, if fiscally sponsored",
+    "List of current staff",
+    "List of current board members, with officers marked",
+    "Financials (audit, 990 or internal figures) for the last two completed fiscal years",
+    "Current-year organisation budget with year-to-date actuals",
+    "Bank letter or voided check to confirm ACH payment details"
+  ],
   "calls": [
     {
       "id": "2027-03",
@@ -63,7 +124,12 @@
     }
   ],
   "evidence": {
-    "pool": {"source_url": "https://gddf.org/what-we-do/priorities/land-conservation/apply-for-chicago-region-land-conservation-grants/", "quote": "The annual overall grant budget for Chicago Land Conservation is $1.5 million.", "checked_at": "2026-11-06", "method": "page"},
+    "pool": {
+      "source_url": "https://gddf.org/what-we-do/priorities/land-conservation/apply-for-chicago-region-land-conservation-grants/",
+      "quote": "The annual overall grant budget for Chicago Land Conservation is $1.5 million.",
+      "checked_at": "2026-11-06",
+      "method": "page"
+    },
     "applicant_types": {
       "source_url": "https://gddf.org/what-we-do/priorities/land-conservation/apply-for-chicago-region-land-conservation-grants/",
       "quote": "Organization must be a 501(c)(3) public charity (or be fiscally sponsored by one).",
@@ -93,7 +159,135 @@
       "quote": "Typical grant sizes range from between $15,000 to $75,000.",
       "checked_at": "2026-11-06",
       "method": "page"
-    }
+    },
+    "effort": [
+      {
+        "source_url": "https://gddf.org/what-we-do/priorities/land-conservation/apply-for-chicago-region-land-conservation-grants/",
+        "quote": "Prospective applicants must share more about their work to determine potential fit before applying.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://gddf.org/what-we-do/priorities/land-conservation/apply-for-chicago-region-land-conservation-grants/",
+        "quote": "Next grant deadline: Friday, March 26, 2027",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://gddf.org/what-we-do/priorities/land-conservation/apply-for-chicago-region-land-conservation-grants/",
+        "quote": "Log into the Grantee Portal to complete your application.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "eligibility": [
+      {
+        "source_url": "https://gddf.org/what-we-do/priorities/land-conservation/apply-for-chicago-region-land-conservation-grants/",
+        "quote": "Organization must be a 501(c)(3) public charity (or be fiscally sponsored by one).",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://gddf.org/what-we-do/priorities/land-conservation/apply-for-chicago-region-land-conservation-grants/",
+        "quote": "Organization must be in compliance with the Secretary of State where it is headquartered.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://gddf.org/what-we-do/priorities/land-conservation/apply-for-chicago-region-land-conservation-grants/",
+        "quote": "Organization must have completed at least one full fiscal year of operations before applying.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://gddf.org/what-we-do/priorities/land-conservation/apply-for-chicago-region-land-conservation-grants/",
+        "quote": "Environmental education programs and religious activities.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://gddf.org/what-we-do/priorities/land-conservation/apply-for-chicago-region-land-conservation-grants/",
+        "quote": "Projects for trails, bike paths, developed parklands, community and school gardens, nature centers, botanic gardens, bioswales, rain gardens, green roofs, and permeable pavements.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://gddf.org/what-we-do/priorities/land-conservation/apply-for-chicago-region-land-conservation-grants/",
+        "quote": "Projects or activities that involve political campaigns, electoral politics, or lobbying on pending legislation.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://gddf.org/what-we-do/priorities/land-conservation/apply-for-chicago-region-land-conservation-grants/",
+        "quote": "Stand-alone conferences, publications, films, events, websites, or videos.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://gddf.org/what-we-do/priorities/land-conservation/apply-for-chicago-region-land-conservation-grants/",
+        "quote": "Endowments, capital campaigns, or debt reduction.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "after_award": [
+      {
+        "source_url": "https://gddf.org/news/current-grantee-resources/",
+        "quote": "GDDF uses both progress and final reports to help us assess the impact of our grantmaking and to better understand your work.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://gddf.org/news/current-grantee-resources/",
+        "quote": "Multi-year grants are paid out annually upon receipt and review of an annual progress report.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "documents": [
+      {
+        "source_url": "https://gddf.org/wp-content/uploads/2025/05/Land-Gen-Ops-Sample.pdf",
+        "quote": "A screenshot is acceptable. Must be valid/unexpired at the time of your application. Must be in compliance with the Secretary of State where the organization is headquartered.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://gddf.org/wp-content/uploads/2025/05/Land-Gen-Ops-Sample.pdf",
+        "quote": "Please upload your fiscal sponsorship agreement",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://gddf.org/wp-content/uploads/2025/05/Land-Gen-Ops-Sample.pdf",
+        "quote": "Please upload a list of your organization's current staff",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://gddf.org/wp-content/uploads/2025/05/Land-Gen-Ops-Sample.pdf",
+        "quote": "Please upload a list of your organization's current Board members Please indicate Board officers",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://gddf.org/wp-content/uploads/2025/05/Land-Gen-Ops-Sample.pdf",
+        "quote": "For the fiscal year two years prior - please submit one of the following, listed in order of preference:",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://gddf.org/wp-content/uploads/2025/05/Land-Gen-Ops-Sample.pdf",
+        "quote": "Organization Budget for the current fiscal year, including year-to-date actuals",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://gddf.org/wp-content/uploads/2025/05/Land-Gen-Ops-Sample.pdf",
+        "quote": "To confirm your banking information please upload a copy of a bank letter or voided check.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ]
   },
   "checked_at": "2026-11-06"
 }

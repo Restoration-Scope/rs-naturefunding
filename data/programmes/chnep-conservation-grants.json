@@ -9,14 +9,75 @@
   "parent": null,
   "url": "https://www.chnep.org/chnep-conservation-grants",
   "summary": "Small reimbursement grants for community organisations in the 10-county Florida CHNEP region, for clean water, estuarine habitat protection and restoration, and public engagement projects. Work on private property is excluded.",
-  "approaches": ["coastal_marine", "freshwater", "community_conservation"],
-  "applicant_types": ["community_group"],
-  "geography": { "scope": "countries", "countries": ["US"], "label": "CHNEP 10-county region" },
+  "approaches": [
+    "coastal_marine",
+    "freshwater",
+    "community_conservation"
+  ],
+  "applicant_types": [
+    "community_group"
+  ],
+  "geography": {
+    "scope": "countries",
+    "countries": [
+      "US"
+    ],
+    "label": "CHNEP 10-county region"
+  },
   "access": "direct",
   "window": "fixed",
-  "amount": { "currency": "USD", "min": 500, "max": 9999 },
+  "amount": {
+    "currency": "USD",
+    "min": 500,
+    "max": 9999
+  },
   "co_finance_required": false,
   "reporting": null,
+  "effort": {
+    "steps": [
+      "Application by email"
+    ]
+  },
+  "eligibility": [
+    {
+      "rule": "Project avoids restoration or improvements on private property",
+      "kind": "project"
+    },
+    {
+      "rule": "Project is not an admission-fee event or service, except qualifying scholarships",
+      "kind": "project"
+    },
+    {
+      "rule": "Project does not personally benefit the applicant",
+      "kind": "project"
+    },
+    {
+      "rule": "Project excludes political action or legislative advocacy",
+      "kind": "project"
+    },
+    {
+      "rule": "Project excludes fundraising activities",
+      "kind": "project"
+    },
+    {
+      "rule": "Project has not been completed before the grant award",
+      "kind": "project"
+    },
+    {
+      "rule": "Project excludes activities related to permitting",
+      "kind": "project"
+    }
+  ],
+  "after_award": {
+    "reports": "final"
+  },
+  "documents": [
+    "One-page resume for project lead or organization",
+    "Project timeline",
+    "Project area map",
+    "W-9 copy",
+    "501c3 copy, if applicable"
+  ],
   "calls": [
     {
       "id": "fy27",
@@ -24,7 +85,10 @@
       "url": "https://www.chnep.org/chnep-conservation-grants",
       "status": "open",
       "opens": "2026-10-01",
-      "deadline": { "date": "2027-03-31", "text": "before April 1, 2027" },
+      "deadline": {
+        "date": "2027-03-31",
+        "text": "before April 1, 2027"
+      },
       "evidence": {
         "status": {
           "source_url": "https://www.chnep.org/chnep-conservation-grants",
@@ -80,11 +144,91 @@
       "method": "page"
     },
     "co_finance_required": {
-      "source_url": "https://www.chnep.org/chnep-conservation-grants",
-      "quote": "Match is not required, but proposals showing matching fund commitment through in-kind services",
+      "source_url": "https://www.chnep.org/_files/ugd/252fd8_77974166fd224bae90d9d164a953830f.docx?dn=9.25.26%20CHNEP%20Conservation%20Grant%20Application%20FY2027.docx",
+      "quote": "Match is not required, but proposals showing matching fund commitment through in-kind services (such as volunteer hours), or direct funding from other sources will receive special consideration.",
       "checked_at": "2026-11-20",
       "method": "page"
-    }
+    },
+    "effort": [
+      {
+        "source_url": "https://www.chnep.org/_files/ugd/252fd8_77974166fd224bae90d9d164a953830f.docx?dn=9.25.26%20CHNEP%20Conservation%20Grant%20Application%20FY2027.docx",
+        "quote": "Applications should be submitted via email to Grants@chnep.org.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "eligibility": [
+      {
+        "source_url": "https://www.chnep.org/_files/ugd/252fd8_77974166fd224bae90d9d164a953830f.docx?dn=9.25.26%20CHNEP%20Conservation%20Grant%20Application%20FY2027.docx",
+        "quote": "Restoration or improvements on private property",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.chnep.org/_files/ugd/252fd8_77974166fd224bae90d9d164a953830f.docx?dn=9.25.26%20CHNEP%20Conservation%20Grant%20Application%20FY2027.docx",
+        "quote": "Events or services for which there is an admission fee or charge; CHNEP will consider providing support for scholarships to allow participation by those who would not otherwise be able to attend",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.chnep.org/_files/ugd/252fd8_77974166fd224bae90d9d164a953830f.docx?dn=9.25.26%20CHNEP%20Conservation%20Grant%20Application%20FY2027.docx",
+        "quote": "Projects that personally benefit the applicant",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.chnep.org/_files/ugd/252fd8_77974166fd224bae90d9d164a953830f.docx?dn=9.25.26%20CHNEP%20Conservation%20Grant%20Application%20FY2027.docx",
+        "quote": "Political action or legislative advocacy",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.chnep.org/_files/ugd/252fd8_77974166fd224bae90d9d164a953830f.docx?dn=9.25.26%20CHNEP%20Conservation%20Grant%20Application%20FY2027.docx",
+        "quote": "Fundraising activities",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.chnep.org/_files/ugd/252fd8_77974166fd224bae90d9d164a953830f.docx?dn=9.25.26%20CHNEP%20Conservation%20Grant%20Application%20FY2027.docx",
+        "quote": "Projects/phase of project completed prior to the award of the grant",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.chnep.org/_files/ugd/252fd8_77974166fd224bae90d9d164a953830f.docx?dn=9.25.26%20CHNEP%20Conservation%20Grant%20Application%20FY2027.docx",
+        "quote": "Any activities related to permitting",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "after_award": [
+      {
+        "source_url": "https://www.chnep.org/_files/ugd/252fd8_77974166fd224bae90d9d164a953830f.docx?dn=9.25.26%20CHNEP%20Conservation%20Grant%20Application%20FY2027.docx",
+        "quote": "A Final Report will be the deliverable for the project and is required for lump-sum based reimbursement.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "documents": [
+      {
+        "source_url": "https://www.chnep.org/_files/ugd/252fd8_77974166fd224bae90d9d164a953830f.docx?dn=9.25.26%20CHNEP%20Conservation%20Grant%20Application%20FY2027.docx",
+        "quote": "A one-page resume for the project lead or organization. A project timeline Project area map",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.chnep.org/_files/ugd/252fd8_77974166fd224bae90d9d164a953830f.docx?dn=9.25.26%20CHNEP%20Conservation%20Grant%20Application%20FY2027.docx",
+        "quote": "A copy of W-9",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.chnep.org/_files/ugd/252fd8_77974166fd224bae90d9d164a953830f.docx?dn=9.25.26%20CHNEP%20Conservation%20Grant%20Application%20FY2027.docx",
+        "quote": "A copy of 501c3 if applicable",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ]
   },
   "checked_at": "2026-11-20"
 }

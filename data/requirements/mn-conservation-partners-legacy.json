@@ -1,0 +1,96 @@
+{
+  "id": "mn-conservation-partners-legacy",
+  "read_on": "2026-11-20",
+  "prompt_version": "req-2026-11-20.1",
+  "models": ["cursor:gpt-5.6-luna-high", "cursor:gpt-5.6-sol-high"],
+  "complete": false,
+  "reasons": [
+    "https://www.dnr.state.mn.us/grants/habitat/cpl/index.html would not open (blocked: HTTP 403)",
+    "https://files.dnr.state.mn.us/fish_wildlife/cpl/fy27-rfp.pdf: page 1 is an image: needs OCR",
+    "the text names a document with rules that was not read: CPL Program Manual",
+    "the text names a document with rules that was not read: How to Apply webpage",
+    "the text names a document with rules that was not read: State Grant Policy 08-13, Evaluating Grantee Performance",
+    "the text names a document with rules that was not read: State Grant Policy 08-06, Preaward Risk Assessment of Potential Grantees",
+    "the text names a document with rules that was not read: State Grant Policy 08-08, Grant Payments",
+    "the text names a document with rules that was not read: CPL Payment Manual",
+    "the text names a document with rules that was not read: State Grant Policy 08-10, Grant Monitoring",
+    "the text names a document with rules that was not read: State Grant Policy 08-01, Conflict of Interest for State Grant-making",
+    "the text names a document with rules that was not read: Requirements for Projects Involving Public Waters Work Permits",
+    "the text names a document with rules that was not read: Do I need a Permit?",
+    "the text names a document with rules that was not read: Operational Order 113, Invasive Species",
+    "the text names a document with rules that was not read: DNR Operational Order 59, Pesticides and Pest Control",
+    "the text names a document with rules that was not read: DNR Specific Pollinator Best Management Practices",
+    "the text names a document with rules that was not read: MN DNR Prescribed Burn Handbook",
+    "the text names a document with rules that was not read: Land Acquisition Procedures for Land to Be Conveyed to DNR",
+    "the text names a document with rules that was not read: Land Acquisition Procedures for Land NOT Conveyed to DNR",
+    "the text names a document with rules that was not read: DNR Development Standards for WMA/AMAs",
+    "the text names a document with rules that was not read: Minnesota Statutes 84C",
+    "the text names a document with rules that was not read: MS 97A.056",
+    "the text names a document with rules that was not read: Minnesota Statewide Conservation and Preservation Plan",
+    "the text names a document with rules that was not read: State Wildlife Action Plan",
+    "Jev did not check this reading, so an absent fact is not known to be absent"
+  ],
+  "requirements_checked": false,
+  "documents": [
+    {
+      "ref": "D1",
+      "url": "https://files.dnr.state.mn.us/fish_wildlife/cpl/funding_schedule.pdf",
+      "final_url": "https://files.dnr.state.mn.us/fish_wildlife/cpl/funding_schedule.pdf",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": true,
+      "chars": 1190,
+      "pages": 1,
+      "low_text": false,
+      "hash": "sha256:c43ad3b82edf5f3db9278d826371399e71610c9e18f420b95d872b42ef59a0bb"
+    },
+    {
+      "ref": "D2",
+      "url": "https://files.dnr.state.mn.us/fish_wildlife/cpl/fy27-rfp.pdf",
+      "final_url": "https://files.dnr.state.mn.us/fish_wildlife/cpl/fy27-rfp.pdf",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": true,
+      "chars": 68211,
+      "pages": 36,
+      "low_text": false,
+      "hash": "sha256:cbf915fef91d660c61a8752bd6fbb9f1158fa7cccfbf027130dee9e541679dab"
+    }
+  ],
+  "failures": [
+    {
+      "url": "https://www.dnr.state.mn.us/grants/habitat/cpl/index.html",
+      "from": null,
+      "kind": "blocked",
+      "message": "HTTP 403"
+    },
+    {
+      "url": "https://files.dnr.state.mn.us/fish_wildlife/cpl/fy27-rfp.pdf",
+      "from": null,
+      "kind": "low_text",
+      "message": "page 1 is an image: needs OCR"
+    }
+  ],
+  "skipped_links": 0,
+  "chunks": [{ "id": "all", "docs": ["D1", "D2"], "chars": 69569 }],
+  "outcomes": {
+    "eligibility": "stated",
+    "documents": "stated",
+    "effort": "stated",
+    "co_finance": "stated",
+    "consortium": "not_found",
+    "after_award": "stated"
+  },
+  "written": ["eligibility", "documents", "effort", "co_finance", "after_award"],
+  "escalated": ["eligibility"],
+  "flags": [],
+  "notes": [
+    "extractor: D1 gives the ECP Round 2 deadline as 2026-11-09. D2 gives the Metro Round 2 deadline as 2027-02-16; older Round 1 dates in D2 were not used. ECP applications use a pass/fail review, while Metro applications receive technical and Division Director review.",
+    "eligibility: kept 1 first-reading item no check faulted that the strong reading left out",
+    "source mn-conservation-partners-legacy-1: selector main dropped, a new quote sits outside it",
+    "source mn-conservation-partners-legacy-2: selector main dropped, a new quote sits outside it"
+  ],
+  "usd": 0
+}

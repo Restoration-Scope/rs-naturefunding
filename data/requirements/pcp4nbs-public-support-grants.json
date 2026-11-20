@@ -1,0 +1,151 @@
+{
+  "id": "pcp4nbs-public-support-grants",
+  "read_on": "2026-11-20",
+  "prompt_version": "req-2026-11-20.1",
+  "models": ["cursor:gpt-5.6-luna-high"],
+  "complete": false,
+  "reasons": [
+    "5 links could not be ranked without Jev",
+    "22 links could not be ranked without Jev",
+    "15 links could not be ranked without Jev",
+    "https://grants.forestfoundation.ph/resource/Proponent_Project_Proposal_System_User_Guide_v2.pdf: a scanned or image PDF: needs OCR",
+    "https://portals.iucn.org/library/sites/library/files/documents/2020-020-En.pdf: page 1 is an image: needs OCR",
+    "https://portals.iucn.org/library/sites/library/files/documents/2020-020-En.pdf: a document on another site: without Jev it can’t be confirmed as the funder’s, so it is not used",
+    "the text names a document with rules that was not read: Frequently Asked Questions",
+    "the text names a document with rules that was not read: Forest Foundation Philippines Results Framework 2023-2027",
+    "the text names a document with rules that was not read: Logic Model of PCP4NbS (Figure 1)",
+    "Jev did not check this reading, so an absent fact is not known to be absent"
+  ],
+  "requirements_checked": false,
+  "documents": [
+    {
+      "ref": "D1",
+      "url": "https://www.pcp4nbs.forestfoundation.ph/grants",
+      "final_url": "https://www.pcp4nbs.forestfoundation.ph/grants",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 23782,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:0e6d845c04eccf2afce1c4c72cb85c5934d5cdd67d1ca26eda7ed630709e16b6"
+    },
+    {
+      "ref": "D2",
+      "url": "https://grants.forestfoundation.ph/",
+      "final_url": "https://grants.forestfoundation.ph/",
+      "from": "https://www.pcp4nbs.forestfoundation.ph/grants",
+      "anchor": "APPLY THROUGH GRANT PORTAL",
+      "depth": 1,
+      "pdf": false,
+      "chars": 7446,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:c2b924c71cd1c6c40ae6c16a8c8d5d1978e3784cf520f8c95816527ef674e670"
+    },
+    {
+      "ref": "D3",
+      "url": "https://www.forestfoundation.ph/proposals/special-fund-for-nature-based-solutions-public-support-grants/",
+      "final_url": "https://www.forestfoundation.ph/proposals/special-fund-for-nature-based-solutions-public-support-grants/",
+      "from": "https://www.pcp4nbs.forestfoundation.ph/grants",
+      "anchor": "Request for Proposals",
+      "depth": 1,
+      "pdf": false,
+      "chars": 14844,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:69229d9493029c77f4808288067f279c3142e24cd5f841a8f632be2339f6a327"
+    },
+    {
+      "ref": "D4",
+      "url": "https://www.forestfoundation.ph/privacy-policy/",
+      "final_url": "https://www.forestfoundation.ph/privacy-policy/",
+      "from": "https://www.pcp4nbs.forestfoundation.ph/grants",
+      "anchor": "Privacy Policy",
+      "depth": 1,
+      "pdf": false,
+      "chars": 10739,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:42c63c81dc7f270a63e148b2f55e72d2b8b81ee5fee8579a1d26df8f9bd05328"
+    },
+    {
+      "ref": "D5",
+      "url": "https://grants.forestfoundation.ph/resource/Proponent_Project_Proposal_System_User_Guide_v2.pdf",
+      "final_url": "https://grants.forestfoundation.ph/resource/Proponent_Project_Proposal_System_User_Guide_v2.pdf",
+      "from": "https://grants.forestfoundation.ph/",
+      "anchor": "User Guide",
+      "depth": 2,
+      "pdf": true,
+      "chars": 389,
+      "pages": 28,
+      "low_text": true,
+      "hash": "sha256:ae1e841f4e226f2cf42660a6ba7bdab7c1d3df1460ad1ddc563d6709fc7dfd25"
+    },
+    {
+      "ref": "D6",
+      "url": "https://www.forestfoundation.ph/requests-for-proposals/",
+      "final_url": "https://www.forestfoundation.ph/requests-for-proposals/",
+      "from": "https://www.forestfoundation.ph/proposals/special-fund-for-nature-based-solutions-public-support-grants/",
+      "anchor": "Requests for Proposals",
+      "depth": 2,
+      "pdf": false,
+      "chars": 2651,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:f2785df082c67fd53082b22ebbb23e03d43821782b77273eea3e2bb4c6c671cf"
+    },
+    {
+      "ref": "D7",
+      "url": "https://www.forestfoundation.ph/apply-for-a-grant/",
+      "final_url": "https://www.forestfoundation.ph/apply-for-a-grant/",
+      "from": "https://www.forestfoundation.ph/proposals/special-fund-for-nature-based-solutions-public-support-grants/",
+      "anchor": "Submit A Proposal",
+      "depth": 2,
+      "pdf": false,
+      "chars": 2209,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:4de816423c0b9f98e60fb79ba1777e54a59050be41bcbe2760ef041d2d3ada09"
+    }
+  ],
+  "failures": [
+    {
+      "url": "https://grants.forestfoundation.ph/resource/Proponent_Project_Proposal_System_User_Guide_v2.pdf",
+      "from": "https://grants.forestfoundation.ph/",
+      "kind": "low_text",
+      "message": "a scanned or image PDF: needs OCR"
+    },
+    {
+      "url": "https://portals.iucn.org/library/sites/library/files/documents/2020-020-En.pdf",
+      "from": "https://www.forestfoundation.ph/proposals/special-fund-for-nature-based-solutions-public-support-grants/",
+      "kind": "low_text",
+      "message": "page 1 is an image: needs OCR"
+    },
+    {
+      "url": "https://portals.iucn.org/library/sites/library/files/documents/2020-020-En.pdf",
+      "from": "https://www.forestfoundation.ph/proposals/special-fund-for-nature-based-solutions-public-support-grants/",
+      "kind": "offsite",
+      "message": "a document on another site: without Jev it can’t be confirmed as the funder’s, so it is not used"
+    }
+  ],
+  "skipped_links": 211,
+  "chunks": [{ "id": "all", "docs": ["D1", "D2", "D3", "D4", "D5", "D6", "D7"], "chars": 63060 }],
+  "outcomes": {
+    "eligibility": "stated",
+    "documents": "stated",
+    "effort": "stated",
+    "co_finance": "not_found",
+    "consortium": "stated",
+    "after_award": "not_found"
+  },
+  "written": ["eligibility", "documents", "effort", "consortium"],
+  "escalated": [],
+  "flags": [],
+  "notes": [
+    "extractor: The RFP says late proposals may be considered based on funding availability or included in a subsequent RFP. Once approved, the Foundation enters into a legally binding Special Fund Agreement with the grantee.",
+    "source pcp4nbs-public-support-grants-2: added for https://www.forestfoundation.ph/proposals/special-fund-for-nature-based-solutions-public-support-grants/"
+  ],
+  "usd": 0
+}
