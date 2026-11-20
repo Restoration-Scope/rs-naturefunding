@@ -113,16 +113,29 @@ jobs:
             git merge --abort 2>/dev/null || true
             git cherry-pick --abort 2>/dev/null || true
           }
+          # A line-by-line merge of a programme file that a PR changed during the run can mix the two
+          # versions into one that fails validation (20 Nov: dates from the run, facts from the PR).
+          # Then keep the PR's version of every programme file it changed; they get new dates when next due.
+          valid_or_upstream() {
+            bun run validate >/dev/null 2>&1 && return 0
+            upstream="origin/$GITHUB_REF_NAME"
+            changed=$(git diff --name-only --diff-filter=d "$GITHUB_SHA" "$upstream" -- data/programmes)
+            deleted=$(git diff --name-only --diff-filter=D "$GITHUB_SHA" "$upstream" -- data/programmes)
+            [ -n "$changed" ] && git checkout "$upstream" -- $changed
+            [ -n "$deleted" ] && git rm -q --ignore-unmatch -- $deleted
+            git commit -q -m "Refresh: keep the version of programmes changed during the run" || true
+            bun run validate
+          }
 
           for _ in 1 2 3; do
             git fetch origin "$GITHUB_REF_NAME"
-            if git rebase "origin/$GITHUB_REF_NAME" && git push origin "HEAD:$GITHUB_REF_NAME"; then
+            if git rebase "origin/$GITHUB_REF_NAME" && valid_or_upstream && git push origin "HEAD:$GITHUB_REF_NAME"; then
               echo "pushed=true" >> "$GITHUB_OUTPUT"; exit 0
             fi
 
             cleanup_git_state
             git fetch origin "$GITHUB_REF_NAME"
-            if git merge --no-edit -X theirs "origin/$GITHUB_REF_NAME" && git push origin "HEAD:$GITHUB_REF_NAME"; then
+            if git merge --no-edit -X theirs "origin/$GITHUB_REF_NAME" && valid_or_upstream && git push origin "HEAD:$GITHUB_REF_NAME"; then
               echo "pushed=true" >> "$GITHUB_OUTPUT"; exit 0
             fi
 
