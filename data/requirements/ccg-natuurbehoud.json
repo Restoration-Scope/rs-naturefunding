@@ -1,0 +1,133 @@
+{
+  "id": "ccg-natuurbehoud",
+  "read_on": "2026-11-20",
+  "prompt_version": "req-2026-11-20.1",
+  "models": ["cursor:gpt-5.6-luna-high"],
+  "complete": false,
+  "reasons": [
+    "12 links could not be ranked without Jev",
+    "15 links could not be ranked without Jev",
+    "https://pbccaribbean.com/wp-content/uploads/2023/05/Richtlijnen-Publicaties.pdf would not open (http: HTTP 522)",
+    "Jev did not check this reading, so an absent fact is not known to be absent"
+  ],
+  "requirements_checked": false,
+  "documents": [
+    {
+      "ref": "D1",
+      "url": "https://cultuurfondscaribischgebied.com/natuurbehoud/",
+      "final_url": "https://cultuurfondscaribischgebied.com/natuurbehoud/",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 4863,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:b88f5868c16a0c8480c4123c52236cba12c8de4d64dc224eb0b2507572eae1ef"
+    },
+    {
+      "ref": "D2",
+      "url": "https://cultuurfondscaribischgebied.com/criteria-subsidieaanvraag/",
+      "final_url": "https://cultuurfondscaribischgebied.com/criteria-subsidieaanvraag/",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 27145,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:d126ffa3548c15206765f984d806361cd7241812a26bb07f1de7d21304e15c3a"
+    },
+    {
+      "ref": "D3",
+      "url": "https://cultuurfondscaribischgebied.com/de-aanvraagroute/",
+      "final_url": "https://cultuurfondscaribischgebied.com/de-aanvraagroute/",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 4368,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:8b9b5ec701a4a60555c12b428fe9e519e1d6f8002f9196d805ad0fb358c58c08"
+    },
+    {
+      "ref": "D4",
+      "url": "https://cultuurfondscaribischgebied.com/vergaderagenda/",
+      "final_url": "https://cultuurfondscaribischgebied.com/vergaderagenda/",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 4478,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:30bff6f87c7d1279d1a504844fb576d52de5946546fefcba4079ea271b04c8e9"
+    },
+    {
+      "ref": "D5",
+      "url": "https://cultuurfondscaribischgebied.com/vereiste-bijlagen/",
+      "final_url": "https://cultuurfondscaribischgebied.com/vereiste-bijlagen/",
+      "from": "https://cultuurfondscaribischgebied.com/natuurbehoud/",
+      "anchor": "Vereiste Bijlagen",
+      "depth": 1,
+      "pdf": false,
+      "chars": 2160,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:f57f688f50903e828b4861b26f648f8a2484872645a4f548097be8b849b420a9"
+    },
+    {
+      "ref": "D6",
+      "url": "https://cultuurfondscaribischgebied.com/aanvragen/",
+      "final_url": "https://cultuurfondscaribischgebied.com/aanvragen-voor-de-kickstart-regeling-kan-nog-tot-en-met-31-augustus-2021/",
+      "from": "https://cultuurfondscaribischgebied.com/criteria-subsidieaanvraag/",
+      "anchor": "aanvragen",
+      "depth": 1,
+      "pdf": false,
+      "chars": 3502,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:b51e886cecec6bf49ad6dc01265023a4b284930e3d5ac584a3fc2193dc69fbc8"
+    },
+    {
+      "ref": "D7",
+      "url": "https://cultuurfondscaribischgebied.com/kickstart-regeling/",
+      "final_url": "https://cultuurfondscaribischgebied.com/kickstart-regeling/",
+      "from": "https://cultuurfondscaribischgebied.com/aanvragen/",
+      "anchor": "onze website",
+      "depth": 2,
+      "pdf": false,
+      "chars": 8512,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:9b8ca828c8ffc890468ca06e5c09710e08f9dba5b661fe36dd58f1812b258f28"
+    }
+  ],
+  "failures": [
+    {
+      "url": "https://pbccaribbean.com/wp-content/uploads/2023/05/Richtlijnen-Publicaties.pdf",
+      "from": "https://cultuurfondscaribischgebied.com/criteria-subsidieaanvraag/",
+      "kind": "http",
+      "message": "HTTP 522"
+    }
+  ],
+  "skipped_links": 354,
+  "chunks": [{ "id": "all", "docs": ["D1", "D2", "D3", "D4", "D5", "D6", "D7"], "chars": 55737 }],
+  "outcomes": {
+    "eligibility": "stated",
+    "documents": "stated",
+    "effort": "stated",
+    "co_finance": "stated",
+    "consortium": "not_found",
+    "after_award": "stated"
+  },
+  "written": ["eligibility", "documents", "effort", "co_finance", "after_award"],
+  "escalated": [],
+  "flags": [],
+  "notes": [
+    "extractor: D4 lists 2026 deadlines, but no round is listed. D6 and D7 describe the separate 2021 Kickstart scheme, not this nature conservation programme.",
+    "source ccg-natuurbehoud-5: added for https://cultuurfondscaribischgebied.com/vereiste-bijlagen/"
+  ],
+  "usd": 0
+}

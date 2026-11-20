@@ -1,7 +1,10 @@
 {
   "id": "cepf-mediterranean-basin",
   "name": "CEPF Mediterranean Basin Biodiversity Hotspot grants",
-  "funder": { "name": "Critical Ecosystem Partnership Fund", "url": "https://www.cepf.net/" },
+  "funder": {
+    "name": "Critical Ecosystem Partnership Fund",
+    "url": "https://www.cepf.net/"
+  },
   "administered_by": {
     "name": "BirdLife International",
     "url": "http://www.birdlife.org/cepf-med"
@@ -9,18 +12,73 @@
   "parent": "cepf",
   "url": "https://www.cepf.net/our-work/biodiversity-hotspots/mediterranean-basin",
   "summary": "CEPF small and large grants for civil society organisations protecting freshwater, coastal and traditionally managed landscapes and threatened plants in eligible Mediterranean Basin countries, with BirdLife International as regional implementation team.",
-  "approaches": ["freshwater", "species_conservation", "sustainable_land_use", "coastal_marine"],
-  "applicant_types": ["ngo", "community_group"],
+  "approaches": [
+    "freshwater",
+    "species_conservation",
+    "sustainable_land_use",
+    "coastal_marine"
+  ],
+  "applicant_types": [
+    "ngo",
+    "community_group"
+  ],
   "geography": {
     "scope": "countries",
-    "countries": ["AL", "DZ", "BA", "CV", "EG", "JO", "LB", "LY", "ME", "MA", "MK", "PS", "TN"],
+    "countries": [
+      "AL",
+      "DZ",
+      "BA",
+      "CV",
+      "EG",
+      "JO",
+      "LB",
+      "LY",
+      "ME",
+      "MA",
+      "MK",
+      "PS",
+      "TN"
+    ],
     "label": "Mediterranean Basin"
   },
   "access": "direct",
   "window": "fixed",
-  "amount": { "currency": "USD", "max": 180000 },
+  "amount": {
+    "currency": "USD",
+    "max": 180000
+  },
   "co_finance_required": null,
   "reporting": "Large-grant holders file financial reports every quarter and progress reports every six months through CEPF’s online system.",
+  "eligibility": [
+    {
+      "rule": "The project supports at least one strategic direction in the ecosystem profile",
+      "kind": "project"
+    },
+    {
+      "rule": "Has its own bank account and is legally authorized to receive grants",
+      "kind": "legal"
+    },
+    {
+      "rule": "No child or forced labor, large or complex dams, government security salaries, firearms or other weapons",
+      "kind": "project"
+    },
+    {
+      "rule": "Project does not resettle people or purchase land",
+      "kind": "project"
+    },
+    {
+      "rule": "Project does not introduce or use potentially invasive, non-indigenous species",
+      "kind": "project"
+    },
+    {
+      "rule": "Project does not remove or alter tangible cultural heritage",
+      "kind": "project"
+    },
+    {
+      "rule": "Project has no potential to harm critical habitat",
+      "kind": "project"
+    }
+  ],
   "calls": [
     {
       "id": "2026-large",
@@ -131,7 +189,97 @@
       "quote": "Recipients of large grants must submit financial reports each quarter and progress reports every six months through ConservationGrants.",
       "checked_at": "2026-11-20",
       "method": "page"
-    }
+    },
+    "eligibility": [
+      {
+        "source_url": "https://www.cepf.net/grants/eligibility",
+        "quote": "The project must also support at least one strategic direction outlined in the CEPF ecosystem profile for the hotspot.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.cepf.net/resources/calls-for-proposals/mediterranean-basin-cfp-large-grants-english-july-2026",
+        "quote": "Organizations must have their own bank account and be authorized under relevant national laws to receive charitable contributions.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.cepf.net/grants/eligibility",
+        "quote": "CEPF does not fund the following activities: Use of child labor or forced labor. Construction or rehabilitation of large or complex dams. Payment of salaries or salary supplements to government security personnel. Purchase of firearms or other weapons.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.cepf.net/grants/eligibility",
+        "quote": "Physical resettlement of people (voluntary or involuntary). Purchase of land.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.cepf.net/grants/eligibility",
+        "quote": "Activities that introduce or use potentially invasive, non-indigenous species.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.cepf.net/grants/eligibility",
+        "quote": "Removal or alteration of any tangible cultural heritage.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.cepf.net/grants/eligibility",
+        "quote": "Activities that have the potential to cause adverse impacts to critical habitat.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "effort": [
+      {
+        "source_url": "https://www.cepf.net/grants/before-you-apply/life-cycle-of-grant",
+        "quote": "Large-grant applicants submit letters of inquiry online, through the online grants database ConservationGrants. Small-grant applicants submit letters of inquiry using an offline template that will be provided in the open call instructions.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.cepf.net/grants/before-you-apply/life-cycle-of-grant",
+        "quote": "These applicants will have a defined period of time (typically around two months, although this may vary among hotspots) to submit a complete project proposal through the online portal ConservationGrants.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.cepf.net/grants/before-you-apply/life-cycle-of-grant",
+        "quote": "If a project triggers one or more safeguard policies, the grantee will be asked to prepare the relevant safeguard document(s) and incorporate related measures into the project's design.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "after_award": [
+      {
+        "source_url": "https://www.cepf.net/grants/before-you-apply/life-cycle-of-grant",
+        "quote": "Recipients of large grants must submit financial reports each quarter and progress reports every six months through ConservationGrants.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.cepf.net/grants/before-you-apply/life-cycle-of-grant",
+        "quote": "Large-grant recipients are required to attend a CEPF online orientation training within the first three months of their project's start date.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ]
   },
-  "checked_at": "2026-11-02"
+  "checked_at": "2026-11-02",
+  "effort": {
+    "steps": [
+      "Letter of inquiry",
+      "Full proposal, if invited (large grants)",
+      "Safeguard documents, if required"
+    ],
+    "more_after": true
+  },
+  "after_award": {
+    "reports": "quarterly",
+    "training": true
+  }
 }

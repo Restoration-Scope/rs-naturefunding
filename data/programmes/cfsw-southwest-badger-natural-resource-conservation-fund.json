@@ -18,6 +18,17 @@
   "amount": { "currency": "USD", "max": 3500, "typical": true },
   "co_finance_required": null,
   "reporting": null,
+  "effort": { "steps": ["Online grant application"] },
+  "eligibility": [
+    { "rule": "Is a 501(c)(3) charitable organization or municipality", "kind": "legal" }
+  ],
+  "documents": [
+    "Organization budget, if applicable",
+    "Organization financial statements, if applicable",
+    "List of board officers and directors, if applicable",
+    "Agency Form 990, if applicable",
+    "Project budget"
+  ],
   "calls": [
     {
       "id": "annual",
@@ -73,7 +84,43 @@
       "quote": "It is recommended that applications not exceed $3,500 per request.",
       "checked_at": "2026-11-20",
       "method": "page"
-    }
+    },
+    "effort": [
+      {
+        "source_url": "https://cfsw.org/misc-funds/southwest-badger-natural-resource-conservation-fund/",
+        "quote": "Grant applications are available here and must be submitted no later than 11:59 PM September 15.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "eligibility": [
+      {
+        "source_url": "https://cfsw.org/misc-funds/southwest-badger-natural-resource-conservation-fund/",
+        "quote": "501(c)(3) charitable organizations and municipalities",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "documents": [
+      {
+        "source_url": "https://cfsw.org/wp-content/uploads/Grant-Application-Guidelines.pdf",
+        "quote": "organization budget, organization financial statements, list of board officers and directors",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://cfsw.org/wp-content/uploads/Grant-Application-Guidelines.pdf",
+        "quote": "your agency's Form 990",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://cfsw.org/wp-content/uploads/Grant-Application-Guidelines.pdf",
+        "quote": "You will need to supply a project budget.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ]
   },
   "checked_at": "2026-11-20"
 }
