@@ -34,6 +34,20 @@
   },
   "co_finance_required": null,
   "reporting": null,
+  "effort": {
+    "steps": [
+      "Inquiry or recommendation form",
+      "Full application, if invited",
+      "Application review",
+      "Member voting"
+    ],
+    "due": [
+      "2026-04-10",
+      "2026-05-15",
+      null,
+      null
+    ]
+  },
   "calls": [
     {
       "id": "2026",
@@ -98,7 +112,47 @@
       "quote": "Selected organizations will then be invited to submit a grant application for up to $50,000.",
       "checked_at": "2026-11-02",
       "method": "page"
-    }
+    },
+    "effort": [
+      {
+        "source_url": "https://conservationalliance.com/member-collective-grants/",
+        "quote": "Open Inquiry/Recommendation Call: March 2 - April 10, 2026",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://conservationalliance.com/member-collective-grants/",
+        "quote": "Application Period: April 27 - May 15, 2026",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://conservationalliance.com/member-collective-grants/",
+        "quote": "Application Review: May 18 - June 26, 2026",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://conservationalliance.com/member-collective-grants/",
+        "quote": "Member Voting: July 6 - July 31, 2026",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "eligibility": [
+      {
+        "source_url": "https://conservationalliance.com/member-collective-grants/",
+        "quote": "Organization/group and project must be located in North America.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ]
   },
-  "checked_at": "2026-11-02"
+  "checked_at": "2026-11-02",
+  "eligibility": [
+    {
+      "rule": "Organisation and project are both located in North America",
+      "kind": "project"
+    }
+  ]
 }

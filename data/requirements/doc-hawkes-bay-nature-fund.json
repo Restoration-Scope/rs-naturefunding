@@ -1,0 +1,136 @@
+{
+  "id": "doc-hawkes-bay-nature-fund",
+  "read_on": "2026-11-20",
+  "prompt_version": "req-2026-11-20.1",
+  "models": ["cursor:gpt-5.6-luna-high"],
+  "complete": false,
+  "reasons": [
+    "7 links could not be ranked without Jev",
+    "https://ecct.org.nz/assets/HB-Nature-Fund/LNI-Regional-Strategy-07012026-FInal.pdf: pages 7, 20 are images: needs OCR",
+    "the text names a document with rules that was not read: Hawke's Bay Nature Fund area map",
+    "the text names a document with rules that was not read: Project Costs Template",
+    "the text names a document with rules that was not read: Reporting and Payment schedules",
+    "Jev did not check this reading, so an absent fact is not known to be absent"
+  ],
+  "requirements_checked": false,
+  "documents": [
+    {
+      "ref": "D1",
+      "url": "https://www.doc.govt.nz/get-involved/funding/hawkes-bay-nature-fund/",
+      "final_url": "https://www.doc.govt.nz/get-involved/funding/hawkes-bay-nature-fund/",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 1156,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:dbf246f069cae4a5f589275b881f76ed8407a52a014a52dd40f0158712712d5d"
+    },
+    {
+      "ref": "D2",
+      "url": "https://ecct.org.nz/funding/hawkes-bay-nature-fund",
+      "final_url": "https://ecct.org.nz/funding/hawkes-bay-nature-fund",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 8012,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:583fc1b5a97dfde5b82bc9c4e53ba97a1d9e4376e0dc66bea5549dce18845153"
+    },
+    {
+      "ref": "D3",
+      "url": "https://ecct.org.nz/assets/HB-Nature-Fund/LNI-Regional-Strategy-07012026-FInal.pdf",
+      "final_url": "https://ecct.org.nz/assets/HB-Nature-Fund/LNI-Regional-Strategy-07012026-FInal.pdf",
+      "from": "https://ecct.org.nz/funding/hawkes-bay-nature-fund",
+      "anchor": "Department of Conservation Lower North Island Strategy",
+      "depth": 1,
+      "pdf": true,
+      "chars": 40750,
+      "pages": 20,
+      "low_text": false,
+      "hash": "sha256:6a6091452fea06351e1977da5c6a84e6f92c0c9bbd45a4659d5c9d417dc2c82d"
+    },
+    {
+      "ref": "D4",
+      "url": "https://ecct.org.nz/assets/HB-Nature-Fund/Hawkes-Bay-Multiyear-Plan-pdf.pdf",
+      "final_url": "https://ecct.org.nz/assets/HB-Nature-Fund/Hawkes-Bay-Multiyear-Plan-pdf.pdf",
+      "from": "https://ecct.org.nz/funding/hawkes-bay-nature-fund",
+      "anchor": "Hawke's Bay Multiyear Plan",
+      "depth": 1,
+      "pdf": true,
+      "chars": 8500,
+      "pages": 7,
+      "low_text": false,
+      "hash": "sha256:4b15b97e77360d9c7129f531958dd6e98d5187d59f0453c6064677317299ca69"
+    },
+    {
+      "ref": "D5",
+      "url": "https://ecct.org.nz/assets/HB-Nature-Fund/Hawkes-Bay-Nature-Fund-Guide-for-Applicants-DOC-7784536-Final-updated-June-2026.pdf",
+      "final_url": "https://ecct.org.nz/assets/HB-Nature-Fund/Hawkes-Bay-Nature-Fund-Guide-for-Applicants-DOC-7784536-Final-updated-June-2026.pdf",
+      "from": "https://ecct.org.nz/funding/hawkes-bay-nature-fund",
+      "anchor": "Guide for Applicants",
+      "depth": 1,
+      "pdf": true,
+      "chars": 17750,
+      "pages": 8,
+      "low_text": false,
+      "hash": "sha256:d1eceaaab49023d974fb8c146c7b4eb8dcb2b3fbe472322d700f1503b91ba880"
+    },
+    {
+      "ref": "D6",
+      "url": "https://ecct.org.nz/assets/HB-Nature-Fund/HBNF-Documents-Required-by-Applicants-for-Web.pdf",
+      "final_url": "https://ecct.org.nz/assets/HB-Nature-Fund/HBNF-Documents-Required-by-Applicants-for-Web.pdf",
+      "from": "https://ecct.org.nz/funding/hawkes-bay-nature-fund",
+      "anchor": "Documentation Required by Applicants",
+      "depth": 1,
+      "pdf": true,
+      "chars": 1976,
+      "pages": 1,
+      "low_text": false,
+      "hash": "sha256:44b232e67de2809d94b22baeb3978a80c972fdab568350bb06013fb20f4e74a5"
+    },
+    {
+      "ref": "D7",
+      "url": "https://www.ecct.org.nz/assets/PDFs/Privacy-Policy-V1.pdf",
+      "final_url": "https://www.ecct.org.nz/assets/PDFs/Privacy-Policy-V1.pdf",
+      "from": "https://ecct.org.nz/funding/hawkes-bay-nature-fund",
+      "anchor": "Privacy Policy",
+      "depth": 1,
+      "pdf": true,
+      "chars": 12213,
+      "pages": 5,
+      "low_text": false,
+      "hash": "sha256:957bdd829d5064b4fded3a5a8363f60a49821d6816fdc89d9a55ef34e849ae44"
+    }
+  ],
+  "failures": [
+    {
+      "url": "https://ecct.org.nz/assets/HB-Nature-Fund/LNI-Regional-Strategy-07012026-FInal.pdf",
+      "from": "https://ecct.org.nz/funding/hawkes-bay-nature-fund",
+      "kind": "low_text",
+      "message": "pages 7, 20 are images: needs OCR"
+    }
+  ],
+  "skipped_links": 23,
+  "chunks": [{ "id": "all", "docs": ["D1", "D2", "D3", "D4", "D5", "D6", "D7"], "chars": 91353 }],
+  "outcomes": {
+    "eligibility": "stated",
+    "documents": "stated",
+    "effort": "stated",
+    "co_finance": "stated",
+    "consortium": "not_found",
+    "after_award": "stated"
+  },
+  "written": ["eligibility", "documents", "effort", "co_finance", "after_award"],
+  "escalated": [],
+  "flags": [],
+  "notes": [
+    "extractor: The current 2026 guide uses the specified priority area and says projects with a contiguous border will be considered; D1 broadly says projects throughout Hawke's Bay. Co-funding is not required, although it is preferred for very large or multi-stakeholder projects.",
+    "source doc-hawkes-bay-nature-fund-3: added for https://ecct.org.nz/assets/HB-Nature-Fund/Hawkes-Bay-Nature-Fund-Guide-for-Applicants-DOC-7784536-Final-updated-June-2026.pdf",
+    "source doc-hawkes-bay-nature-fund-4: added for https://ecct.org.nz/assets/HB-Nature-Fund/HBNF-Documents-Required-by-Applicants-for-Web.pdf"
+  ],
+  "usd": 0
+}

@@ -1,0 +1,102 @@
+{
+  "id": "environment-southland-biodiversity-community-group-grant",
+  "read_on": "2026-11-20",
+  "prompt_version": "req-2026-11-20.1",
+  "models": ["cursor:gpt-5.6-luna-high"],
+  "complete": false,
+  "reasons": [
+    "11 links could not be ranked without Jev",
+    "16 links could not be ranked without Jev",
+    "17 links could not be ranked without Jev",
+    "Jev did not check this reading, so an absent fact is not known to be absent"
+  ],
+  "requirements_checked": false,
+  "documents": [
+    {
+      "ref": "D1",
+      "url": "https://www.es.govt.nz/about-us/funding-and-support/biodiversity-community-group-grants",
+      "final_url": "https://www.es.govt.nz/about-us/funding-and-support/biodiversity-community-group-grants",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 6844,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:e05568a9681c976ef8182425c8bd593273b4a1298e773660f5fa70e384f07260"
+    },
+    {
+      "ref": "D2",
+      "url": "https://www.es.govt.nz/online-services/consent-applications",
+      "final_url": "https://www.es.govt.nz/online-services/consent-applications",
+      "from": "https://www.es.govt.nz/about-us/funding-and-support/biodiversity-community-group-grants",
+      "anchor": "Consent applications",
+      "depth": 1,
+      "pdf": false,
+      "chars": 3806,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:a7341460741bccca18423d6001b7ef1cdcb1a3b36e3ae28cbb7b542edb248bbf"
+    },
+    {
+      "ref": "D3",
+      "url": "https://www.es.govt.nz/repository/libraries/id:26gi9ayo517q9stt81sd/hierarchy/environment/biosecurity-and-biodiversity/biodiversity/documents/BiodiversityGrant_ApplicationForm_202511_Fillable.pdf",
+      "final_url": "https://www.es.govt.nz/repository/libraries/id:26gi9ayo517q9stt81sd/hierarchy/environment/biosecurity-and-biodiversity/biodiversity/documents/BiodiversityGrant_ApplicationForm_202511_Fillable.pdf",
+      "from": "https://www.es.govt.nz/about-us/funding-and-support/biodiversity-community-group-grants",
+      "anchor": "Click here for the application form",
+      "depth": 1,
+      "pdf": true,
+      "chars": 5245,
+      "pages": 4,
+      "low_text": false,
+      "hash": "sha256:9b82786b6543cda4a2e75d3d9b6c689a7f0dd264a7afc05cba62735be8a17c64"
+    },
+    {
+      "ref": "D4",
+      "url": "https://www.es.govt.nz/repository/libraries/id:26gi9ayo517q9stt81sd/hierarchy/environment/biosecurity-and-biodiversity/biodiversity/documents/BiodiversityCGGrant_ApplicantsGuide_202511.pdf",
+      "final_url": "https://www.es.govt.nz/repository/libraries/id:26gi9ayo517q9stt81sd/hierarchy/environment/biosecurity-and-biodiversity/biodiversity/documents/BiodiversityCGGrant_ApplicantsGuide_202511.pdf",
+      "from": "https://www.es.govt.nz/about-us/funding-and-support/biodiversity-community-group-grants",
+      "anchor": "Click here for the applicant's guide",
+      "depth": 1,
+      "pdf": true,
+      "chars": 8091,
+      "pages": 4,
+      "low_text": false,
+      "hash": "sha256:1669483439b539e2fa8157a18f594b286f2fc17f30905e55e0ea5c44dbd8180e"
+    },
+    {
+      "ref": "D5",
+      "url": "https://www.es.govt.nz/online-services/consent-applications/bore-application",
+      "final_url": "https://www.es.govt.nz/online-services/consent-applications/bore-application",
+      "from": "https://www.es.govt.nz/online-services/consent-applications",
+      "anchor": "Bore application",
+      "depth": 2,
+      "pdf": false,
+      "chars": 6298,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:0a3ced616325c2b58be3ae2439112a55f9275c939c799d9c9c0767c15f32d92f"
+    }
+  ],
+  "failures": [],
+  "skipped_links": 517,
+  "chunks": [{ "id": "all", "docs": ["D1", "D2", "D3", "D4", "D5"], "chars": 31346 }],
+  "outcomes": {
+    "eligibility": "stated",
+    "documents": "stated",
+    "effort": "stated",
+    "co_finance": "stated",
+    "consortium": "not_found",
+    "after_award": "stated"
+  },
+  "written": ["eligibility", "documents", "effort", "co_finance", "after_award"],
+  "escalated": [],
+  "flags": [],
+  "notes": [
+    "co_finance: share 30% dropped, its quote does not state it",
+    "extractor: D3 and D4 are marked November 2025. D1 says applications close 1st May each year and supports restoration planting using ecosourced native species, while D4 says the deadline is 30 April each year and lists Native planting as not covered. D1 says funds must be spent by 30 June; D4 says projects must be completed and costs invoiced between 1 July and 30 May.",
+    "source environment-southland-biodiversity-community-group-grant-2: added for https://www.es.govt.nz/repository/libraries/id:26gi9ayo517q9stt81sd/hierarchy/environment/biosecurity-and-biodiversity/biodiversity/documents/BiodiversityCGGrant_ApplicantsGuide_202511.pdf",
+    "source environment-southland-biodiversity-community-group-grant-3: added for https://www.es.govt.nz/repository/libraries/id:26gi9ayo517q9stt81sd/hierarchy/environment/biosecurity-and-biodiversity/biodiversity/documents/BiodiversityGrant_ApplicationForm_202511_Fillable.pdf"
+  ],
+  "usd": 0
+}

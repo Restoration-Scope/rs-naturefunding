@@ -1,0 +1,165 @@
+{
+  "id": "dulverton-trust-conservation",
+  "read_on": "2026-11-20",
+  "prompt_version": "req-2026-11-20.1",
+  "models": ["cursor:gpt-5.6-luna-high"],
+  "complete": false,
+  "reasons": [
+    "4 links could not be ranked without Jev",
+    "6 links could not be ranked without Jev",
+    "2 links could not be ranked without Jev",
+    "the crawl bound left https://www.dulverton.org/terms-and-conditions-for-grant-holders unread",
+    "the text names a document with rules that was not read: The Dulverton Trust Terms and Conditions",
+    "Jev did not check this reading, so an absent fact is not known to be absent"
+  ],
+  "requirements_checked": false,
+  "documents": [
+    {
+      "ref": "D1",
+      "url": "https://www.dulverton.org/",
+      "final_url": "https://www.dulverton.org/",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 5630,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:d0cca9416615b8078fb9dbeff73a692fe0984660820fba81bbb8ba1faa76ccca"
+    },
+    {
+      "ref": "D2",
+      "url": "https://www.dulverton.org/faq/",
+      "final_url": "https://www.dulverton.org/faq/",
+      "from": "https://www.dulverton.org/",
+      "anchor": "FAQ",
+      "depth": 1,
+      "pdf": false,
+      "chars": 18728,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:447cab3a92176b36b45945faa4d69e59b3b449f7b6773ade7732d854241676bf"
+    },
+    {
+      "ref": "D3",
+      "url": "https://www.dulverton.org/eligibility-quiz/",
+      "final_url": "https://www.dulverton.org/eligibility-quiz/",
+      "from": "https://www.dulverton.org/",
+      "anchor": "eligibility",
+      "depth": 1,
+      "pdf": false,
+      "chars": 11641,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:994bc6d4e902ed096183cad1f5aa46286de0dab382ef4b537c1e7247ceffda69"
+    },
+    {
+      "ref": "D4",
+      "url": "https://www.dulverton.org/wp-content/uploads/2024/01/EOI-questions.pdf",
+      "final_url": "https://www.dulverton.org/wp-content/uploads/2024/01/EOI-questions.pdf",
+      "from": "https://www.dulverton.org/",
+      "anchor": "here",
+      "depth": 1,
+      "pdf": true,
+      "chars": 1930,
+      "pages": 1,
+      "low_text": false,
+      "hash": "sha256:8d6589f6f45b84a97bf3432a89a0a5fa3afb93d633bff8841143bfdff9221ce9"
+    },
+    {
+      "ref": "D5",
+      "url": "https://www.dulverton.org/privacy-policy",
+      "final_url": "https://www.dulverton.org/privacy-policy/",
+      "from": "https://www.dulverton.org/",
+      "anchor": "Privacy Policy",
+      "depth": 1,
+      "pdf": false,
+      "chars": 10014,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:04601c88eeeaeb82dffee98e4a84d6fc510409a91b5a67389535e911f3160c1a"
+    },
+    {
+      "ref": "D6",
+      "url": "https://www.dulverton.org/cookies-policy",
+      "final_url": "https://www.dulverton.org/cookies-policy/",
+      "from": "https://www.dulverton.org/",
+      "anchor": "Cookies",
+      "depth": 1,
+      "pdf": false,
+      "chars": 3894,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:aae6f8c1d235a136aaf5b7556ff9e8eac900630a69817b1ca8b740491fd3ad61"
+    },
+    {
+      "ref": "D7",
+      "url": "https://www.dulverton.org/terms-and-conditions",
+      "final_url": "https://www.dulverton.org/terms-and-conditions/",
+      "from": "https://www.dulverton.org/",
+      "anchor": "Terms of use",
+      "depth": 1,
+      "pdf": false,
+      "chars": 11834,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:cfcb4deb87831e25d1d70c776a11c6b8bf7f6a9b218d8cb9d16161c0fb635c66"
+    },
+    {
+      "ref": "D8",
+      "url": "https://www.dulverton.org/wp-content/uploads/2023/12/Dulverton-Trust-Application-Form-questions.docx",
+      "final_url": "https://www.dulverton.org/wp-content/uploads/2023/12/Dulverton-Trust-Application-Form-questions.docx",
+      "from": "https://www.dulverton.org/faq/",
+      "anchor": "here",
+      "depth": 2,
+      "pdf": false,
+      "chars": 1883,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:01a8e112248653656e8274b127f6c806ee0c8753d8fc696b3532b359078a67fc"
+    },
+    {
+      "ref": "D9",
+      "url": "https://www.dulverton.org/reporting-form/",
+      "final_url": "https://www.dulverton.org/reporting-form/",
+      "from": "https://www.dulverton.org/faq/",
+      "anchor": "online form",
+      "depth": 2,
+      "pdf": false,
+      "chars": 691,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:70eecaead6bb54f17245fd6675e7eba3ab4a0c16d38ff142510e072278845e78"
+    }
+  ],
+  "failures": [
+    {
+      "url": "https://www.dulverton.org/terms-and-conditions-for-grant-holders",
+      "from": "https://www.dulverton.org/faq/",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    }
+  ],
+  "skipped_links": 50,
+  "chunks": [
+    { "id": "all", "docs": ["D1", "D2", "D3", "D4", "D5", "D6", "D7", "D8", "D9"], "chars": 67140 }
+  ],
+  "outcomes": {
+    "eligibility": "stated",
+    "documents": "not_found",
+    "effort": "stated",
+    "co_finance": "not_found",
+    "consortium": "not_found",
+    "after_award": "stated"
+  },
+  "written": ["eligibility", "effort", "after_award"],
+  "escalated": [],
+  "flags": [],
+  "notes": [
+    "eligibility \"If newly established without £200,000 income, meet the Trust's other eligibility criteria\": revenue range dropped: a revenue range needs min or max",
+    "extractor: Applications are accepted on a rolling basis. D2 says grants are awarded in February, June and November, while D4 and D8 say February, June and October.",
+    "source dulverton-trust-conservation-2: added for https://www.dulverton.org/eligibility-quiz/",
+    "source dulverton-trust-conservation-3: added for https://www.dulverton.org/faq/"
+  ],
+  "usd": 0
+}

@@ -1,0 +1,63 @@
+{
+  "id": "elinvoimakeskus-fish-habitat-restoration",
+  "read_on": "2026-11-20",
+  "prompt_version": "req-2026-11-20.1",
+  "models": ["cursor:gpt-5.6-luna-high"],
+  "complete": false,
+  "reasons": [
+    "9 links could not be ranked without Jev",
+    "15 links could not be ranked without Jev",
+    "the text names a document with rules that was not read: Valtioneuvoston asetus vesistön ja vesiympäristön käyttöä ja tilaa parantavien hankkeiden avustamisesta 714/2015",
+    "the text names a document with rules that was not read: Valtionavustuslaki 688/2001",
+    "the text names a document with rules that was not read: Laki julkisista hankinnoista ja käyttöoikeussopimuksista 1397/2016",
+    "Jev did not check this reading, so an absent fact is not known to be absent"
+  ],
+  "requirements_checked": false,
+  "documents": [
+    {
+      "ref": "D1",
+      "url": "https://elinvoimakeskus.fi/avustus-kalataloudellisiin-kunnostushankkeisiin",
+      "final_url": "https://elinvoimakeskus.fi/avustus-kalataloudellisiin-kunnostushankkeisiin",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 16369,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:43f21088e6daeac67c6502374d1269bd731dc1cb7485c9ce7f9358629e58abc7"
+    },
+    {
+      "ref": "D2",
+      "url": "https://elinvoimakeskus.fi/inspect/faq",
+      "final_url": "https://elinvoimakeskus.fi/inspect/faq",
+      "from": "https://elinvoimakeskus.fi/avustus-kalataloudellisiin-kunnostushankkeisiin",
+      "anchor": "FAQ",
+      "depth": 1,
+      "pdf": false,
+      "chars": 19219,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:96ce2aa9e5beb8e481222a10aaf1d09722aa0e9343b98c7f7d73bed53fbbe470"
+    }
+  ],
+  "failures": [],
+  "skipped_links": 592,
+  "chunks": [{ "id": "all", "docs": ["D1", "D2"], "chars": 35815 }],
+  "outcomes": {
+    "eligibility": "stated",
+    "documents": "stated",
+    "effort": "stated",
+    "co_finance": "stated",
+    "consortium": "not_found",
+    "after_award": "not_found"
+  },
+  "written": ["eligibility", "documents", "effort", "co_finance"],
+  "escalated": [],
+  "flags": [],
+  "notes": [
+    "co_finance: share 50% dropped, its quote does not state it",
+    "extractor: The 50% co-finance limit is stated as the general rule, with exceptions allowing a higher grant share. D1 also makes necessary permits and legal rights a condition of payment. D2 is an unrelated invasive-species FAQ."
+  ],
+  "usd": 0
+}

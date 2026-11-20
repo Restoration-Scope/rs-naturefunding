@@ -1,14 +1,25 @@
 {
   "id": "fnps-conservation-grant",
   "name": "FNPS Conservation Grant",
-  "funder": { "name": "Florida Native Plant Society", "url": "https://www.fnps.org/" },
+  "funder": {
+    "name": "Florida Native Plant Society",
+    "url": "https://www.fnps.org/"
+  },
   "administered_by": null,
   "parent": null,
   "url": "https://www.fnps.org/grants",
   "summary": "Grants of up to $5,000 for one year for applied conservation of rare or imperiled native plants and plant communities in Florida. A project must be sponsored by a chapter of the Florida Native Plant Society.",
-  "approaches": ["species_conservation"],
+  "approaches": [
+    "species_conservation"
+  ],
   "applicant_types": null,
-  "geography": { "scope": "countries", "countries": ["US"], "label": "Florida" },
+  "geography": {
+    "scope": "countries",
+    "countries": [
+      "US"
+    ],
+    "label": "Florida"
+  },
   "access": "direct",
   "window": "fixed",
   "amount": {
@@ -18,6 +29,20 @@
   },
   "co_finance_required": null,
   "reporting": null,
+  "eligibility": [
+    {
+      "rule": "Project preserves, conserves, or restores rare or imperiled native plant taxa or plant communities",
+      "kind": "project"
+    },
+    {
+      "rule": "Project is sponsored by an FNPS Chapter",
+      "kind": "project"
+    },
+    {
+      "rule": "Does not plant outside the historical range or native habitat of the species",
+      "kind": "project"
+    }
+  ],
   "calls": [
     {
       "id": "2027-round",
@@ -25,7 +50,10 @@
       "url": "https://www.fnps.org/grants",
       "status": "unknown",
       "opens": null,
-      "deadline": { "date": "2027-03-05", "text": "March 5, 2027" },
+      "deadline": {
+        "date": "2027-03-05",
+        "text": "March 5, 2027"
+      },
       "evidence": {
         "status": {
           "source_url": "https://www.fnps.org/grants",
@@ -45,8 +73,8 @@
   "evidence": {
     "geography": {
       "source_url": "https://www.fnps.org/grants",
-      "quote": "FNPS Conservation Grants support applied native-plant conservation projects in Florida. Applicants can apply for a grant of up to $5,000 awarded for a 1-year period.",
-      "checked_at": "2026-11-12",
+      "quote": "FNPS Conservation Grants support applied conservation projects for Florida’s native plants.",
+      "checked_at": "2026-11-20",
       "method": "page"
     },
     "access": {
@@ -63,10 +91,57 @@
     },
     "amount": {
       "source_url": "https://www.fnps.org/grants",
-      "quote": "FNPS Conservation Grants support applied native-plant conservation projects in Florida. Applicants can apply for a grant of up to $5,000 awarded for a 1-year period.",
-      "checked_at": "2026-11-12",
+      "quote": "FNPS Conservation Grants support applied conservation projects for Florida’s native plants. Grants of up to $5,000 fund one-year projects, and applicants who need support beyond one year may reapply in later years.",
+      "checked_at": "2026-11-20",
       "method": "page"
-    }
+    },
+    "eligibility": [
+      {
+        "source_url": "https://www.fnps.org/grants",
+        "quote": "Projects must help preserve, conserve, or restore rare or imperiled native plant taxa or plant communities.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.fnps.org/grants",
+        "quote": "To qualify for a Conservation Grant, the proposed project must be sponsored by an FNPS Chapter.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://irp.cdn-website.com/ea562199/files/uploaded/2027+Conservation+Award+Application.pdf",
+        "quote": "The Conservation Committee will not fund projects that install plants or germplasm (any plant material from which a plant can be propagated): • Outside the species’ historical range, or • Outside the species’ native habitat or plant community.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "effort": [
+      {
+        "source_url": "https://irp.cdn-website.com/ea562199/files/uploaded/2027+Conservation+Award+Application.pdf",
+        "quote": "Submit completed applications by March 5, 2027, at 5 p.m. EST to be considered for the 2027 grant cycle.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "after_award": [
+      {
+        "source_url": "https://irp.cdn-website.com/ea562199/files/uploaded/2027+Conservation+Award+Application.pdf",
+        "quote": "After completing the project, the recipient must share the results, with photographs, in two ways: (1) a written summary in the FNPS publication, the Palmetto, and (2) a presentation at the biennial FNPS Conference, typically held in May, or at a monthly FNPS chapter meeting.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ]
   },
-  "checked_at": "2026-11-12"
+  "checked_at": "2026-11-12",
+  "effort": {
+    "steps": [
+      "Application by email"
+    ],
+    "due": [
+      "2027-03-05"
+    ]
+  },
+  "after_award": {
+    "reports": "final"
+  }
 }

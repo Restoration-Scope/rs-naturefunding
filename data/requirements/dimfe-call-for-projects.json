@@ -1,0 +1,59 @@
+{
+  "id": "dimfe-call-for-projects",
+  "read_on": "2026-11-20",
+  "prompt_version": "req-2026-11-20.1",
+  "models": ["cursor:gpt-5.6-luna-high"],
+  "complete": false,
+  "reasons": [
+    "2 links could not be ranked without Jev",
+    "Jev did not check this reading, so an absent fact is not known to be absent"
+  ],
+  "requirements_checked": false,
+  "documents": [
+    {
+      "ref": "D1",
+      "url": "https://www.dimfe.org/en/submit-a-project",
+      "final_url": "https://www.dimfe.org/en/submit-a-project",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 3323,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:e109da405a8f71c5d7c9672c555111238581f01d259a954c3631c78abaa7f4c9"
+    },
+    {
+      "ref": "D2",
+      "url": "https://www.dimfe.org/medias_upload/moxie/Dossier-de-candidature-DIMFE-GB_2-1.pdf",
+      "final_url": "https://www.dimfe.org/medias_upload/moxie/Dossier-de-candidature-DIMFE-GB_2-1.pdf",
+      "from": "https://www.dimfe.org/en/submit-a-project",
+      "anchor": "Download the application form",
+      "depth": 1,
+      "pdf": true,
+      "chars": 14087,
+      "pages": 23,
+      "low_text": false,
+      "hash": "sha256:9444d7dde330d18e00d9acf05c10dd056a0b156865028e27d2f02fe2b9edd0da"
+    }
+  ],
+  "failures": [],
+  "skipped_links": 17,
+  "chunks": [{ "id": "all", "docs": ["D1", "D2"], "chars": 17620 }],
+  "outcomes": {
+    "eligibility": "stated",
+    "documents": "stated",
+    "effort": "stated",
+    "co_finance": "stated",
+    "consortium": "not_found",
+    "after_award": "stated"
+  },
+  "written": ["eligibility", "documents", "effort", "co_finance", "after_award"],
+  "escalated": [],
+  "flags": [],
+  "notes": [
+    "extractor: The explicit 25% non-in-kind co-financing rule applies only when the request exceeds €300,000; the separate 75% contribution limit is stated as normally applicable. D1 describes eligible private companies as engaged in the ecological transition and having fewer than 20 employees.",
+    "source dimfe-call-for-projects-2: added for https://www.dimfe.org/medias_upload/moxie/Dossier-de-candidature-DIMFE-GB_2-1.pdf"
+  ],
+  "usd": 0
+}

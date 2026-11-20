@@ -18,6 +18,17 @@
   "amount": { "currency": "EUR", "min": 5000, "max": 20000, "typical": true, "per": "year" },
   "co_finance_required": true,
   "reporting": null,
+  "effort": { "steps": ["Application submission"], "due": ["2026-10-16"] },
+  "eligibility": [
+    { "rule": "Estimated project amount between €5,000 and €20,000 per year", "kind": "project" },
+    { "rule": "Project lasts 1 to 3 years", "kind": "project" },
+    { "rule": "Project seeks investment funding excluding vehicles", "kind": "project" },
+    {
+      "rule": "If already started, the project has not yet made its investment",
+      "kind": "project"
+    },
+    { "rule": "Project does not focus on research or awareness-raising actions", "kind": "project" }
+  ],
   "calls": [
     {
       "id": "2026",
@@ -84,7 +95,47 @@
       "quote": "Nécessité d'un cofinancement",
       "checked_at": "2026-11-20",
       "method": "page"
-    }
+    },
+    "effort": [
+      {
+        "source_url": "https://albioma.com/fondation/actualité/communique-de-presse-rapport-dactivite-2025-et-appel-a-projets-2026-la-fondation-albioma-poursuit-son-engagement-dans-les-outre-mer/",
+        "quote": "déposer leur candidature du 14 septembre au 16 octobre 2026",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "eligibility": [
+      {
+        "source_url": "https://albioma.com/fondation/actualité/communique-de-presse-rapport-dactivite-2025-et-appel-a-projets-2026-la-fondation-albioma-poursuit-son-engagement-dans-les-outre-mer/",
+        "quote": "Montant des projets estimés entre 5 000 et 20 000 euros/an",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://albioma.com/fondation/actualité/communique-de-presse-rapport-dactivite-2025-et-appel-a-projets-2026-la-fondation-albioma-poursuit-son-engagement-dans-les-outre-mer/",
+        "quote": "Durée des projets : 1 à 3 ans",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://albioma.com/fondation/actualité/communique-de-presse-rapport-dactivite-2025-et-appel-a-projets-2026-la-fondation-albioma-poursuit-son-engagement-dans-les-outre-mer/",
+        "quote": "Financement d'investissement (hors véhicule).",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://albioma.com/fondation/actualité/communique-de-presse-rapport-dactivite-2025-et-appel-a-projets-2026-la-fondation-albioma-poursuit-son-engagement-dans-les-outre-mer/",
+        "quote": "Projets qui peuvent avoir déjà commencé, mais dont l'investissement n'a pas encore été effectif",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://albioma.com/fondation/actualité/communique-de-presse-rapport-dactivite-2025-et-appel-a-projets-2026-la-fondation-albioma-poursuit-son-engagement-dans-les-outre-mer/",
+        "quote": "Les projets axés sur de la recherche et des actions de sensibilisation ne sont pas éligibles.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ]
   },
   "checked_at": "2026-11-03"
 }
