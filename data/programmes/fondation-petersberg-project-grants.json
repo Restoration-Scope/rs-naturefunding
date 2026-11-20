@@ -25,6 +25,29 @@
   "amount": null,
   "co_finance_required": null,
   "reporting": null,
+  "effort": {
+    "steps": [
+      "Project sketch",
+      "Full project description, if invited (larger projects)"
+    ]
+  },
+  "eligibility": [
+    {
+      "rule": "Keeping the funding period at four years or less",
+      "kind": "project"
+    },
+    {
+      "rule": "No award from the foundation in the past 24 months",
+      "kind": "other"
+    },
+    {
+      "rule": "Not a construction or renovation project",
+      "kind": "project"
+    }
+  ],
+  "after_award": {
+    "reports": "unspecified"
+  },
   "calls": [
     {
       "id": "march-september-rounds",
@@ -38,13 +61,13 @@
         "status": {
           "source_url": "https://fondationpetersberg.ch/gesuche/termine/",
           "quote": "Pro Jahr gibt es zwei Eingabetermine: 15. März 15. September",
-          "checked_at": "2026-11-09",
+          "checked_at": "2026-11-20",
           "method": "page"
         },
         "recurring": {
           "source_url": "https://fondationpetersberg.ch/gesuche/termine/",
           "quote": "Pro Jahr gibt es zwei Eingabetermine: 15. März 15. September",
-          "checked_at": "2026-11-09",
+          "checked_at": "2026-11-20",
           "method": "page"
         }
       }
@@ -54,21 +77,63 @@
     "geography": {
       "source_url": "https://fondationpetersberg.ch/foerderung/foerderreglement/",
       "quote": "Die Fördertätigkeit erfolgt in der ganzen Schweiz.",
-      "checked_at": "2026-11-09",
+      "checked_at": "2026-11-20",
       "method": "page"
     },
     "access": {
       "source_url": "https://fondationpetersberg.ch/foerderung/foerderreglement/",
       "quote": "Gesuche werden nur über unsere elektronische Gesuchserfassung entgegen genommen.",
-      "checked_at": "2026-11-09",
+      "checked_at": "2026-11-20",
       "method": "page"
     },
     "window": {
       "source_url": "https://fondationpetersberg.ch/gesuche/termine/",
       "quote": "Pro Jahr gibt es zwei Eingabetermine: 15. März 15. September",
-      "checked_at": "2026-11-09",
+      "checked_at": "2026-11-20",
       "method": "page"
-    }
+    },
+    "effort": [
+      {
+        "source_url": "https://fondationpetersberg.ch/foerderung/foerderreglement/",
+        "quote": "In der ersten Stufe wird eine Projektskizze mit minimalen Daten eingereicht.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://fondationpetersberg.ch/foerderung/foerderreglement/",
+        "quote": "Der Gesuchstellende wird dann aufgefordert einen vollständigen Projektbeschrieb einzureichen (zweite Stufe).",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "eligibility": [
+      {
+        "source_url": "https://fondationpetersberg.ch/foerderung/foerderreglement/",
+        "quote": "Eine Förderung kann nicht über einen Zeitraum von mehr als vier Jahren erfolgen.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://fondationpetersberg.ch/foerderung/ausschlussgruende/",
+        "quote": "Projekte derselben Institution innerhalb von 24 Monaten nach einer erfolgten Vergabungszusage",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://fondationpetersberg.ch/foerderung/ausschlussgruende/",
+        "quote": "Bauvorhaben, Renovationen",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "after_award": [
+      {
+        "source_url": "https://fondationpetersberg.ch/foerderung/foerderreglement/",
+        "quote": "Die Gesuchstellenden sind anzuhalten, zu gegebener Zeit und in angemessener Form Rechenschaft über die zweckkonforme Verwendung der Förderleistungen abzulegen.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ]
   },
-  "checked_at": "2026-11-09"
+  "checked_at": "2026-11-20"
 }

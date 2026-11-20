@@ -24,7 +24,13 @@
     "social_enterprise",
     "company"
   ],
-  "geography": { "scope": "regions", "regions": ["asia"], "label": "Southeast Asia" },
+  "geography": {
+    "scope": "regions",
+    "regions": [
+      "asia"
+    ],
+    "label": "Southeast Asia"
+  },
   "access": "direct",
   "window": "fixed",
   "amount": {
@@ -34,6 +40,22 @@
   },
   "co_finance_required": null,
   "reporting": null,
+  "effort": {
+    "steps": [
+      "Grant application",
+      "SLC Committee review and shortlist"
+    ],
+    "due": [
+      "2026-12-31",
+      null
+    ]
+  },
+  "eligibility": [
+    {
+      "rule": "Does not seek standard follow-on capital to simply expand an already-proven model",
+      "kind": "project"
+    }
+  ],
   "calls": [
     {
       "id": "inaugural-2026",
@@ -41,7 +63,10 @@
       "url": "https://philanthropyasiaalliance.org/insights/blog/sustainable-land-use-grant-call-for-southeast-asia",
       "status": "open",
       "opens": "2026-09-10",
-      "deadline": { "date": "2026-12-31", "text": "The window closes on 31 December 2026" },
+      "deadline": {
+        "date": "2026-12-31",
+        "text": "The window closes on 31 December 2026"
+      },
       "evidence": {
         "status": {
           "source_url": "https://philanthropyasiaalliance.org/insights/blog/sustainable-land-use-grant-call-for-southeast-asia",
@@ -94,7 +119,29 @@
       "quote": "Shortlisted projects can receive catalytic funding from S$200,000.",
       "checked_at": "2026-11-04",
       "method": "page"
-    }
+    },
+    "effort": [
+      {
+        "source_url": "https://philanthropyasiaalliance.org/insights/blog/sustainable-land-use-grant-call-for-southeast-asia",
+        "quote": "The window closes on 31 December 2026.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://philanthropyasiaalliance.org/insights/blog/sustainable-land-use-grant-call-for-southeast-asia",
+        "quote": "Projects will be reviewed by and shortlisted by our SLC Committee members",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "eligibility": [
+      {
+        "source_url": "https://philanthropyasiaalliance.org/insights/blog/sustainable-land-use-grant-call-for-southeast-asia",
+        "quote": "This grant call does not fund standard follow-on capital to simply expand already-proven models.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ]
   },
   "checked_at": "2026-11-04"
 }

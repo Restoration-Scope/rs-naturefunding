@@ -1,0 +1,130 @@
+{
+  "id": "fcas-provincial-funding",
+  "read_on": "2026-11-20",
+  "prompt_version": "req-2026-11-19.2",
+  "models": ["cursor:gpt-5.6-luna-high", "cursor:gpt-5.6-sol-high"],
+  "complete": false,
+  "reasons": [
+    "11 links could not be ranked without Jev",
+    "10 links could not be ranked without Jev",
+    "the text names a document with rules that was not read: 2027 Budget Form (Budget_2027_E)",
+    "Jev did not check this reading, so an absent fact is not known to be absent",
+    "strong reading: the text names a document with rules that was not read: 2027 Budget Form (Budget_2027_E)"
+  ],
+  "requirements_checked": false,
+  "documents": [
+    {
+      "ref": "D1",
+      "url": "https://www.salmonconservation.ca/applications/provincial-funding/",
+      "final_url": "https://www.salmonconservation.ca/applications/provincial-funding/",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 3072,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:df601d2e023f12f0f3487a2bff37e146d6fd8c692d05446798bf7589696d0fec"
+    },
+    {
+      "ref": "D2",
+      "url": "https://www.salmonconservation.ca/applications/",
+      "final_url": "https://www.salmonconservation.ca/applications/",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 2304,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:1e13f80000f95cf958a1a3d8352fca062ecc3b4c8d97070ef7ecd73fc0ee0048"
+    },
+    {
+      "ref": "D3",
+      "url": "https://www.salmonconservation.ca/faqs/",
+      "final_url": "https://www.salmonconservation.ca/faqs/",
+      "from": "https://www.salmonconservation.ca/applications/provincial-funding/",
+      "anchor": "FAQs",
+      "depth": 1,
+      "pdf": false,
+      "chars": 10489,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:08ae0bc8a1a8b5ac2c41c42085749403d7a48f510b9ccf6d64657e88c7198745"
+    },
+    {
+      "ref": "D4",
+      "url": "https://www.salmonconservation.ca/wp-content/uploads/2026/09/2027-Eligibility-Requirements-and-Procedures.pdf",
+      "final_url": "https://www.salmonconservation.ca/wp-content/uploads/2026/09/2027-Eligibility-Requirements-and-Procedures.pdf",
+      "from": "https://www.salmonconservation.ca/applications/provincial-funding/",
+      "anchor": "Download the 2027 Eligibility Requirements and Procedures",
+      "depth": 1,
+      "pdf": true,
+      "chars": 26213,
+      "pages": 12,
+      "low_text": false,
+      "hash": "sha256:442168cb322ade1eba81f9783849e4286db83edf568ca1aa0b1479399884de4f"
+    },
+    {
+      "ref": "D5",
+      "url": "https://www.salmonconservation.ca/wp-content/uploads/2026/07/Application_2027_E.docx",
+      "final_url": "https://www.salmonconservation.ca/wp-content/uploads/2026/07/Application_2027_E.docx",
+      "from": "https://www.salmonconservation.ca/applications/provincial-funding/",
+      "anchor": "Download the 2027 Application Form",
+      "depth": 1,
+      "pdf": false,
+      "chars": 7287,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:ee677bbd6c48551284263ad94bff425f8b5086708538bc6f6f84224af5c40fda"
+    },
+    {
+      "ref": "D6",
+      "url": "https://www.salmonconservation.ca/applications/request-for-proposals-rfp/",
+      "final_url": "https://www.salmonconservation.ca/applications/request-for-proposals-rfp/",
+      "from": "https://www.salmonconservation.ca/applications/",
+      "anchor": "For more information, click here.",
+      "depth": 1,
+      "pdf": false,
+      "chars": 1053,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:b51925ca8a25a8a1806e89e5000b9048ba4fbc9f629854a59f7a5dca91e4c422"
+    },
+    {
+      "ref": "D7",
+      "url": "https://www.salmonconservation.ca/wp-content/uploads/2026/03/FCAS-Research-Application_2027.docx",
+      "final_url": "https://www.salmonconservation.ca/wp-content/uploads/2026/03/FCAS-Research-Application_2027.docx",
+      "from": "https://www.salmonconservation.ca/applications/request-for-proposals-rfp/",
+      "anchor": "FCAS Research Application_2027",
+      "depth": 2,
+      "pdf": false,
+      "chars": 16410,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:46ed197c8524bbd8f4c789c1c7e3afdc4313eaf254e86f257437ee94ded71b94"
+    }
+  ],
+  "failures": [],
+  "skipped_links": 75,
+  "chunks": [{ "id": "all", "docs": ["D1", "D2", "D3", "D4", "D5", "D6", "D7"], "chars": 67834 }],
+  "outcomes": {
+    "eligibility": "stated",
+    "documents": "stated",
+    "effort": "stated",
+    "co_finance": "stated",
+    "consortium": "stated",
+    "after_award": "stated"
+  },
+  "written": ["eligibility", "documents", "effort", "co_finance", "consortium", "after_award"],
+  "escalated": ["documents"],
+  "flags": [],
+  "notes": [
+    "effort \"Application form, budget form and materials submitted by email\": the quote does not state 2026-11-27 whole; left undated",
+    "co_finance: share 33% dropped, its quote does not state it",
+    "extractor: D3 gives an older or general maximum award of $100,000, while the current 2027 provincial documents state a maximum of $50,000 per year. D7 concerns a separate closed applied research RFP and does not govern this provincial funding round.",
+    "source fcas-provincial-funding-3: added for https://www.salmonconservation.ca/wp-content/uploads/2026/09/2027-Eligibility-Requirements-and-Procedures.pdf",
+    "source fcas-provincial-funding-4: added for https://www.salmonconservation.ca/wp-content/uploads/2026/07/Application_2027_E.docx"
+  ],
+  "usd": 0
+}

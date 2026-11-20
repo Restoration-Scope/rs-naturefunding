@@ -21,6 +21,35 @@
   },
   "co_finance_required": null,
   "reporting": "Grant recipients report on how the funds were used, how the measures were carried out and the results, in the application centre, with signed accounts attached.",
+  "effort": { "steps": ["Application form"] },
+  "eligibility": [
+    { "rule": "Project area is outside protected areas", "kind": "project" },
+    {
+      "rule": "Applicant is not responsible for environmental degradation costs under section 11",
+      "kind": "other"
+    },
+    { "rule": "Project measures are significant and capable of lasting effect", "kind": "project" },
+    { "rule": "Funding request excludes impact monitoring", "kind": "project" },
+    {
+      "rule": "Funding request excludes ongoing maintenance or management of nature types",
+      "kind": "project"
+    },
+    {
+      "rule": "Funding request excludes general mapping of potential restoration areas",
+      "kind": "project"
+    },
+    { "rule": "Project is not designed and implemented in the same year", "kind": "project" },
+    {
+      "rule": "For implementation funding, the landowner signs a 40-year landowner declaration",
+      "kind": "project"
+    }
+  ],
+  "after_award": { "reports": "final", "audit": true },
+  "documents": [
+    "Project description",
+    "Budget",
+    "Signed landowner declaration, if applying for implementation funding"
+  ],
   "calls": [
     {
       "id": "2027-round",
@@ -32,19 +61,19 @@
       "evidence": {
         "status": {
           "source_url": "https://soknadssenter.miljodirektoratet.no/NaturrestaureringSkjema/Startside/Index?id=82",
-          "quote": "Elektronisk s&oslash;knadssenter &aring;pnes for s&oslash;knader 15. november 2026. S&oslash;knadsfrist er 15. januar 2027.",
+          "quote": "Elektronisk søknadssenter åpnes for søknader 15. november 2026. Søknadsfrist er 15. januar 2027.",
           "checked_at": "2026-11-12",
           "method": "page"
         },
         "opens": {
           "source_url": "https://soknadssenter.miljodirektoratet.no/NaturrestaureringSkjema/Startside/Index?id=82",
-          "quote": "Elektronisk s&oslash;knadssenter &aring;pnes for s&oslash;knader 15. november 2026. S&oslash;knadsfrist er 15. januar 2027.",
+          "quote": "Elektronisk søknadssenter åpnes for søknader 15. november 2026. Søknadsfrist er 15. januar 2027.",
           "checked_at": "2026-11-12",
           "method": "page"
         },
         "deadline": {
           "source_url": "https://soknadssenter.miljodirektoratet.no/NaturrestaureringSkjema/Startside/Index?id=82",
-          "quote": "Elektronisk s&oslash;knadssenter &aring;pnes for s&oslash;knader 15. november 2026. S&oslash;knadsfrist er 15. januar 2027.",
+          "quote": "Elektronisk søknadssenter åpnes for søknader 15. november 2026. Søknadsfrist er 15. januar 2027.",
           "checked_at": "2026-11-12",
           "method": "page"
         }
@@ -66,22 +95,108 @@
     },
     "window": {
       "source_url": "https://soknadssenter.miljodirektoratet.no/NaturrestaureringSkjema/Startside/Index?id=82",
-      "quote": "Elektronisk s&oslash;knadssenter &aring;pnes for s&oslash;knader 15. november 2026. S&oslash;knadsfrist er 15. januar 2027.",
+      "quote": "Elektronisk søknadssenter åpnes for søknader 15. november 2026. Søknadsfrist er 15. januar 2027.",
       "checked_at": "2026-11-12",
       "method": "page"
     },
     "amount": {
       "source_url": "https://soknadssenter.miljodirektoratet.no/NaturrestaureringSkjema/Startside/Index?id=82",
-      "quote": "S&oslash;knadssummen for et restaureringstiltak m&aring; v&aelig;re p&aring; minimum kr. 100 000,-",
+      "quote": "Søknadssummen for et restaureringstiltak må være på minimum kr. 100 000,-",
       "checked_at": "2026-11-12",
       "method": "page"
     },
     "reporting": {
       "source_url": "https://soknadssenter.miljodirektoratet.no/NaturrestaureringSkjema/Startside/Index?id=82",
-      "quote": "Det forutsettes at tilskuddsmottaker rapporterer p&aring; hvordan midlene er benyttet, om gjennomf&oslash;ring av tiltak og resultat.",
+      "quote": "Det forutsettes at tilskuddsmottaker rapporterer på hvordan midlene er benyttet, om gjennomføring av tiltak og resultat.",
       "checked_at": "2026-11-12",
       "method": "page"
-    }
+    },
+    "effort": [
+      {
+        "source_url": "https://soknadssenter.miljodirektoratet.no/NaturrestaureringSkjema/Startside/Index?id=82",
+        "quote": "Søknadsskjemaet er åpent, gå til utfylling",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "eligibility": [
+      {
+        "source_url": "https://soknadssenter.miljodirektoratet.no/NaturrestaureringSkjema/Startside/Index?id=82",
+        "quote": "Ordningen gjelder for areal utenfor verneområder.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://soknadssenter.miljodirektoratet.no/NaturrestaureringSkjema/Startside/Index?id=82",
+        "quote": "Det gis ikke tilskudd til en tiltakshaver som ut fra prinsippet i naturmangfoldloven § 11 selv bør bære kostnadene ved miljøforringelsen.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://soknadssenter.miljodirektoratet.no/NaturrestaureringSkjema/Startside/Index?id=82",
+        "quote": "Tiltakene må være av en viss vesentlighet og være egnet til å gi varig virkning",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://soknadssenter.miljodirektoratet.no/NaturrestaureringSkjema/Startside/Index?id=82",
+        "quote": "Effektovervåking dekkes ikke av denne ordningen.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://soknadssenter.miljodirektoratet.no/NaturrestaureringSkjema/Startside/Index?id=82",
+        "quote": "Det gis heller ikke tilskudd til tiltak som har karakter av løpende vedlikehold eller skjøtsel av naturtyper.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://soknadssenter.miljodirektoratet.no/NaturrestaureringSkjema/Startside/Index?id=82",
+        "quote": "det gis ikke støtte til generell kartlegging av potensielt restaureringsareal, for eksempel kartlegging av forringet areal av en bestemt naturtype i en kommune.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://soknadssenter.miljodirektoratet.no/NaturrestaureringSkjema/Startside/Index?id=82",
+        "quote": "Det gis ikke tilskudd til gjennomføring og prosjektering av et tiltak samme år.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://soknadssenter.miljodirektoratet.no/NaturrestaureringSkjema/Startside/Index?id=82",
+        "quote": "Ved søknad om midler til gjennomføring at tiltak, skal signert grunneiererklæring ligge vedlagt søknaden. Erklæringen gjelder for 40 år.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "after_award": [
+      {
+        "source_url": "https://soknadssenter.miljodirektoratet.no/NaturrestaureringSkjema/Startside/Index?id=82",
+        "quote": "Det forutsettes at tilskuddsmottaker rapporterer på hvordan midlene er benyttet, om gjennomføring av tiltak og resultat.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://soknadssenter.miljodirektoratet.no/NaturrestaureringSkjema/Startside/Index?id=82",
+        "quote": "Når tilskuddet er 500 000 kroner eller høyere skal regnskapet være revidert av statsautorisert revisor.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "documents": [
+      {
+        "source_url": "https://soknadssenter.miljodirektoratet.no/NaturrestaureringSkjema/Startside/Index?id=82",
+        "quote": "Søknaden må inneholde prosjektbeskrivelse og budsjett.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://soknadssenter.miljodirektoratet.no/NaturrestaureringSkjema/Startside/Index?id=82",
+        "quote": "Ved søknad om midler til gjennomføring at tiltak, skal signert grunneiererklæring ligge vedlagt søknaden.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ]
   },
   "checked_at": "2026-11-12"
 }

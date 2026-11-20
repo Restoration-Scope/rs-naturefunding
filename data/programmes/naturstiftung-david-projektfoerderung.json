@@ -22,6 +22,19 @@
   },
   "co_finance_required": null,
   "reporting": null,
+  "effort": {
+    "steps": ["Choose and submit an online application up to EUR 600, EUR 5,000 or EUR 15,000"]
+  },
+  "eligibility": [
+    {
+      "rule": "Nonprofit or charitable organisation (municipalities and universities only in individual cases)",
+      "kind": "legal"
+    },
+    {
+      "rule": "Project is not legally required, ongoing multi-year conservation maintenance, or basic research without implementation",
+      "kind": "project"
+    }
+  ],
   "calls": [
     {
       "id": "small-600-rolling",
@@ -34,7 +47,7 @@
         "status": {
           "source_url": "https://www.naturstiftung-david.de/foerderung",
           "quote": "Anträge zur Kleinprojektförderung können jederzeit eingereicht werden.",
-          "checked_at": "2026-11-15",
+          "checked_at": "2026-11-20",
           "method": "page"
         }
       }
@@ -50,13 +63,13 @@
         "status": {
           "source_url": "https://www.naturstiftung-david.de/foerderung",
           "quote": "Die Entscheidung über größere Projektanträge fällt einmal im Jahr. Frist: 15. Februar 2027",
-          "checked_at": "2026-11-15",
+          "checked_at": "2026-11-20",
           "method": "page"
         },
         "deadline": {
           "source_url": "https://www.naturstiftung-david.de/foerderung",
           "quote": "Die Entscheidung über größere Projektanträge fällt einmal im Jahr. Frist: 15. Februar 2027",
-          "checked_at": "2026-11-15",
+          "checked_at": "2026-11-20",
           "method": "page"
         }
       }
@@ -66,33 +79,75 @@
     "applicant_types": {
       "source_url": "https://www.naturstiftung-david.de/foerderung",
       "quote": "Antragsberechtigt sind gemeinnützige und/oder mildtätige Organisationen. In Einzelfällen können auch Kommunen und Hochschulen gefördert werden.",
-      "checked_at": "2026-11-15",
+      "checked_at": "2026-11-20",
       "method": "page"
     },
     "geography": {
       "source_url": "https://www.naturstiftung-david.de/foerderung",
       "quote": "Die Naturstiftung David fördert Umweltinitiativen in den neuen Bundesländern.",
-      "checked_at": "2026-11-15",
+      "checked_at": "2026-11-20",
       "method": "page"
     },
     "access": {
       "source_url": "https://www.naturstiftung-david.de/foerderung",
       "quote": "Für die Antragstellung benutzen Sie bitte unsere unten verlinkten Online-Formulare.",
-      "checked_at": "2026-11-15",
+      "checked_at": "2026-11-20",
       "method": "page"
     },
     "window": {
       "source_url": "https://www.naturstiftung-david.de/foerderung",
       "quote": "Projekte mit einer Antragssumme von bis zu 600 Euro können jederzeit eingereicht werden. Über diese wird innerhalb von sechs Wochen entschieden. Über Anträge bis zu 5.000 Euro entscheidet das Stiftungspräsidium viermal im Jahr. Die Entscheidung für Projektanträge von bis zu 15.000 Euro fällt einmal im Jahr.",
-      "checked_at": "2026-11-15",
+      "checked_at": "2026-11-20",
       "method": "page"
     },
     "amount": {
       "source_url": "https://www.naturstiftung-david.de/foerderung",
       "quote": "Die Fördersummen reichen von kleinen Projekten mit bis zu 600 Euro bis hin zu größeren Vorhaben mit einer Antragssumme von bis zu 15.000 Euro.",
-      "checked_at": "2026-11-15",
+      "checked_at": "2026-11-20",
       "method": "page"
-    }
+    },
+    "effort": [
+      {
+        "source_url": "https://www.naturstiftung-david.de/foerderung",
+        "quote": "Für die Antragstellung benutzen Sie bitte unsere unten verlinkten Online-Formulare.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "eligibility": [
+      {
+        "source_url": "https://www.naturstiftung-david.de/foerderung",
+        "quote": "Antragsberechtigt sind gemeinnützige und/oder mildtätige Organisationen. In Einzelfällen können auch Kommunen und Hochschulen gefördert werden.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.naturstiftung-david.de/foerderung",
+        "quote": "Maßnahmen, für die es eine rechtliche Verpflichtung gibt (z. B. Ausgleichsmaßnahmen), fortlaufende (mehrjährige) Pflegemaßnahmen im Bereich Naturschutz, wissenschaftliche Grundlagenuntersuchungen ohne konkreten Umsetzungsbezug.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "documents": [
+      {
+        "source_url": "https://www.naturstiftung-david.de/fileadmin/Medien/Downloads/Foerderung/Foerderrichtlinie_der_Naturstiftung_David_Stand_Juni_2026.pdf",
+        "quote": "Außerdem ist eine ausführliche Projektbeschreibung (ca. 4 Seiten) erforderlich",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "after_award": [
+      {
+        "source_url": "https://www.naturstiftung-david.de/fileadmin/Medien/Downloads/Foerderung/Foerderrichtlinie_der_Naturstiftung_David_Stand_Juni_2026.pdf",
+        "quote": "Bei Projekten mit einer Fördersumme von über 600,- Euro werden 20 Prozent der Fördersumme erst bei Vorlage des vollständigen Verwendungsnachweises ausgezahlt.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ]
   },
-  "checked_at": "2026-11-15"
+  "checked_at": "2026-11-20",
+  "documents": [
+    "Detailed project description (about 4 pages; 6 for EUR 15,000), for requests over EUR 600"
+  ],
+  "after_award": { "reports": "final" }
 }

@@ -1,0 +1,74 @@
+{
+  "id": "fondazione-pavia-bando-ambiente-territorio",
+  "read_on": "2026-11-20",
+  "prompt_version": "req-2026-11-19.2",
+  "models": ["cursor:gpt-5.6-luna-high"],
+  "complete": false,
+  "reasons": [
+    "7 links could not be ranked without Jev",
+    "4 links could not be ranked without Jev",
+    "Jev did not check this reading, so an absent fact is not known to be absent"
+  ],
+  "requirements_checked": false,
+  "documents": [
+    {
+      "ref": "D1",
+      "url": "https://www.fondazionepv.it/bandi/",
+      "final_url": "https://www.fondazionepv.it/bandi/",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 7112,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:86b6ee6f479f16931b367813454a036172edc8b185e88e0435ec466e6f76a858"
+    },
+    {
+      "ref": "D2",
+      "url": "https://www.fondazionepv.it/wp-content/uploads/2026/02/regolamento-4-bando-2026-ambiente-e-territorio.pdf",
+      "final_url": "https://www.fondazionepv.it/wp-content/uploads/2026/02/regolamento-4-bando-2026-ambiente-e-territorio.pdf",
+      "from": "https://www.fondazionepv.it/bandi/",
+      "anchor": "PER SCARICARE IL REGOLAMENTO DEL BANDO 4 CLICCATE QUI",
+      "depth": 1,
+      "pdf": true,
+      "chars": 17910,
+      "pages": 12,
+      "low_text": false,
+      "hash": "sha256:06d374e2cdc792227b1ea007450fd686d6726e668e7a983d4683b95424cde346"
+    },
+    {
+      "ref": "D3",
+      "url": "https://www.fondazionepv.it/privacy-policy/",
+      "final_url": "https://www.fondazionepv.it/privacy-policy/",
+      "from": "https://www.fondazionepv.it/bandi/",
+      "anchor": "su questo sito.",
+      "depth": 1,
+      "pdf": false,
+      "chars": 6133,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:e8c7fb6dba369d62d6dfae089f4a9db01c76ffd45551549341eb5d7f9f13064f"
+    }
+  ],
+  "failures": [],
+  "skipped_links": 130,
+  "chunks": [{ "id": "all", "docs": ["D1", "D2", "D3"], "chars": 31480 }],
+  "outcomes": {
+    "eligibility": "stated",
+    "documents": "stated",
+    "effort": "stated",
+    "co_finance": "stated",
+    "consortium": "not_found",
+    "after_award": "stated"
+  },
+  "written": ["eligibility", "documents", "effort", "co_finance", "after_award"],
+  "escalated": [],
+  "flags": [],
+  "notes": [
+    "co_finance: share 40% dropped, its quote does not state it",
+    "extractor: The IV Bando 2026 is rolling with no stated application deadline. Public entities and universities may be funded only in partnership with private entities; each partner must contribute at least 10% of total project costs. Projects must be completed by 31 December 2027 unless the stated exception applies.",
+    "source fondazione-pavia-bando-ambiente-territorio-2: added for https://www.fondazionepv.it/wp-content/uploads/2026/02/regolamento-4-bando-2026-ambiente-e-territorio.pdf"
+  ],
+  "usd": 0
+}

@@ -1,0 +1,58 @@
+{
+  "id": "suriname-conservation-foundation-project-financing",
+  "read_on": "2026-11-20",
+  "prompt_version": "req-2026-11-20.1",
+  "models": ["cursor:gpt-5.6-luna-high"],
+  "complete": false,
+  "reasons": [
+    "the text names a document with rules that was not read: Standaard Voorwaarden",
+    "Jev did not check this reading, so an absent fact is not known to be absent"
+  ],
+  "requirements_checked": false,
+  "documents": [
+    {
+      "ref": "D1",
+      "url": "https://www.scf.sr/wie-komen-in-aanmerking/",
+      "final_url": "https://www.scf.sr/wie-komen-in-aanmerking/",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 7398,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:d4518719b37bf075e87bf9f81611e91ba269cf403819eccb3d79d4453780fd43"
+    },
+    {
+      "ref": "D2",
+      "url": "https://www.scf.sr/procedure-financieringsaanvraag-voor-projecten/",
+      "final_url": "https://www.scf.sr/procedure-financieringsaanvraag-voor-projecten/",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 10720,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:01e428db924e7504681b71d6590dcbd0730f7c977ba54bb48d37c05a7213802c"
+    }
+  ],
+  "failures": [],
+  "skipped_links": 121,
+  "chunks": [{ "id": "all", "docs": ["D1", "D2"], "chars": 18255 }],
+  "outcomes": {
+    "eligibility": "stated",
+    "documents": "stated",
+    "effort": "stated",
+    "co_finance": "not_found",
+    "consortium": "not_found",
+    "after_award": "stated"
+  },
+  "written": ["eligibility", "documents", "effort", "after_award"],
+  "escalated": [],
+  "flags": [],
+  "notes": [
+    "extractor: All projects must provide sufficient publicity. Administrative records must be retained for five years after project closure. In special cases, an interim report may be requested. SCF states that a project can be rejected even when it meets all criteria."
+  ],
+  "usd": 0
+}

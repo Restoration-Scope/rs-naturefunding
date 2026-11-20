@@ -1,0 +1,138 @@
+{
+  "id": "dfo-habitat-stewardship-aquatic",
+  "read_on": "2026-11-20",
+  "prompt_version": "req-2026-11-19.2",
+  "models": ["cursor:gpt-5.6-luna-high"],
+  "complete": false,
+  "reasons": [
+    "6 links could not be ranked without Jev",
+    "8 links could not be ranked without Jev",
+    "3 links could not be ranked without Jev",
+    "http://www.tbs-sct.gc.ca/pol/doc-eng.aspx?id=27088&utm_source=referral&utm_medium=e-mail&utm_campaign=web_mobile_standard would not open (network: ECONNREFUSED: Unable to connect. Is the computer able to access the url?)",
+    "the crawl bound left http://www.tbs-sct.gc.ca/pol/doc-eng.aspx?id=12316 unread",
+    "the crawl bound left http://www.tbs-sct.gc.ca/pol/doc-eng.aspx?id=12316&section=text unread",
+    "the text names a document with rules that was not read: Recovery strategies, management plans and action plans for SARA-listed species on the Species at Risk Public Registry",
+    "the text names a document with rules that was not read: Measures for species spreadsheet (XLSX, 666 KB)",
+    "Jev did not check this reading, so an absent fact is not known to be absent"
+  ],
+  "requirements_checked": false,
+  "documents": [
+    {
+      "ref": "D1",
+      "url": "https://www.dfo-mpo.gc.ca/species-especes/sara-lep/hsp-pih/index-eng.html",
+      "final_url": "https://www.dfo-mpo.gc.ca/species-especes/sara-lep/hsp-pih/index-eng.html",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 20389,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:aac00a9821b18cdfe39dc596f24624ade3163267125899c57af3b22af1fdab7e"
+    },
+    {
+      "ref": "D2",
+      "url": "https://www.dfo-mpo.gc.ca/species-especes/sara-lep/hsp-pih/proposal-proposition/application/index-eng.html",
+      "final_url": "https://www.dfo-mpo.gc.ca/species-especes/sara-lep/hsp-pih/proposal-proposition/application/index-eng.html",
+      "from": "https://www.dfo-mpo.gc.ca/species-especes/sara-lep/hsp-pih/index-eng.html",
+      "anchor": "project proposal form",
+      "depth": 1,
+      "pdf": false,
+      "chars": 41326,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:1bc7e5ccfe55fd54773585bb73141308260ecdc707a423e23d1a9fbdef1d01bd"
+    },
+    {
+      "ref": "D3",
+      "url": "https://www.dfo-mpo.gc.ca/terms-avis/terms-conditions-avis-eng.htm",
+      "final_url": "https://www.dfo-mpo.gc.ca/terms-avis/terms-conditions-avis-eng.htm",
+      "from": "https://www.dfo-mpo.gc.ca/species-especes/sara-lep/hsp-pih/index-eng.html",
+      "anchor": "Terms and conditions",
+      "depth": 1,
+      "pdf": false,
+      "chars": 15807,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:31a065dc7f09bd892fbed95cfdcbc43041913578499a19c2cdeddb7edc7204a3"
+    },
+    {
+      "ref": "D4",
+      "url": "https://www.dfo-mpo.gc.ca/species-especes/documents/sara-lep/hsp-pih/application-demande-habitat-stewardship-intendance-eng.docx",
+      "final_url": "https://www.dfo-mpo.gc.ca/species-especes/documents/sara-lep/hsp-pih/application-demande-habitat-stewardship-intendance-eng.docx",
+      "from": "https://www.dfo-mpo.gc.ca/species-especes/sara-lep/hsp-pih/proposal-proposition/application/index-eng.html",
+      "anchor": "download and fill out this Word doc (DOCX, 281 KB)",
+      "depth": 2,
+      "pdf": false,
+      "chars": 14601,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:fe29457391deded1dfa0ba644e938a03e751c4c1fb6cef88897c0e35722972f8"
+    },
+    {
+      "ref": "D5",
+      "url": "https://www.dfo-mpo.gc.ca/terms-avis/copyright-droits-FAQ-eng.htm",
+      "final_url": "https://www.dfo-mpo.gc.ca/terms-avis/copyright-droits-FAQ-eng.htm",
+      "from": "https://www.dfo-mpo.gc.ca/terms-avis/terms-conditions-avis-eng.htm",
+      "anchor": "Frequently Asked Questions",
+      "depth": 2,
+      "pdf": false,
+      "chars": 10934,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:45a9590514a74c32ec168108484a3cf9e0534e3d466b61862c2dfb83f5e167c5"
+    },
+    {
+      "ref": "D6",
+      "url": "https://www.dfo-mpo.gc.ca/terms-avis/reproduce-reproduire-eng.pdf",
+      "final_url": "https://www.dfo-mpo.gc.ca/terms-avis/reproduce-reproduire-eng.pdf",
+      "from": "https://www.dfo-mpo.gc.ca/terms-avis/terms-conditions-avis-eng.htm",
+      "anchor": "complete this form",
+      "depth": 2,
+      "pdf": true,
+      "chars": 4045,
+      "pages": 4,
+      "low_text": false,
+      "hash": "sha256:943f3be7e0938b9877f27fe4edb91904fc2b8a34a41e99e50b87926361eaae4f"
+    }
+  ],
+  "failures": [
+    {
+      "url": "http://www.tbs-sct.gc.ca/pol/doc-eng.aspx?id=27088&utm_source=referral&utm_medium=e-mail&utm_campaign=web_mobile_standard",
+      "from": "https://www.dfo-mpo.gc.ca/terms-avis/terms-conditions-avis-eng.htm",
+      "kind": "network",
+      "message": "ECONNREFUSED: Unable to connect. Is the computer able to access the url?"
+    },
+    {
+      "url": "http://www.tbs-sct.gc.ca/pol/doc-eng.aspx?id=12316",
+      "from": "https://www.dfo-mpo.gc.ca/terms-avis/copyright-droits-FAQ-eng.htm",
+      "kind": "bound",
+      "message": "past the crawl depth of 2"
+    },
+    {
+      "url": "http://www.tbs-sct.gc.ca/pol/doc-eng.aspx?id=12316&section=text",
+      "from": "https://www.dfo-mpo.gc.ca/terms-avis/copyright-droits-FAQ-eng.htm",
+      "kind": "bound",
+      "message": "past the crawl depth of 2"
+    }
+  ],
+  "skipped_links": 218,
+  "chunks": [{ "id": "all", "docs": ["D1", "D2", "D3", "D4", "D5", "D6"], "chars": 108148 }],
+  "outcomes": {
+    "eligibility": "stated",
+    "documents": "not_found",
+    "effort": "stated",
+    "co_finance": "stated",
+    "consortium": "not_found",
+    "after_award": "not_found"
+  },
+  "written": ["eligibility", "effort", "co_finance"],
+  "escalated": [],
+  "flags": [],
+  "notes": [
+    "co_finance: share 20% dropped, its quote does not state it",
+    "extractor: Projects may run for one to three years and are generally $25,000 to $125,000 per year; final-year multi-year projects may be under $25,000. Regional administration applies. No explicit post-award reporting schedule, audit, site-visit or training duty is stated.",
+    "source dfo-habitat-stewardship-aquatic-2: added for https://www.dfo-mpo.gc.ca/species-especes/sara-lep/hsp-pih/proposal-proposition/application/index-eng.html"
+  ],
+  "usd": 0
+}

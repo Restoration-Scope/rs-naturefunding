@@ -18,6 +18,30 @@
   "amount": null,
   "co_finance_required": null,
   "reporting": null,
+  "effort": { "steps": ["Application"], "due": ["2026-12-01"] },
+  "eligibility": [
+    {
+      "rule": "The project benefits endangered or threatened species or habitat.",
+      "kind": "project"
+    },
+    { "rule": "The project includes a public education component.", "kind": "project" },
+    { "rule": "The project involves the local population.", "kind": "project" },
+    { "rule": "The project has lasting significance for local residents.", "kind": "project" },
+    { "rule": "The project is completed within a year.", "kind": "project" },
+    {
+      "rule": "The project is outside the United States and other advanced economies.",
+      "kind": "project"
+    },
+    {
+      "rule": "The project is not pure scientific research or data gathering without an obvious conservation or education benefit.",
+      "kind": "project"
+    },
+    {
+      "rule": "The project does not focus on species listed as Least Concern in the IUCN Red Book of Threatened Species.",
+      "kind": "project"
+    }
+  ],
+  "after_award": { "reports": "interim_and_final" },
   "calls": [
     {
       "id": "2027-grants",
@@ -30,19 +54,19 @@
         "status": {
           "source_url": "https://natureforward.org/crowder-messersmith-fund/",
           "quote": "Applications for the 2027 Grants are open from September 1 to December 1, 2026",
-          "checked_at": "2026-11-15",
+          "checked_at": "2026-11-20",
           "method": "human"
         },
         "opens": {
           "source_url": "https://natureforward.org/crowder-messersmith-fund/",
           "quote": "Applications for the 2027 Grants are open from September 1 to December 1, 2026",
-          "checked_at": "2026-11-15",
+          "checked_at": "2026-11-20",
           "method": "human"
         },
         "deadline": {
           "source_url": "https://natureforward.org/crowder-messersmith-fund/",
           "quote": "Applications for the 2027 Grants are open from September 1 to December 1, 2026",
-          "checked_at": "2026-11-15",
+          "checked_at": "2026-11-20",
           "method": "human"
         }
       }
@@ -52,27 +76,93 @@
     "applicant_types": {
       "source_url": "https://natureforward.org/crowder-messersmith-fund/",
       "quote": "helps fund small, local conservation and education projects in developing countries by providing seed money to communities and individuals whose projects have not attracted major support from other sources.",
-      "checked_at": "2026-11-15",
+      "checked_at": "2026-11-20",
       "method": "human"
     },
     "geography": {
       "source_url": "https://natureforward.org/crowder-messersmith-fund/",
       "quote": "helps fund small, local conservation and education projects in developing countries by providing seed money to communities and individuals whose projects have not attracted major support from other sources.",
-      "checked_at": "2026-11-15",
+      "checked_at": "2026-11-20",
       "method": "human"
     },
     "access": {
       "source_url": "https://natureforward.org/crowder-messersmith-fund/",
       "quote": "Applications for the 2027 Grants are open from September 1 to December 1, 2026",
-      "checked_at": "2026-11-15",
+      "checked_at": "2026-11-20",
       "method": "human"
     },
     "window": {
       "source_url": "https://natureforward.org/crowder-messersmith-fund/",
       "quote": "Applications for the 2027 Grants are open from September 1 to December 1, 2026",
-      "checked_at": "2026-11-15",
+      "checked_at": "2026-11-20",
       "method": "human"
-    }
+    },
+    "effort": [
+      {
+        "source_url": "https://natureforward.org/wp-content/uploads/2026/08/2027-C-M-Application-CRITERIA-and-INFORMATION.pdf",
+        "quote": "Applications are accepted beginning September 1, 2026. Deadline for receipt is December 1, 2026.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "eligibility": [
+      {
+        "source_url": "https://natureforward.org/wp-content/uploads/2026/08/2027-C-M-Application-CRITERIA-and-INFORMATION.pdf",
+        "quote": "Benefit endangered or threatened species or habitat.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://natureforward.org/wp-content/uploads/2026/08/2027-C-M-Application-CRITERIA-and-INFORMATION.pdf",
+        "quote": "Include a public education component.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://natureforward.org/wp-content/uploads/2026/08/2027-C-M-Application-CRITERIA-and-INFORMATION.pdf",
+        "quote": "Involve the local population.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://natureforward.org/wp-content/uploads/2026/08/2027-C-M-Application-CRITERIA-and-INFORMATION.pdf",
+        "quote": "Have lasting significance for local residents.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://natureforward.org/wp-content/uploads/2026/08/2027-C-M-Application-CRITERIA-and-INFORMATION.pdf",
+        "quote": "Be completed within a year.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://natureforward.org/wp-content/uploads/2026/08/2027-C-M-Application-CRITERIA-and-INFORMATION.pdf",
+        "quote": "Projects in the United States or other advanced economies.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://natureforward.org/wp-content/uploads/2026/08/2027-C-M-Application-CRITERIA-and-INFORMATION.pdf",
+        "quote": "Pure scientific research or data gathering with no obvious conservation or education benefit.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://natureforward.org/wp-content/uploads/2026/08/2027-C-M-Application-CRITERIA-and-INFORMATION.pdf",
+        "quote": "Projects that focus on species listed as Least Concern in the IUCN Red Book of Threatened Species.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "after_award": [
+      {
+        "source_url": "https://natureforward.org/wp-content/uploads/2026/08/2027-C-M-Application-CRITERIA-and-INFORMATION.pdf",
+        "quote": "The Grantee must also agree to provide a project status report 6 months after the project start date. Upon completion of the project, but no later than 12 months, a full project report is required unless an extension is requested due to unforeseen circumstances.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ]
   },
-  "checked_at": "2026-11-15"
+  "checked_at": "2026-11-20"
 }

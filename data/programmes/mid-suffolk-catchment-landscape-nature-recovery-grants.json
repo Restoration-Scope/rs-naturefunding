@@ -18,8 +18,34 @@
   "access": "direct",
   "window": "fixed",
   "amount": { "currency": "GBP", "min": 50000, "max": 200000 },
-  "co_finance_required": null,
+  "co_finance_required": false,
   "reporting": null,
+  "effort": {
+    "steps": [
+      "Expression of Interest",
+      "Full application, if the Expression of Interest is supported"
+    ],
+    "due": [null, "2027-04-30"]
+  },
+  "eligibility": [
+    { "rule": "Is a constituted VCFSE organisation", "kind": "legal" },
+    { "rule": "Can obtain enough funding to cover the total project costs", "kind": "finances" },
+    {
+      "rule": "Is financially viable with accounts or a financial business strategy",
+      "kind": "finances"
+    },
+    {
+      "rule": "Has safeguarding, health and safety, and equal opportunities policies",
+      "kind": "capacity"
+    },
+    {
+      "rule": "Owns the land, holds a 10-year lease, or has all landowners' written agreement",
+      "kind": "project"
+    },
+    { "rule": "Supports at least one BAP priority habitat or species", "kind": "project" },
+    { "rule": "Supports at least one Suffolk LNRS aim or ambition", "kind": "project" },
+    { "rule": "Addresses both flood management and water quality", "kind": "project" }
+  ],
   "calls": [
     {
       "id": "2027",
@@ -80,7 +106,77 @@
       "quote": "Grants of between £50,000 and £200,000 can be applied for towards revenue, capital or pre-project costs or activities.",
       "checked_at": "2026-11-15",
       "method": "page"
-    }
+    },
+    "co_finance_required": {
+      "source_url": "https://www.midsuffolk.gov.uk/documents/d/mid-suffolk/2026-28-catchment-and-landscape-nature-recovery-grant-guidance-notes-web-copy",
+      "quote": "Match funding is not essential, though is encouraged as it is likely to form part of the project.",
+      "checked_at": "2026-11-20",
+      "method": "page"
+    },
+    "effort": [
+      {
+        "source_url": "https://www.midsuffolk.gov.uk/documents/d/mid-suffolk/2026-28-catchment-and-landscape-nature-recovery-grant-guidance-notes-web-copy",
+        "quote": "Applicants are first required to submit an Expression of Interest Form prior to submitting a full application.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.midsuffolk.gov.uk/documents/d/mid-suffolk/2026-28-catchment-and-landscape-nature-recovery-grant-guidance-notes-web-copy",
+        "quote": "The following application window will be open from 1st February 2027 to 30th April 2027.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "eligibility": [
+      {
+        "source_url": "https://www.midsuffolk.gov.uk/documents/d/mid-suffolk/2026-28-catchment-and-landscape-nature-recovery-grant-guidance-notes-web-copy",
+        "quote": "Applications for grants will only be considered from constituted Voluntary, Community, Faith and Social Enterprise (VCFSE) organisations which:",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.midsuffolk.gov.uk/documents/d/mid-suffolk/2026-28-catchment-and-landscape-nature-recovery-grant-guidance-notes-web-copy",
+        "quote": "Are capable of obtaining from its own funds or other sources sufficient funding to cover the total project costs",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.midsuffolk.gov.uk/documents/d/mid-suffolk/2026-28-catchment-and-landscape-nature-recovery-grant-guidance-notes-web-copy",
+        "quote": "Are financially viable, as evidenced by audited, independently examined accounts or financial business strategy.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.midsuffolk.gov.uk/documents/d/mid-suffolk/2026-28-catchment-and-landscape-nature-recovery-grant-guidance-notes-web-copy",
+        "quote": "Have Child and Adult Safeguarding, Health and Safety and Equal Opportunities policies for employees, volunteers and attendees",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.midsuffolk.gov.uk/documents/d/mid-suffolk/2026-28-catchment-and-landscape-nature-recovery-grant-guidance-notes-web-copy",
+        "quote": "Own the land to which the application relates (freehold) Have a lease agreement with at least 10 years remaining (leasehold) Have written confirmation that all participating landowners agree to the proposed project",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.midsuffolk.gov.uk/documents/d/mid-suffolk/2026-28-catchment-and-landscape-nature-recovery-grant-guidance-notes-web-copy",
+        "quote": "All applications will be required to support at least one of the key habitats and/or species identified by the Mid Suffolk Biodiversity Action Plan (BAP).",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.midsuffolk.gov.uk/documents/d/mid-suffolk/2026-28-catchment-and-landscape-nature-recovery-grant-guidance-notes-web-copy",
+        "quote": "All applications will be required to support delivery of at least one of the Suffolk Local Nature Recovery Strategy (LNRS)'s aims and ambitions:",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.midsuffolk.gov.uk/documents/d/mid-suffolk/2026-28-catchment-and-landscape-nature-recovery-grant-guidance-notes-web-copy",
+        "quote": "All applications must address flood management and water quality.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ]
   },
   "checked_at": "2026-11-15"
 }

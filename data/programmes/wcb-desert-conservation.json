@@ -31,6 +31,33 @@
   "amount": null,
   "co_finance_required": false,
   "reporting": null,
+  "effort": {
+    "steps": [
+      "Pre-application",
+      "Full Application, if invited"
+    ]
+  },
+  "eligibility": [
+    {
+      "rule": "Nonprofit applicants have 501(c)(3) tax-exempt status",
+      "kind": "legal"
+    },
+    {
+      "rule": "Project provides protected or restored biodiversity, climate action, or public access to nature",
+      "kind": "project"
+    },
+    {
+      "rule": "Acquisition is from a willing seller at no more than fair market value",
+      "kind": "project"
+    },
+    {
+      "rule": "Implementation application includes intermediate or advanced design plans",
+      "kind": "project"
+    }
+  ],
+  "after_award": {
+    "reports": "final"
+  },
   "calls": [
     {
       "id": "continuous-pre-applications",
@@ -43,7 +70,7 @@
         "status": {
           "source_url": "https://wcb.ca.gov/programs/desert",
           "quote": "The Wildlife Conservation Board accepts pre-applications for acquisition, restoration, and management projects on a continuous basis.",
-          "checked_at": "2026-11-16",
+          "checked_at": "2026-11-20",
           "method": "page"
         }
       }
@@ -53,33 +80,81 @@
     "applicant_types": {
       "source_url": "https://wcb.ca.gov/programs/desert",
       "quote": "Entities eligible to apply for grant funding under the Desert Conservation Program include: federal and state agencies, local public agencies, tribal entities, and non-profits with 501 (c)(3) tax exempt status.",
-      "checked_at": "2026-11-16",
+      "checked_at": "2026-11-20",
       "method": "page"
     },
     "geography": {
       "source_url": "https://wcb.ca.gov/programs/desert",
       "quote": "restore the natural, cultural, and physical resources of the portions of the Mojave and Colorado Deserts region in California",
-      "checked_at": "2026-11-16",
+      "checked_at": "2026-11-20",
       "method": "page"
     },
     "access": {
       "source_url": "https://wcb.ca.gov/programs/desert",
       "quote": "The Wildlife Conservation Board accepts pre-applications for acquisition, restoration, and management projects on a continuous basis.",
-      "checked_at": "2026-11-16",
+      "checked_at": "2026-11-20",
       "method": "page"
     },
     "window": {
       "source_url": "https://wcb.ca.gov/programs/desert",
       "quote": "The Wildlife Conservation Board accepts pre-applications for acquisition, restoration, and management projects on a continuous basis.",
-      "checked_at": "2026-11-16",
+      "checked_at": "2026-11-20",
       "method": "page"
     },
     "co_finance_required": {
       "source_url": "https://grants.ca.gov/grants/desert-conservation-program",
-      "quote": "Cost share is not required but may be beneficial",
-      "checked_at": "2026-11-16",
+      "quote": "Cost share is not required but may be beneficial, in particular to complete a larger project.",
+      "checked_at": "2026-11-20",
       "method": "page"
-    }
+    },
+    "effort": [
+      {
+        "source_url": "https://nrm.dfg.ca.gov/FileHandler.ashx?DocumentID=199421&inline",
+        "quote": "Applicants will first submit a Pre-application.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://nrm.dfg.ca.gov/FileHandler.ashx?DocumentID=199421&inline",
+        "quote": "will invite the selected applicants to submit Full Applications.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "eligibility": [
+      {
+        "source_url": "https://wcb.ca.gov/programs/desert",
+        "quote": "non-profits with 501 (c)(3) tax exempt status.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://nrm.dfg.ca.gov/FileHandler.ashx?DocumentID=199421&inline",
+        "quote": "All projects shall provide one or more of the following benefits, as identified in WCB's Strategic Plan:  Protected or restored biodiversity;  Climate change action; and/or  Expanded public access to nature.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://nrm.dfg.ca.gov/FileHandler.ashx?DocumentID=199421&inline",
+        "quote": "Acquisitions, in the form of conservation easement, water rights, and fee purchases, must be from willing sellers and at a price that does not exceed the fair market value.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://nrm.dfg.ca.gov/FileHandler.ashx?DocumentID=199421&inline",
+        "quote": "Implementation applications must include intermediate or advanced design plans (e.g., design plans at ~65% level of development or higher).",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "after_award": [
+      {
+        "source_url": "https://nrm.dfg.ca.gov/FileHandler.ashx?DocumentID=199421&inline",
+        "quote": "All grantees doing restoration, development, scientific studies, and planning will be required to provide a final report.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ]
   },
-  "checked_at": "2026-11-16"
+  "checked_at": "2026-11-20"
 }

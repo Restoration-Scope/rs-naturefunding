@@ -1,0 +1,106 @@
+{
+  "id": "mn-dnr-enrtf-community-impact",
+  "read_on": "2026-11-20",
+  "prompt_version": "req-2026-11-20.1",
+  "models": ["cursor:gpt-5.6-luna-high"],
+  "complete": false,
+  "reasons": [
+    "https://www.dnr.state.mn.us/grants/enrtf/funding-opportunities.html would not open (blocked: HTTP 403)",
+    "https://www.dnr.state.mn.us/grants/enrtf/is-grant-right-for-us.html would not open (blocked: HTTP 403)",
+    "the text names a document with rules that was not read: Applicable statutory activity-area appendix (Appendix A-E)",
+    "the text names a document with rules that was not read: Appendix F: Stage 1 Concept Note Form and Instructions",
+    "the text names a document with rules that was not read: Appendix G: Stage 2 Full Application Form and Instructions",
+    "the text names a document with rules that was not read: Applicable Office of Grants Management policies",
+    "the text names a document with rules that was not read: Minnesota Statutes, chapter 116X",
+    "the text names a document with rules that was not read: Appendices A-E",
+    "the text names a document with rules that was not read: Five Eligible Activity Areas guidance",
+    "the text names a document with rules that was not read: Part 5: pre-award requirements",
+    "the text names a document with rules that was not read: Request for Proposal Cover Sheet",
+    "the text names a document with rules that was not read: Part 1 of the RFP",
+    "the text names a document with rules that was not read: Appendix F",
+    "the text names a document with rules that was not read: Appendix G",
+    "the text names a document with rules that was not read: Part 7 of the RFP",
+    "the text names a document with rules that was not read: Official Community Grant Program webpage",
+    "the text names a document with rules that was not read: Minnesota Statutes, section 116X.03, as amended by 2026 Session Law, chapter 104",
+    "the text names a document with rules that was not read: Minnesota Statutes, section 16B.981",
+    "the text names a document with rules that was not read: Main Request for Proposals",
+    "the text names a document with rules that was not read: Main Request for Proposals (RFP)",
+    "the text names a document with rules that was not read: The statutory activity appendix that best fits the project",
+    "the text names a document with rules that was not read: Main RFP",
+    "the text names a document with rules that was not read: Applicable activity-area appendix",
+    "the text names a document with rules that was not read: Official budget categories and format provided for Stage 2",
+    "the text names a document with rules that was not read: Applicable statewide certification definition and instructions",
+    "Jev did not check this reading, so an absent fact is not known to be absent"
+  ],
+  "requirements_checked": false,
+  "documents": [
+    {
+      "ref": "D1",
+      "url": "https://files.dnr.state.mn.us/aboutdnr/grants/enrtfcg-fy2027-rfp-01-combined.pdf",
+      "final_url": "https://files.dnr.state.mn.us/aboutdnr/grants/enrtfcg-fy2027-rfp-01-combined.pdf",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": true,
+      "chars": 237866,
+      "pages": 97,
+      "low_text": false,
+      "hash": "sha256:2dd2c3c495372800952d37bed980807271ef70f2deca761f8b6fa1eeab67584d"
+    }
+  ],
+  "failures": [
+    {
+      "url": "https://www.dnr.state.mn.us/grants/enrtf/funding-opportunities.html",
+      "from": null,
+      "kind": "blocked",
+      "message": "HTTP 403"
+    },
+    {
+      "url": "https://www.dnr.state.mn.us/grants/enrtf/is-grant-right-for-us.html",
+      "from": null,
+      "kind": "blocked",
+      "message": "HTTP 403"
+    }
+  ],
+  "skipped_links": 0,
+  "chunks": [
+    { "id": "c1", "docs": ["D1"], "chars": 39977 },
+    { "id": "c2", "docs": ["D1"], "chars": 39943 },
+    { "id": "c3", "docs": ["D1"], "chars": 39744 },
+    { "id": "c4", "docs": ["D1"], "chars": 39960 },
+    { "id": "c5", "docs": ["D1"], "chars": 40088 },
+    { "id": "c6", "docs": ["D1"], "chars": 40045 },
+    { "id": "c7", "docs": ["D1"], "chars": 7886 }
+  ],
+  "outcomes": {
+    "eligibility": "partial",
+    "documents": "stated",
+    "effort": "unresolved",
+    "co_finance": "stated",
+    "consortium": "stated",
+    "after_award": "unresolved"
+  },
+  "written": ["eligibility", "documents", "co_finance", "consortium"],
+  "escalated": [],
+  "flags": [
+    {
+      "field": "eligibility",
+      "item": "Keep substantive project implementation within 12 months; extra time is only for approved startup and close-out administration",
+      "why": "a rule is 5 to 120 characters"
+    },
+    { "field": "after_award", "item": "required", "why": "parts of the text disagree" },
+    {
+      "field": "effort",
+      "item": "steps",
+      "why": "the steps come from different parts of the text; check they are one list in order"
+    }
+  ],
+  "notes": [
+    "eligibility: 23 rules past the 8th dropped",
+    "effort: steps past the 5th dropped",
+    "extractor: Stage 2 is invitation-only. Dates after the Stage 1 deadline, including the February-April 2027 Stage 2 period, are estimates and may be adjusted. | Stage 2 is invitation-only. The Stage 2 Full Application must remain materially consistent with the project that advanced from Stage 1. | The application deadline and current application schedule are referenced in other parts of the RFP, not stated in this excerpt. Pre-award information is requested after competitive selection and varies by legal structure, award amount, project characteristics and applicable requirements. | D1 does not state the FY2027 deadline. Stage 2 information varies by activity area and may be requested only if the Concept Note advances. | Eligibility and Stage 2 information vary by the primary statutory activity area. Stage 1 generally does not require detailed Stage 2 or pre-award documentation. | Stage 2 is only for applicants notified that their Stage 1 Concept Note advanced. The Stage 2 application period is an",
+    "the flagged text is too long for one escalation",
+    "source mn-dnr-enrtf-community-impact-1: selector main dropped, a new quote sits outside it"
+  ],
+  "usd": 0
+}

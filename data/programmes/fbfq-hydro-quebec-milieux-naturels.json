@@ -9,14 +9,78 @@
   "parent": null,
   "url": "https://www.fbfq.ca/programme/hydro-quebec-pour-la-mise-en-valeur-des-milieux-naturels/",
   "summary": "Annual call, funded with Hydro-Québec, for projects that protect, restore and manage natural areas with public access in Québec while conserving biodiversity; public and private organisations can apply, individuals cannot.",
-  "approaches": ["protected_areas", "community_conservation"],
+  "approaches": [
+    "protected_areas",
+    "community_conservation"
+  ],
   "applicant_types": null,
-  "geography": { "scope": "countries", "countries": ["CA"], "label": "Québec" },
+  "geography": {
+    "scope": "countries",
+    "countries": [
+      "CA"
+    ],
+    "label": "Québec"
+  },
   "access": "direct",
   "window": "fixed",
   "amount": null,
   "co_finance_required": true,
   "reporting": null,
+  "effort": {
+    "steps": [
+      "Feasibility check with a Hydro-Québec community relations advisor",
+      "Application form and attachments by email"
+    ]
+  },
+  "eligibility": [
+    {
+      "rule": "Is not an individual",
+      "kind": "legal"
+    },
+    {
+      "rule": "For title or easement acquisitions, is a conservation nonprofit",
+      "kind": "legal"
+    },
+    {
+      "rule": "Project addresses one or more priority threats",
+      "kind": "project"
+    },
+    {
+      "rule": "Project has natural-area enhancement as its main activity",
+      "kind": "project"
+    },
+    {
+      "rule": "Project activities are on publicly accessible land",
+      "kind": "project"
+    },
+    {
+      "rule": "Acquisition project dedicates at least 10% of the contribution to education or enhancement",
+      "kind": "project"
+    },
+    {
+      "rule": "Acquisition site provides public access compatible with ecological integrity",
+      "kind": "project"
+    }
+  ],
+  "co_finance": {
+    "min_share": 25,
+    "applies_to": "Requests of $50,000 or more"
+  },
+  "after_award": {
+    "reports": "yearly"
+  },
+  "documents": [
+    "Authorisation resolution, if signer is not president, CEO or director",
+    "Charter or letters patent, if not already provided or modified",
+    "Financial and/or technical support letters from partners",
+    "Detailed description of planned works and locations",
+    "Plans and specifications for major infrastructure",
+    "Professional photos, sketches, or plans and specifications",
+    "Location map of planned works and sensitive ecological features",
+    "Map of projected trails and sensitive ecological features",
+    "Future management, maintenance and monitoring arrangements",
+    "Ecological or wildlife characterisation report for property to protect"
+  ],
   "calls": [
     {
       "id": "annual",
@@ -29,13 +93,13 @@
         "status": {
           "source_url": "https://www.fbfq.ca/programme/hydro-quebec-pour-la-mise-en-valeur-des-milieux-naturels/",
           "quote": "Date limite 1er décembre",
-          "checked_at": "2026-11-09",
+          "checked_at": "2026-11-20",
           "method": "page"
         },
         "recurring": {
           "source_url": "https://www.fbfq.ca/wp-content/uploads/2026/09/DOC_info_HQ_2026.pdf",
           "quote": "le 1 er décembre de chaque année",
-          "checked_at": "2026-11-09",
+          "checked_at": "2026-11-20",
           "method": "page"
         }
       },
@@ -46,27 +110,131 @@
     "geography": {
       "source_url": "https://www.fbfq.ca/wp-content/uploads/2026/09/DOC_info_HQ_2026.pdf",
       "quote": "L'ensemble du territoire québécois",
-      "checked_at": "2026-11-09",
+      "checked_at": "2026-11-20",
       "method": "page"
     },
     "access": {
       "source_url": "https://www.fbfq.ca/programme/hydro-quebec-pour-la-mise-en-valeur-des-milieux-naturels/",
       "quote": "Les demandes d'aide financière doivent être transmises à l'aide du formulaire officiel du programme, par courriel à projets@fbfq.ca",
-      "checked_at": "2026-11-09",
+      "checked_at": "2026-11-20",
       "method": "page"
     },
     "window": {
       "source_url": "https://www.fbfq.ca/wp-content/uploads/2026/09/DOC_info_HQ_2026.pdf",
       "quote": "le 1 er décembre de chaque année",
-      "checked_at": "2026-11-09",
+      "checked_at": "2026-11-20",
       "method": "page"
     },
     "co_finance_required": {
       "source_url": "https://www.fbfq.ca/wp-content/uploads/2026/09/DOC_info_HQ_2026.pdf",
-      "quote": "peut couvrir , selon le scénario, 50 %, 75 % et jusqu 'à 100 % * des coûts admissibles du projet",
-      "checked_at": "2026-11-09",
+      "quote": "≥ 50 000 $ <100 000 $ 75 % du financement total du projet Bilan financier avec pièces justificatives ≥ 100 000 $ 50 % du financement total du projet",
+      "checked_at": "2026-11-20",
       "method": "page"
-    }
+    },
+    "effort": [
+      {
+        "source_url": "https://www.fbfq.ca/wp-content/uploads/2026/09/DOC_info_HQ_2026.pdf",
+        "quote": "Avant de déposer un projet au programme, toute organisation doit valider sa faisabilité auprès d'un conseiller relation avec le milieu d'Hydro -Québec.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.fbfq.ca/programme/hydro-quebec-pour-la-mise-en-valeur-des-milieux-naturels/",
+        "quote": "Les demandes d'aide financière doivent être transmises à l'aide du formulaire officiel du programme, par courriel à projets@fbfq.ca, avec l'ensemble des pièces jointes requises.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "eligibility": [
+      {
+        "source_url": "https://www.fbfq.ca/wp-content/uploads/2026/09/DOC_info_HQ_2026.pdf",
+        "quote": "Les particuliers ne sont pas admissibles au programme.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.fbfq.ca/wp-content/uploads/2026/09/DOC_info_HQ_2026.pdf",
+        "quote": "pour les projets d'acquisition de titres de propriété ou d'une servitude, seuls les organismes à but non lucratif dont la mission est la conservation et la prote ction du patrimoine naturel du Québec sont admissibles",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.fbfq.ca/wp-content/uploads/2026/09/DOC_info_HQ_2026.pdf",
+        "quote": "Pour être admissible au programme, un projet doit agir sur une ou plusieurs menaces prioritaires",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.fbfq.ca/wp-content/uploads/2026/09/DOC_info_HQ_2026.pdf",
+        "quote": "une activité principale de mise en valeur d'un milieu naturel",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.fbfq.ca/wp-content/uploads/2026/09/DOC_info_HQ_2026.pdf",
+        "quote": "Activités situées sur des terrains qui ne sont pas accessibles au public ;",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.fbfq.ca/wp-content/uploads/2026/09/DOC_info_HQ_2026.pdf",
+        "quote": "le projet doit obligatoirement inclure un volet « éducatif » ou de « mise en valeur » représentant au minimum 10 % de la contribution du programme",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.fbfq.ca/wp-content/uploads/2026/09/DOC_info_HQ_2026.pdf",
+        "quote": "Le site doit aussi permettre un accès a u public selon des modalités qui respectent l'intégrité écologique du milieu naturel ;",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "co_finance": {
+      "source_url": "https://www.fbfq.ca/wp-content/uploads/2026/09/DOC_info_HQ_2026.pdf",
+      "quote": "≥ 50 000 $ <100 000 $ 75 % du financement total du projet Bilan financier avec pièces justificatives ≥ 100 000 $ 50 % du financement total du projet",
+      "checked_at": "2026-11-20",
+      "method": "page"
+    },
+    "after_award": [
+      {
+        "source_url": "https://www.fbfq.ca/wp-content/uploads/2026/09/DOC_info_HQ_2026.pdf",
+        "quote": "Le Rapport final incluant :",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.fbfq.ca/wp-content/uploads/2026/09/DOC_info_HQ_2026.pdf",
+        "quote": "Un rapport annuel de suivi et d'entretien devra être transmis à la Fondation durant les trois années suivant la réalisation du projet.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "documents": [
+      {
+        "source_url": "https://www.fbfq.ca/wp-content/uploads/2026/09/DOC_info_HQ_2026.pdf",
+        "quote": "résolution de l 'organisme demandeur stipulant que la personne autorisée à agir au nom de l 'organisme pour ce projet est celle indiquée au point 1.2 du formulaire de demande d'aide. Vous pouvez consulter notre modèle de résolution du site Internet de la Fondation ; • Copie de la charte ou des lettres patentes de l'organisme si elles n'ont pas déjà été transmises ou si elles ont été modifiées",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.fbfq.ca/wp-content/uploads/2026/09/DOC_info_HQ_2026.pdf",
+        "quote": "Copies des lettres d'appui financier et/ou technique des partenaires. Pour les projets de mise en valeur, d'aménagement et de restauration : • Description détaillée des travaux prévus et des lieux où ils seront réalisés ; • Plans et devis pour l'implantation d'infrastructures d'envergure ; • Photos, croquis ou plans et devis réalisés par un professionnel",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.fbfq.ca/wp-content/uploads/2026/09/DOC_info_HQ_2026.pdf",
+        "quote": "Carte de localisation des travaux prévus et des éléments d'intérêt écologique sensibles à protéger • Carte des sentiers projetés et des éléments d'intérêt écologique sensibles à protéger ; • Futures modalités de gestion, d'entretien et de surveillance du milieu naturel ciblé.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.fbfq.ca/wp-content/uploads/2026/09/DOC_info_HQ_2026.pdf",
+        "quote": "Rapport de caractérisation écologique ou faunique de la propriété à protéger",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ]
   },
-  "checked_at": "2026-11-09"
+  "checked_at": "2026-11-20"
 }

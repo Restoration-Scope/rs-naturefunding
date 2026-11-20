@@ -18,7 +18,22 @@
   "amount": { "currency": "USD", "min": 4000, "max": 10000 },
   "co_finance_required": null,
   "reporting": "Grantees submit an end-of-project report through the online grant system before the final 20% payment, or an interim report if the project is not finished within the one-year grant period.",
-  "effort": { "steps": ["Letter of inquiry"], "more_after": true },
+  "effort": {
+    "steps": ["Letter of inquiry", "Full proposal, if invited"],
+    "due": ["2027-01-08", "2027-02-15"]
+  },
+  "eligibility": [
+    {
+      "rule": "Existing NEBF local grantee; the final 2027 local round takes no new applicants",
+      "kind": "track_record"
+    },
+    { "rule": "Holds charitable status in its country", "kind": "legal" },
+    {
+      "rule": "Operates on a not-for-profit basis and has a mission to benefit local communities",
+      "kind": "legal"
+    }
+  ],
+  "after_award": { "reports": "final" },
   "calls": [
     {
       "id": "2027-round-1",
@@ -34,19 +49,19 @@
         "status": {
           "source_url": "https://www.nebf.org/gettingstarted",
           "quote": "LOIs accepted: 15 November 2026 to 8 January 2027",
-          "checked_at": "2026-11-15",
+          "checked_at": "2026-11-20",
           "method": "page"
         },
         "opens": {
           "source_url": "https://www.nebf.org/gettingstarted",
           "quote": "LOIs accepted: 15 November 2026 to 8 January 2027",
-          "checked_at": "2026-11-15",
+          "checked_at": "2026-11-20",
           "method": "page"
         },
         "deadline": {
           "source_url": "https://www.nebf.org/gettingstarted",
           "quote": "LOIs accepted: 15 November 2026 to 8 January 2027",
-          "checked_at": "2026-11-15",
+          "checked_at": "2026-11-20",
           "method": "page"
         }
       }
@@ -62,7 +77,7 @@
         "status": {
           "source_url": "https://www.nebf.org/gettingstarted",
           "quote": "Our 2026 grant round is now closed.",
-          "checked_at": "2026-11-15",
+          "checked_at": "2026-11-20",
           "method": "page"
         }
       }
@@ -72,47 +87,93 @@
     "applicant_types": {
       "source_url": "https://www.nebf.org/fundingrestrictions",
       "quote": "New England Biolabs Foundation grants are limited to organizations that hold charitable status in their respective countries.",
-      "checked_at": "2026-11-15",
+      "checked_at": "2026-11-20",
       "method": "page"
     },
     "access": {
       "source_url": "https://www.nebf.org/gettingstarted",
       "quote": "The first step in the process is to submit a letter of inquiry (LOI) to us, following the guidelines posted here.",
-      "checked_at": "2026-11-15",
+      "checked_at": "2026-11-20",
       "method": "page"
     },
     "window": {
       "source_url": "https://www.nebf.org/gettingstarted",
       "quote": "Our directors meet twice a year to review proposals, and we inform applicants of funding decisions shortly thereafter.",
-      "checked_at": "2026-11-15",
+      "checked_at": "2026-11-20",
       "method": "page"
     },
     "reporting": {
       "source_url": "https://www.nebf.org/nextstepsiffunded",
       "quote": "The foundation must receive your end of project report upon project completion, or an interim report if your project is incomplete by the end of the one-year grant period.",
-      "checked_at": "2026-11-15",
+      "checked_at": "2026-11-20",
       "method": "page"
     },
     "geography": {
       "source_url": "https://www.nebf.org/overview",
       "quote": "In support of our local roots, we also provide small grants for community-based conservation and arts and cultural projects in coastal communities on the North Shore of Massachusetts.",
-      "checked_at": "2026-11-15",
+      "checked_at": "2026-11-20",
       "method": "page"
     },
     "amount": {
       "source_url": "https://www.nebf.org/overview",
       "quote": "Our international grants range from $5,000 to $15,000, and our local grants range from $4,000 to $10,000.",
-      "checked_at": "2026-11-15",
+      "checked_at": "2026-11-20",
       "method": "page"
     },
     "effort": [
       {
         "source_url": "https://www.nebf.org/gettingstarted",
+        "quote": "LOIs accepted: 15 November 2026 to 8 January 2027",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.nebf.org/gettingstarted",
+        "quote": "Proposal deadline: 15 February 2027",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.nebf.org/gettingstarted",
+        "quote": "Please do not submit a full proposal without first being invited by our staff to do so.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.nebf.org/gettingstarted",
         "quote": "The first step in the process is to submit a letter of inquiry (LOI) to us, following the guidelines posted here.",
-        "checked_at": "2026-11-15",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "eligibility": [
+      {
+        "source_url": "https://www.nebf.org/post/update-on-our-local-funding-program",
+        "quote": "For this final round, we will prioritize existing local grantees and will not be able to accept new applicants.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.nebf.org/fundingrestrictions",
+        "quote": "New England Biolabs Foundation grants are limited to organizations that hold charitable status in their respective countries.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.nebf.org/fundingrestrictions",
+        "quote": "Eligible organizations must operate on a not-for-profit basis and stand by a mission to benefit local communities.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "after_award": [
+      {
+        "source_url": "https://www.nebf.org/nextstepsiffunded",
+        "quote": "The foundation must receive your end of project report upon project completion, or an interim report if your project is incomplete by the end of the one-year grant period.",
+        "checked_at": "2026-11-20",
         "method": "page"
       }
     ]
   },
-  "checked_at": "2026-11-15"
+  "checked_at": "2026-11-20"
 }

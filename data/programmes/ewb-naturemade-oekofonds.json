@@ -26,6 +26,25 @@
   "amount": null,
   "co_finance_required": null,
   "reporting": null,
+  "effort": {
+    "steps": [
+      "Application, before the project starts"
+    ]
+  },
+  "eligibility": [
+    {
+      "rule": "The project’s financing is secured in advance",
+      "kind": "finances"
+    },
+    {
+      "rule": "The project is in Berner Mittelland, or is coordinated in advance if outside it",
+      "kind": "project"
+    },
+    {
+      "rule": "Not routine watercourse upkeep, recurring care payments, fish farms or offsets imposed by permit or concession",
+      "kind": "project"
+    }
+  ],
   "calls": [],
   "evidence": {
     "access": {
@@ -39,7 +58,35 @@
       "quote": "Der Perimeter für Massnahmen wird auf das Berner Mittelland beschränkt",
       "checked_at": "2026-11-15",
       "method": "page"
-    }
+    },
+    "effort": [
+      {
+        "source_url": "https://www.ewb.ch/nachhaltigkeit/okofonds/ewb-naturemade-okofonds",
+        "quote": "Das Gesuch muss vor Projektrealisierung eingereicht werden",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "eligibility": [
+      {
+        "source_url": "https://www.ewb.ch/media/docs/pdf/rechtliches/rechtliches-organisationsreglement-oekofonds-naturemade.pdf",
+        "quote": "Die Finanzierung der Massnahmen muss im Voraus gesichert sein.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.ewb.ch/media/docs/pdf/rechtliches/rechtliches-organisationsreglement-oekofonds-naturemade.pdf",
+        "quote": "Der Perimeter für Massnahmen wird auf das Berner Mittelland beschränkt (Konzessionsperimeter, Stadtnahes Gebiet und Emmental, Region Bern Aaretal). Werden ausserhalb dieses Perimeters Massnahmen umgesetzt, so müssen diese vorgängig mit dem örtlich zuständigen Ökofonds oder dem VUE koordiniert werden.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.ewb.ch/media/docs/pdf/rechtliches/rechtliches-organisationsreglement-oekofonds-naturemade.pdf",
+        "quote": "b. der Gewässerunterhalt im Sinne des WBG mit Ausnahme von vorzeitigen Sanierungen, c. wiederkehrende Abgeltungen für Pflegemassnahmen, Nutzungsverzichte und Ähnliches, d. die Erstellung von Fischzuchtanlagen sowie e. mit Bewilligung oder Konzession auferlegte ökologische Ersatzmassnahmen.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ]
   },
   "checked_at": "2026-11-15"
 }

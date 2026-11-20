@@ -9,14 +9,63 @@
   "parent": null,
   "url": "https://www.bgci.org/our-work/services-for-botanic-gardens/global-botanic-garden-fund/",
   "summary": "Set of small grants for botanic gardens, especially under-resourced ones in high-biodiversity areas, to drive plant conservation projects; each grant has its own purpose and eligibility.",
-  "approaches": ["species_conservation"],
+  "approaches": [
+    "species_conservation"
+  ],
   "applicant_types": null,
   "geography": null,
   "access": "direct",
   "window": "fixed",
-  "amount": { "currency": "USD", "min": 750, "max": 10000, "note": "Depends on the grant chosen" },
+  "amount": {
+    "currency": "USD",
+    "min": 750,
+    "max": 10000,
+    "note": "Depends on the grant chosen"
+  },
   "co_finance_required": null,
   "reporting": "A final report on completion: short narrative on outcomes, photos and videos where applicable, and an itemised budget against actual spending.",
+  "effort": {
+    "steps": [
+      "Grant application"
+    ]
+  },
+  "eligibility": [
+    {
+      "rule": "For member-only grants, is a BGCI Member Institution or pays membership before disbursement",
+      "kind": "legal"
+    },
+    {
+      "rule": "For ArbNet grants, partners form a partnership between two botanical institutions",
+      "kind": "project"
+    },
+    {
+      "rule": "For ArbNet grants, at least one partner is accredited or applies by the closing date",
+      "kind": "project"
+    },
+    {
+      "rule": "For LLNPP grants, is based in the Caribbean or Central American region, including Mexico",
+      "kind": "project"
+    },
+    {
+      "rule": "For LLNPP grants, holds permanent ex situ living collections",
+      "kind": "project"
+    },
+    {
+      "rule": "For GSC grants, includes at least 2 species shared and banked at BGSV",
+      "kind": "project"
+    },
+    {
+      "rule": "For GSC grants, incorporates at least one new accession into the institution's seed bank",
+      "kind": "project"
+    },
+    {
+      "rule": "For GSC grants, includes only seeds with confirmed orthodox storage properties",
+      "kind": "project"
+    }
+  ],
+  "after_award": {
+    "reports": "final"
+  },
   "calls": [
     {
       "id": "cycle-2026",
@@ -29,7 +78,7 @@
         "status": {
           "source_url": "https://www.bgci.org/our-work/services-for-botanic-gardens/global-botanic-garden-fund/",
           "quote": "Apply to the GBGF Member, ArbNet, MLA, LLNPP and GSC Grants are now closed for 2026.",
-          "checked_at": "2026-11-12",
+          "checked_at": "2026-11-20",
           "method": "page"
         }
       }
@@ -39,27 +88,93 @@
     "access": {
       "source_url": "https://www.bgci.org/our-work/services-for-botanic-gardens/global-botanic-garden-fund/",
       "quote": "BGCI issues a call for application once per year per grant.",
-      "checked_at": "2026-11-12",
+      "checked_at": "2026-11-20",
       "method": "page"
     },
     "window": {
       "source_url": "https://www.bgci.org/our-work/services-for-botanic-gardens/global-botanic-garden-fund/",
       "quote": "BGCI issues a call for application once per year per grant.",
-      "checked_at": "2026-11-12",
+      "checked_at": "2026-11-20",
       "method": "page"
     },
     "amount": {
       "source_url": "https://www.bgci.org/our-work/services-for-botanic-gardens/global-botanic-garden-fund/",
       "quote": "Each grant awarded ranges from USD$750-10,000 (depending on the grant chosen).",
-      "checked_at": "2026-11-12",
+      "checked_at": "2026-11-20",
       "method": "page"
     },
     "reporting": {
       "source_url": "https://www.bgci.org/our-work/services-for-botanic-gardens/global-botanic-garden-fund/",
       "quote": "Successful grants will be required to submit a final report upon completion of the project with the following information: A short narrative report describing the outcome of the project using the method of evaluating described in the application Photos and videos where applicable An itemised budget vs actual",
-      "checked_at": "2026-11-12",
+      "checked_at": "2026-11-20",
       "method": "page"
-    }
+    },
+    "effort": [
+      {
+        "source_url": "https://www.bgci.org/our-work/services-for-botanic-gardens/global-botanic-garden-fund/",
+        "quote": "The BGCI Global Botanic Garden Fund grant application will require the following information:",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "eligibility": [
+      {
+        "source_url": "https://www.bgci.org/our-work/services-for-botanic-gardens/global-botanic-garden-fund/",
+        "quote": "The BGCI Member Grants are open to BGCI Member Institutions only. Botanic Gardens that are not members may apply, but a membership fee must be paid before the grant is disbursed.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.bgci.org/our-work/services-for-botanic-gardens/global-botanic-garden-fund/",
+        "quote": "Involve a partnership between two botanical institutions (arboretum, botanic garden, public garden, etc.).",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.bgci.org/our-work/services-for-botanic-gardens/global-botanic-garden-fund/",
+        "quote": "At least one of the two partners must be an ArbNet accredited arboretum (accreditation applications may be submitted by the closing date of the Global Botanic Garden Fund).",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.bgci.org/our-work/services-for-botanic-gardens/global-botanic-garden-fund/",
+        "quote": "Grants are available only for institutions based in the Caribbean and Central American region as defined by the Caribbean and Central American Botanic Gardens Network (please note Mexico is included).",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.bgci.org/our-work/services-for-botanic-gardens/global-botanic-garden-fund/",
+        "quote": "We invite applications from botanic gardens, arboreta and botanical institutions that hold permanent ex situ living collections (as defined per GardenSearch).",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.bgci.org/our-work/services-for-botanic-gardens/global-botanic-garden-fund/",
+        "quote": "Projects must include at least 2 species that will be shared and banked at BGSV.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.bgci.org/our-work/services-for-botanic-gardens/global-botanic-garden-fund/",
+        "quote": "There must be at least one new accession incorporated into your institution's seed bank as part of this project.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.bgci.org/our-work/services-for-botanic-gardens/global-botanic-garden-fund/",
+        "quote": "Only seeds with known and confirmed orthodox storage properties can be included in project proposals.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "after_award": [
+      {
+        "source_url": "https://www.bgci.org/our-work/services-for-botanic-gardens/global-botanic-garden-fund/",
+        "quote": "Successful grants will be required to submit a final report upon completion of the project with the following information:",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ]
   },
-  "checked_at": "2026-11-12"
+  "checked_at": "2026-11-20"
 }

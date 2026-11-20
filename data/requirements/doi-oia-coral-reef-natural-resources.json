@@ -1,0 +1,74 @@
+{
+  "id": "doi-oia-coral-reef-natural-resources",
+  "read_on": "2026-11-20",
+  "prompt_version": "req-2026-11-20.1",
+  "models": ["cursor:gpt-5.6-luna-high", "cursor:gpt-5.6-sol-high"],
+  "complete": false,
+  "reasons": [
+    "5 links could not be ranked without Jev",
+    "https://www.grants.gov/privacy-policy would not open (network: unable to verify the first certificate)",
+    "the text names a document with rules that was not read: Attachment - Submission Instructions & Tips",
+    "the text names a document with rules that was not read: Quick Start Guide for Applicants",
+    "the text names a document with rules that was not read: DOI General Terms and Conditions",
+    "the text names a document with rules that was not read: OIA specific terms and conditions",
+    "the text names a document with rules that was not read: 2 CFR Part 200 - Uniform Administrative Requirements, Cost Principles, and Audit Requirements for Federal Awards",
+    "the text names a document with rules that was not read: 2 CFR Part 184 - Buy America Preferences for Infrastructure Project",
+    "the text names a document with rules that was not read: Current executive orders and DOI Secretary's Orders",
+    "Jev did not check this reading, so an absent fact is not known to be absent"
+  ],
+  "requirements_checked": false,
+  "documents": [
+    {
+      "ref": "D1",
+      "url": "https://simpler.grants.gov/opportunity/5954b39b-33b5-4d30-9952-c9edccbf6cef",
+      "final_url": "https://simpler.grants.gov/opportunity/5954b39b-33b5-4d30-9952-c9edccbf6cef",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 4552,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:abcba06f73ca90d8c51aab7763a92be5342ebcd3830bb62d681b9e65681c8608"
+    },
+    {
+      "ref": "D2",
+      "url": "https://files.simpler.grants.gov/opportunities/5954b39b-33b5-4d30-9952-c9edccbf6cef/attachments/0354152c-2f15-43a3-b678-fd4d935397f3/NOFO_OIA-CRNR-2026_-_updated_deadline_June_8_2026.pdf",
+      "final_url": "https://files.simpler.grants.gov/opportunities/5954b39b-33b5-4d30-9952-c9edccbf6cef/attachments/0354152c-2f15-43a3-b678-fd4d935397f3/NOFO_OIA-CRNR-2026_-_updated_deadline_June_8_2026.pdf",
+      "from": "https://simpler.grants.gov/opportunity/5954b39b-33b5-4d30-9952-c9edccbf6cef",
+      "anchor": "NOFO_OIA-CRNR-2026_-_updated_deadline_June_8_2026.pdf",
+      "depth": 1,
+      "pdf": true,
+      "chars": 57287,
+      "pages": 22,
+      "low_text": false,
+      "hash": "sha256:b016ff3a3227aaa8f7f1f584e6617797dba2981b4586ebc1353401a826d21660"
+    }
+  ],
+  "failures": [
+    {
+      "url": "https://www.grants.gov/privacy-policy",
+      "from": "https://simpler.grants.gov/opportunity/5954b39b-33b5-4d30-9952-c9edccbf6cef",
+      "kind": "network",
+      "message": "unable to verify the first certificate"
+    }
+  ],
+  "skipped_links": 30,
+  "chunks": [{ "id": "all", "docs": ["D1", "D2"], "chars": 62222 }],
+  "outcomes": {
+    "eligibility": "stated",
+    "documents": "stated",
+    "effort": "stated",
+    "co_finance": "stated",
+    "consortium": "not_found",
+    "after_award": "stated"
+  },
+  "written": ["eligibility", "documents", "effort", "co_finance", "after_award"],
+  "escalated": ["eligibility", "effort"],
+  "flags": [],
+  "notes": [
+    "extractor: Final reports are due 120 days after award expiration or termination. PPR and FFR reports are due within 30 days of each semi-annual period. All grantees must receive an Authorization to Proceed before beginning work. Funded projects must display required OIA and U.S. flag signage.",
+    "source doi-oia-coral-reef-natural-resources-2: added for https://files.simpler.grants.gov/opportunities/5954b39b-33b5-4d30-9952-c9edccbf6cef/attachments/0354152c-2f15-43a3-b678-fd4d935397f3/NOFO_OIA-CRNR-2026_-_updated_deadline_June_8_2026.pdf"
+  ],
+  "usd": 0
+}

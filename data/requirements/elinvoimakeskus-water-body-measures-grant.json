@@ -1,0 +1,65 @@
+{
+  "id": "elinvoimakeskus-water-body-measures-grant",
+  "read_on": "2026-11-20",
+  "prompt_version": "req-2026-11-20.1",
+  "models": ["cursor:gpt-5.6-luna-high"],
+  "complete": false,
+  "reasons": [
+    "10 links could not be ranked without Jev",
+    "15 links could not be ranked without Jev",
+    "the text names a document with rules that was not read: Hakemuksen täyttöohje: Avustus vesienhoidon ja merenhoidon sekä vesistötoimenpiteiden toteutukseen",
+    "the text names a document with rules that was not read: Hakuohje: Avustus vesienhoidon ja merenhoidon sekä vesistötoimenpiteiden toteutukseen",
+    "the text names a document with rules that was not read: Valtioneuvoston asetus vesistön ja vesiympäristön käyttöä ja tilaa parantavien hankkeiden avustamisesta 714/2015",
+    "the text names a document with rules that was not read: Valtionavustuslaki 688/2001",
+    "the text names a document with rules that was not read: Laki julkisista hankinnoista ja käyttöoikeussopimuksista 1397/2016",
+    "Jev did not check this reading, so an absent fact is not known to be absent"
+  ],
+  "requirements_checked": false,
+  "documents": [
+    {
+      "ref": "D1",
+      "url": "https://elinvoimakeskus.fi/avustus-vesienhoidon-ja-merenhoidon-seka-vesistotoimenpiteiden-toteutukseen",
+      "final_url": "https://elinvoimakeskus.fi/avustus-vesienhoidon-ja-merenhoidon-seka-vesistotoimenpiteiden-toteutukseen",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 32465,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:4864ca9eafee3136d0f980a7723cb8e1a6ecc73190a7794c2cc31c19adbdc394"
+    },
+    {
+      "ref": "D2",
+      "url": "https://elinvoimakeskus.fi/inspect/faq",
+      "final_url": "https://elinvoimakeskus.fi/inspect/faq",
+      "from": "https://elinvoimakeskus.fi/avustus-vesienhoidon-ja-merenhoidon-seka-vesistotoimenpiteiden-toteutukseen",
+      "anchor": "FAQ",
+      "depth": 1,
+      "pdf": false,
+      "chars": 19219,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:96ce2aa9e5beb8e481222a10aaf1d09722aa0e9343b98c7f7d73bed53fbbe470"
+    }
+  ],
+  "failures": [],
+  "skipped_links": 596,
+  "chunks": [{ "id": "all", "docs": ["D1", "D2"], "chars": 51967 }],
+  "outcomes": {
+    "eligibility": "stated",
+    "documents": "stated",
+    "effort": "stated",
+    "co_finance": "stated",
+    "consortium": "not_found",
+    "after_award": "stated"
+  },
+  "written": ["eligibility", "documents", "effort", "co_finance", "after_award"],
+  "escalated": [],
+  "flags": [],
+  "notes": [
+    "co_finance: share 50% dropped, its quote does not state it",
+    "extractor: The page describes a separate Saaristomeri small wastewater-treatment subprogramme with a different application window of 2026-11-02 to 2026-12-31 and separate project limits. D2 is an invasive-species FAQ and adds no grant requirements. The general 50% grant share is stated as the usual rule, and the grant is discretionary."
+  ],
+  "usd": 0
+}

@@ -35,6 +35,57 @@
   },
   "co_finance_required": true,
   "reporting": null,
+  "effort": {
+    "steps": [
+      "Project application"
+    ]
+  },
+  "eligibility": [
+    {
+      "rule": "Is a registered charitable trust, a constituted group with a bank account and financial records, or fiscally sponsored",
+      "kind": "legal"
+    },
+    {
+      "rule": "Has a landowner agreement if the work is not on its own land",
+      "kind": "project"
+    },
+    {
+      "rule": "Has a health and safety plan in place",
+      "kind": "capacity"
+    },
+    {
+      "rule": "If on public land, the site lacks active management by the relevant authority",
+      "kind": "project"
+    },
+    {
+      "rule": "Includes a maintenance plan for restoration works",
+      "kind": "project"
+    },
+    {
+      "rule": "Not retrospective work, resource consent applications or mitigation requirements",
+      "kind": "project"
+    },
+    {
+      "rule": "Not amenity planting or landscaping, nor a site with little or no native biodiversity",
+      "kind": "project"
+    }
+  ],
+  "co_finance": {
+    "in_kind": true
+  },
+  "after_award": {
+    "reports": "final",
+    "site_visits": true
+  },
+  "documents": [
+    "Confirmation of bank account",
+    "Balance sheet from the previous financial year",
+    "Landowner agreement, if landowner is not the applicant",
+    "Project work plan",
+    "Annotated site map",
+    "Project budget",
+    "Quotes for materials or contractors, if applicable"
+  ],
   "calls": [
     {
       "id": "annual",
@@ -94,9 +145,119 @@
     "co_finance_required": {
       "source_url": "https://www.es.govt.nz/about-us/funding-and-support/biodiversity-community-group-grants",
       "quote": "Funding can cover up to 70% of total project costs, with the remainder sourced elsewhere.",
-      "checked_at": "2026-11-13",
+      "checked_at": "2026-11-20",
       "method": "page"
-    }
+    },
+    "effort": [
+      {
+        "source_url": "https://www.es.govt.nz/repository/libraries/id:26gi9ayo517q9stt81sd/hierarchy/environment/biosecurity-and-biodiversity/biodiversity/documents/BiodiversityCGGrant_ApplicantsGuide_202511.pdf",
+        "quote": "Applicants submit their project application",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "eligibility": [
+      {
+        "source_url": "https://www.es.govt.nz/about-us/funding-and-support/biodiversity-community-group-grants",
+        "quote": "Groups need to be a registered charitable trust, a constituted group with a bank account and financial records, or fiscally sponsored.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.es.govt.nz/about-us/funding-and-support/biodiversity-community-group-grants",
+        "quote": "A landowner agreement is required if the work is not on your own land",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.es.govt.nz/about-us/funding-and-support/biodiversity-community-group-grants",
+        "quote": "a health and safety plan must be in place.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.es.govt.nz/repository/libraries/id:26gi9ayo517q9stt81sd/hierarchy/environment/biosecurity-and-biodiversity/biodiversity/documents/BiodiversityCGGrant_ApplicantsGuide_202511.pdf",
+        "quote": "Projects on public land where active management by the relevant authority (e.g. council) is absent.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.es.govt.nz/repository/libraries/id:26gi9ayo517q9stt81sd/hierarchy/environment/biosecurity-and-biodiversity/biodiversity/documents/BiodiversityCGGrant_ApplicantsGuide_202511.pdf",
+        "quote": "Projects need to include a plan for the maintenance of any restoration works after the funds have been invested.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.es.govt.nz/repository/libraries/id:26gi9ayo517q9stt81sd/hierarchy/environment/biosecurity-and-biodiversity/biodiversity/documents/BiodiversityCGGrant_ApplicantsGuide_202511.pdf",
+        "quote": "Retrospective applications for work that has already been completed Resource consent applications or mitigation requirements",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.es.govt.nz/repository/libraries/id:26gi9ayo517q9stt81sd/hierarchy/environment/biosecurity-and-biodiversity/biodiversity/documents/BiodiversityCGGrant_ApplicantsGuide_202511.pdf",
+        "quote": "Amenity plantings and landscaping Projects with limited or no existing native biodiversity values",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "co_finance": {
+      "source_url": "https://www.es.govt.nz/repository/libraries/id:26gi9ayo517q9stt81sd/hierarchy/environment/biosecurity-and-biodiversity/biodiversity/documents/BiodiversityCGGrant_ApplicantsGuide_202511.pdf",
+      "quote": "Applicant's contribution, which may be in cash or inkind.",
+      "checked_at": "2026-11-20",
+      "method": "page"
+    },
+    "after_award": [
+      {
+        "source_url": "https://www.es.govt.nz/repository/libraries/id:26gi9ayo517q9stt81sd/hierarchy/environment/biosecurity-and-biodiversity/biodiversity/documents/BiodiversityCGGrant_ApplicantsGuide_202511.pdf",
+        "quote": "When the work is complete, the applicant submits an invoice and a project report",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.es.govt.nz/repository/libraries/id:26gi9ayo517q9stt81sd/hierarchy/environment/biosecurity-and-biodiversity/biodiversity/documents/BiodiversityCGGrant_ApplicantsGuide_202511.pdf",
+        "quote": "Environment Southland completes a site inspection",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "documents": [
+      {
+        "source_url": "https://www.es.govt.nz/repository/libraries/id:26gi9ayo517q9stt81sd/hierarchy/environment/biosecurity-and-biodiversity/biodiversity/documents/BiodiversityGrant_ApplicationForm_202511_Fillable.pdf",
+        "quote": "Confirmation of bank account The balance sheet from the previous financial year.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.es.govt.nz/repository/libraries/id:26gi9ayo517q9stt81sd/hierarchy/environment/biosecurity-and-biodiversity/biodiversity/documents/BiodiversityGrant_ApplicationForm_202511_Fillable.pdf",
+        "quote": "Landowner details including a copy of landowner agreement (if landowner is not the applicant)",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.es.govt.nz/repository/libraries/id:26gi9ayo517q9stt81sd/hierarchy/environment/biosecurity-and-biodiversity/biodiversity/documents/BiodiversityGrant_ApplicationForm_202511_Fillable.pdf",
+        "quote": "Please attach your project plan document to this application form",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.es.govt.nz/repository/libraries/id:26gi9ayo517q9stt81sd/hierarchy/environment/biosecurity-and-biodiversity/biodiversity/documents/BiodiversityGrant_ApplicationForm_202511_Fillable.pdf",
+        "quote": "Please identify the exact site location on a map and attach it to this form.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.es.govt.nz/repository/libraries/id:26gi9ayo517q9stt81sd/hierarchy/environment/biosecurity-and-biodiversity/biodiversity/documents/BiodiversityGrant_ApplicationForm_202511_Fillable.pdf",
+        "quote": "Please attach a copy of your project budget to this application form",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.es.govt.nz/repository/libraries/id:26gi9ayo517q9stt81sd/hierarchy/environment/biosecurity-and-biodiversity/biodiversity/documents/BiodiversityCGGrant_ApplicantsGuide_202511.pdf",
+        "quote": "where applicable submit quotes with your application.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ]
   },
   "checked_at": "2026-11-13"
 }

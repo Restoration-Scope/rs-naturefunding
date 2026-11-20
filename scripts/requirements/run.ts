@@ -6,7 +6,7 @@
  *   bun scripts/requirements/run.ts --gold tune|held|all   the gold set (never writes data)
  *
  * Options: --dry (write only the run folder), --cap <usd> (spend cap, default 10), --cheap <model>
- * (gpt-5.6-luna default; any gpt-* or claude-* model, or workers), --strong <model> (gpt-5.6-sol), --no-jev, --out <dir>
+ * (gpt-5.6-luna default; any gpt-* or claude-* model, workers, or cursor:<model> through the signed-in Cursor CLI), --strong <model> (gpt-5.6-sol), --no-jev, --out <dir>
  * (default .cache/requirements/runs/<time>), --exclude <file> (ids to skip, one per line), --gather-only
  * (crawl only, no keys: documents, failures, text sizes and a cost forecast; page text saved in the run folder),
  * --answers (a programme with a stored GPT Pro reading in data/requirements/gpt-pro/ uses it as the first reading).
@@ -20,7 +20,7 @@ import type { Source } from '../../src/data/schema'
 import { formatJson } from '../refresh/json'
 import { chunksOf, PROMPT_VERSION } from './extract'
 import { gather, politeReader } from './gather'
-import { Cache, claudeModel, costOf, Ledger, metered, meteredJev, openaiModel, SpendCapError, typesafeJev, workersModel, type JsonModel } from './models'
+import { Cache, claudeModel, costOf, cursorModel, Ledger, metered, meteredJev, openaiModel, SpendCapError, typesafeJev, workersModel, type JsonModel } from './models'
 import { readAnswer } from './gpt-pro'
 import { run, type Result } from './pipeline'
 import { MANIFEST_DIR, manifestPath, queue } from './queue'
@@ -94,6 +94,7 @@ const cache = new Cache(join('.cache', 'requirements', 'llm'))
 /** A model by name: gpt-* through OpenAI, claude-* through Anthropic, `workers` through Cloudflare Workers AI. */
 const modelFor = (name: string, effort: 'medium' | 'high', maxTokens: number): JsonModel | null => {
   if (name === 'workers') return workersModel()
+  if (name.startsWith('cursor:')) return cursorModel(name.slice('cursor:'.length))
   if (name.startsWith('claude-')) return process.env.ANTHROPIC_API_KEY ? claudeModel(name, { ...(effort === 'high' ? { effort } : {}), maxTokens }) : null
   return openaiModel(name, { effort, maxTokens })
 }

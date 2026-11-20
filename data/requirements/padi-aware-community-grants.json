@@ -1,0 +1,124 @@
+{
+  "id": "padi-aware-community-grants",
+  "read_on": "2026-11-20",
+  "prompt_version": "req-2026-11-20.1",
+  "models": ["cursor:gpt-5.6-luna-high"],
+  "complete": false,
+  "reasons": [
+    "10 links could not be ranked without Jev",
+    "24 links could not be ranked without Jev",
+    "https://www.padi.com/sites/default/files/documents/2021-10/PAF%20Mission%20Hub%20Community%20Grant%20Program%20Application.pdf would not open (http: HTTP 404)",
+    "https://www.padi.com/sites/default/files/documents/2024-04/Mission%20Hub%20Community%20Grants%20FAQs.pdf would not open (http: HTTP 404)",
+    "https://www.padi.com/cr/en/about/BrainTree%20Payments%20Privacy%20Policy would not open (http: HTTP 404)",
+    "the text names a document with rules that was not read: How To Guide",
+    "the text names a document with rules that was not read: Funding Agreement",
+    "the text names a document with rules that was not read: Mission Hub Community Grant FAQs",
+    "Jev did not check this reading, so an absent fact is not known to be absent"
+  ],
+  "requirements_checked": false,
+  "documents": [
+    {
+      "ref": "D1",
+      "url": "https://www.padi.com/aware/grant-funding-criteria",
+      "final_url": "https://www.padi.com/cr/en/conservation/grant-funding-criteria",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 5094,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:e6466c823a61aa4eaf8b3eeaad37ea42fa29e48a60ea456944048a885f5e4978"
+    },
+    {
+      "ref": "D2",
+      "url": "https://www.padi.com/cr/en/awareprivacypolicy",
+      "final_url": "https://www.padi.com/cr/en/awareprivacypolicy",
+      "from": "https://www.padi.com/aware/grant-funding-criteria",
+      "anchor": "Privacy Policy",
+      "depth": 1,
+      "pdf": false,
+      "chars": 3030,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:3219f91b4a9e9ef46b8e1d7957db6b7581ea76fcb96606166841d7d63235ba61"
+    },
+    {
+      "ref": "D3",
+      "url": "https://pros-blog.padi.com/padi-aware-grant-program-how-to-make-an-impact/",
+      "final_url": "https://www.padi.com/cr/en/pros-blog/padi-aware-grant-program-how-to-make-an-impact",
+      "from": "https://www.padi.com/aware/grant-funding-criteria",
+      "anchor": "How To Guide",
+      "depth": 1,
+      "pdf": false,
+      "chars": 7798,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:ba003777be08d34c0996e2dadca8ca20b2a8b9a64e6b68894697f48374d95f52"
+    },
+    {
+      "ref": "D4",
+      "url": "https://www.padi.com/cr/en/about/privacy",
+      "final_url": "https://www.padi.com/cr/en/about/privacy",
+      "from": "https://www.padi.com/aware/grant-funding-criteria",
+      "anchor": "Privacy Policy",
+      "depth": 1,
+      "pdf": false,
+      "chars": 51365,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:f1c13939affc08909f471841fb9336119a95a697a0f52fc76e7977452da5e8ac"
+    },
+    {
+      "ref": "D5",
+      "url": "https://www.padi.com/cr/en/platform-terms-use-and-account-terms",
+      "final_url": "https://www.padi.com/cr/en/platform-terms-use-and-account-terms",
+      "from": "https://www.padi.com/aware/grant-funding-criteria",
+      "anchor": "Terms and Conditions",
+      "depth": 1,
+      "pdf": false,
+      "chars": 38960,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:145af7e94454be22d24302bf54c90e29fe503efde10e025c3a04d57f350ab704"
+    }
+  ],
+  "failures": [
+    {
+      "url": "https://www.padi.com/sites/default/files/documents/2021-10/PAF%20Mission%20Hub%20Community%20Grant%20Program%20Application.pdf",
+      "from": "https://www.padi.com/aware/grant-funding-criteria",
+      "kind": "http",
+      "message": "HTTP 404"
+    },
+    {
+      "url": "https://www.padi.com/sites/default/files/documents/2024-04/Mission%20Hub%20Community%20Grants%20FAQs.pdf",
+      "from": "https://pros-blog.padi.com/padi-aware-grant-program-how-to-make-an-impact/",
+      "kind": "http",
+      "message": "HTTP 404"
+    },
+    {
+      "url": "https://www.padi.com/cr/en/about/BrainTree%20Payments%20Privacy%20Policy",
+      "from": "https://www.padi.com/cr/en/about/privacy",
+      "kind": "http",
+      "message": "HTTP 404"
+    }
+  ],
+  "skipped_links": 145,
+  "chunks": [{ "id": "all", "docs": ["D1", "D2", "D3", "D4", "D5"], "chars": 106839 }],
+  "outcomes": {
+    "eligibility": "stated",
+    "documents": "stated",
+    "effort": "stated",
+    "co_finance": "not_found",
+    "consortium": "not_found",
+    "after_award": "stated"
+  },
+  "written": ["eligibility", "documents", "effort", "after_award"],
+  "escalated": [],
+  "flags": [],
+  "notes": [
+    "extractor: Applications are currently closed. The next round opens in 2027, with dates to be confirmed. D1 states that the funding criteria, evaluation criteria and reporting requirements are current and will not change before the next round opens.",
+    "source padi-aware-community-grants-1: selector [role=\"main\"] dropped, a new quote sits outside it"
+  ],
+  "usd": 0
+}

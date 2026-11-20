@@ -1,0 +1,97 @@
+{
+  "id": "kreis-recklinghausen-mehr-biodiversitaet",
+  "read_on": "2026-11-20",
+  "prompt_version": "req-2026-11-20.1",
+  "models": ["cursor:gpt-5.6-luna-high"],
+  "complete": false,
+  "reasons": [
+    "4 links could not be ranked without Jev",
+    "http://www.bezreg-muenster.de/zentralablage/dokumente/foerderung/foerderbereich_umwelt/investive_massnahmen/Verzeichnis_Gebietskulisse.pdf would not open (http: HTTP 404)",
+    "http://vns.naturschutzinformationen.nrw.de/vns/web/babel/media/broschuere_streuobstwiesenschutz_mkulnv_2009.pdf: pages 18, 26, 27 are images: needs OCR",
+    "http://vns.naturschutzinformationen.nrw.de/vns/web/babel/media/broschuere_streuobstwiesenschutz_mkulnv_2009.pdf: a document on another site: without Jev it can’t be confirmed as the funder’s, so it is not used",
+    "the text names a document with rules that was not read: Pflegehinweise Extensivgrünland",
+    "the text names a document with rules that was not read: Kennartenliste im Anhang",
+    "the text names a document with rules that was not read: Förderrichtlinie appendix listing the eligible woody plants",
+    "Jev did not check this reading, so an absent fact is not known to be absent"
+  ],
+  "requirements_checked": false,
+  "documents": [
+    {
+      "ref": "D1",
+      "url": "https://www.kreis-re.de/inhalte/Buergerservice/Umwelt_und_Tiere/Umwelt/Untere_Naturschutzbehoerde/Projektfoerderung_Biodiversitaet.asp",
+      "final_url": "https://www.kreis-re.de/inhalte/Buergerservice/Umwelt_und_Tiere/Umwelt/Untere_Naturschutzbehoerde/Projektfoerderung_Biodiversitaet.asp",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 10159,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:0229b598887a5185c6e47bc665f418e3ebbbf9e7814fc53a3b6cd4ed441f9060"
+    },
+    {
+      "ref": "D2",
+      "url": "https://www.kreis-re.de/inhalte/Buergerservice/Umwelt_und_Tiere/Umwelt/Untere_Naturschutzbehoerde/F-rderkatalog_HP.pdf",
+      "final_url": "https://www.kreis-re.de/inhalte/Buergerservice/Umwelt_und_Tiere/Umwelt/Untere_Naturschutzbehoerde/F-rderkatalog_HP.pdf",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": true,
+      "chars": 14748,
+      "pages": 7,
+      "low_text": false,
+      "hash": "sha256:b56ab785c8583b45b83a40b14c11e35114f740b2e25db20ab09e4514a6205cff"
+    },
+    {
+      "ref": "D3",
+      "url": "https://www.kreis-re.de/redirect/bso.asp?datei=001l6904.pdf",
+      "final_url": "https://bso.gkd-re.de/bsointer001/DokumentServlet?dokumentenname=001l6904.pdf",
+      "from": "https://www.kreis-re.de/inhalte/Buergerservice/Umwelt_und_Tiere/Umwelt/Untere_Naturschutzbehoerde/Projektfoerderung_Biodiversitaet.asp",
+      "anchor": "Faltblatt \"Neuanlage und Pflege von Obstwiesen\"",
+      "depth": 1,
+      "pdf": true,
+      "chars": 8147,
+      "pages": 2,
+      "low_text": false,
+      "hash": "sha256:a10f3e0e8367e91f4d0b7da430b710e6ef459cd3e778f24a78fe8667f77a7e54"
+    }
+  ],
+  "failures": [
+    {
+      "url": "http://www.bezreg-muenster.de/zentralablage/dokumente/foerderung/foerderbereich_umwelt/investive_massnahmen/Verzeichnis_Gebietskulisse.pdf",
+      "from": "https://www.kreis-re.de/inhalte/Buergerservice/Umwelt_und_Tiere/Umwelt/Untere_Naturschutzbehoerde/Projektfoerderung_Biodiversitaet.asp",
+      "kind": "http",
+      "message": "HTTP 404"
+    },
+    {
+      "url": "http://vns.naturschutzinformationen.nrw.de/vns/web/babel/media/broschuere_streuobstwiesenschutz_mkulnv_2009.pdf",
+      "from": "https://www.kreis-re.de/inhalte/Buergerservice/Umwelt_und_Tiere/Umwelt/Untere_Naturschutzbehoerde/Projektfoerderung_Biodiversitaet.asp",
+      "kind": "low_text",
+      "message": "pages 18, 26, 27 are images: needs OCR"
+    },
+    {
+      "url": "http://vns.naturschutzinformationen.nrw.de/vns/web/babel/media/broschuere_streuobstwiesenschutz_mkulnv_2009.pdf",
+      "from": "https://www.kreis-re.de/inhalte/Buergerservice/Umwelt_und_Tiere/Umwelt/Untere_Naturschutzbehoerde/Projektfoerderung_Biodiversitaet.asp",
+      "kind": "offsite",
+      "message": "a document on another site: without Jev it can’t be confirmed as the funder’s, so it is not used"
+    }
+  ],
+  "skipped_links": 51,
+  "chunks": [{ "id": "all", "docs": ["D1", "D2", "D3"], "chars": 33567 }],
+  "outcomes": {
+    "eligibility": "stated",
+    "documents": "stated",
+    "effort": "stated",
+    "co_finance": "not_found",
+    "consortium": "not_found",
+    "after_award": "stated"
+  },
+  "written": ["eligibility", "documents", "effort", "after_award"],
+  "escalated": [],
+  "flags": [],
+  "notes": [
+    "extractor: D2 is the March 2020 catalogue, while D3 is dated August 2023. D1 describes direct online applications, whereas D2 describes a written application using existing forms.",
+    "source kreis-recklinghausen-mehr-biodiversitaet-1: selector main dropped, a new quote sits outside it"
+  ],
+  "usd": 0
+}

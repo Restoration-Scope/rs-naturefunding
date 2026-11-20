@@ -1,0 +1,97 @@
+{
+  "id": "td-friends-of-the-environment-foundation",
+  "read_on": "2026-11-20",
+  "prompt_version": "req-2026-11-20.1",
+  "models": ["cursor:gpt-5.6-luna-high", "cursor:gpt-5.6-sol-high"],
+  "complete": false,
+  "reasons": [
+    "9 links could not be ranked without Jev",
+    "13 links could not be ranked without Jev",
+    "Jev did not check this reading, so an absent fact is not known to be absent"
+  ],
+  "requirements_checked": false,
+  "documents": [
+    {
+      "ref": "D1",
+      "url": "https://www.td.com/ca/en/about-td/community-giving/apply-for-funding/fef-grant",
+      "final_url": "https://www.td.com/ca/en/about-td/community-giving/apply-for-funding/fef-grant",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 13484,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:eb4649b6f157bc99a1ef673bf49534ced498045843eaf848a301abae5e843681"
+    },
+    {
+      "ref": "D2",
+      "url": "https://www.td.com/ca/en/about-td/for-investors/environmental-social-governance-reporting",
+      "final_url": "https://www.td.com/ca/en/about-td/for-investors/environmental-social-governance-reporting",
+      "from": "https://www.td.com/ca/en/about-td/community-giving/apply-for-funding/fef-grant",
+      "anchor": "Sustainability",
+      "depth": 1,
+      "pdf": false,
+      "chars": 5243,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:0dc6d327459dd5f41dc58a19893469964b8d243a2c5c27e13e4938216262812b"
+    },
+    {
+      "ref": "D3",
+      "url": "https://www.td.com/content/dam/tdcom/canada/about-td/pdf/esg/2025-sustainability-report-en.pdf",
+      "final_url": "https://www.td.com/content/dam/tdcom/canada/about-td/pdf/esg/2025-sustainability-report-en.pdf",
+      "from": "https://www.td.com/ca/en/about-td/for-investors/environmental-social-governance-reporting",
+      "anchor": "2025 Sustainability Report (pdf)",
+      "depth": 2,
+      "pdf": true,
+      "chars": 392593,
+      "pages": 105,
+      "low_text": false,
+      "hash": "sha256:8efde5846ab86e16d847cad1498907a7b2db64994d449eb1804740d58bb3662c"
+    }
+  ],
+  "failures": [],
+  "skipped_links": 350,
+  "chunks": [
+    { "id": "c1", "docs": ["D1", "D2"], "chars": 19013 },
+    { "id": "c2", "docs": ["D3"], "chars": 40139 },
+    { "id": "c3", "docs": ["D3"], "chars": 40142 },
+    { "id": "c4", "docs": ["D3"], "chars": 40221 },
+    { "id": "c5", "docs": ["D3"], "chars": 40168 },
+    { "id": "c6", "docs": ["D3"], "chars": 39923 },
+    { "id": "c7", "docs": ["D3"], "chars": 40216 },
+    { "id": "c8", "docs": ["D3"], "chars": 40143 },
+    { "id": "c9", "docs": ["D3"], "chars": 40155 },
+    { "id": "c10", "docs": ["D3"], "chars": 39670 },
+    { "id": "c11", "docs": ["D3"], "chars": 39746 },
+    { "id": "c12", "docs": ["D3"], "chars": 9580 }
+  ],
+  "outcomes": {
+    "eligibility": "partial",
+    "documents": "stated",
+    "effort": "stated",
+    "co_finance": "not_found",
+    "consortium": "not_found",
+    "after_award": "not_found"
+  },
+  "written": ["eligibility", "documents", "effort"],
+  "escalated": ["eligibility"],
+  "flags": [
+    {
+      "field": "eligibility",
+      "item": "Have no listed costs for infrastructure, operations, shade, playgrounds, landscaping, conferences, land acquisition, or advocacy",
+      "why": "the quote is not on any gathered document"
+    },
+    {
+      "field": "eligibility",
+      "item": "No infrastructure, operating, shade, playground, landscaping, conference, land or advocacy costs",
+      "why": "the quote is not on any gathered document"
+    }
+  ],
+  "notes": [
+    "effort \"Online application\": the quote does not state 2026-12-15 whole; left undated",
+    "extractor: Project-specific criteria vary by project type; several are phrased as guidance rather than hard requirements. | This document contains no TD Friends of the Environment Foundation Grant programme requirements. | D3 does not state requirements for the TD Friends of the Environment Foundation Grant. | D3 is a sustainability report excerpt and does not state grant programme rules. | D3 is a sustainability report and does not state requirements for the TD Friends of the Environment Foundation Grant. | D3 is a sustainability report section about carbon credits and financed emissions; it contains no TD Friends of the Environment Foundation Grant requirements. | D3 does not state requirements for the TD Friends of the Environment Foundation Grant. | D3 is a sustainability report and states no grant programme requirements. | D3 is a sustainability report and does not state requirements for the TD Friends of the Environment Foundation Grant."
+  ],
+  "usd": 0
+}

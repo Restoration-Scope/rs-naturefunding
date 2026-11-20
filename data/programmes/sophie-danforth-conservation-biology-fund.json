@@ -9,14 +9,53 @@
   "parent": null,
   "url": "https://www.rwpzoo.org/danforth-conservation-grants/",
   "summary": "Annual grants for field studies and other conservation projects that protect threatened wildlife and habitats worldwide, awarded to organisations such as NGOs or universities, with no zoo partnership needed. The amount is not stated on the page.",
-  "approaches": ["species_conservation", "research"],
-  "applicant_types": ["ngo", "research_institution"],
-  "geography": { "scope": "global" },
+  "approaches": [
+    "species_conservation",
+    "research"
+  ],
+  "applicant_types": [
+    "ngo",
+    "research_institution"
+  ],
+  "geography": {
+    "scope": "global"
+  },
   "access": "direct",
   "window": "fixed",
   "amount": null,
   "co_finance_required": null,
   "reporting": null,
+  "effort": {
+    "steps": [
+      "Application submission"
+    ],
+    "due": [
+      "2027-01-01"
+    ]
+  },
+  "eligibility": [
+    {
+      "rule": "Affiliated with an organization capable of receiving funds",
+      "kind": "legal"
+    },
+    {
+      "rule": "Avoid highly invasive or terminal research and specimen collection or vouchering",
+      "kind": "project"
+    },
+    {
+      "rule": "Use no AI to draft, edit or generate application content; disclose permitted mechanical use",
+      "kind": "other"
+    }
+  ],
+  "after_award": {
+    "reports": "other"
+  },
+  "documents": [
+    "Curriculum Vitae, maximum two pages",
+    "Two signed letters of recommendation dated within the past year, from different individuals",
+    "Tax form: W-9 for U.S. citizens or organizations, W-8 for non-U.S. ones",
+    "First-year progress report, if previously funded by SDCBF"
+  ],
   "calls": [
     {
       "id": "2027",
@@ -24,18 +63,21 @@
       "url": "https://www.rwpzoo.org/danforth-conservation-grants/",
       "status": "open",
       "opens": null,
-      "deadline": { "date": "2027-01-01", "text": "January 1, 2027" },
+      "deadline": {
+        "date": "2027-01-01",
+        "text": "January 1, 2027"
+      },
       "evidence": {
         "status": {
           "source_url": "https://www.rwpzoo.org/danforth-conservation-grants/",
           "quote": "Applications are now open and will be accepted through January 1st, 2027",
-          "checked_at": "2026-11-15",
+          "checked_at": "2026-11-20",
           "method": "page"
         },
         "deadline": {
           "source_url": "https://www.rwpzoo.org/danforth-conservation-grants/",
           "quote": "Application deadline: January 1, 2027.",
-          "checked_at": "2026-11-15",
+          "checked_at": "2026-11-20",
           "method": "page"
         }
       }
@@ -45,27 +87,89 @@
     "applicant_types": {
       "source_url": "https://www.rwpzoo.org/danforth-conservation-grants/",
       "quote": "Applicants must be affiliated with an organization (e.g., NGO, university) capable of receiving funds.",
-      "checked_at": "2026-11-15",
+      "checked_at": "2026-11-20",
       "method": "page"
     },
     "geography": {
       "source_url": "https://www.rwpzoo.org/danforth-conservation-grants/",
       "quote": "supports conservation programs that protect threatened wildlife and habitats worldwide.",
-      "checked_at": "2026-11-15",
+      "checked_at": "2026-11-20",
       "method": "page"
     },
     "access": {
       "source_url": "https://www.rwpzoo.org/danforth-conservation-grants/",
       "quote": "Applications are now open and will be accepted through January 1st, 2027",
-      "checked_at": "2026-11-15",
+      "checked_at": "2026-11-20",
       "method": "page"
     },
     "window": {
       "source_url": "https://www.rwpzoo.org/danforth-conservation-grants/",
       "quote": "Application deadline: January 1, 2027.",
-      "checked_at": "2026-11-15",
+      "checked_at": "2026-11-20",
       "method": "page"
-    }
+    },
+    "effort": [
+      {
+        "source_url": "https://www.rwpzoo.org/wp-content/uploads/2026/09/SDCBF-Guidelines-Eligibility.pdf",
+        "quote": "Application deadline: January 1, 2027.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "eligibility": [
+      {
+        "source_url": "https://www.rwpzoo.org/wp-content/uploads/2026/09/SDCBF-Guidelines-Eligibility.pdf",
+        "quote": "Applicants must be affiliated with an organization (e.g., NGO, university) capable of receiving funds.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.rwpzoo.org/wp-content/uploads/2026/09/SDCBF-Guidelines-Eligibility.pdf",
+        "quote": "Projects involving highly invasive or terminal research, or those requiring the collection/vouchering of specimens, will not be considered.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.rwpzoo.org/wp-content/uploads/2026/09/SDCBF-Guidelines-Eligibility.pdf",
+        "quote": "applicants may not use AI tools to draft, edit, or generate content for any portion of the application. Any application containing AI-generated material will be considered ineligible. Limited use of AI for mechanical tasks (e.g., grammar correction, formatting, data organization) is permitted only if fully disclosed within the application.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "after_award": [
+      {
+        "source_url": "https://www.rwpzoo.org/danforth-conservation-grants/",
+        "quote": "Progress report due: April 30, 2028 (must include project updates and budgetary expenditures).",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "documents": [
+      {
+        "source_url": "https://www.rwpzoo.org/wp-content/uploads/2026/09/SDCBF-Guidelines-Eligibility.pdf",
+        "quote": "Curriculum Vitae (two page maximum). 3. Two letters of recommendation, each from a different individual familiar with the applicant and the proposal.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.rwpzoo.org/danforth-conservation-grants/",
+        "quote": "Two letters of recommendation must be signed, and dated within the past year.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.rwpzoo.org/danforth-conservation-grants/",
+        "quote": "W-9 Form - Required for U.S. citizens or U.S.-based organizations receiving funds. Download IRS W-9 Form W-8 Form - Required for non-U.S. individuals or organizations receiving funds; certifies foreign status for tax purposes.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.rwpzoo.org/wp-content/uploads/2026/09/SDCBF-Guidelines-Eligibility.pdf",
+        "quote": "A progress report from the first year is included.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ]
   },
-  "checked_at": "2026-11-15"
+  "checked_at": "2026-11-20"
 }

@@ -1,19 +1,54 @@
 {
   "id": "scottish-rivers-fund",
   "name": "Scottish Rivers Fund",
-  "funder": { "name": "Scottish Rivers Fund", "url": "https://riversfund.scot/" },
+  "funder": {
+    "name": "Scottish Rivers Fund",
+    "url": "https://riversfund.scot/"
+  },
   "administered_by": null,
   "parent": null,
   "url": "https://riversfund.scot/grants/",
   "summary": "A new privately backed fund for river restoration in Scotland, covering work such as riparian planting, habitat restoration and barrier mitigation. Its first funding round is expected at the end of 2026.",
-  "approaches": ["freshwater", "reforestation"],
-  "applicant_types": ["ngo", "company"],
-  "geography": { "scope": "countries", "countries": ["GB"], "label": "Scotland" },
+  "approaches": [
+    "freshwater",
+    "reforestation"
+  ],
+  "applicant_types": [
+    "ngo",
+    "company"
+  ],
+  "geography": {
+    "scope": "countries",
+    "countries": [
+      "GB"
+    ],
+    "label": "Scotland"
+  },
   "access": "direct",
   "window": "fixed",
   "amount": null,
   "co_finance_required": null,
   "reporting": null,
+  "effort": {
+    "steps": [
+      "Expression of Interest",
+      "Full Application, if invited"
+    ]
+  },
+  "eligibility": [
+    {
+      "rule": "The project must be delivered in Scotland",
+      "kind": "project"
+    },
+    {
+      "rule": "If a private company, funds clearly support benefits for river systems",
+      "kind": "project"
+    },
+    {
+      "rule": "No statutory functions, profit-as-principal activities, political activity or campaigns, or activities already started",
+      "kind": "project"
+    }
+  ],
   "calls": [
     {
       "id": "first-round",
@@ -27,7 +62,7 @@
         "status": {
           "source_url": "https://riversfund.scot/grants/",
           "quote": "Our first funding round is expected to launch at the end of 2026.",
-          "checked_at": "2026-11-15",
+          "checked_at": "2026-11-20",
           "method": "page"
         }
       }
@@ -37,27 +72,61 @@
     "applicant_types": {
       "source_url": "https://riversfund.scot/grants/",
       "quote": "Registered charities and trusts. Private companies - where there is clear evidence that funds will be used to support benefits for river systems.",
-      "checked_at": "2026-11-15",
+      "checked_at": "2026-11-20",
       "method": "page"
     },
     "geography": {
       "source_url": "https://riversfund.scot/grants/",
       "quote": "All applicants should be based in the UK and all projects must be delivered in Scotland.",
-      "checked_at": "2026-11-15",
+      "checked_at": "2026-11-20",
       "method": "page"
     },
     "access": {
       "source_url": "https://riversfund.scot/grants/",
       "quote": "All applications must be submitted through NatureScot's online application portal",
-      "checked_at": "2026-11-15",
+      "checked_at": "2026-11-20",
       "method": "page"
     },
     "window": {
       "source_url": "https://riversfund.scot/grants/",
       "quote": "Funding rounds are launched as investments are secured, so the timing and scale of each funding round may vary.",
-      "checked_at": "2026-11-15",
+      "checked_at": "2026-11-20",
       "method": "page"
-    }
+    },
+    "effort": [
+      {
+        "source_url": "https://riversfund.scot/grants/",
+        "quote": "Expression of Interest - a shorter initial submission for us to assess whether your project is a good fit for the Scottish Rivers Fund.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://riversfund.scot/grants/",
+        "quote": "Full Application - if invited to proceed, you will receive tailored feedback on your Expression of Interest to help you prepare the strongest possible Full Application.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "eligibility": [
+      {
+        "source_url": "https://riversfund.scot/grants/",
+        "quote": "all projects must be delivered in Scotland.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://riversfund.scot/grants/",
+        "quote": "Private companies - where there is clear evidence that funds will be used to support benefits for river systems.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://riversfund.scot/grants/",
+        "quote": "Statutory functions. Activities where generating profit is deemed to be the principal project aim. Political activity or campaigns. Activities already started.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ]
   },
-  "checked_at": "2026-11-15"
+  "checked_at": "2026-11-20"
 }

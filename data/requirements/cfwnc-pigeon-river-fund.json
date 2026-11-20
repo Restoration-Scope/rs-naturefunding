@@ -1,0 +1,127 @@
+{
+  "id": "cfwnc-pigeon-river-fund",
+  "read_on": "2026-11-20",
+  "prompt_version": "req-2026-11-20.1",
+  "models": ["cursor:gpt-5.6-luna-high", "cursor:gpt-5.6-sol-high"],
+  "complete": false,
+  "reasons": [
+    "33 links could not be ranked without Jev",
+    "38 links could not be ranked without Jev",
+    "https://nmd.nyc3.cdn.digitaloceanspaces.com/wnc/documents/Grants/Permitting-Considerations.pdf: a document on another site: without Jev it can’t be confirmed as the funder’s, so it is not used",
+    "https://nmd.nyc3.cdn.digitaloceanspaces.com/wnc/documents/Grants/Spring-2026-PRF-Board-Report.pdf: a document on another site: without Jev it can’t be confirmed as the funder’s, so it is not used",
+    "the text names a document with rules that was not read: Permit Reference Guide",
+    "Jev did not check this reading, so an absent fact is not known to be absent"
+  ],
+  "requirements_checked": false,
+  "documents": [
+    {
+      "ref": "D1",
+      "url": "https://cfwnc.org/grants/pigeon-river-fund",
+      "final_url": "https://cfwnc.org/grants/pigeon-river-fund",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 10410,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:68c63ee83afa59e75c29a440b2e32d30143f61dd28fbcb5c797da19dd9919468"
+    },
+    {
+      "ref": "D2",
+      "url": "https://cfwnc.org/grants/about-grants/online-application",
+      "final_url": "https://cfwnc.org/grants/about-grants/online-application",
+      "from": "https://cfwnc.org/grants/pigeon-river-fund",
+      "anchor": "Get Started Apply Online",
+      "depth": 1,
+      "pdf": false,
+      "chars": 6376,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:b164cbb52cdbcb9d1facc0e3cfeb899d6215c88823ec6aa00cc40f60d3b468c7"
+    },
+    {
+      "ref": "D3",
+      "url": "https://cfwnc.org/students/scholarships/apply-for-a-scholarship",
+      "final_url": "https://cfwnc.org/students/scholarships/apply-for-a-scholarship",
+      "from": "https://cfwnc.org/grants/pigeon-river-fund",
+      "anchor": "Apply for a Scholarship",
+      "depth": 1,
+      "pdf": false,
+      "chars": 5323,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:875ffb65837a55b319e9f3bf7b9e7616bb13121588956fd41b0f0a9d442f57ec"
+    },
+    {
+      "ref": "D4",
+      "url": "https://cfwnc.org/students/scholarships-faqs",
+      "final_url": "https://cfwnc.org/students/scholarships-faqs",
+      "from": "https://cfwnc.org/grants/pigeon-river-fund",
+      "anchor": "Frequently Asked Questions",
+      "depth": 1,
+      "pdf": false,
+      "chars": 9666,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:6c4d9f47a070ab9aed4829c848895110f39b6563624ff346ae052f2665ea26b1"
+    },
+    {
+      "ref": "D5",
+      "url": "https://cfwnc.org/initiatives/women-for-women/faq",
+      "final_url": "https://cfwnc.org/initiatives/women-for-women/faq",
+      "from": "https://cfwnc.org/grants/pigeon-river-fund",
+      "anchor": "FAQs",
+      "depth": 1,
+      "pdf": false,
+      "chars": 9437,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:59df54bbd10ab281c16206aa9eeeede9ff1ca64bbd0aa03aae096ee7b301db7b"
+    },
+    {
+      "ref": "D6",
+      "url": "https://cfwnc.org/privacy",
+      "final_url": "https://cfwnc.org/privacy",
+      "from": "https://cfwnc.org/grants/pigeon-river-fund",
+      "anchor": "Privacy Policy",
+      "depth": 1,
+      "pdf": false,
+      "chars": 8043,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:7b787844226d4d633bd716d6419058de63d5e26800599673eab07cb341723004"
+    }
+  ],
+  "failures": [
+    {
+      "url": "https://nmd.nyc3.cdn.digitaloceanspaces.com/wnc/documents/Grants/Permitting-Considerations.pdf",
+      "from": "https://cfwnc.org/grants/pigeon-river-fund",
+      "kind": "offsite",
+      "message": "a document on another site: without Jev it can’t be confirmed as the funder’s, so it is not used"
+    },
+    {
+      "url": "https://nmd.nyc3.cdn.digitaloceanspaces.com/wnc/documents/Grants/Spring-2026-PRF-Board-Report.pdf",
+      "from": "https://cfwnc.org/grants/pigeon-river-fund",
+      "kind": "offsite",
+      "message": "a document on another site: without Jev it can’t be confirmed as the funder’s, so it is not used"
+    }
+  ],
+  "skipped_links": 835,
+  "chunks": [{ "id": "all", "docs": ["D1", "D2", "D3", "D4", "D5", "D6"], "chars": 49897 }],
+  "outcomes": {
+    "eligibility": "stated",
+    "documents": "not_found",
+    "effort": "stated",
+    "co_finance": "stated",
+    "consortium": "not_found",
+    "after_award": "stated"
+  },
+  "written": ["eligibility", "effort", "co_finance", "after_award"],
+  "escalated": ["eligibility"],
+  "flags": [],
+  "notes": [
+    "extractor: Deadlines are listed without a year. If a deadline falls on a weekend or holiday, it moves to 5 p.m. the next business day. Additional reports or site visits may be required, but are not stated duties."
+  ],
+  "usd": 0
+}

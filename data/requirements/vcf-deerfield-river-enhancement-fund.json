@@ -1,0 +1,60 @@
+{
+  "id": "vcf-deerfield-river-enhancement-fund",
+  "read_on": "2026-11-20",
+  "prompt_version": "req-2026-11-20.1",
+  "models": ["cursor:gpt-5.6-luna-high"],
+  "complete": false,
+  "reasons": [
+    "7 links could not be ranked without Jev",
+    "the text names a document with rules that was not read: General Applicant Guidelines and Requirements",
+    "Jev did not check this reading, so an absent fact is not known to be absent"
+  ],
+  "requirements_checked": false,
+  "documents": [
+    {
+      "ref": "D1",
+      "url": "https://www.vermontcf.org/deerfield",
+      "final_url": "https://vermontcf.org/funds/deerfield-river/",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 10691,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:aaec94188ead1a5c799ee051a6ac971346134d360e0558e607aae60c4dea90a4"
+    },
+    {
+      "ref": "D2",
+      "url": "https://vermontcf.org/wp-content/uploads/2026/10/Application-Deerfield-River-Enhancement-Fund-2026-27.pdf",
+      "final_url": "https://vermontcf.org/wp-content/uploads/2026/10/Application-Deerfield-River-Enhancement-Fund-2026-27.pdf",
+      "from": "https://www.vermontcf.org/deerfield",
+      "anchor": "application",
+      "depth": 1,
+      "pdf": true,
+      "chars": 9233,
+      "pages": 6,
+      "low_text": false,
+      "hash": "sha256:b58b3d2e8b6082b464d84b784934f3d5170fa2f676e8597931eeef2b7793ab93"
+    }
+  ],
+  "failures": [],
+  "skipped_links": 89,
+  "chunks": [{ "id": "all", "docs": ["D1", "D2"], "chars": 20146 }],
+  "outcomes": {
+    "eligibility": "stated",
+    "documents": "stated",
+    "effort": "stated",
+    "co_finance": "stated",
+    "consortium": "not_found",
+    "after_award": "not_found"
+  },
+  "written": ["eligibility", "documents", "effort", "co_finance"],
+  "escalated": [],
+  "flags": [],
+  "notes": [
+    "extractor: Submitting the application gives the Vermont Community Foundation permission to share it with other potential funders.",
+    "source vcf-deerfield-river-enhancement-fund-3: added for https://vermontcf.org/wp-content/uploads/2026/10/Application-Deerfield-River-Enhancement-Fund-2026-27.pdf"
+  ],
+  "usd": 0
+}

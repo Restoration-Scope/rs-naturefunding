@@ -1,0 +1,90 @@
+{
+  "id": "fasl-st-lawrence-marine-biodiversity",
+  "read_on": "2026-11-20",
+  "prompt_version": "req-2026-11-19.2",
+  "models": ["cursor:gpt-5.6-luna-high", "cursor:gpt-5.6-sol-high"],
+  "complete": false,
+  "reasons": [
+    "4 links could not be ranked without Jev",
+    "https://fondsdactionsaintlaurent.org/wp-content/uploads/2023/08/SSL_FASL_Fiche-depot-projet_sept022_v1-1.pdf: page 1 is an image: needs OCR",
+    "https://fondsdactionsaintlaurent.org/wp-content/uploads/2023/08/SSL_FASL_Guide-demandeur_MAJ_oct021.pdf: page 1 is an image: needs OCR",
+    "the text names a document with rules that was not read: Convention de financement",
+    "Jev did not check this reading, so an absent fact is not known to be absent"
+  ],
+  "requirements_checked": false,
+  "documents": [
+    {
+      "ref": "D1",
+      "url": "https://fondsdactionsaintlaurent.org/nos-programmes/biodiversite-maritime-du-saint-laurent/",
+      "final_url": "https://fondsdactionsaintlaurent.org/nos-programmes/biodiversite-maritime-du-saint-laurent/",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 15689,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:78958b71aa263d3d3506809a917f50eaf28cb251c6e341f019adeb597a99282d"
+    },
+    {
+      "ref": "D2",
+      "url": "https://fondsdactionsaintlaurent.org/wp-content/uploads/2023/08/SSL_FASL_Fiche-depot-projet_sept022_v1-1.pdf",
+      "final_url": "https://fondsdactionsaintlaurent.org/wp-content/uploads/2023/08/SSL_FASL_Fiche-depot-projet_sept022_v1-1.pdf",
+      "from": "https://fondsdactionsaintlaurent.org/nos-programmes/biodiversite-maritime-du-saint-laurent/",
+      "anchor": "Formulaire de dépôt",
+      "depth": 1,
+      "pdf": true,
+      "chars": 4121,
+      "pages": 5,
+      "low_text": false,
+      "hash": "sha256:19084c16b4b6f217ca8efa61dea8fd726d452e6ca301557e7b4c080f03d48715"
+    },
+    {
+      "ref": "D3",
+      "url": "https://fondsdactionsaintlaurent.org/wp-content/uploads/2023/08/SSL_FASL_Guide-demandeur_MAJ_oct021.pdf",
+      "final_url": "https://fondsdactionsaintlaurent.org/wp-content/uploads/2023/08/SSL_FASL_Guide-demandeur_MAJ_oct021.pdf",
+      "from": "https://fondsdactionsaintlaurent.org/nos-programmes/biodiversite-maritime-du-saint-laurent/",
+      "anchor": "Guide du demandeur",
+      "depth": 1,
+      "pdf": true,
+      "chars": 6517,
+      "pages": 4,
+      "low_text": false,
+      "hash": "sha256:3c1862ce7c93af63617500e4a69c6697f3d2d9fe23ad580fff0851ad78a52bc1"
+    }
+  ],
+  "failures": [
+    {
+      "url": "https://fondsdactionsaintlaurent.org/wp-content/uploads/2023/08/SSL_FASL_Fiche-depot-projet_sept022_v1-1.pdf",
+      "from": "https://fondsdactionsaintlaurent.org/nos-programmes/biodiversite-maritime-du-saint-laurent/",
+      "kind": "low_text",
+      "message": "page 1 is an image: needs OCR"
+    },
+    {
+      "url": "https://fondsdactionsaintlaurent.org/wp-content/uploads/2023/08/SSL_FASL_Guide-demandeur_MAJ_oct021.pdf",
+      "from": "https://fondsdactionsaintlaurent.org/nos-programmes/biodiversite-maritime-du-saint-laurent/",
+      "kind": "low_text",
+      "message": "page 1 is an image: needs OCR"
+    }
+  ],
+  "skipped_links": 29,
+  "chunks": [{ "id": "all", "docs": ["D1", "D2", "D3"], "chars": 26892 }],
+  "outcomes": {
+    "eligibility": "stated",
+    "documents": "stated",
+    "effort": "stated",
+    "co_finance": "stated",
+    "consortium": "not_found",
+    "after_award": "stated"
+  },
+  "written": ["eligibility", "documents", "effort", "co_finance", "after_award"],
+  "escalated": ["eligibility"],
+  "flags": [],
+  "notes": [
+    "co_finance: share 25% dropped, its quote does not state it",
+    "extractor: The catalogue accepts proposals continuously; no catalogue deadline is stated. The annual call is described as finished. After award, the beneficiary must meet imposed deadlines, produce the listed deliverables and follow communication standards; non-compliance may reduce funding.",
+    "eligibility: kept 1 first-reading item no check faulted that the strong reading left out",
+    "source fasl-st-lawrence-marine-biodiversity-2: added for https://fondsdactionsaintlaurent.org/wp-content/uploads/2023/08/SSL_FASL_Guide-demandeur_MAJ_oct021.pdf"
+  ],
+  "usd": 0
+}

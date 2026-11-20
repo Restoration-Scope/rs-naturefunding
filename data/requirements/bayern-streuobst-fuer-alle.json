@@ -1,0 +1,121 @@
+{
+  "id": "bayern-streuobst-fuer-alle",
+  "read_on": "2026-11-20",
+  "prompt_version": "req-2026-11-20.1",
+  "models": ["cursor:gpt-5.6-luna-high"],
+  "complete": false,
+  "reasons": [
+    "15 links could not be ranked without Jev",
+    "16 links could not be ranked without Jev",
+    "https://www.stmelf.bayern.de/mam/cms01/agrarpolitik/dateien/finr_le.pdf: page 1 is an image: needs OCR",
+    "Jev did not check this reading, so an absent fact is not known to be absent"
+  ],
+  "requirements_checked": false,
+  "documents": [
+    {
+      "ref": "D1",
+      "url": "https://www.stmelf.bayern.de/foerderung/streuobstpakt-foerderprogramm-streuobst-fuer-alle",
+      "final_url": "https://www.stmelf.bayern.de/foerderung/streuobstpakt-foerderprogramm-streuobst-fuer-alle",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 4299,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:d41e485f4bb2a1e3d86ab38a5b984b3e9d3ff173e8daafff7e2d660c738702cd"
+    },
+    {
+      "ref": "D2",
+      "url": "https://www.stmelf.bayern.de/mam/cms01/agrarpolitik/dateien/bestaetigung_qualitaetsanforderungen.pdf",
+      "final_url": "https://www.stmelf.bayern.de/mam/cms01/agrarpolitik/dateien/bestaetigung_qualitaetsanforderungen.pdf",
+      "from": "https://www.stmelf.bayern.de/foerderung/streuobstpakt-foerderprogramm-streuobst-fuer-alle",
+      "anchor": "Bestätigung der STROFA-Qualitätsanforderungen Downloadlink",
+      "depth": 1,
+      "pdf": true,
+      "chars": 1342,
+      "pages": 1,
+      "low_text": false,
+      "hash": "sha256:3472e606e20add449bd2d0a6a9090622155686a28eb5f107e3bb2f0d25658452"
+    },
+    {
+      "ref": "D3",
+      "url": "https://www.stmelf.bayern.de/mam/cms01/agrarpolitik/dateien/finr_le.pdf",
+      "final_url": "https://www.stmelf.bayern.de/mam/cms01/agrarpolitik/dateien/finr_le.pdf",
+      "from": "https://www.stmelf.bayern.de/foerderung/streuobstpakt-foerderprogramm-streuobst-fuer-alle",
+      "anchor": "Finanzierungsrichtlinien Ländliche Entwicklung in Bayern (FinR-LE) Downloadlink",
+      "depth": 1,
+      "pdf": true,
+      "chars": 56245,
+      "pages": 31,
+      "low_text": false,
+      "hash": "sha256:d7f5f1c1454f1fcfecad1d5d365bc8d48077e9aa815d93ed124c35b6226cedfb"
+    },
+    {
+      "ref": "D4",
+      "url": "https://www.stmelf.bayern.de/mam/cms01/agrarpolitik/dateien/m_streuobstpakt.pdf",
+      "final_url": "https://www.stmelf.bayern.de/mam/cms01/agrarpolitik/dateien/m_streuobstpakt.pdf",
+      "from": "https://www.stmelf.bayern.de/foerderung/streuobstpakt-foerderprogramm-streuobst-fuer-alle",
+      "anchor": "Merkblatt zur Förderung von Streuobst-Baumpflanzungen Downloadlink",
+      "depth": 1,
+      "pdf": true,
+      "chars": 13442,
+      "pages": 5,
+      "low_text": false,
+      "hash": "sha256:4ca884f1bde5dc6117fc286b9cb7fc85cf0c391e849b8c6d8f7553d93caabc27"
+    },
+    {
+      "ref": "D5",
+      "url": "https://www.stmelf.bayern.de/mam/cms01/landentwicklung/dokumentationen/dateien/leistungsspektrum_streuobst.pdf",
+      "final_url": "https://www.stmelf.bayern.de/mam/cms01/landentwicklung/dokumentationen/dateien/leistungsspektrum_streuobst.pdf",
+      "from": "https://www.stmelf.bayern.de/foerderung/streuobstpakt-foerderprogramm-streuobst-fuer-alle",
+      "anchor": "Broschüre: Auf geht's - Streuobst für alle! Downloadlink",
+      "depth": 1,
+      "pdf": true,
+      "chars": 14251,
+      "pages": 12,
+      "low_text": false,
+      "hash": "sha256:d8a680cc2b8dd1872e659ca8b02bff133d7369c6062e6898df296d5c7903dc78"
+    },
+    {
+      "ref": "D6",
+      "url": "https://www.stmelf.bayern.de/service/ausschreibungen/index.html",
+      "final_url": "https://www.stmelf.bayern.de/service/ausschreibungen/europaweite-ausschreibungen",
+      "from": "https://www.stmelf.bayern.de/foerderung/streuobstpakt-foerderprogramm-streuobst-fuer-alle",
+      "anchor": "Ausschreibungen",
+      "depth": 1,
+      "pdf": false,
+      "chars": 3403,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:244a0a129e1f5c10c6436998f37d650fbd3270959c714acd8430b7fd5af4d696"
+    }
+  ],
+  "failures": [
+    {
+      "url": "https://www.stmelf.bayern.de/mam/cms01/agrarpolitik/dateien/finr_le.pdf",
+      "from": "https://www.stmelf.bayern.de/foerderung/streuobstpakt-foerderprogramm-streuobst-fuer-alle",
+      "kind": "low_text",
+      "message": "page 1 is an image: needs OCR"
+    }
+  ],
+  "skipped_links": 144,
+  "chunks": [{ "id": "all", "docs": ["D1", "D2", "D3", "D4", "D5", "D6"], "chars": 94116 }],
+  "outcomes": {
+    "eligibility": "stated",
+    "documents": "not_found",
+    "effort": "stated",
+    "co_finance": "stated",
+    "consortium": "not_found",
+    "after_award": "stated"
+  },
+  "written": ["eligibility", "effort", "co_finance", "after_award"],
+  "escalated": [],
+  "flags": [],
+  "notes": [
+    "extractor: No application deadline is stated. The purpose-binding period is five years; removal of trees during that period must be reported immediately. Quality confirmation from the nursery may be provided on the quality-requirements form or the invoice.",
+    "source bayern-streuobst-fuer-alle-2: added for https://www.stmelf.bayern.de/mam/cms01/agrarpolitik/dateien/m_streuobstpakt.pdf",
+    "source bayern-streuobst-fuer-alle-3: added for https://www.stmelf.bayern.de/mam/cms01/landentwicklung/dokumentationen/dateien/leistungsspektrum_streuobst.pdf"
+  ],
+  "usd": 0
+}

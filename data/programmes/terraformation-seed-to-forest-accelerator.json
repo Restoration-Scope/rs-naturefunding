@@ -1,17 +1,28 @@
 {
   "id": "terraformation-seed-to-forest-accelerator",
   "name": "Seed to Forest Accelerator",
-  "funder": { "name": "Terraformation", "url": "https://www.terraformation.com/" },
+  "funder": {
+    "name": "Terraformation",
+    "url": "https://www.terraformation.com/"
+  },
   "administered_by": null,
   "parent": null,
   "url": "https://www.terraformation.com/accelerator",
   "summary": "Terraformation pays planting costs for large native reforestation projects in the tropics and subtropics and lines up forward carbon sales, with training, seed banking and monitoring support. Teams need long-term rights to thousands of hectares and apply online to join a cohort.",
   "kind": "partnership",
-  "approaches": ["reforestation", "agroforestry"],
+  "approaches": [
+    "reforestation",
+    "agroforestry"
+  ],
   "applicant_types": null,
   "geography": {
     "scope": "regions",
-    "regions": ["africa", "asia", "latin_america_caribbean", "oceania"],
+    "regions": [
+      "africa",
+      "asia",
+      "latin_america_caribbean",
+      "oceania"
+    ],
     "label": "Tropical or subtropical reforestation projects"
   },
   "access": "direct",
@@ -19,6 +30,26 @@
   "amount": null,
   "co_finance_required": null,
   "reporting": null,
+  "effort": {
+    "steps": [
+      "Application (about 90 minutes)",
+      "Interview and technical screening, if a good candidate"
+    ]
+  },
+  "eligibility": [
+    {
+      "rule": "Have long-term access and reforestation rights to at least 3,000 or 15,000 hectares, depending on country",
+      "kind": "project"
+    },
+    {
+      "rule": "Have proven native-ecosystem reforestation experience in a similar eco-region",
+      "kind": "track_record"
+    },
+    {
+      "rule": "Plan restoration to last at least 40 years and benefit nearby communities",
+      "kind": "project"
+    }
+  ],
   "calls": [
     {
       "id": "cohort-application",
@@ -56,7 +87,41 @@
       "quote": "Applications are reviewed frequently.",
       "checked_at": "2026-11-09",
       "method": "page"
-    }
+    },
+    "effort": [
+      {
+        "source_url": "https://www.terraformation.com/accelerator",
+        "quote": "Our application takes about 90 minutes to complete.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.terraformation.com/accelerator",
+        "quote": "If your project is a good candidate for a future Accelerator cohort, you’ll interview with a project lead and work with our forestry and carbon teams on a more thorough technical screening.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "eligibility": [
+      {
+        "source_url": "https://www.terraformation.com/accelerator",
+        "quote": "Have long-term access and rights to reforest at least 3,000 hectares of land in Colombia, Ghana, Kenya, or the Philippines - or at least 15,000 hectares in other countries",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.terraformation.com/accelerator",
+        "quote": "Have proven experience in native ecosystem reforestation within a similar eco-region",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.terraformation.com/accelerator",
+        "quote": "Are focused on restoring forests that last for generations (minimum 40 years) and benefit the environment and communities around those forests",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ]
   },
   "checked_at": "2026-11-09"
 }

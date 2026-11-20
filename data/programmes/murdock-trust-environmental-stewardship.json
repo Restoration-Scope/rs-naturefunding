@@ -16,8 +16,42 @@
   "access": "direct",
   "window": "fixed",
   "amount": { "currency": "USD", "min": 100000 },
-  "co_finance_required": null,
+  "co_finance_required": true,
   "reporting": null,
+  "effort": {
+    "steps": [
+      "Eligibility quiz",
+      "Letter of Inquiry (LOI)",
+      "Full application, if LOI approved",
+      "Document review",
+      "Site visit"
+    ],
+    "more_after": true,
+    "due": [null, "2027-03-29", "2027-06-23", null, null]
+  },
+  "eligibility": [
+    {
+      "rule": "A 501(c)(3) public charity, federally recognized tribal entity, or qualifying government entity",
+      "kind": "legal"
+    },
+    {
+      "rule": "Have at least three complete years of operating and financial history",
+      "kind": "track_record",
+      "min_years": 3
+    },
+    { "rule": "Not be a local watershed council", "kind": "other" },
+    {
+      "rule": "Request staff/program expansion or equipment/technology, not capital",
+      "kind": "project"
+    },
+    { "rule": "Have a total project budget of at least $200,000", "kind": "project" },
+    {
+      "rule": "Receive no majority funding or support from commercial gambling revenue",
+      "kind": "finances"
+    }
+  ],
+  "co_finance": { "min_share": 50, "applies_to": "Equipment and Technology Grants" },
+  "after_award": { "reports": "interim_and_final" },
   "calls": [
     {
       "id": "2026-period-3",
@@ -92,13 +126,13 @@
     "applicant_types": {
       "source_url": "https://murdocktrust.org/grant-application-process/guidelines-for-grantseekers",
       "quote": "Your organization is a 501(c)(3) public charity, a federally recognized tribal entity, or a qualifying government entity such as a university, community college, or medical center.",
-      "checked_at": "2026-11-15",
+      "checked_at": "2026-11-20",
       "method": "page"
     },
     "geography": {
       "source_url": "https://murdocktrust.org/grant-application-process/guidelines-for-grantseekers",
       "quote": "Your organization is based in Alaska, Idaho, Montana, Oregon, or Washington - or your project has more than 50% impact in this region.",
-      "checked_at": "2026-11-15",
+      "checked_at": "2026-11-20",
       "method": "page"
     },
     "access": {
@@ -116,9 +150,105 @@
     "amount": {
       "source_url": "https://murdocktrust.org/grant-application-process/guidelines-for-grantseekers",
       "quote": "The minimum grant request amount is $100,000.",
-      "checked_at": "2026-11-15",
+      "checked_at": "2026-11-20",
       "method": "page"
-    }
+    },
+    "co_finance_required": {
+      "source_url": "https://murdocktrust.org/grant-application-process/guidelines-for-grantseekers",
+      "quote": "Grantees must be responsible for 50 percent or more of the purchase cost.",
+      "checked_at": "2026-11-20",
+      "method": "page"
+    },
+    "effort": [
+      {
+        "source_url": "https://murdocktrust.org/grant-application-process",
+        "quote": "complete a brief eligibility quiz to confirm that your organization and project are potentially eligible for a strategic project grant.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://murdocktrust.org/grant-application-process",
+        "quote": "Mar 1-Mar 29, 2027",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://murdocktrust.org/grant-application-process",
+        "quote": "May 28 -June 23, 2027",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://murdocktrust.org/grant-application-process",
+        "quote": "Staff will review your documents and request additional information needed via email.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://murdocktrust.org/grant-application-process",
+        "quote": "Your program officer will schedule a site visit to discuss project details, leadership, the board, plans for executing and sustaining the project, criteria for success, and more.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "eligibility": [
+      {
+        "source_url": "https://murdocktrust.org/grant-application-process/guidelines-for-grantseekers",
+        "quote": "Your organization is a 501(c)(3) public charity, a federally recognized tribal entity, or a qualifying government entity such as a university, community college, or medical center.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://murdocktrust.org/grant-application-process/guidelines-for-grantseekers",
+        "quote": "Entities with fewer than three complete years of operating and financial history",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://murdocktrust.org/grant-application-process/guidelines-for-grantseekers",
+        "quote": "Local watershed councils",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://murdocktrust.org/grant-application-process/guidelines-for-grantseekers",
+        "quote": "Only staff/program expansion or equipment/technology requests are eligible. Capital projects are ineligible.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://murdocktrust.org/grant-application-process/guidelines-for-grantseekers",
+        "quote": "The Trust only awards grants for projects with a minimum total project budget of $200,000.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://murdocktrust.org/grant-application-process/guidelines-for-grantseekers",
+        "quote": "Entities that receive a majority of funding and support from commercial gambling revenue (lottery, casino, etc.)",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "co_finance": {
+      "source_url": "https://murdocktrust.org/grant-application-process/guidelines-for-grantseekers",
+      "quote": "Grantees must be responsible for 50 percent or more of the purchase cost.",
+      "checked_at": "2026-11-20",
+      "method": "page"
+    },
+    "after_award": [
+      {
+        "source_url": "https://murdocktrust.org/grant-application-process/grant-administration-reporting-resources",
+        "quote": "Grant Reports (may be titled Progress Report, Conditions Met Report, or Grant Report/Payment Request): Submit the report by the scheduled date to request payment.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://murdocktrust.org/grant-application-process/grant-administration-reporting-resources",
+        "quote": "Final Report will be added to your grant record after the final payment is made. Due within one year after grant funds have been fully expended.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ]
   },
   "checked_at": "2026-11-15"
 }

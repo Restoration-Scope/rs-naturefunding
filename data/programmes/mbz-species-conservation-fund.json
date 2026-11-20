@@ -17,6 +17,31 @@
   "amount": { "currency": "USD", "max": 25000 },
   "co_finance_required": null,
   "reporting": "Grantees report on project progress through the Fund's website every six months and are expected to publish material about their work on the Fund's site.",
+  "effort": { "steps": ["Application submission"], "due": ["2027-01-31"] },
+  "eligibility": [
+    {
+      "rule": "Provide a correct conservation status or justify an incorrect one",
+      "kind": "project"
+    },
+    {
+      "rule": "If the project is ex situ, it is shown to be critical to the species' survival",
+      "kind": "project"
+    },
+    {
+      "rule": "For continuation funding, complete the prior project and submit all required reports by the deadline",
+      "kind": "track_record"
+    },
+    {
+      "rule": "Application in English, with budgets and financial data in US dollars",
+      "kind": "other"
+    }
+  ],
+  "after_award": { "reports": "twice_yearly" },
+  "documents": [
+    "Applicant's short biography or CV with a list of relevant publications",
+    "Recent annual report or other description of the organisation, if applicable",
+    "One JPEG image of the target species"
+  ],
   "calls": [
     {
       "id": "2027-january",
@@ -83,7 +108,7 @@
     "access": {
       "source_url": "https://www.speciesconservation.org/biodiversity-nature-people/conservation-philanthropy/grants/faqs/",
       "quote": "Anyone directly involved in species conservation can apply to the Fund for a grant.",
-      "checked_at": "2026-11-14",
+      "checked_at": "2026-11-20",
       "method": "page"
     },
     "window": {
@@ -95,15 +120,77 @@
     "amount": {
       "source_url": "https://www.speciesconservation.org/biodiversity-nature-people/conservation-philanthropy/grants/faqs/",
       "quote": "The Fund will provide grants up to a maximum of $25,000 per project.",
-      "checked_at": "2026-11-14",
+      "checked_at": "2026-11-20",
       "method": "page"
     },
     "reporting": {
       "source_url": "https://www.speciesconservation.org/biodiversity-nature-people/conservation-philanthropy/grants/faqs/",
       "quote": "Yes, this is a requirement of all the projects which the Fund supports, and is done through the website every six months.",
-      "checked_at": "2026-11-14",
+      "checked_at": "2026-11-20",
       "method": "page"
-    }
+    },
+    "effort": [
+      {
+        "source_url": "https://www.speciesconservation.org/biodiversity-nature-people/conservation-philanthropy/grants/",
+        "quote": "Applications submitted by 31st January 2027",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "eligibility": [
+      {
+        "source_url": "https://www.speciesconservation.org/biodiversity-nature-people/conservation-philanthropy/grants/application-criteria/",
+        "quote": "Please note that applications with clearly incorrect conservation status and no justification will NOT be considered for funding.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.speciesconservation.org/biodiversity-nature-people/conservation-philanthropy/grants/faqs/",
+        "quote": "will consider applications for an ex situ project where it is demonstrated to be critical to the survival of the species concerned.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.speciesconservation.org/biodiversity-nature-people/conservation-philanthropy/grants/application-criteria/",
+        "quote": "The Fund is happy to provide continuation support for a project which had previously been supported, which is now completed and for which the Fund has received all required reporting by the time of the respective submission deadline.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.speciesconservation.org/biodiversity-nature-people/conservation-philanthropy/grants/application-criteria/",
+        "quote": "Applications must be submitted in English with budgets and all financial data submitted in US Dollars.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "after_award": [
+      {
+        "source_url": "https://www.speciesconservation.org/biodiversity-nature-people/conservation-philanthropy/grants/faqs/",
+        "quote": "Yes, this is a requirement of all the projects which the Fund supports, and is done through the website every six months.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "documents": [
+      {
+        "source_url": "https://application.speciesconservation.org/print.php",
+        "quote": "A short biography / curriculum vitae of the project applicant and a list of his / her relevant scientific and popular publications",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://application.speciesconservation.org/print.php",
+        "quote": "A recent Annual Report or other description of your organization (e.g. strategic plan), if applicable",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://application.speciesconservation.org/print.php",
+        "quote": "Please provide one JPEG image of the project's target species.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ]
   },
   "checked_at": "2026-11-09"
 }

@@ -1,0 +1,112 @@
+{
+  "id": "panthera-small-cat-action-fund",
+  "read_on": "2026-11-20",
+  "prompt_version": "req-2026-11-20.1",
+  "models": ["cursor:gpt-5.6-luna-high"],
+  "complete": false,
+  "reasons": [
+    "20 links could not be ranked without Jev",
+    "43 links could not be ranked without Jev",
+    "Jev did not check this reading, so an absent fact is not known to be absent"
+  ],
+  "requirements_checked": false,
+  "documents": [
+    {
+      "ref": "D1",
+      "url": "https://panthera.org/small-cat-action-fund",
+      "final_url": "https://panthera.org/small-cat-action-fund",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 5097,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:565741c7e4ebcdd269f867e5e28679c7fb0c38042457eafc2452f152b2405f92"
+    },
+    {
+      "ref": "D2",
+      "url": "https://panthera.org/informing-policy",
+      "final_url": "https://panthera.org/informing-policy",
+      "from": "https://panthera.org/small-cat-action-fund",
+      "anchor": "Policy Solutions",
+      "depth": 1,
+      "pdf": false,
+      "chars": 3794,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:af9a58996e5b951db46f3e77f671a7ab8984ff565e7014cc62c6e1c257149c81"
+    },
+    {
+      "ref": "D3",
+      "url": "https://panthera.org/grant-opportunities",
+      "final_url": "https://panthera.org/grant-opportunities",
+      "from": "https://panthera.org/small-cat-action-fund",
+      "anchor": "Apply for a Grant",
+      "depth": 1,
+      "pdf": false,
+      "chars": 3528,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:5a37656096b51fd58d1c93cd2bd2337c556aeb508cf2d6790d31191711e370ca"
+    },
+    {
+      "ref": "D4",
+      "url": "https://panthera.org/letter-interest",
+      "final_url": "https://panthera.org/letter-interest",
+      "from": "https://panthera.org/small-cat-action-fund",
+      "anchor": "Apply (Opens Feb. 15)",
+      "depth": 1,
+      "pdf": false,
+      "chars": 2372,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:56c301da2e34bb89ffbcbf739c4d83e509d12c82ea083f6ca7ccbac6c567785f"
+    },
+    {
+      "ref": "D5",
+      "url": "https://panthera.org/panthera-privacy-policy",
+      "final_url": "https://panthera.org/panthera-privacy-policy",
+      "from": "https://panthera.org/small-cat-action-fund",
+      "anchor": "Read our Privacy Policy",
+      "depth": 1,
+      "pdf": false,
+      "chars": 16876,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:29cc982a1a61f87c3d2ad61553bd2510f761c024b94f3ee4c1e28f57dba125ce"
+    },
+    {
+      "ref": "D6",
+      "url": "https://panthera.org/panthera-terms-and-conditions",
+      "final_url": "https://panthera.org/panthera-terms-and-conditions",
+      "from": "https://panthera.org/small-cat-action-fund",
+      "anchor": "Terms",
+      "depth": 1,
+      "pdf": false,
+      "chars": 19256,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:49ae5d0341cadc24a275eb24709e66b795e6ea3fa050c2455db1126e30205a1e"
+    }
+  ],
+  "failures": [],
+  "skipped_links": 220,
+  "chunks": [{ "id": "all", "docs": ["D1", "D2", "D3", "D4", "D5", "D6"], "chars": 51535 }],
+  "outcomes": {
+    "eligibility": "stated",
+    "documents": "not_found",
+    "effort": "stated",
+    "co_finance": "not_found",
+    "consortium": "not_found",
+    "after_award": "not_found"
+  },
+  "written": ["eligibility", "effort"],
+  "escalated": [],
+  "flags": [],
+  "notes": [
+    "extractor: For 2027, Threatened and Near Threatened species are prioritized. The grant amount is up to $15,000 per year. Applications must be submitted in English.",
+    "source panthera-small-cat-action-fund-2: added for https://panthera.org/letter-interest"
+  ],
+  "usd": 0
+}

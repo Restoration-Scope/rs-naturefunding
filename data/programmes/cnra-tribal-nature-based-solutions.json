@@ -1,20 +1,86 @@
 {
   "id": "cnra-tribal-nature-based-solutions",
   "name": "California Natural Resources Agency Tribal Nature-Based Solutions Climate Bond Grants",
-  "funder": { "name": "California Natural Resources Agency", "url": "https://resources.ca.gov/" },
+  "funder": {
+    "name": "California Natural Resources Agency",
+    "url": "https://resources.ca.gov/"
+  },
   "administered_by": null,
   "parent": null,
   "url": "https://www.grants.ca.gov/grants/tribal-nature-based-solutions-climate-bond-2026-solicitation/",
   "summary": "Proposition 4 grants for California tribes and tribally led entities to buy back ancestral land and carry out nature-based projects such as habitat restoration. The 2026 round funds land acquisition; rounds are to recur until funds are used.",
-  "approaches": ["protected_areas", "community_conservation"],
-  "applicant_types": ["indigenous_organization"],
-  "geography": { "scope": "countries", "countries": ["US"], "label": "California" },
+  "approaches": [
+    "protected_areas",
+    "community_conservation"
+  ],
+  "applicant_types": [
+    "indigenous_organization"
+  ],
+  "geography": {
+    "scope": "countries",
+    "countries": [
+      "US"
+    ],
+    "label": "California"
+  },
   "access": "direct",
   "window": "fixed",
-  "amount": { "currency": "USD", "min": 1000000, "note": "Minimum for ancestral land return projects; escrow-ready projects have no minimum." },
-  "pool": { "currency": "USD", "value": 9200000, "period": "round", "qualifier": "about", "label": "the 2026 round" },
+  "amount": {
+    "currency": "USD",
+    "min": 1000000,
+    "note": "Minimum for ancestral land return projects; escrow-ready projects have no minimum."
+  },
+  "pool": {
+    "currency": "USD",
+    "value": 9200000,
+    "period": "round",
+    "qualifier": "about",
+    "label": "the 2026 round"
+  },
   "co_finance_required": false,
   "reporting": null,
+  "eligibility": [
+    {
+      "rule": "Is a California tribe or tribally led entity, or a 501(c)(3), consortium or partnership applying with one",
+      "kind": "legal"
+    },
+    {
+      "rule": "Runs a project within California that benefits California Native American Tribes",
+      "kind": "project"
+    },
+    {
+      "rule": "Propose an ancestral land return project with a planning or implementation component",
+      "kind": "project"
+    },
+    {
+      "rule": "Acquire property or property rights within the applicant tribe's ancestral territory",
+      "kind": "project"
+    },
+    {
+      "rule": "Have a confirmed willing seller and final purchase price no higher than fair market value",
+      "kind": "project"
+    },
+    {
+      "rule": "Include a meaningful public access component",
+      "kind": "project"
+    }
+  ],
+  "after_award": {
+    "reports": "quarterly",
+    "audit": true,
+    "training": true,
+    "site_visits": true
+  },
+  "documents": [
+    "Signed Notice of Funding Requirements checklist and signature page",
+    "Signed Willing Seller Letter",
+    "Property data sheet",
+    "Draft work plan and project timeline",
+    "Draft budget cost estimate",
+    "Certification letter, if the applicant has no governing board or council",
+    "Signed letter or resolution from the supported tribe chairperson",
+    "Eligibility statement, if the applicant is a non-tribal entity"
+  ],
   "calls": [
     {
       "id": "2026-round",
@@ -22,7 +88,10 @@
       "url": "https://www.grants.ca.gov/grants/tribal-nature-based-solutions-climate-bond-2026-solicitation/",
       "status": "closed",
       "opens": "2026-02-13",
-      "deadline": { "date": "2026-04-15", "text": "Step 1 Application and Escrow Ready Application due: April 15, 2026" },
+      "deadline": {
+        "date": "2026-04-15",
+        "text": "Step 1 Application and Escrow Ready Application due: April 15, 2026"
+      },
       "evidence": {
         "status": {
           "source_url": "https://www.grants.ca.gov/grants/tribal-nature-based-solutions-climate-bond-2026-solicitation/",
@@ -87,7 +156,153 @@
       "quote": "There is no match funding requirement to participate or be eligible for grant funds.",
       "checked_at": "2026-11-08",
       "method": "page"
-    }
+    },
+    "eligibility": [
+      {
+        "source_url": "https://www.grants.ca.gov/grants/tribal-nature-based-solutions-climate-bond-2026-solicitation/",
+        "quote": "Eligible applicants include California Native American tribes and tribally led entities located in California. Non-tribal entities registered as 501(c)(3)s may support California Native American tribes and tribally led entities in applying for the program. Applications can be submitted on behalf of an inter-tribal consortium, tribal conservation district, or partnerships.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.grants.ca.gov/grants/tribal-nature-based-solutions-climate-bond-2026-solicitation/",
+        "quote": "Projects must be within the State of California and must benefit California Native American Tribes.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://resources.ca.gov/-/media/CNRA-Website/Files/Initiatives/Tribal-Affairs/TNBS-Climate-Bond-2026-Final-Guidelines.pdf",
+        "quote": "Applicants must propose an ancestral land return project with a planning AND/OR implementation component.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://resources.ca.gov/-/media/CNRA-Website/Files/Initiatives/Tribal-Affairs/TNBS-Climate-Bond-2026-Final-Guidelines.pdf",
+        "quote": "Include acquisition of property and/or property rights (e.g., cultural or conservation easements) within the California Native American tribal applicant's ancestral territory.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://resources.ca.gov/-/media/CNRA-Website/Files/Initiatives/Tribal-Affairs/TNBS-Climate-Bond-2026-Final-Guidelines.pdf",
+        "quote": "All acquisitions must have a confirmed, willing seller(s) and a final purchase price that does not exceed fair market value:",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://resources.ca.gov/-/media/CNRA-Website/Files/Initiatives/Tribal-Affairs/TNBS-Climate-Bond-2026-Final-Guidelines.pdf",
+        "quote": "Include a meaningful public access component",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "after_award": [
+      {
+        "source_url": "https://resources.ca.gov/-/media/CNRA-Website/Files/Initiatives/Tribal-Affairs/TNBS-Climate-Bond-2026-Final-Guidelines.pdf",
+        "quote": "Grantee submits quarterly progress reports and periodic reimbursement requests for eligible expenses (subject to retention).",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://resources.ca.gov/-/media/CNRA-Website/Files/Initiatives/Tribal-Affairs/TNBS-Climate-Bond-2026-Final-Guidelines.pdf",
+        "quote": "Projects are subject to audit by the State annually and for three years following the final payment of grant funds.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://resources.ca.gov/-/media/CNRA-Website/Files/Initiatives/Tribal-Affairs/TNBS-Climate-Bond-2026-Final-Guidelines.pdf",
+        "quote": "Grantee attends grant management workshops which address project administration, including proper submission of payment requests.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://resources.ca.gov/-/media/CNRA-Website/Files/Initiatives/Tribal-Affairs/TNBS-Climate-Bond-2026-Final-Guidelines.pdf",
+        "quote": "Grantee shall provide access by the State upon reasonable notice to determine if Project work is in accordance with the approved Project Scope, including a final inspection upon Project completion.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "documents": [
+      {
+        "source_url": "https://resources.ca.gov/-/media/CNRA-Website/Files/Initiatives/Tribal-Affairs/TNBS-Climate-Bond-2026-Final-Guidelines.pdf",
+        "quote": "Attach a signed and completed notice checklist to confirm applicants have read and understand the programmatic and statutory requirements in pursuing project funds from the TNBS Climate Bond Grant Program (see Appendix A).",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://resources.ca.gov/-/media/CNRA-Website/Files/Initiatives/Tribal-Affairs/TNBS-Climate-Bond-2026-Final-Guidelines.pdf",
+        "quote": "Attach the signed Willing Seller Letter form.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://resources.ca.gov/-/media/CNRA-Website/Files/Initiatives/Tribal-Affairs/TNBS-Climate-Bond-2026-Final-Guidelines.pdf",
+        "quote": "Attach the filled-out data sheet.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://resources.ca.gov/-/media/CNRA-Website/Files/Initiatives/Tribal-Affairs/TNBS-Climate-Bond-2026-Final-Guidelines.pdf",
+        "quote": "Provide a draft work plan outlining proposed project tasks and deliverables and a draft timeline of project activities with expected deliverables.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://resources.ca.gov/-/media/CNRA-Website/Files/Initiatives/Tribal-Affairs/TNBS-Climate-Bond-2026-Final-Guidelines.pdf",
+        "quote": "Include a completed cost estimate of the project and proposed project activities.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://resources.ca.gov/-/media/CNRA-Website/Files/Initiatives/Tribal-Affairs/TNBS-Climate-Bond-2026-Final-Guidelines.pdf",
+        "quote": "For Step 1 applicants that do not have a governing board or council, a certification letter from the council’s Director or Chief Executive Officer must be furnished.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://resources.ca.gov/-/media/CNRA-Website/Files/Initiatives/Tribal-Affairs/TNBS-Climate-Bond-2026-Final-Guidelines.pdf",
+        "quote": "Attach a signed letter or resolution from the chairperson of the tribe(s) that are actively supported by the application.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://resources.ca.gov/-/media/CNRA-Website/Files/Initiatives/Tribal-Affairs/TNBS-Climate-Bond-2026-Final-Guidelines.pdf",
+        "quote": "Explain how the applicant is an eligible applicant for this program.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "effort": [
+      {
+        "source_url": "https://www.grants.ca.gov/grants/tribal-nature-based-solutions-climate-bond-2026-solicitation/",
+        "quote": "Step 1 Application and Escrow Ready Application due: April 15, 2026",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://resources.ca.gov/Initiatives/Tribalaffairs/TribalNatureBasedSolutionsProgram",
+        "quote": "Step 2 Application Due: January 15, 2027",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://resources.ca.gov/Initiatives/Tribalaffairs/TribalNatureBasedSolutionsProgram",
+        "quote": "Step 3 Site Visits (if applicable): TBD and coordinated with Step 2 Invitees",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ]
   },
-  "checked_at": "2026-11-08"
+  "checked_at": "2026-11-08",
+  "effort": {
+    "steps": [
+      "Step 1 preliminary proposal or escrow-ready application",
+      "Step 2 final proposal and presentation, if invited",
+      "Step 3 site visit, if applicable"
+    ],
+    "due": [
+      "2026-04-15",
+      "2027-01-15",
+      null
+    ]
+  }
 }

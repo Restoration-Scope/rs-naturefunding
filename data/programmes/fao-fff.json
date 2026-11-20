@@ -9,8 +9,14 @@
   "parent": null,
   "url": "https://www.fao.org/forest-farm-facility/our-work/direct-beneficiary-grants/en",
   "summary": "Grants to registered forest and farm producer organisations in the Facility's partner countries for farm forestry, agroforestry and landscape-based production, with a cash contribution from the organisation.",
-  "approaches": ["agroforestry", "sustainable_land_use", "community_conservation"],
-  "applicant_types": ["community_group"],
+  "approaches": [
+    "agroforestry",
+    "sustainable_land_use",
+    "community_conservation"
+  ],
+  "applicant_types": [
+    "community_group"
+  ],
   "geography": {
     "scope": "countries",
     "countries": [
@@ -33,9 +39,51 @@
   },
   "access": "direct",
   "window": "unspecified",
-  "amount": { "currency": "USD", "min": 5000, "max": 100000 },
+  "amount": {
+    "currency": "USD",
+    "min": 5000,
+    "max": 100000
+  },
   "co_finance_required": true,
   "reporting": "Grantees submit narrative and financial reports; later instalments are paid only after the first and final reports are cleared.",
+  "effort": {
+    "steps": [
+      "Application submission through FAO country office"
+    ]
+  },
+  "eligibility": [
+    {
+      "rule": "Is located in the country of the proposal",
+      "kind": "legal"
+    },
+    {
+      "rule": "Is a registered member-based FFPO or qualifying nonprofit local CBO",
+      "kind": "legal"
+    },
+    {
+      "rule": "Focuses on integrated landscapes and forestry, farm forestry, or community forestry",
+      "kind": "other"
+    },
+    {
+      "rule": "Has a bank account registered in the organization's name",
+      "kind": "capacity"
+    },
+    {
+      "rule": "Is not bankrupt, liquidated, or administered by the courts",
+      "kind": "legal"
+    },
+    {
+      "rule": "Requests no PC equipment, infrastructure management, HR costs, or travel",
+      "kind": "project"
+    },
+    {
+      "rule": "Clearly address and impact Forest and Farm Facility outcomes",
+      "kind": "project"
+    }
+  ],
+  "after_award": {
+    "reports": "interim_and_final"
+  },
   "calls": [],
   "evidence": {
     "applicant_types": {
@@ -73,7 +121,77 @@
       "quote": "second payment will be equal to 50% of the award, to be disbursed upon clearance of the first narrative and financial reports",
       "checked_at": "2026-11-15",
       "method": "page"
+    },
+    "effort": [
+      {
+        "source_url": "https://www.fao.org/forest-farm-facility/our-work/direct-beneficiary-grants/en",
+        "quote": "Applications shall be submitted through the country office of FAO.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "eligibility": [
+      {
+        "source_url": "https://www.fao.org/forest-farm-facility/our-work/direct-beneficiary-grants/en",
+        "quote": "be located in the country of the proposal.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.fao.org/forest-farm-facility/our-work/direct-beneficiary-grants/en",
+        "quote": "be a registered member-based forest and farm producer organization or in exceptional circumstances a non-profit-making organization registered as local community-based organization (CBOs) dealing with forest and farm products in the country of application.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.fao.org/forest-farm-facility/our-work/direct-beneficiary-grants/en",
+        "quote": "be producer organizations focusing on integrating either agricultural landscapes and forestry, farm forestry or Community Forestry User Groups in the country of application.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.fao.org/forest-farm-facility/our-work/direct-beneficiary-grants/en",
+        "quote": "have a bank account registered in the name of the organization.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.fao.org/forest-farm-facility/our-work/direct-beneficiary-grants/en",
+        "quote": "not be bankrupted or, be liquidated or have their affairs administered by the courts.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.fao.org/forest-farm-facility/our-work/direct-beneficiary-grants/en",
+        "quote": "At the same time PC equipment, management of infrastructures, HR related costs and travels are also considered ineligible investments.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.fao.org/forest-farm-facility/our-work/direct-beneficiary-grants/en",
+        "quote": "clearly address and have an impact at the Forest and Farm Facility outcomes.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "after_award": [
+      {
+        "source_url": "https://www.fao.org/forest-farm-facility/our-work/direct-beneficiary-grants/en",
+        "quote": "second payment will be equal to 50% of the award, to be disbursed upon clearance of the first narrative and financial reports; third and final payment will be equal to 20 % of the award, to be disbursed upon clearance of the final narrative and financial reports.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "co_finance": {
+      "source_url": "https://www.fao.org/forest-farm-facility/our-work/direct-beneficiary-grants/en",
+      "quote": "The minimum beneficiary contribution for the related beneficiary group is set out at 10%, if the amount of the investments included in the work plan/application is below USD 10 000 and at 20% if the amount of the investments is above USD 10 000.",
+      "checked_at": "2026-11-20",
+      "method": "page"
     }
   },
-  "checked_at": "2026-11-15"
+  "checked_at": "2026-11-15",
+  "co_finance": {
+    "min_share": 10,
+    "applies_to": "Work-plan investments under USD 10,000; 20% above that"
+  }
 }

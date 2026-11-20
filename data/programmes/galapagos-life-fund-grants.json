@@ -1,19 +1,88 @@
 {
   "id": "galapagos-life-fund-grants",
   "name": "Galápagos Life Fund Calls for Proposals",
-  "funder": { "name": "Galápagos Life Fund", "url": "https://galapagoslifefund.org.ec/" },
+  "funder": {
+    "name": "Galápagos Life Fund",
+    "url": "https://galapagoslifefund.org.ec/"
+  },
   "administered_by": null,
   "parent": null,
   "url": "https://galapagoslifefund.org.ec/es/convocatorias/",
   "summary": "Calls for proposals from a conservation fund for marine and coastal conservation in Galápagos, covering sustainable fishing, marine research, sustainable tourism and community education. Small grants go up to $100,000, medium up to $250,000, and large from $250,000.",
-  "approaches": ["coastal_marine", "community_conservation", "research"],
-  "applicant_types": ["ngo", "community_group", "research_institution", "company", "individual"],
-  "geography": { "scope": "countries", "countries": ["EC"], "label": "Galápagos" },
+  "approaches": [
+    "coastal_marine",
+    "community_conservation",
+    "research"
+  ],
+  "applicant_types": [
+    "ngo",
+    "community_group",
+    "research_institution",
+    "company",
+    "individual"
+  ],
+  "geography": {
+    "scope": "countries",
+    "countries": [
+      "EC"
+    ],
+    "label": "Galápagos"
+  },
   "access": "direct",
   "window": "fixed",
   "amount": null,
-  "co_finance_required": null,
+  "co_finance_required": true,
   "reporting": "The lead applicant must submit technical and financial reports and a final project report.",
+  "effort": {
+    "steps": [
+      "Concept note",
+      "Full proposal, if invited"
+    ],
+    "due": [
+      "2026-02-02",
+      null
+    ]
+  },
+  "eligibility": [
+    {
+      "rule": "Legal entities operated legally in Galápagos for 2 years and had an island office throughout",
+      "kind": "track_record",
+      "min_years": 2
+    },
+    {
+      "rule": "Individual applicants are permanent Galápagos residents and apply only for a small grant",
+      "kind": "legal"
+    },
+    {
+      "rule": "The lead organisation is not headquartered abroad; foreign partners may join a locally led proposal",
+      "kind": "legal"
+    },
+    {
+      "rule": "A for-profit company proposes a non-profit, community-benefit conservation project",
+      "kind": "project"
+    },
+    {
+      "rule": "Wildlife-disease research proposals use non-invasive or minimally invasive methods",
+      "kind": "project"
+    },
+    {
+      "rule": "Projects do not use funds to help an entity increase production and income",
+      "kind": "project"
+    }
+  ],
+  "co_finance": {
+    "in_kind": true,
+    "applies_to": "medium and large grants"
+  },
+  "after_award": {
+    "reports": "unspecified"
+  },
+  "documents": [
+    "Proponent and partner experience and capacity summary",
+    "Environmental and social risk examination",
+    "Support letters from allied organisations",
+    "Proof of residence and/or RUC"
+  ],
   "calls": [
     {
       "id": "call-2",
@@ -31,19 +100,19 @@
         "status": {
           "source_url": "https://galapagoslifefund.org.ec/es/2convocatoria/",
           "quote": "La Segunda Convocatoria de propuestas del Galápagos Life Fund inicia el 1 de diciembre de 2025 y cierra el 2 de febrero de 2026.",
-          "checked_at": "2026-11-12",
+          "checked_at": "2026-11-20",
           "method": "page"
         },
         "opens": {
           "source_url": "https://galapagoslifefund.org.ec/es/2convocatoria/",
           "quote": "La Segunda Convocatoria de propuestas del Galápagos Life Fund inicia el 1 de diciembre de 2025 y cierra el 2 de febrero de 2026.",
-          "checked_at": "2026-11-12",
+          "checked_at": "2026-11-20",
           "method": "page"
         },
         "deadline": {
           "source_url": "https://galapagoslifefund.org.ec/es/2convocatoria/",
           "quote": "La Segunda Convocatoria de propuestas del Galápagos Life Fund inicia el 1 de diciembre de 2025 y cierra el 2 de febrero de 2026.",
-          "checked_at": "2026-11-12",
+          "checked_at": "2026-11-20",
           "method": "page"
         }
       }
@@ -53,33 +122,125 @@
     "applicant_types": {
       "source_url": "https://galapagoslifefund.org.ec/es/2convocatoria/",
       "quote": "Personas naturales residentes permanentes de Galápagos Asociaciones locales e instituciones comunitarias Academia o Unidades Educativas privadas Empresas privadas ONG ́s",
-      "checked_at": "2026-11-12",
+      "checked_at": "2026-11-20",
       "method": "page"
     },
     "geography": {
       "source_url": "https://galapagoslifefund.org.ec/es/convocatorias/",
       "quote": "Los proyectos financiados deben generar beneficios directos para la conservación y el desarrollo sostenible del archipiélago de Galápagos.",
-      "checked_at": "2026-11-12",
+      "checked_at": "2026-11-20",
       "method": "page"
     },
     "access": {
       "source_url": "https://galapagoslifefund.org.ec/es/2convocatoria/",
       "quote": "a solicitar financiamiento para sus proyectos mediante la presentación de una Nota Conceptual",
-      "checked_at": "2026-11-12",
+      "checked_at": "2026-11-20",
       "method": "page"
     },
     "window": {
       "source_url": "https://galapagoslifefund.org.ec/es/convocatorias/",
       "quote": "El Galápagos Life Fund procura realizar una Convocatoria a Propuestas por año.",
-      "checked_at": "2026-11-12",
+      "checked_at": "2026-11-20",
+      "method": "page"
+    },
+    "co_finance_required": {
+      "source_url": "https://galapagoslifefund.org.ec/es/2convocatoria/",
+      "quote": "Se requiere una cofinanciación, en especie o efectivo, equivalente al 10%.",
+      "checked_at": "2026-11-20",
       "method": "page"
     },
     "reporting": {
       "source_url": "https://galapagoslifefund.org.ec/es/2convocatoria/",
       "quote": "presentar los informes técnicos y financieros, y el informe final del proyecto",
-      "checked_at": "2026-11-12",
+      "checked_at": "2026-11-20",
       "method": "page"
-    }
+    },
+    "effort": [
+      {
+        "source_url": "https://galapagoslifefund.org.ec/es/2convocatoria/",
+        "quote": "Las aplicaciones podrán enviarse hasta el 2 de febrero de 2026 a las 23:59 UTC-6.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://galapagoslifefund.org.ec/es/2convocatoria/",
+        "quote": "Si su Nota Conceptual es aceptada, será invitada a desarrollar y presentar una propuesta completa.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "eligibility": [
+      {
+        "source_url": "https://galapagoslifefund.org.ec/es/2convocatoria/",
+        "quote": "En el caso de las personas jurídicas, deberán haber operado legalmente en Galápagos durante al menos los últimos dos años y contar con una oficina establecida en las islas durante ese periodo.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://galapagoslifefund.org.ec/es/2convocatoria/",
+        "quote": "Las personas naturales podrán postular siempre que sean residentes permanentes de Galápagos; en su caso, la participación está limitada exclusivamente a las subvenciones pequeñas.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://galapagoslifefund.org.ec/es/wp-content/uploads/sites/2/2025/12/MANUAL-DE-PROCEDIMIENTOS-GLF-2025.pdf",
+        "quote": "Las organizaciones con sede en el extranjero no son admisibles, aunque las propuestas de organizaciones locales admisibles y dirigidas por éstas podrán incluir socios con sede en el extranjero.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://galapagoslifefund.org.ec/es/2convocatoria/",
+        "quote": "Las empresas privadas con fines de lucro pueden postular a los fondos del Galápagos Life Fund (GLF), siempre que el proyecto propuesto no tenga fines de lucro, genere un beneficio comunitario y esté alineado con los objetivos de conservación del Fondo.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://galapagoslifefund.org.ec/es/wp-content/uploads/sites/2/2025/12/INICIATIVAS-DE-INVESTIGACION_compressed.pdf",
+        "quote": "La propuesta de investigación debe aplicar métodos no invasivos o de mínima intervención, priorizando la observación, toma de muestras no letales o necropsias naturales.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://galapagoslifefund.org.ec/es/wp-content/uploads/sites/2/2025/12/MANUAL-DE-PROCEDIMIENTOS-GLF-2025.pdf",
+        "quote": "Los fondos no podrán utilizarse para actividades destinadas a ayudar a una entidad con o sin fines de lucro a aumentar su producción e ingresos.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "co_finance": {
+      "source_url": "https://galapagoslifefund.org.ec/es/2convocatoria/",
+      "quote": "Se deberán aportar una cofinanciación equivalente al 25% del valor solicitado al Fondo",
+      "checked_at": "2026-11-20",
+      "method": "page"
+    },
+    "after_award": [
+      {
+        "source_url": "https://galapagoslifefund.org.ec/es/2convocatoria/",
+        "quote": "presentar los informes técnicos y financieros, y el informe final del proyecto",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "documents": [
+      {
+        "source_url": "https://galapagoslifefund.org.ec/es/2convocatoria/",
+        "quote": "Nota conceptual (Tamaño máximo del documento 4 MB | PDF) * Anexo 1: Resumen de experiencia y capacidad del proponente y/o socios (Tamaño máximo del documento 4 MB | PDF o DOC) * Anexo 2: Examen de Riesgos Ambientales y Sociales (Tamaño máximo del documento 4 MB | Excel) *",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://galapagoslifefund.org.ec/es/2convocatoria/",
+        "quote": "Anexo 3: Cartas de Apoyo de las organizaciones aliadas (Tamaño máximo del documento 4 MB | PDF) *",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://galapagoslifefund.org.ec/es/2convocatoria/",
+        "quote": "Documentos habilitantes: Residencia y/o RUC (Tamaño máximo del documento 1 MB | PDF)",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ]
   },
-  "checked_at": "2026-11-12"
+  "checked_at": "2026-11-20"
 }

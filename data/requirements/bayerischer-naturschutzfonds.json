@@ -1,0 +1,107 @@
+{
+  "id": "bayerischer-naturschutzfonds",
+  "read_on": "2026-11-20",
+  "prompt_version": "req-2026-11-20.1",
+  "models": ["cursor:gpt-5.6-luna-high"],
+  "complete": false,
+  "reasons": [
+    "16 links could not be ranked without Jev",
+    "15 links could not be ranked without Jev",
+    "the text names a document with rules that was not read: Leitlinien zur Nachfinanzierung von Maßnahmen",
+    "the text names a document with rules that was not read: Allgemeine Nebenbestimmungen für Zuwendungen zur Projektförderung (ANBest-P)",
+    "the text names a document with rules that was not read: Allgemeine Nebenbestimmungen für Zuwendungen zur Projektförderung an kommunale Körperschaften (ANBest-K)",
+    "the text names a document with rules that was not read: Merkblatt „Anforderungsprofil und Aufgaben von Projektbetreuern“",
+    "the text names a document with rules that was not read: Kriterienkatalog für Rahmenkonzepte zu Naturschutzgroßprojekten des Naturschutzfonds",
+    "the text names a document with rules that was not read: Bayerische Haushaltsordnung",
+    "Jev did not check this reading, so an absent fact is not known to be absent"
+  ],
+  "requirements_checked": false,
+  "documents": [
+    {
+      "ref": "D1",
+      "url": "https://www.naturschutzfonds.bayern.de/aufgaben/foerderung/antragstellung/index.html",
+      "final_url": "https://www.naturschutzfonds.bayern.de/aufgaben/foerderung/antragstellung/index.html",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 3274,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:ac1cd80165099d924f7c1587dbf7b5eb520f8c83006b65ce8f03fbb205fdf0dc"
+    },
+    {
+      "ref": "D2",
+      "url": "https://www.naturschutzfonds.bayern.de/aufgaben/foerderung/foerderrichtlinie/index.html",
+      "final_url": "https://www.naturschutzfonds.bayern.de/aufgaben/foerderung/foerderrichtlinie/index.html",
+      "from": "https://www.naturschutzfonds.bayern.de/aufgaben/foerderung/antragstellung/index.html",
+      "anchor": "Förderrichtlinie",
+      "depth": 1,
+      "pdf": false,
+      "chars": 2079,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:c6365a24b0c3408aa36dff7eb4ed07b528d76de2299572630cdd95aa0d182d44"
+    },
+    {
+      "ref": "D3",
+      "url": "https://www.naturschutzfonds.bayern.de/aufgaben/foerderung/doc/antragsformular.pdf",
+      "final_url": "https://www.naturschutzfonds.bayern.de/aufgaben/foerderung/doc/antragsformular.pdf",
+      "from": "https://www.naturschutzfonds.bayern.de/aufgaben/foerderung/antragstellung/index.html",
+      "anchor": "Antragsformular",
+      "depth": 1,
+      "pdf": true,
+      "chars": 5401,
+      "pages": 5,
+      "low_text": false,
+      "hash": "sha256:8346e72c6854050c7d7919c05ce4f62535dc236969e75cb20461f118bacd8c74"
+    },
+    {
+      "ref": "D4",
+      "url": "https://www.naturschutzfonds.bayern.de/aufgaben/foerderung/doc/merkblatt_zur_antragstellung.pdf",
+      "final_url": "https://www.naturschutzfonds.bayern.de/aufgaben/foerderung/doc/merkblatt_zur_antragstellung.pdf",
+      "from": "https://www.naturschutzfonds.bayern.de/aufgaben/foerderung/antragstellung/index.html",
+      "anchor": "Merkblatt für die Antragstellung",
+      "depth": 1,
+      "pdf": true,
+      "chars": 4719,
+      "pages": 3,
+      "low_text": false,
+      "hash": "sha256:8cd88054a99d2448410989c88b1b436befda1799fc07ff4f3d6eb6bcc2b5da00"
+    },
+    {
+      "ref": "D5",
+      "url": "https://www.naturschutzfonds.bayern.de/aufgaben/foerderung/doc/foerderrichtlinien.pdf",
+      "final_url": "https://www.naturschutzfonds.bayern.de/aufgaben/foerderung/doc/foerderrichtlinien.pdf",
+      "from": "https://www.naturschutzfonds.bayern.de/aufgaben/foerderung/foerderrichtlinie/index.html",
+      "anchor": "Förderrichtlinien des Bayerischen Naturschutzfonds",
+      "depth": 2,
+      "pdf": true,
+      "chars": 30574,
+      "pages": 19,
+      "low_text": false,
+      "hash": "sha256:fd963de11a711a99b115bc9268db789d23757d93a95a7c51f5853467f06edc8f"
+    }
+  ],
+  "failures": [],
+  "skipped_links": 44,
+  "chunks": [{ "id": "all", "docs": ["D1", "D2", "D3", "D4", "D5"], "chars": 46962 }],
+  "outcomes": {
+    "eligibility": "stated",
+    "documents": "stated",
+    "effort": "stated",
+    "co_finance": "stated",
+    "consortium": "not_found",
+    "after_award": "stated"
+  },
+  "written": ["eligibility", "documents", "effort", "co_finance", "after_award"],
+  "escalated": [],
+  "flags": [],
+  "notes": [
+    "extractor: No current or next round and no deadline are stated. Rules and required attachments vary by funding area. Grantees must acknowledge the foundation's funding in publications.",
+    "source bayerischer-naturschutzfonds-2: added for https://www.naturschutzfonds.bayern.de/aufgaben/foerderung/doc/antragsformular.pdf",
+    "source bayerischer-naturschutzfonds-3: added for https://www.naturschutzfonds.bayern.de/aufgaben/foerderung/doc/foerderrichtlinien.pdf",
+    "source bayerischer-naturschutzfonds-4: added for https://www.naturschutzfonds.bayern.de/aufgaben/foerderung/doc/merkblatt_zur_antragstellung.pdf"
+  ],
+  "usd": 0
+}

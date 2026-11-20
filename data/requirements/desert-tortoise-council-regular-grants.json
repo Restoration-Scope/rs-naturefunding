@@ -1,0 +1,107 @@
+{
+  "id": "desert-tortoise-council-regular-grants",
+  "read_on": "2026-11-20",
+  "prompt_version": "req-2026-11-19.2",
+  "models": ["cursor:gpt-5.6-luna-high"],
+  "complete": false,
+  "reasons": [
+    "16 links could not be ranked without Jev",
+    "14 links could not be ranked without Jev",
+    "https://wildlife.utah.gov/pdf/cor/desert_tortoise.pdf: a document on another site: without Jev it can’t be confirmed as the funder’s, so it is not used",
+    "Jev did not check this reading, so an absent fact is not known to be absent"
+  ],
+  "requirements_checked": false,
+  "documents": [
+    {
+      "ref": "D1",
+      "url": "https://deserttortoise.org/grants/grants-program/",
+      "final_url": "https://deserttortoise.org/grants/grants-program/",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 3611,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:ce920b22ab2f8e85ae4319c7a345dc6fd25cccf43dbf4270ff860325bb70d9f9"
+    },
+    {
+      "ref": "D2",
+      "url": "https://deserttortoise.org/about-desert-tortoises/captive-desert-tortoise-guidance/",
+      "final_url": "https://deserttortoise.org/about-desert-tortoises/captive-desert-tortoise-guidance/",
+      "from": "https://deserttortoise.org/grants/grants-program/",
+      "anchor": "Captive Desert Tortoise Guidance",
+      "depth": 1,
+      "pdf": false,
+      "chars": 16680,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:dd5175d775e5f557319d8cd236dd0db97d68d094404032bef4f8c8931da766ad"
+    },
+    {
+      "ref": "D3",
+      "url": "https://deserttortoise.org/wp-content/uploads/Policy_Grant_Request.pdf",
+      "final_url": "https://deserttortoise.org/wp-content/uploads/Policy_Grant_Request.pdf",
+      "from": "https://deserttortoise.org/grants/grants-program/",
+      "anchor": "Grants Request Policy",
+      "depth": 1,
+      "pdf": true,
+      "chars": 11106,
+      "pages": 4,
+      "low_text": false,
+      "hash": "sha256:0a1b84b13601f5dca7fe2c74f77be4aec70ec0ae3c261dacd078f65087bc7f82"
+    },
+    {
+      "ref": "D4",
+      "url": "https://deserttortoise.org/wp-content/uploads/DTC-Grant-RequestCover-Form_v1-04-07-2018.pdf",
+      "final_url": "https://deserttortoise.org/wp-content/uploads/DTC-Grant-RequestCover-Form_v1-04-07-2018.pdf",
+      "from": "https://deserttortoise.org/grants/grants-program/",
+      "anchor": "Grants Request Cover Form",
+      "depth": 1,
+      "pdf": true,
+      "chars": 1886,
+      "pages": 1,
+      "low_text": false,
+      "hash": "sha256:9a2bc8f2f860d3ae42575b38f0e54931168e09d7a9e9186a756ae51aa546f518"
+    },
+    {
+      "ref": "D5",
+      "url": "https://deserttortoise.org/about-desert-tortoises/captive-desert-tortoise-guidance/?s=",
+      "final_url": "https://deserttortoise.org/about-desert-tortoises/captive-desert-tortoise-guidance/?s=",
+      "from": "https://deserttortoise.org/about-desert-tortoises/captive-desert-tortoise-guidance/",
+      "anchor": "Search",
+      "depth": 2,
+      "pdf": false,
+      "chars": 16680,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:dd5175d775e5f557319d8cd236dd0db97d68d094404032bef4f8c8931da766ad"
+    }
+  ],
+  "failures": [
+    {
+      "url": "https://wildlife.utah.gov/pdf/cor/desert_tortoise.pdf",
+      "from": "https://deserttortoise.org/about-desert-tortoises/captive-desert-tortoise-guidance/",
+      "kind": "offsite",
+      "message": "a document on another site: without Jev it can’t be confirmed as the funder’s, so it is not used"
+    }
+  ],
+  "skipped_links": 273,
+  "chunks": [{ "id": "all", "docs": ["D1", "D2", "D3", "D4", "D5"], "chars": 50709 }],
+  "outcomes": {
+    "eligibility": "stated",
+    "documents": "stated",
+    "effort": "stated",
+    "co_finance": "not_found",
+    "consortium": "not_found",
+    "after_award": "stated"
+  },
+  "written": ["eligibility", "documents", "effort", "after_award"],
+  "escalated": [],
+  "flags": [],
+  "notes": [
+    "extractor: Requests may be submitted at any time. The Board requires at least 30 days to review requests before voting, and response times may vary. Generally, requests of $500 to $10,000 are considered; higher funding levels may be considered case by case.",
+    "source desert-tortoise-council-regular-grants-2: added for https://deserttortoise.org/wp-content/uploads/Policy_Grant_Request.pdf"
+  ],
+  "usd": 0
+}

@@ -118,3 +118,11 @@ Weak spots:
 - `.doc` files are unreadable; offsite application portals aren't followed; transient fetch failures leave "nothing to read" (prairie-state, nwt).
 - `statesDate` can't read Japanese era dates (令和9年1月29日), so those dues stay empty.
 - The free-text `reporting` field isn't filled from `after_award.reports` (Anglian shows "Reporting: Not found" with a final report stated).
+
+## Cursor route (2026-11-19)
+
+The OpenAI API credits ran out mid-backfill, so batches now run on the Mac through the signed-in Cursor CLI: `--cheap cursor:gpt-5.6-luna-high --strong cursor:gpt-5.6-sol-high --no-jev`. Same models, billed to the Cursor plan (the ledger records $0); `cursor-agent` has no structured outputs, so the schema goes in the prompt and zod checks the answer. CI has no Cursor login, so these runs are local only. Jev is off locally (its key lives only in GitHub secrets), so every item of every batch gets the cross-family fact check.
+
+Held gold set, raw: 46.3 recall / 51.4 precision, discovery 85.4 (recall-3 on OpenAI: 43.3 / 58.2, 72.9). Without Jev ranking links, more pages are read: more facts found, more extras to review.
+
+Prompt 20.1 (2026-11-20), from the batch 2 review (24% of items wrong): either/or routes are one rule; duties after the award, permits the applicant must follow and optional items are not rules; later-stage and optional documents are left out; alternative deadlines or application types are one step, not steps in order; a report the funder "may" require is not a duty. Held, raw, on Cursor: 45.9 recall / 58.8 precision (prompt 19.2: 46.3 / 51.4); document precision 60→76.

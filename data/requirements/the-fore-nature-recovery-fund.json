@@ -1,0 +1,151 @@
+{
+  "id": "the-fore-nature-recovery-fund",
+  "read_on": "2026-11-20",
+  "prompt_version": "req-2026-11-20.1",
+  "models": ["cursor:gpt-5.6-luna-high"],
+  "complete": false,
+  "reasons": [
+    "20 links could not be ranked without Jev",
+    "23 links could not be ranked without Jev",
+    "https://thefore.org/wp-content/uploads/2024/12/The-Fore-Privacy-and-Data-Protection-Policy-updated-05.12.24.pdf: a scanned or image PDF: needs OCR",
+    "the text names a document with rules that was not read: The Fore's Grant Making Documentation (standard terms and conditions of grant)",
+    "Jev did not check this reading, so an absent fact is not known to be absent"
+  ],
+  "requirements_checked": false,
+  "documents": [
+    {
+      "ref": "D1",
+      "url": "https://www.thefore.org/nature-recovery-fund/",
+      "final_url": "https://thefore.org/news/nature-recovery-fund-launch/",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 7084,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:fb2a302afad8099b091f502d9d6f123b1f1a0f755858a80d218c656ce545a212"
+    },
+    {
+      "ref": "D2",
+      "url": "https://www.thefore.org/who-we-fund/",
+      "final_url": "https://thefore.org/who-we-fund/",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 6973,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:e09e8758d9246dfb90ae6f9b74cfa9ccc667eeabd8ac803d1c554c59224e30d6"
+    },
+    {
+      "ref": "D3",
+      "url": "https://thefore.org/application-process/",
+      "final_url": "https://thefore.org/application-process/",
+      "from": "https://www.thefore.org/nature-recovery-fund/",
+      "anchor": "Our application process",
+      "depth": 1,
+      "pdf": false,
+      "chars": 6369,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:d5a620109db9d10026ac3440084b4ef3e12a826b8c52e07b51274d8882a13c78"
+    },
+    {
+      "ref": "D4",
+      "url": "https://thefore.org/application-guidelines/",
+      "final_url": "https://thefore.org/application-guidelines/",
+      "from": "https://www.thefore.org/nature-recovery-fund/",
+      "anchor": "Our application guidelines",
+      "depth": 1,
+      "pdf": false,
+      "chars": 5619,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:8aa373aa54582f9fb0e2e71b176fdf4020b4e80479c6123431102d51f4d2dc13"
+    },
+    {
+      "ref": "D5",
+      "url": "https://thefore.org/apply-for-funding/",
+      "final_url": "https://thefore.org/apply-for-funding/",
+      "from": "https://www.thefore.org/nature-recovery-fund/",
+      "anchor": "Apply for funding here",
+      "depth": 1,
+      "pdf": false,
+      "chars": 4409,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:91b7b262a32e1666adb254f990488990ea7184479eda744b20f1668a57a4e582"
+    },
+    {
+      "ref": "D6",
+      "url": "https://thefore.org/faqs/",
+      "final_url": "https://thefore.org/faqs/",
+      "from": "https://www.thefore.org/nature-recovery-fund/",
+      "anchor": "Frequently Asked Questions",
+      "depth": 1,
+      "pdf": false,
+      "chars": 16977,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:2417b21e504dc3c75824237d1da1ab7717b786c6186e19a0a1bd531533835297"
+    },
+    {
+      "ref": "D7",
+      "url": "https://thefore.org/wp-content/uploads/2024/12/The-Fore-Privacy-and-Data-Protection-Policy-updated-05.12.24.pdf",
+      "final_url": "https://thefore.org/wp-content/uploads/2024/12/The-Fore-Privacy-and-Data-Protection-Policy-updated-05.12.24.pdf",
+      "from": "https://www.thefore.org/nature-recovery-fund/",
+      "anchor": "Privacy policy",
+      "depth": 1,
+      "pdf": true,
+      "chars": 59,
+      "pages": 4,
+      "low_text": true,
+      "hash": "sha256:1a15553bc66f5a3898fc47aa9d45de380629efc6ef7c63568e310f1e969aebfc"
+    },
+    {
+      "ref": "D8",
+      "url": "https://thefore.org/wp-content/uploads/2026/02/Safeguarding-Policy.pdf",
+      "final_url": "https://thefore.org/wp-content/uploads/2026/02/Safeguarding-Policy.pdf",
+      "from": "https://www.thefore.org/nature-recovery-fund/",
+      "anchor": "Safeguarding policy",
+      "depth": 1,
+      "pdf": true,
+      "chars": 22264,
+      "pages": 14,
+      "low_text": false,
+      "hash": "sha256:e18df7783b44f8c3bcacac767dbaad0f4a60e5384fd366b0602bf932eb3cdc1a"
+    }
+  ],
+  "failures": [
+    {
+      "url": "https://thefore.org/wp-content/uploads/2024/12/The-Fore-Privacy-and-Data-Protection-Policy-updated-05.12.24.pdf",
+      "from": "https://www.thefore.org/nature-recovery-fund/",
+      "kind": "low_text",
+      "message": "a scanned or image PDF: needs OCR"
+    }
+  ],
+  "skipped_links": 229,
+  "chunks": [
+    { "id": "all", "docs": ["D1", "D2", "D3", "D4", "D5", "D6", "D7", "D8"], "chars": 70640 }
+  ],
+  "outcomes": {
+    "eligibility": "stated",
+    "documents": "not_found",
+    "effort": "stated",
+    "co_finance": "not_found",
+    "consortium": "not_found",
+    "after_award": "not_found"
+  },
+  "written": ["eligibility", "effort"],
+  "escalated": [],
+  "flags": [],
+  "notes": [
+    "extractor: The supplied pages label this as the Spring 2027 round, but the quoted deadline text does not state a year alongside each day and month, so due fields are blank. The full application and annual accounts are requested only after a place is confirmed. Grantees should expect an annual phone call and short survey; there is no obligation to submit a report.",
+    "source the-fore-nature-recovery-fund-3: added for https://thefore.org/faqs/",
+    "source the-fore-nature-recovery-fund-4: added for https://thefore.org/wp-content/uploads/2026/02/Safeguarding-Policy.pdf",
+    "source the-fore-nature-recovery-fund-5: added for https://thefore.org/application-process/"
+  ],
+  "usd": 0
+}

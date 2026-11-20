@@ -31,6 +31,49 @@
   },
   "co_finance_required": null,
   "reporting": null,
+  "effort": {
+    "steps": [
+      "Letter of interest",
+      "Full proposal, if invited"
+    ]
+  },
+  "eligibility": [
+    {
+      "rule": "Be a 501(c)(3) public charity classified under 509(a)(1) or 509(a)(2)",
+      "kind": "legal"
+    },
+    {
+      "rule": "Not be a quasi-governmental organization",
+      "kind": "legal"
+    },
+    {
+      "rule": "Not a request for multi-year support",
+      "kind": "project"
+    },
+    {
+      "rule": "Not request support for research projects or scholarships",
+      "kind": "project"
+    },
+    {
+      "rule": "Not be a school, university or fundraising affiliate",
+      "kind": "legal"
+    },
+    {
+      "rule": "No habitat restoration that does not restore habitat to its native state",
+      "kind": "project"
+    },
+    {
+      "rule": "No habitat restoration in areas fragmented by agricultural use",
+      "kind": "project"
+    },
+    {
+      "rule": "No restoration work on state or federal land",
+      "kind": "project"
+    }
+  ],
+  "after_award": {
+    "reports": "final"
+  },
   "calls": [
     {
       "id": "spring-fall-cycles",
@@ -44,13 +87,13 @@
         "status": {
           "source_url": "https://www.burningfoundation.org/policies-and-guidelines/application-guidelines",
           "quote": "Letters of Interest Due: Last Friday of March Full Proposals Due: First Wednesday of May Fall Cycle: Portal opens for Letters of Interest: September 1 Letters of Interest Due: Last Friday of September Full Proposals Due: First Wednesday of November",
-          "checked_at": "2026-11-17",
+          "checked_at": "2026-11-20",
           "method": "page"
         },
         "recurring": {
           "source_url": "https://www.burningfoundation.org/policies-and-guidelines/application-guidelines",
           "quote": "Letters of Interest Due: Last Friday of March Full Proposals Due: First Wednesday of May Fall Cycle: Portal opens for Letters of Interest: September 1 Letters of Interest Due: Last Friday of September Full Proposals Due: First Wednesday of November",
-          "checked_at": "2026-11-17",
+          "checked_at": "2026-11-20",
           "method": "page"
         }
       }
@@ -60,33 +103,105 @@
     "applicant_types": {
       "source_url": "https://www.burningfoundation.org/policies-and-guidelines/foundation-policies",
       "quote": "501(c)(3) groups (that are classified as a Public Charity under 509(a)(1) or 509(a)(2)) throughout Washington and Oregon who meet the stated areas of interest.",
-      "checked_at": "2026-11-17",
+      "checked_at": "2026-11-20",
       "method": "page"
     },
     "geography": {
       "source_url": "https://www.burningfoundation.org/areas-of-interest",
       "quote": "preservation of habitat that supports biodiversity and quiet remote recreation in Washington or Oregon",
-      "checked_at": "2026-11-17",
+      "checked_at": "2026-11-20",
       "method": "page"
     },
     "access": {
       "source_url": "https://www.burningfoundation.org/policies-and-guidelines/application-guidelines",
       "quote": "All applicants must fill out a letter of interest by the Spring or Fall due date.",
-      "checked_at": "2026-11-17",
+      "checked_at": "2026-11-20",
       "method": "page"
     },
     "window": {
       "source_url": "https://www.burningfoundation.org/policies-and-guidelines/application-guidelines",
       "quote": "All applicants must fill out a letter of interest by the Spring or Fall due date.",
-      "checked_at": "2026-11-17",
+      "checked_at": "2026-11-20",
       "method": "page"
     },
     "amount": {
       "source_url": "https://www.burningfoundation.org/policies-and-guidelines/foundation-policies",
       "quote": "Grants range from $5,000 to $15,000.",
-      "checked_at": "2026-11-17",
+      "checked_at": "2026-11-20",
       "method": "page"
-    }
+    },
+    "effort": [
+      {
+        "source_url": "https://www.burningfoundation.org/policies-and-guidelines/application-guidelines",
+        "quote": "All applicants must fill out a letter of interest by the Spring or Fall due date.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.burningfoundation.org/policies-and-guidelines/application-guidelines",
+        "quote": "Applicants will receive a notification whether they will be asked to submit a proposal",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "eligibility": [
+      {
+        "source_url": "https://www.burningfoundation.org/policies-and-guidelines/foundation-policies",
+        "quote": "501(c)(3) groups (that are classified as a Public Charity under 509(a)(1) or 509(a)(2))",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.burningfoundation.org/policies-and-guidelines/foundation-policies",
+        "quote": "Quasi-governmental organizations, such as: Regional Fisheries Enhancement groups Soil and Water Conservation Districts Watershed Councils",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.burningfoundation.org/policies-and-guidelines/foundation-policies",
+        "quote": "The Foundation no longer accepts requests for multi-year support.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.burningfoundation.org/policies-and-guidelines/foundation-policies",
+        "quote": "Requests for research projects or scholarships.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.burningfoundation.org/policies-and-guidelines/foundation-policies",
+        "quote": "Requests from schools, universities, or their fundraising affiliates.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.burningfoundation.org/policies-and-guidelines/foundation-policies",
+        "quote": "Requests for habitat restoration that does not restore habitat to its native state.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.burningfoundation.org/policies-and-guidelines/foundation-policies",
+        "quote": "Requests for habitat restoration in areas that have been fragmented by agriculture use.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.burningfoundation.org/policies-and-guidelines/foundation-policies",
+        "quote": "Requests for restoration work done on state or federal land.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "after_award": [
+      {
+        "source_url": "https://www.burningfoundation.org/policies-and-guidelines/verification-and-reporting",
+        "quote": "All Grant Agreements, Check Verifications, and Final Reports for 2019 grants and beyond must be submitted using our online portal.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ]
   },
-  "checked_at": "2026-11-17"
+  "checked_at": "2026-11-20"
 }

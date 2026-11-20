@@ -9,14 +9,53 @@
   "parent": null,
   "url": "https://www.z-u-g.org/wildnisfonds/",
   "summary": "German federal fund that pays foundations and nature conservation organisations to buy land or use rights, or compensate owners for giving up use, so that large wilderness areas of forest, moor and floodplain can develop undisturbed.",
-  "approaches": ["protected_areas", "natural_regeneration"],
-  "applicant_types": ["ngo"],
-  "geography": { "scope": "countries", "countries": ["DE"] },
+  "approaches": [
+    "protected_areas",
+    "natural_regeneration"
+  ],
+  "applicant_types": [
+    "ngo"
+  ],
+  "geography": {
+    "scope": "countries",
+    "countries": [
+      "DE"
+    ]
+  },
   "access": "direct",
   "window": "fixed",
   "amount": null,
-  "co_finance_required": null,
+  "co_finance_required": false,
   "reporting": null,
+  "effort": {
+    "steps": [
+      "Application in easy-Online, plus signed paper copy by post"
+    ],
+    "due": [
+      "2030-12-31"
+    ]
+  },
+  "eligibility": [
+    {
+      "rule": "The area can be expanded, or itself expands an existing area, into a large unfragmented wilderness",
+      "kind": "project"
+    },
+    {
+      "rule": "Based in Germany and not a federal state (Land)",
+      "kind": "legal"
+    }
+  ],
+  "documents": [
+    "Project description",
+    "Work and time plan",
+    "Explanation of the financing plan",
+    "Signed further-declarations sheet (Weitere Erklärungen)",
+    "List of land parcels",
+    "Overview map(s) of the area",
+    "Valuation report (Wertgutachten)",
+    "Proof the federal state was informed of the project",
+    "Documents on creditworthiness, management and structural suitability"
+  ],
   "calls": [
     {
       "id": "standing-call",
@@ -24,7 +63,10 @@
       "url": "https://www.z-u-g.org/wildnisfonds/foerderaufruf/",
       "status": "open",
       "opens": null,
-      "deadline": { "date": "2030-12-31", "text": "31.12.2030" },
+      "deadline": {
+        "date": "2030-12-31",
+        "text": "31.12.2030"
+      },
       "evidence": {
         "status": {
           "source_url": "https://www.z-u-g.org/wildnisfonds/foerderaufruf/",
@@ -45,13 +87,13 @@
     "applicant_types": {
       "source_url": "https://www.z-u-g.org/wildnisfonds/",
       "quote": "Stiftungen und Naturschutzorganisationen können diese Flächen oder das Nutzungsrecht an diesen Flächen mit Mitteln des Wildnisfonds erwerben.",
-      "checked_at": "2026-11-15",
+      "checked_at": "2026-11-20",
       "method": "page"
     },
     "geography": {
       "source_url": "https://www.z-u-g.org/wildnisfonds/",
       "quote": "Der Wildnisfonds unterstützt dieses Ziel, indem er bundesweit die Sicherung von Wildnisflächen fördert.",
-      "checked_at": "2026-11-15",
+      "checked_at": "2026-11-20",
       "method": "page"
     },
     "access": {
@@ -64,6 +106,96 @@
       "source_url": "https://www.z-u-g.org/wildnisfonds/foerderaufruf/",
       "quote": "Eine Förderung ist noch bis zum 31.12.2030 möglich.",
       "checked_at": "2026-11-08",
+      "method": "page"
+    },
+    "effort": [
+      {
+        "source_url": "https://www.z-u-g.org/wildnisfonds/foerderaufruf/",
+        "quote": "Förderung bis zum 31.12.2030 beantragen",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.z-u-g.org/fileadmin/zug/Dateien/Foerderprorgamme/Wildnisfonds/Wildnisfonds_Hinweise_zur_Antragstellung_09-2025.pdf",
+        "quote": "Der Antrag und die dazugehörigen Anhänge sind elektronisch über das elektronische Antragssystem „easy-Online“ und schriftlich einzureichen.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "eligibility": [
+      {
+        "source_url": "https://www.z-u-g.org/wildnisfonds/",
+        "quote": "Sie müssen aber so erweitert werden oder selbst ein schon bestehendes Gebiet erweitern können, dass perspektivisch ein großes, unzerschnittenes Wildnisgebiet entstehen kann.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.z-u-g.org/fileadmin/zug/Dateien/Foerderprorgamme/Wildnisfonds/Wildnisfonds_Hinweise_zur_Antragstellung_09-2025.pdf",
+        "quote": "Antragstellende und spätere Zuwendungsempfänger können natürliche oder juristische Personen des privaten oder öffentlichen Rechts sowie Personenvereinigungen mit Sitz in der Bundesrepublik Deutschland sein. Nicht antragsberechtigt sind die Länder.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "documents": [
+      {
+        "source_url": "https://www.z-u-g.org/fileadmin/zug/Dateien/Foerderprorgamme/Wildnisfonds/Wildnisfonds_Hinweise_zur_Antragstellung_09-2025.pdf",
+        "quote": "Vorhabenbeschreibung: Anhand der Vorhabenbeschreibung wird geprüft, ob das Vorhaben förderungswürdig ist",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.z-u-g.org/fileadmin/zug/Dateien/Foerderprorgamme/Wildnisfonds/Wildnisfonds_Hinweise_zur_Antragstellung_09-2025.pdf",
+        "quote": "Arbeits- und Zeitplan, der u. a. auch Angaben enthält zu den geplanten Zeitpunkten für:",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.z-u-g.org/fileadmin/zug/Dateien/Foerderprorgamme/Wildnisfonds/Wildnisfonds_Hinweise_zur_Antragstellung_09-2025.pdf",
+        "quote": "Erläuterung des Finanzierungsplans. Sie umfasst:",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.z-u-g.org/fileadmin/zug/Dateien/Foerderprorgamme/Wildnisfonds/Wildnisfonds_Hinweise_zur_Antragstellung_09-2025.pdf",
+        "quote": "Blatt „Weitere Erklärungen des Antragstellenden“ mit Unterschrift und ggf. Stempel",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.z-u-g.org/fileadmin/zug/Dateien/Foerderprorgamme/Wildnisfonds/Wildnisfonds_Hinweise_zur_Antragstellung_09-2025.pdf",
+        "quote": "Flurstücksliste: Liste der zur Förderung beantragten Flurstücke mit Bezeichnung, Gemarkung, Flächengröße nach Liegenschaftskataster und Eigentümer",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.z-u-g.org/fileadmin/zug/Dateien/Foerderprorgamme/Wildnisfonds/Wildnisfonds_Hinweise_zur_Antragstellung_09-2025.pdf",
+        "quote": "Übersichtskarte(n) der zur Förderung beantragten Gesamtfläche mit folgenden Inhalten:",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.z-u-g.org/fileadmin/zug/Dateien/Foerderprorgamme/Wildnisfonds/Wildnisfonds_Hinweise_zur_Antragstellung_09-2025.pdf",
+        "quote": "Wertgutachten entsprechend Nr. 2.2 der FRL Wildnisfonds und Teil III der Hinweise zu den FRL Wildnisfonds",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.z-u-g.org/fileadmin/zug/Dateien/Foerderprorgamme/Wildnisfonds/Wildnisfonds_Hinweise_zur_Antragstellung_09-2025.pdf",
+        "quote": "Nachweis der Information des Landes über das Projekt gemäß Nr. 7.3 der FRL Wildnisfonds",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.z-u-g.org/fileadmin/zug/Dateien/Foerderprorgamme/Wildnisfonds/Wildnisfonds_Hinweise_zur_Antragstellung_09-2025.pdf",
+        "quote": "Unterlagen zur Prüfung der Bonität, der ordnungsgemäßen Geschäftsführung und der strukturellen Eignung als Zuwendungsempfänger im Sinne der FRL Wildnisfonds",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "co_finance_required": {
+      "source_url": "https://www.z-u-g.org/fileadmin/zug/Dateien/Foerderprorgamme/Wildnisfonds/foerderrichtlinien_wildnisfonds.pdf",
+      "quote": "Der Finanzierungsanteil des Bundes beträgt bis zu 100 % dieser Ausgaben.",
+      "checked_at": "2026-11-20",
       "method": "page"
     }
   },

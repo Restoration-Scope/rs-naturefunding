@@ -1,0 +1,68 @@
+{
+  "id": "feder-idf-ecological-continuity",
+  "read_on": "2026-11-20",
+  "prompt_version": "req-2026-11-19.2",
+  "models": ["cursor:gpt-5.6-luna-high", "cursor:gpt-5.6-sol-high"],
+  "complete": false,
+  "reasons": [
+    "the text names a document with rules that was not read: Guide méthodologique de mise en œuvre du Programme régional FEDER-FSE+ 2021-2027",
+    "the text names a document with rules that was not read: Annexe 1 : Cadre règlementaire de l'appel à projets",
+    "the text names a document with rules that was not read: Annexe 2a : Documents obligatoires au dépôt",
+    "the text names a document with rules that was not read: Annexe 2bis : Documents obligatoires à l'instruction",
+    "the text names a document with rules that was not read: Annexe 4 : Fiche action du Guide méthodologique de mise en œuvre",
+    "the text names a document with rules that was not read: Annexe 6 : Collecte des données et guide d'utilisation des indicateurs",
+    "the text names a document with rules that was not read: Annexe 7 : Règles relatives aux obligations de communication",
+    "the text names a document with rules that was not read: Annexe 8 : Nomenclature des pièces au dépôt",
+    "the text names a document with rules that was not read: Décret n° 2022-608 du 21 avril 2022 fixant les règles nationales d'éligibilité des dépenses des programmes européens de la politique de cohésion et de la pêche ",
+    "Jev did not check this reading, so an absent fact is not known to be absent",
+    "strong reading: the text names a document with rules that was not read: Guide méthodologique de mise en œuvre du Programme régional FEDER-FSE+ 2021-2027",
+    "strong reading: the text names a document with rules that was not read: Annexe 1 : Cadre règlementaire de l'appel à projets",
+    "strong reading: the text names a document with rules that was not read: Annexe 4 : Fiche action du Guide méthodologique de mise en œuvre"
+  ],
+  "requirements_checked": false,
+  "documents": [
+    {
+      "ref": "D1",
+      "url": "https://www.europeidf.fr/sites/default/files/AAP_FEDER2024_Continuite_ecologique_5juin2024.pdf",
+      "final_url": "https://www.europeidf.fr/sites/default/files/AAP_FEDER2024_Continuite_ecologique_5juin2024.pdf",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": true,
+      "chars": 32957,
+      "pages": 15,
+      "low_text": false,
+      "hash": "sha256:bbf1e7a769db997fb3c95b99943a64f11e8d8545c975a0a166c8b25f0ea4d091"
+    }
+  ],
+  "failures": [],
+  "skipped_links": 0,
+  "chunks": [{ "id": "all", "docs": ["D1"], "chars": 33070 }],
+  "outcomes": {
+    "eligibility": "partial",
+    "documents": "stated",
+    "effort": "stated",
+    "co_finance": "stated",
+    "consortium": "not_found",
+    "after_award": "stated"
+  },
+  "written": ["eligibility", "documents", "effort", "co_finance", "after_award"],
+  "escalated": ["eligibility"],
+  "flags": [
+    {
+      "field": "eligibility",
+      "item": "The project is not financed by other European funds",
+      "why": "the quote is not on any gathered document"
+    },
+    {
+      "field": "eligibility",
+      "item": "Project receives no funding from other European funds",
+      "why": "the quote is not on any gathered document"
+    }
+  ],
+  "notes": [
+    "extractor: The 54% FEDER rate is a target and may be derogated. The beneficiary must also participate in a communication action before the final balance request. The call may be modified during the year and closed once programme implementation conditions are considered fulfilled.",
+    "source feder-idf-ecological-continuity-1: selector main dropped, a new quote sits outside it"
+  ],
+  "usd": 0
+}

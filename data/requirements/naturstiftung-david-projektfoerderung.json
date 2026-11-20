@@ -1,0 +1,120 @@
+{
+  "id": "naturstiftung-david-projektfoerderung",
+  "read_on": "2026-11-20",
+  "prompt_version": "req-2026-11-20.1",
+  "models": ["cursor:gpt-5.6-luna-high"],
+  "complete": false,
+  "reasons": [
+    "11 links could not be ranked without Jev",
+    "12 links could not be ranked without Jev",
+    "https://www.naturstiftung-david.de/fileadmin/Medien/Downloads/Foerderung/DAVID_Diagramme_Gesamtstatistik-PF_Web_2024.pdf: a scanned or image PDF: needs OCR",
+    "the text names a document with rules that was not read: Förderrichtlinie der Naturstiftung David",
+    "Jev did not check this reading, so an absent fact is not known to be absent"
+  ],
+  "requirements_checked": false,
+  "documents": [
+    {
+      "ref": "D1",
+      "url": "https://www.naturstiftung-david.de/foerderung",
+      "final_url": "https://www.naturstiftung-david.de/foerderung",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 8963,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:2da2bec74f364dd11288e80be2f648f895ca4aed0d8d795bf2d1f706771ba639"
+    },
+    {
+      "ref": "D2",
+      "url": "https://www.naturstiftung-david.de/foerderung/antrag-600-euro",
+      "final_url": "https://www.naturstiftung-david.de/foerderung/antrag-600-euro",
+      "from": "https://www.naturstiftung-david.de/foerderung",
+      "anchor": "Antrag 600 Euro",
+      "depth": 1,
+      "pdf": false,
+      "chars": 2796,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:74389aac2004e152e61943798e2d29ecdd9828e51d532c5a00037208f1581b1c"
+    },
+    {
+      "ref": "D3",
+      "url": "https://www.naturstiftung-david.de/foerderung/antrag-5000-euro",
+      "final_url": "https://www.naturstiftung-david.de/foerderung/antrag-5000-euro",
+      "from": "https://www.naturstiftung-david.de/foerderung",
+      "anchor": "Antrag 5.000 Euro",
+      "depth": 1,
+      "pdf": false,
+      "chars": 2800,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:0edc80805c4d8cc775b78620a11e0e7ec41883f71adfc9784198b08c07d0da9b"
+    },
+    {
+      "ref": "D4",
+      "url": "https://www.naturstiftung-david.de/foerderung/antrag-15000-euro",
+      "final_url": "https://www.naturstiftung-david.de/foerderung/antrag-15000-euro",
+      "from": "https://www.naturstiftung-david.de/foerderung",
+      "anchor": "Antrag 15.000 Euro",
+      "depth": 1,
+      "pdf": false,
+      "chars": 2802,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:cc06a8acf9e08f075cc2697ddaa352295305df2a1578430a3c8661ccfa564156"
+    },
+    {
+      "ref": "D5",
+      "url": "https://www.naturstiftung-david.de/ausschreibungen",
+      "final_url": "https://www.naturstiftung-david.de/ausschreibungen",
+      "from": "https://www.naturstiftung-david.de/foerderung",
+      "anchor": "Ausschreibungen",
+      "depth": 1,
+      "pdf": false,
+      "chars": 9373,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:dbcbbbec3c49bd848e4b585d5d7af47dcbf1f67c7aca301e87e1f4f6e29fd6b2"
+    },
+    {
+      "ref": "D6",
+      "url": "https://www.naturstiftung-david.de/fileadmin/Medien/Downloads/Foerderung/DAVID_Diagramme_Gesamtstatistik-PF_Web_2024.pdf",
+      "final_url": "https://www.naturstiftung-david.de/fileadmin/Medien/Downloads/Foerderung/DAVID_Diagramme_Gesamtstatistik-PF_Web_2024.pdf",
+      "from": "https://www.naturstiftung-david.de/foerderung",
+      "anchor": "Unsere Projektförderung in Zahlen",
+      "depth": 1,
+      "pdf": true,
+      "chars": 64,
+      "pages": 1,
+      "low_text": true,
+      "hash": "sha256:a1039680bfa9b4b03302ed6fd672c810d4b7fa0c4943684422af7dc6db7a6b53"
+    }
+  ],
+  "failures": [
+    {
+      "url": "https://www.naturstiftung-david.de/fileadmin/Medien/Downloads/Foerderung/DAVID_Diagramme_Gesamtstatistik-PF_Web_2024.pdf",
+      "from": "https://www.naturstiftung-david.de/foerderung",
+      "kind": "low_text",
+      "message": "a scanned or image PDF: needs OCR"
+    }
+  ],
+  "skipped_links": 393,
+  "chunks": [{ "id": "all", "docs": ["D1", "D2", "D3", "D4", "D5", "D6"], "chars": 27583 }],
+  "outcomes": {
+    "eligibility": "stated",
+    "documents": "not_found",
+    "effort": "stated",
+    "co_finance": "not_found",
+    "consortium": "not_found",
+    "after_award": "not_found"
+  },
+  "written": ["eligibility", "effort"],
+  "escalated": [],
+  "flags": [],
+  "notes": [
+    "extractor: Up to EUR 600 applications can be submitted at any time. The page shows a deadline of 15 February 2027 for applications up to EUR 15,000. Applications up to EUR 5,000 are decided four times per year, but no current deadline is shown. Supplementary PDF documents are optional."
+  ],
+  "usd": 0
+}

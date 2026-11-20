@@ -1,7 +1,10 @@
 {
   "id": "cepf-tropical-andes",
   "name": "CEPF Tropical Andes Biodiversity Hotspot grants (Peru, Colombia, Bolivia)",
-  "funder": { "name": "Critical Ecosystem Partnership Fund", "url": "https://www.cepf.net/" },
+  "funder": {
+    "name": "Critical Ecosystem Partnership Fund",
+    "url": "https://www.cepf.net/"
+  },
   "administered_by": {
     "name": "Regional Implementation Team (PROFONANPE, ACEAA, Patrimonio Natural)",
     "url": "https://andestropicales.net/"
@@ -9,14 +12,42 @@
   "parent": "cepf",
   "url": "https://andestropicales.net/donaciones/",
   "summary": "CEPF small and large grants for civil society organisations conserving biodiversity in the Tropical Andes hotspot of Peru, Colombia and Bolivia, run through a regional implementation team. No call is open at the moment.",
-  "approaches": ["species_conservation", "protected_areas", "community_conservation"],
-  "applicant_types": ["ngo"],
-  "geography": { "scope": "countries", "countries": ["PE", "CO", "BO"], "label": "Tropical Andes" },
+  "approaches": [
+    "species_conservation",
+    "protected_areas",
+    "community_conservation"
+  ],
+  "applicant_types": [
+    "ngo"
+  ],
+  "geography": {
+    "scope": "countries",
+    "countries": [
+      "PE",
+      "CO",
+      "BO"
+    ],
+    "label": "Tropical Andes"
+  },
   "access": "direct",
   "window": "unspecified",
   "amount": null,
   "co_finance_required": null,
   "reporting": null,
+  "effort": {
+    "steps": [
+      "Letter of inquiry",
+      "Full proposal, if invited (large grants)",
+      "Safeguard documents, if required"
+    ],
+    "more_after": true
+  },
+  "eligibility": [
+    {
+      "rule": "Legally independent of government, can receive private funds, cannot claim sovereign immunity",
+      "kind": "legal"
+    }
+  ],
   "calls": [
     {
       "id": "current",
@@ -29,7 +60,7 @@
         "status": {
           "source_url": "https://andestropicales.net/donaciones/",
           "quote": "No hay convocatorias abiertas de momento.",
-          "checked_at": "2026-11-09",
+          "checked_at": "2026-11-20",
           "method": "page"
         }
       }
@@ -39,27 +70,73 @@
     "administered_by": {
       "source_url": "https://andestropicales.net/donaciones/",
       "quote": "El RIT para Perú, Colombia y Bolivia incluye a PROFONANPE, ACEAA y Patrimonio Natural.",
-      "checked_at": "2026-11-09",
+      "checked_at": "2026-11-20",
       "method": "page"
     },
     "applicant_types": {
       "source_url": "https://andestropicales.net/donaciones/",
       "quote": "información de interés para aquellas instituciones pertenecientes a la sociedad civil interesadas en postular a financiamiento de CEPF",
-      "checked_at": "2026-11-09",
+      "checked_at": "2026-11-20",
       "method": "page"
     },
     "geography": {
       "source_url": "https://andestropicales.net/donaciones/",
       "quote": "Equipo Regional de Implementación (RIT) del Hotspot de Biodiversidad Andes Tropicales para Perú, Colombia y Bolivia",
-      "checked_at": "2026-11-09",
+      "checked_at": "2026-11-20",
       "method": "page"
     },
     "access": {
       "source_url": "https://andestropicales.net/donaciones/",
       "quote": "Para poder postular es necesario revisar si actualmente se encuentran abiertas las convocatorias en la región",
-      "checked_at": "2026-11-09",
+      "checked_at": "2026-11-20",
       "method": "page"
-    }
+    },
+    "effort": [
+      {
+        "source_url": "https://www.cepf.net/grants/before-you-apply/life-cycle-of-grant",
+        "quote": "Large-grant applicants submit letters of inquiry online, through the online grants database ConservationGrants. Small-grant applicants submit letters of inquiry using an offline template that will be provided in the open call instructions.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.cepf.net/grants/before-you-apply/life-cycle-of-grant",
+        "quote": "These applicants will have a defined period of time (typically around two months, although this may vary among hotspots) to submit a complete project proposal through the online portal ConservationGrants.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.cepf.net/grants/before-you-apply/life-cycle-of-grant",
+        "quote": "If a project triggers one or more safeguard policies, the grantee will be asked to prepare the relevant safeguard document(s) and incorporate related measures into the project's design.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "eligibility": [
+      {
+        "source_url": "https://andestropicales.net/donaciones/",
+        "quote": "Son elegibles para poder acceder a financiamiento de CEPF las instituciones que: Tengan una persona jurídica independiente de cualquier agencia de gobierno o actor Tengan la autoridad para solicitar y recibir fondos privados No puedan hacer valer un reclamo de inmunidad soberana.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "after_award": [
+      {
+        "source_url": "https://www.cepf.net/grants/before-you-apply/life-cycle-of-grant",
+        "quote": "Recipients of large grants must submit financial reports each quarter and progress reports every six months through ConservationGrants.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.cepf.net/grants/before-you-apply/life-cycle-of-grant",
+        "quote": "Large-grant recipients are required to attend a CEPF online orientation training within the first three months of their project's start date.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ]
   },
-  "checked_at": "2026-11-09"
+  "checked_at": "2026-11-20",
+  "after_award": {
+    "reports": "quarterly",
+    "training": true
+  }
 }

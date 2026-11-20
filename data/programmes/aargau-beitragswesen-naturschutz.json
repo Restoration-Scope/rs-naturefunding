@@ -9,14 +9,48 @@
   "parent": null,
   "url": "https://www.ag.ch/de/themen/umwelt-natur/natur-und-landschaftsschutz/aktiv-fuer-natur-und-landschaft/beitragswesen-naturschutz",
   "summary": "Canton Aargau co-funds upkeep, enhancement and new creation of protected sites, habitats and stepping stones, mainly for municipalities and nature conservation organisations. Implementation projects can be submitted twice a year.",
-  "approaches": ["protected_areas", "community_conservation"],
-  "applicant_types": ["government", "ngo"],
-  "geography": { "scope": "countries", "countries": ["CH"], "label": "Canton Aargau" },
+  "approaches": [
+    "protected_areas",
+    "community_conservation"
+  ],
+  "applicant_types": [
+    "government",
+    "ngo"
+  ],
+  "geography": {
+    "scope": "countries",
+    "countries": [
+      "CH"
+    ],
+    "label": "Canton Aargau"
+  },
   "access": "direct",
   "window": "fixed",
   "amount": null,
   "co_finance_required": null,
   "reporting": null,
+  "effort": {
+    "steps": [
+      "Implementation project application",
+      "Application review"
+    ]
+  },
+  "eligibility": [
+    {
+      "rule": "Not DZV-funded upkeep, private gardens, forest, neophyte control outside reserves or watercourse upkeep",
+      "kind": "project"
+    }
+  ],
+  "documents": [
+    "Map extract from the online biodiversity map",
+    "Project description",
+    "Site plan or project sketch",
+    "Long-term maintenance description",
+    "Schedule",
+    "Photos of the current state",
+    "Cost summary showing own contributions",
+    "Proof the works are secured (zoning extract, land register or agreement)"
+  ],
   "calls": [
     {
       "id": "implementation-projects",
@@ -30,13 +64,13 @@
         "status": {
           "source_url": "https://www.ag.ch/de/themen/umwelt-natur/natur-und-landschaftsschutz/aktiv-fuer-natur-und-landschaft/beitragswesen-naturschutz",
           "quote": "Gesuche für Umsetzungsprojekte können zweimal jährlich, das heisst bis Ende April und Ende Oktober gestellt werden.",
-          "checked_at": "2026-11-09",
+          "checked_at": "2026-11-20",
           "method": "page"
         },
         "recurring": {
           "source_url": "https://www.ag.ch/de/themen/umwelt-natur/natur-und-landschaftsschutz/aktiv-fuer-natur-und-landschaft/beitragswesen-naturschutz",
           "quote": "Gesuche für Umsetzungsprojekte können zweimal jährlich, das heisst bis Ende April und Ende Oktober gestellt werden.",
-          "checked_at": "2026-11-09",
+          "checked_at": "2026-11-20",
           "method": "page"
         }
       }
@@ -46,27 +80,75 @@
     "applicant_types": {
       "source_url": "https://www.ag.ch/de/themen/umwelt-natur/natur-und-landschaftsschutz/aktiv-fuer-natur-und-landschaft/beitragswesen-naturschutz",
       "quote": "Beitragsberechtigt sind insbesondere Gemeinden und Naturschutzorganisationen.",
-      "checked_at": "2026-11-09",
+      "checked_at": "2026-11-20",
       "method": "page"
     },
     "geography": {
       "source_url": "https://www.ag.ch/de/themen/umwelt-natur/natur-und-landschaftsschutz/aktiv-fuer-natur-und-landschaft/beitragswesen-naturschutz",
       "quote": "Der Kanton Aargau fördert ihren Unterhalt oder die Neuschaffung von Naturwerten mit Unterstützungsbeiträgen insbesondere für Gemeinden und Organisationen.",
-      "checked_at": "2026-11-09",
+      "checked_at": "2026-11-20",
       "method": "page"
     },
     "access": {
       "source_url": "https://www.ag.ch/de/themen/umwelt-natur/natur-und-landschaftsschutz/aktiv-fuer-natur-und-landschaft/beitragswesen-naturschutz",
       "quote": "Für die geplanten Massnahmen können beim Kanton Beitragsgesuche eingereicht werden.",
-      "checked_at": "2026-11-09",
+      "checked_at": "2026-11-20",
       "method": "page"
     },
     "window": {
       "source_url": "https://www.ag.ch/de/themen/umwelt-natur/natur-und-landschaftsschutz/aktiv-fuer-natur-und-landschaft/beitragswesen-naturschutz",
       "quote": "Gesuche für Umsetzungsprojekte können zweimal jährlich, das heisst bis Ende April und Ende Oktober gestellt werden.",
-      "checked_at": "2026-11-09",
+      "checked_at": "2026-11-20",
       "method": "page"
-    }
+    },
+    "effort": [
+      {
+        "source_url": "https://www.ag.ch/de/themen/umwelt-natur/natur-und-landschaftsschutz/aktiv-fuer-natur-und-landschaft/beitragswesen-naturschutz",
+        "quote": "Gesuche für Umsetzungsprojekte können zweimal jährlich, das heisst bis Ende April und Ende Oktober gestellt werden.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.ag.ch/de/themen/umwelt-natur/natur-und-landschaftsschutz/aktiv-fuer-natur-und-landschaft/beitragswesen-naturschutz",
+        "quote": "Nach der Eingabe wird das Gesuch durch die Abteilung Landschaft und Gewässer, Sektion Natur und Landschaft überprüft.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "eligibility": [
+      {
+        "source_url": "https://www.ag.ch/de/themen/umwelt-natur/natur-und-landschaftsschutz/aktiv-fuer-natur-und-landschaft/beitragswesen-naturschutz",
+        "quote": "Unterhaltsmassnahmen von Flächen und Objekten, für die bereits Beiträge gemäss Direktzahlungsverordnung (DZV) bezogen werden oder bezogen werden können. Massnahmen in Privatgärten Massnahmen im Waldareal Unterstützung von Naturschutzprojekten im Wald Neophytenbekämpfung ausserhalb von Naturschutzzonen Projekte im Bereich Gewässerunterhalt Finanzierung Gewässerunterhalt",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "documents": [
+      {
+        "source_url": "https://www.ag.ch/media/kanton-aargau/bvu/umwelt-natur/natur-und-landschaftsschutz/aktiv-fuer-natur-und-landschaft/beitragswesen-naturschutz/anleitung-kartenausschnitte-erstellen-2019-02-07.pdf",
+        "quote": "Die Kartenausschnitte der Online Karte \"Biodiversitätsförderflächen im Kulturland\" ist eine obligatorische Beilage beim Einreichen eines Beitragsgesuchs.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.ag.ch/media/kanton-aargau/bvu/umwelt-natur/natur-und-landschaftsschutz/aktiv-fuer-natur-und-landschaft/beitragswesen-naturschutz/beitragswesen-formular-sk.pdf",
+        "quote": "Projektdossier (die fett markierten Unterlagen müssen im Dossier enthalten sein) Projektbeschrieb Situationsplan / Projektskizze",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.ag.ch/media/kanton-aargau/bvu/umwelt-natur/natur-und-landschaftsschutz/aktiv-fuer-natur-und-landschaft/beitragswesen-naturschutz/beitragswesen-formular-sk.pdf",
+        "quote": "Beschrieb zur langfristigen Pflege Terminplan Fotos bestehender Zustand Kostenzusammenstellung",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.ag.ch/media/kanton-aargau/bvu/umwelt-natur/natur-und-landschaftsschutz/aktiv-fuer-natur-und-landschaft/beitragswesen-naturschutz/beitragswesen-formular-sk.pdf",
+        "quote": "Nachweis Sicherung des Werkes (z.B. Ausschnitt Zonenplan, Grundbuchauszug, Bewirtschaftungsvereinbarung oder entsprechende Absichtserklärung)",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ]
   },
-  "checked_at": "2026-11-09"
+  "checked_at": "2026-11-20"
 }
