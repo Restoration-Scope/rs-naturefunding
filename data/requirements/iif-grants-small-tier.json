@@ -1,0 +1,128 @@
+{
+  "id": "iif-grants-small-tier",
+  "read_on": "2026-11-20",
+  "prompt_version": "req-2026-11-20.1",
+  "models": ["cursor:gpt-5.6-luna-high"],
+  "complete": false,
+  "reasons": [
+    "11 links could not be ranked without Jev",
+    "the text names a document with rules that was not read: Awardee's contract",
+    "the text names a document with rules that was not read: Online mid-term and final report templates",
+    "Jev did not check this reading, so an absent fact is not known to be absent"
+  ],
+  "requirements_checked": false,
+  "documents": [
+    {
+      "ref": "D1",
+      "url": "https://www.iguanafoundation.org/grants/apply-for-a-grant/",
+      "final_url": "https://www.iguanafoundation.org/grants/apply-for-a-grant/",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 3679,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:95cd647e1f5c10c62d888adfda608b87d1cbc41e170c814099675f9ba5168c9c"
+    },
+    {
+      "ref": "D2",
+      "url": "https://www.iguanafoundation.org/grants/apply-for-a-grant/reporting-requirements/",
+      "final_url": "https://www.iguanafoundation.org/grants/apply-for-a-grant/reporting-requirements/",
+      "from": "https://www.iguanafoundation.org/grants/apply-for-a-grant/",
+      "anchor": "Submit Your Report",
+      "depth": 1,
+      "pdf": false,
+      "chars": 2446,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:b3b339aeebef984d6a76f88cf99fe91cee6cfcf56d5e0549fad9b140b07d9300"
+    },
+    {
+      "ref": "D3",
+      "url": "https://www.iguanafoundation.org/grants/apply-for-a-grant/apply-now/",
+      "final_url": "https://www.iguanafoundation.org/grants/apply-for-a-grant/apply-now/",
+      "from": "https://www.iguanafoundation.org/grants/apply-for-a-grant/",
+      "anchor": "THE GRANT APPLICATIONS PORTAL IS NOW CLOSED",
+      "depth": 1,
+      "pdf": false,
+      "chars": 10154,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:1bc77ceb5b5ffe8a407956f10562509924dec806794063b64127783322f0ee92"
+    },
+    {
+      "ref": "D4",
+      "url": "https://www.iguanafoundation.org/privacy-policy-2/",
+      "final_url": "https://www.iguanafoundation.org/privacy-policy-2/",
+      "from": "https://www.iguanafoundation.org/grants/apply-for-a-grant/",
+      "anchor": "Privacy Policy",
+      "depth": 1,
+      "pdf": false,
+      "chars": 6564,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:e6813e651518de6f08893fe9e12c2794e46fbb27d4da6c5e1c6022e3781f6d0d"
+    },
+    {
+      "ref": "D5",
+      "url": "https://www.iguanafoundation.org/grants/apply-for-a-grant/submit-your-report/",
+      "final_url": "https://www.iguanafoundation.org/grants/apply-for-a-grant/submit-your-report/",
+      "from": "https://www.iguanafoundation.org/grants/apply-for-a-grant/reporting-requirements/",
+      "anchor": "Submit Your Report",
+      "depth": 2,
+      "pdf": false,
+      "chars": 1516,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:06f7bc248b3e1a2ce64dde64058a539e2772fdb25def5d425ca61b63bf760586"
+    },
+    {
+      "ref": "D6",
+      "url": "https://www.iguanafoundation.org/wp-content/uploads/2026/08/IIF_Application_2026.docx",
+      "final_url": "https://www.iguanafoundation.org/wp-content/uploads/2026/08/IIF_Application_2026.docx",
+      "from": "https://www.iguanafoundation.org/grants/apply-for-a-grant/apply-now/",
+      "anchor": "the application docx here",
+      "depth": 2,
+      "pdf": false,
+      "chars": 5000,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:2b62e84e76890d8f7037ebad5728f81449307eb316565c113f89086a3979facd"
+    },
+    {
+      "ref": "D7",
+      "url": "https://www.iguanafoundation.org/wp-content/uploads/2026/08/IIF-Grant-Budget-Table-Application_2026.docx",
+      "final_url": "https://www.iguanafoundation.org/wp-content/uploads/2026/08/IIF-Grant-Budget-Table-Application_2026.docx",
+      "from": "https://www.iguanafoundation.org/grants/apply-for-a-grant/apply-now/",
+      "anchor": "this template",
+      "depth": 2,
+      "pdf": false,
+      "chars": 547,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:19465dd453acf540eeb412e067c248907fb1003525d8b9293636c098eb62b32f"
+    }
+  ],
+  "failures": [],
+  "skipped_links": 136,
+  "chunks": [{ "id": "all", "docs": ["D1", "D2", "D3", "D4", "D5", "D6", "D7"], "chars": 31001 }],
+  "outcomes": {
+    "eligibility": "stated",
+    "documents": "stated",
+    "effort": "stated",
+    "co_finance": "stated",
+    "consortium": "not_found",
+    "after_award": "stated"
+  },
+  "written": ["eligibility", "documents", "effort", "co_finance", "after_award"],
+  "escalated": [],
+  "flags": [],
+  "notes": [
+    "extractor: The 2027 cycle has no large-tier grants. Matching funds are listed as an evaluation criterion, while up-to-date reporting is a condition only for current IIF grantees.",
+    "source iif-grants-small-tier-2: added for https://www.iguanafoundation.org/grants/apply-for-a-grant/apply-now/",
+    "source iif-grants-small-tier-3: added for https://www.iguanafoundation.org/wp-content/uploads/2026/08/IIF_Application_2026.docx",
+    "source iif-grants-small-tier-4: added for https://www.iguanafoundation.org/grants/apply-for-a-grant/reporting-requirements/"
+  ],
+  "usd": 0
+}

@@ -1,0 +1,257 @@
+{
+  "id": "iucn-nl-land-acquisition-fund",
+  "read_on": "2026-11-20",
+  "prompt_version": "req-2026-11-20.1",
+  "models": ["cursor:gpt-5.6-luna-high"],
+  "complete": false,
+  "reasons": [
+    "24 links could not be ranked without Jev",
+    "26 links could not be ranked without Jev",
+    "27 links could not be ranked without Jev",
+    "http://www.iucn.nl/app/uploads/2022/05/Sustainable-Nature-Reserves_IUCNNL_ABCBirds.pdf: pages 1, 3, 108 are images: needs OCR",
+    "https://www.iucn.nl/app/uploads/2023/09/Reservas-Naturales-Sostenibles_IUCN-NL-and-ABC-2023.pdf: pages 1, 3, 108 are images: needs OCR",
+    "https://www.iucn.nl/app/uploads/2023/09/Reservas-Naturais-Sustentaveis_ABC-IUCN-NL_2023.pdf: pages 1, 3, 108 are images: needs OCR",
+    "the crawl bound left https://www.iucn.nl/app/uploads/2026/06/REWET-Policy-brief-7-IUCN-NL-Making-the-business-case-for-wetland-restoration.pdf unread",
+    "the crawl bound left https://www.iucn.nl/en/publication/rewetting-policy-brief-for-a-resilient-europe-aligning-defence-nature-and-social-goals/ unread",
+    "the crawl bound left https://www.iucn.nl/en/publication/policy-brief-tackling-policy-dilemmas-for-wetland-restoration/ unread",
+    "the text names a document with rules that was not read: Application criteria and guidelines",
+    "Jev did not check this reading, so an absent fact is not known to be absent"
+  ],
+  "requirements_checked": false,
+  "documents": [
+    {
+      "ref": "D1",
+      "url": "https://www.iucn.nl/en/news/call-for-proposals-for-ngos-and-csos-protecting-nature-under-threat/",
+      "final_url": "https://www.iucn.nl/en/news/call-for-proposals-for-ngos-and-csos-protecting-nature-under-threat/",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 8399,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:ab06b0c998733f955d441ce4d47c95703eb3ed68cb87cb59076ad35bfd5c7ff6"
+    },
+    {
+      "ref": "D2",
+      "url": "https://www.iucn.nl/en/our-work/nature-policy/",
+      "final_url": "https://www.iucn.nl/en/our-work/nature-policy/",
+      "from": "https://www.iucn.nl/en/news/call-for-proposals-for-ngos-and-csos-protecting-nature-under-threat/",
+      "anchor": "Nature policy",
+      "depth": 1,
+      "pdf": false,
+      "chars": 8008,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:31b72e25e43ef156b10027f52f8340d7a93d79a7e101d4f2a19456b0cece3a9f"
+    },
+    {
+      "ref": "D3",
+      "url": "https://www.iucn.nl/app/uploads/2026/01/IUCN-NL-Land-Acquisition-Fund_Criteria-2026.pdf",
+      "final_url": "https://www.iucn.nl/app/uploads/2026/01/IUCN-NL-Land-Acquisition-Fund_Criteria-2026.pdf",
+      "from": "https://www.iucn.nl/en/news/call-for-proposals-for-ngos-and-csos-protecting-nature-under-threat/",
+      "anchor": "Criteria and Guidelines 2026",
+      "depth": 1,
+      "pdf": true,
+      "chars": 6101,
+      "pages": 3,
+      "low_text": false,
+      "hash": "sha256:6a7212aca785f51de80c9895c44ef3964bb7edc775818dcb53246eb207d0634b"
+    },
+    {
+      "ref": "D4",
+      "url": "https://www.iucn.nl/app/uploads/2026/01/LAF-pre-proposal-format-2026.docx",
+      "final_url": "https://www.iucn.nl/app/uploads/2026/01/LAF-pre-proposal-format-2026.docx",
+      "from": "https://www.iucn.nl/en/news/call-for-proposals-for-ngos-and-csos-protecting-nature-under-threat/",
+      "anchor": "Pre-proposal format 2026",
+      "depth": 1,
+      "pdf": false,
+      "chars": 3573,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:2a17df2ec5fa20fc276f8e414d4d0bbb5eea7e3ef0dd8439fbd110dd5c569054"
+    },
+    {
+      "ref": "D5",
+      "url": "http://www.iucn.nl/app/uploads/2022/05/Sustainable-Nature-Reserves_IUCNNL_ABCBirds.pdf",
+      "final_url": "https://www.iucn.nl/app/uploads/2022/05/Sustainable-Nature-Reserves_IUCNNL_ABCBirds.pdf",
+      "from": "https://www.iucn.nl/en/news/call-for-proposals-for-ngos-and-csos-protecting-nature-under-threat/",
+      "anchor": "Download the manual in English",
+      "depth": 1,
+      "pdf": true,
+      "chars": 282621,
+      "pages": 108,
+      "low_text": false,
+      "hash": "sha256:f45a277288dd2661b3f685fafef9e3ce339741de3cde3aa09452b305f75faaba"
+    },
+    {
+      "ref": "D6",
+      "url": "https://www.iucn.nl/app/uploads/2023/09/Reservas-Naturales-Sostenibles_IUCN-NL-and-ABC-2023.pdf",
+      "final_url": "https://www.iucn.nl/app/uploads/2023/09/Reservas-Naturales-Sostenibles_IUCN-NL-and-ABC-2023.pdf",
+      "from": "https://www.iucn.nl/en/news/call-for-proposals-for-ngos-and-csos-protecting-nature-under-threat/",
+      "anchor": "Descarge el manual en español",
+      "depth": 1,
+      "pdf": true,
+      "chars": 326426,
+      "pages": 108,
+      "low_text": false,
+      "hash": "sha256:b61beb92303045e092a997a945444239b4636e2a1c147cc49e5ccb657ab0fde4"
+    },
+    {
+      "ref": "D7",
+      "url": "https://www.iucn.nl/app/uploads/2023/09/Reservas-Naturais-Sustentaveis_ABC-IUCN-NL_2023.pdf",
+      "final_url": "https://www.iucn.nl/app/uploads/2023/09/Reservas-Naturais-Sustentaveis_ABC-IUCN-NL_2023.pdf",
+      "from": "https://www.iucn.nl/en/news/call-for-proposals-for-ngos-and-csos-protecting-nature-under-threat/",
+      "anchor": "Descarregue o manual em português",
+      "depth": 1,
+      "pdf": true,
+      "chars": 313230,
+      "pages": 108,
+      "low_text": false,
+      "hash": "sha256:c1251d49a7ceb11ecd7e370d400eb3394d67abcfd34983a053f40e9a361ba58e"
+    },
+    {
+      "ref": "D8",
+      "url": "https://www.iucn.nl/en/terms-conditions/",
+      "final_url": "https://www.iucn.nl/en/terms-conditions/",
+      "from": "https://www.iucn.nl/en/news/call-for-proposals-for-ngos-and-csos-protecting-nature-under-threat/",
+      "anchor": "Terms & conditions",
+      "depth": 1,
+      "pdf": false,
+      "chars": 3150,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:63cbd5dd577ec2edd4fa1a55f9414b5d1ed53f90fa2fc2c6fcd7585e3d688b0b"
+    },
+    {
+      "ref": "D9",
+      "url": "https://www.iucn.nl/en/publication/policy-brief-making-the-business-case-for-wetland-restoration/",
+      "final_url": "https://www.iucn.nl/en/publication/policy-brief-making-the-business-case-for-wetland-restoration/",
+      "from": "https://www.iucn.nl/en/our-work/nature-policy/",
+      "anchor": "Publications Policy brief: making the business case for wetland restoration",
+      "depth": 2,
+      "pdf": false,
+      "chars": 6167,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:e6d0c07b5dce3f92840cb4ec7d67b959bd3ded12e2fa31edb44e9c76df91db39"
+    }
+  ],
+  "failures": [
+    {
+      "url": "http://www.iucn.nl/app/uploads/2022/05/Sustainable-Nature-Reserves_IUCNNL_ABCBirds.pdf",
+      "from": "https://www.iucn.nl/en/news/call-for-proposals-for-ngos-and-csos-protecting-nature-under-threat/",
+      "kind": "low_text",
+      "message": "pages 1, 3, 108 are images: needs OCR"
+    },
+    {
+      "url": "https://www.iucn.nl/app/uploads/2023/09/Reservas-Naturales-Sostenibles_IUCN-NL-and-ABC-2023.pdf",
+      "from": "https://www.iucn.nl/en/news/call-for-proposals-for-ngos-and-csos-protecting-nature-under-threat/",
+      "kind": "low_text",
+      "message": "pages 1, 3, 108 are images: needs OCR"
+    },
+    {
+      "url": "https://www.iucn.nl/app/uploads/2023/09/Reservas-Naturais-Sustentaveis_ABC-IUCN-NL_2023.pdf",
+      "from": "https://www.iucn.nl/en/news/call-for-proposals-for-ngos-and-csos-protecting-nature-under-threat/",
+      "kind": "low_text",
+      "message": "pages 1, 3, 108 are images: needs OCR"
+    },
+    {
+      "url": "https://www.iucn.nl/app/uploads/2026/06/REWET-Policy-brief-7-IUCN-NL-Making-the-business-case-for-wetland-restoration.pdf",
+      "from": "https://www.iucn.nl/en/publication/policy-brief-making-the-business-case-for-wetland-restoration/",
+      "kind": "bound",
+      "message": "past the crawl depth of 2"
+    },
+    {
+      "url": "https://www.iucn.nl/en/publication/rewetting-policy-brief-for-a-resilient-europe-aligning-defence-nature-and-social-goals/",
+      "from": "https://www.iucn.nl/en/publication/policy-brief-making-the-business-case-for-wetland-restoration/",
+      "kind": "bound",
+      "message": "past the crawl depth of 2"
+    },
+    {
+      "url": "https://www.iucn.nl/en/publication/policy-brief-tackling-policy-dilemmas-for-wetland-restoration/",
+      "from": "https://www.iucn.nl/en/publication/policy-brief-making-the-business-case-for-wetland-restoration/",
+      "kind": "bound",
+      "message": "past the crawl depth of 2"
+    }
+  ],
+  "skipped_links": 454,
+  "chunks": [
+    { "id": "c1", "docs": ["D1", "D2", "D3", "D4"], "chars": 26774 },
+    { "id": "c2", "docs": ["D5"], "chars": 40218 },
+    { "id": "c3", "docs": ["D5"], "chars": 40211 },
+    { "id": "c4", "docs": ["D5"], "chars": 40186 },
+    { "id": "c5", "docs": ["D5"], "chars": 40153 },
+    { "id": "c6", "docs": ["D5"], "chars": 40097 },
+    { "id": "c7", "docs": ["D5"], "chars": 39999 },
+    { "id": "c8", "docs": ["D5"], "chars": 40184 },
+    { "id": "c9", "docs": ["D5"], "chars": 13881 },
+    { "id": "c10", "docs": ["D6"], "chars": 39552 },
+    { "id": "c11", "docs": ["D6"], "chars": 40167 },
+    { "id": "c12", "docs": ["D6"], "chars": 39636 },
+    { "id": "c13", "docs": ["D6"], "chars": 40170 },
+    { "id": "c14", "docs": ["D6"], "chars": 39964 },
+    { "id": "c15", "docs": ["D6"], "chars": 40128 },
+    { "id": "c16", "docs": ["D6"], "chars": 40079 },
+    { "id": "c17", "docs": ["D6"], "chars": 40188 },
+    { "id": "c18", "docs": ["D6"], "chars": 20657 },
+    { "id": "c19", "docs": ["D7"], "chars": 40073 },
+    { "id": "c20", "docs": ["D7"], "chars": 40103 },
+    { "id": "c21", "docs": ["D7"], "chars": 40175 },
+    { "id": "c22", "docs": ["D7"], "chars": 40164 },
+    { "id": "c23", "docs": ["D7"], "chars": 40162 },
+    { "id": "c24", "docs": ["D7"], "chars": 40228 },
+    { "id": "c25", "docs": ["D7"], "chars": 40113 },
+    { "id": "c26", "docs": ["D7"], "chars": 40171 },
+    { "id": "c27", "docs": ["D7"], "chars": 6120 },
+    { "id": "c28", "docs": ["D8", "D9"], "chars": 9650 }
+  ],
+  "outcomes": {
+    "eligibility": "partial",
+    "documents": "stated",
+    "effort": "unresolved",
+    "co_finance": "not_found",
+    "consortium": "not_found",
+    "after_award": "not_found"
+  },
+  "written": ["eligibility", "documents"],
+  "escalated": [],
+  "flags": [
+    {
+      "field": "eligibility",
+      "item": "Have long-term strategic planning",
+      "why": "the quote is not on any gathered document"
+    },
+    {
+      "field": "eligibility",
+      "item": "Have bylaws addressing asset destination",
+      "why": "the quote is not on any gathered document"
+    },
+    {
+      "field": "eligibility",
+      "item": "Assign more than one person to develop and implement the reserve's strategies",
+      "why": "the quote is not on any gathered document"
+    },
+    {
+      "field": "effort",
+      "item": "Two-page summary",
+      "why": "the quote is not on any gathered document"
+    },
+    {
+      "field": "effort",
+      "item": "steps",
+      "why": "the steps come from different parts of the text; check they are one list in order"
+    }
+  ],
+  "notes": [
+    "eligibility: 14 rules past the 8th dropped",
+    "effort \"Pre-proposal submission\": the quote does not state 2026-05-01 whole; left undated",
+    "extractor: The maximum grant is 100,000 euros per project. Investments supporting sustainability and conservation impact may not exceed 30% of the requested budget. Good maps are an important selection criterion, and pre-proposals lacking good maps are rejected immediately. AI use is discouraged; applicants using it must disclose how and why it was used. | D5 is a 2022 general guidance publication about privately protected areas, not the 2026 call rules or application instructions. | D5 is a general guidebook about creating and managing privately protected areas; it does not state a grant application process, submission documents, co-financing, consortium rules or post-award duties. | D5 is general guidance with recommendations, surveys and testimonials, not fund-specific application or award requirements. | D5 provides general guidance on privately protected areas and budgeting, but does not state application requirements, submission documents, application stages, co-financing rules, consortium ",
+    "the flagged text is too long for one escalation",
+    "source iucn-nl-land-acquisition-fund-2: added for http://www.iucn.nl/app/uploads/2022/05/Sustainable-Nature-Reserves_IUCNNL_ABCBirds.pdf",
+    "source iucn-nl-land-acquisition-fund-3: added for https://www.iucn.nl/app/uploads/2023/09/Reservas-Naturales-Sostenibles_IUCN-NL-and-ABC-2023.pdf",
+    "source iucn-nl-land-acquisition-fund-4: added for https://www.iucn.nl/app/uploads/2026/01/LAF-pre-proposal-format-2026.docx",
+    "source iucn-nl-land-acquisition-fund-5: added for https://www.iucn.nl/app/uploads/2023/09/Reservas-Naturais-Sustentaveis_ABC-IUCN-NL_2023.pdf"
+  ],
+  "usd": 0
+}

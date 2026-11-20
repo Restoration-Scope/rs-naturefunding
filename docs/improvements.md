@@ -2,6 +2,7 @@
 
 What a visitor to naturefunding.org can see or do that they couldn't before, newest first. One line per merged change, added in the same PR (AGENTS.md). The naturefunding.org LinkedIn Page drafts its update posts from this list. Emails count once `DIGEST_SENDING` is `live`.
 
+- 2026-11-20 · 28 more programmes show Before you apply (Illinois DNR natural areas stewardship, Interreg POCTEP biodiversity, IUCN Global EbA Fund, JFGE and more), each fact in the funder's words and checked by a second reader · https://naturefunding.org/p/illinois-dnr-natural-areas-stewardship/#before-title · #PR
 - 2026-11-20 · 26 more programmes show Before you apply (Fonds pour l'Arbre, FPA Chile, Great Lakes Fish and Wildlife Restoration, Galápagos Life Fund and more), each fact in the funder's words and checked by a second reader · https://naturefunding.org/p/fpa-chile-citizen-projects/#before-title · #768
 - 2026-11-20 · 25 more programmes show Before you apply (Fondation François Sommer, Floresta+ Amazônia, FBFQ Endangered Species, Fondation Petersberg and more), each fact in the funder's words and checked by a second reader · https://naturefunding.org/p/fondation-francois-sommer-faune-sauvage/#before-title · #767
 - 2026-11-20 · 26 more programmes show Before you apply (Eastern Brook Trout Joint Venture, Hong Kong Environment and Conservation Fund, Dulverton Trust, Disney Conservation Fund and more), each fact in the funder's words and checked by a second reader · https://naturefunding.org/p/ebtjv-habitat-project-funding/#before-title · #766

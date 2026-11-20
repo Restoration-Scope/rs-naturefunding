@@ -1,0 +1,329 @@
+{
+  "id": "illinois-dnr-natural-areas-stewardship",
+  "read_on": "2026-11-20",
+  "prompt_version": "req-2026-11-20.1",
+  "models": ["cursor:gpt-5.6-luna-high"],
+  "complete": false,
+  "reasons": [
+    "40 links could not be ranked without Jev",
+    "49 links could not be ranked without Jev",
+    "https://dnr.illinois.gov/content/dam/soi/en/web/dnr/boating/documents/boatdigest.pdf: page 1 is an image: needs OCR",
+    "https://dnr.illinois.gov/content/dam/soi/en/web/dnr/grants/documents/how-to-apply.pdf: pages 3, 4 are images: needs OCR",
+    "the crawl bound left https://dnr.illinois.gov/grants/quick-link-guide-to-the-special-wildlife-funds.html unread",
+    "the crawl bound left https://dnr.illinois.gov/content/dam/soi/en/web/dnr/grants/documents/state-of-illinois-grant-prequalification-instructions-and-resources.pdf unread",
+    "the crawl bound left https://www.irs.gov/pub/irs-pdf/fw9.pdf unread",
+    "the crawl bound left https://dnr.illinois.gov/content/dam/soi/en/web/dnr/grants/documents/stewardship-grant-documents/2027nas-stewardship-grant-manual4-13-26.pdf unread",
+    "the crawl bound left https://dnr.illinois.gov/content/dam/soi/en/web/dnr/grants/documents/2026-nas-project-narrative.pdf unread",
+    "the crawl bound left https://dnr.illinois.gov/content/dam/soi/en/web/dnr/grants/documents/nas-grant-evaluation-criteria.pdf unread",
+    "the crawl bound left https://dnr.illinois.gov/content/dam/soi/en/web/dnr/grants/documents/stewardship-grant-documents/2027-nas-grant-nofo.pdf unread",
+    "the crawl bound left https://dnr.illinois.gov/content/dam/soi/en/web/dnr/grants/documents/illinois-natural-areas-plan.pdf unread",
+    "the crawl bound left https://dnr.illinois.gov/content/dam/soi/en/web/naturalheritage/documents/Illinois%20Sustainable%20Natural%20Areas%20Vision.pdf unread",
+    "the crawl bound left https://dnr.illinois.gov/content/dam/soi/en/web/dnr/about/documents/affirmative_action_plan.pdf unread",
+    "the crawl bound left https://dnr.illinois.gov/about/faq.html unread",
+    "the crawl bound left https://dnr2.illinois.gov/Windshieldcard/ unread",
+    "the crawl bound left https://uscgboating.org/images/725.PDF unread",
+    "the crawl bound left https://dnr.illinois.gov/content/dam/soi/en/web/dnr/boating/documents/powerofattorney.pdf unread",
+    "the crawl bound left https://dnr.illinois.gov/content/dam/soi/en/web/dnr/boating/documents/statementoftrust.pdf unread",
+    "the crawl bound left https://dnr.illinois.gov/content/dam/soi/en/web/dnr/boating/documents/smallestateaffidavit.pdf unread",
+    "the crawl bound left https://www.cyberdriveillinois.com/publications/pdf_publications/vsd393.pdf unread",
+    "the crawl bound left https://dnr.illinois.gov/content/dam/soi/en/web/dnr/boating/documents/regatta-plan-application.pdf unread",
+    "the crawl bound left https://dnr.illinois.gov/content/dam/soi/en/web/dnr/lawenforcement/documents/districtcpophonesandemails.pdf unread",
+    "the crawl bound left https://dnr.illinois.gov/content/dam/soi/en/web/dnr/boating/documents/abandonedwatercraftstoragelien.pdf unread",
+    "the crawl bound left https://dnr.illinois.gov/adrules/proposed.html unread",
+    "the text names a document with rules that was not read: Administrative Rule for this program",
+    "the text names a document with rules that was not read: Illinois Natural Areas Stewardship - 2026 Program Manual",
+    "the text names a document with rules that was not read: Notice of Funding Opportunity",
+    "Jev did not check this reading, so an absent fact is not known to be absent"
+  ],
+  "requirements_checked": false,
+  "documents": [
+    {
+      "ref": "D1",
+      "url": "https://dnr.illinois.gov/grants/stewardshipgrants.html",
+      "final_url": "https://dnr.illinois.gov/grants/stewardshipgrants.html",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 5182,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:2955fe5c67aaf589b9b8a7dfdda75d0101f303824304816cc26fbc2da8dc95a0"
+    },
+    {
+      "ref": "D2",
+      "url": "https://dnr.illinois.gov/hunting/harvestreporting.html",
+      "final_url": "https://dnr.illinois.gov/hunting/harvestreporting.html",
+      "from": "https://dnr.illinois.gov/grants/stewardshipgrants.html",
+      "anchor": "Harvest reporting",
+      "depth": 1,
+      "pdf": false,
+      "chars": 2920,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:5f684b33b4cef1fb8e170e3787199fc43a14ae4bc728dd3761815d21a3d36c28"
+    },
+    {
+      "ref": "D3",
+      "url": "https://dnr.illinois.gov/content/dam/soi/en/web/dnr/boating/documents/boatdigest.pdf",
+      "final_url": "https://dnr.illinois.gov/content/dam/soi/en/web/dnr/boating/documents/boatdigest.pdf",
+      "from": "https://dnr.illinois.gov/grants/stewardshipgrants.html",
+      "anchor": "Handbook of boating laws and responsibilities",
+      "depth": 1,
+      "pdf": true,
+      "chars": 26476,
+      "pages": 16,
+      "low_text": false,
+      "hash": "sha256:b5c1b0857e6c1b73c1a7218ea940eb5c809c621f99b3a76de6e8f3e6f166c990"
+    },
+    {
+      "ref": "D4",
+      "url": "https://dnr.illinois.gov/boating/boatingaccidentreport.html",
+      "final_url": "https://dnr.illinois.gov/boating/boatingaccidentreport.html",
+      "from": "https://dnr.illinois.gov/grants/stewardshipgrants.html",
+      "anchor": "Boat accident reporting",
+      "depth": 1,
+      "pdf": false,
+      "chars": 3395,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:06a9660f088ab9a1939c24f9e19f4caf183415f2893485f88831ba694dd8fed7"
+    },
+    {
+      "ref": "D5",
+      "url": "https://dnr.illinois.gov/boating/taxrequirementonwatercraft.html",
+      "final_url": "https://dnr.illinois.gov/boating/taxrequirementonwatercraft.html",
+      "from": "https://dnr.illinois.gov/grants/stewardshipgrants.html",
+      "anchor": "Tax requirements",
+      "depth": 1,
+      "pdf": false,
+      "chars": 7093,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:0c53b154b32f166dded15db8da96ec47b7beaeae5e297b182acaba2243572a02"
+    },
+    {
+      "ref": "D6",
+      "url": "https://dnr.illinois.gov/boating/watercraftapplications.html",
+      "final_url": "https://dnr.illinois.gov/boating/watercraftapplications.html",
+      "from": "https://dnr.illinois.gov/grants/stewardshipgrants.html",
+      "anchor": "Watercraft forms",
+      "depth": 1,
+      "pdf": false,
+      "chars": 2832,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:4ffe751f52b63561643f78b5e5455e31571086871871303bb0d24d940626f212"
+    },
+    {
+      "ref": "D7",
+      "url": "https://dnr.illinois.gov/boating/watercraft-frequently-asked-questions.html",
+      "final_url": "https://dnr.illinois.gov/boating/watercraft-frequently-asked-questions.html",
+      "from": "https://dnr.illinois.gov/grants/stewardshipgrants.html",
+      "anchor": "Watercraft frequently asked questions",
+      "depth": 1,
+      "pdf": false,
+      "chars": 25147,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:e2753fab7fe896d11e2f35eebdbd45383a7f3582a3163982c3912e11073716b0"
+    },
+    {
+      "ref": "D8",
+      "url": "https://dnr.illinois.gov/adrules.html",
+      "final_url": "https://dnr.illinois.gov/adrules.html",
+      "from": "https://dnr.illinois.gov/grants/stewardshipgrants.html",
+      "anchor": "Administrative rules",
+      "depth": 1,
+      "pdf": false,
+      "chars": 2806,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:09a2d3b4a5d49357db8d14db135a2525a4a12720db3389e3066feeaac290ffe9"
+    },
+    {
+      "ref": "D9",
+      "url": "https://dnr.illinois.gov/content/dam/soi/en/web/dnr/grants/documents/how-to-apply.pdf",
+      "final_url": "https://dnr.illinois.gov/content/dam/soi/en/web/dnr/grants/documents/how-to-apply.pdf",
+      "from": "https://dnr.illinois.gov/grants/stewardshipgrants.html",
+      "anchor": "Instructions on Applying for a Grant",
+      "depth": 1,
+      "pdf": true,
+      "chars": 2899,
+      "pages": 7,
+      "low_text": false,
+      "hash": "sha256:d3c8a3fe871161c396a5504eece22dc2bff47263c1b3ed3e73919be72054aca1"
+    }
+  ],
+  "failures": [
+    {
+      "url": "https://dnr.illinois.gov/content/dam/soi/en/web/dnr/boating/documents/boatdigest.pdf",
+      "from": "https://dnr.illinois.gov/grants/stewardshipgrants.html",
+      "kind": "low_text",
+      "message": "page 1 is an image: needs OCR"
+    },
+    {
+      "url": "https://dnr.illinois.gov/content/dam/soi/en/web/dnr/grants/documents/how-to-apply.pdf",
+      "from": "https://dnr.illinois.gov/grants/stewardshipgrants.html",
+      "kind": "low_text",
+      "message": "pages 3, 4 are images: needs OCR"
+    },
+    {
+      "url": "https://dnr.illinois.gov/grants/quick-link-guide-to-the-special-wildlife-funds.html",
+      "from": "https://dnr.illinois.gov/grants/stewardshipgrants.html",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://dnr.illinois.gov/content/dam/soi/en/web/dnr/grants/documents/state-of-illinois-grant-prequalification-instructions-and-resources.pdf",
+      "from": "https://dnr.illinois.gov/grants/stewardshipgrants.html",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://www.irs.gov/pub/irs-pdf/fw9.pdf",
+      "from": "https://dnr.illinois.gov/grants/stewardshipgrants.html",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://dnr.illinois.gov/content/dam/soi/en/web/dnr/grants/documents/stewardship-grant-documents/2027nas-stewardship-grant-manual4-13-26.pdf",
+      "from": "https://dnr.illinois.gov/grants/stewardshipgrants.html",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://dnr.illinois.gov/content/dam/soi/en/web/dnr/grants/documents/2026-nas-project-narrative.pdf",
+      "from": "https://dnr.illinois.gov/grants/stewardshipgrants.html",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://dnr.illinois.gov/content/dam/soi/en/web/dnr/grants/documents/nas-grant-evaluation-criteria.pdf",
+      "from": "https://dnr.illinois.gov/grants/stewardshipgrants.html",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://dnr.illinois.gov/content/dam/soi/en/web/dnr/grants/documents/stewardship-grant-documents/2027-nas-grant-nofo.pdf",
+      "from": "https://dnr.illinois.gov/grants/stewardshipgrants.html",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://dnr.illinois.gov/content/dam/soi/en/web/dnr/grants/documents/illinois-natural-areas-plan.pdf",
+      "from": "https://dnr.illinois.gov/grants/stewardshipgrants.html",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://dnr.illinois.gov/content/dam/soi/en/web/naturalheritage/documents/Illinois%20Sustainable%20Natural%20Areas%20Vision.pdf",
+      "from": "https://dnr.illinois.gov/grants/stewardshipgrants.html",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://dnr.illinois.gov/content/dam/soi/en/web/dnr/about/documents/affirmative_action_plan.pdf",
+      "from": "https://dnr.illinois.gov/grants/stewardshipgrants.html",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://dnr.illinois.gov/about/faq.html",
+      "from": "https://dnr.illinois.gov/grants/stewardshipgrants.html",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://dnr2.illinois.gov/Windshieldcard/",
+      "from": "https://dnr.illinois.gov/hunting/harvestreporting.html",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://dnr.illinois.gov/content/dam/soi/en/web/dnr/about/documents/affirmative_action_plan.pdf",
+      "from": "https://dnr.illinois.gov/hunting/harvestreporting.html",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://dnr.illinois.gov/about/faq.html",
+      "from": "https://dnr.illinois.gov/hunting/harvestreporting.html",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://uscgboating.org/images/725.PDF",
+      "from": "https://dnr.illinois.gov/boating/boatingaccidentreport.html",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://dnr.illinois.gov/content/dam/soi/en/web/dnr/boating/documents/powerofattorney.pdf",
+      "from": "https://dnr.illinois.gov/boating/watercraftapplications.html",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://dnr.illinois.gov/content/dam/soi/en/web/dnr/boating/documents/statementoftrust.pdf",
+      "from": "https://dnr.illinois.gov/boating/watercraftapplications.html",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://dnr.illinois.gov/content/dam/soi/en/web/dnr/boating/documents/smallestateaffidavit.pdf",
+      "from": "https://dnr.illinois.gov/boating/watercraftapplications.html",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://www.cyberdriveillinois.com/publications/pdf_publications/vsd393.pdf",
+      "from": "https://dnr.illinois.gov/boating/watercraftapplications.html",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://dnr.illinois.gov/content/dam/soi/en/web/dnr/boating/documents/regatta-plan-application.pdf",
+      "from": "https://dnr.illinois.gov/boating/watercraftapplications.html",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://dnr.illinois.gov/content/dam/soi/en/web/dnr/lawenforcement/documents/districtcpophonesandemails.pdf",
+      "from": "https://dnr.illinois.gov/boating/watercraft-frequently-asked-questions.html",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://dnr.illinois.gov/content/dam/soi/en/web/dnr/boating/documents/abandonedwatercraftstoragelien.pdf",
+      "from": "https://dnr.illinois.gov/boating/watercraft-frequently-asked-questions.html",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://dnr.illinois.gov/adrules/proposed.html",
+      "from": "https://dnr.illinois.gov/adrules.html",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    }
+  ],
+  "skipped_links": 573,
+  "chunks": [
+    { "id": "all", "docs": ["D1", "D2", "D3", "D4", "D5", "D6", "D7", "D8", "D9"], "chars": 80003 }
+  ],
+  "outcomes": {
+    "eligibility": "stated",
+    "documents": "stated",
+    "effort": "stated",
+    "co_finance": "stated",
+    "consortium": "not_found",
+    "after_award": "not_found"
+  },
+  "written": ["eligibility", "documents", "effort", "co_finance"],
+  "escalated": [],
+  "flags": [],
+  "notes": [
+    "extractor: The application deadline is TBD. D2-D8 are unrelated boating pages or documents and provide no grant requirements."
+  ],
+  "usd": 0
+}
