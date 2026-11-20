@@ -18,6 +18,14 @@
   "amount": { "currency": "BRL", "min": 50000, "max": 100000 },
   "co_finance_required": null,
   "reporting": null,
+  "eligibility": [
+    {
+      "rule": "Be a private nonprofit entity or a local cooperative of the Mebêngôkre/Kayapó people",
+      "kind": "legal"
+    },
+    { "rule": "Be legally constituted with a 100% Indigenous board and council", "kind": "legal" },
+    { "rule": "Have a 12-month execution period", "kind": "project" }
+  ],
   "calls": [
     {
       "id": "cycle-5-007-2024",
@@ -60,7 +68,27 @@
       "quote": "As propostas devem ser de no máx. R$100 mil e no mín. R$50mil.",
       "checked_at": "2026-11-20",
       "method": "page"
-    }
+    },
+    "eligibility": [
+      {
+        "source_url": "https://chamadas.funbio.org.br/projetos-locais-fundo-kayapo",
+        "quote": "Entidades privadas sem fins lucrativos e/ou sociedades cooperativas locais do povo Mebêngôkre/Kayapó.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://chamadas.funbio.org.br/projetos-locais-fundo-kayapo",
+        "quote": "A instituição proponente deverá ser legalmente constituída e possuir diretoria e conselho 100% indígena.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://chamadas.funbio.org.br/projetos-locais-fundo-kayapo",
+        "quote": "E prazo de execução de 12 meses.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ]
   },
   "checked_at": "2026-11-20"
 }

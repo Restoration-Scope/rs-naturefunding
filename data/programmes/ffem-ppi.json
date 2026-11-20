@@ -18,10 +18,14 @@
     "community_conservation",
     "sustainable_land_use"
   ],
-  "applicant_types": ["ngo"],
+  "applicant_types": [
+    "ngo"
+  ],
   "geography": {
     "scope": "regions",
-    "regions": ["africa"],
+    "regions": [
+      "africa"
+    ],
     "label": "Afrique Centrale et de l'Ouest (West and Central Africa)"
   },
   "access": "direct",
@@ -29,6 +33,23 @@
   "amount": null,
   "co_finance_required": null,
   "reporting": null,
+  "effort": {
+    "steps": [
+      "Initial proposal",
+      "Full application, if shortlisted",
+      "Selection committee review"
+    ]
+  },
+  "eligibility": [
+    {
+      "rule": "Is a local NGO rather than a French NGO",
+      "kind": "legal"
+    },
+    {
+      "rule": "Is active in biodiversity conservation",
+      "kind": "project"
+    }
+  ],
   "calls": [
     {
       "id": "nouveaux-partenaires-1-ppi-7",
@@ -36,7 +57,10 @@
       "url": "https://www.programmeppi.org/ppi-7-un-demarrage-dynamique-et-les-resultats-sont-la/",
       "status": "closed",
       "opens": null,
-      "deadline": { "date": "2025-12-18", "text": "à la clôture, le 18 décembre 2025" },
+      "deadline": {
+        "date": "2025-12-18",
+        "text": "à la clôture, le 18 décembre 2025"
+      },
       "evidence": {
         "status": {
           "source_url": "https://www.programmeppi.org/en/aap/",
@@ -83,7 +107,41 @@
       "quote": "Cette nouvelle phase du programme vise la mise en œuvre d'environ 80 projets dans 28 pays d'Afrique Centrale et de l'Ouest à travers 8 appels à projets.",
       "checked_at": "2026-11-15",
       "method": "page"
-    }
+    },
+    "effort": [
+      {
+        "source_url": "https://www.programmeppi.org/ppi-7-un-demarrage-dynamique-et-les-resultats-sont-la/",
+        "quote": "733 propositions ont été réceptionnées à la clôture, le 18 décembre 2025.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.programmeppi.org/ppi-7-un-demarrage-dynamique-et-les-resultats-sont-la/",
+        "quote": "les organisations concernées ont été invitées à soumettre un dossier complet.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.programmeppi.org/ppi-7-un-demarrage-dynamique-et-les-resultats-sont-la/",
+        "quote": "Les dossiers complets ont ensuite été soumis au comité de sélection début juin et chaque projet a été évalué par 3 évaluateurs ou évaluatrices.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "eligibility": [
+      {
+        "source_url": "https://ffem.fr/en/frequently-asked-questions",
+        "quote": "A French NGO is not eligible for the PPI; the initiative must be submitted by a local NGO",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.programmeppi.org/ppi-7-un-demarrage-dynamique-et-les-resultats-sont-la/",
+        "quote": "Destiné aux associations actives dans la conservation de la biodiversité",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ]
   },
   "checked_at": "2026-11-15"
 }

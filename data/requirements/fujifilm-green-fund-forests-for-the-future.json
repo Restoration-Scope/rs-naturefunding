@@ -1,0 +1,70 @@
+{
+  "id": "fujifilm-green-fund-forests-for-the-future",
+  "read_on": "2026-11-20",
+  "prompt_version": "req-2026-11-20.1",
+  "models": ["cursor:gpt-5.6-luna-high", "cursor:gpt-5.6-sol-high"],
+  "complete": false,
+  "reasons": ["Jev did not check this reading, so an absent fact is not known to be absent"],
+  "requirements_checked": false,
+  "documents": [
+    {
+      "ref": "D1",
+      "url": "https://www.jwrc.or.jp/service/shintaku/documents/yoko_fgf2026_moridukuri.pdf",
+      "final_url": "https://www.jwrc.or.jp/service/shintaku/documents/yoko_fgf2026_moridukuri.pdf",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": true,
+      "chars": 2725,
+      "pages": 2,
+      "low_text": false,
+      "hash": "sha256:495ade6403d3ed707e90f5b47ac9dfeea1179a7b54634766d8adf8817ac9c76a"
+    }
+  ],
+  "failures": [],
+  "skipped_links": 0,
+  "chunks": [{ "id": "all", "docs": ["D1"], "chars": 2821 }],
+  "outcomes": {
+    "eligibility": "partial",
+    "documents": "stated",
+    "effort": "stated",
+    "co_finance": "not_found",
+    "consortium": "not_found",
+    "after_award": "stated"
+  },
+  "written": ["eligibility", "documents", "effort", "after_award"],
+  "escalated": ["eligibility", "documents", "after_award"],
+  "flags": [
+    {
+      "field": "eligibility",
+      "item": "The project area has varied surrounding land uses supported by a forest",
+      "why": "the quote is not on any gathered document"
+    },
+    {
+      "field": "eligibility",
+      "item": "The forest is manageable through ongoing local resident or volunteer activity",
+      "why": "the quote is not on any gathered document"
+    },
+    {
+      "field": "eligibility",
+      "item": "The organisation operates independently of specific persons or related parties",
+      "why": "the quote is not on any gathered document"
+    },
+    {
+      "field": "eligibility",
+      "item": "The organisation does not give special benefits to specific persons or related parties",
+      "why": "the quote is not on any gathered document"
+    },
+    {
+      "field": "eligibility",
+      "item": "No general-purpose equipment or permanent project personnel costs",
+      "why": "the quote is not on any gathered document"
+    }
+  ],
+  "notes": [
+    "effort \"Application submission\": the quote does not state 2026-05-21 whole; left undated",
+    "extractor: If the awarded amount is reduced, the text says the applicant may need to use its own funds. The first-year grant is capped at 5 million yen and the total grant period at 10 million yen.",
+    "source fujifilm-green-fund-forests-for-the-future-1: selector main dropped, a new quote sits outside it"
+  ],
+  "usd": 0
+}

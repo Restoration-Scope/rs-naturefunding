@@ -1,19 +1,47 @@
 {
   "id": "fape-fonds-natura-porinetia",
   "name": "Fonds Natura Porinetia",
-  "funder": { "name": "FAPE Te Ora Naho", "url": "https://www.teoranaho-fape.org/" },
+  "funder": {
+    "name": "FAPE Te Ora Naho",
+    "url": "https://www.teoranaho-fape.org/"
+  },
   "administered_by": null,
   "parent": null,
   "url": "https://www.teoranaho-fape.org/fonds-natura-porinetia",
   "summary": "Company-funded small grants run by the federation of environmental associations of French Polynesia for concrete local environment projects led by its member associations. Membership of the federation is open to local environmental associations.",
-  "approaches": ["species_conservation", "coastal_marine", "community_conservation"],
-  "applicant_types": ["ngo"],
-  "geography": { "scope": "countries", "countries": ["PF"], "label": "French Polynesia" },
+  "approaches": [
+    "species_conservation",
+    "coastal_marine",
+    "community_conservation"
+  ],
+  "applicant_types": [
+    "ngo"
+  ],
+  "geography": {
+    "scope": "countries",
+    "countries": [
+      "PF"
+    ],
+    "label": "French Polynesia"
+  },
   "access": "direct",
   "window": "fixed",
   "amount": null,
   "co_finance_required": null,
   "reporting": "Funded projects must report regularly; the federation gives each project personal support through implementation.",
+  "eligibility": [
+    {
+      "rule": "Is a member association of FAPE",
+      "kind": "legal"
+    },
+    {
+      "rule": "Completes the project within one to three years",
+      "kind": "project"
+    }
+  ],
+  "after_award": {
+    "reports": "unspecified"
+  },
   "calls": [],
   "evidence": {
     "applicant_types": {
@@ -45,7 +73,42 @@
       "quote": "Le Fonds Natura Porinetia repose sur un dispositif d'appel à projets (AAP), organisé au moins une fois par an.",
       "checked_at": "2026-11-20",
       "method": "page"
-    }
+    },
+    "eligibility": [
+      {
+        "source_url": "https://www.teoranaho-fape.org/fonds-natura-porinetia",
+        "quote": "portées par des associations membres de la FAPE",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.teoranaho-fape.org/fonds-natura-porinetia",
+        "quote": "Les projets sélectionnés doivent être mis en &oelig;uvre dans un délai de un à trois ans",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "after_award": [
+      {
+        "source_url": "https://www.teoranaho-fape.org/fonds-natura-porinetia",
+        "quote": "Un reporting régulier est également exigé",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "effort": [
+      {
+        "source_url": "https://www.teoranaho-fape.org/fonds-natura-porinetia",
+        "quote": "Les associations intéressées peuvent soumettre leur candidature selon des critères définis en amont.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ]
   },
-  "checked_at": "2026-11-20"
+  "checked_at": "2026-11-20",
+  "effort": {
+    "steps": [
+      "Application to the call for projects"
+    ]
+  }
 }

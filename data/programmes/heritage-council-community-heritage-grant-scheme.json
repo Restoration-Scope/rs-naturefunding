@@ -1,14 +1,30 @@
 {
   "id": "heritage-council-community-heritage-grant-scheme",
   "name": "Community Heritage Grant Scheme (Biodiversity & Nature Restoration theme)",
-  "funder": { "name": "The Heritage Council", "url": "https://www.heritagecouncil.ie/" },
+  "funder": {
+    "name": "The Heritage Council",
+    "url": "https://www.heritagecouncil.ie/"
+  },
   "administered_by": null,
   "parent": null,
   "url": "https://www.heritagecouncil.ie/funding/community-heritage-grant-scheme-2",
   "summary": "Irish heritage grants for community groups and not-for-profit NGOs, with one theme covering habitat and species protection, restoration, invasive species work and biodiversity monitoring. Two-stage process: expression of interest, then a full application if shortlisted.",
-  "approaches": ["community_conservation", "species_conservation", "wetlands", "grasslands"],
-  "applicant_types": ["community_group", "ngo"],
-  "geography": { "scope": "countries", "countries": ["IE"] },
+  "approaches": [
+    "community_conservation",
+    "species_conservation",
+    "wetlands",
+    "grasslands"
+  ],
+  "applicant_types": [
+    "community_group",
+    "ngo"
+  ],
+  "geography": {
+    "scope": "countries",
+    "countries": [
+      "IE"
+    ]
+  },
   "access": "direct",
   "window": "fixed",
   "amount": {
@@ -17,8 +33,39 @@
     "max": 25000,
     "note": "Scheme-wide limits across all themes"
   },
-  "co_finance_required": null,
+  "co_finance_required": false,
   "reporting": null,
+  "effort": {
+    "steps": [
+      "Expression of Interest",
+      "Full application, if invited"
+    ],
+    "due": [
+      "2026-10-16",
+      "2027-01-15"
+    ]
+  },
+  "eligibility": [
+    {
+      "rule": "Operates not-for-profit with an active bank or credit union account in its own name",
+      "kind": "legal"
+    },
+    {
+      "rule": "Project can be delivered between April and November 2027",
+      "kind": "project"
+    },
+    {
+      "rule": "Project has not started before a grant offer is issued",
+      "kind": "project"
+    },
+    {
+      "rule": "Any planting or seeding uses native, habitat-suited species of local provenance, ecologically sourced",
+      "kind": "project"
+    }
+  ],
+  "after_award": {
+    "reports": "final"
+  },
   "calls": [
     {
       "id": "2027-eoi",
@@ -84,6 +131,60 @@
       "source_url": "https://www.heritagecouncil.ie/funding/community-heritage-grant-scheme-2",
       "quote": "Minimum grant: €800 Maximum grant: €25,000",
       "checked_at": "2026-11-12",
+      "method": "page"
+    },
+    "effort": [
+      {
+        "source_url": "https://www.heritagecouncil.ie/funding/community-heritage-grant-scheme-2",
+        "quote": "Expression of Interest Deadline (Closed): 16 October 2026 at 5.00pm",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.heritagecouncil.ie/funding/community-heritage-grant-scheme-2",
+        "quote": "Full Application Deadline (shortlisted applicants only): 15 January 2027 at 5.00pm",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "eligibility": [
+      {
+        "source_url": "https://www.heritagecouncil.ie/content/files/CHG27-General-Guidance.pdf",
+        "quote": "Your organisation must: ✔ operate on a not-for-profit basis; ✔ have an active bank or credit union account in its own name.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.heritagecouncil.ie/content/files/CHG27-General-Guidance.pdf",
+        "quote": "Projects that cannot be delivered within the grant timeframe (April 2027 to November 2027).",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.heritagecouncil.ie/content/files/CHG27-General-Guidance.pdf",
+        "quote": "Retrospective projects or projects that have already started before a grant offer is issued.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.heritagecouncil.ie/content/files/3.-Biodiversity-Nature-Restoration-Theme-Guidance.pdf",
+        "quote": "Where a project involves planting or seeding, the Heritage Council will only support projects that use: ◾ Native species ◾ Appropriate local provenance where available ◾ Species suited to the habitat ◾ Ecologically appropriate sourcing",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "after_award": [
+      {
+        "source_url": "https://www.heritagecouncil.ie/funding/standard-terms-and-conditions-of-grant-offers",
+        "quote": "You will have to submit a Final Report through the Heritage Council's online grants system before the end of day on the deadline date.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "co_finance_required": {
+      "source_url": "https://www.heritagecouncil.ie/content/files/FAQs_CHG_2027.pdf",
+      "quote": "Is match funding required? No. Match funding is not required for this scheme.",
+      "checked_at": "2026-11-20",
       "method": "page"
     }
   },

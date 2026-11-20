@@ -9,9 +9,22 @@
   "parent": null,
   "url": "https://www.expo-cosmos.or.jp/main/zyosei/",
   "summary": "Grants for non-profit groups in Japan, from foundations and NPOs to volunteer groups, running field activities that protect plants, birds, insects and other wildlife, or community greening. A separate research strand and an events strand also exist.",
-  "approaches": ["species_conservation", "community_conservation", "urban_nature"],
-  "applicant_types": ["ngo", "community_group"],
-  "geography": { "scope": "countries", "countries": ["JP"], "label": "Japan" },
+  "approaches": [
+    "species_conservation",
+    "community_conservation",
+    "urban_nature"
+  ],
+  "applicant_types": [
+    "ngo",
+    "community_group"
+  ],
+  "geography": {
+    "scope": "countries",
+    "countries": [
+      "JP"
+    ],
+    "label": "Japan"
+  },
   "access": "direct",
   "window": "fixed",
   "amount": {
@@ -21,6 +34,51 @@
   },
   "co_finance_required": true,
   "reporting": null,
+  "eligibility": [
+    {
+      "rule": "Be the implementing organisation for the proposed project",
+      "kind": "project"
+    },
+    {
+      "rule": "Operate without profit and carry out a public-interest project",
+      "kind": "legal"
+    },
+    {
+      "rule": "Have an activity record related to the proposed project",
+      "kind": "track_record"
+    },
+    {
+      "rule": "Not be a government body, independent agency, company or school corporation",
+      "kind": "legal"
+    },
+    {
+      "rule": "Not primarily pursue political, ideological or religious activities",
+      "kind": "legal"
+    },
+    {
+      "rule": "Not be an organised crime group or under its control",
+      "kind": "legal"
+    },
+    {
+      "rule": "Not funded for the same project in all three years FY2024–FY2026",
+      "kind": "other"
+    },
+    {
+      "rule": "Project is not designated-manager work for a national or local government",
+      "kind": "project"
+    }
+  ],
+  "after_award": {
+    "reports": "final"
+  },
+  "documents": [
+    "Bylaws or governing rules",
+    "Officers list",
+    "Members list",
+    "Evidence of research or activity related to the project",
+    "Project income and expenditure report",
+    "Reference materials, such as pamphlets, published papers or newspaper articles"
+  ],
   "calls": [
     {
       "id": "fy2027",
@@ -87,11 +145,124 @@
       "method": "page"
     },
     "co_finance_required": {
-      "source_url": "https://www.expo-cosmos.or.jp/main/zyosei/invitation_09.html",
-      "quote": "活動・行催事 一件当たり50万円以内で、4分の3以内",
+      "source_url": "https://www.expo-cosmos.or.jp/uploads/ouboyoukou-09.pdf",
+      "quote": "4 分の 1 は自己資金等の準備が必要です",
       "checked_at": "2026-11-20",
       "method": "page"
-    }
+    },
+    "eligibility": [
+      {
+        "source_url": "https://www.expo-cosmos.or.jp/main/zyosei/invitation_09.html",
+        "quote": "応募しようとする事業の実施者であること。",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.expo-cosmos.or.jp/main/zyosei/invitation_09.html",
+        "quote": "営利を目的とせず、公益性を有する事業を実施する団体であること。",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.expo-cosmos.or.jp/main/zyosei/invitation_09.html",
+        "quote": "応募する事業にかかわる何らかの活動実績を有している団体であること。",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.expo-cosmos.or.jp/main/zyosei/invitation_09.html",
+        "quote": "国や地方公共団体、独立行政法人、民間企業、学校法人でないこと。",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.expo-cosmos.or.jp/main/zyosei/invitation_09.html",
+        "quote": "特定の政治、思想、宗教等の活動を主たる目的とした団体でないこと。",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.expo-cosmos.or.jp/main/zyosei/invitation_09.html",
+        "quote": "暴力団でないこと、暴力団もしくは暴力団員の統制の下にある団体でないこと。",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.expo-cosmos.or.jp/main/zyosei/invitation_09.html",
+        "quote": "同じ事業について、令和6年度~令和8年度の3ヵ年度に連続して助成を受けていないこと。",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.expo-cosmos.or.jp/main/zyosei/invitation_09.html",
+        "quote": "国や地方公共団体の指定管理業務についての応募は受け付けることができません。",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "after_award": [
+      {
+        "source_url": "https://www.expo-cosmos.or.jp/uploads/ouboyoukou-09.pdf",
+        "quote": "報告書、決算書の提出は2週間以内の令和10年3月15日を厳守",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "documents": [
+      {
+        "source_url": "https://www.expo-cosmos.or.jp/uploads/ouboyoukou-09.pdf",
+        "quote": "(1)規約または会則 (2)役員名簿、会員名簿",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.expo-cosmos.or.jp/uploads/ouboyoukou-09.pdf",
+        "quote": "(3)当該事業にかかわる何らかの調査研究または活動の実績ならびに事業収支報告",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.expo-cosmos.or.jp/uploads/ouboyoukou-09.pdf",
+        "quote": "(4)参考資料(パンフレット、既発表の論文、新聞掲載記事など)",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "co_finance": {
+      "source_url": "https://www.expo-cosmos.or.jp/uploads/ouboyoukou-09.pdf",
+      "quote": "4 分の 1 は自己資金等の準備が必要です",
+      "checked_at": "2026-11-20",
+      "method": "page"
+    },
+    "effort": [
+      {
+        "source_url": "https://www.expo-cosmos.or.jp/uploads/ouboyoukou-09.pdf",
+        "quote": "提出書類にもとづく一次審査を行い、二次審査対象団体を選出します。",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.expo-cosmos.or.jp/uploads/ouboyoukou-09.pdf",
+        "quote": "オンラインにてプレゼンテーションによる二次審査を行い",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.expo-cosmos.or.jp/uploads/ouboyoukou-09.pdf",
+        "quote": "25万円以下の少額助成(調査研究、活動・行催事とも)は、プレゼンテーションによ る二次審査は行わず",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ]
   },
-  "checked_at": "2026-11-20"
+  "checked_at": "2026-11-20",
+  "co_finance": {
+    "min_share": 25
+  },
+  "effort": {
+    "steps": [
+      "Application form and attachments by email",
+      "Online presentation, if shortlisted (not for grants up to ¥250,000)"
+    ]
+  }
 }

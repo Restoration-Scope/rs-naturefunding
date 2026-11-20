@@ -1,0 +1,109 @@
+{
+  "id": "hf-landscape-grassroots-grants",
+  "read_on": "2026-11-20",
+  "prompt_version": "req-2026-11-20.1",
+  "models": ["cursor:gpt-5.6-luna-high"],
+  "complete": false,
+  "reasons": [
+    "12 links could not be ranked without Jev",
+    "https://cdn.environment.sa.gov.au/landscape/docs/hf/hf_landscape_plan_2021-26.pdf: page 1 is an image: needs OCR",
+    "https://hf.landscape.sa.gov.au/media/FINAL-GG-guidelines-17022025.pdf: page 1 is an image: needs OCR",
+    "https://hf.landscape.sa.gov.au/media/documents/Landscapes-Hills-and-Fleurieu-Grassroots-Grants-Guidelines-2025.pdf: page 1 is an image: needs OCR",
+    "the text names a document with rules that was not read: Guidelines for Applicants",
+    "the text names a document with rules that was not read: Grant Agreement",
+    "Jev did not check this reading, so an absent fact is not known to be absent"
+  ],
+  "requirements_checked": false,
+  "documents": [
+    {
+      "ref": "D1",
+      "url": "https://hf.landscape.sa.gov.au/get-involved/grants-and-funding/grassroots-grants",
+      "final_url": "https://hf.landscape.sa.gov.au/get-involved/grants-and-funding/grassroots-grants",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 70996,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:d23601afbacd6e975b8c5ae48c3cbc56f31587c392f90f6b07567756972580da"
+    },
+    {
+      "ref": "D2",
+      "url": "https://cdn.environment.sa.gov.au/landscape/docs/hf/hf_landscape_plan_2021-26.pdf",
+      "final_url": "https://cdn.environment.sa.gov.au/landscape/docs/hf/hf_landscape_plan_2021-26.pdf",
+      "from": "https://hf.landscape.sa.gov.au/get-involved/grants-and-funding/grassroots-grants",
+      "anchor": "Hills and Fleurieu Landscape Plan 2021-26.",
+      "depth": 1,
+      "pdf": true,
+      "chars": 38400,
+      "pages": 24,
+      "low_text": false,
+      "hash": "sha256:1aa8dcc049ff25fde52ee1179caba0fe86b561fa0a9ecc0ff26653a1c67991d9"
+    },
+    {
+      "ref": "D3",
+      "url": "https://hf.landscape.sa.gov.au/media/FINAL-GG-guidelines-17022025.pdf",
+      "final_url": "https://hf.landscape.sa.gov.au/media/FINAL-GG-guidelines-17022025.pdf",
+      "from": "https://hf.landscape.sa.gov.au/get-involved/grants-and-funding/grassroots-grants",
+      "anchor": "Guidelines for Applicants.",
+      "depth": 1,
+      "pdf": true,
+      "chars": 19677,
+      "pages": 8,
+      "low_text": false,
+      "hash": "sha256:e5197d3ea65ed7503ec83b32721d127bcd5144c58a6889227740a2a1779dadc7"
+    },
+    {
+      "ref": "D4",
+      "url": "https://hf.landscape.sa.gov.au/media/documents/Landscapes-Hills-and-Fleurieu-Grassroots-Grants-Guidelines-2025.pdf",
+      "final_url": "https://hf.landscape.sa.gov.au/media/documents/Landscapes-Hills-and-Fleurieu-Grassroots-Grants-Guidelines-2025.pdf",
+      "from": "https://hf.landscape.sa.gov.au/get-involved/grants-and-funding/grassroots-grants",
+      "anchor": "Grassroot Grant Guidelines",
+      "depth": 1,
+      "pdf": true,
+      "chars": 19677,
+      "pages": 8,
+      "low_text": false,
+      "hash": "sha256:e5197d3ea65ed7503ec83b32721d127bcd5144c58a6889227740a2a1779dadc7"
+    }
+  ],
+  "failures": [
+    {
+      "url": "https://cdn.environment.sa.gov.au/landscape/docs/hf/hf_landscape_plan_2021-26.pdf",
+      "from": "https://hf.landscape.sa.gov.au/get-involved/grants-and-funding/grassroots-grants",
+      "kind": "low_text",
+      "message": "page 1 is an image: needs OCR"
+    },
+    {
+      "url": "https://hf.landscape.sa.gov.au/media/FINAL-GG-guidelines-17022025.pdf",
+      "from": "https://hf.landscape.sa.gov.au/get-involved/grants-and-funding/grassroots-grants",
+      "kind": "low_text",
+      "message": "page 1 is an image: needs OCR"
+    },
+    {
+      "url": "https://hf.landscape.sa.gov.au/media/documents/Landscapes-Hills-and-Fleurieu-Grassroots-Grants-Guidelines-2025.pdf",
+      "from": "https://hf.landscape.sa.gov.au/get-involved/grants-and-funding/grassroots-grants",
+      "kind": "low_text",
+      "message": "page 1 is an image: needs OCR"
+    }
+  ],
+  "skipped_links": 67,
+  "chunks": [{ "id": "all", "docs": ["D1", "D2", "D3", "D4"], "chars": 149449 }],
+  "outcomes": {
+    "eligibility": "stated",
+    "documents": "stated",
+    "effort": "stated",
+    "co_finance": "stated",
+    "consortium": "not_found",
+    "after_award": "stated"
+  },
+  "written": ["eligibility", "documents", "effort", "co_finance", "after_award"],
+  "escalated": [],
+  "flags": [],
+  "notes": [
+    "co_finance: ratio 1:2 dropped, its quote does not state it",
+    "extractor: D1 describes the 2026 round, which is closed. D3 and D4 describe the older 2025-26 round; their differing rules and dates were not applied."
+  ],
+  "usd": 0
+}
