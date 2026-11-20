@@ -9,14 +9,83 @@
   "parent": null,
   "url": "https://mzp.gov.cz/cz/agenda/prehled-dotaci/program-na-podporu-projektu-nno",
   "summary": "Czech state-budget grants of CZK 50,000 to 300,000 per project for non-profit organisations' non-investment projects in nature and biodiversity protection, climate adaptation, environmental education and volunteer involvement; the 2027 call is closed.",
-  "approaches": ["species_conservation", "community_conservation"],
-  "applicant_types": ["ngo"],
-  "geography": { "scope": "countries", "countries": ["CZ"] },
+  "approaches": [
+    "species_conservation",
+    "community_conservation"
+  ],
+  "applicant_types": [
+    "ngo"
+  ],
+  "geography": {
+    "scope": "countries",
+    "countries": [
+      "CZ"
+    ]
+  },
   "access": "direct",
   "window": "fixed",
-  "amount": { "currency": "CZK", "min": 50000, "max": 300000 },
+  "amount": {
+    "currency": "CZK",
+    "min": 50000,
+    "max": 300000
+  },
   "co_finance_required": true,
   "reporting": null,
+  "effort": {
+    "steps": [
+      "Grantys application and data-box copy",
+      "Formal requirements review",
+      "Expert assessment"
+    ]
+  },
+  "eligibility": [
+    {
+      "rule": "Has one of the legal forms listed in the call",
+      "kind": "legal"
+    },
+    {
+      "rule": "States environmental or sustainable-development activity in its governing documents or register",
+      "kind": "legal"
+    },
+    {
+      "rule": "Keeps accounts under the Czech Accounting Act",
+      "kind": "capacity"
+    },
+    {
+      "rule": "Has filed its last annual accounts and annual report in the public register",
+      "kind": "legal"
+    },
+    {
+      "rule": "Submits no more than two projects per legal entity",
+      "kind": "project"
+    },
+    {
+      "rule": "Is registered at least six months before the application deadline",
+      "kind": "track_record"
+    },
+    {
+      "rule": "Does not include activities that can be carried out commercially",
+      "kind": "project"
+    },
+    {
+      "rule": "For topics 1 and 2, includes public participation or related public awareness",
+      "kind": "project"
+    }
+  ],
+  "co_finance": {
+    "min_share": 30
+  },
+  "after_award": {
+    "reports": "final"
+  },
+  "documents": [
+    "Full extract from the beneficial owners register",
+    "Person identification form",
+    "Copy of bank account management agreement",
+    "Land identification form, for projects linked to land",
+    "Landowner statement, if the land is not applicant-owned",
+    "Nature-protection authority exemption, permit or consent, if legally required"
+  ],
   "calls": [
     {
       "id": "2027-call",
@@ -78,9 +147,9 @@
       "method": "page"
     },
     "co_finance_required": {
-      "source_url": "https://mzp.gov.cz/cz/agenda/prehled-dotaci/program-na-podporu-projektu-nno/vyzva-programu-na-podporu-projektu-nno-pro-rok-2027-podprogram-a-podprogram-na-podporu-projektu-nno",
-      "quote": "Dotace může tvořit maximálně 70 % celkových nákladů na realizaci projektu.",
-      "checked_at": "2026-11-03",
+      "source_url": "https://mzp.gov.cz/system/files/2026-09/320-Vyzva_NNO_prgA_2027-20260902.pdf",
+      "quote": "Maximální podíl dotace ve výši 70 % uznatelných nákladů projektu.",
+      "checked_at": "2026-11-20",
       "method": "page"
     },
     "geography": {
@@ -88,7 +157,117 @@
       "quote": "Zásadách vlády pro poskytování dotací ze státního rozpočtu České republiky nestátním neziskovým organizacím",
       "checked_at": "2026-11-20",
       "method": "page"
-    }
+    },
+    "effort": [
+      {
+        "source_url": "https://mzp.gov.cz/cz/agenda/prehled-dotaci/program-na-podporu-projektu-nno/vyzva-programu-na-podporu-projektu-nno-pro-rok-2027-podprogram-a-podprogram-na-podporu-projektu-nno",
+        "quote": "Projekty se podávají prostřednictvím elektronického systému Grantys MŽP. Příjem žádostí začíná 3. září 2026 a končí 5. října 2026 ve 23:59:59. Do tohoto data musí být žádosti podány prostřednictvím systému Grantys MŽP a opis žádosti doručen prostřednictvím datové schránky na MŽP.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://mzp.gov.cz/system/files/2026-09/320-Manual%20GRANTYS%20-%2020260827.pdf",
+        "quote": "Posouzení formálních náležitostí projektů provede komise pro otevírání obálek.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://mzp.gov.cz/system/files/2026-09/320-Vyzva_NNO_prgA_2027-20260902.pdf",
+        "quote": "Každý projekt bude hodnocen odbornou sekcí MŽP (kritérium Naplňování strategických dokumentů) a dvěma nezávislými experty (ostatní kritéria), kteří projekty ohodnotí dle kritérií uvedených ve výzvě.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "eligibility": [
+      {
+        "source_url": "https://mzp.gov.cz/system/files/2026-09/320-Vyzva_NNO_prgA_2027-20260902.pdf",
+        "quote": "Možným účastníkem jsou organizace s následující právní formou: I. spolky a pobočné spolky vzniklé podle zákona č. 89/2012 Sb., občanský zákoník; II. obecně prospěšné společnosti založené podle zákona č. 248/1995 Sb.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://mzp.gov.cz/system/files/2026-09/320-Vyzva_NNO_prgA_2027-20260902.pdf",
+        "quote": "Předmět činnosti žadatele musí zahrnovat působení v oblasti životního prostředí nebo udržitelného rozvoje. Tato oblast působení žadatele musí být výslovně uvedena ve stanovách nebo zakládací listině nebo ve výpisu z veřejného rejstříku.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://mzp.gov.cz/system/files/2026-09/320-Vyzva_NNO_prgA_2027-20260902.pdf",
+        "quote": "Organizace vede účetnictví dle zákona č. 563/1991 Sb., o účetnictví, ve znění pozdějších předpisů.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://mzp.gov.cz/system/files/2026-09/320-Prirucka_pro_zadatele_a_prijemce_dotace_MZP-20260825.pdf",
+        "quote": "Žadatel uložil do Sbírky listin veřejného rejstříku účetní závěrku a výroční zprávu za poslední uzavřené účetní období.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://mzp.gov.cz/system/files/2026-09/320-Vyzva_NNO_prgA_2027-20260902.pdf",
+        "quote": "Každá organizace se samostatnou právní subjektivitou může předložit maximálně 2 projekty celkem.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://mzp.gov.cz/system/files/2026-09/320-Vyzva_NNO_prgA_2027-20260902.pdf",
+        "quote": "Organizace musí být založena (zapsaná do veřejného rejstříku) nejméně 6 měsíců před datem ukončení příjmu žádostí.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://mzp.gov.cz/system/files/2026-09/320-Vyzva_NNO_prgA_2027-20260902.pdf",
+        "quote": "V Podprogramu A nebudou podporovány aktivity, které je možno realizovat na komerční bázi (například konference s vysokým vložným apod.).",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://mzp.gov.cz/system/files/2026-09/320-Vyzva_NNO_prgA_2027-20260902.pdf",
+        "quote": "Součástí projektu musí být zapojení veřejnosti do managementových prací a/nebo související osvěta veřejnosti.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "co_finance": {
+      "source_url": "https://mzp.gov.cz/system/files/2026-09/320-Vyzva_NNO_prgA_2027-20260902.pdf",
+      "quote": "na spolufinancování projektu (nutných 30 %) nelze použít podporu poskytnutou Státním fondem životního prostředí z národních zdrojů.",
+      "checked_at": "2026-11-20",
+      "method": "page"
+    },
+    "after_award": [
+      {
+        "source_url": "https://mzp.gov.cz/system/files/2026-09/320-Vyzva_NNO_prgA_2027-20260902.pdf",
+        "quote": "Příjemce dotace je povinen předložit MŽP nejpozději do 1. 2. 2028 vyúčtování přidělené dotace, závěrečnou vyhodnocovací zprávu o projektu členěnou dle závazné osnovy a závazné indikátory specifikované v Rozhodnutí o poskytnutí dotace.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "documents": [
+      {
+        "source_url": "https://mzp.gov.cz/system/files/2026-09/320-Manual%20GRANTYS%20-%2020260827.pdf",
+        "quote": "Úplný výpis z evidence skutečných majitelů a formulář identifikace osob pořízené v roce 2026 › › Kopie smlouvy o vedení bankovního účtu",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://mzp.gov.cz/system/files/2026-09/320-Manual%20GRANTYS%20-%2020260827.pdf",
+        "quote": "formulář identifikace pozemků (u projektů s vazbou na pozemky)",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://mzp.gov.cz/system/files/2026-09/320-Manual%20GRANTYS%20-%2020260827.pdf",
+        "quote": "u pozemků, které nejsou ve vlastnictví žadatele, dále přiložit vyjádření vlastníka pozemku",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://mzp.gov.cz/system/files/2026-09/320-Prirucka_pro_zadatele_a_prijemce_dotace_MZP-20260825.pdf",
+        "quote": "výjimka, povolení či souhlas orgánu ochrany přírody, pokud jsou potřebné podle zákona č. 114/1992 Sb., o ochraně přírody a krajiny, v platném znění.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ]
   },
   "checked_at": "2026-11-03"
 }

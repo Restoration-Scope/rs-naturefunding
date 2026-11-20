@@ -1,0 +1,52 @@
+{
+  "id": "nagasaki-citizen-forest-making-project",
+  "read_on": "2026-11-20",
+  "prompt_version": "req-2026-11-20.1",
+  "models": ["cursor:gpt-5.6-luna-high", "cursor:gpt-5.6-sol-high"],
+  "complete": false,
+  "reasons": [
+    "the text names a document with rules that was not read: 長崎県補助金等交付規則",
+    "the text names a document with rules that was not read: 長崎県農林部関係補助金等交付要綱",
+    "the text names a document with rules that was not read: ながさき森林環境保全事業補助金実施要綱",
+    "Jev did not check this reading, so an absent fact is not known to be absent",
+    "strong reading: the text names a document with rules that was not read: 長崎県補助金等交付規則",
+    "strong reading: the text names a document with rules that was not read: 長崎県農林部関係補助金等交付要綱",
+    "strong reading: the text names a document with rules that was not read: ながさき森林環境保全事業補助金実施要綱"
+  ],
+  "requirements_checked": false,
+  "documents": [
+    {
+      "ref": "D1",
+      "url": "https://www.pref.nagasaki.jp/uploads/2025/04/1743581592.pdf",
+      "final_url": "https://www.pref.nagasaki.jp/uploads/2025/04/1743581592.pdf",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": true,
+      "chars": 8041,
+      "pages": 15,
+      "low_text": false,
+      "hash": "sha256:c3a5b5497e7f503626763850bd3e2a11c7f3ca93998a386decfdf5cd17909eaa"
+    }
+  ],
+  "failures": [],
+  "skipped_links": 0,
+  "chunks": [{ "id": "all", "docs": ["D1"], "chars": 8119 }],
+  "outcomes": {
+    "eligibility": "stated",
+    "documents": "stated",
+    "effort": "stated",
+    "co_finance": "not_found",
+    "consortium": "not_found",
+    "after_award": "stated"
+  },
+  "written": ["eligibility", "documents", "effort", "after_award"],
+  "escalated": ["eligibility", "effort"],
+  "flags": [],
+  "notes": [
+    "extractor: D1 was revised on April 2, 2025 and applies to the relevant fiscal year's budget. It states an application deadline of the end of November and requires submission at least one month before the activity starts, but no exact Gregorian date is given.",
+    "strong: The deadline is the fiscal-year November month-end and at least one month before the project starts, but no calendar year is stated.",
+    "source nagasaki-citizen-forest-making-project-1: selector main dropped, a new quote sits outside it"
+  ],
+  "usd": 0
+}

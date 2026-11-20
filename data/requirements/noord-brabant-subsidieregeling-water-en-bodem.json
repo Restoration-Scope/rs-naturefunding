@@ -1,0 +1,73 @@
+{
+  "id": "noord-brabant-subsidieregeling-water-en-bodem",
+  "read_on": "2026-11-20",
+  "prompt_version": "req-2026-11-20.1",
+  "models": ["cursor:gpt-5.6-luna-high", "cursor:gpt-5.6-sol-high"],
+  "complete": false,
+  "reasons": [
+    "4 links could not be ranked without Jev",
+    "the text names a document with rules that was not read: Regeling uniforme kostenbegrippen en berekeningswijzen uurtarieven subsidies Noord-Brabant",
+    "the text names a document with rules that was not read: Regeling informatieverstrekking sisa",
+    "the text names a document with rules that was not read: Handreiking Ontwikkeling Waterlopen (HOW-systematiek)",
+    "the text names a document with rules that was not read: Handreiking Vispassages Noord Brabant (Brabantse Waterschappen, 2013)",
+    "the text names a document with rules that was not read: BOOT lijst",
+    "the text names a document with rules that was not read: DAEB-vrijstellingsbesluit",
+    "the text names a document with rules that was not read: Algemene subsidieverordening Noord-Brabant",
+    "the text names a document with rules that was not read: Regionaal water en bodemprogramma 2022-2027 (RWP)",
+    "the text names a document with rules that was not read: ambitiekaart",
+    "Jev did not check this reading, so an absent fact is not known to be absent",
+    "strong reading: the text names a document with rules that was not read: Ambitiekaart (Subsidieregeling natuur- en landschapsbeheer Noord-Brabant 2016)",
+    "strong reading: the text names a document with rules that was not read: Interim omgevingsverordening Noord-Brabant",
+    "strong reading: the text names a document with rules that was not read: Regionaal water en bodemprogramma 2022-2027",
+    "strong reading: the text names a document with rules that was not read: Handreiking Ontwikkeling Waterlopen",
+    "strong reading: the text names a document with rules that was not read: Handreiking Vispassages Noord Brabant (Brabantse Waterschappen, 2013)",
+    "strong reading: the text names a document with rules that was not read: BOOT lijst"
+  ],
+  "requirements_checked": false,
+  "documents": [
+    {
+      "ref": "D1",
+      "url": "https://lokaleregelgeving.overheid.nl/CVDR683377",
+      "final_url": "https://lokaleregelgeving.overheid.nl/CVDR683377",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 24480,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:d18ed9bea811116fbe81523c3e7b331be0fc64fd8ed31ec0b34cb758e96eb014"
+    },
+    {
+      "ref": "D2",
+      "url": "https://lokaleregelgeving.overheid.nl/CVDR683377?",
+      "final_url": "https://lokaleregelgeving.overheid.nl/CVDR683377?",
+      "from": "https://lokaleregelgeving.overheid.nl/CVDR683377",
+      "anchor": "Regeling tekst",
+      "depth": 1,
+      "pdf": false,
+      "chars": 24480,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:d18ed9bea811116fbe81523c3e7b331be0fc64fd8ed31ec0b34cb758e96eb014"
+    }
+  ],
+  "failures": [],
+  "skipped_links": 64,
+  "chunks": [{ "id": "all", "docs": ["D1", "D2"], "chars": 49146 }],
+  "outcomes": {
+    "eligibility": "stated",
+    "documents": "stated",
+    "effort": "stated",
+    "co_finance": "stated",
+    "consortium": "not_found",
+    "after_award": "stated"
+  },
+  "written": ["eligibility", "documents", "effort", "co_finance", "after_award"],
+  "escalated": ["eligibility"],
+  "flags": [],
+  "notes": [
+    "extractor: Requirements vary by activity group and grant amount; the regulation also refers to external rules and guidance listed in missing_documents."
+  ],
+  "usd": 0
+}

@@ -1,0 +1,127 @@
+{
+  "id": "maif-nature-2050",
+  "read_on": "2026-11-20",
+  "prompt_version": "req-2026-11-20.1",
+  "models": ["cursor:gpt-5.6-luna-high", "cursor:gpt-5.6-sol-high"],
+  "complete": false,
+  "reasons": [
+    "24 links could not be ranked without Jev",
+    "26 links could not be ranked without Jev",
+    "https://entreprise.maif.fr/files/live/sites/entreprise-Maif/files/pdf/fonds-maif-vivant/reglement-appel-a-projets-fonds-maif-vivant-2026.pdf: page 1 is an image: needs OCR",
+    "https://www.maif.fr/annexes/mentions-legales/donnees-personnelles would not open (robots: robots.txt disallows this page)",
+    "https://entreprise.maif.fr/files/live/sites/entreprise-Maif/files/pdf/FME/2025/rapport-FME-2025.pdf: page 1 is an image: needs OCR",
+    "the text names a document with rules that was not read: Notice explicative",
+    "the text names a document with rules that was not read: Principes d'intervention du programme Nature 2050",
+    "Jev did not check this reading, so an absent fact is not known to be absent",
+    "strong reading: the text names a document with rules that was not read: Notice explicative",
+    "strong reading: the text names a document with rules that was not read: Principes d'intervention du programme Nature 2050"
+  ],
+  "requirements_checked": false,
+  "documents": [
+    {
+      "ref": "D1",
+      "url": "https://entreprise.maif.fr/engagements/environnement/fonds-maif-pour-le-vivant/appel-a-projets",
+      "final_url": "https://entreprise.maif.fr/engagements/environnement/fonds-maif-pour-le-vivant/appel-a-projets",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 39784,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:35ba21f9a89aed76cbf8b9242bd503e2c230af6fed87ae7764d61eec9bd68261"
+    },
+    {
+      "ref": "D2",
+      "url": "https://entreprise.maif.fr/engagements/education-et-prevention/fonds-maif-education/appel-projets-mecenat-national",
+      "final_url": "https://entreprise.maif.fr/engagements/education-et-prevention/fonds-maif-education/appel-projets-mecenat-national",
+      "from": "https://entreprise.maif.fr/engagements/environnement/fonds-maif-pour-le-vivant/appel-a-projets",
+      "anchor": "Appel à projets mécénat national",
+      "depth": 1,
+      "pdf": false,
+      "chars": 14385,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:741fd938ea0a3337fec5ba8e3c5dcd922cc789763e8006cdacf2e55d1d97a309"
+    },
+    {
+      "ref": "D3",
+      "url": "https://entreprise.maif.fr/files/live/sites/entreprise-Maif/files/pdf/fonds-maif-vivant/reglement-appel-a-projets-fonds-maif-vivant-2026.pdf",
+      "final_url": "https://entreprise.maif.fr/files/live/sites/entreprise-Maif/files/pdf/fonds-maif-vivant/reglement-appel-a-projets-fonds-maif-vivant-2026.pdf",
+      "from": "https://entreprise.maif.fr/engagements/environnement/fonds-maif-pour-le-vivant/appel-a-projets",
+      "anchor": "Règlement de l'appel à projets Fonds MAIF pour le vivant - Nature 2050(pdf-544 Ko)",
+      "depth": 1,
+      "pdf": true,
+      "chars": 45345,
+      "pages": 23,
+      "low_text": false,
+      "hash": "sha256:1ec06a4f76bba2a3d586ec6cd34bbc146b4b71272e85962f14047d4c1ddcfec8"
+    },
+    {
+      "ref": "D4",
+      "url": "https://entreprise.maif.fr/files/live/sites/entreprise-Maif/files/pdf/FME/2025/reglement-appel-projets-mecenat-national-fme-2026.pdf",
+      "final_url": "https://entreprise.maif.fr/files/live/sites/entreprise-Maif/files/pdf/FME/2025/reglement-appel-projets-mecenat-national-fme-2026.pdf",
+      "from": "https://entreprise.maif.fr/engagements/education-et-prevention/fonds-maif-education/appel-projets-mecenat-national",
+      "anchor": "Règlement de l'appel à projets mécénat national 2026(pdf-136 Ko)",
+      "depth": 2,
+      "pdf": true,
+      "chars": 16963,
+      "pages": 10,
+      "low_text": false,
+      "hash": "sha256:d9fb123c7ad56ff56a54f411e492e65dca1c5c940a5da409576d60839f8b7e0c"
+    },
+    {
+      "ref": "D5",
+      "url": "https://entreprise.maif.fr/files/live/sites/entreprise-Maif/files/pdf/FME/2025/rapport-FME-2025.pdf",
+      "final_url": "https://entreprise.maif.fr/files/live/sites/entreprise-Maif/files/pdf/FME/2025/rapport-FME-2025.pdf",
+      "from": "https://entreprise.maif.fr/engagements/education-et-prevention/fonds-maif-education/appel-projets-mecenat-national",
+      "anchor": "rapport du Fonds MAIF pour l'éducation",
+      "depth": 2,
+      "pdf": true,
+      "chars": 54075,
+      "pages": 17,
+      "low_text": false,
+      "hash": "sha256:ab9ef9a92800042f6efefd1c70d16f1d265331c7ef6f00be4537aa23b52c866a"
+    }
+  ],
+  "failures": [
+    {
+      "url": "https://entreprise.maif.fr/files/live/sites/entreprise-Maif/files/pdf/fonds-maif-vivant/reglement-appel-a-projets-fonds-maif-vivant-2026.pdf",
+      "from": "https://entreprise.maif.fr/engagements/environnement/fonds-maif-pour-le-vivant/appel-a-projets",
+      "kind": "low_text",
+      "message": "page 1 is an image: needs OCR"
+    },
+    {
+      "url": "https://www.maif.fr/annexes/mentions-legales/donnees-personnelles",
+      "from": "https://entreprise.maif.fr/engagements/environnement/fonds-maif-pour-le-vivant/appel-a-projets",
+      "kind": "robots",
+      "message": "robots.txt disallows this page"
+    },
+    {
+      "url": "https://entreprise.maif.fr/files/live/sites/entreprise-Maif/files/pdf/FME/2025/rapport-FME-2025.pdf",
+      "from": "https://entreprise.maif.fr/engagements/education-et-prevention/fonds-maif-education/appel-projets-mecenat-national",
+      "kind": "low_text",
+      "message": "page 1 is an image: needs OCR"
+    }
+  ],
+  "skipped_links": 288,
+  "chunks": [{ "id": "all", "docs": ["D1", "D2", "D3", "D4", "D5"], "chars": 171690 }],
+  "outcomes": {
+    "eligibility": "stated",
+    "documents": "stated",
+    "effort": "stated",
+    "co_finance": "stated",
+    "consortium": "stated",
+    "after_award": "stated"
+  },
+  "written": ["eligibility", "documents", "effort", "co_finance", "consortium", "after_award"],
+  "escalated": ["eligibility", "after_award"],
+  "flags": [],
+  "notes": [
+    "extractor: D3 is the 2026 regulation and sets selection in April 2027. D1 contains a conflicting stale FAQ statement that laureates will be announced in May 2026. D1 describes a 5,000 m2 minimum intervention area with rare exceptions, while D3 places this under evaluation criteria rather than eligibility.",
+    "strong: D2, D4 and D5 concern a different MAIF programme and were not used.",
+    "eligibility: kept 1 first-reading item no check faulted that the strong reading left out",
+    "source maif-nature-2050-2: added for https://entreprise.maif.fr/files/live/sites/entreprise-Maif/files/pdf/fonds-maif-vivant/reglement-appel-a-projets-fonds-maif-vivant-2026.pdf"
+  ],
+  "usd": 0
+}

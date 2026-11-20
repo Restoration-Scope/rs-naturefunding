@@ -1,0 +1,93 @@
+{
+  "id": "lnv-stiftung-naturschutzprojekte",
+  "read_on": "2026-11-20",
+  "prompt_version": "req-2026-11-20.1",
+  "models": ["cursor:gpt-5.6-luna-high"],
+  "complete": false,
+  "reasons": [
+    "4 links could not be ranked without Jev",
+    "https://lnv-stiftung.de/wp-content/uploads/2017/12/Formular_Abschlussbericht-f%C3%BCr-gef%C3%B6rderte-Projekt_Stand-Dezember.doc would not open (unreadable: an old Word (.doc), OpenDocument or RTF file: needs conversion)",
+    "Jev did not check this reading, so an absent fact is not known to be absent"
+  ],
+  "requirements_checked": false,
+  "documents": [
+    {
+      "ref": "D1",
+      "url": "https://lnv-stiftung.de/bewerbung-foerderung-naturschutz-projektes/",
+      "final_url": "https://lnv-stiftung.de/bewerbung-foerderung-naturschutz-projektes/",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 798,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:28332f3d2c84c7ca213540e9d66b034104f28257367749c741af587773a8c937"
+    },
+    {
+      "ref": "D2",
+      "url": "https://lnv-stiftung.de/",
+      "final_url": "https://lnv-stiftung.de/",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 2527,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:82f6e322274039758b9dae06dfd1ba92ffd067dcd45091e6935e526f0b149fc4"
+    },
+    {
+      "ref": "D3",
+      "url": "https://lnv-stiftung.de/wp-content/uploads/2023/08/Antragsformular-23-08.docx",
+      "final_url": "https://lnv-stiftung.de/wp-content/uploads/2023/08/Antragsformular-23-08.docx",
+      "from": "https://lnv-stiftung.de/bewerbung-foerderung-naturschutz-projektes/",
+      "anchor": "Formular zur Antragstellung",
+      "depth": 1,
+      "pdf": false,
+      "chars": 2134,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:b76c3d7507b04db3866dc7c8400175d3c5f43b4fcb5434c03f48292fa4e9ff55"
+    },
+    {
+      "ref": "D4",
+      "url": "http://lnv-stiftung.de/wp-content/uploads/2026/03/Formular-Antragsformular_Stand-03-2026.docx",
+      "final_url": "https://lnv-stiftung.de/wp-content/uploads/2026/03/Formular-Antragsformular_Stand-03-2026.docx",
+      "from": "https://lnv-stiftung.de/",
+      "anchor": "Antragsformular",
+      "depth": 1,
+      "pdf": false,
+      "chars": 2494,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:58dad1f46974aef2848e5d8b665e1e8b687d523defecbf40260a79b1ad2bc700"
+    }
+  ],
+  "failures": [
+    {
+      "url": "https://lnv-stiftung.de/wp-content/uploads/2017/12/Formular_Abschlussbericht-f%C3%BCr-gef%C3%B6rderte-Projekt_Stand-Dezember.doc",
+      "from": "https://lnv-stiftung.de/bewerbung-foerderung-naturschutz-projektes/",
+      "kind": "unreadable",
+      "message": "an old Word (.doc), OpenDocument or RTF file: needs conversion"
+    }
+  ],
+  "skipped_links": 18,
+  "chunks": [{ "id": "all", "docs": ["D1", "D2", "D3", "D4"], "chars": 8389 }],
+  "outcomes": {
+    "eligibility": "stated",
+    "documents": "stated",
+    "effort": "stated",
+    "co_finance": "not_found",
+    "consortium": "not_found",
+    "after_award": "stated"
+  },
+  "written": ["eligibility", "documents", "effort", "after_award"],
+  "escalated": [],
+  "flags": [],
+  "notes": [
+    "extractor: D4 is the current 03-2026 application form; D3 is dated 08-2023. D1 and D2 state the 2026 deadline as 30 April 2026.",
+    "source lnv-stiftung-naturschutzprojekte-2: added for http://lnv-stiftung.de/wp-content/uploads/2026/03/Formular-Antragsformular_Stand-03-2026.docx"
+  ],
+  "usd": 0
+}

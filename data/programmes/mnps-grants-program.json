@@ -1,19 +1,67 @@
 {
   "id": "mnps-grants-program",
   "name": "MNPS Grants Program",
-  "funder": { "name": "Montana Native Plant Society", "url": "https://mtnativeplants.org/" },
+  "funder": {
+    "name": "Montana Native Plant Society",
+    "url": "https://mtnativeplants.org/"
+  },
   "administered_by": null,
   "parent": null,
   "url": "https://mtnativeplants.org/board/grants-scholarships/grants/mnps-grant-guidelines/",
   "summary": "Grants of up to US$2,500 for projects that conserve and restore Montana's native plants and plant communities, alongside research and education projects that serve the same aim.",
-  "approaches": ["species_conservation", "research"],
+  "approaches": [
+    "species_conservation",
+    "research"
+  ],
   "applicant_types": null,
-  "geography": { "scope": "countries", "countries": ["US"], "label": "Montana" },
+  "geography": {
+    "scope": "countries",
+    "countries": [
+      "US"
+    ],
+    "label": "Montana"
+  },
   "access": "direct",
   "window": "fixed",
-  "amount": { "currency": "USD", "max": 2500 },
+  "amount": {
+    "currency": "USD",
+    "max": 2500
+  },
   "co_finance_required": null,
   "reporting": "A final report on the project's accomplishments is due within one year of the award.",
+  "effort": {
+    "steps": [
+      "Online grant application submission"
+    ],
+    "due": [
+      "2026-10-31"
+    ]
+  },
+  "eligibility": [
+    {
+      "rule": "Not an MNPS Grants Committee member or a past grantee who failed to submit a final report",
+      "kind": "other"
+    },
+    {
+      "rule": "Projects pertain to Montana native plants and align with MNPS's mission",
+      "kind": "project"
+    }
+  ],
+  "after_award": {
+    "reports": "final"
+  },
+  "documents": [
+    "Project description",
+    "Description of conservation benefit",
+    "Project budget",
+    "Applicant qualifications or biography",
+    "Maintenance plan for garden or restoration project",
+    "Planner expertise and experience for garden or restoration project",
+    "Species list or plant materials sourcing for garden or restoration project",
+    "Target audience information for education project",
+    "Educator expertise and experience for education project",
+    "Expected lifespan of education product"
+  ],
   "calls": [
     {
       "id": "2026",
@@ -21,7 +69,10 @@
       "url": "https://mtnativeplants.org/board/grants-scholarships/grants/mnps-grant-guidelines/",
       "status": "closed",
       "opens": null,
-      "deadline": { "date": "2026-10-31", "text": "Final submission deadline is Oct 31, 2026" },
+      "deadline": {
+        "date": "2026-10-31",
+        "text": "Final submission deadline is Oct 31, 2026"
+      },
       "evidence": {
         "status": {
           "source_url": "https://mtnativeplants.org/board/grants-scholarships/grants/mnps-grant-guidelines/",
@@ -68,7 +119,57 @@
       "quote": "A final report is due within one year of notification of award.",
       "checked_at": "2026-11-14",
       "method": "page"
-    }
+    },
+    "effort": [
+      {
+        "source_url": "https://mtnativeplants.org/board/grants-scholarships/grants/mnps-grant-guidelines/",
+        "quote": "Applications must be submitted online through the MNPS website. Final submission deadline is Oct 31, 2026.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "eligibility": [
+      {
+        "source_url": "https://mtnativeplants.org/board/grants-scholarships/grants/mnps-grant-guidelines/",
+        "quote": "Anyone may apply for a Grant, except MNPS Grants Committee members and prior grant recipients who failed to submit a final report.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://mtnativeplants.org/board/grants-scholarships/grants/mnps-grant-guidelines/",
+        "quote": "Proposals must pertain to native plants of Montana and align with MNPS's mission.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "after_award": [
+      {
+        "source_url": "https://mtnativeplants.org/board/grants-scholarships/grants/mnps-grant-guidelines/",
+        "quote": "A final report is due within one year of notification of award.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "documents": [
+      {
+        "source_url": "https://mtnativeplants.org/board/grants-scholarships/grants/mnps-grant-guidelines/",
+        "quote": "Project description (limit 1000 words) describing objectives, methods, final product and dissemination of results Description of how the proposed project will benefit native plant conservation in Montana Project budget showing amount requested from MNPS, other funding sources, and how funds will be used Brief statement of applicant's qualifications or biography",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://mtnativeplants.org/board/grants-scholarships/grants/mnps-grant-guidelines/",
+        "quote": "short- and long-term maintenance plan advisor or lead planner expertise & experience species list and/or types of plant materials & sourcing Projects with an education component shall include: age groups and numbers of target audience advisor or lead educator expertise & experience",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://mtnativeplants.org/board/grants-scholarships/grants/mnps-grant-guidelines/",
+        "quote": "expected lifespan of product",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ]
   },
   "checked_at": "2026-11-14"
 }

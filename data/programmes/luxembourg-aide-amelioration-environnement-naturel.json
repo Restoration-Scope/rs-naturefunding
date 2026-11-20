@@ -9,9 +9,22 @@
   "parent": null,
   "url": "https://guichet.public.lu/fr/entreprises/financement-aides/aides-environnement/aide-amelioration-environnement.html",
   "summary": "Standing Luxembourg subsidy for biodiversity works: breeding and resting sites, hedges and trees, fencing, and restoration or upkeep of protected biotopes and habitats. Land managers, municipalities and approved associations apply before works start.",
-  "approaches": ["species_conservation", "protected_areas", "sustainable_land_use"],
-  "applicant_types": ["individual", "ngo", "government"],
-  "geography": { "scope": "countries", "countries": ["LU"] },
+  "approaches": [
+    "species_conservation",
+    "protected_areas",
+    "sustainable_land_use"
+  ],
+  "applicant_types": [
+    "individual",
+    "ngo",
+    "government"
+  ],
+  "geography": {
+    "scope": "countries",
+    "countries": [
+      "LU"
+    ]
+  },
   "access": "direct",
   "window": "unspecified",
   "amount": {
@@ -19,8 +32,33 @@
     "min": 250,
     "note": "Minimum subsidy request of EUR 250 (except for artificial works and structures)"
   },
-  "co_finance_required": null,
+  "co_finance_required": true,
   "reporting": null,
+  "effort": {
+    "steps": [
+      "Contact the relevant arrondissement to prepare the request",
+      "Complete the appropriate form with the arrondissement agent"
+    ]
+  },
+  "eligibility": [
+    {
+      "rule": "A land manager, owner or operator; or a commune, syndicate of communes or approved association",
+      "kind": "legal"
+    },
+    {
+      "rule": "Submit the request before subsidised works begin",
+      "kind": "project"
+    }
+  ],
+  "co_finance": {
+    "min_share": 10,
+    "applies_to": "Applicants whose projects receive less than 100% aid"
+  },
+  "documents": [
+    "Cadastral plan extract",
+    "Topographic map extract showing the worked parcels",
+    "Copy of the work estimate, if necessary"
+  ],
   "calls": [],
   "evidence": {
     "applicant_types": {
@@ -46,7 +84,67 @@
       "quote": "doit porter sur un montant de subvention d'au moins 250 euros",
       "checked_at": "2026-11-20",
       "method": "page"
-    }
+    },
+    "co_finance_required": {
+      "source_url": "https://guichet.public.lu/fr/entreprises/financement-aides/aides-environnement/aide-amelioration-environnement.html",
+      "quote": "50 % à 90 % (en dehors de la zone verte) et 50 % (en zone verte) du coût des travaux de création ou d'aménagement de sites de repos, de reproduction et d'hibernation de certaines espèces ;",
+      "checked_at": "2026-11-20",
+      "method": "page"
+    },
+    "effort": [
+      {
+        "source_url": "https://guichet.public.lu/fr/entreprises/financement-aides/aides-environnement/aide-amelioration-environnement.html",
+        "quote": "Le requérant doit, en premier lieu, contacter son arrondissement afin de préparer sa demande, en concertation avec l'agent en charge de cette matière.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://guichet.public.lu/fr/entreprises/financement-aides/aides-environnement/aide-amelioration-environnement.html",
+        "quote": "Le demandeur et l'agent de l'arrondissement remplissent ensemble le formulaire adéquat, avant le commencement des travaux.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "eligibility": [
+      {
+        "source_url": "https://guichet.public.lu/fr/entreprises/financement-aides/aides-environnement/aide-amelioration-environnement.html",
+        "quote": "gestionnaires de fonds, propriétaires et exploitants ; communes, syndicats de communes et associations agréées.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://guichet.public.lu/fr/entreprises/financement-aides/aides-environnement/aide-amelioration-environnement.html",
+        "quote": "Le requérant doit introduire une demande d'aide avant le commencement des travaux à subventionner.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "co_finance": {
+      "source_url": "https://guichet.public.lu/fr/entreprises/financement-aides/aides-environnement/aide-amelioration-environnement.html",
+      "quote": "50 % à 90 % (en dehors de la zone verte) et 50 % (en zone verte) du coût des travaux de création ou d'aménagement de sites de repos, de reproduction et d'hibernation de certaines espèces ;",
+      "checked_at": "2026-11-20",
+      "method": "page"
+    },
+    "documents": [
+      {
+        "source_url": "https://guichet.public.lu/fr/entreprises/financement-aides/aides-environnement/aide-amelioration-environnement.html",
+        "quote": "un extrait de plan cadastral ;",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://guichet.public.lu/fr/entreprises/financement-aides/aides-environnement/aide-amelioration-environnement.html",
+        "quote": "un extrait de carte topographique avec indication des fonds faisant l'objet des travaux ;",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://guichet.public.lu/fr/entreprises/financement-aides/aides-environnement/aide-amelioration-environnement.html",
+        "quote": "si nécessaire, une copie du devis des travaux.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ]
   },
   "checked_at": "2026-11-20"
 }

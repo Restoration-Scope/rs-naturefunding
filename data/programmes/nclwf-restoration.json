@@ -1,19 +1,65 @@
 {
   "id": "nclwf-restoration",
   "name": "NC Land and Water Fund Restoration Program",
-  "funder": { "name": "North Carolina Land and Water Fund", "url": "https://nclwf.nc.gov/" },
+  "funder": {
+    "name": "North Carolina Land and Water Fund",
+    "url": "https://nclwf.nc.gov/"
+  },
   "administered_by": null,
   "parent": null,
   "url": "https://nclwf.nc.gov/apply",
   "summary": "North Carolina state grants for restoring streams, wetlands (including peat and pocosin wetlands), floodplains and living shorelines, and for removing dams and culverts, led by conservation nonprofits, local governments or state agencies.",
-  "approaches": ["freshwater", "wetlands", "coastal_marine", "peatlands"],
-  "applicant_types": ["ngo", "government"],
-  "geography": { "scope": "countries", "countries": ["US"], "label": "North Carolina" },
+  "approaches": [
+    "freshwater",
+    "wetlands",
+    "coastal_marine",
+    "peatlands"
+  ],
+  "applicant_types": [
+    "ngo",
+    "government"
+  ],
+  "geography": {
+    "scope": "countries",
+    "countries": [
+      "US"
+    ],
+    "label": "North Carolina"
+  },
   "access": "direct",
   "window": "fixed",
   "amount": null,
   "co_finance_required": false,
   "reporting": null,
+  "eligibility": [
+    {
+      "rule": "Be a state agency, local government unit, or nonprofit with conservation as its primary purpose",
+      "kind": "legal"
+    },
+    {
+      "rule": "Have a permanently protected vegetated riparian buffer at least 50 feet from the bank on both sides",
+      "kind": "project"
+    },
+    {
+      "rule": "Do not undertake the project solely for compliance with regulations or permits",
+      "kind": "project"
+    },
+    {
+      "rule": "All landowners are contacted and indicate willingness to agree to a conservation easement before applying",
+      "kind": "project"
+    },
+    {
+      "rule": "Project duration is no more than 36 months",
+      "kind": "project"
+    }
+  ],
+  "documents": [
+    "Location map",
+    "Project map with aerial photo as background",
+    "Completed PDF Budget Form",
+    "Current plans, designs or existing conditions survey information, if applicable",
+    "Conflict of Interest Policy and related minutes, notes or memoranda, if a conflict exists"
+  ],
   "calls": [
     {
       "id": "yearly-window",
@@ -44,7 +90,10 @@
       "url": "https://nclwf.nc.gov/apply",
       "status": "closed",
       "opens": "2026-01-15",
-      "deadline": { "date": "2026-03-01", "text": "by midnight on March 1, 2026" },
+      "deadline": {
+        "date": "2026-03-01",
+        "text": "by midnight on March 1, 2026"
+      },
       "evidence": {
         "status": {
           "source_url": "https://nclwf.nc.gov/restoration-funding-manual/download?attachment=",
@@ -97,7 +146,92 @@
       "quote": "Are matching funds required? No, but matching funds are considered in the Application Rating System and projects with little or no match are rarely funded.",
       "checked_at": "2026-11-20",
       "method": "page"
-    }
+    },
+    "eligibility": [
+      {
+        "source_url": "https://nclwf.nc.gov/restoration-funding-manual/download?attachment=",
+        "quote": "the applicant must be either: a State agency; a local government unit; or a nonprofit corporation whose primary purpose is the conservation, preservation, and/or restoration of our State's cultural, environmental, and natural resources.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://nclwf.nc.gov/restoration-funding-manual/download?attachment=",
+        "quote": "NCLWF requires a permanently protected, vegetated riparian buffer at least 50' from the top of bank on both sides of the stream/project area.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://nclwf.nc.gov/restoration-funding-manual/download?attachment=",
+        "quote": "NCLWF will not fund projects undertaken solely for compliance with regulations or permits.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://nclwf.nc.gov/restoration-funding-manual/download?attachment=",
+        "quote": "In order to be eligible for consideration for NCLWF funding, all the landowners must be contacted and at least have indicated willingness to agree to a conservation easement prior to submittal of the grant application.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://nclwf.nc.gov/restoration-funding-manual/download?attachment=",
+        "quote": "Not more than 36 months.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "documents": [
+      {
+        "source_url": "https://nclwf.nc.gov/restoration-funding-manual/download?attachment=",
+        "quote": "1. Location map - required 2. Project map with aerial photo as background required",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://nclwf.nc.gov/restoration-funding-manual/download?attachment=",
+        "quote": "Budgets must be filled out using this PDF Budget Form.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://nclwf.nc.gov/restoration-funding-manual/download?attachment=",
+        "quote": "5.11.B - UPLOAD your current plans/designs/existing conditions survey information here, if applicable.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://nclwf.nc.gov/restoration-funding-manual/download?attachment=",
+        "quote": "If a conflict of interest or an appearance of a conflict of interest exists, upload a copy of the applicant and/or partner organization's Conflict of Interest Policy and any minutes, notes or memoranda related to any actions or discussion of the project.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "effort": [
+      {
+        "source_url": "https://nclwf.nc.gov/apply",
+        "quote": "Applications are submitted via an online web-form linked in the sidebar on this page.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://nclwf.nc.gov/apply",
+        "quote": "Field Representatives will review your application, visit your project site, and support the Program Managers in creating scopes of work, conservation strategies, and contract details.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://nclwf.nc.gov/apply",
+        "quote": "Funding awards are made by the NCLWF Board of Trustees who meet annually in the fall to consider grant applications.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ]
   },
-  "checked_at": "2026-11-20"
+  "checked_at": "2026-11-20",
+  "effort": {
+    "steps": [
+      "Online application",
+      "Field representative review and site visit",
+      "Board of Trustees funding decision"
+    ]
+  }
 }

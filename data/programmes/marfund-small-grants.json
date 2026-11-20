@@ -1,7 +1,10 @@
 {
   "id": "marfund-small-grants",
   "name": "MAR Fund Small Grants Program: Traditional Small Grants Window",
-  "funder": { "name": "Mesoamerican Reef Fund (MAR Fund)", "url": "https://marfund.org/en/" },
+  "funder": {
+    "name": "Mesoamerican Reef Fund (MAR Fund)",
+    "url": "https://marfund.org/en/"
+  },
   "administered_by": null,
   "parent": null,
   "url": "https://marfund.org/en/request-for-proposals-2026/",
@@ -22,14 +25,85 @@
   ],
   "geography": {
     "scope": "countries",
-    "countries": ["MX", "BZ", "GT", "HN"],
+    "countries": [
+      "MX",
+      "BZ",
+      "GT",
+      "HN"
+    ],
     "label": "Mesoamerican Reef region"
   },
   "access": "direct",
   "window": "fixed",
-  "amount": { "currency": "USD", "max": 50000 },
+  "amount": {
+    "currency": "USD",
+    "max": 50000
+  },
   "co_finance_required": true,
   "reporting": "Grantees submit the technical, financial, and environmental and social reports required by the grant agreement, on time.",
+  "effort": {
+    "steps": [
+      "Proposal and due diligence documents via the online system",
+      "Proposal revisions, if requested",
+      "SGP Grants and Evaluation Committee review, then Board decision"
+    ],
+    "due": [
+      "2026-10-20",
+      null,
+      null
+    ]
+  },
+  "eligibility": [
+    {
+      "rule": "Be registered or legally recognized in one MAR country",
+      "kind": "legal"
+    },
+    {
+      "rule": "Be in compliance and good standing as a legal local entity",
+      "kind": "legal"
+    },
+    {
+      "rule": "Have an operational Board of Directors",
+      "kind": "capacity"
+    },
+    {
+      "rule": "Have a sound financial management system and structure",
+      "kind": "capacity"
+    },
+    {
+      "rule": "Have a good history as a grantee",
+      "kind": "track_record"
+    },
+    {
+      "rule": "Have experience in coastal and marine resources management",
+      "kind": "track_record"
+    },
+    {
+      "rule": "An individual must have NGO administrative support and grant responsibility",
+      "kind": "capacity"
+    },
+    {
+      "rule": "Avoid duplication of funds or efforts funded by other MAR Fund initiatives or programs",
+      "kind": "project"
+    }
+  ],
+  "co_finance": {
+    "min_share": 25,
+    "in_kind": true
+  },
+  "after_award": {
+    "reports": "unspecified"
+  },
+  "documents": [
+    "Due diligence documentation",
+    "Signed Appendix B",
+    "Project Development Table",
+    "Project Budget",
+    "Environmental and Social Screening Tool, for Continuity proposals",
+    "Proof of land ownership or legal right to use the land, if small infrastructure is proposed",
+    "Business form, for qualifying sustainable ventures or businesses",
+    "Collaboration letters, for collaborations with local entities"
+  ],
   "calls": [
     {
       "id": "rfp-19-2026",
@@ -92,7 +166,7 @@
     "co_finance_required": {
       "source_url": "https://marfund.org/en/request-for-proposals-2026/",
       "quote": "For this RfP, at least 25% of the total budget must come from other sources, as a match to the requested funds.",
-      "checked_at": "2026-11-15",
+      "checked_at": "2026-11-20",
       "method": "page"
     },
     "reporting": {
@@ -106,7 +180,123 @@
       "quote": "proposals between 18 and 24 months may request a maximum amount of US$50,000",
       "checked_at": "2026-11-15",
       "method": "page"
-    }
+    },
+    "effort": [
+      {
+        "source_url": "https://marfund.org/en/request-for-proposals-2026/",
+        "quote": "The deadline for the submission of proposals is October 20th, 2026.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://marfund.org/en/request-for-proposals-2026/",
+        "quote": "Complete proposals and the due diligence documentation, including the signed Appendix B, must be submitted through the on-line form/template on the MAR Fund webpage.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://marfund.org/en/request-for-proposals-2026/",
+        "quote": "Those selected to advance to the next stage will be contacted with instructions to make necessary revisions if required.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://marfund.org/en/request-for-proposals-2026/",
+        "quote": "Project proposals will then be reviewed by the SGP Grants and Evaluation Committee, which will recommend the proposals to be supported in this RfP to be sent to the MAR Fund Board of Directors, who will make the final decision.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "eligibility": [
+      {
+        "source_url": "https://marfund.org/en/request-for-proposals-2026/",
+        "quote": "Be duly registered or legally recognized in one of the four countries of the Mesoamerican Reef (MAR) region (Mexico, Belize, Guatemala, and Honduras);",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://marfund.org/en/request-for-proposals-2026/",
+        "quote": "Be in compliance and good standing with all requirements for operation as a legal local entity;",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://marfund.org/en/request-for-proposals-2026/",
+        "quote": "Be guided by an operational Board of Directors;",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://marfund.org/en/request-for-proposals-2026/",
+        "quote": "Have a sound financial management system and structure in place (accounting, annual audits, etc.);",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://marfund.org/en/request-for-proposals-2026/",
+        "quote": "Have a good history as a grantee (i.e., effective grant/project implementation);",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://marfund.org/en/request-for-proposals-2026/",
+        "quote": "Have experience in the field of coastal and marine resources management.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://marfund.org/en/request-for-proposals-2026/",
+        "quote": "individuals (who must have administrative support from an NGO to submit the proposal and be responsible for the grant if the project is approved).",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://marfund.org/en/request-for-proposals-2026/",
+        "quote": "To maximize available resources, proposals involving duplication of funds/efforts funded by other MAR Fund initiatives or programs will not be considered.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "co_finance": {
+      "source_url": "https://marfund.org/en/request-for-proposals-2026/",
+      "quote": "For this RfP, at least 25% of the total budget must come from other sources, as a match to the requested funds. The match may be both cash and in-kind.",
+      "checked_at": "2026-11-20",
+      "method": "page"
+    },
+    "after_award": [
+      {
+        "source_url": "https://marfund.org/en/request-for-proposals-2026/",
+        "quote": "submit all required technical, financial, and environmental and social reports on time, according to the grant agreement.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "documents": [
+      {
+        "source_url": "https://marfund.org/en/request-for-proposals-2026/",
+        "quote": "due diligence documentation, including the signed Appendix B, must be submitted through the on-line form/template on the MAR Fund webpage. Applicants submitting a proposal on the implementation of sustainable ventures/businesses that can demonstrate a positive impact on the natural resources of the MAR must also fill out the business form.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://marfund.org/en/request-for-proposals-2026/",
+        "quote": "Project Development Table, the Project Budget, and the Environmental and Social Screening Tool",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://marfund.org/en/request-for-proposals-2026/",
+        "quote": "documented proof of land ownership or legal right to use the land",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://marfund.org/en/request-for-proposals-2026/",
+        "quote": "For collaborations with other local entities (women's, indigenous peoples, and community groups/organizations, NGO and GO), please provide collaboration letters for the project",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ]
   },
   "checked_at": "2026-11-15"
 }
