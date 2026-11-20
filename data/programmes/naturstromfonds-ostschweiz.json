@@ -19,8 +19,18 @@
   "access": "direct",
   "window": "fixed",
   "amount": null,
-  "co_finance_required": null,
+  "co_finance_required": true,
   "reporting": "Submit a completed project‑completion report after the project ends.",
+  "effort": { "steps": ["Financing request by email"] },
+  "eligibility": [
+    { "rule": "The project is implementation-oriented", "kind": "project" },
+    {
+      "rule": "Purpose-bound public funds have already been requested and exhausted",
+      "kind": "finances"
+    },
+    { "rule": "The project starts only after the steering committee's decision", "kind": "project" }
+  ],
+  "after_award": { "reports": "other" },
   "calls": [
     {
       "id": "2027-03",
@@ -172,12 +182,54 @@
       "checked_at": "2026-11-10",
       "method": "page"
     },
+    "co_finance_required": {
+      "source_url": "https://naturstromfonds.ch/wp-content/uploads/2024/04/Allgemeinen_Foerderbedingungen_Naturstromfonds_Ostschweiz.pdf",
+      "quote": "Der Empfänger verpflichtet sich, Eigenleistungen in das Projekt einzubringen.",
+      "checked_at": "2026-11-20",
+      "method": "page"
+    },
     "reporting": {
       "source_url": "https://naturstromfonds.ch/finanzierung/",
       "quote": "Nach Abschluss des Projekts benötigen wir einige Informationen zur Umsetzung, um die Finanzierung auszahlen zu können. Bitte sende uns dazu den ausgefüllten Projektabschluss-bericht.",
       "checked_at": "2026-11-10",
       "method": "page"
-    }
+    },
+    "effort": [
+      {
+        "source_url": "https://naturstromfonds.ch/finanzierung/",
+        "quote": "Den ausgefüllten Finanzierungsantrag kannst du per E-Mail an info@naturstromfonds.ch senden.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "eligibility": [
+      {
+        "source_url": "https://naturstromfonds.ch/wp-content/uploads/2024/04/Finanzierungskriterien_Naturstromfonds_Ostschweiz.pdf",
+        "quote": "Das Projekt ist umsetzungsorientiert.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://naturstromfonds.ch/wp-content/uploads/2024/04/Finanzierungskriterien_Naturstromfonds_Ostschweiz.pdf",
+        "quote": "Zweckbestimmte öffentliche Mittel wurden bereits angefragt und ausgeschöpft.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://naturstromfonds.ch/wp-content/uploads/2024/04/Finanzierungskriterien_Naturstromfonds_Ostschweiz.pdf",
+        "quote": "Die Umsetzung des Projektes beginnt erst nach dem Entscheid des Lenkungsgremiums.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "after_award": [
+      {
+        "source_url": "https://naturstromfonds.ch/wp-content/uploads/2024/04/Allgemeinen_Foerderbedingungen_Naturstromfonds_Ostschweiz.pdf",
+        "quote": "erstmals zwei Jahre nach der Zusage des Beitrags und darauf dann alle zwei Jahre einen Zwischenbericht zu erstatten. Nach Abschluss des Projektes hat der Empfänger dem Naturstromfonds Ostschweiz innert sechs Monaten einen Projektabschlussbericht digital einzureichen",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ]
   },
   "checked_at": "2026-11-10"
 }

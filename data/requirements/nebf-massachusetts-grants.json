@@ -1,0 +1,99 @@
+{
+  "id": "nebf-massachusetts-grants",
+  "read_on": "2026-11-20",
+  "prompt_version": "req-2026-11-20.1",
+  "models": ["cursor:gpt-5.6-luna-high"],
+  "complete": false,
+  "reasons": [
+    "9 links could not be ranked without Jev",
+    "the text names a document with rules that was not read: LOI guidelines",
+    "Jev did not check this reading, so an absent fact is not known to be absent"
+  ],
+  "requirements_checked": false,
+  "documents": [
+    {
+      "ref": "D1",
+      "url": "https://www.nebf.org/massachusetts",
+      "final_url": "https://www.nebf.org/massachusetts",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 1541,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:1557ec30883e9fb9439a7d9b6937653bac4065eb8c77daeb488cb6749e129d95"
+    },
+    {
+      "ref": "D2",
+      "url": "https://www.nebf.org/gettingstarted",
+      "final_url": "https://www.nebf.org/gettingstarted",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 1985,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:808f9d9c5b4f4235adfe7f1240dcd027cc1146d320ca9e92314337b56880454e"
+    },
+    {
+      "ref": "D3",
+      "url": "https://www.nebf.org/fundingrestrictions",
+      "final_url": "https://www.nebf.org/fundingrestrictions",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 1585,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:7811d0fa08e0fb2cd5fc4326ee41f9a883651e53fa064c5ffc86f87c22667116"
+    },
+    {
+      "ref": "D4",
+      "url": "https://www.nebf.org/overview",
+      "final_url": "https://www.nebf.org/overview",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 3164,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:45e179588d682de8d733272201fc8132c7efbc9209bd63d97eefe353179a6d9c"
+    },
+    {
+      "ref": "D5",
+      "url": "https://www.nebf.org/nextstepsiffunded",
+      "final_url": "https://www.nebf.org/nextstepsiffunded",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 2254,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:7fc261119c1b0f4f75584bc103d67863318026e2895a725e132443974ed7f56b"
+    }
+  ],
+  "failures": [],
+  "skipped_links": 58,
+  "chunks": [{ "id": "all", "docs": ["D1", "D2", "D3", "D4", "D5"], "chars": 10778 }],
+  "outcomes": {
+    "eligibility": "stated",
+    "documents": "not_found",
+    "effort": "unresolved",
+    "co_finance": "not_found",
+    "consortium": "not_found",
+    "after_award": "stated"
+  },
+  "written": ["eligibility", "after_award"],
+  "escalated": [],
+  "flags": [],
+  "notes": [
+    "extractor: Use the 2027 Round 1 rules; the 2026 grant round is closed. The page also lists a 2027 Round 2.",
+    "effort: not written, the file quotes \"The first step in the process is to submit a letter of inquiry (LOI) to us, foll\", this reading does not"
+  ],
+  "usd": 0
+}

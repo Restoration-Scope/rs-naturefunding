@@ -1,0 +1,73 @@
+{
+  "id": "kosasa-cbes",
+  "read_on": "2026-11-20",
+  "prompt_version": "req-2026-11-20.1",
+  "models": ["cursor:gpt-5.6-luna-high"],
+  "complete": false,
+  "reasons": [
+    "8 links could not be ranked without Jev",
+    "7 links could not be ranked without Jev",
+    "Jev did not check this reading, so an absent fact is not known to be absent"
+  ],
+  "requirements_checked": false,
+  "documents": [
+    {
+      "ref": "D1",
+      "url": "https://www.kosasafoundation.org/programs/community-based-environmental-stewardship/",
+      "final_url": "https://www.kosasafoundation.org/programs/community-based-environmental-stewardship/",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 5545,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:77c994e70db21c3ff240b50f90a3d82435a9c34c1827415a04be80fe6dce1ec8"
+    },
+    {
+      "ref": "D2",
+      "url": "https://www.kosasafoundation.org/grantseekers/",
+      "final_url": "https://www.kosasafoundation.org/grantseekers/",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 3245,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:12de9284bdaed74d4f1a81db2aeb1276b6be95a71d0e00bd3d93f533ba3bce87"
+    },
+    {
+      "ref": "D3",
+      "url": "https://www.kosasafoundation.org/frequently-asked-questions/",
+      "final_url": "https://www.kosasafoundation.org/frequently-asked-questions/",
+      "from": "https://www.kosasafoundation.org/programs/community-based-environmental-stewardship/",
+      "anchor": "FAQ",
+      "depth": 1,
+      "pdf": false,
+      "chars": 4173,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:f6dfeea367325e57071fd664aa5454d6ff0281baba60e2ef6c1c91754625d2bf"
+    }
+  ],
+  "failures": [],
+  "skipped_links": 37,
+  "chunks": [{ "id": "all", "docs": ["D1", "D2", "D3"], "chars": 13293 }],
+  "outcomes": {
+    "eligibility": "stated",
+    "documents": "stated",
+    "effort": "stated",
+    "co_finance": "stated",
+    "consortium": "not_found",
+    "after_award": "not_found"
+  },
+  "written": ["eligibility", "documents", "effort", "co_finance"],
+  "escalated": [],
+  "flags": [],
+  "notes": [
+    "extractor: D1 lists an older August 7, 2026 deadline; D2 provides the 2027 deadline of July 30, 2027. The questionnaire was disabled as of November 4, 2026 and was expected to be available again by December 5, 2026. New inquiries submitted within ten business days of the deadline will not be considered.",
+    "source kosasa-cbes-3: added for https://www.kosasafoundation.org/frequently-asked-questions/"
+  ],
+  "usd": 0
+}

@@ -24,7 +24,30 @@
     "note": "Total project budget up to EUR 200,000; ERDF covers up to 80%"
   },
   "co_finance_required": true,
+  "consortium_required": true,
   "reporting": null,
+  "effort": {
+    "steps": ["Mandatory consultation on a draft application in Jems", "Final application in Jems"],
+    "due": [null, "2026-12-31"]
+  },
+  "eligibility": [
+    {
+      "rule": "Project has an EFRE budget of at least EUR 50,000 and total budget of at most EUR 200,000",
+      "kind": "project"
+    },
+    {
+      "rule": "Project lasts no longer than 18 months, depending on submission date",
+      "kind": "project"
+    },
+    { "rule": "Project implementation ends no later than 30 June 2029", "kind": "project" }
+  ],
+  "co_finance": { "min_share": 20 },
+  "after_award": { "reports": "final" },
+  "documents": [
+    "Signed paper original of the confirmation of the electronic application",
+    "Partnership agreement for small-scale projects",
+    "EU Charter of Fundamental Rights compliance declaration, Polish partners"
+  ],
   "calls": [
     {
       "id": "int07-2025",
@@ -96,7 +119,75 @@
       "quote": "Im Rahmen des Programms können Projekte eine Unterstützung aus dem EFRE in Höhe von bis zu 80% der förderfähigen Ausgaben erhalten.",
       "checked_at": "2026-11-20",
       "method": "page"
-    }
+    },
+    "consortium_required": {
+      "source_url": "https://www.interreg6a.net/calls/7-call/",
+      "quote": "Mindestens ein polnischer und ein deutscher Partner nehmen am Projekt teil - beide mit EFRE-Mitteln.",
+      "checked_at": "2026-11-20",
+      "method": "page"
+    },
+    "effort": [
+      {
+        "source_url": "https://www.interreg6a.net/calls/7-call/",
+        "quote": "Das Gemeinsame Sekretariat führt im Fall von Kleinteiligen Projekten eine verpflichtende Antragsberatung durch.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.interreg6a.net/calls/7-call/",
+        "quote": "Die Antragstellung ist im Zeitraum vom 30.10.2025 (8:00 Uhr) bis zum 31.12.2026 (16:00 Uhr) jederzeit möglich.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "eligibility": [
+      {
+        "source_url": "https://www.interreg6a.net/calls/7-call/",
+        "quote": "Kleinteilige Projekte sind Vorhaben mit einem EFRE-Budget ab 50.000 Euro und mit einem Gesamtbudget bis maximal 200.000 EUR und einem Fördersatz bis maximal 80%.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.interreg6a.net/calls/7-call/",
+        "quote": "Die maximale Projektdauer beträgt abhängig vom Zeitpunkt der Einreichung bis zu 18 Monaten.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.interreg6a.net/calls/7-call/",
+        "quote": "Der Durchführungszeitraum eines Projekts kann maximal bis zum 30.06.2029 reichen.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "co_finance": {
+      "source_url": "https://www.interreg6a.net/calls/7-call/",
+      "quote": "Im Rahmen des Programms können Projekte eine Unterstützung aus dem EFRE in Höhe von bis zu 80% der förderfähigen Ausgaben erhalten.",
+      "checked_at": "2026-11-20",
+      "method": "page"
+    },
+    "after_award": [
+      {
+        "source_url": "https://www.interreg6a.net/kleinteilige-projekte/",
+        "quote": "nur 1 Bericht des Leadpartners am Ende des Durchführungszeitraums",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "documents": [
+      {
+        "source_url": "https://www.interreg6a.net/calls/7-call/",
+        "quote": "Spätestens 14 Kalendertage nach finaler Einreichung des Antrags im Jems muss die unterschriebene Bestätigung zum elektronisch eingereichten Antrag im Papieroriginal im Gemeinsamen Sekretariat vorliegen.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.interreg6a.net/calls/7-call/",
+        "quote": "Partnerschaftsvereinbarung für Kleinteilige Projekte zur Regelung der Rechte und Pflichten der Partner bei der Projektumsetzung (DE, PL) Erklärung zur Einhaltung der Charta der Grundrechte der Europäischen Union (PL)",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ]
   },
   "checked_at": "2026-11-20"
 }

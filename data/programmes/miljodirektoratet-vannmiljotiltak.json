@@ -17,6 +17,21 @@
   "amount": { "currency": "NOK", "min": 150000, "note": "Minimum application for the 2027 round." },
   "co_finance_required": null,
   "reporting": null,
+  "effort": { "steps": ["Application form"] },
+  "eligibility": [
+    {
+      "rule": "Not the polluter that should itself bear the cost of the damage (polluter pays)",
+      "kind": "legal"
+    },
+    {
+      "rule": "Not a measure against pink salmon or other alien fish (another scheme covers these)",
+      "kind": "project"
+    },
+    {
+      "rule": "Not artificial reefs on natural soft bottom, nor active restoration where ongoing pressures block lasting effect",
+      "kind": "project"
+    }
+  ],
   "calls": [
     {
       "id": "oslofjord-2026",
@@ -93,7 +108,35 @@
       "quote": "Tiltakene kan være både i fjorden, men også i Oslofjordens nedbørsfelt, som strekker seg fra Røres til Agder",
       "checked_at": "2026-11-09",
       "method": "page"
-    }
+    },
+    "effort": [
+      {
+        "source_url": "https://soknadssenter.miljodirektoratet.no/VannmiljoSkjema/Startside/Index?id=88",
+        "quote": "Søknadsskjemaet er åpent, gå til utfylling",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "eligibility": [
+      {
+        "source_url": "https://soknadssenter.miljodirektoratet.no/VannmiljoSkjema/Startside/Index?id=88",
+        "quote": "Det gis ikke tilskudd til en ansvarlig tiltakshaver som ut fra prinsippet om at forurenser betaler",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://soknadssenter.miljodirektoratet.no/VannmiljoSkjema/Startside/Index?id=88",
+        "quote": "Søknader om tiltak mot pukkellaks og andre fremmede fiskearter skal søke under ordningen tilskudd til tiltak for å ivareta natur.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://soknadssenter.miljodirektoratet.no/VannmiljoSkjema/Startside/Index?id=88",
+        "quote": "Det gis ikke tilskudd til etablering av kunstige rev i naturlige bløtbunnsområder, aktive restaureringstiltak i områder hvor pågående negative påvirkninger gjør at restaureringstiltaket ikke får varig effekt",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ]
   },
   "checked_at": "2026-11-09"
 }

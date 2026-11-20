@@ -21,6 +21,24 @@
   "co_finance_required": null,
   "reporting": null,
   "effort": { "steps": ["Expression of Interest (stage 1)", "Full application (stage 2)"] },
+  "eligibility": [
+    { "rule": "Has both DGR Item 1 and TCC status", "kind": "legal" },
+    { "rule": "Is based and operating in Australia", "kind": "legal" },
+    {
+      "rule": "Project is not underway and will not start before the stated date",
+      "kind": "project"
+    },
+    { "rule": "Does not propose pure research", "kind": "project" },
+    {
+      "rule": "No school engagement, renewable energy or sustainable materials work, or capital works",
+      "kind": "project"
+    },
+    { "rule": "Will run the proposed program or project itself", "kind": "legal" },
+    { "rule": "Has no unacquitted grants from the Foundation", "kind": "track_record" },
+    { "rule": "Project has not previously been declined by the Foundation", "kind": "project" }
+  ],
+  "after_award": { "reports": "yearly" },
+  "documents": ["University or research institute EOI shortlisting letter, if applicable"],
   "calls": [
     {
       "id": "2028",
@@ -69,6 +87,78 @@
       {
         "source_url": "https://www.ianpotter.org.au/what-we-support/program-areas/environment",
         "quote": "you will be invited to submit a full application (stage 2)",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "eligibility": [
+      {
+        "source_url": "https://www.ianpotter.org.au/can-we-apply",
+        "quote": "We can only make grants to organisations with BOTH Deductible Gift Recipient (DGR) Item 1 and Tax Concession Charity (TCC) status.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.ianpotter.org.au/can-we-apply",
+        "quote": "We only fund organisations based and operating in Australia.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.ianpotter.org.au/what-we-support/program-areas/environment",
+        "quote": "Retrospective funding - projects which are already underway, or which will commence prior to the date indicated in our online application information are not eligible for consideration.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.ianpotter.org.au/what-we-support/program-areas/environment",
+        "quote": "The Foundation does not fund pure research in the Environment program area.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.ianpotter.org.au/what-we-support/program-areas/environment",
+        "quote": "school education or engagement projects projects or research relating to renewable energies or sustainable materials, or capital works.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.ianpotter.org.au/what-we-support/program-areas/environment",
+        "quote": "Auspicing* is not permitted - the organisation applying must be the one that will run the program or project.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.ianpotter.org.au/what-we-support/program-areas/environment",
+        "quote": "Applications will not be accepted from organisations that have not successfully acquitted previous grants from the Foundation.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.ianpotter.org.au/what-we-support/program-areas/environment",
+        "quote": "Applications for projects that have previously been declined by the Foundation cannot be resubmitted.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "after_award": [
+      {
+        "source_url": "https://www.ianpotter.org.au/for-grantees/reporting",
+        "quote": "All grantees of The Ian Potter Foundation are required to submit a budget report which confirms that the funds granted were used for the intended purpose.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.ianpotter.org.au/for-grantees/reporting",
+        "quote": "For multiple-year grants from the Foundation, a progress report is due at the end of each year of the grant period.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "documents": [
+      {
+        "source_url": "https://www.ianpotter.org.au/can-we-apply/can-we-apply-university",
+        "quote": "A letter shortlisting all EOI submissions within the program area.",
         "checked_at": "2026-11-20",
         "method": "page"
       }

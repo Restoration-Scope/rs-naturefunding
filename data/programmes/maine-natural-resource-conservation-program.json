@@ -20,6 +20,15 @@
   "amount": null,
   "co_finance_required": false,
   "reporting": null,
+  "eligibility": [
+    {
+      "rule": "Restores broader ecological benefits beyond fish passage when proposing a fish-passage project",
+      "kind": "project"
+    },
+    { "rule": "Does not apply for the design phase of a project only", "kind": "project" },
+    { "rule": "Does not seek funding for a feasibility study", "kind": "project" }
+  ],
+  "documents": ["Project location map"],
   "calls": [
     {
       "id": "2026",
@@ -91,7 +100,59 @@
       "quote": "No matching funds are required by MNRCP, although proposals that include some matching funds may score and rank better.",
       "checked_at": "2026-11-20",
       "method": "page"
-    }
+    },
+    "eligibility": [
+      {
+        "source_url": "https://www.mnrcp.org/sites/default/files/MNRCP%20FAQ_04-16-26_final.pdf",
+        "quote": "all such projects must restore broader ecological benefits to river and stream systems (beyond passing fish).",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.mnrcp.org/sites/default/files/MNRCP%20FAQ_04-16-26_final.pdf",
+        "quote": "you cannot apply for MNRCP funding for the design phase of a project only.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.mnrcp.org/sites/default/files/MNRCP%20FAQ_04-16-26_final.pdf",
+        "quote": "MNRCP cannot provide funding for feasibility studies.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "documents": [
+      {
+        "source_url": "https://www.mnrcp.org/sites/default/files/MNRCP%202026%20RFLOI_final.pdf",
+        "quote": "as well as a map of the project location",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "effort": [
+      {
+        "source_url": "https://www.mnrcp.org/apply",
+        "quote": "Submit a Letter of Intent through our online form to apply for funding.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.mnrcp.org/apply",
+        "quote": "Applicants whose proposed projects meet the program's requirements will be invited to submit full proposals.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "after_award": [
+      {
+        "source_url": "https://www.mnrcp.org/sites/default/files/MNRCP%202026%20RFLOI_final.pdf",
+        "quote": "For projects that require a Monitoring Term, the Cooperating Entity shall report to TNC, the DEP, and USACE on the status of the Project, and on the condition of the Project Area, in a monitoring report following guidelines provided by TNC. The Cooperating Entity shall provide the report annually",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ]
   },
-  "checked_at": "2026-11-20"
+  "checked_at": "2026-11-20",
+  "effort": { "steps": ["Letter of Intent", "Full proposal, if invited"] },
+  "after_award": { "reports": "yearly" }
 }
