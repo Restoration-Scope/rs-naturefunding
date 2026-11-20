@@ -23,36 +23,6 @@
   "amount": { "currency": "EUR", "max": 30000, "note": "Up to 60% of the total project cost" },
   "co_finance_required": true,
   "reporting": null,
-  "effort": { "steps": ["Application submission (rolling)", "Review in order received"] },
-  "eligibility": [
-    { "rule": "Be formally constituted by a regularly registered deed", "kind": "legal" },
-    { "rule": "Have legal and operational headquarters in Pavia province", "kind": "legal" },
-    {
-      "rule": "Have been established for at least 2 years",
-      "kind": "track_record",
-      "min_years": 2
-    },
-    { "rule": "Not have current Fondazione Cariplo funding in the same sector", "kind": "other" },
-    { "rule": "Public bodies apply only in partnership with private entities", "kind": "legal" },
-    { "rule": "Not have started or completed the project when applying", "kind": "project" },
-    {
-      "rule": "Complete the project by 31 December 2027 unless a justified documented exceptional extension applies",
-      "kind": "project"
-    },
-    { "rule": "Exclude institutional or ordinary operating costs", "kind": "project" }
-  ],
-  "after_award": { "reports": "final" },
-  "documents": [
-    "Registered founding deed, unless a public or ecclesiastical/religious entity",
-    "Current registered statutes, unless a public or ecclesiastical/religious entity",
-    "Final accounts, or a two-year income and expense statement, unless a public entity",
-    "List of governing bodies, unless a public or ecclesiastical/religious entity",
-    "Certificate of current legal representative status and/or diocesan decree, if an ecclesiastical or religious entity",
-    "Identity document of the legal representative",
-    "Detailed project description",
-    "Detailed financial plan with purchase estimates and funding sources",
-    "Communication on adapting the organisation and statutes to the Third Sector Code"
-  ],
   "calls": [
     {
       "id": "bando-iv-2026",
@@ -65,7 +35,7 @@
         "status": {
           "source_url": "https://www.fondazionepv.it/bandi/",
           "quote": "È aperto il IV Bando 2026 che riguarda l'area Ambiente e Territorio e da quest'anno è \"a sportello senza scadenza\"",
-          "checked_at": "2026-11-15",
+          "checked_at": "2026-11-20",
           "method": "page"
         }
       }
@@ -75,19 +45,19 @@
     "access": {
       "source_url": "https://www.fondazionepv.it/bandi/",
       "quote": "È aperto il IV Bando 2026 che riguarda l'area Ambiente e Territorio e da quest'anno è \"a sportello senza scadenza\"",
-      "checked_at": "2026-11-15",
+      "checked_at": "2026-11-20",
       "method": "page"
     },
     "window": {
       "source_url": "https://www.fondazionepv.it/bandi/",
       "quote": "è \"a sportello senza scadenza\": in altre parole, le richieste di cofinanziamento potranno essere presentate in qualsiasi momento",
-      "checked_at": "2026-11-15",
+      "checked_at": "2026-11-20",
       "method": "page"
     },
     "amount": {
       "source_url": "https://www.fondazionepv.it/bandi/",
       "quote": "La Fondazione cofinanzierà ogni singolo progetto sino al 60% del costo totale e comunque in misura non superiore a 30.000 euro.",
-      "checked_at": "2026-11-15",
+      "checked_at": "2026-11-20",
       "method": "page"
     },
     "co_finance_required": {
@@ -96,20 +66,6 @@
       "checked_at": "2026-11-20",
       "method": "page"
     },
-    "effort": [
-      {
-        "source_url": "https://www.fondazionepv.it/wp-content/uploads/2026/02/regolamento-4-bando-2026-ambiente-e-territorio.pdf",
-        "quote": "le domande possono essere presentate in qualsiasi momento;",
-        "checked_at": "2026-11-20",
-        "method": "page"
-      },
-      {
-        "source_url": "https://www.fondazionepv.it/wp-content/uploads/2026/02/regolamento-4-bando-2026-ambiente-e-territorio.pdf",
-        "quote": "l'istruttoria avviene in ordine cronologico di arrivo;",
-        "checked_at": "2026-11-20",
-        "method": "page"
-      }
-    ],
     "eligibility": [
       {
         "source_url": "https://www.fondazionepv.it/wp-content/uploads/2026/02/regolamento-4-bando-2026-ambiente-e-territorio.pdf",
@@ -160,14 +116,6 @@
         "method": "page"
       }
     ],
-    "after_award": [
-      {
-        "source_url": "https://www.fondazionepv.it/wp-content/uploads/2026/02/regolamento-4-bando-2026-ambiente-e-territorio.pdf",
-        "quote": "La Fondazione provvederà ad erogare il contributo di sua competenza, pari al 60% dell'importo ammesso a finanziamento a conclusione del progetto attraverso la presentazione di fatture quietanzate che dovranno essere pari costo complessivo del progetto.",
-        "checked_at": "2026-11-20",
-        "method": "page"
-      }
-    ],
     "documents": [
       {
         "source_url": "https://www.fondazionepv.it/wp-content/uploads/2026/02/regolamento-4-bando-2026-ambiente-e-territorio.pdf",
@@ -200,13 +148,65 @@
         "method": "page"
       }
     ],
+    "effort": [
+      {
+        "source_url": "https://www.fondazionepv.it/wp-content/uploads/2026/02/regolamento-4-bando-2026-ambiente-e-territorio.pdf",
+        "quote": "le domande possono essere presentate in qualsiasi momento;",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.fondazionepv.it/wp-content/uploads/2026/02/regolamento-4-bando-2026-ambiente-e-territorio.pdf",
+        "quote": "l'istruttoria avviene in ordine cronologico di arrivo;",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
     "co_finance": {
       "source_url": "https://www.fondazionepv.it/wp-content/uploads/2026/02/regolamento-4-bando-2026-ambiente-e-territorio.pdf",
       "quote": "se il progetto sarà selezionato, la Fondazione lo finanzierà sino al 60% del costo totale e comunque in misura non superiore a 30.000 euro.",
       "checked_at": "2026-11-20",
       "method": "page"
-    }
+    },
+    "after_award": [
+      {
+        "source_url": "https://www.fondazionepv.it/wp-content/uploads/2026/02/regolamento-4-bando-2026-ambiente-e-territorio.pdf",
+        "quote": "La Fondazione provvederà ad erogare il contributo di sua competenza, pari al 60% dell'importo ammesso a finanziamento a conclusione del progetto attraverso la presentazione di fatture quietanzate che dovranno essere pari costo complessivo del progetto.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ]
   },
-  "checked_at": "2026-11-15",
-  "co_finance": { "min_share": 40 }
+  "checked_at": "2026-11-20",
+  "co_finance": { "min_share": 40 },
+  "after_award": { "reports": "final" },
+  "eligibility": [
+    { "rule": "Be formally constituted by a regularly registered deed", "kind": "legal" },
+    { "rule": "Have legal and operational headquarters in Pavia province", "kind": "legal" },
+    {
+      "rule": "Have been established for at least 2 years",
+      "kind": "track_record",
+      "min_years": 2
+    },
+    { "rule": "Not have current Fondazione Cariplo funding in the same sector", "kind": "other" },
+    { "rule": "Public bodies apply only in partnership with private entities", "kind": "legal" },
+    { "rule": "Not have started or completed the project when applying", "kind": "project" },
+    {
+      "rule": "Complete the project by 31 December 2027 unless a justified documented exceptional extension applies",
+      "kind": "project"
+    },
+    { "rule": "Exclude institutional or ordinary operating costs", "kind": "project" }
+  ],
+  "documents": [
+    "Registered founding deed, unless a public or ecclesiastical/religious entity",
+    "Current registered statutes, unless a public or ecclesiastical/religious entity",
+    "Final accounts, or a two-year income and expense statement, unless a public entity",
+    "List of governing bodies, unless a public or ecclesiastical/religious entity",
+    "Certificate of current legal representative status and/or diocesan decree, if an ecclesiastical or religious entity",
+    "Identity document of the legal representative",
+    "Detailed project description",
+    "Detailed financial plan with purchase estimates and funding sources",
+    "Communication on adapting the organisation and statutes to the Third Sector Code"
+  ],
+  "effort": { "steps": ["Application submission (rolling)", "Review in order received"] }
 }
