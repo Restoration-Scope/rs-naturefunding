@@ -1,0 +1,95 @@
+{
+  "id": "biffa-award-partnership-grants-scheme",
+  "read_on": "2026-11-20",
+  "prompt_version": "req-2026-11-20.1",
+  "models": ["cursor:gpt-5.6-luna-high"],
+  "complete": false,
+  "reasons": [
+    "12 links could not be ranked without Jev",
+    "13 links could not be ranked without Jev",
+    "https://www.biffa-award.org/sites/default/files/2025-12/BOM156_Guidance-Notes-for-MGS-online-application_V28_0825-1.pdf: page 1 is an image: needs OCR",
+    "the text names a document with rules that was not read: Partnership Grants Scheme Guidance Notes",
+    "Jev did not check this reading, so an absent fact is not known to be absent"
+  ],
+  "requirements_checked": false,
+  "documents": [
+    {
+      "ref": "D1",
+      "url": "https://www.biffa-award.org/who-we-support/partnership-grants-scheme-closed",
+      "final_url": "https://www.biffa-award.org/who-we-support/partnership-grants-scheme-closed",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 5806,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:38b735f03f2e7caa411a3be0a309d1f4b8fd274d61dd72f7a2e8fc0a119ce086"
+    },
+    {
+      "ref": "D2",
+      "url": "https://www.biffa-award.org/about-us/frequently-asked-questions",
+      "final_url": "https://www.biffa-award.org/about-us/frequently-asked-questions",
+      "from": "https://www.biffa-award.org/who-we-support/partnership-grants-scheme-closed",
+      "anchor": "Frequently Asked Questions",
+      "depth": 1,
+      "pdf": false,
+      "chars": 10017,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:a362f31d2ecd4dd6bf8fc2635e6b605d482d275a247b43d19b3725063fdba8a7"
+    },
+    {
+      "ref": "D3",
+      "url": "https://www.biffa-award.org/privacy-policy",
+      "final_url": "https://www.biffa-award.org/privacy-policy",
+      "from": "https://www.biffa-award.org/who-we-support/partnership-grants-scheme-closed",
+      "anchor": "Privacy policy",
+      "depth": 1,
+      "pdf": false,
+      "chars": 1144,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:21cdc24e8d53e64f6a4b74c00181738a41cbb4a82670c72decfbd522e852b051"
+    },
+    {
+      "ref": "D4",
+      "url": "https://www.biffa-award.org/sites/default/files/2025-12/BOM156_Guidance-Notes-for-MGS-online-application_V28_0825-1.pdf",
+      "final_url": "https://www.biffa-award.org/sites/default/files/2025-12/BOM156_Guidance-Notes-for-MGS-online-application_V28_0825-1.pdf",
+      "from": "https://www.biffa-award.org/about-us/frequently-asked-questions",
+      "anchor": "Guidance Notes.",
+      "depth": 2,
+      "pdf": true,
+      "chars": 29393,
+      "pages": 20,
+      "low_text": false,
+      "hash": "sha256:dcb4e1d0ed5714e50a29674f42af1058cd9bf7ce7371577eb07c1812b77f8156"
+    }
+  ],
+  "failures": [
+    {
+      "url": "https://www.biffa-award.org/sites/default/files/2025-12/BOM156_Guidance-Notes-for-MGS-online-application_V28_0825-1.pdf",
+      "from": "https://www.biffa-award.org/about-us/frequently-asked-questions",
+      "kind": "low_text",
+      "message": "page 1 is an image: needs OCR"
+    }
+  ],
+  "skipped_links": 61,
+  "chunks": [{ "id": "all", "docs": ["D1", "D2", "D3", "D4"], "chars": 46975 }],
+  "outcomes": {
+    "eligibility": "stated",
+    "documents": "not_found",
+    "effort": "stated",
+    "co_finance": "stated",
+    "consortium": "not_found",
+    "after_award": "not_found"
+  },
+  "written": ["eligibility", "effort", "co_finance"],
+  "escalated": [],
+  "flags": [],
+  "notes": [
+    "extractor: The 2026 round is closed. D1 gives conflicting work-start information: its schedule says February/May 2027, while its criteria say February/May 2026. D4 is Main Grants Scheme guidance, not Partnership Grants Scheme guidance.",
+    "source biffa-award-partnership-grants-scheme-2: added for https://www.biffa-award.org/about-us/frequently-asked-questions"
+  ],
+  "usd": 0
+}

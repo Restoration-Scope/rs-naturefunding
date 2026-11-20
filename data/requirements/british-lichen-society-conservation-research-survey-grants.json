@@ -1,0 +1,74 @@
+{
+  "id": "british-lichen-society-conservation-research-survey-grants",
+  "read_on": "2026-11-20",
+  "prompt_version": "req-2026-11-20.1",
+  "models": ["cursor:gpt-5.6-luna-high"],
+  "complete": false,
+  "reasons": [
+    "https://britishlichensociety.org.uk/sites/default/files/document-downloads/BLS%20Peter%20James%20Award%20Application%20Form%20.doc would not open (unreadable: an old Word (.doc), OpenDocument or RTF file: needs conversion)",
+    "https://britishlichensociety.org.uk/sites/default/files/document-downloads/BLS%20Grant%20Application%20Form%20v5.doc would not open (unreadable: an old Word (.doc), OpenDocument or RTF file: needs conversion)",
+    "the text names a document with rules that was not read: Additional help notes at the end of the specific application form",
+    "Jev did not check this reading, so an absent fact is not known to be absent"
+  ],
+  "requirements_checked": false,
+  "documents": [
+    {
+      "ref": "D1",
+      "url": "https://britishlichensociety.org.uk/the-society/membership/grants-scholarships",
+      "final_url": "https://britishlichensociety.org.uk/the-society/membership/grants-scholarships",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 12307,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:294e925e7d010391ccb4f4a2dcc206f963290a6a8264a0a7b19b419bc3228ff9"
+    },
+    {
+      "ref": "D2",
+      "url": "https://britishlichensociety.org.uk/sites/default/files/document-downloads/BLS%20Conservation%20Grant%20Application%20Form%20v1.docx",
+      "final_url": "https://britishlichensociety.org.uk/sites/default/files/document-downloads/BLS%20Conservation%20Grant%20Application%20Form%20v1.docx",
+      "from": "https://britishlichensociety.org.uk/the-society/membership/grants-scholarships",
+      "anchor": "Grants for Ecological or Conservation Research & Survey on Lichens notes, and application form",
+      "depth": 1,
+      "pdf": false,
+      "chars": 3547,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:15884b91c864ebfa22cfa0f39e1433c3a428d3f893b38b6ec4a33a0e19eafcf8"
+    }
+  ],
+  "failures": [
+    {
+      "url": "https://britishlichensociety.org.uk/sites/default/files/document-downloads/BLS%20Peter%20James%20Award%20Application%20Form%20.doc",
+      "from": "https://britishlichensociety.org.uk/the-society/membership/grants-scholarships",
+      "kind": "unreadable",
+      "message": "an old Word (.doc), OpenDocument or RTF file: needs conversion"
+    },
+    {
+      "url": "https://britishlichensociety.org.uk/sites/default/files/document-downloads/BLS%20Grant%20Application%20Form%20v5.doc",
+      "from": "https://britishlichensociety.org.uk/the-society/membership/grants-scholarships",
+      "kind": "unreadable",
+      "message": "an old Word (.doc), OpenDocument or RTF file: needs conversion"
+    }
+  ],
+  "skipped_links": 58,
+  "chunks": [{ "id": "all", "docs": ["D1", "D2"], "chars": 16183 }],
+  "outcomes": {
+    "eligibility": "stated",
+    "documents": "stated",
+    "effort": "stated",
+    "co_finance": "stated",
+    "consortium": "not_found",
+    "after_award": "stated"
+  },
+  "written": ["eligibility", "documents", "effort", "co_finance", "after_award"],
+  "escalated": [],
+  "flags": [],
+  "notes": [
+    "extractor: No current or next-round deadline is stated. The text also requires species data to be sent to the BLS database, but this duty has no corresponding after-award category in the schema.",
+    "source british-lichen-society-conservation-research-survey-grants-2: added for https://britishlichensociety.org.uk/sites/default/files/document-downloads/BLS%20Conservation%20Grant%20Application%20Form%20v1.docx"
+  ],
+  "usd": 0
+}

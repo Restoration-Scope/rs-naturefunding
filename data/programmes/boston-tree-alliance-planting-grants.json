@@ -1,20 +1,58 @@
 {
   "id": "boston-tree-alliance-planting-grants",
   "name": "Boston Tree Alliance Tree Planting and Care Grant Program",
-  "funder": { "name": "City of Boston", "url": "https://www.boston.gov/" },
-  "administered_by": { "name": "Mass Audubon", "url": "https://www.massaudubon.org/" },
+  "funder": {
+    "name": "City of Boston",
+    "url": "https://www.boston.gov/"
+  },
+  "administered_by": {
+    "name": "Mass Audubon",
+    "url": "https://www.massaudubon.org/"
+  },
   "parent": null,
   "url": "https://www.boston.gov/news/apply-tree-planting-grant",
   "summary": "Grants of up to $249,000 for nonprofit and community-based organisations to plant, maintain and run education on trees on privately owned land in under-canopied Boston neighbourhoods.",
-  "approaches": ["urban_nature", "reforestation"],
-  "applicant_types": ["ngo", "community_group"],
-  "geography": { "scope": "countries", "countries": ["US"], "label": "Boston, Massachusetts" },
+  "approaches": [
+    "urban_nature",
+    "reforestation"
+  ],
+  "applicant_types": [
+    "ngo",
+    "community_group"
+  ],
+  "geography": {
+    "scope": "countries",
+    "countries": [
+      "US"
+    ],
+    "label": "Boston, Massachusetts"
+  },
   "access": "direct",
   "window": "fixed",
-  "amount": { "currency": "USD", "max": 249000 },
-  "pool": { "currency": "USD", "value": 688000, "period": "round", "label": "the fourth cycle" },
-  "co_finance_required": null,
+  "amount": {
+    "currency": "USD",
+    "max": 249000
+  },
+  "pool": {
+    "currency": "USD",
+    "value": 688000,
+    "period": "round",
+    "label": "the fourth cycle"
+  },
+  "co_finance_required": false,
   "reporting": null,
+  "effort": {
+    "steps": [
+      "Online application",
+      "Initial review",
+      "Revised final proposal, then approval"
+    ],
+    "due": [
+      "2026-11-06",
+      null,
+      null
+    ]
+  },
   "calls": [
     {
       "id": "2027-cycle",
@@ -22,7 +60,10 @@
       "url": "https://www.boston.gov/news/apply-tree-planting-grant",
       "status": "closed",
       "opens": null,
-      "deadline": { "date": "2026-11-06", "text": "November 6, 2026" },
+      "deadline": {
+        "date": "2026-11-06",
+        "text": "November 6, 2026"
+      },
       "evidence": {
         "status": {
           "source_url": "https://www.boston.gov/news/apply-tree-planting-grant",
@@ -81,7 +122,94 @@
       "quote": "Apply for up to $249,000 to plant and care for trees on privately-owned land.",
       "checked_at": "2026-11-14",
       "method": "page"
-    }
+    },
+    "effort": [
+      {
+        "source_url": "https://www.boston.gov/news/apply-tree-planting-grant",
+        "quote": "The deadline to apply is November 6, 2026.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.boston.gov/departments/climate-resilience/bta-tree-planting-grant",
+        "quote": "Submit application Initial review of proposals by the grant review team Proposal revisions and finalization Final proposal submissions and approval",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "co_finance_required": {
+      "source_url": "https://content.boston.gov/sites/default/files/file/2026/09/Notice%20of%20Funding%20Opportunity%202026.pdf",
+      "quote": "While matching funds are looked upon favorably during the review process, they are not required for an applicant to be considered for funding.",
+      "checked_at": "2026-11-20",
+      "method": "page"
+    },
+    "eligibility": [
+      {
+        "source_url": "https://content.boston.gov/sites/default/files/file/2026/09/Notice%20of%20Funding%20Opportunity%202026.pdf",
+        "quote": "For-profit corporations, public agencies, and individuals not representing a community-based or non-profit organization are not eligible to apply for funding through this grant program without a fiscal sponsor.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://content.boston.gov/sites/default/files/file/2026/09/Notice%20of%20Funding%20Opportunity%202026.pdf",
+        "quote": "In addition to the requirements for projects to occur on private land in the city of Boston, tree planting must take place within specific geographic boundaries as outlined in the map linked here",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "documents": [
+      {
+        "source_url": "https://content.boston.gov/sites/default/files/file/2026/09/Notice%20of%20Funding%20Opportunity%202026.pdf",
+        "quote": "Budget spreadsheet.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://content.boston.gov/sites/default/files/file/2026/09/Notice%20of%20Funding%20Opportunity%202026.pdf",
+        "quote": "A tree species list for planting (may be a draft but any changes must be approved by the Boston Tree Alliance Urban Forester).",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://content.boston.gov/sites/default/files/file/2026/09/Notice%20of%20Funding%20Opportunity%202026.pdf",
+        "quote": "Signed landowner agreement(s) from private property owners or a detailed plan for ensuring agreements are received before funding can be disbursed.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "after_award": [
+      {
+        "source_url": "https://content.boston.gov/sites/default/files/file/2026/09/Notice%20of%20Funding%20Opportunity%202026.pdf",
+        "quote": "All grantees are required to submit data within 2 weeks of tree planting, and inspection data 6 months, 1 year, and 2 years after trees are planted.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://content.boston.gov/sites/default/files/file/2026/09/Notice%20of%20Funding%20Opportunity%202026.pdf",
+        "quote": "Applicants selected to receive funding will be required to attend an orientation session to review project requirements before implementation.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ]
   },
-  "checked_at": "2026-11-14"
+  "checked_at": "2026-11-14",
+  "eligibility": [
+    {
+      "rule": "Is a nonprofit or community-based organisation, or applies through a nonprofit fiscal sponsor",
+      "kind": "legal"
+    },
+    {
+      "rule": "Plants trees on private land in Boston within the eligible map boundaries",
+      "kind": "project"
+    }
+  ],
+  "documents": [
+    "Budget spreadsheet",
+    "Tree species list (a draft is accepted)",
+    "Signed landowner agreements, or a plan to get them before funding"
+  ],
+  "after_award": {
+    "reports": "other",
+    "training": true
+  }
 }

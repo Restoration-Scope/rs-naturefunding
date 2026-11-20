@@ -1,0 +1,48 @@
+{
+  "id": "bpcr-proyectos-socioambientales",
+  "read_on": "2026-11-20",
+  "prompt_version": "req-2026-11-20.1",
+  "models": ["cursor:gpt-5.6-luna-high"],
+  "complete": false,
+  "reasons": [
+    "10 links could not be ranked without Jev",
+    "the text names a document with rules that was not read: Guía para la presentación de proyectos",
+    "the text names a document with rules that was not read: www.bancodeproyectos.org.ar",
+    "Jev did not check this reading, so an absent fact is not known to be absent"
+  ],
+  "requirements_checked": false,
+  "documents": [
+    {
+      "ref": "D1",
+      "url": "https://www.bancodeproyectos.org.ar/node/164",
+      "final_url": "https://www.bancodeproyectos.org.ar/node/164",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 4564,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:6baeb8170544884631eae57590dd34c2fed9fae3b164d645545e42f2bbb0c42c"
+    }
+  ],
+  "failures": [],
+  "skipped_links": 18,
+  "chunks": [{ "id": "all", "docs": ["D1"], "chars": 4621 }],
+  "outcomes": {
+    "eligibility": "stated",
+    "documents": "not_found",
+    "effort": "stated",
+    "co_finance": "stated",
+    "consortium": "not_found",
+    "after_award": "not_found"
+  },
+  "written": ["eligibility", "effort", "co_finance"],
+  "escalated": [],
+  "flags": [],
+  "notes": [
+    "effort \"Application submission\": the quote does not state 2026-02-27 whole; left undated",
+    "extractor: The public results announcement is scheduled for 2026-04-10, subject to possible changes. The first disbursement is estimated before the end of the year and will be 50% of the requested total."
+  ],
+  "usd": 0
+}
