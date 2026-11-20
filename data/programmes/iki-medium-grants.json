@@ -23,7 +23,47 @@
   "window": "fixed",
   "amount": { "currency": "EUR", "min": 300000, "max": 800000 },
   "co_finance_required": true,
+  "consortium_required": true,
   "reporting": "Grantees submit an annual interim report by 30 April (progress statement with results and IKI standard indicators, plus a financial statement) and a yearly update on project results to the IKI Office.",
+  "effort": {
+    "steps": [
+      "Project outline",
+      "Formal review and technical assessment",
+      "Full project proposal, if invited"
+    ],
+    "due": ["2027-01-12", null, null]
+  },
+  "eligibility": [
+    {
+      "rule": "Is based in Germany or another EU Member State when submitting the outline",
+      "kind": "legal"
+    },
+    {
+      "rule": "Has an independent German branch with its own management and accounting before first payment",
+      "kind": "legal"
+    },
+    { "rule": "Has not-for-profit status", "kind": "legal" },
+    {
+      "rule": "Has 3 years of international cooperation and 3 years of experience in the chosen thematic area",
+      "kind": "track_record"
+    },
+    { "rule": "Can independently plan, implement and manage project finances", "kind": "capacity" },
+    {
+      "rule": "Is not a government body, private company or one-person company, except an independent think tank with public analyses",
+      "kind": "legal"
+    },
+    {
+      "rule": "Average annual request is at most 50% of average annual revenue over the last 2 years",
+      "kind": "finances"
+    }
+  ],
+  "after_award": { "reports": "yearly" },
+  "documents": [
+    "Project concept, PDF",
+    "Reference projects of the implementing organisation (Annex 1)",
+    "Reference projects of each implementing partner (Annex 2)",
+    "Evidence of non-profit tax status, for non-profit enterprises"
+  ],
   "calls": [
     {
       "id": "img-2026",
@@ -127,12 +167,116 @@
       "checked_at": "2026-11-20",
       "method": "page"
     },
+    "consortium_required": {
+      "source_url": "https://www.international-climate-initiative.com/en/find-funding/medium-grants/",
+      "quote": "These organisations must enter into a partnership with one or two local implementing organisations based in the implementing country or region.",
+      "checked_at": "2026-11-20",
+      "method": "page"
+    },
     "reporting": {
       "source_url": "https://www.international-climate-initiative.com/en/manage-project/report-on-the-project-progress/",
       "quote": "Therefore, all IKI implementing organisations must submit an annual report on the progress of their project referred to as interim reports.",
       "checked_at": "2026-11-20",
       "method": "page"
-    }
+    },
+    "effort": [
+      {
+        "source_url": "https://www.international-climate-initiative.com/fileadmin/iki/Dokumente/Calls/IMG/2026/IMG2026_Funding_Announcement_EN.pdf",
+        "quote": "The deadline for timely and complete submission is 12 January 2027 at 11:59 CET",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.international-climate-initiative.com/fileadmin/iki/Dokumente/Calls/IMG/2026/IMG2026_Funding_Announcement_EN.pdf",
+        "quote": "The project outlines consist of the completed form and a project concept. The assessment is carried out in several stages: First, compliance with the formal requirements is checked.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.international-climate-initiative.com/fileadmin/iki/Dokumente/Calls/IMG/2026/IMG2026_Funding_Announcement_EN.pdf",
+        "quote": "Only selected outlines will be invited to submit a complete, formal project proposal by means of the “Request for Project Proposal”.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "eligibility": [
+      {
+        "source_url": "https://www.international-climate-initiative.com/en/find-funding/medium-grants/medium-grants-2026/faq-for-iki-medium-grants-2026/",
+        "quote": "At that stage, the lead organisation must be based in Germany or another EU Member State.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.international-climate-initiative.com/en/find-funding/medium-grants/medium-grants-2026/faq-for-iki-medium-grants-2026/",
+        "quote": "Before the first disbursement of funding, however, the lead organisation must have a permanent, independently operating branch in Germany with its own management and accounting.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.international-climate-initiative.com/en/find-funding/medium-grants/medium-grants-2026/faq-for-iki-medium-grants-2026/",
+        "quote": "not-for-profit status",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.international-climate-initiative.com/fileadmin/iki/Dokumente/Calls/IMG/2026/IMG2026_Funding_Announcement_EN.pdf",
+        "quote": "During the outline phase, the implementing organisation must demonstrate three years of experience in international co-operation through the attached reference projects as well as three years of experience in the selected thematic funding area.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.international-climate-initiative.com/en/find-funding/medium-grants/medium-grants-2026/faq-for-iki-medium-grants-2026/",
+        "quote": "the ability to independently plan, implement, and manage the finances of their projects",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.international-climate-initiative.com/en/find-funding/medium-grants/medium-grants-2026/faq-for-iki-medium-grants-2026/",
+        "quote": "Government bodies, private-sector companies, and one-person companies are not eligible for funding. An exception applies to think tanks, provided that they can demonstrate their independence and make their analyses transparent and publicly available.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.international-climate-initiative.com/en/find-funding/medium-grants/medium-grants-2026/faq-for-iki-medium-grants-2026/",
+        "quote": "The average funding volume per fiscal year is not allowed to exceed 50% of the average annual turnover of the applicant over the last two years.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "after_award": [
+      {
+        "source_url": "https://www.international-climate-initiative.com/en/manage-project/report-on-the-project-progress/",
+        "quote": "all IKI implementing organisations must submit an annual report on the progress of their project referred to as interim reports.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "documents": [
+      {
+        "source_url": "https://www.international-climate-initiative.com/fileadmin/iki/Dokumente/Calls/IMG/2026/IMG2026_Funding_Announcement_EN.pdf",
+        "quote": "The project outlines consist of the completed form and a project concept.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.international-climate-initiative.com/fileadmin/iki/Dokumente/Calls/IMG/2026/IMG2026_Sample_Outline_Form_EN.docx",
+        "quote": "Please specify the number of years here and give proof in Annex 1 \"References -Implementing Organisation\".",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.international-climate-initiative.com/fileadmin/iki/Dokumente/Calls/IMG/2026/IMG2026_Sample_Outline_Form_EN.docx",
+        "quote": "Please specify the number of years here and give proof in Annex 2 \"References -Partner Organisation\".",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.international-climate-initiative.com/en/find-funding/medium-grants/medium-grants-2026/faq-for-iki-medium-grants-2026/",
+        "quote": "Non-profit enterprises must provide evidence of their non-profit status for tax purposes.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ]
   },
   "checked_at": "2026-11-03"
 }

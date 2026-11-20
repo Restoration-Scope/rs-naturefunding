@@ -1,0 +1,137 @@
+{
+  "id": "groningen-groene-initiatieven",
+  "read_on": "2026-11-20",
+  "prompt_version": "req-2026-11-20.1",
+  "models": ["cursor:gpt-5.6-luna-high"],
+  "complete": false,
+  "reasons": [
+    "9 links could not be ranked without Jev",
+    "4 links could not be ranked without Jev",
+    "https://www.provinciegroningen.nl/fileadmin/user_upload/Documenten/Beleid_en_documenten/Documentenzoeker/Natuur_en_landschap/Natuur/Programma-Landelijk-Gebied-3-Mooi-Grunn-2017-2027.pdf: pages 1, 2, 3, 7, 62, 73 are images: needs OCR",
+    "the text names a document with rules that was not read: officiële regeling",
+    "the text names a document with rules that was not read: Kwaliteitsgids Groningen",
+    "the text names a document with rules that was not read: provinciale omgevingsverordening",
+    "the text names a document with rules that was not read: Programma Landelijk Gebied 3 (PLG3)",
+    "the text names a document with rules that was not read: Kader voor subsidies en overeenkomsten",
+    "the text names a document with rules that was not read: Provinciale Omgevingsvisie Groningen 2016-2020",
+    "the text names a document with rules that was not read: Kaderverordening Subsidies provincie Groningen 2017",
+    "the text names a document with rules that was not read: Subsidieregeling Programma landelijk gebied 3",
+    "the text names a document with rules that was not read: Applicable openstellingsbesluit",
+    "the text names a document with rules that was not read: Verordening (EU) Nr. 2023/2831 van de Commissie van 13 december 2024",
+    "Jev did not check this reading, so an absent fact is not known to be absent"
+  ],
+  "requirements_checked": false,
+  "documents": [
+    {
+      "ref": "D1",
+      "url": "https://www.provinciegroningen.nl/subsidies/natuur-en-landschap/groene-initiatieven/",
+      "final_url": "https://www.provinciegroningen.nl/subsidies/natuur-en-landschap/groene-initiatieven/",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 5141,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:05832f1949ab22dead4cfa5968517ca4370b3d82ec53ba52716f74b454cebe6d"
+    },
+    {
+      "ref": "D2",
+      "url": "https://lokaleregelgeving.overheid.nl/CVDR609089",
+      "final_url": "https://lokaleregelgeving.overheid.nl/CVDR609089",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 34784,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:d35a85c07508d83bd58abd83a89b84bd92cc416ddce0aa0bf9d6c6d8025b52be"
+    },
+    {
+      "ref": "D3",
+      "url": "https://www.provinciegroningen.nl/fileadmin/user_upload/Documenten/Beleid_en_documenten/Documentenzoeker/Natuur_en_landschap/Natuur/Programma-Landelijk-Gebied-3-Mooi-Grunn-2017-2027.pdf",
+      "final_url": "https://www.provinciegroningen.nl/fileadmin/user_upload/Documenten/Beleid_en_documenten/Documentenzoeker/Natuur_en_landschap/Natuur/Programma-Landelijk-Gebied-3-Mooi-Grunn-2017-2027.pdf",
+      "from": "https://www.provinciegroningen.nl/subsidies/natuur-en-landschap/groene-initiatieven/",
+      "anchor": "Programma Landelijk Gebied 3 Mooi Grunn 2017-2027 26 oktober 2018, 77 pagina's, PDF - 3,72 MB",
+      "depth": 1,
+      "pdf": true,
+      "chars": 166160,
+      "pages": 77,
+      "low_text": false,
+      "hash": "sha256:48af4efc50dc8a88de234914264d962dd2202f66a89959ce6627a3d96afee8da"
+    },
+    {
+      "ref": "D4",
+      "url": "https://www.provinciegroningen.nl/fileadmin/user_upload/Documenten/Subsidies/20240726_de_minimisverklaring_2024__1_.pdf",
+      "final_url": "https://www.provinciegroningen.nl/fileadmin/user_upload/Documenten/Subsidies/20240726_de_minimisverklaring_2024__1_.pdf",
+      "from": "https://www.provinciegroningen.nl/subsidies/natuur-en-landschap/groene-initiatieven/",
+      "anchor": "De-minimisverklaring en toelichting 10 juli 2025, PDF - 251,00 KB",
+      "depth": 1,
+      "pdf": true,
+      "chars": 10822,
+      "pages": 4,
+      "low_text": false,
+      "hash": "sha256:c5c65e211c0450382dfeed56db626ba05da58ccb353ceedd94ce62c972860492"
+    },
+    {
+      "ref": "D5",
+      "url": "https://lokaleregelgeving.overheid.nl/CVDR609089?",
+      "final_url": "https://lokaleregelgeving.overheid.nl/CVDR609089?",
+      "from": "https://lokaleregelgeving.overheid.nl/CVDR609089",
+      "anchor": "Regeling tekst",
+      "depth": 1,
+      "pdf": false,
+      "chars": 34784,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:d35a85c07508d83bd58abd83a89b84bd92cc416ddce0aa0bf9d6c6d8025b52be"
+    }
+  ],
+  "failures": [
+    {
+      "url": "https://www.provinciegroningen.nl/fileadmin/user_upload/Documenten/Beleid_en_documenten/Documentenzoeker/Natuur_en_landschap/Natuur/Programma-Landelijk-Gebied-3-Mooi-Grunn-2017-2027.pdf",
+      "from": "https://www.provinciegroningen.nl/subsidies/natuur-en-landschap/groene-initiatieven/",
+      "kind": "low_text",
+      "message": "pages 1, 2, 3, 7, 62, 73 are images: needs OCR"
+    }
+  ],
+  "skipped_links": 90,
+  "chunks": [
+    { "id": "c1", "docs": ["D1"], "chars": 5238 },
+    { "id": "c2", "docs": ["D2"], "chars": 34845 },
+    { "id": "c3", "docs": ["D3"], "chars": 40212 },
+    { "id": "c4", "docs": ["D3"], "chars": 40269 },
+    { "id": "c5", "docs": ["D3"], "chars": 40162 },
+    { "id": "c6", "docs": ["D3"], "chars": 40313 },
+    { "id": "c7", "docs": ["D3"], "chars": 12769 },
+    { "id": "c8", "docs": ["D4"], "chars": 11057 },
+    { "id": "c9", "docs": ["D5"], "chars": 34907 }
+  ],
+  "outcomes": {
+    "eligibility": "stated",
+    "documents": "stated",
+    "effort": "unresolved",
+    "co_finance": "stated",
+    "consortium": "not_found",
+    "after_award": "not_found"
+  },
+  "written": ["eligibility", "documents", "co_finance"],
+  "escalated": [],
+  "flags": [
+    {
+      "field": "effort",
+      "item": "steps",
+      "why": "the steps come from different parts of the text; check they are one list in order"
+    }
+  ],
+  "notes": [
+    "eligibility: 10 rules past the 8th dropped",
+    "documents: 6 past the 10th dropped",
+    "extractor: After completing the project, the grantee has 13 weeks to apply for final subsidy determination; the grant award letter states the procedure and final submission date. | D2 is valid from 2026-07-14. It states an annual application window from 1 January to 1 December, not a year-specific deadline. | This part is a strategic programme document, not a grant-specific call. It refers to Chapter 8 for the subsidy framework, but that chapter is not included in this part. | D3 is a 2017–2027 policy programme document. It describes Groene initiatieven but gives no applicant requirements for the 2026 round. | D3 is a broad 2017–2027 policy document rather than a call-specific application guide. The co-finance requirement is assigned to the private-land owner, not explicitly to the applicant. | This document is a general policy framework. It states that the Kaderverordening Subsidies provincie Groningen 2017 and implementation regulations contain the subsidy conditions, while openstellingsbesluit",
+    "the flagged text is too long for one escalation",
+    "source groningen-groene-initiatieven-1: selector .content dropped, a new quote sits outside it",
+    "source groningen-groene-initiatieven-3: added for https://www.provinciegroningen.nl/fileadmin/user_upload/Documenten/Beleid_en_documenten/Documentenzoeker/Natuur_en_landschap/Natuur/Programma-Landelijk-Gebied-3-Mooi-Grunn-2017-2027.pdf"
+  ],
+  "usd": 0
+}

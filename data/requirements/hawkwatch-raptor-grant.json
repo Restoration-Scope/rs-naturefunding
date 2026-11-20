@@ -1,0 +1,88 @@
+{
+  "id": "hawkwatch-raptor-grant",
+  "read_on": "2026-11-20",
+  "prompt_version": "req-2026-11-20.1",
+  "models": ["cursor:gpt-5.6-luna-high"],
+  "complete": false,
+  "reasons": [
+    "27 links could not be ranked without Jev",
+    "24 links could not be ranked without Jev",
+    "26 links could not be ranked without Jev",
+    "the text names a document with rules that was not read: Most recently published list of priority species",
+    "Jev did not check this reading, so an absent fact is not known to be absent"
+  ],
+  "requirements_checked": false,
+  "documents": [
+    {
+      "ref": "D1",
+      "url": "https://hawkwatch.org/investing-in-others/grrcg/",
+      "final_url": "https://hawkwatch.org/investing-in-others/grrcg/",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 12041,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:ad549e65a4ec18820909313a332abbf84b4d594b946c5f0387c337dd853cd0a0"
+    },
+    {
+      "ref": "D2",
+      "url": "https://hawkwatch.org/faqs/",
+      "final_url": "https://hawkwatch.org/faqs/",
+      "from": "https://hawkwatch.org/investing-in-others/grrcg/",
+      "anchor": "FAQs",
+      "depth": 1,
+      "pdf": false,
+      "chars": 6461,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:312fce1a4b92b6637e822984d3e7a133707ced631c4b717f04e9682886d7e6c2"
+    },
+    {
+      "ref": "D3",
+      "url": "https://hawkwatch.org/wp-content/uploads/2026/09/GRRCG-Application-Form.docx",
+      "final_url": "https://hawkwatch.org/wp-content/uploads/2026/09/GRRCG-Application-Form.docx",
+      "from": "https://hawkwatch.org/investing-in-others/grrcg/",
+      "anchor": "Click here to apply",
+      "depth": 1,
+      "pdf": false,
+      "chars": 5324,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:dc2322b6559b40ca30b24fe71bd936a59546fdee46bd314a6ab59dbcdd5772cc"
+    },
+    {
+      "ref": "D4",
+      "url": "https://hawkwatch.org/research/north-american-programs/cares/nestboxguide/",
+      "final_url": "https://hawkwatch.org/research/north-american-programs/cares/nestboxguide/",
+      "from": "https://hawkwatch.org/faqs/",
+      "anchor": "here",
+      "depth": 2,
+      "pdf": false,
+      "chars": 1576,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:0f1488a1de2f0361de698aad01a6965f755cebbba9a95c6cea32711103f74818"
+    }
+  ],
+  "failures": [],
+  "skipped_links": 189,
+  "chunks": [{ "id": "all", "docs": ["D1", "D2", "D3", "D4"], "chars": 25847 }],
+  "outcomes": {
+    "eligibility": "stated",
+    "documents": "stated",
+    "effort": "stated",
+    "co_finance": "not_found",
+    "consortium": "not_found",
+    "after_award": "stated"
+  },
+  "written": ["eligibility", "documents", "effort", "after_award"],
+  "escalated": [],
+  "flags": [],
+  "notes": [
+    "extractor: D1 states citizen or permanent resident, while D3 states the applicant must be a citizen. D1 uses both RCPI > 0.5 and RCPI >= 0.5 wording; its minimum requirement and restriction use RCPI >= 0.5. Reporting is mentioned as a condition for continuation funding.",
+    "source hawkwatch-raptor-grant-2: added for https://hawkwatch.org/wp-content/uploads/2026/09/GRRCG-Application-Form.docx"
+  ],
+  "usd": 0
+}

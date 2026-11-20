@@ -12,8 +12,36 @@
   "access": "direct",
   "window": "fixed",
   "amount": { "currency": "USD", "max": 3000000, "typical": true },
-  "co_finance_required": null,
+  "co_finance_required": false,
   "reporting": null,
+  "effort": {
+    "steps": [
+      "Contact regional officer and develop a concept",
+      "Concept paper",
+      "Full application, if invited"
+    ],
+    "more_after": true,
+    "due": [null, "2027-01-21", "2027-03-11"]
+  },
+  "eligibility": [
+    {
+      "rule": "Not acquire property through condemnation or threat of condemnation",
+      "kind": "project"
+    },
+    {
+      "rule": "Exclude acquisition costs for existing buildings or structures and project contingency",
+      "kind": "project"
+    },
+    { "rule": "Acquired land will not be owned and managed by a federal agency", "kind": "project" }
+  ],
+  "after_award": { "reports": "final" },
+  "documents": [
+    "Narrative (DOC or DOCX)",
+    "Budget (XLS or XLSX)",
+    "Transaction and Due Diligence information",
+    "Project Maps",
+    "Project Photos"
+  ],
   "calls": [
     {
       "id": "cycle-1-2026",
@@ -92,7 +120,93 @@
       "quote": "Generally, up to $3 million per project.",
       "checked_at": "2026-11-20",
       "method": "page"
-    }
+    },
+    "co_finance_required": {
+      "source_url": "https://goco.org/sites/default/files/Competitive%20Grant%20Program%20Procedures_05_06_2026.pdf",
+      "quote": "GOCO does not have a minimum match requirement.",
+      "checked_at": "2026-11-20",
+      "method": "page"
+    },
+    "effort": [
+      {
+        "source_url": "https://goco.org/grants/apply",
+        "quote": "Contact your regional officer and develop a concept (6+ months before concept paper deadline).",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://goco.org/sites/default/files/Land%20Acquisition%20Guidance%20and%20RFP%20July%202026.pdf",
+        "quote": "Submit a concept paper.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://goco.org/sites/default/files/Land%20Acquisition%20Guidance%20and%20RFP%20July%202026.pdf",
+        "quote": "If invited, submit an application.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://goco.org/land-acquisition",
+        "quote": "Concept papers due: January 21, 2027",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://goco.org/land-acquisition",
+        "quote": "Applications due: March 11, 2027",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "eligibility": [
+      {
+        "source_url": "https://goco.org/sites/default/files/Land%20Acquisition%20Guidance%20and%20RFP%20July%202026.pdf",
+        "quote": "GOCO cannot participate in property acquisitions involving condemnation or the threat of condemnation.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://goco.org/sites/default/files/Land%20Acquisition%20Guidance%20and%20RFP%20July%202026.pdf",
+        "quote": "Acquisition costs associated with existing buildings and other structures • Project contingency",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://goco.org/sites/default/files/Competitive%20Grant%20Program%20Procedures_05_06_2026.pdf",
+        "quote": "GOCO funds cannot be used for the acquisition of property to be owned and managed by a federal agency",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "after_award": [
+      {
+        "source_url": "https://goco.org/sites/default/files/Land%20Acquisition%20Guidance%20and%20RFP%20July%202026.pdf",
+        "quote": "Submit final documentation for funding reimbursement.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "documents": [
+      {
+        "source_url": "https://goco.org/sites/default/files/Land%20Acquisition%20Guidance%20and%20RFP%20July%202026.pdf",
+        "quote": "☐ Narrative - submit file in doc or docx ☐ Budget - available on Land Acquisition Web page; submit file in xls or xlsx ☐ [Optional] Budget narrative ☐ Transaction and Due Diligence information",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://goco.org/sites/default/files/Land%20Acquisition%20Guidance%20and%20RFP%20July%202026.pdf",
+        "quote": "☐ Project Maps",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://goco.org/sites/default/files/Land%20Acquisition%20Guidance%20and%20RFP%20July%202026.pdf",
+        "quote": "☐ Project Photos",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ]
   },
   "checked_at": "2026-11-20"
 }

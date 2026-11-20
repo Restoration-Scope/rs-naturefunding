@@ -12,8 +12,10 @@
   "access": "direct",
   "window": "fixed",
   "amount": null,
-  "co_finance_required": null,
+  "co_finance_required": false,
   "reporting": null,
+  "effort": { "steps": ["Application"], "due": ["2027-03-15"] },
+  "documents": ["Cover letter", "Project description", "Financing plan"],
   "calls": [
     {
       "id": "2026-27",
@@ -68,7 +70,41 @@
       "quote": "Nur im Winterhalbjahr (15. September bis 15. März).",
       "checked_at": "2026-11-20",
       "method": "page"
-    }
+    },
+    "co_finance_required": {
+      "source_url": "https://www.weltistiftung.ch/eingabe",
+      "quote": "Der Beitrag der Heinrich Welti-Stiftung kann das gesamte Budget oder einen Teil davon abdecken",
+      "checked_at": "2026-11-20",
+      "method": "page"
+    },
+    "effort": [
+      {
+        "source_url": "https://www.weltistiftung.ch/",
+        "quote": "Projektgesuche offen: 15. September 2026 bis 15. März 2027.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "documents": [
+      {
+        "source_url": "https://www.weltistiftung.ch/eingabe",
+        "quote": "Begleitschreiben",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.weltistiftung.ch/eingabe",
+        "quote": "Projektbeschrieb",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.weltistiftung.ch/eingabe",
+        "quote": "Finanzierungsplan mit:",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ]
   },
   "checked_at": "2026-11-20"
 }
