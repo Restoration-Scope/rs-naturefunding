@@ -21,6 +21,14 @@
   "amount": { "currency": "USD", "max": 20000, "note": "Maximum for unsolicited applications" },
   "co_finance_required": null,
   "reporting": "Final report describing how the funds were spent",
+  "effort": { "steps": ["Online application"] },
+  "eligibility": [
+    {
+      "rule": "Headquartered in Washington, Oregon, Idaho, Montana or Alaska, and the program runs there",
+      "kind": "project"
+    }
+  ],
+  "after_award": { "reports": "final" },
   "calls": [
     {
       "id": "spring-2027",
@@ -76,7 +84,31 @@
       "quote": "we request that final reports on funded proposals include a description of how funds were spent",
       "checked_at": "2026-11-15",
       "method": "page"
-    }
+    },
+    "effort": [
+      {
+        "source_url": "https://www.charlottemartin.org/",
+        "quote": "Then log in or create an account on our site, and complete the online application.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "eligibility": [
+      {
+        "source_url": "https://www.charlottemartin.org/faq",
+        "quote": "We define the Western States as Washington, Oregon, Idaho, Montana, and Alaska. To be eligible for funding, organizations must be headquartered in this region, and the proposed programs must take place within this region.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "after_award": [
+      {
+        "source_url": "https://www.charlottemartin.org/faq",
+        "quote": "Therefore, while we request that final reports on funded proposals include a description of how funds were spent, our current application does not require a detailed budget breakdown.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ]
   },
   "checked_at": "2026-11-15"
 }

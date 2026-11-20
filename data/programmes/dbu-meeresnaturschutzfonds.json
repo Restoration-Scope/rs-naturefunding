@@ -13,8 +13,25 @@
   "window": "rolling",
   "amount": null,
   "pool": { "currency": "EUR", "value": 10000000, "period": "year", "qualifier": "about" },
-  "co_finance_required": null,
+  "co_finance_required": true,
+  "consortium_required": false,
   "reporting": null,
+  "effort": { "steps": ["Project outline", "Full application, if invited"] },
+  "eligibility": [
+    { "rule": "The project is not a statutory duty", "kind": "project" },
+    { "rule": "The project has an implementation perspective", "kind": "project" },
+    { "rule": "The project is not a pure investment project", "kind": "project" },
+    { "rule": "The project has not already begun", "kind": "project" },
+    { "rule": "The project is not exclusively basic research", "kind": "project" },
+    { "rule": "A study has a concrete implementation link", "kind": "project" },
+    { "rule": "The project complies with EU state aid law", "kind": "legal" }
+  ],
+  "co_finance": {
+    "min_share": 50,
+    "in_kind": true,
+    "applies_to": "Project partners within the EU"
+  },
+  "after_award": { "reports": "interim_and_final" },
   "calls": [
     {
       "id": "standing",
@@ -63,7 +80,91 @@
       "quote": "einen neuen, gesonderten Förderbereich für den Meeresnaturschutz in Nord- und Ostsee einzurichten.",
       "checked_at": "2026-11-15",
       "method": "page"
-    }
+    },
+    "co_finance_required": {
+      "source_url": "https://www.dbu.de/foerderung/projektfoerderung/faq-zur-projektfoerderung/",
+      "quote": "Grundsätzlich sind in Förderprojekten der DBU Eigenanteile zu erbringen und nachzuweisen",
+      "checked_at": "2026-11-20",
+      "method": "page"
+    },
+    "consortium_required": {
+      "source_url": "https://www.dbu.de/foerderung/projektfoerderung/",
+      "quote": "Es sind Einzel- und Kooperationsprojekte möglich.",
+      "checked_at": "2026-11-20",
+      "method": "page"
+    },
+    "effort": [
+      {
+        "source_url": "https://www.dbu.de/foerderung/projektfoerderung/",
+        "quote": "Projektskizze: Wir empfehlen, dass Sie zur ersten Einschätzung Ihrer Projektidee zunächst eine kurze Projektskizze über unser Online-Portal einreichen",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.dbu.de/foerderung/projektfoerderung/",
+        "quote": "Förderantrag: Bei Übereinstimmung Ihrer Projektidee mit dem Förderzweck und den Fördermöglichkeiten fordert die DBU Sie auf, einen vollständigen, auf Ihrer Projektskizze aufbauenden Förderantrag einzureichen",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "eligibility": [
+      {
+        "source_url": "https://www.dbu.de/foerderung/projektfoerderung/",
+        "quote": "Projekte, die der Erfüllung gesetzlicher Pflichtaufgaben dienen",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.dbu.de/foerderung/projektfoerderung/",
+        "quote": "Projekte ohne Umsetzungsperspektive",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.dbu.de/foerderung/projektfoerderung/",
+        "quote": "reine Investitionsvorhaben",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.dbu.de/foerderung/projektfoerderung/",
+        "quote": "bereits begonnene Vorhaben",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.dbu.de/foerderung/projektfoerderung/",
+        "quote": "Projekte mit ausschließlicher Grundlagenforschung",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.dbu.de/foerderung/projektfoerderung/",
+        "quote": "Studien ohne konkreten Umsetzungsbezug",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.dbu.de/foerderung/projektfoerderung/",
+        "quote": "Projekte, die nicht dem Beihilferecht der EU entsprechen.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "co_finance": {
+      "source_url": "https://www.dbu.de/foerderung/projektfoerderung/faq-zur-projektfoerderung/",
+      "quote": "Innerhalb der EU gilt: Grundsätzlich ist von einem mindestens 50-prozentigen Eigenanteil auszugehen.",
+      "checked_at": "2026-11-20",
+      "method": "page"
+    },
+    "after_award": [
+      {
+        "source_url": "https://www.dbu.de/foerderung/projektfoerderung/",
+        "quote": "Die Termine für Ihre Zwischenberichte werden je nach Projekt individuell festgelegt und Ihnen in Ihrem Bewilligungsschreiben mitgeteilt. Der Abschlussbericht ist spätestens drei Monate nach Projektabschluss fällig.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ]
   },
   "checked_at": "2026-11-15"
 }

@@ -1,0 +1,111 @@
+{
+  "id": "charlotte-martin-wildlife-habitat",
+  "read_on": "2026-11-20",
+  "prompt_version": "req-2026-11-19.2",
+  "models": ["cursor:gpt-5.6-luna-high"],
+  "complete": false,
+  "reasons": [
+    "5 links could not be ranked without Jev",
+    "Jev did not check this reading, so an absent fact is not known to be absent"
+  ],
+  "requirements_checked": false,
+  "documents": [
+    {
+      "ref": "D1",
+      "url": "https://www.charlottemartin.org/",
+      "final_url": "https://www.charlottemartin.org/",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 4651,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:2163549bc5dff33d0af359fabaeb9abcbd13b1083beab272a78c9d82b33e4037"
+    },
+    {
+      "ref": "D2",
+      "url": "https://www.charlottemartin.org/faq",
+      "final_url": "https://www.charlottemartin.org/faq",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 7173,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:b4d22a98132338e6a610960aad067b381efa5c2ca9ffd4ab4a280c54650cf37e"
+    },
+    {
+      "ref": "D3",
+      "url": "https://www.charlottemartin.org/s/Charlotte-Martin-Foundation-letter-of-invitation-Fall-2026.pdf",
+      "final_url": "https://static1.squarespace.com/static/692f30818e82ed22d243e979/t/6ab2d693c45c8c58652af822/1790105235214/Charlotte+Martin+Foundation+letter+of+invitation+Fall+2026.pdf",
+      "from": "https://www.charlottemartin.org/",
+      "anchor": "here",
+      "depth": 1,
+      "pdf": true,
+      "chars": 5059,
+      "pages": 2,
+      "low_text": false,
+      "hash": "sha256:b5ea8aa5ee983a63f1e97124cb0ceb627ea843abaa73b874a81263a9ba508448"
+    },
+    {
+      "ref": "D4",
+      "url": "https://www.charlottemartin.org/ineligibleprograms",
+      "final_url": "https://www.charlottemartin.org/ineligibleprograms",
+      "from": "https://www.charlottemartin.org/",
+      "anchor": "costs we do not fund",
+      "depth": 1,
+      "pdf": false,
+      "chars": 923,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:02c13514f0ee8886e8893079a95eaa9becfeb31cdc54071f4f4fbaec35c4132e"
+    },
+    {
+      "ref": "D5",
+      "url": "https://www.charlottemartin.org/s/CMF-Fall-2025-Youth-application.pdf",
+      "final_url": "https://static1.squarespace.com/static/692f30818e82ed22d243e979/t/69308bda057b321a055d7975/1764789210850/CMF-Fall-2025-Youth-application.pdf",
+      "from": "https://www.charlottemartin.org/",
+      "anchor": "Youth",
+      "depth": 1,
+      "pdf": true,
+      "chars": 2138,
+      "pages": 4,
+      "low_text": false,
+      "hash": "sha256:35262c549d95e5892731e1f85a4ef0e6423223fdaba160881ffa41918811a80d"
+    },
+    {
+      "ref": "D6",
+      "url": "https://www.charlottemartin.org/s/CMF-Fall-2025-Biodiversity-application.pdf",
+      "final_url": "https://static1.squarespace.com/static/692f30818e82ed22d243e979/t/69308bee32f4da5eaff165af/1764789230611/CMF-Fall-2025-Biodiversity-application.pdf",
+      "from": "https://www.charlottemartin.org/",
+      "anchor": "Wildlife and Habitat (Biodiversity)",
+      "depth": 1,
+      "pdf": true,
+      "chars": 1773,
+      "pages": 3,
+      "low_text": false,
+      "hash": "sha256:c6d929055e6c94846752723d669eaa2339cbc149e0b08539ecdec182acbe67d8"
+    }
+  ],
+  "failures": [],
+  "skipped_links": 26,
+  "chunks": [{ "id": "all", "docs": ["D1", "D2", "D3", "D4", "D5", "D6"], "chars": 22361 }],
+  "outcomes": {
+    "eligibility": "stated",
+    "documents": "not_found",
+    "effort": "stated",
+    "co_finance": "not_found",
+    "consortium": "not_found",
+    "after_award": "stated"
+  },
+  "written": ["eligibility", "effort", "after_award"],
+  "escalated": [],
+  "flags": [],
+  "notes": [
+    "extractor: D1 gives Spring 2026 deadlines and says there will be no Fall 2026 grant cycle; it directs applicants to check back for the Spring 2027 cycle. No Spring 2027 deadline is stated.",
+    "source charlotte-martin-wildlife-habitat-3: added for https://www.charlottemartin.org/ineligibleprograms"
+  ],
+  "usd": 0
+}
