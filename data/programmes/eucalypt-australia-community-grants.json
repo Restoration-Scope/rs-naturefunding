@@ -14,6 +14,16 @@
   "amount": { "currency": "AUD", "min": 5000, "max": 5000 },
   "co_finance_required": null,
   "reporting": "A short acquittal of about 100 words with two high-definition photos, due on 28 February of the year after the grant.",
+  "effort": { "steps": ["Application"], "due": ["2027-08-10"] },
+  "eligibility": [
+    {
+      "rule": "Be an Australian legal entity with an ABN and a bank account, or use an approved auspice",
+      "kind": "legal"
+    },
+    { "rule": "Project is not for profit", "kind": "project" },
+    { "rule": "Align with the objectives of the Trust", "kind": "project" }
+  ],
+  "after_award": { "reports": "final" },
   "calls": [
     {
       "id": "2027-round",
@@ -64,7 +74,43 @@
       "quote": "What type of acquittal is expected? + Eucalypt Australia requires a small 100 word summary together with two high definition photos for use on the Eucalypt Australia website and social media. Photos are able to be attributed. When is a acquittal due? + February 28, in the year following the grant.",
       "checked_at": "2026-11-20",
       "method": "page"
-    }
+    },
+    "effort": [
+      {
+        "source_url": "https://eucalyptaustralia.org.au/grants",
+        "quote": "Applications close – Tuesday, 10 August 2027, 11:55 pm",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "eligibility": [
+      {
+        "source_url": "https://eucalyptaustralia.org.au/grants",
+        "quote": "Applicants must be an Australian legal entity with an ABN and a bank account, or be able to be auspiced through another entity with an ABN and a bank account, as approved by Eucalypt Australia.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://eucalyptaustralia.org.au/grants",
+        "quote": "are not for profit",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://eucalyptaustralia.org.au/grants",
+        "quote": "align with the objectives of the Trust.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "after_award": [
+      {
+        "source_url": "https://eucalyptaustralia.org.au/grants",
+        "quote": "The Grantee must submit a final report and financial acquittal when the project is completed.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ]
   },
   "checked_at": "2026-11-20"
 }

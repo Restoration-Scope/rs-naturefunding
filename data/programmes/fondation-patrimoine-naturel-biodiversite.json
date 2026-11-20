@@ -14,6 +14,50 @@
   "amount": null,
   "co_finance_required": null,
   "reporting": "Project leaders commit to measuring their environmental impact using indicators the foundation provides.",
+  "effort": {
+    "steps": [
+      "Completed application dossier sent via contact form",
+      "Jury selection at the end of the first half-year"
+    ]
+  },
+  "eligibility": [
+    {
+      "rule": "Uses a site of patrimonial interest, protected or ecologically identified in planning",
+      "kind": "project"
+    },
+    {
+      "rule": "Integrates and documents a direct positive impact on biodiversity preservation",
+      "kind": "project"
+    },
+    {
+      "rule": "Started projects finish after the first-semester selection announcement",
+      "kind": "project"
+    },
+    {
+      "rule": "Unstarted projects are ready to start with updated estimates and requested subsidies",
+      "kind": "project"
+    },
+    {
+      "rule": "Commits to qualify the restoration's intended impact using the Foundation's indicators",
+      "kind": "project"
+    },
+    {
+      "rule": "Land acquisition projects define sustainable management for the site",
+      "kind": "project"
+    },
+    { "rule": "Is not an urban development or a nature-in-the-city project", "kind": "project" }
+  ],
+  "documents": [
+    "Property deed, except for territorial authorities; or owner's project-management delegation if not owner",
+    "Detailed quotes or estimates of forecast expenses",
+    "Location map showing protection or inventory areas",
+    "Management plan, development orientation or planning document",
+    "Five quality digital photos with photographic credits",
+    "Fauna or flora inventory or count",
+    "Association statutes, if an association applicant",
+    "Board and management committee composition, if an association applicant",
+    "ORE or equivalent contractual environmental commitment, for private owners"
+  ],
   "calls": [
     {
       "id": "standing",
@@ -63,7 +107,97 @@
       "quote": "demande aux porteurs de projets de s'engager à mesurer leur impact environnemental, à partir d'indicateurs qu'elle leur propose",
       "checked_at": "2026-11-09",
       "method": "page"
-    }
+    },
+    "effort": [
+      {
+        "source_url": "https://www.fondation-patrimoine.org/c/soumettre-un-projet/obtenir-une-aide-financiere/programme-patrimoine-naturel-et-biodiversite/67",
+        "quote": "Téléchargez et remplissez le dossier de candidature (nouvelle fenêtre) et envoyez-le via notre formulaire de contact.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.fondation-patrimoine.org/c/soumettre-un-projet/obtenir-une-aide-financiere/programme-patrimoine-naturel-et-biodiversite/67",
+        "quote": "Le jury se réunit à la fin du premier semestre, afin de sélectionner les projets qui pourront bénéficier du programme.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "eligibility": [
+      {
+        "source_url": "https://strapi-upload.cdn.fondation-patrimoine.org/Guide_projets_PNB_e12803dc00.pdf",
+        "quote": "Sites concernés : tous types de milieux naturels (parcs et jardins, prairies, zones humides : tourbières, marais, etc., cours d'eau, forêts, littoraux, mers et océans, etc.) d'intérêt patrimonial (aire protégée, ou espace abritant une biodiversité patrimoniale, ou a minima site identifié dans la planification urbaine pour son intérêt écologique et patrimonial).",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://strapi-upload.cdn.fondation-patrimoine.org/Guide_projets_PNB_e12803dc00.pdf",
+        "quote": "Projets qui intègrent et documentent un impact direct positif sur la préservation de la biodiversité :",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://strapi-upload.cdn.fondation-patrimoine.org/Guide_projets_PNB_e12803dc00.pdf",
+        "quote": "Ils peuvent avoir démarré mais ne doivent pas se terminer avant l'annonce de la sélection au premier semestre de l'année.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://strapi-upload.cdn.fondation-patrimoine.org/Guide_projets_PNB_e12803dc00.pdf",
+        "quote": "S'ils n'ont pas débuté, ils doivent être prêts à démarrer (estimatifs actualisés et subventions sollicitées).",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://strapi-upload.cdn.fondation-patrimoine.org/Guide_projets_PNB_e12803dc00.pdf",
+        "quote": "Les projets qui ne s'engagent pas à qualifier l'impact visé de la restauration, en utilisant les indicateurs listés par la Fondation",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://strapi-upload.cdn.fondation-patrimoine.org/Guide_projets_PNB_e12803dc00.pdf",
+        "quote": "Acquisition de foncier, en vue de préserver la biodiversité (seulement si un projet de gestion durable est défini pour le site concerné).",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://strapi-upload.cdn.fondation-patrimoine.org/Guide_projets_PNB_e12803dc00.pdf",
+        "quote": "Aménagements urbains et projets type « nature en ville » (création de jardins, création d'îlots de fraîcheur, replantation d'arbres isolés, etc.)",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "documents": [
+      {
+        "source_url": "https://strapi-upload.cdn.fondation-patrimoine.org/Guide_projets_PNB_e12803dc00.pdf",
+        "quote": "L'acte de propriété du bien concerné (hormis pour les collectivités territoriales) ou une délégation de maîtrise d'ouvrage du propriétaire si le porteur de projet n'est pas propriétaire ❑ Devis ou estimatifs détaillés des dépenses prévisionnelles ❑ 1 carte de localisation de l'espace naturel concerné, situant les zones de protection ou d'inventaire",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://strapi-upload.cdn.fondation-patrimoine.org/Guide_projets_PNB_e12803dc00.pdf",
+        "quote": "Plan de gestion de l'espace naturel, orientation d'aménagement ou le document de planification/urbanisme dans lequel il apparaît (document de gestion type DOCOB ou charte de territoire)",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://strapi-upload.cdn.fondation-patrimoine.org/Guide_projets_PNB_e12803dc00.pdf",
+        "quote": "5 photos numériques de bonne qualité (300 dpi ou 1 Mo minimum), accompagnées des crédits photographiques afférents : du site dans son ensemble (échelle du paysage), des zones naturelles concernées, d'au moins une espèce de faune ou de flore concernée ❑ Inventaire ou comptage des espèces de faune ou de flore présentes sur le site",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://strapi-upload.cdn.fondation-patrimoine.org/Guide_projets_PNB_e12803dc00.pdf",
+        "quote": "Toutes autres pièces utiles pour l'instruction du dossier (étude d'incidence du plan de gestion si existante par exemple) En complément, pour les porteurs de projets associatifs : ❑ Statuts de l'association ❑ Composition du bureau et de l'éventuel Conseil d'administration",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://strapi-upload.cdn.fondation-patrimoine.org/Guide_projets_PNB_e12803dc00.pdf",
+        "quote": "Obligation réelle environnementale (ORE) ou tout autre engagement contractuel équivalent (ex : Plan simple de Gestion, contrat Natura 2000...)",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ]
   },
   "checked_at": "2026-11-09"
 }

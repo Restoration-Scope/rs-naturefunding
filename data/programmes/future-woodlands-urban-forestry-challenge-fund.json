@@ -12,14 +12,23 @@
   "access": "direct",
   "window": "unspecified",
   "amount": { "currency": "GBP", "min": 2000, "max": 100000 },
-  "co_finance_required": null,
+  "co_finance_required": true,
   "reporting": null,
   "effort": {
-    "steps": [
-      "Online form, completed in one sitting",
-      "Second stage, for grants of £20,000–£100,000"
-    ]
+    "steps": ["Online form, completed in one sitting", "Stage 2, if invited (grants over £20,000)"]
   },
+  "eligibility": [
+    { "rule": "Applicant is a registered or constituted not-for-profit body", "kind": "legal" },
+    { "rule": "Project has a strong focus on urban Scotland", "kind": "project" },
+    { "rule": "Project runs for no more than three years", "kind": "project" }
+  ],
+  "documents": [
+    "Organisation constitution or articles of association, unless a Local Authority",
+    "Most recent organisational accounts",
+    "Project budget",
+    "Partnership arrangement details",
+    "Project map, if applicable"
+  ],
   "calls": [
     {
       "id": "next",
@@ -64,6 +73,12 @@
       "checked_at": "2026-11-20",
       "method": "page"
     },
+    "co_finance_required": {
+      "source_url": "https://futurewoodlands.org.uk/wp-content/uploads/2025/10/UFP-Challenge-Fund-2025-Booklet-Oct-25-1.pdf",
+      "quote": "Projects seeking over £20,000 will be expected to secure match funding.",
+      "checked_at": "2026-11-20",
+      "method": "page"
+    },
     "effort": [
       {
         "source_url": "https://futurewoodlands.org.uk/urban-forestry/",
@@ -74,6 +89,46 @@
       {
         "source_url": "https://futurewoodlands.org.uk/urban-forestry/",
         "quote": "Larger grants (£20,000-£100,000): This is a two-stage process.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "eligibility": [
+      {
+        "source_url": "https://futurewoodlands.org.uk/wp-content/uploads/2025/10/UFP-Challenge-Fund-2025-Booklet-Oct-25-1.pdf",
+        "quote": "any not-for-profit registered or constituted body",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://futurewoodlands.org.uk/wp-content/uploads/2025/10/UFP-Challenge-Fund-2025-Booklet-Oct-25-1.pdf",
+        "quote": "All projects must have a strong focus on urban Scotland",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://futurewoodlands.org.uk/urban-forestry/",
+        "quote": "Projects can run for up to three years.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "documents": [
+      {
+        "source_url": "https://futurewoodlands.org.uk/wp-content/uploads/2025/10/Urban-Forestry-Programme-2025-small-grants-application.docx",
+        "quote": "Please upload your organisation's constitution or articles of association (if you are applying on behalf of a Local Authority, we do not require this):",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://futurewoodlands.org.uk/wp-content/uploads/2025/10/UFP-Challenge-Fund-2025-Booklet-Oct-25-1.pdf",
+        "quote": "a copy of your organisation's most recent accounts project budget details of any partnership arrangement.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://futurewoodlands.org.uk/wp-content/uploads/2025/10/Urban-Forestry-Programme-2025-small-grants-application.docx",
+        "quote": "Please upload a map, if applicable, and any other supporting documentation, such as annual report, images, partnership agreements or letters of support, up to a maximum of three files in this section.",
         "checked_at": "2026-11-20",
         "method": "page"
       }

@@ -1,7 +1,10 @@
 {
   "id": "epa-snep-innovative-restoration",
   "name": "Southeast New England Program (SNEP) Innovative Restoration Grants",
-  "funder": { "name": "U.S. Environmental Protection Agency, Region 1", "url": "https://www.epa.gov/snep" },
+  "funder": {
+    "name": "U.S. Environmental Protection Agency, Region 1",
+    "url": "https://www.epa.gov/snep"
+  },
   "administered_by": null,
   "parent": null,
   "url": "https://www.epa.gov/snep/funding-and-technical-assistance-southeast-new-england-program",
@@ -18,6 +21,37 @@
   "amount": { "currency": "USD", "min": 250000, "max": 1000000 },
   "co_finance_required": true,
   "reporting": null,
+  "effort": {
+    "steps": [
+      "Application submission",
+      "Threshold eligibility determination",
+      "EPA merit review",
+      "Review meeting"
+    ],
+    "due": ["2026-12-11", null, null, null]
+  },
+  "eligibility": [
+    {
+      "rule": "Carry out activities within and directly benefit the Southeast New England Program Geographic Area",
+      "kind": "project"
+    },
+    {
+      "rule": "Clearly identify at least one coastal or riverine habitat addressed by the application",
+      "kind": "project"
+    },
+    { "rule": "Submit no more than 1 application under this opportunity", "kind": "other" }
+  ],
+  "co_finance": { "min_share": 13.04 },
+  "documents": [
+    "Budget Information form (SF-424A)",
+    "EPA Key Contacts Form 5700-54",
+    "EPA Form 4700-4 pre-award compliance form",
+    "Budget narrative attachment",
+    "Staff resumes or curriculum vitae",
+    "Partner letters of commitment, if partners are named",
+    "List of assistance agreements from the past 3 years",
+    "Nonprofit status documents, if appropriate"
+  ],
   "calls": [
     {
       "id": "2026a",
@@ -25,7 +59,12 @@
       "url": "https://www.grants.gov/search-results-detail/364125",
       "status": "open",
       "opens": null,
-      "deadline": { "date": "2026-12-11", "time": "23:59", "timezone": "America/New_York", "text": "December 11, 2026, 11:59 pm ET" },
+      "deadline": {
+        "date": "2026-12-11",
+        "time": "23:59",
+        "timezone": "America/New_York",
+        "text": "December 11, 2026, 11:59 pm ET"
+      },
       "evidence": {
         "status": {
           "source_url": "https://www.grants.gov/grantsws/rest/opportunity/att/download/355309",
@@ -74,11 +113,98 @@
       "method": "page"
     },
     "co_finance_required": {
-      "source_url": "https://www.grants.gov/grantsws/rest/opportunity/att/download/355309",
-      "quote": "Applicants must provide a non-federal cost share (match) equal to at least 15% of the federal funds requested.",
-      "checked_at": "2026-11-02",
+      "source_url": "https://www.epa.gov/system/files/documents/2026-11/2026-11-04-snep-innovative-restoration-grant-opportunity-webinar-slides.pdf",
+      "quote": "15% Cost Share Required",
+      "checked_at": "2026-11-20",
       "method": "page"
-    }
+    },
+    "effort": [
+      {
+        "source_url": "https://www.epa.gov/snep/funding-and-technical-assistance-southeast-new-england-program",
+        "quote": "December 11, 2026, 11:59 pm ET Application Submission Deadline",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.epa.gov/system/files/documents/2026-11/2026-11-04-snep-innovative-restoration-grant-opportunity-webinar-slides.pdf",
+        "quote": "Threshold Eligibility Determination",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.epa.gov/system/files/documents/2026-11/2026-11-04-snep-innovative-restoration-grant-opportunity-webinar-slides.pdf",
+        "quote": "Merit Review by EPA",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.epa.gov/system/files/documents/2026-11/2026-11-04-snep-innovative-restoration-grant-opportunity-webinar-slides.pdf",
+        "quote": "Review Meeting",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "eligibility": [
+      {
+        "source_url": "https://www.epa.gov/system/files/documents/2026-11/2026-11-04-snep-innovative-restoration-grant-opportunity-webinar-slides.pdf",
+        "quote": "Activities proposed in the application must take place within and directly benefit the Southeast New England Program Geographic Area.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.epa.gov/system/files/documents/2026-11/2026-11-04-snep-innovative-restoration-grant-opportunity-webinar-slides.pdf",
+        "quote": "Applications must clearly identify at least one coastal or riverine habitat that the proposed application addresses.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.epa.gov/system/files/documents/2026-11/2026-11-04-snep-innovative-restoration-grant-opportunity-webinar-slides.pdf",
+        "quote": "Applicants may only submit 1 application under this opportunity.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "co_finance": {
+      "source_url": "https://www.epa.gov/system/files/documents/2026-11/2026-11-04-snep-innovative-restoration-grant-opportunity-webinar-slides.pdf",
+      "quote": "Minimum non-federal cost share = 0.15 × federal funds requested",
+      "checked_at": "2026-11-20",
+      "method": "page"
+    },
+    "documents": [
+      {
+        "source_url": "https://www.grants.gov/grantsws/rest/opportunity/att/download/355309",
+        "quote": "Budget Information for Non-Construction Programs (SF-424A) EPA Key Contacts Form 5700-54 EPA Form 4700-4 Preaward Compliance Review Report",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.grants.gov/grantsws/rest/opportunity/att/download/355309",
+        "quote": "Resumes or curriculum vitae of staff who will be working on the grant",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.grants.gov/grantsws/rest/opportunity/att/download/355309",
+        "quote": "c. List documenting past three years of or ongoing federal and/or non-federally funded assistance agreements administered by the applicant, including documentation supporting grant performance and meeting of reporting requirements. d. Documents of non-profit status if appropriate.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.grants.gov/grantsws/rest/opportunity/att/download/355309",
+        "quote": "Letters of commitment from any partners identified in the proposal in order to confirm their partnership.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "after_award": [
+      {
+        "source_url": "https://www.grants.gov/grantsws/rest/opportunity/att/download/355309",
+        "quote": "EPA’s General Terms and Conditions in the Notice of Award will have information on performance and financial reports",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ]
   },
-  "checked_at": "2026-11-02"
+  "checked_at": "2026-11-02",
+  "after_award": { "reports": "unspecified" }
 }

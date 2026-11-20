@@ -15,8 +15,20 @@
   "access": "direct",
   "window": "fixed",
   "amount": null,
-  "co_finance_required": null,
+  "co_finance_required": true,
   "reporting": null,
+  "effort": { "steps": ["Online proposal on the FUNBIO call portal"] },
+  "eligibility": [
+    {
+      "rule": "Floresta Viva São Francisco call: nonprofit constituted at least 2 years",
+      "kind": "legal"
+    },
+    {
+      "rule": "Floresta Viva São Francisco call: project in the Sobradinho and Itaparica reservoir basins",
+      "kind": "project"
+    }
+  ],
+  "co_finance": { "min_share": 10, "applies_to": "Articulação Institucional call (Paraná coast)" },
   "calls": [
     {
       "id": "floresta-viva-sao-francisco-2026",
@@ -129,6 +141,46 @@
     "window": {
       "source_url": "https://chamadas.funbio.org.br/floresta-viva-sao-francisco",
       "quote": "Esta Chamada de Projetos segue etapas definidas, fique atento(a) a elas e aos prazos!",
+      "checked_at": "2026-11-20",
+      "method": "page"
+    },
+    "co_finance_required": {
+      "source_url": "https://chamadas.funbio.org.br/articulacao-institucional",
+      "quote": "Contrapartida mínima de 10%",
+      "checked_at": "2026-11-20",
+      "method": "page"
+    },
+    "effort": [
+      {
+        "source_url": "https://chamadas.funbio.org.br/floresta-viva-sao-francisco",
+        "quote": "As propostas deverão ser enviadas até às 19:00 horas (horário de Brasília) do dia 02 de dezembro de 2026.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://chamadas.funbio.org.br/articulacao-institucional",
+        "quote": "As propostas devem necessariamente ser enviadas eletronicamente até às 23:45 horas (horário de Brasília) do dia 04 de dezembro de 2026.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "eligibility": [
+      {
+        "source_url": "https://chamadas.funbio.org.br/floresta-viva-sao-francisco",
+        "quote": "Instituições sem fins lucrativos constituídas há pelo menos 2 anos",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://chamadas.funbio.org.br/floresta-viva-sao-francisco",
+        "quote": "Bacias hidrográficas da área de influência dos reservatórios das Usinas Hidrelétricas (UHE) de Sobradinho e de Itaparica",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "co_finance": {
+      "source_url": "https://chamadas.funbio.org.br/articulacao-institucional",
+      "quote": "Contrapartida mínima de 10%",
       "checked_at": "2026-11-20",
       "method": "page"
     }

@@ -1,0 +1,59 @@
+{
+  "id": "fukuoka-forest-creation-activity-open-call",
+  "read_on": "2026-11-20",
+  "prompt_version": "req-2026-11-19.2",
+  "models": ["cursor:gpt-5.6-luna-high"],
+  "complete": false,
+  "reasons": [
+    "1 links could not be ranked without Jev",
+    "the text names a document with rules that was not read: https://www.pref.fukuoka.lg.jp/contents/room-mori-koubo-syuryo.html",
+    "Jev did not check this reading, so an absent fact is not known to be absent"
+  ],
+  "requirements_checked": false,
+  "documents": [
+    {
+      "ref": "D1",
+      "url": "https://www.pref.fukuoka.lg.jp/press-release/r9morikoubo.html",
+      "final_url": "https://www.pref.fukuoka.lg.jp/press-release/r9morikoubo.html",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 4307,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:06d3aa06e815edd157364af97dba795c2a4fd90571ef6a3158df3378d538e530"
+    },
+    {
+      "ref": "D2",
+      "url": "https://www.pref.fukuoka.lg.jp/contents/this-site-privacypolicy.html",
+      "final_url": "https://www.pref.fukuoka.lg.jp/contents/this-site-privacypolicy.html",
+      "from": "https://www.pref.fukuoka.lg.jp/press-release/r9morikoubo.html",
+      "anchor": "個人情報の取扱いについて",
+      "depth": 1,
+      "pdf": false,
+      "chars": 5741,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:38a6c28a6a6835e46d84a64d5b0f8e691770849798b10800511ef7e781f191e3"
+    }
+  ],
+  "failures": [],
+  "skipped_links": 742,
+  "chunks": [{ "id": "all", "docs": ["D1", "D2"], "chars": 10279 }],
+  "outcomes": {
+    "eligibility": "stated",
+    "documents": "stated",
+    "effort": "stated",
+    "co_finance": "not_found",
+    "consortium": "not_found",
+    "after_award": "not_found"
+  },
+  "written": ["eligibility", "documents", "effort"],
+  "escalated": [],
+  "flags": [],
+  "notes": [
+    "effort \"Submit project proposal\": the quote does not state 2027-01-08 whole; left undated"
+  ],
+  "usd": 0
+}

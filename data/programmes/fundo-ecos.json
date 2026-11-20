@@ -23,8 +23,52 @@
     "max": 250000,
     "note": "Largest grant across the two calls (consolidation projects); small projects up to R$100,000 or R$120,000, depending on the call"
   },
-  "co_finance_required": null,
+  "co_finance_required": true,
   "reporting": null,
+  "effort": {
+    "steps": [
+      "Proposal submission",
+      "Eligibility screening",
+      "Technical Chamber review",
+      "National Steering Committee review"
+    ],
+    "due": ["2026-11-25", null, null, null]
+  },
+  "eligibility": [
+    {
+      "rule": "Legally constituted for 2+ years, or an unconstituted network uses a legally constituted proponent",
+      "kind": "track_record"
+    },
+    {
+      "rule": "Project operates in an eligible municipality in one of the listed landscapes",
+      "kind": "project"
+    },
+    { "rule": "Project lasts no more than 15 months", "kind": "project" },
+    {
+      "rule": "Not a government body, company, individual, church, club, foundation or research institution",
+      "kind": "legal"
+    },
+    { "rule": "Project is community-based rather than individual", "kind": "project" },
+    { "rule": "Current board mandate is valid on the proposal date", "kind": "legal" },
+    { "rule": "Project fits at least one listed thematic area", "kind": "project" },
+    {
+      "rule": "Project benefits traditional peoples, Indigenous peoples, quilombola communities and/or family farmers",
+      "kind": "project"
+    }
+  ],
+  "co_finance": { "min_share": 16.67, "in_kind": true },
+  "after_award": { "reports": "unspecified", "training": true },
+  "documents": [
+    "Registered founding minutes",
+    "Registered statutes",
+    "Registered minutes of the current board",
+    "CNPJ registration",
+    "Documents of the responsible persons",
+    "Work Plan (Annex A1)",
+    "Indicators (Annex A2)",
+    "Budget and Calculation Memory (Annex A3)",
+    "Activity Schedule (Annex A4)"
+  ],
   "calls": [
     {
       "id": "edital-50-2026",
@@ -117,7 +161,129 @@
       "quote": "distribuídos nas categorias de pequenos projetos de até R$100.000,00 e projetos de consolidação de até R$250.000,00",
       "checked_at": "2026-11-08",
       "method": "page"
-    }
+    },
+    "co_finance_required": {
+      "source_url": "https://fundoecos.org.br/wp-content/uploads/2026/09/Edital-50_Projetos_nas-Paisagens_Prioritarias_.pdf",
+      "quote": "Todas as propostas submetidas no âmbito do edital deverão apresentar recursos de contrapartida em um montante mínimo de 20% (vinte por cento) sobre o valor solicitado ao Fundo Ecos. A contrapartida pode ser na forma de recursos financeiros e não financeiros e deve ser mensurável economicamente.",
+      "checked_at": "2026-11-20",
+      "method": "page"
+    },
+    "effort": [
+      {
+        "source_url": "https://fundoecos.org.br/edital/edital-50o-4o-2026-paisagens-prioritarias/",
+        "quote": "Inscrições abertas até 25/11/2026 18:00",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://fundoecos.org.br/wp-content/uploads/2026/09/Edital-50_Projetos_nas-Paisagens_Prioritarias_.pdf",
+        "quote": "Etapa 1: Recepção dos projetos e triagem",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://fundoecos.org.br/wp-content/uploads/2026/09/Edital-50_Projetos_nas-Paisagens_Prioritarias_.pdf",
+        "quote": "Etapa 2: Análise da Câmara Técnica (CT)",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://fundoecos.org.br/wp-content/uploads/2026/09/Edital-50_Projetos_nas-Paisagens_Prioritarias_.pdf",
+        "quote": "Etapa 3: Realização da reunião do Comitê Gestor Nacional (CGN) do Fundo Ecos",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "eligibility": [
+      {
+        "source_url": "https://fundoecos.org.br/wp-content/uploads/2026/09/Edital-50_Projetos_nas-Paisagens_Prioritarias_.pdf",
+        "quote": "Ser apresentado por organização da sociedade civil (associação sem fins lucrativos, sindicato ou cooperativa), constituída legalmente há pelo menos 2 (dois) anos. No caso de articulações que não estejam legalmente constituídas, estas poderão participar deste edital por meio de organização proponente que esteja legalmente constituída;",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://fundoecos.org.br/wp-content/uploads/2026/09/Edital-50_Projetos_nas-Paisagens_Prioritarias_.pdf",
+        "quote": "Os projetos devem atender a área de abrangência correspondente aos municípios estabelecidos para as paisagens mencionado no item 4 deste edital;",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://fundoecos.org.br/wp-content/uploads/2026/09/Edital-50_Projetos_nas-Paisagens_Prioritarias_.pdf",
+        "quote": "O cronograma de execução das atividades do projeto deve atender o limite de até 15 meses de execução;",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://fundoecos.org.br/wp-content/uploads/2026/09/Edital-50_Projetos_nas-Paisagens_Prioritarias_.pdf",
+        "quote": "organizações governamentais, empresas privadas, pessoas físicas, igrejas, clubes, associações de funcionários públicos, fundações públicas ou privadas, instituições de pesquisa ou outras organizações cujo objeto social não se enquadre no objetivo da chamada pública.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://fundoecos.org.br/wp-content/uploads/2026/09/Edital-50_Projetos_nas-Paisagens_Prioritarias_.pdf",
+        "quote": "Projetos individuais ou que não possuam natureza comunitária;",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://fundoecos.org.br/wp-content/uploads/2026/09/Edital-50_Projetos_nas-Paisagens_Prioritarias_.pdf",
+        "quote": "o mandato da diretoria deve estar vigente na data de envio do projeto;",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://fundoecos.org.br/wp-content/uploads/2026/09/Edital-50_Projetos_nas-Paisagens_Prioritarias_.pdf",
+        "quote": "Os projetos devem focar em ações relacionadas às linhas temáticas mencionadas no item 5 deste edital",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://fundoecos.org.br/edital/edital-50o-4o-2026-paisagens-prioritarias/",
+        "quote": "O edital é destinado a projetos que beneficiem povos e comunidades tradicionais, povos indígenas, comunidades quilombolas e/ou agricultores familiares",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "co_finance": {
+      "source_url": "https://fundoecos.org.br/wp-content/uploads/2026/09/Edital-50_Projetos_nas-Paisagens_Prioritarias_.pdf",
+      "quote": "Todas as propostas submetidas no âmbito do edital deverão apresentar recursos de contrapartida em um montante mínimo de 20% (vinte por cento) sobre o valor solicitado ao Fundo Ecos. A contrapartida pode ser na forma de recursos financeiros e não financeiros e deve ser mensurável economicamente.",
+      "checked_at": "2026-11-20",
+      "method": "page"
+    },
+    "after_award": [
+      {
+        "source_url": "https://fundoecos.org.br/wp-content/uploads/2026/09/Edital-50_Projetos_nas-Paisagens_Prioritarias_.pdf",
+        "quote": "As entidades que tiverem seus projetos selecionados se comprometerão (em contrato) a realizar prestações de contas periódicas, conforme as regras do Fundo Ecos, do GEF e do PNUD.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://fundoecos.org.br/wp-content/uploads/2026/09/Edital-50_Projetos_nas-Paisagens_Prioritarias_.pdf",
+        "quote": "Pelo menos dois representantes de cada projeto deverão participar da Oficina Inicial de Planejamento e Gestão de Projetos, realizada pelo Fundo Ecos.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "documents": [
+      {
+        "source_url": "https://fundoecos.org.br/edital/edital-50o-4o-2026-paisagens-prioritarias/",
+        "quote": "atas, estatuto, registros e documentos dos responsáveis",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://fundoecos.org.br/edital/edital-50o-4o-2026-paisagens-prioritarias/",
+        "quote": "Baixe aqui o modelo do Anexo A1 - Plano de Trabalho. Baixe aqui o modelo do Anexo A2 - Indicadores. Baixe aqui o modelo do Anexo A3 - Orçamento e Memória de Cálculo. Baixe aqui o modelo do Anexo A4 - Cronograma de Atividades.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://fundoecos.org.br/wp-content/uploads/2026/09/Edital-50_Projetos_nas-Paisagens_Prioritarias_.pdf",
+        "quote": "Cópia da ata de fundação da entidade proponente devidamente registrada no cartório competente; ii. Cópia do estatuto da entidade proponente devidamente registrado em cartório competente;",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ]
   },
   "checked_at": "2026-11-08"
 }
