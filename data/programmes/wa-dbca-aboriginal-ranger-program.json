@@ -35,8 +35,45 @@
     "period": "round",
     "label": "Round 9"
   },
-  "co_finance_required": null,
+  "co_finance_required": false,
+  "consortium_required": false,
   "reporting": null,
+  "effort": {
+    "steps": [
+      "Online application through DBCA SmartyGrants",
+      "Eligibility check",
+      "Assessment Panel review"
+    ],
+    "more_after": true
+  },
+  "eligibility": [
+    {
+      "rule": "Is an Aboriginal Community Controlled Organisation (ACCO) as defined by Closing the Gap",
+      "kind": "legal"
+    },
+    {
+      "rule": "Have legal right and/or access rights to undertake proposed activities on the land",
+      "kind": "project"
+    },
+    {
+      "rule": "Demonstrate cultural authority to access land and deliver proposed activities, with support letters where relevant",
+      "kind": "project"
+    },
+    {
+      "rule": "Undertake activities in Western Australia outside the Perth metropolitan region",
+      "kind": "project"
+    }
+  ],
+  "after_award": {
+    "reports": "yearly",
+    "audit": true
+  },
+  "documents": [
+    "Letters of support from Prescribed Body Corporate, Regional Corporation or Traditional Owners, if required",
+    "Letters of support from all relevant landowners and land managers",
+    "Clearly marked map or aerial photograph",
+    "Ranger-related planning document, if applying to Sustain or Activate"
+  ],
   "calls": [
     {
       "id": "round-9",
@@ -91,7 +128,99 @@
       "quote": "Administered by the Parks and Wildlife Service of the Department of Biodiversity, Conservation and Attractions (DBCA)",
       "checked_at": "2026-11-08",
       "method": "page"
-    }
+    },
+    "co_finance_required": {
+      "source_url": "https://www.dbca.wa.gov.au/media/6392/download",
+      "quote": "Applicants are encouraged to seek other funding sources to complement any ARP funding and expand the potential outcomes of their project ideas, but it is not essential to being awarded ARP funding in this round.",
+      "checked_at": "2026-11-20",
+      "method": "page"
+    },
+    "consortium_required": {
+      "source_url": "https://www.dbca.wa.gov.au/media/6392/download",
+      "quote": "There may only be one applicant organisation per ranger project application.",
+      "checked_at": "2026-11-20",
+      "method": "page"
+    },
+    "effort": [
+      {
+        "source_url": "https://www.dbca.wa.gov.au/media/6392/download",
+        "quote": "The closing date for applications is 5.00pm AWST on Monday 9 March 2026. You are encouraged to submit your application in advance of this time and date to allow time for any unexpected technical issues which may arise. Applications can only be made by via the DBCA SmartyGrants online portal.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.dbca.wa.gov.au/media/6392/download",
+        "quote": "Applications are checked for eligibility.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.dbca.wa.gov.au/media/6392/download",
+        "quote": "Eligible applications are provided to the Assessment Panel.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "eligibility": [
+      {
+        "source_url": "https://www.dbca.wa.gov.au/media/6392/download",
+        "quote": "be an Aboriginal Community Controlled Organisation (ACCO) as defined by the National Agreement on Closing the Gap.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.dbca.wa.gov.au/media/6392/download",
+        "quote": "have a legal right and/or right to access and undertake the proposed activities on the land included in your application",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.dbca.wa.gov.au/media/6392/download",
+        "quote": "demonstrate that you have cultural authority to access land and deliver the proposed activities (via appropriate letters of support, where relevant - see section 2.2.2)",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.dbca.wa.gov.au/media/6392/download",
+        "quote": "Activities must be undertaken in Western Australia, but not within the Perth metropolitan region.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "after_award": [
+      {
+        "source_url": "https://www.dbca.wa.gov.au/media/6392/download",
+        "quote": "You will need to report against these measures in your annual reports",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.dbca.wa.gov.au/media/6392/download",
+        "quote": "Annual independently audited financial statements will be required for all agreements.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "documents": [
+      {
+        "source_url": "https://www.dbca.wa.gov.au/media/6392/download",
+        "quote": "Letters of support from Prescribed Body Corporate (or equivalent), Regional Corporation or Traditional Owners, if required (refer to section 2.2.2 for more information); Letters of support from all relevant landowners and land managers (refer to section 2.2.3 for more information); Detailed project location information (refer to section 2.2.3 for more information)",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.dbca.wa.gov.au/media/6392/download",
+        "quote": "a clearly marked map or aerial photograph",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.dbca.wa.gov.au/media/6392/download",
+        "quote": "If you are applying in the Sustain or Activate Funds, attach your ranger related planning document/s.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ]
   },
   "checked_at": "2026-11-08"
 }

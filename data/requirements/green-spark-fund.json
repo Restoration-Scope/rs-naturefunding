@@ -5,8 +5,8 @@
   "models": ["cursor:gpt-5.6-luna-high"],
   "complete": false,
   "reasons": [
-    "14 links could not be ranked without Jev",
-    "the text names a document with rules that was not read: Application guidance",
+    "12 links could not be ranked without Jev",
+    "the text names a document with rules that was not read: application guidance",
     "Jev did not check this reading, so an absent fact is not known to be absent"
   ],
   "requirements_checked": false,
@@ -23,37 +23,11 @@
       "pages": null,
       "low_text": false,
       "hash": "sha256:fdb1c536f02cbd0d92c26959455ebabf2933693626618a99f38344ce57516ee7"
-    },
-    {
-      "ref": "D2",
-      "url": "https://communitiesfornature.org/privacy-policy-website-privacy-notice/",
-      "final_url": "https://communitiesfornature.org/privacy-policy-website-privacy-notice/",
-      "from": "https://communitiesfornature.org/green-spark-fund-apply/",
-      "anchor": "Privacy Policy",
-      "depth": 1,
-      "pdf": false,
-      "chars": 10572,
-      "pages": null,
-      "low_text": false,
-      "hash": "sha256:77c0cfc354488b9baa11ac8299ad981ecb531a68f0301a3e200ada0c49204389"
-    },
-    {
-      "ref": "D3",
-      "url": "https://communitiesfornature.org/cookie-policy/",
-      "final_url": "https://communitiesfornature.org/cookie-policy/",
-      "from": "https://communitiesfornature.org/green-spark-fund-apply/",
-      "anchor": "Cookie Policy",
-      "depth": 1,
-      "pdf": false,
-      "chars": 5303,
-      "pages": null,
-      "low_text": false,
-      "hash": "sha256:023c0c31cdb6daf778fb5967b6982247ea3e7cf6c0c90e27b7270ac4b38df8c7"
     }
   ],
   "failures": [],
-  "skipped_links": 47,
-  "chunks": [{ "id": "all", "docs": ["D1", "D2", "D3"], "chars": 25957 }],
+  "skipped_links": 26,
+  "chunks": [{ "id": "all", "docs": ["D1"], "chars": 9796 }],
   "outcomes": {
     "eligibility": "not_found",
     "documents": "stated",
@@ -66,7 +40,8 @@
   "escalated": [],
   "flags": [],
   "notes": [
-    "extractor: D1 says dates may be subject to change. The introductory video is optional and is excluded from required documents."
+    "extractor: Introductory video is optional. Dates may be subject to change.",
+    "review (GPT Sol, 2026-11-20): this reading's effort and documents were wrong (a vague step, a form field listed as a document, a split recommendation letter), so the earlier reviewed facts were kept"
   ],
   "usd": 0
 }

@@ -1,0 +1,73 @@
+{
+  "id": "sadc-tfca-financing-facility",
+  "read_on": "2026-11-20",
+  "prompt_version": "req-2026-11-20.1",
+  "models": ["cursor:gpt-5.6-luna-high"],
+  "complete": false,
+  "reasons": [
+    "7 links could not be ranked without Jev",
+    "the text names a document with rules that was not read: SADC TFCA FF Environmental and Social Management Systems (ESMS)",
+    "Jev did not check this reading, so an absent fact is not known to be absent"
+  ],
+  "requirements_checked": false,
+  "documents": [
+    {
+      "ref": "D1",
+      "url": "https://www.sadctfcafinancingfacility.org/sadc-tfca-financing-facility-model",
+      "final_url": "https://www.sadctfcafinancingfacility.org/sadc-tfca-financing-facility-model",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 2292,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:9998903a5d010ecc7a6b2be77577f911e95a597634568a9917ae314985e37a92"
+    },
+    {
+      "ref": "D2",
+      "url": "https://tfcaportal.org/funding-opportunities",
+      "final_url": "https://tfcaportal.org/funding-opportunities",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 674,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:de32304cc33742818f542e5855e88edd33eb64a84dec45c0324e3b05b34447e2"
+    },
+    {
+      "ref": "D3",
+      "url": "https://www.sadctfcafinancingfacility.org/call-proposals",
+      "final_url": "https://www.sadctfcafinancingfacility.org/call-proposals",
+      "from": "https://www.sadctfcafinancingfacility.org/sadc-tfca-financing-facility-model",
+      "anchor": "Call for Proposals",
+      "depth": 1,
+      "pdf": false,
+      "chars": 596,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:39cfa5246279d4e9e107b3aea4cb33bfe303b71de6610e541253dd4ddfbfa290"
+    }
+  ],
+  "failures": [],
+  "skipped_links": 88,
+  "chunks": [{ "id": "all", "docs": ["D1", "D2", "D3"], "chars": 3870 }],
+  "outcomes": {
+    "eligibility": "stated",
+    "documents": "not_found",
+    "effort": "not_found",
+    "co_finance": "unresolved",
+    "consortium": "not_found",
+    "after_award": "not_found"
+  },
+  "written": ["eligibility"],
+  "escalated": [],
+  "flags": [],
+  "notes": [
+    "extractor: D1 describes Calls for Proposals and Direct Awards, but the provided call page contains no application stages, submission requirements or deadlines.",
+    "co_finance: the file states whether co-funding is required, this reading found nothing"
+  ],
+  "usd": 0
+}

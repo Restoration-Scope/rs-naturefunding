@@ -1,0 +1,50 @@
+{
+  "id": "orlen-baltic-biodiversity-grant",
+  "read_on": "2026-11-20",
+  "prompt_version": "req-2026-11-20.1",
+  "models": ["cursor:gpt-5.6-luna-high", "cursor:gpt-5.6-sol-high"],
+  "complete": false,
+  "reasons": [
+    "2 links could not be ranked without Jev",
+    "the text names a document with rules that was not read: Regulamin programu Bałtycki Grant Bioróżnorodności",
+    "the text names a document with rules that was not read: REGULAMIN PRZYZNAWANIA DAROWIZN",
+    "Jev did not check this reading, so an absent fact is not known to be absent",
+    "strong reading: the text names a document with rules that was not read: Regulamin programu Bałtycki Grant Bioróżnorodności",
+    "strong reading: the text names a document with rules that was not read: REGULAMIN PRZYZNAWANIA DAROWIZN"
+  ],
+  "requirements_checked": false,
+  "documents": [
+    {
+      "ref": "D1",
+      "url": "https://fundacjadlapomorza.orlen.pl/pl/O-fundacji/Nasze-programy/Programy-grantowe/Baltycki-Grant-Bioroznorodnosci",
+      "final_url": "https://fundacjadlapomorza.orlen.pl/pl/O-fundacji/Nasze-programy/Programy-grantowe/Baltycki-Grant-Bioroznorodnosci",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 6888,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:aad17b2d846f7371d15731875fd7ddbe93b1a10f05e216595e2ec2d7cb8b11e1"
+    }
+  ],
+  "failures": [],
+  "skipped_links": 92,
+  "chunks": [{ "id": "all", "docs": ["D1"], "chars": 7015 }],
+  "outcomes": {
+    "eligibility": "stated",
+    "documents": "stated",
+    "effort": "stated",
+    "co_finance": "not_found",
+    "consortium": "not_found",
+    "after_award": "not_found"
+  },
+  "written": ["eligibility", "documents", "effort"],
+  "escalated": ["effort"],
+  "flags": [],
+  "notes": [
+    "extractor: D1 describes the 2nd edition. It also names local-government units, public schools, city and municipal offices, KRS-registered entities and national parks as possible applicants, beyond the supplied listing scope of NGOs and research institutions.",
+    "strong: effort \"Online application via the Generator\": the quote does not state 2026-10-30 whole; left undated"
+  ],
+  "usd": 0
+}

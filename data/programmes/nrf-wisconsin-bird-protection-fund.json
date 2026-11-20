@@ -32,6 +32,25 @@
   "amount": null,
   "co_finance_required": null,
   "reporting": null,
+  "effort": {
+    "steps": [
+      "Application submission"
+    ]
+  },
+  "eligibility": [
+    {
+      "rule": "Be a 501(c)(3) charity of a listed 509(a) type, federal/state/local government, tribe, or accredited college/university",
+      "kind": "legal"
+    },
+    {
+      "rule": "Is not an individual, business, Type III supporting organization, private foundation, or private operating foundation",
+      "kind": "legal"
+    },
+    {
+      "rule": "Submit no more than one application per organization per grant cycle",
+      "kind": "other"
+    }
+  ],
   "calls": [
     {
       "id": "annual",
@@ -81,7 +100,57 @@
       "quote": "Submit all materials to NRFgrants@WisConservation.org by July 1.",
       "checked_at": "2026-11-14",
       "method": "page"
-    }
+    },
+    "effort": [
+      {
+        "source_url": "https://wisconservation.org/grants/bird-protection-fund/",
+        "quote": "Complete the application (paper copies of applications are not accepted). Submit all materials to NRFgrants@WisConservation.org by July 1.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "eligibility": [
+      {
+        "source_url": "https://wisconservation.org/grants/bird-protection-fund/",
+        "quote": "Applicant must be one of the following: a public charity with approved 501(c)(3) exempt status (under section 509(a)(1), 509(a)(2), or 509(a)(3) Type I and Type II); a federal, state, or local governmental unit, an American Indian nation or tribal community; or an accredited college or university.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://wisconservation.org/grants/bird-protection-fund/",
+        "quote": "The following types of organizations are not eligible for funding: individuals; businesses; section 509(a)(3) Type III supporting organizations; private foundations; and private operating foundations.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://wisconservation.org/grants/bird-protection-fund/",
+        "quote": "Only one application will be accepted per organization per grant cycle.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "documents": [
+      {
+        "source_url": "https://www.wisconservation.org/wp-content/uploads/2026/03/Bird-Protection-Fund-Grant-Application-2026.docx",
+        "quote": "Yes, I have included the project budget (using either the template provided, or another document that works best for my project).",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "after_award": [
+      {
+        "source_url": "https://www.wisconservation.org/wp-content/uploads/2026/03/Bird-Protection-Fund-Grant-Application-2026.docx",
+        "quote": "I understand that if I am awarded a grant, I will be asked to submit a grant report within one year.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ]
   },
-  "checked_at": "2026-11-14"
+  "checked_at": "2026-11-14",
+  "documents": [
+    "Project budget"
+  ],
+  "after_award": {
+    "reports": "final"
+  }
 }

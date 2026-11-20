@@ -1,0 +1,120 @@
+{
+  "id": "umweltstiftung-rastatt",
+  "read_on": "2026-11-20",
+  "prompt_version": "req-2026-11-20.1",
+  "models": ["cursor:gpt-5.6-luna-high"],
+  "complete": false,
+  "reasons": [
+    "14 links could not be ranked without Jev",
+    "https://umweltstiftung-rastatt.de/wp-content/uploads/Broschuere_10_Jahre_Umweltstiftung_Rastatt.pdf: pages 1, 40 are images: needs OCR",
+    "the text names a document with rules that was not read: Grundsätze für die Projektförderung durch die Umweltstiftung Rastatt",
+    "Jev did not check this reading, so an absent fact is not known to be absent"
+  ],
+  "requirements_checked": false,
+  "documents": [
+    {
+      "ref": "D1",
+      "url": "https://umweltstiftung-rastatt.de/ueber-uns/foerderantrag-stellen/",
+      "final_url": "https://umweltstiftung-rastatt.de/ueber-uns/foerderantrag-stellen/",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 1764,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:7ef49fb52d2bc13a275147e69fa4cc03eeb9ec91f016b406cf07be576c2469b1"
+    },
+    {
+      "ref": "D2",
+      "url": "https://umweltstiftung-rastatt.de/ueber-uns/unsere-stiftung/",
+      "final_url": "https://umweltstiftung-rastatt.de/ueber-uns/unsere-stiftung/",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 2342,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:6dd98ddb30e12e8545c6985741b9e7696609ed9a1c88ddf539c9f61aa9338a4d"
+    },
+    {
+      "ref": "D3",
+      "url": "https://umweltstiftung-rastatt.de/wp-content/uploads/Satzung_Umweltstiftung_Rastatt.pdf",
+      "final_url": "https://umweltstiftung-rastatt.de/wp-content/uploads/Satzung_Umweltstiftung_Rastatt.pdf",
+      "from": "https://umweltstiftung-rastatt.de/ueber-uns/foerderantrag-stellen/",
+      "anchor": "Auszug der Satzung",
+      "depth": 1,
+      "pdf": true,
+      "chars": 14251,
+      "pages": 9,
+      "low_text": false,
+      "hash": "sha256:d4c4b7f3b3d90c86c38b96d2e5863b8a687bc0bfeb205388c9b44f3ef40aad37"
+    },
+    {
+      "ref": "D4",
+      "url": "https://umweltstiftung-rastatt.de/wp-content/uploads/Broschuere_10_Jahre_Umweltstiftung_Rastatt.pdf",
+      "final_url": "https://umweltstiftung-rastatt.de/wp-content/uploads/Broschuere_10_Jahre_Umweltstiftung_Rastatt.pdf",
+      "from": "https://umweltstiftung-rastatt.de/ueber-uns/foerderantrag-stellen/",
+      "anchor": "Broschüre",
+      "depth": 1,
+      "pdf": true,
+      "chars": 74127,
+      "pages": 40,
+      "low_text": false,
+      "hash": "sha256:5b3c7fbd39e6e4912a113eec8b7e282681303430d77ae169dd6f01384e9e95d0"
+    },
+    {
+      "ref": "D5",
+      "url": "https://umweltstiftung-rastatt.de/wp-content/uploads/Antragsformular.pdf",
+      "final_url": "https://umweltstiftung-rastatt.de/wp-content/uploads/Antragsformular.pdf",
+      "from": "https://umweltstiftung-rastatt.de/ueber-uns/foerderantrag-stellen/",
+      "anchor": "PDF",
+      "depth": 1,
+      "pdf": true,
+      "chars": 1283,
+      "pages": 2,
+      "low_text": false,
+      "hash": "sha256:0458559a8e180be757ead858c25150b3d0f550f8e5f387aa36315399e7189845"
+    },
+    {
+      "ref": "D6",
+      "url": "https://umweltstiftung-rastatt.de/wp-content/uploads/2023/12/Antragsformular_Umweltstiftung_blanko.docx",
+      "final_url": "https://umweltstiftung-rastatt.de/wp-content/uploads/2023/12/Antragsformular_Umweltstiftung_blanko.docx",
+      "from": "https://umweltstiftung-rastatt.de/ueber-uns/foerderantrag-stellen/",
+      "anchor": "docx",
+      "depth": 1,
+      "pdf": false,
+      "chars": 1286,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:c7ce990b9b43b94a3b60fa3354c7789e1314ce6b82eb6cd6517a45d03cec2c3d"
+    }
+  ],
+  "failures": [
+    {
+      "url": "https://umweltstiftung-rastatt.de/wp-content/uploads/Broschuere_10_Jahre_Umweltstiftung_Rastatt.pdf",
+      "from": "https://umweltstiftung-rastatt.de/ueber-uns/foerderantrag-stellen/",
+      "kind": "low_text",
+      "message": "pages 1, 40 are images: needs OCR"
+    }
+  ],
+  "skipped_links": 27,
+  "chunks": [{ "id": "all", "docs": ["D1", "D2", "D3", "D4", "D5", "D6"], "chars": 95962 }],
+  "outcomes": {
+    "eligibility": "stated",
+    "documents": "not_found",
+    "effort": "stated",
+    "co_finance": "not_found",
+    "consortium": "not_found",
+    "after_award": "not_found"
+  },
+  "written": ["eligibility", "effort"],
+  "escalated": [],
+  "flags": [],
+  "notes": [
+    "extractor: No round or deadline is stated in the gathered text. D4 is a 2010 anniversary brochure describing past projects.",
+    "source umweltstiftung-rastatt-3: added for https://umweltstiftung-rastatt.de/wp-content/uploads/Satzung_Umweltstiftung_Rastatt.pdf"
+  ],
+  "usd": 0
+}

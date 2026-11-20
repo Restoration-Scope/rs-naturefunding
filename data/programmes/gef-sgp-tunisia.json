@@ -29,9 +29,52 @@
   },
   "access": "direct",
   "window": "fixed",
-  "amount": null,
-  "co_finance_required": null,
+  "amount": {
+    "currency": "USD",
+    "max": 75000
+  },
+  "co_finance_required": true,
   "reporting": null,
+  "effort": {
+    "steps": [
+      "Project form, Excel budget and organisation documents by email",
+      "Review and decision by the National Steering Committee"
+    ],
+    "due": [
+      "2026-11-29",
+      null
+    ]
+  },
+  "eligibility": [
+    {
+      "rule": "NGO or community-based organisation registered under Tunisian law",
+      "kind": "legal"
+    },
+    {
+      "rule": "One proposal per organisation, and no GEF SGP project already under way",
+      "kind": "other"
+    },
+    {
+      "rule": "Project lasts 18 months at most",
+      "kind": "project"
+    }
+  ],
+  "co_finance": {
+    "min_share": 50,
+    "in_kind": true
+  },
+  "documents": [
+    "Detailed project budget in Excel",
+    "Copy of the organisation's notice in the Journal Officiel (JORT)",
+    "Recent extract from the national business register (RNE)",
+    "Copy of the organisation's tax identification card",
+    "Signed statutes and internal rules",
+    "Board members with contacts, the organisation's other resources and current projects",
+    "Updated list of members",
+    "Minutes of the last general assembly",
+    "Latest annual financial report, plus the auditor's report where required (annual amount over 100,000 TND)",
+    "Latest annual narrative report"
+  ],
   "calls": [
     {
       "id": "op8-call-1-2026",
@@ -90,6 +133,120 @@
       "source_url": "https://procurement-notices.undp.org/view_notice.cfm?notice_id=98948",
       "quote": "Les dossiers de candidatures devront être envoyés en format numérique par courriel à sgp.tn.op8@undp.org avec objet : TUN/SGP/OP8/1 au plus tard le 15 novembre 2026 (à 23h59 heure Tunis).",
       "checked_at": "2026-11-02",
+      "method": "page"
+    },
+    "co_finance_required": {
+      "source_url": "https://procurement-notices.undp.org/view_file.cfm?doc_id=323720",
+      "quote": "Un cofinancement en nature et en numéraire de 50 % du coût total du projet est exigé et doit être spécifié dans la fiche de projet.",
+      "checked_at": "2026-11-20",
+      "method": "page"
+    },
+    "effort": [
+      {
+        "source_url": "https://procurement-notices.undp.org/view_file.cfm?doc_id=323720",
+        "quote": "Les propositions complètes doivent être reçues au plus tard le 29 novembre 2026 (à 23h59 heure de Tunis), par courrier électronique à l’adresse suivante : sgp.tn.op8@undp.org",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://procurement-notices.undp.org/view_file.cfm?doc_id=323720",
+        "quote": "Les propositions de projets éligibles seront présentées au Comité National de Pilotage (CNP) du PMF FEM / PNUD, unique instance qui statue sur l’octroi de subvention après examen et décision sur la base des critères ci-avant mentionnés.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "eligibility": [
+      {
+        "source_url": "https://procurement-notices.undp.org/view_file.cfm?doc_id=323720",
+        "quote": "Être conçues et soumises par une ONG/OCB de droit tunisien ;",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://procurement-notices.undp.org/view_file.cfm?doc_id=323720",
+        "quote": "Chaque OSC ne peut soumettre qu’une seule proposition de projet (les OSC qui bénéficient déjà d’un projet en cours dans le cadre du PMF FEM ne sont pas éligibles).",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://procurement-notices.undp.org/view_file.cfm?doc_id=323720",
+        "quote": "La durée maximale de chaque projet est de 18 mois.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "co_finance": {
+      "source_url": "https://procurement-notices.undp.org/view_file.cfm?doc_id=323720",
+      "quote": "Un cofinancement en nature et en numéraire de 50 % du coût total du projet est exigé et doit être spécifié dans la fiche de projet.",
+      "checked_at": "2026-11-20",
+      "method": "page"
+    },
+    "documents": [
+      {
+        "source_url": "https://procurement-notices.undp.org/view_file.cfm?doc_id=323720",
+        "quote": "Le budget du projet détaillé au format Excel ;",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://procurement-notices.undp.org/view_file.cfm?doc_id=323720",
+        "quote": "Copie de la publication au Journal Officiel de la République Tunisienne (JORT) ;",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://procurement-notices.undp.org/view_file.cfm?doc_id=323720",
+        "quote": "Copie d’un extrait récent du Registre national des entreprises (RNE) ;",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://procurement-notices.undp.org/view_file.cfm?doc_id=323720",
+        "quote": "Copie de la carte d’identification Fiscale de l’OSC ;",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://procurement-notices.undp.org/view_file.cfm?doc_id=323720",
+        "quote": "Le Statut et le règlement interne dûment signés ;",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://procurement-notices.undp.org/view_file.cfm?doc_id=323720",
+        "quote": "La liste des membres du bureau directeur ainsi que leurs coordonnées (téléphone, e-mail) et les autres ressources à disposition de l’OSC y compris les projets en cours ;",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://procurement-notices.undp.org/view_file.cfm?doc_id=323720",
+        "quote": "La liste actualisée des adhérents ;",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://procurement-notices.undp.org/view_file.cfm?doc_id=323720",
+        "quote": "Le procès-verbal de la dernière assemblée générale tenue par l’OSC ;",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://procurement-notices.undp.org/view_file.cfm?doc_id=323720",
+        "quote": "Le dernier rapport financier annuels de l’OSC, et du rapport du commissaire aux comptes, si exigé, et si le montant annuel est supérieur à 100 000 DT ;",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://procurement-notices.undp.org/view_file.cfm?doc_id=323720",
+        "quote": "Le dernier rapport narratif annuel de l’OSC ;",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "amount": {
+      "source_url": "https://procurement-notices.undp.org/view_file.cfm?doc_id=323720",
+      "quote": "Le montant maximal de la subvention pour chaque projet ne doit pas dépasser 75 000 USD.",
+      "checked_at": "2026-11-20",
       "method": "page"
     }
   },

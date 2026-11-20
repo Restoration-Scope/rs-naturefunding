@@ -1,0 +1,124 @@
+{
+  "id": "vorarlberg-naturschutzfonds",
+  "read_on": "2026-11-20",
+  "prompt_version": "req-2026-11-20.1",
+  "models": ["cursor:gpt-5.6-luna-high"],
+  "complete": false,
+  "reasons": [
+    "12 links could not be ranked without Jev",
+    "14 links could not be ranked without Jev",
+    "15 links could not be ranked without Jev",
+    "https://vorarlberg.at/documents/302033/0/F%C3%B6rderrichtlinie+Naturschutzfonds+2025.pdf/015c155e-fb53-068e-895f-e25a21a1e9bf?t=1751468251138 would not open (robots: robots.txt disallows this page)",
+    "https://vorarlberg.at/documents/302033/0/F%C3%B6rderantrag_Naturschutz_08-2024.pdf/dbbce693-efa9-3662-4f51-c015ca1acabe?t=1723626832217 would not open (robots: robots.txt disallows this page)",
+    "https://vorarlberg.at/documents/302033/0/Verwaltungsrichtlinie+Naturschutzfonds+2025.pdf/5bb1262f-d86b-daec-cebf-68bbd6c796a5?t=1751468293547 would not open (robots: robots.txt disallows this page)",
+    "the crawl bound left https://vorarlberg.at/documents/302033/472146/Hinweisblatt%20-%20Bezug%20der%20Ausschreibungsunterlagen.pdf/a76e11c9-86bf-ca59-8853-4b9bcf8349a7?t=1696339406968 unread",
+    "the crawl bound left https://vorarlberg.at/suche?q=Ausschreibungen&l=de&s=25 unread",
+    "the text names a document with rules that was not read: Förderrichtlinie Naturschutzfonds 2025.pdf",
+    "the text names a document with rules that was not read: Verwaltungsrichtlinie Naturschutzfonds 2025.pdf",
+    "Jev did not check this reading, so an absent fact is not known to be absent"
+  ],
+  "requirements_checked": false,
+  "documents": [
+    {
+      "ref": "D1",
+      "url": "https://vorarlberg.at/-/naturschutzfonds",
+      "final_url": "https://vorarlberg.at/-/naturschutzfonds",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 5505,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:f20795a517f432efc0df7367e55ffa3da1aa79630e9706e6595ee026519da3c2"
+    },
+    {
+      "ref": "D2",
+      "url": "https://vorarlberg.at/ausschreibungen",
+      "final_url": "https://vorarlberg.at/ausschreibungen",
+      "from": "https://vorarlberg.at/-/naturschutzfonds",
+      "anchor": "Ausschreibungen",
+      "depth": 1,
+      "pdf": false,
+      "chars": 2972,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:292d9c28b58b35177238588fd351b0e7b9c7d0d753fe3ca89c1b8a7a379f53da"
+    },
+    {
+      "ref": "D3",
+      "url": "https://vorarlberg.at/-/ausschreibungen-bekanntmachungen-vorinformationen-bekanntgaben",
+      "final_url": "https://vorarlberg.at/-/ausschreibungen-bekanntmachungen-vorinformationen-bekanntgaben",
+      "from": "https://vorarlberg.at/ausschreibungen",
+      "anchor": "Bildrechte: ©Land Vorarlberg Vergabeverfahren des Landes Vorarlberg Grundlegende Informationen",
+      "depth": 2,
+      "pdf": false,
+      "chars": 5425,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:029db535b92e3f9ff98fdb38e2cd7c671b1dbfd4d62b783eca2876b17aa64e2d"
+    },
+    {
+      "ref": "D4",
+      "url": "https://bekanntmachungen.vorarlberg.at/List",
+      "final_url": "https://bekanntmachungen.vorarlberg.at/List",
+      "from": "https://vorarlberg.at/ausschreibungen",
+      "anchor": "Bildrechte: ©Land Vorarlberg Aktuelle Ausschreibungen Mit Downloadmöglichkeit",
+      "depth": 2,
+      "pdf": false,
+      "chars": 325,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:1a1553d8aa0eb4ff126a754af0a91a121bee66841032c5bbf7d7d70fc69a6652"
+    }
+  ],
+  "failures": [
+    {
+      "url": "https://vorarlberg.at/documents/302033/0/F%C3%B6rderrichtlinie+Naturschutzfonds+2025.pdf/015c155e-fb53-068e-895f-e25a21a1e9bf?t=1751468251138",
+      "from": null,
+      "kind": "robots",
+      "message": "robots.txt disallows this page"
+    },
+    {
+      "url": "https://vorarlberg.at/documents/302033/0/F%C3%B6rderantrag_Naturschutz_08-2024.pdf/dbbce693-efa9-3662-4f51-c015ca1acabe?t=1723626832217",
+      "from": "https://vorarlberg.at/-/naturschutzfonds",
+      "kind": "robots",
+      "message": "robots.txt disallows this page"
+    },
+    {
+      "url": "https://vorarlberg.at/documents/302033/0/Verwaltungsrichtlinie+Naturschutzfonds+2025.pdf/5bb1262f-d86b-daec-cebf-68bbd6c796a5?t=1751468293547",
+      "from": "https://vorarlberg.at/-/naturschutzfonds",
+      "kind": "robots",
+      "message": "robots.txt disallows this page"
+    },
+    {
+      "url": "https://vorarlberg.at/documents/302033/472146/Hinweisblatt%20-%20Bezug%20der%20Ausschreibungsunterlagen.pdf/a76e11c9-86bf-ca59-8853-4b9bcf8349a7?t=1696339406968",
+      "from": "https://vorarlberg.at/-/ausschreibungen-bekanntmachungen-vorinformationen-bekanntgaben",
+      "kind": "bound",
+      "message": "past the crawl depth of 2"
+    },
+    {
+      "url": "https://vorarlberg.at/suche?q=Ausschreibungen&l=de&s=25",
+      "from": "https://vorarlberg.at/-/ausschreibungen-bekanntmachungen-vorinformationen-bekanntgaben",
+      "kind": "bound",
+      "message": "past the crawl depth of 2"
+    }
+  ],
+  "skipped_links": 352,
+  "chunks": [{ "id": "all", "docs": ["D1", "D2", "D3", "D4"], "chars": 14644 }],
+  "outcomes": {
+    "eligibility": "not_found",
+    "documents": "not_found",
+    "effort": "not_found",
+    "co_finance": "unresolved",
+    "consortium": "not_found",
+    "after_award": "not_found"
+  },
+  "written": [],
+  "escalated": [],
+  "flags": [],
+  "notes": [
+    "co_finance: the file states whether co-funding is required, this reading found nothing"
+  ],
+  "usd": 0
+}

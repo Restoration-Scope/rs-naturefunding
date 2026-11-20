@@ -1,7 +1,10 @@
 {
   "id": "ontario-community-environment-fund",
   "name": "Ontario Community Environment Fund",
-  "funder": { "name": "Government of Ontario", "url": "https://www.ontario.ca/" },
+  "funder": {
+    "name": "Government of Ontario",
+    "url": "https://www.ontario.ca/"
+  },
   "administered_by": null,
   "parent": null,
   "url": "https://www.ontario.ca/page/ontario-community-environment-fund",
@@ -22,14 +25,74 @@
   ],
   "geography": {
     "scope": "countries",
-    "countries": ["CA"],
+    "countries": [
+      "CA"
+    ],
     "label": "Ontario, in regions where environmental penalties were collected"
   },
   "access": "direct",
   "window": "fixed",
-  "amount": { "currency": "CAD", "min": 5000, "note": "Minimum request in the last round" },
+  "amount": {
+    "currency": "CAD",
+    "min": 5000,
+    "note": "Minimum request in the last round"
+  },
   "co_finance_required": null,
   "reporting": null,
+  "effort": {
+    "steps": [
+      "TPON application",
+      "Administrative review",
+      "Application review"
+    ]
+  },
+  "eligibility": [
+    {
+      "rule": "Is a legal entity with valid TPON compliance attestations",
+      "kind": "legal"
+    },
+    {
+      "rule": "The project is based in an eligible region",
+      "kind": "project"
+    },
+    {
+      "rule": "The project lasts no more than 2 years",
+      "kind": "project"
+    },
+    {
+      "rule": "The project is not infrastructure, a large-scale capital project or a land acquisition",
+      "kind": "project"
+    },
+    {
+      "rule": "The work is not required by law or the mandated duty of an organisation or agency",
+      "kind": "project"
+    },
+    {
+      "rule": "The project does not benefit the ministry or use ministry property or involvement",
+      "kind": "project"
+    },
+    {
+      "rule": "The project does not require an environmental assessment unless an exception applies",
+      "kind": "project"
+    },
+    {
+      "rule": "Is not a provincial or federal government body, conservation authority, individual or for-profit",
+      "kind": "legal"
+    }
+  ],
+  "after_award": {
+    "reports": "yearly"
+  },
+  "documents": [
+    "Detailed project budget using the OCEF budget template",
+    "Signed partner letters confirming their project role, if applicable",
+    "Signed confirmation letters from other funding sources, if applicable",
+    "Permits, approvals or permit applications needed for the project, if applicable",
+    "Organization purchasing policy, if applicable",
+    "First Nation leadership letter, if applicable",
+    "Project location map or sketch",
+    "Signed landowner access letter, if working on property not owned by the applicant"
+  ],
   "calls": [
     {
       "id": "latest-round",
@@ -78,7 +141,111 @@
       "quote": "The minimum funding request was $5,000.",
       "checked_at": "2026-11-20",
       "method": "page"
-    }
+    },
+    "effort": [
+      {
+        "source_url": "https://www.ontario.ca/page/ontario-community-environment-fund-application-guide",
+        "quote": "Applicants must submit all required documentation listed in the application checklist through Transfer Payment Ontario by 5:00 p.m. ET on September 24, 2025.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.ontario.ca/page/ontario-community-environment-fund-application-guide",
+        "quote": "an administrative review to determine if the applicant and the application meet the eligibility criteria and submission requirements",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.ontario.ca/page/ontario-community-environment-fund-application-guide",
+        "quote": "an application review to evaluate the technical merit and feasibility of the project",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "eligibility": [
+      {
+        "source_url": "https://www.ontario.ca/page/ontario-community-environment-fund-application-guide",
+        "quote": "Applicants must be legal entities that have valid attestations and verifications within the Transfer Payment Ontario (TPON) system, confirming compliance with environmental, labour and tax laws.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.ontario.ca/page/ontario-community-environment-fund-application-guide",
+        "quote": "Projects must be based in an eligible region.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.ontario.ca/page/ontario-community-environment-fund-application-guide",
+        "quote": "Projects cannot exceed 2 years in length.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.ontario.ca/page/ontario-community-environment-fund-application-guide",
+        "quote": "infrastructure or large-scale capital projects land acquisitions",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.ontario.ca/page/ontario-community-environment-fund-application-guide",
+        "quote": "activities required under statutes or regulations, or that are the mandated responsibility of an organization or government agency",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.ontario.ca/page/ontario-community-environment-fund-application-guide",
+        "quote": "projects that provide a direct benefit to the ministry or that are located on ministry property (such as Provincial Parks, Ontario Crown land or Ontario-owned infrastructure) or include ministry involvement",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.ontario.ca/page/ontario-community-environment-fund-application-guide",
+        "quote": "projects requiring an individual or class environmental assessment (EA), unless already completed (or a class EA category A project)",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.ontario.ca/page/ontario-community-environment-fund-application-guide",
+        "quote": "provincial or federal government departments, agencies, boards and commissions conservation authorities individuals for-profit organizations",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "after_award": [
+      {
+        "source_url": "https://www.ontario.ca/page/ontario-community-environment-fund-application-guide",
+        "quote": "At a minimum, recipients will be required to prepare a report on a yearly basis that summarizes how the project has been successful in achieving its objectives and how it has benefited the environment and local community.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "documents": [
+      {
+        "source_url": "https://www.ontario.ca/page/ontario-community-environment-fund-application-guide",
+        "quote": "Your detailed project budget, using the OCEF budget template provided within TPON (mandatory). Signed letters from partner organizations or individuals, other than your organization and its members, confirming their role in the delivery of the project. Signed letters from other funding sources, if applicable, confirming the amount of funding they will provide to support the project.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.ontario.ca/page/ontario-community-environment-fund-application-guide",
+        "quote": "Copies of permits, approvals or permit applications needed for your project, if applicable. Your detailed project budget, using the OCEF budget template provided within TPON. Your organization's purchasing policy, if applicable. A letter from the First Nation community's Chief and Council or Band Administrator or Manager, if applicable.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.ontario.ca/page/ontario-community-environment-fund-application-guide",
+        "quote": "A map or sketch (such as a digital snapshot of an online map or handwritten sketches are acceptable) of the project location, which could include the current layout and location of the project and the changes that will be made.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.ontario.ca/page/ontario-community-environment-fund-application-guide",
+        "quote": "If the project involves working on property not owned by the applicant, a signed letter from the landowner, stating that the landowner agrees to allow access to their property for the project activities, including monitoring and maintenance.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ]
   },
   "checked_at": "2026-11-20"
 }

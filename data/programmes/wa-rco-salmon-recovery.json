@@ -9,7 +9,11 @@
   "parent": null,
   "url": "https://rco.wa.gov/grant/salmon-recovery/",
   "summary": "Annual Washington State grants to restore degraded salmon habitat and protect high-quality habitat, open to nonprofits, regional fisheries enhancement groups, tribes and others, ranked through local lead entities.",
-  "approaches": ["freshwater", "coastal_marine", "species_conservation"],
+  "approaches": [
+    "freshwater",
+    "coastal_marine",
+    "species_conservation"
+  ],
   "applicant_types": [
     "ngo",
     "community_group",
@@ -17,7 +21,13 @@
     "government",
     "individual"
   ],
-  "geography": { "scope": "countries", "countries": ["US"], "label": "Washington State" },
+  "geography": {
+    "scope": "countries",
+    "countries": [
+      "US"
+    ],
+    "label": "Washington State"
+  },
   "access": "direct",
   "window": "fixed",
   "amount": {
@@ -25,8 +35,36 @@
     "min": 5000,
     "note": "Applicants may request any amount above $5,000; design-only projects without match are capped at $350,000"
   },
-  "co_finance_required": null,
+  "co_finance_required": true,
   "reporting": null,
+  "eligibility": [
+    {
+      "rule": "Project addresses goals and actions in a regional recovery plan or lead entity strategy",
+      "kind": "project"
+    },
+    {
+      "rule": "Not capital/public works, effectiveness monitoring, hatchery/harvest/hydropower, mitigation or eminent-domain/lease buys",
+      "kind": "project"
+    },
+    {
+      "rule": "Project is reviewed and prioritized by a lead entity",
+      "kind": "project"
+    }
+  ],
+  "co_finance": {
+    "min_share": 15,
+    "applies_to": "Riparian planting projects below minimum riparian buffer widths"
+  },
+  "documents": [
+    "Project cost estimate",
+    "Landowner acknowledgement, for land the applicant does not own",
+    "Site plan or parcel map",
+    "Design materials; preliminary designs if requesting $350,000 or more",
+    "At least two photographs of site conditions",
+    "Applicant resolution and authorization, unless a Tribal sponsor",
+    "Tribal notification letter",
+    "Riparian enhancement plan, for riparian restoration projects"
+  ],
   "calls": [
     {
       "id": "2026",
@@ -85,7 +123,134 @@
       "quote": "Applicants may request any amount greater than $5,000. For design-only projects without match, applicants may not request more than $350,000.",
       "checked_at": "2026-11-20",
       "method": "page"
-    }
+    },
+    "co_finance_required": {
+      "source_url": "https://rco.wa.gov/grant/salmon-recovery/",
+      "quote": "A project with the primary purpose of riparian planting that does not meet minimum riparian buffer widths is required to provide 15 percent match.",
+      "checked_at": "2026-11-20",
+      "method": "page"
+    },
+    "eligibility": [
+      {
+        "source_url": "https://rco.wa.gov/grant/salmon-recovery/",
+        "quote": "Applicants must demonstrate how their projects address the goals and actions defined in the regional recovery plans or lead entity strategies.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://rco.wa.gov/grant/salmon-recovery/",
+        "quote": "Capital facilities and public works projects Effectiveness monitoring Hatchery, harvest, and hydropower activities Mitigation projects Property acquisition through eminent domain or leasing",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://rco.wa.gov/wp-content/uploads/2026/09/SAL-Grants-2026.pdf",
+        "quote": "all projects seeking funding must be reviewed and prioritized by a lead entity to be considered by the board.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "co_finance": {
+      "source_url": "https://rco.wa.gov/grant/salmon-recovery/",
+      "quote": "A project with the primary purpose of riparian planting that does not meet minimum riparian buffer widths is required to provide 15 percent match.",
+      "checked_at": "2026-11-20",
+      "method": "page"
+    },
+    "documents": [
+      {
+        "source_url": "https://rco.wa.gov/wp-content/uploads/2026/01/SAL-AppA-ApplicationChecklist.pdf",
+        "quote": "Project Cost Estimate-RCO recommends using its template or similar format.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://rco.wa.gov/wp-content/uploads/2026/01/SAL-AppA-ApplicationChecklist.pdf",
+        "quote": "Landowner Acknowledgement-is required for a project on land not owned by the applicant or on state-owned aquatic lands.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://rco.wa.gov/wp-content/uploads/2026/01/SAL-AppA-ApplicationChecklist.pdf",
+        "quote": "Maps • Site plan for a restoration project • Parcel map for an acquisition project",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://rco.wa.gov/wp-content/uploads/2026/01/SAL-AppA-ApplicationChecklist.pdf",
+        "quote": "Design Materials for All Restoration Projects. NOTE that preliminary designs ARE REQUIRED for a project requesting $350,000 or more in SRFB funds.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://rco.wa.gov/wp-content/uploads/2026/01/SAL-AppA-ApplicationChecklist.pdf",
+        "quote": "At least two photographs of site conditions before project implementation are required in .jpg file format.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://rco.wa.gov/wp-content/uploads/2026/01/SAL-AppA-ApplicationChecklist.pdf",
+        "quote": "SRFB Applicant Resolution and Authorization is required for any non-Tribal sponsor who will sign the grant agreement.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://rco.wa.gov/wp-content/uploads/2026/01/SAL-AppA-ApplicationChecklist.pdf",
+        "quote": "Tribal Notification Letter. This is required for all projects.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://rco.wa.gov/wp-content/uploads/2026/01/SAL-AppA-ApplicationChecklist.pdf",
+        "quote": "Riparian Enhancement Plan. Required for riparian restoration projects as primary purpose, regardless of fund source.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "effort": [
+      {
+        "source_url": "https://rco.wa.gov/grant/salmon-recovery/",
+        "quote": "Contact the local lead entity coordinator to learn about application deadlines and requirements.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://rco.wa.gov/grant/salmon-recovery/",
+        "quote": "Application Materials Due Before Site Visit",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://rco.wa.gov/grant/salmon-recovery/",
+        "quote": "Lead entities establish their own schedules not on this website for required grant cycle steps including site visits, rating, and ranking.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://rco.wa.gov/grant/salmon-recovery/",
+        "quote": "Applications Due June 22, 2026 Applications Due by Noon.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "after_award": [
+      {
+        "source_url": "https://rco.wa.gov/wp-content/uploads/2019/05/SAL-Manual18.pdf",
+        "quote": "Sponsors are required to enter two progress reports a year for all funded projects using the PRISM online progress reporting tool.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ]
   },
-  "checked_at": "2026-11-20"
+  "checked_at": "2026-11-20",
+  "effort": {
+    "steps": [
+      "Contact the local lead entity coordinator",
+      "Application materials, before the site visit",
+      "Site visit, on the lead entity schedule",
+      "Final application in PRISM"
+    ]
+  },
+  "after_award": {
+    "reports": "twice_yearly"
+  }
 }

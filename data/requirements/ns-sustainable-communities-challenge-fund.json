@@ -1,0 +1,101 @@
+{
+  "id": "ns-sustainable-communities-challenge-fund",
+  "read_on": "2026-11-20",
+  "prompt_version": "req-2026-11-20.1",
+  "models": ["cursor:gpt-5.6-luna-high"],
+  "complete": false,
+  "reasons": [
+    "6 links could not be ranked without Jev",
+    "https://novascotia.ca/coastal-climate-change/docs/safeguarding-coastal-property.pdf: page 1 is an image: needs OCR",
+    "https://novascotia.ca/coastal-climate-change/docs/coastal-hazard-map-user-guide.pdf: pages 1, 13 are images: needs OCR",
+    "https://novascotia.ca/coastal-climate-change/docs/safeguarding-coastal-property.pdf: a document on another site: without Jev it can’t be confirmed as the funder’s, so it is not used",
+    "https://novascotia.ca/coastal-climate-change/docs/coastal-hazard-map-user-guide.pdf: a document on another site: without Jev it can’t be confirmed as the funder’s, so it is not used",
+    "the text names a document with rules that was not read: Applicant Guide",
+    "Jev did not check this reading, so an absent fact is not known to be absent"
+  ],
+  "requirements_checked": false,
+  "documents": [
+    {
+      "ref": "D1",
+      "url": "https://nschallengefund.ca/",
+      "final_url": "https://nschallengefund.ca/",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 3229,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:675d0a8f40a2116144b360d4792838127c67d144bb694a39634bf98baa137eff"
+    },
+    {
+      "ref": "D2",
+      "url": "https://nschallengefund.ca/how-to-apply/",
+      "final_url": "https://nschallengefund.ca/how-to-apply/",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 6308,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:8592420e795a4f31cb0049a58271811f556c74fea341e905e66edad1b2e6c3bf"
+    },
+    {
+      "ref": "D3",
+      "url": "https://nschallengefund.ca/funding-opportunities/",
+      "final_url": "https://nschallengefund.ca/funding-opportunities/",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 21972,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:b2523eac43ded555c37b5e6a17de8f8c3d4dcc9b8e60e53bee4b1bc645e513c2"
+    }
+  ],
+  "failures": [
+    {
+      "url": "https://novascotia.ca/coastal-climate-change/docs/safeguarding-coastal-property.pdf",
+      "from": "https://nschallengefund.ca/funding-opportunities/",
+      "kind": "low_text",
+      "message": "page 1 is an image: needs OCR"
+    },
+    {
+      "url": "https://novascotia.ca/coastal-climate-change/docs/coastal-hazard-map-user-guide.pdf",
+      "from": "https://nschallengefund.ca/funding-opportunities/",
+      "kind": "low_text",
+      "message": "pages 1, 13 are images: needs OCR"
+    },
+    {
+      "url": "https://novascotia.ca/coastal-climate-change/docs/safeguarding-coastal-property.pdf",
+      "from": "https://nschallengefund.ca/funding-opportunities/",
+      "kind": "offsite",
+      "message": "a document on another site: without Jev it can’t be confirmed as the funder’s, so it is not used"
+    },
+    {
+      "url": "https://novascotia.ca/coastal-climate-change/docs/coastal-hazard-map-user-guide.pdf",
+      "from": "https://nschallengefund.ca/funding-opportunities/",
+      "kind": "offsite",
+      "message": "a document on another site: without Jev it can’t be confirmed as the funder’s, so it is not used"
+    }
+  ],
+  "skipped_links": 44,
+  "chunks": [{ "id": "all", "docs": ["D1", "D2", "D3"], "chars": 31668 }],
+  "outcomes": {
+    "eligibility": "stated",
+    "documents": "not_found",
+    "effort": "stated",
+    "co_finance": "stated",
+    "consortium": "not_found",
+    "after_award": "stated"
+  },
+  "written": ["eligibility", "effort", "co_finance", "after_award"],
+  "escalated": [],
+  "flags": [],
+  "notes": [
+    "extractor: Round 4 has separate pre-screening and full application deadlines. Contribution requirements are 20%, 30%, or 40% depending on total eligible project costs; all applicants must contribute cash. Most mitigation projects require a GHG Assessment in final reporting."
+  ],
+  "usd": 0
+}

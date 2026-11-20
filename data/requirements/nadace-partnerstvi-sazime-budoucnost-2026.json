@@ -1,0 +1,82 @@
+{
+  "id": "nadace-partnerstvi-sazime-budoucnost-2026",
+  "read_on": "2026-11-20",
+  "prompt_version": "req-2026-11-20.1",
+  "models": ["cursor:gpt-5.6-luna-high"],
+  "complete": false,
+  "reasons": [
+    "4 links could not be ranked without Jev",
+    "https://www.nadacepartnerstvi.cz/getattachment/bb83dd66-73b3-463d-a5ee-e524adf6bd07/sazime-budoucnost-granty-do-100-tisic-2026: page 1 is an image: needs OCR",
+    "the text names a document with rules that was not read: Presentation rules attached to the grant agreement",
+    "Jev did not check this reading, so an absent fact is not known to be absent"
+  ],
+  "requirements_checked": false,
+  "documents": [
+    {
+      "ref": "D1",
+      "url": "https://www.nadacepartnerstvi.cz/sazime-budoucnost-granty-do-100-tisic-2026",
+      "final_url": "https://www.nadacepartnerstvi.cz/sazime-budoucnost-granty-do-100-tisic-2026",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 3980,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:5177f9a069c4462e4e67817d367df29e9d13e4b43c45951f4f80b850601a0c82"
+    },
+    {
+      "ref": "D2",
+      "url": "https://www.nadacepartnerstvi.cz/sazime-budoucnost",
+      "final_url": "https://www.nadacepartnerstvi.cz/sazime-budoucnost",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 5544,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:2d8930b2f8c19de01ef6fd8368868d55111d9cb44bda6d7aed27db09b18318e5"
+    },
+    {
+      "ref": "D3",
+      "url": "https://www.nadacepartnerstvi.cz/getattachment/bb83dd66-73b3-463d-a5ee-e524adf6bd07/sazime-budoucnost-granty-do-100-tisic-2026",
+      "final_url": "https://www.nadacepartnerstvi.cz/getattachment/bb83dd66-73b3-463d-a5ee-e524adf6bd07/sazime-budoucnost-granty-do-100-tisic-2026",
+      "from": "https://www.nadacepartnerstvi.cz/sazime-budoucnost-granty-do-100-tisic-2026",
+      "anchor": "kompletní znění výzvy",
+      "depth": 1,
+      "pdf": true,
+      "chars": 18111,
+      "pages": 11,
+      "low_text": false,
+      "hash": "sha256:d4b6f2074dda39aa4981c325d385cf706649228fd19117ab4c88922542a3184f"
+    }
+  ],
+  "failures": [
+    {
+      "url": "https://www.nadacepartnerstvi.cz/getattachment/bb83dd66-73b3-463d-a5ee-e524adf6bd07/sazime-budoucnost-granty-do-100-tisic-2026",
+      "from": "https://www.nadacepartnerstvi.cz/sazime-budoucnost-granty-do-100-tisic-2026",
+      "kind": "low_text",
+      "message": "page 1 is an image: needs OCR"
+    }
+  ],
+  "skipped_links": 261,
+  "chunks": [{ "id": "all", "docs": ["D1", "D2", "D3"], "chars": 28023 }],
+  "outcomes": {
+    "eligibility": "stated",
+    "documents": "stated",
+    "effort": "stated",
+    "co_finance": "stated",
+    "consortium": "not_found",
+    "after_award": "stated"
+  },
+  "written": ["eligibility", "documents", "effort", "co_finance", "after_award"],
+  "escalated": [],
+  "flags": [],
+  "notes": [
+    "effort \"Grantys application, budget and attachments\": the quote does not state 2026-07-31 whole; left undated",
+    "extractor: After the award, the grantee must notify the funder at least 15 days before planting, provide project documentation including photographs, video and a final report, allow foundation and partner participation in planting, register planted trees in the Sázíme budoucnost database, and follow the presentation rules attached to the grant agreement. Reports are due by 2027-01-10, 2027-11-30 and 2029-11-30.",
+    "source nadace-partnerstvi-sazime-budoucnost-2026-3: added for https://www.nadacepartnerstvi.cz/getattachment/bb83dd66-73b3-463d-a5ee-e524adf6bd07/sazime-budoucnost-granty-do-100-tisic-2026"
+  ],
+  "usd": 0
+}

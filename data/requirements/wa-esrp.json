@@ -1,0 +1,832 @@
+{
+  "id": "wa-esrp",
+  "read_on": "2026-11-20",
+  "prompt_version": "req-2026-11-20.1",
+  "models": ["cursor:gpt-5.6-luna-high", "cursor:gpt-5.6-sol-high"],
+  "complete": false,
+  "reasons": [
+    "35 links could not be ranked without Jev",
+    "42 links could not be ranked without Jev",
+    "https://rco.wa.gov/wp-content/uploads/2025/10/Beach-Restoration-Small-Grants-RFP-2027-29.pdf: page 1 is an image: needs OCR",
+    "https://rco.wa.gov/wp-content/uploads/2025/12/ESRP_2026GrantRoundWebinar_11.19.25.pdf: pages 1, 4, 7, 8, 9, 10, 16, 21, 22, 25, 28, 31, 34, 42, 43, 44, 45, 63, 66, 75, 82, 83, 84, 85, 91, 92 are images: needs OCR",
+    "https://rco.wa.gov/wp-content/uploads/2022/01/ESRP-ResProtRFP.pdf: page 1 is an image: needs OCR",
+    "https://rco.wa.gov/wp-content/uploads/2022/01/ESRP-LearningRFP.pdf: page 1 is an image: needs OCR",
+    "the crawl bound left https://rco.wa.gov/wp-content/uploads/2024/10/ESRP-InvestPlan-2025.pdf unread",
+    "the crawl bound left https://rco.wa.gov/wp-content/uploads/2022/08/ESRP-PrelimInvPlan.pdf unread",
+    "the crawl bound left https://rco.wa.gov/wp-content/uploads/2021/07/ESRP-2021-Investment-Plan.pdf unread",
+    "the crawl bound left https://rco.wa.gov/wp-content/uploads/2020/03/ESRP-2019-21-Biennium-Investment-Plan.pdf unread",
+    "the crawl bound left https://rco.wa.gov/wp-content/uploads/2020/05/ApplicantAuthorizationResolution.pdf unread",
+    "the crawl bound left https://rco.wa.gov/wp-content/uploads/2025/10/FiscalDataCollectionSheet-1.pdf unread",
+    "the crawl bound left https://rco.wa.gov/wp-content/uploads/2019/10/SAL-LandownerAckForm.docx unread",
+    "the crawl bound left https://rco.wa.gov/wp-content/uploads/2025/10/UpdatedElectronicSignDelegateForm.pdf unread",
+    "the crawl bound left https://rco.wa.gov/wp-content/uploads/2022/01/ESRP-VisualScopesofWorkExamples.docx unread",
+    "the crawl bound left https://rco.wa.gov/wp-content/uploads/2025/10/ESRP-SmallGrantsChecklist-Revised2025-2.docx unread",
+    "the crawl bound left https://rco.wa.gov/wp-content/uploads/2025/10/ESRP-SmallGrantsEvalCriteria-FINAL.docx unread",
+    "the crawl bound left https://rco.wa.gov/wp-content/uploads/2022/01/ESRP-SmallGrantsComPlanGuidance.docx unread",
+    "the crawl bound left https://rco.wa.gov/wp-content/uploads/2022/01/ESRP-SmallGrantsComPlanExample.docx unread",
+    "the crawl bound left https://rco.wa.gov/wp-content/uploads/2025/11/ESRP-ResProt-SeaLevelChecklist.pdf unread",
+    "the crawl bound left https://rco.wa.gov/wp-content/uploads/2022/01/ESRP-ResProtChecklist.docx unread",
+    "the crawl bound left https://rco.wa.gov/wp-content/uploads/2022/01/ESRP-ResProtEvalCriteria.docx unread",
+    "the crawl bound left https://rco.wa.gov/wp-content/uploads/2023/12/ESRP-RestorationProtectionProjectStatusSheet.docx unread",
+    "the crawl bound left https://rco.wa.gov/wp-content/uploads/2024/01/ESRP-LearningGrantsObjectives.pdf unread",
+    "the crawl bound left https://rco.wa.gov/wp-content/uploads/2023/12/ESRP-LearningPreProposalWorksheet.docx unread",
+    "the crawl bound left https://rco.wa.gov/wp-content/uploads/2023/12/ESRP-LearningFullProposalWorksheet.docx unread",
+    "the crawl bound left https://rco.wa.gov/wp-content/uploads/2026/02/ESRP-Learning-SOW_Template_27-29.pdf unread",
+    "the crawl bound left https://rco.wa.gov/wp-content/uploads/2024/01/ESRP-ShoreFriendlyRFP.pdf unread",
+    "the crawl bound left https://rco.wa.gov/wp-content/uploads/2025/09/ESRP-Manual29.pdf unread",
+    "the crawl bound left https://rco.wa.gov/wp-content/uploads/2024/01/ESRP-ShoreFriendlyChecklist.docx unread",
+    "the crawl bound left https://rco.wa.gov/wp-content/uploads/2026/04/ESRP-ShoreBudgetRequestChecklist.pdf unread",
+    "the crawl bound left https://rco.wa.gov/wp-content/uploads/2025/09/ESRP-LandownerCommitForm.docx unread",
+    "the crawl bound left https://rco.wa.gov/wp-content/uploads/2020/03/ESRP_ChecklistAcqProject.docx unread",
+    "the crawl bound left https://rco.wa.gov/wp-content/uploads/2019/10/SAL-AppE-AcqStewardshipPlan.docx unread",
+    "the crawl bound left https://rco.wa.gov/wp-content/uploads/2020/03/ESRP-AmendRequest.docx unread",
+    "the crawl bound left https://rco.wa.gov/wp-content/uploads/2022/03/ESRP-CRScreeningForm.docx unread",
+    "the crawl bound left https://rco.wa.gov/wp-content/uploads/2025/11/ESRP-DesignResDeliverables.pdf unread",
+    "the crawl bound left https://rco.wa.gov/wp-content/uploads/2019/05/SAL-Limit8SelfCert.pdf unread",
+    "the crawl bound left https://rco.wa.gov/wp-content/uploads/2019/10/SAL-AppE-ResStewardshipPlan.docx unread",
+    "the crawl bound left https://rco.wa.gov/wp-content/uploads/2019/10/SAL-PermitStreamFactSheet.pdf unread",
+    "the crawl bound left https://rco.wa.gov/wp-content/uploads/2019/07/Manual3.pdf unread",
+    "the crawl bound left https://rco.wa.gov/wp-content/uploads/2019/09/Manual5.pdf unread",
+    "the crawl bound left https://rco.wa.gov/wp-content/uploads/2019/07/Manual7.pdf unread",
+    "the crawl bound left https://rco.wa.gov/wp-content/uploads/2019/07/Manual8.pdf unread",
+    "the crawl bound left https://rco.wa.gov/wp-content/uploads/2019/06/ESRP-Fact-Sheet.pdf unread",
+    "the crawl bound left https://rco.wa.gov/wp-content/uploads/2025/03/CCA-FactSheet.pdf unread",
+    "the crawl bound left https://rco.wa.gov/wp-content/uploads/2026/11/ESRP-InvestmentPlan-2027.pdf unread",
+    "the crawl bound left https://rco.wa.gov/grants/apply-for-a-grant/prism/ unread",
+    "the crawl bound left https://rco.wa.gov/recreation-and-conservation-office-grants/grant-requirements/acquisition-tool-kit/ unread",
+    "the crawl bound left https://rco.wa.gov/recreation-and-conservation-office-grants/apply-for-a-grant/prism/ unread",
+    "the crawl bound left https://rco.wa.gov/recreation-and-conservation-office-grants/grant-requirements/match-reduction/ unread",
+    "the crawl bound left https://rco.wa.gov/recreation-and-conservation-office-grants/grant-requirements/planning-requirements/ unread",
+    "the crawl bound left https://rco.wa.gov/recreation-and-conservation-office-grants/grant-requirements/making-accessible-projects/ unread",
+    "the crawl bound left https://rco.wa.gov/recreation-and-conservation-office-grants/grant-requirements/using-sustainable-practices/ unread",
+    "the crawl bound left https://dahp.wa.gov/project-review/washington-state-standards-for-cultural-resource-reporting unread",
+    "the crawl bound left https://rco.wa.gov/wp-content/uploads/2019/07/Manual2.pdf unread",
+    "the crawl bound left https://rco.wa.gov/wp-content/uploads/2019/10/Manual4.pdf unread",
+    "the crawl bound left https://rco.wa.gov/wp-content/uploads/2019/06/BFP-Manual9.pdf unread",
+    "the crawl bound left https://rco.wa.gov/wp-content/uploads/2019/05/WWRP-ORA-Manual10a.pdf unread",
+    "the crawl bound left https://rco.wa.gov/wp-content/uploads/2019/05/WWRP-HCA-Manual10b.pdf unread",
+    "the crawl bound left https://rco.wa.gov/wp-content/uploads/2019/05/WWRP-FL-Manual10c.pdf unread",
+    "the crawl bound left https://rco.wa.gov/wp-content/uploads/2019/05/WWRP-FP-Manual10f.pdf unread",
+    "the crawl bound left https://rco.wa.gov/wp-content/uploads/2019/06/FARR-Manual11.pdf unread",
+    "the crawl bound left https://rco.wa.gov/wp-content/uploads/2019/06/BIG-Manual12.pdf unread",
+    "the crawl bound left https://rco.wa.gov/wp-content/uploads/2019/06/NOVA-EE-Manual13.pdf unread",
+    "the crawl bound left https://rco.wa.gov/wp-content/uploads/2019/06/NOVA-Manual14.pdf unread",
+    "the crawl bound left https://rco.wa.gov/wp-content/uploads/2019/06/LWCF-Manual15.pdf unread",
+    "the crawl bound left https://rco.wa.gov/wp-content/uploads/2019/06/RTP-Manual16.pdf unread",
+    "the crawl bound left https://rco.wa.gov/wp-content/uploads/2019/05/YAF-Manual17.pdf unread",
+    "the crawl bound left https://rco.wa.gov/wp-content/uploads/2019/05/SAL-Manual18.pdf unread",
+    "the crawl bound left https://rco.wa.gov/wp-content/uploads/2024/12/MON-Manual18M.pdf unread",
+    "the crawl bound left https://rco.wa.gov/wp-content/uploads/2019/10/Manual19.pdf unread",
+    "the crawl bound left https://rco.wa.gov/wp-content/uploads/2019/06/FFPPP-Manual20.pdf unread",
+    "the crawl bound left https://rco.wa.gov/wp-content/uploads/2019/06/ALEA-Manual21.pdf unread",
+    "the crawl bound left https://rco.wa.gov/wp-content/uploads/2019/11/FBRB-Manual-22.pdf unread",
+    "the crawl bound left https://rco.wa.gov/wp-content/uploads/2019/06/NCLI-Manual23.pdf unread",
+    "the crawl bound left https://rco.wa.gov/wp-content/uploads/2020/02/WCRRI-Manual24.pdf unread",
+    "the crawl bound left https://rco.wa.gov/wp-content/uploads/2022/03/CFP-Manual25.pdf unread",
+    "the crawl bound left https://rco.wa.gov/wp-content/uploads/2022/07/OLG-Manual26.pdf unread",
+    "the crawl bound left https://rco.wa.gov/wp-content/uploads/2024/01/COAF-Manual.pdf unread",
+    "the crawl bound left https://rco.wa.gov/wp-content/uploads/2026/04/PRA-Manual30.pdf unread",
+    "the crawl bound left https://rco.wa.gov/wp-content/uploads/2026/01/POL-RecCriteriaChangesFactSheet.pdf unread",
+    "the crawl bound left https://rco.wa.gov/wp-content/uploads/2023/12/POL-EvalCriteriaChanges-2023.pdf unread",
+    "the crawl bound left https://rco.wa.gov/wp-content/uploads/2026/01/POL-NeedStatewidePrioritiesFactSheet.pdf unread",
+    "the text names a document with rules that was not read: Beach Restoration Small Grants Request for Proposals 2027-29",
+    "the text names a document with rules that was not read: Restoration and Protection Grants Request for Proposals 2027-29",
+    "the text names a document with rules that was not read: Manual 3: Acquisition Projects",
+    "the text names a document with rules that was not read: Manual 5: Restoration Projects",
+    "the text names a document with rules that was not read: Manual 7: Long-Term Obligations",
+    "the text names a document with rules that was not read: Manual 8: Reimbursements",
+    "the text names a document with rules that was not read: RCO Manual 5 - Restoration Projects",
+    "the text names a document with rules that was not read: RCO Manual 7 - Long-Term Obligations",
+    "the text names a document with rules that was not read: RCO Manual 8 - Reimbursements",
+    "the text names a document with rules that was not read: Communication Plan Guidance and Example",
+    "the text names a document with rules that was not read: Restoration and Protection Request for Proposals",
+    "the text names a document with rules that was not read: Beach Restoration Small Grants Request for Proposals",
+    "the text names a document with rules that was not read: Application Checklist",
+    "the text names a document with rules that was not read: RCO Manual 5 & 7 (Restoration Policies)",
+    "the text names a document with rules that was not read: RCO Manual 3 & 7 (Acquisition Policies)",
+    "the text names a document with rules that was not read: Manual 3 - Acquisition Projects",
+    "the text names a document with rules that was not read: Manual 5 - Restoration Projects",
+    "the text names a document with rules that was not read: Manual 7 - Long-Term Obligations",
+    "the text names a document with rules that was not read: Manual 8 - Reimbursements",
+    "the text names a document with rules that was not read: RCO's Acquisition Project Checklist",
+    "the text names a document with rules that was not read: ESRP Design and Restoration Project Deliverables document",
+    "the text names a document with rules that was not read: Appendix C",
+    "the text names a document with rules that was not read: Sample RCO Grant Agreement",
+    "the text names a document with rules that was not read: Estuary and Salmon Restoration Program grant agreement",
+    "the text names a document with rules that was not read: RCO Policy Manual 7 - LongTerm Obligations",
+    "the text names a document with rules that was not read: Budget Worksheet (Excel template)",
+    "the text names a document with rules that was not read: Applicant Resolution and Authorization (MS Word template)",
+    "the text names a document with rules that was not read: Tribal Notification Letter (MS Word template)",
+    "Jev did not check this reading, so an absent fact is not known to be absent",
+    "strong reading: the text names a document with rules that was not read: 2027-29 Restoration and Protection Grant Program request for proposals",
+    "strong reading: the text names a document with rules that was not read: RCO Manual 5 - Restoration Projects",
+    "strong reading: the text names a document with rules that was not read: RCO Manual 7 - Long-Term Obligations",
+    "strong reading: the text names a document with rules that was not read: RCO Manual 8 - Reimbursements"
+  ],
+  "requirements_checked": false,
+  "documents": [
+    {
+      "ref": "D1",
+      "url": "https://rco.wa.gov/grant/estuary-and-salmon-restoration-program/",
+      "final_url": "https://rco.wa.gov/grant/estuary-and-salmon-restoration-program/",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 11211,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:e3621cbe38a936584775cdd94b6fb193d2674e82a0e0f816cbae9ebcbb14ee92"
+    },
+    {
+      "ref": "D2",
+      "url": "https://rco.wa.gov/recreation-and-conservation-office-grants/apply-for-a-grant/",
+      "final_url": "https://rco.wa.gov/recreation-and-conservation-office-grants/apply-for-a-grant/",
+      "from": "https://rco.wa.gov/grant/estuary-and-salmon-restoration-program/",
+      "anchor": "Apply for a Grant",
+      "depth": 1,
+      "pdf": false,
+      "chars": 6047,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:653211936ed48c0b7dab7fc18f877462ed3447fca372dce6eefe48bece9ba95f"
+    },
+    {
+      "ref": "D3",
+      "url": "https://rco.wa.gov/recreation-and-conservation-office-grants/grant-requirements/",
+      "final_url": "https://rco.wa.gov/recreation-and-conservation-office-grants/grant-requirements/",
+      "from": "https://rco.wa.gov/grant/estuary-and-salmon-restoration-program/",
+      "anchor": "Grant Requirements",
+      "depth": 1,
+      "pdf": false,
+      "chars": 6018,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:4ad3d43ec3259c539c8453272ae324fad6258d3b8530c56931eec1d7e355101c"
+    },
+    {
+      "ref": "D4",
+      "url": "https://rco.wa.gov/recreation-and-conservation-office-grants/grant-manuals/",
+      "final_url": "https://rco.wa.gov/recreation-and-conservation-office-grants/grant-manuals/",
+      "from": "https://rco.wa.gov/grant/estuary-and-salmon-restoration-program/",
+      "anchor": "Grant Manuals",
+      "depth": 1,
+      "pdf": false,
+      "chars": 3930,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:47b6f9734411d48446a09e6ee238e783eff7742ef4f10f97ee6b86a45778e2f2"
+    },
+    {
+      "ref": "D5",
+      "url": "https://rco.wa.gov/policy-and-rulemaking/recently-adopted-rules/",
+      "final_url": "https://rco.wa.gov/policy-and-rulemaking/recently-adopted-rules/",
+      "from": "https://rco.wa.gov/grant/estuary-and-salmon-restoration-program/",
+      "anchor": "Recently Adopted",
+      "depth": 1,
+      "pdf": false,
+      "chars": 4258,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:6d12dd2d313903396bfd9e0f31d52230a6b5103f8dfbef7cb0ef4c69a2b0ecdd"
+    },
+    {
+      "ref": "D6",
+      "url": "https://rco.wa.gov/wp-content/uploads/2025/10/Beach-Restoration-Small-Grants-RFP-2027-29.pdf",
+      "final_url": "https://rco.wa.gov/wp-content/uploads/2025/10/Beach-Restoration-Small-Grants-RFP-2027-29.pdf",
+      "from": "https://rco.wa.gov/grant/estuary-and-salmon-restoration-program/",
+      "anchor": "Request for Proposals 2027-29",
+      "depth": 1,
+      "pdf": true,
+      "chars": 75547,
+      "pages": 30,
+      "low_text": false,
+      "hash": "sha256:2bbcc5dd04efc3bbe16d5e9b1c7871b2e273dc3cd03f609cb4b2088bbd0f3545"
+    },
+    {
+      "ref": "D7",
+      "url": "https://rco.wa.gov/wp-content/uploads/2025/12/ESRP_2026GrantRoundWebinar_11.19.25.pdf",
+      "final_url": "https://rco.wa.gov/wp-content/uploads/2025/12/ESRP_2026GrantRoundWebinar_11.19.25.pdf",
+      "from": "https://rco.wa.gov/grant/estuary-and-salmon-restoration-program/",
+      "anchor": "2026 Grant Round Live Application Workshop Slides",
+      "depth": 1,
+      "pdf": true,
+      "chars": 34074,
+      "pages": 92,
+      "low_text": false,
+      "hash": "sha256:8d7147bec7bd6d8763049f35d9a0b286268a660f07f2033e99c0a45f4414fa3f"
+    },
+    {
+      "ref": "D8",
+      "url": "https://rco.wa.gov/wp-content/uploads/2022/01/ESRP-ResProtRFP.pdf",
+      "final_url": "https://rco.wa.gov/wp-content/uploads/2022/01/ESRP-ResProtRFP.pdf",
+      "from": "https://rco.wa.gov/grant/estuary-and-salmon-restoration-program/",
+      "anchor": "Request for Proposals 2027-29",
+      "depth": 1,
+      "pdf": true,
+      "chars": 101679,
+      "pages": 38,
+      "low_text": false,
+      "hash": "sha256:169e71b0b599f7d1a9731ceb3bdee12190974a6777c1b7b96e27a1091d521364"
+    },
+    {
+      "ref": "D9",
+      "url": "https://rco.wa.gov/wp-content/uploads/2022/01/ESRP-LearningRFP.pdf",
+      "final_url": "https://rco.wa.gov/wp-content/uploads/2022/01/ESRP-LearningRFP.pdf",
+      "from": "https://rco.wa.gov/grant/estuary-and-salmon-restoration-program/",
+      "anchor": "Request for Proposals 2027-29",
+      "depth": 1,
+      "pdf": true,
+      "chars": 54229,
+      "pages": 24,
+      "low_text": false,
+      "hash": "sha256:afd88503b409cfae0c0889c273d71e591b8abd024a5f209deee828aac8339d85"
+    }
+  ],
+  "failures": [
+    {
+      "url": "https://rco.wa.gov/wp-content/uploads/2025/10/Beach-Restoration-Small-Grants-RFP-2027-29.pdf",
+      "from": "https://rco.wa.gov/grant/estuary-and-salmon-restoration-program/",
+      "kind": "low_text",
+      "message": "page 1 is an image: needs OCR"
+    },
+    {
+      "url": "https://rco.wa.gov/wp-content/uploads/2025/12/ESRP_2026GrantRoundWebinar_11.19.25.pdf",
+      "from": "https://rco.wa.gov/grant/estuary-and-salmon-restoration-program/",
+      "kind": "low_text",
+      "message": "pages 1, 4, 7, 8, 9, 10, 16, 21, 22, 25, 28, 31, 34, 42, 43, 44, 45, 63, 66, 75, 82, 83, 84, 85, 91, 92 are images: needs OCR"
+    },
+    {
+      "url": "https://rco.wa.gov/wp-content/uploads/2022/01/ESRP-ResProtRFP.pdf",
+      "from": "https://rco.wa.gov/grant/estuary-and-salmon-restoration-program/",
+      "kind": "low_text",
+      "message": "page 1 is an image: needs OCR"
+    },
+    {
+      "url": "https://rco.wa.gov/wp-content/uploads/2022/01/ESRP-LearningRFP.pdf",
+      "from": "https://rco.wa.gov/grant/estuary-and-salmon-restoration-program/",
+      "kind": "low_text",
+      "message": "page 1 is an image: needs OCR"
+    },
+    {
+      "url": "https://rco.wa.gov/wp-content/uploads/2024/10/ESRP-InvestPlan-2025.pdf",
+      "from": "https://rco.wa.gov/grant/estuary-and-salmon-restoration-program/",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://rco.wa.gov/wp-content/uploads/2022/08/ESRP-PrelimInvPlan.pdf",
+      "from": "https://rco.wa.gov/grant/estuary-and-salmon-restoration-program/",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://rco.wa.gov/wp-content/uploads/2021/07/ESRP-2021-Investment-Plan.pdf",
+      "from": "https://rco.wa.gov/grant/estuary-and-salmon-restoration-program/",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://rco.wa.gov/wp-content/uploads/2020/03/ESRP-2019-21-Biennium-Investment-Plan.pdf",
+      "from": "https://rco.wa.gov/grant/estuary-and-salmon-restoration-program/",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://rco.wa.gov/wp-content/uploads/2020/05/ApplicantAuthorizationResolution.pdf",
+      "from": "https://rco.wa.gov/grant/estuary-and-salmon-restoration-program/",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://rco.wa.gov/wp-content/uploads/2025/10/FiscalDataCollectionSheet-1.pdf",
+      "from": "https://rco.wa.gov/grant/estuary-and-salmon-restoration-program/",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://rco.wa.gov/wp-content/uploads/2019/10/SAL-LandownerAckForm.docx",
+      "from": "https://rco.wa.gov/grant/estuary-and-salmon-restoration-program/",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://rco.wa.gov/wp-content/uploads/2025/10/UpdatedElectronicSignDelegateForm.pdf",
+      "from": "https://rco.wa.gov/grant/estuary-and-salmon-restoration-program/",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://rco.wa.gov/wp-content/uploads/2022/01/ESRP-VisualScopesofWorkExamples.docx",
+      "from": "https://rco.wa.gov/grant/estuary-and-salmon-restoration-program/",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://rco.wa.gov/wp-content/uploads/2025/10/ESRP-SmallGrantsChecklist-Revised2025-2.docx",
+      "from": "https://rco.wa.gov/grant/estuary-and-salmon-restoration-program/",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://rco.wa.gov/wp-content/uploads/2025/10/ESRP-SmallGrantsEvalCriteria-FINAL.docx",
+      "from": "https://rco.wa.gov/grant/estuary-and-salmon-restoration-program/",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://rco.wa.gov/wp-content/uploads/2022/01/ESRP-SmallGrantsComPlanGuidance.docx",
+      "from": "https://rco.wa.gov/grant/estuary-and-salmon-restoration-program/",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://rco.wa.gov/wp-content/uploads/2022/01/ESRP-SmallGrantsComPlanExample.docx",
+      "from": "https://rco.wa.gov/grant/estuary-and-salmon-restoration-program/",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://rco.wa.gov/wp-content/uploads/2025/11/ESRP-ResProt-SeaLevelChecklist.pdf",
+      "from": "https://rco.wa.gov/grant/estuary-and-salmon-restoration-program/",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://rco.wa.gov/wp-content/uploads/2022/01/ESRP-ResProtChecklist.docx",
+      "from": "https://rco.wa.gov/grant/estuary-and-salmon-restoration-program/",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://rco.wa.gov/wp-content/uploads/2022/01/ESRP-ResProtEvalCriteria.docx",
+      "from": "https://rco.wa.gov/grant/estuary-and-salmon-restoration-program/",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://rco.wa.gov/wp-content/uploads/2023/12/ESRP-RestorationProtectionProjectStatusSheet.docx",
+      "from": "https://rco.wa.gov/grant/estuary-and-salmon-restoration-program/",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://rco.wa.gov/wp-content/uploads/2024/01/ESRP-LearningGrantsObjectives.pdf",
+      "from": "https://rco.wa.gov/grant/estuary-and-salmon-restoration-program/",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://rco.wa.gov/wp-content/uploads/2023/12/ESRP-LearningPreProposalWorksheet.docx",
+      "from": "https://rco.wa.gov/grant/estuary-and-salmon-restoration-program/",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://rco.wa.gov/wp-content/uploads/2023/12/ESRP-LearningFullProposalWorksheet.docx",
+      "from": "https://rco.wa.gov/grant/estuary-and-salmon-restoration-program/",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://rco.wa.gov/wp-content/uploads/2026/02/ESRP-Learning-SOW_Template_27-29.pdf",
+      "from": "https://rco.wa.gov/grant/estuary-and-salmon-restoration-program/",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://rco.wa.gov/wp-content/uploads/2024/01/ESRP-ShoreFriendlyRFP.pdf",
+      "from": "https://rco.wa.gov/grant/estuary-and-salmon-restoration-program/",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://rco.wa.gov/wp-content/uploads/2025/09/ESRP-Manual29.pdf",
+      "from": "https://rco.wa.gov/grant/estuary-and-salmon-restoration-program/",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://rco.wa.gov/wp-content/uploads/2024/01/ESRP-ShoreFriendlyChecklist.docx",
+      "from": "https://rco.wa.gov/grant/estuary-and-salmon-restoration-program/",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://rco.wa.gov/wp-content/uploads/2026/04/ESRP-ShoreBudgetRequestChecklist.pdf",
+      "from": "https://rco.wa.gov/grant/estuary-and-salmon-restoration-program/",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://rco.wa.gov/wp-content/uploads/2025/09/ESRP-LandownerCommitForm.docx",
+      "from": "https://rco.wa.gov/grant/estuary-and-salmon-restoration-program/",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://rco.wa.gov/wp-content/uploads/2020/03/ESRP_ChecklistAcqProject.docx",
+      "from": "https://rco.wa.gov/grant/estuary-and-salmon-restoration-program/",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://rco.wa.gov/wp-content/uploads/2019/10/SAL-AppE-AcqStewardshipPlan.docx",
+      "from": "https://rco.wa.gov/grant/estuary-and-salmon-restoration-program/",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://rco.wa.gov/wp-content/uploads/2020/03/ESRP-AmendRequest.docx",
+      "from": "https://rco.wa.gov/grant/estuary-and-salmon-restoration-program/",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://rco.wa.gov/wp-content/uploads/2022/03/ESRP-CRScreeningForm.docx",
+      "from": "https://rco.wa.gov/grant/estuary-and-salmon-restoration-program/",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://rco.wa.gov/wp-content/uploads/2025/11/ESRP-DesignResDeliverables.pdf",
+      "from": "https://rco.wa.gov/grant/estuary-and-salmon-restoration-program/",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://rco.wa.gov/wp-content/uploads/2019/05/SAL-Limit8SelfCert.pdf",
+      "from": "https://rco.wa.gov/grant/estuary-and-salmon-restoration-program/",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://rco.wa.gov/wp-content/uploads/2019/10/SAL-AppE-ResStewardshipPlan.docx",
+      "from": "https://rco.wa.gov/grant/estuary-and-salmon-restoration-program/",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://rco.wa.gov/wp-content/uploads/2019/10/SAL-PermitStreamFactSheet.pdf",
+      "from": "https://rco.wa.gov/grant/estuary-and-salmon-restoration-program/",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://rco.wa.gov/wp-content/uploads/2019/07/Manual3.pdf",
+      "from": "https://rco.wa.gov/grant/estuary-and-salmon-restoration-program/",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://rco.wa.gov/wp-content/uploads/2019/09/Manual5.pdf",
+      "from": "https://rco.wa.gov/grant/estuary-and-salmon-restoration-program/",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://rco.wa.gov/wp-content/uploads/2019/07/Manual7.pdf",
+      "from": "https://rco.wa.gov/grant/estuary-and-salmon-restoration-program/",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://rco.wa.gov/wp-content/uploads/2019/07/Manual8.pdf",
+      "from": "https://rco.wa.gov/grant/estuary-and-salmon-restoration-program/",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://rco.wa.gov/wp-content/uploads/2019/06/ESRP-Fact-Sheet.pdf",
+      "from": "https://rco.wa.gov/grant/estuary-and-salmon-restoration-program/",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://rco.wa.gov/wp-content/uploads/2025/03/CCA-FactSheet.pdf",
+      "from": "https://rco.wa.gov/grant/estuary-and-salmon-restoration-program/",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://rco.wa.gov/wp-content/uploads/2026/11/ESRP-InvestmentPlan-2027.pdf",
+      "from": "https://rco.wa.gov/grant/estuary-and-salmon-restoration-program/",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://rco.wa.gov/grants/apply-for-a-grant/prism/",
+      "from": "https://rco.wa.gov/grant/estuary-and-salmon-restoration-program/",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://rco.wa.gov/recreation-and-conservation-office-grants/grant-requirements/acquisition-tool-kit/",
+      "from": "https://rco.wa.gov/grant/estuary-and-salmon-restoration-program/",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://rco.wa.gov/recreation-and-conservation-office-grants/apply-for-a-grant/prism/",
+      "from": "https://rco.wa.gov/recreation-and-conservation-office-grants/apply-for-a-grant/",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://rco.wa.gov/recreation-and-conservation-office-grants/grant-requirements/acquisition-tool-kit/",
+      "from": "https://rco.wa.gov/recreation-and-conservation-office-grants/apply-for-a-grant/",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://rco.wa.gov/recreation-and-conservation-office-grants/grant-requirements/match-reduction/",
+      "from": "https://rco.wa.gov/recreation-and-conservation-office-grants/apply-for-a-grant/",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://rco.wa.gov/recreation-and-conservation-office-grants/grant-requirements/planning-requirements/",
+      "from": "https://rco.wa.gov/recreation-and-conservation-office-grants/apply-for-a-grant/",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://rco.wa.gov/recreation-and-conservation-office-grants/grant-requirements/making-accessible-projects/",
+      "from": "https://rco.wa.gov/recreation-and-conservation-office-grants/apply-for-a-grant/",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://rco.wa.gov/recreation-and-conservation-office-grants/grant-requirements/using-sustainable-practices/",
+      "from": "https://rco.wa.gov/recreation-and-conservation-office-grants/apply-for-a-grant/",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://dahp.wa.gov/project-review/washington-state-standards-for-cultural-resource-reporting",
+      "from": "https://rco.wa.gov/recreation-and-conservation-office-grants/grant-requirements/",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://rco.wa.gov/wp-content/uploads/2019/07/Manual2.pdf",
+      "from": "https://rco.wa.gov/recreation-and-conservation-office-grants/grant-manuals/",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://rco.wa.gov/wp-content/uploads/2019/07/Manual3.pdf",
+      "from": "https://rco.wa.gov/recreation-and-conservation-office-grants/grant-manuals/",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://rco.wa.gov/wp-content/uploads/2019/10/Manual4.pdf",
+      "from": "https://rco.wa.gov/recreation-and-conservation-office-grants/grant-manuals/",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://rco.wa.gov/wp-content/uploads/2019/09/Manual5.pdf",
+      "from": "https://rco.wa.gov/recreation-and-conservation-office-grants/grant-manuals/",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://rco.wa.gov/wp-content/uploads/2019/07/Manual7.pdf",
+      "from": "https://rco.wa.gov/recreation-and-conservation-office-grants/grant-manuals/",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://rco.wa.gov/wp-content/uploads/2019/07/Manual8.pdf",
+      "from": "https://rco.wa.gov/recreation-and-conservation-office-grants/grant-manuals/",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://rco.wa.gov/wp-content/uploads/2019/06/BFP-Manual9.pdf",
+      "from": "https://rco.wa.gov/recreation-and-conservation-office-grants/grant-manuals/",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://rco.wa.gov/wp-content/uploads/2019/05/WWRP-ORA-Manual10a.pdf",
+      "from": "https://rco.wa.gov/recreation-and-conservation-office-grants/grant-manuals/",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://rco.wa.gov/wp-content/uploads/2019/05/WWRP-HCA-Manual10b.pdf",
+      "from": "https://rco.wa.gov/recreation-and-conservation-office-grants/grant-manuals/",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://rco.wa.gov/wp-content/uploads/2019/05/WWRP-FL-Manual10c.pdf",
+      "from": "https://rco.wa.gov/recreation-and-conservation-office-grants/grant-manuals/",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://rco.wa.gov/wp-content/uploads/2019/05/WWRP-FP-Manual10f.pdf",
+      "from": "https://rco.wa.gov/recreation-and-conservation-office-grants/grant-manuals/",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://rco.wa.gov/wp-content/uploads/2019/06/FARR-Manual11.pdf",
+      "from": "https://rco.wa.gov/recreation-and-conservation-office-grants/grant-manuals/",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://rco.wa.gov/wp-content/uploads/2019/06/BIG-Manual12.pdf",
+      "from": "https://rco.wa.gov/recreation-and-conservation-office-grants/grant-manuals/",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://rco.wa.gov/wp-content/uploads/2019/06/NOVA-EE-Manual13.pdf",
+      "from": "https://rco.wa.gov/recreation-and-conservation-office-grants/grant-manuals/",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://rco.wa.gov/wp-content/uploads/2019/06/NOVA-Manual14.pdf",
+      "from": "https://rco.wa.gov/recreation-and-conservation-office-grants/grant-manuals/",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://rco.wa.gov/wp-content/uploads/2019/06/LWCF-Manual15.pdf",
+      "from": "https://rco.wa.gov/recreation-and-conservation-office-grants/grant-manuals/",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://rco.wa.gov/wp-content/uploads/2019/06/RTP-Manual16.pdf",
+      "from": "https://rco.wa.gov/recreation-and-conservation-office-grants/grant-manuals/",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://rco.wa.gov/wp-content/uploads/2019/05/YAF-Manual17.pdf",
+      "from": "https://rco.wa.gov/recreation-and-conservation-office-grants/grant-manuals/",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://rco.wa.gov/wp-content/uploads/2019/05/SAL-Manual18.pdf",
+      "from": "https://rco.wa.gov/recreation-and-conservation-office-grants/grant-manuals/",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://rco.wa.gov/wp-content/uploads/2024/12/MON-Manual18M.pdf",
+      "from": "https://rco.wa.gov/recreation-and-conservation-office-grants/grant-manuals/",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://rco.wa.gov/wp-content/uploads/2019/10/Manual19.pdf",
+      "from": "https://rco.wa.gov/recreation-and-conservation-office-grants/grant-manuals/",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://rco.wa.gov/wp-content/uploads/2019/06/FFPPP-Manual20.pdf",
+      "from": "https://rco.wa.gov/recreation-and-conservation-office-grants/grant-manuals/",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://rco.wa.gov/wp-content/uploads/2019/06/ALEA-Manual21.pdf",
+      "from": "https://rco.wa.gov/recreation-and-conservation-office-grants/grant-manuals/",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://rco.wa.gov/wp-content/uploads/2019/11/FBRB-Manual-22.pdf",
+      "from": "https://rco.wa.gov/recreation-and-conservation-office-grants/grant-manuals/",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://rco.wa.gov/wp-content/uploads/2019/06/NCLI-Manual23.pdf",
+      "from": "https://rco.wa.gov/recreation-and-conservation-office-grants/grant-manuals/",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://rco.wa.gov/wp-content/uploads/2020/02/WCRRI-Manual24.pdf",
+      "from": "https://rco.wa.gov/recreation-and-conservation-office-grants/grant-manuals/",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://rco.wa.gov/wp-content/uploads/2022/03/CFP-Manual25.pdf",
+      "from": "https://rco.wa.gov/recreation-and-conservation-office-grants/grant-manuals/",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://rco.wa.gov/wp-content/uploads/2022/07/OLG-Manual26.pdf",
+      "from": "https://rco.wa.gov/recreation-and-conservation-office-grants/grant-manuals/",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://rco.wa.gov/wp-content/uploads/2024/01/COAF-Manual.pdf",
+      "from": "https://rco.wa.gov/recreation-and-conservation-office-grants/grant-manuals/",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://rco.wa.gov/wp-content/uploads/2025/09/ESRP-Manual29.pdf",
+      "from": "https://rco.wa.gov/recreation-and-conservation-office-grants/grant-manuals/",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://rco.wa.gov/wp-content/uploads/2026/04/PRA-Manual30.pdf",
+      "from": "https://rco.wa.gov/recreation-and-conservation-office-grants/grant-manuals/",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://rco.wa.gov/wp-content/uploads/2026/01/POL-RecCriteriaChangesFactSheet.pdf",
+      "from": "https://rco.wa.gov/policy-and-rulemaking/recently-adopted-rules/",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://rco.wa.gov/wp-content/uploads/2023/12/POL-EvalCriteriaChanges-2023.pdf",
+      "from": "https://rco.wa.gov/policy-and-rulemaking/recently-adopted-rules/",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://rco.wa.gov/wp-content/uploads/2026/01/POL-NeedStatewidePrioritiesFactSheet.pdf",
+      "from": "https://rco.wa.gov/policy-and-rulemaking/recently-adopted-rules/",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    }
+  ],
+  "skipped_links": 281,
+  "chunks": [
+    { "id": "c1", "docs": ["D1", "D2", "D3", "D4", "D5"], "chars": 32207 },
+    { "id": "c2", "docs": ["D6"], "chars": 40124 },
+    { "id": "c3", "docs": ["D6"], "chars": 37323 },
+    { "id": "c4", "docs": ["D7"], "chars": 34255 },
+    { "id": "c5", "docs": ["D8"], "chars": 40004 },
+    { "id": "c6", "docs": ["D8"], "chars": 40155 },
+    { "id": "c7", "docs": ["D8"], "chars": 25039 },
+    { "id": "c8", "docs": ["D9"], "chars": 40095 },
+    { "id": "c9", "docs": ["D9"], "chars": 15982 }
+  ],
+  "outcomes": {
+    "eligibility": "partial",
+    "documents": "stated",
+    "effort": "unresolved",
+    "co_finance": "stated",
+    "consortium": "not_found",
+    "after_award": "stated"
+  },
+  "written": ["eligibility", "documents", "co_finance", "after_award"],
+  "escalated": ["eligibility", "effort"],
+  "flags": [
+    {
+      "field": "eligibility",
+      "item": "Primary purpose restores or protects Puget Sound nearshore beach ecosystem processes or functions and supports a geographic-area ecosystem strategy",
+      "why": "a rule is 5 to 120 characters"
+    },
+    {
+      "field": "eligibility",
+      "item": "The project does not relieve obligatory compensation or mitigation requirements unless the work is above and beyond required mitigation",
+      "why": "a rule is 5 to 120 characters"
+    },
+    {
+      "field": "effort",
+      "item": "steps",
+      "why": "the steps come from different parts of the text; check they are one list in order"
+    },
+    {
+      "field": "effort",
+      "item": "Written response to reviewer questions",
+      "why": "the quote is not on any gathered document"
+    }
+  ],
+  "notes": [
+    "eligibility: 20 rules past the 8th dropped",
+    "documents: 9 past the 10th dropped",
+    "effort: steps past the 5th dropped",
+    "extractor: D1 states separate deadlines for the two routes. It also requires stewardship planning for acquired land and ten years of operation and maintenance for restoration projects. D1 states Beach Restoration Small Grants awards of $30,000–$150,000 and separately lists a $350,000-per-property limit. The match statement refers to the 2026 grant round while the listed RFPs are for 2027-29. | D6 contains a conflicting pre-proposal date: the schedule says December 2, 2025, while Step 2 says December 2, 2026. The document also mentions priorities from the older 2025-27 round, which were not treated as current. | The final application checklist adds materials to the pre-proposal requirements; documents listed here are limited to the pre-proposal checklist. | Portfolio eligibility rules apply to applicants seeking a subsequent project phase. D7 describes separate Restoration and Protection and Beach Restoration Small Grants routes. | This RFP covers the 2027-29 Restoration and Protection round. Site",
+    "strong: D9 covers the Learning Program, which is not one of the listed rounds, so it was excluded. No Restoration and Protection round document was provided. D6's Step 2 says December 2, 2026, but its schedule and application-process deadline say December 2, 2025; 2025 was used.",
+    "source wa-esrp-2: added for https://rco.wa.gov/wp-content/uploads/2025/10/Beach-Restoration-Small-Grants-RFP-2027-29.pdf",
+    "source wa-esrp-3: added for https://rco.wa.gov/wp-content/uploads/2025/12/ESRP_2026GrantRoundWebinar_11.19.25.pdf",
+    "source wa-esrp-4: added for https://rco.wa.gov/recreation-and-conservation-office-grants/apply-for-a-grant/",
+    "source wa-esrp-5: added for https://rco.wa.gov/wp-content/uploads/2022/01/ESRP-ResProtRFP.pdf"
+  ],
+  "usd": 0
+}

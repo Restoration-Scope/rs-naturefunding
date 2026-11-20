@@ -33,6 +33,19 @@
   "amount": null,
   "co_finance_required": null,
   "reporting": null,
+  "effort": {
+    "steps": [
+      "Application in the fund's online system (SBS Manager)",
+      "Assessment and decision by the review group"
+    ],
+    "due": [
+      "2026-11-30",
+      null
+    ]
+  },
+  "after_award": {
+    "reports": "final"
+  },
   "calls": [
     {
       "id": "2027",
@@ -97,7 +110,41 @@
       "quote": "Ansökningsperioden för 2027 års bidrag öppnar den 20 augusti 2026. Sista dagen då ansökan ska ha inkommit till oss är den 30 november 2026.",
       "checked_at": "2026-11-02",
       "method": "page"
-    }
+    },
+    "effort": [
+      {
+        "source_url": "https://alvinsfond.se/",
+        "quote": "Ansökningsperioden för 2027 års bidrag öppnar den 20 augusti 2026. Sista dagen då ansökan ska ha inkommit till oss är den 30 november 2026. Sena ansökningar behandlas inte.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://alvinsfond.se/",
+        "quote": "Efter ansökningsperioden är stängd, går alla ansökningar vidare till beredningsgruppen för bedömning.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://alvinsfond.se/",
+        "quote": "För att lättare kunna hantera inkomna ansökningar och sträva mot snabbare besked till de sökande, så övergår vi från pdf-dokument till systemet SBS Manager.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://alvinsfond.se/",
+        "quote": "Beredningsgruppen fattar beslut om bidrag.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "after_award": [
+      {
+        "source_url": "https://alvinsfond.se/fragor-och-svar/",
+        "quote": "Har du fått bidrag för 2026? Då ska du redovisa användningen av bidraget och resultat som uppnåtts till Alvins fond senast 31 januari 2027.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ]
   },
   "checked_at": "2026-11-02"
 }

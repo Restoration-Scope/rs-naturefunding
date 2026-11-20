@@ -1,0 +1,103 @@
+{
+  "id": "fonds-landschaft-schweiz",
+  "read_on": "2026-11-20",
+  "prompt_version": "req-2026-11-20.1",
+  "models": ["cursor:gpt-5.6-luna-high"],
+  "complete": false,
+  "reasons": [
+    "5 links could not be ranked without Jev",
+    "the text names a document with rules that was not read: Der FLS in Kürze",
+    "the text names a document with rules that was not read: Bundesgesetz über Finanzhilfe zur Erhaltung und Pflege naturnaher Kulturlandschaften",
+    "the text names a document with rules that was not read: Kriterien und Grundsätze für die Vergabepraxis des FLS",
+    "the text names a document with rules that was not read: Projekte, die der FLS nicht unterstützen kann",
+    "Jev did not check this reading, so an absent fact is not known to be absent"
+  ],
+  "requirements_checked": false,
+  "documents": [
+    {
+      "ref": "D1",
+      "url": "https://www.fls-fsp.ch/",
+      "final_url": "https://fls-fsp.ch/",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 2573,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:9e34a7ce1ce1301b75042c1c804bd4fdf0c77d5c8b53980a5d809b98fd628f10"
+    },
+    {
+      "ref": "D2",
+      "url": "https://www.fls-fsp.ch/gesuche",
+      "final_url": "https://fls-fsp.ch/gesuche",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 2422,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:a9ae88fb1d87b201f3723838f0b44d1478e003f7fc329e30c5208ebe2a163cd5"
+    },
+    {
+      "ref": "D3",
+      "url": "https://www.fls-fsp.ch/projekte",
+      "final_url": "https://fls-fsp.ch/projekte",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 3980,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:d78d98ed3821bd418ab4218d94b00a2bcbd32b8db6bc6d260a76da7211c9d110"
+    },
+    {
+      "ref": "D4",
+      "url": "https://www.fls-fsp.ch/ueber-den-fls",
+      "final_url": "https://fls-fsp.ch/ueber-den-fls",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 6576,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:580da6e432b85b9d29e66a37d5ecf96e092c4f450dbf5761140c0456affe9194"
+    },
+    {
+      "ref": "D5",
+      "url": "https://fls-fsp.ch/fileadmin/user_upload/pdf/4.3_richtlinien_fuer_beitragsgesuche_2023_v_18.10.23__d_.pdf",
+      "final_url": "https://fls-fsp.ch/fileadmin/user_upload/pdf/4.3_richtlinien_fuer_beitragsgesuche_2023_v_18.10.23__d_.pdf",
+      "from": "https://www.fls-fsp.ch/gesuche",
+      "anchor": "Richtlinien für Beitragsgesuche",
+      "depth": 1,
+      "pdf": true,
+      "chars": 2192,
+      "pages": 1,
+      "low_text": false,
+      "hash": "sha256:d056570ca4a41f8ca7603498572250e2c6a18dc9f637825d91cfd6a92dc550f8"
+    }
+  ],
+  "failures": [],
+  "skipped_links": 96,
+  "chunks": [{ "id": "all", "docs": ["D1", "D2", "D3", "D4", "D5"], "chars": 18090 }],
+  "outcomes": {
+    "eligibility": "stated",
+    "documents": "stated",
+    "effort": "stated",
+    "co_finance": "stated",
+    "consortium": "not_found",
+    "after_award": "not_found"
+  },
+  "written": ["eligibility", "documents", "effort", "co_finance"],
+  "escalated": [],
+  "flags": [],
+  "notes": [
+    "extractor: D1 lists a 1 February 2027 deadline, while D4 says the FLS could be abolished from January 2027 if the federal relief package is accepted.",
+    "source fonds-landschaft-schweiz-4: added for https://fls-fsp.ch/fileadmin/user_upload/pdf/4.3_richtlinien_fuer_beitragsgesuche_2023_v_18.10.23__d_.pdf",
+    "source fonds-landschaft-schweiz-5: added for https://www.fls-fsp.ch/"
+  ],
+  "usd": 0
+}

@@ -12,14 +12,33 @@
   "parent": null,
   "url": "https://orbfhp.com/funding/",
   "summary": "Federal National Fish Habitat Partnership funds for on-the-ground projects that restore and reconnect streams and rivers in the Ohio River Basin, such as fish passage, floodplain function and water quality, with a required non-federal match.",
-  "approaches": ["freshwater"],
+  "approaches": [
+    "freshwater"
+  ],
   "applicant_types": null,
-  "geography": { "scope": "countries", "countries": ["US"], "label": "Ohio River Basin" },
+  "geography": {
+    "scope": "countries",
+    "countries": [
+      "US"
+    ],
+    "label": "Ohio River Basin"
+  },
   "access": "direct",
   "window": "fixed",
-  "amount": { "currency": "USD", "min": 15000, "max": 100000 },
+  "amount": {
+    "currency": "USD",
+    "min": 15000,
+    "max": 100000
+  },
   "co_finance_required": true,
   "reporting": null,
+  "co_finance": {
+    "ratio": "1:1",
+    "in_kind": true
+  },
+  "after_award": {
+    "reports": "unspecified"
+  },
   "calls": [
     {
       "id": "fy27",
@@ -27,7 +46,10 @@
       "url": "https://orbfhp.com/funding/",
       "status": "closed",
       "opens": "2026-09-08",
-      "deadline": { "date": "2026-10-09", "text": "Oct 9, 2026: Application deadline" },
+      "deadline": {
+        "date": "2026-10-09",
+        "text": "Oct 9, 2026: Application deadline"
+      },
       "evidence": {
         "status": {
           "source_url": "https://orbfhp.com/funding/",
@@ -78,7 +100,7 @@
     "co_finance_required": {
       "source_url": "https://orbfhp.com/funding/",
       "quote": "A 1:1 non-federal match is required.",
-      "checked_at": "2026-11-12",
+      "checked_at": "2026-11-20",
       "method": "page"
     },
     "administered_by": {
@@ -86,7 +108,21 @@
       "quote": "Federal funding is available under the National Fish Habitat Partnership (NFHP) through the U.S. Fish and Wildlife Service to top ranked proposals.",
       "checked_at": "2026-11-12",
       "method": "page"
-    }
+    },
+    "co_finance": {
+      "source_url": "https://orbfhp.com/funding/",
+      "quote": "A 1:1 non-federal match is required. A 3:1 non-federal match is encouraged. Match may include allowable cash and documented in-kind contributions.",
+      "checked_at": "2026-11-20",
+      "method": "page"
+    },
+    "after_award": [
+      {
+        "source_url": "https://orbfhp.com/funding/",
+        "quote": "Reporting Submitted through GrantSolutions.gov",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ]
   },
   "checked_at": "2026-11-12"
 }

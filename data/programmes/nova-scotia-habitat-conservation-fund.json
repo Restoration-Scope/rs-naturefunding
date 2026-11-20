@@ -1,19 +1,63 @@
 {
   "id": "nova-scotia-habitat-conservation-fund",
   "name": "Habitat Conservation Fund",
-  "funder": { "name": "Government of Nova Scotia", "url": "https://novascotia.ca/" },
+  "funder": {
+    "name": "Government of Nova Scotia",
+    "url": "https://novascotia.ca/"
+  },
   "administered_by": null,
   "parent": null,
   "url": "https://novascotia.ca/natr/wildlife/habfund/",
   "summary": "Cost-shared funding from the Nova Scotia Department of Natural Resources for wildlife habitat enhancement, land acquisition, research and education, with an annual October deadline.",
-  "approaches": ["species_conservation", "protected_areas"],
+  "approaches": [
+    "species_conservation",
+    "protected_areas"
+  ],
   "applicant_types": null,
-  "geography": { "scope": "countries", "countries": ["CA"], "label": "Nova Scotia, Canada" },
+  "geography": {
+    "scope": "countries",
+    "countries": [
+      "CA"
+    ],
+    "label": "Nova Scotia, Canada"
+  },
   "access": "direct",
   "window": "fixed",
   "amount": null,
   "co_finance_required": true,
   "reporting": null,
+  "effort": {
+    "steps": [
+      "Online application submission"
+    ]
+  },
+  "eligibility": [
+    {
+      "rule": "Requests no more than one year of project funding per grant",
+      "kind": "project"
+    },
+    {
+      "rule": "For a continuing project, varies from and builds on the previous project",
+      "kind": "project"
+    },
+    {
+      "rule": "Not habitat inventory, tree planting (beyond a minor part), fisheries management or a government responsibility",
+      "kind": "project"
+    }
+  ],
+  "co_finance": {
+    "in_kind": true,
+    "min_share": 25
+  },
+  "after_award": {
+    "reports": "unspecified"
+  },
+  "documents": [
+    "Budget and Activity Table",
+    "Letters of support from matching funding sources",
+    "Conflict of Interest Declaration, if required",
+    "Research proposal and principal applicant résumé, if applying for research"
+  ],
   "calls": [
     {
       "id": "annual",
@@ -59,11 +103,73 @@
       "method": "page"
     },
     "co_finance_required": {
-      "source_url": "https://novascotia.ca/natr/wildlife/habfund/",
-      "quote": "Funding is provided for projects on a cost-shared basis up to a maximum of 75% of total project costs.",
+      "source_url": "https://novascotia.ca/natr/wildlife/habfund/hcf-guide.pdf",
+      "quote": "The FUND will subsidize projects on a cost-shared basis not to exceed 75% of total project cost.",
       "checked_at": "2026-11-20",
       "method": "page"
-    }
+    },
+    "effort": [
+      {
+        "source_url": "https://novascotia.ca/natr/wildlife/habfund/",
+        "quote": "Submit your completed application form, budget and activity table, letters of support and conflict of interest declaration (if required) online by 15 October.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "eligibility": [
+      {
+        "source_url": "https://novascotia.ca/natr/wildlife/habfund/hcf-guide.pdf",
+        "quote": "The maximum length of a project that will be funded is one year.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://novascotia.ca/natr/wildlife/habfund/hcf-guide.pdf",
+        "quote": "Applications to continue a previously funded project must demonstrate how the current proposal varies from and builds upon knowledge gained from the previously funded project.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://novascotia.ca/natr/wildlife/habfund/hcf-guide.pdf",
+        "quote": "Habitat inventories; Tree planting programs (unless a minor part of a broader habitat conservation project); Fisheries management projects; Projects which are a provincial or federal management responsibility;",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "co_finance": {
+      "source_url": "https://novascotia.ca/natr/wildlife/habfund/hcf-guide.pdf",
+      "quote": "The FUND will subsidize projects on a cost-shared basis not to exceed 75% of total project cost. The Habitat Conservation Fund will not contribute to administration fees. Matching funding may include in-kind and/or financial resources, and letters of support from matching funders must accompany the Application Form.",
+      "checked_at": "2026-11-20",
+      "method": "page"
+    },
+    "after_award": [
+      {
+        "source_url": "https://novascotia.ca/natr/wildlife/habfund/hcf-guide.pdf",
+        "quote": "Progress reports must be submitted on a regular basis (as defined in the grant agreement), or as requested by the FUND.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "documents": [
+      {
+        "source_url": "https://novascotia.ca/natr/wildlife/habfund/",
+        "quote": "complete the Budget and Activity Table (Excel). Note there are three separate tabs to fill. amalgamate letters of support from matching funding sources into a single PDF.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://novascotia.ca/natr/wildlife/habfund/",
+        "quote": "complete the Conflict of Interest Declaration (PDF) (if required)",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://novascotia.ca/natr/wildlife/habfund/hcf-application.docx",
+        "quote": "research submissions must include a research proposal and resumé for the principal applicant.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ]
   },
   "checked_at": "2026-11-20"
 }

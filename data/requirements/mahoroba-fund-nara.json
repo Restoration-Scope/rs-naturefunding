@@ -1,0 +1,992 @@
+{
+  "id": "mahoroba-fund-nara",
+  "read_on": "2026-11-20",
+  "prompt_version": "req-2026-11-20.1",
+  "models": ["cursor:gpt-5.6-luna-high", "cursor:gpt-5.6-sol-high"],
+  "complete": false,
+  "reasons": [
+    "112 links could not be ranked without Jev",
+    "20 links could not be ranked without Jev",
+    "https://kosuikyo.com/wp-content/themes/standard_black_cmspro/img/hellolight.pdf: a scanned or image PDF: needs OCR",
+    "https://kosuikyo.com/wp-content/themes/standard_black_cmspro/img/ubi_oubo_2027_kaikeihoukoku.pdf: a scanned or image PDF: needs OCR",
+    "the crawl bound left https://kosuikyo.com/wp-content/themes/standard_black_cmspro/img/ubi_oubo_2027_jigyouhoukoku.docx unread",
+    "the crawl bound left https://kosuikyo.com/wp-content/themes/standard_black_cmspro/img/ubi_oubo_2027_jigyouhoukoku.pdf unread",
+    "the crawl bound left https://kosuikyo.com/wp-content/themes/standard_black_cmspro/img/ogawaYK_youkou_2027.pdf unread",
+    "the crawl bound left https://kosuikyo.com/wp-content/themes/standard_black_cmspro/img/ogawaYK_shinseisyo_2027.docx unread",
+    "the crawl bound left https://kosuikyo.com/wp-content/themes/standard_black_cmspro/img/ogawaYK_syoudakusyo_2027.docx unread",
+    "the crawl bound left https://kosuikyo.com/wp-content/themes/standard_black_cmspro/img/taiyo_youkou2027.pdf unread",
+    "the crawl bound left https://kosuikyo.com/wp-content/themes/standard_black_cmspro/img/taiyo_shinseisho2027.docx unread",
+    "the crawl bound left https://kosuikyo.com/wp-content/themes/standard_black_cmspro/img/sugai_youkou_2027.pdf unread",
+    "the crawl bound left https://kosuikyo.com/wp-content/themes/standard_black_cmspro/img/miyamotohiroko_youkou.pdf unread",
+    "the crawl bound left https://kosuikyo.com/wp-content/themes/standard_black_cmspro/img/miyamotohiroko_keikakusyo.docx unread",
+    "the crawl bound left https://kosuikyo.com/wp-content/themes/standard_black_cmspro/img/miyamotohiroko_suisennsyo.docx unread",
+    "the crawl bound left https://kosuikyo.com/wp-content/themes/standard_black_cmspro/img/miyake2027_youkou.pdf unread",
+    "the crawl bound left https://kosuikyo.com/wp-content/themes/standard_black_cmspro/img/syokunou_youkou2027.pdf unread",
+    "the crawl bound left https://kosuikyo.com/wp-content/themes/standard_black_cmspro/img/kensetsujoshi2026_yokou.pdf unread",
+    "the crawl bound left https://kosuikyo.com/wp-content/themes/standard_black_cmspro/img/kensetsujoshi2026_kisairei.pdf unread",
+    "the crawl bound left https://kosuikyo.com/wp-content/themes/standard_black_cmspro/img/kensetsujoshi2026_jigyouhoukoku.docx unread",
+    "the crawl bound left https://kosuikyo.com/wp-content/themes/standard_black_cmspro/img/EHsupport_youkoure2.pdf unread",
+    "the crawl bound left https://kosuikyo.com/wp-content/themes/standard_black_cmspro/img/EHsupport_ryohi_oubo.docx unread",
+    "the crawl bound left https://kosuikyo.com/wp-content/themes/standard_black_cmspro/img/EHsupport_kannkyou_oubo.docx unread",
+    "the crawl bound left https://kosuikyo.com/wp-content/themes/standard_black_cmspro/img/kokyuki_youkou-_20260319.pdf unread",
+    "the crawl bound left https://kosuikyo.com/wp-content/themes/standard_black_cmspro/img/kokyuki_ouboyoushi.doc unread",
+    "the crawl bound left https://kosuikyo.com/wp-content/themes/standard_black_cmspro/img/ForChildren_youkou_2026.pdf unread",
+    "the crawl bound left https://kosuikyo.com/wp-content/themes/standard_black_cmspro/img/yamamotoheiwa_youkou2026.pdf unread",
+    "the crawl bound left https://kosuikyo.com/wp-content/themes/standard_black_cmspro/img/yamamotofukushi_youkou2027.pdf unread",
+    "the crawl bound left https://kosuikyo.com/wp-content/themes/standard_black_cmspro/img/shinbori2_youkou.pdf unread",
+    "the crawl bound left https://kosuikyo.com/wp-content/themes/standard_black_cmspro/img/shinbori1_hojyosiryourei.pdf unread",
+    "the crawl bound left https://kosuikyo.com/wp-content/themes/standard_black_cmspro/img/touhoudenki2026_youkou.pdf unread",
+    "the crawl bound left https://kosuikyo.com/wp-content/themes/standard_black_cmspro/img/touhoudenki2026_hojyosiryou.pdf unread",
+    "the crawl bound left https://kosuikyo.com/wp-content/themes/standard_black_cmspro/img/touhoudenki2026_-hojyosiryou_rei1.pdf unread",
+    "the crawl bound left https://kosuikyo.com/wp-content/themes/standard_black_cmspro/img/touhoudenki2026_-hojyosiryou_rei2.pdf unread",
+    "the crawl bound left https://kosuikyo.com/wp-content/themes/standard_black_cmspro/img/seikatsutogakusyu_youkou2026.pdf unread",
+    "the crawl bound left https://kosuikyo.com/wp-content/themes/standard_black_cmspro/img/seikatsutogakusyu_hozyo2026.pdf unread",
+    "the crawl bound left https://kosuikyo.com/wp-content/themes/standard_black_cmspro/img/seikatsutogakusyu_hozyorei2026.pdf unread",
+    "the crawl bound left https://kosuikyo.com/wp-content/themes/standard_black_cmspro/img/youkou_forkumamoto.pdf unread",
+    "the crawl bound left https://kosuikyo.com/wp-content/themes/standard_black_cmspro/img/asanokikin_youkou2026.pdf unread",
+    "the crawl bound left https://kosuikyo.com/wp-content/themes/standard_black_cmspro/img/asanokikin_01_2026.docx unread",
+    "the crawl bound left https://kosuikyo.com/wp-content/themes/standard_black_cmspro/img/asanokikin_02_2026.docx unread",
+    "the crawl bound left https://kosuikyo.com/wp-content/themes/standard_black_cmspro/img/asanokikin_03_2026.docx unread",
+    "the crawl bound left https://kosuikyo.com/wp-content/themes/standard_black_cmspro/img/asanokikin_04_2026.docx unread",
+    "the crawl bound left https://kosuikyo.com/wp-content/themes/standard_black_cmspro/img/asanokikin_05_2026.docx unread",
+    "the crawl bound left https://kosuikyo.com/wp-content/themes/standard_black_cmspro/img/Fusan2026_youkou_2.pdf unread",
+    "the crawl bound left https://kosuikyo.com/wp-content/themes/standard_black_cmspro/img/Fusan2026_seiyakusyo.pdf unread",
+    "the crawl bound left https://kosuikyo.com/wp-content/themes/standard_black_cmspro/img/makkoto_youkou_2026.pdf unread",
+    "the crawl bound left https://kosuikyo.com/wp-content/themes/standard_black_cmspro/img/oda_youkou.pdf unread",
+    "the crawl bound left https://kosuikyo.com/wp-content/themes/standard_black_cmspro/img/youkou_lotus1.pdf unread",
+    "the crawl bound left https://kosuikyo.com/wp-content/themes/standard_black_cmspro/img/classic_youkou6.pdf unread",
+    "the crawl bound left https://kosuikyo.com/wp-content/themes/standard_black_cmspro/img/classic_oubo.docx unread",
+    "the crawl bound left https://kosuikyo.com/wp-content/themes/standard_black_cmspro/img/tabunnka_youkou.pdf unread",
+    "the crawl bound left https://kosuikyo.com/wp-content/themes/standard_black_cmspro/img/tabunnka_oubo.docx unread",
+    "the crawl bound left https://kosuikyo.com/wp-content/themes/standard_black_cmspro/img/youkou_kannwa2026.pdf unread",
+    "the crawl bound left https://kosuikyo.com/wp-content/themes/standard_black_cmspro/img/youkou_kennsyo2026.pdf unread",
+    "the crawl bound left https://kosuikyo.com/wp-content/themes/standard_black_cmspro/img/kessannsyo_kennsyo2026.pdf unread",
+    "the crawl bound left https://kosuikyo.com/wp-content/themes/standard_black_cmspro/img/jigyouhoukoku_kennsyo2026.pdf unread",
+    "the crawl bound left https://kosuikyo.com/wp-content/themes/standard_black_cmspro/img/jigyouhoukoku_kennsyo2026.docx unread",
+    "the crawl bound left https://kosuikyo.com/wp-content/themes/standard_black_cmspro/img/omi_youkou_2026.pdf unread",
+    "the crawl bound left https://kosuikyo.com/wp-content/themes/standard_black_cmspro/img/omi_oubo_2026.docx unread",
+    "the crawl bound left https://kosuikyo.com/wp-content/themes/standard_black_cmspro/img/asaisukusuku_youkou_2026.pdf unread",
+    "the crawl bound left https://kosuikyo.com/wp-content/themes/standard_black_cmspro/img/kodomoOC2026-summer_-youkou.pdf unread",
+    "the crawl bound left https://kosuikyo.com/wp-content/themes/standard_black_cmspro/img/kura_youkou2026.pdf unread",
+    "the crawl bound left https://kosuikyo.com/wp-content/themes/standard_black_cmspro/img/kura_sinnseisyo2026.docx unread",
+    "the crawl bound left https://kosuikyo.com/wp-content/themes/standard_black_cmspro/img/kura_suisennsyo2026.docx unread",
+    "the crawl bound left https://kosuikyo.com/wp-content/themes/standard_black_cmspro/img/HTM_youkou_2026.pdf unread",
+    "the crawl bound left https://kosuikyo.com/wp-content/themes/standard_black_cmspro/img/tae6_youkou.pdf unread",
+    "the crawl bound left https://kosuikyo.com/wp-content/themes/standard_black_cmspro/img/syakukaisin_youkou_2026re.pdf unread",
+    "the crawl bound left https://kosuikyo.com/wp-content/themes/standard_black_cmspro/img/youkou_-Heartful2026.pdf unread",
+    "the crawl bound left https://kosuikyo.com/wp-content/themes/standard_black_cmspro/img/kessannsyo_Heartful2026.pdf unread",
+    "the crawl bound left https://kosuikyo.com/wp-content/themes/standard_black_cmspro/img/jigyouhoukousyo_Heartful2026.docx unread",
+    "the crawl bound left https://kosuikyo.com/wp-content/themes/standard_black_cmspro/img/jigyouhoukousyo_Heartful2026.pdf unread",
+    "the crawl bound left https://kosuikyo.com/wp-content/themes/standard_black_cmspro/img/EHsupportnoukigu_youkou.pdf unread",
+    "the crawl bound left https://kosuikyo.com/wp-content/themes/standard_black_cmspro/img/EHsupportnoukigu_oubo.docx unread",
+    "the crawl bound left https://kosuikyo.com/wp-content/themes/standard_black_cmspro/img/kodomoOC2026_new_youkou.pdf unread",
+    "the crawl bound left https://kosuikyo.com/wp-content/themes/standard_black_cmspro/img/kodomoOC2026_new_kessannsyo.pdf unread",
+    "the crawl bound left https://kosuikyo.com/wp-content/themes/standard_black_cmspro/img/kodomoOC2026_new_jigyouhoukousyo.docx unread",
+    "the crawl bound left https://kosuikyo.com/wp-content/themes/standard_black_cmspro/img/kodomoOC2026_youkou.pdf unread",
+    "the crawl bound left https://kosuikyo.com/wp-content/themes/standard_black_cmspro/img/kodomoOC2026_kessannsyo.pdf unread",
+    "the crawl bound left https://kosuikyo.com/wp-content/themes/standard_black_cmspro/img/kodomoOC2026_jigyouhoukousyo.docx unread",
+    "the crawl bound left https://kosuikyo.com/wp-content/themes/standard_black_cmspro/img/kodomoOC2026_jigyouhoukousyo.pdf unread",
+    "the crawl bound left https://kosuikyo.com/wp-content/themes/standard_black_cmspro/img/shizenhogo_yoko_2026.pdf unread",
+    "the crawl bound left https://kosuikyo.com/wp-content/themes/standard_black_cmspro/img/isekannkyou_yoko_2026.pdf unread",
+    "the crawl bound left https://kosuikyo.com/wp-content/themes/standard_black_cmspro/img/misakiyuta_youkou.pdf unread",
+    "the crawl bound left https://kosuikyo.com/wp-content/themes/standard_black_cmspro/img/jyouhou_youkou_2026.pdf unread",
+    "the crawl bound left https://kosuikyo.com/wp-content/themes/standard_black_cmspro/img/rakugo_youkou_2025.pdf unread",
+    "the crawl bound left https://kosuikyo.com/wp-content/themes/standard_black_cmspro/img/rakugo_oubo_2025.docx unread",
+    "the crawl bound left https://kosuikyo.com/wp-content/themes/standard_black_cmspro/img/danielblake_youkou_04.pdf unread",
+    "the crawl bound left https://kosuikyo.com/wp-content/themes/standard_black_cmspro/img/youkou_syouwa.pdf unread",
+    "the crawl bound left https://kosuikyo.com/wp-content/themes/standard_black_cmspro/img/oubo_syouwa.docx unread",
+    "the crawl bound left https://kosuikyo.com/wp-content/themes/standard_black_cmspro/img/adire-yoko2025.pdf unread",
+    "the crawl bound left https://kosuikyo.com/wp-content/themes/standard_black_cmspro/img/adire-oubo2025.docx unread",
+    "the crawl bound left https://kosuikyo.com/wp-content/themes/standard_black_cmspro/img/hayashi_hakodai.pdf unread",
+    "the crawl bound left https://kosuikyo.com/wp-content/themes/standard_black_cmspro/img/chiikishoku2024-yoko.pdf unread",
+    "the crawl bound left https://kosuikyo.com/wp-content/themes/standard_black_cmspro/img/chiikishoku2024-oubo.docx unread",
+    "the crawl bound left https://kosuikyo.com/wp-content/themes/standard_black_cmspro/img/chiikishoku2024-oubo.pdf unread",
+    "the crawl bound left https://kosuikyo.com/wp-content/themes/standard_black_cmspro/img/jm_youkou_2024.pdf unread",
+    "the crawl bound left https://kosuikyo.com/wp-content/themes/standard_black_cmspro/img/jm_hojyosiryou_2024.pdf unread",
+    "the crawl bound left https://kosuikyo.com/wp-content/themes/standard_black_cmspro/img/jm_hojyosiryoukisairei_2024.pdf unread",
+    "the crawl bound left https://kosuikyo.com/wp-content/themes/standard_black_cmspro/img/wadakikinn2_youkou.pdf unread",
+    "the crawl bound left https://kosuikyo.com/wp-content/themes/standard_black_cmspro/img/wadakikinn2_hojyosiryou.pdf unread",
+    "the crawl bound left https://kosuikyo.com/wp-content/themes/standard_black_cmspro/img/wadakikinn2_hojyosiryou_kisairei.pdf unread",
+    "the crawl bound left https://kosuikyo.com/wp-content/themes/standard_black_cmspro/img/wa_c2024-1.pdf unread",
+    "the crawl bound left https://kosuikyo.com/wp-content/themes/standard_black_cmspro/img/wa_oubo2024.docx unread",
+    "the crawl bound left https://kosuikyo.com/wp-content/themes/standard_black_cmspro/img/wa_oubo2024.pdf unread",
+    "the crawl bound left https://kosuikyo.com/wp-content/themes/standard_black_cmspro/img/shibata_youkou_2023.pdf unread",
+    "the crawl bound left https://kosuikyo.com/wp-content/themes/standard_black_cmspro/img/shibata_hojyosiryou_2023.pdf unread",
+    "the crawl bound left https://kosuikyo.com/wp-content/themes/standard_black_cmspro/img/shibata_hojyosiryourei_2023.pdf unread",
+    "the crawl bound left https://kosuikyo.com/wp-content/themes/standard_black_cmspro/img/chiharu_youkou_2023.pdf unread",
+    "the crawl bound left https://kosuikyo.com/wp-content/themes/standard_black_cmspro/img/chiharu_hojyosiryou_2023.pdf unread",
+    "the crawl bound left https://kosuikyo.com/wp-content/themes/standard_black_cmspro/img/chiharu_hojyosiryourei_2023.pdf unread",
+    "the crawl bound left https://kosuikyo.com/wp-content/themes/standard_black_cmspro/img/Noto_youkou.pdf unread",
+    "the crawl bound left https://kosuikyo.com/wp-content/themes/standard_black_cmspro/img/Noto_hojyosiryou.pdf unread",
+    "the crawl bound left https://kosuikyo.com/wp-content/themes/standard_black_cmspro/img/Noto_hojyosiryourei.pdf unread",
+    "the crawl bound left https://kosuikyo.com/wp-content/themes/standard_black_cmspro/img/KHM_youkou2.pdf unread",
+    "the crawl bound left https://kosuikyo.com/wp-content/themes/standard_black_cmspro/img/KHM_oubo.pdf unread",
+    "the crawl bound left https://kosuikyo.com/wp-content/themes/standard_black_cmspro/img/KHM_oubo.docx unread",
+    "Jev did not check this reading, so an absent fact is not known to be absent"
+  ],
+  "requirements_checked": false,
+  "documents": [
+    {
+      "ref": "D1",
+      "url": "https://kosuikyo.com/%e5%8a%a9%e6%88%90%e9%87%91-2",
+      "final_url": "https://kosuikyo.com/%e5%8a%a9%e6%88%90%e9%87%91-2",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 10066,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:73448e9b349e3f8d751f6ba2a3efb9c9ba887342a860982b25a039d1cf32d02c"
+    },
+    {
+      "ref": "D2",
+      "url": "https://kosuikyo.com/wp-content/themes/standard_black_cmspro/img/mahoroba2026_youkou.pdf",
+      "final_url": "https://kosuikyo.com/wp-content/themes/standard_black_cmspro/img/mahoroba2026_youkou.pdf",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": true,
+      "chars": 2570,
+      "pages": 3,
+      "low_text": false,
+      "hash": "sha256:57554f45a1860cfd83910171f8b42bd202095b4401816c9fc4f43e95078a9d47"
+    },
+    {
+      "ref": "D3",
+      "url": "https://kosuikyo.com/%e5%8a%a9%e6%88%90%e5%85%88%e5%8b%9f%e9%9b%86%e4%b8%ad%e3%81%ae%e3%83%9e%e3%82%a4%e5%9f%ba%e9%87%91",
+      "final_url": "https://kosuikyo.com/%e5%8a%a9%e6%88%90%e5%85%88%e5%8b%9f%e9%9b%86%e4%b8%ad%e3%81%ae%e3%83%9e%e3%82%a4%e5%9f%ba%e9%87%91",
+      "from": "https://kosuikyo.com/%e5%8a%a9%e6%88%90%e9%87%91-2",
+      "anchor": "募集中のマイ基金",
+      "depth": 1,
+      "pdf": false,
+      "chars": 811,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:974b6737fc405ce1e40ecf742269ce7fb26bb4003b037ce0d17fd3e95e730d99"
+    },
+    {
+      "ref": "D4",
+      "url": "https://kosuikyo.com/wp-content/themes/standard_black_cmspro/img/hellolight.pdf",
+      "final_url": "https://kosuikyo.com/wp-content/themes/standard_black_cmspro/img/hellolight.pdf",
+      "from": "https://kosuikyo.com/%e5%8a%a9%e6%88%90%e9%87%91-2",
+      "anchor": "見まもりについて",
+      "depth": 1,
+      "pdf": true,
+      "chars": 1004,
+      "pages": 7,
+      "low_text": true,
+      "hash": "sha256:15545fa4f7697b25365a2296ea59bb9033b6494a4354ea9d88b4abfb8ae6c06b"
+    },
+    {
+      "ref": "D5",
+      "url": "https://kosuikyo.com/%e5%8a%a9%e6%88%90%e9%87%91%e3%83%bb%e3%81%8a%e5%95%8f%e5%90%88%e3%81%9b%e3%83%95%e3%82%a9%e3%83%bc%e3%83%a0",
+      "final_url": "https://kosuikyo.com/%e5%8a%a9%e6%88%90%e9%87%91%e3%83%bb%e3%81%8a%e5%95%8f%e5%90%88%e3%81%9b%e3%83%95%e3%82%a9%e3%83%bc%e3%83%a0",
+      "from": "https://kosuikyo.com/%e5%8a%a9%e6%88%90%e9%87%91-2",
+      "anchor": "助成金・お問合せフォーム",
+      "depth": 1,
+      "pdf": false,
+      "chars": 1081,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:76912d862d92eefd721081e26e2d5fb2476f3b7178cd72fa09a8b00c8d333dff"
+    },
+    {
+      "ref": "D6",
+      "url": "https://kosuikyo.com/wp-content/themes/standard_black_cmspro/img/arai_youkou_2027.pdf",
+      "final_url": "https://kosuikyo.com/wp-content/themes/standard_black_cmspro/img/arai_youkou_2027.pdf",
+      "from": "https://kosuikyo.com/%e5%8a%a9%e6%88%90%e9%87%91-2",
+      "anchor": "募集要項",
+      "depth": 1,
+      "pdf": true,
+      "chars": 9466,
+      "pages": 8,
+      "low_text": false,
+      "hash": "sha256:65dc5da3dc561b8e3e644daadada5f3830b045accc8ae9828be1cb579b833229"
+    },
+    {
+      "ref": "D7",
+      "url": "https://kosuikyo.com/wp-content/themes/standard_black_cmspro/img/ubi_youkou_2027.pdf",
+      "final_url": "https://kosuikyo.com/wp-content/themes/standard_black_cmspro/img/ubi_youkou_2027.pdf",
+      "from": "https://kosuikyo.com/%e5%8a%a9%e6%88%90%e9%87%91-2",
+      "anchor": "募集要項",
+      "depth": 1,
+      "pdf": true,
+      "chars": 2705,
+      "pages": 3,
+      "low_text": false,
+      "hash": "sha256:6c5577b1d8d948792494bedc55091c9cf7df918a6da9039f0b94ca40a3edab4b"
+    },
+    {
+      "ref": "D8",
+      "url": "https://kosuikyo.com/wp-content/themes/standard_black_cmspro/img/ubi_oubo_2026_hojyosiryou.pdf",
+      "final_url": "https://kosuikyo.com/wp-content/themes/standard_black_cmspro/img/ubi_oubo_2026_hojyosiryou.pdf",
+      "from": "https://kosuikyo.com/%e5%8a%a9%e6%88%90%e9%87%91-2",
+      "anchor": "PDF形式",
+      "depth": 1,
+      "pdf": true,
+      "chars": 441,
+      "pages": 1,
+      "low_text": false,
+      "hash": "sha256:0f9c19382abf9b6c674d690f37d023767c8339b776322fb60a4e52def1d398f2"
+    },
+    {
+      "ref": "D9",
+      "url": "https://kosuikyo.com/wp-content/themes/standard_black_cmspro/img/ubi_oubo_2027_hojosiryou_rei.pdf",
+      "final_url": "https://kosuikyo.com/wp-content/themes/standard_black_cmspro/img/ubi_oubo_2027_hojosiryou_rei.pdf",
+      "from": "https://kosuikyo.com/%e5%8a%a9%e6%88%90%e9%87%91-2",
+      "anchor": "申請補助資料記載例",
+      "depth": 1,
+      "pdf": true,
+      "chars": 1681,
+      "pages": 2,
+      "low_text": false,
+      "hash": "sha256:b3a859614664c8186f4055fbbc16eeccda80242f3b98f63772f0627757e864f7"
+    },
+    {
+      "ref": "D10",
+      "url": "https://kosuikyo.com/wp-content/themes/standard_black_cmspro/img/ubi_oubo_2027_kaikeihoukoku.pdf",
+      "final_url": "https://kosuikyo.com/wp-content/themes/standard_black_cmspro/img/ubi_oubo_2027_kaikeihoukoku.pdf",
+      "from": "https://kosuikyo.com/%e5%8a%a9%e6%88%90%e9%87%91-2",
+      "anchor": "PDF形式",
+      "depth": 1,
+      "pdf": true,
+      "chars": 193,
+      "pages": 1,
+      "low_text": true,
+      "hash": "sha256:a080ffc7e2ac76c5e3dfe50be42f8adf321c2bae212e215be11ede515cc047f8"
+    }
+  ],
+  "failures": [
+    {
+      "url": "https://kosuikyo.com/wp-content/themes/standard_black_cmspro/img/hellolight.pdf",
+      "from": "https://kosuikyo.com/%e5%8a%a9%e6%88%90%e9%87%91-2",
+      "kind": "low_text",
+      "message": "a scanned or image PDF: needs OCR"
+    },
+    {
+      "url": "https://kosuikyo.com/wp-content/themes/standard_black_cmspro/img/ubi_oubo_2027_kaikeihoukoku.pdf",
+      "from": "https://kosuikyo.com/%e5%8a%a9%e6%88%90%e9%87%91-2",
+      "kind": "low_text",
+      "message": "a scanned or image PDF: needs OCR"
+    },
+    {
+      "url": "https://kosuikyo.com/wp-content/themes/standard_black_cmspro/img/ubi_oubo_2027_jigyouhoukoku.docx",
+      "from": "https://kosuikyo.com/%e5%8a%a9%e6%88%90%e9%87%91-2",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://kosuikyo.com/wp-content/themes/standard_black_cmspro/img/ubi_oubo_2027_jigyouhoukoku.pdf",
+      "from": "https://kosuikyo.com/%e5%8a%a9%e6%88%90%e9%87%91-2",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://kosuikyo.com/wp-content/themes/standard_black_cmspro/img/ogawaYK_youkou_2027.pdf",
+      "from": "https://kosuikyo.com/%e5%8a%a9%e6%88%90%e9%87%91-2",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://kosuikyo.com/wp-content/themes/standard_black_cmspro/img/ogawaYK_shinseisyo_2027.docx",
+      "from": "https://kosuikyo.com/%e5%8a%a9%e6%88%90%e9%87%91-2",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://kosuikyo.com/wp-content/themes/standard_black_cmspro/img/ogawaYK_syoudakusyo_2027.docx",
+      "from": "https://kosuikyo.com/%e5%8a%a9%e6%88%90%e9%87%91-2",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://kosuikyo.com/wp-content/themes/standard_black_cmspro/img/taiyo_youkou2027.pdf",
+      "from": "https://kosuikyo.com/%e5%8a%a9%e6%88%90%e9%87%91-2",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://kosuikyo.com/wp-content/themes/standard_black_cmspro/img/taiyo_shinseisho2027.docx",
+      "from": "https://kosuikyo.com/%e5%8a%a9%e6%88%90%e9%87%91-2",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://kosuikyo.com/wp-content/themes/standard_black_cmspro/img/sugai_youkou_2027.pdf",
+      "from": "https://kosuikyo.com/%e5%8a%a9%e6%88%90%e9%87%91-2",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://kosuikyo.com/wp-content/themes/standard_black_cmspro/img/miyamotohiroko_youkou.pdf",
+      "from": "https://kosuikyo.com/%e5%8a%a9%e6%88%90%e9%87%91-2",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://kosuikyo.com/wp-content/themes/standard_black_cmspro/img/miyamotohiroko_keikakusyo.docx",
+      "from": "https://kosuikyo.com/%e5%8a%a9%e6%88%90%e9%87%91-2",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://kosuikyo.com/wp-content/themes/standard_black_cmspro/img/miyamotohiroko_suisennsyo.docx",
+      "from": "https://kosuikyo.com/%e5%8a%a9%e6%88%90%e9%87%91-2",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://kosuikyo.com/wp-content/themes/standard_black_cmspro/img/miyake2027_youkou.pdf",
+      "from": "https://kosuikyo.com/%e5%8a%a9%e6%88%90%e9%87%91-2",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://kosuikyo.com/wp-content/themes/standard_black_cmspro/img/syokunou_youkou2027.pdf",
+      "from": "https://kosuikyo.com/%e5%8a%a9%e6%88%90%e9%87%91-2",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://kosuikyo.com/wp-content/themes/standard_black_cmspro/img/kensetsujoshi2026_yokou.pdf",
+      "from": "https://kosuikyo.com/%e5%8a%a9%e6%88%90%e9%87%91-2",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://kosuikyo.com/wp-content/themes/standard_black_cmspro/img/kensetsujoshi2026_kisairei.pdf",
+      "from": "https://kosuikyo.com/%e5%8a%a9%e6%88%90%e9%87%91-2",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://kosuikyo.com/wp-content/themes/standard_black_cmspro/img/kensetsujoshi2026_jigyouhoukoku.docx",
+      "from": "https://kosuikyo.com/%e5%8a%a9%e6%88%90%e9%87%91-2",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://kosuikyo.com/wp-content/themes/standard_black_cmspro/img/EHsupport_youkoure2.pdf",
+      "from": "https://kosuikyo.com/%e5%8a%a9%e6%88%90%e9%87%91-2",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://kosuikyo.com/wp-content/themes/standard_black_cmspro/img/EHsupport_ryohi_oubo.docx",
+      "from": "https://kosuikyo.com/%e5%8a%a9%e6%88%90%e9%87%91-2",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://kosuikyo.com/wp-content/themes/standard_black_cmspro/img/EHsupport_kannkyou_oubo.docx",
+      "from": "https://kosuikyo.com/%e5%8a%a9%e6%88%90%e9%87%91-2",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://kosuikyo.com/wp-content/themes/standard_black_cmspro/img/kokyuki_youkou-_20260319.pdf",
+      "from": "https://kosuikyo.com/%e5%8a%a9%e6%88%90%e9%87%91-2",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://kosuikyo.com/wp-content/themes/standard_black_cmspro/img/kokyuki_ouboyoushi.doc",
+      "from": "https://kosuikyo.com/%e5%8a%a9%e6%88%90%e9%87%91-2",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://kosuikyo.com/wp-content/themes/standard_black_cmspro/img/ForChildren_youkou_2026.pdf",
+      "from": "https://kosuikyo.com/%e5%8a%a9%e6%88%90%e9%87%91-2",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://kosuikyo.com/wp-content/themes/standard_black_cmspro/img/yamamotoheiwa_youkou2026.pdf",
+      "from": "https://kosuikyo.com/%e5%8a%a9%e6%88%90%e9%87%91-2",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://kosuikyo.com/wp-content/themes/standard_black_cmspro/img/yamamotofukushi_youkou2027.pdf",
+      "from": "https://kosuikyo.com/%e5%8a%a9%e6%88%90%e9%87%91-2",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://kosuikyo.com/wp-content/themes/standard_black_cmspro/img/shinbori2_youkou.pdf",
+      "from": "https://kosuikyo.com/%e5%8a%a9%e6%88%90%e9%87%91-2",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://kosuikyo.com/wp-content/themes/standard_black_cmspro/img/shinbori1_hojyosiryourei.pdf",
+      "from": "https://kosuikyo.com/%e5%8a%a9%e6%88%90%e9%87%91-2",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://kosuikyo.com/wp-content/themes/standard_black_cmspro/img/touhoudenki2026_youkou.pdf",
+      "from": "https://kosuikyo.com/%e5%8a%a9%e6%88%90%e9%87%91-2",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://kosuikyo.com/wp-content/themes/standard_black_cmspro/img/touhoudenki2026_hojyosiryou.pdf",
+      "from": "https://kosuikyo.com/%e5%8a%a9%e6%88%90%e9%87%91-2",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://kosuikyo.com/wp-content/themes/standard_black_cmspro/img/touhoudenki2026_-hojyosiryou_rei1.pdf",
+      "from": "https://kosuikyo.com/%e5%8a%a9%e6%88%90%e9%87%91-2",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://kosuikyo.com/wp-content/themes/standard_black_cmspro/img/touhoudenki2026_-hojyosiryou_rei2.pdf",
+      "from": "https://kosuikyo.com/%e5%8a%a9%e6%88%90%e9%87%91-2",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://kosuikyo.com/wp-content/themes/standard_black_cmspro/img/seikatsutogakusyu_youkou2026.pdf",
+      "from": "https://kosuikyo.com/%e5%8a%a9%e6%88%90%e9%87%91-2",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://kosuikyo.com/wp-content/themes/standard_black_cmspro/img/seikatsutogakusyu_hozyo2026.pdf",
+      "from": "https://kosuikyo.com/%e5%8a%a9%e6%88%90%e9%87%91-2",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://kosuikyo.com/wp-content/themes/standard_black_cmspro/img/seikatsutogakusyu_hozyorei2026.pdf",
+      "from": "https://kosuikyo.com/%e5%8a%a9%e6%88%90%e9%87%91-2",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://kosuikyo.com/wp-content/themes/standard_black_cmspro/img/youkou_forkumamoto.pdf",
+      "from": "https://kosuikyo.com/%e5%8a%a9%e6%88%90%e9%87%91-2",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://kosuikyo.com/wp-content/themes/standard_black_cmspro/img/asanokikin_youkou2026.pdf",
+      "from": "https://kosuikyo.com/%e5%8a%a9%e6%88%90%e9%87%91-2",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://kosuikyo.com/wp-content/themes/standard_black_cmspro/img/asanokikin_01_2026.docx",
+      "from": "https://kosuikyo.com/%e5%8a%a9%e6%88%90%e9%87%91-2",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://kosuikyo.com/wp-content/themes/standard_black_cmspro/img/asanokikin_02_2026.docx",
+      "from": "https://kosuikyo.com/%e5%8a%a9%e6%88%90%e9%87%91-2",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://kosuikyo.com/wp-content/themes/standard_black_cmspro/img/asanokikin_03_2026.docx",
+      "from": "https://kosuikyo.com/%e5%8a%a9%e6%88%90%e9%87%91-2",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://kosuikyo.com/wp-content/themes/standard_black_cmspro/img/asanokikin_04_2026.docx",
+      "from": "https://kosuikyo.com/%e5%8a%a9%e6%88%90%e9%87%91-2",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://kosuikyo.com/wp-content/themes/standard_black_cmspro/img/asanokikin_05_2026.docx",
+      "from": "https://kosuikyo.com/%e5%8a%a9%e6%88%90%e9%87%91-2",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://kosuikyo.com/wp-content/themes/standard_black_cmspro/img/Fusan2026_youkou_2.pdf",
+      "from": "https://kosuikyo.com/%e5%8a%a9%e6%88%90%e9%87%91-2",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://kosuikyo.com/wp-content/themes/standard_black_cmspro/img/Fusan2026_seiyakusyo.pdf",
+      "from": "https://kosuikyo.com/%e5%8a%a9%e6%88%90%e9%87%91-2",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://kosuikyo.com/wp-content/themes/standard_black_cmspro/img/makkoto_youkou_2026.pdf",
+      "from": "https://kosuikyo.com/%e5%8a%a9%e6%88%90%e9%87%91-2",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://kosuikyo.com/wp-content/themes/standard_black_cmspro/img/oda_youkou.pdf",
+      "from": "https://kosuikyo.com/%e5%8a%a9%e6%88%90%e9%87%91-2",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://kosuikyo.com/wp-content/themes/standard_black_cmspro/img/youkou_lotus1.pdf",
+      "from": "https://kosuikyo.com/%e5%8a%a9%e6%88%90%e9%87%91-2",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://kosuikyo.com/wp-content/themes/standard_black_cmspro/img/classic_youkou6.pdf",
+      "from": "https://kosuikyo.com/%e5%8a%a9%e6%88%90%e9%87%91-2",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://kosuikyo.com/wp-content/themes/standard_black_cmspro/img/classic_oubo.docx",
+      "from": "https://kosuikyo.com/%e5%8a%a9%e6%88%90%e9%87%91-2",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://kosuikyo.com/wp-content/themes/standard_black_cmspro/img/tabunnka_youkou.pdf",
+      "from": "https://kosuikyo.com/%e5%8a%a9%e6%88%90%e9%87%91-2",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://kosuikyo.com/wp-content/themes/standard_black_cmspro/img/tabunnka_oubo.docx",
+      "from": "https://kosuikyo.com/%e5%8a%a9%e6%88%90%e9%87%91-2",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://kosuikyo.com/wp-content/themes/standard_black_cmspro/img/youkou_kannwa2026.pdf",
+      "from": "https://kosuikyo.com/%e5%8a%a9%e6%88%90%e9%87%91-2",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://kosuikyo.com/wp-content/themes/standard_black_cmspro/img/youkou_kennsyo2026.pdf",
+      "from": "https://kosuikyo.com/%e5%8a%a9%e6%88%90%e9%87%91-2",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://kosuikyo.com/wp-content/themes/standard_black_cmspro/img/kessannsyo_kennsyo2026.pdf",
+      "from": "https://kosuikyo.com/%e5%8a%a9%e6%88%90%e9%87%91-2",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://kosuikyo.com/wp-content/themes/standard_black_cmspro/img/jigyouhoukoku_kennsyo2026.pdf",
+      "from": "https://kosuikyo.com/%e5%8a%a9%e6%88%90%e9%87%91-2",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://kosuikyo.com/wp-content/themes/standard_black_cmspro/img/jigyouhoukoku_kennsyo2026.docx",
+      "from": "https://kosuikyo.com/%e5%8a%a9%e6%88%90%e9%87%91-2",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://kosuikyo.com/wp-content/themes/standard_black_cmspro/img/omi_youkou_2026.pdf",
+      "from": "https://kosuikyo.com/%e5%8a%a9%e6%88%90%e9%87%91-2",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://kosuikyo.com/wp-content/themes/standard_black_cmspro/img/omi_oubo_2026.docx",
+      "from": "https://kosuikyo.com/%e5%8a%a9%e6%88%90%e9%87%91-2",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://kosuikyo.com/wp-content/themes/standard_black_cmspro/img/asaisukusuku_youkou_2026.pdf",
+      "from": "https://kosuikyo.com/%e5%8a%a9%e6%88%90%e9%87%91-2",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://kosuikyo.com/wp-content/themes/standard_black_cmspro/img/kodomoOC2026-summer_-youkou.pdf",
+      "from": "https://kosuikyo.com/%e5%8a%a9%e6%88%90%e9%87%91-2",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://kosuikyo.com/wp-content/themes/standard_black_cmspro/img/kura_youkou2026.pdf",
+      "from": "https://kosuikyo.com/%e5%8a%a9%e6%88%90%e9%87%91-2",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://kosuikyo.com/wp-content/themes/standard_black_cmspro/img/kura_sinnseisyo2026.docx",
+      "from": "https://kosuikyo.com/%e5%8a%a9%e6%88%90%e9%87%91-2",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://kosuikyo.com/wp-content/themes/standard_black_cmspro/img/kura_suisennsyo2026.docx",
+      "from": "https://kosuikyo.com/%e5%8a%a9%e6%88%90%e9%87%91-2",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://kosuikyo.com/wp-content/themes/standard_black_cmspro/img/HTM_youkou_2026.pdf",
+      "from": "https://kosuikyo.com/%e5%8a%a9%e6%88%90%e9%87%91-2",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://kosuikyo.com/wp-content/themes/standard_black_cmspro/img/tae6_youkou.pdf",
+      "from": "https://kosuikyo.com/%e5%8a%a9%e6%88%90%e9%87%91-2",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://kosuikyo.com/wp-content/themes/standard_black_cmspro/img/syakukaisin_youkou_2026re.pdf",
+      "from": "https://kosuikyo.com/%e5%8a%a9%e6%88%90%e9%87%91-2",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://kosuikyo.com/wp-content/themes/standard_black_cmspro/img/youkou_-Heartful2026.pdf",
+      "from": "https://kosuikyo.com/%e5%8a%a9%e6%88%90%e9%87%91-2",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://kosuikyo.com/wp-content/themes/standard_black_cmspro/img/kessannsyo_Heartful2026.pdf",
+      "from": "https://kosuikyo.com/%e5%8a%a9%e6%88%90%e9%87%91-2",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://kosuikyo.com/wp-content/themes/standard_black_cmspro/img/jigyouhoukousyo_Heartful2026.docx",
+      "from": "https://kosuikyo.com/%e5%8a%a9%e6%88%90%e9%87%91-2",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://kosuikyo.com/wp-content/themes/standard_black_cmspro/img/jigyouhoukousyo_Heartful2026.pdf",
+      "from": "https://kosuikyo.com/%e5%8a%a9%e6%88%90%e9%87%91-2",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://kosuikyo.com/wp-content/themes/standard_black_cmspro/img/EHsupportnoukigu_youkou.pdf",
+      "from": "https://kosuikyo.com/%e5%8a%a9%e6%88%90%e9%87%91-2",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://kosuikyo.com/wp-content/themes/standard_black_cmspro/img/EHsupportnoukigu_oubo.docx",
+      "from": "https://kosuikyo.com/%e5%8a%a9%e6%88%90%e9%87%91-2",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://kosuikyo.com/wp-content/themes/standard_black_cmspro/img/kodomoOC2026_new_youkou.pdf",
+      "from": "https://kosuikyo.com/%e5%8a%a9%e6%88%90%e9%87%91-2",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://kosuikyo.com/wp-content/themes/standard_black_cmspro/img/kodomoOC2026_new_kessannsyo.pdf",
+      "from": "https://kosuikyo.com/%e5%8a%a9%e6%88%90%e9%87%91-2",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://kosuikyo.com/wp-content/themes/standard_black_cmspro/img/kodomoOC2026_new_jigyouhoukousyo.docx",
+      "from": "https://kosuikyo.com/%e5%8a%a9%e6%88%90%e9%87%91-2",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://kosuikyo.com/wp-content/themes/standard_black_cmspro/img/kodomoOC2026_youkou.pdf",
+      "from": "https://kosuikyo.com/%e5%8a%a9%e6%88%90%e9%87%91-2",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://kosuikyo.com/wp-content/themes/standard_black_cmspro/img/kodomoOC2026_kessannsyo.pdf",
+      "from": "https://kosuikyo.com/%e5%8a%a9%e6%88%90%e9%87%91-2",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://kosuikyo.com/wp-content/themes/standard_black_cmspro/img/kodomoOC2026_jigyouhoukousyo.docx",
+      "from": "https://kosuikyo.com/%e5%8a%a9%e6%88%90%e9%87%91-2",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://kosuikyo.com/wp-content/themes/standard_black_cmspro/img/kodomoOC2026_jigyouhoukousyo.pdf",
+      "from": "https://kosuikyo.com/%e5%8a%a9%e6%88%90%e9%87%91-2",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://kosuikyo.com/wp-content/themes/standard_black_cmspro/img/shizenhogo_yoko_2026.pdf",
+      "from": "https://kosuikyo.com/%e5%8a%a9%e6%88%90%e9%87%91-2",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://kosuikyo.com/wp-content/themes/standard_black_cmspro/img/isekannkyou_yoko_2026.pdf",
+      "from": "https://kosuikyo.com/%e5%8a%a9%e6%88%90%e9%87%91-2",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://kosuikyo.com/wp-content/themes/standard_black_cmspro/img/misakiyuta_youkou.pdf",
+      "from": "https://kosuikyo.com/%e5%8a%a9%e6%88%90%e9%87%91-2",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://kosuikyo.com/wp-content/themes/standard_black_cmspro/img/jyouhou_youkou_2026.pdf",
+      "from": "https://kosuikyo.com/%e5%8a%a9%e6%88%90%e9%87%91-2",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://kosuikyo.com/wp-content/themes/standard_black_cmspro/img/rakugo_youkou_2025.pdf",
+      "from": "https://kosuikyo.com/%e5%8a%a9%e6%88%90%e9%87%91-2",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://kosuikyo.com/wp-content/themes/standard_black_cmspro/img/rakugo_oubo_2025.docx",
+      "from": "https://kosuikyo.com/%e5%8a%a9%e6%88%90%e9%87%91-2",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://kosuikyo.com/wp-content/themes/standard_black_cmspro/img/danielblake_youkou_04.pdf",
+      "from": "https://kosuikyo.com/%e5%8a%a9%e6%88%90%e9%87%91-2",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://kosuikyo.com/wp-content/themes/standard_black_cmspro/img/youkou_syouwa.pdf",
+      "from": "https://kosuikyo.com/%e5%8a%a9%e6%88%90%e9%87%91-2",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://kosuikyo.com/wp-content/themes/standard_black_cmspro/img/oubo_syouwa.docx",
+      "from": "https://kosuikyo.com/%e5%8a%a9%e6%88%90%e9%87%91-2",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://kosuikyo.com/wp-content/themes/standard_black_cmspro/img/adire-yoko2025.pdf",
+      "from": "https://kosuikyo.com/%e5%8a%a9%e6%88%90%e9%87%91-2",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://kosuikyo.com/wp-content/themes/standard_black_cmspro/img/adire-oubo2025.docx",
+      "from": "https://kosuikyo.com/%e5%8a%a9%e6%88%90%e9%87%91-2",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://kosuikyo.com/wp-content/themes/standard_black_cmspro/img/hayashi_hakodai.pdf",
+      "from": "https://kosuikyo.com/%e5%8a%a9%e6%88%90%e9%87%91-2",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://kosuikyo.com/wp-content/themes/standard_black_cmspro/img/chiikishoku2024-yoko.pdf",
+      "from": "https://kosuikyo.com/%e5%8a%a9%e6%88%90%e9%87%91-2",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://kosuikyo.com/wp-content/themes/standard_black_cmspro/img/chiikishoku2024-oubo.docx",
+      "from": "https://kosuikyo.com/%e5%8a%a9%e6%88%90%e9%87%91-2",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://kosuikyo.com/wp-content/themes/standard_black_cmspro/img/chiikishoku2024-oubo.pdf",
+      "from": "https://kosuikyo.com/%e5%8a%a9%e6%88%90%e9%87%91-2",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://kosuikyo.com/wp-content/themes/standard_black_cmspro/img/jm_youkou_2024.pdf",
+      "from": "https://kosuikyo.com/%e5%8a%a9%e6%88%90%e9%87%91-2",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://kosuikyo.com/wp-content/themes/standard_black_cmspro/img/jm_hojyosiryou_2024.pdf",
+      "from": "https://kosuikyo.com/%e5%8a%a9%e6%88%90%e9%87%91-2",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://kosuikyo.com/wp-content/themes/standard_black_cmspro/img/jm_hojyosiryoukisairei_2024.pdf",
+      "from": "https://kosuikyo.com/%e5%8a%a9%e6%88%90%e9%87%91-2",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://kosuikyo.com/wp-content/themes/standard_black_cmspro/img/wadakikinn2_youkou.pdf",
+      "from": "https://kosuikyo.com/%e5%8a%a9%e6%88%90%e9%87%91-2",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://kosuikyo.com/wp-content/themes/standard_black_cmspro/img/wadakikinn2_hojyosiryou.pdf",
+      "from": "https://kosuikyo.com/%e5%8a%a9%e6%88%90%e9%87%91-2",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://kosuikyo.com/wp-content/themes/standard_black_cmspro/img/wadakikinn2_hojyosiryou_kisairei.pdf",
+      "from": "https://kosuikyo.com/%e5%8a%a9%e6%88%90%e9%87%91-2",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://kosuikyo.com/wp-content/themes/standard_black_cmspro/img/wa_c2024-1.pdf",
+      "from": "https://kosuikyo.com/%e5%8a%a9%e6%88%90%e9%87%91-2",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://kosuikyo.com/wp-content/themes/standard_black_cmspro/img/wa_oubo2024.docx",
+      "from": "https://kosuikyo.com/%e5%8a%a9%e6%88%90%e9%87%91-2",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://kosuikyo.com/wp-content/themes/standard_black_cmspro/img/wa_oubo2024.pdf",
+      "from": "https://kosuikyo.com/%e5%8a%a9%e6%88%90%e9%87%91-2",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://kosuikyo.com/wp-content/themes/standard_black_cmspro/img/shibata_youkou_2023.pdf",
+      "from": "https://kosuikyo.com/%e5%8a%a9%e6%88%90%e9%87%91-2",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://kosuikyo.com/wp-content/themes/standard_black_cmspro/img/shibata_hojyosiryou_2023.pdf",
+      "from": "https://kosuikyo.com/%e5%8a%a9%e6%88%90%e9%87%91-2",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://kosuikyo.com/wp-content/themes/standard_black_cmspro/img/shibata_hojyosiryourei_2023.pdf",
+      "from": "https://kosuikyo.com/%e5%8a%a9%e6%88%90%e9%87%91-2",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://kosuikyo.com/wp-content/themes/standard_black_cmspro/img/chiharu_youkou_2023.pdf",
+      "from": "https://kosuikyo.com/%e5%8a%a9%e6%88%90%e9%87%91-2",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://kosuikyo.com/wp-content/themes/standard_black_cmspro/img/chiharu_hojyosiryou_2023.pdf",
+      "from": "https://kosuikyo.com/%e5%8a%a9%e6%88%90%e9%87%91-2",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://kosuikyo.com/wp-content/themes/standard_black_cmspro/img/chiharu_hojyosiryourei_2023.pdf",
+      "from": "https://kosuikyo.com/%e5%8a%a9%e6%88%90%e9%87%91-2",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://kosuikyo.com/wp-content/themes/standard_black_cmspro/img/Noto_youkou.pdf",
+      "from": "https://kosuikyo.com/%e5%8a%a9%e6%88%90%e9%87%91-2",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://kosuikyo.com/wp-content/themes/standard_black_cmspro/img/Noto_hojyosiryou.pdf",
+      "from": "https://kosuikyo.com/%e5%8a%a9%e6%88%90%e9%87%91-2",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://kosuikyo.com/wp-content/themes/standard_black_cmspro/img/Noto_hojyosiryourei.pdf",
+      "from": "https://kosuikyo.com/%e5%8a%a9%e6%88%90%e9%87%91-2",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://kosuikyo.com/wp-content/themes/standard_black_cmspro/img/KHM_youkou2.pdf",
+      "from": "https://kosuikyo.com/%e5%8a%a9%e6%88%90%e9%87%91-2",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://kosuikyo.com/wp-content/themes/standard_black_cmspro/img/KHM_oubo.pdf",
+      "from": "https://kosuikyo.com/%e5%8a%a9%e6%88%90%e9%87%91-2",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://kosuikyo.com/wp-content/themes/standard_black_cmspro/img/KHM_oubo.docx",
+      "from": "https://kosuikyo.com/%e5%8a%a9%e6%88%90%e9%87%91-2",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    }
+  ],
+  "skipped_links": 147,
+  "chunks": [
+    {
+      "id": "all",
+      "docs": ["D1", "D2", "D3", "D4", "D5", "D6", "D7", "D8", "D9", "D10"],
+      "chars": 31635
+    }
+  ],
+  "outcomes": {
+    "eligibility": "stated",
+    "documents": "stated",
+    "effort": "unresolved",
+    "co_finance": "not_found",
+    "consortium": "not_found",
+    "after_award": "stated"
+  },
+  "written": ["eligibility", "documents", "after_award"],
+  "escalated": ["eligibility", "effort"],
+  "flags": [
+    {
+      "field": "effort",
+      "item": "Additional materials, site investigation or hearing, if requested",
+      "why": "the quote is not on any gathered document"
+    },
+    {
+      "field": "effort",
+      "item": "Additional materials, site visit or interview, if requested",
+      "why": "the quote is not on any gathered document"
+    }
+  ],
+  "notes": [
+    "eligibility \"Has operated for at least 1 year by application\": min_years dropped: the rule's quote does not state 1 years (or 12 months)",
+    "effort \"Web application\": the quote does not state 2026-06-05 whole; left undated",
+    "extractor: The 2026 round is closed; its deadline was 2026-06-05 at 17:00.",
+    "strong: eligibility \"Has operated for at least 1 year by application\": min_years dropped: the rule's quote does not state 1 years (or 12 months)",
+    "strong: effort \"Web application\": the quote does not state 2026-06-05 whole; left undated",
+    "eligibility: kept 1 first-reading item no check faulted that the strong reading left out",
+    "source mahoroba-fund-nara-1: selector main dropped, a new quote sits outside it"
+  ],
+  "usd": 0
+}

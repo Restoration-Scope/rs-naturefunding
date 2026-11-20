@@ -22,6 +22,28 @@
   },
   "co_finance_required": null,
   "reporting": null,
+  "effort": {
+    "steps": [
+      "Mandatory nonprofit virtual orientation",
+      "Proposal submission through the grant portal"
+    ]
+  },
+  "eligibility": [
+    {
+      "rule": "Be a 501(c)(3) nonprofit with at least 3 consecutive years of continuous operation",
+      "kind": "track_record",
+      "min_years": 3
+    },
+    {
+      "rule": "Have programs or projects in one of the listed geographic locations",
+      "kind": "project"
+    },
+    {
+      "rule": "Have a minimum operating budget of $75,000",
+      "kind": "finances",
+      "revenue": { "currency": "USD", "min": 75000, "basis": "budget" }
+    }
+  ],
   "calls": [
     {
       "id": "2026",
@@ -77,7 +99,41 @@
       "quote": "Organizations are required to submit a proposal through the Community Foundation's grant portal by the application deadline.",
       "checked_at": "2026-11-20",
       "method": "page"
-    }
+    },
+    "effort": [
+      {
+        "source_url": "https://northtexascf.org/wp-content/uploads/2026/08/Conservation-Environment_RFP_Updated_8-25-2026.pdf",
+        "quote": "An organization representative must attend one of the mandatory nonprofit virtual orientations on August 24th or 25th",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://northtexascf.org/wp-content/uploads/2026/08/Conservation-Environment_RFP_Updated_8-25-2026.pdf",
+        "quote": "Organizations are required to submit a proposal through the Community Foundation's grant portal by the application deadline.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "eligibility": [
+      {
+        "source_url": "https://northtexascf.org/wp-content/uploads/2026/08/Conservation-Environment_RFP_Updated_8-25-2026.pdf",
+        "quote": "501(c)(3) nonprofit organizations in continuous operation for a minimum of three consecutive calendar years at the time of application.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://northtexascf.org/wp-content/uploads/2026/08/Conservation-Environment_RFP_Updated_8-25-2026.pdf",
+        "quote": "Nonprofits with programs or projects in one of the above geographic locations.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://northtexascf.org/wp-content/uploads/2026/08/Conservation-Environment_RFP_Updated_8-25-2026.pdf",
+        "quote": "Nonprofits with a minimum operating budget of $75,000.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ]
   },
   "checked_at": "2026-11-20"
 }

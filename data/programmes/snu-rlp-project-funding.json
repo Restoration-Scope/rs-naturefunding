@@ -9,14 +9,54 @@
   "parent": null,
   "url": "https://snu.rlp.de/foerderungen/stiftungsfoerderung",
   "summary": "Rhineland-Palatinate foundation funding nature and species conservation projects, including site management and protection of threatened species, by non-profit associations and municipalities. Applicants contribute own funds.",
-  "approaches": ["species_conservation", "community_conservation", "protected_areas"],
-  "applicant_types": ["ngo", "government"],
-  "geography": { "scope": "countries", "countries": ["DE"], "label": "Rhineland-Palatinate" },
+  "approaches": [
+    "species_conservation",
+    "community_conservation",
+    "protected_areas"
+  ],
+  "applicant_types": [
+    "ngo",
+    "government"
+  ],
+  "geography": {
+    "scope": "countries",
+    "countries": [
+      "DE"
+    ],
+    "label": "Rhineland-Palatinate"
+  },
   "access": "direct",
   "window": "unspecified",
   "amount": null,
   "co_finance_required": true,
   "reporting": null,
+  "effort": {
+    "steps": [
+      "Project application",
+      "Application assessment"
+    ]
+  },
+  "eligibility": [
+    {
+      "rule": "Municipal projects go clearly beyond their special legal conservation obligation",
+      "kind": "project"
+    },
+    {
+      "rule": "Project does not start before the grant decision or an approved early start",
+      "kind": "project"
+    }
+  ],
+  "co_finance": {
+    "min_share": 10,
+    "applies_to": "Associations (10%); municipalities (25%)"
+  },
+  "after_award": {
+    "reports": "other"
+  },
+  "documents": [
+    "Cost and financing plan",
+    "Cost breakdown"
+  ],
   "calls": [],
   "evidence": {
     "applicant_types": {
@@ -39,10 +79,66 @@
     },
     "co_finance_required": {
       "source_url": "https://snu.rlp.de/foerderungen/stiftungsfoerderung",
+      "quote": "Antragsteller:innen eines Förderprojektes tragen einen finanziellen Eigenanteil.",
+      "checked_at": "2026-11-20",
+      "method": "page"
+    },
+    "effort": [
+      {
+        "source_url": "https://snu.rlp.de/foerderungen/stiftungsfoerderung",
+        "quote": "Antrag auf Projektförderung",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://snu.rlp.de/foerderungen/stiftungsfoerderung",
+        "quote": "Die Bewertung Ihres Antrags erfolgt nach Maßgabe unserer Förderrichtlinien.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "eligibility": [
+      {
+        "source_url": "https://snu.rlp.de/fileadmin/snu/2_Foerderungen/Allgemeine_Stiftungsfoerderung/Allg._Informationen/SNU_RLP_Foerderrichtlinien_Maerz2012.pdf",
+        "quote": "Verpflichtung der Gebietskörperschaften zum Naturschutz nach den Vorgaben des LNatschG eindeutig hinausgehen.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://snu.rlp.de/fileadmin/snu/2_Foerderungen/Allgemeine_Stiftungsfoerderung/Allg._Informationen/SNU_RLP_Foerderrichtlinien_Maerz2012.pdf",
+        "quote": "Der Zuwendungsempfänger darf mit der Durchführung der zur Förderung beantragten Maßnahme erst beginnen, wenn er den Bewilligungsbescheid der Stiftung erhalten hat oder wenn dem vorzeitigen Beginn zugestimmt wurde.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "co_finance": {
+      "source_url": "https://snu.rlp.de/foerderungen/stiftungsfoerderung",
       "quote": "Wir erwarten von Vereinen mindestens zehn Prozent, von kommunalen Antragsstellenden mindestens 25 Prozent.",
       "checked_at": "2026-11-20",
       "method": "page"
-    }
+    },
+    "after_award": [
+      {
+        "source_url": "https://snu.rlp.de/fileadmin/snu/2_Foerderungen/Allgemeine_Stiftungsfoerderung/Allg._Informationen/SNU_RLP_Foerderrichtlinien_Maerz2012.pdf",
+        "quote": "Bei Zuwendungen in der Regel ab 5.000 € wird ein zusätzlicher Entwicklungsbericht nach 5 Jahren verlangt.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "documents": [
+      {
+        "source_url": "https://snu.rlp.de/foerderungen/stiftungsfoerderung/antragsunterlagen",
+        "quote": "A1 Kosten Finanzierungsplan SNU",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://snu.rlp.de/foerderungen/stiftungsfoerderung/antragsunterlagen",
+        "quote": "A2 Kostengliederung SNU",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ]
   },
   "checked_at": "2026-11-20"
 }
