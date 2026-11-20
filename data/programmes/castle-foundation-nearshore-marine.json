@@ -19,6 +19,21 @@
   },
   "co_finance_required": null,
   "reporting": null,
+  "effort": {
+    "steps": [
+      "Phone staff to discuss the application",
+      "Online inquiry form",
+      "Full proposal, if invited"
+    ]
+  },
+  "eligibility": [
+    { "rule": "A 501(c)(3) and 509(a) public charity, or a public school", "kind": "legal" },
+    { "rule": "Not a business", "kind": "legal" },
+    { "rule": "Serve the people of Hawaii", "kind": "project" },
+    { "rule": "Has no active grant from the Foundation", "kind": "other" }
+  ],
+  "after_award": { "reports": "final" },
+  "documents": ["501(c)(3) Tax ID number"],
   "calls": [
     {
       "id": "rolling-inquiry",
@@ -67,7 +82,69 @@
       "quote": "Our average grant size is approximately $110,000, but grants range from $100 to $4 million.",
       "checked_at": "2026-11-20",
       "method": "page"
-    }
+    },
+    "effort": [
+      {
+        "source_url": "https://castlefoundation.org/grantseekers/faqs/",
+        "quote": "We do require interested grantees to phone staff to discuss your application before beginning an online inquiry.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://castlefoundation.org/grantseekers/inquiry/",
+        "quote": "This is the first step in the online grant request process.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://castlefoundation.org/grantseekers/faqs/",
+        "quote": "If you are invited to submit a full proposal, the 2026 deadlines are:",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "eligibility": [
+      {
+        "source_url": "https://castlefoundation.org/grantseekers/faqs/",
+        "quote": "Nonprofit organizations (recognized by the IRS as a 501(c)(3) and 509(a) public charity) or public schools working to advance one of the four strategic priority areas listed above.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://castlefoundation.org/grantseekers/faqs/",
+        "quote": "the Harold K.L. Castle Foundation does not make grants to individuals or businesses",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://castlefoundation.org/grantseekers/faqs/",
+        "quote": "The Harold K.L. Castle Foundation only funds organizations that serve the people of Hawaii.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://castlefoundation.org/grantseekers/faqs/",
+        "quote": "My organization already has an active grant. Can we apply for a new grant before the previous grant is complete? No, each organization is limited to one active grant at a time.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "after_award": [
+      {
+        "source_url": "https://castlefoundation.org/grantseekers/faqs/",
+        "quote": "The final expenditure report for all grants - especially those made to government agencies - needs to reflect actual expenditures rather than encumbered expenses.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "documents": [
+      {
+        "source_url": "https://castlefoundation.org/grantseekers/inquiry/",
+        "quote": "All new prospective grant applicants will need your organization's 501(c)(3) Tax ID number to get started",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ]
   },
   "checked_at": "2026-11-20"
 }

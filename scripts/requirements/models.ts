@@ -42,6 +42,7 @@ const LONG: Record<string, { over: number; input: number; output: number; cached
 }
 
 export const costOf = (model: string, u: Usage) => {
+  if (model.startsWith('cursor:')) return 0 // billed to the Cursor plan
   const long = LONG[model]
   const p = (long && u.input_tokens > long.over ? long : undefined) ?? PRICES[model] ?? { input: 10, output: 50 }
   const cached = Math.min(u.cached_input_tokens ?? 0, u.input_tokens)
@@ -194,6 +195,53 @@ export function openaiModel(model: string, opts: { effort?: 'none' | 'low' | 'me
       } catch (e) {
         throw new SpentError(`${model} answered outside the schema: ${(e as Error).message.slice(0, 200)}`, usage)
       }
+    },
+  }
+}
+
+/**
+ * A model through the signed-in Cursor CLI (`cursor-agent`), billed to the Cursor plan, not an API key:
+ * `cursor:gpt-5.6-luna-high`. Read-only ask mode in an empty folder, so the agent has nothing to touch.
+ * No structured outputs, so the JSON schema goes in the prompt and the answer is checked in code; up to
+ * two retries on a malformed answer or a failed call.
+ */
+export function cursorModel(model: string, cwd = join(process.cwd(), '.cache', 'requirements', 'cursor-ws')): JsonModel {
+  const name = `cursor:${model}`
+  mkdirSync(cwd, { recursive: true })
+  return {
+    name,
+    async json(system, user, schema) {
+      const prompt = `${system}\n\n${user}\n\nAnswer with one JSON object only, no prose and no code fences, matching this JSON schema (null where the text doesn't say):\n${JSON.stringify(strictSchema(schema as z.ZodType<unknown>))}`
+      const usage: Usage = { input_tokens: 0, output_tokens: 0 }
+      let last = ''
+      for (let attempt = 0; attempt < 3; attempt++) {
+        const proc = Bun.spawn(['cursor-agent', '-p', '--model', model, '--output-format', 'json', '--mode', 'ask', '--trust'], { cwd, stdin: new Blob([prompt]), stdout: 'pipe', stderr: 'pipe' })
+        const timer = setTimeout(() => proc.kill(), 900_000)
+        const [out, err] = await Promise.all([new Response(proc.stdout).text(), new Response(proc.stderr).text()])
+        clearTimeout(timer)
+        await proc.exited
+        let r: { is_error?: boolean; result?: string; usage?: { inputTokens?: number; outputTokens?: number; cacheReadTokens?: number; cacheWriteTokens?: number } }
+        try {
+          r = JSON.parse(out)
+        } catch {
+          last = `cursor-agent exited ${proc.exitCode}: ${(err || out).slice(0, 300)}`
+          await Bun.sleep(5000 * (attempt + 1))
+          continue
+        }
+        usage.input_tokens += (r.usage?.inputTokens ?? 0) + (r.usage?.cacheReadTokens ?? 0) + (r.usage?.cacheWriteTokens ?? 0)
+        usage.output_tokens += r.usage?.outputTokens ?? 0
+        if (r.is_error) {
+          last = `${name} error: ${String(r.result).slice(0, 300)}`
+          continue
+        }
+        const text = String(r.result ?? '').trim()
+        try {
+          return { value: schema.parse(JSON.parse(text.slice(text.indexOf('{'), text.lastIndexOf('}') + 1))), usage }
+        } catch (e) {
+          last = `${name} answered outside the schema: ${(e as Error).message.slice(0, 200)}`
+        }
+      }
+      throw new SpentError(last, usage)
     },
   }
 }

@@ -1,0 +1,72 @@
+{
+  "id": "castle-foundation-nearshore-marine",
+  "read_on": "2026-11-20",
+  "prompt_version": "req-2026-11-19.2",
+  "models": ["cursor:gpt-5.6-luna-high"],
+  "complete": false,
+  "reasons": [
+    "19 links could not be ranked without Jev",
+    "the text names a document with rules that was not read: Harold K.L. Castle Foundation's strategic priorities",
+    "Jev did not check this reading, so an absent fact is not known to be absent"
+  ],
+  "requirements_checked": false,
+  "documents": [
+    {
+      "ref": "D1",
+      "url": "https://castlefoundation.org/grantseekers/faqs/",
+      "final_url": "https://castlefoundation.org/grantseekers/faqs/",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 8736,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:778fffbf606b0a9bfd9cc10345f27a807313a6e8c5e4d83f31b17aced5a9a109"
+    },
+    {
+      "ref": "D2",
+      "url": "https://castlefoundation.org/grantseekers/inquiry/",
+      "final_url": "https://castlefoundation.org/grantseekers/inquiry/",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 2690,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:3a9df9f13bb842feecdf0a249b03981ea3220c4bd5ab88dcc2ce9c385ef58a71"
+    },
+    {
+      "ref": "D3",
+      "url": "https://castlefoundation.org/about/coi-policy/",
+      "final_url": "https://castlefoundation.org/about/coi-policy/",
+      "from": "https://castlefoundation.org/grantseekers/faqs/",
+      "anchor": "Conflict of Interest Policy",
+      "depth": 1,
+      "pdf": false,
+      "chars": 3776,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:78a0f77780988a68fc11c0f3379d395cc00f5a64085f3552462b7c68a37845b4"
+    }
+  ],
+  "failures": [],
+  "skipped_links": 83,
+  "chunks": [{ "id": "all", "docs": ["D1", "D2", "D3"], "chars": 15448 }],
+  "outcomes": {
+    "eligibility": "stated",
+    "documents": "stated",
+    "effort": "stated",
+    "co_finance": "not_found",
+    "consortium": "not_found",
+    "after_award": "stated"
+  },
+  "written": ["eligibility", "documents", "effort", "after_award"],
+  "escalated": [],
+  "flags": [],
+  "notes": [
+    "source castle-foundation-nearshore-marine-2: added for https://castlefoundation.org/grantseekers/inquiry/"
+  ],
+  "usd": 0
+}

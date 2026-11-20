@@ -16,9 +16,31 @@
   "access": "direct",
   "window": "rolling",
   "amount": { "currency": "USD", "min": 50000, "max": 5000000, "typical": true },
-  "co_finance_required": null,
+  "co_finance_required": false,
   "reporting": null,
   "effort": { "steps": ["Short pre-application", "Full application by invitation"] },
+  "eligibility": [
+    {
+      "rule": "Nonprofits must be California-registered, qualify under Section 501(c)(3), and have qualifying charitable purposes",
+      "kind": "legal"
+    },
+    { "rule": "Project is implemented within the California side of the Basin", "kind": "project" },
+    {
+      "rule": "Project is not dictated by a legal settlement or violation order",
+      "kind": "project"
+    },
+    { "rule": "Project does not acquire land through eminent domain", "kind": "project" },
+    { "rule": "Acquired property can be purchased at fair market value", "kind": "project" },
+    { "rule": "Project is completed within the allotted timelines", "kind": "project" },
+    {
+      "rule": "Project is not operations or maintenance of existing structures",
+      "kind": "project"
+    },
+    {
+      "rule": "Project is not solely compensatory mitigation or regulatory compliance",
+      "kind": "project"
+    }
+  ],
   "calls": [
     {
       "id": "rolling",
@@ -68,6 +90,12 @@
       "checked_at": "2026-11-20",
       "method": "page"
     },
+    "co_finance_required": {
+      "source_url": "https://tahoe.ca.gov/grant-guidelines/",
+      "quote": "The Conservancy encourages applicants to provide match but does not require it on a project basis.",
+      "checked_at": "2026-11-20",
+      "method": "page"
+    },
     "effort": [
       {
         "source_url": "https://tahoe.ca.gov/grants/",
@@ -81,7 +109,66 @@
         "checked_at": "2026-11-20",
         "method": "page"
       }
+    ],
+    "eligibility": [
+      {
+        "source_url": "https://tahoe.ca.gov/grants/",
+        "quote": "Nonprofit organizations registered to do business in California and identified in section 66905.9 of the Government Code as \"any private, nonprofit organization which qualifies for exempt status under Section 501(c)(3) of the United States Internal Revenue Code of 1986, and has among its principal charitable purposes the preservation of land",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://tahoe.ca.gov/grant-guidelines/",
+        "quote": "To be eligible, applicants must show that they will implement the program or project within the California side of the Basin.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://tahoe.ca.gov/grant-guidelines/",
+        "quote": "Projects dictated by a legal settlement or mandated to address a violation of, or an order to comply with, a law or regulation.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://tahoe.ca.gov/grant-guidelines/",
+        "quote": "Projects that fund acquisitions of land by eminent domain.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://tahoe.ca.gov/grant-guidelines/",
+        "quote": "Projects that include acquisition of property that cannot be purchased at fair market value.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://tahoe.ca.gov/grant-guidelines/",
+        "quote": "Projects that will not be completed in the allotted timelines.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://tahoe.ca.gov/grant-guidelines/",
+        "quote": "Operations and maintenance of existing structures, including roads.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://tahoe.ca.gov/grant-guidelines/",
+        "quote": "Projects that are solely for the purpose of compensatory mitigation or regulatory compliance.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "after_award": [
+      {
+        "source_url": "https://tahoe.ca.gov/grant-guidelines/",
+        "quote": "Generally, grantees are required to submit regular progress reports and invoices on an active grant per the schedule specified in the grant agreement. The Conservancy typically requires these submittals on a quarterly basis, although other cadences may be acceptable for certain grants.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
     ]
   },
-  "checked_at": "2026-11-20"
+  "checked_at": "2026-11-15",
+  "after_award": { "reports": "quarterly" }
 }

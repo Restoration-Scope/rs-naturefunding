@@ -18,6 +18,13 @@
   "amount": { "currency": "USD", "max": 5000 },
   "co_finance_required": false,
   "reporting": null,
+  "effort": { "steps": ["Online application"] },
+  "eligibility": [
+    {
+      "rule": "Has received three or fewer Trust awards, or is reapplying for the first time in eight or more years",
+      "kind": "track_record"
+    }
+  ],
   "calls": [
     {
       "id": "rolling",
@@ -69,10 +76,35 @@
     },
     "co_finance_required": {
       "source_url": "https://cbtrust.org/community-engagement/",
-      "quote": "Is match required? Match is encouraged, but not required.",
+      "quote": "Match is encouraged, but not required.",
       "checked_at": "2026-11-20",
       "method": "page"
-    }
+    },
+    "effort": [
+      {
+        "source_url": "https://cbtrust.org/community-engagement/",
+        "quote": "The Chesapeake Bay Trust's grant applications are all submitted through an online system, using the \"Start a New Application\" button below.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "eligibility": [
+      {
+        "source_url": "https://cbtrust.org/wp-content/uploads/FY27-Mini-CER-RFP.pdf",
+        "quote": "This program is open to applicants that have received less than four awards (i.e., received three or fewer awards) from the Trust. Applicants who have received four or more awards from the Trust but are re-applying to the Trust for the first time in eight or more years are eligible to apply.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "after_award": [
+      {
+        "source_url": "https://cbtrust.org/wp-content/uploads/FY27-Mini-CER-RFP.pdf",
+        "quote": "If approved, the Trust will send an award agreement with award conditions and due dates of status, progress, and final reports.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ]
   },
-  "checked_at": "2026-11-20"
+  "checked_at": "2026-11-15",
+  "after_award": { "reports": "unspecified" }
 }

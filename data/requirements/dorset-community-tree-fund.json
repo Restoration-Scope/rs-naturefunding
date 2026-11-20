@@ -1,0 +1,137 @@
+{
+  "id": "dorset-community-tree-fund",
+  "read_on": "2026-11-20",
+  "prompt_version": "req-2026-11-19.2",
+  "models": ["cursor:gpt-5.6-luna-high"],
+  "complete": false,
+  "reasons": [
+    "11 links could not be ranked without Jev",
+    "15 links could not be ranked without Jev",
+    "https://dorset-nl.org.uk/wp-content/uploads/2023/12/3.-DCTF-Finance-Application-Dec23.xlsx would not open (unreadable: an old Word (.doc), OpenDocument or RTF file: needs conversion)",
+    "the text names a document with rules that was not read: 3-DCTF-Finance-Application (Project Budget spreadsheet)",
+    "the text names a document with rules that was not read: UK Gov - Subsidy control compliance",
+    "Jev did not check this reading, so an absent fact is not known to be absent"
+  ],
+  "requirements_checked": false,
+  "documents": [
+    {
+      "ref": "D1",
+      "url": "https://dorset-nl.org.uk/resource/dorset-community-tree-fund/",
+      "final_url": "https://dorset-nl.org.uk/resource/dorset-community-tree-fund/",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 4500,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:b916c609a7fe12f90b2a7d7f95373177fdfe33b036671fa488c5ddc586ed823a"
+    },
+    {
+      "ref": "D2",
+      "url": "https://dorset-nl.org.uk/wp-content/uploads/2023/12/1.-DCTF-Guidance-notes-May24.pdf",
+      "final_url": "https://dorset-nl.org.uk/wp-content/uploads/2023/12/1.-DCTF-Guidance-notes-May24.pdf",
+      "from": "https://dorset-nl.org.uk/resource/dorset-community-tree-fund/",
+      "anchor": "1-DCTF-Guidance-Notes",
+      "depth": 1,
+      "pdf": true,
+      "chars": 13139,
+      "pages": 6,
+      "low_text": false,
+      "hash": "sha256:7089bbd4ba2b7798e51c1ab3a53e27ad6b239769bf9e80e71c834c1dc933a30e"
+    },
+    {
+      "ref": "D3",
+      "url": "https://dorset-nl.org.uk/wp-content/uploads/2023/12/2.-DCTF-Application-Form-Aug24.docx",
+      "final_url": "https://dorset-nl.org.uk/wp-content/uploads/2023/12/2.-DCTF-Application-Form-Aug24.docx",
+      "from": "https://dorset-nl.org.uk/resource/dorset-community-tree-fund/",
+      "anchor": "2-DCTF-Application-Form",
+      "depth": 1,
+      "pdf": false,
+      "chars": 5886,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:ebdf64e0a2aac3ed40bee19302dafb646e6909c0f5da2e59703ee05bcd964dce"
+    },
+    {
+      "ref": "D4",
+      "url": "https://dorset-nl.org.uk/wp-content/uploads/2023/12/4.-DCTF-Terms-and-Conditions-Dec23.pdf",
+      "final_url": "https://dorset-nl.org.uk/wp-content/uploads/2023/12/4.-DCTF-Terms-and-Conditions-Dec23.pdf",
+      "from": "https://dorset-nl.org.uk/resource/dorset-community-tree-fund/",
+      "anchor": "4-DCTF-Terms&Conditions",
+      "depth": 1,
+      "pdf": true,
+      "chars": 6034,
+      "pages": 2,
+      "low_text": false,
+      "hash": "sha256:1e3e671cb2972d02d21afa056de7f928037a3102f9b79e5cc1dac2b6f218db92"
+    },
+    {
+      "ref": "D5",
+      "url": "https://dorset-nl.org.uk/faqs/",
+      "final_url": "https://dorset-nl.org.uk/faqs/",
+      "from": "https://dorset-nl.org.uk/resource/dorset-community-tree-fund/",
+      "anchor": "FAQs",
+      "depth": 1,
+      "pdf": false,
+      "chars": 3895,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:1035b4ba5ce8c38567cb08a5c66bbf00a4d14f5ec0a75ee94636cf8549b04333"
+    },
+    {
+      "ref": "D6",
+      "url": "https://dorset-nl.org.uk/terms-conditions/",
+      "final_url": "https://dorset-nl.org.uk/terms-conditions/",
+      "from": "https://dorset-nl.org.uk/resource/dorset-community-tree-fund/",
+      "anchor": "Terms & Conditions",
+      "depth": 1,
+      "pdf": false,
+      "chars": 5423,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:b348d72cf05650225b5ec83bf6c713f2a4adde04d5c6e1914a8a319c266bb7e3"
+    },
+    {
+      "ref": "D7",
+      "url": "https://dorset-nl.org.uk/privacy-policy-2/",
+      "final_url": "https://dorset-nl.org.uk/privacy-policy-2/",
+      "from": "https://dorset-nl.org.uk/resource/dorset-community-tree-fund/",
+      "anchor": "Privacy Policy",
+      "depth": 1,
+      "pdf": false,
+      "chars": 8585,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:bbe19adf68820c4bb29c2592030235bc3c3809513aa3dc2a7c54441f353584ec"
+    }
+  ],
+  "failures": [
+    {
+      "url": "https://dorset-nl.org.uk/wp-content/uploads/2023/12/3.-DCTF-Finance-Application-Dec23.xlsx",
+      "from": "https://dorset-nl.org.uk/resource/dorset-community-tree-fund/",
+      "kind": "unreadable",
+      "message": "an old Word (.doc), OpenDocument or RTF file: needs conversion"
+    }
+  ],
+  "skipped_links": 253,
+  "chunks": [{ "id": "all", "docs": ["D1", "D2", "D3", "D4", "D5", "D6", "D7"], "chars": 48457 }],
+  "outcomes": {
+    "eligibility": "stated",
+    "documents": "stated",
+    "effort": "stated",
+    "co_finance": "stated",
+    "consortium": "not_found",
+    "after_award": "stated"
+  },
+  "written": ["eligibility", "documents", "effort", "co_finance", "after_award"],
+  "escalated": [],
+  "flags": [],
+  "notes": [
+    "extractor: The application window is rolling and remains open until all funds are allocated. Match funding varies by organisation type: up to 75% of project costs for charities and voluntary groups, and up to 50% for other organisations. Planting projects may be submitted without a prior Stage 1 application but then require additional site, permission, supplier, planting and management information.",
+    "source dorset-community-tree-fund-2: added for https://dorset-nl.org.uk/wp-content/uploads/2023/12/1.-DCTF-Guidance-notes-May24.pdf",
+    "source dorset-community-tree-fund-3: added for https://dorset-nl.org.uk/wp-content/uploads/2023/12/2.-DCTF-Application-Form-Aug24.docx",
+    "source dorset-community-tree-fund-4: added for https://dorset-nl.org.uk/wp-content/uploads/2023/12/4.-DCTF-Terms-and-Conditions-Dec23.pdf"
+  ],
+  "usd": 0
+}
