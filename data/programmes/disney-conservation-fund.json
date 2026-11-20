@@ -15,13 +15,61 @@
     "community_conservation",
     "coastal_marine"
   ],
-  "applicant_types": ["ngo"],
-  "geography": { "scope": "global" },
+  "applicant_types": [
+    "ngo"
+  ],
+  "geography": {
+    "scope": "global"
+  },
   "access": "direct",
   "window": "fixed",
-  "amount": { "currency": "USD", "max": 150000, "note": "Innovation grants up to $50,000" },
+  "amount": {
+    "currency": "USD",
+    "max": 150000,
+    "note": "Innovation grants up to $50,000"
+  },
   "co_finance_required": null,
   "reporting": "A final report due two years after the award (December 2028 for the 2026 round).",
+  "effort": {
+    "steps": [
+      "Inquiry",
+      "Full application, if invited"
+    ],
+    "due": [
+      "2026-05-23",
+      "2026-08-01"
+    ]
+  },
+  "eligibility": [
+    {
+      "rule": "Has US 501(c)(3) status or applies through a valid US 501(c)(3) intermediary",
+      "kind": "legal"
+    },
+    {
+      "rule": "Meets The Walt Disney Company Global Charitable Giving Guidelines",
+      "kind": "legal"
+    },
+    {
+      "rule": "Has operated for at least one year",
+      "kind": "track_record",
+      "min_years": 1
+    },
+    {
+      "rule": "Has annual income at least equal to the requested grant amount",
+      "kind": "finances",
+      "request_cap": {
+        "share": 100,
+        "of": "revenue"
+      }
+    },
+    {
+      "rule": "Leads a project protecting, connecting or restoring wildlife corridors or migratory pathways",
+      "kind": "project"
+    }
+  ],
+  "after_award": {
+    "reports": "final"
+  },
   "calls": [
     {
       "id": "2026",
@@ -87,7 +135,61 @@
       "quote": "The grant term will be two years with a final report due two years after funding is awarded (December 2028).",
       "checked_at": "2026-11-15",
       "method": "page"
-    }
+    },
+    "effort": [
+      {
+        "source_url": "https://impact.disney.com/resources/2026-disney-conservation-fund-grant-opportunity-and-faq",
+        "quote": "Completed inquiries must be received by 11:59pm ET (UTC -4:00) on May 23, 2026.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://impact.disney.com/resources/2026-disney-conservation-fund-grant-opportunity-and-faq",
+        "quote": "Once invited to the next stage of full-application, completed proposals must be received by 11:59pm ET (UTC 4:00), August 1, 2026.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "eligibility": [
+      {
+        "source_url": "https://impact.disney.com/resources/2026-disney-conservation-fund-grant-opportunity-and-faq",
+        "quote": "Have US 501c3 organization status OR apply via a valid US 501c3 intermediary partner.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://impact.disney.com/resources/2026-disney-conservation-fund-grant-opportunity-and-faq",
+        "quote": "Meet The Walt Disney Company Global Charitable Giving Guidelines (link).",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://impact.disney.com/resources/2026-disney-conservation-fund-grant-opportunity-and-faq",
+        "quote": "Organizations must have been established for at least one year",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://impact.disney.com/resources/2026-disney-conservation-fund-grant-opportunity-and-faq",
+        "quote": "have an annual income that equals or exceeds the requested grant amount for at least the last year",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://impact.disney.com/resources/2026-disney-conservation-fund-grant-opportunity-and-faq",
+        "quote": "Be leading projects/programs focused on protecting, connecting and/or restoring wildlife corridors or migratory pathways.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "after_award": [
+      {
+        "source_url": "https://impact.disney.com/resources/2026-disney-conservation-fund-grant-opportunity-and-faq",
+        "quote": "Each grant recipient organization will be expected to submit a final report two years after funding is awarded.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ]
   },
   "checked_at": "2026-11-15"
 }

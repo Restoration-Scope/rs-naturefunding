@@ -1,0 +1,60 @@
+{
+  "id": "eastside-audubon-jim-rettig-conservation-grant",
+  "read_on": "2026-11-20",
+  "prompt_version": "req-2026-11-20.1",
+  "models": ["cursor:gpt-5.6-luna-high"],
+  "complete": false,
+  "reasons": [
+    "2 links could not be ranked without Jev",
+    "4 links could not be ranked without Jev",
+    "Jev did not check this reading, so an absent fact is not known to be absent"
+  ],
+  "requirements_checked": false,
+  "documents": [
+    {
+      "ref": "D1",
+      "url": "https://www.eastsideaudubon.org/corvid-crier/2025/6/29/grants-and-scholarships",
+      "final_url": "https://www.eastsideaudubon.org/corvid-crier/2025/6/29/grants-and-scholarships",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 4599,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:d65fd24935e92efbc756dd156e31caa1165a0f889084580b7b54a88614a742af"
+    },
+    {
+      "ref": "D2",
+      "url": "https://www.eastsideaudubon.org/privacy",
+      "final_url": "https://www.eastsideaudubon.org/privacy",
+      "from": "https://www.eastsideaudubon.org/corvid-crier/2025/6/29/grants-and-scholarships",
+      "anchor": "Privacy policy",
+      "depth": 1,
+      "pdf": false,
+      "chars": 5451,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:a746244528438b6291147b608be46f76152688d00fbd60c9f83f47a6a793f264"
+    }
+  ],
+  "failures": [],
+  "skipped_links": 162,
+  "chunks": [{ "id": "all", "docs": ["D1", "D2"], "chars": 10286 }],
+  "outcomes": {
+    "eligibility": "stated",
+    "documents": "not_found",
+    "effort": "stated",
+    "co_finance": "not_found",
+    "consortium": "not_found",
+    "after_award": "not_found"
+  },
+  "written": ["eligibility", "effort"],
+  "escalated": [],
+  "flags": [],
+  "notes": [
+    "effort \"Email application\": the quote does not state 2025-09-30 whole; left undated",
+    "extractor: D1 also describes the separate Amy McQuade Scholarship; its rules do not apply to the Jim Rettig Conservation Grant."
+  ],
+  "usd": 0
+}

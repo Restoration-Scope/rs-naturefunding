@@ -1,7 +1,10 @@
 {
   "id": "eagle-river-fund-grants",
   "name": "Eagle River Fund competitive grant round",
-  "funder": { "name": "Eagle River Fund", "url": "https://www.eagleriverfund.org/" },
+  "funder": {
+    "name": "Eagle River Fund",
+    "url": "https://www.eagleriverfund.org/"
+  },
   "administered_by": {
     "name": "Western Colorado Community Foundation",
     "url": "https://www.wc-cf.org/"
@@ -9,14 +12,49 @@
   "parent": null,
   "url": "https://www.eagleriverfund.org/post/eagle-river-fund-opens-2026-grant-application-cycle",
   "summary": "Match funding for projects that protect water quantity and quality in the Eagle River Watershed, including restoration and habitat work that improves streamside and instream conditions. Nonprofits, public entities and fiscally sponsored groups can apply.",
-  "approaches": ["freshwater"],
-  "applicant_types": ["ngo", "government"],
-  "geography": { "scope": "countries", "countries": ["US"], "label": "Eagle River Watershed" },
+  "approaches": [
+    "freshwater"
+  ],
+  "applicant_types": [
+    "ngo",
+    "government"
+  ],
+  "geography": {
+    "scope": "countries",
+    "countries": [
+      "US"
+    ],
+    "label": "Eagle River Watershed"
+  },
   "access": "direct",
   "window": "fixed",
-  "amount": { "currency": "USD", "min": 5000, "max": 25000, "typical": true },
+  "amount": {
+    "currency": "USD",
+    "min": 5000,
+    "max": 25000,
+    "typical": true
+  },
   "co_finance_required": null,
   "reporting": "Final report, plus one or more progress reports depending on the project timeline.",
+  "effort": {
+    "steps": [
+      "Online application through the grant portal",
+      "Technical Advisory Committee evaluation"
+    ]
+  },
+  "eligibility": [
+    {
+      "rule": "Be a 501(c)(3) nonprofit, public entity, or private organization with an eligible fiscal sponsor",
+      "kind": "legal"
+    },
+    {
+      "rule": "Reference the issue or project in the Eagle River Community Water Plan or another published plan",
+      "kind": "project"
+    }
+  ],
+  "after_award": {
+    "reports": "interim_and_final"
+  },
   "calls": [
     {
       "id": "2026",
@@ -24,7 +62,10 @@
       "url": "https://www.eagleriverfund.org/post/eagle-river-fund-opens-2026-grant-application-cycle",
       "status": "closed",
       "opens": "2026-02-02",
-      "deadline": { "date": "2026-02-27", "text": "Feb. 2 - 27, 2026" },
+      "deadline": {
+        "date": "2026-02-27",
+        "text": "Feb. 2 - 27, 2026"
+      },
       "evidence": {
         "status": {
           "source_url": "https://www.eagleriverfund.org/grant-process",
@@ -89,7 +130,43 @@
       "quote": "Projects that receive Eagle River Fund awards must submit a final report and, pending the project timeline, one or more progress reports.",
       "checked_at": "2026-11-20",
       "method": "page"
-    }
+    },
+    "effort": [
+      {
+        "source_url": "https://www.eagleriverfund.org/post/eagle-river-fund-announces-final-pilot-award-seeks-applications-for-its-first-competitive-round",
+        "quote": "Applications to the Eagle River Fund are available February 2 - until 5:00 PM Feburary 27, 2026, and will be submitted through the Western Colorado Community Foundation's grant portal.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.eagleriverfund.org/grant-process",
+        "quote": "Submissions are evaluated by the Technical Advisory Committee, and recommendations are passed to the Eagle River Fund Board of Directors for decisionmaking.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "eligibility": [
+      {
+        "source_url": "https://www.eagleriverfund.org/post/eagle-river-fund-opens-2026-grant-application-cycle",
+        "quote": "Eligible applicants include 501(c)(3) nonprofits, public entities such as municipalities and special districts and private organizations working in partnership with an eligible fiscal sponsor.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.eagleriverfund.org/post/eagle-river-fund-announces-final-pilot-award-seeks-applications-for-its-first-competitive-round",
+        "quote": "applicants must reference the issue or project this work addresses within the Eagle River Community Water Plan or other published plans.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "after_award": [
+      {
+        "source_url": "https://www.eagleriverfund.org/grant-process",
+        "quote": "Projects that receive Eagle River Fund awards must submit a final report and, pending the project timeline, one or more progress reports.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ]
   },
   "checked_at": "2026-11-20"
 }
