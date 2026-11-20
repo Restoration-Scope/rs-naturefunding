@@ -1,0 +1,72 @@
+{
+  "id": "schleswig-holstein-biotop-gestaltende-massnahmen",
+  "read_on": "2026-11-20",
+  "prompt_version": "req-2026-11-20.1",
+  "models": ["cursor:gpt-5.6-luna-high", "cursor:gpt-5.6-sol-high"],
+  "complete": false,
+  "reasons": [
+    "the text names a document with rules that was not read: Verwaltungsvorschriften zu § 44 Landeshaushaltsordnung (LHO)",
+    "the text names a document with rules that was not read: Richtlinie für die Gewährung von Zuwendungen zur Förderung von langfristiger Pacht oder Grunderwerb für Zwecke des Naturschutzes",
+    "Jev did not check this reading, so an absent fact is not known to be absent"
+  ],
+  "requirements_checked": false,
+  "documents": [
+    {
+      "ref": "D1",
+      "url": "https://www.schleswig-holstein.de/DE/fachinhalte/N/naturschutz/natschutz_allgem_05_Foerd_03_SH07",
+      "final_url": "https://www.schleswig-holstein.de/DE/fachinhalte/N/naturschutz/natschutz_allgem_05_Foerd_03_SH07",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 14282,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:68d134fe5741c6c77b1af5242cbabdef8928987940ebabcb316b6ed9efcf886c"
+    },
+    {
+      "ref": "D2",
+      "url": "https://www.schleswig-holstein.de/DE/fachinhalte/N/naturschutz/Downloads/Rili_BgM.pdf?__blob=publicationFile&v=2",
+      "final_url": "https://www.schleswig-holstein.de/DE/fachinhalte/N/naturschutz/Downloads/Rili_BgM.pdf?__blob=publicationFile&v=2",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": true,
+      "chars": 20333,
+      "pages": 8,
+      "low_text": false,
+      "hash": "sha256:ea86afc4af6183830ca17d1344dc27e44004ecdef4b558024d3165891f56caf1"
+    }
+  ],
+  "failures": [],
+  "skipped_links": 320,
+  "chunks": [{ "id": "all", "docs": ["D1", "D2"], "chars": 34857 }],
+  "outcomes": {
+    "eligibility": "partial",
+    "documents": "stated",
+    "effort": "stated",
+    "co_finance": "stated",
+    "consortium": "not_found",
+    "after_award": "not_found"
+  },
+  "written": ["eligibility", "documents", "effort", "co_finance"],
+  "escalated": ["eligibility", "documents"],
+  "flags": [
+    {
+      "field": "eligibility",
+      "item": "For management-plan funding, hold at least 20% of the affected Natura 2000 area, unless a conservation cooperation is the sponsor",
+      "why": "a rule is 5 to 120 characters"
+    },
+    {
+      "field": "eligibility",
+      "item": "No land acquisition, land rights or long leases, except under the separate nature-conservation guideline",
+      "why": "the quote is not on any gathered document"
+    }
+  ],
+  "notes": [
+    "extractor: The 2024 guideline applies retroactively from 2024-01-01 through 2029-12-31. Management-plan applications have separate land-ownership rules. No application deadline is stated.",
+    "documents: kept 1 first-reading item no check faulted that the strong reading left out",
+    "source schleswig-holstein-biotop-gestaltende-massnahmen-2: selector main dropped, a new quote sits outside it"
+  ],
+  "usd": 0
+}

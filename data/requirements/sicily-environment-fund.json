@@ -1,0 +1,112 @@
+{
+  "id": "sicily-environment-fund",
+  "read_on": "2026-11-20",
+  "prompt_version": "req-2026-11-20.1",
+  "models": ["cursor:gpt-5.6-luna-high"],
+  "complete": false,
+  "reasons": [
+    "7 links could not be ranked without Jev",
+    "2 links could not be ranked without Jev",
+    "Jev did not check this reading, so an absent fact is not known to be absent"
+  ],
+  "requirements_checked": false,
+  "documents": [
+    {
+      "ref": "D1",
+      "url": "https://sicilyenvironment.org/grants/",
+      "final_url": "https://sicilyenvironment.org/grants/",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 7459,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:c2f086904a50401cd44bc80955fbbedb65748c822782ae380e0670eabde4ede5"
+    },
+    {
+      "ref": "D2",
+      "url": "https://sicilyenvironment.org/grants/guide-to-sustainable-fish-consumption/",
+      "final_url": "https://sicilyenvironment.org/grants/guide-to-sustainable-fish-consumption/",
+      "from": "https://sicilyenvironment.org/grants/",
+      "anchor": "ResponSEAble consumption Find out more",
+      "depth": 1,
+      "pdf": false,
+      "chars": 1189,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:3ce725c5b2d16223ec9f1386e5533313380bd15a2e840c03a60072e410ba0633"
+    },
+    {
+      "ref": "D3",
+      "url": "https://sicilyenvironment.org/grants/rewilding-guide-training/",
+      "final_url": "https://sicilyenvironment.org/grants/rewilding-guide-training/",
+      "from": "https://sicilyenvironment.org/grants/",
+      "anchor": "Rewilding guide training Find out more",
+      "depth": 1,
+      "pdf": false,
+      "chars": 3628,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:f8f2dcb513053987fedb19839f2d70006efb872612d3ed26f4bd569697469e93"
+    },
+    {
+      "ref": "D4",
+      "url": "https://sicilyenvironment.org/wp-content/uploads/2024/10/Application-form-with-Guidance-SEF-2024.docx",
+      "final_url": "https://sicilyenvironment.org/wp-content/uploads/2024/10/Application-form-with-Guidance-SEF-2024.docx",
+      "from": "https://sicilyenvironment.org/grants/",
+      "anchor": "tailored application form with guidance",
+      "depth": 1,
+      "pdf": false,
+      "chars": 9089,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:2a343d9bd3848e1d9d7ea670fd37c992093a2977b3b5c02ba01433965913ca0c"
+    },
+    {
+      "ref": "D5",
+      "url": "https://sicilyenvironment.org/wp-content/uploads/2024/02/CC-Logic-Model.pdf",
+      "final_url": "https://sicilyenvironment.org/wp-content/uploads/2024/02/CC-Logic-Model.pdf",
+      "from": "https://sicilyenvironment.org/grants/",
+      "anchor": "the impact measurement framework",
+      "depth": 1,
+      "pdf": true,
+      "chars": 8772,
+      "pages": 2,
+      "low_text": false,
+      "hash": "sha256:f52f2f916bbe0c8b9c62b4dc6ddc0eb38fbd4fb75beddd90a49511e132cccce6"
+    },
+    {
+      "ref": "D6",
+      "url": "https://sicilyenvironment.org/wp-content/uploads/2023/05/Rewilding-training-open-call-information-brochure.pdf",
+      "final_url": "https://sicilyenvironment.org/wp-content/uploads/2023/05/Rewilding-training-open-call-information-brochure.pdf",
+      "from": "https://sicilyenvironment.org/grants/rewilding-guide-training/",
+      "anchor": "here",
+      "depth": 2,
+      "pdf": true,
+      "chars": 4870,
+      "pages": 2,
+      "low_text": false,
+      "hash": "sha256:6b7bff8c586e7d09c15a5b0fd22353de75654875b1c57e6b441fc17a8503717e"
+    }
+  ],
+  "failures": [],
+  "skipped_links": 111,
+  "chunks": [{ "id": "all", "docs": ["D1", "D2", "D3", "D4", "D5", "D6"], "chars": 35842 }],
+  "outcomes": {
+    "eligibility": "stated",
+    "documents": "stated",
+    "effort": "stated",
+    "co_finance": "not_found",
+    "consortium": "not_found",
+    "after_award": "stated"
+  },
+  "written": ["eligibility", "documents", "effort", "after_award"],
+  "escalated": [],
+  "flags": [],
+  "notes": [
+    "extractor: No current or next grant round is identified in the supplied text. D3 and D6 concern a separate 2023 Rewilding Guide Training opportunity; D2 is an awarded project page.",
+    "source sicily-environment-fund-2: added for https://sicilyenvironment.org/wp-content/uploads/2024/10/Application-form-with-Guidance-SEF-2024.docx"
+  ],
+  "usd": 0
+}

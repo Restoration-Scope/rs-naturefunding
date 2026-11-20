@@ -9,9 +9,22 @@
   "parent": null,
   "url": "https://www.pref.shimane.lg.jp/industry/norin/ringyo/mizumori/mizumori/mi-mo_mori/index.html",
   "summary": "Grants to citizen groups, NPOs, neighbourhood associations, companies and others with a Shimane office for forest conservation work such as planting, weeding and bamboo clearing, plus wood-use and school forest-learning activities. Funded from the Water and Green Forest-Making Tax.",
-  "approaches": ["reforestation", "community_conservation"],
-  "applicant_types": ["community_group", "ngo", "company"],
-  "geography": { "scope": "countries", "countries": ["JP"], "label": "Shimane Prefecture" },
+  "approaches": [
+    "reforestation",
+    "community_conservation"
+  ],
+  "applicant_types": [
+    "community_group",
+    "ngo",
+    "company"
+  ],
+  "geography": {
+    "scope": "countries",
+    "countries": [
+      "JP"
+    ],
+    "label": "Shimane Prefecture"
+  },
   "access": "direct",
   "window": "fixed",
   "amount": {
@@ -20,8 +33,50 @@
     "max": 2000000,
     "note": "Per project for forest conservation and wood-use work; continuing projects from the past four years capped at 50,000 yen per site"
   },
-  "co_finance_required": null,
+  "co_finance_required": true,
   "reporting": null,
+  "effort": {
+    "steps": [
+      "Project proposal submission",
+      "Proposal review",
+      "Grant application after selection"
+    ],
+    "more_after": true
+  },
+  "eligibility": [
+    {
+      "rule": "Operating from an office in Shimane Prefecture and carrying out activities there",
+      "kind": "legal"
+    },
+    {
+      "rule": "Not a yakuza group or member",
+      "kind": "legal"
+    },
+    {
+      "rule": "Not pursuing religious or partisan political purposes",
+      "kind": "project"
+    },
+    {
+      "rule": "Project has not already started or finished in the same fiscal year",
+      "kind": "project"
+    },
+    {
+      "rule": "Project forest is not national forest",
+      "kind": "project"
+    }
+  ],
+  "after_award": {
+    "reports": "other",
+    "site_visits": true
+  },
+  "documents": [
+    "Photos, location maps, drawings and design drawings",
+    "Project cost estimates, except estimates of ¥10,000 or less for forest-learning activities",
+    "Document stating the organisation's purpose",
+    "Annual activity plan and annual income/expenditure budget",
+    "Organisation activity history from 2025 onward",
+    "Proof of consent to use the project land"
+  ],
   "calls": [
     {
       "id": "fy2026",
@@ -71,7 +126,105 @@
       "quote": "【森を保全・利用する取組】 50万円 から200万円 ただし、過去4年以内の事業を継続実施する場合は、上限5万円/1箇所(1集落)",
       "checked_at": "2026-11-20",
       "method": "page"
-    }
+    },
+    "co_finance_required": {
+      "source_url": "https://www.pref.shimane.lg.jp/industry/norin/ringyo/mizumori/mizumori/mi-mo_mori/index.data/R8tebiki.pdf",
+      "quote": "補助率は1/2以内(原則)",
+      "checked_at": "2026-11-20",
+      "method": "page"
+    },
+    "effort": [
+      {
+        "source_url": "https://www.pref.shimane.lg.jp/industry/norin/ringyo/mizumori/mizumori/mi-mo_mori/index.html",
+        "quote": "募集期間中(年により変動あり)に、事業提案書を下記窓口に提出",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.pref.shimane.lg.jp/industry/norin/ringyo/mizumori/mizumori/mi-mo_mori/index.html",
+        "quote": "水と緑の森づくり会議の意見を参考に林業課において審査し、採択結果を通知",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.pref.shimane.lg.jp/industry/norin/ringyo/mizumori/mizumori/mi-mo_mori/index.html",
+        "quote": "採択決定後に、交付申請書類を窓口に提出し、交付決定を待ってから事業着手",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "eligibility": [
+      {
+        "source_url": "https://www.pref.shimane.lg.jp/industry/norin/ringyo/mizumori/mizumori/mi-mo_mori/index.data/R8tebiki.pdf",
+        "quote": "(2) 県内に事務所を置きかつ県内で活動している者",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.pref.shimane.lg.jp/industry/norin/ringyo/mizumori/mizumori/mi-mo_mori/index.data/R8tebiki.pdf",
+        "quote": "(3) 暴力団又は暴力団の構成員であると認められない者",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.pref.shimane.lg.jp/industry/norin/ringyo/mizumori/mizumori/mi-mo_mori/index.data/R8tebiki.pdf",
+        "quote": "(4)宗教活動や特定の公職者(候補者を含む)または政党を推薦、支持、反対することを目的とした事 業でないこと",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.pref.shimane.lg.jp/industry/norin/ringyo/mizumori/mizumori/mi-mo_mori/index.data/260217kenminsanka_jissiyouryo.pdf",
+        "quote": "( 6 )事 業 を 実 施 し よ う と す る 者 が 、 同 一 年 度 に 既 に 実 施 又 は 完 了 し て い る 事 業 が あ る 場 合 は 交 付 対象 と し な い 。",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.pref.shimane.lg.jp/industry/norin/ringyo/mizumori/mizumori/mi-mo_mori/index.data/R8tebiki.pdf",
+        "quote": "(2)対象森林は国有林を除く",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "after_award": [
+      {
+        "source_url": "https://www.pref.shimane.lg.jp/industry/norin/ringyo/mizumori/mizumori/mi-mo_mori/index.data/kenminsanka_jissiyouryo_yousiki.docx",
+        "quote": "※提案書に記載した「最も主となる活動」を行った後10日以内に「別紙活動報告書」により 活動内容を報告すること",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.pref.shimane.lg.jp/industry/norin/ringyo/mizumori/mizumori/mi-mo_mori/index.data/260217kenminsanka_jissiyouryo.pdf",
+        "quote": "検査にあたっては、現地確認のほかに、納入された物品の規格・数量並びに支 払い状況を確認するものとし、結果を県庁に報告するものとする。",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.pref.shimane.lg.jp/industry/norin/ringyo/mizumori/mizumori/mi-mo_mori/index.data/R8tebiki.pdf",
+        "quote": "事業実施の翌年から4年間は県に対し活動報告をすること(みーもスクールを除く)",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "documents": [
+      {
+        "source_url": "https://www.pref.shimane.lg.jp/industry/norin/ringyo/mizumori/mizumori/mi-mo_mori/index.data/R8tebiki.pdf",
+        "quote": "写真、位置図、図面、設計図など ・事業に要する見積書など(森で学ぶ取組については、単価が 10,000 円以下の見積書の添付は不要) ・団体の目的を記載したもの(設立趣意書、定款、会則等) ・団体の年間活動計画書及び年間収支予算書",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.pref.shimane.lg.jp/industry/norin/ringyo/mizumori/mizumori/mi-mo_mori/index.data/R8tebiki.pdf",
+        "quote": "団体の活動経歴(令和7年以降の定期刊行物、活動への募集案内チラシ、新聞切り抜き等)",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.pref.shimane.lg.jp/industry/norin/ringyo/mizumori/mizumori/mi-mo_mori/index.data/R8tebiki.pdf",
+        "quote": "森林整備などで使用する土地の使用承諾について確認できるもの(所有者の同意書等)",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ]
   },
   "checked_at": "2026-11-20"
 }

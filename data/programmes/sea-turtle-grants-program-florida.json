@@ -1,19 +1,79 @@
 {
   "id": "sea-turtle-grants-program-florida",
   "name": "Sea Turtle Grants Program (Florida)",
-  "funder": { "name": "Florida Sea Turtle License Plate", "url": "https://helpingseaturtles.org/" },
-  "administered_by": { "name": "Sea Turtle Conservancy", "url": "https://conserveturtles.org/" },
+  "funder": {
+    "name": "Florida Sea Turtle License Plate",
+    "url": "https://helpingseaturtles.org/"
+  },
+  "administered_by": {
+    "name": "Sea Turtle Conservancy",
+    "url": "https://conserveturtles.org/"
+  },
   "parent": null,
   "url": "https://helpingseaturtles.org/apply-for-a-grant/",
   "summary": "Annual competitive grants, funded by Florida's sea turtle licence plate, for sea turtle research, conservation and education projects in Florida, including nesting-beach protection. Florida local governments, non-profits and research institutions apply.",
-  "approaches": ["species_conservation", "coastal_marine", "research"],
-  "applicant_types": ["government", "ngo", "research_institution"],
-  "geography": { "scope": "countries", "countries": ["US"], "label": "Florida" },
+  "approaches": [
+    "species_conservation",
+    "coastal_marine",
+    "research"
+  ],
+  "applicant_types": [
+    "government",
+    "ngo",
+    "research_institution"
+  ],
+  "geography": {
+    "scope": "countries",
+    "countries": [
+      "US"
+    ],
+    "label": "Florida"
+  },
   "access": "direct",
   "window": "fixed",
   "amount": null,
-  "co_finance_required": null,
+  "co_finance_required": false,
   "reporting": null,
+  "effort": {
+    "steps": [
+      "Digital application and mailed signed hard copy",
+      "FWCC technical review, research proposals only",
+      "Grant Committee selection"
+    ]
+  },
+  "eligibility": [
+    {
+      "rule": "Is based in Florida and actively participates in marine turtle activities within Florida",
+      "kind": "legal"
+    },
+    {
+      "rule": "Project preserves Florida marine turtles, meets recovery-plan tasks, FWCC programme goals and s.370.12(1)(c)",
+      "kind": "project"
+    },
+    {
+      "rule": "Funds are not used for fundraising or membership materials, or for any litigation",
+      "kind": "project"
+    },
+    {
+      "rule": "Submits no more than four grant applications per funding cycle",
+      "kind": "other"
+    }
+  ],
+  "after_award": {
+    "reports": "interim_and_final"
+  },
+  "documents": [
+    "Current MTP Permit, if applicable",
+    "Digital NMFS Permit copy, if applicable",
+    "Letter of endorsement, if the Project Manager lacks authority",
+    "Letter of support from a cooperating entity, if applicable",
+    "Education or conservation item description page, if applicable",
+    "Equipment quote, if requesting equipment",
+    "Mock-up, draft design or draft text for proposed materials or displays, if applicable",
+    "Sample of existing educational item, if requesting a reprint",
+    "Research proposal with methods and data analysis, if research",
+    "C.V. or resume for each research project person, if research"
+  ],
   "calls": [
     {
       "id": "2027-2028",
@@ -73,7 +133,117 @@
       "quote": "the Sea Turtle Grants Program distributes funds each year to support sea turtle research, conservation and education programs that benefit Florida sea turtles.",
       "checked_at": "2026-11-14",
       "method": "page"
-    }
+    },
+    "co_finance_required": {
+      "source_url": "https://helpingseaturtles.org/forms/SeaTurtleGrantGuidelinesApplication.pdf",
+      "quote": "Neither Indirect Costs nor Match are required, though showing some level of Match is desirable.",
+      "checked_at": "2026-11-20",
+      "method": "page"
+    },
+    "effort": [
+      {
+        "source_url": "https://helpingseaturtles.org/forms/SeaTurtleGrantGuidelinesApplication.pdf",
+        "quote": "Complete Digital Grant Applications must be submitted online by no later than 5:00 pm on Friday, November 6, 2026",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://helpingseaturtles.org/forms/SeaTurtleGrantGuidelinesApplication.pdf",
+        "quote": "One (1) original printed (hard copy) Grant Application with signed Cover Sheet must be mailed to the following address and postmarked by 5:00 pm on Friday, November 6, 2026",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://helpingseaturtles.org/forms/SeaTurtleGrantGuidelinesApplication.pdf",
+        "quote": "STC will send complete applications for research proposals to FWCC staff for review.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://helpingseaturtles.org/forms/SeaTurtleGrantGuidelinesApplication.pdf",
+        "quote": "Applications shall be selected for funding by the Sea Turtle Grant Committee (Committee).",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "eligibility": [
+      {
+        "source_url": "https://helpingseaturtles.org/forms/SeaTurtleGrantGuidelinesApplication.pdf",
+        "quote": "Florida Coastal Local Governments, Florida-based Non-Profit Organizations, and Florida-based Education and Research Institutions that actively participate in marine turtle research, conservation, and educational activities within the state of Florida are eligible to apply for and receive grant funds.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://helpingseaturtles.org/forms/SeaTurtleGrantGuidelinesApplication.pdf",
+        "quote": "Funds can be requested for projects in one of three categories (conservation, education or research) that clearly add to the preservation of Florida’s marine turtles; that accomplish tasks included in the current recovery plans for marine turtles; that address the goals of the FWCC’s Marine Turtle Protection Program; and that are consistent with subsection 370.12 (1) (c), Florida Statutes.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://helpingseaturtles.org/forms/SeaTurtleGrantGuidelinesApplication.pdf",
+        "quote": "grant funds may not be used for materials that contain fundraising or membership development language, or to support any type of litigation.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://helpingseaturtles.org/forms/SeaTurtleGrantGuidelinesApplication.pdf",
+        "quote": "A maximum of four (4) Grant Applications for funding may be submitted during each funding cycle by an eligible organization/institution/agency.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "after_award": [
+      {
+        "source_url": "https://helpingseaturtles.org/forms/SeaTurtleGrantGuidelinesApplication.pdf",
+        "quote": "What are the proposed project's 6-month and Final Deliverables in addition to the required reports?",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "documents": [
+      {
+        "source_url": "https://helpingseaturtles.org/forms/SeaTurtleGrantGuidelinesApplication.pdf",
+        "quote": "Copy of current MTP Permit (if applicable) Digital only copy NMFS Permit, please don't print out your NMFS Permit (if applicable)",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://helpingseaturtles.org/forms/SeaTurtleGrantGuidelinesApplication.pdf",
+        "quote": "a letter of endorsement signed by an Authorized Representative of the listed organization must be included after the Cover Sheet",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://helpingseaturtles.org/forms/SeaTurtleGrantGuidelinesApplication.pdf",
+        "quote": "cooperation with, or involvement of, another entity, please provide a letter of support from that entity.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://helpingseaturtles.org/forms/SeaTurtleGrantGuidelinesApplication.pdf",
+        "quote": "Education & Conservation description page for each item requested",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://helpingseaturtles.org/forms/SeaTurtleGrantGuidelinesApplication.pdf",
+        "quote": "Please provide a quote for all equipment requests.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://helpingseaturtles.org/forms/SeaTurtleGrantGuidelinesApplication.pdf",
+        "quote": "Please provide a mock-up, draft design or draft text of any proposed materials or displays. If you are requesting a reprint of educational materials, please include a sample of the existing item(s).",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://helpingseaturtles.org/forms/SeaTurtleGrantGuidelinesApplication.pdf",
+        "quote": "Research Grant Applications should include a separate research proposal with introduction, objectives, detailed methods (including data analysis), and a C.V. or resume (2 pages or less) for each person involved in the proposed project.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ]
   },
   "checked_at": "2026-11-14"
 }
