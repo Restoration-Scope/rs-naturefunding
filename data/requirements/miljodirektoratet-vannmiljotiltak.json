@@ -1,0 +1,200 @@
+{
+  "id": "miljodirektoratet-vannmiljotiltak",
+  "read_on": "2026-11-20",
+  "prompt_version": "req-2026-11-20.1",
+  "models": ["cursor:gpt-5.6-luna-high"],
+  "complete": false,
+  "reasons": [
+    "4 links could not be ranked without Jev",
+    "43 links could not be ranked without Jev",
+    "24 links could not be ranked without Jev",
+    "https://www.vannportalen.no/globalassets/vannportalen/miljotiltak/hefte-tiltak-for-et-godt-vannmiljo-2016.pdf: page 1 is an image: needs OCR",
+    "the crawl bound left https://soknadssenter.miljodirektoratet.no/Innsyn/Detaljer?id=335792 unread",
+    "the crawl bound left https://soknadssenter.miljodirektoratet.no/Innsyn/Detaljer?id=319491 unread",
+    "the crawl bound left https://soknadssenter.miljodirektoratet.no/Innsyn/Detaljer?id=316826 unread",
+    "the crawl bound left https://soknadssenter.miljodirektoratet.no/Innsyn/Detaljer?id=291572 unread",
+    "the crawl bound left https://soknadssenter.miljodirektoratet.no/FilSkjemavedlegg?id=192&token=jk5ag4eFEMruKmO5iI2z-9dMY3IjYc0AjhEsc-M80t41 unread",
+    "https://www.vannportalen.no/globalassets/vannportalen/miljotiltak/hefte-tiltak-for-et-godt-vannmiljo-2016.pdf: a document on another site: without Jev it can’t be confirmed as the funder’s, so it is not used",
+    "the text names a document with rules that was not read: Forskrift om tilskudd til vannmiljøtiltak, kalking og anadrome laksefisk",
+    "the text names a document with rules that was not read: Forskrift om tilskudd til anadrome laksefisk",
+    "the text names a document with rules that was not read: veileder for marin restaurering i Oslofjorden",
+    "Jev did not check this reading, so an absent fact is not known to be absent"
+  ],
+  "requirements_checked": false,
+  "documents": [
+    {
+      "ref": "D1",
+      "url": "https://soknadssenter.miljodirektoratet.no/VannmiljoSkjema/Startside/Index?id=88",
+      "final_url": "https://soknadssenter.miljodirektoratet.no/VannmiljoSkjema/Startside/Index?id=88",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 7251,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:5a8d23fe1a45f15474f854fee06bdc44efe3570b5ef1bd65f3df7d5c08db9a5f"
+    },
+    {
+      "ref": "D2",
+      "url": "https://soknadssenter.miljodirektoratet.no/",
+      "final_url": "https://soknadssenter.miljodirektoratet.no/",
+      "from": "https://soknadssenter.miljodirektoratet.no/VannmiljoSkjema/Startside/Index?id=88",
+      "anchor": "Søknadssenter",
+      "depth": 1,
+      "pdf": false,
+      "chars": 9463,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:5f6e5e89b30462bab32d90892aaa118edbe5e6f357eba92d254f7b46760d3cbd"
+    },
+    {
+      "ref": "D3",
+      "url": "https://soknadssenter.miljodirektoratet.no/Innsyn/Skjema/Vannmilj%C3%B8",
+      "final_url": "https://soknadssenter.miljodirektoratet.no/Innsyn/Skjema/Vannmilj%C3%B8",
+      "from": "https://soknadssenter.miljodirektoratet.no/VannmiljoSkjema/Startside/Index?id=88",
+      "anchor": "søknadsarkivet",
+      "depth": 1,
+      "pdf": false,
+      "chars": 169648,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:3afdd00349ed3e08d4d2fb2af259de1bcb6132707d3df1c8601d56c25e060278"
+    },
+    {
+      "ref": "D4",
+      "url": "https://soknadssenter.miljodirektoratet.no/Innsyn",
+      "final_url": "https://soknadssenter.miljodirektoratet.no/Innsyn/Skjema",
+      "from": "https://soknadssenter.miljodirektoratet.no/",
+      "anchor": "Til søknadsarkivet",
+      "depth": 2,
+      "pdf": false,
+      "chars": 7503,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:783171e1289c9838d75c45a5043f324701d9b974849daa3385afe0f4cc239223"
+    },
+    {
+      "ref": "D5",
+      "url": "https://soknadssenter.miljodirektoratet.no/Skjema/56",
+      "final_url": "https://soknadssenter.miljodirektoratet.no/KlimakvoteregisterSkjema/Startside/Index?id=56",
+      "from": "https://soknadssenter.miljodirektoratet.no/",
+      "anchor": "Søknad til det norske klimakvoteregisteret",
+      "depth": 2,
+      "pdf": false,
+      "chars": 3604,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:b344cdee8fb98a355737d4f76f4005968b0082655eb4d1bdaa189de9b656fc8d"
+    },
+    {
+      "ref": "D6",
+      "url": "https://soknadssenter.miljodirektoratet.no/Hjem/Nyhetsoversikt/Nyhetssak/10441",
+      "final_url": "https://soknadssenter.miljodirektoratet.no/Hjem/Nyhetsoversikt/Nyhetssak/10441",
+      "from": "https://soknadssenter.miljodirektoratet.no/",
+      "anchor": "Søknad om endring",
+      "depth": 2,
+      "pdf": false,
+      "chars": 766,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:35607defd0f5c1422e838beccd0258179b15b8570c24a71e12d37781e0e1a4b2"
+    },
+    {
+      "ref": "D7",
+      "url": "https://soknadssenter.miljodirektoratet.no/Hjem/Nyhetsoversikt/Nyhetssak/8330",
+      "final_url": "https://soknadssenter.miljodirektoratet.no/Hjem/Nyhetsoversikt/Nyhetssak/8330",
+      "from": "https://soknadssenter.miljodirektoratet.no/",
+      "anchor": "Tilgang til alle søknader for en virksomhet",
+      "depth": 2,
+      "pdf": false,
+      "chars": 1374,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:8c63c819a039c51f04dae8d9e630406a11bf4e93cd8709de7266662340f1fc60"
+    },
+    {
+      "ref": "D8",
+      "url": "https://soknadssenter.miljodirektoratet.no/Innsyn/Detaljer?id=340551",
+      "final_url": "https://soknadssenter.miljodirektoratet.no/Innsyn/Detaljer?id=340551",
+      "from": "https://soknadssenter.miljodirektoratet.no/Innsyn/Skjema/Vannmilj%C3%B8",
+      "anchor": "Tilskudd til vannmiljøtiltak - Søknad om pilot for naturkreditter i Oslofjorden",
+      "depth": 2,
+      "pdf": false,
+      "chars": 900,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:cd7aac16ed450a269f85deef2fe194440da9cc9ebe1f39b1b7807f964d107134"
+    }
+  ],
+  "failures": [
+    {
+      "url": "https://www.vannportalen.no/globalassets/vannportalen/miljotiltak/hefte-tiltak-for-et-godt-vannmiljo-2016.pdf",
+      "from": "https://soknadssenter.miljodirektoratet.no/VannmiljoSkjema/Startside/Index?id=88",
+      "kind": "low_text",
+      "message": "page 1 is an image: needs OCR"
+    },
+    {
+      "url": "https://soknadssenter.miljodirektoratet.no/Innsyn/Detaljer?id=335792",
+      "from": "https://soknadssenter.miljodirektoratet.no/Innsyn/Skjema/Vannmilj%C3%B8",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://soknadssenter.miljodirektoratet.no/Innsyn/Detaljer?id=319491",
+      "from": "https://soknadssenter.miljodirektoratet.no/Innsyn/Skjema/Vannmilj%C3%B8",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://soknadssenter.miljodirektoratet.no/Innsyn/Detaljer?id=316826",
+      "from": "https://soknadssenter.miljodirektoratet.no/Innsyn/Skjema/Vannmilj%C3%B8",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://soknadssenter.miljodirektoratet.no/Innsyn/Detaljer?id=291572",
+      "from": "https://soknadssenter.miljodirektoratet.no/Innsyn/Skjema/Vannmilj%C3%B8",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://soknadssenter.miljodirektoratet.no/FilSkjemavedlegg?id=192&token=jk5ag4eFEMruKmO5iI2z-9dMY3IjYc0AjhEsc-M80t41",
+      "from": "https://soknadssenter.miljodirektoratet.no/Skjema/56",
+      "kind": "bound",
+      "message": "past the crawl depth of 2"
+    },
+    {
+      "url": "https://www.vannportalen.no/globalassets/vannportalen/miljotiltak/hefte-tiltak-for-et-godt-vannmiljo-2016.pdf",
+      "from": "https://soknadssenter.miljodirektoratet.no/VannmiljoSkjema/Startside/Index?id=88",
+      "kind": "offsite",
+      "message": "a document on another site: without Jev it can’t be confirmed as the funder’s, so it is not used"
+    }
+  ],
+  "skipped_links": 1385,
+  "chunks": [
+    { "id": "c1", "docs": ["D1", "D2"], "chars": 16958 },
+    { "id": "c2", "docs": ["D3"], "chars": 39413 },
+    { "id": "c3", "docs": ["D3"], "chars": 38734 },
+    { "id": "c4", "docs": ["D3"], "chars": 34490 },
+    { "id": "c5", "docs": ["D3"], "chars": 39782 },
+    { "id": "c6", "docs": ["D3"], "chars": 24174 },
+    { "id": "c7", "docs": ["D4", "D5", "D6", "D7", "D8"], "chars": 14852 }
+  ],
+  "outcomes": {
+    "eligibility": "stated",
+    "documents": "not_found",
+    "effort": "stated",
+    "co_finance": "not_found",
+    "consortium": "not_found",
+    "after_award": "not_found"
+  },
+  "written": ["eligibility", "effort"],
+  "escalated": [],
+  "flags": [],
+  "notes": [
+    "effort \"Application form\": the quote does not state 2027-01-15 whole; left undated",
+    "extractor: D1 combines two grant schemes; some rules apply only to particular sub-schemes or restoration contexts. | D3 is an application archive and does not state eligibility, submission documents, process steps, co-finance, consortium or post-award duties. | D3 lists applications and decisions but states no applicant requirements, submission documents, process steps, co-financing, consortium rule or post-award duties. | D3 is an awards and decisions list for 2025 and 2026; it does not state applicant requirements or post-award duties. | This part lists 2025 application outcomes and does not state applicant requirements, submission documents, application steps, co-financing, consortium requirements or post-award duties. | D3 is an historical awards list and does not state applicant requirements, submission documents, application steps, co-financing, consortium requirements or post-award duties. | D4–D8 do not state requirements for this grant programme. D5 concerns the Norwegian climate quota r"
+  ],
+  "usd": 0
+}

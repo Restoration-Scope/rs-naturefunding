@@ -17,6 +17,33 @@
   "amount": null,
   "co_finance_required": null,
   "reporting": null,
+  "effort": { "steps": ["Application"] },
+  "eligibility": [
+    {
+      "rule": "Project is in a municipality affected by an Energy Act-licensed, operating onshore wind plant",
+      "kind": "project"
+    },
+    {
+      "rule": "A municipality, municipal company, outdoor-recreation council, or NGO mainly for outdoor life or nature",
+      "kind": "legal"
+    },
+    {
+      "rule": "The project takes Sami reindeer husbandry into account where relevant",
+      "kind": "project"
+    },
+    {
+      "rule": "An outdoor-life measure is accessible to the public and adapted to the landscape and local nature qualities",
+      "kind": "project"
+    },
+    {
+      "rule": "No ordinary operation, outdoor-life activities or events, equipment purchases, or licence-covered measures",
+      "kind": "project"
+    }
+  ],
+  "after_award": { "reports": "final" },
+  "documents": [
+    "Consultation and any response from the relevant reindeer-grazing district, if applicable"
+  ],
   "calls": [
     {
       "id": "annual-15-january",
@@ -66,7 +93,63 @@
       "quote": "Søknadsfristen er 15. januar.",
       "checked_at": "2026-11-09",
       "method": "page"
-    }
+    },
+    "effort": [
+      {
+        "source_url": "https://soknadssenter.miljodirektoratet.no/VindkraftverkSkjema/Startside/Index?id=87",
+        "quote": "Søknadsfristen er 15. januar.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "eligibility": [
+      {
+        "source_url": "https://soknadssenter.miljodirektoratet.no/VindkraftverkSkjema/Startside/Index?id=87",
+        "quote": "Tilskuddsordningen skal bidra til å ivareta og fremme natur og friluftsliv i kommuner berørt av landbaserte vindkraftverk som er konsesjonsgitt etter energiloven og som er i drift.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://soknadssenter.miljodirektoratet.no/VindkraftverkSkjema/Startside/Index?id=87",
+        "quote": "kommuner - kommunale eller interkommunale foretak - interkommunale friluftsråd - frivillige organisasjoner med friluftsliv og/eller ivaretakelse av naturmangfold som hovedformål",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://soknadssenter.miljodirektoratet.no/VindkraftverkSkjema/Startside/Index?id=87",
+        "quote": "Det kan bare tildeles tilskudd til tiltak som tar hensyn til samisk reindriftsvirksomhet, der dette er relevant.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://soknadssenter.miljodirektoratet.no/VindkraftverkSkjema/Startside/Index?id=87",
+        "quote": "Friluftslivstiltak som får støtte fra ordningen, må være tilgjengelige for allmennheten og være tilpasset landskapet og natur- og opplevelseskvalitetene i området.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://soknadssenter.miljodirektoratet.no/VindkraftverkSkjema/Startside/Index?id=87",
+        "quote": "Det gis ikke tilskudd til ordinær drift av friluftslivsanlegg, friluftslivsaktivitet, friluftslivsarrangement, kjøp av utstyr til friluftslivsaktivitet eller til tiltak som skal ivaretas gjennom konsesjonsvilkår fastsatt ved etablering av vindkraftverket.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "after_award": [
+      {
+        "source_url": "https://soknadssenter.miljodirektoratet.no/VindkraftverkSkjema/Startside/Index?id=87",
+        "quote": "Tilskudd gis som tilsagn og utbetales i hovedsak når prosjektet er gjennomført og søker har sendt sluttrapport.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "documents": [
+      {
+        "source_url": "https://soknadssenter.miljodirektoratet.no/VindkraftverkSkjema/Startside/Index?id=87",
+        "quote": "Foreleggelsen og eventuell tilbakemelding fra reinbeitedistriktet må legges ved søknaden.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ]
   },
   "checked_at": "2026-11-09"
 }

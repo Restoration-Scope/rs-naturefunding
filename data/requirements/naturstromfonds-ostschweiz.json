@@ -1,0 +1,117 @@
+{
+  "id": "naturstromfonds-ostschweiz",
+  "read_on": "2026-11-20",
+  "prompt_version": "req-2026-11-20.1",
+  "models": ["cursor:gpt-5.6-luna-high", "cursor:gpt-5.6-sol-high"],
+  "complete": false,
+  "reasons": [
+    "2 links could not be ranked without Jev",
+    "the text names a document with rules that was not read: Fondsreglement Naturstromfonds Ostschweiz samt Anhängen in der jeweils aktuellen Fassung",
+    "the text names a document with rules that was not read: Richtlinie «naturemade Ökofonds» in der jeweils aktuellen Fassung",
+    "Jev did not check this reading, so an absent fact is not known to be absent",
+    "strong reading: the text names a document with rules that was not read: Fondsreglement Naturstromfonds Ostschweiz samt Anhängen",
+    "strong reading: the text names a document with rules that was not read: Richtlinie «naturemade Ökofonds»"
+  ],
+  "requirements_checked": false,
+  "documents": [
+    {
+      "ref": "D1",
+      "url": "https://naturstromfonds.ch/finanzierung/",
+      "final_url": "https://naturstromfonds.ch/finanzierung/",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 3857,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:1ee2ce01bf9b356a484f92fffbabcb27c01d89911c3e206ec1c484984584e06d"
+    },
+    {
+      "ref": "D2",
+      "url": "https://naturstromfonds.ch/wp-content/uploads/2024/04/Finanzierungskriterien_Naturstromfonds_Ostschweiz.pdf",
+      "final_url": "https://naturstromfonds.ch/wp-content/uploads/2024/04/Finanzierungskriterien_Naturstromfonds_Ostschweiz.pdf",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": true,
+      "chars": 5988,
+      "pages": 4,
+      "low_text": false,
+      "hash": "sha256:bc5ba07cb638c414924e6a3010e110bbf4e4b2e6f5de34f08d7872bc0da32340"
+    },
+    {
+      "ref": "D3",
+      "url": "https://naturstromfonds.ch/wp-content/uploads/2024/04/Vorlage_Finanzierungsantrag.docx",
+      "final_url": "https://naturstromfonds.ch/wp-content/uploads/2024/04/Vorlage_Finanzierungsantrag.docx",
+      "from": "https://naturstromfonds.ch/finanzierung/",
+      "anchor": "2. Finanzierung anfragen",
+      "depth": 1,
+      "pdf": false,
+      "chars": 3644,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:2874caca6cad51fd9d9e6c47886a775f420a341d0e674441f23fa61117e26592"
+    },
+    {
+      "ref": "D4",
+      "url": "https://naturstromfonds.ch/wp-content/uploads/2026/02/Vorlage_Projektabschlussbericht.docx",
+      "final_url": "https://naturstromfonds.ch/wp-content/uploads/2026/02/Vorlage_Projektabschlussbericht.docx",
+      "from": "https://naturstromfonds.ch/finanzierung/",
+      "anchor": "3. Projektabschluss melden",
+      "depth": 1,
+      "pdf": false,
+      "chars": 2373,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:67639f0a3aa61a4854b230a957932b9abf22e84941f5532feca37083bf0cd63d"
+    },
+    {
+      "ref": "D5",
+      "url": "https://naturstromfonds.ch/wp-content/uploads/2024/04/Allgemeinen_Foerderbedingungen_Naturstromfonds_Ostschweiz.pdf",
+      "final_url": "https://naturstromfonds.ch/wp-content/uploads/2024/04/Allgemeinen_Foerderbedingungen_Naturstromfonds_Ostschweiz.pdf",
+      "from": "https://naturstromfonds.ch/finanzierung/",
+      "anchor": "Allgemeine Förderbedingungen",
+      "depth": 1,
+      "pdf": true,
+      "chars": 5682,
+      "pages": 3,
+      "low_text": false,
+      "hash": "sha256:fa59b7ca5cc7f699c677e5412263ac70668c9c15f42c1349f923753ffeaf5ed1"
+    },
+    {
+      "ref": "D6",
+      "url": "https://naturstromfonds.ch/wp-content/uploads/2024/04/Anforderungen_fuer_die_Umsetzung_von_Projekten_V1-2024.pdf",
+      "final_url": "https://naturstromfonds.ch/wp-content/uploads/2024/04/Anforderungen_fuer_die_Umsetzung_von_Projekten_V1-2024.pdf",
+      "from": "https://naturstromfonds.ch/finanzierung/",
+      "anchor": "Anforderungen für die Umsetzung von Projekten",
+      "depth": 1,
+      "pdf": true,
+      "chars": 3201,
+      "pages": 2,
+      "low_text": false,
+      "hash": "sha256:cdf73d0fe9c6eab432adcf554258112c44383e6ce4a7a963aa4ba8d9d67bc2de"
+    }
+  ],
+  "failures": [],
+  "skipped_links": 38,
+  "chunks": [{ "id": "all", "docs": ["D1", "D2", "D3", "D4", "D5", "D6"], "chars": 25613 }],
+  "outcomes": {
+    "eligibility": "stated",
+    "documents": "stated",
+    "effort": "stated",
+    "co_finance": "stated",
+    "consortium": "not_found",
+    "after_award": "stated"
+  },
+  "written": ["eligibility", "documents", "effort", "co_finance", "after_award"],
+  "escalated": ["after_award"],
+  "flags": [],
+  "notes": [
+    "extractor: The criteria are Version 1/2024. Foreign projects and certain energy projects for companies or private persons are generally excluded, not stated as absolute rules. The final report is required after project completion.",
+    "source naturstromfonds-ostschweiz-2: selector main dropped, a new quote sits outside it",
+    "source naturstromfonds-ostschweiz-3: added for https://naturstromfonds.ch/wp-content/uploads/2024/04/Vorlage_Finanzierungsantrag.docx",
+    "source naturstromfonds-ostschweiz-4: added for https://naturstromfonds.ch/wp-content/uploads/2024/04/Allgemeinen_Foerderbedingungen_Naturstromfonds_Ostschweiz.pdf"
+  ],
+  "usd": 0
+}

@@ -17,6 +17,32 @@
   "amount": { "currency": "GBP", "min": 300, "max": 20000 },
   "co_finance_required": null,
   "reporting": null,
+  "effort": { "steps": ["Online application form"] },
+  "eligibility": [
+    { "rule": "Does not have an unfinished Awards for All England grant", "kind": "other" },
+    {
+      "rule": "Is not awaiting a decision on another application to this programme",
+      "kind": "other"
+    },
+    { "rule": "Is not applying to multiple programmes for the same project", "kind": "other" },
+    { "rule": "Application not written by a private business or consultant", "kind": "other" },
+    { "rule": "Has at least two unrelated directors", "kind": "capacity" },
+    {
+      "rule": "A school project benefits the wider community, not only the school",
+      "kind": "project"
+    },
+    {
+      "rule": "A school project goes beyond the school's usual responsibilities",
+      "kind": "project"
+    },
+    {
+      "rule": "Has a safeguarding policy when working with children or vulnerable adults",
+      "kind": "capacity"
+    }
+  ],
+  "documents": [
+    "Bank statement under three months old (or bank welcome letter or transaction listing)"
+  ],
   "calls": [
     {
       "id": "open",
@@ -65,7 +91,79 @@
       "quote": "Amount: £300 to £20,000",
       "checked_at": "2026-11-20",
       "method": "page"
-    }
+    },
+    "effort": [
+      {
+        "source_url": "https://www.tnlcommunityfund.org.uk/funding/funding-programmes/national-lottery-awards-for-all-england-environment/how-to-apply",
+        "quote": "You can apply using our online form",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "eligibility": [
+      {
+        "source_url": "https://www.tnlcommunityfund.org.uk/funding/funding-programmes/national-lottery-awards-for-all-england-environment/who-cannot-apply",
+        "quote": "your organisation has a current grant from National Lottery Awards for All England that has not finished",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.tnlcommunityfund.org.uk/funding/funding-programmes/national-lottery-awards-for-all-england-environment/who-cannot-apply",
+        "quote": "you're waiting for a decision on another application to this programme",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.tnlcommunityfund.org.uk/funding/funding-programmes/national-lottery-awards-for-all-england-environment/who-cannot-apply",
+        "quote": "you're applying to more than one of our programmes for the same project",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.tnlcommunityfund.org.uk/funding/funding-programmes/national-lottery-awards-for-all-england-environment/who-cannot-apply",
+        "quote": "We do not accept applications written for you by private businesses or consultants.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.tnlcommunityfund.org.uk/funding/funding-programmes/national-lottery-awards-for-all-england-environment/who-can-apply",
+        "quote": "You must have at least two directors who are not related.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.tnlcommunityfund.org.uk/funding/funding-programmes/national-lottery-awards-for-all-england-environment/who-can-apply",
+        "quote": "your project clearly benefits the wider community, not just pupils, teachers, or parents.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.tnlcommunityfund.org.uk/funding/funding-programmes/national-lottery-awards-for-all-england-environment/who-can-apply",
+        "quote": "Projects must go beyond the school's usual responsibilities.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.tnlcommunityfund.org.uk/funding/funding-programmes/national-lottery-awards-for-all-england-environment/what-you-need-to-tell-us-when-you-apply",
+        "quote": "If you'll be working with children, young people or vulnerable adults You need to have a policy in place that explains how they'll be safe.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "documents": [
+      {
+        "source_url": "https://account.tnlcommunityfund.org.uk/Preview/Application/cc7eb4fb-b4df-4a31-aa89-d7595c58d833",
+        "quote": "Before you submit your application you will need to attach a copy of a bank statement that is less than three months old",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.tnlcommunityfund.org.uk/funding/funding-programmes/national-lottery-awards-for-all-england-environment/what-you-need-to-tell-us-when-you-apply",
+        "quote": "If your bank account was opened in the last three months, you can send a welcome letter instead of a statement. It must show the date the account was opened and all account details. We can also accept a transaction listing.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ]
   },
   "checked_at": "2026-11-20"
 }

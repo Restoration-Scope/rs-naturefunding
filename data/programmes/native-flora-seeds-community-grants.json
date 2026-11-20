@@ -14,6 +14,13 @@
   "amount": { "currency": "USD", "min": 500, "max": 2500, "note": "Micro grant tier" },
   "co_finance_required": null,
   "reporting": "A final report with photos of the completed project, a brief outcomes summary and a basic accounting of funds used is required; a midpoint update is encouraged.",
+  "eligibility": [
+    {
+      "rule": "The project avoids private residential landscaping and temporary plantings and has a defined maintenance plan",
+      "kind": "project"
+    }
+  ],
+  "after_award": { "reports": "final" },
   "calls": [
     {
       "id": "fall-2026",
@@ -85,7 +92,23 @@
       "quote": "REQUIRED · FINAL REPORT Final Report Photos of completed project Brief outcomes summary Basic accounting of funds used",
       "checked_at": "2026-11-15",
       "method": "page"
-    }
+    },
+    "eligibility": [
+      {
+        "source_url": "https://nativefloraseeds.org/pages/nfs/grantsprogram",
+        "quote": "Private residential landscaping projects Short-term or temporary plantings Projects without a defined maintenance plan",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "after_award": [
+      {
+        "source_url": "https://nativefloraseeds.org/pages/nfs/grantsprogram",
+        "quote": "Final report (required)",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ]
   },
   "checked_at": "2026-11-15"
 }
