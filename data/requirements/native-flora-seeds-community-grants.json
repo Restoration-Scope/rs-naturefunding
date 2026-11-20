@@ -1,0 +1,85 @@
+{
+  "id": "native-flora-seeds-community-grants",
+  "read_on": "2026-11-20",
+  "prompt_version": "req-2026-11-20.1",
+  "models": ["cursor:gpt-5.6-luna-high"],
+  "complete": false,
+  "reasons": [
+    "8 links could not be ranked without Jev",
+    "9 links could not be ranked without Jev",
+    "Jev did not check this reading, so an absent fact is not known to be absent"
+  ],
+  "requirements_checked": false,
+  "documents": [
+    {
+      "ref": "D1",
+      "url": "https://nativefloraseeds.org/pages/nfs/grantsprogram",
+      "final_url": "https://nativefloraseeds.org/pages/nfs/grantsprogram",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 4949,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:03878c41294dc5abc2f26a2a1222c3872569069986e3baf2ca6c67d75b2265c0"
+    },
+    {
+      "ref": "D2",
+      "url": "https://nativefloraseeds.org/policies/refund-policy",
+      "final_url": "https://nativefloraseeds.org/policies/refund-policy",
+      "from": "https://nativefloraseeds.org/pages/nfs/grantsprogram",
+      "anchor": "Refund Policy",
+      "depth": 1,
+      "pdf": false,
+      "chars": 4404,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:1d26df999dc9a46ba195ff9057b9464a0fea4acad25721ce72cab70ca16860a5"
+    },
+    {
+      "ref": "D3",
+      "url": "https://nativefloraseeds.org/policies/privacy-policy",
+      "final_url": "https://nativefloraseeds.org/policies/privacy-policy",
+      "from": "https://nativefloraseeds.org/pages/nfs/grantsprogram",
+      "anchor": "Privacy Policy",
+      "depth": 1,
+      "pdf": false,
+      "chars": 17346,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:06333f78f78db1238e289c86685cb675273924b36cc6613854f9b3165d2614d8"
+    },
+    {
+      "ref": "D4",
+      "url": "https://nativefloraseeds.org/policies/contact-information",
+      "final_url": "https://nativefloraseeds.org/policies/contact-information",
+      "from": "https://nativefloraseeds.org/policies/privacy-policy",
+      "anchor": "contact information policy",
+      "depth": 2,
+      "pdf": false,
+      "chars": 2048,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:db3da6f365a14385edf8a10efdd1d3831569f415b01de560a429625ba259695e"
+    }
+  ],
+  "failures": [],
+  "skipped_links": 161,
+  "chunks": [{ "id": "all", "docs": ["D1", "D2", "D3", "D4"], "chars": 29212 }],
+  "outcomes": {
+    "eligibility": "stated",
+    "documents": "not_found",
+    "effort": "not_found",
+    "co_finance": "not_found",
+    "consortium": "not_found",
+    "after_award": "stated"
+  },
+  "written": ["eligibility", "after_award"],
+  "escalated": [],
+  "flags": [],
+  "notes": [
+    "extractor: A midpoint update is encouraged but not required. No application process, deadline, co-financing, consortium requirement, or required first-step documents are stated."
+  ],
+  "usd": 0
+}

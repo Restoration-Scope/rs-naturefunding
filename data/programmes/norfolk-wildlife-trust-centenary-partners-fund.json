@@ -17,6 +17,26 @@
   "amount": { "currency": "GBP", "min": 500, "max": 1500 },
   "co_finance_required": null,
   "reporting": "A short end-of-project report, usually due within 1 to 2 months of completion, covering how the money was spent, how many people benefited and the outcomes achieved.",
+  "effort": { "steps": ["Application"], "due": ["2027-01-22"] },
+  "eligibility": [
+    { "rule": "Activities and projects are primarily within Norfolk", "kind": "project" },
+    {
+      "rule": "Annual turnover or funding does not exceed £100,000",
+      "kind": "finances",
+      "revenue": { "currency": "GBP", "max": 100000, "basis": "revenue" }
+    },
+    { "rule": "Supports Norfolk Wildlife Trust's charitable objectives", "kind": "other" },
+    { "rule": "Maintains a valid governing document throughout the grant", "kind": "legal" },
+    {
+      "rule": "Operates a dedicated bank account with two independent signatories",
+      "kind": "capacity"
+    },
+    {
+      "rule": "Has safeguarding policies and checks when activities involve vulnerable people",
+      "kind": "capacity"
+    }
+  ],
+  "after_award": { "reports": "final" },
   "calls": [
     {
       "id": "cpf-2026-27",
@@ -83,7 +103,61 @@
       "quote": "You must complete and return a short end of project/monitoring report by the deadline specified in our offer letter (typically within 1 to 2 months of project completion).",
       "checked_at": "2026-11-20",
       "method": "page"
-    }
+    },
+    "effort": [
+      {
+        "source_url": "https://www.norfolkwildlifetrust.org.uk/CPF",
+        "quote": "Our Centenary Partners Fund opens for applications on Monday 2 November 2026, and the closing deadline is Friday 22 January 2027.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "eligibility": [
+      {
+        "source_url": "https://www.norfolkwildlifetrust.org.uk/CPF",
+        "quote": "Are carrying out activities and projects primarily within Norfolk.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.norfolkwildlifetrust.org.uk/CPF",
+        "quote": "Have a turnover or funding that does not exceed £100,000 per annum.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.norfolkwildlifetrust.org.uk/CPF",
+        "quote": "Support the charitable objectives of Norfolk Wildlife Trust.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.norfolkwildlifetrust.org.uk/CPF",
+        "quote": "Your group must maintain a valid governing document (such as a constitution, set of rules, or articles of association) throughout the life of the grant.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.norfolkwildlifetrust.org.uk/CPF",
+        "quote": "You must operate a dedicated organisational bank account requiring at least two independent (unrelated) signatories for withdrawals or online transactions.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.norfolkwildlifetrust.org.uk/CPF",
+        "quote": "If your activities involve children, young people, or vulnerable adults, you must have a suitable safeguarding policy and proper checks (e.g. DBS checks) in place.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "after_award": [
+      {
+        "source_url": "https://www.norfolkwildlifetrust.org.uk/CPF",
+        "quote": "You must complete and return a short end of project/monitoring report by the deadline specified in our offer letter (typically within 1 to 2 months of project completion).",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ]
   },
   "checked_at": "2026-11-20"
 }
