@@ -1,0 +1,100 @@
+{
+  "id": "south-downs-renature-fund",
+  "read_on": "2026-11-20",
+  "prompt_version": "req-2026-11-20.1",
+  "models": ["cursor:gpt-5.6-luna-high", "cursor:gpt-5.6-sol-high"],
+  "complete": false,
+  "reasons": [
+    "22 links could not be ranked without Jev",
+    "16 links could not be ranked without Jev",
+    "Jev did not check this reading, so an absent fact is not known to be absent"
+  ],
+  "requirements_checked": false,
+  "documents": [
+    {
+      "ref": "D1",
+      "url": "https://southdownstrust.org.uk/renature-fund/",
+      "final_url": "https://southdownstrust.org.uk/renature-fund/",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 6065,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:ab9e17f87d63543436ab32b96d61ff710db8f69f800df0d4f7c96870c844b7f6"
+    },
+    {
+      "ref": "D2",
+      "url": "https://southdownstrust.org.uk/app/uploads/2026/06/ReNature-Funding-Guide.pdf",
+      "final_url": "https://southdownstrust.org.uk/app/uploads/2026/06/ReNature-Funding-Guide.pdf",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": true,
+      "chars": 4643,
+      "pages": 2,
+      "low_text": false,
+      "hash": "sha256:4a15904ce840151dc3cc76489942086efdfb078b4b67db660f7318c22274717d"
+    },
+    {
+      "ref": "D3",
+      "url": "https://southdownstrust.org.uk/apply-for-funding/pounds-for-ponds-fund/",
+      "final_url": "https://southdownstrust.org.uk/apply-for-funding/pounds-for-ponds-fund/",
+      "from": "https://southdownstrust.org.uk/renature-fund/",
+      "anchor": "Pounds for Ponds Fund",
+      "depth": 1,
+      "pdf": false,
+      "chars": 6251,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:cd22ef531768167678c842bc035476bd0b0f6fe586dc8945080e166529e3b64c"
+    },
+    {
+      "ref": "D4",
+      "url": "https://southdownstrust.org.uk/app/uploads/2025/09/Enquiry-Form-NR.docx",
+      "final_url": "https://southdownstrust.org.uk/app/uploads/2025/09/Enquiry-Form-NR.docx",
+      "from": "https://southdownstrust.org.uk/renature-fund/",
+      "anchor": "enquiry form",
+      "depth": 1,
+      "pdf": false,
+      "chars": 3248,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:446be9bad2f24f7e63a3b7dbf25f42a5aaa9bb0b9310336a31259624c1180a08"
+    },
+    {
+      "ref": "D5",
+      "url": "https://southdownstrust.org.uk/apply-for-funding/",
+      "final_url": "https://southdownstrust.org.uk/grants/",
+      "from": "https://southdownstrust.org.uk/renature-fund/",
+      "anchor": "Apply for Funding",
+      "depth": 1,
+      "pdf": false,
+      "chars": 5264,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:e82357d8f1259f87a064710e9983ee792795accbe13624d49ffa99aa063a1243"
+    }
+  ],
+  "failures": [],
+  "skipped_links": 288,
+  "chunks": [{ "id": "all", "docs": ["D1", "D2", "D3", "D4", "D5"], "chars": 26037 }],
+  "outcomes": {
+    "eligibility": "stated",
+    "documents": "stated",
+    "effort": "stated",
+    "co_finance": "stated",
+    "consortium": "not_found",
+    "after_award": "stated"
+  },
+  "written": ["eligibility", "documents", "effort", "co_finance", "after_award"],
+  "escalated": ["eligibility"],
+  "flags": [],
+  "notes": [
+    "extractor: The funding guide says grant conditions are tailored to each project and standard conditions usually include carrying out the work and maintaining the site as agreed, obtaining permissions before work starts, confirming match funding, maintaining equipment and built features for a minimum of five years, and using South Downs National Park logos in publicity. Full applications are described only as April and October rounds; no year is stated.",
+    "source south-downs-renature-fund-1: selector main dropped, a new quote sits outside it",
+    "source south-downs-renature-fund-3: added for https://southdownstrust.org.uk/app/uploads/2025/09/Enquiry-Form-NR.docx"
+  ],
+  "usd": 0
+}

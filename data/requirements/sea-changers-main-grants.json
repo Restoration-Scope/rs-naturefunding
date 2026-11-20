@@ -1,0 +1,98 @@
+{
+  "id": "sea-changers-main-grants",
+  "read_on": "2026-11-20",
+  "prompt_version": "req-2026-11-20.1",
+  "models": ["cursor:gpt-5.6-luna-high", "cursor:gpt-5.6-sol-high"],
+  "complete": false,
+  "reasons": [
+    "2 links could not be ranked without Jev",
+    "Jev did not check this reading, so an absent fact is not known to be absent"
+  ],
+  "requirements_checked": false,
+  "documents": [
+    {
+      "ref": "D1",
+      "url": "https://www.sea-changers.org.uk/grants",
+      "final_url": "https://www.sea-changers.org.uk/how-to-apply",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 9711,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:dc9a399841822ea8eaee4ebeb8c7b6a865b897664d6bcfda04e71fb2e2e3149e"
+    },
+    {
+      "ref": "D2",
+      "url": "https://www.sea-changers.org.uk/_files/ugd/387626_42cbcf398ebc4676b6547cd052efe8dd.pdf",
+      "final_url": "https://f8a4bd8c-059d-428e-9b07-f297706a15f3.filesusr.com/ugd/387626_42cbcf398ebc4676b6547cd052efe8dd.pdf",
+      "from": "https://www.sea-changers.org.uk/grants",
+      "anchor": "Evaluation Guide",
+      "depth": 1,
+      "pdf": true,
+      "chars": 1627,
+      "pages": 2,
+      "low_text": false,
+      "hash": "sha256:a240d7160032f44ad03345dca93599f6b2d8c344a85126fca5e1ce2706ee3a6d"
+    },
+    {
+      "ref": "D3",
+      "url": "https://www.sea-changers.org.uk/_files/ugd/387626_1ddbd914d376497f9ed5ec0f16e5f8ae.docx?dn=Sea-Changers%20Main%20Grant%20Application%20Form%202026.docx",
+      "final_url": "https://f8a4bd8c-059d-428e-9b07-f297706a15f3.filesusr.com/ugd/387626_1ddbd914d376497f9ed5ec0f16e5f8ae.docx?dn=Sea-Changers%20Main%20Grant%20Application%20Form%202026.docx",
+      "from": "https://www.sea-changers.org.uk/grants",
+      "anchor": "Main Grant application form",
+      "depth": 1,
+      "pdf": false,
+      "chars": 6174,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:d98428ffe78b4fe5e7950c1b427bffde4be26a43fd3021aef45c52c341fdb176"
+    },
+    {
+      "ref": "D4",
+      "url": "https://www.sea-changers.org.uk/_files/ugd/387626_1989c78e399c4aa9b38536bcbcf29812.docx?dn=Sea-Changers%20Small%20Grant%20Application%20Form%202026.docx",
+      "final_url": "https://f8a4bd8c-059d-428e-9b07-f297706a15f3.filesusr.com/ugd/387626_1989c78e399c4aa9b38536bcbcf29812.docx?dn=Sea-Changers%20Small%20Grant%20Application%20Form%202026.docx",
+      "from": "https://www.sea-changers.org.uk/grants",
+      "anchor": "Small Grant application form",
+      "depth": 1,
+      "pdf": false,
+      "chars": 6396,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:3a2817b80522fc3001ef0d0b6a0d47f03d953e4e10ba6f3fcb3b9a4934ba96ad"
+    },
+    {
+      "ref": "D5",
+      "url": "https://www.sea-changers.org.uk/_files/ugd/11499d_2b1c29c31bae41c68f98d772bde17828.pdf",
+      "final_url": "https://www.sea-changers.org.uk/_files/ugd/11499d_2b1c29c31bae41c68f98d772bde17828.pdf",
+      "from": "https://www.sea-changers.org.uk/grants",
+      "anchor": "pdf document",
+      "depth": 1,
+      "pdf": true,
+      "chars": 12820,
+      "pages": 8,
+      "low_text": false,
+      "hash": "sha256:11ca392b630d96c801c81bcd4a81c6de68ecfa5f516f3b58f41426f41400775c"
+    }
+  ],
+  "failures": [],
+  "skipped_links": 29,
+  "chunks": [{ "id": "all", "docs": ["D1", "D2", "D3", "D4", "D5"], "chars": 37530 }],
+  "outcomes": {
+    "eligibility": "stated",
+    "documents": "not_found",
+    "effort": "stated",
+    "co_finance": "not_found",
+    "consortium": "not_found",
+    "after_award": "stated"
+  },
+  "written": ["eligibility", "effort", "after_award"],
+  "escalated": ["eligibility"],
+  "flags": [],
+  "notes": [
+    "extractor: The main grant deadlines are 31 March and 30 September each year, but no year is stated. Partial funding may be considered when other funds are sought or already in place, but co-finance is not stated as required.",
+    "source sea-changers-main-grants-2: added for https://www.sea-changers.org.uk/_files/ugd/387626_1ddbd914d376497f9ed5ec0f16e5f8ae.docx?dn=Sea-Changers%20Main%20Grant%20Application%20Form%202026.docx"
+  ],
+  "usd": 0
+}

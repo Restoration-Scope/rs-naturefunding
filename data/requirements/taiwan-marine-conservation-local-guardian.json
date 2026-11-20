@@ -1,0 +1,47 @@
+{
+  "id": "taiwan-marine-conservation-local-guardian",
+  "read_on": "2026-11-20",
+  "prompt_version": "req-2026-11-20.1",
+  "models": ["cursor:gpt-5.6-luna-high"],
+  "complete": false,
+  "reasons": [
+    "the text names a document with rules that was not read: 徵件須知",
+    "Jev did not check this reading, so an absent fact is not known to be absent"
+  ],
+  "requirements_checked": false,
+  "documents": [
+    {
+      "ref": "D1",
+      "url": "https://sites.google.com/view/ocean-protect-project/%E6%8F%90%E6%A1%88%E7%94%B3%E8%AB%8B/%E8%A9%B3%E7%B4%B0%E5%BE%B5%E4%BB%B6%E8%AA%AA%E6%98%8E",
+      "final_url": "https://sites.google.com/view/ocean-protect-project/%E6%8F%90%E6%A1%88%E7%94%B3%E8%AB%8B/%E8%A9%B3%E7%B4%B0%E5%BE%B5%E4%BB%B6%E8%AA%AA%E6%98%8E",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 7052,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:078ed1de84a40ab4b879f57aee870135a53cae62ca1128899cce5059e2f6dd55"
+    }
+  ],
+  "failures": [],
+  "skipped_links": 273,
+  "chunks": [{ "id": "all", "docs": ["D1"], "chars": 7208 }],
+  "outcomes": {
+    "eligibility": "stated",
+    "documents": "stated",
+    "effort": "stated",
+    "co_finance": "stated",
+    "consortium": "not_found",
+    "after_award": "not_found"
+  },
+  "written": ["eligibility", "documents", "effort", "co_finance"],
+  "escalated": [],
+  "flags": [],
+  "notes": [
+    "eligibility \"護海領航者 applicants have run this subsidy programme for at least 3 years\": min_years dropped: the rule's quote does not state 3 years (or 36 months)",
+    "effort \"Online application and upload required electronic documents\": the quote does not state 2026-10-30 whole; left undated",
+    "extractor: The 116年度 intake is closed. The 3-year track-record rule is stated only for the 護海領航者 category. Two-year projects must self-fund the 12/1–12/31 transition period. Dates were converted from Taiwan's 115年度 calendar year."
+  ],
+  "usd": 0
+}

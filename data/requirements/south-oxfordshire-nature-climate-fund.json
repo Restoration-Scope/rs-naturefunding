@@ -1,0 +1,46 @@
+{
+  "id": "south-oxfordshire-nature-climate-fund",
+  "read_on": "2026-11-20",
+  "prompt_version": "req-2026-11-20.1",
+  "models": ["cursor:gpt-5.6-luna-high"],
+  "complete": false,
+  "reasons": [
+    "the text names a document with rules that was not read: Guidance notes on the council's website",
+    "Jev did not check this reading, so an absent fact is not known to be absent"
+  ],
+  "requirements_checked": false,
+  "documents": [
+    {
+      "ref": "D1",
+      "url": "https://www.southandvale.gov.uk/app/uploads/sites/2/2026/07/South-Nature-and-Climate-Action-Fund-Policy-Guidance-2026-27.pdf",
+      "final_url": "https://www.southandvale.gov.uk/app/uploads/sites/2/2026/07/South-Nature-and-Climate-Action-Fund-Policy-Guidance-2026-27.pdf",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": true,
+      "chars": 14338,
+      "pages": 7,
+      "low_text": false,
+      "hash": "sha256:5ee52fcdb56989578bd177db087dee1b961a7dff0d25181ddb34fcf2ca34c207"
+    }
+  ],
+  "failures": [],
+  "skipped_links": 0,
+  "chunks": [{ "id": "all", "docs": ["D1"], "chars": 14481 }],
+  "outcomes": {
+    "eligibility": "stated",
+    "documents": "stated",
+    "effort": "stated",
+    "co_finance": "stated",
+    "consortium": "not_found",
+    "after_award": "not_found"
+  },
+  "written": ["eligibility", "documents", "effort", "co_finance"],
+  "escalated": [],
+  "flags": [],
+  "notes": [
+    "extractor: The 2026/27 guidance states that town/parish councils and parish meetings are eligible, and they may apply on behalf of local unconstituted groups. Governance and financial records may be requested for every fifth application and from organisations that have not received council funding in the last 12 months. Standard conditions include spending the grant on the listed project within 12 months, complying with relevant policies and legislation, consulting the climate and biodiversity team about significant changes, and acknowledging council support. No report, audit, site-visit, or training duty is stated. Opening and closing dates are not stated.",
+    "source south-oxfordshire-nature-climate-fund-1: selector main dropped, a new quote sits outside it"
+  ],
+  "usd": 0
+}
