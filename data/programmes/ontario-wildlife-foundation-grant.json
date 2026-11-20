@@ -9,16 +9,11 @@
   "parent": null,
   "url": "https://www.ontwf.org/projects/grant-application/",
   "summary": "Grant for conservation and enhancement projects in Ontario that deliver a benefit to the local, regional or provincial community. Land purchases, staffing and travel to conferences are not funded.",
-  "approaches": [
-    "community_conservation",
-    "research"
-  ],
+  "approaches": ["community_conservation", "research"],
   "applicant_types": null,
   "geography": {
     "scope": "countries",
-    "countries": [
-      "CA"
-    ],
+    "countries": ["CA"],
     "label": "Ontario"
   },
   "access": "direct",
@@ -26,6 +21,26 @@
   "amount": null,
   "co_finance_required": null,
   "reporting": "The project coordinator submits a final report covering the project, how the funds were used and the benefit to the community; an interim report may be requested if the project runs into the following year.",
+  "eligibility": [
+    {
+      "rule": "Net benefit goes to the local, regional or provincial community, not e.g. a private property",
+      "kind": "project"
+    },
+    {
+      "rule": "No conference or seminar travel, legal actions, land acquisitions, or staffing and salaries",
+      "kind": "project"
+    }
+  ],
+  "effort": {
+    "steps": [
+      "Application form by email",
+      "Board decision at its annual summer meeting"
+    ],
+    "due": ["2027-05-30", null]
+  },
+  "after_award": {
+    "reports": "final"
+  },
   "calls": [
     {
       "id": "2027",
@@ -77,7 +92,43 @@
       "quote": "Your project coordinator must submit a final report to the OWF including details of the project, an outline of how the OWF funds were used and the benefit(s) to the community.",
       "checked_at": "2026-11-13",
       "method": "page"
-    }
+    },
+    "eligibility": [
+      {
+        "source_url": "https://www.ontwf.org/projects/grant-application/",
+        "quote": "The OWF will not support projects where the net benefit will not be realized by the local, regional, or provincial community (e.g. enhancement of privately owned property)",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.ontwf.org/projects/grant-application/",
+        "quote": "The OWF will not provide funds for travel expense to conferences/seminars, for legal actions, land acquisitions or staffing/salaries.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "effort": [
+      {
+        "source_url": "https://www.ontwf.org/projects/grant-application/",
+        "quote": "Submission deadline – May 30, 2027",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.ontwf.org/projects/grant-application/",
+        "quote": "Final approval of applications will be determined at the OWF Board of Directors annual meeting each summer.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "after_award": [
+      {
+        "source_url": "https://www.ontwf.org/projects/grant-application/",
+        "quote": "Your project coordinator must submit a final report to the OWF including details of the project, an outline of how the OWF funds were used and the benefit(s) to the community.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ]
   },
   "checked_at": "2026-11-13"
 }

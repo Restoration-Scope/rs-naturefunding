@@ -1,0 +1,66 @@
+{
+  "id": "muenster-naturschutzfoerderung",
+  "read_on": "2026-11-20",
+  "prompt_version": "req-2026-11-20.1",
+  "models": ["cursor:gpt-5.6-luna-high"],
+  "complete": false,
+  "reasons": [
+    "https://geo.stadt-muenster.de/webgis/application/Stadtplan: too little text: the page may need a browser",
+    "Jev did not check this reading, so an absent fact is not known to be absent"
+  ],
+  "requirements_checked": false,
+  "documents": [
+    {
+      "ref": "D1",
+      "url": "https://www.stadt-muenster.de/gruen/naturschutz/naturschutzfoerderung",
+      "final_url": "https://www.stadt-muenster.de/gruen/naturschutz/naturschutzfoerderung",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 5109,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:8d02deb63e6031cc2773b3d8a200e2bd069721aa1e5656cdbaab58ba06e93056"
+    },
+    {
+      "ref": "D2",
+      "url": "https://geo.stadt-muenster.de/webgis/application/Stadtplan",
+      "final_url": "https://geo.stadt-muenster.de/stadtplan/",
+      "from": "https://www.stadt-muenster.de/gruen/naturschutz/naturschutzfoerderung",
+      "anchor": "Stadtplan",
+      "depth": 1,
+      "pdf": false,
+      "chars": 9,
+      "pages": null,
+      "low_text": true,
+      "hash": "sha256:70d7de0fba4b8d1d1aa09fbc2c3f3d7499f05d3e15883b726320e96d502c14a5"
+    }
+  ],
+  "failures": [
+    {
+      "url": "https://geo.stadt-muenster.de/webgis/application/Stadtplan",
+      "from": "https://www.stadt-muenster.de/gruen/naturschutz/naturschutzfoerderung",
+      "kind": "low_text",
+      "message": "too little text: the page may need a browser"
+    }
+  ],
+  "skipped_links": 111,
+  "chunks": [{ "id": "all", "docs": ["D1", "D2"], "chars": 5355 }],
+  "outcomes": {
+    "eligibility": "not_found",
+    "documents": "not_found",
+    "effort": "not_found",
+    "co_finance": "unresolved",
+    "consortium": "not_found",
+    "after_award": "not_found"
+  },
+  "written": [],
+  "escalated": [],
+  "flags": [],
+  "notes": [
+    "extractor: D1 states that applicants generally must provide their own contribution, but gives no amount, percentage, or exceptions. No current or next round is listed.",
+    "co_finance: the file states whether co-funding is required, this reading found nothing"
+  ],
+  "usd": 0
+}

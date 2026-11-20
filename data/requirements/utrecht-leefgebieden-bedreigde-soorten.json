@@ -1,0 +1,62 @@
+{
+  "id": "utrecht-leefgebieden-bedreigde-soorten",
+  "read_on": "2026-11-20",
+  "prompt_version": "req-2026-11-20.1",
+  "models": ["cursor:gpt-5.6-luna-high"],
+  "complete": false,
+  "reasons": [
+    "6 links could not be ranked without Jev",
+    "the text names a document with rules that was not read: Subsidieregeling Leefomgeving landelijk gebied",
+    "the text names a document with rules that was not read: Algemene subsidie verordening provincie Utrecht (AsvpU)",
+    "Jev did not check this reading, so an absent fact is not known to be absent"
+  ],
+  "requirements_checked": false,
+  "documents": [
+    {
+      "ref": "D1",
+      "url": "https://www.provincie-utrecht.nl/loket/subsidies/leefgebieden-bedreigde-soorten",
+      "final_url": "https://www.provincie-utrecht.nl/loket/subsidies/leefgebieden-bedreigde-soorten",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 6671,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:c96ee9adb57d4f661bbb298cbd1675e2a37a7d98929beb28120772ae44e7d656"
+    },
+    {
+      "ref": "D2",
+      "url": "https://www.provincie-utrecht.nl/loket/subsidies/hoe-kunt-u-subsidie-aanvragen",
+      "final_url": "https://www.provincie-utrecht.nl/loket/subsidies/hoe-kunt-u-subsidie-aanvragen",
+      "from": "https://www.provincie-utrecht.nl/loket/subsidies/leefgebieden-bedreigde-soorten",
+      "anchor": "Lees meer over het aanvragen van subsidie",
+      "depth": 1,
+      "pdf": false,
+      "chars": 11752,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:022db189487d3cd8307d1150df453e8396140d06843ced5a69c031bf3b35be5f"
+    }
+  ],
+  "failures": [],
+  "skipped_links": 184,
+  "chunks": [{ "id": "all", "docs": ["D1", "D2"], "chars": 18700 }],
+  "outcomes": {
+    "eligibility": "stated",
+    "documents": "stated",
+    "effort": "stated",
+    "co_finance": "stated",
+    "consortium": "stated",
+    "after_award": "stated"
+  },
+  "written": ["eligibility", "documents", "effort", "co_finance", "consortium", "after_award"],
+  "escalated": [],
+  "flags": [],
+  "notes": [
+    "co_finance: share 5% dropped, its quote does not state it",
+    "extractor: The subsidy normally covers 95% of eligible costs, but covers 50% for urban projects on municipal property; the applicant brings the remainder.",
+    "source utrecht-leefgebieden-bedreigde-soorten-2: added for https://www.provincie-utrecht.nl/loket/subsidies/hoe-kunt-u-subsidie-aanvragen"
+  ],
+  "usd": 0
+}

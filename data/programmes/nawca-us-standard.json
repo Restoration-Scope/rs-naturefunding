@@ -1,19 +1,96 @@
 {
   "id": "nawca-us-standard",
   "name": "North American Wetlands Conservation Act (NAWCA) U.S. Standard Grants",
-  "funder": { "name": "U.S. Fish and Wildlife Service", "url": "https://www.fws.gov/" },
+  "funder": {
+    "name": "U.S. Fish and Wildlife Service",
+    "url": "https://www.fws.gov/"
+  },
   "administered_by": null,
   "parent": null,
   "url": "https://www.fws.gov/service/north-american-wetlands-conservation-act-nawca-grants-us-standard",
   "summary": "US federal matching grants for partnerships that protect, restore or enhance wetlands and nearby uplands for waterfowl and other wetland birds. Requests of $250,000 or less go to the separate NAWCA Small Grants programme; research is not funded.",
-  "approaches": ["wetlands", "protected_areas", "species_conservation"],
-  "applicant_types": ["ngo", "government", "indigenous_organization", "research_institution", "company"],
-  "geography": { "scope": "countries", "countries": ["US"], "label": "United States" },
+  "approaches": [
+    "wetlands",
+    "protected_areas",
+    "species_conservation"
+  ],
+  "applicant_types": [
+    "ngo",
+    "government",
+    "indigenous_organization",
+    "research_institution",
+    "company"
+  ],
+  "geography": {
+    "scope": "countries",
+    "countries": [
+      "US"
+    ],
+    "label": "United States"
+  },
   "access": "direct",
   "window": "fixed",
-  "amount": { "currency": "USD", "min": 250001, "max": 3000000 },
+  "amount": {
+    "currency": "USD",
+    "min": 250001,
+    "max": 3000000
+  },
   "co_finance_required": true,
   "reporting": "Recipients file federal financial reports and programme performance reports, on the schedule set in the notice of award.",
+  "effort": {
+    "steps": [
+      "U.S. Standard proposal submission",
+      "Clarification response after eligibility review",
+      "Proposal scoring and site visit, if needed",
+      "Council Staff, Council and MBCC question response"
+    ],
+    "due": [
+      "2026-09-25",
+      null,
+      null,
+      null
+    ]
+  },
+  "eligibility": [
+    {
+      "rule": "Match is non-Federal, no more than 2 years old, and at least equal to the request",
+      "kind": "finances"
+    },
+    {
+      "rule": "All costs link directly to eligible acres completed during the project period",
+      "kind": "project"
+    },
+    {
+      "rule": "Project includes adequate uplands to buffer wetlands and support associated wildlife",
+      "kind": "project"
+    },
+    {
+      "rule": "Project has a defined boundary containing affected tracts in one geographic area",
+      "kind": "project"
+    },
+    {
+      "rule": "Principal Investigator is affiliated with the recipient and knowledgeable about the proposal",
+      "kind": "capacity"
+    },
+    {
+      "rule": "Any real property acquisitions are from willing sellers",
+      "kind": "project"
+    },
+    {
+      "rule": "Acquired lands include public access compatible with long-term conservation",
+      "kind": "project"
+    }
+  ],
+  "co_finance": {
+    "ratio": "1:1"
+  },
+  "after_award": {
+    "reports": "yearly"
+  },
+  "documents": [
+    "Partner Contribution Statements signed and dated by each partner, including non-match partners",
+    "Copy of easements and/or leases, if offered as match and signed at submission"
+  ],
   "calls": [
     {
       "id": "2026-2",
@@ -21,7 +98,12 @@
       "url": "https://www.grants.gov/search-results-detail/361755",
       "status": "closed",
       "opens": null,
-      "deadline": { "date": "2026-05-07", "time": "23:59", "timezone": "America/New_York", "text": "Cycle 2: May 7, 2026 (11:59 PM ET) - Special one-time deadline" },
+      "deadline": {
+        "date": "2026-05-07",
+        "time": "23:59",
+        "timezone": "America/New_York",
+        "text": "Cycle 2: May 7, 2026 (11:59 PM ET) - Special one-time deadline"
+      },
       "evidence": {
         "status": {
           "source_url": "https://www.grants.gov/grantsws/rest/opportunity/att/download/350976",
@@ -70,9 +152,9 @@
       "method": "page"
     },
     "co_finance_required": {
-      "source_url": "https://www.grants.gov/grantsws/rest/opportunity/att/download/350975",
-      "quote": "The program requires a minimum 1:1 non-federal match.",
-      "checked_at": "2026-11-02",
+      "source_url": "https://www.fws.gov/service/north-american-wetlands-conservation-act-nawca-grants-us-standard",
+      "quote": "Partners must match their grants request at no less than a 1-to-1 ratio.",
+      "checked_at": "2026-11-20",
       "method": "page"
     },
     "reporting": {
@@ -80,7 +162,105 @@
       "quote": "Submit Federal Financial reports and Program Performance reports.",
       "checked_at": "2026-11-02",
       "method": "page"
-    }
+    },
+    "effort": [
+      {
+        "source_url": "https://www.fws.gov/sites/default/files/documents/2026-07/north-american-wetlands-conservation-act-us-eligibility-criteria-and-processes.pdf",
+        "quote": "Cycle 1: September 25, 2026 (11:59 PM ET)",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.fws.gov/sites/default/files/documents/2026-07/north-american-wetlands-conservation-act-us-eligibility-criteria-and-processes.pdf",
+        "quote": "The FWS Program Office will typically request that you respond via email within 72 hours of receiving it to ensure that the scoring of your proposal will not be impacted due to insufficient information or that the proposal is determined to be ineligible for further review.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.fws.gov/sites/default/files/documents/2026-07/north-american-wetlands-conservation-act-us-eligibility-criteria-and-processes.pdf",
+        "quote": "The proposal has been scored. Site visits will be scheduled, if needed.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.fws.gov/sites/default/files/documents/2026-07/north-american-wetlands-conservation-act-us-eligibility-criteria-and-processes.pdf",
+        "quote": "Each Council Staff, Council, and Migratory Bird Conservation Commission (MBCC) meeting, the Principal Investigator must be available to respond to questions about the proposal.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "eligibility": [
+      {
+        "source_url": "https://www.fws.gov/sites/default/files/documents/2026-07/north-american-wetlands-conservation-act-us-eligibility-criteria-and-processes.pdf",
+        "quote": "Match must be no more than 2 years old, non-Federal in origin and equal to, or exceed, the grant request (referred to as a 1:1 match).",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.fws.gov/sites/default/files/documents/2026-07/north-american-wetlands-conservation-act-us-eligibility-criteria-and-processes.pdf",
+        "quote": "All costs must be directly linked to eligible acquired, restored, enhanced, or established acres that are completed DURING the project period.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.fws.gov/sites/default/files/documents/2026-07/north-american-wetlands-conservation-act-us-eligibility-criteria-and-processes.pdf",
+        "quote": "Contains adequate wetlands-associated uplands to buffer and protect wetlands and meet the needs of wetland-associated wildlife.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.fws.gov/sites/default/files/documents/2026-07/north-american-wetlands-conservation-act-us-eligibility-criteria-and-processes.pdf",
+        "quote": "Has a specifically defined boundary that includes tracts in a geographic area (such as a watershed) affected by grant and partner funds.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.fws.gov/sites/default/files/documents/2026-07/north-american-wetlands-conservation-act-us-eligibility-criteria-and-processes.pdf",
+        "quote": "The Principal Investigator must be affiliated with the grant recipient's organization and must be knowledgeable about the biological, partnership, and administrative aspects of the proposal.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.fws.gov/sites/default/files/documents/2026-07/north-american-wetlands-conservation-act-us-eligibility-criteria-and-processes.pdf",
+        "quote": "All real property acquisitions must be from willing sellers.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.fws.gov/sites/default/files/documents/2026-07/north-american-wetlands-conservation-act-us-eligibility-criteria-and-processes.pdf",
+        "quote": "Includes public access on acquired lands to the extent that it is compatible with long-term conservation of fish and wildlife dependent on the area.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "co_finance": {
+      "source_url": "https://www.fws.gov/sites/default/files/documents/2026-07/north-american-wetlands-conservation-act-us-eligibility-criteria-and-processes.pdf",
+      "quote": "Match must be no more than 2 years old, non-Federal in origin and equal to, or exceed, the grant request (referred to as a 1:1 match).",
+      "checked_at": "2026-11-20",
+      "method": "page"
+    },
+    "after_award": [
+      {
+        "source_url": "https://www.fws.gov/sites/default/files/documents/2026-07/north-american-wetlands-conservation-act-us-eligibility-criteria-and-processes.pdf",
+        "quote": "The Principal Investigator is responsible for all correspondence regarding a proposal and award, including annual and final reporting.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "documents": [
+      {
+        "source_url": "https://www.fws.gov/sites/default/files/documents/2026-07/north-american-wetlands-conservation-act-us-eligibility-criteria-and-processes.pdf",
+        "quote": "Includes Partner Contribution Statements signed and dated by each partner (including non-match partners).",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.fws.gov/sites/default/files/documents/2026-07/north-american-wetlands-conservation-act-us-eligibility-criteria-and-processes.pdf",
+        "quote": "a copy of easements and/or leases if the easements or leases are offered as match and are signed at the time the proposal is submitted.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ]
   },
   "checked_at": "2026-11-02"
 }

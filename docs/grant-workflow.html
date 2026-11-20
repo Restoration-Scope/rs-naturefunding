@@ -1,0 +1,388 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Grant workflow</title>
+<script>
+  // Theme before first paint: saved choice, else the system's, else dark (pele.run's own).
+  (function () {
+    var t;
+    try { t = localStorage.getItem('pele-theme'); } catch (e) {}
+    if (t !== 'light' && t !== 'dark') t = matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+    document.documentElement.dataset.theme = t;
+  })();
+</script>
+<style>
+  /* Styles follow pele.run (Flexoki palette). Light page chrome is the Flexoki light counterpart. */
+  :root {
+    --font-size-title: clamp(2rem, 4vw, 2.5rem);
+    --font-size-heading: 1.25rem;
+    --font-size-body: clamp(1rem, .875rem + .2vw, 1.125rem);
+    --font-size-small: .875rem;
+    --radius-small: 6px;
+    --radius-panel: 12px;
+    --radius-pill: 999px;
+    --header-height: 64px;
+    --gutter: 24px;
+    --reading: calc(var(--font-size-body) * 42);
+    --sidebar-width: 180px;
+    --sidebar-gap: 32px;
+    /* Where the content column starts: the left gutter, plus the sidebar when there is one. */
+    --content-start: var(--gutter);
+    --font-sans: -apple-system, BlinkMacSystemFont, "Inter Variable", Inter, "Segoe UI", Helvetica, Arial, sans-serif;
+    --font-mono: ui-monospace, SFMono-Regular, "Cascadia Code", "IBM Plex Mono", "Roboto Mono", Menlo, Monaco, Consolas, monospace;
+  }
+  :root[data-theme="dark"] {
+    color-scheme: dark;
+    --ink: #100f0f; --panel: #1c1b1a; --line: #282726; --line-hover: #343331; --line-active: #403e3c;
+    --faint: #575653; --muted: #878580; --body: #cecdc3; --paper: #cecdc3; --hover: #f2f0e5;
+    --green: #879a39; --red: #d14d41; --accent: var(--paper);
+    --pele-fg: #cecdc3; --pele-muted: #878580; --pele-line: #cecdc3; --pele-accent: #4385be; --pele-critical: #d14d41;
+    --pele-series-1: #d14d41; --pele-series-2: #da702c; --pele-series-3: #d0a215; --pele-series-4: #879a39;
+    --pele-series-5: #3aa99f; --pele-series-6: #4385be; --pele-series-7: #8b7ec8; --pele-series-8: #ce5d97;
+    /* Meaning colours: `class X good` in a diagram fills node X (see .pele-node rules below). */
+    --pele-good: #24372a; --pele-warn: #3d3215; --pele-bad: #3e1f1c; --pele-info: #1c2b3d; --pele-store: #2c2638;
+    --pele-good-line: #879a39; --pele-warn-line: #d0a215; --pele-bad-line: #d14d41; --pele-info-line: #4385be; --pele-store-line: #8b7ec8;
+  }
+  :root[data-theme="light"] {
+    color-scheme: light;
+    --ink: #fffcf0; --panel: #f2f0e5; --line: #e6e4d9; --line-hover: #dad8ce; --line-active: #cecdc3;
+    --faint: #b7b5ac; --muted: #6f6e69; --body: #100f0f; --paper: #100f0f; --hover: #100f0f;
+    --green: #66800b; --red: #af3029; --accent: var(--paper);
+    --pele-fg: #100f0f; --pele-muted: #6f6e69; --pele-line: #100f0f; --pele-accent: #205ea6; --pele-critical: #af3029;
+    --pele-series-1: #af3029; --pele-series-2: #bc5215; --pele-series-3: #ad8301; --pele-series-4: #66800b;
+    --pele-series-5: #24837b; --pele-series-6: #205ea6; --pele-series-7: #5e409d; --pele-series-8: #a02f6f;
+    --pele-good: #e4eccb; --pele-warn: #f6e7b8; --pele-bad: #f6d6d0; --pele-info: #d6e4f3; --pele-store: #e6e0f3;
+    --pele-good-line: #66800b; --pele-warn-line: #ad8301; --pele-bad-line: #af3029; --pele-info-line: #205ea6; --pele-store-line: #5e409d;
+  }
+
+  /* `class <ids> good|warn|bad|info|store` colours nodes in flowchart, state and ER diagrams, following the theme
+     (classDef colours can't: they are fixed, and Pele rejects var() in them). Sequence diagrams use rect var(--pele-good). */
+  .pele-node.good > :is(rect, path, polygon, circle, ellipse) { fill: var(--pele-good); stroke: var(--pele-good-line); }
+  .pele-node.warn > :is(rect, path, polygon, circle, ellipse) { fill: var(--pele-warn); stroke: var(--pele-warn-line); }
+  .pele-node.bad > :is(rect, path, polygon, circle, ellipse) { fill: var(--pele-bad); stroke: var(--pele-bad-line); }
+  .pele-node.info > :is(rect, path, polygon, circle, ellipse) { fill: var(--pele-info); stroke: var(--pele-info-line); }
+  .pele-node.store > :is(rect, path, polygon, circle, ellipse) { fill: var(--pele-store); stroke: var(--pele-store-line); }
+
+  body {
+    margin: 0; background: var(--ink); color: var(--body);
+    font-family: var(--font-sans); font-size: var(--font-size-body); line-height: 1.55;
+    text-rendering: optimizeLegibility; -webkit-font-smoothing: antialiased;
+  }
+  a { color: var(--paper); text-decoration-color: var(--faint); text-underline-offset: 3px; }
+  a:hover { color: var(--hover); text-decoration-color: currentColor; }
+  code { font-family: var(--font-mono); font-size: .9em; }
+
+  .site-header {
+    position: absolute; inset-inline: 0; top: 0; height: var(--header-height);
+    display: flex; align-items: center; justify-content: flex-end; padding-inline: 24px;
+  }
+
+  /* Light/Dark switch: pele.run's segmented control. */
+  .segmented-control {
+    --selected-index: 0; position: relative; isolation: isolate; display: inline-grid;
+    grid-auto-flow: column; grid-auto-columns: 1fr; border-radius: var(--radius-pill);
+    background: var(--panel); font-size: var(--font-size-small);
+  }
+  .segmented-control::before {
+    content: ""; position: absolute; inset-block: 0; inset-inline-start: 0; z-index: -1;
+    width: 50%; border-radius: var(--radius-pill); background: var(--line); pointer-events: none;
+    transform: translateX(calc(var(--selected-index) * 100%)); transition: transform .2s;
+  }
+  .segmented-control:has(> button:nth-of-type(2)[aria-pressed="true"]) { --selected-index: 1; }
+  .segmented-control > button {
+    border: 0; background: none; font: inherit; color: var(--muted); cursor: pointer;
+    padding: 4px 10px; border-radius: var(--radius-pill); user-select: none;
+  }
+  .segmented-control > button[aria-pressed="true"], .segmented-control > button:hover { color: var(--paper); }
+  .segmented-control > button:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+  @media (prefers-reduced-motion: reduce) { .segmented-control::before { transition: none; } }
+
+  /* Left table of contents, as on pele.run's docs pages. */
+  .toc { user-select: none; display: grid; gap: 8px; }
+  .toc a { color: var(--muted); font-size: var(--font-size-small); line-height: 1.25; text-decoration: none; transition: color .2s; }
+  .toc a:hover, .toc a[aria-current="location"] { color: var(--paper); }
+  .toc .toc-title { color: var(--paper); font-weight: 500; }
+  .toc .toc-children { display: grid; gap: 8px; border-inline-start: 1px solid var(--line); padding-inline-start: 12px; }
+  .toc-sidebar {
+    position: fixed; top: var(--header-height); inset-inline-start: var(--gutter);
+    width: var(--sidebar-width);
+    max-height: calc(100dvh - var(--header-height) - 20px); overflow-y: auto;
+  }
+  .toc-inline { display: none; margin: 32px 0 0; padding: 16px 20px; border-radius: var(--radius-panel); background: var(--panel); }
+
+  /* Edge to edge: the column runs from the sidebar (or left gutter) to the right gutter. Diagram cards fill it;
+     text stays at reading width, centered on the page. */
+  .docs-layout { padding: 64px var(--gutter) 72px var(--content-start); }
+  @media (width >= 761px) {
+    body.has-toc { --content-start: calc(var(--gutter) + var(--sidebar-width) + var(--sidebar-gap)); }
+  }
+  .docs-title, main > section > h2, main > section > p {
+    max-width: var(--reading);
+    margin-inline-start: max(0px, (100vw - var(--reading)) / 2 - var(--content-start));
+    margin-inline-end: auto;
+  }
+  @media (width <= 760px) {
+    .toc-sidebar { display: none; }
+    body.has-toc .toc-inline { display: grid; }
+  }
+  body:not(.has-toc) .toc-sidebar { display: none; }
+
+  .docs-title h1 { color: var(--paper); font-size: var(--font-size-title); letter-spacing: -.025em; line-height: 1.2; font-weight: 600; margin: 0; }
+  .lede { margin: 16px 0 0; }
+  main > section { scroll-margin-top: 32px; }
+  main > section > h2 { color: var(--paper); font-size: var(--font-size-heading); font-weight: 500; margin-block: 56px 16px; }
+  main > section > p { margin-block: 0 16px; }
+
+  /* Diagram card: pele.run's example-card, with diagram colors drawn from the panel tones. */
+  .example-card { border-radius: var(--radius-panel); background: var(--panel); margin: 0 0 20px; padding: 12px 20px 24px; overflow: hidden; }
+  .example-label { min-height: 28px; display: flex; align-items: center; justify-content: space-between; gap: 16px; margin-inline-end: -8px; color: var(--muted); font-size: var(--font-size-small); }
+  .example-type { font-family: var(--font-mono); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .copy-button { display: grid; place-items: center; width: 28px; height: 28px; border: 0; border-radius: var(--radius-small); background: none; color: var(--muted); cursor: pointer; }
+  .copy-button:hover { background: var(--line); color: var(--paper); }
+  .copy-button:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; }
+  .copy-button[data-copied] { color: var(--green); }
+  .example-figure {
+    display: block; width: 100%; min-width: 0; margin-top: 18px; color: var(--muted); font-size: var(--font-size-small);
+    --pele-font: var(--font-sans); --pele-font-mono: var(--font-mono); --pele-radius: var(--radius-small);
+    --pele-bg: var(--panel); --pele-surface: var(--line); --pele-surface-alt: var(--line-hover); --pele-border: var(--line-active);
+  }
+  /* Diagrams grow to the card's width (up to 1.5x their natural size, so small ones don't get huge text) and stop at
+     the screen's height. Pele sets an inline max-width, hence !important. */
+  .example-figure svg.pele {
+    display: block; width: 100%; height: auto; margin-inline: auto;
+    max-width: min(100%, var(--grow-to, 100%)) !important;
+    max-height: calc(100dvh - 120px);
+  }
+  .example-figure svg.pele:focus { outline: none; }
+  .example-source { font-family: var(--font-mono); white-space: pre-wrap; margin: 0; overflow-x: auto; }
+  @media (width <= 480px) { .example-card { padding-inline: 16px; } }
+
+  ::selection { background: color-mix(in srgb, var(--paper) 18%, transparent); }
+</style>
+</head>
+<body>
+<header class="site-header">
+  <div class="segmented-control" role="group" aria-label="Theme">
+    <button type="button" data-theme-choice="light">Light</button>
+    <button type="button" data-theme-choice="dark">Dark</button>
+  </div>
+</header>
+<nav class="toc toc-sidebar" aria-label="Diagrams"></nav>
+
+<div class="docs-layout">
+  <div class="docs-title">
+    <h1>Grant workflow</h1>
+    <p class="lede">How naturefunding.org finds a grant, checks it and works out what it takes an operator to apply.</p>
+  </div>
+  <nav class="toc toc-inline" aria-label="Diagrams"></nav>
+
+  <main>
+    <!-- One <section> per diagram. The h2 becomes its table-of-contents entry.
+         Mermaid goes inside <script type="text/plain" class="mermaid"> as is: no HTML escaping. -->
+    <section id="find">
+      <h2>1. From tip to listing</h2>
+      <p>Tips come from anywhere; facts come only from the funder’s own page. Green: code, automatic. Blue: a model reads, or not built yet (marked “Next”). Amber: a person or a strong model decides. Red: left out. Purple: data in the repo.</p>
+      <script type="text/plain" class="mermaid">
+flowchart TB
+  T1["fa:fa-radar Daily APIs<br/>EU Funding & Tenders, grants.gov"] --> I
+  T2["fa:fa-search Weekly web search<br/>by region, theme, language"] --> I
+  T3["fa:fa-book-open Directories and guides<br/>tips only, never copied"] --> I
+  I["fa:fa-inbox Review issue<br/>one row per new funder or call"] --> F
+  F["fa:fa-globe Funder’s own call page"] --> TR
+  TR{"fa:fa-list-checks Triage<br/>docs/triage-criteria.md"}
+  TR -->|accept| L
+  TR -->|"hold: unclear, or details<br/>only on third-party sites"| H["fa:fa-user Bernat reviews"]
+  TR -->|"reject: farmer payments, students,<br/>agencies only, not nature"| R["fa:fa-x Not listed"]
+  L["fa:fa-file-json Listing in data/programmes<br/>every fact: source_url, quote, checked_at"] --> V
+  V["fa:fa-shield-check validate + verify-quotes<br/>every quote found on its page"] --> RQ
+  RQ["fa:fa-file-search Requirements pipeline<br/>diagram 2"]
+  K["fa:fa-refresh-cw Daily refresh<br/>page same: re-date facts; changed: PR"] --> L
+  class T1,T2,V,K good
+  class T3,F info
+  class I,H warn
+  class R bad
+  class L,RQ store
+      </script>
+    </section>
+
+    <section id="read">
+      <h2>2. Reading what it takes to apply</h2>
+      <p>Code owns the workflow and every check it can state; models only read language. One programme at a time, ~30 per pull request.</p>
+      <script type="text/plain" class="mermaid">
+flowchart TB
+  Q["fa:fa-list-ordered 1 Queue<br/>never read, page changed, new round, 12 months old"] --> G
+  G["fa:fa-link 2 Gather<br/>call pages and linked PDFs, depth 2, up to 8"] --> E
+  E["fa:fa-bot 3 Extract, cheap model<br/>each item with a verbatim quote, or not_found"] --> VE
+  VE{"fa:fa-shield-check 4 Verify, code<br/>schema, quote on page, dates"}
+  VE -->|fails| D["fa:fa-trash Item dropped"]
+  VE -->|passes| C
+  C{"fa:fa-scale 5 Check, Jev<br/>rule vs quote, polarity, missed facts"}
+  C -->|flagged| S["fa:fa-brain 6 Escalate, strong model<br/>fixed or unresolved"]
+  S -->|fixed| VE
+  S -->|unresolved| P["fa:fa-user Agent or Bernat<br/>browser, OCR, blocked pages"]
+  C -->|clean| W
+  W["fa:fa-file-json 7 Write<br/>facts + coverage in data/requirements"] --> LA
+  LA["fa:fa-git-pull-request 8 Land<br/>cross-family fact review per batch"] --> B
+  B["fa:fa-gauge Effort bars, computed at build<br/>no model picks a colour"]
+  class Q,G,VE,B good
+  class E,C info
+  class S,P,LA warn
+  class D bad
+  class W store
+      </script>
+    </section>
+
+    <section id="apply">
+      <h2>3. The applicant’s view</h2>
+      <p>What we structure from the pages, and how it turns into a decision for one operator. “Next” marks what isn’t built yet.</p>
+      <script type="text/plain" class="mermaid">
+flowchart TB
+  CP["fa:fa-globe Call page and everything it links"]
+  CP --> HOW["fa:fa-mouse-pointer-click Next: how you apply<br/>online form, PDF or Word form, portal, email"]
+  CP --> ST["fa:fa-footprints Steps and due dates"]
+  CP --> DO["fa:fa-files Documents at the first step"]
+  CP --> EL["fa:fa-ban Rules that rule you out<br/>typed: years operating, revenue"]
+  CP --> MO["fa:fa-coins Amount, co-funding, consortium"]
+  CP --> AF["fa:fa-clipboard-list After the award<br/>reports, audits, visits"]
+  CP --> HI["fa:fa-eye Next: hidden criteria<br/>form fields, FAQs, earlier rounds,<br/>launch posts, who got funded"]
+  HI -->|"limit only in an earlier round,<br/>or guidance named but not linked"| FL["fa:fa-flag A lead, not a fact<br/>flag to Bernat, ask the funder"]
+  HOW & ST & DO & EL & MO & AF & HI --> FIT
+  FIT{"fa:fa-user-check For this operator"}
+  FIT -->|"can’t apply"| NO["fa:fa-x Next: greyed out"]
+  FIT -->|"effort beyond the return"| LOW["fa:fa-arrow-down Ranked down<br/>effort bars, worth-applying check"]
+  FIT -->|good fit| GO["fa:fa-check Worth applying"]
+  GO --> WR["fa:fa-pen-line Next: writing support<br/>help, not automated applications"]
+  class ST,DO,EL,MO,AF,LOW,GO good
+  class HOW,HI,WR,FIT info
+  class FL warn
+  class NO bad
+  class CP store
+      </script>
+    </section>
+  </main>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/lucide@0.469.0/dist/umd/lucide.min.js"
+        integrity="sha384-hJnF5AwidE18GSWTAGHv3ByzzvfNZ1Tcx5y1UUV3WkauuMCEzBJBMSwSt/PUPXnM"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/pele@1.13.0/dist/pele.global.js"
+        integrity="sha384-vDPV1LDXGIwjU5/gMUtHbn/WAmwRmOgkQpiq+Rm4d/BPTsdfpIUpvi2xVET6z85W"
+        crossorigin="anonymous"></script>
+<script>
+(function () {
+  var root = document.documentElement;
+
+  // Theme switch. Colors are CSS variables, so diagrams change without re-rendering.
+  var buttons = document.querySelectorAll('[data-theme-choice]');
+  function showTheme() {
+    buttons.forEach(function (b) { b.setAttribute('aria-pressed', String(b.dataset.themeChoice === root.dataset.theme)); });
+  }
+  buttons.forEach(function (b) {
+    b.addEventListener('click', function () {
+      root.dataset.theme = b.dataset.themeChoice;
+      try { localStorage.setItem('pele-theme', root.dataset.theme); } catch (e) {}
+      showTheme();
+    });
+  });
+  showTheme();
+
+  function dedent(text) {
+    var lines = text.replace(/^\s*\n/, '').replace(/\s+$/, '').split('\n');
+    var indent = Math.min.apply(null, lines.filter(function (l) { return l.trim(); }).map(function (l) { return l.match(/^\s*/)[0].length; }));
+    return lines.map(function (l) { return l.slice(indent); }).join('\n');
+  }
+  function slug(text) {
+    return text.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '') || 'diagram';
+  }
+  // Icons: `fa:fa-<name>` in a label draws the Lucide icon of that name (lucide.dev/icons), e.g. fa:fa-mail.
+  function lucideIcon(name) {
+    var key = String(name).replace(/^[a-z]*:/, '').replace(/^fa-/, '');
+    var pascal = key.split('-').map(function (w) { return w.charAt(0).toUpperCase() + w.slice(1); }).join('');
+    var node = window.lucide && lucide.icons && lucide.icons[pascal];
+    if (!node) return null;
+    if (node[0] === 'svg') node = node[2]; // the UMD build wraps the children in ['svg', attrs, children]
+    var children = node.map(function (child) {
+      var attrs = Object.keys(child[1]).map(function (k) { return k + '="' + child[1][k] + '"'; }).join(' ');
+      return '<' + child[0] + ' ' + attrs + '/>';
+    }).join('');
+    return '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">' + children + '</svg>';
+  }
+  var copyIcon = '<svg aria-hidden="true" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"></rect><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"></path></svg>';
+
+  // Diagrams: each Mermaid script becomes a card.
+  document.querySelectorAll('script.mermaid').forEach(function (script) {
+    var source = dedent(script.textContent);
+    var card = document.createElement('div');
+    card.className = 'example-card';
+    card.innerHTML = '<div class="example-label"><span class="example-type"></span>' +
+      '<button type="button" class="copy-button" aria-label="Copy Mermaid source" title="Copy Mermaid source">' + copyIcon + '</button></div>' +
+      '<div class="example-figure"></div>';
+    script.replaceWith(card);
+    var type = card.querySelector('.example-type');
+    var figure = card.querySelector('.example-figure');
+    var copy = card.querySelector('.copy-button');
+    if (!navigator.clipboard) copy.hidden = true;
+    copy.addEventListener('click', function () {
+      navigator.clipboard.writeText(source).then(function () {
+        copy.setAttribute('data-copied', '');
+        setTimeout(function () { copy.removeAttribute('data-copied'); }, 1200);
+      }, function () { copy.hidden = true; });
+    });
+    if (window.pele) {
+      pele.mount(figure, source, {
+        icons: lucideIcon,
+        onRender: function (r) { type.textContent = r.type; figure.style.setProperty('--grow-to', Math.round(r.width * 1.5) + 'px'); }
+      });
+    } else {
+      var pre = document.createElement('pre');
+      pre.className = 'example-source';
+      pre.textContent = source;
+      figure.appendChild(pre);
+    }
+  });
+
+  // Table of contents from the sections' h2s; shown only with two or more diagrams.
+  var sections = Array.prototype.filter.call(document.querySelectorAll('main > section'), function (s) { return s.querySelector('h2'); });
+  if (sections.length < 2) return;
+  document.body.classList.add('has-toc');
+  var links = [], used = {};
+  sections.forEach(function (s) {
+    var id = s.id || slug(s.querySelector('h2').textContent), n = 1;
+    while (used[id + (n > 1 ? '-' + n : '')]) n++;
+    s.id = id + (n > 1 ? '-' + n : '');
+    used[s.id] = true;
+  });
+  document.querySelectorAll('nav.toc').forEach(function (nav) {
+    var title = document.createElement('a');
+    title.className = 'toc-title';
+    title.href = '#';
+    title.textContent = document.querySelector('.docs-title h1').textContent;
+    var children = document.createElement('div');
+    children.className = 'toc-children';
+    sections.forEach(function (s) {
+      var a = document.createElement('a');
+      a.href = '#' + s.id;
+      a.textContent = s.querySelector('h2').textContent;
+      children.appendChild(a);
+      links.push(a);
+    });
+    nav.append(title, children);
+  });
+  function markCurrent() {
+    var current = sections[0];
+    sections.forEach(function (s) { if (s.getBoundingClientRect().top < innerHeight * 0.35) current = s; });
+    if (innerHeight + scrollY >= document.documentElement.scrollHeight - 2) current = sections[sections.length - 1];
+    links.forEach(function (a) {
+      if (a.getAttribute('href') === '#' + current.id) a.setAttribute('aria-current', 'location');
+      else a.removeAttribute('aria-current');
+    });
+  }
+  addEventListener('scroll', markCurrent, { passive: true });
+  addEventListener('resize', markCurrent);
+  markCurrent();
+})();
+</script>
+</body>
+</html>

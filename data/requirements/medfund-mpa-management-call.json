@@ -1,0 +1,122 @@
+{
+  "id": "medfund-mpa-management-call",
+  "read_on": "2026-11-20",
+  "prompt_version": "req-2026-11-20.1",
+  "models": ["cursor:gpt-5.6-luna-high"],
+  "complete": false,
+  "reasons": [
+    "8 links could not be ranked without Jev",
+    "https://themedfund.org/wp-content/uploads/2026/07/EN_Information-Notice_AMI-2026_VF.pdf: page 6 is an image: needs OCR",
+    "the text names a document with rules that was not read: The list of current beneficiaries of The MedFund: https://themedfund.org/en/actions/",
+    "the text names a document with rules that was not read: The environmental and social procedures established by the Global Environment Facility (GEF)",
+    "the text names a document with rules that was not read: The exclusion list of the French Development Agency (FDA)",
+    "Jev did not check this reading, so an absent fact is not known to be absent"
+  ],
+  "requirements_checked": false,
+  "documents": [
+    {
+      "ref": "D1",
+      "url": "https://themedfund.org/en/become-a-beneficiary/",
+      "final_url": "https://themedfund.org/en/become-a-beneficiary/",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 3872,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:0198b41bde987fd8b8007bca4d154fb2ad59d2cae10ee5c928d864c2eeeba1af"
+    },
+    {
+      "ref": "D2",
+      "url": "https://themedfund.org/wp-content/uploads/2026/07/EN_Information-Notice_AMI-2026_VF.pdf",
+      "final_url": "https://themedfund.org/wp-content/uploads/2026/07/EN_Information-Notice_AMI-2026_VF.pdf",
+      "from": "https://themedfund.org/en/become-a-beneficiary/",
+      "anchor": "Information notice",
+      "depth": 1,
+      "pdf": true,
+      "chars": 12028,
+      "pages": 7,
+      "low_text": false,
+      "hash": "sha256:cc2f05ab3b7b34b403872eae7d9d5c66123cb7aeb0b20cf5ede3a31c3ac50056"
+    },
+    {
+      "ref": "D3",
+      "url": "https://themedfund.org/wp-content/uploads/2026/07/EN_Expression-of-interest_2026.docx",
+      "final_url": "https://themedfund.org/wp-content/uploads/2026/07/EN_Expression-of-interest_2026.docx",
+      "from": "https://themedfund.org/en/become-a-beneficiary/",
+      "anchor": "Expression of Interest form",
+      "depth": 1,
+      "pdf": false,
+      "chars": 721,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:fcbe3ba3311352d6a653b6426701c16e696009efb9d6ce066307e4745c25b0c0"
+    },
+    {
+      "ref": "D4",
+      "url": "https://themedfund.org/wp-content/uploads/2026/07/EN_Application-form-2026.docx",
+      "final_url": "https://themedfund.org/wp-content/uploads/2026/07/EN_Application-form-2026.docx",
+      "from": "https://themedfund.org/en/become-a-beneficiary/",
+      "anchor": "Application form",
+      "depth": 1,
+      "pdf": false,
+      "chars": 2861,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:4fec54cc595da80c138b936a4c92b34695bfb22ff595d55d0498596d301c82ec"
+    },
+    {
+      "ref": "D5",
+      "url": "https://themedfund.org/politique-de-confidentialite/",
+      "final_url": "https://themedfund.org/politique-de-confidentialite/",
+      "from": "https://themedfund.org/en/become-a-beneficiary/",
+      "anchor": "Privacy policy",
+      "depth": 1,
+      "pdf": false,
+      "chars": 13785,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:fb2d09d8b31ca11aae3d391e7635dfe75aa980fa9627688e6cf2131b37533c53"
+    },
+    {
+      "ref": "D6",
+      "url": "https://themedfund.org/en/privacy-policy/",
+      "final_url": "https://themedfund.org/en/privacy-policy/",
+      "from": "https://themedfund.org/en/become-a-beneficiary/",
+      "anchor": "View our Privacy Policy page",
+      "depth": 1,
+      "pdf": false,
+      "chars": 11481,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:ea6bbeb8f7a6fbb55a5cfbea6a7c974dd96a438a0732d2db9083c8a3841624e1"
+    }
+  ],
+  "failures": [
+    {
+      "url": "https://themedfund.org/wp-content/uploads/2026/07/EN_Information-Notice_AMI-2026_VF.pdf",
+      "from": "https://themedfund.org/en/become-a-beneficiary/",
+      "kind": "low_text",
+      "message": "page 6 is an image: needs OCR"
+    }
+  ],
+  "skipped_links": 90,
+  "chunks": [{ "id": "all", "docs": ["D1", "D2", "D3", "D4", "D5", "D6"], "chars": 45533 }],
+  "outcomes": {
+    "eligibility": "stated",
+    "documents": "stated",
+    "effort": "stated",
+    "co_finance": "stated",
+    "consortium": "not_found",
+    "after_award": "stated"
+  },
+  "written": ["eligibility", "documents", "effort", "co_finance", "after_award"],
+  "escalated": [],
+  "flags": [],
+  "notes": [
+    "extractor: The 2026 call is closed. The funding request must state mobilized co-financing, but no required amount, percentage or ratio is stated. D2 states funding of 45 K€ to 55 K€ annually over 5 years per MPA.",
+    "source medfund-mpa-management-call-2: added for https://themedfund.org/wp-content/uploads/2026/07/EN_Information-Notice_AMI-2026_VF.pdf"
+  ],
+  "usd": 0
+}

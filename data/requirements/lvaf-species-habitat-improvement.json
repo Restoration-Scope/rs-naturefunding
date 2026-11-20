@@ -1,0 +1,46 @@
+{
+  "id": "lvaf-species-habitat-improvement",
+  "read_on": "2026-11-20",
+  "prompt_version": "req-2026-11-20.1",
+  "models": ["cursor:gpt-5.6-luna-high"],
+  "complete": false,
+  "reasons": [
+    "the text names a document with rules that was not read: Projektu konkursa nolikums un tā pielikumi",
+    "Jev did not check this reading, so an absent fact is not known to be absent"
+  ],
+  "requirements_checked": false,
+  "documents": [
+    {
+      "ref": "D1",
+      "url": "https://www.daba.gov.lv/lv/jaunums/aicinam-iesniegt-projektus-sugu-un-biotopu-stavokla-uzlabosanai",
+      "final_url": "https://www.daba.gov.lv/lv/jaunums/aicinam-iesniegt-projektus-sugu-un-biotopu-stavokla-uzlabosanai",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 22724,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:8492dc84de815a9ac4f235643a04095c565a3acc1d3750737333068d4486d638"
+    }
+  ],
+  "failures": [],
+  "skipped_links": 378,
+  "chunks": [{ "id": "all", "docs": ["D1"], "chars": 22835 }],
+  "outcomes": {
+    "eligibility": "not_found",
+    "documents": "not_found",
+    "effort": "stated",
+    "co_finance": "not_found",
+    "consortium": "not_found",
+    "after_award": "not_found"
+  },
+  "written": ["effort"],
+  "escalated": [],
+  "flags": [],
+  "notes": [
+    "effort \"Project application\": the quote does not state 2026-06-01 whole; left undated",
+    "extractor: Project implementation must be completed by 2026-11-01. Maximum LVAF funding per project is EUR 50,000."
+  ],
+  "usd": 0
+}

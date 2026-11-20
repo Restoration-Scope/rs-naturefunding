@@ -1,0 +1,100 @@
+{
+  "id": "metro-nature-education-outdoor-experiences",
+  "read_on": "2026-11-20",
+  "prompt_version": "req-2026-11-20.1",
+  "models": ["cursor:gpt-5.6-luna-high", "cursor:gpt-5.6-sol-high"],
+  "complete": false,
+  "reasons": [
+    "14 links could not be ranked without Jev",
+    "12 links could not be ranked without Jev",
+    "Jev did not check this reading, so an absent fact is not known to be absent"
+  ],
+  "requirements_checked": false,
+  "documents": [
+    {
+      "ref": "D1",
+      "url": "https://www.oregonmetro.gov/opportunities/apply-nature-education-and-outdoor-experiences-grants",
+      "final_url": "https://www.oregonmetro.gov/opportunities/apply-nature-education-and-outdoor-experiences-grants",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 3861,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:051eec910d1217f04fb7af64c769eb502ea7f2b9e17710031c6889711f871971"
+    },
+    {
+      "ref": "D2",
+      "url": "https://www.oregonmetro.gov/sites/default/files/2026-10/nin-nature-education-outdoor-experiences-grants-pre-application-handbook-20261007.pdf",
+      "final_url": "https://www.oregonmetro.gov/sites/default/files/2026-10/nin-nature-education-outdoor-experiences-grants-pre-application-handbook-20261007.pdf",
+      "from": "https://www.oregonmetro.gov/opportunities/apply-nature-education-and-outdoor-experiences-grants",
+      "anchor": "2026 Nature in Neighborhoods nature education and outdoor experiences grants pre-application handbook",
+      "depth": 1,
+      "pdf": true,
+      "chars": 46929,
+      "pages": 21,
+      "low_text": false,
+      "hash": "sha256:df45416f5385ceef6ea287f6d96f7192ee1121d99ea28e3b26f2f25446e9a1dd"
+    },
+    {
+      "ref": "D3",
+      "url": "https://www.oregonmetro.gov/apply-contractors-business-license",
+      "final_url": "https://www.oregonmetro.gov/apply-contractors-business-license",
+      "from": "https://www.oregonmetro.gov/opportunities/apply-nature-education-and-outdoor-experiences-grants",
+      "anchor": "Apply for a contractor's business license",
+      "depth": 1,
+      "pdf": false,
+      "chars": 9190,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:98e41fd6d924a94861e998067530bb1d14316d55c6d5bafb4970c1910085949c"
+    },
+    {
+      "ref": "D4",
+      "url": "https://www.oregonmetro.gov/sites/default/files/2025-11/regional_contractors_business_license_application_english.pdf",
+      "final_url": "https://www.oregonmetro.gov/sites/default/files/2025-11/regional_contractors_business_license_application_english.pdf",
+      "from": "https://www.oregonmetro.gov/apply-contractors-business-license",
+      "anchor": "Regional Contractor's Business License application - English",
+      "depth": 2,
+      "pdf": true,
+      "chars": 6011,
+      "pages": 2,
+      "low_text": false,
+      "hash": "sha256:12229ad4d775c412f73f66507f761a390c627277aa6d2fcfe750e04f31743669"
+    },
+    {
+      "ref": "D5",
+      "url": "https://www.oregonmetro.gov/sites/default/files/2025-11/regional_contractors_business_license_application_spanish.pdf",
+      "final_url": "https://www.oregonmetro.gov/sites/default/files/2025-11/regional_contractors_business_license_application_spanish.pdf",
+      "from": "https://www.oregonmetro.gov/apply-contractors-business-license",
+      "anchor": "Solicitud de licencia de negocios para contratistas",
+      "depth": 2,
+      "pdf": true,
+      "chars": 6342,
+      "pages": 2,
+      "low_text": false,
+      "hash": "sha256:8223ce53d513ecf24b3b618f8ec86c43e9bbc5bc8c4d79141b45f2c1e2f86f9c"
+    }
+  ],
+  "failures": [],
+  "skipped_links": 155,
+  "chunks": [{ "id": "all", "docs": ["D1", "D2", "D3", "D4", "D5"], "chars": 73322 }],
+  "outcomes": {
+    "eligibility": "stated",
+    "documents": "stated",
+    "effort": "unresolved",
+    "co_finance": "not_found",
+    "consortium": "stated",
+    "after_award": "stated"
+  },
+  "written": ["eligibility", "documents", "consortium", "after_award"],
+  "escalated": ["effort"],
+  "flags": [{ "field": "effort", "item": "due dates", "why": "steps are not due in order" }],
+  "notes": [
+    "extractor: D2 labels this the 2026-2027 cycle, but its timeline lists final applications due in March 2026 after the December 2026 pre-application deadline; the date is reproduced as stated. Site visits are described as optional.",
+    "strong: The timeline gives the full-application deadline as March 16, 2026, before the December 8, 2026 pre-application deadline, so no current-round full-application due date is reported.",
+    "source metro-nature-education-outdoor-experiences-2: added for https://www.oregonmetro.gov/sites/default/files/2026-10/nin-nature-education-outdoor-experiences-grants-pre-application-handbook-20261007.pdf"
+  ],
+  "usd": 0
+}
