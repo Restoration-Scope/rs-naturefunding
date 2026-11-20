@@ -1,5 +1,5 @@
 import { z } from 'zod'
-import { deadlinePassed } from '../../scripts/refresh/deadline'
+import { deadlinePassed, parseZone } from '../lib/deadline'
 import { meaningfulQuote, MIN_QUOTE_CHARS } from './text'
 import { thresholdProblems } from './thresholds'
 
@@ -209,10 +209,24 @@ const MONTH = String.raw`(?:jan(?:uary)?|feb(?:ruary)?|mar(?:ch)?|apr(?:il)?|may
  * "Nov '26" or "26 Nov '26" (the apostrophe right after a month), or "15/11/26". A bare "26" may
  * be the day ("closes 26 November"), and "'26 November'" is a quoted phrase, so neither counts.
  */
+/** Full-width digits as ASCII, so "令和９年" reads like "令和9年". */
+const asciiDigits = (s: string) => s.replace(/[０-９]/g, (d) => String(d.charCodeAt(0) - 0xff10))
+
+/**
+ * The Japanese ways to write a year: "2027年" and the Reiwa era ("令和9年", 2019 is "令和元年"). A fiscal year
+ * ("令和8年度") is not a calendar year, so it never counts.
+ */
+const japaneseYear = (y: string) => {
+  const reiwa = Number(y) - 2018
+  const era = reiwa === 1 ? '(?:元|1)' : reiwa > 1 ? String(reiwa) : null
+  return String.raw`(?:${y}|${era ? String.raw`令和\s*${era}` : '(?!)'})\s*年(?!度)`
+}
+
 export const statesYear = (quote: string, date: string) => {
   const yy = date.slice(2, 4)
   return (
     quote.includes(date.slice(0, 4)) ||
+    new RegExp(String.raw`(?<!\d)${japaneseYear(date.slice(0, 4))}`).test(asciiDigits(quote)) ||
     new RegExp(String.raw`\b${MONTH}\s*['‘’]${yy}(?![\d/'’]|\s*${MONTH}\b)`, 'i').test(quote) ||
     new RegExp(String.raw`\d{1,2}/\d{1,2}/${yy}(?![\d/])`).test(quote)
   )
@@ -275,6 +289,8 @@ export const statesDate = (quote: string, date: string) => {
     String.raw`${y}[./-]${mm}[./-]${dd}`,
   ]
   if (alone(forms.join('|')).test(quote)) return true
+  // "令和9年1月30日" or "2027年1月30日": kanji count as letters to alone(), so only digits bound these.
+  if (new RegExp(String.raw`(?<!\d)${japaneseYear(y)}\s*0?${m}\s*月\s*0?${d}\s*日`).test(asciiDigits(quote))) return true
   const twoWays = d <= 12 && d !== m
   const DMY = /\b(?:dd|jj|tt)[/-]mm\b/i
   const MDY = /\bmm[/-]dd\b/i
@@ -556,6 +572,9 @@ export const programme = z
       }
       if (p.window === 'rolling' && c.deadline) issue(at('deadline'), 'a rolling programme has no deadlines')
       if (c.opens && c.deadline && c.opens > c.deadline.date) issue(at('opens'), 'opens after the deadline')
+      if (c.deadline?.timezone && c.deadline.timezone.length <= 64 && !parseZone(c.deadline.timezone)) {
+        issue(at('deadline', 'timezone'), `can't read the timezone "${c.deadline.timezone}"; use an IANA name (Europe/Paris), an offset (UTC+1) or add it to src/lib/deadline.ts`)
+      }
       const seen = c.evidence.status.checked_at
       // Refresh stamps checked_at with the UTC day it read the page and closes a call once
       // deadlinePassed; so an open call is wrong only if its deadline had passed as that day began.
