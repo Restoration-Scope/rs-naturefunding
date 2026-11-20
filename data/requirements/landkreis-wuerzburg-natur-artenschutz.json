@@ -1,0 +1,52 @@
+{
+  "id": "landkreis-wuerzburg-natur-artenschutz",
+  "read_on": "2026-11-20",
+  "prompt_version": "req-2026-11-20.1",
+  "models": ["cursor:gpt-5.6-luna-high"],
+  "complete": false,
+  "reasons": [
+    "10 links could not be ranked without Jev",
+    "https://www.landkreis-wuerzburg.de/output/download.php?file=%2Fmedia%2Fcustom%2F2680_6752_1.PDF%3F1641308604&fn=F%EF%BF%BDrderrichtlinien_Natur-_und_Artenschutz would not open (robots: robots.txt disallows this page)",
+    "the text names a document with rules that was not read: Förderrichtlinien Natur- und Artenschutz",
+    "Jev did not check this reading, so an absent fact is not known to be absent"
+  ],
+  "requirements_checked": false,
+  "documents": [
+    {
+      "ref": "D1",
+      "url": "https://www.landkreis-wuerzburg.de/B%C3%BCrger-Politik-Verwaltung/Landratsamt-Fachbereiche/Umweltamt/Naturschutz/F%C3%B6rderung-des-Natur-und-Artenschutzes/",
+      "final_url": "https://www.landkreis-wuerzburg.de/B%C3%BCrger-Politik-Verwaltung/Landratsamt-Fachbereiche/Umweltamt/Naturschutz/F%C3%B6rderung-des-Natur-und-Artenschutzes/",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 6573,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:2f213daa5efc35ac814d3acb2ea45e5d71a156f4601d772803d01fafeaaa75f6"
+    }
+  ],
+  "failures": [
+    {
+      "url": "https://www.landkreis-wuerzburg.de/output/download.php?file=%2Fmedia%2Fcustom%2F2680_6752_1.PDF%3F1641308604&fn=F%EF%BF%BDrderrichtlinien_Natur-_und_Artenschutz",
+      "from": "https://www.landkreis-wuerzburg.de/B%C3%BCrger-Politik-Verwaltung/Landratsamt-Fachbereiche/Umweltamt/Naturschutz/F%C3%B6rderung-des-Natur-und-Artenschutzes/",
+      "kind": "robots",
+      "message": "robots.txt disallows this page"
+    }
+  ],
+  "skipped_links": 127,
+  "chunks": [{ "id": "all", "docs": ["D1"], "chars": 6742 }],
+  "outcomes": {
+    "eligibility": "stated",
+    "documents": "not_found",
+    "effort": "not_found",
+    "co_finance": "stated",
+    "consortium": "not_found",
+    "after_award": "not_found"
+  },
+  "written": ["eligibility", "co_finance"],
+  "escalated": [],
+  "flags": [],
+  "notes": [],
+  "usd": 0
+}

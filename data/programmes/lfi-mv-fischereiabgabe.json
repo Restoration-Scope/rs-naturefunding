@@ -31,8 +31,50 @@
   "access": "direct",
   "window": "unspecified",
   "amount": null,
-  "co_finance_required": null,
+  "co_finance_required": true,
   "reporting": null,
+  "effort": {
+    "steps": [
+      "Application via the LFI M-V funding portal"
+    ]
+  },
+  "eligibility": [
+    {
+      "rule": "Has its business and operating seat in Mecklenburg-Vorpommern, unless a stated project exception applies",
+      "kind": "legal"
+    },
+    {
+      "rule": "Has no insolvency proceeding applied for or opened against it",
+      "kind": "legal"
+    },
+    {
+      "rule": "Has not already received funding for the project or the same purpose",
+      "kind": "project"
+    },
+    {
+      "rule": "Has eligible expenses of at least EUR 1,000 per application",
+      "kind": "project"
+    },
+    {
+      "rule": "Has not started the project before the application is received",
+      "kind": "project"
+    },
+    {
+      "rule": "Does not directly target the productive fishing or aquaculture sector",
+      "kind": "project"
+    },
+    {
+      "rule": "Does not implement statutory requirements or standards",
+      "kind": "project"
+    }
+  ],
+  "co_finance": {
+    "min_share": 30,
+    "applies_to": "Measures under 2.1.2, 2.1.4 and 2.1.5"
+  },
+  "after_award": {
+    "reports": "final"
+  },
   "calls": [],
   "evidence": {
     "applicant_types": {
@@ -58,7 +100,79 @@
       "quote": "ist für die Antragstellung das Förderportal des Landesförderinstituts M-V zu verwenden.",
       "checked_at": "2026-11-06",
       "method": "page"
-    }
+    },
+    "co_finance_required": {
+      "source_url": "https://www.lfi-mv.de/export/sites/lfi/.galleries/fischereiabgabe/foerderrichtlinie-mv.pdf",
+      "quote": "Die Höhe der Zuwendung für Maßnahmen nach den Nummern 2.1.2, 2.1.4 und 2.1.5 beträgt jeweils bis zu 70 Prozent der zuwendungsfähigen Ausgaben.",
+      "checked_at": "2026-11-20",
+      "method": "page"
+    },
+    "effort": [
+      {
+        "source_url": "https://www.lfi-mv.de/foerderfinder/fischereiabgabe/",
+        "quote": "Mit Bereitstellung des elektronischen Verfahrens ist für die Antragstellung das Förderportal des Landesförderinstituts M-V zu verwenden.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "eligibility": [
+      {
+        "source_url": "https://www.lfi-mv.de/export/sites/lfi/.galleries/fischereiabgabe/foerderrichtlinie-mv.pdf",
+        "quote": "Zuwendungsempfänger müssen ihren Geschäfts- und Betriebssitz in Mecklenburg-Vorpommern haben. Ausnahmen hinsichtlich des Geschäfts- und Betriebssitzes sind bei Vorhaben nach den Nummern 2.1.1 und 2.1.3 möglich, sofern die Ergebnisse dieser Projekte dem Land Mecklenburg-Vorpommern zustehen und diese öffentlich zugänglich sind.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.lfi-mv.de/export/sites/lfi/.galleries/fischereiabgabe/foerderrichtlinie-mv.pdf",
+        "quote": "Gegen den Zuwendungsempfänger darf kein Insolvenzverfahren beantragt oder eröffnet worden sein.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.lfi-mv.de/export/sites/lfi/.galleries/fischereiabgabe/foerderrichtlinie-mv.pdf",
+        "quote": "Die Gewährung einer Zuwendung ist nicht möglich, wenn das Projekt bereits eine Zuwendung erhalten hat oder für denselben Zweck Zuwendungen nach anderen Bestimmungen gewährt wurden (Ausschluss der Doppelförderung).",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.lfi-mv.de/export/sites/lfi/.galleries/fischereiabgabe/foerderrichtlinie-mv.pdf",
+        "quote": "Die zuwendungsfähigen Ausgaben je Antrag müssen mindestens 1 000 Euro betragen.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.lfi-mv.de/foerderfinder/fischereiabgabe/",
+        "quote": "Es können nur Vorhaben gefördert werden, mit denen vor Antragseingang in der Bewilligungsbehörde noch nicht begonnen wurde.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.lfi-mv.de/export/sites/lfi/.galleries/fischereiabgabe/foerderrichtlinie-mv.pdf",
+        "quote": "Maßnahmen, die unmittelbar auf den produktiven Bereich der Fischerei oder der Aquakultur gerichtet sind",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.lfi-mv.de/export/sites/lfi/.galleries/fischereiabgabe/foerderrichtlinie-mv.pdf",
+        "quote": "Maßnahmen, die der Umsetzung gesetzlicher Vorschriften und Normen dienen",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "co_finance": {
+      "source_url": "https://www.lfi-mv.de/export/sites/lfi/.galleries/fischereiabgabe/foerderrichtlinie-mv.pdf",
+      "quote": "Die Höhe der Zuwendung für Maßnahmen nach den Nummern 2.1.2, 2.1.4 und 2.1.5 beträgt jeweils bis zu 70 Prozent der zuwendungsfähigen Ausgaben.",
+      "checked_at": "2026-11-20",
+      "method": "page"
+    },
+    "after_award": [
+      {
+        "source_url": "https://www.lfi-mv.de/export/sites/lfi/.galleries/fischereiabgabe/foerderrichtlinie-mv.pdf",
+        "quote": "erfolgt der Nachweis der Verwendung der Zuwendung mit der letzten Mittelanforderung.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ]
   },
   "checked_at": "2026-11-06"
 }

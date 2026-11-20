@@ -1,0 +1,142 @@
+{
+  "id": "lantau-conservation-fund",
+  "read_on": "2026-11-20",
+  "prompt_version": "req-2026-11-20.1",
+  "models": ["cursor:gpt-5.6-luna-high", "cursor:gpt-5.6-sol-high"],
+  "complete": false,
+  "reasons": [
+    "2 links could not be ranked without Jev",
+    "3 links could not be ranked without Jev",
+    "https://www.lcf.gov.hk/filemanager/content/doc/LCF-GuideToAppl.pdf: page 3 is an image: needs OCR",
+    "the text names a document with rules that was not read: Guide to Application",
+    "the text names a document with rules that was not read: Application Form",
+    "the text names a document with rules that was not read: LCF Application Form, including its Important Notes",
+    "the text names a document with rules that was not read: Appendix 1 to the Guide (supporting-document checklist)",
+    "the text names a document with rules that was not read: Application Form, downloadable from the LCF website",
+    "the text names a document with rules that was not read: Sample agreement containing the full terms and conditions for project implementation",
+    "the text names a document with rules that was not read: Best Practice Checklist - Strengthening Integrity and Accountability - Government Funding Schemes Grantee's Guidebook compiled by the ICAC: http://www.icac.org.",
+    "the text names a document with rules that was not read: Guide to Application (Section 12)",
+    "the text names a document with rules that was not read: Governance and Internal Control in Non-Governmental Organisations",
+    "the text names a document with rules that was not read: Strengthening Integrity and Accountability - Government Funding Schemes Grantee's Guidebook",
+    "the text names a document with rules that was not read: Schedule A",
+    "the text names a document with rules that was not read: Schedule C",
+    "the text names a document with rules that was not read: Schedule D",
+    "the text names a document with rules that was not read: Schedule E",
+    "the text names a document with rules that was not read: Schedule F",
+    "the text names a document with rules that was not read: Best Practice Checklist - Strengthening Integrity and Accountability - Government Funding Schemes Grantee's Guidebook (http://www.icac.org.hk/filemanager/en/con",
+    "Jev did not check this reading, so an absent fact is not known to be absent",
+    "strong reading: the text names a document with rules that was not read: Guide to Application",
+    "strong reading: the text names a document with rules that was not read: Application Form",
+    "strong reading: the text names a document with rules that was not read: Sample agreement",
+    "strong reading: the text names a document with rules that was not read: Notes for Auditors of Grantees"
+  ],
+  "requirements_checked": false,
+  "documents": [
+    {
+      "ref": "D1",
+      "url": "https://www.lcf.gov.hk/en/application/faq.html",
+      "final_url": "https://www.lcf.gov.hk/en/application/faq.html",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 23871,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:9e1e3cb2dfd98673cb6ef9a18ea690d5a742ee4b9caaa699189ecc98d4f53952"
+    },
+    {
+      "ref": "D2",
+      "url": "https://www.lcf.gov.hk/filemanager/content/doc/LCF-FAQ.pdf",
+      "final_url": "https://www.lcf.gov.hk/filemanager/content/doc/LCF-FAQ.pdf",
+      "from": "https://www.lcf.gov.hk/en/application/faq.html",
+      "anchor": "here",
+      "depth": 1,
+      "pdf": true,
+      "chars": 26743,
+      "pages": 12,
+      "low_text": false,
+      "hash": "sha256:ae174e4da5c279849eb752564c4edca09cdf54ae57cec8975914ee13dfa9741b"
+    },
+    {
+      "ref": "D3",
+      "url": "https://www.lcf.gov.hk/filemanager/content/doc/LCF-GuideToAppl.pdf",
+      "final_url": "https://www.lcf.gov.hk/filemanager/content/doc/LCF-GuideToAppl.pdf",
+      "from": "https://www.lcf.gov.hk/en/application/faq.html",
+      "anchor": "Guide to Application",
+      "depth": 1,
+      "pdf": true,
+      "chars": 67714,
+      "pages": 30,
+      "low_text": false,
+      "hash": "sha256:83cd2245dca1d8c7f85f937a9a1712b170bd2f49212be611960ecd9c73dbe65f"
+    },
+    {
+      "ref": "D4",
+      "url": "https://www.lcf.gov.hk/en/application/priority-project.html",
+      "final_url": "https://www.lcf.gov.hk/en/application/priority-project.html",
+      "from": "https://www.lcf.gov.hk/en/application/faq.html",
+      "anchor": "https://www.lcf.gov.hk/en/application/priority-project.html",
+      "depth": 1,
+      "pdf": false,
+      "chars": 796,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:01200443d7b9102f532fbaec274ef0366e3d2b61be4f153412be254c51b25154"
+    },
+    {
+      "ref": "D5",
+      "url": "https://www.lcf.gov.hk/filemanager/content/doc/LCF-SampleAgreement.pdf",
+      "final_url": "https://www.lcf.gov.hk/filemanager/content/doc/LCF-SampleAgreement.pdf",
+      "from": "https://www.lcf.gov.hk/en/application/faq.html",
+      "anchor": "sample agreement",
+      "depth": 1,
+      "pdf": true,
+      "chars": 66980,
+      "pages": 38,
+      "low_text": false,
+      "hash": "sha256:60e766191d59dec1aa714cb1e770de4f65bab742d0e0233b8b4305f26a55ddf3"
+    }
+  ],
+  "failures": [
+    {
+      "url": "https://www.lcf.gov.hk/filemanager/content/doc/LCF-GuideToAppl.pdf",
+      "from": "https://www.lcf.gov.hk/en/application/faq.html",
+      "kind": "low_text",
+      "message": "page 3 is an image: needs OCR"
+    }
+  ],
+  "skipped_links": 7,
+  "chunks": [
+    { "id": "c1", "docs": ["D1"], "chars": 23930 },
+    { "id": "c2", "docs": ["D2"], "chars": 26879 },
+    { "id": "c3", "docs": ["D3"], "chars": 39939 },
+    { "id": "c4", "docs": ["D3"], "chars": 29587 },
+    { "id": "c5", "docs": ["D4"], "chars": 927 },
+    { "id": "c6", "docs": ["D5"], "chars": 40129 },
+    { "id": "c7", "docs": ["D5"], "chars": 28671 }
+  ],
+  "outcomes": {
+    "eligibility": "stated",
+    "documents": "stated",
+    "effort": "stated",
+    "co_finance": "not_found",
+    "consortium": "stated",
+    "after_award": "stated"
+  },
+  "written": ["eligibility", "documents", "effort", "consortium", "after_award"],
+  "escalated": ["documents", "after_award", "effort"],
+  "flags": [],
+  "notes": [
+    "eligibility: 7 rules past the 8th dropped",
+    "documents: 10 past the 10th dropped",
+    "effort: steps past the 5th dropped",
+    "extractor: D1 does not state a current or next-round application date; it says the application period will be announced through the LCF website. Detailed requirements are referenced in the Guide to Application. | FAQ version 12/2025. The application period and closing date are announced separately on the LCF website. The checklist is not exhaustive, and the Secretariat may request additional documentary proofs. | Guide version 9/2025. The application deadline is not stated in this part; the Guide refers applicants to the Important Notes in the Application Form. Requirements vary by applicant organisation type and project stream. | The guide is version 9/2025. The application checklist is not exhaustive, and the Secretariat may request additional documentary proofs. Progress-report periods cover 6 months or another period agreed by the government representative. | D4 describes priority considerations, not hard eligibility requirements. It states that applications remain subject to assessment under",
+    "strong: No current or next application round or dated deadline is stated. The document checklist is not exhaustive. Written land or premises consent is excluded because D1 allows it to be submitted after funding approval.",
+    "after_award: kept 1 first-reading item no check faulted that the strong reading left out",
+    "source lantau-conservation-fund-2: added for https://www.lcf.gov.hk/filemanager/content/doc/LCF-FAQ.pdf",
+    "source lantau-conservation-fund-3: added for https://www.lcf.gov.hk/filemanager/content/doc/LCF-GuideToAppl.pdf",
+    "source lantau-conservation-fund-4: added for https://www.lcf.gov.hk/filemanager/content/doc/LCF-SampleAgreement.pdf"
+  ],
+  "usd": 0
+}
