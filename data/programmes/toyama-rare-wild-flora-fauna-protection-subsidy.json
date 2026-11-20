@@ -1,19 +1,68 @@
 {
   "id": "toyama-rare-wild-flora-fauna-protection-subsidy",
   "name": "Toyama Prefecture: 希少野生動植物保護活動事業費補助金",
-  "funder": { "name": "Toyama Prefecture (富山県)", "url": "https://www.pref.toyama.jp/" },
+  "funder": {
+    "name": "Toyama Prefecture (富山県)",
+    "url": "https://www.pref.toyama.jp/"
+  },
   "administered_by": null,
   "parent": null,
   "url": "https://www.pref.toyama.jp/documents/18523/r8_annnai.pdf",
   "summary": "Subsidy for neighbourhood associations, NPOs and volunteer groups in Toyama Prefecture that protect five designated rare species, covering habitat management and anti-poaching or anti-collection facilities. Up to half of eligible costs, capped at JPY 150,000.",
-  "approaches": ["species_conservation"],
-  "applicant_types": ["community_group", "ngo"],
-  "geography": { "scope": "countries", "countries": ["JP"], "label": "Toyama Prefecture" },
+  "approaches": [
+    "species_conservation"
+  ],
+  "applicant_types": [
+    "community_group",
+    "ngo"
+  ],
+  "geography": {
+    "scope": "countries",
+    "countries": [
+      "JP"
+    ],
+    "label": "Toyama Prefecture"
+  },
   "access": "direct",
   "window": "unspecified",
-  "amount": { "currency": "JPY", "max": 150000, "note": "Up to half of eligible costs" },
+  "amount": {
+    "currency": "JPY",
+    "max": 150000,
+    "note": "Up to half of eligible costs"
+  },
   "co_finance_required": true,
   "reporting": null,
+  "effort": {
+    "steps": [
+      "Grant application submission"
+    ]
+  },
+  "eligibility": [
+    {
+      "rule": "Not a local government",
+      "kind": "legal"
+    },
+    {
+      "rule": "Operates as a nonprofit organisation",
+      "kind": "legal"
+    },
+    {
+      "rule": "Has its activity base in Toyama Prefecture and operates there",
+      "kind": "project"
+    },
+    {
+      "rule": "Does not mainly conduct political or religious activities",
+      "kind": "legal"
+    },
+    {
+      "rule": "Has a clearly identified representative and clear accounting",
+      "kind": "capacity"
+    },
+    {
+      "rule": "The project protects species designated under the Toyama rare wildlife ordinance",
+      "kind": "project"
+    }
+  ],
   "calls": [
     {
       "id": "fy2026",
@@ -63,7 +112,73 @@
       "quote": "補助対象経費の1/2以内(千円未満の端数切捨て)",
       "checked_at": "2026-11-20",
       "method": "page"
-    }
+    },
+    "effort": [
+      {
+        "source_url": "https://www.pref.toyama.jp/documents/18523/r8_annnai.pdf",
+        "quote": "交付申請書(別紙)に関係書類を添えて提出。",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "eligibility": [
+      {
+        "source_url": "https://www.pref.toyama.jp/documents/18523/r8_annnai.pdf",
+        "quote": "地方公共団体は除く。",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.pref.toyama.jp/documents/18523/r8_annnai.pdf",
+        "quote": "営利を目的としない団体であること。",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.pref.toyama.jp/documents/18523/r8_annnai.pdf",
+        "quote": "富山県内に活動拠点を持ち県内で活動する団体であること。",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.pref.toyama.jp/documents/18523/r8_annnai.pdf",
+        "quote": "政治活動又は宗教活動を行うことを主たる目的としない団体であること。",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.pref.toyama.jp/documents/18523/r8_annnai.pdf",
+        "quote": "団体の代表者が明らかであり、かつ、会計経理が明確である団体であること。",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.pref.toyama.jp/documents/18523/r8_annnai.pdf",
+        "quote": "富山県希少野生動植物保護条例に基づき指定した指定希少野生動植物",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "co_finance": {
+      "source_url": "https://www.pref.toyama.jp/documents/18523/r8_annnai.pdf",
+      "quote": "補助対象経費の1/2以内(千円未満の端数切捨て)",
+      "checked_at": "2026-11-20",
+      "method": "page"
+    },
+    "after_award": [
+      {
+        "source_url": "https://www.pref.toyama.jp/documents/18523/03youkou.pdf",
+        "quote": "補助事業者は、事業が完了したとき、又は第8条第2号の規定による補助事業の 廃止の承認を受けたときは、14 日以内又は3月末日のいずれか早い日までに、実績報告 書(様式第2号)に、知事が必要と認める書類を添えて提出しなければならない。",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ]
   },
-  "checked_at": "2026-11-20"
+  "checked_at": "2026-11-20",
+  "co_finance": {
+    "min_share": 50
+  },
+  "after_award": {
+    "reports": "final"
+  }
 }

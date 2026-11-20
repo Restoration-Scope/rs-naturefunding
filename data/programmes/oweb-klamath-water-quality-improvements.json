@@ -1,7 +1,10 @@
 {
   "id": "oweb-klamath-water-quality-improvements",
   "name": "OWEB Klamath Water Quality Improvements Grant Program",
-  "funder": { "name": "PacifiCorp", "url": "https://www.pacificorp.com/" },
+  "funder": {
+    "name": "PacifiCorp",
+    "url": "https://www.pacificorp.com/"
+  },
   "administered_by": {
     "name": "Oregon Watershed Enhancement Board",
     "url": "https://www.oregon.gov/oweb/"
@@ -9,9 +12,22 @@
   "parent": null,
   "url": "https://www.oregon.gov/oweb/grants/Pages/Interim-Measure-11.aspx",
   "summary": "Settlement money for design and restoration projects in the Oregon part of the Klamath Basin that cut nutrient inputs to the Klamath River, such as wetland restoration, treatment wetlands and riparian fencing. Tribes, watershed councils, districts and nonprofits can apply.",
-  "approaches": ["wetlands", "freshwater"],
-  "applicant_types": ["ngo", "indigenous_organization", "government"],
-  "geography": { "scope": "countries", "countries": ["US"], "label": "Klamath Basin in Oregon" },
+  "approaches": [
+    "wetlands",
+    "freshwater"
+  ],
+  "applicant_types": [
+    "ngo",
+    "indigenous_organization",
+    "government"
+  ],
+  "geography": {
+    "scope": "countries",
+    "countries": [
+      "US"
+    ],
+    "label": "Klamath Basin in Oregon"
+  },
   "access": "direct",
   "window": "fixed",
   "amount": null,
@@ -23,6 +39,52 @@
   },
   "co_finance_required": true,
   "reporting": null,
+  "effort": {
+    "steps": [
+      "Pre-application consultation",
+      "Online grant application",
+      "Field tour of the site (Restoration applications)",
+      "Steering Committee application review"
+    ]
+  },
+  "eligibility": [
+    {
+      "rule": "Is a legally established entity",
+      "kind": "legal"
+    },
+    {
+      "rule": "Is not a Steering Committee member or represented organization, individual, or forprofit organization, except Tribes",
+      "kind": "legal"
+    },
+    {
+      "rule": "If a political subdivision applies, it is not a state agency",
+      "kind": "legal"
+    },
+    {
+      "rule": "The project is within the Klamath Basin in Oregon",
+      "kind": "project"
+    },
+    {
+      "rule": "The project demonstrates nutrient reduction providing Klamath River water quality improvements",
+      "kind": "project"
+    },
+    {
+      "rule": "Not large-scale irrigation modernization: canal piping or lining, center pivots or off-farm piping",
+      "kind": "project"
+    }
+  ],
+  "co_finance": {
+    "min_share": 5,
+    "applies_to": "Technical Assistance and Restoration offerings",
+    "in_kind": true
+  },
+  "after_award": {
+    "reports": "interim_and_final"
+  },
+  "documents": [
+    "Budget Form",
+    "Match Form"
+  ],
   "calls": [
     {
       "id": "next-round",
@@ -74,7 +136,7 @@
     },
     "co_finance_required": {
       "source_url": "https://www.oregon.gov/oweb/grants/Pages/Interim-Measure-11.aspx",
-      "quote": "Required Match: 5% Technical Assistance & Restoration",
+      "quote": "Required Match: 5% Technical Assistance & Restoration (25% is encouraged for Restoration)",
       "checked_at": "2026-11-20",
       "method": "page"
     },
@@ -83,7 +145,99 @@
       "quote": "OWEB is the Fiscal Agent and will award IM11 funds for projects approved by the Steering Committee until the funds are exhausted.",
       "checked_at": "2026-11-20",
       "method": "page"
-    }
+    },
+    "effort": [
+      {
+        "source_url": "https://www.oregon.gov/oweb/grants/Pages/Interim-Measure-11.aspx",
+        "quote": "In the first step, interested applicants are required to contact OWEB to schedule a pre-application consultation meeting.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.oregon.gov/oweb/grants/Pages/Interim-Measure-11.aspx",
+        "quote": "Applicants must submit a grant application through OWEB's online grant application system",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.oregon.gov/oweb/Documents/IM11-Guidance.pdf",
+        "quote": "NOTE: For Restoration applications, in-person field tours are required.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.oregon.gov/oweb/grants/Pages/Interim-Measure-11.aspx",
+        "quote": "July 1 - Steering Committee application review meeting",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "eligibility": [
+      {
+        "source_url": "https://www.oregon.gov/oweb/grants/Pages/Interim-Measure-11.aspx",
+        "quote": "OWEB may enter into agreements only with legally established entities.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.oregon.gov/oweb/grants/Pages/Interim-Measure-11.aspx",
+        "quote": "Any member or organization represented on the Steering Committee, individual persons, and forprofit organizations. An important exception is that Tribes are members of the Steering Committee and are eligible applicants.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.oregon.gov/oweb/grants/Pages/Interim-Measure-11.aspx",
+        "quote": "political subdivisions of Oregon that are not a state agency.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.oregon.gov/oweb/grants/Pages/Interim-Measure-11.aspx",
+        "quote": "Must be within the Klamath Basin in Oregon.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.oregon.gov/oweb/grants/Pages/Interim-Measure-11.aspx",
+        "quote": "Must demonstrate how the project reduces nutrient inputs in the Klamath Basin to provide water quality improvements in the mainstem Klamath River.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.oregon.gov/oweb/Documents/IM11-Guidance.pdf",
+        "quote": "Ineligible activities include large-scale irrigation modernization activities such as canal piping and associated infrastructure, canal lining, center pivot irrigation systems, and off-farm piping of water systems conveyance.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "co_finance": {
+      "source_url": "https://www.oregon.gov/oweb/Documents/IM11-Guidance.pdf",
+      "quote": "A 25% match (cash or in-kind) is encouraged for restoration projects; however, a minimum of 5% match is required. A 5% match is required for all Technical Assistance grants.",
+      "checked_at": "2026-11-20",
+      "method": "page"
+    },
+    "after_award": [
+      {
+        "source_url": "https://www.oregon.gov/oweb/Documents/IM11-Guidance.pdf",
+        "quote": "Under this grant program, grantees will be required to complete progress reporting and submit a project completion report.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "documents": [
+      {
+        "source_url": "https://www.oregon.gov/oweb/grants/Pages/Interim-Measure-11.aspx",
+        "quote": "Budget Form",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.oregon.gov/oweb/grants/Pages/Interim-Measure-11.aspx",
+        "quote": "Match Form",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ]
   },
   "checked_at": "2026-11-20"
 }

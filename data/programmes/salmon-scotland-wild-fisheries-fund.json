@@ -1,19 +1,56 @@
 {
   "id": "salmon-scotland-wild-fisheries-fund",
   "name": "Wild Fisheries Fund",
-  "funder": { "name": "Salmon Scotland", "url": "https://www.wildfisheriesfund.co.uk/" },
+  "funder": {
+    "name": "Salmon Scotland",
+    "url": "https://www.wildfisheriesfund.co.uk/"
+  },
   "administered_by": null,
   "parent": null,
   "url": "https://www.wildfisheriesfund.co.uk/about",
   "summary": "Five-year, GBP 1.5 million fund from the salmon farming sector for practical wild salmonid work such as barrier removal, habitat improvement and fish counters, led by fishery bodies, angling clubs and community groups.",
-  "approaches": ["freshwater", "species_conservation", "community_conservation"],
-  "applicant_types": ["ngo", "community_group", "social_enterprise"],
+  "approaches": [
+    "freshwater",
+    "species_conservation",
+    "community_conservation"
+  ],
+  "applicant_types": [
+    "ngo",
+    "community_group",
+    "social_enterprise"
+  ],
   "geography": null,
   "access": "direct",
   "window": "fixed",
   "amount": null,
-  "co_finance_required": null,
+  "co_finance_required": false,
+  "consortium_required": false,
   "reporting": "All applicants report back on project progress and delivery after one year; projects should be completed within 18 months.",
+  "effort": {
+    "steps": [
+      "Application form by email"
+    ]
+  },
+  "eligibility": [
+    {
+      "rule": "Be a relevant, constituted fisheries organisation in Scotland's farmed and wild salmon sphere",
+      "kind": "legal"
+    },
+    {
+      "rule": "Proposal is neither contrary to Salmon Scotland interests nor purely academic",
+      "kind": "project"
+    }
+  ],
+  "after_award": {
+    "reports": "interim_and_final"
+  },
+  "documents": [
+    "Most recent annual accounts",
+    "At least one quote for each item costing £300–£3,000",
+    "At least two quotes for each item costing more than £3,000",
+    "Recent bank statement showing bank, account name, sort code and account number",
+    "Current constitution or other governing document"
+  ],
   "calls": [
     {
       "id": "2026",
@@ -21,7 +58,10 @@
       "url": "https://www.wildfisheriesfund.co.uk/about",
       "status": "closed",
       "opens": null,
-      "deadline": { "date": "2026-03-31", "text": "31st March 2026" },
+      "deadline": {
+        "date": "2026-03-31",
+        "text": "31st March 2026"
+      },
       "evidence": {
         "status": {
           "source_url": "https://www.wildfisheriesfund.co.uk/about",
@@ -57,12 +97,74 @@
       "checked_at": "2026-11-20",
       "method": "page"
     },
+    "co_finance_required": {
+      "source_url": "https://www.wildfisheriesfund.co.uk/applications",
+      "quote": "Salmon Scotland will fund the full project's costs where possible; however, it may be that some costs applicable for the project would be ineligible under our current criteria, and therefore, we would require evidence of match funding in these circumstances.",
+      "checked_at": "2026-11-20",
+      "method": "page"
+    },
+    "consortium_required": {
+      "source_url": "https://www.wildfisheriesfund.co.uk/applications",
+      "quote": "Can an organisation apply for multiple projects or apply as a partnership as well as individually? Yes",
+      "checked_at": "2026-11-20",
+      "method": "page"
+    },
     "reporting": {
       "source_url": "https://www.wildfisheriesfund.co.uk/about",
       "quote": "All applicants will report back on project progress and delivery after one year",
       "checked_at": "2026-11-20",
       "method": "page"
-    }
+    },
+    "effort": [
+      {
+        "source_url": "https://www.wildfisheriesfund.co.uk/applications",
+        "quote": "To apply please download and fill in this form and send to Jon Gibb at [email protected].",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "eligibility": [
+      {
+        "source_url": "https://www.wildfisheriesfund.co.uk/about",
+        "quote": "Applications are invited from relevant and constituted fisheries organisations within the shared space of Scottish salmon aquaculture and wild rod fisheries",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.wildfisheriesfund.co.uk/about",
+        "quote": "Any proposals that are contrary to the interests of Salmon Scotland or any of its members or applications of a purely academic nature will not be supported.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "after_award": [
+      {
+        "source_url": "https://www.wildfisheriesfund.co.uk/applications",
+        "quote": "All successful projects will report back to Salmon Scotland after one year and will present a final report at the completion of the project.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "documents": [
+      {
+        "source_url": "https://www.wildfisheriesfund.co.uk/site/assets/files/1583/wild-fisheries-fund-application-form-fishery-management-org_-_copy.docx",
+        "quote": "YOUR MOST RECENT ANNUAL ACCOUNTS IF YOUR GRANT REQUEST IS FOR ANY ITEM(S) COSTING £300 - £3,000 PLEASE PROVIDE AT LEAST ONE QUOTE FOR EACH OF THOSE ITEMS IF YOUR GRANT REQUEST IS FOR ANY ITEM(S) COSTING MORE THAN £3,000 PLEASE PROVIDE AT LEAST TWO QUOTES FOR EACH OF THOSE ITEMS",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.wildfisheriesfund.co.uk/site/assets/files/1583/wild-fisheries-fund-application-form-fishery-management-org_-_copy.docx",
+        "quote": "A COPY OF A RECENT BANK STATEMENT WITH YOUR BANK, ACCOUNT NAME, SORT CODE AND ACCOUNT NUMBER CLEARLY VISIBLE.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.wildfisheriesfund.co.uk/site/assets/files/1583/wild-fisheries-fund-application-form-fishery-management-org_-_copy.docx",
+        "quote": "THE CONSTITUTION (OR OTHER GOVERNING DOCUMENT) SUBMITTED WITH THE APPLICATION IS THE MOST UP-TO-DATE VERSION ADOPTED BY THE MEMBERS OF THE ABOVE ORGANISATION",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ]
   },
   "checked_at": "2026-11-20"
 }

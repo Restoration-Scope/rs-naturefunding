@@ -9,14 +9,80 @@
   "parent": null,
   "url": "https://landwirtschaft.hessen.de/umwelt/umweltlotterie-genau",
   "summary": "Non-repayable project grants from the Hessian environmental lottery surplus for nature and environment projects in Hessen, for example conserving and maintaining orchard meadows.",
-  "approaches": ["sustainable_land_use"],
-  "applicant_types": ["individual", "ngo", "government"],
-  "geography": { "scope": "countries", "countries": ["DE"], "label": "Hessen" },
+  "approaches": [
+    "sustainable_land_use"
+  ],
+  "applicant_types": [
+    "individual",
+    "ngo",
+    "government"
+  ],
+  "geography": {
+    "scope": "countries",
+    "countries": [
+      "DE"
+    ],
+    "label": "Hessen"
+  },
   "access": "direct",
   "window": "unspecified",
-  "amount": { "currency": "EUR", "min": 2500, "max": 25000 },
+  "amount": {
+    "currency": "EUR",
+    "min": 2500,
+    "max": 25000
+  },
   "co_finance_required": true,
   "reporting": null,
+  "effort": {
+    "steps": [
+      "Written application with expenditure and financing plan"
+    ]
+  },
+  "eligibility": [
+    {
+      "rule": "The project has not started before the award becomes effective",
+      "kind": "project"
+    },
+    {
+      "rule": "The project is not a management-plan measure or a legal obligation of Hessen",
+      "kind": "project"
+    },
+    {
+      "rule": "For biodiversity projects, the target species or habitat is on the Hessen List",
+      "kind": "project"
+    },
+    {
+      "rule": "Biotope projects concern legally protected (§30) biotopes outside protected areas",
+      "kind": "project"
+    },
+    {
+      "rule": "Water-protection projects exceed legal minimums and have no other funding",
+      "kind": "project"
+    },
+    {
+      "rule": "Biodiversity or water projects: an individual, landscape-care association or §29-recognised conservation group",
+      "kind": "legal"
+    },
+    {
+      "rule": "Biodiversity and biotope projects have technical planning statements or comparable expert advice",
+      "kind": "project"
+    },
+    {
+      "rule": "Project cannot be funded under another Hessen state programme or guideline",
+      "kind": "project"
+    }
+  ],
+  "co_finance": {
+    "min_share": 30,
+    "in_kind": true,
+    "applies_to": "Applicants other than recognised landscape-care and conservation associations"
+  },
+  "after_award": {
+    "reports": "final"
+  },
+  "documents": [
+    "Expenditure and financing plan"
+  ],
   "calls": [],
   "evidence": {
     "applicant_types": {
@@ -44,11 +110,91 @@
       "method": "page"
     },
     "co_finance_required": {
-      "source_url": "https://landwirtschaft.hessen.de/umwelt/umweltlotterie-genau",
-      "quote": "als nicht rückzahlbarer Zuschuss in Höhe von bis zu 70 Prozent der zuwendungsfähigen Ausgaben gewährt",
-      "checked_at": "2026-11-09",
+      "source_url": "https://landwirtschaft.hessen.de/sites/landwirtschaft.hessen.de/files/2022-02/richtlinie_umweltlotterie.pdf",
+      "quote": "Die Zuwendung wird als Projektförderung im Wege der Anteilfinanzierung als nicht rückzahlbarer Zuschuss in Höhe von bis zu 70 v. H. der zuwendungsfähigen Ausgaben gewährt.",
+      "checked_at": "2026-11-20",
       "method": "page"
-    }
+    },
+    "effort": [
+      {
+        "source_url": "https://landwirtschaft.hessen.de/sites/landwirtschaft.hessen.de/files/2022-02/richtlinie_umweltlotterie.pdf",
+        "quote": "Die Förderung wird auf der Grundlage eines schriftlichen Antrages mit konkretem Ausgaben- und Finanzierungsplan gewährt, der vor Beginn des Vorhabens zu stellen ist.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "eligibility": [
+      {
+        "source_url": "https://landwirtschaft.hessen.de/sites/landwirtschaft.hessen.de/files/2022-02/richtlinie_umweltlotterie.pdf",
+        "quote": "Vorhaben dürfen erst begonnen werden, wenn der Zuwendungsbescheid rechtswirksam geworden ist.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://landwirtschaft.hessen.de/sites/landwirtschaft.hessen.de/files/2022-02/richtlinie_umweltlotterie.pdf",
+        "quote": "Von einer Förderung ausgeschlossen sind Maßnahmen auf Grund eines Bewirtschaftungsplans nach § 5 Hessisches Ausführungsgesetz zum Bundesnaturschutzgesetz (HAGBNatschG) sowie alle weiteren Maßnahmen, für die eine rechtliche Verpflichtung des Landes Hessen besteht",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://landwirtschaft.hessen.de/sites/landwirtschaft.hessen.de/files/2022-02/richtlinie_umweltlotterie.pdf",
+        "quote": "Die zu fördernde Art oder der zu fördernde Lebensraum ist Bestandteil der \"HessenListe der Arten und Lebensräume",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://landwirtschaft.hessen.de/sites/landwirtschaft.hessen.de/files/2022-02/richtlinie_umweltlotterie.pdf",
+        "quote": "Gefördert werden Maßnahmen zur Verbesserung und Neuschaffung von Biotopen, die dem \"Gesetzlichen Biotopschutz\" nach § 30 BNatSchG i. V. m. § 13 HAGBNatSchG unterliegen und sich außerhalb von Schutzgebieten befinden.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://landwirtschaft.hessen.de/sites/landwirtschaft.hessen.de/files/2022-02/richtlinie_umweltlotterie.pdf",
+        "quote": "Gefördert werden Maßnahmen zum Gewässerschutz mit dem Ziel einer Verbesserung der Lebensbedingungen sowie Entwicklungs- und Funktionsfähigkeit von Oberflächengewässern, die - soweit vorhanden - über die jeweiligen gesetzlich geforderten Mindeststandards hinausgehen und für die keine anderweitige Förderung erfolgt.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://landwirtschaft.hessen.de/sites/landwirtschaft.hessen.de/files/2022-02/richtlinie_umweltlotterie.pdf",
+        "quote": "Antragsberechtigt sind natürliche Personen, Landschaftspflegeverbände sowie Naturschutzvereinigungen, die nach Maßgabe des § 29 des Bundesnaturschutzgesetzes in der bis zum 3. April 2005 geltenden Fassung von der obersten Naturschutzbehörde des Landes Hessen anerkannt wurden.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://landwirtschaft.hessen.de/sites/landwirtschaft.hessen.de/files/2022-02/richtlinie_umweltlotterie.pdf",
+        "quote": "Es liegen fachplanerische Aussagen (z. B. ein von den hessischen Naturschutzbehörden erstellter oder anerkannter Mittelfristiger Natura 2000-Maßnahmenplan, Artenhilfskonzept für eine Hessen-Art nach der Hessischen Biodiversitätsstrategie, Artgutachten, Artensteckbrief, Maßnahmenblatt) oder eine vergleichbare fachliche Expertise",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://landwirtschaft.hessen.de/sites/landwirtschaft.hessen.de/files/2022-02/richtlinie_umweltlotterie.pdf",
+        "quote": "Soweit eine Förderung auf der Grundlage anderer Förderprogramme oder Richtlinien des Landes gewährt werden kann, ist eine Förderung nach dieser Richtlinie nicht möglich.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "co_finance": {
+      "source_url": "https://landwirtschaft.hessen.de/sites/landwirtschaft.hessen.de/files/2022-02/richtlinie_umweltlotterie.pdf",
+      "quote": "Die Zuwendung wird als Projektförderung im Wege der Anteilfinanzierung als nicht rückzahlbarer Zuschuss in Höhe von bis zu 70 v. H. der zuwendungsfähigen Ausgaben gewährt.",
+      "checked_at": "2026-11-20",
+      "method": "page"
+    },
+    "after_award": [
+      {
+        "source_url": "https://landwirtschaft.hessen.de/sites/landwirtschaft.hessen.de/files/2022-02/richtlinie_umweltlotterie.pdf",
+        "quote": "Verwendungsnachweis: Von natürlichen und juristischen Personen des privaten Rechts ist das Muster 4 zu § 44 LHO, von juristischen Personen des öffentlichen Rechts ist das Muster 5 zu § 44 LHO auszufüllen.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "documents": [
+      {
+        "source_url": "https://landwirtschaft.hessen.de/sites/landwirtschaft.hessen.de/files/2022-02/rl_umweltlotterie_antragsformular_foerderlinie_1.docx",
+        "quote": "Der beiliegende Ausgaben- und Finanzierungsplan ist zur Bearbeitung dieses Antrages vorzulegen.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ]
   },
   "checked_at": "2026-11-09"
 }

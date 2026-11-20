@@ -1,13 +1,20 @@
 {
   "id": "play-for-nature-biodiv-sport",
   "name": "Biodiv'Sport Grant Programme",
-  "funder": { "name": "Play for Nature", "url": "https://playfornature.org/" },
+  "funder": {
+    "name": "Play for Nature",
+    "url": "https://playfornature.org/"
+  },
   "administered_by": null,
   "parent": null,
   "url": "https://playfornature.org/en/submit-a-proposal/",
   "summary": "Yearly call for established biodiversity NGOs, with first grants of up to EUR 5,000 for projects involving IUCN-threatened species; the 2026 edition only took projects linking sport and conservation.",
-  "approaches": ["species_conservation"],
-  "applicant_types": ["ngo"],
+  "approaches": [
+    "species_conservation"
+  ],
+  "applicant_types": [
+    "ngo"
+  ],
   "geography": null,
   "access": "direct",
   "window": "fixed",
@@ -17,7 +24,73 @@
     "note": "Maximum for a first application; later grants may be higher"
   },
   "co_finance_required": null,
+  "consortium_required": false,
   "reporting": null,
+  "effort": {
+    "steps": [
+      "Online application",
+      "Eligibility check",
+      "Initial scoring of eligible applications",
+      "Scoring by five evaluators, if retained",
+      "Selection Committee review, if shortlisted"
+    ],
+    "due": [
+      "2026-08-16",
+      null,
+      null,
+      null,
+      null
+    ]
+  },
+  "eligibility": [
+    {
+      "rule": "Being a civil society organisation dedicated to endangered species and ecosystem conservation",
+      "kind": "legal"
+    },
+    {
+      "rule": "Operating legally for at least 3 years",
+      "kind": "track_record",
+      "min_years": 3
+    },
+    {
+      "rule": "Running a biodiversity project that protects an endangered species and raises awareness through sport",
+      "kind": "project"
+    },
+    {
+      "rule": "Targeting at least one IUCN Red List species classified as Vulnerable, Endangered or Critically Endangered",
+      "kind": "project"
+    },
+    {
+      "rule": "Requesting no more than 50% of annual budget and at least 10% of total project cost",
+      "kind": "finances",
+      "request_cap": {
+        "share": 50,
+        "of": "budget"
+      }
+    },
+    {
+      "rule": "Not transferring funds or re-granting to another organisation",
+      "kind": "project"
+    },
+    {
+      "rule": "Not locating the project in an armed conflict zone or restricted region",
+      "kind": "project"
+    }
+  ],
+  "after_award": {
+    "reports": "interim_and_final"
+  },
+  "documents": [
+    "Project leader CV",
+    "Provisional organisation budget for 2026",
+    "Accounts for the last closed fiscal year approved by the Board",
+    "Organisation activity report for 2025",
+    "Progress report on the 2026 project, if it already exists",
+    "Project budget",
+    "Bank details",
+    "Organisation logo",
+    "Co-funder commitment letter, if applicable"
+  ],
   "calls": [
     {
       "id": "2026",
@@ -25,7 +98,10 @@
       "url": "https://playfornature.org/en/submit-a-proposal/",
       "status": "closed",
       "opens": "2026-07-15",
-      "deadline": { "date": "2026-08-16", "text": "15 July to 16 August 2026" },
+      "deadline": {
+        "date": "2026-08-16",
+        "text": "15 July to 16 August 2026"
+      },
       "evidence": {
         "status": {
           "source_url": "https://playfornature.org/en/submit-a-proposal/",
@@ -73,7 +149,123 @@
       "quote": "For a first application, projects must be designed around a maximum grant of 5,000 €.",
       "checked_at": "2026-11-20",
       "method": "page"
-    }
+    },
+    "consortium_required": {
+      "source_url": "https://playfornature.org/wp-content/uploads/2026/06/2026_AAP_BiodivSport_Guidelines.pdf",
+      "quote": "Only civil society organizations dedicated to the conservation of endangered species and ecosystems will be considered, either alone or in coalition with a sports organization.",
+      "checked_at": "2026-11-20",
+      "method": "page"
+    },
+    "effort": [
+      {
+        "source_url": "https://playfornature.org/wp-content/uploads/2026/06/2026_AAP_BiodivSport_Guidelines.pdf",
+        "quote": "Opening of the call for projects and receipt of applications: from July 15, 2026 to August 16, 2026 at 11:59 p.m. (Paris time, GMT +2).",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://playfornature.org/en/faq-grant-programme/",
+        "quote": "First, all applications are checked against the eligibility criteria - ineligible applications are not reviewed further.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://playfornature.org/wp-content/uploads/2026/06/2026_AAP_BiodivSport_Guidelines.pdf",
+        "quote": "all eligible applications (see sections 3, 4, 5) will undergo an initial scoring.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://playfornature.org/wp-content/uploads/2026/06/2026_AAP_BiodivSport_Guidelines.pdf",
+        "quote": "The applications retained after this stage will then be scored by 5 separate evaluators from the Selection Committee.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://playfornature.org/wp-content/uploads/2026/06/2026_AAP_BiodivSport_Guidelines.pdf",
+        "quote": "A shortlist of the highest-scoring applications will then be presented to the Committee at a dedicated meeting, at the end of which the awarded projects will be designated.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "eligibility": [
+      {
+        "source_url": "https://playfornature.org/wp-content/uploads/2026/06/2026_AAP_BiodivSport_Guidelines.pdf",
+        "quote": "Only civil society organizations dedicated to the conservation of endangered species and ecosystems will be considered, either alone or in coalition with a sports organization.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://playfornature.org/wp-content/uploads/2026/06/2026_AAP_BiodivSport_Guidelines.pdf",
+        "quote": "The organization must have a minimum legal existence of 3 years.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://playfornature.org/wp-content/uploads/2026/06/2026_AAP_BiodivSport_Guidelines.pdf",
+        "quote": "It must be a biodiversity conservation project aimed at protecting an endangered species and raising awareness of its protection, through the practice of a sport or the organization of a sporting event.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://playfornature.org/wp-content/uploads/2026/06/2026_AAP_BiodivSport_Guidelines.pdf",
+        "quote": "Projects must concern the conservation or awareness-raising for the protection of at least one species listed on the IUCN Red List, in one of the following categories: Vulnerable, Endangered, or Critically Endangered.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://playfornature.org/wp-content/uploads/2026/06/2026_AAP_BiodivSport_Guidelines.pdf",
+        "quote": "The amount of support requested must not exceed 50% of the organization's annual budget, and must represent at least 10% of the total project cost.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://playfornature.org/wp-content/uploads/2026/06/2026_AAP_BiodivSport_Guidelines.pdf",
+        "quote": "The project must not involve any transfer of funds or re-granting to another organization.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://playfornature.org/wp-content/uploads/2026/06/2026_AAP_BiodivSport_Guidelines.pdf",
+        "quote": "The project must not be located in an armed conflict zone. For certain countries, this restriction applies to specific regions.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "after_award": [
+      {
+        "source_url": "https://playfornature.org/en/faq-grant-programme/",
+        "quote": "If your project is selected, you will be expected to maintain regular communication with our team (including interim reports) and submit a final report using our template.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "documents": [
+      {
+        "source_url": "https://playfornature.org/wp-content/uploads/2026/06/2026_AAP_BiodivSport_Guidelines.pdf",
+        "quote": "CV of the project leader(s) Provisional budget of the organization for 2026 * Accounts for the last closed fiscal year, approved by the Board of Directors (for example, for an application in 2026 for a 2027 grant, the 2025 accounts must be provided) Activity report of the organization for 2025.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://playfornature.org/wp-content/uploads/2026/06/2026_AAP_BiodivSport_Guidelines.pdf",
+        "quote": "Progress report on the 2026 project, if the project already exists.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://playfornature.org/en/submit-a-proposal/",
+        "quote": "project budget, project leader's CV, bank details, organisation logo",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://playfornature.org/wp-content/uploads/2026/07/formulaire-candidature-biodiv-sport-en.pdf",
+        "quote": "If yes, please attach the commitment letter from the co-funder(s)",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ]
   },
   "checked_at": "2026-11-20"
 }

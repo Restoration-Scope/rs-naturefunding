@@ -1,0 +1,98 @@
+{
+  "id": "south-cambridgeshire-community-chest-biodiversity",
+  "read_on": "2026-11-20",
+  "prompt_version": "req-2026-11-20.1",
+  "models": ["cursor:gpt-5.6-luna-high"],
+  "complete": false,
+  "reasons": [
+    "24 links could not be ranked without Jev",
+    "26 links could not be ranked without Jev",
+    "23 links could not be ranked without Jev",
+    "https://naturalcambridgeshire.org.uk/wp-content/uploads/2021/01/Doubling-Nature_Local-nature-recovery-toolkit.pdf: page 1 is an image: needs OCR",
+    "the crawl bound left https://forms.scambs.gov.uk/RENTACOUNCILOWNEDGARAGE/launch unread",
+    "https://naturalcambridgeshire.org.uk/wp-content/uploads/2021/01/Doubling-Nature_Local-nature-recovery-toolkit.pdf: a document on another site: without Jev it can’t be confirmed as the funder’s, so it is not used",
+    "the text names a document with rules that was not read: application form",
+    "the text names a document with rules that was not read: grant offer terms and conditions",
+    "Jev did not check this reading, so an absent fact is not known to be absent"
+  ],
+  "requirements_checked": false,
+  "documents": [
+    {
+      "ref": "D1",
+      "url": "https://www.scambs.gov.uk/grants-and-funding/community-chest-grants-open",
+      "final_url": "https://www.scambs.gov.uk/grants-and-funding/community-chest-grants-open",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 15415,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:c10ea9a1a3f1c28acf6a6ba0e9cf392c0fac2901a6998342aa890634b574b34c"
+    },
+    {
+      "ref": "D2",
+      "url": "https://www.scambs.gov.uk/moving-in-guide",
+      "final_url": "https://www.scambs.gov.uk/moving-in-guide",
+      "from": "https://www.scambs.gov.uk/grants-and-funding/community-chest-grants-open",
+      "anchor": "Moving in guide",
+      "depth": 1,
+      "pdf": false,
+      "chars": 4452,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:2b68bb29daff7d162e030a36d026756d39f7bd7d591b047f4338c5a187f77350"
+    },
+    {
+      "ref": "D3",
+      "url": "https://www.scambs.gov.uk/housing/apply-to-rent-a-council-garage",
+      "final_url": "https://www.scambs.gov.uk/housing/apply-to-rent-a-council-garage",
+      "from": "https://www.scambs.gov.uk/moving-in-guide",
+      "anchor": "renting a council owned garage",
+      "depth": 2,
+      "pdf": false,
+      "chars": 6478,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:0dcfb8f36d4c7692c83679ff851b33b6d2421ca4e7115d919722efd21beb7883"
+    }
+  ],
+  "failures": [
+    {
+      "url": "https://naturalcambridgeshire.org.uk/wp-content/uploads/2021/01/Doubling-Nature_Local-nature-recovery-toolkit.pdf",
+      "from": "https://www.scambs.gov.uk/grants-and-funding/community-chest-grants-open",
+      "kind": "low_text",
+      "message": "page 1 is an image: needs OCR"
+    },
+    {
+      "url": "https://forms.scambs.gov.uk/RENTACOUNCILOWNEDGARAGE/launch",
+      "from": "https://www.scambs.gov.uk/housing/apply-to-rent-a-council-garage",
+      "kind": "bound",
+      "message": "past the crawl depth of 2"
+    },
+    {
+      "url": "https://naturalcambridgeshire.org.uk/wp-content/uploads/2021/01/Doubling-Nature_Local-nature-recovery-toolkit.pdf",
+      "from": "https://www.scambs.gov.uk/grants-and-funding/community-chest-grants-open",
+      "kind": "offsite",
+      "message": "a document on another site: without Jev it can’t be confirmed as the funder’s, so it is not used"
+    }
+  ],
+  "skipped_links": 413,
+  "chunks": [{ "id": "all", "docs": ["D1", "D2", "D3"], "chars": 26704 }],
+  "outcomes": {
+    "eligibility": "stated",
+    "documents": "stated",
+    "effort": "stated",
+    "co_finance": "unresolved",
+    "consortium": "not_found",
+    "after_award": "stated"
+  },
+  "written": ["eligibility", "documents", "effort", "after_award"],
+  "escalated": [],
+  "flags": [],
+  "notes": [
+    "extractor: The Biodiversity Grants stream is currently closed for applications. The page was last reviewed on 05 August 2026.",
+    "co_finance: the file says required false, this reading says true"
+  ],
+  "usd": 0
+}

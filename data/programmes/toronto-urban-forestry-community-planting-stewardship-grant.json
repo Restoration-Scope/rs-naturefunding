@@ -1,19 +1,86 @@
 {
   "id": "toronto-urban-forestry-community-planting-stewardship-grant",
   "name": "City of Toronto Community Planting and Stewardship Grant",
-  "funder": { "name": "City of Toronto", "url": "https://www.toronto.ca/" },
+  "funder": {
+    "name": "City of Toronto",
+    "url": "https://www.toronto.ca/"
+  },
   "administered_by": null,
   "parent": null,
   "url": "https://www.toronto.ca/services-payments/water-environment/environmental-grants-incentives/urban-forestry-grants-and-incentives/urban-forestry-community-grants/",
   "summary": "Grants for not-for-profits and charities to plant trees and shrubs on private land in Toronto and care for them, to increase canopy cover.",
-  "approaches": ["urban_nature", "reforestation"],
-  "applicant_types": ["ngo"],
-  "geography": { "scope": "countries", "countries": ["CA"], "label": "City of Toronto" },
+  "approaches": [
+    "urban_nature",
+    "reforestation"
+  ],
+  "applicant_types": [
+    "ngo"
+  ],
+  "geography": {
+    "scope": "countries",
+    "countries": [
+      "CA"
+    ],
+    "label": "City of Toronto"
+  },
   "access": "direct",
   "window": "fixed",
-  "amount": { "currency": "CAD", "min": 5000, "max": 100000 },
+  "amount": {
+    "currency": "CAD",
+    "min": 5000,
+    "max": 100000
+  },
   "co_finance_required": true,
   "reporting": "Recipients submit an interim report in the middle of the calendar year and a final report at project end covering final budget, deliverables and objectives achieved.",
+  "effort": {
+    "steps": [
+      "Pre-screening, if a new applicant requests over $50,000",
+      "Online application through TGRIP",
+      "Initial review",
+      "Full review"
+    ]
+  },
+  "eligibility": [
+    {
+      "rule": "Applicants lacking incorporation or two years of audited financial statements use an eligible trustee organization",
+      "kind": "legal"
+    },
+    {
+      "rule": "The applicant is not an individual or for-profit business venture",
+      "kind": "legal"
+    },
+    {
+      "rule": "Not a grant-maker, fundraiser, landlord/tenant or condo body, or a group eligible for the Greening Partnership Grant",
+      "kind": "legal"
+    },
+    {
+      "rule": "The applicant is not a political or lobby group",
+      "kind": "legal"
+    },
+    {
+      "rule": "The applicant is not currently in litigation with the City of Toronto",
+      "kind": "legal"
+    },
+    {
+      "rule": "The project takes place within the City of Toronto",
+      "kind": "project"
+    },
+    {
+      "rule": "The project does not take place on land controlled by the City of Toronto",
+      "kind": "project"
+    },
+    {
+      "rule": "The project is completed within 12 months from January 1 to December 31, 2027",
+      "kind": "project"
+    }
+  ],
+  "co_finance": {
+    "in_kind": true,
+    "min_share": 50
+  },
+  "after_award": {
+    "reports": "interim_and_final"
+  },
   "calls": [
     {
       "id": "2026",
@@ -66,7 +133,7 @@
     "co_finance_required": {
       "source_url": "https://www.toronto.ca/services-payments/water-environment/environmental-grants-incentives/urban-forestry-grants-and-incentives/urban-forestry-community-grants/",
       "quote": "Grant funding must match or exceed 1:1 by the applicant's organization.",
-      "checked_at": "2026-11-15",
+      "checked_at": "2026-11-20",
       "method": "page"
     },
     "reporting": {
@@ -74,7 +141,103 @@
       "quote": "Interim Report: A report will be requested from your organization in the middle of the calendar year to provide an update on project progress, communicate outstanding activities and identify any anticipated changes to the project. Final Report: A report is due at the end of your project to summarize project completion including final budget, deliverables and objectives achieved.",
       "checked_at": "2026-11-15",
       "method": "page"
-    }
+    },
+    "effort": [
+      {
+        "source_url": "https://www.toronto.ca/services-payments/water-environment/environmental-grants-incentives/urban-forestry-grants-and-incentives/urban-forestry-community-grants/",
+        "quote": "New applicants requesting funding over $50,000 must have their application pre-screened by the City in advance of the application deadline in order to be considered eligible.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.toronto.ca/services-payments/water-environment/environmental-grants-incentives/urban-forestry-grants-and-incentives/urban-forestry-community-grants/",
+        "quote": "Applications must be submitted online through the Toronto Grants, Rebate, and Incentives Portal (TGRIP).",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.toronto.ca/services-payments/water-environment/environmental-grants-incentives/urban-forestry-grants-and-incentives/urban-forestry-community-grants/",
+        "quote": "Applications are reviewed for completeness and for alignment with the grant guidelines and assessment criteria.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.toronto.ca/services-payments/water-environment/environmental-grants-incentives/urban-forestry-grants-and-incentives/urban-forestry-community-grants/",
+        "quote": "Applications are assessed by a grant review panel of City staff and external members with relevant expertise and experience.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "eligibility": [
+      {
+        "source_url": "https://www.toronto.ca/services-payments/water-environment/environmental-grants-incentives/urban-forestry-grants-and-incentives/urban-forestry-community-grants/",
+        "quote": "Applicants that are not incorporated and/or do not have audited financial statements for the past two years will need to work with a trustee organization that meets the eligibility requirements.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.toronto.ca/services-payments/water-environment/environmental-grants-incentives/urban-forestry-grants-and-incentives/urban-forestry-community-grants/",
+        "quote": "Individuals or for-profit business ventures",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.toronto.ca/services-payments/water-environment/environmental-grants-incentives/urban-forestry-grants-and-incentives/urban-forestry-community-grants/",
+        "quote": "Grant-making or third-party fundraising organizations Landlord/tenant and condominium corporations Groups that are eligible for funding under the Greening Partnership Grant",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.toronto.ca/services-payments/water-environment/environmental-grants-incentives/urban-forestry-grants-and-incentives/urban-forestry-community-grants/",
+        "quote": "Political or lobby groups",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.toronto.ca/services-payments/water-environment/environmental-grants-incentives/urban-forestry-grants-and-incentives/urban-forestry-community-grants/",
+        "quote": "Any group that is currently in litigation with the City of Toronto",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.toronto.ca/services-payments/water-environment/environmental-grants-incentives/urban-forestry-grants-and-incentives/urban-forestry-community-grants/",
+        "quote": "Projects taking place outside the City of Toronto.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.toronto.ca/services-payments/water-environment/environmental-grants-incentives/urban-forestry-grants-and-incentives/urban-forestry-community-grants/",
+        "quote": "Projects taking place on lands controlled by the City of Toronto.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.toronto.ca/services-payments/water-environment/environmental-grants-incentives/urban-forestry-grants-and-incentives/urban-forestry-community-grants/",
+        "quote": "Projects must be completed within 12 months between January 1, 2027 and December 31, 2027.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "co_finance": {
+      "source_url": "https://www.toronto.ca/services-payments/water-environment/environmental-grants-incentives/urban-forestry-grants-and-incentives/urban-forestry-community-grants/",
+      "quote": "For every dollar of grant funding received, an equal or greater amount must be contributed to the project by the applicant organization in cash and/or in-kind contributions.",
+      "checked_at": "2026-11-20",
+      "method": "page"
+    },
+    "after_award": [
+      {
+        "source_url": "https://www.toronto.ca/services-payments/water-environment/environmental-grants-incentives/urban-forestry-grants-and-incentives/urban-forestry-community-grants/",
+        "quote": "All grant recipients must submit reports detailing progress of the project.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.toronto.ca/services-payments/water-environment/environmental-grants-incentives/urban-forestry-grants-and-incentives/urban-forestry-community-grants/",
+        "quote": "Interim Report: A report will be requested from your organization in the middle of the calendar year to provide an update on project progress, communicate outstanding activities and identify any anticipated changes to the project. Final Report: A report is due at the end of your project to summarize project completion including final budget, deliverables and objectives achieved.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ]
   },
   "checked_at": "2026-11-15"
 }

@@ -1,0 +1,73 @@
+{
+  "id": "svensk-vatmarksfond",
+  "read_on": "2026-11-20",
+  "prompt_version": "req-2026-11-20.1",
+  "models": ["cursor:gpt-5.6-luna-high"],
+  "complete": false,
+  "reasons": [
+    "the text names a document with rules that was not read: Info om ansökan",
+    "Jev did not check this reading, so an absent fact is not known to be absent"
+  ],
+  "requirements_checked": false,
+  "documents": [
+    {
+      "ref": "D1",
+      "url": "https://vatmarksfonden.se/bidrag/",
+      "final_url": "https://vatmarksfonden.se/bidrag/",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 1947,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:c203e3344586b33985cac36dff50415aee50cc67022d6bfdc0deb7914532faea"
+    },
+    {
+      "ref": "D2",
+      "url": "https://vatmarksfonden.se/wp-content/uploads/2022/11/Att-soka-medel.pdf",
+      "final_url": "https://vatmarksfonden.se/wp-content/uploads/2022/11/Att-soka-medel.pdf",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": true,
+      "chars": 2031,
+      "pages": 1,
+      "low_text": false,
+      "hash": "sha256:fb21bd1294d6a077dbd2938dfe54e2d9203c4b6720d0d5552800166213b44cfc"
+    },
+    {
+      "ref": "D3",
+      "url": "https://vatmarksfonden.se/wp-content/uploads/2022/11/Ansokningsblankett.pdf",
+      "final_url": "https://vatmarksfonden.se/wp-content/uploads/2022/11/Ansokningsblankett.pdf",
+      "from": "https://vatmarksfonden.se/bidrag/",
+      "anchor": "Ansökningsblankett",
+      "depth": 1,
+      "pdf": true,
+      "chars": 3286,
+      "pages": 2,
+      "low_text": false,
+      "hash": "sha256:0806a958e72692cba61ccffe2f378f9537a6707c06804ea59feeae08ccad3404"
+    }
+  ],
+  "failures": [],
+  "skipped_links": 18,
+  "chunks": [{ "id": "all", "docs": ["D1", "D2", "D3"], "chars": 7544 }],
+  "outcomes": {
+    "eligibility": "stated",
+    "documents": "stated",
+    "effort": "stated",
+    "co_finance": "not_found",
+    "consortium": "not_found",
+    "after_award": "not_found"
+  },
+  "written": ["eligibility", "documents", "effort"],
+  "escalated": [],
+  "flags": [],
+  "notes": [
+    "extractor: The deadline is 10 June or 1 December in the year before the planned project start, but no year is stated. The fund says grants are often one of several financing sources and rarely cover the whole project, but it does not require matching funds. An agreement with the landowner or authorised signatory is made for supported projects; it gives the fund full insight and makes the wetland available for the fund's informational activities.",
+    "source svensk-vatmarksfond-2: selector main dropped, a new quote sits outside it",
+    "source svensk-vatmarksfond-3: added for https://vatmarksfonden.se/wp-content/uploads/2022/11/Ansokningsblankett.pdf"
+  ],
+  "usd": 0
+}
