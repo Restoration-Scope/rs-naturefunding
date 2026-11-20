@@ -1,23 +1,76 @@
 {
   "id": "waitt-roc-grants",
   "name": "Waitt Foundation Rapid Ocean Conservation (ROC) Grants",
-  "funder": { "name": "Waitt Foundation", "url": "https://www.waittfoundation.org/" },
+  "funder": {
+    "name": "Waitt Foundation",
+    "url": "https://www.waittfoundation.org/"
+  },
   "administered_by": null,
   "parent": null,
   "url": "https://www.waittfoundation.org/roc-grants",
   "summary": "Small, fast-turnaround grants for six-month projects on sustainable fishing and marine protected areas in island nations that partner with the Blue Prosperity Coalition, reviewed monthly.",
-  "approaches": ["coastal_marine", "protected_areas", "research"],
-  "applicant_types": ["ngo", "research_institution"],
+  "approaches": [
+    "coastal_marine",
+    "protected_areas",
+    "research"
+  ],
+  "applicant_types": [
+    "ngo",
+    "research_institution"
+  ],
   "geography": {
     "scope": "countries",
-    "countries": ["PT", "BM", "FM", "FJ", "WS", "TO", "VU"],
+    "countries": [
+      "PT",
+      "BM",
+      "FM",
+      "FJ",
+      "WS",
+      "TO",
+      "VU"
+    ],
     "label": "Blue Prosperity Coalition partner countries: Azores, Bermuda, Federated States of Micronesia, Fiji, Samoa, Tonga, Vanuatu"
   },
   "access": "direct",
   "window": "rolling",
-  "amount": { "currency": "USD", "max": 20000 },
+  "amount": {
+    "currency": "USD",
+    "max": 20000
+  },
   "co_finance_required": null,
   "reporting": null,
+  "effort": {
+    "steps": [
+      "Online application"
+    ]
+  },
+  "eligibility": [
+    {
+      "rule": "Project supports sustainable fishing and/or marine protected areas",
+      "kind": "project"
+    },
+    {
+      "rule": "Not using funds for event sponsorships",
+      "kind": "project"
+    },
+    {
+      "rule": "Having a project duration of 6 months",
+      "kind": "project"
+    },
+    {
+      "rule": "Having relevant experience and expertise for the proposed project",
+      "kind": "capacity"
+    },
+    {
+      "rule": "Maintaining affiliation with an academic institution or NGO throughout the grant project",
+      "kind": "legal"
+    }
+  ],
+  "documents": [
+    "Budget for how grant funds would be used",
+    "Project timeline",
+    "Proof of non-profit status"
+  ],
   "calls": [
     {
       "id": "rolling",
@@ -66,7 +119,67 @@
       "quote": "We will review proposals for grants up to $20,000.",
       "checked_at": "2026-11-15",
       "method": "page"
-    }
+    },
+    "effort": [
+      {
+        "source_url": "https://www.waittfoundation.org/roc-grants",
+        "quote": "Submit an application through our website by clicking the \"Apply Now\" button at the bottom of this page.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "eligibility": [
+      {
+        "source_url": "https://www.waittfoundation.org/roc-grants",
+        "quote": "Project must support sustainable fishing and/or Marine Protected Areas.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.waittfoundation.org/roc-grants",
+        "quote": "Funds cannot be used for event sponsorships.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.waittfoundation.org/roc-grants",
+        "quote": "Project Duration - 6 months",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.waittfoundation.org/roc-grants",
+        "quote": "Applicant must possess commensurate level of experience and expertise with respect to the proposed project.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.waittfoundation.org/roc-grants",
+        "quote": "Applicant must maintain affiliation with an academic institution or NGO for the duration of the grant project.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "documents": [
+      {
+        "source_url": "https://www.waittfoundation.org/roc-grants",
+        "quote": "a budget for how grant funds would be used",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.waittfoundation.org/roc-grants",
+        "quote": "project timeline",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.waittfoundation.org/roc-grants",
+        "quote": "proof of non-profit status as part of your application",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ]
   },
   "checked_at": "2026-11-15"
 }

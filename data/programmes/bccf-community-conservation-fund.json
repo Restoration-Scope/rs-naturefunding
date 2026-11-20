@@ -1,19 +1,68 @@
 {
   "id": "bccf-community-conservation-fund",
   "name": "Community Conservation Fund",
-  "funder": { "name": "BC Conservation Foundation", "url": "https://www.bccf.com/" },
+  "funder": {
+    "name": "BC Conservation Foundation",
+    "url": "https://www.bccf.com/"
+  },
   "administered_by": null,
   "parent": null,
   "url": "https://www.bccf.com/programs/community-conservation-fund/",
   "summary": "Annual intake for community-based conservation projects in British Columbia that benefit local fish and wildlife populations; First Nations, non-profits and stewardship groups apply.",
-  "approaches": ["species_conservation", "community_conservation"],
-  "applicant_types": ["indigenous_organization", "ngo", "community_group"],
-  "geography": { "scope": "countries", "countries": ["CA"], "label": "British Columbia" },
+  "approaches": [
+    "species_conservation",
+    "community_conservation"
+  ],
+  "applicant_types": [
+    "indigenous_organization",
+    "ngo",
+    "community_group"
+  ],
+  "geography": {
+    "scope": "countries",
+    "countries": [
+      "CA"
+    ],
+    "label": "British Columbia"
+  },
   "access": "direct",
   "window": "fixed",
   "amount": null,
   "co_finance_required": null,
   "reporting": "Project reporting is due 30 days after project completion, or one year plus 30 days after funding began, whichever is first.",
+  "effort": {
+    "steps": [
+      "Application form submission"
+    ]
+  },
+  "eligibility": [
+    {
+      "rule": "Organisation is located in British Columbia",
+      "kind": "legal"
+    },
+    {
+      "rule": "The project takes place in British Columbia within the calendar year",
+      "kind": "project"
+    },
+    {
+      "rule": "The project is not a post-secondary thesis, dissertation or special project",
+      "kind": "project"
+    },
+    {
+      "rule": "The applicant is not the primary beneficiary of the intended project outcomes",
+      "kind": "project"
+    },
+    {
+      "rule": "The group applies for funding no more than once per year",
+      "kind": "other"
+    }
+  ],
+  "after_award": {
+    "reports": "final"
+  },
+  "documents": [
+    "Completed Excel spreadsheet with Revenues and Expenses"
+  ],
   "calls": [
     {
       "id": "annual-window",
@@ -69,7 +118,63 @@
       "quote": "Project reporting must be completed 30 days after project completion, or one year plus 30 days after funding commenced, whichever comes first.",
       "checked_at": "2026-11-12",
       "method": "page"
-    }
+    },
+    "effort": [
+      {
+        "source_url": "https://www.bccf.com/ccf-application/",
+        "quote": "Simply fill out this form and submit it directly.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "eligibility": [
+      {
+        "source_url": "https://www.bccf.com/programs/community-conservation-fund/",
+        "quote": "Indigenous Peoples and First Nations, non-profits, stewardship groups and/or community-based organizations located within British Columbia are eligible.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.bccf.com/programs/community-conservation-fund/",
+        "quote": "Projects must take place in British Columbia within the calendar year.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.bccf.com/programs/community-conservation-fund/",
+        "quote": "Post-secondary theses, dissertations or special projects are not eligible for funding.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.bccf.com/programs/community-conservation-fund/",
+        "quote": "The applicant cannot be the primary beneficiary of the intended project outcomes.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.bccf.com/programs/community-conservation-fund/",
+        "quote": "A group or organization can apply for funding once per year.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "after_award": [
+      {
+        "source_url": "https://www.bccf.com/ccf-application/",
+        "quote": "The proponent must report to the Foundation within 30 days after project completion or one year plus 30 days after funding commenced, whichever comes first.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ],
+    "documents": [
+      {
+        "source_url": "https://www.bccf.com/ccf-application/",
+        "quote": "Please download this Excel spreadsheet, fill out and upload in section 5 of this application.",
+        "checked_at": "2026-11-20",
+        "method": "page"
+      }
+    ]
   },
   "checked_at": "2026-11-12"
 }
