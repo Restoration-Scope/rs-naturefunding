@@ -1,0 +1,181 @@
+{
+  "id": "shimane-citizen-participation-forest-project",
+  "read_on": "2026-11-20",
+  "prompt_version": "req-2026-11-20.1",
+  "models": ["cursor:gpt-5.6-luna-high", "cursor:gpt-5.6-sol-high"],
+  "complete": false,
+  "reasons": [
+    "9 links could not be ranked without Jev",
+    "https://www.pref.shimane.lg.jp/industry/norin/ringyo/mizumori/mizumori/mi-mo_mori/index.data/R8tirasi.pdf: a scanned or image PDF: needs OCR",
+    "https://www.pref.shimane.lg.jp/industry/norin/ringyo/mizumori/mizumori/mi-mo_mori/index.data/R7kenminsanka_kouhuyoukou_yousiki.DOC would not open (unreadable: an old Word (.doc), OpenDocument or RTF file: needs conversion)",
+    "the text names a document with rules that was not read: 島根県水と緑の森づくり税条例",
+    "the text names a document with rules that was not read: 補助金等交付規則",
+    "Jev did not check this reading, so an absent fact is not known to be absent",
+    "strong reading: the text names a document with rules that was not read: 補助金等交付規則（昭和32年島根県規則第32号）"
+  ],
+  "requirements_checked": false,
+  "documents": [
+    {
+      "ref": "D1",
+      "url": "https://www.pref.shimane.lg.jp/industry/norin/ringyo/mizumori/mizumori/mi-mo_mori/index.html",
+      "final_url": "https://www.pref.shimane.lg.jp/industry/norin/ringyo/mizumori/mizumori/mi-mo_mori/index.html",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 2777,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:6e86719b0370ddf5575798d06da6fbc6b4474c8fe5585af2bb4e210cb31308a3"
+    },
+    {
+      "ref": "D2",
+      "url": "https://www.pref.shimane.lg.jp/industry/norin/ringyo/mizumori/mizumori/mi-mo_mori/index.data/R8tebiki.pdf",
+      "final_url": "https://www.pref.shimane.lg.jp/industry/norin/ringyo/mizumori/mizumori/mi-mo_mori/index.data/R8tebiki.pdf",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": true,
+      "chars": 8752,
+      "pages": 8,
+      "low_text": false,
+      "hash": "sha256:56feff1a095c32effadaf204c3b7cb6d6d752e24892fdbfc9f61a742cbec1814"
+    },
+    {
+      "ref": "D3",
+      "url": "https://www.pref.shimane.lg.jp/industry/norin/ringyo/mizumori/mizumori/mi-mo_mori/index.data/R8tirasi.pdf",
+      "final_url": "https://www.pref.shimane.lg.jp/industry/norin/ringyo/mizumori/mizumori/mi-mo_mori/index.data/R8tirasi.pdf",
+      "from": "https://www.pref.shimane.lg.jp/industry/norin/ringyo/mizumori/mizumori/mi-mo_mori/index.html",
+      "anchor": "<令和8年度募集チラシ>",
+      "depth": 1,
+      "pdf": true,
+      "chars": 0,
+      "pages": 2,
+      "low_text": true,
+      "hash": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "ref": "D4",
+      "url": "https://www.pref.shimane.lg.jp/industry/norin/ringyo/mizumori/mizumori/mi-mo_mori/index.data/teiansyoyousiki.docx",
+      "final_url": "https://www.pref.shimane.lg.jp/industry/norin/ringyo/mizumori/mizumori/mi-mo_mori/index.data/teiansyoyousiki.docx",
+      "from": "https://www.pref.shimane.lg.jp/industry/norin/ringyo/mizumori/mizumori/mi-mo_mori/index.html",
+      "anchor": "<提案書様式(Word)>",
+      "depth": 1,
+      "pdf": false,
+      "chars": 1623,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:45098d88c567fe1fc4c66511a157574d3a8305924934bd5f1afe3bf233113357"
+    },
+    {
+      "ref": "D5",
+      "url": "https://www.pref.shimane.lg.jp/industry/norin/ringyo/mizumori/mizumori/mi-mo_mori/index.data/R8sekisanyoutanka.pdf",
+      "final_url": "https://www.pref.shimane.lg.jp/industry/norin/ringyo/mizumori/mizumori/mi-mo_mori/index.data/R8sekisanyoutanka.pdf",
+      "from": "https://www.pref.shimane.lg.jp/industry/norin/ringyo/mizumori/mizumori/mi-mo_mori/index.html",
+      "anchor": "<令和8年度事業積算用単価>",
+      "depth": 1,
+      "pdf": true,
+      "chars": 515,
+      "pages": 1,
+      "low_text": false,
+      "hash": "sha256:3dec4d0cab66505f63d9d1778b3c8c44af475cf7aa20f34ddfa304b4a554e36d"
+    },
+    {
+      "ref": "D6",
+      "url": "https://www.pref.shimane.lg.jp/industry/norin/ringyo/mizumori/mizumori/mi-mo_mori/index.data/R8kenminsanka_kouhuyoukou.pdf",
+      "final_url": "https://www.pref.shimane.lg.jp/industry/norin/ringyo/mizumori/mizumori/mi-mo_mori/index.data/R8kenminsanka_kouhuyoukou.pdf",
+      "from": "https://www.pref.shimane.lg.jp/industry/norin/ringyo/mizumori/mizumori/mi-mo_mori/index.html",
+      "anchor": "<県民参加の森づくり事業交付金交付要綱>",
+      "depth": 1,
+      "pdf": true,
+      "chars": 5391,
+      "pages": 6,
+      "low_text": false,
+      "hash": "sha256:e9f265dafb1e599c2fb08e0d1d1d02f16cc2ee98a7fcc4862f28c8d99413c904"
+    },
+    {
+      "ref": "D7",
+      "url": "https://www.pref.shimane.lg.jp/industry/norin/ringyo/mizumori/mizumori/mi-mo_mori/index.data/260217kenminsanka_jissiyouryo.pdf",
+      "final_url": "https://www.pref.shimane.lg.jp/industry/norin/ringyo/mizumori/mizumori/mi-mo_mori/index.data/260217kenminsanka_jissiyouryo.pdf",
+      "from": "https://www.pref.shimane.lg.jp/industry/norin/ringyo/mizumori/mizumori/mi-mo_mori/index.html",
+      "anchor": "<県民参加の森づくり事業実施要領>",
+      "depth": 1,
+      "pdf": true,
+      "chars": 8970,
+      "pages": 4,
+      "low_text": false,
+      "hash": "sha256:b4380de060d84a0a95f10530a67d2dcb1d1462826de70c77a60ce9d69d9c1280"
+    },
+    {
+      "ref": "D8",
+      "url": "https://www.pref.shimane.lg.jp/industry/norin/ringyo/mizumori/mizumori/mi-mo_mori/index.data/kenminsanka_jissiyouryo_yousiki.docx",
+      "final_url": "https://www.pref.shimane.lg.jp/industry/norin/ringyo/mizumori/mizumori/mi-mo_mori/index.data/kenminsanka_jissiyouryo_yousiki.docx",
+      "from": "https://www.pref.shimane.lg.jp/industry/norin/ringyo/mizumori/mizumori/mi-mo_mori/index.html",
+      "anchor": "<実施要領様式(Word)>",
+      "depth": 1,
+      "pdf": false,
+      "chars": 4780,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:dd522896a4b20bcbf99d59e41e2a3182f04b402b0eb7933a8788077fd0c190a6"
+    }
+  ],
+  "failures": [
+    {
+      "url": "https://www.pref.shimane.lg.jp/industry/norin/ringyo/mizumori/mizumori/mi-mo_mori/index.data/R8tirasi.pdf",
+      "from": "https://www.pref.shimane.lg.jp/industry/norin/ringyo/mizumori/mizumori/mi-mo_mori/index.html",
+      "kind": "low_text",
+      "message": "a scanned or image PDF: needs OCR"
+    },
+    {
+      "url": "https://www.pref.shimane.lg.jp/industry/norin/ringyo/mizumori/mizumori/mi-mo_mori/index.data/R7kenminsanka_kouhuyoukou_yousiki.DOC",
+      "from": "https://www.pref.shimane.lg.jp/industry/norin/ringyo/mizumori/mizumori/mi-mo_mori/index.html",
+      "kind": "unreadable",
+      "message": "an old Word (.doc), OpenDocument or RTF file: needs conversion"
+    }
+  ],
+  "skipped_links": 39,
+  "chunks": [{ "id": "all", "docs": ["D1", "D2", "D4", "D5", "D6", "D7", "D8"], "chars": 34261 }],
+  "outcomes": {
+    "eligibility": "partial",
+    "documents": "stated",
+    "effort": "stated",
+    "co_finance": "stated",
+    "consortium": "not_found",
+    "after_award": "stated"
+  },
+  "written": ["eligibility", "documents", "effort", "co_finance", "after_award"],
+  "escalated": ["eligibility", "after_award"],
+  "flags": [
+    {
+      "field": "eligibility",
+      "item": "Applying as a multi-person group with written rules and proper accounting",
+      "why": "the quote is not on any gathered document"
+    },
+    {
+      "field": "eligibility",
+      "item": "Not pursuing religious or partisan political purposes",
+      "why": "the quote is not on any gathered document"
+    },
+    {
+      "field": "eligibility",
+      "item": "Not already implementing or completing another project in the same fiscal year",
+      "why": "the quote is not on any gathered document"
+    },
+    {
+      "field": "eligibility",
+      "item": "A multi-person group with written rules and proper accounting",
+      "why": "the quote is not on any gathered document"
+    }
+  ],
+  "notes": [
+    "effort \"Project proposal submission\": the quote does not state 2026-01-28 whole; left undated",
+    "co_finance: share 50% dropped, its quote does not state it",
+    "extractor: The FY2026 call is closed. Forest-learning projects are exempt from the four-year activity report.",
+    "strong: The four-year annual activity report does not apply to Mori de Manabu (Mimo School). D7 was amended on 17 February 2026 after the FY2026 proposal deadline.",
+    "source shimane-citizen-participation-forest-project-2: selector main dropped, a new quote sits outside it",
+    "source shimane-citizen-participation-forest-project-3: added for https://www.pref.shimane.lg.jp/industry/norin/ringyo/mizumori/mizumori/mi-mo_mori/index.data/260217kenminsanka_jissiyouryo.pdf",
+    "source shimane-citizen-participation-forest-project-4: added for https://www.pref.shimane.lg.jp/industry/norin/ringyo/mizumori/mizumori/mi-mo_mori/index.data/kenminsanka_jissiyouryo_yousiki.docx"
+  ],
+  "usd": 0
+}

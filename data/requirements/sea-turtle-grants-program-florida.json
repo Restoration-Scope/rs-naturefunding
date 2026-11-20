@@ -1,0 +1,124 @@
+{
+  "id": "sea-turtle-grants-program-florida",
+  "read_on": "2026-11-20",
+  "prompt_version": "req-2026-11-20.1",
+  "models": ["cursor:gpt-5.6-luna-high", "cursor:gpt-5.6-sol-high"],
+  "complete": false,
+  "reasons": [
+    "10 links could not be ranked without Jev",
+    "https://helpingseaturtles.org/forms/SeaTurtleGrantGuidelinesApplication.doc would not open (unreadable: an old Word (.doc), OpenDocument or RTF file: needs conversion)",
+    "https://helpingseaturtles.org/forms/SeaTurtleGrantCover.doc would not open (unreadable: an old Word (.doc), OpenDocument or RTF file: needs conversion)",
+    "https://helpingseaturtles.org/forms/SeaTurtleGrantBudget.doc would not open (unreadable: an old Word (.doc), OpenDocument or RTF file: needs conversion)",
+    "http://www.helpingseaturtles.org/forms/SeaTurtleGrantGuidelinesApplication.doc would not open (unreadable: an old Word (.doc), OpenDocument or RTF file: needs conversion)",
+    "https://www.flhsmv.gov/pdf/specialtyplates/license_plate_rankings.pdf would not open (blocked: HTTP 403)",
+    "the text names a document with rules that was not read: Current or federal Recovery Plans for marine turtles",
+    "the text names a document with rules that was not read: Florida Statutes subsection 370.12 (1) (c)",
+    "the text names a document with rules that was not read: Florida Administrative Code 68E-1",
+    "Jev did not check this reading, so an absent fact is not known to be absent"
+  ],
+  "requirements_checked": false,
+  "documents": [
+    {
+      "ref": "D1",
+      "url": "https://helpingseaturtles.org/apply-for-a-grant/",
+      "final_url": "https://helpingseaturtles.org/apply-for-a-grant/",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 3945,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:924bd6468c194bbf368a54e8c442e75ba9a9c2c34b3df918f946d4638a57942b"
+    },
+    {
+      "ref": "D2",
+      "url": "https://helpingseaturtles.org/faq/",
+      "final_url": "https://helpingseaturtles.org/faq/",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 17352,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:bca6474cd8621fec1a41337492142b60cc561d359cff922e3510d653a337869d"
+    },
+    {
+      "ref": "D3",
+      "url": "https://helpingseaturtles.org/forms/SeaTurtleGrantGuidelinesApplication.pdf",
+      "final_url": "https://helpingseaturtles.org/forms/SeaTurtleGrantGuidelinesApplication.pdf",
+      "from": "https://helpingseaturtles.org/apply-for-a-grant/",
+      "anchor": "Sea Turtle Grant Guidelines & Application",
+      "depth": 1,
+      "pdf": true,
+      "chars": 26424,
+      "pages": 11,
+      "low_text": false,
+      "hash": "sha256:0478663381efc13d7dd4489065092de9f647fa29905c9fe9fdbcf24996369ce8"
+    },
+    {
+      "ref": "D4",
+      "url": "http://www.helpingseaturtles.org/forms/SeaTurtleGrantGuidelinesApplication.pdf",
+      "final_url": "http://www.helpingseaturtles.org/forms/SeaTurtleGrantGuidelinesApplication.pdf",
+      "from": "https://helpingseaturtles.org/faq/",
+      "anchor": "PDF",
+      "depth": 1,
+      "pdf": true,
+      "chars": 26424,
+      "pages": 11,
+      "low_text": false,
+      "hash": "sha256:0478663381efc13d7dd4489065092de9f647fa29905c9fe9fdbcf24996369ce8"
+    }
+  ],
+  "failures": [
+    {
+      "url": "https://helpingseaturtles.org/forms/SeaTurtleGrantGuidelinesApplication.doc",
+      "from": "https://helpingseaturtles.org/apply-for-a-grant/",
+      "kind": "unreadable",
+      "message": "an old Word (.doc), OpenDocument or RTF file: needs conversion"
+    },
+    {
+      "url": "https://helpingseaturtles.org/forms/SeaTurtleGrantCover.doc",
+      "from": "https://helpingseaturtles.org/apply-for-a-grant/",
+      "kind": "unreadable",
+      "message": "an old Word (.doc), OpenDocument or RTF file: needs conversion"
+    },
+    {
+      "url": "https://helpingseaturtles.org/forms/SeaTurtleGrantBudget.doc",
+      "from": "https://helpingseaturtles.org/apply-for-a-grant/",
+      "kind": "unreadable",
+      "message": "an old Word (.doc), OpenDocument or RTF file: needs conversion"
+    },
+    {
+      "url": "http://www.helpingseaturtles.org/forms/SeaTurtleGrantGuidelinesApplication.doc",
+      "from": "https://helpingseaturtles.org/faq/",
+      "kind": "unreadable",
+      "message": "an old Word (.doc), OpenDocument or RTF file: needs conversion"
+    },
+    {
+      "url": "https://www.flhsmv.gov/pdf/specialtyplates/license_plate_rankings.pdf",
+      "from": "https://helpingseaturtles.org/faq/",
+      "kind": "blocked",
+      "message": "HTTP 403"
+    }
+  ],
+  "skipped_links": 25,
+  "chunks": [{ "id": "all", "docs": ["D1", "D2", "D3", "D4"], "chars": 74558 }],
+  "outcomes": {
+    "eligibility": "stated",
+    "documents": "stated",
+    "effort": "stated",
+    "co_finance": "stated",
+    "consortium": "not_found",
+    "after_award": "stated"
+  },
+  "written": ["eligibility", "documents", "effort", "co_finance", "after_award"],
+  "escalated": ["documents"],
+  "flags": [],
+  "notes": [
+    "extractor: D2 contains older instructions requiring eight hard copies, while the 2027-2028 instructions in D1 and D3 require one original printed copy plus one digital copy. D1 lists applications provided to the Grant Committee on February 5, 2027, while D3 lists February 6, 2027. The text covers competitive grants, ongoing-activities mini-grants, and emergency funding as separate routes.",
+    "source sea-turtle-grants-program-florida-3: added for https://helpingseaturtles.org/forms/SeaTurtleGrantGuidelinesApplication.pdf"
+  ],
+  "usd": 0
+}
