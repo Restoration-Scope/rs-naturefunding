@@ -18,13 +18,19 @@ export const withoutOcr = (text: string) => text.replace(/\[OCR of page \d+\][\s
 
 /** Pages OCR reads in one document at most; the rest stay unread and block the stamp. */
 export const OCR_PAGE_CAP = 30
-/** A page needs this many characters of text OCR is fairly sure of to count as text, not a photo or a blank. */
-const MIN_CHARS = 40
 /** Words tesseract is fairly sure of (confidence 0–100), and the share of a page's characters they must hold. */
 const SURE = 60
 const MIN_SURE_SHARE = 0.6
-/** Bumped when what a cached OCR answer holds changes (v2: CJK characters weigh three). */
-const CACHE_FORMAT = 'v2'
+/** Fewer sure characters than this is no text at all; a page of unsure text this long is unread, shorter a photo. */
+const MIN_SURE = 10
+const PHOTO_CHARS = 160
+/** A read OCR is fairly sure of, however short: a caption or a title is still the page's text. */
+export const confident = (r: OcrPage) => r.sure >= MIN_SURE && r.sure / r.chars >= MIN_SURE_SHARE
+/**
+ * Bumped when what a cached OCR answer holds changes. v2: CJK weighs three; v3: other scripts tried on unsure reads;
+ * v4: no spaces around Chinese and Japanese punctuation, Korean words keep theirs.
+ */
+const CACHE_FORMAT = 'v4'
 /** The longest one render or one tesseract pass may take: a poster-sized page never hangs a run. */
 const STEP_TIMEOUT_MS = 120_000
 
@@ -111,10 +117,11 @@ export function scriptOf(text: string): string | null {
   return counts.reduce((a, b) => (b[1] > a[1] ? b : a))[0]
 }
 
-const CJK = /[\p{Script=Han}\p{Script=Hiragana}\p{Script=Katakana}\p{Script=Hangul}]/u
-const CJK_ALL = new RegExp(CJK.source, 'gu')
+const CJK_ALL = /[\p{Script=Han}\p{Script=Hiragana}\p{Script=Katakana}\p{Script=Hangul}]/gu
+/** Chinese and Japanese are written without spaces, punctuation included; Korean spaces its words. */
+const UNSPACED = /[\p{Script=Han}\p{Script=Hiragana}\p{Script=Katakana}\u3000-\u303f\uff00-\uffef]/u
 
-/** Tesseract's TSV as text: a line per line, words spaced except between CJK characters. */
+/** Tesseract's TSV as text: a line per line, words spaced except in Chinese and Japanese. */
 export function tsvText(tsv: string): OcrPage {
   const lines: string[] = []
   let key = ''
@@ -134,14 +141,18 @@ export function tsvText(tsv: string): OcrPage {
     if (k !== key) lines.push((key = k, word))
     else {
       const prev = lines[lines.length - 1]!
-      lines[lines.length - 1] = CJK.test(prev.at(-1)!) && CJK.test(word[0]!) ? prev + word : `${prev} ${word}`
+      lines[lines.length - 1] = UNSPACED.test(prev.at(-1)!) && UNSPACED.test(word[0]!) ? prev + word : `${prev} ${word}`
     }
   }
   return { text: lines.join('\n'), chars, sure }
 }
 
 let installed: Ocr | null | undefined
-/** Tesseract with pdftoppm, or null when either is missing. Each page is read in the model for its script. */
+/**
+ * Tesseract with pdftoppm, or null when either is missing. A page is read in its script's model: the text layer's,
+ * else script detection's. A read it is unsure of is tried in the other likely scripts (script detection fails on
+ * sparse pages and reads a Japanese scan as Latin); the surest read wins.
+ */
 export function tesseract(): Ocr | null {
   if (installed !== undefined) return installed
   if (!Bun.which('tesseract') || !Bun.which('pdftoppm')) return (installed = null)
@@ -156,12 +167,20 @@ export function tesseract(): Ocr | null {
         const png = join(dir, 'p')
         const render = Bun.spawnSync(['pdftoppm', '-r', '300', '-gray', '-png', '-singlefile', '-f', `${page}`, '-l', `${page}`, pdfFile, png], { timeout: STEP_TIMEOUT_MS })
         if (render.exitCode !== 0) throw new Error(`pdftoppm failed on page ${page}: ${render.stderr.toString().trim()}`)
-        // Without a hint, script detection picks the model; a page too bare to detect is read as Latin.
-        const osd = hint ? null : Bun.spawnSync(['tesseract', `${png}.png`, '-', '--psm', '0'], { timeout: STEP_TIMEOUT_MS })
-        const script = hint ?? /Script: (\w+)/.exec(osd!.stdout.toString())?.[1] ?? 'Latin'
-        const run = Bun.spawnSync(['tesseract', `${png}.png`, '-', '-l', model(script), '-c', 'preserve_interword_spaces=1', 'tsv'], { timeout: STEP_TIMEOUT_MS })
-        if (run.exitCode !== 0) throw new Error(`tesseract failed on page ${page}: ${run.stderr.toString().trim()}`)
-        return tsvText(run.stdout.toString())
+        const detect = () => /Script: (\w+)/.exec(Bun.spawnSync(['tesseract', `${png}.png`, '-', '--psm', '0'], { timeout: STEP_TIMEOUT_MS }).stdout.toString())?.[1] ?? null
+        const tried = new Set<string>()
+        let best: OcrPage | null = null
+        for (const next of [() => hint, detect, () => 'Latin', () => 'Japanese', () => 'HanS']) {
+          const script = next()
+          if (!script || tried.has(model(script))) continue
+          tried.add(model(script))
+          const run = Bun.spawnSync(['tesseract', `${png}.png`, '-', '-l', model(script), '-c', 'preserve_interword_spaces=1', 'tsv'], { timeout: STEP_TIMEOUT_MS })
+          if (run.exitCode !== 0) throw new Error(`tesseract failed on page ${page}: ${run.stderr.toString().trim()}`)
+          const r = tsvText(run.stdout.toString())
+          if (!best || r.sure > best.sure) best = r
+          if (confident(r)) break
+        }
+        return best!
       } finally {
         rmSync(dir, { recursive: true, force: true })
       }
@@ -221,13 +240,9 @@ export function readPdf(bytes: Uint8Array, opts: { ocr?: Ocr | null; cacheDir?: 
         }
         if (cached) mkdirSync(cacheDir, { recursive: true }), writeFileSync(cached, JSON.stringify(r))
       }
-      if (r.sure < MIN_CHARS) {
-        // Mostly unsure words: a photo or drawing when there are few, a page OCR could not read when there are many.
-        if (r.chars >= 4 * MIN_CHARS) out.unread.push({ page, why: `OCR could not read it reliably (${Math.round((100 * r.sure) / r.chars)}% of its text read with confidence)` })
-        continue
-      }
-      if (r.sure / r.chars < MIN_SURE_SHARE) {
-        out.unread.push({ page, why: `OCR could not read it reliably (${Math.round((100 * r.sure) / r.chars)}% of its text read with confidence)` })
+      if (!confident(r)) {
+        // Unsure words: a photo or drawing when there are few, a page OCR could not read when there are many.
+        if (r.chars >= PHOTO_CHARS) out.unread.push({ page, why: `OCR could not read it reliably (${Math.round((100 * r.sure) / r.chars)}% of its text read with confidence)` })
         continue
       }
       pages[page - 1] = `${pages[page - 1]}\n${ocrStart(page)}\n${r.text}\n${OCR_END}\n`
