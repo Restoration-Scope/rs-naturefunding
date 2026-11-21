@@ -145,10 +145,13 @@ export async function fetchCompletingChain(url: string, init: RequestInit, deps:
     if (!p) extra.set(key, (p = completeChain(u.hostname, Number(u.port) || 443, deps).catch(() => null)))
     return p
   }
-  try {
-    return await fetch(url, init)
-  } catch (e) {
-    if (!missingIssuer(e)) throw e
+  // A host already completed goes straight to its chain; any other tries the plain read first.
+  if (!extra.has(new URL(url).host)) {
+    try {
+      return await fetch(url, init)
+    } catch (e) {
+      if (!missingIssuer(e)) throw e
+    }
   }
   let current = new URL(url)
   for (let hop = 0; hop < 10; hop++) {

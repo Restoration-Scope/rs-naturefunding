@@ -8,6 +8,7 @@
 import { appendFileSync, mkdirSync, writeFileSync } from 'node:fs'
 import { join } from 'node:path'
 import { checkData } from '../../src/data/load'
+import { fetchCompletingChain } from '../data/tls-chain'
 import { leadsOf, leadsSection, readManifests } from '../requirements/leads'
 import type { Programme } from '../../src/data/schema'
 import { classifyResponse, readPages, USER_AGENT, type Fetched } from './fetch'
@@ -28,7 +29,7 @@ function linksOf(p: Programme): string[] {
 /** A link is alive when it answers without an error; bot blocks count as alive but are noted. */
 async function checkLink(url: string): Promise<Fetched> {
   try {
-    const res = await fetch(url, { redirect: 'follow', headers: { 'user-agent': USER_AGENT }, signal: AbortSignal.timeout(30_000) })
+    const res = await fetchCompletingChain(url, { redirect: 'follow', headers: { 'user-agent': USER_AGENT }, signal: AbortSignal.timeout(30_000) })
     const body = (res.headers.get('content-type') ?? '').includes('html') ? await res.text() : ''
     const failure = classifyResponse(res.status, body)
     return failure ? { ok: false, url, ...failure } : { ok: true, url, finalUrl: res.url || url, status: res.status, pdf: false, text: '', hash: '' }

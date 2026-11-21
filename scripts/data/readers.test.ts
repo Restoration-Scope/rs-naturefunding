@@ -142,17 +142,25 @@ describe('OCR for image-only PDF pages', () => {
     }
   }, 60_000)
 
-  test('the gather reads an OCR page instead of reporting it, and reports pages it could not read', async () => {
+  test('the gather reads an OCR page instead of reporting it; an unsure page still blocks the stamp', async () => {
     const programme = { id: 'test-grants', name: 'Test Nature Grants', url: 'https://test.example.org/guide.pdf', funder: { name: 'Test Trust' }, administered_by: null, calls: [], evidence: {} } as never
     const pdf = pdfOf([textPage, textPage, blank])
     const read: Reader = async () => ({ ok: true, finalUrl: 'https://test.example.org/guide.pdf', pdf: true, html: '', bytes: pdf })
-    const { readPdf: real } = await import('./pdf')
-    const g = await gather(programme, { read, sources: [] })
-    // This machine's tesseract finds no text on a blank grey page: a picture, nothing unread.
-    const r = real(pdf, { cacheDir: null })
-    const unread = g.failures.filter((f) => f.kind === 'low_text')
-    if (r.unread.length) expect(unread[0]!.message).toMatch(/^page 3 is an image: /)
-    else expect(unread).toEqual([])
+    const readOk = await gather(programme, { read, sources: [], ocr: fakeOcr({ text: 'Projects must start within 6 months of the award.' }) })
+    expect(readOk.complete).toBe(true)
+    expect(readOk.docs[0]!.text).toContain('[OCR of page 3] Projects must start within 6 months of the award. [end of OCR]')
+    const unsure = await gather(programme, { read, sources: [], ocr: fakeOcr({ text: 'x'.repeat(400), sure: 100 }) })
+    expect(unsure.complete).toBe(false)
+    expect(unsure.reasons).toEqual(['https://test.example.org/guide.pdf: page 3 is an image: OCR could not read it reliably (25% of its text read with confidence)'])
+    const none = await gather(programme, { read, sources: [], ocr: null })
+    expect(none.reasons).toEqual(['https://test.example.org/guide.pdf: page 3 is an image: needs OCR (tesseract is not installed)'])
+  })
+
+  test('a page OCR fails on stays unread; the rest of the document is kept', () => {
+    const broken: Ocr = { version: 'fake', read: () => { throw new Error('tesseract failed on page 2: killed') } }
+    const r = readPdf(pdfOf([textPage, blank]), { ocr: broken, cacheDir: null })
+    expect(r.unread).toEqual([{ page: 2, why: 'needs OCR (tesseract failed on page 2: killed)' }])
+    expect(normalise(r.pages[0]!)).toContain(RULE)
   })
 })
 

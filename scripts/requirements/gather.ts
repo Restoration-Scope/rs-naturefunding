@@ -12,7 +12,7 @@ import type { Programme, Source } from '../../src/data/schema'
 import { comparable, normalise } from '../../src/data/text'
 import { officeText } from '../data/convert'
 import { decodeEntities, htmlToText } from '../data/page-text'
-import { lowTextPdf, readPdf, type PdfRead } from '../data/pdf'
+import { lowTextPdf, readPdf, type Ocr, type PdfRead } from '../data/pdf'
 import { siteOf } from '../refresh/discover-web'
 import { fetchRaw, hashText, HOST_GAP_MS, type FailureKind } from '../refresh/fetch'
 
@@ -73,7 +73,7 @@ export const SITE_PAGE =
   /privacy|cookie|data[ -]protection|datenschutz|impressum|integritetspolicy|個人情報|legal[ -]notice|mentions[ -]l[ée]gales|aviso[ -]legal|terms[ -]of[ -](?:use|service|sale)|conditions[ -]of[ -]use|conditions[ -]d'utilisation|website[ -]terms|\buse[ -]policy|accessibility|disclaimer|copyright|refund[ -]polic|(?:sms|mobile)[ -]terms|sitemap/i
 
 const SKIP_HREF = /^(?:mailto:|tel:|javascript:|#)|\.(?:jpe?g|png|gif|svg|webp|zip|mp4|mp3)(?:$|\?)/i
-const DOC_HREF = /\.(?:pdf|docx?|odt|rtf|xlsx?|pptx?)(?:$|[?#])/i
+const DOC_HREF = /\.(?:pdf|docx?|odt|rtf)(?:$|[?#])/i
 const SOCIAL = /(?:facebook|twitter|x|linkedin|instagram|youtube|tiktok|flickr|vimeo)\.com$/i
 
 const LANGS = new Set('en es pt fr de it nl ja zh ko ru ar sv da no nb nn fi pl cs sk hu ro bg el tr id vi th uk hr sl et lv lt is ga cy ca eu gl'.split(' '))
@@ -252,7 +252,7 @@ export function seedsOf(p: Programme): string[] {
 
 export async function gather(
   p: Programme,
-  opts: { read: Reader; sources: Source[]; jev?: AskJev | null; bounds?: typeof BOUNDS; extra?: string[] },
+  opts: { read: Reader; sources: Source[]; jev?: AskJev | null; bounds?: typeof BOUNDS; extra?: string[]; ocr?: Ocr | null },
 ): Promise<Gathered> {
   const bounds = opts.bounds ?? BOUNDS
   const docs: Doc[] = []
@@ -280,7 +280,7 @@ export async function gather(
       const office = r.pdf ? null : officeText(r.bytes)
       if (office) text = normalise(office.text)
       else if (r.pdf) {
-        pdf = readPdf(r.bytes)
+        pdf = readPdf(r.bytes, opts.ocr === undefined ? {} : { ocr: opts.ocr, cacheDir: null })
         pages = pdf.pages
         text = normalise(pages.join('\n'))
       } else if (/\.(?:docx?|odt|rtf|xlsx?|pptx?)(?:$|[?#])/i.test(r.finalUrl) && !/<html|<!doctype/i.test(r.html.slice(0, 2000))) {

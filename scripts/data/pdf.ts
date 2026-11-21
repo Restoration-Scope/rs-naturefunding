@@ -23,6 +23,15 @@ const MIN_CHARS = 40
 /** Words tesseract is fairly sure of (confidence 0–100), and the share of a page's characters they must hold. */
 const SURE = 60
 const MIN_SURE_SHARE = 0.6
+/** The longest one render or one tesseract pass may take: a poster-sized page never hangs a run. */
+const STEP_TIMEOUT_MS = 120_000
+
+/**
+ * How long this process may spend on OCR in all. The refresh sets one so its first cold run fits its timeout;
+ * pages past it stay unread for that run and are read (and cached) by later ones. The gather has none.
+ */
+let budgetEnds = Infinity
+export const setOcrBudget = (ms: number) => void (budgetEnds = Date.now() + ms)
 
 /** A PDF's text, one entry per page (pdftotext separates pages with form feeds), before normalising. */
 export function pdfPages(bytes: Uint8Array): string[] {
@@ -140,12 +149,12 @@ export function tesseract(): Ocr | null {
       const dir = mkdtempSync(join(tmpdir(), 'nf-ocr-'))
       try {
         const png = join(dir, 'p')
-        const render = Bun.spawnSync(['pdftoppm', '-r', '300', '-gray', '-png', '-singlefile', '-f', `${page}`, '-l', `${page}`, pdfFile, png])
+        const render = Bun.spawnSync(['pdftoppm', '-r', '300', '-gray', '-png', '-singlefile', '-f', `${page}`, '-l', `${page}`, pdfFile, png], { timeout: STEP_TIMEOUT_MS })
         if (render.exitCode !== 0) throw new Error(`pdftoppm failed on page ${page}: ${render.stderr.toString().trim()}`)
         // Without a hint, script detection picks the model; a page too bare to detect is read as Latin.
-        const osd = hint ? null : Bun.spawnSync(['tesseract', `${png}.png`, '-', '--psm', '0'])
+        const osd = hint ? null : Bun.spawnSync(['tesseract', `${png}.png`, '-', '--psm', '0'], { timeout: STEP_TIMEOUT_MS })
         const script = hint ?? /Script: (\w+)/.exec(osd!.stdout.toString())?.[1] ?? 'Latin'
-        const run = Bun.spawnSync(['tesseract', `${png}.png`, '-', '-l', model(script), '-c', 'preserve_interword_spaces=1', 'tsv'])
+        const run = Bun.spawnSync(['tesseract', `${png}.png`, '-', '-l', model(script), '-c', 'preserve_interword_spaces=1', 'tsv'], { timeout: STEP_TIMEOUT_MS })
         if (run.exitCode !== 0) throw new Error(`tesseract failed on page ${page}: ${run.stderr.toString().trim()}`)
         return tsvText(run.stdout.toString())
       } finally {
@@ -194,8 +203,17 @@ export function readPdf(bytes: Uint8Array, opts: { ocr?: Ocr | null; cacheDir?: 
       const cached = cacheDir && join(cacheDir, `${id}-${page}.json`)
       let r: OcrPage
       if (cached && existsSync(cached)) r = JSON.parse(readFileSync(cached, 'utf8'))
-      else {
-        r = ocr.read(file, page, script)
+      else if (Date.now() > budgetEnds) {
+        out.unread.push({ page, why: 'needs OCR (past this run’s OCR time budget)' })
+        continue
+      } else {
+        // One page OCR can't read leaves the rest of the document as read.
+        try {
+          r = ocr.read(file, page, script)
+        } catch (e) {
+          out.unread.push({ page, why: `needs OCR (${(e as Error).message.slice(0, 200)})` })
+          continue
+        }
         if (cached) mkdirSync(cacheDir, { recursive: true }), writeFileSync(cached, JSON.stringify(r))
       }
       if (r.sure < MIN_CHARS) {
