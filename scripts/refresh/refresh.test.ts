@@ -3,7 +3,7 @@ import { readFileSync } from 'node:fs'
 import type { Programme, Source } from '../../src/data/schema'
 import { programme as programmeSchema } from '../../src/data/schema'
 import { deadlineInstant, deadlinePassed, parseZone } from './deadline'
-import { classifyResponse, hashText, readPages, robotsAllows, type Fetched } from './fetch'
+import { classifyResponse, fetchRaw, hashText, isTransient, readPages, robotsAllows, type Fetched } from './fetch'
 import { formatJson } from './json'
 import { answerText, llmFromEnv, provider } from './llm'
 import { sourceOfBranch, withinBudget } from './pool'
@@ -249,6 +249,38 @@ describe('blocked fetch', () => {
     expect(classifyResponse(404, '')?.kind).toBe('http')
     expect(classifyResponse(200, '<html><body>Request unsuccessful. Incapsula incident ID: 123</body></html>')?.kind).toBe('blocked')
     expect(classifyResponse(200, '<form>protected by reCAPTCHA</form>')).toBeNull()
+  })
+  test('dropped connections, timeouts and 5xx are transient; blocks, robots and 404 are not', () => {
+    expect(isTransient({ kind: 'network', message: 'ECONNRESET' })).toBe(true)
+    expect(isTransient({ kind: 'timeout', message: 'no answer in 30s' })).toBe(true)
+    expect(isTransient({ kind: 'http', message: 'HTTP 520' })).toBe(true)
+    expect(isTransient({ kind: 'http', message: 'HTTP 404' })).toBe(false)
+    expect(isTransient({ kind: 'blocked', message: 'HTTP 403' })).toBe(false)
+    expect(isTransient({ kind: 'robots', message: 'disallowed' })).toBe(false)
+  })
+  test('a server error is retried until the page reads; a 404 is not retried', async () => {
+    let hits = 0
+    const server = Bun.serve({
+      port: 0,
+      fetch(req) {
+        const path = new URL(req.url).pathname
+        if (path === '/robots.txt') return new Response('', { status: 404 })
+        hits++
+        if (path === '/gone') return new Response('missing', { status: 404 })
+        return hits < 3 ? new Response('busy', { status: 503 }) : new Response('<p>Grant page</p>')
+      },
+    })
+    try {
+      const ok = await fetchRaw(`http://localhost:${server.port}/page`, [1, 1])
+      expect(ok.ok).toBe(true)
+      expect(hits).toBe(3)
+      hits = 0
+      const gone = await fetchRaw(`http://localhost:${server.port}/gone`, [1, 1])
+      expect(gone).toMatchObject({ ok: false, kind: 'http', message: 'HTTP 404' })
+      expect(hits).toBe(1)
+    } finally {
+      server.stop(true)
+    }
   })
   test('a programme whose page failed its latest read is marked not re-checked, with the worst reason', () => {
     const other: Source = { ...source, id: 'example-eligibility', url: URL_B }

@@ -110,12 +110,30 @@ export type Raw =
   | { ok: true; url: string; finalUrl: string; status: number; pdf: boolean; contentType: string; bytes: Uint8Array; body: string }
   | { ok: false; url: string; kind: FailureKind; message: string }
 
-/** One polite request: robots.txt first, then the bytes, refused when blocked or failed. Shared by the refresh and the requirements gather. */
-export async function fetchRaw(url: string): Promise<Raw> {
+/** The waits before each retry of a transient failure: two retries, then the failure stands. */
+export const RETRY_DELAYS_MS = [5_000, 20_000]
+
+/** A dropped connection, no answer or a server error (5xx), which a later try often gets past. Never a block, robots or a 404. */
+export const isTransient = (f: { kind: FailureKind; message: string }) =>
+  f.kind === 'network' || f.kind === 'timeout' || (f.kind === 'http' && /^HTTP 5\d\d$/.test(f.message))
+
+/**
+ * One polite read: robots.txt first, then the bytes, refused when blocked or failed. A transient failure is
+ * retried after each wait in `delays`. Shared by the refresh and the requirements gather.
+ */
+export async function fetchRaw(url: string, delays: number[] = RETRY_DELAYS_MS): Promise<Raw> {
   const u = new URL(url)
   if (!robotsAllows(await robotsFor(u.origin), u.pathname + u.search)) {
     return { ok: false, url, kind: 'robots', message: 'robots.txt disallows this page' }
   }
+  for (let attempt = 0; ; attempt++) {
+    const r = await fetchOnce(url)
+    if (r.ok || !isTransient(r) || attempt >= delays.length) return r
+    await Bun.sleep(delays[attempt])
+  }
+}
+
+async function fetchOnce(url: string): Promise<Raw> {
   let res: Response
   let bytes: Uint8Array
   try {
