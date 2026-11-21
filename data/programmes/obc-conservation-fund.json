@@ -1,31 +1,14 @@
 {
   "id": "obc-conservation-fund",
   "name": "OBC Conservation Fund small grants",
-  "funder": {
-    "name": "Oriental Bird Club",
-    "url": "https://www.orientalbirdclub.org/"
-  },
-  "administered_by": null,
+  "funder": { "name": "Oriental Bird Club", "url": "https://www.orientalbirdclub.org/" },
+  "administered_by": { "name": "Oriental Bird Club", "url": "https://www.orientalbirdclub.org" },
   "parent": null,
   "url": "https://www.orientalbirdclub.org/applications",
   "summary": "Small grants for bird conservation projects in the Oriental region, prioritising threatened species, important bird areas and on-the-ground action involving local communities. Priority goes to NGOs or individuals from the project country. New projects in China are not being funded for now.",
-  "approaches": [
-    "species_conservation",
-    "protected_areas",
-    "community_conservation",
-    "research"
-  ],
-  "applicant_types": [
-    "ngo",
-    "individual"
-  ],
-  "geography": {
-    "scope": "regions",
-    "regions": [
-      "asia"
-    ],
-    "label": "Oriental region"
-  },
+  "approaches": ["species_conservation", "protected_areas", "community_conservation", "research"],
+  "applicant_types": ["ngo", "individual"],
+  "geography": { "scope": "regions", "regions": ["asia"], "label": "Oriental region" },
   "access": "direct",
   "window": "fixed",
   "amount": {
@@ -36,21 +19,10 @@
     "note": "In exceptional cases up to £3,000"
   },
   "co_finance_required": null,
-  "reporting": null,
-  "effort": {
-    "steps": [
-      "Grant application form submission"
-    ]
-  },
-  "eligibility": [
-    {
-      "rule": "The project is not a new project in China",
-      "kind": "project"
-    }
-  ],
-  "after_award": {
-    "reports": "final"
-  },
+  "reporting": "All successful applicants will be expected to provide a final report which will be published on the Oriental Bird Club website",
+  "effort": { "steps": ["Grant application form submission"] },
+  "eligibility": [{ "rule": "The project is not a new project in China", "kind": "project" }],
+  "after_award": { "reports": "final" },
   "calls": [
     {
       "id": "small-grants-twice-yearly",
@@ -59,7 +31,6 @@
       "status": "unknown",
       "opens": null,
       "deadline": null,
-      "recurring": "Deadlines 1 March and 1 September each year",
       "evidence": {
         "status": {
           "source_url": "https://www.orientalbirdclub.org/applications",
@@ -73,10 +44,17 @@
           "checked_at": "2026-11-20",
           "method": "page"
         }
-      }
+      },
+      "recurring": "Deadlines 1 March and 1 September each year"
     }
   ],
   "evidence": {
+    "administered_by": {
+      "source_url": "https://www.orientalbirdclub.org/s/OBCGrantApplication.docx",
+      "quote": "00 Oriental Bird Club Grant Application Form",
+      "checked_at": "2026-11-21",
+      "method": "page"
+    },
     "applicant_types": {
       "source_url": "https://www.orientalbirdclub.org/applications",
       "quote": "NGOs or individuals from the country where the project takes place.",
@@ -107,6 +85,12 @@
       "checked_at": "2026-11-20",
       "method": "page"
     },
+    "reporting": {
+      "source_url": "https://www.orientalbirdclub.org/s/OBCGrantApplication.docx",
+      "quote": "All successful applicants will be expected to provide a final report which will be published on the Oriental Bird Club website at https://www.orientalbirdclub.org/project-reports",
+      "checked_at": "2026-11-21",
+      "method": "page"
+    },
     "effort": [
       {
         "source_url": "https://www.orientalbirdclub.org/applications",
@@ -127,7 +111,7 @@
       {
         "source_url": "https://www.orientalbirdclub.org/s/OBCGrantApplication.docx",
         "quote": "All successful applicants will be expected to provide a final report which will be published on the Oriental Bird Club website at https://www.orientalbirdclub.org/project-reports",
-        "checked_at": "2026-11-20",
+        "checked_at": "2026-11-21",
         "method": "page"
       }
     ]
