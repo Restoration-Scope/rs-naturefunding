@@ -54,8 +54,16 @@ jobs:
         with:
           bun-version: 1.3.6
       - run: bun install --frozen-lockfile
-      - name: pdftotext for PDF call documents
-        run: command -v pdftotext || (sudo apt-get update -qq && sudo apt-get install -y -qq poppler-utils)
+      # pdftotext for PDF call documents and tesseract for their image pages (scripts/data/pdf.ts), so quotes read
+      # from OCR text check here as they did when read.
+      - name: PDF and OCR readers
+        run: sudo apt-get update -qq && sudo apt-get install -y -qq --no-install-recommends poppler-utils tesseract-ocr tesseract-ocr-script-latn tesseract-ocr-script-jpan tesseract-ocr-script-hans tesseract-ocr-script-hant tesseract-ocr-script-hang tesseract-ocr-script-cyrl tesseract-ocr-script-grek
+      # OCR answers are keyed by the file's bytes and the tesseract version, so a rerun on unchanged PDFs is free.
+      - uses: actions/cache@v4
+        with:
+          path: .cache/ocr
+          key: ocr-${{ github.run_id }}
+          restore-keys: ocr-
       - name: Git identity
         run: |
           git config user.name 'github-actions[bot]'

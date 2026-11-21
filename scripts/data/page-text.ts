@@ -8,7 +8,10 @@ import { createHash } from 'node:crypto'
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs'
 import { join } from 'node:path'
 import { normalise } from '../../src/data/text'
-import { docxText, isDocx } from './docx'
+import { officeText } from './convert'
+import { isDocx } from './docx'
+import { readPdf } from './pdf'
+import { fetchCompletingChain } from './tls-chain'
 
 const CACHE_DIR = join(process.cwd(), '.cache', 'pages')
 const DOCX = 'application/vnd.openxmlformats-officedocument.wordprocessingml.document'
@@ -74,7 +77,7 @@ async function fetchRaw(url: string, fresh: boolean): Promise<{ meta: Cached; by
     const meta: Cached = JSON.parse(readFileSync(metaPath, 'utf8'))
     if (meta.fetchedAt.slice(0, 10) === today) return { meta, bytes: readFileSync(join(CACHE_DIR, meta.file)) }
   }
-  const res = await fetch(url, {
+  const res = await fetchCompletingChain(url, {
     redirect: 'follow',
     headers: { 'user-agent': USER_AGENT, accept: 'text/html,application/xhtml+xml,application/pdf;q=0.9,*/*;q=0.8', 'accept-language': 'en' },
     signal: AbortSignal.timeout(45_000),
@@ -89,19 +92,15 @@ async function fetchRaw(url: string, fresh: boolean): Promise<{ meta: Cached; by
   return { meta, bytes }
 }
 
-function pdfToText(file: string): string {
-  const run = Bun.spawnSync(['pdftotext', '-enc', 'UTF-8', file, '-'])
-  if (run.exitCode !== 0) throw new Error(`pdftotext failed: ${run.stderr.toString().trim()}`)
-  return normalise(run.stdout.toString())
-}
-
 export async function fetchPage(url: string, opts: { selector?: string | null; fresh?: boolean } = {}): Promise<Page> {
   const { meta, bytes } = await fetchRaw(url, opts.fresh ?? false)
   if (meta.status >= 400) throw new Error(`HTTP ${meta.status}`)
+  // PDFs with OCR on image pages, and office files, read exactly as the gather and the refresh read them.
+  const office = meta.contentType === 'application/pdf' ? null : officeText(new Uint8Array(bytes))
   const text = meta.contentType === 'application/pdf'
-    ? pdfToText(join(CACHE_DIR, meta.file))
-    : meta.contentType === DOCX
-      ? normalise(docxText(new Uint8Array(bytes)))
+    ? normalise(readPdf(new Uint8Array(bytes)).pages.join('\n'))
+    : office
+      ? normalise(office.text)
       : await htmlToText(bytes.toString('utf8'), opts.selector ?? null)
   return { url, status: meta.status, contentType: meta.contentType, text, fetchedAt: meta.fetchedAt }
 }

@@ -1,7 +1,7 @@
 /**
- * A Word (.docx) file's text, read straight from its zip, so a funder's guidelines published as Word are
- * checked like a PDF. Shared by page-text (verify-quotes), the refresh's readPage and the requirements gather:
- * a quote copied from one reads the same in the others.
+ * Word (.docx), Excel (.xlsx) and PowerPoint (.pptx) text, read straight from the zip, so a funder's guidelines,
+ * forms and budget templates published that way are checked like a PDF. Read through convert.ts's officeText,
+ * shared by page-text (verify-quotes), the refresh's readPage and the requirements gather.
  */
 import { inflateRawSync } from 'node:zlib'
 
@@ -58,4 +58,70 @@ export function docxText(bytes: Uint8Array): string {
     .replace(/&(?:#x([0-9a-f]+)|#(\d+)|(\w+));/gi, (m, hex, dec, named) =>
       hex ? String.fromCodePoint(parseInt(hex, 16)) : dec ? String.fromCodePoint(Number(dec)) : (ENTITIES[named] ?? m),
     )
+}
+
+/** Every file name in a zip, in directory order. */
+export function zipNames(bytes: Uint8Array): string[] {
+  let end = -1
+  for (let at = bytes.length - 22; at >= Math.max(0, bytes.length - 65_557); at--) {
+    if (u32(bytes, at) === 0x06054b50) {
+      end = at
+      break
+    }
+  }
+  if (end < 0) return []
+  const names: string[] = []
+  let at = u32(bytes, end + 16)
+  for (let i = 0; i < u16(bytes, end + 10) && u32(bytes, at) === 0x02014b50; i++) {
+    const nameLen = u16(bytes, at + 28)
+    names.push(new TextDecoder().decode(bytes.subarray(at + 46, at + 46 + nameLen)))
+    at += 46 + nameLen + u16(bytes, at + 30) + u16(bytes, at + 32)
+  }
+  return names
+}
+
+const xmlText = (s: string) =>
+  s
+    .replace(/<[^>]+>/g, '')
+    .replace(/&(?:#x([0-9a-f]+)|#(\d+)|(\w+));/gi, (m, hex, dec, named) =>
+      hex ? String.fromCodePoint(parseInt(hex, 16)) : dec ? String.fromCodePoint(Number(dec)) : (ENTITIES[named] ?? m),
+    )
+
+/** The numbered parts of a zip under a folder ("ppt/slides/slide2.xml"), in number order. */
+const numbered = (bytes: Uint8Array, re: RegExp) =>
+  zipNames(bytes)
+    .filter((n) => re.test(n))
+    .sort((a, b) => Number(re.exec(a)![1]) - Number(re.exec(b)![1]))
+
+/** A spreadsheet (.xlsx)'s cells: a line per row, sheet by sheet; shared and inline strings and plain values. */
+export function xlsxText(bytes: Uint8Array): string {
+  const shared = zipEntry(bytes, 'xl/sharedStrings.xml')
+  const strings = shared ? [...new TextDecoder().decode(shared).matchAll(/<si>([\s\S]*?)<\/si>/g)].map((m) => xmlText(m[1]!.replace(/<rPh\b[\s\S]*?<\/rPh>/g, ''))) : []
+  const out: string[] = []
+  for (const name of numbered(bytes, /^xl\/worksheets\/sheet(\d+)\.xml$/)) {
+    const xml = new TextDecoder().decode(zipEntry(bytes, name)!)
+    for (const row of xml.matchAll(/<row\b[^>]*>([\s\S]*?)<\/row>/g)) {
+      const cells = [...row[1]!.matchAll(/<c\b([^>]*?)(?:\/>|>([\s\S]*?)<\/c>)/g)].map(([, attrs, inner = '']) => {
+        if (/\bt="s"/.test(attrs!)) return strings[Number(/<v>(\d+)<\/v>/.exec(inner)?.[1] ?? -1)] ?? ''
+        if (/\bt="inlineStr"/.test(attrs!)) return xmlText(/<is>([\s\S]*?)<\/is>/.exec(inner)?.[1] ?? '')
+        return xmlText(/<v>([\s\S]*?)<\/v>/.exec(inner)?.[1] ?? '')
+      })
+      const line = cells.filter((c) => c.trim()).join(' ')
+      if (line) out.push(line)
+    }
+  }
+  return out.join('\n')
+}
+
+/** A presentation (.pptx)'s text: slide by slide, a line per paragraph, then each slide's notes. */
+export function pptxText(bytes: Uint8Array): string {
+  const paras = (xml: string) => [...xml.matchAll(/<a:p>([\s\S]*?)<\/a:p>/g)].map((p) => [...p[1]!.matchAll(/<a:t>([\s\S]*?)<\/a:t>/g)].map((t) => xmlText(t[1]!)).join('')).filter((l) => l.trim())
+  const notes = new Map(numbered(bytes, /^ppt\/notesSlides\/notesSlide(\d+)\.xml$/).map((n) => [Number(/(\d+)\.xml$/.exec(n)![1]), n]))
+  return numbered(bytes, /^ppt\/slides\/slide(\d+)\.xml$/)
+    .map((name) => {
+      const n = Number(/(\d+)\.xml$/.exec(name)![1])
+      const note = notes.get(n)
+      return [...paras(new TextDecoder().decode(zipEntry(bytes, name)!)), ...(note ? paras(new TextDecoder().decode(zipEntry(bytes, note)!)) : [])].join('\n')
+    })
+    .join('\n')
 }

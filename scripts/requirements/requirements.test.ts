@@ -461,7 +461,7 @@ function scanPdf(text: string): Uint8Array {
 describe('gather: coverage it must not claim', () => {
   test('a scanned page inside a readable PDF is found', async () => {
     const pdf = scanPdf('Applicants must be registered charities and must submit audited accounts with the application form.')
-    const { pdfPages } = await import('../refresh/fetch')
+    const { pdfPages } = await import('../data/pdf')
     const pages = pdfPages(pdf)
     expect(pages.length).toBe(2)
     expect(lowTextPdf(pages)).toBe(false)
