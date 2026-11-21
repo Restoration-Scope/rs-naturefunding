@@ -4,11 +4,10 @@
  * quote checks use (scripts/data/page-text.ts); only its hash is kept.
  */
 import { createHash } from 'node:crypto'
-import { mkdtempSync, rmSync, writeFileSync } from 'node:fs'
-import { tmpdir } from 'node:os'
-import { join } from 'node:path'
-import { docxText, isDocx } from '../data/docx'
+import { officeText } from '../data/convert'
 import { htmlToText, normalise } from '../data/page-text'
+import { readPdf, withoutOcr } from '../data/pdf'
+import { fetchCompletingChain } from '../data/tls-chain'
 
 export const USER_AGENT = 'Mozilla/5.0 (compatible; naturefunding-refresh/1.0; +https://naturefunding.org/about/)'
 const ROBOTS_TOKEN = 'naturefunding-refresh'
@@ -23,7 +22,8 @@ export type Fetched =
   | { ok: true; url: string; finalUrl: string; status: number; pdf: boolean; text: string; hash: string }
   | { ok: false; url: string; kind: FailureKind; message: string }
 
-export const hashText = (text: string) => `sha256:${createHash('sha256').update(normalise(text)).digest('hex')}`
+/** The page's hash, over its text layer: OCR text is left out, so the tesseract a run has never reads as a change. */
+export const hashText = (text: string) => `sha256:${createHash('sha256').update(normalise(withoutOcr(text))).digest('hex')}`
 
 const CHALLENGE = /<title>\s*(just a moment\.\.\.|attention required! \| cloudflare|access denied|are you a robot)|enable javascript and cookies to continue|cf-chl-|incapsula incident id|_incapsula_resource|request unsuccessful\. incapsula/i
 
@@ -69,26 +69,9 @@ export function robotsAllows(robots: string, path: string): boolean {
   return best?.allow ?? true
 }
 
-/** A PDF's text, one entry per page (pdftotext separates pages with form feeds), before normalising. */
-export function pdfPages(bytes: Uint8Array): string[] {
-  const dir = mkdtempSync(join(tmpdir(), 'nf-pdf-'))
-  try {
-    const file = join(dir, 'page.pdf')
-    writeFileSync(file, bytes)
-    const run = Bun.spawnSync(['pdftotext', '-enc', 'UTF-8', file, '-'])
-    if (run.exitCode !== 0) throw new Error(`pdftotext failed: ${run.stderr.toString().trim()}`)
-    const pages = run.stdout.toString().split('\f')
-    if (pages.length > 1 && !pages.at(-1)!.trim()) pages.pop()
-    return pages
-  } finally {
-    rmSync(dir, { recursive: true, force: true })
-  }
-}
-
-const pdfToText = (bytes: Uint8Array) => normalise(pdfPages(bytes).join('\n'))
-
+/** A server that leaves out its intermediate certificate is read the way a browser reads it (tls-chain.ts). */
 const get = (url: string) =>
-  fetch(url, {
+  fetchCompletingChain(url, {
     redirect: 'follow',
     headers: { 'user-agent': USER_AGENT, accept: 'text/html,application/xhtml+xml,application/pdf;q=0.9,*/*;q=0.8', 'accept-language': 'en' },
     signal: AbortSignal.timeout(TIMEOUT_MS),
@@ -168,7 +151,8 @@ export async function readPage(url: string, selector: string | null): Promise<Fe
   const { pdf, bytes, body } = raw
   const res = { url: raw.finalUrl, status: raw.status }
   try {
-    const text = pdf ? pdfToText(bytes) : isDocx(bytes) ? normalise(docxText(bytes)) : await htmlToText(body, selector)
+    const office = pdf ? null : officeText(bytes)
+    const text = pdf ? normalise(readPdf(bytes).pages.join('\n')) : office ? normalise(office.text) : await htmlToText(body, selector)
     if (text.length < 40) return { ok: false, url, kind: 'unreadable', message: `only ${text.length} characters of text` }
     return { ok: true, url, finalUrl: res.url || url, status: res.status, pdf, text, hash: hashText(text) }
   } catch (e) {

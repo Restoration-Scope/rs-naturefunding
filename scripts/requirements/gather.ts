@@ -6,15 +6,17 @@
  * marks coverage incomplete, so the programme is never stamped requirements_checked on a partial read.
  */
 import { createHash } from 'node:crypto'
-import { existsSync, mkdirSync, mkdtempSync, readFileSync, rmSync, writeFileSync } from 'node:fs'
-import { tmpdir } from 'node:os'
+import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs'
 import { join } from 'node:path'
 import type { Programme, Source } from '../../src/data/schema'
 import { comparable, normalise } from '../../src/data/text'
-import { docxText, isDocx } from '../data/docx'
+import { officeText } from '../data/convert'
 import { decodeEntities, htmlToText } from '../data/page-text'
+import { lowTextPdf, readPdf, type Ocr, type PdfRead } from '../data/pdf'
 import { siteOf } from '../refresh/discover-web'
-import { fetchRaw, hashText, HOST_GAP_MS, pdfPages, type FailureKind } from '../refresh/fetch'
+import { fetchRaw, hashText, HOST_GAP_MS, type FailureKind } from '../refresh/fetch'
+
+export { lowTextPdf, scannedPages } from '../data/pdf'
 import type { AskJev } from './models'
 
 export const BOUNDS = { depth: 2, documents: 8 }
@@ -180,32 +182,11 @@ export async function linksFrom(html: string): Promise<Link[]> {
   return out
 }
 
-/** A PDF needs OCR or a browser when it carries too little text for its pages. */
-export const lowTextPdf = (pages: string[]) => {
-  const chars = pages.reduce((a, p) => a + normalise(p).length, 0)
-  return chars < 400 || chars / Math.max(1, pages.length) < 150
-}
-
-/** Pages of a PDF that carry an image and next to no text: a scan inside an otherwise readable PDF. Blank pages have no image. */
-export function scannedPages(pages: string[], bytes: Uint8Array): number[] {
-  const thin = pages.map((t, i) => ({ i, n: normalise(t).length })).filter((x) => x.n < 200).map((x) => x.i + 1)
-  if (!thin.length || !bytes.length) return []
-  const dir = mkdtempSync(join(tmpdir(), 'nf-img-'))
-  try {
-    const file = join(dir, 'doc.pdf')
-    writeFileSync(file, bytes)
-    const run = Bun.spawnSync(['pdfimages', '-list', file])
-    // Without pdfimages, a thin page can't be told from a blank one: count it as a scan.
-    if (run.exitCode !== 0) return thin
-    const big = new Set<number>()
-    for (const line of run.stdout.toString().split('\n').slice(2)) {
-      const c = line.trim().split(/\s+/)
-      if (c.length > 4 && Number(c[3]) * Number(c[4]) >= 250 * 250) big.add(Number(c[0]))
-    }
-    return thin.filter((n) => big.has(n))
-  } finally {
-    rmSync(dir, { recursive: true, force: true })
-  }
+/** The failures for a PDF's image pages OCR left unread, one per reason: "pages 3, 4 are images: needs OCR (…)". */
+export function unreadPages(read: PdfRead, url: string, from: string | null): Failure[] {
+  const byWhy = new Map<string, number[]>()
+  for (const u of read.unread) byWhy.set(u.why, [...(byWhy.get(u.why) ?? []), u.page])
+  return [...byWhy].map(([why, pages]) => ({ url, from, kind: 'low_text', message: `page${pages.length > 1 ? 's' : ''} ${pages.join(', ')} ${pages.length > 1 ? 'are images' : 'is an image'}: ${why}` }))
 }
 
 export type Reader = (url: string) => Promise<
@@ -271,7 +252,7 @@ export function seedsOf(p: Programme): string[] {
 
 export async function gather(
   p: Programme,
-  opts: { read: Reader; sources: Source[]; jev?: AskJev | null; bounds?: typeof BOUNDS; extra?: string[] },
+  opts: { read: Reader; sources: Source[]; jev?: AskJev | null; bounds?: typeof BOUNDS; extra?: string[]; ocr?: Ocr | null },
 ): Promise<Gathered> {
   const bounds = opts.bounds ?? BOUNDS
   const docs: Doc[] = []
@@ -294,17 +275,17 @@ export async function gather(
     let pages: string[] | null = null
     let links: Link[] = []
     let selected: string | null = null
+    let pdf: PdfRead | null = null
     try {
-      const head = new TextDecoder('latin1').decode(r.bytes.slice(0, 8))
-      const word = !r.pdf && isDocx(r.bytes)
-      if (!r.pdf && !word && (/^PK\x03\x04|^\xD0\xCF\x11\xE0|^\{\\rtf/.test(head) || /\.(?:docx?|odt|rtf)(?:$|[?#])/i.test(r.finalUrl))) {
-        failures.push({ url, from, kind: 'unreadable', message: 'an old Word (.doc), OpenDocument or RTF file: needs conversion' })
-        return null
-      }
-      if (word) text = normalise(docxText(r.bytes))
+      const office = r.pdf ? null : officeText(r.bytes)
+      if (office) text = normalise(office.text)
       else if (r.pdf) {
-        pages = pdfPages(r.bytes)
+        pdf = readPdf(r.bytes, opts.ocr === undefined ? {} : { ocr: opts.ocr, cacheDir: null })
+        pages = pdf.pages
         text = normalise(pages.join('\n'))
+      } else if (/\.(?:docx?|odt|rtf|xlsx?|pptx?)(?:$|[?#])/i.test(r.finalUrl) && !/<html|<!doctype/i.test(r.html.slice(0, 2000))) {
+        failures.push({ url, from, kind: 'unreadable', message: 'a link to an office file that sent neither a document nor a page' })
+        return null
       } else {
         text = await htmlToText(r.html)
         links = await linksFrom(r.html)
@@ -315,13 +296,12 @@ export async function gather(
       failures.push({ url, from, kind: 'unreadable', message: (e as Error).message })
       return null
     }
+    // A PDF is low on text after OCR has read what it can: what is left is unread scans, or photos and blanks.
     const low = pages ? lowTextPdf(pages) : text.length < 300
     const doc: Doc = { ref: `D${docs.length + 1}`, url, final_url: r.finalUrl, from, anchor, depth, pdf: r.pdf, text, pages, selected, links, hash: hashText(text), low_text: low }
-    if (low) failures.push({ url, from, kind: 'low_text', message: r.pdf ? 'a scanned or image PDF: needs OCR' : 'too little text: the page may need a browser' })
-    else if (pages) {
-      const scans = scannedPages(pages, r.bytes)
-      if (scans.length) failures.push({ url, from, kind: 'low_text', message: `page${scans.length > 1 ? 's' : ''} ${scans.join(', ')} ${scans.length > 1 ? 'are images' : 'is an image'}: needs OCR` })
-    }
+    if (low && pdf?.unread.length) failures.push({ url, from, kind: 'low_text', message: `a scanned or image PDF: ${pdf.unread[0]!.why}` })
+    else if (low) failures.push({ url, from, kind: 'low_text', message: r.pdf ? 'a PDF with almost no text, even read by OCR' : 'too little text: the page may need a browser' })
+    else if (pdf) failures.push(...unreadPages(pdf, url, from))
     docs.push(doc)
     return doc
   }

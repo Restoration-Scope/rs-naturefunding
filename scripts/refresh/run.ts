@@ -13,6 +13,7 @@ import { dirname, join, resolve } from 'node:path'
 import { checkData } from '../../src/data/load'
 import type { Programme, Source } from '../../src/data/schema'
 import { programme as programmeSchema } from '../../src/data/schema'
+import { setOcrBudget } from '../data/pdf'
 import { readPages, type Fetched } from './fetch'
 import { formatJson } from './json'
 import { llmFromEnv } from './llm'
@@ -60,6 +61,8 @@ const due = sources.filter((s) =>
 console.log(`${due.length} of ${sources.length} sources due`)
 
 const toFetch = due.filter((s) => simulated.get(s.id) !== 'blocked')
+// OCR of PDF image pages is cached between runs; a cold cache gets 15 minutes a run, so reads fit the job's timeout.
+setOcrBudget(15 * 60_000)
 const reads = await readPages(toFetch)
 for (const s of due) {
   if (simulated.get(s.id) === 'blocked') reads.set(s, { ok: false, url: s.url, kind: 'blocked', message: 'simulated block (--simulate)' })
