@@ -27,10 +27,10 @@ const PHOTO_CHARS = 160
 /** A read OCR is fairly sure of, however short: a caption or a title is still the page's text. */
 export const confident = (r: OcrPage) => r.sure >= MIN_SURE && r.sure / r.chars >= MIN_SURE_SHARE
 /**
- * Bumped when what a cached OCR answer holds changes. v2: CJK weighs three; v3: other scripts tried on unsure reads;
- * v4: no spaces around Chinese and Japanese punctuation, Korean words keep theirs.
+ * Bumped when what a cached OCR answer holds changes. v2: CJK weighs three; v3: other scripts tried on unsure or guessed reads;
+ * v4: no spaces around Chinese and Japanese punctuation, Korean words keep theirs; v5: every guessed script tried.
  */
-const CACHE_FORMAT = 'v4'
+const CACHE_FORMAT = 'v5'
 /** The longest one render or one tesseract pass may take: a poster-sized page never hangs a run. */
 const STEP_TIMEOUT_MS = 120_000
 
@@ -170,7 +170,10 @@ export function tesseract(): Ocr | null {
         const detect = () => /Script: (\w+)/.exec(Bun.spawnSync(['tesseract', `${png}.png`, '-', '--psm', '0'], { timeout: STEP_TIMEOUT_MS }).stdout.toString())?.[1] ?? null
         const tried = new Set<string>()
         let best: OcrPage | null = null
-        for (const next of [() => hint, detect, () => 'Latin', () => 'Japanese', () => 'HanS']) {
+        // A script the text layer or detection names ends the search once its read is sure; the guesses after it are
+        // all tried, since a Latin read of a Japanese scan can look sure, and the surest (CJK weighs three) wins.
+        const known = [() => hint, detect]
+        for (const [i, next] of [...known, () => 'Latin', () => 'Japanese', () => 'HanS'].entries()) {
           const script = next()
           if (!script || tried.has(model(script))) continue
           tried.add(model(script))
@@ -178,7 +181,7 @@ export function tesseract(): Ocr | null {
           if (run.exitCode !== 0) throw new Error(`tesseract failed on page ${page}: ${run.stderr.toString().trim()}`)
           const r = tsvText(run.stdout.toString())
           if (!best || r.sure > best.sure) best = r
-          if (confident(r)) break
+          if (i < known.length && confident(r)) break
         }
         return best!
       } finally {
