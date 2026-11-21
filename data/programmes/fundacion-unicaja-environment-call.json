@@ -2,7 +2,7 @@
   "id": "fundacion-unicaja-environment-call",
   "name": "Fundación Unicaja Environment Projects Call",
   "funder": { "name": "Fundación Unicaja", "url": "https://www.fundacionunicaja.com/" },
-  "administered_by": null,
+  "administered_by": { "name": "Fundación Unicaja", "url": "https://www.fundacionunicaja.com" },
   "parent": null,
   "url": "https://www.fundacionunicaja.com/convocatoria-medio-ambiente/",
   "summary": "Call for environmental projects in Andalucía and the province of Ciudad Real, covering preservation, conservation and restoration of biodiversity and natural areas as well as environmental education.",
@@ -15,10 +15,16 @@
   },
   "access": "direct",
   "window": "fixed",
-  "amount": { "currency": "EUR", "min": 10000, "max": 100000 },
+  "amount": {
+    "currency": "EUR",
+    "min": 10000,
+    "max": 100000,
+    "note": "Dotación total de la convocatoria: hasta 1.500.000 €"
+  },
   "pool": { "currency": "EUR", "value": 1500000, "period": "round", "qualifier": "up_to" },
   "co_finance_required": null,
   "reporting": null,
+  "effort": { "steps": ["Online application with the required documents"], "due": ["2026-12-04"] },
   "eligibility": [
     { "rule": "Is legally constituted", "kind": "legal" },
     { "rule": "Is domiciled in Spanish territory", "kind": "legal" },
@@ -77,6 +83,12 @@
     }
   ],
   "evidence": {
+    "administered_by": {
+      "source_url": "https://www.fundacionunicaja.com/convocatoria-medio-ambiente/",
+      "quote": "Fundación Unicaja abre esta convocatoria con el objetivo de impulsar iniciativas",
+      "checked_at": "2026-11-21",
+      "method": "page"
+    },
     "geography": {
       "source_url": "https://www.fundacionunicaja.com/wp-content/uploads/2026/11/Bases-Convocatoria-Medio-Ambiente.pdf",
       "quote": "Los proyectos se desarrollarán en el ámbito territorial de la Fundación Unicaja: Andalucía y la provincia de Ciudad Real.",
@@ -107,6 +119,14 @@
       "checked_at": "2026-11-21",
       "method": "page"
     },
+    "effort": [
+      {
+        "source_url": "https://www.fundacionunicaja.com/wp-content/uploads/2026/11/Bases-Convocatoria-Medio-Ambiente.pdf",
+        "quote": "El plazo de presentación de proyectos será hasta las 14.00 h del día 4 de diciembre de 2026.",
+        "checked_at": "2026-11-21",
+        "method": "page"
+      }
+    ],
     "eligibility": [
       {
         "source_url": "https://www.fundacionunicaja.com/wp-content/uploads/2026/11/Bases-Convocatoria-Medio-Ambiente.pdf",
@@ -178,16 +198,7 @@
         "checked_at": "2026-11-21",
         "method": "page"
       }
-    ],
-    "effort": [
-      {
-        "source_url": "https://www.fundacionunicaja.com/wp-content/uploads/2026/11/Bases-Convocatoria-Medio-Ambiente.pdf",
-        "quote": "El plazo de presentación de proyectos será hasta las 14.00 h del día 4 de diciembre de 2026.",
-        "checked_at": "2026-11-21",
-        "method": "page"
-      }
     ]
   },
-  "checked_at": "2026-11-13",
-  "effort": { "steps": ["Online application with the required documents"], "due": ["2026-12-04"] }
+  "checked_at": "2026-11-13"
 }
