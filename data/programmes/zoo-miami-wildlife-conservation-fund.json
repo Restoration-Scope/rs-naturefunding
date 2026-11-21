@@ -1,52 +1,28 @@
 {
   "id": "zoo-miami-wildlife-conservation-fund",
   "name": "Zoo Miami Wildlife Conservation Fund",
-  "funder": {
-    "name": "Zoo Miami",
-    "url": "https://www.zoomiami.org/"
-  },
-  "administered_by": null,
+  "funder": { "name": "Zoo Miami", "url": "https://www.zoomiami.org/" },
+  "administered_by": { "name": "Zoo Miami", "url": "https://www.zoomiami.org" },
   "parent": null,
   "url": "https://www.zoomiami.org/zoo-miami-wildlife-conservation-grants",
   "summary": "Yearly small grants of up to US$5,000 for wildlife and ecosystem conservation projects worldwide, open to non-profits, individuals and governments.",
-  "approaches": [
-    "species_conservation",
-    "community_conservation"
-  ],
-  "applicant_types": [
-    "ngo",
-    "individual",
-    "government"
-  ],
-  "geography": {
-    "scope": "global"
-  },
+  "approaches": ["species_conservation", "community_conservation"],
+  "applicant_types": ["ngo", "individual", "government"],
+  "geography": { "scope": "global" },
   "access": "direct",
   "window": "fixed",
-  "amount": {
-    "currency": "USD",
-    "max": 5000
-  },
+  "amount": { "currency": "USD", "max": 5000 },
   "co_finance_required": null,
-  "reporting": null,
-  "effort": {
-    "steps": [
-      "Application"
-    ]
-  },
+  "reporting": "Award recipient will be required to submit a final report at the conclusion of their project or annually, at a minimum, delivered electronically to Frank.Ridgley@miamidade.gov",
+  "effort": { "steps": ["Application"] },
   "eligibility": [
-    {
-      "rule": "Submit all application materials in English",
-      "kind": "other"
-    },
+    { "rule": "Submit all application materials in English", "kind": "other" },
     {
       "rule": "Submit no more than one application per organisation or individual each year",
       "kind": "other"
     }
   ],
-  "after_award": {
-    "reports": "yearly"
-  },
+  "after_award": { "reports": "yearly" },
   "documents": [
     "W-9 form for grants to U.S. domestic locations",
     "W-8eci form for international fund transfers"
@@ -58,10 +34,7 @@
       "url": "https://www.zoomiami.org/zoo-miami-wildlife-conservation-grants",
       "status": "closed",
       "opens": "2026-04-01",
-      "deadline": {
-        "date": "2026-06-01",
-        "text": "midnight June 1, 2026"
-      },
+      "deadline": { "date": "2026-06-01", "text": "midnight June 1, 2026" },
       "evidence": {
         "status": {
           "source_url": "https://www.zoomiami.org/zoo-miami-wildlife-conservation-grants",
@@ -85,6 +58,12 @@
     }
   ],
   "evidence": {
+    "administered_by": {
+      "source_url": "https://www.zoomiami.org/assets/2891/zmwcf_fillable_application_2026.pdf",
+      "quote": "Wildlife Conservation Fund Application The Zoo Miami Wildlife Conservation Fund was established in 1998.",
+      "checked_at": "2026-11-21",
+      "method": "page"
+    },
     "applicant_types": {
       "source_url": "https://www.zoomiami.org/zoo-miami-wildlife-conservation-grants",
       "quote": "2018 marked the 20th year anniversary of this fund awarding grants to individuals, governments, and non-profits locally and internationally",
@@ -115,6 +94,12 @@
       "checked_at": "2026-11-20",
       "method": "page"
     },
+    "reporting": {
+      "source_url": "https://www.zoomiami.org/assets/2891/zmwcf_fillable_application_2026.pdf",
+      "quote": "An award recipient will be required to submit a final report at the conclusion of their project or annually, at a minimum.",
+      "checked_at": "2026-11-21",
+      "method": "page"
+    },
     "effort": [
       {
         "source_url": "https://www.zoomiami.org/zoo-miami-wildlife-conservation-grants",
@@ -127,13 +112,13 @@
       {
         "source_url": "https://www.zoomiami.org/assets/2891/zmwcf_fillable_application_2026.pdf",
         "quote": "All application materials must be submitted in English.",
-        "checked_at": "2026-11-20",
+        "checked_at": "2026-11-21",
         "method": "page"
       },
       {
         "source_url": "https://www.zoomiami.org/assets/2891/zmwcf_fillable_application_2026.pdf",
         "quote": "Only one application from each organization or individual will be accepted each year.",
-        "checked_at": "2026-11-20",
+        "checked_at": "2026-11-21",
         "method": "page"
       }
     ],
@@ -141,7 +126,7 @@
       {
         "source_url": "https://www.zoomiami.org/assets/2891/zmwcf_fillable_application_2026.pdf",
         "quote": "An award recipient will be required to submit a final report at the conclusion of their project or annually, at a minimum.",
-        "checked_at": "2026-11-20",
+        "checked_at": "2026-11-21",
         "method": "page"
       }
     ],
@@ -149,13 +134,13 @@
       {
         "source_url": "https://www.zoomiami.org/assets/2891/zmwcf_fillable_application_2026.pdf",
         "quote": "the most current U.S. Internal Revenue Service W-9 form",
-        "checked_at": "2026-11-20",
+        "checked_at": "2026-11-21",
         "method": "page"
       },
       {
         "source_url": "https://www.zoomiami.org/assets/2891/zmwcf_fillable_application_2026.pdf",
         "quote": "a W-8eci form for international fund transfers",
-        "checked_at": "2026-11-20",
+        "checked_at": "2026-11-21",
         "method": "page"
       }
     ]
