@@ -128,10 +128,20 @@ export async function fetchRaw(url: string, delays: number[] = RETRY_DELAYS_MS):
   }
   for (let attempt = 0; ; attempt++) {
     const r = await fetchOnce(url)
-    if (r.ok || !isTransient(r) || attempt >= delays.length) return r
+    if (r.ok || !isTransient(r)) return r
+    if (attempt >= delays.length) return resetToBlocked(r)
     await Bun.sleep(delays[attempt])
   }
 }
+
+/**
+ * A server that resets the connection on every try is filtering bots by user agent (a browser reads the
+ * same page), not down: it counts as blocked, so it joins the browser-read queue and is never marked dead.
+ */
+export const resetToBlocked = <R extends { ok: false; kind: FailureKind; message: string }>(r: R): R =>
+  r.kind === 'network' && /ECONNRESET/.test(r.message)
+    ? { ...r, kind: 'blocked', message: 'connection reset on every try: the server filters bots' }
+    : r
 
 async function fetchOnce(url: string): Promise<Raw> {
   let res: Response

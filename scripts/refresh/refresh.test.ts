@@ -3,7 +3,7 @@ import { readFileSync } from 'node:fs'
 import type { Programme, Source } from '../../src/data/schema'
 import { programme as programmeSchema } from '../../src/data/schema'
 import { deadlineInstant, deadlinePassed, parseZone } from './deadline'
-import { classifyResponse, fetchRaw, hashText, isTransient, readPages, robotsAllows, type Fetched } from './fetch'
+import { classifyResponse, fetchRaw, hashText, isTransient, readPages, resetToBlocked, robotsAllows, type Fetched } from './fetch'
 import { formatJson } from './json'
 import { answerText, llmFromEnv, provider } from './llm'
 import { sourceOfBranch, withinBudget } from './pool'
@@ -257,6 +257,12 @@ describe('blocked fetch', () => {
     expect(isTransient({ kind: 'http', message: 'HTTP 404' })).toBe(false)
     expect(isTransient({ kind: 'blocked', message: 'HTTP 403' })).toBe(false)
     expect(isTransient({ kind: 'robots', message: 'disallowed' })).toBe(false)
+  })
+  test('a reset that survives every retry is a block; other network errors stay network errors', () => {
+    const reset = { ok: false as const, url: URL_A, kind: 'network' as const, message: 'ECONNRESET: The socket connection was closed unexpectedly.' }
+    expect(resetToBlocked(reset)).toMatchObject({ kind: 'blocked' })
+    expect(resetToBlocked({ ...reset, message: 'getaddrinfo ENOTFOUND www.example.org' }).kind).toBe('network')
+    expect(resetToBlocked({ ...reset, kind: 'timeout', message: 'no answer in 30s' }).kind).toBe('timeout')
   })
   test('a server error is retried until the page reads; a 404 is not retried', async () => {
     let hits = 0
