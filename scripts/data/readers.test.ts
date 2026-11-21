@@ -119,7 +119,7 @@ describe('OCR for image-only PDF pages', () => {
   test("tesseract's TSV becomes lines, with confidence counted per character", () => {
     const row = (line: number, word: number, conf: number, text: string) => `5\t1\t1\t1\t${line}\t${word}\t0\t0\t1\t1\t${conf}\t${text}`
     const tsv = ['level\tpage_num\tblock_num\tpar_num\tline_num\tword_num\tleft\ttop\twidth\theight\tconf\ttext', '1\t1\t0\t0\t0\t0\t0\t0\t1\t1\t-1\t', row(1, 1, 96, 'Apply'), row(1, 2, 40, 'by'), row(2, 1, 90, '募集'), row(2, 2, 90, '要項')].join('\n')
-    expect(tsvText(tsv)).toEqual({ text: 'Apply by\n募集要項', chars: 11, sure: 9 })
+    expect(tsvText(tsv)).toEqual({ text: 'Apply by\n募集要項', chars: 19, sure: 17 })
   })
 
   const tools = !!tesseract()

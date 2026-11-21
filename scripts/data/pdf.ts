@@ -23,6 +23,8 @@ const MIN_CHARS = 40
 /** Words tesseract is fairly sure of (confidence 0–100), and the share of a page's characters they must hold. */
 const SURE = 60
 const MIN_SURE_SHARE = 0.6
+/** Bumped when what a cached OCR answer holds changes (v2: CJK characters weigh three). */
+const CACHE_FORMAT = 'v2'
 /** The longest one render or one tesseract pass may take: a poster-sized page never hangs a run. */
 const STEP_TIMEOUT_MS = 120_000
 
@@ -79,7 +81,7 @@ export function scannedPages(pages: string[], bytes: Uint8Array): number[] {
   }
 }
 
-/** What OCR read on one page: its text and how many of its characters tesseract was fairly sure of. */
+/** What OCR read on one page: its text, its size in characters (CJK counted three) and how much of it tesseract was fairly sure of. */
 export type OcrPage = { text: string; chars: number; sure: number }
 /** Reads one page of a PDF file, in the given script's model or the one script detection picks. */
 export type Ocr = { version: string; read: (pdfFile: string, page: number, script: string | null) => OcrPage }
@@ -110,6 +112,7 @@ export function scriptOf(text: string): string | null {
 }
 
 const CJK = /[\p{Script=Han}\p{Script=Hiragana}\p{Script=Katakana}\p{Script=Hangul}]/u
+const CJK_ALL = new RegExp(CJK.source, 'gu')
 
 /** Tesseract's TSV as text: a line per line, words spaced except between CJK characters. */
 export function tsvText(tsv: string): OcrPage {
@@ -123,8 +126,10 @@ export function tsvText(tsv: string): OcrPage {
     const word = c.slice(11).join('\t').trim()
     if (!word) continue
     const conf = Number(c[10])
-    chars += word.length
-    if (conf >= SURE) sure += word.length
+    // A CJK character carries about a Latin word's worth: it counts three, so a Japanese line is not a "photo".
+    const weight = word.length + 2 * (word.match(CJK_ALL) ?? []).length
+    chars += weight
+    if (conf >= SURE) sure += weight
     const k = `${c[2]}.${c[3]}.${c[4]}`
     if (k !== key) lines.push((key = k, word))
     else {
@@ -190,7 +195,7 @@ export function readPdf(bytes: Uint8Array, opts: { ocr?: Ocr | null; cacheDir?: 
   }
   const cacheDir = opts.cacheDir === undefined ? join(process.cwd(), '.cache', 'ocr') : opts.cacheDir
   const script = scriptOf(pages.join('\n'))
-  const id = createHash('sha256').update(bytes).update(`${ocr.version} ${script}`).digest('hex').slice(0, 24)
+  const id = createHash('sha256').update(bytes).update(`${ocr.version} ${script} ${CACHE_FORMAT}`).digest('hex').slice(0, 24)
   const dir = mkdtempSync(join(tmpdir(), 'nf-ocrpdf-'))
   try {
     const file = join(dir, 'doc.pdf')
