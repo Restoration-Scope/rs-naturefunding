@@ -2,7 +2,7 @@
   "id": "nwmf-omdahl-conservation-fund",
   "name": "Northwest Minnesota Foundation Omdahl Conservation Fund",
   "funder": { "name": "Northwest Minnesota Foundation", "url": "https://nwmf.org/" },
-  "administered_by": null,
+  "administered_by": { "name": "Northwest Minnesota Foundation", "url": "https://nwmf.org" },
   "parent": null,
   "url": "https://nwmf.org/grants-scholarships/grants/",
   "summary": "Grants to 501(c)(3) nonprofits in a 12-county Northwest Minnesota region (including Red Lake and White Earth Nations) for projects that promote or preserve natural resources. The current round offers $45,000 in total, with awards up to $25,000.",
@@ -10,12 +10,8 @@
   "applicant_types": ["ngo"],
   "geography": { "scope": "countries", "countries": ["US"], "label": "Northwest Minnesota" },
   "access": "direct",
-  "window": "unspecified",
-  "amount": {
-    "currency": "USD",
-    "max": 25000,
-    "note": "Maximum award stated in the November 2026 announcement."
-  },
+  "window": "fixed",
+  "amount": { "currency": "USD", "max": 25000, "note": "Maximum grant award is $25,000" },
   "co_finance_required": null,
   "reporting": null,
   "effort": { "steps": ["Application"] },
@@ -33,7 +29,6 @@
       "status": "open",
       "opens": null,
       "deadline": null,
-      "note": "The page says applications are open through December 4th and gives no year.",
       "evidence": {
         "status": {
           "source_url": "https://nwmf.org/grants-scholarships/grants/",
@@ -41,10 +36,17 @@
           "checked_at": "2026-11-21",
           "method": "page"
         }
-      }
+      },
+      "note": "The page says applications are open through December 4th and gives no year."
     }
   ],
   "evidence": {
+    "administered_by": {
+      "source_url": "https://nwmf.org/grant-applications-now-accepted-for-projects-that-promote-or-preserve-natural-resources/",
+      "quote": "The Eldor and Stella Omdahl Environment and Conservation Fund is a fund in the family of funds at the Northwest Minnesota Foundation",
+      "checked_at": "2026-11-21",
+      "method": "page"
+    },
     "applicant_types": {
       "source_url": "https://nwmf.org/grants-scholarships/grants/",
       "quote": "501(c)(3) nonprofits located in the eligible Northwest Minnesota region may apply for projects that promote or preserve natural resources in the region.",
@@ -63,9 +65,15 @@
       "checked_at": "2026-11-21",
       "method": "page"
     },
+    "window": {
+      "source_url": "https://nwmf.org/grant-applications-now-accepted-for-projects-that-promote-or-preserve-natural-resources/",
+      "quote": "Applications are open until December 4th",
+      "checked_at": "2026-11-21",
+      "method": "page"
+    },
     "amount": {
       "source_url": "https://nwmf.org/grant-applications-now-accepted-for-projects-that-promote-or-preserve-natural-resources/",
-      "quote": "The total funding available is $45,000. The maximum grant award is $25,000.",
+      "quote": "The maximum grant award is $25,000.",
       "checked_at": "2026-11-21",
       "method": "page"
     },
