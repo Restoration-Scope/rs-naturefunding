@@ -5,7 +5,10 @@
     "name": "Eastern Brook Trout Joint Venture (National Fish Habitat Partnership)",
     "url": "https://www.easternbrooktrout.net/"
   },
-  "administered_by": null,
+  "administered_by": {
+    "name": "Eastern Brook Trout Joint Venture (EBTJV)",
+    "url": "https://easternbrooktrout.net"
+  },
   "parent": null,
   "url": "https://www.easternbrooktrout.net/projects/funding/2027-funding-application-information",
   "summary": "Federal National Fish Habitat Partnership money, distributed by the Eastern Brook Trout Joint Venture, for projects that conserve and restore habitat supporting wild brook trout. Applicants go through a pre-application and then an invited full application.",
@@ -29,6 +32,18 @@
       "Federal review (NFHP and USFWS)"
     ]
   },
+  "eligibility": [
+    {
+      "rule": "A state, local or federal government body, university, watershed group, IRS 501(c)(3) nonprofit or tribe",
+      "kind": "legal"
+    },
+    {
+      "rule": "On-the-ground brook trout habitat project in its native eastern range, not research",
+      "kind": "project"
+    }
+  ],
+  "co_finance": { "ratio": "1:1", "in_kind": true, "applies_to": "Projects not led by a Tribe" },
+  "after_award": { "reports": "yearly" },
   "calls": [
     {
       "id": "fy27",
@@ -61,6 +76,12 @@
     }
   ],
   "evidence": {
+    "administered_by": {
+      "source_url": "https://easternbrooktrout.net/projects/funding/2027-funding-application-information/fy27-program-information",
+      "quote": "EBTJV manages the application, technical review, and project recommendation process.",
+      "checked_at": "2026-11-21",
+      "method": "page"
+    },
     "access": {
       "source_url": "https://www.easternbrooktrout.net/projects/funding/2027-funding-application-information",
       "quote": "Each year, the EBTJV requests project proposals that are focused on conserving and restoring habitat that will support healthy and productive populations of wild brook trout.",
@@ -77,6 +98,12 @@
       "source_url": "https://www.easternbrooktrout.net/projects/funding/2027-funding-application-information",
       "quote": "A maximum of $50,000 may be requested.",
       "checked_at": "2026-11-20",
+      "method": "page"
+    },
+    "co_finance_required": {
+      "source_url": "https://easternbrooktrout.net/projects/funding/2027-funding-application-information/fy27-program-information",
+      "quote": "Funding must be matched with nonfederal contributions* (this requirement is waived for Tribal projects).",
+      "checked_at": "2026-11-21",
       "method": "page"
     },
     "effort": [
@@ -119,12 +146,6 @@
         "method": "page"
       }
     ],
-    "co_finance_required": {
-      "source_url": "https://easternbrooktrout.net/projects/funding/2027-funding-application-information/fy27-program-information",
-      "quote": "Funding must be matched with nonfederal contributions* (this requirement is waived for Tribal projects).",
-      "checked_at": "2026-11-21",
-      "method": "page"
-    },
     "co_finance": {
       "source_url": "https://easternbrooktrout.net/projects/funding/2027-funding-application-information/fy27-application-guidance",
       "quote": "Projects receiving NFHP funds must meet the applicable non-federal cost-share requirement. To meet the 1:1 non-federal match requirement, non-federal funds contributions must not come from, be matched to, or otherwise tied to a federal source. Match may include cash, time, materials, or other in-kind services.",
@@ -146,17 +167,5 @@
       }
     ]
   },
-  "checked_at": "2026-11-20",
-  "eligibility": [
-    {
-      "rule": "A state, local or federal government body, university, watershed group, IRS 501(c)(3) nonprofit or tribe",
-      "kind": "legal"
-    },
-    {
-      "rule": "On-the-ground brook trout habitat project in its native eastern range, not research",
-      "kind": "project"
-    }
-  ],
-  "co_finance": { "ratio": "1:1", "in_kind": true, "applies_to": "Projects not led by a Tribe" },
-  "after_award": { "reports": "yearly" }
+  "checked_at": "2026-11-20"
 }
