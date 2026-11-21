@@ -5,7 +5,10 @@
     "name": "Stiftung Naturschutzfonds Baden-Württemberg",
     "url": "https://stiftung-naturschutzfonds-bw.de/"
   },
-  "administered_by": null,
+  "administered_by": {
+    "name": "Stiftung Naturschutzfonds Baden-Württemberg",
+    "url": "https://stiftung-naturschutzfonds-bw.de"
+  },
   "parent": null,
   "url": "https://stiftung-naturschutzfonds-bw.de/foerderung/wir-foerdern-vielfalt/zuwendungsbereich-allgemeiner-haushalt",
   "summary": "Project grants from a Baden-Württemberg state foundation for nature conservation in the state: species and habitat protection, habitat networks, nature-based climate adaptation, urban ecology and applied research. Non-profits, municipalities, universities and private persons can apply; an own contribution of at least 10 percent is expected.",
@@ -14,7 +17,12 @@
   "geography": { "scope": "countries", "countries": ["DE"], "label": "Baden-Württemberg" },
   "access": "direct",
   "window": "fixed",
-  "amount": null,
+  "amount": {
+    "currency": "EUR",
+    "max": 200000,
+    "typical": true,
+    "note": "die Zuwendung für ein Projekt in der Regel 200.000 Euro nicht übersteigt"
+  },
   "co_finance_required": true,
   "reporting": null,
   "effort": { "steps": ["Complete and sign the application form and email it"] },
@@ -63,6 +71,12 @@
     }
   ],
   "evidence": {
+    "administered_by": {
+      "source_url": "https://stiftung-naturschutzfonds-bw.de/fileadmin/user_upload/Downloads/Grundlagen_der_Foerderung/SNF_Hinweise_zur_Foerderleitlinie_03_2026_bf.pdf",
+      "quote": "Stiftung Naturschutzfonds Baden-Württemberg Gerberstraße 3 70178 Stuttgart info@naturschutzfonds.bwl.de www.stiftung-naturschutzfonds-bw.de",
+      "checked_at": "2026-11-21",
+      "method": "page"
+    },
     "applicant_types": {
       "source_url": "https://stiftung-naturschutzfonds-bw.de/fileadmin/user_upload/Downloads/Grundlagen_der_Foerderung/SNF_Foerderleitlinie_07_2026_bf.pdf",
       "quote": "Zuwendungsberechtigte sind: • Gemeinnützige Organisationen • staatliche und staatlich anerkannte Hochschulen und • staatliche Forschungseinrichtungen Kommunale Stellen • Sonstige Organisationen • Privatpersonen",
@@ -85,6 +99,12 @@
       "source_url": "https://stiftung-naturschutzfonds-bw.de/foerderung/wir-foerdern-vielfalt/zuwendungsbereich-allgemeiner-haushalt",
       "quote": "Ankündigung: Die Ausschreibung 2027 startet im Juli 2027.",
       "checked_at": "2026-11-20",
+      "method": "page"
+    },
+    "amount": {
+      "source_url": "https://stiftung-naturschutzfonds-bw.de/fileadmin/user_upload/Downloads/Grundlagen_der_Foerderung/SNF_Hinweise_zur_Foerderleitlinie_03_2026_bf.pdf",
+      "quote": "die Zuwendung für ein Projekt in der Regel 200.000 Euro nicht übersteigt",
+      "checked_at": "2026-11-21",
       "method": "page"
     },
     "co_finance_required": {
