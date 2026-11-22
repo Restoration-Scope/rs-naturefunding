@@ -14,9 +14,16 @@
   "geography": { "scope": "countries", "countries": ["US"], "label": "California" },
   "access": "direct",
   "window": "unspecified",
-  "amount": null,
+  "amount": {
+    "currency": "USD",
+    "max": 6000000,
+    "note": "total funding available for Delta decontamination projects"
+  },
   "co_finance_required": false,
   "reporting": null,
+  "effort": {
+    "steps": ["Concept proposal", "Full application or supplemental information, if requested"]
+  },
   "eligibility": [
     { "rule": "For Mojave funding, the project is not a research project", "kind": "project" },
     {
@@ -127,15 +134,21 @@
       "checked_at": "2026-11-22",
       "method": "page"
     },
+    "geography": {
+      "source_url": "https://wildlife.ca.gov/Grants/Restoration-Grants",
+      "quote": "to accelerate the pace and scale of restoration throughout the state",
+      "checked_at": "2026-11-22",
+      "method": "page"
+    },
     "access": {
       "source_url": "https://wildlife.ca.gov/Grants/Restoration-Grants/Concept-Application",
       "quote": "The application process begins with a concept proposal submitted through CDFW's WebGrants(opens in new tab) portal.",
       "checked_at": "2026-11-22",
       "method": "page"
     },
-    "geography": {
+    "amount": {
       "source_url": "https://wildlife.ca.gov/Grants/Restoration-Grants",
-      "quote": "to accelerate the pace and scale of restoration throughout the state",
+      "quote": "CDFW is excited to announce $6 million is available for projects to develop or enhance boating decontamination control efforts in the Sacramento‑San Joaquin Delta",
       "checked_at": "2026-11-22",
       "method": "page"
     },
@@ -145,6 +158,20 @@
       "checked_at": "2026-11-22",
       "method": "page"
     },
+    "effort": [
+      {
+        "source_url": "https://nrm.dfg.ca.gov/FileHandler.ashx?DocumentID=227155&inline",
+        "quote": "Applicants will first submit a concept proposal.",
+        "checked_at": "2026-11-22",
+        "method": "page"
+      },
+      {
+        "source_url": "https://nrm.dfg.ca.gov/FileHandler.ashx?DocumentID=227155&inline",
+        "quote": "Depending on the funding program, CDFW may request supplemental information (e.g., bond funding) or a full application (e.g., FRGP)",
+        "checked_at": "2026-11-22",
+        "method": "page"
+      }
+    ],
     "eligibility": [
       {
         "source_url": "https://nrm.dfg.ca.gov/FileHandler.ashx?DocumentID=248026&inline",
@@ -228,24 +255,7 @@
         "checked_at": "2026-11-22",
         "method": "page"
       }
-    ],
-    "effort": [
-      {
-        "source_url": "https://nrm.dfg.ca.gov/FileHandler.ashx?DocumentID=227155&inline",
-        "quote": "Applicants will first submit a concept proposal.",
-        "checked_at": "2026-11-22",
-        "method": "page"
-      },
-      {
-        "source_url": "https://nrm.dfg.ca.gov/FileHandler.ashx?DocumentID=227155&inline",
-        "quote": "Depending on the funding program, CDFW may request supplemental information (e.g., bond funding) or a full application (e.g., FRGP)",
-        "checked_at": "2026-11-22",
-        "method": "page"
-      }
     ]
   },
-  "checked_at": "2026-11-22",
-  "effort": {
-    "steps": ["Concept proposal", "Full application or supplemental information, if requested"]
-  }
+  "checked_at": "2026-11-22"
 }
