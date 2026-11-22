@@ -21,6 +21,14 @@
   "amount": { "currency": "USD", "max": 200000 },
   "co_finance_required": null,
   "reporting": "Large-grant holders file financial reports every quarter and progress reports every six months through CEPF’s online system.",
+  "effort": {
+    "steps": [
+      "Letter of inquiry",
+      "Full proposal, if invited (large grants)",
+      "Safeguard documents, if required"
+    ],
+    "more_after": true
+  },
   "eligibility": [
     {
       "rule": "The project supports at least one strategic direction in the hotspot ecosystem profile",
@@ -46,6 +54,7 @@
     { "rule": "Project does not remove or alter tangible cultural heritage", "kind": "project" },
     { "rule": "Project has no potential to harm critical habitat", "kind": "project" }
   ],
+  "after_award": { "reports": "quarterly", "training": true },
   "calls": [
     {
       "id": "2026-large-trees",
@@ -124,6 +133,26 @@
       "checked_at": "2026-11-22",
       "method": "page"
     },
+    "effort": [
+      {
+        "source_url": "https://www.cepf.net/grants/before-you-apply/life-cycle-of-grant",
+        "quote": "Large-grant applicants submit letters of inquiry online, through the online grants database ConservationGrants. Small-grant applicants submit letters of inquiry using an offline template that will be provided in the open call instructions.",
+        "checked_at": "2026-11-22",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.cepf.net/grants/before-you-apply/life-cycle-of-grant",
+        "quote": "These applicants will have a defined period of time (typically around two months, although this may vary among hotspots) to submit a complete project proposal through the online portal ConservationGrants.",
+        "checked_at": "2026-11-22",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.cepf.net/grants/before-you-apply/life-cycle-of-grant",
+        "quote": "If a project triggers one or more safeguard policies, the grantee will be asked to prepare the relevant safeguard document(s) and incorporate related measures into the project's design.",
+        "checked_at": "2026-11-22",
+        "method": "page"
+      }
+    ],
     "eligibility": [
       {
         "source_url": "https://www.cepf.net/grants/eligibility",
@@ -174,26 +203,6 @@
         "method": "page"
       }
     ],
-    "effort": [
-      {
-        "source_url": "https://www.cepf.net/grants/before-you-apply/life-cycle-of-grant",
-        "quote": "Large-grant applicants submit letters of inquiry online, through the online grants database ConservationGrants. Small-grant applicants submit letters of inquiry using an offline template that will be provided in the open call instructions.",
-        "checked_at": "2026-11-22",
-        "method": "page"
-      },
-      {
-        "source_url": "https://www.cepf.net/grants/before-you-apply/life-cycle-of-grant",
-        "quote": "These applicants will have a defined period of time (typically around two months, although this may vary among hotspots) to submit a complete project proposal through the online portal ConservationGrants.",
-        "checked_at": "2026-11-22",
-        "method": "page"
-      },
-      {
-        "source_url": "https://www.cepf.net/grants/before-you-apply/life-cycle-of-grant",
-        "quote": "If a project triggers one or more safeguard policies, the grantee will be asked to prepare the relevant safeguard document(s) and incorporate related measures into the project's design.",
-        "checked_at": "2026-11-22",
-        "method": "page"
-      }
-    ],
     "after_award": [
       {
         "source_url": "https://www.cepf.net/grants/before-you-apply/life-cycle-of-grant",
@@ -209,14 +218,5 @@
       }
     ]
   },
-  "checked_at": "2026-11-22",
-  "effort": {
-    "steps": [
-      "Letter of inquiry",
-      "Full proposal, if invited (large grants)",
-      "Safeguard documents, if required"
-    ],
-    "more_after": true
-  },
-  "after_award": { "reports": "quarterly", "training": true }
+  "checked_at": "2026-11-22"
 }
