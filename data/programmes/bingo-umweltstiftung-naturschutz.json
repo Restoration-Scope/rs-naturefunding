@@ -5,7 +5,10 @@
     "name": "Niedersächsische Bingo-Umweltstiftung",
     "url": "https://www.bingo-umweltstiftung.de/"
   },
-  "administered_by": null,
+  "administered_by": {
+    "name": "Niedersächsische Bingo-Umweltstiftung",
+    "url": "https://www.bingo-umweltstiftung.de"
+  },
   "parent": null,
   "url": "https://www.bingo-umweltstiftung.de/umwelt-und-naturschutz/",
   "summary": "Lottery-funded Lower Saxony foundation grants for practical nature conservation such as biotope creation, meadow orchards, small waters and bog restoration, for non-profit bodies based in Lower Saxony.",
@@ -24,7 +27,7 @@
   },
   "access": "direct",
   "window": "rolling",
-  "amount": null,
+  "amount": { "currency": "EUR", "max": 50000 },
   "co_finance_required": true,
   "reporting": null,
   "calls": [
@@ -42,10 +45,17 @@
           "checked_at": "2026-11-22",
           "method": "page"
         }
-      }
+      },
+      "note": "Der Geschäftsführer entscheidet ohne Stichtag."
     }
   ],
   "evidence": {
+    "administered_by": {
+      "source_url": "https://www.bingo-umweltstiftung.de/termine-und-antragsfristen/",
+      "quote": "Niedersächsische Bingo-Umweltstiftung",
+      "checked_at": "2026-11-22",
+      "method": "page"
+    },
     "applicant_types": {
       "source_url": "https://www.bingo-umweltstiftung.de/foerderrichtlinie/",
       "quote": "Antragsberechtigt sind steuerbegünstigte Körperschaften oder Körperschaften oder Anstalten des öffentlichen Rechts.",
@@ -67,6 +77,12 @@
     "window": {
       "source_url": "https://www.bingo-umweltstiftung.de/termine-und-antragsfristen/",
       "quote": "Der Geschäftsführer entscheidet ohne Stichtag.",
+      "checked_at": "2026-11-22",
+      "method": "page"
+    },
+    "amount": {
+      "source_url": "https://www.bingo-umweltstiftung.de/termine-und-antragsfristen/",
+      "quote": "bis 5.000,- Euro Geschäftsführung laufend * mind. vier Wochen vor dem geplanten Projektbeginn über 5.000,- Euro bis 15.000,- Euro Geschäftsführung laufend * mind. sechs Wochen vor dem geplanten Projektbeginn über 15.000,- Euro bis 50.000,- Euro Vorstand",
       "checked_at": "2026-11-22",
       "method": "page"
     },
