@@ -10,7 +10,7 @@
   "url": "https://luonnonsuojelunsaatio.fi/apurahat/",
   "summary": "Annual grants from several funds for conservation work, surveys, campaigns and research on threatened species, habitats, forests and the Baltic Sea. Open to individuals, working groups and registered organisations; research and thesis grants sit alongside the practical strand.",
   "approaches": ["species_conservation", "community_conservation", "research"],
-  "applicant_types": ["individual", "ngo"],
+  "applicant_types": ["individual", "community_group", "ngo"],
   "geography": null,
   "access": "direct",
   "window": "fixed",
@@ -29,6 +29,7 @@
       "kind": "project"
     }
   ],
+  "after_award": { "reports": "final" },
   "documents": [
     "Research or work plan",
     "CV or free-form description of previous activities",
@@ -105,6 +106,14 @@
         "method": "page"
       }
     ],
+    "after_award": [
+      {
+        "source_url": "https://luonnonsuojelunsaatio.fi/raportointi/",
+        "quote": "Kun olet käyttänyt saamasi apurahan, raportoi sen käytöstä Suomen Luonnonsuojelun Säätiölle.",
+        "checked_at": "2026-11-22",
+        "method": "page"
+      }
+    ],
     "documents": [
       {
         "source_url": "https://luonnonsuojelunsaatio.fi/apurahat/",
@@ -124,16 +133,7 @@
         "checked_at": "2026-11-22",
         "method": "page"
       }
-    ],
-    "after_award": [
-      {
-        "source_url": "https://luonnonsuojelunsaatio.fi/raportointi/",
-        "quote": "Kun olet käyttänyt saamasi apurahan, raportoi sen käytöstä Suomen Luonnonsuojelun Säätiölle.",
-        "checked_at": "2026-11-22",
-        "method": "page"
-      }
     ]
   },
-  "checked_at": "2026-11-09",
-  "after_award": { "reports": "final" }
+  "checked_at": "2026-11-09"
 }
