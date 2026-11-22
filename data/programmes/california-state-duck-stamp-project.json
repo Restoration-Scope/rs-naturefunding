@@ -14,7 +14,7 @@
   "geography": { "scope": "countries", "countries": ["US"], "label": "California" },
   "access": "direct",
   "window": "fixed",
-  "amount": null,
+  "amount": { "currency": "USD", "max": 1135000 },
   "pool": {
     "currency": "USD",
     "value": 1135000,
@@ -81,6 +81,12 @@
     "window": {
       "source_url": "https://wildlife.ca.gov/Grants/Duck-Stamp",
       "quote": "annually solicits proposals in November or December of each year",
+      "checked_at": "2026-11-22",
+      "method": "page"
+    },
+    "amount": {
+      "source_url": "https://wildlife.ca.gov/Grants/Duck-Stamp",
+      "quote": "The Stamp Project has up to $1,135,000 that may be allocated for projects on a Fiscal Year (FY) basis.",
       "checked_at": "2026-11-22",
       "method": "page"
     },
