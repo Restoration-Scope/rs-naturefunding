@@ -2,12 +2,15 @@
   "id": "cnra-tribal-nature-based-solutions",
   "name": "California Natural Resources Agency Tribal Nature-Based Solutions Climate Bond Grants",
   "funder": { "name": "California Natural Resources Agency", "url": "https://resources.ca.gov/" },
-  "administered_by": null,
+  "administered_by": {
+    "name": "California Natural Resources Agency",
+    "url": "https://www.grants.ca.gov"
+  },
   "parent": null,
   "url": "https://www.grants.ca.gov/grants/tribal-nature-based-solutions-climate-bond-2026-solicitation/",
   "summary": "Proposition 4 grants for California tribes and tribally led entities to buy back ancestral land and carry out nature-based projects such as habitat restoration. The 2026 round funds land acquisition; rounds are to recur until funds are used.",
   "approaches": ["protected_areas", "community_conservation"],
-  "applicant_types": ["indigenous_organization"],
+  "applicant_types": ["government", "ngo", "indigenous_organization"],
   "geography": { "scope": "countries", "countries": ["US"], "label": "California" },
   "access": "direct",
   "window": "fixed",
@@ -25,6 +28,14 @@
   },
   "co_finance_required": false,
   "reporting": null,
+  "effort": {
+    "steps": [
+      "Step 1 preliminary proposal or escrow-ready application",
+      "Step 2 final proposal and presentation, if invited",
+      "Step 3 site visit, if applicable"
+    ],
+    "due": ["2026-04-15", "2027-01-15", null]
+  },
   "eligibility": [
     {
       "rule": "Is a California tribe or tribally led entity, or a 501(c)(3), consortium or partnership applying with one",
@@ -48,7 +59,7 @@
     },
     { "rule": "Include a meaningful public access component", "kind": "project" }
   ],
-  "after_award": { "reports": "quarterly", "audit": true, "training": true, "site_visits": true },
+  "after_award": { "reports": "quarterly", "audit": true, "site_visits": true, "training": true },
   "documents": [
     "Signed Notice of Funding Requirements checklist and signature page",
     "Signed Willing Seller Letter",
@@ -68,6 +79,7 @@
       "opens": "2026-02-13",
       "deadline": {
         "date": "2026-04-15",
+        "time": "17:00",
         "text": "Step 1 Application and Escrow Ready Application due: April 15, 2026"
       },
       "evidence": {
@@ -90,12 +102,46 @@
           "method": "page"
         }
       }
+    },
+    {
+      "id": "2026-step-2",
+      "label": "2026 solicitation, Step 2",
+      "url": "https://www.grants.ca.gov/grants/tribal-nature-based-solutions-climate-bond-2026-solicitation/",
+      "status": "closed",
+      "opens": "2026-05-29",
+      "deadline": { "date": "2026-08-29", "text": "Step 2 Application Due: August 29, 2026" },
+      "evidence": {
+        "status": {
+          "source_url": "https://www.grants.ca.gov/grants/tribal-nature-based-solutions-climate-bond-2026-solicitation/",
+          "quote": "Status: Closed",
+          "checked_at": "2026-11-22",
+          "method": "page"
+        },
+        "opens": {
+          "source_url": "https://www.grants.ca.gov/grants/tribal-nature-based-solutions-climate-bond-2026-solicitation/",
+          "quote": "Invitation to Step 2: May 29, 2026",
+          "checked_at": "2026-11-22",
+          "method": "page"
+        },
+        "deadline": {
+          "source_url": "https://www.grants.ca.gov/grants/tribal-nature-based-solutions-climate-bond-2026-solicitation/",
+          "quote": "Step 2 Application Due: August 29, 2026",
+          "checked_at": "2026-11-22",
+          "method": "page"
+        }
+      }
     }
   ],
   "evidence": {
+    "administered_by": {
+      "source_url": "https://www.grants.ca.gov/grants/tribal-nature-based-solutions-climate-bond-2026-solicitation/",
+      "quote": "Grantor: CA Natural Resources Agency",
+      "checked_at": "2026-11-22",
+      "method": "page"
+    },
     "applicant_types": {
       "source_url": "https://www.grants.ca.gov/grants/tribal-nature-based-solutions-climate-bond-2026-solicitation/",
-      "quote": "Eligible applicants include California Native American tribes and tribally led entities located in California.",
+      "quote": "Eligible Applicants: Nonprofit Tribal Government",
       "checked_at": "2026-11-22",
       "method": "page"
     },
@@ -135,6 +181,26 @@
       "checked_at": "2026-11-22",
       "method": "page"
     },
+    "effort": [
+      {
+        "source_url": "https://www.grants.ca.gov/grants/tribal-nature-based-solutions-climate-bond-2026-solicitation/",
+        "quote": "Step 1 Application and Escrow Ready Application due: April 15, 2026",
+        "checked_at": "2026-11-22",
+        "method": "page"
+      },
+      {
+        "source_url": "https://resources.ca.gov/Initiatives/Tribalaffairs/TribalNatureBasedSolutionsProgram",
+        "quote": "Step 2 Application Due: January 15, 2027",
+        "checked_at": "2026-11-21",
+        "method": "page"
+      },
+      {
+        "source_url": "https://resources.ca.gov/Initiatives/Tribalaffairs/TribalNatureBasedSolutionsProgram",
+        "quote": "Step 3 Site Visits (if applicable): TBD and coordinated with Step 2 Invitees",
+        "checked_at": "2026-11-21",
+        "method": "page"
+      }
+    ],
     "eligibility": [
       {
         "source_url": "https://www.grants.ca.gov/grants/tribal-nature-based-solutions-climate-bond-2026-solicitation/",
@@ -248,35 +314,7 @@
         "checked_at": "2026-11-21",
         "method": "page"
       }
-    ],
-    "effort": [
-      {
-        "source_url": "https://www.grants.ca.gov/grants/tribal-nature-based-solutions-climate-bond-2026-solicitation/",
-        "quote": "Step 1 Application and Escrow Ready Application due: April 15, 2026",
-        "checked_at": "2026-11-22",
-        "method": "page"
-      },
-      {
-        "source_url": "https://resources.ca.gov/Initiatives/Tribalaffairs/TribalNatureBasedSolutionsProgram",
-        "quote": "Step 2 Application Due: January 15, 2027",
-        "checked_at": "2026-11-21",
-        "method": "page"
-      },
-      {
-        "source_url": "https://resources.ca.gov/Initiatives/Tribalaffairs/TribalNatureBasedSolutionsProgram",
-        "quote": "Step 3 Site Visits (if applicable): TBD and coordinated with Step 2 Invitees",
-        "checked_at": "2026-11-21",
-        "method": "page"
-      }
     ]
   },
-  "checked_at": "2026-11-21",
-  "effort": {
-    "steps": [
-      "Step 1 preliminary proposal or escrow-ready application",
-      "Step 2 final proposal and presentation, if invited",
-      "Step 3 site visit, if applicable"
-    ],
-    "due": ["2026-04-15", "2027-01-15", null]
-  }
+  "checked_at": "2026-11-21"
 }
