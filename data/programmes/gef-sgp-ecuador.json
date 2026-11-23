@@ -23,8 +23,64 @@
   "access": "direct",
   "window": "fixed",
   "amount": null,
-  "co_finance_required": null,
+  "co_finance_required": true,
   "reporting": null,
+  "effort": {
+    "steps": [
+      "Submit the proposal digitally by email"
+    ],
+    "due": [
+      "2026-06-10"
+    ]
+  },
+  "eligibility": [
+    {
+      "rule": "Be formed by a second-degree or first-degree associative organisation; family bioenterprises are excluded",
+      "kind": "legal"
+    },
+    {
+      "rule": "Conserve threatened fragile ecosystems and maintain sustainable production",
+      "kind": "project"
+    },
+    {
+      "rule": "Be located in one of the 17 landscapes identified by the PPD",
+      "kind": "project"
+    },
+    {
+      "rule": "Show links with conservation areas or other conservation initiatives",
+      "kind": "project"
+    },
+    {
+      "rule": "Have the bioenterprise operating and at some level of commercialisation",
+      "kind": "project"
+    },
+    {
+      "rule": "Have a technical team with a manager and an accountant; the line may not exceed 20% of the project budget",
+      "kind": "capacity"
+    },
+    {
+      "rule": "Legally constituted and based in Ecuador, up to date with state obligations (white list)",
+      "kind": "legal"
+    },
+    {
+      "rule": "At least 3 years of experience in topics related to the call",
+      "kind": "track_record"
+    }
+  ],
+  "co_finance": {
+    "ratio": "1:1",
+    "in_kind": true
+  },
+  "after_award": {
+    "site_visits": true,
+    "reports": "interim_and_final",
+    "training": true
+  },
+  "documents": [
+    "Technical and legal annexes showing the proposal is viable",
+    "Work plan, logical framework and detailed budget (Annex II Excel)",
+    "Letters of commitment for counterpart co-financing"
+  ],
   "calls": [
     {
       "id": "ticca-fase-2",
@@ -71,7 +127,117 @@
       "quote": "EXTENSION DE PLAZO PARA PRESENTACIÓN DE PROPUESTAS HASTA EL 10 DE JUNIO DE 2026, 17:00.",
       "checked_at": "2026-11-01",
       "method": "page"
-    }
+    },
+    "co_finance_required": {
+      "source_url": "https://www.ppd-ecuador.org/wp-content/uploads/2026/04/Estrategia-Nacional-TICCA-y-bases-de-convocatoria-a-proyectos-TICCA.pdf",
+      "quote": "Las organizaciones deben tener capacidad para lograr alianzas estratégicas (cofinanciamiento 1:1)",
+      "checked_at": "2026-11-23",
+      "method": "page"
+    },
+    "effort": [
+      {
+        "source_url": "https://www.ppd-ecuador.org/convocatoria-proyectos-ticca/",
+        "quote": "EXTENSION DE PLAZO PARA PRESENTACIÓN DE PROPUESTAS HASTA EL 10 DE JUNIO DE 2026, 17:00. Las propuestas deben entregarse en formato digital al correo lieve.van.elsen@undp.org",
+        "checked_at": "2026-11-23",
+        "method": "page"
+      }
+    ],
+    "eligibility": [
+      {
+        "source_url": "https://www.ppd-ecuador.org/wp-content/uploads/2026/04/Estrategia-Nacional-TICCA-y-bases-de-convocatoria-a-proyectos-TICCA.pdf",
+        "quote": "Bioemprendimientos/Bionegocios conformados asociativamente por organizaciones de segundo grado (federaciones, confederaciones, consorcios, colectivos y uniones enfocadas en el fortalecimiento de bioemprendimientos/bionegocios; y/o, organizaciones de primer grado de carácter asociativo (se excluyen los bioemprendimientos/bionegocios familiares)",
+        "checked_at": "2026-11-23",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.ppd-ecuador.org/wp-content/uploads/2026/04/Estrategia-Nacional-TICCA-y-bases-de-convocatoria-a-proyectos-TICCA.pdf",
+        "quote": "Debe considerar la conservación de ecosistemas frágiles amenazados y mantener un esquema de producción sostenible.",
+        "checked_at": "2026-11-23",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.ppd-ecuador.org/wp-content/uploads/2026/04/Estrategia-Nacional-TICCA-y-bases-de-convocatoria-a-proyectos-TICCA.pdf",
+        "quote": "Está localizado geográficamente en uno de los diez y siete paisajes (17) identificados por el PPD, señalados en el mapa de la página 9 de este documento.",
+        "checked_at": "2026-11-23",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.ppd-ecuador.org/wp-content/uploads/2026/04/Estrategia-Nacional-TICCA-y-bases-de-convocatoria-a-proyectos-TICCA.pdf",
+        "quote": "Muestra articulación con el SNAP - Bosques protectores - áreas de conservación comunitaria, ACUS u otras iniciativas de conservación.",
+        "checked_at": "2026-11-23",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.ppd-ecuador.org/wp-content/uploads/2026/04/Estrategia-Nacional-TICCA-y-bases-de-convocatoria-a-proyectos-TICCA.pdf",
+        "quote": "Se deberá considerar que el bioemprendimiento / bionegocio esté en marcha y bajo algún nivel de comercialización (local, regional, nacional)",
+        "checked_at": "2026-11-23",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.ppd-ecuador.org/wp-content/uploads/2026/04/Estrategia-Nacional-TICCA-y-bases-de-convocatoria-a-proyectos-TICCA.pdf",
+        "quote": "Cada proyecto debe tener un equipo técnico conformado por una persona a cargo de la gestión y otra para la contabilidad. Esta línea no puede sobrepasar un 20% del presupuesto del proyecto.",
+        "checked_at": "2026-11-23",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.ppd-ecuador.org/wp-content/uploads/2026/04/Estrategia-Nacional-TICCA-y-bases-de-convocatoria-a-proyectos-TICCA.pdf",
+        "quote": "Debe estar constituida y domiciliada en el Ecuador, de conformidad con las leyes aplicables vigentes y estar al día en sus obligaciones con el Estado (se comprobará que aparezca en la lista blanca).",
+        "checked_at": "2026-11-23",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.ppd-ecuador.org/wp-content/uploads/2026/04/Estrategia-Nacional-TICCA-y-bases-de-convocatoria-a-proyectos-TICCA.pdf",
+        "quote": "Deberá demostrar experiencia de al menos 3 años en temas relacionados a la convocatoria.",
+        "checked_at": "2026-11-23",
+        "method": "page"
+      }
+    ],
+    "co_finance": {
+      "source_url": "https://www.ppd-ecuador.org/wp-content/uploads/2026/04/Estrategia-Nacional-TICCA-y-bases-de-convocatoria-a-proyectos-TICCA.pdf",
+      "quote": "Esta es una convocatoria 1:1. Es decir, el PPD entregará un fondo no-reembolsable específico y habrá que proyectar un monto similar de cofinanciamiento que debe ser 50% en efectivo y 50% en especie.",
+      "checked_at": "2026-11-23",
+      "method": "page"
+    },
+    "after_award": [
+      {
+        "source_url": "https://www.ppd-ecuador.org/wp-content/uploads/2026/04/Estrategia-Nacional-TICCA-y-bases-de-convocatoria-a-proyectos-TICCA.pdf",
+        "quote": "Durante la implementación se considera también las visitas de M&E desde el EQUIPATE que se realizarán semestralmente.",
+        "checked_at": "2026-11-23",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.ppd-ecuador.org/wp-content/uploads/2026/04/Estrategia-Nacional-TICCA-y-bases-de-convocatoria-a-proyectos-TICCA.pdf",
+        "quote": "El total de la donación será entregada en 3 desembolsos (45% a la firma del convenio, 45% a la entrega de un primer informe, 10% una vez ejecutados todos los fondos y entregados informe financiero final, informe técnico y sistematización).",
+        "checked_at": "2026-11-23",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.ppd-ecuador.org/wp-content/uploads/2026/04/Estrategia-Nacional-TICCA-y-bases-de-convocatoria-a-proyectos-TICCA.pdf",
+        "quote": "Disponibilidad para participar en talleres de intercambio de experiencias (virtuales y presenciales).",
+        "checked_at": "2026-11-23",
+        "method": "page"
+      }
+    ],
+    "documents": [
+      {
+        "source_url": "https://www.ppd-ecuador.org/convocatoria-proyectos-ticca/",
+        "quote": "los anexos y adjuntos necesarios: técnicos y legales que demuestren la viabilidad de la propuesta. Anexo I. Formulario de presentación proyectos TICCA Anexo II. Formato POA y Presupuesto proyecto TICCA",
+        "checked_at": "2026-11-23",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.ppd-ecuador.org/wp-content/uploads/2026/04/Estrategia-Nacional-TICCA-y-bases-de-convocatoria-a-proyectos-TICCA.pdf",
+        "quote": "El perfil de proyectos debe incluir la propuesta de cofinanciamiento con cartas de compromiso de los aportes de contrapartes.",
+        "checked_at": "2026-11-23",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.ppd-ecuador.org/wp-content/uploads/2026/04/Estrategia-Nacional-TICCA-y-bases-de-convocatoria-a-proyectos-TICCA.pdf",
+        "quote": "Anexo II - Ficha de proyecto TICCA-GSI (matriz Excel de ML, POA y presupuesto) 2. Presupuesto detallado con las siguientes líneas:",
+        "checked_at": "2026-11-23",
+        "method": "page"
+      }
+    ]
   },
   "checked_at": "2026-11-01"
 }

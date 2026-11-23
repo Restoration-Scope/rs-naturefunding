@@ -18,6 +18,17 @@
   "amount": null,
   "co_finance_required": null,
   "reporting": null,
+  "effort": { "steps": ["Online application"] },
+  "eligibility": [
+    { "rule": "Has IRS 501(c)3 status", "kind": "legal" },
+    { "rule": "Does not request political or lobbying activities", "kind": "project" },
+    {
+      "rule": "Request contains no benefit to Foundation family members, trustees, or officers",
+      "kind": "other"
+    },
+    { "rule": "Not a start-up", "kind": "track_record" }
+  ],
+  "after_award": { "reports": "unspecified" },
   "calls": [
     {
       "id": "twice-yearly-review",
@@ -67,7 +78,49 @@
       "quote": "Grants are reviewed two times each year. The first annual deadline is March 31st, and the second is September 30th.",
       "checked_at": "2026-11-03",
       "method": "page"
-    }
+    },
+    "effort": [
+      {
+        "source_url": "https://thetuckerfoundation.org/application/",
+        "quote": "The Tucker Foundation accepts applications only through its online application system.",
+        "checked_at": "2026-11-23",
+        "method": "page"
+      }
+    ],
+    "eligibility": [
+      {
+        "source_url": "https://thetuckerfoundation.org/focus-areas/",
+        "quote": "Organizations without IRS 501(c)3 status",
+        "checked_at": "2026-11-23",
+        "method": "page"
+      },
+      {
+        "source_url": "https://thetuckerfoundation.org/focus-areas/",
+        "quote": "Political or lobbying activities",
+        "checked_at": "2026-11-23",
+        "method": "page"
+      },
+      {
+        "source_url": "https://thetuckerfoundation.org/focus-areas/",
+        "quote": "Requests containing any benefit to family members, trustees, and officers of the Foundation",
+        "checked_at": "2026-11-23",
+        "method": "page"
+      },
+      {
+        "source_url": "https://thetuckerfoundation.org/focus-areas/",
+        "quote": "Start-ups",
+        "checked_at": "2026-11-23",
+        "method": "page"
+      }
+    ],
+    "after_award": [
+      {
+        "source_url": "https://thetuckerfoundation.org/application/",
+        "quote": "follow-up grant reports",
+        "checked_at": "2026-11-23",
+        "method": "page"
+      }
+    ]
   },
   "checked_at": "2026-11-03"
 }

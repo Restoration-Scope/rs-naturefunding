@@ -1,7 +1,10 @@
 {
   "id": "mv-investive-naturschutzmassnahmen",
   "name": "Investive Naturschutzförderung Mecklenburg-Vorpommern (Programme 7016 and 7035)",
-  "funder": { "name": "Land Mecklenburg-Vorpommern", "url": "https://www.mv-serviceportal.de/leistung/?leistungId=110529778" },
+  "funder": {
+    "name": "Land Mecklenburg-Vorpommern",
+    "url": "https://www.mv-serviceportal.de/leistung/?leistungId=110529778"
+  },
   "administered_by": null,
   "parent": null,
   "url": "https://www.mv-serviceportal.de/leistung/?leistungId=110529778",
@@ -11,9 +14,35 @@
   "geography": { "scope": "countries", "countries": ["DE"], "label": "Mecklenburg-Vorpommern" },
   "access": "direct",
   "window": "fixed",
-  "amount": { "currency": "EUR", "min": 5000, "note": "Projects from a financial volume of 5,000 EUR, fully funded" },
-  "co_finance_required": null,
+  "amount": {
+    "currency": "EUR",
+    "min": 5000,
+    "note": "Projects from a financial volume of 5,000 EUR, fully funded"
+  },
+  "co_finance_required": true,
   "reporting": null,
+  "effort": { "steps": ["Online application", "Formal and substantive review"] },
+  "eligibility": [
+    {
+      "rule": "The project land is available, with owner and user consent where required",
+      "kind": "project"
+    },
+    {
+      "rule": "The project has no other legal obligation requiring its implementation",
+      "kind": "project"
+    },
+    { "rule": "Have a project financial volume of at least EUR 5,000", "kind": "project" },
+    {
+      "rule": "For land acquisition, be a municipality, municipal association or nonprofit legal person",
+      "kind": "legal"
+    },
+    {
+      "rule": "For a 2026 application under 7035, implement and account for the project in 2026",
+      "kind": "project"
+    }
+  ],
+  "co_finance": { "min_share": 10, "applies_to": "Municipalities and municipal associations" },
+  "documents": ["Owner or user consent form for project implementation", "Cost and financing plan"],
   "calls": [
     {
       "id": "recurring-cutoffs",
@@ -69,7 +98,79 @@
       "quote": "Es können Vorhaben ab einem Finanzmittelumfang von 5.000 € als Vollfinanzierung gefördert werden.",
       "checked_at": "2026-11-13",
       "method": "page"
-    }
+    },
+    "co_finance_required": {
+      "source_url": "https://www.mv-serviceportal.de/leistung/?leistungId=110529778",
+      "quote": "Im Förderprogramm 7035 können die Zuwendungen bis zu 100 %, bei Gemeinden und Gemeindeverbänden bis zu 90 %, der förderfähigen Ausgaben betragen.",
+      "checked_at": "2026-11-23",
+      "method": "page"
+    },
+    "effort": [
+      {
+        "source_url": "https://www.mv-serviceportal.de/leistung/?leistungId=110529778",
+        "quote": "Ihren Antrag auf Förderung stellen Sie über das Online-Antragsverfahren für die Projektförderung beim Land M-V.",
+        "checked_at": "2026-11-23",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.mv-serviceportal.de/leistung/?leistungId=110529778",
+        "quote": "Die Bewilligungsbehörde prüft Ihren Antrag formal und inhaltlich",
+        "checked_at": "2026-11-23",
+        "method": "page"
+      }
+    ],
+    "eligibility": [
+      {
+        "source_url": "https://www.mv-serviceportal.de/leistung/?leistungId=110529778",
+        "quote": "Die Vorhabenflächen müssen nachweislich für die Umsetzung des Vorhabens verfügbar gemacht werden können (Zustimmung der Eigentümer und Nutzer, soweit erforderlich)",
+        "checked_at": "2026-11-23",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.mv-serviceportal.de/leistung/?leistungId=110529778",
+        "quote": "Es darf keine anderweitige rechtliche Verpflichtung zur Umsetzung des Vorhabens bestehen.",
+        "checked_at": "2026-11-23",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.mv-serviceportal.de/leistung/?leistungId=110529778",
+        "quote": "Es können Vorhaben ab einem Finanzmittelumfang von 5.000 € als Vollfinanzierung gefördert werden.",
+        "checked_at": "2026-11-23",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.mv-serviceportal.de/leistung/?leistungId=110529778",
+        "quote": "Grunderwerb ist nur für Gemeinden, Gemeindeverbände und gemeinnützige juristische Personen möglich.",
+        "checked_at": "2026-11-23",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.mv-serviceportal.de/leistung/?leistungId=110529778",
+        "quote": "Projekte, die im Jahr 2026 im Förderprogramm 7035 beantragt werden, müssen auch im Jahr 2026 umgesetzt und abgerechnet werden, Übertragungen in Folgejahre sind nicht möglich!",
+        "checked_at": "2026-11-23",
+        "method": "page"
+      }
+    ],
+    "co_finance": {
+      "source_url": "https://www.mv-serviceportal.de/leistung/?leistungId=110529778",
+      "quote": "Im Förderprogramm 7035 können die Zuwendungen bis zu 100 %, bei Gemeinden und Gemeindeverbänden bis zu 90 %, der förderfähigen Ausgaben betragen.",
+      "checked_at": "2026-11-23",
+      "method": "page"
+    },
+    "documents": [
+      {
+        "source_url": "https://www.mv-serviceportal.de/leistung/?leistungId=110529778",
+        "quote": "Nachweis der Flächenverfügbarkeit: Formblatt \"Einverständniserklärung Eigentümer oder Nutzer zur Maßnahmenumsetzung",
+        "checked_at": "2026-11-23",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.mv-serviceportal.de/leistung/?leistungId=110529778",
+        "quote": "Kosten- und Finanzierungsplan",
+        "checked_at": "2026-11-23",
+        "method": "page"
+      }
+    ]
   },
   "checked_at": "2026-11-13"
 }

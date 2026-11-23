@@ -17,6 +17,28 @@
   "amount": null,
   "co_finance_required": null,
   "reporting": null,
+  "effort": { "steps": ["Written application in one copy"] },
+  "eligibility": [
+    {
+      "rule": "Is a private or public legal person outside the state administration",
+      "kind": "legal"
+    },
+    {
+      "rule": "Project is in Hesse, or cross-border with Hessian participation",
+      "kind": "project"
+    },
+    { "rule": "Has secured total project financing", "kind": "finances" },
+    { "rule": "Ensures proper business management", "kind": "capacity" },
+    {
+      "rule": "Project has not started before approval, including through a related contract",
+      "kind": "project"
+    },
+    {
+      "rule": "No mandatory or compliance costs, compensation measures, permanent staff or operating costs, or repeat funding",
+      "kind": "project"
+    }
+  ],
+  "after_award": { "reports": "final" },
   "calls": [
     {
       "id": "rolling",
@@ -53,7 +75,61 @@
       "quote": "Zielgruppe: Juristische Personen des privaten und öffentlichen Rechts",
       "checked_at": "2026-11-23",
       "method": "page"
-    }
+    },
+    "effort": [
+      {
+        "source_url": "https://landwirtschaft.hessen.de/sites/landwirtschaft.hessen.de/files/2021-06/foerderrichtlinie_der_stiftung_hessischer_naturschutz_stand_062020.pdf",
+        "quote": "Förderanträge sowie Anträge zur landesweiten Auszeichnung der Kinder- und Jugendarbeit im Naturschutzbereich sind schriftlich in einfacher Ausfertigung zu stellen",
+        "checked_at": "2026-11-23",
+        "method": "page"
+      }
+    ],
+    "eligibility": [
+      {
+        "source_url": "https://landwirtschaft.hessen.de/sites/landwirtschaft.hessen.de/files/2021-06/foerderrichtlinie_der_stiftung_hessischer_naturschutz_stand_062020.pdf",
+        "quote": "Antragsberechtigt sind juristische Personen des privaten und öffentlichen Rechts außerhalb der Landesverwaltung im Sinne des § 23 der Hessischen Landeshaushaltsordnung (LHO)",
+        "checked_at": "2026-11-23",
+        "method": "page"
+      },
+      {
+        "source_url": "https://landwirtschaft.hessen.de/sites/landwirtschaft.hessen.de/files/2021-06/foerderrichtlinie_der_stiftung_hessischer_naturschutz_stand_062020.pdf",
+        "quote": "Die Stiftung fördert Projekte (einzelne abgegrenzte Vorhaben) in Hessen. Die Stiftung behält sich die Möglichkeit vor, länderübergreifende Projekte mit hessischer Beteiligung zu fördern.",
+        "checked_at": "2026-11-23",
+        "method": "page"
+      },
+      {
+        "source_url": "https://landwirtschaft.hessen.de/sites/landwirtschaft.hessen.de/files/2021-06/foerderrichtlinie_der_stiftung_hessischer_naturschutz_stand_062020.pdf",
+        "quote": "bei denen die Gesamtfinanzierung gesichert ist",
+        "checked_at": "2026-11-23",
+        "method": "page"
+      },
+      {
+        "source_url": "https://landwirtschaft.hessen.de/sites/landwirtschaft.hessen.de/files/2021-06/foerderrichtlinie_der_stiftung_hessischer_naturschutz_stand_062020.pdf",
+        "quote": "bei deren Empfängern eine ordnungsgemäße Geschäftsführung gesichert ist",
+        "checked_at": "2026-11-23",
+        "method": "page"
+      },
+      {
+        "source_url": "https://landwirtschaft.hessen.de/sites/landwirtschaft.hessen.de/files/2021-06/foerderrichtlinie_der_stiftung_hessischer_naturschutz_stand_062020.pdf",
+        "quote": "die zum Zeitpunkt der Bewilligung noch nicht begonnen wurden. Als Beginn einer Maßnahme ist auch der Abschluss eines schuldrechtlichen Vertrages im Hinblick auf die zu fördernde Maßnahme anzusehen.",
+        "checked_at": "2026-11-23",
+        "method": "page"
+      },
+      {
+        "source_url": "https://landwirtschaft.hessen.de/sites/landwirtschaft.hessen.de/files/2021-06/foerderrichtlinie_der_stiftung_hessischer_naturschutz_stand_062020.pdf",
+        "quote": " Pflichtausgaben, Ausgleichs- und Ersatzmaßnahmen, Erfüllung von Auflagen aus gesetzlichen oder anderweitigen Verpflichtungen;  Personal- und Betriebsausgaben des Antragstellers (Dauerbeschäftigte),  die wiederholte Förderung eines Projektes.",
+        "checked_at": "2026-11-23",
+        "method": "page"
+      }
+    ],
+    "after_award": [
+      {
+        "source_url": "https://landwirtschaft.hessen.de/sites/landwirtschaft.hessen.de/files/2021-06/foerderrichtlinie_der_stiftung_hessischer_naturschutz_stand_062020.pdf",
+        "quote": "Der Verwendungsnachweis (Sachbericht und zahlenmäßiger Nachweis ist innerhalb von 6 Monaten nach Abschluss des Bewilligungszeitraumes an die Stiftung zu senden.",
+        "checked_at": "2026-11-23",
+        "method": "page"
+      }
+    ]
   },
   "checked_at": "2026-11-23"
 }

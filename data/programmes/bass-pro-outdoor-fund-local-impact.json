@@ -21,6 +21,21 @@
   "amount": { "currency": "USD", "max": 5000 },
   "co_finance_required": null,
   "reporting": null,
+  "effort": { "steps": ["Application"] },
+  "eligibility": [
+    {
+      "rule": "US: municipality, public body or IRS 501(c); Canada: registered nonprofit, municipality, public body or CRA charity",
+      "kind": "legal"
+    },
+    {
+      "rule": "Request a specific project, program or community event focused on a listed conservation pillar",
+      "kind": "project"
+    },
+    {
+      "rule": "No fundraising, giveaway, operating, capital/endowment, construction, development-phase, ATV/UTV or boat requests",
+      "kind": "project"
+    }
+  ],
   "calls": [
     {
       "id": "rolling",
@@ -69,7 +84,35 @@
       "quote": "Guidelines: Application Timeline: Rolling Requested Grant Amount: Up to $5,000.",
       "checked_at": "2026-11-23",
       "method": "page"
-    }
+    },
+    "effort": [
+      {
+        "source_url": "https://about.basspro.com/community/support/",
+        "quote": "Apply Now",
+        "checked_at": "2026-11-23",
+        "method": "page"
+      }
+    ],
+    "eligibility": [
+      {
+        "source_url": "https://about.basspro.com/community/support/",
+        "quote": "Organization Eligibility U.S: Must be a municipality, public institution, or registered with the IRS as a 501(c)(3) or other 501(c) determination. Organization Eligibility Canada: Must be a provincially registered nonprofit, municipality, public institution, or an organization registered as having charitable status by the Canada Revenue Agency (CRA).",
+        "checked_at": "2026-11-23",
+        "method": "page"
+      },
+      {
+        "source_url": "https://about.basspro.com/community/support/",
+        "quote": "Request must be for a specific project, program, or community event that is focused on one of our key conservation pillars of Conserving Wildlife and Habitat or Connecting New Audiences to the Outdoors.",
+        "checked_at": "2026-11-23",
+        "method": "page"
+      },
+      {
+        "source_url": "https://about.basspro.com/community/support/",
+        "quote": "The Outdoor Fund does not support fundraising events, banquets, and/or items to be given away to participants, general operating support, capital campaigns or endowments, construction and building costs, projects that are in the design or development phase, ATV/UTV and boat requests.",
+        "checked_at": "2026-11-23",
+        "method": "page"
+      }
+    ]
   },
   "checked_at": "2026-11-23"
 }

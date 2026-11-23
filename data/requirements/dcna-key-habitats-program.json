@@ -1,11 +1,11 @@
 {
   "id": "dcna-key-habitats-program",
-  "read_on": "2026-11-20",
-  "prompt_version": "req-2026-11-19.2",
+  "read_on": "2026-11-23",
+  "prompt_version": "req-2026-11-20.1",
   "models": ["cursor:gpt-5.6-luna-high"],
   "complete": false,
   "reasons": [
-    "https://dcnanature.org/projects/keyhabitatsprogram/: too little text: the page may need a browser",
+    "5 links could not be ranked without Jev",
     "Jev did not check this reading, so an absent fact is not known to be absent"
   ],
   "requirements_checked": false,
@@ -18,22 +18,15 @@
       "anchor": null,
       "depth": 0,
       "pdf": false,
-      "chars": 0,
+      "chars": 23374,
       "pages": null,
-      "low_text": true,
-      "hash": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      "low_text": false,
+      "hash": "sha256:cea61d49d2855e09e45d737f79967d760a2f5ef794464331e260f23c9f11f761"
     }
   ],
-  "failures": [
-    {
-      "url": "https://dcnanature.org/projects/keyhabitatsprogram/",
-      "from": null,
-      "kind": "low_text",
-      "message": "too little text: the page may need a browser"
-    }
-  ],
-  "skipped_links": 0,
-  "chunks": [{ "id": "all", "docs": [], "chars": 0 }],
+  "failures": [],
+  "skipped_links": 59,
+  "chunks": [{ "id": "all", "docs": ["D1"], "chars": 23438 }],
   "outcomes": {
     "eligibility": "not_found",
     "documents": "not_found",
@@ -45,6 +38,8 @@
   "written": [],
   "escalated": [],
   "flags": [],
-  "notes": [],
+  "notes": [
+    "extractor: A new Call for Proposals is expected to open in 2027, but the text does not state applicant requirements, submission documents, application steps, deadlines, co-financing, consortium requirements or post-award duties for that call."
+  ],
   "usd": 0
 }

@@ -1,36 +1,43 @@
 {
   "id": "nz-landcare-westpac-water-care",
-  "read_on": "2026-11-20",
+  "read_on": "2026-11-23",
   "prompt_version": "req-2026-11-20.1",
   "models": ["cursor:gpt-5.6-luna-high"],
   "complete": false,
   "reasons": [
-    "https://landcare.org.nz/project/westpac-water-care-project/ would not open (network: ECONNRESET: The socket connection was closed unexpectedly. For more information, pass `verbose: true` in the second argument to fetch())",
-    "no page opened"
+    "7 links could not be ranked without Jev",
+    "Jev did not check this reading, so an absent fact is not known to be absent"
   ],
   "requirements_checked": false,
-  "documents": [],
-  "failures": [
+  "documents": [
     {
+      "ref": "D1",
       "url": "https://landcare.org.nz/project/westpac-water-care-project/",
+      "final_url": "https://landcare.org.nz/project/westpac-water-care-project/",
       "from": null,
-      "kind": "network",
-      "message": "ECONNRESET: The socket connection was closed unexpectedly. For more information, pass `verbose: true` in the second argument to fetch()"
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 3753,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:7915ef1ce571800b98ac554935b5e93be3ee91336dea8fda25e1053d6d6f56f9"
     }
   ],
-  "skipped_links": 0,
-  "chunks": [{ "id": "all", "docs": [], "chars": 0 }],
+  "failures": [],
+  "skipped_links": 82,
+  "chunks": [{ "id": "all", "docs": ["D1"], "chars": 3825 }],
   "outcomes": {
-    "eligibility": "unresolved",
-    "documents": "unresolved",
-    "effort": "unresolved",
-    "co_finance": "unresolved",
-    "consortium": "unresolved",
-    "after_award": "unresolved"
+    "eligibility": "stated",
+    "documents": "not_found",
+    "effort": "stated",
+    "co_finance": "not_found",
+    "consortium": "not_found",
+    "after_award": "not_found"
   },
-  "written": [],
+  "written": ["eligibility", "effort"],
   "escalated": [],
   "flags": [],
-  "notes": ["nothing to read"],
+  "notes": [],
   "usd": 0
 }

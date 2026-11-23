@@ -247,6 +247,15 @@ describe('gather', () => {
     expect(g.complete).toBe(false)
     expect(g.reasons.some((r) => r.includes('crawl bound'))).toBe(true)
   })
+  test('without Jev, the programme’s own section goes before the site menu', async () => {
+    const menu = ['/about/planning-and-reporting', '/water/licence-applications', '/livestock/requirements'].map((h) => `<a href="${h}">${h.split('/')[2]}</a>`).join(' ')
+    const pages: Record<string, string> = {
+      'https://test.example.org/grants': `<html><body><nav>${menu}</nav><p>Test Nature Grants. ${'Words about the programme. '.repeat(20)}</p><a href="/grants/guidelines">Guidelines</a></body></html>`,
+      'https://test.example.org/grants/guidelines': `<html><body>Test Nature Grants guidelines. ${'Rules for applicants. '.repeat(30)}</body></html>`,
+    }
+    const g = await gather(base, { read: fakeReader(pages), sources: [], bounds: { depth: 2, documents: 1 } })
+    expect(g.docs.map((d) => d.url)).toEqual(['https://test.example.org/grants', 'https://test.example.org/grants/guidelines'])
+  })
   test('links: code follows guidance, skips news and other sites', () => {
     const at = 'https://test.example.org/grants'
     expect(classifyLink({ href: '/guidelines.pdf', text: 'Guidelines', context: '' }, at, base).score).toBe('strong')
@@ -1023,6 +1032,19 @@ test('an href’s entities are decoded, so a query string keeps its parameters',
   const { linksFrom } = await import('./gather')
   const links = await linksFrom('<p><a href="/rfp.docx?rev=1&amp;hash=AB">Download the RFP</a></p>')
   expect(links[0]?.href).toBe('/rfp.docx?rev=1&hash=AB')
+})
+
+test('a page’s base href resolves its relative links, as a browser does', async () => {
+  const { linksFrom } = await import('./gather')
+  const html = '<head><base href="https://fund.example.org/"></head><a href="page/eligible-projects">Eligible projects</a><a href="#top">Top</a><a href="https://other.example.org/x">X</a>'
+  const links = await linksFrom(html, 'https://fund.example.org/page/grants')
+  expect(links.map((l) => l.href)).toEqual(['https://fund.example.org/page/eligible-projects', '#top', 'https://other.example.org/x'])
+  expect((await linksFrom('<a href="page/x">x</a>', 'https://fund.example.org/page/grants'))[0]?.href).toBe('page/x')
+})
+
+test('a share button is not a page', () => {
+  const c = classifyLink({ href: '/guidelines/?share=facebook', text: 'Share on Facebook', context: 'submission guidelines' }, 'https://test.example.org/grants', base)
+  expect(c.score).toBe('skip')
 })
 
 describe('GPT Pro as the first reader', () => {

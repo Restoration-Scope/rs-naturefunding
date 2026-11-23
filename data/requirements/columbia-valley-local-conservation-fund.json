@@ -1,0 +1,72 @@
+{
+  "id": "columbia-valley-local-conservation-fund",
+  "read_on": "2026-11-23",
+  "prompt_version": "req-2026-11-20.1",
+  "models": ["cursor:gpt-5.6-luna-high"],
+  "complete": false,
+  "reasons": [
+    "14 links could not be ranked without Jev",
+    "Jev did not check this reading, so an absent fact is not known to be absent"
+  ],
+  "requirements_checked": false,
+  "documents": [
+    {
+      "ref": "D1",
+      "url": "https://kootenayconservation.ca/columbia-valley-local-conservation-fund/",
+      "final_url": "https://kootenayconservation.ca/columbia-valley/",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 6836,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:68871b3eda4892a3d9b565dbcbf8862faf320693e14837ad08ab38ccceab3b55"
+    },
+    {
+      "ref": "D2",
+      "url": "https://kootenayconservation.ca/wp-content/uploads/2025/02/cvlcf-2010-25-accomplishments_19mar2026.pdf",
+      "final_url": "https://kootenayconservation.ca/wp-content/uploads/2025/02/cvlcf-2010-25-accomplishments_19mar2026.pdf",
+      "from": "https://kootenayconservation.ca/columbia-valley-local-conservation-fund/",
+      "anchor": "read our latest summary report",
+      "depth": 1,
+      "pdf": true,
+      "chars": 5436,
+      "pages": 2,
+      "low_text": false,
+      "hash": "sha256:f6c2cd67aef8f4930fb4e92fb7f2a2f9af3bcd538b05e43eba31dcc2a1765b4a"
+    },
+    {
+      "ref": "D3",
+      "url": "https://kootenayconservation.ca/wp-content/uploads/2025/11/CVLCF-Terms-of-Reference-Amended-Aug2020.pdf",
+      "final_url": "https://kootenayconservation.ca/wp-content/uploads/2025/11/CVLCF-Terms-of-Reference-Amended-Aug2020.pdf",
+      "from": "https://kootenayconservation.ca/columbia-valley-local-conservation-fund/",
+      "anchor": "Terms of Reference",
+      "depth": 1,
+      "pdf": true,
+      "chars": 28726,
+      "pages": 15,
+      "low_text": false,
+      "hash": "sha256:bcc955e4511b5f19e503141662495e07a7118ac5e77e482db8b1bb84ec238f3e"
+    }
+  ],
+  "failures": [],
+  "skipped_links": 98,
+  "chunks": [{ "id": "all", "docs": ["D1", "D2", "D3"], "chars": 41500 }],
+  "outcomes": {
+    "eligibility": "stated",
+    "documents": "not_found",
+    "effort": "stated",
+    "co_finance": "stated",
+    "consortium": "not_found",
+    "after_award": "stated"
+  },
+  "written": ["eligibility", "effort", "co_finance", "after_award"],
+  "escalated": [],
+  "flags": [],
+  "notes": [
+    "extractor: General 2027 applications are currently being reviewed. Land acquisition or covenant proposals from land trusts are accepted on an ongoing basis, with applicants asked to contact the funder for details. Proponents must also be prepared to make a 10-minute presentation annually. Priority is given to projects demonstrating partnerships with other funders.",
+    "source columbia-valley-local-conservation-fund-2: added for https://kootenayconservation.ca/wp-content/uploads/2025/11/CVLCF-Terms-of-Reference-Amended-Aug2020.pdf"
+  ],
+  "usd": 0
+}

@@ -1,0 +1,68 @@
+{
+  "id": "nwt-species-conservation-recovery-fund",
+  "read_on": "2026-11-23",
+  "prompt_version": "req-2026-11-20.1",
+  "models": ["cursor:gpt-5.6-luna-high"],
+  "complete": false,
+  "reasons": [
+    "16 links could not be ranked without Jev",
+    "7 links could not be ranked without Jev",
+    "https://www.justice.gov.nt.ca/en/files/legislation/species-at-risk/species-at-risk.a.pdf would not open (http: HTTP 502)",
+    "the text names a document with rules that was not read: NWT Species Conservation and Recovery Fund brochure",
+    "Jev did not check this reading, so an absent fact is not known to be absent"
+  ],
+  "requirements_checked": false,
+  "documents": [
+    {
+      "ref": "D1",
+      "url": "https://www.nwtspeciesatrisk.ca/en/nwt-species-conservation-and-recovery-fund",
+      "final_url": "https://www.nwtspeciesatrisk.ca/en/nwt-species-conservation-and-recovery-fund",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 5608,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:6951ea79c7774b097ad24f4ef01eac7fa6142fbbf9b459f0a284de1029f27f2b"
+    },
+    {
+      "ref": "D2",
+      "url": "https://www.nwtspeciesatrisk.ca/en/frequently-asked-questions-0",
+      "final_url": "https://www.nwtspeciesatrisk.ca/en/frequently-asked-questions-0",
+      "from": "https://www.nwtspeciesatrisk.ca/en/nwt-species-conservation-and-recovery-fund",
+      "anchor": "FAQs",
+      "depth": 1,
+      "pdf": false,
+      "chars": 5528,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:86300416512deedf015019191fe001601ccc8441f5304aba05a538ec05736c0b"
+    }
+  ],
+  "failures": [
+    {
+      "url": "https://www.justice.gov.nt.ca/en/files/legislation/species-at-risk/species-at-risk.a.pdf",
+      "from": "https://www.nwtspeciesatrisk.ca/en/frequently-asked-questions-0",
+      "kind": "http",
+      "message": "HTTP 502"
+    }
+  ],
+  "skipped_links": 106,
+  "chunks": [{ "id": "all", "docs": ["D1", "D2"], "chars": 11394 }],
+  "outcomes": {
+    "eligibility": "not_found",
+    "documents": "not_found",
+    "effort": "not_found",
+    "co_finance": "not_found",
+    "consortium": "not_found",
+    "after_award": "not_found"
+  },
+  "written": [],
+  "escalated": [],
+  "flags": [],
+  "notes": [
+    "extractor: The 2027-28 call is announced as opening on January 15, 2027, but the page only provides an application package for 2026-27."
+  ],
+  "usd": 0
+}

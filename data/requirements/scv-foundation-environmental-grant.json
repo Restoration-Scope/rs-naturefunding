@@ -1,0 +1,59 @@
+{
+  "id": "scv-foundation-environmental-grant",
+  "read_on": "2026-11-23",
+  "prompt_version": "req-2026-11-20.1",
+  "models": ["cursor:gpt-5.6-luna-high", "cursor:gpt-5.6-sol-high"],
+  "complete": false,
+  "reasons": [
+    "1 links could not be ranked without Jev",
+    "Jev did not check this reading, so an absent fact is not known to be absent"
+  ],
+  "requirements_checked": false,
+  "documents": [
+    {
+      "ref": "D1",
+      "url": "https://www.scvfoundation.org/grants/environmental",
+      "final_url": "https://www.scvfoundation.org/nonprofits/grants/environmental",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 5427,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:59f4e5d6a26ce49640b681c6f9af6274cc8ffc6590b1fb0e747b9bff82850e4e"
+    },
+    {
+      "ref": "D2",
+      "url": "https://www.scvfoundation.org/_files/ugd/095af3_45530211c1fe4dd78eb973f7c9fcbe5b.pdf",
+      "final_url": "https://4a280a94-044a-4dba-aef1-a231fa2937e9.filesusr.com/ugd/095af3_45530211c1fe4dd78eb973f7c9fcbe5b.pdf",
+      "from": "https://www.scvfoundation.org/grants/environmental",
+      "anchor": "GRANT GUIDELINES",
+      "depth": 1,
+      "pdf": true,
+      "chars": 6029,
+      "pages": 2,
+      "low_text": false,
+      "hash": "sha256:98d35d4516f8789e9e9f1681771c923cf4d057649773048e42d8e9aeec5745f2"
+    }
+  ],
+  "failures": [],
+  "skipped_links": 60,
+  "chunks": [{ "id": "all", "docs": ["D1", "D2"], "chars": 11687 }],
+  "outcomes": {
+    "eligibility": "stated",
+    "documents": "not_found",
+    "effort": "stated",
+    "co_finance": "not_found",
+    "consortium": "not_found",
+    "after_award": "not_found"
+  },
+  "written": ["eligibility", "effort"],
+  "escalated": ["eligibility"],
+  "flags": [],
+  "notes": [
+    "extractor: Grant funds must be expended within one year from the date of the award. Organizations are limited to one application. The application due date is stated as June 5 without a year.",
+    "source scv-foundation-environmental-grant-2: added for https://www.scvfoundation.org/_files/ugd/095af3_45530211c1fe4dd78eb973f7c9fcbe5b.pdf"
+  ],
+  "usd": 0
+}

@@ -1,0 +1,73 @@
+{
+  "id": "landkreis-northeim-ersatzgelder-naturschutz",
+  "read_on": "2026-11-23",
+  "prompt_version": "req-2026-11-20.1",
+  "models": ["cursor:gpt-5.6-luna-high"],
+  "complete": false,
+  "reasons": [
+    "13 links could not be ranked without Jev",
+    "the text names a document with rules that was not read: Ersatzgeldprojekte - Förderkriterien",
+    "the text names a document with rules that was not read: Ersatzgeldprojekte - Muster-Sicherungsvertrag",
+    "Jev did not check this reading, so an absent fact is not known to be absent"
+  ],
+  "requirements_checked": false,
+  "documents": [
+    {
+      "ref": "D1",
+      "url": "https://www.landkreis-northeim.de/portal/meldungen/foerderung-von-naturschutzmassnahmen-aus-ersatzgeldern-900009769-23900.html?rubrik=900000035",
+      "final_url": "https://www.landkreis-northeim.de/portal/meldungen/foerderung-von-naturschutzmassnahmen-aus-ersatzgeldern-900009769-23900.html?rubrik=900000035",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 15008,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:7021f0b6b692e5d75bf9fe08219783f86eecd959cbc769d7eb4bf1eb120255fc"
+    },
+    {
+      "ref": "D2",
+      "url": "https://www.landkreis-northeim.de/familie-und-senioren/senioren/registrierung-als-beruflicher-betreuer-oder-berufliche-betreuerin-beantragen/",
+      "final_url": "https://www.landkreis-northeim.de/familie-und-senioren/senioren/registrierung-als-beruflicher-betreuer-oder-berufliche-betreuerin-beantragen/",
+      "from": "https://www.landkreis-northeim.de/portal/meldungen/foerderung-von-naturschutzmassnahmen-aus-ersatzgeldern-900009769-23900.html?rubrik=900000035",
+      "anchor": "Registrierung als beruflicher Betreuer oder berufliche Betreuerin beantragen",
+      "depth": 1,
+      "pdf": false,
+      "chars": 17598,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:d7e572ca3f3e64222a15ad9a6ebb3a83680ff6f1d5ff331c36424122344b0263"
+    },
+    {
+      "ref": "D3",
+      "url": "https://www.landkreis-northeim.de/downloads/datei/ZjM3ZTczNjM5MTAzZDI3NnlQeHlZUUVMVUhZVHNabFMvaUZVMUxWY3VCSm45VzhTSXoyYVNIU2tmbWtJMURHNWoxWUhYNkJVWEt1VXpYem5xRXlXWnVJK1dIbnhxMDZabklYcmtmL0ZaRVVlcjg1VWV6S0JqRzI3REpQYk9NM2ZlajRONDBSNExzbkI2SERVM2R1UzQ1cWJqSTdneDhDZE9nbndMSjhydm9uOXlZVjAxUFp0dGNueElTVT0",
+      "final_url": "https://www.landkreis-northeim.de/downloads/datei/ZjM3ZTczNjM5MTAzZDI3NnlQeHlZUUVMVUhZVHNabFMvaUZVMUxWY3VCSm45VzhTSXoyYVNIU2tmbWtJMURHNWoxWUhYNkJVWEt1VXpYem5xRXlXWnVJK1dIbnhxMDZabklYcmtmL0ZaRVVlcjg1VWV6S0JqRzI3REpQYk9NM2ZlajRONDBSNExzbkI2SERVM2R1UzQ1cWJqSTdneDhDZE9nbndMSjhydm9uOXlZVjAxUFp0dGNueElTVT0",
+      "from": "https://www.landkreis-northeim.de/portal/meldungen/foerderung-von-naturschutzmassnahmen-aus-ersatzgeldern-900009769-23900.html?rubrik=900000035",
+      "anchor": "Ersatzgeldprojekte - Antrag auf Förderung",
+      "depth": 1,
+      "pdf": true,
+      "chars": 3220,
+      "pages": 4,
+      "low_text": false,
+      "hash": "sha256:3b85b31a5964c8005736ba9832e8375da96e3954aaebc49218b5359fb44650a1"
+    }
+  ],
+  "failures": [],
+  "skipped_links": 890,
+  "chunks": [{ "id": "all", "docs": ["D1", "D2", "D3"], "chars": 36772 }],
+  "outcomes": {
+    "eligibility": "stated",
+    "documents": "stated",
+    "effort": "not_found",
+    "co_finance": "not_found",
+    "consortium": "not_found",
+    "after_award": "stated"
+  },
+  "written": ["eligibility", "documents", "after_award"],
+  "escalated": [],
+  "flags": [],
+  "notes": [
+    "source landkreis-northeim-ersatzgelder-naturschutz-2: added for https://www.landkreis-northeim.de/downloads/datei/ZjM3ZTczNjM5MTAzZDI3NnlQeHlZUUVMVUhZVHNabFMvaUZVMUxWY3VCSm45VzhTSXoyYVNIU2tmbWtJMURHNWoxWUhYNkJVWEt1VXpYem5xRXlXWnVJK1dIbnhxMDZabklYcmtmL0ZaRVVlcjg1VWV6S0JqRzI3REpQYk9NM2ZlajRONDBSNExzbkI2SERVM2R1UzQ1cWJqSTdneDhDZE9nbndMSjhydm9uOXlZVjAxUFp0dGNueElTVT0"
+  ],
+  "usd": 0
+}

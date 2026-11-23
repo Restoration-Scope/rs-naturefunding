@@ -1,29 +1,50 @@
 {
   "id": "idea-wild-equipment-grants",
   "name": "IDEA WILD equipment grants",
-  "funder": {
-    "name": "IDEA WILD",
-    "url": "https://ideawild.org/"
-  },
+  "funder": { "name": "IDEA WILD", "url": "https://ideawild.org/" },
   "administered_by": null,
   "parent": null,
   "url": "https://ideawild.org/apply/",
   "summary": "Small grants of field equipment, and occasionally field funds, to individual researchers, educators and conservationists working on practice-based biodiversity conservation, with priority for countries with fewer resources.",
-  "approaches": [
-    "species_conservation",
-    "research"
-  ],
-  "applicant_types": [
-    "individual"
-  ],
-  "geography": {
-    "scope": "global"
-  },
+  "approaches": ["species_conservation", "research"],
+  "applicant_types": ["individual"],
+  "geography": { "scope": "global" },
   "access": "direct",
   "window": "rolling",
   "amount": { "currency": "USD", "max": 1500, "max_exclusive": true },
   "co_finance_required": null,
   "reporting": "After the project, recipients send follow-up materials on how the equipment was used, such as a short project summary, results and photos; there is no fixed format or deadline.",
+  "effort": { "steps": ["Online application"] },
+  "eligibility": [
+    {
+      "rule": "Organisation applies through a designated individual grant recipient and contact",
+      "kind": "legal"
+    },
+    {
+      "rule": "Project has a strong practice-based biodiversity conservation aspect",
+      "kind": "project"
+    },
+    { "rule": "Applicant provides a valid US contact", "kind": "other" },
+    {
+      "rule": "Project can accommodate equipment arriving in six months or more",
+      "kind": "project"
+    },
+    {
+      "rule": "Past grantees have sent a follow-up report on their previous grant before reapplying",
+      "kind": "track_record"
+    }
+  ],
+  "after_award": { "reports": "final" },
+  "documents": [
+    "Project proposal",
+    "One-page project proposal summary",
+    "Resume or curriculum vitae",
+    "Letter of recommendation from advisor, if a student",
+    "Photo of target species or habitat",
+    "Training certificate or proof of experience, when requesting specialized equipment",
+    "Requested Equipment Sheet PDF",
+    "Invoice for requested equipment, if requesting funds to purchase equipment"
+  ],
   "calls": [
     {
       "id": "rolling",
@@ -78,7 +99,87 @@
       "quote": "Once an approved project is completed, each recipient is expected to submit follow-up materials to report on how the equipment was used.",
       "checked_at": "2026-11-01",
       "method": "page"
-    }
+    },
+    "effort": [
+      {
+        "source_url": "https://ideawild.org/apply/",
+        "quote": "Fill out the online application to apply for equipment support",
+        "checked_at": "2026-11-23",
+        "method": "page"
+      },
+      {
+        "source_url": "https://ideawild.org/faqs",
+        "quote": "Each request is reviewed within 3-6 months of receipt.",
+        "checked_at": "2026-11-23",
+        "method": "page"
+      }
+    ],
+    "eligibility": [
+      {
+        "source_url": "https://ideawild.org/application-guidelines/",
+        "quote": "If an organization would like to apply, a specific person must be designated as the grant recipient and contact person who will, among other things, provide resume or curriculum vitae, have a US contact for receiving/transporting/hand-delivering equipment to you, and be responsible for all communications with IDEA WILD.",
+        "checked_at": "2026-11-23",
+        "method": "page"
+      },
+      {
+        "source_url": "https://ideawild.org/application-guidelines/",
+        "quote": "To receive funding, projects must have a strong practice-based biodiversity conservation aspect (versus pure science or pure policy-based projects without immediate application in the field of conservation are not funded)",
+        "checked_at": "2026-11-23",
+        "method": "page"
+      },
+      {
+        "source_url": "https://ideawild.org/application-guidelines/",
+        "quote": "Applications will not be accepted without a valid US contact.",
+        "checked_at": "2026-11-23",
+        "method": "page"
+      },
+      {
+        "source_url": "https://ideawild.org/application-guidelines/",
+        "quote": "We are unable to accommodate projects that require the equipment to arrive in fewer than six months.",
+        "checked_at": "2026-11-23",
+        "method": "page"
+      },
+      {
+        "source_url": "https://ideawild.org/application-guidelines/",
+        "quote": "If you’ve already receive a grant, you must first submit a follow-up report before reapplying",
+        "checked_at": "2026-11-23",
+        "method": "page"
+      }
+    ],
+    "after_award": [
+      {
+        "source_url": "https://ideawild.org/application-guidelines/",
+        "quote": "Specifically, that person will need to submit a final summary report with photos and documentation on how the equipment was used.",
+        "checked_at": "2026-11-23",
+        "method": "page"
+      }
+    ],
+    "documents": [
+      {
+        "source_url": "https://ideawild.org/application-guidelines/",
+        "quote": "2. Project Proposal Can be the proposal prepared for your B.S., M.S., Ph.D., independent research, NGO/NPO, Park program, etc. (Okay to submit either in English or in your native language) 3. One-page summary of your Project Proposal English required (you will paste this into the online application form) 4. Your Resume or Curriculum Vitae (CV)",
+        "checked_at": "2026-11-23",
+        "method": "page"
+      },
+      {
+        "source_url": "https://ideawild.org/application-guidelines/",
+        "quote": "5. Letter of Recommendation from your advisor Required only for students. (English is helpful) 6. Photo of the target species or habitat Required 7. Training Certificate or proof of experience When requesting specialized equipment",
+        "checked_at": "2026-11-23",
+        "method": "page"
+      },
+      {
+        "source_url": "https://ideawild.org/application-guidelines/",
+        "quote": "Fill out the Requested Equipment Sheet, download as PDF, and upload it to the online application when prompted.",
+        "checked_at": "2026-11-23",
+        "method": "page"
+      },
+      {
+        "source_url": "https://ideawild.org/application-guidelines/",
+        "quote": "Submit that invoice with your application.",
+        "checked_at": "2026-11-23",
+        "method": "page"
+      }
+    ]
   },
   "checked_at": "2026-11-01"
 }

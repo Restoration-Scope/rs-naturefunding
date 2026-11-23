@@ -1,38 +1,29 @@
 {
   "id": "isf-climate-emergency-grant-program",
   "name": "Climate Emergency Grant Program",
-  "funder": {
-    "name": "Indigenous Stewardship Fund",
-    "url": "https://isfund.ca/"
-  },
+  "funder": { "name": "Indigenous Stewardship Fund", "url": "https://isfund.ca/" },
   "administered_by": null,
   "parent": null,
   "url": "https://isfund.ca/climate-emergency-grant-program",
   "summary": "Rapid grants for First Nations and First Nation-mandated organisations in British Columbia to respond on the ground to wildfire, drought, flood or landslide damage to aquatic habitat and species.",
-  "approaches": [
-    "freshwater",
-    "species_conservation",
-    "community_conservation"
-  ],
-  "applicant_types": [
-    "indigenous_organization"
-  ],
-  "geography": {
-    "scope": "countries",
-    "countries": [
-      "CA"
-    ],
-    "label": "British Columbia"
-  },
+  "approaches": ["freshwater", "species_conservation", "community_conservation"],
+  "applicant_types": ["indigenous_organization"],
+  "geography": { "scope": "countries", "countries": ["CA"], "label": "British Columbia" },
   "access": "direct",
   "window": "rolling",
-  "amount": {
-    "currency": "CAD",
-    "min": 25000
-  },
-  "pool": {"currency": "CAD", "value": 300000, "period": "year"},
+  "amount": { "currency": "CAD", "min": 25000 },
+  "pool": { "currency": "CAD", "value": 300000, "period": "year" },
   "co_finance_required": null,
   "reporting": "A single project update report form at the end of the project period.",
+  "effort": { "steps": ["Application submission", "Application review"] },
+  "eligibility": [
+    {
+      "rule": "Be First Nation-led and formally mandated by one or more First Nations in British Columbia",
+      "kind": "legal"
+    },
+    { "rule": "Propose a project of up to one year in duration", "kind": "project" }
+  ],
+  "after_award": { "reports": "final" },
   "calls": [
     {
       "id": "2026-27",
@@ -59,7 +50,12 @@
     }
   ],
   "evidence": {
-    "pool": {"source_url": "https://isfund.ca/climate-emergency-grant-program", "quote": "A total budget of CAD $300,000 is available each fiscal year to support all approved projects.", "checked_at": "2026-11-02", "method": "page"},
+    "pool": {
+      "source_url": "https://isfund.ca/climate-emergency-grant-program",
+      "quote": "A total budget of CAD $300,000 is available each fiscal year to support all approved projects.",
+      "checked_at": "2026-11-02",
+      "method": "page"
+    },
     "applicant_types": {
       "source_url": "https://isfund.ca/climate-emergency-grant-program",
       "quote": "First Nations in B.C. First Nation-led organizations in B.C., including but not limited to: Tribal councils First Nation alliances First Nation-mandated societies",
@@ -95,7 +91,43 @@
       "quote": "Successful applicants are required to complete a single project update report form at the end of the project period.",
       "checked_at": "2026-11-02",
       "method": "page"
-    }
+    },
+    "effort": [
+      {
+        "source_url": "https://isfund.ca/climate-emergency-grant-program",
+        "quote": "Applications are accepted on a rolling basis until available funds are fully allocated",
+        "checked_at": "2026-11-23",
+        "method": "page"
+      },
+      {
+        "source_url": "https://isfund.ca/climate-emergency-grant-program",
+        "quote": "Review Period: Ongoing throughout the year",
+        "checked_at": "2026-11-23",
+        "method": "page"
+      }
+    ],
+    "eligibility": [
+      {
+        "source_url": "https://isfund.ca/climate-emergency-grant-program",
+        "quote": "All applicant organizations must be First Nation-led and formally mandated by one or more First Nations in British Columbia.",
+        "checked_at": "2026-11-23",
+        "method": "page"
+      },
+      {
+        "source_url": "https://isfund.ca/climate-emergency-grant-program",
+        "quote": "We accept proposals for projects of up to one year in duration only.",
+        "checked_at": "2026-11-23",
+        "method": "page"
+      }
+    ],
+    "after_award": [
+      {
+        "source_url": "https://isfund.ca/climate-emergency-grant-program",
+        "quote": "Successful applicants are required to complete a single project update report form at the end of the project period.",
+        "checked_at": "2026-11-23",
+        "method": "page"
+      }
+    ]
   },
   "checked_at": "2026-11-02"
 }

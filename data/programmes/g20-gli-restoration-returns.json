@@ -26,6 +26,36 @@
   },
   "co_finance_required": null,
   "reporting": null,
+  "eligibility": [
+    {
+      "rule": "Activities are at the community level",
+      "kind": "project"
+    },
+    {
+      "rule": "Has an annual budget over USD 25,000",
+      "kind": "finances",
+      "revenue": {
+        "currency": "USD",
+        "min": 25000,
+        "basis": "budget"
+      }
+    },
+    {
+      "rule": "Is accredited with UNCCD or has applied for accreditation",
+      "kind": "legal"
+    },
+    {
+      "rule": "Project has other funding and does not depend solely on this grant",
+      "kind": "project"
+    }
+  ],
+  "documents": [
+    "Maps and photos of project activities",
+    "Official registration documents",
+    "Overall project budget table",
+    "Breakdown of how the grant will be used",
+    "Signed letter of request to the UNCCD Executive Secretary"
+  ],
   "calls": [
     {
       "id": "round-2025",
@@ -77,7 +107,65 @@
       "quote": "The Initiative is increasing the amount allocated to each awardee to US$17,000",
       "checked_at": "2026-11-09",
       "method": "page"
-    }
+    },
+    "eligibility": [
+      {
+        "source_url": "https://g20land.org/call-for-applications-for-the-restoration-returns-grants/",
+        "quote": "The call is open to organizations of all sizes for activities at the community level.",
+        "checked_at": "2026-11-23",
+        "method": "page"
+      },
+      {
+        "source_url": "https://grih.info/grant-application-form/",
+        "quote": "Organizations must have an annual budget greater than USD 25,000 to be eligible.",
+        "checked_at": "2026-11-23",
+        "method": "page"
+      },
+      {
+        "source_url": "https://grih.info/grant-application-form/",
+        "quote": "Organization must be accredited with UNCCD. If you are not yet accredited, please apply for UNCCD accreditation before you submit the Grant application.",
+        "checked_at": "2026-11-23",
+        "method": "page"
+      },
+      {
+        "source_url": "https://grih.info/grant-application-form/",
+        "quote": "Stand-alone projects solely depending on this grant will not be considered for support.",
+        "checked_at": "2026-11-23",
+        "method": "page"
+      }
+    ],
+    "documents": [
+      {
+        "source_url": "https://grih.info/grant-application-form/",
+        "quote": "Please provide maps and photos of your project’s activities.",
+        "checked_at": "2026-11-23",
+        "method": "page"
+      },
+      {
+        "source_url": "https://grih.info/grant-application-form/",
+        "quote": "Please provide your organization’s official registration documents.",
+        "checked_at": "2026-11-23",
+        "method": "page"
+      },
+      {
+        "source_url": "https://grih.info/grant-application-form/",
+        "quote": "Please provide a detailed table of the projects overall budget.",
+        "checked_at": "2026-11-23",
+        "method": "page"
+      },
+      {
+        "source_url": "https://grih.info/grant-application-form/",
+        "quote": "Please provide a detailed breakdown of how you will use the grant.",
+        "checked_at": "2026-11-23",
+        "method": "page"
+      },
+      {
+        "source_url": "https://grih.info/grant-application-form/",
+        "quote": "Please provide a signed letter with your organization’s letterhead addressed to the Executive Secretary of the United Nations Convention to Combat Desertification.",
+        "checked_at": "2026-11-23",
+        "method": "page"
+      }
+    ]
   },
   "checked_at": "2026-11-09"
 }

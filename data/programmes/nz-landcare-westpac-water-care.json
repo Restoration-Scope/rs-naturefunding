@@ -9,30 +9,19 @@
   "parent": null,
   "url": "https://landcare.org.nz/project/westpac-water-care-project/",
   "summary": "Six NZD 10,000 grants a year for small to medium catchment groups doing practical restoration of rivers, lakes, streams and wetlands in New Zealand. The 2026 round has closed.",
-  "approaches": [
-    "freshwater",
-    "wetlands",
-    "community_conservation"
-  ],
-  "applicant_types": [
-    "community_group"
-  ],
-  "geography": {
-    "scope": "countries",
-    "countries": [
-      "NZ"
-    ],
-    "label": "New Zealand"
-  },
+  "approaches": ["freshwater", "wetlands", "community_conservation"],
+  "applicant_types": ["community_group"],
+  "geography": { "scope": "countries", "countries": ["NZ"], "label": "New Zealand" },
   "access": "direct",
   "window": "fixed",
-  "amount": {
-    "currency": "NZD",
-    "min": 10000,
-    "max": 10000
-  },
+  "amount": { "currency": "NZD", "min": 10000, "max": 10000 },
   "co_finance_required": null,
   "reporting": null,
+  "effort": { "steps": ["Application form"], "due": ["2026-05-30"] },
+  "eligibility": [
+    { "rule": "Is a small to medium emerging catchment group", "kind": "other" },
+    { "rule": "Is not already resourced for the support requested", "kind": "capacity" }
+  ],
   "calls": [
     {
       "id": "2026",
@@ -40,11 +29,7 @@
       "url": "https://landcare.org.nz/project/westpac-water-care-project/",
       "status": "closed",
       "opens": null,
-      "deadline": {
-        "date": "2026-05-30",
-        "timezone": "Pacific/Auckland",
-        "text": "30 May 2026"
-      },
+      "deadline": { "date": "2026-05-30", "timezone": "Pacific/Auckland", "text": "30 May 2026" },
       "evidence": {
         "status": {
           "source_url": "https://landcare.org.nz/project/westpac-water-care-project/",
@@ -91,7 +76,29 @@
       "quote": "Grants available: Six grants of $10,000 each year",
       "checked_at": "2026-11-02",
       "method": "page"
-    }
+    },
+    "effort": [
+      {
+        "source_url": "https://landcare.org.nz/project/westpac-water-care-project/",
+        "quote": "Submissions for the 2026 Westpac Water Care Project close on 30 May 2026.",
+        "checked_at": "2026-11-23",
+        "method": "page"
+      }
+    ],
+    "eligibility": [
+      {
+        "source_url": "https://landcare.org.nz/project/westpac-water-care-project/",
+        "quote": "Small to medium emerging catchment group",
+        "checked_at": "2026-11-23",
+        "method": "page"
+      },
+      {
+        "source_url": "https://landcare.org.nz/project/westpac-water-care-project/",
+        "quote": "Not already resourced for the support requested",
+        "checked_at": "2026-11-23",
+        "method": "page"
+      }
+    ]
   },
   "checked_at": "2026-11-02"
 }

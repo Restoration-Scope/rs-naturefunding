@@ -17,6 +17,7 @@
   "amount": { "currency": "USD", "min": 5000, "max": 5000 },
   "co_finance_required": null,
   "reporting": null,
+  "eligibility": [{ "rule": "Is a 501 C(3) organization or partners with one", "kind": "legal" }],
   "calls": [
     {
       "id": "2026",
@@ -71,7 +72,15 @@
       "quote": "The Legislature appropriates an annual $100,000 from general revenue funds to be distributed as $5,000 seed grants to these organizations to complete watershed improvement projects.",
       "checked_at": "2026-11-21",
       "method": "page"
-    }
+    },
+    "eligibility": [
+      {
+        "source_url": "https://grants.wv.gov/grants/Pages/grantdetails.aspx?grantid=86",
+        "quote": "501 C(3) or partner with a 501 C(3) organization",
+        "checked_at": "2026-11-23",
+        "method": "page"
+      }
+    ]
   },
   "checked_at": "2026-11-21"
 }

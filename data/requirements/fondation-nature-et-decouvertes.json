@@ -1,11 +1,11 @@
 {
   "id": "fondation-nature-et-decouvertes",
-  "read_on": "2026-11-20",
+  "read_on": "2026-11-23",
   "prompt_version": "req-2026-11-20.1",
   "models": ["cursor:gpt-5.6-luna-high"],
   "complete": false,
   "reasons": [
-    "https://fondation.natureetdecouvertes.com/deposer-un-projet/ would not open (network: ECONNRESET: The socket connection was closed unexpectedly. For more information, pass `verbose: true` in the second argument to fetch())",
+    "https://fondation.natureetdecouvertes.com/deposer-un-projet/ would not open (timeout: no answer in 30s)",
     "no page opened"
   ],
   "requirements_checked": false,
@@ -14,8 +14,8 @@
     {
       "url": "https://fondation.natureetdecouvertes.com/deposer-un-projet/",
       "from": null,
-      "kind": "network",
-      "message": "ECONNRESET: The socket connection was closed unexpectedly. For more information, pass `verbose: true` in the second argument to fetch()"
+      "kind": "timeout",
+      "message": "no answer in 30s"
     }
   ],
   "skipped_links": 0,

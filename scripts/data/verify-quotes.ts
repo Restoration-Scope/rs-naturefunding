@@ -6,8 +6,10 @@
 import { mkdirSync, writeFileSync } from 'node:fs'
 import { join, resolve } from 'node:path'
 import { checkData, evidenceOf } from '../../src/data/load'
-import { comparable, quoteOnPage } from '../../src/data/text'
-import { fetchPage } from './page-text'
+import { comparable, normalise, quoteOnPage } from '../../src/data/text'
+import { browserRead } from '../requirements/browser-reads'
+import { fetchPage, htmlToText } from './page-text'
+import { readPdf } from './pdf'
 
 const args = process.argv.slice(2)
 const dirAt = args.indexOf('--dir')
@@ -41,11 +43,28 @@ await Promise.all(
   }),
 )
 
-const failures = fetchedChecks.flatMap((c) => {
-  const page = pages.get(c.url)!
-  if (page instanceof Error) return [{ ...c, reason: `fetch failed: ${page.message}` }]
-  return quoteOnPage(page, c.quote) ? [] : [{ ...c, reason: 'quote not on page' }]
-})
+// A page that refuses our fetcher (a bot filter, a challenge page) is checked against its browser copy, as the gather read it.
+const copies = new Map<string, string | null>()
+const browserText = async (url: string) => {
+  if (!copies.has(url)) {
+    const copy = browserRead(url)
+    copies.set(url, copy ? comparable(copy.pdf ? normalise(readPdf(copy.bytes).pages.join('\n')) : await htmlToText(new TextDecoder().decode(copy.bytes))) : null)
+  }
+  return copies.get(url)!
+}
+const failures = (
+  await Promise.all(
+    fetchedChecks.map(async (c) => {
+      const page = pages.get(c.url)!
+      if (page instanceof Error || !quoteOnPage(page, c.quote)) {
+        const copy = await browserText(c.url)
+        if (copy !== null && quoteOnPage(copy, c.quote)) return []
+      }
+      if (page instanceof Error) return [{ ...c, reason: `fetch failed: ${page.message}` }]
+      return quoteOnPage(page, c.quote) ? [] : [{ ...c, reason: 'quote not on page' }]
+    }),
+  )
+).flat()
 
 for (const f of failures) console.error(`FAIL ${f.programme} ${f.url}\n  ${f.reason}: "${f.quote}"`)
 const passed = fetchedChecks.length - failures.length

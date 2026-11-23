@@ -162,8 +162,30 @@
   "access": "direct",
   "window": "rolling",
   "amount": { "currency": "USD", "max": 40000 },
-  "co_finance_required": null,
+  "co_finance_required": false,
   "reporting": null,
+  "effort": { "steps": ["Online form or downloadable form emailed to the RRF"] },
+  "eligibility": [
+    {
+      "rule": "The site is a UNESCO natural World Heritage Site (other protected areas only occasionally)",
+      "kind": "project"
+    },
+    { "rule": "The project addresses a sudden emergency situation", "kind": "project" },
+    { "rule": "The organisation has permission to work at the proposed site", "kind": "legal" },
+    { "rule": "The applicant is an organisation, not an individual", "kind": "legal" },
+    { "rule": "The project lasts no more than 6 months", "kind": "project" },
+    {
+      "rule": "The organisation can demonstrate respect for human rights and safeguarding",
+      "kind": "capacity"
+    },
+    {
+      "rule": "The organisation can receive funds in USD into an organisational bank account from the UK",
+      "kind": "capacity"
+    }
+  ],
+  "documents": [
+    "Endorsement letter from the site management authority, if the applicant is not the official site management authority"
+  ],
   "calls": [
     {
       "id": "rolling",
@@ -212,7 +234,73 @@
       "quote": "Grants of up to $40,000 to respond to emergency situations in natural World Heritage Sites.",
       "checked_at": "2026-11-01",
       "method": "page"
-    }
+    },
+    "co_finance_required": {
+      "source_url": "https://rapid-response.org/apply-for-funding/",
+      "quote": "Please note that match-funding is not a requirement of RRF support",
+      "checked_at": "2026-11-23",
+      "method": "page"
+    },
+    "effort": [
+      {
+        "source_url": "https://rapid-response.org/how-to-apply/",
+        "quote": "Requests for funding are only accepted through submission of the official RRF online application form or on our downloadable form submitted to the RRF email address (rrf@fauna-flora.org).",
+        "checked_at": "2026-11-23",
+        "method": "page"
+      }
+    ],
+    "eligibility": [
+      {
+        "source_url": "https://rapid-response.org/how-to-apply/",
+        "quote": "The site must be a listed UNESCO natural World Heritage Site (we occasionally fund other priority protected areas).",
+        "checked_at": "2026-11-23",
+        "method": "page"
+      },
+      {
+        "source_url": "https://rapid-response.org/how-to-apply/",
+        "quote": "Applications must address a sudden emergency situation.",
+        "checked_at": "2026-11-23",
+        "method": "page"
+      },
+      {
+        "source_url": "https://rapid-response.org/how-to-apply/",
+        "quote": "The RRF can make grants to any organisation that has permission to work at the proposed site.",
+        "checked_at": "2026-11-23",
+        "method": "page"
+      },
+      {
+        "source_url": "https://rapid-response.org/how-to-apply/",
+        "quote": "The RRF does not make grants to individuals.",
+        "checked_at": "2026-11-23",
+        "method": "page"
+      },
+      {
+        "source_url": "https://rapid-response.org/apply-for-funding/",
+        "quote": "Proposed end date* max. 6 months from start date",
+        "checked_at": "2026-11-23",
+        "method": "page"
+      },
+      {
+        "source_url": "https://rapid-response.org/apply-for-funding/",
+        "quote": "All organisations supported by RRF must be able to demonstrate how they ensure respect for human rights and safeguarding of children and vulnerable adults.",
+        "checked_at": "2026-11-23",
+        "method": "page"
+      },
+      {
+        "source_url": "https://rapid-response.org/how-to-apply/",
+        "quote": "Applicant organisations must be able to accept funds into an organisational bank account, directly from the UK in US Dollars (USD).",
+        "checked_at": "2026-11-23",
+        "method": "page"
+      }
+    ],
+    "documents": [
+      {
+        "source_url": "https://rapid-response.org/how-to-apply/",
+        "quote": "If the applicant organisation is not the official site management authority of the proposed site you must attach an endorsement letter from the site management authority approving the project.",
+        "checked_at": "2026-11-23",
+        "method": "page"
+      }
+    ]
   },
   "checked_at": "2026-11-01"
 }

@@ -28,8 +28,47 @@
   "access": "direct",
   "window": "unspecified",
   "amount": null,
-  "co_finance_required": null,
+  "co_finance_required": false,
   "reporting": null,
+  "effort": {
+    "steps": [
+      "Expression of Interest",
+      "Stage 2"
+    ]
+  },
+  "eligibility": [
+    {
+      "rule": "Lead organisation is legally established or registered as a not-for-profit",
+      "kind": "legal"
+    },
+    {
+      "rule": "Lead organisation is not a government or public body",
+      "kind": "legal"
+    },
+    {
+      "rule": "Lead organisation has managed a grant worth at least 60% of the request within the last six years",
+      "kind": "track_record"
+    },
+    {
+      "rule": "Project sites are continuous, or separated sites make sense from a landscape recovery perspective",
+      "kind": "project"
+    },
+    {
+      "rule": "Data gathering is linked to restoration intervention or monitoring outcomes",
+      "kind": "project"
+    },
+    {
+      "rule": "Project does not seek to restore sites along a flyway",
+      "kind": "project"
+    },
+    {
+      "rule": "Organisation submits no more than three applications as the lead partner",
+      "kind": "other"
+    }
+  ],
+  "after_award": {
+    "reports": "twice_yearly"
+  },
   "calls": [],
   "evidence": {
     "geography": {
@@ -43,7 +82,79 @@
       "quote": "We do not accept unsolicited or speculative applications. All applications must be submitted through a funding call.",
       "checked_at": "2026-11-02",
       "method": "page"
-    }
+    },
+    "co_finance_required": {
+      "source_url": "https://www.endangeredlandscapes.org/funding/frequently-asked-questions/",
+      "quote": "Co-finance is not a requirement for Endangered Landscapes & Seascapes Programme funding.",
+      "checked_at": "2026-11-23",
+      "method": "page"
+    },
+    "effort": [
+      {
+        "source_url": "https://www.endangeredlandscapes.org/funding/frequently-asked-questions/",
+        "quote": "The Oversight & Selection Panel (OSP) of the Endangered Landscapes & Seascapes Programme assesses Expressions of Interest for funding against a set of criteria (please see the application guidance).",
+        "checked_at": "2026-11-23",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.endangeredlandscapes.org/funding/frequently-asked-questions/",
+        "quote": "At Stage 2, we ask lead partners to submit independently audited accounts for the organisation for the previous two years.",
+        "checked_at": "2026-11-23",
+        "method": "page"
+      }
+    ],
+    "eligibility": [
+      {
+        "source_url": "https://www.endangeredlandscapes.org/funding/frequently-asked-questions/",
+        "quote": "The lead partner submitting the application should, however, be a not-for-profit organisation and therefore must be legally established or registered as such.",
+        "checked_at": "2026-11-23",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.endangeredlandscapes.org/funding/frequently-asked-questions/",
+        "quote": "The Endangered Landscapes & Seascapes Programme does not fund governments and/or public bodies, but we do support collaborations where government agencies and/or public bodies are involved.",
+        "checked_at": "2026-11-23",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.endangeredlandscapes.org/funding/frequently-asked-questions/",
+        "quote": "Lead organisations (the applicant) must show that within the last six years they have managed a grant with a value that is/was at least 60% of the total asked from the Endangered Landscapes & Seascapes Programme.",
+        "checked_at": "2026-11-23",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.endangeredlandscapes.org/funding/frequently-asked-questions/",
+        "quote": "Restoration work can focus on spatially separated sites within the landscape, but this would need to make sense from a landscape recovery perspective (e.g. in terms of the landscape's ecological integrity, functioning ecosystem processes and spatial and functional connectivity).",
+        "checked_at": "2026-11-23",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.endangeredlandscapes.org/funding/frequently-asked-questions/",
+        "quote": "Any data gathering funded by the Endangered Landscapes & Seascapes Programme must be linked to the restoration intervention and/or monitoring outcomes - either to strengthen the intervention or to understand the impacts of it.",
+        "checked_at": "2026-11-23",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.endangeredlandscapes.org/funding/frequently-asked-questions/",
+        "quote": "The Endangered Landscapes & Seascapes Programme does not fund projects that seek to restore sites along a flyway.",
+        "checked_at": "2026-11-23",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.endangeredlandscapes.org/funding/frequently-asked-questions/",
+        "quote": "An organisation can submit a maximum of three applications as the lead partner.",
+        "checked_at": "2026-11-23",
+        "method": "page"
+      }
+    ],
+    "after_award": [
+      {
+        "source_url": "https://www.endangeredlandscapes.org/funding/frequently-asked-questions/",
+        "quote": "Then eight monthly advance payments are made on receipt and acceptance of six monthly interim and annual reports which are adjusted based on actual expenditure, forecast expenditure and cash in hand.",
+        "checked_at": "2026-11-23",
+        "method": "page"
+      }
+    ]
   },
   "checked_at": "2026-11-02"
 }

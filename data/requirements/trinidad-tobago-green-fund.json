@@ -1,36 +1,42 @@
 {
   "id": "trinidad-tobago-green-fund",
-  "read_on": "2026-11-20",
+  "read_on": "2026-11-23",
   "prompt_version": "req-2026-11-20.1",
   "models": ["cursor:gpt-5.6-luna-high"],
   "complete": false,
-  "reasons": [
-    "https://www.planning.gov.tt/sites/default/files/default/all/files/GF_Brochure.pdf would not open (network: ECONNRESET: The socket connection was closed unexpectedly. For more information, pass `verbose: true` in the second argument to fetch())",
-    "no page opened"
-  ],
+  "reasons": ["Jev did not check this reading, so an absent fact is not known to be absent"],
   "requirements_checked": false,
-  "documents": [],
-  "failures": [
+  "documents": [
     {
+      "ref": "D1",
       "url": "https://www.planning.gov.tt/sites/default/files/default/all/files/GF_Brochure.pdf",
+      "final_url": "https://www.planning.gov.tt/sites/default/files/default/all/files/GF_Brochure.pdf",
       "from": null,
-      "kind": "network",
-      "message": "ECONNRESET: The socket connection was closed unexpectedly. For more information, pass `verbose: true` in the second argument to fetch()"
+      "anchor": null,
+      "depth": 0,
+      "pdf": true,
+      "chars": 2538,
+      "pages": 4,
+      "low_text": false,
+      "hash": "sha256:55f7a504b244104b159eea9f68d8bcb22948b1a67dea7a771c45175402e7d0ed"
     }
   ],
+  "failures": [],
   "skipped_links": 0,
-  "chunks": [{ "id": "all", "docs": [], "chars": 0 }],
+  "chunks": [{ "id": "all", "docs": ["D1"], "chars": 2638 }],
   "outcomes": {
-    "eligibility": "unresolved",
-    "documents": "unresolved",
-    "effort": "unresolved",
-    "co_finance": "unresolved",
-    "consortium": "unresolved",
-    "after_award": "unresolved"
+    "eligibility": "stated",
+    "documents": "stated",
+    "effort": "stated",
+    "co_finance": "not_found",
+    "consortium": "not_found",
+    "after_award": "stated"
   },
-  "written": [],
+  "written": ["eligibility", "documents", "effort", "after_award"],
   "escalated": [],
   "flags": [],
-  "notes": ["nothing to read"],
+  "notes": [
+    "source trinidad-tobago-green-fund-1: selector main dropped, a new quote sits outside it"
+  ],
   "usd": 0
 }

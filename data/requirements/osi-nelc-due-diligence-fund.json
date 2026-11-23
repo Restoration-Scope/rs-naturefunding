@@ -1,0 +1,81 @@
+{
+  "id": "osi-nelc-due-diligence-fund",
+  "read_on": "2026-11-23",
+  "prompt_version": "req-2026-11-20.1",
+  "models": ["cursor:gpt-5.6-luna-high", "cursor:gpt-5.6-sol-high"],
+  "complete": false,
+  "reasons": [
+    "3 links could not be ranked without Jev",
+    "the text names a document with rules that was not read: Eligibility Map",
+    "Jev did not check this reading, so an absent fact is not known to be absent",
+    "strong reading: the text names a document with rules that was not read: New England Due Diligence Fund Eligibility Map"
+  ],
+  "requirements_checked": false,
+  "documents": [
+    {
+      "ref": "D1",
+      "url": "https://www.openspaceinstitute.org/funds/nelc-due-diligence-fund",
+      "final_url": "https://www.openspaceinstitute.org/new-england-land-conservation-due-diligence-fund",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 3428,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:b55aed81877b2ca1d3b941a62b85ffa15a1e2aaa97b1335b7d53d81eace11b49"
+    },
+    {
+      "ref": "D2",
+      "url": "https://assets.openspaceinstitute.org/development/Final-RFP_NE-Land-Conservation-Due-Diligence-rev.pdf?dm=1787839079",
+      "final_url": "https://assets.openspaceinstitute.org/development/Final-RFP_NE-Land-Conservation-Due-Diligence-rev.pdf?dm=1787839079",
+      "from": "https://www.openspaceinstitute.org/funds/nelc-due-diligence-fund",
+      "anchor": "Request for Proposals",
+      "depth": 1,
+      "pdf": true,
+      "chars": 6005,
+      "pages": 4,
+      "low_text": false,
+      "hash": "sha256:1ff8cd1b7b68bee9a9d5a2a32518ad2a195d5c70b4504e1d6591dac71ec318a1"
+    },
+    {
+      "ref": "D3",
+      "url": "https://assets.openspaceinstitute.org/development/Application_New-England-Land-Conservation-Due-Diligence-Fund.pdf?dm=1787838788",
+      "final_url": "https://assets.openspaceinstitute.org/development/Application_New-England-Land-Conservation-Due-Diligence-Fund.pdf?dm=1787838788",
+      "from": "https://www.openspaceinstitute.org/funds/nelc-due-diligence-fund",
+      "anchor": "available here",
+      "depth": 1,
+      "pdf": true,
+      "chars": 4287,
+      "pages": 3,
+      "low_text": false,
+      "hash": "sha256:353758d25d5593fb809b72b25cdaa502f0daa26ce5b4a77973be66c5f28ec94f"
+    }
+  ],
+  "failures": [],
+  "skipped_links": 86,
+  "chunks": [{ "id": "all", "docs": ["D1", "D2", "D3"], "chars": 14237 }],
+  "outcomes": {
+    "eligibility": "partial",
+    "documents": "stated",
+    "effort": "stated",
+    "co_finance": "not_found",
+    "consortium": "not_found",
+    "after_award": "stated"
+  },
+  "written": ["eligibility", "documents", "effort", "after_award"],
+  "escalated": ["eligibility"],
+  "flags": [
+    {
+      "field": "eligibility",
+      "item": "Project excludes prior reimbursements, post-contract diligence, easements, staff time, surveys, closing costs and stewardship",
+      "why": "the quote is not on any gathered document"
+    }
+  ],
+  "notes": [
+    "extractor: Applications are accepted on a rolling basis; D2 lists quarterly deadlines through 2027. The first listed deadline, September 25, 2026, has passed, while later quarterly cycles remain open.",
+    "source osi-nelc-due-diligence-fund-2: added for https://assets.openspaceinstitute.org/development/Application_New-England-Land-Conservation-Due-Diligence-Fund.pdf?dm=1787838788",
+    "source osi-nelc-due-diligence-fund-3: added for https://assets.openspaceinstitute.org/development/Final-RFP_NE-Land-Conservation-Due-Diligence-rev.pdf?dm=1787839079"
+  ],
+  "usd": 0
+}

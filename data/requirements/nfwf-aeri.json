@@ -1,11 +1,10 @@
 {
   "id": "nfwf-aeri",
-  "read_on": "2026-11-20",
+  "read_on": "2026-11-23",
   "prompt_version": "req-2026-11-20.1",
   "models": ["cursor:gpt-5.6-luna-high"],
   "complete": false,
   "reasons": [
-    "16 links could not be ranked without Jev",
     "9 links could not be ranked without Jev",
     "Jev did not check this reading, so an absent fact is not known to be absent"
   ],
@@ -36,38 +35,24 @@
       "pages": 2,
       "low_text": false,
       "hash": "sha256:53e72a154000c5e225815a6d01c83376ea4d5d00ec5b8742be782a5ca316eae5"
-    },
-    {
-      "ref": "D3",
-      "url": "https://www.nfwf.org/national-fish-and-wildlife-foundation-website-privacy-policy",
-      "final_url": "https://www.nfwf.org/national-fish-and-wildlife-foundation-website-privacy-policy",
-      "from": "https://www.nfwf.org/programs/americas-ecosystem-restoration-initiative",
-      "anchor": "NFWF Privacy Policy",
-      "depth": 1,
-      "pdf": false,
-      "chars": 6851,
-      "pages": null,
-      "low_text": false,
-      "hash": "sha256:0166be7008748971f5e037533f575633ebe98ccfe1bda1f019004447b017ee8f"
     }
   ],
   "failures": [],
-  "skipped_links": 155,
-  "chunks": [{ "id": "all", "docs": ["D1", "D2", "D3"], "chars": 16986 }],
+  "skipped_links": 85,
+  "chunks": [{ "id": "all", "docs": ["D1", "D2"], "chars": 9955 }],
   "outcomes": {
-    "eligibility": "stated",
+    "eligibility": "not_found",
     "documents": "not_found",
     "effort": "not_found",
     "co_finance": "not_found",
     "consortium": "not_found",
     "after_award": "not_found"
   },
-  "written": ["eligibility"],
+  "written": [],
   "escalated": [],
   "flags": [],
   "notes": [
-    "extractor: The gathered text describes the programme and grant categories but gives no current or next-round application requirements, deadlines, submission documents, co-financing terms, consortium requirement or post-award duties.",
-    "source nfwf-aeri-2: added for https://www.nfwf.org/sites/default/files/2025-01/nfwf-aeri-20250123-fs.pdf"
+    "extractor: No current or next grant round, application steps, deadlines, submission documents, co-financing requirement, consortium requirement, or post-award duties are stated. D1 lists a 2026 Request for Qualification and grant slates from 2022–2024, but these documents were not provided."
   ],
   "usd": 0
 }

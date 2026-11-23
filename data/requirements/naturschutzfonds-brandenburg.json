@@ -1,0 +1,117 @@
+{
+  "id": "naturschutzfonds-brandenburg",
+  "read_on": "2026-11-23",
+  "prompt_version": "req-2026-11-20.1",
+  "models": ["cursor:gpt-5.6-luna-high"],
+  "complete": false,
+  "reasons": [
+    "9 links could not be ranked without Jev",
+    "6 links could not be ranked without Jev",
+    "https://www.stiftungen.org/fileadmin/stiftungen_org/Verband/Was_wir_tun/Publikationen/Umweltstiftungen-stellen-sich-vor.pdf: a document on another site: without Jev it can’t be confirmed as the funder’s, so it is not used",
+    "the text names a document with rules that was not read: Allgemeine Nebenbestimmungen für Zuwendungen zur Projektförderung (ANBest-P)",
+    "the text names a document with rules that was not read: Verwaltungsvorschriften zu § 44 LHO (VV zu § 44 LHO)",
+    "the text names a document with rules that was not read: Leitlinien für den Flächenerwerb mit Mitteln der Stiftung NaturSchutzFonds Brandenburg",
+    "the text names a document with rules that was not read: Ergänzende Bestimmungen Projektförderung",
+    "the text names a document with rules that was not read: Kriterien für Hecken- und Flurgehölzprojekte",
+    "the text names a document with rules that was not read: GAK Förderrichtlinie Förderung der naturnahen Entwicklung von Gewässern und von Maßnahmen zur Stärkung der Regulationsfähigkeit des Landschaftswasserhaushaltes",
+    "the text names a document with rules that was not read: ELER Richtlinie Gewässerentwicklung / Gewässerschutz",
+    "the text names a document with rules that was not read: ELER Richtlinie Landschaftswasserhaushalt",
+    "the text names a document with rules that was not read: Förderrichtlinie für die Wiedervernässung und Renaturierung naturschutzbedeutsamer Moore (1.000 Moore)",
+    "Jev did not check this reading, so an absent fact is not known to be absent"
+  ],
+  "requirements_checked": false,
+  "documents": [
+    {
+      "ref": "D1",
+      "url": "https://www.naturschutzfonds.de/was-wir-foerdern",
+      "final_url": "https://www.naturschutzfonds.de/was-wir-foerdern",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 24559,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:5c0f2d2cfe15104aacec8a501f9c7e89efa0074204dbc6eb33de492d2052e9c1"
+    },
+    {
+      "ref": "D2",
+      "url": "https://www.naturschutzfonds.de/presse/naturschutzpreis-2026-1",
+      "final_url": "https://www.naturschutzfonds.de/presse/naturschutzpreis-2026-1",
+      "from": "https://www.naturschutzfonds.de/was-wir-foerdern",
+      "anchor": "Neue Stauanlagen für alte Teiche",
+      "depth": 1,
+      "pdf": false,
+      "chars": 6386,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:b7c7e65593d9c448733a6acaa40b3a190833905cb444500bfb8592c114427bf3"
+    },
+    {
+      "ref": "D3",
+      "url": "https://www.naturschutzfonds.de/fileadmin/nsf/Dokumente/Infomaterial_NSF_allgemein/Leitlinien_und_Schwerpunkte_zur_Erfuellung_des_Stiftungszweckes__17.11.2021.pdf",
+      "final_url": "https://www.naturschutzfonds.de/fileadmin/nsf/Dokumente/Infomaterial_NSF_allgemein/Leitlinien_und_Schwerpunkte_zur_Erfuellung_des_Stiftungszweckes__17.11.2021.pdf",
+      "from": "https://www.naturschutzfonds.de/was-wir-foerdern",
+      "anchor": "Leitlinien und Schwerpunkte für die Arbeit der Stiftung NaturSchutzFonds Brandenburg",
+      "depth": 1,
+      "pdf": true,
+      "chars": 4062,
+      "pages": 2,
+      "low_text": false,
+      "hash": "sha256:ee0f6cfd1ad5b46a66805af22949fc68f6841844d323e4a3da7b2f9901d2dcf2"
+    },
+    {
+      "ref": "D4",
+      "url": "https://www.naturschutzfonds.de/fileadmin/nsf/Dokumente/Foerderung/Foerderantrag-Formular-2026.pdf",
+      "final_url": "https://www.naturschutzfonds.de/fileadmin/nsf/Dokumente/Foerderung/Foerderantrag-Formular-2026.pdf",
+      "from": "https://www.naturschutzfonds.de/was-wir-foerdern",
+      "anchor": "Förderantrag",
+      "depth": 1,
+      "pdf": true,
+      "chars": 11970,
+      "pages": 6,
+      "low_text": false,
+      "hash": "sha256:0397c15002102c9ff00bc30db64d0d6f8ee03d5475c52b3cd5945f333a2726ee"
+    },
+    {
+      "ref": "D5",
+      "url": "https://www.naturschutzfonds.de/fileadmin/nsf/Dokumente/Foerderung/Foerderrichtlinie.pdf",
+      "final_url": "https://www.naturschutzfonds.de/fileadmin/nsf/Dokumente/Foerderung/Foerderrichtlinie.pdf",
+      "from": "https://www.naturschutzfonds.de/was-wir-foerdern",
+      "anchor": "Förderrichtlinie",
+      "depth": 1,
+      "pdf": true,
+      "chars": 5671,
+      "pages": 3,
+      "low_text": false,
+      "hash": "sha256:fc29fe0273216fb63c3f2bb33ad6033e724095aefcf8732987335bbebd196af7"
+    }
+  ],
+  "failures": [
+    {
+      "url": "https://www.stiftungen.org/fileadmin/stiftungen_org/Verband/Was_wir_tun/Publikationen/Umweltstiftungen-stellen-sich-vor.pdf",
+      "from": "https://www.naturschutzfonds.de/was-wir-foerdern",
+      "kind": "offsite",
+      "message": "a document on another site: without Jev it can’t be confirmed as the funder’s, so it is not used"
+    }
+  ],
+  "skipped_links": 137,
+  "chunks": [{ "id": "all", "docs": ["D1", "D2", "D3", "D4", "D5"], "chars": 53441 }],
+  "outcomes": {
+    "eligibility": "stated",
+    "documents": "stated",
+    "effort": "stated",
+    "co_finance": "not_found",
+    "consortium": "not_found",
+    "after_award": "stated"
+  },
+  "written": ["eligibility", "documents", "effort", "after_award"],
+  "escalated": [],
+  "flags": [],
+  "notes": [
+    "extractor: Applications up to EUR 150,000 may be submitted at any time. Applications over EUR 150,000 follow a separate 1 November deadline and are decided the following year. D5 is an older guideline dated 14 June 1996; D4 is the 2026 application form. The current page excludes purely land-securing projects, while the older guideline lists land acquisition as fundable.",
+    "source naturschutzfonds-brandenburg-2: added for https://www.naturschutzfonds.de/fileadmin/nsf/Dokumente/Foerderung/Foerderantrag-Formular-2026.pdf",
+    "source naturschutzfonds-brandenburg-3: added for https://www.naturschutzfonds.de/fileadmin/nsf/Dokumente/Foerderung/Foerderrichtlinie.pdf"
+  ],
+  "usd": 0
+}

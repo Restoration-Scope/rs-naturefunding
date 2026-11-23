@@ -1,0 +1,73 @@
+{
+  "id": "wwf-nl-inno-fonds",
+  "read_on": "2026-11-23",
+  "prompt_version": "req-2026-11-20.1",
+  "models": ["cursor:gpt-5.6-luna-high"],
+  "complete": false,
+  "reasons": [
+    "4 links could not be ranked without Jev",
+    "6 links could not be ranked without Jev",
+    "Jev did not check this reading, so an absent fact is not known to be absent"
+  ],
+  "requirements_checked": false,
+  "documents": [
+    {
+      "ref": "D1",
+      "url": "https://www.wwf.nl/wat-we-doen/actueel/inno-fonds",
+      "final_url": "https://www.wwf.nl/kom-in-actie/met-tijd/inno-fonds",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 4938,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:48928a279cacd42d5a34c9a110aaf91936b2514cb367c59bbe74b7330530388b"
+    },
+    {
+      "ref": "D2",
+      "url": "https://a.storyblok.com/f/293891055351833/0d98cb1218/voorwaarden-inno-fonds-2025.pdf",
+      "final_url": "https://a.storyblok.com/f/293891055351833/0d98cb1218/voorwaarden-inno-fonds-2025.pdf",
+      "from": "https://www.wwf.nl/wat-we-doen/actueel/inno-fonds",
+      "anchor": "hier",
+      "depth": 1,
+      "pdf": true,
+      "chars": 2607,
+      "pages": 1,
+      "low_text": false,
+      "hash": "sha256:f8439f606dffc3729aa54551788a8c44ef90f815c88d64b1c38cd252dcd9b01c"
+    },
+    {
+      "ref": "D3",
+      "url": "https://www.wwf.nl/over-wwf/privacy/gebruiksvoorwaarden",
+      "final_url": "https://www.wwf.nl/over-wwf/privacy/gebruiksvoorwaarden",
+      "from": "https://www.wwf.nl/wat-we-doen/actueel/inno-fonds",
+      "anchor": "Gebruiksvoorwaarden",
+      "depth": 1,
+      "pdf": false,
+      "chars": 7249,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:26b9277c80871c3fb299dcdfc91c35d163ff251ca0d93032c9d9319d94c32a0f"
+    }
+  ],
+  "failures": [],
+  "skipped_links": 189,
+  "chunks": [{ "id": "all", "docs": ["D1", "D2", "D3"], "chars": 15155 }],
+  "outcomes": {
+    "eligibility": "stated",
+    "documents": "not_found",
+    "effort": "stated",
+    "co_finance": "not_found",
+    "consortium": "not_found",
+    "after_award": "not_found"
+  },
+  "written": ["eligibility", "effort"],
+  "escalated": [],
+  "flags": [],
+  "notes": [
+    "extractor: One organisation may submit only one proposal per round; repeat applications must be clearly different projects, not multi-year financing.",
+    "source wwf-nl-inno-fonds-2: added for https://a.storyblok.com/f/293891055351833/0d98cb1218/voorwaarden-inno-fonds-2025.pdf"
+  ],
+  "usd": 0
+}

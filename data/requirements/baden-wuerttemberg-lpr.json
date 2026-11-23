@@ -1,27 +1,39 @@
 {
   "id": "baden-wuerttemberg-lpr",
-  "read_on": "2026-11-20",
+  "read_on": "2026-11-23",
   "prompt_version": "req-2026-11-20.1",
   "models": ["cursor:gpt-5.6-luna-high"],
   "complete": false,
   "reasons": [
-    "30 links could not be ranked without Jev",
+    "49 links could not be ranked without Jev",
     "36 links could not be ranked without Jev",
     "the crawl bound left https://rp.baden-wuerttemberg.de/themen/wasserboden/wrrl/ unread",
     "the crawl bound left https://rp.baden-wuerttemberg.de/themen/energie/seiten/biogas/ unread",
-    "the crawl bound left https://rp.baden-wuerttemberg.de/themen/wirtschaft/foerderungen/fb72/lpr/ unread",
     "the crawl bound left https://rp.baden-wuerttemberg.de/themen/gesellschaft/schule-und-bildung/richtlinien-an-schulen/betreuungsangebote/ unread",
     "the crawl bound left https://rp.baden-wuerttemberg.de/themen/gesellschaft/schule-und-bildung/richtlinien/regionale-schulentwicklung/ unread",
     "the crawl bound left https://rp.baden-wuerttemberg.de/themen/gesellschaft/schule-und-bildung/richtlinien/ausserunterrichtliche-veranstaltungen/ unread",
     "the crawl bound left https://rp.baden-wuerttemberg.de/themen/gesellschaft/schule-und-bildung/richtlinien/unterricht/ unread",
     "the crawl bound left https://rp.baden-wuerttemberg.de/themen/gesellschaft/schule-und-bildung/richtlinien/programme-und-wettbewerbe/ unread",
-    "the text names a document with rules that was not read: Broschüre Landschaftspflegerichtlinie",
+    "the text names a document with rules that was not read: Landschaftspflegerichtlinie (LPR)",
     "Jev did not check this reading, so an absent fact is not known to be absent"
   ],
   "requirements_checked": false,
   "documents": [
     {
       "ref": "D1",
+      "url": "https://rp.baden-wuerttemberg.de/themen/wirtschaft/foerderungen/fb72/lpr/",
+      "final_url": "https://rp.baden-wuerttemberg.de/themen/wirtschaft/foerderungen/fb72/lpr/",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 10507,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:22851775808e44014a5722d7fa26146750200c0ff831d490a5ae0d4055ca587a"
+    },
+    {
+      "ref": "D2",
       "url": "https://rp.baden-wuerttemberg.de/themen/natur/landschaftspflege/",
       "final_url": "https://rp.baden-wuerttemberg.de/themen/natur/landschaftspflege/",
       "from": null,
@@ -34,10 +46,10 @@
       "hash": "sha256:d411746edc1c6f4e19e3cd87ac9ce2a0daf7385230834aa32ba32104e1c90544"
     },
     {
-      "ref": "D2",
+      "ref": "D3",
       "url": "https://rp.baden-wuerttemberg.de/themen/gesellschaft/schule-und-bildung/richtlinien-an-schulen/",
       "final_url": "https://rp.baden-wuerttemberg.de/themen/gesellschaft/schule-und-bildung/richtlinien-an-schulen/",
-      "from": "https://rp.baden-wuerttemberg.de/themen/natur/landschaftspflege/",
+      "from": "https://rp.baden-wuerttemberg.de/themen/wirtschaft/foerderungen/fb72/lpr/",
       "anchor": "Schulartenübergreifende Angebote",
       "depth": 1,
       "pdf": false,
@@ -47,10 +59,10 @@
       "hash": "sha256:ae89dd3be2530103a6947bdd2871ad96011950d39e4280511167dbd2d41ca2ec"
     },
     {
-      "ref": "D3",
+      "ref": "D4",
       "url": "https://rp.baden-wuerttemberg.de/themen/stiftung/seiten/faq-arbeitshilfen/",
       "final_url": "https://rp.baden-wuerttemberg.de/themen/stiftung/seiten/faq-arbeitshilfen/",
-      "from": "https://rp.baden-wuerttemberg.de/themen/natur/landschaftspflege/",
+      "from": "https://rp.baden-wuerttemberg.de/themen/wirtschaft/foerderungen/fb72/lpr/",
       "anchor": "Beratung und Service",
       "depth": 1,
       "pdf": false,
@@ -60,10 +72,10 @@
       "hash": "sha256:78c583aac0dd133ecca6e74c12894996e2402e128072ad7c08e8cfb43f6e33c9"
     },
     {
-      "ref": "D4",
+      "ref": "D5",
       "url": "https://rp.baden-wuerttemberg.de/themen/stiftung/seiten/faq-kirchstiftungen/",
       "final_url": "https://rp.baden-wuerttemberg.de/themen/stiftung/seiten/faq-kirchstiftungen/",
-      "from": "https://rp.baden-wuerttemberg.de/themen/natur/landschaftspflege/",
+      "from": "https://rp.baden-wuerttemberg.de/themen/wirtschaft/foerderungen/fb72/lpr/",
       "anchor": "Kirchliche Stiftungen",
       "depth": 1,
       "pdf": false,
@@ -73,10 +85,10 @@
       "hash": "sha256:53008d164d39138839486b680bcacc2522cdb5d3c24b1d413665f148ed983dc1"
     },
     {
-      "ref": "D5",
+      "ref": "D6",
       "url": "https://rp.baden-wuerttemberg.de/themen/stiftung/seiten/faq-anerkaendaufheb/",
       "final_url": "https://rp.baden-wuerttemberg.de/themen/stiftung/seiten/faq-anerkaendaufheb/",
-      "from": "https://rp.baden-wuerttemberg.de/themen/natur/landschaftspflege/",
+      "from": "https://rp.baden-wuerttemberg.de/themen/wirtschaft/foerderungen/fb72/lpr/",
       "anchor": "Satzungsänderung, Auflösung und Aufhebung einer Stiftung",
       "depth": 1,
       "pdf": false,
@@ -86,10 +98,10 @@
       "hash": "sha256:cd88f7a5a41fbe726c632356a3840d4a464cee60fbcdd65b9440ae0c6182ae66"
     },
     {
-      "ref": "D6",
+      "ref": "D7",
       "url": "https://rp.baden-wuerttemberg.de/themen/stiftung/seiten/faq-jahresrechnung/",
       "final_url": "https://rp.baden-wuerttemberg.de/themen/stiftung/seiten/faq-jahresrechnung/",
-      "from": "https://rp.baden-wuerttemberg.de/themen/natur/landschaftspflege/",
+      "from": "https://rp.baden-wuerttemberg.de/themen/wirtschaft/foerderungen/fb72/lpr/",
       "anchor": "Jahresrechnung",
       "depth": 1,
       "pdf": false,
@@ -99,10 +111,10 @@
       "hash": "sha256:6ec44e3dd400f8f878b3375a057c03672038c207627908757bb1dadf3f6bfff5"
     },
     {
-      "ref": "D7",
+      "ref": "D8",
       "url": "https://rp.baden-wuerttemberg.de/themen/stiftung/seiten/faq-pflichtenorgan/",
       "final_url": "https://rp.baden-wuerttemberg.de/themen/stiftung/seiten/faq-pflichtenorgan/",
-      "from": "https://rp.baden-wuerttemberg.de/themen/natur/landschaftspflege/",
+      "from": "https://rp.baden-wuerttemberg.de/themen/wirtschaft/foerderungen/fb72/lpr/",
       "anchor": "Pflichten der Stiftung und ihrer Organmitglieder",
       "depth": 1,
       "pdf": false,
@@ -112,10 +124,10 @@
       "hash": "sha256:442afa63845acc4235c4b5fd849001c473dac37ab8b14545613086a9f6c733dc"
     },
     {
-      "ref": "D8",
+      "ref": "D9",
       "url": "https://rp.baden-wuerttemberg.de/themen/stiftung/seiten/faq-stiftverzeichnis/",
       "final_url": "https://rp.baden-wuerttemberg.de/themen/stiftung/seiten/faq-stiftverzeichnis/",
-      "from": "https://rp.baden-wuerttemberg.de/themen/natur/landschaftspflege/",
+      "from": "https://rp.baden-wuerttemberg.de/themen/wirtschaft/foerderungen/fb72/lpr/",
       "anchor": "Stiftungsverzeichnis",
       "depth": 1,
       "pdf": false,
@@ -125,10 +137,10 @@
       "hash": "sha256:e98e9588dc0bacf1e2733a9e0d744cd8f4de494759926c4bde09e07f4e09be3e"
     },
     {
-      "ref": "D9",
+      "ref": "D10",
       "url": "https://rp.baden-wuerttemberg.de/themen/wasserboden/abwasser/anlagenbezogener-gewaesserschutz/",
       "final_url": "https://rp.baden-wuerttemberg.de/themen/wasserboden/abwasser/anlagenbezogener-gewaesserschutz/",
-      "from": "https://rp.baden-wuerttemberg.de/themen/natur/landschaftspflege/",
+      "from": "https://rp.baden-wuerttemberg.de/themen/wirtschaft/foerderungen/fb72/lpr/",
       "anchor": "Anlagenbezogener Gewässerschutz",
       "depth": 1,
       "pdf": false,
@@ -141,19 +153,13 @@
   "failures": [
     {
       "url": "https://rp.baden-wuerttemberg.de/themen/wasserboden/wrrl/",
-      "from": "https://rp.baden-wuerttemberg.de/themen/natur/landschaftspflege/",
+      "from": "https://rp.baden-wuerttemberg.de/themen/wirtschaft/foerderungen/fb72/lpr/",
       "kind": "bound",
       "message": "crawl bound of 8 documents reached"
     },
     {
       "url": "https://rp.baden-wuerttemberg.de/themen/energie/seiten/biogas/",
-      "from": "https://rp.baden-wuerttemberg.de/themen/natur/landschaftspflege/",
-      "kind": "bound",
-      "message": "crawl bound of 8 documents reached"
-    },
-    {
-      "url": "https://rp.baden-wuerttemberg.de/themen/wirtschaft/foerderungen/fb72/lpr/",
-      "from": "https://rp.baden-wuerttemberg.de/themen/natur/landschaftspflege/",
+      "from": "https://rp.baden-wuerttemberg.de/themen/wirtschaft/foerderungen/fb72/lpr/",
       "kind": "bound",
       "message": "crawl bound of 8 documents reached"
     },
@@ -200,9 +206,13 @@
       "message": "crawl bound of 8 documents reached"
     }
   ],
-  "skipped_links": 2032,
+  "skipped_links": 2246,
   "chunks": [
-    { "id": "all", "docs": ["D1", "D2", "D3", "D4", "D5", "D6", "D7", "D8", "D9"], "chars": 93649 }
+    {
+      "id": "all",
+      "docs": ["D1", "D2", "D3", "D4", "D5", "D6", "D7", "D8", "D9", "D10"],
+      "chars": 104317
+    }
   ],
   "outcomes": {
     "eligibility": "not_found",
@@ -216,7 +226,7 @@
   "escalated": [],
   "flags": [],
   "notes": [
-    "extractor: The gathered text describes funding routes but does not state hard eligibility rules, required application documents, application stages, deadlines, co-financing, consortium requirements or post-award duties."
+    "extractor: No current or next round, deadline, application steps, co-finance requirement, consortium requirement, or post-award duties are stated. D3–D10 concern unrelated topics."
   ],
   "usd": 0
 }

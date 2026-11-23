@@ -1,12 +1,12 @@
 {
   "id": "iucn-sos",
-  "read_on": "2026-11-20",
+  "read_on": "2026-11-23",
   "prompt_version": "req-2026-11-20.1",
   "models": ["cursor:gpt-5.6-luna-high"],
   "complete": false,
   "reasons": [
-    "12 links could not be ranked without Jev",
-    "10 links could not be ranked without Jev",
+    "11 links could not be ranked without Jev",
+    "9 links could not be ranked without Jev",
     "Jev did not check this reading, so an absent fact is not known to be absent"
   ],
   "requirements_checked": false,
@@ -36,24 +36,11 @@
       "pages": null,
       "low_text": false,
       "hash": "sha256:477d603a609867b64109136784453882415c4f0a57b0c7386ed3c533d84ccac4"
-    },
-    {
-      "ref": "D3",
-      "url": "https://iucnsos.org/cookies-policy/",
-      "final_url": "https://iucnsos.org/cookies-policy/",
-      "from": "https://iucnsos.org/call-for-proposals/",
-      "anchor": "Cookies policy",
-      "depth": 1,
-      "pdf": false,
-      "chars": 4311,
-      "pages": null,
-      "low_text": false,
-      "hash": "sha256:d066d69189658217c29e4c4e8860ba191955d96127d2ce8c0725b1d316a9a4a9"
     }
   ],
   "failures": [],
-  "skipped_links": 86,
-  "chunks": [{ "id": "all", "docs": ["D1", "D2", "D3"], "chars": 12757 }],
+  "skipped_links": 65,
+  "chunks": [{ "id": "all", "docs": ["D1", "D2"], "chars": 8344 }],
   "outcomes": {
     "eligibility": "stated",
     "documents": "not_found",

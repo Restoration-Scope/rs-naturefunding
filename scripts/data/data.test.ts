@@ -368,6 +368,11 @@ describe('quote matching', () => {
     expect(quoteOnPage(text, 'Grants of up to $50,000')).toBe(true)
     expect(quoteOnPage(text, 'var a')).toBe(false)
   })
+
+  test('text after a stray early </body> is still read, as a browser shows it', async () => {
+    const text = comparable(await htmlToText('<html><body><nav>Menu</nav></body></html><div><label>Please provide a signed letter</label></div></body></html>'))
+    expect(quoteOnPage(text, 'Please provide a signed letter')).toBe(true)
+  })
 })
 
 describe('qualifiers', () => {

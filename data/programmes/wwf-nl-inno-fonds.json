@@ -14,6 +14,27 @@
   "amount": { "currency": "EUR", "max": 10000 },
   "co_finance_required": null,
   "reporting": null,
+  "effort": { "steps": ["Application for the 1 January or 1 July round", "WWF-NL expert review"] },
+  "eligibility": [
+    {
+      "rule": "Is a non-profit organisation or initiative with KVK registration in the Netherlands or Dutch Caribbean",
+      "kind": "legal"
+    },
+    {
+      "rule": "Supports an international conservation interest aligned with WWF-NL's mission",
+      "kind": "project"
+    },
+    {
+      "rule": "If carried out abroad, does not overlap an existing WWF-NL-funded project",
+      "kind": "project"
+    },
+    { "rule": "Has a total project budget below €100,000", "kind": "project" },
+    { "rule": "Is a clearly innovative project", "kind": "project" },
+    {
+      "rule": "Has no structural, fundraising, core-task or western-salary costs",
+      "kind": "project"
+    }
+  ],
   "calls": [
     {
       "id": "twice-yearly",
@@ -69,7 +90,59 @@
       "quote": "en mag in binnen én buitenland worden uitgevoerd",
       "checked_at": "2026-11-23",
       "method": "page"
-    }
+    },
+    "effort": [
+      {
+        "source_url": "https://www.wwf.nl/wat-we-doen/actueel/inno-fonds",
+        "quote": "Je kunt een aanvraag indienen voor 1 januari of 1 juli.",
+        "checked_at": "2026-11-23",
+        "method": "page"
+      },
+      {
+        "source_url": "https://a.storyblok.com/f/293891055351833/0d98cb1218/voorwaarden-inno-fonds-2025.pdf",
+        "quote": "De subsidie -aanvragen worden beoordeeld door deskundigen van WWF-NL.",
+        "checked_at": "2026-11-23",
+        "method": "page"
+      }
+    ],
+    "eligibility": [
+      {
+        "source_url": "https://a.storyblok.com/f/293891055351833/0d98cb1218/voorwaarden-inno-fonds-2025.pdf",
+        "quote": "Aanvragen kunnen uitsluitend worden ingediend door non-profitorganisaties en - initiatieven met een KVK-registratie uit Nederland, Aruba, Bonaire, Curaçao, Sint Maarten, Sint Eustatius en Saba.",
+        "checked_at": "2026-11-23",
+        "method": "page"
+      },
+      {
+        "source_url": "https://a.storyblok.com/f/293891055351833/0d98cb1218/voorwaarden-inno-fonds-2025.pdf",
+        "quote": "Het project waarvoor de subsidie wordt aangevraagd kan in het buitenland of in Nederland worden uitgevoerd, maar dient altijd een internationaal natuurbeschermingsbelang te ondersteunen, passend bij de missie en doelstellingen van het Wereld Natuur Fonds (WWF-NL).",
+        "checked_at": "2026-11-23",
+        "method": "page"
+      },
+      {
+        "source_url": "https://a.storyblok.com/f/293891055351833/0d98cb1218/voorwaarden-inno-fonds-2025.pdf",
+        "quote": "In het geval van een buitenlands project ondersteunt het INNO-Fonds geen aanvragen die overlappen met reeds door WWF-NL gefinancierde projecten.",
+        "checked_at": "2026-11-23",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.wwf.nl/wat-we-doen/actueel/inno-fonds",
+        "quote": "De totale projectbegroting is lager dan €100.000.",
+        "checked_at": "2026-11-23",
+        "method": "page"
+      },
+      {
+        "source_url": "https://a.storyblok.com/f/293891055351833/0d98cb1218/voorwaarden-inno-fonds-2025.pdf",
+        "quote": "De aanvraag betreft een duidelijk innovatief project:",
+        "checked_at": "2026-11-23",
+        "method": "page"
+      },
+      {
+        "source_url": "https://a.storyblok.com/f/293891055351833/0d98cb1218/voorwaarden-inno-fonds-2025.pdf",
+        "quote": "Aanvragen waarbij het gaat om structurele kosten, leden- en/of fondsenwervingsacties, kerntaken van professionele organisaties en de dekking voor westerse salarissen.",
+        "checked_at": "2026-11-23",
+        "method": "page"
+      }
+    ]
   },
   "checked_at": "2026-11-23"
 }

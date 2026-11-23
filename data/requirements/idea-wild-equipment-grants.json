@@ -1,43 +1,109 @@
 {
   "id": "idea-wild-equipment-grants",
-  "read_on": "2026-11-20",
+  "read_on": "2026-11-23",
   "prompt_version": "req-2026-11-20.1",
   "models": ["cursor:gpt-5.6-luna-high"],
   "complete": false,
   "reasons": [
-    "https://ideawild.org/apply/ would not open (network: ECONNRESET: The socket connection was closed unexpectedly. For more information, pass `verbose: true` in the second argument to fetch())",
-    "https://ideawild.org/application-guidelines/ would not open (network: ECONNRESET: The socket connection was closed unexpectedly. For more information, pass `verbose: true` in the second argument to fetch())",
-    "no page opened"
+    "16 links could not be ranked without Jev",
+    "15 links could not be ranked without Jev",
+    "https://ideawild.org/wp-content/uploads/2023/04/Sample-Requested-Equipment_examples.pdf would not open (blocked: connection reset on every try: the server filters bots)",
+    "Jev did not check this reading, so an absent fact is not known to be absent"
   ],
   "requirements_checked": false,
-  "documents": [],
-  "failures": [
+  "documents": [
     {
+      "ref": "D1",
       "url": "https://ideawild.org/apply/",
+      "final_url": "https://ideawild.org/apply/",
       "from": null,
-      "kind": "network",
-      "message": "ECONNRESET: The socket connection was closed unexpectedly. For more information, pass `verbose: true` in the second argument to fetch()"
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 1534,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:9e7c7d87bcea33e8e9abfc1abae44b534f03585f8267c3e5e193f2ff98cb6336"
     },
     {
+      "ref": "D2",
       "url": "https://ideawild.org/application-guidelines/",
+      "final_url": "https://ideawild.org/application-guidelines/",
       "from": null,
-      "kind": "network",
-      "message": "ECONNRESET: The socket connection was closed unexpectedly. For more information, pass `verbose: true` in the second argument to fetch()"
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 17819,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:26552dab4e6eed1b094fc1c54910dddeb15924af1802b279707901deb555e6a9"
+    },
+    {
+      "ref": "D3",
+      "url": "https://ideawild.org/wp-content/uploads/2026/02/Requested-Equipment-Sample-Doc-2026-.pdf",
+      "final_url": "https://ideawild.org/wp-content/uploads/2026/02/Requested-Equipment-Sample-Doc-2026-.pdf",
+      "from": "https://ideawild.org/application-guidelines/",
+      "anchor": "here",
+      "depth": 1,
+      "pdf": true,
+      "chars": 1259,
+      "pages": 1,
+      "low_text": false,
+      "hash": "sha256:907569fc19c22d8a45424442bb2291ac10a4930b72f31b1712ab3df982feb571"
+    },
+    {
+      "ref": "D4",
+      "url": "https://ideawild.org/application",
+      "final_url": "https://ideawild.org/application",
+      "from": "https://ideawild.org/apply/",
+      "anchor": "Apply Now",
+      "depth": 1,
+      "pdf": false,
+      "chars": 1661,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:85cfc47d3835e409dc613b31a1a4f2982da95d14ebdd95ab753f32edafb1091f"
+    },
+    {
+      "ref": "D5",
+      "url": "https://ideawild.org/faqs",
+      "final_url": "https://ideawild.org/faqs",
+      "from": "https://ideawild.org/apply/",
+      "anchor": "FAQs",
+      "depth": 1,
+      "pdf": false,
+      "chars": 5964,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:a2cd0a70266dc4046d516b57c824774dbf7a13b7aa3a5830e393189ca9863691"
     }
   ],
-  "skipped_links": 0,
-  "chunks": [{ "id": "all", "docs": [], "chars": 0 }],
+  "failures": [
+    {
+      "url": "https://ideawild.org/wp-content/uploads/2023/04/Sample-Requested-Equipment_examples.pdf",
+      "from": "https://ideawild.org/faqs",
+      "kind": "blocked",
+      "message": "connection reset on every try: the server filters bots"
+    }
+  ],
+  "skipped_links": 174,
+  "chunks": [{ "id": "all", "docs": ["D1", "D2", "D3", "D4", "D5"], "chars": 28669 }],
   "outcomes": {
     "eligibility": "unresolved",
-    "documents": "unresolved",
-    "effort": "unresolved",
-    "co_finance": "unresolved",
-    "consortium": "unresolved",
+    "documents": "stated",
+    "effort": "stated",
+    "co_finance": "not_found",
+    "consortium": "not_found",
     "after_award": "unresolved"
   },
-  "written": [],
+  "written": ["documents", "effort"],
   "escalated": [],
   "flags": [],
-  "notes": ["nothing to read"],
+  "notes": [
+    "extractor: Applications are rolling. The guidelines are labeled 2025–2026. Country access, project cost, and several project features are described as priorities or approval considerations rather than universal hard requirements. Follow-up materials have no formal deadlines or specific reporting forms.",
+    "eligibility: not written, the file quotes \"We are unable to accommodate projects that require the equipment to arrive in fe\", this reading does not; the file has the rule \"Project can accommodate equipment arriving in six months or more\", this reading does not",
+    "after_award: not written, the file quotes \"Specifically, that person will need to submit a final summary report with photos\", this reading does not",
+    "source idea-wild-equipment-grants-3: added for https://ideawild.org/faqs"
+  ],
   "usd": 0
 }

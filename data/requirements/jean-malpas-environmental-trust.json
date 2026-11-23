@@ -1,12 +1,11 @@
 {
   "id": "jean-malpas-environmental-trust",
-  "read_on": "2026-11-20",
+  "read_on": "2026-11-23",
   "prompt_version": "req-2026-11-20.1",
   "models": ["cursor:gpt-5.6-luna-high"],
   "complete": false,
   "reasons": [
-    "10 links could not be ranked without Jev",
-    "9 links could not be ranked without Jev",
+    "6 links could not be ranked without Jev",
     "the text names a document with rules that was not read: More detailed funding guidelines on the application form",
     "Jev did not check this reading, so an absent fact is not known to be absent"
   ],
@@ -20,41 +19,28 @@
       "anchor": null,
       "depth": 0,
       "pdf": false,
-      "chars": 23961,
+      "chars": 22762,
       "pages": null,
       "low_text": false,
-      "hash": "sha256:5e354e38c7f4007d11655c057ea17bf7f82c1a2689d5782e1276f1839e8a8d16"
-    },
-    {
-      "ref": "D2",
-      "url": "https://www.perpetualguardian.co.nz/privacy-policy/",
-      "final_url": "https://www.perpetualguardian.co.nz/privacy-policy/",
-      "from": "https://perpetualguardian.co.nz/philanthropy/grant-seekers/grants-open-upcoming",
-      "anchor": "Privacy Policy",
-      "depth": 1,
-      "pdf": false,
-      "chars": 10058,
-      "pages": null,
-      "low_text": false,
-      "hash": "sha256:13071e27cb17e5d4ef6866b4ec5d2fbf440ad0de21607a2cd0d727a426c0f3c8"
+      "hash": "sha256:a32e3a6590722eac8a41234c15772393cedbb5374053c1426b1a4426421ace94"
     }
   ],
   "failures": [],
-  "skipped_links": 262,
-  "chunks": [{ "id": "all", "docs": ["D1", "D2"], "chars": 34269 }],
+  "skipped_links": 152,
+  "chunks": [{ "id": "all", "docs": ["D1"], "chars": 22854 }],
   "outcomes": {
     "eligibility": "not_found",
     "documents": "not_found",
-    "effort": "not_found",
+    "effort": "stated",
     "co_finance": "not_found",
     "consortium": "not_found",
     "after_award": "not_found"
   },
-  "written": [],
+  "written": ["effort"],
   "escalated": [],
   "flags": [],
   "notes": [
-    "extractor: The 2027 round is scheduled to open next in 2027. Preference is given to projects in the South Island, but this is not stated as a hard eligibility requirement."
+    "extractor: Preference is given to projects in the South Island. The next funding round is scheduled for 2027."
   ],
   "usd": 0
 }

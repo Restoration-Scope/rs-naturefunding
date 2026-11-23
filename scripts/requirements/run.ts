@@ -19,6 +19,7 @@ import { loadData } from '../../src/data/load'
 import type { Source } from '../../src/data/schema'
 import { formatJson } from '../refresh/json'
 import { chunksOf, PROMPT_VERSION } from './extract'
+import { withBrowserReads } from './browser-reads'
 import { gather, politeReader } from './gather'
 import { Cache, claudeModel, costOf, cursorModel, Ledger, metered, meteredJev, openaiModel, SpendCapError, typesafeJev, workersModel, type JsonModel } from './models'
 import { readAnswer } from './gpt-pro'
@@ -66,7 +67,7 @@ if (!ids.length) throw new Error('no programmes to read: pass ids, --queue N or 
 for (const id of ids) if (!byId.has(id)) throw new Error(`no programme ${id}`)
 
 if (values['gather-only']) {
-  const read = politeReader(join('.cache', 'requirements', 'pages'))
+  const read = withBrowserReads(politeReader(join('.cache', 'requirements', 'pages')))
   const rows = []
   for (const id of ids) {
     const p = byId.get(id)!
@@ -106,7 +107,7 @@ const jevModel = values['no-jev'] ? null : typesafeJev()
 if (!values['no-jev'] && !jevModel) throw new Error('TYPESAFE_API_KEY is not set (pass --no-jev to run without checks)')
 
 const deps = {
-  read: politeReader(join('.cache', 'requirements', 'pages')),
+  read: withBrowserReads(politeReader(join('.cache', 'requirements', 'pages'))),
   sources,
   cheap: metered(cheapModel, ledger, cache, PROMPT_VERSION),
   strong: metered(strongModel, ledger, cache, PROMPT_VERSION),
@@ -148,7 +149,14 @@ for (const id of ids) {
   console.log(`${id}: ${m.documents.length} docs, ${Object.entries(m.outcomes).map(([k, v]) => `${k}=${v}`).join(' ')}${m.requirements_checked ? ', checked' : ''}, $${usd.toFixed(4)}`)
 }
 
-if (write && currentSources !== sources) writeFileSync(join('data', 'sources.json'), `${JSON.stringify(currentSources, null, 2)}\n`)
+// Merge only this run's changes into the file as it is now, so runs in parallel keep each other's sources.
+if (write && currentSources !== sources) {
+  const before = new Map(sources.map((s) => [s.id, JSON.stringify(s)]))
+  const mine = currentSources.filter((s) => before.get(s.id) !== JSON.stringify(s))
+  const onDisk = JSON.parse(readFileSync(join('data', 'sources.json'), 'utf8')) as Source[]
+  const merged = [...onDisk.filter((s) => !mine.some((m) => m.id === s.id)), ...mine]
+  writeFileSync(join('data', 'sources.json'), `${JSON.stringify(merged, null, 2)}\n`)
+}
 
 const report = {
   run_on: today,

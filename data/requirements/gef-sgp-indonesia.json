@@ -1,12 +1,12 @@
 {
   "id": "gef-sgp-indonesia",
-  "read_on": "2026-11-20",
+  "read_on": "2026-11-23",
   "prompt_version": "req-2026-11-20.1",
   "models": ["cursor:gpt-5.6-luna-high"],
   "complete": false,
   "reasons": [
     "15 links could not be ranked without Jev",
-    "13 links could not be ranked without Jev",
+    "12 links could not be ranked without Jev",
     "the text names a document with rules that was not read: Proposal format or guidelines: https://bit.ly/GerakanAnakMuda",
     "Jev did not check this reading, so an absent fact is not known to be absent"
   ],
@@ -50,24 +50,11 @@
       "pages": null,
       "low_text": false,
       "hash": "sha256:68cb44046a7cb003348174e286abddbeed41bcb579cfa50e1a0ea2da1aef6957"
-    },
-    {
-      "ref": "D4",
-      "url": "https://sgp-indonesia.org/en/privacy-policy/",
-      "final_url": "https://sgp-indonesia.org/en/privacy-policy/",
-      "from": "https://sgp-indonesia.org/en/sgp-indonesia/",
-      "anchor": "privacy policy",
-      "depth": 1,
-      "pdf": false,
-      "chars": 3578,
-      "pages": null,
-      "low_text": false,
-      "hash": "sha256:7ea268a47abbf23a270425536f95ac5c6ad51dda9a5bebba78f949821638da79"
     }
   ],
   "failures": [],
-  "skipped_links": 109,
-  "chunks": [{ "id": "all", "docs": ["D1", "D2", "D3", "D4"], "chars": 13076 }],
+  "skipped_links": 100,
+  "chunks": [{ "id": "all", "docs": ["D1", "D2", "D3"], "chars": 9383 }],
   "outcomes": {
     "eligibility": "not_found",
     "documents": "stated",
@@ -80,7 +67,7 @@
   "escalated": [],
   "flags": [],
   "notes": [
-    "extractor: The proposal format or guidelines containing the focus areas, criteria, budget and other details were not provided."
+    "extractor: The call directs applicants to proposal format or guidelines for focus areas, criteria, budget and other details; those materials were not provided."
   ],
   "usd": 0
 }

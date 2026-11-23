@@ -1,0 +1,144 @@
+{
+  "id": "rufford-small-grants",
+  "read_on": "2026-11-23",
+  "prompt_version": "req-2026-11-20.1",
+  "models": ["cursor:gpt-5.6-luna-high"],
+  "complete": false,
+  "reasons": [
+    "1 links could not be ranked without Jev",
+    "3 links could not be ranked without Jev",
+    "Jev did not check this reading, so an absent fact is not known to be absent"
+  ],
+  "requirements_checked": false,
+  "documents": [
+    {
+      "ref": "D1",
+      "url": "https://apply.ruffordsmallgrants.org",
+      "final_url": "https://apply.ruffordsmallgrants.org/",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 1391,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:e9ed90b3d44a93cd9024645e8a688297e9ae129a30e6665972e992e3f95941e4"
+    },
+    {
+      "ref": "D2",
+      "url": "https://apply.ruffordsmallgrants.org/help/criteria",
+      "final_url": "https://apply.ruffordsmallgrants.org/help/criteria",
+      "from": "https://apply.ruffordsmallgrants.org",
+      "anchor": "1st RSG, 2nd RSG, Booster Grant and Completion Grant.",
+      "depth": 1,
+      "pdf": false,
+      "chars": 4852,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:a5f0632d042bfb1ad69b3356324c125404ef66f07f297745f5db6aa3f8a8da5c"
+    },
+    {
+      "ref": "D3",
+      "url": "https://apply.ruffordsmallgrants.org/help/faqs",
+      "final_url": "https://apply.ruffordsmallgrants.org/help/faqs",
+      "from": "https://apply.ruffordsmallgrants.org",
+      "anchor": "early stages of your conservation career",
+      "depth": 1,
+      "pdf": false,
+      "chars": 48376,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:f443fa702e875c5506f242f2b35707cee05971a151f7fd87d763dc961df53ad4"
+    },
+    {
+      "ref": "D4",
+      "url": "https://apply.ruffordsmallgrants.org/help/eligibility",
+      "final_url": "https://apply.ruffordsmallgrants.org/help/eligibility",
+      "from": "https://apply.ruffordsmallgrants.org",
+      "anchor": "eligible country",
+      "depth": 1,
+      "pdf": false,
+      "chars": 3417,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:3249a7eac0fde06d0222835e0fd96a52ac10812faf4e0bbffbdc53ae0cf20be1"
+    },
+    {
+      "ref": "D5",
+      "url": "https://apply.ruffordsmallgrants.org/apply/",
+      "final_url": "https://apply.ruffordsmallgrants.org/apply/",
+      "from": "https://apply.ruffordsmallgrants.org",
+      "anchor": "Apply for a grant",
+      "depth": 1,
+      "pdf": false,
+      "chars": 4658,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:96d75ddb56b7790c98a2aaa244a8a8ad8ae68216dc5d287aa8492ff4c00b373a"
+    },
+    {
+      "ref": "D6",
+      "url": "https://apply.ruffordsmallgrants.org/static/files/RSG_Application_Form_Questions.docx",
+      "final_url": "https://apply.ruffordsmallgrants.org/static/files/RSG_Application_Form_Questions.docx",
+      "from": "https://apply.ruffordsmallgrants.org/help/faqs",
+      "anchor": "the form questions in Word format.",
+      "depth": 2,
+      "pdf": false,
+      "chars": 12143,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:7d0d9c21eba0ba5499e202de09f79bdc79332d3a6c19bf56e304ee8ef05c8b3a"
+    },
+    {
+      "ref": "D7",
+      "url": "https://apply.ruffordsmallgrants.org/static/files/RSG_Final_Evaluation_Report_Template.docx",
+      "final_url": "https://apply.ruffordsmallgrants.org/static/files/RSG_Final_Evaluation_Report_Template.docx",
+      "from": "https://apply.ruffordsmallgrants.org/help/faqs",
+      "anchor": "Final Report template",
+      "depth": 2,
+      "pdf": false,
+      "chars": 6826,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:c0e042ef3846f51b7257856005b302adf1a105676752aaf66b8065a77fe98bbd"
+    },
+    {
+      "ref": "D8",
+      "url": "https://apply.ruffordsmallgrants.org/static/files/RSG_Reporting_Guidelines.pdf",
+      "final_url": "https://apply.ruffordsmallgrants.org/static/files/RSG_Reporting_Guidelines.pdf",
+      "from": "https://apply.ruffordsmallgrants.org/help/faqs",
+      "anchor": "Reporting Guidelines document",
+      "depth": 2,
+      "pdf": true,
+      "chars": 6739,
+      "pages": 5,
+      "low_text": false,
+      "hash": "sha256:6b29cd71b9b7d7b33e92f5426f8d326cd60b8afc46672829a40ba920a7122259"
+    }
+  ],
+  "failures": [],
+  "skipped_links": 35,
+  "chunks": [
+    { "id": "all", "docs": ["D1", "D2", "D3", "D4", "D5", "D6", "D7", "D8"], "chars": 89381 }
+  ],
+  "outcomes": {
+    "eligibility": "stated",
+    "documents": "stated",
+    "effort": "stated",
+    "co_finance": "stated",
+    "consortium": "not_found",
+    "after_award": "stated"
+  },
+  "written": ["eligibility", "documents", "effort", "co_finance", "after_award"],
+  "escalated": [],
+  "flags": [],
+  "notes": [
+    "extractor: Early-career status and MSc/PhD study are described as priorities or recommendations, not hard requirements; BSc study is explicitly excluded. D5 includes transitional rules for applications already in progress under the former five-grant system. Review timing differs across documents: D3 says up to 4 months for the second stage, D5 says up to 2 months, and D6 says up to 3 months.",
+    "source rufford-small-grants-2: added for https://apply.ruffordsmallgrants.org/help/criteria",
+    "source rufford-small-grants-3: added for https://apply.ruffordsmallgrants.org/help/faqs",
+    "source rufford-small-grants-4: added for https://apply.ruffordsmallgrants.org/static/files/RSG_Application_Form_Questions.docx",
+    "source rufford-small-grants-5: added for https://apply.ruffordsmallgrants.org/help/eligibility",
+    "source rufford-small-grants-6: added for https://apply.ruffordsmallgrants.org/apply/"
+  ],
+  "usd": 0
+}

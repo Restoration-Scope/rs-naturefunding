@@ -21,6 +21,30 @@
   },
   "co_finance_required": null,
   "reporting": null,
+  "effort": { "steps": ["Application submission", "Application review"] },
+  "eligibility": [
+    { "rule": "Includes a member who resides in or is located in Shizuoka City", "kind": "legal" },
+    { "rule": "Has operating rules and an organisation for its operation", "kind": "capacity" },
+    { "rule": "Has sufficient capacity to carry out proper accounting", "kind": "capacity" },
+    {
+      "rule": "Has not received consumables under the city's bamboo-forest supply programme in the application year",
+      "kind": "other"
+    },
+    { "rule": "Does not apply only for bamboo-material utilisation", "kind": "project" },
+    {
+      "rule": "On land already subsidised, activity falls within 5 fiscal years of the first grant",
+      "kind": "project"
+    }
+  ],
+  "after_award": { "reports": "final" },
+  "documents": [
+    "Project plan",
+    "Budget",
+    "Quotation",
+    "Bylaws, rules or another document confirming the organisation’s details",
+    "Copy of land-use consent",
+    "Map of the project area and on-site colour photos"
+  ],
   "calls": [],
   "evidence": {
     "applicant_types": {
@@ -46,7 +70,75 @@
       "quote": "補助額は、1団体50万円を上限とし、「竹林整備事業:上限25万円」「竹材利活用・環境教育事業:上限25万円」です。",
       "checked_at": "2026-11-21",
       "method": "page"
-    }
+    },
+    "effort": [
+      {
+        "source_url": "https://www.city.shizuoka.lg.jp/s6347/s001496.html",
+        "quote": "【活動団体から市へ】申請書の提出",
+        "checked_at": "2026-11-23",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.city.shizuoka.lg.jp/s6347/s001496.html",
+        "quote": "【市】申請書の受理・審査",
+        "checked_at": "2026-11-23",
+        "method": "page"
+      }
+    ],
+    "eligibility": [
+      {
+        "source_url": "https://www.city.shizuoka.lg.jp/s6347/s001496.html",
+        "quote": "市内に居住し、又は所在するものを構成員に含む団体",
+        "checked_at": "2026-11-23",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.city.shizuoka.lg.jp/s6347/s001496.html",
+        "quote": "団体の基本的な運営方法に関し規約等を定め、かつ、運営のための組織が編成されていること",
+        "checked_at": "2026-11-23",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.city.shizuoka.lg.jp/s6347/s001496.html",
+        "quote": "適正な会計事務を執行するに足る体制を備えていること",
+        "checked_at": "2026-11-23",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.city.shizuoka.lg.jp/s6347/s001496.html",
+        "quote": "申請の年度において静岡市放任竹林整備事業用消耗品等支給事業実施要綱に基づく消耗品等の支給を受けていないこと",
+        "checked_at": "2026-11-23",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.city.shizuoka.lg.jp/s6347/s001496.html",
+        "quote": "竹材利活用事業のみの申請は対象外です。",
+        "checked_at": "2026-11-23",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.city.shizuoka.lg.jp/s6347/s001496.html",
+        "quote": "補助金の交付を受けた年度から起算して5年度までに実施する活動に限ります。",
+        "checked_at": "2026-11-23",
+        "method": "page"
+      }
+    ],
+    "after_award": [
+      {
+        "source_url": "https://www.city.shizuoka.lg.jp/s6347/s001496.html",
+        "quote": "実績報告書は、活動終了後速やかにご提出ください。",
+        "checked_at": "2026-11-23",
+        "method": "page"
+      }
+    ],
+    "documents": [
+      {
+        "source_url": "https://www.city.shizuoka.lg.jp/documents/1485/000933526.pdf",
+        "quote": "事業計画書（様式第２号） （２）収支予算書（様式第３号） （３）見積書 （４）団体の規約、会則その他団体の概要を確認することができる書類 （５）土地使用同意書の写し （６）公図等の放任竹林対策推進事業を実施しようとする区域を特定することができる図面 及び現地カラー写真",
+        "checked_at": "2026-11-23",
+        "method": "page"
+      }
+    ]
   },
   "checked_at": "2026-11-21"
 }

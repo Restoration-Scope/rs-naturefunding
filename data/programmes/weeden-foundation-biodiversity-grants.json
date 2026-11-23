@@ -35,6 +35,22 @@
   },
   "co_finance_required": null,
   "reporting": null,
+  "effort": {
+    "steps": [
+      "Letter of Inquiry",
+      "Full proposal, if invited"
+    ]
+  },
+  "eligibility": [
+    {
+      "rule": "Is a 501(c)(3) organization or international equivalent",
+      "kind": "legal"
+    },
+    {
+      "rule": "Requests a single-year grant",
+      "kind": "project"
+    }
+  ],
   "calls": [
     {
       "id": "loi-windows",
@@ -90,7 +106,35 @@
       "quote": "We support biodiversity conservation projects mainly located in Africa and Latin America.",
       "checked_at": "2026-11-02",
       "method": "page"
-    }
+    },
+    "effort": [
+      {
+        "source_url": "https://weedenfoundation.org/application/",
+        "quote": "After clearing eligibility you may submit a Letter of Inquiry (LOI).",
+        "checked_at": "2026-11-23",
+        "method": "page"
+      },
+      {
+        "source_url": "https://weedenfoundation.org/application/",
+        "quote": "we will invite a full proposal.",
+        "checked_at": "2026-11-23",
+        "method": "page"
+      }
+    ],
+    "eligibility": [
+      {
+        "source_url": "https://weedenfoundation.org/application/",
+        "quote": "We only fund 501 (c)(3) organizations or its international equivalent.",
+        "checked_at": "2026-11-23",
+        "method": "page"
+      },
+      {
+        "source_url": "https://weedenfoundation.org/application/",
+        "quote": "We don't do multi-year grants.",
+        "checked_at": "2026-11-23",
+        "method": "page"
+      }
+    ]
   },
   "checked_at": "2026-11-02"
 }
