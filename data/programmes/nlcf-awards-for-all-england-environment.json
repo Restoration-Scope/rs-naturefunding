@@ -5,7 +5,10 @@
     "name": "The National Lottery Community Fund",
     "url": "https://www.tnlcommunityfund.org.uk/"
   },
-  "administered_by": null,
+  "administered_by": {
+    "name": "The National Lottery Community Fund",
+    "url": "https://www.tnlcommunityfund.org.uk"
+  },
   "parent": null,
   "url": "https://www.tnlcommunityfund.org.uk/funding/funding-programmes/national-lottery-awards-for-all-england-environment",
   "summary": "Grants of £300 to £20,000 for community-led projects in England that help people connect with and care for nature or improve the local environment, including equipment and small land projects.",
@@ -15,7 +18,7 @@
   "access": "direct",
   "window": "rolling",
   "amount": { "currency": "GBP", "min": 300, "max": 20000 },
-  "co_finance_required": null,
+  "co_finance_required": false,
   "reporting": null,
   "effort": { "steps": ["Online application form"] },
   "eligibility": [
@@ -62,6 +65,12 @@
     }
   ],
   "evidence": {
+    "administered_by": {
+      "source_url": "https://account.tnlcommunityfund.org.uk/Preview/Application/cc7eb4fb-b4df-4a31-aa89-d7595c58d833",
+      "quote": "The National Lottery Community Fund",
+      "checked_at": "2026-11-23",
+      "method": "page"
+    },
     "applicant_types": {
       "source_url": "https://www.tnlcommunityfund.org.uk/funding/funding-programmes/national-lottery-awards-for-all-england-environment/who-can-apply",
       "quote": "community interest company (CIC) school, if the project helps the local community, not just the school statutory body (including local authorities, town, parish, and community councils) community benefit society",
@@ -89,6 +98,12 @@
     "amount": {
       "source_url": "https://www.tnlcommunityfund.org.uk/funding/funding-programmes/national-lottery-awards-for-all-england-environment",
       "quote": "Amount: £300 to £20,000",
+      "checked_at": "2026-11-23",
+      "method": "page"
+    },
+    "co_finance_required": {
+      "source_url": "https://account.tnlcommunityfund.org.uk/Preview/Application/cc7eb4fb-b4df-4a31-aa89-d7595c58d833",
+      "quote": "Do you plan to use money from other sources to fund your project? Yes No",
       "checked_at": "2026-11-23",
       "method": "page"
     },
