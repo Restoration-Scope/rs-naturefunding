@@ -78,7 +78,8 @@ export function verdictProblem(v: Verdict): string | null {
   if (pooled && (v.action === 'keep' || v.action === 'reword') && !v.quotes?.length) return `name the quotes (q0, q1…) that state this ${v.field === 'effort' ? 'step' : 'item'} in quotes`
   if (v.action === 'reword' && !n.text && n.due === undefined) return 'reword needs new.text'
   if ((v.action === 'replace' || v.action === 'add') && (!n.quote || !n.source_url)) return `${v.action} needs new.quote and new.source_url`
-  if ((v.action === 'replace' || v.action === 'add') && n.text === undefined && n.value === undefined) return `${v.action} needs new.text or new.value`
+  if (!one && n.value !== undefined) return `new.value is for ${ONE_FIELDS.join(', ')}; ${v.field} takes new.text`
+  if (!one && (v.action === 'replace' || v.action === 'add') && !n.text) return `${v.action} on ${v.field} needs new.text`
   return null
 }
 
@@ -136,7 +137,9 @@ export type Canary = { id: string; field: 'eligibility' | 'documents'; index: nu
 /** A rule its quote doesn't state, on a real quote (one with no number, in any language), or a document no quote
  * names: only a reader who checks the quotes catches it. */
 export function canaryFor(p: P, seed: number): Canary | null {
-  const quotes: Ev[] = (p.evidence?.eligibility ?? []).filter((e: Ev) => !/\d|\b(years?|income|revenue|turnover|budget)\b/i.test(e.quote))
+  // Numbers in words too (3 and 7 in the site's main languages), since the planted rules use them.
+  const numeric = /\d|\b(years?|income|revenue|turnover|budget|three|seven|tres|três|trois|drei|tre|siete|sete|sept|sieben|sette)\b/i
+  const quotes: Ev[] = (p.evidence?.eligibility ?? []).filter((e: Ev) => !numeric.test(e.quote))
   if (quotes.length) {
     const e = quotes[seed % quotes.length]!
     const texts = [
@@ -147,7 +150,13 @@ export function canaryFor(p: P, seed: number): Canary | null {
     const [text, kind] = texts[seed % texts.length]!
     return { id: p.id, field: 'eligibility', index: (p.eligibility ?? []).length, text, kind, quote: e.quote, source_url: e.source_url }
   }
-  if (p.documents?.length) return { id: p.id, field: 'documents', index: p.documents.length, text: ['Letters of reference from three past funders', 'Audited accounts for the last five years'][seed % 2]! }
+  // A document none listed resembles (documents are written in English).
+  const docs = [
+    ['Letters of reference from three past funders', /referen/i],
+    ['Audited accounts for the last five years', /audit|accounts|financial statement/i],
+  ] as const
+  const free = p.documents?.length ? docs.filter(([, r]) => !p.documents.some((d: string) => r.test(d))) : []
+  if (free.length) return { id: p.id, field: 'documents', index: p.documents.length, text: free[seed % free.length]![0] }
   return null
 }
 
@@ -178,7 +187,7 @@ export function brief(programmes: P[], opts: { stamp: string; dir: string; stand
     '- A source that is not this programme or this round: wrong, drop, category wrong_round_or_programme; then every item it supports is wrong too.',
     '- co_finance_required and consortium_required values are true or false; co_finance and after_award values are objects as data/README.md describes. These one-value fields are replaced with new.value (every duty in one object), never reworded.',
     '- A wrong effort date: reword or replace the step with new.due (YYYY-MM-DD, or null when no quote states it).',
-    '- Documents, effort steps and after_award are stated by a pool of quotes (q0, q1…). For each one you keep or reword, list in quotes the numbers of the quotes that state it (a step: its date too); for a replace, the old quotes that still state it. Quotes no kept item names are removed.',
+    '- Documents, effort steps and after_award are stated by a pool of quotes (q0, q1…). For each one you keep or reword, list in quotes the numbers of the quotes that state it (a step: its date too); for a replace, the old quotes that still state it. Never name a quote from a source you drop. Quotes no kept item names are removed.',
     '- New quotes are copied verbatim from a page our quote checker can fetch (not SharePoint, not ZIPs), at most 400 characters.',
     '- Code leads below are hints from scripts/requirements/lint.ts, not verdicts.',
     '',
@@ -246,18 +255,20 @@ export function reviewGaps(programmes: P[], key: Key, verdicts: Verdict[]): stri
     }
     for (const v of mine) if (!items.some((it) => it.field === v.field && it.index === v.index)) gaps.push(`${p.id} ${v.field} ${v.index}: no such item`)
     for (const v of mine) for (const q of v.quotes ?? []) if (!p.evidence?.[v.field]?.[q]) gaps.push(`${p.id} ${v.field} ${v.index}: no quote q${q}`)
-    // Every item a dropped source states goes too: a rule on its quote, a pooled item whose named quotes all come from it.
+    // Nothing that stays may rest on a dropped source: a rule on its quote, a pooled item naming one of its quotes, a new quote.
     const dropped = droppedUrls(p, verdicts)
     const srcIndex = new Map(items.filter((x) => x.field === 'source').map((x) => [x.text, x.index]))
-    for (const v of mine.filter((x) => x.action === 'keep' || x.action === 'reword')) {
+    for (const v of mine.filter((x) => x.action !== 'drop')) {
       const it = items.find((x) => x.field === v.field && x.index === v.index)
       if (!it || it.field === 'source') continue
-      const pooled = (POOLED as readonly string[]).includes(it.field)
-      const gone = pooled
-        ? (v.quotes ?? []).length > 0 && v.quotes!.every((q) => dropped.has(p.evidence?.[it.field]?.[q]?.source_url))
-        : it.source !== null && [...dropped].some((u) => srcIndex.get(u) === it.source)
-      if (gone) gaps.push(`${p.id} ${it.field} ${it.index}: its source was dropped, but the item is kept`)
+      if ((POOLED as readonly string[]).includes(it.field)) {
+        const q = (v.quotes ?? []).find((i) => dropped.has(p.evidence?.[it.field]?.[i]?.source_url))
+        if (q !== undefined) gaps.push(`${p.id} ${it.field} ${it.index}: its source was dropped (q${q}), but the item keeps it`)
+      } else if (v.action !== 'replace' && it.source !== null && [...dropped].some((u) => srcIndex.get(u) === it.source))
+        gaps.push(`${p.id} ${it.field} ${it.index}: its source was dropped, but the item is kept`)
     }
+    for (const v of verdicts.filter((x) => x.id === p.id && x.new?.source_url && dropped.has(x.new.source_url)))
+      gaps.push(`${p.id} ${v.field} ${v.index ?? 'new'}: its new quote cites a dropped source`)
     // A one-value field takes one change; an existing one is replaced, not added to.
     for (const f of ONE_FIELDS) {
       const changes = verdicts.filter((v) => v.id === p.id && v.field === f && v.action !== 'keep')
@@ -276,7 +287,7 @@ export function applyVerdicts(p0: P, verdicts: Verdict[], today: string): P {
   // A new quote that can't be kept would leave its item unsupported: refuse instead.
   const addQuote = (f: 'documents' | 'effort', e: Ev, room: number) => {
     const list: Ev[] = (p.evidence[f] ??= [])
-    if (list.some((x) => comparable(x.quote) === comparable(e.quote))) return
+    if (list.some((x) => x.source_url === e.source_url && comparable(x.quote) === comparable(e.quote))) return
     if (list.length >= room) throw new Error(`${p.id} ${f}: already ${list.length} quotes, the most it takes; the new quote "${e.quote.slice(0, 50)}" can't be kept`)
     list.push(e)
   }
@@ -371,7 +382,7 @@ function setOne(p: P, f: (typeof ONE_FIELDS)[number], value: unknown, e?: Ev) {
   p[f] = value
   // after_award keeps the old quotes its verdict named (already pruned to those) beside the new one.
   if (e && f === 'after_award') {
-    const list: Ev[] = (p.evidence.after_award ?? []).filter((x: Ev) => comparable(x.quote) !== comparable(e.quote))
+    const list: Ev[] = (p.evidence.after_award ?? []).filter((x: Ev) => x.source_url !== e.source_url || comparable(x.quote) !== comparable(e.quote))
     if (list.length >= 4) throw new Error(`${p.id} after_award: already ${list.length} quotes, the most it takes; the new quote "${e.quote.slice(0, 50)}" can't be kept`)
     p.evidence.after_award = [...list, e]
   } else if (e) p.evidence[f] = e
@@ -388,9 +399,9 @@ export type Review = { on: string; standards: string; reviewer: string; hash: st
 export function reviewProblems(programmes: P[], manifests: { id: string; read_on: string; review?: Review }[]): string[] {
   const byId = new Map(programmes.map((p) => [p.id, p]))
   const out: string[] = []
-  const read = new Set(manifests.map((m) => m.id))
+  const read = new Set(manifests.filter((m) => m.read_on >= REVIEW_FROM).map((m) => m.id))
   for (const p of programmes)
-    if (p.requirements_checked >= REVIEW_FROM && !read.has(p.id) && hasItems(p)) out.push(`${p.id}: requirements checked ${p.requirements_checked} with no reading manifest: read it with scripts/requirements/run.ts, then review it`)
+    if (p.requirements_checked >= REVIEW_FROM && !read.has(p.id) && hasItems(p)) out.push(`${p.id}: requirements checked ${p.requirements_checked} with no reading manifest since ${REVIEW_FROM}: read it with scripts/requirements/run.ts, then review it`)
   for (const m of manifests) {
     const p = byId.get(m.id)
     if (!p || m.read_on < REVIEW_FROM || !hasItems(p)) continue

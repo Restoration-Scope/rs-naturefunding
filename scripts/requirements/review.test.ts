@@ -59,9 +59,12 @@ describe('review', () => {
     expect(b.key.standards).toBe('t.1')
     expect(p.eligibility).toHaveLength(3)
     // A quote with a number never carries a canary, in any language: the planted rule might be true.
-    const numbered = { ...p, evidence: { ...p.evidence, eligibility: [ev(CALL, 'Mindestens 3 Jahre tätig.')] }, eligibility: [{ rule: 'Operating for at least 3 years', kind: 'track_record' }] }
+    const numbered = { ...p, evidence: { ...p.evidence, eligibility: [ev(CALL, 'Mindestens 3 Jahre tätig.'), ev(CALL, 'Drei abgeschlossene Projekte gleicher Art.')] }, eligibility: [{ rule: 'Operating for at least 3 years', kind: 'track_record' }, { rule: 'Has completed three projects', kind: 'track_record' }] }
     const d = brief([numbered], { stamp: 's', dir: 'd', standards: 'standards: t.1', worktree: '.' })
     expect(d.key.canaries[0]).toMatchObject({ field: 'documents', index: 2 })
+    // A document canary never resembles a listed document.
+    const audited = { ...numbered, documents: ['Audited accounts', 'Application form'] }
+    for (const stamp of ['s', 'ss']) expect(brief([audited], { stamp, dir: 'd', standards: 'standards: t.1', worktree: '.' }).key.canaries[0]!.text).toContain('reference')
     expect(d.text).toContain(`2. ${d.key.canaries[0]!.text}`)
     // A brief no programme can test the reviewer on is refused.
     expect(() => brief([{ ...numbered, documents: undefined }], { stamp: 's', dir: 'd', standards: 'standards: t.1', worktree: '.' })).toThrow('canary')
@@ -131,6 +134,17 @@ describe('review', () => {
     sv = set(set(sv, 'documents', 0, { quotes: [0] }), 'documents', 1, { quotes: [1] })
     expect(reviewGaps([split], k3, [...sv, canary]).join()).toContain('documents 1: its source was dropped')
     expect(reviewGaps([split], k3, [...set(sv, 'documents', 1, { verdict: 'wrong', category: 'wrong_round_or_programme', action: 'drop' }), canary])).toEqual([])
+    // A replace can't lean on a dropped source's quote, and no new quote may cite one.
+    const duty = { ...split, after_award: { reports: 'yearly' }, evidence: { ...split.evidence, after_award: [ev(OTHER, 'Grantees report every year.')] } }
+    const k4 = { ...key, hashes: { p: itemsHash(duty) } }
+    let dv = set(set(sound(duty), 'source', 1, { verdict: 'wrong', category: 'wrong_round_or_programme', action: 'drop' }), 'eligibility', 2, { verdict: 'wrong', category: 'wrong_round_or_programme', action: 'drop' })
+    dv = [...set(set(dv, 'documents', 0, { quotes: [0] }), 'documents', 1, { verdict: 'wrong', category: 'wrong_round_or_programme', action: 'drop' }), canary]
+    const replaced = set(dv, 'after_award', 0, { verdict: 'wrong', category: 'missed_fact', action: 'replace', quotes: [0], new: { value: { reports: 'yearly', site_visit: true }, quote: 'We visit every site.', source_url: CALL } })
+    expect(reviewGaps([duty], k4, replaced).join()).toContain('after_award 0: its source was dropped (q0)')
+    const fresh = set(dv, 'after_award', 0, { verdict: 'wrong', category: 'missed_fact', action: 'replace', quotes: [], new: { value: { site_visit: true }, quote: 'We visit every site.', source_url: OTHER } })
+    expect(reviewGaps([duty], k4, fresh).join()).toContain('cites a dropped source')
+    // A list item takes new text, never a value.
+    expect(reviewGaps([p], key, [...set(sound(p), 'eligibility', 0, { verdict: 'wrong', category: 'other', action: 'replace', new: { value: true, quote: 'Applicants must be based in Canada.', source_url: CALL } }), canary]).join()).toContain('new.value is for')
     // The reviewer's family is told apart from the reading's models.
     expect([family('cursor:gpt-5.6-luna-high'), family('claude-opus-5-5'), family('gemini-4-neon')]).toEqual(['openai', 'anthropic', 'google'])
     // One-value fields: no rewording, one change each, typed values.
@@ -159,6 +173,9 @@ describe('review', () => {
     const duties = { ...p, after_award: { reports: 'yearly' }, evidence: { ...p.evidence, after_award: [ev(CALL, 'Grantees report every year.'), ev(CALL, 'Accounts are audited.')] } }
     const aa = set(sound(duties), 'after_award', 0, { verdict: 'wrong', category: 'missed_fact', action: 'replace', quotes: [0, 1], new: { value: { reports: 'yearly', audit: true, site_visit: true }, quote: 'We visit every site.', source_url: CALL } })
     expect(applyVerdicts(duties, aa, '2026-11-24').evidence.after_award.map((e: { quote: string }) => e.quote)).toEqual(['Grantees report every year.', 'Accounts are audited.', 'We visit every site.'])
+    // The same words on another page are another quote.
+    const elsewhere = [...sound(p), { id: 'p', field: 'documents', index: null, text: 'Board resolution', verdict: 'missed', category: 'missed_document', action: 'add', reason: 'listed', new: { text: 'Board resolution', quote: 'Attach your registration certificate to the application form.', source_url: OTHER } } as Verdict]
+    expect(applyVerdicts(p, elsewhere, '2026-11-24').evidence.documents.map((e: { source_url: string }) => e.source_url)).toEqual([CALL, OTHER])
     // A new quote past the cap is refused, not silently left out.
     const full = { ...p, evidence: { ...p.evidence, documents: [ev(CALL, 'One.'), ev(CALL, 'Two.'), ev(CALL, 'Three.')] } }
     const replace = set(sound(full), 'documents', 0, { verdict: 'wrong', category: 'other', action: 'replace', new: { text: 'Charity number', quote: 'Give your charity number.', source_url: CALL } })
@@ -190,6 +207,7 @@ describe('review', () => {
     // A reading from REVIEW_FROM on with no manifest can't skip the review.
     expect(reviewProblems([{ ...p, requirements_checked: REVIEW_FROM }], []).join()).toContain('no reading manifest')
     expect(reviewProblems([{ ...p, requirements_checked: '2026-11-01' }], [])).toEqual([])
+    expect(reviewProblems([{ ...p, requirements_checked: REVIEW_FROM }], [{ id: 'p', read_on: '2026-11-23' }]).join()).toContain('no reading manifest')
   })
 })
 
