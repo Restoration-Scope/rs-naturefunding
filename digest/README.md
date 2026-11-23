@@ -12,6 +12,7 @@ It runs as its own Cloudflare Worker on its own hostname, so the site stays stat
 - **The daily run** (cron, 08:00 UTC) picks subscribers whose last email is 7+ days old, builds each one's digest from changes after the last one it covered (`src/digest.ts`), drops calls that have since closed (deadline in the funder's time zone), and sends one email per subscriber, so one refused address doesn't hold back the rest. At most `DAILY_DIGEST_LIMIT` (75) a UTC day across all runs; with the 20 confirmation emails that stays inside Resend's free 100 a day and 3,000 a month, and a large list spreads over the week.
 - **Never twice.** The day's sends are claimed in D1 before any goes to Resend, each with an idempotency key per subscriber and day, and a claim is undone only when Resend certainly sent nothing (a 4xx; a 429 stops the run and gives the rest back). A timeout or 5xx keeps the claim: that subscriber may miss one digest but never gets two. The next digest starts from the bundle's newest commit (`sent_through`), not the send time, so a change deployed after a send still goes out.
 - **Unsubscribe.** Every digest carries `List-Unsubscribe` and `List-Unsubscribe-Post` (RFC 8058), so mail apps unsubscribe in one click; the link in the email opens a one-button page. Unsubscribing deletes the row.
+- **Bounces and spam complaints.** Resend calls `/resend/webhook` (`src/webhook.ts`, Svix-signed) on `email.bounced` and `email.complained`; the address is deleted, as an unsubscribe would. A transient bounce keeps it.
 - **Past issues** on the site (`/digest/` and `/digest/<date>/`): one per week, Monday 08:00 UTC to the next, for someone who picked no country or project type. `scripts/issues.ts` builds them at site build time with the same `buildDigest`, each with the programmes as they stood at that week's last commit (`programmesAt`), so a call that closed since shows as it was.
 - **Sending is live** (`DIGEST_SENDING: "live"`, Bernat's OK 2026-11-16). `"off"` makes the daily run only count who would get an email. A subscriber's first email covers what changed since they confirmed. Every email ends with the sender's postal address (`POSTAL_ADDRESS` in `src/email.ts`).
 - **Redeployed from CI** after every push to main (`.github/workflows/deploy.yml`, full git history), so each digest carries the latest calls.
@@ -48,7 +49,7 @@ Done 2026-11-02 from Bernat's Mac (wrangler signed in as bernatfortet@gmail.com)
 2. D1 `naturefunding-digest` (id in `wrangler.jsonc`), with `schema.sql` applied `--remote`.
    Columns added since: `currency` (2026-11-06), with `bunx wrangler d1 execute naturefunding-digest --config digest/wrangler.jsonc --remote --command "ALTER TABLE subscribers ADD COLUMN currency TEXT NOT NULL DEFAULT ''"`, run before deploying the Worker that reads it.
 3. `bun digest/scripts/build.ts && bunx wrangler deploy --config digest/wrangler.jsonc`.
-4. `bun digest/scripts/setup-secrets.ts`: `RESEND_API_KEY` (a Sending access key for naturefunding.org only) and `LIST_SECRET`, both kept in Keychain and set through stdin.
+4. `bun digest/scripts/setup-secrets.ts`: `RESEND_API_KEY` (a Sending access key for naturefunding.org only), `LIST_SECRET` and `RESEND_WEBHOOK_SECRET` (added 2026-11-21, with Resend's webhook to `/resend/webhook`), all kept in Keychain and set through stdin.
 5. `DIGEST_LIVE` in `src/lib/site.ts` shows the form on built pages.
 
 ## Files
@@ -60,3 +61,4 @@ Done 2026-11-02 from Bernat's Mac (wrangler signed in as bernatfortet@gmail.com)
 - `src/issues.ts`, `scripts/issues.ts`, `../src/components/DigestIssue.astro`: the past issues on the site.
 - `src/consent.ts`: the consent words by version; the row keeps the version.
 - `src/resend.ts`, `src/token.ts`: Resend's HTTP API and the link tokens.
+- `src/webhook.ts`: Resend's bounce and spam-complaint webhook.
