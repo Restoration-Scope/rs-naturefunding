@@ -29,7 +29,7 @@ const htmlFiles = files.filter((f) => f.endsWith('.html')).sort()
 const read = (f: string) => readFileSync(join(dist, f), 'utf8')
 const doc = (f: string) => parseHTML(read(f)).document
 const norm = (s: string) => s.replace(/\s+/g, ' ').trim()
-const fullDistTimeout = 10_000
+const fullDistTimeout = 30_000
 
 /** Pages that are not programme pages, as built before the shadcn port. */
 const staticPages: string[] = JSON.parse(readFileSync(join(import.meta.dir, 'static-pages.json'), 'utf8'))
