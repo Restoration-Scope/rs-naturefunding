@@ -8,10 +8,10 @@
   "summary": "Native seed packages and US$500-2,500 micro grants for community habitat restoration, land conversion and pollinator meadow projects that have a defined maintenance plan.",
   "approaches": ["community_conservation", "grasslands", "sustainable_land_use"],
   "applicant_types": ["ngo", "community_group", "government"],
-  "geography": null,
+  "geography": { "scope": "countries", "countries": ["US"] },
   "access": "direct",
   "window": "fixed",
-  "amount": { "currency": "USD", "min": 500, "max": 2500, "note": "Micro grant tier" },
+  "amount": { "currency": "USD", "min": 500, "max": 2500, "note": "Micro Grant" },
   "co_finance_required": null,
   "reporting": "A final report with photos of the completed project, a brief outcomes summary and a basic accounting of funds used is required; a midpoint update is encouraged.",
   "eligibility": [
@@ -51,7 +51,6 @@
       "status": "upcoming",
       "opens": null,
       "deadline": null,
-      "expected": "February-March 2027",
       "evidence": {
         "status": {
           "source_url": "https://nativefloraseeds.org/pages/nfs/grantsprogram",
@@ -59,13 +58,20 @@
           "checked_at": "2026-11-15",
           "method": "page"
         }
-      }
+      },
+      "expected": "February-March 2027"
     }
   ],
   "evidence": {
     "applicant_types": {
       "source_url": "https://nativefloraseeds.org/pages/nfs/grantsprogram",
       "quote": "Nonprofits and community organizations Schools and educational institutions Municipalities and public land managers",
+      "checked_at": "2026-11-23",
+      "method": "page"
+    },
+    "geography": {
+      "source_url": "https://nativefloraseeds.org/pages/nfs/grantsprogram",
+      "quote": "across the USA",
       "checked_at": "2026-11-23",
       "method": "page"
     },
@@ -83,8 +89,8 @@
     },
     "amount": {
       "source_url": "https://nativefloraseeds.org/pages/nfs/grantsprogram",
-      "quote": "Micro Grant Reimbursement or direct award for project materials, site prep, or community engagement. $500-$2,500",
-      "checked_at": "2026-11-15",
+      "quote": "Micro Grant $500-$2,500 Reimbursement or direct award for project materials, site prep, or community engagement.",
+      "checked_at": "2026-11-23",
       "method": "page"
     },
     "reporting": {
