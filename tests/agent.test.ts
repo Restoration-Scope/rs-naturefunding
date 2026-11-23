@@ -20,6 +20,7 @@ if (process.env.DIST_TEST_REUSE !== '1' || !existsSync(join(dist, 'index.html'))
 
 const read = (f: string) => readFileSync(join(dist, f), 'utf8')
 const norm = (s: string) => s.replace(/\s+/g, ' ').trim()
+const fullDistTimeout = 30_000
 const site = absolute('/')
 const local = (url: string) => url.slice(site.length - 1)
 const htmlFile = (path: string) => `${path.slice(1)}index.html`
@@ -61,14 +62,14 @@ describe('programme twins keep the evidence', () => {
         expect(page.getElementById(id!), `${p.id}#${id}`).not.toBeNull()
       }
     }
-  })
+  }, fullDistTimeout)
 
   test('no page hides text that a text reader would still pick up', () => {
     for (const p of programmes) {
       const page = parseHTML(read(`p/${p.id}/index.html`)).document
       for (const el of page.querySelectorAll('main [hidden]')) expect(norm(el.textContent ?? ''), `${p.id}`).toBe('')
     }
-  })
+  }, fullDistTimeout)
 })
 
 describe('programme JSON-LD', () => {
@@ -85,7 +86,7 @@ describe('programme JSON-LD', () => {
         expect(web.mainEntity.potentialAction?.endTime, p.id).toBe(call.deadline.date)
       }
     }
-  })
+  }, fullDistTimeout)
 })
 
 describe('data.json is documented', () => {

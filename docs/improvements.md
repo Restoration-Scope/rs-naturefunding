@@ -2,6 +2,7 @@
 
 What a visitor to naturefunding.org can see or do that they couldn't before, newest first. One line per merged change, added in the same PR (AGENTS.md). The naturefunding.org LinkedIn Page drafts its update posts from this list. Emails count once `DIGEST_SENDING` is `live`.
 
+- 2026-11-23 · Three more open funding programmes appear in the finder: South Cambridgeshire Nature Recovery Grant, Gloucestershire Nature Recovery Fund and Paddy Pallin Landscape Restoration Grants; 10 listed programmes show their newly opened rounds · https://naturefunding.org/p/south-cambs-nature-recovery-grant/ · #TBD
 - 2026-11-22 · GYCAF Microgrants 2026 is listed: up to $1,000 for youth-led groups' nature and ocean projects, open until 31 December 2026 · https://naturefunding.org/p/gycaf-microgrants/ · #944
 - 2026-11-20 · Every page names its builder beside the site name, "by Restoration Scope", linking to Restoration Scope's page about this site; the footer credit links there too · https://naturefunding.org/ · #652
 - 2026-11-20 · 43 more programmes show Before you apply (Whitley Award, Waterloo Foundation tropical rainforests, Kraków nature protection, Zeeland SKNL and more), each fact in the funder's words and checked by a second reader · https://naturefunding.org/p/waters-for-georgia/#before-title · #866
