@@ -15,6 +15,9 @@
   "co_finance_required": null,
   "reporting": null,
   "effort": { "steps": ["Online application"] },
+  "eligibility": [
+    { "rule": "Has not started the project before the grant notice is received", "kind": "project" }
+  ],
   "documents": [
     "Project description and justification",
     "Photos of the current condition of the site",
@@ -32,7 +35,6 @@
       "status": "closed",
       "opens": null,
       "deadline": null,
-      "recurring": "Application deadline 30 June each year.",
       "evidence": {
         "status": {
           "source_url": "https://www.havelland.de/umwelt-landwirtschaft/umwelt/massnahmen-naturschutz/landschaftspflege/",
@@ -46,7 +48,8 @@
           "checked_at": "2026-11-23",
           "method": "page"
         }
-      }
+      },
+      "recurring": "Application deadline 30 June each year."
     }
   ],
   "evidence": {
@@ -82,6 +85,14 @@
         "method": "page"
       }
     ],
+    "eligibility": [
+      {
+        "source_url": "https://www.havelland.de/umwelt-landwirtschaft/umwelt/massnahmen-naturschutz/landschaftspflege/",
+        "quote": "Das Projekt darf erst nach Erhalt des Zuwendungsbescheids gestartet werden.",
+        "checked_at": "2026-11-23",
+        "method": "page"
+      }
+    ],
     "documents": [
       {
         "source_url": "https://www.havelland.de/umwelt-landwirtschaft/umwelt/massnahmen-naturschutz/landschaftspflege/",
@@ -101,18 +112,7 @@
         "checked_at": "2026-11-23",
         "method": "page"
       }
-    ],
-    "eligibility": [
-      {
-        "source_url": "https://www.havelland.de/umwelt-landwirtschaft/umwelt/massnahmen-naturschutz/landschaftspflege/",
-        "quote": "Das Projekt darf erst nach Erhalt des Zuwendungsbescheids gestartet werden.",
-        "checked_at": "2026-11-23",
-        "method": "page"
-      }
     ]
   },
-  "checked_at": "2026-11-23",
-  "eligibility": [
-    { "rule": "Has not started the project before the grant notice is received", "kind": "project" }
-  ]
+  "checked_at": "2026-11-23"
 }
