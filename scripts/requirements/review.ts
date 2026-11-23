@@ -125,15 +125,20 @@ export const hasItems = (p: P) => ITEM_FIELDS.some((f) => p[f] !== null && p[f] 
 
 // ---- brief ----
 
-export type Canary = { id: string; field: 'eligibility'; index: number; text: string; quote: string; source_url: string }
+export type Canary = { id: string; field: 'eligibility'; index: number; text: string; kind: string; quote: string; source_url: string }
 
 /** A rule its quote doesn't state, on a real quote: only a reader who checks the quote catches it. */
 export function canaryFor(p: P, seed: number): Canary | null {
   const quotes: Ev[] = (p.evidence?.eligibility ?? []).filter((e: Ev) => !/\b(year|years|income|revenue|turnover|budget)\b/i.test(e.quote))
   if (!quotes.length) return null
   const e = quotes[seed % quotes.length]!
-  const texts = ['Operating for at least 7 years', 'Annual income of at least 250,000 in the local currency', 'Has completed 3 projects of the same kind']
-  return { id: p.id, field: 'eligibility', index: (p.eligibility ?? []).length, text: texts[seed % texts.length]!, quote: e.quote, source_url: e.source_url }
+  const texts = [
+    ['Operating for at least 7 years', 'track_record'],
+    ['Annual income of at least 250,000 in the local currency', 'finances'],
+    ['Has completed 3 projects of the same kind', 'track_record'],
+  ] as const
+  const [text, kind] = texts[seed % texts.length]!
+  return { id: p.id, field: 'eligibility', index: (p.eligibility ?? []).length, text, kind, quote: e.quote, source_url: e.source_url }
 }
 
 export function brief(programmes: P[], opts: { stamp: string; dir: string; standards: string; worktree: string }) {
@@ -183,7 +188,7 @@ export function brief(programmes: P[], opts: { stamp: string; dir: string; stand
     if (elig.length || c) {
       out.push('Eligibility:')
       for (const x of elig) out.push(`${x.index}. ${x.text} [${p.eligibility[x.index].kind}] (S${x.source}) "${x.quote}"`)
-      if (c) out.push(`${c.index}. ${c.text} [finances] (S${sIndex(c.source_url)}) "${c.quote}"`)
+      if (c) out.push(`${c.index}. ${c.text} [${c.kind}] (S${sIndex(c.source_url)}) "${c.quote}"`)
       out.push('')
     }
     for (const [f, label, quotes] of [['documents', 'Documents', ev.documents], ['effort', 'Effort steps', ev.effort]] as const) {
