@@ -10,6 +10,7 @@ import type { DigestEvent } from './events'
 import { cleanCurrency, cleanPrefs, prefsText, type Approach, type Prefs } from './match'
 import { resendMailer, SendFailed, type Mailer, type Outgoing } from './resend'
 import { addressHash, CONFIRM_TTL_MS, open, seal } from './token'
+import { resendWebhook } from './webhook'
 
 /** The slice of D1 this Worker uses. */
 export type D1 = {
@@ -28,6 +29,8 @@ export type Env = {
   SIGNUP_LIMIT?: RateLimit
   LIST_SECRET: string
   RESEND_API_KEY: string
+  /** Signs Resend's bounce and spam-complaint calls (src/webhook.ts); without it the route answers 503. */
+  RESEND_WEBHOOK_SECRET?: string
   /** naturefunding.org, where the static pages are. */
   SITE_URL: string
   /** This Worker's own origin, for links in emails. */
@@ -73,6 +76,8 @@ const page = (env: Env, path: string) => redirect(`${env.SITE_URL}${path}`)
 export async function handle(request: Request, env: Env, deps: Deps, ctx: Ctx): Promise<Response> {
   const url = new URL(request.url)
   const now = deps.now?.() ?? new Date()
+  // Outside the try below: a failure must answer 5xx so Resend retries, not redirect to the error page.
+  if (url.pathname === '/resend/webhook' && request.method === 'POST') return resendWebhook(request, env, now)
   try {
     if (url.pathname === '/subscribe' && request.method === 'POST') return await subscribe(request, env, deps, ctx, now)
     if (url.pathname === '/confirm') return await confirm(request, url, env, now)
