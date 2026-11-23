@@ -40,7 +40,10 @@ and the review is stamped so `validate` can tell reviewed readings from the rest
 - A reviewer's new quote isn't on its page: apply restores every file.
 - The file changed between brief and apply: apply refuses; brief again.
 - A new quote past its field's cap, a reworded one-value field, or two changes to one: apply refuses, nothing
-  written; a dropped source takes its pooled quotes and, when it held them all, its field's items.
+  written. Each kept document, step and after_award names its quotes (`quotes`); a quote no kept item names, or
+  from a dropped source, goes, and an item whose named quotes all go must be dropped.
+- No programme in the brief can carry a canary: brief refuses.
+- A reviewer of the reading's own model family (from the manifest's `models`): apply refuses.
 - A later hand edit to reviewed items: validate fails until a new review.
 
 ## Proof Checklist
@@ -48,4 +51,5 @@ and the review is stamped so `validate` can tell reviewed readings from the rest
 - [ ] Doctor passes (canary, coverage and gate faults included).
 - [ ] Apply output: canaries caught equals planted; wrong and missed counts recorded.
 - [ ] `git diff data/` shows only the verdicts' edits, new source rows and `review` stamps.
-- [ ] `bun run validate` and `bun run verify-quotes -- <ids…>` pass.
+- [ ] `bun run validate` passes, and apply's check of the review's new quotes passed. Older misses from
+  `verify-quotes -- <ids…>` are classed (page changed, refused, selector) and listed, not fixed by the review.

@@ -60,7 +60,8 @@ edited.eligibility[0].rule = `${edited.eligibility[0].rule.slice(0, 100)} (edite
 expect('reading edited after its review', !validate(edited, { ...manifest, review }).ok)
 
 const { key } = brief([base], { stamp: 'doctor', dir: tmp, standards: 'standards: doctor', worktree: '.' })
-const sound: Verdict[] = itemsOf(base).map((it) => ({ id, field: it.field, index: it.index, text: it.text, verdict: 'sound', category: 'ok', action: 'keep', reason: 'doctor' }))
+const pooledQuotes = (f: string) => (['documents', 'effort', 'after_award'].includes(f) ? { quotes: (base.evidence?.[f] ?? []).map((_: unknown, i: number) => i) } : {})
+const sound: Verdict[] = itemsOf(base).map((it) => ({ id, field: it.field, index: it.index, text: it.text, verdict: 'sound', category: 'ok', action: 'keep', reason: 'doctor', ...pooledQuotes(it.field) }))
 const c = key.canaries[0]!
 const caught: Verdict = { id, field: 'eligibility', index: c.index, text: c.text, verdict: 'wrong', category: 'says_more_than_quote', action: 'drop', reason: 'doctor' }
 expect('complete review with its canary caught applies', reviewGaps([base], key, [...sound, caught]).length === 0)

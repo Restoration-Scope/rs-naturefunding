@@ -2,7 +2,7 @@ import { describe, expect, test } from 'bun:test'
 import { readdirSync, readFileSync } from 'node:fs'
 import { join } from 'node:path'
 import { lint, type LintInput } from './lint'
-import { REVIEW_FROM, applyVerdicts, brief, itemsHash, itemsOf, reviewGaps, reviewProblems, verdict, type Verdict } from './review'
+import { REVIEW_FROM, applyVerdicts, brief, family, itemsHash, itemsOf, reviewGaps, reviewProblems, verdict, type Verdict } from './review'
 
 const ev = (url: string, quote: string) => ({ source_url: url, quote, checked_at: '2026-11-24', method: 'page' })
 const CALL = 'https://funder.example.org/call'
@@ -31,8 +31,13 @@ const programme = () => ({
     co_finance: ev(CALL, 'Applicants must match the grant one to one.'),
   },
 })
-const sound = (p: ReturnType<typeof programme>): Verdict[] =>
-  itemsOf(p).map((it) => ({ id: p.id, field: it.field, index: it.index, text: it.text, verdict: 'sound', category: 'ok', action: 'keep', reason: 'stated' }))
+const POOLED = ['documents', 'effort', 'after_award']
+// A sound verdict on a pooled item names every quote of its field as stating it, unless a test says otherwise.
+const sound = (p: { id: string; evidence: Record<string, unknown> }): Verdict[] =>
+  itemsOf(p).map((it) => ({
+    id: p.id, field: it.field, index: it.index, text: it.text, verdict: 'sound', category: 'ok', action: 'keep', reason: 'stated',
+    ...(POOLED.includes(it.field) ? { quotes: ((p.evidence[it.field] as unknown[] | undefined) ?? []).map((_, i) => i) } : {}),
+  }))
 const set = (vs: Verdict[], field: string, index: number, patch: Partial<Verdict>) => vs.map((v) => (v.field === field && v.index === index ? { ...v, ...patch } : v))
 
 describe('review', () => {
@@ -49,10 +54,17 @@ describe('review', () => {
     const b = brief([p], { stamp: 's', dir: '.cache/review/s', standards: 'standards: t.1\n# Review standards', worktree: '.' })
     const c = b.key.canaries[0]!
     expect(c.index).toBe(3)
-    expect(p.evidence.eligibility.map((e) => e.quote)).toContain(c.quote)
+    expect(p.evidence.eligibility.map((e) => e.quote)).toContain(c.quote!)
     expect(b.text).toContain(`3. ${c.text}`)
     expect(b.key.standards).toBe('t.1')
     expect(p.eligibility).toHaveLength(3)
+    // A quote with a number never carries a canary, in any language: the planted rule might be true.
+    const numbered = { ...p, evidence: { ...p.evidence, eligibility: [ev(CALL, 'Mindestens 3 Jahre tätig.')] }, eligibility: [{ rule: 'Operating for at least 3 years', kind: 'track_record' }] }
+    const d = brief([numbered], { stamp: 's', dir: 'd', standards: 'standards: t.1', worktree: '.' })
+    expect(d.key.canaries[0]).toMatchObject({ field: 'documents', index: 2 })
+    expect(d.text).toContain(`2. ${d.key.canaries[0]!.text}`)
+    // A brief no programme can test the reviewer on is refused.
+    expect(() => brief([{ ...numbered, documents: undefined }], { stamp: 's', dir: 'd', standards: 'standards: t.1', worktree: '.' })).toThrow('canary')
   })
 
   test('a review applies only when every item has its verdict and every canary is caught', () => {
@@ -108,6 +120,19 @@ describe('review', () => {
     let vs = set(sound(docsElsewhere), 'source', 1, { verdict: 'wrong', category: 'wrong_round_or_programme', action: 'drop' })
     vs = set(vs, 'eligibility', 2, { verdict: 'wrong', category: 'wrong_round_or_programme', action: 'drop' })
     expect(reviewGaps([docsElsewhere], k2, [...vs, canary]).join()).toContain('documents 0: its source was dropped')
+    // A named quote that doesn't exist is a gap.
+    expect(reviewGaps([p], key, [...set(sound(p), 'documents', 1, { quotes: [4] }), canary]).join()).toContain('no quote q4')
+    // A kept document or step names the quotes that state it.
+    expect(reviewGaps([p], key, [...set(sound(p), 'documents', 0, { quotes: undefined }), canary]).join()).toContain('name the quotes')
+    // A kept item whose named quotes all come from a dropped source goes too, though the field keeps other quotes.
+    const split = { ...p, evidence: { ...p.evidence, documents: [ev(CALL, 'Attach your registration certificate.'), ev(OTHER, 'Use the RFP application form.')] } }
+    const k3 = { ...key, hashes: { p: itemsHash(split) } }
+    let sv = set(set(sound(split), 'source', 1, { verdict: 'wrong', category: 'wrong_round_or_programme', action: 'drop' }), 'eligibility', 2, { verdict: 'wrong', category: 'wrong_round_or_programme', action: 'drop' })
+    sv = set(set(sv, 'documents', 0, { quotes: [0] }), 'documents', 1, { quotes: [1] })
+    expect(reviewGaps([split], k3, [...sv, canary]).join()).toContain('documents 1: its source was dropped')
+    expect(reviewGaps([split], k3, [...set(sv, 'documents', 1, { verdict: 'wrong', category: 'wrong_round_or_programme', action: 'drop' }), canary])).toEqual([])
+    // The reviewer's family is told apart from the reading's models.
+    expect([family('cursor:gpt-5.6-luna-high'), family('claude-opus-5-5'), family('gemini-4-neon')]).toEqual(['openai', 'anthropic', 'google'])
     // One-value fields: no rewording, one change each, typed values.
     expect(reviewGaps([p], key, [...set(sound(p), 'co_finance', 0, { verdict: 'wrong', category: 'cofinance_wrong', action: 'reword', new: { text: '20% match' } }), canary]).join()).toContain('not reworded')
     const add = (value: unknown): Verdict => ({ id: 'p', field: 'after_award', index: null, text: 'duty', verdict: 'missed', category: 'missed_fact', action: 'add', reason: 'stated', new: { value, quote: 'Grantees report yearly.', source_url: CALL } })
@@ -120,13 +145,20 @@ describe('review', () => {
     const mixed = { ...p, evidence: { ...p.evidence, documents: [ev(CALL, 'Attach your registration certificate.'), ev(OTHER, 'Attach the RFP form.')] } }
     const vs = set(sound(mixed), 'source', 1, { verdict: 'wrong', category: 'wrong_round_or_programme', action: 'drop' })
     expect(applyVerdicts(mixed, vs, '2026-11-24').evidence.documents.map((e: { source_url: string }) => e.source_url)).toEqual([CALL])
-    // A dropped document takes the quote that names it, so a new one fits under the cap.
-    const four = { ...p, documents: ['Checklist', 'Project narrative, maximum 2 pages', 'Project area map', 'Itemized budget'], evidence: { ...p.evidence, documents: [ev(CALL, 'Grant checklist (required)'), ev(CALL, 'Narrative (2 pages maximum)'), ev(CALL, 'include a map of the project area'), ev(CALL, 'Include an itemized budget.')] } }
+    // A pooled quote stays only when a kept item names it, in any language, so a new one fits under the cap.
+    const four = { ...p, documents: ['Checklist', 'Project narrative, maximum 2 pages', 'Project area map', 'Itemized budget'], evidence: { ...p.evidence, documents: [ev(CALL, 'Grant checklist (required)'), ev(CALL, 'Projektbeschreibung (höchstens 2 Seiten)'), ev(CALL, 'include a map of the project area'), ev(CALL, 'Include an itemized budget.')] } }
     let ds = set(set(sound(four), 'documents', 1, { verdict: 'wrong', category: 'document_is_application', action: 'drop' }), 'documents', 2, { verdict: 'wrong', category: 'document_is_application', action: 'drop' })
+    ds = set(set(ds, 'documents', 0, { quotes: [0] }), 'documents', 3, { quotes: [3] })
     ds = [...ds, { id: 'p', field: 'documents', index: null, text: 'Letter of support', verdict: 'missed', category: 'missed_document', action: 'add', reason: 'listed', new: { text: 'Letter of support', quote: 'Include a letter of support.', source_url: CALL } }]
     const pruned = applyVerdicts(four, ds, '2026-11-24')
     expect(pruned.documents).toEqual(['Checklist', 'Itemized budget', 'Letter of support'])
     expect(pruned.evidence.documents.map((e: { quote: string }) => e.quote)).toEqual(['Grant checklist (required)', 'Include an itemized budget.', 'Include a letter of support.'])
+    // A quote a kept item still names stays, so the cap refuses the new one.
+    expect(() => applyVerdicts(four, set(ds, 'documents', 0, { quotes: [0, 1, 2] }), '2026-11-24')).toThrow('the most it takes')
+    // after_award: a replace keeps the old quotes it names beside the new one.
+    const duties = { ...p, after_award: { reports: 'yearly' }, evidence: { ...p.evidence, after_award: [ev(CALL, 'Grantees report every year.'), ev(CALL, 'Accounts are audited.')] } }
+    const aa = set(sound(duties), 'after_award', 0, { verdict: 'wrong', category: 'missed_fact', action: 'replace', quotes: [0, 1], new: { value: { reports: 'yearly', audit: true, site_visit: true }, quote: 'We visit every site.', source_url: CALL } })
+    expect(applyVerdicts(duties, aa, '2026-11-24').evidence.after_award.map((e: { quote: string }) => e.quote)).toEqual(['Grantees report every year.', 'Accounts are audited.', 'We visit every site.'])
     // A new quote past the cap is refused, not silently left out.
     const full = { ...p, evidence: { ...p.evidence, documents: [ev(CALL, 'One.'), ev(CALL, 'Two.'), ev(CALL, 'Three.')] } }
     const replace = set(sound(full), 'documents', 0, { verdict: 'wrong', category: 'other', action: 'replace', new: { text: 'Charity number', quote: 'Give your charity number.', source_url: CALL } })
@@ -155,6 +187,9 @@ describe('review', () => {
     // The day a quote was last checked is not part of what was reviewed.
     const rechecked = { ...p, evidence: { ...p.evidence, eligibility: p.evidence.eligibility.map((e) => ({ ...e, checked_at: '2027-01-01' })) } }
     expect(reviewProblems([rechecked], [{ id: 'p', read_on: REVIEW_FROM, review }])).toEqual([])
+    // A reading from REVIEW_FROM on with no manifest can't skip the review.
+    expect(reviewProblems([{ ...p, requirements_checked: REVIEW_FROM }], []).join()).toContain('no reading manifest')
+    expect(reviewProblems([{ ...p, requirements_checked: '2026-11-01' }], [])).toEqual([])
   })
 })
 

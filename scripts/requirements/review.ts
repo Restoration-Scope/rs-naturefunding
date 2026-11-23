@@ -34,6 +34,8 @@ export const CATEGORIES = [
   'missed_hard_rule', 'missed_document', 'missed_step', 'missed_fact', 'other',
 ] as const
 const LIST_FIELDS = ['eligibility', 'documents', 'effort'] as const
+/** Fields whose quotes are pooled, not one per item: each item names the quotes that state it. */
+const POOLED = ['documents', 'effort', 'after_award'] as const
 const ONE_FIELDS = ['co_finance_required', 'co_finance', 'consortium_required', 'after_award'] as const
 export const ITEM_FIELDS = [...LIST_FIELDS, ...ONE_FIELDS] as const
 type ItemField = (typeof ITEM_FIELDS)[number]
@@ -50,6 +52,8 @@ export const verdict = z.object({
   category: z.enum(CATEGORIES),
   action: z.enum(['keep', 'drop', 'reword', 'replace', 'add']),
   reason: z.string(),
+  /** A document, step or after_award that stays: the numbers (q0, q1… in the brief) of its field's quotes that state it. */
+  quotes: z.array(z.number().int().min(0)).optional(),
   /** reword: text (and kind). replace or add: text, or value for a one-value field, with a verbatim quote and its source_url. due: an effort step's date, or null. */
   new: z
     .object({ text: z.string().optional(), kind: eligibilityKind.optional(), value: z.unknown().optional(), due: z.iso.date().nullable().optional(), quote: z.string().optional(), source_url: z.url().optional() })
@@ -69,6 +73,9 @@ export function verdictProblem(v: Verdict): string | null {
   if (one && v.action === 'reword') return `${v.field} is replaced with new.value, not reworded`
   if (one && (v.action === 'replace' || v.action === 'add') && n.value === undefined) return `${v.action} on ${v.field} needs new.value`
   if (n.due !== undefined && v.field !== 'effort') return 'new.due is for effort steps'
+  const pooled = (POOLED as readonly string[]).includes(v.field)
+  if (v.quotes?.length && !pooled) return 'quotes is for documents, effort and after_award'
+  if (pooled && (v.action === 'keep' || v.action === 'reword') && !v.quotes?.length) return `name the quotes (q0, q1…) that state this ${v.field === 'effort' ? 'step' : 'item'} in quotes`
   if (v.action === 'reword' && !n.text && n.due === undefined) return 'reword needs new.text'
   if ((v.action === 'replace' || v.action === 'add') && (!n.quote || !n.source_url)) return `${v.action} needs new.quote and new.source_url`
   if ((v.action === 'replace' || v.action === 'add') && n.text === undefined && n.value === undefined) return `${v.action} needs new.text or new.value`
@@ -115,16 +122,6 @@ export function itemsHash(p: P): string {
   return createHash('sha256').update(JSON.stringify(picked)).digest('hex').slice(0, 16)
 }
 
-/** Whether a pooled quote names an item: most of the item's words are in it. */
-const words = (s: string) => comparable(s).match(/[\p{L}\p{N}]{3,}/gu)?.map((w) => w.replace(/s$/, '')) ?? []
-export const names = (item: string, quote: string) => {
-  const w = words(item)
-  const q = new Set(words(quote))
-  return w.length > 0 && w.filter((x) => q.has(x)).length / w.length >= 0.5
-}
-
-/** Fields whose quotes are pooled, not one per item: a dropped source takes its rows from these. */
-const POOLED = ['documents', 'effort', 'after_award'] as const
 const droppedUrls = (p: P, verdicts: Verdict[]) => {
   const sources = itemsOf(p).filter((x) => x.field === 'source')
   return new Set(verdicts.filter((v) => v.id === p.id && v.field === 'source' && v.action === 'drop').map((v) => sources[v.index!]?.text))
@@ -134,20 +131,24 @@ export const hasItems = (p: P) => ITEM_FIELDS.some((f) => p[f] !== null && p[f] 
 
 // ---- brief ----
 
-export type Canary = { id: string; field: 'eligibility'; index: number; text: string; kind: string; quote: string; source_url: string }
+export type Canary = { id: string; field: 'eligibility' | 'documents'; index: number; text: string; kind?: string; quote?: string; source_url?: string }
 
-/** A rule its quote doesn't state, on a real quote: only a reader who checks the quote catches it. */
+/** A rule its quote doesn't state, on a real quote (one with no number, in any language), or a document no quote
+ * names: only a reader who checks the quotes catches it. */
 export function canaryFor(p: P, seed: number): Canary | null {
-  const quotes: Ev[] = (p.evidence?.eligibility ?? []).filter((e: Ev) => !/\b(year|years|income|revenue|turnover|budget)\b/i.test(e.quote))
-  if (!quotes.length) return null
-  const e = quotes[seed % quotes.length]!
-  const texts = [
-    ['Operating for at least 7 years', 'track_record'],
-    ['Annual income of at least 250,000 in the local currency', 'finances'],
-    ['Has completed 3 projects of the same kind', 'track_record'],
-  ] as const
-  const [text, kind] = texts[seed % texts.length]!
-  return { id: p.id, field: 'eligibility', index: (p.eligibility ?? []).length, text, kind, quote: e.quote, source_url: e.source_url }
+  const quotes: Ev[] = (p.evidence?.eligibility ?? []).filter((e: Ev) => !/\d|\b(years?|income|revenue|turnover|budget)\b/i.test(e.quote))
+  if (quotes.length) {
+    const e = quotes[seed % quotes.length]!
+    const texts = [
+      ['Operating for at least 7 years', 'track_record'],
+      ['Annual income of at least 250,000 in the local currency', 'finances'],
+      ['Has completed 3 projects of the same kind', 'track_record'],
+    ] as const
+    const [text, kind] = texts[seed % texts.length]!
+    return { id: p.id, field: 'eligibility', index: (p.eligibility ?? []).length, text, kind, quote: e.quote, source_url: e.source_url }
+  }
+  if (p.documents?.length) return { id: p.id, field: 'documents', index: p.documents.length, text: ['Letters of reference from three past funders', 'Audited accounts for the last five years'][seed % 2]! }
+  return null
 }
 
 export function brief(programmes: P[], opts: { stamp: string; dir: string; standards: string; worktree: string }) {
@@ -158,6 +159,7 @@ export function brief(programmes: P[], opts: { stamp: string; dir: string; stand
     const c = canaryFor(p, i + opts.stamp.length)
     if (c) canaries.push(c)
   })
+  if (programmes.length && !canaries.length) throw new Error('no programme here can carry a canary (a rule on a quote with no number, or a document): add one that can, so the reviewer is tested')
   const verdicts = join(opts.dir, 'verdicts.jsonl')
   const out: string[] = [
     `# Review ${opts.stamp}`,
@@ -169,13 +171,14 @@ export function brief(programmes: P[], opts: { stamp: string; dir: string; stand
     'Write one JSON object per line to the verdicts file, one for every numbered item and every source (S0, S1…), plus one per fact the extraction missed:',
     '',
     '```',
-    '{"id":"…","field":"source|eligibility|documents|effort|co_finance_required|co_finance|consortium_required|after_award","index":0,"text":"the item as written","verdict":"sound|wrong|missed","category":"ok|…","action":"keep|drop|reword|replace|add","reason":"≤25 words","new":{"text":"…","kind":"legal","value":…,"quote":"verbatim","source_url":"https://…"}}',
+    '{"id":"…","field":"source|eligibility|documents|effort|co_finance_required|co_finance|consortium_required|after_award","index":0,"text":"the item as written","verdict":"sound|wrong|missed","category":"ok|…","action":"keep|drop|reword|replace|add","reason":"≤25 words","quotes":[0],"new":{"text":"…","kind":"legal","value":…,"quote":"verbatim","source_url":"https://…"}}',
     '```',
     '',
     '- sound → keep, category ok. wrong → drop, reword (new.text, new.kind) or replace (new text or value, quote and source_url). missed → add, index null, with new text or value, quote and source_url.',
     '- A source that is not this programme or this round: wrong, drop, category wrong_round_or_programme; then every item it supports is wrong too.',
     '- co_finance_required and consortium_required values are true or false; co_finance and after_award values are objects as data/README.md describes. These one-value fields are replaced with new.value (every duty in one object), never reworded.',
     '- A wrong effort date: reword or replace the step with new.due (YYYY-MM-DD, or null when no quote states it).',
+    '- Documents, effort steps and after_award are stated by a pool of quotes (q0, q1…). For each one you keep or reword, list in quotes the numbers of the quotes that state it (a step: its date too); for a replace, the old quotes that still state it. Quotes no kept item names are removed.',
     '- New quotes are copied verbatim from a page our quote checker can fetch (not SharePoint, not ZIPs), at most 400 characters.',
     '- Code leads below are hints from scripts/requirements/lint.ts, not verdicts.',
     '',
@@ -194,20 +197,22 @@ export function brief(programmes: P[], opts: { stamp: string; dir: string; stand
     if (leads.length) out.push('Code leads:', ...leads.map((l) => `- ${l.field} ${l.index}: ${l.why}`), '')
     out.push('Sources (is each this programme and the current round?):', ...sources.map((s) => `- S${s.index} ${s.text}`), '')
     const elig = items.filter((x) => x.field === 'eligibility')
-    if (elig.length || c) {
+    if (elig.length || c?.field === 'eligibility') {
       out.push('Eligibility:')
       for (const x of elig) out.push(`${x.index}. ${x.text} [${p.eligibility[x.index].kind}] (S${x.source}) "${x.quote}"`)
-      if (c) out.push(`${c.index}. ${c.text} [${c.kind}] (S${sIndex(c.source_url)}) "${c.quote}"`)
+      if (c?.field === 'eligibility') out.push(`${c.index}. ${c.text} [${c.kind}] (S${sIndex(c.source_url)}) "${c.quote}"`)
       out.push('')
     }
-    for (const [f, label, quotes] of [['documents', 'Documents', ev.documents], ['effort', 'Effort steps', ev.effort]] as const) {
+    const qLines = (quotes: Ev[] | undefined) => (quotes ?? []).map((e: Ev, i: number) => `   q${i} (S${sIndex(e.source_url)}): "${e.quote}"`)
+    for (const [f, label] of [['documents', 'Documents'], ['effort', 'Effort steps']] as const) {
       const list = items.filter((x) => x.field === f)
       if (!list.length) continue
       out.push(`${label}:`, ...list.map((x) => `${x.index}. ${x.text}${f === 'effort' && p.effort?.due ? ` (due ${p.effort.due[x.index] ?? 'none'})` : ''}`))
-      out.push(...(quotes ?? []).map((e: Ev) => `   quote (S${sIndex(e.source_url)}): "${e.quote}"`), '')
+      if (f === 'documents' && c?.field === 'documents') out.push(`${c.index}. ${c.text}`)
+      out.push(...qLines(ev[f]), '')
     }
     for (const x of items.filter((y) => (ONE_FIELDS as readonly string[]).includes(y.field)))
-      out.push(`${x.field} 0: ${x.text} (S${x.source}) "${x.quote}"${x.field === 'after_award' ? (ev.after_award ?? []).slice(1).map((e: Ev) => ` + (S${sIndex(e.source_url)}) "${e.quote}"`).join('') : ''}`)
+      out.push(...(x.field === 'after_award' ? [`after_award 0: ${x.text}`, ...qLines(ev.after_award)] : [`${x.field} 0: ${x.text} (S${x.source}) "${x.quote}"`]))
     out.push('')
   }
   const key = { stamp: opts.stamp, standards: standardsVersion(opts.standards), canaries, hashes: Object.fromEntries(programmes.map((p) => [p.id, itemsHash(p)])) }
@@ -222,8 +227,8 @@ export type Key = ReturnType<typeof brief>['key']
 export function reviewGaps(programmes: P[], key: Key, verdicts: Verdict[]): string[] {
   const gaps: string[] = []
   for (const c of key.canaries) {
-    const v = verdicts.find((x) => x.id === c.id && x.field === 'eligibility' && x.index === c.index)
-    if (!v || v.verdict !== 'wrong' || comparable(v.text).slice(0, 30) !== comparable(c.text).slice(0, 30)) gaps.push(`${c.id}: canary "${c.text}" (eligibility ${c.index}) was not caught: the review is not trusted; brief another reviewer`)
+    const v = verdicts.find((x) => x.id === c.id && x.field === c.field && x.index === c.index)
+    if (!v || v.verdict !== 'wrong' || comparable(v.text).slice(0, 30) !== comparable(c.text).slice(0, 30)) gaps.push(`${c.id}: canary "${c.text}" (${c.field} ${c.index}) was not caught: the review is not trusted; brief another reviewer`)
   }
   for (const v of verdicts) {
     const p = verdictProblem(v)
@@ -240,15 +245,18 @@ export function reviewGaps(programmes: P[], key: Key, verdicts: Verdict[]): stri
       else if (comparable(vs[0]!.text).slice(0, 30) !== comparable(it.text).slice(0, 30)) gaps.push(`${p.id} ${it.field} ${it.index}: the verdict is for "${vs[0]!.text.slice(0, 60)}", the item is "${it.text.slice(0, 60)}"`)
     }
     for (const v of mine) if (!items.some((it) => it.field === v.field && it.index === v.index)) gaps.push(`${p.id} ${v.field} ${v.index}: no such item`)
-    // Every item a dropped source supports goes too; a pooled field goes when all its quotes do.
+    for (const v of mine) for (const q of v.quotes ?? []) if (!p.evidence?.[v.field]?.[q]) gaps.push(`${p.id} ${v.field} ${v.index}: no quote q${q}`)
+    // Every item a dropped source states goes too: a rule on its quote, a pooled item whose named quotes all come from it.
     const dropped = droppedUrls(p, verdicts)
     const srcIndex = new Map(items.filter((x) => x.field === 'source').map((x) => [x.text, x.index]))
-    const gone = (it: Item) =>
-      (it.source !== null && [...dropped].some((u) => srcIndex.get(u) === it.source)) ||
-      ((POOLED as readonly string[]).includes(it.field) && (p.evidence?.[it.field] ?? []).length > 0 && p.evidence[it.field].every((e: Ev) => dropped.has(e.source_url)))
-    for (const it of items.filter((x) => x.field !== 'source' && gone(x))) {
-      const v = mine.find((x) => x.field === it.field && x.index === it.index)
-      if (v && !['drop', 'replace'].includes(v.action)) gaps.push(`${p.id} ${it.field} ${it.index}: its source was dropped, but the item is kept`)
+    for (const v of mine.filter((x) => x.action === 'keep' || x.action === 'reword')) {
+      const it = items.find((x) => x.field === v.field && x.index === v.index)
+      if (!it || it.field === 'source') continue
+      const pooled = (POOLED as readonly string[]).includes(it.field)
+      const gone = pooled
+        ? (v.quotes ?? []).length > 0 && v.quotes!.every((q) => dropped.has(p.evidence?.[it.field]?.[q]?.source_url))
+        : it.source !== null && [...dropped].some((u) => srcIndex.get(u) === it.source)
+      if (gone) gaps.push(`${p.id} ${it.field} ${it.index}: its source was dropped, but the item is kept`)
     }
     // A one-value field takes one change; an existing one is replaced, not added to.
     for (const f of ONE_FIELDS) {
@@ -277,9 +285,13 @@ export function applyVerdicts(p0: P, verdicts: Verdict[], today: string): P {
     p.effort.due ??= p.effort.steps.map(() => null)
     p.effort.due[i] = d
   }
-  const dropped = droppedUrls(p0, verdicts)
-  for (const f of POOLED) if (p.evidence[f]) p.evidence[f] = p.evidence[f].filter((e: Ev) => !dropped.has(e.source_url))
   const mine = verdicts.filter((v) => v.id === p.id && v.field !== 'source')
+  // A pooled quote stays only when an item that stays names it and its source stays.
+  const dropped = droppedUrls(p0, verdicts)
+  for (const f of POOLED) {
+    const named = new Set(mine.filter((v) => v.field === f && v.action !== 'drop').flatMap((v) => v.quotes ?? []))
+    if (p.evidence[f]) p.evidence[f] = p.evidence[f].filter((e: Ev, i: number) => named.has(i) && !dropped.has(e.source_url))
+  }
   for (const v of mine.filter((x) => x.action === 'reword' || x.action === 'replace')) {
     const i = v.index!
     if (v.field === 'eligibility') {
@@ -301,14 +313,6 @@ export function applyVerdicts(p0: P, verdicts: Verdict[], today: string): P {
       if (v.new!.due !== undefined) setDue(i, v.new!.due)
       if (v.action === 'replace') addQuote('effort', ev(v), 5)
     } else setOne(p, v.field as (typeof ONE_FIELDS)[number], v.new?.value, v.action === 'replace' ? ev(v) : undefined)
-  }
-  // A dropped document or step takes the pooled quotes that name it and no item that stays.
-  for (const f of ['documents', 'effort'] as const) {
-    const list: string[] = (f === 'effort' ? p.effort?.steps : p[f]) ?? []
-    const gone = new Set(mine.filter((v) => v.field === f && v.action === 'drop').map((v) => v.index!))
-    if (!gone.size || !p.evidence[f]) continue
-    const kept = list.filter((_, i) => !gone.has(i))
-    p.evidence[f] = p.evidence[f].filter((e: Ev) => !([...gone].some((i) => names(list[i]!, e.quote)) && !kept.some((k) => names(k, e.quote))))
   }
   const drops = mine.filter((x) => x.action === 'drop').sort((a, b) => b.index! - a.index!)
   for (const v of drops) {
@@ -365,9 +369,18 @@ function setOne(p: P, f: (typeof ONE_FIELDS)[number], value: unknown, e?: Ev) {
     return
   }
   p[f] = value
-  if (e) p.evidence[f] = f === 'after_award' ? [e] : e
+  // after_award keeps the old quotes its verdict named (already pruned to those) beside the new one.
+  if (e && f === 'after_award') {
+    const list: Ev[] = (p.evidence.after_award ?? []).filter((x: Ev) => comparable(x.quote) !== comparable(e.quote))
+    if (list.length >= 4) throw new Error(`${p.id} after_award: already ${list.length} quotes, the most it takes; the new quote "${e.quote.slice(0, 50)}" can't be kept`)
+    p.evidence.after_award = [...list, e]
+  } else if (e) p.evidence[f] = e
   if (f === 'co_finance_required' && value === false) clearDetails()
 }
+
+/** A model's family; the reviewer must come from another family than every model that read the programme. */
+const FAMILIES: [string, RegExp][] = [['openai', /gpt|openai|codex/], ['anthropic', /claude|opus|sonnet|haiku|fable/], ['google', /gemini/], ['xai', /grok/]]
+export const family = (model: string) => FAMILIES.find(([, r]) => r.test(model.toLowerCase()))?.[0] ?? model.toLowerCase()
 
 export type Review = { on: string; standards: string; reviewer: string; hash: string; verdicts: { sound: number; wrong: number; missed: number }; canaries: { planted: number; caught: number } }
 
@@ -375,6 +388,9 @@ export type Review = { on: string; standards: string; reviewer: string; hash: st
 export function reviewProblems(programmes: P[], manifests: { id: string; read_on: string; review?: Review }[]): string[] {
   const byId = new Map(programmes.map((p) => [p.id, p]))
   const out: string[] = []
+  const read = new Set(manifests.map((m) => m.id))
+  for (const p of programmes)
+    if (p.requirements_checked >= REVIEW_FROM && !read.has(p.id) && hasItems(p)) out.push(`${p.id}: requirements checked ${p.requirements_checked} with no reading manifest: read it with scripts/requirements/run.ts, then review it`)
   for (const m of manifests) {
     const p = byId.get(m.id)
     if (!p || m.read_on < REVIEW_FROM || !hasItems(p)) continue
@@ -426,7 +442,12 @@ function runApply(dir: string, reviewer: string) {
   const ids = Object.keys(key.hashes)
   const before = new Map(ids.map((id) => [id, readFileSync(programmeFile(id), 'utf8')]))
   const ps = ids.map((id) => JSON.parse(before.get(id)!))
-  const gaps = [...bad, ...reviewGaps(ps, key, verdicts)]
+  const sameFamily = ids.flatMap((id) => {
+    const f = join('data', 'requirements', `${id}.json`)
+    const models: string[] = existsSync(f) ? (readJson(f).models ?? []) : []
+    return models.some((m) => family(m) === family(reviewer)) ? [`${id}: the reviewer ${reviewer} is the same model family as its reading (${models.join(', ')}); brief a reviewer from another family`] : []
+  })
+  const gaps = [...bad, ...sameFamily, ...reviewGaps(ps, key, verdicts)]
   if (gaps.length) {
     console.error(gaps.join('\n'))
     console.error(`\n${gaps.length} problems: nothing applied`)
@@ -472,7 +493,7 @@ function runApply(dir: string, reviewer: string) {
   // Only the quotes this review adds: older quotes on these programmes are the refresh job's.
   const quoted = real.filter((v) => v.new?.quote)
   const quotesFile = join(dir, 'new-quotes.txt')
-  writeFileSync(quotesFile, quoted.map((v) => v.new!.quote!.replace(/\s+/g, ' ')).join('\n'))
+  writeFileSync(quotesFile, quoted.map((v) => [v.id, v.new!.source_url!, v.new!.quote!.replace(/\s+/g, ' ')].join('\t')).join('\n'))
   if (quoted.length && !check(['bun', 'scripts/data/verify-quotes.ts', '--fresh', '--quotes', quotesFile, ...new Set(quoted.map((v) => v.id))])) restore('a new quote is not on its page')
   for (const id of ids) {
     const f = join('data', 'requirements', `${id}.json`)
@@ -506,7 +527,11 @@ if (import.meta.main) {
   }
   if (cmd === 'brief' && rest.length) runBrief(rest)
   else if (cmd === 'apply' && rest.length) {
-    const reviewer = flag('--reviewer') ?? 'unknown'
+    const reviewer = flag('--reviewer')
+    if (!reviewer) {
+      console.error('apply needs --reviewer <model>: the model that wrote the verdicts')
+      process.exit(2)
+    }
     runApply(rest[0]!, reviewer)
   } else {
     console.error('usage: review.ts brief <ids…> | apply <stamp dir> --reviewer <model>')
