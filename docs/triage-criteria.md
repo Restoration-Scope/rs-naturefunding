@@ -38,7 +38,7 @@ Reject when any item is true:
 
 - **ACCEPT NatureScot Nature Restoration Fund** - habitat, freshwater, coastal and urban restoration; charities and community groups eligible.
 - **ACCEPT Minnesota DNR ENRTF Community Impact round** - nonprofits and Tribes can apply; natural resources and aquatic invasive species areas fit, with trail and education areas noted out of scope.
-- **HOLD South Cambridgeshire Nature Recovery Grant** - only in a council committee PDF, not yet on the council's live grants page; wait for a live funder page.
+- **ACCEPT South Cambridgeshire Nature Recovery Grant** - now on the council's live grants page, with community groups and nonprofits eligible for nature recovery action grants.
 - **HOLD CAF RE-SET 2026** - the deadline comes only from aggregators; needs a first-party capture.
 - **REJECT DAERA Farming with Nature** - farmer-payment scheme.
 - **REJECT World Monuments Fund grants** - heritage, not nature.
