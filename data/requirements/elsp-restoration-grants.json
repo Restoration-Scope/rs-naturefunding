@@ -1,43 +1,68 @@
 {
   "id": "elsp-restoration-grants",
-  "read_on": "2026-11-20",
+  "read_on": "2026-11-23",
   "prompt_version": "req-2026-11-20.1",
   "models": ["cursor:gpt-5.6-luna-high"],
   "complete": false,
   "reasons": [
-    "https://www.endangeredlandscapes.org/funding/ would not open (network: ECONNRESET: The socket connection was closed unexpectedly. For more information, pass `verbose: true` in the second argument to fetch())",
-    "https://www.endangeredlandscapes.org/funding/frequently-asked-questions/ would not open (network: ECONNRESET: The socket connection was closed unexpectedly. For more information, pass `verbose: true` in the second argument to fetch())",
-    "no page opened"
+    "16 links could not be ranked without Jev",
+    "https://www.endangeredlandscapes.org/news/listening-for-recovery-a-new-guide-to-acoustic-monitoring-for-restoration/ would not open (blocked: connection reset on every try: the server filters bots)",
+    "the text names a document with rules that was not read: Application guidance",
+    "the text names a document with rules that was not read: Guidance note",
+    "Jev did not check this reading, so an absent fact is not known to be absent"
   ],
   "requirements_checked": false,
-  "documents": [],
-  "failures": [
+  "documents": [
     {
+      "ref": "D1",
       "url": "https://www.endangeredlandscapes.org/funding/",
+      "final_url": "https://www.endangeredlandscapes.org/funding/",
       "from": null,
-      "kind": "network",
-      "message": "ECONNRESET: The socket connection was closed unexpectedly. For more information, pass `verbose: true` in the second argument to fetch()"
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 7482,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:b85901e0b16a364c0ab67de1fc81e0833f8e9349a3dff862dfc8ffaf335da590"
     },
     {
+      "ref": "D2",
       "url": "https://www.endangeredlandscapes.org/funding/frequently-asked-questions/",
+      "final_url": "https://www.endangeredlandscapes.org/funding/frequently-asked-questions/",
       "from": null,
-      "kind": "network",
-      "message": "ECONNRESET: The socket connection was closed unexpectedly. For more information, pass `verbose: true` in the second argument to fetch()"
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 25572,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:811dab3a45dfcdb38759b28ffbe628d97af3d4479bb1794bf4958bcca217f26c"
     }
   ],
-  "skipped_links": 0,
-  "chunks": [{ "id": "all", "docs": [], "chars": 0 }],
+  "failures": [
+    {
+      "url": "https://www.endangeredlandscapes.org/news/listening-for-recovery-a-new-guide-to-acoustic-monitoring-for-restoration/",
+      "from": "https://www.endangeredlandscapes.org/funding/",
+      "kind": "blocked",
+      "message": "connection reset on every try: the server filters bots"
+    }
+  ],
+  "skipped_links": 57,
+  "chunks": [{ "id": "all", "docs": ["D1", "D2"], "chars": 33199 }],
   "outcomes": {
-    "eligibility": "unresolved",
-    "documents": "unresolved",
-    "effort": "unresolved",
-    "co_finance": "unresolved",
-    "consortium": "unresolved",
-    "after_award": "unresolved"
+    "eligibility": "stated",
+    "documents": "not_found",
+    "effort": "stated",
+    "co_finance": "stated",
+    "consortium": "not_found",
+    "after_award": "stated"
   },
-  "written": [],
+  "written": ["eligibility", "effort", "co_finance", "after_award"],
   "escalated": [],
   "flags": [],
-  "notes": ["nothing to read"],
+  "notes": [
+    "extractor: No round is listed. The FAQs are based on previous funding calls, and the programme says each call defines its eligibility criteria, country eligibility, guidance notes and timelines."
+  ],
   "usd": 0
 }

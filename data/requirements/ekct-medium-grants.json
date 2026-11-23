@@ -1,57 +1,170 @@
 {
   "id": "ekct-medium-grants",
-  "read_on": "2026-11-20",
+  "read_on": "2026-11-23",
   "prompt_version": "req-2026-11-20.1",
   "models": ["cursor:gpt-5.6-luna-high"],
   "complete": false,
   "reasons": [
-    "https://ekct.org.uk/apply/ would not open (network: ECONNRESET: The socket connection was closed unexpectedly. For more information, pass `verbose: true` in the second argument to fetch())",
-    "https://ekct.org.uk/grants/ would not open (network: ECONNRESET: The socket connection was closed unexpectedly. For more information, pass `verbose: true` in the second argument to fetch())",
-    "https://ekct.org.uk/faq/ would not open (network: ECONNRESET: The socket connection was closed unexpectedly. For more information, pass `verbose: true` in the second argument to fetch())",
-    "https://ekct.org.uk/project-report/ would not open (network: ECONNRESET: The socket connection was closed unexpectedly. For more information, pass `verbose: true` in the second argument to fetch())",
-    "no page opened"
+    "7 links could not be ranked without Jev",
+    "5 links could not be ranked without Jev",
+    "Jev did not check this reading, so an absent fact is not known to be absent"
   ],
   "requirements_checked": false,
-  "documents": [],
-  "failures": [
+  "documents": [
     {
+      "ref": "D1",
       "url": "https://ekct.org.uk/apply/",
+      "final_url": "https://ekct.org.uk/apply/",
       "from": null,
-      "kind": "network",
-      "message": "ECONNRESET: The socket connection was closed unexpectedly. For more information, pass `verbose: true` in the second argument to fetch()"
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 2623,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:2ac914629a8de5762284f0702d7cb6f11c8fc9435fc7d0e574a10b2ddb7a37bd"
     },
     {
+      "ref": "D2",
       "url": "https://ekct.org.uk/grants/",
+      "final_url": "https://ekct.org.uk/grants/",
       "from": null,
-      "kind": "network",
-      "message": "ECONNRESET: The socket connection was closed unexpectedly. For more information, pass `verbose: true` in the second argument to fetch()"
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 7441,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:823a6e6381ea77ac2d8a051b3b74a6f5ac590b6965d1c3186ca362775154ee00"
     },
     {
+      "ref": "D3",
       "url": "https://ekct.org.uk/faq/",
+      "final_url": "https://ekct.org.uk/faq/",
       "from": null,
-      "kind": "network",
-      "message": "ECONNRESET: The socket connection was closed unexpectedly. For more information, pass `verbose: true` in the second argument to fetch()"
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 3044,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:12f03d7be6d931f3325542f09f45e4919f114ae0cd4b45ac889b91a9ec2f441f"
     },
     {
+      "ref": "D4",
       "url": "https://ekct.org.uk/project-report/",
+      "final_url": "https://ekct.org.uk/project-report/",
       "from": null,
-      "kind": "network",
-      "message": "ECONNRESET: The socket connection was closed unexpectedly. For more information, pass `verbose: true` in the second argument to fetch()"
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 637,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:030f848e5f92102ad84aeaf62e78e7e1f138856e8db901491a2531eb311bba07"
+    },
+    {
+      "ref": "D5",
+      "url": "https://ekct.org.uk/questionnaire/",
+      "final_url": "https://ekct.org.uk/questionnaire/",
+      "from": "https://ekct.org.uk/apply/",
+      "anchor": "Eligibility Questionnaire",
+      "depth": 1,
+      "pdf": false,
+      "chars": 1223,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:6e7a2d9f241874af9028e8f2eb67f78dfc36acb6c0b4d0887e2279c68a9f1023"
+    },
+    {
+      "ref": "D6",
+      "url": "https://ekct.org.uk/application-small",
+      "final_url": "https://ekct.org.uk/application-small",
+      "from": "https://ekct.org.uk/apply/",
+      "anchor": "Small Grant Application Form",
+      "depth": 1,
+      "pdf": false,
+      "chars": 421,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:4f9a1b923858aaee03aa9081ab9ca60f05f23b4631411ffa096681e16d40b2e3"
+    },
+    {
+      "ref": "D7",
+      "url": "https://ekct.org.uk/application-medium/",
+      "final_url": "https://ekct.org.uk/application-medium/",
+      "from": "https://ekct.org.uk/apply/",
+      "anchor": "Medium Grant Application Form",
+      "depth": 1,
+      "pdf": false,
+      "chars": 426,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:30db7305c379d55645633a53ae7ae1cdf619f52438160dd45f6f93f4de493296"
+    },
+    {
+      "ref": "D8",
+      "url": "https://ekct.org.uk/application-large/",
+      "final_url": "https://ekct.org.uk/application-large/",
+      "from": "https://ekct.org.uk/apply/",
+      "anchor": "Large Grant Application Form",
+      "depth": 1,
+      "pdf": false,
+      "chars": 471,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:a6194cf5fd1b2296e82f90906347c3301cef39795f0692852793feb8effb6768"
+    },
+    {
+      "ref": "D9",
+      "url": "https://ekct.org.uk/safeguarding-policy/",
+      "final_url": "https://ekct.org.uk/safeguarding-policy/",
+      "from": "https://ekct.org.uk/apply/",
+      "anchor": "Safeguarding Policy",
+      "depth": 1,
+      "pdf": false,
+      "chars": 1970,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:be308e9704f0791b636b72c73378735cebfb96515e3254d8d23dcfe85f32e692"
+    },
+    {
+      "ref": "D10",
+      "url": "https://ekct.org.uk/quiz/q2-ekct/",
+      "final_url": "https://ekct.org.uk/quiz/q2-ekct/",
+      "from": "https://ekct.org.uk/grants/",
+      "anchor": "eligibility questionnaire",
+      "depth": 1,
+      "pdf": false,
+      "chars": 841,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:ffd7a32ac561de9154389485bd290d4a6d80b155d270551726557fd979f9eab2"
     }
   ],
-  "skipped_links": 0,
-  "chunks": [{ "id": "all", "docs": [], "chars": 0 }],
+  "failures": [],
+  "skipped_links": 44,
+  "chunks": [
+    {
+      "id": "all",
+      "docs": ["D1", "D2", "D3", "D4", "D5", "D6", "D7", "D8", "D9", "D10"],
+      "chars": 19814
+    }
+  ],
   "outcomes": {
-    "eligibility": "unresolved",
-    "documents": "unresolved",
+    "eligibility": "stated",
+    "documents": "stated",
     "effort": "unresolved",
-    "co_finance": "unresolved",
-    "consortium": "unresolved",
-    "after_award": "unresolved"
+    "co_finance": "not_found",
+    "consortium": "not_found",
+    "after_award": "stated"
   },
-  "written": [],
+  "written": ["eligibility", "documents", "after_award"],
   "escalated": [],
   "flags": [],
-  "notes": ["nothing to read"],
+  "notes": [
+    "extractor: Medium grants are accepted in four date ranges each year, but the gathered dates do not include a year. D10 is explicitly dated 8 June 2017 and was not used.",
+    "effort: not written, the file quotes \"Medium Grant Application Form\", this reading does not"
+  ],
   "usd": 0
 }

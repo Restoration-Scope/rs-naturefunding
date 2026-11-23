@@ -54,12 +54,13 @@ export async function htmlToText(html: string, selector: string | null = null): 
     .text()
   let text = ''
   let matched = false
-  await new HTMLRewriter()
-    .on(selector ?? 'body', { element: () => { matched = true }, text: (t) => { text += t.text } })
-    .transform(new Response(cleaned))
-    .text()
+  // Without a selector, the whole document: a stray early </body> (grih.info) ends the body for a streaming
+  // parser, while a browser still shows what follows.
+  const rewriter = selector
+    ? new HTMLRewriter().on(selector, { element: () => { matched = true }, text: (t) => { text += t.text } })
+    : new HTMLRewriter().onDocument({ text: (t) => { text += t.text } })
+  await rewriter.transform(new Response(cleaned)).text()
   if (!matched && selector) throw new Error(`selector ${selector} matched nothing`)
-  if (!matched) text = cleaned.replace(/<[^>]*>/g, ' ')
   return normalise(decodeEntities(text))
 }
 

@@ -25,6 +25,7 @@
   "amount": { "currency": "GBP", "min": 1000, "max": 5000, "typical": true },
   "co_finance_required": null,
   "reporting": null,
+  "effort": { "steps": ["Grant application"] },
   "calls": [
     {
       "id": "rolling",
@@ -74,7 +75,15 @@
       "quote": "Typical grants range from £1,000 to £5,000",
       "checked_at": "2026-11-22",
       "method": "page"
-    }
+    },
+    "effort": [
+      {
+        "source_url": "https://www.ydmt.org/what-we-do/grants/grants",
+        "quote": "Applications can be submitted at any time.",
+        "checked_at": "2026-11-23",
+        "method": "page"
+      }
+    ]
   },
   "checked_at": "2026-11-22"
 }

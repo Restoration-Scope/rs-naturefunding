@@ -1,11 +1,12 @@
 {
   "id": "apache-tree-grant-program",
-  "read_on": "2026-11-19",
-  "prompt_version": "req-2026-11-18.1",
-  "models": ["gpt-5.6-luna", "jev-latest"],
+  "read_on": "2026-11-23",
+  "prompt_version": "req-2026-11-20.1",
+  "models": ["cursor:gpt-5.6-luna-high"],
   "complete": false,
   "reasons": [
-    "https://investor.apacorp.com/news-releases/news-release-details/apache-corporation-tree-grant-program-opens-applications-2023 would not open (blocked: HTTP 403)"
+    "3 links could not be ranked without Jev",
+    "Jev did not check this reading, so an absent fact is not known to be absent"
   ],
   "requirements_checked": false,
   "documents": [
@@ -21,31 +22,37 @@
       "pages": null,
       "low_text": false,
       "hash": "sha256:2bf7dff40765001838f9c547fda890f015426d11c316b8bdc12e1559d1e6e070"
-    }
-  ],
-  "failures": [
+    },
     {
+      "ref": "D2",
       "url": "https://investor.apacorp.com/news-releases/news-release-details/apache-corporation-tree-grant-program-opens-applications-2023",
+      "final_url": "https://investor.apacorp.com/news-releases/news-release-details/apache-corporation-tree-grant-program-opens-applications-2023",
       "from": "https://apacorp.com/sustainability/social/community/apache-tree-grant-program/",
-      "kind": "blocked",
-      "message": "HTTP 403"
+      "anchor": "5 million trees",
+      "depth": 1,
+      "pdf": false,
+      "chars": 3853,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:b178c1923586aefe3dd40e2e1033adbf440aa976ac481007e89033d911f87cbe"
     }
   ],
-  "skipped_links": 48,
-  "chunks": [{ "id": "all", "docs": ["D1"], "chars": 3675 }],
+  "failures": [],
+  "skipped_links": 100,
+  "chunks": [{ "id": "all", "docs": ["D1", "D2"], "chars": 7759 }],
   "outcomes": {
-    "eligibility": "stated",
+    "eligibility": "not_found",
     "documents": "not_found",
     "effort": "not_found",
     "co_finance": "not_found",
     "consortium": "not_found",
     "after_award": "not_found"
   },
-  "written": ["eligibility"],
+  "written": [],
   "escalated": [],
   "flags": [],
   "notes": [
-    "extractor: The 2025-2026 U.K. round is open; the 2026-2027 U.S. round is closed. The text does not state application documents, deadlines, application stages, co-financing, consortium requirements, or post-award duties."
+    "extractor: D2 states requirements for the older 2023-2024 U.S. round, including minimum tree requests, single delivery, planting or distribution by May 31, 2024, and ongoing care and maintenance. The supplied text does not state whether these rules apply to the 2026-2027 U.S. round or the 2025-2026 U.K. round."
   ],
-  "usd": 0.0017
+  "usd": 0
 }

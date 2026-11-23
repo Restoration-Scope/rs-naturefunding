@@ -1,36 +1,59 @@
 {
   "id": "knps-rare-plant-restoration-grant",
-  "read_on": "2026-11-20",
+  "read_on": "2026-11-23",
   "prompt_version": "req-2026-11-20.1",
   "models": ["cursor:gpt-5.6-luna-high"],
   "complete": false,
   "reasons": [
-    "https://www.knps.org/knps-grants/ would not open (network: getaddrinfo ENOTFOUND www.knps.org)",
-    "no page opened"
+    "5 links could not be ranked without Jev",
+    "Jev did not check this reading, so an absent fact is not known to be absent"
   ],
   "requirements_checked": false,
-  "documents": [],
-  "failures": [
+  "documents": [
     {
+      "ref": "D1",
       "url": "https://www.knps.org/knps-grants/",
+      "final_url": "https://www.knps.org/knps-grants/",
       "from": null,
-      "kind": "network",
-      "message": "getaddrinfo ENOTFOUND www.knps.org"
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 10266,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:845056a8cd7a0957ed3d4664f39e2d0306836b343255bdd4fd2d6af57b8bf9c2"
+    },
+    {
+      "ref": "D2",
+      "url": "https://www.knps.org/the-lady-slipper-author-submission-guidelines/",
+      "final_url": "https://www.knps.org/the-lady-slipper-author-submission-guidelines/",
+      "from": "https://www.knps.org/knps-grants/",
+      "anchor": "Author Submission Guidelines",
+      "depth": 1,
+      "pdf": false,
+      "chars": 7792,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:3099185f9d78b6782a83e8b5d9e9c491ce2e4e2b065cfcd8f7d18c81b8fd9091"
     }
   ],
-  "skipped_links": 0,
-  "chunks": [{ "id": "all", "docs": [], "chars": 0 }],
+  "failures": [],
+  "skipped_links": 76,
+  "chunks": [{ "id": "all", "docs": ["D1", "D2"], "chars": 18232 }],
   "outcomes": {
-    "eligibility": "unresolved",
-    "documents": "unresolved",
-    "effort": "unresolved",
-    "co_finance": "unresolved",
-    "consortium": "unresolved",
+    "eligibility": "not_found",
+    "documents": "not_found",
+    "effort": "stated",
+    "co_finance": "not_found",
+    "consortium": "not_found",
     "after_award": "unresolved"
   },
-  "written": [],
+  "written": ["effort"],
   "escalated": [],
   "flags": [],
-  "notes": ["nothing to read"],
+  "notes": [
+    "extractor: The page says applications are due in mid-March each year but does not state a day, month and year for the current or next round. It says the Rare Plant Restoration Grant is open to anyone working in rare plant conservation and gives preference to work on plants of greatest conservation need, State wildlife action plan plants, or plants listed as threatened or endangered on the Kentucky rare plant list. Applicants are encouraged to work with the Kentucky Plant Conservation Alliance and Office of Kentucky Nature Preserves on project selection. Grant recipients are also expected to present their work within one year of completion.",
+    "after_award: not written, the file says after_award.reports is other, this reading does not"
+  ],
   "usd": 0
 }

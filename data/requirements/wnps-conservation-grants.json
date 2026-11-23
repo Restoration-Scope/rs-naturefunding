@@ -1,36 +1,102 @@
 {
   "id": "wnps-conservation-grants",
-  "read_on": "2026-11-20",
+  "read_on": "2026-11-23",
   "prompt_version": "req-2026-11-20.1",
   "models": ["cursor:gpt-5.6-luna-high"],
   "complete": false,
   "reasons": [
-    "https://www.wnps.org/conservation-grants would not open (network: ECONNRESET: The socket connection was closed unexpectedly. For more information, pass `verbose: true` in the second argument to fetch())",
-    "no page opened"
+    "7 links could not be ranked without Jev",
+    "the text names a document with rules that was not read: WNPS Deliverable Report Checklist 2026",
+    "Jev did not check this reading, so an absent fact is not known to be absent"
   ],
   "requirements_checked": false,
-  "documents": [],
-  "failures": [
+  "documents": [
     {
+      "ref": "D1",
       "url": "https://www.wnps.org/conservation-grants",
+      "final_url": "https://www.wnps.org/conservation-grants",
       "from": null,
-      "kind": "network",
-      "message": "ECONNRESET: The socket connection was closed unexpectedly. For more information, pass `verbose: true` in the second argument to fetch()"
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 18612,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:2c9b775663d3cf7f3de45ffaae6d40350fb708a1de14c509e3eaba5ee6b69462"
+    },
+    {
+      "ref": "D2",
+      "url": "https://www.wnps.org/content/documents/conservation/Grant%20Documents/2026%20WNPS%20Conservation%20Grant%20Application%20and%20checklist.pdf",
+      "final_url": "https://www.wnps.org/content/documents/conservation/Grant%20Documents/2026%20WNPS%20Conservation%20Grant%20Application%20and%20checklist.pdf",
+      "from": "https://www.wnps.org/conservation-grants",
+      "anchor": "Application and Checklist - 2026 Application and Checklist",
+      "depth": 1,
+      "pdf": true,
+      "chars": 5676,
+      "pages": 3,
+      "low_text": false,
+      "hash": "sha256:af015ad6a1c5110ca097592f0d132aa1d8c2aeff656959c0450490dc35d66e70"
+    },
+    {
+      "ref": "D3",
+      "url": "https://www.wnps.org/content/documents/conservation/Grant%20Documents/Conservation%20Grant%20Past%20Project%20Summaries%202018-2023.pdf",
+      "final_url": "https://www.wnps.org/content/documents/conservation/Grant%20Documents/Conservation%20Grant%20Past%20Project%20Summaries%202018-2023.pdf",
+      "from": "https://www.wnps.org/conservation-grants",
+      "anchor": "Conservation Grant Past Project Summaries, 2018-2023",
+      "depth": 1,
+      "pdf": true,
+      "chars": 11049,
+      "pages": 4,
+      "low_text": false,
+      "hash": "sha256:c5cd8329dfa9c10cced0a6a472a276c6e340276edbf298ab69b17faccce2d251"
+    },
+    {
+      "ref": "D4",
+      "url": "https://www.wnps.org/content/documents/conservation/20200120_conservationprinciplesforweb_V-4.pdf",
+      "final_url": "https://www.wnps.org/content/documents/conservation/20200120_conservationprinciplesforweb_V-4.pdf",
+      "from": "https://www.wnps.org/conservation-grants",
+      "anchor": "Conservation Principles",
+      "depth": 1,
+      "pdf": true,
+      "chars": 2929,
+      "pages": 1,
+      "low_text": false,
+      "hash": "sha256:5fa8fe9ab2802f40799d9cdb5d8260704c3a95e6706a5d0b949cfec292d33b37"
+    },
+    {
+      "ref": "D5",
+      "url": "https://www.wnps.org/content/documents/conservation/Grant%20Documents/WNPS%20Deliverable%20Report%20Checklist%202024.pdf",
+      "final_url": "https://www.wnps.org/content/documents/conservation/Grant%20Documents/WNPS%20Deliverable%20Report%20Checklist%202024.pdf",
+      "from": "https://www.wnps.org/conservation-grants",
+      "anchor": "WNPS Deliverable Report Checklist 2025",
+      "depth": 1,
+      "pdf": true,
+      "chars": 3892,
+      "pages": 3,
+      "low_text": false,
+      "hash": "sha256:d6d11fd9947af50166c5a3a3072d7e7dba62e43451cfb737ff4474c1ca94be66"
     }
   ],
-  "skipped_links": 0,
-  "chunks": [{ "id": "all", "docs": [], "chars": 0 }],
+  "failures": [],
+  "skipped_links": 128,
+  "chunks": [{ "id": "all", "docs": ["D1", "D2", "D3", "D4", "D5"], "chars": 42999 }],
   "outcomes": {
-    "eligibility": "unresolved",
+    "eligibility": "stated",
     "documents": "unresolved",
     "effort": "unresolved",
-    "co_finance": "unresolved",
-    "consortium": "unresolved",
+    "co_finance": "not_found",
+    "consortium": "not_found",
     "after_award": "unresolved"
   },
-  "written": [],
+  "written": ["eligibility"],
   "escalated": [],
   "flags": [],
-  "notes": ["nothing to read"],
+  "notes": [
+    "extractor: The 2026 cycle is closed. D2 includes a 2025 subject-line instruction in an otherwise 2026 application document. D1 refers to a 2026 deliverable report checklist, while D5 is the 2024 checklist.",
+    "documents: not written, the file quotes \"WNPS Conservation Grant Check-list (fill out and submit with application - requi\", this reading does not; the file quotes \"Narrative (2 pages maximum)\", this reading does not; the file lists \"Project narrative, maximum 2 pages\", this reading does not",
+    "effort: not written, the file quotes \"Send electronic application copies (less than 5 MB total) to both: conservationg\", this reading does not",
+    "after_award: not written, the file quotes \"The final report will be at least 300-500 words in length and will include docum\", this reading does not",
+    "source wnps-conservation-grants-2: added for https://www.wnps.org/content/documents/conservation/Grant%20Documents/2026%20WNPS%20Conservation%20Grant%20Application%20and%20checklist.pdf"
+  ],
   "usd": 0
 }

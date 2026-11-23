@@ -1,36 +1,106 @@
 {
   "id": "gef-sgp-ecuador",
-  "read_on": "2026-11-20",
+  "read_on": "2026-11-23",
   "prompt_version": "req-2026-11-20.1",
   "models": ["cursor:gpt-5.6-luna-high"],
   "complete": false,
   "reasons": [
-    "https://www.ppd-ecuador.org/convocatoria-proyectos-ticca/ would not open (network: ECONNRESET: The socket connection was closed unexpectedly. For more information, pass `verbose: true` in the second argument to fetch())",
-    "no page opened"
+    "5 links could not be ranked without Jev",
+    "https://www.ppd-ecuador.org/wp-content/uploads/2026/04/Anexo-1-Formulario-presentacion-proyectos-TICCA.docx would not open (blocked: connection reset on every try: the server filters bots)",
+    "https://www.ppd-ecuador.org/wp-content/uploads/2026/04/Anexo-2-Ficha-de-proyecto-TICCA-GSI.xlsx would not open (blocked: connection reset on every try: the server filters bots)",
+    "the text names a document with rules that was not read: Documento de Estrategia Nacional TICCA Fase 2 - Ecuador FO8",
+    "the text names a document with rules that was not read: Metodología de potenciamiento del bioemprendimiento/bionegocio",
+    "the text names a document with rules that was not read: Modelo de gestión del PPD",
+    "Jev did not check this reading, so an absent fact is not known to be absent"
   ],
   "requirements_checked": false,
-  "documents": [],
-  "failures": [
+  "documents": [
     {
+      "ref": "D1",
       "url": "https://www.ppd-ecuador.org/convocatoria-proyectos-ticca/",
+      "final_url": "https://www.ppd-ecuador.org/convocatoria-proyectos-ticca/",
       "from": null,
-      "kind": "network",
-      "message": "ECONNRESET: The socket connection was closed unexpectedly. For more information, pass `verbose: true` in the second argument to fetch()"
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 2452,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:3063b31e064ac30113d5f73dac02034c489fde24386f9634a0c4c570efa929a6"
+    },
+    {
+      "ref": "D2",
+      "url": "https://www.ppd-ecuador.org/wp-content/uploads/2026/04/Estrategia-Nacional-TICCA-y-bases-de-convocatoria-a-proyectos-TICCA.pdf",
+      "final_url": "https://www.ppd-ecuador.org/wp-content/uploads/2026/04/Estrategia-Nacional-TICCA-y-bases-de-convocatoria-a-proyectos-TICCA.pdf",
+      "from": "https://www.ppd-ecuador.org/convocatoria-proyectos-ticca/",
+      "anchor": "Documento de Estrategia Nacional TICCA Fase 2 - Ecuador FO8",
+      "depth": 1,
+      "pdf": true,
+      "chars": 73834,
+      "pages": 25,
+      "low_text": false,
+      "hash": "sha256:928f126e8c2a3490550896ca5c1e0e1277f3928c360cb7728a907f3a8b42643a"
+    },
+    {
+      "ref": "D3",
+      "url": "https://www.ppd-ecuador.org/wp-content/uploads/2026/04/Anexo-3.-Metodologia-de-potenciacion-de-PIT-_-METODOLOGIA-BIOEMPRENDIMIENTOS.pdf",
+      "final_url": "https://www.ppd-ecuador.org/wp-content/uploads/2026/04/Anexo-3.-Metodologia-de-potenciacion-de-PIT-_-METODOLOGIA-BIOEMPRENDIMIENTOS.pdf",
+      "from": "https://www.ppd-ecuador.org/convocatoria-proyectos-ticca/",
+      "anchor": "Metodología de potenciación de bioemprendimientos (informativo)",
+      "depth": 1,
+      "pdf": true,
+      "chars": 145163,
+      "pages": 102,
+      "low_text": false,
+      "hash": "sha256:7b1dda61dbce8c81bb2f1550373c4f17103c7749426ddcbfcb855d06f6ffc4c3"
     }
   ],
-  "skipped_links": 0,
-  "chunks": [{ "id": "all", "docs": [], "chars": 0 }],
+  "failures": [
+    {
+      "url": "https://www.ppd-ecuador.org/wp-content/uploads/2026/04/Anexo-1-Formulario-presentacion-proyectos-TICCA.docx",
+      "from": "https://www.ppd-ecuador.org/convocatoria-proyectos-ticca/",
+      "kind": "blocked",
+      "message": "connection reset on every try: the server filters bots"
+    },
+    {
+      "url": "https://www.ppd-ecuador.org/wp-content/uploads/2026/04/Anexo-2-Ficha-de-proyecto-TICCA-GSI.xlsx",
+      "from": "https://www.ppd-ecuador.org/convocatoria-proyectos-ticca/",
+      "kind": "blocked",
+      "message": "connection reset on every try: the server filters bots"
+    }
+  ],
+  "skipped_links": 31,
+  "chunks": [
+    { "id": "c1", "docs": ["D1"], "chars": 2522 },
+    { "id": "c2", "docs": ["D2"], "chars": 39886 },
+    { "id": "c3", "docs": ["D2"], "chars": 35902 },
+    { "id": "c4", "docs": ["D3"], "chars": 40134 },
+    { "id": "c5", "docs": ["D3"], "chars": 40060 },
+    { "id": "c6", "docs": ["D3"], "chars": 39936 },
+    { "id": "c7", "docs": ["D3"], "chars": 30477 }
+  ],
   "outcomes": {
-    "eligibility": "unresolved",
-    "documents": "unresolved",
+    "eligibility": "stated",
+    "documents": "stated",
     "effort": "unresolved",
-    "co_finance": "unresolved",
-    "consortium": "unresolved",
-    "after_award": "unresolved"
+    "co_finance": "stated",
+    "consortium": "not_found",
+    "after_award": "stated"
   },
-  "written": [],
+  "written": ["eligibility", "documents", "co_finance", "after_award"],
   "escalated": [],
-  "flags": [],
-  "notes": ["nothing to read"],
+  "flags": [
+    {
+      "field": "effort",
+      "item": "steps",
+      "why": "the steps come from different parts of the text; check they are one list in order"
+    }
+  ],
+  "notes": [
+    "eligibility: 7 rules past the 8th dropped",
+    "extractor: Maximum funding is $25,000; lower-value proposals are eligible. A final systematization is required. | D3 describes a methodology for strengthening bioenterprises and does not state application eligibility, submission documents, funding requirements, consortium rules, application steps, deadlines, or post-award duties. | This document describes methodology for FO6, with examples and PIT development stages; it does not state current FO8 applicant requirements. | D3 is a methodology guide for bioemprendimientos and does not state application requirements or award duties.",
+    "the flagged text is too long for one escalation",
+    "source gef-sgp-ecuador-2: added for https://www.ppd-ecuador.org/wp-content/uploads/2026/04/Estrategia-Nacional-TICCA-y-bases-de-convocatoria-a-proyectos-TICCA.pdf"
+  ],
   "usd": 0
 }

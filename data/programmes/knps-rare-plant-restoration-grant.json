@@ -14,6 +14,8 @@
   "amount": { "currency": "USD", "max": 500 },
   "co_finance_required": null,
   "reporting": "Grant recipients give the society a short summary of the funded work for its newsletter within a year of the grant and are expected to present it at a society meeting or symposium.",
+  "effort": { "steps": ["Email query"] },
+  "after_award": { "reports": "final" },
   "calls": [
     {
       "id": "annual",
@@ -69,7 +71,23 @@
       "quote": "Grant applications are due in mid-March each year.",
       "checked_at": "2026-11-20",
       "method": "page"
-    }
+    },
+    "effort": [
+      {
+        "source_url": "https://www.knps.org/knps-grants/",
+        "quote": "If one is interested in applying for one of these grants, please send a query to grants@knps.org.",
+        "checked_at": "2026-11-23",
+        "method": "page"
+      }
+    ],
+    "after_award": [
+      {
+        "source_url": "https://www.knps.org/knps-grants/",
+        "quote": "Grant recipients are required to provide the KNPS with a short summary of the funded research suitable for publishing in the Society's newsletter, The Lady Slipper, within one year of receiving the grant.",
+        "checked_at": "2026-11-23",
+        "method": "page"
+      }
+    ]
   },
   "checked_at": "2026-11-20"
 }

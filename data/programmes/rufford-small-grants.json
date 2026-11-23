@@ -18,6 +18,25 @@
   "amount": { "currency": "GBP", "min": 7000, "max": 18000 },
   "co_finance_required": null,
   "reporting": null,
+  "effort": { "steps": ["Online application", "Initial office review", "External expert review"] },
+  "eligibility": [
+    { "rule": "Project has a nature conservation focus", "kind": "project" },
+    { "rule": "Any species the project works on is threatened", "kind": "project" },
+    { "rule": "Project has not already begun", "kind": "project" },
+    { "rule": "Applicant is not studying for a BSc or equivalent", "kind": "other" },
+    { "rule": "Request covers fieldwork costs only", "kind": "project" },
+    {
+      "rule": "No pure research, expeditions, conferences, seminars or book publishing",
+      "kind": "project"
+    },
+    { "rule": "Funds are paid to an organisation, not a personal account", "kind": "legal" },
+    {
+      "rule": "Applicants from advanced economies: project in an eligible country, high priority, builds local capacity",
+      "kind": "project"
+    }
+  ],
+  "after_award": { "reports": "interim_and_final" },
+  "documents": ["Three references", "Evidence of support from co-funders, if applicable"],
   "calls": [
     {
       "id": "rolling",
@@ -66,7 +85,99 @@
       "quote": "Grants range from £7,000 to £18,000.",
       "checked_at": "2026-11-23",
       "method": "page"
-    }
+    },
+    "effort": [
+      {
+        "source_url": "https://apply.ruffordsmallgrants.org/help/faqs",
+        "quote": "Applications are only accepted online.",
+        "checked_at": "2026-11-23",
+        "method": "page"
+      },
+      {
+        "source_url": "https://apply.ruffordsmallgrants.org/help/faqs",
+        "quote": "All applications are reviewed initially by The Rufford Foundation office.",
+        "checked_at": "2026-11-23",
+        "method": "page"
+      },
+      {
+        "source_url": "https://apply.ruffordsmallgrants.org/help/faqs",
+        "quote": "Those considered for further processing pass to the second stage, review by external experts.",
+        "checked_at": "2026-11-23",
+        "method": "page"
+      }
+    ],
+    "eligibility": [
+      {
+        "source_url": "https://apply.ruffordsmallgrants.org/help/criteria",
+        "quote": "Projects must have a nature conservation focus.",
+        "checked_at": "2026-11-23",
+        "method": "page"
+      },
+      {
+        "source_url": "https://apply.ruffordsmallgrants.org",
+        "quote": "Any species you are working on must be considered threatened.",
+        "checked_at": "2026-11-23",
+        "method": "page"
+      },
+      {
+        "source_url": "https://apply.ruffordsmallgrants.org/help/faqs",
+        "quote": "No, the Foundation will not fund projects that have already begun.",
+        "checked_at": "2026-11-23",
+        "method": "page"
+      },
+      {
+        "source_url": "https://apply.ruffordsmallgrants.org/help/faqs",
+        "quote": "However, we do not fund students studying for a BSc or equivalent.",
+        "checked_at": "2026-11-23",
+        "method": "page"
+      },
+      {
+        "source_url": "https://apply.ruffordsmallgrants.org/help/criteria",
+        "quote": "We will only consider fieldwork costs.",
+        "checked_at": "2026-11-23",
+        "method": "page"
+      },
+      {
+        "source_url": "https://apply.ruffordsmallgrants.org/help/criteria",
+        "quote": "Pure research with no obvious conservation benefit. Expeditions, particularly where the applicant must raise funds in order to participate. Attending conferences or seminars. Publishing books.",
+        "checked_at": "2026-11-23",
+        "method": "page"
+      },
+      {
+        "source_url": "https://apply.ruffordsmallgrants.org/static/files/RSG_Application_Form_Questions.docx",
+        "quote": "Funds are ONLY paid to organisations (such as a nature conservation NGO or university department).",
+        "checked_at": "2026-11-23",
+        "method": "page"
+      },
+      {
+        "source_url": "https://apply.ruffordsmallgrants.org/help/eligibility",
+        "quote": "We will not consider projects from applicants from advanced economies unless the project is in an eligible country, of high conservation priority and efforts are made to enhance local conservation capacity.",
+        "checked_at": "2026-11-23",
+        "method": "page"
+      }
+    ],
+    "after_award": [
+      {
+        "source_url": "https://apply.ruffordsmallgrants.org/help/criteria",
+        "quote": "You must provide project updates and a final report on project completion, copies of which will be posted on your webpage.",
+        "checked_at": "2026-11-23",
+        "method": "page"
+      }
+    ],
+    "documents": [
+      {
+        "source_url": "https://apply.ruffordsmallgrants.org/apply/",
+        "quote": "You need to provide three references to accompany your application.",
+        "checked_at": "2026-11-23",
+        "method": "page"
+      },
+      {
+        "source_url": "https://apply.ruffordsmallgrants.org/static/files/RSG_Application_Form_Questions.docx",
+        "quote": "We will require evidence of support from co-funders.",
+        "checked_at": "2026-11-23",
+        "method": "page"
+      }
+    ]
   },
   "checked_at": "2026-11-23"
 }

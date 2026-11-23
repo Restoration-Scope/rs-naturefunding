@@ -18,6 +18,25 @@
   "amount": null,
   "co_finance_required": null,
   "reporting": "Grantees submit a final report on use of funds; it must be filed before applying again",
+  "effort": { "steps": ["Online application via the portal"] },
+  "eligibility": [
+    {
+      "rule": "Has an organisation number and completed Enhetsregisteret registration",
+      "kind": "legal"
+    },
+    {
+      "rule": "Nationwide projects outside Eastern Norway: contact the foundation before applying",
+      "kind": "project"
+    },
+    { "rule": "Applies at most twice a year to the up-to-NOK 50,000 scheme", "kind": "other" },
+    {
+      "rule": "Has filed a final report before reapplying after a grant; other sub-units may still apply",
+      "kind": "other"
+    },
+    { "rule": "Project starts only after the funding decision", "kind": "project" }
+  ],
+  "after_award": { "reports": "final" },
+  "documents": ["Detailed cost and financing budget, for applications of NOK 250,000 or more"],
   "calls": [
     {
       "id": "rolling-up-to-50000-nok",
@@ -90,7 +109,63 @@
       "quote": "dersom tidligere søknad ble innvilget må dere ha sendt inn sluttrapport før dere kan søke igjen",
       "checked_at": "2026-11-23",
       "method": "page"
-    }
+    },
+    "effort": [
+      {
+        "source_url": "https://sparebankstiftelsen.no/soke-og-rapportere/veiledning-til-soknadsportalen/",
+        "quote": "Alle søknader skrives og sendes inn via vår søknadsportal.",
+        "checked_at": "2026-11-23",
+        "method": "page"
+      }
+    ],
+    "eligibility": [
+      {
+        "source_url": "https://sparebankstiftelsen.no/soke-og-rapportere/veiledning-til-soknadsportalen/",
+        "quote": "Dersom dere skal søke støtte, må dere ha et organisasjonsnummer og være registrert i Enhetsregisteret i Brønnøysund.",
+        "checked_at": "2026-11-23",
+        "method": "page"
+      },
+      {
+        "source_url": "https://sparebankstiftelsen.no/soke-og-rapportere/veiledning-til-soknadsportalen/",
+        "quote": "Det gis også støtte til landsdekkende tiltak. Dersom du ønsker å søke støtte til et nasjonalt tiltak utenfor Østlandsområdet må du kontakte stiftelsen.",
+        "checked_at": "2026-11-23",
+        "method": "page"
+      },
+      {
+        "source_url": "https://sparebankstiftelsen.no/soke-og-rapportere/veiledning-til-soknadsportalen/",
+        "quote": "Viktig: Hver organisasjon kan kun søke to ganger per år på denne ordningen.",
+        "checked_at": "2026-11-23",
+        "method": "page"
+      },
+      {
+        "source_url": "https://sparebankstiftelsen.no/dette-stotter-vi/tips-tema-sider/naturrestaurering-og-formidling-av-naturmangfoldet/",
+        "quote": "Det går fint å søke flere ganger, men dersom tidligere søknad ble innvilget må dere ha sendt inn sluttrapport før dere kan søke igjen. (Eventuelle underavdelinger kan søke selv om en annen avdeling ennå ikke har levert sluttrapport).",
+        "checked_at": "2026-11-23",
+        "method": "page"
+      },
+      {
+        "source_url": "https://sparebankstiftelsen.no/soke-og-rapportere/veiledning-til-soknadsportalen/",
+        "quote": "Merk at startdatoen for prosjektet ikke kan være før dere har fått svar på søknaden.",
+        "checked_at": "2026-11-23",
+        "method": "page"
+      }
+    ],
+    "after_award": [
+      {
+        "source_url": "https://sparebankstiftelsen.no/om-oss/om-soknadsprosessen-og-oppfolging-av-mottakerne/",
+        "quote": "Når prosjektet er ferdig, leverer mottakerne en sluttrapport hvor de beskriver gjennomføringen av prosjektet og hvordan pengene er brukt.",
+        "checked_at": "2026-11-23",
+        "method": "page"
+      }
+    ],
+    "documents": [
+      {
+        "source_url": "https://sparebankstiftelsen.no/soke-og-rapportere/veiledning-til-soknadsportalen/",
+        "quote": "Dersom dere søker om et søknadsbeløp fra og med 250.000 kroner må dere i tillegg legge ved et detaljert kostnads- og finansieringsbudsjett.",
+        "checked_at": "2026-11-23",
+        "method": "page"
+      }
+    ]
   },
   "checked_at": "2026-11-23"
 }

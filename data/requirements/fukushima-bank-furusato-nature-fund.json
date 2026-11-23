@@ -1,36 +1,60 @@
 {
   "id": "fukushima-bank-furusato-nature-fund",
-  "read_on": "2026-11-20",
+  "read_on": "2026-11-23",
   "prompt_version": "req-2026-11-20.1",
   "models": ["cursor:gpt-5.6-luna-high"],
   "complete": false,
   "reasons": [
-    "https://www.fukushimabank.co.jp/furusato/ would not open (blocked: HTTP 200 bot challenge page)",
-    "no page opened"
+    "1 links could not be ranked without Jev",
+    "Jev did not check this reading, so an absent fact is not known to be absent"
   ],
   "requirements_checked": false,
-  "documents": [],
-  "failures": [
+  "documents": [
     {
+      "ref": "D1",
       "url": "https://www.fukushimabank.co.jp/furusato/",
+      "final_url": "https://www.fukushimabank.co.jp/furusato/",
       "from": null,
-      "kind": "blocked",
-      "message": "HTTP 200 bot challenge page"
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 2195,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:3dedbf451b2a38b2d56c59037fab1673c20a6f85abfc2b9277afd0dbd9dd9cbb"
+    },
+    {
+      "ref": "D2",
+      "url": "https://www.fukushimabank.co.jp/furusato/files/word.doc",
+      "final_url": "https://www.fukushimabank.co.jp/furusato/files/word.doc",
+      "from": "https://www.fukushimabank.co.jp/furusato/",
+      "anchor": "Word形式",
+      "depth": 1,
+      "pdf": false,
+      "chars": 1415,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:6c1c62b8e037566ba66f271633ea912d2ec82610c9fc3b3a60d783f7097dc339"
     }
   ],
-  "skipped_links": 0,
-  "chunks": [{ "id": "all", "docs": [], "chars": 0 }],
+  "failures": [],
+  "skipped_links": 2,
+  "chunks": [{ "id": "all", "docs": ["D1", "D2"], "chars": 3788 }],
   "outcomes": {
-    "eligibility": "unresolved",
-    "documents": "unresolved",
-    "effort": "unresolved",
-    "co_finance": "unresolved",
-    "consortium": "unresolved",
-    "after_award": "unresolved"
+    "eligibility": "stated",
+    "documents": "not_found",
+    "effort": "stated",
+    "co_finance": "not_found",
+    "consortium": "not_found",
+    "after_award": "stated"
   },
-  "written": [],
+  "written": ["eligibility", "effort", "after_award"],
   "escalated": [],
   "flags": [],
-  "notes": ["nothing to read"],
+  "notes": [
+    "effort \"Application form, filled, sealed and mailed\": the quote does not state 2026-07-31 whole; left undated",
+    "extractor: Awardees must attend the ceremony planned for November. If grant-funded booklets or similar publications are issued, the fund name must be printed in them.",
+    "source fukushima-bank-furusato-nature-fund-2: added for https://www.fukushimabank.co.jp/furusato/files/word.doc"
+  ],
   "usd": 0
 }

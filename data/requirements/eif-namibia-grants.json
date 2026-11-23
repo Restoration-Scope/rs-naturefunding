@@ -1,18 +1,28 @@
 {
   "id": "eif-namibia-grants",
-  "read_on": "2026-11-20",
+  "read_on": "2026-11-23",
   "prompt_version": "req-2026-11-20.1",
   "models": ["cursor:gpt-5.6-luna-high"],
   "complete": false,
   "reasons": [
-    "17 links could not be ranked without Jev",
-    "19 links could not be ranked without Jev",
-    "https://www.eif.org.na/page/documents/policies-and-guidelines would not open (http: HTTP 404)",
-    "https://www.eif.org.na/page/page/eligible-projects would not open (http: HTTP 404)",
-    "https://www.eif.org.na/page/documents/ess-policy would not open (http: HTTP 404)",
-    "https://www.eif.org.na/page/page/information-disclosure-policy would not open (http: HTTP 404)",
-    "https://www.eif.org.na/page/page/terms-and-conditions would not open (http: HTTP 404)",
-    "https://www.eif.org.na/page/page/privacy-policy would not open (http: HTTP 404)",
+    "14 links could not be ranked without Jev",
+    "42 links could not be ranked without Jev",
+    "16 links could not be ranked without Jev",
+    "the crawl bound left https://www.eif.org.na/download/annex-xii-project-summaries unread",
+    "the crawl bound left https://www.eif.org.na/download/annex-xi-checklist-for-fmc-ttap-board unread",
+    "the crawl bound left https://www.eif.org.na/download/annex-x-ess-summary-report unread",
+    "the crawl bound left https://www.eif.org.na/download/eif-operational-manual-2018 unread",
+    "the crawl bound left https://www.eif.org.na/download/eif-procurement-policy-and-procedures unread",
+    "the crawl bound left https://www.eif.org.na/documents/call-for-proposals-eba-project-small-grants-facility unread",
+    "the crawl bound left https://www.eif.org.na/documents/application-forms unread",
+    "the crawl bound left https://www.eif.org.na/documents/funding-guidelines unread",
+    "the crawl bound left https://www.eif.org.na/download/addendum-1-provision-of-a-consultant-to-develop-an-industrial-process-and-product-use-ippu-ghg-monitoring-reporting-and-verification-mrv-regulatory-framework-in-namibia unread",
+    "the crawl bound left https://www.eif.org.na/download/amended-bidding-provision-of-a-consultant-to-develop-an-industrial-process-and-product-use-ippu-ghg-monitoring-reporting-and-verification-mrv-regulatory-framework-in-namibia unread",
+    "the crawl bound left https://www.eif.org.na/uploads/files/Know%20Your%20Client%20and%20Due%20Deligence%20Guidelines%20Signed%20Version.pdf unread",
+    "the crawl bound left https://www.eif.org.na/uploads/files/PROCUREMENT_POLICY_AND_PROCEDURES_November_2018(2).pdf unread",
+    "the crawl bound left https://www.eif.org.na/uploads/files/PROCUREMENT_POLICY_AND_PROCEDURES_November_2018.pdf unread",
+    "the crawl bound left https://www.eif.org.na/uploads/files/Annex%20XXVI%20Gender%20Assessment%20Report.pdf unread",
+    "the crawl bound left https://www.eif.org.na/uploads/files/Annex%20XXIV%20Risk%20Rating%20Model.pdf unread",
     "Jev did not check this reading, so an absent fact is not known to be absent"
   ],
   "requirements_checked": false,
@@ -35,55 +45,202 @@
       "url": "https://www.eif.org.na/page/eligible-projects",
       "final_url": "https://www.eif.org.na/page/eligible-projects",
       "from": "https://www.eif.org.na/page/eif-grants",
-      "anchor": "here.",
+      "anchor": "Eligible projects",
       "depth": 1,
       "pdf": false,
       "chars": 4786,
       "pages": null,
       "low_text": false,
       "hash": "sha256:a963a92a2b703041e5337fa104a60eb05dd0c0e2fc43ff9f6c0d57cd86879d73"
+    },
+    {
+      "ref": "D3",
+      "url": "https://www.eif.org.na/page/terms-and-conditions",
+      "final_url": "https://www.eif.org.na/page/terms-and-conditions",
+      "from": "https://www.eif.org.na/page/eif-grants",
+      "anchor": "Terms & Conditions",
+      "depth": 1,
+      "pdf": false,
+      "chars": 10971,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:0e40270148b4ad0fc81735da61b31bc2cebe1555d62c04ba547a57287d7c87c9"
+    },
+    {
+      "ref": "D4",
+      "url": "https://www.eif.org.na/documents/policies-and-guidelines",
+      "final_url": "https://www.eif.org.na/documents/policies-and-guidelines",
+      "from": "https://www.eif.org.na/page/eif-grants",
+      "anchor": "Policies & guidelines",
+      "depth": 1,
+      "pdf": false,
+      "chars": 7405,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:82000211058aa6e8173a4e105dc8f8ca223394651c994fcadbb86ad1f6ab68f4"
+    },
+    {
+      "ref": "D5",
+      "url": "https://www.eif.org.na/download/know-your-client-and-due-diligence-guidelines",
+      "final_url": "https://www.eif.org.na/download/know-your-client-and-due-diligence-guidelines",
+      "from": "https://www.eif.org.na/documents/policies-and-guidelines",
+      "anchor": "Learn More",
+      "depth": 2,
+      "pdf": false,
+      "chars": 3000,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:6cf85f731f0441c8e61cf78ac17c2adb9029bc65f214a4f47a03f1af1fbe8e8c"
+    },
+    {
+      "ref": "D6",
+      "url": "https://www.eif.org.na/download/eifs-procurement-policy-and-procedures",
+      "final_url": "https://www.eif.org.na/download/eifs-procurement-policy-and-procedures",
+      "from": "https://www.eif.org.na/documents/policies-and-guidelines",
+      "anchor": "Learn More",
+      "depth": 2,
+      "pdf": false,
+      "chars": 3027,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:e16ef4323c0ae83ae008cbfa6cf753462bb648fb5b68a3fe7cde835b8d5b7809"
+    },
+    {
+      "ref": "D7",
+      "url": "https://www.eif.org.na/download/procurement-policy-and-procedures",
+      "final_url": "https://www.eif.org.na/download/procurement-policy-and-procedures",
+      "from": "https://www.eif.org.na/documents/policies-and-guidelines",
+      "anchor": "Learn More",
+      "depth": 2,
+      "pdf": false,
+      "chars": 2987,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:9769fe7a2986357f2e45b31c42c3999e35d2587855c2965cbe9f29767141b5dc"
+    },
+    {
+      "ref": "D8",
+      "url": "https://www.eif.org.na/download/annex-xxvi-gender-assessment-report",
+      "final_url": "https://www.eif.org.na/download/annex-xxvi-gender-assessment-report",
+      "from": "https://www.eif.org.na/documents/policies-and-guidelines",
+      "anchor": "Learn More",
+      "depth": 2,
+      "pdf": false,
+      "chars": 2991,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:fbb1b0d56eeeb26d341ce98c2ebef1793d37be04b9fde57b09e8b6935debfdf1"
+    },
+    {
+      "ref": "D9",
+      "url": "https://www.eif.org.na/download/annex-xxiv",
+      "final_url": "https://www.eif.org.na/download/annex-xxiv",
+      "from": "https://www.eif.org.na/documents/policies-and-guidelines",
+      "anchor": "Learn More",
+      "depth": 2,
+      "pdf": false,
+      "chars": 2965,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:4e3ebdbfc7c17f49f3d272abe06e71ac58ff9ce4624027f4c0fa4eb210e70c71"
     }
   ],
   "failures": [
     {
-      "url": "https://www.eif.org.na/page/documents/policies-and-guidelines",
-      "from": "https://www.eif.org.na/page/eif-grants",
-      "kind": "http",
-      "message": "HTTP 404"
+      "url": "https://www.eif.org.na/download/annex-xii-project-summaries",
+      "from": "https://www.eif.org.na/documents/policies-and-guidelines",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
     },
     {
-      "url": "https://www.eif.org.na/page/page/eligible-projects",
-      "from": "https://www.eif.org.na/page/eif-grants",
-      "kind": "http",
-      "message": "HTTP 404"
+      "url": "https://www.eif.org.na/download/annex-xi-checklist-for-fmc-ttap-board",
+      "from": "https://www.eif.org.na/documents/policies-and-guidelines",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
     },
     {
-      "url": "https://www.eif.org.na/page/documents/ess-policy",
-      "from": "https://www.eif.org.na/page/eif-grants",
-      "kind": "http",
-      "message": "HTTP 404"
+      "url": "https://www.eif.org.na/download/annex-x-ess-summary-report",
+      "from": "https://www.eif.org.na/documents/policies-and-guidelines",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
     },
     {
-      "url": "https://www.eif.org.na/page/page/information-disclosure-policy",
-      "from": "https://www.eif.org.na/page/eif-grants",
-      "kind": "http",
-      "message": "HTTP 404"
+      "url": "https://www.eif.org.na/download/eif-operational-manual-2018",
+      "from": "https://www.eif.org.na/documents/policies-and-guidelines",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
     },
     {
-      "url": "https://www.eif.org.na/page/page/terms-and-conditions",
-      "from": "https://www.eif.org.na/page/eif-grants",
-      "kind": "http",
-      "message": "HTTP 404"
+      "url": "https://www.eif.org.na/download/eif-procurement-policy-and-procedures",
+      "from": "https://www.eif.org.na/documents/policies-and-guidelines",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
     },
     {
-      "url": "https://www.eif.org.na/page/page/privacy-policy",
-      "from": "https://www.eif.org.na/page/eif-grants",
-      "kind": "http",
-      "message": "HTTP 404"
+      "url": "https://www.eif.org.na/documents/call-for-proposals-eba-project-small-grants-facility",
+      "from": "https://www.eif.org.na/documents/policies-and-guidelines",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://www.eif.org.na/documents/application-forms",
+      "from": "https://www.eif.org.na/documents/policies-and-guidelines",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://www.eif.org.na/documents/funding-guidelines",
+      "from": "https://www.eif.org.na/documents/policies-and-guidelines",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://www.eif.org.na/download/addendum-1-provision-of-a-consultant-to-develop-an-industrial-process-and-product-use-ippu-ghg-monitoring-reporting-and-verification-mrv-regulatory-framework-in-namibia",
+      "from": "https://www.eif.org.na/documents/policies-and-guidelines",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://www.eif.org.na/download/amended-bidding-provision-of-a-consultant-to-develop-an-industrial-process-and-product-use-ippu-ghg-monitoring-reporting-and-verification-mrv-regulatory-framework-in-namibia",
+      "from": "https://www.eif.org.na/documents/policies-and-guidelines",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://www.eif.org.na/uploads/files/Know%20Your%20Client%20and%20Due%20Deligence%20Guidelines%20Signed%20Version.pdf",
+      "from": "https://www.eif.org.na/download/know-your-client-and-due-diligence-guidelines",
+      "kind": "bound",
+      "message": "past the crawl depth of 2"
+    },
+    {
+      "url": "https://www.eif.org.na/uploads/files/PROCUREMENT_POLICY_AND_PROCEDURES_November_2018(2).pdf",
+      "from": "https://www.eif.org.na/download/eifs-procurement-policy-and-procedures",
+      "kind": "bound",
+      "message": "past the crawl depth of 2"
+    },
+    {
+      "url": "https://www.eif.org.na/uploads/files/PROCUREMENT_POLICY_AND_PROCEDURES_November_2018.pdf",
+      "from": "https://www.eif.org.na/download/procurement-policy-and-procedures",
+      "kind": "bound",
+      "message": "past the crawl depth of 2"
+    },
+    {
+      "url": "https://www.eif.org.na/uploads/files/Annex%20XXVI%20Gender%20Assessment%20Report.pdf",
+      "from": "https://www.eif.org.na/download/annex-xxvi-gender-assessment-report",
+      "kind": "bound",
+      "message": "past the crawl depth of 2"
+    },
+    {
+      "url": "https://www.eif.org.na/uploads/files/Annex%20XXIV%20Risk%20Rating%20Model.pdf",
+      "from": "https://www.eif.org.na/download/annex-xxiv",
+      "kind": "bound",
+      "message": "past the crawl depth of 2"
     }
   ],
-  "skipped_links": 161,
-  "chunks": [{ "id": "all", "docs": ["D1", "D2"], "chars": 9712 }],
+  "skipped_links": 627,
+  "chunks": [
+    { "id": "all", "docs": ["D1", "D2", "D3", "D4", "D5", "D6", "D7", "D8", "D9"], "chars": 44035 }
+  ],
   "outcomes": {
     "eligibility": "not_found",
     "documents": "not_found",
@@ -96,7 +253,7 @@
   "escalated": [],
   "flags": [],
   "notes": [
-    "extractor: D1 describes seed grants of not more than N$10,000 and project grants ranging between N$10,000 and N$500,000. D2 lists activities that may be eligible for grants."
+    "extractor: D1 describes seed grants and project grants as separate types, but states no current round, application process or post-award duties."
   ],
   "usd": 0
 }

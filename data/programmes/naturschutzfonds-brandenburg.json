@@ -17,6 +17,43 @@
   "amount": null,
   "co_finance_required": null,
   "reporting": null,
+  "effort": {
+    "steps": [
+      "Third-party assessment, plus protected-area statement if applicable",
+      "Application form with attachments"
+    ]
+  },
+  "eligibility": [
+    { "rule": "The project is implemented in Brandenburg", "kind": "project" },
+    { "rule": "The project sustainably improves nature and landscape", "kind": "project" },
+    {
+      "rule": "The measure has not started and will not start before the funding decision",
+      "kind": "project"
+    },
+    { "rule": "The measure does not fulfil a legal duty or other obligation", "kind": "project" },
+    {
+      "rule": "Land availability is secured and owners and users have given written consent",
+      "kind": "project"
+    },
+    { "rule": "The project is not solely land securing or detached planning", "kind": "project" },
+    {
+      "rule": "The project is not ongoing maintenance or regularly recurring measures",
+      "kind": "project"
+    }
+  ],
+  "after_award": { "reports": "unspecified" },
+  "documents": [
+    "Project concept and conservation effect",
+    "Detailed cost estimate, cost breakdown and financing",
+    "Need statement and consequences if not implemented",
+    "Comparison with alternatives and cost-effectiveness",
+    "Financial and budgetary effects, including follow-on costs",
+    "Proof of ownership and use rights for the binding period",
+    "Expert statement or assessment of the project",
+    "Project location and measures maps",
+    "Required official permits, if applicable",
+    "Statutes, charity status proof and register entry, for associations"
+  ],
   "calls": [
     {
       "id": "rolling",
@@ -60,7 +97,117 @@
       "quote": "Projektanträge bis zu einer Fördersumme von 150.000 Euro können Sie jederzeit bei der Geschäftsstelle einreichen.",
       "checked_at": "2026-11-23",
       "method": "page"
-    }
+    },
+    "effort": [
+      {
+        "source_url": "https://www.naturschutzfonds.de/was-wir-foerdern",
+        "quote": "Die Projekte müssen zudem durch Dritte zum Beispiel durch die jeweilige untere Naturschutzbehörde des Landkreises oder der kreisfreien Stadt bewertet werden.",
+        "checked_at": "2026-11-23",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.naturschutzfonds.de/was-wir-foerdern",
+        "quote": "Liegt das Vorhaben in einem Großschutzgebiet, muss die Schutzgebietsverwaltung Stellung nehmen.",
+        "checked_at": "2026-11-23",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.naturschutzfonds.de/was-wir-foerdern",
+        "quote": "Der Antrag ist formgebunden und vollständig (Antragsformular mit Anlagen) einzureichen.",
+        "checked_at": "2026-11-23",
+        "method": "page"
+      }
+    ],
+    "eligibility": [
+      {
+        "source_url": "https://www.naturschutzfonds.de/was-wir-foerdern",
+        "quote": "solange das beantragte Projekt im Land Brandenburg umgesetzt wird.",
+        "checked_at": "2026-11-23",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.naturschutzfonds.de/was-wir-foerdern",
+        "quote": "Sie müssen den Zustand von Natur und Landschaft nachhaltig verbessern.",
+        "checked_at": "2026-11-23",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.naturschutzfonds.de/fileadmin/nsf/Dokumente/Foerderung/Foerderantrag-Formular-2026.pdf",
+        "quote": "mit der zu fördernden Maßnahme noch nicht begonnen wurde und auch vor Bekanntgabe des Zuwendungsbescheides nicht begonnen wird.",
+        "checked_at": "2026-11-23",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.naturschutzfonds.de/fileadmin/nsf/Dokumente/Foerderung/Foerderantrag-Formular-2026.pdf",
+        "quote": "die zu fördernde Maßnahme nicht der Erfüllung einer gesetzlichen Pflicht oder sonstigen Auflage seitens des Antragstellers oder Dritter dient.",
+        "checked_at": "2026-11-23",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.naturschutzfonds.de/was-wir-foerdern",
+        "quote": "muss die Verfügbarkeit der Flächen gesichert sein und die Zustimmung der Eigentümer*innen und Nutzer*innen schriftlich vorliegen.",
+        "checked_at": "2026-11-23",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.naturschutzfonds.de/was-wir-foerdern",
+        "quote": "Daher unterstützen wir weder eine reine Flächensicherung noch von Maßnahmen entkoppelte Planungsleistungen finanziell.",
+        "checked_at": "2026-11-23",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.naturschutzfonds.de/was-wir-foerdern",
+        "quote": "Dauerpflege, dass heißt regelmäßig wiederkehrende Maßnahmen, werden nicht finanziert.",
+        "checked_at": "2026-11-23",
+        "method": "page"
+      }
+    ],
+    "after_award": [
+      {
+        "source_url": "https://www.naturschutzfonds.de/fileadmin/nsf/Dokumente/Foerderung/Foerderrichtlinie.pdf",
+        "quote": "Der Verwendungsnachweis ist nach den VV zu § 44 LHO unter Verwendung der ausgereichten Formblätter gegenüber dem NaturSchutzFonds Brandenburg zu führen",
+        "checked_at": "2026-11-23",
+        "method": "page"
+      }
+    ],
+    "documents": [
+      {
+        "source_url": "https://www.naturschutzfonds.de/fileadmin/nsf/Dokumente/Foerderung/Foerderantrag-Formular-2026.pdf",
+        "quote": "Konzeption, Darstellung des Naturschutzeffektes",
+        "checked_at": "2026-11-23",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.naturschutzfonds.de/fileadmin/nsf/Dokumente/Foerderung/Foerderantrag-Formular-2026.pdf",
+        "quote": "Kostenvoranschlag, Kostengliederung, Finanzierung (detaillierte Kostenermittlung, detaillierter Finanzierungsplan mit Angaben zur Herkunft der Mittel, Nachweis der Gesamtfinanzierung, zeitlicher Ablaufplan für die Realisierung der Maßnahme",
+        "checked_at": "2026-11-23",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.naturschutzfonds.de/fileadmin/nsf/Dokumente/Foerderung/Foerderantrag-Formular-2026.pdf",
+        "quote": "Notwendigkeit der Maßnahme/evtl. Folgen bei Nichtdurchführung (naturschutzfachliche Begründung) (auf gesondertem Blatt darstellen) 7.2 Vergleich zu alternativen Möglichkeiten - Nutzen und Wirtschaftlichkeitsvergleich (auf gesondertem Blatt darstellen) 8 Finanz- und haushaltswirtschaftliche Auswirkungen (u.a. Darstellung der Folgekosten und deren Tragbarkeit für den Antragsteller)",
+        "checked_at": "2026-11-23",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.naturschutzfonds.de/fileadmin/nsf/Dokumente/Foerderung/Foerderantrag-Formular-2026.pdf",
+        "quote": "Eigentums- und Nutzungsrechtsnachweis über die Dauer der Zweckbindungsfrist d) bei Grunderwerb: Eigentumsnachweis / Verkaufsangebot des Eigentümers Stellungnahme des zuständigen Amtes für Landwirtschaft von Landkreis / kreisfreier Stadt e) fachliche Stellungnahme bzw. fachliche Bewertung zum Projektantrag",
+        "checked_at": "2026-11-23",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.naturschutzfonds.de/fileadmin/nsf/Dokumente/Foerderung/Foerderantrag-Formular-2026.pdf",
+        "quote": "Kartendarstellungen zum Projektstandort / zu den Maßnahmen: Übersichtskarte Maßnahmenkarte Flurkarte g) Erforderliche behördliche Genehmigungen (z.B. Baugenehmigung, Plangenehmigung, Planfeststellungsbeschluss)",
+        "checked_at": "2026-11-23",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.naturschutzfonds.de/fileadmin/nsf/Dokumente/Foerderung/Foerderantrag-Formular-2026.pdf",
+        "quote": "bei Vereinen/Verbänden/Stiftungen als Antragsteller: Satzung Gemeinnützigkeitsnachweis Registereintragung",
+        "checked_at": "2026-11-23",
+        "method": "page"
+      }
+    ]
   },
   "checked_at": "2026-11-23"
 }

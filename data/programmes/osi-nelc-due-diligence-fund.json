@@ -14,6 +14,25 @@
   "amount": { "currency": "USD", "max": 25000 },
   "co_finance_required": null,
   "reporting": null,
+  "effort": { "steps": ["Proposal submission through Foundant"] },
+  "eligibility": [
+    {
+      "rule": "Project is a proposed fee acquisition, not a conservation easement",
+      "kind": "project"
+    },
+    {
+      "rule": "Not for paid or post-contract diligence, easement costs, staff time, surveys, closing or stewardship costs",
+      "kind": "project"
+    },
+    {
+      "rule": "If applying more than once, each application is for a distinct project",
+      "kind": "project"
+    }
+  ],
+  "after_award": { "reports": "unspecified" },
+  "documents": [
+    "Project shapefile in a compressed .zip folder containing .shp, .shx, .dbf and .prj components"
+  ],
   "calls": [
     {
       "id": "q1-2026",
@@ -86,7 +105,51 @@
       "quote": "supports small and mid-sized land trusts in early-stage project development expenses",
       "checked_at": "2026-11-23",
       "method": "page"
-    }
+    },
+    "effort": [
+      {
+        "source_url": "https://assets.openspaceinstitute.org/development/Application_New-England-Land-Conservation-Due-Diligence-Fund.pdf?dm=1787838788",
+        "quote": "Proposals must be submitted online through Foundant, OSI's grant management platform.",
+        "checked_at": "2026-11-23",
+        "method": "page"
+      }
+    ],
+    "eligibility": [
+      {
+        "source_url": "https://assets.openspaceinstitute.org/development/Application_New-England-Land-Conservation-Due-Diligence-Fund.pdf?dm=1787838788",
+        "quote": "Please confirm the project is a proposed fee acquisition. This funding cannot support conservation easement transactions.",
+        "checked_at": "2026-11-23",
+        "method": "page"
+      },
+      {
+        "source_url": "https://assets.openspaceinstitute.org/development/Final-RFP_NE-Land-Conservation-Due-Diligence-rev.pdf?dm=1787839079",
+        "quote": "Funding may not support: • Reimbursements for diligence activities already paid for at the time of application • Diligence activities (including appraisals, title work, and legal services) to be incurred after the project is under contract • Costs associated with conservation easements • Staff time • Surveys • Recording fees or other closing costs • Stewardship expenses",
+        "checked_at": "2026-11-23",
+        "method": "page"
+      },
+      {
+        "source_url": "https://assets.openspaceinstitute.org/development/Final-RFP_NE-Land-Conservation-Due-Diligence-rev.pdf?dm=1787839079",
+        "quote": "Applicants may submit multiple applications, provided they are for distinct projects.",
+        "checked_at": "2026-11-23",
+        "method": "page"
+      }
+    ],
+    "after_award": [
+      {
+        "source_url": "https://assets.openspaceinstitute.org/development/Final-RFP_NE-Land-Conservation-Due-Diligence-rev.pdf?dm=1787839079",
+        "quote": "Grantees will be expected to provide brief, informal status updates to OSI as the project develops over the 24-month period following the grant award.",
+        "checked_at": "2026-11-23",
+        "method": "page"
+      }
+    ],
+    "documents": [
+      {
+        "source_url": "https://assets.openspaceinstitute.org/development/Application_New-England-Land-Conservation-Due-Diligence-Fund.pdf?dm=1787838788",
+        "quote": "Provide a shapefile of the in a compressed .zip folder. The .zip folder must contain at least the .shp, .shx, .dbf., and .prj file components of the shapefile.",
+        "checked_at": "2026-11-23",
+        "method": "page"
+      }
+    ]
   },
   "checked_at": "2026-11-09"
 }

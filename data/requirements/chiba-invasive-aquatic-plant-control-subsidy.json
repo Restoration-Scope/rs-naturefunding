@@ -1,36 +1,148 @@
 {
   "id": "chiba-invasive-aquatic-plant-control-subsidy",
-  "read_on": "2026-11-20",
+  "read_on": "2026-11-23",
   "prompt_version": "req-2026-11-20.1",
-  "models": ["cursor:gpt-5.6-luna-high"],
+  "models": ["cursor:gpt-5.6-luna-high", "cursor:gpt-5.6-sol-high"],
   "complete": false,
   "reasons": [
-    "https://www.pref.chiba.lg.jp/suiho/kasentou/ias/subsidy.html would not open (blocked: HTTP 200 bot challenge page)",
-    "no page opened"
+    "27 links could not be ranked without Jev",
+    "https://www.pref.chiba.lg.jp/suiho/kasentou/ias/documents/subsidy-1-0.docx: too little text: the page may need a browser",
+    "https://www.pref.chiba.lg.jp/suiho/kasentou/ias/documents/subsidy-1-0.pdf: a PDF with almost no text, even read by OCR",
+    "https://www.pref.chiba.lg.jp/suiho/kasentou/ias/documents/r8kisairei1.pdf: a PDF with almost no text, even read by OCR",
+    "the text names a document with rules that was not read: 農林水産省HP(ナガエツルノゲイトウの駆除対策について)",
+    "Jev did not check this reading, so an absent fact is not known to be absent"
   ],
   "requirements_checked": false,
-  "documents": [],
-  "failures": [
+  "documents": [
     {
+      "ref": "D1",
       "url": "https://www.pref.chiba.lg.jp/suiho/kasentou/ias/subsidy.html",
+      "final_url": "https://www.pref.chiba.lg.jp/suiho/kasentou/ias/subsidy.html",
       "from": null,
-      "kind": "blocked",
-      "message": "HTTP 200 bot challenge page"
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 4015,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:e9bed26549e1425982d7acb5f6ec79f0163050d2e1bdb6b03e311249fc2bad14"
+    },
+    {
+      "ref": "D2",
+      "url": "https://www.pref.chiba.lg.jp/suiho/kasentou/ias/documents/r8annai.pdf",
+      "final_url": "https://www.pref.chiba.lg.jp/suiho/kasentou/ias/documents/r8annai.pdf",
+      "from": "https://www.pref.chiba.lg.jp/suiho/kasentou/ias/subsidy.html",
+      "anchor": "令和8年度湖沼における外来水生植物防除事業補助金 チラシ(PDF:257.3KB)",
+      "depth": 1,
+      "pdf": true,
+      "chars": 1314,
+      "pages": 2,
+      "low_text": false,
+      "hash": "sha256:d8e6e03f08050003306af987cdd55f2c91e67f2ebaa5161cff90d564b268d639"
+    },
+    {
+      "ref": "D3",
+      "url": "https://www.pref.chiba.lg.jp/suiho/kasentou/ias/documents/r8youkou.pdf",
+      "final_url": "https://www.pref.chiba.lg.jp/suiho/kasentou/ias/documents/r8youkou.pdf",
+      "from": "https://www.pref.chiba.lg.jp/suiho/kasentou/ias/subsidy.html",
+      "anchor": "湖沼における外来水生植物防除事業補助金交付要綱(PDF:352.9KB)",
+      "depth": 1,
+      "pdf": true,
+      "chars": 7235,
+      "pages": 20,
+      "low_text": false,
+      "hash": "sha256:c324bea217aed46000d310b00b1abc11c25df4fcddee68a472465a27f1c92cd5"
+    },
+    {
+      "ref": "D4",
+      "url": "https://www.pref.chiba.lg.jp/suiho/kasentou/ias/documents/r8youryou.pdf",
+      "final_url": "https://www.pref.chiba.lg.jp/suiho/kasentou/ias/documents/r8youryou.pdf",
+      "from": "https://www.pref.chiba.lg.jp/suiho/kasentou/ias/subsidy.html",
+      "anchor": "令和8年度湖沼における外来水生植物防除事業補助金実施要領(PDF:99.9KB)",
+      "depth": 1,
+      "pdf": true,
+      "chars": 2903,
+      "pages": 4,
+      "low_text": false,
+      "hash": "sha256:aa35b272049bcb71b46022bc91eab8df18c4a96cda67d0095d917c1e65aa4bd2"
+    },
+    {
+      "ref": "D5",
+      "url": "https://www.pref.chiba.lg.jp/suiho/kasentou/ias/documents/subsidy-1-0.docx",
+      "final_url": "https://www.pref.chiba.lg.jp/suiho/kasentou/ias/documents/subsidy-1-0.docx",
+      "from": "https://www.pref.chiba.lg.jp/suiho/kasentou/ias/subsidy.html",
+      "anchor": "交付申請書(ワード:19.5KB)",
+      "depth": 1,
+      "pdf": false,
+      "chars": 256,
+      "pages": null,
+      "low_text": true,
+      "hash": "sha256:3a1b4b2fbb3e34a7fa97d5965db861b4bff31e69bb4a3a4c6a0d3453f3df9ad7"
+    },
+    {
+      "ref": "D6",
+      "url": "https://www.pref.chiba.lg.jp/suiho/kasentou/ias/documents/subsidy-1-0.pdf",
+      "final_url": "https://www.pref.chiba.lg.jp/suiho/kasentou/ias/documents/subsidy-1-0.pdf",
+      "from": "https://www.pref.chiba.lg.jp/suiho/kasentou/ias/subsidy.html",
+      "anchor": "交付申請書(PDF:35.2KB)",
+      "depth": 1,
+      "pdf": true,
+      "chars": 257,
+      "pages": 1,
+      "low_text": true,
+      "hash": "sha256:638b6af11809246ed8b4001ce80c1d06101da6c76e8057ef6e9c7430bef2bda1"
+    },
+    {
+      "ref": "D7",
+      "url": "https://www.pref.chiba.lg.jp/suiho/kasentou/ias/documents/r8kisairei1.pdf",
+      "final_url": "https://www.pref.chiba.lg.jp/suiho/kasentou/ias/documents/r8kisairei1.pdf",
+      "from": "https://www.pref.chiba.lg.jp/suiho/kasentou/ias/subsidy.html",
+      "anchor": "記載例(PDF:71.9KB)",
+      "depth": 1,
+      "pdf": true,
+      "chars": 365,
+      "pages": 1,
+      "low_text": true,
+      "hash": "sha256:658a8f4906f37885ed7f6421f69abda52c4fac1e2b531cb6abd180e4932fa7aa"
     }
   ],
-  "skipped_links": 0,
-  "chunks": [{ "id": "all", "docs": [], "chars": 0 }],
+  "failures": [
+    {
+      "url": "https://www.pref.chiba.lg.jp/suiho/kasentou/ias/documents/subsidy-1-0.docx",
+      "from": "https://www.pref.chiba.lg.jp/suiho/kasentou/ias/subsidy.html",
+      "kind": "low_text",
+      "message": "too little text: the page may need a browser"
+    },
+    {
+      "url": "https://www.pref.chiba.lg.jp/suiho/kasentou/ias/documents/subsidy-1-0.pdf",
+      "from": "https://www.pref.chiba.lg.jp/suiho/kasentou/ias/subsidy.html",
+      "kind": "low_text",
+      "message": "a PDF with almost no text, even read by OCR"
+    },
+    {
+      "url": "https://www.pref.chiba.lg.jp/suiho/kasentou/ias/documents/r8kisairei1.pdf",
+      "from": "https://www.pref.chiba.lg.jp/suiho/kasentou/ias/subsidy.html",
+      "kind": "low_text",
+      "message": "a PDF with almost no text, even read by OCR"
+    }
+  ],
+  "skipped_links": 156,
+  "chunks": [{ "id": "all", "docs": ["D1", "D2", "D3", "D4", "D5", "D6", "D7"], "chars": 17406 }],
   "outcomes": {
-    "eligibility": "unresolved",
-    "documents": "unresolved",
-    "effort": "unresolved",
-    "co_finance": "unresolved",
-    "consortium": "unresolved",
-    "after_award": "unresolved"
+    "eligibility": "stated",
+    "documents": "stated",
+    "effort": "stated",
+    "co_finance": "stated",
+    "consortium": "not_found",
+    "after_award": "stated"
   },
-  "written": [],
-  "escalated": [],
+  "written": ["eligibility", "documents", "effort", "co_finance", "after_award"],
+  "escalated": ["eligibility", "documents", "co_finance", "after_award"],
   "flags": [],
-  "notes": ["nothing to read"],
+  "notes": [
+    "extractor: D2 describes eligible groups as mainly composed of Chiba residents, while D3 requires at least one member with a Chiba connection. The subsidy rate is up to 10/10 of eligible costs, but the awarded amount may be below the requested amount.",
+    "source chiba-invasive-aquatic-plant-control-subsidy-2: added for https://www.pref.chiba.lg.jp/suiho/kasentou/ias/documents/r8youkou.pdf",
+    "source chiba-invasive-aquatic-plant-control-subsidy-3: added for https://www.pref.chiba.lg.jp/suiho/kasentou/ias/documents/r8youryou.pdf"
+  ],
   "usd": 0
 }

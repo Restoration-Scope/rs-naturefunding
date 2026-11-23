@@ -17,6 +17,23 @@
   "amount": null,
   "co_finance_required": null,
   "reporting": null,
+  "effort": { "steps": ["Application"] },
+  "eligibility": [
+    { "rule": "Voluntary-work grants: the work benefits a larger region", "kind": "project" },
+    {
+      "rule": "For voluntary-work grants, no work time, fees or other hunting equipment costs",
+      "kind": "project"
+    },
+    {
+      "rule": "Local eradication planning is done in close cooperation with the wildlife unit",
+      "kind": "project"
+    }
+  ],
+  "after_award": { "reports": "final" },
+  "documents": [
+    "Budget for the application period with specified costs",
+    "Project plan describing how the project reduces invasive species impact"
+  ],
   "calls": [
     {
       "id": "rolling",
@@ -65,7 +82,57 @@
       "quote": "För år 2026 är budgetanslagen för projekt som understöds enligt punkt två 40 000 euro och för projekt enligt punkt tre 55 000 euro.",
       "checked_at": "2026-11-23",
       "method": "page"
-    }
+    },
+    "effort": [
+      {
+        "source_url": "https://www.regeringen.ax/sites/default/files/attachments/page/Riktlinjer%20f%C3%B6r%20beviljande%20av%20underst%C3%B6d%20f%C3%B6r%20att%20underst%C3%B6da%20arbete%20mot%20invasiva%202026%20.pdf",
+        "quote": "Ansökningar behandlas löpande under året med beaktande av budgeterade medel.",
+        "checked_at": "2026-11-23",
+        "method": "page"
+      }
+    ],
+    "eligibility": [
+      {
+        "source_url": "https://www.regeringen.ax/sites/default/files/attachments/page/Riktlinjer%20f%C3%B6r%20beviljande%20av%20underst%C3%B6d%20f%C3%B6r%20att%20underst%C3%B6da%20arbete%20mot%20invasiva%202026%20.pdf",
+        "quote": "för arbete mot invasiva arter som är till nytta för en större region.",
+        "checked_at": "2026-11-23",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.regeringen.ax/sites/default/files/attachments/page/Riktlinjer%20f%C3%B6r%20beviljande%20av%20underst%C3%B6d%20f%C3%B6r%20att%20underst%C3%B6da%20arbete%20mot%20invasiva%202026%20.pdf",
+        "quote": "Arbetstid eller arvoden utgör inte en stödberättigad kostnad. Övrig jaktutrustning som till exempel vapen, sikten, ammunition, lampor, hundar, fordon och så vidare utgör inte heller stödberättigade kostnader.",
+        "checked_at": "2026-11-23",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.regeringen.ax/sites/default/files/attachments/page/Riktlinjer%20f%C3%B6r%20beviljande%20av%20underst%C3%B6d%20f%C3%B6r%20att%20underst%C3%B6da%20arbete%20mot%20invasiva%202026%20.pdf",
+        "quote": "Planeringen ska utföras i nära samarbete med landskapsregeringens enhet för jakt- och viltvård.",
+        "checked_at": "2026-11-23",
+        "method": "page"
+      }
+    ],
+    "after_award": [
+      {
+        "source_url": "https://www.regeringen.ax/sites/default/files/attachments/page/Riktlinjer%20f%C3%B6r%20beviljande%20av%20underst%C3%B6d%20f%C3%B6r%20att%20underst%C3%B6da%20arbete%20mot%20invasiva%202026%20.pdf",
+        "quote": "Efter avslutad projektperiod ska projektet antingen slutredovisas eller förlängas genom ny ansökan.",
+        "checked_at": "2026-11-23",
+        "method": "page"
+      }
+    ],
+    "documents": [
+      {
+        "source_url": "https://www.regeringen.ax/sites/default/files/attachments/page/Riktlinjer%20f%C3%B6r%20beviljande%20av%20underst%C3%B6d%20f%C3%B6r%20att%20underst%C3%B6da%20arbete%20mot%20invasiva%202026%20.pdf",
+        "quote": "Ansökan ska innehålla budget för ansökningsperioden med specificerade kostnader.",
+        "checked_at": "2026-11-23",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.regeringen.ax/sites/default/files/attachments/page/Riktlinjer%20f%C3%B6r%20beviljande%20av%20underst%C3%B6d%20f%C3%B6r%20att%20underst%C3%B6da%20arbete%20mot%20invasiva%202026%20.pdf",
+        "quote": "Till ansökan ska bifogas en plan som beskriver på vilket sätt projektet bidrar till att minska påverkan av invasiva arter.",
+        "checked_at": "2026-11-23",
+        "method": "page"
+      }
+    ]
   },
   "checked_at": "2026-11-23",
   "pool": {

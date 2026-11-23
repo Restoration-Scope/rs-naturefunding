@@ -1,13 +1,11 @@
 {
   "id": "cbot-endangered-species-fund",
-  "read_on": "2026-11-20",
+  "read_on": "2026-11-23",
   "prompt_version": "req-2026-11-20.1",
   "models": ["cursor:gpt-5.6-luna-high"],
   "complete": false,
   "reasons": [
-    "5 links could not be ranked without Jev",
-    "6 links could not be ranked without Jev",
-    "the text names a document with rules that was not read: Current year's application",
+    "3 links could not be ranked without Jev",
     "Jev did not check this reading, so an absent fact is not known to be absent"
   ],
   "requirements_checked": false,
@@ -37,24 +35,11 @@
       "pages": 6,
       "low_text": false,
       "hash": "sha256:d1a1536a7b17226eb462fde6b8702bd008a454ffc2801a55b8d699b8c803d594"
-    },
-    {
-      "ref": "D3",
-      "url": "https://www.brookfieldzoo.org/privacy-policy",
-      "final_url": "https://www.brookfieldzoo.org/privacy-policy",
-      "from": "https://www.brookfieldzoo.org/cbot",
-      "anchor": "Privacy Policy",
-      "depth": 1,
-      "pdf": false,
-      "chars": 25679,
-      "pages": null,
-      "low_text": false,
-      "hash": "sha256:5e4b821314cb258eb2225493093c72867218c73720b6c550fc237d5e934bcb8c"
     }
   ],
   "failures": [],
-  "skipped_links": 30,
-  "chunks": [{ "id": "all", "docs": ["D1", "D2", "D3"], "chars": 36193 }],
+  "skipped_links": 21,
+  "chunks": [{ "id": "all", "docs": ["D1", "D2"], "chars": 10408 }],
   "outcomes": {
     "eligibility": "not_found",
     "documents": "not_found",
@@ -67,7 +52,7 @@
   "escalated": [],
   "flags": [],
   "notes": [
-    "extractor: D1 states that the 2026 grants are closed. D2 is explicitly a 2025 application provided for reference and not the current year's application, so its application, media, deadline and reporting requirements were not applied to the 2026 round."
+    "extractor: D2 is a 2025 application provided for reference and is explicitly not the current year's application. D1 states that the 2026 grants are closed and applications are closed until Summer 2026, but does not state current or next-round applicant requirements, documents, process, co-financing, consortium rules or post-award duties."
   ],
   "usd": 0
 }

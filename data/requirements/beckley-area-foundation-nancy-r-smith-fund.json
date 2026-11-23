@@ -1,36 +1,72 @@
 {
   "id": "beckley-area-foundation-nancy-r-smith-fund",
-  "read_on": "2026-11-20",
+  "read_on": "2026-11-23",
   "prompt_version": "req-2026-11-20.1",
   "models": ["cursor:gpt-5.6-luna-high"],
   "complete": false,
   "reasons": [
-    "https://www.bafwv.org/field-of-interest-grant-opportunities.html would not open (network: ECONNRESET: The socket connection was closed unexpectedly. For more information, pass `verbose: true` in the second argument to fetch())",
-    "no page opened"
+    "18 links could not be ranked without Jev",
+    "19 links could not be ranked without Jev",
+    "Jev did not check this reading, so an absent fact is not known to be absent"
   ],
   "requirements_checked": false,
-  "documents": [],
-  "failures": [
+  "documents": [
     {
+      "ref": "D1",
       "url": "https://www.bafwv.org/field-of-interest-grant-opportunities.html",
+      "final_url": "https://www.bafwv.org/field-of-interest-grant-opportunities.html",
       "from": null,
-      "kind": "network",
-      "message": "ECONNRESET: The socket connection was closed unexpectedly. For more information, pass `verbose: true` in the second argument to fetch()"
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 27392,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:8859b1d312ee3d6948d0e5ddb8346e5298003b7464a7958efad22346c73048c5"
+    },
+    {
+      "ref": "D2",
+      "url": "https://bafwv.org/grant-application-budget/",
+      "final_url": "https://bafwv.org/grant-application-budget/",
+      "from": "https://www.bafwv.org/field-of-interest-grant-opportunities.html",
+      "anchor": "Grant Application Budget",
+      "depth": 1,
+      "pdf": false,
+      "chars": 3323,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:907cabba57c5b2d69a8efa915fc5f32f90720b3bf7886f4a8ce418c3bf90224f"
+    },
+    {
+      "ref": "D3",
+      "url": "https://bafwv.org/how-to-apply/",
+      "final_url": "https://bafwv.org/how-to-apply/",
+      "from": "https://www.bafwv.org/field-of-interest-grant-opportunities.html",
+      "anchor": "How to Apply",
+      "depth": 1,
+      "pdf": false,
+      "chars": 5841,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:ca4865fef466787a4bbc83e6ac204856208ac0dcbccb16d2c442679d1fb9ea6b"
     }
   ],
-  "skipped_links": 0,
-  "chunks": [{ "id": "all", "docs": [], "chars": 0 }],
+  "failures": [],
+  "skipped_links": 163,
+  "chunks": [{ "id": "all", "docs": ["D1", "D2", "D3"], "chars": 36891 }],
   "outcomes": {
-    "eligibility": "unresolved",
-    "documents": "unresolved",
-    "effort": "unresolved",
-    "co_finance": "unresolved",
-    "consortium": "unresolved",
-    "after_award": "unresolved"
+    "eligibility": "stated",
+    "documents": "stated",
+    "effort": "stated",
+    "co_finance": "not_found",
+    "consortium": "not_found",
+    "after_award": "not_found"
   },
-  "written": [],
+  "written": ["eligibility", "documents", "effort"],
   "escalated": [],
   "flags": [],
-  "notes": ["nothing to read"],
+  "notes": [
+    "source beckley-area-foundation-nancy-r-smith-fund-2: added for https://bafwv.org/grant-application-budget/"
+  ],
   "usd": 0
 }

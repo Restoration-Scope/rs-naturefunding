@@ -72,7 +72,8 @@ const NOISE =
 export const SITE_PAGE =
   /privacy|cookie|data[ -]protection|datenschutz|impressum|integritetspolicy|個人情報|legal[ -]notice|mentions[ -]l[ée]gales|aviso[ -]legal|terms[ -]of[ -](?:use|service|sale)|conditions[ -]of[ -]use|conditions[ -]d'utilisation|website[ -]terms|\buse[ -]policy|accessibility|disclaimer|copyright|refund[ -]polic|(?:sms|mobile)[ -]terms|sitemap/i
 
-const SKIP_HREF = /^(?:mailto:|tel:|javascript:|#)|\.(?:jpe?g|png|gif|svg|webp|zip|mp4|mp3)(?:$|\?)/i
+/** Not a page: mail, phone, script and anchor links, media files, and "share this page" buttons (`?share=facebook`). */
+const SKIP_HREF = /^(?:mailto:|tel:|javascript:|#)|\.(?:jpe?g|png|gif|svg|webp|zip|mp4|mp3)(?:$|\?)|[?&]share=/i
 const DOC_HREF = /\.(?:pdf|docx?|odt|rtf)(?:$|[?#])/i
 const SOCIAL = /(?:facebook|twitter|x|linkedin|instagram|youtube|tiktok|flickr|vimeo)\.com$/i
 
@@ -98,21 +99,23 @@ export const isFileHost = (host: string) => FILE_HOST.test(host)
 /** `offsite`: a page on another site whose link is about applying; it is ranked like any link, but never read: a kept one blocks the stamp. */
 export type Candidate = Link & { url: string; score: 'strong' | 'ambiguous' | 'offsite' | 'skip'; why: string; offsite?: true }
 
+const segs = (p: string) => decodeURIComponent(p).split('/').filter(Boolean)
+
+/** How many leading folders a link shares with a page on its host; the link keeps at least its own last segment. */
+export function sharedFolders(u: URL, page: string): number {
+  const other = URL.parse(page)
+  if (!other || other.hostname !== u.hostname) return 0
+  const mine = segs(u.pathname)
+  const folders = segs(other.pathname)
+  let n = 0
+  while (n < folders.length && n < mine.length - 1 && folders[n] === mine[n]) n++
+  return n
+}
+
 /** The segments of a link's path past the longest folder prefix it shares with any of these pages on its host. */
 export function ownPath(u: URL, pages: string[]): string {
-  const segs = (p: string) => decodeURIComponent(p).split('/').filter(Boolean)
-  const mine = segs(u.pathname)
-  let shared = 0
-  for (const page of pages) {
-    const other = URL.parse(page)
-    if (!other || other.hostname !== u.hostname) continue
-    // The link keeps at least its own last segment.
-    const folders = segs(other.pathname)
-    let n = 0
-    while (n < folders.length && n < mine.length - 1 && folders[n] === mine[n]) n++
-    shared = Math.max(shared, n)
-  }
-  return mine.slice(shared).join('/')
+  const shared = Math.max(0, ...pages.map((page) => sharedFolders(u, page)))
+  return segs(u.pathname).slice(shared).join('/')
 }
 
 /** What code can say about a link: follow it, ask Jev, or skip it, and why. */
@@ -152,10 +155,16 @@ export function classifyLink(link: Link, pageUrl: string, programme: Pick<Progra
   return { ...link, url, score: 'skip', why: sameSite ? 'unrelated page' : 'another site' }
 }
 
-/** The page's links with their words and the text around them, from the HTML. */
-export async function linksFrom(html: string): Promise<Link[]> {
+/** The page's links with their words and the text around them, from the HTML. A page's `<base href>` resolves its relative links, as a browser does. */
+export async function linksFrom(html: string, pageUrl?: string): Promise<Link[]> {
   const hrefs: string[] = []
+  let base: string | null = null
   const marked = await new HTMLRewriter()
+    .on('base[href]', {
+      element(el) {
+        base ??= decodeEntities(el.getAttribute('href') ?? '')
+      },
+    })
     .on('a[href]', {
       element(el) {
         // The rewriter hands attributes back raw: `&amp;` in an href is a plain `&` in the URL.
@@ -167,8 +176,10 @@ export async function linksFrom(html: string): Promise<Link[]> {
     .transform(new Response(html))
     .text()
   const text = await htmlToText(marked)
+  const baseUrl = base && pageUrl ? URL.parse(base, pageUrl) : null
   const out: Link[] = []
-  for (const [n, href] of hrefs.entries()) {
+  for (const [n, raw] of hrefs.entries()) {
+    const href = baseUrl && !/^(?:[a-z][a-z\d+.-]*:|#|\/\/)/i.test(raw) ? (URL.parse(raw, baseUrl)?.toString() ?? raw) : raw
     const start = text.indexOf(`⟦L${n}⟧`)
     const end = text.indexOf(`⟦/L${n}⟧`)
     if (start === -1 || end === -1) continue
@@ -288,7 +299,7 @@ export async function gather(
         return null
       } else {
         text = await htmlToText(r.html)
-        links = await linksFrom(r.html)
+        links = await linksFrom(r.html, r.finalUrl)
         const selector = opts.sources.find((s) => s.programme_id === p.id && s.url === url)?.selector
         if (selector) selected = await htmlToText(r.html, selector).catch(() => null)
       }
@@ -361,10 +372,16 @@ export async function gather(
       keep.sort((a, b) => b.yes - a.yes)
       strong = keep.map((s) => s.c)
       ambiguous = []
-    } else if (ambiguous.length) {
-      reasons.push(`${ambiguous.length} links could not be ranked without Jev`)
-      for (const c of ambiguous) skipped.push({ url: c.url, why: 'unranked: no Jev' })
-      ambiguous = []
+    } else {
+      // Without Jev, documents and links into the programme's own section go first: a site menu repeats on every
+      // page, and in page order its "Applications" and "Reporting" links spend the crawl bound (Tasmania's NRE).
+      const near = (c: Candidate) => (DOC_HREF.test(c.url) || isFileHost(new URL(c.url).hostname) ? Infinity : sharedFolders(new URL(c.url), p.url))
+      strong = strong.map((c, i) => ({ c, i, n: near(c) })).sort((a, b) => b.n - a.n || a.i - b.i).map((x) => x.c)
+      if (ambiguous.length) {
+        reasons.push(`${ambiguous.length} links could not be ranked without Jev`)
+        for (const c of ambiguous) skipped.push({ url: c.url, why: 'unranked: no Jev' })
+        ambiguous = []
+      }
     }
     for (const c of [...strong, ...ambiguous]) {
       if (c.score === 'offsite') {

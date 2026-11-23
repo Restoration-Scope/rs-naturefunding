@@ -19,6 +19,43 @@
   "pool": { "currency": "EUR", "value": 10000000, "period": "programme" },
   "co_finance_required": null,
   "reporting": "The grantee must cooperate with monitoring of the effects for ten years after the grant decision.",
+  "effort": {
+    "steps": [
+      "Mandatory pre-application consultation",
+      "Application form",
+      "Completeness and content review"
+    ]
+  },
+  "eligibility": [
+    { "rule": "Having ownership or leasehold control over the project area", "kind": "legal" },
+    {
+      "rule": "Having forest parcels in the Gelders Natuurnetwerk of at least 20 hectares",
+      "kind": "project"
+    },
+    { "rule": "Showing that buffer substances will improve the forests", "kind": "project" },
+    {
+      "rule": "Having an acidification-sensitive project area of at least 20 hectares for buffer substances",
+      "kind": "project"
+    },
+    {
+      "rule": "Applying no more than 3 tonnes per hectare of lime or shell grit, or 10 tonnes of rock dust",
+      "kind": "project"
+    },
+    {
+      "rule": "Applying buffer substances to no more than two-thirds of the project area",
+      "kind": "project"
+    },
+    {
+      "rule": "Not having received a provincial subsidy for the same or similar activity in the previous five years",
+      "kind": "project"
+    }
+  ],
+  "documents": [
+    "Recent bank statement, if this is the first application or the bank account changed",
+    "Project area map",
+    "Plan of approach consisting of a soil survey and/or quickscan, if applying for buffer substances",
+    "Permit copy, if a permit is required"
+  ],
   "calls": [
     {
       "id": "standing",
@@ -86,7 +123,91 @@
       "quote": "Voor deze subsidie is er in totaal €10.000.000.",
       "checked_at": "2026-11-23",
       "method": "page"
-    }
+    },
+    "effort": [
+      {
+        "source_url": "https://www.gelderland.nl/subsidies/bodemherstel-in-gelderse-bossen",
+        "quote": "U bent verplicht om een vooroverleg aan te vragen voordat u uw aanvraag indient.",
+        "checked_at": "2026-11-23",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.gelderland.nl/subsidies/bodemherstel-in-gelderse-bossen",
+        "quote": "Met deze link komt u bij het aanvraagformulier.",
+        "checked_at": "2026-11-23",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.gelderland.nl/subsidies/bodemherstel-in-gelderse-bossen",
+        "quote": "Eerst controleren we of een aanvraag compleet is, daarna beoordelen we de inhoud.",
+        "checked_at": "2026-11-23",
+        "method": "page"
+      }
+    ],
+    "eligibility": [
+      {
+        "source_url": "https://media.gelderland.nl/Subsidieregeling_Bodemherstel_in_Gelderse_bossen_paragraaf_2_37_RSG_003_fa7528882d.pdf",
+        "quote": "een natuurlijke persoon of een rechtspersoon die op grond van eigendom of erfpacht zeggenschap heeft over het plangebied.",
+        "checked_at": "2026-11-23",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.gelderland.nl/subsidies/bodemherstel-in-gelderse-bossen",
+        "quote": "uw bospercelen liggen binnen het Gelders Natuurnetwerk en de omvang tenminste 20 hectare is;",
+        "checked_at": "2026-11-23",
+        "method": "page"
+      },
+      {
+        "source_url": "https://media.gelderland.nl/Subsidieregeling_Bodemherstel_in_Gelderse_bossen_paragraaf_2_37_RSG_003_fa7528882d.pdf",
+        "quote": "uit het bodemonderzoek en de quickscan blijkt dat de bossen verbeteren als er bufferstoffen op het plangebied worden gebracht;",
+        "checked_at": "2026-11-23",
+        "method": "page"
+      },
+      {
+        "source_url": "https://media.gelderland.nl/Subsidieregeling_Bodemherstel_in_Gelderse_bossen_paragraaf_2_37_RSG_003_fa7528882d.pdf",
+        "quote": "het plangebied verzuringsgevoelig is en een omvang van tenminste 20 hectare heeft;",
+        "checked_at": "2026-11-23",
+        "method": "page"
+      },
+      {
+        "source_url": "https://media.gelderland.nl/Subsidieregeling_Bodemherstel_in_Gelderse_bossen_paragraaf_2_37_RSG_003_fa7528882d.pdf",
+        "quote": "bij toepassing van kalk of schelpengruis maximaal 3 ton per hectare , of; ii. bij toepassing van steenmeel maximaal 10 ton per hectare.",
+        "checked_at": "2026-11-23",
+        "method": "page"
+      },
+      {
+        "source_url": "https://media.gelderland.nl/Subsidieregeling_Bodemherstel_in_Gelderse_bossen_paragraaf_2_37_RSG_003_fa7528882d.pdf",
+        "quote": "bufferstoffen op maximaal 2/3 van de oppervlakte van het plangebied worden opgebracht;",
+        "checked_at": "2026-11-23",
+        "method": "page"
+      },
+      {
+        "source_url": "https://media.gelderland.nl/Subsidieregeling_Bodemherstel_in_Gelderse_bossen_paragraaf_2_37_RSG_003_fa7528882d.pdf",
+        "quote": "Subsidie wordt geweigerd voor zover voor dezelfde of een vergelijkbare activiteit in de vijf jaar voorafgaande aan de aanvraag door de provincie eerder subsidie is verleend aan de subsidieontvanger ten behoeve van het plangebied.",
+        "checked_at": "2026-11-23",
+        "method": "page"
+      }
+    ],
+    "documents": [
+      {
+        "source_url": "https://media.gelderland.nl/Checklist_verplichte_bijlagen_Bodemherstel_in_Gelderse_bossen_56b82a2f5a.pdf",
+        "quote": "Vraagt u voor de eerste keer subsidie of is uw bankrekeningnummer gewijzigd? Dan vragen wij u om een bewijs van een recent bankafschrift mee te sturen dat niet ouder is dan 1 jaar.",
+        "checked_at": "2026-11-23",
+        "method": "page"
+      },
+      {
+        "source_url": "https://media.gelderland.nl/Checklist_verplichte_bijlagen_Bodemherstel_in_Gelderse_bossen_56b82a2f5a.pdf",
+        "quote": "Kaart van het plangebied 3 Plan van aanpak bestaande uit een bodemonderzoek en/of quickscan. Dit is alleen nodig als u subsidie aanvraagt om bufferstoffen op te brengen.",
+        "checked_at": "2026-11-23",
+        "method": "page"
+      },
+      {
+        "source_url": "https://media.gelderland.nl/Checklist_verplichte_bijlagen_Bodemherstel_in_Gelderse_bossen_56b82a2f5a.pdf",
+        "quote": "Als er een vergunning nodig is, dan vragen wij u om ons een kopie te sturen.",
+        "checked_at": "2026-11-23",
+        "method": "page"
+      }
+    ]
   },
   "checked_at": "2026-11-23"
 }

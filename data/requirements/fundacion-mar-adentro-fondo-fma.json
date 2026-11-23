@@ -1,36 +1,76 @@
 {
   "id": "fundacion-mar-adentro-fondo-fma",
-  "read_on": "2026-11-20",
+  "read_on": "2026-11-23",
   "prompt_version": "req-2026-11-20.1",
   "models": ["cursor:gpt-5.6-luna-high"],
   "complete": false,
   "reasons": [
-    "https://fundacionmaradentro.cl/noticias/fondo-fma-2026-2027-abre-convocatoria-que-apoya-proyectos-por-el-cuidado-de-la-naturaleza/ would not open (network: ECONNRESET: The socket connection was closed unexpectedly. For more information, pass `verbose: true` in the second argument to fetch())",
-    "no page opened"
+    "1 links could not be ranked without Jev",
+    "the text names a document with rules that was not read: FMA application form",
+    "Jev did not check this reading, so an absent fact is not known to be absent"
   ],
   "requirements_checked": false,
-  "documents": [],
-  "failures": [
+  "documents": [
     {
+      "ref": "D1",
       "url": "https://fundacionmaradentro.cl/noticias/fondo-fma-2026-2027-abre-convocatoria-que-apoya-proyectos-por-el-cuidado-de-la-naturaleza/",
+      "final_url": "https://fundacionmaradentro.cl/noticias/fondo-fma-2026-2027-abre-convocatoria-que-apoya-proyectos-por-el-cuidado-de-la-naturaleza/",
       "from": null,
-      "kind": "network",
-      "message": "ECONNRESET: The socket connection was closed unexpectedly. For more information, pass `verbose: true` in the second argument to fetch()"
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 5173,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:31c3726ddc885638a3e1dd6802c3a0cad6955e4432f140ccdc2a97b1bc05f6a8"
+    },
+    {
+      "ref": "D2",
+      "url": "https://fundacionmaradentro.cl/wp-content/uploads/2026/07/bases-fondofma-260727.pdf",
+      "final_url": "https://fundacionmaradentro.cl/wp-content/uploads/2026/07/bases-fondofma-260727.pdf",
+      "from": "https://fundacionmaradentro.cl/noticias/fondo-fma-2026-2027-abre-convocatoria-que-apoya-proyectos-por-el-cuidado-de-la-naturaleza/",
+      "anchor": "Call guidelines",
+      "depth": 1,
+      "pdf": true,
+      "chars": 11572,
+      "pages": 9,
+      "low_text": false,
+      "hash": "sha256:770c2e04796393116506a4ba417c44e7ccd600dd2e038864ee0126760cef4b6e"
+    },
+    {
+      "ref": "D3",
+      "url": "https://fundacionmaradentro.cl/wp-content/uploads/2026/07/vd-preguntas-frecuentes-fondo-fma-2026-2027.pdf",
+      "final_url": "https://fundacionmaradentro.cl/wp-content/uploads/2026/07/vd-preguntas-frecuentes-fondo-fma-2026-2027.pdf",
+      "from": "https://fundacionmaradentro.cl/noticias/fondo-fma-2026-2027-abre-convocatoria-que-apoya-proyectos-por-el-cuidado-de-la-naturaleza/",
+      "anchor": "Frequent questions-fondo-fma-2026-2027",
+      "depth": 1,
+      "pdf": true,
+      "chars": 7840,
+      "pages": 3,
+      "low_text": false,
+      "hash": "sha256:daf5b3eedfd2765c74de7e5c4c6769fcc055c19215513d7a307f34d59745c2f9"
     }
   ],
-  "skipped_links": 0,
-  "chunks": [{ "id": "all", "docs": [], "chars": 0 }],
+  "failures": [],
+  "skipped_links": 50,
+  "chunks": [{ "id": "all", "docs": ["D1", "D2", "D3"], "chars": 25244 }],
   "outcomes": {
     "eligibility": "unresolved",
-    "documents": "unresolved",
+    "documents": "not_found",
     "effort": "unresolved",
-    "co_finance": "unresolved",
+    "co_finance": "not_found",
     "consortium": "unresolved",
-    "after_award": "unresolved"
+    "after_award": "stated"
   },
-  "written": [],
+  "written": ["after_award"],
   "escalated": [],
   "flags": [],
-  "notes": ["nothing to read"],
+  "notes": [
+    "extractor: The application form is said to contain the required attachment list, but it was not provided. After award, grantees must also keep and share an audiovisual record, survey direct beneficiaries, and present final project results to FMA.",
+    "eligibility: not written, the file quotes \"Must be at least 21 years old and hold either Chilean nationality or foreign nat\", this reading does not; the file quotes \"Individuals or teams that are currently implementing a project or program funded\", this reading does not; the file quotes \"Demonstrate a previous track record in the project area and/or with local commun\", this reading does not",
+    "effort: not written, the file quotes \"Application period: July 27 - August 24, 2026.\", this reading does not; the file quotes \"interviews: September 21 - October 2, 2026.\", this reading does not",
+    "consortium: the file states it, this reading found nothing",
+    "source fundacion-mar-adentro-fondo-fma-2: added for https://fundacionmaradentro.cl/wp-content/uploads/2026/07/bases-fondofma-260727.pdf"
+  ],
   "usd": 0
 }

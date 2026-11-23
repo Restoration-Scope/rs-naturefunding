@@ -1,43 +1,243 @@
 {
   "id": "rrf",
-  "read_on": "2026-11-20",
+  "read_on": "2026-11-23",
   "prompt_version": "req-2026-11-20.1",
   "models": ["cursor:gpt-5.6-luna-high"],
   "complete": false,
   "reasons": [
-    "https://rapid-response.org/how-to-apply/ would not open (network: ECONNRESET: The socket connection was closed unexpectedly. For more information, pass `verbose: true` in the second argument to fetch())",
-    "https://rapid-response.org/apply-for-funding-intro/ would not open (network: ECONNRESET: The socket connection was closed unexpectedly. For more information, pass `verbose: true` in the second argument to fetch())",
-    "no page opened"
+    "10 links could not be ranked without Jev",
+    "17 links could not be ranked without Jev",
+    "https://rapid-response.org/comment-postuler/guide-deligibilite/guide-dadmissibilite/?lang=fr would not open (blocked: connection reset on every try: the server filters bots)",
+    "https://rapid-response.org/como-presentar-una-solicitud/guia-de-elegibilidad/formulario-de-orientacion-sobre-elegibilidad/?lang=es would not open (blocked: connection reset on every try: the server filters bots)",
+    "http://rapid-response.org/wp-content/uploads/2025/08/RRF_Application_Form_English-2025.docx would not open (blocked: connection reset on every try: the server filters bots)",
+    "the crawl bound left http://rapid-response.org/wp-content/uploads/2025/08/RRF_Application_Form_French-2025-3.docx unread",
+    "the crawl bound left http://rapid-response.org/wp-content/uploads/2025/08/RRF_Application_Form_Spanish-2025.docx unread",
+    "the crawl bound left https://rapid-response.org/comment-postuler/guide-deligibilite/?lang=fr unread",
+    "the crawl bound left https://rapid-response.org/como-presentar-una-solicitud/guia-de-elegibilidad/?lang=es unread",
+    "the crawl bound left https://rapid-response.org/como-presentar-una-solicitud/guia-de-elegibilidad/formulario-de-orientacion-sobre-elegibilidad/ unread",
+    "the crawl bound left https://rapid-response.org/preguntas-frecuentes/?lang=es unread",
+    "the crawl bound left https://rapid-response.org/como-presentar-una-solicitud/rrf@fauna-flora.org unread",
+    "the crawl bound left https://rapid-response.org/envienos-su-solicitud-por-correo-electronico/?lang=es unread",
+    "the crawl bound left https://rapid-response.org/solicitud-de-financiacion-introduccion/rrf@fauna-flora.org unread",
+    "the text names a document with rules that was not read: A list of eligible countries",
+    "the text names a document with rules that was not read: List of UNESCO World Heritage Sites",
+    "the text names a document with rules that was not read: The tentative UNESCO World Heritage lists",
+    "the text names a document with rules that was not read: The RRF's definition of emergency",
+    "Jev did not check this reading, so an absent fact is not known to be absent"
   ],
   "requirements_checked": false,
-  "documents": [],
-  "failures": [
+  "documents": [
     {
+      "ref": "D1",
       "url": "https://rapid-response.org/how-to-apply/",
+      "final_url": "https://rapid-response.org/how-to-apply/",
       "from": null,
-      "kind": "network",
-      "message": "ECONNRESET: The socket connection was closed unexpectedly. For more information, pass `verbose: true` in the second argument to fetch()"
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 8924,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:061ddc2968ec79b2edc3f656301ba548e51501365d955619f06506c618389849"
     },
     {
+      "ref": "D2",
       "url": "https://rapid-response.org/apply-for-funding-intro/",
+      "final_url": "https://rapid-response.org/apply-for-funding-intro/",
       "from": null,
-      "kind": "network",
-      "message": "ECONNRESET: The socket connection was closed unexpectedly. For more information, pass `verbose: true` in the second argument to fetch()"
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 3969,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:390eb6028be7b283c22269a19aa0e21f1a7ef441588b378de8a3f4752b099ad0"
+    },
+    {
+      "ref": "D3",
+      "url": "https://rapid-response.org/apply-for-funding/",
+      "final_url": "https://rapid-response.org/apply-for-funding/",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 21196,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:f46dfcf51d7cea100f987d57669fd30ac0f7115d2b6c1bf2fdb3f86228ed1311"
+    },
+    {
+      "ref": "D4",
+      "url": "https://rapid-response.org/how-to-apply/eligibility-guidance/eligibility-guidance-form/",
+      "final_url": "https://rapid-response.org/how-to-apply/eligibility-guidance/eligibility-guidance-form/",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 7486,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:939f602848ef2a58f0ecb7e1817229c3f62bf8497972c8d3ad83efe3d0410870"
+    },
+    {
+      "ref": "D5",
+      "url": "https://rapid-response.org/how-to-apply/eligibility-guidance/",
+      "final_url": "https://rapid-response.org/how-to-apply/eligibility-guidance/",
+      "from": "https://rapid-response.org/how-to-apply/",
+      "anchor": "Find out if your project might be eligible for funding",
+      "depth": 1,
+      "pdf": false,
+      "chars": 4187,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:08e30ad8aaf2c5a518324cc4df204c86acdc82ed18360698da1f1254a7d4cff7"
+    },
+    {
+      "ref": "D6",
+      "url": "https://rapid-response.org/como-presentar-una-solicitud/?lang=es",
+      "final_url": "https://rapid-response.org/como-presentar-una-solicitud/?lang=es",
+      "from": "https://rapid-response.org/how-to-apply/",
+      "anchor": "Español",
+      "depth": 1,
+      "pdf": false,
+      "chars": 9161,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:f649b4708718c2099f2ead8e9c7d93024d586f1612bdcb3aefb43249b0d97a5e"
+    },
+    {
+      "ref": "D7",
+      "url": "https://rapid-response.org/frequently-asked-questions/",
+      "final_url": "https://rapid-response.org/frequently-asked-questions/",
+      "from": "https://rapid-response.org/how-to-apply/",
+      "anchor": "Frequently asked questions",
+      "depth": 1,
+      "pdf": false,
+      "chars": 9211,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:7abae89ac26619e8d99204bfe47bc9cd3b7a6652b2882286cc15dee29df00ebf"
+    },
+    {
+      "ref": "D8",
+      "url": "https://rapid-response.org/solicitud-de-financiacion-introduccion/?lang=es",
+      "final_url": "https://rapid-response.org/solicitud-de-financiacion-introduccion/?lang=es",
+      "from": "https://rapid-response.org/apply-for-funding-intro/",
+      "anchor": "Español",
+      "depth": 1,
+      "pdf": false,
+      "chars": 6909,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:1e724a236ad9ee52a8506943a785dc954b9295ffe55d048a30aeade4ec8ae48b"
+    },
+    {
+      "ref": "D9",
+      "url": "https://rapid-response.org/email-us-your-application/",
+      "final_url": "https://rapid-response.org/email-us-your-application/",
+      "from": "https://rapid-response.org/apply-for-funding-intro/",
+      "anchor": "",
+      "depth": 1,
+      "pdf": false,
+      "chars": 4227,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:a45f08733aa0506fa87e014d03d71810cfc2d0616a9f7671953da8c1ec632a93"
     }
   ],
-  "skipped_links": 0,
-  "chunks": [{ "id": "all", "docs": [], "chars": 0 }],
+  "failures": [
+    {
+      "url": "https://rapid-response.org/comment-postuler/guide-deligibilite/guide-dadmissibilite/?lang=fr",
+      "from": "https://rapid-response.org/how-to-apply/eligibility-guidance/eligibility-guidance-form/",
+      "kind": "blocked",
+      "message": "connection reset on every try: the server filters bots"
+    },
+    {
+      "url": "https://rapid-response.org/como-presentar-una-solicitud/guia-de-elegibilidad/formulario-de-orientacion-sobre-elegibilidad/?lang=es",
+      "from": "https://rapid-response.org/how-to-apply/eligibility-guidance/eligibility-guidance-form/",
+      "kind": "blocked",
+      "message": "connection reset on every try: the server filters bots"
+    },
+    {
+      "url": "http://rapid-response.org/wp-content/uploads/2025/08/RRF_Application_Form_English-2025.docx",
+      "from": "https://rapid-response.org/email-us-your-application/",
+      "kind": "blocked",
+      "message": "connection reset on every try: the server filters bots"
+    },
+    {
+      "url": "http://rapid-response.org/wp-content/uploads/2025/08/RRF_Application_Form_French-2025-3.docx",
+      "from": "https://rapid-response.org/email-us-your-application/",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "http://rapid-response.org/wp-content/uploads/2025/08/RRF_Application_Form_Spanish-2025.docx",
+      "from": "https://rapid-response.org/email-us-your-application/",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://rapid-response.org/comment-postuler/guide-deligibilite/?lang=fr",
+      "from": "https://rapid-response.org/how-to-apply/eligibility-guidance/",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://rapid-response.org/como-presentar-una-solicitud/guia-de-elegibilidad/?lang=es",
+      "from": "https://rapid-response.org/how-to-apply/eligibility-guidance/",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://rapid-response.org/como-presentar-una-solicitud/guia-de-elegibilidad/formulario-de-orientacion-sobre-elegibilidad/",
+      "from": "https://rapid-response.org/como-presentar-una-solicitud/?lang=es",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://rapid-response.org/preguntas-frecuentes/?lang=es",
+      "from": "https://rapid-response.org/como-presentar-una-solicitud/?lang=es",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://rapid-response.org/como-presentar-una-solicitud/rrf@fauna-flora.org",
+      "from": "https://rapid-response.org/como-presentar-una-solicitud/?lang=es",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://rapid-response.org/envienos-su-solicitud-por-correo-electronico/?lang=es",
+      "from": "https://rapid-response.org/solicitud-de-financiacion-introduccion/?lang=es",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    },
+    {
+      "url": "https://rapid-response.org/solicitud-de-financiacion-introduccion/rrf@fauna-flora.org",
+      "from": "https://rapid-response.org/solicitud-de-financiacion-introduccion/?lang=es",
+      "kind": "bound",
+      "message": "crawl bound of 8 documents reached"
+    }
+  ],
+  "skipped_links": 101,
+  "chunks": [
+    { "id": "all", "docs": ["D1", "D2", "D3", "D4", "D5", "D6", "D7", "D8", "D9"], "chars": 76219 }
+  ],
   "outcomes": {
     "eligibility": "unresolved",
     "documents": "unresolved",
-    "effort": "unresolved",
-    "co_finance": "unresolved",
-    "consortium": "unresolved",
-    "after_award": "unresolved"
+    "effort": "stated",
+    "co_finance": "stated",
+    "consortium": "not_found",
+    "after_award": "not_found"
   },
-  "written": [],
+  "written": ["effort", "co_finance"],
   "escalated": [],
   "flags": [],
-  "notes": ["nothing to read"],
+  "notes": [
+    "extractor: Applications are accepted year-round with no deadlines, but new applications are not processed while the office is closed between Christmas and New Year.",
+    "eligibility: not written, the file quotes \"Proposed end date* max. 6 months from start date\", this reading does not; the file quotes \"All organisations supported by RRF must be able to demonstrate how they ensure r\", this reading does not; the file has the rule \"The project lasts no more than 6 months\", this reading does not",
+    "documents: not written, the file quotes \"If the applicant organisation is not the official site management authority of t\", this reading does not"
+  ],
   "usd": 0
 }

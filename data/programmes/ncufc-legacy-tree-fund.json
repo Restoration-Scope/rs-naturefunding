@@ -14,6 +14,19 @@
   "amount": { "currency": "USD", "max": 5000, "typical": true, "note": "Historical grant size" },
   "co_finance_required": null,
   "reporting": null,
+  "eligibility": [
+    {
+      "rule": "Neighborhood plantings on private land generate public benefits",
+      "kind": "project"
+    },
+    {
+      "rule": "Street tree plantings involve homeowners along the focal street",
+      "kind": "project"
+    },
+    { "rule": "School projects involve the student body in implementation", "kind": "project" },
+    { "rule": "Natural area plantings are not arboretum-type planting", "kind": "project" },
+    { "rule": "Arbor Day plantings are not tree giveaways", "kind": "project" }
+  ],
   "calls": [
     {
       "id": "2027",
@@ -68,7 +81,39 @@
       "quote": "Historically, NCUFC has issued $5,000 grants to multiple organizations each year.",
       "checked_at": "2026-11-23",
       "method": "page"
-    }
+    },
+    "eligibility": [
+      {
+        "source_url": "https://www.ncufc.org/legacy-tree-fund.php",
+        "quote": "as long as the designated area generates public benefits.",
+        "checked_at": "2026-11-23",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.ncufc.org/legacy-tree-fund.php",
+        "quote": "Homeowners living along the focal street must be involved in the project.",
+        "checked_at": "2026-11-23",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.ncufc.org/legacy-tree-fund.php",
+        "quote": "The student body must be involved in the project's implementation.",
+        "checked_at": "2026-11-23",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.ncufc.org/legacy-tree-fund.php",
+        "quote": "Note, arboretum type planting is not supported.",
+        "checked_at": "2026-11-23",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.ncufc.org/legacy-tree-fund.php",
+        "quote": "Note, tree give away requests will not be accepted.",
+        "checked_at": "2026-11-23",
+        "method": "page"
+      }
+    ]
   },
   "checked_at": "2026-11-23"
 }
