@@ -14,6 +14,7 @@
     "deploy": "astro build && wrangler deploy",
     "astro": "astro",
     "validate": "bun scripts/data/validate.ts",
+    "gate": "bun run check && bun run validate && bun test && bun run build",
     "verify-quotes": "bun scripts/data/verify-quotes.ts",
     "sync-sources": "bun scripts/data/sync-sources.ts",
     "sync-favicons": "bun scripts/data/sync-favicons.ts",

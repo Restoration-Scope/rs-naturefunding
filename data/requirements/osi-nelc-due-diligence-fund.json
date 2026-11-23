@@ -8,7 +8,7 @@
     "3 links could not be ranked without Jev",
     "the text names a document with rules that was not read: Eligibility Map",
     "Jev did not check this reading, so an absent fact is not known to be absent",
-    "strong reading: the text names a document with rules that was not read: New England Due Diligence Fund Eligibility Map"
+    "strong reading: the text names a document with rules that was not read: Eligibility Map"
   ],
   "requirements_checked": false,
   "documents": [
@@ -27,34 +27,34 @@
     },
     {
       "ref": "D2",
-      "url": "https://assets.openspaceinstitute.org/development/Final-RFP_NE-Land-Conservation-Due-Diligence-rev.pdf?dm=1787839079",
-      "final_url": "https://assets.openspaceinstitute.org/development/Final-RFP_NE-Land-Conservation-Due-Diligence-rev.pdf?dm=1787839079",
-      "from": "https://www.openspaceinstitute.org/funds/nelc-due-diligence-fund",
-      "anchor": "Request for Proposals",
-      "depth": 1,
-      "pdf": true,
-      "chars": 6005,
-      "pages": 4,
-      "low_text": false,
-      "hash": "sha256:1ff8cd1b7b68bee9a9d5a2a32518ad2a195d5c70b4504e1d6591dac71ec318a1"
-    },
-    {
-      "ref": "D3",
       "url": "https://assets.openspaceinstitute.org/development/Application_New-England-Land-Conservation-Due-Diligence-Fund.pdf?dm=1787838788",
       "final_url": "https://assets.openspaceinstitute.org/development/Application_New-England-Land-Conservation-Due-Diligence-Fund.pdf?dm=1787838788",
-      "from": "https://www.openspaceinstitute.org/funds/nelc-due-diligence-fund",
-      "anchor": "available here",
-      "depth": 1,
+      "from": null,
+      "anchor": null,
+      "depth": 0,
       "pdf": true,
       "chars": 4287,
       "pages": 3,
       "low_text": false,
       "hash": "sha256:353758d25d5593fb809b72b25cdaa502f0daa26ce5b4a77973be66c5f28ec94f"
+    },
+    {
+      "ref": "D3",
+      "url": "https://assets.openspaceinstitute.org/development/Final-RFP_NE-Land-Conservation-Due-Diligence-rev.pdf?dm=1787839079",
+      "final_url": "https://assets.openspaceinstitute.org/development/Final-RFP_NE-Land-Conservation-Due-Diligence-rev.pdf?dm=1787839079",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": true,
+      "chars": 6005,
+      "pages": 4,
+      "low_text": false,
+      "hash": "sha256:1ff8cd1b7b68bee9a9d5a2a32518ad2a195d5c70b4504e1d6591dac71ec318a1"
     }
   ],
   "failures": [],
   "skipped_links": 86,
-  "chunks": [{ "id": "all", "docs": ["D1", "D2", "D3"], "chars": 14237 }],
+  "chunks": [{ "id": "all", "docs": ["D1", "D2", "D3"], "chars": 14083 }],
   "outcomes": {
     "eligibility": "partial",
     "documents": "stated",
@@ -68,14 +68,20 @@
   "flags": [
     {
       "field": "eligibility",
-      "item": "Project excludes prior reimbursements, post-contract diligence, easements, staff time, surveys, closing costs and stewardship",
-      "why": "the quote is not on any gathered document"
+      "item": "The request excludes reimbursements, post-contract diligence, easement costs, staff time, surveys, closing costs and stewardship expenses",
+      "why": "a rule is 5 to 120 characters"
     }
   ],
   "notes": [
-    "extractor: Applications are accepted on a rolling basis; D2 lists quarterly deadlines through 2027. The first listed deadline, September 25, 2026, has passed, while later quarterly cycles remain open.",
-    "source osi-nelc-due-diligence-fund-2: added for https://assets.openspaceinstitute.org/development/Application_New-England-Land-Conservation-Due-Diligence-Fund.pdf?dm=1787838788",
-    "source osi-nelc-due-diligence-fund-3: added for https://assets.openspaceinstitute.org/development/Final-RFP_NE-Land-Conservation-Due-Diligence-rev.pdf?dm=1787839079"
+    "extractor: The first quarterly deadline, September 25, 2026, is closed; later quarterly cycles are open. Small and mid-sized status and adoption of the Land Trust Alliance's Standards and Practices are encouraged or preferred, not stated as hard requirements."
   ],
-  "usd": 0
+  "usd": 0,
+  "review": {
+    "on": "2026-11-23",
+    "standards": "2026-11-23.1",
+    "reviewer": "claude-opus-5-5",
+    "hash": "464cef18cee0c9bc",
+    "verdicts": { "sound": 6, "wrong": 0, "missed": 0 },
+    "canaries": { "planted": 0, "caught": 0 }
+  }
 }

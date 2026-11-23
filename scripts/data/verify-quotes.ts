@@ -1,9 +1,9 @@
 /**
  * Fetches every page a fact cites and checks each quote appears on it, after folding
  * typography and case. Pages are cached for the day in .cache/pages.
- *   bun scripts/data/verify-quotes.ts [--dir <programmes dir>] [--fresh] [ids...]
+ *   bun scripts/data/verify-quotes.ts [--dir <programmes dir>] [--fresh] [--quotes <file: programme, url, quote per line, tab-separated>] [ids...]
  */
-import { mkdirSync, writeFileSync } from 'node:fs'
+import { mkdirSync, readFileSync, writeFileSync } from 'node:fs'
 import { join, resolve } from 'node:path'
 import { checkData, evidenceOf } from '../../src/data/load'
 import { comparable, normalise, quoteOnPage } from '../../src/data/text'
@@ -15,7 +15,21 @@ const args = process.argv.slice(2)
 const dirAt = args.indexOf('--dir')
 const dir = dirAt === -1 ? join(process.cwd(), 'data', 'programmes') : resolve(args[dirAt + 1])
 const fresh = args.includes('--fresh')
-const only = new Set(args.filter((a, i) => !a.startsWith('--') && args[i - 1] !== '--dir'))
+const quotesAt = args.indexOf('--quotes')
+const cited = (programme: string, url: string, quote: string) => `${programme}\t${url}\t${comparable(quote)}`
+const onlyQuotes =
+  quotesAt === -1
+    ? null
+    : new Set(
+        readFileSync(resolve(args[quotesAt + 1]!), 'utf8')
+          .split('\n')
+          .filter((l) => l.trim())
+          .map((l) => {
+            const [programme = '', url = '', ...quote] = l.split('\t')
+            return cited(programme, url, quote.join('\t'))
+          }),
+      )
+const only = new Set(args.filter((a, i) => !a.startsWith('--') && args[i - 1] !== '--dir' && args[i - 1] !== '--quotes'))
 
 const { programmes, issues } = checkData(dir, null)
 for (const issue of issues) console.error(`skipped, invalid: ${issue}`)
@@ -24,6 +38,7 @@ type Check = { programme: string; url: string; quote: string; method: 'page' | '
 const checks: Check[] = programmes
   .filter((p) => only.size === 0 || only.has(p.id))
   .flatMap((p) => evidenceOf(p).map((e) => ({ programme: p.id, url: e.source_url, quote: e.quote, method: e.method })))
+  .filter((c) => !onlyQuotes || onlyQuotes.has(cited(c.programme, c.url, c.quote)))
 
 const fetchedChecks = checks.filter((c) => c.method !== 'human')
 const skippedHuman = checks.length - fetchedChecks.length
@@ -74,9 +89,13 @@ console.log(
   }`,
 )
 
+// With --quotes, every listed quote must be one we checked: a quote that sits on no fact proves nothing.
+const unmatched = onlyQuotes ? [...onlyQuotes].filter((k) => !checks.some((c) => cited(c.programme, c.url, c.quote) === k)) : []
+for (const k of unmatched) console.error(`FAIL no fact cites ${k.split('\t').slice(0, 2).join(' ')} "${k.split('\t')[2]!.slice(0, 80)}"`)
+
 mkdirSync(join(process.cwd(), '.cache'), { recursive: true })
 writeFileSync(
   join(process.cwd(), '.cache', 'verify-report.json'),
   JSON.stringify({ ran_at: new Date().toISOString(), checks: checks.length, fetched: fetchedChecks.length, skippedHuman, passed, failures }, null, 2),
 )
-process.exit(failures.length === 0 && issues.length === 0 ? 0 : 1)
+process.exit(failures.length === 0 && issues.length === 0 && unmatched.length === 0 ? 0 : 1)

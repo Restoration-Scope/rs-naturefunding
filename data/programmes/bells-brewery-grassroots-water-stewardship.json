@@ -21,14 +21,18 @@
   "reporting": null,
   "eligibility": [
     { "rule": "Has 501(c)3 status", "kind": "legal" },
-    { "rule": "Is not a City, County, or State agency", "kind": "legal" },
     {
-      "rule": "Has not received over $2500 in Bell's support in a calendar year, unless a 2025 grantee",
-      "kind": "other"
+      "rule": "Is not for political campaigns, religious purposes, media projects or event sponsorships",
+      "kind": "project"
+    },
+    { "rule": "Is not a public or private school", "kind": "legal" },
+    {
+      "rule": "Does not request capital campaign, pass-through, general operating or facilities funding",
+      "kind": "project"
     },
     {
-      "rule": "Not a school; no religious, media, event sponsorship, capital campaign, pass-through or general operating requests",
-      "kind": "project"
+      "rule": "Has not received more than $2500 in Bell support in a calendar year, unless it is a 2025 grantee",
+      "kind": "other"
     }
   ],
   "calls": [],
@@ -72,19 +76,25 @@
       },
       {
         "source_url": "https://bellsbeer.com/grassroots-grant-cycle",
-        "quote": "City, County, or State agencies",
+        "quote": "Political candidates or campaigns Organizations/programming for religious purposes Media projects: Media projects including social media, podcast sponsorship, and more traditional areas of mass communication (broadcasting, publishing, and the internet) Event sponsorships including conferences, conventions, music festivals, or film festivals",
+        "checked_at": "2026-11-23",
+        "method": "page"
+      },
+      {
+        "source_url": "https://bellsbeer.com/grassroots-grant-cycle",
+        "quote": "Event sponsorships including conferences, conventions, music festivals, or film festivals Public or private schools",
+        "checked_at": "2026-11-23",
+        "method": "page"
+      },
+      {
+        "source_url": "https://bellsbeer.com/grassroots-grant-cycle",
+        "quote": "Capital campaigns Pass through grants General operating requests City, County, or State agencies Organizations receiving Bell's Brewery funding, sponsorship, or any Bell's Brewery goods amounting to more than $2500 in a calendar year (2025 grantees are invited to apply) Facilities requests",
         "checked_at": "2026-11-23",
         "method": "page"
       },
       {
         "source_url": "https://bellsbeer.com/grassroots-grant-cycle",
         "quote": "Organizations receiving Bell's Brewery funding, sponsorship, or any Bell's Brewery goods amounting to more than $2500 in a calendar year (2025 grantees are invited to apply)",
-        "checked_at": "2026-11-23",
-        "method": "page"
-      },
-      {
-        "source_url": "https://bellsbeer.com/grassroots-grant-cycle",
-        "quote": "Organizations/programming for religious purposes Media projects: Media projects including social media, podcast sponsorship, and more traditional areas of mass communication (broadcasting, publishing, and the internet) Event sponsorships including conferences, conventions, music festivals, or film festivals Public or private schools Capital campaigns Pass through grants General operating requests",
         "checked_at": "2026-11-23",
         "method": "page"
       }

@@ -2,7 +2,7 @@
   "id": "ekct-small-grants",
   "read_on": "2026-11-23",
   "prompt_version": "req-2026-11-20.1",
-  "models": ["cursor:gpt-5.6-luna-high"],
+  "models": ["cursor:gpt-5.6-luna-high", "cursor:gpt-5.6-sol-high"],
   "complete": false,
   "reasons": [
     "7 links could not be ranked without Jev",
@@ -153,19 +153,27 @@
   ],
   "outcomes": {
     "eligibility": "unresolved",
-    "documents": "unresolved",
-    "effort": "stated",
+    "documents": "stated",
+    "effort": "unresolved",
     "co_finance": "not_found",
     "consortium": "not_found",
     "after_award": "stated"
   },
-  "written": ["effort", "after_award"],
-  "escalated": [],
+  "written": ["documents", "after_award"],
+  "escalated": ["eligibility"],
   "flags": [],
   "notes": [
-    "extractor: Small grant applications are accepted throughout the year; trustees aim to review applications within 60 days. D10 is explicitly marked OLD.",
-    "eligibility: not written, the file quotes \"UK & International based wildlife & environmental conservation projects - scalab\", this reading does not; the file has the rule \"Run scalable, evidence-based work directly addressing endangered flora or fauna with professional conservation expertise\", this reading does not",
-    "documents: not written, the file quotes \"Where is the Budget Template that the applications request we attach?\", this reading does not"
+    "extractor: Small grant applications are accepted throughout the year, and trustees aim to review them within 60 days. D10 is explicitly marked OLD and was not used.",
+    "eligibility: not written, the file quotes \"Trustees will consider one application from an applicant within 12 months.\", this reading does not; the file has the rule \"Has not applied to EKCT in the last 12 months\", this reading does not",
+    "effort: not written, the file quotes \"Please use the on-line application forms.\", this reading does not"
   ],
-  "usd": 0
+  "usd": 0,
+  "review": {
+    "on": "2026-11-23",
+    "standards": "2026-11-23.1",
+    "reviewer": "claude-opus-5-5",
+    "hash": "52b902a42b518118",
+    "verdicts": { "sound": 8, "wrong": 0, "missed": 2 },
+    "canaries": { "planted": 1, "caught": 1 }
+  }
 }
