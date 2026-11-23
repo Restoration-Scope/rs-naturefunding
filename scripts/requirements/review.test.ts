@@ -120,6 +120,13 @@ describe('review', () => {
     const mixed = { ...p, evidence: { ...p.evidence, documents: [ev(CALL, 'Attach your registration certificate.'), ev(OTHER, 'Attach the RFP form.')] } }
     const vs = set(sound(mixed), 'source', 1, { verdict: 'wrong', category: 'wrong_round_or_programme', action: 'drop' })
     expect(applyVerdicts(mixed, vs, '2026-11-24').evidence.documents.map((e: { source_url: string }) => e.source_url)).toEqual([CALL])
+    // A dropped document takes the quote that names it, so a new one fits under the cap.
+    const four = { ...p, documents: ['Checklist', 'Project narrative, maximum 2 pages', 'Project area map', 'Itemized budget'], evidence: { ...p.evidence, documents: [ev(CALL, 'Grant checklist (required)'), ev(CALL, 'Narrative (2 pages maximum)'), ev(CALL, 'include a map of the project area'), ev(CALL, 'Include an itemized budget.')] } }
+    let ds = set(set(sound(four), 'documents', 1, { verdict: 'wrong', category: 'document_is_application', action: 'drop' }), 'documents', 2, { verdict: 'wrong', category: 'document_is_application', action: 'drop' })
+    ds = [...ds, { id: 'p', field: 'documents', index: null, text: 'Letter of support', verdict: 'missed', category: 'missed_document', action: 'add', reason: 'listed', new: { text: 'Letter of support', quote: 'Include a letter of support.', source_url: CALL } }]
+    const pruned = applyVerdicts(four, ds, '2026-11-24')
+    expect(pruned.documents).toEqual(['Checklist', 'Itemized budget', 'Letter of support'])
+    expect(pruned.evidence.documents.map((e: { quote: string }) => e.quote)).toEqual(['Grant checklist (required)', 'Include an itemized budget.', 'Include a letter of support.'])
     // A new quote past the cap is refused, not silently left out.
     const full = { ...p, evidence: { ...p.evidence, documents: [ev(CALL, 'One.'), ev(CALL, 'Two.'), ev(CALL, 'Three.')] } }
     const replace = set(sound(full), 'documents', 0, { verdict: 'wrong', category: 'other', action: 'replace', new: { text: 'Charity number', quote: 'Give your charity number.', source_url: CALL } })

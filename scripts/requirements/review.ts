@@ -18,6 +18,7 @@ import { z } from 'zod'
 import type { Programme, Source } from '../../src/data/schema'
 import { eligibilityKind } from '../../src/data/schema'
 import { comparable } from '../../src/data/text'
+import { formatJson } from '../refresh/json'
 import { lint, lintInput } from './lint'
 import { serialise } from './write'
 
@@ -112,6 +113,14 @@ export function itemsHash(p: P): string {
     Array.isArray(x) ? x.map(canon) : x && typeof x === 'object' ? Object.fromEntries(Object.keys(x).sort().map((k) => [k, canon((x as P)[k])])) : x
   const picked = Object.fromEntries(ITEM_FIELDS.map((f) => [f, [canon(p[f] ?? null), strip(ev[f]) ?? null]]))
   return createHash('sha256').update(JSON.stringify(picked)).digest('hex').slice(0, 16)
+}
+
+/** Whether a pooled quote names an item: most of the item's words are in it. */
+const words = (s: string) => comparable(s).match(/[\p{L}\p{N}]{3,}/gu)?.map((w) => w.replace(/s$/, '')) ?? []
+export const names = (item: string, quote: string) => {
+  const w = words(item)
+  const q = new Set(words(quote))
+  return w.length > 0 && w.filter((x) => q.has(x)).length / w.length >= 0.5
 }
 
 /** Fields whose quotes are pooled, not one per item: a dropped source takes its rows from these. */
@@ -293,6 +302,14 @@ export function applyVerdicts(p0: P, verdicts: Verdict[], today: string): P {
       if (v.action === 'replace') addQuote('effort', ev(v), 5)
     } else setOne(p, v.field as (typeof ONE_FIELDS)[number], v.new?.value, v.action === 'replace' ? ev(v) : undefined)
   }
+  // A dropped document or step takes the pooled quotes that name it and no item that stays.
+  for (const f of ['documents', 'effort'] as const) {
+    const list: string[] = (f === 'effort' ? p.effort?.steps : p[f]) ?? []
+    const gone = new Set(mine.filter((v) => v.field === f && v.action === 'drop').map((v) => v.index!))
+    if (!gone.size || !p.evidence[f]) continue
+    const kept = list.filter((_, i) => !gone.has(i))
+    p.evidence[f] = p.evidence[f].filter((e: Ev) => !([...gone].some((i) => names(list[i]!, e.quote)) && !kept.some((k) => names(k, e.quote))))
+  }
   const drops = mine.filter((x) => x.action === 'drop').sort((a, b) => b.index! - a.index!)
   for (const v of drops) {
     const i = v.index!
@@ -452,8 +469,11 @@ function runApply(dir: string, reviewer: string) {
   const check = (cmd: string[]) => Bun.spawnSync(cmd, { stdout: 'inherit', stderr: 'inherit' }).exitCode === 0
   // Validate without the review gate: the stamps come after the data passes.
   if (!check(['bun', 'scripts/data/validate.ts', '--no-review'])) restore('the data fails validation')
-  const quoted = [...new Set(real.filter((v) => v.new?.quote).map((v) => v.id))]
-  if (quoted.length && !check(['bun', 'scripts/data/verify-quotes.ts', '--fresh', ...quoted])) restore('a new quote is not on its page')
+  // Only the quotes this review adds: older quotes on these programmes are the refresh job's.
+  const quoted = real.filter((v) => v.new?.quote)
+  const quotesFile = join(dir, 'new-quotes.txt')
+  writeFileSync(quotesFile, quoted.map((v) => v.new!.quote!.replace(/\s+/g, ' ')).join('\n'))
+  if (quoted.length && !check(['bun', 'scripts/data/verify-quotes.ts', '--fresh', '--quotes', quotesFile, ...new Set(quoted.map((v) => v.id))])) restore('a new quote is not on its page')
   for (const id of ids) {
     const f = join('data', 'requirements', `${id}.json`)
     if (!existsSync(f)) continue
@@ -469,7 +489,7 @@ function runApply(dir: string, reviewer: string) {
       verdicts: { sound: mine.filter((v) => v.verdict === 'sound').length, wrong: mine.filter((v) => v.verdict === 'wrong').length, missed: mine.filter((v) => v.verdict === 'missed').length },
       canaries: { planted, caught: planted },
     }
-    writeFileSync(f, `${JSON.stringify({ ...JSON.parse(text), review }, null, 2)}\n`)
+    writeFileSync(f, formatJson({ ...JSON.parse(text), review }))
   }
   mkdirSync(join('tests', 'fixtures', 'review-labels'), { recursive: true })
   appendFileSync(join('tests', 'fixtures', 'review-labels', `${today}.jsonl`), real.map((v) => `${JSON.stringify({ batch: key.stamp, ...v })}\n`).join(''))

@@ -7,6 +7,8 @@
   "reasons": [
     "7 links could not be ranked without Jev",
     "the text names a document with rules that was not read: WNPS Deliverable Report Checklist 2026",
+    "the text names a document with rules that was not read: WNPS membership information: https://www.wnps.org/join.html",
+    "the text names a document with rules that was not read: WNPS membership details: https://www.wnps.org/membership",
     "Jev did not check this reading, so an absent fact is not known to be absent"
   ],
   "requirements_checked": false,
@@ -28,9 +30,9 @@
       "ref": "D2",
       "url": "https://www.wnps.org/content/documents/conservation/Grant%20Documents/2026%20WNPS%20Conservation%20Grant%20Application%20and%20checklist.pdf",
       "final_url": "https://www.wnps.org/content/documents/conservation/Grant%20Documents/2026%20WNPS%20Conservation%20Grant%20Application%20and%20checklist.pdf",
-      "from": "https://www.wnps.org/conservation-grants",
-      "anchor": "Application and Checklist - 2026 Application and Checklist",
-      "depth": 1,
+      "from": null,
+      "anchor": null,
+      "depth": 0,
       "pdf": true,
       "chars": 5676,
       "pages": 3,
@@ -79,24 +81,30 @@
   ],
   "failures": [],
   "skipped_links": 128,
-  "chunks": [{ "id": "all", "docs": ["D1", "D2", "D3", "D4", "D5"], "chars": 42999 }],
+  "chunks": [{ "id": "all", "docs": ["D1", "D2", "D3", "D4", "D5"], "chars": 42946 }],
   "outcomes": {
     "eligibility": "stated",
     "documents": "unresolved",
     "effort": "unresolved",
     "co_finance": "not_found",
     "consortium": "not_found",
-    "after_award": "unresolved"
+    "after_award": "stated"
   },
-  "written": ["eligibility"],
+  "written": ["eligibility", "after_award"],
   "escalated": [],
   "flags": [],
   "notes": [
-    "extractor: The 2026 cycle is closed. D2 includes a 2025 subject-line instruction in an otherwise 2026 application document. D1 refers to a 2026 deliverable report checklist, while D5 is the 2024 checklist.",
+    "extractor: The 2026 cycle is closed. D2 states the deadline was February 1, 2026. D2 refers to a 2025 submittal subject line and 2025 deliverable checklist, while D1 refers to the 2026 deliverable checklist.",
     "documents: not written, the file quotes \"WNPS Conservation Grant Check-list (fill out and submit with application - requi\", this reading does not; the file quotes \"Narrative (2 pages maximum)\", this reading does not; the file lists \"Project narrative, maximum 2 pages\", this reading does not",
-    "effort: not written, the file quotes \"Send electronic application copies (less than 5 MB total) to both: conservationg\", this reading does not",
-    "after_award: not written, the file quotes \"The final report will be at least 300-500 words in length and will include docum\", this reading does not",
-    "source wnps-conservation-grants-2: added for https://www.wnps.org/content/documents/conservation/Grant%20Documents/2026%20WNPS%20Conservation%20Grant%20Application%20and%20checklist.pdf"
+    "effort: not written, the file quotes \"Send electronic application copies (less than 5 MB total) to both: conservationg\", this reading does not"
   ],
-  "usd": 0
+  "usd": 0,
+  "review": {
+    "on": "2026-11-23",
+    "standards": "2026-11-23.1",
+    "reviewer": "claude-opus-5-5",
+    "hash": "f851439be4ed2587",
+    "verdicts": { "sound": 8, "wrong": 4, "missed": 1 },
+    "canaries": { "planted": 0, "caught": 0 }
+  }
 }
