@@ -20,23 +20,38 @@
   "effort": { "steps": ["Application via the easy-Online portal"], "due": ["2027-12-31"] },
   "eligibility": [
     {
-      "rule": "For land purchases, land of at least 50 ha (25 ha for old broadleaf forest, lakes, mires, floodplains or coasts)",
+      "rule": "Land bought is at least 50 ha (25 ha for old broadleaf forest, lakes, mires, floodplains, coasts) or extends such land",
       "kind": "project"
     },
     {
-      "rule": "For ambassador projects, an area with wilderness potential well over 50 ha",
+      "rule": "Ambassador projects: connected area of 333 ha (166 ha if mostly floodplain, mire, lake, coast), concrete options for 1/3",
+      "kind": "project"
+    },
+    {
+      "rule": "Land funded is at most 1,000 ha (500 ha in floodplains, coasts and mires)",
+      "kind": "project"
+    },
+    { "rule": "Has a seat, branch or office in Germany", "kind": "legal" },
+    {
+      "rule": "Not measures only meeting the applicant's legal duties, nor co-funding of compensation measures",
+      "kind": "project"
+    },
+    {
+      "rule": "Ambassador projects: the area holds a planned, applied-for or running land project, or a secured wilderness area",
       "kind": "project"
     }
   ],
   "documents": [
-    "Project description (PDF)",
     "Proof of signing authority, if the signatory is not a statutory representative",
     "Further declarations of the applicant (form)",
-    "Private applicants new to ZUG: statutes and last two certified annual accounts",
+    "Private-law applicants: statutes and last two certified annual accounts",
     "Separation accounting declaration",
     "Proof of third-party funds, if any",
     "Land projects: certified valuation report",
-    "Ambassador projects: proof of wilderness potential well beyond the minimum sizes"
+    "Ambassador projects: proof of wilderness potential well beyond the minimum sizes",
+    "Private-law applicants: house bank reference (credit, collateral, account turnover)",
+    "Land projects: proof the federal state was informed, ideally a note from its nature authority",
+    "Work and time plan"
   ],
   "calls": [
     {
@@ -103,14 +118,38 @@
     ],
     "eligibility": [
       {
-        "source_url": "https://www.z-u-g.org/klimawildnis/foerderrichtlinie-klimawildnis/",
-        "quote": "der Ankauf von geeigneten Flächen mit einer Mindestgröße von 50 ha. der Ankauf von mindestens 100-jährigen Laubwaldflächen, Waldflächen mit langer Habitatkontinuität, Flächen in Seen, Mooren und Auen sowie Flächen an Küsten mit einer Mindestgröße von 25 ha.",
+        "source_url": "https://www.z-u-g.org/fileadmin/zug/Dateien/Foerderprorgamme/KlimaWildnis/frl_klimawildnis_bf.pdf",
+        "quote": "a. Ankauf von geeigneten Flächen mit einer Mindestgröße von 50 ha. b. Ankauf von mindestens 100-jährigen Laubwaldflächen, Waldflächen mit langer Habitatkontinuität, außerdem Flächen in Seen, Mooren und Auen sowie an Küsten - abweichend von 2.1.a. - mit einer Mindestgröße von 25 ha. c. Ankauf von kleineren Flächen zur Arrondierung oder Erweiterung von geeigneten Flächen",
         "checked_at": "2026-11-23",
         "method": "page"
       },
       {
-        "source_url": "https://www.z-u-g.org/klimawildnis/foerderrichtlinie-klimawildnis/",
-        "quote": "Zuwendungsfähig ist der Einsatz von je einer/m KlimaWildnisBotschafter*in in einem Gebiet mit Wildnispotenzial (Potenzialraum), das deutlich über 50 ha hinausgeht.",
+        "source_url": "https://www.z-u-g.org/fileadmin/zug/Dateien/Foerderprorgamme/KlimaWildnis/KlimaWildnis_Hinweise_zur_Antragstellung.pdf",
+        "quote": "Die Mindestgröße des Potenzialraums als zusammenhängende Fläche für eine perspektivisch eigendynamische Entwicklung liegt bei 333 ha bzw. 166 ha bei überwiegend Auen, Mooren, Seen oder Küstenlebensräumen. Es sollen konkrete Umsetzungsoptionen für 1/3 der Potenzialraumfläche bestehen.",
+        "checked_at": "2026-11-23",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.z-u-g.org/fileadmin/zug/Dateien/Foerderprorgamme/KlimaWildnis/frl_klimawildnis_bf.pdf",
+        "quote": "Förderfähig sind Flächen bis zu einer Maximalgröße von 1.000 ha, in Auen, Küsten und Moorflächen bis zu einer Maximalgröße von 500 ha.",
+        "checked_at": "2026-11-23",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.z-u-g.org/fileadmin/zug/Dateien/Foerderprorgamme/KlimaWildnis/frl_klimawildnis_bf.pdf",
+        "quote": "Der/die Zuwendungsempfangende muss einen Sitz bzw. eine Betriebsstätte oder Niederlassung in der Bundesrepublik Deutschland haben.",
+        "checked_at": "2026-11-23",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.z-u-g.org/fileadmin/zug/Dateien/Foerderprorgamme/KlimaWildnis/frl_klimawildnis_bf.pdf",
+        "quote": "4.1 Maßnahmen, die ausschließlich der Erfüllung gesetzlicher oder aufgrund eines Gesetzes geltender Verpflichtungen des Antragstellenden dienen, werden nicht gefördert. 4.2 Die Kofinanzierung von Ausgleichs- und Ersatzmaßnahmen ist ausgeschlossen.",
+        "checked_at": "2026-11-23",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.z-u-g.org/fileadmin/zug/Dateien/Foerderprorgamme/KlimaWildnis/KlimaWildnis_Hinweise_zur_Antragstellung.pdf",
+        "quote": "Innerhalb eines Potenzialraums muss die Umsetzung, Beantragung oder Planung mindestens eines Flächenprojektes: • nach dieser Richtlinie oder • nach der Förderrichtlinie Wildnisfonds oder • nach vergleichbaren Förderprogrammen von Bund und Ländern vorliegen oder mindestens ein bereits rechtlich gesichertes, zur Erweiterung oder Arrondierung geeignetes Wildnisgebiet",
         "checked_at": "2026-11-23",
         "method": "page"
       }
@@ -119,12 +158,6 @@
       {
         "source_url": "https://www.z-u-g.org/fileadmin/zug/Dateien/Foerderprorgamme/KlimaWildnis/KlimaWildnis_Hinweise_zur_Antragstellung.pdf",
         "quote": "Vorhabenbeschreibung im PDF-Format (Fragen siehe unter 2.1) • Nachweis der Zeichnungsberechtigung, sofern die unterzeichnende Person nicht aufgrund gesetzlicher Regelungen vertretungsberechtigt ist (z. B. Bürgermeister bei Kommunen) • Formular „Weitere Erklärungen des Antragstellenden“ (siehe Anhang 7.5)",
-        "checked_at": "2026-11-20",
-        "method": "page"
-      },
-      {
-        "source_url": "https://www.z-u-g.org/fileadmin/zug/Dateien/Foerderprorgamme/KlimaWildnis/KlimaWildnis_Hinweise_zur_Antragstellung.pdf",
-        "quote": "Wenn nein, dann reichen Sie bitte die folgenden Unterlagen ein: • Satzung/Gesellschaftsvertrag (soweit zutreffend), • die beiden letzten durch sachverständige Buch- oder Wirtschaftsprüfer*innen",
         "checked_at": "2026-11-20",
         "method": "page"
       },
@@ -144,6 +177,30 @@
         "source_url": "https://www.z-u-g.org/fileadmin/zug/Dateien/Foerderprorgamme/KlimaWildnis/KlimaWildnis_Hinweise_zur_Antragstellung.pdf",
         "quote": "Nachweis des regionalen Wildnispotenzials, das deutlich über die in 2.1 genannten Mindestgrößen hinausgeht",
         "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.z-u-g.org/fileadmin/zug/Dateien/Foerderprorgamme/KlimaWildnis/KlimaWildnis_Hinweise_zur_Antragstellung.pdf",
+        "quote": "Wenn nein, dann reichen Sie bitte die folgenden Unterlagen ein: • Satzung/Gesellschaftsvertrag (soweit zutreffend), • die beiden letzten durch sachverständige Buch- oder Wirtschaftsprüfer*innen (evtl. Steuerberater*innen oder bevollmächtigte) bestätigten Jahresabschlüsse einschließlich Lageberichte (soweit vorhanden).",
+        "checked_at": "2026-11-23",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.z-u-g.org/fileadmin/zug/Dateien/Foerderprorgamme/KlimaWildnis/KlimaWildnis_Hinweise_zur_Antragstellung.pdf",
+        "quote": "Auskunft der Hausbank (insbesondere zu Kreditinanspruchnahmen, Kreditsicherheiten, Umsätzen auf den Geschäftskonten).",
+        "checked_at": "2026-11-23",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.z-u-g.org/fileadmin/zug/Dateien/Foerderprorgamme/KlimaWildnis/KlimaWildnis_Hinweise_zur_Antragstellung.pdf",
+        "quote": "Nachweis der Information des Landes über das Projekt gemäß Nr. 7.1 der Förderrichtlinie KlimaWildnis, bevorzugt in Form einer kurzen Stellungnahme der obersten Naturschutzbehörde des Landes.",
+        "checked_at": "2026-11-23",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.z-u-g.org/fileadmin/zug/Dateien/Foerderprorgamme/KlimaWildnis/KlimaWildnis_Hinweise_zur_Antragstellung.pdf",
+        "quote": "Arbeits- und Zeitplan, der u. a. auch Angaben enthält zu den geplanten Zeitpunkten für: den Abschluss des Kauf- bzw. Nutzungsvertrags, die Grundbucheintragung, ggf. den Flächentausch",
+        "checked_at": "2026-11-23",
         "method": "page"
       }
     ],

@@ -234,12 +234,20 @@ export function brief(programmes: P[], opts: { stamp: string; dir: string; stand
 
 export type Key = ReturnType<typeof brief>['key']
 
+/** A verdict names its item when its text starts like the item's, ignoring spacing and punctuation (a reviewer may
+ * reformat a value's JSON or copy a step's due date). */
+const letters = (s: string) => comparable(s).replace(/[^\p{L}\p{N}]/gu, '')
+export const namesItem = (verdictText: string, itemText: string) => {
+  const head = letters(itemText).slice(0, 24)
+  return head.length > 0 && letters(verdictText).startsWith(head)
+}
+
 /** Why this review can't be applied, per programme; empty when every item has its verdict and every canary was caught. */
 export function reviewGaps(programmes: P[], key: Key, verdicts: Verdict[]): string[] {
   const gaps: string[] = []
   for (const c of key.canaries) {
     const v = verdicts.find((x) => x.id === c.id && x.field === c.field && x.index === c.index)
-    if (!v || v.verdict !== 'wrong' || comparable(v.text).slice(0, 30) !== comparable(c.text).slice(0, 30)) gaps.push(`${c.id}: canary "${c.text}" (${c.field} ${c.index}) was not caught: the review is not trusted; brief another reviewer`)
+    if (!v || v.verdict !== 'wrong' || !namesItem(v.text, c.text)) gaps.push(`${c.id}: canary "${c.text}" (${c.field} ${c.index}) was not caught: the review is not trusted; brief another reviewer`)
   }
   for (const v of verdicts) {
     const p = verdictProblem(v)
@@ -253,7 +261,7 @@ export function reviewGaps(programmes: P[], key: Key, verdicts: Verdict[]): stri
     for (const it of items) {
       const vs = mine.filter((v) => v.field === it.field && v.index === it.index)
       if (vs.length !== 1) gaps.push(`${p.id} ${it.field} ${it.index}: ${vs.length} verdicts, one expected ("${it.text.slice(0, 60)}")`)
-      else if (comparable(vs[0]!.text).slice(0, 30) !== comparable(it.text).slice(0, 30)) gaps.push(`${p.id} ${it.field} ${it.index}: the verdict is for "${vs[0]!.text.slice(0, 60)}", the item is "${it.text.slice(0, 60)}"`)
+      else if (!namesItem(vs[0]!.text, it.text)) gaps.push(`${p.id} ${it.field} ${it.index}: the verdict is for "${vs[0]!.text.slice(0, 60)}", the item is "${it.text.slice(0, 60)}"`)
     }
     for (const v of mine) if (!items.some((it) => it.field === v.field && it.index === v.index)) gaps.push(`${p.id} ${v.field} ${v.index}: no such item`)
     for (const v of mine) for (const q of v.quotes ?? []) if (!p.evidence?.[v.field]?.[q]) gaps.push(`${p.id} ${v.field} ${v.index}: no quote q${q}`)

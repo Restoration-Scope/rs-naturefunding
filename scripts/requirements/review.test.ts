@@ -2,7 +2,7 @@ import { describe, expect, test } from 'bun:test'
 import { readdirSync, readFileSync } from 'node:fs'
 import { join } from 'node:path'
 import { lint, type LintInput } from './lint'
-import { REVIEW_FROM, applyVerdicts, brief, family, itemsHash, itemsOf, reviewGaps, reviewProblems, verdict, type Verdict } from './review'
+import { REVIEW_FROM, applyVerdicts, brief, family, itemsHash, itemsOf, namesItem, reviewGaps, reviewProblems, verdict, type Verdict } from './review'
 
 const ev = (url: string, quote: string) => ({ source_url: url, quote, checked_at: '2026-11-24', method: 'page' })
 const CALL = 'https://funder.example.org/call'
@@ -116,6 +116,10 @@ describe('review', () => {
     const { key } = brief([p], { stamp: 's', dir: 'd', standards: 'standards: t.1', worktree: '.' })
     const c = key.canaries[0]!
     const canary: Verdict = { id: 'p', field: 'eligibility', index: c.index, text: c.text, verdict: 'wrong', category: 'says_more_than_quote', action: 'drop', reason: 'not in the quote' }
+    // A verdict names its item through reformatted JSON or a copied due date, not through other text.
+    expect(namesItem('{"min_share": 10, "applies_to": "Wilderness ambassador (KWB)', '{"min_share":10,"applies_to":"Wilderness ambassador (KWB) projects"}')).toBe(true)
+    expect(namesItem('Online application (due 2026-12-01)', 'Online application')).toBe(true)
+    expect(namesItem('Online', 'Online application')).toBe(false)
     // A canary verdict on other text is not a catch.
     expect(reviewGaps([p], key, [...sound(p), { ...canary, text: 'Something else entirely, not the canary' }]).join()).toContain('canary')
     // A pooled field whose every quote comes from a dropped source can't keep its items.
