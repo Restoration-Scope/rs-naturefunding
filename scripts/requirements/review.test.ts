@@ -120,6 +120,7 @@ describe('review', () => {
     expect(namesItem('{"min_share": 10, "applies_to": "Wilderness ambassador (KWB)', '{"min_share":10,"applies_to":"Wilderness ambassador (KWB) projects"}')).toBe(true)
     expect(namesItem('Online application (due 2026-12-01)', 'Online application')).toBe(true)
     expect(namesItem('Online', 'Online application')).toBe(false)
+    expect(namesItem('Standard and Collaboration grants: incorporated, or a voluntary body', 'Standard and Collaboration grants: can report activities, budgets and grant finances')).toBe(false)
     // A canary verdict on other text is not a catch.
     expect(reviewGaps([p], key, [...sound(p), { ...canary, text: 'Something else entirely, not the canary' }]).join()).toContain('canary')
     // A pooled field whose every quote comes from a dropped source can't keep its items.

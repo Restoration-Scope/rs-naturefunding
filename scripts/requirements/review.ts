@@ -234,12 +234,14 @@ export function brief(programmes: P[], opts: { stamp: string; dir: string; stand
 
 export type Key = ReturnType<typeof brief>['key']
 
-/** A verdict names its item when its text starts like the item's, ignoring spacing and punctuation (a reviewer may
- * reformat a value's JSON or copy a step's due date). */
+/** A verdict names its item when, ignoring spacing and punctuation, it holds the whole item text (a reviewer may
+ * reformat a value's JSON or copy a step's due date) or a cut of at least 24 letters of it, so rules that start alike
+ * can't be swapped. */
 const letters = (s: string) => comparable(s).replace(/[^\p{L}\p{N}]/gu, '')
 export const namesItem = (verdictText: string, itemText: string) => {
-  const head = letters(itemText).slice(0, 24)
-  return head.length > 0 && letters(verdictText).startsWith(head)
+  const v = letters(verdictText)
+  const it = letters(itemText)
+  return it.length > 0 && (v.startsWith(it) || (v.length >= 24 && it.startsWith(v)))
 }
 
 /** Why this review can't be applied, per programme; empty when every item has its verdict and every canary was caught. */

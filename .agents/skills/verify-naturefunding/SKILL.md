@@ -46,8 +46,10 @@ bun scripts/requirements/run.ts <ids…> --no-jev --cheap cursor:gpt-5.6-luna-hi
 bun scripts/requirements/review.ts brief <ids…>
 ```
 
-Hand `brief.md` to one reviewer from another model family than the extractor (a Claude subagent for GPT
-extraction), told to write only `verdicts.jsonl` beside it. Then:
+Hand `brief.md` to one fresh reviewer from another model family than the extractor, never a fork of the thread
+that briefed it (that thread has seen the canaries). For GPT extraction, on Cursor credits:
+`cursor-agent -p --model claude-opus-5-thinking-high --trust < .cache/review/<stamp>/brief.md`, or a Claude
+subagent. Then:
 
 ```bash
 bun scripts/requirements/review.ts apply .cache/review/<stamp> --reviewer <model>
