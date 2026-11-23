@@ -14,7 +14,7 @@
   "geography": { "scope": "countries", "countries": ["DE"], "label": "Baden-Württemberg" },
   "access": "direct",
   "window": "fixed",
-  "amount": null,
+  "amount": { "currency": "EUR", "max": 200000, "typical": true },
   "co_finance_required": true,
   "reporting": null,
   "effort": { "steps": ["Complete and sign the application form and email it"] },
@@ -85,6 +85,12 @@
       "source_url": "https://stiftung-naturschutzfonds-bw.de/foerderung/wir-foerdern-vielfalt/zuwendungsbereich-allgemeiner-haushalt",
       "quote": "Ankündigung: Die Ausschreibung 2027 startet im Juli 2027.",
       "checked_at": "2026-11-20",
+      "method": "page"
+    },
+    "amount": {
+      "source_url": "https://stiftung-naturschutzfonds-bw.de/fileadmin/user_upload/Downloads/Grundlagen_der_Foerderung/SNF_Hinweise_zur_Foerderleitlinie_03_2026_bf.pdf",
+      "quote": "die Zuwendung für ein Projekt in der Regel 200.000 Euro nicht übersteigt",
+      "checked_at": "2026-11-21",
       "method": "page"
     },
     "co_finance_required": {
