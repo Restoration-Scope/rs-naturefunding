@@ -59,10 +59,11 @@ describe('review', () => {
     expect(b.key.standards).toBe('t.1')
     expect(p.eligibility).toHaveLength(3)
     // A quote with a number never carries a canary, in any language: the planted rule might be true.
-    const numbered = { ...p, evidence: { ...p.evidence, eligibility: [ev(CALL, 'Mindestens 3 Jahre tätig.'), ev(CALL, 'Drei abgeschlossene Projekte gleicher Art.')] }, eligibility: [{ rule: 'Operating for at least 3 years', kind: 'track_record' }, { rule: 'Has completed three projects', kind: 'track_record' }] }
+    const numbered = { ...p, evidence: { ...p.evidence, eligibility: [ev(CALL, 'Mindestens 3 Jahre tätig.'), ev(CALL, 'Drei abgeschlossene Projekte gleicher Art.'), ev(CALL, 'Mindestens siebenjährige Tätigkeit erforderlich.')] }, eligibility: [{ rule: 'Operating for at least 3 years', kind: 'track_record' }, { rule: 'Has completed three projects', kind: 'track_record' }] }
     const d = brief([numbered], { stamp: 's', dir: 'd', standards: 'standards: t.1', worktree: '.' })
     expect(d.key.canaries[0]).toMatchObject({ field: 'documents', index: 2 })
     // A document canary never resembles a listed document.
+    expect(() => brief([{ ...numbered, documents: ['Audited accounts', 'Three letters from former grantmakers'] }], { stamp: 's', dir: 'd', standards: 'standards: t.1', worktree: '.' })).toThrow('canary')
     const audited = { ...numbered, documents: ['Audited accounts', 'Application form'] }
     for (const stamp of ['s', 'ss']) expect(brief([audited], { stamp, dir: 'd', standards: 'standards: t.1', worktree: '.' }).key.canaries[0]!.text).toContain('reference')
     expect(d.text).toContain(`2. ${d.key.canaries[0]!.text}`)

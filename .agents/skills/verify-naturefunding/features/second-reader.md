@@ -21,7 +21,8 @@ and the review is stamped so `validate` can tell reviewed readings from the rest
 ## Source Coverage
 
 - `review.ts brief`: standards from `docs/review-standards.md`, items and sources numbered, lint leads, canaries
-  (a rule its real quote doesn't state) kept in `key.json` only.
+  (a rule its real quote doesn't state, or a document no quote names) kept in `key.json` outside the worktree
+  (`~/.cache/naturefunding-review/<stamp>/`).
 - `review.ts apply`: verdict schema, coverage (one verdict per item and source), canaries, edits, new source
   rows, validate and `verify-quotes --fresh` with restore on failure, the `review` stamp in
   `data/requirements/<id>.json`, verdicts appended to the label set.

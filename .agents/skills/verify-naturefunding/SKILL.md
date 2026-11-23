@@ -58,7 +58,7 @@ or a new quote fails. A refused review goes to a different reviewer, not to a ha
 
 ## Evidence
 
-Keep per batch: the run's `report.json`, `brief.md`, `key.json`, `verdicts.jsonl`, the apply output (wrong and
+Keep per batch: the run's `report.json`, `brief.md`, `key.json` (from `~/.cache/naturefunding-review/<stamp>/`, after apply), `verdicts.jsonl`, the apply output (wrong and
 missed counts, canaries caught), `bun run validate` and `bun run verify-quotes -- <ids>`. Open at least one
 programme page per batch at `/p/<id>/#before-title` for the item the review changed most.
 

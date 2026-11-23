@@ -13,7 +13,8 @@
  */
 import { createHash } from 'node:crypto'
 import { appendFileSync, existsSync, mkdirSync, readFileSync, readdirSync, writeFileSync } from 'node:fs'
-import { join } from 'node:path'
+import { homedir } from 'node:os'
+import { basename, join } from 'node:path'
 import { z } from 'zod'
 import type { Programme, Source } from '../../src/data/schema'
 import { eligibilityKind } from '../../src/data/schema'
@@ -137,8 +138,9 @@ export type Canary = { id: string; field: 'eligibility' | 'documents'; index: nu
 /** A rule its quote doesn't state, on a real quote (one with no number, in any language), or a document no quote
  * names: only a reader who checks the quotes catches it. */
 export function canaryFor(p: P, seed: number): Canary | null {
-  // Numbers in words too (3 and 7 in the site's main languages), since the planted rules use them.
-  const numeric = /\d|\b(years?|income|revenue|turnover|budget|three|seven|tres|três|trois|drei|tre|siete|sete|sept|sieben|sette)\b/i
+  // Numbers in words too (3 and 7 in the site's main languages, compounds like siebenjährig included), since the
+  // planted rules use them. Leaving out too many quotes only moves the canary to documents.
+  const numeric = /\d|\b(years?|income|revenue|turnover|budget|tre)\b|\b(three|seven|tres|três|trois|drei|siete|sete|sept|sieben|sette)/i
   const quotes: Ev[] = (p.evidence?.eligibility ?? []).filter((e: Ev) => !numeric.test(e.quote))
   if (quotes.length) {
     const e = quotes[seed % quotes.length]!
@@ -152,7 +154,7 @@ export function canaryFor(p: P, seed: number): Canary | null {
   }
   // A document none listed resembles (documents are written in English).
   const docs = [
-    ['Letters of reference from three past funders', /referen/i],
+    ['Letters of reference from three past funders', /referen|letter|funder|grantmaker|donor/i],
     ['Audited accounts for the last five years', /audit|accounts|financial statement/i],
   ] as const
   const free = p.documents?.length ? docs.filter(([, r]) => !p.documents.some((d: string) => r.test(d))) : []
@@ -173,7 +175,7 @@ export function brief(programmes: P[], opts: { stamp: string; dir: string; stand
   const out: string[] = [
     `# Review ${opts.stamp}`,
     '',
-    `You are the second reader for naturefunding.org. A model extracted the "Before you apply" items below from funders' pages. Check each against the documents it cites, as an applicant would read them. Edit no file except \`${verdicts}\`. No subagents.`,
+    `You are the second reader for naturefunding.org. A model extracted the "Before you apply" items below from funders' pages. Check each against the documents it cites, as an applicant would read them. Edit no file except \`${verdicts}\`. Read only the cited documents and the files named here, not the review scripts. No subagents.`,
     '',
     `Worktree: ${opts.worktree}. Field rules: data/README.md (eligibility to after_award). Read each cited document (WebFetch; PDFs and linked guidelines too). If a page refuses you, \`bun scripts/requirements/browser-reads.ts text '<url>'\` prints our stored copy; a quote found only there is fine.`,
     '',
@@ -421,6 +423,8 @@ export function readManifests(dir = join('data', 'requirements')) {
 // ---- CLI ----
 
 const programmeFile = (id: string) => join('data', 'programmes', `${id}.json`)
+/** The canary key lives outside the worktree the reviewer reads. */
+const keyFile = (dir: string) => join(homedir(), '.cache', 'naturefunding-review', basename(dir), 'key.json')
 const readJson = (f: string) => JSON.parse(readFileSync(f, 'utf8'))
 
 function runBrief(ids: string[]) {
@@ -432,14 +436,15 @@ function runBrief(ids: string[]) {
   const ps = ids.map((id) => readJson(programmeFile(id))).filter((p) => hasItems(p))
   const b = brief(ps, { stamp, dir, standards: readFileSync(STANDARDS, 'utf8'), worktree: process.cwd() })
   writeFileSync(join(dir, 'brief.md'), b.text)
-  writeFileSync(join(dir, 'key.json'), `${JSON.stringify(b.key, null, 2)}\n`)
+  mkdirSync(join(keyFile(dir), '..'), { recursive: true })
+  writeFileSync(keyFile(dir), `${JSON.stringify(b.key, null, 2)}\n`)
   const skipped = ids.length - ps.length
   console.log(`${join(dir, 'brief.md')}: ${ps.length} programmes, ${b.key.canaries.length} canaries${skipped ? `, ${skipped} without items skipped` : ''}`)
   console.log(`Hand the brief to a reviewer from another model family; then: bun scripts/requirements/review.ts apply ${dir} --reviewer <model>`)
 }
 
 function runApply(dir: string, reviewer: string) {
-  const key: Key = readJson(join(dir, 'key.json'))
+  const key: Key = readJson(keyFile(dir))
   const lines = readFileSync(join(dir, 'verdicts.jsonl'), 'utf8').split('\n').filter((l) => l.trim())
   const verdicts: Verdict[] = []
   const bad: string[] = []
