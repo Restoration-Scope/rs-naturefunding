@@ -14,7 +14,11 @@
   "geography": { "scope": "countries", "countries": ["NO"], "label": "Norway" },
   "access": "direct",
   "window": "fixed",
-  "amount": { "currency": "NOK", "min": 150000, "note": "Minimum application for the 2027 round." },
+  "amount": {
+    "currency": "NOK",
+    "min": 150000,
+    "note": "Minimum application for water‑environment measures."
+  },
   "co_finance_required": null,
   "reporting": null,
   "effort": { "steps": ["Application form"] },
@@ -57,7 +61,7 @@
     },
     {
       "id": "2027-round",
-      "label": "2027 round (water-environment measures)",
+      "label": "2027 round (water‑environment measures)",
       "url": "https://soknadssenter.miljodirektoratet.no/VannmiljoSkjema/Startside/Index?id=88",
       "status": "open",
       "opens": null,
@@ -71,7 +75,7 @@
         },
         "deadline": {
           "source_url": "https://soknadssenter.miljodirektoratet.no/VannmiljoSkjema/Startside/Index?id=88",
-          "quote": "Søknadsfrist 15. januar 2027.",
+          "quote": "Søknadsfrist 15. januar 2027. Søknadsarkiv",
           "checked_at": "2026-11-23",
           "method": "page"
         }
@@ -81,7 +85,13 @@
   "evidence": {
     "applicant_types": {
       "source_url": "https://soknadssenter.miljodirektoratet.no/VannmiljoSkjema/Startside/Index?id=88",
-      "quote": "Kommuner, interkommunale organ, frivillige organisasjoner, forskningsinstitusjoner, vannområdeutvalg, interkommunale vannprosjekter, private virksomheter, herunder yrkesfiskere som blir berørt av de nye fiskeritiltakene i Oslofjorden og fiskerettshavere kan søke tilskudd.",
+      "quote": "kommuner interkommunale organ frivillige organisasjoner forskningsinstitusjoner vannområdeutvalg interkommunale vannprosjekter private virksomheter, herunder yrkesfiskere og fiskerettshavere",
+      "checked_at": "2026-11-23",
+      "method": "page"
+    },
+    "geography": {
+      "source_url": "https://soknadssenter.miljodirektoratet.no/VannmiljoSkjema/Startside/Index?id=88",
+      "quote": "Tiltakene kan være både i fjorden, men også i Oslofjordens nedbørsfelt, som strekker seg fra Røres til Agder",
       "checked_at": "2026-11-09",
       "method": "page"
     },
@@ -99,14 +109,8 @@
     },
     "amount": {
       "source_url": "https://soknadssenter.miljodirektoratet.no/VannmiljoSkjema/Startside/Index?id=88",
-      "quote": "Søknadsfrist er 15. januar 2027 og minstesum for søknader: 150.000 kr.",
-      "checked_at": "2026-11-09",
-      "method": "page"
-    },
-    "geography": {
-      "source_url": "https://soknadssenter.miljodirektoratet.no/VannmiljoSkjema/Startside/Index?id=88",
-      "quote": "Tiltakene kan være både i fjorden, men også i Oslofjordens nedbørsfelt, som strekker seg fra Røres til Agder",
-      "checked_at": "2026-11-09",
+      "quote": "Søknader om tilskudd til vannmiljøtiltak må være på minimum 150.000 kr.",
+      "checked_at": "2026-11-23",
       "method": "page"
     },
     "effort": [
