@@ -1,7 +1,9 @@
-// Sets the deployed Worker's two secrets, once and again on a rerun, printing names only:
+// Sets the deployed Worker's three secrets, once and again on a rerun, printing names only:
 // - RESEND_API_KEY: a Sending access key for naturefunding.org alone, minted with the Full access key that
 //   setup-resend.ts keeps in Keychain. It is kept in Keychain the moment it exists, so a rerun reuses it.
 // - LIST_SECRET: 32 random bytes that seal the confirm and unsubscribe links, also kept in Keychain.
+// - RESEND_WEBHOOK_SECRET: the signing secret of Resend's webhook to /resend/webhook (bounces and spam complaints,
+//   src/webhook.ts). Made with the webhook itself, or read from the one already there.
 // Values go to wrangler through stdin only. Run from the repo root after the Worker's first deploy:
 //   bun digest/scripts/setup-secrets.ts
 import { spawnSync } from 'node:child_process'
@@ -20,11 +22,16 @@ function keychainWrite(service: string, value: string) {
   if (r.status !== 0 || keychainRead(service) !== value) throw new Error(`Keychain write failed for ${service}`)
 }
 
-async function mintSendingKey() {
+/** Resend's API with the Full access key that setup-resend.ts keeps in Keychain. */
+function resend() {
   const full = keychainRead('naturefunding RESEND_API_KEY')
   if (!full) throw new Error('No Full access key in Keychain: run bun digest/scripts/setup-resend.ts first.')
-  const api = (path: string, init?: RequestInit) =>
+  return (path: string, init?: RequestInit) =>
     fetch(`https://api.resend.com${path}`, { ...init, headers: { Authorization: `Bearer ${full}`, 'Content-Type': 'application/json' } }).then((r) => r.json())
+}
+
+async function mintSendingKey() {
+  const api = resend()
   const domain = ((await api('/domains')) as { data: { id: string; name: string; status: string }[] }).data.find((d) => d.name === DOMAIN)
   if (domain?.status !== 'verified') throw new Error(`${DOMAIN} isn't verified in Resend yet (${domain?.status ?? 'missing'}).`)
   const made = (await api('/api-keys', { method: 'POST', body: JSON.stringify({ name: 'naturefunding-digest Worker', permission: 'sending_access', domain_id: domain.id }) })) as { token?: string; message?: string }
@@ -44,5 +51,17 @@ async function secret(name: string, service: string, mint: () => Promise<string>
   console.log(`Set on the Worker: ${name}`)
 }
 
+async function webhookSecret() {
+  const api = resend()
+  const endpoint = 'https://email.naturefunding.org/resend/webhook'
+  const existing = ((await api('/webhooks')) as { data: { id: string; endpoint: string }[] }).data.find((w) => w.endpoint === endpoint)
+  const hook = (existing
+    ? await api(`/webhooks/${existing.id}`)
+    : await api('/webhooks', { method: 'POST', body: JSON.stringify({ endpoint, events: ['email.bounced', 'email.complained'] }) })) as { signing_secret?: string; message?: string }
+  if (!hook.signing_secret) throw new Error(`Resend gave no webhook signing secret: ${hook.message ?? 'no reason given'}`)
+  return hook.signing_secret
+}
+
 await secret('RESEND_API_KEY', 'naturefunding-digest RESEND_API_KEY', mintSendingKey)
 await secret('LIST_SECRET', 'naturefunding-digest LIST_SECRET', () => Buffer.from(crypto.getRandomValues(new Uint8Array(32))).toString('base64url'))
+await secret('RESEND_WEBHOOK_SECRET', 'naturefunding-digest RESEND_WEBHOOK_SECRET', webhookSecret)
