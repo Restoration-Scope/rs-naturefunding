@@ -5,6 +5,7 @@ import { loadProgrammes } from '../../src/data/load'
 import { handle, runDigest, type Deps, type Env } from './app'
 import type { DigestEvent } from './events'
 import { SendFailed } from './resend'
+import { svixSignature } from './webhook'
 import { memoryD1, recordingMailer } from './test-support'
 
 const programmes = new Map(loadProgrammes().map((p) => [p.id, p]))
@@ -292,5 +293,45 @@ describe('the daily run', () => {
     const res = await call(form('/unsubscribe', [['t', new URL(link).searchParams.get('t')!]]))
     expect(res.headers.get('Location')).toBe('https://naturefunding.org/digest/unsubscribed/')
     expect(subscribers()).toHaveLength(0)
+  })
+})
+
+describe('Resend webhook: bounces and spam complaints', () => {
+  const secret = 'whsec_MfKQ9r8GKYqrTwjUPD8ILPZIo2LaLaSw'
+  const hook = async (event: unknown, o: { secret?: string; sign?: string; at?: number } = {}) => {
+    const body = JSON.stringify(event)
+    const ts = String(o.at ?? Math.floor(clock.getTime() / 1000))
+    const sig = await svixSignature(o.sign ?? secret, 'msg_1', ts, body)
+    const req = new Request('https://email.naturefunding.org/resend/webhook', {
+      method: 'POST',
+      body,
+      headers: { 'svix-id': 'msg_1', 'svix-timestamp': ts, 'svix-signature': `v1,bogus v1,${sig}` },
+    })
+    return call(req, { ...env(), RESEND_WEBHOOK_SECRET: o.secret ?? secret })
+  }
+  const bounced = (to: string, type = 'Permanent') => ({ type: 'email.bounced', data: { to: [to], bounce: { type } } })
+
+  test("signs like Svix's own example", async () => {
+    expect(await svixSignature(secret, 'msg_p5jXN8AQM9LWM0D4loKWxJek', '1614265330', '{"test": 2432232314}')).toBe('g0hM9SsE+OTPJTGt/tmIKtSyZlE3uFJELVlNIOLJ1OE=')
+  })
+
+  test('a hard bounce or a spam complaint deletes the address; a transient bounce keeps it', async () => {
+    await subscribeAndConfirm('ana@example.org')
+    await subscribeAndConfirm('ben@example.org')
+    expect((await hook(bounced('Ana@Example.org', 'Transient'))).status).toBe(200)
+    expect(subscribers()).toHaveLength(2)
+    expect((await hook(bounced('Ana@Example.org'))).status).toBe(200)
+    expect(subscribers().map((s) => s.email)).toEqual(['ben@example.org'])
+    await hook({ type: 'email.complained', data: { to: ['ben@example.org'] } })
+    expect(subscribers()).toHaveLength(0)
+  })
+
+  test('refuses a wrong signature, an old call, and answers 503 until the secret is set', async () => {
+    await subscribeAndConfirm('ana@example.org')
+    expect((await hook(bounced('ana@example.org'), { sign: 'whsec_' + btoa('another secret') })).status).toBe(401)
+    expect((await hook(bounced('ana@example.org'), { at: Math.floor(clock.getTime() / 1000) - 600 })).status).toBe(401)
+    const res = await call(new Request('https://email.naturefunding.org/resend/webhook', { method: 'POST', body: '{}' }), env())
+    expect(res.status).toBe(503)
+    expect(subscribers()).toHaveLength(1)
   })
 })
