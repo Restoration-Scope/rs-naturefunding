@@ -2,19 +2,23 @@
   "id": "cultuurfonds-natuur",
   "name": "Natuur: projecten natuurbehoud en landschap",
   "funder": { "name": "Prins Bernhard Cultuurfonds", "url": "https://www.cultuurfonds.nl/" },
-  "administered_by": null,
+  "administered_by": {
+    "name": "Prins Bernhard Cultuurfonds",
+    "url": "https://www.cultuurfonds.nl"
+  },
   "parent": null,
   "url": "https://www.cultuurfonds.nl/natuur",
   "summary": "Rolling project contributions from a Dutch foundation to associations and foundations for nature conservation and landscape projects in the Netherlands, such as land purchase and nature development.",
   "approaches": ["species_conservation", "protected_areas", "community_conservation"],
-  "applicant_types": ["ngo"],
+  "applicant_types": ["ngo", "individual"],
   "geography": { "scope": "countries", "countries": ["NL"], "label": "Netherlands" },
   "access": "direct",
   "window": "rolling",
   "amount": {
     "currency": "EUR",
+    "min": 15000,
     "max": 50000,
-    "note": "National projects up to 50% of costs, max EUR 35,000 or 50,000; provincial projects up to 25%, max EUR 10,000; minimum project budget EUR 15,000"
+    "note": "National projects up to 50% of costs, max €35,000 or €50,000; provincial projects up to 25%, max €10,000"
   },
   "co_finance_required": true,
   "reporting": null,
@@ -38,7 +42,7 @@
   "calls": [
     {
       "id": "standing",
-      "label": "Project application for foundations and associations",
+      "label": "Projectaanvraag stichtingen en verenigingen",
       "url": "https://www.cultuurfonds.nl/aanvragen",
       "status": "open",
       "opens": null,
@@ -46,67 +50,73 @@
       "evidence": {
         "status": {
           "source_url": "https://www.cultuurfonds.nl/aanvragen",
-          "quote": "Doorlopend aanvragen. Je project vindt niet binnen 4 maanden na indiening plaats (landelijk)",
-          "checked_at": "2026-11-21",
+          "quote": "Doorlopend aanvragen. Je project vindt niet binnen 4 maanden na indiening plaats (landelijk) of niet voor de eerstvolgende vergadering (provinciaal)",
+          "checked_at": "2026-11-22",
           "method": "page"
         }
       }
     }
   ],
   "evidence": {
+    "administered_by": {
+      "source_url": "https://www.cultuurfonds.nl/aanvragen",
+      "quote": "Je kan bij ons geld aanvragen voor je cultuur- of natuurproject.",
+      "checked_at": "2026-11-22",
+      "method": "page"
+    },
     "applicant_types": {
       "source_url": "https://www.cultuurfonds.nl/aanvragen",
-      "quote": "Via deze aanvraagroute kan je als stichting of vereniging een bijdrage ontvangen voor landelijke en provinciale projecten.",
-      "checked_at": "2026-11-21",
+      "quote": "We hebben meerdere aanvraagroutes voor verenigingen en stichtingen en vanaf januari 2025 ook voor individuele makers en collectieven in alle disciplines.",
+      "checked_at": "2026-11-22",
       "method": "page"
     },
     "geography": {
       "source_url": "https://www.cultuurfonds.nl/natuur",
       "quote": "Het gaat daarbij altijd om projecten in of over de natuur in Nederland.",
-      "checked_at": "2026-11-21",
+      "checked_at": "2026-11-22",
       "method": "page"
     },
     "access": {
       "source_url": "https://www.cultuurfonds.nl/aanvragen",
       "quote": "Doorlopend aanvragen. Je project vindt niet binnen 4 maanden na indiening plaats (landelijk)",
-      "checked_at": "2026-11-21",
+      "checked_at": "2026-11-22",
       "method": "page"
     },
     "window": {
       "source_url": "https://www.cultuurfonds.nl/aanvragen",
       "quote": "Doorlopend aanvragen. Je project vindt niet binnen 4 maanden na indiening plaats (landelijk)",
-      "checked_at": "2026-11-21",
+      "checked_at": "2026-11-22",
       "method": "page"
     },
     "amount": {
       "source_url": "https://www.cultuurfonds.nl/aanvragen",
-      "quote": "Bij landelijke projecten draagt het fonds maximaal 50% bij aan de projectkosten, afhankelijk van het soort project tot een maximum van € 35.000 of € 50.000.",
-      "checked_at": "2026-11-21",
+      "quote": "Bij provinciale projecten draagt het fonds maximaal 25% bij aan de projectkosten, tot een maximaal bedrag van € 10.000. Bij landelijke projecten draagt het fonds maximaal 50% bij aan de projectkosten, afhankelijk van het soort project tot een maximum van € 35.000 of € 50.000. Geen maximum projectbegroting, minimale projectbegroting € 15.000",
+      "checked_at": "2026-11-22",
       "method": "page"
     },
     "co_finance_required": {
       "source_url": "https://www.cultuurfonds.nl/aanvragen",
       "quote": "Bij landelijke projecten draagt het fonds maximaal 50% bij aan de projectkosten",
-      "checked_at": "2026-11-21",
+      "checked_at": "2026-11-22",
       "method": "page"
     },
     "effort": [
       {
         "source_url": "https://www.cultuurfonds.nl/aanvragen/projectaanvraag-stichtingen-en-verenigingen",
         "quote": "Je doet een vooraanvraag",
-        "checked_at": "2026-11-21",
+        "checked_at": "2026-11-22",
         "method": "page"
       },
       {
         "source_url": "https://www.cultuurfonds.nl/aanvragen/projectaanvraag-stichtingen-en-verenigingen",
         "quote": "Het Cultuurfonds beoordeelt je vooraanvraag",
-        "checked_at": "2026-11-21",
+        "checked_at": "2026-11-22",
         "method": "page"
       },
       {
         "source_url": "https://www.cultuurfonds.nl/aanvragen/projectaanvraag-stichtingen-en-verenigingen",
         "quote": "Je voegt documenten toe",
-        "checked_at": "2026-11-21",
+        "checked_at": "2026-11-22",
         "method": "page"
       }
     ],
@@ -114,16 +124,16 @@
       {
         "source_url": "https://www.cultuurfonds.nl/aanvragen",
         "quote": "Je project vindt niet binnen 4 maanden na indiening plaats (landelijk) of niet voor de eerstvolgende vergadering (provinciaal)",
-        "checked_at": "2026-11-21",
+        "checked_at": "2026-11-22",
         "method": "page"
       },
       {
         "source_url": "https://www.cultuurfonds.nl/aanvragen/projectaanvraag-stichtingen-en-verenigingen",
         "quote": "Via deze aanvraagroute kent het Cultuurfonds maximaal één keer per jaar een bijdrage toe. Als je als stichting of vereniging penvoerder bent voor een projectaanvraag namens meerdere organisaties, kan je wel meerdere toekenningen per jaar ontvangen.",
-        "checked_at": "2026-11-21",
+        "checked_at": "2026-11-22",
         "method": "page"
       }
     ]
   },
-  "checked_at": "2026-11-21"
+  "checked_at": "2026-11-22"
 }
