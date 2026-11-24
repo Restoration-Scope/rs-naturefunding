@@ -60,7 +60,19 @@ describe('every page has a Markdown twin', () => {
 
   test('an assistant reads all of llms.txt: it stays under 40,000 characters and says where programme copies are', () => {
     expect(llms.length).toBeLessThan(40_000)
-    expect(llms).toContain(absolute('/p/{id}.md'))
+    expect(llms).toContain(`${site}p/{id}.md`)
+  })
+
+  test('a place list gives the rules of each programme an applicant can apply to, so one file answers “do we qualify”', () => {
+    const lines = read('countries/kenya.md').split('\n').filter((l) => l.startsWith('- ['))
+    let checked = 0
+    for (const p of programmes) {
+      const line = lines.find((l) => l.includes(`/p/${p.id}.md)`))
+      if (!line || p.access !== 'direct' || !p.eligibility || listingFor(p).state === 'closed') continue
+      for (const { rule } of p.eligibility) expect(line, p.id).toContain(rule.replace(/[.;]+$/, ''))
+      checked++
+    }
+    expect(checked).toBeGreaterThan(10)
   })
 
   test('llms-full.txt has the prose pages in place of its marker', () => {

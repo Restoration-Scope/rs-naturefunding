@@ -1,41 +1,36 @@
 ---
-// Ask your AI: a line about the project, handed to the visitor's own assistant with a prompt that starts it on the
-// right list (src/lib/ask-ai.ts). No server and no AI of ours. The script loads when the box first opens.
-// PostHog never reads the text: buttons, not links, carry it, and the field is ph-no-capture.
-import { ChevronDown, Copy, ExternalLink, MessageSquareText } from 'lucide-react'
+// One line a visitor gives their own AI. How to match a project to grants lives in llms.txt, so the line never
+// changes. No server and no AI of ours.
+import { Copy, MessageSquareText } from 'lucide-react'
 import { Button } from '@/components/ui/button'
+import { absolute } from '../lib/site'
+
+const prompt = `Read ${absolute('/llms.txt').replace('https://', '')} and find the grants that fit my project:`
 ---
 
-<details class="group/ai border-t border-border" data-ask-ai-box>
-  <summary class="flex min-h-12 cursor-pointer list-none items-center gap-2 rounded-b-2xl px-5 py-3 text-[0.9375rem] font-medium hover:bg-muted group-open/ai:rounded-none max-md:px-4 max-md:text-sm [&::-webkit-details-marker]:hidden">
-    <MessageSquareText className="size-5 shrink-0" strokeWidth={1.75} aria-hidden="true" />
-    <span>Ask your AI which grants fit your project</span>
-    <ChevronDown className="ml-auto size-5 shrink-0 text-muted-foreground group-open/ai:rotate-180" aria-hidden="true" />
-  </summary>
-  <div class="px-4 pt-1 pb-4 max-md:px-3">
-    <label class="mb-1.5 block px-1 text-sm font-medium" for="ask-ai-text">Your project: where, what, who you are and how much you need</label>
-    <textarea
-      id="ask-ai-text"
-      class="ph-no-capture block w-full rounded-xl border border-border bg-transparent px-4 py-3 text-md text-foreground placeholder:text-muted-foreground"
-      rows="3"
-      maxlength="1200"
-      autocomplete="off"
-      placeholder="We are a community group in Kenya restoring 200 ha of mangroves. We need about $50,000."></textarea>
-    <div class="mt-3 flex flex-wrap items-center gap-2">
-      <Button type="button" className="max-md:h-11 max-md:flex-1" data-ask-ai="chatgpt">Ask ChatGPT<ExternalLink aria-hidden="true" /></Button>
-      <Button type="button" className="max-md:h-11 max-md:flex-1" data-ask-ai="claude">Ask Claude<ExternalLink aria-hidden="true" /></Button>
-      <Button type="button" variant="outline" className="max-md:h-11 max-md:basis-full" data-ask-ai="copy"><Copy aria-hidden="true" />Copy for another assistant</Button>
-    </div>
-    <p class="mt-2 px-1 text-sm text-ink-2" aria-live="polite" data-ask-ai-status></p>
-    <p class="mt-1 px-1 text-sm text-ink-2">Opens in your own account with your text filled in; press send there. We never see it. AI can be wrong: check the funder’s page before you apply.</p>
-    <noscript><p class="mt-1 px-1 text-sm text-ink-2">These buttons need JavaScript.</p></noscript>
-  </div>
-</details>
+<div class="flex items-center gap-3 border-t border-border px-5 py-3 max-md:flex-wrap max-md:items-start max-md:px-4">
+  <MessageSquareText className="size-5 shrink-0" strokeWidth={1.75} aria-hidden="true" />
+  <p class="m-0 min-w-0 flex-1 text-[0.9375rem] max-md:text-sm">
+    <span class="font-medium">Or tell your AI:</span>{' '}
+    <span class="select-all text-ink-2" data-ai-prompt>{prompt}</span>{' '}
+    <span class="text-ink-2 italic">where, what, who you are and how much you need</span>
+  </p>
+  <Button type="button" variant="outline" size="sm" className="shrink-0 max-md:h-11 max-md:basis-full" hidden data-ai-copy><Copy aria-hidden="true" /><span aria-live="polite">Copy</span></Button>
+</div>
 
 <script>
-  const box = document.querySelector<HTMLDetailsElement>('[data-ask-ai-box]')!
-  const load = () => import('../lib/ask-ai').then((m) => m.initAskAi(box))
-  // Opened before this script ran (a restored page, a quick tap), or later.
-  if (box.open) load()
-  else box.addEventListener('toggle', load, { once: true })
+  const button = document.querySelector<HTMLButtonElement>('[data-ai-copy]')!
+  const text = document.querySelector<HTMLElement>('[data-ai-prompt]')!
+  button.hidden = !navigator.clipboard
+  button.addEventListener('click', async () => {
+    const label = button.querySelector('span')!
+    try {
+      await navigator.clipboard.writeText(`${text.textContent} `)
+      label.textContent = 'Copied'
+    } catch {
+      // The line is select-all: one tap picks it up whole.
+      getSelection()?.selectAllChildren(text)
+      label.textContent = 'Selected'
+    }
+  })
 </script>
