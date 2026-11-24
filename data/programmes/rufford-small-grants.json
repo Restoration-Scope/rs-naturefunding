@@ -9,9 +9,13 @@
   "approaches": ["species_conservation", "research", "community_conservation"],
   "applicant_types": ["individual"],
   "geography": {
-    "scope": "regions",
-    "regions": ["africa", "asia", "latin_america_caribbean", "middle_east", "oceania", "europe"],
-    "label": "Emerging or developing economy countries"
+    "scope": "countries",
+    "countries": ["AE", "AG", "AL", "AM", "AO", "AR", "AW", "AZ", "BA", "BB", "BD", "BF", "BH", "BI", "BJ", "BN", "BO", "BR", "BS", "BT", "BW", "BZ", "CD", "CF", "CG", "CI", "CL", "CM", "CN", "CO", "CR", "CV", "DJ", "DM", "DO", "DZ", "EC", "EG", "ER", "ET", "FJ", "FM", "GA", "GD", "GE", "GH", "GM", "GN", "GQ", "GT", "GW", "GY", "HN", "HT", "ID", "IN", "IQ", "JM", "JO", "KE", "KG", "KH", "KI", "KM", "KN", "KW", "KZ", "LA", "LB", "LC", "LK", "LR", "LS", "LY", "MA", "MD", "ME", "MG", "MH", "MK", "ML", "MN", "MR", "MU", "MV", "MW", "MX", "MY", "MZ", "NA", "NE", "NG", "NI", "NP", "NR", "OM", "PA", "PE", "PG", "PH", "PK", "PW", "PY", "QA", "RS", "RW", "SA", "SB", "SC", "SL", "SN", "SO", "SR", "ST", "SV", "SZ", "TD", "TG", "TH", "TJ", "TL", "TM", "TN", "TO", "TR", "TT", "TV", "TZ", "UA", "UG", "UY", "UZ", "VC", "VN", "VU", "WS", "XK", "YE", "ZA", "ZM", "ZW"],
+    "label": "Emerging or developing economy countries",
+    "list": "rufford-eligible-countries",
+    "parts": {
+      "UA": "outside Crimea, Donetsk, Kherson, Zaporizhzhia and Luhansk"
+    }
   },
   "access": "direct",
   "window": "rolling",
@@ -68,6 +72,20 @@
       "checked_at": "2026-11-24",
       "method": "page"
     },
+    "places": [
+      {
+        "source_url": "https://apply.ruffordsmallgrants.org/help/eligibility",
+        "quote": "Projects in the following countries qualify for support.",
+        "checked_at": "2026-11-24",
+        "method": "page"
+      },
+      {
+        "source_url": "https://apply.ruffordsmallgrants.org/help/eligibility",
+        "quote": "Ukraine (partial - applications cannot be considered from Crimea, Donetsk, Kherson, Zaporizhzhia and Luhansk regions)",
+        "checked_at": "2026-11-24",
+        "method": "page"
+      }
+    ],
     "access": {
       "source_url": "https://apply.ruffordsmallgrants.org",
       "quote": "Here you can apply for a grant online",

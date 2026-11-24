@@ -5,11 +5,13 @@
  * pull request draft (files, title, body) for a person to review.
  */
 import type { z } from 'zod'
+import { geographyIssues } from '../../src/data/geography'
 import type { Call, Evidence, Programme, Source } from '../../src/data/schema'
 import {
   access, applicantType, approach, call as callSchema, callStatus, expectedProblem, programme as programmeSchema, region, window as windowSchema,
 } from '../../src/data/schema'
 import { comparable, quoteOnPage } from '../../src/data/text'
+import { areaNames } from '../../src/lib/geo'
 import type { Llm } from './llm'
 import { dateOf, evidenceRefs } from './tier'
 
@@ -105,6 +107,11 @@ export function applyExtraction(original: Programme, source: Source, x: Extracti
     }
     if (!onPage(got.quote)) {
       changes.push({ path, kind: 'rejected', old: p[field], new: value.value, quote: short(got.quote), why: quoteWhy(got.quote) })
+      continue
+    }
+    const place = field === 'geography' ? geographyIssues({ geography: value.value as Programme['geography'], evidence: { geography: evidence(got.quote) } as Programme['evidence'] }) : []
+    if (place.length) {
+      changes.push({ path, kind: 'rejected', old: p[field], new: value.value, quote: short(got.quote), why: place.join('; ') })
       continue
     }
     if (same(p[field], value.value)) {
@@ -215,7 +222,7 @@ Answer with one JSON object:
 Fields and values:
 - administered_by: {"name","url"} of who runs the call for the funder
 - applicant_types: array of ${applicantType.options.join(', ')}
-- geography: {"scope":"global"} | {"scope":"countries","countries":[ISO-2 codes],"label"?} | {"scope":"regions","regions":[${region.options.join(', ')}],"label"}
+- geography: {"scope":"global"} | {"scope":"countries","countries":[ISO-2 codes],"label"?} | {"scope":"regions","regions":[${region.options.join(', ')}],"label","whole"?: true when the page says every country in those regions,"areas"?: [the narrowest of ${areaNames.join(', ')} or ISO-2 codes that hold the place the page names]}. Use "countries" whenever the page names its countries or territories, however many ("UK Overseas Territories", "the 11 countries below"); list only the ones it names. Use "regions" only for a group the page doesn't list, and never a whole region for a smaller place: "Mediterranean basin" is areas ["mediterranean_basin"], not africa
 - access: ${access.options.filter((o) => o !== 'unspecified').join(', ')}
 - window: ${windowSchema.options.filter((o) => o !== 'unspecified').join(', ')}
 - amount: {"currency": ISO 4217,"min"?: number,"max"?: number,"typical"?: true when the page gives a usual range,"max_exclusive"?: true when it says "less than" the max,"per"?: "year" when the amount is per year,"unit"?: "tree" or "hectare" when it is paid per tree planted or hectare restored,"note"?: a qualifier from the same quote, in our words} per grant

@@ -3,14 +3,13 @@ import { existsSync } from 'node:fs'
 import { join } from 'node:path'
 import { loadProgrammes } from '../../src/data/load'
 import type { Programme } from '../../src/data/schema'
-import { whereCodes as siteWhereCodes } from '../../src/lib/data'
 import { marks } from '../../src/lib/marks'
 import { buildDigest, type DigestItem } from './digest'
 import { digestEmail, finderUrl, itemParts, POSTAL_ADDRESS } from './email'
 import { pagePaths } from '../../src/lib/finder-pages'
 import { pageKey } from '../../src/lib/page-paths'
 import { diffSnapshots, type Snapshot } from './events'
-import { cleanPrefs, matches, whereCodes } from './match'
+import { cleanPrefs, matches } from './match'
 import { open, seal } from './token'
 
 const programmes = loadProgrammes()
@@ -41,8 +40,11 @@ describe('events from two snapshots', () => {
 })
 
 describe('filters match the finder', () => {
-  test('where codes are the ones the finder rows carry', () => {
-    for (const p of programmes) expect(whereCodes(p).join(' '), p.id).toBe(siteWhereCodes(p))
+  test('a group with no country list is in the email only as a place to check', () => {
+    const i = { section: 'new', programme: byId.get('neaq-mcaf')!, call: null } as unknown as DigestItem
+    expect(matches(byId.get('dimfe-call-for-projects')!, cleanPrefs('KE', []))).toBe(false)
+    expect(matches(i.programme, cleanPrefs('KE', []))).toBe(true)
+    expect(itemParts(i, 'https://x', cleanPrefs('KE', [])).place).toBe('Check the place: low- and middle-income countries around the globe')
   })
   test('a country matches its own listings, its region-wide ones and worldwide ones', () => {
     const worldwide = programmes.find((p) => p.geography?.scope === 'global')!

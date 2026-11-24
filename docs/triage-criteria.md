@@ -11,6 +11,7 @@ Accept only when every item is true:
 - **First-party funder source.** The call is described on the funder's own page, or an official page from the funder-appointed administrator.
 - **Verbatim evidence.** Eligibility, amount, deadline and region each have a first-party `source_url`, verbatim `quote` and `checked_at`.
 - **Deadlines are stated.** A deadline is recorded only when the first-party page states it, including the year needed for the date.
+- **The place is the one the funder names.** A closed set (UK Overseas Territories, EU outermost regions, "28 countries") is recorded country by country from the list the funder gives or links. A smaller place ("Mediterranean basin", "Southern Africa") is never recorded as the whole region. Worked example: BESTLIFE2030 takes EU outermost regions and overseas territories, not Africa.
 
 ## Hold checklist
 

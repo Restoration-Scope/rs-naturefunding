@@ -1,12 +1,13 @@
 import type { APIRoute } from 'astro'
 import { programmes } from '../lib/data'
 import { absolute } from '../lib/site'
+import { wholeRegions, whereCodes } from '../lib/where-codes'
 
 const columns = [
   'programme_id', 'programme', 'kind', 'funder', 'administered_by', 'access', 'window', 'call_id', 'call', 'call_status',
   'opens', 'opens_expected', 'deadline_date', 'deadline_text', 'dates_each_year', 'call_note', 'call_countries', 'amount_currency', 'amount_min',
   'amount_max', 'amount_max_exclusive', 'amount_typical', 'amount_per', 'amount_unit', 'amount_note', 'pool_currency', 'pool_value',
-  'pool_period', 'pool_qualifier', 'pool_label', 'pool_note', 'geography', 'approaches',
+  'pool_period', 'pool_qualifier', 'pool_label', 'pool_note', 'geography', 'geography_label', 'geography_parts', 'geography_check', 'geography_except', 'approaches',
   'applicant_types', 'co_finance_required', 'call_url', 'programme_url', 'checked_at', 'listing_url',
 ] as const
 
@@ -22,15 +23,19 @@ export const GET: APIRoute = () => {
       : p.geography.scope === 'global'
         ? 'global'
         : p.geography.scope === 'regions'
-          ? p.geography.regions.join(' ')
+          ? wholeRegions(p.geography).join(' ')
           : p.geography.countries.join(' ')
+    const g = p.geography
     const base = {
       programme_id: p.id, programme: p.name, kind: p.kind ?? 'grant', funder: p.funder.name, administered_by: p.administered_by?.name,
       access: p.access, window: p.window, amount_currency: p.amount?.currency, amount_min: p.amount?.min,
       amount_max: p.amount?.max, amount_max_exclusive: p.amount?.max_exclusive ? 'yes' : '',
       amount_typical: p.amount?.typical ? 'yes' : '', amount_per: p.amount?.per, amount_unit: p.amount?.unit, amount_note: p.amount?.note,
       pool_currency: p.pool?.currency, pool_value: p.pool?.value, pool_period: p.pool?.period, pool_qualifier: p.pool?.qualifier, pool_label: p.pool?.label, pool_note: p.pool?.note,
-      geography: geo, approaches: p.approaches.join(' '),
+      geography: geo, geography_label: g && g.scope !== 'global' ? g.label : '',
+      geography_parts: g?.scope === 'countries' && g.parts ? Object.entries(g.parts).map(([c, part]) => `${c}: ${part}`).join('; ') : '',
+      geography_check: g?.scope === 'regions' ? whereCodes(p).filter((c) => /^\?[A-Z]/.test(c)).map((c) => c.slice(1)).join(' ') : '',
+      geography_except: g?.scope === 'regions' ? g.except?.join(' ') : '', approaches: p.approaches.join(' '),
       applicant_types: p.applicant_types?.join(' '), co_finance_required: p.co_finance_required,
       programme_url: p.url, checked_at: p.checked_at, listing_url: absolute(`/p/${p.id}/`),
     }

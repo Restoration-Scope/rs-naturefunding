@@ -2,10 +2,11 @@
 // programmes, one per region and one per project type. Each holds only its own rows, so search engines index
 // a page per place and per type; the other filters stay in the address (src/lib/finder.ts).
 import type { Listing } from './data'
-import { listings, sortListings, whereCodes } from './data'
+import { listings, sortListings } from './data'
 import { countryName, countryRegion, regionLabels, type Region } from './geo'
 import { approachLabels, projectTypes } from './labels'
 import { pageKey, type PagePaths } from './page-paths'
+import { placeFit, whereCodes } from './where-codes'
 
 /** A country gets its own page once this many programmes name it. */
 const MIN_NAMED = 5
@@ -17,15 +18,6 @@ export const slug = (s: string) =>
     .replace(/[̀-ͯ]/g, '')
     .replace(/[^a-z0-9]+/g, '-')
     .replace(/^-|-$/g, '')
-
-/** Whether a programme takes projects in a Where value, as the finder's Where filter decides it. */
-export function matchesWhere(p: Listing['p'], where: string) {
-  if (!where) return true
-  const codes = whereCodes(p).split(' ')
-  if (codes.includes('*')) return true
-  if (where.startsWith('r:')) return codes.includes(where) || codes.includes(`R:${where.slice(2)}`)
-  return codes.includes(where) || codes.includes(`R:${countryRegion[where]}`)
-}
 
 // The project types as the finder's tabs hold them: only approaches some listing has.
 const used = new Set(listings.flatMap((l) => l.p.approaches))
@@ -56,6 +48,8 @@ export type FinderPage = {
   title: string
   lead: string
   listings: Listing[]
+  /** Programmes for a group the country may be in: shown with "check", never counted or listed as taking it. */
+  check: Listing[]
 }
 
 const plural = (k: number, one: string, many: string) => `${k} ${k === 1 ? one : many}`
@@ -76,12 +70,15 @@ export const placeTitle = (name: string) => {
 }
 
 function placePage(where: string, path: string, name: string, regionName: string, iso2?: string): FinderPage {
-  const ls = listings.filter((l) => matchesWhere(l.p, where)).sort(sortListings)
-  const codes = (l: Listing) => whereCodes(l.p).split(' ')
-  const global = ls.filter((l) => codes(l).includes('*')).length
-  const region = ls.filter((l) => codes(l).some((c) => c.startsWith('R:'))).length
+  const fits = (fit: string) => listings.filter((l) => placeFit(l.p, where) === fit).sort(sortListings)
+  const ls = fits('all')
+  const check = fits('check')
+  const r = where.startsWith('r:') ? where.slice(2) : countryRegion[where]
+  const global = ls.filter((l) => l.p.geography?.scope === 'global').length
+  const region = ls.filter((l) => whereCodes(l.p).includes(`R:${r}`)).length
   const named = ls.length - global - region
-  const namedText = iso2 ? `${named} name ${name}` : `${named} name countries in ${name}`
+  const namedText = iso2 ? `${named} name ${name}` : `${named} name places in ${name}`
+  const checkText = check.length ? ` ${plural(check.length, 'more funds', 'more fund')} a group that may include ${inPlace(name)}: check the funder’s words.` : ''
   return {
     path,
     where,
@@ -90,8 +87,9 @@ function placePage(where: string, path: string, name: string, regionName: string
     name,
     h1: `Grants for nature restoration and conservation in ${inPlace(name)}`,
     title: placeTitle(name),
-    lead: `${programmes(ls.length)} nature restoration and conservation projects in ${inPlace(name)}: ${namedText}, ${region} cover all of ${regionName} and ${global} are open worldwide. ${openNow(ls)}`,
+    lead: `${programmes(ls.length)} nature restoration and conservation projects in ${inPlace(name)}: ${namedText}, ${region} cover all of ${regionName} and ${global} are open worldwide. ${openNow(ls)}${checkText}`,
     listings: ls,
+    check,
   }
 }
 
@@ -119,6 +117,7 @@ const typePages = types.map((t): FinderPage => {
     title: `Grants for ${topic}`,
     lead: `${programmes(ls.length)} ${topic} projects. ${openNow(ls)}`,
     listings: ls,
+    check: [],
   }
 })
 

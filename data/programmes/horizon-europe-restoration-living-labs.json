@@ -9,9 +9,10 @@
   "approaches": ["freshwater", "wetlands", "agroforestry", "grasslands", "sustainable_land_use"],
   "applicant_types": ["ngo", "research_institution", "government", "company"],
   "geography": {
-    "scope": "regions",
-    "regions": ["europe"],
-    "label": "Living labs in at least three EU Member States and/or Horizon Europe Associated Countries"
+    "scope": "countries",
+    "countries": ["AL", "AM", "AT", "BA", "BE", "BG", "CA", "CH", "CY", "CZ", "DE", "DK", "EE", "EG", "ES", "FI", "FO", "FR", "GB", "GE", "GR", "HR", "HU", "IE", "IL", "IS", "IT", "JP", "KR", "LT", "LU", "LV", "MD", "ME", "MK", "MT", "NL", "NO", "NZ", "PL", "PT", "RO", "RS", "SE", "SI", "SK", "TN", "TR", "UA", "XK"],
+    "label": "Living labs in at least three EU Member States and/or Horizon Europe Associated Countries",
+    "list": ["eu-member-states", "horizon-europe-associated-countries"]
   },
   "access": "direct",
   "window": "fixed",
@@ -103,6 +104,14 @@
       "checked_at": "2026-11-24",
       "method": "page"
     },
+    "places": [
+      {
+        "source_url": "https://ec.europa.eu/info/funding-tenders/opportunities/docs/2021-2027/common/guidance/list-3rd-country-participation_horizon-euratom_en.pdf",
+        "quote": "The association agreements with the following countries have now started to produce legal effects",
+        "checked_at": "2026-11-24",
+        "method": "page"
+      }
+    ],
     "access": {
       "source_url": "https://ec.europa.eu/info/funding-tenders/opportunities/docs/2021-2027/horizon/wp-call/2026-2027/wp-15-general-annexes_horizon-2026-2027_en.pdf",
       "quote": "All proposals must be submitted electronically via the EU Funders & Tenders Portal electronic submission system (accessible via the topic page in the Search Funding & Tenders section).",

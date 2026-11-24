@@ -21,9 +21,13 @@
   ],
   "applicant_types": ["ngo", "community_group", "company", "research_institution", "government"],
   "geography": {
-    "scope": "regions",
-    "regions": ["latin_america_caribbean", "africa", "oceania", "europe", "north_america"],
-    "label": "EU outermost regions (ORs) and Overseas Countries and Territories (OCTs)"
+    "scope": "countries",
+    "countries": ["AW", "BL", "BQ", "CW", "ES", "GF", "GL", "GP", "MF", "MQ", "NC", "PF", "PM", "PT", "RE", "SX", "TF", "WF", "YT"],
+    "label": "EU outermost regions (ORs) and Overseas Countries and Territories (OCTs)",
+    "parts": {
+      "PT": "the Azores and Madeira",
+      "ES": "the Canary Islands"
+    }
   },
   "access": "direct",
   "window": "fixed",
@@ -146,6 +150,38 @@
       "checked_at": "2026-11-24",
       "method": "page"
     },
+    "places": [
+      {
+        "source_url": "https://bestlife2030.org/wp-content/uploads/BESTLIFE2030_3rd_Call_Guidelines_Applicants_EN.pdf",
+        "quote": "French Guiana*, Guadeloupe*, Martinique*, Saint Martin*, Saint Barthélémy, Réunion*, Mayotte*, French Southern and Antarctic Lands - Scattered Islands, Austral Islands and Adélie Land, Saint Pierre and Miquelon",
+        "checked_at": "2026-11-24",
+        "method": "page"
+      },
+      {
+        "source_url": "https://bestlife2030.org/wp-content/uploads/BESTLIFE2030_3rd_Call_Guidelines_Applicants_EN.pdf",
+        "quote": "New Caledonia, Wallis and Futuna, French Polynesia",
+        "checked_at": "2026-11-24",
+        "method": "page"
+      },
+      {
+        "source_url": "https://bestlife2030.org/wp-content/uploads/BESTLIFE2030_3rd_Call_Guidelines_Applicants_EN.pdf",
+        "quote": "Aruba, Bonaire, Curaçao, Saba, SaintEustache, Sint-Maarten",
+        "checked_at": "2026-11-24",
+        "method": "page"
+      },
+      {
+        "source_url": "https://bestlife2030.org/wp-content/uploads/BESTLIFE2030_3rd_Call_Guidelines_Applicants_EN.pdf",
+        "quote": "Azores*, Madeira*, Canary Islands*",
+        "checked_at": "2026-11-24",
+        "method": "page"
+      },
+      {
+        "source_url": "https://bestlife2030.org/wp-content/uploads/BESTLIFE2030_3rd_Call_Guidelines_Applicants_EN.pdf",
+        "quote": "Nordisk Fond for Miljø og Udvikling (NORDECO) Greenland",
+        "checked_at": "2026-11-24",
+        "method": "page"
+      }
+    ],
     "access": {
       "source_url": "https://bestlife2030.org/news/from-eu-biodiversity-priorities-to-local-action-bestlife2030-launches-its-third-call-for-proposals/",
       "quote": "Applications are managed through the IUCN Grant Management System and may be submitted in English or French.",

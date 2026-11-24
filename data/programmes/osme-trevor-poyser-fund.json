@@ -11,7 +11,16 @@
   "summary": "A single £5,000 award for a primarily field-based research and monitoring project on a globally threatened bird species in the OSME region; the project leader must be a national of the project country.",
   "approaches": ["species_conservation", "research"],
   "applicant_types": null,
-  "geography": { "scope": "regions", "regions": ["middle_east", "asia"], "label": "OSME region" },
+  "geography": {
+    "scope": "countries",
+    "countries": ["AE", "AF", "AM", "AZ", "BH", "CY", "EG", "GE", "IL", "IQ", "IR", "JO", "KG", "KW", "KZ", "LB", "OM", "PS", "QA", "RU", "SA", "SY", "TJ", "TM", "TR", "UZ", "YE"],
+    "label": "OSME region",
+    "list": "osme-region",
+    "parts": {
+      "RU": "the Caucasus in the far south",
+      "PS": "Gaza"
+    }
+  },
   "access": "direct",
   "window": "fixed",
   "amount": { "currency": "GBP", "min": 5000, "max": 5000, "note": "One award is made" },
@@ -89,6 +98,20 @@
       "checked_at": "2026-11-20",
       "method": "page"
     },
+    "places": [
+      {
+        "source_url": "https://osme.org/orl/osme-region-map/",
+        "quote": "The Region contains 35 countries or territories, namely: Egypt, Cyprus, Turkey (including European Turkey), Syria, Lebanon, Israel, Gaza, Jordan, Saudi Arabia, Yemen (including the Socotra archipelago), Oman, United Arab Emirates, Qatar, Bahrain, Kuwait, Iraq, Iran, Georgia, Armenia, Azerbaijan",
+        "checked_at": "2026-11-24",
+        "method": "page"
+      },
+      {
+        "source_url": "https://osme.org/orl/osme-region-map/",
+        "quote": "the republics (Karachay-Cherkassia, Kabardino-Balkaria, North Ossetia and Chechenia) along the north slope of the Caucasus and a small part of the southernmost Russian federation",
+        "checked_at": "2026-11-24",
+        "method": "page"
+      }
+    ],
     "effort": [
       {
         "source_url": "https://osme.org/the-trevor-poyser-species-conservation-fund/how-to-apply/",
