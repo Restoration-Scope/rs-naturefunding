@@ -22,11 +22,11 @@
   "effort": { "steps": ["Application submission"], "due": ["2026-12-31"] },
   "eligibility": [
     {
-      "rule": "The project removes only invasive plants or animals listed in Annex 1A or 1B.",
+      "rule": "Removes species or their hybrids listed in Annex 1A or 1B, using the annex that applies to the location",
       "kind": "project"
     },
     {
-      "rule": "The project uses no biological or chemical control unless no other method can be used and its legal compliance is shown.",
+      "rule": "Uses biological or chemical control only if the province approves, no alternative exists and legal compliance is shown",
       "kind": "project"
     },
     {
@@ -41,10 +41,17 @@
       "rule": "The project does not remove invasive water or riparian plants in the LIFE project area.",
       "kind": "project"
     },
-    { "rule": "The application complies with the De-minimis Regulation.", "kind": "other" },
     {
-      "rule": "Applies no more often per calendar year than its type allows (once for foundations, associations, individuals)",
+      "rule": "The requested grant qualifies under the applicable de minimis aid rules",
+      "kind": "legal"
+    },
+    {
+      "rule": "Annual caps: 1 for foundations, associations and estate/private owners, 2 for municipalities, 4 for water/land managers",
       "kind": "other"
+    },
+    {
+      "rule": "Starts work after the province receives the application, except for the site inventory and implementation plan",
+      "kind": "project"
     }
   ],
   "co_finance": {
@@ -55,10 +62,12 @@
   "documents": [
     "Budget and funding plan using the required budget format",
     "Implementation plan with schedule, overview map and detail map",
-    "Planting plan, if trees and shrubs will be planted",
+    "Planting plan with area in square metres, if trees and shrubs will be planted",
     "Bank account proof, if no previous grant or the account changed",
-    "De minimis award letters, if applicable",
-    "Signed authorization, if applying as an authorized representative"
+    "Award letters for de minimis aid received from other funders in the past 3 years",
+    "Signed authorization, if applying as an authorized representative",
+    "Cooperation agreement, for partnership applications",
+    "State-aid declaration from each partner, for partnership applications"
   ],
   "calls": [
     {
@@ -141,9 +150,9 @@
     ],
     "eligibility": [
       {
-        "source_url": "https://regelen.overijssel.nl/Producten_en_diensten/Subsidies/Natuur_en_landschap/Aanpak_van_invasieve_exoten_2_0_planten_en_of_dieren",
-        "quote": "gaat alleen over invasieve planten en/of dieren die genoemd staan in Bijlage 1A en Bijlage 1B die horen bij deze subsidieregeling",
-        "checked_at": "2026-11-23",
+        "source_url": "https://lokaleregelgeving.overheid.nl/CVDR679264/",
+        "quote": "De subsidie wordt verleend voor de verwijdering van invasieve exoten en de hybriden daarvan: a. die opgenomen zijn in bijlage 1A en die worden verwijderd buiten de begrenzing van N2000-gebieden, buiten de invloedsgebieden van N2000 en buiten het NNN; b. die opgenomen zijn in bijlage 1B en die worden verwijderd binnen het NNN",
+        "checked_at": "2026-11-24",
         "method": "page"
       },
       {
@@ -178,8 +187,14 @@
       },
       {
         "source_url": "https://regelen.overijssel.nl/Producten_en_diensten/Subsidies/Natuur_en_landschap/Aanpak_van_invasieve_exoten_2_0_planten_en_of_dieren",
-        "quote": "Stichtingen, verenigingen, landgoedeigenaren en particulieren, maar niet Terreinbeherende organisaties, kunnen maximaal één keer per kalenderjaar subsidie aanvragen.",
-        "checked_at": "2026-11-23",
+        "quote": "Stichtingen, verenigingen, landgoedeigenaren en particulieren, maar niet Terreinbeherende organisaties, kunnen maximaal één keer per kalenderjaar subsidie aanvragen. Gemeenten kunnen twee keer per kalenderjaar een subsidieaanvraag indienen. Waterschappen en Terreinbeherende Organisaties kunnen vier keer per kalenderjaar een subsidieaanvraag indienen.",
+        "checked_at": "2026-11-24",
+        "method": "page"
+      },
+      {
+        "source_url": "https://regelen.overijssel.nl/Producten_en_diensten/Subsidies/Natuur_en_landschap/Aanpak_van_invasieve_exoten_2_0_planten_en_of_dieren",
+        "quote": "met het opstellen van een inventarisatie van het plangebied en het uitvoeringsplan mag voor ontvangst van de subsidieaanvraag al gestart zijn. De overige activiteiten mogen pas starten nadat wij de subsidieaanvraag hebben ontvangen.",
+        "checked_at": "2026-11-24",
         "method": "page"
       }
     ],
@@ -212,6 +227,18 @@
         "source_url": "https://regelen.overijssel.nl/Producten_en_diensten/Subsidies/Natuur_en_landschap/Aanpak_van_invasieve_exoten_2_0_planten_en_of_dieren",
         "quote": "Verleningsbrieven als uw organisatie de afgelopen 3 jaar (geen belastingjaren) de-minimissteun heeft ontvangen (indien van toepassing en alleen als u de steun niet van ons heeft ontvangen). Een ondertekende machtiging als u dit formulier invult als gemachtigde.",
         "checked_at": "2026-11-23",
+        "method": "page"
+      },
+      {
+        "source_url": "https://regelen.overijssel.nl/Producten_en_diensten/Subsidies/Natuur_en_landschap/Aanpak_van_invasieve_exoten_2_0_planten_en_of_dieren",
+        "quote": "Alleen als er sprake is van het aanplanten van bomen en struiken: een beplantingsplan, waarin ook de omvang van het in te planten oppervlakte is opgenomen, uitgedrukt in m2.",
+        "checked_at": "2026-11-24",
+        "method": "page"
+      },
+      {
+        "source_url": "https://lokaleregelgeving.overheid.nl/CVDR679264/",
+        "quote": "Als sprake is van een samenwerkingsverband levert de aanvrager aanvullend: a. een samenwerkingsovereenkomst, en b. een staatssteunverklaring van alle partners in.",
+        "checked_at": "2026-11-24",
         "method": "page"
       }
     ]

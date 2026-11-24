@@ -21,14 +21,11 @@
   "effort": { "steps": ["Application submission"], "due": ["2026-12-31"] },
   "eligibility": [
     {
-      "rule": "Focuses on a single priority raptor species (RCPI-Edge above 0.5)",
+      "rule": "Focuses on a single raptor species recognized as a research and conservation priority",
       "kind": "project"
     },
     { "rule": "Leads the project as the applicant", "kind": "project" },
-    {
-      "rule": "Is a citizen or permanent resident of the project country or region",
-      "kind": "legal"
-    },
+    { "rule": "Is a citizen or permanent resident of the project country", "kind": "legal" },
     {
       "rule": "Is associated with a registered NGO and/or university in the project country",
       "kind": "legal"
@@ -38,10 +35,11 @@
       "kind": "project"
     },
     {
-      "rule": "Has a relationship with an NGO or university that accepts and disburses the grant",
+      "rule": "Has a registered NGO or university that agrees to receive and pass the grant to the applicant",
       "kind": "legal"
     },
-    { "rule": "Application is written in English", "kind": "other" }
+    { "rule": "Application is written in English", "kind": "other" },
+    { "rule": "Keeps institutional overhead at or below 10%", "kind": "project" }
   ],
   "after_award": { "reports": "unspecified" },
   "documents": ["Project area map", "CV/Resume", "Copy of national ID or passport"],
@@ -116,8 +114,8 @@
     "eligibility": [
       {
         "source_url": "https://hawkwatch.org/investing-in-others/grrcg/",
-        "quote": "Focused on a single species of raptor that is recognized as a high-priority species for research and conservation (>0.5 RCPI-Edge*)",
-        "checked_at": "2026-11-23",
+        "quote": "Focused on a single species of raptor that is recognized as a high-priority species for research and conservation",
+        "checked_at": "2026-11-24",
         "method": "page"
       },
       {
@@ -128,8 +126,8 @@
       },
       {
         "source_url": "https://hawkwatch.org/investing-in-others/grrcg/",
-        "quote": "Led by an applicant who is a citizen or permanent resident of the country or region where the project will take place",
-        "checked_at": "2026-11-23",
+        "quote": "Occur outside of the country where the applicant is a citizen or permanent resident",
+        "checked_at": "2026-11-24",
         "method": "page"
       },
       {
@@ -154,6 +152,12 @@
         "source_url": "https://hawkwatch.org/investing-in-others/grrcg/",
         "quote": "Are submitted in any language other than English",
         "checked_at": "2026-11-23",
+        "method": "page"
+      },
+      {
+        "source_url": "https://hawkwatch.org/wp-content/uploads/2026/09/GRRCG-Application-Form.docx",
+        "quote": "Institutional Overhead (not exceeding 10%)",
+        "checked_at": "2026-11-24",
         "method": "page"
       }
     ],

@@ -23,19 +23,22 @@
   "co_finance_required": null,
   "reporting": null,
   "effort": {
-    "steps": ["Application", "Expert jury review and finalist selection"],
+    "steps": [
+      "Application",
+      "Expert jury review and finalist selection",
+      "Community vote on the finalists"
+    ],
     "more_after": true,
-    "due": ["2026-12-31", null]
+    "due": ["2026-12-31", null, null]
   },
   "eligibility": [
     {
-      "rule": "Eligible to receive tax-privileged donations under German tax law",
+      "rule": "Is in Germany’s donor-recipient register or can demonstrate German tax eligibility with a valid tax notice",
       "kind": "legal"
     },
     { "rule": "Project is not already completed", "kind": "project" },
     { "rule": "Project does not merely replace statutory or other obligations", "kind": "project" },
     { "rule": "Funding is not solely for an institution", "kind": "project" },
-    { "rule": "Funding is not requested as material or in-kind donations", "kind": "project" },
     {
       "rule": "Project has no significant negative ecological or social side effects",
       "kind": "project"
@@ -43,14 +46,9 @@
     {
       "rule": "Project must address mountain protection or inclusion in mountain sports",
       "kind": "project"
-    }
-  ],
-  "documents": [
-    "Organisation profile",
-    "Contact details",
-    "Project description",
-    "Statement of intended use of funding",
-    "Proof of charitable status"
+    },
+    { "rule": "Has a representative aged 18 or older submit the application", "kind": "legal" },
+    { "rule": "Avoids discrimination, political co-option and greenwashing", "kind": "project" }
   ],
   "calls": [
     {
@@ -119,13 +117,19 @@
         "quote": "Nach Ablauf der Teilnahmefrist am 31. Dezember 2026 wählt eine Fachjury, bestehend aus Bergzeit Geschäftsführung, Marketingspezialistin, CSR-Managerin, Umweltteammitglied und einer externen Fachexpertise unter allen Bewerbenden drei Finalisten aus.",
         "checked_at": "2026-11-23",
         "method": "page"
+      },
+      {
+        "source_url": "https://www.bergzeit.de/magazin/bergzeit-impact-jetzt-bewerben/",
+        "quote": "Die Community bzw. die Followerinnen und Follower der Bergzeit GmbH auf diesen Kanälen und ggf. darüber hinaus stimmen darüber ab, welche der Finalisten Organisationen die Spendensumme erhält.",
+        "checked_at": "2026-11-24",
+        "method": "page"
       }
     ],
     "eligibility": [
       {
         "source_url": "https://www.bergzeit.de/magazin/bergzeit-impact-jetzt-bewerben/",
-        "quote": "die zum Zeitpunkt der Bewerbung berechtigt sind, steuerbegünstigte Zuwendungen im Sinne des deutschen Steuerrechts zu empfangen",
-        "checked_at": "2026-11-23",
+        "quote": "Als Nachweis muss die Organisation im Zuwendungsempfängerregister des Bundeszentralamts für Steuern (BZSt) geführt sein oder ihre entsprechende steuerliche Berechtigung durch einen gültigen Freistellungsbescheid, eine Anlage zum Körperschaftsteuerbescheid oder einen Feststellungsbescheid nach § 60a AO nachweisen können.",
+        "checked_at": "2026-11-24",
         "method": "page"
       },
       {
@@ -148,12 +152,6 @@
       },
       {
         "source_url": "https://www.bergzeit.de/bergzeit-impact/",
-        "quote": "Material- und Sachspenden über dieses Förderprogramm",
-        "checked_at": "2026-11-23",
-        "method": "page"
-      },
-      {
-        "source_url": "https://www.bergzeit.de/bergzeit-impact/",
         "quote": "Erhebliche negative ökologische oder soziale Nebenwirkungen",
         "checked_at": "2026-11-23",
         "method": "page"
@@ -163,13 +161,17 @@
         "quote": "Gesucht werden Projekte, die in Deutschland oder Österreich wirksam zum Schutz der Bergwelt oder zu gesellschaftlicher Teilhabe im Bergsport beitragen.",
         "checked_at": "2026-11-23",
         "method": "page"
-      }
-    ],
-    "documents": [
+      },
       {
         "source_url": "https://www.bergzeit.de/magazin/bergzeit-impact-jetzt-bewerben/",
-        "quote": "Für die Bewerbung benötigen wir: Vereinsprofil Kontaktdaten Beschreibung des Projekts Verwendungszweck der Förderung Nachweis der Gemeinnützigkeit.",
-        "checked_at": "2026-11-23",
+        "quote": "Eine Bewerbung kann von jeder Person ab 18 Jahren in Vertretung einer gemeinnützigen Organisation eingereicht werden.",
+        "checked_at": "2026-11-24",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.bergzeit.de/bergzeit-impact/",
+        "quote": "Diskriminierung, politische Vereinnahmung, Greenwashing",
+        "checked_at": "2026-11-24",
         "method": "page"
       }
     ]
