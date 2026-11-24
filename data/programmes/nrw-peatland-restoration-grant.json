@@ -17,14 +17,21 @@
   "amount": { "currency": "GBP", "min": 10000, "max": 250000 },
   "co_finance_required": false,
   "reporting": "Grantees must spend and claim all eligible costs by 31 March 2028, with the final claim due on that date.",
-  "effort": { "steps": ["Online application"], "due": ["2026-11-30"] },
+  "effort": {
+    "steps": [
+      "Online application",
+      "Request a peatland grant reference number before applying",
+      "Application scoring and panel review"
+    ],
+    "due": ["2026-11-30", null, null]
+  },
   "eligibility": [
     {
       "rule": "Has delivered a peatland project in the last decade or has support from an experienced partner or contractor",
       "kind": "track_record"
     },
     {
-      "rule": "Does not seek revenue costs, off-priority restoration, unlinked monitoring or unsupported tree clearance",
+      "rule": "Any surveys/monitoring support capital works; tree/scrub clearance includes other sustainable management",
       "kind": "project"
     },
     {
@@ -38,14 +45,21 @@
     {
       "rule": "Addresses one or more National Peatland Action Programme priorities",
       "kind": "project"
-    }
+    },
+    { "rule": "Project work has not started or already been completed", "kind": "project" },
+    { "rule": "Project activity is not commercial or profit-making", "kind": "project" },
+    { "rule": "Project does not fund work within NRW’s statutory remit", "kind": "project" }
   ],
   "documents": [
-    "Evidence of peatland restoration experience or confirmed technical support",
+    "Proof of peatland restoration experience or written confirmation of experienced technical support",
     "Project plan and cost breakdown on the NRW template",
     "Governing documents (third-sector applicants)",
-    "Last 3 months of bank statements and certified ID (individuals)",
-    "Signed agreements with formal delivery partners"
+    "Last 3 months of bank statements (individuals)",
+    "Signed agreements with formal delivery partners",
+    "Certified passport or driving licence copy (individuals)",
+    "Bank statements and reconciliation, or bank account opening letter (organisations under 6 months without accounts)",
+    "Management accounts if micro-company accounts or statutory accounts over 6 months old",
+    "Subsidy control declaration, if applicable"
   ],
   "calls": [
     {
@@ -132,6 +146,18 @@
         "quote": "You must apply by 23:59 on 30 November 2026.",
         "checked_at": "2026-11-23",
         "method": "page"
+      },
+      {
+        "source_url": "https://cyfoethnaturiol.cymru/about-us/grants-and-funding/peatland-restoration-grant-2027/?lang=en",
+        "quote": "You'll need a reference number to start your grant application.",
+        "checked_at": "2026-11-24",
+        "method": "page"
+      },
+      {
+        "source_url": "https://cyfoethnaturiol.cymru/about-us/grants-and-funding/how-we-score-peatland-restoration-grant-applications-2027/?lang=en",
+        "quote": "Applications will be scored and ranked, and will be considered together in the relevant panel or panels.",
+        "checked_at": "2026-11-24",
+        "method": "page"
       }
     ],
     "eligibility": [
@@ -164,15 +190,27 @@
         "quote": "All projects will need to address one or more of the National Peatland Action Programme priorities:",
         "checked_at": "2026-11-23",
         "method": "page"
+      },
+      {
+        "source_url": "https://cyfoethnaturiol.cymru/about-us/grants-and-funding/peatland-restoration-grant-2027/?lang=en",
+        "quote": "Schemes where work has been completed or is underway",
+        "checked_at": "2026-11-24",
+        "method": "page"
+      },
+      {
+        "source_url": "https://cyfoethnaturiol.cymru/about-us/grants-and-funding/peatland-restoration-grant-2027/?lang=en",
+        "quote": "Funding commercial or profit-making activities",
+        "checked_at": "2026-11-24",
+        "method": "page"
+      },
+      {
+        "source_url": "https://cyfoethnaturiol.cymru/about-us/grants-and-funding/peatland-restoration-grant-2027/?lang=en",
+        "quote": "Work within NRW’s statutory remit",
+        "checked_at": "2026-11-24",
+        "method": "page"
       }
     ],
     "documents": [
-      {
-        "source_url": "https://cyfoethnaturiol.cymru/about-us/grants-and-funding/peatland-restoration-grant-2027/?lang=en",
-        "quote": "Lead applicants must provide at least one of the following: Evidence of having delivered at least one peatland restoration project in the last decade",
-        "checked_at": "2026-11-23",
-        "method": "page"
-      },
       {
         "source_url": "https://cyfoethnaturiol.cymru/about-us/grants-and-funding/how-to-prepare-your-grant-application/?lang=en",
         "quote": "We will ask you to upload the following: Your completed project plan and breakdown of project costs using our template",
@@ -195,6 +233,36 @@
         "source_url": "https://cyfoethnaturiol.cymru/about-us/grants-and-funding/how-to-prepare-your-grant-application/?lang=en",
         "quote": "If you have formal delivery partners, you must upload a copy of any signed agreement with them",
         "checked_at": "2026-11-23",
+        "method": "page"
+      },
+      {
+        "source_url": "https://cyfoethnaturiol.cymru/about-us/grants-and-funding/how-we-score-peatland-restoration-grant-applications-2027/?lang=en",
+        "quote": "Has the applicant provided evidence of having delivered at least one peatland restoration project within the last decade, or alternatively, written confirmation of technical support from a partner or contractor who can evidence relevant experience of having delivered peatland restoration on the ground?",
+        "checked_at": "2026-11-24",
+        "method": "page"
+      },
+      {
+        "source_url": "https://cyfoethnaturiol.cymru/about-us/grants-and-funding/how-to-prepare-your-grant-application/?lang=en",
+        "quote": "If you are applying as an individual, we'll need your last 3 months bank statements and a certified copy of your passport or driver's licence",
+        "checked_at": "2026-11-24",
+        "method": "page"
+      },
+      {
+        "source_url": "https://cyfoethnaturiol.cymru/about-us/grants-and-funding/how-to-prepare-your-grant-application/?lang=en",
+        "quote": "If you are a newly formed organisation of less than 6 months and do not have a set of accounts we'll need either the last three months bank statements and bank reconciliation, or a letter from your bank confirming you have opened an account",
+        "checked_at": "2026-11-24",
+        "method": "page"
+      },
+      {
+        "source_url": "https://cyfoethnaturiol.cymru/about-us/grants-and-funding/how-to-prepare-your-grant-application/?lang=en",
+        "quote": "If you have micro company accounts or your statutory accounts are more than 6 months old, we'll need your management accounts",
+        "checked_at": "2026-11-24",
+        "method": "page"
+      },
+      {
+        "source_url": "https://cyfoethnaturiol.cymru/about-us/grants-and-funding/how-to-prepare-your-grant-application/?lang=en",
+        "quote": "Your subsidy control declaration, if it applies to you",
+        "checked_at": "2026-11-24",
         "method": "page"
       }
     ]

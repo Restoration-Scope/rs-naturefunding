@@ -27,33 +27,47 @@
   },
   "eligibility": [
     {
-      "rule": "Have an identified watercourse, its banks or a linked catchment sector in Mayotte",
+      "rule": "Work is on an identified watercourse, its banks or a catchment area demonstrably affecting its condition",
       "kind": "project"
     },
     { "rule": "Keep the project duration to a maximum of 3 years", "kind": "project" },
     {
-      "rule": "A declared association with a SIRET, a commune or intercommunality, a public body, or a school with legal personality",
+      "rule": "Declared association with SIRET, municipality/intermunicipal body, public body in remit or legally constituted school",
       "kind": "legal"
     },
-    { "rule": "Not be an individual or commercial enterprise", "kind": "legal" },
     {
-      "rule": "Exclude earthworks, bed reshaping, dredging, concrete, rock armoring and hydraulic structures",
+      "rule": "No earthworks, bed/bank reshaping, channel clearing or resizing, dredging, concrete, riprap or hydraulic structures",
+      "kind": "project"
+    },
+    {
+      "rule": "No clear-cutting, pesticide use or introduction of non-native species",
+      "kind": "project"
+    },
+    {
+      "rule": "River cleanups include work with residents and users to prevent new dumping",
+      "kind": "project"
+    },
+    {
+      "rule": "Project is not routine waste collection, sewerage, civil-protection emergency response or policing",
+      "kind": "project"
+    },
+    {
+      "rule": "Collective projects designate a lead applicant and specify each party’s responsibilities",
       "kind": "project"
     }
   ],
-  "co_finance": { "min_share": 20 },
   "after_award": { "reports": "interim_and_final" },
   "documents": [
     "Dated and signed request letter",
-    "Structure and project presentation",
-    "Balanced budget with quotes, calculations and co-financing",
-    "Indicators, baseline, targets and monitoring tools",
+    "Balanced budget with main estimates or calculations and secured or requested co-funding",
     "Site plan and photographs",
     "SIRET",
     "Bank details (RIB)",
-    "Association statutes",
-    "Latest accounts",
-    "Activity report"
+    "Statutes (association applicants)",
+    "Latest accounts and activity report (association applicants)",
+    "Power of signatory, if needed, or public body resolution or authorisation",
+    "Commitment to the Republican Engagement Contract (association applicants)",
+    "Partner commitments and available permissions or agreements"
   ],
   "calls": [
     {
@@ -157,23 +171,35 @@
       },
       {
         "source_url": "https://www.mayotte.fr/ressources/appels/2026_AAP_DTEE_1793158479.pdf",
-        "quote": "Les personnes physiques et les entreprises commerciales ne sont pas bénéficiaires de cette première édition.",
+        "quote": "Les terrassements, le reprofilage du lit ou des berges, le curage, le recalibrage, le dragage, le bétonnage, les enrochements et les ouvrages hydrauliques sont exclus de cette édition.",
         "checked_at": "2026-11-23",
         "method": "page"
       },
       {
         "source_url": "https://www.mayotte.fr/ressources/appels/2026_AAP_DTEE_1793158479.pdf",
-        "quote": "Les terrassements, le reprofilage du lit ou des berges, le curage, le recalibrage, le dragage, le bétonnage, les enrochements et les ouvrages hydrauliques sont exclus de cette édition.",
-        "checked_at": "2026-11-23",
+        "quote": "Les coupes à blanc, les pesticides et l’introduction d’espèces exotiques sont exclus.",
+        "checked_at": "2026-11-24",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.mayotte.fr/ressources/appels/2026_AAP_DTEE_1793158479.pdf",
+        "quote": "Nota : les opérations de nettoyage doivent s’accompagner d’un travail auprès des habitants et des usagers afin de prévenir le retour des dépôts.",
+        "checked_at": "2026-11-24",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.mayotte.fr/ressources/appels/2026_AAP_DTEE_1793158479.pdf",
+        "quote": "Le dispositif ne finance pas la collecte ordinaire des déchets, les réseaux d’assainissement, les urgences de sécurité civile ni les opérations de police.",
+        "checked_at": "2026-11-24",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.mayotte.fr/ressources/appels/2026_AAP_DTEE_1793158479.pdf",
+        "quote": "Les projets collectifs désignent un chef de file et précisent les responsabilités",
+        "checked_at": "2026-11-24",
         "method": "page"
       }
     ],
-    "co_finance": {
-      "source_url": "https://www.mayotte.fr/ressources/appels/2026_AAP_DTEE_1793158479.pdf",
-      "quote": "Association ou établissement public hors cas ci-dessous 80 %",
-      "checked_at": "2026-11-23",
-      "method": "page"
-    },
     "after_award": [
       {
         "source_url": "https://www.mayotte.fr/ressources/appels/2026_AAP_DTEE_1793158479.pdf",
@@ -205,6 +231,18 @@
         "source_url": "https://www.mayotte.fr/ressources/appels/2026_AAP_DTEE_1793158479.pdf",
         "quote": "Pour une association : formulaire national de demande de subvention ou équivalent conforme, statuts, dirigeants, derniers comptes et rapport d'activité, budget prévisionnel et souscription au contrat d'engagement républicain.",
         "checked_at": "2026-11-23",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.mayotte.fr/ressources/appels/2026_AAP_DTEE_1793158479.pdf",
+        "quote": "Un porteur public fournit la décision de son organe compétent ou l’habilitation nécessaire.",
+        "checked_at": "2026-11-24",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.mayotte.fr/ressources/appels/2026_AAP_DTEE_1793158479.pdf",
+        "quote": "Joindre le plan, les photographies initiales, le budget, les devis utiles, les engagements des partenaires et les accords disponibles.",
+        "checked_at": "2026-11-24",
         "method": "page"
       }
     ]

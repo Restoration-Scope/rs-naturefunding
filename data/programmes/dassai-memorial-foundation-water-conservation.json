@@ -15,21 +15,21 @@
   "pool": { "currency": "JPY", "value": 2500000, "period": "round", "qualifier": "planned" },
   "co_finance_required": null,
   "reporting": "An interim report after six months (around October 2027), then a final activity report and a financial statement (around May 2028).",
-  "effort": { "steps": ["Application submission"] },
+  "effort": { "steps": ["Application submission", "Selection committee review"] },
   "eligibility": [
     {
       "rule": "Has bylaws with an appointed accounting officer, or is a group of 5+ members active for 2+ years",
       "kind": "legal"
     },
-    { "rule": "Not operate for profit", "kind": "legal" },
-    { "rule": "Have no involvement with antisocial forces", "kind": "legal" }
+    { "rule": "Has no profit-making purpose", "kind": "legal" },
+    { "rule": "Have no involvement with antisocial forces", "kind": "legal" },
+    { "rule": "Names an accounting officer for the applicant group", "kind": "capacity" },
+    { "rule": "The person applying submits only one application", "kind": "other" }
   ],
   "after_award": { "reports": "interim_and_final" },
   "documents": [
-    "Bylaws or equivalent rules",
+    "Bylaws or equivalent rules, if the group has them",
     "Member list, if a voluntary group has no bylaws or rules",
-    "Activity plan",
-    "Funding plan",
     "Documents or materials explaining significance, history and activities",
     "Personal information handling consent form"
   ],
@@ -106,6 +106,12 @@
         "quote": "活動助成申請書及び個人情報取扱い同意書をご提出ください。",
         "checked_at": "2026-11-23",
         "method": "page"
+      },
+      {
+        "source_url": "https://dassai.or.jp/conservation-grant-application/doc/2026/guideline.pdf",
+        "quote": "当財団選考委員会で審査のうえ採否を決定し、２０２７年２月中旬頃までに書面または メールにて通知します。",
+        "checked_at": "2026-11-24",
+        "method": "page"
       }
     ],
     "eligibility": [
@@ -126,6 +132,18 @@
         "quote": "反社会的勢力と関わりがある場合",
         "checked_at": "2026-11-23",
         "method": "page"
+      },
+      {
+        "source_url": "https://dassai.or.jp/conservation-grant-application/doc/2026/guideline.pdf",
+        "quote": "個人の口座には振り込みが出来ないので、所属団体の経理責任者を必 ず選任してください。",
+        "checked_at": "2026-11-24",
+        "method": "page"
+      },
+      {
+        "source_url": "https://dassai.or.jp/conservation-grant-application/doc/2026/guideline.pdf",
+        "quote": "および 1 人で複数の申請をされた場合は無効とします。",
+        "checked_at": "2026-11-24",
+        "method": "page"
       }
     ],
     "after_award": [
@@ -133,6 +151,12 @@
         "source_url": "https://dassai.or.jp/conservation-grant-application/doc/2026/guideline.pdf",
         "quote": "中間報告書の提出",
         "checked_at": "2026-11-23",
+        "method": "page"
+      },
+      {
+        "source_url": "https://dassai.or.jp/conservation-grant-application/doc/2026/guideline.pdf",
+        "quote": "報告書の提出（２０２８年５月頃予定） ① 実績報告書 ② 収支報告書",
+        "checked_at": "2026-11-24",
         "method": "page"
       }
     ],
