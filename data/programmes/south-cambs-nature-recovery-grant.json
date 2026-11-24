@@ -5,7 +5,10 @@
     "name": "South Cambridgeshire District Council",
     "url": "https://www.scambs.gov.uk/"
   },
-  "administered_by": null,
+  "administered_by": {
+    "name": "South Cambridgeshire District Council",
+    "url": "https://www.scambs.gov.uk"
+  },
   "parent": null,
   "url": "https://www.scambs.gov.uk/nature-recovery-grant",
   "summary": "South Cambridgeshire grants for community-led nature recovery: ecological surveys by accredited professionals, or practical habitat projects such as wildflower meadows, ponds and wetlands, hedgerow and woodland management and habitat connectivity.",
@@ -23,10 +26,10 @@
   "amount": {
     "currency": "GBP",
     "max": 5000,
-    "note": "Survey grants up to £2,000; nature recovery project grants £1,000 to £5,000"
+    "note": "Survey grants up to £2,000; nature recovery action grants up to £5,000"
   },
   "pool": { "currency": "GBP", "value": 25000, "period": "round", "label": "2026/27" },
-  "co_finance_required": null,
+  "co_finance_required": false,
   "reporting": "Survey grantees submit the survey report by an accredited professional and written next steps; project grantees submit an end of project report by May 2028.",
   "effort": { "steps": ["Online application form"] },
   "eligibility": [
@@ -78,6 +81,12 @@
     }
   ],
   "evidence": {
+    "administered_by": {
+      "source_url": "https://www.scambs.gov.uk/news/new-grant-scheme-launched-to-help-communities-support-nature-recovery",
+      "quote": "South Cambridgeshire District Council has launched a new Nature Recovery Grant Scheme",
+      "checked_at": "2026-11-24",
+      "method": "page"
+    },
     "applicant_types": {
       "source_url": "https://www.scambs.gov.uk/nature-recovery-grant",
       "quote": "Applications are welcomed from: Parish and town councils Community groups; sustainability and eco groups (formal or informal) Charities and non-profit organisations South Cambridgeshire schools",
@@ -111,6 +120,12 @@
     "pool": {
       "source_url": "https://www.scambs.gov.uk/nature-recovery-grant",
       "quote": "A total of £25,000 is available for this scheme for 2026/27.",
+      "checked_at": "2026-11-24",
+      "method": "page"
+    },
+    "co_finance_required": {
+      "source_url": "https://www.scambs.gov.uk/news/new-grant-scheme-launched-to-help-communities-support-nature-recovery",
+      "quote": "The grant scheme has two funding streams",
       "checked_at": "2026-11-24",
       "method": "page"
     },
