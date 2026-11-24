@@ -54,9 +54,9 @@ const NOT_FOUND = 'Not found on the pages we read'
     <div class="min-w-0">
       <h2 id={`${s.id}-name`} class="text-2xl">{s.name}</h2>
       <p class="mt-1 flex flex-wrap items-center gap-x-2.5 gap-y-1 text-md text-ink-2">
-        <span class="whitespace-nowrap"><Flag code={s.country.value} class="mr-[0.4em]" />{countryName(s.country.value)}</span>
+        <span class="whitespace-nowrap"><Flag code={s.country.value} class="mr-[0.4em]" />{countryName(s.country.value)}<span class="sr-only">. </span></span>
         <Badge>{sponsorScopeLabels[s.scope]}</Badge>
-        {s.intake && s.intake.value.status !== 'open' && <Badge variant="warn">{sponsorIntakeLabels[s.intake.value.status]}</Badge>}
+        {s.intake && s.intake.value.status !== 'open' && <Badge variant="warn"><span class="sr-only">. </span>{sponsorIntakeLabels[s.intake.value.status]}</Badge>}
       </p>
     </div>
     <Button variant="outline" size="sm" href={s.url} target="_blank" rel="noopener">
