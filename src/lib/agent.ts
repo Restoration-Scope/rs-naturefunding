@@ -33,6 +33,7 @@ export const callId = (c: Pick<Call, 'id'>) => `call-${c.id}`
 export const callFactId = (c: Pick<Call, 'id'>, field: 'status' | 'opens' | 'deadline' | 'recurring' | 'countries') => `call-${c.id}-${field}`
 
 const listingUrl = (p: Programme) => absolute(`/p/${p.id}/`)
+const twinUrl = (p: Programme) => absolute(twinPath(`/p/${p.id}/`))
 const NOT_FOUND = 'Not found on the pages we read'
 /** The amount with the qualifier from the same quote, so a line quoted alone keeps its condition. */
 const amountWithNote = (p: Programme) => {
@@ -183,8 +184,10 @@ export function programmeMarkdown(p: Programme): string {
         open: 'Open', upcoming: 'Upcoming', closed: 'Closed', suspended: 'Suspended',
         unknown: c.recurring ? 'Windows each year; the page doesn’t say if one is open now' : 'Not clear from the page',
       }
+      // A call whose opening date or deadline passed since the check, as the page and the list show it.
+      const dated = effectiveCallStatus(c, new Date(`${buildDate}T12:00:00Z`))
       const parts = [
-        quoteLines(`${s}, status`, statusWords[c.status], c.evidence.status, callFactId(c, 'status'), p),
+        quoteLines(`${s}, status`, dated === c.status ? statusWords[dated] : `${statusWords[dated]}, by its dates, as of ${longDate(buildDate)}`, c.evidence.status, callFactId(c, 'status'), p),
         ...(c.countries ? [quoteLines(`${s}, where`, joinAnd(c.countries.map(countryName)), c.evidence.countries, callFactId(c, 'countries'), p)] : []),
         ...(c.opens || c.expected || c.evidence.opens
           ? [quoteLines(`${s}, opens`, c.opens ? longDate(c.opens) : c.expected ? `Expected ${c.expected}` : NOT_FOUND, c.evidence.opens ?? (c.expected ? c.evidence.status : undefined), callFactId(c, 'opens'), p)]
@@ -227,17 +230,21 @@ const groups: { title: string; test: (l: Listing) => boolean }[] = [
 
 const sorted = (ls: Listing[]) => [...ls].sort(sortListings)
 
-/** One line per listing, readable alone. `link` picks the page or its twin. */
-const listingLine = (l: Listing, link: (p: Programme) => string) => {
+/** One line per listing, readable alone. It links the twin: half the page's length, so an assistant that reads
+ * several at once gets each one whole. */
+const listingLine = (l: Listing, withRules = false) => {
   const { p } = l
+  // One file then answers “do we qualify”, without opening each programme. A closed call's rules can wait for its page.
+  const rules = withRules && p.access === 'direct' && l.state !== 'closed' && p.eligibility?.map((r) => r.rule.replace(/[.;]+$/, '')).join('; ')
   const bits = [
     statusText(l),
     amountWithNote(p) && `Amount: ${amountWithNote(p)}.`,
     geographyText(p.geography) && `Where: ${geographyText(p.geography)}.`,
     p.applicant_types && `Who: ${joinAnd(p.applicant_types.map((a) => applicantLabels[a]))}.`,
+    rules && `Rules: ${rules}.`,
     `Checked ${longDate(p.checked_at)}.`,
   ].filter(Boolean)
-  return `- [${p.name}](${link(p)}), ${p.funder.name}: ${bits.join(' ')}`
+  return `- [${p.name}](${twinUrl(p)}), ${p.funder.name}: ${bits.join(' ')}`
 }
 
 const intro = (listings: Listing[]) =>
@@ -248,13 +255,13 @@ const intro = (listings: Listing[]) =>
   ].join('\n')
 
 /** Every listing by status, one line each, under a heading per status. */
-const byStatus = (listings: Listing[]) =>
+const byStatus = (listings: Listing[], withRules = false) =>
   groups.flatMap((g) => {
     const ls = sorted(listings.filter(g.test))
-    return ls.length ? ['', `## ${g.title} (${ls.length})`, '', ...ls.map((l) => listingLine(l, listingUrl))] : []
+    return ls.length ? ['', `## ${g.title} (${ls.length})`, '', ...ls.map((l) => listingLine(l, withRules))] : []
   })
 
-const howToRead = `Each programme links to its page, where every fact carries its source and quote. All data: ${absolute('/data.json')} (field guide: ${absolute('/data/')}).`
+const howToRead = `Each programme links to the Markdown copy of its page, where every fact carries its source and quote. To link the page for people, end the address in / in place of .md. All data: ${absolute('/data.json')} (field guide: ${absolute('/data/')}).`
 
 /** The Markdown twin of / : every listing the finder shows, by status. */
 export function homeMarkdown(listings: Listing[]): string {
@@ -263,12 +270,15 @@ export function homeMarkdown(listings: Listing[]): string {
 
 /** The Markdown twin of a country, region or project-type page: its listings, by status. */
 export function finderPageMarkdown(page: FinderPage): string {
-  return [`# ${page.h1}`, '', page.lead, '', `${howToRead} Every programme on ${SITE_NAME}: ${absolute('/index.md')}.`, ...byStatus(page.listings), ''].join('\n')
+  return [`# ${page.h1}`, '', page.lead, '', `${howToRead} Every programme on ${SITE_NAME}: ${absolute('/index.md')}.`, ...byStatus(page.listings, true), ''].join('\n')
 }
 
-/** /llms.txt: what the site is, how to read it, and every listing's Markdown twin. */
+/**
+ * /llms.txt: what the site is, how to read it, and the Markdown twin of every page but the programmes', which
+ * index.md and the place and type lists hold. Assistants read about the first 40,000 characters of a file
+ * (tests/agent.test.ts), so a line per programme doesn't fit.
+ */
 export function llmsTxt(listings: Listing[], pages: FinderPage[] = []): string {
-  const md = (p: Programme) => absolute(twinPath(`/p/${p.id}/`))
   const out = [
     `# ${SITE_NAME}`,
     '',
@@ -282,6 +292,13 @@ export function llmsTxt(listings: Listing[], pages: FinderPage[] = []): string {
     '- “Not found on the pages we read” means the pages we read don’t say. It doesn’t mean there is no limit.',
     '- “Through a partner” means you apply to a partner programme, not the funder; “invitation only” means don’t send a proposal.',
     '- Our data is CC BY 4.0: credit “naturefunding.org (Restoration Scope)”, link to https://naturefunding.org and the licence, and say if you changed the data. Quotes are the funders’ words and are not covered.',
+    '',
+    '## Matching a project to grants',
+    '',
+    '1. Open the list for the project’s country below (its region if the country has none). Read it to the end: it gives each programme’s status, amount, place, applicants and the rules we found, open calls first. Programmes under “No call found” can still have dates each year.',
+    '2. Drop programmes the project clearly fails. Open the best 5 to 8 and read each whole: its Markdown copy is https://naturefunding.org/p/{id}.md, and its page for people, the one to link, is https://naturefunding.org/p/{id}/.',
+    '3. For each one you suggest, give the deadline, the amount, the rules the project meets, the rules it fails or you can’t tell, how to apply, and links to its page here and the funder’s. Add nothing these pages don’t say without naming the source. If nothing fits well, say so.',
+    '4. End with the few questions whose answers would change the list.',
     '',
     '## Start here',
     '',
@@ -302,11 +319,6 @@ export function llmsTxt(listings: Listing[], pages: FinderPage[] = []): string {
   if (pages.length) {
     out.push('', '## By place and project type', '')
     for (const pg of pages) out.push(`- [${pg.h1}](${absolute(twinPath(pg.path))}): ${pg.listings.length} programmes`)
-  }
-  for (const g of groups) {
-    const ls = sorted(listings.filter(g.test))
-    if (!ls.length) continue
-    out.push('', `## ${g.title}`, '', ...ls.map((l) => `- [${l.p.name}](${md(l.p)}): ${l.p.funder.name}. ${statusText(l)}`))
   }
   out.push('')
   return out.join('\n')
