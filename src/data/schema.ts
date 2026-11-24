@@ -215,6 +215,8 @@ export const geography = z.discriminatedUnion('scope', [
     whole: z.union([z.literal(true), z.array(region).min(1)]).optional().describe('True, or the regions, when the funder takes every country in them.'),
     /** The widest reading of the label's other words, ours: a country outside it never shows, one inside it shows as "check". */
     areas: z.array(z.union([z.enum(areaNames as unknown as [string, ...string[]]), iso2])).min(1).optional().describe('Where the group can be, at its widest: our mapping for search and filters, not eligibility. A country here is only maybe covered.'),
+    /** Countries the funder names outright beside its group ("New Zealand or a developing country"): covered. */
+    named: z.array(iso2).min(1).optional().describe('Countries the funder names outright beside its group, each in its own words: covered, not maybe.'),
     except: z.array(iso2).min(1).optional().describe('Countries the funder says it does not take.'),
   }),
 ])

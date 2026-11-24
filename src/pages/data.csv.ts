@@ -23,7 +23,7 @@ export const GET: APIRoute = () => {
       : p.geography.scope === 'global'
         ? 'global'
         : p.geography.scope === 'regions'
-          ? wholeRegions(p.geography).join(' ')
+          ? [...wholeRegions(p.geography), ...(p.geography.named ?? [])].join(' ')
           : p.geography.countries.join(' ')
     const g = p.geography
     const base = {

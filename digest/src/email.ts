@@ -195,7 +195,8 @@ export function digestEmail(o: { site: string; pages?: PagePaths; digest: Digest
   const { items, total } = o.digest
   const what = prefsText(o.prefs)
   const counts = (['open', 'upcoming', 'new'] as Section[]).map((s) => [s, items.filter((i) => i.section === s).length] as const)
-  const subject = `${countsText(o.digest.counts)}${what ? ` · ${what}` : ''}`
+  const check = o.digest.check ? `${o.digest.check} to check` : ''
+  const subject = `${[countsText(o.digest.counts), check].filter(Boolean).join(', ')}${what ? ` · ${what}` : ''}`
   const sinceText = `since ${longDate(o.since.slice(0, 10))}`
   const intro = `New${what ? ` for ${what}` : ''} ${sinceText}`
   const listUrl = finderUrl(o.site, o.prefs, o.pages)

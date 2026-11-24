@@ -69,6 +69,19 @@ function fit<T>(schema: z.ZodType<T>, value: unknown): { ok: true; value: T } | 
   return { ok: true, value: r.data }
 }
 
+/** A country list read from an official list or several pages: one page's quote can't replace it, and a draft may not repeat all of it. */
+function withReadPlaces(raw: unknown, p: Programme): unknown {
+  const old = p.geography
+  if (!isRecord(raw) || raw.scope !== 'countries' || old?.scope !== 'countries' || !Array.isArray(raw.countries)) return raw
+  return same([...raw.countries].sort(), [...old.countries].sort()) ? old : raw
+}
+function placeIssues(g: Programme['geography'], p: Programme, quote: Evidence): string[] {
+  const old = p.geography
+  const read = old?.scope === 'countries' && (old.list || old.parts || p.evidence.places)
+  if (read && !same(old, g)) return ['its countries were read from a list or several pages: re-read those, then change it by hand']
+  return geographyIssues({ geography: g, evidence: { ...p.evidence, geography: quote } })
+}
+
 /**
  * Applies an extraction to a programme, for facts this page states. Pure. A fact moves only
  * when its value fits the schema and LIMITS, and its quote (at most LIMITS.quote characters)
@@ -97,7 +110,7 @@ export function applyExtraction(original: Programme, source: Source, x: Extracti
     if (old && old.source_url !== source.url) continue
     const path = field
     const tooBig = oversize(got.value, 'value')
-    const raw = field === 'amount' && isRecord(got.value) ? withKept(got.value, p.amount, AMOUNT_QUALIFIERS) : got.value
+    const raw = field === 'amount' && isRecord(got.value) ? withKept(got.value, p.amount, AMOUNT_QUALIFIERS) : field === 'geography' ? withReadPlaces(got.value, p) : got.value
     // A kept "less than" means nothing once the draft gives no max.
     if (isRecord(raw) && field === 'amount' && raw.max === undefined) delete raw.max_exclusive
     const value = tooBig ? { ok: false as const, why: tooBig } : fit(programmeSchema.shape[field] as z.ZodType<unknown>, raw)
@@ -109,7 +122,7 @@ export function applyExtraction(original: Programme, source: Source, x: Extracti
       changes.push({ path, kind: 'rejected', old: p[field], new: value.value, quote: short(got.quote), why: quoteWhy(got.quote) })
       continue
     }
-    const place = field === 'geography' ? geographyIssues({ geography: value.value as Programme['geography'], evidence: { geography: evidence(got.quote) } as Programme['evidence'] }) : []
+    const place = field === 'geography' ? placeIssues(value.value as Programme['geography'], p, evidence(got.quote)) : []
     if (place.length) {
       changes.push({ path, kind: 'rejected', old: p[field], new: value.value, quote: short(got.quote), why: place.join('; ') })
       continue
@@ -222,7 +235,7 @@ Answer with one JSON object:
 Fields and values:
 - administered_by: {"name","url"} of who runs the call for the funder
 - applicant_types: array of ${applicantType.options.join(', ')}
-- geography: {"scope":"global"} | {"scope":"countries","countries":[ISO-2 codes],"label"?} | {"scope":"regions","regions":[${region.options.join(', ')}],"label","whole"?: true when the page says every country in those regions,"areas"?: [the narrowest of ${areaNames.join(', ')} or ISO-2 codes that hold the place the page names]}. Use "countries" whenever the page names its countries or territories, however many ("UK Overseas Territories", "the 11 countries below"); list only the ones it names. Use "regions" only for a group the page doesn't list, and never a whole region for a smaller place: "Mediterranean basin" is areas ["mediterranean_basin"], not africa
+- geography: {"scope":"global"} | {"scope":"countries","countries":[ISO-2 codes],"label"?} | {"scope":"regions","regions":[${region.options.join(', ')}],"label","whole"?: true when the page says every country in those regions,"named"?: [ISO-2 codes of countries the page names outright beside the group],"except"?: [ISO-2 codes it leaves out],"areas"?: [the narrowest of ${areaNames.join(', ')} or ISO-2 codes that hold the place the page names]}. Use "countries" whenever the page names its countries or territories, however many ("UK Overseas Territories", "the 11 countries below"); list only the ones it names. Use "regions" only for a group the page doesn't list, and never a whole region for a smaller place: "Mediterranean basin" is areas ["mediterranean_basin"], not africa
 - access: ${access.options.filter((o) => o !== 'unspecified').join(', ')}
 - window: ${windowSchema.options.filter((o) => o !== 'unspecified').join(', ')}
 - amount: {"currency": ISO 4217,"min"?: number,"max"?: number,"typical"?: true when the page gives a usual range,"max_exclusive"?: true when it says "less than" the max,"per"?: "year" when the amount is per year,"unit"?: "tree" or "hectare" when it is paid per tree planted or hectare restored,"note"?: a qualifier from the same quote, in our words} per grant

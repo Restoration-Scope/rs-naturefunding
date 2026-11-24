@@ -4,12 +4,13 @@
 import { deadlinePassed } from '../../scripts/refresh/deadline'
 import type { Call, Programme } from '../../src/data/schema'
 import type { DigestEvent } from './events'
+import { placeFit } from '../../src/lib/where-codes'
 import { matches, type Prefs } from './match'
 
 export type Section = 'open' | 'upcoming' | 'new'
 export type DigestItem = { section: Section; programme: Programme; call: Call | null }
-/** `items` is capped at MAX_ITEMS; `counts` and `total` count everything. */
-export type Digest = { items: DigestItem[]; total: number; counts: Record<Section, number> }
+/** `items` is capped at MAX_ITEMS; `total` counts everything, `check` those that may not take the place, `counts` the rest. */
+export type Digest = { items: DigestItem[]; total: number; counts: Record<Section, number>; check: number }
 
 /** More than this and the email says how many more there are, with a link to the site. */
 export const MAX_ITEMS = 25
@@ -66,6 +67,7 @@ export function buildDigest(
     .sort((a, b) => order[a.section] - order[b.section] || sortKey(a).localeCompare(sortKey(b)) || a.programme.name.localeCompare(b.programme.name))
     .filter((i) => !seen.has(i.programme.id) && !!seen.add(i.programme.id))
   const counts = { open: 0, upcoming: 0, new: 0 }
-  for (const i of items) counts[i.section]++
-  return { items: items.slice(0, MAX_ITEMS), total: items.length, counts }
+  let check = 0
+  for (const i of items) placeFit(i.programme, prefs.where) === 'check' ? check++ : counts[i.section]++
+  return { items: items.slice(0, MAX_ITEMS), total: items.length, counts, check }
 }

@@ -75,7 +75,9 @@ function placePage(where: string, path: string, name: string, regionName: string
   const check = fits('check')
   const r = where.startsWith('r:') ? where.slice(2) : countryRegion[where]
   const global = ls.filter((l) => l.p.geography?.scope === 'global').length
-  const region = ls.filter((l) => whereCodes(l.p).includes(`R:${r}`)).length
+  // On a region's page, one that leaves out some of its countries doesn't cover all of it.
+  const all = (codes: string[]) => codes.includes(`R:${r}`) && (!!iso2 || !codes.some((c) => c[0] === '!' && countryRegion[c.slice(1)] === r))
+  const region = ls.filter((l) => all(whereCodes(l.p))).length
   const named = ls.length - global - region
   const namedText = iso2 ? `${named} name ${name}` : `${named} name places in ${name}`
   const checkText = check.length ? ` ${plural(check.length, 'more funds', 'more fund')} a group that may include ${inPlace(name)}: check the funder’s words.` : ''

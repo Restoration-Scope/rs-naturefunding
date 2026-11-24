@@ -75,8 +75,23 @@ describe('a listing can’t claim a place its funder doesn’t name', () => {
     ['a region the label doesn’t name marked whole', regions('Across Africa', ['africa', 'asia'], { whole: true }), 'whole claims all of asia'],
     ['areas outside the regions', regions('Southeast Asia', ['africa'], { areas: ['southeast_asia', 'KE'] }), 'areas reaches asia'],
     ['a country list missing a listed country', { scope: 'countries', countries: ['KE'], label: 'ODA', list: 'dac-oda-recipients' }, 'countries lacks'],
+    ['a country its list lacks', { scope: 'countries', countries: [...countryLists.get('osme-region')!.countries, 'DE'], label: 'OSME', list: 'osme-region' }, 'countries adds DE'],
+    ['a smaller place with its region whole', regions('Southern Africa', ['africa'], { whole: ['africa'] }), 'whole claims all of africa'],
+    ['a narrow code beside a whole region', regions('Mediterranean basin', ['africa'], { areas: ['africa', 'EG'] }), 'smaller than a region'],
+    ['a named country the words don’t name', regions('A developing country', ['africa', 'oceania'], { areas: ['africa'], named: ['NZ'] }), 'named holds NZ'],
     ['a part of a country it doesn’t take', { scope: 'countries', countries: ['GL'], parts: { PT: 'the Azores' } }, 'parts names PT'],
   ])('%s', (_, g, want) => expect(problems(g).join('\n')).toContain(want))
+
+  test.each([
+    ['a quote that names less than the label', regions('Across Africa', ['africa'], { whole: true }), 'Projects in Southern Africa', 'names only a part'],
+    ['a country the words leave out', regions('Across Africa', ['africa'], { whole: true }), 'Across Africa except Kenya', 'name KE'],
+    ['a short closed set', regions('African countries', ['africa'], { areas: ['africa'] }), 'Only Kenya and Uganda are eligible', 'closes a set'],
+  ])('%s', (_, g, quote, want) => expect(problems(g, quote).join()).toContain(want))
+
+  test('a country named beside a group is covered; the group stays to check', () => {
+    expect(placeFit(programmeById.get('auckland-zoo-small-grants')!, 'NZ')).toBe('all')
+    expect(placeFit(programmeById.get('auckland-zoo-small-grants')!, 'FJ')).toBe('check')
+  })
 
   test('the closed set may be in the quote alone', () => {
     expect(problems(regions('Islands', ['africa'], { areas: ['RE'] }), 'in the Overseas Countries and Territories').join()).toContain('set of countries')
@@ -88,6 +103,7 @@ describe('a listing can’t claim a place its funder doesn’t name', () => {
     regions('Europe and the Mediterranean basin', ['europe', 'africa', 'middle_east'], { whole: ['europe'], areas: ['mediterranean_basin'] }),
     regions('Developing countries', ['africa', 'asia'], { areas: ['africa', 'asia'] }),
     regions('Latin America and the Caribbean', ['latin_america_caribbean'], { whole: true }),
+    regions('New Zealand or a developing country', ['africa', 'oceania'], { areas: ['africa'], named: ['NZ'] }),
   ])('%o passes', (g) => expect(problems(g)).toEqual([]))
 
   test('every named area holds countries the finder lists', () => {

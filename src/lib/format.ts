@@ -125,7 +125,10 @@ export function geographyFull(g: Programme['geography']): string | null {
   // The funder's words alone: our regions are for the filters, and beside "Mediterranean basin" they read as all of Africa.
   if (g.scope === 'regions') return g.label
   // An official list runs to 100+ names; the page folds them away and says where the list comes from.
-  if (g.list) return `${g.label ?? 'Listed countries'} (${g.countries.length} countries and territories)`
+  if (g.list) {
+    const parts = Object.entries(g.parts ?? {}).map(([c, part]) => `; in ${countryName(c)}, only ${part}`)
+    return `${g.label ?? 'Listed countries'} (${g.countries.length} countries and territories${parts.join('')})`
+  }
   const list = joinAnd(g.countries.map((c) => `${countryName(c)}${g.parts?.[c] ? ` (only ${g.parts[c]})` : ''}`))
   return g.label ? `${g.label}: ${list}` : list
 }

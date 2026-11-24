@@ -46,6 +46,12 @@ describe('filters match the finder', () => {
     expect(matches(i.programme, cleanPrefs('KE', []))).toBe(true)
     expect(itemParts(i, 'https://x', cleanPrefs('KE', [])).place).toBe('Check the place: low- and middle-income countries around the globe')
   })
+  test('the subject never counts a programme that may not take the country', () => {
+    const prefs = cleanPrefs('KE', [])
+    const d = buildDigest([{ at: '2026-11-10T00:00:00.000Z', kind: 'new_programme', programme: 'neaq-mcaf', call: null } as never], byId, prefs, '2026-11-08T00:00:00.000Z', '2026-11-15T09:00:00.000Z')
+    expect([d.counts.new, d.check]).toEqual([0, 1])
+    expect(digestEmail({ site: 'https://x', digest: d, prefs, since: '2026-11-08T00:00:00.000Z', unsubscribeUrl: 'u', manageUrl: 'm' }).subject).toBe('1 to check · Kenya')
+  })
   test('a country matches its own listings, its region-wide ones and worldwide ones', () => {
     const worldwide = programmes.find((p) => p.geography?.scope === 'global')!
     const kenya = programmes.find((p) => p.geography?.scope === 'countries' && p.geography.countries.includes('KE'))!

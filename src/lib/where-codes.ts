@@ -22,8 +22,10 @@ export function whereCodes(p: Pick<Programme, 'geography'>): string[] {
   }
   const whole = wholeRegions(g)
   const out = new Set(g.except ?? [])
-  const maybe = [...new Set((g.areas ?? []).flatMap(areaCountries))].filter((c) => !out.has(c) && !whole.includes(countryRegion[c]!))
+  const named = g.named ?? []
+  const maybe = [...new Set((g.areas ?? []).flatMap(areaCountries))].filter((c) => !out.has(c) && !named.includes(c) && !whole.includes(countryRegion[c]!))
   return [
+    ...named,
     ...whole.map((r) => `R:${r}`),
     ...g.regions.filter((r) => !whole.includes(r)).map((r) => `?:${r}`),
     ...maybe.map((c) => `?${c}`),

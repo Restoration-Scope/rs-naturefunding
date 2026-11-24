@@ -86,6 +86,7 @@ export const fieldDocs = {
     parts: 'For a country the funder takes only part of, the part it takes.',
     whole: 'On regions: true, or the regions, when the funder takes every country in them. On countries: true when the label still means all of each country.',
     areas: 'On regions: the widest place the group can mean, in our words for filters. A country in it is only maybe covered: check the label and quote.',
+    named: 'Countries the funder names outright beside its group: covered, not maybe.',
     except: 'Countries the funder says it does not take.',
   },
   evidence: {
