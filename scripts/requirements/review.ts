@@ -43,7 +43,7 @@ export const ITEM_FIELDS = [...LIST_FIELDS, ...ONE_FIELDS] as const
 type ItemField = (typeof ITEM_FIELDS)[number]
 
 /** One reviewer verdict; the label set (tests/fixtures/review-labels/) is these lines plus `batch`. */
-export const verdict = z.object({
+export const verdictFields = z.object({
   batch: z.string().optional(),
   id: z.string(),
   field: z.enum(['source', ...ITEM_FIELDS]),
@@ -61,7 +61,12 @@ export const verdict = z.object({
     .object({ text: z.string().optional(), kind: eligibilityKind.optional(), value: z.unknown().optional(), due: z.iso.date().nullable().optional(), quote: z.string().optional(), source_url: z.url().optional() })
     .optional(),
 })
-export type Verdict = z.infer<typeof verdict>
+/** A reviewer writing null for an absent field (gpt-6.2-sol medium, 2026-11-24) means absent. */
+export const verdict = z.preprocess(
+  (v) => (v && typeof v === 'object' ? Object.fromEntries(Object.entries(v).filter(([k, x]) => !(x === null && (k === 'quotes' || k === 'new')))) : v),
+  verdictFields,
+)
+export type Verdict = z.infer<typeof verdictFields>
 
 /** What makes a verdict usable; the label set from before this command predates these rules. */
 export function verdictProblem(v: Verdict): string | null {
@@ -405,7 +410,8 @@ function setOne(p: P, f: (typeof ONE_FIELDS)[number], value: unknown, e?: Ev) {
 /**
  * A model without its route and effort: `cursor:gpt-5.6-luna-high` is `gpt-5.6-luna`. The reviewer must be another model than
  * every one that read the programme. Not another family: on the 2026-11-24 eval (docs/requirements-pipeline.md) gpt-6.2-sol
- * caught 16 of the 21 errors an Opus judge confirmed in gpt-5.6 readings; Claude and Gemini reviewers caught 0 to 7.
+ * caught 15–16 of the 22 errors an Opus judge confirmed in gpt-5.6 readings (2 runs); medium effort 14–15, Claude and
+ * Gemini reviewers 0 to 7.
  */
 export const modelBase = (model: string) => model.toLowerCase().replace(/^[\w-]+:/, '').replace(/-(low|medium|high|xhigh|max)$/, '')
 /** The default second reader, run by `review.ts run` through codex on the ChatGPT plan. */

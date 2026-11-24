@@ -41,6 +41,12 @@ const sound = (p: { id: string; evidence: Record<string, unknown> }): Verdict[] 
 const set = (vs: Verdict[], field: string, index: number, patch: Partial<Verdict>) => vs.map((v) => (v.field === field && v.index === index ? { ...v, ...patch } : v))
 
 describe('review', () => {
+  test('a verdict with null for an absent field parses as absent', () => {
+    const v = verdict.parse({ id: 'x', field: 'eligibility', index: 0, text: 't', verdict: 'sound', category: 'ok', action: 'keep', reason: 'r', quotes: null, new: null })
+    expect(v.quotes).toBeUndefined()
+    expect(v.new).toBeUndefined()
+  })
+
   test('every item and every cited document is numbered for a verdict', () => {
     const items = itemsOf(programme())
     expect(items.filter((x) => x.field === 'source').map((x) => x.text)).toEqual([CALL, OTHER])
