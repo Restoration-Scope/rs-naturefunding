@@ -15,20 +15,32 @@
   "access": "direct",
   "window": "fixed",
   "amount": null,
-  "co_finance_required": true,
+  "co_finance_required": null,
   "reporting": null,
-  "effort": { "steps": ["Online proposal on the FUNBIO call portal"] },
+  "effort": {
+    "steps": [
+      "Submit the online proposal through FUNBIO’s call portal",
+      "FUNBIO preliminary screening",
+      "Technical evaluation by the selection committee, if screened in"
+    ],
+    "due": ["2026-12-02", null, null]
+  },
   "eligibility": [
     {
-      "rule": "Floresta Viva São Francisco call: nonprofit constituted at least 2 years",
+      "rule": "Nonprofit civil association, private foundation or cooperative legally formed at least 2 years ago",
       "kind": "legal"
     },
     {
-      "rule": "Floresta Viva São Francisco call: project in the Sobradinho and Itaparica reservoir basins",
+      "rule": "Project is in the catchments in the influence area of the Sobradinho or Itaparica reservoirs",
+      "kind": "project"
+    },
+    { "rule": "Proposal covers at least 100 hectares for restoration", "kind": "project" },
+    { "rule": "Project duration is at most 48 months", "kind": "project" },
+    {
+      "rule": "Implements restoration in the first 24 months and allows 24 or more months for maintenance and monitoring",
       "kind": "project"
     }
   ],
-  "co_finance": { "min_share": 10, "applies_to": "Articulação Institucional call (Paraná coast)" },
   "calls": [
     {
       "id": "floresta-viva-sao-francisco-2026",
@@ -144,12 +156,6 @@
       "checked_at": "2026-11-23",
       "method": "page"
     },
-    "co_finance_required": {
-      "source_url": "https://chamadas.funbio.org.br/articulacao-institucional",
-      "quote": "Contrapartida mínima de 10%",
-      "checked_at": "2026-11-23",
-      "method": "page"
-    },
     "effort": [
       {
         "source_url": "https://chamadas.funbio.org.br/floresta-viva-sao-francisco",
@@ -158,17 +164,23 @@
         "method": "page"
       },
       {
-        "source_url": "https://chamadas.funbio.org.br/articulacao-institucional",
-        "quote": "As propostas devem necessariamente ser enviadas eletronicamente até às 23:45 horas (horário de Brasília) do dia 04 de dezembro de 2026.",
-        "checked_at": "2026-11-23",
+        "source_url": "https://www.funbio.org.br/floresta-viva-anuncia-novo-ediatal-para-restauracao-vegetal-e-revitalizacao-hidrica-no-sao-francisco/",
+        "quote": "Ele responde pela análise preliminar das propostas.",
+        "checked_at": "2026-11-24",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.funbio.org.br/floresta-viva-anuncia-novo-ediatal-para-restauracao-vegetal-e-revitalizacao-hidrica-no-sao-francisco/",
+        "quote": "Aquelas habilitadas seguirão para avaliação técnica por uma Comissão de Seleção formada por especialistas indicados pelo BNDES, AXIA Energia e FUNBIO.",
+        "checked_at": "2026-11-24",
         "method": "page"
       }
     ],
     "eligibility": [
       {
         "source_url": "https://chamadas.funbio.org.br/floresta-viva-sao-francisco",
-        "quote": "Instituições sem fins lucrativos constituídas há pelo menos 2 anos",
-        "checked_at": "2026-11-23",
+        "quote": "Instituições sem fins lucrativos constituídas há pelo menos 2 anos: Associações civis, Fundações privadas e Cooperativas",
+        "checked_at": "2026-11-24",
         "method": "page"
       },
       {
@@ -176,14 +188,26 @@
         "quote": "Bacias hidrográficas da área de influência dos reservatórios das Usinas Hidrelétricas (UHE) de Sobradinho e de Itaparica",
         "checked_at": "2026-11-23",
         "method": "page"
+      },
+      {
+        "source_url": "https://www.funbio.org.br/floresta-viva-anuncia-novo-ediatal-para-restauracao-vegetal-e-revitalizacao-hidrica-no-sao-francisco/",
+        "quote": "Serão selecionados projetos com área mínima de 100 hectares para restauração, o equivalente a cerca de 140 campos de futebol.",
+        "checked_at": "2026-11-24",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.funbio.org.br/floresta-viva-anuncia-novo-ediatal-para-restauracao-vegetal-e-revitalizacao-hidrica-no-sao-francisco/",
+        "quote": "Os projetos terão prazo de execução de até 48 meses.",
+        "checked_at": "2026-11-24",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.funbio.org.br/floresta-viva-anuncia-novo-ediatal-para-restauracao-vegetal-e-revitalizacao-hidrica-no-sao-francisco/",
+        "quote": "A implementação das ações de restauração deverá ser concluída nos primeiros 24 meses, garantindo período mínimo de outros 24 meses para manutenção e monitoramento das áreas restauradas.",
+        "checked_at": "2026-11-24",
+        "method": "page"
       }
-    ],
-    "co_finance": {
-      "source_url": "https://chamadas.funbio.org.br/articulacao-institucional",
-      "quote": "Contrapartida mínima de 10%",
-      "checked_at": "2026-11-23",
-      "method": "page"
-    }
+    ]
   },
   "checked_at": "2026-11-09"
 }

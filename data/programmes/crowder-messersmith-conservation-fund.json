@@ -18,7 +18,10 @@
   "amount": null,
   "co_finance_required": null,
   "reporting": null,
-  "effort": { "steps": ["Application"], "due": ["2026-12-01"] },
+  "effort": {
+    "steps": ["Application", "Proposal review and funding decision"],
+    "due": ["2026-12-01", null]
+  },
   "eligibility": [
     {
       "rule": "The project benefits endangered or threatened species or habitat.",
@@ -26,12 +29,7 @@
     },
     { "rule": "The project includes a public education component.", "kind": "project" },
     { "rule": "The project involves the local population.", "kind": "project" },
-    { "rule": "The project has lasting significance for local residents.", "kind": "project" },
     { "rule": "The project is completed within a year.", "kind": "project" },
-    {
-      "rule": "The project is outside the United States and other advanced economies.",
-      "kind": "project"
-    },
     {
       "rule": "The project is not pure scientific research or data gathering without an obvious conservation or education benefit.",
       "kind": "project"
@@ -39,7 +37,12 @@
     {
       "rule": "The project does not focus on species listed as Least Concern in the IUCN Red Book of Threatened Species.",
       "kind": "project"
-    }
+    },
+    {
+      "rule": "Project takes place outside conflict zones and countries under US banking sanctions",
+      "kind": "project"
+    },
+    { "rule": "Project is not an expedition", "kind": "project" }
   ],
   "after_award": { "reports": "interim_and_final" },
   "calls": [
@@ -103,6 +106,12 @@
         "quote": "Applications are accepted beginning September 1, 2026. Deadline for receipt is December 1, 2026.",
         "checked_at": "2026-11-23",
         "method": "page"
+      },
+      {
+        "source_url": "https://natureforward.org/wp-content/uploads/2026/08/2027-C-M-Application-CRITERIA-and-INFORMATION.pdf",
+        "quote": "Decisions will be announced in April 2027.",
+        "checked_at": "2026-11-24",
+        "method": "page"
       }
     ],
     "eligibility": [
@@ -126,19 +135,7 @@
       },
       {
         "source_url": "https://natureforward.org/wp-content/uploads/2026/08/2027-C-M-Application-CRITERIA-and-INFORMATION.pdf",
-        "quote": "Have lasting significance for local residents.",
-        "checked_at": "2026-11-23",
-        "method": "page"
-      },
-      {
-        "source_url": "https://natureforward.org/wp-content/uploads/2026/08/2027-C-M-Application-CRITERIA-and-INFORMATION.pdf",
         "quote": "Be completed within a year.",
-        "checked_at": "2026-11-23",
-        "method": "page"
-      },
-      {
-        "source_url": "https://natureforward.org/wp-content/uploads/2026/08/2027-C-M-Application-CRITERIA-and-INFORMATION.pdf",
-        "quote": "Projects in the United States or other advanced economies.",
         "checked_at": "2026-11-23",
         "method": "page"
       },
@@ -152,6 +149,18 @@
         "source_url": "https://natureforward.org/wp-content/uploads/2026/08/2027-C-M-Application-CRITERIA-and-INFORMATION.pdf",
         "quote": "Projects that focus on species listed as Least Concern in the IUCN Red Book of Threatened Species.",
         "checked_at": "2026-11-23",
+        "method": "page"
+      },
+      {
+        "source_url": "https://natureforward.org/wp-content/uploads/2026/08/2027-C-M-Application-CRITERIA-and-INFORMATION.pdf",
+        "quote": "Projects in conflict zones and countries under US banking sanctions.",
+        "checked_at": "2026-11-24",
+        "method": "page"
+      },
+      {
+        "source_url": "https://natureforward.org/wp-content/uploads/2026/08/2027-C-M-Application-CRITERIA-and-INFORMATION.pdf",
+        "quote": "Expeditions, particularly where the applicant has to raise funds in order to participate.",
+        "checked_at": "2026-11-24",
         "method": "page"
       }
     ],

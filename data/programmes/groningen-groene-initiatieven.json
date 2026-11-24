@@ -20,14 +20,6 @@
       "kind": "project"
     },
     {
-      "rule": "Activities are lawful and compatible with the public interest, morals and public order",
-      "kind": "legal"
-    },
-    {
-      "rule": "Activities are primarily directed at Groningen, benefit its residents, or otherwise serve the province",
-      "kind": "project"
-    },
-    {
       "rule": "Activities have not started before the application is submitted",
       "kind": "project"
     },
@@ -36,7 +28,20 @@
       "kind": "finances"
     },
     {
-      "rule": "The applicant has no outstanding European Commission recovery order",
+      "rule": "No outstanding recovery order for aid the European Commission declared unlawful and incompatible",
+      "kind": "legal"
+    },
+    {
+      "rule": "Demonstrates that the grant is necessary to carry out the activities",
+      "kind": "finances"
+    },
+    { "rule": "Project is technically and financially feasible", "kind": "project" },
+    {
+      "rule": "Applicant is not an undertaking in difficulty under the applicable EU state-aid framework",
+      "kind": "finances"
+    },
+    {
+      "rule": "Applicant is an individual, nonprofit foundation or nonprofit association",
       "kind": "legal"
     }
   ],
@@ -50,7 +55,7 @@
     "Copies of issued permits, if applicable",
     "Authorization form, if applicable",
     "De minimis declaration, if applicable",
-    "Own procurement policy, if applicable"
+    "Cooperation agreement, if applicable"
   ],
   "calls": [
     {
@@ -122,18 +127,6 @@
       },
       {
         "source_url": "https://lokaleregelgeving.overheid.nl/CVDR609089",
-        "quote": "de aanvrager doelstellingen nastreeft of activiteiten ontplooit die in strijd zijn met de wet, het algemeen belang, de goede zeden of de openbare orde",
-        "checked_at": "2026-11-23",
-        "method": "page"
-      },
-      {
-        "source_url": "https://lokaleregelgeving.overheid.nl/CVDR609089",
-        "quote": "de activiteiten van de aanvrager niet of niet in overwegende mate gericht zullen zijn op de provincie Groningen, niet ten goede komen aan ingezetenen van de provincie of niet op andere wijze het belang van de provincie dienen",
-        "checked_at": "2026-11-23",
-        "method": "page"
-      },
-      {
-        "source_url": "https://lokaleregelgeving.overheid.nl/CVDR609089",
         "quote": "de activiteiten waarvoor subsidie wordt verstrekt, zijn aangevangen voorafgaand aan het indienen van de aanvraag",
         "checked_at": "2026-11-23",
         "method": "page"
@@ -146,8 +139,32 @@
       },
       {
         "source_url": "https://lokaleregelgeving.overheid.nl/CVDR609089",
-        "quote": "ten aanzien van de subsidieaanvrager een uitstaand bevel tot terugvordering bestaat volgend op een eerdere beschikking van de Europese Commissie",
-        "checked_at": "2026-11-23",
+        "quote": "ten aanzien van de subsidieaanvrager een uitstaand bevel tot terugvordering bestaat volgend op een eerdere beschikking van de Europese Commissie, waarin de steun onrechtmatig en onverenigbaar met de gemeenschappelijke markt is verklaard;",
+        "checked_at": "2026-11-24",
+        "method": "page"
+      },
+      {
+        "source_url": "https://lokaleregelgeving.overheid.nl/CVDR609089",
+        "quote": "niet is aangetoond dat de subsidie noodzakelijk is voor het verrichten van de activiteiten waarvoor deze wordt gevraagd;",
+        "checked_at": "2026-11-24",
+        "method": "page"
+      },
+      {
+        "source_url": "https://lokaleregelgeving.overheid.nl/CVDR609089",
+        "quote": "de aangevraagde activiteit technisch en financieel haalbaar is;",
+        "checked_at": "2026-11-24",
+        "method": "page"
+      },
+      {
+        "source_url": "https://lokaleregelgeving.overheid.nl/CVDR609089",
+        "quote": "de aanvrager een onderneming in moeilijkheden is als bedoeld in het betreffende Europese steunkader.",
+        "checked_at": "2026-11-24",
+        "method": "page"
+      },
+      {
+        "source_url": "https://lokaleregelgeving.overheid.nl/CVDR609089",
+        "quote": "Subsidie kan worden aangevraagd door: a. particulieren; b. stichtingen of verenigingen zonder winstoogmerk.",
+        "checked_at": "2026-11-24",
         "method": "page"
       }
     ],
@@ -166,8 +183,8 @@
       },
       {
         "source_url": "https://www.provinciegroningen.nl/subsidies/natuur-en-landschap/groene-initiatieven/",
-        "quote": "Eigen aanbestedingsbeleid.",
-        "checked_at": "2026-11-23",
+        "quote": "Samenwerkingsovereenkomst.",
+        "checked_at": "2026-11-24",
         "method": "page"
       }
     ],

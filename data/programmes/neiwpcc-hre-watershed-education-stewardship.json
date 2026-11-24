@@ -29,25 +29,25 @@
   "co_finance_required": false,
   "consortium_required": false,
   "reporting": "Final report with public event details, photos where applicable, testimonials and copies of project products.",
-  "effort": { "steps": ["Proposal submission"], "due": ["2026-12-04"] },
+  "effort": {
+    "steps": ["Proposal submission", "NEIWPCC and Estuary Program review and funding decision"],
+    "due": ["2026-12-04", null]
+  },
   "eligibility": [
-    {
-      "rule": "Located within the Hudson River Estuary Management Program boundaries",
-      "kind": "project"
-    },
     { "rule": "Not a federal or state agency", "kind": "legal" },
     {
       "rule": "Coordinates with an existing watershed group, if one exists, and provides its letter of support",
       "kind": "project"
     },
     {
-      "rule": "Uses none of the listed ineligible expenses, except specific outreach-event space rental",
+      "rule": "Grant-funded environmental data work or plan development falls under an existing NEIWPCC-approved QAPP",
       "kind": "project"
     },
     {
-      "rule": "Environmental data collection, analysis or plan development has an approved NEIWPCC QAPP",
+      "rule": "Independent contractor or individual applicants work with a local watershed group or municipality",
       "kind": "project"
-    }
+    },
+    { "rule": "Applicant submits no more than one proposal", "kind": "other" }
   ],
   "after_award": { "reports": "final" },
   "documents": ["Letter of support from an existing watershed group, if one exists"],
@@ -147,15 +147,15 @@
         "quote": "Proposals due to NEIWPCC By 4:00 PM December 4, 2026",
         "checked_at": "2026-11-23",
         "method": "page"
+      },
+      {
+        "source_url": "https://neiwpcc.org/wp-content/uploads/2026/09/2026-NEIWPCC-mini-grant-RFP-HREMP.pdf",
+        "quote": "Proposals will be reviewed by Hudson River Estuary Program and NEIWPCC staff according to the following criteria:",
+        "checked_at": "2026-11-24",
+        "method": "page"
       }
     ],
     "eligibility": [
-      {
-        "source_url": "https://neiwpcc.org/wp-content/uploads/2026/09/2026-NEIWPCC-mini-grant-RFP-HREMP.pdf",
-        "quote": "Applicants must be located within the Hudson River Estuary Management Program boundaries",
-        "checked_at": "2026-11-23",
-        "method": "page"
-      },
       {
         "source_url": "https://neiwpcc.org/wp-content/uploads/2026/09/2026-NEIWPCC-mini-grant-RFP-HREMP.pdf",
         "quote": "Federal and state agencies,",
@@ -170,14 +170,20 @@
       },
       {
         "source_url": "https://neiwpcc.org/wp-content/uploads/2026/09/2026-NEIWPCC-mini-grant-RFP-HREMP.pdf",
-        "quote": "Fundraising, • Lobbying or advocacy, • Out of state travel, • Private or for-profit events, • Indirect costs or operating expenses • Rent for space, purchase of property, utilities, insurance, etc. However, please note a Purchase Order can be issued when renting a space for a specific outreach event.",
+        "quote": "Environmental data collection, analysis, or plan development unless the work falls under an existing Quality Assurance Project Plan (QAPP) approved by NEIWPCC.",
         "checked_at": "2026-11-23",
         "method": "page"
       },
       {
         "source_url": "https://neiwpcc.org/wp-content/uploads/2026/09/2026-NEIWPCC-mini-grant-RFP-HREMP.pdf",
-        "quote": "Environmental data collection, analysis, or plan development unless the work falls under an existing Quality Assurance Project Plan (QAPP) approved by NEIWPCC.",
-        "checked_at": "2026-11-23",
+        "quote": "Independent contractors or individuals working with a local watershed group or municipality.",
+        "checked_at": "2026-11-24",
+        "method": "page"
+      },
+      {
+        "source_url": "https://neiwpcc.org/wp-content/uploads/2026/09/2026-NEIWPCC-mini-grant-RFP-HREMP.pdf",
+        "quote": "One proposal may be submitted per organization or entity.",
+        "checked_at": "2026-11-24",
         "method": "page"
       }
     ],

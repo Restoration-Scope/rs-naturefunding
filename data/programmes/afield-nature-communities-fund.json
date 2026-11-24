@@ -23,21 +23,30 @@
     "steps": [
       "Application",
       "Selection panel interview and presentation",
-      "Applicant verification and grant agreement"
+      "Due diligence and reference check",
+      "Lottery longlisting, if more than 30 applications",
+      "Shortlist review"
     ],
-    "due": ["2026-12-02", null, null]
+    "due": ["2026-12-02", null, null, null, null]
   },
   "eligibility": [
     { "rule": "Be aged 18 or over", "kind": "legal" },
     { "rule": "Have the right to reside in the UK", "kind": "legal" },
-    { "rule": "Live in or serve a community in an eligible London borough", "kind": "project" },
     {
-      "rule": "Not be in full-time employment or education and dedicate two days weekly",
+      "rule": "During the project, neither in full-time work nor education, with at least two days a week available",
       "kind": "capacity"
     },
     { "rule": "Be ready to start the project in February 2027", "kind": "project" },
     { "rule": "Take place in a publicly accessible, free-of-charge space", "kind": "project" },
-    { "rule": "Commit to a two-year project", "kind": "project" }
+    { "rule": "Commit to a two-year project", "kind": "project" },
+    {
+      "rule": "Applicant has not already secured funding to deliver the proposed project",
+      "kind": "finances"
+    },
+    {
+      "rule": "Project will not generate personal profit or profit for a commercial organisation",
+      "kind": "project"
+    }
   ],
   "after_award": { "reports": "quarterly", "training": true },
   "calls": [
@@ -131,6 +140,18 @@
         "quote": "Selected applicants will receive a grant offer subject to due diligence, which Afield is required to do by law, and will be asked to provide a reference.",
         "checked_at": "2026-11-23",
         "method": "page"
+      },
+      {
+        "source_url": "https://www.afield.org.uk/nature",
+        "quote": "If we receive more than 30 applications, we will use Open Chance Selection (a random number generator) to longlist 30 applications for full consideration.",
+        "checked_at": "2026-11-24",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.afield.org.uk/nature",
+        "quote": "We will use the selection criteria below to shortlist 10 applicants from the longlist of 30.",
+        "checked_at": "2026-11-24",
+        "method": "page"
       }
     ],
     "eligibility": [
@@ -143,12 +164,6 @@
       {
         "source_url": "https://www.afield.org.uk/nature",
         "quote": "have the right to reside in the UK",
-        "checked_at": "2026-11-23",
-        "method": "page"
-      },
-      {
-        "source_url": "https://www.afield.org.uk/nature",
-        "quote": "live in or serve a community in one of these London boroughs: Barking and Dagenham, Brent, Hackney, Islington, Lambeth, Lewisham, Newham, Waltham Forest",
         "checked_at": "2026-11-23",
         "method": "page"
       },
@@ -174,6 +189,18 @@
         "source_url": "https://www.afield.org.uk/nature",
         "quote": "No. We ask for a two-year commitment because projects of this nature can take a long time to get off the ground",
         "checked_at": "2026-11-23",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.afield.org.uk/nature",
+        "quote": "people who have already secured funding to deliver the proposed project",
+        "checked_at": "2026-11-24",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.afield.org.uk/nature",
+        "quote": "projects that will generate profit (either for a profit-making organisation or for personal profit)",
+        "checked_at": "2026-11-24",
         "method": "page"
       }
     ],
