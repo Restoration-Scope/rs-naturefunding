@@ -30,31 +30,49 @@
   "co_finance_required": true,
   "reporting": null,
   "effort": {
-    "steps": ["Project proposal form emailed to regional coordinator"],
+    "steps": [
+      "Project proposal form emailed to regional coordinator",
+      "Proposal review and selection"
+    ],
     "more_after": true,
-    "due": ["2026-12-18"]
+    "due": ["2026-12-18", null]
   },
   "eligibility": [
     {
-      "rule": "Mitigate threats to one or more aquatic species at risk and their habitats",
+      "rule": "Reduce threats by advancing SARA recovery measures or benefiting aquatic species COSEWIC assesses as at risk",
       "kind": "project"
     },
-    { "rule": "Begin on April 1, 2027 as a single-year or multi-year project", "kind": "project" },
-    { "rule": "Complete multi-year projects by March 31, 2030", "kind": "project" },
+    {
+      "rule": "Start April 1, 2027. Multi-year projects finish by March 31, 2030.",
+      "kind": "project"
+    },
     {
       "rule": "Include surveys, inventories and monitoring only in a larger stewardship project implemented within 2 years",
       "kind": "project"
     },
     {
-      "rule": "Ensure outreach leads to direct species at risk recovery action",
+      "rule": "Any outreach targets species-at-risk recovery. General or non-targeted outreach is ineligible.",
       "kind": "project"
     },
     {
-      "rule": "Project includes no research, captive breeding, hatcheries, aquaculture, reintroductions or recovery-strategy writing",
+      "rule": "No scientific research, captive rearing/breeding, hatcheries, aquaculture, extirpated reintroductions or SARA plan work",
+      "kind": "project"
+    },
+    { "rule": "Individuals applying are Canadian", "kind": "legal" },
+    {
+      "rule": "Exclude required offsetting, principal-focus site cleanup, unrelated training and replacement access structures",
+      "kind": "project"
+    },
+    {
+      "rule": "Any shoreline restoration must be associated with aquatic species at risk",
       "kind": "project"
     }
   ],
-  "co_finance": { "ratio": "1:1", "in_kind": true, "applies_to": "Non-Indigenous project leads" },
+  "co_finance": {
+    "in_kind": true,
+    "applies_to": "Indigenous-led projects. Non-Indigenous project leads must match 1:1.",
+    "min_share": 20
+  },
   "calls": [
     {
       "id": "2027-28",
@@ -139,25 +157,25 @@
         "quote": "project leads must complete a project proposal form and email it to the regional coordinator in the region in which the proposed project will be implemented by December 18, 2026 at 23:59 (Pacific time).",
         "checked_at": "2026-11-23",
         "method": "page"
+      },
+      {
+        "source_url": "https://www.dfo-mpo.gc.ca/species-especes/sara-lep/hsp-pih/index-eng.html",
+        "quote": "To be eligible, applicants must demonstrate how their projects/activities meet all of the eligibility criteria.",
+        "checked_at": "2026-11-24",
+        "method": "page"
       }
     ],
     "eligibility": [
       {
         "source_url": "https://www.dfo-mpo.gc.ca/species-especes/sara-lep/hsp-pih/index-eng.html",
-        "quote": "mitigate threats to one or more aquatic species at risk and their habitats",
-        "checked_at": "2026-11-23",
+        "quote": "advancing recovery measures described in federal recovery strategies, action plans, or management plans for species listed under Schedule 1 of the Species at Risk Act (SARA) as Endangered, Threatened or Special Concern, or benefitting species assessed as Endangered, Threatened or Special Concern by the Committee on the Status of Endangered Wildlife in Canada (COSEWIC)",
+        "checked_at": "2026-11-24",
         "method": "page"
       },
       {
         "source_url": "https://www.dfo-mpo.gc.ca/species-especes/sara-lep/hsp-pih/index-eng.html",
-        "quote": "begin April 1, 2027, either as a single year or multi-year project",
-        "checked_at": "2026-11-23",
-        "method": "page"
-      },
-      {
-        "source_url": "https://www.dfo-mpo.gc.ca/species-especes/sara-lep/hsp-pih/index-eng.html",
-        "quote": "multi-year projects must be completed by March 31, 2030",
-        "checked_at": "2026-11-23",
+        "quote": "begin April 1, 2027, either as a single year or multi-year project, and multi-year projects must be completed by March 31, 2030",
+        "checked_at": "2026-11-24",
         "method": "page"
       },
       {
@@ -177,12 +195,30 @@
         "quote": "Scientific research activities, captive breeding, captive rearing, fish hatcheries, aquaculture activities and extirpated species reintroductions, the development of federal species at risk recovery strategies or action plans, including the identification of critical habitat (as required under SARA)",
         "checked_at": "2026-11-23",
         "method": "page"
+      },
+      {
+        "source_url": "https://www.dfo-mpo.gc.ca/species-especes/sara-lep/hsp-pih/index-eng.html",
+        "quote": "Canadian individuals",
+        "checked_at": "2026-11-24",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.dfo-mpo.gc.ca/species-especes/sara-lep/hsp-pih/index-eng.html",
+        "quote": "Regulatory requirements, such as offsetting projects Decontamination of sites as the principal focus of a project (for example, capping) Training unrelated to the project Construction of a replacement boat launch, pier, fishing platform, etc.",
+        "checked_at": "2026-11-24",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.dfo-mpo.gc.ca/species-especes/sara-lep/hsp-pih/index-eng.html",
+        "quote": "Shoreline restoration not associated with aquatic species at risk",
+        "checked_at": "2026-11-24",
+        "method": "page"
       }
     ],
     "co_finance": {
       "source_url": "https://www.dfo-mpo.gc.ca/species-especes/sara-lep/hsp-pih/proposal-proposition/application/index-eng.html",
-      "quote": "For non-Indigenous project leads, a minimum of 1:1 matching contributions from non-federal sources is required, either in the form of cash or in-kind support.",
-      "checked_at": "2026-11-23",
+      "quote": "For non-Indigenous project leads, a minimum of 1:1 matching contributions from non-federal sources is required, either in the form of cash or in-kind support. For projects led by Indigenous groups or organizations, a minimum of twenty percent matching contributions from non-federal sources are required, either in the form of cash or in-kind support.",
+      "checked_at": "2026-11-24",
       "method": "page"
     }
   },

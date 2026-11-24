@@ -19,16 +19,16 @@
     "min": 500,
     "note": "Minimum EUR 2,500 for municipalities; EUR 500 for clubs, foundations and private persons"
   },
-  "co_finance_required": null,
+  "co_finance_required": true,
   "reporting": "grantees must submit usage reports (Verwendungsnachweise) after approval",
   "effort": {
-    "steps": ["Application submission", "Application review"],
+    "steps": ["Application submission", "Discretionary application assessment"],
     "due": ["2026-12-31", null]
   },
   "eligibility": [
     { "rule": "Not a federal government body", "kind": "legal" },
     {
-      "rule": "The measure serves the objectives of North Rhine-Westphalia's Landscape Act",
+      "rule": "The measure serves the objectives of North Rhine-Westphalia's State Nature Conservation Act",
       "kind": "project"
     },
     {
@@ -38,9 +38,25 @@
     {
       "rule": "Long-term purpose binding is secured for measures involving leases",
       "kind": "project"
+    },
+    {
+      "rule": "The project is not a statutory ecological compensation or replacement measure",
+      "kind": "project"
+    },
+    {
+      "rule": "The measure cannot be funded under other guidelines, unless the ministry approves an eligible exception",
+      "kind": "project"
     }
   ],
-  "after_award": { "reports": "final" },
+  "co_finance": {
+    "min_share": 20,
+    "applies_to": "Landscape plan measures. Requirements vary for other activities."
+  },
+  "after_award": { "reports": "yearly" },
+  "documents": [
+    "Scope of planning work and a boundary map, for draft landscape plans",
+    "Implementation plan or authority-agreed plan, for multi-year planning"
+  ],
   "calls": [
     {
       "id": "2026",
@@ -106,6 +122,12 @@
       "checked_at": "2026-11-23",
       "method": "page"
     },
+    "co_finance_required": {
+      "source_url": "https://www.nordrhein-westfalen-foerdert.nrw/foerdermassnahmen/naturschutz-foena-2026",
+      "quote": "Je nach Maßnahme und Antragstellerin oder Antragsteller können zwischen 50 % und 100 % der förderfähigen Ausgaben übernommen werden.",
+      "checked_at": "2026-11-24",
+      "method": "page"
+    },
     "reporting": {
       "source_url": "https://www.nordrhein-westfalen-foerdert.nrw/was-passiert-nach-der-antragstellung",
       "quote": "Nach der Bewilligung stehen wichtige Schritte an, z. B. die Anforderung von Auszahlungen, sogenannte Mittelabrufe, oder das Einreichen Ihrer Verwendungsnachweise.",
@@ -120,9 +142,9 @@
         "method": "page"
       },
       {
-        "source_url": "https://www.nordrhein-westfalen-foerdert.nrw/was-passiert-nach-der-antragstellung",
-        "quote": "Ihr Antrag wird geprüft",
-        "checked_at": "2026-11-23",
+        "source_url": "https://www.nordrhein-westfalen-foerdert.nrw/foerdermassnahmen/naturschutz-foena-2026",
+        "quote": "Die konkrete Förderhöhe hängt vom ökologischen Wert des Vorhabens und der Finanzkraft des Antragstellenden ab.",
+        "checked_at": "2026-11-24",
         "method": "page"
       }
     ],
@@ -134,9 +156,9 @@
         "method": "page"
       },
       {
-        "source_url": "https://www.nordrhein-westfalen-foerdert.nrw/foerdermassnahmen/naturschutz-foena-2026",
-        "quote": "Die Maßnahme muss den Zielen des Landschaftsgesetzes Nordrhein-Westfalen dienen",
-        "checked_at": "2026-11-23",
+        "source_url": "https://www.umwelt.nrw.de/naturschutz/natur/foerderprogramme/foerderrichtlinie-naturschutz-foena",
+        "quote": "die insbesondere zur Verwirklichung der Ziele des Landesnaturschutzgesetzes und der Durchführung von gemeinschaftsrechtlichen ökologischen Regelungen dienen",
+        "checked_at": "2026-11-24",
         "method": "page"
       },
       {
@@ -150,13 +172,45 @@
         "quote": "Bei Maßnahmen mit z. B. Pacht muss die langfristige Zweckbindung sichergestellt sein",
         "checked_at": "2026-11-23",
         "method": "page"
+      },
+      {
+        "source_url": "https://recht.nrw.de/lrmb/verwaltungsvorschrift/richtlinien-ueber-die-gewaehrung-von-zuwendungen-fuer-massnahmen-des-0/",
+        "quote": "Ausgleichs- und Ersatzmaßnahmen im Sinne der §§ 4 bis 6 LG.",
+        "checked_at": "2026-11-24",
+        "method": "page"
+      },
+      {
+        "source_url": "https://recht.nrw.de/lrmb/verwaltungsvorschrift/richtlinien-ueber-die-gewaehrung-von-zuwendungen-fuer-massnahmen-des-0/",
+        "quote": "Maßnahmen für Naturschutz und Landschaftspflege, die auf der Grundlage des Fördertatbestandes anderer Förderrichtlinien oder -erlasse gefördert werden können.",
+        "checked_at": "2026-11-24",
+        "method": "page"
       }
     ],
+    "co_finance": {
+      "source_url": "https://recht.nrw.de/lrmb/verwaltungsvorschrift/richtlinien-ueber-die-gewaehrung-von-zuwendungen-fuer-massnahmen-des-0/",
+      "quote": "a) zur Aufstellung, Änderung und Durchführung der Landschaftspläne 80 v. H., b) in den übrigen Fällen 50-70 v. H. der zuwendungsfähigen Ausgaben und c) bei natürlichen Personen und juristischen Personen des Privatrechts bei Maßnahmen nach Nummer 2.2.3 im Einzelfall bis zu 100 v. H. der nachgewiesenen Sachausgaben",
+      "checked_at": "2026-11-24",
+      "method": "page"
+    },
     "after_award": [
       {
-        "source_url": "https://www.nordrhein-westfalen-foerdert.nrw/ihr-antrag-wurde-bewilligt-wie-geht-es-weiter",
-        "quote": "Sofern im Bewilligungsbescheid nichts anderes festgelegt ist, müssen Sie nach Abschluss des Vorhabens nachweisen, dass die Fördermittel korrekt verwendet wurden.",
-        "checked_at": "2026-11-23",
+        "source_url": "https://recht.nrw.de/lrmb/verwaltungsvorschrift/richtlinien-ueber-die-gewaehrung-von-zuwendungen-fuer-massnahmen-des-0/",
+        "quote": "Der Verwendungsnachweis ist nach dem Grundmuster 3 zu Nummer 10.3 VVG zu führen. 7.4.2 Bei Naturparkträgern, die als Verein organisiert sind, wird für Einzelmaßnahmen bis zu 10.000,- Euro auf die Vorlage der Belege verzichtet. 7.4.3 Bei mehrjährigen Maßnahmen ist als jährlicher Nachweis über die verausgabten Mittel ein Zwischennachweis zu führen.",
+        "checked_at": "2026-11-24",
+        "method": "page"
+      }
+    ],
+    "documents": [
+      {
+        "source_url": "https://recht.nrw.de/lrmb/verwaltungsvorschrift/richtlinien-ueber-die-gewaehrung-von-zuwendungen-fuer-massnahmen-des-0/",
+        "quote": "Bei Entwürfen für Landschaftspläne nach Nummer 2.1.1eine Auflistung über Art und Umfang der Planungsarbeiten (Leistungsbeschreibung und eine Karte mit der Abgrenzung des Plangebietes).",
+        "checked_at": "2026-11-24",
+        "method": "page"
+      },
+      {
+        "source_url": "https://recht.nrw.de/lrmb/verwaltungsvorschrift/richtlinien-ueber-die-gewaehrung-von-zuwendungen-fuer-massnahmen-des-0/",
+        "quote": "Bei mehrjährigen Planungen der Durchführungsplan nach Nummer 2.2.1.2 oder die nach Nummer 2.2.2 mit der unteren Landschaftsbehörde abgestimmte Planung.",
+        "checked_at": "2026-11-24",
         "method": "page"
       }
     ]
