@@ -16,15 +16,23 @@
     "peatlands",
     "urban_nature"
   ],
-  "applicant_types": ["ngo", "government"],
+  "applicant_types": [
+    "ngo",
+    "government"
+  ],
   "geography": {
     "scope": "countries",
-    "countries": ["DE"],
+    "countries": [
+      "DE"
+    ],
     "label": "Niedersachsen (Lower Saxony)"
   },
   "access": "direct",
   "window": "rolling",
-  "amount": null,
+  "amount": {
+    "currency": "EUR",
+    "max": 50000
+  },
   "co_finance_required": true,
   "reporting": null,
   "calls": [
@@ -73,6 +81,12 @@
     "co_finance_required": {
       "source_url": "https://www.bingo-umweltstiftung.de/foerderrichtlinie/",
       "quote": "Grundsätzlich soll der Eigenanteil mindestens 15 Prozent betragen.",
+      "checked_at": "2026-11-24",
+      "method": "page"
+    },
+    "amount": {
+      "source_url": "https://www.bingo-umweltstiftung.de/termine-und-antragsfristen/",
+      "quote": "bis 5.000,- Euro Geschäftsführung laufend * mind. vier Wochen vor dem geplanten Projektbeginn über 5.000,- Euro bis 15.000,- Euro Geschäftsführung laufend * mind. sechs Wochen vor dem geplanten Projektbeginn über 15.000,- Euro bis 50.000,- Euro Vorstand",
       "checked_at": "2026-11-24",
       "method": "page"
     }

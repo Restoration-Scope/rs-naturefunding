@@ -9,11 +9,20 @@
   "parent": null,
   "url": "https://fondsdactionsaintlaurent.org/nos-programmes/biodiversite-maritime-du-saint-laurent/",
   "summary": "Funding for non-profits (or municipalities partnered with one) running protection, restoration, access and awareness projects on the St. Lawrence River and Gulf, including riparian strips, culverts for connectivity, planting and invasive species control.",
-  "approaches": ["coastal_marine", "freshwater", "community_conservation"],
-  "applicant_types": ["ngo", "government"],
+  "approaches": [
+    "coastal_marine",
+    "freshwater",
+    "community_conservation"
+  ],
+  "applicant_types": [
+    "ngo",
+    "government"
+  ],
   "geography": {
     "scope": "countries",
-    "countries": ["CA"],
+    "countries": [
+      "CA"
+    ],
     "label": "St. Lawrence River and Gulf"
   },
   "access": "direct",
@@ -33,12 +42,18 @@
     ]
   },
   "eligibility": [
-    { "rule": "Be a nonprofit, or a municipality applying with a nonprofit", "kind": "legal" },
+    {
+      "rule": "Be a nonprofit, or a municipality applying with a nonprofit",
+      "kind": "legal"
+    },
     {
       "rule": "Knowledge-acquisition projects are phase 1 of a later restoration or conservation project",
       "kind": "project"
     },
-    { "rule": "Do not use contributions from the Government of Quebec", "kind": "project" },
+    {
+      "rule": "Do not use contributions from the Government of Quebec",
+      "kind": "project"
+    },
     {
       "rule": "Project lasts at most one year, starts February–April and ends the following February unless advised otherwise",
       "kind": "project"
@@ -48,8 +63,13 @@
       "kind": "project"
     }
   ],
-  "co_finance": { "min_share": 25, "in_kind": true },
-  "after_award": { "reports": "interim_and_final" },
+  "co_finance": {
+    "min_share": 25,
+    "in_kind": true
+  },
+  "after_award": {
+    "reports": "interim_and_final"
+  },
   "calls": [
     {
       "id": "catalogue",
@@ -66,6 +86,29 @@
           "method": "page"
         }
       }
+    },
+    {
+      "id": "annual-call",
+      "label": "Annual call (autumn)",
+      "url": "https://fondsdactionsaintlaurent.org/nos-programmes/biodiversite-maritime-du-saint-laurent/",
+      "status": "closed",
+      "opens": null,
+      "deadline": null,
+      "evidence": {
+        "status": {
+          "source_url": "https://fondsdactionsaintlaurent.org/nos-programmes/biodiversite-maritime-du-saint-laurent/",
+          "quote": "Appel de projets terminé Suivez-nous sur nos réseaux sociaux pour connaître les prochaines dates de l'appel à projet",
+          "checked_at": "2026-11-24",
+          "method": "page"
+        },
+        "recurring": {
+          "source_url": "https://fondsdactionsaintlaurent.org/nos-programmes/biodiversite-maritime-du-saint-laurent/",
+          "quote": "Une date de tombée est également planifiée annuellement (appel), sauf exception, à l'automne.",
+          "checked_at": "2026-11-24",
+          "method": "page"
+        }
+      },
+      "recurring": "autumn each year"
     }
   ],
   "evidence": {
