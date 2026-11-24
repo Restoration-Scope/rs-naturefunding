@@ -9,21 +9,43 @@
   "parent": null,
   "url": "https://www.z-u-g.org/1000-moore/",
   "summary": "German federal grants for rewetting and restoring small, non-farmed peatlands of conservation value, 5 to 200 hectares per project. Applications are closed until a further funding window opens.",
-  "approaches": ["peatlands", "wetlands"],
+  "approaches": [
+    "peatlands",
+    "wetlands"
+  ],
   "applicant_types": null,
   "geography": null,
   "access": "direct",
   "window": "fixed",
-  "amount": null,
+  "amount": {
+    "currency": "EUR",
+    "max": 600000
+  },
   "co_finance_required": true,
   "consortium_required": false,
   "reporting": null,
-  "effort": { "steps": ["Application submission"] },
+  "effort": {
+    "steps": [
+      "Application submission"
+    ]
+  },
   "eligibility": [
-    { "rule": "Project land has no agricultural or forestry use when applying", "kind": "project" },
-    { "rule": "If not owner, secure use rights for 20 years after project end", "kind": "project" },
-    { "rule": "FSP 2.2 area is at least 5 ha", "kind": "project" },
-    { "rule": "The project is carried out in Germany", "kind": "project" },
+    {
+      "rule": "Project land has no agricultural or forestry use when applying",
+      "kind": "project"
+    },
+    {
+      "rule": "If not owner, secure use rights for 20 years after project end",
+      "kind": "project"
+    },
+    {
+      "rule": "FSP 2.2 area is at least 5 ha",
+      "kind": "project"
+    },
+    {
+      "rule": "The project is carried out in Germany",
+      "kind": "project"
+    },
     {
       "rule": "The application is for a single project, not a consortium project",
       "kind": "project"
@@ -149,7 +171,13 @@
         "checked_at": "2026-11-23",
         "method": "page"
       }
-    ]
+    ],
+    "amount": {
+      "source_url": "https://www.z-u-g.org/1000-moore/foerderrichtlinie-1000-moore/",
+      "quote": "Die maximale Fördersumme für Projekte in den Förderschwerpunkten 2.1 und 2.2 beträgt 600.000 Euro pro Antrag.",
+      "checked_at": "2026-11-24",
+      "method": "page"
+    }
   },
   "checked_at": "2026-11-23"
 }
