@@ -119,6 +119,13 @@ export function placeNote(g: Programme['geography'], country: string): string {
   return g?.scope === 'regions' && placeFit({ geography: g }, country) === 'check' ? `Check the place: ${g.label}` : ''
 }
 
+/** The parts to spell out beside each country: none when all share one, which the label already says. */
+export function shownParts(g: Programme['geography']): Record<string, string> {
+  const parts = (g?.scope === 'countries' && g.parts) || {}
+  const texts = Object.values(parts)
+  return g?.scope === 'countries' && g.label && texts.length > 1 && texts.length === g.countries.length && new Set(texts).size === 1 ? {} : parts
+}
+
 export function geographyFull(g: Programme['geography']): string | null {
   if (!g) return null
   if (g.scope === 'global') return 'Worldwide'
@@ -129,7 +136,8 @@ export function geographyFull(g: Programme['geography']): string | null {
     const parts = Object.entries(g.parts ?? {}).map(([c, part]) => `; in ${countryName(c)}, only ${part}`)
     return `${g.label ?? 'Listed countries'} (${g.countries.length} countries and territories${parts.join('')})`
   }
-  const list = joinAnd(g.countries.map((c) => `${countryName(c)}${g.parts?.[c] ? ` (only ${g.parts[c]})` : ''}`))
+  const parts = shownParts(g)
+  const list = joinAnd(g.countries.map((c) => `${countryName(c)}${parts[c] ? ` (only ${parts[c]})` : ''}`))
   return g.label ? `${g.label}: ${list}` : list
 }
 

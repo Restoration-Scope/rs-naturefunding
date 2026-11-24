@@ -20,7 +20,7 @@ import { cardClasses } from '@/components/ui/card'
 import { HIDDEN_DAYS, buildDate, callGroups, countryLists, whereArea, whereReach, listingFor, programmeById, programmes, sortListings } from '../../lib/data'
 import type { Programme } from '../../data/schema'
 import { pagesFor } from '../../lib/finder-pages'
-import { amountText, effortLevel, effortSignals, effortText, poolText, geographyFull, joinAnd, longDate, sentence, funderRepeatsName, funderQualifier, programmeTitle } from '../../lib/format'
+import { amountText, effortLevel, effortSignals, effortText, poolText, geographyFull, joinAnd, longDate, sentence, funderRepeatsName, funderQualifier, programmeTitle, shownParts } from '../../lib/format'
 import { countryName, regionLabels } from '../../lib/geo'
 import {
   accessHelp,
@@ -334,12 +334,12 @@ const jsonLd = [
 
       <FactGroup id="facts-who" kind="who" title="Who can apply">
         <Fact id={factIds.geography} label="Where" value={geographyFull(p.geography)} evidence={[p.evidence.geography, ...(p.evidence.places ?? [])].filter((e) => e !== undefined)}>
-          {p.geography?.scope === 'countries' && !geoFolds && <span slot="value">{p.geography.label && `${p.geography.label}: `}<Countries codes={p.geography.countries} parts={geoParts} /></span>}
+          {p.geography?.scope === 'countries' && !geoFolds && <span slot="value">{p.geography.label && `${p.geography.label}: `}<Countries codes={p.geography.countries} parts={shownParts(p.geography)} /></span>}
           {/* A long list folds away, after whose list it is. */}
           {p.geography?.scope === 'countries' && geoFolds && (
             <div slot="value">
               {p.geography.label}{geoLists.length > 0 && ', using the '}{geoLists.map((l, i) => <>{i === 0 ? '' : i === geoLists.length - 1 ? ' and the ' : ', the '}<a href={l.source_url}>{l.name}</a></>)}
-              <details class="mt-1"><summary class="cursor-pointer underline">All {p.geography.countries.length} countries and territories</summary><p class="mt-1"><Countries codes={p.geography.countries} parts={geoParts} /></p></details>
+              <details class="mt-1"><summary class="cursor-pointer underline">All {p.geography.countries.length} countries and territories</summary><p class="mt-1"><Countries codes={p.geography.countries} parts={shownParts(p.geography)} /></p></details>
             </div>
           )}
           <template data-where-tpl="covered"><p class="mt-1 text-md font-semibold text-ok-ink">✓ Includes <span data-where-name></span><span data-where-via></span></p></template>

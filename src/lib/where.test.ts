@@ -3,6 +3,7 @@ import type { Programme } from '../data/schema'
 import { geographyIssues } from '../data/geography'
 import { countryLists, programmeById, whereArea, whereReach } from './data'
 import { finderPages } from './finder-pages'
+import { geographyFull, placeNote } from './format'
 import { areaCountries, areaNames, countryRegion } from './geo'
 import { placeFit } from './where-codes'
 
@@ -38,6 +39,12 @@ describe('whether a programme page says it takes a country', () => {
   ])('%s is nowhere on the Kenya page', (id) => {
     const kenya = finderPages.countries.find((p) => p.iso2 === 'KE')!
     expect([...kenya.listings, ...kenya.check].map((l) => l.p.id)).not.toContain(id)
+  })
+
+  test('a grant for parks says so on each of its countries’ rows, once on its own page', () => {
+    const g = programmeById.get('sadc-tfca-financing-facility')!.geography
+    expect(placeNote(g, 'ZA')).toBe('Only its Transfrontier Conservation Areas')
+    expect(geographyFull(g)).not.toContain('only')
   })
 
   test('a page’s count holds only the programmes sure to take the country', () => {
