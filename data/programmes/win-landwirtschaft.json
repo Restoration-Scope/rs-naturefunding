@@ -10,11 +10,15 @@
   "url": "https://www.bluehendesoesterreich.at/WIN-landwirtschaft",
   "summary": "Project funding in Austria for restoration and conservation in farmed landscapes, such as orchard meadows, dry grassland grazing, wet meadow rewetting and alpine pastures, with free preparatory workshops. Second round announced for winter 2026-27.",
   "approaches": ["grasslands", "wetlands", "sustainable_land_use", "community_conservation"],
-  "applicant_types": ["individual", "community_group", "ngo"],
+  "applicant_types": ["individual", "community_group"],
   "geography": { "scope": "countries", "countries": ["AT"], "label": "Austria" },
   "access": "direct",
   "window": "fixed",
-  "amount": null,
+  "amount": {
+    "currency": "EUR",
+    "max": 500000,
+    "note": "total amount available for the second call"
+  },
   "co_finance_required": null,
   "reporting": null,
   "effort": { "steps": ["Project submission"], "due": ["2027-01-27"] },
@@ -50,6 +54,12 @@
     }
   ],
   "evidence": {
+    "applicant_types": {
+      "source_url": "https://www.bluehendesoesterreich.at/WIN-landwirtschaft",
+      "quote": "Eingeladen sind Bäuerinnen, Bauern, landwirtschaftliche Initiativen und alle, die etwas für Naturschutz in der Landwirtschaft bewegen wollen.",
+      "checked_at": "2026-11-24",
+      "method": "page"
+    },
     "geography": {
       "source_url": "https://www.bluehendesoesterreich.at/WIN-landwirtschaft",
       "quote": "wurden im Mai 2026 15 Projekte aus ganz Österreich mit insgesamt 500.000 Euro ausgezeichnet",
@@ -68,9 +78,9 @@
       "checked_at": "2026-11-24",
       "method": "page"
     },
-    "applicant_types": {
+    "amount": {
       "source_url": "https://www.bluehendesoesterreich.at/WIN-landwirtschaft",
-      "quote": "Eingeladen sind Bäuerinnen, Bauern, landwirtschaftliche Initiativen und alle, die etwas für Naturschutz in der Landwirtschaft bewegen wollen.",
+      "quote": "Erneut stehen 500.000 Euro für Projekte zu Renaturierung und Naturschutz in der Landwirtschaft zur Verfügung.",
       "checked_at": "2026-11-24",
       "method": "page"
     },
