@@ -17,7 +17,7 @@ Restoration Scope backs the people doing the work on the ground; this site gets 
 - **Triage criteria.** Use `docs/triage-criteria.md` for the written accept/hold/reject checklist and worked examples that turn these rules into scanner decisions.
 - **Show UI changes.** After any change a visitor can see, send Bernat a screenshot of it from the dev server before asking to ship; don't wait to be asked.
 - **Improvements log.** A change a visitor can see adds one line to `docs/improvements.md` in its PR: `- YYYY-MM-DD · what a visitor sees now · a URL that shows it · #PR`. The naturefunding.org LinkedIn Page drafts its update posts from it.
-- **Second reader.** A "Before you apply" reading lands only through `scripts/requirements/review.ts` (brief, a reviewer from another model family, apply); `bun run validate` enforces it. Prove a batch with the `verify-naturefunding` skill.
+- **Second reader.** A "Before you apply" reading lands only through `scripts/requirements/review.ts` (brief, `run` with a model other than the reading's, apply); `bun run validate` enforces it. Prove a batch with the `verify-naturefunding` skill.
 - Run `bun run gate` before committing; there is no CI on PRs.
 
 Astro docs: https://docs.astro.build

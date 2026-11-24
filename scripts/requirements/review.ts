@@ -22,6 +22,7 @@ import { comparable } from '../../src/data/text'
 import { formatJson } from '../refresh/json'
 import { lint, lintInput } from './lint'
 import { serialise } from './write'
+import { runReviewer } from './reviewer-run'
 
 /** Readings from this day on need a second reader before they land. */
 export const REVIEW_FROM = '2026-11-24'
@@ -42,7 +43,7 @@ export const ITEM_FIELDS = [...LIST_FIELDS, ...ONE_FIELDS] as const
 type ItemField = (typeof ITEM_FIELDS)[number]
 
 /** One reviewer verdict; the label set (tests/fixtures/review-labels/) is these lines plus `batch`. */
-export const verdict = z.object({
+export const verdictFields = z.object({
   batch: z.string().optional(),
   id: z.string(),
   field: z.enum(['source', ...ITEM_FIELDS]),
@@ -60,7 +61,12 @@ export const verdict = z.object({
     .object({ text: z.string().optional(), kind: eligibilityKind.optional(), value: z.unknown().optional(), due: z.iso.date().nullable().optional(), quote: z.string().optional(), source_url: z.url().optional() })
     .optional(),
 })
-export type Verdict = z.infer<typeof verdict>
+/** A reviewer writing null for an absent field (gpt-6.2-sol medium, 2026-11-24) means absent. */
+export const verdict = z.preprocess(
+  (v) => (v && typeof v === 'object' ? Object.fromEntries(Object.entries(v).filter(([k, x]) => !(x === null && (k === 'quotes' || k === 'new')))) : v),
+  verdictFields,
+)
+export type Verdict = z.infer<typeof verdictFields>
 
 /** What makes a verdict usable; the label set from before this command predates these rules. */
 export function verdictProblem(v: Verdict): string | null {
@@ -162,11 +168,11 @@ export function canaryFor(p: P, seed: number): Canary | null {
   return null
 }
 
-export function brief(programmes: P[], opts: { stamp: string; dir: string; standards: string; worktree: string }) {
+export function brief(programmes: P[], opts: { stamp: string; dir: string; standards: string; worktree: string; everyProgramme?: boolean }) {
   const canaries: Canary[] = []
-  // About one programme in three carries a canary, at least one per brief.
+  // About one programme in three carries a canary, at least one per brief; a reviewer eval plants one in each.
   programmes.forEach((p, i) => {
-    if (i % 3 !== 0 && canaries.length) return
+    if (!opts.everyProgramme && i % 3 !== 0 && canaries.length) return
     const c = canaryFor(p, i + opts.stamp.length)
     if (c) canaries.push(c)
   })
@@ -175,14 +181,14 @@ export function brief(programmes: P[], opts: { stamp: string; dir: string; stand
   const out: string[] = [
     `# Review ${opts.stamp}`,
     '',
-    `You are the second reader for naturefunding.org. A model extracted the "Before you apply" items below from funders' pages. Check each against the documents it cites, as an applicant would read them. Edit no file except \`${verdicts}\`. Read only the cited documents and the files named here, not the review scripts. No subagents.`,
+    `You are the second reader for naturefunding.org. A model extracted the "Before you apply" items below from funders' pages. Check each against the documents it cites, as an applicant would read them. Edit no file except \`${verdicts}\`. Read only the cited documents and the files named here: not the review scripts, not \`tests/fixtures/review-labels/\` and not git history, which hold earlier verdicts. No subagents.`,
     '',
-    `Worktree: ${opts.worktree}. Field rules: data/README.md (eligibility to after_award). Read each cited document (WebFetch; PDFs and linked guidelines too). If a page refuses you, \`bun scripts/requirements/browser-reads.ts text '<url>'\` prints our stored copy; a quote found only there is fine.`,
+    `Worktree: ${opts.worktree}. Field rules: data/README.md (eligibility to after_award). Read each cited document (your web tool or curl; PDFs and linked guidelines too). If a page refuses you, \`bun scripts/requirements/browser-reads.ts text '<url>'\` prints our stored copy; a quote found only there is fine.`,
     '',
     'Write one JSON object per line to the verdicts file, one for every numbered item and every source (S0, S1…), plus one per fact the extraction missed:',
     '',
     '```',
-    '{"id":"…","field":"source|eligibility|documents|effort|co_finance_required|co_finance|consortium_required|after_award","index":0,"text":"the item as written","verdict":"sound|wrong|missed","category":"ok|…","action":"keep|drop|reword|replace|add","reason":"≤25 words","quotes":[0],"new":{"text":"…","kind":"legal","value":…,"quote":"verbatim","source_url":"https://…"}}',
+    '{"id":"programme id from its ## heading, alone","field":"source|eligibility|documents|effort|co_finance_required|co_finance|consortium_required|after_award","index":0,"text":"the item as written","verdict":"sound|wrong|missed","category":"ok|…","action":"keep|drop|reword|replace|add","reason":"≤25 words","quotes":[0],"new":{"text":"…","kind":"legal","value":…,"quote":"verbatim","source_url":"https://…"}}',
     '```',
     '',
     '- sound → keep, category ok. wrong → drop, reword (new.text, new.kind) or replace (new text or value, quote and source_url). missed → add, index null, with new text or value, quote and source_url.',
@@ -401,9 +407,15 @@ function setOne(p: P, f: (typeof ONE_FIELDS)[number], value: unknown, e?: Ev) {
   if (f === 'co_finance_required' && value === false) clearDetails()
 }
 
-/** A model's family; the reviewer must come from another family than every model that read the programme. */
-const FAMILIES: [string, RegExp][] = [['openai', /gpt|openai|codex/], ['anthropic', /claude|opus|sonnet|haiku|fable/], ['google', /gemini/], ['xai', /grok/]]
-export const family = (model: string) => FAMILIES.find(([, r]) => r.test(model.toLowerCase()))?.[0] ?? model.toLowerCase()
+/**
+ * A model without its route and effort: `cursor:gpt-5.6-luna-high` is `gpt-5.6-luna`. The reviewer must be another model than
+ * every one that read the programme. Not another family: on the 2026-11-24 eval (docs/requirements-pipeline.md) gpt-6.2-sol
+ * caught 15–16 of the 22 errors an Opus judge confirmed in gpt-5.6 readings (2 runs); medium effort 14–15, Claude and
+ * Gemini reviewers 0 to 7.
+ */
+export const modelBase = (model: string) => model.toLowerCase().replace(/^[\w-]+:/, '').replace(/-(low|medium|high|xhigh|max)$/, '')
+/** The default second reader, run by `review.ts run` through codex on the ChatGPT plan. */
+export const REVIEWER = 'gpt-6.2-sol-high'
 
 export type Review = { on: string; standards: string; reviewer: string; hash: string; verdicts: { sound: number; wrong: number; missed: number }; canaries: { planted: number; caught: number } }
 
@@ -434,8 +446,8 @@ export function readManifests(dir = join('data', 'requirements')) {
 
 const programmeFile = (id: string) => join('data', 'programmes', `${id}.json`)
 /** The canary key lives outside the worktree the reviewer reads. */
-const keyFile = (dir: string) => join(homedir(), '.cache', 'naturefunding-review', basename(dir), 'key.json')
-const readJson = (f: string) => JSON.parse(readFileSync(f, 'utf8'))
+export const keyFile = (dir: string) => join(homedir(), '.cache', 'naturefunding-review', basename(dir), 'key.json')
+export const readJson = (f: string) => JSON.parse(readFileSync(f, 'utf8'))
 
 function runBrief(ids: string[]) {
   const stamp = new Date().toISOString().replace(/[:.]/g, '-').slice(0, 19)
@@ -450,10 +462,11 @@ function runBrief(ids: string[]) {
   writeFileSync(keyFile(dir), `${JSON.stringify(b.key, null, 2)}\n`)
   const skipped = ids.length - ps.length
   console.log(`${join(dir, 'brief.md')}: ${ps.length} programmes, ${b.key.canaries.length} canaries${skipped ? `, ${skipped} without items skipped` : ''}`)
-  console.log(`Hand the brief to a reviewer from another model family; then: bun scripts/requirements/review.ts apply ${dir} --reviewer <model>`)
+  console.log(`Then: bun scripts/requirements/review.ts run ${dir} (${REVIEWER} reads and applies), or another model's verdicts with: apply ${dir} --reviewer <model>`)
 }
 
-function runApply(dir: string, reviewer: string) {
+/** Applies a review dir's verdicts; returns why nothing was applied, or null once applied. */
+export function runApply(dir: string, reviewer: string): string | null {
   const key: Key = readJson(keyFile(dir))
   const lines = readFileSync(join(dir, 'verdicts.jsonl'), 'utf8').split('\n').filter((l) => l.trim())
   const verdicts: Verdict[] = []
@@ -468,16 +481,14 @@ function runApply(dir: string, reviewer: string) {
   const ids = Object.keys(key.hashes)
   const before = new Map(ids.map((id) => [id, readFileSync(programmeFile(id), 'utf8')]))
   const ps = ids.map((id) => JSON.parse(before.get(id)!))
-  const sameFamily = ids.flatMap((id) => {
+  const sameModel = ids.flatMap((id) => {
     const f = join('data', 'requirements', `${id}.json`)
     const models: string[] = existsSync(f) ? (readJson(f).models ?? []) : []
-    return models.some((m) => family(m) === family(reviewer)) ? [`${id}: the reviewer ${reviewer} is the same model family as its reading (${models.join(', ')}); brief a reviewer from another family`] : []
+    return models.some((m) => modelBase(m) === modelBase(reviewer)) ? [`${id}: the reviewer ${reviewer} is a model that wrote its reading (${models.join(', ')}); brief another model`] : []
   })
-  const gaps = [...bad, ...sameFamily, ...reviewGaps(ps, key, verdicts)]
+  const gaps = [...bad, ...sameModel, ...reviewGaps(ps, key, verdicts)]
   if (gaps.length) {
-    console.error(gaps.join('\n'))
-    console.error(`\n${gaps.length} problems: nothing applied`)
-    process.exit(1)
+    return `${gaps.join('\n')}\n\n${gaps.length} problems: nothing applied`
   }
   const today = new Date().toISOString().slice(0, 10)
   const isCanary = (v: Verdict) => key.canaries.some((c) => c.id === v.id && c.field === v.field && c.index === v.index)
@@ -490,8 +501,7 @@ function runApply(dir: string, reviewer: string) {
   try {
     nexts = ps.map((p) => applyVerdicts(p, real, today))
   } catch (e) {
-    console.error(`${(e as Error).message}\nnothing applied`)
-    process.exit(1)
+    return `${(e as Error).message}\nnothing applied`
   }
   for (const [i, p] of ps.entries()) {
     const next = nexts[i]!
@@ -510,17 +520,23 @@ function runApply(dir: string, reviewer: string) {
     for (const [id, text] of before) writeFileSync(programmeFile(id), text)
     writeFileSync(join('data', 'sources.json'), sourcesText)
     for (const [f, text] of manifestsBefore) writeFileSync(f, text)
-    console.error(`${why}: every file restored, nothing applied`)
-    process.exit(1)
+    return `${failed}\n${why}: every file restored, nothing applied`
   }
-  const check = (cmd: string[]) => Bun.spawnSync(cmd, { stdout: 'inherit', stderr: 'inherit' }).exitCode === 0
+  let failed = ''
+  const check = (cmd: string[]) => {
+    const r = Bun.spawnSync(cmd, { stdout: 'pipe', stderr: 'pipe' })
+    const out = `${r.stdout.toString()}${r.stderr.toString()}`
+    process.stdout.write(out)
+    if (r.exitCode !== 0) failed = out.trim()
+    return r.exitCode === 0
+  }
   // Validate without the review gate: the stamps come after the data passes.
-  if (!check(['bun', 'scripts/data/validate.ts', '--no-review'])) restore('the data fails validation')
+  if (!check(['bun', 'scripts/data/validate.ts', '--no-review'])) return restore('the data fails validation')
   // Only the quotes this review adds: older quotes on these programmes are the refresh job's.
   const quoted = real.filter((v) => v.new?.quote)
   const quotesFile = join(dir, 'new-quotes.txt')
   writeFileSync(quotesFile, quoted.map((v) => [v.id, v.new!.source_url!, v.new!.quote!.replace(/\s+/g, ' ')].join('\t')).join('\n'))
-  if (quoted.length && !check(['bun', 'scripts/data/verify-quotes.ts', '--fresh', '--quotes', quotesFile, ...new Set(quoted.map((v) => v.id))])) restore('a new quote is not on its page')
+  if (quoted.length && !check(['bun', 'scripts/data/verify-quotes.ts', '--fresh', '--quotes', quotesFile, ...new Set(quoted.map((v) => v.id))])) return restore('a new quote is not on its page')
   for (const id of ids) {
     const f = join('data', 'requirements', `${id}.json`)
     if (!existsSync(f)) continue
@@ -543,6 +559,7 @@ function runApply(dir: string, reviewer: string) {
   const wrong = real.filter((v) => v.verdict === 'wrong' && v.field !== 'source').length
   const items = real.filter((v) => v.verdict !== 'missed' && v.field !== 'source').length
   console.log(`${ids.length} programmes reviewed, ${touched.length} changed; ${wrong} of ${items} items wrong, ${real.filter((v) => v.verdict === 'missed').length} missed; ${key.canaries.length} canaries caught`)
+  return null
 }
 
 if (import.meta.main) {
@@ -552,15 +569,37 @@ if (import.meta.main) {
     return i === -1 ? undefined : rest.splice(i, 2)[1]
   }
   if (cmd === 'brief' && rest.length) runBrief(rest)
+  else if (cmd === 'run' && rest.length) {
+    const model = flag('--reviewer') ?? REVIEWER
+    const dir = rest[0]!
+    const run = await runReviewer(dir, model)
+    console.log(`${model}: ${(run.ms / 60_000).toFixed(1)} min, exit ${run.exit}${run.error ? `\n${run.error}` : ''}`)
+    let refused = runApply(dir, model)
+    // Up to two repairs: the reviewer fixes only the lines apply names, so a long review isn't lost to a limit or a quote.
+    for (let round = 1; refused && round <= 2; round++) {
+      console.error(`${refused}\n\nrepair ${round}: asking ${model} to fix the named lines`)
+      writeFileSync(join(dir, 'fix.md'), `You reviewed the brief at ${join(dir, 'brief.md')} and wrote ${join(dir, 'verdicts.jsonl')}. Applying it was refused:\n\n${refused.slice(0, 6000)}\n\nEdit only the verdict lines this names so they meet the brief's limits and rules (its Limits section); keep every other line as it is. A quote "not on page" must be one unbroken run of the text our checker sees, which \`bun scripts/requirements/browser-reads.ts text '<url>'\` prints (tables in PDFs break sentences apart): copy a run from there, or drop the change. Don't review again. No subagents.\n`)
+      await runReviewer(dir, model, 'fix.md')
+      refused = runApply(dir, model)
+    }
+    if (refused) {
+      console.error(refused)
+      process.exit(1)
+    }
+  }
   else if (cmd === 'apply' && rest.length) {
     const reviewer = flag('--reviewer')
     if (!reviewer) {
       console.error('apply needs --reviewer <model>: the model that wrote the verdicts')
       process.exit(2)
     }
-    runApply(rest[0]!, reviewer)
+    const refused = runApply(rest[0]!, reviewer)
+    if (refused) {
+      console.error(refused)
+      process.exit(1)
+    }
   } else {
-    console.error('usage: review.ts brief <ids…> | apply <stamp dir> --reviewer <model>')
+    console.error('usage: review.ts brief <ids…> | run <stamp dir> [--reviewer <model>] | apply <stamp dir> --reviewer <model>')
     process.exit(2)
   }
 }

@@ -2,7 +2,7 @@ import { describe, expect, test } from 'bun:test'
 import { readdirSync, readFileSync } from 'node:fs'
 import { join } from 'node:path'
 import { lint, type LintInput } from './lint'
-import { REVIEW_FROM, applyVerdicts, brief, family, itemsHash, itemsOf, namesItem, reviewGaps, reviewProblems, verdict, type Verdict } from './review'
+import { REVIEW_FROM, applyVerdicts, brief, itemsHash, modelBase, itemsOf, namesItem, reviewGaps, reviewProblems, verdict, type Verdict } from './review'
 
 const ev = (url: string, quote: string) => ({ source_url: url, quote, checked_at: '2026-11-24', method: 'page' })
 const CALL = 'https://funder.example.org/call'
@@ -41,6 +41,12 @@ const sound = (p: { id: string; evidence: Record<string, unknown> }): Verdict[] 
 const set = (vs: Verdict[], field: string, index: number, patch: Partial<Verdict>) => vs.map((v) => (v.field === field && v.index === index ? { ...v, ...patch } : v))
 
 describe('review', () => {
+  test('a verdict with null for an absent field parses as absent', () => {
+    const v = verdict.parse({ id: 'x', field: 'eligibility', index: 0, text: 't', verdict: 'sound', category: 'ok', action: 'keep', reason: 'r', quotes: null, new: null })
+    expect(v.quotes).toBeUndefined()
+    expect(v.new).toBeUndefined()
+  })
+
   test('every item and every cited document is numbered for a verdict', () => {
     const items = itemsOf(programme())
     expect(items.filter((x) => x.field === 'source').map((x) => x.text)).toEqual([CALL, OTHER])
@@ -151,8 +157,8 @@ describe('review', () => {
     expect(reviewGaps([duty], k4, fresh).join()).toContain('cites a dropped source')
     // A list item takes new text, never a value.
     expect(reviewGaps([p], key, [...set(sound(p), 'eligibility', 0, { verdict: 'wrong', category: 'other', action: 'replace', new: { value: true, quote: 'Applicants must be based in Canada.', source_url: CALL } }), canary]).join()).toContain('new.value is for')
-    // The reviewer's family is told apart from the reading's models.
-    expect([family('cursor:gpt-5.6-luna-high'), family('claude-opus-5-5'), family('gemini-4-neon')]).toEqual(['openai', 'anthropic', 'google'])
+    // The reviewer is told apart from the reading's models by model, not route or effort.
+    expect([modelBase('cursor:gpt-5.6-luna-high'), modelBase('gpt-6.2-sol-high'), modelBase('claude-opus-5-5')]).toEqual(['gpt-5.6-luna', 'gpt-6.2-sol', 'claude-opus-5-5'])
     // One-value fields: no rewording, one change each, typed values.
     expect(reviewGaps([p], key, [...set(sound(p), 'co_finance', 0, { verdict: 'wrong', category: 'cofinance_wrong', action: 'reword', new: { text: '20% match' } }), canary]).join()).toContain('not reworded')
     const add = (value: unknown): Verdict => ({ id: 'p', field: 'after_award', index: null, text: 'duty', verdict: 'missed', category: 'missed_fact', action: 'add', reason: 'stated', new: { value, quote: 'Grantees report yearly.', source_url: CALL } })
