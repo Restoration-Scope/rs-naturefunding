@@ -35,6 +35,7 @@ const { programmes, issues } = checkData(dir, null)
 for (const issue of issues) console.error(`skipped, invalid: ${issue}`)
 
 type Check = { programme: string; url: string; quote: string; method: 'page' | 'api' | 'human' }
+type Result = Check & { reason: string }
 const checks: Check[] = programmes
   .filter((p) => only.size === 0 || only.has(p.id))
   .flatMap((p) => evidenceOf(p).map((e) => ({ programme: p.id, url: e.source_url, quote: e.quote, method: e.method })))
@@ -67,7 +68,7 @@ const browserText = async (url: string) => {
   }
   return copies.get(url)!
 }
-const failures = (
+const results = (
   await Promise.all(
     fetchedChecks.map(async (c) => {
       const page = pages.get(c.url)!
@@ -75,16 +76,21 @@ const failures = (
         const copy = await browserText(c.url)
         if (copy !== null && quoteOnPage(copy, c.quote)) return []
       }
-      if (page instanceof Error) return [{ ...c, reason: `fetch failed: ${page.message}` }]
-      return quoteOnPage(page, c.quote) ? [] : [{ ...c, reason: 'quote not on page' }]
+      if (page instanceof Error) return [{ kind: 'inconclusive' as const, result: { ...c, reason: `unreachable: ${page.message}` } }]
+      return quoteOnPage(page, c.quote) ? [] : [{ kind: 'failure' as const, result: { ...c, reason: 'quote not on page' } }]
     }),
   )
 ).flat()
 
+const failures: Result[] = results.filter((r) => r.kind === 'failure').map((r) => r.result)
+const inconclusive: Result[] = results.filter((r) => r.kind === 'inconclusive').map((r) => r.result)
 for (const f of failures) console.error(`FAIL ${f.programme} ${f.url}\n  ${f.reason}: "${f.quote}"`)
-const passed = fetchedChecks.length - failures.length
+for (const f of inconclusive) console.error(`INCONCLUSIVE ${f.programme} ${f.url}\n  ${f.reason}: "${f.quote}"`)
+const passed = fetchedChecks.length - failures.length - inconclusive.length
 console.log(
   `${passed}/${fetchedChecks.length} quotes verified across ${urls.length} pages and ${new Set(checks.map((c) => c.programme)).size} programmes${
+    inconclusive.length ? `; ${inconclusive.length} inconclusive` : ''
+  }${
     skippedHuman ? `; ${skippedHuman} human-read quotes skipped` : ''
   }`,
 )
@@ -96,6 +102,6 @@ for (const k of unmatched) console.error(`FAIL no fact cites ${k.split('\t').sli
 mkdirSync(join(process.cwd(), '.cache'), { recursive: true })
 writeFileSync(
   join(process.cwd(), '.cache', 'verify-report.json'),
-  JSON.stringify({ ran_at: new Date().toISOString(), checks: checks.length, fetched: fetchedChecks.length, skippedHuman, passed, failures }, null, 2),
+  JSON.stringify({ ran_at: new Date().toISOString(), checks: checks.length, fetched: fetchedChecks.length, skippedHuman, passed, failures, inconclusive }, null, 2),
 )
-process.exit(failures.length === 0 && issues.length === 0 && unmatched.length === 0 ? 0 : 1)
+process.exit(failures.length === 0 && inconclusive.length === 0 && issues.length === 0 && unmatched.length === 0 ? 0 : 1)

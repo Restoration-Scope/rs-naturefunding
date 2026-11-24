@@ -21,6 +21,7 @@ const USER_AGENT =
 const DROPPED = 'script, style, noscript, template, svg, iframe, head'
 const BLOCKS =
   'address, article, aside, blockquote, br, dd, details, div, dl, dt, figcaption, figure, footer, form, h1, h2, h3, h4, h5, h6, header, hr, li, main, nav, ol, p, pre, section, summary, table, tbody, td, th, thead, tr, ul'
+const ELEMENT_BOUNDARY = '\uE000'
 
 const NAMED: Record<string, string> = {
   amp: '&', lt: '<', gt: '>', quot: '"', apos: "'", nbsp: ' ', ndash: '-', mdash: '-', hellip: '...',
@@ -46,10 +47,32 @@ export function decodeEntities(s: string): string {
 
 export { comparable, normalise, quoteOnPage } from '../../src/data/text'
 
+const closesToken = /[\p{L}\p{N}%)]/u
+const opensToken = /[\p{L}\p{N}(]/u
+const needsSeparator = (before: string | undefined, after: string | undefined) =>
+  !!before && !!after && !/\s/.test(before) && !/\s/.test(after) && closesToken.test(before) && opensToken.test(after)
+
+function separateElementBoundaries(text: string): string {
+  let out = ''
+  for (let i = 0; i < text.length; i++) {
+    const char = text[i]!
+    if (char !== ELEMENT_BOUNDARY) {
+      out += char
+      continue
+    }
+    while (text[i + 1] === ELEMENT_BOUNDARY) i++
+    const before = out[out.length - 1]
+    const after = text.slice(i + 1).match(/[^\uE000]/)?.[0]
+    if (needsSeparator(before, after)) out += ' '
+  }
+  return out
+}
+
 export async function htmlToText(html: string, selector: string | null = null): Promise<string> {
   const cleaned = await new HTMLRewriter()
     .on(DROPPED, { element: (el) => { el.remove() } })
     .on(BLOCKS, { element: (el) => { el.before('\n'); el.after('\n') } })
+    .on('*', { element: (el) => { el.before(ELEMENT_BOUNDARY); el.after(ELEMENT_BOUNDARY) } })
     .transform(new Response(html))
     .text()
   let text = ''
@@ -61,7 +84,7 @@ export async function htmlToText(html: string, selector: string | null = null): 
     : new HTMLRewriter().onDocument({ text: (t) => { text += t.text } })
   await rewriter.transform(new Response(cleaned)).text()
   if (!matched && selector) throw new Error(`selector ${selector} matched nothing`)
-  return normalise(decodeEntities(text))
+  return normalise(decodeEntities(separateElementBoundaries(text)))
 }
 
 export type Page = { url: string; status: number; contentType: string; text: string; fetchedAt: string }
@@ -96,6 +119,7 @@ async function fetchRaw(url: string, fresh: boolean): Promise<{ meta: Cached; by
 export async function fetchPage(url: string, opts: { selector?: string | null; fresh?: boolean } = {}): Promise<Page> {
   const { meta, bytes } = await fetchRaw(url, opts.fresh ?? false)
   if (meta.status >= 400) throw new Error(`HTTP ${meta.status}`)
+  if (meta.status === 202 && bytes.length === 0) throw new Error('HTTP 202 empty response')
   // PDFs with OCR on image pages, and office files, read exactly as the gather and the refresh read them.
   const office = meta.contentType === 'application/pdf' ? null : officeText(new Uint8Array(bytes))
   const text = meta.contentType === 'application/pdf'
@@ -103,6 +127,7 @@ export async function fetchPage(url: string, opts: { selector?: string | null; f
     : office
       ? normalise(office.text)
       : await htmlToText(bytes.toString('utf8'), opts.selector ?? null)
+  if (!text && meta.status === 202) throw new Error('HTTP 202 empty response')
   return { url, status: meta.status, contentType: meta.contentType, text, fetchedAt: meta.fetchedAt }
 }
 
