@@ -1,26 +1,16 @@
 {
   "id": "usfs-landscape-scale-restoration",
   "name": "Landscape Scale Restoration Grant Program for Non-Federal Lands",
-  "funder": {
-    "name": "USDA Forest Service",
-    "url": "https://www.fs.usda.gov/"
+  "funder": { "name": "USDA Forest Service", "url": "https://www.fs.usda.gov/" },
+  "administered_by": {
+    "name": "U.S. Department of Agriculture Forest Service",
+    "url": "https://www.fs.usda.gov"
   },
-  "administered_by": null,
   "parent": null,
   "url": "https://www.grants.gov/search-results-detail/364144",
   "summary": "US federal matching grants for collaborative forest restoration on rural private, state and local government land that reduces wildfire risk, improves fish and wildlife habitat or water, or tackles invasive plants, pests and disease. Applicants other than tribes need their State Forester's sponsorship.",
-  "approaches": [
-    "reforestation",
-    "sustainable_land_use",
-    "species_conservation",
-    "freshwater"
-  ],
-  "applicant_types": [
-    "government",
-    "indigenous_organization",
-    "ngo",
-    "research_institution"
-  ],
+  "approaches": ["reforestation", "sustainable_land_use", "species_conservation", "freshwater"],
+  "applicant_types": ["government", "indigenous_organization", "ngo", "research_institution"],
   "geography": null,
   "access": "direct",
   "window": "fixed",
@@ -38,6 +28,16 @@
   },
   "co_finance_required": true,
   "reporting": "Recipients file financial and performance reports at least once a year, and report accomplishments, with maps of where the work happened, in the LaSR database by 28 October each year.",
+  "effort": {
+    "steps": [
+      "Draft narrative and budget to the State Forester for sponsorship",
+      "Application in Grants.gov",
+      "Eligibility and responsiveness screening",
+      "Scoring and ranking by a regional review team",
+      "Risk review, with a financial capability questionnaire"
+    ],
+    "due": ["2026-12-17", "2027-01-26", null, null, null]
+  },
   "eligibility": [
     {
       "rule": "Sponsored by the State Forester of a State that benefits, unless a federally recognised Tribe",
@@ -59,39 +59,16 @@
       "rule": "No construction, land acquisition or easements, or payments made directly to private landowners",
       "kind": "project"
     },
-    {
-      "rule": "Registered in SAM.gov before applying",
-      "kind": "legal"
-    }
+    { "rule": "Registered in SAM.gov before applying", "kind": "legal" }
   ],
+  "co_finance": { "min_share": 50 },
+  "after_award": { "reports": "yearly" },
   "documents": [
     "Project narrative of up to 5 pages",
     "Detailed budget with Federal funding and match in each category",
     "State Forester sponsorship letter or email, unless a federally recognised Tribe",
     "FS 1500-34 equipment justification, if buying equipment with Federal funds"
   ],
-  "effort": {
-    "steps": [
-      "Draft narrative and budget to the State Forester for sponsorship",
-      "Application in Grants.gov",
-      "Eligibility and responsiveness screening",
-      "Scoring and ranking by a regional review team",
-      "Risk review, with a financial capability questionnaire"
-    ],
-    "due": [
-      "2026-12-17",
-      "2027-01-26",
-      null,
-      null,
-      null
-    ]
-  },
-  "co_finance": {
-    "min_share": 50
-  },
-  "after_award": {
-    "reports": "yearly"
-  },
   "calls": [
     {
       "id": "fy2026",
@@ -109,13 +86,13 @@
         "status": {
           "source_url": "https://www.grants.gov/grantsws/rest/opportunity/att/download/355360",
           "quote": "In Fiscal Year (FY) 2026 the Forest Service is offering this one LSR non-Federal lands Notice of Funding Opportunity (NOFO) which replaces the three regional (Southern/IITF, Western, and Northeast-Midwestern) NOFOs.",
-          "checked_at": "2026-11-02",
+          "checked_at": "2026-11-24",
           "method": "page"
         },
         "deadline": {
           "source_url": "https://www.grants.gov/grantsws/rest/opportunity/att/download/355360",
           "quote": "Application Due Date: Submit applications in Grants.gov by 11:59 p.m. Eastern, Tuesday, January 26, 2027.",
-          "checked_at": "2026-11-02",
+          "checked_at": "2026-11-24",
           "method": "page"
         }
       },
@@ -123,83 +100,135 @@
     }
   ],
   "evidence": {
-    "pool": {
+    "administered_by": {
       "source_url": "https://www.grants.gov/grantsws/rest/opportunity/att/download/355360",
-      "quote": "Up to $11,340,000 in funding will be available for the LSR non-Federal lands funding opportunity.",
-      "checked_at": "2026-11-06",
+      "quote": "The Forest Service is a Federal agency under the U.S. Department of Agriculture (USDA) that manages 193 million acres of National Forest System land.",
+      "checked_at": "2026-11-24",
       "method": "page"
     },
     "applicant_types": {
       "source_url": "https://www.grants.gov/grantsws/rest/opportunity/att/download/355360",
       "quote": "Eligible Applicants: o State forestry agency or appropriate/equivalent State agency o Unit of local government o Indian Tribe* o Alaska Native Corporation o Native Hawaiian Organization o Non-profit organization o Institution of higher learning",
-      "checked_at": "2026-11-02",
+      "checked_at": "2026-11-24",
       "method": "page"
     },
     "access": {
       "source_url": "https://www.grants.gov/grantsws/rest/opportunity/att/download/355360",
       "quote": "All applications except those submitted by federally recognized Tribes require the relevant State Forester(s) to sponsor the project.",
-      "checked_at": "2026-11-02",
+      "checked_at": "2026-11-24",
       "method": "page"
     },
     "window": {
       "source_url": "https://www.grants.gov/grantsws/rest/opportunity/att/download/355360",
       "quote": "Announcement Type: Annual Grant Announcement",
-      "checked_at": "2026-11-02",
+      "checked_at": "2026-11-24",
       "method": "page"
     },
     "amount": {
       "source_url": "https://www.grants.gov/grantsws/rest/opportunity/att/download/355360",
       "quote": "Maximum: $300,000 for single-State projects; $600,000 for multistate projects.",
-      "checked_at": "2026-11-02",
+      "checked_at": "2026-11-24",
+      "method": "page"
+    },
+    "pool": {
+      "source_url": "https://www.grants.gov/grantsws/rest/opportunity/att/download/355360",
+      "quote": "Up to $11,340,000 in funding will be available for the LSR non-Federal lands funding opportunity.",
+      "checked_at": "2026-11-24",
       "method": "page"
     },
     "co_finance_required": {
       "source_url": "https://www.grants.gov/grantsws/rest/opportunity/att/download/355360",
       "quote": "Grant recipients must match (cost share) the Federal grant funds 1:1 with non-Federal sources.",
-      "checked_at": "2026-11-02",
+      "checked_at": "2026-11-24",
       "method": "page"
     },
     "reporting": {
       "source_url": "https://www.grants.gov/grantsws/rest/opportunity/att/download/355360",
       "quote": "Accomplishment reporting in the Landscape Scale Restoration database (LaSR) is due no later than October 28 each year. This includes spatial data outlining discrete area(s) where on-the-ground implementation activities are planned/occurred.",
-      "checked_at": "2026-11-02",
+      "checked_at": "2026-11-24",
       "method": "page"
     },
+    "effort": [
+      {
+        "source_url": "https://www.grants.gov/grantsws/rest/opportunity/att/download/355360",
+        "quote": "December 17, 2026: Submit the draft application narrative and budget to the State Forester(s) for any State(s) that would benefit directly from the project outcomes.",
+        "checked_at": "2026-11-24",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.grants.gov/grantsws/rest/opportunity/att/download/355360",
+        "quote": "Submit applications in Grants.gov by 11:59 p.m. Eastern, Tuesday, January 26, 2027.",
+        "checked_at": "2026-11-24",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.grants.gov/grantsws/rest/opportunity/att/download/355360",
+        "quote": "Applications will undergo a preliminary review to ensure eligibility and verify requirements.",
+        "checked_at": "2026-11-24",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.grants.gov/grantsws/rest/opportunity/att/download/355360",
+        "quote": "The interagency review team will review applications using the scoring criteria in this document and develop a ranked project list.",
+        "checked_at": "2026-11-24",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.grants.gov/grantsws/rest/opportunity/att/download/355360",
+        "quote": "Before any grant is awarded, the applicant will submit a Financial Capability Questionnaire/Checklist FS-1500-22A/B.",
+        "checked_at": "2026-11-24",
+        "method": "page"
+      }
+    ],
     "eligibility": [
       {
         "source_url": "https://www.grants.gov/grantsws/rest/opportunity/att/download/355360",
         "quote": "All applications except those submitted by federally recognized Tribes require the relevant State Forester(s) to sponsor the project.",
-        "checked_at": "2026-11-20",
+        "checked_at": "2026-11-24",
         "method": "page"
       },
       {
         "source_url": "https://www.grants.gov/grantsws/rest/opportunity/att/download/355360",
         "quote": "Projects that do not meet eligible land definition, including anywhere the on-the-ground activities take place on urban land (Census places with greater than 50,000 people) or on Federal land.",
-        "checked_at": "2026-11-20",
+        "checked_at": "2026-11-24",
         "method": "page"
       },
       {
         "source_url": "https://www.grants.gov/grantsws/rest/opportunity/att/download/355360",
         "quote": "Project furthers specific priorities in a State Forest Action Plan or equivalent Restoration Strategy.",
-        "checked_at": "2026-11-20",
+        "checked_at": "2026-11-24",
         "method": "page"
       },
       {
         "source_url": "https://www.grants.gov/grantsws/rest/opportunity/att/download/355360",
         "quote": "Each LSR project must demonstrate measurable accomplishments for at least one of the on-the-ground quantitative measures listed below",
-        "checked_at": "2026-11-20",
+        "checked_at": "2026-11-24",
         "method": "page"
       },
       {
         "source_url": "https://www.grants.gov/grantsws/rest/opportunity/att/download/355360",
         "quote": "Construction or improvements of building (facilities) and land improvements including but not limited to buildings, roads, culverts, dams, ponds, and major earthwork projects. o Land acquisition projects, including conservation easements or the use of partner purchase of land as match. o Cost-share, reimbursement, and other types of payments provided directly to private landowners.",
-        "checked_at": "2026-11-20",
+        "checked_at": "2026-11-24",
         "method": "page"
       },
       {
         "source_url": "https://www.grants.gov/grantsws/rest/opportunity/att/download/355360",
         "quote": "Register in SAM.gov before applying.",
-        "checked_at": "2026-11-20",
+        "checked_at": "2026-11-24",
+        "method": "page"
+      }
+    ],
+    "co_finance": {
+      "source_url": "https://www.grants.gov/grantsws/rest/opportunity/att/download/355360",
+      "quote": "Grant recipients must match (cost share) the Federal grant funds 1:1 with non-Federal sources.",
+      "checked_at": "2026-11-24",
+      "method": "page"
+    },
+    "after_award": [
+      {
+        "source_url": "https://www.grants.gov/grantsws/rest/opportunity/att/download/355360",
+        "quote": "Interim financial reports (SF-425) and performance reports are required annually at a minimum for awarded projects.",
+        "checked_at": "2026-11-24",
         "method": "page"
       }
     ],
@@ -207,74 +236,28 @@
       {
         "source_url": "https://www.grants.gov/grantsws/rest/opportunity/att/download/355360",
         "quote": "Project Narrative (5-page limit).",
-        "checked_at": "2026-11-20",
+        "checked_at": "2026-11-24",
         "method": "page"
       },
       {
         "source_url": "https://www.grants.gov/grantsws/rest/opportunity/att/download/355360",
         "quote": "Detailed Budget Table or Spreadsheet in whole numbers, with Federal funding and match amounts in each relevant budget category.",
-        "checked_at": "2026-11-20",
+        "checked_at": "2026-11-24",
         "method": "page"
       },
       {
         "source_url": "https://www.grants.gov/grantsws/rest/opportunity/att/download/355360",
         "quote": "State Forester Sponsorship Letter(s): All applications, except those submitted by federally recognized Tribes, must include at least one State Forester sponsorship (letter or email from the State Forester) for a State(s) that will benefit from the outcomes of the project.",
-        "checked_at": "2026-11-20",
+        "checked_at": "2026-11-24",
         "method": "page"
       },
       {
         "source_url": "https://www.grants.gov/grantsws/rest/opportunity/att/download/355360",
         "quote": "For projects using Federal funds to purchase equipment: Fill out, sign, and submit FS 1500-34 Grant Equipment Justification and Certification Statement.",
-        "checked_at": "2026-11-20",
-        "method": "page"
-      }
-    ],
-    "effort": [
-      {
-        "source_url": "https://www.grants.gov/grantsws/rest/opportunity/att/download/355360",
-        "quote": "December 17, 2026: Submit the draft application narrative and budget to the State Forester(s) for any State(s) that would benefit directly from the project outcomes.",
-        "checked_at": "2026-11-20",
-        "method": "page"
-      },
-      {
-        "source_url": "https://www.grants.gov/grantsws/rest/opportunity/att/download/355360",
-        "quote": "Submit applications in Grants.gov by 11:59 p.m. Eastern, Tuesday, January 26, 2027.",
-        "checked_at": "2026-11-20",
-        "method": "page"
-      },
-      {
-        "source_url": "https://www.grants.gov/grantsws/rest/opportunity/att/download/355360",
-        "quote": "Applications will undergo a preliminary review to ensure eligibility and verify requirements.",
-        "checked_at": "2026-11-20",
-        "method": "page"
-      },
-      {
-        "source_url": "https://www.grants.gov/grantsws/rest/opportunity/att/download/355360",
-        "quote": "The interagency review team will review applications using the scoring criteria in this document and develop a ranked project list.",
-        "checked_at": "2026-11-20",
-        "method": "page"
-      },
-      {
-        "source_url": "https://www.grants.gov/grantsws/rest/opportunity/att/download/355360",
-        "quote": "Before any grant is awarded, the applicant will submit a Financial Capability Questionnaire/Checklist FS-1500-22A/B.",
-        "checked_at": "2026-11-20",
-        "method": "page"
-      }
-    ],
-    "co_finance": {
-      "source_url": "https://www.grants.gov/grantsws/rest/opportunity/att/download/355360",
-      "quote": "Grant recipients must match (cost share) the Federal grant funds 1:1 with non-Federal sources.",
-      "checked_at": "2026-11-20",
-      "method": "page"
-    },
-    "after_award": [
-      {
-        "source_url": "https://www.grants.gov/grantsws/rest/opportunity/att/download/355360",
-        "quote": "Interim financial reports (SF-425) and performance reports are required annually at a minimum for awarded projects.",
-        "checked_at": "2026-11-20",
+        "checked_at": "2026-11-24",
         "method": "page"
       }
     ]
   },
-  "checked_at": "2026-11-02"
+  "checked_at": "2026-11-24"
 }
