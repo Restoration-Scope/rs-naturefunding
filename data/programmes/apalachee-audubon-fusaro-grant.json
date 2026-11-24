@@ -21,12 +21,18 @@
   "amount": { "currency": "USD", "max": 500 },
   "co_finance_required": null,
   "reporting": "Grantees must complete a write‑up of their project for the chapter newsletter, supply social media content and give a summary or short presentation at a monthly meeting at the end.",
-  "effort": { "steps": ["Email application"], "due": ["2026-11-30"] },
+  "effort": {
+    "steps": ["Email application", "Application scored against the grant rubric"],
+    "due": ["2026-11-30", null]
+  },
   "eligibility": [
-    { "rule": "Project activities occur within the six listed Florida counties", "kind": "project" }
+    {
+      "rule": "Project involves bird-related research, habitat improvement, environmental education/outreach or community engagement",
+      "kind": "project"
+    }
   ],
+  "after_award": { "reports": "final" },
   "documents": [
-    "Project description with importance and outcome measures",
     "Budget and brief budget justification",
     "Curriculum vitae or resume",
     "One letter of recommendation"
@@ -114,16 +120,24 @@
       },
       {
         "source_url": "https://www.apalachee.org/s/2026-Ben-Fusaro-Conservation-Grant-Info-and-Rubric.pdf",
-        "quote": "Grantees will be announced January 15, 2027.",
-        "checked_at": "2026-11-19",
+        "quote": "Reviewers will use this rubric to score all applications.",
+        "checked_at": "2026-11-24",
         "method": "page"
       }
     ],
     "eligibility": [
       {
         "source_url": "https://www.apalachee.org/s/2026-Ben-Fusaro-Conservation-Grant-Info-and-Rubric.pdf",
-        "quote": "Any individual or group wishing to conduct bird-related research, habitat improvement projects, environmental education/outreach, or community engagement within Leon, Jefferson, Wakulla, Gadsden, Liberty and Franklin counties.",
-        "checked_at": "2026-11-19",
+        "quote": "Any individual or group wishing to conduct bird-related research, habitat improvement projects, environmental education/outreach, or community engagement",
+        "checked_at": "2026-11-24",
+        "method": "page"
+      }
+    ],
+    "after_award": [
+      {
+        "source_url": "https://www.apalachee.org/s/2026-Ben-Fusaro-Conservation-Grant-Info-and-Rubric.pdf",
+        "quote": "Grantees will be required to provide a summary or short presentation at the end of the project during one of our monthly meetings.",
+        "checked_at": "2026-11-24",
         "method": "page"
       }
     ],
