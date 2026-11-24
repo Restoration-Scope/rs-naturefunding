@@ -38,14 +38,37 @@
     "period": "round",
     "label": "the 2026 targeted call"
   },
-  "co_finance_required": null,
+  "co_finance_required": true,
   "reporting": null,
   "effort": {
     "steps": [
       "Expression of interest",
-      "Full application"
+      "Full application, if invited",
+      "Independent evaluation and Local Action Group decision"
+    ],
+    "due": [
+      "2026-12-11",
+      null,
+      null
     ]
   },
+  "eligibility": [
+    {
+      "rule": "Start project activities and commit to project purchases only after signing the grant contract",
+      "kind": "project"
+    },
+    {
+      "rule": "Project does not negatively affect existing businesses, services or facilities",
+      "kind": "project"
+    }
+  ],
+  "co_finance": {
+    "min_share": 10,
+    "applies_to": "Analysis and development (10%); capital (25%)"
+  },
+  "documents": [
+    "Signed data protection consent form"
+  ],
   "calls": [
     {
       "id": "targeted-call-2026",
@@ -116,11 +139,63 @@
       "checked_at": "2026-11-09",
       "method": "page"
     },
+    "co_finance_required": {
+      "source_url": "https://southmayo.com/wp-content/uploads/2026/11/2026-Targeted-Call-Mayo-LAG-Document.docx",
+      "quote": "Capital: 75% of costs to a maximum €50,000 Analysis and Development: 90% of costs to a maximum €30,000 Training: 100% of costs to a maximum €50,000",
+      "checked_at": "2026-11-24",
+      "method": "page"
+    },
     "effort": [
       {
         "source_url": "https://southmayo.com/leader-rural-development-programme/",
         "quote": "To apply for LEADER funding, you must complete, sign and return an Expression of Interest form.",
         "checked_at": "2026-11-09",
+        "method": "page"
+      },
+      {
+        "source_url": "https://southmayo.com/leader-rural-development-programme/",
+        "quote": "EOI Closing Date: 11 December 2026",
+        "checked_at": "2026-11-24",
+        "method": "page"
+      },
+      {
+        "source_url": "https://southmayo.com/wp-content/uploads/2026/11/2026-Targeted-Call-Mayo-LAG-Document.docx",
+        "quote": "Step 1 - Expression of Interest (EOI) – this is used to determine project eligibility in principle. Those successful at EOI stage will be eligible to submit a full application.",
+        "checked_at": "2026-11-24",
+        "method": "page"
+      },
+      {
+        "source_url": "https://southmayo.com/wp-content/uploads/2026/11/2026-Targeted-Call-Mayo-LAG-Document.docx",
+        "quote": "the application will be subject to an independent evaluation prior to submission to Local Action Group (LAG) for final decision.",
+        "checked_at": "2026-11-24",
+        "method": "page"
+      }
+    ],
+    "eligibility": [
+      {
+        "source_url": "https://southmayo.com/wp-content/uploads/2026/11/2026-Targeted-Call-Mayo-LAG-Document.docx",
+        "quote": "Project activity undertaken or commenced, or the purchase of goods or services engaged by the project applicant prior to the date of contract signing, shall not be eligible for LEADER funding.",
+        "checked_at": "2026-11-24",
+        "method": "page"
+      },
+      {
+        "source_url": "https://southmayo.com/wp-content/uploads/2025/06/Guide-To-LEADER-2023-2027-Programme.pdf",
+        "quote": "Projects must not negatively impact existing businesses, services, or facilities locally, nationally, or within the EU.",
+        "checked_at": "2026-11-24",
+        "method": "page"
+      }
+    ],
+    "co_finance": {
+      "source_url": "https://southmayo.com/wp-content/uploads/2026/11/2026-Targeted-Call-Mayo-LAG-Document.docx",
+      "quote": "Capital: 75% of costs to a maximum €50,000 Analysis and Development: 90% of costs to a maximum €30,000 Training: 100% of costs to a maximum €50,000",
+      "checked_at": "2026-11-24",
+      "method": "page"
+    },
+    "documents": [
+      {
+        "source_url": "https://southmayo.com/wp-content/uploads/2025/06/LEADER-Expression-of-Interest-Form.pdf",
+        "quote": "This form must be completed and returned with your Expression of Interest form to your local Implementing or Animating Partner.",
+        "checked_at": "2026-11-24",
         "method": "page"
       }
     ]
