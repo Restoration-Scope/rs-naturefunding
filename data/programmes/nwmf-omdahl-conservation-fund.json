@@ -2,7 +2,7 @@
   "id": "nwmf-omdahl-conservation-fund",
   "name": "Northwest Minnesota Foundation Omdahl Conservation Fund",
   "funder": { "name": "Northwest Minnesota Foundation", "url": "https://nwmf.org/" },
-  "administered_by": null,
+  "administered_by": { "name": "NMF", "url": "https://nwmf.org" },
   "parent": null,
   "url": "https://nwmf.org/grants-scholarships/grants/",
   "summary": "Grants to 501(c)(3) nonprofits in a 12-county Northwest Minnesota region (including Red Lake and White Earth Nations) for projects that promote or preserve natural resources. The current round offers $45,000 in total, with awards up to $25,000.",
@@ -10,7 +10,7 @@
   "applicant_types": ["ngo"],
   "geography": { "scope": "countries", "countries": ["US"], "label": "Northwest Minnesota" },
   "access": "direct",
-  "window": "unspecified",
+  "window": "fixed",
   "amount": {
     "currency": "USD",
     "max": 25000,
@@ -33,7 +33,6 @@
       "status": "open",
       "opens": null,
       "deadline": null,
-      "note": "The page says applications are open through December 4th and gives no year.",
       "evidence": {
         "status": {
           "source_url": "https://nwmf.org/grants-scholarships/grants/",
@@ -41,10 +40,17 @@
           "checked_at": "2026-11-24",
           "method": "page"
         }
-      }
+      },
+      "note": "The page says applications are open through December 4th and gives no year."
     }
   ],
   "evidence": {
+    "administered_by": {
+      "source_url": "https://nwmf.org/grants-scholarships/grants/",
+      "quote": "NMF offers Building Better Lives grants to support Northwest Minnesota's people and communities.",
+      "checked_at": "2026-11-24",
+      "method": "page"
+    },
     "applicant_types": {
       "source_url": "https://nwmf.org/grants-scholarships/grants/",
       "quote": "501(c)(3) nonprofits located in the eligible Northwest Minnesota region may apply for projects that promote or preserve natural resources in the region.",
@@ -60,6 +66,12 @@
     "access": {
       "source_url": "https://nwmf.org/grants-scholarships/grants/",
       "quote": "The following grants are currently accepting applications.",
+      "checked_at": "2026-11-24",
+      "method": "page"
+    },
+    "window": {
+      "source_url": "https://nwmf.org/grants-scholarships/grants/",
+      "quote": "Applications will be open through December 4th.",
       "checked_at": "2026-11-24",
       "method": "page"
     },
