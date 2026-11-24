@@ -24,7 +24,7 @@ const answer = (a: Answer | undefined) =>
 const one = (f: { value: string; evidence: Evidence } | undefined) => (f ? [{ text: f.value, evidence: f.evidence }] : [])
 const many = (fs: { value: string; evidence: Evidence }[] | undefined) => (fs ?? []).map((f) => ({ text: f.value, evidence: f.evidence }))
 
-const grants = s.grants ? [{ text: sponsorGrantLabels[s.grants.value.role], evidence: s.grants.evidence }] : []
+const grants = s.grants ? [{ text: `${sponsorGrantLabels[s.grants.value.role]}. ${s.grants.value.note}`, evidence: s.grants.evidence }] : []
 const rows: Row[] = [
   { label: 'Takes', items: one(s.projects) },
   { label: 'Where', items: one(s.where) },
@@ -34,7 +34,7 @@ const rows: Row[] = [
   { label: 'Companies', items: answer(s.companies) },
 ]
 const details: Row[] = [
-  ...rows.map((r) => (r.label === 'Grants' && s.grants ? { ...r, items: [{ text: `${sponsorGrantLabels[s.grants.value.role]}. ${s.grants.value.note}`, evidence: s.grants.evidence }] } : r)),
+  ...rows,
   { label: 'Individuals', items: answer(s.individuals) },
   { label: 'Groups outside its country', items: answer(s.foreign) },
   { label: 'How it works', items: (s.models ?? []).map((m) => ({ text: sponsorModelLabels[m.value], evidence: m.evidence })) },
