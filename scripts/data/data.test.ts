@@ -1,6 +1,10 @@
 import { describe, expect, test } from 'bun:test'
+import { mkdtempSync, writeFileSync } from 'node:fs'
+import { tmpdir } from 'node:os'
+import { join } from 'node:path'
 import { programme, statesDate, statesYear, type Programme } from '../../src/data/schema'
 import { checkData } from '../../src/data/load'
+import { checkSponsors, sponsor, sponsorEvidence } from '../../src/data/sponsors'
 import { comparable, quoteOnPage } from '../../src/data/text'
 import { fetchPage, htmlToText } from './page-text'
 
@@ -64,6 +68,74 @@ describe('consortium_required', () => {
     const p = fixture()
     p.evidence.consortium_required = ev('Applicants must form a consortium of three organisations.')
     expect(problems(p)).toEqual(['evidence.consortium_required: consortium_required has evidence but is not stated'])
+  })
+})
+
+describe('fiscal_sponsor', () => {
+  test('needs evidence when stated, and the field when there is evidence', () => {
+    const p = fixture()
+    p.fiscal_sponsor = { stance: 'refused' }
+    expect(problems(p)).toEqual(['evidence.fiscal_sponsor: fiscal_sponsor is stated but has no evidence'])
+    p.evidence.fiscal_sponsor = ev('Organizations with fiscal sponsors are not eligible.')
+    expect(problems(p)).toEqual([])
+    delete p.fiscal_sponsor
+    expect(problems(p)).toEqual(['evidence.fiscal_sponsor: fiscal_sponsor has evidence but is not stated'])
+  })
+
+  test('takes only the three stances', () => {
+    const p = { ...fixture(), fiscal_sponsor: { stance: 'unclear' } }
+    expect(problems(p).some((i) => i.startsWith('fiscal_sponsor.stance'))).toBe(true)
+  })
+})
+
+describe('sponsors', () => {
+  const fact = <T>(value: T, quote = 'We sponsor wildlife projects.', checked_at = '2026-11-01') => ({ value, evidence: ev(quote, checked_at) })
+  const base = () => ({
+    id: 'example-sponsor',
+    name: 'Example Sponsor',
+    url: URL,
+    summary: 'Charity that takes wildlife projects.',
+    scope: 'nature',
+    country: fact('US'),
+    projects: fact('Wildlife projects'),
+    checked_at: '2026-11-01',
+  })
+  const issues = (s: unknown) => {
+    const r = sponsor.safeParse(s)
+    return r.success ? [] : r.error.issues.map((i) => `${i.path.join('.')}: ${i.message}`)
+  }
+
+  test('a fact the sponsor does not publish is left out', () => expect(issues(base())).toEqual([]))
+
+  test('a value without its quote is refused', () => {
+    expect(issues({ ...base(), staff: { value: { answer: 'yes' } } })).not.toEqual([])
+    expect(issues({ ...base(), legal_form: 'US charity' })).not.toEqual([])
+  })
+
+  test('every number in a fee is in its quote', () => {
+    expect(issues({ ...base(), fees: [fact('5% of the first $100,000', '5% on the first $100,000 each year')] })).toEqual([])
+    expect(issues({ ...base(), fees: [fact('6% of income', 'A fee of 5% is charged.')] })).toEqual(['fees.0: a number in the value is not in its quote'])
+  })
+
+  test('checked_at is the oldest date of any fact, lists included', () => {
+    const s = { ...base(), fees: [fact('5% of income', 'A fee of 5% is charged.', '2026-10-01')] }
+    expect(sponsorEvidence(s)).toHaveLength(3)
+    expect(issues(s)).toEqual(['checked_at: must be the oldest evidence date, 2026-10-01'])
+  })
+
+  test('a file takes its id as its name, and a listing that exists', () => {
+    const dir = mkdtempSync(join(tmpdir(), 'sponsors-'))
+    writeFileSync(join(dir, 'other.json'), JSON.stringify({ ...base(), programme_id: 'nope' }))
+    expect(checkSponsors(dir, new Set()).issues).toEqual([
+      'sponsors/other.json: id example-sponsor must match the file name',
+      'sponsors/other.json: programme nope does not exist',
+    ])
+  })
+
+  test('the listed sponsors are valid', () => {
+    const { sponsors, issues } = checkSponsors('data/sponsors', new Set(['wcn-conservation-partners']))
+    expect(issues).toEqual([])
+    expect(sponsors.length).toBeGreaterThanOrEqual(10)
   })
 })
 

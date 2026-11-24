@@ -93,7 +93,7 @@ export const window = z.enum(['fixed', 'rolling', 'unspecified'])
 
 export const callStatus = z.enum(['upcoming', 'open', 'closed', 'suspended', 'unknown'])
 
-const iso2 = z.string().regex(/^[A-Z]{2}$/)
+export const iso2 = z.string().regex(/^[A-Z]{2}$/)
 
 export const region = z.enum([
   'africa',
@@ -375,6 +375,19 @@ export const programme = z
       .boolean()
       .optional()
       .describe('true when the funder requires applicants to apply as a consortium of several organisations; missing when the pages we read don’t say.'),
+    /**
+     * What the funder says about applying through a fiscal sponsor (also fiscal agent, auspice): another organisation that
+     * holds the legal status or the money for the project. accepted: it takes applications this way. refused: it says it
+     * doesn't. discouraged: it warns against it, or says it doesn't overcome another bar. Missing means not stated.
+     */
+    fiscal_sponsor: z
+      .object({
+        stance: z.enum(['accepted', 'refused', 'discouraged']).describe('accepted, refused or discouraged, from the funder’s words.'),
+        /** The condition on it that the same quote states, in our words. */
+        note: z.string().min(3).max(160).optional().describe('The condition the quote puts on it, in our words (“The sponsor is a 501(c)(3)”).'),
+      })
+      .strict()
+      .optional(),
     /** What the funder asks grantees to report, in our words. */
     reporting: z.string().min(10).max(600).nullable(),
     /** What applying takes, in our words, from the funder's page. Missing means not stated. */
@@ -489,6 +502,7 @@ export const programme = z
       pool: evidence.optional(),
       co_finance_required: evidence.optional(),
       consortium_required: evidence.optional(),
+      fiscal_sponsor: evidence.optional(),
       reporting: evidence.optional(),
       /** One quote per step at most: a page often names the stages, and their dates, in different places. */
       effort: z.array(evidence).min(1).max(5).optional(),
@@ -518,6 +532,7 @@ export const programme = z
       pool: p.pool !== undefined,
       co_finance_required: p.co_finance_required !== null,
       consortium_required: p.consortium_required !== undefined,
+      fiscal_sponsor: p.fiscal_sponsor !== undefined,
       reporting: p.reporting !== null,
       effort: p.effort !== undefined,
       eligibility: p.eligibility !== undefined,

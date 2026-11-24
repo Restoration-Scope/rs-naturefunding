@@ -1,4 +1,5 @@
 import type { Programme } from '../data/schema'
+import type { Sponsor } from '../data/sponsors'
 import type { RecheckFailure } from './data'
 
 type Approach = Programme['approaches'][number]
@@ -32,6 +33,39 @@ export const applicantLabels: Record<Applicant, string> = {
   government: 'Government bodies',
   social_enterprise: 'Social enterprises',
   company: 'Companies',
+}
+
+export const fiscalSponsorLabels: Record<NonNullable<Programme['fiscal_sponsor']>['stance'], string> = {
+  accepted: 'Accepted',
+  refused: 'Not accepted',
+  discouraged: 'Discouraged',
+}
+
+/** A sponsor's scope, shown only when a field project may not fit. */
+export const sponsorScopeLabels: Record<Sponsor['scope'], string> = {
+  nature: 'Nature and environment',
+  general: 'Any public-benefit work',
+  open_hardware: 'Open hardware for science',
+  media: 'Films and photos only',
+}
+
+export const sponsorModelLabels: Record<NonNullable<Sponsor['models']>[number]['value'], string> = {
+  inside: 'Your project becomes part of it',
+  grant_to_entity: 'It passes the money on to a separate group',
+}
+
+export const sponsorGrantLabels: Record<NonNullable<Sponsor['grants']>['value']['role'], string> = {
+  applicant: 'Applies, or is named as the applicant',
+  receives: 'Receives the grant for you',
+  donations: 'Only donations described',
+}
+
+export const sponsorAnswerLabels = { yes: 'Yes', no: 'No', case_by_case: 'Case by case' } as const
+
+export const sponsorIntakeLabels: Record<NonNullable<Sponsor['intake']>['value']['status'], string> = {
+  open: 'Taking projects',
+  between_rounds: 'Between rounds',
+  paused: 'Not taking projects now',
 }
 
 export const accessLabels: Record<Access, string> = {

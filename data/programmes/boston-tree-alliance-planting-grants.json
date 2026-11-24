@@ -14,6 +14,10 @@
   "amount": { "currency": "USD", "max": 249000 },
   "pool": { "currency": "USD", "value": 688000, "period": "round", "label": "the fourth cycle" },
   "co_finance_required": false,
+  "fiscal_sponsor": {
+    "stance": "accepted",
+    "note": "Needed by for-profit companies, public agencies and individuals without an organisation"
+  },
   "reporting": null,
   "effort": {
     "steps": ["Online application", "Initial review", "Revised final proposal, then approval"],
@@ -84,6 +88,12 @@
       "source_url": "https://www.boston.gov/news/apply-tree-planting-grant",
       "quote": "Apply for up to $249,000 to plant and care for trees on privately-owned land.",
       "checked_at": "2026-11-21",
+      "method": "page"
+    },
+    "fiscal_sponsor": {
+      "source_url": "https://content.boston.gov/sites/default/files/file/2026/09/Notice%20of%20Funding%20Opportunity%202026.pdf",
+      "quote": "For-profit corporations, public agencies, and individuals not representing a community-based or non-profit organization are not eligible to apply for funding through this grant program without a fiscal sponsor.",
+      "checked_at": "2026-11-22",
       "method": "page"
     },
     "effort": [

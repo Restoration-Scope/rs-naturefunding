@@ -25,6 +25,7 @@
   "window": "fixed",
   "amount": { "currency": "USD", "max": 25000 },
   "co_finance_required": null,
+  "fiscal_sponsor": { "stance": "accepted", "note": "The sponsor is a 501(c)(3)" },
   "reporting": null,
   "effort": { "steps": ["SmartSimple grant application"] },
   "eligibility": [
@@ -119,6 +120,12 @@
     "amount": {
       "source_url": "https://sbfoundation.org/?p=18200",
       "quote": "The maximum award for Conservation, Environment and Public Trails grants is $25,000.",
+      "checked_at": "2026-11-21",
+      "method": "page"
+    },
+    "fiscal_sponsor": {
+      "source_url": "https://sbfoundation.org/?p=18200",
+      "quote": "Organizations must be certified as tax exempt under Section 501(c)(3) of the Internal Revenue Code or use a fiscal sponsor with 501(c)(3) tax status.",
       "checked_at": "2026-11-21",
       "method": "page"
     },

@@ -16,6 +16,10 @@
   "window": "unspecified",
   "amount": { "currency": "USD", "min": 1000, "max": 5000, "typical": true },
   "co_finance_required": null,
+  "fiscal_sponsor": {
+    "stance": "accepted",
+    "note": "With a letter of sponsorship and the sponsor’s financial information"
+  },
   "reporting": null,
   "effort": { "steps": ["Online application"] },
   "eligibility": [
@@ -97,6 +101,12 @@
       "source_url": "https://www.wycf.org/butler-nongame-species-fund",
       "quote": "Most grant amounts awarded are between $1,000-$5,000, with other amounts considered.",
       "checked_at": "2026-11-20",
+      "method": "page"
+    },
+    "fiscal_sponsor": {
+      "source_url": "https://wyomingwildlifefoundation.org/grants/application-instructions",
+      "quote": "If you do not have your own 501(c)(3), and you are using another organization's nonprofit status, we require a letter of fiscal sponsorship stating that grants received will be managed by the nonprofit organization. We will also need your fiscal sponsor's financial information.",
+      "checked_at": "2026-11-21",
       "method": "page"
     },
     "effort": [

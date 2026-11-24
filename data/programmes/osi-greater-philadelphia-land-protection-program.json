@@ -14,6 +14,7 @@
   "amount": { "currency": "USD", "max": 40000 },
   "pool": { "currency": "USD", "value": 240000, "period": "round", "label": "the 2027 round" },
   "co_finance_required": false,
+  "fiscal_sponsor": { "stance": "accepted", "note": "The sponsor is a tax-exempt nonprofit" },
   "reporting": null,
   "effort": { "steps": ["Application through Foundant"], "due": ["2027-02-15"] },
   "eligibility": [
@@ -106,6 +107,12 @@
     "co_finance_required": {
       "source_url": "https://assets.openspaceinstitute.org/production/GPLPP/Neighborhood-Conservation-Grant-Package.pdf?dm=1795037455",
       "quote": "There is no match requirement.",
+      "checked_at": "2026-11-24",
+      "method": "page"
+    },
+    "fiscal_sponsor": {
+      "source_url": "https://assets.openspaceinstitute.org/production/GPLPP/Neighborhood-Conservation-Grant-Package.pdf?dm=1795037455",
+      "quote": "The applicant must be a tax-exempt non-profit organization. If applying through a fiscal sponsor, the sponsor must be a tax-exempt nonprofit organization.",
       "checked_at": "2026-11-24",
       "method": "page"
     },

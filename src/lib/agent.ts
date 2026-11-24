@@ -4,7 +4,7 @@
 import type { Call, Evidence, Programme } from '../data/schema'
 import { AGING_DAYS, HIDDEN_DAYS, buildDate, listingFor, programmeById, programmes, sortListings, stats, type Listing } from './data'
 import { amountText, effortSignals, effortText, poolText, geographyFull, geographyText, joinAnd, longDate, nameWithFunder } from './format'
-import { accessHelp, accessLabels, applicantLabels, approachLabels } from './labels'
+import { accessHelp, accessLabels, applicantLabels, approachLabels, fiscalSponsorLabels } from './labels'
 import { RS_DESCRIPTOR, RS_URL, SITE_NAME, absolute, funderCorrectionUrl, reportProblemUrl } from './site'
 import { countryName } from './geo'
 import { LLMS_FULL_PAGES, twinPath } from './twins'
@@ -22,6 +22,7 @@ export const factIds = {
   window: 'window',
   co_finance_required: 'co_finance_required',
   consortium_required: 'consortium_required',
+  fiscal_sponsor: 'fiscal_sponsor',
   administered_by: 'administered_by',
   approaches: 'approaches',
   reporting: 'reporting',
@@ -106,6 +107,7 @@ export function programmeMarkdown(p: Programme): string {
   const rounds = p.window === 'rolling' ? 'Rolling: apply any time' : p.window === 'fixed' ? 'Fixed rounds with deadlines' : null
   const coFunding = p.co_finance_required === null ? null : p.co_finance_required ? 'Yes' : 'No'
   const consortium = p.consortium_required === undefined ? null : p.consortium_required ? 'Yes' : 'No'
+  const sponsorStance = p.fiscal_sponsor ? fiscalSponsorLabels[p.fiscal_sponsor.stance] : null
   const n = p.name
   const out: string[] = []
 
@@ -130,6 +132,7 @@ export function programmeMarkdown(p: Programme): string {
     `- Rounds: ${rounds ?? byPartner}`,
     `- Co-funding required: ${coFunding ?? byPartner}`,
     ...(consortium ? [`- Consortium required: ${consortium}`] : []),
+    ...(sponsorStance ? [`- Applying through a fiscal sponsor: ${sponsorStance}`] : []),
     ...(p.administered_by ? [`- Run by: ${p.administered_by.name} (${p.administered_by.url})`] : []),
     `- Restoration approach (our classification): ${joinAnd(p.approaches.map((a) => approachLabels[a]))}`,
     `- Last checked: ${longDate(p.checked_at)}. Every quote below was read on or after this day.`,
@@ -160,6 +163,7 @@ export function programmeMarkdown(p: Programme): string {
     quoteLines(`${n}, rounds`, rounds ?? byPartner, p.evidence.window, factIds.window, p),
     quoteLines(`${n}, co-funding required`, coFunding ?? byPartner, p.evidence.co_finance_required, factIds.co_finance_required, p),
     ...(consortium ? [quoteLines(`${n}, consortium required`, consortium, p.evidence.consortium_required, factIds.consortium_required, p)] : []),
+    ...(sponsorStance ? [quoteLines(`${n}, applying through a fiscal sponsor`, `${sponsorStance}${p.fiscal_sponsor?.note ? `. ${p.fiscal_sponsor.note}.` : ''}`, p.evidence.fiscal_sponsor, factIds.fiscal_sponsor, p)] : []),
     ...(p.administered_by ? [quoteLines(`${n}, run by`, p.administered_by.name, p.evidence.administered_by, factIds.administered_by, p)] : []),
     ...(p.access === 'direct' && p.effort ? [quoteLines(`${n}, steps to apply`, effortText(p.effort)!, p.evidence.effort, factIds.effort, p)] : []),
     ...(p.access === 'direct' && p.effort?.due
@@ -287,6 +291,7 @@ export function llmsTxt(listings: Listing[], pages: FinderPage[] = []): string {
     '',
     `- [All programmes by status](${absolute('/index.md')}): every listing with its status, amount, area and checked date`,
     `- [How we check](${absolute('/about.md')}): where facts come from, what we never guess, what the labels mean`,
+    `- [Fiscal sponsors](${absolute('/fiscal-sponsors.md')}): charities and nonprofits that take nature projects under their own legal status, with fees, rules and how to apply`,
     `- [Open data and schema](${absolute('/data.md')}): files, fields, how to query and cite`,
     `- [Grants by place and project type](${absolute('/countries.md')}): a page per region, country and project type`,
     `- [Everything in one file](${absolute('/llms-full.txt')}): every programme’s full facts and quotes, plus how we check`,

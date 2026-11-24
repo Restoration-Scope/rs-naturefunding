@@ -1,0 +1,72 @@
+---
+// Fiscal sponsors (data/sponsors) and the listed grants that say whether they take one.
+import Base from '../layouts/Base.astro'
+import SponsorCard from '../components/SponsorCard.astro'
+import Flag from '../components/Flag.astro'
+import { programmes, sponsors } from '../lib/data'
+import { programmeTitle } from '../lib/format'
+import { absolute, RS_ORG } from '../lib/site'
+
+const countries = new Set(sponsors.map((s) => s.country.value)).size
+const description = `${sponsors.length} fiscal sponsors in ${countries} countries that take nature restoration and conservation projects: what each takes, charges and asks for, in its own words.`
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'CollectionPage',
+  name: 'Fiscal sponsors for nature projects',
+  url: absolute('/fiscal-sponsors/'),
+  description,
+  publisher: RS_ORG,
+}
+const by = (stance: string) =>
+  programmes.filter((p) => p.fiscal_sponsor?.stance === stance).sort((a, b) => a.name.localeCompare(b.name, 'en'))
+const accepted = by('accepted')
+const refused = [...by('refused'), ...by('discouraged')]
+const grantList = 'm-0 grid list-none gap-x-8 gap-y-2 p-0 md:grid-cols-2'
+const h2 = 'mt-12 mb-3 scroll-mt-6 text-3xl font-extrabold'
+---
+
+<Base title="Fiscal sponsors for nature projects" description={description} path="/fiscal-sponsors/" jsonLd={jsonLd} allGrants>
+  <div slot="band" class="wrap pt-7 pb-9">
+    <h1 class="text-[clamp(1.75rem,1.2rem+2.2vw,2.75rem)] font-extrabold tracking-[-0.02em]">Fiscal sponsors for nature projects</h1>
+    <p class="mt-[0.9rem] max-w-[60ch] text-xl text-shell-ink-2">
+      Some funders pay only registered charities. A fiscal sponsor is a charity or nonprofit that takes your project
+      under its own legal status, so you can receive grants or donations without one.
+    </p>
+  </div>
+
+  <div class="wrap pb-4">
+    <div class="mt-8 [&>p]:max-w-[66ch] [&>p+p]:mt-[0.85rem]">
+        <p>
+          {sponsors.length} sponsors, in alphabetical order. None pays to be here or is ranked. Each fact comes from the sponsor’s own
+          pages, with its words and the day we read them. Where its pages don’t say, we leave it out: ask before you count on it.
+        </p>
+        <p>
+          A sponsor helps only if the funder takes one. <a href="#grants">{accepted.length} grants here say they do, and {refused.length} refuse or discourage it</a>.
+          Also ask who is the applicant on the form, who employs your people, and who owns what the project makes.
+        </p>
+    </div>
+
+    <nav aria-label="Sponsors" class="mt-6" data-toc>
+      <ul class="m-0 grid list-none grid-cols-[repeat(auto-fill,minmax(min(100%,19rem),1fr))] gap-x-6 gap-y-1 p-0 pointer-coarse:[&_a]:inline-block pointer-coarse:[&_a]:py-2">
+        {sponsors.map((s) => <li class="flex items-baseline"><Flag code={s.country.value} class="mr-[0.5em]" /><a href={`#${s.id}`}>{s.name}</a></li>)}
+      </ul>
+    </nav>
+
+    <div class="mt-8 grid grid-cols-[minmax(0,1fr)] gap-4">
+      {sponsors.map((s) => <SponsorCard s={s} />)}
+    </div>
+
+    <h2 id="grants" class={h2}>What funders say</h2>
+    <p class="max-w-[66ch] text-ink-2">
+      From the grants listed here whose pages mention applying through a sponsor. Most don’t mention it: ask the funder.
+    </p>
+    <h3 class="mt-7 mb-2 text-xl font-bold">Accepted ({accepted.length})</h3>
+    <ul class={grantList}>
+      {accepted.map((p) => <li><a href={`/p/${p.id}/#fiscal_sponsor`}>{programmeTitle(p)}</a></li>)}
+    </ul>
+    <h3 class="mt-7 mb-2 text-xl font-bold">Refused or discouraged ({refused.length})</h3>
+    <ul class={grantList}>
+      {refused.map((p) => <li><a href={`/p/${p.id}/#fiscal_sponsor`}>{programmeTitle(p)}</a></li>)}
+    </ul>
+  </div>
+</Base>

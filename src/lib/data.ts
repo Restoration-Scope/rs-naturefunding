@@ -21,6 +21,9 @@ export const buildDate = utcDateKey()
 export const AGING_DAYS = 30
 export const HIDDEN_DAYS = 90
 
+/** Fiscal sponsors by name, without any not checked for over HIDDEN_DAYS: the same rule as listings. */
+export const sponsors = data.sponsors.filter((s) => daysBetween(s.checked_at, buildDate) <= HIDDEN_DAYS)
+
 /** Why the daily check could not re-read a programme's pages, as the refresh job records it. */
 export type RecheckFailure = 'robots' | 'blocked' | 'network' | 'http' | 'timeout' | 'selector' | 'unreadable'
 // data/checks/programmes.json, written by each daily run. No file, or no entry, means no news.
