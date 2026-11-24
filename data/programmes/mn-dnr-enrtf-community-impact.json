@@ -30,7 +30,6 @@
       "rule": "Not a state agency, University of Minnesota Board of Regents, or for-profit business",
       "kind": "legal"
     },
-    { "rule": "Taking place in Minnesota", "kind": "project" },
     {
       "rule": "Providing an environmental or natural resource benefit in Minnesota",
       "kind": "project"
@@ -42,6 +41,12 @@
     },
     {
       "rule": "Submitting no more than two distinct Stage 1 Concept Notes per substantive project lead",
+      "kind": "other"
+    },
+    { "rule": "The project’s primary purpose is not scientific research.", "kind": "project" },
+    { "rule": "The project does not construct a new trail or trail segment.", "kind": "project" },
+    {
+      "rule": "At most one Concept Note per substantive project lead can advance to Stage 2.",
       "kind": "other"
     }
   ],
@@ -139,12 +144,6 @@
       },
       {
         "source_url": "https://files.dnr.state.mn.us/aboutdnr/grants/enrtfcg-fy2027-rfp-01-combined.pdf",
-        "quote": "Projects are required to take place in Minnesota",
-        "checked_at": "2026-11-23",
-        "method": "page"
-      },
-      {
-        "source_url": "https://files.dnr.state.mn.us/aboutdnr/grants/enrtfcg-fy2027-rfp-01-combined.pdf",
         "quote": "provide an environmental or natural resource benefit in Minnesota",
         "checked_at": "2026-11-23",
         "method": "page"
@@ -166,6 +165,24 @@
         "quote": "A substantive project lead may submit no more than two distinct Stage 1 Concept Notes in this funding round.",
         "checked_at": "2026-11-23",
         "method": "page"
+      },
+      {
+        "source_url": "https://files.dnr.state.mn.us/aboutdnr/grants/enrtfcg-fy2027-rfp-01-combined.pdf",
+        "quote": "Community Grant Program funds must not be awarded for a scientific research project.",
+        "checked_at": "2026-11-24",
+        "method": "page"
+      },
+      {
+        "source_url": "https://files.dnr.state.mn.us/aboutdnr/grants/enrtfcg-fy2027-rfp-01-combined.pdf",
+        "quote": "Community Grant Program funds must not be used for construction of a new trail or new trail segment.",
+        "checked_at": "2026-11-24",
+        "method": "page"
+      },
+      {
+        "source_url": "https://files.dnr.state.mn.us/aboutdnr/grants/enrtfcg-fy2027-rfp-01-combined.pdf",
+        "quote": "No more than one Concept Note from the same substantive project lead may advance to Stage 2.",
+        "checked_at": "2026-11-24",
+        "method": "page"
       }
     ],
     "effort": [
@@ -179,6 +196,12 @@
         "source_url": "https://files.dnr.state.mn.us/aboutdnr/grants/enrtfcg-fy2027-rfp-01-combined.pdf",
         "quote": "Only applicants invited by the DNR will be allowed to submit a Stage 2 Full Application.",
         "checked_at": "2026-11-23",
+        "method": "page"
+      },
+      {
+        "source_url": "https://files.dnr.state.mn.us/aboutdnr/grants/enrtfcg-fy2027-rfp-01-combined.pdf",
+        "quote": "Pre-award review occurs after competitive selection and before grant execution.",
+        "checked_at": "2026-11-24",
         "method": "page"
       }
     ],
@@ -199,8 +222,12 @@
   },
   "checked_at": "2026-11-23",
   "effort": {
-    "steps": ["Stage 1 Concept Note", "Stage 2 Full Application, if invited"],
-    "due": ["2027-01-07", null]
+    "steps": [
+      "Stage 1 Concept Note",
+      "Stage 2 Full Application, if invited",
+      "Pre-award eligibility and risk review, if selected"
+    ],
+    "due": ["2027-01-07", null, null]
   },
   "after_award": { "reports": "quarterly", "site_visits": true }
 }

@@ -19,8 +19,16 @@
     "max": 1000000,
     "note": "Cap per project ranges from ¥200,000 to ¥1,000,000, set by activity type and number of participants"
   },
-  "co_finance_required": null,
+  "co_finance_required": true,
   "reporting": null,
+  "documents": [
+    "Overall project plan",
+    "Individual activity plan for each distinct activity",
+    "Income and expenditure budget",
+    "Itemised expenditure sheet",
+    "Organisation profile",
+    "List of all officers"
+  ],
   "calls": [
     {
       "id": "fy2027",
@@ -83,6 +91,12 @@
       "checked_at": "2026-11-23",
       "method": "page"
     },
+    "co_finance_required": {
+      "source_url": "https://www.pref.fukuoka.lg.jp/contents/room-mori-koubo-syuryo.html",
+      "quote": "補助対象経費が80万円以下の部分は、10分の10以内 補助対象経費が80万円を超える部分は、2分の1以内を加算",
+      "checked_at": "2026-11-24",
+      "method": "page"
+    },
     "eligibility": [
       {
         "source_url": "https://www.pref.fukuoka.lg.jp/press-release/r9morikoubo.html",
@@ -98,14 +112,8 @@
       },
       {
         "source_url": "https://www.pref.fukuoka.lg.jp/uploaded/attachment/301550.pdf",
-        "quote": "企画した活動が、他の公的な補助金、負担金その他の交付を受けているもの",
-        "checked_at": "2026-11-23",
-        "method": "page"
-      },
-      {
-        "source_url": "https://www.pref.fukuoka.lg.jp/uploaded/attachment/301550.pdf",
-        "quote": "事業実施場所が県外に及ぶもの",
-        "checked_at": "2026-11-23",
+        "quote": "企画した活動が、他の公的な補助金、負担金その他の交付を受けているもの、又は受ける見 込みのあるもの",
+        "checked_at": "2026-11-24",
         "method": "page"
       },
       {
@@ -118,6 +126,24 @@
         "source_url": "https://www.pref.fukuoka.lg.jp/uploaded/attachment/301550.pdf",
         "quote": "参加予定者のうち、県内在住者または県内事業所に勤務する者が過半数に満たないもの",
         "checked_at": "2026-11-23",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.pref.fukuoka.lg.jp/contents/room-mori-koubo-syuryo.html",
+        "quote": "暴力団(暴力団員による不当な行為の防止等に関する法律(平成3年法律第77号)第2条第2号に規定する暴力団をいう。)又は代表者若しくは役員が暴力団員(暴力団員による不当な行為の防止等に関する法律(平成3年法律第77号)第2条第6号に規定する暴力団員をいう。)である団体又は暴力団若しくは暴力団員と密接な関係を有する団体",
+        "checked_at": "2026-11-24",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.pref.fukuoka.lg.jp/press-release/r9morikoubo.html",
+        "quote": "活動期間：補助金交付決定日（令和９年４月予定）～令和１０年３月１０日",
+        "checked_at": "2026-11-24",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.pref.fukuoka.lg.jp/uploaded/attachment/301550.pdf",
+        "quote": "（２）特定の個人や事業者の利益のために行われるもの （３）政治的又は宗教的宣伝を目的として行われるもの",
+        "checked_at": "2026-11-24",
         "method": "page"
       }
     ],
@@ -136,8 +162,8 @@
       },
       {
         "source_url": "https://www.pref.fukuoka.lg.jp/contents/room-mori-koubo-syuryo.html",
-        "quote": "採択を受けた団体は、別途補助金の交付申請などの手続きが必要になります。",
-        "checked_at": "2026-11-23",
+        "quote": "採択を受けた団体は、別途補助金の交付申請などの手続きが必要になります。詳しくは「3　例規等」をご参照ください。",
+        "checked_at": "2026-11-24",
         "method": "page"
       }
     ],
@@ -154,6 +180,44 @@
         "checked_at": "2026-11-23",
         "method": "page"
       }
+    ],
+    "documents": [
+      {
+        "source_url": "https://www.pref.fukuoka.lg.jp/uploaded/attachment/301550.pdf",
+        "quote": "（１）事業計画書 別紙１－１のとおり",
+        "checked_at": "2026-11-24",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.pref.fukuoka.lg.jp/uploaded/attachment/301550.pdf",
+        "quote": "具体的な活動については、異なる活動ごとに活動計画書（別紙１－２）を作成すること。",
+        "checked_at": "2026-11-24",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.pref.fukuoka.lg.jp/uploaded/attachment/301550.pdf",
+        "quote": "（３）収支予算書 別紙１－３のとおり",
+        "checked_at": "2026-11-24",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.pref.fukuoka.lg.jp/uploaded/attachment/301550.pdf",
+        "quote": "（４）支出明細書 別紙１－４のとおり",
+        "checked_at": "2026-11-24",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.pref.fukuoka.lg.jp/uploaded/attachment/301550.pdf",
+        "quote": "（５）団体調書 別紙１－５のとおり",
+        "checked_at": "2026-11-24",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.pref.fukuoka.lg.jp/uploaded/attachment/301550.pdf",
+        "quote": "本紙は、福岡県暴力団排除条例に基づき、役員が暴力団員等に該当しないことを確認する際に使用す るものです。役員全員の記入が必要です。",
+        "checked_at": "2026-11-24",
+        "method": "page"
+      }
     ]
   },
   "checked_at": "2026-11-23",
@@ -161,13 +225,29 @@
   "eligibility": [
     { "rule": "Maintain an office in Fukuoka Prefecture", "kind": "legal" },
     { "rule": "Not mainly for religious or political activity", "kind": "legal" },
-    { "rule": "Activity receives no other public subsidy, now or expected", "kind": "project" },
-    { "rule": "All activity sites are within Fukuoka Prefecture", "kind": "project" },
+    {
+      "rule": "The activity receives no other public grant, subsidy or contribution, and expects none.",
+      "kind": "project"
+    },
     { "rule": "Activity has not already started", "kind": "project" },
-    { "rule": "Most planned participants live or work in Fukuoka Prefecture", "kind": "project" }
+    { "rule": "Most planned participants live or work in Fukuoka Prefecture", "kind": "project" },
+    {
+      "rule": "The organisation and its leaders have no organised-crime membership or close ties.",
+      "kind": "legal"
+    },
+    { "rule": "Complete the activity by March 10, 2028.", "kind": "project" },
+    {
+      "rule": "The activity is not for a particular individual’s or business’s benefit, or for political or religious propaganda.",
+      "kind": "project"
+    }
   ],
   "effort": {
-    "steps": ["Project proposal", "Review by the prefecture forest tax committee"],
-    "more_after": true
+    "steps": [
+      "Project proposal",
+      "Review by the prefecture forest tax committee",
+      "Separate subsidy application, if selected"
+    ],
+    "more_after": true,
+    "due": ["2027-01-08", null, null]
   }
 }

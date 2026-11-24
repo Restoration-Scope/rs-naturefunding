@@ -19,21 +19,25 @@
   "co_finance_required": null,
   "reporting": "Grantees submit an end-of-project report through the online grant system before the final 20% payment, or an interim report if the project is not finished within the one-year grant period.",
   "effort": {
-    "steps": ["Letter of inquiry", "Full proposal, if invited"],
-    "due": ["2027-01-08", "2027-02-15"]
+    "steps": ["Letter of inquiry", "Full proposal, if invited", "Board review of full proposals"],
+    "due": ["2027-01-08", "2027-02-15", null]
   },
   "eligibility": [
     {
-      "rule": "Existing NEBF local grantee; the final 2027 local round takes no new applicants",
+      "rule": "Returning applicant for NEBF local funding in the final 2027 round.",
       "kind": "track_record"
     },
     { "rule": "Holds charitable status in its country", "kind": "legal" },
     {
       "rule": "Operates on a not-for-profit basis and has a mission to benefit local communities",
       "kind": "legal"
+    },
+    {
+      "rule": "After a denied proposal, wait one year from its submission before applying again.",
+      "kind": "track_record"
     }
   ],
-  "after_award": { "reports": "final" },
+  "after_award": { "reports": "interim_and_final" },
   "calls": [
     {
       "id": "2027-round-1",
@@ -144,13 +148,19 @@
         "quote": "The first step in the process is to submit a letter of inquiry (LOI) to us, following the guidelines posted here.",
         "checked_at": "2026-11-23",
         "method": "page"
+      },
+      {
+        "source_url": "https://www.nebf.org/gettingstarted",
+        "quote": "Our directors meet twice a year to review proposals, and we inform applicants of funding decisions shortly thereafter.",
+        "checked_at": "2026-11-24",
+        "method": "page"
       }
     ],
     "eligibility": [
       {
         "source_url": "https://www.nebf.org/post/update-on-our-local-funding-program",
         "quote": "For this final round, we will prioritize existing local grantees and will not be able to accept new applicants.",
-        "checked_at": "2026-11-23",
+        "checked_at": "2026-11-24",
         "method": "page"
       },
       {
@@ -164,6 +174,12 @@
         "quote": "Eligible organizations must operate on a not-for-profit basis and stand by a mission to benefit local communities.",
         "checked_at": "2026-11-23",
         "method": "page"
+      },
+      {
+        "source_url": "https://www.nebf.org/gettingstarted",
+        "quote": "If we deny your proposal for funding, please wait one year from the date of your original proposal application to submit a new request to us.",
+        "checked_at": "2026-11-24",
+        "method": "page"
       }
     ],
     "after_award": [
@@ -171,6 +187,12 @@
         "source_url": "https://www.nebf.org/nextstepsiffunded",
         "quote": "The foundation must receive your end of project report upon project completion, or an interim report if your project is incomplete by the end of the one-year grant period.",
         "checked_at": "2026-11-23",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.nebf.org/nextstepsiffunded",
+        "quote": "A report must be submitted at the end of the project when its funding cycle ends and before the final disbursement of grant funds.",
+        "checked_at": "2026-11-24",
         "method": "page"
       }
     ]
