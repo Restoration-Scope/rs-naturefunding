@@ -21,7 +21,10 @@
   },
   "co_finance_required": null,
   "reporting": null,
-  "effort": { "steps": ["Application submission by email", "Application review"] },
+  "effort": {
+    "steps": ["Application submission by email", "Application review"],
+    "due": ["2027-01-15", null]
+  },
   "eligibility": [
     { "rule": "Has its main base in Hokkaido and is a nonprofit organization", "kind": "legal" },
     { "rule": "The activity does not lead to profit", "kind": "project" },
@@ -32,7 +35,8 @@
     {
       "rule": "Can provide a financial account in the selected organization's name",
       "kind": "capacity"
-    }
+    },
+    { "rule": "The project activity takes place in Hokkaido", "kind": "project" }
   ],
   "after_award": { "reports": "yearly" },
   "documents": [
@@ -146,6 +150,12 @@
         "quote": "選定協議会での審査による総合的な判断により決定いたします。",
         "checked_at": "2026-11-23",
         "method": "page"
+      },
+      {
+        "source_url": "https://www.heco-spc.or.jp/HoBiCC/hokku_josei/hokku_jyosei_2027.html",
+        "quote": "2026年11月2日（月）～ 2027年1月15日（金） ※17時必着（メール受付のみ）",
+        "checked_at": "2026-11-24",
+        "method": "page"
       }
     ],
     "eligibility": [
@@ -189,6 +199,12 @@
         "source_url": "https://www.heco-spc.or.jp/HoBiCC/hokku_josei/file/2027/00_Application%20requirements_2027.pdf",
         "quote": "助成金受取にあたり、採択団体名義の金融機関口座を用意できること",
         "checked_at": "2026-11-23",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.heco-spc.or.jp/HoBiCC/hokku_josei/file/2027/00_Application%20requirements_2027.pdf",
+        "quote": "北海道内におけるネイチャーポジティブの実現に向けた実践的な活動",
+        "checked_at": "2026-11-24",
         "method": "page"
       }
     ],

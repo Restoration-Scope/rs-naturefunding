@@ -15,12 +15,12 @@
   "access": "direct",
   "window": "fixed",
   "amount": { "currency": "NOK", "min": 150000, "note": "Minimum application for the 2027 round." },
-  "co_finance_required": null,
+  "co_finance_required": true,
   "reporting": null,
-  "effort": { "steps": ["Application form"] },
+  "effort": { "steps": ["Submit application in the online portal"], "due": ["2027-01-15"] },
   "eligibility": [
     {
-      "rule": "Not the polluter that should itself bear the cost of the damage (polluter pays)",
+      "rule": "Is not the party responsible for bearing the costs of environmental harm under polluter pays",
       "kind": "legal"
     },
     {
@@ -30,7 +30,28 @@
     {
       "rule": "Not artificial reefs on natural soft bottom, nor active restoration where ongoing pressures block lasting effect",
       "kind": "project"
-    }
+    },
+    {
+      "rule": "No artificial structures in areas with a significant risk of spreading alien species",
+      "kind": "project"
+    },
+    {
+      "rule": "Does not fund management association operations, except for the Tana River fisheries management allocation",
+      "kind": "project"
+    },
+    {
+      "rule": "For liming, contributes funds or labour and opens the watercourse to public fishing in the grant year",
+      "kind": "project"
+    },
+    { "rule": "Oslofjord restoration takes place in the fjord or its catchment", "kind": "project" }
+  ],
+  "after_award": { "reports": "unspecified", "audit": true },
+  "documents": [
+    "Detailed budget and financing plan, including other public grants, for water environment grants",
+    "Proof of municipal planning compliance, for physical works under the salmon track",
+    "Landowner permission, for fish cultivation or technical fish enhancement",
+    "Municipal statement, for fish cultivation or technical fish enhancement",
+    "Water or county authority statement and any required permit, for fish cultivation or technical fish enhancement"
   ],
   "calls": [
     {
@@ -109,19 +130,31 @@
       "checked_at": "2026-11-09",
       "method": "page"
     },
+    "co_finance_required": {
+      "source_url": "https://lovdata.no/dokument/SF/forskrift/2024-10-04-2409",
+      "quote": "Det gis bare tilskudd til kalkingstiltak dersom søkeren bidrar med egeninnsats (økonomiske midler eller arbeidsinnsats) og fisket i vassdraget blir åpnet for allmennheten det året søkeren mottar tilskudd.",
+      "checked_at": "2026-11-24",
+      "method": "page"
+    },
     "effort": [
       {
         "source_url": "https://soknadssenter.miljodirektoratet.no/VannmiljoSkjema/Startside/Index?id=88",
         "quote": "Søknadsskjemaet er åpent, gå til utfylling",
         "checked_at": "2026-11-23",
         "method": "page"
+      },
+      {
+        "source_url": "https://soknadssenter.miljodirektoratet.no/VannmiljoSkjema/Startside/Index?id=88",
+        "quote": "Søknadsfrist 15. januar 2027.",
+        "checked_at": "2026-11-24",
+        "method": "page"
       }
     ],
     "eligibility": [
       {
         "source_url": "https://soknadssenter.miljodirektoratet.no/VannmiljoSkjema/Startside/Index?id=88",
-        "quote": "Det gis ikke tilskudd til en ansvarlig tiltakshaver som ut fra prinsippet om at forurenser betaler",
-        "checked_at": "2026-11-23",
+        "quote": "Det gis ikke tilskudd til en ansvarlig tiltakshaver som ut fra prinsippet om at forurenser betaler og naturmangfoldloven § 11 selv bør bære kostnadene ved miljøforringelsen.",
+        "checked_at": "2026-11-24",
         "method": "page"
       },
       {
@@ -134,6 +167,58 @@
         "source_url": "https://soknadssenter.miljodirektoratet.no/VannmiljoSkjema/Startside/Index?id=88",
         "quote": "Det gis ikke tilskudd til etablering av kunstige rev i naturlige bløtbunnsområder, aktive restaureringstiltak i områder hvor pågående negative påvirkninger gjør at restaureringstiltaket ikke får varig effekt",
         "checked_at": "2026-11-23",
+        "method": "page"
+      },
+      {
+        "source_url": "https://soknadssenter.miljodirektoratet.no/VannmiljoSkjema/Startside/Index?id=88",
+        "quote": "eller utsetting av diverse kunstige strukturer som marine nyttehager, dyrkingstau og kunstige rev i områder hvor risikoen for spredning av fremmede arter som havnespy vurderes som betydelig",
+        "checked_at": "2026-11-24",
+        "method": "page"
+      },
+      {
+        "source_url": "https://soknadssenter.miljodirektoratet.no/VannmiljoSkjema/Startside/Index?id=88",
+        "quote": "Det gis ikke tilskudd til drift av forvaltningslag mv., med unntak av bevilgningen til Tanavassdragets fiskeforvaltning.",
+        "checked_at": "2026-11-24",
+        "method": "page"
+      },
+      {
+        "source_url": "https://lovdata.no/dokument/SF/forskrift/2024-10-04-2409",
+        "quote": "Det gis bare tilskudd til kalkingstiltak dersom søkeren bidrar med egeninnsats (økonomiske midler eller arbeidsinnsats) og fisket i vassdraget blir åpnet for allmennheten det året søkeren mottar tilskudd.",
+        "checked_at": "2026-11-24",
+        "method": "page"
+      },
+      {
+        "source_url": "https://soknadssenter.miljodirektoratet.no/VannmiljoSkjema/Startside/Index?id=88",
+        "quote": "Tilskudd gis til restaureringstiltak i Oslofjorden og Oslofjordens nedbørfelt",
+        "checked_at": "2026-11-24",
+        "method": "page"
+      }
+    ],
+    "after_award": [
+      {
+        "source_url": "https://lovdata.no/dokument/SF/forskrift/2024-10-04-2409",
+        "quote": "Regnskapet skal i en første del være satt opp i henhold til omsøkt budsjett, og i annen del vise alle transaksjoner knyttet til tilskuddsmidlene. Regnskapet skal underskrives av ansvarlig søker og i tillegg regnskapsfører i de tilfeller det ikke er samme person. Når tilskuddet er 500 000 kroner eller høyere skal regnskapet være revidert av statsautorisert revisor.",
+        "checked_at": "2026-11-24",
+        "method": "page"
+      }
+    ],
+    "documents": [
+      {
+        "source_url": "https://lovdata.no/dokument/SF/forskrift/2024-10-04-2409",
+        "quote": "detaljert budsjett og en komplett finansieringsplan, der også eventuelle andre offentlige tilskudd kommer frem",
+        "checked_at": "2026-11-24",
+        "method": "page"
+      },
+      {
+        "source_url": "https://lovdata.no/dokument/SF/forskrift/2014-11-25-1530",
+        "quote": "Søknaden skal dokumentere at tiltak som innebærer fysiske inngrep i naturen ikke er i strid med godkjent kommunal plan eller kommunalt vedtak.",
+        "checked_at": "2026-11-24",
+        "method": "page"
+      },
+      {
+        "source_url": "https://lovdata.no/dokument/SF/forskrift/2014-11-25-1530",
+        "quote": "tilskudd til fiskekultiveringstiltak og tekniske fiskeforsterkingstiltak, skal det legges ved en tillatelse fra grunneier, uttalelse fra kommunen og uttalelse og eventuelt tillatelse fra Norges vassdrags- og energidirektorat eller fylkesmannen.",
+        "checked_at": "2026-11-24",
         "method": "page"
       }
     ]

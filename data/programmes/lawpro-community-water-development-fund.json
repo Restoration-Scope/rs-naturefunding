@@ -34,7 +34,19 @@
       "kind": "project"
     },
     { "rule": "Any CWDF 2026 grant was fully paid before 5 December 2026", "kind": "other" },
-    { "rule": "Submits no more than one application per organisation", "kind": "other" }
+    { "rule": "Submits no more than one application per organisation", "kind": "other" },
+    {
+      "rule": "Project takes direct water quality action and fits at least one eligible category",
+      "kind": "project"
+    },
+    {
+      "rule": "Strategic Project Provision projects span no more than 3 years or phases",
+      "kind": "project"
+    },
+    {
+      "rule": "Multiyear projects demonstrate a long-term water quality or ecological impact across a wider catchment",
+      "kind": "project"
+    }
   ],
   "documents": [
     "Constitution of the organisation or minutes of the most recent meeting",
@@ -43,10 +55,10 @@
     "Most recent audited or accountant-verified accounts or financial statement",
     "Costed work plan",
     "Drawings, plans, specifications or photographs, if applicable",
-    "Planning permission conditions or notice of exemption from planning, if applicable",
-    "Other statutory permissions, if applicable",
+    "Applicable project permissions, including planning conditions or exemption, statutory and landowner consents",
     "Current insurance policy, if physical work or voluntary labour is proposed",
-    "Evidence of tax clearance from Revenue for applications over €10,000"
+    "Tax reference number and clearance if the request or annual RBMS awards exceed €10,000",
+    "Support letters from other parties whose involvement is needed"
   ],
   "calls": [
     {
@@ -171,6 +183,24 @@
         "quote": "Only one application may be submitted per eligible organisation.",
         "checked_at": "2026-11-23",
         "method": "page"
+      },
+      {
+        "source_url": "https://riverbasin.ie/app/uploads/2026/11/CWDF-2027-Guidelines.pdf",
+        "quote": "Projects must demonstrate direct water quality actions and must fall into at least one of the categories listed below:",
+        "checked_at": "2026-11-24",
+        "method": "page"
+      },
+      {
+        "source_url": "https://riverbasin.ie/app/uploads/2026/11/CWDF-2027-Guidelines.pdf",
+        "quote": "The phased approach must not exceed 3 years/phases (e.g., 2027–2029).",
+        "checked_at": "2026-11-24",
+        "method": "page"
+      },
+      {
+        "source_url": "https://riverbasin.ie/app/uploads/2026/11/CWDF-2027-Guidelines.pdf",
+        "quote": "If your project has potential to span more than one funding year, you must demonstrate a long-term water quality or ecological impact across a wider river catchment.",
+        "checked_at": "2026-11-24",
+        "method": "page"
       }
     ],
     "documents": [
@@ -190,6 +220,24 @@
         "source_url": "https://riverbasin.ie/app/uploads/2026/11/CWDF-2027-Guidelines.pdf",
         "quote": "Drawings/Plans/Specifications/Photographs 10. Planning Permission: Conditions OR notice of exemption from Planning 11. Other Statutory Permissions (e.g. NPWS, IFI, etc.) 12. Current Insurance Policy 13. Evidence of Tax Clearance from Revenue for application > €10,000",
         "checked_at": "2026-11-23",
+        "method": "page"
+      },
+      {
+        "source_url": "https://riverbasin.ie/app/uploads/2026/11/CWDF-2027-Guidelines.pdf",
+        "quote": "Any permissions required (e.g. Planning permission, Appropriate Assessments, Strategic Environment Assessments landowner consent, lease arrangements) must be submitted with the application form.",
+        "checked_at": "2026-11-24",
+        "method": "page"
+      },
+      {
+        "source_url": "https://riverbasin.ie/app/uploads/2026/11/CWDF-2027-Guidelines.pdf",
+        "quote": "All organisations seeking grant aid in excess of €10,000 or where grants either paid or committed from RBMS during a financial year exceed €10,000 will be required to provide a Tax Reference Number (TRN) and evidence of Tax Clearance (or a Tax Clearance Access Number).",
+        "checked_at": "2026-11-24",
+        "method": "page"
+      },
+      {
+        "source_url": "https://riverbasin.ie/app/uploads/2026/11/CWDF-2027-Guidelines.pdf",
+        "quote": "Where the involvement or help of another party is required for the success of your project, please include letter(s) of support outlining their agreement to participate and the extent of their involvement.",
+        "checked_at": "2026-11-24",
         "method": "page"
       }
     ],
@@ -213,6 +261,12 @@
         "quote": "Applicants must submit a project summary report with the completed final drawdown form and include pictures, video clips, media articles, etc., as appropriate.",
         "checked_at": "2026-11-23",
         "method": "page"
+      },
+      {
+        "source_url": "https://riverbasin.ie/app/uploads/2026/11/CWDF-2027-Guidelines.pdf",
+        "quote": "Phased payments are strongly encouraged and will be considered on a case-by-case basis on completion of a partial drawdown request form. Progress reports will be required for each phase.",
+        "checked_at": "2026-11-24",
+        "method": "page"
       }
     ]
   },
@@ -221,5 +275,5 @@
     "steps": ["Contact your local Community Water Officer", "Online application via the portal"],
     "due": [null, "2027-01-18"]
   },
-  "after_award": { "reports": "final" }
+  "after_award": { "reports": "other" }
 }
