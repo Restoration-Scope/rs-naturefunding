@@ -1,10 +1,7 @@
 {
   "id": "paddy-pallin-landscape-restoration-grants",
   "name": "Paddy Pallin Landscape Restoration Grants",
-  "funder": {
-    "name": "Paddy Pallin Foundation",
-    "url": "https://paddypallinfoundation.org.au/"
-  },
+  "funder": { "name": "Paddy Pallin Foundation", "url": "https://paddypallinfoundation.org.au/" },
   "administered_by": null,
   "parent": null,
   "url": "https://paddypallinfoundation.org.au/grants/landscape-restoration",
@@ -15,15 +12,10 @@
     "freshwater",
     "species_conservation"
   ],
-  "applicant_types": [
-    "ngo",
-    "community_group"
-  ],
+  "applicant_types": ["ngo", "community_group"],
   "geography": {
     "scope": "countries",
-    "countries": [
-      "AU"
-    ],
+    "countries": ["AU"],
     "label": "New South Wales and the ACT"
   },
   "access": "direct",
@@ -33,39 +25,30 @@
     "max": 30000,
     "note": "No minimum; projects run three years or more, each year's funding after a satisfactory progress report"
   },
-  "co_finance_required": null,
+  "co_finance_required": false,
   "reporting": "Recipients report annually, in writing and by video, on progress against their deliverables; the Foundation also inspects sites.",
   "effort": {
     "steps": [
-      "Written application by email, covering the guide's eight sections"
-    ]
+      "Written application by email, covering the guide's eight sections",
+      "Grants committee review, with possible questions or a site visit"
+    ],
+    "due": ["2027-01-20", null]
   },
   "eligibility": [
+    { "rule": "Community organisation devises and leads the project", "kind": "project" },
     {
-      "rule": "Is a non-government organisation, not an individual",
-      "kind": "legal"
-    },
-    {
-      "rule": "Community organisation devises and leads the project",
+      "rule": "Public conservation land or private land with a registered conservation agreement, including mixed tenure",
       "kind": "project"
     },
+    { "rule": "Project runs for at least three years", "kind": "project" },
+    { "rule": "Younger members hold real roles in the group", "kind": "capacity" },
     {
-      "rule": "Site is on public conservation land, or private land under a registered conservation agreement",
+      "rule": "Project excludes advocacy, lobbying, research as an end in itself, and postgraduate student science",
       "kind": "project"
-    },
-    {
-      "rule": "Project runs for at least three years",
-      "kind": "project"
-    },
-    {
-      "rule": "Younger members hold real roles in the group",
-      "kind": "capacity"
     }
   ],
-  "after_award": {
-    "reports": "yearly",
-    "site_visits": true
-  },
+  "after_award": { "reports": "yearly", "site_visits": true },
+  "documents": ["Current site photographs", "Simple project budget"],
   "calls": [
     {
       "id": "2026-27",
@@ -73,10 +56,7 @@
       "url": "https://paddypallinfoundation.org.au/grants/landscape-restoration",
       "status": "open",
       "opens": "2026-10-20",
-      "deadline": {
-        "date": "2027-01-20",
-        "text": "Applications close 20 January 2027"
-      },
+      "deadline": { "date": "2027-01-20", "text": "Applications close 20 January 2027" },
       "evidence": {
         "status": {
           "source_url": "https://paddypallinfoundation.org.au/grants/landscape-restoration",
@@ -130,6 +110,12 @@
       "checked_at": "2026-11-23",
       "method": "page"
     },
+    "co_finance_required": {
+      "source_url": "https://paddypallinfoundation.org.au/grants/landscape-restoration",
+      "quote": "We encourage applicants to secure funding from additional sources, and we assess such applications favourably.",
+      "checked_at": "2026-11-24",
+      "method": "page"
+    },
     "reporting": {
       "source_url": "https://paddypallinfoundation.org.au/grants/landscape-restoration",
       "quote": "Recipients report annually, demonstrating progress against the deliverables they committed to. Reporting is written and video.",
@@ -142,15 +128,21 @@
         "quote": "Download the program guide and work through the eight sections it sets out.",
         "checked_at": "2026-11-23",
         "method": "page"
+      },
+      {
+        "source_url": "https://paddypallinfoundation.org.au/assets/files/landscape-restoration-grants.pdf",
+        "quote": "Send your application, or any questions about the program, to the Foundation by email. If you are unsure whether your project fits, contact us before applying. info@paddypallinfoundation.org.au APPLICATIONS OPEN 20 October 2026 APPLICATIONS CLOSE 20 January 2027",
+        "checked_at": "2026-11-24",
+        "method": "page"
+      },
+      {
+        "source_url": "https://paddypallinfoundation.org.au/grants/landscape-restoration",
+        "quote": "Our grants committee reads every application, and we may come back with questions or arrange a site visit before deciding.",
+        "checked_at": "2026-11-24",
+        "method": "page"
       }
     ],
     "eligibility": [
-      {
-        "source_url": "https://paddypallinfoundation.org.au/grants/landscape-restoration",
-        "quote": "We fund non-government organisations rather than individuals.",
-        "checked_at": "2026-11-23",
-        "method": "page"
-      },
       {
         "source_url": "https://paddypallinfoundation.org.au/grants/landscape-restoration",
         "quote": "The project itself must be devised and led by the community organisation.",
@@ -159,8 +151,8 @@
       },
       {
         "source_url": "https://paddypallinfoundation.org.au/grants/landscape-restoration",
-        "quote": "Private land is eligible where a conservation agreement, such as a Voluntary Conservation Agreement, is registered over it.",
-        "checked_at": "2026-11-23",
+        "quote": "Your site must be in New South Wales or the Australian Capital Territory, on public land held for conservation. Private land is eligible where a conservation agreement, such as a Voluntary Conservation Agreement, is registered over it. Mixed and joint tenure qualify on the same basis.",
+        "checked_at": "2026-11-24",
         "method": "page"
       },
       {
@@ -173,6 +165,12 @@
         "source_url": "https://paddypallinfoundation.org.au/grants/landscape-restoration",
         "quote": "We need to see younger members helping steer the groups we fund.",
         "checked_at": "2026-11-23",
+        "method": "page"
+      },
+      {
+        "source_url": "https://paddypallinfoundation.org.au/grants/landscape-restoration",
+        "quote": "The following fall outside this program: Advocacy campaigns and lobbying Research projects and postgraduate student science Applications from individuals Activities on private land not covered by a conservation agreement",
+        "checked_at": "2026-11-24",
         "method": "page"
       }
     ],
@@ -187,6 +185,20 @@
         "source_url": "https://paddypallinfoundation.org.au/grants/landscape-restoration",
         "quote": "The Foundation also conducts on-ground inspections.",
         "checked_at": "2026-11-23",
+        "method": "page"
+      }
+    ],
+    "documents": [
+      {
+        "source_url": "https://paddypallinfoundation.org.au/assets/files/landscape-restoration-grants.pdf",
+        "quote": "Attach photographs of the site as it currently stands, and a short video walking through it if you can.",
+        "checked_at": "2026-11-24",
+        "method": "page"
+      },
+      {
+        "source_url": "https://paddypallinfoundation.org.au/assets/files/landscape-restoration-grants.pdf",
+        "quote": "A simple budget is enough.",
+        "checked_at": "2026-11-24",
         "method": "page"
       }
     ]

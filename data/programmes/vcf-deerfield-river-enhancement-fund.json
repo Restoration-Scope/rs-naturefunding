@@ -22,15 +22,14 @@
   },
   "co_finance_required": false,
   "reporting": null,
-  "effort": { "steps": ["Electronic application"], "due": ["2027-01-19"] },
+  "effort": {
+    "steps": ["Electronic application", "Grant application review"],
+    "due": ["2027-01-19", null]
+  },
   "eligibility": [
     {
-      "rule": "Be a registered 501(c)(3) nonprofit, educational institution, or local/regional government unit, or use a fiscal sponsor",
+      "rule": "VT or MA 501(c)(3), educational institution, or local or regional government unit, or apply with a fiscal sponsor",
       "kind": "legal"
-    },
-    {
-      "rule": "Locate the project in the Deerfield River Basin or a partly included town, with a direct basin tie in the latter case",
-      "kind": "project"
     },
     {
       "rule": "Project has clear public benefit and enhances low-impact recreation, education or protection in the watershed",
@@ -119,18 +118,24 @@
         "quote": "Applications must be submitted by January 19, 2027, at 5 p.m.",
         "checked_at": "2026-11-23",
         "method": "page"
+      },
+      {
+        "source_url": "https://www.vermontcf.org/deerfield",
+        "quote": "All applications must be submitted electronically.",
+        "checked_at": "2026-11-24",
+        "method": "page"
+      },
+      {
+        "source_url": "https://vermontcf.org/for-nonprofits/",
+        "quote": "Otherwise, your application will be evaluated by a committee or team responsible for that grant round.",
+        "checked_at": "2026-11-24",
+        "method": "page"
       }
     ],
     "eligibility": [
       {
         "source_url": "https://vermontcf.org/wp-content/uploads/2026/10/Application-Deerfield-River-Enhancement-Fund-2026-27.pdf",
         "quote": "Deerfield River Enhancement grants must be paid to registered 501(c)(3) nonprofit organizations, educational institutions, or units of local and regional government within Vermont and Massachusetts. If your organization or group does not fall into one of these categories, you will need to use a fiscal sponsor.",
-        "checked_at": "2026-11-23",
-        "method": "page"
-      },
-      {
-        "source_url": "https://vermontcf.org/wp-content/uploads/2026/10/Application-Deerfield-River-Enhancement-Fund-2026-27.pdf",
-        "quote": "Projects must be located within the Deerfield River Basin or in towns with some portion falling within the basin. In the latter case, projects must be directly tied to the basin, e.g. a trail spur originating outside the basin that connects with a trail network within the basin.",
         "checked_at": "2026-11-23",
         "method": "page"
       },

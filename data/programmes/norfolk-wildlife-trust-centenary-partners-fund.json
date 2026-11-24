@@ -17,18 +17,12 @@
   "amount": { "currency": "GBP", "min": 500, "max": 1500 },
   "co_finance_required": null,
   "reporting": "A short end-of-project report, usually due within 1 to 2 months of completion, covering how the money was spent, how many people benefited and the outcomes achieved.",
-  "effort": { "steps": ["Application"], "due": ["2027-01-22"] },
+  "effort": { "steps": ["Application", "Awards panel review"], "due": ["2027-01-22", null] },
   "eligibility": [
-    { "rule": "Activities and projects are primarily within Norfolk", "kind": "project" },
-    {
-      "rule": "Annual turnover or funding does not exceed £100,000",
-      "kind": "finances",
-      "revenue": { "currency": "GBP", "max": 100000, "basis": "revenue" }
-    },
+    { "rule": "Annual income is below £100,000", "kind": "finances" },
     { "rule": "Supports Norfolk Wildlife Trust's charitable objectives", "kind": "other" },
-    { "rule": "Maintains a valid governing document throughout the grant", "kind": "legal" },
     {
-      "rule": "Operates a dedicated bank account with two independent signatories",
+      "rule": "Has a dedicated account requiring at least two unrelated signatories for withdrawals or online transactions",
       "kind": "capacity"
     },
     {
@@ -110,30 +104,24 @@
         "quote": "Our Centenary Partners Fund opens for applications on Monday 2 November 2026, and the closing deadline is Friday 22 January 2027.",
         "checked_at": "2026-11-23",
         "method": "page"
+      },
+      {
+        "source_url": "https://www.norfolkwildlifetrust.org.uk/CPF",
+        "quote": "The NWT Centenary Partners Fund Awards Panel will include representatives from our Centenary Partners and staff from Norfolk Wildlife Trust.",
+        "checked_at": "2026-11-24",
+        "method": "page"
       }
     ],
     "eligibility": [
       {
         "source_url": "https://www.norfolkwildlifetrust.org.uk/CPF",
-        "quote": "Are carrying out activities and projects primarily within Norfolk.",
-        "checked_at": "2026-11-23",
-        "method": "page"
-      },
-      {
-        "source_url": "https://www.norfolkwildlifetrust.org.uk/CPF",
-        "quote": "Have a turnover or funding that does not exceed £100,000 per annum.",
-        "checked_at": "2026-11-23",
+        "quote": "Applications will only be considered from groups with an income of less than £100,000 per annum.",
+        "checked_at": "2026-11-24",
         "method": "page"
       },
       {
         "source_url": "https://www.norfolkwildlifetrust.org.uk/CPF",
         "quote": "Support the charitable objectives of Norfolk Wildlife Trust.",
-        "checked_at": "2026-11-23",
-        "method": "page"
-      },
-      {
-        "source_url": "https://www.norfolkwildlifetrust.org.uk/CPF",
-        "quote": "Your group must maintain a valid governing document (such as a constitution, set of rules, or articles of association) throughout the life of the grant.",
         "checked_at": "2026-11-23",
         "method": "page"
       },

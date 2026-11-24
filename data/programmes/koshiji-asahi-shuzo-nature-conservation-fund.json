@@ -18,24 +18,27 @@
   "pool": { "currency": "JPY", "value": 3000000, "period": "year", "qualifier": "about" },
   "co_finance_required": null,
   "reporting": "An activity report and a financial report when the activity ends, and, in principle, taking part in the grantee results meeting.",
-  "effort": { "steps": ["Electronic application", "Eligibility review by selection committee"] },
+  "effort": {
+    "steps": ["Electronic application", "Eligibility review by selection committee"],
+    "due": ["2027-01-20", null]
+  },
   "eligibility": [
     { "rule": "Organisations have bylaws or equivalent rules and are nonprofit", "kind": "legal" },
     { "rule": "Organisations have accounting administration capacity", "kind": "capacity" },
     { "rule": "Organisations have a clearly identified person in charge", "kind": "capacity" },
     {
-      "rule": "Individuals are 20+ and legally responsible, or under-20 students apply jointly with a teacher",
+      "rule": "Individuals: legally responsible and 20+, or middle school, high school or university students aged ≤20 with a teacher",
       "kind": "legal"
     },
     { "rule": "Individuals have a recommender", "kind": "other" },
     {
-      "rule": "Academics and museum staff: conservation work, a local group or co-research with their students, not research alone",
+      "rule": "Faculty/museum researchers: conserve with a local group or co-research with students. Faculty may also conserve alone.",
       "kind": "other"
     },
     { "rule": "Runs a self-contained project", "kind": "project" },
     { "rule": "Starts from April 2027 and completes by September 2028", "kind": "project" }
   ],
-  "after_award": { "reports": "final" },
+  "after_award": { "reports": "final", "training": true },
   "documents": [
     "Organisation bylaws or regulations, if applying as a group",
     "Recommendation letter, if applying as an individual"
@@ -125,6 +128,12 @@
         "quote": "別に定める学識経験者を含む計5人以上、10人以下からなる選考委員会が、申請書及 びその他の必要書類にもとづき、各種基準に合致するか審査をおこないます。",
         "checked_at": "2026-11-23",
         "method": "page"
+      },
+      {
+        "source_url": "https://www.koshiji-nf.org/_files/ugd/40629b_b23c846c3edb4664904e8f579bdcc64c.pdf",
+        "quote": "申請しようとする団体・個人は、次の書類を事務局に電子データで提出してください。",
+        "checked_at": "2026-11-24",
+        "method": "page"
       }
     ],
     "eligibility": [
@@ -182,6 +191,12 @@
         "source_url": "https://www.koshiji-nf.org/_files/ugd/40629b_b23c846c3edb4664904e8f579bdcc64c.pdf",
         "quote": "助成対象活動が終了した時点で、活動報告書および収支報告書の提出が必要です。",
         "checked_at": "2026-11-23",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.koshiji-nf.org/_files/ugd/40629b_b23c846c3edb4664904e8f579bdcc64c.pdf",
+        "quote": "やむを得ない場合を除き、助成対 象活動終了後に開催される、こしじ水と緑の会主催の助成事業成果発表会への参加を原則 とします。",
+        "checked_at": "2026-11-24",
         "method": "page"
       }
     ],

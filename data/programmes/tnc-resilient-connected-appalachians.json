@@ -25,35 +25,42 @@
   },
   "co_finance_required": null,
   "reporting": null,
-  "effort": { "steps": ["Application"], "due": ["2027-01-22"] },
+  "effort": { "steps": ["Application", "Project evaluation"], "due": ["2027-01-22", null] },
   "eligibility": [
     {
-      "rule": "Is a conservation nonprofit, 501(c)(3) Indigenous-led group, federally recognized Tribe, or local/state government",
+      "rule": "Land trust, conservation 501(c)(3), nonprofit academic body, eligible public body, or federal Tribe or its nonprofit",
       "kind": "legal"
     },
     { "rule": "Project is within TNC's Appalachians Program boundary", "kind": "project" },
     {
-      "rule": "Project includes land partly or fully within the Resilient and Connected Network",
+      "rule": "Permanently protects land within or intersecting the Resilient and Connected Network",
       "kind": "project"
     },
-    { "rule": "Project is within or intersects a focal area", "kind": "project" },
     {
-      "rule": "Multiple parcels have one owner and, if non-adjacent, a clear conservation relationship",
+      "rule": "Intersects a mapped focal area, or qualifies for exceptional consideration near one",
+      "kind": "project"
+    },
+    {
+      "rule": "Parcels share ownership. Non-adjacent parcels have a conservation relationship that promotes landscape connectivity.",
       "kind": "project"
     },
     { "rule": "Project closes on or after April 1, 2027", "kind": "project" },
-    { "rule": "Applicant submits only one application per year", "kind": "other" }
+    { "rule": "Applicant submits only one application per year", "kind": "other" },
+    {
+      "rule": "Project closes within 12 months from the start of the grant agreement term",
+      "kind": "project"
+    }
   ],
   "documents": [
     "Maps and other project-specific attachments",
     "Project budget, including budget worksheet and narrative",
     "Conflict Inquiry form, if a nonprofit",
-    "Current accreditation letter, if an accredited land trust",
-    "Letter of Intent for accreditation, if applicable",
-    "IRS determination letter",
-    "Organizational by-laws and articles of incorporation",
-    "Most recent Form 990 or financial statement",
-    "Certificate of Good Standing"
+    "Current LTAC accreditation letter, for land trusts maintaining accreditation through 2027",
+    "Accreditation letter of intent submitted within the past year, if applicable to a non-accredited nonprofit",
+    "IRS determination letter for non-accredited land trusts and other nonprofits",
+    "Bylaws and articles of incorporation for non-accredited land trusts and other nonprofits",
+    "Latest Form 990 or financial statement for non-accredited land trusts and other nonprofits",
+    "Home-state Certificate of Good Standing for non-accredited land trusts and other nonprofits"
   ],
   "calls": [
     {
@@ -128,13 +135,19 @@
         "quote": "Applications open November 12, 2026 and close January 22, 2027.",
         "checked_at": "2026-11-23",
         "method": "page"
+      },
+      {
+        "source_url": "https://www.nature.org/en-us/about-us/where-we-work/priority-landscapes/appalachians/stories/resilient-connected-appalachians-grant/",
+        "quote": "Projects will be evaluated on the following criteria:",
+        "checked_at": "2026-11-24",
+        "method": "page"
       }
     ],
     "eligibility": [
       {
-        "source_url": "https://www.nature.org/content/dam/tnc/nature/en/documents/f/y/FY27-RCA-General-Questions.pdf",
-        "quote": "The program is open to all land trusts and other non-profit organizations that have conservation-oriented missions, as well as local, county, state government entities and Federally Recognized Tribal Nations. Indigenous-led organizations with 501(c)3 status are also eligible.",
-        "checked_at": "2026-11-23",
+        "source_url": "https://www.nature.org/en-us/about-us/where-we-work/priority-landscapes/appalachians/stories/resilient-connected-appalachians-grant/",
+        "quote": "The program is open to all land trusts and other non-profit 501(c)(3) organizations with a conservation-related mission, non-profit academic institutions, Federally Recognized Tribal Nations (as well as affiliated non-profits applying on their behalf), municipalities and village, town and county agencies that operate within the Appalachians boundary.",
+        "checked_at": "2026-11-24",
         "method": "page"
       },
       {
@@ -145,20 +158,20 @@
       },
       {
         "source_url": "https://www.nature.org/en-us/about-us/where-we-work/priority-landscapes/appalachians/stories/resilient-connected-appalachians-grant/",
-        "quote": "Projects must include lands that fall partly or fully within the Resilient and Connected Network.",
-        "checked_at": "2026-11-23",
+        "quote": "Eligible projects will permanently conserve lands that are within or intersect with the Resilient and Connected Network (RCN) and the program’s focal areas.",
+        "checked_at": "2026-11-24",
         "method": "page"
       },
       {
         "source_url": "https://www.nature.org/en-us/about-us/where-we-work/priority-landscapes/appalachians/stories/resilient-connected-appalachians-grant/",
-        "quote": "Projects must be within or intersect with a focal area.",
-        "checked_at": "2026-11-23",
+        "quote": "the project is within TNC’s Appalachians Program boundary and within a mapped focal area. Projects with outstanding conservation values and compelling community engagement attributes that are outside of but close to a focal area may be considered as funding allows. Please reach out to discuss before applying.",
+        "checked_at": "2026-11-24",
         "method": "page"
       },
       {
         "source_url": "https://www.nature.org/content/dam/tnc/nature/en/documents/f/y/FY27-RCA-General-Questions.pdf",
-        "quote": "Yes, if they are adjacent to one another and under a single ownership. If they are not adjacent, the project is still eligible so long as they are owned by the same individual(s) or entity and there is a clear conservation relationship between them",
-        "checked_at": "2026-11-23",
+        "quote": "Yes, if they are adjacent to one another and under a single ownership. If they are not adjacent, the project is still eligible so long as they are owned by the same individual(s) or entity and there is a clear conservation relationship between them that promotes landscape connectivity",
+        "checked_at": "2026-11-24",
         "method": "page"
       },
       {
@@ -171,6 +184,12 @@
         "source_url": "https://www.nature.org/content/dam/tnc/nature/en/documents/f/y/FY27-RCA-General-Questions.pdf",
         "quote": "Applicants may only submit one application per year.",
         "checked_at": "2026-11-23",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.nature.org/content/dam/tnc/nature/en/documents/f/y/FY27-RCA-General-Questions.pdf",
+        "quote": "While projects are required to close within 12 months, the grant term is 18 months, from June 30 through December 31 to allow for any unexpected delays.",
+        "checked_at": "2026-11-24",
         "method": "page"
       }
     ],
@@ -203,6 +222,12 @@
         "source_url": "https://www.nature.org/content/dam/tnc/nature/en/documents/f/y/FY27-RCA-General-Questions.pdf",
         "quote": "IRS determination letter § Organizational by-laws and articles of incorporation § Most recent Form 990 or Financial Statement § Certificate of Good Standing from State where organization is located",
         "checked_at": "2026-11-23",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.nature.org/content/dam/tnc/nature/en/documents/f/y/FY27-RCA-General-Questions.pdf",
+        "quote": "Land trusts that are currently accredited by the Land Trust Accreditation Commission (LTAC) and will maintain their accreditation through 2027 must · upload their current accreditation letter.",
+        "checked_at": "2026-11-24",
         "method": "page"
       }
     ],
