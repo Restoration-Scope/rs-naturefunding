@@ -82,6 +82,13 @@ describe('a listing can’t claim a place its funder doesn’t name', () => {
     ['a part of a country it doesn’t take', { scope: 'countries', countries: ['GL'], parts: { PT: 'the Azores' } }, 'parts names PT'],
   ])('%s', (_, g, want) => expect(problems(g).join('\n')).toContain(want))
 
+  test('a country named in the quote may be named; one only in the label may not', () => {
+    const g = regions('New Zealand or a developing country', ['africa', 'oceania'], { areas: ['africa'], named: ['NZ'] })
+    expect(problems(g, 'Be based in New Zealand or in a developing country')).toEqual([])
+    expect(problems(g, 'developing countries').join()).toContain('named holds NZ')
+    expect(problems({ ...g, except: ['NZ'] }, 'New Zealand').join()).toContain('both named and except')
+  })
+
   test.each([
     ['a quote that names less than the label', regions('Across Africa', ['africa'], { whole: true }), 'Projects in Southern Africa', 'names only a part'],
     ['a country the words leave out', regions('Across Africa', ['africa'], { whole: true }), 'Across Africa except Kenya', 'name KE'],
@@ -103,7 +110,6 @@ describe('a listing can’t claim a place its funder doesn’t name', () => {
     regions('Europe and the Mediterranean basin', ['europe', 'africa', 'middle_east'], { whole: ['europe'], areas: ['mediterranean_basin'] }),
     regions('Developing countries', ['africa', 'asia'], { areas: ['africa', 'asia'] }),
     regions('Latin America and the Caribbean', ['latin_america_caribbean'], { whole: true }),
-    regions('New Zealand or a developing country', ['africa', 'oceania'], { areas: ['africa'], named: ['NZ'] }),
   ])('%o passes', (g) => expect(problems(g)).toEqual([]))
 
   test('every named area holds countries the finder lists', () => {

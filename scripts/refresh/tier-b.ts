@@ -73,6 +73,8 @@ function fit<T>(schema: z.ZodType<T>, value: unknown): { ok: true; value: T } | 
 function withReadPlaces(raw: unknown, p: Programme): unknown {
   const old = p.geography
   if (!isRecord(raw) || raw.scope !== 'countries' || old?.scope !== 'countries' || !Array.isArray(raw.countries)) return raw
+  // Only a place read from a list or several pages: a page that now says less ("mainland only") must still show as a change.
+  if (!(old.list || old.parts || p.evidence.places)) return raw
   return same([...raw.countries].sort(), [...old.countries].sort()) ? old : raw
 }
 function placeIssues(g: Programme['geography'], p: Programme, quote: Evidence): string[] {

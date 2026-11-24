@@ -62,7 +62,7 @@ export function geographyIssues(p: Pick<Programme, 'geography' | 'evidence'>, li
     }
     // …and no country the list lacks, unless the funder's own words name it.
     const listed = lists && g.list ? [g.list].flat().flatMap((id) => lists.get(id)?.countries ?? []) : null
-    const words = listed ? namedIn(quotes) : []
+    const words = listed ? namedIn(quotes.split(/[.;]\s/).filter((s) => !EXCLUDES.test(s)).join('. ')) : []
     const extra = listed ? g.countries.filter((c) => !listed.includes(c) && !words.includes(c)) : []
     if (extra.length) say(`countries adds ${extra.join(', ')}, not on its list and not named in the quotes`)
     const strays = Object.keys(g.parts ?? {}).filter((c) => !g.countries.includes(c))
@@ -80,8 +80,10 @@ export function geographyIssues(p: Pick<Programme, 'geography' | 'evidence'>, li
 
   const words = `${g.label}. ${quotes}`
   const spelled = namedIn(words)
-  const unnamed = (g.named ?? []).filter((c) => !spelled.includes(c))
-  if (unnamed.length) say(`named holds ${unnamed.join(', ')}, which the label and quotes don't name`)
+  const unnamed = (g.named ?? []).filter((c) => !namedIn(quotes).includes(c))
+  if (unnamed.length) say(`named holds ${unnamed.join(', ')}, which the quotes don't name`)
+  const both = (g.named ?? []).filter((c) => g.except?.includes(c))
+  if (both.length) say(`${both.join(', ')} is in both named and except`)
   const closed = CLOSED.exec(words.replace(/\b(not|no)\b[^.]*\blist\b[^.]*/gi, ''))
   const only = words.split(/[.;]\s/).find((s) => ONLY.test(s) && !EXCLUDES.test(s) && namedIn(s).length > 1)
   if (only) say(`“${only.trim()}” closes a set of countries: use scope countries`)
@@ -90,7 +92,8 @@ export function geographyIssues(p: Pick<Programme, 'geography' | 'evidence'>, li
   const exclusion = /except|outside/i.test(g.label)
   for (const r of whole) if (!exclusion && !REGION_WORDS[r].test(unnarrowed(g.label))) say(`whole claims all of ${r}, which the label doesn't name`)
     else if (REGION_WORDS[r].test(quotes) && !REGION_WORDS[r].test(unnarrowed(quotes))) say(`whole claims all of ${r}, but the quote names only a part of it`)
-  if (g.whole === true && (GROUP.test(g.label) || NARROW.test(bare(g.label)))) say('whole claims every country, but the label names a group or a smaller place: use areas')
+  if (g.whole && !g.except && !areas.length && GROUP.test(g.label)) say('whole claims every country, but the label names a group: use areas')
+  else if (g.whole === true && (GROUP.test(g.label) || NARROW.test(bare(g.label)))) say('whole claims every country, but the label names a group or a smaller place: use areas')
   // Without this, "Mediterranean basin" mapped to africa shows on Kenya's page.
   if (!g.whole && !g.except && NARROW.test(bare(g.label)) && areas.some((a) => g.regions.includes(a as Region) && !REGION_WORDS[a as Region].test(unnarrowed(g.label))))
     say('the label names a place smaller than a region: name it in areas (src/lib/geo.ts), not the whole region')
