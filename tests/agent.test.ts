@@ -5,7 +5,8 @@ import { existsSync, readFileSync } from 'node:fs'
 import { join } from 'node:path'
 import { parseHTML } from 'linkedom'
 import { evidenceOf } from '../src/data/load'
-import { listingFor, programmes } from '../src/lib/data'
+import { buildDate, listingFor, programmes } from '../src/lib/data'
+import { effectiveCallStatus } from '../src/lib/status'
 import { longDate } from '../src/lib/format'
 import { absolute } from '../src/lib/site'
 import { twinPath } from '../src/lib/twins'
@@ -26,6 +27,7 @@ const local = (url: string) => url.slice(site.length - 1)
 const htmlFile = (path: string) => `${path.slice(1)}index.html`
 const sitemap = [...read('sitemap.xml').matchAll(/<loc>([^<]+)<\/loc>/g)].map((m) => local(m[1]!))
 const llms = read('llms.txt')
+const index = read('index.md')
 
 describe('every page has a Markdown twin', () => {
   test('each sitemap page links its twin, the twin is built, and llms.txt lists it', () => {
@@ -37,8 +39,28 @@ describe('every page has a Markdown twin', () => {
       const link = parseHTML(`${head}</head><body></body></html>`).document.querySelector('link[rel="alternate"][type="text/markdown"]')
       expect(link?.getAttribute('href'), path).toBe(twin)
       expect(existsSync(join(dist, twinPath(path).slice(1))), twin).toBe(true)
-      expect(llms.includes(`](${twin})`), `llms.txt lists ${twin}`).toBe(true)
+      // Programmes are too many for llms.txt: index.md lists their copies, and llms.txt says where each is.
+      const listed = (path.startsWith('/p/') ? index : llms).includes(`](${twin})`)
+      expect(listed, `an index lists ${path}`).toBe(true)
     }
+  })
+
+  test('a call’s status in a twin is its status by date, as the page shows it', () => {
+    const now = new Date(`${buildDate}T12:00:00Z`)
+    for (const p of programmes) {
+      const md = read(`p/${p.id}.md`)
+      for (const c of p.calls) {
+        const dated = effectiveCallStatus(c, now)
+        if (dated === c.status) continue
+        const word = { open: 'Open', upcoming: 'Upcoming', closed: 'Closed' }[dated as 'open' | 'upcoming' | 'closed']
+        expect(md, `${p.id} ${c.id}`).toContain(`**${p.name}, ${c.label}, status:** ${word}, by its dates`)
+      }
+    }
+  })
+
+  test('an assistant reads all of llms.txt: it stays under 40,000 characters and says where programme copies are', () => {
+    expect(llms.length).toBeLessThan(40_000)
+    expect(llms).toContain(absolute('/p/{id}.md'))
   })
 
   test('llms-full.txt has the prose pages in place of its marker', () => {
