@@ -19,6 +19,7 @@
   "access": "direct",
   "window": "rolling",
   "amount": { "currency": "GBP", "max": 1000, "typical": true },
+  "pool": { "currency": "GBP", "value": 10000, "period": "year", "label": "available this year" },
   "co_finance_required": null,
   "reporting": null,
   "effort": { "steps": ["Application"] },
@@ -48,6 +49,12 @@
     }
   ],
   "evidence": {
+    "administered_by": {
+      "source_url": "https://www.northwestinvertebrates.org.uk/grants/",
+      "quote": "This site is a product of the Tanyptera Project at National Museums Liverpool. The project is funded externally by Tanyptera Trust.",
+      "checked_at": "2026-11-24",
+      "method": "page"
+    },
     "applicant_types": {
       "source_url": "https://www.northwestinvertebrates.org.uk/grants/",
       "quote": "Individuals, recording groups and conservation organisations",
@@ -60,6 +67,12 @@
       "checked_at": "2026-11-24",
       "method": "page"
     },
+    "access": {
+      "source_url": "https://www.northwestinvertebrates.org.uk/grants/",
+      "quote": "Individuals, groups and not-for-profit recording organisations are encouraged to apply.",
+      "checked_at": "2026-11-24",
+      "method": "page"
+    },
     "window": {
       "source_url": "https://www.northwestinvertebrates.org.uk/grants/",
       "quote": "Deadlines None",
@@ -69,18 +82,6 @@
     "amount": {
       "source_url": "https://www.northwestinvertebrates.org.uk/grants/",
       "quote": "Normally up to £1,000, but more ambitious projects will be considered",
-      "checked_at": "2026-11-24",
-      "method": "page"
-    },
-    "access": {
-      "source_url": "https://www.northwestinvertebrates.org.uk/grants/",
-      "quote": "Individuals, groups and not-for-profit recording organisations are encouraged to apply.",
-      "checked_at": "2026-11-24",
-      "method": "page"
-    },
-    "administered_by": {
-      "source_url": "https://www.northwestinvertebrates.org.uk/grants/",
-      "quote": "This site is a product of the Tanyptera Project at National Museums Liverpool. The project is funded externally by Tanyptera Trust.",
       "checked_at": "2026-11-24",
       "method": "page"
     },
@@ -113,6 +114,5 @@
       }
     ]
   },
-  "checked_at": "2026-11-24",
-  "pool": { "currency": "GBP", "value": 10000, "period": "year", "label": "available this year" }
+  "checked_at": "2026-11-24"
 }
