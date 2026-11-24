@@ -131,14 +131,14 @@ Prompt 20.1 (2026-11-20), from the batch 2 review (24% of items wrong): either/o
 
 ## Second reader eval (2026-11-24)
 
-`eval-reviewers.ts` on 9 programmes with gpt-5.6 readings (108 items, a canary in each programme). Each of the 32 items any reviewer flagged was then settled against the funders' pages by two judges (gpt-6.2-sol xhigh, a fresh Opus); 14 are wrong for both, 4 sound for both, 14 split. One judge is the winning model; the Opus judge confirmed each of the 14 on its own.
+`eval-reviewers.ts` on 9 programmes with gpt-5.6 readings (108 items, a canary in each programme). Two judges (gpt-6.2-sol xhigh, a fresh Opus) settled each of the 32 items any reviewer flagged against the funders' pages: each called 21 wrong; they agree on 14 wrong and 4 sound. A key that needs the Sol judge favours the Sol reviewer, so the Opus judge's key is the fairer one.
 
-| Reviewer | Runs | Confirmed errors caught (of 14) | Flags both judges call sound | Cost per 9 programmes | Minutes |
+| Reviewer (runs) | Errors caught, Opus judge's 21 | Both judges' 14 | Flags the Opus judge calls sound | Cost per 9 programmes | Minutes |
 | --- | --- | --- | --- | --- | --- |
-| gpt-6.2-sol-high (codex) | 1 | 14 | 1 | ChatGPT plan, 190k tokens | 13 |
-| claude-opus-5-5-high (Cursor) | 3 | 1–3 | 0 | $1.56–2.02 | 5–6 |
-| claude-sonnet-5-5-high (Cursor) | 3 | 1 | 0 | $1.03–1.08 | 5 |
-| gemini-4-neon-high (Cursor) | 1 | 3 | 0 | $2.13 | 11 |
-| gemini-4-neon-medium (Cursor) | 1 | 0 | 0 | $0.90 | 5 |
+| gpt-6.2-sol-high, codex (1) | 16 | 14 | 7 | ChatGPT plan, 190k tokens | 13 |
+| claude-opus-5-5-high, Cursor (3) | 5–7 | 1–3 | 0 | $1.56–2.02 | 5–6 |
+| claude-sonnet-5-5-high, Cursor (2 clean) | 4–7 | 1 | 0 | $1.03–1.08 | 5 |
+| gemini-4-neon-high, Cursor (1) | 3 | 3 | 0 | $2.13 | 11 |
+| gemini-4-neon-medium, Cursor (1) | 0 | 0 | 0 | $0.90 | 5 |
 
-All caught every canary, so canaries prove the reviewer read the items, not that it judges them well. The errors the Claude and Gemini reviewers passed are omitted scope and exemptions (KNCF's Basic categories, CLP's per-member limits, Klimawildnis's 333 ha minimum in its guide). So the second reader is `gpt-6.2-sol-high` and the rule is another model, not another family. Two other fixes came out of it: one Sonnet run read the earlier verdicts in `tests/fixtures/review-labels/` (the brief now forbids it and the scorer marks it), and briefs now name the id and per-field quote caps that made two runs fail apply. One run per model is a small sample: repeat on the next batch before trusting the gap's size.
+All caught every canary, so canaries prove the reviewer read the items, not that it judges them well. The errors the Claude and Gemini reviewers passed are omitted scope and exemptions (KNCF's Basic categories, CLP's per-member limits, Klimawildnis's 333 ha minimum in its guide); Sol finds them at the price of more flags a judge disputes. What lands matters more than flags: an Opus judge rated Sol's 27 edits to KNCF, Klimawildnis and CLP (`review.ts run`, 3 programmes, 10 min plus two repairs of under a minute) 23 better, 3 neutral, 1 worse (an either/or route split into its own rule). So the second reader is `gpt-6.2-sol-high` and the rule is another model, not another family; gpt-6.2 isn't on Cursor. Fixes that came out of it: a third Sonnet run read the earlier verdicts in `tests/fixtures/review-labels/` (excluded above; the brief now forbids it and the scorer marks it), briefs name the id and the per-field caps that made runs fail apply, and `review.ts run` hands a refusal back to the reviewer for up to two repairs. Evidence: `docs/reviewer-eval/2026-11-24/` (the disputed items, who flagged each, both judges, the judged edits). One Sol run is a small sample: repeat on the next batch.

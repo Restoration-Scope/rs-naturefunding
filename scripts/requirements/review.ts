@@ -404,8 +404,8 @@ function setOne(p: P, f: (typeof ONE_FIELDS)[number], value: unknown, e?: Ev) {
 
 /**
  * A model without its route and effort: `cursor:gpt-5.6-luna-high` is `gpt-5.6-luna`. The reviewer must be another model than
- * every one that read the programme. Not another family: on the 2026-11-24 eval (scripts/requirements/eval-reviewers.ts)
- * gpt-6.2-sol caught 14 of 14 errors two judges confirmed in gpt-5.6 readings; Claude and Gemini reviewers caught 1 to 3.
+ * every one that read the programme. Not another family: on the 2026-11-24 eval (docs/requirements-pipeline.md) gpt-6.2-sol
+ * caught 16 of the 21 errors an Opus judge confirmed in gpt-5.6 readings; Claude and Gemini reviewers caught 0 to 7.
  */
 export const modelBase = (model: string) => model.toLowerCase().replace(/^[\w-]+:/, '').replace(/-(low|medium|high|xhigh|max)$/, '')
 /** The default second reader, run by `review.ts run` through codex on the ChatGPT plan. */
