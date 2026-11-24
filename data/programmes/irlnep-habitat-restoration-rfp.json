@@ -68,7 +68,7 @@
       "kind": "project"
     },
     {
-      "rule": "On private land: applicant is a public agency or nonprofit, and the owner is a project partner",
+      "rule": "Private land: public agency or nonprofit lead, owner partner with direct or in-kind support, and public benefit",
       "kind": "project"
     },
     {
@@ -82,6 +82,10 @@
     {
       "rule": "Not a project focused on citizen engagement",
       "kind": "project"
+    },
+    {
+      "rule": "Document quantified restoration metrics, such as acres or linear feet restored",
+      "kind": "project"
     }
   ],
   "co_finance": {
@@ -93,12 +97,15 @@
     "reports": "quarterly"
   },
   "documents": [
-    "Map of the project location and at least one 300 dpi photo, as separate JPEG or PNG files",
+    "Project location map and at least one representative photo, attached separately as JPEG/PNG at 300 dpi or higher",
     "Cover letter from the director or another person authorised to submit",
     "Letter from each funding partner endorsing the project and stating its role and commitment",
     "Signed Scrutinized Companies certification (Exhibit A), for-profit companies only",
-    "On private land: owner's support letter with documentation of ownership",
-    "Copy of a federal NICRA, if indirect costs exceed 15%"
+    "Private land: owner’s support letter with proof of ownership and access, liability and applicable land-use assurances",
+    "Copy of a federal NICRA, if indirect costs exceed 15%",
+    "One-page executive summary",
+    "Detailed project budget with cost and match breakdown",
+    "Letters of support for cash or in-kind match providers not covered by partner letters"
   ],
   "calls": [
     {
@@ -207,6 +214,12 @@
         "quote": "The IRL Council Board of Directors make the final decision on project funding pursuant to proposal review, ranking, and recommendations from proposal review committees drawn from the IRLNEP Management Conference and availability of funds.",
         "checked_at": "2026-11-20",
         "method": "page"
+      },
+      {
+        "source_url": "https://onelagoon.org/wp-content/uploads/FY-2028-Habitat-Restoration-RFP.pdf",
+        "quote": "Proposals are required to be submitted via electronic mail in Portable Document Format (PDF) only",
+        "checked_at": "2026-11-24",
+        "method": "page"
       }
     ],
     "eligibility": [
@@ -230,8 +243,8 @@
       },
       {
         "source_url": "https://onelagoon.org/wp-content/uploads/FY-2028-Habitat-Restoration-RFP.pdf",
-        "quote": "1. The Applicant must be a public agency or not-for profit organization; 2. The private property owner (individual or association) must be a partner on the project",
-        "checked_at": "2026-11-20",
+        "quote": "1. The Applicant must be a public agency or not-for profit organization; 2. The private property owner (individual or association) must be a partner on the project with direct and/or inkind support; 3. The project must be in the public good",
+        "checked_at": "2026-11-24",
         "method": "page"
       },
       {
@@ -250,6 +263,12 @@
         "source_url": "https://onelagoon.org/wp-content/uploads/FY-2028-Habitat-Restoration-RFP.pdf",
         "quote": "Projects focused on citizen engagement will not be considered under this RFP.",
         "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://onelagoon.org/wp-content/uploads/FY-2028-Habitat-Restoration-RFP.pdf",
+        "quote": "Project proposals must document quantified restoration metrics such as acres to be restored, linear feet restored, number of filter feeders added, etc.",
+        "checked_at": "2026-11-24",
         "method": "page"
       }
     ],
@@ -276,12 +295,6 @@
     "documents": [
       {
         "source_url": "https://onelagoon.org/wp-content/uploads/FY-2028-Habitat-Restoration-RFP.pdf",
-        "quote": "Provide as a separate attachment a map of the project location and at least one high-resolution photo representative of the project (site plan, technology, work of volunteers, etc.).",
-        "checked_at": "2026-11-20",
-        "method": "page"
-      },
-      {
-        "source_url": "https://onelagoon.org/wp-content/uploads/FY-2028-Habitat-Restoration-RFP.pdf",
         "quote": "The proposal must be accompanied by a cover letter from the director, or another person authorized to submit the proposal for the organization or company.",
         "checked_at": "2026-11-20",
         "method": "page"
@@ -300,14 +313,38 @@
       },
       {
         "source_url": "https://onelagoon.org/wp-content/uploads/FY-2028-Habitat-Restoration-RFP.pdf",
-        "quote": "The following documentation from the property owner MUST accompany the proposal: Written support letter from the property owner of record with documentation of ownership",
+        "quote": "A copy of a Federal NICRA is required if requesting over 15%.",
         "checked_at": "2026-11-20",
         "method": "page"
       },
       {
         "source_url": "https://onelagoon.org/wp-content/uploads/FY-2028-Habitat-Restoration-RFP.pdf",
-        "quote": "A copy of a Federal NICRA is required if requesting over 15%.",
-        "checked_at": "2026-11-20",
+        "quote": "Provide as a separate attachment a map of the project location and at least one high-resolution photo representative of the project (site plan, technology, work of volunteers, etc.). These should be in JPEG or PNG format and a minimum of 300 dpi. Do NOT embed these images in a document.",
+        "checked_at": "2026-11-24",
+        "method": "page"
+      },
+      {
+        "source_url": "https://onelagoon.org/wp-content/uploads/FY-2028-Habitat-Restoration-RFP.pdf",
+        "quote": "Written support letter from the property owner of record with documentation of ownership and statement that owner is willing to accept the following: access to property for Applicant to implement the work, liability waiver, in-perpetuity conservation easement or restrictive covenant on land to be improved (if applicable) and long-term maintenance and management plan (if applicable).",
+        "checked_at": "2026-11-24",
+        "method": "page"
+      },
+      {
+        "source_url": "https://onelagoon.org/wp-content/uploads/FY-2028-Habitat-Restoration-RFP.pdf",
+        "quote": "The one-page executive summary is in the format defined per the instructions herein and included with the proposal.",
+        "checked_at": "2026-11-24",
+        "method": "page"
+      },
+      {
+        "source_url": "https://onelagoon.org/wp-content/uploads/FY-2028-Habitat-Restoration-RFP.pdf",
+        "quote": "Include a description of all costs and detailed accounting of in-kind and cash match, and sources of all funds.",
+        "checked_at": "2026-11-24",
+        "method": "page"
+      },
+      {
+        "source_url": "https://onelagoon.org/wp-content/uploads/FY-2028-Habitat-Restoration-RFP.pdf",
+        "quote": "All providers of matching funds (cash or in-kind) must be quantified in the budget and supported by organization letters of support.",
+        "checked_at": "2026-11-24",
         "method": "page"
       }
     ]

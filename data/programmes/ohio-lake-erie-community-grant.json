@@ -19,10 +19,7 @@
   },
   "co_finance_required": false,
   "reporting": null,
-  "effort": {
-    "steps": ["Full proposal submission", "Grants Committee review", "USEPA suitability review"],
-    "due": ["2026-12-16", null, null]
-  },
+  "effort": { "steps": ["Submit full application as a PDF by email"], "due": ["2026-12-16"] },
   "eligibility": [
     { "rule": "Applicant is based in Ohio", "kind": "legal" },
     { "rule": "Applicant has a federal tax identification number", "kind": "legal" },
@@ -35,9 +32,13 @@
     {
       "rule": "Proposal includes a numeric estimate for at least one Measure of Progress",
       "kind": "project"
+    },
+    { "rule": "Include a component to share project results", "kind": "project" },
+    {
+      "rule": "For work on private property, the land is protected for at least 10 years",
+      "kind": "project"
     }
   ],
-  "after_award": { "reports": "interim_and_final" },
   "calls": [
     {
       "id": "sfy-2027",
@@ -110,21 +111,9 @@
     },
     "effort": [
       {
-        "source_url": "https://lakeerie.ohio.gov/funding-oportunities/lake+erie+community+grant",
-        "quote": "Full Proposal Submission Deadline - December 16, 2026",
-        "checked_at": "2026-11-23",
-        "method": "page"
-      },
-      {
-        "source_url": "https://dam.assets.ohio.gov/image/upload/v1789479818/lakeerie.ohio.gov/Lake%20Erie%20Community%20Grant%20%28LECG%29/26-27_LECG_Midsize_Grant_Application_Form_Instructions.pdf",
-        "quote": "All applications are reviewed by a Grants Committee, which consists of staff from the Commission Agencies and coalition partners.",
-        "checked_at": "2026-11-23",
-        "method": "page"
-      },
-      {
-        "source_url": "https://dam.assets.ohio.gov/image/upload/v1789479818/lakeerie.ohio.gov/Lake%20Erie%20Community%20Grant%20%28LECG%29/26-27_LECG_Midsize_Grant_Application_Form_Instructions.pdf",
-        "quote": "USEPA will also review the recommendations for suitability.",
-        "checked_at": "2026-11-23",
+        "source_url": "https://dam.assets.ohio.gov/image/upload/v1789478513/lakeerie.ohio.gov/Lake%20Erie%20Community%20Grant%20%28LECG%29/2026-10_LECG_RFA_Midsize_FINAL.pdf",
+        "quote": "The application PDF should be sent by email to lakeeriecommission@lakeerie.ohio.gov. TIMELINE The deadline to apply is December 16, 2026 at 11:59 pm.",
+        "checked_at": "2026-11-24",
         "method": "page"
       }
     ],
@@ -164,13 +153,17 @@
         "quote": "All proposals MUST include a numeric estimate for the project proposal for at least one of the following Measures of Progress:",
         "checked_at": "2026-11-23",
         "method": "page"
-      }
-    ],
-    "after_award": [
+      },
       {
-        "source_url": "https://dam.assets.ohio.gov/image/upload/v1789479818/lakeerie.ohio.gov/Lake%20Erie%20Community%20Grant%20%28LECG%29/26-27_LECG_Midsize_Grant_Application_Form_Instructions.pdf",
-        "quote": "At a minimum each project is required to submit a written interim report and a written final report.",
-        "checked_at": "2026-11-23",
+        "source_url": "https://dam.assets.ohio.gov/image/upload/v1789478513/lakeerie.ohio.gov/Lake%20Erie%20Community%20Grant%20%28LECG%29/2026-10_LECG_RFA_Midsize_FINAL.pdf",
+        "quote": "Each project is required to contain a dissemination component.",
+        "checked_at": "2026-11-24",
+        "method": "page"
+      },
+      {
+        "source_url": "https://dam.assets.ohio.gov/image/upload/v1789478513/lakeerie.ohio.gov/Lake%20Erie%20Community%20Grant%20%28LECG%29/2026-10_LECG_RFA_Midsize_FINAL.pdf",
+        "quote": "The land is protected (for example, by a CREP agreement or a public easement) for a minimum of 10 years.",
+        "checked_at": "2026-11-24",
         "method": "page"
       }
     ]

@@ -15,11 +15,16 @@
   "access": "direct",
   "window": "fixed",
   "amount": { "currency": "JPY", "max": 2000000, "per": "year" },
-  "co_finance_required": null,
+  "co_finance_required": false,
   "reporting": null,
   "effort": {
-    "steps": ["Application documents", "Document review", "Grant application, if selected"],
-    "more_after": true
+    "steps": [
+      "Submit application at least one month before planned start",
+      "Document review",
+      "Grant application, if selected"
+    ],
+    "more_after": true,
+    "due": ["2026-12-11", null, null]
   },
   "eligibility": [
     { "rule": "Have an office in Saga Prefecture", "kind": "legal" },
@@ -29,26 +34,32 @@
       "kind": "capacity"
     },
     {
-      "rule": "Have no members or effective controllers in the listed organised-crime categories",
+      "rule": "Applicant, members and effective controllers fall outside the listed organised-crime categories",
       "kind": "legal"
     },
-    { "rule": "Carry out the project inside Saga Prefecture", "kind": "project" },
     { "rule": "Do not pursue profit with the project", "kind": "project" },
     { "rule": "Ensure the project does not benefit only specific people", "kind": "project" },
-    { "rule": "Have no overlapping funding for eligible costs", "kind": "other" }
+    {
+      "rule": "Do not receive another subsidy or commission for the same eligible costs",
+      "kind": "other"
+    },
+    {
+      "rule": "Target degraded forest in areas such as water sources or upslope of homes or public facilities",
+      "kind": "project"
+    }
   ],
   "after_award": { "reports": "final", "site_visits": true },
   "documents": [
     "Detailed budget breakdown sheet",
-    "Cost evidence, including two quotations for purchases of ¥50,000 or more",
+    "Cost evidence for items without unit caps, with two or more quotes for purchases of ¥50,000 or more",
     "Member list",
     "Bylaws or rules, if the organisation has them",
-    "Identity document, if applying for the first time or after a representative change",
+    "Representative’s ID copy or equivalent, for first-time applicants or when the representative changes",
     "Land-use consent form",
     "Planned project-site location map",
     "Planned project-site photographs",
     "Outsourcing justification with site photographs, if external work is necessary",
-    "Equipment ledger, if equipment purchases are included"
+    "Applicant’s pledge (Form 4)"
   ],
   "calls": [
     {
@@ -106,6 +117,12 @@
       "checked_at": "2026-11-23",
       "method": "page"
     },
+    "co_finance_required": {
+      "source_url": "https://www.pref.saga.lg.jp/kiji00384705/3_84705_388098_up_ocd1dw7l.pdf",
+      "quote": "補助対象経費の10/10以内",
+      "checked_at": "2026-11-24",
+      "method": "page"
+    },
     "effort": [
       {
         "source_url": "https://www.pref.saga.lg.jp/kiji00384705/index.html",
@@ -153,12 +170,6 @@
       },
       {
         "source_url": "https://www.pref.saga.lg.jp/kiji00384705/3_84705_388046_up_0yemy1kn.pdf",
-        "quote": "(1)県外で実施するもの",
-        "checked_at": "2026-11-23",
-        "method": "page"
-      },
-      {
-        "source_url": "https://www.pref.saga.lg.jp/kiji00384705/3_84705_388046_up_0yemy1kn.pdf",
         "quote": "(3)営利を目的とするもの",
         "checked_at": "2026-11-23",
         "method": "page"
@@ -173,6 +184,12 @@
         "source_url": "https://www.pref.saga.lg.jp/kiji00384705/3_84705_388046_up_0yemy1kn.pdf",
         "quote": "(6)当補助金と対象経費を重複して国、県その他の補助金又は委託を受けるも の",
         "checked_at": "2026-11-23",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.pref.saga.lg.jp/kiji00384705/index.html",
+        "quote": "水源地や人家および公共施設の上部等に位置する荒廃した森林",
+        "checked_at": "2026-11-24",
         "method": "page"
       }
     ],
@@ -201,6 +218,12 @@
         "source_url": "https://www.pref.saga.lg.jp/kiji00384705/3_84705_388046_up_0yemy1kn.pdf",
         "quote": "活動予定地現場写真(任意様式)【必須】 ※活動予定地が荒廃森林か判断できるよう現場写真を撮影し、提出すること。 なお、現場写真は採択結果と併せて県ホームページ等で公表する場合があ ります。 8委託理由書(任意様式) ※危険性の高い作業等、やむを得ず外部業者に委託する必要がある場合は、 現場写真と理由を記載した資料を提出すること。 9備品台帳(任意様式) ※応募様式第 2 号で備品購入費を計上している場合は、備品台帳を予め作 成又は備え付けし、備品を購入した場合はその都度記入すること。",
         "checked_at": "2026-11-23",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.pref.saga.lg.jp/kiji00384705/3_84705_388046_up_0yemy1kn.pdf",
+        "quote": "誓約書(応募様式第４号)【必須】",
+        "checked_at": "2026-11-24",
         "method": "page"
       }
     ]
