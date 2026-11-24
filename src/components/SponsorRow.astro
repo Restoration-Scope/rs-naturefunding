@@ -12,7 +12,7 @@ interface Props {
 }
 const { s } = Astro.props
 
-type Cell = { label: string; lead?: string; lines: string[] }
+type Cell = { label: string; lead?: string; lines: string[]; aside?: string }
 type Answer = Sponsor['individuals']
 const answer = (label: string, a: Answer): Cell => ({
   label,
@@ -20,8 +20,10 @@ const answer = (label: string, a: Answer): Cell => ({
   lines: a?.value.note ? [a.value.note.charAt(0).toUpperCase() + a.value.note.slice(1)] : [],
 })
 const foreign = answer('Groups outside its country', s.foreign)
-// `where` can settle it when no answer is published, and says which places when the note doesn't.
-if (s.where && s.where.value.toLowerCase() !== s.foreign?.value.note?.toLowerCase()) foreign.lines.push(s.where.value)
+// `where` never answers for groups abroad: with no answer published it stands under "Not said", as what it is.
+const place = s.where && s.where.value.toLowerCase() !== s.foreign?.value.note?.toLowerCase() ? s.where.value : undefined
+if (place && s.foreign) foreign.lines.push(place)
+if (place && !s.foreign) foreign.aside = `Where: ${place}`
 const cells: Cell[] = [
   { label: 'Charges', lines: (s.fees ?? []).map((f) => f.value) },
   foreign,
@@ -52,7 +54,8 @@ const label = 'text-sm font-bold text-ink-2 lg:sr-only'
           <dd class="m-0 text-sm">
             {c.lead && <p class="font-bold">{c.lead}</p>}
             {c.lines.map((l) => <p class="[&+p]:mt-1">{l}</p>)}
-            {!c.lead && c.lines.length === 0 && <span class="text-ink-2">Not said</span>}
+            {!c.lead && c.lines.length === 0 && <p class="text-ink-2">Not said</p>}
+            {c.aside && <p class="mt-1">{c.aside}</p>}
           </dd>
         </div>
       ))
