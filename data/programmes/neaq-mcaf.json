@@ -2,17 +2,13 @@
   "id": "neaq-mcaf",
   "name": "Marine Conservation Action Fund",
   "funder": { "name": "New England Aquarium", "url": "https://www.neaq.org/" },
-  "administered_by": null,
+  "administered_by": { "name": "New England Aquarium", "url": "https://www.neaq.org" },
   "parent": null,
   "url": "https://www.neaq.org/conservation-and-research/marine-conservation-action-fund/",
   "summary": "Small grants for community-based ocean conservation projects led by local conservationists in low- and middle-income countries. Applicants send a short funding inquiry first and may then be invited to submit a full proposal.",
   "approaches": ["coastal_marine", "community_conservation"],
   "applicant_types": null,
-  "geography": {
-    "scope": "regions",
-    "regions": ["africa", "asia", "europe", "latin_america_caribbean", "middle_east", "oceania"],
-    "label": "low- and middle-income countries around the globe"
-  },
+  "geography": { "scope": "global" },
   "access": "direct",
   "window": "rolling",
   "amount": { "currency": "USD", "min": 1000, "max": 12000 },
@@ -49,6 +45,12 @@
     }
   ],
   "evidence": {
+    "administered_by": {
+      "source_url": "https://www.neaq.org/conservation-and-research/marine-conservation-action-fund/",
+      "quote": "The New England Aquarium's Marine Conservation Action Fund (MCAF) is a small grants and fellowship program",
+      "checked_at": "2026-11-24",
+      "method": "page"
+    },
     "geography": {
       "source_url": "https://www.neaq.org/conservation-and-research/marine-conservation-action-fund/",
       "quote": "provides support for community-based projects spearheaded by local conservation leaders in low- and middle-income countries around the globe",
