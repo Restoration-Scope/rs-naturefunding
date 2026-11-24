@@ -95,7 +95,7 @@ describe('sponsors', () => {
     name: 'Example Sponsor',
     url: URL,
     summary: 'Charity that takes wildlife projects.',
-    scope: 'nature',
+    types: [fact('wildlife')],
     country: fact('US'),
     projects: fact('Wildlife projects'),
     checked_at: '2026-11-01',
@@ -119,8 +119,14 @@ describe('sponsors', () => {
 
   test('checked_at is the oldest date of any fact, lists included', () => {
     const s = { ...base(), fees: [fact('5% of income', 'A fee of 5% is charged.', '2026-10-01')] }
-    expect(sponsorEvidence(s)).toHaveLength(3)
+    expect(sponsorEvidence(s)).toHaveLength(4)
     expect(issues(s)).toEqual(['checked_at: must be the oldest evidence date, 2026-10-01'])
+  })
+
+  test('a sponsor says what kinds of project it takes, each once', () => {
+    expect(issues({ ...base(), types: [] })).not.toEqual([])
+    expect(issues({ ...base(), types: ['wildlife'] })).not.toEqual([])
+    expect(issues({ ...base(), types: [fact('wildlife'), fact('wildlife')] })).toEqual(['types: the same value twice'])
   })
 
   test('a file takes its id as its name, and a listing that exists', () => {

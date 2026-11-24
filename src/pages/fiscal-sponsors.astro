@@ -2,13 +2,21 @@
 // Fiscal sponsors (data/sponsors) and the listed grants that say whether they take one.
 import Base from '../layouts/Base.astro'
 import SponsorCard from '../components/SponsorCard.astro'
-import Flag from '../components/Flag.astro'
+import SponsorRow from '../components/SponsorRow.astro'
+import { sponsorTypes, type SponsorType } from '../data/sponsors'
 import { programmes, sponsors } from '../lib/data'
 import { programmeTitle } from '../lib/format'
+import { sponsorTypeLabels } from '../lib/labels'
 import { absolute, RS_ORG } from '../lib/site'
 
 const countries = new Set(sponsors.map((s) => s.country.value)).size
-const description = `${sponsors.length} fiscal sponsors in ${countries} countries that take nature restoration and conservation projects: what each takes, charges and asks for, in its own words.`
+const description = `${sponsors.length} fiscal sponsors in ${countries} countries for nature projects and the tools they need, by type of project: what each takes, charges and asks for, in its own words.`
+const groups = sponsorTypes
+  .map((type) => ({ type, label: sponsorTypeLabels[type], list: sponsors.filter((s) => s.types.some((t) => t.value === type)) }))
+  .filter((g) => g.list.length > 0)
+const anySubject: SponsorType[] = ['environment', 'any']
+const broad = groups.filter((g) => anySubject.includes(g.type))
+const columns = ['Sponsor', 'Charges', 'Groups outside its country', 'Companies', 'Individuals', 'Named applicant on a grant', 'Minimum income', 'How to apply']
 const jsonLd = {
   '@context': 'https://schema.org',
   '@type': 'CollectionPage',
@@ -37,22 +45,47 @@ const h2 = 'mt-12 mb-3 scroll-mt-6 text-3xl font-extrabold'
   <div class="wrap pb-4">
     <div class="mt-8 [&>p]:max-w-[66ch] [&>p+p]:mt-[0.85rem]">
         <p>
-          {sponsors.length} sponsors, in alphabetical order. None pays to be here or is ranked. Each fact comes from the sponsor’s own
-          pages, with its words and the day we read them. Where its pages don’t say, we leave it out: ask before you count on it.
+          {sponsors.length} sponsors, by type of project. Within a type they are in alphabetical order; none pays to be here or is ranked.
+          Each fact comes from the sponsor’s own pages. “Not said” means we didn’t find it there: ask before you count on it.
         </p>
         <p>
           A sponsor helps only if the funder takes one. <a href="#grants">{accepted.length} grants here say they do, and {refused.length} refuse or discourage it</a>.
-          Also ask who is the applicant on the form, who employs your people, and who owns what the project makes.
         </p>
     </div>
 
-    <nav aria-label="Sponsors" class="mt-6" data-toc>
-      <ul class="m-0 grid list-none grid-cols-[repeat(auto-fill,minmax(min(100%,19rem),1fr))] gap-x-6 gap-y-1 p-0 pointer-coarse:[&_a]:inline-block pointer-coarse:[&_a]:py-2">
-        {sponsors.map((s) => <li class="flex items-baseline"><Flag code={s.country.value} class="mr-[0.5em]" /><a href={`#${s.id}`}>{s.name}</a></li>)}
+    <nav aria-label="Types of project" class="mt-6" data-toc>
+      <p class="text-md font-bold">What is your project about?</p>
+      <ul class="mt-2 mb-0 flex list-none flex-wrap gap-2 p-0">
+        {groups.map((g) => (
+          <li>
+            <a href={`#takes-${g.type}`} class="inline-flex min-h-10 items-center gap-1.5 rounded-full border border-rule bg-chip px-3.5 text-md font-medium no-underline hover:underline">
+              {g.label}<span class="text-sm text-ink-2 tabular-nums">{g.list.length}</span>
+            </a>
+          </li>
+        ))}
       </ul>
     </nav>
 
-    <div class="mt-8 grid grid-cols-[minmax(0,1fr)] gap-4">
+    {groups.map((g) => (
+      <section aria-labelledby={`takes-${g.type}`}>
+        <h2 id={`takes-${g.type}`} class={h2}>{g.label}</h2>
+        {!anySubject.includes(g.type) && (
+          <p class="mb-3 text-md text-ink-2">
+            Also check {broad.map((b, i) => <Fragment>{i > 0 && ' and '}<a href={`#takes-${b.type}`}>{b.label.toLowerCase()}</a></Fragment>)}: sponsors there aren’t limited to one subject.
+          </p>
+        )}
+        <div class="sponsor-row sponsor-head items-end pb-2 text-sm font-bold text-ink-2" aria-hidden="true">
+          {columns.map((c) => <div>{c}</div>)}
+        </div>
+        {g.list.map((s) => <SponsorRow s={s} />)}
+      </section>
+    ))}
+
+    <h2 id="sponsors" class={h2}>Every fact, sponsor by sponsor</h2>
+    <p class="max-w-[66ch] text-ink-2">
+      With the sponsor’s own words and the day we read them. Also ask who employs your people, and who owns what the project makes.
+    </p>
+    <div class="mt-5 grid grid-cols-[minmax(0,1fr)] gap-4">
       {sponsors.map((s) => <SponsorCard s={s} />)}
     </div>
 
@@ -70,3 +103,23 @@ const h2 = 'mt-12 mb-3 scroll-mt-6 text-3xl font-extrabold'
     </ul>
   </div>
 </Base>
+
+<style is:global>
+  /* One grid for the heading row and every sponsor, so the answers line up in columns; two columns of labelled answers on a phone. */
+  .sponsor-row {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 9.5rem), 1fr));
+    gap: 0.85rem 1.25rem;
+  }
+  @media (max-width: 63.99rem) {
+    .sponsor-head {
+      display: none;
+    }
+  }
+  @media (min-width: 64rem) {
+    .sponsor-row {
+      grid-template-columns: minmax(0, 1.9fr) minmax(0, 1.3fr) repeat(6, minmax(0, 1fr));
+      gap: 1.1rem;
+    }
+  }
+</style>

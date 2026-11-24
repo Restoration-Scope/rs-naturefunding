@@ -1,5 +1,5 @@
 import type { Programme } from '../data/schema'
-import type { Sponsor } from '../data/sponsors'
+import type { Sponsor, SponsorType } from '../data/sponsors'
 import type { RecheckFailure } from './data'
 
 type Approach = Programme['approaches'][number]
@@ -41,12 +41,17 @@ export const fiscalSponsorLabels: Record<NonNullable<Programme['fiscal_sponsor']
   discouraged: 'Discouraged',
 }
 
-/** A sponsor's scope, shown only when a field project may not fit. */
-export const sponsorScopeLabels: Record<Sponsor['scope'], string> = {
-  nature: 'Nature and environment',
-  general: 'Any public-benefit work',
-  open_hardware: 'Open hardware for science',
-  media: 'Films and photos only',
+export const sponsorTypeLabels: Record<SponsorType, string> = {
+  wildlife: 'Wildlife and species',
+  conservation: 'Nature conservation and restoration',
+  ocean: 'Ocean and marine life',
+  research: 'Research',
+  hardware: 'Open hardware',
+  software: 'Open source software and data',
+  media: 'Film and photography',
+  community: 'Community-led projects',
+  environment: 'Any environmental work',
+  any: 'Any public-benefit work',
 }
 
 export const sponsorModelLabels: Record<NonNullable<Sponsor['models']>[number]['value'], string> = {
@@ -55,8 +60,8 @@ export const sponsorModelLabels: Record<NonNullable<Sponsor['models']>[number]['
 }
 
 export const sponsorGrantLabels: Record<NonNullable<Sponsor['grants']>['value']['role'], string> = {
-  applicant: 'Applies, or is named as the applicant',
-  receives: 'Receives the grant for you',
+  applicant: 'Yes',
+  receives: 'It receives the grant; who applies isn’t said',
   donations: 'Only donations described',
 }
 

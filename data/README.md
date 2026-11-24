@@ -5,7 +5,7 @@ Every listing on naturefunding.org is a JSON file in this folder. The contract i
 ## Files
 
 - `programmes/<id>.json`: one funding programme per file. The file name is the programme's `id`.
-- `sponsors/<id>.json`: one fiscal sponsor per file, for `/fiscal-sponsors/` ([`src/data/sponsors.ts`](../src/data/sponsors.ts): what qualifies, and each field). Every value sits beside its quote; `bun run verify-sponsors` re-reads them. Not on the watch list, so a file not checked for 90 days drops off the page.
+- `sponsors/<id>.json`: one fiscal sponsor per file, for `/fiscal-sponsors/` ([`src/data/sponsors.ts`](../src/data/sponsors.ts): what qualifies, and each field; `types` groups the page). Every value sits beside its quote; `bun run verify-sponsors` re-reads them. Not on the watch list, so a file not checked for 90 days drops off the page.
 - `sources.json`: the watch list. Every page a fact cites, which the daily refresh job re-reads.
 
 ## A programme

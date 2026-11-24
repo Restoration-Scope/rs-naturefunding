@@ -3,7 +3,17 @@
   "name": "Wildlife Conservation Network",
   "url": "https://wildnet.org/approach/conservation-partners/how-we-select-our-partners/",
   "summary": "US charity that becomes the fiscal sponsor of the wildlife organisations it selects as long-term partners, after a vetting of several steps.",
-  "scope": "nature",
+  "types": [
+    {
+      "value": "wildlife",
+      "evidence": {
+        "source_url": "https://wildnet.org/approach/conservation-partners/how-we-select-our-partners/",
+        "quote": "Conservation framed around a wildlife species classified as Vulnerable, Endangered, or Critically Endangered by the IUCN Red List.",
+        "checked_at": "2026-11-24",
+        "method": "page"
+      }
+    }
+  ],
   "country": {
     "value": "US",
     "evidence": {
@@ -45,10 +55,10 @@
   },
   "conditions": [
     {
-      "value": "Set up as the equivalent of a nonprofit",
+      "value": "Applied conservation, not only research",
       "evidence": {
         "source_url": "https://wildnet.org/approach/conservation-partners/how-we-select-our-partners/",
-        "quote": "Legally operates as the equivalent of a nonprofit entity.",
+        "quote": "Focused on applied conservation solutions rather than strictly research or academic activities.",
         "checked_at": "2026-11-24",
         "method": "page"
       }
@@ -131,5 +141,17 @@
     }
   ],
   "programme_id": "wcn-conservation-partners",
-  "checked_at": "2026-11-24"
+  "checked_at": "2026-11-24",
+  "companies": {
+    "value": {
+      "answer": "no",
+      "note": "it has to operate as the equivalent of a nonprofit"
+    },
+    "evidence": {
+      "source_url": "https://wildnet.org/approach/conservation-partners/how-we-select-our-partners/",
+      "quote": "Legally operates as the equivalent of a nonprofit entity.",
+      "checked_at": "2026-11-24",
+      "method": "page"
+    }
+  }
 }

@@ -1,0 +1,80 @@
+---
+import { Badge } from '@/components/ui/badge'
+import { ExternalLink } from 'lucide-react'
+import type { Sponsor } from '../data/sponsors'
+import { countryName } from '../lib/geo'
+import { sponsorAnswerLabels, sponsorGrantLabels, sponsorIntakeLabels } from '../lib/labels'
+import Flag from './Flag.astro'
+
+/** One fiscal sponsor in the comparison under a project type: the answers that rule it in or out. */
+interface Props {
+  s: Sponsor
+}
+const { s } = Astro.props
+
+type Cell = { label: string; lead?: string; lines: string[] }
+type Answer = Sponsor['individuals']
+const answer = (label: string, a: Answer): Cell => ({
+  label,
+  lead: a && sponsorAnswerLabels[a.value.answer],
+  lines: a?.value.note ? [a.value.note.charAt(0).toUpperCase() + a.value.note.slice(1)] : [],
+})
+const foreign = answer('Groups outside its country', s.foreign)
+// `where` can settle it when no answer is published, and says which places when the note doesn't.
+if (s.where && s.where.value.toLowerCase() !== s.foreign?.value.note?.toLowerCase()) foreign.lines.push(s.where.value)
+const cells: Cell[] = [
+  { label: 'Charges', lines: (s.fees ?? []).map((f) => f.value) },
+  foreign,
+  answer('Companies', s.companies),
+  answer('Individuals', s.individuals),
+  { label: 'Named applicant on a grant', lines: s.grants ? [sponsorGrantLabels[s.grants.value.role]] : [] },
+  { label: 'Minimum income', lines: s.min_income ? [s.min_income.value] : [] },
+]
+const more = (s.steps?.length ?? 0) - 1
+const label = 'text-sm font-bold text-ink-2 lg:sr-only'
+---
+
+<article class="sponsor-row border-t border-rule py-4">
+  <div class="min-w-0 max-lg:col-span-full">
+    <h3 class="text-lg leading-snug font-bold"><a href={`#${s.id}`}>{s.name}</a></h3>
+    <p class="mt-0.5 flex flex-wrap items-center gap-x-2 gap-y-1 text-sm text-ink-2">
+      <span class="whitespace-nowrap"><Flag code={s.country.value} class="mr-[0.4em]" />{countryName(s.country.value)}<span class="sr-only">. </span></span>
+      {s.intake && s.intake.value.status !== 'open' && <Badge variant="warn">{sponsorIntakeLabels[s.intake.value.status]}<span class="sr-only">. </span></Badge>}
+    </p>
+    <p class="mt-1 text-sm">Takes: {s.projects.value}.</p>
+    {s.gate && <p class="mt-1 text-sm"><strong>Check first:</strong> {s.gate.value}.</p>}
+  </div>
+  <dl class="m-0 contents">
+    {
+      cells.map((c) => (
+        <div class="min-w-0">
+          <dt class={label}>{c.label}</dt>
+          <dd class="m-0 text-sm">
+            {c.lead && <p class="font-bold">{c.lead}</p>}
+            {c.lines.map((l) => <p class="[&+p]:mt-1">{l}</p>)}
+            {!c.lead && c.lines.length === 0 && <span class="text-ink-2">Not said</span>}
+          </dd>
+        </div>
+      ))
+    }
+    <div class="min-w-0">
+      <dt class={label}>How to apply</dt>
+      <dd class="m-0 text-sm">
+        {s.steps ? <p>{s.steps[0].value}</p> : <p class="text-ink-2">Not said</p>}
+        {more > 0 && (
+          <details class="mt-1">
+            <summary class="cursor-pointer text-link underline underline-offset-[0.18em]">{more} more {more === 1 ? 'step' : 'steps'}<span class="sr-only">: {s.name}</span></summary>
+            <ol class="m-0 list-none p-0" start="2">
+              {s.steps!.slice(1).map((step) => <li class="mt-1.5">{step.value}</li>)}
+            </ol>
+          </details>
+        )}
+        <p class="mt-1">
+          <a href={s.url} target="_blank" rel="noopener" class="whitespace-nowrap">
+            Its page <ExternalLink aria-hidden="true" className="inline size-3.5 align-[-0.1em]" /><span class="sr-only"> (opens in a new tab)</span>
+          </a>
+        </p>
+      </dd>
+    </div>
+  </dl>
+</article>

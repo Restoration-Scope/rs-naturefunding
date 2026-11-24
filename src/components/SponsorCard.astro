@@ -7,11 +7,11 @@ import type { Evidence } from '../data/schema'
 import type { Sponsor } from '../data/sponsors'
 import { longDate } from '../lib/format'
 import { countryName } from '../lib/geo'
-import { sponsorAnswerLabels, sponsorGrantLabels, sponsorIntakeLabels, sponsorModelLabels, sponsorScopeLabels } from '../lib/labels'
+import { sponsorAnswerLabels, sponsorGrantLabels, sponsorIntakeLabels, sponsorModelLabels, sponsorTypeLabels } from '../lib/labels'
 import Flag from './Flag.astro'
 import Quote from './Quote.astro'
 
-/** One fiscal sponsor: what to compare at a glance, then every fact with the sponsor's own words folded below. */
+/** One fiscal sponsor: what it is, then every fact with the sponsor's own words folded below. */
 interface Props {
   s: Sponsor
 }
@@ -25,16 +25,15 @@ const one = (f: { value: string; evidence: Evidence } | undefined) => (f ? [{ te
 const many = (fs: { value: string; evidence: Evidence }[] | undefined) => (fs ?? []).map((f) => ({ text: f.value, evidence: f.evidence }))
 
 const grants = s.grants ? [{ text: `${sponsorGrantLabels[s.grants.value.role]}. ${s.grants.value.note}`, evidence: s.grants.evidence }] : []
-const rows: Row[] = [
+const details: Row[] = [
   { label: 'Takes', items: one(s.projects) },
+  { label: 'Check first', items: one(s.gate) },
+  { label: 'Kinds of project', items: s.types.map((t) => ({ text: sponsorTypeLabels[t.value], evidence: t.evidence })) },
   { label: 'Where', items: one(s.where) },
   { label: 'Charges', items: many(s.fees) },
   { label: 'Minimum income', items: one(s.min_income) },
-  { label: 'Grants', items: grants },
+  { label: 'Named applicant on a grant', items: grants },
   { label: 'Companies', items: answer(s.companies) },
-]
-const details: Row[] = [
-  ...rows,
   { label: 'Individuals', items: answer(s.individuals) },
   { label: 'Groups outside its country', items: answer(s.foreign) },
   { label: 'How it works', items: (s.models ?? []).map((m) => ({ text: sponsorModelLabels[m.value], evidence: m.evidence })) },
@@ -52,10 +51,10 @@ const NOT_FOUND = 'Not found on the pages we read'
 <section id={s.id} class:list={[cardClasses, 'scroll-mt-6 px-4 pt-4 pb-2 md:px-5']} aria-labelledby={`${s.id}-name`}>
   <div class="flex flex-wrap items-start justify-between gap-x-4 gap-y-2">
     <div class="min-w-0">
-      <h2 id={`${s.id}-name`} class="text-2xl">{s.name}</h2>
+      <h3 id={`${s.id}-name`} class="text-2xl">{s.name}</h3>
       <p class="mt-1 flex flex-wrap items-center gap-x-2.5 gap-y-1 text-md text-ink-2">
         <span class="whitespace-nowrap"><Flag code={s.country.value} class="mr-[0.4em]" />{countryName(s.country.value)}<span class="sr-only">. </span></span>
-        <Badge>{sponsorScopeLabels[s.scope]}</Badge>
+        {s.types.map((t) => <Badge>{sponsorTypeLabels[t.value]}<span class="sr-only">. </span></Badge>)}
         {s.intake && s.intake.value.status !== 'open' && <Badge variant="warn"><span class="sr-only">. </span>{sponsorIntakeLabels[s.intake.value.status]}</Badge>}
       </p>
     </div>
@@ -66,30 +65,13 @@ const NOT_FOUND = 'Not found on the pages we read'
 
   <p class="mt-3 max-w-[66ch] text-base">{s.summary}</p>
 
-  <dl class="mt-4 mb-0 grid gap-x-8 gap-y-3 sm:grid-cols-2">
-    {
-      rows.map((r) => (
-        <div class="min-w-0">
-          <dt class="text-sm font-bold text-ink-2">{r.label}</dt>
-          <dd class:list={['m-0 text-md', r.items.length === 0 && 'text-ink-2']}>
-            {r.items.length > 1 ? (
-              <ul class="m-0 list-none p-0">{r.items.map((i) => <li>{i.text}</li>)}</ul>
-            ) : (
-              r.items[0]?.text ?? NOT_FOUND
-            )}
-          </dd>
-        </div>
-      ))
-    }
-  </dl>
-
   <details class="group/sponsor mt-4 border-t border-rule">
     <summary class="flex min-h-11 cursor-pointer list-none items-center gap-[0.6rem] text-md font-semibold before:size-2 before:flex-none before:border-r-2 before:border-b-2 before:border-current before:content-[''] before:[transform:rotate(-45deg)] group-open/sponsor:before:[transform:translateY(-20%)_rotate(45deg)] [&::-webkit-details-marker]:hidden">
       <span>How to apply and every fact, in its own words<span class="sr-only">: {s.name}</span></span>
     </summary>
     <dl class="mt-0 mb-3">
       {
-        details.map((r) => (
+        details.filter((r) => r.label !== 'Check first' || r.items.length > 0).map((r) => (
           <div class="grid grid-cols-[minmax(0,1fr)] gap-[0.35rem] border-t border-rule py-4 md:grid-cols-[11rem_minmax(0,1fr)] md:gap-6">
             <dt class="text-md font-bold text-ink-2">{r.label}</dt>
             <dd class="m-0 min-w-0">
