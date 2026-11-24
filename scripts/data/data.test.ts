@@ -2,7 +2,7 @@ import { describe, expect, test } from 'bun:test'
 import { programme, statesDate, statesYear, type Programme } from '../../src/data/schema'
 import { checkData } from '../../src/data/load'
 import { comparable, quoteOnPage } from '../../src/data/text'
-import { htmlToText } from './page-text'
+import { fetchPage, htmlToText } from './page-text'
 
 const URL = 'https://funder.example/call'
 const ev = (quote: string, checked_at = '2026-11-01') => ({ source_url: URL, quote, checked_at, method: 'page' as const })
@@ -367,6 +367,36 @@ describe('quote matching', () => {
     const text = comparable(await htmlToText('<html><head><title>x</title></head><body><script>var a = "Grants"</script><p>Grants of up&nbsp;to <b>$50,000</b></p></body></html>'))
     expect(quoteOnPage(text, 'Grants of up to $50,000')).toBe(true)
     expect(quoteOnPage(text, 'var a')).toBe(false)
+  })
+
+  test('separates adjacent element text without accepting changed quotes', async () => {
+    const text = comparable(
+      await htmlToText(`
+        <main>
+          <h2>Applications open</h2><p>15th July</p>
+          <p><span>Category A Projects APPLICATIONS OPEN</span><span>15th July to 30th September 2026</span></p>
+        </main>
+      `),
+    )
+    expect(quoteOnPage(text, 'Applications open 15th July')).toBe(true)
+    expect(quoteOnPage(text, 'Category A Projects APPLICATIONS OPEN 15th July to 30th September 2026')).toBe(true)
+    expect(quoteOnPage(text, 'Category A Projects APPLICATIONS OPEN 16th July to 30th September 2026')).toBe(false)
+  })
+
+  test('an empty HTTP 202 response is inconclusive, not an empty page', async () => {
+    const originalFetch = globalThis.fetch
+    globalThis.fetch = (async () => new Response('', { status: 202, headers: { 'content-type': 'text/html' } })) as unknown as typeof fetch
+    try {
+      let error: Error | null = null
+      try {
+        await fetchPage('https://empty-202.example/call', { fresh: true })
+      } catch (e) {
+        error = e as Error
+      }
+      expect(error?.message).toBe('HTTP 202 empty response')
+    } finally {
+      globalThis.fetch = originalFetch
+    }
   })
 
   test('text after a stray early </body> is still read, as a browser shows it', async () => {
