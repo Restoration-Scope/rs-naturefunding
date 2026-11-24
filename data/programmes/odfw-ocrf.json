@@ -5,7 +5,10 @@
     "name": "Oregon Department of Fish and Wildlife",
     "url": "https://www.dfw.state.or.us/"
   },
-  "administered_by": null,
+  "administered_by": {
+    "name": "Oregon Department of Fish and Wildlife",
+    "url": "https://www.dfw.state.or.us"
+  },
   "parent": null,
   "url": "https://www.dfw.state.or.us/conservationstrategy/OCRF/grants.html",
   "summary": "Oregon grants of up to $25,000 for conservation and outdoor recreation projects, including restoration, monitoring and community engagement, with a stated aim of supporting smaller and newer organisations.",
@@ -14,8 +17,8 @@
   "geography": { "scope": "countries", "countries": ["US"], "label": "Oregon, USA" },
   "access": "direct",
   "window": "fixed",
-  "amount": { "currency": "USD", "max": 25000 },
-  "co_finance_required": null,
+  "amount": { "currency": "USD", "max": 50000 },
+  "co_finance_required": false,
   "reporting": null,
   "calls": [
     {
@@ -53,6 +56,12 @@
     }
   ],
   "evidence": {
+    "administered_by": {
+      "source_url": "https://www.dfw.state.or.us/conservationstrategy/OCRF/grants.html",
+      "quote": "Oregon Department of Fish and Wildlife ODFW About Us",
+      "checked_at": "2026-11-24",
+      "method": "page"
+    },
     "applicant_types": {
       "source_url": "https://www.dfw.state.or.us/conservationstrategy/OCRF/grants.html",
       "quote": "Eligible entities include any tribe, watershed council, soil and water conservation district, not-for-profit corporation, school, institution of higher education, state agency, federal agency, local government",
@@ -79,10 +88,16 @@
     },
     "amount": {
       "source_url": "https://www.dfw.state.or.us/conservationstrategy/OCRF/grants.html",
-      "quote": "The maximum allowable grant request for projects will be $25,000.",
-      "checked_at": "2026-11-06",
+      "quote": "The maximum allowable grant request for projects will be $50,000.",
+      "checked_at": "2026-11-24",
+      "method": "page"
+    },
+    "co_finance_required": {
+      "source_url": "https://www.dfw.state.or.us/conservationstrategy/OCRF/grants.html",
+      "quote": "NO - The OCRF has no minimum match requirements or any match requirements.",
+      "checked_at": "2026-11-24",
       "method": "page"
     }
   },
-  "checked_at": "2026-11-06"
+  "checked_at": "2026-11-24"
 }
