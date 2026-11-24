@@ -24,22 +24,32 @@
       "kind": "project"
     },
     {
-      "rule": "The project does not target native species or invasive species absent before October 20, 2026.",
+      "rule": "No native species targeted. For control and management, the invader was present on-site before October 20, 2026.",
       "kind": "project"
     },
     { "rule": "A 501(c)3 nonprofit is registered with the CT Secretary of State", "kind": "legal" },
-    { "rule": "A municipality applies only for a water body within its borders", "kind": "legal" },
-    { "rule": "At most two proposals per applicant in this round", "kind": "other" }
+    {
+      "rule": "A municipal applicant’s waterbody is at least partly within its borders. Municipalities sharing one may apply jointly.",
+      "kind": "project"
+    },
+    { "rule": "At most two proposals per applicant in this round", "kind": "other" },
+    {
+      "rule": "Control targets are listed aquatic invaders, approved emerging invaders, or cyanobacteria capable of harmful blooms.",
+      "kind": "project"
+    }
   ],
-  "co_finance": { "min_share": 25 },
+  "co_finance": { "min_share": 25, "in_kind": true },
   "documents": [
     "Conflict of interest disclosure statement",
     "Signed Statement of Assurances (page 23 of the RFP)",
-    "Map of the study/project waterbody",
-    "Map of the waterbody within its watershed",
-    "Tax maps showing ownership of the water body",
+    "Map of the project waterbody and its public access facilities, where applicable.",
+    "Map of the project waterbody in its watershed, where applicable.",
+    "Available tax maps showing full or partial ownership of the project waterbody.",
     "Applicable conservation and access easements",
-    "Proof the target species is present in the water body"
+    "Proof that any invasive species targeted in the project waterbody are present there.",
+    "Natural Diversity Database map showing the waterbody, where applicable.",
+    "Permission letters for any third-party property to be crossed to reach the waterbody.",
+    "Resolution authorising the municipal signer to enter contracts, for municipal applicants."
   ],
   "calls": [
     {
@@ -123,8 +133,8 @@
       },
       {
         "source_url": "https://portal.ct.gov/-/media/deep/invasive-species/2026-ais-grants/ais-grant-rfp-document-year-7_20261008.docx?rev=5e39b7ad86fe4bfbaa3c50fd8e91048c&hash=D46A854E083129136D4ECB9649637C75",
-        "quote": "Local interest organizations such as unincorporated lake associations can develop project proposals in collaboration with municipalities or not-for-profit organizations but only the municipality in which the project water body is located or the not-for-profit organizations can apply for funding.",
-        "checked_at": "2026-11-23",
+        "quote": "If the water body is located in more than one municipality, two or more municipalities may apply jointly",
+        "checked_at": "2026-11-24",
         "method": "page"
       },
       {
@@ -132,12 +142,18 @@
         "quote": "An applicant may submit a maximum of two (2) proposals in response to this funding opportunity.",
         "checked_at": "2026-11-23",
         "method": "page"
+      },
+      {
+        "source_url": "https://portal.ct.gov/-/media/deep/invasive-species/2026-ais-grants/ais-grant-rfp-document-year-7_20261008.docx?rev=5e39b7ad86fe4bfbaa3c50fd8e91048c&hash=D46A854E083129136D4ECB9649637C75",
+        "quote": "Newly emerging aquatic invasive species may also be deemed eligible target species at the discretion of the AIS Grants Oversight Committee. Species of cyanobacteria capable of producing harmful algal blooms are eligible for all project types.",
+        "checked_at": "2026-11-24",
+        "method": "page"
       }
     ],
     "co_finance": {
       "source_url": "https://portal.ct.gov/-/media/deep/invasive-species/2026-ais-grants/ais-grant-rfp-document-year-7_20261008.docx?rev=5e39b7ad86fe4bfbaa3c50fd8e91048c&hash=D46A854E083129136D4ECB9649637C75",
-      "quote": "Matching funds are required and must equal or exceed 25% of the total project costs.",
-      "checked_at": "2026-11-23",
+      "quote": "Matching funds may consist of actual funds as well as other contributions such as in-kind services, materials and volunteer labor.",
+      "checked_at": "2026-11-24",
       "method": "page"
     },
     "documents": [
@@ -170,6 +186,30 @@
         "quote": "Documentation of the actual presence of the target species in the water body (attach photos, data from professional plant surveys, copies of relevant sections of reports and/or studies, etc.).",
         "checked_at": "2026-11-23",
         "method": "page"
+      },
+      {
+        "source_url": "https://portal.ct.gov/-/media/deep/invasive-species/2026-ais-grants/ais-grant-rfp-document-year-7_20261008.docx?rev=5e39b7ad86fe4bfbaa3c50fd8e91048c&hash=D46A854E083129136D4ECB9649637C75",
+        "quote": "Please provide map of water body showing locations of these facilities.",
+        "checked_at": "2026-11-24",
+        "method": "page"
+      },
+      {
+        "source_url": "https://portal.ct.gov/-/media/deep/invasive-species/2026-ais-grants/ais-grant-rfp-document-year-7_20261008.docx?rev=5e39b7ad86fe4bfbaa3c50fd8e91048c&hash=D46A854E083129136D4ECB9649637C75",
+        "quote": "Please provide the DEEP Natural Diversity Data Base (NDDB) map for applicant town (or a GIS map that includes the current NDDB layer) showing location of study/project water body",
+        "checked_at": "2026-11-24",
+        "method": "page"
+      },
+      {
+        "source_url": "https://portal.ct.gov/-/media/deep/invasive-species/2026-ais-grants/ais-grant-rfp-document-year-7_20261008.docx?rev=5e39b7ad86fe4bfbaa3c50fd8e91048c&hash=D46A854E083129136D4ECB9649637C75",
+        "quote": "Letters of permission should be provided for any non-applicant properties which must be crossed to gain access to the water body.",
+        "checked_at": "2026-11-24",
+        "method": "page"
+      },
+      {
+        "source_url": "https://portal.ct.gov/-/media/deep/invasive-species/2026-ais-grants/ais-grant-rfp-document-year-7_20261008.docx?rev=5e39b7ad86fe4bfbaa3c50fd8e91048c&hash=D46A854E083129136D4ECB9649637C75",
+        "quote": "The applicant must also supply a signature resolution indicating that the signer is authorized to sign legal documents and enter into contracts on behalf of the municipality.",
+        "checked_at": "2026-11-24",
+        "method": "page"
       }
     ],
     "after_award": [
@@ -192,13 +232,19 @@
         "quote": "DEEP will designate a Review Committee to evaluate proposals submitted in response to this RFP.",
         "checked_at": "2026-11-23",
         "method": "page"
+      },
+      {
+        "source_url": "https://portal.ct.gov/-/media/deep/invasive-species/2026-ais-grants/ais-grant-rfp-document-year-7_20261008.docx?rev=5e39b7ad86fe4bfbaa3c50fd8e91048c&hash=D46A854E083129136D4ECB9649637C75",
+        "quote": "All applications and supporting documentation must be submitted via email to DEEP.AISGrants@ct.gov by December 10, 2026.",
+        "checked_at": "2026-11-24",
+        "method": "page"
       }
     ]
   },
   "checked_at": "2026-11-23",
   "after_award": { "reports": "final" },
   "effort": {
-    "steps": ["Proposal by email to DEEP", "Review Committee evaluation"],
+    "steps": ["Email the proposal and attachments to DEEP", "Review Committee evaluation"],
     "due": ["2026-12-10", null]
   }
 }

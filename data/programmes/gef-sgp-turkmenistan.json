@@ -19,19 +19,21 @@
     "max": 75000,
     "note": "Regular SGP grants; a lower limit may be set for individual calls"
   },
-  "co_finance_required": null,
+  "co_finance_required": false,
+  "consortium_required": false,
   "reporting": null,
   "effort": {
     "steps": [
       "Letter of Inquiry",
-      "Eligibility screening and technical review",
-      "Full project proposal, if invited"
+      "LOI eligibility screening and National Working Group review",
+      "Attend the mandatory proposal development workshop, if selected",
+      "Submit the full project proposal and budget, if invited"
     ],
-    "due": ["2026-12-08", null, null]
+    "due": ["2026-12-08", null, null, null]
   },
   "eligibility": [
     {
-      "rule": "Registered in Turkmenistan, with a bank account in its name that takes foreign-currency wire transfers",
+      "rule": "By award, registered in Turkmenistan with an organisation-name bank account that can receive USD transfers.",
       "kind": "legal"
     },
     {
@@ -47,11 +49,24 @@
       "kind": "project"
     },
     {
-      "rule": "No land purchase, physical resettlement, or adverse critical-habitat impacts",
+      "rule": "Grant-funded work excludes land purchase, physical resettlement and activities risking harm to critical habitats.",
+      "kind": "project"
+    },
+    {
+      "rule": "Balkan–Caspian–Ustyurt, Southern Mountain/Semi-Arid, Wetland/Coastal/Desert, or a cross-cutting national initiative.",
+      "kind": "project"
+    },
+    {
+      "rule": "Finish all grant-funded project activities by October 31, 2028.",
+      "kind": "project"
+    },
+    {
+      "rule": "Grant-funded activities do not convert, clear or degrade natural forests or other natural habitats.",
       "kind": "project"
     }
   ],
   "after_award": { "reports": "other" },
+  "documents": ["Map showing the proposed project location."],
   "calls": [
     {
       "id": "lois-2026",
@@ -113,6 +128,18 @@
       "checked_at": "2026-11-23",
       "method": "page"
     },
+    "co_finance_required": {
+      "source_url": "https://www.cepf.net/resources/calls-for-proposals/gef-sgp-call-for-lois-details-turkmenistan-english",
+      "quote": "Availability of co-financing, in-kind contributions or opportunities to leverage additional funding.",
+      "checked_at": "2026-11-24",
+      "method": "page"
+    },
+    "consortium_required": {
+      "source_url": "https://www.cepf.net/resources/calls-for-proposals/gef-sgp-call-for-lois-details-turkmenistan-english",
+      "quote": "In addition to the partnership provisions above, CEPF will provide grants to individual organizations that meet the eligibility criteria.",
+      "checked_at": "2026-11-24",
+      "method": "page"
+    },
     "effort": [
       {
         "source_url": "https://www.cepf.net/grants/open-calls-for-proposals",
@@ -127,17 +154,29 @@
         "method": "page"
       },
       {
-        "source_url": "https://www.cepf.net/gef-small-grants-program",
-        "quote": "Following the recommendations of the NSC, organizations whose LOIs are selected will be invited to submit full project proposals.",
-        "checked_at": "2026-11-23",
+        "source_url": "https://www.cepf.net/resources/calls-for-proposals/gef-sgp-call-for-lois-details-turkmenistan-english",
+        "quote": "The CEPF Grant Director and the SGP National Coordinator will review all Letters of Inquiry received on time for eligibility. Eligible Letters of Inquiry will then be evaluated by the National Working Group.",
+        "checked_at": "2026-11-24",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.cepf.net/resources/calls-for-proposals/gef-sgp-call-for-lois-details-turkmenistan-english",
+        "quote": "Preparation of the full proposal will require mandatory participation in a project proposal development workshop.",
+        "checked_at": "2026-11-24",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.cepf.net/resources/calls-for-proposals/gef-sgp-call-for-lois-details-turkmenistan-english",
+        "quote": "Selected applicants will be invited to develop a full project proposal and budget, taking into account comments and expected revisions.",
+        "checked_at": "2026-11-24",
         "method": "page"
       }
     ],
     "eligibility": [
       {
-        "source_url": "https://www.cepf.net/gef-small-grants-program",
-        "quote": "Civil society organizations (CSOs) are eligible to receive an SGP grant if they: (a) are legally registered in the country in question; and (b) have a bank account in the organization’s name that can receive payments by wire transfer in foreign currency.",
-        "checked_at": "2026-11-23",
+        "source_url": "https://www.cepf.net/resources/calls-for-proposals/gef-sgp-call-for-lois-details-turkmenistan-english",
+        "quote": "By the time a grant is awarded, prospective grantees must: (a) Be legally registered in Turkmenistan; and (b) Have a bank account in the organization’s name that can receive payments by bank transfer in U.S. dollars.",
+        "checked_at": "2026-11-24",
         "method": "page"
       },
       {
@@ -163,6 +202,24 @@
         "quote": "Grants must not be used for the purchase of land, physical resettlement of people or activities that have the potential to cause adverse impacts to critical habitat.",
         "checked_at": "2026-11-23",
         "method": "page"
+      },
+      {
+        "source_url": "https://www.cepf.net/resources/calls-for-proposals/gef-sgp-call-for-lois-details-turkmenistan-english",
+        "quote": "Balkan–Caspian–Ustyurt Landscape ● Southern Mountain and Semi-Arid Landscape ● Wetland, Coastal and Desert Ecosystems Work that is not associated with one of these geographic areas but addresses cross-cutting national initiatives may also be eligible.",
+        "checked_at": "2026-11-24",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.cepf.net/resources/calls-for-proposals/gef-sgp-call-for-lois-details-turkmenistan-english",
+        "quote": "Regardless of the start date, the latest end date for all grants is 31 October 2028.",
+        "checked_at": "2026-11-24",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.cepf.net/resources/calls-for-proposals/gef-sgp-call-for-lois-details-turkmenistan-english",
+        "quote": "Conversion, clearing or degradation of natural forests or other natural habitats, including, but not limited to conversion to agricultural land or tree plantations.",
+        "checked_at": "2026-11-24",
+        "method": "page"
       }
     ],
     "after_award": [
@@ -176,6 +233,14 @@
         "source_url": "https://www.cepf.net/resources/documents/gef-sgp-grant-agreement-turkmenistan",
         "quote": "The Grantee shall submit a Final Completion and Impact Report within sixty (60) days following the end of the Grant Period.",
         "checked_at": "2026-11-23",
+        "method": "page"
+      }
+    ],
+    "documents": [
+      {
+        "source_url": "https://www.cepf.net/resources/documents/gef-sgp-loi-template-turkmenistan-english",
+        "quote": "Describe the project location. Attach map.",
+        "checked_at": "2026-11-24",
         "method": "page"
       }
     ]
