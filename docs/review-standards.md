@@ -1,8 +1,8 @@
 # Review standards
 
-standards: 2026-11-23.1
+standards: 2026-11-24.1
 
-What the second reader checks in every "Before you apply" item an extraction wrote. `bun scripts/requirements/review.ts brief` puts this file in every reviewer brief; change the version line when you change a rule. Field rules: `data/README.md` (eligibility, documents, effort, co_finance, after_award). Each category is a label in `tests/fixtures/review-labels/`.
+What the second reader checks in every "Before you apply" item an extraction wrote. `bun scripts/requirements/review.ts brief` puts this file in every reviewer brief; change the version line when you change a rule. Field rules: `data/README.md` (eligibility, documents, effort, co_finance, after_award).
 
 ## Every cited document
 
@@ -37,4 +37,4 @@ What the second reader checks in every "Before you apply" item an extraction wro
 
 ## Limits
 
-Rule ≤120 characters, step ≤80, at most 8 rules and 10 documents, quote ≤400 characters copied verbatim from a page our quote checker can fetch. Items in English; quotes in the funder's language.
+Rule and document ≤120 characters, step ≤80, at most 8 rules and 10 documents. Each quote ≤400 characters, copied verbatim from a page our quote checker can fetch. Quotes per field: documents as many as there are documents (3 to 10), effort 5, after_award 4; when a field is full, name an existing quote (`quotes`) instead of adding one, or apply refuses the whole review. Items in English; quotes in the funder's language.
