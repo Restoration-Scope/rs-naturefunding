@@ -1,0 +1,38 @@
+---
+import type { Programme } from '../data/schema'
+import { effortSignals, hasEffort } from '../lib/format'
+import EffortLevel from './EffortLevel.astro'
+
+/**
+ * What the grant asks of an organisation, at the top of its page: the finder's four signals in words, each linking
+ * down to its box in Before you apply (BeforeYouApply.astro), where the funder's own words back it up.
+ */
+interface Props {
+  p: Programme
+}
+
+const { p } = Astro.props
+const signals = effortSignals(p)
+---
+
+<section class="mt-8" aria-labelledby="asks-title">
+  <h2 id="asks-title" class="font-sans text-sm font-bold text-ink-2">What it asks of you</h2>
+  {
+    hasEffort(p) ? (
+      <ul class="m-0 mt-2 grid list-none grid-cols-2 gap-x-6 gap-y-4 border-t border-rule p-0 pt-3 md:grid-cols-4">
+        {signals.map((s) => (
+          <li>
+            <a class="group/ask block text-ink no-underline" href={`#asks-${s.key}`}>
+              <span class="block text-sm text-ink-2 underline-offset-3 group-hover/ask:underline">{s.label}</span>
+              <span class="mt-0.5 block text-lg leading-snug"><EffortLevel level={s.level} /></span>
+              {/* "Not checked yet." only repeats the level. Phones keep to the levels; the reasons are below. */}
+              {s.why !== 'Not checked yet.' && <span class="mt-0.5 block text-sm text-pretty text-ink-2 max-md:hidden">{s.why}</span>}
+            </a>
+          </li>
+        ))}
+      </ul>
+    ) : (
+      <p class="mt-1 text-md text-ink-2">Not checked yet: the funder’s page has the rules, the steps and the reporting.</p>
+    )
+  }
+</section>
