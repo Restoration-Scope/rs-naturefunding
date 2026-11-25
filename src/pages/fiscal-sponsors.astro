@@ -2,8 +2,11 @@
 // Fiscal sponsors (data/sponsors), filtered in the browser, and the listed grants that say whether they take one.
 import Base from '../layouts/Base.astro'
 import SponsorRow from '../components/SponsorRow.astro'
-import { SlidersHorizontal } from 'lucide-react'
+import '../styles/sort.css'
+import { ArrowDown, ArrowUp, Bird, Building2, Camera, ChevronsUpDown, CircuitBoard, Database, Globe, HandHeart, Leaf, Microscope, SlidersHorizontal, Trees, User, Users, Waves } from 'lucide-react'
 import { Checkbox } from '@/components/ui/checkbox'
+import { NativeSelect } from '@/components/ui/native-select'
+import { Label } from '@/components/ui/label'
 import { Table, TableBody, TableCaption, TableHead, TableHeader, TableRow } from '@/components/ui/table'
 import { sponsorTypes } from '../data/sponsors'
 import { programmes, sponsors } from '../lib/data'
@@ -11,20 +14,27 @@ import { programmeTitle } from '../lib/format'
 import { sponsorTypeShort } from '../lib/labels'
 import { absolute, RS_ORG } from '../lib/site'
 
-const countries = new Set(sponsors.map((s) => s.country.value)).size
-const description = `${sponsors.length} fiscal sponsors in ${countries} countries for nature projects and the tools they need: what each takes, charges and asks for, in its own words.`
+// The search title and description carry the words people search ("fiscal sponsor directory", "fees", "environmental"), so the page needn't.
+const description = `Compare ${sponsors.length} fiscal sponsors for environmental, conservation and open source projects: fees, who can apply and how, quoted from each sponsor’s own pages.`
+// The finder's own icon where it has the same kind of project (src/components/Finder.astro).
+const typeIcons = { wildlife: Bird, conservation: Trees, ocean: Waves, research: Microscope, hardware: CircuitBoard, software: Database, media: Camera, community: Users, environment: Leaf, any: HandHeart }
 const types = sponsorTypes
-  .map((type) => ({ type, label: sponsorTypeShort[type], n: sponsors.filter((s) => s.types.some((t) => t.value === type)).length }))
+  .map((type) => ({ type, Icon: typeIcons[type], label: sponsorTypeShort[type], n: sponsors.filter((s) => s.types.some((t) => t.value === type)).length }))
   .filter((t) => t.n > 0)
 const takes = [
-  { key: 'abroad', label: 'Groups based abroad', field: 'foreign' },
-  { key: 'companies', label: 'Companies', field: 'companies' },
-  { key: 'individuals', label: 'Individuals', field: 'individuals' },
+  { key: 'abroad', label: 'Groups based abroad', field: 'foreign', Icon: Globe },
+  { key: 'companies', label: 'Companies', field: 'companies', Icon: Building2 },
+  { key: 'individuals', label: 'Individuals', field: 'individuals', Icon: User },
 ] as const
 const says = (field: (typeof takes)[number]['field']) => sponsors.filter((s) => s[field] && s[field].value.answer !== 'no').length
 // It takes open source projects of all kinds but never names hardware, so hardware readers see it as broader.
 const broader: Record<string, string> = { 'open-source-collective': 'hardware' }
-const columns = ['Sponsor', 'Takes', 'Charges', 'Groups based abroad', 'Companies', 'Individuals']
+const columns = [
+  { label: 'Sponsor', sort: 'name' },
+  { label: 'Takes' },
+  { label: 'Charges', sort: 'charges' },
+  ...takes.map((t) => ({ label: t.label, sort: t.key })),
+]
 const jsonLd = {
   '@context': 'https://schema.org',
   '@type': 'CollectionPage',
@@ -50,7 +60,7 @@ const opt = 'flex min-h-[1.9rem] cursor-pointer items-center gap-2 text-sm leadi
 const optN = 'text-xs text-muted-foreground tabular-nums'
 ---
 
-<Base title="Fiscal sponsors for nature projects" description={description} path="/fiscal-sponsors/" jsonLd={jsonLd} allGrants wide>
+<Base title="Environmental fiscal sponsor directory" description={description} path="/fiscal-sponsors/" jsonLd={jsonLd} allGrants wide>
   <div slot="band" class="wrap pt-5 pb-7">
     <h1 class="text-[clamp(1.75rem,1.2rem+2.2vw,2.75rem)] font-extrabold tracking-[-0.02em]">Fiscal sponsors for nature projects</h1>
     <p class="mt-2 text-lg text-shell-ink-2">
@@ -58,7 +68,7 @@ const optN = 'text-xs text-muted-foreground tabular-nums'
     </p>
   </div>
 
-  <div class="wrap mt-6 grid grid-cols-[minmax(0,1fr)] gap-3 xl:mt-8 xl:grid-cols-[13rem_minmax(0,1fr)] xl:gap-8">
+  <div class="wrap mt-6 grid grid-cols-[minmax(0,1fr)] gap-3 xl:mt-8 xl:grid-cols-[14rem_minmax(0,1fr)] xl:gap-8">
     {/* Shown by the script below: without JavaScript the filters do nothing, and every sponsor is listed. */}
     <aside class="xl:sticky xl:top-0 xl:self-start xl:pt-1" data-twin-skip>
       <form autocomplete="off" aria-label="Filter sponsors" data-filters hidden>
@@ -68,11 +78,22 @@ const optN = 'text-xs text-muted-foreground tabular-nums'
         </p>
         <details class="sp-filters" data-fold open>
           <summary class="xl:hidden!"><SlidersHorizontal className="size-4" aria-hidden="true" />Filters</summary>
+          {/* Cards have no header to sort from. */}
+          <div class="border-b border-rule py-3 min-[60rem]:hidden">
+            <Label htmlFor="sort" className="mb-[0.3rem]">Sort by</Label>
+            <NativeSelect id="sort" data-sort-select="">
+              <option value="name">Name</option>
+              <option value="charges">Lowest charge</option>
+              <option value="-charges">Highest charge</option>
+              {takes.map((t) => <option value={t.key}>{t.label}</option>)}
+            </NativeSelect>
+          </div>
           <fieldset class="border-b border-rule pb-3.5">
             <legend class={groupTitle}>Project</legend>
             {types.map((t) => (
               <label class={opt}>
                 <Checkbox name="project" value={t.type} />
+                <t.Icon className="size-4 flex-none text-muted-foreground" strokeWidth={1.75} aria-hidden="true" />
                 <span class="flex-1">{t.label}</span>
                 <span class={optN}>{t.n}</span>
               </label>
@@ -83,6 +104,7 @@ const optN = 'text-xs text-muted-foreground tabular-nums'
             {takes.map((t) => (
               <label class={opt}>
                 <Checkbox name="takes" value={t.key} />
+                <t.Icon className="size-4 flex-none text-muted-foreground" strokeWidth={1.75} aria-hidden="true" />
                 <span class="flex-1">{t.label}</span>
                 <span class={optN}>{says(t.field)}</span>
               </label>
@@ -95,10 +117,14 @@ const optN = 'text-xs text-muted-foreground tabular-nums'
     <div class="min-w-0">
       <div class="sp-wrap">
         <Table className="sp-tbl">
-          <TableCaption className="sr-only">Fiscal sponsors, in alphabetical order</TableCaption>
+          <TableCaption className="sr-only">Fiscal sponsors. Sortable by name, charges, and whether they take groups abroad, companies and individuals.</TableCaption>
           <TableHeader>
             <TableRow>
-              {columns.map((c) => <TableHead scope="col">{c}</TableHead>)}
+              {columns.map((c) => (
+                <TableHead scope="col" data-col={c.sort} aria-sort={c.sort === 'name' ? 'ascending' : undefined}>
+                  {c.sort ? <button type="button" data-sort={c.sort}>{c.label} <span class="arrow" aria-hidden="true"><ChevronsUpDown className="i-none" /><ArrowUp className="i-asc" /><ArrowDown className="i-desc" /></span></button> : c.label}
+                </TableHead>
+              ))}
               <TableHead scope="col" data-twin-skip><span class="sr-only">Details</span></TableHead>
             </TableRow>
           </TableHeader>
@@ -151,7 +177,7 @@ const optN = 'text-xs text-muted-foreground tabular-nums'
     position: sticky;
     top: 0;
     z-index: 2;
-    width: 11%;
+    width: 12.5%;
     height: 2.5rem;
     padding: 0.4rem 0.75rem;
     background: var(--card);
@@ -160,11 +186,16 @@ const optN = 'text-xs text-muted-foreground tabular-nums'
     color: var(--muted-foreground);
     vertical-align: middle;
   }
+  .sp-tbl thead button {
+    height: auto;
+    min-height: 2rem;
+    text-align: left;
+  }
   .sp-tbl thead th:nth-child(1) {
     width: 16%;
   }
   .sp-tbl thead th:nth-child(2) {
-    width: 26%;
+    width: 23%;
   }
   .sp-tbl thead th:nth-child(3) {
     width: 16.5%;

@@ -1,4 +1,4 @@
-// The filters on /fiscal-sponsors/: which sponsors show, kept in the address. Without it every sponsor is listed.
+// Filters and sorting on /fiscal-sponsors/: which sponsors show, in what order, kept in the address. Without it every sponsor is listed by name.
 const words = (el: HTMLElement, key: string) => (el.dataset[key] ?? '').split(' ').filter(Boolean)
 // Sponsors of these types name no single subject, so they follow the ones that name the reader's.
 const general = ['environment', 'any']
@@ -13,6 +13,37 @@ export function initSponsors() {
   const rows = [...document.querySelectorAll<HTMLElement>('[data-sp]')]
   const picked = (name: string) => [...form.querySelectorAll<HTMLInputElement>(`[name="${name}"]:checked`)].map((i) => i.value)
 
+  // "-" in front reverses it. Sponsors that don't say stay last either way, and ties keep the names in order.
+  let sort = ''
+  const answers = ['abroad', 'companies', 'individuals']
+  const value = (r: HTMLElement, key: string): number[] | null => {
+    if (key === 'name') return [rows.indexOf(r)]
+    if (key === 'charges') return r.dataset.rate ? r.dataset.rate.split(' ').map(Number) : null
+    const a = r.dataset.answers!.split(',')[answers.indexOf(key)]
+    return a ? [Number(a)] : null
+  }
+  const order = (list: HTMLElement[]) => {
+    const key = sort.replace('-', '')
+    const sign = key === sort ? 1 : -1
+    return list.sort((x, y) => {
+      const [a, b] = [value(x, key), value(y, key)]
+      // A charge with no rate ("No cost to join") still says more than nothing.
+      if (!a || !b) return (a ? 0 : 1) - (b ? 0 : 1) || said(y, key) - said(x, key)
+      return sign * (a[0] - b[0] || (a[1] ?? 0) - (b[1] ?? 0))
+    })
+  }
+  const said = (r: HTMLElement, key: string) => (key === 'charges' && !r.querySelector('[data-label="Charges"][data-none]') ? 1 : 0)
+  const keys = [...document.querySelectorAll<HTMLElement>('[data-col]')]
+  const select = document.querySelector<HTMLSelectElement>('[data-sort-select]')!
+  const setSort = (to: string) => {
+    sort = to
+    select.value = to
+    for (const th of keys) {
+      if (th.dataset.col === to.replace('-', '')) th.setAttribute('aria-sort', to[0] === '-' ? 'descending' : 'ascending')
+      else th.removeAttribute('aria-sort')
+    }
+  }
+
   const update = () => {
     const projects = picked('project')
     const takes = picked('takes')
@@ -20,8 +51,8 @@ export function initSponsors() {
     const wider = (r: HTMLElement) =>
       !fits(r) && (words(r, 'sp').some((t) => general.includes(t)) || words(r, 'broader').some((t) => projects.includes(t)))
     const says = (r: HTMLElement) => takes.every((t) => words(r, 'yes').includes(t))
-    const first = rows.filter((r) => fits(r) && says(r))
-    const second = rows.filter((r) => wider(r) && says(r))
+    const first = order(rows.filter((r) => fits(r) && says(r)))
+    const second = order(rows.filter((r) => wider(r) && says(r)))
     for (const r of rows) r.hidden = !first.includes(r) && !second.includes(r)
     divider.hidden = second.length === 0
     const last = rows[0].parentElement!
@@ -32,11 +63,13 @@ export function initSponsors() {
     const silent = rows.filter((r) => (fits(r) || wider(r)) && !says(r) && takes.every((t) => words(r, 'yes').includes(t) || !words(r, 'said').includes(t))).length
     unsaid.hidden = silent === 0
     unsaid.textContent = `${silent} more don’t say.`
-    return new URLSearchParams([...projects.map((v) => ['project', v]), ...takes.map((v) => ['takes', v])])
+    return new URLSearchParams([...projects.map((v) => ['project', v]), ...takes.map((v) => ['takes', v]), ...(sort === 'name' ? [] : [['sort', sort]])])
   }
 
   const q = new URLSearchParams(location.search)
   for (const i of form.querySelectorAll<HTMLInputElement>('input')) i.checked = q.getAll(i.name).includes(i.value)
+  const asked = q.get('sort') ?? ''
+  setSort(keys.some((th) => th.dataset.col === asked.replace('-', '')) ? asked : 'name')
   // Beside the table the filters stay open; above it they fold.
   const beside = matchMedia('(min-width: 68rem)')
   const place = () => (fold.open = beside.matches)
@@ -47,8 +80,18 @@ export function initSponsors() {
     const picks = update()
     history.replaceState(null, '', `${location.pathname}${picks.size ? `?${picks}` : ''}`)
   }
+  select.addEventListener('change', () => setSort(select.value))
   form.addEventListener('change', change)
-  form.addEventListener('reset', () => setTimeout(change))
+  for (const b of document.querySelectorAll<HTMLElement>('[data-sort]'))
+    b.addEventListener('click', () => {
+      setSort(sort === b.dataset.sort ? `-${sort}` : b.dataset.sort!)
+      change()
+    })
+  // Clearing the filters keeps the order.
+  form.addEventListener('reset', () => setTimeout(() => {
+    setSort(sort)
+    change()
+  }))
   update()
 
   const target = location.hash && document.getElementById(location.hash.slice(1))

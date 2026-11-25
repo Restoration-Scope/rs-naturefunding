@@ -231,9 +231,9 @@ describe('no hydration, small JavaScript', () => {
         expect(inline.length).toBeLessThanOrEqual(1)
         expect(inline.join('').length).toBeLessThanOrEqual(400)
       } else if (f === 'fiscal-sponsors/index.html') {
-        // Its filters (src/lib/sponsor-filter.ts).
+        // Its filters and sorting (src/lib/sponsor-filter.ts).
         expect(inline.length).toBe(1)
-        expect(inline.join('').length).toBeLessThanOrEqual(2500)
+        expect(inline.join('').length).toBeLessThanOrEqual(3500)
       } else if (f === 'worth-applying/index.html') {
         // The worth-it calculator.
         expect(inline.length).toBe(1)

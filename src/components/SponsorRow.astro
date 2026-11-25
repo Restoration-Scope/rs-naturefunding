@@ -40,6 +40,9 @@ const limits = [
 // The row shows one charge, a percentage where it has one; Details has them all.
 const fees = (s.fees ?? []).map((f) => f.value)
 const fee = fees.find((f) => f.includes('%')) ?? fees[0]
+// The rate in that charge, as the sponsor puts it ("10-12%"): bold in the row, and what the column sorts by.
+const rate = fee?.match(/(\d+(?:\.\d+)?)(?:-(\d+(?:\.\d+)?))?%/)
+const order = { yes: 0, case_by_case: 1, no: 2 }
 
 type Fact = { label: string; items: { text: string; evidence: Evidence }[]; ordered?: boolean; inRow?: boolean }
 type Stated = { value: string; evidence: Evidence }
@@ -76,7 +79,7 @@ const said = answers.filter(({ a }) => a).map((x) => x.key)
 ---
 
 {/* Styled by class in fiscal-sponsors.astro, which also reflows each sponsor to a card at narrow widths. */}
-<TableBody id={s.id} data-sp={s.types.map((t) => t.value).join(' ')} data-broader={broader} data-yes={yes.join(' ')} data-said={said.join(' ')}>
+<TableBody id={s.id} data-sp={s.types.map((t) => t.value).join(' ')} data-broader={broader} data-yes={yes.join(' ')} data-said={said.join(' ')} data-rate={rate ? `${rate[1]} ${rate[2] ?? rate[1]}` : undefined} data-answers={answers.map(({ a }) => (a ? order[a.value.answer] : '')).join(',')}>
   <TableRow>
     <th scope="row">
       <span class="sp-name">{s.name}</span>
@@ -90,7 +93,7 @@ const said = answers.filter(({ a }) => a).map((x) => x.key)
       {limits.map((x) => <p><strong>{x.label}:</strong> {x.text}</p>)}
     </TableCell>
     <TableCell data-label="Charges" data-none={fee ? undefined : ''}>
-      <p class:list={{ 'text-ink-2': !fee }}>{fee ?? 'Not said'}{fees.length > 1 && <span class="text-ink-2"> +{fees.length - 1} more</span>}</p>
+      <p class:list={{ 'text-ink-2': !fee }}>{rate ? <>{fee!.slice(0, rate.index)}<strong>{rate[0]}</strong>{fee!.slice(rate.index! + rate[0].length)}</> : (fee ?? 'Not said')}{fees.length > 1 && <span class="text-ink-2"> +{fees.length - 1} more</span>}</p>
     </TableCell>
     {
       answers.map(({ label, a }) => {
