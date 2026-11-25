@@ -14,15 +14,32 @@
   "geography": { "scope": "countries", "countries": ["DK"] },
   "access": "direct",
   "window": "rolling",
-  "amount": {
-    "currency": "DKK",
-    "max": 30000,
-    "typical": true,
-    "note": "Per project, excluding VAT"
-  },
+  "amount": { "currency": "DKK", "max": 30000, "typical": true, "note": "per project, excl. moms" },
   "pool": { "currency": "DKK", "value": 500000, "period": "year" },
   "co_finance_required": null,
-  "reporting": null,
+  "reporting": "Submit the accounting form and supplier invoice copies to DTU Aqua within 8 days of receipt; the project must be completed and the invoice sent in the same calendar year as the grant, otherwise the funding lapses.",
+  "effort": { "steps": ["Application submission"] },
+  "eligibility": [
+    { "rule": "Organisation manages fish care in watercourses", "kind": "other" },
+    {
+      "rule": "Watercourse authority and affected landowners approved the project in writing",
+      "kind": "project"
+    },
+    {
+      "rule": "Grant covers materials and up to 25% machine time, not design or labour",
+      "kind": "project"
+    },
+    { "rule": "Organisation has no more than one active project", "kind": "project" }
+  ],
+  "after_award": { "reports": "final" },
+  "documents": [
+    "Project description",
+    "Project area map sketch",
+    "Project budget based on a supplier or transporter quote",
+    "Watercourse authority permission",
+    "Landowner permission",
+    "Statement on following DTU Aqua's guidance"
+  ],
   "calls": [
     {
       "id": "rolling",
@@ -78,6 +95,20 @@
       "checked_at": "2026-11-25",
       "method": "page"
     },
+    "reporting": {
+      "source_url": "https://www.fiskepleje.dk/vandloeb/restaurering/tilskud_til_vandloebsrestaurering/foreningspuljen",
+      "quote": "Det er vigtigt, at foreningen sender regnskabsskemaet og leverandørens fakturakopier senest 8 dage efter modtagelsen, da betaling til leverandøren ikke kan ske, før de nævnte papirer er modtaget hos DTU Aqua i Silkeborg.",
+      "checked_at": "2026-11-25",
+      "method": "page"
+    },
+    "effort": [
+      {
+        "source_url": "https://www.fiskepleje.dk/vandloeb/restaurering/tilskud_til_vandloebsrestaurering/foreningspuljen",
+        "quote": "En ansøgning skal indeholde følgende:",
+        "checked_at": "2026-11-25",
+        "method": "page"
+      }
+    ],
     "eligibility": [
       {
         "source_url": "https://www.fiskepleje.dk/vandloeb/restaurering/tilskud_til_vandloebsrestaurering/foreningspuljen",
@@ -104,6 +135,14 @@
         "method": "page"
       }
     ],
+    "after_award": [
+      {
+        "source_url": "https://www.fiskepleje.dk/vandloeb/restaurering/tilskud_til_vandloebsrestaurering/foreningspuljen",
+        "quote": "Det er vigtigt, at foreningen sender regnskabsskemaet og leverandørens fakturakopier senest 8 dage efter modtagelsen, da betaling til leverandøren ikke kan ske, før de nævnte papirer er modtaget hos DTU Aqua i Silkeborg.",
+        "checked_at": "2026-11-25",
+        "method": "page"
+      }
+    ],
     "documents": [
       {
         "source_url": "https://www.fiskepleje.dk/vandloeb/restaurering/tilskud_til_vandloebsrestaurering/foreningspuljen",
@@ -123,45 +162,7 @@
         "checked_at": "2026-11-25",
         "method": "page"
       }
-    ],
-    "effort": [
-      {
-        "source_url": "https://www.fiskepleje.dk/vandloeb/restaurering/tilskud_til_vandloebsrestaurering/foreningspuljen",
-        "quote": "En ansøgning skal indeholde følgende:",
-        "checked_at": "2026-11-25",
-        "method": "page"
-      }
-    ],
-    "after_award": [
-      {
-        "source_url": "https://www.fiskepleje.dk/vandloeb/restaurering/tilskud_til_vandloebsrestaurering/foreningspuljen",
-        "quote": "Det er vigtigt, at foreningen sender regnskabsskemaet og leverandørens fakturakopier senest 8 dage efter modtagelsen, da betaling til leverandøren ikke kan ske, før de nævnte papirer er modtaget hos DTU Aqua i Silkeborg.",
-        "checked_at": "2026-11-25",
-        "method": "page"
-      }
     ]
   },
-  "checked_at": "2026-11-25",
-  "after_award": { "reports": "final" },
-  "eligibility": [
-    { "rule": "Organisation manages fish care in watercourses", "kind": "other" },
-    {
-      "rule": "Watercourse authority and affected landowners approved the project in writing",
-      "kind": "project"
-    },
-    {
-      "rule": "Grant covers materials and up to 25% machine time, not design or labour",
-      "kind": "project"
-    },
-    { "rule": "Organisation has no more than one active project", "kind": "project" }
-  ],
-  "documents": [
-    "Project description",
-    "Project area map sketch",
-    "Project budget based on a supplier or transporter quote",
-    "Watercourse authority permission",
-    "Landowner permission",
-    "Statement on following DTU Aqua's guidance"
-  ],
-  "effort": { "steps": ["Application submission"] }
+  "checked_at": "2026-11-25"
 }
