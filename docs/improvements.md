@@ -2,6 +2,7 @@
 
 What a visitor to naturefunding.org can see or do that they couldn't before, newest first. One line per merged change, added in the same PR (AGENTS.md). The naturefunding.org LinkedIn Page drafts its update posts from this list. Emails count once `DIGEST_SENDING` is `live`.
 
+- 2026-11-25 · Two more grants listed: the Terre de Femmes International Award (€10,000 for women-led urban tree projects in any country, closes 30 November 2026) and Charles Hayward Overseas (up to £15,000 for UK charities working in Commonwealth Africa, next deadline 5 February 2027) · https://naturefunding.org/p/yves-rocher-terre-de-femmes-international-award/ · #1149
 - 2026-11-25 · Each grant's page shows what it asks of you (who qualifies, applying, co-funding, after the award) at the top, and Before you apply explains each level with the funder's words · https://naturefunding.org/p/iki-large-grants/ · #1077
 - 2026-11-25 · GEF Small Grants Programme Ethiopia's OP8 call is listed: NGOs, CSOs and community-based organisations in Ethiopia can see the 31 December 2026 deadline and up to US$75,000 per project · https://naturefunding.org/p/gef-sgp-ethiopia/ · #1076
 - 2026-11-25 · All 101 grants closing by 22 January had their Before you apply checked again by a second reader against the funder's own documents: 364 wrong rules, documents or steps fixed or removed and 334 missing ones added · https://naturefunding.org/p/naturescot-nature-restoration-fund/#before-title · #1148
