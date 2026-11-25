@@ -1,9 +1,11 @@
 import { describe, expect, test } from 'bun:test'
 import type { Call, Programme } from '../data/schema'
 import { statusText } from './agent'
-import { callGroups, listingFor, programmeById, programmes } from './data'
+import { callGroups, listingFor, openPartners, partnerGroups, programmeById, programmes } from './data'
 import { finderPages } from './finder-pages'
 import { callTakes, placeFit } from './where-codes'
+import { partsFor } from './where-view'
+import { withRegions } from './geo'
 
 const faf = programmeById.get('forest-action-facility')!
 const call = (id: string, status: Call['status'], countries?: string[]): Call => ({
@@ -93,6 +95,17 @@ describe('a place page reports only the calls that take the place', () => {
     expect(statusText(listingFor(p, undefined, 'PA'))).toBe('No open or announced call for Panama found on the funder’s page.')
     expect(statusText(listingFor(p, undefined, 'CR'))).not.toContain('more call')
     expect(statusText(listingFor(p))).toContain('One more call is open')
+  })
+
+  test('a finder row counts the same partners for each country as its page', () => {
+    for (const p of programmes.filter((x) => x.access === 'intermediary')) {
+      for (const g of partnerGroups(p)) for (const c of g.codes) expect([p.id, c, openPartners(p, c).length]).toEqual([p.id, c, g.open])
+    }
+  })
+
+  test('the apply box shows a region the parts with a country in it, and the rest’s', () => {
+    const parts = ['KE', 'EC PE', '*'].map((c) => withRegions(c).split(' ').filter((x) => x !== ''))
+    expect([partsFor(parts, 'KE'), partsFor(parts, 'CR'), partsFor(parts, 'r:africa'), partsFor(parts, 'r:latin_america_caribbean'), partsFor(parts, 'r:asia')]).toEqual([[0], [2], [0, 2], [1, 2], [2]])
   })
 
   test('a region takes a call for any of its countries', () => {

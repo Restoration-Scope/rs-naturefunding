@@ -1,6 +1,13 @@
 // The finder's "Download CSV": /data.csv (src/pages/data.csv.ts) cut down to the programmes the view shows, one
 // row each, in the order it shows them. Same columns as the full file, so a spreadsheet built on one takes the other.
 
+const CALL_COLUMNS = new Set([
+  'call_id', 'call', 'call_status', 'opens', 'opens_expected', 'deadline_date', 'deadline_text', 'dates_each_year', 'call_note', 'call_countries', 'call_url',
+])
+
+/** One cell's text, quoted when it needs it. */
+export const csvCell = (s: string) => (/[",\n]/.test(s) ? `"${s.replaceAll('"', '""')}"` : s)
+
 /** Splits CSV text into records, keeping newlines inside quoted cells. Each record keeps its own quoting. */
 export function csvRecords(text: string): string[] {
   const records: string[] = []
@@ -42,13 +49,18 @@ export function csvFields(record: string): string[] {
 }
 
 /**
- * The header plus one record per shown programme, in `shown` order: the record of the call its row shows, or its
- * first record when the row shows no call (a programme with no call has just one). Null when a programme or call
+ * The header plus one record per shown programme, in `shown` order: the record of the call its row shows. A row
+ * showing no call takes its first record for every country, or the programme alone, with its call's columns empty,
+ * when each call is for some countries: those may be others than the page's. Null when a programme or call
  * the page shows is no longer in the file: the page is older than the data, and a reload fixes it.
  */
 export function pickProgrammes(text: string, shown: { id: string; call?: string }[]): string | null {
   const [header = '', ...rows] = csvRecords(text)
-  const callCol = header.split(',').indexOf('call_id')
+  const columns = header.split(',')
+  const callCol = columns.indexOf('call_id')
+  const countriesCol = columns.indexOf('call_countries')
+  const withoutCall = (record: string) =>
+    csvFields(record).map((v, i) => (CALL_COLUMNS.has(columns[i]!) ? '' : csvCell(v))).join(',')
   const byId = new Map<string, string[]>()
   for (const r of rows) {
     const id = r.slice(0, r.indexOf(','))
@@ -57,7 +69,9 @@ export function pickProgrammes(text: string, shown: { id: string; call?: string 
   const picked: string[] = []
   for (const { id, call } of shown) {
     const records = byId.get(id) ?? []
-    const record = call ? records.find((r) => csvFields(r)[callCol] === call) : records[0]
+    const record = call
+      ? records.find((r) => csvFields(r)[callCol] === call)
+      : (records.find((r) => !csvFields(r)[countriesCol]) ?? (records[0] && withoutCall(records[0])))
     if (!record) return null
     picked.push(record)
   }

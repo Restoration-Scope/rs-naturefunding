@@ -69,6 +69,12 @@ export const areaNames = [...(Object.keys(members) as Region[]), ...(Object.keys
 export const areaCountries = (a: string): string[] =>
   a in members ? members[a as Region].split(' ') : a in areaMembers ? areaMembers[a as keyof typeof areaMembers].split(' ') : [a]
 
+/** Space-separated country codes with their regions' codes: "KE" gives "KE r:africa". */
+export const withRegions = (codes: string): string => {
+  const list = codes.split(' ').filter(Boolean)
+  return [...list, ...new Set(list.flatMap((c) => (countryRegion[c] ? [`r:${countryRegion[c]}`] : [])))].join(' ')
+}
+
 /** Countries grouped by region, sorted by name, for the "Where" select. */
 export const countriesByRegion = (Object.keys(members) as Region[]).map((r) => ({
   region: r,

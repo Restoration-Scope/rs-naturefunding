@@ -5,6 +5,17 @@
 
 const all = <T extends Element>(s: string, root: ParentNode = document) => [...root.querySelectorAll<T>(s)]
 
+/**
+ * Which parts of an apply box a Where shows, given each part's codes: its countries and their regions, or `*` for the
+ * countries no part names. A country has one part; a region has each part with a country in it, and the rest's.
+ */
+export function partsFor(parts: readonly (readonly string[])[], where: string): number[] {
+  const at = (code: string) => parts.flatMap((codes, i) => (codes.includes(code) ? [i] : []))
+  const own = at(where)
+  if (where.startsWith('r:')) return [...new Set([...own, ...at('*')])].sort((a, b) => a - b)
+  return (own.length ? own : at('*')).slice(0, 1)
+}
+
 export function initWhereView() {
   const root = document.querySelector<HTMLElement>('[data-where-codes]')
   if (!root) return
@@ -66,12 +77,12 @@ export function initWhereView() {
     if (callsHome) for (const c of calls) callsHome.insertBefore(c, tpl('other-calls'))
     for (const el of all('[data-where-made]')) el.remove()
 
-    // The apply box: the part whose calls take this country, else the part for the rest; all of them without one.
-    const part =
-      covered && country && parts.length > 1
-        ? (parts.find((p) => p.dataset.group!.split(' ').includes(country)) ?? parts.find((p) => p.dataset.group === '*'))
-        : undefined
-    for (const p of parts) p.hidden = !covered || (!!part && p !== part)
+    // The apply box: the parts whose calls take this place, else the part for the rest; all of them without one.
+    const codesOf = (p: HTMLElement) => p.dataset.group!.split(' ')
+    const mine = covered && where && parts.length > 1 ? partsFor(parts.map(codesOf), where).map((i) => parts[i]!) : []
+    const narrowed = mine.length > 0 && mine.length < parts.length
+    const part = narrowed && mine.length === 1 ? mine[0] : undefined
+    for (const p of parts) p.hidden = !covered || (narrowed && !mine.includes(p))
     box?.toggleAttribute('data-narrowed', !!part)
     if (!covered) place('none')
     if (select) {
@@ -101,9 +112,9 @@ export function initWhereView() {
     }
 
     // Calls: the place's own first and open; the others fold below.
-    const takes = (c: HTMLElement) => !c.dataset.callCountries || c.dataset.callCountries.split(' ').includes(country)
-    const others = part ? calls.filter((c) => !takes(c)) : []
-    for (const c of calls) c.open = part && takes(c) ? true : builtOpen.get(c)!
+    const takes = (c: HTMLElement) => !c.dataset.callCountries || c.dataset.callCountries.split(' ').includes(where)
+    const others = narrowed ? calls.filter((c) => !takes(c)) : []
+    for (const c of calls) c.open = narrowed && takes(c) ? true : builtOpen.get(c)!
     if (others.length) {
       const fold = place('other-calls')
       fold?.querySelector('[data-calls-other-list]')?.append(...others)
@@ -117,10 +128,11 @@ export function initWhereView() {
     }
 
     // The button at the foot follows the apply box.
-    const primary = part?.querySelector<HTMLAnchorElement>('[data-primary]')
+    const lead = narrowed ? mine.find((p) => p.querySelector('[data-primary]')) : undefined
+    const primary = lead?.querySelector<HTMLAnchorElement>('[data-primary]')
     if (cta && ctaLabel && ctaButton) {
-      cta.hidden = !covered || (!!part && !primary)
-      ctaLabel.textContent = primary ? `Ready to apply to ${part!.dataset.callLabel}?` : builtCta.label
+      cta.hidden = !covered || (narrowed && !primary)
+      ctaLabel.textContent = primary ? `Ready to apply to ${lead!.dataset.callLabel}?` : builtCta.label
       ctaButton.href = primary?.getAttribute('href') ?? builtCta.href
       ctaButton.textContent = primary?.textContent ?? builtCta.text
     }

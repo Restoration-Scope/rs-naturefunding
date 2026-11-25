@@ -2,12 +2,12 @@ import { existsSync, readFileSync } from 'node:fs'
 import { join } from 'node:path'
 import { loadData } from '../data/load'
 import type { Call, Programme } from '../data/schema'
-import { areaCountries, countryName } from './geo'
+import { areaCountries, countryName, countryRegion } from './geo'
 import type { SizeBucket, State } from './labels'
 import { sizeBuckets } from './labels'
 import { usdPerUnit } from './rates'
 import { daysBetween, effectiveCallStatus, utcDateKey } from './status'
-import { callTakes, wholeRegions, whereCodes } from './where-codes'
+import { callTakes, placeFit, wholeRegions, whereCodes } from './where-codes'
 
 export { daysBetween } from './status'
 
@@ -105,6 +105,24 @@ export function listingFor(p: Programme, today: string | Date = buildDate, where
 export const listings: Listing[] = programmes
   .map((p) => listingFor(p))
   .filter((l) => l.ageDays <= HIDDEN_DAYS)
+
+/** An umbrella's partner programmes open now, of those sure to take projects in a Where. */
+export const openPartners = (p: Programme, where = ''): Listing[] =>
+  programmes
+    .filter((c) => c.parent === p.id && placeFit(c, where) === 'all')
+    .map((c) => listingFor(c, buildDate, where))
+    .filter((l) => l.state === 'open' || l.state === 'rolling')
+
+/** An umbrella's countries by how many partner programmes are open there; empty when none is open anywhere. */
+export function partnerGroups(p: Programme): { codes: string[]; open: number }[] {
+  if (p.access !== 'intermediary' || !openPartners(p).length) return []
+  const groups = new Map<number, string[]>()
+  for (const c of Object.keys(countryRegion).filter((k) => placeFit(p, k))) {
+    const open = openPartners(p, c).length
+    groups.set(open, [...(groups.get(open) ?? []), c])
+  }
+  return [...groups].map(([open, codes]) => ({ codes, open }))
+}
 
 const monthNames = ['jan', 'feb', 'mar', 'apr', 'may', 'jun', 'jul', 'aug', 'sep', 'oct', 'nov', 'dec']
 

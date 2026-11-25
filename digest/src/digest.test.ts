@@ -196,6 +196,38 @@ describe('a call for some of the programme’s countries', () => {
   })
 })
 
+describe('a call’s dates set its section, as on the site', () => {
+  const faf = byId.get('forest-action-facility')!
+  const at = (opens: string, date: string, status: 'open' | 'upcoming' = 'upcoming') => {
+    const p: Programme = { ...faf, calls: [{ ...faf.calls[0]!, id: 'c', status, opens, countries: undefined, expected: undefined, deadline: { date, text: date } }] }
+    const run = (kind: 'announced' | 'new_programme') =>
+      buildDigest([{ at: '2026-11-20T00:00:00.000Z', kind, programme: p.id, call: 'c' }], new Map([[p.id, p]]), cleanPrefs('EC', []), '2026-11-18T00:00:00.000Z', '2026-11-24T08:00:00.000Z')
+    return { announced: run('announced').items[0], isNew: run('new_programme').items[0] }
+  }
+  test('an upcoming call past its deadline is left out, and a new programme shows no call', () => {
+    const r = at('2026-11-21', '2026-11-22')
+    expect(r.announced).toBeUndefined()
+    expect(r.isNew?.call).toBeNull()
+  })
+  test('an upcoming call whose opening date came is open, in its section and its words', () => {
+    const { announced } = at('2026-11-21', '2026-12-20')
+    expect(announced?.section).toBe('open')
+    expect(itemParts(announced!, 'https://x', cleanPrefs('EC', [])).status).toBe('Open · deadline 2026-12-20')
+  })
+  test('an open call that opens later is still opening soon', () => {
+    expect(at('2026-12-01', '2026-12-20', 'open').announced?.section).toBe('upcoming')
+  })
+})
+
+test('an item’s link opens the programme for the subscriber’s place', () => {
+  const i = { section: 'new', programme: byId.get('forest-action-facility')!, call: null } as DigestItem
+  expect(['PE', 'r:africa', ''].map((w) => itemParts(i, 'https://x', cleanPrefs(w, [])).page)).toEqual([
+    'https://x/p/forest-action-facility/?where=PE',
+    'https://x/p/forest-action-facility/?where=r:africa',
+    'https://x/p/forest-action-facility/',
+  ])
+})
+
 describe('link tokens', () => {
   test('round-trip, and refuse a changed token or another secret', async () => {
     const t = await seal({ k: 'unsubscribe', id: 'abc' }, 's1')

@@ -21,7 +21,7 @@ import { HIDDEN_DAYS, buildDate, callGroups, countryLists, whereArea, whereReach
 import type { Programme } from '../../data/schema'
 import { pagesFor } from '../../lib/finder-pages'
 import { amountText, effortLevel, effortSignals, effortText, poolText, geographyFull, joinAnd, longDate, sentence, funderRepeatsName, funderQualifier, programmeTitle, shownParts } from '../../lib/format'
-import { countryName, regionLabels } from '../../lib/geo'
+import { countryName, regionLabels, withRegions } from '../../lib/geo'
 import {
   accessHelp,
   accessLabels,
@@ -452,7 +452,7 @@ const jsonLd = [
             // Each call folds in the same card; the one that sets the page's status starts open.
             <details id={callId(c)} class:list={[cardClasses, 'group/call px-4 pt-3.5 pb-1 md:px-[1.1rem] [&+&]:mt-3']}
               open={c === call || p.calls.length === 1}
-              data-call-countries={c.countries?.join(' ') ?? ''} data-call-label={c.label}
+              data-call-countries={withRegions(c.countries?.join(' ') ?? '')} data-call-label={c.label}
             >
               <summary class="grid cursor-pointer list-none grid-cols-[minmax(0,1fr)_auto] items-start gap-x-3 gap-y-1 pb-3 after:col-start-2 after:row-start-1 after:mt-2 after:mr-[0.2rem] after:size-[0.55rem] after:border-r-2 after:border-b-2 after:border-ink-2 after:content-[''] after:[transform:rotate(45deg)_translateY(-0.15rem)] group-open/call:after:[transform:rotate(-135deg)_translateY(-0.1rem)] [&::-webkit-details-marker]:hidden">
                 {/* The call names are the funder's own long titles: body type, not headings. */}
