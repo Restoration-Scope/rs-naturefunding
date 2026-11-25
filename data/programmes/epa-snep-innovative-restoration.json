@@ -26,30 +26,32 @@
       "Application submission",
       "Threshold eligibility determination",
       "EPA merit review",
-      "Review meeting"
+      "Review meeting",
+      "EPA applicant risk review"
     ],
-    "due": ["2026-12-11", null, null, null]
+    "due": ["2026-12-11", null, null, null, null]
   },
   "eligibility": [
     {
       "rule": "Carry out activities within and directly benefit the Southeast New England Program Geographic Area",
       "kind": "project"
     },
+    { "rule": "Project addresses at least one coastal or riverine habitat", "kind": "project" },
+    { "rule": "Submit no more than 1 application under this opportunity", "kind": "other" },
     {
-      "rule": "Clearly identify at least one coastal or riverine habitat addressed by the application",
-      "kind": "project"
-    },
-    { "rule": "Submit no more than 1 application under this opportunity", "kind": "other" }
+      "rule": "Research institutions must qualify as higher education institutions or another listed eligible applicant type",
+      "kind": "legal"
+    }
   ],
-  "co_finance": { "min_share": 13.04 },
+  "co_finance": { "ratio": "0.15:1", "in_kind": true },
   "documents": [
     "Budget Information form (SF-424A)",
     "EPA Key Contacts Form 5700-54",
     "EPA Form 4700-4 pre-award compliance form",
     "Budget narrative attachment",
-    "Staff resumes or curriculum vitae",
+    "Staff resumes or CVs, or details of additional expertise to be sought if funded",
     "Partner letters of commitment, if partners are named",
-    "List of assistance agreements from the past 3 years",
+    "List of past 3 years’ or ongoing assistance agreements, with performance and reporting evidence",
     "Nonprofit status documents, if appropriate"
   ],
   "calls": [
@@ -142,6 +144,12 @@
         "quote": "Review Meeting",
         "checked_at": "2026-11-25",
         "method": "page"
+      },
+      {
+        "source_url": "https://www.grants.gov/grantsws/rest/opportunity/att/download/355309",
+        "quote": "The EPA will consider any comments by the applicant, along with information available in the responsibility/qualiﬁcation records in SAM.gov., when doing the risk review as required by 2 CFR 200.206.",
+        "checked_at": "2026-11-24",
+        "method": "page"
       }
     ],
     "eligibility": [
@@ -162,24 +170,24 @@
         "quote": "Applicants may only submit 1 application under this opportunity.",
         "checked_at": "2026-11-25",
         "method": "page"
+      },
+      {
+        "source_url": "https://www.grants.gov/grantsws/rest/opportunity/att/download/355309",
+        "quote": "Only these types of organizations may apply: • • • • • Indian Tribes. State & Local Governments. Institutions of Higher Education (IHEs). Interstate Agencies. Nonproﬁt organizations.",
+        "checked_at": "2026-11-24",
+        "method": "page"
       }
     ],
     "co_finance": {
-      "source_url": "https://www.epa.gov/system/files/documents/2026-11/2026-11-04-snep-innovative-restoration-grant-opportunity-webinar-slides.pdf",
-      "quote": "Minimum non-federal cost share = 0.15 × federal funds requested",
-      "checked_at": "2026-11-25",
+      "source_url": "https://www.grants.gov/grantsws/rest/opportunity/att/download/355309",
+      "quote": "For example, if an applicant is requesting $1,000,000 in federal funds, they would need to provide $150,000 in cost share, for a total project cost of $1,150,000. Cost shares can be in the form of cash or in-kind contributions, such as the use of volunteers and/or donated time, equipment, expertise, salaries, or other veriﬁable costs and must be carefully documented.",
+      "checked_at": "2026-11-24",
       "method": "page"
     },
     "documents": [
       {
         "source_url": "https://www.grants.gov/grantsws/rest/opportunity/att/download/355309",
         "quote": "Budget Information for Non-Construction Programs (SF-424A) EPA Key Contacts Form 5700-54 EPA Form 4700-4 Preaward Compliance Review Report",
-        "checked_at": "2026-11-20",
-        "method": "page"
-      },
-      {
-        "source_url": "https://www.grants.gov/grantsws/rest/opportunity/att/download/355309",
-        "quote": "Resumes or curriculum vitae of staff who will be working on the grant",
         "checked_at": "2026-11-20",
         "method": "page"
       },
@@ -193,6 +201,18 @@
         "source_url": "https://www.grants.gov/grantsws/rest/opportunity/att/download/355309",
         "quote": "Letters of commitment from any partners identified in the proposal in order to confirm their partnership.",
         "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.grants.gov/grantsws/rest/opportunity/att/download/355309",
+        "quote": "Budget Narrative Attachment Form",
+        "checked_at": "2026-11-24",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.grants.gov/grantsws/rest/opportunity/att/download/355309",
+        "quote": "Resumes or curriculum vitae of staﬀ who will be working on the grant or additional expertise to be sought if the funding is awarded.",
+        "checked_at": "2026-11-24",
         "method": "page"
       }
     ],

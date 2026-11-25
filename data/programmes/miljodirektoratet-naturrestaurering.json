@@ -19,14 +19,14 @@
     "min": 100000,
     "note": "Minimum application amount for a restoration measure."
   },
-  "co_finance_required": null,
+  "co_finance_required": false,
   "reporting": "Grant recipients report on how the funds were used, how the measures were carried out and the results, in the application centre, with signed accounts attached.",
   "effort": { "steps": ["Application form"] },
   "eligibility": [
     { "rule": "Project area is outside protected areas", "kind": "project" },
     {
       "rule": "Applicant is not responsible for environmental degradation costs under section 11",
-      "kind": "other"
+      "kind": "legal"
     },
     { "rule": "Project measures are significant and capable of lasting effect", "kind": "project" },
     { "rule": "Funding request excludes impact monitoring", "kind": "project" },
@@ -38,17 +38,18 @@
       "rule": "Funding request excludes general mapping of potential restoration areas",
       "kind": "project"
     },
-    { "rule": "Project is not designed and implemented in the same year", "kind": "project" },
     {
-      "rule": "For implementation funding, the landowner signs a 40-year landowner declaration",
+      "rule": "Does not seek grant funding for both design and implementation in the same year",
       "kind": "project"
-    }
+    },
+    { "rule": "The project is not carried out as ecological compensation", "kind": "project" }
   ],
   "after_award": { "reports": "final", "audit": true },
   "documents": [
     "Project description",
     "Budget",
-    "Signed landowner declaration, if applying for implementation funding"
+    "Signed 40-year landowner declaration, for implementation funding",
+    "Landowner’s confirmation of intent to enter a long-term agreement, for design funding"
   ],
   "calls": [
     {
@@ -103,6 +104,12 @@
       "source_url": "https://soknadssenter.miljodirektoratet.no/NaturrestaureringSkjema/Startside/Index?id=82",
       "quote": "Søknadssummen for et restaureringstiltak må være på minimum kr. 100 000,-",
       "checked_at": "2026-11-25",
+      "method": "page"
+    },
+    "co_finance_required": {
+      "source_url": "https://soknadssenter.miljodirektoratet.no/NaturrestaureringSkjema/Startside/Index?id=82",
+      "quote": "Andel egenfinansiering eller egeninnsats kan bli vektlagt ved prioritering mellom ellers like søknader.",
+      "checked_at": "2026-11-24",
       "method": "page"
     },
     "reporting": {
@@ -163,23 +170,23 @@
         "method": "page"
       },
       {
-        "source_url": "https://soknadssenter.miljodirektoratet.no/NaturrestaureringSkjema/Startside/Index?id=82",
-        "quote": "Ved søknad om midler til gjennomføring at tiltak, skal signert grunneiererklæring ligge vedlagt søknaden. Erklæringen gjelder for 40 år.",
-        "checked_at": "2026-11-25",
+        "source_url": "https://lovdata.no/dokument/LTI/forskrift/2025-11-02-2228",
+        "quote": "Det gis ikke tilskudd til tiltak som gjennomføres som økologisk kompensasjon.",
+        "checked_at": "2026-11-24",
         "method": "page"
       }
     ],
     "after_award": [
       {
         "source_url": "https://soknadssenter.miljodirektoratet.no/NaturrestaureringSkjema/Startside/Index?id=82",
-        "quote": "Det forutsettes at tilskuddsmottaker rapporterer på hvordan midlene er benyttet, om gjennomføring av tiltak og resultat.",
+        "quote": "Når tilskuddet er 500 000 kroner eller høyere skal regnskapet være revidert av statsautorisert revisor.",
         "checked_at": "2026-11-25",
         "method": "page"
       },
       {
         "source_url": "https://soknadssenter.miljodirektoratet.no/NaturrestaureringSkjema/Startside/Index?id=82",
-        "quote": "Når tilskuddet er 500 000 kroner eller høyere skal regnskapet være revidert av statsautorisert revisor.",
-        "checked_at": "2026-11-25",
+        "quote": "Det forutsettes at tilskuddsmottaker rapporterer på hvordan midlene er benyttet, om gjennomføring av tiltak og resultat. Rapporteringsfrist er 31.12 2027, og rapportering skjer i søknadssenteret.",
+        "checked_at": "2026-11-24",
         "method": "page"
       }
     ],
@@ -192,8 +199,14 @@
       },
       {
         "source_url": "https://soknadssenter.miljodirektoratet.no/NaturrestaureringSkjema/Startside/Index?id=82",
-        "quote": "Ved søknad om midler til gjennomføring at tiltak, skal signert grunneiererklæring ligge vedlagt søknaden.",
-        "checked_at": "2026-11-25",
+        "quote": "Ved søknad om midler til gjennomføring at tiltak, skal signert grunneiererklæring ligge vedlagt søknaden. Erklæringen gjelder for 40 år.",
+        "checked_at": "2026-11-24",
+        "method": "page"
+      },
+      {
+        "source_url": "https://lovdata.no/dokument/LTI/forskrift/2025-11-02-2228",
+        "quote": "bekreftelse på at grunneier har intensjon om å inngå avtale om langsiktig bevaring ved søknad om prosjektering",
+        "checked_at": "2026-11-24",
         "method": "page"
       }
     ]

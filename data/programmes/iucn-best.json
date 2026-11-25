@@ -69,7 +69,7 @@
   },
   "eligibility": [
     {
-      "rule": "Legal entity registered in an OR or OCT; not an international organisation, individual consultant or sole trader",
+      "rule": "OR/OCT legal entity unless an exception applies; excludes international bodies, individual consultants and sole traders.",
       "kind": "legal"
     },
     {
@@ -84,16 +84,20 @@
       "rule": "Runs a project lasting 18 to 36 months, including potential extensions",
       "kind": "project"
     },
-    { "rule": "Starts the project between July and September 2027", "kind": "project" },
+    {
+      "rule": "Start July–September 2027 unless an earlier start is allowed after notification and justification.",
+      "kind": "project"
+    },
     { "rule": "Is not a fundamentally research-based project", "kind": "project" },
     {
       "rule": "Is not in a situation listed in the European Commission's EDES system",
       "kind": "legal"
-    }
+    },
+    { "rule": "Submit at most two proposals this call, and lead at most one.", "kind": "other" }
   ],
   "co_finance": { "min_share": 5 },
+  "after_award": { "reports": "interim_and_final" },
   "documents": [
-    "Concept note budget summary",
     "Signed co-applicant mandate, if applying with co-applicants",
     "Co-applicant sworn statement, if applying with co-applicants"
   ],
@@ -167,38 +171,6 @@
       "checked_at": "2026-11-25",
       "method": "page"
     },
-    "places": [
-      {
-        "source_url": "https://bestlife2030.org/wp-content/uploads/BESTLIFE2030_3rd_Call_Guidelines_Applicants_EN.pdf",
-        "quote": "French Guiana*, Guadeloupe*, Martinique*, Saint Martin*, Saint Barthélémy, Réunion*, Mayotte*, French Southern and Antarctic Lands - Scattered Islands, Austral Islands and Adélie Land, Saint Pierre and Miquelon",
-        "checked_at": "2026-11-25",
-        "method": "page"
-      },
-      {
-        "source_url": "https://bestlife2030.org/wp-content/uploads/BESTLIFE2030_3rd_Call_Guidelines_Applicants_EN.pdf",
-        "quote": "New Caledonia, Wallis and Futuna, French Polynesia",
-        "checked_at": "2026-11-25",
-        "method": "page"
-      },
-      {
-        "source_url": "https://bestlife2030.org/wp-content/uploads/BESTLIFE2030_3rd_Call_Guidelines_Applicants_EN.pdf",
-        "quote": "Aruba, Bonaire, Curaçao, Saba, SaintEustache, Sint-Maarten",
-        "checked_at": "2026-11-25",
-        "method": "page"
-      },
-      {
-        "source_url": "https://bestlife2030.org/wp-content/uploads/BESTLIFE2030_3rd_Call_Guidelines_Applicants_EN.pdf",
-        "quote": "Azores*, Madeira*, Canary Islands*",
-        "checked_at": "2026-11-25",
-        "method": "page"
-      },
-      {
-        "source_url": "https://bestlife2030.org/wp-content/uploads/BESTLIFE2030_3rd_Call_Guidelines_Applicants_EN.pdf",
-        "quote": "Nordisk Fond for Miljø og Udvikling (NORDECO) Greenland",
-        "checked_at": "2026-11-25",
-        "method": "page"
-      }
-    ],
     "access": {
       "source_url": "https://bestlife2030.org/news/from-eu-biodiversity-priorities-to-local-action-bestlife2030-launches-its-third-call-for-proposals/",
       "quote": "Applications are managed through the IUCN Grant Management System and may be submitted in English or French.",
@@ -294,8 +266,8 @@
       },
       {
         "source_url": "https://bestlife2030.org/wp-content/uploads/BESTLIFE2030_3rd_Call_Guidelines_Applicants_EN.pdf",
-        "quote": "Projects must have a start date between July to September 2027.",
-        "checked_at": "2026-11-25",
+        "quote": "Start date: Projects must have a start date between July to September 2027. Extensions will only be granted if well justified. In exceptional cases, an earlier start date may be accepted if duly notified and justified.",
+        "checked_at": "2026-11-24",
         "method": "page"
       },
       {
@@ -309,6 +281,12 @@
         "quote": "Potential applicants may not participate in the call for proposals or be awarded grants if they are in any of the situations listed in the European Commission's EDES system.",
         "checked_at": "2026-11-25",
         "method": "page"
+      },
+      {
+        "source_url": "https://bestlife2030.org/wp-content/uploads/BESTLIFE2030_3rd_Call_Guidelines_Applicants_EN.pdf",
+        "quote": "An organisation can submit and be awarded a maximum of two proposals per call, either (i) one proposal as lead applicant and one as co-applicant, or (ii) two as co-applicant",
+        "checked_at": "2026-11-24",
+        "method": "page"
       }
     ],
     "co_finance": {
@@ -317,13 +295,15 @@
       "checked_at": "2026-11-25",
       "method": "page"
     },
-    "documents": [
+    "after_award": [
       {
-        "source_url": "https://bestlife2030.org/wp-content/uploads/BESTLIFE2030_3rd_Call_Guidelines_Applicants_EN.pdf",
-        "quote": "Download and complete the concept note budget summary in the chosen language.",
-        "checked_at": "2026-11-25",
+        "source_url": "https://bestlife2030.org/wp-content/uploads/BL2030_GA_Template_CleanVersion_EN_REV19dec24.docx",
+        "quote": "IUCN may withhold payment of any part or all of any payment until after it has approved, in its sole discretion, the Technical and Financial Progress Report or Technical and Financial Final Report.",
+        "checked_at": "2026-11-24",
         "method": "page"
-      },
+      }
+    ],
+    "documents": [
       {
         "source_url": "https://bestlife2030.org/wp-content/uploads/BESTLIFE2030_3rd_Call_Guidelines_Applicants_EN.pdf",
         "quote": "signed co-applicant mandates",
@@ -336,7 +316,39 @@
         "checked_at": "2026-11-25",
         "method": "page"
       }
+    ],
+    "places": [
+      {
+        "source_url": "https://bestlife2030.org/wp-content/uploads/BESTLIFE2030_3rd_Call_Guidelines_Applicants_EN.pdf",
+        "quote": "French Guiana*, Guadeloupe*, Martinique*, Saint Martin*, Saint Barthélémy, Réunion*, Mayotte*, French Southern and Antarctic Lands - Scattered Islands, Austral Islands and Adélie Land, Saint Pierre and Miquelon",
+        "checked_at": "2026-11-25",
+        "method": "page"
+      },
+      {
+        "source_url": "https://bestlife2030.org/wp-content/uploads/BESTLIFE2030_3rd_Call_Guidelines_Applicants_EN.pdf",
+        "quote": "New Caledonia, Wallis and Futuna, French Polynesia",
+        "checked_at": "2026-11-25",
+        "method": "page"
+      },
+      {
+        "source_url": "https://bestlife2030.org/wp-content/uploads/BESTLIFE2030_3rd_Call_Guidelines_Applicants_EN.pdf",
+        "quote": "Aruba, Bonaire, Curaçao, Saba, SaintEustache, Sint-Maarten",
+        "checked_at": "2026-11-25",
+        "method": "page"
+      },
+      {
+        "source_url": "https://bestlife2030.org/wp-content/uploads/BESTLIFE2030_3rd_Call_Guidelines_Applicants_EN.pdf",
+        "quote": "Azores*, Madeira*, Canary Islands*",
+        "checked_at": "2026-11-25",
+        "method": "page"
+      },
+      {
+        "source_url": "https://bestlife2030.org/wp-content/uploads/BESTLIFE2030_3rd_Call_Guidelines_Applicants_EN.pdf",
+        "quote": "Nordisk Fond for Miljø og Udvikling (NORDECO) Greenland",
+        "checked_at": "2026-11-25",
+        "method": "page"
+      }
     ]
   },
-  "checked_at": "2026-11-25"
+  "checked_at": "2026-11-24"
 }

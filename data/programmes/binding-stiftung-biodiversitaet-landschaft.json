@@ -17,20 +17,24 @@
   "amount": null,
   "co_finance_required": null,
   "reporting": null,
-  "effort": { "steps": ["Application submission"], "due": ["2026-12-15"] },
+  "effort": {
+    "steps": [
+      "Application submission",
+      "For a municipality: email project goals and budget, or call before applying",
+      "Foundation office review"
+    ],
+    "due": ["2026-12-15", null, null]
+  },
   "eligibility": [
     {
-      "rule": "Applicant is not an individual, family, school, for-profit company, federal or cantonal authority, or fundraiser",
+      "rule": "Not an individual, family, school, for-profit, federal/cantonal authority or large public fundraising body",
       "kind": "legal"
     },
     {
-      "rule": "No alpine renovation, farm production, urban farming, basic research, awareness or non-biodiversity planning",
+      "rule": "No urban farming, awareness, basic research/publications without practical use or planning without biodiversity gains",
       "kind": "project"
     },
-    {
-      "rule": "No operating costs or deficits, retrospective funding, loans, or commercial projects",
-      "kind": "finances"
-    },
+    { "rule": "Project is not commercial in nature", "kind": "project" },
     {
       "rule": "For dry-stone walls, wall is visible, sunlit with a herb margin, and removal protects fauna",
       "kind": "project"
@@ -39,8 +43,16 @@
       "rule": "For dry-stone walls, use suitable reused stone, show landscape history, have expertise and secure care",
       "kind": "project"
     },
-    { "rule": "For dry-stone walls, wall is not in an excluded setting", "kind": "project" }
+    {
+      "rule": "Dry-stone wall is outside building zones, home/garden areas, intensive grassland without margins and nontraditional land",
+      "kind": "project"
+    },
+    {
+      "rule": "No alpine renovation, farm businesses or farm production except landscape-defining elements",
+      "kind": "project"
+    }
   ],
+  "after_award": { "reports": "final" },
   "calls": [
     {
       "id": "2026-12",
@@ -91,6 +103,18 @@
         "quote": "Der nächste Eingabetermin für Ihr Gesuch ist der 15. Dezember 2026.",
         "checked_at": "2026-11-25",
         "method": "page"
+      },
+      {
+        "source_url": "https://www.binding-stiftung.ch/gesuche/gesuch-einreichen/gesuchseingabe-landschaftsschutz/",
+        "quote": "Wenn Sie ein Gesuch für eine Einwohnergemeinde einreichen möchten, schreiben Sie uns bitte vor einer Gesuchseinreichung eine Mail an contact@binding-stiftung.ch mit Angaben zu den Zielen Ihres Projekts und einem Projektbudget, oder rufen Sie uns an unter 061 317 40 90.",
+        "checked_at": "2026-11-24",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.binding-stiftung.ch/praktisches/",
+        "quote": "Alle Gesuche, die bis zur Eingabefrist eingegeben wurden, werden durch die Geschäftsstelle geprüft.",
+        "checked_at": "2026-11-24",
+        "method": "page"
       }
     ],
     "eligibility": [
@@ -102,8 +126,8 @@
       },
       {
         "source_url": "https://www.binding-stiftung.ch/gesuche/gesuch-einreichen/gesuchseingabe-landschaftsschutz/",
-        "quote": "Alpsanierungen, Landwirtschaftsbetriebe Landwirtschaftliche Produktion (ausser landschaftsprägende Elemente wie z.B. Hochstammbäume oder Kastanienselven) «Urban agriculture» Grundlagenforschung und Publikationen ohne konkretes Umsetzungspotential Projekte im Bereich der Raumplanung, ausser sie leisten einen Beitrag zur Erhaltung der Biodiversität Projekte zur Sensibilisierung (Umwelt, Klima, etc.)",
-        "checked_at": "2026-11-25",
+        "quote": "Landwirtschaftliche Produktion (ausser landschaftsprägende Elemente wie z.B. Hochstammbäume oder Kastanienselven) «Urban agriculture» Grundlagenforschung und Publikationen ohne konkretes Umsetzungspotential Projekte im Bereich der Raumplanung, ausser sie leisten einen Beitrag zur Erhaltung der Biodiversität Projekte zur Sensibilisierung (Umwelt, Klima, etc.)",
+        "checked_at": "2026-11-24",
         "method": "page"
       },
       {
@@ -129,8 +153,22 @@
         "quote": "Mauern innerhalb von Bauzonen. Mauern im unmittelbaren Umfeld von Häusern und Gärten. Mauern in intensiv genutzten Fettwiesen ohne Krautsaum. Mauern in Landschaften, in welchen sie traditionell nicht vorkommen.",
         "checked_at": "2026-11-25",
         "method": "page"
+      },
+      {
+        "source_url": "https://www.binding-stiftung.ch/gesuche/gesuch-einreichen/gesuchseingabe-landschaftsschutz/",
+        "quote": "Alpsanierungen, Landwirtschaftsbetriebe Landwirtschaftliche Produktion (ausser landschaftsprägende Elemente wie z.B. Hochstammbäume oder Kastanienselven)",
+        "checked_at": "2026-11-24",
+        "method": "page"
+      }
+    ],
+    "after_award": [
+      {
+        "source_url": "https://www.binding-stiftung.ch/praktisches/",
+        "quote": "Wie reiche ich einen Schlussbericht ein? Berichte müssen über die Gesuchsplattform online eingegeben werden.",
+        "checked_at": "2026-11-24",
+        "method": "page"
       }
     ]
   },
-  "checked_at": "2026-11-25"
+  "checked_at": "2026-11-24"
 }

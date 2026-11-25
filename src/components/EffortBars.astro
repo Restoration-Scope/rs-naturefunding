@@ -7,8 +7,8 @@ import { effortCode, effortWords } from '../lib/effort-tip'
  * What a grant asks of an organisation, as four upright bars on a finder row: who qualifies, applying,
  * co-funding and after the award (src/lib/format.ts effortSignals). A thousand rows carry these, so a row holds
  * only its bars (styled in finder.css), its levels and its reasons; the finder's one shared tooltip
- * (EffortTip.astro) reads them on hover or focus. Touch has no tooltip; the listing's Before you apply section
- * says the same with the funder's words.
+ * (EffortTip.astro) reads them on hover or focus. Touch has no tooltip; the listing's overview
+ * (EffortSummary.astro) says the same, and its Before you apply section adds the funder's words.
  */
 interface Props {
   p: Programme

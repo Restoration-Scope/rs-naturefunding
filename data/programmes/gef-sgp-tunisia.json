@@ -1,38 +1,17 @@
 {
   "id": "gef-sgp-tunisia",
   "name": "Programme de Microfinancements du FEM - Tunisie",
-  "funder": {
-    "name": "Global Environment Facility",
-    "url": "https://www.thegef.org/"
-  },
-  "administered_by": {
-    "name": "UNDP Tunisia",
-    "url": "https://www.undp.org/"
-  },
+  "funder": { "name": "Global Environment Facility", "url": "https://www.thegef.org/" },
+  "administered_by": { "name": "UNDP Tunisia", "url": "https://www.undp.org/" },
   "parent": "gef-sgp",
   "url": "https://procurement-notices.undp.org/view_notice.cfm?notice_id=98948",
   "summary": "Tunisia's GEF Small Grants country programme, run by UNDP, funds community projects by legally registered Tunisian civil society organisations on biodiversity, land degradation, climate, forests and related topics.",
-  "approaches": [
-    "community_conservation",
-    "species_conservation",
-    "sustainable_land_use"
-  ],
-  "applicant_types": [
-    "ngo",
-    "community_group"
-  ],
-  "geography": {
-    "scope": "countries",
-    "countries": [
-      "TN"
-    ]
-  },
+  "approaches": ["community_conservation", "species_conservation", "sustainable_land_use"],
+  "applicant_types": ["ngo", "community_group"],
+  "geography": { "scope": "countries", "countries": ["TN"] },
   "access": "direct",
   "window": "fixed",
-  "amount": {
-    "currency": "USD",
-    "max": 75000
-  },
+  "amount": { "currency": "USD", "max": 75000 },
   "co_finance_required": true,
   "reporting": null,
   "effort": {
@@ -40,10 +19,7 @@
       "Project form, Excel budget and organisation documents by email",
       "Review and decision by the National Steering Committee"
     ],
-    "due": [
-      "2026-11-29",
-      null
-    ]
+    "due": ["2026-11-29", null]
   },
   "eligibility": [
     {
@@ -54,15 +30,26 @@
       "rule": "One proposal per organisation, and no GEF SGP project already under way",
       "kind": "other"
     },
+    { "rule": "Project lasts 18 months at most", "kind": "project" },
     {
-      "rule": "Project lasts 18 months at most",
+      "rule": "Involve local communities in project design, implementation and monitoring",
       "kind": "project"
-    }
+    },
+    {
+      "rule": "Outside priority landscapes, projects must be innovative, inclusive, high-impact and replicable or scalable",
+      "kind": "project"
+    },
+    {
+      "rule": "In a priority landscape, match an initiative designated for that landscape in section V",
+      "kind": "project"
+    },
+    {
+      "rule": "Integrate gender and promote active involvement of women, youth and people with disabilities",
+      "kind": "project"
+    },
+    { "rule": "Use innovative approaches", "kind": "project" }
   ],
-  "co_finance": {
-    "min_share": 50,
-    "in_kind": true
-  },
+  "co_finance": { "min_share": 50, "in_kind": true },
   "documents": [
     "Detailed project budget in Excel",
     "Copy of the organisation's notice in the Journal Officiel (JORT)",
@@ -172,6 +159,36 @@
         "source_url": "https://procurement-notices.undp.org/view_file.cfm?doc_id=323720",
         "quote": "La durée maximale de chaque projet est de 18 mois.",
         "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://procurement-notices.undp.org/view_file.cfm?doc_id=323720",
+        "quote": "S’appuyer sur la participation des communautés locales lors de la conception, de la mise en œuvre et du suivi du projet ;",
+        "checked_at": "2026-11-24",
+        "method": "page"
+      },
+      {
+        "source_url": "https://procurement-notices.undp.org/view_file.cfm?doc_id=323720",
+        "quote": "Jusqu’à 30 % des ressources du programme PMF FEM OP8 pourront soutenir des initiatives situées en dehors des unités paysagères prioritaires. Ces projets devront toutefois répondre aux domaines et objectifs de l’appel et démontrer un caractère innovant et inclusif, un impact environnemental et socio-économique significatif ainsi qu’un fort potentiel de réplication ou de mise à l’échelle.",
+        "checked_at": "2026-11-24",
+        "method": "page"
+      },
+      {
+        "source_url": "https://procurement-notices.undp.org/view_file.cfm?doc_id=323720",
+        "quote": "Correspondre directement à l’une des initiatives prioritaires définies à la section V pour l’unité paysagère concernée",
+        "checked_at": "2026-11-24",
+        "method": "page"
+      },
+      {
+        "source_url": "https://procurement-notices.undp.org/view_file.cfm?doc_id=323720",
+        "quote": "Intégrer l’approche de genre et favoriser l’implication active des femmes, des jeunes et des personnes handicapées ;",
+        "checked_at": "2026-11-24",
+        "method": "page"
+      },
+      {
+        "source_url": "https://procurement-notices.undp.org/view_file.cfm?doc_id=323720",
+        "quote": "Mettre en œuvre des approches innovantes ;",
+        "checked_at": "2026-11-24",
         "method": "page"
       }
     ],

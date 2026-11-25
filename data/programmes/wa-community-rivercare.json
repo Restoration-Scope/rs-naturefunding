@@ -9,34 +9,17 @@
   "parent": null,
   "url": "https://dbca.wa.gov.au/management/swan-canning-riverpark/community-rivercare-program-funding",
   "summary": "Recurring rounds of small grants for community volunteer groups doing on-ground waterway work in the Swan Canning catchment around Perth: foreshore revegetation, weed control, bank stabilisation and habitat improvement.",
-  "approaches": [
-    "freshwater",
-    "community_conservation",
-    "natural_regeneration"
-  ],
-  "applicant_types": [
-    "community_group"
-  ],
+  "approaches": ["freshwater", "community_conservation", "natural_regeneration"],
+  "applicant_types": ["community_group"],
   "geography": {
     "scope": "countries",
-    "countries": [
-      "AU"
-    ],
+    "countries": ["AU"],
     "label": "Swan Canning Catchment, Western Australia"
   },
   "access": "direct",
   "window": "fixed",
-  "amount": {
-    "currency": "AUD",
-    "min": 3000,
-    "max": 10000
-  },
-  "pool": {
-    "currency": "AUD",
-    "value": 100000,
-    "period": "round",
-    "label": "Round 10"
-  },
+  "amount": { "currency": "AUD", "min": 3000, "max": 10000 },
+  "pool": { "currency": "AUD", "value": 100000, "period": "round", "label": "Round 10" },
   "co_finance_required": null,
   "fiscal_sponsor": {
     "stance": "accepted",
@@ -46,40 +29,39 @@
   "effort": {
     "steps": [
       "Application",
-      "Panel assessment"
+      "Panel assessment",
+      "Submit additional supporting information, if needed"
     ],
-    "due": [
-      "2026-12-11",
-      null
-    ]
+    "due": ["2026-12-11", null, "2027-01-22"]
   },
   "eligibility": [
+    { "rule": "Have a volunteer base", "kind": "capacity" },
+    { "rule": "Be incorporated, or be sponsored to administer grant funding", "kind": "legal" },
     {
-      "rule": "Have a volunteer base",
-      "kind": "capacity"
-    },
-    {
-      "rule": "Be incorporated, or be sponsored to administer grant funding",
-      "kind": "legal"
-    },
-    {
-      "rule": "Address at least one eligible project criterion",
+      "rule": "Improve waterway habitat or water quality, revegetate foreshores, control weeds for regeneration, or stabilise banks",
       "kind": "project"
     },
     {
       "rule": "Demonstrate a clear public benefit for projects on private land",
       "kind": "project"
+    },
+    {
+      "rule": "Work in a waterway or riparian zone in an eligible catchment feeding the Swan and Canning rivers",
+      "kind": "project"
+    },
+    { "rule": "Propose a one-year project for 2027–28", "kind": "project" },
+    {
+      "rule": "For revegetation, use local plant species from a NIASA-accredited supplier",
+      "kind": "project"
     }
   ],
-  "after_award": {
-    "reports": "yearly"
-  },
+  "after_award": { "reports": "yearly" },
   "documents": [
     "Landowner or land manager letter of support (may follow, but needed before approval)",
     "Project site map",
     "Project timeline",
     "Project budget",
-    "Supporting evidence for budget estimates, if applicable",
+    "Budget evidence if applicable, including paid contractors’ quotations and ABNs",
     "Sponsor details and agreement evidence, if sponsored",
     "ATO Statement by a supplier form, if applicable"
   ],
@@ -173,6 +155,12 @@
         "quote": "All applications will be assessed by a panel consisting of representatives with relevant expertise including foreshore restoration, fauna habitat and water quality.",
         "checked_at": "2026-11-20",
         "method": "page"
+      },
+      {
+        "source_url": "https://www.dbca.wa.gov.au/media/7362/download",
+        "quote": "Any additional or supporting information due* Applicants notified of outcome and negotiations for grant agreements commence 22 January 2027 March 2027",
+        "checked_at": "2026-11-24",
+        "method": "page"
       }
     ],
     "eligibility": [
@@ -190,14 +178,32 @@
       },
       {
         "source_url": "https://www.dbca.wa.gov.au/media/7362/download",
-        "quote": "Must address at least one of the following criteria:",
-        "checked_at": "2026-11-20",
+        "quote": "Must address at least one of the following criteria: o habitat improvement for birds and/or other species dependent on waterways; o foreshore revegetation and weed control; o weed control to promote natural regeneration; o bank stabilisation to repair or prevent foreshore erosion; or o water quality improvement.",
+        "checked_at": "2026-11-24",
         "method": "page"
       },
       {
         "source_url": "https://www.dbca.wa.gov.au/media/7362/download",
         "quote": "For projects on private land, a clear benefit to the public must be demonstrated.",
         "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.dbca.wa.gov.au/media/7362/download",
+        "quote": "Must be in waterways or riparian zones located in the Swan Canning Catchment or other catchments of concern (please contact us for more information) that feed into the Swan and Canning rivers",
+        "checked_at": "2026-11-24",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.dbca.wa.gov.au/media/7362/download",
+        "quote": "In 2027-28 between $3,000 and $10,000 (ex GST) is available for one-year projects.",
+        "checked_at": "2026-11-24",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.dbca.wa.gov.au/media/7362/download",
+        "quote": "Local plant species must be used. Ensure plants and plant material are sourced from a Nursery Industry Accreditation Scheme Australia (NIASA) accredited supplier.",
+        "checked_at": "2026-11-24",
         "method": "page"
       }
     ],
@@ -226,6 +232,12 @@
         "source_url": "https://www.dbca.wa.gov.au/media/7362/download",
         "quote": "Supporting evidence to justify budget estimates (if applicable). • Applicants with a sponsor (auspicor) will need to provide the sponsoring organisation's details and evidence of their agreement to receive and administer the grant funding. • ATO Statement by a supplier form (if applicable).",
         "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.dbca.wa.gov.au/media/7362/download",
+        "quote": "Paid contractors undertaking works must provide an ABN and quotation for works proposed.",
+        "checked_at": "2026-11-24",
         "method": "page"
       }
     ]

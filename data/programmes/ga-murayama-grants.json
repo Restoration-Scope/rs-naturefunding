@@ -20,7 +20,31 @@
   "amount": { "currency": "JPY", "max": 500000 },
   "co_finance_required": null,
   "reporting": "Within three months of the award decision, grantees send a report with photos and an income and expenditure report; the grant is paid after review, as a portion of actual costs, within the awarded amount.",
-  "effort": { "steps": ["Application by post", "Document review"] },
+  "effort": { "steps": ["Application by post", "Document review"], "due": ["2026-11-30", null] },
+  "eligibility": [
+    { "rule": "Applicant and officers have no ties to antisocial forces", "kind": "legal" },
+    { "rule": "Main purpose is compatible with public order and morals", "kind": "legal" },
+    {
+      "rule": "Religious or political activity is not the applicant’s main purpose",
+      "kind": "legal"
+    },
+    {
+      "rule": "Applicant and representative have no criminal penalties in the five years before applying or before award",
+      "kind": "legal"
+    },
+    {
+      "rule": "Applicant has no pending insolvency or restructuring that puts its continued operations in doubt",
+      "kind": "finances"
+    },
+    {
+      "rule": "Applicant has no grant irregularities in the five years before applying or between application and award",
+      "kind": "legal"
+    },
+    {
+      "rule": "At least two years have passed since any previous grant under these rules",
+      "kind": "track_record"
+    }
+  ],
   "after_award": { "reports": "final" },
   "documents": [
     "Registration certificate",
@@ -113,6 +137,50 @@
         "source_url": "https://ga-foundation.or.jp/entry.html",
         "quote": "提出いただいた書類をもとに、審査委員会および理事会にて審査を行います。",
         "checked_at": "2026-11-25",
+        "method": "page"
+      }
+    ],
+    "eligibility": [
+      {
+        "source_url": "https://ga-foundation.or.jp/files/ga-josei_260825.pdf",
+        "quote": "反社会的勢力若しくはこれと同視できる勢力であること、又は役員にこれらと関与 する者が存在すること",
+        "checked_at": "2026-11-24",
+        "method": "page"
+      },
+      {
+        "source_url": "https://ga-foundation.or.jp/files/ga-josei_260825.pdf",
+        "quote": "公序良俗に反する事業を主たる目的とするものであること",
+        "checked_at": "2026-11-24",
+        "method": "page"
+      },
+      {
+        "source_url": "https://ga-foundation.or.jp/files/ga-josei_260825.pdf",
+        "quote": "宗教的活動又は政治的活動を目的とした事業を主たる目的とするものであること",
+        "checked_at": "2026-11-24",
+        "method": "page"
+      },
+      {
+        "source_url": "https://ga-foundation.or.jp/files/ga-josei_260825.pdf",
+        "quote": "申請日までの過去５年間又は申請日から助成を受ける日までの間に、申請者及びそ の代表者が、刑事法令による罰則の適用を受けたことがあること",
+        "checked_at": "2026-11-24",
+        "method": "page"
+      },
+      {
+        "source_url": "https://ga-foundation.or.jp/files/ga-josei_260825.pdf",
+        "quote": "民事再生法（平成１１年法律第２２５号）、会社更生法（平成１４年法律第１５４ 号）又は破産法（平成１６年法律第７５号）に基づく申立て若しくはその手続中（再 生計画等認可後は除く。）、又は私的整理手続中等、事業の継続性について不確実な",
+        "checked_at": "2026-11-24",
+        "method": "page"
+      },
+      {
+        "source_url": "https://ga-foundation.or.jp/files/ga-josei_260825.pdf",
+        "quote": "申請日までの過去５年間又は申請日から助成を受ける日までの間に、当法人その他 の法人、国、都道府県、市区町村等が実施する助成事業等に関して、不正等の事故を 起こしたものであること",
+        "checked_at": "2026-11-24",
+        "method": "page"
+      },
+      {
+        "source_url": "https://ga-foundation.or.jp/files/ga-josei_260825.pdf",
+        "quote": "過去に本規程に基づく助成を受けたことがあるもの。ただし、助成を受けたときか ら２年が経過しているときは、この限りではない。",
+        "checked_at": "2026-11-24",
         "method": "page"
       }
     ],

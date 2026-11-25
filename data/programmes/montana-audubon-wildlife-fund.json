@@ -14,7 +14,10 @@
   "amount": null,
   "co_finance_required": null,
   "reporting": "A brief report on project status and use of funds.",
-  "effort": { "steps": ["Grant proposal submission"], "due": ["2027-01-15"] },
+  "effort": {
+    "steps": ["Grant proposal submission", "Committee review and scoring"],
+    "due": ["2027-01-15", null]
+  },
   "eligibility": [
     { "rule": "Project directly benefits wildlife in Montana", "kind": "project" },
     { "rule": "No salaries, stipends, per diem, or personal equipment", "kind": "project" }
@@ -103,19 +106,25 @@
         "quote": "All proposals must be received via email no later than Friday, January 15, 2027.",
         "checked_at": "2026-11-25",
         "method": "page"
+      },
+      {
+        "source_url": "https://mtaudubon.org/about/wildlife-grants/",
+        "quote": "Review and scoring of all proposals will be performed by a committee appointed by the Montana Audubon Board of Directors.",
+        "checked_at": "2026-11-24",
+        "method": "page"
       }
     ],
     "eligibility": [
       {
-        "source_url": "https://mtaudubon.org/wp-content/uploads/2025/12/AWF-grant-proposal-guidelines-2026.pdf",
-        "quote": "whose project directly benefits wildlife in Montana.",
-        "checked_at": "2026-11-25",
+        "source_url": "https://mtaudubon.org/about/wildlife-grants/",
+        "quote": "Grants will be awarded to individuals or nonprofit organizations whose project directly benefits wildlife in Montana.",
+        "checked_at": "2026-11-24",
         "method": "page"
       },
       {
-        "source_url": "https://mtaudubon.org/wp-content/uploads/2025/12/AWF-grant-proposal-guidelines-2026.pdf",
+        "source_url": "https://mtaudubon.org/about/wildlife-grants/",
         "quote": "Ineligible uses include: salaries, stipends, per diem, and personal equipment.",
-        "checked_at": "2026-11-25",
+        "checked_at": "2026-11-24",
         "method": "page"
       }
     ],
@@ -128,5 +137,5 @@
       }
     ]
   },
-  "checked_at": "2026-11-25"
+  "checked_at": "2026-11-24"
 }

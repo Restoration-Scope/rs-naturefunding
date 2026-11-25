@@ -311,6 +311,20 @@ export function effortSignals(
     { key: 'after', label: 'After the award', ...after },
   ]
 }
+/** How each level is set, in words: the rules effortSignals applies. Keep the two in step. */
+export const signalRules: Record<Signal['key'], string> = {
+  qualify: 'Heavy with a rule on finances, such as a revenue range. Some work with a rule on track record or capacity, or a required consortium. Light with only legal, project or other rules.',
+  apply: 'Heavy at 3 or more steps, or 5 or more documents. Light at one step with at most 2 documents. Some work in between.',
+  cofund: 'Light when none is required. Heavy above 25% of the project. Some work otherwise.',
+  after: 'Heavy with quarterly reports or an audit. Light with one final report and nothing else. Some work otherwise.',
+}
+
+/** Whether anything is known about what a direct programme asks; without it every signal reads "not checked yet". */
+export const hasEffort = (p: Programme): boolean =>
+  p.access === 'direct' &&
+  (p.effort !== undefined || p.eligibility !== undefined || p.documents !== undefined || p.after_award !== undefined ||
+    effortSignals(p).some((s) => s.level !== 'unchecked'))
+
 const kindWords: Record<string, string> = { track_record: 'track-record', capacity: 'capacity', finances: 'finances' }
 const reportLabels = {
   final: 'one final report',

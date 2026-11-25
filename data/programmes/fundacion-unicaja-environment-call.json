@@ -28,13 +28,11 @@
     },
     { "rule": "Can demonstrate solvency to execute the project", "kind": "capacity" },
     { "rule": "Completes the project within 12 months", "kind": "project" },
-    { "rule": "Includes an activity for the Fundación Unicaja Volunteer Club", "kind": "project" },
     { "rule": "Submits only one proposal to this call", "kind": "other" }
   ],
   "after_award": { "reports": "final" },
   "documents": [
     "Application letter",
-    "Explanatory project dossier including the requested amount",
     "Tax identification card copy",
     "IDs of governing body members",
     "Current governing body composition document",
@@ -140,12 +138,6 @@
       },
       {
         "source_url": "https://www.fundacionunicaja.com/wp-content/uploads/2026/11/Bases-Convocatoria-Medio-Ambiente.pdf",
-        "quote": "La entidad beneficiaria deberá incluir en el proyecto una actividad específica en la que pueda participar el Club de Voluntarios de Fundación Unicaja.",
-        "checked_at": "2026-11-25",
-        "method": "page"
-      },
-      {
-        "source_url": "https://www.fundacionunicaja.com/wp-content/uploads/2026/11/Bases-Convocatoria-Medio-Ambiente.pdf",
         "quote": "Cada entidad podrá presentar una única propuesta.",
         "checked_at": "2026-11-25",
         "method": "page"
@@ -185,9 +177,28 @@
         "quote": "El plazo de presentación de proyectos será hasta las 14.00 h del día 4 de diciembre de 2026.",
         "checked_at": "2026-11-25",
         "method": "page"
+      },
+      {
+        "source_url": "https://www.fundacionunicaja.com/wp-content/uploads/2026/11/Bases-Convocatoria-Medio-Ambiente.pdf",
+        "quote": "Posteriormente, se elevará la correspondiente propuesta a un comité de evaluación de proyectos que establecerá la resolución definitiva.",
+        "checked_at": "2026-11-24",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.fundacionunicaja.com/wp-content/uploads/2026/11/Bases-Convocatoria-Medio-Ambiente.pdf",
+        "quote": "En caso de que la colaboración concedida por la Fundación Unicaja resulte inferior a la cantidad solicitada, la entidad deberá reajustar el proyecto (personas destinatarias, objetivos, actividades, presupuesto, etc.)",
+        "checked_at": "2026-11-24",
+        "method": "page"
       }
     ]
   },
-  "checked_at": "2026-11-25",
-  "effort": { "steps": ["Online application with the required documents"], "due": ["2026-12-04"] }
+  "checked_at": "2026-11-24",
+  "effort": {
+    "steps": [
+      "Online application with the required documents",
+      "Foundation review and evaluation committee decision",
+      "Submit a revised project for approval if offered less funding"
+    ],
+    "due": ["2026-12-04", null, null]
+  }
 }

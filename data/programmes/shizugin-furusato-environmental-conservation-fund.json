@@ -24,7 +24,10 @@
   },
   "co_finance_required": null,
   "reporting": "A report on the set form is due by 30 December 2027, and items bought with the grant must credit the fund.",
-  "effort": { "steps": ["Application by post", "Review by the fund committee"] },
+  "effort": {
+    "steps": ["Post the application by the postmark deadline", "Review by the fund committee"],
+    "due": ["2026-12-23", null]
+  },
   "eligibility": [
     {
       "rule": "Conduct the proposed activities from April 2027 through March 2028",
@@ -40,10 +43,9 @@
     },
     { "rule": "Did not receive this grant in both FY2024 and FY2025", "kind": "other" },
     {
-      "rule": "Applicant and representative are not linked to organized crime or equivalent groups",
+      "rule": "Neither the applicant nor its representative falls in a listed organized crime category, including recent former members",
       "kind": "legal"
-    },
-    { "rule": "Operate in Shizuoka Prefecture", "kind": "project" }
+    }
   ],
   "after_award": { "reports": "other" },
   "calls": [
@@ -171,12 +173,6 @@
       {
         "source_url": "https://www.pref.shizuoka.jp/_res/projects/default_project/_page_/001/057/924/youryou.pdf",
         "quote": "暴力団、暴力団員等(暴力団員でなくなってから 5 年を経過 しない者を含む)もしくは暴力団関係企業または総会屋等、社会運動等標ぼうゴロ もしくは特殊知能暴力集団その他これらに準ずる者と認められる場合。",
-        "checked_at": "2026-11-25",
-        "method": "page"
-      },
-      {
-        "source_url": "https://www.pref.shizuoka.jp/_res/projects/default_project/_page_/001/057/924/youryou.pdf",
-        "quote": "静岡県内の地方公共団体または非営利活動法人、団体もしくは個人とします。",
         "checked_at": "2026-11-25",
         "method": "page"
       }

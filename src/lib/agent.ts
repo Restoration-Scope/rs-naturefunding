@@ -3,7 +3,8 @@
 // checked date, so a line still holds up when an answer quotes it alone.
 import type { Call, Evidence, Programme } from '../data/schema'
 import { AGING_DAYS, HIDDEN_DAYS, buildDate, listingFor, openPartners, programmeById, programmes, sortListings, stats, type Listing } from './data'
-import { amountText, effortSignals, effortText, poolText, geographyFull, geographyText, joinAnd, longDate, nameWithFunder } from './format'
+import { effortWords } from './effort-tip'
+import { amountText, effortSignals, effortText, hasEffort, poolText, geographyFull, geographyText, joinAnd, longDate, nameWithFunder } from './format'
 import { accessHelp, accessLabels, applicantLabels, approachLabels, fiscalSponsorLabels } from './labels'
 import { RS_DESCRIPTOR, RS_URL, SITE_NAME, absolute, funderCorrectionUrl, reportProblemUrl } from './site'
 import { countryName, regionLabels, type Region } from './geo'
@@ -131,6 +132,7 @@ export function programmeMarkdown(p: Programme): string {
     `- Rounds: ${rounds ?? byPartner}`,
     `- Co-funding required: ${coFunding ?? byPartner}`,
     ...(consortium ? [`- Consortium required: ${consortium}`] : []),
+    ...(hasEffort(p) ? [`- What it asks of an applicant (our levels, from the facts below): ${effortSignals(p).map((s) => `${s.label.toLowerCase()}, ${effortWords[s.level]}${s.level === 'unchecked' || s.level === 'unstated' ? '' : ` (${s.why.replace(/\.$/, '')})`}`).join('; ')}`] : []),
     ...(sponsorStance ? [`- Applying through a fiscal sponsor: ${sponsorStance}`] : []),
     ...(p.administered_by ? [`- Run by: ${p.administered_by.name} (${p.administered_by.url})`] : []),
     `- Restoration approach (our classification): ${joinAnd(p.approaches.map((a) => approachLabels[a]))}`,

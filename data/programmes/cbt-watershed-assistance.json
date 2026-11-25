@@ -31,16 +31,15 @@
   "eligibility": [
     { "rule": "Be a 501(c)(3) organization", "kind": "legal" },
     {
-      "rule": "Project is in Maryland, the WV Chesapeake watershed, or the Octoraro or Conowingo Creek watersheds (PA)",
+      "rule": "Pennsylvania projects are in the Pennsylvania portions of the Octoraro or Conowingo Creek watersheds.",
       "kind": "project"
     },
     {
       "rule": "For Pennsylvania projects, align with the Conowingo Watershed Implementation Plan",
       "kind": "project"
     },
-    { "rule": "Comply with federal employment and non-discrimination laws", "kind": "legal" },
     {
-      "rule": "Have no listed debarment, fraud-related conviction or termination for cause or default",
+      "rule": "No government debarment, fraud-related charge, conviction or civil judgment, or termination for cause or default.",
       "kind": "legal"
     },
     {
@@ -50,12 +49,19 @@
     {
       "rule": "For stream restoration designs, use licensed or registered professionals",
       "kind": "project"
+    },
+    {
+      "rule": "Has no outstanding final, progress or status reports for past Trust awards.",
+      "kind": "other"
+    },
+    {
+      "rule": "For contracts over $15k and under $350k, use or commit to three quotes or open competitive bidding.",
+      "kind": "project"
     }
   ],
-  "after_award": { "reports": "unspecified" },
+  "after_award": { "reports": "interim_and_final" },
   "documents": [
-    "Letter of Commitment from each project partner, if provided",
-    "Written landowner confirmation, if the applicant does not own the project property",
+    "Written landowner permission for site access, for design on property the applicant does not own.",
     "Negotiated Indirect Cost Rate Agreement (NICRA), if applicable"
   ],
   "calls": [
@@ -159,12 +165,6 @@
       },
       {
         "source_url": "https://cbtrust.org/wp-content/uploads/WAGP_FY27_RFP_FINAL.pdf",
-        "quote": "they are compliant with federal employment and non-discrimination laws",
-        "checked_at": "2026-11-25",
-        "method": "page"
-      },
-      {
-        "source_url": "https://cbtrust.org/wp-content/uploads/WAGP_FY27_RFP_FINAL.pdf",
         "quote": "they have not been debarred, convicted, charged or had a civil judgment rendered against them for fraud or related offense by any government agency (federal, state or local) or been terminated for cause or default by any government agency (federal, state, or local).",
         "checked_at": "2026-11-25",
         "method": "page"
@@ -180,6 +180,18 @@
         "quote": "Designs shall be done by licensed/registered professionals.",
         "checked_at": "2026-11-25",
         "method": "page"
+      },
+      {
+        "source_url": "https://cbtrust.org/wp-content/uploads/WAGP_FY27_RFP_FINAL.pdf",
+        "quote": "Organizations with outstanding final, progress, or status reports will not be awarded additional grants.",
+        "checked_at": "2026-11-24",
+        "method": "page"
+      },
+      {
+        "source_url": "https://docs.google.com/document/d/1P4F43-StGOjeT9ErHTcnVRCmhBt6icng/export?format=txt",
+        "quote": "If contractual costs are greater than $15,000 and less than $350,000, describe whether at least three estimates or quotes will be obtained or whether a publicly advertised, competitive solicitation will be used.",
+        "checked_at": "2026-11-24",
+        "method": "page"
       }
     ],
     "after_award": [
@@ -191,12 +203,6 @@
       }
     ],
     "documents": [
-      {
-        "source_url": "https://cbtrust.org/wp-content/uploads/WAGP_FY27_RFP_FINAL.pdf",
-        "quote": "Applicants are encouraged to upload a Letter of Commitment for the project from each partner describing in detail the partner's role or contribution to the project.",
-        "checked_at": "2026-11-25",
-        "method": "page"
-      },
       {
         "source_url": "https://cbtrust.org/wp-content/uploads/WAGP_FY27_RFP_FINAL.pdf",
         "quote": "Applicants proposing work on property they do not own should include written landowner confirmation authorizing access for field investigations and design activities and acknowledging anticipated access needs for future construction if the project advances to implementation.",
@@ -211,5 +217,5 @@
       }
     ]
   },
-  "checked_at": "2026-11-25"
+  "checked_at": "2026-11-24"
 }

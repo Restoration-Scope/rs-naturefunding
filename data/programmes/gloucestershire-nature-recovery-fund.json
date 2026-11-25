@@ -23,22 +23,32 @@
   },
   "co_finance_required": null,
   "reporting": null,
-  "effort": { "steps": ["Application form by email"] },
+  "effort": { "steps": ["Application form by email", "Selection panel scoring"] },
   "eligibility": [
     {
       "rule": "Applies for a specific project, not a group's general activities",
       "kind": "project"
     },
     {
-      "rule": "Project delivers on-the-ground nature recovery, not only a campaign or monitoring",
+      "rule": "Project primarily supports or facilitates nature recovery and delivers a nature recovery activity",
       "kind": "project"
     },
     {
-      "rule": "Project is in Gloucestershire, or at least half inside the county",
+      "rule": "Gloucestershire project, or at least half in-county and with a demonstrable benefit for nature there",
       "kind": "project"
     },
-    { "rule": "Spends the grant on revenue costs, not capital", "kind": "project" }
+    {
+      "rule": "Single-site project has landowner support unless it is designed to engage landowners in nature recovery",
+      "kind": "project"
+    },
+    { "rule": "The activity has no duplicate funding or subsidy", "kind": "project" },
+    {
+      "rule": "Applicant is financially viable, has clear controls and produces annual or management-approved accounts unless new",
+      "kind": "finances"
+    },
+    { "rule": "Organisation can receive at most one award per application window", "kind": "other" }
   ],
+  "after_award": { "reports": "final" },
   "calls": [
     {
       "id": "2026-27-window-1",
@@ -115,8 +125,14 @@
     "effort": [
       {
         "source_url": "https://www.gloucestershire.gov.uk/planning-and-environment/greener-gloucestershire-dashboard/gloucestershire-nature-recovery-fund/apply/",
-        "quote": "The deadline for applications is 22 January 2027at 5pm",
-        "checked_at": "2026-11-25",
+        "quote": "Please download and complete the below application form and send your completed form to lnrs@gloucestershire.gov.uk before the deadline to apply.",
+        "checked_at": "2026-11-24",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.gloucestershire.gov.uk/media/a0jplxpe/gloucestershire-nature-recovery-fund-guidance-and-conditions.pdf",
+        "quote": "The Panel that will agree scoring will consist of Key officers in GCC",
+        "checked_at": "2026-11-24",
         "method": "page"
       }
     ],
@@ -128,9 +144,9 @@
         "method": "page"
       },
       {
-        "source_url": "https://www.gloucestershire.gov.uk/planning-and-environment/greener-gloucestershire-dashboard/gloucestershire-nature-recovery-fund/more-information/",
-        "quote": "projects that will not include actual nature recovery delivery.",
-        "checked_at": "2026-11-25",
+        "source_url": "https://www.gloucestershire.gov.uk/media/a0jplxpe/gloucestershire-nature-recovery-fund-guidance-and-conditions.pdf",
+        "quote": "This fund and support offering must primarily be to support or facilitate nature recovery. Whilst we expect some projects to have “wider” benefits such as supporting nature connection or climate resilience, they must still deliver an element of nature recovery.",
+        "checked_at": "2026-11-24",
         "method": "page"
       },
       {
@@ -140,12 +156,38 @@
         "method": "page"
       },
       {
-        "source_url": "https://www.gloucestershire.gov.uk/planning-and-environment/greener-gloucestershire-dashboard/gloucestershire-nature-recovery-fund/about-the-gloucestershire-nature-recovery-fund/",
-        "quote": "Please note the funding is revenue only (not capital).",
-        "checked_at": "2026-11-25",
+        "source_url": "https://www.gloucestershire.gov.uk/media/a0jplxpe/gloucestershire-nature-recovery-fund-guidance-and-conditions.pdf",
+        "quote": "Single site projects dependant on getting wider support from stakeholders including the landowner will not be supported. The exception to this will be where part of the project design involves outreach to various stakeholders and landowners in order to facilitate and encourage nature recovery on their property/land.",
+        "checked_at": "2026-11-24",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.gloucestershire.gov.uk/media/a0jplxpe/gloucestershire-nature-recovery-fund-guidance-and-conditions.pdf",
+        "quote": "projects may not apply for GCC nature recovery funding to fund an activity that is already subsidised or funded through other means (such as environmental land management schemes, or private finance).",
+        "checked_at": "2026-11-24",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.gloucestershire.gov.uk/media/a0jplxpe/gloucestershire-nature-recovery-fund-guidance-and-conditions.pdf",
+        "quote": "All applicants must be financially viable; have clear financial controls and produce annual accounts (or management approved accounts); we may ask for these to be submitted on application. (In the case of applicants in their first year of activity where no accounts are available, you may still receive a grant, but we may contact you for further information).",
+        "checked_at": "2026-11-24",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.gloucestershire.gov.uk/media/a0jplxpe/gloucestershire-nature-recovery-fund-guidance-and-conditions.pdf",
+        "quote": "a maximum of one application per organisation will be awarded per application window.",
+        "checked_at": "2026-11-24",
+        "method": "page"
+      }
+    ],
+    "after_award": [
+      {
+        "source_url": "https://www.gloucestershire.gov.uk/media/a0jplxpe/gloucestershire-nature-recovery-fund-guidance-and-conditions.pdf",
+        "quote": "By the end of the year the grantee shall submit to Gloucestershire County Council an evaluation form which will include the outcomes of the project to date and the benefits derived from the funds.",
+        "checked_at": "2026-11-24",
         "method": "page"
       }
     ]
   },
-  "checked_at": "2026-11-25"
+  "checked_at": "2026-11-24"
 }

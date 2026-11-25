@@ -27,26 +27,32 @@
   "consortium_required": true,
   "reporting": null,
   "effort": {
-    "steps": ["Mandatory consultation on a draft application in Jems", "Final application in Jems"],
-    "due": [null, "2026-12-31"]
+    "steps": [
+      "Submit draft in Jems for mandatory consultation",
+      "Final application in Jems",
+      "Joint Secretariat confirms acceptance in writing",
+      "Monitoring Committee selection"
+    ],
+    "due": ["2026-11-30", "2026-12-31", "2026-12-31", null]
   },
   "eligibility": [
-    {
-      "rule": "Project has an EFRE budget of at least EUR 50,000 and total budget of at most EUR 200,000",
-      "kind": "project"
-    },
     {
       "rule": "Project lasts no longer than 18 months, depending on submission date",
       "kind": "project"
     },
-    { "rule": "Project implementation ends no later than 30 June 2029", "kind": "project" }
+    { "rule": "Project implementation ends no later than 30 June 2029", "kind": "project" },
+    {
+      "rule": "Starts the project no earlier than the day after Monitoring Committee approval",
+      "kind": "project"
+    }
   ],
   "co_finance": { "min_share": 20 },
   "after_award": { "reports": "final" },
   "documents": [
     "Signed paper original of the confirmation of the electronic application",
     "Partnership agreement for small-scale projects",
-    "EU Charter of Fundamental Rights compliance declaration, Polish partners"
+    "EU Charter declaration for Polish local and regional authorities and bodies they administer or supervise",
+    "Partner budget explanations and supporting records, when using actual costs"
   ],
   "calls": [
     {
@@ -138,15 +144,27 @@
         "quote": "Die Antragstellung ist im Zeitraum vom 30.10.2025 (8:00 Uhr) bis zum 31.12.2026 (16:00 Uhr) jederzeit möglich.",
         "checked_at": "2026-11-25",
         "method": "page"
+      },
+      {
+        "source_url": "https://www.interreg6a.net/wichtiger-hinweis-fuer-antragsteller-zum-ende-des-7-calls-fuer-kleinteilige-projekte/",
+        "quote": "einen Antragsentwurf bis spätestens zum 30. November 2026 im Jems einzureichen",
+        "checked_at": "2026-11-24",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.interreg6a.net/wichtiger-hinweis-fuer-antragsteller-zum-ende-des-7-calls-fuer-kleinteilige-projekte/",
+        "quote": "Die Antragstellung ist offiziell abgeschlossen, wenn das Gemeinsame Sekretariat die Annahme des Antrags bis zum 31.12.2026 schriftlich bestätigt.",
+        "checked_at": "2026-11-24",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.interreg6a.net/calls/7-call/",
+        "quote": "Die Entscheidung über die Projektauswahl wird durch den Begleitausschuss des Kooperationsprogramms Interreg VI A Mecklenburg-Vorpommern / Brandenburg / Polska 2021-2027 gefasst",
+        "checked_at": "2026-11-24",
+        "method": "page"
       }
     ],
     "eligibility": [
-      {
-        "source_url": "https://www.interreg6a.net/calls/7-call/",
-        "quote": "Kleinteilige Projekte sind Vorhaben mit einem EFRE-Budget ab 50.000 Euro und mit einem Gesamtbudget bis maximal 200.000 EUR und einem Fördersatz bis maximal 80%.",
-        "checked_at": "2026-11-25",
-        "method": "page"
-      },
       {
         "source_url": "https://www.interreg6a.net/calls/7-call/",
         "quote": "Die maximale Projektdauer beträgt abhängig vom Zeitpunkt der Einreichung bis zu 18 Monaten.",
@@ -157,6 +175,12 @@
         "source_url": "https://www.interreg6a.net/calls/7-call/",
         "quote": "Der Durchführungszeitraum eines Projekts kann maximal bis zum 30.06.2029 reichen.",
         "checked_at": "2026-11-25",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.interreg6a.net/download/programmhandbuch_version-3-2/?wpdmdl=24318",
+        "quote": "der frühestmögliche Projektbeginn ist der Tag nach der Genehmigung des Förderantrags durch den Begleitausschuss.",
+        "checked_at": "2026-11-24",
         "method": "page"
       }
     ],
@@ -186,8 +210,20 @@
         "quote": "Partnerschaftsvereinbarung für Kleinteilige Projekte zur Regelung der Rechte und Pflichten der Partner bei der Projektumsetzung (DE, PL) Erklärung zur Einhaltung der Charta der Grundrechte der Europäischen Union (PL)",
         "checked_at": "2026-11-25",
         "method": "page"
+      },
+      {
+        "source_url": "https://www.interreg6a.net/download/programmhandbuch_version-3-2/?wpdmdl=24318",
+        "quote": "gilt für alle polnischen Gebietskörperschaften und polnischen Einrichtungen, die von Gebietskörperschaften verwaltet bzw. beaufsichtigt werden",
+        "checked_at": "2026-11-24",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.interreg6a.net/kleinteilige-projekte/",
+        "quote": "Denken Sie an die Erläuterungen der Budgets bei tatsächlichen Kosten",
+        "checked_at": "2026-11-24",
+        "method": "page"
       }
     ]
   },
-  "checked_at": "2026-11-25"
+  "checked_at": "2026-11-24"
 }
