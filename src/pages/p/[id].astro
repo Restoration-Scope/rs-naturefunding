@@ -27,6 +27,7 @@ import {
   accessLabels,
   applicantLabels,
   approachLabels,
+  fiscalSponsorLabels,
   stateLabels,
 } from '../../lib/labels'
 import { ArrowLeft, Calculator, ChevronDown } from 'lucide-react'
@@ -368,6 +369,21 @@ const jsonLd = [
         {
           p.consortium_required !== undefined && (
             <Fact id={factIds.consortium_required} label="Consortium required" value={yesNo(p.consortium_required)} evidence={p.evidence.consortium_required} />
+          )
+        }
+        {
+          p.fiscal_sponsor && (
+            <Fact
+              id={factIds.fiscal_sponsor}
+              label="Fiscal sponsor"
+              value={fiscalSponsorLabels[p.fiscal_sponsor.stance]}
+              evidence={p.evidence.fiscal_sponsor}
+            >
+              {p.fiscal_sponsor.note && <p class={factHelp}>{p.fiscal_sponsor.note}.</p>}
+              {p.fiscal_sponsor.stance === 'accepted' && (
+                <p class={factHelp}>No charity status of your own? See the <a href="/fiscal-sponsors/">fiscal sponsors that take nature projects</a>.</p>
+              )}
+            </Fact>
           )
         }
         <Fact id={factIds.approaches} label="Restoration approach" value={joinAnd(p.approaches.map((a) => approachLabels[a]))} missing="">

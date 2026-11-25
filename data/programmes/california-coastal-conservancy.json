@@ -23,6 +23,7 @@
   "window": "rolling",
   "amount": { "currency": "USD", "min": 200000, "max": 5000000, "typical": true },
   "co_finance_required": false,
+  "fiscal_sponsor": { "stance": "accepted", "note": "The sponsor is a 501(c)(3)" },
   "reporting": null,
   "effort": {
     "steps": ["Pre-application", "Full application, if invited", "Conservancy application review"],
@@ -106,6 +107,12 @@
     "co_finance_required": {
       "source_url": "https://scc.ca.gov/webmaster/ftp/pdf/forms/SCC_Grant_Application.docx",
       "quote": "Grantee Required Match - No grantee match is required.",
+      "checked_at": "2026-11-24",
+      "method": "page"
+    },
+    "fiscal_sponsor": {
+      "source_url": "https://scc.ca.gov/grants/",
+      "quote": "Other community-based organizations and non-federally-recognized tribes may apply with a 501(c)(3) fiscal sponsor",
       "checked_at": "2026-11-24",
       "method": "page"
     },

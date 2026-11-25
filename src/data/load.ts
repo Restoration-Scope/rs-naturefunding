@@ -3,8 +3,9 @@ import { basename, join } from 'node:path'
 import type { z } from 'zod'
 import { geographyIssues } from './geography'
 import { countryList, programme, sources as sourcesSchema, type CountryList, type Evidence, type Programme, type Source } from './schema'
+import { checkSponsors, type Sponsor } from './sponsors'
 
-export type DataSet = { programmes: Programme[]; sources: Source[]; lists: CountryList[] }
+export type DataSet = { programmes: Programme[]; sources: Source[]; lists: CountryList[]; sponsors: Sponsor[] }
 export type CheckResult = DataSet & { issues: string[] }
 
 const formatIssues = (where: string, error: z.ZodError) =>
@@ -63,6 +64,9 @@ export function checkData(
     issues.push(...geographyIssues(p, lists).map((i) => `programmes/${p.id}.json: ${i}`))
   }
 
+  const { sponsors, issues: sponsorIssues } = checkSponsors(join(programmesDir, '..', 'sponsors'), new Set(byId.keys()))
+  issues.push(...sponsorIssues)
+
   let sources: Source[] = []
   if (sourcesFile !== null) {
     if (!existsSync(sourcesFile)) issues.push('sources.json: missing')
@@ -86,14 +90,14 @@ export function checkData(
     }
   }
 
-  return { programmes, sources, lists: [...lists.values()], issues }
+  return { programmes, sources, lists: [...lists.values()], sponsors, issues }
 }
 
 /** For the site build: every file valid or the build fails. */
 export function loadData(): DataSet {
-  const { programmes, sources, lists, issues } = checkData()
+  const { programmes, sources, lists, sponsors, issues } = checkData()
   if (issues.length > 0) throw new Error(`data/ has ${issues.length} problem(s):\n${issues.join('\n')}`)
-  return { programmes, sources, lists }
+  return { programmes, sources, lists, sponsors }
 }
 
 /** Every programme, validated, sorted by id. */
