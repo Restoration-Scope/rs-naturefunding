@@ -3,6 +3,7 @@
 import Base from '../layouts/Base.astro'
 import SponsorCard from '../components/SponsorCard.astro'
 import SponsorRow from '../components/SponsorRow.astro'
+import { Table, TableCaption, TableHead, TableHeader, TableRow } from '@/components/ui/table'
 import { sponsorTypes, type SponsorType } from '../data/sponsors'
 import { programmes, sponsors } from '../lib/data'
 import { programmeTitle } from '../lib/format'
@@ -16,7 +17,7 @@ const groups = sponsorTypes
   .filter((g) => g.list.length > 0)
 const anySubject: SponsorType[] = ['environment', 'any']
 const broad = groups.filter((g) => anySubject.includes(g.type))
-const columns = ['Sponsor', 'Charges', 'Groups based abroad', 'Companies', 'Individuals', 'Named applicant on a grant', 'Funding or budget asked for', 'How to apply']
+const columns = ['Sponsor', 'Takes', 'Charges', 'Groups abroad', 'Companies', 'Individuals']
 const jsonLd = {
   '@context': 'https://schema.org',
   '@type': 'CollectionPage',
@@ -74,10 +75,18 @@ const h2 = 'mt-12 mb-3 scroll-mt-6 text-3xl font-extrabold'
             Also check {broad.map((b, i) => <Fragment>{i > 0 && ' and '}<a href={`#takes-${b.type}`}>{b.label.toLowerCase()}</a></Fragment>)}: sponsors there name no single subject.{g.type === 'hardware' && <Fragment> <a href="#takes-software">{sponsorTypeLabels.software}</a> has a sponsor that takes open source projects of all kinds.</Fragment>}
           </p>
         )}
-        <div class="sponsor-row sponsor-head items-end pb-2 text-sm font-bold text-ink-2" aria-hidden="true">
-          {columns.map((c) => <div>{c}</div>)}
+        <div class="sp-wrap">
+          <Table className="sp-tbl">
+            <TableCaption className="sr-only">Fiscal sponsors: {g.label}</TableCaption>
+            <TableHeader>
+              <TableRow>
+                {columns.map((c) => <TableHead scope="col">{c}</TableHead>)}
+                <TableHead scope="col" data-twin-skip><span class="sr-only">Details</span></TableHead>
+              </TableRow>
+            </TableHeader>
+            {g.list.map((s) => <SponsorRow s={s} />)}
+          </Table>
         </div>
-        {g.list.map((s) => <SponsorRow s={s} />)}
       </section>
     ))}
 
@@ -105,21 +114,208 @@ const h2 = 'mt-12 mb-3 scroll-mt-6 text-3xl font-extrabold'
 </Base>
 
 <style is:global>
-  /* One grid for the heading row and every sponsor, so the answers line up in columns; two columns of labelled answers on a phone. */
-  .sponsor-row {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(min(100%, 9.5rem), 1fr));
-    gap: 0.85rem 1.25rem;
+  /* The same card and table as the finder's (src/styles/finder.css). overflow: clip rounds the corners without
+     making a scroll box, so the header still sticks to the page. One tbody per sponsor: its row and its details. */
+  .sp-wrap {
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    background: var(--card);
+    overflow: clip;
   }
-  @media (max-width: 63.99rem) {
-    .sponsor-head {
-      display: none;
+  .sp-tbl {
+    table-layout: fixed;
+    border-collapse: separate;
+    border-spacing: 0;
+    font-size: var(--text-sm);
+    line-height: 1.4;
+  }
+  .sp-tbl thead th {
+    position: sticky;
+    top: 0;
+    z-index: 2;
+    width: 11%;
+    height: 2.5rem;
+    padding: 0 0.75rem;
+    background: var(--card);
+    border-bottom: 1px solid var(--border);
+    font-weight: 500;
+    color: var(--muted-foreground);
+    vertical-align: middle;
+  }
+  .sp-tbl thead th:nth-child(1) {
+    width: 16%;
+  }
+  .sp-tbl thead th:nth-child(2) {
+    width: 27%;
+  }
+  .sp-tbl thead th:nth-child(3) {
+    width: 15.5%;
+  }
+  .sp-tbl thead th:nth-child(4) {
+    width: 12%;
+  }
+  .sp-tbl thead th:last-child {
+    width: 7.5%;
+  }
+  .sp-tbl tbody :is(th, td) {
+    padding: 0.65rem 0.75rem;
+    font-weight: 400;
+    text-align: left;
+    vertical-align: top;
+    overflow-wrap: break-word;
+  }
+  .sp-tbl tbody + tbody > tr:first-child > :is(th, td) {
+    border-top: 1px solid var(--border);
+  }
+  .sp-tbl td > p + p {
+    margin-top: 0.25rem;
+  }
+  .sp-tbl strong,
+  .sp-answer {
+    font-weight: 600;
+  }
+  .sp-name {
+    font-size: var(--text-md);
+    font-weight: 600;
+    text-decoration: none;
+  }
+  .sp-sub {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.25rem 0.5rem;
+    align-items: center;
+    margin-top: 0.125rem;
+    font-size: var(--text-xs);
+    color: var(--muted-foreground);
+  }
+  .sp-answer {
+    display: flex;
+    gap: 0.3rem;
+    align-items: center;
+  }
+  .sp-mark {
+    flex: none;
+    width: 0.9rem;
+    height: 0.9rem;
+    stroke-width: 2.75;
+  }
+  .sp-open {
+    padding-left: 0 !important;
+  }
+  .sp-open summary {
+    display: flex;
+    gap: 0.2rem;
+    align-items: center;
+    justify-content: flex-end;
+    color: var(--link);
+    list-style: none;
+    white-space: nowrap;
+    cursor: pointer;
+  }
+  .sp-open summary::-webkit-details-marker {
+    display: none;
+  }
+  .sp-open summary > svg {
+    width: 1rem;
+    height: 1rem;
+  }
+  .sp-open details[open] svg {
+    transform: rotate(180deg);
+  }
+  .sp-tbl .sp-more {
+    display: none;
+  }
+  .sp-tbl tbody:has([data-sp-toggle][open]) .sp-more {
+    display: table-row;
+  }
+  .sp-tbl tbody:has([data-sp-toggle][open]) > tr > * {
+    background: color-mix(in oklch, var(--ground) 55%, var(--card));
+  }
+  .sp-tbl .sp-more > td {
+    padding-bottom: 1rem;
+  }
+  .sp-more__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 15rem), 1fr));
+    gap: 1rem 2rem;
+    padding-top: 0.75rem;
+    border-top: 1px solid var(--border);
+  }
+  .sp-more__label {
+    margin-bottom: 0.2rem;
+    font-size: var(--text-xs);
+    color: var(--muted-foreground);
+  }
+  .sp-more :is(ol, ul) {
+    margin: 0;
+    padding-left: 1.15rem;
+  }
+  .sp-more li + li {
+    margin-top: 0.15rem;
+  }
+  @media (hover: hover) {
+    .sp-name:hover,
+    .sp-open summary:hover {
+      text-decoration: underline;
+    }
+    .sp-tbl tbody:hover > tr:first-child > * {
+      background: color-mix(in oklch, var(--ground) 55%, var(--card));
     }
   }
-  @media (min-width: 64rem) {
-    .sponsor-row {
-      grid-template-columns: minmax(0, 1.9fr) minmax(0, 1.3fr) repeat(6, minmax(0, 1fr));
-      gap: 1.1rem;
+
+  /* Narrow: one card per sponsor, its answers labelled; a question it doesn't answer takes one line. */
+  @media (max-width: 59.99rem) {
+    .sp-wrap {
+      border: 0;
+      background: none;
+      overflow: visible;
+    }
+    .sp-tbl thead {
+      display: none;
+    }
+    .sp-tbl,
+    .sp-tbl tbody {
+      display: block;
+    }
+    .sp-tbl tbody {
+      padding: 0.4rem 0;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      background: var(--card);
+      overflow: clip;
+    }
+    .sp-tbl tbody + tbody {
+      margin-top: 0.75rem;
+    }
+    .sp-tbl tbody > tr:first-child {
+      display: block;
+    }
+    .sp-tbl tbody > tr > * {
+      display: block;
+      padding: 0.35rem 1rem !important;
+      border: 0 !important;
+      background: none !important;
+    }
+    .sp-tbl tbody > tr:first-child > td[data-label] {
+      display: grid;
+      grid-template-columns: 7.5rem minmax(0, 1fr);
+      column-gap: 0.75rem;
+    }
+    .sp-tbl td[data-label] > * {
+      grid-column: 2;
+    }
+    .sp-tbl td[data-label]::before {
+      content: attr(data-label);
+      grid-column: 1;
+      grid-row: 1;
+      color: var(--muted-foreground);
+    }
+    .sp-open summary {
+      justify-content: flex-start;
+      min-height: 2.75rem;
+    }
+    .sp-tbl tbody:has([data-sp-toggle][open]) .sp-more {
+      display: block;
     }
   }
 </style>
