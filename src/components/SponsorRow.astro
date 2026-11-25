@@ -32,9 +32,12 @@ const answers = [
 ]
 // A country where one group happens to be based is in Details: it is an example, not a rule.
 const where = s.where && !/as an example/.test(s.where.value) ? s.where.value : undefined
+// Under the name, where a project can be, which readers check first; where the sponsor is based follows in the row.
+// Without a stated place, its answer on groups abroad says the most.
+const abroad = { yes: 'Groups outside its home country too', case_by_case: 'Groups outside its home country case by case', no: 'Only groups in its home country' } as const
+const eligible = where ?? (s.foreign ? abroad[s.foreign.value.answer] : 'location not said')
 const limits = [
   { label: 'Check first', text: s.gate?.value },
-  { label: 'Where', text: where },
   { label: 'Funding', text: s.min_income?.value },
 ].filter((x) => x.text)
 // The row shows one charge, a percentage where it has one; Details has them all.
@@ -70,7 +73,7 @@ const facts: Fact[] = [
   { label: 'Companies', items: answer(s.companies), inRow: true },
   { label: 'Individuals', items: answer(s.individuals), inRow: true },
   { label: 'Legal form', items: one(s.legal_form) },
-  { label: 'Country', items: [{ text: countryName(s.country.value), evidence: s.country.evidence }], inRow: true },
+  { label: 'Based in', items: [{ text: countryName(s.country.value), evidence: s.country.evidence }], inRow: true },
 ].filter((f) => f.items.length > 0)
 const yes = answers.filter(({ a }) => a && a.value.answer !== 'no').map((x) => x.key)
 // Phones name the unanswered columns once, in place of a line each.
@@ -84,13 +87,14 @@ const said = answers.filter(({ a }) => a).map((x) => x.key)
     <th scope="row">
       <span class="sp-name">{s.name}</span>
       <p class="sp-sub">
-        <span><Flag code={s.country.value} class="mr-[0.4em]" />{countryName(s.country.value)}<span class="sr-only">. </span></span>
+        <span><strong>Eligible:</strong> {eligible}<span class="sr-only">. </span></span>
         {s.intake && s.intake.value.status !== 'open' && <Badge variant="warn">{sponsorIntakeLabels[s.intake.value.status]}<span class="sr-only">. </span></Badge>}
       </p>
     </th>
     <TableCell data-label="Takes">
       <p>{s.projects.value}</p>
       {limits.map((x) => <p><strong>{x.label}:</strong> {x.text}</p>)}
+      <p><strong>Based in:</strong> <Flag code={s.country.value} class="mr-[0.3em]" />{countryName(s.country.value)}</p>
     </TableCell>
     <TableCell data-label="Charges" data-none={fee ? undefined : ''}>
       <p class:list={{ 'text-ink-2': !fee }}>{rate ? <>{fee!.slice(0, rate.index)}<strong>{rate[0]}</strong>{fee!.slice(rate.index! + rate[0].length)}</> : (fee ?? 'Not said')}{fees.length > 1 && <span class="text-ink-2"> +{fees.length - 1} more</span>}</p>
