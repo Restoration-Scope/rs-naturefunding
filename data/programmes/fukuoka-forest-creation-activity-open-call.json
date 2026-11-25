@@ -21,6 +21,19 @@
   },
   "co_finance_required": null,
   "reporting": null,
+  "effort": {
+    "steps": ["Project proposal", "Review by the prefecture forest tax committee"],
+    "more_after": true
+  },
+  "eligibility": [
+    { "rule": "Maintain an office in Fukuoka Prefecture", "kind": "legal" },
+    { "rule": "Not mainly for religious or political activity", "kind": "legal" },
+    { "rule": "Activity receives no other public subsidy, now or expected", "kind": "project" },
+    { "rule": "All activity sites are within Fukuoka Prefecture", "kind": "project" },
+    { "rule": "Activity has not already started", "kind": "project" },
+    { "rule": "Most planned participants live or work in Fukuoka Prefecture", "kind": "project" }
+  ],
+  "after_award": { "reports": "final", "training": true },
   "calls": [
     {
       "id": "fy2027",
@@ -83,6 +96,26 @@
       "checked_at": "2026-11-25",
       "method": "page"
     },
+    "effort": [
+      {
+        "source_url": "https://www.pref.fukuoka.lg.jp/press-release/r9morikoubo.html",
+        "quote": "令和9年1月8日(金)までに、メール、郵送または持参にて、 公益財団法人福岡県水源の森基金(業務委託先)へ企画書を提出",
+        "checked_at": "2026-11-25",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.pref.fukuoka.lg.jp/contents/room-mori-koubo-syuryo.html",
+        "quote": "事業年度の予算が成立することを条件に、福岡県森林環境税検討委員会において審査した後、予算の範囲内で採択事業を決定します。",
+        "checked_at": "2026-11-25",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.pref.fukuoka.lg.jp/contents/room-mori-koubo-syuryo.html",
+        "quote": "採択を受けた団体は、別途補助金の交付申請などの手続きが必要になります。",
+        "checked_at": "2026-11-25",
+        "method": "page"
+      }
+    ],
     "eligibility": [
       {
         "source_url": "https://www.pref.fukuoka.lg.jp/press-release/r9morikoubo.html",
@@ -121,26 +154,6 @@
         "method": "page"
       }
     ],
-    "effort": [
-      {
-        "source_url": "https://www.pref.fukuoka.lg.jp/press-release/r9morikoubo.html",
-        "quote": "令和9年1月8日(金)までに、メール、郵送または持参にて、 公益財団法人福岡県水源の森基金(業務委託先)へ企画書を提出",
-        "checked_at": "2026-11-25",
-        "method": "page"
-      },
-      {
-        "source_url": "https://www.pref.fukuoka.lg.jp/contents/room-mori-koubo-syuryo.html",
-        "quote": "事業年度の予算が成立することを条件に、福岡県森林環境税検討委員会において審査した後、予算の範囲内で採択事業を決定します。",
-        "checked_at": "2026-11-25",
-        "method": "page"
-      },
-      {
-        "source_url": "https://www.pref.fukuoka.lg.jp/contents/room-mori-koubo-syuryo.html",
-        "quote": "採択を受けた団体は、別途補助金の交付申請などの手続きが必要になります。",
-        "checked_at": "2026-11-25",
-        "method": "page"
-      }
-    ],
     "after_award": [
       {
         "source_url": "https://www.pref.fukuoka.lg.jp/contents/room-mori-koubo-syuryo.html",
@@ -156,18 +169,5 @@
       }
     ]
   },
-  "checked_at": "2026-11-25",
-  "after_award": { "reports": "final", "training": true },
-  "eligibility": [
-    { "rule": "Maintain an office in Fukuoka Prefecture", "kind": "legal" },
-    { "rule": "Not mainly for religious or political activity", "kind": "legal" },
-    { "rule": "Activity receives no other public subsidy, now or expected", "kind": "project" },
-    { "rule": "All activity sites are within Fukuoka Prefecture", "kind": "project" },
-    { "rule": "Activity has not already started", "kind": "project" },
-    { "rule": "Most planned participants live or work in Fukuoka Prefecture", "kind": "project" }
-  ],
-  "effort": {
-    "steps": ["Project proposal", "Review by the prefecture forest tax committee"],
-    "more_after": true
-  }
+  "checked_at": "2026-11-25"
 }
