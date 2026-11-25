@@ -20,7 +20,7 @@ import { cardClasses } from '@/components/ui/card'
 import { HIDDEN_DAYS, buildDate, callGroups, countryLists, whereArea, whereReach, listingFor, programmeById, programmes, sortListings } from '../../lib/data'
 import type { Programme } from '../../data/schema'
 import { pagesFor } from '../../lib/finder-pages'
-import { amountText, effortLevel, effortSignals, effortText, poolText, geographyFull, joinAnd, longDate, sentence, funderRepeatsName, funderQualifier, programmeTitle, shownParts } from '../../lib/format'
+import { amountText, effortLevel, effortSignals, effortText, hasEffort, poolText, geographyFull, joinAnd, longDate, sentence, funderRepeatsName, funderQualifier, programmeTitle, shownParts } from '../../lib/format'
 import { countryName, regionLabels, withRegions } from '../../lib/geo'
 import {
   accessHelp,
@@ -34,6 +34,7 @@ import { ArrowLeft, Calculator, ChevronDown } from 'lucide-react'
 import WorthCheck from '../../components/WorthCheck.astro'
 import { cardAlt, cardPath, hasOwnCard } from '../../lib/og-card'
 import BeforeYouApply from '../../components/BeforeYouApply.astro'
+import EffortSummary from '../../components/EffortSummary.astro'
 import { CONTACT_EMAIL, RS_REPORTING_URL, absolute, funderCorrectionUrl, reportProblemUrl } from '../../lib/site'
 import { effectiveCallStatus } from '../../lib/status'
 
@@ -154,7 +155,7 @@ const worth = {
   odds: p.odds ? Math.round((p.odds.funded / p.odds.applied) * 1000) / 10 : null,
 }
 // Rules, documents and steps get their own section; the Applying group then only names the load.
-const before = p.access === 'direct' && (p.effort !== undefined || p.eligibility !== undefined || p.documents !== undefined || p.after_award !== undefined)
+const before = hasEffort(p)
 const level = effortLevel(p)
 const listingsList = 'm-0 list-none border-t border-rule p-0'
 
@@ -290,6 +291,9 @@ const jsonLd = [
       </template>
     </section>
 
+    {/* After the apply box, so on phones the box stays high. Wide screens: right under the key facts. */}
+    {p.access === 'direct' && <EffortSummary p={p} />}
+
     {
       childListings.length > 0 && (
         <section class="@container/listings" aria-labelledby="partners-title">
@@ -409,11 +413,11 @@ const jsonLd = [
             <Fact
               id={before ? 'work-to-apply' : 'effort'}
               label="Work to apply"
-              value={before ? (level ? (level.level ? `${level.level}: ${level.why}` : sentence(level.why)) : 'Steps not stated') : effortText(p.effort)}
+              value={before ? (level ? (level.level ? `${{ Light: 'Light', Medium: 'Some work', Heavy: 'Heavy' }[level.level]}: ${level.why}` : sentence(level.why)) : 'Steps not stated') : effortText(p.effort)}
               evidence={[...(before ? [] : (p.evidence.effort ?? [])), ...(p.evidence.odds ? [p.evidence.odds] : [])]}
               missing="Steps not stated"
             >
-              {before && (
+              {(p.eligibility || p.documents || p.effort) && (
                 <p class={factHelp}>
                   <a class="font-semibold text-ink underline underline-offset-2" href="#before-title">Before you apply</a>: {[p.eligibility && 'the rules', p.documents && 'the documents', p.effort && 'the steps'].filter(Boolean).join(', ').replace(/, ([^,]*)$/, ' and $1')}, in the funder’s words.
                 </p>

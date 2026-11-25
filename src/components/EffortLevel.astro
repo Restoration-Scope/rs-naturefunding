@@ -1,0 +1,13 @@
+---
+import { effortFill, effortWords, type Level } from '../lib/effort-tip'
+
+/** One signal's bar and level in words, as the finder's tooltip shows them. */
+interface Props {
+  level: Level
+}
+
+const { level } = Astro.props
+const known = level !== 'unchecked' && level !== 'unstated'
+---
+
+<span class:list={['inline-flex items-center gap-2 whitespace-nowrap', known ? 'font-semibold' : 'text-ink-2']}><span class:list={['h-4 w-1.5 flex-none rounded-[2px]', effortFill[level]]} aria-hidden="true"></span>{effortWords[level].replace(/^./, (x) => x.toUpperCase())}</span>

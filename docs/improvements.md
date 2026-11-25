@@ -2,6 +2,7 @@
 
 What a visitor to naturefunding.org can see or do that they couldn't before, newest first. One line per merged change, added in the same PR (AGENTS.md). The naturefunding.org LinkedIn Page drafts its update posts from this list. Emails count once `DIGEST_SENDING` is `live`.
 
+- 2026-11-25 · Each grant's page shows what it asks of you (who qualifies, applying, co-funding, after the award) at the top, and Before you apply explains each level with the funder's words · https://naturefunding.org/p/iki-large-grants/ · #1077
 - 2026-11-25 · GEF Small Grants Programme Ethiopia's OP8 call is listed: NGOs, CSOs and community-based organisations in Ethiopia can see the 31 December 2026 deadline and up to US$75,000 per project · https://naturefunding.org/p/gef-sgp-ethiopia/ · #1076
 - 2026-11-25 · All 101 grants closing by 22 January had their Before you apply checked again by a second reader against the funder's own documents: 364 wrong rules, documents or steps fixed or removed and 334 missing ones added · https://naturefunding.org/p/naturescot-nature-restoration-fund/#before-title · #1148
 - 2026-11-24 · Fiscal sponsors answer more: 11 of the 72 “Not said” cells in the table now have an answer, and about 100 facts in all were added or corrected from the sponsors' own pages (Open Science Hardware Foundation's new terms, Earth Island taking only US-based groups, Wildlife Conservation Network taking no unsolicited applications) · https://naturefunding.org/fiscal-sponsors/ · #1075
