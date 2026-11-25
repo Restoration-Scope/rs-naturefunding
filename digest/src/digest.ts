@@ -1,10 +1,10 @@
 // One subscriber's digest: the events since their last email that still hold in today's data and match their
-// saved filters. A call that opened and closed again between two emails is left out; so is a programme removed
+// saved filters; a call for other countries than theirs is never theirs. A call that opened and closed again between two emails is left out; so is a programme removed
 // from the site. Nothing left means no email.
 import { deadlinePassed } from '../../scripts/refresh/deadline'
 import type { Call, Programme } from '../../src/data/schema'
 import type { DigestEvent } from './events'
-import { placeFit } from '../../src/lib/where-codes'
+import { callTakes, placeFit } from '../../src/lib/where-codes'
 import { matches, type Prefs } from './match'
 
 export type Section = 'open' | 'upcoming' | 'new'
@@ -34,14 +34,15 @@ export function buildDigest(
     const p = programmes.get(e.programme)
     if (!p || !matches(p, prefs)) continue
     if (isNew.has(p.id)) {
-      // One line per new programme, with the call that's live now, if any.
+      // One line per new programme, with the call live now for the subscriber's place, if any.
       if (byKey.has(p.id)) continue
-      const call = p.calls.find((c) => isOpen(c, at)) ?? p.calls.find((c) => c.status === 'upcoming') ?? null
+      const calls = p.calls.filter((c) => callTakes(c, prefs.where))
+      const call = calls.find((c) => isOpen(c, at)) ?? calls.find((c) => c.status === 'upcoming') ?? null
       byKey.set(p.id, { section: 'new', programme: p, call })
       continue
     }
     const call = p.calls.find((c) => c.id === e.call)
-    if (!call) continue
+    if (!call || !callTakes(call, prefs.where)) continue
     const section: Section | null = isOpen(call, at) ? 'open' : call.status === 'upcoming' ? 'upcoming' : null
     if (!section) continue
     byKey.set(`${p.id}/${call.id}`, { section, programme: p, call })

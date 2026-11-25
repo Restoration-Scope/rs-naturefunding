@@ -68,7 +68,7 @@ describe('every page has a Markdown twin', () => {
     let checked = 0
     for (const p of programmes) {
       const line = lines.find((l) => l.includes(`/p/${p.id}.md)`))
-      if (!line || p.access !== 'direct' || !p.eligibility || listingFor(p).state === 'closed') continue
+      if (!line || p.access !== 'direct' || !p.eligibility || listingFor(p, buildDate, 'KE').state === 'closed') continue
       for (const { rule } of p.eligibility) expect(line, p.id).toContain(rule.replace(/[.;]+$/, ''))
       checked++
     }

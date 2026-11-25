@@ -1,5 +1,5 @@
 // The codes a listing's place is matched by: data-where on the finder's rows, the country pages and the digest.
-import type { Programme } from '../data/schema'
+import type { Call, Programme } from '../data/schema'
 import { areaCountries, countryRegion } from './geo'
 import { whereFit, type Fit } from './where-fit'
 
@@ -32,5 +32,9 @@ export function whereCodes(p: Pick<Programme, 'geography'>): string[] {
     ...(whole.length ? [...out].map((c) => `!${c}`) : []),
   ]
 }
+
+/** Whether a call takes projects from a Where: "KE", "r:africa" or '' for anywhere. A call with no countries takes all the programme's places. */
+export const callTakes = (c: Pick<Call, 'countries'>, where: string) =>
+  !where || !c.countries || (where.startsWith('r:') ? c.countries.some((k) => `r:${countryRegion[k]}` === where) : c.countries.includes(where))
 
 export const placeFit = (p: Pick<Programme, 'geography'>, where: string): Fit | null => whereFit(whereCodes(p), where, countryRegion[where])

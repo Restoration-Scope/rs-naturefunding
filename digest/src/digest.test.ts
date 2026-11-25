@@ -161,6 +161,41 @@ describe('one subscriber’s digest', () => {
   })
 })
 
+describe('a call for some of the programme’s countries', () => {
+  const now = '2026-11-15T09:00:00.000Z'
+  const faf = byId.get('forest-action-facility')!
+  const c = (id: string, status: 'open' | 'upcoming' | 'closed', countries: string[]) => ({ ...faf.calls[0]!, id, status, label: id, opens: null, deadline: null, expected: undefined, countries })
+  const p: Programme = { ...faf, calls: [c('ecuador', 'closed', ['EC']), c('central-america', 'upcoming', ['CR', 'PA'])] }
+  const announced = { at: '2026-11-10T00:00:00.000Z', kind: 'announced' as const, programme: p.id, call: 'central-america' }
+  const isNew = { at: '2026-11-10T00:00:00.000Z', kind: 'new_programme' as const, programme: p.id, call: 'central-america' }
+  const run = (event: typeof announced | typeof isNew, where: string, programme = p) => {
+    const prefs = cleanPrefs(where, [])
+    const d = buildDigest([event], new Map([[p.id, programme]]), prefs, '2026-11-08T00:00:00.000Z', now)
+    const { subject } = digestEmail({ site: 'https://x', digest: d, prefs, since: '2026-11-08T00:00:00.000Z', unsubscribeUrl: 'u', manageUrl: 'm' })
+    return { items: d.items.map((i) => [i.section, i.call?.id ?? null]), total: d.total, subject }
+  }
+
+  test('Ecuador gets no email about the Central America call', () => {
+    expect(run(announced, 'EC')).toMatchObject({ items: [], total: 0 })
+  })
+  test('the call’s own countries, their region and anywhere do', () => {
+    expect(run(announced, 'CR')).toEqual({ items: [['upcoming', 'central-america']], total: 1, subject: '1 call opening soon · Costa Rica' })
+    expect(run(announced, 'r:latin_america_caribbean').total).toBe(1)
+    expect(run(announced, '').total).toBe(1)
+  })
+  test('a region with none of the call’s countries gets no email about it', () => {
+    const wide: Programme = { ...p, geography: { scope: 'regions', regions: ['africa', 'latin_america_caribbean'], label: 'Africa and Latin America', whole: true } }
+    expect(run(announced, 'r:africa', wide).total).toBe(0)
+    expect(run(announced, 'r:latin_america_caribbean', wide).total).toBe(1)
+  })
+  test('a new programme is new for each of its countries, with a call only where one is live', () => {
+    expect(run(isNew, 'EC')).toEqual({ items: [['new', null]], total: 1, subject: '1 new programme · Ecuador' })
+    expect(run(isNew, 'CR').items).toEqual([['new', 'central-america']])
+    const both = { ...p, calls: [c('ecuador', 'open', ['EC']), c('central-america', 'upcoming', ['CR'])] }
+    expect(run(isNew, 'CR', both).items).toEqual([['new', 'central-america']])
+  })
+})
+
 describe('link tokens', () => {
   test('round-trip, and refuse a changed token or another secret', async () => {
     const t = await seal({ k: 'unsubscribe', id: 'abc' }, 's1')

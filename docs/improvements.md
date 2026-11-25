@@ -2,6 +2,7 @@
 
 What a visitor to naturefunding.org can see or do that they couldn't before, newest first. One line per merged change, added in the same PR (AGENTS.md). The naturefunding.org LinkedIn Page drafts its update posts from this list. Emails count once `DIGEST_SENDING` is `live`.
 
+- 2026-11-24 · A grant with a separate call per country shows only that country's call in each country's AI copy (Forest Action Facility in Ecuador is closed, not opening in March 2027), and the weekly email leaves out calls that don't take your country · https://naturefunding.org/countries/ecuador.md · #PR
 - 2026-11-24 · Country pages count only grants that take the country: a grant for a group the funder doesn't list says "Check the place", and one for part of a country says which part ("Only the Canary Islands") · https://naturefunding.org/countries/spain/ · #1073
 - 2026-11-24 · One line under the search bar to give ChatGPT, Claude or another AI, so it finds the grants that fit your project; each place's AI copy now includes who can't apply and the other rules · https://naturefunding.org/ · #1071
 - 2026-11-24 · 22 existing listings show current funder evidence, including new 2027 rounds for European Open Rivers, California Duck Stamp, Jersey Ecology Trust Fund, Thames Water, Akita, IKI Large Grants and more · https://naturefunding.org/p/european-open-rivers/ · #1013
