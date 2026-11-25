@@ -187,7 +187,7 @@ export function itemParts(i: DigestItem, site: string, prefs: Prefs, currency?: 
     })(),
     // The project types it funds, with the finder's icons. Left out when the subscriber chose a type: the heading names it.
     types: prefs.approaches.length ? [] : projectTypes.filter((t) => t.approaches.some((a) => p.approaches.includes(a))).map((t) => ({ key: t.key, label: t.label })),
-    // Opened for the subscriber's place, so the page leads with the call the email names (src/lib/where-view.ts).
+    // Opened for the subscriber's place, so the page leads with its calls (src/lib/where-view.ts).
     page: `${site}/p/${p.id}/${prefs.where && `?where=${prefs.where}`}`,
   }
 }

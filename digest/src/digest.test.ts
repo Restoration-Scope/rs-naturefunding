@@ -214,6 +214,12 @@ describe('a call’s dates set its section, as on the site', () => {
     expect(announced?.section).toBe('open')
     expect(itemParts(announced!, 'https://x', cleanPrefs('EC', [])).status).toBe('Open · deadline 2026-12-20')
   })
+  test('a new programme shows the open call that closes first, whatever their order', () => {
+    const c = (id: string, status: 'open' | 'upcoming', date: string) => ({ ...faf.calls[0]!, id, status, opens: '2026-11-23', countries: undefined, expected: undefined, deadline: { date, text: date } })
+    const p: Programme = { ...faf, calls: [c('later', 'upcoming', '2026-12-20'), c('sooner', 'open', '2026-11-25')] }
+    const e = { at: '2026-11-20T00:00:00.000Z', kind: 'new_programme' as const, programme: p.id, call: 'later' }
+    expect(buildDigest([e], new Map([[p.id, p]]), cleanPrefs('', []), '2026-11-18T00:00:00.000Z', '2026-11-24T08:00:00.000Z').items[0]?.call?.id).toBe('sooner')
+  })
   test('an open call that opens later is still opening soon', () => {
     expect(at('2026-12-01', '2026-12-20', 'open').announced?.section).toBe('upcoming')
   })

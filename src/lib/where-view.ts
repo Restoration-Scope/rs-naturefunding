@@ -110,8 +110,9 @@ export function initWhereView() {
 
     // Calls: the place's own first and open; the others fold below.
     const takes = (c: HTMLElement) => !c.dataset.callCountries || c.dataset.callCountries.split(' ').includes(where)
-    const others = narrowed ? calls.filter((c) => !takes(c)) : []
-    for (const c of calls) c.open = narrowed && takes(c) ? true : builtOpen.get(c)!
+    // Even when one part serves every place, a call can be for others only.
+    const others = covered && where ? calls.filter((c) => !takes(c)) : []
+    for (const c of calls) c.open = (narrowed || others.length) && takes(c) ? true : builtOpen.get(c)!
     if (others.length) {
       const fold = place('other-calls')
       fold?.querySelector('[data-calls-other-list]')?.append(...others)

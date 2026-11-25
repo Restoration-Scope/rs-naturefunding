@@ -37,7 +37,9 @@ export function buildDigest(
       // One line per new programme, with the call live now for the subscriber's place, if any.
       if (byKey.has(p.id)) continue
       const calls = p.calls.filter((c) => callTakes(c, prefs.where)).map((c) => dated(c, at))
-      const call = calls.find((c) => c.status === 'open') ?? calls.find((c) => c.status === 'upcoming') ?? null
+      const first = (status: Call['status'], date: (c: Call) => string | null | undefined) =>
+        calls.filter((c) => c.status === status).sort((a, b) => (date(a) ?? '9999').localeCompare(date(b) ?? '9999'))[0]
+      const call = first('open', (c) => c.deadline?.date) ?? first('upcoming', (c) => c.opens) ?? null
       byKey.set(p.id, { section: 'new', programme: p, call })
       continue
     }
