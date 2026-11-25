@@ -16,7 +16,7 @@ const groups = sponsorTypes
   .filter((g) => g.list.length > 0)
 const anySubject: SponsorType[] = ['environment', 'any']
 const broad = groups.filter((g) => anySubject.includes(g.type))
-const columns = ['Sponsor', 'Charges', 'Groups outside its country', 'Companies', 'Individuals', 'Named applicant on a grant', 'Minimum income', 'How to apply']
+const columns = ['Sponsor', 'Charges', 'Groups based abroad', 'Companies', 'Individuals', 'Named applicant on a grant', 'Funding or budget asked for', 'How to apply']
 const jsonLd = {
   '@context': 'https://schema.org',
   '@type': 'CollectionPage',
@@ -37,8 +37,8 @@ const h2 = 'mt-12 mb-3 scroll-mt-6 text-3xl font-extrabold'
   <div slot="band" class="wrap pt-7 pb-9">
     <h1 class="text-[clamp(1.75rem,1.2rem+2.2vw,2.75rem)] font-extrabold tracking-[-0.02em]">Fiscal sponsors for nature projects</h1>
     <p class="mt-[0.9rem] max-w-[60ch] text-xl text-shell-ink-2">
-      Some funders pay only registered charities. A fiscal sponsor is a charity or nonprofit that takes your project
-      under its own legal status, so you can receive grants or donations without one.
+      Some funders pay only registered charities. A fiscal sponsor is an organisation that can receive or manage funding
+      for a project, depending on the arrangement and the funder’s rules.
     </p>
   </div>
 
@@ -49,7 +49,7 @@ const h2 = 'mt-12 mb-3 scroll-mt-6 text-3xl font-extrabold'
           Each fact comes from the sponsor’s own pages. “Not said” means we didn’t find it there: ask before you count on it.
         </p>
         <p>
-          A sponsor helps only if the funder takes one. <a href="#grants">{accepted.length} grants here say they do, and {refused.length} refuse or discourage it</a>.
+          For a particular grant, check whether the funder accepts applying through a sponsor. <a href="#grants">{accepted.length} grants here say they do, and {refused.length} refuse or discourage it</a>.
         </p>
     </div>
 
@@ -71,7 +71,7 @@ const h2 = 'mt-12 mb-3 scroll-mt-6 text-3xl font-extrabold'
         <h2 id={`takes-${g.type}`} class={h2}>{g.label}</h2>
         {!anySubject.includes(g.type) && (
           <p class="mb-3 text-md text-ink-2">
-            Also check {broad.map((b, i) => <Fragment>{i > 0 && ' and '}<a href={`#takes-${b.type}`}>{b.label.toLowerCase()}</a></Fragment>)}: sponsors there aren’t limited to one subject.
+            Also check {broad.map((b, i) => <Fragment>{i > 0 && ' and '}<a href={`#takes-${b.type}`}>{b.label.toLowerCase()}</a></Fragment>)}: sponsors there name no single subject.{g.type === 'hardware' && <Fragment> <a href="#takes-software">{sponsorTypeLabels.software}</a> has a sponsor that takes open source projects of all kinds.</Fragment>}
           </p>
         )}
         <div class="sponsor-row sponsor-head items-end pb-2 text-sm font-bold text-ink-2" aria-hidden="true">
@@ -91,7 +91,7 @@ const h2 = 'mt-12 mb-3 scroll-mt-6 text-3xl font-extrabold'
 
     <h2 id="grants" class={h2}>What funders say</h2>
     <p class="max-w-[66ch] text-ink-2">
-      From the grants listed here whose pages mention applying through a sponsor. Most don’t mention it: ask the funder.
+      The grants listed here where we recorded what the funder says about applying through a sponsor. For any other, ask the funder.
     </p>
     <h3 class="mt-7 mb-2 text-xl font-bold">Accepted ({accepted.length})</h3>
     <ul class={grantList}>

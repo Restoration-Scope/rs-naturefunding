@@ -19,18 +19,16 @@ const answer = (label: string, a: Answer): Cell => ({
   lead: a && sponsorAnswerLabels[a.value.answer],
   lines: a?.value.note ? [a.value.note.charAt(0).toUpperCase() + a.value.note.slice(1)] : [],
 })
-const foreign = answer('Groups outside its country', s.foreign)
-// `where` never answers for groups abroad: with no answer published it stands under "Not said", as what it is.
-const place = s.where && s.where.value.toLowerCase() !== s.foreign?.value.note?.toLowerCase() ? s.where.value : undefined
-if (place && s.foreign) foreign.lines.push(place)
-if (place && !s.foreign) foreign.aside = `Where: ${place}`
+// Neither `where` nor `own_entity` answers the column: each stands under the answer, or under "Not said", as what it is.
+const foreign: Cell = { ...answer('Groups based abroad', s.foreign), aside: s.where && `Where: ${s.where.value}` }
+const companies: Cell = { ...answer('Companies', s.companies), aside: s.own_entity && `With your own organisation: ${s.own_entity.value}` }
 const cells: Cell[] = [
   { label: 'Charges', lines: (s.fees ?? []).map((f) => f.value) },
   foreign,
-  answer('Companies', s.companies),
+  companies,
   answer('Individuals', s.individuals),
-  { label: 'Named applicant on a grant', lines: s.grants ? [sponsorGrantLabels[s.grants.value.role]] : [] },
-  { label: 'Minimum income', lines: s.min_income ? [s.min_income.value] : [] },
+  { label: 'Named applicant on a grant', lead: s.grants && sponsorGrantLabels[s.grants.value.role], lines: s.grants ? [s.grants.value.note] : [] },
+  { label: 'Funding or budget asked for', lines: s.min_income ? [s.min_income.value] : [] },
 ]
 const more = (s.steps?.length ?? 0) - 1
 const label = 'text-sm font-bold text-ink-2 lg:sr-only'
@@ -52,7 +50,7 @@ const label = 'text-sm font-bold text-ink-2 lg:sr-only'
         <div class="min-w-0">
           <dt class={label}>{c.label}</dt>
           <dd class="m-0 text-sm">
-            {c.lead && <p class="font-bold">{c.lead}</p>}
+            {c.lead && <p class:list={c.lead === 'Not said' ? 'text-ink-2' : 'font-bold'}>{c.lead}</p>}
             {c.lines.map((l) => <p class="[&+p]:mt-1">{l}</p>)}
             {!c.lead && c.lines.length === 0 && <p class="text-ink-2">Not said</p>}
             {c.aside && <p class="mt-1">{c.aside}</p>}

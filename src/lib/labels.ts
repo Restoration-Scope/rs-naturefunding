@@ -47,11 +47,11 @@ export const sponsorTypeLabels: Record<SponsorType, string> = {
   ocean: 'Ocean and marine life',
   research: 'Research',
   hardware: 'Open hardware',
-  software: 'Open source software and data',
+  software: 'Software and data',
   media: 'Film and photography',
   community: 'Community-led projects',
-  environment: 'Any environmental work',
-  any: 'Any public-benefit work',
+  environment: 'Environment in general',
+  any: 'Charitable or social work in general',
 }
 
 export const sponsorModelLabels: Record<NonNullable<Sponsor['models']>[number]['value'], string> = {
@@ -61,8 +61,11 @@ export const sponsorModelLabels: Record<NonNullable<Sponsor['models']>[number]['
 
 export const sponsorGrantLabels: Record<NonNullable<Sponsor['grants']>['value']['role'], string> = {
   applicant: 'Yes',
-  receives: 'It receives the grant; who applies isn’t said',
-  donations: 'Only donations described',
+  project_applies: 'Your project applies',
+  receives: 'Not said',
+  signs: 'Not said',
+  through: 'Not said',
+  donations: 'Not said',
 }
 
 export const sponsorAnswerLabels = { yes: 'Yes', no: 'No', case_by_case: 'Case by case' } as const

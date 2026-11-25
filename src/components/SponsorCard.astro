@@ -31,11 +31,12 @@ const details: Row[] = [
   { label: 'Kinds of project', items: s.types.map((t) => ({ text: sponsorTypeLabels[t.value], evidence: t.evidence })) },
   { label: 'Where', items: one(s.where) },
   { label: 'Charges', items: many(s.fees) },
-  { label: 'Minimum income', items: one(s.min_income) },
+  { label: 'Funding or budget asked for', items: one(s.min_income) },
   { label: 'Named applicant on a grant', items: grants },
   { label: 'Companies', items: answer(s.companies) },
+  { label: 'With your own organisation', items: one(s.own_entity) },
   { label: 'Individuals', items: answer(s.individuals) },
-  { label: 'Groups outside its country', items: answer(s.foreign) },
+  { label: 'Groups based abroad', items: answer(s.foreign) },
   { label: 'How it works', items: (s.models ?? []).map((m) => ({ text: sponsorModelLabels[m.value], evidence: m.evidence })) },
   { label: 'Paying people', items: answer(s.staff) },
   { label: 'Conditions', items: many(s.conditions) },
@@ -43,7 +44,7 @@ const details: Row[] = [
   { label: 'How to apply', items: many(s.steps) },
   { label: 'What it asks for', items: many(s.form_asks) },
   { label: 'Legal form', items: one(s.legal_form) },
-  { label: 'Registered or based in', items: [{ text: countryName(s.country.value), evidence: s.country.evidence }] },
+  { label: 'Country, by its address or registration', items: [{ text: countryName(s.country.value), evidence: s.country.evidence }] },
 ]
 const NOT_FOUND = 'Not found on the pages we read'
 ---
@@ -71,7 +72,7 @@ const NOT_FOUND = 'Not found on the pages we read'
     </summary>
     <dl class="mt-0 mb-3">
       {
-        details.filter((r) => r.label !== 'Check first' || r.items.length > 0).map((r) => (
+        details.filter((r) => !['Check first', 'With your own organisation'].includes(r.label) || r.items.length > 0).map((r) => (
           <div class="grid grid-cols-[minmax(0,1fr)] gap-[0.35rem] border-t border-rule py-4 md:grid-cols-[11rem_minmax(0,1fr)] md:gap-6">
             <dt class="text-md font-bold text-ink-2">{r.label}</dt>
             <dd class="m-0 min-w-0">

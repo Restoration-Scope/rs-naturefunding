@@ -2,17 +2,8 @@
   "id": "open-source-collective",
   "name": "Open Source Collective",
   "url": "https://docs.oscollective.org/welcome-and-introduction-to-osc/what-is-fiscal-hosting",
-  "summary": "US nonprofit, not a charity, that hosts open source projects from anywhere in the world. Its rules are written for software and count open hardware licences.",
+  "summary": "US nonprofit, not a charity, that hosts open source projects from anywhere in the world. Its requirements are written for software; its licence standards include the open hardware principles.",
   "types": [
-    {
-      "value": "hardware",
-      "evidence": {
-        "source_url": "https://docs.oscollective.org/interested-in-joining-osc/acceptance-criteria",
-        "quote": "Your project must use an open source license that clearly defines how it can be used, modified, redistributed, and referenced by others. We follow the licensing standards from: Open Source Initiative Approved License List Free Software Foundation License List Debian Free Software Guidelines Fedora Software License List Open Source Hardware Association Statement of Principles",
-        "checked_at": "2026-11-24",
-        "method": "page"
-      }
-    },
     {
       "value": "software",
       "evidence": {
@@ -55,15 +46,6 @@
     "evidence": {
       "source_url": "https://docs.oscollective.org/for-hosted-member-projects/applying-for-and-accepting-grants",
       "quote": "Some grants are restricted to 501(c)(3) organizations. Open Source Collective is a 501(c)(6) nonprofit, so before applying, confirm that the grant you're interested in allows funding to a 501(c)(6).",
-      "checked_at": "2026-11-24",
-      "method": "page"
-    }
-  },
-  "where": {
-    "value": "Anywhere in the world",
-    "evidence": {
-      "source_url": "https://docs.oscollective.org/interested-in-joining-osc/acceptance-criteria",
-      "quote": "welcomes open source projects of all kinds - from anywhere in the world",
       "checked_at": "2026-11-24",
       "method": "page"
     }
@@ -120,12 +102,12 @@
   },
   "grants": {
     "value": {
-      "role": "receives",
-      "note": "It acts as the receiving organisation and has to be involved early."
+      "role": "project_applies",
+      "note": "OSC receives the money and has to be involved from the early stages."
     },
     "evidence": {
       "source_url": "https://docs.oscollective.org/for-hosted-member-projects/applying-for-and-accepting-grants",
-      "quote": "When your project applies for a grant, OSC acts as the receiving organization on your behalf.",
+      "quote": "When your project applies for a grant, OSC acts as the receiving organization on your behalf. Grant funders pay us, and we deposit the funds into your account on the platform, where you can use them for reimbursements or invoices just like any other contribution. Because we're the receiving organization, we need to be involved from the early stages of your application",
       "checked_at": "2026-11-24",
       "method": "page"
     }
@@ -144,10 +126,10 @@
   },
   "conditions": [
     {
-      "value": "An open source licence",
+      "value": "An open source licence; the standards it follows include the open hardware principles",
       "evidence": {
         "source_url": "https://docs.oscollective.org/interested-in-joining-osc/acceptance-criteria",
-        "quote": "Your project must use an open source license that clearly defines how it can be used, modified, redistributed, and referenced by others.",
+        "quote": "Your project must use an open source license that clearly defines how it can be used, modified, redistributed, and referenced by others. We follow the licensing standards from: Open Source Initiative Approved License List Free Software Foundation License List Debian Free Software Guidelines Fedora Software License List Open Source Hardware Association Statement of Principles",
         "checked_at": "2026-11-24",
         "method": "page"
       }
@@ -157,15 +139,6 @@
       "evidence": {
         "source_url": "https://docs.oscollective.org/interested-in-joining-osc/acceptance-criteria",
         "quote": "The project must be hosted under an organizational repository, not a personal account.",
-        "checked_at": "2026-11-24",
-        "method": "page"
-      }
-    },
-    {
-      "value": "A project may keep other funds in a separate business entity",
-      "evidence": {
-        "source_url": "https://docs.oscollective.org/welcome-and-introduction-to-osc/what-is-fiscal-hosting",
-        "quote": "We don't have a \"no outside money\" policy, so projects can hold funds in separate business entities.",
         "checked_at": "2026-11-24",
         "method": "page"
       }
@@ -212,13 +185,13 @@
       "value": "Check the terms, fees and eligibility",
       "evidence": {
         "source_url": "https://docs.oscollective.org/how-to-apply",
-        "quote": "Checked that you meet our eligibility requirements and will follow the Open Collective Community Guidelines",
+        "quote": "Read our Terms of Fiscal Sponsorship Agreement Review our fees so that you understand the costs involved Checked that you meet our eligibility requirements",
         "checked_at": "2026-11-24",
         "method": "page"
       }
     },
     {
-      "value": "Apply online, verified through GitHub or by hand",
+      "value": "Apply, with GitHub or manual verification",
       "evidence": {
         "source_url": "https://docs.oscollective.org/how-to-apply",
         "quote": "We have two different methods of application: GitHub verification and manual verification.",
@@ -247,5 +220,14 @@
       }
     }
   ],
-  "checked_at": "2026-11-24"
+  "checked_at": "2026-11-24",
+  "own_entity": {
+    "value": "A project may hold funds in a separate business entity",
+    "evidence": {
+      "source_url": "https://docs.oscollective.org/welcome-and-introduction-to-osc/what-is-fiscal-hosting",
+      "quote": "We don't have a \"no outside money\" policy, so projects can hold funds in separate business entities.",
+      "checked_at": "2026-11-24",
+      "method": "page"
+    }
+  }
 }

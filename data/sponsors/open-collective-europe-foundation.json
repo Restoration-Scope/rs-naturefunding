@@ -41,35 +41,14 @@
       "method": "page"
     }
   },
-  "where": {
-    "value": "Anywhere in the world",
-    "evidence": {
-      "source_url": "https://docs.opencollective.com/oceurope/getting-started/eligibility",
-      "quote": "Groups may be based anywhere in the world.",
-      "checked_at": "2026-11-24",
-      "method": "page"
-    }
-  },
   "individuals": {
     "value": {
       "answer": "case_by_case",
-      "note": "a project run by one person may be accepted as an exception"
+      "note": "one person can discuss an application; OCE assesses an exception"
     },
     "evidence": {
       "source_url": "https://docs.opencollective.com/oceurope/getting-started/eligibility",
-      "quote": "If you run the project on your own, you can still discuss an application with OCE.",
-      "checked_at": "2026-11-24",
-      "method": "page"
-    }
-  },
-  "companies": {
-    "value": {
-      "answer": "case_by_case",
-      "note": "a group with its own legal organisation may get a fund or a grant arrangement instead"
-    },
-    "evidence": {
-      "source_url": "https://docs.opencollective.com/oceurope/getting-started/eligibility",
-      "quote": "What if we already have a legal organisation? Tell OCE before applying. A fund or a specific grant arrangement may be more appropriate than standard collective hosting; this needs its own review.",
+      "quote": "If you run the project on your own, you can still discuss an application with OCE. Explain who will manage the collective and how the project can continue if you are unavailable; OCE will assess whether a one-administrator exception is appropriate.",
       "checked_at": "2026-11-24",
       "method": "page"
     }
@@ -108,8 +87,8 @@
   },
   "grants": {
     "value": {
-      "role": "receives",
-      "note": "Grants that come through OCE need a mandate agreement."
+      "role": "through",
+      "note": "Groups can receive grants through it, with a mandate agreement."
     },
     "evidence": {
       "source_url": "https://docs.opencollective.com/oceurope/getting-started/eligibility",
@@ -167,10 +146,10 @@
       }
     },
     {
-      "value": "First response within seven business days, then any questions",
+      "value": "First response within seven business days; it may ask for more",
       "evidence": {
         "source_url": "https://docs.opencollective.com/oceurope/getting-started/how-to-apply",
-        "quote": "You will receive a first response from our team within seven business days of submitting your application.",
+        "quote": "You will receive a first response from our team within seven business days of submitting your application. This does not mean a final acceptance decision within that time. We may ask for more information or a conversation",
         "checked_at": "2026-11-24",
         "method": "page"
       }
@@ -205,5 +184,14 @@
       }
     }
   ],
-  "checked_at": "2026-11-24"
+  "checked_at": "2026-11-24",
+  "own_entity": {
+    "value": "Tell OCE first; a fund or a grant arrangement may fit better than hosting",
+    "evidence": {
+      "source_url": "https://docs.opencollective.com/oceurope/getting-started/eligibility",
+      "quote": "What if we already have a legal organisation? Tell OCE before applying. A fund or a specific grant arrangement may be more appropriate than standard collective hosting; this needs its own review.",
+      "checked_at": "2026-11-24",
+      "method": "page"
+    }
+  }
 }

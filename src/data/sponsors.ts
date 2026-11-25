@@ -4,7 +4,7 @@ import { z } from 'zod'
 import { evidence, isoDate, iso2, slug, type Evidence } from './schema'
 
 /**
- * Fiscal sponsors: charities and nonprofits that take other people's projects under their own legal status.
+ * Fiscal sponsors: charities and nonprofits that receive or manage funding for other people's projects.
  * Every value sits next to the sponsor's own words for it, so no fact can be listed without its evidence, and a fact
  * the sponsor doesn't publish is left out, never inferred (a "Model A" label alone says nothing about staff or grants).
  *
@@ -14,8 +14,8 @@ import { evidence, isoDate, iso2, slug, type Evidence } from './schema'
  */
 /**
  * The kinds of project a sponsor says it takes. Its own programmes, menus and the groups it already hosts prove nothing.
- * The last two are for a sponsor that doesn't limit the subject: `environment` takes any environmental work, `any` takes any
- * public-benefit work.
+ * The last two are for a sponsor that names no single subject: `environment` for environmental work in general, `any` for
+ * charitable or social work in general. Its mission still limits what it takes; `projects` says how.
  */
 export const sponsorTypes = ['wildlife', 'conservation', 'ocean', 'research', 'hardware', 'software', 'media', 'community', 'environment', 'any'] as const
 export type SponsorType = (typeof sponsorTypes)[number]
@@ -26,6 +26,36 @@ const fact = <T extends z.ZodType>(value: T) => z.object({ value, evidence }).st
 const figure = (max: number) => fact(text(max)).refine((f) => numbers(f.value).every((n) => numbers(f.evidence.quote).includes(n)), 'a number in the value is not in its quote')
 
 const numbers = (s: string) => [...s.matchAll(/\d[\d,]*(?:\.\d+)?/g)].map((m) => m[0].replace(/,/g, ''))
+
+/**
+ * What a quote has to say to back a claim, because one sentence is easily stretched over a neighbouring one: working
+ * abroad isn't being based abroad, citizenship isn't a base, "organisation" isn't "company", and grants that come through
+ * a sponsor don't say who signs or is paid.
+ */
+const says = {
+  companies: /compan(y|ies)|corporat|\bLLCs?\b|incorporated|legal entit/i,
+  foreign: /\b(based|registered|incorporated)\b|from anywhere|\b(international|foreign|overseas|[A-Z][a-z]+n) (charit|non-?profit|organi[sz]ation|group|NGO)/,
+  grants: {
+    applicant: /applicant/i,
+    project_applies: /your project applies|submits the (grant )?application/i,
+    receives: /receiv|grants\/donations go/i,
+    signs: /\bsign|executed by/i,
+    through: /grants?\b|\bincome\b/i,
+    donations: /donation/i,
+  },
+}
+/** A tax status alone doesn't say where a sponsor is. */
+const onlyTaxStatus = (quote: string) => /501 ?\(?c\)/.test(quote) && !/\bU\.?S\b|USA|United States|\b(based|registered|incorporated) in\b/.test(quote)
+/** Words in a quote that limit a figure or a step, and what our value must keep of them. */
+const limits: [RegExp, RegExp, string][] = [
+  [/\b(typically|usually|generally)\b/i, /typically|usually|generally/i, 'typically'],
+  [/\bmay (apply|be (negotiable|higher))|\bmight apply/i, /\bmay\b|\bmore for\b/i, 'may'],
+  [/case-by-case/i, /case by case/i, 'case by case'],
+  [/\bprovided (that )?you/i, /provided|\bif\b/i, 'the condition after “provided”'],
+  [/\bnew (members|\w+ members)/i, /\bnew\b/i, 'new members'],
+  [/\bif (we|our|invited)\b|upon successful|if a board member/i, /\b(if|once|invit\w+)\b/i, 'the condition on the step'],
+  [/\bmay (agree|be submitted)/i, /\bmay\b/i, 'may'],
+]
 
 const answer = fact(
   z
@@ -45,7 +75,7 @@ export const sponsor = z
     url: z.url().max(500),
     /** Our own words, one or two sentences. */
     summary: z.string().min(20).max(300),
-    /** Where the sponsor itself is registered. */
+    /** Where the sponsor itself is: its registration, base or address, never its tax status alone. */
     country: fact(iso2),
     legal_form: fact(text(120)).optional(),
     /** What it takes, from its own words: the theme, and any limit on the kind of project. */
@@ -67,13 +97,16 @@ export const sponsor = z
     models: z.array(fact(z.enum(['inside', 'grant_to_entity']))).min(1).max(2).optional(),
     /** Every charge it publishes: percentages, tiers, surcharges, application and filing fees. */
     fees: z.array(figure(160)).min(1).max(8).optional(),
-    /** The smallest income, budget or project size it asks for, or that it asks for none. */
+    /** What it says to a group or person that already has its own legal organisation, when that doesn't answer for companies. */
+    own_entity: fact(text(120)).optional(),
+    /** The smallest income, budget or project size it asks for, or that it asks for none. Not the size of one donation. */
     min_income: figure(200).optional(),
     /**
-     * What its pages say about grants: applicant (it applies or is named as the applicant), receives (it signs the grant
-     * agreement, or the grant is paid to it; who applies isn't said), donations (only donations are described).
+     * What its pages say about grants: applicant (it is named as the applicant), project_applies (the project applies; the
+     * sponsor signs or is paid). Then, with the applicant not said: receives (the grant is paid to it), signs (it signs the
+     * agreement), through (grants come through it, and no more is said), donations (only donations are described).
      */
-    grants: fact(z.object({ role: z.enum(['applicant', 'receives', 'donations']), note: text(240) }).strict()).optional(),
+    grants: fact(z.object({ role: z.enum(['applicant', 'project_applies', 'receives', 'signs', 'through', 'donations']), note: text(160) }).strict()).optional(),
     /** Whether the project's people can be paid, and how. */
     staff: answer.optional(),
     /** Whether it is taking projects now. Missing when its pages don't say. */
@@ -97,6 +130,17 @@ export const sponsor = z
       const values = (s[path] ?? []).map((f) => f.value)
       if (new Set(values).size !== values.length) ctx.addIssue({ code: 'custom', path: [path], message: 'the same value twice' })
     }
+    const quote = (path: string, ok: boolean, message: string) => {
+      if (!ok) ctx.addIssue({ code: 'custom', path: [path], message })
+    }
+    quote('country', !onlyTaxStatus(s.country.evidence.quote), 'its quote gives a tax status, not where the sponsor is')
+    if (s.companies) quote('companies', says.companies.test(s.companies.evidence.quote), 'its quote doesn’t speak of companies')
+    if (s.foreign) quote('foreign', says.foreign.test(s.foreign.evidence.quote), 'its quote doesn’t say where the group itself is based')
+    if (s.grants) quote('grants', says.grants[s.grants.value.role].test(s.grants.evidence.quote), `its quote doesn’t say ${s.grants.value.role}`)
+    for (const field of ['fees', 'steps', 'min_income'] as const)
+      for (const f of [s[field] ?? []].flat())
+        for (const [inQuote, kept, what] of limits)
+          if (inQuote.test(f.evidence.quote)) quote(field, kept.test(f.value), `“${f.value}” drops “${what}”, which its quote says`)
     once('models')
     once('types')
   })

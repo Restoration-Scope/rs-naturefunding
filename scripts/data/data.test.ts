@@ -117,6 +117,27 @@ describe('sponsors', () => {
     expect(issues({ ...base(), fees: [fact('6% of income', 'A fee of 5% is charged.')] })).toEqual(['fees.0: a number in the value is not in its quote'])
   })
 
+  test('a quote has to make the claim, not a neighbouring one', () => {
+    const yes = (quote: string) => fact({ answer: 'yes' }, quote)
+    expect(issues({ ...base(), companies: yes('Drop us an email if you already have an organisation.') })).toHaveLength(1)
+    expect(issues({ ...base(), companies: yes('Corporations with charitable programming may apply.') })).toEqual([])
+    for (const quote of ['We support some groups that work outside of the UK.', 'You do not need to be a U.S. citizen to apply.', 'International initiatives can apply.'])
+      expect(issues({ ...base(), foreign: yes(quote) })).toHaveLength(1)
+    expect(issues({ ...base(), foreign: yes('Groups may be based anywhere in the world.') })).toEqual([])
+    const grants = (role: string, quote: string) => issues({ ...base(), grants: fact({ role, note: 'What it does.' }, quote) })
+    expect(grants('signs', 'Projects can receive grants through our nonprofit status.')).toHaveLength(1)
+    expect(grants('through', 'Projects can receive grants through our nonprofit status.')).toEqual([])
+    expect(issues({ ...base(), country: fact('US', 'Example is a 501(c)(3) nonprofit organization.') })).toHaveLength(1)
+  })
+
+  test('a fee, threshold or step keeps the limit its quote puts on it', () => {
+    const fee = (value: string, quote: string) => issues({ ...base(), fees: [fact(value, quote)] })
+    expect(fee('10% of revenue', 'Typically a fee of 10% is charged.')).toHaveLength(1)
+    expect(fee('Typically 10% of revenue', 'Typically a fee of 10% is charged.')).toEqual([])
+    expect(issues({ ...base(), min_income: fact('$10,000 a year', '$10,000 a year, provided you apply for two grants.') })).toHaveLength(1)
+    expect(issues({ ...base(), steps: [fact('A call with the team', "If we OK the form, we'll set up a call.")] })).toHaveLength(1)
+  })
+
   test('checked_at is the oldest date of any fact, lists included', () => {
     const s = { ...base(), fees: [fact('5% of income', 'A fee of 5% is charged.', '2026-10-01')] }
     expect(sponsorEvidence(s)).toHaveLength(4)
