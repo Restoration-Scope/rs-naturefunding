@@ -2,7 +2,10 @@
   "id": "cultuurfonds-natuur",
   "name": "Natuur: projecten natuurbehoud en landschap",
   "funder": { "name": "Prins Bernhard Cultuurfonds", "url": "https://www.cultuurfonds.nl/" },
-  "administered_by": null,
+  "administered_by": {
+    "name": "Prins Bernhard Cultuurfonds",
+    "url": "https://www.cultuurfonds.nl"
+  },
   "parent": null,
   "url": "https://www.cultuurfonds.nl/natuur",
   "summary": "Rolling project contributions from a Dutch foundation to associations and foundations for nature conservation and landscape projects in the Netherlands, such as land purchase and nature development.",
@@ -13,6 +16,7 @@
   "window": "rolling",
   "amount": {
     "currency": "EUR",
+    "min": 15000,
     "max": 50000,
     "note": "National projects up to 50% of costs, max EUR 35,000 or 50,000; provincial projects up to 25%, max EUR 10,000; minimum project budget EUR 15,000"
   },
@@ -54,6 +58,12 @@
     }
   ],
   "evidence": {
+    "administered_by": {
+      "source_url": "https://www.cultuurfonds.nl/aanvragen",
+      "quote": "Het Cultuurfonds",
+      "checked_at": "2026-11-25",
+      "method": "page"
+    },
     "applicant_types": {
       "source_url": "https://www.cultuurfonds.nl/aanvragen",
       "quote": "Via deze aanvraagroute kan je als stichting of vereniging een bijdrage ontvangen voor landelijke en provinciale projecten.",
@@ -80,7 +90,7 @@
     },
     "amount": {
       "source_url": "https://www.cultuurfonds.nl/aanvragen",
-      "quote": "Bij landelijke projecten draagt het fonds maximaal 50% bij aan de projectkosten, afhankelijk van het soort project tot een maximum van € 35.000 of € 50.000.",
+      "quote": "Bij landelijke projecten draagt het fonds maximaal 50% bij aan de projectkosten, afhankelijk van het soort project tot een maximum van € 35.000 of € 50.000. Geen maximum projectbegroting, minimale projectbegroting € 15.000",
       "checked_at": "2026-11-25",
       "method": "page"
     },
