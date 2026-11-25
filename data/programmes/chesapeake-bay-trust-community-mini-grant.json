@@ -2,7 +2,7 @@
   "id": "chesapeake-bay-trust-community-mini-grant",
   "name": "Community Engagement and Restoration Mini Grant",
   "funder": { "name": "Chesapeake Bay Trust", "url": "https://cbtrust.org/" },
-  "administered_by": null,
+  "administered_by": { "name": "Chesapeake Bay Trust", "url": "https://cbtrust.org" },
   "parent": null,
   "url": "https://cbtrust.org/community-engagement/",
   "summary": "Small rolling grants of up to $5,000 for local groups in Maryland and the West Virginia part of the Chesapeake watershed to run projects such as tree plantings, rain gardens and stream cleanups.",
@@ -11,7 +11,7 @@
   "geography": {
     "scope": "countries",
     "countries": ["US"],
-    "label": "Maryland and the Chesapeake Bay watershed portion of West Virginia"
+    "label": "Maryland and the Chesapeake Bay Watershed portion of West Virginia"
   },
   "access": "direct",
   "window": "rolling",
@@ -25,6 +25,7 @@
       "kind": "track_record"
     }
   ],
+  "after_award": { "reports": "unspecified" },
   "calls": [
     {
       "id": "rolling",
@@ -39,11 +40,24 @@
           "quote": "Program Status: OPEN",
           "checked_at": "2026-11-25",
           "method": "page"
+        },
+        "recurring": {
+          "source_url": "https://cbtrust.org/community-engagement/",
+          "quote": "we typically begin accepting applications at the start of July every year.",
+          "checked_at": "2026-11-25",
+          "method": "page"
         }
-      }
+      },
+      "recurring": "Applications open at the start of July each year."
     }
   ],
   "evidence": {
+    "administered_by": {
+      "source_url": "https://cbtrust.org/community-engagement/",
+      "quote": "The Chesapeake Bay Trust's grant applications are all submitted through an online system",
+      "checked_at": "2026-11-25",
+      "method": "page"
+    },
     "applicant_types": {
       "source_url": "https://cbtrust.org/community-engagement/",
       "quote": "Who can apply: Nonprofit organizations, community associations, faith-based organizations and more.",
@@ -105,6 +119,5 @@
       }
     ]
   },
-  "checked_at": "2026-11-25",
-  "after_award": { "reports": "unspecified" }
+  "checked_at": "2026-11-25"
 }
