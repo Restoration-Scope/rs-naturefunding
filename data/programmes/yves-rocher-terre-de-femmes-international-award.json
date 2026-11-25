@@ -28,36 +28,48 @@
     "max": 10000
   },
   "co_finance_required": null,
-  "reporting": null,
+  "reporting": "Winners submit regular progress reports on their project.",
   "effort": {
     "steps": [
-      "Application via Wiin platform"
+      "Online application on the Wiin platform",
+      "Foundation pre-selection",
+      "Jury decision"
     ],
     "due": [
-      "2026-11-30"
+      "2026-11-30",
+      null,
+      "2027-02-26"
     ]
   },
   "eligibility": [
     {
-      "rule": "Is a woman of legal age or a collective of women committed to nature conservation in connection with trees",
-      "kind": "other"
-    },
-    {
-      "rule": "Leads a concrete project",
-      "kind": "project"
-    },
-    {
-      "rule": "Uses a non-profit organisation",
+      "rule": "Led by a woman of legal age or a collective of women",
       "kind": "legal"
     },
     {
-      "rule": "Uses an organisation established for at least 1 year",
+      "rule": "Through a non-profit, or individually if national law prevents applying through one",
+      "kind": "legal"
+    },
+    {
+      "rule": "The non-profit, if applying through one, was established at least 1 year ago",
       "kind": "track_record",
       "min_years": 1
     },
     {
-      "rule": "Leads an initiative that places trees at the heart of cities",
+      "rule": "Project directly involves urban trees and has community or local ties",
       "kind": "project"
+    },
+    {
+      "rule": "Not an urban mini-forest (such as Miyawaki) or a forest of non-native or non-diverse species",
+      "kind": "project"
+    },
+    {
+      "rule": "Not a carbon offset or timber-industry project",
+      "kind": "project"
+    },
+    {
+      "rule": "Won neither of the two previous editions",
+      "kind": "other"
     }
   ],
   "calls": [
@@ -66,10 +78,12 @@
       "label": "2027 edition: Trees in the City",
       "url": "https://www.yves-rocher-fondation.org/en/how-to-apply-for-the-international-award/",
       "status": "open",
-      "opens": null,
+      "opens": "2026-10-01",
       "deadline": {
         "date": "2026-11-30",
-        "text": "Monday 30 November 2026 (midnight)"
+        "time": "23:59",
+        "timezone": "Europe/Paris",
+        "text": "November 30, 2026 midnight, French time"
       },
       "evidence": {
         "status": {
@@ -79,10 +93,16 @@
           "method": "page"
         },
         "deadline": {
-          "source_url": "https://www.yves-rocher-fondation.org/en/how-to-apply-for-the-international-award/",
-          "quote": "Submissions are open until Monday 30 November 2026 (midnight) via the Wiin platform.",
+          "source_url": "https://fondation-yves-rocher.wiin.io/en/applications/prix-terre-de-femmes-fondation-yves-rocher-edition2026-duplicate-8147a4?page-section=rules",
+          "quote": "from October 1, 2026 to November 30, 2026 midnight, French time.",
           "checked_at": "2026-11-25",
-          "method": "page"
+          "method": "human"
+        },
+        "opens": {
+          "source_url": "https://fondation-yves-rocher.wiin.io/en/applications/prix-terre-de-femmes-fondation-yves-rocher-edition2026-duplicate-8147a4?page-section=rules",
+          "quote": "from October 1, 2026 to November 30, 2026 midnight, French time.",
+          "checked_at": "2026-11-25",
+          "method": "human"
         }
       }
     }
@@ -124,6 +144,18 @@
         "quote": "Submissions are open until Monday 30 November 2026 (midnight) via the Wiin platform.",
         "checked_at": "2026-11-25",
         "method": "page"
+      },
+      {
+        "source_url": "https://fondation-yves-rocher.wiin.io/en/applications/prix-terre-de-femmes-fondation-yves-rocher-edition2026-duplicate-8147a4?page-section=rules",
+        "quote": "Applications are pre-selected by the Yves Rocher Foundation.",
+        "checked_at": "2026-11-25",
+        "method": "human"
+      },
+      {
+        "source_url": "https://fondation-yves-rocher.wiin.io/en/applications/prix-terre-de-femmes-fondation-yves-rocher-edition2026-duplicate-8147a4?page-section=rules",
+        "quote": "The Jury will meet once, no later than February 26, 2027, to select the winner.",
+        "checked_at": "2026-11-25",
+        "method": "human"
       }
     ],
     "eligibility": [
@@ -134,30 +166,87 @@
         "method": "page"
       },
       {
+        "source_url": "https://fondation-yves-rocher.wiin.io/en/applications/prix-terre-de-femmes-fondation-yves-rocher-edition2026-duplicate-8147a4?page-section=rules",
+        "quote": "through a non-profit organization (foundation, association, NGO ...) or on a personal basis, when the laws and regulations of their country prevent them from participating through a non-profit organization.",
+        "checked_at": "2026-11-25",
+        "method": "human"
+      },
+      {
         "source_url": "https://www.yves-rocher-fondation.org/en/how-to-apply-for-the-international-award/",
-        "quote": "Leading a concrete project carried out in any country in the world",
+        "quote": "Through a non-profit organisation (association, NGO, foundation, etc.) established for at least 1 year",
         "checked_at": "2026-11-25",
         "method": "page"
       },
       {
-        "source_url": "https://www.yves-rocher-fondation.org/en/how-to-apply-for-the-international-award/",
-        "quote": "Through a non-profit organisation (association, NGO, foundation, etc.)",
+        "source_url": "https://fondation-yves-rocher.wiin.io/en/applications/prix-terre-de-femmes-fondation-yves-rocher-edition2026-duplicate-8147a4?page-section=rules",
+        "quote": "Projects with no direct connection to urban trees. - Isolated projects with no community or local ties.",
         "checked_at": "2026-11-25",
-        "method": "page"
+        "method": "human"
       },
       {
-        "source_url": "https://www.yves-rocher-fondation.org/en/how-to-apply-for-the-international-award/",
-        "quote": "established for at least 1 year",
+        "source_url": "https://fondation-yves-rocher.wiin.io/en/applications/prix-terre-de-femmes-fondation-yves-rocher-edition2026-duplicate-8147a4?page-section=rules",
+        "quote": "Projects aimed at creating urban mini-forests (for example, using the Miyawaki method) or forests using non-native or non-diverse species.",
         "checked_at": "2026-11-25",
-        "method": "page"
+        "method": "human"
       },
       {
-        "source_url": "https://www.yves-rocher-fondation.org/en/how-to-apply-for-the-international-award/",
-        "quote": "reward a project led by a woman or a group of women committed to an initiative that places trees at the heart of our cities",
+        "source_url": "https://fondation-yves-rocher.wiin.io/en/applications/prix-terre-de-femmes-fondation-yves-rocher-edition2026-duplicate-8147a4?page-section=rules",
+        "quote": "Carbon offset initiatives or projects related to the timber industry.",
         "checked_at": "2026-11-25",
-        "method": "page"
+        "method": "human"
+      },
+      {
+        "source_url": "https://fondation-yves-rocher.wiin.io/en/applications/prix-terre-de-femmes-fondation-yves-rocher-edition2026-duplicate-8147a4?page-section=rules",
+        "quote": "Winners of the two (2) previous editions are not eligible for the International Award.",
+        "checked_at": "2026-11-25",
+        "method": "human"
       }
-    ]
+    ],
+    "documents": [
+      {
+        "source_url": "https://fondation-yves-rocher.wiin.io/en/applications/prix-terre-de-femmes-fondation-yves-rocher-edition2026-duplicate-8147a4?page-section=rules",
+        "quote": "A description of the candidate: photo, CV, commitment to the environment.",
+        "checked_at": "2026-11-25",
+        "method": "human"
+      },
+      {
+        "source_url": "https://fondation-yves-rocher.wiin.io/en/applications/prix-terre-de-femmes-fondation-yves-rocher-edition2026-duplicate-8147a4?page-section=rules",
+        "quote": "the detailed object, the location (on map), the history and the concrete achievements, the outlook, the budget (in table form), photos of the action.",
+        "checked_at": "2026-11-25",
+        "method": "human"
+      }
+    ],
+    "after_award": [
+      {
+        "source_url": "https://fondation-yves-rocher.wiin.io/en/applications/prix-terre-de-femmes-fondation-yves-rocher-edition2026-duplicate-8147a4?page-section=rules",
+        "quote": "Laureates undertake to produce and submit regular progress reports on their projects",
+        "checked_at": "2026-11-25",
+        "method": "human"
+      },
+      {
+        "source_url": "https://fondation-yves-rocher.wiin.io/en/applications/prix-terre-de-femmes-fondation-yves-rocher-edition2026-duplicate-8147a4?page-section=rules",
+        "quote": "Each winner undertakes to take part in the International Terre de Femmes Award ceremony, to be held in France in 2027.",
+        "checked_at": "2026-11-25",
+        "method": "human"
+      }
+    ],
+    "reporting": {
+      "source_url": "https://fondation-yves-rocher.wiin.io/en/applications/prix-terre-de-femmes-fondation-yves-rocher-edition2026-duplicate-8147a4?page-section=rules",
+      "quote": "Laureates undertake to produce and submit regular progress reports on their projects",
+      "checked_at": "2026-11-25",
+      "method": "human"
+    }
   },
-  "checked_at": "2026-11-25"
+  "checked_at": "2026-11-25",
+  "documents": [
+    "Candidate photo",
+    "Project budget in table form",
+    "Photos of the action",
+    "Project location map",
+    "Candidate CV"
+  ],
+  "after_award": {
+    "reports": "unspecified",
+    "training": true
+  }
 }
