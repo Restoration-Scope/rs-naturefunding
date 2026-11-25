@@ -5,7 +5,10 @@
     "name": "Coastal & Heartland National Estuary Partnership (CHNEP)",
     "url": "https://www.chnep.org/"
   },
-  "administered_by": null,
+  "administered_by": {
+    "name": "Coastal & Heartland National Estuary Partnership (CHNEP)",
+    "url": "https://www.chnep.org"
+  },
   "parent": null,
   "url": "https://www.chnep.org/chnep-conservation-grants",
   "summary": "Small reimbursement grants for community organisations in the 10-county Florida CHNEP region, for clean water, estuarine habitat protection and restoration, and public engagement projects. Work on private property is excluded.",
@@ -14,9 +17,9 @@
   "geography": { "scope": "countries", "countries": ["US"], "label": "CHNEP 10-county region" },
   "access": "direct",
   "window": "fixed",
-  "amount": { "currency": "USD", "min": 500, "max": 9999 },
+  "amount": { "currency": "USD", "min": 500, "max": 9999, "note": "reimbursement-based" },
   "co_finance_required": false,
-  "reporting": null,
+  "reporting": "Projects must submit a final report, all deliverables and an invoice by September 1, 2027.",
   "effort": { "steps": ["Application by email"] },
   "eligibility": [
     { "rule": "Project avoids restoration or improvements on private property", "kind": "project" },
@@ -45,7 +48,7 @@
       "url": "https://www.chnep.org/chnep-conservation-grants",
       "status": "open",
       "opens": "2026-10-01",
-      "deadline": { "date": "2027-03-31", "text": "before April 1, 2027" },
+      "deadline": { "date": "2026-12-01", "text": "before December 1, 2026" },
       "evidence": {
         "status": {
           "source_url": "https://www.chnep.org/chnep-conservation-grants",
@@ -61,15 +64,21 @@
         },
         "deadline": {
           "source_url": "https://www.chnep.org/chnep-conservation-grants",
-          "quote": "Applications submitted after December 1, 2026, but before April 1, 2027, will receive a May 2027 award notice.",
+          "quote": "are due before December 1, 2026",
           "checked_at": "2026-11-25",
           "method": "page"
         }
       },
-      "note": "First round due before December 1, 2026; later applications until April 1, 2027 get a May 2027 award notice."
+      "note": "First round due before December 1, 2026; applications submitted after that date but before April 1, 2027 will receive a May 2027 award notice."
     }
   ],
   "evidence": {
+    "administered_by": {
+      "source_url": "https://www.chnep.org/chnep-conservation-grants",
+      "quote": "The CHNEP provides Conservation Grants (up to $9,999) to community organizations",
+      "checked_at": "2026-11-25",
+      "method": "page"
+    },
     "applicant_types": {
       "source_url": "https://www.chnep.org/chnep-conservation-grants",
       "quote": "The CHNEP provides Conservation Grants (up to $9,999) to community organizations for projects that address clean water, wildlife habitat protection and restoration, and outreach priorities in the CHNEP area",
@@ -103,6 +112,12 @@
     "co_finance_required": {
       "source_url": "https://www.chnep.org/_files/ugd/252fd8_77974166fd224bae90d9d164a953830f.docx?dn=9.25.26%20CHNEP%20Conservation%20Grant%20Application%20FY2027.docx",
       "quote": "Match is not required, but proposals showing matching fund commitment through in-kind services (such as volunteer hours), or direct funding from other sources will receive special consideration.",
+      "checked_at": "2026-11-25",
+      "method": "page"
+    },
+    "reporting": {
+      "source_url": "https://www.chnep.org/chnep-conservation-grants",
+      "quote": "FY27 awarded projects should conclude before September 1, 2027 with all deliverables and an invoice turned in by close of business that day.",
       "checked_at": "2026-11-25",
       "method": "page"
     },
