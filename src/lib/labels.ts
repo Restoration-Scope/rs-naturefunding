@@ -1,4 +1,5 @@
 import type { Programme } from '../data/schema'
+import type { Sponsor, SponsorType } from '../data/sponsors'
 import type { RecheckFailure } from './data'
 
 type Approach = Programme['approaches'][number]
@@ -32,6 +33,61 @@ export const applicantLabels: Record<Applicant, string> = {
   government: 'Government bodies',
   social_enterprise: 'Social enterprises',
   company: 'Companies',
+}
+
+export const fiscalSponsorLabels: Record<NonNullable<Programme['fiscal_sponsor']>['stance'], string> = {
+  accepted: 'Accepted',
+  refused: 'Not accepted',
+  discouraged: 'Discouraged',
+}
+
+export const sponsorTypeLabels: Record<SponsorType, string> = {
+  wildlife: 'Wildlife and species',
+  conservation: 'Nature conservation and restoration',
+  ocean: 'Ocean and marine life',
+  research: 'Research',
+  hardware: 'Open hardware',
+  software: 'Software and data',
+  media: 'Film and photography',
+  community: 'Community-led projects',
+  environment: 'Environment in general',
+  any: 'Charitable or social work in general',
+}
+
+/** For the sponsor table and its filters; the full label is in Details. */
+export const sponsorTypeShort: Record<SponsorType, string> = {
+  wildlife: 'Wildlife',
+  conservation: 'Conservation',
+  ocean: 'Ocean',
+  research: 'Research',
+  hardware: 'Open hardware',
+  software: 'Software and data',
+  media: 'Film and photography',
+  community: 'Community-led',
+  environment: 'Environment in general',
+  any: 'Charitable in general',
+}
+
+export const sponsorModelLabels: Record<NonNullable<Sponsor['models']>[number]['value'], string> = {
+  inside: 'Your project becomes part of it',
+  grant_to_entity: 'It passes the money on to a separate group',
+}
+
+export const sponsorGrantLabels: Record<NonNullable<Sponsor['grants']>['value']['role'], string> = {
+  applicant: 'Yes',
+  project_applies: 'Your project applies',
+  receives: 'Not said',
+  signs: 'Not said',
+  through: 'Not said',
+  donations: 'Not said',
+}
+
+export const sponsorAnswerLabels = { yes: 'Yes', no: 'No', case_by_case: 'Case by case' } as const
+
+export const sponsorIntakeLabels: Record<NonNullable<Sponsor['intake']>['value']['status'], string> = {
+  open: 'Taking projects',
+  between_rounds: 'Between rounds',
+  paused: 'Not taking projects now',
 }
 
 export const accessLabels: Record<Access, string> = {

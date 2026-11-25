@@ -1,0 +1,143 @@
+---
+import { Badge } from '@/components/ui/badge'
+import { TableBody, TableCell, TableRow } from '@/components/ui/table'
+import { Check, ChevronDown, CircleDashed, ExternalLink, X } from 'lucide-react'
+import type { Evidence } from '../data/schema'
+import type { Sponsor } from '../data/sponsors'
+import { longDate } from '../lib/format'
+import { countryName } from '../lib/geo'
+import { sponsorAnswerLabels, sponsorGrantLabels, sponsorIntakeLabels, sponsorModelLabels, sponsorTypeLabels } from '../lib/labels'
+import Flag from './Flag.astro'
+import Quote from './Quote.astro'
+
+/** One fiscal sponsor: a row with the answers that rule it in or out, and a row below with every fact and its quotes. */
+interface Props {
+  s: Sponsor
+  /** Types it isn't tagged with whose readers should still see it, after the ones that are. */
+  broader?: string
+}
+const { s, broader } = Astro.props
+
+const marks = {
+  yes: { Icon: Check, tone: 'text-ok-dot' },
+  case_by_case: { Icon: CircleDashed, tone: 'text-caution-ink' },
+  no: { Icon: X, tone: 'text-warn-dot' },
+} as const
+const cap = (t: string) => t.charAt(0).toUpperCase() + t.slice(1)
+
+const answers = [
+  { key: 'abroad', label: 'Groups based abroad', a: s.foreign },
+  { key: 'companies', label: 'Companies', a: s.companies },
+  { key: 'individuals', label: 'Individuals', a: s.individuals },
+]
+// A country where one group happens to be based is in Details: it is an example, not a rule.
+const where = s.where && !/as an example/.test(s.where.value) ? s.where.value : undefined
+const limits = [
+  { label: 'Check first', text: s.gate?.value },
+  { label: 'Where', text: where },
+  { label: 'Funding', text: s.min_income?.value },
+].filter((x) => x.text)
+// The row shows one charge, a percentage where it has one; Details has them all.
+const fees = (s.fees ?? []).map((f) => f.value)
+const fee = fees.find((f) => f.includes('%')) ?? fees[0]
+// The rate in that charge, as the sponsor puts it ("10-12%"): bold in the row, and what the column sorts by.
+const rate = fee?.match(/(\d+(?:\.\d+)?)(?:-(\d+(?:\.\d+)?))?%/)
+const order = { yes: 0, case_by_case: 1, no: 2 }
+
+type Fact = { label: string; items: { text: string; evidence: Evidence }[]; ordered?: boolean; inRow?: boolean }
+type Stated = { value: string; evidence: Evidence }
+type Answer = NonNullable<Sponsor['individuals']>
+const one = (f: Stated | undefined) => (f ? [{ text: f.value, evidence: f.evidence }] : [])
+const many = (fs: Stated[] | undefined) => (fs ?? []).map((f) => ({ text: f.value, evidence: f.evidence }))
+const answer = (a: Answer | undefined) =>
+  a ? [{ text: `${sponsorAnswerLabels[a.value.answer]}${a.value.note ? `: ${a.value.note}` : ''}`, evidence: a.evidence }] : []
+const facts: Fact[] = [
+  { label: 'How to apply', items: many(s.steps), ordered: true },
+  { label: 'It asks for', items: many(s.form_asks) },
+  { label: 'Charges', items: many(s.fees), inRow: fees.length === 1 },
+  { label: 'Named applicant on a grant', items: s.grants ? [{ text: `${sponsorGrantLabels[s.grants.value.role]}. ${s.grants.value.note}`, evidence: s.grants.evidence }] : [] },
+  { label: 'Funding or budget', items: one(s.min_income), inRow: true },
+  { label: 'Conditions', items: many(s.conditions) },
+  { label: 'With your own organisation', items: one(s.own_entity) },
+  { label: 'Paying people', items: answer(s.staff) },
+  { label: 'How it works', items: (s.models ?? []).map((m) => ({ text: sponsorModelLabels[m.value], evidence: m.evidence })) },
+  { label: 'Taking projects', items: s.intake ? [{ text: s.intake.value.note, evidence: s.intake.evidence }] : [] },
+  { label: 'Check first', items: one(s.gate), inRow: true },
+  { label: 'Takes', items: one(s.projects), inRow: true },
+  { label: 'Kinds of project', items: s.types.map((t) => ({ text: sponsorTypeLabels[t.value], evidence: t.evidence })) },
+  { label: 'Where', items: one(s.where), inRow: !!where },
+  { label: 'Groups based abroad', items: answer(s.foreign), inRow: true },
+  { label: 'Companies', items: answer(s.companies), inRow: true },
+  { label: 'Individuals', items: answer(s.individuals), inRow: true },
+  { label: 'Legal form', items: one(s.legal_form) },
+  { label: 'Country', items: [{ text: countryName(s.country.value), evidence: s.country.evidence }], inRow: true },
+].filter((f) => f.items.length > 0)
+const yes = answers.filter(({ a }) => a && a.value.answer !== 'no').map((x) => x.key)
+// Phones name the unanswered columns once, in place of a line each.
+const unsaid = [!fee && 'charges', ...answers.filter(({ a }) => !a).map((x) => x.label.toLowerCase())].filter(Boolean)
+const said = answers.filter(({ a }) => a).map((x) => x.key)
+---
+
+{/* Styled by class in fiscal-sponsors.astro, which also reflows each sponsor to a card at narrow widths. */}
+<TableBody id={s.id} data-sp={s.types.map((t) => t.value).join(' ')} data-broader={broader} data-yes={yes.join(' ')} data-said={said.join(' ')} data-rate={rate ? `${rate[1]} ${rate[2] ?? rate[1]}` : undefined} data-answers={answers.map(({ a }) => (a ? order[a.value.answer] : '')).join(',')}>
+  <TableRow>
+    <th scope="row">
+      <span class="sp-name">{s.name}</span>
+      <p class="sp-sub">
+        <span><Flag code={s.country.value} class="mr-[0.4em]" />{countryName(s.country.value)}<span class="sr-only">. </span></span>
+        {s.intake && s.intake.value.status !== 'open' && <Badge variant="warn">{sponsorIntakeLabels[s.intake.value.status]}<span class="sr-only">. </span></Badge>}
+      </p>
+    </th>
+    <TableCell data-label="Takes">
+      <p>{s.projects.value}</p>
+      {limits.map((x) => <p><strong>{x.label}:</strong> {x.text}</p>)}
+    </TableCell>
+    <TableCell data-label="Charges" data-none={fee ? undefined : ''}>
+      <p class:list={{ 'text-ink-2': !fee }}>{rate ? <>{fee!.slice(0, rate.index)}<strong>{rate[0]}</strong>{fee!.slice(rate.index! + rate[0].length)}</> : (fee ?? 'Not said')}{fees.length > 1 && <span class="text-ink-2"> +{fees.length - 1} more</span>}</p>
+    </TableCell>
+    {
+      answers.map(({ label, a }) => {
+        const m = a && marks[a.value.answer]
+        return (
+          <TableCell data-label={label} data-none={a ? undefined : ''}>
+            {a && m ? <p class="sp-answer"><m.Icon aria-hidden="true" className={`sp-mark ${m.tone}`} />{sponsorAnswerLabels[a.value.answer]}</p> : <p class="text-ink-2">Not said</p>}
+            {a?.value.note && <p>{cap(a.value.note)}</p>}
+          </TableCell>
+        )
+      })
+    }
+    <TableCell className="sp-open" data-twin-skip>
+      {unsaid.length > 0 && <p class="sp-unsaid">Not said: {unsaid.join(', ')}</p>}
+      <details data-sp-toggle>
+        <summary>Details<span class="sr-only">: {s.name}</span><ChevronDown aria-hidden="true" /></summary>
+      </details>
+    </TableCell>
+  </TableRow>
+  <TableRow className="sp-more" data-twin-block>
+    <TableCell colSpan={7}>
+      <h2 class="sr-only">{s.name}</h2>
+      <div class="sp-foot">
+        <a href={s.url} target="_blank" rel="noopener">Its page <ExternalLink aria-hidden="true" className="inline size-3.5 align-[-0.1em]" /><span class="sr-only"> (opens in a new tab)</span></a>{' '}
+        {s.programme_id && <a href={`/p/${s.programme_id}/`}>Its own grant</a>}{' '}
+        {/* Opens every quote, and the facts the row already shows with theirs. */}
+        <details data-sp-quotes data-twin-skip>
+          <summary class="sp-link">Quotes<span class="sr-only"> from {s.name}</span></summary>
+        </details>
+        <span class="text-ink-2">Checked {longDate(s.checked_at)}</span>
+      </div>
+      <dl class="sp-facts">
+        {
+          facts.map((f) => (
+            <div class:list={{ 'sp-inrow': f.inRow }}>
+              <dt>{f.label}</dt>
+              <dd>
+                {f.items.length === 1 ? <p>{f.items[0].text}</p> : f.ordered ? <ol>{f.items.map((i) => <li>{i.text}</li>)}</ol> : <ul>{f.items.map((i) => <li>{i.text}</li>)}</ul>}
+                <div class="sp-quotes">{f.items.map((i) => <Quote e={i.evidence} />)}</div>
+              </dd>
+            </div>
+          ))
+        }
+      </dl>
+    </TableCell>
+  </TableRow>
+</TableBody>

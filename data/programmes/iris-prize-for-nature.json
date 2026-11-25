@@ -13,6 +13,10 @@
   "window": "fixed",
   "amount": { "currency": "USD", "min": 5000, "max": 15000 },
   "co_finance_required": null,
+  "fiscal_sponsor": {
+    "stance": "accepted",
+    "note": "Required when the applicant is a minor in their country: a local organisation or NGO"
+  },
   "reporting": null,
   "effort": {
     "steps": [
@@ -87,6 +91,12 @@
     "amount": {
       "source_url": "https://theirisproject.org/the-prize",
       "quote": "The Iris Prize $15,000 Awarded to an established project with the potential to replicate and scale. Ages 16-24 The Stem Prize $10,000 Awarded to an existing project established recently and on a small scale. Ages 16-24 The Seed Prize $5,000",
+      "checked_at": "2026-11-24",
+      "method": "page"
+    },
+    "fiscal_sponsor": {
+      "source_url": "https://theirisproject.org/how-to-apply",
+      "quote": "If you are under a minor in your country, please be aware that we require collaboration with a local organisation or NGO to serve as a fiscal sponsor.",
       "checked_at": "2026-11-24",
       "method": "page"
     },

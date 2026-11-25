@@ -1,0 +1,54 @@
+/* Sort buttons in a table's header: the finder's and the fiscal sponsors'. */
+@layer theme, base, components, utilities;
+
+@layer components {
+  :is(.tbl, .sp-tbl) thead button {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.375rem;
+    height: 2rem;
+    margin-inline: -0.5rem;
+    padding: 0 0.5rem;
+    border: 0;
+    border-radius: var(--radius-md);
+    background: none;
+    color: inherit;
+    font: inherit;
+    cursor: pointer;
+  }
+  @media (hover: hover) {
+    :is(.tbl, .sp-tbl) thead button:hover {
+      color: var(--foreground);
+      background: var(--muted);
+    }
+  }
+  :is(.tbl, .sp-tbl) thead .arrow {
+    display: inline-grid;
+  }
+  :is(.tbl, .sp-tbl) thead .arrow > svg {
+    grid-area: 1 / 1;
+    width: 0.875rem;
+    height: 0.875rem;
+  }
+  :is(.tbl, .sp-tbl) thead .i-none {
+    opacity: 0.6;
+  }
+  :is(.tbl, .sp-tbl) thead .i-asc,
+  :is(.tbl, .sp-tbl) thead .i-desc {
+    display: none;
+  }
+  :is(.tbl, .sp-tbl) thead th[aria-sort] > button:not(.h-checked),
+  :is(.tbl, .sp-tbl) thead button[data-active] {
+    color: var(--foreground);
+  }
+  :is(.tbl, .sp-tbl) thead th[aria-sort] > button:not(.h-checked) .i-none,
+  :is(.tbl, .sp-tbl) thead button[data-active] .i-none {
+    display: none;
+  }
+  :is(.tbl, .sp-tbl) thead th[aria-sort='ascending'] > button:not(.h-checked) .i-asc,
+  :is(.tbl, .sp-tbl) thead button[data-active='ascending'] .i-asc,
+  :is(.tbl, .sp-tbl) thead th[aria-sort='descending'] > button:not(.h-checked) .i-desc,
+  :is(.tbl, .sp-tbl) thead button[data-active='descending'] .i-desc {
+    display: block;
+  }
+}

@@ -1,0 +1,457 @@
+---
+// Fiscal sponsors (data/sponsors), filtered in the browser, and the listed grants that say whether they take one.
+import Base from '../layouts/Base.astro'
+import SponsorRow from '../components/SponsorRow.astro'
+import '../styles/sort.css'
+import { ArrowDown, ArrowUp, Bird, Building2, Camera, ChevronsUpDown, CircuitBoard, Database, Globe, HandHeart, Leaf, Microscope, SlidersHorizontal, Trees, User, Users, Waves } from 'lucide-react'
+import { Checkbox } from '@/components/ui/checkbox'
+import { NativeSelect } from '@/components/ui/native-select'
+import { Label } from '@/components/ui/label'
+import { Table, TableBody, TableCaption, TableHead, TableHeader, TableRow } from '@/components/ui/table'
+import { sponsorTypes } from '../data/sponsors'
+import { programmes, sponsors } from '../lib/data'
+import { programmeTitle } from '../lib/format'
+import { sponsorTypeShort } from '../lib/labels'
+import { absolute, RS_ORG } from '../lib/site'
+
+// The search title and description carry the words people search ("fiscal sponsor directory", "fees", "environmental"), so the page needn't.
+const description = `Compare ${sponsors.length} fiscal sponsors for environmental, conservation and open source projects: fees, who can apply and how, quoted from each sponsor’s own pages.`
+// The finder's own icon where it has the same kind of project (src/components/Finder.astro).
+const typeIcons = { wildlife: Bird, conservation: Trees, ocean: Waves, research: Microscope, hardware: CircuitBoard, software: Database, media: Camera, community: Users, environment: Leaf, any: HandHeart }
+const types = sponsorTypes
+  .map((type) => ({ type, Icon: typeIcons[type], label: sponsorTypeShort[type], n: sponsors.filter((s) => s.types.some((t) => t.value === type)).length }))
+  .filter((t) => t.n > 0)
+const takes = [
+  { key: 'abroad', label: 'Groups based abroad', field: 'foreign', Icon: Globe },
+  { key: 'companies', label: 'Companies', field: 'companies', Icon: Building2 },
+  { key: 'individuals', label: 'Individuals', field: 'individuals', Icon: User },
+] as const
+const says = (field: (typeof takes)[number]['field']) => sponsors.filter((s) => s[field] && s[field].value.answer !== 'no').length
+// It takes open source projects of all kinds but never names hardware, so hardware readers see it as broader.
+const broader: Record<string, string> = { 'open-source-collective': 'hardware' }
+const columns = [
+  { label: 'Sponsor', sort: 'name' },
+  { label: 'Takes' },
+  { label: 'Charges', sort: 'charges' },
+  ...takes.map((t) => ({ label: t.label, sort: t.key })),
+]
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'CollectionPage',
+  name: 'Fiscal sponsors for nature projects',
+  url: absolute('/fiscal-sponsors/'),
+  description,
+  publisher: RS_ORG,
+  mainEntity: {
+    '@type': 'ItemList',
+    itemListElement: sponsors.map((s, i) => ({ '@type': 'ListItem', position: i + 1, item: { '@type': 'Organization', name: s.name, url: s.url, description: s.summary } })),
+  },
+}
+const by = (stance: string) =>
+  programmes.filter((p) => p.fiscal_sponsor?.stance === stance).sort((a, b) => a.name.localeCompare(b.name, 'en'))
+const accepted = by('accepted')
+const refused = [...by('refused'), ...by('discouraged')]
+const grants = [
+  { label: `${accepted.length} grants accept a sponsor`, list: accepted },
+  { label: `${refused.length} refuse or discourage one`, list: refused },
+]
+const groupTitle = 'mb-2 px-0 pt-3.5 pb-0 text-sm font-medium'
+const opt = 'flex min-h-[1.9rem] cursor-pointer items-center gap-2 text-sm leading-[1.3] max-xl:min-h-10 max-xl:text-md'
+const optN = 'text-xs text-muted-foreground tabular-nums'
+---
+
+<Base title="Environmental fiscal sponsor directory" description={description} path="/fiscal-sponsors/" jsonLd={jsonLd} allGrants wide>
+  <div slot="band" class="wrap pt-5 pb-7">
+    <h1 class="text-[clamp(1.75rem,1.2rem+2.2vw,2.75rem)] font-extrabold tracking-[-0.02em]">Fiscal sponsors for nature projects</h1>
+    <p class="mt-2 text-lg text-shell-ink-2">
+      They can receive or manage funding for your project. Check <a class="underline" href="#grants">the grant accepts one</a>.
+    </p>
+  </div>
+
+  <div class="wrap mt-6 grid grid-cols-[minmax(0,1fr)] gap-3 xl:mt-8 xl:grid-cols-[14rem_minmax(0,1fr)] xl:gap-8">
+    {/* Shown by the script below: without JavaScript the filters do nothing, and every sponsor is listed. */}
+    <aside class="xl:sticky xl:top-0 xl:self-start xl:pt-1" data-twin-skip>
+      <form autocomplete="off" aria-label="Filter sponsors" data-filters hidden>
+        <p class="mb-1 flex items-baseline justify-between gap-3 text-sm text-muted-foreground" aria-live="polite">
+          <span class="tabular-nums" data-shown>{sponsors.length} of {sponsors.length} shown</span>
+          <button type="reset" class="sp-link" data-clear hidden>Clear all</button>
+        </p>
+        <details class="sp-filters" data-fold open>
+          <summary class="xl:hidden!"><SlidersHorizontal className="size-4" aria-hidden="true" />Filters</summary>
+          {/* Cards have no header to sort from. */}
+          <div class="border-b border-rule py-3 min-[60rem]:hidden">
+            <Label htmlFor="sort" className="mb-[0.3rem]">Sort by</Label>
+            <NativeSelect id="sort" data-sort-select="">
+              <option value="name">Name</option>
+              <option value="charges">Lowest charge</option>
+              <option value="-charges">Highest charge</option>
+              {takes.map((t) => <option value={t.key}>{t.label}</option>)}
+            </NativeSelect>
+          </div>
+          <fieldset class="border-b border-rule pb-3.5">
+            <legend class={groupTitle}>Project</legend>
+            {types.map((t) => (
+              <label class={opt}>
+                <Checkbox name="project" value={t.type} />
+                <t.Icon className="size-4 flex-none text-muted-foreground" strokeWidth={1.75} aria-hidden="true" />
+                <span class="flex-1">{t.label}</span>
+                <span class={optN}>{t.n}</span>
+              </label>
+            ))}
+          </fieldset>
+          <fieldset class="pb-3.5">
+            <legend class={groupTitle}>Says it takes</legend>
+            {takes.map((t) => (
+              <label class={opt}>
+                <Checkbox name="takes" value={t.key} />
+                <t.Icon className="size-4 flex-none text-muted-foreground" strokeWidth={1.75} aria-hidden="true" />
+                <span class="flex-1">{t.label}</span>
+                <span class={optN}>{says(t.field)}</span>
+              </label>
+            ))}
+          </fieldset>
+        </details>
+      </form>
+    </aside>
+
+    <div class="min-w-0">
+      <div class="sp-wrap">
+        <Table className="sp-tbl">
+          <TableCaption className="sr-only">Fiscal sponsors. Sortable by name, charges, and whether they take groups abroad, companies and individuals.</TableCaption>
+          <TableHeader>
+            <TableRow>
+              {columns.map((c) => (
+                <TableHead scope="col" data-col={c.sort} aria-sort={c.sort === 'name' ? 'ascending' : undefined}>
+                  {c.sort ? <button type="button" data-sort={c.sort}>{c.label} <span class="arrow" aria-hidden="true"><ChevronsUpDown className="i-none" /><ArrowUp className="i-asc" /><ArrowDown className="i-desc" /></span></button> : c.label}
+                </TableHead>
+              ))}
+              <TableHead scope="col" data-twin-skip><span class="sr-only">Details</span></TableHead>
+            </TableRow>
+          </TableHeader>
+          {sponsors.map((s) => <SponsorRow s={s} broader={broader[s.id]} />)}
+          <TableBody className="sp-divider" data-divider="" data-twin-skip hidden>
+            <TableRow><TableHead colSpan={7} scope="colgroup">Broader sponsors</TableHead></TableRow>
+          </TableBody>
+        </Table>
+      </div>
+      <p class="mt-3 text-sm text-ink-2"><span data-unsaid data-twin-skip hidden></span> “Not said”: we didn’t find it on the sponsor’s pages. Nobody pays to be listed.</p>
+
+      <div id="grants" class="mt-8 scroll-mt-6">
+        {grants.map((g) => (
+          <details class="border-t border-rule last:border-b">
+            <summary class="flex min-h-11 cursor-pointer items-center font-medium">{g.label}</summary>
+            <ul class="m-0 grid list-none gap-x-8 gap-y-2 p-0 pb-4 text-md md:grid-cols-2">
+              {g.list.map((p) => <li><a href={`/p/${p.id}/#fiscal_sponsor`}>{programmeTitle(p)}</a></li>)}
+            </ul>
+          </details>
+        ))}
+      </div>
+    </div>
+  </div>
+</Base>
+
+<script>
+  import { initSponsors } from '../lib/sponsor-filter'
+  initSponsors()
+</script>
+
+<style is:global>
+  /* The same card and table as the finder's (src/styles/finder.css). overflow: clip rounds the corners without
+     making a scroll box, so the header still sticks to the page. One tbody per sponsor: its row and its details. */
+  .sp-wrap {
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    background: var(--card);
+    overflow: clip;
+  }
+  .sp-tbl {
+    /* The last row's rule tucks under the card's own edge. */
+    margin-bottom: -1px;
+    table-layout: fixed;
+    border-collapse: separate;
+    border-spacing: 0;
+    font-size: var(--text-sm);
+    line-height: 1.4;
+  }
+  .sp-tbl thead th {
+    position: sticky;
+    top: 0;
+    z-index: 2;
+    width: 12.5%;
+    height: 2.5rem;
+    padding: 0.4rem 0.75rem;
+    background: var(--card);
+    border-bottom: 1px solid var(--border);
+    font-weight: 500;
+    color: var(--muted-foreground);
+    vertical-align: middle;
+  }
+  .sp-tbl thead button {
+    height: auto;
+    min-height: 2rem;
+    text-align: left;
+  }
+  .sp-tbl thead th:nth-child(1) {
+    width: 16%;
+  }
+  .sp-tbl thead th:nth-child(2) {
+    width: 23%;
+  }
+  .sp-tbl thead th:nth-child(3) {
+    width: 16.5%;
+  }
+  .sp-tbl thead th:nth-child(4) {
+    width: 13%;
+  }
+  .sp-tbl thead th:last-child {
+    width: 7.5%;
+  }
+  .sp-tbl tbody :is(th, td) {
+    padding: 0.65rem 0.75rem;
+    font-weight: 400;
+    text-align: left;
+    vertical-align: top;
+    overflow-wrap: break-word;
+  }
+  .sp-tbl tbody > tr > * {
+    border-bottom: 1px solid var(--border);
+  }
+  .sp-tbl tbody:has([data-sp-toggle][open]) > tr:first-child > * {
+    border-bottom: 0;
+  }
+  .sp-tbl td > p + p {
+    margin-top: 0.25rem;
+  }
+  .sp-tbl strong,
+  .sp-answer {
+    font-weight: 600;
+  }
+  .sp-name {
+    font-size: var(--text-md);
+    font-weight: 600;
+  }
+  .sp-sub {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.25rem 0.5rem;
+    align-items: center;
+    margin-top: 0.125rem;
+    font-size: var(--text-xs);
+    color: var(--muted-foreground);
+  }
+  .sp-answer {
+    display: flex;
+    gap: 0.3rem;
+    align-items: center;
+  }
+  .sp-mark {
+    flex: none;
+    width: 0.9rem;
+    height: 0.9rem;
+    stroke-width: 2.75;
+  }
+  .sp-open {
+    padding-left: 0 !important;
+  }
+  .sp-open summary {
+    display: flex;
+    gap: 0.2rem;
+    align-items: center;
+    justify-content: flex-end;
+    color: var(--link);
+    list-style: none;
+    white-space: nowrap;
+    cursor: pointer;
+  }
+  .sp-open summary::-webkit-details-marker {
+    display: none;
+  }
+  .sp-open summary > svg {
+    flex: none;
+    width: 1rem;
+    height: 1rem;
+  }
+  .sp-open details[open] svg {
+    transform: rotate(180deg);
+  }
+  .sp-tbl .sp-more {
+    display: none;
+  }
+  .sp-tbl tbody:has([data-sp-toggle][open]) .sp-more {
+    display: table-row;
+  }
+  .sp-tbl tbody:has([data-sp-toggle][open]) > tr > * {
+    background: color-mix(in srgb, var(--ground) 55%, var(--card));
+  }
+  .sp-tbl .sp-more > td {
+    padding-bottom: 1rem;
+  }
+  .sp-facts {
+    margin: 0;
+    columns: 22rem 2;
+    column-gap: 2.5rem;
+  }
+  .sp-facts > div {
+    display: grid;
+    grid-template-columns: 8rem minmax(0, 1fr);
+    gap: 0.75rem;
+    padding-bottom: 0.6rem;
+    break-inside: avoid;
+  }
+  .sp-facts dt {
+    color: var(--muted-foreground);
+  }
+  .sp-facts dd {
+    margin: 0;
+  }
+  .sp-facts :is(ol, ul) {
+    margin: 0;
+    padding-left: 1.1rem;
+  }
+  .sp-quotes {
+    display: none;
+  }
+  .sp-more:has([data-sp-quotes][open]) .sp-quotes {
+    display: block;
+  }
+  .sp-more:not(:has([data-sp-quotes][open])) .sp-inrow {
+    display: none;
+  }
+  .sp-more summary {
+    width: fit-content;
+    list-style: none;
+  }
+  .sp-more summary::-webkit-details-marker {
+    display: none;
+  }
+  .sp-facts blockquote {
+    font-size: var(--text-sm);
+  }
+  .sp-foot {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.25rem 1.25rem;
+    margin-bottom: 0.6rem;
+    padding-top: 0.75rem;
+    border-top: 1px solid var(--border);
+  }
+  .sp-link {
+    padding: 0;
+    border: 0;
+    background: none;
+    color: var(--link);
+    font: inherit;
+    text-decoration: underline;
+    text-underline-offset: 0.18em;
+    cursor: pointer;
+  }
+  .sp-filters > summary {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+    width: fit-content;
+    min-height: 2.5rem;
+    margin-top: 0.75rem;
+    padding: 0 0.75rem;
+    border: 1px solid var(--input);
+    border-radius: var(--radius-md);
+    background: var(--card);
+    font-size: var(--text-md);
+    font-weight: 500;
+    cursor: pointer;
+  }
+  .sp-unsaid {
+    display: none;
+  }
+  .sp-divider th {
+    padding: 1.1rem 0.75rem 0.5rem;
+    color: var(--muted-foreground);
+    text-align: left;
+  }
+  .sp-tbl tbody[hidden] {
+    display: none !important;
+  }
+  @media (hover: hover) {
+    .sp-open summary:hover {
+      text-decoration: underline;
+    }
+    .sp-tbl tbody:hover > tr:first-child > * {
+      background: color-mix(in srgb, var(--ground) 55%, var(--card));
+    }
+  }
+
+  /* Narrow: one card per sponsor, its answers labelled. */
+  @media (max-width: 59.99rem) {
+    .sp-wrap {
+      border: 0;
+      background: none;
+      overflow: visible;
+    }
+    .sp-tbl thead {
+      display: none;
+    }
+    .sp-tbl,
+    .sp-tbl tbody {
+      display: block;
+    }
+    .sp-tbl tbody {
+      padding: 0.4rem 0;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      background: var(--card);
+      overflow: clip;
+    }
+    .sp-tbl tbody + tbody {
+      margin-top: 0.75rem;
+    }
+    .sp-tbl tbody > tr:first-child {
+      display: block;
+    }
+    .sp-tbl tbody > tr > * {
+      display: block;
+      padding: 0.35rem 1rem !important;
+      border: 0 !important;
+      background: none !important;
+    }
+    .sp-tbl tbody > tr:first-child > td[data-label] {
+      display: grid;
+      grid-template-columns: 7.5rem minmax(0, 1fr);
+      column-gap: 0.75rem;
+    }
+    .sp-tbl td[data-label] > * {
+      grid-column: 2;
+    }
+    .sp-tbl td[data-label]::before {
+      content: attr(data-label);
+      grid-column: 1;
+      grid-row: 1 / span 4;
+      color: var(--muted-foreground);
+    }
+    .sp-tbl tbody > tr:first-child > td[data-none] {
+      display: none;
+    }
+    .sp-unsaid {
+      display: block;
+      color: var(--muted-foreground);
+    }
+    .sp-facts > div {
+      grid-template-columns: minmax(0, 1fr);
+      gap: 0.1rem;
+    }
+    .sp-tbl .sp-divider {
+      padding: 0;
+      border: 0;
+      background: none;
+    }
+    .sp-tbl .sp-divider th {
+      padding: 0.75rem 0 0 !important;
+    }
+    .sp-open summary {
+      justify-content: flex-start;
+      min-height: 2.75rem;
+    }
+    .sp-tbl tbody:has([data-sp-toggle][open]) .sp-more {
+      display: block;
+    }
+  }
+</style>

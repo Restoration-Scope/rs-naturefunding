@@ -1,5 +1,5 @@
 import type { APIRoute } from 'astro'
-import { listings, stats } from '../lib/data'
+import { listings, sponsors, stats } from '../lib/data'
 import { finderPages } from '../lib/finder-pages'
 import { absolute } from '../lib/site'
 
@@ -9,6 +9,7 @@ export const GET: APIRoute = () => {
     { loc: absolute('/about/'), lastmod: null },
     { loc: absolute('/data/'), lastmod: null },
     { loc: absolute('/countries/'), lastmod: null },
+    { loc: absolute('/fiscal-sponsors/'), lastmod: sponsors.map((s) => s.checked_at).sort().at(-1) ?? null },
     ...Object.values(finderPages)
       .flat()
       .map((pg) => ({ loc: absolute(pg.path), lastmod: pg.listings.map((l) => l.p.checked_at).sort().at(-1) ?? null })),
