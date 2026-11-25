@@ -3,7 +3,8 @@ name: Refresh
 # Daily: re-read every due funder page. Tier A (unchanged, quotes present, deadlines passed)
 # commits to main; Tier B (changed page or gone quote) opens a PR for review. New NbS calls from
 # the EU and grants.gov APIs go into one review issue (scripts/refresh/discover.ts).
-# Weekly: link-rot pass, a summary issue, and funders found by web search (Exa) not yet listed,
+# Weekly: link-rot pass, the fiscal sponsors' pages re-read (dates to main, an issue per changed page,
+# scripts/refresh/sponsors.ts), a summary issue, and funders found by web search (Exa) not yet listed,
 # raised as one review issue (scripts/refresh/discover-web.ts).
 on:
   schedule:
@@ -101,7 +102,7 @@ jobs:
           EU_SEARCH_API_KEY: ${{ secrets.EU_SEARCH_API_KEY }}
         run: bun scripts/refresh/discover.ts
 
-      - name: Link rot and weekly summary
+      - name: Link rot, fiscal sponsors and weekly summary
         if: env.MODE == 'weekly'
         run: bun scripts/refresh/weekly.ts
 
@@ -134,9 +135,16 @@ jobs:
           # A line-by-line merge of a programme file that a PR changed during the run can mix the two
           # versions into one that fails validation (20 Nov: dates from the run, facts from the PR).
           # Then keep the PR's version of every programme file it changed; they get new dates when next due.
+          # A sponsor file a PR changed always keeps the PR's version: merged, it can be valid and still give a page
+          # the PR newly cites the date the run read the old one.
           valid_or_upstream() {
-            bun run validate >/dev/null 2>&1 && return 0
             upstream="origin/$GITHUB_REF_NAME"
+            sponsors=$(git diff --name-only --diff-filter=d "$GITHUB_SHA" "$upstream" -- data/sponsors)
+            if [ -n "$sponsors" ]; then
+              git checkout "$upstream" -- $sponsors || return 1
+              git diff --cached --quiet || git commit -q -m "Refresh: keep the version of sponsors changed during the run" || return 1
+            fi
+            bun run validate >/dev/null 2>&1 && return 0
             changed=$(git diff --name-only --diff-filter=d "$GITHUB_SHA" "$upstream" -- data/programmes)
             deleted=$(git diff --name-only --diff-filter=D "$GITHUB_SHA" "$upstream" -- data/programmes)
             [ -n "$changed" ] && git checkout "$upstream" -- $changed
@@ -171,8 +179,8 @@ jobs:
           echo "pushed=false" >> "$GITHUB_OUTPUT"
           echo "::error::could not push the refresh commit"; exit 1
 
-      - name: Open Tier B pull requests
-        if: ${{ !cancelled() && env.MODE == 'daily' }}
+      - name: Open Tier B pull requests and issues
+        if: ${{ !cancelled() }}
         run: bun scripts/refresh/open-prs.ts
 
       # Pushes made with the workflow token trigger no workflow, so deploy is started by hand.
