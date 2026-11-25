@@ -178,6 +178,16 @@
   .sub__route:has([data-route='direct']) {
     display: none;
   }
+  /* The place the funder takes, where a country's page or Where can't say the programme simply takes it. */
+  .place {
+    margin-top: 0.25rem;
+    font-size: var(--text-sm);
+    font-weight: 500;
+    color: var(--aging-text);
+  }
+  .place:not([hidden]) {
+    display: block;
+  }
   .kind {
     display: block;
     margin-top: 0.25rem;
@@ -386,6 +396,7 @@
         'name name'
         'sub sub'
         'route route'
+        'place place'
         'kind kind'
         'dl dl'
         'amount amount'
@@ -416,6 +427,9 @@
     }
     .sub__route {
       grid-area: route;
+    }
+    .place {
+      grid-area: place;
     }
     .kind {
       grid-area: kind;

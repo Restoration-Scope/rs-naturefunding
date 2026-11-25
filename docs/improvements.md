@@ -2,6 +2,7 @@
 
 What a visitor to naturefunding.org can see or do that they couldn't before, newest first. One line per merged change, added in the same PR (AGENTS.md). The naturefunding.org LinkedIn Page drafts its update posts from this list. Emails count once `DIGEST_SENDING` is `live`.
 
+- 2026-11-24 · Country pages count only grants that take the country: a grant for a group the funder doesn't list says "Check the place", and one for part of a country says which part ("Only the Canary Islands") · https://naturefunding.org/countries/spain/ · #1073
 - 2026-11-24 · One line under the search bar to give ChatGPT, Claude or another AI, so it finds the grants that fit your project; each place's AI copy now includes who can't apply and the other rules · https://naturefunding.org/ · #1071
 - 2026-11-24 · 22 existing listings show current funder evidence, including new 2027 rounds for European Open Rivers, California Duck Stamp, Jersey Ecology Trust Fund, Thames Water, Akita, IKI Large Grants and more · https://naturefunding.org/p/european-open-rivers/ · #1013
 - 2026-11-23 · Six programmes' Before you apply was checked by a second reader: Bell's Brewery's exclusions read as five clear rules, EKCT small grants asks for a recent bank statement and audited accounts, and WNPS lists local chapter support instead of the narrative and map that are part of the application · https://naturefunding.org/p/bells-brewery-grassroots-water-stewardship/#before-title · #1010

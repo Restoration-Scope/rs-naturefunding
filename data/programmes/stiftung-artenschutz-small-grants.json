@@ -10,8 +10,10 @@
   "applicant_types": null,
   "geography": {
     "scope": "regions",
+    "regions": ["africa", "asia", "europe", "latin_america_caribbean", "middle_east", "oceania"],
     "label": "All countries except the US, Canada, New Zealand and Australia",
-    "regions": ["africa", "asia", "europe", "latin_america_caribbean", "middle_east", "oceania"]
+    "whole": true,
+    "except": ["AU", "NZ"]
   },
   "access": "direct",
   "window": "fixed",

@@ -1,6 +1,7 @@
 import { existsSync, readdirSync, readFileSync } from 'node:fs'
 import { basename, join } from 'node:path'
 import type { z } from 'zod'
+import { geographyIssues } from './geography'
 import { countryList, programme, sources as sourcesSchema, type CountryList, type Evidence, type Programme, type Source } from './schema'
 
 export type DataSet = { programmes: Programme[]; sources: Source[]; lists: CountryList[] }
@@ -51,7 +52,6 @@ export function checkData(
     else if (parent.parent !== null) issues.push(`programmes/${p.id}.json: parent ${p.parent} has a parent itself; one level only`)
   }
 
-  // A programme that points to an official list holds every country on it, so the page never misses one.
   const listsDir = join(programmesDir, '..', 'lists')
   const lists = new Map<string, CountryList>()
   for (const file of existsSync(listsDir) ? readdirSync(listsDir).filter((f) => f.endsWith('.json')) : []) {
@@ -60,14 +60,7 @@ export function checkData(
     else lists.set(parsed.data.id, parsed.data)
   }
   for (const p of programmes) {
-    const g = p.geography
-    if (g?.scope !== 'countries' || !g.list) continue
-    const list = lists.get(g.list)
-    if (!list) issues.push(`programmes/${p.id}.json: geography.list ${g.list} is not in data/lists`)
-    else {
-      const missing = list.countries.filter((c) => !g.countries.includes(c))
-      if (missing.length) issues.push(`programmes/${p.id}.json: geography.countries lacks ${missing.join(', ')} from ${list.name}`)
-    }
+    issues.push(...geographyIssues(p, lists).map((i) => `programmes/${p.id}.json: ${i}`))
   }
 
   let sources: Source[] = []

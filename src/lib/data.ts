@@ -2,11 +2,12 @@ import { existsSync, readFileSync } from 'node:fs'
 import { join } from 'node:path'
 import { loadData } from '../data/load'
 import type { Call, Programme } from '../data/schema'
-import { countriesByRegion, countryName, countryRegion } from './geo'
+import { areaCountries, countryName } from './geo'
 import type { SizeBucket, State } from './labels'
 import { sizeBuckets } from './labels'
 import { usdPerUnit } from './rates'
 import { daysBetween, effectiveCallStatus, utcDateKey } from './status'
+import { wholeRegions, whereCodes } from './where-codes'
 
 export { daysBetween } from './status'
 
@@ -146,27 +147,13 @@ export function sizeBucketsFor(p: Programme): SizeBucket[] {
     .map(([k]) => k)
 }
 
-/** Space-separated codes a programme is open to: `*` everywhere, `R:<region>` a whole region, else its countries plus `r:<region>` of each. */
-export function whereCodes(p: Programme): string {
-  const g = p.geography
-  if (!g) return ''
-  if (g.scope === 'global') return '*'
-  if (g.scope === 'regions') return g.regions.map((r) => `R:${r}`).join(' ')
-  const regions = new Set(g.countries.map((c) => countryRegion[c]).filter(Boolean))
-  return [...g.countries, ...[...regions].map((r) => `r:${r}`)].join(' ')
-}
-
-/**
- * whereCodes with each region spelled out as its countries, so a page can tell whether it takes one country.
- * A funder's group inside a region ("ODA-eligible countries") may leave a country out: its region is `?:<region>`
- * and its countries `?<code>`, which the page reads as "check", never as a yes.
- */
+/** whereCodes with each whole region spelled out as its countries, so a page can tell whether it takes one country. */
 export function whereReach(p: Programme): string {
   const g = p.geography
-  if (g?.scope !== 'regions') return whereCodes(p)
-  const countries = countriesByRegion.filter((r) => g.regions.includes(r.region)).flatMap((r) => r.countries.map((c) => c.code))
-  if (!g.whole) return [...g.regions.map((r) => `?:${r}`), ...countries.map((c) => `?${c}`)].join(' ')
-  return [whereCodes(p), ...countries].join(' ')
+  const codes = whereCodes(p)
+  if (g?.scope !== 'regions') return codes.join(' ')
+  const whole = wholeRegions(g).flatMap(areaCountries).filter((c) => !g.except?.includes(c))
+  return [...codes, ...whole].join(' ')
 }
 
 /**

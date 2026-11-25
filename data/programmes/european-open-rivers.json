@@ -20,11 +20,14 @@
     "government"
   ],
   "geography": {
-    "scope": "regions",
-    "regions": [
-      "europe"
-    ],
-    "label": "Greater Europe"
+    "scope": "countries",
+    "countries": ["AD", "AL", "AM", "AT", "AZ", "BA", "BE", "BG", "BY", "CH", "CY", "CZ", "DE", "DK", "EE", "ES", "FI", "FR", "GB", "GE", "GR", "HR", "HU", "IE", "IS", "IT", "KZ", "LI", "LT", "LU", "LV", "MC", "MD", "ME", "MK", "MT", "NL", "NO", "PL", "PT", "RO", "RS", "RU", "SE", "SI", "SK", "SM", "TR", "UA", "VA", "XK"],
+    "label": "Greater Europe",
+    "list": "open-rivers-greater-europe",
+    "parts": {
+      "RU": "as far east as the Urals",
+      "KZ": "west of the Ural river"
+    }
   },
   "access": "direct",
   "window": "fixed",
@@ -97,6 +100,20 @@
       "checked_at": "2026-11-02",
       "method": "page"
     },
+    "places": [
+      {
+        "source_url": "https://openrivers.eu/wp-content/uploads/2026/10/Information-Guide-October-2026_v2.pdf",
+        "quote": "Projects must be implemented in Greater Europe, and the coordinating partners must be registered in Greater Europe.",
+        "checked_at": "2026-11-24",
+        "method": "page"
+      },
+      {
+        "source_url": "https://openrivers.eu/wp-content/uploads/2026/10/Information-Guide-October-2026_v2.pdf",
+        "quote": "Countries of Greater Europe: Overseas territories are not included.",
+        "checked_at": "2026-11-24",
+        "method": "page"
+      }
+    ],
     "access": {
       "source_url": "https://openrivers.eu/grants/apply-for-a-grant/",
       "quote": "Applications must be submitted through our online portal during the open call period.",

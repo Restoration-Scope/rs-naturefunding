@@ -323,7 +323,7 @@ import EffortTip from './EffortTip.astro'
           </TableRow>
         </TableHeader>
         <TableBody data-list="">
-          {now.map((l) => <Row listing={l} />)}
+          {now.map((l) => <Row listing={l} where={where} />)}
         </TableBody>
         <TableBody className="later-head" id="later-head" data-later-head="" hidden>
           <TableRow>
@@ -335,7 +335,7 @@ import EffortTip from './EffortTip.astro'
           </TableRow>
         </TableBody>
         <TableBody className="later-rows" id="later-rows" data-list-later="" hidden>
-          {later.map((l) => <Row listing={l} />)}
+          {later.map((l) => <Row listing={l} where={where} />)}
         </TableBody>
       </Table>
       </div>

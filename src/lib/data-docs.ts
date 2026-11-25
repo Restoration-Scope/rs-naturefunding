@@ -80,8 +80,14 @@ export const fieldDocs = {
   geography: {
     scope: 'global (anywhere), countries (a list) or regions (a group the funder names, such as “ODA-eligible countries”).',
     countries: 'ISO 3166-1 alpha-2 country codes.',
-    regions: 'Broad regions the group covers.',
+    regions: 'Broad regions the group reaches, for filtering. A region here is not eligibility unless `whole` names it.',
     label: 'The funder’s own name for the area or group.',
+    list: 'The official country list or lists the funder points to; `countries` holds every country on them.',
+    parts: 'For a country the funder takes only part of, the part it takes.',
+    whole: 'On regions: true, or the regions, when the funder takes every country in them. On countries: true when the label still means all of each country.',
+    areas: 'On regions: the widest place the group can mean, in our words for filters. A country in it is only maybe covered: check the label and quote.',
+    named: 'Countries the funder names outright beside its group: covered, not maybe.',
+    except: 'Countries the funder says it does not take.',
   },
   evidence: {
     source_url: 'The page the fact was read from: the funder’s, or the organisation running the programme.',
