@@ -5,13 +5,16 @@
     "name": "German Federal Ministry for the Environment (BMUKN)",
     "url": "https://www.bundesumweltministerium.de/"
   },
-  "administered_by": null,
+  "administered_by": {
+    "name": "Zukunft Umwelt Gesellschaft (ZUG)",
+    "url": "https://www.z-u-g.org"
+  },
   "parent": null,
   "url": "https://www.z-u-g.org/1000-moore/",
   "summary": "German federal grants for rewetting and restoring small, non-farmed peatlands of conservation value, 5 to 200 hectares per project. Applications are closed until a further funding window opens.",
   "approaches": ["peatlands", "wetlands"],
-  "applicant_types": null,
-  "geography": null,
+  "applicant_types": ["individual", "company", "government", "community_group"],
+  "geography": { "scope": "countries", "countries": ["DE"] },
   "access": "direct",
   "window": "fixed",
   "amount": { "currency": "EUR", "max": 600000 },
@@ -60,6 +63,24 @@
     }
   ],
   "evidence": {
+    "administered_by": {
+      "source_url": "https://www.z-u-g.org/1000-moore/foerderrichtlinie-1000-moore/",
+      "quote": "Zukunft Umwelt Gesellschaft - Zur Startseite",
+      "checked_at": "2026-11-25",
+      "method": "page"
+    },
+    "applicant_types": {
+      "source_url": "https://www.z-u-g.org/1000-moore/foerderrichtlinie-1000-moore/",
+      "quote": "Antragsberechtigt sind natürliche und juristische Personen des privaten oder öffentlichen Rechts sowie Personenvereinigungen (wie zum Beispiel Privateigentümer*innen, Kommunen, Verbände, Vereine, Stiftungen und Unternehmen).",
+      "checked_at": "2026-11-25",
+      "method": "page"
+    },
+    "geography": {
+      "source_url": "https://www.z-u-g.org/1000-moore/foerderrichtlinie-1000-moore/",
+      "quote": "Die Vorhaben müssen grundsätzlich in der Bundesrepublik Deutschland durchgeführt werden.",
+      "checked_at": "2026-11-25",
+      "method": "page"
+    },
     "access": {
       "source_url": "https://www.z-u-g.org/1000-moore/",
       "quote": "Aktuell können keine Anträge für das Förderprogramm eingereicht werden.",
@@ -69,6 +90,12 @@
     "window": {
       "source_url": "https://www.z-u-g.org/1000-moore/",
       "quote": "Ein weiteres Förderfenster wird zu einem späteren Zeitpunkt geöffnet.",
+      "checked_at": "2026-11-25",
+      "method": "page"
+    },
+    "amount": {
+      "source_url": "https://www.z-u-g.org/1000-moore/foerderrichtlinie-1000-moore/",
+      "quote": "Die maximale Fördersumme für Projekte in den Förderschwerpunkten 2.1 und 2.2 beträgt 600.000 Euro pro Antrag.",
       "checked_at": "2026-11-25",
       "method": "page"
     },
@@ -149,13 +176,7 @@
         "checked_at": "2026-11-25",
         "method": "page"
       }
-    ],
-    "amount": {
-      "source_url": "https://www.z-u-g.org/1000-moore/foerderrichtlinie-1000-moore/",
-      "quote": "Die maximale Fördersumme für Projekte in den Förderschwerpunkten 2.1 und 2.2 beträgt 600.000 Euro pro Antrag.",
-      "checked_at": "2026-11-25",
-      "method": "page"
-    }
+    ]
   },
   "checked_at": "2026-11-25"
 }
