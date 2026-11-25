@@ -60,14 +60,14 @@
   "access": "direct",
   "window": "fixed",
   "amount": { "currency": "GBP", "min": 75000, "max": 600000 },
-  "co_finance_required": null,
+  "co_finance_required": false,
   "reporting": "Annual and half-year progress reports, reviewed each year, against the project's objectives (outputs, ethics, environmental impact), plus a final report at the end of the award.",
   "effort": {
     "steps": [
-      "Stage 1 application on Flexi-Grant",
-      "Initial review, expert scoring and sift meeting",
+      "Stage 1 application",
+      "Stage 1 initial review and expert sift",
       "Stage 2 application, if invited",
-      "Expert review, sift and Defra funding decision"
+      "Stage 2 expert sift and Defra funding decision"
     ],
     "due": ["2026-11-23", null, "2027-04-05", null]
   },
@@ -83,7 +83,7 @@
     { "rule": "Project lasts 1 to 3 years and completes by 31 August 2030", "kind": "project" },
     { "rule": "Project includes a poverty reduction focus", "kind": "project" },
     {
-      "rule": "Not a target of UK government sanctions and not a Russian organisation",
+      "rule": "No sanctioned country or organisation receives funds, and no Russian organisation is involved",
       "kind": "legal"
     },
     {
@@ -91,12 +91,20 @@
       "kind": "other"
     },
     {
-      "rule": "Not an application already resubmitted once, unless the project is significantly different",
+      "rule": "Resubmit once at most, unless exceptionally agreed in advance or the proposed project is significantly different",
       "kind": "other"
+    },
+    {
+      "rule": "UMIC projects advance evidence in LDCs/low-income countries, serve a global public good, or make unique local advances",
+      "kind": "project"
     }
   ],
-  "after_award": { "reports": "twice_yearly" },
-  "documents": ["Cover letter, 2 sides of A4 maximum", "Logframe on the Stage 1 template"],
+  "after_award": { "reports": "twice_yearly", "audit": true },
+  "documents": [
+    "Cover letter, 2 sides of A4 maximum",
+    "Logframe on the Stage 1 template",
+    "Application signature uploaded as a PDF"
+  ],
   "calls": [
     {
       "id": "round-12-stage-1",
@@ -156,6 +164,12 @@
       "source_url": "https://iwt.challengefund.org.uk/how-to-apply/main-applications/",
       "quote": "IWT Challenge Fund Main grants, ranging from £75,000 to £600,000, are expected to deliver strong results to tackle IWT and poverty reduction",
       "checked_at": "2026-11-01",
+      "method": "page"
+    },
+    "co_finance_required": {
+      "source_url": "https://iwt.challengefund.org.uk/media/jonarh4p/2026-27-bcfs-finance-guidance-final-july26.pdf",
+      "quote": "Matched funding is not obligatory, but is highly desirable and will strengthen applications",
+      "checked_at": "2026-11-24",
       "method": "page"
     },
     "reporting": {
@@ -235,8 +249,14 @@
       },
       {
         "source_url": "https://iwt.challengefund.org.uk/media/hrenz1dk/r12-iwt-guidance-final-sept26-1.pdf",
-        "quote": "An unsuccessful application may only be resubmitted once, unless the proposed project is significantly different.",
-        "checked_at": "2026-11-20",
+        "quote": "A resubmitted application will only be accepted once, unless there is prior agreement owing to exceptional circumstances or the proposed project is significantly different.",
+        "checked_at": "2026-11-24",
+        "method": "page"
+      },
+      {
+        "source_url": "https://iwt.challengefund.org.uk/media/hrenz1dk/r12-iwt-guidance-final-sept26-1.pdf",
+        "quote": "evidence and impact in Least Developed or Low-Income Countries, or contribute to a global public good, for example by advancing understanding and/or strengthening the knowledge base related to biodiversity conservation/sustainable use and poverty reduction, or contribute to serious and unique advancements on a critical issue as a result of specific circumstances of the upper-middle income country",
+        "checked_at": "2026-11-24",
         "method": "page"
       }
     ],
@@ -252,6 +272,12 @@
         "quote": "Logframe Required on Stage 1 template.",
         "checked_at": "2026-11-20",
         "method": "page"
+      },
+      {
+        "source_url": "https://iwt.challengefund.org.uk/media/hrenz1dk/r12-iwt-guidance-final-sept26-1.pdf",
+        "quote": "signed, with a PDF signature uploaded as part of the Flexi-Grant application.",
+        "checked_at": "2026-11-24",
+        "method": "page"
       }
     ],
     "after_award": [
@@ -265,6 +291,12 @@
         "source_url": "https://iwt.challengefund.org.uk/media/hrenz1dk/r12-iwt-guidance-final-sept26-1.pdf",
         "quote": "All projects are required to submit a Final Report at the end of the award.",
         "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://iwt.challengefund.org.uk/media/jonarh4p/2026-27-bcfs-finance-guidance-final-july26.pdf",
+        "quote": "For grants of over £1,000,000, projects are required to provide an annual grant statement; all other projects over £50,000 are only required to provide end of project audits (see current Terms and Conditions for further details).",
+        "checked_at": "2026-11-24",
         "method": "page"
       }
     ]

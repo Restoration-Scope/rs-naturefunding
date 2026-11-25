@@ -84,6 +84,13 @@
   "co_finance_required": false,
   "consortium_required": true,
   "reporting": "Consortia submit a periodic report for each reporting period, tied to interim payments, and a final report at the end of the project that sets the final grant amount.",
+  "effort": {
+    "steps": [
+      "Full proposal via the Funding & Tenders Portal",
+      "Admissibility and eligibility checks, then expert evaluation"
+    ],
+    "due": ["2027-01-14", null]
+  },
   "eligibility": [
     {
       "rule": "Be a legal entity, or meet the exceptional guarantees route without legal personality",
@@ -93,19 +100,27 @@
       "rule": "Not be a Chinese public university administered or supervised by MIIT",
       "kind": "legal"
     },
-    {
-      "rule": "Have proposal content that corresponds wholly or partly to the topic description",
-      "kind": "project"
-    },
     { "rule": "Project focuses exclusively on civil applications", "kind": "project" },
     {
       "rule": "Applicant has stable and sufficient resources and can contribute its share",
       "kind": "finances"
     },
-    { "rule": "Proposal applies the multi-actor approach", "kind": "project" }
+    { "rule": "Proposal applies the multi-actor approach", "kind": "project" },
+    {
+      "rule": "Involves social sciences and humanities experts and institutions across all living lab phases",
+      "kind": "project"
+    },
+    {
+      "rule": "Is free of EU administrative sanctions and other grounds for exclusion from EU grants",
+      "kind": "legal"
+    },
+    {
+      "rule": "EU or associated-country public, research or higher education bodies have a gender equality plan by grant signature",
+      "kind": "legal"
+    }
   ],
   "after_award": { "reports": "interim_and_final" },
-  "documents": ["Detailed budget table (lump sum)"],
+  "documents": ["Detailed budget table (lump sum)", "Financial support to third parties annex"],
   "calls": [
     {
       "id": "horizon-nature-2027-02-02",
@@ -155,14 +170,6 @@
       "checked_at": "2026-11-25",
       "method": "page"
     },
-    "places": [
-      {
-        "source_url": "https://ec.europa.eu/info/funding-tenders/opportunities/docs/2021-2027/common/guidance/list-3rd-country-participation_horizon-euratom_en.pdf",
-        "quote": "The association agreements with the following countries have now started to produce legal effects",
-        "checked_at": "2026-11-25",
-        "method": "page"
-      }
-    ],
     "access": {
       "source_url": "https://ec.europa.eu/info/funding-tenders/opportunities/docs/2021-2027/horizon/wp-call/2026-2027/wp-15-general-annexes_horizon-2026-2027_en.pdf",
       "quote": "All proposals must be submitted electronically via the EU Funders & Tenders Portal electronic submission system (accessible via the topic page in the Search Funding & Tenders section).",
@@ -199,6 +206,20 @@
       "checked_at": "2026-11-25",
       "method": "page"
     },
+    "effort": [
+      {
+        "source_url": "https://ec.europa.eu/info/funding-tenders/opportunities/docs/2021-2027/horizon/wp-call/2026-2027/wp-14-horizontal-activities_horizon-2026-2027_en.pdf",
+        "quote": "Opening: 13 Oct 2026 Deadline(s): 14 Jan 2027",
+        "checked_at": "2026-11-24",
+        "method": "page"
+      },
+      {
+        "source_url": "https://ec.europa.eu/info/funding-tenders/opportunities/docs/2021-2027/horizon/wp-call/2026-2027/wp-15-general-annexes_horizon-2026-2027_en.pdf",
+        "quote": "Proposals will be checked for formal requirements (admissibility and eligibility) and then evaluated (for each topic separately) for operational capacity and award criteria (see Annexes C and D above) by an evaluation committee composed of independent external experts and then ranked according to their quality score.",
+        "checked_at": "2026-11-24",
+        "method": "page"
+      }
+    ],
     "eligibility": [
       {
         "source_url": "https://ec.europa.eu/info/funding-tenders/opportunities/docs/2021-2027/horizon/wp-call/2026-2027/wp-15-general-annexes_horizon-2026-2027_en.pdf",
@@ -209,12 +230,6 @@
       {
         "source_url": "https://ec.europa.eu/info/funding-tenders/opportunities/docs/2021-2027/horizon/wp-call/2026-2027/wp-15-general-annexes_horizon-2026-2027_en.pdf",
         "quote": "universities (higher education establishments) established in China which are public bodies, that are administered by or fall under the supervision of the Ministry of Industry and Information Technology (MIIT) are not eligible to participate in any action under all parts of this Work Programme.",
-        "checked_at": "2026-11-25",
-        "method": "page"
-      },
-      {
-        "source_url": "https://ec.europa.eu/info/funding-tenders/opportunities/docs/2021-2027/horizon/wp-call/2026-2027/wp-15-general-annexes_horizon-2026-2027_en.pdf",
-        "quote": "Applications will only be considered eligible if their content corresponds, wholly or in part, to the topic description for which it is submitted.",
         "checked_at": "2026-11-25",
         "method": "page"
       },
@@ -235,6 +250,24 @@
         "quote": "Proposals must apply the multi-actor approach involving stakeholders as indicated under (i), first item of the scope.",
         "checked_at": "2026-11-25",
         "method": "page"
+      },
+      {
+        "source_url": "https://ec.europa.eu/info/funding-tenders/opportunities/docs/2021-2027/horizon/wp-call/2026-2027/wp-14-horizontal-activities_horizon-2026-2027_en.pdf",
+        "quote": "This topic requires the effective contribution of SSH disciplines and the involvement of SSH experts, institutions as well as the inclusion of relevant SSH expertise, across all phases of the living lab process",
+        "checked_at": "2026-11-24",
+        "method": "page"
+      },
+      {
+        "source_url": "https://ec.europa.eu/info/funding-tenders/opportunities/docs/2021-2027/horizon/wp-call/2026-2027/wp-15-general-annexes_horizon-2026-2027_en.pdf",
+        "quote": "Applicants that are subject to EU administrative sanctions (i.e. exclusion)39 or are in one of the following exclusion situations 40 that bar them from receiving EU grants can NOT participate:",
+        "checked_at": "2026-11-24",
+        "method": "page"
+      },
+      {
+        "source_url": "https://ec.europa.eu/info/funding-tenders/opportunities/docs/2021-2027/horizon/wp-call/2026-2027/wp-15-general-annexes_horizon-2026-2027_en.pdf",
+        "quote": "legal entities from Member States and Associated Countries that are public bodies, research organisations or higher education establishments (including private research organisations and private higher education establishments) applying as beneficiaries or affiliated entities must have at the moment of grant signature and during the duration of the grant a gender equality plan",
+        "checked_at": "2026-11-24",
+        "method": "page"
       }
     ],
     "after_award": [
@@ -251,8 +284,22 @@
         "quote": "For lump sum grant proposals, the estimated budget must be described in a detailed budget table.",
         "checked_at": "2026-11-25",
         "method": "page"
+      },
+      {
+        "source_url": "https://ec.europa.eu/info/funding-tenders/opportunities/docs/2021-2027/horizon/temp-form/af/information-on-financial-support-to-third-parties_he_en.docx",
+        "quote": "For calls that allow ‘Financial support to third parties’, project participants must add this document to the application and upload it as separate annex to the proposal part B in the Submission System.",
+        "checked_at": "2026-11-24",
+        "method": "page"
+      }
+    ],
+    "places": [
+      {
+        "source_url": "https://ec.europa.eu/info/funding-tenders/opportunities/docs/2021-2027/common/guidance/list-3rd-country-participation_horizon-euratom_en.pdf",
+        "quote": "The association agreements with the following countries have now started to produce legal effects",
+        "checked_at": "2026-11-25",
+        "method": "page"
       }
     ]
   },
-  "checked_at": "2026-11-25"
+  "checked_at": "2026-11-24"
 }

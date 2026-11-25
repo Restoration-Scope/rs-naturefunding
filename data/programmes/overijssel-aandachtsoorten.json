@@ -19,7 +19,7 @@
   "pool": { "currency": "EUR", "value": 504506, "period": "year", "label": "2026" },
   "co_finance_required": true,
   "reporting": null,
-  "effort": { "steps": ["Digital application with requested attachments"] },
+  "effort": { "steps": ["Digital application with requested attachments"], "due": ["2026-12-31"] },
   "eligibility": [
     {
       "rule": "Has the legal form of a foundation, association, BV, NV or public-law legal person",
@@ -27,13 +27,24 @@
     },
     { "rule": "Has a measures plan prepared by a professional ecologist", "kind": "capacity" },
     { "rule": "Undertakes one-time measures", "kind": "project" },
-    { "rule": "Ensures the measures are maintained for at least 6 years", "kind": "project" },
+    {
+      "rule": "Carries out measures so they can be maintained for at least six years",
+      "kind": "project"
+    },
     {
       "rule": "Uses indigenous and, where possible, local plant or seed material",
       "kind": "project"
     },
     {
       "rule": "Does not carry out measures that can be covered by a Natura 2000 restoration programme",
+      "kind": "project"
+    },
+    {
+      "rule": "Is a >20 ha estate owner, land manager, Overijssel municipality, water board or body with a nature-management aim",
+      "kind": "legal"
+    },
+    {
+      "rule": "Waits until the province receives the application before starting the activities",
       "kind": "project"
     }
   ],
@@ -43,9 +54,11 @@
     "Project plan",
     "Land-value appraisal, for heath corridors with land-value loss",
     "Municipal statement of intent, for heath corridors with land-value loss",
-    "De minimis award letters, for heath corridors with land-value loss, if applicable",
+    "Heath corridors with land-value loss: award letters for de minimis aid from other funders in the past 3 years",
     "Bank account proof, if applying for the first time or after an account-number change",
-    "Signed authorization, if applying as an authorized representative"
+    "Signed authorization, if applying as an authorized representative",
+    "Budget and funding plan using the required template",
+    "Cooperation agreement, for partnership applications"
   ],
   "calls": [
     {
@@ -123,6 +136,12 @@
         "quote": "U maakt gebruik van het digitale aanvraagformulier dat u kunt vinden op deze pagina. In het formulier kunt u ook de gevraagde bijlagen uploaden.",
         "checked_at": "2026-11-25",
         "method": "page"
+      },
+      {
+        "source_url": "https://regelen.overijssel.nl/Producten_en_diensten/Subsidies/Natuur_en_landschap/Ondersteunen_van_Overijsselse_aandachtsoorten",
+        "quote": "U kunt aanvragen tot uiterlijk op 31 december 2026 of totdat het budget bereikt is.",
+        "checked_at": "2026-11-24",
+        "method": "page"
       }
     ],
     "eligibility": [
@@ -161,6 +180,18 @@
         "quote": "Er wordt geen subsidie verstrekt aan maatregelen voor aandachtsoorten als die maatregelen binnen het herstel- en ontwikkelprogramma voor Natura 2000-gebieden uitgevoerd (kunnen) worden.",
         "checked_at": "2026-11-25",
         "method": "page"
+      },
+      {
+        "source_url": "https://lokaleregelgeving.overheid.nl/CVDR679264/",
+        "quote": "De aanvrager moet zijn: eigenaar van een landgoed dat groter is dan 20 ha, een Terreinbeherende Organisatie, een Overijsselse gemeente, een Waterschap of een organisatie die natuurbeheer tot (statutair) doel natuurbeheer heeft.",
+        "checked_at": "2026-11-24",
+        "method": "page"
+      },
+      {
+        "source_url": "https://lokaleregelgeving.overheid.nl/CVDR679264/",
+        "quote": "Dit betekent dat de activiteiten op het moment van de ontvangst van de subsidieaanvraag nog niet zijn gestart.",
+        "checked_at": "2026-11-24",
+        "method": "page"
       }
     ],
     "documents": [
@@ -193,6 +224,18 @@
         "quote": "Een ondertekende machtiging als u dit formulier invult als gemachtigde.",
         "checked_at": "2026-11-25",
         "method": "page"
+      },
+      {
+        "source_url": "https://lokaleregelgeving.overheid.nl/CVDR679264/",
+        "quote": "De aanvrager levert een begroting en een dekkingsplan in. Het is verplicht om het beschikbaar gestelde begrotingsformat te gebruiken.",
+        "checked_at": "2026-11-24",
+        "method": "page"
+      },
+      {
+        "source_url": "https://lokaleregelgeving.overheid.nl/CVDR679264/",
+        "quote": "Als sprake is van een samenwerkingsverband levert de aanvrager aanvullend: a. een samenwerkingsovereenkomst, en b. een staatssteunverklaring van alle partners in.",
+        "checked_at": "2026-11-24",
+        "method": "page"
       }
     ],
     "co_finance": {
@@ -202,6 +245,9 @@
       "method": "page"
     }
   },
-  "checked_at": "2026-11-25",
-  "co_finance": { "min_share": 10 }
+  "checked_at": "2026-11-24",
+  "co_finance": {
+    "min_share": 10,
+    "applies_to": "Eligible costs other than heath-corridor land value loss"
+  }
 }

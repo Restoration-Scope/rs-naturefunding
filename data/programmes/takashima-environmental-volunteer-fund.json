@@ -24,13 +24,23 @@
   "amount": { "currency": "JPY", "min": 50000, "max": 300000, "typical": true },
   "co_finance_required": null,
   "reporting": null,
-  "effort": { "steps": ["Application submission", "Committee review"] },
+  "effort": {
+    "steps": ["Application submission", "Committee review"],
+    "due": ["2026-12-30", null]
+  },
+  "eligibility": [
+    {
+      "rule": "Conduct the funded activities from April 2027 through March 2028",
+      "kind": "project"
+    }
+  ],
   "after_award": { "reports": "unspecified" },
   "documents": [
     "Detailed project or activity plan",
     "Estimate or catalogue, if purchasing goods",
     "Budget, if conducting a special project",
-    "Evidence showing activity status"
+    "Evidence showing activity status",
+    "Member roster for groups, if one exists"
   ],
   "calls": [
     {
@@ -113,6 +123,14 @@
         "method": "page"
       }
     ],
+    "eligibility": [
+      {
+        "source_url": "https://bank.82group.jp/news/2026/20261001_1.html",
+        "quote": "2027年4月～2028年3月までの活動",
+        "checked_at": "2026-11-24",
+        "method": "page"
+      }
+    ],
     "after_award": [
       {
         "source_url": "https://bank.82group.jp/news/2026/pdf/news_20261001_1.pdf",
@@ -139,8 +157,14 @@
         "quote": "※活動状況を示す資料等を添付して下さい(別紙可)",
         "checked_at": "2026-11-25",
         "method": "page"
+      },
+      {
+        "source_url": "https://bank.82group.jp/news/2026/pdf/news_20261001_1.pdf",
+        "quote": "主要構成メンバーを記入して下さい。（団体・グループの場合） （名簿等があれば添付して下さい）",
+        "checked_at": "2026-11-24",
+        "method": "page"
       }
     ]
   },
-  "checked_at": "2026-11-25"
+  "checked_at": "2026-11-24"
 }

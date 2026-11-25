@@ -16,21 +16,16 @@
   "window": "fixed",
   "amount": { "currency": "EUR", "max": 75000, "note": "Up to 100% of eligible costs" },
   "pool": { "currency": "EUR", "value": 500000, "period": "year", "label": "2026" },
-  "co_finance_required": null,
+  "co_finance_required": false,
   "consortium_required": false,
   "reporting": "Share a monitoring report with the province after the work, covering the starting situation, methods used and end situation; record the species in the national flora and fauna database.",
-  "effort": { "steps": ["Digital application form with attachments"] },
   "eligibility": [
-    {
-      "rule": "Carries out the activity in, or directs it at, the Province of Utrecht",
-      "kind": "project"
-    },
     {
       "rule": "Shows the relevant species can demonstrably harm biodiversity at the project location",
       "kind": "project"
     },
     {
-      "rule": "Makes lasting reduction of the invasive species plausible, unless the activity is efficacy research",
+      "rule": "Shows a likely substantial, lasting reduction in the invasive species, except for efficacy research",
       "kind": "project"
     },
     {
@@ -46,16 +41,21 @@
     {
       "rule": "Execution projects take place in a listed area (NNN, Natura 2000, KRW waters, species habitats and others)",
       "kind": "project"
+    },
+    {
+      "rule": "Area plans cover an entire municipality or a water-board-managed catchment",
+      "kind": "project"
     }
   ],
-  "after_award": { "reports": "final" },
   "documents": [
-    "Project plan: place, species, measures, planning, upkeep and monitoring",
+    "Project plan with location, species, biodiversity benefits, measures, schedule, upkeep and monitoring",
     "Map of project locations and planned measures",
     "Consent of all partners, for a partnership",
     "Signed De-minimis declaration, if used",
     "Budget with cost justification and funding plan",
-    "Incorporation deed and statutes, for a first application"
+    "Incorporation deed and statutes, for a first application",
+    "Chamber of Commerce extract under six months old, if applying without eHerkenning",
+    "Signed authorization form when an intermediary or lead applicant submits the application"
   ],
   "calls": [
     {
@@ -93,12 +93,6 @@
     }
   ],
   "evidence": {
-    "administered_by": {
-      "source_url": "https://www.provincie-utrecht.nl/loket/subsidies/hoe-kunt-u-subsidie-aanvragen",
-      "quote": "Voor de bij de provincie Utrecht neergelegde regelingen geldt dat deze worden uitgevoerd door de provincie Utrecht",
-      "checked_at": "2026-11-25",
-      "method": "page"
-    },
     "applicant_types": {
       "source_url": "https://www.provincie-utrecht.nl/loket/subsidies/bestrijding-en-beheersing-invasieve-exoten",
       "quote": "Subsidie kan worden aangevraagd door rechtspersonen en samenwerkingsverbanden van rechtspersonen.",
@@ -135,6 +129,12 @@
       "checked_at": "2026-11-25",
       "method": "page"
     },
+    "co_finance_required": {
+      "source_url": "https://www.provincie-utrecht.nl/loket/subsidies/bestrijding-en-beheersing-invasieve-exoten",
+      "quote": "De hoogte van de subsidie bedraagt voor uitvoering van bestrijdings-, beheers-, herstel- en onderzoeksprojecten, max. 100% van de subsidiabele kosten",
+      "checked_at": "2026-11-24",
+      "method": "page"
+    },
     "consortium_required": {
       "source_url": "https://lokaleregelgeving.overheid.nl/CVDR732379",
       "quote": "Subsidie kan worden verstrekt aan: a. rechtspersonen;",
@@ -147,21 +147,7 @@
       "checked_at": "2026-11-25",
       "method": "page"
     },
-    "effort": [
-      {
-        "source_url": "https://lokaleregelgeving.overheid.nl/CVDR732379",
-        "quote": "Dit gebeurt d.m.v. het invullen van een digitaal formulier op de site van de provincie.",
-        "checked_at": "2026-11-25",
-        "method": "page"
-      }
-    ],
     "eligibility": [
-      {
-        "source_url": "https://www.provincie-utrecht.nl/loket/subsidies/bestrijding-en-beheersing-invasieve-exoten",
-        "quote": "De activiteit uitgevoerd wordt in of is gericht op de provincie Utrecht.",
-        "checked_at": "2026-11-25",
-        "method": "page"
-      },
       {
         "source_url": "https://www.provincie-utrecht.nl/loket/subsidies/bestrijding-en-beheersing-invasieve-exoten",
         "quote": "De activiteit betrekking heeft op locaties waar de soorten, genoemd onder 2. de biodiversiteit aantoonbaar negatief kunnen beïnvloeden of hebben beïnvloed",
@@ -203,13 +189,11 @@
         "quote": "i. leefgebieden van Utrechtse aandachtsoorten; ii. het Natuurnetwerk Nederland (NNN); iii. KRW-oppervlaktewaterlichamen; iv. Natura 2000-gebieden; v. Weidevogelkerngebieden; vi. Ganzenrustgebieden; vii. Groene contour; viii. Waterparels; ix. Kleine landschapselementen; x. Waardevolle houtopstanden buiten de bebouwde kom;",
         "checked_at": "2026-11-25",
         "method": "page"
-      }
-    ],
-    "after_award": [
+      },
       {
         "source_url": "https://lokaleregelgeving.overheid.nl/CVDR732379",
-        "quote": "na afloop van uitvoeringsactiviteiten de resultaten van de gesubsidieerde activiteiten middels een monitoringsverslag te delen met de provincie Utrecht.",
-        "checked_at": "2026-11-25",
+        "quote": "het totale grondgebied van een gemeente; ii. het stroomgebied van een of meer waterlopen dat wordt beheerd door het waterschap en eventueel andere partijen.",
+        "checked_at": "2026-11-24",
         "method": "page"
       }
     ],
@@ -243,8 +227,56 @@
         "quote": "Begroting: begroting en onderbouwing van de kostenposten in de begroting, inclusief dekkingsplan; De meest recente statuten: Als een rechtspersoon voor de eerste keer subsidie aanvraagt, dient hij tevens de oprichtingsakte en de statuten aan te leveren.",
         "checked_at": "2026-11-25",
         "method": "page"
+      },
+      {
+        "source_url": "https://lokaleregelgeving.overheid.nl/CVDR732379",
+        "quote": "beschrijft waar het project of programma wordt uitgevoerd, welke invasieve exoten worden bestreden, welke inheemse biodiversiteit daarvan zal profiteren en hoe, welke maatregelen daarvoor worden uitgevoerd, welke planning is voorzien, op welke wijze de gerealiseerde vermindering van aantallen invasieve exoten in stand worden gehouden en hoe de effecten van de maatregelen worden gemonitord",
+        "checked_at": "2026-11-24",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.provincie-utrecht.nl/loket/subsidies/hoe-kunt-u-subsidie-aanvragen",
+        "quote": "Recent uittreksel van de Kamer van Koophandel: niet ouder dan 6 maanden op moment van aanvragen (van toepassing indien u niet kiest voor aanvragen via eHerkenning)",
+        "checked_at": "2026-11-24",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.provincie-utrecht.nl/loket/subsidies/hoe-kunt-u-subsidie-aanvragen",
+        "quote": "Machtigingsformulier, als de aanvraag door een intermediair of penvoerder wordt ingediend.",
+        "checked_at": "2026-11-24",
+        "method": "page"
       }
-    ]
+    ],
+    "effort": [
+      {
+        "source_url": "https://lokaleregelgeving.overheid.nl/CVDR732379",
+        "quote": "Dit gebeurt d.m.v. het invullen van een digitaal formulier op de site van de provincie.",
+        "checked_at": "2026-11-25",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.provincie-utrecht.nl/loket/subsidies/bestrijding-en-beheersing-invasieve-exoten",
+        "quote": "Aanvraagperiode: 1 januari 2026 00:00 - 31 december 2026 23:59",
+        "checked_at": "2026-11-24",
+        "method": "page"
+      }
+    ],
+    "after_award": [
+      {
+        "source_url": "https://lokaleregelgeving.overheid.nl/CVDR732379",
+        "quote": "na afloop van uitvoeringsactiviteiten de resultaten van de gesubsidieerde activiteiten middels een monitoringsverslag te delen met de provincie Utrecht.",
+        "checked_at": "2026-11-25",
+        "method": "page"
+      }
+    ],
+    "administered_by": {
+      "source_url": "https://www.provincie-utrecht.nl/loket/subsidies/hoe-kunt-u-subsidie-aanvragen",
+      "quote": "Voor de bij de provincie Utrecht neergelegde regelingen geldt dat deze worden uitgevoerd door de provincie Utrecht",
+      "checked_at": "2026-11-25",
+      "method": "page"
+    }
   },
-  "checked_at": "2026-11-25"
+  "checked_at": "2026-11-24",
+  "effort": { "steps": ["Digital application form with attachments"], "due": ["2026-12-31"] },
+  "after_award": { "reports": "final" }
 }

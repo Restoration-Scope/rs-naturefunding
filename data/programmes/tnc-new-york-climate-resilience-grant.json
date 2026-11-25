@@ -22,14 +22,17 @@
   "pool": { "currency": "USD", "value": 650000, "period": "round", "label": "the 2027 round" },
   "co_finance_required": null,
   "reporting": null,
-  "effort": { "steps": ["Application"], "due": ["2027-01-22"] },
+  "effort": {
+    "steps": ["Application", "Application evaluation and scoring"],
+    "due": ["2027-01-22", null]
+  },
   "eligibility": [
     {
-      "rule": "Is a land trust, conservation 501(c)(3), academic non-profit, Tribal Nation or local agency operating in New York",
+      "rule": "NY land trust, conservation 501(c)(3), nonprofit academic body, local agency, or state/federal Tribe or its nonprofit",
       "kind": "legal"
     },
     {
-      "rule": "For Lands acquisition, protects land within the Terrestrial Resilient and Connected Network and mapped focal areas",
+      "rule": "Lands acquisition: in a mapped focal area, or nearby with exceptional conservation and engagement if funding allows",
       "kind": "project"
     },
     {
@@ -40,18 +43,24 @@
     {
       "rule": "Does not propose shoreline or streambank stabilization, including living shorelines",
       "kind": "project"
-    }
+    },
+    { "rule": "Submit at most one application to this programme per year", "kind": "other" },
+    {
+      "rule": "Acquisition parcels share ownership. Non-adjacent parcels have a relationship that promotes landscape connectivity.",
+      "kind": "project"
+    },
+    { "rule": "Acquisition has not already closed", "kind": "project" }
   ],
   "after_award": { "reports": "interim_and_final" },
   "documents": [
     "Completed budget narrative and worksheet",
     "Conflict Inquiry form, if a non-profit organization",
     "Current LTAC accreditation letter, plus renewal proof if renewing before grant end",
-    "If not LTAC-accredited: Letter of Intent for accreditation, if submitted",
-    "If not LTAC-accredited: IRS determination letter",
-    "If not LTAC-accredited: by-laws and articles of incorporation",
-    "If not LTAC-accredited: latest Form 990 or financial statement",
-    "If not LTAC-accredited: state Certificate of Good Standing"
+    "Accreditation letter of intent submitted within the past year, if applicable to a non-accredited nonprofit",
+    "IRS determination letter for non-accredited land trusts and other nonprofits",
+    "Bylaws and articles of incorporation for non-accredited land trusts and other nonprofits",
+    "Latest Form 990 or financial statement for non-accredited land trusts and other nonprofits",
+    "Home-state Certificate of Good Standing for non-accredited land trusts and other nonprofits"
   ],
   "calls": [
     {
@@ -130,6 +139,12 @@
         "quote": "Applications open November 12, 2026 and are due by January 22, 2027.",
         "checked_at": "2026-11-25",
         "method": "page"
+      },
+      {
+        "source_url": "https://www.nature.org/content/dam/tnc/nature/en/documents/f/y/FY27-CRGP-RFA-FINAL.pdf",
+        "quote": "Scoring Criteria All projects will be evaluated for:",
+        "checked_at": "2026-11-24",
+        "method": "page"
       }
     ],
     "eligibility": [
@@ -141,8 +156,8 @@
       },
       {
         "source_url": "https://www.nature.org/content/dam/tnc/nature/en/documents/f/y/FY27-CRGP-RFA-FINAL.pdf",
-        "quote": "Conserving Resilient Lands acquisition projects will protect lands located in the Terrestrial Resilient and Connected Network within mapped focal areas.",
-        "checked_at": "2026-11-25",
+        "quote": "Conserving Resilient Lands Acquisition projects will also be evaluated for: • • • Location: the project is within a mapped focal area. Projects with outstanding conservation values and compelling community engagement attributes that are outside of but close to a focal area may be considered as funding allows.",
+        "checked_at": "2026-11-24",
         "method": "page"
       },
       {
@@ -162,6 +177,24 @@
         "quote": "Shoreline and streambank stabilization projects, including living shorelines, are not eligible.",
         "checked_at": "2026-11-25",
         "method": "page"
+      },
+      {
+        "source_url": "https://www.nature.org/content/dam/tnc/nature/en/documents/f/y/FY27-CRGP-General-Questions.pdf",
+        "quote": "Applicants may submit one application per year to the CRGP.",
+        "checked_at": "2026-11-24",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.nature.org/content/dam/tnc/nature/en/documents/f/y/FY27-CRGP-General-Questions.pdf",
+        "quote": "Yes, but they must be under the same ownership and preferably adjacent to one another. If they are not adjacent, they may still constitute a single project if there is a clear conservation relationship between them that promotes landscape connectivity",
+        "checked_at": "2026-11-24",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.nature.org/content/dam/tnc/nature/en/documents/f/y/FY27-CRGP-General-Questions.pdf",
+        "quote": "Are land acquisition projects that already closed eligible? o No. This program is intended to catalyze new protection projects that need to close a funding gap.",
+        "checked_at": "2026-11-24",
+        "method": "page"
       }
     ],
     "after_award": [
@@ -169,6 +202,12 @@
         "source_url": "https://www.nature.org/content/dam/tnc/nature/en/documents/f/y/FY27-CRGP-General-Questions.pdf",
         "quote": "For Planning, Capacity and Strategy projects, grantees must submit brief interim and final reports.",
         "checked_at": "2026-11-25",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.nature.org/content/dam/tnc/nature/en/documents/f/y/FY27-CRGP-General-Questions.pdf",
+        "quote": "For Land Acquisition projects, grantees must send a copy of the recorded deed to Matt Levy mlevy@tnc.org no later than 60 days from the date of closing.",
+        "checked_at": "2026-11-24",
         "method": "page"
       }
     ],
@@ -199,5 +238,5 @@
       }
     ]
   },
-  "checked_at": "2026-11-25"
+  "checked_at": "2026-11-24"
 }

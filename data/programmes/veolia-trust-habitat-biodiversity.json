@@ -24,34 +24,42 @@
     "max": 75000,
     "note": "Requests over £75,000 are considered from registered charities, environmental bodies or local authorities"
   },
-  "co_finance_required": true,
+  "co_finance_required": false,
   "reporting": null,
   "effort": {
     "steps": ["Initial eligibility enquiry", "Full application, if invited"],
     "due": [null, "2027-01-07"]
   },
   "eligibility": [
-    { "rule": "Be charitable and not-for-profit, or be a Local Authority", "kind": "legal" },
-    { "rule": "Have signed governing documents", "kind": "legal" },
     {
-      "rule": "Have operated for at least two years at application",
-      "kind": "track_record",
-      "min_years": 2
+      "rule": "Council or nonprofit charity with signed rules, 2+ years, 2+ unrelated officers and no officer/member financial gain.",
+      "kind": "legal"
     },
     {
-      "rule": "Have at least two unrelated directors, trustees or committee members",
-      "kind": "capacity"
-    },
-    {
-      "rule": "Run the project on one site within 10 miles of an eligible landfill site in England",
+      "rule": "Use one project site outside the grounds of educational establishments.",
       "kind": "project"
     },
-    { "rule": "Have all required permissions in place at application", "kind": "project" },
     {
-      "rule": "Own the site, hold a valid 7-year lease, or partner with a Local Authority landowner",
+      "rule": "Own the site, have at least 7 years left on a valid lease, or partner with the local authority that owns it.",
       "kind": "project"
     },
-    { "rule": "Ensure funded project elements are not for community purposes", "kind": "project" }
+    { "rule": "Ensure funded project elements are not for community purposes", "kind": "project" },
+    {
+      "rule": "Make structural site improvements or purchase land for nature conservation.",
+      "kind": "project"
+    },
+    {
+      "rule": "Use a standalone project. Start after signing and within 4 months of award, then finish within 12 months.",
+      "kind": "project"
+    },
+    {
+      "rule": "If leasing, the applicant and landowner have no shared director or trustee.",
+      "kind": "project"
+    },
+    {
+      "rule": "One application per site per 12 months; if previously funded, wait 12 months from final payment.",
+      "kind": "project"
+    }
   ],
   "calls": [
     {
@@ -186,9 +194,9 @@
       "method": "page"
     },
     "co_finance_required": {
-      "source_url": "https://www.veoliatrust.org/funding-criteria/habitat-and-biodiversity-grant-funding-criteria/",
-      "quote": "a project where the 10% CTP payment* has been secured, which is required to release the grant",
-      "checked_at": "2026-11-25",
+      "source_url": "https://www.veoliatrust.org/wp-content/uploads/2026/08/Sample-Application-Form-.docx.pdf",
+      "quote": "If you are requesting 100% funding from us towards the project cost, you do not need to complete this section.",
+      "checked_at": "2026-11-24",
       "method": "page"
     },
     "effort": [
@@ -203,49 +211,31 @@
         "quote": "26 November 2026 07 January 2027 02 March 2027",
         "checked_at": "2026-11-25",
         "method": "page"
+      },
+      {
+        "source_url": "https://www.veoliatrust.org/funding-criteria/habitat-and-biodiversity-grant-funding-criteria/",
+        "quote": "We may request additional information before inviting you to apply.",
+        "checked_at": "2026-11-24",
+        "method": "page"
       }
     ],
     "eligibility": [
       {
         "source_url": "https://www.veoliatrust.org/funding-criteria/habitat-and-biodiversity-grant-funding-criteria/",
-        "quote": "is charitable and operated on a not-for-profit basis",
-        "checked_at": "2026-11-25",
+        "quote": "is charitable and operated on a not-for-profit basis is constituted, with a set of signed governing documents has been established for a minimum of two years at the time of application has a minimum of two directors, trustees or committee members who are not related to each other does not financially benefit directors, trustees, members an application from a Local Authority",
+        "checked_at": "2026-11-24",
         "method": "page"
       },
       {
         "source_url": "https://www.veoliatrust.org/funding-criteria/habitat-and-biodiversity-grant-funding-criteria/",
-        "quote": "is constituted, with a set of signed governing documents",
-        "checked_at": "2026-11-25",
+        "quote": "a project which takes places on multiple sites we will not consider projects that will take place on the grounds of educational establishments e.g. school, pre-school, nursery, college, university, office.",
+        "checked_at": "2026-11-24",
         "method": "page"
       },
       {
-        "source_url": "https://www.veoliatrust.org/funding-criteria/habitat-and-biodiversity-grant-funding-criteria/",
-        "quote": "has been established for a minimum of two years at the time of application",
-        "checked_at": "2026-11-25",
-        "method": "page"
-      },
-      {
-        "source_url": "https://www.veoliatrust.org/funding-criteria/habitat-and-biodiversity-grant-funding-criteria/",
-        "quote": "has a minimum of two directors, trustees or committee members who are not related to each other",
-        "checked_at": "2026-11-25",
-        "method": "page"
-      },
-      {
-        "source_url": "https://www.veoliatrust.org/funding-criteria/habitat-and-biodiversity-grant-funding-criteria/",
-        "quote": "a project which will take place on a single site - located within 10 miles of an eligible landfill site in England",
-        "checked_at": "2026-11-25",
-        "method": "page"
-      },
-      {
-        "source_url": "https://www.veoliatrust.org/funding-criteria/habitat-and-biodiversity-grant-funding-criteria/",
-        "quote": "all permissions (e.g. Environment Agency) in place at the time of application",
-        "checked_at": "2026-11-25",
-        "method": "page"
-      },
-      {
-        "source_url": "https://www.veoliatrust.org/funding-criteria/habitat-and-biodiversity-grant-funding-criteria/",
-        "quote": "the named applicant organisation is the landowner (we will ask for evidence of ownership or the named Applicant Organisation holds a valid lease with the landowner, with at least seven years of the term remaining",
-        "checked_at": "2026-11-25",
+        "source_url": "https://www.veoliatrust.org/wp-content/uploads/2026/08/Sample-Application-Form-.docx.pdf",
+        "quote": "Your organisation must either own the project site, or hold a Lease with the landowner with at least seven years of the term remaining (a copy of this will need to be uploaded to the Project Site section of the form) or work in partnership with the landowner who is must be a Local Authority",
+        "checked_at": "2026-11-24",
         "method": "page"
       },
       {
@@ -253,8 +243,32 @@
         "quote": "the project elements funding is requested for can not be for community purposes",
         "checked_at": "2026-11-25",
         "method": "page"
+      },
+      {
+        "source_url": "https://www.veoliatrust.org/funding-criteria/habitat-and-biodiversity-grant-funding-criteria/",
+        "quote": "a project resulting in structural improvements to a single site e.g. woodland, nature reserve, waterway or purchase of land for nature conservation",
+        "checked_at": "2026-11-24",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.veoliatrust.org/funding-criteria/habitat-and-biodiversity-grant-funding-criteria/",
+        "quote": "a project that will physically start within four months of being awarded a grant a project that will complete within 12 months of its start date We won’t consider funding: a project that forms part of a larger project a project that has already started or is anticipated to start before formal agreements are signed",
+        "checked_at": "2026-11-24",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.veoliatrust.org/funding-criteria/habitat-and-biodiversity-grant-funding-criteria/",
+        "quote": "Please note: There should be no shared director/trustee between both the ‘Applicant Organisation’ and the ‘Landowner’",
+        "checked_at": "2026-11-24",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.veoliatrust.org/funding-criteria/habitat-and-biodiversity-grant-funding-criteria/",
+        "quote": "no more than one application per project site will be considered in a 12 month period: if you have previously received funding from us, you cannot apply until 12 months after your final payment date",
+        "checked_at": "2026-11-24",
+        "method": "page"
       }
     ]
   },
-  "checked_at": "2026-11-25"
+  "checked_at": "2026-11-24"
 }

@@ -21,6 +21,7 @@
   "amount": null,
   "co_finance_required": true,
   "reporting": null,
+  "after_award": { "reports": "final" },
   "calls": [
     {
       "id": "2026",
@@ -85,8 +86,16 @@
     "eligibility": [
       {
         "source_url": "https://elinvoimakeskus.fi/avustus-saariston-ymparistonhoitoon",
-        "quote": "Avusta myönnetään vain valtioneuvoston asetuksessa määritellyille saaristokunnille ja tiettyjen kuntien nimetyille saarille.",
-        "checked_at": "2026-11-25",
+        "quote": "Avustusta voivat hakea saariston asukkaat, paikalliset luonnonsuojelu- ja ympäristöjärjestöt sekä erilaiset yhdistykset ja säätiöt, jotka edistävät saariston luonnonsuojelua tai ympäristöhoitoa.",
+        "checked_at": "2026-11-24",
+        "method": "page"
+      }
+    ],
+    "after_award": [
+      {
+        "source_url": "https://sa01elysuomifilomakkeet.blob.core.windows.net/blobsuomifilomakkeet/keha/keha90g1_fi_maksatushakemus_rakennus_ymp%C3%A4rist%C3%B6_vesisto.pdf",
+        "quote": "Loppuraportti viimeisen maksatushakemuksen yhteydessä.",
+        "checked_at": "2026-11-24",
         "method": "page"
       }
     ],
@@ -120,6 +129,18 @@
         "quote": "Hakemukseen on liitettävä selvitys yhteyshenkilön oikeudesta toimia yhteisön lukuun (nimenkirjoitusoikeus), milloin hakijana on juridinen henkilö (yhdistys, järjestö tai muu yhteisö).",
         "checked_at": "2026-11-25",
         "method": "page"
+      },
+      {
+        "source_url": "https://sa01elysuomifilomakkeet.blob.core.windows.net/blobsuomifilomakkeet/ELY/ely90k2i_fi_hakuohje_saariston_ympariston_hoito.pdf",
+        "quote": "Jos hakemus täytetään omistajan puolesta tai omistajia on useita, on hakemukseen liitettävä valtakirjat kaikilta omistajilta.",
+        "checked_at": "2026-11-24",
+        "method": "page"
+      },
+      {
+        "source_url": "https://sa01elysuomifilomakkeet.blob.core.windows.net/blobsuomifilomakkeet/ELY/ely90k2i_fi_hakuohje_saariston_ympariston_hoito.pdf",
+        "quote": "Laajoissa ja vaativissa rakennuksen korjauksissa tulee olla rakennusalan ammattilaisen laatima kuntoarvio tai rakennuksen korjaussuunnitelma.",
+        "checked_at": "2026-11-24",
+        "method": "page"
       }
     ],
     "effort": [
@@ -137,15 +158,15 @@
       "method": "page"
     }
   },
-  "checked_at": "2026-11-25",
+  "checked_at": "2026-11-24",
   "co_finance": {
     "min_share": 20,
     "applies_to": "Environmental care projects; building repairs need 50%"
   },
   "eligibility": [
     {
-      "rule": "The project is in a designated archipelago municipality or named island",
-      "kind": "project"
+      "rule": "Individuals live in the archipelago. Associations and foundations support its conservation or environmental care.",
+      "kind": "legal"
     }
   ],
   "documents": [
@@ -153,7 +174,9 @@
     "Photographs of the site and its surroundings",
     "Itemised cost estimate",
     "Location map",
-    "Proof of signing authority, for organisations"
+    "Proof of signing authority, for organisations",
+    "Powers of attorney from all owners, if applying for an owner or if the site has several owners.",
+    "Professional condition assessment or repair plan for extensive and demanding building repairs."
   ],
   "effort": { "steps": ["Grant application"], "due": ["2026-12-09"] }
 }

@@ -19,13 +19,13 @@
   "access": "direct",
   "window": "fixed",
   "amount": { "currency": "GBP", "max": 50000, "note": "Up to £20,000 for individuals" },
-  "co_finance_required": null,
+  "co_finance_required": false,
   "consortium_required": false,
   "reporting": "One short final report at the end of the project against its objectives, with evidence on outputs, ethics and environmental impact.",
   "effort": {
     "steps": [
-      "Application on Flexi-Grant with workplan and supporting documents",
-      "JNCC initial review of essential eligibility",
+      "Submit application through Flexi-Grant",
+      "Initial review for essential eligibility",
       "Expert review and scoring",
       "Defra funding decision"
     ],
@@ -33,19 +33,19 @@
   },
   "eligibility": [
     {
-      "rule": "Lead organisation or individual based in a UK Overseas Territory, or long-term tie to one with no residents",
+      "rule": "UKOT-based lead organisation or individual, or meaningful long-term ties to a territory with no permanent population",
       "kind": "legal"
     },
     {
-      "rule": "Research, development or capital projects only in non-ODA territories; ODA territories: proven methods",
+      "rule": "ODA: proven methods. Non-ODA: research and development, capital expenditure or proven methods.",
       "kind": "project"
     },
     {
-      "rule": "Project lasts at most 12 months and is completed by 31 March 2028",
+      "rule": "Project runs within 1 April 2027 to 31 March 2028 and lasts at most 12 months",
       "kind": "project"
     },
     {
-      "rule": "Outcomes in a Darwin Plus theme, an OTBS goal and a territory priority (or a new one the government backs)",
+      "rule": "Measurable outcomes in a Darwin Plus theme, an OTBS goal and an OT priority (new priorities need a government letter)",
       "kind": "project"
     },
     {
@@ -53,19 +53,25 @@
       "kind": "project"
     },
     {
-      "rule": "Not ongoing habitat maintenance or species protection, nor work mainly outside biodiversity or nature",
+      "rule": "No ongoing habitat maintenance or ongoing species protection, and a main focus on biodiversity or nature",
       "kind": "project"
     },
     {
       "rule": "No other application for the same or a similar project this year to Darwin Initiative, Darwin Plus, IWT or OCEAN",
       "kind": "other"
+    },
+    {
+      "rule": "At least 80% of the grant spent in-territory, or justify the exception",
+      "kind": "project"
     }
   ],
   "after_award": { "reports": "final" },
   "documents": [
     "Workplan on the Darwin Plus Local template",
-    "Cover letter on the project's fit and the lead's role and capacity",
-    "Letter of support from the territory government, for work on public land or water, invasive species or permits"
+    "Cover letter",
+    "UKOT government letter for its land/waters or permits, biocontrol, invasive species eradication or a new OTBS priority",
+    "Financial evidence for non-government organisations (accounts or other proof of ability to manage the award)",
+    "Signature upload for application certification"
   ],
   "calls": [
     {
@@ -128,6 +134,12 @@
       "checked_at": "2026-11-01",
       "method": "page"
     },
+    "co_finance_required": {
+      "source_url": "https://darwinplus.org.uk/media/zgtdssl5/r8-dplus-local-finance-guidance.pdf",
+      "quote": "Matched funding is not obligatory but is highly desirable and will strengthen applications.",
+      "checked_at": "2026-11-24",
+      "method": "page"
+    },
     "reporting": {
       "source_url": "https://darwinplus.org.uk/media/df2ju1xp/r8-dplus-local-guidance-draft-v02.pdf",
       "quote": "All projects are required to submit a Final Report at the end of the award.",
@@ -149,12 +161,6 @@
       },
       {
         "source_url": "https://darwinplus.org.uk/media/df2ju1xp/r8-dplus-local-guidance-draft-v02.pdf",
-        "quote": "Applications will be assessed by JNCC in two parts:",
-        "checked_at": "2026-11-20",
-        "method": "page"
-      },
-      {
-        "source_url": "https://darwinplus.org.uk/media/df2ju1xp/r8-dplus-local-guidance-draft-v02.pdf",
         "quote": "Initial review: to progress applications which meet the essential eligibility criteria.",
         "checked_at": "2026-11-20",
         "method": "page"
@@ -169,6 +175,12 @@
         "source_url": "https://darwinplus.org.uk/media/df2ju1xp/r8-dplus-local-guidance-draft-v02.pdf",
         "quote": "Final decisions will be taken by Defra, on consideration of the advice received from JNCC and on the funds available.",
         "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://darwinplus.org.uk/media/df2ju1xp/r8-dplus-local-guidance-draft-v02.pdf",
+        "quote": "Applications should be made through the online application portal Flexi-Grant at bcfs.flexigrant.com.",
+        "checked_at": "2026-11-24",
         "method": "page"
       }
     ],
@@ -187,8 +199,8 @@
       },
       {
         "source_url": "https://darwinplus.org.uk/media/df2ju1xp/r8-dplus-local-guidance-draft-v02.pdf",
-        "quote": "Projects in this Round (Round 8) can last for a maximum of twelve months and should plan to begin activities from April 2027, and all projects must be completed by 31 March 2028.",
-        "checked_at": "2026-11-20",
+        "quote": "In Round 8, we will be welcoming applications for projects that will be implemented between 1 April 2027 and 31 March 2028 (for projects lasting a 12-month maximum duration).",
+        "checked_at": "2026-11-24",
         "method": "page"
       },
       {
@@ -214,6 +226,12 @@
         "quote": "applicants cannot make multiple funding applications for the same or similar project in the same year to Darwin Initiative, Darwin Plus, IWT Challenge Fund and/or Ocean Community Empowerment and Nature (OCEAN) Grants Programme.",
         "checked_at": "2026-11-20",
         "method": "page"
+      },
+      {
+        "source_url": "https://darwinplus.org.uk/media/df2ju1xp/r8-dplus-local-guidance-draft-v02.pdf",
+        "quote": "In such cases we would expect at least 80% of the grant to be spent within the territory (see 2.1.2 above). If more than 20% of the grant is expected to be spent outside the territory, applicants must clearly provide their justification in Question 10 (Costs) of their application form.",
+        "checked_at": "2026-11-24",
+        "method": "page"
       }
     ],
     "documents": [
@@ -225,14 +243,26 @@
       },
       {
         "source_url": "https://darwinplus.org.uk/media/df2ju1xp/r8-dplus-local-guidance-draft-v02.pdf",
-        "quote": "Cover letter – to explain why the project is a strong match for funding and to explain the role, capability and capacity of the Project Leader/Lead Organisation (and partners, where involved).",
+        "quote": "Letter of support from the relevant UKOT Government – should funding be sought for activities: taking place on Government owned land and water, involving biocontrol or Invasive Alien Species eradication projects, or where projects will require Government-issued permits for their completion.",
         "checked_at": "2026-11-20",
         "method": "page"
       },
       {
         "source_url": "https://darwinplus.org.uk/media/df2ju1xp/r8-dplus-local-guidance-draft-v02.pdf",
-        "quote": "Letter of support from the relevant UKOT Government – should funding be sought for activities: taking place on Government owned land and water, involving biocontrol or Invasive Alien Species eradication projects, or where projects will require Government-issued permits for their completion.",
-        "checked_at": "2026-11-20",
+        "quote": "unless justified with a letter of support from the relevant UKOT Government that this is a new priority that has emerged since OTBS publication",
+        "checked_at": "2026-11-24",
+        "method": "page"
+      },
+      {
+        "source_url": "https://darwinplus.org.uk/media/zgtdssl5/r8-dplus-local-finance-guidance.pdf",
+        "quote": "Evidence of the Lead Organisation’s current financial situation should be provided. This may be through audited or independently examined accounts or other financial information showing that you are able to manage the award. Where government departments and agencies are eligible to apply, they are not required to demonstrate financial capacity via audited accounts or other means",
+        "checked_at": "2026-11-24",
+        "method": "page"
+      },
+      {
+        "source_url": "https://darwinplus.org.uk/media/df2ju1xp/r8-dplus-local-guidance-draft-v02.pdf",
+        "quote": "signed, with a PDF signature uploaded as part of the Flexi-Grant application.",
+        "checked_at": "2026-11-24",
         "method": "page"
       }
     ],

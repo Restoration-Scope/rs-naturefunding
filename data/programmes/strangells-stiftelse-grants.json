@@ -17,10 +17,19 @@
   "amount": null,
   "co_finance_required": null,
   "reporting": "Report on the project within a year after it ends and credit the foundation as making it possible.",
-  "effort": { "steps": ["Application by email"] },
+  "effort": {
+    "steps": [
+      "Application by email",
+      "Completeness check and request for missing material if needed"
+    ]
+  },
   "eligibility": [
     { "rule": "Represents a nonprofit organisation, foundation or equivalent", "kind": "legal" },
-    { "rule": "Does not request funding for ongoing operations or salary costs", "kind": "other" }
+    { "rule": "No ongoing operating costs or recurring salary costs requested", "kind": "other" },
+    {
+      "rule": "Advance nature and wild-animal protection, Djurens Rätt’s aims or ending painful animal experiments",
+      "kind": "project"
+    }
   ],
   "after_award": { "reports": "final" },
   "documents": ["Specific budget"],
@@ -145,6 +154,12 @@
         "quote": "Skicka in ansökningsformuläret tillsammans med eventuella bilagor, till vår mail info@strangellsstiftelse.se",
         "checked_at": "2026-11-25",
         "method": "page"
+      },
+      {
+        "source_url": "https://strangellsstiftelse.se/ansok",
+        "quote": "Om ansökan inte bedöms som komplett kan vi skicka tillbaka den för komplettering.",
+        "checked_at": "2026-11-24",
+        "method": "page"
       }
     ],
     "eligibility": [
@@ -158,6 +173,12 @@
         "source_url": "https://strangellsstiftelse.se/ansok",
         "quote": "Vad du inte kan ansöka om Ändamål som inte är i linje med stiftelsens syfte. Bidrag för löpande drift och verksamhet. Löpande lönekostnader.",
         "checked_at": "2026-11-25",
+        "method": "page"
+      },
+      {
+        "source_url": "https://strangellsstiftelse.se/ansok",
+        "quote": "forskning, projekt eller aktiviteter som främjar naturskydd och i frihet levande vilda djur, till verksamheter i enlighet med Djurens Rätts inriktning samt för avskaffande av plågsamma experiment på djur.",
+        "checked_at": "2026-11-24",
         "method": "page"
       }
     ],
@@ -178,5 +199,5 @@
       }
     ]
   },
-  "checked_at": "2026-11-25"
+  "checked_at": "2026-11-24"
 }

@@ -60,16 +60,18 @@
   "access": "direct",
   "window": "fixed",
   "amount": { "currency": "GBP", "min": 600000, "max": 1500000 },
-  "co_finance_required": null,
+  "co_finance_required": false,
+  "consortium_required": false,
   "reporting": "Annual and half-year progress reports, reviewed each year, against the project's objectives (outputs, ethics, environmental impact), plus a final report at the end of the award.",
   "effort": {
     "steps": [
-      "Stage 1 application on Flexi-Grant",
-      "Initial review, expert scoring and sift meeting",
+      "Submit Stage 1 application",
+      "Expert sift for Stage 2 invitations",
       "Stage 2 application, if invited",
-      "Expert review, sift and Defra funding decision"
+      "Expert review, sift and Defra funding decision",
+      "Before applying, contact the British embassy or high commission in each country"
     ],
-    "due": ["2026-11-23", null, "2027-04-05", null]
+    "due": ["2026-11-23", null, "2027-04-05", null, null]
   },
   "eligibility": [
     {
@@ -87,7 +89,7 @@
     { "rule": "Project lasts 2 to 4 years and completes by 31 August 2031", "kind": "project" },
     { "rule": "Project includes a poverty reduction focus", "kind": "project" },
     {
-      "rule": "Not a target of UK government sanctions and not a Russian organisation",
+      "rule": "Grant recipient and project countries free of UK sanctions, with no Russian organisation involved",
       "kind": "legal"
     },
     {
@@ -95,12 +97,16 @@
       "kind": "other"
     },
     {
-      "rule": "Not an application already resubmitted once, unless the project is significantly different",
-      "kind": "other"
+      "rule": "In upper-middle-income countries, work in an area of high biodiversity importance with a clear poverty reduction need",
+      "kind": "project"
     }
   ],
-  "after_award": { "reports": "twice_yearly" },
-  "documents": ["Cover letter, 2 sides of A4 maximum", "Logframe on the Stage 1 template"],
+  "after_award": { "reports": "twice_yearly", "audit": true },
+  "documents": [
+    "Cover letter, 2 sides of A4 maximum",
+    "Logframe on the Stage 1 template",
+    "Signature upload for application certification"
+  ],
   "calls": [
     {
       "id": "round-12-stage-1",
@@ -162,6 +168,18 @@
       "checked_at": "2026-11-01",
       "method": "page"
     },
+    "co_finance_required": {
+      "source_url": "https://iwt.challengefund.org.uk/media/jonarh4p/2026-27-bcfs-finance-guidance-final-july26.pdf",
+      "quote": "Matched funding is not obligatory, but is highly desirable and will strengthen applications",
+      "checked_at": "2026-11-24",
+      "method": "page"
+    },
+    "consortium_required": {
+      "source_url": "https://iwt.challengefund.org.uk/media/hrenz1dk/r12-iwt-guidance-final-sept26-1.pdf",
+      "quote": "Applicants should seek to work with local and national partners wherever possible, and involve them meaningfully from an early stage, including during project design.",
+      "checked_at": "2026-11-24",
+      "method": "page"
+    },
     "reporting": {
       "source_url": "https://iwt.challengefund.org.uk/media/hrenz1dk/r12-iwt-guidance-final-sept26-1.pdf",
       "quote": "Projects must provide Annual and Half Year progress reports that are reviewed each year.",
@@ -183,12 +201,6 @@
       },
       {
         "source_url": "https://iwt.challengefund.org.uk/media/hrenz1dk/r12-iwt-guidance-final-sept26-1.pdf",
-        "quote": "1) Initial Review: Applications that are poor quality, incomplete or do not meet the essential eligibility criteria or standard will be rejected.",
-        "checked_at": "2026-11-20",
-        "method": "page"
-      },
-      {
-        "source_url": "https://iwt.challengefund.org.uk/media/hrenz1dk/r12-iwt-guidance-final-sept26-1.pdf",
         "quote": "3) Sift Meeting: The experts discuss comments and agree the strongest applications to recommend for funding or inviting to Stage 2. Stage 2 applications then repeat steps 2 and 3.",
         "checked_at": "2026-11-20",
         "method": "page"
@@ -197,6 +209,12 @@
         "source_url": "https://iwt.challengefund.org.uk/media/hrenz1dk/r12-iwt-guidance-final-sept26-1.pdf",
         "quote": "Funding Decision: Prior to funding being awarded Defra reviews IWTAG’s recommendations, and due diligence checks.",
         "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://iwt.challengefund.org.uk/media/hrenz1dk/r12-iwt-guidance-final-sept26-1.pdf",
+        "quote": "All applicants are required to contact British embassies and high commissions in the project country/ies;",
+        "checked_at": "2026-11-24",
         "method": "page"
       }
     ],
@@ -245,8 +263,8 @@
       },
       {
         "source_url": "https://iwt.challengefund.org.uk/media/hrenz1dk/r12-iwt-guidance-final-sept26-1.pdf",
-        "quote": "An unsuccessful application may only be resubmitted once, unless the proposed project is significantly different.",
-        "checked_at": "2026-11-20",
+        "quote": "Upper Middle-Income countries (UMICs) are eligible, however, projects applying to work in a UMIC must clearly demonstrate a stronger case for support. This includes operating in areas of high importance for biodiversity and a clear poverty reduction need.",
+        "checked_at": "2026-11-24",
         "method": "page"
       }
     ],
@@ -262,6 +280,12 @@
         "quote": "Logframe Required on Stage 1 template.",
         "checked_at": "2026-11-20",
         "method": "page"
+      },
+      {
+        "source_url": "https://iwt.challengefund.org.uk/media/hrenz1dk/r12-iwt-guidance-final-sept26-1.pdf",
+        "quote": "signed, with a PDF signature uploaded as part of the Flexi-Grant application.",
+        "checked_at": "2026-11-24",
+        "method": "page"
       }
     ],
     "after_award": [
@@ -275,6 +299,12 @@
         "source_url": "https://iwt.challengefund.org.uk/media/hrenz1dk/r12-iwt-guidance-final-sept26-1.pdf",
         "quote": "All projects are required to submit a Final Report at the end of the award.",
         "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://iwt.challengefund.org.uk/media/jonarh4p/2026-27-bcfs-finance-guidance-final-july26.pdf",
+        "quote": "The cost to organise an audit/independent examination of funds must be allocated in the project budget whether you are claiming funds from the BCFs or not. For the BCFs these costs are ring-fenced, and any underspend may not be reallocated elsewhere. You must organise this and deliver the assurance within the timing required for your project.",
+        "checked_at": "2026-11-24",
         "method": "page"
       }
     ]

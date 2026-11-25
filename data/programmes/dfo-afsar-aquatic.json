@@ -15,26 +15,19 @@
   "co_finance_required": true,
   "reporting": null,
   "effort": {
-    "steps": ["Application form submitted by email"],
+    "steps": ["Application form submitted by email", "Regional Advisory Committee proposal review"],
     "more_after": true,
-    "due": ["2026-12-11"]
+    "due": ["2026-12-11", null]
   },
   "eligibility": [
     {
       "rule": "Target species have Endangered, Threatened or Special Concern status under SARA or COSEWIC",
       "kind": "project"
     },
-    {
-      "rule": "Project activities directly benefit aquatic species at risk and meet programme eligibilities",
-      "kind": "project"
-    },
+    { "rule": "Project activities directly benefit aquatic species at risk", "kind": "project" },
     { "rule": "Propose a 1-year project for the 2027 to 2028 funding year", "kind": "project" },
     {
-      "rule": "A partner applicant has a community letter confirming its formal mandate",
-      "kind": "legal"
-    },
-    {
-      "rule": "No captive breeding, hatcheries, aquaculture, reintroductions, recovery plans or federal-mandate research",
+      "rule": "No captive breeding/rearing, hatcheries, aquaculture, extirpated releases, SARA plan writing or federal-mandate research",
       "kind": "project"
     },
     {
@@ -48,7 +41,8 @@
     {
       "rule": "Receive funding from only one federal funding programme for each proposed activity",
       "kind": "project"
-    }
+    },
+    { "rule": "Request at least CAD 25,000 for a new one-year project", "kind": "project" }
   ],
   "co_finance": { "ratio": "0.20:1", "in_kind": true },
   "after_award": { "reports": "unspecified" },
@@ -121,6 +115,12 @@
         "quote": "Applications must be submitted to the appropriate regional email address by 23:59 Pacific Standard Time (PST) December 11, 2026.",
         "checked_at": "2026-11-25",
         "method": "page"
+      },
+      {
+        "source_url": "https://www.dfo-mpo.gc.ca/species-especes/sara-lep/afsar-faep/proposal-proposition/instructions/index-eng.html",
+        "quote": "Regional Advisory Committees review project proposals based on a range of considerations, including:",
+        "checked_at": "2026-11-24",
+        "method": "page"
       }
     ],
     "eligibility": [
@@ -139,12 +139,6 @@
       {
         "source_url": "https://www.dfo-mpo.gc.ca/species-especes/documents/sara-lep/afsar-faep/guidelines-lignes-directrices-eng.docx",
         "quote": "Only 1-year project proposals will be eligible for consideration in 2027 to 2028.",
-        "checked_at": "2026-11-25",
-        "method": "page"
-      },
-      {
-        "source_url": "https://www.dfo-mpo.gc.ca/species-especes/documents/sara-lep/afsar-faep/guidelines-lignes-directrices-eng.docx",
-        "quote": "providing a letter of support from the community clearly indicates that the submitting organization has been formally mandated to do so.",
         "checked_at": "2026-11-25",
         "method": "page"
       },
@@ -171,19 +165,25 @@
         "quote": "You can only receive funding from one federal funding program for each proposed activity.",
         "checked_at": "2026-11-25",
         "method": "page"
+      },
+      {
+        "source_url": "https://www.dfo-mpo.gc.ca/species-especes/sara-lep/afsar-faep/proposal-proposition/instructions/index-eng.html",
+        "quote": "The minimum funding request is $25,000 for new 1-year projects.",
+        "checked_at": "2026-11-24",
+        "method": "page"
       }
     ],
     "co_finance": {
       "source_url": "https://www.dfo-mpo.gc.ca/species-especes/sara-lep/afsar-faep/proposal-proposition/instructions/index-eng.html",
-      "quote": "A minimum of 20% matching contributions (from non-federal sources) of the AFSAR funding amount is required ($0.20 match for each $1 of AFSAR funding) in order to be considered for AFSAR funding",
-      "checked_at": "2026-11-25",
+      "quote": "You must obtain contributions of non-federal support (cash and/or in-kind) to obtain AFSAR funds. A minimum of 20% matching contributions (from non-federal sources) of the AFSAR funding amount is required ($0.20 match for each $1 of AFSAR funding) in order to be considered for AFSAR funding",
+      "checked_at": "2026-11-24",
       "method": "page"
     },
     "after_award": [
       {
         "source_url": "https://www.dfo-mpo.gc.ca/species-especes/sara-lep/afsar-faep/proposal-proposition/instructions/index-eng.html",
-        "quote": "may require the provision of progress reports, annual reports (for multi- year projects) as well as a final report at the end of the project.",
-        "checked_at": "2026-11-25",
+        "quote": "The Contribution Agreement between your organization and DFO will specify project report deadlines and will include the required forms. Reporting will be completed as per the conditions of the agreement",
+        "checked_at": "2026-11-24",
         "method": "page"
       }
     ],
@@ -196,5 +196,5 @@
       }
     ]
   },
-  "checked_at": "2026-11-25"
+  "checked_at": "2026-11-24"
 }

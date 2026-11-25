@@ -36,23 +36,36 @@
       "kind": "project"
     },
     {
-      "rule": "Used trees and shrubs are native, and herb seeds are indigenous and regionally sourced",
+      "rule": "If planting or sowing, use trees and shrubs of native local stock and native herb seed of regional origin",
       "kind": "project"
+    },
+    { "rule": "The grant request is at least EUR 2,500", "kind": "project" },
+    {
+      "rule": "Meadowbird activities are eligible only if other schemes cannot already fund them",
+      "kind": "project"
+    },
+    {
+      "rule": "The project cannot be funded by Utrecht's nature quality, nature management or small landscape element schemes",
+      "kind": "project"
+    },
+    { "rule": "The activity is not a management measure", "kind": "project" },
+    {
+      "rule": "A consortium designates a participating legal entity to submit the application",
+      "kind": "legal"
     }
   ],
-  "co_finance": { "min_share": 5 },
   "after_award": { "reports": "final" },
   "documents": [
-    "Project plan",
+    "Project plan and description of how management and maintenance are secured",
     "Project budget and coverage plan",
-    "Most recent statutes, plus deed of incorporation on a first application",
-    "Most recent final annual accounts",
-    "Recent Chamber of Commerce extract, if not applying via eHerkenning",
+    "For legal entities: statutes and incorporation deed on first application, then any changed statutes",
+    "Chamber of Commerce extract no more than six months old, if applicable and applying without eHerkenning",
     "Copy of a bank statement linking the applicant to its IBAN",
     "Authorisation form, if submitted by an intermediary or lead applicant",
     "Supporting maps",
-    "Description of how management and maintenance are secured",
-    "Owner or user consent, if the activity needs it"
+    "Owner or user consent, if the activity needs it",
+    "Written consent from all consortium participants, if applying as a consortium",
+    "Tax authority declaration that VAT cannot be offset, if the applicant has one"
   ],
   "calls": [
     {
@@ -85,18 +98,6 @@
     }
   ],
   "evidence": {
-    "administered_by": {
-      "source_url": "https://www.provincie-utrecht.nl/loket/subsidies/hoe-kunt-u-subsidie-aanvragen",
-      "quote": "Voor de bij de provincie Utrecht neergelegde regelingen geldt dat deze worden uitgevoerd door de provincie Utrecht",
-      "checked_at": "2026-11-25",
-      "method": "page"
-    },
-    "applicant_types": {
-      "source_url": "https://www.provincie-utrecht.nl/loket/subsidies/leefgebieden-bedreigde-soorten",
-      "quote": "Subsidie kan worden aangevraagd door natuurlijke personen, rechtspersonen of een samenwerkingsverband waarbij een rechtspersoon optreedt als penvoerder.",
-      "checked_at": "2026-11-25",
-      "method": "page"
-    },
     "geography": {
       "source_url": "https://www.provincie-utrecht.nl/loket/subsidies/leefgebieden-bedreigde-soorten",
       "quote": "Wij richten ons in het bijzonder op de ruim 500 bedreigde plant- en diersoorten die in Utrecht voorkomen.",
@@ -124,6 +125,12 @@
     "co_finance_required": {
       "source_url": "https://www.provincie-utrecht.nl/loket/subsidies/leefgebieden-bedreigde-soorten",
       "quote": "95 procent van de subsidiabele kosten tot een max. van 60.000 euro.",
+      "checked_at": "2026-11-25",
+      "method": "page"
+    },
+    "applicant_types": {
+      "source_url": "https://www.provincie-utrecht.nl/loket/subsidies/leefgebieden-bedreigde-soorten",
+      "quote": "Subsidie kan worden aangevraagd door natuurlijke personen, rechtspersonen of een samenwerkingsverband waarbij een rechtspersoon optreedt als penvoerder.",
       "checked_at": "2026-11-25",
       "method": "page"
     },
@@ -165,14 +172,38 @@
         "quote": "voor zover er plant- en zaaigoed wordt gebruikt, geldt voor bomen en struiken dat deze autochtoon zijn, voor zaden van kruiden geldt dat zij inheems en van regionale afkomst zijn.",
         "checked_at": "2026-11-25",
         "method": "page"
+      },
+      {
+        "source_url": "https://lokaleregelgeving.overheid.nl/CVDR732379/",
+        "quote": "De subsidies bedragen minimaal € 2500,-.",
+        "checked_at": "2026-11-24",
+        "method": "page"
+      },
+      {
+        "source_url": "https://lokaleregelgeving.overheid.nl/CVDR732379/",
+        "quote": "het gaat om activiteiten voor weidevogels die door andere regelingen reeds gefinancierd kunnen worden",
+        "checked_at": "2026-11-24",
+        "method": "page"
+      },
+      {
+        "source_url": "https://lokaleregelgeving.overheid.nl/CVDR732379/",
+        "quote": "het project gefinancierd kan worden door de Subsidieregeling kwaliteitsimpuls natuur en landschap provincie Utrecht, de Subsidieverordening natuur- en landschapsbeheer provincie Utrecht 2016 of hoofdstuk 7 (Kleine landschapselementen) van deze subsidieregeling",
+        "checked_at": "2026-11-24",
+        "method": "page"
+      },
+      {
+        "source_url": "https://lokaleregelgeving.overheid.nl/CVDR732379/",
+        "quote": "de activiteit een beheermaatregel betreft",
+        "checked_at": "2026-11-24",
+        "method": "page"
+      },
+      {
+        "source_url": "https://lokaleregelgeving.overheid.nl/CVDR732379/",
+        "quote": "wordt subsidie aangevraagd door een, door dat samenwerkingsverband aan te wijzen deelnemer met rechtspersoonlijkheid",
+        "checked_at": "2026-11-24",
+        "method": "page"
       }
     ],
-    "co_finance": {
-      "source_url": "https://www.provincie-utrecht.nl/loket/subsidies/leefgebieden-bedreigde-soorten",
-      "quote": "95 procent van de subsidiabele kosten tot een max. van 60.000 euro.",
-      "checked_at": "2026-11-25",
-      "method": "page"
-    },
     "after_award": [
       {
         "source_url": "https://lokaleregelgeving.overheid.nl/CVDR732379/",
@@ -217,8 +248,36 @@
         "quote": "als voor de activiteiten toestemming en medewerking vereist zijn van de eigenaar van het leefgebied, of van degene die krachtens overeenkomst of zakelijk recht gerechtigd is tot het gebruik van het leefgebied, een document waaruit die toestemming blijkt.",
         "checked_at": "2026-11-25",
         "method": "page"
+      },
+      {
+        "source_url": "https://lokaleregelgeving.overheid.nl/CVDR732379/",
+        "quote": "als er sprake is van een samenwerkingsverband van meerdere deelnemers, een document waaruit de instemming blijkt van alle deelnemers van het samenwerkingsverband",
+        "checked_at": "2026-11-24",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.provincie-utrecht.nl/loket/subsidies/hoe-kunt-u-subsidie-aanvragen",
+        "quote": "wanneer een aanvrager beschikt over een verklaring van de belastingdienst dat geen BTW kan worden verrekend dient deze verklaring te worden bijgevoegd",
+        "checked_at": "2026-11-24",
+        "method": "page"
       }
-    ]
+    ],
+    "co_finance": {
+      "source_url": "https://lokaleregelgeving.overheid.nl/CVDR732379/",
+      "quote": "Voor activiteiten binnen het stedelijk gebied bedraagt de hoogte van de subsidie: a. maximaal 95% van de subsidiabele kosten tot een maximum van € 30.000,- voor niet-gemeentelijke eigendommen of terreinen die de gemeente niet in erfpacht heeft; b. maximaal 50% van de subsidiabele kosten tot een maximum van € 30.000,- voor gemeentelijke eigendommen of terreinen die de gemeente in erfpacht heeft.",
+      "checked_at": "2026-11-24",
+      "method": "page"
+    },
+    "administered_by": {
+      "source_url": "https://www.provincie-utrecht.nl/loket/subsidies/hoe-kunt-u-subsidie-aanvragen",
+      "quote": "Voor de bij de provincie Utrecht neergelegde regelingen geldt dat deze worden uitgevoerd door de provincie Utrecht",
+      "checked_at": "2026-11-25",
+      "method": "page"
+    }
   },
-  "checked_at": "2026-11-25"
+  "checked_at": "2026-11-24",
+  "co_finance": {
+    "min_share": 5,
+    "applies_to": "Standard projects. Urban municipal land or municipal ground lease: 50%."
+  }
 }
