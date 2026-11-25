@@ -20,14 +20,20 @@
   "amount": { "currency": "JPY", "max": 500000, "note": "Up to two-thirds of the amount needed" },
   "co_finance_required": true,
   "reporting": "A grant-use report, with receipts attached, is due to the trustee by the set deadline.",
-  "effort": { "steps": ["Application submission", "Committee review"] },
+  "effort": {
+    "steps": ["Application submission", "Committee review"],
+    "due": ["2026-12-11", null]
+  },
   "eligibility": [
     {
       "rule": "Not-for-profit organisation, group or individual in Saitama Prefecture",
       "kind": "legal"
     },
     { "rule": "Is substantively involved in the activity", "kind": "capacity" },
-    { "rule": "Runs the activity during the grant period", "kind": "project" },
+    {
+      "rule": "Carry out the funded activity from April 1, 2027 through March 31, 2028",
+      "kind": "project"
+    },
     {
       "rule": "Not mere gardening or non-native planting, and no publications sold for a fee",
       "kind": "project"
@@ -117,15 +123,15 @@
     },
     "effort": [
       {
-        "source_url": "https://www.musashinobank.co.jp/sustainability/environment/biodiversity/midori.html",
-        "quote": "2027年度助成金給付の募集について [申請受付期間] 2026年10月1日(木)~2026年12月11日(金)",
+        "source_url": "https://www.musashinobank.co.jp/sustainability/environment/biodiversity/pdf/youkou.pdf",
+        "quote": "学識経験者等からなる運営委員会で審査を 行い",
         "checked_at": "2026-11-25",
         "method": "page"
       },
       {
-        "source_url": "https://www.musashinobank.co.jp/sustainability/environment/biodiversity/pdf/youkou.pdf",
-        "quote": "学識経験者等からなる運営委員会で審査を 行い",
-        "checked_at": "2026-11-25",
+        "source_url": "https://www.musashinobank.co.jp/sustainability/environment/biodiversity/midori.html",
+        "quote": "2027年度助成金給付の募集について [申請受付期間] 2026年10月1日（木）～2026年12月11日（金）",
+        "checked_at": "2026-11-24",
         "method": "page"
       }
     ],
@@ -144,8 +150,8 @@
       },
       {
         "source_url": "https://www.musashinobank.co.jp/sustainability/environment/biodiversity/pdf/youkou.pdf",
-        "quote": "上記の期間中に実施する事業を助成の対象とします。",
-        "checked_at": "2026-11-25",
+        "quote": "2027 年 4 月 1 日（木）～ 2028 年 3 月 31 日（金） ※上記の期間中に実施する事業を助成の対象とします。",
+        "checked_at": "2026-11-24",
         "method": "page"
       },
       {
@@ -184,6 +190,6 @@
       "method": "page"
     }
   },
-  "checked_at": "2026-11-25",
+  "checked_at": "2026-11-24",
   "co_finance": { "min_share": 33.3 }
 }

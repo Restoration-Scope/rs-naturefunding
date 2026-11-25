@@ -23,7 +23,10 @@
   },
   "co_finance_required": null,
   "reporting": null,
-  "effort": { "steps": ["Online application", "Regional Advisory Board review"] },
+  "effort": {
+    "steps": ["Online application", "Regional Advisory Board review"],
+    "due": ["2026-12-15", null]
+  },
   "eligibility": [
     { "rule": "Charity applicants have a Charitable Registration Number", "kind": "legal" },
     { "rule": "Project is not underway when applying", "kind": "project" },
@@ -31,14 +34,19 @@
     { "rule": "Project is not a research project", "kind": "project" },
     { "rule": "Community gardens address at least one environmental issue", "kind": "project" },
     {
-      "rule": "Education projects that plant or alter school grounds are submitted by the school",
+      "rule": "The school applies for education projects involving planting, gardens or physical changes to school grounds",
+      "kind": "project"
+    },
+    { "rule": "Applicant organisation is located in Canada", "kind": "legal" },
+    {
+      "rule": "Outdoor classroom or nature play projects changing school grounds need school board approval",
       "kind": "project"
     }
   ],
   "documents": [
     "Project budget",
     "Plant list for tree planting and greening projects",
-    "School participation confirmation, if presenting at a school"
+    "School participation confirmation if an environmental organisation will present there"
   ],
   "calls": [
     {
@@ -107,6 +115,12 @@
         "quote": "All applications for funding are reviewed by one of six Regional Advisory Boards.",
         "checked_at": "2026-11-25",
         "method": "page"
+      },
+      {
+        "source_url": "https://www.td.com/ca/en/about-td/community-giving/apply-for-funding/fef-grant",
+        "quote": "Submission deadline December 15, 2026",
+        "checked_at": "2026-11-24",
+        "method": "page"
       }
     ],
     "eligibility": [
@@ -145,6 +159,18 @@
         "quote": "If the project involves planting, gardens or any physical alterations to school grounds, the application must be submitted by the school.",
         "checked_at": "2026-11-25",
         "method": "page"
+      },
+      {
+        "source_url": "https://www.cybergrants.com/pls/cybergrants/quiz.display_question?x_gm_id=7402&x_order_by=1&x_quiz_id=8960",
+        "quote": "Is the organization located in Canada?",
+        "checked_at": "2026-11-24",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.td.com/ca/en/about-td/community-giving/apply-for-funding/fef-grant",
+        "quote": "Are there changes being made to the school grounds? If yes, school board approval is required.",
+        "checked_at": "2026-11-24",
+        "method": "page"
       }
     ],
     "documents": [
@@ -168,5 +194,5 @@
       }
     ]
   },
-  "checked_at": "2026-11-25"
+  "checked_at": "2026-11-24"
 }

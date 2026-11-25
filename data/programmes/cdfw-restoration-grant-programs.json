@@ -18,7 +18,6 @@
   "co_finance_required": false,
   "reporting": null,
   "eligibility": [
-    { "rule": "For Mojave funding, the project is not a research project", "kind": "project" },
     {
       "rule": "Acquisitions use willing sellers and DGS-approved fair market value",
       "kind": "project"
@@ -28,21 +27,17 @@
       "kind": "project"
     },
     {
-      "rule": "Use a California-licensed engineer or geologist where legally required",
-      "kind": "capacity"
-    },
-    {
-      "rule": "Comply with applicable state, tribal and federal environmental laws",
-      "kind": "project"
-    },
-    { "rule": "Obtain all permits necessary to complete the project work", "kind": "project" },
-    {
-      "rule": "Hold a valid collection permit when collecting protected wildlife or plants",
-      "kind": "project"
-    },
-    {
-      "rule": "Not a private individual, for-profit enterprise, or out-of-state public entity except the stated exceptions",
+      "rule": "Applicant is not an out-of-state public entity unless a nonprofit registered with the California Secretary of State",
       "kind": "legal"
+    },
+    {
+      "rule": "Project is not required for environmental mitigation or compliance",
+      "kind": "project"
+    },
+    { "rule": "Project is not under enforcement action by a regulatory agency", "kind": "project" },
+    {
+      "rule": "On-the-ground work has site control through the grant and for 25 years after, unless CDFW agrees otherwise",
+      "kind": "project"
     }
   ],
   "after_award": { "reports": "unspecified" },
@@ -50,13 +45,13 @@
     "65% or higher design plans for implementation projects",
     "Basis of design report for implementation projects",
     "Technical studies for implementation projects",
-    "Proposed site access agreement template, if site access is not held",
-    "Memorandum of understanding, if site access is not held",
-    "Landowner permission form, if site access is not held",
-    "Written permission for multiple-landowner projects",
-    "Purchase option agreement or willing seller letter for acquisitions",
-    "Water right permit or license for post-1914 water rights",
-    "Evidence of diversion right and priority for riparian or pre-1914 rights"
+    "Without access: draft agreement, MOU or permission form. Multiple owners: written permission from all or their designee",
+    "Acquisition: executed purchase and sale or option agreement, or a willing-seller letter from each owner",
+    "Water rights and geomorphic factors questionnaire and applicable water-rights evidence for streamflow projects",
+    "Project location and map",
+    "Project budget using the CDFW template",
+    "Environmental compliance and permitting questionnaire for planning or implementation proposals",
+    "Land acquisition information attachment for acquisition proposals"
   ],
   "calls": [
     {
@@ -140,18 +135,12 @@
       "method": "page"
     },
     "co_finance_required": {
-      "source_url": "https://nrm.dfg.ca.gov/FileHandler.ashx?DocumentID=247793&inline",
-      "quote": "Cost share is not required to be eligible for funding but is encouraged and will benefit project review and selection.",
-      "checked_at": "2026-11-25",
+      "source_url": "https://nrm.dfg.ca.gov/FileHandler.ashx?DocumentID=227155&inline",
+      "quote": "Cost share is not required; however, proposals with higher proportions of secured cost share may receive higher scores during the evaluation process.",
+      "checked_at": "2026-11-24",
       "method": "page"
     },
     "eligibility": [
-      {
-        "source_url": "https://nrm.dfg.ca.gov/FileHandler.ashx?DocumentID=248026&inline",
-        "quote": "Research projects are not eligible for funding through this solicitation.",
-        "checked_at": "2026-11-25",
-        "method": "page"
-      },
       {
         "source_url": "https://nrm.dfg.ca.gov/FileHandler.ashx?DocumentID=227155&inline",
         "quote": "Acquisitions must be from willing sellers and at fair market value, as confirmed by an appraisal approved by the Department of General Services (DGS) Real Property Services Section.",
@@ -166,32 +155,26 @@
       },
       {
         "source_url": "https://nrm.dfg.ca.gov/FileHandler.ashx?DocumentID=227155&inline",
-        "quote": "Some projects require a California licensed professional engineer or California licensed professional geologist to comply with applicable requirements of the Business and Professions Code",
-        "checked_at": "2026-11-25",
+        "quote": "public entities (except those that are nonprofit organizations registered with the California Secretary of State) are ineligible for funding",
+        "checked_at": "2026-11-24",
         "method": "page"
       },
       {
-        "source_url": "https://nrm.dfg.ca.gov/FileHandler.ashx?DocumentID=247793&inline",
-        "quote": "Projects must comply with all applicable state, tribal, and federal environmental laws and regulations.",
-        "checked_at": "2026-11-25",
+        "source_url": "https://nrm.dfg.ca.gov/FileHandler.ashx?DocumentID=207721&inline",
+        "quote": "Grant funds cannot be used for projects required to meet environmental mitigation or compliance measures.",
+        "checked_at": "2026-11-24",
         "method": "page"
       },
       {
-        "source_url": "https://nrm.dfg.ca.gov/FileHandler.ashx?DocumentID=247793&inline",
-        "quote": "Applicants are responsible for obtaining all permits necessary to complete project work.",
-        "checked_at": "2026-11-25",
-        "method": "page"
-      },
-      {
-        "source_url": "https://nrm.dfg.ca.gov/FileHandler.ashx?DocumentID=247793&inline",
-        "quote": "Projects that involve the collection of fish, wildlife, or endangered or rare plants must have a valid collection permit.",
-        "checked_at": "2026-11-25",
+        "source_url": "https://nrm.dfg.ca.gov/FileHandler.ashx?DocumentID=207721&inline",
+        "quote": "any project that is under an enforcement action by a regulatory agency will not be considered for funding.",
+        "checked_at": "2026-11-24",
         "method": "page"
       },
       {
         "source_url": "https://nrm.dfg.ca.gov/FileHandler.ashx?DocumentID=227155&inline",
-        "quote": "Proposals from private individuals, for-profit enterprises (unless where eligible for funding as a public utility), or outof-state public entities (except those that are nonprofit organizations registered with the California Secretary of State) are ineligible for funding",
-        "checked_at": "2026-11-25",
+        "quote": "Applications for implementation projects conducting on-the-ground work and requiring access to public or private property must submit documentation showing that they have adequate tenure to, and site control of, the properties to be restored for the term of the grant agreement and for at least 25 years after completion of the project (or an alternative term negotiated with CDFW)",
+        "checked_at": "2026-11-24",
         "method": "page"
       }
     ],
@@ -227,6 +210,24 @@
         "quote": "For post-1914 water rights, the applicant must submit a copy of a water right permit or license on file with the SWRCB. Applicants who divert water based on a riparian or pre-1914 water right must submit written evidence of the right to divert water and the priority in the watershed of that diversion right with their proposal.",
         "checked_at": "2026-11-25",
         "method": "page"
+      },
+      {
+        "source_url": "https://nrm.dfg.ca.gov/FileHandler.ashx?DocumentID=195968",
+        "quote": "If a purchase and sale or option agreement has been executed, it must be submitted with the application. If a purchase and sale or option agreement has not been executed, a willing seller letter from each landowner must be submitted with the application.",
+        "checked_at": "2026-11-24",
+        "method": "page"
+      },
+      {
+        "source_url": "https://nrm.dfg.ca.gov/FileHandler.ashx?DocumentID=207440",
+        "quote": "Water Rights and Geomorphic Factors Questionnaire (Streamflow-Related Proposals)",
+        "checked_at": "2026-11-24",
+        "method": "page"
+      },
+      {
+        "source_url": "https://nrm.dfg.ca.gov/FileHandler.ashx?DocumentID=207440",
+        "quote": "Project Location and Map (All Proposals) Budget using CDFW Template (All Proposals) Environmental Compliance and Permitting Questionnaire (Planning and Implementation Proposals) Land Acquisition Information (Acquisition Proposals)",
+        "checked_at": "2026-11-24",
+        "method": "page"
       }
     ],
     "effort": [
@@ -241,11 +242,21 @@
         "quote": "Depending on the funding program, CDFW may request supplemental information (e.g., bond funding) or a full application (e.g., FRGP)",
         "checked_at": "2026-11-25",
         "method": "page"
+      },
+      {
+        "source_url": "https://nrm.dfg.ca.gov/FileHandler.ashx?DocumentID=227155&inline",
+        "quote": "CDFW technical reviewers will evaluate all eligible and complete applications.",
+        "checked_at": "2026-11-24",
+        "method": "page"
       }
     ]
   },
   "checked_at": "2026-11-24",
   "effort": {
-    "steps": ["Concept proposal", "Full application or supplemental information, if requested"]
+    "steps": [
+      "Concept proposal",
+      "Supplemental application or information, if requested",
+      "Technical review and funding decision"
+    ]
   }
 }

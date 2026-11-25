@@ -21,14 +21,17 @@
   "amount": null,
   "co_finance_required": null,
   "reporting": null,
-  "effort": { "steps": ["Application submission"], "due": ["2026-12-02"] },
+  "effort": {
+    "steps": ["Application submission", "Ministry assessment and written decision"],
+    "due": ["2026-12-02", null]
+  },
   "eligibility": [
     {
       "rule": "The project benefits species assessed by COSSARO as extirpated, endangered, threatened or special concern",
       "kind": "project"
     },
     {
-      "rule": "For land purchases: Indigenous community, municipality, or conservation group that acquired land in the past 5 years",
+      "rule": "Land purchase: Indigenous community, municipality or conservation group that acquired conservation land in past 5 years",
       "kind": "legal"
     },
     { "rule": "Is a legal entity", "kind": "legal" },
@@ -39,7 +42,16 @@
     {
       "rule": "Project is not required by law or done to meet regulatory requirements",
       "kind": "project"
-    }
+    },
+    {
+      "rule": "Applicant is not a provincial ministry or a federal department or agency",
+      "kind": "legal"
+    },
+    {
+      "rule": "Funded activities run between April 1, 2027 and December 31, 2031",
+      "kind": "project"
+    },
+    { "rule": "Land securement covers at least 5 hectares across all parcels", "kind": "project" }
   ],
   "calls": [
     {
@@ -101,6 +113,12 @@
         "quote": "Applications must be submitted electronically through the Transfer Payment Ontario portal by 3 p.m. on December 2, 2026.",
         "checked_at": "2026-11-25",
         "method": "page"
+      },
+      {
+        "source_url": "https://forms.mgcs.gov.on.ca/dataset/401b7ff9-39cd-416e-afc4-e6d304b29d4e/resource/183e38b4-58b8-4593-9dd5-41e8c01f03b7/download/species-conservation-program-2027-28-guidelines_final_en.pdf",
+        "quote": "All applicants will be notified in writing of the outcome of their application.",
+        "checked_at": "2026-11-24",
+        "method": "page"
       }
     ],
     "eligibility": [
@@ -133,6 +151,24 @@
         "quote": "Projects or studies that are required by law are not eligible, including activities that are being undertaken to fulfill regulatory requirements.",
         "checked_at": "2026-11-25",
         "method": "page"
+      },
+      {
+        "source_url": "https://forms.mgcs.gov.on.ca/dataset/401b7ff9-39cd-416e-afc4-e6d304b29d4e/resource/183e38b4-58b8-4593-9dd5-41e8c01f03b7/download/species-conservation-program-2027-28-guidelines_final_en.pdf",
+        "quote": "5.2 Non-eligible applicants • Provincial government ministries • Federal government departments and agencies",
+        "checked_at": "2026-11-24",
+        "method": "page"
+      },
+      {
+        "source_url": "https://forms.mgcs.gov.on.ca/dataset/401b7ff9-39cd-416e-afc4-e6d304b29d4e/resource/183e38b4-58b8-4593-9dd5-41e8c01f03b7/download/species-conservation-program-2027-28-guidelines_final_en.pdf",
+        "quote": "All project activities eligible for funding must begin no earlier than April 1, 2027, and finish no later than December 31, 2031.",
+        "checked_at": "2026-11-24",
+        "method": "page"
+      },
+      {
+        "source_url": "https://forms.mgcs.gov.on.ca/dataset/401b7ff9-39cd-416e-afc4-e6d304b29d4e/resource/183e38b4-58b8-4593-9dd5-41e8c01f03b7/download/species-conservation-program-2027-28-guidelines_final_en.pdf",
+        "quote": "Minimum size of 5 hectares (cumulative, if multiple parcels).",
+        "checked_at": "2026-11-24",
+        "method": "page"
       }
     ],
     "after_award": [
@@ -140,6 +176,12 @@
         "source_url": "https://forms.mgcs.gov.on.ca/dataset/401b7ff9-39cd-416e-afc4-e6d304b29d4e/resource/183e38b4-58b8-4593-9dd5-41e8c01f03b7/download/species-conservation-program-2027-28-guidelines_final_en.pdf",
         "quote": "For multi-year projects not in their final year, an interim report with financial documentation is due April 15 of each year of the project, or on other date(s) negotiated with the ministry.",
         "checked_at": "2026-11-25",
+        "method": "page"
+      },
+      {
+        "source_url": "https://forms.mgcs.gov.on.ca/dataset/401b7ff9-39cd-416e-afc4-e6d304b29d4e/resource/183e38b4-58b8-4593-9dd5-41e8c01f03b7/download/species-conservation-program-2027-28-guidelines_final_en.pdf",
+        "quote": "Projects that receive more than $750,000 in Species Conservation Program funding will be required to submit audited segmented financial information as part of their final reporting.",
+        "checked_at": "2026-11-24",
         "method": "page"
       }
     ],
@@ -152,7 +194,7 @@
       }
     ]
   },
-  "checked_at": "2026-11-25",
-  "after_award": { "reports": "yearly" },
+  "checked_at": "2026-11-24",
+  "after_award": { "reports": "yearly", "audit": true },
   "documents": ["Project budget", "Threats and knowledge gaps table"]
 }

@@ -32,15 +32,11 @@
   },
   "eligibility": [
     {
-      "rule": "Project is in or beside a St. Lawrence marine protected area or protected-area reserve",
+      "rule": "Before restoring a site, conduct a preliminary study or use one from the past 5 years that still reflects conditions.",
       "kind": "project"
     },
     {
-      "rule": "For restoration, have a recent representative preliminary study or conduct one",
-      "kind": "project"
-    },
-    {
-      "rule": "Use recognised or scientifically founded methods with low or short environmental impact",
+      "rule": "Restoration and erosion pilots use recognised or rigorous experimental methods with low or short-lived impacts.",
       "kind": "project"
     },
     {
@@ -52,19 +48,26 @@
       "rule": "Contributions cannot come from other Quebec government funding sources",
       "kind": "finances"
     },
-    { "rule": "No computer or heavy equipment, unrelated or unjustified expenses", "kind": "other" }
+    { "rule": "Nonprofit applicants are based in Québec.", "kind": "legal" },
+    {
+      "rule": "Shoreline stabilisation pilots use a preliminary site study and a numerical model.",
+      "kind": "project"
+    },
+    {
+      "rule": "Soft shoreline stabilisation pilots last 24 to 42 months, including the preliminary study.",
+      "kind": "project"
+    }
   ],
   "co_finance": {
     "min_share": 25,
     "in_kind": true,
-    "applies_to": "All project types; composition varies"
+    "applies_to": "Restoration and erosion pilots: 25% in kind. Other tracks: at least 10% cash."
   },
   "after_award": { "reports": "interim_and_final" },
   "documents": [
     "Quebec enterprise registrar record in PDF format",
     "Project location map",
     "Signer authorization resolution, if the signer is not the director or president",
-    "Support letter for each partner, confirming its role and commitments",
     "Private-territory work consent form, if required"
   ],
   "calls": [
@@ -150,12 +153,6 @@
     ],
     "eligibility": [
       {
-        "source_url": "https://fondsdactionsaintlaurent.org/nos-programmes/aires-marines-protegees/",
-        "quote": "Un projet de restauration peut également viser un site en bordure d'une aire marine protégée, ou d'une réserve de territoire aux fins d'aire protégée.",
-        "checked_at": "2026-11-25",
-        "method": "page"
-      },
-      {
         "source_url": "https://fondsdactionsaintlaurent.org/wp-content/uploads/2026/02/FASL_PAMP_Guide-demandeur_PDF.pdf",
         "quote": "Préalablement au projet de restauration sur un site précis, il est nécessaire de réaliser une étude d'avant-projet à moins de posséder une étude réalisée dans les cinq années précédentes et qui est toujours représentative des conditions actuelles.",
         "checked_at": "2026-11-25",
@@ -186,16 +183,28 @@
         "method": "page"
       },
       {
+        "source_url": "https://fondsdactionsaintlaurent.org/wp-content/uploads/2026/02/FASL_PAMP_Guide-demandeur_PDF.pdf",
+        "quote": "Les organismes à but non lucratif (OBNL) du Québec ;",
+        "checked_at": "2026-11-24",
+        "method": "page"
+      },
+      {
+        "source_url": "https://fondsdactionsaintlaurent.org/wp-content/uploads/2026/02/FASL_PAMP_Guide-demandeur_PDF.pdf",
+        "quote": "S’appuyer sur une étude d’avant-projet, précisant les caractéristiques géomorphologiques et écologiques du site, et sur un modèle numérique confirmant que l’approche préconisée est celle présentant le moins d’impact et la plus grande durabilité ;",
+        "checked_at": "2026-11-24",
+        "method": "page"
+      },
+      {
         "source_url": "https://fondsdactionsaintlaurent.org/nos-programmes/aires-marines-protegees/",
-        "quote": "Ne sont pas admissibles à l'aide financière : Les frais liés à l'achat d'équipements informatiques (ordinateurs, imprimantes, etc.) ; Les frais liés à l'achats d'équipements lourds (VTT, engins de chantiers, remorques, etc.); Toutes les dépenses non directement liées à la réalisation du projet ou non justifiées",
-        "checked_at": "2026-11-25",
+        "quote": "Les projets de stabilisation doivent minimalement durer 2 ans (24 mois) et peuvent au maximum durer 3 ans et demi (42 mois). Ces délais inclus l’étude d’avant-projet.",
+        "checked_at": "2026-11-24",
         "method": "page"
       }
     ],
     "co_finance": {
       "source_url": "https://fondsdactionsaintlaurent.org/wp-content/uploads/2026/02/FASL_PAMP_Guide-demandeur_PDF.pdf",
-      "quote": "Pour les projets de restauration et les projets pilotes sur l'érosion, les demandeurs doivent fournir 25 % en nature.",
-      "checked_at": "2026-11-25",
+      "quote": "Les demandeurs doivent fournir minimalement des contributions en espèces de 10 % et en nature de 15 % pour les projets de nettoyage, de stratégies de priorisation et de transfert de connaissances. Pour les projets de restauration et les projets pilotes sur l’érosion, les demandeurs doivent fournir 25 % en nature.",
+      "checked_at": "2026-11-24",
       "method": "page"
     },
     "after_award": [
@@ -227,5 +236,5 @@
       }
     ]
   },
-  "checked_at": "2026-11-25"
+  "checked_at": "2026-11-24"
 }

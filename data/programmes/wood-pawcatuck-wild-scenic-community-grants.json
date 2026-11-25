@@ -22,12 +22,11 @@
   "pool": { "currency": "USD", "value": 75000, "period": "round", "label": "the 2026 round" },
   "co_finance_required": false,
   "reporting": null,
-  "effort": { "steps": ["Community grant application"], "due": ["2026-12-29"] },
+  "effort": {
+    "steps": ["Community grant application", "Competitive proposal review"],
+    "due": ["2026-12-29", null]
+  },
   "eligibility": [
-    {
-      "rule": "Activities are located in at least one watershed town and, with few exceptions, within the watershed.",
-      "kind": "project"
-    },
     {
       "rule": "The project can meet the December 31, 2028 final report deadline.",
       "kind": "project"
@@ -37,7 +36,7 @@
       "kind": "project"
     },
     {
-      "rule": "The project excludes federally mandated, enforcement, mitigation, entertainment, lobbying and illegal activities.",
+      "rule": "Grant funds exclude federally mandated work, enforcement, mitigation, entertainment, lobbying and unlawful uses.",
       "kind": "project"
     },
     {
@@ -46,6 +45,10 @@
     },
     {
       "rule": "Required permits for the deliverables are obtained before the proposal is submitted",
+      "kind": "project"
+    },
+    {
+      "rule": "This grant will not be used as match for other federal grant funding",
       "kind": "project"
     }
   ],
@@ -128,15 +131,15 @@
         "quote": "Applications will be accepted from October 1, 2026 through December 29, 2026.",
         "checked_at": "2026-11-24",
         "method": "page"
+      },
+      {
+        "source_url": "https://wpwildrivers.org/wp/wp-content/uploads/2026/11/Formatted-2026-2027-Community-Grant-Instructions.pdf",
+        "quote": "Grant selection is a competitive process; submittal of a proposal does not guarantee funding",
+        "checked_at": "2026-11-24",
+        "method": "page"
       }
     ],
     "eligibility": [
-      {
-        "source_url": "https://wpwildrivers.org/wp/wp-content/uploads/2026/11/Formatted-2026-2027-Community-Grant-Instructions.pdf",
-        "quote": "Grant proposals must involve activities located in at least one town within the Wood-Pawcatuck watershed and, with only a few exceptions, occur within the watershed itself.",
-        "checked_at": "2026-11-24",
-        "method": "page"
-      },
       {
         "source_url": "https://wpwildrivers.org/wp/wp-content/uploads/2026/11/Formatted-2026-2027-Community-Grant-Instructions.pdf",
         "quote": "Due to our funding cycle, only grant requests that can meet a December 31, 2028 final report deadline are eligible to apply for this round of grants",
@@ -164,6 +167,12 @@
       {
         "source_url": "https://wpwildrivers.org/wp/wp-content/uploads/2026/11/Formatted-2026-2027-Community-Grant-Instructions.pdf",
         "quote": "Required permits for proposed deliverables have not been obtained prior to submission of the grant proposal",
+        "checked_at": "2026-11-24",
+        "method": "page"
+      },
+      {
+        "source_url": "https://wpwildrivers.org/wp/wp-content/uploads/2026/11/Formatted-2026-2027-Community-Grant-Instructions.pdf",
+        "quote": "Grant funds can be used as part of a larger project but cannot be used as a match for other federal grant funding.",
         "checked_at": "2026-11-24",
         "method": "page"
       }

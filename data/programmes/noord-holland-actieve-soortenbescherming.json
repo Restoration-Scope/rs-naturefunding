@@ -16,8 +16,11 @@
   "co_finance_required": true,
   "reporting": null,
   "effort": {
-    "steps": ["Application with all attachments, via the portal or by post"],
-    "due": ["2026-12-03"]
+    "steps": [
+      "Application with all attachments, via the portal or by post",
+      "Provincial review and decision"
+    ],
+    "due": ["2026-12-03", null]
   },
   "eligibility": [
     {
@@ -29,18 +32,27 @@
       "kind": "legal"
     },
     {
-      "rule": "Research: consultancies, knowledge or species bodies; physical works: land managers, farm groups, councils, water boards",
+      "rule": "Research: ecology firms, knowledge or species bodies; works: land managers, farm groups, municipalities or water boards",
       "kind": "legal"
-    }
+    },
+    { "rule": "Activity is financially feasible", "kind": "finances" },
+    {
+      "rule": "Activity targets species on Noord-Holland’s official target-species list",
+      "kind": "project"
+    },
+    { "rule": "Requests at least €5,000 in grant funding", "kind": "finances" }
   ],
+  "after_award": { "reports": "final" },
   "documents": [
     "Budget",
     "Financing plan",
     "Project description with rationale, aims, relevance and planning",
     "Completed de minimis declaration",
-    "Research method description, if the application concerns research",
-    "Recent bank statement, if no provincial subsidy was received before or it was received more than two years ago",
-    "Power-of-attorney statement, if an authorized intermediary applies"
+    "Research method and species knowledge gaps, for research applications",
+    "Bank statement ≤3 months old if never funded by the province or last funded over 2 years ago",
+    "Power of attorney for a postal or counter application filed by an intermediary",
+    "Activity schedule for online applications",
+    "Proof of applicant address if the bank statement shows a post office box"
   ],
   "calls": [
     {
@@ -121,6 +133,12 @@
         "quote": "De regeling staat open van 4 augustus 2026 tot en met 3 december 2026 17:00 uur Let op Als uw aanvraag na het bovengenoemde uiterste indieningsmoment door ons wordt ontvangen, wordt deze niet in behandeling genomen",
         "checked_at": "2026-11-25",
         "method": "page"
+      },
+      {
+        "source_url": "https://zoek.officielebekendmakingen.nl/prb-2026-11381.html",
+        "quote": "Gedeputeerde Staten beslissen binnen 16 weken na ontvangst van de aanvraag om subsidie.",
+        "checked_at": "2026-11-24",
+        "method": "page"
       }
     ],
     "eligibility": [
@@ -140,6 +158,32 @@
         "source_url": "https://zoek.officielebekendmakingen.nl/prb-2026-11381.html",
         "quote": "1. Subsidie als bedoeld in artikel 3, eerste lid, onder a wordt verstrekt aan ecologische advies- en onderzoeksbureaus, kennisinstellingen en soortenorganisaties. 2. Subsidie als bedoeld in artikel 3, eerste lid, onder b wordt verstrekt aan agrarische collectieven, terreinbeherende organisaties, gemeenten en waterschappen.",
         "checked_at": "2026-11-25",
+        "method": "page"
+      },
+      {
+        "source_url": "https://zoek.officielebekendmakingen.nl/prb-2026-11381.html",
+        "quote": "Subsidie wordt geweigerd indien: a. de activiteit financieel niet haalbaar is;",
+        "checked_at": "2026-11-24",
+        "method": "page"
+      },
+      {
+        "source_url": "https://zoek.officielebekendmakingen.nl/prb-2026-11381.html",
+        "quote": "Doelsoorten: soorten die zijn vermeld op de Doelsoortenlijst;",
+        "checked_at": "2026-11-24",
+        "method": "page"
+      },
+      {
+        "source_url": "https://zoek.officielebekendmakingen.nl/prb-2026-11381.html",
+        "quote": "Gedeputeerde Staten verstrekken geen subsidies van minder dan € 5.000,-.",
+        "checked_at": "2026-11-24",
+        "method": "page"
+      }
+    ],
+    "after_award": [
+      {
+        "source_url": "https://www.noord-holland.nl/Loket/Subsidies/Eindverantwoording_indienen",
+        "quote": "Voor subsidies van € 10.000 tot € 125.000 levert u een overzicht van de gemaakte kosten en de uitgevoerde activiteiten aan.",
+        "checked_at": "2026-11-24",
         "method": "page"
       }
     ],
@@ -167,18 +211,33 @@
         "quote": "Voeg een beschrijving toe van de onderzoeksmethode en de in te vullen kennishiaten over de soort, indien de subsidieaanvraag een onderzoek betreft. Bijlage 8 Machtigingsverklaring ☐ Verplicht indien de aanvraag wordt ingediend door een gemachtigde/intermediair (namens de aanvrager).",
         "checked_at": "2026-11-25",
         "method": "page"
+      },
+      {
+        "source_url": "https://www.noord-holland.nl/Producten_op_alfabet/Actieve_soortenbescherming_Noord_Holland_2026_subsidie",
+        "quote": "Ook is een bankafschrift verplicht als u nog niet eerder, of langer dan twee jaar geleden subsidie van de provincie Noord-Holland heeft ontvangen. Naam, adres, woonplaats en rekeningnummer moeten zichtbaar zijn op het afschrift. Het afschrift mag niet ouder zijn dan drie maanden.",
+        "checked_at": "2026-11-24",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.noord-holland.nl/Producten_op_alfabet/Actieve_soortenbescherming_Noord_Holland_2026_subsidie",
+        "quote": "U dient de volgende bijlagen mee te sturen: - Planning",
+        "checked_at": "2026-11-24",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.noord-holland.nl/Producten_op_alfabet/Actieve_soortenbescherming_Noord_Holland_2026_subsidie",
+        "quote": "Mocht het adres op het bankafschrift een postbus betreffen, dan is aanvullende informatie nodig om het adres van de aanvrager te kunnen verifiëren.",
+        "checked_at": "2026-11-24",
+        "method": "page"
       }
     ],
     "co_finance": {
-      "source_url": "https://www.noord-holland.nl/Producten_op_alfabet/Actieve_soortenbescherming_Noord_Holland_2026_subsidie",
+      "source_url": "https://zoek.officielebekendmakingen.nl/prb-2026-11381.html",
       "quote": "De subsidie voor activiteiten bedoeld in artikel 3, eerste lid, onder b, bedraagt 85% van de subsidiabele kosten tot maximaal € 50.000,-.",
-      "checked_at": "2026-11-25",
+      "checked_at": "2026-11-24",
       "method": "page"
     }
   },
-  "checked_at": "2026-11-25",
-  "co_finance": {
-    "min_share": 15,
-    "applies_to": "Physical measures only; research is funded at 100%"
-  }
+  "checked_at": "2026-11-24",
+  "co_finance": { "min_share": 15, "applies_to": "Physical measures only" }
 }

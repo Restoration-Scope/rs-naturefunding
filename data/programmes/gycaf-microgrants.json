@@ -15,10 +15,27 @@
   "amount": { "currency": "USD", "max": 1000 },
   "co_finance_required": null,
   "reporting": null,
-  "effort": { "steps": ["Online application form", "Scorecard review"], "due": ["2026-12-31", null] },
+  "effort": {
+    "steps": ["Online application form", "Scorecard review"],
+    "due": ["2026-12-31", null]
+  },
   "eligibility": [
-    { "rule": "At least 80% of the leadership or core project team is aged 18–30", "kind": "other" },
-    { "rule": "The project tackles a climate or environmental challenge in a specific community", "kind": "project" }
+    {
+      "rule": "At least 80% of the leadership or core project team is aged 18–30",
+      "kind": "other"
+    },
+    {
+      "rule": "The project tackles a climate or environmental challenge in a specific community",
+      "kind": "project"
+    },
+    {
+      "rule": "Young people have a meaningful leadership role in designing and carrying out the project",
+      "kind": "project"
+    },
+    {
+      "rule": "The grant launches a new initiative or strengthens an existing youth-led project",
+      "kind": "project"
+    }
   ],
   "calls": [
     {
@@ -100,6 +117,18 @@
         "source_url": "https://gycaf.org/grant-focus/grant-guidelines/",
         "quote": "Demonstrate that the proposed project addresses an identified climate or environmental challenge within a community.",
         "checked_at": "2026-11-22",
+        "method": "page"
+      },
+      {
+        "source_url": "https://gycaf.org/grant-focus/grant-guidelines/",
+        "quote": "Demonstrate meaningful youth leadership in the design and implementation of the project.",
+        "checked_at": "2026-11-24",
+        "method": "page"
+      },
+      {
+        "source_url": "https://gycaf.org/grant-focus/grant-guidelines/",
+        "quote": "Be seeking funding either to launch a new initiative or strengthen an existing youth-led project.",
+        "checked_at": "2026-11-24",
         "method": "page"
       }
     ]

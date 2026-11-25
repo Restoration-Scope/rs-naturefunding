@@ -36,7 +36,7 @@
   },
   "eligibility": [
     {
-      "rule": "Legally constituted for 2+ years, or an unconstituted network uses a legally constituted proponent",
+      "rule": "Legal proponent must be 2+ years old. Informal groups can apply through one for small projects only.",
       "kind": "track_record"
     },
     {
@@ -45,29 +45,26 @@
     },
     { "rule": "Project lasts no more than 15 months", "kind": "project" },
     {
-      "rule": "Not a government body, company, individual, church, club, foundation or research institution",
+      "rule": "No public bodies, private firms, individuals, churches, clubs, public staff associations, foundations or research bodies",
       "kind": "legal"
     },
     { "rule": "Project is community-based rather than individual", "kind": "project" },
     { "rule": "Current board mandate is valid on the proposal date", "kind": "legal" },
     { "rule": "Project fits at least one listed thematic area", "kind": "project" },
-    {
-      "rule": "Project benefits traditional peoples, Indigenous peoples, quilombola communities and/or family farmers",
-      "kind": "project"
-    }
+    { "rule": "Submit one proposal per organisation for this call", "kind": "other" }
   ],
   "co_finance": { "min_share": 16.67, "in_kind": true },
-  "after_award": { "reports": "unspecified", "training": true },
+  "after_award": { "reports": "interim_and_final", "training": true, "site_visits": true },
   "documents": [
     "Registered founding minutes",
     "Registered statutes",
-    "Registered minutes of the current board",
-    "CNPJ registration",
-    "Documents of the responsible persons",
+    "Registered minutes of the proponent’s current board",
+    "Current CNPJ registration of the proponent",
     "Work Plan (Annex A1)",
     "Indicators (Annex A2)",
     "Budget and Calculation Memory (Annex A3)",
-    "Activity Schedule (Annex A4)"
+    "Activity Schedule (Annex A4)",
+    "Dimensioned drawing or sketch, if building a facility"
   ],
   "calls": [
     {
@@ -196,9 +193,9 @@
     ],
     "eligibility": [
       {
-        "source_url": "https://fundoecos.org.br/wp-content/uploads/2026/09/Edital-50_Projetos_nas-Paisagens_Prioritarias_.pdf",
-        "quote": "Ser apresentado por organização da sociedade civil (associação sem fins lucrativos, sindicato ou cooperativa), constituída legalmente há pelo menos 2 (dois) anos. No caso de articulações que não estejam legalmente constituídas, estas poderão participar deste edital por meio de organização proponente que esteja legalmente constituída;",
-        "checked_at": "2026-11-25",
+        "source_url": "https://fundoecos.org.br/edital/edital-50o-4o-2026-paisagens-prioritarias/",
+        "quote": "No caso de Pequenos Projetos, as organizações que não estejam legalmente constituídas poderão participar deste edital por meio de parcerias com organizações proponentes legalmente constituídas há pelo menos dois anos.",
+        "checked_at": "2026-11-24",
         "method": "page"
       },
       {
@@ -238,9 +235,9 @@
         "method": "page"
       },
       {
-        "source_url": "https://fundoecos.org.br/edital/edital-50o-4o-2026-paisagens-prioritarias/",
-        "quote": "O edital é destinado a projetos que beneficiem povos e comunidades tradicionais, povos indígenas, comunidades quilombolas e/ou agricultores familiares",
-        "checked_at": "2026-11-25",
+        "source_url": "https://fundoecos.org.br/wp-content/uploads/2026/09/Edital-50_Projetos_nas-Paisagens_Prioritarias_.pdf",
+        "quote": "Cada organização poderá enviar apenas uma proposta para este edital.",
+        "checked_at": "2026-11-24",
         "method": "page"
       }
     ],
@@ -262,15 +259,15 @@
         "quote": "Pelo menos dois representantes de cada projeto deverão participar da Oficina Inicial de Planejamento e Gestão de Projetos, realizada pelo Fundo Ecos.",
         "checked_at": "2026-11-25",
         "method": "page"
+      },
+      {
+        "source_url": "https://fundoecos.org.br/wp-content/uploads/2026/09/Edital-50_Projetos_nas-Paisagens_Prioritarias_.pdf",
+        "quote": "apresentar um relatório final, conforme consta do Memorando de Acordo, que será firmado entre as partes no caso de o projeto ser selecionado. O monitoramento dos projetos selecionados será feito pelo ISPN e parceiros ou por entidades e ou consultores designados. Neste sentido, deverá ser franqueado, igualmente, o acesso de terceiros designados pelo ISPN, para fins de avaliação e monitoramento",
+        "checked_at": "2026-11-24",
+        "method": "page"
       }
     ],
     "documents": [
-      {
-        "source_url": "https://fundoecos.org.br/edital/edital-50o-4o-2026-paisagens-prioritarias/",
-        "quote": "atas, estatuto, registros e documentos dos responsáveis",
-        "checked_at": "2026-11-25",
-        "method": "page"
-      },
       {
         "source_url": "https://fundoecos.org.br/edital/edital-50o-4o-2026-paisagens-prioritarias/",
         "quote": "Baixe aqui o modelo do Anexo A1 - Plano de Trabalho. Baixe aqui o modelo do Anexo A2 - Indicadores. Baixe aqui o modelo do Anexo A3 - Orçamento e Memória de Cálculo. Baixe aqui o modelo do Anexo A4 - Cronograma de Atividades.",
@@ -282,8 +279,26 @@
         "quote": "Cópia da ata de fundação da entidade proponente devidamente registrada no cartório competente; ii. Cópia do estatuto da entidade proponente devidamente registrado em cartório competente;",
         "checked_at": "2026-11-25",
         "method": "page"
+      },
+      {
+        "source_url": "https://fundoecos.org.br/wp-content/uploads/2026/09/Edital-50_Projetos_nas-Paisagens_Prioritarias_.pdf",
+        "quote": "Cópia da ata da atual diretoria da entidade proponente devidamente registrada no cartório competente;",
+        "checked_at": "2026-11-24",
+        "method": "page"
+      },
+      {
+        "source_url": "https://fundoecos.org.br/wp-content/uploads/2026/09/Edital-50_Projetos_nas-Paisagens_Prioritarias_.pdf",
+        "quote": "Cópia do registro de CNPJ regular da entidade proponente.",
+        "checked_at": "2026-11-24",
+        "method": "page"
+      },
+      {
+        "source_url": "https://fundoecos.org.br/wp-content/uploads/2026/09/Edital-50_Projetos_nas-Paisagens_Prioritarias_.pdf",
+        "quote": "Se o projeto pretende construir alguma instalação, anexe um desenho ou croqui com o tamanho da área a ser construída.",
+        "checked_at": "2026-11-24",
+        "method": "page"
       }
     ]
   },
-  "checked_at": "2026-11-25"
+  "checked_at": "2026-11-24"
 }

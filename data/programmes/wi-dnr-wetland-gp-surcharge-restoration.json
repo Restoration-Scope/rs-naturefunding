@@ -18,13 +18,17 @@
   "co_finance_required": false,
   "reporting": null,
   "effort": {
-    "steps": ["Contact the DNR to discuss the project", "Application by email"],
-    "due": [null, "2026-12-15"]
+    "steps": [
+      "Contact the DNR to discuss the project",
+      "Application by email",
+      "DNR review, scoring and selection"
+    ],
+    "due": [null, "2026-12-15", null]
   },
   "eligibility": [
     { "rule": "Project restores wetlands or related aquatic resources", "kind": "project" },
     {
-      "rule": "Project is open to public access for hunting, fishing, trapping, skiing or hiking",
+      "rule": "Allow public access for at least one of hunting, fishing, trapping, cross-country skiing or hiking",
       "kind": "project"
     }
   ],
@@ -102,6 +106,12 @@
         "quote": "Before completing an application, contact Josh Brown at JoshuaA.Brown@wisconsin.gov to discuss your project.",
         "checked_at": "2026-11-25",
         "method": "page"
+      },
+      {
+        "source_url": "https://dnr.wisconsin.gov/sites/default/files/topic/Wetlands/GP_Surcharge_Program_Guidelines_2023.pdf",
+        "quote": "The GPS Review Team, composed of at least three DNR wetland experts, will provide scores to these criteria and will provide scores for each application and select projects to fund/make recommendations for project funding to the DNR Waterways Leadership Team.",
+        "checked_at": "2026-11-24",
+        "method": "page"
       }
     ],
     "eligibility": [
@@ -112,12 +122,12 @@
         "method": "page"
       },
       {
-        "source_url": "https://dnr.wisconsin.gov/sites/default/files/topic/Wetlands/GP_Surcharge_Program_Guidelines_2023.pdf",
-        "quote": "All GPS projects must be open to public access for hunting, fishing, trapping, cross-country skiing, and hiking, or some combination thereof, and will be determined on a site-by-site basis.",
-        "checked_at": "2026-11-25",
+        "source_url": "https://dnr.wisconsin.gov/topic/wetlands/GPSurchargeFunding",
+        "quote": "Projects must be open to the public for hunting, fishing, trapping, cross-country skiing, or hiking or some combination thereof.",
+        "checked_at": "2026-11-24",
         "method": "page"
       }
     ]
   },
-  "checked_at": "2026-11-25"
+  "checked_at": "2026-11-24"
 }
