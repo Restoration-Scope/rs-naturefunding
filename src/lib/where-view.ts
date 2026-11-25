@@ -10,10 +10,8 @@ const all = <T extends Element>(s: string, root: ParentNode = document) => [...r
  * countries no part names. A country has one part; a region has each part with a country in it, and the rest's.
  */
 export function partsFor(parts: readonly (readonly string[])[], where: string): number[] {
-  const at = (code: string) => parts.flatMap((codes, i) => (codes.includes(code) ? [i] : []))
-  const own = at(where)
-  if (where.startsWith('r:')) return [...new Set([...own, ...at('*')])].sort((a, b) => a - b)
-  return (own.length ? own : at('*')).slice(0, 1)
+  const named = parts.some((codes) => codes.includes(where))
+  return parts.flatMap((codes, i) => (codes.includes(where) || (codes[0] === '*' && (!named || where[1] === ':')) ? [i] : []))
 }
 
 export function initWhereView() {
@@ -78,8 +76,7 @@ export function initWhereView() {
     for (const el of all('[data-where-made]')) el.remove()
 
     // The apply box: the parts whose calls take this place, else the part for the rest; all of them without one.
-    const codesOf = (p: HTMLElement) => p.dataset.group!.split(' ')
-    const mine = covered && where && parts.length > 1 ? partsFor(parts.map(codesOf), where).map((i) => parts[i]!) : []
+    const mine = covered && where ? partsFor(parts.map((p) => p.dataset.group!.split(' ')), where).map((i) => parts[i]!) : []
     const narrowed = mine.length > 0 && mine.length < parts.length
     const part = narrowed && mine.length === 1 ? mine[0] : undefined
     for (const p of parts) p.hidden = !covered || (narrowed && !mine.includes(p))
