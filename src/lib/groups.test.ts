@@ -1,9 +1,9 @@
 import { describe, expect, test } from 'bun:test'
 import type { Call, Programme } from '../data/schema'
 import { statusText } from './agent'
-import { callGroups, listingFor, programmeById } from './data'
+import { callGroups, listingFor, programmeById, programmes } from './data'
 import { finderPages } from './finder-pages'
-import { callTakes } from './where-codes'
+import { callTakes, placeFit } from './where-codes'
 
 const faf = programmeById.get('forest-action-facility')!
 const call = (id: string, status: Call['status'], countries?: string[]): Call => ({
@@ -69,9 +69,22 @@ describe('a place page reports only the calls that take the place', () => {
     expect(wrong).toEqual([])
   })
 
-  test('Ecuador: Forest Action Facility shows Ecuador’s call, not Central America’s', () => {
-    const l = ecuador.listings.find((x) => x.p.id === faf.id)!
-    expect(statusText(l)).not.toContain('Central America')
+  test('Ecuador: Forest Action Facility’s row is Ecuador’s own, not Central America’s', () => {
+    const p = withCalls([call('ec', 'closed', ['EC']), call('cr', 'upcoming', ['CR'])])
+    expect([listingFor(p, undefined, 'EC'), listingFor(p, undefined, 'CR')].map((l) => [l.state, l.call?.id])).toEqual([['closed', 'ec'], ['upcoming', 'cr']])
+    // Absent once the listing goes too long without a check.
+    const row = ecuador.listings.find((l) => l.p.id === faf.id)
+    if (row) expect(row).toEqual(listingFor(faf, undefined, 'EC'))
+  })
+
+  test('partner programmes count as open only where they take the place', () => {
+    for (const pg of places) {
+      for (const l of pg.listings.filter((x) => x.p.access === 'intermediary')) {
+        const open = programmes.filter((c) => c.parent === l.p.id && placeFit(c, pg.where) === 'all' && ['open', 'rolling'].includes(listingFor(c, undefined, pg.where).state))
+        const said = statusText(l).match(/(One|\d+) partner programmes? (?:is|are) open/i)?.[1]
+        expect([pg.path, l.p.id, said ? Number(said.replace(/one/i, '1')) : 0]).toEqual([pg.path, l.p.id, open.length])
+      }
+    }
   })
 
   test('the status line names the place when the programme has calls for others, and counts no others as open', () => {
