@@ -1,6 +1,6 @@
 ---
 import type { Listing } from '../lib/data'
-import { AGING_DAYS, callGroups, listingFor, notRechecked, opensSortDate, programmes, sizeBucketsFor } from '../lib/data'
+import { AGING_DAYS, callGroups, notRechecked, openPartners as openPartnersIn, opensSortDate, partnerGroups, sizeBucketsFor } from '../lib/data'
 import { amountText, effortShort, geographyText, longDate, placeNote, shortDate } from '../lib/format'
 import { approachLabels, recheckReasons } from '../lib/labels'
 import { placeFit, whereCodes } from '../lib/where-codes'
@@ -26,11 +26,9 @@ const amountFull = amountText(p.amount)
 const cell = amountCell(p.amount, 'USD')
 const usd = usdValue(p.amount)
 const where = geographyText(p.geography)
-// An umbrella that funds through partners: how many of its partner programmes are open now.
+// An umbrella that funds through partners: how many of its partner programmes are open now in the page's place.
 const openPartners =
-  p.access === 'intermediary'
-    ? programmes.filter((c) => c.parent === p.id).filter((c) => ['open', 'rolling'].includes(listingFor(c).state)).length
-    : 0
+  p.access === 'intermediary' ? openPartnersIn(p, listing.where).length : 0
 const funder = p.administered_by ? `${p.funder.name}, run by ${p.administered_by.name}` : p.funder.name
 const reason = notRechecked(p.id)
 const stampTitle = reason
@@ -95,6 +93,14 @@ const searchText = [p.name, p.funder.name, p.administered_by?.name, p.summary, w
           data-opens-date={g.listing.call?.opens ?? undefined}
         >
           <RowWhen listing={g.listing} openPartners={openPartners} />
+        </template>
+      ))
+    }
+    {/* An umbrella's partners differ by country too. */}
+    {
+      partnerGroups(p).map((g) => (
+        <template data-where-dl={g.codes.join(' ')} data-state={state}>
+          <RowWhen listing={listing} openPartners={g.open} />
         </template>
       ))
     }

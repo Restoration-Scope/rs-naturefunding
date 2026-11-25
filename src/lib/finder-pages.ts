@@ -2,7 +2,7 @@
 // programmes, one per region and one per project type. Each holds only its own rows, so search engines index
 // a page per place and per type; the other filters stay in the address (src/lib/finder.ts).
 import type { Listing } from './data'
-import { listings, sortListings } from './data'
+import { buildDate, listingFor, listings, sortListings } from './data'
 import { countryName, countryRegion, regionLabels, type Region } from './geo'
 import { approachLabels, projectTypes } from './labels'
 import { pageKey, type PagePaths } from './page-paths'
@@ -70,7 +70,8 @@ export const placeTitle = (name: string) => {
 }
 
 function placePage(where: string, path: string, name: string, regionName: string, iso2?: string): FinderPage {
-  const fits = (fit: string) => listings.filter((l) => placeFit(l.p, where) === fit).sort(sortListings)
+  // A call for other countries says nothing about this place, so only its own calls set each row's status.
+  const fits = (fit: string) => listings.filter((l) => placeFit(l.p, where) === fit).map((l) => listingFor(l.p, buildDate, where)).sort(sortListings)
   const ls = fits('all')
   const check = fits('check')
   const r = where.startsWith('r:') ? where.slice(2) : countryRegion[where]

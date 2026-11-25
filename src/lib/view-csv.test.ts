@@ -26,6 +26,16 @@ describe('pickProgrammes', () => {
   test('a row showing no call takes the first record', () => {
     expect(pickProgrammes(csv, [{ id: 'b' }])).toBe([header, 'b,Beta,b-2025,"two\nlines, quoted ""here"""', ''].join('\n'))
   })
+  test('a row showing no call never takes a call for some countries', () => {
+    const full = [
+      'programme_id,programme,call_id,deadline_date,call_countries,geography',
+      'p,"Pi, the fund",p-ke,2026-06-30,KE TG,africa',
+      'q,Rho,q-ke,2026-06-30,KE,africa',
+      'q,Rho,q-all,,,africa',
+    ].join('\n')
+    const [, p, q] = pickProgrammes(full, [{ id: 'p' }, { id: 'q' }])!.split('\n')
+    expect([p, q]).toEqual(['p,"Pi, the fund",,,,africa', 'q,Rho,q-all,,,africa'])
+  })
   test('a call or programme no longer in the file gives null, so the reader reloads', () => {
     expect(pickProgrammes(csv, [{ id: 'c', call: 'gone' }])).toBeNull()
     expect(pickProgrammes(csv, [{ id: 'z' }])).toBeNull()

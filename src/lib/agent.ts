@@ -2,14 +2,15 @@
 // the same data and labels as the HTML. Each fact line names its programme and carries its quote, source and
 // checked date, so a line still holds up when an answer quotes it alone.
 import type { Call, Evidence, Programme } from '../data/schema'
-import { AGING_DAYS, HIDDEN_DAYS, buildDate, listingFor, programmeById, programmes, sortListings, stats, type Listing } from './data'
+import { AGING_DAYS, HIDDEN_DAYS, buildDate, listingFor, openPartners, programmeById, programmes, sortListings, stats, type Listing } from './data'
 import { amountText, effortSignals, effortText, poolText, geographyFull, geographyText, joinAnd, longDate, nameWithFunder } from './format'
 import { accessHelp, accessLabels, applicantLabels, approachLabels, fiscalSponsorLabels } from './labels'
 import { RS_DESCRIPTOR, RS_URL, SITE_NAME, absolute, funderCorrectionUrl, reportProblemUrl } from './site'
-import { countryName } from './geo'
+import { countryName, regionLabels, type Region } from './geo'
+import { callTakes } from './where-codes'
 import { LLMS_FULL_PAGES, twinPath } from './twins'
 import { evidenceOf } from '../data/load'
-import type { FinderPage } from './finder-pages'
+import { inPlace, type FinderPage } from './finder-pages'
 import { effectiveCallStatus } from './status'
 
 /** Element ids on a programme page, one per fact, so an answer can link the fact it cites. They match data.json field names. */
@@ -48,25 +49,22 @@ const funderLine = (p: Programme) =>
 const deadlineWhen = (d: NonNullable<Call['deadline']>) =>
   `${longDate(d.date)}${d.time ? `, ${d.time}${d.timezone ? ` (${d.timezone})` : ''}` : ''}`
 
-const openChildren = (p: Programme) =>
-  programmes
-    .filter((c) => c.parent === p.id)
-    .map((c) => listingFor(c))
-    .filter((l) => l.state === 'open' || l.state === 'rolling')
-
 /** Where the programme stands, in one sentence that works without the page around it. */
 export function statusText(l: Listing): string {
-  const { p, state, call } = l
+  const { p, state, call, where } = l
+  // Named when the programme also has calls for other places, so the line doesn't deny those.
+  const calls = p.calls.filter((c) => callTakes(c, where))
+  const forPlace = calls.length < p.calls.length ? ` for ${inPlace(where.startsWith('r:') ? regionLabels[where.slice(2) as Region] : countryName(where))}` : ''
   if (p.access === 'invitation_only') return 'Invitation only: the funder picks its grantees and does not take unsolicited proposals.'
   if (p.access === 'intermediary') {
-    const open = openChildren(p)
+    const open = openPartners(p, where)
     return `Apply through a partner programme, not the funder.${open.length ? ` ${open.length === 1 ? 'One partner programme is' : `${open.length} partner programmes are`} open now.` : ''}`
   }
   const note = call?.note && (state === 'open' || state === 'upcoming') ? ` ${call.note}.` : ''
   // With several calls, say which one sets the status: the others may cover other places or dates.
   const which = call && p.calls.length > 1 ? ` (${call.label})` : ''
   const buildInstant = new Date(`${buildDate}T12:00:00Z`)
-  const others = p.calls.filter((c) => c !== call && effectiveCallStatus(c, buildInstant) === 'open').length
+  const others = calls.filter((c) => c !== call && effectiveCallStatus(c, buildInstant) === 'open').length
   const more = state === 'open' && others ? ` ${others === 1 ? 'One more call is' : `${others} more calls are`} open; see the listing.` : ''
   switch (state) {
     case 'open':
@@ -80,11 +78,11 @@ export function statusText(l: Listing): string {
       return `Upcoming${which}: ${when}.${call?.deadline ? ` Closes ${deadlineWhen(call.deadline)}.` : ''}${note}`
     }
     case 'closed':
-      return `No call open now. The last call we found${call?.deadline ? ` closed on ${longDate(call.deadline.date)}` : ' has closed'}; check the funder’s page for the next round.`
+      return `No call open now${forPlace}. The last call we found${call?.deadline ? ` closed on ${longDate(call.deadline.date)}` : ' has closed'}; check the funder’s page for the next round.`
     default:
       return call?.recurring
         ? `Windows each year: ${call.recurring}. The funder’s page doesn’t say whether one is open now.`
-        : 'No open or announced call found on the funder’s page.'
+        : `No open or announced call${forPlace} found on the funder’s page.`
   }
 }
 
@@ -145,7 +143,7 @@ export function programmeMarkdown(p: Programme): string {
     `Summary in ${SITE_NAME}’s own words: ${p.summary}`,
   )
 
-  const open = openChildren(p)
+  const open = openPartners(p)
   if (children.length) {
     out.push('', '## Partner programmes', '', `You apply to one of these, each with its own calls and deadlines.${open.length ? ` ${open.length} open now.` : ''}`, '')
     for (const c of children.map((c) => listingFor(c)).sort(sortListings)) {
