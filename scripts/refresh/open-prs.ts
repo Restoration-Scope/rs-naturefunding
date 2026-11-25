@@ -48,7 +48,7 @@ run(['git', 'worktree', 'prune'], { allowFail: true })
 
 /** Opens or updates the open refresh issue with this title, using the body in bodyFile. */
 function issue(title: string): void {
-  const existing = json<{ number: number; title: string }[]>(['gh', 'issue', 'list', '--state', 'open', '--label', 'refresh', '--json', 'number,title', '--limit', '100'])
+  const existing = json<{ number: number; title: string }[]>(['gh', 'issue', 'list', '--state', 'open', '--label', 'refresh', '--json', 'number,title', '--limit', '1000'])
     .find((i) => i.title === title)
   if (existing) run(['gh', 'issue', 'edit', String(existing.number), '--body-file', bodyFile])
   log.push(existing ? `updated issue #${existing.number}` : `opened issue ${run(['gh', 'issue', 'create', '--title', title, '--body-file', bodyFile, '--label', 'refresh'])}`)

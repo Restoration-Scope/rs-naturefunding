@@ -425,7 +425,7 @@ flowchart TB
   SR -->|writes| RATES
   WK -->|writes| LINKS
   WK -->|every quote still there| SPO
-  WK -->|quote gone or moved site| DRAFT
+  WK -->|quote gone| DRAFT
   WK --> SUM
   STATE & RATES & LINKS & SPO -.-> COMMIT
   COMMIT -->|"pushed to main"| DISP --> DEP

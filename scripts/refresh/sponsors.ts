@@ -1,20 +1,21 @@
 /**
- * The weekly re-read of data/sponsors/ (weekly.ts). A page counts as read when every quote cited from it is still
- * there and it didn't move to another site (`classify`, as for programmes): its facts get today's date. Otherwise
- * none of them do, and the page is raised as a refresh issue (open-prs.ts) or, when it couldn't be read, listed in
- * the weekly summary. Values and quotes are never written.
+ * The weekly re-read of data/sponsors/ (weekly.ts). A page with every quote cited from it still there dates its facts
+ * today, wherever it redirects: sponsors' forms and PDFs sit on other hosts, so a move is only listed in the weekly
+ * summary. A quote gone dates none of them and raises the page as a refresh issue (open-prs.ts); a page that couldn't
+ * be read is listed in the summary. Values and quotes are never written.
  */
 import { readFileSync, writeFileSync } from 'node:fs'
 import { join } from 'node:path'
 import { sponsor as sponsorSchema, sponsorFacts, type Sponsor } from '../../src/data/sponsors'
 import { readPages, type FailureKind, type Fetched } from './fetch'
 import { formatJson } from './json'
-import { classify, dateOf, type QuoteRef } from './tier'
+import { classify, dateOf, site, type QuoteRef } from './tier'
 
 export const SPONSORS_DIR = join(process.cwd(), 'data', 'sponsors')
 
 export type SponsorPage = { url: string; sponsors: string[]; quotes: number } & (
-  | { result: 'same' }
+  /** `moved` is the other site it redirected to. */
+  | { result: 'same'; moved: string | null }
   | { result: 'changed'; reasons: string[] }
   | { result: 'failed'; kind: FailureKind; message: string }
 )
@@ -58,8 +59,9 @@ export function sponsorPass(sponsors: Sponsor[], reads: Map<string, Fetched>, no
     const read = reads.get(url)
     if (!read) return { ...page, result: 'failed', kind: 'network', message: 'not read' }
     if (!read.ok) return { ...page, result: 'failed', kind: read.kind, message: read.message }
-    const tier = classify(read, null, quotes)
-    return tier.tier === 'A' ? { ...page, result: 'same' } : { ...page, result: 'changed', reasons: tier.reasons }
+    const onPage = classify({ hash: read.hash, text: read.text }, null, quotes)
+    if (onPage.tier === 'B') return { ...page, result: 'changed', reasons: onPage.reasons }
+    return { ...page, result: 'same', moved: site(read.finalUrl) === site(url) ? null : read.finalUrl }
   })
   const same = new Set(pages.filter((p) => p.result === 'same').map((p) => p.url))
 
@@ -134,6 +136,10 @@ export const sponsorProblems = (pass: SponsorPass): string[] => [
   ...pass.invalid.map((i) => `- not written, the dated file fails the schema: ${i}`),
 ]
 
+/** The pages read on another site, quotes and all. */
+export const sponsorMoves = (pass: SponsorPass): string[] =>
+  pass.pages.flatMap((p) => (p.result === 'same' && p.moved ? [`- moved, every quote still there: ${p.url} (${p.sponsors.join(', ')}) → ${p.moved}`] : []))
+
 /** The weekly summary's section. `staleBefore` is the date 30 days ago. */
 export function sponsorSection(pass: SponsorPass, sponsors: Sponsor[], staleBefore: string): string[] {
   const updated = new Map(pass.updated.map((s) => [s.id, s]))
@@ -142,6 +148,7 @@ export function sponsorSection(pass: SponsorPass, sponsors: Sponsor[], staleBefo
     '### Fiscal sponsors',
     sponsorCounts(pass, sponsors.length),
     ...sponsorProblems(pass),
+    ...sponsorMoves(pass),
     ...stale.map((s) => `- stale over 30 days: \`${s.id}\` last fully re-read ${s.checked_at}`),
   ]
 }

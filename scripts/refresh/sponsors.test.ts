@@ -93,10 +93,12 @@ describe('fiscal sponsors re-read', () => {
     expect(pass([fixture()], blocked(A), blocked(B)).updated).toEqual([])
   })
 
-  test('moved to another site: reported as changed, even with the quotes there', () => {
+  test('moved to another site with the quotes there: dated and listed; without them: changed', () => {
     const r = pass([fixture()], ok(A, PAGE_A), ok(B, PAGE_B, 'https://elsewhere.example/fees'))
-    expect(r.updated[0].fees![0].evidence.checked_at).toBe('2026-11-24')
-    expect(sponsorIssues(r)[0].body).toContain('redirected to another site: https://elsewhere.example/fees')
+    expect(r.updated[0].checked_at).toBe(TODAY)
+    expect(sponsorIssues(r)).toEqual([])
+    expect(sponsorSection(r, [fixture()], '2026-10-31')).toContain(`- moved, every quote still there: ${B} (example-sponsor) → https://elsewhere.example/fees`)
+    expect(sponsorIssues(pass([fixture()], ok(A, PAGE_A), ok(B, 'Buy our shoes.', 'https://elsewhere.example/')))).toHaveLength(1)
   })
 
   test('a fact a person read keeps its date and holds the sponsor’s', () => {

@@ -35,7 +35,7 @@ export function quotesAt(programmes: Programme[], url: string): QuoteRef[] {
 
 export type Tier = { tier: 'A'; baseline: boolean } | { tier: 'B'; reasons: string[] }
 
-const site = (url: string) => new URL(url).hostname.replace(/^www\./, '')
+export const site = (url: string) => new URL(url).hostname.replace(/^www\./, '')
 
 /**
  * `accepted` is the hash of the page text whose facts are on main; null before the first read.

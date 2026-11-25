@@ -6,7 +6,7 @@
  */
 import { join } from 'node:path'
 import { checkData } from '../../src/data/load'
-import { readSponsorPages, sponsorCounts, sponsorPass, sponsorProblems } from '../refresh/sponsors'
+import { readSponsorPages, sponsorCounts, sponsorMoves, sponsorPass, sponsorProblems } from '../refresh/sponsors'
 
 const only = new Set(process.argv.slice(2))
 const { sponsors, issues } = checkData(join(process.cwd(), 'data', 'programmes'), null)
@@ -20,5 +20,6 @@ for (const id of unknown) console.error(`no sponsor ${id}`)
 const pass = sponsorPass(chosen, await readSponsorPages(chosen), new Date())
 const problems = sponsorProblems(pass)
 for (const p of problems) console.error(p)
+for (const m of sponsorMoves(pass)) console.log(m)
 console.log(`Nothing written. ${sponsorCounts(pass, chosen.length)}`)
 process.exit(problems.length || invalid.length || unknown.length ? 1 : 0)

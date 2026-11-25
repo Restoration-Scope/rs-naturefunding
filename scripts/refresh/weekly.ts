@@ -3,10 +3,10 @@
  * the fiscal sponsors cite (sponsors.ts), then posts a summary issue: what was checked and changed this week, pages
  * failing 3+ times in a row, programmes not fully re-read in 30 days, broken links, open refresh PRs and the requirements
  * reading's leads (unread rules documents, application pages on other sites, unresolved fields).
- *   bun scripts/refresh/weekly.ts [--no-issue] [--drafts dir]
+ *   bun scripts/refresh/weekly.ts [--no-issue]
  */
-import { appendFileSync, mkdirSync, rmSync, writeFileSync } from 'node:fs'
-import { join, resolve } from 'node:path'
+import { appendFileSync, mkdirSync, readdirSync, rmSync, writeFileSync } from 'node:fs'
+import { join } from 'node:path'
 import { checkData } from '../../src/data/load'
 import { fetchCompletingChain } from '../data/tls-chain'
 import { leadsOf, leadsSection, readManifests } from '../requirements/leads'
@@ -61,10 +61,9 @@ async function refreshSponsors(): Promise<string[]> {
     const raw = rawSponsors(sponsors.map((s) => s.id))
     const pass = sponsorPass(raw, await readSponsorPages(raw), now)
     for (const s of pass.updated) writeSponsor(s)
-    const at = process.argv.indexOf('--drafts')
-    const drafts = resolve(at === -1 ? join('.cache', 'refresh-drafts') : process.argv[at + 1])
-    rmSync(drafts, { recursive: true, force: true })
+    const drafts = join('.cache', 'refresh-drafts')
     mkdirSync(drafts, { recursive: true })
+    for (const f of readdirSync(drafts)) if (f.startsWith('sponsor-')) rmSync(join(drafts, f))
     sponsorIssues(pass).forEach((d, i) => writeFileSync(join(drafts, `sponsor-${i}.json`), JSON.stringify(d, null, 2)))
     return sponsorSection(pass, raw, dateOf(daysAgo(30)))
   } catch (e) {
