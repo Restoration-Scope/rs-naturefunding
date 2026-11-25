@@ -60,8 +60,9 @@ export function sponsorPass(sponsors: Sponsor[], reads: Map<string, Fetched>, no
     if (!read) return { ...page, result: 'failed', kind: 'network', message: 'not read' }
     if (!read.ok) return { ...page, result: 'failed', kind: read.kind, message: read.message }
     const onPage = classify({ hash: read.hash, text: read.text }, null, quotes)
-    if (onPage.tier === 'B') return { ...page, result: 'changed', reasons: onPage.reasons }
-    return { ...page, result: 'same', moved: site(read.finalUrl) === site(url) ? null : read.finalUrl }
+    const moved = site(read.finalUrl) === site(url) ? null : read.finalUrl
+    if (onPage.tier === 'A') return { ...page, result: 'same', moved }
+    return { ...page, result: 'changed', reasons: moved ? [`redirected to another site: ${moved}`, ...onPage.reasons] : onPage.reasons }
   })
   const same = new Set(pages.filter((p) => p.result === 'same').map((p) => p.url))
 
