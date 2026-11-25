@@ -56,7 +56,7 @@ export const NOT_FUNDERS = [
   'aides-territoires.beta.gouv.fr', 'conjunta.org', 'fundingopportunitis.com', 'granter.it', 'invenyo.it', 'innovationbridge.info',
   'hojokin-agent.jp', 'jfc.or.jp', 'appelaprojets.org', 'eurovertice.eu', 'msmeafricaonline.com', 'togofirst.com', 'jiji.com',
   'uol.com.br', 'ots.at', 'insidestategovernment.com.au', 'medium.com', 'linkedin.com', 'facebook.com', 'x.com', 'youtube.com',
-  'wikipedia.org', 'reddit.com',
+  'wikipedia.org', 'reddit.com', 'climate-charter.org', 'opportunitytracker.ug',
 ]
 
 /** GitHub refuses an issue body over 65,536 characters; rows past this wait for next week's run. */

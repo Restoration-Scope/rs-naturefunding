@@ -202,31 +202,34 @@ flowchart LR
 
     <section id="discovery">
       <h2>1. Discovery: fill the backlog</h2>
-      <p>Two jobs in <code>refresh.yml</code> raise leads; none becomes a listing by itself. No model is called here: the EU and grants.gov searches are keyword APIs and Exa is a search engine. The backlog is the open <code>discovery</code> issues. Functions: <code>isNbsEuTopic</code>, <code>isNbsUsOpportunity</code>, <code>organisationLead</code>, <code>newCandidates</code> and <code>fileDiscoveryIssue</code> in <code>scripts/refresh/discover.ts</code>; <code>newLeads</code> in <code>scripts/refresh/discover-web.ts</code>. Green: code that decides. Blue: an outside API or model is called, or not built yet (“Next”). Amber: a person or agent decides. Red: left out. Purple: a file or record. Solid arrows: flow and writes; dotted: reads; two heads: reads and writes.</p>
+      <p>Three jobs in <code>refresh.yml</code> raise leads; none becomes a listing by itself. No model is called here: the EU and grants.gov searches are keyword APIs and Exa is a search engine. The backlog is the open <code>discovery</code> issues. Functions: <code>isNbsEuTopic</code>, <code>isNbsUsOpportunity</code>, <code>organisationLead</code>, <code>newCandidates</code> and <code>fileDiscoveryIssue</code> in <code>scripts/refresh/discover.ts</code>; <code>newLeads</code> in <code>scripts/refresh/discover-web.ts</code>; <code>directoryLeads</code> in <code>scripts/refresh/discover-directories.ts</code>. Green: code that decides. Blue: an outside API or model is called, or not built yet (“Next”). Amber: a person or agent decides. Red: left out. Purple: a file or record. Solid arrows: flow and writes; dotted: reads; two heads: reads and writes.</p>
       <script type="text/plain" class="mermaid">
 flowchart TB
   EU["fa:fa-landmark EU Funding & Tenders API<br/>daily 05:17 UTC, discover.ts<br/>out: topics, deadlines"]
   US["fa:fa-flag grants.gov API<br/>daily, discover.ts; 8 agencies<br/>out: synopsis, applicants"]
   EXA["fa:fa-search Exa search API<br/>Mondays, discover-web.ts<br/>22 queries, ~$0.50: URLs"]
-  DIR["fa:fa-book-open Directories, guides<br/>tips only, never copied"]
+  DIR["fa:fa-book-open Watched directories<br/>Mondays, discover-directories.ts<br/>title and link only"]
+  GUIDE["fa:fa-book-open Other directories, guides<br/>tips only, never copied"]
   EUF["fa:fa-filter isNbsEuTopic<br/>by topic code"]
   USF["fa:fa-filter isNbsUsOpportunity<br/>organisationLead"]
   NL["fa:fa-filter newLeads<br/>no NOT_FUNDERS sites,<br/>one lead per site"]
+  DL["fa:fa-filter directoryLeads<br/>no NOT_FUNDERS sites,<br/>one lead per page"]
   NC["fa:fa-copy newCandidates<br/>not raised, not in data/"]
   DATA[("data/programmes<br/>data/sources.json")]
-  DISC[("data/checks/discovered.json<br/>keys eu:, us:, web:")]
+  DISC[("data/checks/discovered.json<br/>keys eu:, us:, web:, dir:")]
   ISS[("GitHub issue<br/>label discovery")]
   EU --> EUF --> NC
   US --> USF --> NC
   EXA --> NL
-  DATA -.-> NC & NL
-  NC & NL <-->|"reads, writes:<br/>raise once"| DISC
-  NC & NL -->|a row per lead| ISS
-  DIR -.->|"tips for where to look"| BL
+  DIR --> DL
+  DATA -.-> NC & NL & DL
+  NC & NL & DL <-->|"reads, writes:<br/>raise once"| DISC
+  NC & NL & DL -->|a row per lead| ISS
+  GUIDE -.->|"tips for where to look"| BL
   ISS --> BL
   BL["fa:fa-inbox Backlog<br/>open discovery issues,<br/>to Gathering"]
-  class EUF,USF,NL,NC good
-  class EU,US,EXA,DIR info
+  class EUF,USF,NL,DL,NC good
+  class EU,US,EXA,DIR,GUIDE info
   class DATA,DISC,ISS store
   class BL warn
       </script>

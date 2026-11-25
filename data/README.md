@@ -88,8 +88,9 @@ Discovery only raises leads; a person (or an agent following this file) adds a p
 
 - **Daily, two APIs** (`scripts/refresh/discover.ts`): open or forecast nature calls in EU Funding & Tenders (`EU_SEARCH_API_KEY`) and grants.gov.
 - **Weekly, web search** (`scripts/refresh/discover-web.ts`): 22 Exa searches by region, theme and language (`EXA_API_KEY`, about $0.50 a run). One row per funder site not yet cited in `data/`; directories and news sites are dropped, and on government or platform sites (gov.uk, canada.ca, Submittable…) each page counts on its own.
+- **Weekly, directories** (`scripts/refresh/discover-directories.ts`): curated pages where others list calls (`DIRECTORIES`, first the Climate and Environment Charter's). Only a call's title and its link to the funder are read; one row per funder page not yet cited or raised.
 
-`--no-issue` on either prints the leads without filing an issue or recording them.
+`--no-issue` on any of them prints the leads without filing an issue or recording them.
 
 ## Scripts
 
