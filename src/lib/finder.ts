@@ -5,6 +5,7 @@ import { pageHref, type PagePaths } from './page-paths'
 import { picker } from './picker'
 import { daysBetween, daysLeft, effectiveListingState, shortDateText, utcDateKey } from './status'
 import type { State } from './labels'
+import { whereFit } from './where-fit'
 
 const AGING_DAYS = 30
 const HIDDEN_DAYS = 90
@@ -339,14 +340,7 @@ export function initTableFinder() {
   }
 
   function whereMatches(i: Item, where: string) {
-    if (!where) return true
-    if (i.where.includes('*')) return true
-    if (where.startsWith('r:')) {
-      const r = where.slice(2)
-      return i.where.includes(`r:${r}`) || i.where.includes(`R:${r}`)
-    }
-    const region = whereSelect.selectedOptions[0]?.dataset.region
-    return i.where.includes(where) || (!!region && i.where.includes(`R:${region}`))
+    return whereFit(i.where, where, whereSelect.selectedOptions[0]?.dataset.region)
   }
 
   function matches(i: Item, f: Filters, skip?: Multi | 'within') {
@@ -360,7 +354,7 @@ export function initTableFinder() {
       const left = days(today, i.deadline)
       if (left < 0 || left > Number(f.within)) return false
     }
-    return whereMatches(i, f.where)
+    return whereMatches(i, f.where) !== null
   }
 
   // The Filters button counts the sidebar's filters; "Clear all filters" shows once any filter is on.
@@ -395,6 +389,8 @@ export function initTableFinder() {
     if (localize(f.where)) applySort()
     // The programme page reads the Where, so the place carries through.
     for (const i of items) {
+      const fit = whereMatches(i, f.where)
+      for (const n of i.el.querySelectorAll<HTMLElement>('[data-place]')) n.hidden = !f.where || n.dataset.place !== (fit === 'check' ? fit : f.where)
       const a = i.el.querySelector<HTMLAnchorElement>('a.name')
       if (a) a.search = f.where ? `?where=${encodeURIComponent(f.where)}` : ''
     }

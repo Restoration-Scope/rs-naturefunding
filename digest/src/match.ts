@@ -4,6 +4,7 @@ import type { Programme } from '../../src/data/schema'
 import { countryRegion, regionLabels, countryName, type Region } from '../../src/lib/geo'
 import { approachLabels } from '../../src/lib/labels'
 import { usdPerUnit } from '../../src/lib/rates'
+import { placeFit } from '../../src/lib/where-codes'
 
 export type Approach = Programme['approaches'][number]
 
@@ -21,25 +22,9 @@ export function cleanPrefs(where: unknown, approaches: unknown): Prefs {
   return { where: okWhere, approaches: okApproaches }
 }
 
-/** The same codes FinderRow puts in data-where (whereCodes in src/lib/data.ts). */
-export function whereCodes(p: Programme): string[] {
-  const g = p.geography
-  if (!g) return []
-  if (g.scope === 'global') return ['*']
-  if (g.scope === 'regions') return g.regions.map((r) => `R:${r}`)
-  const rs = new Set(g.countries.map((c) => countryRegion[c]).filter(Boolean))
-  return [...g.countries, ...[...rs].map((r) => `r:${r}`)]
-}
-
 export function matches(p: Programme, prefs: Prefs): boolean {
   if (prefs.approaches.length > 0 && !p.approaches.some((a) => prefs.approaches.includes(a))) return false
-  const where = prefs.where
-  if (!where) return true
-  const codes = whereCodes(p)
-  if (codes.includes('*')) return true
-  if (where.startsWith('r:')) return codes.includes(where) || codes.includes(`R:${where.slice(2)}`)
-  const region = countryRegion[where]
-  return codes.includes(where) || (!!region && codes.includes(`R:${region}`))
+  return placeFit(p, prefs.where) !== null
 }
 
 /** The currency amounts are shown in: one data/rates.json knows, else '' (each funder's own). */

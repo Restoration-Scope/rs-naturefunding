@@ -1,6 +1,7 @@
 import type { Programme } from '../data/schema'
-import { countryName, regionLabels } from './geo'
+import { countryName } from './geo'
 import { usdPerUnit } from './rates'
+import { placeFit } from './where-codes'
 
 // Dates are calendar days: read them in UTC so no time zone moves them a day.
 const fmt = (month: 'short' | 'long') => new Intl.DateTimeFormat('en-US', { month, day: 'numeric', year: 'numeric', timeZone: 'UTC' })
@@ -112,16 +113,31 @@ export function geographyText(g: Programme['geography']): string | null {
   return names.length > 4 ? `${names.slice(0, 3).join(', ')} and ${names.length - 3} more` : joinAnd(names)
 }
 
+/** What a row says next to a programme shown for a country it may not take all of, or may not take; '' when it simply does. */
+export function placeNote(g: Programme['geography'], country: string): string {
+  if (g?.scope === 'countries') return g.parts?.[country] ? `Only ${g.parts[country]}` : ''
+  return g?.scope === 'regions' && placeFit({ geography: g }, country) === 'check' ? `Check the place: ${g.label}` : ''
+}
+
+/** The parts to spell out beside each country: none when all share one, which the label already says. */
+export function shownParts(g: Programme['geography']): Record<string, string> {
+  const parts = (g?.scope === 'countries' && g.parts) || {}
+  const texts = Object.values(parts)
+  return g?.scope === 'countries' && g.label && texts.length > 1 && texts.length === g.countries.length && new Set(texts).size === 1 ? {} : parts
+}
+
 export function geographyFull(g: Programme['geography']): string | null {
   if (!g) return null
   if (g.scope === 'global') return 'Worldwide'
-  if (g.scope === 'regions') {
-    const regions = joinAnd(g.regions.map((r) => regionLabels[r]))
-    return regions === g.label ? regions : `${g.label} (${regions})`
-  }
+  // The funder's words alone: our regions are for the filters, and beside "Mediterranean basin" they read as all of Africa.
+  if (g.scope === 'regions') return g.label
   // An official list runs to 100+ names; the page folds them away and says where the list comes from.
-  if (g.list) return `${g.label ?? 'Listed countries'} (${g.countries.length} countries and territories)`
-  const list = joinAnd(g.countries.map(countryName))
+  if (g.list) {
+    const parts = Object.entries(g.parts ?? {}).map(([c, part]) => `; in ${countryName(c)}, only ${part}`)
+    return `${g.label ?? 'Listed countries'} (${g.countries.length} countries and territories${parts.join('')})`
+  }
+  const parts = shownParts(g)
+  const list = joinAnd(g.countries.map((c) => `${countryName(c)}${parts[c] ? ` (only ${parts[c]})` : ''}`))
   return g.label ? `${g.label}: ${list}` : list
 }
 

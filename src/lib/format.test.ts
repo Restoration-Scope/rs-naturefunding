@@ -3,12 +3,12 @@ import { amountShort, boldFigures, effortLevel, effortSignals, geographyFull, na
 import { inPlace, placeTitle } from './finder-pages'
 
 describe('geographyFull', () => {
-  test('a region label that is the region name is not repeated', () => {
-    expect(geographyFull({ scope: 'regions', label: 'Africa', regions: ['africa'] } as never)).toBe('Africa')
+  test('a group reads in the funder’s words alone, never with our regions', () => {
+    expect(geographyFull({ scope: 'regions', label: 'Mediterranean basin', regions: ['africa', 'europe'], areas: ['mediterranean_basin'] })).toBe('Mediterranean basin')
   })
 
-  test('a funder label that differs keeps the region list', () => {
-    expect(geographyFull({ scope: 'regions', label: 'Sub-Saharan Africa', regions: ['africa'] } as never)).toBe('Sub-Saharan Africa (Africa)')
+  test('a country taken only in part says which part', () => {
+    expect(geographyFull({ scope: 'countries', countries: ['GL', 'PT'], parts: { PT: 'the Azores and Madeira' } })).toBe('Greenland and Portugal (only the Azores and Madeira)')
   })
 })
 

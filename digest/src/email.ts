@@ -1,7 +1,7 @@
 // The two emails: the confirmation and the weekly digest. Plain table HTML with inline styles (what mail
 // clients render), plus a text version. Colours are the site's tokens (src/styles/global.css).
 import type { Call } from '../../src/data/schema'
-import { amountShort, geographyText, longDate } from '../../src/lib/format'
+import { amountShort, geographyText, longDate, placeNote } from '../../src/lib/format'
 import { ratesDate } from '../../src/lib/rates'
 import { countryName, countryRegion, regionLabels, type Region } from '../../src/lib/geo'
 import { approachLabels, projectTypes } from '../../src/lib/labels'
@@ -160,10 +160,10 @@ function callLine(call: Call | null): string {
   return ''
 }
 
-/** Where the listing is open. Left out when the subscriber chose a country: the email's heading already names it. */
+/** Where the listing is open. Left out when the subscriber chose a country: the email's heading already names it, unless the funder's words leave it to check. */
 function placeOf(i: DigestItem, prefs: Prefs) {
   const country = prefs.where && !prefs.where.startsWith('r:')
-  return country ? '' : geographyText(i.programme.geography)
+  return country ? placeNote(i.programme.geography, prefs.where) : geographyText(i.programme.geography)
 }
 
 /** One item's parts, shared by the email and the past issues on the site (src/components/DigestIssue.astro). */
@@ -195,7 +195,8 @@ export function digestEmail(o: { site: string; pages?: PagePaths; digest: Digest
   const { items, total } = o.digest
   const what = prefsText(o.prefs)
   const counts = (['open', 'upcoming', 'new'] as Section[]).map((s) => [s, items.filter((i) => i.section === s).length] as const)
-  const subject = `${countsText(o.digest.counts)}${what ? ` · ${what}` : ''}`
+  const check = o.digest.check ? `${o.digest.check} to check` : ''
+  const subject = `${[countsText(o.digest.counts), check].filter(Boolean).join(', ')}${what ? ` · ${what}` : ''}`
   const sinceText = `since ${longDate(o.since.slice(0, 10))}`
   const intro = `New${what ? ` for ${what}` : ''} ${sinceText}`
   const listUrl = finderUrl(o.site, o.prefs, o.pages)

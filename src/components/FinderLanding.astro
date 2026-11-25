@@ -6,7 +6,7 @@ import type { FinderPage } from '../lib/finder-pages'
 import { homeItemListLd } from '../lib/agent'
 import { longDate } from '../lib/format'
 import { absolute } from '../lib/site'
-import { stats } from '../lib/data'
+import { sortListings, stats } from '../lib/data'
 
 interface Props {
   page: FinderPage
@@ -41,5 +41,5 @@ const jsonLd = [
     </div>
   </div>
 
-  <Finder listings={page.listings} where={page.where} cat={page.cat} />
+  <Finder listings={[...page.listings, ...page.check].sort(sortListings)} where={page.where} cat={page.cat} />
 </Base>

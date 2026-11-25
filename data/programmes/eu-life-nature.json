@@ -12,9 +12,10 @@
   "approaches": ["species_conservation", "protected_areas"],
   "applicant_types": ["ngo", "government", "company", "research_institution"],
   "geography": {
-    "scope": "regions",
-    "regions": ["europe"],
-    "label": "EU Member States (including overseas countries and territories), listed EEA countries and countries associated to the LIFE Programme"
+    "scope": "countries",
+    "countries": ["AT", "AW", "BE", "BG", "BL", "BQ", "CW", "CY", "CZ", "DE", "DK", "EE", "ES", "FI", "FR", "GL", "GR", "HR", "HU", "IE", "IS", "IT", "LT", "LU", "LV", "MD", "ME", "MK", "MT", "NC", "NL", "PF", "PL", "PM", "PT", "RO", "SE", "SI", "SK", "SX", "TF", "UA", "WF"],
+    "label": "EU Member States (including overseas countries and territories), listed EEA countries and countries associated to the LIFE Programme",
+    "list": ["eu-member-states", "eu-overseas-countries-territories", "life-participating-countries"]
   },
   "access": "direct",
   "window": "fixed",
@@ -133,6 +134,14 @@
       "checked_at": "2026-11-22",
       "method": "page"
     },
+    "places": [
+      {
+        "source_url": "https://ec.europa.eu/info/funding-tenders/opportunities/docs/2021-2027/life/guidance/list-3rd-country-participation_life_en.pdf",
+        "quote": "Iceland participates in the LIFE Programme",
+        "checked_at": "2026-11-24",
+        "method": "page"
+      }
+    ],
     "access": {
       "source_url": "https://cinea.ec.europa.eu/programmes/life/nature-and-biodiversity_en",
       "quote": "Proposals can only be submitted electronically through the Funding & Tenders portal.",

@@ -16,7 +16,8 @@ export function initWhereView() {
   const covers = (w: string) => reach.has('*') || reach.has(w) || (w.startsWith('r:') && reach.has(`R:${w.slice(2)}`))
   // The funder names a group ("ODA-eligible countries") inside this place's region: maybe, never a yes.
   const maybe = (w: string) => !covers(w) && (reach.has(`?${w}`) || (w.startsWith('r:') && reach.has(`?:${w.slice(2)}`)))
-  const { wherePart: partOf, whereWithin: within } = root.dataset
+  const { wherePart, whereWithin: within } = root.dataset
+  const partsOf: Record<string, string> = JSON.parse(root.dataset.whereParts ?? '{}')
 
   const box = document.querySelector<HTMLElement>('[data-apply]')
   const parts = all<HTMLElement>('[data-group]', box ?? document)
@@ -90,7 +91,10 @@ export function initWhereView() {
         }
       }
       else if (covered) {
-        const via = place(partOf ? 'part' : 'covered')?.querySelector<HTMLElement>('[data-where-via]')
+        const partOf = partsOf[where] ?? wherePart
+        const line = place(partOf ? 'part' : 'covered')
+        line?.querySelector('[data-where-part-text]')?.replaceChildren(partOf ?? '')
+        const via = line?.querySelector<HTMLElement>('[data-where-via]')
         const call = part?.dataset.callLabel && part.dataset.group !== '*' ? `, in the call “${part.dataset.callLabel}”` : ''
         if (via) via.textContent = `${within ? `, within ${within}` : ''}${call}`
       } else place('uncovered')
