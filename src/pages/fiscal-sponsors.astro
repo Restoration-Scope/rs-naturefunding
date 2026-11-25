@@ -17,7 +17,7 @@ const groups = sponsorTypes
   .filter((g) => g.list.length > 0)
 const anySubject: SponsorType[] = ['environment', 'any']
 const broad = groups.filter((g) => anySubject.includes(g.type))
-const columns = ['Sponsor', 'Takes', 'Charges', 'Groups abroad', 'Companies', 'Individuals']
+const columns = ['Sponsor', 'Takes', 'Charges', 'Groups based abroad', 'Companies', 'Individuals']
 const jsonLd = {
   '@context': 'https://schema.org',
   '@type': 'CollectionPage',
@@ -230,7 +230,7 @@ const h2 = 'mt-12 mb-3 scroll-mt-6 text-3xl font-extrabold'
     display: table-row;
   }
   .sp-tbl tbody:has([data-sp-toggle][open]) > tr > * {
-    background: color-mix(in oklch, var(--ground) 55%, var(--card));
+    background: color-mix(in srgb, var(--ground) 55%, var(--card));
   }
   .sp-tbl .sp-more > td {
     padding-bottom: 1rem;
@@ -260,7 +260,7 @@ const h2 = 'mt-12 mb-3 scroll-mt-6 text-3xl font-extrabold'
       text-decoration: underline;
     }
     .sp-tbl tbody:hover > tr:first-child > * {
-      background: color-mix(in oklch, var(--ground) 55%, var(--card));
+      background: color-mix(in srgb, var(--ground) 55%, var(--card));
     }
   }
 
@@ -308,7 +308,7 @@ const h2 = 'mt-12 mb-3 scroll-mt-6 text-3xl font-extrabold'
     .sp-tbl td[data-label]::before {
       content: attr(data-label);
       grid-column: 1;
-      grid-row: 1;
+      grid-row: 1 / span 4;
       color: var(--muted-foreground);
     }
     .sp-open summary {
