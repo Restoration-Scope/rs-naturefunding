@@ -1,152 +1,219 @@
 ---
 import type { Programme } from '../data/schema'
+import { factIds } from '../lib/agent'
 import { buildDate } from '../lib/data'
-import { effortLevel, effortSignals, longDate } from '../lib/format'
+import { effortSignals, longDate, signalRules, type Signal } from '../lib/format'
 import { cardClasses } from '@/components/ui/card'
+import EffortLevel from './EffortLevel.astro'
 import SectionHeading from './SectionHeading.astro'
 import Quote from './Quote.astro'
 import { ChevronRight, FileText } from 'lucide-react'
 
 /**
- * What applying asks of an organisation, before it starts: the rules that rule it out (a yes/no self-check),
- * the documents to have ready, and the steps with their dates. Every line is backed by the funder's words.
- * The page shows it for direct programmes with at least one of the three stated.
+ * What the grant asks of an organisation, in full: one box per signal of the overview (EffortSummary.astro), each
+ * with its level and what is behind it. Who qualifies holds the rules (a yes/no self-check), Applying the documents
+ * and the dated steps. Every line is backed by the funder's words, here or in the fact it links to.
+ * The page shows it for direct programmes with anything known (hasEffort).
  */
 interface Props {
   p: Programme
 }
 
 const { p } = Astro.props
-const level = effortLevel(p)
+const [qualify, apply, cofund, after] = effortSignals(p) as [Signal, Signal, Signal, Signal]
 const rules = p.eligibility ?? []
 const ruleQuotes = p.evidence.eligibility ?? []
 const steps = p.effort?.steps ?? []
 const due = p.effort?.due ?? []
 // The verdict names the first step's own date only: a later step's date is often for invited applicants.
 const firstDue = due[0] && due[0] >= buildDate ? due[0] : null
-const levelTone = { Light: 'bg-ok text-ok-ink', Medium: 'bg-caution text-caution-ink', Heavy: 'bg-warn text-warn-ink' } as const
+// The kinds of rule that raise the level: each is named on its rule.
+const raising: Partial<Record<string, string>> = { track_record: 'Track record', capacity: 'Capacity', finances: 'Finances' }
+const signals = [qualify, apply, cofund, after]
+// Signals with nothing behind them share one box at the end.
+const unknown = (x: Signal) => x.level === 'unchecked' || x.level === 'unstated'
+const blank = signals.filter((x) => unknown(x) && !(x === apply && (p.documents || steps.length > 0)))
 const box = [cardClasses, 'mt-4 px-5 pt-4 pb-5']
 const boxTitle = 'text-xl'
+const subTitle = 'mt-5 font-sans text-md font-bold text-ink-2'
+const jump = 'font-semibold text-ink underline underline-offset-2'
 const row = 'border-t border-rule py-3 first:border-t-0'
 ---
 
 <section aria-labelledby="before-title">
   <SectionHeading kind="before" id="before-title">Before you apply</SectionHeading>
-  {
-    level?.level && (
-      <p class="flex flex-wrap items-center gap-x-3 gap-y-1 text-md text-ink-2">
-        <span class:list={[levelTone[level.level], 'rounded-md px-2.5 py-0.5 text-md font-semibold']}>{level.level}: {level.why}</span>
-        <span>Our label, from the steps and documents the funder lists.</span>
-      </p>
-    )
-  }
+  <p class="text-md text-ink-2">How much each part takes is our label, from what the funder’s pages list.</p>
 
   {
-    rules.length > 0 && (
-      <div
-        id="eligibility"
-        class:list={[box, 'group/gates transition-[border-color,box-shadow] duration-200 data-[out=no]:border-(--stop-dot) data-[out=no]:shadow-[0_0_0_3px_var(--stop),0_0_18px_2px_color-mix(in_srgb,var(--stop-dot)_35%,transparent)]']}
-        data-gates
-      >
-        <h3 class={boxTitle}>Can your organisation apply?</h3>
-        <p class="mt-1 text-md text-ink-2">These rules rule you out. Answer each one; tap a rule for the funder’s words.</p>
-        <ul class="m-0 mt-2 list-none p-0">
-          {rules.map(({ rule }, i) => (
-            <li class={row} data-gate>
-              {/* The rule is the toggle: tapping it unfolds the funder's words, so each row stays one line. */}
-              <div class="flex flex-wrap items-start justify-between gap-x-4 gap-y-2">
-                {ruleQuotes[i] ? (
-                  <details class="group/rule min-w-0 flex-1 basis-60">
-                    <summary class="flex cursor-pointer list-none items-start gap-1.5 text-lg font-semibold [&::-webkit-details-marker]:hidden">
-                      <ChevronRight className="mt-[0.35rem] size-4 flex-none text-ink-2 transition-transform group-open/rule:rotate-90" aria-hidden="true" />
-                      <span>{rule}</span>
-                    </summary>
-                    <div class="pl-5.5">
-                      <Quote e={ruleQuotes[i]} />
+    !blank.includes(qualify) && (
+      <div id="asks-qualify" class:list={[box, 'group/gates transition-[border-color,box-shadow] duration-200 data-[out=no]:border-(--stop-dot) data-[out=no]:shadow-[0_0_0_3px_var(--stop),0_0_18px_2px_color-mix(in_srgb,var(--stop-dot)_35%,transparent)]']} data-gates={rules.length > 0 ? '' : undefined}>
+        <div class="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
+          <h3 class={boxTitle}>{qualify.label}</h3>
+          <EffortLevel level={qualify.level} />
+        </div>
+        {qualify.why !== 'Not checked yet.' && <p class="mt-1 text-md text-ink-2">{qualify.why}</p>}
+        {
+          p.consortium_required && (
+            <p class="mt-1 text-md text-ink-2">You apply as a consortium: <a class={jump} href={`#${factIds.consortium_required}`}>the funder’s words</a>.</p>
+          )
+        }
+        {
+          rules.length > 0 && (
+            <div id="eligibility">
+            <h4 class={subTitle}>Can your organisation apply?</h4>
+            <p class="mt-1 text-md text-ink-2">These rules rule you out. Answer each one; tap a rule for the funder’s words.</p>
+            <ul class="m-0 mt-2 list-none p-0">
+              {rules.map(({ rule, kind }, i) => (
+                <li class={row} data-gate>
+                  {/* The rule is the toggle: tapping it unfolds the funder's words, so each row stays one line. */}
+                  <div class="flex flex-wrap items-start justify-between gap-x-4 gap-y-2">
+                    {ruleQuotes[i] ? (
+                      <details class="group/rule min-w-0 flex-1 basis-60">
+                        <summary class="flex cursor-pointer list-none items-start gap-1.5 text-lg font-semibold [&::-webkit-details-marker]:hidden">
+                          <ChevronRight className="mt-[0.35rem] size-4 flex-none text-ink-2 transition-transform group-open/rule:rotate-90" aria-hidden="true" />
+                          <span>{rule}{' '}{raising[kind] && <span class="inline-block rounded-sm bg-sunk px-1.5 text-sm font-semibold text-ink-2">{raising[kind]}</span>}</span>
+                        </summary>
+                        <div class="pl-5.5">
+                          <Quote e={ruleQuotes[i]} />
+                        </div>
+                      </details>
+                    ) : (
+                      <p class="min-w-0 flex-1 basis-60 text-lg font-semibold">{rule}{' '}{raising[kind] && <span class="inline-block rounded-sm bg-sunk px-1.5 text-sm font-semibold text-ink-2">{raising[kind]}</span>}</p>
+                    )}
+                    <div class="flex flex-none gap-1.5" role="group" aria-label={rule}>
+                      {['Yes', 'No'].map((a) => (
+                        <button
+                          type="button"
+                          data-answer={a}
+                          aria-pressed="false"
+                          class="rounded-md border border-control-edge bg-surface px-3 py-1 text-md font-semibold text-ink hover:bg-sunk aria-pressed:border-transparent aria-pressed:bg-ink aria-pressed:text-surface"
+                        >
+                          {a}
+                        </button>
+                      ))}
                     </div>
-                  </details>
-                ) : (
-                  <p class="min-w-0 flex-1 basis-60 text-lg font-semibold">{rule}</p>
-                )}
-                <div class="flex flex-none gap-1.5" role="group" aria-label={rule}>
-                  {['Yes', 'No'].map((a) => (
-                    <button
-                      type="button"
-                      data-answer={a}
-                      aria-pressed="false"
-                      class="rounded-md border border-control-edge bg-surface px-3 py-1 text-md font-semibold text-ink hover:bg-sunk aria-pressed:border-transparent aria-pressed:bg-ink aria-pressed:text-surface"
-                    >
-                      {a}
-                    </button>
-                  ))}
-                </div>
-              </div>
-            </li>
-          ))}
-        </ul>
-        <p class="mt-3 text-md font-semibold text-ink-2 group-data-[out=no]/gates:text-(--stop-ink) group-data-[out=yes]/gates:text-ok-ink" aria-live="polite" data-verdict data-total={rules.length} data-next={firstDue ? longDate(firstDue) : ''}>
-          Answer all {rules.length} to see if you can apply.
-        </p>
-        <p class="mt-1 hidden text-md" data-no><a class="font-semibold text-ink underline underline-offset-2" href="/">See other funding</a></p>
+                  </div>
+                </li>
+              ))}
+            </ul>
+            <p class="mt-3 text-md font-semibold text-ink-2 group-data-[out=no]/gates:text-(--stop-ink) group-data-[out=yes]/gates:text-ok-ink" aria-live="polite" data-verdict data-total={rules.length} data-next={firstDue ? longDate(firstDue) : ''}>
+              Answer all {rules.length} to see if you can apply.
+            </p>
+            <p class="mt-1 hidden text-md" data-no><a class="font-semibold text-ink underline underline-offset-2" href="/">See other funding</a></p>
+            </div>
+          )
+        }
       </div>
     )
   }
 
   {
-    p.documents && (
-      <div id="documents" class:list={box}>
-        <h3 class={boxTitle}>Documents to have ready</h3>
-        <ul class="m-0 mt-2 list-none p-0">
-          {p.documents.map((d) => (
-            <li class:list={[row, 'flex items-start gap-2.5 text-lg']}>
-              <FileText className="mt-[0.3rem] size-4 flex-none text-ink-2" aria-hidden="true" />
-              <span>{d}</span>
-            </li>
-          ))}
-        </ul>
-        {(p.evidence.documents ?? []).map((e) => <Quote e={e} />)}
+    !blank.includes(apply) && (
+      <div id="asks-apply" class:list={box}>
+        <div class="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
+          <h3 class={boxTitle}>{apply.label}</h3>
+          <EffortLevel level={apply.level} />
+        </div>
+        {apply.why !== 'Not checked yet.' && <p class="mt-1 text-md text-ink-2">{apply.why}</p>}
+        {
+          p.documents && (
+            <div id="documents">
+            <h4 class={subTitle}>Documents to have ready</h4>
+            <ul class="m-0 mt-2 list-none p-0">
+              {p.documents.map((d) => (
+                <li class:list={[row, 'flex items-start gap-2.5 text-lg']}>
+                  <FileText className="mt-[0.3rem] size-4 flex-none text-ink-2" aria-hidden="true" />
+                  <span>{d}</span>
+                </li>
+              ))}
+            </ul>
+            {(p.evidence.documents ?? []).map((e) => <Quote e={e} />)}
+            </div>
+          )
+        }
+        {
+          steps.length > 0 && (
+            <div id="effort">
+            <h4 class={subTitle}>The steps</h4>
+            <ol class="m-0 mt-2 list-none p-0">
+              {steps.map((s, i) => {
+                const d = due[i] ?? null
+                return (
+                  <li class:list={[row, 'grid grid-cols-[2rem_minmax(0,1fr)] gap-x-2 sm:grid-cols-[2rem_9.5rem_minmax(0,1fr)]']}>
+                    <span class="text-lg font-semibold text-ink-2 tabular-nums">{i + 1}.</span>
+                    <span class="text-md font-semibold text-ink-2 max-sm:col-start-2 sm:pt-0.5">
+                      {d ? (d >= buildDate ? `By ${longDate(d)}` : `Was due ${longDate(d)}`) : ''}
+                    </span>
+                    <span class="text-lg max-sm:col-start-2">{s}</span>
+                  </li>
+                )
+              })}
+              {p.effort?.more_after && (
+                <li class:list={[row, 'grid grid-cols-[2rem_minmax(0,1fr)] gap-x-2 sm:grid-cols-[2rem_9.5rem_minmax(0,1fr)]']}>
+                  <span class="text-lg font-semibold text-ink-2">{steps.length + 1}.</span>
+                  <span class="max-sm:hidden" />
+                  <span class="text-lg text-ink-2 max-sm:col-start-2">Further steps the page doesn’t name</span>
+                </li>
+              )}
+            </ol>
+            {(p.evidence.effort ?? []).map((e) => <Quote e={e} />)}
+            </div>
+          )
+        }
       </div>
     )
   }
 
   {
-    steps.length > 0 && (
-      <div id="effort" class:list={box}>
-        <h3 class={boxTitle}>The steps</h3>
-        <ol class="m-0 mt-2 list-none p-0">
-          {steps.map((s, i) => {
-            const d = due[i] ?? null
-            return (
-              <li class:list={[row, 'grid grid-cols-[2rem_minmax(0,1fr)] gap-x-2 sm:grid-cols-[2rem_9.5rem_minmax(0,1fr)]']}>
-                <span class="text-lg font-semibold text-ink-2 tabular-nums">{i + 1}.</span>
-                <span class="text-md font-semibold text-ink-2 max-sm:col-start-2 sm:pt-0.5">
-                  {d ? (d >= buildDate ? `By ${longDate(d)}` : `Was due ${longDate(d)}`) : ''}
-                </span>
-                <span class="text-lg max-sm:col-start-2">{s}</span>
-              </li>
-            )
-          })}
-          {p.effort?.more_after && (
-            <li class:list={[row, 'grid grid-cols-[2rem_minmax(0,1fr)] gap-x-2 sm:grid-cols-[2rem_9.5rem_minmax(0,1fr)]']}>
-              <span class="text-lg font-semibold text-ink-2">{steps.length + 1}.</span>
-              <span class="max-sm:hidden" />
-              <span class="text-lg text-ink-2 max-sm:col-start-2">Further steps the page doesn’t name</span>
-            </li>
-          )}
-        </ol>
-        {(p.evidence.effort ?? []).map((e) => <Quote e={e} />)}
+    !blank.includes(cofund) && (
+      <div id="asks-cofund" class:list={box}>
+        <div class="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
+          <h3 class={boxTitle}>{cofund.label}</h3>
+          <EffortLevel level={cofund.level} />
+        </div>
+        {cofund.why !== 'Not checked yet.' && <p class="mt-1 text-md text-ink-2">{cofund.why}</p>}
+        {
+          p.co_finance_required !== null && (
+            <p class="mt-1 text-md text-ink-2">Under The money: <a class={jump} href={`#${factIds.co_finance_required}`}>the funder’s words</a>.</p>
+          )
+        }
       </div>
     )
   }
+
   {
-    p.after_award && (
-      <div id="after-award" class:list={box}>
-        <h3 class={boxTitle}>After the award</h3>
-        <p class="mt-2 text-lg">{effortSignals(p)[3]!.why}</p>
-        {(p.evidence.after_award ?? []).map((e) => <Quote e={e} />)}
+    !blank.includes(after) && (
+      <div id="asks-after" class:list={box}>
+        <div class="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
+          <h3 class={boxTitle}>{after.label}</h3>
+          <EffortLevel level={after.level} />
+        </div>
+        {after.why !== 'Not checked yet.' && <p class="mt-1 text-md text-ink-2">{after.why}</p>}
+        {p.after_award && <div id="after-award">{(p.evidence.after_award ?? []).map((e) => <Quote e={e} />)}</div>}
       </div>
     )
   }
+
+  {
+    blank.length > 0 && (
+      <ul class:list={[box, 'list-none py-1!']}>
+        {blank.map((x) => (
+          <li id={`asks-${x.key}`} class:list={[row, 'flex flex-wrap items-baseline justify-between gap-x-4']}>
+            <h3 class={boxTitle}>{x.label}</h3>
+            <EffortLevel level={x.level} />
+          </li>
+        ))}
+      </ul>
+    )
+  }
+
+  <details class="mt-4 text-md text-ink-2">
+    <summary class="cursor-pointer underline underline-offset-2">How we set these levels</summary>
+    <ul class="m-0 mt-2 list-none p-0 [&>li+li]:mt-1.5">
+      {signals.map((s) => <li><strong class="text-ink">{s.label}:</strong> {signalRules[s.key]}</li>)}
+      <li>What the funder’s pages don’t say, or we haven’t read yet, is never counted as light.</li>
+    </ul>
+  </details>
 </section>
 
 {/* Only pages with rules ship the self-check's few lines of script. */}
