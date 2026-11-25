@@ -1,0 +1,93 @@
+{
+  "id": "yves-rocher-terre-de-femmes-international-award",
+  "read_on": "2026-11-25",
+  "prompt_version": "req-2026-11-20.1",
+  "models": ["cursor:gpt-5.6-luna-high"],
+  "complete": false,
+  "reasons": [
+    "15 links could not be ranked without Jev",
+    "18 links could not be ranked without Jev",
+    "Jev did not check this reading, so an absent fact is not known to be absent"
+  ],
+  "requirements_checked": false,
+  "documents": [
+    {
+      "ref": "D1",
+      "url": "https://www.yves-rocher-fondation.org/en/how-to-apply-for-the-international-award/",
+      "final_url": "https://www.yves-rocher-fondation.org/en/how-to-apply-for-the-international-award/",
+      "from": null,
+      "anchor": null,
+      "depth": 0,
+      "pdf": false,
+      "chars": 8159,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:1b6924df83e0cce8ced8bd0ccc2ed181a204ade1d3845ce9673ef562ae0c4297"
+    },
+    {
+      "ref": "D2",
+      "url": "https://www.yves-rocher-fondation.org/en/how-to-apply-to-the-terre-de-femmes-award/",
+      "final_url": "https://www.yves-rocher-fondation.org/en/how-to-apply-to-the-terre-de-femmes-award/",
+      "from": "https://www.yves-rocher-fondation.org/en/how-to-apply-for-the-international-award/",
+      "anchor": "",
+      "depth": 1,
+      "pdf": false,
+      "chars": 7233,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:7803c7886938fff521f312cf0041ef4bd540d1993dc10bfff22047caa8a8c444"
+    },
+    {
+      "ref": "D3",
+      "url": "https://www.yves-rocher-fondation.org/en/how-to-apply-for-the-photo-award/",
+      "final_url": "https://www.yves-rocher-fondation.org/en/how-to-apply-for-the-photo-award/",
+      "from": "https://www.yves-rocher-fondation.org/en/how-to-apply-for-the-international-award/",
+      "anchor": "",
+      "depth": 1,
+      "pdf": false,
+      "chars": 5663,
+      "pages": null,
+      "low_text": false,
+      "hash": "sha256:3ae18ba870ce6f8d01a4bcea44e613823c26202236096e9434faaeb065900325"
+    },
+    {
+      "ref": "D4",
+      "url": "https://www.yves-rocher-fondation.org/wp-content/uploads/Rules-photo-contest-2026.pdf",
+      "final_url": "https://www.yves-rocher-fondation.org/wp-content/uploads/Rules-photo-contest-2026.pdf",
+      "from": "https://www.yves-rocher-fondation.org/en/how-to-apply-for-the-photo-award/",
+      "anchor": "read the rules here.",
+      "depth": 2,
+      "pdf": true,
+      "chars": 6752,
+      "pages": 3,
+      "low_text": false,
+      "hash": "sha256:711d69a063a2e455fd283210d5b3d85ff77ec93976249dee8ca6d1edf2aeb47d"
+    }
+  ],
+  "failures": [],
+  "skipped_links": 285,
+  "chunks": [{ "id": "all", "docs": ["D1", "D2", "D3", "D4"], "chars": 28472 }],
+  "outcomes": {
+    "eligibility": "stated",
+    "documents": "not_found",
+    "effort": "stated",
+    "co_finance": "not_found",
+    "consortium": "not_found",
+    "after_award": "not_found"
+  },
+  "written": ["eligibility", "effort"],
+  "escalated": [],
+  "flags": [],
+  "notes": [
+    "extractor: D2 describes the older 2026 edition. D3 and D4 concern the separate Photo Award."
+  ],
+  "usd": 0,
+  "review": {
+    "on": "2026-11-25",
+    "standards": "2026-11-24.1",
+    "reviewer": "claude-opus-5-thinking-high",
+    "hash": "d79c8c09175077cf",
+    "verdicts": { "sound": 5, "wrong": 0, "missed": 1 },
+    "canaries": { "planted": 1, "caught": 1 }
+  }
+}
