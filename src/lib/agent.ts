@@ -308,7 +308,7 @@ export function llmsTxt(listings: Listing[], pages: FinderPage[] = []): string {
     '',
     `- [All programmes by status](${absolute('/index.md')}): every listing with its status, amount, area and checked date`,
     `- [How we check](${absolute('/about.md')}): where facts come from, what we never guess, what the labels mean`,
-    `- [Fiscal sponsors](${absolute('/fiscal-sponsors.md')}): organisations that can receive or manage funding for a project, by type of project, with fees, rules and how to apply`,
+    `- [Fiscal sponsors](${absolute('/fiscal-sponsors.md')}): organisations that can receive or manage funding for a project, with the kinds of project each takes, fees, rules and how to apply`,
     `- [Open data and schema](${absolute('/data.md')}): files, fields, how to query and cite`,
     `- [Grants by place and project type](${absolute('/countries.md')}): a page per region, country and project type`,
     `- [Everything in one file](${absolute('/llms-full.txt')}): every programme’s full facts and quotes, plus how we check`,

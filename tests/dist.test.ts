@@ -223,13 +223,17 @@ describe('no hydration, small JavaScript', () => {
     for (const src of files) expect(read(src.replace(/^\//, '')).length).toBeLessThanOrEqual(4500)
   }, fullDistTimeout)
 
-  test('no other page loads another script file; only /about/, /worth-applying/ and programme pages have small inline scripts', () => {
+  test('no other page loads another script file; only /about/, /fiscal-sponsors/, /worth-applying/ and programme pages have small inline scripts', () => {
     for (const f of htmlFiles.filter((x) => x !== 'index.html' && !finderPagesHtml.includes(x))) {
       const { external, inline } = scriptsOf(f)
       expect(external.filter((src) => !isPrompt(src)), f).toEqual([])
       if (f === 'about/index.html') {
         expect(inline.length).toBeLessThanOrEqual(1)
         expect(inline.join('').length).toBeLessThanOrEqual(400)
+      } else if (f === 'fiscal-sponsors/index.html') {
+        // Its filters (src/lib/sponsor-filter.ts).
+        expect(inline.length).toBe(1)
+        expect(inline.join('').length).toBeLessThanOrEqual(2500)
       } else if (f === 'worth-applying/index.html') {
         // The worth-it calculator.
         expect(inline.length).toBe(1)

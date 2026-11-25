@@ -108,13 +108,16 @@ function block(el: El, base: string): string[] {
       return [items.join('\n')]
     }
     case 'TABLE': {
-      const rows = [...el.querySelectorAll('tr')].map((tr) =>
+      // A row of details under another row reads as its own section after the table.
+      const trs = [...el.querySelectorAll('tr')]
+      const sections = trs.filter((tr) => tr.hasAttribute('data-twin-block')).flatMap((tr) => [...tr.children].flatMap((c) => blocks(c, base)))
+      const rows = trs.filter((tr) => !tr.hasAttribute('data-twin-block')).map((tr) =>
         [...tr.children].map((c) => blocks(c, base).join('<br>').replace(/\|/g, '\\|').replace(/\n/g, ' ')),
       )
       if (!rows.length) return []
       const width = Math.max(...rows.map((r) => r.length))
       const line = (r: string[]) => `| ${Array.from({ length: width }, (_, i) => r[i] ?? '').join(' | ')} |`
-      return [[line(rows[0]!), line(Array(width).fill('---')), ...rows.slice(1).map(line)].join('\n')]
+      return [[line(rows[0]!), line(Array(width).fill('---')), ...rows.slice(1).map(line)].join('\n'), ...sections]
     }
     default:
       return blocks(el, base)

@@ -54,6 +54,20 @@ export const sponsorTypeLabels: Record<SponsorType, string> = {
   any: 'Charitable or social work in general',
 }
 
+/** For the sponsor table and its filters; the full label is in Details. */
+export const sponsorTypeShort: Record<SponsorType, string> = {
+  wildlife: 'Wildlife',
+  conservation: 'Conservation',
+  ocean: 'Ocean',
+  research: 'Research',
+  hardware: 'Open hardware',
+  software: 'Software and data',
+  media: 'Film and photography',
+  community: 'Community-led',
+  environment: 'Environment in general',
+  any: 'Charitable in general',
+}
+
 export const sponsorModelLabels: Record<NonNullable<Sponsor['models']>[number]['value'], string> = {
   inside: 'Your project becomes part of it',
   grant_to_entity: 'It passes the money on to a separate group',
