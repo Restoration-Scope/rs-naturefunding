@@ -5,7 +5,10 @@
     "name": "AEON Environmental Foundation",
     "url": "https://www.aeonkankyozaidan.or.jp/en/"
   },
-  "administered_by": null,
+  "administered_by": {
+    "name": "AEON Environmental Foundation",
+    "url": "https://www.aeonkankyozaidan.or.jp"
+  },
   "parent": null,
   "url": "https://www.aeonkankyozaidan.or.jp/subsidy/offering/",
   "summary": "Annual grants to non-profit groups, including unincorporated ones, for hands-on satoyama conservation with local people, such as tree planting, restoration after disasters, environmental education and protection of endangered species, in Japan or abroad.",
@@ -14,7 +17,7 @@
   "geography": { "scope": "global" },
   "access": "direct",
   "window": "fixed",
-  "amount": null,
+  "amount": { "currency": "JPY", "max": 100000000, "note": "total amount per year" },
   "co_finance_required": null,
   "reporting": null,
   "effort": {
@@ -99,7 +102,6 @@
       "status": "upcoming",
       "opens": null,
       "deadline": null,
-      "expected": "June 2027",
       "evidence": {
         "status": {
           "source_url": "https://www.aeonkankyozaidan.or.jp/subsidy/offering/",
@@ -107,10 +109,17 @@
           "checked_at": "2026-11-25",
           "method": "page"
         }
-      }
+      },
+      "expected": "June 2027"
     }
   ],
   "evidence": {
+    "administered_by": {
+      "source_url": "https://www.aeonkankyozaidan.or.jp/subsidy/",
+      "quote": "イオン環境財団の 助成事業",
+      "checked_at": "2026-11-25",
+      "method": "page"
+    },
     "applicant_types": {
       "source_url": "https://www.aeonkankyozaidan.or.jp/subsidy/offering/",
       "quote": "対象団体 人と自然が共生する地域づくりを通じて豊かな自然を次代に繋ぐ活動に取組む非営利団体",
@@ -130,6 +139,12 @@
       "method": "page"
     },
     "window": {
+      "source_url": "https://www.aeonkankyozaidan.or.jp/subsidy/",
+      "quote": "毎年総額1億円の助成公募を行っています。",
+      "checked_at": "2026-11-25",
+      "method": "page"
+    },
+    "amount": {
       "source_url": "https://www.aeonkankyozaidan.or.jp/subsidy/",
       "quote": "毎年総額1億円の助成公募を行っています。",
       "checked_at": "2026-11-25",
