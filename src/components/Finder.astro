@@ -3,6 +3,7 @@
 // given. The home page gives it every listing; a place or type page (src/lib/finder-pages.ts) gives its own rows
 // and its preset, which src/lib/finder.ts keeps in the path rather than the address.
 import Row from './FinderRow.astro'
+import AskAi from './AskAi.astro'
 import DigestSignup from './DigestSignup.astro'
 import CurrencyOptions from './CurrencyOptions.astro'
 import { longDate } from '../lib/format'
@@ -17,6 +18,7 @@ import { NativeSelect } from '@/components/ui/native-select'
 import { ScrollArea } from '@/components/ui/scroll-area'
 import { Table, TableBody, TableCaption, TableHead, TableHeader, TableRow } from '@/components/ui/table'
 import '../styles/finder.css'
+import '../styles/sort.css'
 import type { Listing } from '../lib/data'
 import { listings as allListings, sortListings } from '../lib/data'
 import { countriesByRegion } from '../lib/geo'
@@ -142,6 +144,7 @@ import EffortTip from './EffortTip.astro'
           <Search className="size-5!" aria-hidden="true" /><span>Search</span>
         </Button>
       </form>
+      <AskAi />
     </div>
   </div>
 
@@ -321,7 +324,7 @@ import EffortTip from './EffortTip.astro'
           </TableRow>
         </TableHeader>
         <TableBody data-list="">
-          {now.map((l) => <Row listing={l} />)}
+          {now.map((l) => <Row listing={l} where={where} />)}
         </TableBody>
         <TableBody className="later-head" id="later-head" data-later-head="" hidden>
           <TableRow>
@@ -333,7 +336,7 @@ import EffortTip from './EffortTip.astro'
           </TableRow>
         </TableBody>
         <TableBody className="later-rows" id="later-rows" data-list-later="" hidden>
-          {later.map((l) => <Row listing={l} />)}
+          {later.map((l) => <Row listing={l} where={where} />)}
         </TableBody>
       </Table>
       </div>

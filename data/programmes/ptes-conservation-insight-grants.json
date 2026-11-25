@@ -9,9 +9,10 @@
   "approaches": ["species_conservation", "research"],
   "applicant_types": null,
   "geography": {
-    "scope": "regions",
-    "regions": ["africa", "asia", "europe", "latin_america_caribbean", "middle_east", "oceania"],
-    "label": "The UK, UK overseas territories or any country not classified by the World Bank as high-income"
+    "scope": "countries",
+    "countries": ["AF", "AI", "AL", "AM", "AO", "AR", "AZ", "BA", "BD", "BF", "BI", "BJ", "BM", "BO", "BR", "BT", "BW", "BY", "BZ", "CD", "CF", "CG", "CI", "CM", "CN", "CO", "CU", "CV", "DJ", "DM", "DO", "DZ", "EC", "EG", "ER", "ET", "FJ", "FK", "FM", "GA", "GB", "GD", "GE", "GH", "GI", "GM", "GN", "GQ", "GS", "GT", "GW", "HN", "HT", "ID", "IN", "IO", "IQ", "IR", "JM", "JO", "KE", "KG", "KH", "KI", "KM", "KP", "KY", "KZ", "LA", "LB", "LC", "LK", "LR", "LS", "LY", "MA", "MD", "ME", "MG", "MH", "MK", "ML", "MM", "MN", "MR", "MS", "MU", "MV", "MW", "MX", "MY", "MZ", "NA", "NE", "NG", "NI", "NP", "PE", "PG", "PH", "PK", "PN", "PS", "PY", "RS", "RW", "SB", "SD", "SH", "SL", "SN", "SO", "SR", "SS", "ST", "SV", "SY", "SZ", "TC", "TD", "TG", "TH", "TJ", "TL", "TM", "TN", "TO", "TR", "TV", "TZ", "UA", "UG", "UZ", "VC", "VE", "VG", "VN", "VU", "WS", "XK", "YE", "ZA", "ZM", "ZW"],
+    "label": "The UK, UK overseas territories or any country not classified by the World Bank as high-income",
+    "list": ["uk-overseas-territories", "world-bank-not-high-income"]
   },
   "access": "direct",
   "window": "fixed",
@@ -61,6 +62,14 @@
       "checked_at": "2026-11-22",
       "method": "page"
     },
+    "places": [
+      {
+        "source_url": "https://ptes.org/grants/apply-grant/worldwide-grant-criteria",
+        "quote": "Please go to the World Bank web page to check if your country applies.",
+        "checked_at": "2026-11-24",
+        "method": "page"
+      }
+    ],
     "access": {
       "source_url": "https://ptes.org/grants/apply-grant/worldwide-grant-criteria",
       "quote": "Stage 1 - Pre-application form. A short standardised form designed to reduce the workload for applicants.",

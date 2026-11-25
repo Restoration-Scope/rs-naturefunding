@@ -2,14 +2,15 @@
 // the same data and labels as the HTML. Each fact line names its programme and carries its quote, source and
 // checked date, so a line still holds up when an answer quotes it alone.
 import type { Call, Evidence, Programme } from '../data/schema'
-import { AGING_DAYS, HIDDEN_DAYS, buildDate, listingFor, programmeById, programmes, sortListings, stats, type Listing } from './data'
+import { AGING_DAYS, HIDDEN_DAYS, buildDate, listingFor, openPartners, programmeById, programmes, sortListings, stats, type Listing } from './data'
 import { amountText, effortSignals, effortText, poolText, geographyFull, geographyText, joinAnd, longDate, nameWithFunder } from './format'
-import { accessHelp, accessLabels, applicantLabels, approachLabels } from './labels'
+import { accessHelp, accessLabels, applicantLabels, approachLabels, fiscalSponsorLabels } from './labels'
 import { RS_DESCRIPTOR, RS_URL, SITE_NAME, absolute, funderCorrectionUrl, reportProblemUrl } from './site'
-import { countryName } from './geo'
+import { countryName, regionLabels, type Region } from './geo'
+import { callTakes } from './where-codes'
 import { LLMS_FULL_PAGES, twinPath } from './twins'
 import { evidenceOf } from '../data/load'
-import type { FinderPage } from './finder-pages'
+import { inPlace, type FinderPage } from './finder-pages'
 import { effectiveCallStatus } from './status'
 
 /** Element ids on a programme page, one per fact, so an answer can link the fact it cites. They match data.json field names. */
@@ -22,6 +23,7 @@ export const factIds = {
   window: 'window',
   co_finance_required: 'co_finance_required',
   consortium_required: 'consortium_required',
+  fiscal_sponsor: 'fiscal_sponsor',
   administered_by: 'administered_by',
   approaches: 'approaches',
   reporting: 'reporting',
@@ -33,6 +35,7 @@ export const callId = (c: Pick<Call, 'id'>) => `call-${c.id}`
 export const callFactId = (c: Pick<Call, 'id'>, field: 'status' | 'opens' | 'deadline' | 'recurring' | 'countries') => `call-${c.id}-${field}`
 
 const listingUrl = (p: Programme) => absolute(`/p/${p.id}/`)
+const twinUrl = (p: Programme) => absolute(twinPath(`/p/${p.id}/`))
 const NOT_FOUND = 'Not found on the pages we read'
 /** The amount with the qualifier from the same quote, so a line quoted alone keeps its condition. */
 const amountWithNote = (p: Programme) => {
@@ -46,25 +49,22 @@ const funderLine = (p: Programme) =>
 const deadlineWhen = (d: NonNullable<Call['deadline']>) =>
   `${longDate(d.date)}${d.time ? `, ${d.time}${d.timezone ? ` (${d.timezone})` : ''}` : ''}`
 
-const openChildren = (p: Programme) =>
-  programmes
-    .filter((c) => c.parent === p.id)
-    .map((c) => listingFor(c))
-    .filter((l) => l.state === 'open' || l.state === 'rolling')
-
 /** Where the programme stands, in one sentence that works without the page around it. */
 export function statusText(l: Listing): string {
-  const { p, state, call } = l
+  const { p, state, call, where } = l
+  // Named when the programme also has calls for other places, so the line doesn't deny those.
+  const calls = p.calls.filter((c) => callTakes(c, where))
+  const forPlace = calls.length < p.calls.length ? ` for ${inPlace(where.startsWith('r:') ? regionLabels[where.slice(2) as Region] : countryName(where))}` : ''
   if (p.access === 'invitation_only') return 'Invitation only: the funder picks its grantees and does not take unsolicited proposals.'
   if (p.access === 'intermediary') {
-    const open = openChildren(p)
+    const open = openPartners(p, where)
     return `Apply through a partner programme, not the funder.${open.length ? ` ${open.length === 1 ? 'One partner programme is' : `${open.length} partner programmes are`} open now.` : ''}`
   }
   const note = call?.note && (state === 'open' || state === 'upcoming') ? ` ${call.note}.` : ''
   // With several calls, say which one sets the status: the others may cover other places or dates.
   const which = call && p.calls.length > 1 ? ` (${call.label})` : ''
   const buildInstant = new Date(`${buildDate}T12:00:00Z`)
-  const others = p.calls.filter((c) => c !== call && effectiveCallStatus(c, buildInstant) === 'open').length
+  const others = calls.filter((c) => c !== call && effectiveCallStatus(c, buildInstant) === 'open').length
   const more = state === 'open' && others ? ` ${others === 1 ? 'One more call is' : `${others} more calls are`} open; see the listing.` : ''
   switch (state) {
     case 'open':
@@ -78,11 +78,11 @@ export function statusText(l: Listing): string {
       return `Upcoming${which}: ${when}.${call?.deadline ? ` Closes ${deadlineWhen(call.deadline)}.` : ''}${note}`
     }
     case 'closed':
-      return `No call open now. The last call we found${call?.deadline ? ` closed on ${longDate(call.deadline.date)}` : ' has closed'}; check the funder’s page for the next round.`
+      return `No call open now${forPlace}. The last call we found${call?.deadline ? ` closed on ${longDate(call.deadline.date)}` : ' has closed'}; check the funder’s page for the next round.`
     default:
       return call?.recurring
         ? `Windows each year: ${call.recurring}. The funder’s page doesn’t say whether one is open now.`
-        : 'No open or announced call found on the funder’s page.'
+        : `No open or announced call${forPlace} found on the funder’s page.`
   }
 }
 
@@ -106,6 +106,7 @@ export function programmeMarkdown(p: Programme): string {
   const rounds = p.window === 'rolling' ? 'Rolling: apply any time' : p.window === 'fixed' ? 'Fixed rounds with deadlines' : null
   const coFunding = p.co_finance_required === null ? null : p.co_finance_required ? 'Yes' : 'No'
   const consortium = p.consortium_required === undefined ? null : p.consortium_required ? 'Yes' : 'No'
+  const sponsorStance = p.fiscal_sponsor ? fiscalSponsorLabels[p.fiscal_sponsor.stance] : null
   const n = p.name
   const out: string[] = []
 
@@ -130,6 +131,7 @@ export function programmeMarkdown(p: Programme): string {
     `- Rounds: ${rounds ?? byPartner}`,
     `- Co-funding required: ${coFunding ?? byPartner}`,
     ...(consortium ? [`- Consortium required: ${consortium}`] : []),
+    ...(sponsorStance ? [`- Applying through a fiscal sponsor: ${sponsorStance}`] : []),
     ...(p.administered_by ? [`- Run by: ${p.administered_by.name} (${p.administered_by.url})`] : []),
     `- Restoration approach (our classification): ${joinAnd(p.approaches.map((a) => approachLabels[a]))}`,
     `- Last checked: ${longDate(p.checked_at)}. Every quote below was read on or after this day.`,
@@ -141,7 +143,7 @@ export function programmeMarkdown(p: Programme): string {
     `Summary in ${SITE_NAME}’s own words: ${p.summary}`,
   )
 
-  const open = openChildren(p)
+  const open = openPartners(p)
   if (children.length) {
     out.push('', '## Partner programmes', '', `You apply to one of these, each with its own calls and deadlines.${open.length ? ` ${open.length} open now.` : ''}`, '')
     for (const c of children.map((c) => listingFor(c)).sort(sortListings)) {
@@ -160,6 +162,7 @@ export function programmeMarkdown(p: Programme): string {
     quoteLines(`${n}, rounds`, rounds ?? byPartner, p.evidence.window, factIds.window, p),
     quoteLines(`${n}, co-funding required`, coFunding ?? byPartner, p.evidence.co_finance_required, factIds.co_finance_required, p),
     ...(consortium ? [quoteLines(`${n}, consortium required`, consortium, p.evidence.consortium_required, factIds.consortium_required, p)] : []),
+    ...(sponsorStance ? [quoteLines(`${n}, applying through a fiscal sponsor`, `${sponsorStance}${p.fiscal_sponsor?.note ? `. ${p.fiscal_sponsor.note}.` : ''}`, p.evidence.fiscal_sponsor, factIds.fiscal_sponsor, p)] : []),
     ...(p.administered_by ? [quoteLines(`${n}, run by`, p.administered_by.name, p.evidence.administered_by, factIds.administered_by, p)] : []),
     ...(p.access === 'direct' && p.effort ? [quoteLines(`${n}, steps to apply`, effortText(p.effort)!, p.evidence.effort, factIds.effort, p)] : []),
     ...(p.access === 'direct' && p.effort?.due
@@ -183,8 +186,10 @@ export function programmeMarkdown(p: Programme): string {
         open: 'Open', upcoming: 'Upcoming', closed: 'Closed', suspended: 'Suspended',
         unknown: c.recurring ? 'Windows each year; the page doesn’t say if one is open now' : 'Not clear from the page',
       }
+      // A call whose opening date or deadline passed since the check, as the page and the list show it.
+      const dated = effectiveCallStatus(c, new Date(`${buildDate}T12:00:00Z`))
       const parts = [
-        quoteLines(`${s}, status`, statusWords[c.status], c.evidence.status, callFactId(c, 'status'), p),
+        quoteLines(`${s}, status`, dated === c.status ? statusWords[dated] : `${statusWords[dated]}, by its dates, as of ${longDate(buildDate)}`, c.evidence.status, callFactId(c, 'status'), p),
         ...(c.countries ? [quoteLines(`${s}, where`, joinAnd(c.countries.map(countryName)), c.evidence.countries, callFactId(c, 'countries'), p)] : []),
         ...(c.opens || c.expected || c.evidence.opens
           ? [quoteLines(`${s}, opens`, c.opens ? longDate(c.opens) : c.expected ? `Expected ${c.expected}` : NOT_FOUND, c.evidence.opens ?? (c.expected ? c.evidence.status : undefined), callFactId(c, 'opens'), p)]
@@ -227,17 +232,21 @@ const groups: { title: string; test: (l: Listing) => boolean }[] = [
 
 const sorted = (ls: Listing[]) => [...ls].sort(sortListings)
 
-/** One line per listing, readable alone. `link` picks the page or its twin. */
-const listingLine = (l: Listing, link: (p: Programme) => string) => {
+/** One line per listing, readable alone. It links the twin: half the page's length, so an assistant that reads
+ * several at once gets each one whole. */
+const listingLine = (l: Listing, withRules = false) => {
   const { p } = l
+  // One file then answers “do we qualify”, without opening each programme. A closed call's rules can wait for its page.
+  const rules = withRules && p.access === 'direct' && l.state !== 'closed' && p.eligibility?.map((r) => r.rule.replace(/[.;]+$/, '')).join('; ')
   const bits = [
     statusText(l),
     amountWithNote(p) && `Amount: ${amountWithNote(p)}.`,
     geographyText(p.geography) && `Where: ${geographyText(p.geography)}.`,
     p.applicant_types && `Who: ${joinAnd(p.applicant_types.map((a) => applicantLabels[a]))}.`,
+    rules && `Rules: ${rules}.`,
     `Checked ${longDate(p.checked_at)}.`,
   ].filter(Boolean)
-  return `- [${p.name}](${link(p)}), ${p.funder.name}: ${bits.join(' ')}`
+  return `- [${p.name}](${twinUrl(p)}), ${p.funder.name}: ${bits.join(' ')}`
 }
 
 const intro = (listings: Listing[]) =>
@@ -248,13 +257,13 @@ const intro = (listings: Listing[]) =>
   ].join('\n')
 
 /** Every listing by status, one line each, under a heading per status. */
-const byStatus = (listings: Listing[]) =>
+const byStatus = (listings: Listing[], withRules = false) =>
   groups.flatMap((g) => {
     const ls = sorted(listings.filter(g.test))
-    return ls.length ? ['', `## ${g.title} (${ls.length})`, '', ...ls.map((l) => listingLine(l, listingUrl))] : []
+    return ls.length ? ['', `## ${g.title} (${ls.length})`, '', ...ls.map((l) => listingLine(l, withRules))] : []
   })
 
-const howToRead = `Each programme links to its page, where every fact carries its source and quote. All data: ${absolute('/data.json')} (field guide: ${absolute('/data/')}).`
+const howToRead = `Each programme links to the Markdown copy of its page, where every fact carries its source and quote. To link the page for people, end the address in / in place of .md. All data: ${absolute('/data.json')} (field guide: ${absolute('/data/')}).`
 
 /** The Markdown twin of / : every listing the finder shows, by status. */
 export function homeMarkdown(listings: Listing[]): string {
@@ -263,12 +272,15 @@ export function homeMarkdown(listings: Listing[]): string {
 
 /** The Markdown twin of a country, region or project-type page: its listings, by status. */
 export function finderPageMarkdown(page: FinderPage): string {
-  return [`# ${page.h1}`, '', page.lead, '', `${howToRead} Every programme on ${SITE_NAME}: ${absolute('/index.md')}.`, ...byStatus(page.listings), ''].join('\n')
+  return [`# ${page.h1}`, '', page.lead, '', `${howToRead} Every programme on ${SITE_NAME}: ${absolute('/index.md')}.`, ...byStatus(page.listings, true), ''].join('\n')
 }
 
-/** /llms.txt: what the site is, how to read it, and every listing's Markdown twin. */
+/**
+ * /llms.txt: what the site is, how to read it, and the Markdown twin of every page but the programmes', which
+ * index.md and the place and type lists hold. Assistants read about the first 40,000 characters of a file
+ * (tests/agent.test.ts), so a line per programme doesn't fit.
+ */
 export function llmsTxt(listings: Listing[], pages: FinderPage[] = []): string {
-  const md = (p: Programme) => absolute(twinPath(`/p/${p.id}/`))
   const out = [
     `# ${SITE_NAME}`,
     '',
@@ -283,10 +295,18 @@ export function llmsTxt(listings: Listing[], pages: FinderPage[] = []): string {
     '- “Through a partner” means you apply to a partner programme, not the funder; “invitation only” means don’t send a proposal.',
     '- Our data is CC BY 4.0: credit “naturefunding.org (Restoration Scope)”, link to https://naturefunding.org and the licence, and say if you changed the data. Quotes are the funders’ words and are not covered.',
     '',
+    '## Matching a project to grants',
+    '',
+    '1. Open the list for the project’s country below (its region if the country has none). Read it to the end: it gives each programme’s status, amount, place, applicants and the rules we found, open calls first. Programmes under “No call found” can still have dates each year.',
+    '2. Drop programmes the project clearly fails. Open the best 5 to 8 and read each whole: its Markdown copy is https://naturefunding.org/p/{id}.md, and its page for people, the one to link, is https://naturefunding.org/p/{id}/.',
+    '3. For each one you suggest, give the deadline, the amount, the rules the project meets, the rules it fails or you can’t tell, how to apply, and links to its page here and the funder’s. Add nothing these pages don’t say without naming the source. If nothing fits well, say so.',
+    '4. End with the few questions whose answers would change the list.',
+    '',
     '## Start here',
     '',
     `- [All programmes by status](${absolute('/index.md')}): every listing with its status, amount, area and checked date`,
     `- [How we check](${absolute('/about.md')}): where facts come from, what we never guess, what the labels mean`,
+    `- [Fiscal sponsors](${absolute('/fiscal-sponsors.md')}): organisations that can receive or manage funding for a project, with the kinds of project each takes, fees, rules and how to apply`,
     `- [Open data and schema](${absolute('/data.md')}): files, fields, how to query and cite`,
     `- [Grants by place and project type](${absolute('/countries.md')}): a page per region, country and project type`,
     `- [Everything in one file](${absolute('/llms-full.txt')}): every programme’s full facts and quotes, plus how we check`,
@@ -302,11 +322,6 @@ export function llmsTxt(listings: Listing[], pages: FinderPage[] = []): string {
   if (pages.length) {
     out.push('', '## By place and project type', '')
     for (const pg of pages) out.push(`- [${pg.h1}](${absolute(twinPath(pg.path))}): ${pg.listings.length} programmes`)
-  }
-  for (const g of groups) {
-    const ls = sorted(listings.filter(g.test))
-    if (!ls.length) continue
-    out.push('', `## ${g.title}`, '', ...ls.map((l) => `- [${l.p.name}](${md(l.p)}): ${l.p.funder.name}. ${statusText(l)}`))
   }
   out.push('')
   return out.join('\n')

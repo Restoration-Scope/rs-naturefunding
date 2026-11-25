@@ -3,14 +3,13 @@ import { existsSync } from 'node:fs'
 import { join } from 'node:path'
 import { loadProgrammes } from '../../src/data/load'
 import type { Programme } from '../../src/data/schema'
-import { whereCodes as siteWhereCodes } from '../../src/lib/data'
 import { marks } from '../../src/lib/marks'
 import { buildDigest, type DigestItem } from './digest'
 import { digestEmail, finderUrl, itemParts, POSTAL_ADDRESS } from './email'
 import { pagePaths } from '../../src/lib/finder-pages'
 import { pageKey } from '../../src/lib/page-paths'
 import { diffSnapshots, type Snapshot } from './events'
-import { cleanPrefs, matches, whereCodes } from './match'
+import { cleanPrefs, matches } from './match'
 import { open, seal } from './token'
 
 const programmes = loadProgrammes()
@@ -41,8 +40,17 @@ describe('events from two snapshots', () => {
 })
 
 describe('filters match the finder', () => {
-  test('where codes are the ones the finder rows carry', () => {
-    for (const p of programmes) expect(whereCodes(p).join(' '), p.id).toBe(siteWhereCodes(p))
+  test('a group with no country list is in the email only as a place to check', () => {
+    const i = { section: 'new', programme: byId.get('neaq-mcaf')!, call: null } as unknown as DigestItem
+    expect(matches(byId.get('dimfe-call-for-projects')!, cleanPrefs('KE', []))).toBe(false)
+    expect(matches(i.programme, cleanPrefs('KE', []))).toBe(true)
+    expect(itemParts(i, 'https://x', cleanPrefs('KE', [])).place).toBe('Check the place: low- and middle-income countries around the globe')
+  })
+  test('the subject never counts a programme that may not take the country', () => {
+    const prefs = cleanPrefs('KE', [])
+    const d = buildDigest([{ at: '2026-11-10T00:00:00.000Z', kind: 'new_programme', programme: 'neaq-mcaf', call: null } as never], byId, prefs, '2026-11-08T00:00:00.000Z', '2026-11-15T09:00:00.000Z')
+    expect([d.counts.new, d.check]).toEqual([0, 1])
+    expect(digestEmail({ site: 'https://x', digest: d, prefs, since: '2026-11-08T00:00:00.000Z', unsubscribeUrl: 'u', manageUrl: 'm' }).subject).toBe('1 to check · Kenya')
   })
   test('a country matches its own listings, its region-wide ones and worldwide ones', () => {
     const worldwide = programmes.find((p) => p.geography?.scope === 'global')!
@@ -151,6 +159,79 @@ describe('one subscriber’s digest', () => {
     expect(e.html.split('href="https://naturefunding.org/countries/costa-rica/"').length - 1).toBe(2)
     expect(e.text).toContain('See all grants for Costa Rica on naturefunding.org: https://naturefunding.org/countries/costa-rica/')
   })
+})
+
+describe('a call for some of the programme’s countries', () => {
+  const now = '2026-11-15T09:00:00.000Z'
+  const faf = byId.get('forest-action-facility')!
+  const c = (id: string, status: 'open' | 'upcoming' | 'closed', countries: string[]) => ({ ...faf.calls[0]!, id, status, label: id, opens: null, deadline: null, expected: undefined, countries })
+  const p: Programme = { ...faf, calls: [c('ecuador', 'closed', ['EC']), c('central-america', 'upcoming', ['CR', 'PA'])] }
+  const announced = { at: '2026-11-10T00:00:00.000Z', kind: 'announced' as const, programme: p.id, call: 'central-america' }
+  const isNew = { at: '2026-11-10T00:00:00.000Z', kind: 'new_programme' as const, programme: p.id, call: 'central-america' }
+  const run = (event: typeof announced | typeof isNew, where: string, programme = p) => {
+    const prefs = cleanPrefs(where, [])
+    const d = buildDigest([event], new Map([[p.id, programme]]), prefs, '2026-11-08T00:00:00.000Z', now)
+    const { subject } = digestEmail({ site: 'https://x', digest: d, prefs, since: '2026-11-08T00:00:00.000Z', unsubscribeUrl: 'u', manageUrl: 'm' })
+    return { items: d.items.map((i) => [i.section, i.call?.id ?? null]), total: d.total, subject }
+  }
+
+  test('Ecuador gets no email about the Central America call', () => {
+    expect(run(announced, 'EC')).toMatchObject({ items: [], total: 0 })
+  })
+  test('the call’s own countries, their region and anywhere do', () => {
+    expect(run(announced, 'CR')).toEqual({ items: [['upcoming', 'central-america']], total: 1, subject: '1 call opening soon · Costa Rica' })
+    expect(run(announced, 'r:latin_america_caribbean').total).toBe(1)
+    expect(run(announced, '').total).toBe(1)
+  })
+  test('a region with none of the call’s countries gets no email about it', () => {
+    const wide: Programme = { ...p, geography: { scope: 'regions', regions: ['africa', 'latin_america_caribbean'], label: 'Africa and Latin America', whole: true } }
+    expect(run(announced, 'r:africa', wide).total).toBe(0)
+    expect(run(announced, 'r:latin_america_caribbean', wide).total).toBe(1)
+  })
+  test('a new programme is new for each of its countries, with a call only where one is live', () => {
+    expect(run(isNew, 'EC')).toEqual({ items: [['new', null]], total: 1, subject: '1 new programme · Ecuador' })
+    expect(run(isNew, 'CR').items).toEqual([['new', 'central-america']])
+    const both = { ...p, calls: [c('ecuador', 'open', ['EC']), c('central-america', 'upcoming', ['CR'])] }
+    expect(run(isNew, 'CR', both).items).toEqual([['new', 'central-america']])
+  })
+})
+
+describe('a call’s dates set its section, as on the site', () => {
+  const faf = byId.get('forest-action-facility')!
+  const at = (opens: string, date: string, status: 'open' | 'upcoming' = 'upcoming') => {
+    const p: Programme = { ...faf, calls: [{ ...faf.calls[0]!, id: 'c', status, opens, countries: undefined, expected: undefined, deadline: { date, text: date } }] }
+    const run = (kind: 'announced' | 'new_programme') =>
+      buildDigest([{ at: '2026-11-20T00:00:00.000Z', kind, programme: p.id, call: 'c' }], new Map([[p.id, p]]), cleanPrefs('EC', []), '2026-11-18T00:00:00.000Z', '2026-11-24T08:00:00.000Z')
+    return { announced: run('announced').items[0], isNew: run('new_programme').items[0] }
+  }
+  test('an upcoming call past its deadline is left out, and a new programme shows no call', () => {
+    const r = at('2026-11-21', '2026-11-22')
+    expect(r.announced).toBeUndefined()
+    expect(r.isNew?.call).toBeNull()
+  })
+  test('an upcoming call whose opening date came is open, in its section and its words', () => {
+    const { announced } = at('2026-11-21', '2026-12-20')
+    expect(announced?.section).toBe('open')
+    expect(itemParts(announced!, 'https://x', cleanPrefs('EC', [])).status).toBe('Open · deadline 2026-12-20')
+  })
+  test('a new programme shows the open call that closes first, whatever their order', () => {
+    const c = (id: string, status: 'open' | 'upcoming', date: string) => ({ ...faf.calls[0]!, id, status, opens: '2026-11-23', countries: undefined, expected: undefined, deadline: { date, text: date } })
+    const p: Programme = { ...faf, calls: [c('later', 'upcoming', '2026-12-20'), c('sooner', 'open', '2026-11-25')] }
+    const e = { at: '2026-11-20T00:00:00.000Z', kind: 'new_programme' as const, programme: p.id, call: 'later' }
+    expect(buildDigest([e], new Map([[p.id, p]]), cleanPrefs('', []), '2026-11-18T00:00:00.000Z', '2026-11-24T08:00:00.000Z').items[0]?.call?.id).toBe('sooner')
+  })
+  test('an open call that opens later is still opening soon', () => {
+    expect(at('2026-12-01', '2026-12-20', 'open').announced?.section).toBe('upcoming')
+  })
+})
+
+test('an item’s link opens the programme for the subscriber’s place', () => {
+  const i = { section: 'new', programme: byId.get('forest-action-facility')!, call: null } as DigestItem
+  expect(['PE', 'r:africa', ''].map((w) => itemParts(i, 'https://x', cleanPrefs(w, [])).page)).toEqual([
+    'https://x/p/forest-action-facility/?where=PE',
+    'https://x/p/forest-action-facility/?where=r:africa',
+    'https://x/p/forest-action-facility/',
+  ])
 })
 
 describe('link tokens', () => {

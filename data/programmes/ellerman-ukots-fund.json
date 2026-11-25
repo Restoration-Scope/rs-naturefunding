@@ -9,9 +9,10 @@
   "approaches": ["species_conservation", "coastal_marine", "community_conservation"],
   "applicant_types": ["ngo"],
   "geography": {
-    "scope": "regions",
-    "regions": ["latin_america_caribbean", "africa", "europe", "oceania", "north_america"],
-    "label": "UK Overseas Territories"
+    "scope": "countries",
+    "countries": ["AI", "BM", "FK", "GI", "GS", "IO", "KY", "MS", "PN", "SH", "TC", "VG"],
+    "label": "UK Overseas Territories",
+    "list": "uk-overseas-territories"
   },
   "access": "direct",
   "window": "fixed",
@@ -94,6 +95,20 @@
       "checked_at": "2026-11-20",
       "method": "page"
     },
+    "places": [
+      {
+        "source_url": "https://files.ellerman.org.uk/UKOTs-Fund-Guidelines.pdf",
+        "quote": "NGOs registered in Territories with UK-modelled charity governance systems (Bermuda, Cayman Islands, Gibraltar, and St Helena) will be able to apply directly.",
+        "checked_at": "2026-11-24",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.legislation.gov.uk/ukpga/1981/61/schedule/6",
+        "quote": "Anguilla Bermuda British Antarctic Territory British Indian Ocean Territory Cayman Islands Falkland Islands",
+        "checked_at": "2026-11-25",
+        "method": "page"
+      }
+    ],
     "access": {
       "source_url": "https://ellerman.org.uk/apply-for-funding/uk-overseas-territories-fund",
       "quote": "We will not accept applications that are not submitted via our online application portal.",

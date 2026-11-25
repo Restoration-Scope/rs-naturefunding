@@ -1,4 +1,5 @@
 import { z } from 'zod'
+import { areaNames } from '../lib/geo'
 import { deadlinePassed, parseZone } from '../lib/deadline'
 import { meaningfulQuote, MIN_QUOTE_CHARS } from './text'
 import { thresholdProblems } from './thresholds'
@@ -93,7 +94,7 @@ export const window = z.enum(['fixed', 'rolling', 'unspecified'])
 
 export const callStatus = z.enum(['upcoming', 'open', 'closed', 'suspended', 'unknown'])
 
-const iso2 = z.string().regex(/^[A-Z]{2}$/)
+export const iso2 = z.string().regex(/^[A-Z]{2}$/)
 
 export const region = z.enum([
   'africa',
@@ -196,19 +197,27 @@ export const geography = z.discriminatedUnion('scope', [
      */
     label: name.optional(),
     /** The official list the funder points to (a file in data/lists): `countries` must hold every country on it. */
-    list: slug.optional().describe('The official country list the funder points to, by id (e.g. "dac-oda-recipients"); `countries` holds every country on it.'),
+    list: z.union([slug, z.array(slug).min(2)]).optional().describe('The official country list or lists the funder points to, by id (e.g. "dac-oda-recipients"); `countries` holds every country on them.'),
+    /** Countries the funder takes only part of, and the part: {"PT": "the Azores and Madeira"}. */
+    parts: z.record(iso2, z.string().min(3).max(120)).optional().describe('For a country the funder takes only part of, the part it takes ("the Azores and Madeira"), worded to follow "Only".'),
     whole: z.literal(true).optional().describe('True when the funder takes all of each country even though the label is not just its name ("All 50 states and DC", "France, including overseas territories"); otherwise such a label names an area inside the country.'),
   }),
   /**
-   * Eligibility the funder states as a group with no country list we can copy, e.g. "Low- and middle-income
-   * countries". The page can't confirm a country is in the group, only that its region is.
+   * Eligibility the funder states as a group with no country list we can copy, e.g. "Mediterranean basin". A named
+   * set of countries or territories is `countries`, never this (src/data/geography.ts). Each region is either
+   * `whole`, so its countries are covered, or held by `areas`, so they are only ever "check".
    */
   z.object({
     scope: z.literal('regions'),
     regions: z.array(region).min(1),
     label: name.min(3),
     /** The funder takes every country in these regions ("across Africa"), so a country in them is covered. */
-    whole: z.literal(true).optional().describe('True when the funder takes every country in these regions; otherwise the label names a narrower group and a country is only maybe covered.'),
+    whole: z.union([z.literal(true), z.array(region).min(1)]).optional().describe('True, or the regions, when the funder takes every country in them.'),
+    /** The widest reading of the label's other words, ours: a country outside it never shows, one inside it shows as "check". */
+    areas: z.array(z.union([z.enum(areaNames as unknown as [string, ...string[]]), iso2])).min(1).optional().describe('Where the group can be, at its widest: our mapping for search and filters, not eligibility. A country here is only maybe covered.'),
+    /** Countries the funder names outright beside its group ("New Zealand or a developing country"): covered. */
+    named: z.array(iso2).min(1).optional().describe('Countries the funder names outright beside its group, each in its own words: covered, not maybe.'),
+    except: z.array(iso2).min(1).optional().describe('Countries the funder says it does not take.'),
   }),
 ])
 
@@ -375,6 +384,19 @@ export const programme = z
       .boolean()
       .optional()
       .describe('true when the funder requires applicants to apply as a consortium of several organisations; missing when the pages we read don’t say.'),
+    /**
+     * What the funder says about applying through a fiscal sponsor (also fiscal agent, auspice): another organisation that
+     * holds the legal status or the money for the project. accepted: it takes applications this way. refused: it says it
+     * doesn't. discouraged: it warns against it, or says it doesn't overcome another bar. Missing means not stated.
+     */
+    fiscal_sponsor: z
+      .object({
+        stance: z.enum(['accepted', 'refused', 'discouraged']).describe('accepted, refused or discouraged, from the funder’s words.'),
+        /** The condition on it that the same quote states, in our words. */
+        note: z.string().min(3).max(160).optional().describe('The condition the quote puts on it, in our words (“The sponsor is a 501(c)(3)”).'),
+      })
+      .strict()
+      .optional(),
     /** What the funder asks grantees to report, in our words. */
     reporting: z.string().min(10).max(600).nullable(),
     /** What applying takes, in our words, from the funder's page. Missing means not stated. */
@@ -483,12 +505,15 @@ export const programme = z
       administered_by: evidence.optional(),
       applicant_types: evidence.optional(),
       geography: evidence.optional(),
+      /** Where the funder, or the list it points to, names the countries and parts in `geography`. */
+      places: z.array(evidence).min(1).max(8).optional(),
       access: evidence.optional(),
       window: evidence.optional(),
       amount: evidence.optional(),
       pool: evidence.optional(),
       co_finance_required: evidence.optional(),
       consortium_required: evidence.optional(),
+      fiscal_sponsor: evidence.optional(),
       reporting: evidence.optional(),
       /** One quote per step at most: a page often names the stages, and their dates, in different places. */
       effort: z.array(evidence).min(1).max(5).optional(),
@@ -508,7 +533,7 @@ export const programme = z
   .superRefine((p, ctx) => {
     const issue = (path: (string | number)[], message: string) => ctx.addIssue({ code: 'custom', path, message })
 
-    const stated: Record<keyof typeof p.evidence, boolean> = {
+    const stated: Record<Exclude<keyof typeof p.evidence, 'places'>, boolean> = {
       administered_by: p.administered_by !== null,
       applicant_types: p.applicant_types !== null,
       geography: p.geography !== null,
@@ -518,6 +543,7 @@ export const programme = z
       pool: p.pool !== undefined,
       co_finance_required: p.co_finance_required !== null,
       consortium_required: p.consortium_required !== undefined,
+      fiscal_sponsor: p.fiscal_sponsor !== undefined,
       reporting: p.reporting !== null,
       effort: p.effort !== undefined,
       eligibility: p.eligibility !== undefined,
@@ -532,6 +558,7 @@ export const programme = z
       if (!isStated && e) issue(['evidence', field], `${field} has evidence but is not stated`)
     }
 
+    if (p.evidence.places && p.geography?.scope === 'global') issue(['evidence', 'places'], 'places names countries, but geography is global')
     if (p.eligibility && p.evidence.eligibility && p.eligibility.length !== p.evidence.eligibility.length) {
       issue(['evidence', 'eligibility'], `each eligibility rule has its own quote: ${p.eligibility.length} rules, ${p.evidence.eligibility.length} quotes`)
     }

@@ -6,6 +6,12 @@
       "runtimeExecutable": "python3",
       "runtimeArgs": ["-m", "http.server", "8765", "--directory", "docs"],
       "port": 8765
+    },
+    {
+      "name": "site",
+      "runtimeExecutable": "bun",
+      "runtimeArgs": ["run", "dev", "--port", "4337"],
+      "port": 4337
     }
   ]
 }

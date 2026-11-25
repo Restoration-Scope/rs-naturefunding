@@ -2,11 +2,12 @@ import { existsSync, readFileSync } from 'node:fs'
 import { join } from 'node:path'
 import { loadData } from '../data/load'
 import type { Call, Programme } from '../data/schema'
-import { countriesByRegion, countryName, countryRegion } from './geo'
+import { areaCountries, countryName, countryRegion } from './geo'
 import type { SizeBucket, State } from './labels'
 import { sizeBuckets } from './labels'
 import { usdPerUnit } from './rates'
 import { daysBetween, effectiveCallStatus, utcDateKey } from './status'
+import { callTakes, placeFit, wholeRegions, whereCodes } from './where-codes'
 
 export { daysBetween } from './status'
 
@@ -20,6 +21,9 @@ export const buildDate = utcDateKey()
 
 export const AGING_DAYS = 30
 export const HIDDEN_DAYS = 90
+
+/** Fiscal sponsors by name, without any not checked for over HIDDEN_DAYS: the same rule as listings. */
+export const sponsors = data.sponsors.filter((s) => daysBetween(s.checked_at, buildDate) <= HIDDEN_DAYS)
 
 /** Why the daily check could not re-read a programme's pages, as the refresh job records it. */
 export type RecheckFailure = 'robots' | 'blocked' | 'network' | 'http' | 'timeout' | 'selector' | 'unreadable'
@@ -39,6 +43,8 @@ export const notRecheckedPage = (url: string): RecheckFailure | null => failingP
 
 export type Listing = {
   p: Programme
+  /** The place whose calls set the state: "KE", "r:africa" or '' for every call. */
+  where: string
   state: State
   /** The call that sets the state: the open call closing soonest, else the next upcoming one, else the latest closed one. */
   call: Call | null
@@ -47,9 +53,6 @@ export type Listing = {
 }
 
 const byDeadline = (a: Call, b: Call) => (a.deadline?.date ?? '9999').localeCompare(b.deadline?.date ?? '9999')
-
-/** Whether a call takes projects from this country. A call with no countries takes them from all the programme's. */
-export const callTakes = (c: Call, country: string) => !c.countries || c.countries.includes(country)
 
 /**
  * The programme split by the call each country gets, when some call names its countries: countries whose calls
@@ -73,14 +76,14 @@ export function callGroups(p: Programme): { codes: string[] | null; listing: Lis
   return out.length > 1 ? out : []
 }
 
-/** `country`: only the calls that take projects from it set the state. */
-export function listingFor(p: Programme, today: string | Date = buildDate, country?: string): Listing {
+/** `where`: only the calls that take projects from it set the state. */
+export function listingFor(p: Programme, today: string | Date = buildDate, where = ''): Listing {
   const now = typeof today === 'string' ? new Date(`${today}T12:00:00Z`) : today
   const todayKey = utcDateKey(now)
   const ageDays = daysBetween(p.checked_at, todayKey)
-  const base = { p, ageDays, aging: ageDays > AGING_DAYS }
+  const base = { p, where, ageDays, aging: ageDays > AGING_DAYS }
   if (p.access === 'intermediary' || p.access === 'invitation_only') return { ...base, state: 'none', call: null }
-  const calls = country ? p.calls.filter((c) => callTakes(c, country)) : p.calls
+  const calls = p.calls.filter((c) => callTakes(c, where))
   const status = new Map(calls.map((c) => [c, effectiveCallStatus(c, now)]))
 
   const open = calls.filter((c) => status.get(c) === 'open').sort(byDeadline)
@@ -105,6 +108,24 @@ export function listingFor(p: Programme, today: string | Date = buildDate, count
 export const listings: Listing[] = programmes
   .map((p) => listingFor(p))
   .filter((l) => l.ageDays <= HIDDEN_DAYS)
+
+/** An umbrella's partner programmes open now, of those sure to take projects in a Where. */
+export const openPartners = (p: Programme, where = ''): Listing[] =>
+  programmes
+    .filter((c) => c.parent === p.id && placeFit(c, where) === 'all')
+    .map((c) => listingFor(c, buildDate, where))
+    .filter((l) => l.state === 'open' || l.state === 'rolling')
+
+/** An umbrella's countries by how many partner programmes are open there; empty when none is open anywhere. */
+export function partnerGroups(p: Programme): { codes: string[]; open: number }[] {
+  if (p.access !== 'intermediary' || !openPartners(p).length) return []
+  const groups = new Map<number, string[]>()
+  for (const c of Object.keys(countryRegion).filter((k) => placeFit(p, k))) {
+    const open = openPartners(p, c).length
+    groups.set(open, [...(groups.get(open) ?? []), c])
+  }
+  return [...groups].map(([open, codes]) => ({ codes, open }))
+}
 
 const monthNames = ['jan', 'feb', 'mar', 'apr', 'may', 'jun', 'jul', 'aug', 'sep', 'oct', 'nov', 'dec']
 
@@ -146,27 +167,13 @@ export function sizeBucketsFor(p: Programme): SizeBucket[] {
     .map(([k]) => k)
 }
 
-/** Space-separated codes a programme is open to: `*` everywhere, `R:<region>` a whole region, else its countries plus `r:<region>` of each. */
-export function whereCodes(p: Programme): string {
-  const g = p.geography
-  if (!g) return ''
-  if (g.scope === 'global') return '*'
-  if (g.scope === 'regions') return g.regions.map((r) => `R:${r}`).join(' ')
-  const regions = new Set(g.countries.map((c) => countryRegion[c]).filter(Boolean))
-  return [...g.countries, ...[...regions].map((r) => `r:${r}`)].join(' ')
-}
-
-/**
- * whereCodes with each region spelled out as its countries, so a page can tell whether it takes one country.
- * A funder's group inside a region ("ODA-eligible countries") may leave a country out: its region is `?:<region>`
- * and its countries `?<code>`, which the page reads as "check", never as a yes.
- */
+/** whereCodes with each whole region spelled out as its countries, so a page can tell whether it takes one country. */
 export function whereReach(p: Programme): string {
   const g = p.geography
-  if (g?.scope !== 'regions') return whereCodes(p)
-  const countries = countriesByRegion.filter((r) => g.regions.includes(r.region)).flatMap((r) => r.countries.map((c) => c.code))
-  if (!g.whole) return [...g.regions.map((r) => `?:${r}`), ...countries.map((c) => `?${c}`)].join(' ')
-  return [whereCodes(p), ...countries].join(' ')
+  const codes = whereCodes(p)
+  if (g?.scope !== 'regions') return codes.join(' ')
+  const whole = wholeRegions(g).flatMap(areaCountries).filter((c) => !g.except?.includes(c))
+  return [...codes, ...whole].join(' ')
 }
 
 /**

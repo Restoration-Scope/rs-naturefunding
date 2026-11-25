@@ -24,6 +24,7 @@ export const fieldDocs = {
     amount: 'Grant size in the funder’s currency, or null when not stated.',
     pool: 'The total funding shared by all the grants (one round, one year or the whole programme), when the funder states it. Not one grant’s size, and not to be summed across rows: data.csv repeats it on each call of the programme. Missing means not stated.',
     co_finance_required: 'true or false when the funder says whether co-funding is required; null when it doesn’t.',
+    fiscal_sponsor: 'What the funder says about applying through a fiscal sponsor (also fiscal agent or auspice), an organisation that holds the legal status or the money for the project: accepted, refused or discouraged, with the condition its quote states. Missing means the pages we read don’t say.',
     reporting: 'What the funder asks grantees to report, in our words, or null.',
     effort: 'What applying takes, in our words from the funder’s page: the submission and review stages in order, and when each is due in the current or next round if the funder dates it. Missing when the pages we read don’t say.',
     eligibility: 'The rules that rule an applicant out, in our words, each phrased as a requirement the applicant meets, so Yes means it qualifies and No rules it out, with our kind tag (legal, track_record, finances, capacity, project, other) and, when the rule states them, typed values a script can test: min_years (fewest years operating), revenue (a yearly revenue or budget range with currency) and request_cap (the largest request as a percent of yearly revenue or budget); evidence.eligibility has one quote per rule, in order, and states each typed number. Missing when the pages we read don’t list them.',
@@ -80,8 +81,14 @@ export const fieldDocs = {
   geography: {
     scope: 'global (anywhere), countries (a list) or regions (a group the funder names, such as “ODA-eligible countries”).',
     countries: 'ISO 3166-1 alpha-2 country codes.',
-    regions: 'Broad regions the group covers.',
+    regions: 'Broad regions the group reaches, for filtering. A region here is not eligibility unless `whole` names it.',
     label: 'The funder’s own name for the area or group.',
+    list: 'The official country list or lists the funder points to; `countries` holds every country on them.',
+    parts: 'For a country the funder takes only part of, the part it takes.',
+    whole: 'On regions: true, or the regions, when the funder takes every country in them. On countries: true when the label still means all of each country.',
+    areas: 'On regions: the widest place the group can mean, in our words for filters. A country in it is only maybe covered: check the label and quote.',
+    named: 'Countries the funder names outright beside its group: covered, not maybe.',
+    except: 'Countries the funder says it does not take.',
   },
   evidence: {
     source_url: 'The page the fact was read from: the funder’s, or the organisation running the programme.',

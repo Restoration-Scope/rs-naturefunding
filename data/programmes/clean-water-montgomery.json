@@ -17,6 +17,10 @@
   "window": "fixed",
   "amount": { "currency": "USD", "max": 100000 },
   "co_finance_required": false,
+  "fiscal_sponsor": {
+    "stance": "accepted",
+    "note": "The sponsor applies and holds the money, for an organisation without 501(c)(3) status"
+  },
   "reporting": null,
   "effort": {
     "steps": ["Online application", "Technical Review Committee review"],
@@ -122,6 +126,12 @@
       "source_url": "https://cbtrust.org/grants/cleanwatermontgomery/",
       "quote": "Match is encouraged but is not required.",
       "checked_at": "2026-11-21",
+      "method": "page"
+    },
+    "fiscal_sponsor": {
+      "source_url": "https://cbtrust.org/wp-content/uploads/FY27-Clean-Water-Montgomery-RFP_8.18.26.pdf",
+      "quote": "applicants must have a current tax-exempt 501(c)3 status. If your organization does not have a current 501(c)3 status, a fiscal sponsor may apply and secure funds on your behalf.",
+      "checked_at": "2026-11-20",
       "method": "page"
     },
     "effort": [

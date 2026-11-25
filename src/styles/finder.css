@@ -50,55 +50,6 @@
     vertical-align: middle;
     white-space: nowrap;
   }
-  .tbl thead button {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.375rem;
-    height: 2rem;
-    margin-inline: -0.5rem;
-    padding: 0 0.5rem;
-    border: 0;
-    border-radius: var(--radius-md);
-    background: none;
-    color: inherit;
-    font: inherit;
-    cursor: pointer;
-  }
-  @media (hover: hover) {
-    .tbl thead button:hover {
-      color: var(--foreground);
-      background: var(--muted);
-    }
-  }
-  .tbl thead .arrow {
-    display: inline-grid;
-  }
-  .tbl thead .arrow > svg {
-    grid-area: 1 / 1;
-    width: 0.875rem;
-    height: 0.875rem;
-  }
-  .tbl thead .i-none {
-    opacity: 0.6;
-  }
-  .tbl thead .i-asc,
-  .tbl thead .i-desc {
-    display: none;
-  }
-  .tbl thead th[aria-sort] > button:not(.h-checked),
-  .tbl thead button[data-active] {
-    color: var(--foreground);
-  }
-  .tbl thead th[aria-sort] > button:not(.h-checked) .i-none,
-  .tbl thead button[data-active] .i-none {
-    display: none;
-  }
-  .tbl thead th[aria-sort='ascending'] > button:not(.h-checked) .i-asc,
-  .tbl thead button[data-active='ascending'] .i-asc,
-  .tbl thead th[aria-sort='descending'] > button:not(.h-checked) .i-desc,
-  .tbl thead button[data-active='descending'] .i-desc {
-    display: block;
-  }
   /* The checked date sits under the amount, so its sort shares the Amount header. */
   .h-checked {
     margin-left: 0.75rem !important;
@@ -177,6 +128,16 @@
   /* Most programmes take direct applications: only the exceptions get a line. */
   .sub__route:has([data-route='direct']) {
     display: none;
+  }
+  /* The place the funder takes, where a country's page or Where can't say the programme simply takes it. */
+  .place {
+    margin-top: 0.25rem;
+    font-size: var(--text-sm);
+    font-weight: 500;
+    color: var(--aging-text);
+  }
+  .place:not([hidden]) {
+    display: block;
   }
   .kind {
     display: block;
@@ -386,6 +347,7 @@
         'name name'
         'sub sub'
         'route route'
+        'place place'
         'kind kind'
         'dl dl'
         'amount amount'
@@ -416,6 +378,9 @@
     }
     .sub__route {
       grid-area: route;
+    }
+    .place {
+      grid-area: place;
     }
     .kind {
       grid-area: kind;

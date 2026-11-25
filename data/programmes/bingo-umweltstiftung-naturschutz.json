@@ -24,9 +24,9 @@
   },
   "access": "direct",
   "window": "rolling",
-  "amount": null,
+  "amount": { "currency": "EUR", "max": 50000 },
   "co_finance_required": true,
-  "reporting": null,
+  "reporting": "Grantees must submit a usage report within three months after the project ends, consisting of a narrative report and a calculable financial report; for multi‑year projects an annual interim report may be required.",
   "calls": [
     {
       "id": "rolling",
@@ -39,7 +39,7 @@
         "status": {
           "source_url": "https://www.bingo-umweltstiftung.de/termine-und-antragsfristen/",
           "quote": "Der Geschäftsführer entscheidet ohne Stichtag.",
-          "checked_at": "2026-11-23",
+          "checked_at": "2026-11-25",
           "method": "page"
         }
       }
@@ -49,33 +49,45 @@
     "applicant_types": {
       "source_url": "https://www.bingo-umweltstiftung.de/foerderrichtlinie/",
       "quote": "Antragsberechtigt sind steuerbegünstigte Körperschaften oder Körperschaften oder Anstalten des öffentlichen Rechts.",
-      "checked_at": "2026-11-23",
+      "checked_at": "2026-11-25",
       "method": "page"
     },
     "geography": {
       "source_url": "https://www.bingo-umweltstiftung.de/foerderrichtlinie/",
       "quote": "Die Stiftung fördert Projekte in Niedersachsen.",
-      "checked_at": "2026-11-23",
+      "checked_at": "2026-11-25",
       "method": "page"
     },
     "access": {
       "source_url": "https://www.bingo-umweltstiftung.de/termine-und-antragsfristen/",
       "quote": "Bitte planen Sie daher bei der Antragstellung genügend Zeit für eine Beratung durch die Stiftung ein und stellen Sie Ihren Antrag mindestens sechs Wochen vor dem geplanten Projektbeginn.",
-      "checked_at": "2026-11-23",
+      "checked_at": "2026-11-25",
       "method": "page"
     },
     "window": {
       "source_url": "https://www.bingo-umweltstiftung.de/termine-und-antragsfristen/",
       "quote": "Der Geschäftsführer entscheidet ohne Stichtag.",
-      "checked_at": "2026-11-23",
+      "checked_at": "2026-11-25",
+      "method": "page"
+    },
+    "amount": {
+      "source_url": "https://www.bingo-umweltstiftung.de/termine-und-antragsfristen/",
+      "quote": "bis 5.000,- Euro Geschäftsführung laufend * mind. vier Wochen vor dem geplanten Projektbeginn über 5.000,- Euro bis 15.000,- Euro Geschäftsführung laufend * mind. sechs Wochen vor dem geplanten Projektbeginn über 15.000,- Euro bis 50.000,- Euro Vorstand",
+      "checked_at": "2026-11-25",
       "method": "page"
     },
     "co_finance_required": {
       "source_url": "https://www.bingo-umweltstiftung.de/foerderrichtlinie/",
       "quote": "Grundsätzlich soll der Eigenanteil mindestens 15 Prozent betragen.",
-      "checked_at": "2026-11-23",
+      "checked_at": "2026-11-25",
+      "method": "page"
+    },
+    "reporting": {
+      "source_url": "https://www.bingo-umweltstiftung.de/foerderrichtlinie/",
+      "quote": "Spätestens drei Monate nach Abschluss der geförderten Maßnahme hat der Zuwendungsempfänger einen Nachweis über die verwendeten Mittel zu erbringen. Der Verwendungsnachweis besteht aus einem Sachbericht und einem rechnerischen Nachweis.",
+      "checked_at": "2026-11-25",
       "method": "page"
     }
   },
-  "checked_at": "2026-11-23"
+  "checked_at": "2026-11-25"
 }

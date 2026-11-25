@@ -20,13 +20,14 @@ import { cardClasses } from '@/components/ui/card'
 import { HIDDEN_DAYS, buildDate, callGroups, countryLists, whereArea, whereReach, listingFor, programmeById, programmes, sortListings } from '../../lib/data'
 import type { Programme } from '../../data/schema'
 import { pagesFor } from '../../lib/finder-pages'
-import { amountText, effortLevel, effortSignals, effortText, poolText, geographyFull, joinAnd, longDate, sentence, funderRepeatsName, funderQualifier, programmeTitle } from '../../lib/format'
-import { countryName, regionLabels } from '../../lib/geo'
+import { amountText, effortLevel, effortSignals, effortText, poolText, geographyFull, joinAnd, longDate, sentence, funderRepeatsName, funderQualifier, programmeTitle, shownParts } from '../../lib/format'
+import { countryName, regionLabels, withRegions } from '../../lib/geo'
 import {
   accessHelp,
   accessLabels,
   applicantLabels,
   approachLabels,
+  fiscalSponsorLabels,
   stateLabels,
 } from '../../lib/labels'
 import { ArrowLeft, Calculator, ChevronDown } from 'lucide-react'
@@ -43,7 +44,9 @@ const listing = listingFor(p)
 const hidden = listing.ageDays > HIDDEN_DAYS
 const { state, call } = listing
 const parent = p.parent ? programmeById.get(p.parent) : undefined
-const geoList = p.geography?.scope === 'countries' && p.geography.list ? countryLists.get(p.geography.list) : undefined
+const geoLists = p.geography?.scope === 'countries' ? [p.geography.list ?? []].flat().map((id) => countryLists.get(id)!) : []
+const geoFolds = geoLists.length > 0 || (p.geography?.scope === 'countries' && p.geography.label !== undefined && p.geography.countries.length > 60)
+const geoParts = p.geography?.scope === 'countries' ? p.geography.parts : undefined
 const children = programmes.filter((c) => c.parent === p.id)
 const childListings = children.map((c) => listingFor(c)).sort(sortListings)
 // "Forest Action Facility" from "Forest Action Facility (established by IUCN and KfW)": show only what the name doesn't say.
@@ -230,7 +233,7 @@ const jsonLd = [
   <div class="min-[90rem]:mx-auto min-[90rem]:flex min-[90rem]:max-w-[calc(var(--page)+var(--contents-w)+var(--contents-gap))] min-[90rem]:px-(--gutter) min-[90rem]:gap-x-(--contents-gap)">
   <PageContents items={contents} />
   {/* Wide screens: the apply box rides along in a right rail while the facts scroll. */}
-  <div data-where-codes={whereReach(p)} data-where-part={whereArea(p).part} data-where-within={whereArea(p).within} data-region-names={JSON.stringify(regionLabels)} class="wrap mr-auto ml-0 max-w-[calc(60rem+2*var(--gutter))] 2xl:mx-auto 2xl:grid 2xl:max-w-(--page) 2xl:grid-cols-[minmax(0,1fr)_20rem] 2xl:gap-x-12 2xl:*:col-start-1 min-[90rem]:mx-0 min-[90rem]:max-w-none min-[90rem]:min-w-0 min-[90rem]:flex-1 min-[90rem]:px-0">
+  <div data-where-codes={whereReach(p)} data-where-part={whereArea(p).part} data-where-parts={geoParts && JSON.stringify(geoParts)} data-where-within={whereArea(p).within} data-region-names={JSON.stringify(regionLabels)} class="wrap mr-auto ml-0 max-w-[calc(60rem+2*var(--gutter))] 2xl:mx-auto 2xl:grid 2xl:max-w-(--page) 2xl:grid-cols-[minmax(0,1fr)_20rem] 2xl:gap-x-12 2xl:*:col-start-1 min-[90rem]:mx-0 min-[90rem]:max-w-none min-[90rem]:min-w-0 min-[90rem]:flex-1 min-[90rem]:px-0">
     {
       hidden && (
         <p class="mt-8 rounded-lg bg-warn px-4 py-3 font-semibold text-warn-ink" role="note">
@@ -331,18 +334,18 @@ const jsonLd = [
       </FactGroup>
 
       <FactGroup id="facts-who" kind="who" title="Who can apply">
-        <Fact id={factIds.geography} label="Where" value={geographyFull(p.geography)} evidence={p.evidence.geography}>
-          {p.geography?.scope === 'countries' && !geoList && <span slot="value">{p.geography.label && `${p.geography.label}: `}<Countries codes={p.geography.countries} /></span>}
-          {/* An official list runs to 100+ names: say whose list it is and fold the names away. */}
-          {p.geography?.scope === 'countries' && geoList && (
+        <Fact id={factIds.geography} label="Where" value={geographyFull(p.geography)} evidence={[p.evidence.geography, ...(p.evidence.places ?? [])].filter((e) => e !== undefined)}>
+          {p.geography?.scope === 'countries' && !geoFolds && <span slot="value">{p.geography.label && `${p.geography.label}: `}<Countries codes={p.geography.countries} parts={shownParts(p.geography)} /></span>}
+          {/* A long list folds away, after whose list it is. */}
+          {p.geography?.scope === 'countries' && geoFolds && (
             <div slot="value">
-              {p.geography.label}, using the <a href={geoList.source_url}>{geoList.name}</a>
-              <details class="mt-1"><summary class="cursor-pointer underline">All {p.geography.countries.length} countries and territories</summary><p class="mt-1"><Countries codes={p.geography.countries} /></p></details>
+              {p.geography.label}{geoLists.length > 0 && ', using the '}{geoLists.map((l, i) => <>{i === 0 ? '' : i === geoLists.length - 1 ? ' and the ' : ', the '}<a href={l.source_url}>{l.name}</a></>)}
+              <details class="mt-1"><summary class="cursor-pointer underline">All {p.geography.countries.length} countries and territories</summary><p class="mt-1"><Countries codes={p.geography.countries} parts={shownParts(p.geography)} /></p></details>
             </div>
           )}
           <template data-where-tpl="covered"><p class="mt-1 text-md font-semibold text-ok-ink">✓ Includes <span data-where-name></span><span data-where-via></span></p></template>
-          {/* One country, and the funder takes only an area of it: name the area, never the whole country. */}
-          <template data-where-tpl="part"><p class="mt-1 text-md font-semibold text-warn-ink">◐ Only part of <span data-where-name></span>: {whereArea(p).part}<span data-where-via></span></p></template>
+          {/* The funder takes only an area of the country: name the area, never the whole country. */}
+          <template data-where-tpl="part"><p class="mt-1 text-md font-semibold text-warn-ink">◐ Only part of <span data-where-name></span>: <span data-where-part-text></span><span data-where-via></span></p></template>
           {/* A group the funder names inside a region, with no list we can check a country against. */}
           {p.geography?.scope === 'regions' && <template data-where-tpl="maybe"><p class="mt-1 text-md font-semibold text-warn-ink">? {p.geography.label}: <span data-where-check>check that <span data-where-name></span> is one of them</span></p></template>}
           <template data-where-tpl="uncovered"><p class="mt-1 text-md font-semibold text-warn-ink">✕ Doesn’t include <span data-where-name></span></p></template>
@@ -366,6 +369,21 @@ const jsonLd = [
         {
           p.consortium_required !== undefined && (
             <Fact id={factIds.consortium_required} label="Consortium required" value={yesNo(p.consortium_required)} evidence={p.evidence.consortium_required} />
+          )
+        }
+        {
+          p.fiscal_sponsor && (
+            <Fact
+              id={factIds.fiscal_sponsor}
+              label="Fiscal sponsor"
+              value={fiscalSponsorLabels[p.fiscal_sponsor.stance]}
+              evidence={p.evidence.fiscal_sponsor}
+            >
+              {p.fiscal_sponsor.note && <p class={factHelp}>{p.fiscal_sponsor.note}.</p>}
+              {p.fiscal_sponsor.stance === 'accepted' && (
+                <p class={factHelp}>No charity status of your own? See the <a href="/fiscal-sponsors/">fiscal sponsors that take nature projects</a>.</p>
+              )}
+            </Fact>
           )
         }
         <Fact id={factIds.approaches} label="Restoration approach" value={joinAnd(p.approaches.map((a) => approachLabels[a]))} missing="">
@@ -450,7 +468,7 @@ const jsonLd = [
             // Each call folds in the same card; the one that sets the page's status starts open.
             <details id={callId(c)} class:list={[cardClasses, 'group/call px-4 pt-3.5 pb-1 md:px-[1.1rem] [&+&]:mt-3']}
               open={c === call || p.calls.length === 1}
-              data-call-countries={c.countries?.join(' ') ?? ''} data-call-label={c.label}
+              data-call-countries={withRegions(c.countries?.join(' ') ?? '')} data-call-label={c.label}
             >
               <summary class="grid cursor-pointer list-none grid-cols-[minmax(0,1fr)_auto] items-start gap-x-3 gap-y-1 pb-3 after:col-start-2 after:row-start-1 after:mt-2 after:mr-[0.2rem] after:size-[0.55rem] after:border-r-2 after:border-b-2 after:border-ink-2 after:content-[''] after:[transform:rotate(45deg)_translateY(-0.15rem)] group-open/call:after:[transform:rotate(-135deg)_translateY(-0.1rem)] [&::-webkit-details-marker]:hidden">
                 {/* The call names are the funder's own long titles: body type, not headings. */}

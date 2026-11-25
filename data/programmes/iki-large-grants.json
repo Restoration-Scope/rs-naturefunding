@@ -21,9 +21,152 @@
   ],
   "applicant_types": ["ngo", "research_institution", "company"],
   "geography": {
-    "scope": "regions",
-    "regions": ["africa", "asia", "latin_america_caribbean", "middle_east", "oceania", "europe"],
-    "label": "Developing and emerging countries"
+    "scope": "countries",
+    "countries": [
+      "AF",
+      "AL",
+      "AM",
+      "AO",
+      "AR",
+      "AZ",
+      "BA",
+      "BD",
+      "BF",
+      "BI",
+      "BJ",
+      "BO",
+      "BR",
+      "BT",
+      "BW",
+      "BY",
+      "BZ",
+      "CD",
+      "CF",
+      "CG",
+      "CI",
+      "CM",
+      "CN",
+      "CO",
+      "CR",
+      "CU",
+      "CV",
+      "DJ",
+      "DM",
+      "DO",
+      "DZ",
+      "EC",
+      "EG",
+      "ER",
+      "ET",
+      "FJ",
+      "FM",
+      "GA",
+      "GD",
+      "GE",
+      "GH",
+      "GM",
+      "GN",
+      "GQ",
+      "GT",
+      "GW",
+      "GY",
+      "HN",
+      "HT",
+      "ID",
+      "IN",
+      "IQ",
+      "IR",
+      "JM",
+      "JO",
+      "KE",
+      "KG",
+      "KH",
+      "KI",
+      "KM",
+      "KP",
+      "KZ",
+      "LA",
+      "LB",
+      "LC",
+      "LK",
+      "LR",
+      "LS",
+      "LY",
+      "MA",
+      "MD",
+      "ME",
+      "MG",
+      "MH",
+      "MK",
+      "ML",
+      "MM",
+      "MN",
+      "MR",
+      "MS",
+      "MU",
+      "MV",
+      "MW",
+      "MX",
+      "MY",
+      "MZ",
+      "NA",
+      "NE",
+      "NG",
+      "NI",
+      "NP",
+      "NR",
+      "NU",
+      "PA",
+      "PE",
+      "PG",
+      "PH",
+      "PK",
+      "PS",
+      "PW",
+      "PY",
+      "RS",
+      "RW",
+      "SB",
+      "SD",
+      "SH",
+      "SL",
+      "SN",
+      "SO",
+      "SR",
+      "SS",
+      "ST",
+      "SV",
+      "SY",
+      "SZ",
+      "TD",
+      "TG",
+      "TH",
+      "TJ",
+      "TK",
+      "TL",
+      "TM",
+      "TN",
+      "TO",
+      "TR",
+      "TV",
+      "TZ",
+      "UA",
+      "UG",
+      "UZ",
+      "VC",
+      "VE",
+      "VN",
+      "VU",
+      "WF",
+      "WS",
+      "XK",
+      "YE",
+      "ZA",
+      "ZM",
+      "ZW"
+    ],
+    "label": "Developing and emerging countries",
+    "list": "dac-oda-recipients"
   },
   "access": "direct",
   "window": "fixed",
@@ -72,26 +215,25 @@
       "id": "ilg-2026",
       "label": "IKI Large Grants Call 2026",
       "url": "https://www.international-climate-initiative.com/en/find-funding/large-grants/large-grants-2026/",
-      "status": "upcoming",
-      "opens": "2026-11-17",
-      "deadline": { "date": "2027-02-09", "text": "9 February 2027: Call ends" },
+      "status": "open",
+      "opens": null,
+      "deadline": {
+        "date": "2027-02-09",
+        "time": "14:00",
+        "timezone": "CET",
+        "text": "09 February 2027, 2:00pm (CET)"
+      },
       "evidence": {
         "status": {
           "source_url": "https://www.international-climate-initiative.com/en/find-funding/large-grants/large-grants-2026/",
-          "quote": "A new call for IKI Large Grants will be published on this website shortly.",
-          "checked_at": "2026-11-09",
-          "method": "page"
-        },
-        "opens": {
-          "source_url": "https://www.international-climate-initiative.com/en/find-funding/large-grants/large-grants-2026/",
-          "quote": "17 November 2026: Call launches",
-          "checked_at": "2026-11-09",
+          "quote": "The deadline for submitting project outlines for this year's ideas competition is 09 February 2027, 2:00pm (CET).",
+          "checked_at": "2026-11-25",
           "method": "page"
         },
         "deadline": {
           "source_url": "https://www.international-climate-initiative.com/en/find-funding/large-grants/large-grants-2026/",
-          "quote": "9 February 2027: Call ends",
-          "checked_at": "2026-11-09",
+          "quote": "The deadline for submitting project outlines for this year's ideas competition is 09 February 2027, 2:00pm (CET).",
+          "checked_at": "2026-11-25",
           "method": "page"
         }
       }
@@ -112,13 +254,13 @@
         "status": {
           "source_url": "https://www.international-climate-initiative.com/en/find-funding/large-grants/large-grants-2025/",
           "quote": "The deadline for submitting project outlines for the IKI Large Grants ideas competition (Call) was 17 February 2026, 2 pm (CET).",
-          "checked_at": "2026-11-23",
+          "checked_at": "2026-11-25",
           "method": "page"
         },
         "deadline": {
           "source_url": "https://www.international-climate-initiative.com/en/find-funding/large-grants/large-grants-2025/",
           "quote": "The deadline for submitting project outlines for the IKI Large Grants ideas competition (Call) was 17 February 2026, 2 pm (CET).",
-          "checked_at": "2026-11-23",
+          "checked_at": "2026-11-25",
           "method": "page"
         }
       }
@@ -128,68 +270,76 @@
     "administered_by": {
       "source_url": "https://www.international-climate-initiative.com/en/find-funding/large-grants/",
       "quote": "Once the IKI Office at Zukunft - Umwelt - Gesellschaft gGmbH (ZUG) has reviewed the detailed project proposal, a final decision will be made as to funding/project commissioning.",
-      "checked_at": "2026-11-23",
+      "checked_at": "2026-11-25",
       "method": "page"
     },
     "applicant_types": {
       "source_url": "https://www.international-climate-initiative.com/en/find-funding/large-grants/",
       "quote": "Non-governmental organisations; Universities and research institutions; International intergovernmental organisations and institutions such as development banks; United Nations organisations and programmes; Implementing organisations of the Federal Republic of Germany; Commercial enterprises.",
-      "checked_at": "2026-11-23",
+      "checked_at": "2026-11-25",
       "method": "page"
     },
     "geography": {
       "source_url": "https://www.international-climate-initiative.com/en/find-funding/large-grants/",
       "quote": "The IKI supports solution strategies in developing and emerging countries that seek to achieve sustainable change.",
-      "checked_at": "2026-11-23",
+      "checked_at": "2026-11-25",
       "method": "page"
     },
+    "places": [
+      {
+        "source_url": "https://www.international-climate-initiative.com/fileadmin/iki/Dokumente/Calls/ILG/2026/ILG2026_Funding_Announcement_EN.pdf",
+        "quote": "All partner countries proposed for a project must be ODA-eligible by the deadline for submission of the project outline",
+        "checked_at": "2026-11-25",
+        "method": "page"
+      }
+    ],
     "access": {
       "source_url": "https://www.international-climate-initiative.com/en/find-funding/large-grants/",
       "quote": "In the first phase (outline phase), interested implementing organisations are invited to submit project outlines within the framework of an ideas competition.",
-      "checked_at": "2026-11-23",
+      "checked_at": "2026-11-25",
       "method": "page"
     },
     "window": {
       "source_url": "https://www.international-climate-initiative.com/en/find-funding/large-grants/",
       "quote": "How often is funding provided? Annual selection procedure planned.",
-      "checked_at": "2026-11-23",
+      "checked_at": "2026-11-25",
       "method": "page"
     },
     "amount": {
       "source_url": "https://www.international-climate-initiative.com/en/find-funding/large-grants/",
       "quote": "Depending on the thematic or country priority, IKI funding per project may range between 5 and 20 million euros.",
-      "checked_at": "2026-11-23",
+      "checked_at": "2026-11-25",
       "method": "page"
     },
     "co_finance_required": {
       "source_url": "https://www.international-climate-initiative.com/fileadmin/iki/Dokumente/Calls/ILG/2026/ILG2026_Funding_Announcement_EN.pdf",
       "quote": "Financing is usually provided as partial financing. Thus, taking into account their financial capacity, the grantees must make an appropriate financial contribution (co-funding) to the purpose for which funding is provided.",
-      "checked_at": "2026-11-23",
+      "checked_at": "2026-11-25",
       "method": "page"
     },
     "consortium_required": {
       "source_url": "https://www.international-climate-initiative.com/fileadmin/iki/Dokumente/Calls/ILG/2026/ILG2026_Funding_Announcement_EN.pdf",
       "quote": "One prerequisite for funding is the application as a consortium (i.e. an association of at least two organisations).",
-      "checked_at": "2026-11-23",
+      "checked_at": "2026-11-25",
       "method": "page"
     },
     "reporting": {
       "source_url": "https://www.international-climate-initiative.com/en/manage-project/report-on-the-project-progress/",
       "quote": "The technical report consists of information on the accomplished project results, IKI standard indicators and IKI safeguards.",
-      "checked_at": "2026-11-23",
+      "checked_at": "2026-11-25",
       "method": "page"
     },
     "effort": [
       {
-        "source_url": "https://www.international-climate-initiative.com/fileadmin/iki/Dokumente/Calls/ILG/2026/ILG2026_Funding_Announcement_EN.pdf",
-        "quote": "The project outline must be submitted in due time, in full, and including all required documents in English based on the IKI outline form exclusively via the IKI online platform. The following deadline shall apply: 9 February 2027.",
-        "checked_at": "2026-11-23",
+        "source_url": "https://www.international-climate-initiative.com/en/find-funding/large-grants/large-grants-2026/",
+        "quote": "The deadline for submitting project outlines for this year's ideas competition is 09 February 2027, 2:00pm (CET).",
+        "checked_at": "2026-11-25",
         "method": "page"
       },
       {
         "source_url": "https://www.international-climate-initiative.com/fileadmin/iki/Dokumente/Calls/ILG/2026/ILG2026_Funding_Announcement_EN.pdf",
         "quote": "all applicants whose outlines have been selected will be informed in writing of the outcome of the assessment and invited to submit a detailed project proposal.",
-        "checked_at": "2026-11-23",
+        "checked_at": "2026-11-25",
         "method": "page"
       }
     ],
@@ -197,49 +347,49 @@
       {
         "source_url": "https://www.international-climate-initiative.com/fileadmin/iki/Dokumente/Calls/ILG/2026/ILG2026_Funding_Announcement_EN.pdf",
         "quote": "The lead organisation must have been implementing international cooperation projects in the respective thematic area in ODA countries for at least five years.",
-        "checked_at": "2026-11-23",
+        "checked_at": "2026-11-25",
         "method": "page"
       },
       {
         "source_url": "https://www.international-climate-initiative.com/fileadmin/iki/Dokumente/Calls/ILG/2026/ILG2026_Funding_Announcement_EN.pdf",
         "quote": "In addition, experience in the respective target region is required.",
-        "checked_at": "2026-11-23",
+        "checked_at": "2026-11-25",
         "method": "page"
       },
       {
         "source_url": "https://www.international-climate-initiative.com/fileadmin/iki/Dokumente/Calls/ILG/2026/ILG2026_Funding_Announcement_EN.pdf",
         "quote": "The average annual IKI funding volume of the proposed project may not exceed the average annual turnover of the lead organisation. The certified annual financial statements for the last three financial years are used as the basis for this assessment.",
-        "checked_at": "2026-11-23",
+        "checked_at": "2026-11-25",
         "method": "page"
       },
       {
         "source_url": "https://www.international-climate-initiative.com/fileadmin/iki/Dokumente/Calls/ILG/2026/ILG2026_Funding_Announcement_EN.pdf",
         "quote": "The lead organisation must ensure that both the lead organisation and its consortium partners have the necessary technical expertise, administrative capacity, and management capacity to plan and implement the project.",
-        "checked_at": "2026-11-23",
+        "checked_at": "2026-11-25",
         "method": "page"
       },
       {
         "source_url": "https://www.international-climate-initiative.com/fileadmin/iki/Dokumente/Calls/ILG/2026/ILG2026_Funding_Announcement_EN.pdf",
         "quote": "The number of countries addressed in the project outline must be limited to five",
-        "checked_at": "2026-11-23",
+        "checked_at": "2026-11-25",
         "method": "page"
       },
       {
         "source_url": "https://www.international-climate-initiative.com/fileadmin/iki/Dokumente/Calls/ILG/2026/ILG2026_Funding_Announcement_EN.pdf",
         "quote": "The maximum project duration is eight years. Any necessary funding/financing of a preparation phase of up to nine months for the preparation of the project proposal is possible on application and does not count towards the project duration.",
-        "checked_at": "2026-11-23",
+        "checked_at": "2026-11-25",
         "method": "page"
       },
       {
         "source_url": "https://www.international-climate-initiative.com/fileadmin/iki/Dokumente/Calls/ILG/2026/ILG2026_Funding_Announcement_EN.pdf",
         "quote": "Furthermore, projects can be funded only if the project has not yet started at the time of application.",
-        "checked_at": "2026-11-23",
+        "checked_at": "2026-11-25",
         "method": "page"
       },
       {
         "source_url": "https://www.international-climate-initiative.com/en/find-funding/large-grants/",
         "quote": "Partner country governments and individuals cannot participate in the ideas competition.",
-        "checked_at": "2026-11-23",
+        "checked_at": "2026-11-25",
         "method": "page"
       }
     ],
@@ -247,7 +397,7 @@
       {
         "source_url": "https://www.international-climate-initiative.com/en/manage-project/report-on-the-project-progress/",
         "quote": "all IKI implementing organisations must submit an annual report on the progress of their project referred to as interim reports.",
-        "checked_at": "2026-11-23",
+        "checked_at": "2026-11-25",
         "method": "page"
       }
     ],
@@ -255,22 +405,22 @@
       {
         "source_url": "https://www.international-climate-initiative.com/fileadmin/iki/Dokumente/Calls/ILG/2026/ILG2026_Funding_Announcement_EN.pdf",
         "quote": "Project concept (max. 8 pages) in the template to be completed (download in the outline portal, IKI online platform)",
-        "checked_at": "2026-11-23",
+        "checked_at": "2026-11-25",
         "method": "page"
       },
       {
         "source_url": "https://www.international-climate-initiative.com/fileadmin/iki/Dokumente/Calls/ILG/2026/ILG2026_Funding_Announcement_EN.pdf",
         "quote": "Organisational chart explaining the consortium structure",
-        "checked_at": "2026-11-23",
+        "checked_at": "2026-11-25",
         "method": "page"
       },
       {
         "source_url": "https://www.international-climate-initiative.com/fileadmin/iki/Dokumente/Calls/ILG/2026/ILG2026_Funding_Announcement_EN.pdf",
         "quote": "Letters of support from the partner government for bilateral project outlines relating to thematic priorities (see the template in Annex 4). This is not necessary for country priorities.",
-        "checked_at": "2026-11-23",
+        "checked_at": "2026-11-25",
         "method": "page"
       }
     ]
   },
-  "checked_at": "2026-11-09"
+  "checked_at": "2026-11-25"
 }

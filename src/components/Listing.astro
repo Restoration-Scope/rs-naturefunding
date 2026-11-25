@@ -1,6 +1,7 @@
 ---
 import type { Listing } from '../lib/data'
-import { buildDate, notRechecked, sizeBucketsFor, whereCodes } from '../lib/data'
+import { buildDate, notRechecked, sizeBucketsFor } from '../lib/data'
+import { whereCodes } from '../lib/where-codes'
 import { amountText, geographyText, keepAmountTogether, shortDate } from '../lib/format'
 import { daysLeft as daysLeftFrom } from '../lib/status'
 import { accessLabels, applicantLabels, approachLabels, stateLabels } from '../lib/labels'
@@ -74,7 +75,7 @@ const searchText = [
   data-approach={p.approaches.join(' ')}
   data-applicant={p.applicant_types?.join(' ') ?? ''}
   data-access={p.access}
-  data-where={whereCodes(p)}
+  data-where={whereCodes(p).join(' ')}
   data-size={sizeBucketsFor(p).join(' ')}
   data-text={searchText}
 >

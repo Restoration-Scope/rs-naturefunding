@@ -1,9 +1,11 @@
 import { existsSync, readdirSync, readFileSync } from 'node:fs'
 import { basename, join } from 'node:path'
 import type { z } from 'zod'
+import { geographyIssues } from './geography'
 import { countryList, programme, sources as sourcesSchema, type CountryList, type Evidence, type Programme, type Source } from './schema'
+import { checkSponsors, type Sponsor } from './sponsors'
 
-export type DataSet = { programmes: Programme[]; sources: Source[]; lists: CountryList[] }
+export type DataSet = { programmes: Programme[]; sources: Source[]; lists: CountryList[]; sponsors: Sponsor[] }
 export type CheckResult = DataSet & { issues: string[] }
 
 const formatIssues = (where: string, error: z.ZodError) =>
@@ -51,7 +53,6 @@ export function checkData(
     else if (parent.parent !== null) issues.push(`programmes/${p.id}.json: parent ${p.parent} has a parent itself; one level only`)
   }
 
-  // A programme that points to an official list holds every country on it, so the page never misses one.
   const listsDir = join(programmesDir, '..', 'lists')
   const lists = new Map<string, CountryList>()
   for (const file of existsSync(listsDir) ? readdirSync(listsDir).filter((f) => f.endsWith('.json')) : []) {
@@ -60,15 +61,11 @@ export function checkData(
     else lists.set(parsed.data.id, parsed.data)
   }
   for (const p of programmes) {
-    const g = p.geography
-    if (g?.scope !== 'countries' || !g.list) continue
-    const list = lists.get(g.list)
-    if (!list) issues.push(`programmes/${p.id}.json: geography.list ${g.list} is not in data/lists`)
-    else {
-      const missing = list.countries.filter((c) => !g.countries.includes(c))
-      if (missing.length) issues.push(`programmes/${p.id}.json: geography.countries lacks ${missing.join(', ')} from ${list.name}`)
-    }
+    issues.push(...geographyIssues(p, lists).map((i) => `programmes/${p.id}.json: ${i}`))
   }
+
+  const { sponsors, issues: sponsorIssues } = checkSponsors(join(programmesDir, '..', 'sponsors'), new Set(byId.keys()))
+  issues.push(...sponsorIssues)
 
   let sources: Source[] = []
   if (sourcesFile !== null) {
@@ -93,14 +90,14 @@ export function checkData(
     }
   }
 
-  return { programmes, sources, lists: [...lists.values()], issues }
+  return { programmes, sources, lists: [...lists.values()], sponsors, issues }
 }
 
 /** For the site build: every file valid or the build fails. */
 export function loadData(): DataSet {
-  const { programmes, sources, lists, issues } = checkData()
+  const { programmes, sources, lists, sponsors, issues } = checkData()
   if (issues.length > 0) throw new Error(`data/ has ${issues.length} problem(s):\n${issues.join('\n')}`)
-  return { programmes, sources, lists }
+  return { programmes, sources, lists, sponsors }
 }
 
 /** Every programme, validated, sorted by id. */

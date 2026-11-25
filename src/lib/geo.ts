@@ -36,6 +36,45 @@ const names = new Intl.DisplayNames(['en'], { type: 'region' })
 const pinned: Record<string, string> = { CN: 'China' }
 export const countryName = (iso2: string) => pinned[iso2] ?? names.of(iso2) ?? iso2
 
+/**
+ * The same area words as a group of countries, to leave out of "check" the countries a funder's wording can't mean.
+ * Each is the widest reading of the words. Ours, for matching only: never shown, never a yes (src/lib/where-codes.ts).
+ */
+const areaMembers = {
+  southeast_asia: 'BN KH ID LA MY MM PH SG TH TL VN',
+  oriental: 'BD BN BT CN HK ID IN KH KR JP LA LK MM MN MO MV MY NP PH PK SG TH TL TW VN',
+  caribbean:
+    'AG AI AW BB BL BM BQ BS BZ CO CR CU CW DM DO GD GF GP GT GY HN HT JM KN KY LC MF MQ MS MX NI PA PR SR SX TC TT VC VE VG VI',
+  insular_caribbean: 'AG AI AW BB BL BM BQ BS CU CW DM DO GD GP HT JM KN KY LC MF MQ MS PR SX TC TT VC VG VI',
+  central_america: 'BZ CR GT HN MX NI PA SV',
+  south_america: 'AR BO BR CL CO EC FK GF GY PE PY SR UY VE',
+  tropical_andes: 'AR BO CL CO EC PE VE',
+  mediterranean_basin:
+    'AL BA BG CY DZ EG ES FR GI GR HR IL IQ IT JO LB LY MA MC ME MK MT PS PT RS SI SM SY TN TR XK',
+  north_baltic_seas: 'AX BE DE DK EE FI FR GB LT LV NL NO PL RU SE',
+  polar: 'CA DK FI FO GL IS NO RU SE SJ US',
+  sub_saharan_africa:
+    'AO BF BI BJ BW CD CF CG CI CM CV DJ ER ET GA GH GM GN GQ GW KE KM LR LS MG ML MR MU MW MZ NA NE NG RE RW SC SD SH SL SN SO SS ST SZ TD TG TZ UG YT ZA ZM ZW',
+  west_central_africa: 'AO BF BI BJ CD CF CG CI CM CV GA GH GM GN GQ GW LR ML MR NE NG RW SH SL SN ST TD TG',
+  /** https://www.un.org/ohrlls/content/list-ldcs, with the three leaving on 24 November 2026. */
+  least_developed_countries:
+    'AF AO BD BF BI BJ CD CF DJ ER ET GM GN GW HT KH KI KM LA LR LS MG ML MM MR MW MZ NE NP RW SB SD SL SN SO SS TD TG TL TV TZ UG YE ZM',
+  melanesia: 'FJ ID NC PG SB TL VU',
+  pacific_islands: 'AS CK FJ FM GU KI MH MP NC NF NR NU PF PG PN PW SB TK TO TV VU WF WS',
+  australasia: 'AU FJ ID NC NF NZ PG SB TL VU',
+} as const
+export type Area = Region | keyof typeof areaMembers
+export const areaNames = [...(Object.keys(members) as Region[]), ...(Object.keys(areaMembers) as (keyof typeof areaMembers)[])] as const
+/** The countries an area of `geography.areas` can mean: a region, a named area, or one country's own code. */
+export const areaCountries = (a: string): string[] =>
+  a in members ? members[a as Region].split(' ') : a in areaMembers ? areaMembers[a as keyof typeof areaMembers].split(' ') : [a]
+
+/** Space-separated country codes with their regions' codes: "KE" gives "KE r:africa". */
+export const withRegions = (codes: string): string => {
+  const list = codes.split(' ').filter(Boolean)
+  return [...list, ...new Set(list.flatMap((c) => (countryRegion[c] ? [`r:${countryRegion[c]}`] : [])))].join(' ')
+}
+
 /** Countries grouped by region, sorted by name, for the "Where" select. */
 export const countriesByRegion = (Object.keys(members) as Region[]).map((r) => ({
   region: r,

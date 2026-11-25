@@ -1,8 +1,12 @@
 import { describe, expect, test } from 'bun:test'
+import { mkdtempSync, writeFileSync } from 'node:fs'
+import { tmpdir } from 'node:os'
+import { join } from 'node:path'
 import { programme, statesDate, statesYear, type Programme } from '../../src/data/schema'
 import { checkData } from '../../src/data/load'
+import { checkSponsors, sponsor, sponsorEvidence } from '../../src/data/sponsors'
 import { comparable, quoteOnPage } from '../../src/data/text'
-import { htmlToText } from './page-text'
+import { fetchPage, htmlToText } from './page-text'
 
 const URL = 'https://funder.example/call'
 const ev = (quote: string, checked_at = '2026-11-01') => ({ source_url: URL, quote, checked_at, method: 'page' as const })
@@ -64,6 +68,106 @@ describe('consortium_required', () => {
     const p = fixture()
     p.evidence.consortium_required = ev('Applicants must form a consortium of three organisations.')
     expect(problems(p)).toEqual(['evidence.consortium_required: consortium_required has evidence but is not stated'])
+  })
+})
+
+describe('fiscal_sponsor', () => {
+  test('needs evidence when stated, and the field when there is evidence', () => {
+    const p = fixture()
+    p.fiscal_sponsor = { stance: 'refused' }
+    expect(problems(p)).toEqual(['evidence.fiscal_sponsor: fiscal_sponsor is stated but has no evidence'])
+    p.evidence.fiscal_sponsor = ev('Organizations with fiscal sponsors are not eligible.')
+    expect(problems(p)).toEqual([])
+    delete p.fiscal_sponsor
+    expect(problems(p)).toEqual(['evidence.fiscal_sponsor: fiscal_sponsor has evidence but is not stated'])
+  })
+
+  test('takes only the three stances', () => {
+    const p = { ...fixture(), fiscal_sponsor: { stance: 'unclear' } }
+    expect(problems(p).some((i) => i.startsWith('fiscal_sponsor.stance'))).toBe(true)
+  })
+})
+
+describe('sponsors', () => {
+  const fact = <T>(value: T, quote = 'We sponsor wildlife projects.', checked_at = '2026-11-01') => ({ value, evidence: ev(quote, checked_at) })
+  const base = () => ({
+    id: 'example-sponsor',
+    name: 'Example Sponsor',
+    url: URL,
+    summary: 'Charity that takes wildlife projects.',
+    types: [fact('wildlife')],
+    country: fact('US'),
+    projects: fact('Wildlife projects'),
+    checked_at: '2026-11-01',
+  })
+  const issues = (s: unknown) => {
+    const r = sponsor.safeParse(s)
+    return r.success ? [] : r.error.issues.map((i) => `${i.path.join('.')}: ${i.message}`)
+  }
+
+  test('a fact the sponsor does not publish is left out', () => expect(issues(base())).toEqual([]))
+
+  test('a value without its quote is refused', () => {
+    expect(issues({ ...base(), staff: { value: { answer: 'yes' } } })).not.toEqual([])
+    expect(issues({ ...base(), legal_form: 'US charity' })).not.toEqual([])
+  })
+
+  test('every number in a fee is in its quote', () => {
+    expect(issues({ ...base(), fees: [fact('5% of the first $100,000', '5% on the first $100,000 each year')] })).toEqual([])
+    expect(issues({ ...base(), fees: [fact('6% of income', 'A fee of 5% is charged.')] })).toEqual(['fees.0: a number in the value is not in its quote'])
+  })
+
+  test('a quote has to make the claim, not a neighbouring one', () => {
+    const yes = (quote: string) => fact({ answer: 'yes' }, quote)
+    expect(issues({ ...base(), companies: yes('Drop us an email if you already have an organisation.') })).toHaveLength(1)
+    expect(issues({ ...base(), companies: yes('Corporations with charitable programming may apply.') })).toEqual([])
+    for (const quote of ['We support some groups that work outside of the UK.', 'You do not need to be a U.S. citizen to apply.', 'International initiatives can apply.'])
+      expect(issues({ ...base(), foreign: yes(quote) })).toHaveLength(1)
+    expect(issues({ ...base(), companies: yes('We do not sponsor for-profit or commercial entities.') })).toEqual([])
+    expect(issues({ ...base(), companies: yes('We sponsor not-for-profit groups.') })).toHaveLength(1)
+    for (const quote of ['Groups may be based anywhere in the world.', 'Be located within the United States', 'Projects must have a U.S. base of operations.'])
+      expect(issues({ ...base(), foreign: yes(quote) })).toEqual([])
+    expect(issues({ ...base(), foreign: yes('Our office is located within the park.') })).toHaveLength(1)
+    const grants = (role: string, quote: string) => issues({ ...base(), grants: fact({ role, note: 'What it does.' }, quote) })
+    expect(grants('signs', 'Projects can receive grants through our nonprofit status.')).toHaveLength(1)
+    expect(grants('receives', 'We have been awarded grant funding by the Grantor.')).toEqual([])
+    expect(grants('through', 'Projects can receive grants through our nonprofit status.')).toEqual([])
+    expect(issues({ ...base(), country: fact('US', 'Example is a 501(c)(3) nonprofit organization.') })).toHaveLength(1)
+  })
+
+  test('a fee, threshold or step keeps the limit its quote puts on it', () => {
+    const fee = (value: string, quote: string) => issues({ ...base(), fees: [fact(value, quote)] })
+    expect(fee('10% of revenue', 'Typically a fee of 10% is charged.')).toHaveLength(1)
+    expect(fee('Typically 10% of revenue', 'Typically a fee of 10% is charged.')).toEqual([])
+    expect(issues({ ...base(), min_income: fact('$10,000 a year', '$10,000 a year, provided you apply for two grants.') })).toHaveLength(1)
+    expect(issues({ ...base(), steps: [fact('A call with the team', "If we OK the form, we'll set up a call.")] })).toHaveLength(1)
+  })
+
+  test('checked_at is the oldest date of any fact, lists included', () => {
+    const s = { ...base(), fees: [fact('5% of income', 'A fee of 5% is charged.', '2026-10-01')] }
+    expect(sponsorEvidence(s)).toHaveLength(4)
+    expect(issues(s)).toEqual(['checked_at: must be the oldest evidence date, 2026-10-01'])
+  })
+
+  test('a sponsor says what kinds of project it takes, each once', () => {
+    expect(issues({ ...base(), types: [] })).not.toEqual([])
+    expect(issues({ ...base(), types: ['wildlife'] })).not.toEqual([])
+    expect(issues({ ...base(), types: [fact('wildlife'), fact('wildlife')] })).toEqual(['types: the same value twice'])
+  })
+
+  test('a file takes its id as its name, and a listing that exists', () => {
+    const dir = mkdtempSync(join(tmpdir(), 'sponsors-'))
+    writeFileSync(join(dir, 'other.json'), JSON.stringify({ ...base(), programme_id: 'nope' }))
+    expect(checkSponsors(dir, new Set()).issues).toEqual([
+      'sponsors/other.json: id example-sponsor must match the file name',
+      'sponsors/other.json: programme nope does not exist',
+    ])
+  })
+
+  test('the listed sponsors are valid', () => {
+    const { sponsors, issues } = checkSponsors('data/sponsors', new Set(['wcn-conservation-partners']))
+    expect(issues).toEqual([])
+    expect(sponsors.length).toBeGreaterThanOrEqual(10)
   })
 })
 
@@ -367,6 +471,36 @@ describe('quote matching', () => {
     const text = comparable(await htmlToText('<html><head><title>x</title></head><body><script>var a = "Grants"</script><p>Grants of up&nbsp;to <b>$50,000</b></p></body></html>'))
     expect(quoteOnPage(text, 'Grants of up to $50,000')).toBe(true)
     expect(quoteOnPage(text, 'var a')).toBe(false)
+  })
+
+  test('separates adjacent element text without accepting changed quotes', async () => {
+    const text = comparable(
+      await htmlToText(`
+        <main>
+          <h2>Applications open</h2><p>15th July</p>
+          <p><span>Category A Projects APPLICATIONS OPEN</span><span>15th July to 30th September 2026</span></p>
+        </main>
+      `),
+    )
+    expect(quoteOnPage(text, 'Applications open 15th July')).toBe(true)
+    expect(quoteOnPage(text, 'Category A Projects APPLICATIONS OPEN 15th July to 30th September 2026')).toBe(true)
+    expect(quoteOnPage(text, 'Category A Projects APPLICATIONS OPEN 16th July to 30th September 2026')).toBe(false)
+  })
+
+  test('an empty HTTP 202 response is inconclusive, not an empty page', async () => {
+    const originalFetch = globalThis.fetch
+    globalThis.fetch = (async () => new Response('', { status: 202, headers: { 'content-type': 'text/html' } })) as unknown as typeof fetch
+    try {
+      let error: Error | null = null
+      try {
+        await fetchPage('https://empty-202.example/call', { fresh: true })
+      } catch (e) {
+        error = e as Error
+      }
+      expect(error?.message).toBe('HTTP 202 empty response')
+    } finally {
+      globalThis.fetch = originalFetch
+    }
   })
 
   test('text after a stray early </body> is still read, as a browser shows it', async () => {

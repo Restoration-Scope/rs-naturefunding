@@ -1,0 +1,36 @@
+---
+// One line a visitor gives their own AI. How to match a project to grants lives in llms.txt, so the line never
+// changes. No server and no AI of ours.
+import { Copy, MessageSquareText } from 'lucide-react'
+import { Button } from '@/components/ui/button'
+import { absolute } from '../lib/site'
+
+const prompt = `Read ${absolute('/llms.txt').replace('https://', '')} and find the grants that fit my project:`
+---
+
+<div class="flex items-center gap-3 border-t border-border px-5 py-3 max-md:flex-wrap max-md:items-start max-md:px-4">
+  <MessageSquareText className="size-5 shrink-0" strokeWidth={1.75} aria-hidden="true" />
+  <p class="m-0 min-w-0 flex-1 text-[0.9375rem] max-md:text-sm">
+    <span class="font-medium">Or tell your AI:</span>{' '}
+    <span class="select-all text-ink-2" data-ai-prompt>{prompt}</span>{' '}
+    <span class="text-ink-2 italic">where, what, who you are and how much you need</span>
+  </p>
+  <Button type="button" variant="outline" size="sm" className="shrink-0 max-md:h-11 max-md:basis-full" hidden data-ai-copy><Copy aria-hidden="true" /><span aria-live="polite">Copy</span></Button>
+</div>
+
+<script>
+  const button = document.querySelector<HTMLButtonElement>('[data-ai-copy]')!
+  const text = document.querySelector<HTMLElement>('[data-ai-prompt]')!
+  button.hidden = !navigator.clipboard
+  button.addEventListener('click', async () => {
+    const label = button.querySelector('span')!
+    try {
+      await navigator.clipboard.writeText(`${text.textContent} `)
+      label.textContent = 'Copied'
+    } catch {
+      // The line is select-all: one tap picks it up whole.
+      getSelection()?.selectAllChildren(text)
+      label.textContent = 'Selected'
+    }
+  })
+</script>

@@ -1,7 +1,10 @@
 {
   "id": "european-open-rivers",
   "name": "European Open Rivers Programme",
-  "funder": { "name": "Arcadia Fund", "url": "https://www.arcadiafund.org.uk/" },
+  "funder": {
+    "name": "Arcadia Fund",
+    "url": "https://www.arcadiafund.org.uk/"
+  },
   "administered_by": {
     "name": "Stichting European Open Rivers Programme",
     "url": "https://openrivers.eu/"
@@ -9,9 +12,23 @@
   "parent": null,
   "url": "https://openrivers.eu/grants/apply-for-a-grant/",
   "summary": "Grants to prepare for and carry out removal of small dams and weirs across Greater Europe, including barrier identification, pre-demolition work and demolition. No matching funds are required, except that public entities leading a dam removal grant must cover at least 50% of project costs.",
-  "approaches": ["freshwater"],
-  "applicant_types": ["ngo", "government"],
-  "geography": { "scope": "regions", "regions": ["europe"], "label": "Greater Europe" },
+  "approaches": [
+    "freshwater"
+  ],
+  "applicant_types": [
+    "ngo",
+    "government"
+  ],
+  "geography": {
+    "scope": "countries",
+    "countries": ["AD", "AL", "AM", "AT", "AZ", "BA", "BE", "BG", "BY", "CH", "CY", "CZ", "DE", "DK", "EE", "ES", "FI", "FR", "GB", "GE", "GR", "HR", "HU", "IE", "IS", "IT", "KZ", "LI", "LT", "LU", "LV", "MC", "MD", "ME", "MK", "MT", "NL", "NO", "PL", "PT", "RO", "RS", "RU", "SE", "SI", "SK", "SM", "TR", "UA", "VA", "XK"],
+    "label": "Greater Europe",
+    "list": "open-rivers-greater-europe",
+    "parts": {
+      "RU": "as far east as the Urals",
+      "KZ": "west of the Ural river"
+    }
+  },
   "access": "direct",
   "window": "fixed",
   "amount": {
@@ -28,23 +45,43 @@
       "url": "https://openrivers.eu/grants/apply-for-a-grant/",
       "status": "closed",
       "opens": null,
+      "deadline": null,
+      "evidence": {
+        "status": {
+          "source_url": "https://openrivers.eu/grants/apply-for-a-grant/",
+          "quote": "We are currently not accepting applications. The next call for applications will be open from 1st February until 5th March 2027.",
+          "checked_at": "2026-11-24",
+          "method": "page"
+        }
+      }
+    },
+    {
+      "id": "2027-02",
+      "label": "February 2027 open call",
+      "url": "https://openrivers.eu/grants/apply-for-a-grant/",
+      "status": "upcoming",
+      "opens": "2027-02-01",
       "deadline": {
-        "date": "2026-11-13",
-        "time": "13:00",
-        "timezone": "CET",
-        "text": "13:00 CET on 13th November 2026"
+        "date": "2027-03-05",
+        "text": "5th March 2027"
       },
       "evidence": {
         "status": {
           "source_url": "https://openrivers.eu/grants/apply-for-a-grant/",
-          "quote": "Submit your project proposal by 13:00 CET on 13th November 2026.",
-          "checked_at": "2026-11-02",
+          "quote": "We are currently not accepting applications. The next call for applications will be open from 1st February until 5th March 2027.",
+          "checked_at": "2026-11-24",
+          "method": "page"
+        },
+        "opens": {
+          "source_url": "https://openrivers.eu/grants/apply-for-a-grant/",
+          "quote": "We are currently not accepting applications. The next call for applications will be open from 1st February until 5th March 2027.",
+          "checked_at": "2026-11-24",
           "method": "page"
         },
         "deadline": {
           "source_url": "https://openrivers.eu/grants/apply-for-a-grant/",
-          "quote": "Submit your project proposal by 13:00 CET on 13th November 2026.",
-          "checked_at": "2026-11-02",
+          "quote": "We are currently not accepting applications. The next call for applications will be open from 1st February until 5th March 2027.",
+          "checked_at": "2026-11-24",
           "method": "page"
         }
       }
@@ -63,6 +100,20 @@
       "checked_at": "2026-11-02",
       "method": "page"
     },
+    "places": [
+      {
+        "source_url": "https://openrivers.eu/wp-content/uploads/2026/10/Information-Guide-October-2026_v2.pdf",
+        "quote": "Projects must be implemented in Greater Europe, and the coordinating partners must be registered in Greater Europe.",
+        "checked_at": "2026-11-24",
+        "method": "page"
+      },
+      {
+        "source_url": "https://openrivers.eu/wp-content/uploads/2026/10/Information-Guide-October-2026_v2.pdf",
+        "quote": "Countries of Greater Europe: Overseas territories are not included.",
+        "checked_at": "2026-11-24",
+        "method": "page"
+      }
+    ],
     "access": {
       "source_url": "https://openrivers.eu/grants/apply-for-a-grant/",
       "quote": "Applications must be submitted through our online portal during the open call period.",
@@ -70,9 +121,9 @@
       "method": "page"
     },
     "window": {
-      "source_url": "https://openrivers.eu/grants/grant-types/",
-      "quote": "Open call: apply by 13:00 CET on 13th November 2026!",
-      "checked_at": "2026-11-02",
+      "source_url": "https://openrivers.eu/grants/apply-for-a-grant/",
+      "quote": "We are currently not accepting applications. The next call for applications will be open from 1st February until 5th March 2027.",
+      "checked_at": "2026-11-24",
       "method": "page"
     },
     "amount": {

@@ -1,8 +1,9 @@
 ---
 import type { Listing } from '../lib/data'
-import { AGING_DAYS, callGroups, listingFor, notRechecked, opensSortDate, programmes, sizeBucketsFor, whereCodes } from '../lib/data'
-import { amountText, effortShort, geographyText, longDate, shortDate } from '../lib/format'
+import { AGING_DAYS, callGroups, notRechecked, openPartners as openPartnersIn, opensSortDate, partnerGroups, sizeBucketsFor } from '../lib/data'
+import { amountText, effortShort, geographyText, longDate, placeNote, shortDate } from '../lib/format'
 import { approachLabels, recheckReasons } from '../lib/labels'
+import { placeFit, whereCodes } from '../lib/where-codes'
 import { amountCell, amountData, usdValue } from '../lib/table'
 import { Badge } from '@/components/ui/badge'
 import { TableCell, TableRow } from '@/components/ui/table'
@@ -13,9 +14,11 @@ import EffortBars from './EffortBars.astro'
 
 interface Props {
   listing: Listing
+  /** The page's Where, when it is a country's page. */
+  where?: string
 }
 
-const { listing } = Astro.props
+const { listing, where: at = '' } = Astro.props
 const { p, state, call, aging } = listing
 const deadline = call?.deadline ?? null
 const amountFull = amountText(p.amount)
@@ -23,16 +26,19 @@ const amountFull = amountText(p.amount)
 const cell = amountCell(p.amount, 'USD')
 const usd = usdValue(p.amount)
 const where = geographyText(p.geography)
-// An umbrella that funds through partners: how many of its partner programmes are open now.
+// An umbrella that funds through partners: how many of its partner programmes are open now in the page's place.
 const openPartners =
-  p.access === 'intermediary'
-    ? programmes.filter((c) => c.parent === p.id).filter((c) => ['open', 'rolling'].includes(listingFor(c).state)).length
-    : 0
+  p.access === 'intermediary' ? openPartnersIn(p, listing.where).length : 0
 const funder = p.administered_by ? `${p.funder.name}, run by ${p.administered_by.name}` : p.funder.name
 const reason = notRechecked(p.id)
 const stampTitle = reason
   ? `Last read on the funder’s page on ${longDate(p.checked_at)}. Our daily check can’t read it now: ${recheckReasons[reason]}.`
   : `Checked against the funder’s page on ${longDate(p.checked_at)}${aging ? `. Over ${AGING_DAYS} days ago, due a recheck.` : ''}`
+// Shown while the Where is a country the funder may not take, or takes only part of (src/lib/finder.ts): a group's
+// note is the same for every country it may mean, a part's is the country's own.
+const g = p.geography
+const maybe = g?.scope === 'regions' && g.areas?.length ? `Check the place: ${g.label}` : null
+const parts = g?.scope === 'countries' ? Object.keys(g.parts ?? {}) : []
 const stampText = `${reason ? 'Last confirmed' : 'Checked'} ${shortDate(p.checked_at)}`
 const searchText = [p.name, p.funder.name, p.administered_by?.name, p.summary, where, p.approaches.map((a) => approachLabels[a]).join(' ')]
   .filter(Boolean)
@@ -57,7 +63,7 @@ const searchText = [p.name, p.funder.name, p.administered_by?.name, p.summary, w
   data-approach={p.approaches.join(' ')}
   data-applicant={p.applicant_types?.join(' ') ?? ''}
   data-access={p.access}
-  data-where={whereCodes(p)}
+  data-where={whereCodes(p).join(' ')}
   data-size={sizeBucketsFor(p).join(' ')}
   data-text={searchText}
 >
@@ -66,6 +72,8 @@ const searchText = [p.name, p.funder.name, p.administered_by?.name, p.summary, w
     <span class="sub" title={funder}><OrgMark org={p.funder} size={16} class="sub__mark" />{funder}</span>
     {/* Most programmes take direct applications, so only the other routes get a line (src/styles/finder.css). */}
     <span class="sub__route"><Route access={p.access} /></span>
+    {maybe && <span class="place" data-place="check" hidden={placeFit(p, at) !== 'check'}>{maybe}</span>}
+    {parts.map((c) => <span class="place" data-place={c} hidden={c !== at}>{placeNote(g, c)}</span>)}
     {p.kind === 'partnership' && <span class="kind">Paid partnership, not a grant</span>}
   </TableCell>
 
@@ -85,6 +93,14 @@ const searchText = [p.name, p.funder.name, p.administered_by?.name, p.summary, w
           data-opens-date={g.listing.call?.opens ?? undefined}
         >
           <RowWhen listing={g.listing} openPartners={openPartners} />
+        </template>
+      ))
+    }
+    {/* An umbrella's partners differ by country too. */}
+    {
+      partnerGroups(p).map((g) => (
+        <template data-where-dl={g.codes.join(' ')} data-state={state}>
+          <RowWhen listing={listing} openPartners={g.open} />
         </template>
       ))
     }

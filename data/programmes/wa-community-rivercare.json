@@ -9,35 +9,22 @@
   "parent": null,
   "url": "https://dbca.wa.gov.au/management/swan-canning-riverpark/community-rivercare-program-funding",
   "summary": "Recurring rounds of small grants for community volunteer groups doing on-ground waterway work in the Swan Canning catchment around Perth: foreshore revegetation, weed control, bank stabilisation and habitat improvement.",
-  "approaches": [
-    "freshwater",
-    "community_conservation",
-    "natural_regeneration"
-  ],
-  "applicant_types": [
-    "community_group"
-  ],
+  "approaches": ["freshwater", "community_conservation", "natural_regeneration"],
+  "applicant_types": ["community_group"],
   "geography": {
     "scope": "countries",
-    "countries": [
-      "AU"
-    ],
+    "countries": ["AU"],
     "label": "Swan Canning Catchment, Western Australia"
   },
   "access": "direct",
   "window": "fixed",
-  "amount": {
-    "currency": "AUD",
-    "min": 3000,
-    "max": 10000
-  },
-  "pool": {
-    "currency": "AUD",
-    "value": 100000,
-    "period": "round",
-    "label": "Round 10"
-  },
+  "amount": { "currency": "AUD", "min": 3000, "max": 10000 },
+  "pool": { "currency": "AUD", "value": 100000, "period": "round", "label": "Round 10" },
   "co_finance_required": null,
+  "fiscal_sponsor": {
+    "stance": "accepted",
+    "note": "For community groups that aren’t incorporated; the sponsor administers the grant"
+  },
   "reporting": null,
   "effort": {
     "steps": [
@@ -45,21 +32,11 @@
       "Panel assessment",
       "Submit additional supporting information, if needed"
     ],
-    "due": [
-      "2026-12-11",
-      null,
-      "2027-01-22"
-    ]
+    "due": ["2026-12-11", null, "2027-01-22"]
   },
   "eligibility": [
-    {
-      "rule": "Have a volunteer base",
-      "kind": "capacity"
-    },
-    {
-      "rule": "Be incorporated, or be sponsored to administer grant funding",
-      "kind": "legal"
-    },
+    { "rule": "Have a volunteer base", "kind": "capacity" },
+    { "rule": "Be incorporated, or be sponsored to administer grant funding", "kind": "legal" },
     {
       "rule": "Improve waterway habitat or water quality, revegetate foreshores, control weeds for regeneration, or stabilise banks",
       "kind": "project"
@@ -72,18 +49,13 @@
       "rule": "Work in a waterway or riparian zone in an eligible catchment feeding the Swan and Canning rivers",
       "kind": "project"
     },
-    {
-      "rule": "Propose a one-year project for 2027–28",
-      "kind": "project"
-    },
+    { "rule": "Propose a one-year project for 2027–28", "kind": "project" },
     {
       "rule": "For revegetation, use local plant species from a NIASA-accredited supplier",
       "kind": "project"
     }
   ],
-  "after_award": {
-    "reports": "yearly"
-  },
+  "after_award": { "reports": "yearly" },
   "documents": [
     "Landowner or land manager letter of support (may follow, but needed before approval)",
     "Project site map",
@@ -163,6 +135,12 @@
       "source_url": "https://dbca.wa.gov.au/management/swan-canning-riverpark/community-rivercare-program-funding",
       "quote": "Grants of between $3,000 and $10,000 (ex GST) in total for the duration of the project will be provided to community volunteer groups",
       "checked_at": "2026-11-02",
+      "method": "page"
+    },
+    "fiscal_sponsor": {
+      "source_url": "https://www.dbca.wa.gov.au/media/7362/download",
+      "quote": "Community groups must be incorporated or sponsored (under an auspicing arrangement) by another group or organisation that will administer their grant funding (see section 13 for more information about sponsorship).",
+      "checked_at": "2026-11-20",
       "method": "page"
     },
     "effort": [
