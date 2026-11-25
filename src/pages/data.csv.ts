@@ -1,6 +1,7 @@
 import type { APIRoute } from 'astro'
 import { programmes } from '../lib/data'
 import { absolute } from '../lib/site'
+import { csvCell } from '../lib/view-csv'
 import { wholeRegions, whereCodes } from '../lib/where-codes'
 
 const columns = [
@@ -11,10 +12,7 @@ const columns = [
   'applicant_types', 'co_finance_required', 'call_url', 'programme_url', 'checked_at', 'listing_url',
 ] as const
 
-const cell = (v: unknown) => {
-  const s = v === null || v === undefined ? '' : String(v)
-  return /[",\n]/.test(s) ? `"${s.replaceAll('"', '""')}"` : s
-}
+const cell = (v: unknown) => csvCell(v === null || v === undefined ? '' : String(v))
 
 export const GET: APIRoute = () => {
   const rows = programmes.flatMap((p) => {

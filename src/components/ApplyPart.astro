@@ -10,6 +10,7 @@ import { buildDate, notRechecked, notRecheckedPage } from '../lib/data'
 import { daysLeft as daysLeftFrom } from '../lib/status'
 import { longDate, pageLabel, sentence } from '../lib/format'
 import { accessHelp, stateLabels } from '../lib/labels'
+import { withRegions } from '../lib/geo'
 
 interface Props {
   listing: Listing
@@ -36,7 +37,7 @@ const narrowedPrimary =
 {/* One part of the apply box: what to do, for every country or for one call group. */}
 <div
   class:list={[group && '[&+&]:mt-5 [&+&]:border-t [&+&]:border-rule [&+&]:pt-4 group-data-narrowed/apply:mt-0! group-data-narrowed/apply:border-0! group-data-narrowed/apply:pt-0!']}
-  data-group={group?.codes ?? '*'}
+  data-group={group ? withRegions(group.codes) : '*'}
   data-call-label={call?.label}
 >
   <div class="flex flex-wrap items-center gap-x-[0.85rem] gap-y-2">

@@ -1,10 +1,10 @@
 // One subscriber's digest: the events since their last email that still hold in today's data and match their
-// saved filters. A call that opened and closed again between two emails is left out; so is a programme removed
+// saved filters; a call for other countries than theirs is never theirs. A call that opened and closed again between two emails is left out; so is a programme removed
 // from the site. Nothing left means no email.
-import { deadlinePassed } from '../../scripts/refresh/deadline'
 import type { Call, Programme } from '../../src/data/schema'
 import type { DigestEvent } from './events'
-import { placeFit } from '../../src/lib/where-codes'
+import { effectiveCallStatus } from '../../src/lib/status'
+import { callTakes, placeFit } from '../../src/lib/where-codes'
 import { matches, type Prefs } from './match'
 
 export type Section = 'open' | 'upcoming' | 'new'
@@ -15,8 +15,8 @@ export type Digest = { items: DigestItem[]; total: number; counts: Record<Sectio
 /** More than this and the email says how many more there are, with a link to the site. */
 export const MAX_ITEMS = 25
 
-// The deadline in the funder's own time zone, as the refresh reads it: the email goes out at 08:00 UTC.
-const isOpen = (c: Call, now: Date) => c.status === 'open' && !(c.deadline && deadlinePassed(c.deadline, now))
+/** The call with the status its dates give at the send (08:00 UTC), in the funder's own time zone, as on the site. */
+const dated = (c: Call, now: Date): Call => ({ ...c, status: effectiveCallStatus(c, now) })
 
 export function buildDigest(
   events: DigestEvent[],
@@ -34,15 +34,19 @@ export function buildDigest(
     const p = programmes.get(e.programme)
     if (!p || !matches(p, prefs)) continue
     if (isNew.has(p.id)) {
-      // One line per new programme, with the call that's live now, if any.
+      // One line per new programme, with the call live now for the subscriber's place, if any.
       if (byKey.has(p.id)) continue
-      const call = p.calls.find((c) => isOpen(c, at)) ?? p.calls.find((c) => c.status === 'upcoming') ?? null
+      const calls = p.calls.filter((c) => callTakes(c, prefs.where)).map((c) => dated(c, at))
+      const first = (status: Call['status'], date: (c: Call) => string | null | undefined) =>
+        calls.filter((c) => c.status === status).sort((a, b) => (date(a) ?? '9999').localeCompare(date(b) ?? '9999'))[0]
+      const call = first('open', (c) => c.deadline?.date) ?? first('upcoming', (c) => c.opens) ?? null
       byKey.set(p.id, { section: 'new', programme: p, call })
       continue
     }
-    const call = p.calls.find((c) => c.id === e.call)
-    if (!call) continue
-    const section: Section | null = isOpen(call, at) ? 'open' : call.status === 'upcoming' ? 'upcoming' : null
+    const stored = p.calls.find((c) => c.id === e.call)
+    if (!stored || !callTakes(stored, prefs.where)) continue
+    const call = dated(stored, at)
+    const section: Section | null = call.status === 'open' ? 'open' : call.status === 'upcoming' ? 'upcoming' : null
     if (!section) continue
     byKey.set(`${p.id}/${call.id}`, { section, programme: p, call })
   }
@@ -58,7 +62,7 @@ export function buildDigest(
         ? soon(i)
         : !i.call
           ? '2'
-          : isOpen(i.call, at)
+          : i.call.status === 'open'
             ? `0${open(i)}`
             : `1${soon(i)}`
   // One line per programme: a funder with several rounds open (one per meeting date) shows its next one.
