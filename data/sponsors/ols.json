@@ -102,12 +102,12 @@
   },
   "grants": {
     "value": {
-      "role": "through",
-      "note": "It handles the infrastructure that helps groups receive grants."
+      "role": "receives",
+      "note": "OLS is awarded the grant and subcontracts the members."
     },
     "evidence": {
-      "source_url": "https://we-are-ols.org/open-incubator/fiscal-hosting/",
-      "quote": "for whom OLS handles infrastructure to help them receive grants or undertake contracts in order to do their work",
+      "source_url": "https://we-are-ols.org/fiscal-hosting/fsc-contract/fsc-contract.md",
+      "quote": "OLS has been awarded grant funding by the Grantor",
       "checked_at": "2026-11-24",
       "method": "page"
     }
@@ -127,6 +127,33 @@
       "evidence": {
         "source_url": "https://we-are-ols.org/open-incubator/fiscal-hosting/",
         "quote": "A dispute resolution process for disputes between community members. A succession policy for what happens if key project members leave",
+        "checked_at": "2026-11-24",
+        "method": "page"
+      }
+    },
+    {
+      "value": "Members are jointly and severally bound by the grant’s terms",
+      "evidence": {
+        "source_url": "https://we-are-ols.org/fiscal-hosting/fsc-contract/fsc-contract.md",
+        "quote": "be jointly and severally bound to OLS in respect of the Services as OLS shall be bound to the Grantor under the Main Contract",
+        "checked_at": "2026-11-24",
+        "method": "page"
+      }
+    },
+    {
+      "value": "Tell it at least one month before a grant deadline",
+      "evidence": {
+        "source_url": "https://we-are-ols.org/open-incubator/fiscal-hosting-policies/",
+        "quote": "Please notify OLS at least one month before any grant deadline to share planned budgets and activities",
+        "checked_at": "2026-11-24",
+        "method": "page"
+      }
+    },
+    {
+      "value": "About a year, for an Incubation Fellow",
+      "evidence": {
+        "source_url": "https://we-are-ols.org/open-incubator/fiscal-hosting/",
+        "quote": "We expect your roadmap to cover about a year: we don't anticipate taking on Incubation Fellows for longer than this.",
         "checked_at": "2026-11-24",
         "method": "page"
       }
@@ -150,6 +177,15 @@
         "checked_at": "2026-11-24",
         "method": "page"
       }
+    },
+    {
+      "value": "Agreement in principle, while the money isn’t certain; then the hosting contract",
+      "evidence": {
+        "source_url": "https://we-are-ols.org/open-incubator/fiscal-hosting-policies/",
+        "quote": "When we onboard an FSC, we go through two steps: Agreement in principle",
+        "checked_at": "2026-11-24",
+        "method": "page"
+      }
     }
   ],
   "form_asks": [
@@ -163,14 +199,26 @@
       }
     }
   ],
-  "checked_at": "2026-11-24",
   "own_entity": {
-    "value": "Email first about the project",
+    "value": "Email first; it may sponsor a project, or work with you directly",
     "evidence": {
       "source_url": "https://we-are-ols.org/open-incubator/fiscal-hosting/",
-      "quote": "We already have an organisation, but we'd like to work with OLS on a project Great! Drop us an email at team [at] we-are-ols.org with more information. We can fiscally sponsor individual projects",
+      "quote": "We can fiscally sponsor individual projects, but we can also collaborate directly with other organisations when it makes sense to do so.",
       "checked_at": "2026-11-24",
       "method": "page"
     }
-  }
+  },
+  "staff": {
+    "value": {
+      "answer": "yes",
+      "note": "as independent contractors, not employees"
+    },
+    "evidence": {
+      "source_url": "https://we-are-ols.org/fiscal-hosting/fsc-contract/fsc-contract.md",
+      "quote": "The relationship of each Community Member to OLS will be that of independent contractor and nothing in this Agreement shall render them an employee, worker, agent or partner of OLS",
+      "checked_at": "2026-11-24",
+      "method": "page"
+    }
+  },
+  "checked_at": "2026-11-24"
 }

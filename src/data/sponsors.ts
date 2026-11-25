@@ -33,12 +33,12 @@ const numbers = (s: string) => [...s.matchAll(/\d[\d,]*(?:\.\d+)?/g)].map((m) =>
  * a sponsor don't say who signs or is paid.
  */
 const says = {
-  companies: /compan(y|ies)|corporat|\bLLCs?\b|incorporated|legal entit/i,
-  foreign: /\b(based|registered|incorporated)\b|from anywhere|\b(international|foreign|overseas|[A-Z][a-z]+n) (charit|non-?profit|organi[sz]ation|group|NGO)/,
+  companies: /compan(y|ies)|corporat|(?<!not-)\bfor-profit|\bLLCs?\b|incorporated|legal entit/i,
+  foreign: /\b(based|registered|incorporated)\b|\bBe located within|U\.?S\.? base of operations|from anywhere|\b(international|foreign|overseas|[A-Z][a-z]+n) (charit|non-?profit|organi[sz]ation|group|NGO)/,
   grants: {
     applicant: /applicant/i,
     project_applies: /your project applies|submits the (grant )?application/i,
-    receives: /receiv|grants\/donations go/i,
+    receives: /receiv|awarded grant funding by|grants\/donations go/i,
     signs: /\bsign|executed by/i,
     through: /grants?\b|\bincome\b/i,
     donations: /donation/i,

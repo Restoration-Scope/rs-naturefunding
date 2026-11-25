@@ -146,10 +146,19 @@
   },
   "conditions": [
     {
-      "value": "Non-US citizens can apply; with any filming in the US, a director needs a Social Security number or an LLC",
+      "value": "Non-US citizens can apply",
       "evidence": {
         "source_url": "https://www.redfordcenter.org/fiscal-sponsorship-faqs/",
-        "quote": "you do not need to be a U.S. citizen to apply, but if you are filming or producing any part of your film in the U.S. at least one of your directors will need to have a Social Security Number or an LLC",
+        "quote": "you do not need to be a U.S. citizen to apply",
+        "checked_at": "2026-11-24",
+        "method": "page"
+      }
+    },
+    {
+      "value": "With any filming or production in the US, a director needs a Social Security number or an LLC with an EIN",
+      "evidence": {
+        "source_url": "https://www.redfordcenter.org/fiscal-sponsorship-faqs/",
+        "quote": "if you are filming or producing any part of your film in the U.S. at least one of your directors will need to have a Social Security Number or an LLC with an Employer Identification Number for IRS tax reporting requirements.",
         "checked_at": "2026-11-24",
         "method": "page"
       }
@@ -202,5 +211,29 @@
       }
     }
   ],
+  "foreign": {
+    "value": {
+      "answer": "yes",
+      "note": "except entities in countries under comprehensive US sanctions"
+    },
+    "evidence": {
+      "source_url": "https://www.redfordcenter.org/fiscal-sponsorship-eligibility/",
+      "quote": "We are not able to fiscally sponsor entities based in countries which are under comprehensive US sanctions",
+      "checked_at": "2026-11-24",
+      "method": "page"
+    }
+  },
+  "companies": {
+    "value": {
+      "answer": "yes",
+      "note": "the applicant is a filmmaker, who can be paid through their own LLC"
+    },
+    "evidence": {
+      "source_url": "https://www.redfordcenter.org/fiscal-sponsorship-faqs/",
+      "quote": "We recommend you receive the funds from us through an LLC with its own independent bank account.",
+      "checked_at": "2026-11-24",
+      "method": "page"
+    }
+  },
   "checked_at": "2026-11-24"
 }
