@@ -403,14 +403,15 @@ flowchart TB
 
     <section id="land">
       <h2>5b. Keeping current: landing and publishing</h2>
-      <p>The rest of <code>refresh.yml</code>, its Monday 06:43 UTC weekly mode, and <code>deploy.yml</code>. Tier A commits go straight to main; every changed fact waits on a pull request. No refresh pull request has been merged so far: an agent session or Bernat checks them against the page and lands the good changes in batches on main, and the rest are closed as superseded. An open decision (20 Nov 2026) would commit clean drafts directly. <code>checkLink</code> is in <code>weekly.ts</code>; the commit step is in <code>refresh.yml</code>; <code>deploy.yml</code> runs hourly at :11. Colours and arrows as in 1.</p>
+      <p>The rest of <code>refresh.yml</code>, its Monday 06:43 UTC weekly mode, and <code>deploy.yml</code>. Tier A commits go straight to main; every changed fact waits on a pull request. No refresh pull request has been merged so far: an agent session or Bernat checks them against the page and lands the good changes in batches on main, and the rest are closed as superseded. An open decision (20 Nov 2026) would commit clean drafts directly. <code>checkLink</code> is in <code>weekly.ts</code>; fiscal sponsors (<code>sponsors.ts</code>) are re-read there too, and a blocked page only shows in the summary; the commit step is in <code>refresh.yml</code>; <code>deploy.yml</code> runs hourly at :11. Colours and arrows as in 1.</p>
       <script type="text/plain" class="mermaid">
 flowchart TB
   STATE[("data/ from run.ts<br/>and discovery")]
   SR["fa:fa-coins sync-rates.ts, daily<br/>open.er-api.com rates"]
   RATES[("data/rates.json")]
-  WK["fa:fa-link weekly.ts, Mondays<br/>checkLink on every link"]
+  WK["fa:fa-link weekly.ts, Mondays<br/>checkLink on every link;<br/>sponsors.ts re-reads sponsor pages"]
   LINKS[("data/checks/links.json")]
+  SPO[("data/sponsors/{id}.json<br/>dates only")]
   SUM[("GitHub issue<br/>label refresh-summary")]
   COMMIT["fa:fa-git-commit Commit step<br/>git add data/, rebase,<br/>valid_or_upstream, push"]
   DRAFT[(".cache/refresh-drafts")]
@@ -423,8 +424,10 @@ flowchart TB
   READS[("build reads programmes,<br/>rates, checks/programmes.json,<br/>checks/run.json")]
   SR -->|writes| RATES
   WK -->|writes| LINKS
+  WK -->|every quote still there| SPO
+  WK -->|quote gone or moved site| DRAFT
   WK --> SUM
-  STATE & RATES & LINKS -.-> COMMIT
+  STATE & RATES & LINKS & SPO -.-> COMMIT
   COMMIT -->|"pushed to main"| DISP --> DEP
   COMMIT --> OP
   DRAFT -.-> OP

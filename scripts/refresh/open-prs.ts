@@ -3,12 +3,13 @@
  * the same proposal (same page version and facts, check dates aside; see proposalKey) is kept;
  * a different one for the same page is closed as superseded. A draft run.ts already committed to
  * main (Draft.committed) opens nothing and closes the open PRs for its page.
- * A draft with nothing to change becomes an issue instead. Runs in Actions after the
- * Tier A commit is pushed.
+ * A draft with nothing to change, or a changed fiscal sponsor page (sponsors.ts), becomes an issue instead.
+ * Runs in Actions after the Tier A commit is pushed.
  *   bun scripts/refresh/open-prs.ts [--drafts dir]
  */
 import { appendFileSync, existsSync, mkdirSync, readdirSync, readFileSync, rmSync, writeFileSync } from 'node:fs'
 import { dirname, join, resolve } from 'node:path'
+import type { IssueDraft } from './sponsors'
 import type { Draft } from './tier-b'
 
 const args = process.argv.slice(2)
@@ -35,7 +36,7 @@ function clearInterruptedGitOperation(): void {
 const LABELS = { refresh: '0e8a16', 'reviewer:approve': 'c2e0c6', 'reviewer:reject': 'e99695', 'reviewer:unclear': 'fbca04' }
 for (const [name, color] of Object.entries(LABELS)) run(['gh', 'label', 'create', name, '--color', color, '--force'], { allowFail: true })
 
-const drafts: Draft[] = existsSync(draftsDir)
+const drafts: (Draft | IssueDraft)[] = existsSync(draftsDir)
   ? readdirSync(draftsDir).filter((f) => f.endsWith('.json')).map((f) => JSON.parse(readFileSync(join(draftsDir, f), 'utf8')))
   : []
 const openPrs = json<{ number: number; url: string; headRefName: string; body: string }[]>(
@@ -56,7 +57,7 @@ function issue(title: string): void {
 for (const d of drafts) {
   writeFileSync(bodyFile, d.body)
 
-  if (Object.keys(d.files).length === 0) {
+  if (!('source' in d) || Object.keys(d.files).length === 0) {
     issue(d.title)
     continue
   }
