@@ -22,7 +22,9 @@
   },
   "co_finance_required": null,
   "reporting": null,
-  "effort": { "steps": ["Online application", "Monthly assessment"] },
+  "effort": {
+    "steps": ["Submit online or request a paper application form", "Monthly assessment"]
+  },
   "calls": [
     {
       "id": "rolling",
@@ -84,6 +86,12 @@
         "quote": "Applications are assessed monthly",
         "checked_at": "2026-11-25",
         "method": "page"
+      },
+      {
+        "source_url": "https://da28f051-637e-4b97-a84d-ab7614d10758.usrfiles.com/ugd/da28f0_5b2ba73ee98946709597eb5524b6c9d3.pdf",
+        "quote": "If a paper application form is required, please request one here:",
+        "checked_at": "2026-11-26",
+        "method": "page"
       }
     ],
     "eligibility": [
@@ -122,7 +130,10 @@
       "rule": "All earlier Eco-Connect grants acquitted before applying again",
       "kind": "track_record"
     },
-    { "rule": "Budget includes none of the costs the fund excludes", "kind": "project" }
+    {
+      "rule": "Request grant funding only for costs and activities permitted under the Eco-Connect guidelines.",
+      "kind": "project"
+    }
   ],
   "after_award": { "reports": "final" }
 }

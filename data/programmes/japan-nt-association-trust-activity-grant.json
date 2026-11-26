@@ -38,7 +38,11 @@
       "kind": "project"
     },
     { "rule": "Has the landowner's understanding of the purchase or lease", "kind": "project" },
-    { "rule": "Targets land without third-party rights such as mortgages", "kind": "project" }
+    { "rule": "Targets land without third-party rights such as mortgages", "kind": "project" },
+    {
+      "rule": "Start-up or maintenance funding requires a grant for land purchase or lease.",
+      "kind": "project"
+    }
   ],
   "after_award": { "reports": "other", "training": true },
   "documents": [
@@ -162,6 +166,12 @@
         "quote": "第三者の権利(抵当権など)が設定されていない土地",
         "checked_at": "2026-11-25",
         "method": "page"
+      },
+      {
+        "source_url": "https://www.ntrust.or.jp/subsidy/",
+        "quote": "③④の助成を受ける場合は、①または②の助成を受けることが条件です。",
+        "checked_at": "2026-11-26",
+        "method": "page"
       }
     ],
     "after_award": [
@@ -216,6 +226,12 @@
         "quote": "自然保護助成基金と日本ナショナル・トラスト協会とが、以下に示す選考基準に基づき、書類審査（１次審査）と現地審査（２次審査）を行います。",
         "checked_at": "2026-11-25",
         "method": "page"
+      },
+      {
+        "source_url": "https://www.ntrust.or.jp/subsidy/",
+        "quote": "書類審査（１次審査）と現地審査（２次審査）を行います。",
+        "checked_at": "2026-11-26",
+        "method": "page"
       }
     ]
   },
@@ -224,7 +240,8 @@
     "steps": [
       "Eligibility pre-check with the association",
       "Application, rolling until funds run out",
-      "Document review, then site review"
+      "Document review",
+      "Site review"
     ]
   }
 }
