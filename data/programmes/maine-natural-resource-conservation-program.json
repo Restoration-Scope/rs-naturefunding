@@ -26,9 +26,13 @@
       "kind": "project"
     },
     { "rule": "Does not apply for the design phase of a project only", "kind": "project" },
-    { "rule": "Does not seek funding for a feasibility study", "kind": "project" }
+    { "rule": "Does not seek funding for a feasibility study", "kind": "project" },
+    {
+      "rule": "A land trust’s acquisition project includes restoration or enhancement.",
+      "kind": "project"
+    },
+    { "rule": "The request excludes development of recreational amenities.", "kind": "project" }
   ],
-  "documents": ["Project location map"],
   "calls": [
     {
       "id": "2026",
@@ -119,13 +123,17 @@
         "quote": "MNRCP cannot provide funding for feasibility studies.",
         "checked_at": "2026-11-25",
         "method": "page"
-      }
-    ],
-    "documents": [
+      },
       {
-        "source_url": "https://www.mnrcp.org/sites/default/files/MNRCP%202026%20RFLOI_final.pdf",
-        "quote": "as well as a map of the project location",
-        "checked_at": "2026-11-25",
+        "source_url": "https://www.mnrcp.org/about-mnrcp",
+        "quote": "Land trusts can also apply for funding for fee or conservation easement acquisitions that will protect threatened wetland habitat as long as those projects also include enhancement or restoration opportunities.",
+        "checked_at": "2026-11-26",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.mnrcp.org/sites/default/files/MNRCP_PropertyUseGuidelines_Jan2026.pdf",
+        "quote": "MNRCP funding cannot be used to develop recreational amenities.",
+        "checked_at": "2026-11-26",
         "method": "page"
       }
     ],
@@ -141,18 +149,28 @@
         "quote": "Applicants whose proposed projects meet the program's requirements will be invited to submit full proposals.",
         "checked_at": "2026-11-25",
         "method": "page"
-      }
-    ],
-    "after_award": [
+      },
       {
-        "source_url": "https://www.mnrcp.org/sites/default/files/MNRCP%202026%20RFLOI_final.pdf",
-        "quote": "For projects that require a Monitoring Term, the Cooperating Entity shall report to TNC, the DEP, and USACE on the status of the Project, and on the condition of the Project Area, in a monitoring report following guidelines provided by TNC. The Cooperating Entity shall provide the report annually",
-        "checked_at": "2026-11-25",
+        "source_url": "https://www.mnrcp.org/about-mnrcp",
+        "quote": "Proposals are solicited each year and evaluated by a Review Committee, convened by the Maine DEP, and made up of public and nonprofit entities.",
+        "checked_at": "2026-11-26",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.mnrcp.org/about-mnrcp",
+        "quote": "Final award decisions are made in November or December of each year by the Interagency Review Team (Approval Committee) comprised of state and federal agencies.",
+        "checked_at": "2026-11-26",
         "method": "page"
       }
     ]
   },
   "checked_at": "2026-11-25",
-  "effort": { "steps": ["Letter of Intent", "Full proposal, if invited"] },
-  "after_award": { "reports": "yearly" }
+  "effort": {
+    "steps": [
+      "Letter of Intent",
+      "Full proposal, if invited",
+      "Review Committee evaluates full proposals",
+      "Interagency Review Team funding decision"
+    ]
+  }
 }
