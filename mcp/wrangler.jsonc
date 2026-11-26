@@ -1,0 +1,15 @@
+{
+  // The MCP server only, on its own hostname: the site (../wrangler.jsonc) stays static assets with no Worker script.
+  // Deploys the bundle scripts/build.ts makes, so what runs is what was tested.
+  "$schema": "../node_modules/wrangler/config-schema.json",
+  "name": "naturefunding-mcp",
+  "account_id": "c72792497a89bc5db0c41066540d52ea",
+  "compatibility_date": "2026-11-01",
+  "main": "dist/worker.js",
+  "no_bundle": true,
+  "workers_dev": false,
+  "preview_urls": false,
+  // No request logs: the privacy page says searches aren't stored.
+  "observability": { "enabled": false },
+  "routes": [{ "pattern": "mcp.naturefunding.org", "custom_domain": true }]
+}

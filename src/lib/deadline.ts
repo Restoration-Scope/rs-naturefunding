@@ -44,8 +44,18 @@ const offsetZone = (sign: string, h: string, m = '0'): Zone => {
   return { kind: 'offset', minutes: sign === '+' ? minutes : -minutes }
 }
 
+// The MCP Worker judges every listing on each search (mcp/), so zones, formatters and instants are worked out once.
+const zones = new Map<string, Zone | null>()
+const formats = new Map<string, Intl.DateTimeFormat>()
+const instants = new Map<string, number>()
+
 /** A timezone as a funder wrote it: an IANA name, "UTC+1", "+05:30", an abbreviation or a common name, or null. */
 export function parseZone(text: string): Zone | null {
+  if (!zones.has(text)) zones.set(text, readZone(text))
+  return zones.get(text)!
+}
+
+function readZone(text: string): Zone | null {
   const t = text.trim()
   const bare = /^(?:UTC|GMT)?\s*([+-−])\s*(\d{1,2})(?::?(\d{2}))?$/i.exec(t)
   if (bare) return offsetZone(bare[1]!, bare[2]!, bare[3])
@@ -65,12 +75,15 @@ export function parseZone(text: string): Zone | null {
 /** Minutes the zone is ahead of UTC at a given instant. */
 function offsetAt(zone: Zone, at: number): number {
   if (zone.kind === 'offset') return zone.minutes
-  const parts = Object.fromEntries(
-    new Intl.DateTimeFormat('en-US', {
+  let format = formats.get(zone.name)
+  if (!format) {
+    format = new Intl.DateTimeFormat('en-US', {
       timeZone: zone.name, hourCycle: 'h23', year: 'numeric', month: '2-digit', day: '2-digit',
       hour: '2-digit', minute: '2-digit', second: '2-digit',
-    }).formatToParts(new Date(at)).map((p) => [p.type, p.value]),
-  )
+    })
+    formats.set(zone.name, format)
+  }
+  const parts = Object.fromEntries(format.formatToParts(new Date(at)).map((p) => [p.type, p.value]))
   const asUtc = Date.UTC(+parts.year!, +parts.month! - 1, +parts.day!, +parts.hour!, +parts.minute!, +parts.second!)
   return Math.round((asUtc - Math.floor(at / 1000) * 1000) / 60_000)
 }
@@ -84,15 +97,22 @@ function wallToInstant(wall: number, zone: Zone): number {
 
 /** The last millisecond at which the call still takes applications. */
 export function deadlineInstant(d: Pick<Deadline, 'date' | 'time' | 'timezone'>): Date {
+  const key = `${d.date} ${d.time ?? ''} ${d.timezone ?? ''}`
+  let at = instants.get(key)
+  if (at === undefined) instants.set(key, (at = instantOf(d)))
+  return new Date(at)
+}
+
+function instantOf(d: Pick<Deadline, 'date' | 'time' | 'timezone'>): number {
   const [y, m, day] = d.date.split('-').map(Number) as [number, number, number]
   const endOfDay = Date.UTC(y, m - 1, day, 23, 59, 59, 999)
-  if (!d.timezone) return new Date(endOfDay)
+  if (!d.timezone) return endOfDay
 
   const zone = parseZone(d.timezone)
-  if (!zone) return new Date(endOfDay - LATEST_OFFSET * 60_000)
+  if (!zone) return endOfDay - LATEST_OFFSET * 60_000
 
   const wall = d.time ? Date.UTC(y, m - 1, day, Number(d.time.slice(0, 2)), Number(d.time.slice(3, 5))) : endOfDay
-  return new Date(wallToInstant(wall, zone))
+  return wallToInstant(wall, zone)
 }
 
 export const deadlinePassed = (d: Pick<Deadline, 'date' | 'time' | 'timezone'>, now: Date) =>

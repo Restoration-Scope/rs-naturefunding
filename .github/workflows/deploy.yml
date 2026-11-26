@@ -4,9 +4,10 @@ name: Deploy
 # The project's only CI: agents run the checks before they commit (AGENTS.md); this guards
 # the data (refresh commits land on main unreviewed) and the build, then publishes.
 # Then redeploys the weekly email Worker (digest/), whose bundle inlines the programmes and the git history of
-# data/programmes, so each digest carries the calls that changed since the last one.
-# Needs CLOUDFLARE_API_TOKEN: Workers Scripts edit on the account in wrangler.jsonc (it also sets both custom
-# domains, naturefunding.org and email.naturefunding.org).
+# data/programmes, so each digest carries the calls that changed since the last one, and the MCP server (mcp/),
+# whose bundle inlines the programmes for search.
+# Needs CLOUDFLARE_API_TOKEN: Workers Scripts edit on the account in wrangler.jsonc (it also sets the custom
+# domains naturefunding.org, email.naturefunding.org and mcp.naturefunding.org).
 on:
   push:
     branches: [main]
@@ -58,3 +59,8 @@ jobs:
         run: |
           bun digest/scripts/build.ts
           bunx wrangler deploy --config digest/wrangler.jsonc
+      - name: Deploy the MCP server (mcp.naturefunding.org)
+        if: env.CLOUDFLARE_API_TOKEN != ''
+        run: |
+          bun mcp/scripts/build.ts
+          bunx wrangler deploy --config mcp/wrangler.jsonc
