@@ -23,17 +23,18 @@
     "steps": [
       "Phone staff to discuss the application",
       "Online inquiry form",
-      "Full proposal, if invited"
+      "Full proposal, if invited",
+      "Staff recommendation and board funding decision"
     ]
   },
   "eligibility": [
     { "rule": "A 501(c)(3) and 509(a) public charity, or a public school", "kind": "legal" },
-    { "rule": "Not a business", "kind": "legal" },
-    { "rule": "Serve the people of Hawaii", "kind": "project" },
-    { "rule": "Has no active grant from the Foundation", "kind": "other" }
+    { "rule": "Has no active grant from the Foundation", "kind": "other" },
+    { "rule": "Project concerns waters surrounding the main Hawaiian Islands.", "kind": "project" },
+    { "rule": "Applicant is based in Hawaii.", "kind": "legal" }
   ],
   "after_award": { "reports": "final" },
-  "documents": ["501(c)(3) Tax ID number"],
+  "documents": ["Organization’s 501(c)(3) tax ID, for new applicants"],
   "calls": [
     {
       "id": "rolling-inquiry",
@@ -101,6 +102,12 @@
         "quote": "If you are invited to submit a full proposal, the 2026 deadlines are:",
         "checked_at": "2026-11-25",
         "method": "page"
+      },
+      {
+        "source_url": "https://castlefoundation.org/grantseekers/faqs/",
+        "quote": "If a full proposal is invited, staff will review it and make a recommendation to the Board of Directors. The Directors make all final funding decisions.",
+        "checked_at": "2026-11-26",
+        "method": "page"
       }
     ],
     "eligibility": [
@@ -112,20 +119,20 @@
       },
       {
         "source_url": "https://castlefoundation.org/grantseekers/faqs/",
-        "quote": "the Harold K.L. Castle Foundation does not make grants to individuals or businesses",
-        "checked_at": "2026-11-25",
-        "method": "page"
-      },
-      {
-        "source_url": "https://castlefoundation.org/grantseekers/faqs/",
-        "quote": "The Harold K.L. Castle Foundation only funds organizations that serve the people of Hawaii.",
-        "checked_at": "2026-11-25",
-        "method": "page"
-      },
-      {
-        "source_url": "https://castlefoundation.org/grantseekers/faqs/",
         "quote": "My organization already has an active grant. Can we apply for a new grant before the previous grant is complete? No, each organization is limited to one active grant at a time.",
         "checked_at": "2026-11-25",
+        "method": "page"
+      },
+      {
+        "source_url": "https://castlefoundation.org/grantseekers/faqs/",
+        "quote": "Nearshore Marine Resource Conservation (for waters surrounding the main Hawaiian Islands)",
+        "checked_at": "2026-11-26",
+        "method": "page"
+      },
+      {
+        "source_url": "https://castlefoundation.org/investments/what-we-dont-fund/",
+        "quote": "Organizations based outside of Hawaii",
+        "checked_at": "2026-11-26",
         "method": "page"
       }
     ],
