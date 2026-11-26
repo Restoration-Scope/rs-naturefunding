@@ -19,10 +19,23 @@
   "co_finance_required": false,
   "reporting": null,
   "effort": {
-    "steps": ["Pre-application site visit with the Trust", "Application"],
-    "due": ["2027-02-12", "2027-02-26"]
+    "steps": [
+      "Pre-application site visit with the Trust",
+      "Application",
+      "Get Trust approval before applying above the track’s funding level",
+      "Technical Review Committee review",
+      "Board of Trustees funding consideration"
+    ],
+    "due": ["2027-02-12", "2027-02-26", null, null, null]
   },
-  "documents": ["Landowner Letter of Commitment"],
+  "documents": [
+    "Landowner Letter of Commitment if the applicant does not own the site",
+    "Track 2 photographs of the restoration site",
+    "Track 2 map of the drainage area and impervious surfaces",
+    "Track 2 conceptual site plan sketch",
+    "Track 3 Best Management Practices Worksheet",
+    "Track 5 site and planting plans"
+  ],
   "calls": [
     {
       "id": "2027",
@@ -94,13 +107,55 @@
         "quote": "Deadline is Friday, February 26, 2027 at 4PM ET",
         "checked_at": "2026-11-25",
         "method": "page"
+      },
+      {
+        "source_url": "https://cbtrust.org/wp-content/uploads/AAWRF_FY27_RFP_10.28.26.pdf",
+        "quote": "Applicants interested in requests exceeding the general funding levels outlined above must discuss their project with the Trust prior to submission to receive approval to apply for a larger request.",
+        "checked_at": "2026-11-26",
+        "method": "page"
+      },
+      {
+        "source_url": "https://cbtrust.org/wp-content/uploads/AAWRF_FY27_RFP_10.28.26.pdf",
+        "quote": "Each application is reviewed by a Technical Review Committee (TRC)",
+        "checked_at": "2026-11-26",
+        "method": "page"
+      },
+      {
+        "source_url": "https://cbtrust.org/wp-content/uploads/AAWRF_FY27_RFP_10.28.26.pdf",
+        "quote": "The TRC then recommends a suite of applications to the Trust’s Board of Trustees.",
+        "checked_at": "2026-11-26",
+        "method": "page"
       }
     ],
     "documents": [
       {
-        "source_url": "https://cbtrust.org/wp-content/uploads/AAWRF_FY27_RFP_10.28.26.pdf",
-        "quote": "with landowner permission documented through a Letter of Commitment included in your application.",
-        "checked_at": "2026-11-25",
+        "source_url": "https://cbtrust.org/wp-content/uploads/FY27_Track-2-AAWRF-Narrative-Questions.docx",
+        "quote": "Landowner permission through a Letter of Commitment to access the site and implement the project, if project is on land not owned by the applicant",
+        "checked_at": "2026-11-26",
+        "method": "page"
+      },
+      {
+        "source_url": "https://cbtrust.org/wp-content/uploads/FY27_Track-2-AAWRF-Narrative-Questions.docx",
+        "quote": "a conceptual site plan sketch, and a photo(s) of the restoration site must be included.",
+        "checked_at": "2026-11-26",
+        "method": "page"
+      },
+      {
+        "source_url": "https://cbtrust.org/wp-content/uploads/FY27_Track-2-AAWRF-Narrative-Questions.docx",
+        "quote": "Include a map of the drainage area that the proposed design will treat which delineates the location of impervious surfaces",
+        "checked_at": "2026-11-26",
+        "method": "page"
+      },
+      {
+        "source_url": "https://cbtrust.org/wp-content/uploads/FY27_Track-3-AAWRF-Narrative-Questions.docx",
+        "quote": "The “Best Management Practices Worksheet” in Appendix F of the RFP",
+        "checked_at": "2026-11-26",
+        "method": "page"
+      },
+      {
+        "source_url": "https://cbtrust.org/wp-content/uploads/FY27_Track-5-AAWRF-Narrative-Questions.docx",
+        "quote": "Site and planting plans",
+        "checked_at": "2026-11-26",
         "method": "page"
       }
     ],
@@ -108,19 +163,49 @@
       {
         "source_url": "https://cbtrust.org/wp-content/uploads/AAWRF_FY27_RFP_10.28.26.pdf",
         "quote": "applicants for Tracks 1, 2, 3, and 6 must be certified 501(c) non-profit organizations, except for homeowners or community associations located in the City of Annapolis.",
-        "checked_at": "2026-11-25",
+        "checked_at": "2026-11-26",
         "method": "page"
       },
       {
         "source_url": "https://cbtrust.org/wp-content/uploads/AAWRF_FY27_RFP_10.28.26.pdf",
         "quote": "Applications for Tracks 1, 2, 3, and 6 must include at least one partner that represents a stakeholder group based in Anne Arundel County.",
-        "checked_at": "2026-11-25",
+        "checked_at": "2026-11-26",
         "method": "page"
       },
       {
         "source_url": "https://cbtrust.org/wp-content/uploads/AAWRF_FY27_RFP_10.28.26.pdf",
-        "quote": "All projects proposed shall be voluntary.",
-        "checked_at": "2026-11-25",
+        "quote": "All projects proposed shall be voluntary. Any projects that are required under an existing or pending regulatory process or permit, are required for mitigation, or are required by a regulatory authority for any other reason",
+        "checked_at": "2026-11-26",
+        "method": "page"
+      },
+      {
+        "source_url": "https://cbtrust.org/wp-content/uploads/AAWRF_FY27_RFP_10.28.26.pdf",
+        "quote": "Track 1 – Watershed Planning (City of Annapolis only): requests up to $75,000",
+        "checked_at": "2026-11-26",
+        "method": "page"
+      },
+      {
+        "source_url": "https://cbtrust.org/wp-content/uploads/AAWRF_FY27_RFP_10.28.26.pdf",
+        "quote": "Both an Executive Officer and a Project Leader, two separate individuals, must be identified for all applications.",
+        "checked_at": "2026-11-26",
+        "method": "page"
+      },
+      {
+        "source_url": "https://cbtrust.org/wp-content/uploads/AAWRF_FY27_RFP_10.28.26.pdf",
+        "quote": "Project Timeline: Projects must be completed within two years upon receipt of the award. Requests to extend project completion period will be reviewed and considered on a case-by-case basis.",
+        "checked_at": "2026-11-26",
+        "method": "page"
+      },
+      {
+        "source_url": "https://cbtrust.org/wp-content/uploads/AAWRF_FY27_RFP_10.28.26.pdf",
+        "quote": "If a PCE will not be obtained for your proposed project, the landowner must agree to sign a long-term protection agreement.",
+        "checked_at": "2026-11-26",
+        "method": "page"
+      },
+      {
+        "source_url": "https://cbtrust.org/wp-content/uploads/AAWRF_FY27_RFP_10.28.26.pdf",
+        "quote": "This track allows applicants to request funding to support stormwater BMPs and afforestation/reforestation efforts at a shared project site in one request.",
+        "checked_at": "2026-11-26",
         "method": "page"
       }
     ],
@@ -136,14 +221,31 @@
   "checked_at": "2026-11-25",
   "eligibility": [
     {
-      "rule": "Watershed, civic or faith groups on Tracks 1-3 and 6: certified 501(c) (Annapolis community associations exempt)",
+      "rule": "Tracks 1–3 and 6 community groups: certified 501(c), except Annapolis community and homeowners’ associations",
       "kind": "legal"
     },
     {
-      "rule": "Watershed, civic or faith groups on Tracks 1-3 and 6: have an Anne Arundel County stakeholder partner",
+      "rule": "Tracks 1–3 and 6 watershed, community, service, youth, civic or faith groups: Anne Arundel stakeholder partner",
       "kind": "project"
     },
-    { "rule": "Project is voluntary", "kind": "project" }
+    {
+      "rule": "Project is voluntary and is not required by a permit, mitigation obligation or regulator",
+      "kind": "project"
+    },
+    { "rule": "Track 1 projects are in the City of Annapolis", "kind": "project" },
+    { "rule": "Names a separate Executive Officer and Project Leader", "kind": "capacity" },
+    {
+      "rule": "Completes the project within two years of award unless the Trust approves an extension",
+      "kind": "project"
+    },
+    {
+      "rule": "Track 5 landowner agrees to long-term protection if a permanent conservation easement will not be obtained",
+      "kind": "project"
+    },
+    {
+      "rule": "Track 6 combines stormwater restoration and forest planting at the same site",
+      "kind": "project"
+    }
   ],
   "after_award": { "reports": "unspecified" }
 }
