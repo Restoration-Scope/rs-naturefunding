@@ -17,10 +17,13 @@
   "amount": { "currency": "USD", "max": 25000 },
   "co_finance_required": null,
   "reporting": "Grantees report on project progress through the Fund's website every six months and are expected to publish material about their work on the Fund's site.",
-  "effort": { "steps": ["Application submission"], "due": ["2027-01-31"] },
+  "effort": {
+    "steps": ["Application submission", "Fund assessment and independent Advisory Board review"],
+    "due": ["2027-01-31", null]
+  },
   "eligibility": [
     {
-      "rule": "Provide a correct conservation status or justify an incorrect one",
+      "rule": "State the species’ conservation status accurately or justify a departure from the published status",
       "kind": "project"
     },
     {
@@ -31,9 +34,10 @@
       "rule": "For continuation funding, complete the prior project and submit all required reports by the deadline",
       "kind": "track_record"
     },
+    { "rule": "Applicant is directly involved in species conservation", "kind": "other" },
     {
-      "rule": "Application in English, with budgets and financial data in US dollars",
-      "kind": "other"
+      "rule": "Target a threatened or poorly known animal, plant or fungus species",
+      "kind": "project"
     }
   ],
   "after_award": { "reports": "twice_yearly" },
@@ -135,6 +139,12 @@
         "quote": "Applications submitted by 31st January 2027",
         "checked_at": "2026-11-25",
         "method": "page"
+      },
+      {
+        "source_url": "https://www.speciesconservation.org/biodiversity-nature-people/conservation-philanthropy/grants/",
+        "quote": "The Fund forwards its recommendations to the independent Advisory Board for review.",
+        "checked_at": "2026-11-26",
+        "method": "page"
       }
     ],
     "eligibility": [
@@ -157,9 +167,15 @@
         "method": "page"
       },
       {
-        "source_url": "https://www.speciesconservation.org/biodiversity-nature-people/conservation-philanthropy/grants/application-criteria/",
-        "quote": "Applications must be submitted in English with budgets and all financial data submitted in US Dollars.",
-        "checked_at": "2026-11-25",
+        "source_url": "https://www.speciesconservation.org/biodiversity-nature-people/conservation-philanthropy/grants/faqs/",
+        "quote": "Anyone directly involved in species conservation can apply to the Fund for a grant.",
+        "checked_at": "2026-11-26",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.speciesconservation.org/biodiversity-nature-people/conservation-philanthropy/grants/faqs/",
+        "quote": "The Fund will consider grants for the conservation of any threatened or poorly known animal, plant or fungus species.",
+        "checked_at": "2026-11-26",
         "method": "page"
       }
     ],

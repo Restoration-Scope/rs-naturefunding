@@ -34,7 +34,7 @@
   },
   "eligibility": [
     {
-      "rule": "Associations are environmentally accredited (overseas: declared loi 1901); foundations are public-interest",
+      "rule": "Associations need environmental accreditation, or loi 1901 registration in DROM; foundations need public-interest status",
       "kind": "legal"
     },
     {
@@ -50,20 +50,30 @@
       "rule": "Do not result from regulatory obligations or replace polluter-pay obligations",
       "kind": "project"
     },
-    { "rule": "Do not cause ecosystem artificialisation", "kind": "project" },
-    { "rule": "The project does more than prepare a later restoration phase", "kind": "project" }
+    {
+      "rule": "Excludes scientific experiments or research and actions that artificialise ecosystems",
+      "kind": "project"
+    },
+    {
+      "rule": "Centres on concrete restoration of natural environments or species habitats",
+      "kind": "project"
+    },
+    {
+      "rule": "Commits to publishing all project data free of charge under an open licence",
+      "kind": "project"
+    }
   ],
   "co_finance": { "min_share": 20 },
   "after_award": { "reports": "interim_and_final" },
   "documents": [
-    "Bank identity statement matching the SIRET address",
-    "Current published environmental-protection approval decision",
+    "Bank identity statement with the address linked to the SIRET or equivalent",
+    "Current published environmental accreditation decision, for accredited associations",
     "Regularly declared association statutes",
     "Declared list of association administrators",
-    "Approved annual accounts for the latest closed year and auditor report, if applicable",
-    "At least two high-definition photos with captions and copyright information",
-    "Project area and planned works location map",
-    "Owner commitment letters or other land-security evidence, if not the landowner",
+    "Associations’ latest approved annual accounts, plus auditor’s report if they have an auditor",
+    "At least two HD photos, of habitat and a target species, with captions and publication rights",
+    "Map of the project area, showing planned works where applicable",
+    "Landowner commitment letters and relevant land-security evidence, if the applicant does not own the land",
     "Project schedule in Gantt format",
     "Diagnostic or feasibility study, mandatory for restoration works"
   ],
@@ -196,14 +206,20 @@
       },
       {
         "source_url": "https://ofb.gouv.fr/sites/ofb-gouv-fr/files/2026-11/ofb_26_1464_aap_mission_nature_2027_reglement_administratif.pdf",
-        "quote": "Les projets retenus n'engendreront pas d'artificialisation des écosystèmes ;",
-        "checked_at": "2026-11-25",
+        "quote": "Toutes actions d’expérimentation ou de recherche scientifique ; ➢ Toutes actions engendrant de l’artificialisation ;",
+        "checked_at": "2026-11-26",
         "method": "page"
       },
       {
         "source_url": "https://ofb.gouv.fr/sites/ofb-gouv-fr/files/2026-11/ofb_26_1464_aap_mission_nature_2027_reglement_administratif.pdf",
-        "quote": "Les projets consistant uniquement à préparer une phase opérationnelle de restauration ultérieure ne sont pas éligibles",
-        "checked_at": "2026-11-25",
+        "quote": "à condition que cela ne soit pas le cœur du projet, qui doit rester la restauration concrète de milieux naturels et d’habitats d’espèces.",
+        "checked_at": "2026-11-26",
+        "method": "page"
+      },
+      {
+        "source_url": "https://ofb.gouv.fr/sites/ofb-gouv-fr/files/2026-11/ofb_26_1464_aap_mission_nature_2027_reglement_administratif.pdf",
+        "quote": "Seuls les projets s’engageant à communiquer publiquement et gratuitement sous licence ouverte l’ensemble des données produites sont éligibles ;",
+        "checked_at": "2026-11-26",
         "method": "page"
       }
     ],

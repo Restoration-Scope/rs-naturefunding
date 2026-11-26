@@ -13,16 +13,34 @@
   "window": "unspecified",
   "amount": { "currency": "USD", "max": 75000 },
   "co_finance_required": true,
+  "consortium_required": false,
   "reporting": null,
-  "effort": { "steps": ["Project proposal submission", "National Steering Committee review"] },
+  "effort": {
+    "steps": [
+      "Submit project proposal for rolling pipeline review",
+      "National Steering Committee review"
+    ]
+  },
   "eligibility": [
     { "rule": "Not a cooperative", "kind": "legal" },
     { "rule": "Project uses a priority or secondary landscape", "kind": "project" },
     {
-      "rule": "Project secures at least 50% co-financing, including cash and in-kind contributions",
+      "rule": "Project has at least 50% co-financing: 25% cash and 25% in kind",
       "kind": "finances"
     },
-    { "rule": "Project runs for no more than 24 months", "kind": "project" }
+    { "rule": "Project runs for no more than 24 months", "kind": "project" },
+    {
+      "rule": "Project reflects Morocco’s environmental context and aligns with its environment and sustainable development strategy",
+      "kind": "project"
+    },
+    {
+      "rule": "Use local scientific and technical resources and involve communities in design, delivery and evaluation",
+      "kind": "project"
+    },
+    {
+      "rule": "Follows the landscape approach and addresses innovation, inclusion and impact",
+      "kind": "project"
+    }
   ],
   "co_finance": { "min_share": 50, "in_kind": true },
   "documents": [
@@ -118,17 +136,23 @@
       "checked_at": "2026-11-25",
       "method": "page"
     },
+    "consortium_required": {
+      "source_url": "https://www.undp.org/sites/g/files/zskgke326/files/2025-11/appel-a-projets-du-pmf-fem-pnud-maroc-gef8.pdf",
+      "quote": "Une attention particulière sera accordée aux projets suivants : 1. Les projets portés par les femmes, les jeunes et les personnes handicapées. 2. Les projets encourageant l’entrepreneuriat vert. 3. Les projets fédérateurs portés par un groupe d’ONGs et d’OCBs autour d’un objectif commun de conservation et de développement durable à l’échelle du paysage.",
+      "checked_at": "2026-11-26",
+      "method": "page"
+    },
     "effort": [
       {
         "source_url": "https://www.undp.org/sites/g/files/zskgke326/files/2025-11/appel-a-projets-du-pmf-fem-pnud-maroc-gef8.pdf",
-        "quote": "Les propositions de projets doivent être envoyées à la Coordinatrice Nationale du PMF au plus tard le 31 janvier 2026 par e-mail à l'adresse suivante : badia.sahmy@undp.org.",
+        "quote": "Toutes les propositions reçues seront présentées au Comité National de Pilotage (CNP) du PMF FEM/PNUD, unique instance habilitée à statuer sur l'octroi des financements sur la base des critères mentionnés ci-dessus, pour examen et approbation.",
         "checked_at": "2026-11-25",
         "method": "page"
       },
       {
         "source_url": "https://www.undp.org/sites/g/files/zskgke326/files/2025-11/appel-a-projets-du-pmf-fem-pnud-maroc-gef8.pdf",
-        "quote": "Toutes les propositions reçues seront présentées au Comité National de Pilotage (CNP) du PMF FEM/PNUD, unique instance habilitée à statuer sur l'octroi des financements sur la base des critères mentionnés ci-dessus, pour examen et approbation.",
-        "checked_at": "2026-11-25",
+        "quote": "A la clôture de l’appel à projets le 31 janvier 2026, le programme continuera néanmoins à recevoir des propositions de projet pour alimenter son pipeline, et celles-ci seront étudiées au fur et à mesure jusqu’à épuisement complet des fonds disponibles.",
+        "checked_at": "2026-11-26",
         "method": "page"
       }
     ],
@@ -155,6 +179,24 @@
         "source_url": "https://www.undp.org/sites/g/files/zskgke326/files/2025-11/appel-a-projets-du-pmf-fem-pnud-maroc-gef8.pdf",
         "quote": "Être réalisables dans un délai maximum de 24 mois.",
         "checked_at": "2026-11-25",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.undp.org/sites/g/files/zskgke326/files/2025-11/appel-a-projets-du-pmf-fem-pnud-maroc-gef8.pdf",
+        "quote": "Prendre en considération le contexte environnemental national et être alignées avec les objectifs de la Stratégie Nationale de l’Environnement et du Développement Durable (SNDD).",
+        "checked_at": "2026-11-26",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.undp.org/sites/g/files/zskgke326/files/2025-11/appel-a-projets-du-pmf-fem-pnud-maroc-gef8.pdf",
+        "quote": "S’appuyer sur la participation communautaire lors de la conception, de la mise en œuvre et de l’évaluation des projets et se baser sur les ressources scientifiques et techniques locales.",
+        "checked_at": "2026-11-26",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.undp.org/sites/g/files/zskgke326/files/2025-11/appel-a-projets-du-pmf-fem-pnud-maroc-gef8.pdf",
+        "quote": "S’aligner avec les approches du programme : approche paysage et approche 3I (Innovation, Inclusion des femmes, des jeunes et des personnes handicapées, Impact).",
+        "checked_at": "2026-11-26",
         "method": "page"
       }
     ],

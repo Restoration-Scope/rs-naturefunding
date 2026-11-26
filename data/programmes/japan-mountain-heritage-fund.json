@@ -17,7 +17,14 @@
   "amount": null,
   "co_finance_required": null,
   "reporting": null,
-  "effort": { "steps": ["Questionnaire, then application by email or post"] },
+  "effort": {
+    "steps": [
+      "Questionnaire to access the application form",
+      "Application by email or post",
+      "Application review"
+    ],
+    "due": [null, "2027-08-31", null]
+  },
   "eligibility": [
     {
       "rule": "Running activities aligned with the fund's purpose in a specific mountain or mountain area for at least 3 years",
@@ -90,8 +97,14 @@
       },
       {
         "source_url": "https://sangakuisan.yamakei.co.jp/isan-kikin/entry.html",
-        "quote": "申請期間 2027年8月31日まで ※消印有効",
-        "checked_at": "2026-11-25",
+        "quote": "申請書類に必要事項を記入の上、メールもしく郵便で送付してください。 申請期間 2027年8月31日まで ※消印有効",
+        "checked_at": "2026-11-26",
+        "method": "page"
+      },
+      {
+        "source_url": "https://sangakuisan.yamakei.co.jp/isan-kikin/entry.html",
+        "quote": "審査期間 2027年9月1日～9月30日",
+        "checked_at": "2026-11-26",
         "method": "page"
       }
     ],

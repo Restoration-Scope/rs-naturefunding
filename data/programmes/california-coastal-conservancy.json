@@ -26,18 +26,20 @@
   "fiscal_sponsor": { "stance": "accepted", "note": "The sponsor is a 501(c)(3)" },
   "reporting": null,
   "effort": {
-    "steps": ["Pre-application", "Full application, if invited", "Conservancy application review"],
+    "steps": [
+      "Pre-application",
+      "Full application, if invited",
+      "Conservancy application review",
+      "Conservancy pre-application screening",
+      "Coastal Conservancy Board approval"
+    ],
     "more_after": true
   },
   "eligibility": [
     { "rule": "Project is consistent with the funding source's purposes", "kind": "project" },
     { "rule": "Project is consistent with Conservancy enabling legislation", "kind": "project" },
     {
-      "rule": "Project meets CEQA by exemption or complete documentation before Board approval",
-      "kind": "project"
-    },
-    {
-      "rule": "Grantee has capacity or uses a fiscal sponsor for needed administrative support",
+      "rule": "Can administer funds and deliver the project to state requirements, or has a fiscal sponsor for administrative support",
       "kind": "capacity"
     },
     {
@@ -49,9 +51,10 @@
       "kind": "capacity"
     },
     {
-      "rule": "Groups without 501(c)(3) status apply through a 501(c)(3) fiscal sponsor",
+      "rule": "Community groups without 501(c)(3) status and non-federally recognised tribes have a 501(c)(3) fiscal sponsor",
       "kind": "legal"
-    }
+    },
+    { "rule": "Grant does not pay for operation or maintenance", "kind": "project" }
   ],
   "after_award": { "reports": "quarterly", "site_visits": true },
   "documents": ["Project location map"],
@@ -134,6 +137,18 @@
         "quote": "Conservancy staff will evaluate applications based on the Project Selection Criteria.",
         "checked_at": "2026-11-25",
         "method": "page"
+      },
+      {
+        "source_url": "https://scc.ca.gov/files/2026/09/SCC_Application-Guide.pdf",
+        "quote": "Within 60 days, you will receive notification whether you are being asked to submit a full application or if your project is not eligible for Conservancy funding.",
+        "checked_at": "2026-11-26",
+        "method": "page"
+      },
+      {
+        "source_url": "https://scc.ca.gov/files/2026/09/SCC_Application-Guide.pdf",
+        "quote": "All grants must be approved by the Coastal Conservancy Board.",
+        "checked_at": "2026-11-26",
+        "method": "page"
       }
     ],
     "eligibility": [
@@ -150,15 +165,9 @@
         "method": "page"
       },
       {
-        "source_url": "https://scc.ca.gov/files/2026/09/SCC_Application-Guide.pdf",
-        "quote": "Your project must be either exempt from CEQA or the CEQA documentation must be complete before our Board considers approving the project.",
-        "checked_at": "2026-11-25",
-        "method": "page"
-      },
-      {
         "source_url": "https://scc.ca.gov/grants/project-selection-criteria/",
-        "quote": "If the grantee does not have the capacity, they have partnered with a fiscal sponsor that will provide them the needed administrative support.",
-        "checked_at": "2026-11-25",
+        "quote": "The grantee has the ability to administer the funds and conduct the project in a manner that will meet the State’s requirements and will protect the grantee from potential financial or legal risk. If the grantee does not have the capacity, they have partnered with a fiscal sponsor that will provide them the needed administrative support.",
+        "checked_at": "2026-11-26",
         "method": "page"
       },
       {
@@ -177,6 +186,12 @@
         "source_url": "https://scc.ca.gov/grants/",
         "quote": "Other community-based organizations and non-federally-recognized tribes may apply with a 501(c)(3) fiscal sponsor",
         "checked_at": "2026-11-25",
+        "method": "page"
+      },
+      {
+        "source_url": "https://scc.ca.gov/grants/",
+        "quote": "We do not fund operation and maintenance activities.",
+        "checked_at": "2026-11-26",
         "method": "page"
       }
     ],

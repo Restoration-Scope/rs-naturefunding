@@ -21,7 +21,21 @@
   "amount": { "currency": "GBP", "min": 500, "max": 2000 },
   "co_finance_required": true,
   "reporting": null,
-  "effort": { "steps": ["Short project ideas form", "Full application"] },
+  "effort": {
+    "steps": [
+      "Short project ideas form",
+      "Full application, if invited",
+      "Discuss the project idea with the fund before full application",
+      "Trustee review and award decision"
+    ],
+    "due": ["2027-02-15", "2027-03-08", null, null]
+  },
+  "eligibility": [
+    { "rule": "Project shows a clear public benefit.", "kind": "project" },
+    { "rule": "Applies for no more than three consecutive years.", "kind": "other" }
+  ],
+  "co_finance": { "min_share": 25, "in_kind": true },
+  "after_award": { "reports": "final" },
   "calls": [
     {
       "id": "2027-round",
@@ -90,6 +104,24 @@
         "quote": "Deadline to complete the full application by Monday 8th March 2027.",
         "checked_at": "2026-11-25",
         "method": "page"
+      },
+      {
+        "source_url": "https://www.shropshirehills-nl.org.uk/help-to-look-after/shropshire-hills-landscape-trust/conservation-fund",
+        "quote": "Deadline for expression of interest is 15th February 2027.",
+        "checked_at": "2026-11-26",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.shropshirehills-nl.org.uk/help-to-look-after/shropshire-hills-landscape-trust/conservation-fund-guidance",
+        "quote": "When we have received and read your form we will be in touch to discuss your project in more detail.",
+        "checked_at": "2026-11-26",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.shropshirehills-nl.org.uk/help-to-look-after/shropshire-hills-landscape-trust/conservation-fund-guidance",
+        "quote": "Trustees from the Shropshire Hills Landscape Trust will meet to discuss the projects and award grants on Monday 15th March 2027.",
+        "checked_at": "2026-11-26",
+        "method": "page"
       }
     ],
     "co_finance_required": {
@@ -97,7 +129,35 @@
       "quote": "Grants can be of up to 75% and match funding can be made up of in kind and volunteer time contributions as well as cash.",
       "checked_at": "2026-11-25",
       "method": "page"
-    }
+    },
+    "eligibility": [
+      {
+        "source_url": "https://www.shropshirehills-nl.org.uk/help-to-look-after/shropshire-hills-landscape-trust/conservation-fund",
+        "quote": "but in all cases the project must show a clear public benefit.",
+        "checked_at": "2026-11-26",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.shropshirehills-nl.org.uk/help-to-look-after/shropshire-hills-landscape-trust/conservation-fund-guidance",
+        "quote": "There is a consecutive 3-year limit on applying to the Fund.",
+        "checked_at": "2026-11-26",
+        "method": "page"
+      }
+    ],
+    "co_finance": {
+      "source_url": "https://www.shropshirehills-nl.org.uk/help-to-look-after/shropshire-hills-landscape-trust/conservation-fund-guidance",
+      "quote": "Grants can be of up to 75% and match funding can be made up of in-kind and volunteer time contributions as well as cash.",
+      "checked_at": "2026-11-26",
+      "method": "page"
+    },
+    "after_award": [
+      {
+        "source_url": "https://www.shropshirehills-nl.org.uk/help-to-look-after/shropshire-hills-landscape-trust/conservation-fund-guidance",
+        "quote": "A short, written report with photographs is required at the end of the project showing how the work met the aim(s) and delivered public benefits.",
+        "checked_at": "2026-11-26",
+        "method": "page"
+      }
+    ]
   },
   "checked_at": "2026-11-25"
 }

@@ -202,7 +202,7 @@ describe('no hydration, small JavaScript', () => {
   test('finder pages load the same script as /', () => {
     const homeExternal = scriptsOf('index.html').external
     for (const f of finderPagesHtml) expect(scriptsOf(f).external, f).toEqual(homeExternal)
-  })
+  }, fullDistTimeout)
 
   // The weekly-email prompt (src/components/SubscribePrompt.astro) is the one script file every page loads; its
   // country search (src/lib/picker.ts) comes only once the card shows.
@@ -223,17 +223,29 @@ describe('no hydration, small JavaScript', () => {
     for (const src of files) expect(read(src.replace(/^\//, '')).length).toBeLessThanOrEqual(4500)
   }, fullDistTimeout)
 
-  test('no other page loads another script file; only /about/, /fiscal-sponsors/, /worth-applying/ and programme pages have small inline scripts', () => {
+  // /fiscal-sponsors/: its filters and sorting (src/lib/sponsor-filter.ts), with the finder's country search for Where
+  // (src/lib/picker.ts), so one script file of its own that loads nothing / doesn't.
+  const sponsorsOwn = () => scriptsOf('fiscal-sponsors/index.html').external.filter((src) => !isPrompt(src))
+  test('/fiscal-sponsors/ loads one script file of its own, at most 5 KB gzipped with what it imports', () => {
+    const own = sponsorsOwn()
+    expect(own.length).toBe(1)
+    const gz = [...closure(own, false)].reduce((n, f) => n + gzipSync(read(f)).length, 0)
+    expect(gz).toBeLessThanOrEqual(5 * 1024)
+    const home = closure(scriptsOf('index.html').external, true)
+    for (const f of closure(own, true)) if (!f.includes(own[0]!.replace(/^\//, ''))) expect(home.has(f), f).toBe(true)
+  })
+
+  test('no other page loads another script file; only /about/, /worth-applying/ and programme pages have small inline scripts', () => {
     for (const f of htmlFiles.filter((x) => x !== 'index.html' && !finderPagesHtml.includes(x))) {
       const { external, inline } = scriptsOf(f)
+      if (f === 'fiscal-sponsors/index.html') {
+        expect(inline, f).toEqual([])
+        continue
+      }
       expect(external.filter((src) => !isPrompt(src)), f).toEqual([])
       if (f === 'about/index.html') {
         expect(inline.length).toBeLessThanOrEqual(1)
         expect(inline.join('').length).toBeLessThanOrEqual(400)
-      } else if (f === 'fiscal-sponsors/index.html') {
-        // Its filters and sorting (src/lib/sponsor-filter.ts).
-        expect(inline.length).toBe(1)
-        expect(inline.join('').length).toBeLessThanOrEqual(3500)
       } else if (f === 'worth-applying/index.html') {
         // The worth-it calculator.
         expect(inline.length).toBe(1)
@@ -249,8 +261,8 @@ describe('no hydration, small JavaScript', () => {
     }
   }, fullDistTimeout)
 
-  test('every JS file in dist is one / loads, at once or later', () => {
-    const loaded = closure(scriptsOf('index.html').external, true)
+  test('every JS file in dist is one / or /fiscal-sponsors/ loads, at once or later', () => {
+    const loaded = new Set([...closure(scriptsOf('index.html').external, true), ...closure(sponsorsOwn(), true)])
     expect(files.filter((f) => f.endsWith('.js')).sort()).toEqual([...loaded].sort())
   })
 

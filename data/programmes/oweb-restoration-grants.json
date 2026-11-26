@@ -30,15 +30,26 @@
   "eligibility": [
     { "rule": "Be a legally established entity", "kind": "legal" },
     {
-      "rule": "Is a Tribe, watershed council, SWCD, nonprofit, school, Oregon college, or local government that is not a state agency",
+      "rule": "Tribe, watershed council, SWCD, nonprofit, school, Oregon or independent nonprofit college, or non-state subdivision.",
       "kind": "legal"
     },
     {
       "rule": "Project is not built solely to meet an enforcement order, legal judgment or mitigation requirement",
       "kind": "project"
+    },
+    {
+      "rule": "No watershed project solely building out-of-stream water storage unrelated to watershed restoration or protection.",
+      "kind": "project"
+    },
+    {
+      "rule": "Fish screening qualifies only through FIP restoration or with an ODFW letter confirming eligibility without funding.",
+      "kind": "project"
+    },
+    {
+      "rule": "Water conservation must measurably improve instream flow, groundwater or water quality.",
+      "kind": "project"
     }
   ],
-  "co_finance": { "ratio": "1:4" },
   "after_award": { "reports": "unspecified" },
   "calls": [
     {
@@ -136,7 +147,7 @@
       {
         "source_url": "https://www.oregon.gov/oweb/grants/pages/restoration.aspx",
         "quote": "Any Tribe, watershed council, soil and water conservation district, not-for-profit corporation, school, Oregon institution of higher education, independent not-for-profit institution of higher education, or political subdivision of this state that is not a state agency.",
-        "checked_at": "2026-11-25",
+        "checked_at": "2026-11-26",
         "method": "page"
       },
       {
@@ -144,14 +155,26 @@
         "quote": "A watershed improvement project constructed solely to comply with a state or federal agency enforcement order, legal judgment, or mitigation requirement.",
         "checked_at": "2026-11-25",
         "method": "page"
+      },
+      {
+        "source_url": "https://www.oregon.gov/oweb/grants/pages/restoration.aspx",
+        "quote": "A watershed improvement project consisting solely of water storage structure construction for an out-of-stream use not related to watershed restoration or protection.",
+        "checked_at": "2026-11-26",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.oregon.gov/oweb/grants/pages/restoration.aspx",
+        "quote": "A fish screening project is eligible for funding through the Oregon Department of Fish and Wildlife's fish screening program except in FIP initiative restoration projects or if ODFW provides a letter stating that fish screen is eligible but not funded through their program.",
+        "checked_at": "2026-11-26",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.oregon.gov/oweb/grants/pages/restoration.aspx",
+        "quote": "A water conservation project in which there is no measurable instream flow benefit, groundwater benefit, or water quality improvement.",
+        "checked_at": "2026-11-26",
+        "method": "page"
       }
     ],
-    "co_finance": {
-      "source_url": "https://www.oregon.gov/oweb/grants/pages/restoration.aspx",
-      "quote": "Required Match: 25%",
-      "checked_at": "2026-11-25",
-      "method": "page"
-    },
     "after_award": [
       {
         "source_url": "https://www.oregon.gov/oweb/manage-grant/Pages/report-to-oweb.aspx",

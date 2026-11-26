@@ -7,6 +7,7 @@ import type { Sponsor } from '../data/sponsors'
 import { longDate } from '../lib/format'
 import { countryName } from '../lib/geo'
 import { sponsorAnswerLabels, sponsorGrantLabels, sponsorIntakeLabels, sponsorModelLabels, sponsorTypeLabels } from '../lib/labels'
+import { whereReach } from '../lib/data'
 import Flag from './Flag.astro'
 import Quote from './Quote.astro'
 
@@ -82,7 +83,7 @@ const said = answers.filter(({ a }) => a).map((x) => x.key)
 ---
 
 {/* Styled by class in fiscal-sponsors.astro, which also reflows each sponsor to a card at narrow widths. */}
-<TableBody id={s.id} data-sp={s.types.map((t) => t.value).join(' ')} data-broader={broader} data-yes={yes.join(' ')} data-said={said.join(' ')} data-rate={rate ? `${rate[1]} ${rate[2] ?? rate[1]}` : undefined} data-answers={answers.map(({ a }) => (a ? order[a.value.answer] : '')).join(',')}>
+<TableBody id={s.id} data-sp={s.types.map((t) => t.value).join(' ')} data-broader={broader} data-yes={yes.join(' ')} data-said={said.join(' ')} data-rate={rate ? `${rate[1]} ${rate[2] ?? rate[1]}` : undefined} data-answers={answers.map(({ a }) => (a ? order[a.value.answer] : '')).join(',')} data-where={s.places && whereReach({ geography: s.places.value } as Parameters<typeof whereReach>[0])}>
   <TableRow>
     <th scope="row">
       <span class="sp-name">{s.name}</span>

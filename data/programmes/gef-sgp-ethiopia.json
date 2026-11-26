@@ -19,17 +19,16 @@
   "amount": { "currency": "USD", "max": 75000 },
   "co_finance_required": null,
   "reporting": null,
-  "effort": {
-    "steps": ["Project proposal template"],
-    "due": ["2026-12-31"]
-  },
+  "effort": { "steps": ["Submit project proposal"], "due": ["2026-12-31"] },
   "eligibility": [
     { "rule": "Is a not-for-profit NGO, CBO or CSO", "kind": "legal" },
     { "rule": "Is locally registered as an NGO, CSO or CBO", "kind": "legal" },
     { "rule": "Has strong organizational capacity to implement SGP grants", "kind": "capacity" },
-    { "rule": "Project promotes community-based initiatives to reduce local environmental threats", "kind": "project" },
     { "rule": "Project fits a listed GEF thematic focus area", "kind": "project" },
-    { "rule": "Project works in the prioritized Central Rift Valley landscapes or waterscapes", "kind": "project" },
+    {
+      "rule": "Project is in Adami Tullu Jido Kombolcha, Hawassa Zuria (including Hawassa City), or Mareko",
+      "kind": "project"
+    },
     { "rule": "Project lasts 24 months at most", "kind": "project" }
   ],
   "calls": [
@@ -39,10 +38,7 @@
       "url": "https://www.undp.org/ethiopia/publications/project-proposal-template-eighth-operational-phase-gef-small-grants-programme",
       "status": "open",
       "opens": null,
-      "deadline": {
-        "date": "2026-12-31",
-        "text": "31st December, 2026"
-      },
+      "deadline": { "date": "2026-12-31", "text": "31st December, 2026" },
       "evidence": {
         "status": {
           "source_url": "https://www.undp.org/ethiopia/publications/project-proposal-template-eighth-operational-phase-gef-small-grants-programme",
@@ -120,12 +116,6 @@
       {
         "source_url": "https://www.undp.org/ethiopia/publications/project-proposal-template-eighth-operational-phase-gef-small-grants-programme",
         "quote": "The organization must have a strong organizational capacity to implement SGP grant projects and meet SGP requirements.",
-        "checked_at": "2026-11-25",
-        "method": "human"
-      },
-      {
-        "source_url": "https://www.undp.org/ethiopia/publications/project-proposal-template-eighth-operational-phase-gef-small-grants-programme",
-        "quote": "Promote innovative community-based initiatives to reduce local environment threats,",
         "checked_at": "2026-11-25",
         "method": "human"
       },

@@ -5,7 +5,7 @@ import { thinFields } from './check'
 import { apiWire, chunksOf, reconcile, splitText, toApi, type Wire } from './extract'
 import { classifyLink, gather, lowTextPdf, programmeNames, scannedPages, type Doc, type Reader } from './gather'
 import { leadsOf, leadsSection, UNREAD_DOC } from './leads'
-import { Cache, costOf, Ledger, metered, openaiModel, type Answer, type Question } from './models'
+import { Cache, costOf, Ledger, metered, ollamaModel, unframe, openaiModel, type Answer, type Question } from './models'
 import { emptyWire, keptFromFirst, run } from './pipeline'
 import { queue } from './queue'
 import { emptyFacts, packQuotes, readsTwoWays, verify } from './verify'
@@ -1118,4 +1118,58 @@ describe('keptFromFirst', () => {
     expect(strong.eligibility).toHaveLength(8)
     expect(strong.eligibility.slice(0, 6).map((r) => r.rule)).toEqual([11, 12, 13, 14, 15, 16].map((n) => rule(n).rule))
   })
+})
+
+describe('ollama model', () => {
+  test('sends the schema as format, a wide context, and reads the answer and tokens', async () => {
+    let sent: { format?: unknown; options?: { num_ctx?: number } } = {}
+    const server = Bun.serve({
+      port: 0,
+      async fetch(req) {
+        sent = await req.json()
+        return Response.json({ message: { content: '{"rule":"Not a government body"}' }, prompt_eval_count: 120, eval_count: 9, done_reason: 'stop' })
+      },
+    })
+    try {
+      const { z } = await import('zod')
+      const m = ollamaModel('inkling-2-mini', `http://127.0.0.1:${server.port}`, 32768)
+      const got = await m.json('system', 'user', z.object({ rule: z.string() }))
+      expect(got).toEqual({ value: { rule: 'Not a government body' }, usage: { input_tokens: 120, output_tokens: 9 } })
+      expect(sent.format).toMatchObject({ type: 'object', required: ['rule'] })
+      expect(sent.options?.num_ctx).toBe(32768)
+      expect(costOf(m.name, got.usage)).toBe(0)
+    } finally {
+      server.stop(true)
+    }
+  })
+})
+
+test('ollama model: a model Ollama cannot constrain gets the schema in the prompt', async () => {
+  const bodies: { format?: unknown; messages: { content: string }[] }[] = []
+  const server = Bun.serve({
+    port: 0,
+    async fetch(req) {
+      const b = await req.json()
+      bodies.push(b)
+      if (b.format) return Response.json({ error: 'structured output is unavailable' }, { status: 501 })
+      return Response.json({ message: { content: 'Here: {"rule":"Not a government body"}' }, prompt_eval_count: 50, eval_count: 7, done_reason: 'stop' })
+    },
+  })
+  try {
+    const { z } = await import('zod')
+    const m = ollamaModel('inkling-2-mini', `http://127.0.0.1:${server.port}`)
+    const schema = z.object({ rule: z.string() })
+    expect((await m.json('s', 'u', schema)).value).toEqual({ rule: 'Not a government body' })
+    await m.json('s', 'u', schema)
+    // One refused constrained call, then prompt mode only.
+    expect(bodies.map((b) => Boolean(b.format))).toEqual([true, false, false])
+    expect(bodies[1]!.messages[1]!.content).toContain('matching this JSON schema')
+  } finally {
+    server.stop(true)
+  }
+})
+
+test('unframe strips an echoed schema frame at any depth', () => {
+  expect(unframe({ type: 'object', properties: { eligibility: { type: 'object', properties: { status: 'stated', items: [{ rule: 'x' }] } } } })).toEqual({ eligibility: { status: 'stated', items: [{ rule: 'x' }] } })
+  expect(unframe({ kind: 'legal', type: 'grant' })).toEqual({ kind: 'legal', type: 'grant' })
 })

@@ -21,7 +21,10 @@
   "amount": { "currency": "GBP", "min": 500, "max": 5000 },
   "co_finance_required": null,
   "reporting": "Grantees submit a simple evaluation form on the difference the project made, and must maintain anything bought or built with the grant for at least 5 years.",
-  "effort": { "steps": ["Application form"] },
+  "effort": {
+    "steps": ["Email the completed application form", "Panel assessment"],
+    "due": ["2027-01-29", null]
+  },
   "eligibility": [
     {
       "rule": "The project site is not already managed or protected for nature",
@@ -36,11 +39,15 @@
       "kind": "project"
     },
     {
-      "rule": "For an individual landowner, the project is not-for-profit and shows clear benefits for nature",
+      "rule": "Individuals must own the site and propose a not-for-profit project with clear benefits for nature",
       "kind": "project"
     },
     {
-      "rule": "The project has no general running costs, pre-award work, recoverable VAT or statutory-duty costs",
+      "rule": "Does not request general running costs, pre-award costs, recoverable VAT or statutory-duty costs",
+      "kind": "project"
+    },
+    {
+      "rule": "Uses appropriate native plants unless the application explains a clear reason to use others",
       "kind": "project"
     }
   ],
@@ -157,6 +164,18 @@
         "quote": "Download an application form, fill in and return to us at hello@peakdistrictfoundation.org.uk",
         "checked_at": "2026-11-25",
         "method": "page"
+      },
+      {
+        "source_url": "https://www.peakdistrictfoundation.org.uk/community-nature-fund/",
+        "quote": "29th January 2027 (you will hear the outcome of your application by 26th February)",
+        "checked_at": "2026-11-26",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.peakdistrictfoundation.org.uk/wp-content/uploads/Community-Nature-Fund-Application-Guidance-Last-Update-April-2026-1.pdf",
+        "quote": "share information from your application form with the panel members so that they can assess your application",
+        "checked_at": "2026-11-26",
+        "method": "page"
       }
     ],
     "eligibility": [
@@ -188,6 +207,12 @@
         "source_url": "https://www.peakdistrictfoundation.org.uk/wp-content/uploads/Community-Nature-Fund-Application-Guidance-Last-Update-April-2026-1.pdf",
         "quote": "• your general running costs (e.g. overheads, core staff salaries) • any work which takes place before your grant is awarded • recoverable VAT • the costs of fulfilling a statutory duty, obligation or planning consent",
         "checked_at": "2026-11-25",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.peakdistrictfoundation.org.uk/wp-content/uploads/Community-Nature-Fund-Application-Guidance-Last-Update-April-2026-1.pdf",
+        "quote": "we expect these to be appropriate native species unless there is a clear reason for doing something different",
+        "checked_at": "2026-11-26",
         "method": "page"
       }
     ],

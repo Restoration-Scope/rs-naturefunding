@@ -21,14 +21,24 @@
   "amount": null,
   "co_finance_required": true,
   "reporting": "Submit a completed project‑completion report after the project ends.",
-  "effort": { "steps": ["Financing request by email"] },
+  "effort": {
+    "steps": ["Financing request by email", "Steering committee assessment and decision"],
+    "due": ["2027-03-03", null]
+  },
   "eligibility": [
     { "rule": "The project is implementation-oriented", "kind": "project" },
     {
       "rule": "Purpose-bound public funds have already been requested and exhausted",
       "kind": "finances"
     },
-    { "rule": "The project starts only after the steering committee's decision", "kind": "project" }
+    {
+      "rule": "The project starts only after the steering committee's decision",
+      "kind": "project"
+    },
+    {
+      "rule": "Photovoltaic projects are linked to ecological areas, ecological projects or education",
+      "kind": "project"
+    }
   ],
   "after_award": { "reports": "other" },
   "calls": [
@@ -200,6 +210,18 @@
         "quote": "Den ausgefüllten Finanzierungsantrag kannst du per E-Mail an info@naturstromfonds.ch senden.",
         "checked_at": "2026-11-25",
         "method": "page"
+      },
+      {
+        "source_url": "https://naturstromfonds.ch/finanzierung/",
+        "quote": "3. März 2027",
+        "checked_at": "2026-11-26",
+        "method": "page"
+      },
+      {
+        "source_url": "https://naturstromfonds.ch/wp-content/uploads/2024/04/Finanzierungskriterien_Naturstromfonds_Ostschweiz.pdf",
+        "quote": "Die Projekte werden im Lenkungsgremium beurteilt und entsprechend ihrer Bedeutung und finanziellen Mitteln des Fonds zur Ausführung freigegeben, resp. unterstützt.",
+        "checked_at": "2026-11-26",
+        "method": "page"
       }
     ],
     "eligibility": [
@@ -219,6 +241,12 @@
         "source_url": "https://naturstromfonds.ch/wp-content/uploads/2024/04/Finanzierungskriterien_Naturstromfonds_Ostschweiz.pdf",
         "quote": "Die Umsetzung des Projektes beginnt erst nach dem Entscheid des Lenkungsgremiums.",
         "checked_at": "2026-11-25",
+        "method": "page"
+      },
+      {
+        "source_url": "https://naturstromfonds.ch/wp-content/uploads/2024/04/Allgemeinen_Foerderbedingungen_Naturstromfonds_Ostschweiz.pdf",
+        "quote": "Die Förderung von Photovoltaikanlagen ist nur möglich, wenn die Anlage entweder mit ökologischen Flächen, Projekten oder mit dem Thema Bildung in Verbindung steht.",
+        "checked_at": "2026-11-26",
         "method": "page"
       }
     ],

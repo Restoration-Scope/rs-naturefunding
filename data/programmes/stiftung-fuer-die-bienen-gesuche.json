@@ -14,14 +14,14 @@
   "amount": null,
   "co_finance_required": null,
   "reporting": null,
-  "documents": [
-    "Project sponsor details (statutes, proof of tax exemption, latest annual accounts and balance sheet)",
-    "Details of the people involved",
-    "Project description",
-    "Overview of other funders already approached",
-    "Proof of funding already committed",
-    "QR payment slip or bank details"
-  ],
+  "effort": {
+    "steps": [
+      "Submit a short application in German by email",
+      "Screening of the short application",
+      "Submit the detailed request and documents if invited",
+      "Review of the completed detailed request"
+    ]
+  },
   "calls": [
     {
       "id": "standing",
@@ -53,11 +53,29 @@
       "checked_at": "2026-11-25",
       "method": "page"
     },
-    "documents": [
+    "effort": [
       {
         "source_url": "https://bienenstiftung.ch/gesuche/",
-        "quote": "Informationen zur Projektträgerschaft(inkl. Statuten, Nachweis der Steuerbefreiung, aktuelle Jahresrechnung und Bilanz) Angaben zu den beteiligten Personen Projektbeschreibung Übersicht der Förderstellen, bei denen bereits Gesuche eingereicht wurden Nachweis über bereits zugesagte Fördermittel QR-Einzahlungsschein oder Bankangaben",
-        "checked_at": "2026-11-24",
+        "quote": "Beginnen Sie mit einem Kurzgesuch, in dem Sie Ihr Anliegen knapp beschreiben.",
+        "checked_at": "2026-11-26",
+        "method": "page"
+      },
+      {
+        "source_url": "https://bienenstiftung.ch/gesuche/",
+        "quote": "Falls Ihr Kurzgesuch in Betracht kommt, fordern wir per E‑Mail weitere Informationen und Unterlagen an. Andernfalls erhalten Sie eine Absage.",
+        "checked_at": "2026-11-26",
+        "method": "page"
+      },
+      {
+        "source_url": "https://bienenstiftung.ch/gesuche/",
+        "quote": "Falls Ihr Kurzgesuch in Betracht kommt, fordern wir per E‑Mail weitere Informationen und Unterlagen an.",
+        "checked_at": "2026-11-26",
+        "method": "page"
+      },
+      {
+        "source_url": "https://bienenstiftung.ch/gesuche/",
+        "quote": "Nach vollständiger Einreichung Ihres detaillierten Gesuchs prüfen wir dieses sorgfältig.",
+        "checked_at": "2026-11-26",
         "method": "page"
       }
     ]

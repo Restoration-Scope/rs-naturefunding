@@ -15,8 +15,13 @@
   "co_finance_required": null,
   "reporting": null,
   "effort": {
-    "steps": ["Digital project dossier submission", "Internal review", "Project committee review"],
-    "due": ["2027-02-01", null, null]
+    "steps": [
+      "Submit the digital project dossier",
+      "Internal review",
+      "Project committee review",
+      "Full commission decision"
+    ],
+    "due": ["2027-02-01", null, null, null]
   },
   "eligibility": [
     { "rule": "The project is not required by law or other conditions", "kind": "project" },
@@ -28,7 +33,23 @@
       "rule": "Project lies outside building zones (Bau- und Bauerwartungsland)",
       "kind": "project"
     },
-    { "rule": "Not a research project", "kind": "project" }
+    { "rule": "Not a research project", "kind": "project" },
+    {
+      "rule": "Include concrete measures directly related to conserving and caring for traditional cultural landscapes.",
+      "kind": "project"
+    },
+    {
+      "rule": "Parks and gardens where work takes place must be open to the public.",
+      "kind": "project"
+    },
+    {
+      "rule": "Alpine pasture measures must take place on pastures still under management.",
+      "kind": "project"
+    },
+    {
+      "rule": "Education, awareness or publicity work must be linked to an integrated project already supported by FLS.",
+      "kind": "project"
+    }
   ],
   "documents": [
     "Statutes, if a legal entity",
@@ -38,7 +59,9 @@
     "Cost overview by measure",
     "Required public permits and private consent declarations, if applicable",
     "Proof that the project is not legally required",
-    "Financing plan: own funds, subsidies and other funding sought"
+    "Financing plan: own funds, subsidies and other funding sought",
+    "Implementation timetable",
+    "Long-term maintenance and sustainable management plan"
   ],
   "calls": [
     {
@@ -113,6 +136,18 @@
         "quote": "anschliessend einem der beiden Projektausschüsse der Kommission unterbreitet",
         "checked_at": "2026-11-25",
         "method": "page"
+      },
+      {
+        "source_url": "https://www.fls-fsp.ch/gesuche",
+        "quote": "Der FLS nimmt Beitragsgesuche in digitaler Form mit einem entsprechenden Projektdossier an info@fls-fsp.ch entgegen.",
+        "checked_at": "2026-11-26",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.fls-fsp.ch/gesuche",
+        "quote": "Aufgrund des Antrages des Projektausschusses wird dann die Gesamtkommission des FLS einen Entscheid treffen.",
+        "checked_at": "2026-11-26",
+        "method": "page"
       }
     ],
     "eligibility": [
@@ -139,6 +174,30 @@
         "quote": "Forschungsprojekte",
         "checked_at": "2026-11-25",
         "method": "page"
+      },
+      {
+        "source_url": "https://fls-fsp.ch/fileadmin/user_upload/pdf/4.1_projekte__die_der_fls_nicht_unterst_tzen_kann_v_9.5.19__d_.pdf",
+        "quote": "Projekte ohne direkten Bezug zur Erhaltung und Pflege traditioneller Kulturlandschaften (gemäss Art. 2 des Bundesbeschlusses über Finanzhilfen zur Erhaltung und Pflege naturnaher Kulturlandschaften), d.h. Projekte ohne konkrete Pflege- und Aufwertungsmassnahmen.",
+        "checked_at": "2026-11-26",
+        "method": "page"
+      },
+      {
+        "source_url": "https://fls-fsp.ch/fileadmin/user_upload/pdf/4.1_projekte__die_der_fls_nicht_unterst_tzen_kann_v_9.5.19__d_.pdf",
+        "quote": "Massnahmen in Park- und Gartenanlagen, die nicht für die Öffentlichkeit zugänglich sind",
+        "checked_at": "2026-11-26",
+        "method": "page"
+      },
+      {
+        "source_url": "https://fls-fsp.ch/fileadmin/user_upload/pdf/4.1_projekte__die_der_fls_nicht_unterst_tzen_kann_v_9.5.19__d_.pdf",
+        "quote": "Massnahmen auf Alpen, die nicht mehr bewirtschaftet werden",
+        "checked_at": "2026-11-26",
+        "method": "page"
+      },
+      {
+        "source_url": "https://fls-fsp.ch/fileadmin/user_upload/pdf/4.1_projekte__die_der_fls_nicht_unterst_tzen_kann_v_9.5.19__d_.pdf",
+        "quote": "Informations-, Bildungs- und Sensibilisierungsprojekte sowie Projekte der Öffentlichkeitsarbeit, die nicht in Zusammenhang stehen mit einem vom FLS bereits unterstützten, integralen Projekt",
+        "checked_at": "2026-11-26",
+        "method": "page"
       }
     ],
     "documents": [
@@ -164,6 +223,18 @@
         "source_url": "https://fls-fsp.ch/fileadmin/user_upload/pdf/4.3_richtlinien_fuer_beitragsgesuche_2023_v_18.10.23__d_.pdf",
         "quote": "Eigene Mittel der Trägerschaft, die für das Projekt eingesetzt werden 3.2 Ausschöpfung der ordentlichen Subventionsmöglichkeiten (Bund, Kanton, Gemeinde) 3.3 Angabe weiterer Finanzmittel (inkl. Angabe, bei welchen Stellen Gesuche hängig sind oder um eine Finanzhilfe angefragt wird).",
         "checked_at": "2026-11-25",
+        "method": "page"
+      },
+      {
+        "source_url": "https://fls-fsp.ch/fileadmin/user_upload/pdf/4.3_richtlinien_fuer_beitragsgesuche_2023_v_18.10.23__d_.pdf",
+        "quote": "Zeitplan für die Realisierung der Massnahmen",
+        "checked_at": "2026-11-26",
+        "method": "page"
+      },
+      {
+        "source_url": "https://fls-fsp.ch/fileadmin/user_upload/pdf/4.3_richtlinien_fuer_beitragsgesuche_2023_v_18.10.23__d_.pdf",
+        "quote": "Angabe über die langfristige Sicherstellung der durchgeführten Massnahmen",
+        "checked_at": "2026-11-26",
         "method": "page"
       }
     ]

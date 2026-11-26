@@ -19,20 +19,16 @@
   "co_finance_required": true,
   "reporting": null,
   "effort": {
-    "steps": [
-      "Contact a programme director about the project idea",
-      "Complete subsidy application",
-      "Completeness check and assessment"
-    ],
-    "due": [null, "2027-03-26", null]
+    "steps": ["Complete subsidy application", "Completeness check and assessment"],
+    "due": ["2027-03-26", null]
   },
   "eligibility": [
     {
-      "rule": "Project is Wadden-specific: meets point 1 plus two of points 2 to 4",
+      "rule": "Works in or benefits the Wadden area and meets two of three Wadden-specific tests in the funder FAQ.",
       "kind": "project"
     },
     {
-      "rule": "Project activities are not regular activities or statutory obligations",
+      "rule": "Seeks funding for activities beyond routine work and statutory obligations.",
       "kind": "project"
     },
     {
@@ -44,19 +40,31 @@
       "kind": "legal"
     },
     { "rule": "Eligible project costs of at least €200,000", "kind": "project" },
-    { "rule": "Project has at least a supra-local effect", "kind": "project" }
+    { "rule": "Project has at least a supra-local effect", "kind": "project" },
+    {
+      "rule": "At least 80% of total project financing must meet the fund’s evidence rules at application.",
+      "kind": "finances"
+    },
+    {
+      "rule": "Project results must stand on their own, independently of any larger project.",
+      "kind": "project"
+    }
   ],
-  "co_finance": { "min_share": 10 },
+  "co_finance": {
+    "min_share": 10,
+    "applies_to": "Eligible costs of activities that do not constitute state aid"
+  },
+  "after_award": { "reports": "final", "audit": true },
   "documents": [
     "Project plan",
-    "Budget",
+    "Detailed project budget and financing plan",
     "Business case",
     "Proof of committed financing, including applications, decisions or written commitments",
     "Authorization, when applying as an authorized representative",
     "Legally signed cooperation agreement, when applying as a collaboration",
     "Chamber of Commerce extract or statutes, for signature verification",
     "SME declaration or annual accounts, when applicable",
-    "State aid annex, when applicable",
+    "State aid annex explaining the assessment, by partner for joint projects",
     "De minimis declaration for all project partners, when applicable"
   ],
   "calls": [
@@ -127,17 +135,11 @@
     },
     "co_finance_required": {
       "source_url": "https://lokaleregelgeving.overheid.nl/CVDR754328/2",
-      "quote": "De subsidie voor activiteiten die naar het oordeel van het dagelijks bestuur geen staatssteun vormt in de zin van artikel 107, eerste lid, VWEU, bedraagt nooit meer dan 90% van de subsidiabele kosten",
-      "checked_at": "2026-11-25",
+      "quote": "Duidelijk moet worden hoe het gehele overige bedrag (buiten de Waddenfondssubsidie) wordt gedekt.",
+      "checked_at": "2026-11-26",
       "method": "page"
     },
     "effort": [
-      {
-        "source_url": "https://waddenfonds.nl/subsidie-aanvragen/subsidieregeling-stuw-23/",
-        "quote": "Neem in uw voorbereiding in ieder geval contact op met één van onze programmaregisseurs.",
-        "checked_at": "2026-11-25",
-        "method": "page"
-      },
       {
         "source_url": "https://waddenfonds.nl/subsidie-aanvragen/subsidieregeling-stuw-23/",
         "quote": "Voor de Subsidieregeling Thematische Uitvoering Waddenfonds (STUW'26) kunnen tussen maandag 2 maart 2026 (vanaf 10.00 uur) en vrijdag 26 maart 2027 (tot 12.00 uur) subsidieaanvragen worden ingediend.",
@@ -187,14 +189,34 @@
         "quote": "het project heeft ten minste een bovenlokaal effect",
         "checked_at": "2026-11-25",
         "method": "page"
+      },
+      {
+        "source_url": "https://lokaleregelgeving.overheid.nl/CVDR754328/2",
+        "quote": "volledig (100%) zullen worden gefinancierd/gedekt. Daarbij vereist het Waddenfonds dat minimaal 80% van de totale projectfinanciering hard moet zijn.",
+        "checked_at": "2026-11-26",
+        "method": "page"
+      },
+      {
+        "source_url": "https://lokaleregelgeving.overheid.nl/CVDR754328/2",
+        "quote": "Dat een project een eigenstandig karakter moet hebben betekent dat het eindresultaat van het subsidieproject op zichzelf moet staan en geen onlosmakelijk onderdeel mag zijn van een groter, meeromvattend project.",
+        "checked_at": "2026-11-26",
+        "method": "page"
       }
     ],
     "co_finance": {
       "source_url": "https://lokaleregelgeving.overheid.nl/CVDR754328/2",
       "quote": "De subsidie voor activiteiten die naar het oordeel van het dagelijks bestuur geen staatssteun vormt in de zin van artikel 107, eerste lid, VWEU, bedraagt nooit meer dan 90% van de subsidiabele kosten",
-      "checked_at": "2026-11-25",
+      "checked_at": "2026-11-26",
       "method": "page"
     },
+    "after_award": [
+      {
+        "source_url": "https://lokaleregelgeving.overheid.nl/CVDR459091/5",
+        "quote": "een controleverklaring van een registeraccountant of een Accountant-Administratieconsulent, die wordt vastgesteld met inachtneming van een door of vanwege het dagelijks bestuur vastgesteld Controleprotocol.",
+        "checked_at": "2026-11-26",
+        "method": "page"
+      }
+    ],
     "documents": [
       {
         "source_url": "https://waddenfonds.nl/wp-content/uploads/2024/04/Werkbestand-Format-projectplan-met-tabellen-indicatoren-en-streefwaarden-DB-versie-18-4-2024-opgeschoond.pdf",

@@ -21,7 +21,12 @@
       "rule": "Project occurs on public land owned by a city, county, state, or federal entity",
       "kind": "project"
     },
-    { "rule": "Works alongside a city, county, state, or federal land manager", "kind": "project" }
+    { "rule": "Works alongside a city, county, state, or federal land manager", "kind": "project" },
+    { "rule": "Project duration is at most six months", "kind": "project" },
+    {
+      "rule": "At least one other contributor supports at least 25% of the total project cost",
+      "kind": "project"
+    }
   ],
   "co_finance": { "min_share": 25, "in_kind": true },
   "after_award": { "reports": "final" },
@@ -117,6 +122,18 @@
         "source_url": "https://www.tpwf.org/projects/shmrf/",
         "quote": "eligible applicants include non-governmental organizations or government-sponsored partners working alongside city, county, state, or federal land managers.",
         "checked_at": "2026-11-25",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.tpwf.org/wp-content/uploads/2026/08/SHMRF-Application_July-2026.pdf",
+        "quote": "Anticipated Project Duration (not to exceed 6 months):",
+        "checked_at": "2026-11-26",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.tpwf.org/wp-content/uploads/2026/08/SHMRF-Application_July-2026.pdf",
+        "quote": "Project must include at least one other contributor supporting at least 25% of the total cost.",
+        "checked_at": "2026-11-26",
         "method": "page"
       }
     ],

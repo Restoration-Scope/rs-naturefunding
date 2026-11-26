@@ -70,16 +70,18 @@
     "min": 20000,
     "max": 150000
   },
-  "co_finance_required": null,
+  "co_finance_required": false,
   "reporting": "Annual and half-year progress reports, reviewed each year, against the project's objectives (outputs, ethics, environmental impact), plus a final report at the end of the award.",
   "effort": {
     "steps": [
       "Single-stage application on Flexi-Grant",
       "Initial review, expert scoring and sift meeting",
-      "Defra funding decision and due diligence"
+      "Defra funding decision and due diligence",
+      "Contact British embassies or high commissions in project countries"
     ],
     "due": [
       "2027-02-15",
+      null,
       null,
       null
     ]
@@ -102,7 +104,7 @@
       "kind": "project"
     },
     {
-      "rule": "Not a target of UK government sanctions and not a Russian organisation",
+      "rule": "No sanctioned applicant or project country; no Russian organisation involved",
       "kind": "legal"
     },
     {
@@ -114,12 +116,13 @@
       "kind": "other"
     },
     {
-      "rule": "Project focuses on environmental crime, including illegal wildlife trade",
+      "rule": "Gathers evidence to design an intervention addressing environmental crime, such as illegal wildlife trade",
       "kind": "project"
     }
   ],
   "after_award": {
-    "reports": "twice_yearly"
+    "reports": "twice_yearly",
+    "audit": true
   },
   "documents": [
     "Cover letter, 2 sides of A4 maximum",
@@ -127,8 +130,8 @@
     "Audited or independently examined accounts, two sets covering the last three financial years",
     "Workplan on the template",
     "Lead organisation's safeguarding policy, as one PDF",
-    "One-page CVs (or job descriptions if vacant) for all key project staff",
-    "Letters of support from all project partners, including the lead organisation"
+    "One-page CVs for named key staff or job descriptions for vacant posts",
+    "Letters from the lead and all project partners, or explain any missing partner letter"
   ],
   "calls": [
     {
@@ -194,6 +197,12 @@
       "checked_at": "2026-11-01",
       "method": "page"
     },
+    "co_finance_required": {
+      "source_url": "https://iwt.challengefund.org.uk/media/jonarh4p/2026-27-bcfs-finance-guidance-final-july26.pdf",
+      "quote": "Matched funding is not obligatory, but is highly desirable and will strengthen applications",
+      "checked_at": "2026-11-26",
+      "method": "page"
+    },
     "reporting": {
       "source_url": "https://iwt.challengefund.org.uk/media/hrenz1dk/r12-iwt-guidance-final-sept26-1.pdf",
       "quote": "Projects must provide Annual and Half Year progress reports that are reviewed each year.",
@@ -223,6 +232,12 @@
         "source_url": "https://iwt.challengefund.org.uk/media/hrenz1dk/r12-iwt-guidance-final-sept26-1.pdf",
         "quote": "Funding Decision: Prior to funding being awarded Defra reviews IWTAG’s recommendations, and due diligence checks.",
         "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://iwt.challengefund.org.uk/media/hrenz1dk/r12-iwt-guidance-final-sept26-1.pdf",
+        "quote": "All applicants are required to contact British embassies and high commissions in the project country/ies",
+        "checked_at": "2026-11-26",
         "method": "page"
       }
     ],
@@ -270,9 +285,9 @@
         "method": "page"
       },
       {
-        "source_url": "https://iwt.challengefund.org.uk/media/hrenz1dk/r12-iwt-guidance-final-sept26-1.pdf",
-        "quote": "Under Round 12, applications to the Evidence scheme must demonstrate a focus on environmental crime (inclusive of IWT).",
-        "checked_at": "2026-11-20",
+        "source_url": "https://iwt.challengefund.org.uk/how-to-apply/evidence-applications/",
+        "quote": "IWT Challenge Fund Evidence grants, ranging from £20,000 to £150,000, are intended for projects which gather evidence to design an intervention which addresses environmental crime (inclusive of IWT).",
+        "checked_at": "2026-11-26",
         "method": "page"
       }
     ],
@@ -331,6 +346,12 @@
         "source_url": "https://iwt.challengefund.org.uk/media/hrenz1dk/r12-iwt-guidance-final-sept26-1.pdf",
         "quote": "All projects are required to submit a Final Report at the end of the award.",
         "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://iwt.challengefund.org.uk/media/jonarh4p/2026-27-bcfs-finance-guidance-final-july26.pdf",
+        "quote": "The Lead Organisation must provide Defra with independent assurance that the grant has been spent in accordance with the terms of the Grant Agreement. The level of assurance is linked to the scale of the grant.",
+        "checked_at": "2026-11-26",
         "method": "page"
       }
     ]

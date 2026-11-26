@@ -170,11 +170,12 @@
   "reporting": null,
   "effort": {
     "steps": [
-      "Eligibility check: organisation details, registration and 3 years of accounts",
+      "Submit organisation information and documents for eligibility check",
       "Full proposal and budget, by invitation",
-      "Review and adjustments with GIZ, if selected"
+      "Proposal selection and notification",
+      "Review and discussion with GIZ, if selected"
     ],
-    "due": ["2027-01-08", "2027-03-16", null]
+    "due": ["2027-01-08", "2027-03-16", null, null]
   },
   "eligibility": [
     {
@@ -182,7 +183,7 @@
       "kind": "legal"
     },
     {
-      "rule": "Be based and registered in an ODA-eligible country, independent financially and legally, and not a non-ODA branch.",
+      "rule": "Financially and legally independent, with no parent organisation based in a non-ODA country if a branch",
       "kind": "legal"
     },
     {
@@ -206,16 +207,16 @@
       "kind": "capacity"
     },
     {
-      "rule": "Implement the project yourself, without a consortium or passing funds to other implementing organisations.",
-      "kind": "project"
-    },
-    {
       "rule": "Request no more than your average annual revenue over the past three years.",
       "kind": "finances",
       "request_cap": { "share": 100, "of": "revenue" }
     },
     {
       "rule": "The project is in one country, at local, sub-national or national level",
+      "kind": "project"
+    },
+    {
+      "rule": "Project lasts 12–24 months, or up to 36 months in justified exceptional cases",
       "kind": "project"
     }
   ],
@@ -326,8 +327,14 @@
       },
       {
         "source_url": "https://iki-small-grants.de/wp-content/uploads/2026/10/Funding-Information-2027-Call-8.pdf",
+        "quote": "The submitted proposals then undergo a selection process, and applicant organisations will be informed in due time.",
+        "checked_at": "2026-11-26",
+        "method": "page"
+      },
+      {
+        "source_url": "https://iki-small-grants.de/wp-content/uploads/2026/10/Funding-Information-2027-Call-8.pdf",
         "quote": "Please note that a review phase, including close exchange between the applicant organisation and GIZ, will follow the final selection for funding.",
-        "checked_at": "2026-11-25",
+        "checked_at": "2026-11-26",
         "method": "page"
       }
     ],
@@ -364,12 +371,6 @@
       },
       {
         "source_url": "https://iki-small-grants.de/wp-content/uploads/2026/10/Funding-Information-2027-Call-8.pdf",
-        "quote": "The applicant organisations must implement the projects themselves. Consortia are not eligible and forwarding funds to other implementing organisations is not permitted.",
-        "checked_at": "2026-11-24",
-        "method": "page"
-      },
-      {
-        "source_url": "https://iki-small-grants.de/wp-content/uploads/2026/10/Funding-Information-2027-Call-8.pdf",
         "quote": "Furthermore, the requested funding volume must not exceed the average annual revenue of the implementing organisation over the past three years.",
         "checked_at": "2026-11-25",
         "method": "page"
@@ -378,6 +379,12 @@
         "source_url": "https://iki-small-grants.de/wp-content/uploads/2026/10/Funding-Information-2027-Call-8.pdf",
         "quote": "Projects must be implemented on a local, sub-national or national level. No multi-country projects can be funded.",
         "checked_at": "2026-11-25",
+        "method": "page"
+      },
+      {
+        "source_url": "https://iki-small-grants.de/wp-content/uploads/2026/10/Funding-Information-2027-Call-8.pdf",
+        "quote": "Projects must have a duration of at least twelve months and no more than two years. In exceptional cases, durations of up to three years can be acceptable if justified appropriately.",
+        "checked_at": "2026-11-26",
         "method": "page"
       }
     ],

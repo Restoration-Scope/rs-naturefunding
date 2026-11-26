@@ -28,23 +28,38 @@
   },
   "pool": { "currency": "GBP", "value": 1600000, "period": "year" },
   "co_finance_required": false,
+  "consortium_required": false,
   "reporting": "A project update when half the grant is spent and a final report to release the last payment; no set format, usually under two A4 pages.",
   "effort": {
-    "steps": ["Expression of interest (online form, rolling)", "Full proposal, by invitation only"]
+    "steps": [
+      "Expression of interest (online form, rolling)",
+      "Full proposal, by invitation only",
+      "Discuss eligibility first if outside East Suffolk and no clear benefit to it",
+      "Expression of interest screening and eligibility review",
+      "Board of Trustees decision"
+    ]
   },
   "eligibility": [
     { "rule": "Not-for-profit: has a bank account in the organisation's name", "kind": "legal" },
     { "rule": "Not-for-profit: has a governing document", "kind": "legal" },
     {
-      "rule": "Not-for-profit: has three or more unrelated trustees or directors at different addresses",
+      "rule": "Nonprofit has at least 3 unrelated trustees, directors or equivalent decision-makers living at different addresses",
       "kind": "legal"
     },
     {
-      "rule": "Project is in East Suffolk or clearly linked to its habitats, species or communities",
+      "rule": "Can evidence work benefiting nature and people for the public benefit",
+      "kind": "track_record"
+    },
+    {
+      "rule": "Private landowners, companies and other applicants show public benefit and only incidental private or commercial gain",
+      "kind": "legal"
+    },
+    {
+      "rule": "Coastal or marine projects are adjacent to the Suffolk coastline",
       "kind": "project"
     }
   ],
-  "after_award": { "reports": "interim_and_final" },
+  "after_award": { "reports": "unspecified" },
   "requirements_checked": "2026-11-17",
   "calls": [
     {
@@ -107,6 +122,12 @@
       "checked_at": "2026-11-25",
       "method": "page"
     },
+    "consortium_required": {
+      "source_url": "https://www.eastsuffolktrust.org/application-guidelines",
+      "quote": "There is no formal requirement for match or partnership funding.",
+      "checked_at": "2026-11-26",
+      "method": "page"
+    },
     "reporting": {
       "source_url": "https://www.eastsuffolktrust.org/application-guidelines",
       "quote": "in most cases we will require a project update when 50% of the grant has been spent, and a final project report in order to release the final 20% of funds.",
@@ -116,14 +137,32 @@
     "effort": [
       {
         "source_url": "https://www.eastsuffolktrust.org/funding",
-        "quote": "All applicants must first submit an Expression of Interest (EOI), which we accept on a rolling basis.",
+        "quote": "If your EOI is successful, you will be invited to submit a full application.",
         "checked_at": "2026-11-25",
         "method": "page"
       },
       {
-        "source_url": "https://www.eastsuffolktrust.org/funding",
-        "quote": "If your EOI is successful, you will be invited to submit a full application.",
-        "checked_at": "2026-11-25",
+        "source_url": "https://www.eastsuffolktrust.org/application-guidelines",
+        "quote": "All applicants must first submit an expression of Interest. These are accepted on a rolling basis, with no deadlines. Full applications are by invite only, with final funding decisions aligned to our quarterly Board of Trustees meetings. 1. EXPRESSION OF INTEREST All applications must first submit an expression of interest (EOI) via our online form.",
+        "checked_at": "2026-11-26",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.eastsuffolktrust.org/application-guidelines",
+        "quote": "If your project is based elsewhere in Suffolk or its immediate surrounding area, with no clear benefit for East Suffolk, you must contact us before applying to discuss eligibility",
+        "checked_at": "2026-11-26",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.eastsuffolktrust.org/application-guidelines",
+        "quote": "All EOIs that pass initial screening will be assessed against our eligibility criteria by one or more reviewers.",
+        "checked_at": "2026-11-26",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.eastsuffolktrust.org/application-guidelines",
+        "quote": "Full proposals are all decided by our board of trustees, who meet four times per year.",
+        "checked_at": "2026-11-26",
         "method": "page"
       }
     ],
@@ -148,16 +187,28 @@
       },
       {
         "source_url": "https://www.eastsuffolktrust.org/application-guidelines",
-        "quote": "If your project is based partially or wholly in East Suffolk, or if it has a clear link to habitats, species or communities in East Suffolk, then you are eligible to apply.",
-        "checked_at": "2026-11-25",
+        "quote": "To be eligible for funding, you or your organisation must be able to demonstrate evidence of work delivering for nature and people, for public benefit.",
+        "checked_at": "2026-11-26",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.eastsuffolktrust.org/application-guidelines",
+        "quote": "If you are a private landowner, for-profit company, or other organisation, you may be eligible to apply where you can clearly demonstrate that your proposed work will deliver public benefit for nature and people, and that any personal, private or commercial benefit is incidental.",
+        "checked_at": "2026-11-26",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.eastsuffolktrust.org/application-guidelines",
+        "quote": "Are coastal and marine projects in scope? Yes, provided that they are adjacent to the Suffolk coastline.",
+        "checked_at": "2026-11-26",
         "method": "page"
       }
     ],
     "after_award": [
       {
         "source_url": "https://www.eastsuffolktrust.org/application-guidelines",
-        "quote": "in most cases we will require a project update when 50% of the grant has been spent, and a final project report in order to release the final 20% of funds.",
-        "checked_at": "2026-11-25",
+        "quote": "Your funding offer will contain details of the reporting requirements for your project.",
+        "checked_at": "2026-11-26",
         "method": "page"
       }
     ]
