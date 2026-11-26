@@ -17,29 +17,35 @@
   "amount": null,
   "co_finance_required": null,
   "reporting": "Grantees must send an activity or end-of-project report and financial statements at the end of the project.",
-  "effort": { "steps": ["Online application"] },
+  "effort": { "steps": ["Online application", "Selection committee review"] },
   "eligibility": [
     { "rule": "Organisation headquartered in Switzerland", "kind": "legal" },
     {
       "rule": "Not a business, sole trader, sports club, university or public body (cantonal/municipal museums excepted)",
       "kind": "legal"
     },
-    { "rule": "Project is within the stated environmental support axes", "kind": "project" },
+    { "rule": "Project addresses aquatic ecosystems or soil ecosystems", "kind": "project" },
     { "rule": "Project has not already taken place", "kind": "project" },
-    { "rule": "Project is not a construction or renovation project", "kind": "project" },
+    {
+      "rule": "No construction, renovation, conferences, seminars, charity fundraisers, nonprofit setup, deficit cover or sponsorship",
+      "kind": "project"
+    },
     { "rule": "Applies at least four months before the project starts", "kind": "project" },
-    { "rule": "No other FPFS application from the organisation this year", "kind": "other" }
+    { "rule": "No other FPFS application from the organisation this year", "kind": "other" },
+    {
+      "rule": "Past recipients submit the required activity or final report and financial statements before applying again",
+      "kind": "project"
+    }
   ],
   "after_award": { "reports": "final" },
   "documents": [
     "Project summary letter",
     "Complete project description",
-    "Organisation and project budget",
+    "Overall organisation budget and detailed project budget",
     "Project financing plan",
     "Last financial report",
     "Last activity report",
     "Signed organisation statutes",
-    "Valid tax exemption certificate, if available",
     "Bank-issued account document"
   ],
   "calls": [
@@ -103,6 +109,12 @@
         "quote": "Les demandes doivent être exclusivement adressées en ligne via ce formulaire.",
         "checked_at": "2026-11-25",
         "method": "page"
+      },
+      {
+        "source_url": "https://www.fpfs.ch/pages/deposer-une-demande",
+        "quote": "Les membres des comités de sélection se réunissent régulièrement afin d‘examiner les demandes de soutien.",
+        "checked_at": "2026-11-26",
+        "method": "page"
       }
     ],
     "eligibility": [
@@ -119,9 +131,9 @@
         "method": "page"
       },
       {
-        "source_url": "https://www.fpfs.ch/pages/deposer-une-demande",
-        "quote": "Dans le domaine de l'environnement en Suisse, la FPFS n'accepte pas de demandes en dehors des axes soutien détaillés dans la rubrique Action humanitaire et Environnement.",
-        "checked_at": "2026-11-25",
+        "source_url": "https://www.fpfs.ch/pages/action-humanitaire-et-environnement",
+        "quote": "La Fondation concentre son engagement pour l’Environnement en Suisse sur deux thèmes prioritaires : les écosystèmes aquatiques (lacs, rivières, zones humides) et les écosystèmes des sols.",
+        "checked_at": "2026-11-26",
         "method": "page"
       },
       {
@@ -132,8 +144,8 @@
       },
       {
         "source_url": "https://www.fpfs.ch/pages/deposer-une-demande",
-        "quote": "Projet de construction/rénovation",
-        "checked_at": "2026-11-25",
+        "quote": "Projet de construction/rénovation Conférence ou séminaire Projet de collecte de fonds caritatifs Création d’association/fondation Couverture de déficits Sponsoring",
+        "checked_at": "2026-11-26",
         "method": "page"
       },
       {
@@ -146,6 +158,12 @@
         "source_url": "https://www.fpfs.ch/pages/deposer-une-demande",
         "quote": "La FPFS n'accepte qu'une seule demande par an et par organisation.",
         "checked_at": "2026-11-25",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.fpfs.ch/pages/deposer-une-demande",
+        "quote": "Important : un rapport d’activités et/ou de fin de projet ainsi que les états financiers devront obligatoirement être envoyés à la fin du projet. Toute nouvelle demande ne pourra pas être étudiée en l’absence de ces documents.",
+        "checked_at": "2026-11-26",
         "method": "page"
       }
     ],
@@ -174,6 +192,12 @@
         "source_url": "https://www.fpfs.ch/pages/deposer-une-demande",
         "quote": "Document justificatif du compte bancaire avec en-tête de la banque (Attestation de compte, Relevé d'identité bancaire ou Relevé de compte)",
         "checked_at": "2026-11-25",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.fpfs.ch/pages/deposer-une-demande",
+        "quote": "Budget comprenant : - Budget global de votre organisation - Budget détaillé des activités/projet pour lesquels la Fondation est sollicitée",
+        "checked_at": "2026-11-26",
         "method": "page"
       }
     ]

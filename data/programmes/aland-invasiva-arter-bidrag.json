@@ -17,7 +17,7 @@
   "amount": null,
   "co_finance_required": null,
   "reporting": null,
-  "effort": { "steps": ["Application"] },
+  "effort": { "steps": ["Application for rolling review"] },
   "eligibility": [
     { "rule": "Voluntary-work grants: the work benefits a larger region", "kind": "project" },
     {
@@ -27,12 +27,24 @@
     {
       "rule": "Local eradication planning is done in close cooperation with the wildlife unit",
       "kind": "project"
+    },
+    {
+      "rule": "Voluntary work: hunting or public-benefit conservation association, or individual with a hunting association’s opinion",
+      "kind": "legal"
+    },
+    {
+      "rule": "Local raccoon dog eradication: an association working with the Åland Government in a defined area",
+      "kind": "legal"
+    },
+    {
+      "rule": "Multi-year projects may budget for two years initially, then apply annually to extend",
+      "kind": "project"
     }
   ],
-  "after_award": { "reports": "final" },
+  "after_award": { "reports": "other" },
   "documents": [
-    "Budget for the application period with specified costs",
-    "Project plan describing how the project reduces invasive species impact"
+    "Costed budget for the application period, with estimated travel costs if claimed",
+    "Project plan explaining impact reduction and affected area, with a defined application period"
   ],
   "calls": [
     {
@@ -109,27 +121,45 @@
         "quote": "Planeringen ska utföras i nära samarbete med landskapsregeringens enhet för jakt- och viltvård.",
         "checked_at": "2026-11-25",
         "method": "page"
+      },
+      {
+        "source_url": "https://www.regeringen.ax/sites/default/files/attachments/page/Riktlinjer%20f%C3%B6r%20beviljande%20av%20underst%C3%B6d%20f%C3%B6r%20att%20underst%C3%B6da%20arbete%20mot%20invasiva%202026%20.pdf",
+        "quote": "Landskapsregeringens enhet för jakt- och viltvård kan understöda frivilligt arbete mot invasiva däggdjur och fåglar genom att bevilja understöd till jaktvårdsförening eller annan allmännyttig förening som arbetar med vilt- och naturvård, eller till privatperson, efter inhämtande av jaktvårdsförenings yttrande, för arbete mot invasiva arter som är till nytta för en större region.",
+        "checked_at": "2026-11-26",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.regeringen.ax/sites/default/files/attachments/page/Riktlinjer%20f%C3%B6r%20beviljande%20av%20underst%C3%B6d%20f%C3%B6r%20att%20underst%C3%B6da%20arbete%20mot%20invasiva%202026%20.pdf",
+        "quote": "Enligt principerna i 3.1 – 3.2 beviljas understöd till förening som i samarbete med Ålands landskapsregering utför arbete i syfte att säkerställa och bibehålla en lokal utrotning av mårdhund inom avgränsade områden.",
+        "checked_at": "2026-11-26",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.regeringen.ax/sites/default/files/attachments/page/Riktlinjer%20f%C3%B6r%20beviljande%20av%20underst%C3%B6d%20f%C3%B6r%20att%20underst%C3%B6da%20arbete%20mot%20invasiva%202026%20.pdf",
+        "quote": "Om ansökan gäller fleråriga projekt kan budgeten omfatta två år från första ansökan, varefter projektperioden kan förlängas ett år i taget med årliga ansökningar.",
+        "checked_at": "2026-11-26",
+        "method": "page"
       }
     ],
     "after_award": [
       {
         "source_url": "https://www.regeringen.ax/sites/default/files/attachments/page/Riktlinjer%20f%C3%B6r%20beviljande%20av%20underst%C3%B6d%20f%C3%B6r%20att%20underst%C3%B6da%20arbete%20mot%20invasiva%202026%20.pdf",
-        "quote": "Efter avslutad projektperiod ska projektet antingen slutredovisas eller förlängas genom ny ansökan.",
-        "checked_at": "2026-11-25",
+        "quote": "Efter avslutad period ska användningen av beviljade medel redovisas antingen genom slutredovisning av projekt, eller genom förlängning av det pågående, vilket ska framgå av landskapsregeringens beslut.",
+        "checked_at": "2026-11-26",
         "method": "page"
       }
     ],
     "documents": [
       {
         "source_url": "https://www.regeringen.ax/sites/default/files/attachments/page/Riktlinjer%20f%C3%B6r%20beviljande%20av%20underst%C3%B6d%20f%C3%B6r%20att%20underst%C3%B6da%20arbete%20mot%20invasiva%202026%20.pdf",
-        "quote": "Ansökan ska innehålla budget för ansökningsperioden med specificerade kostnader.",
-        "checked_at": "2026-11-25",
+        "quote": "Ansökan ska innehålla budget för ansökningsperioden med specificerade kostnader. - Budgeten ska specificera kostnader så detaljerat som möjligt. - Om ansökan omfattar ersättning för resekostnader ska en uppskattning av dessa ingå.",
+        "checked_at": "2026-11-26",
         "method": "page"
       },
       {
         "source_url": "https://www.regeringen.ax/sites/default/files/attachments/page/Riktlinjer%20f%C3%B6r%20beviljande%20av%20underst%C3%B6d%20f%C3%B6r%20att%20underst%C3%B6da%20arbete%20mot%20invasiva%202026%20.pdf",
-        "quote": "Till ansökan ska bifogas en plan som beskriver på vilket sätt projektet bidrar till att minska påverkan av invasiva arter.",
-        "checked_at": "2026-11-25",
+        "quote": "Till ansökan ska bifogas en plan som beskriver på vilket sätt projektet bidrar till att minska påverkan av invasiva arter. - Ansökan ska specificera en avgränsad period och projektplanen ska också beskriva området som berörs av åtgärderna.",
+        "checked_at": "2026-11-26",
         "method": "page"
       }
     ]

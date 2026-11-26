@@ -28,14 +28,32 @@
     ]
   },
   "eligibility": [
-    { "rule": "Operate as a non-profit organisation", "kind": "legal" },
     { "rule": "Have an independent board with at least three members", "kind": "capacity" },
     {
       "rule": "Have a project with a clear start, end, budget and funding plan",
       "kind": "project"
     },
-    { "rule": "Have impact beyond only the local level", "kind": "project" },
-    { "rule": "Do not primarily conduct or establish commercial activities", "kind": "legal" }
+    {
+      "rule": "Have broader impact or a clear route for a local project to have wider effects",
+      "kind": "project"
+    },
+    {
+      "rule": "Project does not primarily undertake or start commercial activities",
+      "kind": "project"
+    },
+    { "rule": "Applicant is based and active in the Netherlands", "kind": "legal" },
+    {
+      "rule": "No funding individuals, individual study or training, or projects mainly for emergency relief, basic needs or aid",
+      "kind": "project"
+    },
+    {
+      "rule": "Project does not mainly buy, maintain or equip property, or produce a conference, festival, documentary or film",
+      "kind": "project"
+    },
+    {
+      "rule": "Own fundraising or capital accumulation is not the project’s primary aim",
+      "kind": "project"
+    }
   ],
   "co_finance": { "min_share": 75 },
   "calls": [
@@ -96,8 +114,8 @@
     },
     "co_finance_required": {
       "source_url": "https://www.triodosfoundation.nl/aanvragen",
-      "quote": "En er is minimaal één andere partij die financieel bijdraagt of daar is concreet zicht op.",
-      "checked_at": "2026-11-25",
+      "quote": "Daarbij dekken we maximaal 25% van je begroting.",
+      "checked_at": "2026-11-26",
       "method": "page"
     },
     "effort": [
@@ -129,12 +147,6 @@
     "eligibility": [
       {
         "source_url": "https://www.triodosfoundation.nl/aanvragen",
-        "quote": "en je organisatie werkt non-profit.",
-        "checked_at": "2026-11-25",
-        "method": "page"
-      },
-      {
-        "source_url": "https://www.triodosfoundation.nl/aanvragen",
         "quote": "heeft een onafhankelijk bestuur met minimaal drie leden",
         "checked_at": "2026-11-25",
         "method": "page"
@@ -155,6 +167,30 @@
         "source_url": "https://www.triodosfoundation.nl/aanvragen",
         "quote": "vooral commerciële activiteiten uitvoeren of willen opzetten",
         "checked_at": "2026-11-25",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.triodosfoundation.nl/aanvragen",
+        "quote": "is in Nederland gevestigd en actief",
+        "checked_at": "2026-11-26",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.triodosfoundation.nl/aanvragen",
+        "quote": "individuele personen, studies of individuele leertrajecten financieren noodhulp, basale levensbehoeften of ontwikkelingshulp als hoofdthema hebben",
+        "checked_at": "2026-11-26",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.triodosfoundation.nl/aanvragen",
+        "quote": "vooral vastgoed aankopen, onderhouden of inrichten primair een congres, festival, documentaire of film willen organiseren",
+        "checked_at": "2026-11-26",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.triodosfoundation.nl/aanvragen",
+        "quote": "eigen fondsenwerving of vermogensvorming als hoofddoel hebben",
+        "checked_at": "2026-11-26",
         "method": "page"
       }
     ],

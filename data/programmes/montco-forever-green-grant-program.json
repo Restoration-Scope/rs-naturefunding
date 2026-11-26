@@ -27,7 +27,8 @@
       "Pre-Application Form",
       "Project introduction to OSB",
       "Full application",
-      "MCPC staff completeness review"
+      "County staff completeness review and Open Space Board recommendation",
+      "County Commissioners funding decision, if recommended by the board"
     ],
     "more_after": true
   },
@@ -38,7 +39,7 @@
     },
     {
       "rule": "Nonprofits include Montgomery County in their geographic program area",
-      "kind": "other"
+      "kind": "project"
     },
     {
       "rule": "Not an authority, commission, school district, special taxing district, private organization or individual",
@@ -52,22 +53,15 @@
       "rule": "Uses acquired land as open space, not prohibited public-facility or utility uses",
       "kind": "project"
     },
+    { "rule": "Provide appropriate public access in most cases", "kind": "project" },
     {
-      "rule": "Gives some form of public access, unless limits protect sensitive ecological features",
+      "rule": "County funding cannot cover land or easement acquisition costs incurred before the award",
       "kind": "project"
     },
     {
-      "rule": "Land not yet bought: acquisition costs before the grant award are not funded",
+      "rule": "Request no more than fair market value, supported by an independent appraisal completed within 18 months of applying",
       "kind": "project"
     }
-  ],
-  "documents": [
-    "Signed application letter",
-    "Resolution of authorization",
-    "Project narrative",
-    "Project maps and photos",
-    "Property appraisal",
-    "Project funding information"
   ],
   "calls": [
     {
@@ -151,8 +145,14 @@
       },
       {
         "source_url": "https://assets.montgomerycountypa.gov/files/2026-10/Montgomery%20County%20Open%20Space%20Grant%20Program%202026%20Final_02_OPT.pdf",
-        "quote": "Applications are reviewed by MCPC staff for completeness.",
-        "checked_at": "2026-11-25",
+        "quote": "Applications are reviewed by MCPC staff for completeness. If additional information is required, the applicant will be contacted. 6. At a subsequent OSB meeting, the OSB provides its funding recommendation.",
+        "checked_at": "2026-11-26",
+        "method": "page"
+      },
+      {
+        "source_url": "https://assets.montgomerycountypa.gov/files/2026-10/Montgomery%20County%20Open%20Space%20Grant%20Program%202026%20Final_02_OPT.pdf",
+        "quote": "Applications recommended for approval by the OSB are presented to the County Commissioners for their consideration and action at a duly advertised public meeting.",
+        "checked_at": "2026-11-26",
         "method": "page"
       }
     ],
@@ -198,47 +198,21 @@
         "quote": "Land and easement acquisition costs incurred prior to the grant award are not eligible for county grant funding/reimbursement.",
         "checked_at": "2026-11-25",
         "method": "page"
-      }
-    ],
-    "documents": [
-      {
-        "source_url": "https://assets.montgomerycountypa.gov/files/2026-10/Montgomery%20County%20Open%20Space%20Grant%20Program%202026%20Final_02_OPT.pdf",
-        "quote": "Signed Application Letter: For municipal applicants, the letter should be signed by the head of the governing body. For nonprofit organization applicants, the letter should be signed by the president or chair of the organization. 3. Resolution of Authorization: An official resolution authorizing the applicant to submit the application is required.",
-        "checked_at": "2026-11-25",
-        "method": "page"
       },
       {
         "source_url": "https://assets.montgomerycountypa.gov/files/2026-10/Montgomery%20County%20Open%20Space%20Grant%20Program%202026%20Final_02_OPT.pdf",
-        "quote": "The Project Narrative shall be no more than six (6) pages in length (single spaced, 12-point type).",
-        "checked_at": "2026-11-25",
-        "method": "page"
-      },
-      {
-        "source_url": "https://assets.montgomerycountypa.gov/files/2026-10/Montgomery%20County%20Open%20Space%20Grant%20Program%202026%20Final_02_OPT.pdf",
-        "quote": "Provide map of the municipality showing the exact location of the proposed acquisition; a property or tax map showing the property size, configuration and relationship to abutting properties and a few representative photos of the subject property.",
-        "checked_at": "2026-11-25",
-        "method": "page"
-      },
-      {
-        "source_url": "https://assets.montgomerycountypa.gov/files/2026-10/Montgomery%20County%20Open%20Space%20Grant%20Program%202026%20Final_02_OPT.pdf",
-        "quote": "Provide a complete copy of the property appraisal used to establish fair market value.",
-        "checked_at": "2026-11-25",
-        "method": "page"
-      },
-      {
-        "source_url": "https://assets.montgomerycountypa.gov/files/2026-10/Montgomery%20County%20Open%20Space%20Grant%20Program%202026%20Final_02_OPT.pdf",
-        "quote": "Provide information outlining anticipated funding sources and amounts, including the grant being requested from the county and the required 25% match.",
-        "checked_at": "2026-11-25",
+        "quote": "The grant amount must be equal to or less than the fair market value of the land as established by a complete and independent professional appraisal. The appraisal shall be completed within the 18month period preceding the application date.",
+        "checked_at": "2026-11-26",
         "method": "page"
       }
     ],
     "co_finance": {
       "source_url": "https://assets.montgomerycountypa.gov/files/2026-10/Montgomery%20County%20Open%20Space%20Grant%20Program%202026%20Final_02_OPT.pdf",
       "quote": "The minimum project match must be at least 25% of the grant award (e.g., a $100,000 grant request will require a $25,000 match).",
-      "checked_at": "2026-11-25",
+      "checked_at": "2026-11-26",
       "method": "page"
     }
   },
   "checked_at": "2026-11-25",
-  "co_finance": { "ratio": "1:4" }
+  "co_finance": { "min_share": 20 }
 }
