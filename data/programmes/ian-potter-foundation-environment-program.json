@@ -10,12 +10,12 @@
   "applicant_types": null,
   "geography": { "scope": "countries", "countries": ["AU"] },
   "access": "direct",
-  "window": "unspecified",
+  "window": "fixed",
   "amount": {
     "currency": "AUD",
     "min": 100000,
-    "per": "year",
     "typical": true,
+    "per": "year",
     "note": "Grants usually multi-year"
   },
   "co_finance_required": null,
@@ -63,7 +63,6 @@
       "status": "upcoming",
       "opens": null,
       "deadline": null,
-      "expected": "2028",
       "evidence": {
         "status": {
           "source_url": "https://www.ianpotter.org.au/what-we-support/program-areas/environment",
@@ -71,7 +70,9 @@
           "checked_at": "2026-11-26",
           "method": "page"
         }
-      }
+      },
+      "expected": "2028",
+      "note": "The Foundation rarely awards the full amount of any project. Please ensure that you have alternative providers of funding."
     }
   ],
   "evidence": {
@@ -84,6 +85,12 @@
     "access": {
       "source_url": "https://www.ianpotter.org.au/what-we-support/program-areas/environment",
       "quote": "Grant requests for this program area are considered via a two-stage Expression of Interest process.",
+      "checked_at": "2026-11-26",
+      "method": "page"
+    },
+    "window": {
+      "source_url": "https://www.ianpotter.org.au/what-we-support/program-areas/environment",
+      "quote": "EOIs for 2026 have now closed. This program area will next open in 2028.",
       "checked_at": "2026-11-26",
       "method": "page"
     },
