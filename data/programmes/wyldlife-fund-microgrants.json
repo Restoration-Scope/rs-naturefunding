@@ -16,7 +16,7 @@
   "reporting": null,
   "effort": {
     "steps": [
-      "Contact the fund to discuss the proposal and request an application",
+      "Request the application and discuss the proposal if applying for the first time",
       "Application, by December 1",
       "Evaluation, first come first served"
     ]
@@ -30,7 +30,14 @@
       "rule": "Support and advance The WYldlife Fund's mission and fit its wildlife parameters",
       "kind": "project"
     },
-    { "rule": "Receive no more than one microgrant per calendar year", "kind": "other" }
+    {
+      "rule": "Has not yet received a microgrant in the calendar year of this request.",
+      "kind": "other"
+    },
+    {
+      "rule": "No year-to-year operating support. For a new ongoing expense, explain how it will be sustained.",
+      "kind": "project"
+    }
   ],
   "calls": [
     {
@@ -132,6 +139,12 @@
         "source_url": "https://www.thewyldlifefund.org/microgrants",
         "quote": "Organizations may only receive one (1) microgrant per calendar year.",
         "checked_at": "2026-11-25",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.thewyldlifefund.org/microgrants",
+        "quote": "Requests should be for a one-time expense. Microgrants will not sustain operating or programming costs from year-to-year. Microgrant requests to cover a portion of a new ongoing expense must explain the plan for future sustainability.",
+        "checked_at": "2026-11-26",
         "method": "page"
       }
     ]

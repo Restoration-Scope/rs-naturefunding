@@ -25,7 +25,10 @@
     ]
   },
   "eligibility": [
-    { "rule": "The project is performed by or on behalf of a First Nation.", "kind": "project" },
+    {
+      "rule": "Applies through a participating First Nation’s qualified governing body or a delegated conservation organisation.",
+      "kind": "legal"
+    },
     {
       "rule": "The recipient is a qualified donee, except a non-qualified donee providing required information and documentation.",
       "kind": "legal"
@@ -39,28 +42,27 @@
       "kind": "project"
     },
     {
-      "rule": "The conservation project is in the Project Area, except capacity building for prospective initiatives within it.",
-      "kind": "project"
-    },
-    {
       "rule": "A protected-area project is consistent with all approved management plans for that area.",
       "kind": "project"
     },
+    { "rule": "The project is not open-net-cage finfish aquaculture.", "kind": "project" },
     {
-      "rule": "An EBM project is consistent with legal objectives adopted through ministerial order or regulatory power.",
+      "rule": "Requests no more than $400,000 in funding for a capital project.",
       "kind": "project"
     },
     {
-      "rule": "Project activities are consistent with provincial laws, regulations, determinations, and policies.",
-      "kind": "legal"
+      "rule": "The requested funds are already available in the participating First Nation’s allocation.",
+      "kind": "project"
     }
   ],
-  "after_award": { "reports": "final" },
+  "after_award": { "reports": "unspecified" },
   "documents": [
     "Project plan",
-    "Council or Board resolution of support",
+    "Signed resolution from the participating First Nation’s council",
     "Detailed capital expenditure budget with valid quotations, if infrastructure",
-    "Detailed multi-year operating and maintenance budget, if infrastructure"
+    "Detailed multi-year operating and maintenance budget, if infrastructure",
+    "Preferred-supplier quotes confirming the total project budget",
+    "Signed Board resolution if a separate Board directs the work plan"
   ],
   "calls": [
     {
@@ -121,9 +123,9 @@
     ],
     "eligibility": [
       {
-        "source_url": "https://coastfunds.ca/wp-content/uploads/2025/02/CCEFF-Funding-Approval-Policy-Mar-31-2026.pdf",
-        "quote": "Projects must be performed by or on behalf of a First Nation.",
-        "checked_at": "2026-11-25",
+        "source_url": "https://coastfunds.ca/apply/conservation-project-funding/conservation-project-eligibility-guidelines-and-fund-policies/",
+        "quote": "Eligible applicants include: The governing bodies of participating First Nations specified in related agreements that are listed as a qualified donee with the Canada Revenue Agency Stewardship offices, resource management departments, or non-profit societies with delegated responsibility for conservation on behalf of a participating First Nation.",
+        "checked_at": "2026-11-26",
         "method": "page"
       },
       {
@@ -146,26 +148,26 @@
       },
       {
         "source_url": "https://coastfunds.ca/apply/conservation-project-funding/conservation-project-eligibility-guidelines-and-fund-policies/",
-        "quote": "Conservation projects (i.e. habitat restoration, conservancy management) that occur outside the Project Area except where projects are focused on capacity building specific to prospective conservation initiatives (i.e. certified training, workforce development) within the Project Area",
-        "checked_at": "2026-11-25",
-        "method": "page"
-      },
-      {
-        "source_url": "https://coastfunds.ca/apply/conservation-project-funding/conservation-project-eligibility-guidelines-and-fund-policies/",
         "quote": "Projects in Protected Areas not consistent with all approved management plans for the area",
         "checked_at": "2026-11-25",
         "method": "page"
       },
       {
-        "source_url": "https://coastfunds.ca/wp-content/uploads/2025/02/CCEFF-Funding-Approval-Policy-Mar-31-2026.pdf",
-        "quote": "Conservation/stewardship projects in respect of EBM must be consistent with any legal objectives adopted through Ministerial order or regulatory power.",
-        "checked_at": "2026-11-25",
+        "source_url": "https://coastfunds.ca/apply/conservation-project-funding/conservation-project-eligibility-guidelines-and-fund-policies/",
+        "quote": "Open net cage finfish aquaculture",
+        "checked_at": "2026-11-26",
         "method": "page"
       },
       {
-        "source_url": "https://coastfunds.ca/apply/conservation-project-funding/conservation-project-eligibility-guidelines-and-fund-policies/",
-        "quote": "Activities inconsistent with provincial laws, regulation, determinations, or policies",
-        "checked_at": "2026-11-25",
+        "source_url": "https://coastfunds.ca/wp-content/uploads/2025/02/CCEFF-Funding-Approval-Policy-Mar-31-2026.pdf",
+        "quote": "The maximum funding approval for any capital project may not exceed $400,000.",
+        "checked_at": "2026-11-26",
+        "method": "page"
+      },
+      {
+        "source_url": "https://coastfunds.ca/wp-content/uploads/2025/02/CCEFF-Funding-Approval-Policy-Mar-31-2026.pdf",
+        "quote": "Under no circumstances will funding be approved if it is not yet available in a Nation’s allocation.",
+        "checked_at": "2026-11-26",
         "method": "page"
       }
     ],
@@ -174,6 +176,12 @@
         "source_url": "https://coastfunds.ca/apply/conservation-project-funding/conservation-project-funding-starting-your-application/",
         "quote": "For all approved projects, recipients are required to provide sign off on a final report following completion of the project that provides:",
         "checked_at": "2026-11-25",
+        "method": "page"
+      },
+      {
+        "source_url": "https://coastfunds.ca/wp-content/uploads/2025/02/CCEFF-Funding-Approval-Policy-Mar-31-2026.pdf",
+        "quote": "The applicant will be required to submit regular reports that demonstrate appropriate monitoring and evaluation, including the degree of success in achieving stated objectives as presented in the final project application.",
+        "checked_at": "2026-11-26",
         "method": "page"
       }
     ],
@@ -194,6 +202,24 @@
         "source_url": "https://coastfunds.ca/wp-content/uploads/2025/02/CCEFF-Funding-Approval-Policy-Mar-31-2026.pdf",
         "quote": "A detailed multi-year operating and maintenance (O&M) budget to support the infrastructure.",
         "checked_at": "2026-11-25",
+        "method": "page"
+      },
+      {
+        "source_url": "https://coastfunds.ca/wp-content/uploads/2025/03/Stewardship-Project-Application-CCEFF-2025_FINAL.pdf",
+        "quote": "We require a signed resolution from the appropriate council of the Participating First Nation.",
+        "checked_at": "2026-11-26",
+        "method": "page"
+      },
+      {
+        "source_url": "https://coastfunds.ca/wp-content/uploads/2025/03/Stewardship-Project-Application-CCEFF-2025_FINAL.pdf",
+        "quote": "COST ESTIMATES Quotes from preferred suppliers (equipment vendors, consultants, etc.) that confirm the total project budget.",
+        "checked_at": "2026-11-26",
+        "method": "page"
+      },
+      {
+        "source_url": "https://coastfunds.ca/wp-content/uploads/2025/03/Stewardship-Project-Application-CCEFF-2025_FINAL.pdf",
+        "quote": "BOARD RESOLUTION (only required if the work plan will be directed by a separate Board than the Nation’s Council) A signed resolution from the Board of Directors of the organization applying for funds.",
+        "checked_at": "2026-11-26",
         "method": "page"
       }
     ]
