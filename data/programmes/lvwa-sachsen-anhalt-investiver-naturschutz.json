@@ -24,7 +24,12 @@
   },
   "co_finance_required": true,
   "reporting": null,
-  "effort": { "steps": ["Written application on the ELAISA form"] },
+  "effort": {
+    "steps": [
+      "Written application on the ELAISA form",
+      "Project review by the state administration"
+    ]
+  },
   "co_finance": { "min_share": 10, "applies_to": "Municipalities and municipal associations" },
   "calls": [
     {
@@ -93,6 +98,12 @@
         "quote": "Schriftlicher Antrag unter Verwendung eines einheitlichen Vordrucks des ELAISA-Portals (www.elaisa.sachsen-anhalt.de).",
         "checked_at": "2026-11-25",
         "method": "page"
+      },
+      {
+        "source_url": "https://www.inet17.sachsen-anhalt.de/webClient_ST_P/public?disposition=inline&resource=7506_19_Merkblatt.pdf",
+        "quote": "Die Projektauswahl nach Nr. 7.4 der o.g. Richtlinien erfolgt zentral durch das Landesverwaltungsamt (Bewilligungsbehörde).",
+        "checked_at": "2026-11-26",
+        "method": "page"
       }
     ],
     "co_finance": {
@@ -131,6 +142,24 @@
         "quote": "Ausgleichs- und Ersatzmaßnahmen sind generell von der Förderung ausgeschlossen, auch wenn sie der Umsetzung von Natura 2000 dienen.",
         "checked_at": "2026-11-25",
         "method": "page"
+      },
+      {
+        "source_url": "https://www.inet17.sachsen-anhalt.de/webClient_ST_P/public?disposition=inline&resource=7506_19_Merkblatt.pdf",
+        "quote": "Das Vorhaben darf nicht ohne Genehmigung der Bewilligungsbehörde begonnen werden.",
+        "checked_at": "2026-11-26",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.inet17.sachsen-anhalt.de/webClient_ST_P/public?disposition=inline&resource=7506_19_Merkblatt.pdf",
+        "quote": "Dazu müssen die beabsichtigten Maßnahmen der dauerhaften Sicherung und Entwicklung der Flächen des NNE entsprechend der in dem jeweiligen Vertrag getroffenen Vereinbarungen zur naturschutzfachlichen Zweckbindung dienen.",
+        "checked_at": "2026-11-26",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.inet17.sachsen-anhalt.de/webClient_ST_P/public?disposition=inline&resource=7506_19_Merkblatt.pdf",
+        "quote": "Bei Zuwendungen ist zudem nachzuweisen, dass die Vorfinanzierung gesichert ist.",
+        "checked_at": "2026-11-26",
+        "method": "page"
       }
     ],
     "documents": [
@@ -144,6 +173,48 @@
         "source_url": "https://www.inet17.sachsen-anhalt.de/webClient_ST_P/public?disposition=inline&resource=7506_19_Merkblatt.pdf",
         "quote": "Die Zuwendungsempfänger nach Nr. 3.1 der o.g. Richtlinien haben im Rahmen der Antragstellung bei einer beantragten Anteilsfinanzierung Nachweise über die erforderlichen Eigenmittel vorzulegen.",
         "checked_at": "2026-11-25",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.inet17.sachsen-anhalt.de/webClient_ST_P/public?disposition=inline&resource=7506_26_Foerderantrag.pdf",
+        "quote": "Der Stammdatenbogen ist im Kalenderjahr nur einmalig mit dem ersten Antrag",
+        "checked_at": "2026-11-26",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.inet17.sachsen-anhalt.de/webClient_ST_P/public?disposition=inline&resource=7506_26_Foerderantrag.pdf",
+        "quote": "Topographische Karte(n) Flurkarte mit Kennzeichnung der von der Maßnahme betroffenen Flächen",
+        "checked_at": "2026-11-26",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.inet17.sachsen-anhalt.de/webClient_ST_P/public?disposition=inline&resource=7506_19_Merkblatt.pdf",
+        "quote": "Bei Zuwendungen ist zudem nachzuweisen, dass die Vorfinanzierung gesichert ist.",
+        "checked_at": "2026-11-26",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.inet17.sachsen-anhalt.de/webClient_ST_P/public?disposition=inline&resource=7506_19_Merkblatt.pdf",
+        "quote": "Bei den von ihm veranschlagten Kosten ist eine angemessene Wirtschaftlichkeitsuntersuchung anhand von Unterlagen dazulegen (z.B. Preisabfragen).",
+        "checked_at": "2026-11-26",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.inet17.sachsen-anhalt.de/webClient_ST_P/public?disposition=inline&resource=7506_26_Foerderantrag.pdf",
+        "quote": "Nachweis(e) zur Person des Antragstellers (Registereintrag ggf. Satzung) Nachweis der Gemeinnützigkeit (Finanzamt)",
+        "checked_at": "2026-11-26",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.inet17.sachsen-anhalt.de/webClient_ST_P/public?disposition=inline&resource=7506_26_Foerderantrag.pdf",
+        "quote": "Aktueller Grundbuchauszug Zustimmung des Eigentümers bzw. Nutzers",
+        "checked_at": "2026-11-26",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.inet17.sachsen-anhalt.de/webClient_ST_P/public?disposition=inline&resource=7506_26_Foerderantrag.pdf",
+        "quote": "Entscheidung(en) der zuständigen Behörde(n)",
+        "checked_at": "2026-11-26",
         "method": "page"
       }
     ]
@@ -163,12 +234,24 @@
       "rule": "Not a project the applicant is legally required to do, except Natura 2000 work",
       "kind": "project"
     },
-    { "rule": "Not a compensation or replacement measure", "kind": "project" }
+    { "rule": "Not a compensation or replacement measure", "kind": "project" },
+    { "rule": "Wait for the grant authority’s permission before starting work", "kind": "project" },
+    {
+      "rule": "On National Natural Heritage land, work must secure and develop the site as its conservation agreement requires",
+      "kind": "project"
+    },
+    { "rule": "Have upfront financing secured", "kind": "finances" }
   ],
   "documents": [
     "Project description",
     "Cost and financing plan",
-    "Applicant master data form (Stammdatenbogen)",
-    "Proof of own funds, if partly financed"
+    "Applicant master data form, unless already submitted that calendar year",
+    "Proof of own funds, if partly financed",
+    "Topographic and marked cadastral maps, where applicable",
+    "Proof of secured upfront financing",
+    "Value-for-money evidence, such as price enquiries",
+    "Proof of charitable status from the tax office, for nonprofit applicants",
+    "Current land register extract and owner or land user consent, where applicable",
+    "Decisions of the competent authorities, where applicable"
   ]
 }

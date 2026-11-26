@@ -18,7 +18,19 @@
   "amount": { "currency": "GBP", "max": 500 },
   "co_finance_required": null,
   "reporting": "An evaluation when the project is complete, covering measurable and non-measurable outcomes.",
-  "effort": { "steps": ["Application form, sent by email"] },
+  "effort": { "steps": ["Application form, sent by email", "Grant panel review"] },
+  "eligibility": [
+    { "rule": "Project has no political aim", "kind": "project" },
+    { "rule": "Project and funding request are prospective", "kind": "project" },
+    { "rule": "Project benefits more than one person", "kind": "project" },
+    { "rule": "Project has start and end dates and clear, measurable outcomes", "kind": "project" },
+    {
+      "rule": "Application seeks project funding beyond administrative or core operating costs",
+      "kind": "project"
+    },
+    { "rule": "An institution submits any academic research application", "kind": "legal" }
+  ],
+  "after_award": { "reports": "final" },
   "calls": [
     {
       "id": "rolling",
@@ -79,6 +91,58 @@
         "source_url": "https://www.sea-changers.org.uk/grants",
         "quote": "Complete and return the application form to info@sea-changers.org.uk.",
         "checked_at": "2026-11-25",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.sea-changers.org.uk/grants",
+        "quote": "The Small Grant fund is always open and applications are reviewed regularly.",
+        "checked_at": "2026-11-26",
+        "method": "page"
+      }
+    ],
+    "eligibility": [
+      {
+        "source_url": "https://www.sea-changers.org.uk/grants",
+        "quote": "Projects that have a political aim",
+        "checked_at": "2026-11-26",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.sea-changers.org.uk/grants",
+        "quote": "Retrospective projects or funding requests",
+        "checked_at": "2026-11-26",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.sea-changers.org.uk/grants",
+        "quote": "Individuals or causes that will benefit only one person.",
+        "checked_at": "2026-11-26",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.sea-changers.org.uk/grants",
+        "quote": "No, we only fund projects i.e. work that has a start and end date and clear, measurable outcomes.",
+        "checked_at": "2026-11-26",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.sea-changers.org.uk/grants",
+        "quote": "Applications solely to fund administrative or core operating costs",
+        "checked_at": "2026-11-26",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.sea-changers.org.uk/grants",
+        "quote": "We do, but the application must come from the institution rather than an individual.",
+        "checked_at": "2026-11-26",
+        "method": "page"
+      }
+    ],
+    "after_award": [
+      {
+        "source_url": "https://www.sea-changers.org.uk/grants",
+        "quote": "We ask all successful applicants to complete an evaluation when their project is complete.",
+        "checked_at": "2026-11-26",
         "method": "page"
       }
     ]

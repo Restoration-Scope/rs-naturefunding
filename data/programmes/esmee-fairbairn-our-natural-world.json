@@ -16,7 +16,11 @@
   "consortium_required": false,
   "reporting": null,
   "effort": {
-    "steps": ["Expression of Interest (EOI)", "Assessment call, if invited", "Proposal, if invited"]
+    "steps": [
+      "Submit an expression of interest and complete the DEI form",
+      "Assessment call, if invited",
+      "Proposal, if invited"
+    ]
   },
   "eligibility": [
     {
@@ -25,22 +29,22 @@
       "revenue": { "currency": "GBP", "min": 100000, "basis": "revenue" }
     },
     { "rule": "Being a constituted organisation", "kind": "legal" },
-    {
-      "rule": "Having measures to guard against disproportionate 'personal benefit'",
-      "kind": "legal"
-    },
+    { "rule": "Has measures to guard against disproportionate personal benefit", "kind": "legal" },
     { "rule": "Doing work that is charitable and for the public benefit", "kind": "legal" },
-    { "rule": "Providing a direct benefit in the UK", "kind": "project" },
     {
       "rule": "Not doing work primarily the responsibility of statutory authorities using public funds",
       "kind": "project"
     },
     {
-      "rule": "Avoiding capital costs including building work, renovations and equipment",
+      "rule": "Not doing academic research unless it can demonstrate practical outcomes",
       "kind": "project"
     },
     {
-      "rule": "Not doing academic research unless it can demonstrate practical outcomes",
+      "rule": "For nature recovery at scale, species-focused work must also help wider habitats, ecosystems or natural processes",
+      "kind": "project"
+    },
+    {
+      "rule": "For nature recovery at scale, no stand-alone community gardens, growing projects or small green or blue spaces",
       "kind": "project"
     }
   ],
@@ -118,6 +122,12 @@
         "quote": "3. Proposal",
         "checked_at": "2026-11-25",
         "method": "page"
+      },
+      {
+        "source_url": "https://esmeefairbairn.org.uk/apply-for-a-grant/submit-an-application/",
+        "quote": "After completing your EOI, you’ll be directed to our DEI form to answer questions about the leadership of your organisation and the communities your work supports.",
+        "checked_at": "2026-11-26",
+        "method": "page"
       }
     ],
     "eligibility": [
@@ -135,19 +145,13 @@
       },
       {
         "source_url": "https://esmeefairbairn.org.uk/apply-for-a-grant/",
-        "quote": "Organisations who do not have measures in place to guard against disproportionate",
-        "checked_at": "2026-11-25",
+        "quote": "Organisations who do not have measures in place to guard against disproportionate 'personal benefit’",
+        "checked_at": "2026-11-26",
         "method": "page"
       },
       {
         "source_url": "https://esmeefairbairn.org.uk/apply-for-a-grant/",
         "quote": "Work that is not legally charitable – defined as work that falls within one of 13 descriptions of charitable purposes and is for the public benefit",
-        "checked_at": "2026-11-25",
-        "method": "page"
-      },
-      {
-        "source_url": "https://esmeefairbairn.org.uk/apply-for-a-grant/",
-        "quote": "Work that does not have a direct benefit in the UK",
         "checked_at": "2026-11-25",
         "method": "page"
       },
@@ -159,14 +163,20 @@
       },
       {
         "source_url": "https://esmeefairbairn.org.uk/apply-for-a-grant/",
-        "quote": "Capital costs including building work, renovations and equipment",
+        "quote": "Academic research unless it can demonstrate practical outcomes",
         "checked_at": "2026-11-25",
         "method": "page"
       },
       {
-        "source_url": "https://esmeefairbairn.org.uk/apply-for-a-grant/",
-        "quote": "Academic research unless it can demonstrate practical outcomes",
-        "checked_at": "2026-11-25",
+        "source_url": "https://esmeefairbairn.org.uk/apply-for-a-grant/our-natural-world-guidance/",
+        "quote": "We will only support species-focused work where it also contributes to the recovery of wider habitats, ecosystems or natural processes.",
+        "checked_at": "2026-11-26",
+        "method": "page"
+      },
+      {
+        "source_url": "https://esmeefairbairn.org.uk/apply-for-a-grant/our-natural-world-guidance/",
+        "quote": "We do not fund stand-alone community gardens, growing projects or small local green and blue spaces",
+        "checked_at": "2026-11-26",
         "method": "page"
       }
     ],

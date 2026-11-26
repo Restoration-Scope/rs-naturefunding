@@ -16,16 +16,14 @@
   "reporting": "A final report with an accounting of expenditures and a project summary, within 30 days of completion.",
   "effort": { "steps": ["Email completed application"] },
   "eligibility": [
-    { "rule": "Student research projects have faculty sponsorship", "kind": "project" },
-    { "rule": "No institutional indirect costs or general operational costs", "kind": "project" }
+    {
+      "rule": "Construction requires a demonstrated benefit to a species, species group or conservation need",
+      "kind": "project"
+    }
   ],
   "after_award": { "reports": "final" },
   "documents": [
-    "Scope of work",
     "Detailed budget",
-    "Coursework and relevant activities",
-    "Faculty sponsor or school principal support letter, when applicable",
-    "Research start date and funding period",
     "Payee name and mailing address",
     "Grant purpose, actions, affected species and area",
     "Conservation need statement",
@@ -91,14 +89,8 @@
     "eligibility": [
       {
         "source_url": "https://www.carolinabirdclub.org/grants/",
-        "quote": "For student research projects, applications require the sponsorship of a faculty member.",
-        "checked_at": "2026-11-25",
-        "method": "page"
-      },
-      {
-        "source_url": "https://www.carolinabirdclub.org/grants/",
-        "quote": "The Carolina Bird Club does not support institutional indirect costs, or fund general operational costs of an organization.",
-        "checked_at": "2026-11-25",
+        "quote": "Construction activities are generally not allowed (e.g. construction of boardwalks, viewing blinds, falconry facilities, rehabilitation facilities, etc.). However, if a construction need is determined to be beneficial to a species, group of species, or address a conservation need, the grant proposal may be considered for award.",
+        "checked_at": "2026-11-26",
         "method": "page"
       }
     ],
@@ -113,20 +105,14 @@
     "documents": [
       {
         "source_url": "https://www.carolinabirdclub.org/grants/",
-        "quote": "A scope of work (limited to two single-spaced pages), including species to be studied and the site where the work will be conducted.",
-        "checked_at": "2026-11-25",
-        "method": "page"
-      },
-      {
-        "source_url": "https://www.carolinabirdclub.org/grants/",
-        "quote": "A detailed budget. Appropriate course work and other activities that would indicate that the applicant is capable of performing the described research. A letter of support from the faculty sponsor or school principal. Details of the starting date of the research and the time period for which funding is requested. The name of the payee and the address to which a check should be mailed.",
-        "checked_at": "2026-11-25",
-        "method": "page"
-      },
-      {
-        "source_url": "https://www.carolinabirdclub.org/grants/",
         "quote": "Details of the purpose of the grant request; action(s) to be undertaken, species or groups of species affected, acres/units affected. Identify the conservation need of the species or group of species for which actions are proposed Detailed Budget. Project plans (with dates) as appropriate.",
         "checked_at": "2026-11-25",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.carolinabirdclub.org/grants/",
+        "quote": "The name of the payee and the address to which a check should be mailed. Checks are made out to an institution or a department, not to an individual.",
+        "checked_at": "2026-11-26",
         "method": "page"
       }
     ]
