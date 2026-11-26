@@ -1,0 +1,10 @@
+{
+  "name": "naturefunding-mcp",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "dev": "cd .. && bun mcp/src/local.ts",
+    "build": "cd .. && bun mcp/scripts/build.ts",
+    "test": "bun test src"
+  }
+}

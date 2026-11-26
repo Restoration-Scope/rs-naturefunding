@@ -320,6 +320,7 @@ export function llmsTxt(listings: Listing[], pages: FinderPage[] = []): string {
     `- [data.csv](${absolute('/data.csv')}): one row per call, plus one row for each programme with no call, for spreadsheets`,
     `- [feed.xml](${absolute('/feed.xml')}): Atom feed of the calls of listed programmes, up to the 100 most recently updated; a call that opens, closes or changes its deadline date gets a new entry`,
     `- [health.json](${absolute('/health.json')}): the latest run of the daily checking job: how many sources were due, unchanged, changed or could not be read`,
+    `- MCP server, https://mcp.naturefunding.org (Streamable HTTP, no sign-in): search_grants filters the listings by country, region, approach, applicant type and status; get_grant returns one listing with its evidence`,
   ]
   if (pages.length) {
     out.push('', '## By place and project type', '')

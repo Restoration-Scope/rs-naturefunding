@@ -3,7 +3,7 @@ import Base from '../layouts/Base.astro'
 import { CONTACT_EMAIL, RS_URL, absolute, RS_ORG } from '../lib/site'
 
 const description =
-  'What naturefunding.org and its weekly email receive, and what they keep: no accounts, cookies or stored searches, visits counted without cookies; for the email, only the address and the choices you make.'
+  'What naturefunding.org, its weekly email and its AI assistant connection receive, and what they keep: no accounts, cookies or stored searches, visits counted without cookies; for the email, only the address and the choices you make.'
 
 const jsonLd = {
   '@context': 'https://schema.org',
@@ -60,6 +60,25 @@ const prose = [
       <li>
         To limit sign-ups, a keyed hash of each address that signs up is kept for 2 days. It can’t be turned back into
         the address.
+      </li>
+    </ul>
+
+    <h2 id="ai-assistants">AI assistants (mcp.naturefunding.org)</h2>
+    <ul>
+      <li>
+        You can connect naturefunding.org to an AI assistant such as Claude or ChatGPT. The assistant then searches the
+        listings for you through mcp.naturefunding.org.
+      </li>
+      <li>
+        The assistant sends what our two tools ask for (search words, a country or region, an approach, a type of
+        applicant, or a programme id) and the name and version of its app. There is no sign-in, and we never ask for a
+        name or email.
+      </li>
+      <li>We use each search only to answer it. We don’t store searches or keep request logs.</li>
+      <li>Cloudflare runs this service too and handles its requests as it does for the website.</li>
+      <li>
+        Your conversation with the assistant is covered by the assistant’s own privacy policy, not ours. Keep personal
+        details out of your questions if you don’t want the assistant to have them.
       </li>
     </ul>
 
