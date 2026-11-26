@@ -12,25 +12,29 @@
   "access": "direct",
   "window": "fixed",
   "amount": null,
-  "co_finance_required": null,
+  "co_finance_required": true,
   "reporting": null,
   "effort": {
-    "steps": ["Letter of interest", "Full project application, if invited"],
-    "due": ["2026-10-02", "2026-12-04"]
+    "steps": [
+      "Letter of interest",
+      "Full project application, if invited",
+      "Technical Advisory Committee review and ranking"
+    ],
+    "due": ["2026-10-02", "2026-12-04", null]
   },
   "eligibility": [
     { "rule": "Have established operations in Manitoba", "kind": "legal" },
     { "rule": "Not be a government body unless it is an Indigenous government", "kind": "legal" },
     {
-      "rule": "Run the project on public or private lands within Manitoba's working landscapes",
+      "rule": "Trust funds exclude conferences, wildlife feeding or rearing, law enforcement and policy advocacy",
       "kind": "project"
     },
     {
-      "rule": "No land purchases, buildings, major equipment, or standalone mapping-only projects",
+      "rule": "Projects include active partnerships or meaningful engagement with other organisations or communities",
       "kind": "project"
     },
     {
-      "rule": "Do not propose conferences, wildlife feeding or rearing, law enforcement, or policy advocacy",
+      "rule": "Do not propose work that degrades or destroys habitat, wildlife or water",
       "kind": "project"
     }
   ],
@@ -112,6 +116,12 @@
       "checked_at": "2026-11-25",
       "method": "page"
     },
+    "co_finance_required": {
+      "source_url": "https://mbhabitat.ca/wp-content/uploads/2026/09/2027-Conservation-Trust-Guidelines_.pdf",
+      "quote": "Include matching funds, cash or in-kind, that are at least twice the amount requested from the Conservation Trust, i.e., the Conservation Trust request can cover up to one-third of the total project cost.",
+      "checked_at": "2026-11-26",
+      "method": "page"
+    },
     "effort": [
       {
         "source_url": "https://mbhabitat.ca/fwef",
@@ -123,6 +133,12 @@
         "source_url": "https://mbhabitat.ca/fwef",
         "quote": "Application Intake Closes December 4, 2026",
         "checked_at": "2026-11-25",
+        "method": "page"
+      },
+      {
+        "source_url": "https://mbhabitat.ca/wp-content/uploads/2026/09/2027-Conservation-Trust-Guidelines_.pdf",
+        "quote": "Applications will be forwarded to a Technical Advisory Committee (TAC) for technical review, evaluation and ranking.",
+        "checked_at": "2026-11-26",
         "method": "page"
       }
     ],
@@ -141,20 +157,20 @@
       },
       {
         "source_url": "https://mbhabitat.ca/wp-content/uploads/2026/09/2027-Conservation-Trust-Guidelines_.pdf",
-        "quote": "Project sites located on public and private lands within Manitoba's working landscapes",
-        "checked_at": "2026-11-25",
-        "method": "page"
-      },
-      {
-        "source_url": "https://mbhabitat.ca/wp-content/uploads/2026/09/2027-Conservation-Trust-Guidelines_.pdf",
-        "quote": "Land purchases and easements - Major capital assets such as buildings - Major equipment purchases (> $5000 per item) - Mapping-only projects that are not integral to the development of a larger Trust funded project",
-        "checked_at": "2026-11-25",
-        "method": "page"
-      },
-      {
-        "source_url": "https://mbhabitat.ca/wp-content/uploads/2026/09/2027-Conservation-Trust-Guidelines_.pdf",
         "quote": "Conferences, lecture series, or conventions - Corral system projects* - Feeding or control of wildlife species - Fish or wildlife rearing, farming, stocking, or hatcheries projects - Law enforcement activities - Policy promotion and advocacy activities",
         "checked_at": "2026-11-25",
+        "method": "page"
+      },
+      {
+        "source_url": "https://mbhabitat.ca/wp-content/uploads/2026/09/2027-Conservation-Trust-Guidelines_.pdf",
+        "quote": "Include active partnerships or meaningful engagement with other organizations or communities",
+        "checked_at": "2026-11-26",
+        "method": "page"
+      },
+      {
+        "source_url": "https://mbhabitat.ca/wp-content/uploads/2026/09/2027-Conservation-Trust-Guidelines_.pdf",
+        "quote": "The following activities are ineligible for Trust funding and are also ineligible match: - Any activities that result in habitat, wildlife and/or water degradation or loss",
+        "checked_at": "2026-11-26",
         "method": "page"
       }
     ],

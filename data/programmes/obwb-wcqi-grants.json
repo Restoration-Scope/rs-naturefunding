@@ -17,21 +17,18 @@
   "window": "fixed",
   "amount": { "currency": "CAD", "min": 3000, "max": 30000 },
   "pool": { "currency": "CAD", "value": 350000, "period": "round", "label": "2027" },
-  "co_finance_required": false,
+  "co_finance_required": null,
   "reporting": null,
   "effort": { "steps": ["Online grant application"] },
   "eligibility": [
     {
       "rule": "Has support from the local government with jurisdiction over the project area",
       "kind": "project"
-    },
-    { "rule": "Not a consulting firm or consultant-led project", "kind": "legal" },
-    {
-      "rule": "Project demonstrates water savings or water quality improvements",
-      "kind": "project"
     }
   ],
-  "documents": ["Local government letter of support"],
+  "documents": [
+    "Signed support letter from each local government with jurisdiction over the project area"
+  ],
   "calls": [
     {
       "id": "2027-28",
@@ -102,18 +99,6 @@
         "quote": "The letter must be from the local government(s) with jurisdiction over the project area.",
         "checked_at": "2026-11-25",
         "method": "page"
-      },
-      {
-        "source_url": "https://obwb.ca/wp-content/uploads/2026-WCQI-Program-Guide.pdf",
-        "quote": "Consulting firms (or consultant-led projects)",
-        "checked_at": "2026-11-25",
-        "method": "page"
-      },
-      {
-        "source_url": "https://obwb.ca/wp-content/uploads/2026-WCQI-Program-Guide.pdf",
-        "quote": "Demonstrate water savings or improvements to water quality",
-        "checked_at": "2026-11-25",
-        "method": "page"
       }
     ],
     "documents": [
@@ -122,29 +107,14 @@
         "quote": "applicants require a letter of support from an Okanagan local government.",
         "checked_at": "2026-11-25",
         "method": "page"
-      }
-    ],
-    "co_finance_required": {
-      "source_url": "https://obwb.ca/wp-content/uploads/2026-WCQI-Program-Guide.pdf",
-      "quote": "Matching (in-kind or cash) funding is not required but helps to demonstrate the strength of partnerships.",
-      "checked_at": "2026-11-25",
-      "method": "page"
-    },
-    "after_award": [
-      {
-        "source_url": "https://obwb.ca/wp-content/uploads/2026-WCQI-Program-Guide.pdf",
-        "quote": "Grant recipients are required to submit two reports in addition to any deliverables agreed upon in the contribution agreement",
-        "checked_at": "2026-11-25",
-        "method": "page"
       },
       {
-        "source_url": "https://obwb.ca/wp-content/uploads/2026-WCQI-Program-Guide.pdf",
-        "quote": "a mid-point report, due on or before September 30th of the grant year",
-        "checked_at": "2026-11-25",
+        "source_url": "https://obwb.ca/overview-grants/wcqi/application-information/",
+        "quote": "The letter must be signed by an officer (CAO, CO, or CFO) of the local government or the Mayor (municipality) or Chair (regional district); and The letter must be from the local government(s) with jurisdiction over the project area.",
+        "checked_at": "2026-11-26",
         "method": "page"
       }
     ]
   },
-  "checked_at": "2026-11-25",
-  "after_award": { "reports": "interim_and_final" }
+  "checked_at": "2026-11-25"
 }
