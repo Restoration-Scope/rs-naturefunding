@@ -14,6 +14,14 @@ export function initSponsors() {
   const fold = document.querySelector<HTMLDetailsElement>('[data-fold]')!
   const rows = [...document.querySelectorAll<HTMLElement>('[data-sp]')]
   const unplaced = document.querySelector<HTMLElement>('[data-unplaced]')!
+  const unplacedBtn = unplaced.querySelector<HTMLButtonElement>('[data-unplaced-btn]')!
+  const unplacedTbl = unplaced.querySelector<HTMLElement>('[data-unplaced-tbl]')!
+  const mainTbl = rows[0].parentElement!
+  unplacedBtn.addEventListener('click', () => {
+    const open = unplacedBtn.getAttribute('aria-expanded') !== 'true'
+    unplacedBtn.setAttribute('aria-expanded', String(open))
+    unplacedTbl.parentElement!.hidden = !open
+  })
   const placed = document.querySelector<HTMLElement>('[data-placed]')!
   const head = (el: HTMLElement) => el.querySelector('th')!
   const broaderText = head(divider).textContent
@@ -71,12 +79,12 @@ export function initSponsors() {
     head(placed).textContent = `✓ Take projects in ${name}`
     head(divider).textContent = where ? `✓ Broader sponsors that take projects in ${name}` : broaderText
     divider.toggleAttribute('data-where-on', !!where)
-    head(unplaced).textContent = `? Don’t say whether they take projects in ${name}`
+    unplaced.querySelector('[data-unplaced-label]')!.textContent = third.length === 1 ? `1 more doesn’t say whether it takes projects in ${name}` : `${third.length} more don’t say whether they take projects in ${name}`
     placed.hidden = !where || first.length === 0
     divider.hidden = second.length === 0
     unplaced.hidden = third.length === 0
-    const last = rows[0].parentElement!
-    last.append(placed, ...first, divider, ...second, unplaced, ...third)
+    mainTbl.append(placed, ...first, divider, ...second)
+    unplacedTbl.append(...third)
     const parts = [second.length && `${second.length} broader`, third.length && `${third.length} don’t say where`].filter(Boolean)
     shown.textContent = parts.length ? `${first.length} shown, ${parts.join(', ')}` : `${first.length} of ${rows.length} shown`
     clear.hidden = projects.length + takes.length === 0 && !where
