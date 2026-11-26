@@ -32,18 +32,16 @@
   "reporting": "A project update when half the grant is spent and a final report to release the last payment; no set format, usually under two A4 pages.",
   "effort": {
     "steps": [
-      "Expression of interest (online form, rolling)",
-      "Full proposal, by invitation only",
       "Discuss eligibility first if outside East Suffolk and no clear benefit to it",
+      "Expression of interest (online form, rolling)",
       "Expression of interest screening and eligibility review",
+      "Full proposal, by invitation only",
       "Board of Trustees decision"
     ]
   },
   "eligibility": [
-    { "rule": "Not-for-profit: has a bank account in the organisation's name", "kind": "legal" },
-    { "rule": "Not-for-profit: has a governing document", "kind": "legal" },
     {
-      "rule": "Nonprofit has at least 3 unrelated trustees, directors or equivalent decision-makers living at different addresses",
+      "rule": "Standard nonprofit route: own bank account, governing document and 3 unrelated decision-makers at separate addresses",
       "kind": "legal"
     },
     {
@@ -57,7 +55,8 @@
     {
       "rule": "Coastal or marine projects are adjacent to the Suffolk coastline",
       "kind": "project"
-    }
+    },
+    { "rule": "Project is outside the applicant’s statutory activities", "kind": "project" }
   ],
   "after_award": { "reports": "unspecified" },
   "requirements_checked": "2026-11-17",
@@ -169,20 +168,8 @@
     "eligibility": [
       {
         "source_url": "https://www.eastsuffolktrust.org/application-guidelines",
-        "quote": "A bank account in the organisation's name",
-        "checked_at": "2026-11-25",
-        "method": "page"
-      },
-      {
-        "source_url": "https://www.eastsuffolktrust.org/application-guidelines",
-        "quote": "A governing document (e.g., constitution, articles of association, or trust deed)",
-        "checked_at": "2026-11-25",
-        "method": "page"
-      },
-      {
-        "source_url": "https://www.eastsuffolktrust.org/application-guidelines",
-        "quote": "At least three trustees, directors, or equivalent decision-makers who are not related and do not live at the same address",
-        "checked_at": "2026-11-25",
+        "quote": "An organisation is fully eligible if it is a not-for-profit entity with: A bank account in the organisation’s name A governing document (e.g., constitution, articles of association, or trust deed) At least three trustees, directors, or equivalent decision-makers who are not related and do not live at the same address",
+        "checked_at": "2026-11-26",
         "method": "page"
       },
       {
@@ -200,6 +187,12 @@
       {
         "source_url": "https://www.eastsuffolktrust.org/application-guidelines",
         "quote": "Are coastal and marine projects in scope? Yes, provided that they are adjacent to the Suffolk coastline.",
+        "checked_at": "2026-11-26",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.eastsuffolktrust.org/application-guidelines",
+        "quote": "WHAT WE DO NOT FUND Activity that falls outside the Trust’s funding outcomes or geographic scope Costs incurred prior to the grant start date Grants below £10,000 Costs for individual benefit Statutory activities",
         "checked_at": "2026-11-26",
         "method": "page"
       }

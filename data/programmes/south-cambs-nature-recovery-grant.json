@@ -32,15 +32,12 @@
     "steps": [
       "Submit online application form",
       "Council officer panel assesses applications",
-      "Grants Advisory Committee considers award recommendations"
+      "Grants Advisory Committee considers award recommendations",
+      "Lead Cabinet Member makes the final funding decision"
     ],
-    "due": ["2027-01-25", null, null]
+    "due": ["2027-01-25", null, null, null]
   },
   "eligibility": [
-    {
-      "rule": "Is an informal community group, non-profit, CIC, parish or town council, or local school",
-      "kind": "legal"
-    },
     {
       "rule": "Has a bank account that accepts online payments, a written constitution or mission statement, and a safeguarding policy",
       "kind": "capacity"
@@ -59,7 +56,8 @@
     {
       "rule": "Previous Council grantee has submitted all required reports and officers found them satisfactory",
       "kind": "track_record"
-    }
+    },
+    { "rule": "Applies for at most two projects", "kind": "project" }
   ],
   "after_award": { "reports": "final" },
   "documents": [
@@ -68,7 +66,9 @@
     "Safeguarding policy",
     "Evidence of landowner permission and public access arrangements",
     "Evidence of project development, options explored, and ecological soundness for delivery projects",
-    "Three cost quotes for an ecological survey"
+    "Three cost quotes for an ecological survey",
+    "Insurance details, such as public liability cover",
+    "Cost quotes for delivery projects, if applicable"
   ],
   "calls": [
     {
@@ -138,8 +138,8 @@
       "method": "page"
     },
     "co_finance_required": {
-      "source_url": "https://www.scambs.gov.uk/media/icsdlddg/nature-recovery-grant-application-guidance-2.pdf",
-      "quote": "Survey cost and funding requested; 3x quotes; any match funding?",
+      "source_url": "https://www.scambs.gov.uk/media/0lygredw/nature-recovery-grant-scoring-criteria-and-weighting-1-1.pdf",
+      "quote": "The project contributes additional value and co-benefits (e.g. funding contributions or match funding; volunteer time/expertise from other sources; collaboration between organisations, and/or evidence of local and/or Member support; communication of the project to the local community).",
       "checked_at": "2026-11-26",
       "method": "page"
     },
@@ -178,19 +178,13 @@
     "eligibility": [
       {
         "source_url": "https://www.scambs.gov.uk/media/icsdlddg/nature-recovery-grant-application-guidance-2.pdf",
-        "quote": "informal community groups, non-profit organisations (including faith charities), and CICs parish/town councils in South Cambridgeshire South Cambridgeshire schools",
-        "checked_at": "2026-11-25",
-        "method": "page"
-      },
-      {
-        "source_url": "https://www.scambs.gov.uk/media/icsdlddg/nature-recovery-grant-application-guidance-2.pdf",
         "quote": "a bank account able to receive online payments, a written constitution or mission statement, a safeguarding policy, and",
         "checked_at": "2026-11-25",
         "method": "page"
       },
       {
         "source_url": "https://www.scambs.gov.uk/media/icsdlddg/nature-recovery-grant-application-guidance-2.pdf",
-        "quote": "Evidence of landowner permission and public access arrangements.",
+        "quote": "All projects must obtain landowner permission and other permissions as required.",
         "checked_at": "2026-11-26",
         "method": "page"
       },
@@ -221,6 +215,12 @@
       {
         "source_url": "https://www.scambs.gov.uk/media/icsdlddg/nature-recovery-grant-application-guidance-2.pdf",
         "quote": "Organisations that have previously received grant funding from the Council must have submitted all required monitoring and evaluation reports relating to earlier awards, and these reports must be deemed satisfactory by Council officers, before any new grant application will be considered by the Grants Advisory Committee (GAC).",
+        "checked_at": "2026-11-26",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.scambs.gov.uk/media/0lygredw/nature-recovery-grant-scoring-criteria-and-weighting-1-1.pdf",
+        "quote": "Each applicant can apply for up to two projects.",
         "checked_at": "2026-11-26",
         "method": "page"
       }
@@ -267,6 +267,18 @@
       {
         "source_url": "https://www.scambs.gov.uk/media/icsdlddg/nature-recovery-grant-application-guidance-2.pdf",
         "quote": "Survey cost and funding requested; 3x quotes; any match funding?",
+        "checked_at": "2026-11-26",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.scambs.gov.uk/media/icsdlddg/nature-recovery-grant-application-guidance-2.pdf",
+        "quote": "insurance (i.e. Public Liability Insurance) details",
+        "checked_at": "2026-11-26",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.scambs.gov.uk/media/icsdlddg/nature-recovery-grant-application-guidance-2.pdf",
+        "quote": "Project costs and funding requested; quotes (if applicable); any match funding.",
         "checked_at": "2026-11-26",
         "method": "page"
       }

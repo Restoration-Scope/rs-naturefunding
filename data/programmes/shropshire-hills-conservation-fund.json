@@ -24,15 +24,19 @@
   "effort": {
     "steps": [
       "Short project ideas form",
-      "Full application, if invited",
       "Discuss the project idea with the fund before full application",
+      "Full application, if invited",
       "Trustee review and award decision"
     ],
-    "due": ["2027-02-15", "2027-03-08", null, null]
+    "due": ["2027-02-15", null, "2027-03-08", "2027-03-15"]
   },
   "eligibility": [
     { "rule": "Project shows a clear public benefit.", "kind": "project" },
-    { "rule": "Applies for no more than three consecutive years.", "kind": "other" }
+    {
+      "rule": "Has applied in fewer than three consecutive years immediately before this round",
+      "kind": "other"
+    },
+    { "rule": "Seeks funding for work yet to be done", "kind": "project" }
   ],
   "co_finance": { "min_share": 25, "in_kind": true },
   "after_award": { "reports": "final" },
@@ -140,6 +144,12 @@
       {
         "source_url": "https://www.shropshirehills-nl.org.uk/help-to-look-after/shropshire-hills-landscape-trust/conservation-fund-guidance",
         "quote": "There is a consecutive 3-year limit on applying to the Fund.",
+        "checked_at": "2026-11-26",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.shropshirehills-nl.org.uk/help-to-look-after/shropshire-hills-landscape-trust/conservation-fund-guidance",
+        "quote": "The Fund cannot grant aid anything retrospectively. Preparation work may be done, but costs incurred before the date of the grant offer letter cannot be claimed or used as match funding.",
         "checked_at": "2026-11-26",
         "method": "page"
       }
