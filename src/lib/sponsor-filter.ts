@@ -69,7 +69,7 @@ export function initSponsors() {
     shown.textContent = parts.length ? `${first.length} shown, ${parts.join(', ')}` : `${first.length} of ${rows.length} shown`
     clear.hidden = projects.length + takes.length === 0 && !where
     // A sponsor that doesn't say is hidden, not refused: say how many.
-    const silent = rows.filter((r) => (fits(r) || wider(r)) && !says(r) && takes.every((t) => words(r, 'yes').includes(t) || !words(r, 'said').includes(t))).length
+    const silent = rows.filter((r) => (fits(r) || wider(r)) && !says(r) && place(r) != 'out' && takes.every((t) => words(r, 'yes').includes(t) || !words(r, 'said').includes(t))).length
     const out = where ? rows.filter((r) => (fits(r) || wider(r)) && says(r) && place(r) === 'out').length : 0
     const name = whereSel.selectedOptions[0]?.text ?? ''
     unsaid.textContent = [silent ? `${silent} more don’t say.` : '', out ? `${out} ${out === 1 ? 'rules' : 'rule'} out ${name}.` : ''].filter(Boolean).join(' ')

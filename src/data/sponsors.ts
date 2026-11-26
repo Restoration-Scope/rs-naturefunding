@@ -91,7 +91,8 @@ export const sponsor = z
     where: fact(text(160)).optional(),
     /**
      * The same place as a grant's `geography`, matched by the page's Where filter (src/lib/where-codes.ts). Only when a
-     * quote names where a project or its group can be: who it pays or what a form asks is not a place a project may be.
+     * quote names where a project's work can be, or lets its group be based anywhere: a rule on where the group is
+     * based ("a U.S. base of operations") leaves out no place of work, and who it pays or what a form asks is no place.
      */
     places: fact(geography).optional(),
     /** Who it takes. `foreign` is a group or person outside the sponsor's own country. */
