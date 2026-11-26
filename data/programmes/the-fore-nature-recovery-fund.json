@@ -32,13 +32,12 @@
       "kind": "legal"
     },
     {
-      "rule": "Has annual revenue below £500,000",
-      "kind": "finances",
-      "revenue": { "currency": "GBP", "max": 500000, "basis": "revenue" }
+      "rule": "Income was below £500,000 in the previous completed financial year",
+      "kind": "finances"
     },
-    { "rule": "Has its UK registration approved, not still in process", "kind": "legal" },
+    { "rule": "Organisation has a UK base and approved UK registration", "kind": "legal" },
     {
-      "rule": "Has no active grant, or has closed it and had a grant closure call",
+      "rule": "Never held a Fore grant, or latest grant term ended and final closure call completed",
       "kind": "other"
     }
   ],
@@ -126,15 +125,15 @@
         "method": "page"
       },
       {
-        "source_url": "https://www.thefore.org/who-we-fund/",
-        "quote": "Your annual revenue should be less than £500k",
-        "checked_at": "2026-11-25",
+        "source_url": "https://thefore.org/faqs/",
+        "quote": "No. The Fore only provides grants to organisations with less than £500,000 annual income in the previous completed financial year.",
+        "checked_at": "2026-11-26",
         "method": "page"
       },
       {
         "source_url": "https://thefore.org/faqs/",
-        "quote": "We are unable to fund organisations whose registration (as a charity, community interest company limited by guarantee, charitable incorporated organisation or community benefit society in the UK) is in process but has not yet been approved.",
-        "checked_at": "2026-11-25",
+        "quote": "Yes, but the organisation needs to have a base and be registered within the UK as described above.",
+        "checked_at": "2026-11-26",
         "method": "page"
       },
       {

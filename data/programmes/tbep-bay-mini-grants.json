@@ -14,7 +14,7 @@
   "amount": { "currency": "USD", "max": 10000 },
   "co_finance_required": false,
   "reporting": null,
-  "effort": { "steps": ["Application"] },
+  "effort": { "steps": ["Application", "Selection committee review and board approval"] },
   "eligibility": [
     { "rule": "Applicant has a FEIN or state tax exemption", "kind": "legal" },
     { "rule": "Applicant is in good standing", "kind": "legal" },
@@ -22,15 +22,16 @@
       "rule": "Government agency applicants have a project with strong volunteer or community involvement",
       "kind": "project"
     },
-    { "rule": "Project is within the Tampa Bay watershed", "kind": "project" },
     { "rule": "Project addresses one to three CCMP Actions", "kind": "project" },
     {
-      "rule": "Private-property project has public access, an easement, or a direct Tampa Bay link",
+      "rule": "Private-property project has public access, an existing conservation easement, or a direct Tampa Bay link",
       "kind": "project"
     },
-    { "rule": "Budget includes no costs listed as ineligible", "kind": "project" }
+    {
+      "rule": "Each applicant may submit up to two proposals and receive at most one award",
+      "kind": "other"
+    }
   ],
-  "after_award": { "reports": "interim_and_final" },
   "documents": ["Scope of work", "Detailed budget using required template"],
   "calls": [
     {
@@ -122,6 +123,12 @@
         "quote": "The next application period will open in the summer of 2027 and will close in the fall of 2027.",
         "checked_at": "2026-11-25",
         "method": "page"
+      },
+      {
+        "source_url": "https://tbep.org/get-involved/funding-opportunities/bay-mini-grants/",
+        "quote": "They will provide findings to the TBEP Executive Director who will make recommendations for approval to the TBEP Management and Policy Boards",
+        "checked_at": "2026-11-26",
+        "method": "page"
       }
     ],
     "eligibility": [
@@ -145,12 +152,6 @@
       },
       {
         "source_url": "https://tbep.org/get-involved/funding-opportunities/bay-mini-grants/",
-        "quote": "Projects must be within the Tampa Bay watershed.",
-        "checked_at": "2026-11-25",
-        "method": "page"
-      },
-      {
-        "source_url": "https://tbep.org/get-involved/funding-opportunities/bay-mini-grants/",
         "quote": "In the application and scope of work documents, each project must address at least one, and up to three, of the Actions listed in the Comprehensive Conservation and Management Plan for Tampa Bay (CCMP).",
         "checked_at": "2026-11-25",
         "method": "page"
@@ -163,16 +164,8 @@
       },
       {
         "source_url": "https://tbep.org/get-involved/funding-opportunities/bay-mini-grants/",
-        "quote": "These costs are not eligible for Bay Mini-Grant funding: Reimbursement for costs outside the grant's scope of work Purchase of commercial software and hardware Contingency funds Depreciation Fines and penalties Debts Interest and financial costs of borrowing Lobbying expenses Non-native flora or fauna Indirect costs",
-        "checked_at": "2026-11-25",
-        "method": "page"
-      }
-    ],
-    "after_award": [
-      {
-        "source_url": "https://tbep.org/get-involved/funding-opportunities/bay-mini-grants/",
-        "quote": "February 28: First progress report is due. August 31: Second progress report is due. December 31: Bay Mini-Grant projects wrap up. January 31, 2028: Final progress reports are due.",
-        "checked_at": "2026-11-25",
+        "quote": "Applicants may submit up to two proposals, but only one proposal per organization may be awarded.",
+        "checked_at": "2026-11-26",
         "method": "page"
       }
     ],
