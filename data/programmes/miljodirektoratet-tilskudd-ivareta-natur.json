@@ -16,7 +16,7 @@
   "window": "fixed",
   "amount": null,
   "co_finance_required": null,
-  "reporting": null,
+  "reporting": "Applicants must report on the measures after implementation.",
   "effort": { "steps": ["Application", "Application review"] },
   "eligibility": [
     {
@@ -24,6 +24,7 @@
       "kind": "finances"
     }
   ],
+  "after_award": { "reports": "unspecified", "audit": true },
   "documents": ["Detailed budget and complete financing plan listing any other public grants"],
   "calls": [
     {
@@ -33,7 +34,6 @@
       "status": "open",
       "opens": null,
       "deadline": null,
-      "recurring": "The application deadline is 15 January each year",
       "evidence": {
         "status": {
           "source_url": "https://soknadssenter.miljodirektoratet.no/NaturForvaltningSkjema/Startside/Index?id=89",
@@ -47,7 +47,8 @@
           "checked_at": "2026-11-26",
           "method": "page"
         }
-      }
+      },
+      "recurring": "The application deadline is 15 January each year"
     }
   ],
   "evidence": {
@@ -72,6 +73,12 @@
     "window": {
       "source_url": "https://soknadssenter.miljodirektoratet.no/NaturForvaltningSkjema/Startside/Index?id=89",
       "quote": "Søknadsfristen er 15. januar.",
+      "checked_at": "2026-11-26",
+      "method": "page"
+    },
+    "reporting": {
+      "source_url": "https://soknadssenter.miljodirektoratet.no/NaturForvaltningSkjema/Startside/Index?id=89",
+      "quote": "hvordan du rapporterer om tiltaket i etterkant",
       "checked_at": "2026-11-26",
       "method": "page"
     },
@@ -120,6 +127,5 @@
       }
     ]
   },
-  "checked_at": "2026-11-20",
-  "after_award": { "reports": "unspecified", "audit": true }
+  "checked_at": "2026-11-20"
 }
