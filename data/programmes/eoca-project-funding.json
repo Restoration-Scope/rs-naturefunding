@@ -5,7 +5,10 @@
     "name": "European Outdoor Conservation Association (EOCA)",
     "url": "https://www.eocaconservation.org/"
   },
-  "administered_by": null,
+  "administered_by": {
+    "name": "European Outdoor Conservation Association (EOCA)",
+    "url": "https://www.eocaconservation.org"
+  },
   "parent": null,
   "url": "https://www.eocaconservation.org/our-projects/apply-for-funding/",
   "summary": "Annual funding round for non-profit organisations running projects that conserve, restore or reconnect habitats important for biodiversity in wild landscapes, with benefits for local communities. Shortlisted projects are chosen by public and member votes.",
@@ -14,7 +17,7 @@
   "geography": null,
   "access": "direct",
   "window": "fixed",
-  "amount": null,
+  "amount": { "currency": "EUR", "max": 30000, "note": "maximum budget of €30,000" },
   "co_finance_required": null,
   "reporting": null,
   "effort": {
@@ -59,7 +62,6 @@
       "status": "upcoming",
       "opens": null,
       "deadline": null,
-      "expected": "March 2027",
       "evidence": {
         "status": {
           "source_url": "https://www.eocaconservation.org/our-projects/apply-for-funding/",
@@ -67,10 +69,17 @@
           "checked_at": "2026-11-26",
           "method": "page"
         }
-      }
+      },
+      "expected": "March 2027"
     }
   ],
   "evidence": {
+    "administered_by": {
+      "source_url": "https://www.eocaconservation.org/our-projects/apply-for-funding/what-to-include-with-your-application/",
+      "quote": "EOCA has one funding round a year. See our 'Apply for Funding' webpage for further details.",
+      "checked_at": "2026-11-25",
+      "method": "page"
+    },
     "applicant_types": {
       "source_url": "https://www.eocaconservation.org/our-projects/apply-for-funding/",
       "quote": "Non-profit organisations can apply to EOCA for funding each Spring.",
@@ -87,6 +96,12 @@
       "source_url": "https://www.eocaconservation.org/our-projects/apply-for-funding/",
       "quote": "we are moving back to one funding round per year.",
       "checked_at": "2026-11-26",
+      "method": "page"
+    },
+    "amount": {
+      "source_url": "https://www.eocaconservation.org/our-projects/apply-for-funding/what-to-include-with-your-application/",
+      "quote": "All grants awarded are for the time period of up to two years, for a maximum budget of €30,000",
+      "checked_at": "2026-11-25",
       "method": "page"
     },
     "effort": [
