@@ -22,11 +22,26 @@
   },
   "co_finance_required": null,
   "reporting": null,
-  "effort": { "steps": ["Application with attachments"], "due": ["2027-01-31"] },
+  "effort": {
+    "steps": ["Application with attachments", "Foundation board review"],
+    "due": ["2027-01-31", null]
+  },
   "eligibility": [
     {
       "rule": "Artistic projects have strong concrete nature-conservation content",
       "kind": "project"
+    },
+    {
+      "rule": "Apply as an individual, a working group, or a registered organisation",
+      "kind": "legal"
+    },
+    {
+      "rule": "If requesting a grant for working time, it covers less than four months",
+      "kind": "project"
+    },
+    {
+      "rule": "Report on your previous grant before the next round if applying again",
+      "kind": "track_record"
     }
   ],
   "documents": [
@@ -95,6 +110,12 @@
         "quote": "Hakemus on lähetettävä liitteineen viimeistään lauantaina 31.1.2027 kello 24.00.",
         "checked_at": "2026-11-25",
         "method": "page"
+      },
+      {
+        "source_url": "https://luonnonsuojelunsaatio.fi/apurahat/",
+        "quote": "Säätiön hallitus päättää apurahoista kevätkokouksessaan maalis–huhtikuun 2027 vaihteessa.",
+        "checked_at": "2026-11-26",
+        "method": "page"
       }
     ],
     "eligibility": [
@@ -102,6 +123,24 @@
         "source_url": "https://luonnonsuojelunsaatio.fi/apurahat/",
         "quote": "Taiteellista työskentelyä rahoitetaan siinä tapauksessa, jos hankkeella on vahva konkretia luonnonsuojelussa.",
         "checked_at": "2026-11-25",
+        "method": "page"
+      },
+      {
+        "source_url": "https://luonnonsuojelunsaatio.fi/apurahat/",
+        "quote": "Apurahaa voi hakea yksityishenkilö, työryhmä tai rekisteröity yhteisö.",
+        "checked_at": "2026-11-26",
+        "method": "page"
+      },
+      {
+        "source_url": "https://luonnonsuojelunsaatio.fi/hakuohje-ja-lomake/",
+        "quote": "Muut apurahat on tarkoitettu hankkeesta aiheutuviin kuluihin, matkoihin tai alle neljän kuukauden työskentelyyn",
+        "checked_at": "2026-11-26",
+        "method": "page"
+      },
+      {
+        "source_url": "https://luonnonsuojelunsaatio.fi/raportointi/",
+        "quote": "Mikäli haet seuraavassa haussa uutta apurahaa, tulee raportointi tehdä jo ennen uutta hakua.",
+        "checked_at": "2026-11-26",
         "method": "page"
       }
     ],

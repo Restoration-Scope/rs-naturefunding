@@ -24,10 +24,11 @@
   "reporting": null,
   "effort": {
     "steps": [
-      "Application package by post",
+      "Post the application package by the postmark deadline",
       "First-stage document review",
       "Second-stage presentation and Q&A, if invited for general grant"
-    ]
+    ],
+    "due": ["2027-02-01", null, "2027-03-22"]
   },
   "eligibility": [
     {
@@ -40,15 +41,23 @@
     },
     { "rule": "The project does not continue across fiscal years", "kind": "project" },
     { "rule": "The organisation submits one project", "kind": "project" },
-    { "rule": "The project is planned and carried out by citizens", "kind": "project" }
+    { "rule": "The project is planned and carried out by citizens", "kind": "project" },
+    {
+      "rule": "The applicant does not subcontract any core part of the project",
+      "kind": "project"
+    },
+    {
+      "rule": "If seeking or receiving other grants for the project, allocate separate costs to each grant",
+      "kind": "project"
+    }
   ],
   "after_award": { "reports": "final", "training": true, "site_visits": true },
   "documents": [
     "Project plan",
     "Budget",
     "Constitution, bylaws or rules; start-up groups must prepare them",
-    "Recent activity report, unless a first-step first-year group has not completed a fiscal year",
-    "Recent financial statement, unless a first-step first-year group has not completed a fiscal year",
+    "Latest activity report or equivalent, except First Step newcomers without a completed fiscal year",
+    "Latest financial statement or equivalent, except First Step newcomers without a completed fiscal year",
     "Pre-application checklist"
   ],
   "calls": [
@@ -146,6 +155,18 @@
         "quote": "第 2 次選考 プレゼンテーション (1 団体ごとに選考委員の前での発表 ・ 質疑応答 )",
         "checked_at": "2026-11-25",
         "method": "page"
+      },
+      {
+        "source_url": "https://www.natsuhara-g.com/about_site-2/recruitment",
+        "quote": "２０２６年１２月１日（火）から２０２７年２月１日（月）までです。 郵送のみの受付、当日消印有効です。",
+        "checked_at": "2026-11-26",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.natsuhara-g.com/wp-content/uploads/2026/10/2027natsuhara_bosyu.pdf",
+        "quote": "第 2 次選考 プレゼンテーション (1 団体ごとに選考委員の前での発表 ・ 質疑応答 ) と 選考委員会 ( 非公開 ) 2027 年 3 月 22 日 （月祝）",
+        "checked_at": "2026-11-26",
+        "method": "page"
       }
     ],
     "eligibility": [
@@ -177,6 +198,18 @@
         "source_url": "https://www.natsuhara-g.com/about_site-2/recruitment",
         "quote": "市民が主体となって企画し行っている",
         "checked_at": "2026-11-25",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.natsuhara-g.com/faq/before_faq",
+        "quote": "事業の根幹となる部分の全部、または一部を再委託することはできません。",
+        "checked_at": "2026-11-26",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.natsuhara-g.com/faq/before_faq",
+        "quote": "他の助成金等と、経費がきちんと切り分けられていれば問題ありません。",
+        "checked_at": "2026-11-26",
         "method": "page"
       }
     ],
