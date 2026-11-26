@@ -34,6 +34,41 @@
   "amount": { "currency": "USD", "min": 1000000, "max": 1300000 },
   "co_finance_required": true,
   "reporting": "Grantees report on technical progress and finances periodically during implementation, as set out in the grant agreement, and FAF monitors results.",
+  "effort": {
+    "steps": ["Concept note for the Ecuador call", "Full proposal, if shortlisted"],
+    "due": ["2026-11-12", null]
+  },
+  "eligibility": [
+    {
+      "rule": "Ecuador: companies benefiting commercially cover 50% of total costs if lead, or 50% of their commercial component",
+      "kind": "finances"
+    },
+    { "rule": "Ecuador: at least 1,000 hectares under direct intervention", "kind": "project" },
+    { "rule": "Ecuador call: the project takes place in mainland Ecuador", "kind": "project" },
+    {
+      "rule": "Ecuador: lead incorporated locally, or international NGO or intergovernmental body authorized to operate there",
+      "kind": "legal"
+    },
+    {
+      "rule": "Ecuador: work in Indigenous territories or with Indigenous populations requires an alliance with their representatives",
+      "kind": "project"
+    },
+    { "rule": "Ecuador: take part in only one concept note, as lead or partner", "kind": "other" },
+    { "rule": "Project interventions run for no more than three years", "kind": "project" },
+    {
+      "rule": "Ecuador: lead has experience managing funding on the scale of the proposed project",
+      "kind": "track_record"
+    }
+  ],
+  "co_finance": { "min_share": 20, "in_kind": true },
+  "after_award": { "reports": "twice_yearly", "audit": true, "site_visits": true },
+  "documents": [
+    "Ecuador: completed Costs and Financing spreadsheet",
+    "Ecuador: Applicant information annex with proof of legal personality",
+    "Ecuador: Exclusion list checklist",
+    "Ecuador: Preliminary environmental and social screening questionnaire",
+    "Ecuador: Applicant declaration signed by the legal representative"
+  ],
   "calls": [
     {
       "id": "ecuador-2026",
@@ -166,7 +201,99 @@
       "quote": "FAF requires periodic technical and financial reporting throughout implementation and conducts ongoing monitoring to ensure accountability for the results delivered.",
       "checked_at": "2026-11-01",
       "method": "page"
-    }
+    },
+    "effort": [
+      {
+        "source_url": "https://forestactionfacility.org/questions-and-answers-ecuador-call-2026/",
+        "quote": "Send the Concept Note as a PDF signed by the legal representative, together with the FAF Costs and Financing Template (Excel), to contact@forestactionfacility.org by 12 November 2026 at 23:59 (mainland Ecuador time).",
+        "checked_at": "2026-11-26",
+        "method": "page"
+      },
+      {
+        "source_url": "https://forestactionfacility.org/wp-content/uploads/2026/09/FAF-Grant-Making-Policy-eng.pdf",
+        "quote": "Shortlisted applicants will be invited to submit a Full Proposal in accordance with the FAF Full Proposal Template.",
+        "checked_at": "2026-11-26",
+        "method": "page"
+      }
+    ],
+    "eligibility": [
+      {
+        "source_url": "https://forestactionfacility.org/wp-content/uploads/2026/10/Call-for-Concept-Notes-Ecuador-2026-eng.pdf",
+        "quote": "If the company is the Applicant Organization, the counterpart contribution is 50% of total project costs; • If the company participates as a Subgrantee or partner in a component, the counterpart contribution is 50% of the costs of that commercial component; the rest of the project keeps the general 20% counterpart contribution.",
+        "checked_at": "2026-11-26",
+        "method": "page"
+      },
+      {
+        "source_url": "https://forestactionfacility.org/wp-content/uploads/2026/10/Call-for-Concept-Notes-Ecuador-2026-eng.pdf",
+        "quote": "The area under direct intervention must be at least 1,000 hectares.",
+        "checked_at": "2026-11-26",
+        "method": "page"
+      },
+      {
+        "source_url": "https://forestactionfacility.org/questions-and-answers-ecuador-call-2026/",
+        "quote": "Anywhere in mainland Ecuador: the Coast, the Highlands (Sierra) and the Amazon.",
+        "checked_at": "2026-11-26",
+        "method": "page"
+      },
+      {
+        "source_url": "https://forestactionfacility.org/questions-and-answers-ecuador-call-2026/",
+        "quote": "The Applicant Organization must be incorporated under Ecuadorian law. International NGOs and intergovernmental organizations must hold a valid registration or agreement authorizing them to operate in the country.",
+        "checked_at": "2026-11-26",
+        "method": "page"
+      },
+      {
+        "source_url": "https://forestactionfacility.org/wp-content/uploads/2026/10/Call-for-Concept-Notes-Ecuador-2026-eng.pdf",
+        "quote": "Where the intervention area includes territories or populations of Indigenous peoples and nationalities, the proposal must include a substantive alliance with their representative organizations",
+        "checked_at": "2026-11-26",
+        "method": "page"
+      },
+      {
+        "source_url": "https://forestactionfacility.org/questions-and-answers-ecuador-call-2026/",
+        "quote": "Each organization may take part in only one Concept Note, either as Applicant Organization or as partner.",
+        "checked_at": "2026-11-26",
+        "method": "page"
+      },
+      {
+        "source_url": "https://forestactionfacility.org/wp-content/uploads/2026/09/FAF-Grant-Making-Policy-eng.pdf",
+        "quote": "The project intervention period is up to three years",
+        "checked_at": "2026-11-26",
+        "method": "page"
+      },
+      {
+        "source_url": "https://forestactionfacility.org/questions-and-answers-ecuador-call-2026/",
+        "quote": "Financial experience, i.e. managing amounts of this size, must be demonstrated by the Applicant Organisation, as it is responsible to FAF for managing the funds.",
+        "checked_at": "2026-11-26",
+        "method": "page"
+      }
+    ],
+    "co_finance": {
+      "source_url": "https://forestactionfacility.org/questions-and-answers-ecuador-call-2026/",
+      "quote": "At least 20 % of total project costs, in cash and/or in kind (for example technical assistance, equipment or logistics).",
+      "checked_at": "2026-11-26",
+      "method": "page"
+    },
+    "after_award": [
+      {
+        "source_url": "https://forestactionfacility.org/wp-content/uploads/2026/10/Call-for-Concept-Notes-Ecuador-2026-eng.pdf",
+        "quote": "Funds are disbursed in tranches, according to project progress and against approved semi-annual reports (document 20a). The first disbursement requires signed restoration agreements for the first-year areas (section 6.3). The project is subject to financial and technical audits, and FAF carries out monitoring through sample field visits and remote verification of the intervention areas.",
+        "checked_at": "2026-11-26",
+        "method": "page"
+      }
+    ],
+    "documents": [
+      {
+        "source_url": "https://forestactionfacility.org/questions-and-answers-ecuador-call-2026/",
+        "quote": "Send the Concept Note as a PDF signed by the legal representative, together with the FAF Costs and Financing Template (Excel), to contact@forestactionfacility.org by 12 November 2026 at 23:59 (mainland Ecuador time).",
+        "checked_at": "2026-11-26",
+        "method": "page"
+      },
+      {
+        "source_url": "https://forestactionfacility.org/questions-and-answers-ecuador-call-2026/",
+        "quote": "Annex 1: information on the Applicant Organization, including proof of legal personality. Annex 2: exclusion list checklist. Annex 3: preliminary environmental and social screening questionnaire. Annex 4: Applicant Organization declaration, signed by the legal representative.",
+        "checked_at": "2026-11-26",
+        "method": "page"
+      }
+    ]
   },
   "checked_at": "2026-11-01"
 }
