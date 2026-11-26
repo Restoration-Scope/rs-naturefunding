@@ -30,14 +30,15 @@ const SCALE: Record<string, number> = {
 export function numbersIn(quote: string): Set<number> {
   const text = normalise(quote).toLowerCase()
   const found = new Set<number>()
-  const re = /(\d{1,3}(?:([,.' ])\d{3}(?:\2\d{3})*)|\d+)(?:[.,](\d+))?\s*(k|thousand|tausend|mille|mil|duizend|mn|m|millions?|millones|mill[oó]n|milh(?:ões|ão)|mio|millionen|miljoen)?\.?(?![\p{L}])/giu
+  // No backreference for the separator: Bun 1.3.6's regex compiler (the CI's) lost "£4,000,000" in a full validate run.
+  const re = /(\d{1,3}(?:(?:,\d{3})+|(?:\.\d{3})+|(?:'\d{3})+|(?: \d{3})+)|\d+)(?:[.,](\d+))?\s*(k|thousand|tausend|mille|mil|duizend|mn|m|millions?|millones|mill[oó]n|milh(?:ões|ão)|mio|millionen|miljoen)?\.?(?![\p{L}])/giu
   for (const m of text.matchAll(re)) {
     const whole = Number(m[1]!.replace(/[,.' ]/g, ''))
-    const frac = m[3] ? Number(`0.${m[3]}`) : 0
+    const frac = m[2] ? Number(`0.${m[2]}`) : 0
     // "1,5" or "1.5": a decimal part; "60,000": thousands, already folded into whole.
     const n = whole + frac
     // "EUR 1 million" states 1,000,000, not 1.
-    found.add(m[4] ? n * SCALE[m[4].toLowerCase()]! : n)
+    found.add(m[3] ? n * SCALE[m[3].toLowerCase()]! : n)
   }
   for (const w of text.split(/[^\p{L}]+/u)) if (w in WORDS) found.add(WORDS[w]!)
   return found

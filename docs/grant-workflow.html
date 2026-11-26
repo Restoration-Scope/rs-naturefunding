@@ -202,31 +202,34 @@ flowchart LR
 
     <section id="discovery">
       <h2>1. Discovery: fill the backlog</h2>
-      <p>Two jobs in <code>refresh.yml</code> raise leads; none becomes a listing by itself. No model is called here: the EU and grants.gov searches are keyword APIs and Exa is a search engine. The backlog is the open <code>discovery</code> issues. Functions: <code>isNbsEuTopic</code>, <code>isNbsUsOpportunity</code>, <code>organisationLead</code>, <code>newCandidates</code> and <code>fileDiscoveryIssue</code> in <code>scripts/refresh/discover.ts</code>; <code>newLeads</code> in <code>scripts/refresh/discover-web.ts</code>. Green: code that decides. Blue: an outside API or model is called, or not built yet (“Next”). Amber: a person or agent decides. Red: left out. Purple: a file or record. Solid arrows: flow and writes; dotted: reads; two heads: reads and writes.</p>
+      <p>Three jobs in <code>refresh.yml</code> raise leads; none becomes a listing by itself. No model is called here: the EU and grants.gov searches are keyword APIs and Exa is a search engine. The backlog is the open <code>discovery</code> issues. Functions: <code>isNbsEuTopic</code>, <code>isNbsUsOpportunity</code>, <code>organisationLead</code>, <code>newCandidates</code> and <code>fileDiscoveryIssue</code> in <code>scripts/refresh/discover.ts</code>; <code>newLeads</code> in <code>scripts/refresh/discover-web.ts</code>; <code>directoryLeads</code> in <code>scripts/refresh/discover-directories.ts</code>. Green: code that decides. Blue: an outside API or model is called, or not built yet (“Next”). Amber: a person or agent decides. Red: left out. Purple: a file or record. Solid arrows: flow and writes; dotted: reads; two heads: reads and writes.</p>
       <script type="text/plain" class="mermaid">
 flowchart TB
   EU["fa:fa-landmark EU Funding & Tenders API<br/>daily 05:17 UTC, discover.ts<br/>out: topics, deadlines"]
   US["fa:fa-flag grants.gov API<br/>daily, discover.ts; 8 agencies<br/>out: synopsis, applicants"]
   EXA["fa:fa-search Exa search API<br/>Mondays, discover-web.ts<br/>22 queries, ~$0.50: URLs"]
-  DIR["fa:fa-book-open Directories, guides<br/>tips only, never copied"]
+  DIR["fa:fa-book-open Watched directories<br/>Mondays, discover-directories.ts<br/>title and link only"]
+  GUIDE["fa:fa-book-open Other directories, guides<br/>tips only, never copied"]
   EUF["fa:fa-filter isNbsEuTopic<br/>by topic code"]
   USF["fa:fa-filter isNbsUsOpportunity<br/>organisationLead"]
   NL["fa:fa-filter newLeads<br/>no NOT_FUNDERS sites,<br/>one lead per site"]
+  DL["fa:fa-filter directoryLeads<br/>no NOT_FUNDERS sites,<br/>one lead per page"]
   NC["fa:fa-copy newCandidates<br/>not raised, not in data/"]
   DATA[("data/programmes<br/>data/sources.json")]
-  DISC[("data/checks/discovered.json<br/>keys eu:, us:, web:")]
+  DISC[("data/checks/discovered.json<br/>keys eu:, us:, web:, dir:")]
   ISS[("GitHub issue<br/>label discovery")]
   EU --> EUF --> NC
   US --> USF --> NC
   EXA --> NL
-  DATA -.-> NC & NL
-  NC & NL <-->|"reads, writes:<br/>raise once"| DISC
-  NC & NL -->|a row per lead| ISS
-  DIR -.->|"tips for where to look"| BL
+  DIR --> DL
+  DATA -.-> NC & NL & DL
+  NC & NL & DL <-->|"reads, writes:<br/>raise once"| DISC
+  NC & NL & DL -->|a row per lead| ISS
+  GUIDE -.->|"tips for where to look"| BL
   ISS --> BL
   BL["fa:fa-inbox Backlog<br/>open discovery issues,<br/>to Gathering"]
-  class EUF,USF,NL,NC good
-  class EU,US,EXA,DIR info
+  class EUF,USF,NL,DL,NC good
+  class EU,US,EXA,DIR,GUIDE info
   class DATA,DISC,ISS store
   class BL warn
       </script>
@@ -403,14 +406,15 @@ flowchart TB
 
     <section id="land">
       <h2>5b. Keeping current: landing and publishing</h2>
-      <p>The rest of <code>refresh.yml</code>, its Monday 06:43 UTC weekly mode, and <code>deploy.yml</code>. Tier A commits go straight to main; every changed fact waits on a pull request. No refresh pull request has been merged so far: an agent session or Bernat checks them against the page and lands the good changes in batches on main, and the rest are closed as superseded. An open decision (20 Nov 2026) would commit clean drafts directly. <code>checkLink</code> is in <code>weekly.ts</code>; the commit step is in <code>refresh.yml</code>; <code>deploy.yml</code> runs hourly at :11. Colours and arrows as in 1.</p>
+      <p>The rest of <code>refresh.yml</code>, its Monday 06:43 UTC weekly mode, and <code>deploy.yml</code>. Tier A commits go straight to main; every changed fact waits on a pull request. No refresh pull request has been merged so far: an agent session or Bernat checks them against the page and lands the good changes in batches on main, and the rest are closed as superseded. An open decision (20 Nov 2026) would commit clean drafts directly. <code>checkLink</code> is in <code>weekly.ts</code>; fiscal sponsors (<code>sponsors.ts</code>) are re-read there too, and a blocked page only shows in the summary; the commit step is in <code>refresh.yml</code>; <code>deploy.yml</code> runs hourly at :11. Colours and arrows as in 1.</p>
       <script type="text/plain" class="mermaid">
 flowchart TB
   STATE[("data/ from run.ts<br/>and discovery")]
   SR["fa:fa-coins sync-rates.ts, daily<br/>open.er-api.com rates"]
   RATES[("data/rates.json")]
-  WK["fa:fa-link weekly.ts, Mondays<br/>checkLink on every link"]
+  WK["fa:fa-link weekly.ts, Mondays<br/>checkLink on every link;<br/>sponsors.ts re-reads sponsor pages"]
   LINKS[("data/checks/links.json")]
+  SPO[("data/sponsors/{id}.json<br/>dates only")]
   SUM[("GitHub issue<br/>label refresh-summary")]
   COMMIT["fa:fa-git-commit Commit step<br/>git add data/, rebase,<br/>valid_or_upstream, push"]
   DRAFT[(".cache/refresh-drafts")]
@@ -423,8 +427,10 @@ flowchart TB
   READS[("build reads programmes,<br/>rates, checks/programmes.json,<br/>checks/run.json")]
   SR -->|writes| RATES
   WK -->|writes| LINKS
+  WK -->|every quote still there| SPO
+  WK -->|quote gone| DRAFT
   WK --> SUM
-  STATE & RATES & LINKS -.-> COMMIT
+  STATE & RATES & LINKS & SPO -.-> COMMIT
   COMMIT -->|"pushed to main"| DISP --> DEP
   COMMIT --> OP
   DRAFT -.-> OP

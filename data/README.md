@@ -5,7 +5,7 @@ Every listing on naturefunding.org is a JSON file in this folder. The contract i
 ## Files
 
 - `programmes/<id>.json`: one funding programme per file. The file name is the programme's `id`.
-- `sponsors/<id>.json`: one fiscal sponsor per file, for `/fiscal-sponsors/` ([`src/data/sponsors.ts`](../src/data/sponsors.ts): what qualifies, and each field; `types` groups the page). Every value sits beside its quote, and `validate` refuses a quote that makes a neighbouring claim or a value that drops its limit; `bun run verify-sponsors` re-reads them. Not on the watch list, so a file not checked for 90 days drops off the page.
+- `sponsors/<id>.json`: one fiscal sponsor per file, for `/fiscal-sponsors/` ([`src/data/sponsors.ts`](../src/data/sponsors.ts): what qualifies, and each field; `types` groups the page). Every value sits beside its quote, and `validate` refuses a quote that makes a neighbouring claim or a value that drops its limit. The weekly refresh re-reads them (`scripts/refresh/sponsors.ts`); a file not checked for 90 days drops off the page.
 - `sources.json`: the watch list. Every page a fact cites, which the daily refresh job re-reads.
 
 ## A programme
@@ -88,8 +88,9 @@ Discovery only raises leads; a person (or an agent following this file) adds a p
 
 - **Daily, two APIs** (`scripts/refresh/discover.ts`): open or forecast nature calls in EU Funding & Tenders (`EU_SEARCH_API_KEY`) and grants.gov.
 - **Weekly, web search** (`scripts/refresh/discover-web.ts`): 22 Exa searches by region, theme and language (`EXA_API_KEY`, about $0.50 a run). One row per funder site not yet cited in `data/`; directories and news sites are dropped, and on government or platform sites (gov.uk, canada.ca, Submittable…) each page counts on its own.
+- **Weekly, directories** (`scripts/refresh/discover-directories.ts`): curated pages where others list calls (`DIRECTORIES`, first the Climate and Environment Charter's). Only a call's title and its link to the funder are read; one row per funder page not yet cited or raised.
 
-`--no-issue` on either prints the leads without filing an issue or recording them.
+`--no-issue` on any of them prints the leads without filing an issue or recording them.
 
 ## Scripts
 
@@ -97,7 +98,7 @@ Discovery only raises leads; a person (or an agent following this file) adds a p
 |---|---|
 | `bun run validate` | Schema, file name = id, unique ids, parents exist, every cited page is on the watch list. |
 | `bun run verify-quotes` | Fetches every cited page (cached for the day in `.cache/`) and checks every quote. `--fresh` refetches; pass ids to check only some programmes. |
-| `bun run verify-sponsors` | Reads every page a fiscal sponsor's file cites with the refresh job's polite fetcher and checks its quotes; pass ids to check only some. |
+| `bun run verify-sponsors` | The weekly re-read of the fiscal sponsors with nothing written; pass ids to check only some. |
 | `bun run sync-sources` | Adds a watch-list entry for every newly cited page and picks a main-text selector; keeps hand-written selectors and hints. |
 | `bun test` | Unit tests for the schema rules and quote matching, plus a check of the seeded data. |
 | `bun scripts/data/page-text.ts <url> [--grep word]` | Prints a page exactly as the quote checker sees it. Copy quotes from here. |

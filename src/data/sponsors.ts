@@ -148,12 +148,14 @@ export type Sponsor = z.infer<typeof sponsor>
 
 const isFact = (v: unknown): v is { evidence: Evidence } => typeof v === 'object' && v !== null && 'evidence' in v
 
+/** Every fact a sponsor's file holds, with a readable path, e.g. `country` or `fees[1]`. */
+export const sponsorFacts = (s: object): { path: string; evidence: Evidence }[] =>
+  Object.entries(s).flatMap(([field, v]) =>
+    [v].flat().flatMap((f, i) => (isFact(f) ? [{ path: Array.isArray(v) ? `${field}[${i}]` : field, evidence: f.evidence }] : [])),
+  )
+
 /** Every quote a sponsor's file holds. */
-export const sponsorEvidence = (s: object): Evidence[] =>
-  Object.values(s)
-    .flat()
-    .filter(isFact)
-    .map((f) => f.evidence)
+export const sponsorEvidence = (s: object): Evidence[] => sponsorFacts(s).map((f) => f.evidence)
 
 /** Reads and checks every sponsor file. `programmes` are the ids a `programme_id` may point to. */
 export function checkSponsors(dir: string, programmes: Set<string>): { sponsors: Sponsor[]; issues: string[] } {

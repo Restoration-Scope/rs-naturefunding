@@ -39,6 +39,7 @@ const CONCURRENCY = 4
  */
 const OVERRIDES: Record<string, { icon: string } | { fallback: string }> = {
   // Checked on the contact sheet, 2026-11-01.
+  'yves-rocher-fondation.org': { fallback: "the site's favicon is the WordPress logo, not the foundation's" },
   'fondationfranklinia.org': { fallback: "the site's favicon is the WordPress logo, not the foundation's" },
   'cfhfoundation.grantsmanagement08.com': { fallback: "the grants portal's generic grid icon, not the foundation's" },
 }
