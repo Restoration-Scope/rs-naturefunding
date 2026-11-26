@@ -2,6 +2,7 @@
 // Fiscal sponsors (data/sponsors), filtered in the browser, and the listed grants that say whether they take one.
 import Base from '../layouts/Base.astro'
 import SponsorRow from '../components/SponsorRow.astro'
+import WhereOptions from '../components/WhereOptions.astro'
 import '../styles/sort.css'
 import { ArrowDown, ArrowUp, Bird, Building2, Camera, ChevronsUpDown, CircuitBoard, Database, Globe, HandHeart, Leaf, Microscope, SlidersHorizontal, Trees, User, Users, Waves } from 'lucide-react'
 import { Checkbox } from '@/components/ui/checkbox'
@@ -88,6 +89,12 @@ const optN = 'text-xs text-muted-foreground tabular-nums'
               {takes.map((t) => <option value={t.key}>{t.label}</option>)}
             </NativeSelect>
           </div>
+          <div class="border-b border-rule pt-3.5 pb-3.5">
+            <Label htmlFor="sp-where" className="mb-2">Where is your project?</Label>
+            <NativeSelect id="sp-where" name="where">
+              <WhereOptions />
+            </NativeSelect>
+          </div>
           <fieldset class="border-b border-rule pb-3.5">
             <legend class={groupTitle}>Project</legend>
             {types.map((t) => (
@@ -131,6 +138,9 @@ const optN = 'text-xs text-muted-foreground tabular-nums'
           {sponsors.map((s) => <SponsorRow s={s} broader={broader[s.id]} />)}
           <TableBody className="sp-divider" data-divider="" data-twin-skip hidden>
             <TableRow><TableHead colSpan={7} scope="colgroup">Broader sponsors</TableHead></TableRow>
+          </TableBody>
+          <TableBody className="sp-divider" data-unplaced="" data-twin-skip hidden>
+            <TableRow><TableHead colSpan={7} scope="colgroup">Don’t say where projects can be</TableHead></TableRow>
           </TableBody>
         </Table>
       </div>

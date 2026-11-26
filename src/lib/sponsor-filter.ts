@@ -11,6 +11,8 @@ export function initSponsors() {
   const unsaid = document.querySelector<HTMLElement>('[data-unsaid]')!
   const fold = document.querySelector<HTMLDetailsElement>('[data-fold]')!
   const rows = [...document.querySelectorAll<HTMLElement>('[data-sp]')]
+  const unplaced = document.querySelector<HTMLElement>('[data-unplaced]')!
+  const whereSel = form.querySelector<HTMLSelectElement>('select[name="where"]')!
   const picked = (name: string) => [...form.querySelectorAll<HTMLInputElement>(`[name="${name}"]:checked`)].map((i) => i.value)
 
   // "-" in front reverses it. Sponsors that don't say stay last either way, and ties keep the names in order.
@@ -51,23 +53,34 @@ export function initSponsors() {
     const wider = (r: HTMLElement) =>
       !fits(r) && (words(r, 'sp').some((t) => general.includes(t)) || words(r, 'broader').some((t) => projects.includes(t)))
     const says = (r: HTMLElement) => takes.every((t) => words(r, 'yes').includes(t))
-    const first = order(rows.filter((r) => fits(r) && says(r)))
-    const second = order(rows.filter((r) => wider(r) && says(r)))
-    for (const r of rows) r.hidden = !first.includes(r) && !second.includes(r)
+    // data-where spells out each country a sponsor's regions hold (whereReach). A sponsor whose pages name no place goes last, under its own heading; one whose place leaves the project out is hidden.
+    const where = whereSel.value
+    const place = (r: HTMLElement) => (!where ? 'all' : r.dataset.where === undefined ? 'unsaid' : words(r, 'where').some((c) => c === '*' || c === where || c === `R:${where.slice(2)}`) ? 'all' : 'out')
+    const listed = (r: HTMLElement) => says(r) && place(r) === 'all'
+    const first = order(rows.filter((r) => fits(r) && listed(r)))
+    const second = order(rows.filter((r) => wider(r) && listed(r)))
+    const third = order(rows.filter((r) => (fits(r) || wider(r)) && says(r) && place(r) === 'unsaid'))
+    for (const r of rows) r.hidden = !first.includes(r) && !second.includes(r) && !third.includes(r)
     divider.hidden = second.length === 0
+    unplaced.hidden = third.length === 0
     const last = rows[0].parentElement!
-    last.append(...first, divider, ...second)
-    shown.textContent = second.length ? `${first.length} shown, ${second.length} broader` : `${first.length} of ${rows.length} shown`
-    clear.hidden = projects.length + takes.length === 0
+    last.append(...first, divider, ...second, unplaced, ...third)
+    const parts = [second.length && `${second.length} broader`, third.length && `${third.length} don’t say where`].filter(Boolean)
+    shown.textContent = parts.length ? `${first.length} shown, ${parts.join(', ')}` : `${first.length} of ${rows.length} shown`
+    clear.hidden = projects.length + takes.length === 0 && !where
     // A sponsor that doesn't say is hidden, not refused: say how many.
     const silent = rows.filter((r) => (fits(r) || wider(r)) && !says(r) && takes.every((t) => words(r, 'yes').includes(t) || !words(r, 'said').includes(t))).length
-    unsaid.hidden = silent === 0
-    unsaid.textContent = `${silent} more don’t say.`
-    return new URLSearchParams([...projects.map((v) => ['project', v]), ...takes.map((v) => ['takes', v]), ...(sort === 'name' ? [] : [['sort', sort]])])
+    const out = where ? rows.filter((r) => (fits(r) || wider(r)) && says(r) && place(r) === 'out').length : 0
+    const name = whereSel.selectedOptions[0]?.text ?? ''
+    unsaid.textContent = [silent ? `${silent} more don’t say.` : '', out ? `${out} ${out === 1 ? 'rules' : 'rule'} out ${name}.` : ''].filter(Boolean).join(' ')
+    unsaid.hidden = !unsaid.textContent
+    return new URLSearchParams([...(where ? [['where', where]] : []), ...projects.map((v) => ['project', v]), ...takes.map((v) => ['takes', v]), ...(sort === 'name' ? [] : [['sort', sort]])])
   }
 
   const q = new URLSearchParams(location.search)
   for (const i of form.querySelectorAll<HTMLInputElement>('input')) i.checked = q.getAll(i.name).includes(i.value)
+  whereSel.value = q.get('where') ?? ''
+  if (whereSel.selectedIndex < 0) whereSel.value = ''
   const asked = q.get('sort') ?? ''
   setSort(keys.some((th) => th.dataset.col === asked.replace('-', '')) ? asked : 'name')
   // Beside the table the filters stay open; above it they fold.

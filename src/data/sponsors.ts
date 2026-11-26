@@ -1,7 +1,8 @@
 import { existsSync, readdirSync, readFileSync } from 'node:fs'
 import { basename, join } from 'node:path'
 import { z } from 'zod'
-import { evidence, isoDate, iso2, slug, type Evidence } from './schema'
+import { geographyIssues } from './geography'
+import { evidence, geography, isoDate, iso2, slug, type Evidence } from './schema'
 
 /**
  * Fiscal sponsors: charities and nonprofits that receive or manage funding for other people's projects.
@@ -44,6 +45,8 @@ const says = {
     donations: /donation/i,
   },
 }
+/** Words that put a project anywhere: a sponsor's `places` is `global` only on these. */
+const anywhere = /anywhere|worldwide|globally|all around the world|international (initiatives|charities|NGOs)/i
 /** A tax status alone doesn't say where a sponsor is. */
 const onlyTaxStatus = (quote: string) => /501 ?\(?c\)/.test(quote) && !/\bU\.?S\b|USA|United States|\b(based|registered|incorporated) in\b/.test(quote)
 /** Words in a quote that limit a figure or a step, and what our value must keep of them. */
@@ -86,6 +89,11 @@ export const sponsor = z
     gate: fact(text(160)).optional(),
     /** Where projects or groups can be. */
     where: fact(text(160)).optional(),
+    /**
+     * The same place as a grant's `geography`, matched by the page's Where filter (src/lib/where-codes.ts). Only when a
+     * quote names where a project or its group can be: who it pays or what a form asks is not a place a project may be.
+     */
+    places: fact(geography).optional(),
     /** Who it takes. `foreign` is a group or person outside the sponsor's own country. */
     individuals: answer.optional(),
     companies: answer.optional(),
@@ -134,6 +142,7 @@ export const sponsor = z
       if (!ok) ctx.addIssue({ code: 'custom', path: [path], message })
     }
     quote('country', !onlyTaxStatus(s.country.evidence.quote), 'its quote gives a tax status, not where the sponsor is')
+    if (s.places?.value.scope === 'global') quote('places', anywhere.test(s.places.evidence.quote), 'its quote doesn’t say projects can be anywhere')
     if (s.companies) quote('companies', says.companies.test(s.companies.evidence.quote), 'its quote doesn’t speak of companies')
     if (s.foreign) quote('foreign', says.foreign.test(s.foreign.evidence.quote), 'its quote doesn’t say where the group itself is based')
     if (s.grants) quote('grants', says.grants[s.grants.value.role].test(s.grants.evidence.quote), `its quote doesn’t say ${s.grants.value.role}`)
@@ -177,6 +186,7 @@ export function checkSponsors(dir: string, programmes: Set<string>): { sponsors:
     }
     const s = parsed.data
     if (s.id !== basename(file, '.json')) issues.push(`${where}: id ${s.id} must match the file name`)
+    if (s.places) issues.push(...geographyIssues({ geography: s.places.value, evidence: { geography: s.places.evidence } } as Parameters<typeof geographyIssues>[0]).map((i) => `${where}: places: ${i}`))
     if (s.programme_id && !programmes.has(s.programme_id)) issues.push(`${where}: programme ${s.programme_id} does not exist`)
     sponsors.push(s)
   }
