@@ -5,7 +5,10 @@
     "name": "European Outdoor Conservation Association (EOCA)",
     "url": "https://www.eocaconservation.org/"
   },
-  "administered_by": null,
+  "administered_by": {
+    "name": "European Outdoor Conservation Association (EOCA)",
+    "url": "https://www.eocaconservation.org"
+  },
   "parent": null,
   "url": "https://www.eocaconservation.org/our-projects/apply-for-funding/",
   "summary": "Annual funding round for non-profit organisations running projects that conserve, restore or reconnect habitats important for biodiversity in wild landscapes, with benefits for local communities. Shortlisted projects are chosen by public and member votes.",
@@ -14,9 +17,9 @@
   "geography": null,
   "access": "direct",
   "window": "fixed",
-  "amount": null,
-  "co_finance_required": null,
-  "reporting": null,
+  "amount": { "currency": "EUR", "max": 30000, "note": "maximum of €30 000 per project" },
+  "co_finance_required": false,
+  "reporting": "interim report and financial statement halfway through, final report and financial statement at project completion, plus progress updates as requested",
   "effort": {
     "steps": [
       "Short application form",
@@ -59,7 +62,6 @@
       "status": "upcoming",
       "opens": null,
       "deadline": null,
-      "expected": "March 2027",
       "evidence": {
         "status": {
           "source_url": "https://www.eocaconservation.org/our-projects/apply-for-funding/",
@@ -67,10 +69,17 @@
           "checked_at": "2026-11-26",
           "method": "page"
         }
-      }
+      },
+      "expected": "March 2027"
     }
   ],
   "evidence": {
+    "administered_by": {
+      "source_url": "https://www.eocaconservation.org/our-projects/apply-for-funding/frequently-asked-questions/",
+      "quote": "EOCA has a TWO stage application process. The 1st short stage application form will be available on the 'Apply for funding' page during the month of March.",
+      "checked_at": "2026-11-25",
+      "method": "page"
+    },
     "applicant_types": {
       "source_url": "https://www.eocaconservation.org/our-projects/apply-for-funding/",
       "quote": "Non-profit organisations can apply to EOCA for funding each Spring.",
@@ -87,6 +96,24 @@
       "source_url": "https://www.eocaconservation.org/our-projects/apply-for-funding/",
       "quote": "we are moving back to one funding round per year.",
       "checked_at": "2026-11-26",
+      "method": "page"
+    },
+    "amount": {
+      "source_url": "https://www.eocaconservation.org/our-projects/apply-for-funding/frequently-asked-questions/",
+      "quote": "EOCA will fund a MAXIMUM of €30 000 per project.",
+      "checked_at": "2026-11-25",
+      "method": "page"
+    },
+    "co_finance_required": {
+      "source_url": "https://www.eocaconservation.org/our-projects/apply-for-funding/frequently-asked-questions/",
+      "quote": "The total project budget may be higher if there are other sources of funding.",
+      "checked_at": "2026-11-25",
+      "method": "page"
+    },
+    "reporting": {
+      "source_url": "https://www.eocaconservation.org/our-projects/apply-for-funding/frequently-asked-questions/",
+      "quote": "Yes, this is a requirement of all projects EOCA supports.",
+      "checked_at": "2026-11-25",
       "method": "page"
     },
     "effort": [
