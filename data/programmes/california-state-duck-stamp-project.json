@@ -5,7 +5,10 @@
     "name": "California Department of Fish and Wildlife",
     "url": "https://wildlife.ca.gov/"
   },
-  "administered_by": null,
+  "administered_by": {
+    "name": "California Department of Fish and Wildlife",
+    "url": "https://wildlife.ca.gov"
+  },
   "parent": null,
   "url": "https://wildlife.ca.gov/Grants/Duck-Stamp",
   "summary": "Grants funded by State Duck Stamp sales for restoring, enhancing and creating California waterfowl wetland habitat, plus waterfowl research, awarded through an annual proposal solicitation.",
@@ -14,7 +17,7 @@
   "geography": { "scope": "countries", "countries": ["US"], "label": "California" },
   "access": "direct",
   "window": "fixed",
-  "amount": null,
+  "amount": { "currency": "USD", "max": 1135000 },
   "pool": {
     "currency": "USD",
     "value": 1135000,
@@ -72,6 +75,12 @@
     }
   ],
   "evidence": {
+    "administered_by": {
+      "source_url": "https://wildlife.ca.gov/Grants/Duck-Stamp",
+      "quote": "administered by the California Department of Fish and Wildlife (Department)",
+      "checked_at": "2026-11-25",
+      "method": "page"
+    },
     "applicant_types": {
       "source_url": "https://wildlife.ca.gov/Grants/Duck-Stamp",
       "quote": "to nonprofit organizations, local government agencies, state departments and federal agencies",
@@ -94,6 +103,12 @@
       "source_url": "https://wildlife.ca.gov/Grants/Duck-Stamp",
       "quote": "annually solicits proposals in November or December of each year",
       "checked_at": "2026-11-26",
+      "method": "page"
+    },
+    "amount": {
+      "source_url": "https://wildlife.ca.gov/Grants/Duck-Stamp",
+      "quote": "The Stamp Project has up to $1,135,000 that may be allocated for projects on a Fiscal Year (FY) basis",
+      "checked_at": "2026-11-25",
       "method": "page"
     },
     "pool": {
