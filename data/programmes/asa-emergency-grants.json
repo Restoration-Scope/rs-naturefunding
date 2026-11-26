@@ -14,6 +14,7 @@
   "amount": { "currency": "USD", "max": 5000 },
   "co_finance_required": null,
   "reporting": null,
+  "effort": { "steps": ["Online emergency grant application"] },
   "eligibility": [
     {
       "rule": "Species or population faces extinction within 6 months without intervention",
@@ -29,15 +30,12 @@
       "kind": "project"
     },
     { "rule": "The action can measurably reduce the risk of extinction", "kind": "project" },
-    { "rule": "The grant request does not exceed USD 5,000", "kind": "finances" },
-    {
-      "rule": "Funding covers only direct on-the-ground emergency response costs",
-      "kind": "other"
-    },
-    {
-      "rule": "No overhead, admin fees, research without immediate action, or unclear imminent threat",
-      "kind": "other"
-    }
+    { "rule": "Funding covers only direct on-the-ground emergency response costs", "kind": "other" }
+  ],
+  "documents": [
+    "Evidence of urgency and feasibility, such as population data, threat assessments or action plans",
+    "Project budget using the ASA template",
+    "Project lead’s CV"
   ],
   "calls": [
     {
@@ -76,6 +74,14 @@
       "checked_at": "2026-11-25",
       "method": "page"
     },
+    "effort": [
+      {
+        "source_url": "https://www.amphibians.org/programs/emergency-grants",
+        "quote": "Apply now",
+        "checked_at": "2026-11-26",
+        "method": "page"
+      }
+    ],
     "eligibility": [
       {
         "source_url": "https://www.amphibians.org/programs/emergency-grants",
@@ -109,20 +115,28 @@
       },
       {
         "source_url": "https://www.amphibians.org/programs/emergency-grants",
-        "quote": "FundingUp to $5,000",
-        "checked_at": "2026-11-24",
-        "method": "page"
-      },
-      {
-        "source_url": "https://www.amphibians.org/programs/emergency-grants",
         "quote": "Direct costs for on-the-ground emergency response only",
         "checked_at": "2026-11-25",
         "method": "page"
+      }
+    ],
+    "documents": [
+      {
+        "source_url": "https://rerwn2qlprl.typeform.com/forms/sASfwHk3",
+        "quote": "Upload any supporting documents (e.g., population data, threat assessments, action plans) that demonstrate the urgency of the situation and the feasibility of your proposed actions.",
+        "checked_at": "2026-11-26",
+        "method": "page"
       },
       {
-        "source_url": "https://www.amphibians.org/programs/emergency-grants",
-        "quote": "✕Overhead or indirect costs of any kind ✕Administrative fees or charges ✕Research or studies without immediate conservation action ✕Projects without clear evidence of imminent extinction threat",
-        "checked_at": "2026-11-25",
+        "source_url": "https://rerwn2qlprl.typeform.com/forms/sASfwHk3",
+        "quote": "Upload the ASA-provided budget template for your project budget.",
+        "checked_at": "2026-11-26",
+        "method": "page"
+      },
+      {
+        "source_url": "https://rerwn2qlprl.typeform.com/forms/sASfwHk3",
+        "quote": "Upload the CV of the Project Lead:",
+        "checked_at": "2026-11-26",
         "method": "page"
       }
     ]

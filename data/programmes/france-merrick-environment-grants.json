@@ -21,8 +21,8 @@
   "effort": {
     "steps": [
       "Letter of Inquiry (rolling; over $50,000 by the closing date)",
-      "Proposal, if invited",
-      "Staff review and site visit"
+      "Invited proposal (Jan 8 for requests over $50,000)",
+      "Staff review and possible site visit, then committee and board as applicable"
     ],
     "more_after": true,
     "due": ["2026-12-04", "2027-01-08", null]
@@ -36,17 +36,21 @@
       "rule": "Has at least three board officers: president, secretary and treasurer",
       "kind": "legal"
     },
-    { "rule": "Has at least 51% unrelated voting board members", "kind": "legal" },
+    {
+      "rule": "At least 51% of voting board members have no family or business partnership ties",
+      "kind": "legal"
+    },
     {
       "rule": "Applies for a one-time project with defined beginnings and endings",
       "kind": "project"
     },
     { "rule": "Has financial stability to sustain the project", "kind": "finances" },
+    { "rule": "No France-Merrick grant final payment in the last two years", "kind": "other" },
     {
-      "rule": "Not for individuals, special events, debt or deficits, political activities or general operating costs",
-      "kind": "project"
+      "rule": "Resubmits a declined project only if staff requests it and the project has clearly changed",
+      "kind": "other"
     },
-    { "rule": "No France-Merrick grant final payment in the last two years", "kind": "other" }
+    { "rule": "Submits only one letter of inquiry at a time", "kind": "other" }
   ],
   "after_award": { "reports": "final" },
   "calls": [
@@ -131,9 +135,9 @@
         "method": "page"
       },
       {
-        "source_url": "https://www.france-merrickfdn.org/wp-content/uploads/2026/07/France-Merrick-Foundation-FAQ-0726.pdf",
-        "quote": "Once received, each proposal is assigned to a staff member, who conducts a thorough review including follow-up questions and a site visit.",
-        "checked_at": "2026-11-25",
+        "source_url": "https://www.france-merrickfdn.org/apply-for-a-grant/our-process/",
+        "quote": "A program officer is assigned to each proposal and follows up to ensure that our process is clear and that we fully understand each request, which frequently requires a site visit to better appreciate the organization and need addressed in the proposal. Following this review, grant requests are presented for consideration to the Grants Committee. Proposals for over $50,000 go on to our Board",
+        "checked_at": "2026-11-26",
         "method": "page"
       }
     ],
@@ -169,15 +173,21 @@
         "method": "page"
       },
       {
-        "source_url": "https://www.france-merrickfdn.org/apply-for-a-grant/",
-        "quote": "Individuals Special events or advertising space in programs Deficit financing/debt reduction Political activities General operating/annual giving",
+        "source_url": "https://www.france-merrickfdn.org/apply-for-a-grant/our-process/",
+        "quote": "Per Foundation policy, new funding requests may only be submitted after completing a two-year waiting period from the final payment date of a previous grant.",
         "checked_at": "2026-11-25",
         "method": "page"
       },
       {
+        "source_url": "https://www.france-merrickfdn.org/wp-content/uploads/2026/07/France-Merrick-Foundation-FAQ-0726.pdf",
+        "quote": "Please do not apply for the same project again unless staff requests it and there is a clear change in the project that justifies resubmission.",
+        "checked_at": "2026-11-26",
+        "method": "page"
+      },
+      {
         "source_url": "https://www.france-merrickfdn.org/apply-for-a-grant/our-process/",
-        "quote": "Per Foundation policy, new funding requests may only be submitted after completing a two-year waiting period from the final payment date of a previous grant.",
-        "checked_at": "2026-11-25",
+        "quote": "If you have multiple project components/requests, please include them in a single submission – do not submit more than one LOI at a time.",
+        "checked_at": "2026-11-26",
         "method": "page"
       }
     ],

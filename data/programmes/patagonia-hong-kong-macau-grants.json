@@ -24,12 +24,17 @@
     "note": "Needed by an organisation without non-profit status; the sponsor’s status is comparable"
   },
   "reporting": null,
-  "effort": { "steps": ["Proposal submission"] },
+  "effort": {
+    "steps": [
+      "Online application with eligibility screening",
+      "Proposal review by Patagonia Hong Kong and 1% for the Planet"
+    ]
+  },
   "eligibility": [
     { "rule": "Has non-profit status or a comparable fiscal sponsor", "kind": "legal" },
     { "rule": "Does not perpetuate systemic bias or discrimination", "kind": "other" },
     {
-      "rule": "No trail work, dam renovations, fish passages, hatcheries, easements, land acquisition or unsupported research",
+      "rule": "No trail work, dam renovations, assisted fish passages, hatcheries, conservation easements or land acquisition",
       "kind": "project"
     },
     {
@@ -37,10 +42,18 @@
       "kind": "project"
     },
     {
-      "rule": "No endowments, political campaigns or green building; bike advocacy must directly support a climate solution",
+      "rule": "No political campaigns or green building. Bike advocacy must directly support a climate change solution",
       "kind": "project"
     },
-    { "rule": "Submits no more than one proposal per group in the fiscal year", "kind": "other" }
+    { "rule": "Submits no more than one proposal per group in the fiscal year", "kind": "other" },
+    {
+      "rule": "Research directly supports a developed plan for specific action on an environmental problem",
+      "kind": "project"
+    },
+    {
+      "rule": "Project includes a distinct action component with measurable goals and objectives",
+      "kind": "project"
+    }
   ],
   "after_award": { "reports": "other" },
   "calls": [
@@ -104,6 +117,18 @@
         "quote": "All grant proposals that are successfully submitted are reviewed within 1 month.",
         "checked_at": "2026-11-25",
         "method": "page"
+      },
+      {
+        "source_url": "https://www.patagonia.com.hk/pages/how-we-fund",
+        "quote": "Apply Now!",
+        "checked_at": "2026-11-26",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.patagonia.com.hk/pages/how-we-fund",
+        "quote": "Proposals are reviewed and grants decisions are made by Patagonia Hong Kong and 1% for the Planet.",
+        "checked_at": "2026-11-26",
+        "method": "page"
       }
     ],
     "eligibility": [
@@ -141,6 +166,18 @@
         "source_url": "https://www.patagonia.com.hk/pages/how-we-fund",
         "quote": "We accept one proposal per group in this fiscal year (1st April 2026 - 31st March 2027).",
         "checked_at": "2026-11-25",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.patagonia.com.hk/pages/how-we-fund",
+        "quote": "research, unless it is in direct support of a developed plan for specific action to alleviate an environmental problem",
+        "checked_at": "2026-11-26",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.patagonia.com.hk/pages/how-we-fund",
+        "quote": "is action-oriented has a clear strategy identifies specific goals and objectives that can be effectively measured to evaluate success",
+        "checked_at": "2026-11-26",
         "method": "page"
       }
     ],
