@@ -2,7 +2,7 @@
   "id": "colorado-wetlands-for-wildlife",
   "name": "Wetlands for Wildlife Grants",
   "funder": { "name": "Colorado Parks and Wildlife", "url": "https://cpw.state.co.us/" },
-  "administered_by": null,
+  "administered_by": { "name": "Colorado Parks and Wildlife", "url": "https://cpw.state.co.us" },
   "parent": null,
   "url": "https://cpw.state.co.us/wetlands-wildlife-grants",
   "summary": "Annual grants to restore, enhance and create wetlands and riparian areas in Colorado. Non-profit habitat groups, tribes, local governments and companies can apply; private landowners cannot apply directly.",
@@ -22,18 +22,53 @@
       "status": "upcoming",
       "opens": null,
       "deadline": null,
-      "expected": "February 2027",
       "evidence": {
         "status": {
           "source_url": "https://cpw.state.co.us/wetlands-wildlife-grants",
           "quote": "Applications are closed. The next round of grant applications is expected to open in February 2027.",
           "checked_at": "2026-11-26",
           "method": "page"
+        },
+        "recurring": {
+          "source_url": "https://cpw.state.co.us/wetlands-wildlife-grants",
+          "quote": "Colorado Parks and Wildlife annually seeks applications for wetland and riparian restoration, enhancement, and creation projects",
+          "checked_at": "2026-11-25",
+          "method": "page"
+        }
+      },
+      "expected": "February 2027",
+      "recurring": "annually seeks applications"
+    },
+    {
+      "id": "2024-2025",
+      "label": "2024-2025 Grant Cycle",
+      "url": "https://cpw.state.co.us/wetlands-wildlife-grants",
+      "status": "closed",
+      "opens": null,
+      "deadline": { "date": "2026-02-24", "text": "Applications due" },
+      "evidence": {
+        "status": {
+          "source_url": "https://cpw.state.co.us/wetlands-wildlife-grants",
+          "quote": "Applications are closed. The next round of grant applications is expected to open in February 2027.",
+          "checked_at": "2026-11-25",
+          "method": "page"
+        },
+        "deadline": {
+          "source_url": "https://cpw.state.co.us/wetlands-wildlife-grants",
+          "quote": "Date February 24, 2026",
+          "checked_at": "2026-11-25",
+          "method": "page"
         }
       }
     }
   ],
   "evidence": {
+    "administered_by": {
+      "source_url": "https://cpw.state.co.us/wetlands-wildlife-grants",
+      "quote": "Colorado Parks and Wildlife annually seeks applications for wetland and riparian restoration, enhancement, and creation projects",
+      "checked_at": "2026-11-25",
+      "method": "page"
+    },
     "applicant_types": {
       "source_url": "https://cpw.state.co.us/wetlands-wildlife-grants",
       "quote": "Local governments, other state and federal land management agencies, tribes, non-profit habitat conservation organizations, and private companies.",
