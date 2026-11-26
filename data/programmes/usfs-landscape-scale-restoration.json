@@ -44,7 +44,7 @@
       "kind": "project"
     },
     {
-      "rule": "On-the-ground work only on rural non-Federal land, outside Census places of over 50,000 people",
+      "rule": "Uses only rural non-industrial private forest land or rural state or local government forest land",
       "kind": "project"
     },
     {
@@ -56,23 +56,31 @@
       "kind": "project"
     },
     {
-      "rule": "No construction, land acquisition or easements, or payments made directly to private landowners",
+      "rule": "Registered in SAM.gov before applying",
+      "kind": "legal"
+    },
+    {
+      "rule": "Federally recognised Tribes may submit at most two applications",
+      "kind": "legal"
+    },
+    {
+      "rule": "Tribes and Tribal organisations may receive only one LSR award for the same work across both calls",
       "kind": "project"
     },
     {
-      "rule": "Registered in SAM.gov before applying",
-      "kind": "legal"
+      "rule": "Plans to complete on-the-ground activities within three years of the award",
+      "kind": "project"
     }
   ],
   "documents": [
-    "Project narrative of up to 5 pages",
     "Detailed budget with Federal funding and match in each category",
     "State Forester sponsorship letter or email, unless a federally recognised Tribe",
-    "FS 1500-34 equipment justification, if buying equipment with Federal funds"
+    "FS 1500-34 equipment justification, if buying equipment with Federal funds",
+    "SF-424A federal budget information form"
   ],
   "effort": {
     "steps": [
-      "Draft narrative and budget to the State Forester for sponsorship",
+      "Draft narrative and budget to State Forester(s), if sponsorship is required",
       "Application in Grants.gov",
       "Eligibility and responsiveness screening",
       "Scoring and ranking by a regional review team",
@@ -87,7 +95,9 @@
     ]
   },
   "co_finance": {
-    "min_share": 50
+    "ratio": "1:1",
+    "in_kind": true,
+    "applies_to": "Except eligible US territories and freely associated states for grants ≤$500,000"
   },
   "after_award": {
     "reports": "yearly"
@@ -174,8 +184,8 @@
       },
       {
         "source_url": "https://www.grants.gov/grantsws/rest/opportunity/att/download/355360",
-        "quote": "Projects that do not meet eligible land definition, including anywhere the on-the-ground activities take place on urban land (Census places with greater than 50,000 people) or on Federal land.",
-        "checked_at": "2026-11-20",
+        "quote": "LSR projects must be conducted on rural non-industrial private forest land, and/or rural State or local government forest land.",
+        "checked_at": "2026-11-26",
         "method": "page"
       },
       {
@@ -192,24 +202,30 @@
       },
       {
         "source_url": "https://www.grants.gov/grantsws/rest/opportunity/att/download/355360",
-        "quote": "Construction or improvements of building (facilities) and land improvements including but not limited to buildings, roads, culverts, dams, ponds, and major earthwork projects. o Land acquisition projects, including conservation easements or the use of partner purchase of land as match. o Cost-share, reimbursement, and other types of payments provided directly to private landowners.",
+        "quote": "Register in SAM.gov before applying.",
         "checked_at": "2026-11-20",
         "method": "page"
       },
       {
         "source_url": "https://www.grants.gov/grantsws/rest/opportunity/att/download/355360",
-        "quote": "Register in SAM.gov before applying.",
-        "checked_at": "2026-11-20",
+        "quote": "Federally Recognized Tribes are limited to 2 applications.",
+        "checked_at": "2026-11-26",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.grants.gov/grantsws/rest/opportunity/att/download/355360",
+        "quote": "Federally recognized Tribes and Tribal organizations may apply to either or both NOFOs but cannot receive more than one award for the same scope of work.",
+        "checked_at": "2026-11-26",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.grants.gov/grantsws/rest/opportunity/att/download/355360",
+        "quote": "The on-the-ground activities to be completed with grant funds, match, and leveraged resources within three years of award or less",
+        "checked_at": "2026-11-26",
         "method": "page"
       }
     ],
     "documents": [
-      {
-        "source_url": "https://www.grants.gov/grantsws/rest/opportunity/att/download/355360",
-        "quote": "Project Narrative (5-page limit).",
-        "checked_at": "2026-11-20",
-        "method": "page"
-      },
       {
         "source_url": "https://www.grants.gov/grantsws/rest/opportunity/att/download/355360",
         "quote": "Detailed Budget Table or Spreadsheet in whole numbers, with Federal funding and match amounts in each relevant budget category.",
@@ -226,6 +242,12 @@
         "source_url": "https://www.grants.gov/grantsws/rest/opportunity/att/download/355360",
         "quote": "For projects using Federal funds to purchase equipment: Fill out, sign, and submit FS 1500-34 Grant Equipment Justification and Certification Statement.",
         "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.grants.gov/grantsws/rest/opportunity/att/download/355360",
+        "quote": "SF-424A: Budget Information",
+        "checked_at": "2026-11-26",
         "method": "page"
       }
     ],
@@ -263,8 +285,8 @@
     ],
     "co_finance": {
       "source_url": "https://www.grants.gov/grantsws/rest/opportunity/att/download/355360",
-      "quote": "Grant recipients must match (cost share) the Federal grant funds 1:1 with non-Federal sources.",
-      "checked_at": "2026-11-20",
+      "quote": "Cost-sharing exception: Pursuant to 48 U.S.C. 1469a, the Virgin Islands, Guam, American Samoa, the Northern Mariana Islands, the Freely Associated States of the Republic of Palau (Palau), the Federated States of Micronesia, and the Republic of the Marshall Islands, are not required to provide 1:1 match for a grant of $500,000 or less.",
+      "checked_at": "2026-11-26",
       "method": "page"
     },
     "after_award": [

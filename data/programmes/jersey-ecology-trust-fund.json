@@ -22,22 +22,24 @@
       "kind": "project"
     },
     {
-      "rule": "Project does not involve annual or seasonal repetition beyond the initial cycle",
+      "rule": "For recurring annual or seasonal projects, seeks funding only for the first cycle",
       "kind": "project"
     },
     { "rule": "Applicant is not a Trustee of the Ecology Fund", "kind": "legal" },
     {
       "rule": "Project does not provide services or equipment for a Trustee's benefit",
       "kind": "project"
-    }
+    },
+    { "rule": "The project gives no Trustee a direct economic benefit", "kind": "project" },
+    { "rule": "The project is of direct importance to Jersey", "kind": "project" }
   ],
-  "after_award": { "reports": "final" },
   "documents": [
     "Detailed cost breakdown, with other funding sources and third-party estimates",
     "Site details including ownership, for site-based applications",
     "Site maps and accurate drawings, for site-based applications",
     "Public and disabled access route plans, for site-based applications",
-    "Aftercare plans, for projects such as creating nature areas"
+    "Aftercare plans, for projects such as creating nature areas",
+    "Two quotations for each equipment or services purchase paid for by the grant"
   ],
   "calls": [
     {
@@ -126,13 +128,17 @@
         "quote": "applications that result in the provision of services or equipment for the exclusive or general benefit of a Trustee cannot be considered",
         "checked_at": "2026-11-25",
         "method": "page"
-      }
-    ],
-    "after_award": [
+      },
       {
         "source_url": "https://www.gov.je/Benefits/Allowances/Grants/Environmental/Pages/EcologyTrustFund.aspx",
-        "quote": "applications for research must provide a report for the inspection of the Trustees on completion of the project, within 4 months of project completion",
-        "checked_at": "2026-11-25",
+        "quote": "a Trustee derives direct economic benefit will not be considered",
+        "checked_at": "2026-11-26",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.gov.je/Benefits/Allowances/Grants/Environmental/Pages/EcologyTrustFund.aspx",
+        "quote": "only for applications that are of direct importance to Jersey",
+        "checked_at": "2026-11-26",
         "method": "page"
       }
     ],
@@ -153,6 +159,12 @@
         "source_url": "https://www.gov.je/Benefits/Allowances/Grants/Environmental/Pages/EcologyTrustFund.aspx",
         "quote": "outline plans for the aftercare arrangements",
         "checked_at": "2026-11-25",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.gov.je/SiteCollectionDocuments/Environment%20and%20greener%20living/F%20ETF%20DMG%20Jersey%20Ecology%20Fund.pdf",
+        "quote": "If yes, please provide two quotations for each purchase and attach to this application.",
+        "checked_at": "2026-11-26",
         "method": "page"
       }
     ]

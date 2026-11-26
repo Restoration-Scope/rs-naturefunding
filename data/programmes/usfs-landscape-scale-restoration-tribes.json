@@ -40,7 +40,7 @@
       "kind": "legal"
     },
     {
-      "rule": "On-the-ground work only on rural non-Federal land, outside Census places of over 50,000 people",
+      "rule": "Uses only rural non-industrial private forest land or rural state or local government forest land",
       "kind": "project"
     },
     {
@@ -52,23 +52,26 @@
       "kind": "project"
     },
     {
-      "rule": "No construction, land acquisition or easements, or payments made directly to private landowners",
+      "rule": "Registered in SAM.gov before applying",
+      "kind": "legal"
+    },
+    {
+      "rule": "Requests at least $100,000 for the project",
       "kind": "project"
     },
     {
-      "rule": "Registered in SAM.gov before applying",
-      "kind": "legal"
+      "rule": "Plans to complete on-the-ground activities within three years of the award",
+      "kind": "project"
     }
   ],
   "documents": [
-    "Project narrative of up to 5 pages",
     "Detailed budget with Federal funding and match in each category",
     "Letter of support from the Tribe, for Tribal organisations",
     "FS 1500-34 equipment justification, if buying equipment with Federal funds"
   ],
   "effort": {
     "steps": [
-      "Application by email to the national LSR inbox",
+      "Email application to national LSR inbox and copy Forest Service contact",
       "Eligibility screening",
       "Scoring and ranking by the national review panel",
       "Risk review, with a financial capability questionnaire"
@@ -81,7 +84,8 @@
     ]
   },
   "co_finance": {
-    "min_share": 50
+    "ratio": "1:1",
+    "in_kind": true
   },
   "after_award": {
     "reports": "yearly"
@@ -167,8 +171,8 @@
       },
       {
         "source_url": "https://www.grants.gov/grantsws/rest/opportunity/att/download/355359",
-        "quote": "Projects that do not meet eligibility, including anywhere the on-the-ground activities take place on urban land (Census places with greater than 50,000 people) or on Federal land.",
-        "checked_at": "2026-11-20",
+        "quote": "LSR projects must be conducted on rural non-industrial private forest land and/or rural State or local government forest land.",
+        "checked_at": "2026-11-26",
         "method": "page"
       },
       {
@@ -185,24 +189,24 @@
       },
       {
         "source_url": "https://www.grants.gov/grantsws/rest/opportunity/att/download/355359",
-        "quote": "Construction or improvements of building (facilities), and land improvements including but not limited to buildings, roads, culverts, dams, ponds, and major earthwork projects. o Land acquisition projects, including conservation easements or the use of partner purchase of land as match. o Cost-share, reimbursement, and other types of payments provided directly to private landowners.",
+        "quote": "Register in SAM.gov before applying.",
         "checked_at": "2026-11-20",
         "method": "page"
       },
       {
         "source_url": "https://www.grants.gov/grantsws/rest/opportunity/att/download/355359",
-        "quote": "Register in SAM.gov before applying.",
-        "checked_at": "2026-11-20",
+        "quote": "Minimum: $100,000 per project",
+        "checked_at": "2026-11-26",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.grants.gov/grantsws/rest/opportunity/att/download/355359",
+        "quote": "The on-the ground activities to be completed with grant funds, match, and leveraged resources within three years of award or less",
+        "checked_at": "2026-11-26",
         "method": "page"
       }
     ],
     "documents": [
-      {
-        "source_url": "https://www.grants.gov/grantsws/rest/opportunity/att/download/355359",
-        "quote": "Project Narrative (5-page limit).",
-        "checked_at": "2026-11-20",
-        "method": "page"
-      },
       {
         "source_url": "https://www.grants.gov/grantsws/rest/opportunity/att/download/355359",
         "quote": "Detailed Budget Table or Spreadsheet in whole numbers, with Federal funding and match amounts in each relevant budget category.",
@@ -225,12 +229,6 @@
     "effort": [
       {
         "source_url": "https://www.grants.gov/grantsws/rest/opportunity/att/download/355359",
-        "quote": "Final applications must be emailed to SM.FS.LSR@usda.gov by 11:59 p.m. Eastern, Tuesday January 26, 2027.",
-        "checked_at": "2026-11-20",
-        "method": "page"
-      },
-      {
-        "source_url": "https://www.grants.gov/grantsws/rest/opportunity/att/download/355359",
         "quote": "Applications will undergo a preliminary review to ensure eligibility and verify requirements.",
         "checked_at": "2026-11-20",
         "method": "page"
@@ -246,12 +244,18 @@
         "quote": "Before any grant is awarded, the applicant will submit a Financial Capability Questionnaire/Checklist FS-1500-22A/B.",
         "checked_at": "2026-11-20",
         "method": "page"
+      },
+      {
+        "source_url": "https://www.grants.gov/grantsws/rest/opportunity/att/download/355359",
+        "quote": "Final applications must be emailed to SM.FS.LSR@usda.gov by 11:59 p.m. Eastern, Tuesday January 26, 2027. with a copy provided to the appropriate Forest Service contact listed under Agency Contact Information.",
+        "checked_at": "2026-11-26",
+        "method": "page"
       }
     ],
     "co_finance": {
       "source_url": "https://www.grants.gov/grantsws/rest/opportunity/att/download/355359",
-      "quote": "Grant recipients must match (cost share) the Federal grant funds 1:1 from non-Federal sources.",
-      "checked_at": "2026-11-20",
+      "quote": "One-to-one non-Federal match is required.  Match may include cash or in-kind contributions of goods, property, and services.",
+      "checked_at": "2026-11-26",
       "method": "page"
     },
     "after_award": [
