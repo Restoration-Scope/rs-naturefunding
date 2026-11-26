@@ -1,4 +1,6 @@
 // Filters and sorting on /fiscal-sponsors/: which sponsors show, in what order, kept in the address. Without it every sponsor is listed by name.
+import { picker } from './picker'
+
 const words = (el: HTMLElement, key: string) => (el.dataset[key] ?? '').split(' ').filter(Boolean)
 // Sponsors of these types name no single subject, so they follow the ones that name the reader's.
 const general = ['environment', 'any']
@@ -81,6 +83,8 @@ export function initSponsors() {
   for (const i of form.querySelectorAll<HTMLInputElement>('input')) i.checked = q.getAll(i.name).includes(i.value)
   whereSel.value = q.get('where') ?? ''
   if (whereSel.selectedIndex < 0) whereSel.value = ''
+  // The country search with flags, as on the finder and in the weekly-email card.
+  picker(whereSel, true, 'top-1/2 left-[0.65rem] -translate-y-1/2', 'pl-[2.4rem]!')
   const asked = q.get('sort') ?? ''
   setSort(keys.some((th) => th.dataset.col === asked.replace('-', '')) ? asked : 'name')
   // Beside the table the filters stay open; above it they fold.
@@ -102,6 +106,7 @@ export function initSponsors() {
     })
   // Clearing the filters keeps the order.
   form.addEventListener('reset', () => setTimeout(() => {
+    whereSel.dispatchEvent(new Event('sync'))
     setSort(sort)
     change()
   }))
