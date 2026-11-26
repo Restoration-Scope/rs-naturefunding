@@ -135,12 +135,16 @@ const optN = 'text-xs text-muted-foreground tabular-nums'
               <TableHead scope="col" data-twin-skip><span class="sr-only">Details</span></TableHead>
             </TableRow>
           </TableHeader>
+          {/* With a place picked, each group says whether it takes projects there (src/lib/sponsor-filter.ts sets the words). */}
+          <TableBody className="sp-divider" data-placed="" data-twin-skip hidden>
+            <TableRow><TableHead colSpan={7} scope="colgroup"></TableHead></TableRow>
+          </TableBody>
           {sponsors.map((s) => <SponsorRow s={s} broader={broader[s.id]} />)}
           <TableBody className="sp-divider" data-divider="" data-twin-skip hidden>
             <TableRow><TableHead colSpan={7} scope="colgroup">Broader sponsors</TableHead></TableRow>
           </TableBody>
           <TableBody className="sp-divider" data-unplaced="" data-twin-skip hidden>
-            <TableRow><TableHead colSpan={7} scope="colgroup">Don’t say where projects can be</TableHead></TableRow>
+            <TableRow><TableHead colSpan={7} scope="colgroup"></TableHead></TableRow>
           </TableBody>
         </Table>
       </div>
@@ -377,6 +381,13 @@ const optN = 'text-xs text-muted-foreground tabular-nums'
     padding: 1.1rem 0.75rem 0.5rem;
     color: var(--muted-foreground);
     text-align: left;
+  }
+  /* Whether a group takes the picked place is the answer the reader came for. */
+  .sp-tbl [data-placed] th,
+  .sp-tbl [data-unplaced] th,
+  .sp-tbl [data-divider][data-where-on] th {
+    color: var(--foreground);
+    font-weight: 600;
   }
   .sp-tbl tbody[hidden] {
     display: none !important;

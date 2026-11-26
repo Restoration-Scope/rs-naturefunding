@@ -14,6 +14,9 @@ export function initSponsors() {
   const fold = document.querySelector<HTMLDetailsElement>('[data-fold]')!
   const rows = [...document.querySelectorAll<HTMLElement>('[data-sp]')]
   const unplaced = document.querySelector<HTMLElement>('[data-unplaced]')!
+  const placed = document.querySelector<HTMLElement>('[data-placed]')!
+  const head = (el: HTMLElement) => el.querySelector('th')!
+  const broaderText = head(divider).textContent
   const whereSel = form.querySelector<HTMLSelectElement>('select[name="where"]')!
   const picked = (name: string) => [...form.querySelectorAll<HTMLInputElement>(`[name="${name}"]:checked`)].map((i) => i.value)
 
@@ -63,17 +66,23 @@ export function initSponsors() {
     const second = order(rows.filter((r) => wider(r) && listed(r)))
     const third = order(rows.filter((r) => (fits(r) || wider(r)) && says(r) && place(r) === 'unsaid'))
     for (const r of rows) r.hidden = !first.includes(r) && !second.includes(r) && !third.includes(r)
+    // With a place picked, each group's heading says plainly whether its sponsors take projects there.
+    const name = whereSel.selectedOptions[0]?.text ?? ''
+    head(placed).textContent = `✓ Take projects in ${name}`
+    head(divider).textContent = where ? `✓ Broader sponsors that take projects in ${name}` : broaderText
+    divider.toggleAttribute('data-where-on', !!where)
+    head(unplaced).textContent = `? Don’t say whether they take projects in ${name}`
+    placed.hidden = !where || first.length === 0
     divider.hidden = second.length === 0
     unplaced.hidden = third.length === 0
     const last = rows[0].parentElement!
-    last.append(...first, divider, ...second, unplaced, ...third)
+    last.append(placed, ...first, divider, ...second, unplaced, ...third)
     const parts = [second.length && `${second.length} broader`, third.length && `${third.length} don’t say where`].filter(Boolean)
     shown.textContent = parts.length ? `${first.length} shown, ${parts.join(', ')}` : `${first.length} of ${rows.length} shown`
     clear.hidden = projects.length + takes.length === 0 && !where
     // A sponsor that doesn't say is hidden, not refused: say how many.
     const silent = rows.filter((r) => (fits(r) || wider(r)) && !says(r) && place(r) != 'out' && takes.every((t) => words(r, 'yes').includes(t) || !words(r, 'said').includes(t))).length
     const out = where ? rows.filter((r) => (fits(r) || wider(r)) && says(r) && place(r) === 'out').length : 0
-    const name = whereSel.selectedOptions[0]?.text ?? ''
     unsaid.textContent = [silent ? `${silent} more don’t say.` : '', out ? `${out} ${out === 1 ? 'rules' : 'rule'} out ${name}.` : ''].filter(Boolean).join(' ')
     unsaid.hidden = !unsaid.textContent
     return new URLSearchParams([...(where ? [['where', where]] : []), ...projects.map((v) => ['project', v]), ...takes.map((v) => ['takes', v]), ...(sort === 'name' ? [] : [['sort', sort]])])
