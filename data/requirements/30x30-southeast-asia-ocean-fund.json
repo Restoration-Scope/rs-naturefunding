@@ -2,10 +2,7 @@
   "id": "30x30-southeast-asia-ocean-fund",
   "read_on": "2026-11-19",
   "prompt_version": "req-2026-11-18.1",
-  "models": [
-    "gpt-5.6-luna",
-    "jev-latest"
-  ],
+  "models": ["gpt-5.6-luna", "jev-latest"],
   "complete": true,
   "reasons": [],
   "requirements_checked": false,
@@ -26,15 +23,7 @@
   ],
   "failures": [],
   "skipped_links": 39,
-  "chunks": [
-    {
-      "id": "all",
-      "docs": [
-        "D1"
-      ],
-      "chars": 4564
-    }
-  ],
+  "chunks": [{ "id": "all", "docs": ["D1"], "chars": 4564 }],
   "outcomes": {
     "eligibility": "stated",
     "documents": "not_found",
@@ -43,14 +32,19 @@
     "consortium": "not_found",
     "after_award": "not_found"
   },
-  "written": [
-    "eligibility",
-    "effort"
-  ],
+  "written": ["eligibility", "effort"],
   "escalated": [],
   "flags": [],
   "notes": [
     "extractor: Expressions of Interest are reviewed in three cohorts each year, with decisions made in March, July and November. Each submission is considered in the next available cohort. English is preferred, but local-language applications are welcome. The fund encourages local partners of international NGOs to apply or be included as lead applicants."
   ],
-  "usd": 0.0021
+  "usd": 0.0021,
+  "review": {
+    "on": "2026-11-26",
+    "standards": "2026-11-24.1",
+    "reviewer": "gpt-6.2-sol-medium",
+    "hash": "bd604b8f7a044d2a",
+    "verdicts": { "sound": 3, "wrong": 0, "missed": 1 },
+    "canaries": { "planted": 1, "caught": 1 }
+  }
 }
