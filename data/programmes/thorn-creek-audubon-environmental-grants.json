@@ -17,7 +17,8 @@
   "amount": { "currency": "USD", "max": 500 },
   "co_finance_required": null,
   "reporting": null,
-  "effort": { "steps": ["Application submission"] },
+  "effort": { "steps": ["Application submission", "Rolling application review"] },
+  "eligibility": [{ "rule": "The applicant is a local organisation", "kind": "legal" }],
   "after_award": { "reports": "final" },
   "calls": [
     {
@@ -61,6 +62,20 @@
         "source_url": "https://www.thorncreekaudubonsociety.org/s/Thorn-Creek-Audubon-Grant-Application01.docx",
         "quote": "Email (preferred) or mail your application to:",
         "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.thorncreekaudubonsociety.org/grants",
+        "quote": "Grant applications are considered as they are received.",
+        "checked_at": "2026-11-26",
+        "method": "page"
+      }
+    ],
+    "eligibility": [
+      {
+        "source_url": "https://www.thorncreekaudubonsociety.org/grants",
+        "quote": "Thorn Creek Audubon offers financial assistance, up to $500 per grant, to local organization projects focused on environmental education, habitat restoration, or wildlife protection and management.",
+        "checked_at": "2026-11-26",
         "method": "page"
       }
     ],

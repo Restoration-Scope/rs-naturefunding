@@ -23,11 +23,7 @@
   },
   "eligibility": [
     {
-      "rule": "Be an incorporated not-for-profit organisation or volunteer group",
-      "kind": "legal"
-    },
-    {
-      "rule": "Have public liability insurance and a certificate, or an eligible sponsor if unavailable",
+      "rule": "Have public liability insurance or an insured incorporated sponsor that manages the grant",
       "kind": "legal"
     },
     { "rule": "Be a legal entity or have a sponsor that is a legal entity", "kind": "legal" },
@@ -44,9 +40,13 @@
       "rule": "Have no outstanding final report or financial acquittal from a previous grant round",
       "kind": "capacity"
     },
-    { "rule": "Apply for no more than one Bite-sized Grant per financial year", "kind": "other" }
+    {
+      "rule": "Receive at most one Bite-sized Grant per financial year. Unsuccessful applicants may reapply.",
+      "kind": "other"
+    }
   ],
-  "after_award": { "reports": "final" },
+  "after_award": { "reports": "interim_and_final" },
+  "documents": ["Sponsor letter accepting legal and financial responsibility, if sponsored"],
   "calls": [
     {
       "id": "2026-27",
@@ -123,15 +123,9 @@
     ],
     "eligibility": [
       {
-        "source_url": "https://cdn.environment.sa.gov.au/landscape/docs/ny/2627_BiteSizedGrant_ApplicantGuidelines.pdf",
-        "quote": "Applicants must be an incorporated, not-for-profit organisation or volunteer group (including but not limited to Land, Coast, and Bushcare groups, Friends of groups, farming groups and schools, etc.).",
-        "checked_at": "2026-11-25",
-        "method": "page"
-      },
-      {
-        "source_url": "https://cdn.environment.sa.gov.au/landscape/docs/ny/2627_BiteSizedGrant_ApplicantGuidelines.pdf",
-        "quote": "Applicants must hold valid public liability insurance and be able to provide a certificate of currency from their insurer.",
-        "checked_at": "2026-11-25",
+        "source_url": "https://landscape.smartygrants.com.au/NYBSG2627/500292/view",
+        "quote": "If you / your organisation does not have public liability insurance, an incorporated organisation meeting these requirements must sponsor your application and manage the grant on your behalf.",
+        "checked_at": "2026-11-26",
         "method": "page"
       },
       {
@@ -166,8 +160,8 @@
       },
       {
         "source_url": "https://cdn.environment.sa.gov.au/landscape/docs/ny/2627_BiteSizedGrant_ApplicantGuidelines.pdf",
-        "quote": "Groups may only apply for one Bite-sized Grant per financial year, even if the grant is less than the $2,000 maximum amount.",
-        "checked_at": "2026-11-25",
+        "quote": "A group may only receive funding once per financial year, however a group may reapply if their application was unsuccessful.",
+        "checked_at": "2026-11-26",
         "method": "page"
       }
     ],
@@ -176,6 +170,20 @@
         "source_url": "https://cdn.environment.sa.gov.au/landscape/docs/ny/2627_BiteSizedGrant_ApplicantGuidelines.pdf",
         "quote": "Projects must be completed, funds acquitted, and a report submitted within 3 months of receiving the grant.",
         "checked_at": "2026-11-25",
+        "method": "page"
+      },
+      {
+        "source_url": "https://landscape.smartygrants.com.au/NYBSG2627/500292/download.pdf",
+        "quote": "You will be required to report on these activities in your interim and final reports.",
+        "checked_at": "2026-11-26",
+        "method": "page"
+      }
+    ],
+    "documents": [
+      {
+        "source_url": "https://landscape.smartygrants.com.au/NYBSG2627/500292/download.pdf",
+        "quote": "Please upload a letter from your sponsor confirming their willingness to accept legal and financial responsibility for the project if successful.",
+        "checked_at": "2026-11-26",
         "method": "page"
       }
     ]

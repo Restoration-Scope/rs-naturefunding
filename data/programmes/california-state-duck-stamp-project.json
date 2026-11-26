@@ -22,15 +22,27 @@
     "qualifier": "up_to",
     "label": "each fiscal year"
   },
-  "co_finance_required": null,
+  "co_finance_required": false,
   "reporting": null,
-  "effort": { "steps": ["Proposal submission"], "due": ["2027-01-22"] },
+  "effort": {
+    "steps": [
+      "Proposal submission",
+      "Administrative review for completeness and eligibility",
+      "Duck Stamp Advisory Committee review",
+      "Department technical scoring and ranking",
+      "Fish and Game Commission considers funding recommendations"
+    ],
+    "due": ["2027-01-22", null, null, null, null]
+  },
   "eligibility": [
     {
       "rule": "Have waterfowl habitat enhancement, restoration, creation or research experience",
       "kind": "capacity"
-    }
+    },
+    { "rule": "Project is intended to benefit waterfowl directly", "kind": "project" },
+    { "rule": "Project budget includes no more than 6% overhead", "kind": "project" }
   ],
+  "documents": ["Project location map for habitat proposals", "Itemized project budget"],
   "calls": [
     {
       "id": "fy2027",
@@ -90,11 +102,41 @@
       "checked_at": "2026-11-25",
       "method": "page"
     },
+    "co_finance_required": {
+      "source_url": "https://nrm.dfg.ca.gov/FileHandler.ashx?DocumentID=249346&inline",
+      "quote": "Is the project cost shared (in-kind or money) and identified in the budget? Cost share cannot include overhead costs or NAWCA projects. Maximum 3 pts.",
+      "checked_at": "2026-11-26",
+      "method": "page"
+    },
     "effort": [
       {
         "source_url": "https://wildlife.ca.gov/Grants/Duck-Stamp",
         "quote": "FY 2027 Proposal Solicitation Notice (PDF) released 11/23/2026 - Proposals due January 22, 2027, at 5:00 p.m.",
         "checked_at": "2026-11-25",
+        "method": "page"
+      },
+      {
+        "source_url": "https://nrm.dfg.ca.gov/FileHandler.ashx?DocumentID=249346&inline",
+        "quote": "An administrative review will determine if the proposal package is complete and meets all the requirements for submission",
+        "checked_at": "2026-11-26",
+        "method": "page"
+      },
+      {
+        "source_url": "https://nrm.dfg.ca.gov/FileHandler.ashx?DocumentID=249346&inline",
+        "quote": "will meet and review eligible project proposals and advise the Department",
+        "checked_at": "2026-11-26",
+        "method": "page"
+      },
+      {
+        "source_url": "https://nrm.dfg.ca.gov/FileHandler.ashx?DocumentID=249346&inline",
+        "quote": "A minimum of three reviewers associated with the Department will score each proposal submitted based on the criteria identified below.",
+        "checked_at": "2026-11-26",
+        "method": "page"
+      },
+      {
+        "source_url": "https://nrm.dfg.ca.gov/FileHandler.ashx?DocumentID=249346&inline",
+        "quote": "The Commission will consider the Department’s project recommendations at their June 2027 meeting.",
+        "checked_at": "2026-11-26",
         "method": "page"
       }
     ],
@@ -103,6 +145,32 @@
         "source_url": "https://wildlife.ca.gov/Grants/Duck-Stamp",
         "quote": "The organizations must have the specific capacity (waterfowl habitat enhancement, restoration, creation and or research experience to deliver the objectives).",
         "checked_at": "2026-11-25",
+        "method": "page"
+      },
+      {
+        "source_url": "https://nrm.dfg.ca.gov/FileHandler.ashx?DocumentID=249346&inline",
+        "quote": "organization eligible per Fish and Game Code § 3702, project intended to directly benefit waterfowl and received by timeline identified.",
+        "checked_at": "2026-11-26",
+        "method": "page"
+      },
+      {
+        "source_url": "https://wildlife.ca.gov/Grants/Duck-Stamp",
+        "quote": "this program requires a maximum of 6 percent overhead",
+        "checked_at": "2026-11-26",
+        "method": "page"
+      }
+    ],
+    "documents": [
+      {
+        "source_url": "https://nrm.dfg.ca.gov/FileHandler.ashx?DocumentID=249346&inline",
+        "quote": "within three-page maximum for habitat projects (includes budget and map)",
+        "checked_at": "2026-11-26",
+        "method": "page"
+      },
+      {
+        "source_url": "https://nrm.dfg.ca.gov/FileHandler.ashx?DocumentID=249345&inline=",
+        "quote": "Itemized Budget: Include separate line items for the following budget categories:",
+        "checked_at": "2026-11-26",
         "method": "page"
       }
     ]

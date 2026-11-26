@@ -21,9 +21,15 @@
     "period": "round",
     "label": "the 2026/27 launch, across two windows"
   },
-  "co_finance_required": null,
+  "co_finance_required": false,
   "reporting": null,
-  "effort": { "steps": ["Application form by email", "Selection panel scoring"] },
+  "effort": {
+    "steps": [
+      "Submit application form by email",
+      "Local Nature Recovery Officer screens the application",
+      "Selection panel scores the application"
+    ]
+  },
   "eligibility": [
     {
       "rule": "Applies for a specific project, not a group's general activities",
@@ -38,15 +44,19 @@
       "kind": "project"
     },
     {
-      "rule": "Single-site project has landowner support unless it is designed to engage landowners in nature recovery",
+      "rule": "Single-site project has needed stakeholder and landowner support unless it is designed to build it through outreach",
       "kind": "project"
     },
     { "rule": "The activity has no duplicate funding or subsidy", "kind": "project" },
     {
-      "rule": "Applicant is financially viable, has clear controls and produces annual or management-approved accounts unless new",
+      "rule": "Financially viable with clear controls and annual or management accounts, except unavailable first-year accounts",
       "kind": "finances"
     },
-    { "rule": "Organisation can receive at most one award per application window", "kind": "other" }
+    {
+      "rule": "Project goes beyond monitoring or collecting species or habitat data",
+      "kind": "project"
+    },
+    { "rule": "Project delivers on-the-ground improvements beyond campaigning", "kind": "project" }
   ],
   "after_award": { "reports": "final" },
   "calls": [
@@ -122,6 +132,12 @@
       "checked_at": "2026-11-25",
       "method": "page"
     },
+    "co_finance_required": {
+      "source_url": "https://www.gloucestershire.gov.uk/media/2jsik531/gloucestershire-nature-recovery-fund-application-form-2026.docx",
+      "quote": "Although not essential, we welcome projects which have secured match/supplementary funding to maximise the potential scale and impact of the work.",
+      "checked_at": "2026-11-26",
+      "method": "page"
+    },
     "effort": [
       {
         "source_url": "https://www.gloucestershire.gov.uk/planning-and-environment/greener-gloucestershire-dashboard/gloucestershire-nature-recovery-fund/apply/",
@@ -130,9 +146,15 @@
         "method": "page"
       },
       {
+        "source_url": "https://www.gloucestershire.gov.uk/media/2jsik531/gloucestershire-nature-recovery-fund-application-form-2026.docx",
+        "quote": "Once you have submitted your application, it will be screened by the Local Nature Recovery (LNR) Officer who will only contact you if there are any issues with the application or if the nature of your project is not eligible.",
+        "checked_at": "2026-11-26",
+        "method": "page"
+      },
+      {
         "source_url": "https://www.gloucestershire.gov.uk/media/a0jplxpe/gloucestershire-nature-recovery-fund-guidance-and-conditions.pdf",
         "quote": "The Panel that will agree scoring will consist of Key officers in GCC",
-        "checked_at": "2026-11-24",
+        "checked_at": "2026-11-26",
         "method": "page"
       }
     ],
@@ -158,7 +180,7 @@
       {
         "source_url": "https://www.gloucestershire.gov.uk/media/a0jplxpe/gloucestershire-nature-recovery-fund-guidance-and-conditions.pdf",
         "quote": "Single site projects dependant on getting wider support from stakeholders including the landowner will not be supported. The exception to this will be where part of the project design involves outreach to various stakeholders and landowners in order to facilitate and encourage nature recovery on their property/land.",
-        "checked_at": "2026-11-24",
+        "checked_at": "2026-11-26",
         "method": "page"
       },
       {
@@ -175,8 +197,14 @@
       },
       {
         "source_url": "https://www.gloucestershire.gov.uk/media/a0jplxpe/gloucestershire-nature-recovery-fund-guidance-and-conditions.pdf",
-        "quote": "a maximum of one application per organisation will be awarded per application window.",
-        "checked_at": "2026-11-24",
+        "quote": "Species or habitat monitoring projects: Projects where the sole aim is to monitor or collect data on species or habitats will not qualify under this funding stream.",
+        "checked_at": "2026-11-26",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.gloucestershire.gov.uk/media/a0jplxpe/gloucestershire-nature-recovery-fund-guidance-and-conditions.pdf",
+        "quote": "The project is a campaign rather than for delivering on-the-ground improvements:",
+        "checked_at": "2026-11-26",
         "method": "page"
       }
     ],

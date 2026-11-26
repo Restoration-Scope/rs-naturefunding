@@ -17,14 +17,20 @@
   "amount": null,
   "co_finance_required": null,
   "reporting": null,
-  "effort": { "steps": ["Application"] },
+  "effort": {
+    "steps": [
+      "Application",
+      "Consult the reindeer district if affected and allow at least four weeks",
+      "Agency assessment of the application"
+    ]
+  },
   "eligibility": [
     {
       "rule": "Project is in a municipality affected by an Energy Act-licensed, operating onshore wind plant",
       "kind": "project"
     },
     {
-      "rule": "A municipality, municipal company, outdoor-recreation council, or NGO mainly for outdoor life or nature",
+      "rule": "Municipality, municipal/intermunicipal firm, intermunicipal outdoor council, or NGO mainly for outdoor life/biodiversity",
       "kind": "legal"
     },
     {
@@ -32,17 +38,30 @@
       "kind": "project"
     },
     {
-      "rule": "An outdoor-life measure is accessible to the public and adapted to the landscape and local nature qualities",
+      "rule": "Outdoor recreation measures are public and fit the landscape, nature and local outdoor experience",
       "kind": "project"
     },
     {
-      "rule": "No ordinary operation, outdoor-life activities or events, equipment purchases, or licence-covered measures",
+      "rule": "No routine outdoor facility operations, recreation activities/events, recreation gear or licence-covered measures",
+      "kind": "project"
+    },
+    {
+      "rule": "The project has been cleared with the landowner or rights holder",
+      "kind": "project"
+    },
+    {
+      "rule": "Outdoor recreation projects only fund physical improvements or information measures",
+      "kind": "project"
+    },
+    {
+      "rule": "No typical local sports facilities, such as disc golf, volleyball or ball courts",
       "kind": "project"
     }
   ],
-  "after_award": { "reports": "final" },
+  "after_award": { "reports": "final", "audit": true },
   "documents": [
-    "Consultation and any response from the relevant reindeer-grazing district, if applicable"
+    "Consultation and any response from the relevant reindeer-grazing district, if applicable",
+    "Detailed budget and complete financing plan, including other public grants if any"
   ],
   "calls": [
     {
@@ -100,6 +119,18 @@
         "quote": "Søknadsfristen er 15. januar.",
         "checked_at": "2026-11-25",
         "method": "page"
+      },
+      {
+        "source_url": "https://soknadssenter.miljodirektoratet.no/VindkraftverkSkjema/Startside/Index?id=87",
+        "quote": "For tiltak som berører samiske reindriftsområder, skal søker forelegge søknaden for det aktuelle reinbeitedistriktet. Reinbeitedistriktet skal gis en frist på minimum fire uker for å gi innspill til søknaden.",
+        "checked_at": "2026-11-26",
+        "method": "page"
+      },
+      {
+        "source_url": "https://soknadssenter.miljodirektoratet.no/VindkraftverkSkjema/Startside/Index?id=87",
+        "quote": "Miljødirektoratet vil vurdere søknadene opp mot kriterier for måloppnåelse for ordningen.",
+        "checked_at": "2026-11-26",
+        "method": "page"
       }
     ],
     "eligibility": [
@@ -132,6 +163,24 @@
         "quote": "Det gis ikke tilskudd til ordinær drift av friluftslivsanlegg, friluftslivsaktivitet, friluftslivsarrangement, kjøp av utstyr til friluftslivsaktivitet eller til tiltak som skal ivaretas gjennom konsesjonsvilkår fastsatt ved etablering av vindkraftverket.",
         "checked_at": "2026-11-25",
         "method": "page"
+      },
+      {
+        "source_url": "https://lovdata.no/dokument/SF/forskrift/2025-06-12-1551",
+        "quote": "Tiltaket som søkes finansiert må være avklart med grunneier eller rettighetshaver.",
+        "checked_at": "2026-11-26",
+        "method": "page"
+      },
+      {
+        "source_url": "https://soknadssenter.miljodirektoratet.no/VindkraftverkSkjema/Startside/Index?id=87",
+        "quote": "Innenfor friluftsliv gis det kun tilskudd til fysiske tilretteleggingstiltak og informasjonstiltak.",
+        "checked_at": "2026-11-26",
+        "method": "page"
+      },
+      {
+        "source_url": "https://soknadssenter.miljodirektoratet.no/VindkraftverkSkjema/Startside/Index?id=87",
+        "quote": "Det gis ikke støtte til typiske nærmiljøanlegg som for eksempel frisbeegolf, sandvolleyballbaner, golfanlegg, ballbaner mv.",
+        "checked_at": "2026-11-26",
+        "method": "page"
       }
     ],
     "after_award": [
@@ -140,6 +189,12 @@
         "quote": "Tilskudd gis som tilsagn og utbetales i hovedsak når prosjektet er gjennomført og søker har sendt sluttrapport.",
         "checked_at": "2026-11-25",
         "method": "page"
+      },
+      {
+        "source_url": "https://lovdata.no/dokument/SF/forskrift/2025-06-12-1551",
+        "quote": "Når tilskuddet er 500 000 kroner eller høyere skal delregnskapet være revidert av statsautorisert revisor. For institusjoner som benytter kommunerevisjon eller annet offentlig revisjonsorgan skal tilskuddet være revidert av statsautorisert revisor når tilskuddet er over 1 million kroner.",
+        "checked_at": "2026-11-26",
+        "method": "page"
       }
     ],
     "documents": [
@@ -147,6 +202,12 @@
         "source_url": "https://soknadssenter.miljodirektoratet.no/VindkraftverkSkjema/Startside/Index?id=87",
         "quote": "Foreleggelsen og eventuell tilbakemelding fra reinbeitedistriktet må legges ved søknaden.",
         "checked_at": "2026-11-25",
+        "method": "page"
+      },
+      {
+        "source_url": "https://lovdata.no/dokument/SF/forskrift/2025-06-12-1551",
+        "quote": "detaljert budsjett og en komplett finansieringsplan, der også eventuelle andre offentlige tilskudd kommer frem",
+        "checked_at": "2026-11-26",
         "method": "page"
       }
     ]

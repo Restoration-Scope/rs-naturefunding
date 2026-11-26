@@ -22,47 +22,52 @@
   "co_finance_required": null,
   "reporting": null,
   "effort": {
-    "steps": ["Eligibility check", "Application and submission", "Grants Team review"],
+    "steps": [
+      "Eligibility check",
+      "Application and submission",
+      "Grants Team review",
+      "Board of Directors funding decision"
+    ],
     "more_after": true,
-    "due": [null, "2027-02-24", null]
+    "due": [null, "2027-02-24", null, null]
   },
   "eligibility": [
     {
-      "rule": "Own, lease, or hold a long-term written management agreement for the project site",
+      "rule": "Owns, leases or holds a long-term written management agreement for the project site",
       "kind": "legal"
     },
     {
-      "rule": "Have at least five years remaining on any lease or management agreement at submission",
+      "rule": "Any site lease or management agreement has at least five years remaining at submission",
       "kind": "legal"
     },
-    { "rule": "Keep the project site open and accessible to the public", "kind": "project" },
-    { "rule": "Carry out all work at a single amenity or location", "kind": "project" },
-    { "rule": "Keep the total project cost at or below £250,000", "kind": "project" },
+    { "rule": "Project site is open and accessible to the public", "kind": "project" },
+    { "rule": "All work takes place at a single amenity or location", "kind": "project" },
     {
-      "rule": "Not already started; no routine maintenance, management or running costs",
+      "rule": "Total project cost is at most £250,000, including any applicable VAT",
       "kind": "project"
     },
+    { "rule": "Project has yet to start", "kind": "project" },
     {
-      "rule": "Wait at least 12 months after the Completion Report before reapplying on the same site",
-      "kind": "project"
+      "rule": "Previous FCC grantees wait 12 months from submitting the Completion Report before reapplying for the same site",
+      "kind": "other"
     },
     {
-      "rule": "Secure a third-party donor to pay FCC Environment 10.75% of the amount requested",
+      "rule": "Has a source for the FCC Environment contribution of 10.75% of the amount requested",
       "kind": "other"
     }
   ],
   "after_award": { "reports": "unspecified" },
   "documents": [
-    "Authorisation minute",
+    "Minute or similar document authorising the primary contact to submit",
     "Organisation's constitution",
     "Most recent accounts",
     "Recent bank statement",
     "Site photographs",
     "Project location map",
     "Site and proposed works plans or drawings",
-    "Planning permissions or legal consents",
-    "Full project cost breakdown",
-    "Contributing Third Party donor letter"
+    "Copies of any required planning permissions or legal consents",
+    "Contributing Third Party donor confirmation letter",
+    "Quotes, tenders or other evidence of project costs"
   ],
   "calls": [
     {
@@ -264,71 +269,77 @@
     },
     "effort": [
       {
-        "source_url": "https://fcccommunitiesfoundation.org.uk/uploads/misc/FCC-CAF-Guide-for-Applicants-2026-4.pdf",
-        "quote": "The short eligibility check will confirm whether your project can be accepted and will give you access to the application portal.",
-        "checked_at": "2026-11-25",
-        "method": "page"
-      },
-      {
         "source_url": "https://fcccommunitiesfoundation.org.uk/funds/fcc-community-action-fund",
         "quote": "2027-1 Round - opens 25 November 2026 and closes at 5.00pm on 24 February 2027",
         "checked_at": "2026-11-25",
         "method": "page"
       },
       {
-        "source_url": "https://fcccommunitiesfoundation.org.uk/uploads/misc/FCC-CAF-Guide-for-Applicants-2026-4.pdf",
+        "source_url": "https://fcccommunitiesfoundation.org.uk/uploads/misc/FCC-CAF-Guide-for-Applicants-2027-1.pdf",
+        "quote": "The short eligibility check will confirm whether your project can be accepted and will give you access to the application portal.",
+        "checked_at": "2026-11-26",
+        "method": "page"
+      },
+      {
+        "source_url": "https://fcccommunitiesfoundation.org.uk/uploads/misc/FCC-CAF-Guide-for-Applicants-2027-1.pdf",
         "quote": "A member of our Grants Team will review each application.",
-        "checked_at": "2026-11-25",
+        "checked_at": "2026-11-26",
+        "method": "page"
+      },
+      {
+        "source_url": "https://fcccommunitiesfoundation.org.uk/uploads/misc/FCC-CAF-Guide-for-Applicants-2027-1.pdf",
+        "quote": "These applications will then be considered by our Board of Directors, who will decide whether the project should receive funding.",
+        "checked_at": "2026-11-26",
         "method": "page"
       }
     ],
     "eligibility": [
       {
-        "source_url": "https://fcccommunitiesfoundation.org.uk/uploads/misc/FCC-CAF-Guide-for-Applicants-2026-4.pdf",
+        "source_url": "https://fcccommunitiesfoundation.org.uk/uploads/misc/FCC-CAF-Guide-for-Applicants-2027-1.pdf",
         "quote": "Your organisation must own, lease, or hold a long-term written management agreement for the project site.",
-        "checked_at": "2026-11-25",
+        "checked_at": "2026-11-26",
         "method": "page"
       },
       {
-        "source_url": "https://fcccommunitiesfoundation.org.uk/uploads/misc/FCC-CAF-Guide-for-Applicants-2026-4.pdf",
+        "source_url": "https://fcccommunitiesfoundation.org.uk/uploads/misc/FCC-CAF-Guide-for-Applicants-2027-1.pdf",
         "quote": "have at least five years remaining at the point of submission",
-        "checked_at": "2026-11-25",
+        "checked_at": "2026-11-26",
         "method": "page"
       },
       {
-        "source_url": "https://fcccommunitiesfoundation.org.uk/uploads/misc/FCC-CAF-Guide-for-Applicants-2026-4.pdf",
+        "source_url": "https://fcccommunitiesfoundation.org.uk/uploads/misc/FCC-CAF-Guide-for-Applicants-2027-1.pdf",
         "quote": "the site must be open and accessible to the public.",
-        "checked_at": "2026-11-25",
+        "checked_at": "2026-11-26",
         "method": "page"
       },
       {
-        "source_url": "https://fcccommunitiesfoundation.org.uk/uploads/misc/FCC-CAF-Guide-for-Applicants-2026-4.pdf",
+        "source_url": "https://fcccommunitiesfoundation.org.uk/uploads/misc/FCC-CAF-Guide-for-Applicants-2027-1.pdf",
         "quote": "All work must take place at a single amenity or location.",
-        "checked_at": "2026-11-25",
+        "checked_at": "2026-11-26",
         "method": "page"
       },
       {
-        "source_url": "https://fcccommunitiesfoundation.org.uk/uploads/misc/FCC-CAF-Guide-for-Applicants-2026-4.pdf",
+        "source_url": "https://fcccommunitiesfoundation.org.uk/uploads/misc/FCC-CAF-Guide-for-Applicants-2027-1.pdf",
         "quote": "projects with a maximum total cost of £250,000, including VAT where applicable.",
-        "checked_at": "2026-11-25",
+        "checked_at": "2026-11-26",
         "method": "page"
       },
       {
-        "source_url": "https://fcccommunitiesfoundation.org.uk/uploads/misc/FCC-CAF-Guide-for-Applicants-2026-4.pdf",
-        "quote": "Projects that have already started Routine maintenance, management, or day-to-day running costs",
-        "checked_at": "2026-11-25",
+        "source_url": "https://fcccommunitiesfoundation.org.uk/uploads/misc/FCC-CAF-Guide-for-Applicants-2027-1.pdf",
+        "quote": "Projects that have already started",
+        "checked_at": "2026-11-26",
         "method": "page"
       },
       {
-        "source_url": "https://fcccommunitiesfoundation.org.uk/uploads/misc/FCC-CAF-Guide-for-Applicants-2026-4.pdf",
+        "source_url": "https://fcccommunitiesfoundation.org.uk/uploads/misc/FCC-CAF-Guide-for-Applicants-2027-1.pdf",
         "quote": "you must wait at least 12 months from the submission of the Completion Report before applying again for a project on the same site.",
-        "checked_at": "2026-11-25",
+        "checked_at": "2026-11-26",
         "method": "page"
       },
       {
-        "source_url": "https://fcccommunitiesfoundation.org.uk/uploads/misc/FCC-CAF-Guide-for-Applicants-2026-4.pdf",
+        "source_url": "https://fcccommunitiesfoundation.org.uk/uploads/misc/FCC-CAF-Guide-for-Applicants-2027-1.pdf",
         "quote": "To cover this shortfall, applicants must secure a Contributing Third Party (CTP) payment. This payment is calculated as 10.75% of the amount you are requesting from us.",
-        "checked_at": "2026-11-25",
+        "checked_at": "2026-11-26",
         "method": "page"
       }
     ],
@@ -342,27 +353,51 @@
     ],
     "documents": [
       {
-        "source_url": "https://fcccommunitiesfoundation.org.uk/uploads/misc/FCC-CAF-Guide-for-Applicants-2026-4.pdf",
-        "quote": "A minute or similar document confirming that the primary contact is authorised to submit the application Your organisation's constitution, most recent accounts, and a recent bank statement The full address of your project site, including the local authority area and parliamentary constituency Photographs of the site Map(s) showing the project location",
-        "checked_at": "2026-11-25",
+        "source_url": "https://fcccommunitiesfoundation.org.uk/uploads/misc/FCC-CAF-Guide-for-Applicants-2027-1.pdf",
+        "quote": "A minute or similar document confirming that the primary contact is authorised to submit the application",
+        "checked_at": "2026-11-26",
         "method": "page"
       },
       {
-        "source_url": "https://fcccommunitiesfoundation.org.uk/uploads/misc/FCC-CAF-Guide-for-Applicants-2026-4.pdf",
-        "quote": "Plans or drawings of the site and the proposed works Information on when the public can access or hire the site (including lettings policies, timetables, or booking forms where relevant) Details of how the site will be maintained once the project is complete, including any support from other organisations Copies of any planning permissions or legal consents required for the project",
-        "checked_at": "2026-11-25",
+        "source_url": "https://fcccommunitiesfoundation.org.uk/uploads/misc/FCC-CAF-Guide-for-Applicants-2027-1.pdf",
+        "quote": "Your organisation’s constitution, most recent accounts, and a recent bank statement",
+        "checked_at": "2026-11-26",
         "method": "page"
       },
       {
-        "source_url": "https://fcccommunitiesfoundation.org.uk/uploads/misc/FCC-CAF-Guide-for-Applicants-2026-4.pdf",
-        "quote": "A full breakdown of project costs, including the specific items or work for which you are requesting funding for",
-        "checked_at": "2026-11-25",
+        "source_url": "https://fcccommunitiesfoundation.org.uk/uploads/misc/FCC-CAF-Guide-for-Applicants-2027-1.pdf",
+        "quote": "Photographs of the site",
+        "checked_at": "2026-11-26",
         "method": "page"
       },
       {
-        "source_url": "https://fcccommunitiesfoundation.org.uk/uploads/misc/FCC-CAF-Guide-for-Applicants-2026-4.pdf",
+        "source_url": "https://fcccommunitiesfoundation.org.uk/uploads/misc/FCC-CAF-Guide-for-Applicants-2027-1.pdf",
+        "quote": "Map(s) showing the project location",
+        "checked_at": "2026-11-26",
+        "method": "page"
+      },
+      {
+        "source_url": "https://fcccommunitiesfoundation.org.uk/uploads/misc/FCC-CAF-Guide-for-Applicants-2027-1.pdf",
+        "quote": "Plans or drawings of the site and the proposed works",
+        "checked_at": "2026-11-26",
+        "method": "page"
+      },
+      {
+        "source_url": "https://fcccommunitiesfoundation.org.uk/uploads/misc/FCC-CAF-Guide-for-Applicants-2027-1.pdf",
+        "quote": "Copies of any planning permissions or legal consents required for the project",
+        "checked_at": "2026-11-26",
+        "method": "page"
+      },
+      {
+        "source_url": "https://fcccommunitiesfoundation.org.uk/uploads/misc/FCC-CAF-Guide-for-Applicants-2027-1.pdf",
         "quote": "A letter from your Contributing Third Party (CTP) donor confirming their willingness to act as a CTP donor for your project",
-        "checked_at": "2026-11-25",
+        "checked_at": "2026-11-26",
+        "method": "page"
+      },
+      {
+        "source_url": "https://fcccommunitiesfoundation.org.uk/uploads/misc/FCC-CAF-Guide-for-Applicants-2027-1.pdf",
+        "quote": "Any quotes or tenders you have already obtained, or other details to show how you have calculated your project cost.",
+        "checked_at": "2026-11-26",
         "method": "page"
       }
     ]

@@ -14,8 +14,20 @@
   "amount": null,
   "co_finance_required": false,
   "reporting": null,
-  "effort": { "steps": ["Pre-application", "Full application, if invited"] },
-  "eligibility": [{ "rule": "Acquisitions are from willing sellers", "kind": "project" }],
+  "effort": {
+    "steps": [
+      "Pre-application",
+      "Full application, if invited",
+      "Pre-application review",
+      "Technical review of the full application",
+      "Wildlife Conservation Board consideration"
+    ]
+  },
+  "eligibility": [
+    { "rule": "Acquisitions are from willing sellers", "kind": "project" },
+    { "rule": "Acquisitions are priced at or below appraised fair market value", "kind": "project" }
+  ],
+  "documents": ["Full list of assessor parcel numbers, if the project includes more than five"],
   "calls": [
     {
       "id": "rolling",
@@ -71,6 +83,24 @@
         "quote": "WCB staff will select Pre-applications to move forward and will invite the selected applicants to submit Full Applications.",
         "checked_at": "2026-11-25",
         "method": "page"
+      },
+      {
+        "source_url": "https://nrm.dfg.ca.gov/FileHandler.ashx?DocumentID=199421",
+        "quote": "Applicants will first submit a Pre-application. WCB staff review Pre-applications for consistency with WCB goals, any specific program priorities, and the strength of the proposed project.",
+        "checked_at": "2026-11-26",
+        "method": "page"
+      },
+      {
+        "source_url": "https://nrm.dfg.ca.gov/FileHandler.ashx?DocumentID=199421",
+        "quote": "All eligible and complete Full Applications will be evaluated and scored by technical reviewers, which will include representatives from WCB, CDFW, and others as appropriate.",
+        "checked_at": "2026-11-26",
+        "method": "page"
+      },
+      {
+        "source_url": "https://wcb.ca.gov/Programs/Oaks",
+        "quote": "All applications that comply with the program requirements and meet program eligibility criteria will be scheduled for Board consideration once the real estate due diligence is completed and sufficient money exists to fund the request.",
+        "checked_at": "2026-11-26",
+        "method": "page"
       }
     ],
     "eligibility": [
@@ -78,6 +108,12 @@
         "source_url": "https://wcb.ca.gov/About/FAQ",
         "quote": "WCB only funds acquisitions from willing sellers.",
         "checked_at": "2026-11-25",
+        "method": "page"
+      },
+      {
+        "source_url": "https://nrm.dfg.ca.gov/FileHandler.ashx?DocumentID=199421",
+        "quote": "Acquisitions, in the form of conservation easement, water rights, and fee purchases, must be from willing sellers and at a price that does not exceed the fair market value.",
+        "checked_at": "2026-11-26",
         "method": "page"
       }
     ],
@@ -93,9 +129,23 @@
         "quote": "All grantees doing restoration, development, scientific studies, and planning will be required to provide a final report.",
         "checked_at": "2026-11-25",
         "method": "page"
+      },
+      {
+        "source_url": "https://nrm.dfg.ca.gov/FileHandler.ashx?DocumentID=223682&inline",
+        "quote": "Quarterly progress reports using Grantor’s Quarterly Report template that can be found here:",
+        "checked_at": "2026-11-26",
+        "method": "page"
+      }
+    ],
+    "documents": [
+      {
+        "source_url": "https://nrm.dfg.ca.gov/FileHandler.ashx?DocumentID=200790&inline",
+        "quote": "If the project includes more than five APNs, upload a full list at the end of this pre application.",
+        "checked_at": "2026-11-26",
+        "method": "page"
       }
     ]
   },
   "checked_at": "2026-11-25",
-  "after_award": { "reports": "final" }
+  "after_award": { "reports": "quarterly" }
 }

@@ -18,16 +18,24 @@
   "amount": { "currency": "CAD", "max": 10000 },
   "co_finance_required": true,
   "reporting": null,
+  "effort": {
+    "steps": ["Submit pre-approval application while funding remains", "Pre-approval review"],
+    "due": ["2026-12-15", null]
+  },
   "eligibility": [
-    { "rule": "Locate the project within the Regional District of Nanaimo", "kind": "project" },
     { "rule": "Actively enhance stream health, hydrology, or function", "kind": "project" },
     { "rule": "Involve volunteers in the project", "kind": "capacity" },
     {
-      "rule": "Be a volunteer-based, not-for-profit group pursuing direct-benefit projects",
+      "rule": "Volunteer-based nonprofit group working to directly benefit a local creek, stream, river, estuary or wetland",
       "kind": "legal"
     },
-    { "rule": "Project was not funded in each of the three previous years", "kind": "other" }
+    { "rule": "Project was not funded in each of the three previous years", "kind": "other" },
+    {
+      "rule": "Complete work and purchases in the same calendar year as pre-approval and the claim",
+      "kind": "project"
+    }
   ],
+  "after_award": { "reports": "final" },
   "documents": [
     "Itemized project cost breakdown",
     "Site Overview",
@@ -84,13 +92,21 @@
       "checked_at": "2026-11-25",
       "method": "page"
     },
-    "eligibility": [
+    "effort": [
       {
-        "source_url": "https://www.rdn.ca/stewardship-seed-funding",
-        "quote": "be located within the Regional District of Nanaimo",
-        "checked_at": "2026-11-25",
+        "source_url": "https://www.rdn.ca/sites/default/files/inline-files/2026%20Stewardship%20Seed%20Funding%20Information%20Sheet.pdf",
+        "quote": "Pre-approval applications can be submitted for 2026 between January 30th and December 15th 2026, or until funds for the calendar year are exhausted.",
+        "checked_at": "2026-11-26",
         "method": "page"
       },
+      {
+        "source_url": "https://www.rdn.ca/stewardship-seed-funding",
+        "quote": "From the receipt of confirmation, it will take two to three weeks to process and respond to the application contact.",
+        "checked_at": "2026-11-26",
+        "method": "page"
+      }
+    ],
+    "eligibility": [
       {
         "source_url": "https://www.rdn.ca/stewardship-seed-funding",
         "quote": "actively enhance stream health, hydrology, or function",
@@ -113,6 +129,20 @@
         "source_url": "https://www.rdn.ca/stewardship-seed-funding",
         "quote": "After the third year of funding, the project is ineligible for funding for that following year. After a one-year grace period to allow others to access funds, the project is eligible to apply for funding again for up to three consecutive years.",
         "checked_at": "2026-11-25",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.rdn.ca/sites/default/files/inline-files/2026%20Stewardship%20Seed%20Funding%20Information%20Sheet.pdf",
+        "quote": "All work, including purchasing of supplies and materials, must be completed in the same calendar year that the pre-approval and claim form are submitted.",
+        "checked_at": "2026-11-26",
+        "method": "page"
+      }
+    ],
+    "after_award": [
+      {
+        "source_url": "https://www.rdn.ca/sites/default/files/inline-files/2026%20Stewardship%20Seed%20Funding%20Claim%20Form.pdf",
+        "quote": "Summarize and describe the works completed, demonstrating project relevance",
+        "checked_at": "2026-11-26",
         "method": "page"
       }
     ],

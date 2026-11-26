@@ -37,38 +37,31 @@
   "reporting": "Grantees file an accomplishment report by 31 December of each year the grant is active, updated cumulatively until it becomes the final report, and prepare an ecological restoration and management plan with the first payment request.",
   "effort": {
     "steps": [
-      "Online application",
+      "Online application, if Metro Round 2 opens",
       "Completeness and eligibility check",
       "Technical review (Metro cycles)",
-      "Division Directors review (Metro cycles)"
+      "Division Directors review (Metro cycles)",
+      "DNR Commissioner’s final approval"
     ],
     "more_after": true,
-    "due": ["2027-02-16", null, null, null]
+    "due": ["2027-02-16", null, null, null, null]
   },
   "eligibility": [
-    { "rule": "ECP projects are on the ECP Activity List", "kind": "project" },
-    {
-      "rule": "ECP projects are restoration or enhancement projects, not acquisitions",
-      "kind": "project"
-    },
-    {
-      "rule": "ECP projects use public land or waters, or land under a permanent conservation easement",
-      "kind": "project"
-    },
     { "rule": "Total project costs do not exceed $1,000,000", "kind": "project" },
     {
       "rule": "The project manager is affiliated with the recipient and knowledgeable about the proposal",
       "kind": "capacity"
     },
-    { "rule": "The project manager and land manager are different people", "kind": "capacity" },
     {
-      "rule": "Construction projects have preliminary engineering design and plans completed before applying",
-      "kind": "project"
+      "rule": "Names a project manager and fiscal contact, neither of whom can be the land manager",
+      "kind": "capacity"
     },
     {
       "rule": "Fee-title acquisitions allow public hunting and fishing in all open seasons unless law provides otherwise",
       "kind": "project"
-    }
+    },
+    { "rule": "Nonprofit applicants are registered 501(c)(3) organisations", "kind": "legal" },
+    { "rule": "Completes the project by June 30, 2030", "kind": "project" }
   ],
   "co_finance": { "ratio": "1:10", "in_kind": true },
   "after_award": { "reports": "yearly" },
@@ -215,27 +208,15 @@
         "quote": "The Division Directors of DNR Fish and Wildlife, Ecological and Water Resources, and Forestry will review all applications and make a final recommendation to the DNR Commissioner based on the following:",
         "checked_at": "2026-11-25",
         "method": "page"
+      },
+      {
+        "source_url": "https://files.dnr.state.mn.us/fish_wildlife/cpl/fy27-rfp.pdf",
+        "quote": "The Commissioner of the Department of Natural Resources must give final approval as to which projects to fund",
+        "checked_at": "2026-11-26",
+        "method": "page"
       }
     ],
     "eligibility": [
-      {
-        "source_url": "https://files.dnr.state.mn.us/fish_wildlife/cpl/fy27-rfp.pdf",
-        "quote": "Projects must be on the ECP Activity List.",
-        "checked_at": "2026-11-25",
-        "method": "page"
-      },
-      {
-        "source_url": "https://files.dnr.state.mn.us/fish_wildlife/cpl/fy27-rfp.pdf",
-        "quote": "Restoration and enhancement projects only (no acquisitions).",
-        "checked_at": "2026-11-25",
-        "method": "page"
-      },
-      {
-        "source_url": "https://files.dnr.state.mn.us/fish_wildlife/cpl/fy27-rfp.pdf",
-        "quote": "Projects must be on public lands or waters, or on land protected under a permanent conservation easement.",
-        "checked_at": "2026-11-25",
-        "method": "page"
-      },
       {
         "source_url": "https://files.dnr.state.mn.us/fish_wildlife/cpl/fy27-rfp.pdf",
         "quote": "Total project cost may not exceed $1,000,000.",
@@ -250,20 +231,26 @@
       },
       {
         "source_url": "https://files.dnr.state.mn.us/fish_wildlife/cpl/fy27-rfp.pdf",
-        "quote": "The Land Manager cannot be the same person as the Project Manager.",
-        "checked_at": "2026-11-25",
-        "method": "page"
-      },
-      {
-        "source_url": "https://files.dnr.state.mn.us/fish_wildlife/cpl/fy27-rfp.pdf",
-        "quote": "Any projects requesting money for construction activities (water control structures, etc.) must have preliminary engineering design and plans completed for the project prior to application submission.",
-        "checked_at": "2026-11-25",
+        "quote": "Applications must have a project manager, land manager, and a fiscal contact. The project manager and fiscal contact may be the same person, but neither can also be the Land Manager.",
+        "checked_at": "2026-11-26",
         "method": "page"
       },
       {
         "source_url": "https://files.dnr.state.mn.us/fish_wildlife/cpl/fy27-rfp.pdf",
         "quote": "Lands acquired in fee title must be open to the public for hunting and fishing during all open seasons unless otherwise provided by law.",
         "checked_at": "2026-11-25",
+        "method": "page"
+      },
+      {
+        "source_url": "https://files.dnr.state.mn.us/fish_wildlife/cpl/fy27-rfp.pdf",
+        "quote": "Registered 501 c(3) nonprofit organizations and government entities are eligible for CPL funding.",
+        "checked_at": "2026-11-26",
+        "method": "page"
+      },
+      {
+        "source_url": "https://files.dnr.state.mn.us/fish_wildlife/cpl/fy27-rfp.pdf",
+        "quote": "Projects funded with FY27 funds must be completed by June 30, 2030.",
+        "checked_at": "2026-11-26",
         "method": "page"
       }
     ],
@@ -278,6 +265,12 @@
         "source_url": "https://files.dnr.state.mn.us/fish_wildlife/cpl/fy27-rfp.pdf",
         "quote": "Accomplishment Reports must be submitted by December 31 of each year that the grant is active.",
         "checked_at": "2026-11-25",
+        "method": "page"
+      },
+      {
+        "source_url": "https://files.dnr.state.mn.us/fish_wildlife/cpl/fy27-rfp.pdf",
+        "quote": "A Final Accomplishment Report must be submitted with the final payment request by July 25, 2030.",
+        "checked_at": "2026-11-26",
         "method": "page"
       }
     ],

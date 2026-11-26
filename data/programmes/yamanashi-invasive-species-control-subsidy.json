@@ -21,12 +21,9 @@
   },
   "co_finance_required": null,
   "reporting": null,
-  "effort": { "steps": ["Application submission"] },
-  "eligibility": [
-    { "rule": "Applicant is based in Yamanashi Prefecture", "kind": "project" },
-    { "rule": "Project activities take place in Yamanashi Prefecture", "kind": "project" }
-  ],
-  "after_award": { "reports": "final" },
+  "effort": { "steps": ["Application submission"], "due": ["2027-01-30"] },
+  "eligibility": [{ "rule": "Applicant is based in Yamanashi Prefecture", "kind": "project" }],
+  "after_award": { "reports": "interim_and_final" },
   "documents": [
     "Business implementation plan",
     "Activity expense calculation",
@@ -103,12 +100,6 @@
         "quote": "山梨県内に所在する外来生物の防除活動を実施するNPO法人、自治会及びボランティア団体",
         "checked_at": "2026-11-25",
         "method": "page"
-      },
-      {
-        "source_url": "https://www.pref.yamanashi.jp/shizen/220402.html",
-        "quote": "山梨県内において実施する外来生物の防除活動",
-        "checked_at": "2026-11-25",
-        "method": "page"
       }
     ],
     "after_award": [
@@ -116,6 +107,12 @@
         "source_url": "https://www.pref.yamanashi.jp/documents/103774/kouhuyoukou.pdf",
         "quote": "補助事業者は、補助事業が完了したとき、又は廃止の承認を受けたときは、当該事業が完了 した日若しくは廃止の承認を受けた日から起算して1箇月を経過した日又は交付決定をした年度の 翌年度の4月10日のいずれか早い期日までに、事業実績報告書(第6号様式)を次に掲げる書類 を添えて知事に提出しなければならない。",
         "checked_at": "2026-11-25",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.pref.yamanashi.jp/documents/103774/kouhuyoukou.pdf",
+        "quote": "補助事業が完了しない場合において補助金の交付決定に係る県の会計年度が終了 したときは、当該会計年度終了時点における実績について年度終了実績報告書(第8号様式)を交 付決定した年度の翌年度の4月10日までに知事に提出しなければならない。",
+        "checked_at": "2026-11-26",
         "method": "page"
       }
     ],
