@@ -18,10 +18,7 @@
   "eligibility": [
     { "rule": "Have a Danish CVR number or CPR number", "kind": "legal" },
     { "rule": "Apply for a project that has not started or ended", "kind": "project" },
-    {
-      "rule": "Submit a new project when applying again after previous support",
-      "kind": "track_record"
-    },
+    { "rule": "If previously funded, apply for a new project", "kind": "project" },
     {
       "rule": "No overhead, though reasonable running and admin support is allowed",
       "kind": "project"
@@ -30,9 +27,13 @@
       "rule": "Do not request study stays, study trips or congress participation",
       "kind": "project"
     },
-    { "rule": "Do not apply on grounds of poor health or poor finances", "kind": "other" }
+    { "rule": "Do not apply on grounds of poor health or poor finances", "kind": "other" },
+    {
+      "rule": "Project is outside the excluded areas of humanitarian and social work, hunting, opera and youth cultural capital",
+      "kind": "project"
+    }
   ],
-  "after_award": { "reports": "final" },
+  "after_award": { "reports": "final", "audit": true },
   "documents": ["Budget"],
   "calls": [
     {
@@ -121,6 +122,12 @@
         "quote": "Fonden støtter ikke ansøgninger begrundet i dårligt helbred eller dårlig økonomi.",
         "checked_at": "2026-11-25",
         "method": "page"
+      },
+      {
+        "source_url": "https://www.15junifonden.dk/ansøg",
+        "quote": "Der kan ikke ansøges inden for: Humanitær og social, jagt, opera, kulturel kapital hos børn og unge.",
+        "checked_at": "2026-11-26",
+        "method": "page"
       }
     ],
     "after_award": [
@@ -128,6 +135,12 @@
         "source_url": "https://www.15junifonden.dk/ansøg",
         "quote": "Når projektet er afsluttet, skal der indsendes en slutrapport og et projektregnskab.",
         "checked_at": "2026-11-25",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.15junifonden.dk/ansøg",
+        "quote": "Regnskabet skal være ledsaget af en revisorerklæring (gælder ikke institutioner, der er underlagt Rigsrevisionen).",
+        "checked_at": "2026-11-26",
         "method": "page"
       }
     ],

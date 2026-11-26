@@ -17,18 +17,20 @@
   "amount": { "currency": "GBP", "min": 300, "max": 20000 },
   "co_finance_required": null,
   "reporting": null,
-  "effort": { "steps": ["Online application form"] },
+  "effort": { "steps": ["Online application form", "Funder review and follow-up if needed"] },
   "eligibility": [
     { "rule": "Does not have an unfinished Awards for All England grant", "kind": "other" },
     {
       "rule": "Is not awaiting a decision on another application to this programme",
       "kind": "other"
     },
-    { "rule": "Is not applying to multiple programmes for the same project", "kind": "other" },
-    { "rule": "Application not written by a private business or consultant", "kind": "other" },
-    { "rule": "Has at least two unrelated directors", "kind": "capacity" },
     {
-      "rule": "A school project benefits the wider community, not only the school",
+      "rule": "Is not applying to more than one of this funder’s programmes for the same project",
+      "kind": "other"
+    },
+    { "rule": "Has at least two unrelated directors", "kind": "legal" },
+    {
+      "rule": "Projects led by or involving schools benefit the wider community beyond pupils, staff and parents",
       "kind": "project"
     },
     {
@@ -36,12 +38,17 @@
       "kind": "project"
     },
     {
-      "rule": "Has a safeguarding policy when working with children or vulnerable adults",
+      "rule": "Has a safeguarding policy if working with children, young people or vulnerable adults",
       "kind": "capacity"
+    },
+    {
+      "rule": "Has received under £20,000 from this programme in 12 months and stays within that total with this grant",
+      "kind": "finances"
     }
   ],
+  "after_award": { "reports": "unspecified" },
   "documents": [
-    "Bank statement under three months old (or bank welcome letter or transaction listing)"
+    "Bank statement under 3 months old, transaction listing, or bank welcome letter for an account opened in last 3 months"
   ],
   "calls": [
     {
@@ -98,6 +105,12 @@
         "quote": "You can apply using our online form",
         "checked_at": "2026-11-25",
         "method": "page"
+      },
+      {
+        "source_url": "https://www.tnlcommunityfund.org.uk/funding/funding-programmes/national-lottery-awards-for-all-england-environment/how-to-apply",
+        "quote": "We will review your application and respond within 16 weeks. We might contact you to discuss your project or ask for more details.",
+        "checked_at": "2026-11-26",
+        "method": "page"
       }
     ],
     "eligibility": [
@@ -116,12 +129,6 @@
       {
         "source_url": "https://www.tnlcommunityfund.org.uk/funding/funding-programmes/national-lottery-awards-for-all-england-environment/who-cannot-apply",
         "quote": "you're applying to more than one of our programmes for the same project",
-        "checked_at": "2026-11-25",
-        "method": "page"
-      },
-      {
-        "source_url": "https://www.tnlcommunityfund.org.uk/funding/funding-programmes/national-lottery-awards-for-all-england-environment/who-cannot-apply",
-        "quote": "We do not accept applications written for you by private businesses or consultants.",
         "checked_at": "2026-11-25",
         "method": "page"
       },
@@ -147,6 +154,20 @@
         "source_url": "https://www.tnlcommunityfund.org.uk/funding/funding-programmes/national-lottery-awards-for-all-england-environment/what-you-need-to-tell-us-when-you-apply",
         "quote": "If you'll be working with children, young people or vulnerable adults You need to have a policy in place that explains how they'll be safe.",
         "checked_at": "2026-11-25",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.tnlcommunityfund.org.uk/funding/funding-programmes/national-lottery-awards-for-all-england-environment/who-cannot-apply",
+        "quote": "You can apply again if your previous project has finished and your organisation has received less than £20,000 in total from this programme in the last 12 months. The maximum total we can fund in any 12-month period is £20,000.",
+        "checked_at": "2026-11-26",
+        "method": "page"
+      }
+    ],
+    "after_award": [
+      {
+        "source_url": "https://www.tnlcommunityfund.org.uk/our-policies/programme-terms-and-conditions/standard-terms-and-conditions-for-funding-up-to-20-000",
+        "quote": "provide us promptly with any information and reports we require about the project and its impact, both during and after the end of the project;",
+        "checked_at": "2026-11-26",
         "method": "page"
       }
     ],

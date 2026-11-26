@@ -21,14 +21,19 @@
   "amount": { "currency": "GBP", "max": 1000, "typical": true },
   "co_finance_required": null,
   "reporting": null,
-  "effort": { "steps": ["Application"] },
+  "effort": { "steps": ["Application", "Steering group review and decision"] },
   "eligibility": [
     {
       "rule": "The project is not marine, already completed or a duplicate of a successful application",
       "kind": "project"
     },
-    { "rule": "Applicants for training or resources are based within NW England", "kind": "other" }
+    { "rule": "Applicants for training or resources are based within NW England", "kind": "other" },
+    {
+      "rule": "For habitat creation or enhancement, work on public land and set up surveillance recording.",
+      "kind": "project"
+    }
   ],
+  "after_award": { "reports": "yearly" },
   "calls": [
     {
       "id": "rolling",
@@ -96,6 +101,12 @@
         "quote": "an application being submitted",
         "checked_at": "2026-11-25",
         "method": "page"
+      },
+      {
+        "source_url": "https://www.northwestinvertebrates.org.uk/grants/",
+        "quote": "A decision will be made by the Tanyptera Project Steering Group within three weeks of an application being submitted.",
+        "checked_at": "2026-11-26",
+        "method": "page"
       }
     ],
     "eligibility": [
@@ -109,6 +120,20 @@
         "source_url": "https://www.northwestinvertebrates.org.uk/grants/",
         "quote": "Support training and other personal development for people based in NW England. Assist with the purchase of equipment and reference books for people based in NW England.",
         "checked_at": "2026-11-25",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.northwestinvertebrates.org.uk/grants/",
+        "quote": "Creating or enhancing invertebrate habitats on public land and setting up surveillance recording to measure benefits.",
+        "checked_at": "2026-11-26",
+        "method": "page"
+      }
+    ],
+    "after_award": [
+      {
+        "source_url": "https://www.northwestinvertebrates.org.uk/grants/",
+        "quote": "An annual update will be required for projects spanning more than one year.",
+        "checked_at": "2026-11-26",
         "method": "page"
       }
     ]

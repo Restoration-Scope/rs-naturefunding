@@ -16,26 +16,40 @@
   "reporting": null,
   "effort": {
     "steps": [
-      "Call the Western Director first, if requesting $40,000+ for one year",
-      "Letter of Inquiry (LOI), submitted online"
-    ]
+      "Discuss the amount with the Western Director first for $40,000+ in one year",
+      "Submit the Letter of Inquiry (LOI) online",
+      "Full application, if invited"
+    ],
+    "due": [null, null, "2027-04-01"]
   },
   "eligibility": [
     { "rule": "Be a federally tax-exempt entity, not an individual", "kind": "legal" },
     {
-      "rule": "Benefit rural communities in Idaho, Montana or Native nations sharing this geography",
-      "kind": "project"
-    },
-    { "rule": "Avoid urban, suburban and nearby urbanized areas", "kind": "project" },
-    {
-      "rule": "Not endowments, emergencies, charity drives, conferences, documentaries, research, camps, elections or promoting beliefs",
+      "rule": "Work benefits areas outside cities, suburbs and rural locations close to urbanized areas",
       "kind": "project"
     },
     {
-      "rule": "LOI submitted by a paid employee, or a board member if there are no paid staff",
+      "rule": "No planning, research, experiments, documentaries, summer camps, election work or religious or political advocacy",
+      "kind": "project"
+    },
+    {
+      "rule": "A paid employee submits the LOI, or a board member if the organization has no paid staff",
       "kind": "other"
+    },
+    {
+      "rule": "Submit only one LOI per organization, including any filed as a fiscal sponsor",
+      "kind": "other"
+    },
+    {
+      "rule": "Urban-based applicants have an established, high level of engagement with the rural community",
+      "kind": "project"
+    },
+    {
+      "rule": "Request at least USD 5,000 and no more than USD 50,000 for a single year",
+      "kind": "project"
     }
   ],
+  "after_award": { "reports": "final" },
   "calls": [
     {
       "id": "2027-loi",
@@ -88,15 +102,21 @@
     },
     "effort": [
       {
-        "source_url": "https://steele-reese.org/assets/pages/2026_S-R_F_Letter_of_Inquiry_Info_Packet.docx",
+        "source_url": "https://steele-reese.org/assets/pages/2027_S-R_F_Letter_of_Inquiry_Info_Packet_Final.docx",
         "quote": "If you are requesting a grant of $40,000 or more for a single year, before submitting a letter of inquiry you must first have a conversation specifically about the amount of your request with Western Director Linda Tracy at 406/207-7984.",
-        "checked_at": "2026-11-25",
+        "checked_at": "2026-11-26",
         "method": "page"
       },
       {
         "source_url": "https://steele-reese.org/how-to-apply/idaho-and-montana-grant-program",
-        "quote": "We will open the LOI process on January 11, 2027. We will close it once we have received 100 LOIs, which will likely be within days.",
-        "checked_at": "2026-11-25",
+        "quote": "For funding in rural or tribal communities in Idaho and Montana, and the Native nations that share this geography, the application process begins with a Letter of Inquiry (LOI) that must be submitted via the Foundation’s online grant portal.",
+        "checked_at": "2026-11-26",
+        "method": "page"
+      },
+      {
+        "source_url": "https://steele-reese.org/how-to-apply/idaho-and-montana-grant-program",
+        "quote": "By March 1, 2027, we will respond to all organizations that submit an LOI to either invite them to complete a full application by April 1, 2027, or let them know that we are unable to further consider their proposal.",
+        "checked_at": "2026-11-26",
         "method": "page"
       }
     ],
@@ -104,12 +124,6 @@
       {
         "source_url": "https://steele-reese.org/what-we-fund/guidelines-grant-policy",
         "quote": "No grants are made to individuals or to entities that have not been recognized as federally tax-exempt by the Internal Revenue Service.",
-        "checked_at": "2026-11-25",
-        "method": "page"
-      },
-      {
-        "source_url": "https://steele-reese.org/how-to-apply/idaho-and-montana-grant-program",
-        "quote": "The Foundation will only consider requests that benefit rural communities in Idaho, Montana, and in Native nations with whom we share this geography.",
         "checked_at": "2026-11-25",
         "method": "page"
       },
@@ -126,9 +140,35 @@
         "method": "page"
       },
       {
-        "source_url": "https://steele-reese.org/assets/pages/2026_S-R_F_Letter_of_Inquiry_Info_Packet.docx",
-        "quote": "However, the person submitting an LOI must be an employee of the organization requesting funds or if there is no paid staff, a member of its Board of Directors.",
-        "checked_at": "2026-11-25",
+        "source_url": "https://steele-reese.org/assets/pages/2027_S-R_F_Letter_of_Inquiry_Info_Packet_Final.docx",
+        "quote": "Staff or Board Member Applicant: Are you a paid employee of the organization requesting support? If your organization has no paid employees, are you a member of its Board of Directors? Yes or No",
+        "checked_at": "2026-11-26",
+        "method": "page"
+      },
+      {
+        "source_url": "https://steele-reese.org/assets/pages/2027_S-R_F_Letter_of_Inquiry_Info_Packet_Final.docx",
+        "quote": "Your organization can only submit one LOI whether it is for your own work or as a fiscal sponsor for another entity.",
+        "checked_at": "2026-11-26",
+        "method": "page"
+      },
+      {
+        "source_url": "https://steele-reese.org/how-to-apply/idaho-and-montana-grant-program",
+        "quote": "We will also consider inquiries from organizations based in urban areas for proposed work in a rural community with whom they can demonstrate an existing high level of engagement.",
+        "checked_at": "2026-11-26",
+        "method": "page"
+      },
+      {
+        "source_url": "https://steele-reese.org/assets/pages/2027_S-R_F_Letter_of_Inquiry_Info_Packet_Final.docx",
+        "quote": "If yes to either question, do not submit a letter of inquiry. The smallest grant we consider is $5,000 and the largest we will consider for a single year is $50,000.",
+        "checked_at": "2026-11-26",
+        "method": "page"
+      }
+    ],
+    "after_award": [
+      {
+        "source_url": "https://steele-reese.org/how-to-apply/idaho-and-montana-grant-program",
+        "quote": "In the interest of transparency about the grant process, this packet also includes a list of application questions we will ask of those we later invite to submit full applications, and the final report questions we will ask in the summer of 2028 of those who receive grants.",
+        "checked_at": "2026-11-26",
         "method": "page"
       }
     ]

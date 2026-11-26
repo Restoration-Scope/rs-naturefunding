@@ -14,9 +14,10 @@
   "amount": { "currency": "USD", "max": 5000, "typical": true, "note": "Historical grant size" },
   "co_finance_required": null,
   "reporting": null,
+  "effort": { "steps": ["Submit a tree-planting grant application"] },
   "eligibility": [
     {
-      "rule": "Neighborhood plantings on private land generate public benefits",
+      "rule": "Neighborhood plantings generate public benefits, including when they are on private land",
       "kind": "project"
     },
     {
@@ -25,7 +26,9 @@
     },
     { "rule": "School projects involve the student body in implementation", "kind": "project" },
     { "rule": "Natural area plantings are not arboretum-type planting", "kind": "project" },
-    { "rule": "Arbor Day plantings are not tree giveaways", "kind": "project" }
+    { "rule": "Arbor Day plantings are not tree giveaways", "kind": "project" },
+    { "rule": "School planting projects take place on public school property", "kind": "project" },
+    { "rule": "Community-group applicants are nonprofit", "kind": "legal" }
   ],
   "calls": [
     {
@@ -82,6 +85,14 @@
       "checked_at": "2026-11-25",
       "method": "page"
     },
+    "effort": [
+      {
+        "source_url": "https://www.ncufc.org/legacy-tree-fund.php",
+        "quote": "The 2027 LTF Grant application process will open May 1, 2027.",
+        "checked_at": "2026-11-26",
+        "method": "page"
+      }
+    ],
     "eligibility": [
       {
         "source_url": "https://www.ncufc.org/legacy-tree-fund.php",
@@ -111,6 +122,18 @@
         "source_url": "https://www.ncufc.org/legacy-tree-fund.php",
         "quote": "Note, tree give away requests will not be accepted.",
         "checked_at": "2026-11-25",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.ncufc.org/legacy-tree-fund.php",
+        "quote": "School Project: Appropriate for p ublic school properties.",
+        "checked_at": "2026-11-26",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.ncufc.org/legacy-tree-fund.php",
+        "quote": "Any local government, non-profit community group, or public school can apply for a tree-planting grant.",
+        "checked_at": "2026-11-26",
         "method": "page"
       }
     ]

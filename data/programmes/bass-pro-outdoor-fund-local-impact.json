@@ -24,7 +24,7 @@
   "effort": { "steps": ["Application"] },
   "eligibility": [
     {
-      "rule": "US: municipality, public body or IRS 501(c); Canada: registered nonprofit, municipality, public body or CRA charity",
+      "rule": "Municipality or public institution, or US IRS 501(c), Canadian provincially registered nonprofit or CRA charity",
       "kind": "legal"
     },
     {
@@ -32,10 +32,17 @@
       "kind": "project"
     },
     {
-      "rule": "No fundraising, giveaway, operating, capital/endowment, construction, development-phase, ATV/UTV or boat requests",
+      "rule": "No fundraisers, banquets, giveaways, core costs, capital drives/endowments, building, design-stage, ATVs/UTVs or boats",
       "kind": "project"
-    }
+    },
+    {
+      "rule": "At least 365 days have elapsed since the organisation last received funding",
+      "kind": "other"
+    },
+    { "rule": "Past grantees submit their grantee report before applying again", "kind": "other" }
   ],
+  "after_award": { "reports": "final" },
+  "documents": ["Organisation’s IRS Form W-9, 2024 revision (US applicants)"],
   "calls": [
     {
       "id": "rolling",
@@ -110,6 +117,34 @@
         "source_url": "https://about.basspro.com/community/support/",
         "quote": "The Outdoor Fund does not support fundraising events, banquets, and/or items to be given away to participants, general operating support, capital campaigns or endowments, construction and building costs, projects that are in the design or development phase, ATV/UTV and boat requests.",
         "checked_at": "2026-11-25",
+        "method": "page"
+      },
+      {
+        "source_url": "https://forms.benevity.org/form/2f693700-44e9-4e6b-a57e-c5372c958a7f?parameters=%7B%22draftVersion%22%3Afalse%2C%22version%22%3A%2225771fc7-9c76-46b0-b0c8-9838d2bacc55%22%2C%22user_token%22%3Anull%2C%22keys%22%3A%5B%5D%2C%22submittedReference%22%3Anull%7D&lang=en-us",
+        "quote": "If you have received previous funding, your organization is eligible for additional support one year (365 days) after the date you last received funding.",
+        "checked_at": "2026-11-26",
+        "method": "page"
+      },
+      {
+        "source_url": "https://storage.benevitygrants.org/files/bass+pro+shops/public/general/Grantee+Report+(2).pdf",
+        "quote": "Additional grant applications from your organization will not be considered until a Grantee Report is submitted.",
+        "checked_at": "2026-11-26",
+        "method": "page"
+      }
+    ],
+    "after_award": [
+      {
+        "source_url": "https://storage.benevitygrants.org/files/bass+pro+shops/public/general/Grantee+Report+(2).pdf",
+        "quote": "The Grantee Report shall be provided at the conclusion of the project but no later than one year after the agreement date.",
+        "checked_at": "2026-11-26",
+        "method": "page"
+      }
+    ],
+    "documents": [
+      {
+        "source_url": "https://forms.benevity.org/form/2f693700-44e9-4e6b-a57e-c5372c958a7f?parameters=%7B%22draftVersion%22%3Afalse%2C%22version%22%3A%2225771fc7-9c76-46b0-b0c8-9838d2bacc55%22%2C%22user_token%22%3Anull%2C%22keys%22%3A%5B%5D%2C%22submittedReference%22%3Anull%7D&lang=en-us",
+        "quote": "For U.S. based organizations, a copy of your organization\\u2019s W9 will need to be provided. Note: this must be on the IRS form revised in 2024,",
+        "checked_at": "2026-11-26",
         "method": "page"
       }
     ]

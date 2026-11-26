@@ -17,20 +17,18 @@
     "per": "year",
     "note": "Total per applicant per year across all files; 50% of estimated works cost (60% for some communes) within unit cost caps"
   },
-  "co_finance_required": true,
+  "co_finance_required": null,
   "reporting": null,
-  "effort": { "steps": ["Application dossier", "Review of complete applications"] },
+  "effort": {
+    "steps": [
+      "Application dossier",
+      "Review of complete applications",
+      "Departmental decision-making bodies consider eligible applications"
+    ]
+  },
   "eligibility": [
     {
-      "rule": "The project is agreed and shared with local residents and future users",
-      "kind": "project"
-    },
-    {
-      "rule": "The beneficiary commits to protect planted and renatured spaces permanently",
-      "kind": "project"
-    },
-    {
-      "rule": "The beneficiary commits to maintain the plantations and completed facilities",
+      "rule": "The project is developed with input from local residents and future users and shared with them.",
       "kind": "project"
     },
     {
@@ -42,7 +40,19 @@
       "kind": "project"
     },
     { "rule": "Collective-garden wood constructions use eco-certified wood", "kind": "project" },
-    { "rule": "Collective gardens recover rainwater and compost green waste", "kind": "project" }
+    { "rule": "Collective gardens recover rainwater and compost green waste", "kind": "project" },
+    {
+      "rule": "The site is open to the public unless it is on agricultural land.",
+      "kind": "project"
+    },
+    {
+      "rule": "Works must await approval unless the department grants a waiver.",
+      "kind": "project"
+    },
+    {
+      "rule": "An association’s project takes place on its own land or on public land.",
+      "kind": "project"
+    }
   ],
   "after_award": { "reports": "final" },
   "documents": [
@@ -117,24 +127,18 @@
         "quote": "Les dossiers réputés complets seront analysés par les services au regard des critères d'appréciation présentés ci-dessus.",
         "checked_at": "2026-11-25",
         "method": "page"
+      },
+      {
+        "source_url": "https://info.lenord.fr/upload/attachments/01devdur_plantationetrenaturation_guidea428pages11-69afec5ac4f74.pdf",
+        "quote": "Les dossiers déposés et considérés comme éligibles au dispositif seront présentés aux instances délibérantes départementales.",
+        "checked_at": "2026-11-26",
+        "method": "page"
       }
     ],
     "eligibility": [
       {
         "source_url": "https://info.lenord.fr/upload/attachments/01devdur_plantationetrenaturation_guidea428pages11-69afec5ac4f74.pdf",
         "quote": "Un projet concerté et partagé avec les riverains et futurs utilisateurs.",
-        "checked_at": "2026-11-25",
-        "method": "page"
-      },
-      {
-        "source_url": "https://info.lenord.fr/upload/attachments/01devdur_plantationetrenaturation_guidea428pages11-69afec5ac4f74.pdf",
-        "quote": "L'engagement du bénéficiaire à protéger durablement les espaces plantés et renaturés (exemple : documents d'urbanisme, convention de 15 ans, etc.).",
-        "checked_at": "2026-11-25",
-        "method": "page"
-      },
-      {
-        "source_url": "https://info.lenord.fr/upload/attachments/01devdur_plantationetrenaturation_guidea428pages11-69afec5ac4f74.pdf",
-        "quote": "L'engagement du bénéficiaire sur la pérennité et l'entretien des plantations et aménagements réalisés (suivi des aménagements et mise en place d'un entretien pluriannuel).",
         "checked_at": "2026-11-25",
         "method": "page"
       },
@@ -160,6 +164,24 @@
         "source_url": "https://info.lenord.fr/upload/attachments/01devdur_plantationetrenaturation_guidea428pages11-69afec5ac4f74.pdf",
         "quote": "Récupération des eaux de pluies et compostage des déchets verts.",
         "checked_at": "2026-11-25",
+        "method": "page"
+      },
+      {
+        "source_url": "https://info.lenord.fr/upload/attachments/01devdur_plantationetrenaturation_guidea428pages11-69afec5ac4f74.pdf",
+        "quote": "Un aménagement ouvert au public (hors terrain agricole).",
+        "checked_at": "2026-11-26",
+        "method": "page"
+      },
+      {
+        "source_url": "https://info.lenord.fr/upload/attachments/01devdur_plantationetrenaturation_guidea428pages11-69afec5ac4f74.pdf",
+        "quote": "En raison de la saisonnalité des travaux et des délais liés à la gestion administrative des dossiers, il est possible de solliciter, en l’argumentant, une dérogation au principe de non commencement des travaux.",
+        "checked_at": "2026-11-26",
+        "method": "page"
+      },
+      {
+        "source_url": "https://info.lenord.fr/upload/attachments/01devdur_plantationetrenaturation_guidea428pages11-69afec5ac4f74.pdf",
+        "quote": "Les associations pour les projets en terrain propre ou sur terrain public",
+        "checked_at": "2026-11-26",
         "method": "page"
       }
     ],
@@ -208,23 +230,7 @@
         "checked_at": "2026-11-25",
         "method": "page"
       }
-    ],
-    "co_finance_required": {
-      "source_url": "https://info.lenord.fr/upload/attachments/01devdur_plantationetrenaturation_guidea428pages11-69afec5ac4f74.pdf",
-      "quote": "En investissement, l’aide départementale correspond à une subvention au taux de 50 % du coût estimatif des travaux HT pour l’ensemble des porteurs de projets, hormis pour les communes éligibles aux aides départementales ADVB figurant en annexe pour lesquelles le taux est de 60 %",
-      "checked_at": "2026-11-25",
-      "method": "page"
-    },
-    "co_finance": {
-      "source_url": "https://info.lenord.fr/upload/attachments/01devdur_plantationetrenaturation_guidea428pages11-69afec5ac4f74.pdf",
-      "quote": "En investissement, l’aide départementale correspond à une subvention au taux de 50 % du coût estimatif des travaux HT pour l’ensemble des porteurs de projets, hormis pour les communes éligibles aux aides départementales ADVB figurant en annexe pour lesquelles le taux est de 60 %",
-      "checked_at": "2026-11-25",
-      "method": "page"
-    }
+    ]
   },
-  "checked_at": "2026-11-25",
-  "co_finance": {
-    "min_share": 50,
-    "applies_to": "All but ADVB-eligible communes, which bring at least 40%"
-  }
+  "checked_at": "2026-11-25"
 }

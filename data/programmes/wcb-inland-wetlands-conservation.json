@@ -14,7 +14,13 @@
   "amount": null,
   "co_finance_required": false,
   "reporting": null,
-  "effort": { "steps": ["Pre-application", "Full application, if invited"] },
+  "effort": {
+    "steps": [
+      "Pre-application",
+      "Full application, if invited",
+      "Technical review and scoring of full applications"
+    ]
+  },
   "eligibility": [
     {
       "rule": "Project provides protected/restored biodiversity, climate action, or expanded public access to nature",
@@ -30,6 +36,9 @@
     }
   ],
   "after_award": { "reports": "final" },
+  "documents": [
+    "Full assessor parcel number list, for projects with more than five parcel numbers"
+  ],
   "calls": [
     {
       "id": "project-portal",
@@ -85,6 +94,12 @@
         "quote": "WCB staff will select Pre-applications to move forward and will invite the selected applicants to submit Full Applications.",
         "checked_at": "2026-11-25",
         "method": "page"
+      },
+      {
+        "source_url": "https://nrm.dfg.ca.gov/FileHandler.ashx?DocumentID=199421",
+        "quote": "All eligible and complete Full Applications will be evaluated and scored by technical reviewers, which will include representatives from WCB, CDFW, and others as appropriate.",
+        "checked_at": "2026-11-26",
+        "method": "page"
       }
     ],
     "eligibility": [
@@ -112,6 +127,14 @@
         "source_url": "https://nrm.dfg.ca.gov/FileHandler.ashx?DocumentID=199421",
         "quote": "All grantees doing restoration, development, scientific studies, and planning will be required to provide a final report.",
         "checked_at": "2026-11-25",
+        "method": "page"
+      }
+    ],
+    "documents": [
+      {
+        "source_url": "https://nrm.dfg.ca.gov/FileHandler.ashx?DocumentID=200790&inline=",
+        "quote": "If the project includes more than five APNs, upload a full list at the end of this pre application.",
+        "checked_at": "2026-11-26",
         "method": "page"
       }
     ]

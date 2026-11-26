@@ -38,13 +38,22 @@
       "rule": "Be distinct from projects already funded or being considered by OWEB",
       "kind": "project"
     },
-    { "rule": "Is an on-the-ground restoration project", "kind": "project" }
+    { "rule": "Is an on-the-ground restoration project", "kind": "project" },
+    {
+      "rule": "Meet the local Small Grant Team’s watershed priorities and current eligible project types.",
+      "kind": "project"
+    },
+    {
+      "rule": "State and federal agencies may participate only as partners to eligible applicants.",
+      "kind": "legal"
+    }
   ],
-  "after_award": { "reports": "unspecified" },
+  "after_award": { "reports": "other" },
   "documents": [
     "Pre-project site photos",
     "Map of the project site",
-    "Cooperative landowner agreement signed by landowners"
+    "Cooperative landowner agreement signed by landowners",
+    "Small Grant Team review of the Juniper Project Form, if applicable"
   ],
   "calls": [
     {
@@ -146,6 +155,18 @@
         "quote": "On-the-ground restoration project in Oregon.",
         "checked_at": "2026-11-25",
         "method": "page"
+      },
+      {
+        "source_url": "https://www.oregon.gov/oweb/grants/small-grants/pages/small-grants.aspx",
+        "quote": "Consistent with the Small Grant Team’s priority watershed concerns and current list of eligible project types.",
+        "checked_at": "2026-11-26",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.oregon.gov/oweb/Documents/SGP-Application-Guidance.pdf",
+        "quote": "A grant applicant may be any tribe, watershed council, soil and water conservation district, not-forprofit corporation, school, Oregon institution of higher education, independent not-for-profit institution of higher education, or political subdivision of this state that is not a state agency. A state agency or federal agency may partner with an eligible entity.",
+        "checked_at": "2026-11-26",
+        "method": "page"
       }
     ],
     "after_award": [
@@ -153,6 +174,12 @@
         "source_url": "https://www.oregon.gov/oweb/manage-grant/Pages/report-to-oweb.aspx",
         "quote": "Post-Implementation Status Reports (PISRs) are required for all OWEB restoration grants.",
         "checked_at": "2026-11-25",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.oregon.gov/oweb/Documents/SGP-Application-Guidance.pdf",
+        "quote": "Required Year-Two Status Reporting (Year-Two Status Report) Provide the name and contact information of the individual who will take responsibility for documenting the condition of the project two years after the actual project completion date.",
+        "checked_at": "2026-11-26",
         "method": "page"
       }
     ],
@@ -174,15 +201,21 @@
         "quote": "Cooperative Landowner Agreement* Landowners must sign a cooperative agreement.",
         "checked_at": "2026-11-25",
         "method": "page"
+      },
+      {
+        "source_url": "https://www.oregon.gov/oweb/Forms/SGA-Application-Checklist-for-Applicants.docx",
+        "quote": "Small Grant Team Review of Juniper Project Form (if applicable)",
+        "checked_at": "2026-11-26",
+        "method": "page"
       }
     ],
     "co_finance": {
-      "source_url": "https://www.oregon.gov/oweb/grants/small-grants/pages/small-grants.aspx",
-      "quote": "Demonstrates 25% secured match funding, based on the total OWEB award.",
-      "checked_at": "2026-11-25",
+      "source_url": "https://www.oregon.gov/oweb/Documents/SGP-Application-Guidance.pdf",
+      "quote": "The letters should state the nature of the match (cash or in-kind) and the dollar value. The letters must be signed by authorized representatives of the organizations contributing the match. Although the match funding form is not required at time of application, documentation of at least 25% of the OWEB award amount must be submitted prior to first payment.",
+      "checked_at": "2026-11-26",
       "method": "page"
     }
   },
   "checked_at": "2026-11-25",
-  "co_finance": { "ratio": "1:4" }
+  "co_finance": { "min_share": 20, "in_kind": true }
 }

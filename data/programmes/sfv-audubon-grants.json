@@ -22,12 +22,26 @@
   },
   "co_finance_required": null,
   "reporting": "A written report of 200-500 words summarising how the funds were used, on project completion.",
-  "effort": { "steps": ["Grant application", "Grants committee review", "Board review and vote"] },
-  "eligibility": [{ "rule": "Being in the SFVAS territory", "kind": "project" }],
+  "effort": {
+    "steps": [
+      "Email application at least 4 weeks before the board meeting",
+      "Grants committee review",
+      "Board review and vote",
+      "Get committee permission before applying for more than USD 5,000"
+    ]
+  },
+  "eligibility": [
+    {
+      "rule": "Nonprofit applicants, including schools, are based within SFVAS territory.",
+      "kind": "legal"
+    }
+  ],
   "after_award": { "reports": "final" },
   "documents": [
     "Resume or curriculum vitae, if an individual applicant",
-    "IRS EIN, California Charitable Registration number, and organization website URL, if an organization"
+    "IRS EIN, California Charitable Registration number, and organization website URL, if an organization",
+    "Names of the people responsible for proper expenditure",
+    "Positive letter of support, if applying as a student"
   ],
   "calls": [
     {
@@ -102,13 +116,25 @@
         "quote": "The grants committee will submit its recommendation to the Board, and the Board will discuss and vote on the request.",
         "checked_at": "2026-11-25",
         "method": "page"
+      },
+      {
+        "source_url": "https://sfvaudubon.org/grants/",
+        "quote": "Applications must be received 4 weeks prior to the next scheduled SFVAS board meeting for possible consideration at that meeting.",
+        "checked_at": "2026-11-26",
+        "method": "page"
+      },
+      {
+        "source_url": "https://sfvaudubon.org/grants/",
+        "quote": "Grants of a larger amount may be considered, but would require expanded documentation and review time, and permission to file such an application must be obtained from the SFVAS Grants committee.",
+        "checked_at": "2026-11-26",
+        "method": "page"
       }
     ],
     "eligibility": [
       {
         "source_url": "https://sfvaudubon.org/grants/",
         "quote": "Non-profit groups, including schools, in the SFVAS territory are eligible for SFVAS grants.",
-        "checked_at": "2026-11-25",
+        "checked_at": "2026-11-26",
         "method": "page"
       }
     ],
@@ -131,6 +157,18 @@
         "source_url": "https://sfvaudubon.org/grants/",
         "quote": "For an organization, kindly provide the IRS EIN, California Charitable Registration number, and URL of the organization's website.",
         "checked_at": "2026-11-25",
+        "method": "page"
+      },
+      {
+        "source_url": "https://sfvaudubon.org/grants/",
+        "quote": "In addition, please provide the names of individuals responsible for proper expenditure of funds.",
+        "checked_at": "2026-11-26",
+        "method": "page"
+      },
+      {
+        "source_url": "https://sfvaudubon.org/grants/",
+        "quote": "student applicants include a positive letter of support",
+        "checked_at": "2026-11-26",
         "method": "page"
       }
     ]

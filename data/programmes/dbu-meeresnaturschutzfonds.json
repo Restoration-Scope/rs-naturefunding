@@ -21,20 +21,34 @@
   "co_finance_required": true,
   "consortium_required": false,
   "reporting": null,
-  "effort": { "steps": ["Project outline", "Full application, if invited"] },
+  "effort": {
+    "steps": ["Project outline (recommended)", "Full application, directly or after an invitation"]
+  },
   "eligibility": [
     { "rule": "The project is not a statutory duty", "kind": "project" },
-    { "rule": "The project has an implementation perspective", "kind": "project" },
     { "rule": "The project is not a pure investment project", "kind": "project" },
-    { "rule": "The project has not already begun", "kind": "project" },
+    {
+      "rule": "Project has not started, unless DBU grants an exception for an early start.",
+      "kind": "project"
+    },
     { "rule": "The project is not exclusively basic research", "kind": "project" },
-    { "rule": "A study has a concrete implementation link", "kind": "project" },
-    { "rule": "The project complies with EU state aid law", "kind": "legal" }
+    {
+      "rule": "The project has a path to implementation. Studies have a concrete link to implementation.",
+      "kind": "project"
+    },
+    {
+      "rule": "The project does not bring an already developed product to market.",
+      "kind": "project"
+    },
+    {
+      "rule": "The request is for a specific project, not general institutional funding.",
+      "kind": "project"
+    },
+    { "rule": "The request does not top up funding from another grantmaker.", "kind": "project" }
   ],
   "co_finance": {
     "min_share": 50,
-    "in_kind": true,
-    "applies_to": "Project partners within the EU"
+    "applies_to": "Generally within the EU, subject to exceptions and company rates"
   },
   "after_award": { "reports": "interim_and_final" },
   "calls": [
@@ -110,6 +124,12 @@
         "quote": "Förderantrag: Bei Übereinstimmung Ihrer Projektidee mit dem Förderzweck und den Fördermöglichkeiten fordert die DBU Sie auf, einen vollständigen, auf Ihrer Projektskizze aufbauenden Förderantrag einzureichen",
         "checked_at": "2026-11-25",
         "method": "page"
+      },
+      {
+        "source_url": "https://www.dbu.de/foerderung/projektfoerderung/",
+        "quote": "Projektskizzen und Förderanträge können jederzeit eingereicht werden.",
+        "checked_at": "2026-11-26",
+        "method": "page"
       }
     ],
     "eligibility": [
@@ -121,20 +141,14 @@
       },
       {
         "source_url": "https://www.dbu.de/foerderung/projektfoerderung/",
-        "quote": "Projekte ohne Umsetzungsperspektive",
-        "checked_at": "2026-11-25",
-        "method": "page"
-      },
-      {
-        "source_url": "https://www.dbu.de/foerderung/projektfoerderung/",
         "quote": "reine Investitionsvorhaben",
         "checked_at": "2026-11-25",
         "method": "page"
       },
       {
-        "source_url": "https://www.dbu.de/foerderung/projektfoerderung/",
-        "quote": "bereits begonnene Vorhaben",
-        "checked_at": "2026-11-25",
+        "source_url": "https://www.dbu.de/app/uploads/Hinweise-zur-Antragstellung.pdf",
+        "quote": "Eine Förderung bereits begonnener Projekte ist grundsätzlich nicht möglich. Ein vorzeitiger Maßnahmebeginn kann ausnahmsweise auf Antrag zugelassen werden.",
+        "checked_at": "2026-11-26",
         "method": "page"
       },
       {
@@ -145,21 +159,33 @@
       },
       {
         "source_url": "https://www.dbu.de/foerderung/projektfoerderung/",
-        "quote": "Studien ohne konkreten Umsetzungsbezug",
-        "checked_at": "2026-11-25",
+        "quote": "Projekte ohne Umsetzungsperspektive; reine Investitionsvorhaben; bereits begonnene Vorhaben; Projekte zur Markteinführung entwickelter Produkte; Projekte mit ausschließlicher Grundlagenforschung; Monitoring von Umweltbelastungen; Studien ohne konkreten Umsetzungsbezug;",
+        "checked_at": "2026-11-26",
         "method": "page"
       },
       {
         "source_url": "https://www.dbu.de/foerderung/projektfoerderung/",
-        "quote": "Projekte, die nicht dem Beihilferecht der EU entsprechen.",
-        "checked_at": "2026-11-25",
+        "quote": "Projekte zur Markteinführung entwickelter Produkte",
+        "checked_at": "2026-11-26",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.dbu.de/foerderung/projektfoerderung/",
+        "quote": "nicht projektbezogene Anträge von Einrichtungen und Institutionen (institutionelle Förderung)",
+        "checked_at": "2026-11-26",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.dbu.de/foerderung/projektfoerderung/",
+        "quote": "Aufstockung von Fördermitteln anderer Fördermittelgeber",
+        "checked_at": "2026-11-26",
         "method": "page"
       }
     ],
     "co_finance": {
       "source_url": "https://www.dbu.de/foerderung/projektfoerderung/faq-zur-projektfoerderung/",
-      "quote": "Innerhalb der EU gilt: Grundsätzlich ist von einem mindestens 50-prozentigen Eigenanteil auszugehen.",
-      "checked_at": "2026-11-25",
+      "quote": "Innerhalb der EU gilt: Grundsätzlich ist von einem mindestens 50-prozentigen Eigenanteil auszugehen. Ausnahmen:",
+      "checked_at": "2026-11-26",
       "method": "page"
     },
     "after_award": [

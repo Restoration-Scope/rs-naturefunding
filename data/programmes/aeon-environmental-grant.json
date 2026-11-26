@@ -27,13 +27,10 @@
       "kind": "legal"
     },
     {
-      "rule": "Has an office in Japan and can respond in Japanese by phone and email",
+      "rule": "Has a Japan-based point of contact that can respond in Japanese by phone and email",
       "kind": "capacity"
     },
-    {
-      "rule": "Plans and runs the activity itself, not commissioned work or only joining others’ events",
-      "kind": "project"
-    },
+    { "rule": "Plans and runs its own activity", "kind": "project" },
     {
       "rule": "Is not a for-profit, government, school, or grantmaking organisation",
       "kind": "legal"
@@ -57,11 +54,14 @@
     }
   ],
   "documents": [
-    "Recommendation letter from an independent third-party expert",
-    "Third-party quotation for each accounting category totaling at least 10,000 yen",
+    "Recommendation letter from an independent expert, scholar or relevant public official",
+    "Tax-inclusive third-party quotes for all items in each cost category totalling at least ¥10,000",
     "Organisation articles or regulations",
     "Previous year's activity and financial reports",
-    "Current year's activity plan and budget"
+    "Current year's activity plan and budget",
+    "Travel cost plan if quotes for train, bus or vehicle fuel costs are unavailable",
+    "Airfare and accommodation quotes, if requested in the budget",
+    "Official LINE account plan, if the budget includes one"
   ],
   "calls": [
     {
@@ -222,6 +222,24 @@
         "source_url": "https://www.aeonkankyozaidan.or.jp/wp-content/uploads/2026/05/248b4e815805c826ce4ce9faefe3d64e.pdf",
         "quote": "今年度の活動計画書と会計予算書",
         "checked_at": "2026-11-25",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.aeonkankyozaidan.or.jp/wp-content/uploads/2026/05/248b4e815805c826ce4ce9faefe3d64e.pdf",
+        "quote": "※見積書が発行できない電車・バス・車両ガソリン 代は、旅費交通費計画書が必要",
+        "checked_at": "2026-11-26",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.aeonkankyozaidan.or.jp/wp-content/uploads/2026/05/248b4e815805c826ce4ce9faefe3d64e.pdf",
+        "quote": "※飛行機代及び宿泊費は、見積書が必要",
+        "checked_at": "2026-11-26",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.aeonkankyozaidan.or.jp/wp-content/uploads/2026/05/248b4e815805c826ce4ce9faefe3d64e.pdf",
+        "quote": "※LINE公式アカウントの計画書が必要",
+        "checked_at": "2026-11-26",
         "method": "page"
       }
     ]

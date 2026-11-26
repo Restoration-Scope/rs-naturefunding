@@ -17,7 +17,13 @@
   "amount": { "currency": "USD", "min": 100, "max": 1000 },
   "co_finance_required": null,
   "reporting": null,
-  "effort": { "steps": ["Application submission", "Conservation and Education Committee review"] },
+  "effort": {
+    "steps": [
+      "Application submission",
+      "Conservation and Education Committee review",
+      "NHOS Board of Directors review and vote"
+    ]
+  },
   "eligibility": [
     {
       "rule": "Requesting a specific project, not general funding within a larger project",
@@ -30,10 +36,11 @@
     {
       "rule": "Funds administered and accounted for by a not-for-profit organisation",
       "kind": "legal"
-    }
+    },
+    { "rule": "Project has not already received an NHOS grant", "kind": "project" }
   ],
   "after_award": { "reports": "final" },
-  "documents": ["Two written recommendations"],
+  "documents": ["Two written recommendations from people not directly involved in the project"],
   "calls": [
     {
       "id": "rolling",
@@ -89,6 +96,12 @@
         "quote": "Applications are presented to the Conservation and Education Committee for review",
         "checked_at": "2026-11-25",
         "method": "page"
+      },
+      {
+        "source_url": "https://newhampshireorchidsociety.wildapricot.org/grant_application/",
+        "quote": "and then brought before the NHOS Board of Directors who vote on whether to request clarification, approve, modify or deny the Grant.",
+        "checked_at": "2026-11-26",
+        "method": "page"
       }
     ],
     "eligibility": [
@@ -108,6 +121,12 @@
         "source_url": "https://newhampshireorchidsociety.wildapricot.org/resources/Documents/Online%20Forms/NHOS%20Grant%20Application%20Form.docx",
         "quote": "NHOS policy as a not-for profit, requires administration and accounting of the funds by another not-for -profit.",
         "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://newhampshireorchidsociety.wildapricot.org/grant_application/",
+        "quote": "Grants shall be one-time per project awards.",
+        "checked_at": "2026-11-26",
         "method": "page"
       }
     ],

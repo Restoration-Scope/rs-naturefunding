@@ -17,6 +17,7 @@
   "amount": { "currency": "USD", "min": 500, "max": 2000 },
   "co_finance_required": null,
   "reporting": "Grantees send a one-page report and project photos in years two and three of habitat establishment.",
+  "effort": { "steps": ["Application"] },
   "eligibility": [
     {
       "rule": "The project has an educational component and community visibility",
@@ -26,7 +27,11 @@
       "rule": "The design prioritizes regionally-adapted western native species, unless approved otherwise",
       "kind": "project"
     },
-    { "rule": "The site is prepared and maintained without synthetic chemicals", "kind": "project" }
+    {
+      "rule": "Prepare and maintain the site without synthetic herbicides or other chemical pesticides",
+      "kind": "project"
+    },
+    { "rule": "Site incorporates PPAN’s pollinator habitat sign", "kind": "project" }
   ],
   "after_award": { "reports": "other" },
   "calls": [
@@ -85,6 +90,14 @@
       "checked_at": "2026-11-25",
       "method": "page"
     },
+    "effort": [
+      {
+        "source_url": "https://www.peopleandpollinators.org/habitat-fund",
+        "quote": "Applications Will Open January 2027",
+        "checked_at": "2026-11-26",
+        "method": "page"
+      }
+    ],
     "eligibility": [
       {
         "source_url": "https://www.peopleandpollinators.org/habitat-fund",
@@ -102,6 +115,12 @@
         "source_url": "https://www.peopleandpollinators.org/habitat-fund",
         "quote": "Site must be prepared and maintained organically (without the use of synthetic herbicides or other chemical pesticides)",
         "checked_at": "2026-11-25",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.peopleandpollinators.org/habitat-fund",
+        "quote": "Site must incorporate PPAN's pollinator habitat sign",
+        "checked_at": "2026-11-26",
         "method": "page"
       }
     ],

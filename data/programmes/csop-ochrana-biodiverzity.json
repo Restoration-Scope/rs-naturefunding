@@ -24,8 +24,25 @@
       "Nature conservation committee review"
     ]
   },
-  "eligibility": [{ "rule": "Is a ČSOP branch or another association (spolek)", "kind": "legal" }],
+  "eligibility": [
+    { "rule": "Is a ČSOP branch or another association (spolek)", "kind": "legal" },
+    { "rule": "Has no outstanding debt to ČSOP", "kind": "finances" },
+    { "rule": "Submits no more than seven projects", "kind": "other" },
+    { "rule": "Each proposal covers only one of the call’s activity categories", "kind": "project" }
+  ],
   "after_award": { "reports": "final" },
+  "documents": [
+    "Project budget",
+    "Bylaws or founding charter, unless exempt",
+    "Proof of the organisation’s statutory representative, unless exempt",
+    "Bank agreement or statement if the organisation has a current account and is not exempt",
+    "Landowner consent, proof of ownership or lease for habitat management projects",
+    "Permission from Lesy České republiky when habitat work is on land it manages",
+    "Protected species or protected-area exemption, if required for the proposed work",
+    "Protected-area management plan or authority confirmation when no exemption is needed",
+    "List of surveyors and their experience for detailed site mapping or monitoring",
+    "Written consent from a third-party exemption or credential holder, if applicable"
+  ],
   "calls": [
     {
       "id": "2026",
@@ -125,6 +142,24 @@
         "quote": "Projekty mohou zasílat základní organizace ČSOP i jiné spolky.",
         "checked_at": "2026-11-24",
         "method": "page"
+      },
+      {
+        "source_url": "https://biodiverzita.csop.cz/wp-content/uploads/2025/12/vyzva-ochrana-biodiverzity-2026.doc",
+        "quote": "Z výzvy jsou vyloučeny organizace s dluhem vůči vyhlašovateli.",
+        "checked_at": "2026-11-26",
+        "method": "page"
+      },
+      {
+        "source_url": "https://biodiverzita.csop.cz/wp-content/uploads/2025/12/vyzva-ochrana-biodiverzity-2026.doc",
+        "quote": "Realizátor může přihlásit do tohoto programu maximálně 7 projektů.",
+        "checked_at": "2026-11-26",
+        "method": "page"
+      },
+      {
+        "source_url": "https://biodiverzita.csop.cz/wp-content/uploads/2025/12/vyzva-ochrana-biodiverzity-2026.doc",
+        "quote": "Nelze podat projekt, zahrnující více různých činností dle kapitoly II (např. zároveň na mapování a management)!",
+        "checked_at": "2026-11-26",
+        "method": "page"
       }
     ],
     "after_award": [
@@ -132,6 +167,56 @@
         "source_url": "https://biodiverzita.csop.cz/podpora-lokalnich-projektu/",
         "quote": "Závěrečná zpráva k projektu bude zahrnovat informaci o počtu dobrovolníků, kteří se účastnili projektu v jakékoliv fázi jeho realizace.",
         "checked_at": "2026-11-24",
+        "method": "page"
+      }
+    ],
+    "documents": [
+      {
+        "source_url": "https://biodiverzita.csop.cz/ke-stazeni-pro-realizatory/",
+        "quote": "Formulář plánovaného rozpočtu",
+        "checked_at": "2026-11-26",
+        "method": "page"
+      },
+      {
+        "source_url": "https://biodiverzita.csop.cz/wp-content/uploads/2025/12/vyzva-ochrana-biodiverzity-2026.doc",
+        "quote": "Subjekty mimo ČSOP, akreditované pozemkové spolky a členy Národní sítě záchranných stanic jsou povinné dále přiložit: kopie stanov či zřizovací listiny; doklad, z kterého plyne, kdo je statutárním zástupcem organizace; kopie smlouvy o vedení běžného účtu či výpisu z běžného účtu žadatele (pokud má organizace běžný účet)",
+        "checked_at": "2026-11-26",
+        "method": "page"
+      },
+      {
+        "source_url": "https://biodiverzita.csop.cz/wp-content/uploads/2025/12/vyzva-ochrana-biodiverzity-2026.doc",
+        "quote": "souhlas vlastníka (vlastníků) pozemku s realizací projektu, případně doklad o vlastnictví pozemku žadatelem či kopie nájemní či jiné obdobné smlouvy, umožňující realizaci daného projektu",
+        "checked_at": "2026-11-26",
+        "method": "page"
+      },
+      {
+        "source_url": "https://biodiverzita.csop.cz/ke-stazeni-pro-realizatory/",
+        "quote": "Souhlas LČR s realizací projektu",
+        "checked_at": "2026-11-26",
+        "method": "page"
+      },
+      {
+        "source_url": "https://biodiverzita.csop.cz/wp-content/uploads/2025/12/vyzva-ochrana-biodiverzity-2026.doc",
+        "quote": "platné výjimky v případě zásahu do biotopu zvláště chráněného druhu či zásahu ve zvláště chráněném území",
+        "checked_at": "2026-11-26",
+        "method": "page"
+      },
+      {
+        "source_url": "https://biodiverzita.csop.cz/wp-content/uploads/2025/12/vyzva-ochrana-biodiverzity-2026.doc",
+        "quote": "projekty realizované v ZCHÚ, nevyžadující výjimku, musí být doloženy kopií platného plánu péče či vyjádřením orgánu ochrany přírody, že jsou v souladu s platným plánem péče",
+        "checked_at": "2026-11-26",
+        "method": "page"
+      },
+      {
+        "source_url": "https://biodiverzita.csop.cz/wp-content/uploads/2025/12/vyzva-ochrana-biodiverzity-2026.doc",
+        "quote": "seznam, odborné zkušenosti mapovatelů společně s popisem jejich zkušeností",
+        "checked_at": "2026-11-26",
+        "method": "page"
+      },
+      {
+        "source_url": "https://biodiverzita.csop.cz/wp-content/uploads/2025/12/vyzva-ochrana-biodiverzity-2026.doc",
+        "quote": "je nutno doložit písemný souhlas držitele této výjimky či průkazu s jeho účastí na projektu.",
+        "checked_at": "2026-11-26",
         "method": "page"
       }
     ]

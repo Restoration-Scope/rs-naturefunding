@@ -25,20 +25,17 @@
     "steps": [
       "Submit a funding application",
       "Applicant and project eligibility check",
-      "Application assessment and prioritisation"
+      "Application assessment and prioritisation",
+      "Ministerial funding decision"
     ]
   },
   "eligibility": [
     {
-      "rule": "Project maintains wetland or waterbody areas or functions, or makes gains in these matters",
+      "rule": "Maintain or increase wetland or waterbody area or functions in the integrated water management zone",
       "kind": "project"
     },
     {
-      "rule": "Principal project manager has at least 5 years' experience managing multidisciplinary teams",
-      "kind": "capacity"
-    },
-    {
-      "rule": "Designated professional has at least 3 years' experience restoring wetlands and waterbodies",
+      "rule": "Lead: 5+ years managing multidisciplinary teams. Specialist: 3+ years restoring wetlands or waterbodies.",
       "kind": "capacity"
     },
     {
@@ -46,24 +43,35 @@
       "kind": "legal"
     },
     { "rule": "A legal entity has at least one establishment in Québec", "kind": "legal" },
-    { "rule": "Is not bankrupt, in liquidation or dissolution", "kind": "legal" },
+    {
+      "rule": "Applicant and delivery parties are not bankrupt, in liquidation, dissolved or barred from public contracts",
+      "kind": "legal"
+    },
     {
       "rule": "Not legally mandated, mainly wildlife habitat, enhancement/rehabilitation, or mainly research",
+      "kind": "project"
+    },
+    {
+      "rule": "Restore typical wetland or waterbody ecological functioning, or create habitat with that functioning",
+      "kind": "project"
+    },
+    {
+      "rule": "For the same project, secure approval of Stream 1 final activity and financial reports before applying to Stream 2",
       "kind": "project"
     }
   ],
   "after_award": { "reports": "other", "site_visits": true },
   "documents": [
-    "Board resolution authorising the signatory",
+    "Resolution authorising the applicant’s representative",
     "Detailed CVs of the project team",
-    "Regional and local site maps",
-    "Site photos",
+    "Regional and local site maps, site photos, and a site issues map or diagram for Stream 1",
     "Activity schedule and budget (Excel file)",
-    "Proof of land ownership",
-    "Proof the studies or works can be done on the site",
+    "Proof of land ownership and, for nonowners, official proof the site is available",
     "Reference-condition report by a qualified professional (Volet 2)",
     "MRC resolution supporting the project (Volet 2)",
-    "Acceptance letters from other aid programmes, if any"
+    "Acceptance letters from other aid programmes, if any",
+    "GIS project location file and scaled site sketch of intended works (Stream 2)",
+    "Agreement between regional county municipalities pooling funds in one watershed (Stream 2, if applicable)"
   ],
   "calls": [
     {
@@ -117,8 +125,8 @@
     },
     "co_finance_required": {
       "source_url": "https://www.environnement.gouv.qc.ca/programmes/prcmhh/index.htm",
-      "quote": "L'aide financière accordée pour les projets sélectionnés permet de couvrir 100 % des dépenses admissibles jusqu'à concurrence de 125 000 $ par projet",
-      "checked_at": "2026-11-25",
+      "quote": "projets sélectionnés permet de couvrir 100 % des dépenses admissibles jusqu’à concurrence de 3 millions de dollars par projet",
+      "checked_at": "2026-11-26",
       "method": "page"
     },
     "reporting": {
@@ -145,25 +153,25 @@
         "quote": "Analyse des demandes d'aide financière : les projets admissibles sont évalués et priorisés par le Ministère à partir de critères discriminatoires (annexe 1).",
         "checked_at": "2026-11-25",
         "method": "page"
+      },
+      {
+        "source_url": "https://www.environnement.gouv.qc.ca/programmes/prcmhh/cadre-normatif-prcmhh.pdf",
+        "quote": "Approbation ministérielle : le ministre de l’Environnement, de la Lutte contre les changements climatiques, de la Faune et des Parcs rend une décision quant aux projets retenus et aux montants accordés.",
+        "checked_at": "2026-11-26",
+        "method": "page"
       }
     ],
     "eligibility": [
       {
-        "source_url": "https://www.environnement.gouv.qc.ca/programmes/prcmhh/index.htm",
-        "quote": "Permettre de maintenir les superficies ou les fonctions des milieux humides et hydriques ou permettre de faire des gains en ces matières.",
-        "checked_at": "2026-11-25",
+        "source_url": "https://www.environnement.gouv.qc.ca/programmes/prcmhh/cadre-normatif-prcmhh.pdf",
+        "quote": "Permettre de maintenir les superficies ou les fonctions des MHH de la zone de gestion intégrée de l’eau (ZGIE) ou permettre de faire des gains en ces matières.",
+        "checked_at": "2026-11-26",
         "method": "page"
       },
       {
         "source_url": "https://www.environnement.gouv.qc.ca/programmes/prcmhh/index.htm",
-        "quote": "un chargé de projet principal désigné possédant un minimum de cinq ans d'expérience dans la gestion d'équipes multidisciplinaires",
-        "checked_at": "2026-11-25",
-        "method": "page"
-      },
-      {
-        "source_url": "https://www.environnement.gouv.qc.ca/programmes/prcmhh/index.htm",
-        "quote": "un professionnel désigné possédant un minimum de trois ans d'expérience dans la restauration écologique de milieux humides et hydriques.",
-        "checked_at": "2026-11-25",
+        "quote": "un chargé de projet principal désigné possédant un minimum de cinq ans d’expérience dans la gestion d’équipes multidisciplinaires; un professionnel désigné possédant un minimum de trois ans d’expérience dans la restauration écologique de milieux humides et hydriques.",
+        "checked_at": "2026-11-26",
         "method": "page"
       },
       {
@@ -180,14 +188,26 @@
       },
       {
         "source_url": "https://www.environnement.gouv.qc.ca/programmes/prcmhh/cadre-normatif-prcmhh.pdf",
-        "quote": "Est en situation de faillite, de liquidation ou de dissolution;",
-        "checked_at": "2026-11-25",
+        "quote": "tout requérant, partenaire, contractant ou sous-traitant, dans le cadre du projet soumis, qui se trouve dans l'un des cas suivants : • • • • Est en situation de faillite, de liquidation ou de dissolution; Est inscrit au Registre des entreprises non admissibles aux contrats publics (RENA);",
+        "checked_at": "2026-11-26",
         "method": "page"
       },
       {
         "source_url": "https://www.environnement.gouv.qc.ca/programmes/prcmhh/cadre-normatif-prcmhh.pdf",
         "quote": "Il est de nature obligatoire par une loi, un règlement ou un décret; Il vise principalement l’aménagement d’un habitat faunique; Il s’agit d’un projet de mise en valeur ou de réhabilitation du milieu; Il a comme objet principal l’acquisition de connaissances ou la recherche;",
         "checked_at": "2026-11-25",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.environnement.gouv.qc.ca/programmes/prcmhh/index.htm",
+        "quote": "soit en favorisant le rétablissement de la dynamique écologique typique des milieux humides et hydriques, dans des milieux humides et hydriques dégradés ou qui ont déjà existé; soit en créant des milieux dont la dynamique écologique sera typique des milieux humides et hydriques;",
+        "checked_at": "2026-11-26",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.environnement.gouv.qc.ca/programmes/prcmhh/cadre-normatif-prcmhh.pdf",
+        "quote": "Toutefois, le ministre doit approuver le rapport final des activités et le bilan financier qui lui seront transmis pour un projet sélectionné au volet 1 avant que le demandeur puisse présenter sa demande au volet 2 pour réaliser le projet en question.",
+        "checked_at": "2026-11-26",
         "method": "page"
       }
     ],
@@ -250,20 +270,26 @@
       },
       {
         "source_url": "https://www.environnement.gouv.qc.ca/programmes/prcmhh/formulaire-depot-demande-volet-1-prcmhh.docx",
-        "quote": "Carte du site à l’échelle régionale et carte du site et des milieux humides et hydriques à l’échelle locale",
-        "checked_at": "2026-11-25",
+        "quote": "Carte du site à l’échelle régionale et carte du site et des milieux humides et hydriques à l’échelle locale ☐ Photos du site ☐ Cartographie ou schéma illustrant les enjeux sur le site du projet",
+        "checked_at": "2026-11-26",
         "method": "page"
       },
       {
         "source_url": "https://www.environnement.gouv.qc.ca/programmes/prcmhh/formulaire-depot-demande-volet-1-prcmhh.docx",
-        "quote": "Photos du site",
-        "checked_at": "2026-11-25",
+        "quote": "Preuve de propriété indiquant le nom de la personne morale ou physique qui est propriétaire du terrain ☐ Document officiel démontrant que le terrain est disponible pour le projet si le demandeur n’est pas le propriétaire du terrain (lettre d’entente avec le propriétaire, engagement à acheter le terrain, etc.)",
+        "checked_at": "2026-11-26",
         "method": "page"
       },
       {
-        "source_url": "https://www.environnement.gouv.qc.ca/programmes/prcmhh/formulaire-depot-demande-volet-1-prcmhh.docx",
-        "quote": "Preuve de propriété indiquant le nom de la personne morale ou physique qui est propriétaire du terrain",
-        "checked_at": "2026-11-25",
+        "source_url": "https://www.environnement.gouv.qc.ca/programmes/prcmhh/formulaire-depot-demande-volet-2-prcmhh.docx",
+        "quote": "Document numérique de localisation du projet au format ArcMap, Shapefile ou Geodatabase ☐ Esquisse représentant le site, à l’échelle, pour illustrer les interventions envisagées",
+        "checked_at": "2026-11-26",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.environnement.gouv.qc.ca/programmes/prcmhh/formulaire-depot-demande-volet-2-prcmhh.docx",
+        "quote": "Lettre d’entente entre MRC pour l’utilisation conjointe de sommes disponibles au sein d’un même bassin versant, s’il y a lieu",
+        "checked_at": "2026-11-26",
         "method": "page"
       }
     ]

@@ -18,12 +18,40 @@
   "amount": { "currency": "USD", "max": 5000 },
   "co_finance_required": false,
   "reporting": null,
-  "effort": { "steps": ["Online application"] },
+  "effort": {
+    "steps": ["Online application, at least eight weeks before project start", "Technical review"]
+  },
   "eligibility": [
     {
-      "rule": "Has received three or fewer Trust awards, or is reapplying for the first time in eight or more years",
+      "rule": "At most 3 Trust awards excluding sponsorships and Corps awards, or first Trust reapplication in at least 8 years",
       "kind": "track_record"
+    },
+    { "rule": "Project is still to be completed", "kind": "project" },
+    {
+      "rule": "Work is voluntary, or goes beyond permit, decree, mitigation or enforcement requirements",
+      "kind": "project"
+    },
+    { "rule": "Has separate people for Executive Officer and Project Leader", "kind": "capacity" },
+    {
+      "rule": "Has an EIN and, for a West Virginia project, a SAM Unique Entity ID",
+      "kind": "legal"
+    },
+    {
+      "rule": "Neither the Executive Officer nor the Project Leader is associated with a for-profit entity",
+      "kind": "capacity"
     }
+  ],
+  "documents": [
+    "Site plan and project design for planting projects",
+    "Site photos for planting projects",
+    "Detailed maintenance plan for planting projects",
+    "Native plant list for planting or restoration",
+    "Landowner permission letter for planting on property the applicant does not own or on private property",
+    "Commitment letters from collaborators who have committed to the project",
+    "Distribution plan for publication projects",
+    "Knowledge objectives for projects with outreach components",
+    "Evaluation plan for projects with outreach components",
+    "Negotiated Indirect Cost Rate Agreement, if held, for West Virginia projects"
   ],
   "calls": [
     {
@@ -86,13 +114,55 @@
         "quote": "The Chesapeake Bay Trust's grant applications are all submitted through an online system, using the \"Start a New Application\" button below.",
         "checked_at": "2026-11-25",
         "method": "page"
+      },
+      {
+        "source_url": "https://cbtrust.org/wp-content/uploads/FY27-Mini-CER-RFP.pdf",
+        "quote": "please send your application to us at least eight weeks before your project starts.",
+        "checked_at": "2026-11-26",
+        "method": "page"
+      },
+      {
+        "source_url": "https://cbtrust.org/wp-content/uploads/FY27-Mini-CER-RFP.pdf",
+        "quote": "All projects are evaluated by technical experts.",
+        "checked_at": "2026-11-26",
+        "method": "page"
       }
     ],
     "eligibility": [
       {
         "source_url": "https://cbtrust.org/wp-content/uploads/FY27-Mini-CER-RFP.pdf",
-        "quote": "This program is open to applicants that have received less than four awards (i.e., received three or fewer awards) from the Trust. Applicants who have received four or more awards from the Trust but are re-applying to the Trust for the first time in eight or more years are eligible to apply.",
-        "checked_at": "2026-11-25",
+        "quote": "This program is open to applicants that have received less than four awards (i.e., received three or fewer awards) from the Trust. Applicants who have received four or more awards from the Trust but are re-applying to the Trust for the first time in eight or more years are eligible to apply. Sponsorships and Chesapeake Conservation Corps awards are not counted toward the eligibility cap.",
+        "checked_at": "2026-11-26",
+        "method": "page"
+      },
+      {
+        "source_url": "https://cbtrust.org/wp-content/uploads/FY27-Mini-CER-RFP.pdf",
+        "quote": "Are already completed. We cannot provide reimbursement funding;",
+        "checked_at": "2026-11-26",
+        "method": "page"
+      },
+      {
+        "source_url": "https://cbtrust.org/wp-content/uploads/FY27-Mini-CER-RFP.pdf",
+        "quote": "Are required by a Federal, state, or locally issued permit, decree, mitigation, or enforcement action. In some cases, the Trust may elect to fund optional portions of required projects that go “above and beyond” the regulatory requirements.",
+        "checked_at": "2026-11-26",
+        "method": "page"
+      },
+      {
+        "source_url": "https://cbtrust.org/wp-content/uploads/FY27-Mini-CER-RFP.pdf",
+        "quote": "Both an Executive Officer and a Project Leader, two separate individuals, must be identified for all applications.",
+        "checked_at": "2026-11-26",
+        "method": "page"
+      },
+      {
+        "source_url": "https://cbtrust.org/wp-content/uploads/FY27-Mini-CER-RFP.pdf",
+        "quote": "type, mission, EIN number, and SAM UEI number (if applying for a project in West Virginia).",
+        "checked_at": "2026-11-26",
+        "method": "page"
+      },
+      {
+        "source_url": "https://cbtrust.org/wp-content/uploads/FY27-Mini-CER-RFP.pdf",
+        "quote": "individuals associated with for-profit entities cannot serve in either role, but can be engaged in the project as contractors or partners.",
+        "checked_at": "2026-11-26",
         "method": "page"
       }
     ],
@@ -100,11 +170,61 @@
       {
         "source_url": "https://cbtrust.org/wp-content/uploads/FY27-Mini-CER-RFP.pdf",
         "quote": "If approved, the Trust will send an award agreement with award conditions and due dates of status, progress, and final reports.",
-        "checked_at": "2026-11-25",
+        "checked_at": "2026-11-26",
+        "method": "page"
+      }
+    ],
+    "documents": [
+      {
+        "source_url": "https://cbtrust.org/wp-content/uploads/AppendixAandB.pdf",
+        "quote": "All planting projects must include a plant list, site plan, project design, photos of the site where planting/restoration is proposed, and a detailed maintenance plan.",
+        "checked_at": "2026-11-26",
+        "method": "page"
+      },
+      {
+        "source_url": "https://cbtrust.org/wp-content/uploads/AppendixAandB.pdf",
+        "quote": "List of native plants that will be used in the planting/restoration project in the application.",
+        "checked_at": "2026-11-26",
+        "method": "page"
+      },
+      {
+        "source_url": "https://cbtrust.org/wp-content/uploads/AppendixAandB.pdf",
+        "quote": "For projects planned on properties other than that of the applicant and/or private property, attach a letter of commitment stating that permission has been granted by the entity owning the land on which the project will be completed.",
+        "checked_at": "2026-11-26",
+        "method": "page"
+      },
+      {
+        "source_url": "https://cbtrust.org/wp-content/uploads/MiniCERSupportingDocumentsChecklist.pdf",
+        "quote": "Letters of Commitment: Document support for",
+        "checked_at": "2026-11-26",
+        "method": "page"
+      },
+      {
+        "source_url": "https://cbtrust.org/wp-content/uploads/AppendixAandB.pdf",
+        "quote": "The publication’s distribution plan must be completed before the application is submitted and included with the application.",
+        "checked_at": "2026-11-26",
+        "method": "page"
+      },
+      {
+        "source_url": "https://cbtrust.org/wp-content/uploads/MiniCERSupportingDocumentsChecklist.pdf",
+        "quote": "List of knowledge objectives: Tell us what",
+        "checked_at": "2026-11-26",
+        "method": "page"
+      },
+      {
+        "source_url": "https://cbtrust.org/wp-content/uploads/MiniCERSupportingDocumentsChecklist.pdf",
+        "quote": "Evaluation plan: Pre- and post-surveys can be",
+        "checked_at": "2026-11-26",
+        "method": "page"
+      },
+      {
+        "source_url": "https://cbtrust.org/wp-content/uploads/FY27-Mini-CER-RFP.pdf",
+        "quote": "(NICRA), it must be uploaded with the application, and be utilized if funded using Federal funding.",
+        "checked_at": "2026-11-26",
         "method": "page"
       }
     ]
   },
   "checked_at": "2026-11-25",
-  "after_award": { "reports": "unspecified" }
+  "after_award": { "reports": "interim_and_final" }
 }

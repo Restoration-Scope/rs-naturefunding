@@ -25,6 +25,33 @@
   },
   "co_finance_required": true,
   "reporting": null,
+  "effort": {
+    "steps": [
+      "Submit an online application on the campaign platform",
+      "OFB eligibility screening",
+      "Territorial review and OFB validation"
+    ]
+  },
+  "eligibility": [
+    {
+      "rule": "Applicant is based overseas and has an active bank account in its own name",
+      "kind": "legal"
+    },
+    {
+      "rule": "Applicant is not a school, for-profit entity, research body or entity with OFB as a statutory member",
+      "kind": "legal"
+    },
+    { "rule": "The project lasts no more than 12 months", "kind": "project" },
+    {
+      "rule": "Project has not started, has received no previous grant and duplicates no past or current project",
+      "kind": "project"
+    },
+    {
+      "rule": "Project excludes basic research, drinking water, sanitation, hunting, waste, energy and youth nature trips",
+      "kind": "project"
+    }
+  ],
+  "co_finance": { "min_share": 20 },
   "calls": [
     {
       "id": "campaign-2026",
@@ -95,6 +122,64 @@
       "source_url": "https://temeum.ofb.fr/financer-des-projets/les-campagnes-de-financement-temeum",
       "quote": "Le taux de subvention est de maximum 80%",
       "checked_at": "2026-11-25",
+      "method": "page"
+    },
+    "effort": [
+      {
+        "source_url": "https://temeum.ofb.fr/financer-des-projets/les-campagnes-de-financement-temeum",
+        "quote": "Un dossier de candidature est à compléter sur la plateforme demarches-simplifiees.fr.",
+        "checked_at": "2026-11-26",
+        "method": "page"
+      },
+      {
+        "source_url": "https://temeum.ofb.fr/financer-des-projets/les-campagnes-de-financement-temeum",
+        "quote": "Après vérification de l’éligibilité des dossiers par l’OFB",
+        "checked_at": "2026-11-26",
+        "method": "page"
+      },
+      {
+        "source_url": "https://temeum.ofb.fr/financer-des-projets/les-campagnes-de-financement-temeum",
+        "quote": "les candidatures sont évaluées dans chaque territoire par des groupes locaux d'instructeurs afin de sélectionner les projets qui répondent le mieux aux enjeux locaux, puis la liste des projets sélectionnés est finalisée et validée par l’OFB.",
+        "checked_at": "2026-11-26",
+        "method": "page"
+      }
+    ],
+    "eligibility": [
+      {
+        "source_url": "https://temeum.ofb.fr/les-appels-a-micro-projets",
+        "quote": "L’organisation qui candidate est localisée en outre-mer et possède un compte-bancaire actif avec un RIB au nom de l’organisation.",
+        "checked_at": "2026-11-26",
+        "method": "page"
+      },
+      {
+        "source_url": "https://temeum.ofb.fr/les-appels-a-micro-projets",
+        "quote": "Les établissements scolaires, les structures privées à but lucratif, les organismes de recherche, les établissements dont l’OFB est membre statutaire ne sont pas éligibles.",
+        "checked_at": "2026-11-26",
+        "method": "page"
+      },
+      {
+        "source_url": "https://temeum.ofb.fr/les-appels-a-micro-projets",
+        "quote": "Le micro-projet se déroule en majeure partie en Outre-mer et sa durée est de 12 mois maximum.",
+        "checked_at": "2026-11-26",
+        "method": "page"
+      },
+      {
+        "source_url": "https://temeum.ofb.fr/les-appels-a-micro-projets",
+        "quote": "il ne doit pas avoir déjà commencé ni faire l’objet d’un financement précédent (via une subvention), et ne fait pas doublon avec un projet passé ou en cours",
+        "checked_at": "2026-11-26",
+        "method": "page"
+      },
+      {
+        "source_url": "https://temeum.ofb.fr/les-appels-a-micro-projets",
+        "quote": "Ne sont pas éligibles les projets portant sur les sujets suivants : la recherche fondamentale, l’eau potable et l’assainissement , la gestion cynégétique, la gestion et le traitement des déchets, le secteur de l’énergie, les sorties et séjours nature jeunesse.",
+        "checked_at": "2026-11-26",
+        "method": "page"
+      }
+    ],
+    "co_finance": {
+      "source_url": "https://temeum.ofb.fr/les-appels-a-projets-partenaires",
+      "quote": "La subvention couvre jusqu'à 80% du budget. Les 20% restant doivent être couverts par du co-financement ou de l’autofinancement.",
+      "checked_at": "2026-11-26",
       "method": "page"
     }
   },

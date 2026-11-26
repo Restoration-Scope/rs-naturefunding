@@ -41,9 +41,40 @@
   "effort": {
     "steps": [
       "Short expression of interest",
-      "Second-stage application"
+      "Full application, if selected",
+      "Steering Group review"
     ]
   },
+  "eligibility": [
+    {
+      "rule": "Income below £200,000 in the last year",
+      "kind": "finances"
+    },
+    {
+      "rule": "Has a bank account in the organisation’s name with two signatories required for withdrawals",
+      "kind": "finances"
+    },
+    {
+      "rule": "Is a place-based, community-led not-for-profit",
+      "kind": "legal"
+    },
+    {
+      "rule": "Project focuses on planning and development without physical delivery",
+      "kind": "project"
+    },
+    {
+      "rule": "Project finishes within 18 months of receiving funding",
+      "kind": "project"
+    },
+    {
+      "rule": "Has or will obtain any land permissions needed for the project",
+      "kind": "project"
+    },
+    {
+      "rule": "Local people are involved in planning the project",
+      "kind": "project"
+    }
+  ],
   "calls": [
     {
       "id": "rolling",
@@ -108,8 +139,58 @@
       },
       {
         "source_url": "https://inspiringscotland.org.uk/fund/neighbourhood-ecosystem-funds-rolling-programme/",
-        "quote": "You can apply to the Neighbourhood Ecosystem Fund at any time through our simple two-stage application process.",
-        "checked_at": "2026-11-02",
+        "quote": "If selected, you will be asked to complete a full application form.",
+        "checked_at": "2026-11-26",
+        "method": "page"
+      },
+      {
+        "source_url": "https://inspiringscotland.org.uk/wp-content/uploads/2026/07/NEF-Easy-Read.pdf.pdf",
+        "quote": "Applications will be looked over by a Steering Group.",
+        "checked_at": "2026-11-26",
+        "method": "page"
+      }
+    ],
+    "eligibility": [
+      {
+        "source_url": "https://inspiringscotland.org.uk/fund/neighbourhood-ecosystem-funds-rolling-programme/",
+        "quote": "Your organisation must have an income of less than £200,000 in the last year and its own bank account.",
+        "checked_at": "2026-11-26",
+        "method": "page"
+      },
+      {
+        "source_url": "https://inspiringscotland.tfaforms.net/5106172",
+        "quote": "This bank account must be in the name of your group/organisation. Yes No 20. Please confirm you require two signatories to make withdrawals from your bank account. The bank account must require two signatories for withdrawals.",
+        "checked_at": "2026-11-26",
+        "method": "page"
+      },
+      {
+        "source_url": "https://inspiringscotland.org.uk/fund/neighbourhood-ecosystem-funds-rolling-programme/",
+        "quote": "To apply for this funding, you must be a not-for-profit community-led organisation based in a specific place in Scotland.",
+        "checked_at": "2026-11-26",
+        "method": "page"
+      },
+      {
+        "source_url": "https://inspiringscotland.org.uk/wp-content/uploads/2026/07/NEF-Easy-Read.pdf.pdf",
+        "quote": "Projects must focus on planning, not physical work.",
+        "checked_at": "2026-11-26",
+        "method": "page"
+      },
+      {
+        "source_url": "https://inspiringscotland.org.uk/wp-content/uploads/2026/07/NEF-Easy-Read.pdf.pdf",
+        "quote": "Your project must finish within 18 months of getting the money.",
+        "checked_at": "2026-11-26",
+        "method": "page"
+      },
+      {
+        "source_url": "https://inspiringscotland.org.uk/wp-content/uploads/2026/07/NEF-Easy-Read.pdf.pdf",
+        "quote": "You must have permissions to use the land for your project.",
+        "checked_at": "2026-11-26",
+        "method": "page"
+      },
+      {
+        "source_url": "https://inspiringscotland.org.uk/wp-content/uploads/2026/07/NEF-Easy-Read.pdf.pdf",
+        "quote": "Local people must be involved in the planning of your project.",
+        "checked_at": "2026-11-26",
         "method": "page"
       }
     ]

@@ -26,10 +26,20 @@
   "window": "rolling",
   "amount": null,
   "co_finance_required": null,
+  "effort": {
+    "steps": [
+      "Submit the application by email or post",
+      "Present the request in person at a scheduled Commission meeting"
+    ]
+  },
   "eligibility": [
     {
       "rule": "A non-profit with 501(c)(3) status or a purpose consistent with it",
       "kind": "legal"
+    },
+    {
+      "rule": "The project qualifies under Section 13103 of the California Fish and Wildlife Code.",
+      "kind": "project"
     }
   ],
   "calls": [
@@ -75,11 +85,31 @@
       "checked_at": "2026-11-17",
       "method": "page"
     },
+    "effort": [
+      {
+        "source_url": "https://fishandwildlife.lacounty.gov/grant",
+        "quote": "Completed applications must be submitted via e-mail to Fish&Game@bos.lacounty.gov or to the following address:",
+        "checked_at": "2026-11-26",
+        "method": "page"
+      },
+      {
+        "source_url": "https://fishandwildlife.lacounty.gov/grant",
+        "quote": "All applicants must attend and present their grant requests in-person at a scheduled Commission meeting, to have their grant request considered.",
+        "checked_at": "2026-11-26",
+        "method": "page"
+      }
+    ],
     "eligibility": [
       {
         "source_url": "https://fishandwildlife.lacounty.gov/grant",
         "quote": "Non-profit organizations with an IRS 501 (c) (3) tax-exempt status or a purpose consistent with the definition of 501 (c) (3) status are eligible to apply.",
         "checked_at": "2026-11-17",
+        "method": "page"
+      },
+      {
+        "source_url": "https://fishandwildlife.lacounty.gov/grant",
+        "quote": "Project/Program Must Clearly Qualify For Funding Under Section 13103 of the California Fish and Wildlife Code",
+        "checked_at": "2026-11-26",
         "method": "page"
       }
     ]

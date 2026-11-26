@@ -18,7 +18,7 @@
   "amount": { "currency": "USD", "max": 20000 },
   "co_finance_required": null,
   "reporting": null,
-  "effort": { "steps": ["Online application"] },
+  "effort": { "steps": ["Online application", "Monthly rolling review"] },
   "eligibility": [
     {
       "rule": "Project supports sustainable fishing and/or marine protected areas",
@@ -33,6 +33,12 @@
     {
       "rule": "Maintaining affiliation with an academic institution or NGO throughout the grant project",
       "kind": "legal"
+    },
+    { "rule": "Apply through an organisation with public charity status.", "kind": "legal" },
+    { "rule": "The project is not a thesis project.", "kind": "project" },
+    {
+      "rule": "The project has not previously been approved for ROC funding.",
+      "kind": "track_record"
     }
   ],
   "documents": [
@@ -95,6 +101,12 @@
         "quote": "Submit an application through our website by clicking the \"Apply Now\" button at the bottom of this page.",
         "checked_at": "2026-11-25",
         "method": "page"
+      },
+      {
+        "source_url": "https://www.waittfoundation.org/roc-grants",
+        "quote": "Proposals are reviewed monthly on a rolling basis, although some applications may take additional time to evaluate.",
+        "checked_at": "2026-11-26",
+        "method": "page"
       }
     ],
     "eligibility": [
@@ -126,6 +138,24 @@
         "source_url": "https://www.waittfoundation.org/roc-grants",
         "quote": "Applicant must maintain affiliation with an academic institution or NGO for the duration of the grant project.",
         "checked_at": "2026-11-25",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.waittfoundation.org/roc-grants-faq",
+        "quote": "The ROC Grants program only provides grants to applicants that have a public charity status.",
+        "checked_at": "2026-11-26",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.waittfoundation.org/roc-grants-faq",
+        "quote": "No. We do not provide grants in support of thesis projects.",
+        "checked_at": "2026-11-26",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.waittfoundation.org/roc-grants-faq",
+        "quote": "No. We do not provide funding in support of previously approved grants and cannot provide continuous funding for any projects.",
+        "checked_at": "2026-11-26",
         "method": "page"
       }
     ],

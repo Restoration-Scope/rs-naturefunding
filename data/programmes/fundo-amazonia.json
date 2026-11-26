@@ -19,7 +19,12 @@
   "co_finance_required": true,
   "reporting": null,
   "effort": {
-    "steps": ["Portal registration and proposal submission", "BNDES project evaluation"],
+    "steps": [
+      "Portal registration and proposal submission",
+      "BNDES project evaluation",
+      "International projects: ministry review and Brazilian partner endorsement",
+      "Legal Amazon public applicants: present to PPCDAm Executive Subcommittee"
+    ],
     "more_after": true
   },
   "eligibility": [
@@ -27,28 +32,37 @@
       "rule": "A Legal Amazon project demonstrates coherence and alignment with PPCDAm",
       "kind": "project"
     },
-    { "rule": "The project demonstrates clear coherence with ENREDD+", "kind": "project" },
+    { "rule": "Brazilian project aligns with the national REDD+ strategy", "kind": "project" },
     {
-      "rule": "The project complies with the stated REDD+ safeguards and resolution",
+      "rule": "Brazilian project meets REDD+ safeguards and the applicable CONAREDD+ resolution",
       "kind": "project"
     },
     {
-      "rule": "A project with economic purposes demonstrates public or collective benefits for the stated groups",
+      "rule": "Legal Amazon economic projects give public or collective benefits to Indigenous/traditional groups, settlers or farmers",
       "kind": "project"
     },
     {
-      "rule": "The project identifies involved communities and proves their prior consent when applicable",
+      "rule": "Names involved Indigenous or traditional communities and proves prior consent from them or their representatives",
       "kind": "project"
     },
     {
-      "rule": "No Projeto Estruturante contract signed in the last 12 months (non-government applicants)",
+      "rule": "Non-public applicants for a Brazilian structural project wait 12 months after their last structural project contract",
       "kind": "other"
+    },
+    {
+      "rule": "International projects are led by the host government or, with its consent, a multilateral or Brazilian federal agency",
+      "kind": "legal"
+    },
+    {
+      "rule": "International projects explain cooperation with a Brazilian government body and how it is governed",
+      "kind": "project"
     }
   ],
   "co_finance": {
     "min_share": 10,
-    "applies_to": "CAR projects in qualifying states outside the Legal Amazon"
+    "applies_to": "CAR outside Legal Amazon: 10% if >40% combined biomes, otherwise 20%"
   },
+  "documents": ["Fundo Amazônia budget spreadsheet"],
   "calls": [
     {
       "id": "continuous-demand",
@@ -104,6 +118,18 @@
         "quote": "Ao ser protocolado no BNDES, o projeto passa por diversas fases de avaliação, com o envolvimento de diferentes equipes e decisões tomadas de forma colegiada, conforme fluxo abaixo:",
         "checked_at": "2026-11-25",
         "method": "page"
+      },
+      {
+        "source_url": "https://www.fundoamazonia.gov.br/pt/.galleries/documentos/diretrizes_criterios/2025_05_16_Diretrizes_Fora_Amazonia_Legal-Atual.pdf",
+        "quote": "Previamente à apresentação ao BNDES, os projetos de cooperação internacional deverão ser avaliados pelo Ministério das Relações Exteriores (MRE) sobre a prioridade e pertinência do apoio, consultado o Ministério de Meio Ambiente e Mudança do Clima. Ainda previamente à apresentação, os projetos precisam ter aval da entidade brasileira que integra a cooperação.",
+        "checked_at": "2026-11-26",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.fundoamazonia.gov.br/pt/.galleries/documentos/diretrizes_criterios/2024_06_11_Diretrizes_Amazonia_Legal-Atual.pdf",
+        "quote": "A administração pública direta e indireta deverá apresentar as principais diretrizes e ações previstas em seus projetos para a Subcomissão Executiva do PPCDAm antes de serem enviados ao BNDES",
+        "checked_at": "2026-11-26",
+        "method": "page"
       }
     ],
     "eligibility": [
@@ -142,14 +168,34 @@
         "quote": "Um proponente de projeto que não seja da administração pública direta ou indireta, que já tenha um contrato assinado com Fundo Amazônia para apoio a projeto na modalidade de Projeto Estruturante (2.1), só poderá protocolar novo projeto nesta mesma modalidade após um intervalo mínimo de 12 (doze) meses contados da data da contratação do projeto anterior.",
         "checked_at": "2026-11-25",
         "method": "page"
+      },
+      {
+        "source_url": "https://www.fundoamazonia.gov.br/pt/.galleries/documentos/diretrizes_criterios/2025_05_16_Diretrizes_Fora_Amazonia_Legal-Atual.pdf",
+        "quote": "Projeto deve ser apresentado pelo governo central do país beneficiário, por instituições multilaterais, ou ainda, por entidades da administração pública federal brasileira, devendo contar com a anuência formal, nos dois últimos casos, do governo central do país que se beneficiará com as ações a serem desenvolvidas pelo projeto.",
+        "checked_at": "2026-11-26",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.fundoamazonia.gov.br/pt/.galleries/documentos/diretrizes_criterios/2025_05_16_Diretrizes_Fora_Amazonia_Legal-Atual.pdf",
+        "quote": "B.4.2 COOPERAÇÃO SUL-SUL Projeto deve explicitar a cooperação com entidade governamental brasileira e sua estrutura de governança.",
+        "checked_at": "2026-11-26",
+        "method": "page"
       }
     ],
     "co_finance": {
       "source_url": "https://www.fundoamazonia.gov.br/pt/.galleries/documentos/diretrizes_criterios/2025_05_16_Diretrizes_Fora_Amazonia_Legal-Atual.pdf",
-      "quote": "Nos projetos que contemplem estados em que os biomas cerrado, caatinga e pantanal representam, cumulativamente, mais de 40% do seu território, deverão ser aportadas contrapartidas financeiras de, no mínimo, 10% do valor total do projeto.",
-      "checked_at": "2026-11-25",
+      "quote": "Nos projetos que contemplem estados em que os biomas cerrado, caatinga e pantanal representam, cumulativamente, mais de 40% do seu território, deverão ser aportadas contrapartidas financeiras de, no mínimo, 10% do valor total do projeto. Nos demais casos fora da Amazônia Legal, deverão ser aportadas contrapartidas financeiras de, no mínimo, 20% do valor total do projeto.",
+      "checked_at": "2026-11-26",
       "method": "page"
-    }
+    },
+    "documents": [
+      {
+        "source_url": "https://www.fundoamazonia.gov.br/pt/como-apresentar-projetos/documentos-de-suporte/",
+        "quote": "Para a apresentação de projeto ao Fundo Amazônia é necessário o preenchimento do roteiro (de acordo com a natureza da postulante) e planilha orçamentária disponíveis nos links a seguir:",
+        "checked_at": "2026-11-26",
+        "method": "page"
+      }
+    ]
   },
   "checked_at": "2026-11-25"
 }

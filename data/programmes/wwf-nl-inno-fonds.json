@@ -14,7 +14,10 @@
   "amount": { "currency": "EUR", "max": 10000 },
   "co_finance_required": null,
   "reporting": null,
-  "effort": { "steps": ["Application for the 1 January or 1 July round", "WWF-NL expert review"] },
+  "effort": {
+    "steps": ["Submit the INNO-Fonds application", "WWF-NL expert review"],
+    "due": ["2027-01-01", null]
+  },
   "eligibility": [
     {
       "rule": "Is a non-profit organisation or initiative with KVK registration in the Netherlands or Dutch Caribbean",
@@ -31,9 +34,17 @@
     { "rule": "Has a total project budget below €100,000", "kind": "project" },
     { "rule": "Is a clearly innovative project", "kind": "project" },
     {
-      "rule": "Has no structural, fundraising, core-task or western-salary costs",
+      "rule": "The grant excludes structural costs, fundraising, professional organisations’ core tasks and Western salaries.",
+      "kind": "project"
+    },
+    { "rule": "The organisation submits only one proposal per round.", "kind": "project" },
+    {
+      "rule": "Repeat applications are for distinctly different projects, with no multi-year funding.",
       "kind": "project"
     }
+  ],
+  "documents": [
+    "Budget attachment covering total project costs and the specific WWF INNO-Fonds contribution"
   ],
   "calls": [
     {
@@ -103,6 +114,12 @@
         "quote": "De subsidie -aanvragen worden beoordeeld door deskundigen van WWF-NL.",
         "checked_at": "2026-11-25",
         "method": "page"
+      },
+      {
+        "source_url": "https://www.wwf.nl/kom-in-actie/met-tijd/inno-fonds/aanvraag",
+        "quote": "De deadline voor de volgende INNO-ronde is 1 januari 2027.",
+        "checked_at": "2026-11-26",
+        "method": "page"
       }
     ],
     "eligibility": [
@@ -140,6 +157,26 @@
         "source_url": "https://a.storyblok.com/f/293891055351833/0d98cb1218/voorwaarden-inno-fonds-2025.pdf",
         "quote": "Aanvragen waarbij het gaat om structurele kosten, leden- en/of fondsenwervingsacties, kerntaken van professionele organisaties en de dekking voor westerse salarissen.",
         "checked_at": "2026-11-25",
+        "method": "page"
+      },
+      {
+        "source_url": "https://a.storyblok.com/f/293891055351833/0d98cb1218/voorwaarden-inno-fonds-2025.pdf",
+        "quote": "Per organisatie kan slechts één voorstel per ronde worden ingediend.",
+        "checked_at": "2026-11-26",
+        "method": "page"
+      },
+      {
+        "source_url": "https://a.storyblok.com/f/293891055351833/0d98cb1218/voorwaarden-inno-fonds-2025.pdf",
+        "quote": "Een organisatie kan over meerdere rondes een aanvraag doen, maar alleen wanneer het duidelijk verschillende projecten betreft (geen meerjarenfinanciering).",
+        "checked_at": "2026-11-26",
+        "method": "page"
+      }
+    ],
+    "documents": [
+      {
+        "source_url": "https://a.storyblok.com/f/293891055351833/39ead33db0/aanvraagformulier-inno-fonds-2025.docx",
+        "quote": "Tevens dien je een begroting toe te voegen, zowel van het totale budget als van de specifieke bijdrage van het INNO-Fonds.",
+        "checked_at": "2026-11-26",
         "method": "page"
       }
     ]

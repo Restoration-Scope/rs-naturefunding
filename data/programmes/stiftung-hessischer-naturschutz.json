@@ -17,14 +17,19 @@
   "amount": null,
   "co_finance_required": null,
   "reporting": null,
-  "effort": { "steps": ["Written application in one copy"] },
+  "effort": {
+    "steps": [
+      "Written application in one copy",
+      "Executive board review. Foundation council decides requests over €15,000"
+    ]
+  },
   "eligibility": [
     {
       "rule": "Is a private or public legal person outside the state administration",
       "kind": "legal"
     },
     {
-      "rule": "Project is in Hesse, or cross-border with Hessian participation",
+      "rule": "Project is in Hesse. Cross-border projects with Hessian participation may be considered",
       "kind": "project"
     },
     { "rule": "Has secured total project financing", "kind": "finances" },
@@ -34,9 +39,10 @@
       "kind": "project"
     },
     {
-      "rule": "No mandatory or compliance costs, compensation measures, permanent staff or operating costs, or repeat funding",
+      "rule": "No mandatory spending, mitigation or compensation measures, compliance work, or permanent staff or operating costs",
       "kind": "project"
-    }
+    },
+    { "rule": "Project has not already received funding from this foundation", "kind": "project" }
   ],
   "after_award": { "reports": "final" },
   "calls": [
@@ -82,6 +88,12 @@
         "quote": "Förderanträge sowie Anträge zur landesweiten Auszeichnung der Kinder- und Jugendarbeit im Naturschutzbereich sind schriftlich in einfacher Ausfertigung zu stellen",
         "checked_at": "2026-11-25",
         "method": "page"
+      },
+      {
+        "source_url": "https://landwirtschaft.hessen.de/sites/landwirtschaft.hessen.de/files/2021-06/foerderrichtlinie_der_stiftung_hessischer_naturschutz_stand_062020.pdf",
+        "quote": "Über die Förderung entscheidet der Stiftungsvorstand. Bei Förderanträgen mit einem Antragsvolumen von mehr als 15.000 Euro entscheidet der Stiftungsrat über das Vorhaben nach Empfehlung des Vorstandes.",
+        "checked_at": "2026-11-26",
+        "method": "page"
       }
     ],
     "eligibility": [
@@ -119,6 +131,12 @@
         "source_url": "https://landwirtschaft.hessen.de/sites/landwirtschaft.hessen.de/files/2021-06/foerderrichtlinie_der_stiftung_hessischer_naturschutz_stand_062020.pdf",
         "quote": " Pflichtausgaben, Ausgleichs- und Ersatzmaßnahmen, Erfüllung von Auflagen aus gesetzlichen oder anderweitigen Verpflichtungen;  Personal- und Betriebsausgaben des Antragstellers (Dauerbeschäftigte),  die wiederholte Förderung eines Projektes.",
         "checked_at": "2026-11-25",
+        "method": "page"
+      },
+      {
+        "source_url": "https://landwirtschaft.hessen.de/sites/landwirtschaft.hessen.de/files/2021-06/foerderrichtlinie_der_stiftung_hessischer_naturschutz_stand_062020.pdf",
+        "quote": "die wiederholte Förderung eines Projektes.",
+        "checked_at": "2026-11-26",
         "method": "page"
       }
     ],

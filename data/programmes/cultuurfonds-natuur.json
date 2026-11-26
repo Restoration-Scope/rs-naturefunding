@@ -22,7 +22,8 @@
     "steps": [
       "Pre-application",
       "Pre-application review",
-      "Full application with documents, if invited"
+      "Full application with documents, if invited",
+      "Full application review and decision"
     ]
   },
   "eligibility": [
@@ -31,10 +32,32 @@
       "kind": "project"
     },
     {
-      "rule": "Receive at most one award per year, unless lead applicant for multiple organisations",
+      "rule": "No award counted against this year’s limit, unless applying as lead for a group or granted a scope exception",
       "kind": "other"
+    },
+    {
+      "rule": "The organisation is registered with the Dutch Chamber of Commerce",
+      "kind": "legal"
+    },
+    { "rule": "The organisation’s statutory objects include culture or nature", "kind": "legal" },
+    {
+      "rule": "The organisation has an independent, broadly representative board or supervisory board",
+      "kind": "legal"
+    },
+    { "rule": "The project has not already been submitted to the Cultuurfonds", "kind": "project" },
+    {
+      "rule": "For national habitat creation, the work takes place on the applicant’s land",
+      "kind": "project"
+    },
+    {
+      "rule": "For national habitat creation, the site is within or adjoining the Netherlands Nature Network",
+      "kind": "project"
     }
   ],
+  "co_finance": {
+    "min_share": 50,
+    "applies_to": "National projects (provincial projects require at least 75%)"
+  },
   "calls": [
     {
       "id": "standing",
@@ -108,6 +131,12 @@
         "quote": "Je voegt documenten toe",
         "checked_at": "2026-11-25",
         "method": "page"
+      },
+      {
+        "source_url": "https://www.cultuurfonds.nl/aanvragen/projectaanvraag-stichtingen-en-verenigingen",
+        "quote": "Het Cultuurfonds neemt een beslissing Wij beoordelen je aanvraag.",
+        "checked_at": "2026-11-26",
+        "method": "page"
       }
     ],
     "eligibility": [
@@ -118,12 +147,54 @@
         "method": "page"
       },
       {
-        "source_url": "https://www.cultuurfonds.nl/aanvragen/projectaanvraag-stichtingen-en-verenigingen",
-        "quote": "Via deze aanvraagroute kent het Cultuurfonds maximaal één keer per jaar een bijdrage toe. Als je als stichting of vereniging penvoerder bent voor een projectaanvraag namens meerdere organisaties, kan je wel meerdere toekenningen per jaar ontvangen.",
-        "checked_at": "2026-11-25",
+        "source_url": "https://www.cultuurfonds.nl/aanvragen/voorwaarden",
+        "quote": "Dan is een tweede bijdrage alleen mogelijk voor een project met voornamelijk regionaal bereik. Of andersom. Neem altijd eerst contact op om te vragen of we een uitzondering kunnen maken. Als je als stichting of vereniging penvoerder bent voor een projectaanvraag namens meerdere organisaties, kan je wel meerdere toekenningen per jaar ontvangen.",
+        "checked_at": "2026-11-26",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.cultuurfonds.nl/aanvragen/voorwaarden",
+        "quote": "Je organisatie staat ingeschreven bij de Kamer van Koophandel.",
+        "checked_at": "2026-11-26",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.cultuurfonds.nl/aanvragen/voorwaarden",
+        "quote": "Je organisatie heeft cultuur of natuur in de statutaire doelstelling.",
+        "checked_at": "2026-11-26",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.cultuurfonds.nl/aanvragen/voorwaarden",
+        "quote": "Je organisatie heeft een onafhankelijk en breed samengesteld bestuur of Raad van Toezicht",
+        "checked_at": "2026-11-26",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.cultuurfonds.nl/aanvragen/voorwaarden",
+        "quote": "Je hebt voor dit project nog niet eerder een aanvraag gedaan bij het Cultuurfonds.",
+        "checked_at": "2026-11-26",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.cultuurfonds.nl/aanvragen/voorwaarden",
+        "quote": "De aanleg vindt plaats op het terrein van de aanvragende partij.",
+        "checked_at": "2026-11-26",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.cultuurfonds.nl/aanvragen/voorwaarden",
+        "quote": "Het te ontwikkelen natuurgebied bevindt zich binnen of grenst aan het Natuurnetwerk Nederland.",
+        "checked_at": "2026-11-26",
         "method": "page"
       }
-    ]
+    ],
+    "co_finance": {
+      "source_url": "https://www.cultuurfonds.nl/aanvragen",
+      "quote": "Bij provinciale projecten draagt het fonds maximaal 25% bij aan de projectkosten, tot een maximaal bedrag van € 10.000. Bij landelijke projecten draagt het fonds maximaal 50% bij aan de projectkosten",
+      "checked_at": "2026-11-26",
+      "method": "page"
+    }
   },
   "checked_at": "2026-11-25"
 }

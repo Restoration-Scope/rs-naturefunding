@@ -18,28 +18,51 @@
   "co_finance_required": true,
   "consortium_required": false,
   "reporting": null,
-  "effort": { "steps": ["Application submission"] },
+  "effort": { "steps": ["Submit one application through the federal easy-Online portal"] },
   "eligibility": [
-    { "rule": "Project land has no agricultural or forestry use when applying", "kind": "project" },
-    { "rule": "If not owner, secure use rights for 20 years after project end", "kind": "project" },
-    { "rule": "FSP 2.2 area is at least 5 ha", "kind": "project" },
-    { "rule": "The project is carried out in Germany", "kind": "project" },
+    {
+      "rule": "Agricultural or forestry use normally ends before application, or just after award in justified cases",
+      "kind": "project"
+    },
+    {
+      "rule": "For investments, secure 20 years of post-project use of land or structures you do not own",
+      "kind": "project"
+    },
+    {
+      "rule": "FSP 2.2 covers 5–200 ha, with larger projects allowed in justified exceptions",
+      "kind": "project"
+    },
+    { "rule": "Project is generally carried out in Germany", "kind": "project" },
     {
       "rule": "The application is for a single project, not a consortium project",
       "kind": "project"
     },
     {
-      "rule": "The same funding subject was not funded on the same area in the last 10 years",
+      "rule": "No equivalent measure implemented on the same land with other funding in the last 10 years",
+      "kind": "project"
+    },
+    { "rule": "Project has not begun by the date of the funding award", "kind": "project" },
+    {
+      "rule": "Multiple parcels have a hydrological or at least a spatial connection",
       "kind": "project"
     }
   ],
+  "co_finance": {
+    "min_share": 1,
+    "applies_to": "Individuals who legally and economically own at least 80% of the land"
+  },
+  "after_award": { "reports": "yearly" },
   "documents": [
-    "Project description for FSP 1",
-    "Project description for FSP 2",
-    "DAWI de minimis declaration",
-    "Separate accounts statement",
-    "Co-owner consent, if multiple owners are registered",
-    "State statement on voluntariness for Natura 2000 measures"
+    "DAWI de minimis declaration, if applying under that funding basis",
+    "Statement separating accounts for economic and noneconomic activities",
+    "Co-owner consent for investment measures where multiple owners are registered",
+    "State statement on voluntariness for Natura 2000 measures",
+    "Map or cadastral extract showing the project and intervention areas",
+    "Privacy consent and acknowledgment",
+    "Creditworthiness documents specified in the proposal template",
+    "Proof of signing authority if the signer lacks statutory authority",
+    "Evidence of third-party funding, if available or requested",
+    "Implementation and monitoring plan plus hydrological report for FSP 2.2-only applications"
   ],
   "calls": [
     {
@@ -86,17 +109,17 @@
     },
     "effort": [
       {
-        "source_url": "https://www.z-u-g.org/1000-moore/foerderrichtlinie-1000-moore/",
-        "quote": "Für die Antragstellung beachten Sie die Antworten auf die häufig gestellten Fragen und nutzen Sie bitte die bereitgestellten Antragsdokumente im unteren Download-Bereich dieser Website.",
-        "checked_at": "2026-11-25",
+        "source_url": "https://www.z-u-g.org/fileadmin/zug/Dateien/Foerderprorgamme/1000_Moore/ank_frl_1000_moore_bf.pdf",
+        "quote": "Anträge auf Zuwendung müssen über das Portal zur Beantragung von Fördermitteln des Bundes (https://foerderportal.bund.de/easyonline/) eingereicht werden.",
+        "checked_at": "2026-11-26",
         "method": "page"
       }
     ],
     "eligibility": [
       {
         "source_url": "https://www.z-u-g.org/1000-moore/foerderrichtlinie-1000-moore/",
-        "quote": "Förderfähig sind nur Maßnahmen auf Flächen, auf denen zum Zeitpunkt der Antragstellung keine land- oder forstwirtschaftliche Nutzung stattfindet.",
-        "checked_at": "2026-11-25",
+        "quote": "Maßnahmen auf Flächen, die zum Zeitpunkt der Wiedervernässung intensiv land- oder forstwirtschaftlich genutzt werden, sind nicht förderfähig. Bei Mooren, die bislang land- oder forstwirtschaftlich genutzt wurden, erfolgt die Nutzungsaufgabe in der Regel vor Antragsstellung, in begründeten Ausnahmefällen unmittelbar nach erfolgter Bewilligung.",
+        "checked_at": "2026-11-26",
         "method": "page"
       },
       {
@@ -128,15 +151,35 @@
         "quote": "Maßnahmen können nicht gefördert werden, wenn auf derselben Fläche in den letzten zehn Jahren bereits eine Maßnahme mit dem gleichen Fördergegenstand über eine andere Förderung umgesetzt wurde",
         "checked_at": "2026-11-25",
         "method": "page"
+      },
+      {
+        "source_url": "https://www.z-u-g.org/fileadmin/zug/Dateien/Foerderprorgamme/1000_Moore/ank_frl_1000_moore_bf.pdf",
+        "quote": "Eine Zuwendung darf nicht gewährt werden, wenn die Antragstellenden zum Zeitpunkt der Bewilligung mit dem Vorhaben bereits begonnen haben.",
+        "checked_at": "2026-11-26",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.z-u-g.org/1000-moore/foerderrichtlinie-1000-moore/",
+        "quote": "Antragstellende müssen im Projektantrag darstellen, dass zwischen den (Teil-)flächen ein hydrologischer oder zumindest ein räumlicher Zusammenhang besteht.",
+        "checked_at": "2026-11-26",
+        "method": "page"
+      }
+    ],
+    "co_finance": {
+      "source_url": "https://www.z-u-g.org/1000-moore/foerderrichtlinie-1000-moore/",
+      "quote": "Natürliche Personen, wenn mindestens 80% der Flächen sich im rechtlichen und wirtschaftlichen Eigentum des Antragstellenden befinden: 99%",
+      "checked_at": "2026-11-26",
+      "method": "page"
+    },
+    "after_award": [
+      {
+        "source_url": "https://www.z-u-g.org/fileadmin/zug/Dateien/Foerderprorgamme/1000_Moore/261009_1000Moore_Merkblatt_Version16.pdf",
+        "quote": "Bei Vorhaben mit einer Laufzeit von mehr als zwölf Monaten ist zudem die Vorlage von Zwischenberichten und Zwischennachweisen (ZN) spätestens vier Monate nach Ablauf eines Haushaltsjahres (= Kalenderjahres) erforderlich.",
+        "checked_at": "2026-11-26",
+        "method": "page"
       }
     ],
     "documents": [
-      {
-        "source_url": "https://www.z-u-g.org/1000-moore/foerderrichtlinie-1000-moore/",
-        "quote": "Vorlage Vorhabenbeschreibung 1.000 Moore (FSP 1) (454 KB, XLSX) Vorlage Vorhabenbeschreibung 1.000 Moore (FSP 2) (538 KB, XLSX) DAWI-De-minimis Erklärung 1.000 Moore (49 KB, DOCX) Trennungsrechnung 1000 Moore",
-        "checked_at": "2026-11-25",
-        "method": "page"
-      },
       {
         "source_url": "https://www.z-u-g.org/1000-moore/foerderrichtlinie-1000-moore/",
         "quote": "Sind im Grundbuch mehrere Eigentümer*innen eingetragen, ist eine Einverständniserklärung der Miteigentümer*innen vorzulegen.",
@@ -147,6 +190,54 @@
         "source_url": "https://www.z-u-g.org/1000-moore/foerderrichtlinie-1000-moore/",
         "quote": "Eine entsprechende Stellungnahme des jeweiligen Bundeslandes hinsichtlich der Freiwilligkeit der beantragten Maßnahme in Zusammenhang mit dem geltenden Natura 2000-Managementplan ist dem Förderantrag beizulegen",
         "checked_at": "2026-11-25",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.z-u-g.org/fileadmin/zug/Dateien/Foerderprorgamme/1000_Moore/261009_1000Moore_Merkblatt_Version16.pdf",
+        "quote": "DAWI-De-minimis Erklärung, sofern auf Basis von DAWI-De-Minimis gefördert werden soll",
+        "checked_at": "2026-11-26",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.z-u-g.org/fileadmin/zug/Dateien/Foerderprorgamme/1000_Moore/261009_1000Moore_Merkblatt_Version16.pdf",
+        "quote": "Trennungsrechnung: Erklärung zur buchhalterischen Trennung der wirtschaftlichen und nicht wirtschaftlichen Tätigkeiten.",
+        "checked_at": "2026-11-26",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.z-u-g.org/fileadmin/zug/Dateien/Foerderprorgamme/1000_Moore/261009_1000Moore_Merkblatt_Version16.pdf",
+        "quote": "Geografische Karte(n) / Auszug Flächenkataster zur Darstellung der Flächenlage der Projekt- und Maßnahmenfläche",
+        "checked_at": "2026-11-26",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.z-u-g.org/fileadmin/zug/Dateien/Foerderprorgamme/1000_Moore/261009_1000Moore_Merkblatt_Version16.pdf",
+        "quote": "Einverständniserklärung und Kenntnisnahme zum Datenschutzhinweis",
+        "checked_at": "2026-11-26",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.z-u-g.org/fileadmin/zug/Dateien/Foerderprorgamme/1000_Moore/261009_1000Moore_Merkblatt_Version16.pdf",
+        "quote": "Unterlagen zur Bonitätsprüfung gemäß Erläuterung im Reiter Anlagen der Vorhabenbeschreibung",
+        "checked_at": "2026-11-26",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.z-u-g.org/fileadmin/zug/Dateien/Foerderprorgamme/1000_Moore/261009_1000Moore_Merkblatt_Version16.pdf",
+        "quote": "Nachweis der Zeichnungsberechtigung, sofern die unterzeichnende Person nicht aufgrund gesetzlicher Regelungen vertretungsberechtigt ist",
+        "checked_at": "2026-11-26",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.z-u-g.org/fileadmin/zug/Dateien/Foerderprorgamme/1000_Moore/261009_1000Moore_Merkblatt_Version16.pdf",
+        "quote": "Nachweis über Drittmittel, sofern Mittel Dritter für das Vorhaben zur Verfügung stehen oder beantragt wurden",
+        "checked_at": "2026-11-26",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.z-u-g.org/fileadmin/zug/Dateien/Foerderprorgamme/1000_Moore/261009_1000Moore_Merkblatt_Version16.pdf",
+        "quote": "Sofern ausschließlich Förderschwerpunkt 2 Modul 2 (Umsetzung) beantragt wird: Umsetzungskonzept (inkl. Monitoringkonzept) und hydrologisches Gutachten zur Ausführungsplanung",
+        "checked_at": "2026-11-26",
         "method": "page"
       }
     ],

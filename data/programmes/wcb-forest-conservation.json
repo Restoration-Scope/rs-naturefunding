@@ -14,11 +14,21 @@
   "amount": null,
   "co_finance_required": false,
   "reporting": null,
-  "effort": { "steps": ["Pre-application", "Full application, if invited"] },
+  "effort": {
+    "steps": [
+      "Pre-application",
+      "Full application, if invited",
+      "Technical review and scoring of eligible full applications",
+      "WCB board funding decision"
+    ]
+  },
   "eligibility": [
-    { "rule": "Project provides at least one WCB Strategic Plan benefit", "kind": "project" },
     {
-      "rule": "Planning grant leads to a qualifying future implementation project",
+      "rule": "Project protects or restores biodiversity, supports climate action, or expands public access to nature",
+      "kind": "project"
+    },
+    {
+      "rule": "Planning leads to a specific on-the-ground project likely to qualify for implementation funding",
       "kind": "project"
     },
     {
@@ -28,9 +38,14 @@
     {
       "rule": "Acquisition is from willing sellers and does not exceed fair market value",
       "kind": "project"
+    },
+    {
+      "rule": "Nonprofit applicants generally need 501(c)(3) status, with funding-source exceptions",
+      "kind": "legal"
     }
   ],
   "after_award": { "reports": "final" },
+  "documents": ["Full parcel-number list, if the project includes more than five parcels"],
   "calls": [
     {
       "id": "project-portal",
@@ -86,13 +101,25 @@
         "quote": "you can only submit a Full Application if WCB invites you to.",
         "checked_at": "2026-11-25",
         "method": "page"
+      },
+      {
+        "source_url": "https://nrm.dfg.ca.gov/FileHandler.ashx?DocumentID=199421",
+        "quote": "All eligible and complete Full Applications will be evaluated and scored by technical reviewers, which will include representatives from WCB, CDFW, and others as appropriate.",
+        "checked_at": "2026-11-26",
+        "method": "page"
+      },
+      {
+        "source_url": "https://nrm.dfg.ca.gov/FileHandler.ashx?DocumentID=199421",
+        "quote": "The final funding decisions will be made by the WCB voting board.",
+        "checked_at": "2026-11-26",
+        "method": "page"
       }
     ],
     "eligibility": [
       {
         "source_url": "https://nrm.dfg.ca.gov/FileHandler.ashx?DocumentID=199421",
-        "quote": "All projects shall provide one or more of the following benefits, as identified in WCB's Strategic Plan:",
-        "checked_at": "2026-11-25",
+        "quote": "All projects shall provide one or more of the following benefits, as identified in WCB's Strategic Plan:  Protected or restored biodiversity;  Climate change action; and/or  Expanded public access to nature.",
+        "checked_at": "2026-11-26",
         "method": "page"
       },
       {
@@ -112,6 +139,12 @@
         "quote": "Acquisitions, in the form of conservation easement, water rights, and fee purchases, must be from willing sellers and at a price that does not exceed the fair market value.",
         "checked_at": "2026-11-25",
         "method": "page"
+      },
+      {
+        "source_url": "https://nrm.dfg.ca.gov/FileHandler.ashx?DocumentID=199421",
+        "quote": "Unless otherwise limited by applicable funding sources or individual program guidelines, WCB has the authority under FGC section 1350(c) to award grants to 501(c)(3) nonprofit organizations, local governmental agencies, federal agencies, state agencies, and California Native American tribes.",
+        "checked_at": "2026-11-26",
+        "method": "page"
       }
     ],
     "after_award": [
@@ -119,6 +152,14 @@
         "source_url": "https://nrm.dfg.ca.gov/FileHandler.ashx?DocumentID=199421",
         "quote": "All grantees doing restoration, development, scientific studies, and planning will be required to provide a final report.",
         "checked_at": "2026-11-25",
+        "method": "page"
+      }
+    ],
+    "documents": [
+      {
+        "source_url": "https://nrm.dfg.ca.gov/FileHandler.ashx?DocumentID=200790&inline",
+        "quote": "If the project includes more than five APNs, upload a full list at the end of this pre application.",
+        "checked_at": "2026-11-26",
         "method": "page"
       }
     ]

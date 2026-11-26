@@ -16,7 +16,10 @@
   "reporting": null,
   "effort": { "steps": ["Application", "Administrative and nature conservation review"] },
   "eligibility": [
-    { "rule": "The measure has not started when the application is approved", "kind": "project" },
+    {
+      "rule": "Do not begin the measure before grant approval unless an early start has been authorised.",
+      "kind": "project"
+    },
     { "rule": "The funding purpose can be secured long-term or permanently", "kind": "project" },
     {
       "rule": "Project is a GI plan or a measure derived from a GI plan, strategy, concept or similar context",
@@ -27,21 +30,28 @@
       "kind": "project"
     },
     {
-      "rule": "Not a compensation measure or one already required by law or contract",
+      "rule": "The measure is not required as ecological compensation or by any legal, contractual or other obligation.",
+      "kind": "project"
+    },
+    {
+      "rule": "For GI plans, strategies or concepts, apply as an NRW municipality or municipal association.",
+      "kind": "legal"
+    },
+    {
+      "rule": "For capital works, route construction accounts for at most 30% of eligible expenditure.",
+      "kind": "project"
+    },
+    {
+      "rule": "Avoid creating fully sealed surfaces unless there is a justified exception.",
       "kind": "project"
     }
   ],
   "co_finance": {
     "min_share": 10,
-    "applies_to": "Nature NGOs, foundations, park bodies, indebted councils; others bring 20%"
+    "applies_to": "§3(b) conservation/education bodies and councils under budget consolidation"
   },
   "after_award": { "reports": "unspecified" },
-  "documents": [
-    "Project description",
-    "Justification of the measure and funding need",
-    "Cost calculation",
-    "Location plan with cadastral details"
-  ],
+  "documents": ["Location plan with cadastral details"],
   "calls": [
     {
       "id": "rolling",
@@ -108,8 +118,8 @@
     "eligibility": [
       {
         "source_url": "https://www.bra.nrw.de/umwelt-gesundheit-arbeitsschutz/umwelt/natur-und-landschaftsschutz-fischerei/foerderungen-im-natur-und-landschaftsschutz/foerderung-gemaess-der-gruene-infrastruktur-richtlinie",
-        "quote": "Zuwendungen können nur dann gewährt werden, wenn mit der zu fördernden Maßnahme zum Zeitpunkt der Bewilligung des Antrags noch nicht begonnen worden ist.",
-        "checked_at": "2026-11-25",
+        "quote": "Anträge auf Zustimmung zu einem vorzeitigen förderunschädlichen Maßnahmenbeginn",
+        "checked_at": "2026-11-26",
         "method": "page"
       },
       {
@@ -135,12 +145,30 @@
         "quote": "Ausgleichs- und Ersatzmaßnahmen im Sinne der naturschutzrechtlichen Eingriffsregelung und sonstige Maßnahmen, die aufgrund gesetzlicher, vertraglicher oder sonstiger Verpflichtung durchzuführen sind",
         "checked_at": "2026-11-25",
         "method": "page"
+      },
+      {
+        "source_url": "https://recht.nrw.de/lrmb/verwaltungsvorschrift/28072023-richtlinien-ueber-die-gewaehrung-von-zuwendung-zur-schaffung",
+        "quote": "Für Maßnahmen der Nummer 2 l sind ausschließlich Gemeinden und Gemeindeverbände aus Nordrhein-Westfalen zuwendungsberechtigt.",
+        "checked_at": "2026-11-26",
+        "method": "page"
+      },
+      {
+        "source_url": "https://recht.nrw.de/lrmb/verwaltungsvorschrift/28072023-richtlinien-ueber-die-gewaehrung-von-zuwendung-zur-schaffung",
+        "quote": "Die Ausgaben für Trassenbau dürfen maximal 30 Prozent der zuwendungsfähigen Gesamtausgaben der Maßnahme ausmachen.",
+        "checked_at": "2026-11-26",
+        "method": "page"
+      },
+      {
+        "source_url": "https://recht.nrw.de/lrmb/verwaltungsvorschrift/28072023-richtlinien-ueber-die-gewaehrung-von-zuwendung-zur-schaffung",
+        "quote": "Die Herstellung vollversiegelter Flächen im Zuge der Maßnahmenumsetzung ist grundsätzlich von der Förderung ausgeschlossen und nur im begründeten Ausnahmefall, wie beispielsweise zu Zwecken der Barrierefreiheit auf stark frequentierten Flächen, zuwendungsfähig.",
+        "checked_at": "2026-11-26",
+        "method": "page"
       }
     ],
     "co_finance": {
       "source_url": "https://recht.nrw.de/lrmb/verwaltungsvorschrift/28072023-richtlinien-ueber-die-gewaehrung-von-zuwendung-zur-schaffung",
       "quote": "Die Höhe der Zuwendung beträgt grundsätzlich 80 Prozent der zuwendungsfähigen Ausgaben. Der Fördersatz erhöht sich bei Zuwendungsempfangenden nach Nummer 3 a, die sich in der Haushaltssicherung befinden auf 90 Prozent. Bei Zuwendungsempfangen-den nach Nummer 3 b erhöht sich der Fördersatz ebenfalls auf 90 Prozent der zuwendungsfähigen Ausgaben.",
-      "checked_at": "2026-11-25",
+      "checked_at": "2026-11-26",
       "method": "page"
     },
     "after_award": [
@@ -152,12 +180,6 @@
       }
     ],
     "documents": [
-      {
-        "source_url": "https://www.bra.nrw.de/umwelt-gesundheit-arbeitsschutz/umwelt/natur-und-landschaftsschutz-fischerei/foerderungen-im-natur-und-landschaftsschutz/foerderung-gemaess-der-gruene-infrastruktur-richtlinie",
-        "quote": "Dieser muss eine genaue Beschreibung, die Begründung der Maßnahme und der Fördernotwendigkeit als auch die Kostenberechnung enthalten.",
-        "checked_at": "2026-11-25",
-        "method": "page"
-      },
       {
         "source_url": "https://www.bra.nrw.de/umwelt-gesundheit-arbeitsschutz/umwelt/natur-und-landschaftsschutz-fischerei/foerderungen-im-natur-und-landschaftsschutz/foerderung-gemaess-der-gruene-infrastruktur-richtlinie",
         "quote": "Ein Lageplan (Angabe Gemarkung, Flur, Flurstück/e) ist ebenfalls einzureichen.",

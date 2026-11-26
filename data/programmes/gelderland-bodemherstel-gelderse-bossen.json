@@ -29,16 +29,15 @@
   "eligibility": [
     { "rule": "Having ownership or leasehold control over the project area", "kind": "legal" },
     {
-      "rule": "Having forest parcels in the Gelders Natuurnetwerk of at least 20 hectares",
+      "rule": "Soil survey and quickscan show the buffer treatment will improve the forest",
       "kind": "project"
     },
-    { "rule": "Showing that buffer substances will improve the forests", "kind": "project" },
     {
       "rule": "Having an acidification-sensitive project area of at least 20 hectares for buffer substances",
       "kind": "project"
     },
     {
-      "rule": "Applying no more than 3 tonnes per hectare of lime or shell grit, or 10 tonnes of rock dust",
+      "rule": "Normally applies at most 3 tonnes/ha of lime or shell grit, or 10 tonnes/ha of rock dust",
       "kind": "project"
     },
     {
@@ -46,15 +45,19 @@
       "kind": "project"
     },
     {
-      "rule": "Not having received a provincial subsidy for the same or similar activity in the previous five years",
+      "rule": "No provincial grant to the applicant for the same or similar activity in this area in the past five years",
+      "kind": "project"
+    },
+    {
+      "rule": "Applies for buffer treatment alone or for a soil survey or quickscan followed by buffer treatment",
       "kind": "project"
     }
   ],
+  "after_award": { "reports": "other" },
   "documents": [
-    "Recent bank statement, if this is the first application or the bank account changed",
+    "Bank statement no more than a year old, for a first application or changed account",
     "Project area map",
-    "Plan of approach consisting of a soil survey and/or quickscan, if applying for buffer substances",
-    "Permit copy, if a permit is required"
+    "Buffer treatment-only route: action plan with soil survey and quickscan by an independent qualified firm"
   ],
   "calls": [
     {
@@ -152,12 +155,6 @@
         "method": "page"
       },
       {
-        "source_url": "https://www.gelderland.nl/subsidies/bodemherstel-in-gelderse-bossen",
-        "quote": "uw bospercelen liggen binnen het Gelders Natuurnetwerk en de omvang tenminste 20 hectare is;",
-        "checked_at": "2026-11-25",
-        "method": "page"
-      },
-      {
         "source_url": "https://media.gelderland.nl/Subsidieregeling_Bodemherstel_in_Gelderse_bossen_paragraaf_2_37_RSG_003_fa7528882d.pdf",
         "quote": "uit het bodemonderzoek en de quickscan blijkt dat de bossen verbeteren als er bufferstoffen op het plangebied worden gebracht;",
         "checked_at": "2026-11-25",
@@ -186,6 +183,20 @@
         "quote": "Subsidie wordt geweigerd voor zover voor dezelfde of een vergelijkbare activiteit in de vijf jaar voorafgaande aan de aanvraag door de provincie eerder subsidie is verleend aan de subsidieontvanger ten behoeve van het plangebied.",
         "checked_at": "2026-11-25",
         "method": "page"
+      },
+      {
+        "source_url": "https://media.gelderland.nl/Subsidieregeling_Bodemherstel_in_Gelderse_bossen_paragraaf_2_37_RSG_003_fa7528882d.pdf",
+        "quote": "Subsidie wordt verstrekt voor: a. activiteiten bedoeld in het eerste lid onderdeel a en daaropvolgend onderdeel b; of b. de activiteit, bedoeld in het eerste lid, onderdeel b.",
+        "checked_at": "2026-11-26",
+        "method": "page"
+      }
+    ],
+    "after_award": [
+      {
+        "source_url": "https://media.gelderland.nl/Subsidieregeling_Bodemherstel_in_Gelderse_bossen_paragraaf_2_37_RSG_003_fa7528882d.pdf",
+        "quote": "De subsidieontvanger overlegt de resultaten van het bodemonderzoek en de quickscan binnen drie weken nadat het bodemonderzoek en de quickscan zijn afgerond.",
+        "checked_at": "2026-11-26",
+        "method": "page"
       }
     ],
     "documents": [
@@ -202,9 +213,9 @@
         "method": "page"
       },
       {
-        "source_url": "https://media.gelderland.nl/Checklist_verplichte_bijlagen_Bodemherstel_in_Gelderse_bossen_56b82a2f5a.pdf",
-        "quote": "Als er een vergunning nodig is, dan vragen wij u om ons een kopie te sturen.",
-        "checked_at": "2026-11-25",
+        "source_url": "https://media.gelderland.nl/Subsidieregeling_Bodemherstel_in_Gelderse_bossen_paragraaf_2_37_RSG_003_fa7528882d.pdf",
+        "quote": "In aanvulling op artikel 1.2.3 bevat de aanvraag voor een subsidie als bedoeld in artikel 2.37.2, eerste lid, onderdeel b, een plan van aanpak, onderbouwd met een door een onafhankelijk en gekwalificeerd onderzoeksbureau uitgevoerd: a. bodemonderzoek; en b. een quickscan.",
+        "checked_at": "2026-11-26",
         "method": "page"
       }
     ]

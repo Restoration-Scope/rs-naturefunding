@@ -21,25 +21,35 @@
   "amount": null,
   "co_finance_required": null,
   "reporting": null,
-  "effort": { "steps": ["Online application"] },
+  "effort": { "steps": ["Online application", "County review of the application"] },
   "eligibility": [
     {
       "rule": "The measure is not required as compensation, replacement or a formal-proceeding condition",
       "kind": "project"
     },
-    { "rule": "The measure has not already been implemented", "kind": "project" },
-    { "rule": "The measure is not already funded by another funding programme", "kind": "other" },
     {
-      "rule": "An orchard measure uses only listed fruit varieties, except for care of old established stands",
+      "rule": "The measure has not started and will begin only after county conservation authority approval.",
       "kind": "project"
     },
-    { "rule": "The project is not a single tree in a house or private garden", "kind": "project" },
+    { "rule": "The measure is not already funded by another funding programme", "kind": "other" },
     {
-      "rule": "A fruit-tree planting is in open countryside or mainly farmed green space at a village edge, not a house garden",
+      "rule": "New orchard plantings use listed fruit varieties or other species agreed with the county.",
+      "kind": "project"
+    },
+    {
+      "rule": "An orchard measure does not concern a single tree in a house or private garden.",
+      "kind": "project"
+    },
+    {
+      "rule": "Fruit-tree planting is agreed with the county and is in open countryside or mainly farmed village-edge green space.",
       "kind": "project"
     },
     {
       "rule": "A hedge or field-planting measure uses only listed woody plants, except for valuable old established stands",
+      "kind": "project"
+    },
+    {
+      "rule": "If applying as a landowner, obtain co-owners’ agreement to the measures.",
       "kind": "project"
     }
   ],
@@ -96,6 +106,12 @@
         "quote": "Alle dort beschriebenen Maßnahmen können Sie direkt online bei uns beantragen: Förderantrag",
         "checked_at": "2026-11-25",
         "method": "page"
+      },
+      {
+        "source_url": "https://www.kreis-re.de/inhalte/Buergerservice/Umwelt_und_Tiere/Umwelt/Untere_Naturschutzbehoerde/F-rderkatalog_HP.pdf",
+        "quote": "Der Kreis Recklinghausen erfasst alle Anträge nach Eingang und prüft diese auf Eignung zur Förderung der biologischen Vielfalt im Kreis Recklinghausen.",
+        "checked_at": "2026-11-26",
+        "method": "page"
       }
     ],
     "eligibility": [
@@ -107,8 +123,8 @@
       },
       {
         "source_url": "https://www.kreis-re.de/inhalte/Buergerservice/Umwelt_und_Tiere/Umwelt/Untere_Naturschutzbehoerde/F-rderkatalog_HP.pdf",
-        "quote": "Bereits umgesetzte Maßnahmen können nicht nachträglich gefördert werden.",
-        "checked_at": "2026-11-25",
+        "quote": "Maßnahmen dürfen erst nach Bewilligung durch die UNB des Kreises Recklinghausen umgesetzt werden. Bereits umgesetzte Maßnahmen können nicht nachträglich gefördert werden.",
+        "checked_at": "2026-11-26",
         "method": "page"
       },
       {
@@ -119,8 +135,8 @@
       },
       {
         "source_url": "https://www.kreis-re.de/inhalte/Buergerservice/Umwelt_und_Tiere/Umwelt/Untere_Naturschutzbehoerde/F-rderkatalog_HP.pdf",
-        "quote": "Es werden ausschließlich die im Anhang aufgeführten Obstsorten als Hochstamm gefördert. Eine Ausnahme besteht bei der Pflege alter bereits gut etablierter Bestände.",
-        "checked_at": "2026-11-25",
+        "quote": "Die Auswahl der im Rahmen dieser Richtlinie geförderten Sorten ist vorrangig auf die im Antrag aufgeführten Sorten beschränkt (siehe Anhang). Die Pflanzung weiterer Arten muss mit der UNB abgestimmt werden.",
+        "checked_at": "2026-11-26",
         "method": "page"
       },
       {
@@ -139,6 +155,12 @@
         "source_url": "https://www.kreis-re.de/inhalte/Buergerservice/Umwelt_und_Tiere/Umwelt/Untere_Naturschutzbehoerde/F-rderkatalog_HP.pdf",
         "quote": "Es werden ausschließlich die im Anhang aufgeführten Gehölze gefördert. Eine Ausnahme besteht bei der Pflege alter, bereits gut etablierter Bestände mit ökologisch hohem Wert.",
         "checked_at": "2026-11-25",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.kreis-re.de/inhalte/Buergerservice/Umwelt_und_Tiere/Umwelt/Untere_Naturschutzbehoerde/F-rderkatalog_HP.pdf",
+        "quote": "Es obliegt der Antragstellerin / dem Antragssteller als Eigentümer/in das Einvernehmen der (Mit)eigentümer/innen über die Maßnahmen sicherzustellen.",
+        "checked_at": "2026-11-26",
         "method": "page"
       }
     ],

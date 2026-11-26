@@ -22,15 +22,31 @@
   "co_finance_required": null,
   "reporting": null,
   "effort": {
-    "steps": ["Project proposal and initial review", "Technical review", "LCFC committee review"]
+    "steps": [
+      "Project proposal and initial review",
+      "Technical review",
+      "LCFC committee review",
+      "RDCK Board review and final decision"
+    ]
   },
   "eligibility": [
-    { "rule": "Project is located in the Fund Service Area", "kind": "project" },
     {
       "rule": "Project addresses at least one Direct Conservation Action priority",
       "kind": "project"
     },
-    { "rule": "Project is not an existing government responsibility", "kind": "project" }
+    { "rule": "Project is not an existing government responsibility", "kind": "project" },
+    { "rule": "Project has benefits beyond recreation alone", "kind": "project" },
+    { "rule": "Project is not a lobbying or advocacy initiative", "kind": "project" },
+    { "rule": "Any research is applied to a conservation action goal", "kind": "project" },
+    {
+      "rule": "Project is not fish rearing, farming, stocking or hatchery work",
+      "kind": "project"
+    },
+    { "rule": "Project goes beyond education alone", "kind": "project" },
+    {
+      "rule": "Project is not organisational capacity building or a request for operating expenses",
+      "kind": "project"
+    }
   ],
   "after_award": { "reports": "interim_and_final" },
   "calls": [
@@ -111,15 +127,15 @@
         "quote": "The LCFC reviews TRC recommendations and makes formal recommendations to the RDCK Board for project approvals, conditions, or deferrals.",
         "checked_at": "2026-11-25",
         "method": "page"
+      },
+      {
+        "source_url": "https://kootenayconservation.ca/wp-content/uploads/2026/07/2026-06-10-Local-Conservation-Fund-Procedure-Final.pdf",
+        "quote": "The RDCK Board grants final approval of projects.",
+        "checked_at": "2026-11-26",
+        "method": "page"
       }
     ],
     "eligibility": [
-      {
-        "source_url": "https://kootenayconservation.ca/regional-district-of-central-kootenay/",
-        "quote": "Located in the Fund Service Area (RDCK Electoral Areas A, D, E, F & H;",
-        "checked_at": "2026-11-25",
-        "method": "page"
-      },
       {
         "source_url": "https://kootenayconservation.ca/regional-district-of-central-kootenay/",
         "quote": "Able to address at least one of the Direct Conservation Action priorities;",
@@ -130,6 +146,42 @@
         "source_url": "https://kootenayconservation.ca/regional-district-of-central-kootenay/",
         "quote": "Not the existing obligation or responsibility of the federal, provincial or local governments;",
         "checked_at": "2026-11-25",
+        "method": "page"
+      },
+      {
+        "source_url": "https://kootenayconservation.ca/wp-content/uploads/2026/07/2026-06-10-Local-Conservation-Fund-Procedure-Final.pdf",
+        "quote": "Projects with recreational benefits only.",
+        "checked_at": "2026-11-26",
+        "method": "page"
+      },
+      {
+        "source_url": "https://kootenayconservation.ca/wp-content/uploads/2026/07/2026-06-10-Local-Conservation-Fund-Procedure-Final.pdf",
+        "quote": "Lobbying or advocacy initiatives.",
+        "checked_at": "2026-11-26",
+        "method": "page"
+      },
+      {
+        "source_url": "https://kootenayconservation.ca/wp-content/uploads/2026/07/2026-06-10-Local-Conservation-Fund-Procedure-Final.pdf",
+        "quote": "Non-applied research (research not related to a conservation action goal).",
+        "checked_at": "2026-11-26",
+        "method": "page"
+      },
+      {
+        "source_url": "https://kootenayconservation.ca/wp-content/uploads/2026/07/2026-06-10-Local-Conservation-Fund-Procedure-Final.pdf",
+        "quote": "Fish rearing, farming, stocking or hatchery projects.",
+        "checked_at": "2026-11-26",
+        "method": "page"
+      },
+      {
+        "source_url": "https://kootenayconservation.ca/wp-content/uploads/2026/07/2026-06-10-Local-Conservation-Fund-Procedure-Final.pdf",
+        "quote": "Education only projects.",
+        "checked_at": "2026-11-26",
+        "method": "page"
+      },
+      {
+        "source_url": "https://kootenayconservation.ca/wp-content/uploads/2026/07/2026-06-10-Local-Conservation-Fund-Procedure-Final.pdf",
+        "quote": "Capacity building or operating expenses for organizations.",
+        "checked_at": "2026-11-26",
         "method": "page"
       }
     ],

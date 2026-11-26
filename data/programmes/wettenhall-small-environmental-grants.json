@@ -24,8 +24,10 @@
       "rule": "Project is about Australian flora and fauna conservation and is in the public interest",
       "kind": "project"
     },
-    { "rule": "Has partners to work with", "kind": "project" },
-    { "rule": "Not an animal or wildlife rescue and rehabilitation organisation", "kind": "legal" },
+    {
+      "rule": "Neither a wildlife rescue or rehabilitation organisation nor proposing its activities",
+      "kind": "legal"
+    },
     {
       "rule": "Academic applicant's research is not pure research, partners with an on-ground group, and can show it",
       "kind": "project"
@@ -42,7 +44,8 @@
     {
       "rule": "On-ground works are only proposed when they are really innovative",
       "kind": "project"
-    }
+    },
+    { "rule": "At most one application per group or individual per round", "kind": "other" }
   ],
   "after_award": { "reports": "final" },
   "calls": [
@@ -135,14 +138,8 @@
       },
       {
         "source_url": "https://wettenhall.org.au/grants/grants-conditions/",
-        "quote": "Do you have partners to work with?",
-        "checked_at": "2026-11-25",
-        "method": "page"
-      },
-      {
-        "source_url": "https://wettenhall.org.au/grants/grants-conditions/",
         "quote": "Animal or wildlife rescue and rehabilitation organisations and their activities",
-        "checked_at": "2026-11-25",
+        "checked_at": "2026-11-26",
         "method": "page"
       },
       {
@@ -173,6 +170,12 @@
         "source_url": "https://wettenhall.org.au/grants/grants-conditions/",
         "quote": "On-ground works (planting, fencing or pest plant or animal control) unless really innovative.",
         "checked_at": "2026-11-25",
+        "method": "page"
+      },
+      {
+        "source_url": "https://wettenhall.org.au/grants/faq/",
+        "quote": "The Executive Director will only accept one application from a group or individual in each round.",
+        "checked_at": "2026-11-26",
         "method": "page"
       }
     ],

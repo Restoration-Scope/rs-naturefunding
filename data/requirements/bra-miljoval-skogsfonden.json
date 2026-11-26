@@ -2,11 +2,7 @@
   "id": "bra-miljoval-skogsfonden",
   "read_on": "2026-11-19",
   "prompt_version": "req-2026-11-18.1",
-  "models": [
-    "gpt-5.6-luna",
-    "gpt-5.6-sol",
-    "jev-latest"
-  ],
+  "models": ["gpt-5.6-luna", "gpt-5.6-sol", "jev-latest"],
   "complete": true,
   "reasons": [],
   "requirements_checked": false,
@@ -27,15 +23,7 @@
   ],
   "failures": [],
   "skipped_links": 32,
-  "chunks": [
-    {
-      "id": "all",
-      "docs": [
-        "D1"
-      ],
-      "chars": 2935
-    }
-  ],
+  "chunks": [{ "id": "all", "docs": ["D1"], "chars": 2935 }],
   "outcomes": {
     "eligibility": "stated",
     "documents": "not_found",
@@ -44,16 +32,20 @@
     "consortium": "not_found",
     "after_award": "not_found"
   },
-  "written": [
-    "eligibility"
-  ],
-  "escalated": [
-    "after_award"
-  ],
+  "written": ["eligibility"],
+  "escalated": ["after_award"],
   "flags": [],
   "notes": [
     "extractor: Applications to the forest fund open during 2027; the fund is not yet open for applications.",
     "strong: The requirement to receive study visits does not state that the funder will visit project sites, so it is not included as a site-visits duty."
   ],
-  "usd": 0.02
+  "usd": 0.02,
+  "review": {
+    "on": "2026-11-26",
+    "standards": "2026-11-24.1",
+    "reviewer": "gpt-6.2-sol-medium",
+    "hash": "920b22d22379950e",
+    "verdicts": { "sound": 2, "wrong": 4, "missed": 0 },
+    "canaries": { "planted": 1, "caught": 1 }
+  }
 }

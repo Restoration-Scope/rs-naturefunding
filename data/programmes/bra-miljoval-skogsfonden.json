@@ -18,13 +18,15 @@
   "co_finance_required": null,
   "reporting": null,
   "eligibility": [
-    { "rule": "The project must improve biodiversity in forest", "kind": "project" },
-    { "rule": "The action must not be required by law or an applicable permit", "kind": "legal" },
+    { "rule": "The project aims to improve forest biodiversity", "kind": "project" },
+    {
+      "rule": "The action is not already required by law or an applicable permit",
+      "kind": "project"
+    },
     { "rule": "The project owner must have an organisation number", "kind": "legal" },
     { "rule": "The project owner must demonstrate the environmental benefit", "kind": "project" },
-    { "rule": "The action must be documented and serve as a good example", "kind": "project" },
     {
-      "rule": "The project owner must host study visits and provide relevant information",
+      "rule": "The project owner can host study visits and share relevant information with interested people",
       "kind": "capacity"
     }
   ],
@@ -76,12 +78,6 @@
       {
         "source_url": "https://bramiljoval.se/skogsfond",
         "quote": "Projektägaren måste kunna visa på miljönyttan av åtgärden.",
-        "checked_at": "2026-11-25",
-        "method": "page"
-      },
-      {
-        "source_url": "https://bramiljoval.se/skogsfond",
-        "quote": "Åtgärden ska dokumenteras och kunna fungera som gott exempel.",
         "checked_at": "2026-11-25",
         "method": "page"
       },

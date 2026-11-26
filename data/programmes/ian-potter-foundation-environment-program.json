@@ -24,25 +24,37 @@
     "note": "The organisation applying must run the project"
   },
   "reporting": null,
-  "effort": { "steps": ["Expression of Interest (stage 1)", "Full application (stage 2)"] },
+  "effort": {
+    "steps": [
+      "Expression of Interest (stage 1)",
+      "Full application, if invited",
+      "Research office shortlisting, for university or research institute applicants"
+    ]
+  },
   "eligibility": [
     { "rule": "Has both DGR Item 1 and TCC status", "kind": "legal" },
-    { "rule": "Is based and operating in Australia", "kind": "legal" },
     {
       "rule": "Project is not underway and will not start before the stated date",
       "kind": "project"
     },
     { "rule": "Does not propose pure research", "kind": "project" },
     {
-      "rule": "No school engagement, renewable energy or sustainable materials work, or capital works",
+      "rule": "No school education or engagement, renewable-energy or sustainable-materials projects or research, or capital works",
       "kind": "project"
     },
     { "rule": "Will run the proposed program or project itself", "kind": "legal" },
     { "rule": "Has no unacquitted grants from the Foundation", "kind": "track_record" },
-    { "rule": "Project has not previously been declined by the Foundation", "kind": "project" }
+    { "rule": "Project has not previously been declined by the Foundation", "kind": "project" },
+    {
+      "rule": "Does not seek funding for undergraduate, master’s or doctoral research",
+      "kind": "project"
+    }
   ],
   "after_award": { "reports": "yearly" },
-  "documents": ["University or research institute EOI shortlisting letter, if applicable"],
+  "documents": [
+    "University or research institute EOI shortlisting letter, if applicable",
+    "ACNC eligibility letter, if applying as a government entity"
+  ],
   "calls": [
     {
       "id": "2028",
@@ -99,18 +111,18 @@
         "quote": "you will be invited to submit a full application (stage 2)",
         "checked_at": "2026-11-25",
         "method": "page"
+      },
+      {
+        "source_url": "https://www.ianpotter.org.au/can-we-apply/can-we-apply-university",
+        "quote": "In each round, the Research Office or Advancement team needs to shortlist 3 (max) EOIs per program area.",
+        "checked_at": "2026-11-26",
+        "method": "page"
       }
     ],
     "eligibility": [
       {
         "source_url": "https://www.ianpotter.org.au/can-we-apply",
         "quote": "We can only make grants to organisations with BOTH Deductible Gift Recipient (DGR) Item 1 and Tax Concession Charity (TCC) status.",
-        "checked_at": "2026-11-25",
-        "method": "page"
-      },
-      {
-        "source_url": "https://www.ianpotter.org.au/can-we-apply",
-        "quote": "We only fund organisations based and operating in Australia.",
         "checked_at": "2026-11-25",
         "method": "page"
       },
@@ -149,15 +161,15 @@
         "quote": "Applications for projects that have previously been declined by the Foundation cannot be resubmitted.",
         "checked_at": "2026-11-25",
         "method": "page"
+      },
+      {
+        "source_url": "https://www.ianpotter.org.au/can-we-apply",
+        "quote": "Research for undergraduate, masters or doctoral students.",
+        "checked_at": "2026-11-26",
+        "method": "page"
       }
     ],
     "after_award": [
-      {
-        "source_url": "https://www.ianpotter.org.au/for-grantees/reporting",
-        "quote": "All grantees of The Ian Potter Foundation are required to submit a budget report which confirms that the funds granted were used for the intended purpose.",
-        "checked_at": "2026-11-25",
-        "method": "page"
-      },
       {
         "source_url": "https://www.ianpotter.org.au/for-grantees/reporting",
         "quote": "For multiple-year grants from the Foundation, a progress report is due at the end of each year of the grant period.",
@@ -170,6 +182,12 @@
         "source_url": "https://www.ianpotter.org.au/can-we-apply/can-we-apply-university",
         "quote": "A letter shortlisting all EOI submissions within the program area.",
         "checked_at": "2026-11-25",
+        "method": "page"
+      },
+      {
+        "source_url": "https://ianpotter.sfo2.cdn.digitaloceanspaces.com/public/Sample-forms-and-templates/Expression-of-Interest_EoI_250923.docx",
+        "quote": "If your Organisation ABN Entity Type is a Government Entity: In order for us to confirm your organisation's eligibility please provide a letter from the Australian Charities and Not-for-profits Commission (ACNC) in the relevant section of the form.",
+        "checked_at": "2026-11-26",
         "method": "page"
       }
     ]

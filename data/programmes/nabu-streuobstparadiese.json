@@ -14,17 +14,24 @@
   "amount": { "currency": "EUR", "min": 1000, "max": 10000 },
   "co_finance_required": true,
   "reporting": null,
-  "effort": { "steps": ["Application through the AgoraNatura platform"] },
+  "effort": { "steps": ["Application through the AgoraNatura platform"], "due": ["2026-08-31"] },
   "eligibility": [
     {
       "rule": "Keep environmental education and public relations at or below 50% of the grant",
       "kind": "project"
     },
     { "rule": "Project has not started or been completed before the grant", "kind": "project" },
-    { "rule": "Plantings are high-stem (Hochstamm) fruit trees only", "kind": "project" }
+    { "rule": "Plantings are high-stem (Hochstamm) fruit trees only", "kind": "project" },
+    { "rule": "Be a charitable association (gemeinnütziger Verein)", "kind": "legal" },
+    { "rule": "Finish the project by 31 December 2027", "kind": "project" }
   ],
   "co_finance": { "min_share": 20, "in_kind": true },
-  "documents": ["Cost plan", "Tax exemption certificate, if required", "Project profile image"],
+  "after_award": { "reports": "final" },
+  "documents": [
+    "Cost plan",
+    "Current tax exemption certificate valid throughout the project",
+    "Project profile image"
+  ],
   "calls": [
     {
       "id": "2026",
@@ -109,6 +116,12 @@
         "quote": "Wenn Sie ein passendes Programm gefunden haben, können Sie direkt mit dem Bewerbungsprozess beginnen und Ihre Bewerbung über die Plattform einreichen.",
         "checked_at": "2026-11-25",
         "method": "page"
+      },
+      {
+        "source_url": "https://www.agora-natura.de/gemeinsam-fuer-streuobstparadiese",
+        "quote": "Dieser Projektaufruf endete am 31.08.2026",
+        "checked_at": "2026-11-26",
+        "method": "page"
       }
     ],
     "eligibility": [
@@ -129,6 +142,18 @@
         "quote": "Gefördert werden Projekte zur Neuanlage, Verbesserung oder Wiederherstellung artenreicher Streuobstflächen (ausschließlich Hochstamm-Pflanzungen).",
         "checked_at": "2026-11-25",
         "method": "page"
+      },
+      {
+        "source_url": "https://www.nabu.de/natur-und-landschaft/landnutzung/streuobst/aktivitaeten/35352.html",
+        "quote": "Antragsberechtigt sind gemeinnützige Vereine.",
+        "checked_at": "2026-11-26",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.nabu.de/natur-und-landschaft/landnutzung/streuobst/aktivitaeten/35352.html",
+        "quote": "Projekte müssen bis zum 31.12.2027 abgeschlossen sein.",
+        "checked_at": "2026-11-26",
+        "method": "page"
       }
     ],
     "co_finance": {
@@ -137,6 +162,14 @@
       "checked_at": "2026-11-25",
       "method": "page"
     },
+    "after_award": [
+      {
+        "source_url": "https://www.nabu.de/natur-und-landschaft/landnutzung/streuobst/aktivitaeten/35352.html",
+        "quote": "Spätestens zum 31.01 2028 sind die bisherigen Erfolge sowie zahlenmäßigen Ausgaben in Form eines Abschlussberichtes einzureichen.",
+        "checked_at": "2026-11-26",
+        "method": "page"
+      }
+    ],
     "documents": [
       {
         "source_url": "https://www.agora-natura.de/faq",
@@ -148,6 +181,12 @@
         "source_url": "https://www.agora-natura.de/faq",
         "quote": "Projektprofilbild hochladen",
         "checked_at": "2026-11-25",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.nabu.de/natur-und-landschaft/landnutzung/streuobst/aktivitaeten/35352.html",
+        "quote": "Der aktuelle – und über den Projektzeitraum gültige – Freistellungsbescheid des Finanzamtes ist dem Antrag beizufügen.",
+        "checked_at": "2026-11-26",
         "method": "page"
       }
     ]

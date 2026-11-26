@@ -2,11 +2,7 @@
   "id": "asa-emergency-grants",
   "read_on": "2026-11-19",
   "prompt_version": "req-2026-11-18.1",
-  "models": [
-    "gpt-5.6-luna",
-    "gpt-5.6-sol",
-    "jev-latest"
-  ],
+  "models": ["gpt-5.6-luna", "gpt-5.6-sol", "jev-latest"],
   "complete": true,
   "reasons": [],
   "requirements_checked": false,
@@ -40,16 +36,7 @@
   ],
   "failures": [],
   "skipped_links": 55,
-  "chunks": [
-    {
-      "id": "all",
-      "docs": [
-        "D1",
-        "D2"
-      ],
-      "chars": 3408
-    }
-  ],
+  "chunks": [{ "id": "all", "docs": ["D1", "D2"], "chars": 3408 }],
   "outcomes": {
     "eligibility": "stated",
     "documents": "not_found",
@@ -58,15 +45,19 @@
     "consortium": "not_found",
     "after_award": "not_found"
   },
-  "written": [
-    "eligibility"
-  ],
-  "escalated": [
-    "eligibility"
-  ],
+  "written": ["eligibility"],
+  "escalated": ["eligibility"],
   "flags": [],
   "notes": [
     "extractor: The supplied text does not state who may apply, where applicants or projects must be located, or any post-award reporting duties."
   ],
-  "usd": 0.0493
+  "usd": 0.0493,
+  "review": {
+    "on": "2026-11-26",
+    "standards": "2026-11-24.1",
+    "reviewer": "gpt-6.2-sol-medium",
+    "hash": "35d31fceadb39c14",
+    "verdicts": { "sound": 6, "wrong": 2, "missed": 4 },
+    "canaries": { "planted": 0, "caught": 0 }
+  }
 }

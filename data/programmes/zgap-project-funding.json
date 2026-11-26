@@ -17,18 +17,29 @@
   "amount": { "currency": "EUR", "max": 6000 },
   "co_finance_required": null,
   "reporting": null,
-  "effort": { "steps": ["Completed A form by email", "Project-management and committee review"] },
+  "effort": {
+    "steps": [
+      "Completed A form by email",
+      "Project-management and committee review",
+      "ZGAP board funding decision"
+    ]
+  },
   "eligibility": [
     {
       "rule": "The applicant is an NGO, university or comparable institution, or a private person in a justified exception.",
       "kind": "legal"
     },
     {
-      "rule": "Project is outside wealthy industrialised countries (W. Europe, N. America, Australia, Japan), barring exceptions",
+      "rule": "Project is outside wealthy, highly developed industrialised countries unless a justified exception applies.",
       "kind": "project"
     },
     {
       "rule": "Project is not conference attendance or hosting, meetings or pure travel, barring exceptions",
+      "kind": "project"
+    },
+    { "rule": "The project does not target marine fauna.", "kind": "project" },
+    {
+      "rule": "The work directly and concretely contributes to conserving a wild, non-domesticated animal taxon.",
       "kind": "project"
     }
   ],
@@ -37,7 +48,7 @@
     "Applicant CV",
     "Applicant ID copy",
     "Budget overview in table format",
-    "NGO registration number or registration document"
+    "NGO registration number or copy of registration document, if applying as an NGO"
   ],
   "calls": [
     {
@@ -94,6 +105,12 @@
         "quote": "Bitte beachten Sie, dass das die Prüfung Ihres Antrags durch das Projektmanagement und die entsprechenden Gremien je nach Antragsaufkommen und Fragestellung unterschiedlich viel Zeit in Anspruch nehmen kann.",
         "checked_at": "2026-11-25",
         "method": "page"
+      },
+      {
+        "source_url": "https://www.zgap.de/files/Foerderung/ZGAP-Forderrichtlinien%202026.pdf",
+        "quote": "Die finale Entscheidung über die Unterstützung eines Projektes liegt beim Vorstand der ZGAP.",
+        "checked_at": "2026-11-26",
+        "method": "page"
       }
     ],
     "eligibility": [
@@ -105,14 +122,26 @@
       },
       {
         "source_url": "https://www.zgap.de/files/Foerderung/ZGAP-Forderrichtlinien%202026.pdf",
-        "quote": "Projekte für wildlebende, nicht-domestizierte Tierarten-/Unterarten-/Populationen, welche in wohlhabenden, hochentwickelten Industriestaaten (u.a. West-Europa, NordAmerika, Australien oder Japan) umgesetzt werden, können nur in begründeten Ausnahmefällen gefördert werden.",
-        "checked_at": "2026-11-25",
+        "quote": "welche in wohlhabenden, hochentwickelten Industriestaaten (u.a. West-Europa, NordAmerika, Australien oder Japan) umgesetzt werden, können nur in begründeten Ausnahmefällen gefördert werden.",
+        "checked_at": "2026-11-26",
         "method": "page"
       },
       {
         "source_url": "https://www.zgap.de/files/Foerderung/ZGAP-Forderrichtlinien%202026.pdf",
         "quote": "Die Teilnahme an und Ausrichtung von Konferenzen und Meetings sowie reine Reisekostenzuschüsse werden nur in Ausnahmefällen unterstützt.",
         "checked_at": "2026-11-25",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.zgap.de/files/Foerderung/ZGAP-Forderrichtlinien%202026.pdf",
+        "quote": "terrestrisch oder aquatisch, jedoch keine marine Fauna",
+        "checked_at": "2026-11-26",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.zgap.de/files/Foerderung/ZGAP-Forderrichtlinien%202026.pdf",
+        "quote": "die direkt und konkret zum Erhalt einer wildlebenden, nicht-domestizierten Tierart/Unterart/Population beitragen.",
+        "checked_at": "2026-11-26",
         "method": "page"
       }
     ],

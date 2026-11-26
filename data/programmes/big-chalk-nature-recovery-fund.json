@@ -24,7 +24,7 @@
     "max": 100000,
     "note": "larger awards available exceptionally"
   },
-  "co_finance_required": true,
+  "co_finance_required": false,
   "consortium_required": false,
   "reporting": null,
   "effort": {
@@ -33,7 +33,7 @@
       "Initial eligibility check",
       "Online application with supporting documents",
       "Full assessment",
-      "Grant agreement and due diligence checks"
+      "Discuss the proposal with a fund manager, if invited"
     ]
   },
   "eligibility": [
@@ -42,22 +42,26 @@
       "kind": "legal"
     },
     { "rule": "Have a UK bank account in the applicant's name", "kind": "finances" },
-    { "rule": "Deliver the project within the Big Chalk Programme Area", "kind": "project" },
-    { "rule": "Hold appropriate insurance for the activities undertaken", "kind": "legal" },
-    { "rule": "Own the land, hold a five-year tenancy, or have permission", "kind": "project" },
+    {
+      "rule": "Work in the Big Chalk area or on chalk or limestone streams or rivers originating in or closely linked to it.",
+      "kind": "project"
+    },
+    { "rule": "Hold appropriate insurance for the activities undertaken", "kind": "capacity" },
+    {
+      "rule": "Own the land, have at least five years left on the tenancy, or have clear written landowner permission.",
+      "kind": "project"
+    },
     { "rule": "Ensure the land can be managed for conservation until 2032", "kind": "project" },
     {
       "rule": "Complete Year 1 capital works by 31 March 2027 unless agreed otherwise",
       "kind": "project"
     },
-    { "rule": "Propose capital costs only", "kind": "project" }
+    {
+      "rule": "Have or be able to access the skills, knowledge and capacity to deliver the project.",
+      "kind": "capacity"
+    }
   ],
-  "documents": [
-    "Land ownership or permission evidence",
-    "Activity permissions and consents",
-    "Baseline habitat condition assessment",
-    "Details of other active funding agreements"
-  ],
+  "after_award": { "reports": "quarterly" },
   "calls": [
     {
       "id": "rolling",
@@ -111,7 +115,7 @@
     "co_finance_required": {
       "source_url": "https://www.big-chalk.org/news/big-chalk-nature-recovery-fund-funding-starts-to-flow",
       "quote": "The fund can contribute up to 80% of project costs (exceptionally up to 100%)",
-      "checked_at": "2026-11-25",
+      "checked_at": "2026-11-26",
       "method": "page"
     },
     "consortium_required": {
@@ -147,8 +151,8 @@
       },
       {
         "source_url": "https://big-chalk.files.svdcdn.com/production/assets/images/Documents/Big-Chalk-2026-Nature-Recovery-Fund-guidance.pdf?dm=1786542592",
-        "quote": "Grant agreement and due diligence checks.",
-        "checked_at": "2026-11-25",
+        "quote": "If eligible, you will be invited to discuss your proposal with a Fund Manager.",
+        "checked_at": "2026-11-26",
         "method": "page"
       }
     ],
@@ -167,8 +171,8 @@
       },
       {
         "source_url": "https://big-chalk.files.svdcdn.com/production/assets/images/Documents/Big-Chalk-2026-Nature-Recovery-Fund-guidance.pdf?dm=1786542592",
-        "quote": "Deliver a project within the Big Chalk Programme Area.",
-        "checked_at": "2026-11-25",
+        "quote": "Deliver a project within the Big Chalk Programme Area. Projects relating to chalk or limestone streams and rivers that originate within, or are closely connected to, the programme area may also be considered.",
+        "checked_at": "2026-11-26",
         "method": "page"
       },
       {
@@ -197,28 +201,16 @@
       },
       {
         "source_url": "https://big-chalk.files.svdcdn.com/production/assets/images/Documents/Big-Chalk-2026-Nature-Recovery-Fund-guidance.pdf?dm=1786542592",
-        "quote": "Funding is available for capital costs only.",
-        "checked_at": "2026-11-25",
+        "quote": "Have, or be able to access, the skills, knowledge and capacity needed to successfully deliver the project.",
+        "checked_at": "2026-11-26",
         "method": "page"
       }
     ],
-    "documents": [
+    "after_award": [
       {
         "source_url": "https://big-chalk.files.svdcdn.com/production/assets/images/Documents/Big-Chalk-2026-Nature-Recovery-Fund-guidance.pdf?dm=1786542592",
-        "quote": "Land ownership/permission evidence Activity permissions/consents (including planning permission where required)",
-        "checked_at": "2026-11-25",
-        "method": "page"
-      },
-      {
-        "source_url": "https://big-chalk.files.svdcdn.com/production/assets/images/Documents/Big-Chalk-2026-Nature-Recovery-Fund-guidance.pdf?dm=1786542592",
-        "quote": "Baseline habitat condition assessment to support management objectives.",
-        "checked_at": "2026-11-25",
-        "method": "page"
-      },
-      {
-        "source_url": "https://big-chalk.files.svdcdn.com/production/assets/images/Documents/Big-Chalk-2026-Nature-Recovery-Fund-guidance.pdf?dm=1786542592",
-        "quote": "Details of other active funding agreements for the project area, if applicable.",
-        "checked_at": "2026-11-25",
+        "quote": "Small grants (£1,000 to £10,000): A short completion report and photographs demonstrating delivery of the project. Standard grants (£10,000 to £100,000): Quarterly progress reports during delivery",
+        "checked_at": "2026-11-26",
         "method": "page"
       }
     ]

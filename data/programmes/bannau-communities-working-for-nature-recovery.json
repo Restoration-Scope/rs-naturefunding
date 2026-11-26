@@ -21,6 +21,12 @@
   "amount": { "currency": "GBP", "max": 5000 },
   "co_finance_required": false,
   "reporting": null,
+  "eligibility": [
+    {
+      "rule": "Grant covers capital costs only, excluding day-to-day and routine maintenance",
+      "kind": "finances"
+    }
+  ],
   "calls": [
     {
       "id": "round-2",
@@ -70,7 +76,15 @@
       "quote": "Grants can cover 100% of project costs.",
       "checked_at": "2026-11-25",
       "method": "page"
-    }
+    },
+    "eligibility": [
+      {
+        "source_url": "https://bannau.wales/communities/help-for-communities-and-groups/",
+        "quote": "These are capital grant programmes for the purchase of materials and goods / contractor costs. Please be aware we cannot cover day to day or routine maintenance costs.",
+        "checked_at": "2026-11-26",
+        "method": "page"
+      }
+    ]
   },
   "checked_at": "2026-11-25"
 }

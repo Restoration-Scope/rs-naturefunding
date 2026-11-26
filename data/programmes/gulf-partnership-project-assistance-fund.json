@@ -21,28 +21,45 @@
   "amount": { "currency": "USD", "max": 50000 },
   "co_finance_required": false,
   "reporting": "A progress report about six months after the award and a final report within 30 days of completion.",
-  "effort": { "steps": ["PAF proposal submission and review"] },
+  "effort": {
+    "steps": [
+      "Submit the main PAF proposal or North Florida pilot questionnaire",
+      "Main PAF committee eligibility and ranking review"
+    ]
+  },
   "eligibility": [
     {
-      "rule": "Be a 501(c)(3) Gulf Partnership member in good standing through the award period",
+      "rule": "Main PAF: Be a 501(c)(3) Gulf Partnership member with current dues",
       "kind": "legal"
     },
     {
-      "rule": "Provide geospatial data on all held conservation easements to the National Conservation Easement Database",
-      "kind": "capacity"
-    },
-    { "rule": "Adopt the Land Trust Alliance standards and practices", "kind": "legal" },
-    {
-      "rule": "Be able to comply with OMB guidance and 2 CFR 200 procurement standards",
+      "rule": "Main PAF: Have sent maps of all held easements to the National Conservation Easement Database",
       "kind": "capacity"
     },
     {
-      "rule": "Have applied or intend to apply for CE or fee title acquisition funding",
+      "rule": "Main PAF: Have adopted the Land Trust Alliance standards and practices",
+      "kind": "capacity"
+    },
+    {
+      "rule": "Main PAF: Have sought or plan to seek conservation easement or fee title acquisition funding",
       "kind": "project"
+    },
+    { "rule": "Main PAF: Demonstrate landowner approval", "kind": "project" },
+    {
+      "rule": "North Florida pilot: Project must be in the North Florida zone shown on the programme map",
+      "kind": "project"
+    },
+    {
+      "rule": "North Florida pilot: Show the capacity costs are critical and other acquisition or easement funding does not cover them",
+      "kind": "project"
+    },
+    {
+      "rule": "North Florida pilot: Have room for an award under the cap of two per quarter and $25,000 per year",
+      "kind": "other"
     }
   ],
   "after_award": { "reports": "interim_and_final" },
-  "documents": ["Project budget", "Project map", "Strategic Conservation Vision Report"],
+  "documents": ["Project budget", "Project map", "Main PAF: Strategic Conservation Vision Report"],
   "calls": [
     {
       "id": "paf-open-proposals",
@@ -110,6 +127,18 @@
         "quote": "Request for Proposals can be submitted anytime throughout the year and will be reviewed on a rolling basis.",
         "checked_at": "2026-11-25",
         "method": "page"
+      },
+      {
+        "source_url": "https://img1.wsimg.com/blobby/go/3a420357-df48-42fd-8b54-f7834f190178/downloads/6ff4ba63-bc7c-453a-af8d-19e9ee8a9c73/PAF%20Application%20North%20FL%20Capacity.pdf?ver=1794433121050",
+        "quote": "If interested in receiving support, please return the completed questionnaire below or reach out to vance@gulfpartnership.org",
+        "checked_at": "2026-11-26",
+        "method": "page"
+      },
+      {
+        "source_url": "https://img1.wsimg.com/blobby/go/3a420357-df48-42fd-8b54-f7834f190178/downloads/3ea65a61-853e-4c24-8f1b-a587ca8ad38a/PGCLC%20PAF%20RFP.pdf?ver=1794433121049",
+        "quote": "Proposals are evaluated by a review committee composed of Gulf Partnership staff, board members, and other conservation organizations for eligibility and compliance with criteria. Projects will be ranked in accordance with alignment for program goals and priorities.",
+        "checked_at": "2026-11-26",
+        "method": "page"
       }
     ],
     "eligibility": [
@@ -133,14 +162,32 @@
       },
       {
         "source_url": "https://img1.wsimg.com/blobby/go/3a420357-df48-42fd-8b54-f7834f190178/downloads/3ea65a61-853e-4c24-8f1b-a587ca8ad38a/PGCLC%20PAF%20RFP.pdf?ver=1794433121049",
-        "quote": "Applicants must be able to comply with the OMB guidance and procurement standards of 2 CFR 200 (OMB Uniform Guidance).",
+        "quote": "Have applied or intend to apply for (CE or fee title) acquisition funding.",
         "checked_at": "2026-11-25",
         "method": "page"
       },
       {
-        "source_url": "https://img1.wsimg.com/blobby/go/3a420357-df48-42fd-8b54-f7834f190178/downloads/3ea65a61-853e-4c24-8f1b-a587ca8ad38a/PGCLC%20PAF%20RFP.pdf?ver=1794433121049",
-        "quote": "Have applied or intend to apply for (CE or fee title) acquisition funding.",
-        "checked_at": "2026-11-25",
+        "source_url": "https://img1.wsimg.com/blobby/go/3a420357-df48-42fd-8b54-f7834f190178/downloads/7b97357b-a6ab-46d1-9838-d6e3ff663c4e/PGCLC%20PAF%20Application.pdf?ver=1794433121050",
+        "quote": "The proposal must demonstrate landowner approval and have a clear description of the potential for capital funding for acquisition/easement.",
+        "checked_at": "2026-11-26",
+        "method": "page"
+      },
+      {
+        "source_url": "https://img1.wsimg.com/blobby/go/3a420357-df48-42fd-8b54-f7834f190178/downloads/6ff4ba63-bc7c-453a-af8d-19e9ee8a9c73/PAF%20Application%20North%20FL%20Capacity.pdf?ver=1794433121050",
+        "quote": "Potential projects must be in the North Florida zone (see map above).",
+        "checked_at": "2026-11-26",
+        "method": "page"
+      },
+      {
+        "source_url": "https://img1.wsimg.com/blobby/go/3a420357-df48-42fd-8b54-f7834f190178/downloads/6ff4ba63-bc7c-453a-af8d-19e9ee8a9c73/PAF%20Application%20North%20FL%20Capacity.pdf?ver=1794433121050",
+        "quote": "Applicants will need to justify how funding is critical to developing and/or completing projects and is not covered via acquisition or easement source funding.",
+        "checked_at": "2026-11-26",
+        "method": "page"
+      },
+      {
+        "source_url": "https://img1.wsimg.com/blobby/go/3a420357-df48-42fd-8b54-f7834f190178/downloads/6ff4ba63-bc7c-453a-af8d-19e9ee8a9c73/PAF%20Application%20North%20FL%20Capacity.pdf?ver=1794433121050",
+        "quote": "Applicants can submit multiple proposals but are limited to a maximum of 2 awards per quarter. Organizations are further limited to $25,000 in support annually.",
+        "checked_at": "2026-11-26",
         "method": "page"
       }
     ],

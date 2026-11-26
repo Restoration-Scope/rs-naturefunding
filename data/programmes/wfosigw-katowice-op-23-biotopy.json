@@ -18,7 +18,15 @@
   "co_finance_required": true,
   "reporting": null,
   "effort": { "steps": ["Application via the New Beneficiary Portal"] },
+  "eligibility": [
+    { "rule": "Non-government applicants must be associations", "kind": "legal" },
+    {
+      "rule": "Grant-funded invoices and payments must postdate the application",
+      "kind": "finances"
+    }
+  ],
   "co_finance": { "min_share": 20 },
+  "after_award": { "reports": "other" },
   "calls": [
     {
       "id": "rolling",
@@ -76,12 +84,34 @@
         "method": "page"
       }
     ],
+    "eligibility": [
+      {
+        "source_url": "https://wfosigw.katowice.pl/nabory/op-23/",
+        "quote": "Dla kogo: Jednostki samorządu terytorialnego, Zespół Parków Krajobrazowych Województwa Śląskiego, Regionalna Dyrekcja Ochrony Środowiska, stowarzyszenia",
+        "checked_at": "2026-11-26",
+        "method": "page"
+      },
+      {
+        "source_url": "https://wfosigw.katowice.pl/wp-content/uploads/2026/06/rozliczenie_pozainwestycyjne_2026.docx",
+        "quote": "uwzględniane będą wyłącznie wydatki związane z kosztami kwalifikowanymi zadania, które zostały poniesione po dacie złożenia wniosku o udzielenie dofinansowania. Warunek ten dotyczy zarówno daty wystawienia faktur jak i daty związanych z nimi płatności",
+        "checked_at": "2026-11-26",
+        "method": "page"
+      }
+    ],
     "co_finance": {
       "source_url": "https://wfosigw.katowice.pl/nabory/op-23/",
       "quote": "dotacja do 80%",
       "checked_at": "2026-11-25",
       "method": "page"
-    }
+    },
+    "after_award": [
+      {
+        "source_url": "https://wfosigw.katowice.pl/wp-content/uploads/2026/06/rozliczenie_pozainwestycyjne_2026.docx",
+        "quote": "Sprawozdanie rozliczające ratę ...... /*całość/*etap ...... realizacji zadania /* dofinansowania/* dofinansowanego/* udzielonego ze środków Wojewódzkiego Funduszu Ochrony Środowiska i Gospodarki Wodnej w Katowicach.",
+        "checked_at": "2026-11-26",
+        "method": "page"
+      }
+    ]
   },
   "checked_at": "2026-11-25"
 }

@@ -31,9 +31,9 @@
   "access": "direct",
   "window": "rolling",
   "amount": { "currency": "USD", "max": 15000, "typical": true },
-  "co_finance_required": null,
+  "co_finance_required": false,
   "reporting": null,
-  "effort": { "steps": ["Project proposal submission"] },
+  "effort": { "steps": ["Project proposal submission", "Joint IRF and AfRSG review"] },
   "calls": [
     {
       "id": "rolling",
@@ -77,19 +77,31 @@
       "checked_at": "2026-11-25",
       "method": "page"
     },
+    "co_finance_required": {
+      "source_url": "https://rhinos.org/wp-content/uploads/2026/07/IRF-Rhino-Range-Expansion-Fund-Request-for-Funds-CURRENT-3.pdf",
+      "quote": "Matching funds (if any) and sources",
+      "checked_at": "2026-11-26",
+      "method": "page"
+    },
     "effort": [
       {
         "source_url": "https://rhinos.org/our-work/rhino-science/afrsg/",
         "quote": "we accept proposals submitted to grants@rhinos.org on a rolling basis.",
         "checked_at": "2026-11-25",
         "method": "page"
+      },
+      {
+        "source_url": "https://rhinos.org/wp-content/uploads/2026/07/IRF-Rhino-Range-Expansion-Fund-Request-for-Funds-CURRENT-3.pdf",
+        "quote": "Upon receipt, IRF will communicate with the IUCN-SSC African Rhino Specialist Group to jointly review the application.",
+        "checked_at": "2026-11-26",
+        "method": "page"
       }
     ],
     "eligibility": [
       {
         "source_url": "https://rhinos.org/wp-content/uploads/2026/07/IRF-Rhino-Range-Expansion-Fund-Request-for-Funds-CURRENT-3.pdf",
-        "quote": "International travel (local and regional travel is fine as needed to conduct assessments) ● Travel not associated with project activities ● Equipment over $5,000 USD (per application) ● Institutional/organizational overhead costs ● Training or tuition costs ● Miscellaneous or contingency funds (please label/explain all costs) ● Fundraising and marketing costs ● Government salaries or per diems",
-        "checked_at": "2026-11-25",
+        "quote": "This fund is intended to help ensure success for projects supporting recently translocated rhino populations, populations targeted for future range expansion, or initiatives that have broader national or regional impacts on rhino range expansion in general.",
+        "checked_at": "2026-11-26",
         "method": "page"
       }
     ],
@@ -105,7 +117,7 @@
   "checked_at": "2026-11-25",
   "eligibility": [
     {
-      "rule": "No international travel, equipment over USD 5,000, overhead, training, contingency, fundraising or govt salaries",
+      "rule": "Support recently translocated rhinos, populations targeted for expansion, or wider national or regional range expansion.",
       "kind": "project"
     }
   ],

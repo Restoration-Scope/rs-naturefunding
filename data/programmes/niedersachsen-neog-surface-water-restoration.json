@@ -36,13 +36,35 @@
     ]
   },
   "eligibility": [
-    { "rule": "Project is in an eligible Lower Saxony water area", "kind": "project" },
     {
-      "rule": "Grant of at least €10,000 for local authorities and €50,000 for EU co-financed projects",
+      "rule": "Work on eligible Lower Saxony lakes, rivers or their surroundings, or transitional or coastal waters",
       "kind": "project"
-    }
+    },
+    {
+      "rule": "Local authorities and their associations must qualify for a grant of at least €10,000",
+      "kind": "project"
+    },
+    {
+      "rule": "EU-co-funded projects have at least €50,000 in eligible expenditure at approval",
+      "kind": "project"
+    },
+    {
+      "rule": "Maintain or improve ecological quality or chemical status under the EU water or marine framework",
+      "kind": "project"
+    },
+    {
+      "rule": "Project generates no income and involves no direct economic activity by the applicant",
+      "kind": "project"
+    },
+    {
+      "rule": "Make a charitable or public-interest investment that improves environmental and water protection",
+      "kind": "project"
+    },
+    { "rule": "Project is voluntary or goes beyond legally required works", "kind": "project" },
+    { "rule": "Project is not already funded from another source", "kind": "project" }
   ],
   "co_finance": { "min_share": 5, "applies_to": "Local authorities and their associations" },
+  "after_award": { "site_visits": true },
   "calls": [
     {
       "id": "pre-procedure-2027",
@@ -139,6 +161,12 @@
         "quote": "Die späteren Zuwendungsanträge sind unter Verwendung des amtlichen Vordrucks an die Bewilligungsstelle für EU-Zuwendungen des NLWKN zu richten.",
         "checked_at": "2026-11-25",
         "method": "page"
+      },
+      {
+        "source_url": "https://www.nlwkn.niedersachsen.de/startseite/wasserwirtschaft/forderprogramme/bewilligungsstelle_fur_eu_zuwendungen/richtlinie_neog/naturnahe-entwicklung-der-oberflachengewasser-neog-225223.html",
+        "quote": "Das Schriftformerfordernis eines Zuwendungsantrages setzt die Originalunterschrift voraus.",
+        "checked_at": "2026-11-26",
+        "method": "page"
       }
     ],
     "eligibility": [
@@ -149,9 +177,45 @@
         "method": "page"
       },
       {
-        "source_url": "https://www.nlwkn.niedersachsen.de/download/206484",
-        "quote": "Bagatellgrenze: für Gebietskörperschaften 10.000€, 50.000 € für EU-kofinanzierte Vorhaben",
-        "checked_at": "2026-11-25",
+        "source_url": "https://voris.wolterskluwer-online.de/browse/document/5e5ec9bf-f3ab-368e-859d-8d3b8b98562b",
+        "quote": "Vorhaben von Gebietskörperschaften und deren Zusammenschlüssen werden abweichend von VV-Gk Nr. 1.1 zu § 44 LHO bereits mit einer Höhe der Zuwendung von mindestens 10 000 EUR zum Zeitpunkt der Bewilligung gefördert.",
+        "checked_at": "2026-11-26",
+        "method": "page"
+      },
+      {
+        "source_url": "https://voris.wolterskluwer-online.de/browse/document/5e5ec9bf-f3ab-368e-859d-8d3b8b98562b",
+        "quote": "Für EU-kofinanzierte Vorhaben gilt ein Mindestschwellenwert der förderfähigen Ausgaben von 50 000 EUR zum Zeitpunkt der Bewilligung.",
+        "checked_at": "2026-11-26",
+        "method": "page"
+      },
+      {
+        "source_url": "https://voris.wolterskluwer-online.de/browse/document/51b135b7-293f-370c-8eb4-7037f0cec27d",
+        "quote": "Das Vorhaben muss der Verbesserung oder Erhaltung der ökologischen Qualitätskomponenten oder der Verbesserung oder Erhaltung des chemischen Zustands nach der EU-WRRL oder EU-MSRL dienen.",
+        "checked_at": "2026-11-26",
+        "method": "page"
+      },
+      {
+        "source_url": "https://voris.wolterskluwer-online.de/browse/document/51b135b7-293f-370c-8eb4-7037f0cec27d",
+        "quote": "Mit dem Vorhaben ist keine unmittelbare wirtschaftliche Tätigkeit des Begünstigten verbunden und es werden keine Einkünfte erzielt.",
+        "checked_at": "2026-11-26",
+        "method": "page"
+      },
+      {
+        "source_url": "https://voris.wolterskluwer-online.de/browse/document/51b135b7-293f-370c-8eb4-7037f0cec27d",
+        "quote": "Bei der geförderten Investition handelt es sich um eine gemeinnützige und/oder im öffentlichen Interesse stehende Investition zur Verbesserung des Umwelt- und Gewässerschutzes.",
+        "checked_at": "2026-11-26",
+        "method": "page"
+      },
+      {
+        "source_url": "https://voris.wolterskluwer-online.de/browse/document/d7b3119b-fb69-330b-be02-08fb8e03cdd9",
+        "quote": "zu deren Durchführung eine rechtliche Verpflichtung besteht, z. B. verbindlich festgesetzte Kompensationsmaßnahmen; nicht ausgeschlossen sind darüberhinausgehende ergänzende oder freiwillige Vorhaben,",
+        "checked_at": "2026-11-26",
+        "method": "page"
+      },
+      {
+        "source_url": "https://voris.wolterskluwer-online.de/browse/document/d7b3119b-fb69-330b-be02-08fb8e03cdd9",
+        "quote": "für die bereits eine Förderung aus anderen Finanzierungsquellen erfolgt (Ausschluss der Doppelfinanzierung).",
+        "checked_at": "2026-11-26",
         "method": "page"
       }
     ],
@@ -160,7 +224,15 @@
       "quote": "100 % Förderung (Vollfinanzierung), Anteilsfinanzierung von 95% für Gebietskörperschaften und deren Zusammenschlüsse",
       "checked_at": "2026-11-25",
       "method": "page"
-    }
+    },
+    "after_award": [
+      {
+        "source_url": "https://voris.wolterskluwer-online.de/browse/document/90f2b227-5b0d-37ec-bce0-7eb45c645d37",
+        "quote": "für Vor-Ort-Kontrollen ein Betretungsrecht für alle Betriebsflächen und Betriebsräume einzuräumen.",
+        "checked_at": "2026-11-26",
+        "method": "page"
+      }
+    ]
   },
   "checked_at": "2026-11-25"
 }

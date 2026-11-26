@@ -18,7 +18,13 @@
   },
   "co_finance_required": true,
   "reporting": null,
-  "effort": { "steps": ["Application submission", "Regional services' review"] },
+  "effort": {
+    "steps": [
+      "Application submission",
+      "Regional services' review",
+      "Permanent commission funding vote"
+    ]
+  },
   "eligibility": [
     {
       "rule": "Territorial authorities and their groups request operating expenses only, except departments",
@@ -29,14 +35,21 @@
       "kind": "project"
     },
     {
-      "rule": "The project has not started before the permanent commission adopts its agreements",
+      "rule": "If work starts before the funding vote, submit a request for an exceptional early start.",
       "kind": "project"
     },
-    { "rule": "No artificialisation of natural, farm or forest land", "kind": "project" },
-    { "rule": "No tree felling, except diseased or unsafe trees", "kind": "project" },
-    { "rule": "No planting of invasive alien species", "kind": "project" },
     {
-      "rule": "Budget excludes land purchase, paving, roads, furniture, lighting replacement, intern or volunteer costs",
+      "rule": "Any conversion of natural, farm or forest land aligns with the region’s net-zero land take target.",
+      "kind": "project"
+    },
+    {
+      "rule": "No tree felling unless a phytosanitary diagnosis finds disease or there is a proven safety risk.",
+      "kind": "project"
+    },
+    { "rule": "No planting of invasive alien species", "kind": "project" },
+    { "rule": "Request more than EUR 10,000 from the region.", "kind": "project" },
+    {
+      "rule": "On private land, if the owner is not the project lead, agree maintenance terms with the owner in writing.",
       "kind": "project"
     }
   ],
@@ -107,6 +120,12 @@
         "quote": "Après instruction des dossiers par les services régionaux",
         "checked_at": "2026-11-25",
         "method": "page"
+      },
+      {
+        "source_url": "https://www.iledefrance.fr/aides-et-appels-a-projets/reconquete-de-la-biodiversite",
+        "quote": "Après instruction des dossiers par les services régionaux, l'attribution définitive des aides est votée en commission permanente régionale.",
+        "checked_at": "2026-11-26",
+        "method": "page"
       }
     ],
     "eligibility": [
@@ -123,9 +142,9 @@
         "method": "page"
       },
       {
-        "source_url": "https://www.iledefrance.fr/aides-et-appels-a-projets/reconquete-de-la-biodiversite",
-        "quote": "Conformément aux règles d'attribution des subventions régionales, les projets présentés ne devront pas avoir commencé avant l'adoption par la Commission permanente des conventions dont ils font l'objet.",
-        "checked_at": "2026-11-25",
+        "source_url": "https://mesdemarches.iledefrance.fr/document-collect/cridfprd/root/public?objectId=0cc08ed3-ad9e-4cdd-8473-4d7bdb0d1c53;1.0",
+        "quote": "Si les travaux (ou les achats) démarrent avant la commission d’attribution de la subvention, vous devez joindre une demande de démarrage anticipé au dossier, précisant la date exacte du démarrage et le motif de ce démarrage anticipé.",
+        "checked_at": "2026-11-26",
         "method": "page"
       },
       {
@@ -147,9 +166,15 @@
         "method": "page"
       },
       {
-        "source_url": "https://mesdemarches.iledefrance.fr/document-collect/cridfprd/root/public?objectId=0cc08ed3-ad9e-4cdd-8473-4d7bdb0d1c53;1.0",
-        "quote": "L’acquisition de foncier ; − Les revêtements perméables et imperméables ; − Les aménagements routiers, travaux de VRD Voiries et Réseaux Divers ; − Le mobilier, équipements sportifs ou jeux ; − Le remplacement des luminaires et documents de planification associés à l’éclairage ; − Les dépenses de gratification de stage, rémunération d’alternants, bénévolat valorisé",
-        "checked_at": "2026-11-25",
+        "source_url": "https://mesdemarches.iledefrance.fr/document-collect/cridfprd/root/public?objectId=363fcc4e-9e7c-4d4a-a1ed-9347379c9e89;1.0",
+        "quote": "Le montant minimum de la subvention régionale sollicitée doit être supérieur à 10 000 €.",
+        "checked_at": "2026-11-26",
+        "method": "page"
+      },
+      {
+        "source_url": "https://mesdemarches.iledefrance.fr/document-collect/cridfprd/root/public?objectId=363fcc4e-9e7c-4d4a-a1ed-9347379c9e89;1.0",
+        "quote": "Lorsque les opérations concernent le domaine privé, les conditions d’entretien doivent alors être précisées et contractualisées par une convention avec le propriétaire, si le projet est porté par un autre maître d’ouvrage que ce dernier.",
+        "checked_at": "2026-11-26",
         "method": "page"
       }
     ],
@@ -157,12 +182,6 @@
       {
         "source_url": "https://mesdemarches.iledefrance.fr/document-collect/cridfprd/root/public?objectId=0cc08ed3-ad9e-4cdd-8473-4d7bdb0d1c53;1.0",
         "quote": "Un courrier de saisine adressé à la Présidente du conseil régional d’Île-de-France",
-        "checked_at": "2026-11-25",
-        "method": "page"
-      },
-      {
-        "source_url": "https://mesdemarches.iledefrance.fr/document-collect/cridfprd/root/public?objectId=0cc08ed3-ad9e-4cdd-8473-4d7bdb0d1c53;1.0",
-        "quote": "la décision du conseil d’administration du maître d’ouvrage approuvant l’opération et sollicitant les aides financières de la Région",
         "checked_at": "2026-11-25",
         "method": "page"
       },
@@ -213,27 +232,36 @@
         "quote": "La copie certifiée du compte de résultats et du bilan du dernier exercice certifié par un commissaire aux comptes si nécessaire",
         "checked_at": "2026-11-25",
         "method": "page"
+      },
+      {
+        "source_url": "https://mesdemarches.iledefrance.fr/document-collect/cridfprd/root/public?objectId=0cc08ed3-ad9e-4cdd-8473-4d7bdb0d1c53;1.0",
+        "quote": "La délibération de la collectivité ou la décision du conseil d’administration du maître d’ouvrage approuvant l’opération et sollicitant les aides financières de la Région, les délibérations et le cas échéant la convention, lorsque l’un des maîtres d’ouvrage délègue la maîtrise d’ouvrage",
+        "checked_at": "2026-11-26",
+        "method": "page"
       }
     ],
     "co_finance": {
       "source_url": "https://www.iledefrance.fr/aides-et-appels-a-projets/reconquete-de-la-biodiversite",
-      "quote": "Pour les dépenses en investissement : jusqu'à 70% du montant des dépenses subventionnables (subvention max : 200 000 €).",
-      "checked_at": "2026-11-25",
+      "quote": "Pour les dépenses en investissement : jusqu'à 70% du montant des dépenses subventionnables (subvention max : 200 000 €). Pour les dépenses en fonctionnement : jusqu'à 50% du montant des dépenses subventionnables (subvention max : 20 000 € TTC, bénévolat exclu).",
+      "checked_at": "2026-11-26",
       "method": "page"
     }
   },
   "checked_at": "2026-11-25",
   "documents": [
     "Cover letter to the President of the Regional Council",
-    "Board decision approving the project and requesting regional funding",
+    "Council resolution or board decision approving the project and funding request, plus delegation papers if applicable",
     "Municipality opinion or landowner consent, if another body leads the project",
     "Technical description of the project",
     "Photos, plans or other graphics of the site",
     "Detailed financing plan, excluding and including VAT",
-    "Detailed cost estimates (quotes)",
+    "Detailed cost estimates and supporting financial information, excluding and including VAT",
     "Project timeline",
     "Statutes, for associations",
     "Latest certified income statement and balance sheet, for associations"
   ],
-  "co_finance": { "min_share": 30 }
+  "co_finance": {
+    "min_share": 30,
+    "applies_to": "Investment expenses. Operating expenses require at least 50%."
+  }
 }

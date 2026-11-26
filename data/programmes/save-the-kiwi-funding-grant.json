@@ -19,18 +19,34 @@
   "amount": null,
   "co_finance_required": null,
   "reporting": null,
-  "effort": { "steps": ["Online application via the portal", "Application assessment"] },
+  "effort": {
+    "steps": [
+      "Online application via the portal",
+      "Application assessment",
+      "Save the Kiwi Board of Trustees approves final allocations"
+    ],
+    "due": ["2026-04-30", null, null]
+  },
   "eligibility": [
     {
       "rule": "If an organisation: university, zoo, research body, charity, incorporated society, kiwi or Landcare group",
       "kind": "legal"
     },
     {
-      "rule": "Undertake work that is not carried out by the Department of Conservation",
+      "rule": "The proposed work is not undertaken by the Department of Conservation",
+      "kind": "project"
+    },
+    {
+      "rule": "For multi-year funding, the project has operated successfully for at least three years",
+      "kind": "track_record"
+    },
+    {
+      "rule": "For multi-year funding, the project has measures in place to show effectiveness",
       "kind": "project"
     }
   ],
   "after_award": { "reports": "interim_and_final", "site_visits": true },
+  "documents": ["Organisation business plan and budget, for multi-year funding"],
   "calls": [
     {
       "id": "2026",
@@ -120,6 +136,18 @@
         "quote": "Applications are assessed by the Kiwi Recovery Group members.",
         "checked_at": "2026-11-25",
         "method": "page"
+      },
+      {
+        "source_url": "https://savethekiwi.nz/about-us/what-we-do/funding/",
+        "quote": "Applications will open 1 April and close 9pm 30 April 2026.",
+        "checked_at": "2026-11-26",
+        "method": "page"
+      },
+      {
+        "source_url": "https://savethekiwi.nz/about-us/what-we-do/funding/",
+        "quote": "Recommendations are made to the Save the Kiwi Board of Trustees, who approve the final allocations.",
+        "checked_at": "2026-11-26",
+        "method": "page"
       }
     ],
     "eligibility": [
@@ -134,6 +162,18 @@
         "quote": "Work undertaken by the Department of Conservation is not eligible for funding from Save the Kiwi.",
         "checked_at": "2026-11-25",
         "method": "page"
+      },
+      {
+        "source_url": "https://savethekiwi.nz/about-us/what-we-do/funding/funding-criteria/",
+        "quote": "The project has been successfully operational for three or more years.",
+        "checked_at": "2026-11-26",
+        "method": "page"
+      },
+      {
+        "source_url": "https://savethekiwi.nz/about-us/what-we-do/funding/funding-criteria/",
+        "quote": "Projects must have in place measurements to prove effectiveness.",
+        "checked_at": "2026-11-26",
+        "method": "page"
       }
     ],
     "after_award": [
@@ -147,6 +187,14 @@
         "source_url": "https://savethekiwi.nz/about-us/what-we-do/funding/terms-and-conditions/",
         "quote": "The funded organisation will provide reasonable access to the project as requested by the Trust's executive director, trustees and/or regional coordinators.",
         "checked_at": "2026-11-25",
+        "method": "page"
+      }
+    ],
+    "documents": [
+      {
+        "source_url": "https://savethekiwi.nz/about-us/what-we-do/funding/funding-criteria/",
+        "quote": "Your organisation has a business plan and budget. Please supply these in the supporting documents when applying for funding.",
+        "checked_at": "2026-11-26",
         "method": "page"
       }
     ]

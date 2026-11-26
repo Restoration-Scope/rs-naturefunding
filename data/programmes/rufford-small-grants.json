@@ -162,21 +162,32 @@
   "amount": { "currency": "GBP", "min": 7000, "max": 18000 },
   "co_finance_required": null,
   "reporting": null,
-  "effort": { "steps": ["Online application", "Initial office review", "External expert review"] },
+  "effort": {
+    "steps": ["Online application", "Initial office review", "External expert review, if advanced"]
+  },
   "eligibility": [
-    { "rule": "Project has a nature conservation focus", "kind": "project" },
-    { "rule": "Any species the project works on is threatened", "kind": "project" },
-    { "rule": "Project has not already begun", "kind": "project" },
-    { "rule": "Applicant is not studying for a BSc or equivalent", "kind": "other" },
-    { "rule": "Request covers fieldwork costs only", "kind": "project" },
     {
-      "rule": "No pure research, expeditions, conferences, seminars or book publishing",
+      "rule": "Species focus: globally assessed and not Least Concern, or unassessed and thought globally threatened.",
       "kind": "project"
     },
-    { "rule": "Funds are paid to an organisation, not a personal account", "kind": "legal" },
+    { "rule": "Project has not already begun", "kind": "project" },
+    { "rule": "Applicant is not studying for a BSc or equivalent", "kind": "other" },
+    {
+      "rule": "No pure research without clear conservation benefit, expeditions, conference or seminar attendance, or book publishing.",
+      "kind": "project"
+    },
+    {
+      "rule": "Before applying, arrange for an organisation to receive and manage the grant.",
+      "kind": "project"
+    },
     {
       "rule": "Applicants from advanced economies: project in an eligible country, high priority, builds local capacity",
       "kind": "project"
+    },
+    { "rule": "Submit at most one funding application in any 12-month period.", "kind": "other" },
+    {
+      "rule": "Applicant has not previously received a Rufford Completion Grant.",
+      "kind": "track_record"
     }
   ],
   "after_award": { "reports": "interim_and_final" },
@@ -267,14 +278,8 @@
     "eligibility": [
       {
         "source_url": "https://apply.ruffordsmallgrants.org/help/criteria",
-        "quote": "Projects must have a nature conservation focus.",
-        "checked_at": "2026-11-25",
-        "method": "page"
-      },
-      {
-        "source_url": "https://apply.ruffordsmallgrants.org",
-        "quote": "Any species you are working on must be considered threatened.",
-        "checked_at": "2026-11-25",
+        "quote": "For projects focusing on species, we consider work on any NOT listed as Least Concern at a global level in the IUCN Red List of Threatened Species. We also consider species that do not appear on the list because they have not been assessed but are thought to be globally threatened.",
+        "checked_at": "2026-11-26",
         "method": "page"
       },
       {
@@ -291,26 +296,32 @@
       },
       {
         "source_url": "https://apply.ruffordsmallgrants.org/help/criteria",
-        "quote": "We will only consider fieldwork costs.",
-        "checked_at": "2026-11-25",
-        "method": "page"
-      },
-      {
-        "source_url": "https://apply.ruffordsmallgrants.org/help/criteria",
         "quote": "Pure research with no obvious conservation benefit. Expeditions, particularly where the applicant must raise funds in order to participate. Attending conferences or seminars. Publishing books.",
         "checked_at": "2026-11-25",
         "method": "page"
       },
       {
-        "source_url": "https://apply.ruffordsmallgrants.org/static/files/RSG_Application_Form_Questions.docx",
-        "quote": "Funds are ONLY paid to organisations (such as a nature conservation NGO or university department).",
-        "checked_at": "2026-11-25",
+        "source_url": "https://apply.ruffordsmallgrants.org/help/faqs",
+        "quote": "You need to ensure that you have arranged for an organisation to receive and manage the funds before you make your application.",
+        "checked_at": "2026-11-26",
         "method": "page"
       },
       {
         "source_url": "https://apply.ruffordsmallgrants.org/help/eligibility",
         "quote": "We will not consider projects from applicants from advanced economies unless the project is in an eligible country, of high conservation priority and efforts are made to enhance local conservation capacity.",
         "checked_at": "2026-11-25",
+        "method": "page"
+      },
+      {
+        "source_url": "https://apply.ruffordsmallgrants.org/help/criteria",
+        "quote": "You can only make one funding application in any 12-month period.",
+        "checked_at": "2026-11-26",
+        "method": "page"
+      },
+      {
+        "source_url": "https://apply.ruffordsmallgrants.org/help/criteria",
+        "quote": "On receipt of a Completion Grant, you cannot apply for further funding.",
+        "checked_at": "2026-11-26",
         "method": "page"
       }
     ],

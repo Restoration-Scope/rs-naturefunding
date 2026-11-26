@@ -27,6 +27,55 @@
   "amount": { "currency": "EUR", "max": 50000 },
   "co_finance_required": true,
   "reporting": "Grantees must submit a usage report within three months after the project ends, consisting of a narrative report and a calculable financial report; for multi‑year projects an annual interim report may be required.",
+  "effort": {
+    "steps": [
+      "Email an eligibility enquiry with a short outline and budget (optional)",
+      "Submit a digital application",
+      "Application review and decision by the appropriate decision-maker"
+    ]
+  },
+  "eligibility": [
+    { "rule": "Applicant has its tax domicile in Lower Saxony", "kind": "legal" },
+    {
+      "rule": "Applicant is a tax-privileged entity or a public-law body or institution",
+      "kind": "legal"
+    },
+    {
+      "rule": "Applicant has the expertise to deliver lasting results and manage grant funds properly",
+      "kind": "capacity"
+    },
+    {
+      "rule": "Project has not started, unless the foundation has authorised an early start",
+      "kind": "project"
+    },
+    {
+      "rule": "Project does not deliver activities that are already a public-law obligation",
+      "kind": "project"
+    },
+    {
+      "rule": "Apply to eligible EU, federal or Lower Saxony schemes first, unless this would take disproportionate effort",
+      "kind": "project"
+    },
+    { "rule": "Project is not financed by borrowing", "kind": "project" },
+    {
+      "rule": "Project excludes ongoing maintenance and establishment care on more strictly protected sites",
+      "kind": "project"
+    }
+  ],
+  "co_finance": { "min_share": 15, "in_kind": true, "applies_to": "Projects over €5,000" },
+  "after_award": { "reports": "final" },
+  "documents": [
+    "Cost and financing plan, simplified for projects up to €5,000",
+    "Supplementary project description for projects over €15,000",
+    "Tax-exemption notice from a Lower Saxony tax office, for tax-privileged entities",
+    "Statutes for associations and foundations",
+    "Articles of association for charitable companies",
+    "Official permits for projects requiring approval and projects in protected areas",
+    "Long-term lease or use agreements for habitat creation or enhancement, usually for at least 20 years",
+    "Applicable alternative cost plans for funding applications made elsewhere",
+    "Planting lists for practical conservation projects at educational institutions",
+    "Cost estimates for practical conservation projects at educational institutions"
+  ],
   "calls": [
     {
       "id": "rolling",
@@ -77,9 +126,9 @@
       "method": "page"
     },
     "co_finance_required": {
-      "source_url": "https://www.bingo-umweltstiftung.de/foerderrichtlinie/",
-      "quote": "Grundsätzlich soll der Eigenanteil mindestens 15 Prozent betragen.",
-      "checked_at": "2026-11-25",
+      "source_url": "https://www.bingo-umweltstiftung.de/faq/",
+      "quote": "Die Niedersächsische Bingo-Umweltstiftung fordert grundsätzlich eine Eigenbeteiligung von mindestens 15 %. Der Eigenanteil kann aber auch als unbare Eigenleistung erbracht werden. Bei Projekten bis 5.000,- Euro wird kein Eigenanteil vorausgesetzt.",
+      "checked_at": "2026-11-26",
       "method": "page"
     },
     "reporting": {
@@ -87,7 +136,147 @@
       "quote": "Spätestens drei Monate nach Abschluss der geförderten Maßnahme hat der Zuwendungsempfänger einen Nachweis über die verwendeten Mittel zu erbringen. Der Verwendungsnachweis besteht aus einem Sachbericht und einem rechnerischen Nachweis.",
       "checked_at": "2026-11-25",
       "method": "page"
-    }
+    },
+    "effort": [
+      {
+        "source_url": "https://www.bingo-umweltstiftung.de/wie-stelle-ich-einen-antrag-2/",
+        "quote": "Gerne können Sie vor einer formalen Antragstellung bei der Stiftung per E-Mail an info@bingo-umweltstiftung.de anfragen, ob Ihr Vorhaben grundsätzlich förderfähig ist. Am besten reichen Sie eine kurze Skizze inkl. ersten Kostenplan ein.",
+        "checked_at": "2026-11-26",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.bingo-umweltstiftung.de/foerderrichtlinie/",
+        "quote": "Anträge sind digital über die Stiftungswebsite einzureichen.",
+        "checked_at": "2026-11-26",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.bingo-umweltstiftung.de/foerderrichtlinie/",
+        "quote": "In den übrigen Fällen entscheidet die Geschäftsführung bis zu einem beantragten Zuschuss in Höhe von 15.000 Euro sowie der Vorstand über einen beantragten Zuschuss von über 15.000 Euro bis 50.000 Euro.",
+        "checked_at": "2026-11-26",
+        "method": "page"
+      }
+    ],
+    "eligibility": [
+      {
+        "source_url": "https://www.bingo-umweltstiftung.de/foerderrichtlinie/",
+        "quote": "Bei allen Projekten (ausgenommen Emsfonds) muss der Antragsteller seinen steuerrechtlichen Sitz in Niedersachsen haben.",
+        "checked_at": "2026-11-26",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.bingo-umweltstiftung.de/foerderrichtlinie/",
+        "quote": "Antragsberechtigt sind steuerbegünstigte Körperschaften oder Körperschaften oder Anstalten des öffentlichen Rechts.",
+        "checked_at": "2026-11-26",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.bingo-umweltstiftung.de/foerderrichtlinie/",
+        "quote": "Der Antragsteller muss über die fachliche Qualifikation verfügen, die einen nachhaltigen Erfolg des Projektes und eine ordnungsgemäße Verwendung der Stiftungsmittel gewährleistet.",
+        "checked_at": "2026-11-26",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.bingo-umweltstiftung.de/termine-und-antragsfristen/",
+        "quote": "Ohne Zustimmung der Stiftung darf mit dem Projekt nicht begonnen werden!",
+        "checked_at": "2026-11-26",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.bingo-umweltstiftung.de/foerderrichtlinie/",
+        "quote": "Maßnahmen, zu deren Durchführung eine öffentlich-rechtliche Verpflichtung besteht, insbesondere gilt dies für Artenschutzprojekte in Natura- 2000-Gebieten und Kompensationsmaßnahmen.",
+        "checked_at": "2026-11-26",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.bingo-umweltstiftung.de/foerderrichtlinie/",
+        "quote": "Projekte, die auch aus Förderprogrammen der Europäischen Union, des Bundes oder des Landes Niedersachsen gefördert werden können, sind vorrangig dort zu beantragen. Hierbei darf der Aufwand im Vergleich zur beantragten Förderhöhe nicht unverhältnismäßig sein.",
+        "checked_at": "2026-11-26",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.bingo-umweltstiftung.de/foerderrichtlinie/",
+        "quote": "Projekte, die mittels Krediten finanziert werden.",
+        "checked_at": "2026-11-26",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.bingo-umweltstiftung.de/umwelt-und-naturschutz/",
+        "quote": "Die Durchführung von Dauerpflegemaßnahmen sowie die Durchführung von Entwicklungspflegemaßnahmen auf Flächen oberhalb des Schutzstatus Landschaftsschutzgebiet.",
+        "checked_at": "2026-11-26",
+        "method": "page"
+      }
+    ],
+    "co_finance": {
+      "source_url": "https://www.bingo-umweltstiftung.de/faq/",
+      "quote": "Die Niedersächsische Bingo-Umweltstiftung fordert grundsätzlich eine Eigenbeteiligung von mindestens 15 %. Der Eigenanteil kann aber auch als unbare Eigenleistung erbracht werden. Bei Projekten bis 5.000,- Euro wird kein Eigenanteil vorausgesetzt.",
+      "checked_at": "2026-11-26",
+      "method": "page"
+    },
+    "after_award": [
+      {
+        "source_url": "https://www.bingo-umweltstiftung.de/foerderrichtlinie/",
+        "quote": "Spätestens drei Monate nach Abschluss der geförderten Maßnahme hat der Zuwendungsempfänger einen Nachweis über die verwendeten Mittel zu erbringen. Der Verwendungsnachweis besteht aus einem Sachbericht und einem rechnerischen Nachweis.",
+        "checked_at": "2026-11-26",
+        "method": "page"
+      }
+    ],
+    "documents": [
+      {
+        "source_url": "https://www.bingo-umweltstiftung.de/wie-stelle-ich-einen-antrag-2/",
+        "quote": "Für Projekte bis zu 5.000,- Euro: Ein vereinfachter Kosten- und Finanzierungsplan (ohne Eigenanteil), digitales Antragsformular.",
+        "checked_at": "2026-11-26",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.bingo-umweltstiftung.de/wie-stelle-ich-einen-antrag-2/",
+        "quote": "Für Projekte über 15.000,- Euro: Ein Kosten- und Finanzierungsplan (mit min. 15% Eigenanteil), digitales Antragsformular, ergänzende Projektbeschreibung.",
+        "checked_at": "2026-11-26",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.bingo-umweltstiftung.de/foerderrichtlinie/",
+        "quote": "Die Steuerbegünstigung muss durch Vorlage des Freistellungsbescheides eines niedersächsischen Finanzamtes nachgewiesen werden.",
+        "checked_at": "2026-11-26",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.bingo-umweltstiftung.de/foerderrichtlinie/",
+        "quote": "Bei Vereinen und Stiftungen ist zusätzlich die Satzung, bei gemeinnützigen Kapitalgesellschaften der Gesellschaftsvertrag einzureichen.",
+        "checked_at": "2026-11-26",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.bingo-umweltstiftung.de/foerderrichtlinie/",
+        "quote": "Bei genehmigungspflichtigen Maßnahmen und Projekten in Schutzgebieten sind die behördlichen Genehmigungen sowie – wenn vorhanden – mögliche weitere Stellungnahmen, die das Projekt bewerten, beizufügen.",
+        "checked_at": "2026-11-26",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.bingo-umweltstiftung.de/foerderrichtlinie/",
+        "quote": "Bei Biotopneuanlagen oder -aufwertungen müssen langfristige Pacht- und/ oder Nutzungsverträge (in der Regel mindestens 20 Jahre) vorgelegt werden.",
+        "checked_at": "2026-11-26",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.bingo-umweltstiftung.de/foerderrichtlinie/",
+        "quote": "Angaben zu Anträgen auf Förderung bei anderen Stellen, ggf. sind abweichende Kostenpläne einzureichen",
+        "checked_at": "2026-11-26",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.bingo-umweltstiftung.de/umwelt-und-naturschutz/",
+        "quote": "Pflanzlisten.",
+        "checked_at": "2026-11-26",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.bingo-umweltstiftung.de/umwelt-und-naturschutz/",
+        "quote": "Kostenvoranschläge.",
+        "checked_at": "2026-11-26",
+        "method": "page"
+      }
+    ]
   },
   "checked_at": "2026-11-25"
 }

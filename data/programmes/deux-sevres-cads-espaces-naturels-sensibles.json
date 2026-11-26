@@ -24,10 +24,6 @@
       "rule": "Be the owner or contracted manager responsible for works and equipment on a Department-designated ENS",
       "kind": "legal"
     },
-    {
-      "rule": "Have the site owner accept the ENS contract governing site management",
-      "kind": "project"
-    },
     { "rule": "Submit the grant application before any work begins", "kind": "project" },
     {
       "rule": "Restoration of this habitat type on the site has not already been funded",
@@ -40,6 +36,10 @@
     {
       "rule": "Keep equipment light and its quantity and placement parsimonious",
       "kind": "project"
+    },
+    {
+      "rule": "Combine all projects on the same ENS into one application per year",
+      "kind": "project"
     }
   ],
   "documents": [
@@ -51,7 +51,8 @@
     "Estimated quotations by expenditure category",
     "Resolution adopting the project and financing arrangements",
     "Signed statement that works have not started",
-    "Signed ENS contract for sites designated before 2022"
+    "Signed ENS contract for sites designated before 2022",
+    "Bank account details (RIB)"
   ],
   "calls": [
     {
@@ -125,12 +126,6 @@
       },
       {
         "source_url": "https://www.deux-sevres.fr/sites/default/files/2022-12/cads-espaces-naturels-sensibles.pdf",
-        "quote": "L'attribution de la subvention est soumise à l'acceptation par le propriétaire du site du contrat ENS, définissant des conditions de gestion du site par le bénéficiaire de la subvention.",
-        "checked_at": "2026-11-25",
-        "method": "page"
-      },
-      {
-        "source_url": "https://www.deux-sevres.fr/sites/default/files/2022-12/cads-espaces-naturels-sensibles.pdf",
         "quote": "Le maître d'ouvrage doit établir sa demande de subvention avant tout commencement de l'opération.",
         "checked_at": "2026-11-25",
         "method": "page"
@@ -152,6 +147,12 @@
         "quote": "Les équipements sont légers et leur quantité et emplacement parcimonieux.",
         "checked_at": "2026-11-25",
         "method": "page"
+      },
+      {
+        "source_url": "https://www.deux-sevres.fr/sites/default/files/2022-12/cads-espaces-naturels-sensibles.pdf",
+        "quote": "Les différents projets sur un ENS feront l’objet d’une seule demande annuelle.",
+        "checked_at": "2026-11-26",
+        "method": "page"
       }
     ],
     "documents": [
@@ -172,15 +173,24 @@
         "quote": "contrat ENS signé pour les ENS désignés avant 2022",
         "checked_at": "2026-11-25",
         "method": "page"
+      },
+      {
+        "source_url": "https://www.deux-sevres.fr/sites/default/files/2022-12/cads-espaces-naturels-sensibles.pdf",
+        "quote": "contrat ENS signé pour les ENS désignés avant 2022 • \u0007RIB.",
+        "checked_at": "2026-11-26",
+        "method": "page"
       }
     ],
     "co_finance": {
       "source_url": "https://www.deux-sevres.fr/sites/default/files/2022-12/cads-espaces-naturels-sensibles.pdf",
-      "quote": "les ENS de catégorie 2 à 50 % du montant HT des dépenses subventionnables",
-      "checked_at": "2026-11-25",
+      "quote": "les ENS de catégorie 2 à 50 % du montant HT des dépenses subventionnables, avec un plafond de la subvention fixé à 20 000 € pour les travaux et 15 000 € pour les aménagements, • les ENS de catégorie 3 à 25 % du montant HT des dépenses subventionnables",
+      "checked_at": "2026-11-26",
       "method": "page"
     }
   },
   "checked_at": "2026-11-25",
-  "co_finance": { "min_share": 50 }
+  "co_finance": {
+    "min_share": 50,
+    "applies_to": "Category 2: 50%; category 3: 75% of eligible pre-tax costs"
+  }
 }

@@ -21,19 +21,16 @@
   "amount": { "currency": "GBP", "min": 5000, "max": 20000 },
   "co_finance_required": null,
   "reporting": null,
-  "effort": { "steps": ["Expression of interest (EOI)"] },
+  "effort": {
+    "steps": [
+      "Expression of interest (EOI)",
+      "Discuss the project with HIEF first if non-local or income exceeds £1m"
+    ]
+  },
   "eligibility": [
-    {
-      "rule": "Show strong leadership, use an integrated bottom-up approach, involve communities and demonstrate positive impact",
-      "kind": "capacity"
-    },
     {
       "rule": "If over £1m annual income or non-local, evidence capacity need or local-community delivery impact",
       "kind": "capacity"
-    },
-    {
-      "rule": "If over £1m annual income or non-local, have an informal discussion with HIEF before applying",
-      "kind": "other"
     },
     {
       "rule": "If over £1m annual income or non-local, request at least 10% of the project budget from HIEF",
@@ -48,7 +45,11 @@
       "rule": "Propose neither an individual PhD nor a specialist research study",
       "kind": "project"
     },
-    { "rule": "Do not propose pure research", "kind": "project" }
+    { "rule": "Do not propose pure research", "kind": "project" },
+    {
+      "rule": "Fit one HIEF area: threats, habitats and species, ecosystem restoration, or community empowerment",
+      "kind": "project"
+    }
   ],
   "calls": [
     {
@@ -106,24 +107,18 @@
         "quote": "before completing an EoI",
         "checked_at": "2026-11-25",
         "method": "page"
+      },
+      {
+        "source_url": "https://hief.scot/apply-for-a-grant/",
+        "quote": "The organisation has had an informal discussion with [email protected] prior to applying",
+        "checked_at": "2026-11-26",
+        "method": "page"
       }
     ],
     "eligibility": [
       {
         "source_url": "https://hief.scot/apply-for-a-grant/",
-        "quote": "All applicants must display strong and effective leadership and emphasise an integrated, bottom-up approach, consulting with, mobilising and involving local communities and demonstrating positive community impact.",
-        "checked_at": "2026-11-25",
-        "method": "page"
-      },
-      {
-        "source_url": "https://hief.scot/apply-for-a-grant/",
         "quote": "The applicant can evidence i) the need for their capacity building to support local communities or ii) how they will work with local communities to deliver tangible impact",
-        "checked_at": "2026-11-25",
-        "method": "page"
-      },
-      {
-        "source_url": "https://hief.scot/apply-for-a-grant/",
-        "quote": "The organisation has had an informal discussion with [email protected] prior to applying",
         "checked_at": "2026-11-25",
         "method": "page"
       },
@@ -155,6 +150,12 @@
         "source_url": "https://hief.scot/apply-for-a-grant/",
         "quote": "Pure research will not be considered for funding.",
         "checked_at": "2026-11-25",
+        "method": "page"
+      },
+      {
+        "source_url": "https://hief.scot/apply-for-a-grant/",
+        "quote": "Applications must fit into one of the four Areas of Interest and meet the primary two objectives for HIEF grants:",
+        "checked_at": "2026-11-26",
         "method": "page"
       }
     ]

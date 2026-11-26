@@ -23,12 +23,36 @@
   "amount": { "currency": "AUD", "min": 150000, "max": 350000 },
   "co_finance_required": null,
   "reporting": "Grantees submit a milestone report after each stage of works in their workplan.",
-  "effort": { "steps": ["Application through the Grant Management System"] },
+  "effort": {
+    "steps": [
+      "Application through the Grant Management System",
+      "Consult NSW staff first for threatened species or ecological communities"
+    ],
+    "due": ["2026-05-13", null]
+  },
   "eligibility": [
     { "rule": "The project lasts 3 to 5 years", "kind": "project" },
-    { "rule": "Has an active Australian Business Number (ABN)", "kind": "legal" }
+    { "rule": "Has an active Australian Business Number (ABN)", "kind": "legal" },
+    { "rule": "Universities apply only for projects on their own land", "kind": "project" },
+    {
+      "rule": "Unincorporated community groups partner with an eligible external grant manager",
+      "kind": "legal"
+    },
+    { "rule": "Submit no more than two applications per organization", "kind": "other" },
+    {
+      "rule": "Allocate at least 10% of the overall project budget to monitoring",
+      "kind": "project"
+    },
+    {
+      "rule": "Projects using Aboriginal knowledge or practices partner with relevant Aboriginal groups or stakeholders",
+      "kind": "project"
+    },
+    {
+      "rule": "Activities are not solely for aesthetics, local amenity or recreation",
+      "kind": "project"
+    }
   ],
-  "after_award": { "reports": "yearly", "audit": true },
+  "after_award": { "reports": "other" },
   "calls": [
     {
       "id": "2026",
@@ -113,6 +137,18 @@
         "quote": "Applicants submitted their applications through the Grant Management System.",
         "checked_at": "2026-11-25",
         "method": "page"
+      },
+      {
+        "source_url": "https://www.environment.nsw.gov.au/sites/default/files/2026-03/restoration-rehabilitation-grants-program-guidelines-2026-260023.pdf",
+        "quote": "2026 –27 round closes at 11:59 pm on 13 May 2026.",
+        "checked_at": "2026-11-26",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.environment.nsw.gov.au/funding-and-support/nsw-environmental-trust/grants-available/environmental-restoration-and-rehabilitation/more-information-for-applicants",
+        "quote": "Discuss your project with a departmental staff member before you put in your grant application. In your application, you will need to include the staff officer’s name and confirmation of your discussions.",
+        "checked_at": "2026-11-26",
+        "method": "page"
       }
     ],
     "eligibility": [
@@ -127,6 +163,42 @@
         "quote": "All applicants must have an active Australian Business Number (ABN) to confirm their eligibility as an organisation.",
         "checked_at": "2026-11-25",
         "method": "page"
+      },
+      {
+        "source_url": "https://www.environment.nsw.gov.au/sites/default/files/2026-03/restoration-rehabilitation-grants-program-guidelines-2026-260023.pdf",
+        "quote": "universities (only eligible to apply for funding for projects on their own land)",
+        "checked_at": "2026-11-26",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.environment.nsw.gov.au/sites/default/files/2026-03/restoration-rehabilitation-grants-program-guidelines-2026-260023.pdf",
+        "quote": "Unincorporated community organisations can apply for grant funding only if they partner with an eligible organisation, referred to as an ‘external manager’.",
+        "checked_at": "2026-11-26",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.environment.nsw.gov.au/sites/default/files/2026-03/restoration-rehabilitation-grants-program-guidelines-2026-260023.pdf",
+        "quote": "Organisations can submit up to 2 applications.",
+        "checked_at": "2026-11-26",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.environment.nsw.gov.au/sites/default/files/2026-03/restoration-rehabilitation-grants-program-guidelines-2026-260023.pdf",
+        "quote": "At least 10% of the overall project budget must be allocated to monitoring activities",
+        "checked_at": "2026-11-26",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.environment.nsw.gov.au/sites/default/files/2026-03/restoration-rehabilitation-grants-program-guidelines-2026-260023.pdf",
+        "quote": "If your project specifically incorporates Aboriginal knowledge or practices, it is mandatory that you partner with relevant Aboriginal organisations or stakeholders, and this partnership must be demonstrated in your application.",
+        "checked_at": "2026-11-26",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.environment.nsw.gov.au/sites/default/files/2026-03/restoration-rehabilitation-grants-program-guidelines-2026-260023.pdf",
+        "quote": "Activities focused solely on improving aesthetics, local amenity, or recreational opportunities, such as gardening or grounds management, are not eligible for funding",
+        "checked_at": "2026-11-26",
+        "method": "page"
       }
     ],
     "after_award": [
@@ -138,26 +210,43 @@
       },
       {
         "source_url": "https://www.environment.nsw.gov.au/sites/default/files/2026-03/restoration-rehabilitation-grants-program-guidelines-2026-260023.pdf",
-        "quote": "All non -government organisations must allocate funds for their project expenditure to be certified by an independent certifier at the completion of the project, to be submitted with the final report.",
-        "checked_at": "2026-11-25",
+        "quote": "provide milestone reports in accordance with the milestone payment and reporting schedule in the funding agreement",
+        "checked_at": "2026-11-26",
         "method": "page"
       }
     ],
     "documents": [
       {
         "source_url": "https://www.environment.nsw.gov.au/sites/default/files/2026-03/restoration-rehabilitation-grants-program-guidelines-2026-260023.pdf",
-        "quote": "You must submit a draft workplan as part of your application.",
+        "quote": "You must provide relevant mapping information when applying for funding.",
         "checked_at": "2026-11-25",
         "method": "page"
       },
       {
+        "source_url": "https://www.environment.nsw.gov.au/sites/default/files/2026-03/restoration-rehabilitation-grants-program-how-to-develop-your-project-2026-260024.pdf",
+        "quote": "CVs and profiles for all staff who will play an active role in the project.",
+        "checked_at": "2026-11-26",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.environment.nsw.gov.au/sites/default/files/2026-03/restoration-rehabilitation-grants-program-how-to-develop-your-project-2026-260024.pdf",
+        "quote": "Include management plans that your project aligns with or contributes to.",
+        "checked_at": "2026-11-26",
+        "method": "page"
+      },
+      {
         "source_url": "https://www.environment.nsw.gov.au/sites/default/files/2026-03/restoration-rehabilitation-grants-program-guidelines-2026-260023.pdf",
-        "quote": "You must provide relevant mapping information when applying for funding.",
-        "checked_at": "2026-11-25",
+        "quote": "Applicants are required to show evidence of meaningful consultation, such as letters of support from the appropriate Aboriginal stakeholders.",
+        "checked_at": "2026-11-26",
         "method": "page"
       }
     ]
   },
   "checked_at": "2026-11-25",
-  "documents": ["Draft workplan", "Project site maps"]
+  "documents": [
+    "Relevant project maps, including site maps where sites are known",
+    "CVs and profiles for staff active in the project",
+    "Management plans the project aligns with or contributes to, where applicable",
+    "Evidence of meaningful Aboriginal consultation for projects using Aboriginal knowledge or practices"
+  ]
 }

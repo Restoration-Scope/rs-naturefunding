@@ -25,19 +25,29 @@
     "steps": [
       "Proposal (land acquisitions and covenants: any time)",
       "Technical Review Committee review",
-      "RDEK review"
+      "RDEK review and final board approval"
     ]
   },
   "eligibility": [
-    { "rule": "Project is in the Fund Service Area", "kind": "project" },
     {
       "rule": "Project addresses IUCN threats to biodiversity targets and a theme area",
       "kind": "project"
     },
     { "rule": "Multi-year project lasts no more than three years", "kind": "project" },
-    { "rule": "Project is not a listed ineligible activity", "kind": "project" }
+    {
+      "rule": "Project does not replace work a government is already obliged to do",
+      "kind": "project"
+    },
+    {
+      "rule": "A registered nonprofit, local government or First Nations Band leads or partners on the proposal",
+      "kind": "legal"
+    },
+    {
+      "rule": "Land securement proposals describe future property use and management",
+      "kind": "project"
+    }
   ],
-  "after_award": { "reports": "yearly" },
+  "after_award": { "reports": "final" },
   "calls": [
     {
       "id": "general-2027",
@@ -123,15 +133,15 @@
         "quote": "RDEK review completed - January",
         "checked_at": "2026-11-25",
         "method": "page"
+      },
+      {
+        "source_url": "https://kootenayconservation.ca/wp-content/uploads/2025/11/CVLCF-Terms-of-Reference-Amended-Aug2020.pdf",
+        "quote": "The RDEK will be responsible for reviewing the recommendations of the Technical Review Committee and for granting final approval.",
+        "checked_at": "2026-11-26",
+        "method": "page"
       }
     ],
     "eligibility": [
-      {
-        "source_url": "https://kootenayconservation.ca/wp-content/uploads/2025/11/CVLCF-Terms-of-Reference-Amended-Aug2020.pdf",
-        "quote": "(3) Projects must be in the Fund Service Area.",
-        "checked_at": "2026-11-25",
-        "method": "page"
-      },
       {
         "source_url": "https://kootenayconservation.ca/wp-content/uploads/2025/11/CVLCF-Terms-of-Reference-Amended-Aug2020.pdf",
         "quote": "(5) Projects must address IUCN threats to biodiversity targets and fall into at least one theme area (see Section 4).",
@@ -145,9 +155,21 @@
         "method": "page"
       },
       {
+        "source_url": "https://kootenayconservation.ca/columbia-valley-local-conservation-fund/",
+        "quote": "Not the existing obligation or responsibility of the federal, provincial or local governments;",
+        "checked_at": "2026-11-26",
+        "method": "page"
+      },
+      {
         "source_url": "https://kootenayconservation.ca/wp-content/uploads/2025/11/CVLCF-Terms-of-Reference-Amended-Aug2020.pdf",
-        "quote": "The following types of projects will not be considered for funding: (a) Projects that relieve any level of government of its obligations (projects may augment or enhance government activities); (b) Capacity building or operating expenses for organizations; (c) Projects with recreational benefits only; (d) Community infrastructure services;",
-        "checked_at": "2026-11-25",
+        "quote": "Proponents must be a registered non-profit organization, local government, or First Nations Band. Unqualified groups or organizations may partner with a qualified organization.",
+        "checked_at": "2026-11-26",
+        "method": "page"
+      },
+      {
+        "source_url": "https://kootenayconservation.ca/wp-content/uploads/2025/11/CVLCF-Terms-of-Reference-Amended-Aug2020.pdf",
+        "quote": "Land securement proposals must include information on the direction for future use and management of the property, including agriculture, access and public signage, as applicable.",
+        "checked_at": "2026-11-26",
         "method": "page"
       }
     ],
@@ -160,8 +182,8 @@
       },
       {
         "source_url": "https://kootenayconservation.ca/wp-content/uploads/2025/11/CVLCF-Terms-of-Reference-Amended-Aug2020.pdf",
-        "quote": "Proponents must be prepared to make a 10-minute presentation on the outcomes of their work on an annual basis, in addition to submitting a written report.",
-        "checked_at": "2026-11-25",
+        "quote": "Proponents will receive 75% of the grant upon signing a contribution agreement and 25% upon completion of the approved final report.",
+        "checked_at": "2026-11-26",
         "method": "page"
       }
     ]

@@ -20,11 +20,17 @@
     "max": 2000000,
     "note": "Costs up to 500k yen funded in full, costs above that at one half"
   },
-  "co_finance_required": null,
+  "co_finance_required": true,
   "reporting": null,
   "effort": {
-    "steps": ["Application package", "Hearing on the application", "Review"],
-    "more_after": true
+    "steps": [
+      "Submit the application package",
+      "Hearing on the application",
+      "Review",
+      "Formal grant application, if provisionally selected"
+    ],
+    "more_after": true,
+    "due": ["2026-11-27", null, null, null]
   },
   "eligibility": [
     {
@@ -37,14 +43,18 @@
       "kind": "project"
     },
     { "rule": "Complete the project by 10 March 2028", "kind": "project" },
-    { "rule": "Operate in Gifu, except for necessary connected watershed work", "kind": "project" },
     {
-      "rule": "Be able to complete the project through voluntary, organised activities",
+      "rule": "Be able to finish the project through self-directed, organised activity",
       "kind": "capacity"
     },
     { "rule": "Not have religious or political activity as its main purpose", "kind": "legal" },
-    { "rule": "Not be controlled by an organised crime group or member", "kind": "legal" }
+    { "rule": "Not be controlled by an organised crime group or member", "kind": "legal" },
+    {
+      "rule": "Be able to obtain consent from the landowner or another person authorised to allow use of the site",
+      "kind": "project"
+    }
   ],
+  "co_finance": { "min_share": 50, "applies_to": "Portion of eligible expenses above ¥500,000" },
   "documents": [
     "Activity plan",
     "Activity site location map",
@@ -103,6 +113,12 @@
       "checked_at": "2026-11-25",
       "method": "page"
     },
+    "co_finance_required": {
+      "source_url": "https://www.pref.gifu.lg.jp/page/456078.html",
+      "quote": "補助対象経費が500千円以下の部分：10分の10以内 補助対象経費が500千円を超える部分：2分の1以内",
+      "checked_at": "2026-11-26",
+      "method": "page"
+    },
     "effort": [
       {
         "source_url": "https://www.pref.gifu.lg.jp/uploaded/attachment/520529.pdf",
@@ -120,6 +136,12 @@
         "source_url": "https://www.pref.gifu.lg.jp/page/456078.html",
         "quote": "令和9年1月から2月 審査期間",
         "checked_at": "2026-11-25",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.pref.gifu.lg.jp/uploaded/attachment/520529.pdf",
+        "quote": "応募事業が採択を受けた場合、事業実施までに、補助金交付申請書の提出、補助金交付の決定 の手続が必要となります。",
+        "checked_at": "2026-11-26",
         "method": "page"
       }
     ],
@@ -150,12 +172,6 @@
       },
       {
         "source_url": "https://www.pref.gifu.lg.jp/uploaded/attachment/520529.pdf",
-        "quote": "事業の実施場所は、原則、県内とします。ただし、森・川・海の流域一体での環境保全活動など 県外の上下流域と連携した活動が必要となる場合は、県内に加え県外での活動も対象とすることが できます。",
-        "checked_at": "2026-11-25",
-        "method": "page"
-      },
-      {
-        "source_url": "https://www.pref.gifu.lg.jp/uploaded/attachment/520529.pdf",
         "quote": "自主的、組織的な活動で事業を完遂できること。",
         "checked_at": "2026-11-25",
         "method": "page"
@@ -171,8 +187,20 @@
         "quote": "暴力団員による不当な行為の防止等に関する法律に定める暴力団または暴力団員の統制 下でないこと。",
         "checked_at": "2026-11-25",
         "method": "page"
+      },
+      {
+        "source_url": "https://www.pref.gifu.lg.jp/uploaded/attachment/520529.pdf",
+        "quote": "事業の実施について、事業の実施場所の土地所有者、土地使用権限者、その他当該場所の使用等 について権限を有する者の許可又は同意等が得られるものとします。",
+        "checked_at": "2026-11-26",
+        "method": "page"
       }
     ],
+    "co_finance": {
+      "source_url": "https://www.pref.gifu.lg.jp/page/456078.html",
+      "quote": "補助対象経費が500千円を超える部分：2分の1以内",
+      "checked_at": "2026-11-26",
+      "method": "page"
+    },
     "documents": [
       {
         "source_url": "https://www.pref.gifu.lg.jp/uploaded/attachment/520529.pdf",
