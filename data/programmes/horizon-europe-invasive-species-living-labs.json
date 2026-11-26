@@ -84,6 +84,13 @@
   "co_finance_required": false,
   "consortium_required": true,
   "reporting": "Consortia submit a periodic report for each reporting period, tied to interim payments, and a final report at the end of the project that sets the final grant amount.",
+  "effort": {
+    "steps": [
+      "Single-stage proposal submission",
+      "Admissibility and eligibility checks, then expert evaluation and ranking"
+    ],
+    "due": ["2027-09-22", null]
+  },
   "eligibility": [
     { "rule": "Project is not already completed", "kind": "project" },
     { "rule": "Project focuses exclusively on civil applications", "kind": "project" },
@@ -97,8 +104,12 @@
     },
     { "rule": "Is not subject to EU restrictive measures", "kind": "legal" },
     {
-      "rule": "Qualifying institutions have a gender equality plan at grant signature",
+      "rule": "Covered public and research bodies or universities have a gender equality plan at signing and throughout the grant",
       "kind": "capacity"
+    },
+    {
+      "rule": "Includes an effective contribution from social sciences and humanities",
+      "kind": "project"
     }
   ],
   "after_award": { "reports": "interim_and_final" },
@@ -201,6 +212,20 @@
       "checked_at": "2026-11-25",
       "method": "page"
     },
+    "effort": [
+      {
+        "source_url": "https://ec.europa.eu/transparency/documents-register/api/files/C%282026%296687_9/090166e534337d57",
+        "quote": "Deadline(s): 22 Sep 2027",
+        "checked_at": "2026-11-26",
+        "method": "page"
+      },
+      {
+        "source_url": "https://ec.europa.eu/info/funding-tenders/opportunities/docs/2021-2027/horizon/wp-call/2026-2027/wp-15-general-annexes_horizon-2026-2027_en.pdf",
+        "quote": "Proposals will be checked for formal requirements (admissibility and eligibility) and then evaluated (for each topic separately) for operational capacity and award criteria (see Annexes C and D above)",
+        "checked_at": "2026-11-26",
+        "method": "page"
+      }
+    ],
     "eligibility": [
       {
         "source_url": "https://ec.europa.eu/info/funding-tenders/opportunities/docs/2021-2027/horizon/wp-call/2026-2027/wp-15-general-annexes_horizon-2026-2027_en.pdf",
@@ -236,6 +261,12 @@
         "source_url": "https://ec.europa.eu/info/funding-tenders/opportunities/docs/2021-2027/horizon/wp-call/2026-2027/wp-15-general-annexes_horizon-2026-2027_en.pdf",
         "quote": "Member States and Associated Countries that are public bodies, research organisations or higher education establishments (including private research organisations and private higher education establishments) applying as beneficiaries or affiliated entities must have at the moment of grant signature and during the duration of the grant a gender equality plan",
         "checked_at": "2026-11-25",
+        "method": "page"
+      },
+      {
+        "source_url": "https://ec.europa.eu/transparency/documents-register/api/files/C%282026%296687_9/090166e534337d57",
+        "quote": "This topic requires the effective contribution of SSH disciplines to enhance the societal impact of the research activities.",
+        "checked_at": "2026-11-26",
         "method": "page"
       }
     ],

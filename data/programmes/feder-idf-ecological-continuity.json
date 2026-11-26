@@ -26,8 +26,8 @@
   "reporting": null,
   "effort": {
     "steps": [
-      "Application on e-Synergie, checked for completeness",
-      "COMILAB opportunity opinion",
+      "Submit application on e-Synergie",
+      "COMILAB opportunity opinion, then upload it to e-Synergie",
       "Instruction by the managing authority"
     ],
     "due": ["2027-10-31", null, null]
@@ -44,13 +44,21 @@
     { "rule": "Project is unfinished when the funding application is filed", "kind": "project" },
     { "rule": "Project is completed by 31 December 2029", "kind": "project" },
     { "rule": "Project shows an overall beneficial effect on biodiversity", "kind": "project" },
-    { "rule": "Project is one of the action types the call lists as eligible", "kind": "project" }
+    { "rule": "Project is one of the action types the call lists as eligible", "kind": "project" },
+    {
+      "rule": "Project operations began or will begin on or after 1 January 2022",
+      "kind": "project"
+    },
+    {
+      "rule": "The project does not combine FEDER funding with the Recovery and Resilience Facility",
+      "kind": "project"
+    }
   ],
   "after_award": { "reports": "yearly" },
   "documents": [
     "Functional balance sheets and income statements for the last 3 fiscal years",
     "Sworn statement on compliance with horizontal principles",
-    "H3 and H4 enabling conditions attestations"
+    "Attestation covering H3 and H4 enabling conditions"
   ],
   "calls": [
     {
@@ -132,6 +140,18 @@
         "quote": "Dans un deuxième temps, la DSE procède à l'instruction du dossier sur la base des documents demandés au dépôt ainsi que ceux demandés lors de cette phase d'instruction (tels qu'indiqués en annexe 2b).",
         "checked_at": "2026-11-25",
         "method": "page"
+      },
+      {
+        "source_url": "https://www.europeidf.fr/sites/default/files/AAP_FEDER2024_Continuite_ecologique_5juin2024.pdf",
+        "quote": "Le dossier de candidature devra être transmis sur le portail E- synergie de l’autorité de gestion.",
+        "checked_at": "2026-11-26",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.europeidf.fr/sites/default/files/AAP_FEDER2024_Continuite_ecologique_5juin2024.pdf",
+        "quote": "Cet avis devra ensuite être déposé par le porteur candidat sur E-Synergie, en tant que pièce constitutive du dossier.",
+        "checked_at": "2026-11-26",
+        "method": "page"
       }
     ],
     "eligibility": [
@@ -169,6 +189,18 @@
         "source_url": "https://www.europeidf.fr/sites/default/files/AAP_FEDER2024_Continuite_ecologique_5juin2024.pdf",
         "quote": "Les projets ne s'inscrivant pas dans ces types d'actions ne sont pas éligibles.",
         "checked_at": "2026-11-25",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.europeidf.fr/sites/default/files/AAP_FEDER2024_Continuite_ecologique_5juin2024.pdf",
+        "quote": "Le début de réalisation des opérations ne doit pas être antérieur au 1er janvier 2022.",
+        "checked_at": "2026-11-26",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.europeidf.fr/sites/default/files/AAP_FEDER2024_Continuite_ecologique_5juin2024.pdf",
+        "quote": "Il ne pourra notamment pas être financé à la fois par du FEDER et par la Facilité pour la Reprise et la Résilience (FRR)",
+        "checked_at": "2026-11-26",
         "method": "page"
       }
     ],

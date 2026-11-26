@@ -27,29 +27,20 @@
   },
   "co_finance_required": true,
   "reporting": null,
-  "effort": { "steps": ["Eligibility quiz, then full proposal in the grant portal"] },
+  "effort": {
+    "steps": ["Eligibility quiz", "Full proposal in the grant portal", "Full proposal review"]
+  },
   "eligibility": [
     { "rule": "Is a 501(c)(3) organization", "kind": "legal" },
     {
-      "rule": "Site owned by a 501(c)(3) or government; applicant stewards it or plans to; habitat is or will be open to the public",
+      "rule": "501(c)(3) or government-owned habitat site; public access now or planned; applicant stewards it regularly or will",
       "kind": "project"
     },
-    { "rule": "Project is wholly in Illinois", "kind": "project" },
-    { "rule": "Uses funds only for stewardship at the eligible project site", "kind": "project" }
+    { "rule": "Uses funds only for stewardship at the eligible project site", "kind": "project" },
+    { "rule": "Submits only one application per grant cycle", "kind": "other" }
   ],
   "co_finance": { "ratio": "1:3", "applies_to": "Cash Donations category" },
   "after_award": { "reports": "final" },
-  "documents": [
-    "Completed Project Work Plan",
-    "Project Budget",
-    "Landowner approval letter",
-    "Work site maps",
-    "Operating budgets for the most recent fiscal year and, if available, the upcoming one",
-    "Most recent fiscal year financial report",
-    "IRS letter confirming EIN",
-    "IRS Tax Status Determination Letter, for 501c3 applicants",
-    "Most recent Illinois Charitable Organization Annual Report, for 501(c)3 applicants"
-  ],
   "calls": [
     {
       "id": "stewardship-2027",
@@ -118,9 +109,9 @@
       "method": "page"
     },
     "co_finance_required": {
-      "source_url": "https://prairiestateconservation.org/prairie-state-conservation-fund/",
-      "quote": "Will there be a match requirement? Yes.",
-      "checked_at": "2026-11-25",
+      "source_url": "https://prairiestateconservation.org/prairie-state-conservation-fund/stewardship-challenge-grant-program/",
+      "quote": "PSCC will provide $3 to every $1 raised toward the project within the grant period, up to $21,000. Volunteer Hours: PSCC will provide $4,000 after the grantee logs 400 volunteer hours on natural area stewardship.",
+      "checked_at": "2026-11-26",
       "method": "page"
     },
     "effort": [
@@ -128,6 +119,18 @@
         "source_url": "https://prairiestateconservation.org/prairie-state-conservation-fund/stewardship-challenge-grant-program/",
         "quote": "applicants will need to complete a basic eligibility quiz to ensure applicants organization and project sites are eligible under this program.",
         "checked_at": "2026-11-25",
+        "method": "page"
+      },
+      {
+        "source_url": "https://prairiestateconservation.org/prairie-state-conservation-fund/stewardship-challenge-grant-program/",
+        "quote": "The period to submit Full Proposals will begin in 2027 on July 14th and close on September 17th",
+        "checked_at": "2026-11-26",
+        "method": "page"
+      },
+      {
+        "source_url": "https://prairiestateconservation.org/prairie-state-conservation-fund/stewardship-challenge-grant-program/",
+        "quote": "PSCC’s full proposal review process can take up to 3 months or longer.",
+        "checked_at": "2026-11-26",
         "method": "page"
       }
     ],
@@ -146,14 +149,14 @@
       },
       {
         "source_url": "https://prairiestateconservation.org/prairie-state-conservation-fund/stewardship-challenge-grant-program/",
-        "quote": "All projects must be wholly in Illinois.",
+        "quote": "All funds provided by PSCC are to be dedicated to stewardship at the eligible project site identified in the grant application.",
         "checked_at": "2026-11-25",
         "method": "page"
       },
       {
         "source_url": "https://prairiestateconservation.org/prairie-state-conservation-fund/stewardship-challenge-grant-program/",
-        "quote": "All funds provided by PSCC are to be dedicated to stewardship at the eligible project site identified in the grant application.",
-        "checked_at": "2026-11-25",
+        "quote": "Applicants may only submit one application per grant cycle.",
+        "checked_at": "2026-11-26",
         "method": "page"
       }
     ],
@@ -167,26 +170,6 @@
       {
         "source_url": "https://prairiestateconservation.org/wp-content/uploads/2025/12/PSCC-StewardshipFAQs_12-09-2025.pdf",
         "quote": "Take another set preceding the end of your grant period and submit both the \"before\" and \"after\" photos with your final report.",
-        "checked_at": "2026-11-25",
-        "method": "page"
-      }
-    ],
-    "documents": [
-      {
-        "source_url": "https://prairiestateconservation.org/prairie-state-conservation-fund/stewardship-challenge-grant-program/",
-        "quote": "A completed Project Work Plan. This includes: Specific information about the natural areas and wildlife habitat on the project site Why the site needs stewardship, the objectives of the project, and the methods to be used to achieve those objectives. Information about the applicants volunteer base and plans to attract more volunteers and funders. A Project Budget",
-        "checked_at": "2026-11-25",
-        "method": "page"
-      },
-      {
-        "source_url": "https://prairiestateconservation.org/prairie-state-conservation-fund/stewardship-challenge-grant-program/",
-        "quote": "A letter of approval from the landowner of your project site approving the applicant to carry out the proposed grant work on the site. Maps showing the location of the work site Organizational or departmental operating budgets – one for the most recent fiscal year and one for the upcoming fiscal year, if available.",
-        "checked_at": "2026-11-25",
-        "method": "page"
-      },
-      {
-        "source_url": "https://prairiestateconservation.org/prairie-state-conservation-fund/stewardship-challenge-grant-program/",
-        "quote": "A financial report for the most recent fiscal year, including Balance Sheet, Income Statement, and any notes to the financial statements IRS letter confirming EIN IRS Tax Status Determination Letter (for 501c3 applicants only) Your organization's most recent Illinois Charitable Organization Annual Report filed with the Illinois Attorney General's Office (for 501(c)3 applicants only)",
         "checked_at": "2026-11-25",
         "method": "page"
       }

@@ -23,7 +23,10 @@
   },
   "reporting": null,
   "effort": {
-    "steps": ["Eligibility questionnaire", "Community Based Environmental Stewardship application"],
+    "steps": [
+      "Eligibility questionnaire more than 10 business days before the deadline",
+      "Community Based Environmental Stewardship application"
+    ],
     "due": [null, "2027-07-30"]
   },
   "eligibility": [
@@ -32,15 +35,10 @@
       "kind": "legal"
     },
     {
-      "rule": "Keep annual grant funding at or below 20% of the annual operating budget",
-      "kind": "finances",
-      "request_cap": { "share": 20, "of": "budget" }
+      "rule": "No endowments, debt reduction, annual galas, single-event sponsorships, regranting, religious activity or lobbying",
+      "kind": "project"
     },
-    { "rule": "Avoid the listed excluded costs, projects and activities", "kind": "project" }
-  ],
-  "documents": [
-    "Fiscal sponsor's organizational budget, if applying through a fiscal sponsor",
-    "Fiscal sponsor's board information, if applying through a fiscal sponsor"
+    { "rule": "The project benefits communities in Hawaiʻi", "kind": "project" }
   ],
   "calls": [
     {
@@ -128,6 +126,12 @@
         "quote": "May 2027 - July 30, 2027 Community Based Environmental Stewardship *",
         "checked_at": "2026-11-25",
         "method": "page"
+      },
+      {
+        "source_url": "https://www.kosasafoundation.org/grantseekers/",
+        "quote": "Any inquiry submitted within ten business days of the application deadline will not be considered.",
+        "checked_at": "2026-11-26",
+        "method": "page"
       }
     ],
     "eligibility": [
@@ -138,29 +142,15 @@
         "method": "page"
       },
       {
-        "source_url": "https://www.kosasafoundation.org/programs/community-based-environmental-stewardship/",
-        "quote": "Annual grant funding from the Kosasa Foundation may not exceed 20% of the applicant organization's annual operating budget for the most recently completed fiscal year.",
-        "checked_at": "2026-11-25",
-        "method": "page"
-      },
-      {
         "source_url": "https://www.kosasafoundation.org/grantseekers/",
         "quote": "Non 501(c)3 organizations, endowments, debt reduction, annual galas or single event sponsorships, projects that do not benefit communities in Hawai'i, projects that re-grant Kosasa funds, religious or lobbying activites.",
         "checked_at": "2026-11-25",
         "method": "page"
-      }
-    ],
-    "documents": [
-      {
-        "source_url": "https://www.kosasafoundation.org/grantseekers/",
-        "quote": "the fiscal sponsor's organizational budget",
-        "checked_at": "2026-11-25",
-        "method": "page"
       },
       {
         "source_url": "https://www.kosasafoundation.org/grantseekers/",
-        "quote": "organizational budget and board",
-        "checked_at": "2026-11-25",
+        "quote": "projects that do not benefit communities in Hawai’i",
+        "checked_at": "2026-11-26",
         "method": "page"
       }
     ]
