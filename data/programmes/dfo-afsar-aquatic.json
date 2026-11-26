@@ -11,7 +11,7 @@
   "geography": { "scope": "countries", "countries": ["CA"] },
   "access": "direct",
   "window": "fixed",
-  "amount": null,
+  "amount": { "currency": "CAD", "min": 25000 },
   "co_finance_required": true,
   "reporting": null,
   "effort": {
@@ -101,6 +101,12 @@
       "source_url": "https://www.dfo-mpo.gc.ca/species-especes/sara-lep/afsar-faep/proposal-proposition/index-eng.html",
       "quote": "Completed application forms will be accepted until 11:59 (PST) on December 11, 2026.",
       "checked_at": "2026-11-26",
+      "method": "page"
+    },
+    "amount": {
+      "source_url": "https://www.dfo-mpo.gc.ca/species-especes/sara-lep/afsar-faep/proposal-proposition/instructions/index-eng.html",
+      "quote": "The minimum funding request is $25,000 for new 1-year projects",
+      "checked_at": "2026-11-25",
       "method": "page"
     },
     "co_finance_required": {
