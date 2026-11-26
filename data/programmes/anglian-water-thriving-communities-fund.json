@@ -24,20 +24,19 @@
   "reporting": null,
   "effort": {
     "steps": [
-      "EOI over £50k, or single application up to £50k",
+      "EOI over £50k, or single-stage application at £5k–£50k",
       "Full application over £50k, if invited"
     ],
     "due": [null, "2027-02-01"]
   },
   "eligibility": [
-    { "rule": "Locate the project within Anglian Water's management area", "kind": "project" },
     { "rule": "Have a track record of successful delivery", "kind": "track_record" },
     {
       "rule": "Own the land or hold a lease with 25 years remaining for major capital work",
       "kind": "project"
     },
     {
-      "rule": "Have or promptly obtain planning permission, depending on project size",
+      "rule": "Major capital work: permission before applying. Smaller projects: expect it within 2 months of the deadline.",
       "kind": "project"
     },
     { "rule": "Submit no more than one application in the same round", "kind": "other" },
@@ -48,17 +47,26 @@
     {
       "rule": "Deliver physical interventions or capital work benefiting the natural water environment",
       "kind": "project"
+    },
+    {
+      "rule": "Deliver social benefits through active community engagement with the local natural water environment.",
+      "kind": "project"
+    },
+    {
+      "rule": "Apply only if you have not already secured funding from this fund in the same year.",
+      "kind": "other"
     }
   ],
   "after_award": { "reports": "final" },
   "documents": [
     "Signed governing document",
-    "Accounts for the past year",
-    "Recent bank statement or paying-in slip",
+    "Past-year accounts, or an income and expenditure record for small unincorporated or new groups",
+    "Bank statement or paying-in slip from the past three months",
     "Three quotes for capital items or equipment over £500, if applicable",
-    "CIC 36 form or latest CIC 34 Annual Report, if applicable",
-    "FCA registration form or latest AR30 form, if applicable",
-    "Evidence of a long-term lease, if the organisation does not own the land or building"
+    "CICs: CIC 36 if registered in the past 12 months, otherwise latest CIC 34",
+    "Co-ops and community benefit societies: FCA registration in first 12 months, otherwise latest AR30",
+    "Evidence of a long-term lease, if the organisation does not own the land or building",
+    "List of three independent committee members, trustees or directors, and two independent cheque signatories"
   ],
   "calls": [
     {
@@ -150,15 +158,15 @@
         "quote": "EOI applications which are selected to go forward to the second stage will receive an invitation at the beginning of December, with a deadline of 1st February 2027.",
         "checked_at": "2026-11-25",
         "method": "page"
+      },
+      {
+        "source_url": "https://www.cambscf.org.uk/funds/thriving-communities/",
+        "quote": "Applications for grants over £50,000 should complete an Expression of Interest (EOI) form using the link below. EOI applications re-open 1st September with a submission deadline of 16th October.",
+        "checked_at": "2026-11-26",
+        "method": "page"
       }
     ],
     "eligibility": [
-      {
-        "source_url": "https://www.cambscf.org.uk/anglian-waters-thriving-communities-fund-faqs/",
-        "quote": "You are eligible to apply if your project is within Anglian Water's management area, in other words if you receive water services from Anglian Water.",
-        "checked_at": "2026-11-25",
-        "method": "page"
-      },
       {
         "source_url": "https://www.cambscf.org.uk/funds/thriving-communities/",
         "quote": "Applications are sought from non-profit organisations in the Anglian Water region with a track record of successful delivery.",
@@ -193,6 +201,18 @@
         "source_url": "https://www.cambscf.org.uk/funds/thriving-communities/",
         "quote": "This means projects must deliver physical interventions or capital work that makes a positive difference to the natural water environment.",
         "checked_at": "2026-11-25",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.cambscf.org.uk/funds/thriving-communities/",
+        "quote": "IN ADDITION to the main focus on physical improvements to the natural water environment, projects must deliver social benefits related to active community engagement with the local natural water environment.",
+        "checked_at": "2026-11-26",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.cambscf.org.uk/anglian-waters-thriving-communities-fund-faqs/",
+        "quote": "You may submit an application to a succeeding round if the initial application was not awarded funding, but please do not submit a second application within the same year if the first was awarded funding.",
+        "checked_at": "2026-11-26",
         "method": "page"
       }
     ],
@@ -233,6 +253,12 @@
         "source_url": "https://www.cambscf.org.uk/applying/",
         "quote": "If you are looking for funding towards a building or land that your organisation does not own, we will need to see evidence of a long-term lease.",
         "checked_at": "2026-11-25",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.cambscf.org.uk/applying/",
+        "quote": "Names of three independent/unconnected management committee members/trustees/directors. To ensure your organisation has good governance and fair decision-making, we ask that management committee members/trustees/directors are independent/unconnected. We also require the names of two cheque signatories",
+        "checked_at": "2026-11-26",
         "method": "page"
       }
     ]
