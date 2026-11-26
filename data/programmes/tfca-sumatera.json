@@ -21,15 +21,25 @@
   "consortium_required": false,
   "reporting": null,
   "effort": {
-    "steps": ["Registration and proposal submission", "Selection process, if accepted to continue"]
+    "steps": [
+      "Off-cycle proposal submission",
+      "Administrative screening",
+      "Competitive proposal review",
+      "Due diligence",
+      "Oversight Committee decision"
+    ]
   },
   "eligibility": [
     {
-      "rule": "Registered NGO with environmental track record, village-recommended community group, or university with local partners",
+      "rule": "Registered NGO with green track record, community group with village/agency backing, or university with local partners",
       "kind": "legal"
     },
     { "rule": "Does not apply as a foreign NGO for direct funding", "kind": "legal" },
-    { "rule": "Not currently receiving a TFCA-Sumatera grant", "kind": "other" }
+    {
+      "rule": "Will not hold another TFCA-Sumatera grant when receiving this award",
+      "kind": "other"
+    },
+    { "rule": "Leads no more than one consortium proposal", "kind": "other" }
   ],
   "documents": [
     "Recommendation from the village government or related institution, for community groups",
@@ -98,9 +108,27 @@
         "method": "page"
       },
       {
-        "source_url": "https://tfcasumatera.org/faq/",
-        "quote": "Bila proponen gtelah mendaftar dan diterima untuk meneruskan pross seleksi, akan tersedia dashboard yang menginformasikan perkembangan proposal yang diajukan.",
-        "checked_at": "2026-11-25",
+        "source_url": "https://tfcasumatera.org/mekanisme-hibah/",
+        "quote": "Administrator menyeleksi proposal yang masuk berdasarkan kelengkapan administratif yang disyaratkan.",
+        "checked_at": "2026-11-26",
+        "method": "page"
+      },
+      {
+        "source_url": "https://tfcasumatera.org/mekanisme-hibah/",
+        "quote": "Proposal dinilai berdasarkan kriteria dampak konservasi, keterlibatan masyarakat, dan keberlanjutan.",
+        "checked_at": "2026-11-26",
+        "method": "page"
+      },
+      {
+        "source_url": "https://tfcasumatera.org/mekanisme-hibah/",
+        "quote": "Pemeriksaan terkait kelayakan, risiko, dan keabsahan entitas pengaju proposal.",
+        "checked_at": "2026-11-26",
+        "method": "page"
+      },
+      {
+        "source_url": "https://tfcasumatera.org/mekanisme-hibah/",
+        "quote": "Persetujuan OC Keputusan diterima atau tidaknya proposal",
+        "checked_at": "2026-11-26",
         "method": "page"
       }
     ],
@@ -121,6 +149,12 @@
         "source_url": "https://tfcasumatera.org/faq/",
         "quote": "satu lembaga mitra yang sedang menerima hibah TFCA-Sumatera tidak dapat menerima hibah baru",
         "checked_at": "2026-11-25",
+        "method": "page"
+      },
+      {
+        "source_url": "https://tfcasumatera.org/faq/",
+        "quote": "dengan ketentuan satu lembaga hanya dapat menjadi lead consortium untuk satu proposal",
+        "checked_at": "2026-11-26",
         "method": "page"
       }
     ],

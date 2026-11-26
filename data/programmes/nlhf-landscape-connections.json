@@ -16,14 +16,15 @@
   "window": "unspecified",
   "amount": { "currency": "GBP", "min": 250000, "max": 10000000 },
   "co_finance_required": true,
-  "consortium_required": true,
   "reporting": "Grantees must measure the project's impact on nature recovery and on engaging people, using government outcomes frameworks where they exist.",
   "effort": {
     "steps": [
       "Expression of Interest",
       "Development phase application, if invited",
-      "Delivery phase application, if invited"
-    ]
+      "Delivery phase application, if invited",
+      "Committee recommendation and Board of Trustees decision"
+    ],
+    "due": [null, "2027-02-25", "2027-02-25", null]
   },
   "eligibility": [
     {
@@ -33,8 +34,14 @@
     {
       "rule": "Demonstrating greater public benefit than private gain when private or for-profit organisations are involved",
       "kind": "project"
-    }
+    },
+    {
+      "rule": "Includes the relevant Protected Landscape management body as a key partner where works take place",
+      "kind": "project"
+    },
+    { "rule": "Project delivery phase lasts no more than eight years", "kind": "project" }
   ],
+  "after_award": { "reports": "quarterly" },
   "calls": [
     {
       "id": "landscape-connections",
@@ -84,12 +91,6 @@
       "checked_at": "2026-11-25",
       "method": "page"
     },
-    "consortium_required": {
-      "source_url": "https://www.heritagefund.org.uk/funding/strategic-initiatives/landscape-connections",
-      "quote": "Protected Landscape management bodies must be a key partner within any application relating to the landscape where they operate and where the works will be taking place",
-      "checked_at": "2026-11-25",
-      "method": "page"
-    },
     "reporting": {
       "source_url": "https://www.heritagefund.org.uk/funding/strategic-initiatives/landscape-connections",
       "quote": "Allocate resources to measuring the impact of your project for both nature recovery and engaging people",
@@ -114,6 +115,18 @@
         "quote": "If your development phase application is successful, you will receive funding and have up to two years to develop a detailed project proposal for your delivery phase application.",
         "checked_at": "2026-11-25",
         "method": "page"
+      },
+      {
+        "source_url": "https://www.heritagefund.org.uk/funding/national-lottery-heritage-grants-250k-10m/deadlines",
+        "quote": "12noon, 25 February 2027, to receive a decision by end of June 2027",
+        "checked_at": "2026-11-26",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.heritagefund.org.uk/funding/strategic-initiatives/landscape-connections",
+        "quote": "For grants above £250,000, recommendations will be made by nation/area committees, with final decisions made on a quarterly basis by our Board of Trustees.",
+        "checked_at": "2026-11-26",
+        "method": "page"
       }
     ],
     "eligibility": [
@@ -128,18 +141,35 @@
         "quote": "If private owners or for-profit organisations are involved in the project, we expect public benefit to be demonstrably greater than private gain.",
         "checked_at": "2026-11-25",
         "method": "page"
+      },
+      {
+        "source_url": "https://www.heritagefund.org.uk/funding/strategic-initiatives/landscape-connections",
+        "quote": "Protected Landscape management bodies must be a key partner within any application relating to the landscape where they operate and where the works will be taking place, though they do not need to be the applicant or lead partner of an application.",
+        "checked_at": "2026-11-26",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.heritagefund.org.uk/funding/strategic-initiatives/landscape-connections",
+        "quote": "Your project delivery phase can last for up to eight years",
+        "checked_at": "2026-11-26",
+        "method": "page"
       }
     ],
     "co_finance": {
       "source_url": "https://www.heritagefund.org.uk/funding/national-lottery-heritage-grants-250k-10m",
-      "quote": "For grants under £1m, you must contribute at least 5% of your project costs. For grants over £1m, you must contribute at least 10% of your project costs.",
-      "checked_at": "2026-11-25",
+      "quote": "For grant requests between £250,000 and £1m: You must provide at least 5% of the costs of the development phase and at least 5% of the costs of the delivery phase as partnership funding. For grant requests between £1m and £10m: You must provide at least 10% of the costs of the development phase and at least 10% of the costs of the delivery phase as partnership funding.",
+      "checked_at": "2026-11-26",
       "method": "page"
-    }
+    },
+    "after_award": [
+      {
+        "source_url": "https://www.heritagefund.org.uk/funding/national-lottery-heritage-grants-250k-10m/delivery-receiving-a-grant",
+        "quote": "Over the life of your delivery phase, you will need to submit: a project update every three months a separate yearly project update once a year a final project update and completion report when you complete your project",
+        "checked_at": "2026-11-26",
+        "method": "page"
+      }
+    ]
   },
   "checked_at": "2026-11-25",
-  "co_finance": {
-    "min_share": 5,
-    "applies_to": "Grants under £1m; grants over £1m need at least 10%"
-  }
+  "co_finance": { "min_share": 5, "applies_to": "Both phases: 5% below £1m, 10% above £1m" }
 }
