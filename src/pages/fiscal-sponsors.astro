@@ -2,8 +2,9 @@
 // Fiscal sponsors (data/sponsors), filtered in the browser, and the listed grants that say whether they take one.
 import Base from '../layouts/Base.astro'
 import SponsorRow from '../components/SponsorRow.astro'
+import WhereOptions from '../components/WhereOptions.astro'
 import '../styles/sort.css'
-import { ArrowDown, ArrowUp, Bird, Building2, Camera, ChevronsUpDown, CircuitBoard, Database, Globe, HandHeart, Leaf, Microscope, SlidersHorizontal, Trees, User, Users, Waves } from 'lucide-react'
+import { ArrowDown, ArrowUp, Bird, Building2, Camera, ChevronDown, ChevronsUpDown, CircuitBoard, Database, Globe, HandHeart, Leaf, Microscope, SlidersHorizontal, Trees, User, Users, Waves } from 'lucide-react'
 import { Checkbox } from '@/components/ui/checkbox'
 import { NativeSelect } from '@/components/ui/native-select'
 import { Label } from '@/components/ui/label'
@@ -88,6 +89,12 @@ const optN = 'text-xs text-muted-foreground tabular-nums'
               {takes.map((t) => <option value={t.key}>{t.label}</option>)}
             </NativeSelect>
           </div>
+          <div class="border-b border-rule pt-3.5 pb-3.5">
+            <Label htmlFor="sp-where" className="mb-2">Where is your project?</Label>
+            <NativeSelect id="sp-where" name="where" data-flags>
+              <WhereOptions />
+            </NativeSelect>
+          </div>
           <fieldset class="border-b border-rule pb-3.5">
             <legend class={groupTitle}>Project</legend>
             {types.map((t) => (
@@ -128,11 +135,32 @@ const optN = 'text-xs text-muted-foreground tabular-nums'
               <TableHead scope="col" data-twin-skip><span class="sr-only">Details</span></TableHead>
             </TableRow>
           </TableHeader>
+          {/* With a place picked, each group says whether it takes projects there (src/lib/sponsor-filter.ts sets the words). */}
+          <TableBody className="sp-divider" data-placed="" data-twin-skip hidden>
+            <TableRow><TableHead colSpan={7} scope="colgroup"></TableHead></TableRow>
+          </TableBody>
           {sponsors.map((s) => <SponsorRow s={s} broader={broader[s.id]} />)}
           <TableBody className="sp-divider" data-divider="" data-twin-skip hidden>
             <TableRow><TableHead colSpan={7} scope="colgroup">Broader sponsors</TableHead></TableRow>
           </TableBody>
         </Table>
+      </div>
+      {/* With a place picked, sponsors whose pages don't say whether they take it wait in their own table, closed, so
+          nobody scrolls past the line between the two (src/lib/sponsor-filter.ts fills it). */}
+      <div class="mt-4" data-unplaced data-twin-skip hidden>
+        <button type="button" class="sp-unplaced-btn" aria-expanded="false" aria-controls="sp-unplaced" data-unplaced-btn>
+          <span data-unplaced-label></span><ChevronDown className="size-4 flex-none" aria-hidden="true" />
+        </button>
+        <div class="sp-wrap mt-3" id="sp-unplaced" hidden>
+          <Table className="sp-tbl" data-unplaced-tbl>
+            <TableHeader>
+              <TableRow>
+                {columns.map((c) => <TableHead scope="col">{c.label}</TableHead>)}
+                <TableHead scope="col"><span class="sr-only">Details</span></TableHead>
+              </TableRow>
+            </TableHeader>
+          </Table>
+        </div>
       </div>
       <p class="mt-3 text-sm text-ink-2"><span data-unsaid data-twin-skip hidden></span> “Not said”: we didn’t find it on the sponsor’s pages. Nobody pays to be listed.</p>
 
@@ -363,10 +391,38 @@ const optN = 'text-xs text-muted-foreground tabular-nums'
   .sp-unsaid {
     display: none;
   }
+  .sp-unplaced-btn {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    min-height: 3rem;
+    padding: 0.75rem 1rem;
+    border: 1px solid var(--border);
+    border-radius: 0.75rem;
+    background: var(--card);
+    color: var(--link);
+    font-weight: 600;
+    text-align: left;
+    cursor: pointer;
+  }
+  .sp-unplaced-btn:hover {
+    background: color-mix(in srgb, var(--ground) 55%, var(--card));
+  }
+  .sp-unplaced-btn[aria-expanded='true'] svg {
+    transform: rotate(180deg);
+  }
   .sp-divider th {
     padding: 1.1rem 0.75rem 0.5rem;
     color: var(--muted-foreground);
     text-align: left;
+  }
+  /* Whether a group takes the picked place is the answer the reader came for. */
+  .sp-tbl [data-placed] th,
+  .sp-tbl [data-divider][data-where-on] th {
+    color: var(--foreground);
+    font-weight: 600;
   }
   .sp-tbl tbody[hidden] {
     display: none !important;

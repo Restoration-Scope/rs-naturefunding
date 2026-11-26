@@ -50,6 +50,38 @@
       "method": "page"
     }
   },
+  "places": {
+    "value": {
+      "scope": "regions",
+      "regions": [
+        "africa",
+        "asia",
+        "europe",
+        "latin_america_caribbean",
+        "middle_east",
+        "north_america",
+        "oceania"
+      ],
+      "label": "Anywhere except countries under comprehensive US sanctions",
+      "whole": true,
+      "except": [
+        "CU",
+        "IR",
+        "KP",
+        "SY"
+      ],
+      "named": [
+        "US",
+        "UA"
+      ]
+    },
+    "evidence": {
+      "source_url": "https://www.redfordcenter.org/fiscal-sponsorship-eligibility/",
+      "quote": "We are not able to fiscally sponsor entities based in countries which are under comprehensive US sanctions (Cuba, Iran, North Korea, Syria, and the following regions of Ukraine: Crimea, Donetsk, and Luhansk).",
+      "checked_at": "2026-11-24",
+      "method": "page"
+    }
+  },
   "individuals": {
     "value": {
       "answer": "yes",
