@@ -1,5 +1,5 @@
 {
-  "1000-moore": { "reason": null, "failing_sources": [] },
+  "1000-moore": { "reason": "robots", "failing_sources": ["1000-moore-3", "1000-moore-4"] },
   "11th-hour-racing-grants": { "reason": null, "failing_sources": [] },
   "15-juni-fonden-nature": { "reason": null, "failing_sources": [] },
   "1wild-grants": { "reason": null, "failing_sources": [] },
@@ -38,7 +38,7 @@
     "failing_sources": ["alliant-energy-foundation-community-grants-1"]
   },
   "alpiq-green-fund": { "reason": null, "failing_sources": [] },
-  "alvins-fond": { "reason": "network", "failing_sources": ["alvins-fond-1", "alvins-fond-2"] },
+  "alvins-fond": { "reason": "blocked", "failing_sources": ["alvins-fond-1", "alvins-fond-2"] },
   "amphibian-ark-granting-program": { "reason": null, "failing_sources": [] },
   "anglian-water-thriving-communities-fund": { "reason": null, "failing_sources": [] },
   "ank-auen": { "reason": "robots", "failing_sources": ["ank-auen-2"] },
@@ -69,9 +69,12 @@
   "bc-conservation-fund-stream-1": { "reason": null, "failing_sources": [] },
   "bccf-community-conservation-fund": { "reason": null, "failing_sources": [] },
   "beca-conservamos-por-naturaleza": { "reason": null, "failing_sources": [] },
-  "beckett-fonden-nature-protection": { "reason": null, "failing_sources": [] },
-  "beckley-area-foundation-nancy-r-smith-fund": {
+  "beckett-fonden-nature-protection": {
     "reason": "network",
+    "failing_sources": ["beckett-fonden-nature-protection-1", "beckett-fonden-nature-protection-2"]
+  },
+  "beckley-area-foundation-nancy-r-smith-fund": {
+    "reason": "blocked",
     "failing_sources": [
       "beckley-area-foundation-nancy-r-smith-fund-1",
       "beckley-area-foundation-nancy-r-smith-fund-2"
@@ -151,7 +154,7 @@
   "california-tahoe-conservancy-grants": { "reason": null, "failing_sources": [] },
   "car-undp-entornos-sostenibles": {
     "reason": "robots",
-    "failing_sources": ["car-undp-entornos-sostenibles-1"]
+    "failing_sources": ["car-undp-entornos-sostenibles-1", "car-undp-entornos-sostenibles-2"]
   },
   "caribbean-ocean-trust-grants": { "reason": null, "failing_sources": [] },
   "carolina-bird-club-conservation-grants": { "reason": null, "failing_sources": [] },
@@ -187,6 +190,7 @@
   },
   "cfwnc-pigeon-river-fund": { "reason": null, "failing_sources": [] },
   "chablais-nature-habitat-support": { "reason": null, "failing_sources": [] },
+  "charles-hayward-overseas": { "reason": null, "failing_sources": [] },
   "charlotte-martin-wildlife-habitat": { "reason": null, "failing_sources": [] },
   "chesapeake-bay-trust-community-mini-grant": { "reason": null, "failing_sources": [] },
   "chester-county-preservation-partnership-program": { "reason": null, "failing_sources": [] },
@@ -201,7 +205,7 @@
   "clcc-leap": { "reason": null, "failing_sources": [] },
   "clean-water-montgomery": { "reason": null, "failing_sources": [] },
   "clp-future-conservationist-award": {
-    "reason": "network",
+    "reason": "blocked",
     "failing_sources": [
       "clp-future-conservationist-award-1",
       "clp-future-conservationist-award-2",
@@ -235,10 +239,7 @@
   "costa-rica-por-siempre-fondo-azul": { "reason": null, "failing_sources": [] },
   "costa-rica-por-siempre-marine-fund": { "reason": null, "failing_sources": [] },
   "crowder-messersmith-conservation-fund": { "reason": null, "failing_sources": [] },
-  "csop-ochrana-biodiverzity": {
-    "reason": "timeout",
-    "failing_sources": ["csop-ochrana-biodiverzity-1", "csop-ochrana-biodiverzity-2"]
-  },
+  "csop-ochrana-biodiverzity": { "reason": null, "failing_sources": [] },
   "cssa-conservation-grants": { "reason": null, "failing_sources": [] },
   "ct-botanical-society-small-grants": { "reason": null, "failing_sources": [] },
   "ct-deep-aquatic-invasive-species-grants": { "reason": null, "failing_sources": [] },
@@ -251,7 +252,7 @@
   "cumbria-laidlaw-fund-for-the-environment": { "reason": null, "failing_sources": [] },
   "cwcb-watershed-restoration": {
     "reason": "robots",
-    "failing_sources": ["cwcb-watershed-restoration-1", "cwcb-watershed-restoration-2"]
+    "failing_sources": ["cwcb-watershed-restoration-2"]
   },
   "cyclades-preservation-fund-grants": { "reason": null, "failing_sources": [] },
   "cyprus-environment-foundation-grants": { "reason": null, "failing_sources": [] },
@@ -298,7 +299,7 @@
   },
   "darwin-plus-local": {
     "reason": "robots",
-    "failing_sources": ["darwin-plus-local-1", "darwin-plus-local-2"]
+    "failing_sources": ["darwin-plus-local-1", "darwin-plus-local-2", "darwin-plus-local-3"]
   },
   "darwin-plus-main": {
     "reason": "robots",
@@ -345,7 +346,7 @@
   "dbu-meeresnaturschutzfonds": { "reason": null, "failing_sources": [] },
   "dbu-projektfoerderung": { "reason": null, "failing_sources": [] },
   "dcna-key-habitats-program": {
-    "reason": "network",
+    "reason": "blocked",
     "failing_sources": ["dcna-key-habitats-program-1"]
   },
   "defra-peatland-sector-capacity": { "reason": null, "failing_sources": [] },
@@ -371,7 +372,7 @@
   "doc-hawkes-bay-nature-fund": { "reason": null, "failing_sources": [] },
   "doi-oia-coral-reef-natural-resources": { "reason": null, "failing_sources": [] },
   "donnelley-chicago-land-conservation": {
-    "reason": "network",
+    "reason": "blocked",
     "failing_sources": [
       "donnelley-chicago-land-conservation-1",
       "donnelley-chicago-land-conservation-2",
@@ -381,7 +382,7 @@
     ]
   },
   "donnelley-foundation-lowcountry-land-conservation": {
-    "reason": "network",
+    "reason": "blocked",
     "failing_sources": [
       "donnelley-chicago-land-conservation-2",
       "donnelley-chicago-land-conservation-3",
@@ -404,7 +405,7 @@
   "edeka-suedwest-unsere-heimat": { "reason": null, "failing_sources": [] },
   "eif-namibia-grants": { "reason": null, "failing_sources": [] },
   "ekct-medium-grants": {
-    "reason": "network",
+    "reason": "blocked",
     "failing_sources": [
       "ekct-medium-grants-1",
       "ekct-medium-grants-2",
@@ -417,7 +418,7 @@
     ]
   },
   "ekct-small-grants": {
-    "reason": "network",
+    "reason": "blocked",
     "failing_sources": [
       "ekct-medium-grants-1",
       "ekct-medium-grants-2",
@@ -430,16 +431,13 @@
     ]
   },
   "elephant-crisis-fund": { "reason": null, "failing_sources": [] },
-  "elevar-regenerative-land-initiative": {
-    "reason": "timeout",
-    "failing_sources": ["elevar-regenerative-land-initiative-1"]
-  },
+  "elevar-regenerative-land-initiative": { "reason": null, "failing_sources": [] },
   "elinvoimakeskus-archipelago-environmental-care": { "reason": null, "failing_sources": [] },
   "elinvoimakeskus-fish-habitat-restoration": { "reason": null, "failing_sources": [] },
   "elinvoimakeskus-water-body-measures-grant": { "reason": null, "failing_sources": [] },
   "ellerman-ukots-fund": { "reason": null, "failing_sources": [] },
   "elsp-restoration-grants": {
-    "reason": "network",
+    "reason": "blocked",
     "failing_sources": ["elsp-restoration-grants-1", "elsp-restoration-grants-2"]
   },
   "ema-small-grants": { "reason": null, "failing_sources": [] },
@@ -462,12 +460,13 @@
   "eu-life-nature": { "reason": null, "failing_sources": [] },
   "eucalypt-australia-community-grants": { "reason": null, "failing_sources": [] },
   "european-open-rivers": {
-    "reason": "network",
+    "reason": "blocked",
     "failing_sources": [
       "european-open-rivers-1",
       "european-open-rivers-2",
       "european-open-rivers-4",
-      "european-open-rivers-5"
+      "european-open-rivers-5",
+      "european-open-rivers-6"
     ]
   },
   "ewb-naturemade-oekofonds": { "reason": null, "failing_sources": [] },
@@ -519,11 +518,13 @@
   },
   "fonds-pour-l-arbre": { "reason": null, "failing_sources": [] },
   "forest-action-facility": {
-    "reason": "network",
+    "reason": "blocked",
     "failing_sources": [
       "forest-action-facility-1",
       "forest-action-facility-2",
-      "forest-action-facility-3"
+      "forest-action-facility-3",
+      "forest-action-facility-4",
+      "forest-action-facility-5"
     ]
   },
   "forest-bird-valder-grant": { "reason": null, "failing_sources": [] },
@@ -553,7 +554,7 @@
   "fund-for-lake-michigan": { "reason": null, "failing_sources": [] },
   "fundacion-ibercaja-sostenibilidad-medioambiente": { "reason": null, "failing_sources": [] },
   "fundacion-mar-adentro-fondo-fma": {
-    "reason": "network",
+    "reason": "blocked",
     "failing_sources": ["fundacion-mar-adentro-fondo-fma-1", "fundacion-mar-adentro-fondo-fma-2"]
   },
   "fundacion-unicaja-environment-call": { "reason": null, "failing_sources": [] },
@@ -579,7 +580,7 @@
   "gef-sgp-costa-rica": { "reason": null, "failing_sources": [] },
   "gef-sgp-cso-challenge": { "reason": null, "failing_sources": [] },
   "gef-sgp-ecuador": {
-    "reason": "network",
+    "reason": "blocked",
     "failing_sources": ["gef-sgp-ecuador-1", "gef-sgp-ecuador-2"]
   },
   "gef-sgp-ethiopia": { "reason": "blocked", "failing_sources": ["gef-sgp-ethiopia-1"] },
@@ -630,7 +631,7 @@
   "gw-hutt-valley-community-environment-fund": { "reason": null, "failing_sources": [] },
   "gw-wairarapa-moana-community-environment-fund": { "reason": null, "failing_sources": [] },
   "gycaf-microgrants": {
-    "reason": "network",
+    "reason": "blocked",
     "failing_sources": ["gycaf-microgrants-1", "gycaf-microgrants-3"]
   },
   "habitat-foundation-thf-grants": { "reason": null, "failing_sources": [] },
@@ -675,7 +676,7 @@
   "ian-potter-foundation-environment-program": { "reason": null, "failing_sources": [] },
   "iba-research-conservation-grants": { "reason": null, "failing_sources": [] },
   "idea-wild-equipment-grants": {
-    "reason": "network",
+    "reason": "blocked",
     "failing_sources": [
       "idea-wild-equipment-grants-1",
       "idea-wild-equipment-grants-2",
@@ -708,7 +709,7 @@
   "irf-afrsg-rhino-funding": { "reason": null, "failing_sources": [] },
   "iris-prize-for-nature": { "reason": null, "failing_sources": [] },
   "irlnep-community-based-restoration-rfp": {
-    "reason": "network",
+    "reason": "blocked",
     "failing_sources": [
       "irlnep-community-based-restoration-rfp-1",
       "irlnep-community-based-restoration-rfp-2",
@@ -716,7 +717,7 @@
     ]
   },
   "irlnep-habitat-restoration-rfp": {
-    "reason": "network",
+    "reason": "blocked",
     "failing_sources": [
       "irlnep-community-based-restoration-rfp-1",
       "irlnep-habitat-restoration-rfp-1",
@@ -724,15 +725,15 @@
     ]
   },
   "isf-climate-emergency-grant-program": {
-    "reason": "network",
+    "reason": "blocked",
     "failing_sources": ["isf-climate-emergency-grant-program-1"]
   },
-  "isf-salmon-resiliency": { "reason": "network", "failing_sources": ["isf-salmon-resiliency-1"] },
+  "isf-salmon-resiliency": { "reason": "blocked", "failing_sources": ["isf-salmon-resiliency-1"] },
   "ispo-impact-foundation-grants": { "reason": null, "failing_sources": [] },
   "ists-community-grant-program": { "reason": null, "failing_sources": [] },
   "itf-uk-community-tree-planting": { "reason": null, "failing_sources": [] },
   "iucn-best": { "reason": null, "failing_sources": [] },
-  "iucn-bncff": { "reason": null, "failing_sources": [] },
+  "iucn-bncff": { "reason": "robots", "failing_sources": ["iucn-bncff-4"] },
   "iucn-eba-medium-grants": { "reason": null, "failing_sources": [] },
   "iucn-eba-small-grants": { "reason": null, "failing_sources": [] },
   "iucn-nl-land-acquisition-fund": { "reason": null, "failing_sources": [] },
@@ -744,10 +745,13 @@
       "iwt-challenge-fund-evidence-1",
       "iwt-challenge-fund-evidence-2",
       "iwt-challenge-fund-evidence-3",
+      "iwt-challenge-fund-evidence-4",
       "iwt-challenge-fund-extra-1",
       "iwt-challenge-fund-extra-2",
+      "iwt-challenge-fund-extra-4",
       "iwt-challenge-fund-main-1",
-      "iwt-challenge-fund-main-2"
+      "iwt-challenge-fund-main-2",
+      "iwt-challenge-fund-main-4"
     ]
   },
   "iwt-challenge-fund-extra": {
@@ -755,11 +759,14 @@
     "failing_sources": [
       "iwt-challenge-fund-evidence-1",
       "iwt-challenge-fund-evidence-2",
+      "iwt-challenge-fund-evidence-4",
       "iwt-challenge-fund-extra-1",
       "iwt-challenge-fund-extra-2",
       "iwt-challenge-fund-extra-3",
+      "iwt-challenge-fund-extra-4",
       "iwt-challenge-fund-main-1",
-      "iwt-challenge-fund-main-2"
+      "iwt-challenge-fund-main-2",
+      "iwt-challenge-fund-main-4"
     ]
   },
   "iwt-challenge-fund-main": {
@@ -767,11 +774,14 @@
     "failing_sources": [
       "iwt-challenge-fund-evidence-1",
       "iwt-challenge-fund-evidence-2",
+      "iwt-challenge-fund-evidence-4",
       "iwt-challenge-fund-extra-1",
       "iwt-challenge-fund-extra-2",
+      "iwt-challenge-fund-extra-4",
       "iwt-challenge-fund-main-1",
       "iwt-challenge-fund-main-2",
-      "iwt-challenge-fund-main-3"
+      "iwt-challenge-fund-main-3",
+      "iwt-challenge-fund-main-4"
     ]
   },
   "iyobank-evergreen-environment-fund": { "reason": null, "failing_sources": [] },
@@ -788,7 +798,7 @@
   "kapiti-community-environment-fund": { "reason": null, "failing_sources": [] },
   "karl-schopfer-fonds": { "reason": null, "failing_sources": [] },
   "keta-norm-winn-conservation-grant": {
-    "reason": "network",
+    "reason": "blocked",
     "failing_sources": ["keta-norm-winn-conservation-grant-1"]
   },
   "king-county-conservation-futures-nonprofits": { "reason": null, "failing_sources": [] },
@@ -830,7 +840,7 @@
   "lawpro-community-water-development-fund": { "reason": null, "failing_sources": [] },
   "lcbp-healthy-ecosystems-habitat-grants": { "reason": null, "failing_sources": [] },
   "lchip-land-conservation-grants": {
-    "reason": "network",
+    "reason": "blocked",
     "failing_sources": [
       "lchip-land-conservation-grants-1",
       "lchip-land-conservation-grants-2",
@@ -840,7 +850,7 @@
     ]
   },
   "legacy-landscapes": {
-    "reason": "network",
+    "reason": "blocked",
     "failing_sources": ["legacy-landscapes-1", "legacy-landscapes-2", "legacy-landscapes-3"]
   },
   "leslie-hutchins-conservation-foundation": { "reason": null, "failing_sources": [] },
@@ -889,8 +899,13 @@
   "mat-su-salmon-partnership-nfhp": { "reason": null, "failing_sources": [] },
   "mayenne-aide-gestion-ens-associations": { "reason": null, "failing_sources": [] },
   "mayo-leader-biodiversity-water-call-2026": {
-    "reason": "network",
-    "failing_sources": ["mayo-leader-biodiversity-water-call-2026-1"]
+    "reason": "blocked",
+    "failing_sources": [
+      "mayo-leader-biodiversity-water-call-2026-1",
+      "mayo-leader-biodiversity-water-call-2026-2",
+      "mayo-leader-biodiversity-water-call-2026-3",
+      "mayo-leader-biodiversity-water-call-2026-4"
+    ]
   },
   "mayotte-ensemble-pour-les-rivieres": { "reason": null, "failing_sources": [] },
   "maysie-henry-hill-charitable-trust-environmental-groups": {
@@ -908,13 +923,25 @@
     "failing_sources": []
   },
   "mid-suffolk-community-nature-recovery-large-grants": { "reason": null, "failing_sources": [] },
-  "miljodirektoratet-naturrestaurering": { "reason": null, "failing_sources": [] },
+  "miljodirektoratet-naturrestaurering": {
+    "reason": "robots",
+    "failing_sources": ["miljodirektoratet-naturrestaurering-2"]
+  },
   "miljodirektoratet-tilskudd-ivareta-natur": {
     "reason": "robots",
     "failing_sources": ["miljodirektoratet-tilskudd-ivareta-natur-2"]
   },
-  "miljodirektoratet-vannmiljotiltak": { "reason": null, "failing_sources": [] },
-  "miljodirektoratet-vindkraft-natur": { "reason": null, "failing_sources": [] },
+  "miljodirektoratet-vannmiljotiltak": {
+    "reason": "robots",
+    "failing_sources": [
+      "miljodirektoratet-vannmiljotiltak-2",
+      "miljodirektoratet-vannmiljotiltak-3"
+    ]
+  },
+  "miljodirektoratet-vindkraft-natur": {
+    "reason": "robots",
+    "failing_sources": ["miljodirektoratet-vindkraft-natur-2"]
+  },
   "mn-conservation-partners-legacy": { "reason": null, "failing_sources": [] },
   "mn-dnr-enrtf-community-impact": { "reason": null, "failing_sources": [] },
   "mnps-grants-program": { "reason": null, "failing_sources": [] },
@@ -987,11 +1014,15 @@
   "nebraska-environmental-trust": { "reason": null, "failing_sources": [] },
   "neighbourhood-ecosystem-fund": {
     "reason": "http",
-    "failing_sources": ["neighbourhood-ecosystem-fund-1", "neighbourhood-ecosystem-fund-2"]
+    "failing_sources": [
+      "neighbourhood-ecosystem-fund-1",
+      "neighbourhood-ecosystem-fund-2",
+      "neighbourhood-ecosystem-fund-4"
+    ]
   },
   "neiwpcc-hre-watershed-education-stewardship": { "reason": null, "failing_sources": [] },
   "nescan-leaf-aberdeen": {
-    "reason": "network",
+    "reason": "blocked",
     "failing_sources": ["nescan-leaf-aberdeen-1", "nescan-leaf-aberdeen-2"]
   },
   "nevada-dream-tags-charitable-fund": { "reason": null, "failing_sources": [] },
@@ -1083,11 +1114,11 @@
   "nyct-long-island-sound-stewardship-fund": { "reason": null, "failing_sources": [] },
   "nys-conservation-partnership-program": { "reason": null, "failing_sources": [] },
   "nz-landcare-fonterra-restoring-wetlands": {
-    "reason": "network",
+    "reason": "blocked",
     "failing_sources": ["nz-landcare-fonterra-restoring-wetlands-1"]
   },
   "nz-landcare-westpac-water-care": {
-    "reason": "network",
+    "reason": "blocked",
     "failing_sources": ["nz-landcare-westpac-water-care-1"]
   },
   "oak-foundation-environment": { "reason": null, "failing_sources": [] },
@@ -1118,7 +1149,10 @@
   "open-water-sea-change-grants": { "reason": null, "failing_sources": [] },
   "orbfhp-fish-habitat-rfp": { "reason": null, "failing_sources": [] },
   "oregon-dsl-submerged-lands-enhancement-fund": { "reason": null, "failing_sources": [] },
-  "oregon-parks-foundation-fund": { "reason": null, "failing_sources": [] },
+  "oregon-parks-foundation-fund": {
+    "reason": "robots",
+    "failing_sources": ["oregon-parks-foundation-fund-3"]
+  },
   "oregon-wildlife-foundation-grants": { "reason": null, "failing_sources": [] },
   "orlen-baltic-biodiversity-grant": { "reason": null, "failing_sources": [] },
   "orne-creation-restauration-mares": { "reason": null, "failing_sources": [] },
@@ -1188,7 +1222,7 @@
   "rose-california-wildlands-grassroots-fund": { "reason": null, "failing_sources": [] },
   "rose-grays-harbor-chehalis": { "reason": null, "failing_sources": [] },
   "roundhouse-open-call": { "reason": "http", "failing_sources": ["roundhouse-open-call-1"] },
-  "rrf": { "reason": "network", "failing_sources": ["rrf-1", "rrf-3"] },
+  "rrf": { "reason": "blocked", "failing_sources": ["rrf-1", "rrf-3", "rrf-4"] },
   "rsrn-community-grants-scheme": { "reason": null, "failing_sources": [] },
   "rufford-small-grants": { "reason": null, "failing_sources": [] },
   "rumah-community-conservation-grant": { "reason": null, "failing_sources": [] },
@@ -1257,7 +1291,11 @@
   "seyccat-blue-grants-fund": { "reason": null, "failing_sources": [] },
   "sf-bay-restoration-authority-community-grants": {
     "reason": "blocked",
-    "failing_sources": ["sf-bay-restoration-authority-community-grants-1"]
+    "failing_sources": [
+      "sf-bay-restoration-authority-community-grants-1",
+      "sf-bay-restoration-authority-community-grants-2",
+      "sf-bay-restoration-authority-community-grants-3"
+    ]
   },
   "sf-bay-restoration-authority-grants": {
     "reason": "blocked",
@@ -1336,7 +1374,10 @@
   "tbep-bay-mini-grants": { "reason": null, "failing_sources": [] },
   "tc-energy-build-strong-environment": { "reason": null, "failing_sources": [] },
   "tcv-chestnut-fund": { "reason": null, "failing_sources": [] },
-  "td-friends-of-the-environment-foundation": { "reason": null, "failing_sources": [] },
+  "td-friends-of-the-environment-foundation": {
+    "reason": "robots",
+    "failing_sources": ["td-friends-of-the-environment-foundation-2"]
+  },
   "tdarfac-applied-conservation-grants": { "reason": null, "failing_sources": [] },
   "te-awarua-o-porirua-community-environment-fund": { "reason": null, "failing_sources": [] },
   "tennessee-stream-wetland-restoration-grant": { "reason": null, "failing_sources": [] },
@@ -1377,25 +1418,25 @@
     "failing_sources": ["tracy-aviary-conservation-fund-1"]
   },
   "tree-council-branching-out-fund": {
-    "reason": "network",
+    "reason": "blocked",
     "failing_sources": ["tree-council-branching-out-fund-1"]
   },
   "tree-council-network-rail": {
-    "reason": "network",
+    "reason": "blocked",
     "failing_sources": ["tree-council-network-rail-1"]
   },
   "tree-council-trees-outside-woodland": {
-    "reason": "network",
+    "reason": "blocked",
     "failing_sources": ["tree-council-trees-outside-woodland-1"]
   },
   "treesforall-groendoen-fonds": { "reason": null, "failing_sources": [] },
   "trinidad-tobago-green-fund": {
-    "reason": "network",
+    "reason": "blocked",
     "failing_sources": ["trinidad-tobago-green-fund-1"]
   },
   "triodos-foundation-natuur-biodiversiteit": { "reason": null, "failing_sources": [] },
   "trout-and-salmon-foundation-habitat-grants": {
-    "reason": "network",
+    "reason": "blocked",
     "failing_sources": ["trout-and-salmon-foundation-habitat-grants-1"]
   },
   "truckee-river-fund": { "reason": null, "failing_sources": [] },
@@ -1428,7 +1469,7 @@
   "vic-landcare-grants-melbourne-water": { "reason": null, "failing_sources": [] },
   "virginia-environmental-endowment-virginia-program": { "reason": null, "failing_sources": [] },
   "vital-ground-conservation-partner-grants": {
-    "reason": "network",
+    "reason": "blocked",
     "failing_sources": [
       "vital-ground-conservation-partner-grants-1",
       "vital-ground-conservation-partner-grants-2"
@@ -1479,7 +1520,11 @@
   "wallonia-intervention-355-restoration": { "reason": null, "failing_sources": [] },
   "wasop3-marine-coastal-call": {
     "reason": "robots",
-    "failing_sources": ["wasop3-marine-coastal-call-1", "wasop3-marine-coastal-call-2"]
+    "failing_sources": [
+      "wasop3-marine-coastal-call-1",
+      "wasop3-marine-coastal-call-2",
+      "wasop3-marine-coastal-call-4"
+    ]
   },
   "waterloo-tropical-rainforests": { "reason": null, "failing_sources": [] },
   "waters-for-georgia": { "reason": null, "failing_sources": [] },
@@ -1497,7 +1542,7 @@
   "wct-bees-grassroots-conservation-grant": { "reason": null, "failing_sources": [] },
   "wdfw-wildlife-diversity-grants": { "reason": null, "failing_sources": [] },
   "weeden-foundation-biodiversity-grants": {
-    "reason": "network",
+    "reason": "blocked",
     "failing_sources": [
       "weeden-foundation-biodiversity-grants-1",
       "weeden-foundation-biodiversity-grants-2"
@@ -1526,18 +1571,21 @@
   "wild-for-taranaki-community-fund": { "reason": null, "failing_sources": [] },
   "wild-sheep-foundation-grant-in-aid": { "reason": null, "failing_sources": [] },
   "wildlife-acoustics-grant-program": { "reason": null, "failing_sources": [] },
-  "wildnisfonds": { "reason": "robots", "failing_sources": ["wildnisfonds-3", "wildnisfonds-4"] },
+  "wildnisfonds": {
+    "reason": "robots",
+    "failing_sources": ["wildnisfonds-3", "wildnisfonds-4", "wildnisfonds-5", "wildnisfonds-6"]
+  },
   "win-landwirtschaft": { "reason": null, "failing_sources": [] },
   "wires-national-grants-program": { "reason": null, "failing_sources": [] },
   "wisconsin-dnr-wwct-restore": { "reason": null, "failing_sources": [] },
   "wlt-partner-grants": { "reason": null, "failing_sources": [] },
   "wnps-conservation-grants": {
-    "reason": "network",
+    "reason": "blocked",
     "failing_sources": ["wnps-conservation-grants-1", "wnps-conservation-grants-2"]
   },
   "wnti-nfhp-fish-habitat-grants": { "reason": null, "failing_sources": [] },
   "women-for-conservation-circle-grant": {
-    "reason": "network",
+    "reason": "blocked",
     "failing_sources": ["women-for-conservation-circle-grant-1"]
   },
   "wood-pawcatuck-wild-scenic-community-grants": {
@@ -1566,6 +1614,7 @@
   "yukon-fish-wildlife-enhancement-trust": { "reason": null, "failing_sources": [] },
   "yukon-river-panel-re-fund": { "reason": null, "failing_sources": [] },
   "yvcf-whild-fund": { "reason": null, "failing_sources": [] },
+  "yves-rocher-terre-de-femmes-international-award": { "reason": null, "failing_sources": [] },
   "zaa-conservation-initiatives-grants": { "reason": null, "failing_sources": [] },
   "zeeland-sknl": { "reason": null, "failing_sources": [] },
   "zgap-project-funding": { "reason": null, "failing_sources": [] },
