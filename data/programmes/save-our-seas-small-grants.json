@@ -14,7 +14,13 @@
   "amount": null,
   "co_finance_required": false,
   "reporting": "Grantees submit a final report on the SOSF template, with a financial summary of how the funds were used, no later than 90 days after the project ends.",
-  "effort": { "steps": ["Stage I online application", "Stage II application, if invited"] },
+  "effort": {
+    "steps": [
+      "Stage I online application",
+      "Stage II application, if invited",
+      "Scientific committee review and board approval"
+    ]
+  },
   "eligibility": [
     {
       "rule": "Early-career (degree within 5 years), an emerging conservation practitioner, or a community-led initiative",
@@ -23,16 +29,18 @@
     { "rule": "Work on marine chondrichthyan species", "kind": "project" },
     { "rule": "Has not already received two SOSF Small Grants", "kind": "other" },
     { "rule": "Did not receive a first SOSF Small Grant in the previous year", "kind": "other" },
+    { "rule": "Project lasts up to 18 months", "kind": "project" },
+    { "rule": "Submit only one application", "kind": "other" },
     {
-      "rule": "Budget asks for no salaries, conference attendance or publication costs",
+      "rule": "Propose a specific, finite project, including if it sits within a larger initiative",
+      "kind": "project"
+    },
+    {
+      "rule": "Allocate no more than 10% of the requested funding to international travel",
       "kind": "project"
     }
   ],
   "after_award": { "reports": "twice_yearly", "site_visits": true },
-  "documents": [
-    "Recent CV of the project leader (and co-leader)",
-    "Letter of recommendation, from the supervisor if there is one"
-  ],
   "calls": [
     {
       "id": "2027",
@@ -107,6 +115,12 @@
         "quote": "Stage II, by invitation only based on the Stage I application, will involve the completion of a longer and more detailed online form, equivalent to a maximum of 10 pages.",
         "checked_at": "2026-11-24",
         "method": "page"
+      },
+      {
+        "source_url": "https://saveourseas.com/grants/funding-applications/small-grants/",
+        "quote": "All applications will be reviewed by the SOSF scientific committee and require final approval from the Foundation’s Board of Directors.",
+        "checked_at": "2026-11-26",
+        "method": "page"
       }
     ],
     "eligibility": [
@@ -135,9 +149,27 @@
         "method": "page"
       },
       {
-        "source_url": "https://saveourseas.com/wp-content/uploads/2025/05/sosf-small-grant-application-form-may-2025.pdf",
-        "quote": "Costs for salaries, conference attendance and publications are not accepted.",
-        "checked_at": "2026-11-25",
+        "source_url": "https://saveourseas.com/grants/funding-applications/small-grants/",
+        "quote": "The Small Grant is designed for short (up to 18 months) and small projects",
+        "checked_at": "2026-11-26",
+        "method": "page"
+      },
+      {
+        "source_url": "https://saveourseas.com/grants/funding-applications/small-grants/",
+        "quote": "Only one application will be accepted from any one applicant.",
+        "checked_at": "2026-11-26",
+        "method": "page"
+      },
+      {
+        "source_url": "https://saveourseas.com/grants/funding-applications/small-grants/",
+        "quote": "Whether or not the project is part of a larger endeavour, this grant programme is for specific and finite projects.",
+        "checked_at": "2026-11-26",
+        "method": "page"
+      },
+      {
+        "source_url": "https://saveourseas.com/grants/funding-guidelines/",
+        "quote": "The Foundation will not consider applications in which more than 10% of the requested funding is allocated to international travel expenses.",
+        "checked_at": "2026-11-26",
         "method": "page"
       }
     ],
@@ -151,20 +183,6 @@
       {
         "source_url": "https://saveourseas.com/grants/funding-guidelines/",
         "quote": "The Project Leader shall, given reasonable advance notice, permit SOSF access to the Project so that SOSF may have the opportunity of assessing the progress of the Project",
-        "checked_at": "2026-11-25",
-        "method": "page"
-      }
-    ],
-    "documents": [
-      {
-        "source_url": "https://saveourseas.com/wp-content/uploads/2025/05/sosf-small-grant-application-form-may-2025.pdf",
-        "quote": "Recent CV for the Project Leader (and co-PL if relevant)",
-        "checked_at": "2026-11-25",
-        "method": "page"
-      },
-      {
-        "source_url": "https://saveourseas.com/wp-content/uploads/2025/05/sosf-small-grant-application-form-may-2025.pdf",
-        "quote": "from supervisor if appropriate, otherwise from another person from the institution",
         "checked_at": "2026-11-25",
         "method": "page"
       }
