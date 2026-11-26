@@ -27,7 +27,19 @@
     {
       "rule": "Headquartered in Washington, Oregon, Idaho, Montana or Alaska, and the program runs there",
       "kind": "project"
-    }
+    },
+    {
+      "rule": "Received formal-application grants in fewer than 3 of the last 5 years, excluding invitational and discretionary grants",
+      "kind": "track_record"
+    },
+    { "rule": "Mission statement includes wildlife and habitat preservation", "kind": "project" },
+    { "rule": "Project does not take place primarily in urban areas", "kind": "project" },
+    { "rule": "Project excludes wildlife rehabilitation and captive breeding", "kind": "project" },
+    {
+      "rule": "Project does not preserve small isolated parcels or land valued solely for recreation",
+      "kind": "project"
+    },
+    { "rule": "Project is not for a city park, zoo or aquarium", "kind": "project" }
   ],
   "after_award": { "reports": "final" },
   "calls": [
@@ -105,6 +117,42 @@
         "source_url": "https://www.charlottemartin.org/faq",
         "quote": "We define the Western States as Washington, Oregon, Idaho, Montana, and Alaska. To be eligible for funding, organizations must be headquartered in this region, and the proposed programs must take place within this region.",
         "checked_at": "2026-11-25",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.charlottemartin.org/faq",
+        "quote": "However, we request that you not reapply if you have received funding from the Foundation through our formal application process in 3 or more out of the most recent 5 years. Invitational and discretionary grants are exempt from this limit.",
+        "checked_at": "2026-11-26",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.charlottemartin.org/wildlife-and-habitat-programs",
+        "quote": "Organizations whose mission statement does not include wildlife and habitat preservation",
+        "checked_at": "2026-11-26",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.charlottemartin.org/wildlife-and-habitat-programs",
+        "quote": "Projects primarily in urban areas",
+        "checked_at": "2026-11-26",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.charlottemartin.org/wildlife-and-habitat-programs",
+        "quote": "Wildlife rehabilitation Captive breeding",
+        "checked_at": "2026-11-26",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.charlottemartin.org/wildlife-and-habitat-programs",
+        "quote": "Preserving of small isolated parcels of land Preservation of land solely valued for recreational purposes",
+        "checked_at": "2026-11-26",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.charlottemartin.org/wildlife-and-habitat-programs",
+        "quote": "City parks Zoos and aquariums",
+        "checked_at": "2026-11-26",
         "method": "page"
       }
     ],
