@@ -18,7 +18,7 @@
   "amount": { "currency": "GBP", "min": 10000 },
   "co_finance_required": true,
   "reporting": null,
-  "effort": { "steps": ["Completed and signed application"] },
+  "effort": { "steps": ["Completed and signed application", "Branch Out team review"] },
   "eligibility": [
     {
       "rule": "Project enhances, creates or restores priority habitat or enhances habitat to support priority species",
@@ -28,9 +28,11 @@
     {
       "rule": "Benefits include quantifiable and measurable aspects, including how watercourses or habitats will be measured",
       "kind": "project"
-    }
+    },
+    { "rule": "Project is at landscape scale", "kind": "project" }
   ],
   "after_award": { "reports": "yearly" },
+  "documents": ["Copies of project plans", "Relevant project photographs"],
   "calls": [
     {
       "id": "open",
@@ -86,6 +88,12 @@
         "quote": "Please send the completed and signed application with any supporting documents/ plans/ photos to:",
         "checked_at": "2026-11-25",
         "method": "page"
+      },
+      {
+        "source_url": "https://www.nwg.co.uk/globalassets/corporate/environment-pdfs/branch-out/landscape-connectivity-eligibility-and-guidance-leaflet-nw.pdf",
+        "quote": "All applications will be carefully considered by the Branch Out team.",
+        "checked_at": "2026-11-26",
+        "method": "page"
       }
     ],
     "eligibility": [
@@ -106,6 +114,12 @@
         "quote": "The benefits must include some aspects that are quantifiable and measurable, including how the kilometres of watercourse or hectares of habitat created/enhanced will be measured.",
         "checked_at": "2026-11-25",
         "method": "page"
+      },
+      {
+        "source_url": "https://www.nwg.co.uk/responsibility/environment/branch-out-funds/landscape-connectivity/",
+        "quote": "Applications should be for landscape scale projects only.",
+        "checked_at": "2026-11-26",
+        "method": "page"
       }
     ],
     "after_award": [
@@ -113,6 +127,14 @@
         "source_url": "https://www.nwg.co.uk/globalassets/corporate/environment-pdfs/branch-out/landscape-connectivity-eligibility-and-guidance-leaflet-nw.pdf",
         "quote": "A report on the progress of the project must be submitted to Northumbrian Water annually and/or on project completion (whichever occurs first).",
         "checked_at": "2026-11-25",
+        "method": "page"
+      }
+    ],
+    "documents": [
+      {
+        "source_url": "https://www.nwg.co.uk/globalassets/corporate/environment-pdfs/branch-out-2020/branch-out---application-form-priority-habitat-nw_editable-form.pdf",
+        "quote": "Kindly support your description with copies of plans and relevant photographs:",
+        "checked_at": "2026-11-26",
         "method": "page"
       }
     ]

@@ -18,7 +18,15 @@
   "amount": null,
   "co_finance_required": false,
   "reporting": null,
-  "effort": { "steps": ["Pre-application", "Full Application, if invited"] },
+  "effort": {
+    "steps": [
+      "Pre-application",
+      "Full Application, if invited",
+      "Technical review and scoring of the full application",
+      "Selection panel recommendation and due diligence",
+      "Public WCB Board review and funding decision"
+    ]
+  },
   "eligibility": [
     { "rule": "Nonprofit applicants have 501(c)(3) tax-exempt status", "kind": "legal" },
     {
@@ -30,11 +38,17 @@
       "kind": "project"
     },
     {
-      "rule": "Implementation application includes intermediate or advanced design plans",
+      "rule": "Implementation project has intermediate or advanced design plans",
       "kind": "project"
     }
   ],
-  "after_award": { "reports": "final" },
+  "after_award": { "reports": "final", "audit": true },
+  "documents": [
+    "Project site maps",
+    "Project photos with one-sentence captions",
+    "Project plans, where relevant",
+    "Complete list of assessor’s parcel numbers for projects with more than five"
+  ],
   "calls": [
     {
       "id": "continuous-pre-applications",
@@ -79,9 +93,9 @@
       "method": "page"
     },
     "co_finance_required": {
-      "source_url": "https://grants.ca.gov/grants/desert-conservation-program",
+      "source_url": "https://nrm.dfg.ca.gov/FileHandler.ashx?DocumentID=199421&inline",
       "quote": "Cost share is not required but may be beneficial, in particular to complete a larger project.",
-      "checked_at": "2026-11-25",
+      "checked_at": "2026-11-26",
       "method": "page"
     },
     "effort": [
@@ -95,6 +109,24 @@
         "source_url": "https://nrm.dfg.ca.gov/FileHandler.ashx?DocumentID=199421&inline",
         "quote": "will invite the selected applicants to submit Full Applications.",
         "checked_at": "2026-11-25",
+        "method": "page"
+      },
+      {
+        "source_url": "https://nrm.dfg.ca.gov/FileHandler.ashx?DocumentID=199421&inline",
+        "quote": "All eligible and complete Full Applications will be evaluated and scored by technical reviewers",
+        "checked_at": "2026-11-26",
+        "method": "page"
+      },
+      {
+        "source_url": "https://nrm.dfg.ca.gov/FileHandler.ashx?DocumentID=199421&inline",
+        "quote": "and will direct staff to conduct due diligence on the applications to assure the project can move forward.",
+        "checked_at": "2026-11-26",
+        "method": "page"
+      },
+      {
+        "source_url": "https://nrm.dfg.ca.gov/FileHandler.ashx?DocumentID=199421&inline",
+        "quote": "preparation for presentation at a public WCB Board meeting. WCB’s voting members have sole and absolute discretion to approve a project for funding.",
+        "checked_at": "2026-11-26",
         "method": "page"
       }
     ],
@@ -129,6 +161,32 @@
         "source_url": "https://nrm.dfg.ca.gov/FileHandler.ashx?DocumentID=199421&inline",
         "quote": "All grantees doing restoration, development, scientific studies, and planning will be required to provide a final report.",
         "checked_at": "2026-11-25",
+        "method": "page"
+      },
+      {
+        "source_url": "https://nrm.dfg.ca.gov/FileHandler.ashx?DocumentID=199421&inline",
+        "quote": "Grantees of the State of California are subject to audit by the Department of Finance, and others.",
+        "checked_at": "2026-11-26",
+        "method": "page"
+      }
+    ],
+    "documents": [
+      {
+        "source_url": "https://nrm.dfg.ca.gov/FileHandler.ashx?DocumentID=200790&inline=",
+        "quote": "Upload Project maps, photos, plans, and other relevant documents to help describe your proposal.",
+        "checked_at": "2026-11-26",
+        "method": "page"
+      },
+      {
+        "source_url": "https://nrm.dfg.ca.gov/FileHandler.ashx?DocumentID=200790&inline=",
+        "quote": "Upload Project maps, photos, plans, and other relevant documents to help describe your proposal. Label photos with a one sentence description.",
+        "checked_at": "2026-11-26",
+        "method": "page"
+      },
+      {
+        "source_url": "https://nrm.dfg.ca.gov/FileHandler.ashx?DocumentID=200790&inline=",
+        "quote": "If the project includes more than five APNs, upload a full list at the end of this pre application.",
+        "checked_at": "2026-11-26",
         "method": "page"
       }
     ]
