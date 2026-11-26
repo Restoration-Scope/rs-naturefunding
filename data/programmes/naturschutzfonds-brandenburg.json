@@ -15,17 +15,15 @@
   "access": "direct",
   "window": "rolling",
   "amount": null,
-  "co_finance_required": null,
+  "co_finance_required": false,
   "reporting": null,
   "effort": {
     "steps": [
-      "Third-party assessment, plus protected-area statement if applicable",
-      "Application form with attachments"
+      "Application with attachments (November 1 for requests above €150,000)",
+      "Funding review (board review for requests above €150,000)"
     ]
   },
   "eligibility": [
-    { "rule": "The project is implemented in Brandenburg", "kind": "project" },
-    { "rule": "The project sustainably improves nature and landscape", "kind": "project" },
     {
       "rule": "The measure has not started and will not start before the funding decision",
       "kind": "project"
@@ -39,20 +37,26 @@
     {
       "rule": "The project is not ongoing maintenance or regularly recurring measures",
       "kind": "project"
-    }
+    },
+    { "rule": "Funding for all follow-on costs is secured", "kind": "finances" },
+    {
+      "rule": "No similar or identical application has been filed with another institution",
+      "kind": "project"
+    },
+    { "rule": "The measure cannot be funded under another funding guideline", "kind": "project" }
   ],
-  "after_award": { "reports": "unspecified" },
+  "after_award": { "reports": "final" },
   "documents": [
     "Project concept and conservation effect",
-    "Detailed cost estimate, cost breakdown and financing",
+    "Detailed cost estimate, financing plan and proof of funding, and implementation schedule",
     "Need statement and consequences if not implemented",
     "Comparison with alternatives and cost-effectiveness",
     "Financial and budgetary effects, including follow-on costs",
     "Proof of ownership and use rights for the binding period",
-    "Expert statement or assessment of the project",
+    "Expert assessment, plus a statement from the protected-area administration where applicable",
     "Project location and measures maps",
     "Required official permits, if applicable",
-    "Statutes, charity status proof and register entry, for associations"
+    "Associations and foundations: statutes, charity and registration proof, and details of other public funding"
   ],
   "calls": [
     {
@@ -98,39 +102,33 @@
       "checked_at": "2026-11-25",
       "method": "page"
     },
+    "co_finance_required": {
+      "source_url": "https://www.naturschutzfonds.de/fileadmin/nsf/Dokumente/Foerderung/Foerderrichtlinie.pdf",
+      "quote": "Die Förderung wird als Anteils- oder Vollfinanzierung gewährt.",
+      "checked_at": "2026-11-26",
+      "method": "page"
+    },
     "effort": [
-      {
-        "source_url": "https://www.naturschutzfonds.de/was-wir-foerdern",
-        "quote": "Die Projekte müssen zudem durch Dritte zum Beispiel durch die jeweilige untere Naturschutzbehörde des Landkreises oder der kreisfreien Stadt bewertet werden.",
-        "checked_at": "2026-11-25",
-        "method": "page"
-      },
-      {
-        "source_url": "https://www.naturschutzfonds.de/was-wir-foerdern",
-        "quote": "Liegt das Vorhaben in einem Großschutzgebiet, muss die Schutzgebietsverwaltung Stellung nehmen.",
-        "checked_at": "2026-11-25",
-        "method": "page"
-      },
       {
         "source_url": "https://www.naturschutzfonds.de/was-wir-foerdern",
         "quote": "Der Antrag ist formgebunden und vollständig (Antragsformular mit Anlagen) einzureichen.",
         "checked_at": "2026-11-25",
         "method": "page"
+      },
+      {
+        "source_url": "https://www.naturschutzfonds.de/was-wir-foerdern",
+        "quote": "Wenn Sie für Ihr Projekt eine Zuwendung über 150.000 Euro beantragen möchten, sind die vollständigen Projektanträge bis zum 1. November bei der Stiftung einzureichen.",
+        "checked_at": "2026-11-26",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.naturschutzfonds.de/was-wir-foerdern",
+        "quote": "Über die Projektanträge wird laufend entschieden. Nur wenn die beantragte Zuwendungssumme 150.000 Euro überschreitet, entscheidet der Stiftungsrat, der zweimal jährlich tagt.",
+        "checked_at": "2026-11-26",
+        "method": "page"
       }
     ],
     "eligibility": [
-      {
-        "source_url": "https://www.naturschutzfonds.de/was-wir-foerdern",
-        "quote": "solange das beantragte Projekt im Land Brandenburg umgesetzt wird.",
-        "checked_at": "2026-11-25",
-        "method": "page"
-      },
-      {
-        "source_url": "https://www.naturschutzfonds.de/was-wir-foerdern",
-        "quote": "Sie müssen den Zustand von Natur und Landschaft nachhaltig verbessern.",
-        "checked_at": "2026-11-25",
-        "method": "page"
-      },
       {
         "source_url": "https://www.naturschutzfonds.de/fileadmin/nsf/Dokumente/Foerderung/Foerderantrag-Formular-2026.pdf",
         "quote": "mit der zu fördernden Maßnahme noch nicht begonnen wurde und auch vor Bekanntgabe des Zuwendungsbescheides nicht begonnen wird.",
@@ -160,13 +158,31 @@
         "quote": "Dauerpflege, dass heißt regelmäßig wiederkehrende Maßnahmen, werden nicht finanziert.",
         "checked_at": "2026-11-25",
         "method": "page"
+      },
+      {
+        "source_url": "https://www.naturschutzfonds.de/was-wir-foerdern",
+        "quote": "Aus diesem Grund ist es wichtig, dass alle mit einem geplanten Projekt, einer Naturschutzmaßnahme oder einem Flächenerwerb verbundenen Folgekosten gesichert sind.",
+        "checked_at": "2026-11-26",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.naturschutzfonds.de/fileadmin/nsf/Dokumente/Foerderung/Foerderantrag-Formular-2026.pdf",
+        "quote": "ein ähnlich oder gleich lautender Antrag bei keiner anderen Institution gestellt wurde.",
+        "checked_at": "2026-11-26",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.naturschutzfonds.de/was-wir-foerdern",
+        "quote": "Maßnahmen, die über andere Förderrichtlinien gefördert werden können.",
+        "checked_at": "2026-11-26",
+        "method": "page"
       }
     ],
     "after_award": [
       {
-        "source_url": "https://www.naturschutzfonds.de/fileadmin/nsf/Dokumente/Foerderung/Foerderrichtlinie.pdf",
-        "quote": "Der Verwendungsnachweis ist nach den VV zu § 44 LHO unter Verwendung der ausgereichten Formblätter gegenüber dem NaturSchutzFonds Brandenburg zu führen",
-        "checked_at": "2026-11-25",
+        "source_url": "https://www.naturschutzfonds.de/fileadmin/nsf/Dokumente/Foerderung/Allgemeine_Nebenbestimmungen_ab2025.pdf",
+        "quote": "Die Verwendung der Zuwendung ist innerhalb von sechs Monaten nach Erfüllung des Zuwendungszwecks, spätestens jedoch mit Ablauf des sechsten auf den Bewilligungszeitraum folgenden Monats der Bewilligungsbehörde nachzuweisen",
+        "checked_at": "2026-11-26",
         "method": "page"
       }
     ],
@@ -205,6 +221,18 @@
         "source_url": "https://www.naturschutzfonds.de/fileadmin/nsf/Dokumente/Foerderung/Foerderantrag-Formular-2026.pdf",
         "quote": "bei Vereinen/Verbänden/Stiftungen als Antragsteller: Satzung Gemeinnützigkeitsnachweis Registereintragung",
         "checked_at": "2026-11-25",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.naturschutzfonds.de/fileadmin/nsf/Dokumente/Foerderung/Foerderantrag-Formular-2026.pdf",
+        "quote": "bei Lage des Projektes in einem Großschutzgebiet des Landes Brandenburg durch die jeweilige Großschutzgebietsverwaltung",
+        "checked_at": "2026-11-26",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.naturschutzfonds.de/fileadmin/nsf/Dokumente/Foerderung/Foerderantrag-Formular-2026.pdf",
+        "quote": "bei Vereinen/Verbänden/Stiftungen als Antragsteller: Satzung Gemeinnützigkeitsnachweis Registereintragung Darstellung zur institutionellen oder sonstigen öffentlichen Förderung",
+        "checked_at": "2026-11-26",
         "method": "page"
       }
     ]

@@ -21,11 +21,16 @@
   "amount": { "currency": "GBP", "min": 300, "max": 20000 },
   "co_finance_required": null,
   "reporting": null,
-  "effort": { "steps": ["Online application using the form for the project country"] },
+  "effort": {
+    "steps": [
+      "Country-specific online application, at least 12 weeks before funds needed",
+      "Application review (response within 12 weeks)"
+    ]
+  },
   "eligibility": [
     { "rule": "Have at least 2 directors who are not related", "kind": "legal" },
     {
-      "rule": "Reinvest profits for charitable purposes rather than paying them to directors, shareholders or members",
+      "rule": "If the applicant is a company, reinvest profits for charitable purposes",
       "kind": "legal"
     },
     { "rule": "Not have had funding for the same work", "kind": "project" },
@@ -38,11 +43,15 @@
     {
       "rule": "Make a school project go beyond the school's usual responsibilities",
       "kind": "project"
+    },
+    {
+      "rule": "The project has not started or incurred costs before funding approval",
+      "kind": "project"
     }
   ],
   "documents": [
-    "Bank statement from the last 3 months, or a bank welcome letter for a new account",
-    "For land or building work: proof of ownership, or a 5+ year lease and the owner or landlord permission"
+    "Bank statement from last 3 months, or welcome letter or transaction listing if the account is under 3 months old",
+    "Land/building: ownership proof, or 5+ year lease (or owner letter confirming it) plus permission to do the work"
   ],
   "calls": [
     {
@@ -99,6 +108,18 @@
         "quote": "You can apply using our online form",
         "checked_at": "2026-11-25",
         "method": "page"
+      },
+      {
+        "source_url": "https://www.tnlcommunityfund.org.uk/funding/funding-programmes/small-eco-awards/how-to-apply",
+        "quote": "Submit your application at least 12 weeks before you need the funding.",
+        "checked_at": "2026-11-26",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.tnlcommunityfund.org.uk/funding/funding-programmes/small-eco-awards/how-to-apply",
+        "quote": "we’ll review your application and respond within 12 weeks",
+        "checked_at": "2026-11-26",
+        "method": "page"
       }
     ],
     "eligibility": [
@@ -143,6 +164,12 @@
         "quote": "Projects must go beyond the school's usual responsibilities.",
         "checked_at": "2026-11-25",
         "method": "page"
+      },
+      {
+        "source_url": "https://www.tnlcommunityfund.org.uk/funding/funding-programmes/small-eco-awards/how-to-apply",
+        "quote": "You must wait for approval before starting your project or spending money.",
+        "checked_at": "2026-11-26",
+        "method": "page"
       }
     ],
     "documents": [
@@ -154,8 +181,8 @@
       },
       {
         "source_url": "https://www.tnlcommunityfund.org.uk/funding/funding-programmes/small-eco-awards/what-you-need-to-tell-us-when-you-apply",
-        "quote": "proof of ownership of the land or building a lease for at least 5 years and proof of permission from the owner or landlord to do the work a letter from the owner confirming a lease for at least 5 years",
-        "checked_at": "2026-11-25",
+        "quote": "If you need funding for land or building work, you must provide one of the following: proof of ownership of the land or building a lease for at least 5 years and proof of permission from the owner or landlord to do the work a letter from the owner confirming a lease for at least 5 years and proof of permission from the owner or landlord to do the work",
+        "checked_at": "2026-11-26",
         "method": "page"
       }
     ]

@@ -14,17 +14,13 @@
   "amount": { "currency": "USD", "min": 3000, "max": 20000, "typical": true },
   "co_finance_required": null,
   "reporting": null,
-  "effort": { "steps": ["Inquiry", "Full proposal, if invited"] },
+  "effort": { "steps": ["Inquiry", "Full proposal, if invited", "Full proposal review"] },
   "eligibility": [
     { "rule": "Applicant is a US or Canadian citizen", "kind": "legal" },
     { "rule": "Being 18 years or older", "kind": "other" },
     {
       "rule": "Having prior experience in research, conservation or exploration relevant to the proposed project",
       "kind": "track_record"
-    },
-    {
-      "rule": "Funds not for conferences, tuition, vacations, study abroad, volunteering, legal action, land, endowments or publishing",
-      "kind": "project"
     }
   ],
   "calls": [
@@ -89,6 +85,12 @@
         "quote": "You will be notified upon review of your inquiry how to submit a full proposal.",
         "checked_at": "2026-11-25",
         "method": "page"
+      },
+      {
+        "source_url": "https://www.sitkagear.com/grants",
+        "quote": "Each grant request is reviewed on a case by case basis.",
+        "checked_at": "2026-11-26",
+        "method": "page"
       }
     ],
     "eligibility": [
@@ -107,12 +109,6 @@
       {
         "source_url": "https://www.sitkagear.com/grants",
         "quote": "Must have a record of prior experience in the fields of research, conservation or exploration, which should be submitted as it pertains to the proposed project.",
-        "checked_at": "2026-11-25",
-        "method": "page"
-      },
-      {
-        "source_url": "https://www.sitkagear.com/grants",
-        "quote": "Funds may not be used for travel to scientific / professional meetings or conferences, tuition, vacations, study abroad programs, volunteer activities, legal actions, land acquisition, endowments, or publication of research results.",
         "checked_at": "2026-11-25",
         "method": "page"
       }
