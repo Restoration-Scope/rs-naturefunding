@@ -5,7 +5,10 @@
     "name": "Minnesota Department of Natural Resources",
     "url": "https://www.dnr.state.mn.us/"
   },
-  "administered_by": null,
+  "administered_by": {
+    "name": "Minnesota Department of Natural Resources",
+    "url": "https://www.dnr.state.mn.us"
+  },
   "parent": null,
   "url": "https://www.dnr.state.mn.us/grants/enrtf/funding-opportunities.html",
   "summary": "Minnesota ENRTF community grants for nonprofit, Tribal and local-government projects that protect or enhance natural resources or manage aquatic invasive species. The same round also has trail and education areas, which are outside this site's scope.",
@@ -14,7 +17,12 @@
   "geography": { "scope": "countries", "countries": ["US"], "label": "Minnesota" },
   "access": "direct",
   "window": "fixed",
-  "amount": { "currency": "USD", "min": 20000, "max": 150000 },
+  "amount": {
+    "currency": "USD",
+    "min": 20000,
+    "max": 150000,
+    "note": "No matching funds are required."
+  },
   "pool": {
     "currency": "USD",
     "value": 4000000,
@@ -25,6 +33,14 @@
   "co_finance_required": false,
   "consortium_required": false,
   "reporting": null,
+  "effort": {
+    "steps": [
+      "Stage 1 Concept Note",
+      "Stage 2 Full Application, if invited",
+      "Pre-award eligibility and risk review, if selected"
+    ],
+    "due": ["2027-01-07", null, null]
+  },
   "eligibility": [
     {
       "rule": "Not a state agency, University of Minnesota Board of Regents, or for-profit business",
@@ -50,6 +66,7 @@
       "kind": "other"
     }
   ],
+  "after_award": { "reports": "quarterly", "site_visits": true },
   "calls": [
     {
       "id": "fy2027-community-impact",
@@ -87,9 +104,9 @@
     }
   ],
   "evidence": {
-    "pool": {
+    "administered_by": {
       "source_url": "https://www.dnr.state.mn.us/grants/enrtf/funding-opportunities.html",
-      "quote": "Approximately $4 million is available for grants of $20,000 to $150,000. No matching funds are required.",
+      "quote": "The DNR will provide the application access link when Stage 1 opens on December 1.",
       "checked_at": "2026-11-26",
       "method": "page"
     },
@@ -123,6 +140,12 @@
       "checked_at": "2026-11-26",
       "method": "page"
     },
+    "pool": {
+      "source_url": "https://www.dnr.state.mn.us/grants/enrtf/funding-opportunities.html",
+      "quote": "Approximately $4 million is available for grants of $20,000 to $150,000. No matching funds are required.",
+      "checked_at": "2026-11-26",
+      "method": "page"
+    },
     "co_finance_required": {
       "source_url": "https://files.dnr.state.mn.us/aboutdnr/grants/enrtfcg-fy2027-rfp-01-combined.pdf",
       "quote": "No matching contribution is required.",
@@ -135,6 +158,26 @@
       "checked_at": "2026-11-26",
       "method": "page"
     },
+    "effort": [
+      {
+        "source_url": "https://files.dnr.state.mn.us/aboutdnr/grants/enrtfcg-fy2027-rfp-01-combined.pdf",
+        "quote": "Stage 1 Concept Note due: Thursday, January 7, 2027",
+        "checked_at": "2026-11-26",
+        "method": "page"
+      },
+      {
+        "source_url": "https://files.dnr.state.mn.us/aboutdnr/grants/enrtfcg-fy2027-rfp-01-combined.pdf",
+        "quote": "Only applicants invited by the DNR will be allowed to submit a Stage 2 Full Application.",
+        "checked_at": "2026-11-26",
+        "method": "page"
+      },
+      {
+        "source_url": "https://files.dnr.state.mn.us/aboutdnr/grants/enrtfcg-fy2027-rfp-01-combined.pdf",
+        "quote": "Pre-award review occurs after competitive selection and before grant execution.",
+        "checked_at": "2026-11-26",
+        "method": "page"
+      }
+    ],
     "eligibility": [
       {
         "source_url": "https://files.dnr.state.mn.us/aboutdnr/grants/enrtfcg-fy2027-rfp-01-combined.pdf",
@@ -185,26 +228,6 @@
         "method": "page"
       }
     ],
-    "effort": [
-      {
-        "source_url": "https://files.dnr.state.mn.us/aboutdnr/grants/enrtfcg-fy2027-rfp-01-combined.pdf",
-        "quote": "Stage 1 Concept Note due: Thursday, January 7, 2027",
-        "checked_at": "2026-11-26",
-        "method": "page"
-      },
-      {
-        "source_url": "https://files.dnr.state.mn.us/aboutdnr/grants/enrtfcg-fy2027-rfp-01-combined.pdf",
-        "quote": "Only applicants invited by the DNR will be allowed to submit a Stage 2 Full Application.",
-        "checked_at": "2026-11-26",
-        "method": "page"
-      },
-      {
-        "source_url": "https://files.dnr.state.mn.us/aboutdnr/grants/enrtfcg-fy2027-rfp-01-combined.pdf",
-        "quote": "Pre-award review occurs after competitive selection and before grant execution.",
-        "checked_at": "2026-11-26",
-        "method": "page"
-      }
-    ],
     "after_award": [
       {
         "source_url": "https://files.dnr.state.mn.us/aboutdnr/grants/enrtfcg-fy2027-rfp-01-combined.pdf",
@@ -220,14 +243,5 @@
       }
     ]
   },
-  "checked_at": "2026-11-26",
-  "effort": {
-    "steps": [
-      "Stage 1 Concept Note",
-      "Stage 2 Full Application, if invited",
-      "Pre-award eligibility and risk review, if selected"
-    ],
-    "due": ["2027-01-07", null, null]
-  },
-  "after_award": { "reports": "quarterly", "site_visits": true }
+  "checked_at": "2026-11-26"
 }
