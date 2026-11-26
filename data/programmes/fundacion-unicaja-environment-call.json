@@ -7,7 +7,7 @@
   "url": "https://www.fundacionunicaja.com/convocatoria-medio-ambiente/",
   "summary": "Call for environmental projects in Andalucía and the province of Ciudad Real, covering preservation, conservation and restoration of biodiversity and natural areas as well as environmental education.",
   "approaches": ["species_conservation", "protected_areas", "wetlands"],
-  "applicant_types": null,
+  "applicant_types": ["company", "government", "ngo", "social_enterprise"],
   "geography": {
     "scope": "countries",
     "countries": ["ES"],
@@ -19,6 +19,14 @@
   "pool": { "currency": "EUR", "value": 1500000, "period": "round", "qualifier": "up_to" },
   "co_finance_required": null,
   "reporting": null,
+  "effort": {
+    "steps": [
+      "Online application with the required documents",
+      "Foundation review and evaluation committee decision",
+      "Submit a revised project for approval if offered less funding"
+    ],
+    "due": ["2026-12-04", null, null]
+  },
   "eligibility": [
     { "rule": "Is legally constituted", "kind": "legal" },
     { "rule": "Is domiciled in Spanish territory", "kind": "legal" },
@@ -75,6 +83,12 @@
     }
   ],
   "evidence": {
+    "applicant_types": {
+      "source_url": "https://www.fundacionunicaja.com/convocatoria-medio-ambiente/",
+      "quote": "Dirigido a Entidades públicas o privadas legalmente constituidas y domiciliadas en territorio español.",
+      "checked_at": "2026-11-26",
+      "method": "page"
+    },
     "geography": {
       "source_url": "https://www.fundacionunicaja.com/wp-content/uploads/2026/11/Bases-Convocatoria-Medio-Ambiente.pdf",
       "quote": "Los proyectos se desarrollarán en el ámbito territorial de la Fundación Unicaja: Andalucía y la provincia de Ciudad Real.",
@@ -105,6 +119,26 @@
       "checked_at": "2026-11-26",
       "method": "page"
     },
+    "effort": [
+      {
+        "source_url": "https://www.fundacionunicaja.com/wp-content/uploads/2026/11/Bases-Convocatoria-Medio-Ambiente.pdf",
+        "quote": "El plazo de presentación de proyectos será hasta las 14.00 h del día 4 de diciembre de 2026.",
+        "checked_at": "2026-11-26",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.fundacionunicaja.com/wp-content/uploads/2026/11/Bases-Convocatoria-Medio-Ambiente.pdf",
+        "quote": "Posteriormente, se elevará la correspondiente propuesta a un comité de evaluación de proyectos que establecerá la resolución definitiva.",
+        "checked_at": "2026-11-26",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.fundacionunicaja.com/wp-content/uploads/2026/11/Bases-Convocatoria-Medio-Ambiente.pdf",
+        "quote": "En caso de que la colaboración concedida por la Fundación Unicaja resulte inferior a la cantidad solicitada, la entidad deberá reajustar el proyecto (personas destinatarias, objetivos, actividades, presupuesto, etc.)",
+        "checked_at": "2026-11-26",
+        "method": "page"
+      }
+    ],
     "eligibility": [
       {
         "source_url": "https://www.fundacionunicaja.com/wp-content/uploads/2026/11/Bases-Convocatoria-Medio-Ambiente.pdf",
@@ -170,35 +204,7 @@
         "checked_at": "2026-11-26",
         "method": "page"
       }
-    ],
-    "effort": [
-      {
-        "source_url": "https://www.fundacionunicaja.com/wp-content/uploads/2026/11/Bases-Convocatoria-Medio-Ambiente.pdf",
-        "quote": "El plazo de presentación de proyectos será hasta las 14.00 h del día 4 de diciembre de 2026.",
-        "checked_at": "2026-11-26",
-        "method": "page"
-      },
-      {
-        "source_url": "https://www.fundacionunicaja.com/wp-content/uploads/2026/11/Bases-Convocatoria-Medio-Ambiente.pdf",
-        "quote": "Posteriormente, se elevará la correspondiente propuesta a un comité de evaluación de proyectos que establecerá la resolución definitiva.",
-        "checked_at": "2026-11-26",
-        "method": "page"
-      },
-      {
-        "source_url": "https://www.fundacionunicaja.com/wp-content/uploads/2026/11/Bases-Convocatoria-Medio-Ambiente.pdf",
-        "quote": "En caso de que la colaboración concedida por la Fundación Unicaja resulte inferior a la cantidad solicitada, la entidad deberá reajustar el proyecto (personas destinatarias, objetivos, actividades, presupuesto, etc.)",
-        "checked_at": "2026-11-26",
-        "method": "page"
-      }
     ]
   },
-  "checked_at": "2026-11-26",
-  "effort": {
-    "steps": [
-      "Online application with the required documents",
-      "Foundation review and evaluation committee decision",
-      "Submit a revised project for approval if offered less funding"
-    ],
-    "due": ["2026-12-04", null, null]
-  }
+  "checked_at": "2026-11-26"
 }
