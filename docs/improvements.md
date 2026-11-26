@@ -2,7 +2,7 @@
 
 What a visitor to naturefunding.org can see or do that they couldn't before, newest first. One line per merged change, added in the same PR (AGENTS.md). The naturefunding.org LinkedIn Page drafts its update posts from this list. Emails count once `DIGEST_SENDING` is `live`.
 
-- 2026-11-26 · AI assistants can search naturefunding.org directly through its MCP server at mcp.naturefunding.org (search by country, region, approach, applicant type and status; read one listing with its evidence), and the privacy page says what that service receives · https://naturefunding.org/privacy/#ai-assistants · #PR
+- 2026-11-26 · AI assistants can search naturefunding.org directly through its MCP server at mcp.naturefunding.org (search by country, region, approach, applicant type and status; read one listing with its evidence), and the privacy page says what that service receives · https://naturefunding.org/privacy/#ai-assistants · #1220
 - 2026-11-26 · Fundo Ecos' two 2026 calls show as closed after the 25 November extension deadline, and the Seine-Normandie marine restoration call shows the funder's French deadline wording · https://naturefunding.org/p/fundo-ecos/ · #1161
 - 2026-11-26 · Every other open and upcoming grant (162 more) had its Before you apply checked again by a second reader against the funder's own documents: 476 wrong rules, documents or steps fixed or removed and 497 missing ones added · https://naturefunding.org/p/gef-sgp-ethiopia/#before-title · #1160
 - 2026-11-25 · The header leads with Find funding and Fiscal sponsors; a Browse menu lists every project type and region with its number of grants, and an About menu holds how we check, the open data and reporting a problem · https://naturefunding.org/ · #1159
