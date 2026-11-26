@@ -17,18 +17,25 @@
   "amount": { "currency": "USD", "min": 500, "max": 9999 },
   "co_finance_required": false,
   "reporting": null,
-  "effort": { "steps": ["Application by email"] },
+  "effort": {
+    "steps": ["Application by email", "CHNEP evaluates application"],
+    "due": ["2026-12-01", null]
+  },
   "eligibility": [
     { "rule": "Project avoids restoration or improvements on private property", "kind": "project" },
     {
-      "rule": "Project is not an admission-fee event or service, except qualifying scholarships",
+      "rule": "No fee-charging events or services, except need-based scholarships for youth environmental education",
       "kind": "project"
     },
     { "rule": "Project does not personally benefit the applicant", "kind": "project" },
     { "rule": "Project excludes political action or legislative advocacy", "kind": "project" },
     { "rule": "Project excludes fundraising activities", "kind": "project" },
-    { "rule": "Project has not been completed before the grant award", "kind": "project" },
-    { "rule": "Project excludes activities related to permitting", "kind": "project" }
+    {
+      "rule": "The project or funded phase is not already complete when the grant is awarded",
+      "kind": "project"
+    },
+    { "rule": "Project excludes activities related to permitting", "kind": "project" },
+    { "rule": "Project can be completed by September 1, 2027", "kind": "project" }
   ],
   "after_award": { "reports": "final" },
   "documents": [
@@ -112,6 +119,18 @@
         "quote": "Applications should be submitted via email to Grants@chnep.org.",
         "checked_at": "2026-11-25",
         "method": "page"
+      },
+      {
+        "source_url": "https://www.chnep.org/_files/ugd/252fd8_77974166fd224bae90d9d164a953830f.docx?dn=9.25.26%20CHNEP%20Conservation%20Grant%20Application%20FY2027.docx",
+        "quote": "Winter Deadline is December 1, 2026 for a January 2027 award notice",
+        "checked_at": "2026-11-26",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.chnep.org/_files/ugd/252fd8_77974166fd224bae90d9d164a953830f.docx?dn=9.25.26%20CHNEP%20Conservation%20Grant%20Application%20FY2027.docx",
+        "quote": "Once your application is received, it will be evaluated based on the information provided.",
+        "checked_at": "2026-11-26",
+        "method": "page"
       }
     ],
     "eligibility": [
@@ -122,9 +141,9 @@
         "method": "page"
       },
       {
-        "source_url": "https://www.chnep.org/_files/ugd/252fd8_77974166fd224bae90d9d164a953830f.docx?dn=9.25.26%20CHNEP%20Conservation%20Grant%20Application%20FY2027.docx",
-        "quote": "Events or services for which there is an admission fee or charge; CHNEP will consider providing support for scholarships to allow participation by those who would not otherwise be able to attend",
-        "checked_at": "2026-11-25",
+        "source_url": "https://www.chnep.org/chnep-conservation-grants",
+        "quote": "Events or services for which there is an admission fee or charge (exception, need-based scholarships for youth environmental education programs)",
+        "checked_at": "2026-11-26",
         "method": "page"
       },
       {
@@ -155,6 +174,12 @@
         "source_url": "https://www.chnep.org/_files/ugd/252fd8_77974166fd224bae90d9d164a953830f.docx?dn=9.25.26%20CHNEP%20Conservation%20Grant%20Application%20FY2027.docx",
         "quote": "Any activities related to permitting",
         "checked_at": "2026-11-25",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.chnep.org/_files/ugd/252fd8_77974166fd224bae90d9d164a953830f.docx?dn=9.25.26%20CHNEP%20Conservation%20Grant%20Application%20FY2027.docx",
+        "quote": "Any projects not completed by September 1, 2027, are subject to funding reallocation and disqualification of reimbursement.",
+        "checked_at": "2026-11-26",
         "method": "page"
       }
     ],

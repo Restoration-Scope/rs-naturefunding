@@ -23,15 +23,32 @@
   "window": "fixed",
   "amount": null,
   "pool": { "currency": "USD", "value": 150000, "period": "year" },
-  "co_finance_required": null,
+  "co_finance_required": false,
   "reporting": null,
-  "effort": { "steps": ["Project application"], "due": ["2027-02-19"] },
+  "effort": {
+    "steps": ["Project application", "PFBC eligibility and completeness review"],
+    "due": ["2027-02-19", null]
+  },
   "eligibility": [
+    { "rule": "Project improves habitat, reduces sediment, or does both", "kind": "project" },
     {
-      "rule": "Project is located in York or Lancaster County and is a habitat improvement and/or sediment reduction project",
-      "kind": "project"
-    }
+      "rule": "Applicant is an eligible public body or organisation, excluding individuals and for-profit firms",
+      "kind": "legal"
+    },
+    {
+      "rule": "NGO bylaws include habitat, open-space, watershed or natural-area conservation for public benefit",
+      "kind": "legal"
+    },
+    { "rule": "NGOs are incorporated with the Pennsylvania Department of State", "kind": "legal" },
+    { "rule": "NGOs are tax-exempt under section 501(c)(3)", "kind": "legal" },
+    {
+      "rule": "NGOs requesting $5,000 or more are registered with Pennsylvania’s Bureau of Charitable Organizations",
+      "kind": "legal"
+    },
+    { "rule": "NGOs have existed for at least five consecutive years", "kind": "track_record" }
   ],
+  "after_award": { "reports": "final" },
+  "documents": ["Map showing the project location and extent"],
   "calls": [
     {
       "id": "2027",
@@ -88,11 +105,23 @@
       "checked_at": "2026-11-25",
       "method": "page"
     },
+    "co_finance_required": {
+      "source_url": "https://www.pa.gov/content/dam/copapwp-pagov/en/fishandboat/documents/grants/yorklancaster-grant-application.doc",
+      "quote": "Applicants are encouraged to secure matching funds in the form of grants from other institutions, cash, in-kind labor, equipment, materials and supplies.",
+      "checked_at": "2026-11-26",
+      "method": "page"
+    },
     "effort": [
       {
         "source_url": "https://www.pa.gov/services/fishandboat/york-lancaster-counties-habitat-improvement-grant",
         "quote": "Project applications must be postmarked no later than February 19, 2027.",
         "checked_at": "2026-11-25",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.pa.gov/content/dam/copapwp-pagov/en/fishandboat/documents/grants/yorklancaster-grant-application.doc",
+        "quote": "Applications will be reviewed for applicant eligibility and completeness.",
+        "checked_at": "2026-11-26",
         "method": "page"
       }
     ],
@@ -101,6 +130,58 @@
         "source_url": "https://www.pa.gov/services/fishandboat/york-lancaster-counties-habitat-improvement-grant",
         "quote": "To be eligible, projects must be located in York or Lancaster County and be a habitat improvement and/or a sediment reduction project.",
         "checked_at": "2026-11-25",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.pa.gov/content/dam/copapwp-pagov/en/fishandboat/documents/grants/yorklancaster-grant-application.doc",
+        "quote": "Ineligible applicants include individuals, private for-profit firms and others that do not fall within the eligibility categories.",
+        "checked_at": "2026-11-26",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.pa.gov/content/dam/copapwp-pagov/en/fishandboat/documents/grants/yorklancaster-grant-application.doc",
+        "quote": "The organization’s bylaws must indicate that its charitable purpose includes the preservation or conservation of critical habitat, open space, watersheds, rivers and streams, or natural areas for public benefit.",
+        "checked_at": "2026-11-26",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.pa.gov/content/dam/copapwp-pagov/en/fishandboat/documents/grants/yorklancaster-grant-application.doc",
+        "quote": "The organization must be incorporated with the Pennsylvania Department of State, Bureau of Corporations",
+        "checked_at": "2026-11-26",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.pa.gov/content/dam/copapwp-pagov/en/fishandboat/documents/grants/yorklancaster-grant-application.doc",
+        "quote": "The organization must be tax-exempt under Section 501 (c)(3) of the Internal Revenue Code of 1986.",
+        "checked_at": "2026-11-26",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.pa.gov/content/dam/copapwp-pagov/en/fishandboat/documents/grants/yorklancaster-grant-application.doc",
+        "quote": "The organization must be registered with the Pennsylvania Department of State, Bureau of Charitable Organizations. This requirement will be waived for grant requests of less than $5,000.",
+        "checked_at": "2026-11-26",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.pa.gov/content/dam/copapwp-pagov/en/fishandboat/documents/grants/yorklancaster-grant-application.doc",
+        "quote": "The organization must be in existence for at least 5 consecutive years.",
+        "checked_at": "2026-11-26",
+        "method": "page"
+      }
+    ],
+    "after_award": [
+      {
+        "source_url": "https://www.pa.gov/content/dam/copapwp-pagov/en/fishandboat/documents/grants/yorklancaster-grant-application.doc",
+        "quote": "GRANTEE shall submit a final report to the PFBC upon the project completion.",
+        "checked_at": "2026-11-26",
+        "method": "page"
+      }
+    ],
+    "documents": [
+      {
+        "source_url": "https://www.pa.gov/content/dam/copapwp-pagov/en/fishandboat/documents/grants/yorklancaster-grant-application.doc",
+        "quote": "Map showing location and extent of area encompassed by the project.",
+        "checked_at": "2026-11-26",
         "method": "page"
       }
     ]

@@ -13,6 +13,7 @@
   "window": "fixed",
   "amount": { "currency": "GBP", "max": 15000 },
   "co_finance_required": false,
+  "consortium_required": false,
   "reporting": null,
   "effort": {
     "steps": ["Application submission", "Application review"],
@@ -20,10 +21,15 @@
   },
   "eligibility": [
     {
-      "rule": "Project mainly controls or eradicates INNS in the Northumbrian Water or Essex & Suffolk Water supply area",
+      "rule": "Project mainly controls or eradicates invasive non-native species in the relevant water supplier’s area",
+      "kind": "project"
+    },
+    {
+      "rule": "Project budget excludes general staffing costs and core activities",
       "kind": "project"
     }
   ],
+  "documents": ["Copies of project plans", "Relevant project photographs"],
   "calls": [
     {
       "id": "2026-27",
@@ -79,6 +85,12 @@
       "checked_at": "2026-11-25",
       "method": "page"
     },
+    "consortium_required": {
+      "source_url": "https://www.nwg.co.uk/globalassets/corporate/environment-pdfs/branch-out/inns-eligibility-and-guidance-leaflet-nw.pdf",
+      "quote": "The fund is open to organisations, community groups or individuals from the public, private, voluntary and education sectors in within NW’s supply area. Multistakeholder applications are encouraged.",
+      "checked_at": "2026-11-26",
+      "method": "page"
+    },
     "effort": [
       {
         "source_url": "https://www.nwg.co.uk/responsibility/environment/branch-out-funds/invasive-non-native-species/",
@@ -96,8 +108,14 @@
     "eligibility": [
       {
         "source_url": "https://www.nwg.co.uk/globalassets/corporate/environment-pdfs/branch-out/inns-eligibility-and-guidance-leaflet-nw.pdf",
-        "quote": "Projects must be primarily aimed at the control/eradication (generally termed management) of INNS populations within NW's supply area.",
-        "checked_at": "2026-11-25",
+        "quote": "Projects must be primarily aimed at the control/eradication (generally termed management) of INNS populations within NW’s supply area.",
+        "checked_at": "2026-11-26",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.nwg.co.uk/globalassets/corporate/environment-pdfs/branch-out/inns-eligibility-and-guidance-leaflet-nw.pdf",
+        "quote": "Project budgets cannot include support for general staff costs or core activities",
+        "checked_at": "2026-11-26",
         "method": "page"
       }
     ],
@@ -106,6 +124,14 @@
         "source_url": "https://www.nwg.co.uk/globalassets/corporate/environment-pdfs/branch-out/inns-eligibility-and-guidance-leaflet-nw.pdf",
         "quote": "A report on the progress of the project must be submitted to Northumbrian Water every year and /or on project completion (whichever occurs first).",
         "checked_at": "2026-11-25",
+        "method": "page"
+      }
+    ],
+    "documents": [
+      {
+        "source_url": "https://www.nwg.co.uk/globalassets/corporate/environment-pdfs/branch-out-2020/branch-out---application-form-inns-nw_editable-form.pdf",
+        "quote": "Kindly support your description with copies of plans and relevant photographs:",
+        "checked_at": "2026-11-26",
         "method": "page"
       }
     ]

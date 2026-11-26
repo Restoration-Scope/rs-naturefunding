@@ -164,27 +164,36 @@
   "amount": { "currency": "USD", "max": 40000 },
   "co_finance_required": false,
   "reporting": null,
-  "effort": { "steps": ["Online form or downloadable form emailed to the RRF"] },
+  "effort": {
+    "steps": [
+      "Online form or downloadable form emailed to the RRF",
+      "RRF review and response (target: 8 working days)"
+    ]
+  },
   "eligibility": [
     {
-      "rule": "The site is a UNESCO natural World Heritage Site (other protected areas only occasionally)",
+      "rule": "Site is UNESCO natural or mixed World Heritage, or qualifies for an exceptional route",
       "kind": "project"
     },
     { "rule": "The project addresses a sudden emergency situation", "kind": "project" },
     { "rule": "The organisation has permission to work at the proposed site", "kind": "legal" },
-    { "rule": "The applicant is an organisation, not an individual", "kind": "legal" },
     { "rule": "The project lasts no more than 6 months", "kind": "project" },
     {
-      "rule": "The organisation can demonstrate respect for human rights and safeguarding",
+      "rule": "Can show how it respects human rights and safeguards children and vulnerable adults",
       "kind": "capacity"
     },
     {
       "rule": "The organisation can receive funds in USD into an organisational bank account from the UK",
       "kind": "capacity"
+    },
+    {
+      "rule": "For sites outside the World Heritage network, shows the global significance of the site’s biodiversity",
+      "kind": "project"
     }
   ],
   "documents": [
-    "Endorsement letter from the site management authority, if the applicant is not the official site management authority"
+    "Site authority endorsement if not the managing authority, or explain why it is unavailable",
+    "Contact details of two independent referees"
   ],
   "calls": [
     {
@@ -247,13 +256,19 @@
         "quote": "Requests for funding are only accepted through submission of the official RRF online application form or on our downloadable form submitted to the RRF email address (rrf@fauna-flora.org).",
         "checked_at": "2026-11-23",
         "method": "page"
+      },
+      {
+        "source_url": "https://rapid-response.org/how-to-apply/",
+        "quote": "We aim to respond to applications within 8 working days, enabling rapid deployment of resources at times of crisis.",
+        "checked_at": "2026-11-26",
+        "method": "page"
       }
     ],
     "eligibility": [
       {
-        "source_url": "https://rapid-response.org/how-to-apply/",
-        "quote": "The site must be a listed UNESCO natural World Heritage Site (we occasionally fund other priority protected areas).",
-        "checked_at": "2026-11-23",
+        "source_url": "https://rapid-response.org/how-to-apply/eligibility-guidance/eligibility-guidance-form/",
+        "quote": "The site is a designated UNESCO natural World Heritage site (or is designated under the mixed category). The site is on the tentative UNECSO World Heritage list (under natural or mixed category). The site directly impacts the Outstanding Universal Values (OUV) of a natural World Heritage site. The site has another international designation for its biodiversity",
+        "checked_at": "2026-11-26",
         "method": "page"
       },
       {
@@ -265,12 +280,6 @@
       {
         "source_url": "https://rapid-response.org/how-to-apply/",
         "quote": "The RRF can make grants to any organisation that has permission to work at the proposed site.",
-        "checked_at": "2026-11-23",
-        "method": "page"
-      },
-      {
-        "source_url": "https://rapid-response.org/how-to-apply/",
-        "quote": "The RRF does not make grants to individuals.",
         "checked_at": "2026-11-23",
         "method": "page"
       },
@@ -291,6 +300,12 @@
         "quote": "Applicant organisations must be able to accept funds into an organisational bank account, directly from the UK in US Dollars (USD).",
         "checked_at": "2026-11-23",
         "method": "page"
+      },
+      {
+        "source_url": "https://rapid-response.org/how-to-apply/",
+        "quote": "Applications for actions outside the World Heritage site network must clearly demonstrate the global significance of the site’s biodiversity to be considered for funding.",
+        "checked_at": "2026-11-26",
+        "method": "page"
       }
     ],
     "documents": [
@@ -298,6 +313,18 @@
         "source_url": "https://rapid-response.org/how-to-apply/",
         "quote": "If the applicant organisation is not the official site management authority of the proposed site you must attach an endorsement letter from the site management authority approving the project.",
         "checked_at": "2026-11-23",
+        "method": "page"
+      },
+      {
+        "source_url": "https://rapid-response.org/apply-for-funding/",
+        "quote": "This is an important part of the application and is normally needed for your application to be considered. Please upload evidence of official host country endorsement of your application from the relevant site management authority* Max. file size: 256 MB. If there are specific reasons why such a letter is not available, please explain*",
+        "checked_at": "2026-11-26",
+        "method": "page"
+      },
+      {
+        "source_url": "https://rapid-response.org/how-to-apply/",
+        "quote": "All applicants must include contact details of two independent referees.",
+        "checked_at": "2026-11-26",
         "method": "page"
       }
     ]

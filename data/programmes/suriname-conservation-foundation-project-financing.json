@@ -28,7 +28,9 @@
     {
       "rule": "If a research institute or individual, has demonstrable biodiversity research expertise",
       "kind": "capacity"
-    }
+    },
+    { "rule": "The project has no commercial objective", "kind": "project" },
+    { "rule": "Third-party co-funding, if used, has prior SCF approval", "kind": "finances" }
   ],
   "after_award": { "reports": "quarterly" },
   "calls": [
@@ -123,6 +125,18 @@
         "source_url": "https://www.scf.sr/wie-komen-in-aanmerking/",
         "quote": "Onderzoeksinstituten en individuen met een aantoonbare onderzoeksachtergrond en -expertise op het gebied van biodiversiteit.",
         "checked_at": "2026-11-25",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.scf.sr/richtlijnen-voor-de-financieringsaanvraag/",
+        "quote": "Kosten die niet in aanmerking komen voor financiering door SCF zijn: Kosten die tot de normale bedrijfsvoering gerekend kunnen worden; Participatie in workshops, congressen en seminars, die niet gericht zijn op training; Initiatieven met een commerciële doelstelling",
+        "checked_at": "2026-11-26",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.scf.sr/richtlijnen-voor-de-financieringsaanvraag/",
+        "quote": "Co-financiering door derden Hiervoor is vooraf goedkeuring door SCF noodzakelijk.",
+        "checked_at": "2026-11-26",
         "method": "page"
       }
     ],

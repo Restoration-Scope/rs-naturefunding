@@ -19,15 +19,17 @@
   "co_finance_required": true,
   "reporting": "A detailed final report and a financial statement of the funded measures are due after the project ends.",
   "effort": {
-    "steps": ["Application submission", "Formal and substantive review"],
+    "steps": ["Application submission", "Formal and substantive review", "Board funding decision"],
     "more_after": true,
-    "due": ["2027-09-30", null]
+    "due": ["2027-09-30", null, null]
   },
   "eligibility": [
     {
       "rule": "Project financing and implementation are secured, including committed grants",
       "kind": "finances"
-    }
+    },
+    { "rule": "Normally applies before the planned project begins", "kind": "project" },
+    { "rule": "Demolition is eligible only if no authority ordered it", "kind": "project" }
   ],
   "after_award": { "reports": "final" },
   "documents": [
@@ -120,6 +122,12 @@
         "quote": "Der NÖ LFV prüft den Antrag nach Eingang auf formale Richtigkeit und inhaltliche Übereinstimmung mit den Zielen des NÖ FischG 2001",
         "checked_at": "2026-11-25",
         "method": "page"
+      },
+      {
+        "source_url": "https://noe-lfv.at/download/foerderungen/NOE-LFV_Foerderrichtlinie.pdf",
+        "quote": "Der Vorstand des Verbandes entscheidet über die Förderungswürdigkeit",
+        "checked_at": "2026-11-26",
+        "method": "page"
       }
     ],
     "eligibility": [
@@ -127,6 +135,18 @@
         "source_url": "https://noe-lfv.at/download/foerderungen/NOE-LFV_Foerderrichtlinie.pdf",
         "quote": "Die Finanzierung und Durchführung eines Projektes muss gesichert sein, wobei zugesagte Fördermittel entsprechend zu berücksichtigen sind.",
         "checked_at": "2026-11-25",
+        "method": "page"
+      },
+      {
+        "source_url": "https://noe-lfv.at/download/foerderungen/NOE-LFV_Foerderrichtlinie.pdf",
+        "quote": "Förderungsanträge sind grundsätzlich vor Beginn des geplanten Projekts zu stellen.",
+        "checked_at": "2026-11-26",
+        "method": "page"
+      },
+      {
+        "source_url": "https://noe-lfv.at/download/foerderungen/NOE-LFV_Foerderrichtlinie.pdf",
+        "quote": "Die Förderung ist nur dann möglich, wenn der Abriss ohne behördlichen Auftrag erfolgt.",
+        "checked_at": "2026-11-26",
         "method": "page"
       }
     ],

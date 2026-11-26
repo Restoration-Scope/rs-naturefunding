@@ -14,17 +14,55 @@
   "amount": null,
   "co_finance_required": true,
   "reporting": null,
-  "effort": { "steps": ["Project discussion with CWCB staff", "Application"] },
+  "effort": {
+    "steps": [
+      "Project discussion with CWCB staff",
+      "Application",
+      "CWCB application completeness check",
+      "CWCB staff scoring and recommendation",
+      "CWCB Director funding decision"
+    ]
+  },
   "eligibility": [
     {
       "rule": "Not a local government outside the National Flood Insurance Program",
       "kind": "legal"
+    },
+    { "rule": "Applicant is neither a federal agency nor a private landowner", "kind": "legal" },
+    {
+      "rule": "Capacity-building request accompanies a planning, engineering or implementation application",
+      "kind": "project"
+    },
+    {
+      "rule": "Involve diverse local or regional watershed interests and allow all interested watershed parties to participate",
+      "kind": "project"
+    },
+    {
+      "rule": "Urgent work where delay could affect life, property, water supply and other infrastructure",
+      "kind": "project"
+    },
+    {
+      "rule": "Commit to protecting or restoring ecological links between land and water while protecting people and property",
+      "kind": "project"
+    },
+    {
+      "rule": "Plan, design or project is financially and technically feasible",
+      "kind": "project"
+    },
+    {
+      "rule": "Implementation work and design are informed by a planning effort",
+      "kind": "project"
     }
   ],
+  "co_finance": {
+    "min_share": 25,
+    "in_kind": true,
+    "applies_to": "25% planning, engineering and capacity building; 50% implementation"
+  },
   "documents": [
     "Statement of Work",
     "Budget & Schedule",
-    "Letters of support, if any (including from basin roundtables)"
+    "Evidence of matching funds, such as an award letter, where match applies"
   ],
   "calls": [
     {
@@ -88,6 +126,24 @@
         "quote": "All grant applications must be submitted via the CWCB Portal along with the current \"Statement of Work\" and \"Budget & Schedule.",
         "checked_at": "2026-11-24",
         "method": "page"
+      },
+      {
+        "source_url": "https://dnrweblink.state.co.us/CWCB/0/edoc/230844/cwrp_app_special2026.pdf",
+        "quote": "CWCB staff will determine if the required documentation has been submitted. The application will be accepted once all documentation has been received.",
+        "checked_at": "2026-11-26",
+        "method": "page"
+      },
+      {
+        "source_url": "https://dnrweblink.state.co.us/CWCB/0/edoc/230844/cwrp_app_special2026.pdf",
+        "quote": "CWCB staff will review and score the applications. Once scored, a funding recommendation will be made to the CWCB Director.",
+        "checked_at": "2026-11-26",
+        "method": "page"
+      },
+      {
+        "source_url": "https://dnrweblink.state.co.us/CWCB/0/edoc/230844/cwrp_app_special2026.pdf",
+        "quote": "The CWCB Director will have approval authority for funding recommendations.",
+        "checked_at": "2026-11-26",
+        "method": "page"
       }
     ],
     "eligibility": [
@@ -96,8 +152,56 @@
         "quote": "(Local governments that do not participate in the National Flood Insurance Program will not be eligible for funding).",
         "checked_at": "2026-11-24",
         "method": "page"
+      },
+      {
+        "source_url": "https://dnrweblink.state.co.us/CWCB/0/edoc/230844/cwrp_app_special2026.pdf",
+        "quote": "Federal agencies and private landowners are not eligible to receive grant funds",
+        "checked_at": "2026-11-26",
+        "method": "page"
+      },
+      {
+        "source_url": "https://dnrweblink.state.co.us/CWCB/0/edoc/230844/cwrp_app_special2026.pdf",
+        "quote": "Capacity building grants must be submitted in conjunction with a planning, engineering, or implementation grant.",
+        "checked_at": "2026-11-26",
+        "method": "page"
+      },
+      {
+        "source_url": "https://dnrweblink.state.co.us/CWCB/0/edoc/230844/cwrp_app_special2026.pdf",
+        "quote": "a commitment to collaborative approaches, involving locally and/or regionally based diverse interests within the watershed in question, with participation open to all interested parties in the watershed.",
+        "checked_at": "2026-11-26",
+        "method": "page"
+      },
+      {
+        "source_url": "https://dnrweblink.state.co.us/CWCB/0/edoc/230844/cwrp_app_special2026.pdf",
+        "quote": "That the need for the plan or project is urgent and if delayed may result in negative impacts to life, property, water supply, and other infrastructure",
+        "checked_at": "2026-11-26",
+        "method": "page"
+      },
+      {
+        "source_url": "https://dnrweblink.state.co.us/CWCB/0/edoc/230844/cwrp_app_special2026.pdf",
+        "quote": "a commitment to restoring or protecting the ecological processes that connect land and water while protecting lives and property",
+        "checked_at": "2026-11-26",
+        "method": "page"
+      },
+      {
+        "source_url": "https://dnrweblink.state.co.us/CWCB/0/edoc/230844/cwrp_app_special2026.pdf",
+        "quote": "That the plan, design, or project is financially and technically feasible",
+        "checked_at": "2026-11-26",
+        "method": "page"
+      },
+      {
+        "source_url": "https://dnrweblink.state.co.us/CWCB/0/edoc/230844/cwrp_app_special2026.pdf",
+        "quote": "That an implementation grant, including project design, has been informed through a planning effort",
+        "checked_at": "2026-11-26",
+        "method": "page"
       }
     ],
+    "co_finance": {
+      "source_url": "https://dnrweblink.state.co.us/CWCB/0/edoc/230844/cwrp_app_special2026.pdf",
+      "quote": "A minimum of 25% match is required for all Capacity Building, Planning, and Engineering Grants. A minimum of 50% match is required for all Implementation Grants. Project costs may consist of a combination of in-kind and cash match, but no more than half of the match may be in the form of in-kind services.",
+      "checked_at": "2026-11-26",
+      "method": "page"
+    },
     "documents": [
       {
         "source_url": "https://cwcb.colorado.gov/watershed-grants",
@@ -106,9 +210,9 @@
         "method": "page"
       },
       {
-        "source_url": "https://cwcb.colorado.gov/watershed-grants",
-        "quote": "All letters of support, including those from basin roundtables, must be submitted through the CWCB Portal by the application deadline.",
-        "checked_at": "2026-11-24",
+        "source_url": "https://dnrweblink.state.co.us/CWCB/0/edoc/230844/cwrp_app_special2026.pdf",
+        "quote": "Applicants should identify match as pending or secure and provide evidence of matching funds (such as an award letter).",
+        "checked_at": "2026-11-26",
         "method": "page"
       }
     ],
@@ -117,6 +221,12 @@
         "source_url": "https://dnrweblink.state.co.us/CWCB/0/edoc/230844/cwrp_app_special2026.pdf",
         "quote": "The applicant shall provide the CWCB progress reports and expenditure reports every six months, beginning from the date of the execution of a contract.",
         "checked_at": "2026-11-20",
+        "method": "page"
+      },
+      {
+        "source_url": "https://dnrweblink.state.co.us/CWCB/0/edoc/230844/cwrp_app_special2026.pdf",
+        "quote": "At completion of the project, the applicant shall provide the CWCB a Final Report that:",
+        "checked_at": "2026-11-26",
         "method": "page"
       }
     ],

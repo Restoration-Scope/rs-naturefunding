@@ -14,12 +14,13 @@
   "amount": { "currency": "USD", "max": 40000 },
   "pool": { "currency": "USD", "value": 240000, "period": "round", "label": "the 2027 round" },
   "co_finance_required": false,
+  "consortium_required": false,
   "fiscal_sponsor": { "stance": "accepted", "note": "The sponsor is a tax-exempt nonprofit" },
   "reporting": null,
   "effort": { "steps": ["Application through Foundant"], "due": ["2027-02-15"] },
   "eligibility": [
     {
-      "rule": "Applicant is tax-exempt or uses a tax-exempt nonprofit fiscal sponsor",
+      "rule": "If applying through a fiscal sponsor, use a tax-exempt nonprofit sponsor.",
       "kind": "legal"
     },
     {
@@ -30,13 +31,12 @@
       "rule": "Single-site projects have wider community impact or serve as a replicable model",
       "kind": "project"
     },
-    { "rule": "No land acquisition or stewardship implementation activities", "kind": "project" },
     {
-      "rule": "No political activity or state/federal legislative or administrative lobbying",
+      "rule": "Project seeks more than operational support for existing activities.",
       "kind": "project"
     }
   ],
-  "after_award": { "reports": "interim_and_final" },
+  "after_award": { "reports": "final" },
   "documents": ["Completed Neighborhood Conservation Grant Budget Form"],
   "calls": [
     {
@@ -110,6 +110,12 @@
       "checked_at": "2026-11-25",
       "method": "page"
     },
+    "consortium_required": {
+      "source_url": "https://assets.openspaceinstitute.org/production/GPLPP/Neighborhood-Conservation-Grant-Package.pdf?dm=1795037455",
+      "quote": "Collaborative applications are encouraged, with one eligible entity serving as the lead applicant.",
+      "checked_at": "2026-11-26",
+      "method": "page"
+    },
     "fiscal_sponsor": {
       "source_url": "https://assets.openspaceinstitute.org/production/GPLPP/Neighborhood-Conservation-Grant-Package.pdf?dm=1795037455",
       "quote": "The applicant must be a tax-exempt non-profit organization. If applying through a fiscal sponsor, the sponsor must be a tax-exempt nonprofit organization.",
@@ -145,14 +151,8 @@
       },
       {
         "source_url": "https://assets.openspaceinstitute.org/production/GPLPP/Neighborhood-Conservation-Grant-Package.pdf?dm=1795037455",
-        "quote": "These funds cannot be used for land acquisition or stewardship implementation activities.",
-        "checked_at": "2026-11-25",
-        "method": "page"
-      },
-      {
-        "source_url": "https://assets.openspaceinstitute.org/production/GPLPP/Neighborhood-Conservation-Grant-Package.pdf?dm=1795037455",
-        "quote": "Any political activity, or legislative or administrative lobbying at state or federal level",
-        "checked_at": "2026-11-25",
+        "quote": "Projects solely requesting funding for operational support for current activities",
+        "checked_at": "2026-11-26",
         "method": "page"
       }
     ],
@@ -161,6 +161,12 @@
         "source_url": "https://assets.openspaceinstitute.org/production/GPLPP/Neighborhood-Conservation-Grant-Package.pdf?dm=1795037455",
         "quote": "During the grant term, grantees can expect to complete a mid-year check-in or submit a progress report. At the end of the grant term, grantees will submit a final report detailing work completed, impact, and potential next steps.",
         "checked_at": "2026-11-25",
+        "method": "page"
+      },
+      {
+        "source_url": "https://assets.openspaceinstitute.org/production/GPLPP/Neighborhood-Conservation-Grant-Package.pdf?dm=1795037455",
+        "quote": "At the end of the grant term, grantees will submit a final report detailing work completed, impact, and potential next steps.",
+        "checked_at": "2026-11-26",
         "method": "page"
       }
     ],

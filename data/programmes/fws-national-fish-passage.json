@@ -31,7 +31,7 @@
     "currency": "USD",
     "max": 1000000
   },
-  "co_finance_required": false,
+  "co_finance_required": true,
   "reporting": "Recipients file federal financial reports and programme performance reports, on the schedule set in the notice of award.",
   "eligibility": [
     {
@@ -43,19 +43,27 @@
       "kind": "project"
     },
     {
-      "rule": "No fish passage work at facilities actively licensed or permitted by FERC",
+      "rule": "No grant funds to build, operate or maintain fish passage at facilities with an active FERC licence or permit",
       "kind": "project"
     },
     {
       "rule": "Registered in SAM.gov before applying, unless applying as a natural person",
       "kind": "legal"
+    },
+    {
+      "rule": "Applicant and key personnel have no SAM.gov exclusion that applies to this programme",
+      "kind": "legal"
+    },
+    {
+      "rule": "For FRIMA funding, work in Pacific Ocean drainages in Oregon, Washington, Montana, Idaho or California",
+      "kind": "project"
     }
   ],
   "effort": {
     "steps": [
       "Contact local fish passage programme staff to develop the project",
       "Eligibility and merit review by regional programme staff",
-      "Application in GrantSolutions, if selected and invited",
+      "Submit the formal application if invited",
       "Risk review"
     ],
     "due": [
@@ -64,6 +72,10 @@
       "2027-04-30",
       null
     ]
+  },
+  "co_finance": {
+    "min_share": 35,
+    "applies_to": "FRIMA-funded projects (non-federal match)"
   },
   "after_award": {
     "reports": "unspecified"
@@ -130,8 +142,8 @@
     },
     "co_finance_required": {
       "source_url": "https://www.grants.gov/grantsws/rest/opportunity/att/download/354778",
-      "quote": "Cost Sharing Requirement Cost Sharing Required? No",
-      "checked_at": "2026-11-02",
+      "quote": "FRIMA funded projects must source a non-federal match amount (minimum of 35%).",
+      "checked_at": "2026-11-26",
       "method": "page"
     },
     "reporting": {
@@ -164,6 +176,18 @@
         "quote": "Before applying, all applicants except individuals applying as a natural person must be registered in SAM.gov.",
         "checked_at": "2026-11-20",
         "method": "page"
+      },
+      {
+        "source_url": "https://www.grants.gov/grantsws/rest/opportunity/att/download/354778",
+        "quote": "the current list of prohibited or restricted persons or entities in the System for Award Management (SAM.gov) Exclusions database. We are prohibited from making an award if a recipient or any key personnel are found ineligible, prohibited, restricted, or otherwise excluded from receiving or participating in an award, as their ineligibility condition applies to this program.",
+        "checked_at": "2026-11-26",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.grants.gov/grantsws/rest/opportunity/att/download/354778",
+        "quote": "Funds provided to NFPP for the implementation of FRIMA will support the development, improvement, or installation of fish screens, fish passage devices and related features to mitigate impacts on fisheries associated with irrigation water system diversions in Pacific Ocean drainages in Oregon, Washington, Montana, Idaho, and California.",
+        "checked_at": "2026-11-26",
+        "method": "page"
       }
     ],
     "effort": [
@@ -190,8 +214,20 @@
         "quote": "Prior to making an award, the applicant will be assessed for their level of risk per 2 CFR 200.206.",
         "checked_at": "2026-11-20",
         "method": "page"
+      },
+      {
+        "source_url": "https://www.grants.gov/grantsws/rest/opportunity/att/download/354778",
+        "quote": "Applicants should not submit applications to GrantSolutions or Grants.gov until they have been invited by program staff.",
+        "checked_at": "2026-11-26",
+        "method": "page"
       }
     ],
+    "co_finance": {
+      "source_url": "https://www.grants.gov/grantsws/rest/opportunity/att/download/354778",
+      "quote": "FRIMA funded projects must source a non-federal match amount (minimum of 35%).",
+      "checked_at": "2026-11-26",
+      "method": "page"
+    },
     "after_award": [
       {
         "source_url": "https://www.grants.gov/grantsws/rest/opportunity/att/download/354778",

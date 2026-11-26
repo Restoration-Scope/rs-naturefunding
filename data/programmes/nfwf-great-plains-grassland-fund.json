@@ -21,7 +21,10 @@
   },
   "co_finance_required": true,
   "reporting": "Applicants pick the most relevant project metrics from the programme's list in NFWF's Easygrants system for future reporting.",
-  "effort": { "steps": ["Full proposal"], "due": ["2027-01-27"] },
+  "effort": {
+    "steps": ["Full proposal", "Proposal screening", "Proposal evaluation"],
+    "due": ["2027-01-27", null, null]
+  },
   "eligibility": [
     {
       "rule": "Be a non-profit 501(c) organization or eligible state, local, municipal, Tribal, or educational institution",
@@ -32,16 +35,16 @@
       "kind": "legal"
     },
     {
-      "rule": "Use a perpetual conservation easement qualifying for conservation purposes under Internal Revenue Code Section 170(h)",
+      "rule": "If using a perpetual conservation easement, it qualifies under Internal Revenue Code Section 170(h)",
       "kind": "project"
     },
     {
-      "rule": "Include easement restrictions that prohibit tilling or sod-busting on the land",
+      "rule": "Easement restrictions bar tilling or sod-busting of the designated grasslands",
       "kind": "project"
     },
     {
-      "rule": "Do not use NFWF funds for ongoing legal compliance, permit conditions, mitigation, or settlement agreements",
-      "kind": "other"
+      "rule": "For property acquired before applying, demonstrates why NFWF reimbursement is needed",
+      "kind": "project"
     }
   ],
   "co_finance": { "ratio": "1:1", "in_kind": true },
@@ -49,12 +52,11 @@
     "Detailed digital Shapefile delineating proposed conservation land",
     "Easement restrictions explanation",
     "Statement of Litigation, unless a federal, state, or local government applicant",
-    "Board of Trustees or Directors list",
-    "GAAP audited financial statements, unless current valid information is already on file",
-    "IRS Form 990, unless current valid information is already on file",
-    "Single Audit, unless current valid information is already on file",
-    "Applicant Controls Questionnaire",
-    "Completed acquisition documents, if already completed"
+    "Board of Trustees or Directors list, or a statement if an applicant other than a nonprofit has no board",
+    "If no Single Audit: GAAP audit or unaudited financial statements, unless current documents are on file",
+    "For nonprofits: IRS Form 990, e-Postcard or applicable exception evidence, unless current records are on file",
+    "Single Audit or signed exemption memo, unless current documentation is already on file",
+    "Applicant Controls Questionnaire"
   ],
   "calls": [
     {
@@ -128,6 +130,18 @@
         "quote": "01/27/2027 Full proposal due",
         "checked_at": "2026-11-25",
         "method": "page"
+      },
+      {
+        "source_url": "https://www.nfwf.org/sites/default/files/2026-10/2026-27_great_plains_grassland_fund_rfp_updated_10.29.pdf",
+        "quote": "All proposals will be screened for relevance, accuracy, completeness and compliance with NFWF and funding source policies.",
+        "checked_at": "2026-11-26",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.nfwf.org/sites/default/files/2026-10/2026-27_great_plains_grassland_fund_rfp_updated_10.29.pdf",
+        "quote": "Proposals will then be evaluated based on the extent to which they meet the following criteria.",
+        "checked_at": "2026-11-26",
+        "method": "page"
       }
     ],
     "eligibility": [
@@ -151,14 +165,14 @@
       },
       {
         "source_url": "https://www.nfwf.org/sites/default/files/2026-10/2026-27_great_plains_grassland_fund_rfp_updated_10.29.pdf",
-        "quote": "Restrictions must confirm or attest that the easement will not allow for tilling/sod-busting on the land.",
-        "checked_at": "2026-11-25",
+        "quote": "No portion of the Grasslands shall be cultivated, plowed, tilled, or converted to row crops, irrigated farmland, orchards or other perennial crops, a practice commonly referred to as sodbusting.",
+        "checked_at": "2026-11-26",
         "method": "page"
       },
       {
         "source_url": "https://www.nfwf.org/sites/default/files/2026-10/2026-27_great_plains_grassland_fund_rfp_updated_10.29.pdf",
-        "quote": "NFWF funds may not be used to support ongoing efforts to comply with legal requirements, including permit conditions, mitigation and settlement agreements.",
-        "checked_at": "2026-11-25",
+        "quote": "Properties that have been acquired prior to application in order to take advantage of real estate opportunities are eligible. Applicants who would like to take this approach must demonstrate the need for NFWF reimbursement of funds.",
+        "checked_at": "2026-11-26",
         "method": "page"
       }
     ],
@@ -194,9 +208,27 @@
         "method": "page"
       },
       {
-        "source_url": "https://www.nfwf.org/sites/default/files/2026-10/2026-27_great_plains_grassland_fund_rfp_updated_10.29.pdf",
-        "quote": "All acquisition documents, including appraisals, title reports, baseline inventory reports, environmental hazard assessments, mineral rights assessments, surveys, and where appropriate a local attorney's opinion of easement viability, as well as other appropriate documents, must be available for NFWF staff review as part of the application process if already completed.",
-        "checked_at": "2026-11-25",
+        "source_url": "https://www.nfwf.org/sites/default/files/2026-10/gpgf_full_proposal_tip_sheet_3.pdf",
+        "quote": "Provide a list of members. If your organization is not a nonprofit and does not have a Board, upload a document stating that none exists.",
+        "checked_at": "2026-11-26",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.nfwf.org/apply-grant/application-information/required-financial-documents",
+        "quote": "If your organization does not meet the Single Audit threshold, please provide the applicable financial documentation in accordance with your organization’s policies and procedures. This may include GAAP-audited financial statements or, if a GAAP audited report is not applicable, a balance sheet and/or income statement, as appropriate.",
+        "checked_at": "2026-11-26",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.nfwf.org/apply-grant/application-information/required-financial-documents",
+        "quote": "If the entity is not required to file an IRS Form 990, they must provide a memo on company letterhead, signed with functional title, date and reason. If the entity is newly incorporated and has not filed the IRS Form 990, they must provide the entity’s IRS Tax Exempt Status Determination Letter.",
+        "checked_at": "2026-11-26",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.nfwf.org/apply-grant/application-information/required-financial-documents",
+        "quote": "If no Single Audit, entity must provide a memo on letterhead, signed with title and date stating that: \"[entity name] is not required to obtain a Single Audit because we have not expended more than $1,000,000 of federal funds within our fiscal year.\"",
+        "checked_at": "2026-11-26",
         "method": "page"
       }
     ]

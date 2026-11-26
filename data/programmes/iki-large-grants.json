@@ -181,8 +181,12 @@
   "consortium_required": true,
   "reporting": "Implementing organisations submit an annual interim report (technical report on results, IKI standard indicators and safeguards, plus a financial statement) by 30 April, and twice-yearly project updates.",
   "effort": {
-    "steps": ["Project outline", "Detailed project proposal, if invited"],
-    "due": ["2027-02-09", null]
+    "steps": [
+      "Project outline",
+      "Detailed project proposal, if invited",
+      "Preparation-phase proposal, if funding for preparation was requested"
+    ],
+    "due": ["2027-02-09", null, null]
   },
   "eligibility": [
     {
@@ -191,7 +195,10 @@
       "min_years": 5
     },
     { "rule": "Lead organisation has experience in the target region", "kind": "track_record" },
-    { "rule": "Annual IKI funding does not exceed the lead's annual turnover", "kind": "finances" },
+    {
+      "rule": "Average annual IKI funding cannot exceed the lead’s average annual turnover over its last three financial years.",
+      "kind": "finances"
+    },
     {
       "rule": "Lead and partners have technical, administrative and management capacity",
       "kind": "capacity"
@@ -202,13 +209,15 @@
       "kind": "project"
     },
     { "rule": "Project has not started at the time of application", "kind": "project" },
-    { "rule": "Not a partner country government or individual", "kind": "legal" }
+    {
+      "rule": "All partner countries must be ODA-eligible by the outline deadline.",
+      "kind": "project"
+    }
   ],
   "after_award": { "reports": "yearly" },
   "documents": [
-    "Project concept, max. 8 pages, in the IKI template",
     "Organisational chart of the consortium",
-    "Partner-government letter of support, for bilateral thematic-priority outlines"
+    "Government support letter or ministry email for bilateral thematic outlines, or submit the letter upon request"
   ],
   "calls": [
     {
@@ -341,6 +350,12 @@
         "quote": "all applicants whose outlines have been selected will be informed in writing of the outcome of the assessment and invited to submit a detailed project proposal.",
         "checked_at": "2026-11-25",
         "method": "page"
+      },
+      {
+        "source_url": "https://www.international-climate-initiative.com/fileadmin/iki/Dokumente/Calls/ILG/2026/ILG2026_Funding_Announcement_EN.pdf",
+        "quote": "If the project outline includes funding for a preparation phase, the applicant must submit a corresponding project proposal for the preparation phase within five weeks of the kick-off meeting.",
+        "checked_at": "2026-11-26",
+        "method": "page"
       }
     ],
     "eligibility": [
@@ -387,9 +402,9 @@
         "method": "page"
       },
       {
-        "source_url": "https://www.international-climate-initiative.com/en/find-funding/large-grants/",
-        "quote": "Partner country governments and individuals cannot participate in the ideas competition.",
-        "checked_at": "2026-11-25",
+        "source_url": "https://www.international-climate-initiative.com/fileadmin/iki/Dokumente/Calls/ILG/2026/ILG2026_Funding_Announcement_EN.pdf",
+        "quote": "All partner countries proposed for a project must be ODA-eligible by the deadline for submission of the project outline",
+        "checked_at": "2026-11-26",
         "method": "page"
       }
     ],
@@ -404,12 +419,6 @@
     "documents": [
       {
         "source_url": "https://www.international-climate-initiative.com/fileadmin/iki/Dokumente/Calls/ILG/2026/ILG2026_Funding_Announcement_EN.pdf",
-        "quote": "Project concept (max. 8 pages) in the template to be completed (download in the outline portal, IKI online platform)",
-        "checked_at": "2026-11-25",
-        "method": "page"
-      },
-      {
-        "source_url": "https://www.international-climate-initiative.com/fileadmin/iki/Dokumente/Calls/ILG/2026/ILG2026_Funding_Announcement_EN.pdf",
         "quote": "Organisational chart explaining the consortium structure",
         "checked_at": "2026-11-25",
         "method": "page"
@@ -418,6 +427,12 @@
         "source_url": "https://www.international-climate-initiative.com/fileadmin/iki/Dokumente/Calls/ILG/2026/ILG2026_Funding_Announcement_EN.pdf",
         "quote": "Letters of support from the partner government for bilateral project outlines relating to thematic priorities (see the template in Annex 4). This is not necessary for country priorities.",
         "checked_at": "2026-11-25",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.international-climate-initiative.com/en/find-funding/large-grants/large-grants-2026/faq-for-iki-large-grants-2026/",
+        "quote": "At best, this should be available when the project outline is submitted. Otherwise, these letters of endorsement must be submitted upon request by the IKI Office. E-mails from the partner ministries confirming support for the project concept are also initially accepted with the outline.",
+        "checked_at": "2026-11-26",
         "method": "page"
       }
     ]

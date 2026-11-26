@@ -25,17 +25,27 @@
     "note": "For unincorporated community groups, through another nonprofit"
   },
   "reporting": null,
-  "effort": { "steps": ["Online grant application"], "due": ["2027-02-15"] },
+  "effort": {
+    "steps": [
+      "Online grant application",
+      "Fund advisory committee review, followed by foundation board review"
+    ],
+    "due": ["2027-02-15", null]
+  },
   "eligibility": [
     {
-      "rule": "Is incorporated, or applies through another nonprofit as fiscal agent",
+      "rule": "Unincorporated community groups apply through another nonprofit as fiscal agent",
       "kind": "legal"
     },
     {
       "rule": "Does not discriminate against a person or group on listed grounds",
       "kind": "legal"
     },
-    { "rule": "Project focuses on water quality and related land issues", "kind": "project" }
+    { "rule": "Project focuses on water quality and related land issues", "kind": "project" },
+    {
+      "rule": "Has not submitted the same proposal to another Berkshire Taconic fund",
+      "kind": "other"
+    }
   ],
   "co_finance": { "ratio": "1:1", "in_kind": true },
   "after_award": { "reports": "final" },
@@ -112,6 +122,12 @@
         "quote": "Deadline 2/15/2027",
         "checked_at": "2026-11-25",
         "method": "page"
+      },
+      {
+        "source_url": "https://berkshiretaconic.org/grants-scholarships/grants-how-to-apply-and-faq",
+        "quote": "Your grant application will be reviewed by the fund advisory committee, and the committee’s recommendations will be reviewed by BTCF's board of directors.",
+        "checked_at": "2026-11-26",
+        "method": "page"
       }
     ],
     "eligibility": [
@@ -131,6 +147,12 @@
         "source_url": "https://berkshiretaconic.org/grants/berkshire-environmental-endowment-fund",
         "quote": "Berkshire County nonprofit organizations, public agencies, schools or civic community entities for projects focused on water quality and related land issues.",
         "checked_at": "2026-11-25",
+        "method": "page"
+      },
+      {
+        "source_url": "https://berkshiretaconic.org/grants-scholarships/grants-how-to-apply-and-faq",
+        "quote": "It is not possible to submit the same proposal to multiple funds.",
+        "checked_at": "2026-11-26",
         "method": "page"
       }
     ],

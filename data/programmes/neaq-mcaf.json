@@ -19,18 +19,16 @@
   "amount": { "currency": "USD", "min": 1000, "max": 12000 },
   "co_finance_required": null,
   "reporting": null,
-  "effort": { "steps": ["Funding inquiry", "Full proposal, if invited"] },
+  "effort": {
+    "steps": ["Funding inquiry", "Full proposal, if invited", "Rolling review of full proposals"]
+  },
   "eligibility": [
     {
       "rule": "Project lead is a national of the low- or middle-income country where the work takes place",
       "kind": "project"
     }
   ],
-  "documents": [
-    "Proposed project paragraph",
-    "Brief bio of project lead",
-    "Approximate budget and project timeline"
-  ],
+  "documents": ["Brief bio of project lead", "Approximate budget and project timeline"],
   "calls": [
     {
       "id": "rolling",
@@ -86,6 +84,12 @@
         "quote": "whether we would like to invite a full proposal",
         "checked_at": "2026-11-25",
         "method": "page"
+      },
+      {
+        "source_url": "https://www.neaq.org/conservation-and-research/marine-conservation-action-fund/",
+        "quote": "Proposals are reviewed on a rolling basis and reviewers may include members of MCAF Staff and experts from the global MCAF community.",
+        "checked_at": "2026-11-26",
+        "method": "page"
       }
     ],
     "eligibility": [
@@ -97,12 +101,6 @@
       }
     ],
     "documents": [
-      {
-        "source_url": "https://www.neaq.org/conservation-and-research/marine-conservation-action-fund/",
-        "quote": "a paragraph about your proposed project",
-        "checked_at": "2026-11-25",
-        "method": "page"
-      },
       {
         "source_url": "https://www.neaq.org/conservation-and-research/marine-conservation-action-fund/",
         "quote": "a brief bio of the project lead",

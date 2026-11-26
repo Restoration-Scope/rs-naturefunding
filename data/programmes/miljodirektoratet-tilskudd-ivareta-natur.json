@@ -18,6 +18,13 @@
   "co_finance_required": null,
   "reporting": null,
   "effort": { "steps": ["Application", "Application review"] },
+  "eligibility": [
+    {
+      "rule": "Has repaid any outstanding grant repayment owed under this scheme",
+      "kind": "finances"
+    }
+  ],
+  "documents": ["Detailed budget and complete financing plan listing any other public grants"],
   "calls": [
     {
       "id": "annual",
@@ -82,15 +89,37 @@
         "method": "page"
       }
     ],
+    "eligibility": [
+      {
+        "source_url": "https://lovdata.no/dokument/SF/forskrift/2024-10-04-2408",
+        "quote": "Ved manglende tilbakebetaling vil tilskuddsmottakeren ikke være søknadsberettiget før tilbakebetaling er foretatt.",
+        "checked_at": "2026-11-26",
+        "method": "page"
+      }
+    ],
     "after_award": [
       {
         "source_url": "https://lovdata.no/dokument/SF/forskrift/2024-10-04-2408",
         "quote": "Alle mottakere av tilskudd skal rapportere faglig på bruk av tilskuddsmidlene i Miljødirektoratets elektroniske søknadssenter innen fristen fastsatt i tilskuddsvedtaket ved å beskrive oppnådde resultater opp mot formålet i tilskuddsvedtaket.",
         "checked_at": "2026-11-20",
         "method": "page"
+      },
+      {
+        "source_url": "https://lovdata.no/dokument/SF/forskrift/2024-10-04-2408",
+        "quote": "Når tilskuddet er 500 000 kroner eller høyere skal regnskapet være revidert av statsautorisert revisor. For institusjoner som benytter kommunerevisjon eller annet offentlig revisjonsorgan skal tilskuddet være revidert av statsautorisert revisor når tilskuddet er over 1 million kroner.",
+        "checked_at": "2026-11-26",
+        "method": "page"
+      }
+    ],
+    "documents": [
+      {
+        "source_url": "https://lovdata.no/dokument/SF/forskrift/2024-10-04-2408",
+        "quote": "detaljert budsjett og en komplett finansieringsplan, der også eventuelle andre offentlige tilskudd kommer frem",
+        "checked_at": "2026-11-26",
+        "method": "page"
       }
     ]
   },
   "checked_at": "2026-11-20",
-  "after_award": { "reports": "unspecified" }
+  "after_award": { "reports": "unspecified", "audit": true }
 }
