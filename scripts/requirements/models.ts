@@ -43,6 +43,7 @@ const LONG: Record<string, { over: number; input: number; output: number; cached
 
 export const costOf = (model: string, u: Usage) => {
   if (model.startsWith('cursor:')) return 0 // billed to the Cursor plan
+  if (model.startsWith('ollama:')) return 0 // runs locally
   const long = LONG[model]
   const p = (long && u.input_tokens > long.over ? long : undefined) ?? PRICES[model] ?? { input: 10, output: 50 }
   const cached = Math.min(u.cached_input_tokens ?? 0, u.input_tokens)
@@ -239,6 +240,70 @@ export function cursorModel(model: string, cwd = join(process.cwd(), '.cache', '
           return { value: schema.parse(JSON.parse(text.slice(text.indexOf('{'), text.lastIndexOf('}') + 1))), usage }
         } catch (e) {
           last = `${name} answered outside the schema: ${(e as Error).message.slice(0, 200)}`
+        }
+      }
+      throw new SpentError(last, usage)
+    },
+  }
+}
+
+/** Strips a schema frame a small model echoes around its answer, at any depth: {"type":"object","properties":{…}} becomes {…}. */
+export const unframe = (v: unknown): unknown =>
+  Array.isArray(v) ? v.map(unframe) : v && typeof v === 'object' ? ((o) => (o.type === 'object' && o.properties && typeof o.properties === 'object' ? unframe(o.properties) : Object.fromEntries(Object.entries(o).map(([k, x]) => [k, unframe(x)]))))(v as Record<string, unknown>) : v
+
+/**
+ * A local model through Ollama (`ollama:inkling-2-mini`), free to run: /api/chat with the JSON schema as
+ * `format`. A model Ollama can't constrain (Inkling 2 Mini on 0.40.18: "structured output is unavailable")
+ * gets the schema in the prompt instead, checked in code with two retries, as the Cursor route does.
+ * The context is set wide (OLLAMA_NUM_CTX, default 65536) because Ollama otherwise cuts long pages
+ * silently; OLLAMA_THINK sets the thinking level (the model's default when unset).
+ */
+export function ollamaModel(model: string, host = process.env.OLLAMA_HOST ?? 'http://127.0.0.1:11434', numCtx = Number(process.env.OLLAMA_NUM_CTX ?? 65536), think = process.env.OLLAMA_THINK): JsonModel {
+  const name = `ollama:${model}`
+  let constrained = true
+  const chat = async (system: string, user: string, format: unknown) => {
+    const res = await fetch(`${host.replace(/\/$/, '')}/api/chat`, {
+      method: 'POST',
+      headers: { 'content-type': 'application/json' },
+      body: JSON.stringify({ model, stream: false, ...(format ? { format } : {}), ...(think ? { think } : {}), options: { num_ctx: numCtx, temperature: 0 }, messages: [{ role: 'system', content: system }, { role: 'user', content: user }] }),
+      signal: AbortSignal.timeout(1_800_000),
+    })
+    const text = await res.text()
+    if (!res.ok) return { error: `Ollama HTTP ${res.status}: ${text.slice(0, 300)}`, status: res.status }
+    return { r: JSON.parse(text) as { message?: { content?: string }; prompt_eval_count?: number; eval_count?: number; done_reason?: string } }
+  }
+  return {
+    name,
+    async json(system, user, schema) {
+      const json = strictSchema(schema as z.ZodType<unknown>)
+      const usage: Usage = { input_tokens: 0, output_tokens: 0 }
+      let last = ''
+      for (let attempt = 0; attempt < 3; attempt++) {
+        const got = constrained ? await chat(system, user, json) : await chat(system, `${user}\n\nAnswer with one JSON object only, no prose and no code fences, matching this JSON schema (null where the text doesn't say):\n${JSON.stringify(json)}`, null)
+        if ('error' in got) {
+          if (constrained && got.status === 501 && /structured output/.test(got.error!)) {
+            constrained = false
+            attempt--
+            continue
+          }
+          throw new Error(got.error)
+        }
+        const r = got.r
+        usage.input_tokens += r.prompt_eval_count ?? 0
+        usage.output_tokens += r.eval_count ?? 0
+        if (r.done_reason === 'length') {
+          last = `${name} ran out of context or output tokens`
+          continue
+        }
+        const text = (r.message?.content ?? '').trim()
+        try {
+          let v = JSON.parse(constrained ? text : text.slice(text.indexOf('{'), text.lastIndexOf('}') + 1))
+          // A small model may echo the schema's frame around its answer: {"type":"object","properties":{…}}.
+          if (!constrained) v = unframe(v)
+          return { value: schema.parse(v), usage }
+        } catch (e) {
+          last = `${name} answered outside the schema: ${(e as Error).message.slice(0, 200)}; it began: ${text.slice(0, 300)}`
+          if (constrained) break
         }
       }
       throw new SpentError(last, usage)
