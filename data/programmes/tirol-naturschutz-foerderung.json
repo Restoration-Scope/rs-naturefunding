@@ -15,7 +15,7 @@
   "access": "direct",
   "window": "rolling",
   "amount": null,
-  "co_finance_required": null,
+  "co_finance_required": true,
   "reporting": "Payment is claimed in writing with cost evidence and proof the funds were used as agreed",
   "effort": {
     "steps": [
@@ -31,16 +31,29 @@
       "kind": "finances"
     },
     {
-      "rule": "Budget excludes recoverable VAT, public fees, legal, tax-advice, financing, insurance, licence and leasing costs",
+      "rule": "Excludes recoverable VAT, public fees, legal and tax costs, finance, insurance, licences, leases and unused discounts",
+      "kind": "finances"
+    },
+    {
+      "rule": "Total funding does not overpay or double-fund any project costs",
       "kind": "finances"
     }
   ],
+  "co_finance": {
+    "min_share": 10,
+    "applies_to": "Project and climate grants unless full funding is approved"
+  },
   "after_award": { "reports": "unspecified", "site_visits": true },
   "documents": [
-    "Project plans, cadastral and aerial maps, land register extracts for affected plots",
-    "Description, timetable, cost estimates and quotes",
+    "Relevant project plans, cadastral plans, aerial photos and land register extracts",
+    "Relevant descriptions, timetables, cost estimates and supplier quotes",
     "Evaluation plan with goals and indicators, if technically required",
-    "Consent declaration accepting grant duties and revocation rules"
+    "Consent declaration accepting grant duties and revocation rules",
+    "Separate financing plan, when needed",
+    "Technical plans, expert assessments or studies, where relevant",
+    "Landowner consent, where needed",
+    "Official permits or confirmations, where needed",
+    "Tax office confirmation, if VAT cannot be reclaimed"
   ],
   "calls": [
     {
@@ -83,6 +96,12 @@
       "source_url": "https://www.tirol.gv.at/umwelt/naturschutz/foerderungen/",
       "quote": "Naturschutzprojekte mit Förderung aus Landesmittteln können jederzeit eingereicht werden.",
       "checked_at": "2026-11-25",
+      "method": "page"
+    },
+    "co_finance_required": {
+      "source_url": "https://www.tirol.gv.at/fileadmin/themen/umwelt/naturschutz/downloads/Foerderungen_Naturschutz/Foerderrichtlinie_Naturschutz_Tirol_2026.pdf",
+      "quote": "Projektförderungen werden grundsätzlich bis zu 90 v.H. der förderbaren Kosten (§ 4 Abs. 3) gewährt. In fachlich begründeten Fällen, wie etwa bei besonders hohem naturschutzfachlichem Wert der Maßnahme, kann die Förderung bis zu 100 v.H. der förderbaren Kosten betragen. (3) Für Klimaschutzförderungen gilt Abs. 2 sinngemäß.",
+      "checked_at": "2026-11-26",
       "method": "page"
     },
     "reporting": {
@@ -129,8 +148,20 @@
         "quote": "Umsatzsteuer bei vorsteuerabzugsberechtigten Förderungswerbenden, öffentliche Abgaben und Gebühren; c) Kosten für Verfahren vor Verwaltungsbehörden oder Gerichten; d) Finanzierungs- und Versicherungskosten; e) Lizenzgebühren; f) Steuerberatungs-, Anwalts- und Notariatskosten; g) Leasingraten; h) Kosten, die durch Nichtinanspruchnahme von gewährten Nachlässen entstehen.",
         "checked_at": "2026-11-25",
         "method": "page"
+      },
+      {
+        "source_url": "https://www.tirol.gv.at/fileadmin/themen/umwelt/naturschutz/downloads/Foerderungen_Naturschutz/Foerderrichtlinie_Naturschutz_Tirol_2026.pdf",
+        "quote": "es durch den Bezug von Fördergeldern zu keiner Überzahlung und im Fall der Förderung durch mehrere Förderstellen zu keiner Doppelförderung kommt",
+        "checked_at": "2026-11-26",
+        "method": "page"
       }
     ],
+    "co_finance": {
+      "source_url": "https://www.tirol.gv.at/fileadmin/themen/umwelt/naturschutz/downloads/Foerderungen_Naturschutz/Foerderrichtlinie_Naturschutz_Tirol_2026.pdf",
+      "quote": "Projektförderungen werden grundsätzlich bis zu 90 v.H. der förderbaren Kosten (§ 4 Abs. 3) gewährt. In fachlich begründeten Fällen, wie etwa bei besonders hohem naturschutzfachlichem Wert der Maßnahme, kann die Förderung bis zu 100 v.H. der förderbaren Kosten betragen. (3) Für Klimaschutzförderungen gilt Abs. 2 sinngemäß.",
+      "checked_at": "2026-11-26",
+      "method": "page"
+    },
     "after_award": [
       {
         "source_url": "https://www.tirol.gv.at/fileadmin/themen/umwelt/naturschutz/downloads/Foerderungen_Naturschutz/Foerderrichtlinie_Naturschutz_Tirol_2026.pdf",
@@ -156,6 +187,48 @@
         "source_url": "https://www.tirol.gv.at/fileadmin/themen/umwelt/naturschutz/downloads/Foerderungen_Naturschutz/Foerderrichtlinie_Naturschutz_Tirol_2026.pdf",
         "quote": "eine Zustimmungserklärung der Förderungswerbenden zu den mit der Gewährung einer Förderung verbundenen Pflichten",
         "checked_at": "2026-11-25",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.tirol.gv.at/fileadmin/themen/umwelt/naturschutz/downloads/Foerderungen_Naturschutz/Foerderrichtlinie_Naturschutz_Tirol_2026.pdf",
+        "quote": "sofern fachlich erforderlich, Ausführungen und Erläuterungen zu einer geplanten Evaluierung der Maßnahmen, insbesondere mit Angabe der konkreten Ziele und der Indikatoren für die Evaluierung",
+        "checked_at": "2026-11-26",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.tirol.gv.at/fileadmin/themen/umwelt/naturschutz/downloads/Foerderungen_Naturschutz/Foerderrichtlinie_Naturschutz_Tirol_2026.pdf",
+        "quote": "eine Zustimmungserklärung der Förderungswerbenden zu den mit der Gewährung einer Förderung verbundenen Pflichten gemäß § 13, und zu den Bestimmungen über das Erlöschen und den Widerruf der Förderzusage gemäß § 17.",
+        "checked_at": "2026-11-26",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.tirol.gv.at/fileadmin/themen/umwelt/naturschutz/downloads/Foerderungen_Naturschutz/Antrag_Projektfoerderung.docx",
+        "quote": "Aufstellung der Projektkosten (falls notwendig, eigenen Finanzierungsplan beilegen):",
+        "checked_at": "2026-11-26",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.tirol.gv.at/fileadmin/themen/umwelt/naturschutz/downloads/Foerderungen_Naturschutz/Antrag_Projektfoerderung.docx",
+        "quote": "Fachplanung, Gutachten, Studie:",
+        "checked_at": "2026-11-26",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.tirol.gv.at/fileadmin/themen/umwelt/naturschutz/downloads/Foerderungen_Naturschutz/Antrag_Projektfoerderung.docx",
+        "quote": "Zustimmung der Eigentümer:innen",
+        "checked_at": "2026-11-26",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.tirol.gv.at/fileadmin/themen/umwelt/naturschutz/downloads/Foerderungen_Naturschutz/Antrag_Projektfoerderung.docx",
+        "quote": "behördliche Bewilligungen/Bestätigungen",
+        "checked_at": "2026-11-26",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.tirol.gv.at/fileadmin/themen/umwelt/naturschutz/downloads/Foerderungen_Naturschutz/Antrag_Projektfoerderung.docx",
+        "quote": "Bestätigung Finanzamt, wenn nicht vorsteuerabzugsberechtigt",
+        "checked_at": "2026-11-26",
         "method": "page"
       }
     ]

@@ -17,7 +17,9 @@
   "amount": null,
   "co_finance_required": true,
   "reporting": null,
-  "effort": { "steps": ["Online application"] },
+  "effort": {
+    "steps": ["Online application", "Review and decision by the foundation board or its delegate"]
+  },
   "eligibility": [
     {
       "rule": "Project has not started before approval, unless early start is approved",
@@ -32,14 +34,18 @@
       "rule": "Applicant ensures proper management and can document proper use of funds",
       "kind": "capacity"
     },
-    { "rule": "Project does not span calendar years", "kind": "project" },
+    { "rule": "The funded project period ends by December 31 of the same year", "kind": "project" },
     {
-      "rule": "No deductible VAT, unrelated operating expenses or follow-up costs",
-      "kind": "project"
+      "rule": "Grant excludes recoverable VAT, operating costs unrelated to the project, and follow-on costs",
+      "kind": "finances"
     }
   ],
-  "co_finance": { "min_share": 7, "in_kind": true },
-  "after_award": { "reports": "final" },
+  "co_finance": {
+    "min_share": 7,
+    "in_kind": true,
+    "applies_to": "Unless 100% funding is approved as a justified exception"
+  },
+  "after_award": { "reports": "final", "site_visits": true },
   "documents": [
     "Detailed project description",
     "Cost and financing plan",
@@ -100,6 +106,12 @@
         "quote": "Hierzu ist das Online-Antragsportal der SNB zu verwenden.",
         "checked_at": "2026-11-25",
         "method": "page"
+      },
+      {
+        "source_url": "https://www.stiftung-naturschutz.de/foerderungen/stiftungsmittel/richtlinien-stiftungsmittel",
+        "quote": "Über die Bewilligung entscheidet der Vorstand der Stiftung Naturschutz Berlin aufgrund der eingereichten Antragsunterlagen und vorliegenden Informationen und nach pflichtgemäßem Ermessen. Der Vorstand kann die Entscheidung ganz oder teilweise an die Geschäftsführung der SNB delegieren.",
+        "checked_at": "2026-11-26",
+        "method": "page"
       }
     ],
     "eligibility": [
@@ -142,8 +154,8 @@
     ],
     "co_finance": {
       "source_url": "https://www.stiftung-naturschutz.de/foerderungen/stiftungsmittel/richtlinien-stiftungsmittel",
-      "quote": "Antragstellende sind aufgefordert, einen angemessenen Eigenanteil in Höhe von mindestens 7 % der Projektkosten zu erbringen. Als Eigenanteil werden insbesondere Eigenmittel z.B. projektbezogene Einnahmen, Bar- und Spendengelder, Drittmittel und unbare Eigenleistungen anerkannt.",
-      "checked_at": "2026-11-25",
+      "quote": "mindestens 7 % der Projektkosten zu erbringen. Als Eigenanteil werden insbesondere Eigenmittel z.B. projektbezogene Einnahmen, Bar- und Spendengelder, Drittmittel und unbare Eigenleistungen anerkannt. Zudem besteht die Möglichkeit, auf die Verwaltungskostenpauschale in Höhe von 7 % zu verzichten. In begründeten Ausnahmefällen können 100 % der zuwendungsfähigen Ausgaben gefördert werden.",
+      "checked_at": "2026-11-26",
       "method": "page"
     },
     "after_award": [
@@ -151,6 +163,12 @@
         "source_url": "https://www.stiftung-naturschutz.de/foerderungen/stiftungsmittel/richtlinien-stiftungsmittel",
         "quote": "Die Zuwendungsempfänger*innen haben zu dem im Zuwendungsbescheid angegebenen Zeitpunkt, spätestens jedoch zwei Monate nach Erfüllung des Zuwendungszwecks, einen Verwendungsnachweis vorzulegen.",
         "checked_at": "2026-11-25",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.stiftung-naturschutz.de/foerderungen/stiftungsmittel/richtlinien-stiftungsmittel",
+        "quote": "Sie ist berechtigt, die Verwendung der Mittel durch Einsichtnahme in die Bücher, Belege und sonstigen Unterlagen sowie durch örtliche Erhebung zu prüfen oder durch Beauftragte prüfen zu lassen.",
+        "checked_at": "2026-11-26",
         "method": "page"
       }
     ],
