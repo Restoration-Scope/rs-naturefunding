@@ -16,13 +16,18 @@
   "reporting": null,
   "effort": { "steps": ["Completed application form sent by email"] },
   "eligibility": [
-    { "rule": "The project is in the defined area around the power plant", "kind": "project" },
     {
       "rule": "No recurring payments; no expropriations, studies, concepts or impact checks without a direct project link",
       "kind": "project"
     }
   ],
   "after_award": { "reports": "final" },
+  "documents": [
+    "Project description or technical report for the standard application",
+    "1:25,000 location map for the standard application",
+    "Project plan or sketch for the standard application",
+    "Three to five photos of the current site (JPEG for the standard application)"
+  ],
   "calls": [
     {
       "id": "2027-spring",
@@ -111,12 +116,6 @@
     "eligibility": [
       {
         "source_url": "https://energiethun.ch/app/uploads/2026/05/2026-04-01_Reglement-Oekofonds.pdf",
-        "quote": "Damit sollen nach Prüfung und Genehmigung des Lenkungsausschusses Projekte der öffentlichen Hand und Organisationen im Umfeld des Kraftwerks (siehe Wirkungsraum) ökologisch unterstützt bzw. finanziert werden.",
-        "checked_at": "2026-11-25",
-        "method": "page"
-      },
-      {
-        "source_url": "https://energiethun.ch/app/uploads/2026/05/2026-04-01_Reglement-Oekofonds.pdf",
         "quote": "Nicht unterstützt werden regelmässig wiederkehrende Beitragszahlungen (z. B. Bewirtschaftungsentschädigungen), ebenso nicht unterstützungswürdig sind Enteignungen, wissenschaftliche Untersuchungen, Konzepte, Erfolgskontrollen etc., die keinen direkten Bezug zu einem Projekt des Ökofonds aufweisen.",
         "checked_at": "2026-11-25",
         "method": "page"
@@ -127,6 +126,32 @@
         "source_url": "https://energiethun.ch/app/uploads/2026/05/2026-04-01_Reglement-Oekofonds.pdf",
         "quote": "Der Gesuchsteller überreicht nach Projektabschluss der Energie Thun AG einen Schlussbericht (Baubericht, neue Situation mit Fotodokumentation etc.).",
         "checked_at": "2026-11-25",
+        "method": "page"
+      }
+    ],
+    "documents": [
+      {
+        "source_url": "https://energiethun.ch/app/uploads/2026/05/Oekofonds_Energie_Thun_Gesuch_um_Projektbeitrag.pdf",
+        "quote": "Projektbeschreibung / technischer Bericht",
+        "checked_at": "2026-11-26",
+        "method": "page"
+      },
+      {
+        "source_url": "https://energiethun.ch/app/uploads/2026/05/Oekofonds_Energie_Thun_Gesuch_um_Projektbeitrag.pdf",
+        "quote": "Plan Ausschnitt 1:25'000 mit Lage des Objektes / der Objekte",
+        "checked_at": "2026-11-26",
+        "method": "page"
+      },
+      {
+        "source_url": "https://energiethun.ch/app/uploads/2026/05/Oekofonds_Energie_Thun_Gesuch_um_Projektbeitrag.pdf",
+        "quote": "Projektplan / Skizze",
+        "checked_at": "2026-11-26",
+        "method": "page"
+      },
+      {
+        "source_url": "https://energiethun.ch/app/uploads/2026/05/Oekofonds_Energie_Thun_Gesuch_um_Projektbeitrag.pdf",
+        "quote": "Fotos IST-Zustand (3-5 Stk. im jpeg Format)",
+        "checked_at": "2026-11-26",
         "method": "page"
       }
     ]

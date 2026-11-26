@@ -46,12 +46,17 @@
     },
     { "rule": "Have a total project budget of at least $200,000", "kind": "project" },
     {
-      "rule": "Receive no majority funding or support from commercial gambling revenue",
+      "rule": "Does not receive a majority of its funding and support from commercial gambling revenue.",
       "kind": "finances"
+    },
+    { "rule": "Equipment or technology requested is new to the organisation.", "kind": "project" },
+    {
+      "rule": "For repeat non-collaborative applicants, the LOI closes in or after the last award’s third anniversary month.",
+      "kind": "track_record"
     }
   ],
   "co_finance": { "min_share": 50, "applies_to": "Equipment and Technology Grants" },
-  "after_award": { "reports": "interim_and_final" },
+  "after_award": { "reports": "yearly" },
   "calls": [
     {
       "id": "2026-period-3",
@@ -227,6 +232,18 @@
         "quote": "Entities that receive a majority of funding and support from commercial gambling revenue (lottery, casino, etc.)",
         "checked_at": "2026-11-25",
         "method": "page"
+      },
+      {
+        "source_url": "https://murdocktrust.org/grant-application-process/guidelines-for-grantseekers",
+        "quote": "Only grants for equipment or technology new to the organization will be considered.",
+        "checked_at": "2026-11-26",
+        "method": "page"
+      },
+      {
+        "source_url": "https://murdocktrust.org/grant-application-process/guidelines-for-grantseekers",
+        "quote": "If you have received a Strategic Project grant, you are eligible to submit a new LOI three years from the \"Grant Awarded\" date on your grant agreement. This is the date that determines your eligibility, not the date your funds were distributed, which may be different. To find your first eligible LOI period, identify the calendar month of your three-year anniversary.",
+        "checked_at": "2026-11-26",
+        "method": "page"
       }
     ],
     "co_finance": {
@@ -246,6 +263,12 @@
         "source_url": "https://murdocktrust.org/grant-application-process/grant-administration-reporting-resources",
         "quote": "Final Report will be added to your grant record after the final payment is made. Due within one year after grant funds have been fully expended.",
         "checked_at": "2026-11-25",
+        "method": "page"
+      },
+      {
+        "source_url": "https://murdocktrust.org/grant-application-process/grant-administration-reporting-resources",
+        "quote": "Outright payments: Typically structured in three, one-year intervals based on the program or hire start date.",
+        "checked_at": "2026-11-26",
         "method": "page"
       }
     ]
