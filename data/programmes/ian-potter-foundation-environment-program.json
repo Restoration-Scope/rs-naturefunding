@@ -2,20 +2,20 @@
   "id": "ian-potter-foundation-environment-program",
   "name": "Ian Potter Foundation Environment program",
   "funder": { "name": "The Ian Potter Foundation", "url": "https://www.ianpotter.org.au/" },
-  "administered_by": null,
+  "administered_by": { "name": "The Ian Potter Foundation", "url": "https://www.ianpotter.org.au" },
   "parent": null,
   "url": "https://www.ianpotter.org.au/what-we-support/program-areas/environment",
   "summary": "Large multi-year grants for applied, on-the-ground conservation and restoration across land, freshwater, marine and coastal Australia. The applying organisation must run the project; pure research is excluded.",
   "approaches": ["species_conservation", "protected_areas", "freshwater", "coastal_marine"],
-  "applicant_types": null,
+  "applicant_types": ["research_institution"],
   "geography": { "scope": "countries", "countries": ["AU"] },
   "access": "direct",
   "window": "unspecified",
   "amount": {
     "currency": "AUD",
     "min": 100000,
-    "per": "year",
     "typical": true,
+    "per": "year",
     "note": "Grants usually multi-year"
   },
   "co_finance_required": null,
@@ -63,7 +63,6 @@
       "status": "upcoming",
       "opens": null,
       "deadline": null,
-      "expected": "2028",
       "evidence": {
         "status": {
           "source_url": "https://www.ianpotter.org.au/what-we-support/program-areas/environment",
@@ -71,10 +70,23 @@
           "checked_at": "2026-11-26",
           "method": "page"
         }
-      }
+      },
+      "expected": "2028"
     }
   ],
   "evidence": {
+    "administered_by": {
+      "source_url": "https://www.ianpotter.org.au/can-we-apply/can-we-apply-university",
+      "quote": "The Ian Potter Foundation: Seeks to support innovative, ambitious research undertaken by universities and research institutes",
+      "checked_at": "2026-11-26",
+      "method": "page"
+    },
+    "applicant_types": {
+      "source_url": "https://www.ianpotter.org.au/can-we-apply/can-we-apply-university",
+      "quote": "The Ian Potter Foundation: Seeks to support innovative, ambitious research undertaken by universities and research institutes",
+      "checked_at": "2026-11-26",
+      "method": "page"
+    },
     "geography": {
       "source_url": "https://www.ianpotter.org.au/what-we-support/program-areas/environment",
       "quote": "environmental conservation work taking place within Australia",
