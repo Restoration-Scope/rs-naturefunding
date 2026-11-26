@@ -3,14 +3,15 @@ import '../styles/global.css'
 import { RS_DESCRIPTOR, RS_FOOTER_REPORTING_URL, RS_FOOTER_URL, RS_HEADER_URL, SITE_NAME, absolute, generalReportUrl } from '../lib/site'
 import { twinPath } from '../lib/twins'
 import SubscribePrompt from '../components/SubscribePrompt.astro'
+import MainNav, { type NavKey } from '../components/MainNav.astro'
 
 interface Props {
   title: string
   description: string
   path: string
   jsonLd?: object | object[]
-  /** The finder itself; its link in the nav is marked current. */
-  nav?: 'finder' | 'about' | 'data' | 'digest' | null
+  /** Which of the main nav's pages this is (src/components/MainNav.astro); its link is marked current. */
+  nav?: NavKey | null
   noindex?: boolean
   /** A link back to every grant beside the logo, for pages showing only some (src/components/FinderLanding.astro).
    * A page's own link goes in the `beside-logo` slot instead. */
@@ -94,29 +95,7 @@ const ld = jsonLd ? (Array.isArray(jsonLd) ? jsonLd : [jsonLd]) : []
           )
         }
         </div>
-        <nav aria-label="Main">
-          <ul class="m-0 flex list-none flex-wrap gap-x-5 gap-y-1 p-0 text-md">
-            {
-              [
-                ['/', 'Find funding', 'finder'],
-                ['/about/', 'How we check', 'about'],
-                ['/about/#open-data', 'Open data', 'data'],
-                ['/digest/', 'Weekly email', 'digest'],
-                [generalReportUrl, 'Report a problem', null],
-              ].map(([href, text, key]) => (
-                <li>
-                  <a
-                    class="inline-block py-[0.35rem] text-shell-ink-2! pointer-coarse:py-2.5 no-underline decoration-brand-light decoration-2 underline-offset-[0.35em] hover:text-shell-ink! hover:underline aria-[current=page]:text-shell-ink! aria-[current=page]:underline"
-                    href={href}
-                    aria-current={key && nav === key ? 'page' : undefined}
-                  >
-                    {text}
-                  </a>
-                </li>
-              ))
-            }
-          </ul>
-        </nav>
+        <MainNav current={nav} path={path} />
       </div>
       <slot name="band" />
     </header>

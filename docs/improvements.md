@@ -2,6 +2,7 @@
 
 What a visitor to naturefunding.org can see or do that they couldn't before, newest first. One line per merged change, added in the same PR (AGENTS.md). The naturefunding.org LinkedIn Page drafts its update posts from this list. Emails count once `DIGEST_SENDING` is `live`.
 
+- 2026-11-25 · The header leads with Find funding and Fiscal sponsors; a Browse menu lists every project type and region with its number of grants, and an About menu holds how we check, the open data and reporting a problem · https://naturefunding.org/ · #1159
 - 2026-11-25 · Four more fiscal sponsors say where their people or projects can be, under each name: Open Science Hardware Foundation pays contributors abroad, EarthShare supports international staff, SEE's form takes a US address, OLS asks whether the grant funds activities in your country · https://naturefunding.org/fiscal-sponsors/ · #1155
 - 2026-11-25 · The fiscal sponsor list has a Where filter: search for your country and see the sponsors that take projects there, then the ones that don’t say · https://naturefunding.org/fiscal-sponsors/?where=PA · #1156
 - 2026-11-25 · 100 more open and upcoming grants (the nearest deadlines first, then ones open all year) had their Before you apply checked again by a second reader against the funder's own documents: 324 wrong rules, documents or steps fixed or removed and 321 missing ones added · https://naturefunding.org/p/iki-small-grants/#before-title · #1158
