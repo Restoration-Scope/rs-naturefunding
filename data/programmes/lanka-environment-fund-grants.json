@@ -14,11 +14,17 @@
   "amount": null,
   "co_finance_required": null,
   "reporting": null,
-  "effort": { "steps": ["Contact LEF to check project fit", "Application form"] },
+  "effort": {
+    "steps": [
+      "Optional: email a short concept note to LEF before applying",
+      "Application form",
+      "Steering Committee decision (four meetings a year)"
+    ]
+  },
   "eligibility": [
     {
-      "rule": "Displays strong leadership and an integrated bottom-up approach involving local communities",
-      "kind": "capacity"
+      "rule": "Consults, mobilises and involves local communities in the project",
+      "kind": "project"
     }
   ],
   "calls": [
@@ -75,6 +81,18 @@
         "source_url": "https://www.lankaenvironmentfund.org/grants",
         "quote": "All applicants need to complete and submit our application form.",
         "checked_at": "2026-11-25",
+        "method": "page"
+      },
+      {
+        "source_url": "https://cdn.lankaenvironmentfund.org/LEF%20Application%20Form%20with%20Guidance.docx",
+        "quote": "OPTIONAL: Before you complete an application, we encourage you to contact us via email, sharing a short concept note (max 250 words) with the amount you need for the work to express your interest in funding.",
+        "checked_at": "2026-11-26",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.lankaenvironmentfund.org/grants",
+        "quote": "Decisions will be made at Steering Committee meetings which are held 4 times per year.",
+        "checked_at": "2026-11-26",
         "method": "page"
       }
     ],

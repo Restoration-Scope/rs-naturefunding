@@ -12,7 +12,7 @@
   "access": "direct",
   "window": "rolling",
   "amount": null,
-  "co_finance_required": null,
+  "co_finance_required": false,
   "reporting": "Project leaders commit to measuring their environmental impact using indicators the foundation provides.",
   "effort": {
     "steps": [
@@ -22,7 +22,7 @@
   },
   "eligibility": [
     {
-      "rule": "Uses a site of patrimonial interest, protected or ecologically identified in planning",
+      "rule": "Site is protected, hosts biodiversity of heritage significance, or is identified in planning for ecological value",
       "kind": "project"
     },
     {
@@ -30,15 +30,11 @@
       "kind": "project"
     },
     {
-      "rule": "Started projects finish after the first-semester selection announcement",
+      "rule": "If underway, finishes no earlier than selection; otherwise ready to start with current estimates and funding requests",
       "kind": "project"
     },
     {
-      "rule": "Unstarted projects are ready to start with updated estimates and requested subsidies",
-      "kind": "project"
-    },
-    {
-      "rule": "Commits to qualify the restoration's intended impact using the Foundation's indicators",
+      "rule": "Commits to assessing intended restoration impact using the Foundation’s indicators",
       "kind": "project"
     },
     {
@@ -52,10 +48,10 @@
     "Detailed quotes or estimates of forecast expenses",
     "Location map showing protection or inventory areas",
     "Management plan, development orientation or planning document",
-    "Five quality digital photos with photographic credits",
+    "5 credited digital photos (≥300 dpi or ≥1 MB) of the site, natural areas and at least one plant or animal species",
     "Fauna or flora inventory or count",
     "Association statutes, if an association applicant",
-    "Board and management committee composition, if an association applicant",
+    "For associations: executive committee membership and board membership, if there is a board",
     "ORE or equivalent contractual environmental commitment, for private owners"
   ],
   "calls": [
@@ -102,6 +98,12 @@
       "checked_at": "2026-11-25",
       "method": "page"
     },
+    "co_finance_required": {
+      "source_url": "https://strapi-upload.cdn.fondation-patrimoine.org/Guide_projets_PNB_e12803dc00.pdf",
+      "quote": "Il est souhaitable par ailleurs que le porteur de projet ait sollicité d’autres financeurs et prévu une part d’autofinancement.",
+      "checked_at": "2026-11-26",
+      "method": "page"
+    },
     "reporting": {
       "source_url": "https://www.fondation-patrimoine.org/c/soumettre-un-projet/obtenir-une-aide-financiere/programme-patrimoine-naturel-et-biodiversite/67",
       "quote": "demande aux porteurs de projets de s'engager à mesurer leur impact environnemental, à partir d'indicateurs qu'elle leur propose",
@@ -137,14 +139,8 @@
       },
       {
         "source_url": "https://strapi-upload.cdn.fondation-patrimoine.org/Guide_projets_PNB_e12803dc00.pdf",
-        "quote": "Ils peuvent avoir démarré mais ne doivent pas se terminer avant l'annonce de la sélection au premier semestre de l'année.",
-        "checked_at": "2026-11-25",
-        "method": "page"
-      },
-      {
-        "source_url": "https://strapi-upload.cdn.fondation-patrimoine.org/Guide_projets_PNB_e12803dc00.pdf",
-        "quote": "S'ils n'ont pas débuté, ils doivent être prêts à démarrer (estimatifs actualisés et subventions sollicitées).",
-        "checked_at": "2026-11-25",
+        "quote": "Ils peuvent avoir démarré mais ne doivent pas se terminer avant l’annonce de la sélection au premier semestre de l’année. S’ils n’ont pas débuté, ils doivent être prêts à démarrer (estimatifs actualisés et subventions sollicitées).",
+        "checked_at": "2026-11-26",
         "method": "page"
       },
       {

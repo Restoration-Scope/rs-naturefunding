@@ -18,7 +18,9 @@
   },
   "co_finance_required": true,
   "reporting": null,
-  "effort": { "steps": ["Application submission", "Regional services review"] },
+  "effort": {
+    "steps": ["Application submission", "Regional services review", "Standing Committee selection"]
+  },
   "eligibility": [
     { "rule": "Respect the programme's technical recommendations", "kind": "project" },
     {
@@ -26,20 +28,27 @@
       "kind": "track_record",
       "min_years": 1
     },
-    { "rule": "Applies before works start (early start only by exception)", "kind": "project" },
+    { "rule": "Files the application before starting work", "kind": "project" },
     { "rule": "Project budget over €2,000 (creation) or €1,000 (restoration)", "kind": "project" },
-    { "rule": "Does not introduce fish or move amphibians into the pond", "kind": "project" }
+    { "rule": "Does not introduce fish or move amphibians into the pond", "kind": "project" },
+    { "rule": "Applicant is a department or a French 1901-law association", "kind": "legal" },
+    {
+      "rule": "Pond restoration or dredging serves more than aesthetic or landscaping purposes",
+      "kind": "project"
+    },
+    { "rule": "The project does not plant invasive alien species", "kind": "project" }
   ],
   "co_finance": { "min_share": 20 },
+  "after_award": { "reports": "final" },
   "documents": [
     "Cover letter to the Regional Council President",
     "Commune opinion or landowner consent, if not the owner",
-    "VAT recovery certificate",
+    "Certificate confirming whether VAT is recoverable",
     "Bank details (RIB) and SIREN record",
-    "Internship-offer commitment letter",
-    "Association statutes",
-    "Signed Regional Charter of Republican values (non-public applicants)",
-    "Technical project grid with timeline and financing plan",
+    "Letter committing to advertise internship offers of at least two months",
+    "Copy of the statutes, for associations",
+    "Signed Regional Charter of Republican Values and Secularism, except for public bodies",
+    "Technical project grid with schedule and financing plan, plus a waiver request letter for early starts",
     "Detailed cost estimates",
     "Photos of the existing site"
   ],
@@ -110,6 +119,12 @@
         "quote": "Après examen par les services de la Région",
         "checked_at": "2026-11-25",
         "method": "page"
+      },
+      {
+        "source_url": "https://www.iledefrance.fr/aides-et-appels-a-projets/1-000-mares-en-ile-de-france",
+        "quote": "Après examen par les services de la Région, la Commission permanente du Conseil régional désigne ensuite les initiatives lauréates",
+        "checked_at": "2026-11-26",
+        "method": "page"
       }
     ],
     "eligibility": [
@@ -142,6 +157,24 @@
         "quote": "Les projets prévoyant l'introduction de poissons dans la mare (non adapté et fortement déconseillé en vue de conserver un écosystème équilibré), les projets prévoyant un transport d'amphibiens (interdit par la loi car espèces protégées)",
         "checked_at": "2026-11-25",
         "method": "page"
+      },
+      {
+        "source_url": "https://www.iledefrance.fr/aides-et-appels-a-projets/1-000-mares-en-ile-de-france",
+        "quote": "Département, Association régie par la loi de 1901",
+        "checked_at": "2026-11-26",
+        "method": "page"
+      },
+      {
+        "source_url": "https://mesdemarches.iledefrance.fr/document-collect/cridfprd/root/public?objectId=6fe09aa3-51d1-41a2-930b-38774bdf6d32;1.0",
+        "quote": "Les projets de restauration et curage de mares pour seule ambition d’entretien esthétique et paysager",
+        "checked_at": "2026-11-26",
+        "method": "page"
+      },
+      {
+        "source_url": "https://mesdemarches.iledefrance.fr/document-collect/cridfprd/root/public?objectId=6fe09aa3-51d1-41a2-930b-38774bdf6d32;1.0",
+        "quote": "Les projets intégrant la plantation d’espèces exotiques envahissantes",
+        "checked_at": "2026-11-26",
+        "method": "page"
       }
     ],
     "co_finance": {
@@ -150,6 +183,14 @@
       "checked_at": "2026-11-25",
       "method": "page"
     },
+    "after_award": [
+      {
+        "source_url": "https://mesdemarches.iledefrance.fr/document-collect/cridfprd/root/public?objectId=6fe09aa3-51d1-41a2-930b-38774bdf6d32;1.0",
+        "quote": "Le versement du solde est subordonné à la production des documents suivants : - une demande de versement de subvention signée, datée par le bénéficiaire et revêtue du cachet du bénéficiaire qui certifie la réalité de la dépense et son affectation à l’action subventionnée ; - un état récapitulatif des dépenses subventionnables en relation avec le projet",
+        "checked_at": "2026-11-26",
+        "method": "page"
+      }
+    ],
     "documents": [
       {
         "source_url": "https://mesdemarches.iledefrance.fr/document-collect/cridfprd/root/public?objectId=6fe09aa3-51d1-41a2-930b-38774bdf6d32;1.0",
@@ -179,6 +220,12 @@
         "source_url": "https://mesdemarches.iledefrance.fr/document-collect/cridfprd/root/public?objectId=6fe09aa3-51d1-41a2-930b-38774bdf6d32;1.0",
         "quote": "Le(s) devis estimatif(s) détaillé(s) Des photos de l'existant",
         "checked_at": "2026-11-25",
+        "method": "page"
+      },
+      {
+        "source_url": "https://mesdemarches.iledefrance.fr/document-collect/cridfprd/root/public?objectId=6fe09aa3-51d1-41a2-930b-38774bdf6d32;1.0",
+        "quote": "2. Le calendrier prévisionnel de réalisation du projet (voir modalités 8.). Toute demande de dérogation de démarrage anticipé du projet ne peut être accordée qu’à titre exceptionnel, et devra être accompagnée par un courrier motivant la demande de la dérogation (modèle à compléter) 3. Le plan de financement",
+        "checked_at": "2026-11-26",
         "method": "page"
       }
     ]

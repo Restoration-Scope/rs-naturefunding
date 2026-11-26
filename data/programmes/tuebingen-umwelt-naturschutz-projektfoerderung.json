@@ -20,11 +20,7 @@
   "effort": { "steps": ["Project funding application"] },
   "eligibility": [
     {
-      "rule": "The project mainly preserves natural conditions or improves impaired environmental concerns in Tübingen.",
-      "kind": "project"
-    },
-    {
-      "rule": "Names a person responsible for implementation, funds and contact with the city.",
+      "rule": "Names a city contact responsible for implementation or use of grant funds",
       "kind": "capacity"
     },
     {
@@ -33,7 +29,11 @@
     },
     { "rule": "Is not a recipient of regular funding.", "kind": "other" },
     { "rule": "The project is not located on house or allotment gardens.", "kind": "project" },
-    { "rule": "The project lasts no longer than three years.", "kind": "project" }
+    { "rule": "The project lasts no longer than three years.", "kind": "project" },
+    {
+      "rule": "Total public funding and private contributions do not exceed total project costs",
+      "kind": "project"
+    }
   ],
   "co_finance": {
     "min_share": 10,
@@ -104,12 +104,6 @@
     "eligibility": [
       {
         "source_url": "https://www.tuebingen.de/verwaltung/formular/77.pdf",
-        "quote": "zu Maßnahmen oder für Leistungen, die in besonderem Maße dem Erhalt der natürlichen Umweltbedingungen oder zur Verbesserung von beeinträchtigten Umweltbelangen schwerpunktmäßig auf dem Gebiet der Universitätsstadt Tübingen beitragen.",
-        "checked_at": "2026-11-25",
-        "method": "page"
-      },
-      {
-        "source_url": "https://www.tuebingen.de/verwaltung/formular/77.pdf",
         "quote": "Voraussetzung für die Gewährung eines städtischen Zuschusses ist die Benennung einer Person, die für die Umsetzung der Maßnahme bzw. die Verwendung der Fördermittel verantwortlich und Ansprechpartner_in für die Stadtverwaltung ist.",
         "checked_at": "2026-11-25",
         "method": "page"
@@ -136,6 +130,12 @@
         "source_url": "https://www.tuebingen.de/verwaltung/formular/77.pdf",
         "quote": "Die Projektlaufzeit darf drei Jahre nicht überschreiten.",
         "checked_at": "2026-11-25",
+        "method": "page"
+      },
+      {
+        "source_url": "https://www.tuebingen.de/verwaltung/formular/77.pdf",
+        "quote": "Die Einnahmen aus öffentlicher Förderung (z. B. Zuschüsse, öffentliche Stiftungsgelder) und privaten Zuwendungen (z. B. Mitgliedsbeiträge, Spenden, Sponsoring, Verkaufserlöse, private Stiftungen) dürfen die Gesamtkosten der geförderten Maßnahme nicht übersteigen.",
+        "checked_at": "2026-11-26",
         "method": "page"
       }
     ],

@@ -20,35 +20,42 @@
   "reporting": null,
   "effort": {
     "steps": [
-      "Application for a planning (Stage 1) or planting (Stage 2) grant",
-      "Assessment within 6 weeks"
+      "Application for planning, planting or other eligible work",
+      "Assessment within 6 weeks",
+      "Road verge planting: get council consent and contact the officer if no plan"
     ]
   },
   "eligibility": [
-    { "rule": "Operating in the Dorset Council area", "kind": "project" },
     { "rule": "Community group has a constitution and bank account", "kind": "legal" },
-    { "rule": "Project relates to land in the Dorset Council area", "kind": "project" },
     { "rule": "Project has some public access or engagement", "kind": "project" },
     { "rule": "Planting project uses only plants sourced and grown in the UK", "kind": "project" },
     {
-      "rule": "Planting project has required landowner and statutory body permission",
+      "rule": "The funded activities do not receive funding elsewhere for the same activity",
       "kind": "project"
     },
-    { "rule": "Project is not receiving funds elsewhere for the same activity", "kind": "project" },
-    { "rule": "Project is not fulfilling a statutory obligation", "kind": "project" }
+    { "rule": "The funded activities do not fulfil a statutory obligation", "kind": "project" },
+    { "rule": "A project on private land must have public access", "kind": "project" },
+    {
+      "rule": "The project is not a commercial project for private financial gain",
+      "kind": "project"
+    },
+    {
+      "rule": "Has community support and parish or town council support where appropriate",
+      "kind": "project"
+    }
   ],
   "co_finance": {
     "min_share": 25,
     "in_kind": true,
-    "applies_to": "charities and voluntary organisations"
+    "applies_to": "Charities and voluntary organisations: 25%; all other organisations: 50%"
   },
   "after_award": { "reports": "interim_and_final" },
   "documents": [
-    "Site photographs, for planting projects without prior Stage 1 application",
-    "Landowner or statutory body permission evidence, if appropriate",
+    "One or two site photos, for planting applications without prior Stage 1",
+    "Landowner or statutory permission evidence, where applicable, for direct planting applications",
     "Scale plan of the planting area, for planting projects without prior Stage 1 application",
-    "Project Budget spreadsheet",
-    "Evidence supporting local demand or need, if available"
+    "Project budget using the Finance Form or the application’s manual budget table",
+    "Evidence of community support, for direct planting applications"
   ],
   "calls": [
     {
@@ -123,24 +130,24 @@
         "quote": "Applications will be assessed within 6 weeks of submission and you will be notified by email.",
         "checked_at": "2026-11-25",
         "method": "page"
+      },
+      {
+        "source_url": "https://dorset-nl.org.uk/wp-content/uploads/2023/12/2.-DCTF-Application-Form-Aug24.docx",
+        "quote": "Is this application for: The planning stage (Stage 1) ☐ The planting stage (Stage 2) ☐ Other",
+        "checked_at": "2026-11-26",
+        "method": "page"
+      },
+      {
+        "source_url": "https://dorset-nl.org.uk/wp-content/uploads/2023/12/1.-DCTF-Guidance-notes-May24.pdf",
+        "quote": "Planting projects on road verges are only likely to be funded in exceptional circumstances and with Dorset Council consent: unless you have already agreed a detailed plan with Dorset Council, you must seek support for planning and design: please contact the Project Officer before preparing your application.",
+        "checked_at": "2026-11-26",
+        "method": "page"
       }
     ],
     "eligibility": [
       {
         "source_url": "https://dorset-nl.org.uk/wp-content/uploads/2023/12/1.-DCTF-Guidance-notes-May24.pdf",
-        "quote": "The fund is open to organisations in the Dorset Council area, especially parish and town councils, schools, and constituted community groups.",
-        "checked_at": "2026-11-25",
-        "method": "page"
-      },
-      {
-        "source_url": "https://dorset-nl.org.uk/wp-content/uploads/2023/12/1.-DCTF-Guidance-notes-May24.pdf",
         "quote": "community groups must have a constitution and bank account.",
-        "checked_at": "2026-11-25",
-        "method": "page"
-      },
-      {
-        "source_url": "https://dorset-nl.org.uk/wp-content/uploads/2023/12/1.-DCTF-Guidance-notes-May24.pdf",
-        "quote": "relate to land in the Dorset Council area",
         "checked_at": "2026-11-25",
         "method": "page"
       },
@@ -157,28 +164,40 @@
         "method": "page"
       },
       {
-        "source_url": "https://dorset-nl.org.uk/wp-content/uploads/2023/12/1.-DCTF-Guidance-notes-May24.pdf",
-        "quote": "have the permission of the landowner and statutory bodies where appropriate",
-        "checked_at": "2026-11-25",
+        "source_url": "https://dorset-nl.org.uk/wp-content/uploads/2023/12/2.-DCTF-Application-Form-Aug24.docx",
+        "quote": "I confirm that the funded activities set out in this application are not in receipt of funding from elsewhere for the same activity.",
+        "checked_at": "2026-11-26",
+        "method": "page"
+      },
+      {
+        "source_url": "https://dorset-nl.org.uk/wp-content/uploads/2023/12/2.-DCTF-Application-Form-Aug24.docx",
+        "quote": "I confirm that the funded activities are not fulfilling a statutory obligation.",
+        "checked_at": "2026-11-26",
         "method": "page"
       },
       {
         "source_url": "https://dorset-nl.org.uk/wp-content/uploads/2023/12/1.-DCTF-Guidance-notes-May24.pdf",
-        "quote": "be receiving funds from elsewhere for the same activity",
-        "checked_at": "2026-11-25",
+        "quote": "We cannot fund:  projects on private land with no public access",
+        "checked_at": "2026-11-26",
         "method": "page"
       },
       {
         "source_url": "https://dorset-nl.org.uk/wp-content/uploads/2023/12/1.-DCTF-Guidance-notes-May24.pdf",
-        "quote": "be fulfilling a statutory obligation",
-        "checked_at": "2026-11-25",
+        "quote": "We cannot fund:  projects on private land with no public access  commercial projects for private financial gain",
+        "checked_at": "2026-11-26",
+        "method": "page"
+      },
+      {
+        "source_url": "https://dorset-nl.org.uk/resource/dorset-community-tree-fund/",
+        "quote": "have the support of the community and the parish or town council where appropriate",
+        "checked_at": "2026-11-26",
         "method": "page"
       }
     ],
     "co_finance": {
       "source_url": "https://dorset-nl.org.uk/wp-content/uploads/2023/12/1.-DCTF-Guidance-notes-May24.pdf",
-      "quote": "The fund can support up to 75% of project costs for charities and voluntary groups, and up to 50% for other organisations. Match funding can include volunteer time and contributions in kind.",
-      "checked_at": "2026-11-25",
+      "quote": "The Community Tree Fund can support up to 75% of project costs for charities and voluntary organisations, or up to 50% for other organisations. The remaining funding must come from match funding, either cash or in-kind or a mixture of the two, but cannot be matched by Exchequer funds",
+      "checked_at": "2026-11-26",
       "method": "page"
     },
     "after_award": [
@@ -186,6 +205,12 @@
         "source_url": "https://dorset-nl.org.uk/wp-content/uploads/2023/12/4.-DCTF-Terms-and-Conditions-Dec23.pdf",
         "quote": "Before starting your project, you must agree a schedule of interim updates appropriate to your project including any upcoming events, photos of progress or activity and a summary of progress.",
         "checked_at": "2026-11-25",
+        "method": "page"
+      },
+      {
+        "source_url": "https://dorset-nl.org.uk/wp-content/uploads/2023/12/4.-DCTF-Terms-and-Conditions-Dec23.pdf",
+        "quote": "Payments will be made following completion of the project and on receipt of a final report and claim form.",
+        "checked_at": "2026-11-26",
         "method": "page"
       }
     ],
@@ -203,9 +228,15 @@
         "method": "page"
       },
       {
-        "source_url": "https://dorset-nl.org.uk/wp-content/uploads/2023/12/1.-DCTF-Guidance-notes-May24.pdf",
-        "quote": "Please tell us about any evidence you have gathered which supports your project (eg feasibility study, community consultation, survey) and provide a copy if available.",
-        "checked_at": "2026-11-25",
+        "source_url": "https://dorset-nl.org.uk/wp-content/uploads/2023/12/2.-DCTF-Application-Form-Aug24.docx",
+        "quote": "Our preferred option is for you to complete the separate Finance Form (an Excel spreadsheet) which will automatically work out figures for you – in which case you can ignore the table below. However, if you would prefer to fill in the form manually then please use the table below.",
+        "checked_at": "2026-11-26",
+        "method": "page"
+      },
+      {
+        "source_url": "https://dorset-nl.org.uk/resource/dorset-community-tree-fund/",
+        "quote": "If you’re ready to go straight for a planting grant we’ll need details including the location and a scale plan of the project, along with evidence of community support and landowner permissions.",
+        "checked_at": "2026-11-26",
         "method": "page"
       }
     ]
