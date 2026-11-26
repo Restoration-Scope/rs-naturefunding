@@ -1,0 +1,120 @@
+---
+// The header's main nav: the two pages most visitors want as plain links, the rest in two menus.
+// Menus are native popovers (no script, which tests/dist.test.ts forbids on most pages): the browser opens one at
+// a time and closes it on Escape or a click outside. Where the browser has CSS anchor positioning the panel opens
+// under its button (flipping left at the screen's edge, full width on phones); without it the panel sits under
+// the header's right edge.
+import { ChevronDown } from 'lucide-react'
+import { finderPages } from '../lib/finder-pages'
+import { generalReportUrl } from '../lib/site'
+
+export type NavKey = 'finder' | 'sponsors' | 'about' | 'data' | 'digest'
+
+interface Props {
+  current: NavKey | null
+  path: string
+}
+
+const { current, path } = Astro.props
+
+type Item = { href: string; text: string; note?: string; key?: NavKey; n?: number }
+const menus: { id: string; label: string; wide?: boolean; groups: { title?: string; items: Item[] }[]; foot?: Item[] }[] = [
+  {
+    id: 'nav-browse',
+    label: 'Browse',
+    wide: true,
+    groups: [
+      { title: 'By project type', items: finderPages.types.map((p) => ({ href: p.path, text: p.name, n: p.listings.length })) },
+      { title: 'By region', items: finderPages.regions.map((p) => ({ href: p.path, text: p.name, n: p.listings.length })) },
+    ],
+    foot: [
+      { href: '/countries/', text: 'Every country and type' },
+      { href: '/digest/', text: 'Weekly email', key: 'digest' },
+    ],
+  },
+  {
+    id: 'nav-about',
+    label: 'About',
+    groups: [
+      {
+        items: [
+          { href: '/about/', text: 'How we check', note: 'Every fact quoted from the funder’s own page', key: 'about' },
+          { href: '/about/#open-data', text: 'Open data', note: 'JSON, CSV and a feed, free to reuse', key: 'data' },
+          { href: generalReportUrl, text: 'Report a problem', note: 'A wrong date, a dead link, a missing grant' },
+        ],
+      },
+    ],
+  },
+]
+const isCurrent = (i: Item) => (i.key ? i.key === current : i.href === path)
+
+const top =
+  'inline-flex items-center gap-1 py-[0.35rem] text-shell-ink-2! pointer-coarse:py-2.5 no-underline decoration-brand-light decoration-2 underline-offset-[0.35em] hover:text-shell-ink! hover:underline aria-[current=page]:text-shell-ink! aria-[current=page]:underline'
+// The panel is light, so the header's brand-light focus ring would vanish on it: the page's own ring instead.
+const panel = [
+  'm-0 rounded-lg border border-rule bg-surface p-2 text-md text-ink shadow-lg [&_a]:text-ink! [&_:focus-visible]:outline-focus!',
+  'fixed inset-auto top-16 right-[var(--gutter)] max-h-[calc(100dvh-5rem)] overflow-y-auto',
+  // Anchored: under the button, flipped to end at its right edge when it would run off the screen.
+  'supports-[anchor-name:--a]:top-auto supports-[anchor-name:--a]:right-auto supports-[anchor-name:--a]:mt-2',
+  'supports-[anchor-name:--a]:[position-area:bottom_span-right] supports-[anchor-name:--a]:[position-try-fallbacks:flip-inline]',
+  'max-sm:supports-[anchor-name:--a]:[position-area:bottom_span-all] max-sm:supports-[anchor-name:--a]:justify-self-center max-sm:w-[calc(100vw-2*var(--gutter))]',
+]
+const itemLink = 'flex items-baseline gap-2 rounded-md px-2.5 py-1.5 no-underline hover:bg-sunk pointer-coarse:py-2.5 aria-[current=page]:font-semibold'
+---
+
+<nav aria-label="Main">
+  <ul class="m-0 flex list-none flex-wrap items-center gap-x-5 gap-y-1 p-0 text-md">
+    <li><a class={top} href="/" aria-current={current === 'finder' ? 'page' : undefined}>Find funding</a></li>
+    <li><a class={top} href="/fiscal-sponsors/" aria-current={current === 'sponsors' ? 'page' : undefined}>Fiscal sponsors</a></li>
+    {
+      menus.map((m) => {
+        const all = [...m.groups.flatMap((g) => g.items), ...(m.foot ?? [])]
+        const here = all.some(isCurrent)
+        return (
+          <li class="group/menu">
+            <button
+              type="button"
+              popovertarget={m.id}
+              class:list={[top, 'cursor-pointer border-0 bg-transparent font-[inherit] text-[length:inherit]', here && 'text-shell-ink! underline']}
+              style={`anchor-name: --${m.id}`}
+            >
+              {m.label}
+              <ChevronDown className="size-4 transition-transform group-has-[:popover-open]/menu:rotate-180" aria-hidden="true" />
+            </button>
+            <div id={m.id} popover class:list={[panel, m.wide ? 'sm:w-[30rem]' : 'sm:w-[20rem]']} style={`position-anchor: --${m.id}`}>
+              <div class:list={['grid gap-x-2 gap-y-3', m.wide && 'grid-cols-2']}>
+                {m.groups.map((g) => (
+                  <div>
+                    {g.title && <p class="m-0 px-2.5 pt-1 pb-1 text-xs font-bold tracking-wide text-ink-2 uppercase">{g.title}</p>}
+                    <ul class="m-0 list-none p-0">
+                      {g.items.map((i) => (
+                        <li>
+                          <a class:list={[itemLink, i.note && 'flex-col gap-0']} href={i.href} aria-current={isCurrent(i) ? 'page' : undefined}>
+                            <span>{i.text}</span>
+                            {i.n !== undefined && <span class="ml-auto text-xs text-ink-2 tabular-nums">{i.n}</span>}
+                            {i.note && <span class="text-sm font-normal text-ink-2">{i.note}</span>}
+                          </a>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                ))}
+              </div>
+              {m.foot && (
+                <ul class="m-0 mt-2 flex list-none flex-wrap gap-x-1 border-t border-rule p-0 pt-2">
+                  {m.foot.map((i) => (
+                    <li>
+                      <a class={itemLink} href={i.href} aria-current={isCurrent(i) ? 'page' : undefined}>
+                        {i.text}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              )}
+            </div>
+          </li>
+        )
+      })
+    }
+  </ul>
+</nav>
