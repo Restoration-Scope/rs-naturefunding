@@ -14,7 +14,7 @@
   "geography": null,
   "access": "direct",
   "window": "fixed",
-  "amount": null,
+  "amount": { "currency": "EUR", "max": 30000 },
   "co_finance_required": null,
   "reporting": null,
   "effort": {
@@ -59,7 +59,6 @@
       "status": "upcoming",
       "opens": null,
       "deadline": null,
-      "expected": "March 2027",
       "evidence": {
         "status": {
           "source_url": "https://www.eocaconservation.org/our-projects/apply-for-funding/",
@@ -67,7 +66,8 @@
           "checked_at": "2026-11-26",
           "method": "page"
         }
-      }
+      },
+      "expected": "March 2027"
     }
   ],
   "evidence": {
@@ -87,6 +87,12 @@
       "source_url": "https://www.eocaconservation.org/our-projects/apply-for-funding/",
       "quote": "we are moving back to one funding round per year.",
       "checked_at": "2026-11-26",
+      "method": "page"
+    },
+    "amount": {
+      "source_url": "https://www.eocaconservation.org/our-projects/apply-for-funding/who-can-apply/",
+      "quote": "Non-profit organisations can apply to EOCA for grants of up to €30,000",
+      "checked_at": "2026-11-25",
       "method": "page"
     },
     "effort": [
