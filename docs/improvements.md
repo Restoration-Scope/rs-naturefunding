@@ -2,6 +2,7 @@
 
 What a visitor to naturefunding.org can see or do that they couldn't before, newest first. One line per merged change, added in the same PR (AGENTS.md). The naturefunding.org LinkedIn Page drafts its update posts from this list. Emails count once `DIGEST_SENDING` is `live`.
 
+- 2026-11-25 · The fiscal sponsor list has a Where filter: pick your country and see the sponsors that take projects there, then the ones that don’t say · https://naturefunding.org/fiscal-sponsors/?where=PA · #1156
 - 2026-11-25 · Each fiscal sponsor shows where a project can be right under its name; where the sponsor itself is based moves into the row · https://naturefunding.org/fiscal-sponsors/ · #1154
 - 2026-11-25 · Two more grants listed: the Terre de Femmes International Award (€10,000 for women-led urban tree projects in any country, closes 30 November 2026) and Charles Hayward Overseas (up to £15,000 for UK charities working in Commonwealth Africa, next deadline 5 February 2027) · https://naturefunding.org/p/yves-rocher-terre-de-femmes-international-award/ · #1149
 - 2026-11-25 · Each grant's page shows what it asks of you (who qualifies, applying, co-funding, after the award) at the top, and Before you apply explains each level with the funder's words · https://naturefunding.org/p/iki-large-grants/ · #1077
