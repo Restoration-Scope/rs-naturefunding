@@ -2,7 +2,7 @@
   "id": "bccf-community-conservation-fund",
   "name": "Community Conservation Fund",
   "funder": { "name": "BC Conservation Foundation", "url": "https://www.bccf.com/" },
-  "administered_by": null,
+  "administered_by": { "name": "BC Conservation Foundation", "url": "https://www.bccf.com" },
   "parent": null,
   "url": "https://www.bccf.com/programs/community-conservation-fund/",
   "summary": "Annual intake for community-based conservation projects in British Columbia that benefit local fish and wildlife populations; First Nations, non-profits and stewardship groups apply.",
@@ -11,7 +11,7 @@
   "geography": { "scope": "countries", "countries": ["CA"], "label": "British Columbia" },
   "access": "direct",
   "window": "fixed",
-  "amount": null,
+  "amount": { "currency": "CAD", "max": 10000, "note": "maximum funding amount" },
   "co_finance_required": null,
   "reporting": "Project reporting is due 30 days after project completion, or one year plus 30 days after funding began, whichever is first.",
   "effort": { "steps": ["Application form submission"] },
@@ -41,7 +41,6 @@
       "status": "unknown",
       "opens": null,
       "deadline": null,
-      "recurring": "Applications open 1 November and close 30 November each year.",
       "evidence": {
         "status": {
           "source_url": "https://www.bccf.com/programs/community-conservation-fund/",
@@ -55,10 +54,17 @@
           "checked_at": "2026-11-27",
           "method": "human"
         }
-      }
+      },
+      "recurring": "Applications open 1 November and close 30 November each year."
     }
   ],
   "evidence": {
+    "administered_by": {
+      "source_url": "https://www.bccf.com/ccf-application/",
+      "quote": "Community Conservation Fund is a program by BC Conservation Foundation",
+      "checked_at": "2026-11-27",
+      "method": "page"
+    },
     "applicant_types": {
       "source_url": "https://www.bccf.com/programs/community-conservation-fund/",
       "quote": "Indigenous Peoples and First Nations, non-profits, stewardship groups and/or community-based organizations located within British Columbia are eligible.",
@@ -82,6 +88,12 @@
       "quote": "Grant intakes occur annually, depending on funding availability. Applications open: November 1 Applications close: November 30",
       "checked_at": "2026-11-12",
       "method": "human"
+    },
+    "amount": {
+      "source_url": "https://www.bccf.com/ccf-application/",
+      "quote": "Community conservation projects proponents have a maximum funding amount of $10,000.",
+      "checked_at": "2026-11-27",
+      "method": "page"
     },
     "reporting": {
       "source_url": "https://www.bccf.com/programs/community-conservation-fund/",
