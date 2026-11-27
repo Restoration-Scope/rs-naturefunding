@@ -13,10 +13,10 @@
   "applicant_types": ["ngo", "government"],
   "geography": { "scope": "countries", "countries": ["DE"], "label": "Bavaria" },
   "access": "direct",
-  "window": "unspecified",
+  "window": "fixed",
   "amount": null,
   "co_finance_required": true,
-  "reporting": null,
+  "reporting": "Verwendungsnachweis ist elektronisch zu erbringen; Verwendungsnachweise sind bei den unteren Naturschutzbehörden einzureichen.",
   "effort": {
     "steps": [
       "Application via the lower nature conservation authority, before work starts",
@@ -48,9 +48,9 @@
     { "rule": "Total eligible project costs exceed €5,000", "kind": "project" }
   ],
   "co_finance": {
+    "min_share": 10,
     "in_kind": true,
-    "applies_to": "All projects except projects funded at up to 100% on moorland",
-    "min_share": 10
+    "applies_to": "All projects except projects funded at up to 100% on moorland"
   },
   "after_award": { "reports": "unspecified" },
   "documents": [
@@ -80,9 +80,21 @@
       "checked_at": "2026-11-27",
       "method": "page"
     },
+    "window": {
+      "source_url": "https://www.gesetze-bayern.de/Content/Document/BayVV_7912_1_U_13349/true",
+      "quote": "Text gilt ab: 01.01.2026 Gesamtvorschrift gilt bis: 31.12.2026",
+      "checked_at": "2026-11-27",
+      "method": "page"
+    },
     "co_finance_required": {
       "source_url": "https://www.gesetze-bayern.de/Content/Document/BayVV_7912_1_U_13349/true",
       "quote": "In jedem Fall ist, außer bei Vorhaben nach Satz 4, eine angemessene Beteiligung des Vorhabenträgers von mindestens 10 % der zuwendungsfähigen Ausgaben sicherzustellen (vergleiche auch Nr. 5.4.3).",
+      "checked_at": "2026-11-27",
+      "method": "page"
+    },
+    "reporting": {
+      "source_url": "https://www.gesetze-bayern.de/Content/Document/BayVV_7912_1_U_13349/true",
+      "quote": "Verwendungsnachweis ist elektronisch zu erbringen.",
       "checked_at": "2026-11-27",
       "method": "page"
     },
