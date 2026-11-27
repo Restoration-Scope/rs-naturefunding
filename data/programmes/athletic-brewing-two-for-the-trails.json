@@ -11,9 +11,15 @@
   "geography": { "scope": "global" },
   "access": "direct",
   "window": "fixed",
-  "amount": { "currency": "USD", "min": 500, "max": 50000 },
+  "amount": {
+    "currency": "USD",
+    "min": 500,
+    "max": 50000,
+    "typical": true,
+    "note": "average of $5,000 to $10,000 per grant"
+  },
   "co_finance_required": null,
-  "reporting": "A brief mid-year report and a final report with project accomplishments, community impact and proof of use of funds.",
+  "reporting": "A brief mid-year report and a final report will be required from each grant recipient.",
   "effort": { "steps": ["Online application"] },
   "eligibility": [
     { "rule": "Be a registered nonprofit organization", "kind": "legal" },
@@ -23,6 +29,7 @@
     { "rule": "Have public access if the project is primarily on private land", "kind": "project" },
     { "rule": "Have no core purpose rooted in government, politics, or religion", "kind": "other" }
   ],
+  "after_award": { "reports": "interim_and_final" },
   "documents": [
     "Certificate of Insurance",
     "Completed W9, or W8 for non-US applicants",
@@ -132,6 +139,14 @@
         "method": "page"
       }
     ],
+    "after_award": [
+      {
+        "source_url": "https://athleticbrewing.com/pages/two-for-the-trails-grant",
+        "quote": "A brief mid-year report and a final report will be required from each grant recipient.",
+        "checked_at": "2026-11-27",
+        "method": "page"
+      }
+    ],
     "documents": [
       {
         "source_url": "https://athleticbrewing.com/pages/two-for-the-trails-grant",
@@ -151,16 +166,7 @@
         "checked_at": "2026-11-27",
         "method": "page"
       }
-    ],
-    "after_award": [
-      {
-        "source_url": "https://athleticbrewing.com/pages/two-for-the-trails-grant",
-        "quote": "A brief mid-year report and a final report will be required from each grant recipient.",
-        "checked_at": "2026-11-27",
-        "method": "page"
-      }
     ]
   },
-  "checked_at": "2026-11-27",
-  "after_award": { "reports": "interim_and_final" }
+  "checked_at": "2026-11-27"
 }
