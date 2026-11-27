@@ -503,7 +503,10 @@
   "fondation-albioma-appel-a-projets": { "reason": null, "failing_sources": [] },
   "fondation-francois-sommer-faune-sauvage": { "reason": null, "failing_sources": [] },
   "fondation-franklinia": { "reason": null, "failing_sources": [] },
-  "fondation-nature-et-decouvertes": { "reason": null, "failing_sources": [] },
+  "fondation-nature-et-decouvertes": {
+    "reason": "blocked",
+    "failing_sources": ["fondation-nature-et-decouvertes-1"]
+  },
   "fondation-patrimoine-naturel-biodiversite": { "reason": null, "failing_sources": [] },
   "fondation-petersberg-project-grants": { "reason": null, "failing_sources": [] },
   "fondation-vinci-autoroutes-biodiversite": { "reason": null, "failing_sources": [] },
@@ -685,7 +688,10 @@
   },
   "idf-1000-mares": { "reason": null, "failing_sources": [] },
   "idf-reconquete-biodiversite": { "reason": null, "failing_sources": [] },
-  "ief-conservation-grant": { "reason": null, "failing_sources": [] },
+  "ief-conservation-grant": {
+    "reason": "blocked",
+    "failing_sources": ["ief-conservation-grant-1"]
+  },
   "ifi-habitats-conservation-fund": { "reason": null, "failing_sources": [] },
   "ihs-grants": { "reason": null, "failing_sources": [] },
   "iif-grants-small-tier": { "reason": null, "failing_sources": [] },
@@ -955,7 +961,7 @@
   "mt-fwp-whip": { "reason": null, "failing_sources": [] },
   "muenster-naturschutzfoerderung": { "reason": null, "failing_sources": [] },
   "mufg-environment-foundation-satoyama-conservation": { "reason": null, "failing_sources": [] },
-  "munson-foundation": { "reason": null, "failing_sources": [] },
+  "munson-foundation": { "reason": "timeout", "failing_sources": ["munson-foundation-1"] },
   "murdock-trust-environmental-stewardship": { "reason": null, "failing_sources": [] },
   "musashino-bank-midori-fund": { "reason": null, "failing_sources": [] },
   "musser-environmental-initiative": { "reason": null, "failing_sources": [] },
@@ -1056,7 +1062,7 @@
   "nfwf-sacramento-valley-floodplain": { "reason": null, "failing_sources": [] },
   "nfwf-sea-turtles": { "reason": null, "failing_sources": [] },
   "nfwf-sogl": { "reason": null, "failing_sources": [] },
-  "nfwf-southeast-aquatics": { "reason": null, "failing_sources": [] },
+  "nfwf-southeast-aquatics": { "reason": "http", "failing_sources": ["nfwf-southeast-aquatics-2"] },
   "nfwf-southeast-michigan-resilience-fund": { "reason": null, "failing_sources": [] },
   "nfwf-southern-plains-grassland": { "reason": null, "failing_sources": [] },
   "nfwf-southwest-rivers-headwaters": { "reason": null, "failing_sources": [] },
@@ -1380,7 +1386,10 @@
   },
   "tdarfac-applied-conservation-grants": { "reason": null, "failing_sources": [] },
   "te-awarua-o-porirua-community-environment-fund": { "reason": null, "failing_sources": [] },
-  "tennessee-stream-wetland-restoration-grant": { "reason": null, "failing_sources": [] },
+  "tennessee-stream-wetland-restoration-grant": {
+    "reason": "blocked",
+    "failing_sources": ["tennessee-stream-wetland-restoration-grant-1"]
+  },
   "terraformation-seed-to-forest-accelerator": { "reason": null, "failing_sources": [] },
   "terrafund-for-afr100": { "reason": null, "failing_sources": [] },
   "territory-nrm-eco-connect-community-fund": { "reason": null, "failing_sources": [] },
@@ -1390,9 +1399,33 @@
   "thames21-empower-rivers-community-grant": { "reason": null, "failing_sources": [] },
   "the-fore-nature-recovery-fund": { "reason": null, "failing_sources": [] },
   "thorn-creek-audubon-environmental-grants": { "reason": null, "failing_sources": [] },
-  "tht-action-grant": { "reason": null, "failing_sources": [] },
-  "tht-conservation-grant": { "reason": null, "failing_sources": [] },
-  "tht-seed-grant": { "reason": null, "failing_sources": [] },
+  "tht-action-grant": {
+    "reason": "http",
+    "failing_sources": [
+      "tht-action-grant-1",
+      "tht-action-grant-2",
+      "tht-conservation-grant-2",
+      "tht-seed-grant-1"
+    ]
+  },
+  "tht-conservation-grant": {
+    "reason": "http",
+    "failing_sources": [
+      "tht-action-grant-2",
+      "tht-conservation-grant-1",
+      "tht-conservation-grant-2",
+      "tht-seed-grant-1"
+    ]
+  },
+  "tht-seed-grant": {
+    "reason": "http",
+    "failing_sources": [
+      "tht-action-grant-2",
+      "tht-conservation-grant-2",
+      "tht-seed-grant-1",
+      "tht-seed-grant-2"
+    ]
+  },
   "thueringen-enl-natur-und-landschaft": { "reason": null, "failing_sources": [] },
   "tirol-naturschutz-foerderung": { "reason": null, "failing_sources": [] },
   "tnc-new-york-climate-resilience-grant": { "reason": null, "failing_sources": [] },
@@ -1539,7 +1572,10 @@
   "wcb-stream-flow-enhancement": { "reason": null, "failing_sources": [] },
   "wceet-annual-round": { "reason": null, "failing_sources": [] },
   "wcn-conservation-partners": { "reason": null, "failing_sources": [] },
-  "wct-bees-grassroots-conservation-grant": { "reason": null, "failing_sources": [] },
+  "wct-bees-grassroots-conservation-grant": {
+    "reason": "network",
+    "failing_sources": ["wct-bees-grassroots-conservation-grant-1"]
+  },
   "wdfw-wildlife-diversity-grants": { "reason": null, "failing_sources": [] },
   "weeden-foundation-biodiversity-grants": {
     "reason": "blocked",
@@ -1599,7 +1635,10 @@
   "wwce-community-fund": { "reason": null, "failing_sources": [] },
   "wwf-canada-arctic-species-conservation-fund": { "reason": null, "failing_sources": [] },
   "wwf-nl-inno-fonds": { "reason": null, "failing_sources": [] },
-  "wwf-pakistan-small-grants": { "reason": null, "failing_sources": [] },
+  "wwf-pakistan-small-grants": {
+    "reason": "blocked",
+    "failing_sources": ["wwf-pakistan-small-grants-1"]
+  },
   "wwnrt-habitat-grants": { "reason": null, "failing_sources": [] },
   "wyldlife-fund-microgrants": { "reason": null, "failing_sources": [] },
   "wyoming-wildlife-foundation-butler-nongame-species-fund": {
