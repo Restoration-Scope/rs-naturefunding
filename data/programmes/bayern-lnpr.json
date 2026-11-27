@@ -5,7 +5,10 @@
     "name": "Bayerisches Staatsministerium für Umwelt und Verbraucherschutz",
     "url": "https://www.stmuv.bayern.de/"
   },
-  "administered_by": null,
+  "administered_by": {
+    "name": "Bayerisches Staatsministerium für Umwelt und Verbraucherschutz",
+    "url": "https://www.gesetze-bayern.de/Content/Document/BayVV_7912_1_U_13349-NN4"
+  },
   "parent": null,
   "url": "https://www.gesetze-bayern.de/Content/Document/BayVV_7912_1_U_13349/true",
   "summary": "Bavarian state grants covering a share of project costs for habitat conservation and creation, species protection, peatland and orchard measures and visitor guidance. Conservation associations, landscape management associations and municipalities apply via the district nature authority. The guideline expires on 31 Dec 2026; recheck for a successor in January 2027.",
@@ -13,7 +16,7 @@
   "applicant_types": ["ngo", "government"],
   "geography": { "scope": "countries", "countries": ["DE"], "label": "Bavaria" },
   "access": "direct",
-  "window": "unspecified",
+  "window": "fixed",
   "amount": null,
   "co_finance_required": true,
   "reporting": null,
@@ -48,9 +51,9 @@
     { "rule": "Total eligible project costs exceed €5,000", "kind": "project" }
   ],
   "co_finance": {
+    "min_share": 10,
     "in_kind": true,
-    "applies_to": "All projects except projects funded at up to 100% on moorland",
-    "min_share": 10
+    "applies_to": "All projects except projects funded at up to 100% on moorland"
   },
   "after_award": { "reports": "unspecified" },
   "documents": [
@@ -62,6 +65,12 @@
   ],
   "calls": [],
   "evidence": {
+    "administered_by": {
+      "source_url": "https://www.gesetze-bayern.de/Content/Document/BayVV_7912_1_U_13349-NN4",
+      "quote": "Bekanntmachung des Bayerischen Staatsministeriums für Umwelt und Verbraucherschutz vom 17. Oktober 2022",
+      "checked_at": "2026-11-27",
+      "method": "page"
+    },
     "applicant_types": {
       "source_url": "https://www.gesetze-bayern.de/Content/Document/BayVV_7912_1_U_13349/true",
       "quote": "kommunale Körperschaften, - Träger der Naturparke, - Landschaftspflegeverbände sowie Vereine und Organisationen, die sich satzungsgemäß dem Naturschutz und der Landschaftspflege widmen",
@@ -77,6 +86,12 @@
     "access": {
       "source_url": "https://www.gesetze-bayern.de/Content/Document/BayVV_7912_1_U_13349/true",
       "quote": "Anträge werden über die Kreisverwaltungsbehörde - untere Naturschutzbehörde - bei der Bewilligungsbehörde eingereicht.",
+      "checked_at": "2026-11-27",
+      "method": "page"
+    },
+    "window": {
+      "source_url": "https://www.gesetze-bayern.de/Content/Document/BayVV_7912_1_U_13349-NN4",
+      "quote": "Text gilt ab: 01.01.2026 Gesamtvorschrift gilt bis: 31.12.2026",
       "checked_at": "2026-11-27",
       "method": "page"
     },
