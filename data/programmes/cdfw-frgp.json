@@ -5,7 +5,10 @@
     "name": "California Department of Fish and Wildlife",
     "url": "https://wildlife.ca.gov/"
   },
-  "administered_by": null,
+  "administered_by": {
+    "name": "California Department of Fish and Wildlife",
+    "url": "https://wildlife.ca.gov"
+  },
   "parent": null,
   "url": "https://wildlife.ca.gov/Grants/FRGP",
   "summary": "Annual competitive grants for restoring, enhancing or protecting salmon and steelhead habitat in coastal California watersheds. Nonprofits, Tribes and public agencies can apply; the programme also covers environmental permitting for funded projects.",
@@ -17,6 +20,10 @@
   "amount": null,
   "co_finance_required": false,
   "reporting": null,
+  "effort": {
+    "steps": ["Concept proposal (required for requests over $2M)", "Full application"],
+    "due": ["2026-03-02", "2026-06-04"]
+  },
   "eligibility": [
     { "rule": "Project is not required for, or used as, regulatory mitigation", "kind": "project" },
     { "rule": "Project is not under enforcement action by a regulatory agency", "kind": "project" }
@@ -45,6 +52,12 @@
     }
   ],
   "evidence": {
+    "administered_by": {
+      "source_url": "https://wildlife.ca.gov/Grants/FRGP",
+      "quote": "All applications are accepted online through CDFW's WebGrants.",
+      "checked_at": "2026-11-27",
+      "method": "page"
+    },
     "applicant_types": {
       "source_url": "https://wildlife.ca.gov/Grants/FRGP",
       "quote": "Eligible applicants include state and local government agencies, public entities, Native American Indian Tribes, and nonprofit organizations.",
@@ -75,6 +88,26 @@
       "checked_at": "2026-11-22",
       "method": "page"
     },
+    "effort": [
+      {
+        "source_url": "https://nrm.dfg.ca.gov/FileHandler.ashx?DocumentID=239603&inline",
+        "quote": "Proposals requesting more than $2,000,000 are required to submit a concept proposal to be eligible for funding under the full application.",
+        "checked_at": "2026-11-22",
+        "method": "page"
+      },
+      {
+        "source_url": "https://nrm.dfg.ca.gov/FileHandler.ashx?DocumentID=239603&inline",
+        "quote": "Concept Proposal Phase Open: January 13 to March 2, 2026",
+        "checked_at": "2026-11-22",
+        "method": "page"
+      },
+      {
+        "source_url": "https://nrm.dfg.ca.gov/FileHandler.ashx?DocumentID=239603&inline",
+        "quote": "Full Application Phase Open: May 4 to June 4, 2026",
+        "checked_at": "2026-11-22",
+        "method": "page"
+      }
+    ],
     "eligibility": [
       {
         "source_url": "https://nrm.dfg.ca.gov/FileHandler.ashx?DocumentID=239603&inline",
@@ -110,31 +143,7 @@
         "checked_at": "2026-11-22",
         "method": "page"
       }
-    ],
-    "effort": [
-      {
-        "source_url": "https://nrm.dfg.ca.gov/FileHandler.ashx?DocumentID=239603&inline",
-        "quote": "Proposals requesting more than $2,000,000 are required to submit a concept proposal to be eligible for funding under the full application.",
-        "checked_at": "2026-11-22",
-        "method": "page"
-      },
-      {
-        "source_url": "https://nrm.dfg.ca.gov/FileHandler.ashx?DocumentID=239603&inline",
-        "quote": "Concept Proposal Phase Open: January 13 to March 2, 2026",
-        "checked_at": "2026-11-22",
-        "method": "page"
-      },
-      {
-        "source_url": "https://nrm.dfg.ca.gov/FileHandler.ashx?DocumentID=239603&inline",
-        "quote": "Full Application Phase Open: May 4 to June 4, 2026",
-        "checked_at": "2026-11-22",
-        "method": "page"
-      }
     ]
   },
-  "checked_at": "2026-11-09",
-  "effort": {
-    "steps": ["Concept proposal (required for requests over $2M)", "Full application"],
-    "due": ["2026-03-02", "2026-06-04"]
-  }
+  "checked_at": "2026-11-09"
 }
