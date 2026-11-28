@@ -2,7 +2,10 @@
   "id": "ceiba-seeds-of-sustainability",
   "name": "Seeds of Sustainability Grants",
   "funder": { "name": "Ceiba Foundation for Tropical Conservation", "url": "https://ceiba.org/" },
-  "administered_by": null,
+  "administered_by": {
+    "name": "Ceiba Foundation for Tropical Conservation",
+    "url": "https://ceiba.org"
+  },
   "parent": null,
   "url": "https://ceiba.org/partners/sosgrant/",
   "summary": "Small annual grants for locally led conservation projects in the tropics, such as species protection and habitat restoration, open to small non-profits, community groups, small businesses and individuals.",
@@ -12,7 +15,14 @@
     "natural_regeneration",
     "protected_areas"
   ],
-  "applicant_types": ["ngo", "community_group", "indigenous_organization", "company", "individual"],
+  "applicant_types": [
+    "ngo",
+    "community_group",
+    "indigenous_organization",
+    "company",
+    "individual",
+    "research_institution"
+  ],
   "geography": {
     "scope": "regions",
     "regions": ["africa", "asia", "latin_america_caribbean", "oceania"],
@@ -80,9 +90,15 @@
     }
   ],
   "evidence": {
+    "administered_by": {
+      "source_url": "https://ceiba.org/partners/sosgrant/",
+      "quote": "Ceiba Foundation for Tropical Conservation 301 S. Bedford Street, Suite 7A Madison, WI 53703",
+      "checked_at": "2026-11-28",
+      "method": "page"
+    },
     "applicant_types": {
       "source_url": "https://ceiba.org/partners/sosgrant/",
-      "quote": "Non-profit organizations, community organizations or associations, small businesses, and individuals from developing countries in the tropics are eligible to apply.",
+      "quote": "Small non-profit organizations, indigenous community groups, schools or small universities, individuals, and other types of local organizations/associations, except those engaged primarily in religious or political activities, are eligible to apply.",
       "checked_at": "2026-11-28",
       "method": "page"
     },
