@@ -2,12 +2,12 @@
   "id": "columbus-audubon-conservation-grant",
   "name": "Conservation Grant",
   "funder": { "name": "Columbus Audubon", "url": "https://columbusaudubon.org/" },
-  "administered_by": null,
+  "administered_by": { "name": "Columbus Audubon", "url": "https://columbusaudubon.org" },
   "parent": null,
   "url": "https://columbusaudubon.org/conservation-pages/conservation-grants/",
   "summary": "Annual conservation grants for projects supporting Ohio's native bird species, including habitat management, habitat protection and scientific research. The programme prefers central Ohio projects with outreach components.",
   "approaches": ["species_conservation", "protected_areas", "urban_nature", "research"],
-  "applicant_types": ["ngo", "company", "community_group", "research_institution", "individual"],
+  "applicant_types": ["ngo", "company", "community_group", "individual"],
   "geography": { "scope": "countries", "countries": ["US"], "label": "Ohio" },
   "access": "direct",
   "window": "fixed",
@@ -26,7 +26,6 @@
       "status": "upcoming",
       "opens": null,
       "deadline": null,
-      "expected": "fall 2026",
       "evidence": {
         "status": {
           "source_url": "https://columbusaudubon.org/conservation-pages/conservation-grants/",
@@ -34,15 +33,22 @@
           "checked_at": "2026-11-28",
           "method": "human"
         }
-      }
+      },
+      "expected": "fall 2026"
     }
   ],
   "evidence": {
+    "administered_by": {
+      "source_url": "https://columbusaudubon.org/conservation-pages/conservation-grants/",
+      "quote": "Columbus Audubon offers a Conservation Grant program to support the conservation of Ohio's native bird species.",
+      "checked_at": "2026-11-28",
+      "method": "page"
+    },
     "applicant_types": {
       "source_url": "https://columbusaudubon.org/conservation-pages/conservation-grants/",
       "quote": "Eligible applicants include 501(c)(3) non-profit organizations, businesses, clubs and organizations not registered as 501(c)(3), educational institutions, and individuals.",
       "checked_at": "2026-11-28",
-      "method": "human"
+      "method": "page"
     },
     "geography": {
       "source_url": "https://columbusaudubon.org/conservation-pages/conservation-grants/",
